@@ -101,7 +101,7 @@ void func_80002600(void);
 void func_8000262C(void);
 void func_80002658(void);
 void update_gamestate(void);
-void thread5_game_loop(void*);
+void thread5_game_loop(void);
 void thread4_audio(void*);
 
 
