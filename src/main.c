@@ -1169,7 +1169,7 @@ void update_gamestate(void) {
         }
 }
 
-void thread5_game_loop(UNUSED void *arg) {
+void thread5_game_loop(void) {
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);
     init_controllers();
