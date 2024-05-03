@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <mk64.h>
+#include <stubs.h>
 #include <defines.h>
 #include <segments.h>
 #include <libultra/types.h>
@@ -1412,7 +1413,7 @@ void func_80091B78(void) {
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        set_segment_base_addr(6, decompress_segments((u8 *) STARTUP_LOGO_ROM_START, (u8 *) STARTUP_LOGO_ROM_END));
+       // set_segment_base_addr(6, decompress_segments((u8 *) STARTUP_LOGO_ROM_START, (u8 *) STARTUP_LOGO_ROM_END));
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
@@ -3070,7 +3071,8 @@ Gfx *func_800963F0(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
     return displayListHead;
 }
 
-extern u8 D_0B002A00[];
+#define D_0B002A00 gTextureTitleChocoMountain
+
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/xV83r
 // Possibly a missed variable rename or just weird diffs.
@@ -3284,6 +3286,8 @@ Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097274.s")
 #endif
 
+#undef D_0B002A00
+
 Gfx *func_80097A14(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8* arg8, u32 arg9, u32 argA) {
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_COPY);
@@ -3491,21 +3495,21 @@ Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
 }
 
 void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
-    OSIoMesg sp30;
-    OSMesg sp2C;
+    // OSIoMesg sp30;
+    // OSMesg sp2C;
 
-    osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
+    // osInvalDCache(vaddr, nbytes);
+    // osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
+    // osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
 void dma_copy_base_7fa3c0(u64 *arg0, size_t nbytes, void *vaddr) {
-    OSIoMesg sp30;
-    OSMesg sp2C;
+    // OSIoMesg sp30;
+    // OSMesg sp2C;
 
-    osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
+    // osInvalDCache(vaddr, nbytes);
+    // osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes, &gDmaMesgQueue);
+    // osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
 void func_80099110(void) {
@@ -3650,7 +3654,7 @@ void func_8009952C(MkTexture *arg0) {
             }
         }
         if (var_a1 == 0) {
-            dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
+            //dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
             mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3822,7 +3826,7 @@ void func_80099AEC(void) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
     osInvalDCache(D_8018D9B4, var_s0);
-    osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
@@ -3839,7 +3843,7 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4 + sp60*4, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
@@ -3860,7 +3864,7 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
@@ -3894,82 +3898,82 @@ void func_80099E60(MkTexture *arg0, s32 arg1, s32 arg2) {
 // Some fakematch nonsense, may or may not be necessary
 // Issue is with instruction ordering near the first `osPiStartDma` call
 void func_80099EC4(void) {
-    s8 var_s4;
-    s32 var_s0;
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
-    OSIoMesg sp68;
-    OSMesg sp64;
-    s32 huh;
-    u8 *test;
-    MkTexture *temp_s2;
-    struct_8018E0E8_entry *var_s1;
+    // s8 var_s4;
+    // s32 var_s0;
+    // UNUSED s32 stackPadding0;
+    // UNUSED s32 stackPadding1;
+    // OSIoMesg sp68;
+    // OSMesg sp64;
+    // s32 huh;
+    // u8 *test;
+    // MkTexture *temp_s2;
+    // struct_8018E0E8_entry *var_s1;
 
-    var_s4 = 0;
-    var_s1 = D_8018E0E8;
-    temp_s2 = var_s1->mk64Texture;
+    // var_s4 = 0;
+    // var_s1 = D_8018E0E8;
+    // temp_s2 = var_s1->mk64Texture;
 
-    if (temp_s2 == NULL) return;
+    // if (temp_s2 == NULL) return;
 
-    huh = temp_s2->size;
-    if (huh != 0) {
-        var_s0 = huh;
-    } else {
-        var_s0 = 0x1400;
-    }
-    if (var_s0 % 8) {
-        var_s0 = ((var_s0 / 8) * 8) + 8;
-    }
-    osInvalDCache(D_8018D9B4, var_s0);
-    test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
-    osPiStartDma(&sp68, 0, 0, (uintptr_t)test, D_8018D9B4, var_s0, &gDmaMesgQueue);
-    if ((var_s0 && var_s0) && var_s0) {}
-    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-    while (1) {
-        if ((var_s1 + 1)->mk64Texture == NULL) {
-            var_s4 += 1;
-        } else {
-            temp_s2 = (var_s1 + 1)->mk64Texture;
-            huh = (var_s1 + 1)->mk64Texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
-            } else {
-                var_s0 = 0x1400;
-            }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
-            }
-            osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
-        }
-        mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-        var_s1->mk64Texture = NULL;
-        var_s1++;
-        if (var_s4 != 0) break;
-        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-        if ((var_s1 + 1)->mk64Texture == NULL) {
-            var_s4 += 1;
-        } else {
-            temp_s2 = (var_s1 + 1)->mk64Texture;
-            huh = (var_s1 + 1)->mk64Texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
-            } else {
-                var_s0 = 0x1400;
-            }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
-            }
-            osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
-        }
-        mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-        var_s1->mk64Texture = NULL;
-        var_s1++;
-        if (var_s4 != 0) break;
-        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-    }
+    // huh = temp_s2->size;
+    // if (huh != 0) {
+    //     var_s0 = huh;
+    // } else {
+    //     var_s0 = 0x1400;
+    // }
+    // if (var_s0 % 8) {
+    //     var_s0 = ((var_s0 / 8) * 8) + 8;
+    // }
+    // osInvalDCache(D_8018D9B4, var_s0);
+    // test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
+    // osPiStartDma(&sp68, 0, 0, (uintptr_t)test, D_8018D9B4, var_s0, &gDmaMesgQueue);
+    // if ((var_s0 && var_s0) && var_s0) {}
+    // // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    // osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    // while (1) {
+    //     if ((var_s1 + 1)->mk64Texture == NULL) {
+    //         var_s4 += 1;
+    //     } else {
+    //         temp_s2 = (var_s1 + 1)->mk64Texture;
+    //         huh = (var_s1 + 1)->mk64Texture->size;
+    //         if (huh != 0) {
+    //             var_s0 = huh;
+    //         } else {
+    //             var_s0 = 0x1400;
+    //         }
+    //         if (var_s0 % 8) {
+    //             var_s0 = ((var_s0 / 8) * 8) + 8;
+    //         }
+    //         osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
+    //         osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
+    //     }
+    //     mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+    //     var_s1->mk64Texture = NULL;
+    //     var_s1++;
+    //     if (var_s4 != 0) break;
+    //     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    //     if ((var_s1 + 1)->mk64Texture == NULL) {
+    //         var_s4 += 1;
+    //     } else {
+    //         temp_s2 = (var_s1 + 1)->mk64Texture;
+    //         huh = (var_s1 + 1)->mk64Texture->size;
+    //         if (huh != 0) {
+    //             var_s0 = huh;
+    //         } else {
+    //             var_s0 = 0x1400;
+    //         }
+    //         if (var_s0 % 8) {
+    //             var_s0 = ((var_s0 / 8) * 8) + 8;
+    //         }
+    //         osInvalDCache(D_8018D9B4, var_s0);
+    //         osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    //     }
+    //     mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+    //     var_s1->mk64Texture = NULL;
+    //     var_s1++;
+    //     if (var_s4 != 0) break;
+    //     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    // }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")

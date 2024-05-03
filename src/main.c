@@ -216,7 +216,7 @@ void main_func(void) {
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
-extern OSViMode osViModeTable[];
+//extern OSViMode osViModeTable[];
 /**
  * Initialize hardware, start main thread, then idle.
  */
@@ -226,9 +226,9 @@ void thread1_idle(void *arg) {
     osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
 #else // VERSION_US
     if (osTvType == OS_TV_NTSC) {
-        osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
+        //osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
-        osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
+        //osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
 #endif
     osViBlack(true);
@@ -473,19 +473,19 @@ void display_and_vsync(void) {
 }
 
 void init_segment_ending_sequences(void) {
-    bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
-    osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_ENDING, (u8 *) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
-    osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
-    osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
+    // bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
+    // osWritebackDCacheAll();
+    // dma_copy((u8 *) SEG_ENDING, (u8 *) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
+    // osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
+    // osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
 }
 
 void init_segment_racing(void) {
-    bzero((void *) SEG_RACING, SEG_RACING_SIZE);
-    osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_RACING, (u8 *) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
-    osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
-    osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
+    // bzero((void *) SEG_RACING, SEG_RACING_SIZE);
+    // osWritebackDCacheAll();
+    // dma_copy((u8 *) SEG_RACING, (u8 *) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
+    // osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
+    // osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
 }
 
 void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
@@ -508,51 +508,51 @@ void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
  * Setup main segments and framebuffers.
  */
 void setup_game_memory(void) {
-    UNUSED u32 pad[2];
-    ptrdiff_t commonCourseDataSize; // Compressed mio0 size
-    uintptr_t textureSegSize;
-    ptrdiff_t textureSegStart;
-    uintptr_t allocatedMemory;
-    UNUSED s32 unknown_padding;
+//     UNUSED u32 pad[2];
+//     ptrdiff_t commonCourseDataSize; // Compressed mio0 size
+//     uintptr_t textureSegSize;
+//     ptrdiff_t textureSegStart;
+//     uintptr_t allocatedMemory;
+//     UNUSED s32 unknown_padding;
 
-    init_segment_racing();
-    gHeapEndPtr = SEG_RACING;
-    set_segment_base_addr(0, (void *) SEG_START);
+//     init_segment_racing();
+//     gHeapEndPtr = SEG_RACING;
+//     set_segment_base_addr(0, (void *) SEG_START);
 
-    // Memory pool size of 0xAB630
-    initialize_memory_pool(MEMORY_POOL_START, MEMORY_POOL_END);
+//     // Memory pool size of 0xAB630
+//     initialize_memory_pool(MEMORY_POOL_START, MEMORY_POOL_END);
 
-    func_80000BEC();
+//     func_80000BEC();
 
-    // Initialize trig tables segment
-    osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
-    osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+//     // Initialize trig tables segment
+//     osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
+//     osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
+//     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
+//     set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
 
-    commonCourseDataSize = COMMON_TEXTURES_SIZE;
-    commonCourseDataSize = ALIGN16(commonCourseDataSize);
+//     commonCourseDataSize = COMMON_TEXTURES_SIZE;
+//     commonCourseDataSize = ALIGN16(commonCourseDataSize);
 
-#ifdef AVOID_UB
-    textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
-#else
-    textureSegStart = SEG_RACING - commonCourseDataSize;
-#endif
-    osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+// #ifdef AVOID_UB
+//     textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
+// #else
+//     textureSegStart = SEG_RACING - commonCourseDataSize;
+// #endif
+//     osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
+//     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    textureSegSize = *(uintptr_t *)(textureSegStart + 4);
-    textureSegSize = ALIGN16(textureSegSize);
-    allocatedMemory = gNextFreeMemoryAddress;
-    mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
-    set_segment_base_addr(0xD, (void *) allocatedMemory);
+//     textureSegSize = *(uintptr_t *)(textureSegStart + 4);
+//     textureSegSize = ALIGN16(textureSegSize);
+//     allocatedMemory = gNextFreeMemoryAddress;
+//     mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
+//     set_segment_base_addr(0xD, (void *) allocatedMemory);
 
-    gNextFreeMemoryAddress += textureSegSize;
+//     gNextFreeMemoryAddress += textureSegSize;
 
-    // Common course data does not get reloaded when the race state resets.
-    // Therefore, only reset the memory ptr to after the common course data.
-    gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
+//     // Common course data does not get reloaded when the race state resets.
+//     // Therefore, only reset the memory ptr to after the common course data.
+//     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
 /**
@@ -992,7 +992,7 @@ void handle_vblank(void) {
 
     /* This is where I would put my rumble code... If I had any. */
     #if ENABLE_RUMBLE
-    rumble_thread_update_vi();
+    // rumble_thread_update_vi();
     #endif
 
     if (gVblankHandler1 != NULL) {

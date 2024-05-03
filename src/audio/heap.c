@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <macros.h>
+#include <stubs.h>
 
 #include "audio/data.h"
 #include "audio/effects.h"

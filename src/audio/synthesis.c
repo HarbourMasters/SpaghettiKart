@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include "mixer.h"
 #include <macros.h>
 #include "audio/synthesis.h"
 #include "audio/heap.h"

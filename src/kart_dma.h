@@ -2806,6 +2806,6 @@ extern u8 gKartDK318[];
 extern u8 gKartDK319[];
 extern u8 gKartDK320[];
 
-extern u8 _kart_texturesSegmentRomStart[];
+//extern u8 _kart_texturesSegmentRomStart[];
 
 #endif

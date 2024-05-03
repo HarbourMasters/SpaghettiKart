@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <defines.h>
+#include <stubs.h>
 
 #include "save.h"
 

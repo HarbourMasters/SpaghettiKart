@@ -784,9 +784,11 @@ void audio_init(void) {
 
     gAudioLoadLock = 0;
 
-    for (i = 0; i < gAudioHeapSize / 8; i++) {
-        ((u64 *) D_803B71B0)[i] = 0;
-    }
+    // for (i = 0; i < gAudioHeapSize / 8; i++) {
+    //     ((u64 *) D_803B71B0)[i] = 0;
+    // }
+
+    memset(D_803B71B0, 0, gAudioHeapSize);
 
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
@@ -842,40 +844,40 @@ void audio_init(void) {
     gAudioResetPresetIdToLoad = 0;
     gAudioResetStatus = one;
     audio_shut_down_and_reset_step();
-    gSeqFileHeader = (ALSeqFile *) sp60;
-    test = &_sequencesSegmentRomStart;
-    audio_dma_copy_immediate(test, gSeqFileHeader, 0x00000010U);
-    gSequenceCount = gSeqFileHeader->seqCount;
-    size = gSequenceCount * sizeof(ALSeqData) + 4;
-    size = ALIGN16(size);
-    gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gSeqFileHeader, size);
-    func_800BB43C(gSeqFileHeader, test);
-    gAlCtlHeader = (ALSeqFile *) sp60;
-    test = &_audio_banksSegmentRomStart;
-    audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
-    aaa = gAlCtlHeader->seqCount;
-    size = ALIGN16(aaa * sizeof(ALSeqData) + 4);
-    gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gAlCtlHeader, size);
-    func_800BB43C(gAlCtlHeader, test);
-    gCtlEntries = soundAlloc(&gAudioInitPool, aaa * 0xC);
-    for (i = 0; i < aaa; i++) {
-        audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
+    // gSeqFileHeader = (ALSeqFile *) sp60;
+    // test = &_sequencesSegmentRomStart;
+    // audio_dma_copy_immediate(test, gSeqFileHeader, 0x00000010U);
+    // gSequenceCount = gSeqFileHeader->seqCount;
+    // size = gSequenceCount * sizeof(ALSeqData) + 4;
+    // size = ALIGN16(size);
+    // gSeqFileHeader = soundAlloc(&gAudioInitPool, size);
+    // audio_dma_copy_immediate(test, gSeqFileHeader, size);
+    // func_800BB43C(gSeqFileHeader, test);
+    // gAlCtlHeader = (ALSeqFile *) sp60;
+    // test = &_audio_banksSegmentRomStart;
+    // audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
+    // aaa = gAlCtlHeader->seqCount;
+    // size = ALIGN16(aaa * sizeof(ALSeqData) + 4);
+    // gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
+    // audio_dma_copy_immediate(test, gAlCtlHeader, size);
+    // func_800BB43C(gAlCtlHeader, test);
+    // gCtlEntries = soundAlloc(&gAudioInitPool, aaa * 0xC);
+    // for (i = 0; i < aaa; i++) {
+    //     audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
 
-        gCtlEntries[i].numInstruments = sp60[0];
-        gCtlEntries[i].numDrums = sp60[1];
-    }
-    gAlTbl = (ALSeqFile *) sp60;
-    test = &_audio_tablesSegmentRomStart;
-    audio_dma_copy_immediate(test, gAlTbl, 0x00000010U);
-    size = gAlTbl->seqCount * sizeof(ALSeqData) + 4;
-    size = ALIGN16(size);
-    gAlTbl = soundAlloc(&gAudioInitPool, size);
-    audio_dma_copy_immediate(test, gAlTbl, size);
-    func_800BB43C(gAlTbl, test);
-    gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
-    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    //     gCtlEntries[i].numInstruments = sp60[0];
+    //     gCtlEntries[i].numDrums = sp60[1];
+    // }
+    // gAlTbl = (ALSeqFile *) sp60;
+    // test = &_audio_tablesSegmentRomStart;
+    // audio_dma_copy_immediate(test, gAlTbl, 0x00000010U);
+    // size = gAlTbl->seqCount * sizeof(ALSeqData) + 4;
+    // size = ALIGN16(size);
+    // gAlTbl = soundAlloc(&gAudioInitPool, size);
+    // audio_dma_copy_immediate(test, gAlTbl, size);
+    // func_800BB43C(gAlTbl, test);
+    // gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
+    // audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;

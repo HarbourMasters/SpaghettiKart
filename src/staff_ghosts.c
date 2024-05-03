@@ -15,8 +15,6 @@
 #include "code_80057C60.h"
 #include "kart_dma.h"
 
-extern s32 mio0encode(s32 input, s32, s32);
-
 u8 *D_80162D80;
 s16 D_80162D84;
 s16 D_80162D86;
@@ -71,7 +69,7 @@ extern StaffGhost *d_luigi_raceway_staff_ghost;
 void func_80004EF0(void) {
     D_80162DA4 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4, 0x4000, &gDmaMesgQueue);
+    //osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4, 0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;

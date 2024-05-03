@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <mk64.h>
+#include <stubs.h>
 #include <common_structs.h>
 #include <defines.h>
 #include "code_800029B0.h"

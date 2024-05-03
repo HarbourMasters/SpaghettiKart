@@ -1207,7 +1207,7 @@ void func_80074510(uintptr_t devAddr, void * vaddr, size_t nbytes) {
 }
 
 void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
-    func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
+    //func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
 }
 
 //! @todo arg1 should likely be a u8 *
