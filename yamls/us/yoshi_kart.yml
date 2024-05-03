@@ -1,6 +1,7 @@
 :config:
   segments:
     - [0x0F, 0x272A20]
+  no_compression: true
   header:
     code:
       - '#include <assets/yoshi_kart.h>'

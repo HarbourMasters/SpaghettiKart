@@ -1,6 +1,7 @@
 :config:
   segments:
     - [0x0A, 0x729A30]
+  no_compression: true
   header:
     code:
     - '#include <macros.h>'
@@ -13,6 +14,7 @@ mario_face_00:
   symbol: gTextureMarioFace00
   type: texture
   offset: 0x0
+  mio0: true
   ctype: u16
   width: 64
   height: 64

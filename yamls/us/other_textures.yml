@@ -1,6 +1,7 @@
 :config:
   segments:
     - [0x0F, 0x641F70]
+  no_compression: true
   header:
     code:
     - '#include <assets/other_textures.h>'
@@ -14,6 +15,7 @@ sign_shell_shot_0:
   ctype: u16
   width: 64
   height: 32
+  mio0: true
   offset: 0x0
   format: rgba16
 sign_shell_shot_1:

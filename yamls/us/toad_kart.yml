@@ -1,6 +1,7 @@
 :config:
   segments:
     - [0x0F, 0x43B3E0]
+  no_compression: true
   header:
     code:
       - '#include <assets/toad_kart.h>'

@@ -1,6 +1,7 @@
 :config:
   segments:
     - [0x0F, 0x1E01F0]
+  no_compression: true
   header:
     code:
       - '#include <assets/mario_kart.h>'
