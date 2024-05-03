@@ -2,32 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture6684F8[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignMarioStar0[];
-extern u8 gTextureSignMarioStar1[];
-extern u8 gTextureSignNintendoRed0[];
-extern u8 gTextureSignNintendoRed1[];
-extern u8 gTexture67490C[];
-extern u8 gTextureSignYoshi[];
-extern u8 gTextureCheckerboardBlueGray[];
-extern u8 gTexture646CA8[];
-extern u8 gTexture6473E4[];
-extern u8 gTexture647994[];
-extern u8 gTexture668920[];
-extern u8 gTextureRailroadTrack[];
-extern u8 gTextureRailroadCrossingTrack[];
-extern u8 gTexture67291C[];
-extern u8 gTextureFenceBarbedWire[];
-extern u8 gTexture67D304[];
-extern u8 gTexture67E010[];
-extern u8 gTexture67EEAC[];
-extern u8 gTextureSignShellShot0[];
-extern u8 gTextureSignShellShot1[];
-extern u8 gTextureSignKoopaAir0[];
-extern u8 gTextureSignKoopaAir1[];
-
 const course_texture kalimari_desert_textures[] = {
     {gTexture6684F8,                0x010D, 0x0800, 0x0},
     {gTextureSignLuigis0,           0x0287, 0x1000, 0x0},

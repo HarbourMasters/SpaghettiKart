@@ -1,31 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 
-extern u8 gTexture648508[];
-extern u8 gTexture6684F8[];
-extern u8 gTextureWoodBridgeSlats[];
-extern u8 gTexture654460[];
-extern u8 gTexture654F74[];
-extern u8 gTexture655998[];
-extern u8 gTexture655F38[];
-extern u8 gTexture656AF4[];
-extern u8 gTexture6575C8[];
-extern u8 gTexture658370[];
-extern u8 gTexture65912C[];
-extern u8 gTexture659EE8[];
-extern u8 gTexture65ADE0[];
-extern u8 gTexture65BB3C[];
-extern u8 gTexture65C8DC[];
-extern u8 gTexture65D5D4[];
-extern u8 gTexture65E2EC[];
-extern u8 gTexture65EAEC[];
-extern u8 gTexture65E59C[];
-extern u8 gTexture65EE38[];
-extern u8 gTexture65FB18[];
-extern u8 gTextureSignPinkArrow[];
-extern u8 gTextureWaves0[];
-extern u8 gTexture683844[];
-
 const course_texture dks_jungle_parkway_textures[] = {
     {gTexture648508,          0x01FE, 0x1000, 0x0},
     {gTexture6684F8,          0x010D, 0x0800, 0x0},

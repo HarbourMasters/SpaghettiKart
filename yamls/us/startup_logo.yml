@@ -89,7 +89,7 @@ dl20:
   type: gfx
   offset: 0x87A0
 reflection_map_gold:
-  symbol: reflection_map_gold
+  symbol: startup_reflection_map_gold
   type: texture
   ctype: u16
   offset: 0x8A48

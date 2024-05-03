@@ -3,7 +3,7 @@
 
 #include <libultra/gbi.h>
 #include "spline.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 #include "objects.h"
 
 extern Vtx D_800E49C0[];

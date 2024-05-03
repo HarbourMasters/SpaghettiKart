@@ -2,50 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture64619C[];
-extern u8 gTexture645134[];
-extern u8 gTextureWoodDoor1[];
-extern u8 gTexture64BB60[];
-extern u8 gTextureGrass3[];
-extern u8 gTexture64F9E8[];
-extern u8 gTextureFlagRed[];
-extern u8 gTextureCrownJewelBlue[];
-extern u8 gTextureCrown[];
-extern u8 gTextureCrownJewelPink[];
-extern u8 gTextureSignKoopaAir0[];
-extern u8 gTextureSignKoopaAir1[];
-extern u8 gTexture6684F8[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignMarioStar0[];
-extern u8 gTextureSignMarioStar1[];
-extern u8 gTexture66CA98[];
-extern u8 gTextureCheckerboardPink[];
-extern u8 gTexture670AC8[];
-extern u8 gTextureRoad0[];
-extern u8 gTextureRoadFinish0[];
-extern u8 gTextureSignYoshi[];
-extern u8 gTextureCheckerboardBlueGray[];
-extern u8 gTextureCastleBricks[];
-extern u8 gTextureCastleBridge[];
-extern u8 gTextureGrass8[];
-extern u8 gTextureGrass9[];
-extern u8 gTexture6646B8[];
-extern u8 gTexture664408[];
-extern u8 gTextureBricksRed[];
-extern u8 gTexture665C0C[];
-extern u8 gTexture6661AC[];
-extern u8 gTexture6663A4[];
-extern u8 gTexture667BAC[];
-extern u8 gTextureFlagRed2[];
-extern u8 gTexture66DB60[];
-extern u8 gTextureStainglassPeach0[];
-extern u8 gTextureStainglassPeach1[];
-extern u8 gTextureFencePostWooden[];
-extern u8 gTexture648508[];
-extern u8 gTexture6449D4[];
-extern u8 gTexture67FE0C[];
-
 const course_texture royal_raceway_textures[] = {
     {gTexture64619C,               0x0124, 0x0800, 0x0},
     {gTexture645134,               0x052C, 0x0800, 0x0},

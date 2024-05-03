@@ -23,7 +23,7 @@
 #include <assets/common_data.h>
 #include "courses/all_course_data.h"
 #include "main.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 
 // Appears to be textures
 // or tluts

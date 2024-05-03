@@ -2,35 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture64313C[];
-extern u8 gTexture6528DC[];
-extern u8 gTexture66ED38[];
-extern u8 gTexture676C6C[];
-extern u8 gTexture676EA8[];
-extern u8 gTexture679D34[];
-extern u8 gTextureGrass6[];
-extern u8 gTexture6522E0[];
-extern u8 gTexture651F40[];
-extern u8 gTextureRoofTile[];
-extern u8 gTextureSignBowser0[];
-extern u8 gTextureSignBowser1[];
-extern u8 gTexture66ABA4[];
-extern u8 gTexture66EBF0[];
-extern u8 gTexture6733CC[];
-extern u8 gTexture673118[];
-extern u8 gTexture673FF8[];
-extern u8 gTexture674B28[];
-extern u8 gTextureSignGreenArrow[];
-extern u8 gTexture68D834[];
-extern u8 gTexture676D7C[];
-extern u8 gTexture67ADF0[];
-extern u8 gTexture67EFEC[];
-extern u8 gTexture653DB0[];
-extern u8 gTexture66CA98[];
-extern u8 gTexture673990[];
-extern u8 gTexture67A370[];
-extern u8 gTexture67A91C[];
-
 const course_texture bowsers_castle_textures[] = {
     {gTexture64313C,         0x01B8, 0x0800, 0x0},
     {gTexture6528DC,         0x0278, 0x0800, 0x0},

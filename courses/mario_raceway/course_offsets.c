@@ -2,37 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTextureCheckerboardYellowPink[];
-extern u8 gTexture64619C[];
-extern u8 gTextureGrass1[];
-extern u8 gTexture64BB60[];
-extern u8 gTextureGrass7[];
-extern u8 gTextureGrass5[];
-extern u8 gTextureFlagRed[];
-extern u8 gTexture663F90[];
-extern u8 gTexture6642A4[];
-extern u8 gTexture6640B4[];
-extern u8 gTextureGrass10[];
-extern u8 gTexture6684F8[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignMarioStar0[];
-extern u8 gTextureSignMarioStar1[];
-extern u8 gTexture66C8F4[];
-extern u8 gTextureSignNintendoRed0[];
-extern u8 gTextureSignNintendoRed1[];
-extern u8 gTexture670AC8[];
-extern u8 gTexture674354[];
-extern u8 gTextureRoad0[];
-extern u8 gTextureRoadFinish0[];
-extern u8 gTexture67B9B0[];
-extern u8 gTextureSignYoshi[];
-extern u8 gTextureCheckerboardBlueGray[];
-extern u8 gTextureSignShellShot0[];
-extern u8 gTextureSignShellShot1[];
-extern u8 gTextureSignKoopaAir0[];
-extern u8 gTextureSignKoopaAir1[];
-
 const course_texture mario_raceway_textures[] = {
     {gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0},
     {gTexture64619C,                 0x0124, 0x0800, 0x0},

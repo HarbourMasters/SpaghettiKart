@@ -2,6 +2,7 @@
 #define COURSE_OFFSETS_H
 
 #include <libultra/types.h>
+#include <assets/other_textures.h>
 
 typedef struct
 {

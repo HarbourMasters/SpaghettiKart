@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include "course_displaylists.inc.h"
+#include "course_displaylists.h"
 
 Gfx d_course_kalimari_desert_dl_0[] =
 {

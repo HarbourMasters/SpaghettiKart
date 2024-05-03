@@ -5,6 +5,7 @@
 #include <segments.h>
 #include <libultra/types.h>
 #include <sounds.h>
+#include <assets/texture_data_2.h>
 #include "code_800029B0.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"

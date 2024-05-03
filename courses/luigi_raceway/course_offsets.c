@@ -2,47 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTextureSignShellShot0[];
-extern u8 gTextureSignShellShot1[];
-extern u8 gTextureCheckerboardYellowBlue[];
-extern u8 gTexture64619C[];
-extern u8 gTextureCheckerboardBlueGreen[];
-extern u8 gTextureGrass3[];
-extern u8 gTextureFlagRed[];
-extern u8 gTexture65100C[];
-extern u8 gTexture65112C[];
-extern u8 gTexture653608[];
-extern u8 gTextureGrass11[];
-extern u8 gTextureSignLuigiFace0[];
-extern u8 gTextureSignLuigiFace1[];
-extern u8 gTexture66C7A8[];
-extern u8 gTexture670AC8[];
-extern u8 gTexture671A88[];
-extern u8 gTexture6735DC[];
-extern u8 gTexture673C68[];
-extern u8 gTexture6747C4[];
-extern u8 gTextureRoad1[];
-extern u8 gTextureRoad2[];
-extern u8 gTextureRoadFinish1[];
-extern u8 gTexture67BBD8[];
-extern u8 gTexture68272C[];
-extern u8 gTexture682928[];
-extern u8 gTexture682B24[];
-extern u8 gTexture682D20[];
-extern u8 gTexture682F1C[];
-extern u8 gTexture683118[];
-extern u8 gTextureSignBlue64[];
-extern u8 gTextureSignKoopaAir0[];
-extern u8 gTextureSignKoopaAir1[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignMarioStar0[];
-extern u8 gTextureSignMarioStar1[];
-extern u8 gTextureSignNintendoRed0[];
-extern u8 gTextureSignNintendoRed1[];
-extern u8 gTextureSignYoshi[];
-extern u8 gTextureCheckerboardBlueGray[];
-
 const course_texture luigi_raceway_textures[] = {
     {gTextureSignShellShot0,         0x038C, 0x1000, 0x0},
     {gTextureSignShellShot1,         0x0247, 0x1000, 0x0},

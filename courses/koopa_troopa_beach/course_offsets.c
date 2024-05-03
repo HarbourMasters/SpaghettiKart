@@ -1,23 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 
-extern u8 gTexture643B3C[];
-extern u8 gTexture66A3DC[];
-extern u8 gTextureSignWoodRedArrow[];
-extern u8 gTexture66DD38[];
-extern u8 gTexture643430[];
-extern u8 gTexture660D8C[];
-extern u8 gTexture6609D0[];
-extern u8 gTextureGrass12[];
-extern u8 gTexture66CA98[];
-extern u8 gTexture66EBF0[];
-extern u8 gTexture67BEE8[];
-extern u8 gTextureSandFinish[];
-extern u8 gTextureWheelSteamEngine[];
-extern u8 gTexture669570[];
-extern u8 gTextureWaves1[];
-extern u8 gTextureWaves2[];
-
 const course_texture koopa_troopa_beach_textures[] = {
     {gTexture643B3C,           0x0798, 0x0800, 0x0},
     {gTexture66A3DC,           0x07C5, 0x0800, 0x0},

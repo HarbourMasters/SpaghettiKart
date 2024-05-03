@@ -2,17 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture643B3C[];
-extern u8 gTexture66D024[];
-extern u8 gTexture678118[];
-extern u8 gTextureSignWoodRedArrow[];
-extern u8 gTexture678CC8[];
-extern u8 gTexture67842C[];
-extern u8 gTexture67893C[];
-extern u8 gTexture651984[];
-extern u8 gTexture651428[];
-extern u8 gTexture662924[];
-
 const course_texture sherbet_land_textures[] = {
     {gTexture643B3C,           0x0798, 0x0800, 0x0},
     {gTexture66D024,           0x04EA, 0x0800, 0x0},

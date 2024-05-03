@@ -3,6 +3,7 @@
 #include <defines.h>
 #include <common_structs.h>
 #include <mk64.h>
+#include <stubs.h>
 
 #include "menus.h"
 #include "main.h"

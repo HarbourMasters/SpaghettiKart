@@ -62,7 +62,7 @@ reflection_map_silver:
   height: 32
   format: RGBA16
 reflection_map_gold:
-  symbol: reflection_map_gold
+  symbol: ceremony_reflection_map_gold
   type: texture
   ctype: u16
   offset: 0x5670

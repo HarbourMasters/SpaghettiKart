@@ -4,7 +4,7 @@
 #include <libultra/gbi.h>
 #include <actor_types.h>
 
-#include "course_displaylists.inc.h"
+#include "course_displaylists.h"
 
 Gfx d_course_big_donut_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),

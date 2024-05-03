@@ -1,3 +1,6 @@
+#include <libultraship.h>
+#include <common_structs.h>
+#include <assets/other_textures.h>
 #include "some_data.h"
 
 Vtx D_800E49C0[] = {

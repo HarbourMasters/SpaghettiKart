@@ -4,29 +4,6 @@
 #include "courses/banshee_boardwalk/course_data.h"
 #include <libultra/gbi.h>
 
-extern u8 gTexture6447C4[];
-extern u8 gTexture676FB0[];
-extern u8 gTexture643B3C[];
-extern u8 gTexture64BB60[];
-extern u8 gTexture64BCCC[];
-extern u8 gTexture64FBF4[];
-extern u8 gTexture651B20[];
-extern u8 gTexture66262C[];
-extern u8 gTexture668728[];
-extern u8 gTexture66A3DC[];
-extern u8 gTexture66CA98[];
-extern u8 gTexture66CD64[];
-extern u8 gTexture66D698[];
-extern u8 gTexture66E608[];
-extern u8 gTexture67B388[];
-extern u8 gTextureSignWelcome0[];
-extern u8 gTextureSignWelcome1[];
-extern u8 gTextureSignWoodenBack0[];
-extern u8 gTextureSignWoodenBack1[];
-extern u8 gTextureSignWoodRedArrow[];
-extern u8 gTexture68D940[];
-extern u8 gTexture685AC0[];
-
 const course_texture banshee_boardwalk_textures[] = {
     {gTexture6447C4,           0x0106, 0x0800, 0x0},
     {gTexture676FB0,           0x0525, 0x0800, 0x0},

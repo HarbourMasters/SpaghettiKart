@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <mk64.h>
+#include <stubs.h>
 #include <common_structs.h>
 #include <defines.h>
 #include <decode.h>
@@ -15,7 +16,6 @@
 #include "kart_dma.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
-extern s32 func_80040174(void *, s32, s32);
 
 u8 *D_80162D80;
 s16 D_80162D84;

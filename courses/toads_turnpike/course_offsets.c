@@ -1,28 +1,7 @@
 #include <libultra/types.h>
-#include <PR/mbi.h>
 #include <assets/common_data.h>
 #include "course_offsets.h"
 #include "course_data.h"
-
-extern u8 gTexture645134[];
-extern u8 gTexture64FE68[];
-extern u8 gTexture6607C0[];
-extern u8 gTexture6608C8[];
-extern u8 gTextureGrass11[];
-extern u8 gTextureSignNintendoRed0[];
-extern u8 gTextureSignNintendoRed1[];
-extern u8 gTexture671A88[];
-extern u8 gTextureRoad2[];
-extern u8 gTextureRoad3[];
-extern u8 gTextureRoad4[];
-extern u8 gTextureRoadFinish0[];
-extern u8 gTextureSignToadYellow[];
-extern u8 gTextureSignToadGreen[];
-extern u8 gTextureSignMergingLanes[];
-extern u8 gTexture65127C[];
-extern u8 gTextureRoad5[];
-extern u8 gTextureSignToadRed[];
-extern u8 gTexture668228[];
 
 const course_texture toads_turnpike_textures[] = {
     {gTexture645134,           0x052C, 0x0800, 0x0},

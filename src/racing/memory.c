@@ -4,6 +4,7 @@
 #include <common_structs.h>
 #include <segments.h>
 #include <decode.h>
+#include <stubs.h>
 
 #include "memory.h"
 #include "main.h"
@@ -1317,55 +1318,56 @@ void *decompress_segments(u8 *start, u8 *end) {
  * @param courseId
 */
 u8 *load_course(s32 courseId) {
-    UNUSED s32 pad[4];
-    u8 *vtxCompressed; // mio0 compressed
-    u8 *courseDataRomStart; // mio0 compressed
-    u8 *courseDataRomEnd;
-    u8 *vertexRomStart; // mio0 compressed
-    u8 *vertexRomEnd;
-    UNUSED s32 pad2[2];
-    u32 *textures;
-    CourseVtx *vertexStart; // mio0 compressed
-    u8 *packedStart;
-    u32 vertexCount;
-    u8 *finalDisplaylistOffset;
-    u32 unknown1;
-    s32 prevLoadedAddress_saved;
-    u8 *offsetRomStart;
-    u8 *offsetRomEnd;
+    u8 a;
+    // UNUSED s32 pad[4];
+    // u8 *vtxCompressed; // mio0 compressed
+    // u8 *courseDataRomStart; // mio0 compressed
+    // u8 *courseDataRomEnd;
+    // u8 *vertexRomStart; // mio0 compressed
+    // u8 *vertexRomEnd;
+    // UNUSED s32 pad2[2];
+    // u32 *textures;
+    // CourseVtx *vertexStart; // mio0 compressed
+    // u8 *packedStart;
+    // u32 vertexCount;
+    // u8 *finalDisplaylistOffset;
+    // u32 unknown1;
+    // s32 prevLoadedAddress_saved;
+    // u8 *offsetRomStart;
+    // u8 *offsetRomEnd;
 
-    // Pointers to rom offsets
-    //gamestate = gGamestate;
-    courseDataRomStart = gCourseTable[courseId].dlRomStart;
-    courseDataRomEnd = gCourseTable[courseId].dlRomEnd;
-    offsetRomStart = gCourseTable[courseId].offsetRomStart;
-    offsetRomEnd = gCourseTable[courseId].offsetRomEnd;
-    vertexRomStart = gCourseTable[courseId].vertexRomStart;
-    vertexRomEnd = gCourseTable[courseId].vertexRomEnd;
-    textures = gCourseTable[courseId].textures;
-    vertexStart = gCourseTable[courseId].vertexStart;
-    packedStart = gCourseTable[courseId].packedStart;
-    vertexCount = gCourseTable[courseId].vertexCount;
-    finalDisplaylistOffset = gCourseTable[courseId].finalDisplaylistOffset;
-    unknown1 = gCourseTable[courseId].unknown1;
+    // // Pointers to rom offsets
+    // //gamestate = gGamestate;
+    // courseDataRomStart = gCourseTable[courseId].dlRomStart;
+    // courseDataRomEnd = gCourseTable[courseId].dlRomEnd;
+    // offsetRomStart = gCourseTable[courseId].offsetRomStart;
+    // offsetRomEnd = gCourseTable[courseId].offsetRomEnd;
+    // vertexRomStart = gCourseTable[courseId].vertexRomStart;
+    // vertexRomEnd = gCourseTable[courseId].vertexRomEnd;
+    // textures = gCourseTable[courseId].textures;
+    // vertexStart = gCourseTable[courseId].vertexStart;
+    // packedStart = gCourseTable[courseId].packedStart;
+    // vertexCount = gCourseTable[courseId].vertexCount;
+    // finalDisplaylistOffset = gCourseTable[courseId].finalDisplaylistOffset;
+    // unknown1 = gCourseTable[courseId].unknown1;
 
-    if ((gGamestate == ENDING) || (gGamestate == CREDITS_SEQUENCE)) {
-        gHeapEndPtr = SEG_ENDING;
-    } else {
-        gHeapEndPtr = SEG_RACING;
-    }
-    set_segment_base_addr(9, load_data((uintptr_t)offsetRomStart, (uintptr_t) offsetRomEnd));
+    // if ((gGamestate == ENDING) || (gGamestate == CREDITS_SEQUENCE)) {
+    //     gHeapEndPtr = SEG_ENDING;
+    // } else {
+    //     gHeapEndPtr = SEG_RACING;
+    // }
+    // set_segment_base_addr(9, load_data((uintptr_t)offsetRomStart, (uintptr_t) offsetRomEnd));
 
-    if (gGamestate != ENDING) {
-        set_segment_base_addr(6, decompress_segments(courseDataRomStart, courseDataRomEnd));
-    }
-    prevLoadedAddress_saved = gNextFreeMemoryAddress;
-    vtxCompressed = dma_compressed_vtx(vertexRomStart, vertexRomEnd);
+    // if (gGamestate != ENDING) {
+    //     set_segment_base_addr(6, decompress_segments(courseDataRomStart, courseDataRomEnd));
+    // }
+    // prevLoadedAddress_saved = gNextFreeMemoryAddress;
+    // vtxCompressed = dma_compressed_vtx(vertexRomStart, vertexRomEnd);
 
-    set_segment_base_addr(0xF, (void *) vtxCompressed);
-    decompress_vtx(vertexStart, vertexCount);
-    displaylist_unpack((uintptr_t *) packedStart, finalDisplaylistOffset, unknown1);
-    decompress_textures(textures);
-    gNextFreeMemoryAddress = prevLoadedAddress_saved;
-    return vtxCompressed;
+    // set_segment_base_addr(0xF, (void *) vtxCompressed);
+    // decompress_vtx(vertexStart, vertexCount);
+    // displaylist_unpack((uintptr_t *) packedStart, finalDisplaylistOffset, unknown1);
+    // decompress_textures(textures);
+    // gNextFreeMemoryAddress = prevLoadedAddress_saved;
+    return a;
 }

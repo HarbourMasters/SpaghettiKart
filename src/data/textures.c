@@ -4,6 +4,9 @@
  * start in ram 0x801978D0
  * look like link to code_80091750
  */
+#include <assets/texture_tkmk00.h>
+#include <assets/texture_data_2.h>
+#include <assets/player_selection.h>
 #include "textures.h"
 
 /**

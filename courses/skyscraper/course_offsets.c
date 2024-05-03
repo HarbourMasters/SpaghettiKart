@@ -1,30 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 
-extern u8 gTexture6457D8[];
-extern u8 gTexture6462C0[];
-extern u8 gTexture6864E8[];
-extern u8 gTexture686CF0[];
-extern u8 gTexture6875A8[];
-extern u8 gTexture687EE8[];
-extern u8 gTexture68876C[];
-extern u8 gTexture689230[];
-extern u8 gTexture689C00[];
-extern u8 gTexture68A484[];
-extern u8 gTexture68AC5C[];
-extern u8 gTexture68B6A4[];
-extern u8 gTexture68BE6C[];
-extern u8 gTexture68C310[];
-extern u8 gTexture64B8D8[];
-extern u8 gTexture645660[];
-extern u8 gTextureNumberYellowBlue1[];
-extern u8 gTextureNumberYellowBlue2[];
-extern u8 gTextureNumberYellowBlue3[];
-extern u8 gTextureNumberYellowBlue4[];
-extern u8 gTexture668608[];
-extern u8 gTexture67B75C[];
-extern u8 gTexture6835F0[];
-
 const course_texture skyscraper_textures[] = {
     {gTexture6457D8,            0x0160, 0x0800, 0x0},
     {gTexture6462C0,            0x01B9, 0x0800, 0x0},

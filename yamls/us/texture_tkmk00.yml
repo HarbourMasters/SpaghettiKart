@@ -1,0 +1,640 @@
+:config:
+  segments:
+    - [0x0B, 0x7FA3C0]
+  header:
+    code:
+    - '#include <assets/texture_tkmk00.h>'
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+    header:
+    - '#include <libultraship.h>'
+gTexturePlayerSelect:
+  symbol: gTexturePlayerSelect
+  type: texture
+  ctype: u16
+  width: 220
+  height: 32
+  offset: 0x0
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureOption:
+  symbol: gTextureOption
+  type: texture
+  ctype: u16
+  width: 130
+  height: 32
+  offset: 0xC00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameDK:
+  symbol: gTextureNameDK
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1500
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameToad:
+  symbol: gTextureNameToad
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1700
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameBowser:
+  symbol: gTextureNameBowser
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1900
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameLuigi:
+  symbol: gTextureNameLuigi
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1B00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameMario:
+  symbol: gTextureNameMario
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1D00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNamePeach:
+  symbol: gTextureNamePeach
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x1F00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameWario:
+  symbol: gTextureNameWario
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x2100
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureNameYoshi:
+  symbol: gTextureNameYoshi
+  type: texture
+  ctype: u16
+  width: 64
+  height: 12
+  offset: 0x2300
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureTitleMarioRaceway:
+  symbol: gTextureTitleMarioRaceway
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x2500
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleChocoMountain:
+  symbol: gTextureTitleChocoMountain
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x2A00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleBowsersCastle:
+  symbol: gTextureTitleBowsersCastle
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x2F00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleBansheeBoardwalk:
+  symbol: gTextureTitleBansheeBoardwalk
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x3400
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleYoshiValley:
+  symbol: gTextureTitleYoshiValley
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x3A00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleFrappeSnowland:
+  symbol: gTextureTitleFrappeSnowland
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x3E00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleKoopaTroopaBeach:
+  symbol: gTextureTitleKoopaTroopaBeach
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x4300
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleRoyalRaceway:
+  symbol: gTextureTitleRoyalRaceway
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x4800
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleLuigiRaceway:
+  symbol: gTextureTitleLuigiRaceway
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x4C00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleMooMooFarm:
+  symbol: gTextureTitleMooMooFarm
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x5000
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleToadsTurnpike:
+  symbol: gTextureTitleToadsTurnpike
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x5400
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleKalimariDesert:
+  symbol: gTextureTitleKalimariDesert
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x5900
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleSherbetLand:
+  symbol: gTextureTitleSherbetLand
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x5D00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleRainbowRoad:
+  symbol: gTextureTitleRainbowRoad
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x6100
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleWarioStadium:
+  symbol: gTextureTitleWarioStadium
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x6500
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleBlockFort:
+  symbol: gTextureTitleBlockFort
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x6A00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleSkyscraper:
+  symbol: gTextureTitleSkyscraper
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x6D00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleDoubleDeck:
+  symbol: gTextureTitleDoubleDeck
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x7100
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleDKsJungleParkway:
+  symbol: gTextureTitleDKsJungleParkway
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x7500
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureTitleBigDonut:
+  symbol: gTextureTitleBigDonut
+  type: texture
+  ctype: u16
+  width: 140
+  height: 18
+  offset: 0x7B00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMapSelect:
+  symbol: gTextureMapSelect
+  type: texture
+  ctype: u16
+  width: 190
+  height: 32
+  offset: 0x7E00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureMenuFlowerCup:
+  symbol: gTextureMenuFlowerCup
+  type: texture
+  ctype: u16
+  width: 65
+  height: 40
+  offset: 0x8A00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuMushroomCup:
+  symbol: gTextureMenuMushroomCup
+  type: texture
+  ctype: u16
+  width: 65
+  height: 40
+  offset: 0x8E00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuStarCup:
+  symbol: gTextureMenuStarCup
+  type: texture
+  ctype: u16
+  width: 65
+  height: 40
+  offset: 0x9200
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuSpecialCup:
+  symbol: gTextureMenuSpecialCup
+  type: texture
+  ctype: u16
+  width: 65
+  height: 40
+  offset: 0x9600
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureGameSelect:
+  symbol: gTextureGameSelect
+  type: texture
+  ctype: u16
+  width: 200
+  height: 32
+  offset: 0x9A00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureMenu1PGame:
+  symbol: gTextureMenu1PGame
+  type: texture
+  ctype: u16
+  width: 64
+  height: 54
+  offset: 0xA600
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu2PGame:
+  symbol: gTextureMenu2PGame
+  type: texture
+  ctype: u16
+  width: 64
+  height: 54
+  offset: 0xAB00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu3PGame:
+  symbol: gTextureMenu3PGame
+  type: texture
+  ctype: u16
+  width: 64
+  height: 54
+  offset: 0xB200
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu4PGame:
+  symbol: gTextureMenu4PGame
+  type: texture
+  ctype: u16
+  width: 64
+  height: 54
+  offset: 0xBC00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuModeBattle:
+  symbol: gTextureMenuModeBattle
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xC700
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuModeTimeTrials:
+  symbol: gTextureMenuModeTimeTrials
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xCA00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuModeMarioGP:
+  symbol: gTextureMenuModeMarioGP
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xCE00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuModeVS:
+  symbol: gTextureMenuModeVS
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xD200
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuLOption:
+  symbol: gTextureMenuLOption
+  type: texture
+  ctype: u16
+  width: 58
+  height: 19
+  offset: 0xD500
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuRData:
+  symbol: gTextureMenuRData
+  type: texture
+  ctype: u16
+  width: 58
+  height: 19
+  offset: 0xD800
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu50cc:
+  symbol: gTextureMenu50cc
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xDB00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu100cc:
+  symbol: gTextureMenu100cc
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xDD00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenu150cc:
+  symbol: gTextureMenu150cc
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xDF00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuExtra:
+  symbol: gTextureMenuExtra
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xE100
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuWithoutItem:
+  symbol: gTextureMenuWithoutItem
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xE300
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuWithItem:
+  symbol: gTextureMenuWithItem
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xE600
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuBegin:
+  symbol: gTextureMenuBegin
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xE900
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuGhost:
+  symbol: gTextureMenuGhost
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xEB00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuData:
+  symbol: gTextureMenuData
+  type: texture
+  ctype: u16
+  width: 64
+  height: 18
+  offset: 0xED00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureMenuOK:
+  symbol: gTextureMenuOK
+  type: texture
+  ctype: u16
+  width: 31
+  height: 19
+  offset: 0xEF00
+  tkmk00: true
+  alpha: 0xBE
+  format: rgba16
+gTextureBackgroundBlueSky:
+  symbol: gTextureBackgroundBlueSky
+  type: texture
+  ctype: u16
+  width: 320
+  height: 240
+  offset: 0xF100
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureBackgroundSunset:
+  symbol: gTextureBackgroundSunset
+  type: texture
+  ctype: u16
+  width: 320
+  height: 240
+  offset: 0x1BF00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureGreenGoldStripe:
+  symbol: gTextureGreenGoldStripe
+  type: texture
+  ctype: u16
+  width: 256
+  height: 29
+  offset: 0x25300
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureGoldStripe:
+  symbol: gTextureGoldStripe
+  type: texture
+  ctype: u16
+  width: 256
+  height: 15
+  offset: 0x25F00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureWhiteStripe:
+  symbol: gTextureWhiteStripe
+  type: texture
+  ctype: u16
+  width: 256
+  height: 10
+  offset: 0x26600
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTexturePinkBar:
+  symbol: gTexturePinkBar
+  type: texture
+  ctype: u16
+  width: 90
+  height: 16
+  offset: 0x26700
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16
+gTextureGoldBar:
+  symbol: gTextureGoldBar
+  type: texture
+  ctype: u16
+  width: 256
+  height: 40
+  offset: 0x26C00
+  tkmk00: true
+  alpha: 0x1
+  format: rgba16

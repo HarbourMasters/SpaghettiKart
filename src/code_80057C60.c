@@ -31,7 +31,7 @@
 #include "objects.h"
 #include "bomb_kart.h"
 #include "menus.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/some_data.h"

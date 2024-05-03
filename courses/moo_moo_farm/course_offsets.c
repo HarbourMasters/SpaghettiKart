@@ -2,35 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTextureWoodDoor0[];
-extern u8 gTextureGrass2[];
-extern u8 gTexture64AF50[];
-extern u8 gTexture64B090[];
-extern u8 gTexture64B54C[];
-extern u8 gTexture64B3F8[];
-extern u8 gTextureSignNintendo0[];
-extern u8 gTextureSignNintendo1[];
-extern u8 gTexture6684F8[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignMarioStar0[];
-extern u8 gTextureSignMarioStar1[];
-extern u8 gTexture674D58[];
-extern u8 gTexture675064[];
-extern u8 gTexture675220[];
-extern u8 gTexture6775EC[];
-extern u8 gTexture683314[];
-extern u8 gTexture68CDA0[];
-extern u8 gTexture6442D4[];
-extern u8 gTexture64440C[];
-extern u8 gTexture6446AC[];
-extern u8 gTextureMooMooFarmSignLeft[];
-extern u8 gTextureMooMooFarmSignRight[];
-extern u8 gTexture64ACAC[];
-extern u8 gTexture66D698[];
-extern u8 gTexture66EBF0[];
-extern u8 gTextureWheelSteamEngineReal[];
-
 const course_texture moo_moo_farm_textures[] = {
     {gTextureWoodDoor0,            0x0294, 0x1000, 0x0},
     {gTextureGrass2,               0x0415, 0x0800, 0x0},

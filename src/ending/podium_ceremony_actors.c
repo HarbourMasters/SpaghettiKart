@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <mk64.h>
 #include <debug.h>
+#include <stubs.h>
 #include <common_structs.h>
 #include "../camera.h"
 #include "main.h"

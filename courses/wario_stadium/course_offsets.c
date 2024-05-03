@@ -2,27 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture67F15C[];
-extern u8 gTexture67F450[];
-extern u8 gTextureSignWarioFace[];
-extern u8 gTexture670AC8[];
-extern u8 gTextureCheckerboardBlackWhite[];
-extern u8 gTexture64C11C[];
-extern u8 gTexture64C7B4[];
-extern u8 gTexture668228[];
-extern u8 gTexture668358[];
-extern u8 gTexture66AEB8[];
-extern u8 gTexture677A40[];
-extern u8 gTexture67E428[];
-extern u8 gTexture643A34[];
-extern u8 gTexture66EBF0[];
-extern u8 gTexture68272C[];
-extern u8 gTexture682928[];
-extern u8 gTexture682B24[];
-extern u8 gTexture682D20[];
-extern u8 gTexture682F1C[];
-extern u8 gTexture683118[];
-
 const course_texture wario_stadium_textures[] = {
     {gTexture67F15C,                 0x02F1, 0x0800, 0x0},
     {gTexture67F450,                 0x0194, 0x0800, 0x0},

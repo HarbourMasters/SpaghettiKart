@@ -3,6 +3,7 @@
 #include <memory.h>
 #include <defines.h>
 #include <mk64.h>
+#include <stubs.h>
 
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
@@ -20,7 +21,7 @@
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "menus.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 #include "render_objects.h"
 #include "code_80091750.h"
 #include "src/data/some_data.h"

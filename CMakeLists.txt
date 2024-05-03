@@ -94,6 +94,16 @@ include_directories(
 file(GLOB ALL_FILES_ROOT RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/*.c"
     "src/*.h"
+    "src/os/guLookAtF.c"
+    "src/os/guPerspectiveF.c"
+    "src/os/guMtxF2L.c"
+    "src/os/guRotateF.c"
+    "src/os/guOrthoF.c"
+    "src/os/guScaleF.c"
+    "src/os/guTranslateF.c"
+    "src/os/guMtxCatF.c"
+    "src/os/guMtxCatL.c"
+    "src/os/guNormalize.c"
 )
 
 file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -112,7 +122,9 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
-    "assets/code"
+    "assets/code/*.c"
+    "courses/*.c"
+    "courses/*.h"
 )
 
 list(APPEND ALL_FILES ${ALL_FILES_ROOT})

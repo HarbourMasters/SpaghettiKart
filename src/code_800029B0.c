@@ -23,7 +23,7 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "menus.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;

@@ -1,12 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 
-extern u8 gTextureStarOutline[];
-extern u8 gTexture67A1B8[];
-extern u8 gTextureCheckerboardBlackWhite[];
-extern u8 gTexture662A34[];
-extern u8 gTextureRainbow[];
-
 const course_texture rainbow_road_textures[] = {
     {gTextureStarOutline,            0x037A, 0x0800, 0x0},
     {gTexture67A1B8,                 0x01B7, 0x0800, 0x0},

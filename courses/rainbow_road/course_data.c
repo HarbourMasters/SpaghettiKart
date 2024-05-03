@@ -7,7 +7,7 @@
 #include <course.h>
 #include <code_80004740.h>
 
-#include "course_displaylists.inc.h"
+#include "course_displaylists.h"
 
 Gfx d_course_rainbow_road_dl_0[] =
 {

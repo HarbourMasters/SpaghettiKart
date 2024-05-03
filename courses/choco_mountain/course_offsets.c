@@ -2,27 +2,6 @@
 #include "course_offsets.h"
 #include "course_data.h"
 
-extern u8 gTexture64619C[];
-extern u8 gTexture64647C[];
-extern u8 gTexture647F4C[];
-extern u8 gTexture64FBF4[];
-extern u8 gTexture653DB0[];
-extern u8 gTexture652B54[];
-extern u8 gTexture65315C[];
-extern u8 gTexture6684F8[];
-extern u8 gTextureSignLuigis0[];
-extern u8 gTextureSignLuigis1[];
-extern u8 gTextureSignNintendoRed0[];
-extern u8 gTextureSignNintendoRed1[];
-extern u8 gTexture6774D8[];
-extern u8 gTextureSignFallingRocks[];
-extern u8 gTextureSignBackside[];
-extern u8 gTexture679C04[];
-extern u8 gTexture67B864[];
-extern u8 gTexture67DC20[];
-extern u8 gTextureSignYoshi[];
-extern u8 gTextureCheckerboardBlueGray[];
-
 const course_texture choco_mountain_textures[] = {
     {gTexture64619C,               0x0124, 0x0800, 0x0},
     {gTexture64647C,               0x0829, 0x1000, 0x0},

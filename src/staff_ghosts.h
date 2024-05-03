@@ -24,7 +24,6 @@ void staff_ghosts_loop(void);
 // mi0decode
 
 extern s32 mio0encode(s32 input, s32, s32);
-extern s32 func_80040174(void *, s32, s32);
 
 extern s32 D_80162DC8;
 extern s32 D_80162DCC;

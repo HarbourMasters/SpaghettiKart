@@ -1,0 +1,1533 @@
+:config:
+  segments:
+    - [0x0A, 0x729A30]
+  header:
+    code:
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+    - '#include <assets/common_data.h>'
+    header:
+    - '#include <libultraship.h>'
+    - '#include <common_structs.h>'
+mario_face_00:
+  symbol: gTextureMarioFace00
+  type: texture
+  offset: 0x0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_01:
+  symbol: gTextureMarioFace01
+  mio0: true
+  type: texture
+  offset: 0xCD4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_02:
+  symbol: gTextureMarioFace02
+  mio0: true
+  type: texture
+  offset: 0x1994
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_03:
+  symbol: gTextureMarioFace03
+  mio0: true
+  type: texture
+  offset: 0x2650
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_04:
+  symbol: gTextureMarioFace04
+  mio0: true
+  type: texture
+  offset: 0x32BC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_05:
+  symbol: gTextureMarioFace05
+  mio0: true
+  type: texture
+  offset: 0x3F08
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_06:
+  symbol: gTextureMarioFace06
+  mio0: true
+  type: texture
+  offset: 0x4B48
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_07:
+  symbol: gTextureMarioFace07
+  mio0: true
+  type: texture
+  offset: 0x585C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_08:
+  symbol: gTextureMarioFace08
+  mio0: true
+  type: texture
+  offset: 0x6568
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_09:
+  symbol: gTextureMarioFace09
+  mio0: true
+  type: texture
+  offset: 0x726C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_10:
+  symbol: gTextureMarioFace10
+  mio0: true
+  type: texture
+  offset: 0x7F4C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_11:
+  symbol: gTextureMarioFace11
+  mio0: true
+  type: texture
+  offset: 0x8C48
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_12:
+  symbol: gTextureMarioFace12
+  mio0: true
+  type: texture
+  offset: 0x9944
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_13:
+  symbol: gTextureMarioFace13
+  mio0: true
+  type: texture
+  offset: 0xA688
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_14:
+  symbol: gTextureMarioFace14
+  mio0: true
+  type: texture
+  offset: 0xB3DC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_15:
+  symbol: gTextureMarioFace15
+  mio0: true
+  type: texture
+  offset: 0xC180
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+mario_face_16:
+  symbol: gTextureMarioFace16
+  mio0: true
+  type: texture
+  offset: 0xCF20
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_00:
+  symbol: gTextureLuigiFace00
+  mio0: true
+  type: texture
+  offset: 0xDA64
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_01:
+  symbol: gTextureLuigiFace01
+  mio0: true
+  type: texture
+  offset: 0xE680
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_02:
+  symbol: gTextureLuigiFace02
+  mio0: true
+  type: texture
+  offset: 0xF2A0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_03:
+  symbol: gTextureLuigiFace03
+  mio0: true
+  type: texture
+  offset: 0xFEC0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_04:
+  symbol: gTextureLuigiFace04
+  mio0: true
+  type: texture
+  offset: 0x10AA8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_05:
+  symbol: gTextureLuigiFace05
+  mio0: true
+  type: texture
+  offset: 0x11690
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_06:
+  symbol: gTextureLuigiFace06
+  mio0: true
+  type: texture
+  offset: 0x1225C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_07:
+  symbol: gTextureLuigiFace07
+  mio0: true
+  type: texture
+  offset: 0x12E84
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_08:
+  symbol: gTextureLuigiFace08
+  mio0: true
+  type: texture
+  offset: 0x13AB8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_09:
+  symbol: gTextureLuigiFace09
+  mio0: true
+  type: texture
+  offset: 0x14744
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_10:
+  symbol: gTextureLuigiFace10
+  mio0: true
+  type: texture
+  offset: 0x153C4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_11:
+  symbol: gTextureLuigiFace11
+  mio0: true
+  type: texture
+  offset: 0x16054
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_12:
+  symbol: gTextureLuigiFace12
+  mio0: true
+  type: texture
+  offset: 0x16D14
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_13:
+  symbol: gTextureLuigiFace13
+  mio0: true
+  type: texture
+  offset: 0x17A44
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_14:
+  symbol: gTextureLuigiFace14
+  mio0: true
+  type: texture
+  offset: 0x18770
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_15:
+  symbol: gTextureLuigiFace15
+  mio0: true
+  type: texture
+  offset: 0x194B8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+luigi_face_16:
+  symbol: gTextureLuigiFace16
+  mio0: true
+  type: texture
+  offset: 0x1A20C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_00:
+  symbol: gTexturePeachFace00
+  mio0: true
+  type: texture
+  offset: 0x1AC44
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_01:
+  symbol: gTexturePeachFace01
+  mio0: true
+  type: texture
+  offset: 0x1BAFC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_02:
+  symbol: gTexturePeachFace02
+  mio0: true
+  type: texture
+  offset: 0x1C9A8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_03:
+  symbol: gTexturePeachFace03
+  mio0: true
+  type: texture
+  offset: 0x1D864
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_04:
+  symbol: gTexturePeachFace04
+  mio0: true
+  type: texture
+  offset: 0x1E71C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_05:
+  symbol: gTexturePeachFace05
+  mio0: true
+  type: texture
+  offset: 0x1F5A4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_06:
+  symbol: gTexturePeachFace06
+  mio0: true
+  type: texture
+  offset: 0x20444
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_07:
+  symbol: gTexturePeachFace07
+  mio0: true
+  type: texture
+  offset: 0x2130C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_08:
+  symbol: gTexturePeachFace08
+  mio0: true
+  type: texture
+  offset: 0x221FC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_09:
+  symbol: gTexturePeachFace09
+  mio0: true
+  type: texture
+  offset: 0x2310C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_10:
+  symbol: gTexturePeachFace10
+  mio0: true
+  type: texture
+  offset: 0x240C0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_11:
+  symbol: gTexturePeachFace11
+  mio0: true
+  type: texture
+  offset: 0x250A4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_12:
+  symbol: gTexturePeachFace12
+  mio0: true
+  type: texture
+  offset: 0x260F0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_13:
+  symbol: gTexturePeachFace13
+  mio0: true
+  type: texture
+  offset: 0x27128
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_14:
+  symbol: gTexturePeachFace14
+  mio0: true
+  type: texture
+  offset: 0x2810C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_15:
+  symbol: gTexturePeachFace15
+  mio0: true
+  type: texture
+  offset: 0x290A0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+peach_face_16:
+  symbol: gTexturePeachFace16
+  mio0: true
+  type: texture
+  offset: 0x2A028
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_00:
+  symbol: gTextureToadFace00
+  mio0: true
+  type: texture
+  offset: 0x2AED0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_01:
+  symbol: gTextureToadFace01
+  mio0: true
+  type: texture
+  offset: 0x2B88C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_02:
+  symbol: gTextureToadFace02
+  mio0: true
+  type: texture
+  offset: 0x2C240
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_03:
+  symbol: gTextureToadFace03
+  mio0: true
+  type: texture
+  offset: 0x2CBFC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_04:
+  symbol: gTextureToadFace04
+  mio0: true
+  type: texture
+  offset: 0x2D5B4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_05:
+  symbol: gTextureToadFace05
+  mio0: true
+  type: texture
+  offset: 0x2DF70
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_06:
+  symbol: gTextureToadFace06
+  mio0: true
+  type: texture
+  offset: 0x2E910
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_07:
+  symbol: gTextureToadFace07
+  mio0: true
+  type: texture
+  offset: 0x2F2A8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_08:
+  symbol: gTextureToadFace08
+  mio0: true
+  type: texture
+  offset: 0x2FC74
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_09:
+  symbol: gTextureToadFace09
+  mio0: true
+  type: texture
+  offset: 0x30628
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_10:
+  symbol: gTextureToadFace10
+  mio0: true
+  type: texture
+  offset: 0x31010
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_11:
+  symbol: gTextureToadFace11
+  mio0: true
+  type: texture
+  offset: 0x31A24
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_12:
+  symbol: gTextureToadFace12
+  mio0: true
+  type: texture
+  offset: 0x3247C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_13:
+  symbol: gTextureToadFace13
+  mio0: true
+  type: texture
+  offset: 0x32EDC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_14:
+  symbol: gTextureToadFace14
+  mio0: true
+  type: texture
+  offset: 0x3395C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_15:
+  symbol: gTextureToadFace15
+  mio0: true
+  type: texture
+  offset: 0x343D0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+toad_face_16:
+  symbol: gTextureToadFace16
+  mio0: true
+  type: texture
+  offset: 0x34E30
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_00:
+  symbol: gTextureYoshiFace00
+  mio0: true
+  type: texture
+  offset: 0x35794
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_01:
+  symbol: gTextureYoshiFace01
+  mio0: true
+  type: texture
+  offset: 0x36280
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_02:
+  symbol: gTextureYoshiFace02
+  mio0: true
+  type: texture
+  offset: 0x36D64
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_03:
+  symbol: gTextureYoshiFace03
+  mio0: true
+  type: texture
+  offset: 0x37844
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_04:
+  symbol: gTextureYoshiFace04
+  mio0: true
+  type: texture
+  offset: 0x382F8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_05:
+  symbol: gTextureYoshiFace05
+  mio0: true
+  type: texture
+  offset: 0x38D68
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_06:
+  symbol: gTextureYoshiFace06
+  mio0: true
+  type: texture
+  offset: 0x397B0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_07:
+  symbol: gTextureYoshiFace07
+  mio0: true
+  type: texture
+  offset: 0x3A2D4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_08:
+  symbol: gTextureYoshiFace08
+  mio0: true
+  type: texture
+  offset: 0x3AD00
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_09:
+  symbol: gTextureYoshiFace09
+  mio0: true
+  type: texture
+  offset: 0x3B6BC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_10:
+  symbol: gTextureYoshiFace10
+  mio0: true
+  type: texture
+  offset: 0x3C068
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_11:
+  symbol: gTextureYoshiFace11
+  mio0: true
+  type: texture
+  offset: 0x3CA28
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_12:
+  symbol: gTextureYoshiFace12
+  mio0: true
+  type: texture
+  offset: 0x3D438
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_13:
+  symbol: gTextureYoshiFace13
+  mio0: true
+  type: texture
+  offset: 0x3DE94
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_14:
+  symbol: gTextureYoshiFace14
+  mio0: true
+  type: texture
+  offset: 0x3E974
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_15:
+  symbol: gTextureYoshiFace15
+  mio0: true
+  type: texture
+  offset: 0x3F47C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+yoshi_face_16:
+  symbol: gTextureYoshiFace16
+  mio0: true
+  type: texture
+  offset: 0x3FF94
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_00:
+  symbol: gTextureDkFace00
+  mio0: true
+  type: texture
+  offset: 0x40ABC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_01:
+  symbol: gTextureDkFace01
+  mio0: true
+  type: texture
+  offset: 0x418A8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_02:
+  symbol: gTextureDkFace02
+  mio0: true
+  type: texture
+  offset: 0x426B0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_03:
+  symbol: gTextureDkFace03
+  mio0: true
+  type: texture
+  offset: 0x43490
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_04:
+  symbol: gTextureDkFace04
+  mio0: true
+  type: texture
+  offset: 0x44240
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_05:
+  symbol: gTextureDkFace05
+  mio0: true
+  type: texture
+  offset: 0x44FE8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_06:
+  symbol: gTextureDkFace06
+  mio0: true
+  type: texture
+  offset: 0x45DCC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_07:
+  symbol: gTextureDkFace07
+  mio0: true
+  type: texture
+  offset: 0x46BF8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_08:
+  symbol: gTextureDkFace08
+  mio0: true
+  type: texture
+  offset: 0x47A8C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_09:
+  symbol: gTextureDkFace09
+  mio0: true
+  type: texture
+  offset: 0x48968
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_10:
+  symbol: gTextureDkFace10
+  mio0: true
+  type: texture
+  offset: 0x498B0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_11:
+  symbol: gTextureDkFace11
+  mio0: true
+  type: texture
+  offset: 0x4A7E8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_12:
+  symbol: gTextureDkFace12
+  mio0: true
+  type: texture
+  offset: 0x4B76C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_13:
+  symbol: gTextureDkFace13
+  mio0: true
+  type: texture
+  offset: 0x4C770
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_14:
+  symbol: gTextureDkFace14
+  mio0: true
+  type: texture
+  offset: 0x4D730
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_15:
+  symbol: gTextureDkFace15
+  mio0: true
+  type: texture
+  offset: 0x4E67C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+donkeykong_face_16:
+  symbol: gTextureDkFace16
+  mio0: true
+  type: texture
+  offset: 0x4F57C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_00:
+  symbol: gTextureWarioFace00
+  mio0: true
+  type: texture
+  offset: 0x504D0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_01:
+  symbol: gTextureWarioFace01
+  mio0: true
+  type: texture
+  offset: 0x51630
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_02:
+  symbol: gTextureWarioFace02
+  mio0: true
+  type: texture
+  offset: 0x52774
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_03:
+  symbol: gTextureWarioFace03
+  mio0: true
+  type: texture
+  offset: 0x538C8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_04:
+  symbol: gTextureWarioFace04
+  mio0: true
+  type: texture
+  offset: 0x54A30
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_05:
+  symbol: gTextureWarioFace05
+  mio0: true
+  type: texture
+  offset: 0x55B84
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_06:
+  symbol: gTextureWarioFace06
+  mio0: true
+  type: texture
+  offset: 0x56CE0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_07:
+  symbol: gTextureWarioFace07
+  mio0: true
+  type: texture
+  offset: 0x57E54
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_08:
+  symbol: gTextureWarioFace08
+  mio0: true
+  type: texture
+  offset: 0x5902C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_09:
+  symbol: gTextureWarioFace09
+  mio0: true
+  type: texture
+  offset: 0x5A254
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_10:
+  symbol: gTextureWarioFace10
+  mio0: true
+  type: texture
+  offset: 0x5B4C0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_11:
+  symbol: gTextureWarioFace11
+  mio0: true
+  type: texture
+  offset: 0x5C7A0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_12:
+  symbol: gTextureWarioFace12
+  mio0: true
+  type: texture
+  offset: 0x5DAA8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_13:
+  symbol: gTextureWarioFace13
+  mio0: true
+  type: texture
+  offset: 0x5ED8C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_14:
+  symbol: gTextureWarioFace14
+  mio0: true
+  type: texture
+  offset: 0x600B0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_15:
+  symbol: gTextureWarioFace15
+  mio0: true
+  type: texture
+  offset: 0x6139C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+wario_face_16:
+  symbol: gTextureWarioFace16
+  mio0: true
+  type: texture
+  offset: 0x62668
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_00:
+  symbol: gTextureBowserFace00
+  mio0: true
+  type: texture
+  offset: 0x637E0
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_01:
+  symbol: gTextureBowserFace01
+  mio0: true
+  type: texture
+  offset: 0x64AC8
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_02:
+  symbol: gTextureBowserFace02
+  mio0: true
+  type: texture
+  offset: 0x65D7C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_03:
+  symbol: gTextureBowserFace03
+  mio0: true
+  type: texture
+  offset: 0x67044
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_04:
+  symbol: gTextureBowserFace04
+  mio0: true
+  type: texture
+  offset: 0x68310
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_05:
+  symbol: gTextureBowserFace05
+  mio0: true
+  type: texture
+  offset: 0x695B4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_06:
+  symbol: gTextureBowserFace06
+  mio0: true
+  type: texture
+  offset: 0x6A840
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_07:
+  symbol: gTextureBowserFace07
+  mio0: true
+  type: texture
+  offset: 0x6BB1C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_08:
+  symbol: gTextureBowserFace08
+  mio0: true
+  type: texture
+  offset: 0x6CE04
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_09:
+  symbol: gTextureBowserFace09
+  mio0: true
+  type: texture
+  offset: 0x6E0F4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_10:
+  symbol: gTextureBowserFace10
+  mio0: true
+  type: texture
+  offset: 0x6F410
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_11:
+  symbol: gTextureBowserFace11
+  mio0: true
+  type: texture
+  offset: 0x706DC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_12:
+  symbol: gTextureBowserFace12
+  mio0: true
+  type: texture
+  offset: 0x71A18
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_13:
+  symbol: gTextureBowserFace13
+  mio0: true
+  type: texture
+  offset: 0x72DBC
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_14:
+  symbol: gTextureBowserFace14
+  mio0: true
+  type: texture
+  offset: 0x74138
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_15:
+  symbol: gTextureBowserFace15
+  mio0: true
+  type: texture
+  offset: 0x7547C
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+bowser_face_16:
+  symbol: gTextureBowserFace16
+  mio0: true
+  type: texture
+  offset: 0x767C4
+  ctype: u16
+  width: 64
+  height: 64
+  format: RGBA16
+gTextureCoursePreviewMarioRaceway:
+  symbol: gTextureCoursePreviewMarioRaceway
+  mio0: true
+  type: texture
+  offset: 0x779E8
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewChocoMountain:
+  symbol: gTextureCoursePreviewChocoMountain
+  mio0: true
+  type: texture
+  offset: 0x7AB40
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewBowsersCastle:
+  symbol: gTextureCoursePreviewBowsersCastle
+  mio0: true
+  type: texture
+  offset: 0x7D564
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewBansheeBoardwalk:
+  symbol: gTextureCoursePreviewBansheeBoardwalk
+  mio0: true
+  type: texture
+  offset: 0x80644
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewYoshiValley:
+  symbol: gTextureCoursePreviewYoshiValley
+  mio0: true
+  type: texture
+  offset: 0x82CF0
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewFrappeSnowland:
+  symbol: gTextureCoursePreviewFrappeSnowland
+  mio0: true
+  type: texture
+  offset: 0x86730
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewKoopaTroopaBeach:
+  symbol: gTextureCoursePreviewKoopaTroopaBeach
+  mio0: true
+  type: texture
+  offset: 0x88B38
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewRoyalRaceway:
+  symbol: gTextureCoursePreviewRoyalRaceway
+  mio0: true
+  type: texture
+  offset: 0x8AE5C
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewLuigiRaceway:
+  symbol: gTextureCoursePreviewLuigiRaceway
+  mio0: true
+  type: texture
+  offset: 0x8D67C
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewMooMooFarm:
+  symbol: gTextureCoursePreviewMooMooFarm
+  mio0: true
+  type: texture
+  offset: 0x903F0
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewToadsTurnpike:
+  symbol: gTextureCoursePreviewToadsTurnpike
+  mio0: true
+  type: texture
+  offset: 0x929B8
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewKalimariDesert:
+  symbol: gTextureCoursePreviewKalimariDesert
+  mio0: true
+  type: texture
+  offset: 0x95354
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewSherbetLand:
+  symbol: gTextureCoursePreviewSherbetLand
+  mio0: true
+  type: texture
+  offset: 0x97B60
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewRainbowRoad:
+  symbol: gTextureCoursePreviewRainbowRoad
+  mio0: true
+  type: texture
+  offset: 0x9AB70
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewWarioStadium:
+  symbol: gTextureCoursePreviewWarioStadium
+  mio0: true
+  type: texture
+  offset: 0x9D394
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewBlockFort:
+  symbol: gTextureCoursePreviewBlockFort
+  mio0: true
+  type: texture
+  offset: 0xA0668
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewSkyscraper:
+  symbol: gTextureCoursePreviewSkyscraper
+  mio0: true
+  type: texture
+  offset: 0xA2B90
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewDoubleDeck:
+  symbol: gTextureCoursePreviewDoubleDeck
+  mio0: true
+  type: texture
+  offset: 0xA5280
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewDksJungleParkway:
+  symbol: gTextureCoursePreviewDksJungleParkway
+  mio0: true
+  type: texture
+  offset: 0xA7B78
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+gTextureCoursePreviewBigDonut:
+  symbol: gTextureCoursePreviewBigDonut
+  mio0: true
+  type: texture
+  offset: 0xABA5C
+  ctype: u16
+  width: 128
+  height: 78
+  format: RGBA16
+trophy_gold:
+  symbol: gTextureTrophyGold
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xAE9B8
+  mio0: true
+  format: rgba16
+trophy_silver:
+  symbol: gTextureTrophySilver
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xAEFEC
+  mio0: true
+  format: rgba16
+trophy_bronze:
+  symbol: gTextureTrophyBronze
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xAF614
+  mio0: true
+  format: rgba16
+cup_gold:
+  symbol: gTextureCupGold
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xAFC00
+  mio0: true
+  format: rgba16
+cup_silver:
+  symbol: gTextureCupSilver
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xB058C
+  mio0: true
+  format: rgba16
+cup_bronze:
+  symbol: gTextureCupBronze
+  type: texture
+  ctype: u16
+  width: 45
+  height: 45
+  offset: 0xB0F10
+  mio0: true
+  format: rgba16
+push_start_button:
+  symbol: gTexturePushStartButton
+  type: texture
+  ctype: u16
+  width: 159
+  height: 16
+  offset: 0xB17B4
+  format: rgba16
+copyright_1996:
+  symbol: gTextureCopyright1996
+  type: texture
+  ctype: u16
+  width: 124
+  height: 17
+  offset: 0xB2B94
+  format: rgba16
+p1_border_blue:
+  symbol: gTextureP1BorderBlue
+  type: texture
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0xB3C0C
+  format: rgba16
+p2_border_red:
+  symbol: gTextureP2BorderRed
+  type: texture
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0xB5C0C
+  format: RGBA16
+p3_border_orange:
+  symbol: gTextureP3BorderOrange
+  type: texture
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0xB7C0C
+  format: rgba16
+p4_border_green:
+  symbol: gTextureP4BorderGreen
+  type: texture
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0xB9C0C
+  format: rgba16
+small_green_triangle:
+  symbol: gTextureSmallGreenTriangle
+  type: texture
+  ctype: u16
+  width: 12
+  height: 7
+  offset: 0xBBC0C
+  format: rgba16
+texture_7E56E4:
+  symbol: gTexture7E56E4
+  type: texture
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0xBBCB4
+  mio0: true
+  format: ia16

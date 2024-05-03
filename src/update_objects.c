@@ -32,7 +32,7 @@
 #include <assets/ceremony_data.h>
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
-#include "data/other_textures.h"
+#include <assets/other_textures.h>
 #include "data/some_data.h"
 #include "memory.h"
 

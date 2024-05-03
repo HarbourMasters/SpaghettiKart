@@ -3,6 +3,7 @@
 
 #include <libultraship.h>
 #include <macros.h>
+#include <common_structs.h>
 
 // dlRomStart, vertexRomStart, & vertexStart, are u8* because mio0 compressed.
 struct CourseTable {
