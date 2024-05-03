@@ -4,7 +4,9 @@
 #include "Engine.h"
 
 extern "C" {
-
+#include "main.h"
+#include "audio/load.h"
+#include "audio/external.h"
 }
 
 extern "C"
@@ -32,10 +34,9 @@ extern "C"
 int main(int argc, char *argv[]) {
 #endif
     GameEngine::Create();
-    // Main_SetVIMode();
-    // Lib_FillScreen(1);
-    // Main_Initialize();
-    // Main_ThreadEntry(NULL);
+    audio_init();
+    sound_init();
+    thread5_game_loop();
     GameEngine::Instance->ProcessFrame(push_frame);
     GameEngine::Instance->Destroy();
     return 0;
