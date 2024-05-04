@@ -1,0 +1,18 @@
+:config:
+  vram:
+    addr: 0x800E52D0
+    offset: 0xE5ED0
+  header:
+    code:
+      - '#include <assets/some_data.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <common_structs.h>'
+gTLUTOnomatopoeia:
+  symbol: gTLUTOnomatopoeia
+  type: texture
+  offset: 0x800E52D0
+  ctype: u16
+  width: 16
+  height: 16
+  format: rgba16

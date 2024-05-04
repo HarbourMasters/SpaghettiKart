@@ -1,8 +1,0 @@
-{
-"gTextureReflectionMapBrass":  {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x4670", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureReflectionMapSilver": {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x4E70", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureReflectionMapGold":   {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x5670", "width": 32, "height": 32, "type": "rgba16"},
-"gTexturePodium1":             {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x6BD0", "width": 32, "height": 32, "type": "rgba16"},
-"gTexturePodium2":             {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x7760", "width": 32, "height": 32, "type": "rgba16"},
-"gTexturePodium3":             {"output_dir": "ending_ceremony", "rom_offset": "0x821D10", "block_offset": "0x8070", "width": 32, "height": 32, "type": "rgba16"}
-}

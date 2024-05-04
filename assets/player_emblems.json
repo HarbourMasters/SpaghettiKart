@@ -1,7 +1,0 @@
-{
-"common_tlut_player_emblem":      {"output_dir": "player_emblems", "rom_offset": "0x132B50", "block_offset": "0x17258", "width": 16, "height": 16, "type": "rgba16"},
-"common_texture_player_emblem_1p": {"output_dir": "player_emblems", "rom_offset": "0x132B50", "block_offset": "0x17458", "width": 64, "height": 32, "type": "ci8", "tlut": "common_tlut_player_emblem"},
-"common_texture_player_emblem_2p": {"output_dir": "player_emblems", "rom_offset": "0x132B50", "block_offset": "0x17C58", "width": 64, "height": 32, "type": "ci8", "tlut": "common_tlut_player_emblem"},
-"common_texture_player_emblem_3p": {"output_dir": "player_emblems", "rom_offset": "0x132B50", "block_offset": "0x18458", "width": 64, "height": 32, "type": "ci8", "tlut": "common_tlut_player_emblem"},
-"common_texture_player_emblem_4p": {"output_dir": "player_emblems", "rom_offset": "0x132B50", "block_offset": "0x18C58", "width": 64, "height": 32, "type": "ci8", "tlut": "common_tlut_player_emblem"}
-}

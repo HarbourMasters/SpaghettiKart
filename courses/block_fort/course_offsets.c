@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
+#include <assets/other_textures.h>
 
 const course_texture block_fort_textures[] = {
     {gTexture64286C,           0x010A, 0x0800, 0x0},

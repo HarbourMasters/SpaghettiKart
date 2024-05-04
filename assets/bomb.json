@@ -1,7 +1,0 @@
-{
-"common_tlut_bomb":     {"output_dir": "bomb", "rom_offset": "0x132B50", "block_offset": "0x2A858", "width": 16, "height": 16, "type": "rgba16"},
-"common_texture_bomb_1": {"output_dir": "bomb", "rom_offset": "0x132B50", "block_offset": "0x29858", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_bomb"},
-"common_texture_bomb_2": {"output_dir": "bomb", "rom_offset": "0x132B50", "block_offset": "0x29C58", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_bomb"},
-"common_texture_bomb_3": {"output_dir": "bomb", "rom_offset": "0x132B50", "block_offset": "0x2A058", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_bomb"},
-"common_texture_bomb_4": {"output_dir": "bomb", "rom_offset": "0x132B50", "block_offset": "0x2A458", "width": 32, "height": 32, "type": "ci8", "tlut": "common_tlut_bomb"}
-}

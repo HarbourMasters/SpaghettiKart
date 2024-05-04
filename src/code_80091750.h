@@ -436,7 +436,6 @@ extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
 extern s8 D_8018E7AC[];
-extern s8 D_8018E7B0;
 extern u32 D_8018E7B8[];
 extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];

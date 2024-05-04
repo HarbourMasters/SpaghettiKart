@@ -122,7 +122,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
-    # "assets/code/*.c"
+    "assets/code/*.c"
     "courses/*.c"
     "courses/*.h"
 )

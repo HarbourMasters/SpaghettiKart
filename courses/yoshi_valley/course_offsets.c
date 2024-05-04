@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
+#include <assets/other_textures.h>
 
 const course_texture yoshi_valley_textures[] = {
     {gTexture66EBF0,                 0x0146, 0x0800, 0x0},

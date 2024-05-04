@@ -26,7 +26,7 @@ const course_texture toads_turnpike_textures[] = {
     {0x00000000,               0x0000, 0x0000, 0x0},
 };
 
-const Gfx toads_turnpike_dl_0[] = {
+Gfx toads_turnpike_dl_0[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_19518),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -36,7 +36,7 @@ const Gfx toads_turnpike_dl_0[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_1[] = {
+Gfx toads_turnpike_dl_1[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_1A068),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -46,7 +46,7 @@ const Gfx toads_turnpike_dl_1[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_2[] = {
+Gfx toads_turnpike_dl_2[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
     gsSPDisplayList(d_course_toads_turnpike_dl_1A6C8),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -57,7 +57,7 @@ const Gfx toads_turnpike_dl_2[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_3[] = {
+Gfx toads_turnpike_dl_3[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_1BE48),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -67,7 +67,7 @@ const Gfx toads_turnpike_dl_3[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_4[] = {
+Gfx toads_turnpike_dl_4[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_1CAA8),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -77,7 +77,7 @@ const Gfx toads_turnpike_dl_4[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_5[] = {
+Gfx toads_turnpike_dl_5[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
     gsSPDisplayList(d_course_toads_turnpike_dl_1D018),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -88,7 +88,7 @@ const Gfx toads_turnpike_dl_5[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_6[] = {
+Gfx toads_turnpike_dl_6[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_1EB48),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -98,7 +98,7 @@ const Gfx toads_turnpike_dl_6[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_7[] = {
+Gfx toads_turnpike_dl_7[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_20008),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -108,7 +108,7 @@ const Gfx toads_turnpike_dl_7[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_8[] = {
+Gfx toads_turnpike_dl_8[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
     gsSPDisplayList(d_course_toads_turnpike_dl_205A8),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -119,7 +119,7 @@ const Gfx toads_turnpike_dl_8[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_9[] = {
+Gfx toads_turnpike_dl_9[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_21E28),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -129,7 +129,7 @@ const Gfx toads_turnpike_dl_9[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_10[] = {
+Gfx toads_turnpike_dl_10[] = {
     gsSPDisplayList(D_toads_turnpike_0D005398),
     gsSPDisplayList(d_course_toads_turnpike_dl_23078),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -139,7 +139,7 @@ const Gfx toads_turnpike_dl_10[] = {
     gsSPEndDisplayList(),
 };
 
-const Gfx toads_turnpike_dl_11[] = {
+Gfx toads_turnpike_dl_11[] = {
     gsSPDisplayList(D_toads_turnpike_0D0053C8),
     gsSPDisplayList(d_course_toads_turnpike_dl_23848),
     gsSPClearGeometryMode(G_CULL_BACK),

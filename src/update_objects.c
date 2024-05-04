@@ -3621,28 +3621,29 @@ u8 gen_random_item(s16 rank, s16 isCpu)
     if (gModeSelection == VERSUS) {
         switch (gPlayerCountSelection1) {
             case TWO_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) common_versus_2_player_item_curve);
+                //curve = segmented_to_virtual((void *) common_versus_2_player_item_curve);
                 break;
             case THREE_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) common_versus_3_player_item_curve);
+                //curve = segmented_to_virtual((void *) common_versus_3_player_item_curve);
                 break;
             case FOUR_PLAYERS_SELECTED:
-                curve = segmented_to_virtual((void *) common_versus_4_player_item_curve);
+                //curve = segmented_to_virtual((void *) common_versus_4_player_item_curve);
                 break;
         }
         randomItem = *((rank * 100) + curve + sRandomItemIndex);
 
     } else if (gModeSelection == BATTLE) {
-        curve = segmented_to_virtual((void *) common_battle_item_curve);
+        //curve = segmented_to_virtual((void *) common_battle_item_curve);
         randomItem = curve[sRandomItemIndex];
     } else { // GP Mode
         if (isCpu == 0) {
-            curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
+            //curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
         }
         else {
-            curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
+            //curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
         }
-        randomItem =  *((rank * 100) + curve + sRandomItemIndex);
+        // *((rank * 100) + curve + sRandomItemIndex)
+        randomItem = 1;
     }
     return randomItem;
 }

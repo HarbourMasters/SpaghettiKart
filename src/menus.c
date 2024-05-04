@@ -2004,7 +2004,7 @@ void func_800B44BC(void) {
 // Likely checks that the user is actually in the menus and not racing.
 bool func_800B4520(void) {
 
-    if ((D_8018E7B0 == 2) || (D_8018E7B0 == 3) || (D_8018E7B0 == 4) || (D_8018E7B0 == 7)) {
+    if ((D_8018E7AC[4] == 2) || (D_8018E7AC[4] == 3) || (D_8018E7AC[4] == 4) || (D_8018E7AC[4] == 7)) {
         return true;
     }
     return false;

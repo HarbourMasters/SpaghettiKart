@@ -37,7 +37,7 @@ s32 memoryPadding[2];
 void *get_next_available_memory_addr(uintptr_t size) {
     uintptr_t freeSpace = gNextFreeMemoryAddress;
     size = ALIGN16(size);
-    gNextFreeMemoryAddress += size;
+    gNextFreeMemoryAddress += malloc(freeSpace + size);
     return (void*) freeSpace;
 }
 

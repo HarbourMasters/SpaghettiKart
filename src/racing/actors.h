@@ -129,50 +129,7 @@ extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
 
-extern Gfx D_0D005338[];
-extern Gfx D_0D005368[];
-extern Gfx D_0D007B20[];
-
-extern Gfx toads_turnpike_dl_0[];
-extern Gfx toads_turnpike_dl_1[];
-extern Gfx toads_turnpike_dl_2[];
-extern Gfx toads_turnpike_dl_3[];
-extern Gfx toads_turnpike_dl_4[];
-extern Gfx toads_turnpike_dl_5[];
-extern Gfx toads_turnpike_dl_6[];
-extern Gfx toads_turnpike_dl_7[];
-extern Gfx toads_turnpike_dl_8[];
-extern Gfx toads_turnpike_dl_9[];
-extern Gfx toads_turnpike_dl_10[];
-extern Gfx toads_turnpike_dl_11[];
-
 extern s32 D_80162DF8;
-
-extern Gfx D_0D001750[];
-extern Gfx D_0D001780[];
-extern Gfx D_0D001798[];
-extern Gfx D_0D0017B0[];
-extern Gfx D_0D0017C8[];
-extern Gfx D_0D0017E0[];
-extern Gfx D_0D0017F8[];
-extern Gfx D_0D001810[];
-extern Gfx D_0D001828[];
-extern Gfx D_0D001B90[];
-extern Gfx D_0D001BD8[];
-extern Gfx D_0D001C20[];
-extern Gfx D_0D001C88[];
-extern Gfx D_0D002EE8[];
-extern Gfx common_model_fake_itembox[];
-extern Gfx itemBoxQuestionMarkModel[];
-extern Gfx D_0D003090[];
-extern Gfx D_0D0030F8[];
-extern Gfx D_0D003128[];
-extern Gfx D_0D003158[];
-extern Gfx D_0D003188[];
-extern Gfx D_0D0031B8[];
-extern Gfx D_0D0031E8[];
-extern Gfx common_model_banana[];
-extern Gfx common_model_flat_banana[];
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];

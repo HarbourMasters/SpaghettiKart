@@ -185,7 +185,7 @@ Vtx gBalloonVertexPlane2[] = {
 };
 
 u8 D_800E52D0[] = {
-    #include "assets/onomatopoeia/gTLUTOnomatopoeia.inc.c"
+    #include "assets/code/some_data/gTLUTOnomatopoeia.rgba16.inc.c"
 };
 
 u8 *gCourseOutlineTextures[] = {
