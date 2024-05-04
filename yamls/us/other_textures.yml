@@ -4710,7 +4710,7 @@ logo_mario_kart_64:
   symbol: gTextureLogoMarioKart64
   type: texture
   mio0: true
-  ctype: u16
+  ctype: u32
   width: 256
   height: 128
   offset: 0xD7510

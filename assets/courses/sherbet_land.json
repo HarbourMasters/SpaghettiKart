@@ -1,5 +1,0 @@
-{
-"gTextureSherbetLandIce": {"output_dir": "sherbet_land", "rom_offset": "0x86ECF0", "block_offset": "0x068E8", "width": 32, "height": 32, "type": "ia16"},
-"gTexturePenguinBeak":    {"output_dir": "sherbet_land", "rom_offset": "0x86ECF0", "block_offset": "0x072E8", "width": 32, "height": 32, "type": "rgba16"},
-"gTexturePenguinEye":     {"output_dir": "sherbet_land", "rom_offset": "0x86ECF0", "block_offset": "0x07AE8", "width": 32, "height": 32, "type": "rgba16"}
-}

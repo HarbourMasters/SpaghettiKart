@@ -1,6 +1,0 @@
-{
-"gTextureLuigiRacewaySignLeft":      {"output_dir": "luigi_raceway", "rom_offset": "0x84E8E0", "block_offset": "0x0C588", "width": 32, "height": 64, "type": "rgba16"},
-"gTextureLuigiRacewaySignRight":     {"output_dir": "luigi_raceway", "rom_offset": "0x84E8E0", "block_offset": "0x0D588", "width": 32, "height": 64, "type": "rgba16"},
-"gTextureLuigiRacewayBalloonBasket": {"output_dir": "luigi_raceway", "rom_offset": "0x84E8E0", "block_offset": "0x0E588", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureLuigiRacewayBalloonRope":   {"output_dir": "luigi_raceway", "rom_offset": "0x84E8E0", "block_offset": "0x0ED88", "width": 32, "height": 32, "type": "rgba16"}
-}

@@ -111,6 +111,8 @@ void clear_object_list() {
 
 u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
 {
+    baseAddress = devAddr;
+    return devAddr;
     // u8 **tempAddress;
     // u8 *address;
     // address = baseAddress + offset;

@@ -2555,11 +2555,12 @@ void func_80094C60(void) {
             add_8018D9E0_entry(0x000000D9, 0, 0, 0x0A);
             break;
         case START_MENU:
+        // todo: figure this out. 
             add_8018D9E0_entry(2, 0, 0, 4);
-            add_8018D9E0_entry(1, 0, 0, 0);
+            //add_8018D9E0_entry(1, 0, 0, 0);
             add_8018D9E0_entry(0x000000FB, 0, 0, 0);
             if (gControllerBits & 1) {
-                add_8018D9E0_entry(3, 0, 0, 2);
+                //add_8018D9E0_entry(3, 0, 0, 2);
             } else {
                 add_8018D9E0_entry(4, 0, 0, 2);
             }
@@ -3494,6 +3495,7 @@ Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
 }
 
 void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
+    vaddr = arg0;
     // OSIoMesg sp30;
     // OSMesg sp2C;
 
@@ -3534,6 +3536,8 @@ void *segmented_to_virtual_dupe_2(const void *addr) {
     return addr;
 }
 
+#include <assets/player_selection.h>
+
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NAZ12
 // Register allocation nonsense
@@ -3542,46 +3546,50 @@ void func_80099184(MkTexture *arg0) {
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
-    MkTexture *var_s1;
+    MkTexture *texture = arg0;
     UNUSED struct_8018E118_entry *thing;
-
-    var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    texture->textureData = gTextureCopyright1996;
+    //texture = segmented_to_virtual_dupe(arg0);
+    printf("TEXTURE DATA: 0x%llX\n", texture->textureData[36]);
+    while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0^0].textureData == (*var_s1).textureData) {
+            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
                 var_a1 = 1;
                 break;
             }
         }
         if (var_a1 == 0) {
-            if (var_s1->type == 3) {
-                if (var_s1->size != 0) {
-                    var_a1_2 = var_s1->size;
+            if (texture->type == 3) {
+                if (texture->size != 0) {
+                    var_a1_2 = texture->size;
                 } else {
                     var_a1_2 = 0x1000;
                 }
                 if (var_a1_2 % 8) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
-                dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
+                dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
                 mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
             } else {
-                dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+                dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
             }
 
+
             thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
+            thing->textureData = texture->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->offset = gD_8018E118TotalSize;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
+            gD_8018E118TotalSize += (texture->height * texture->width);
             gNumD_8018E118Entries += 1;
             gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
         }
-        var_s1++;
+        //texture++;
+        break;
     }
+    printf("DID IT FAIL HERE?!?!?!?\n");
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -3895,82 +3903,82 @@ void func_80099E60(MkTexture *arg0, s32 arg1, s32 arg2) {
 // Some fakematch nonsense, may or may not be necessary
 // Issue is with instruction ordering near the first `osPiStartDma` call
 void func_80099EC4(void) {
-    // s8 var_s4;
-    // s32 var_s0;
-    // UNUSED s32 stackPadding0;
-    // UNUSED s32 stackPadding1;
-    // OSIoMesg sp68;
-    // OSMesg sp64;
-    // s32 huh;
-    // u8 *test;
-    // MkTexture *temp_s2;
-    // struct_8018E0E8_entry *var_s1;
+    s8 var_s4;
+    s32 var_s0;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
+    OSIoMesg sp68;
+    OSMesg sp64;
+    s32 huh;
+    u8 *test;
+    MkTexture *temp_s2;
+    struct_8018E0E8_entry *var_s1;
 
-    // var_s4 = 0;
-    // var_s1 = D_8018E0E8;
-    // temp_s2 = var_s1->mk64Texture;
+    var_s4 = 0;
+    var_s1 = D_8018E0E8;
+    temp_s2 = var_s1->mk64Texture;
 
-    // if (temp_s2 == NULL) return;
+    if (temp_s2 == NULL) return;
 
-    // huh = temp_s2->size;
-    // if (huh != 0) {
-    //     var_s0 = huh;
-    // } else {
-    //     var_s0 = 0x1400;
-    // }
-    // if (var_s0 % 8) {
-    //     var_s0 = ((var_s0 / 8) * 8) + 8;
-    // }
-    // osInvalDCache(D_8018D9B4, var_s0);
-    // test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
-    // osPiStartDma(&sp68, 0, 0, (uintptr_t)test, D_8018D9B4, var_s0, &gDmaMesgQueue);
-    // if ((var_s0 && var_s0) && var_s0) {}
-    // // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
-    // osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-    // while (1) {
-    //     if ((var_s1 + 1)->mk64Texture == NULL) {
-    //         var_s4 += 1;
-    //     } else {
-    //         temp_s2 = (var_s1 + 1)->mk64Texture;
-    //         huh = (var_s1 + 1)->mk64Texture->size;
-    //         if (huh != 0) {
-    //             var_s0 = huh;
-    //         } else {
-    //             var_s0 = 0x1400;
-    //         }
-    //         if (var_s0 % 8) {
-    //             var_s0 = ((var_s0 / 8) * 8) + 8;
-    //         }
-    //         osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
-    //         osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
-    //     }
-    //     mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-    //     var_s1->mk64Texture = NULL;
-    //     var_s1++;
-    //     if (var_s4 != 0) break;
-    //     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-    //     if ((var_s1 + 1)->mk64Texture == NULL) {
-    //         var_s4 += 1;
-    //     } else {
-    //         temp_s2 = (var_s1 + 1)->mk64Texture;
-    //         huh = (var_s1 + 1)->mk64Texture->size;
-    //         if (huh != 0) {
-    //             var_s0 = huh;
-    //         } else {
-    //             var_s0 = 0x1400;
-    //         }
-    //         if (var_s0 % 8) {
-    //             var_s0 = ((var_s0 / 8) * 8) + 8;
-    //         }
-    //         osInvalDCache(D_8018D9B4, var_s0);
-    //         osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
-    //     }
-    //     mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-    //     var_s1->mk64Texture = NULL;
-    //     var_s1++;
-    //     if (var_s4 != 0) break;
-    //     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
-    // }
+    huh = temp_s2->size;
+    if (huh != 0) {
+        var_s0 = huh;
+    } else {
+        var_s0 = 0x1400;
+    }
+    if (var_s0 % 8) {
+        var_s0 = ((var_s0 / 8) * 8) + 8;
+    }
+    osInvalDCache(D_8018D9B4, var_s0);
+    //test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
+    //osPiStartDma(&sp68, 0, 0, (uintptr_t)test, D_8018D9B4, var_s0, &gDmaMesgQueue);
+    if ((var_s0 && var_s0) && var_s0) {}
+    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    while (1) {
+        if ((var_s1 + 1)->mk64Texture == NULL) {
+            var_s4 += 1;
+        } else {
+            temp_s2 = (var_s1 + 1)->mk64Texture;
+            huh = (var_s1 + 1)->mk64Texture->size;
+            if (huh != 0) {
+                var_s0 = huh;
+            } else {
+                var_s0 = 0x1400;
+            }
+            if (var_s0 % 8) {
+                var_s0 = ((var_s0 / 8) * 8) + 8;
+            }
+            osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
+        }
+        mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        var_s1->mk64Texture = NULL;
+        var_s1++;
+        if (var_s4 != 0) break;
+        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+        if ((var_s1 + 1)->mk64Texture == NULL) {
+            var_s4 += 1;
+        } else {
+            temp_s2 = (var_s1 + 1)->mk64Texture;
+            huh = (var_s1 + 1)->mk64Texture->size;
+            if (huh != 0) {
+                var_s0 = huh;
+            } else {
+                var_s0 = 0x1400;
+            }
+            if (var_s0 % 8) {
+                var_s0 = ((var_s0 / 8) * 8) + 8;
+            }
+            osInvalDCache(D_8018D9B4, var_s0);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+        }
+        mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        var_s1->mk64Texture = NULL;
+        var_s1++;
+        if (var_s4 != 0) break;
+        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")
@@ -5599,7 +5607,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     case 0x2:
         func_8006EE44();
         gD_8018E118TotalSize += 0x10000;
-        func_80099184(D_020045E8);
+        //func_80099184(D_020045E8);
         break;
     case 0x3:
         func_80099184(D_02004610);

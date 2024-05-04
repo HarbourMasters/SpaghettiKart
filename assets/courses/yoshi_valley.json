@@ -1,7 +1,0 @@
-{
-"gTextureYoshiValleyYoshiFlag": {"output_dir": "yoshi_valley", "rom_offset": "0x835BA0", "block_offset": "0x139A0", "width": 32, "height": 32, "type": "rgba16"},
-"gTLUTYoshiValleyHedgehog":     {"output_dir": "yoshi_valley", "rom_offset": "0x835BA0", "block_offset": "0x14908", "width": 16, "height": 16, "type": "rgba16"},
-"gTextureYoshiValleyHedgehog":  {"output_dir": "yoshi_valley", "rom_offset": "0x835BA0", "block_offset": "0x14B08", "width": 64, "height": 64, "type": "ci8", "tlut": "gTLUTYoshiValleyHedgehog"},
-"gTextureYoshiValleyEggSpot":   {"output_dir": "yoshi_valley", "rom_offset": "0x835BA0", "block_offset": "0x16570", "width": 32, "height": 32, "type": "rgba16"},
-"gTextureYoshiValleyEgg":       {"output_dir": "yoshi_valley", "rom_offset": "0x835BA0", "block_offset": "0x16FA8", "width": 64, "height": 32, "type": "rgba16"}
-}
