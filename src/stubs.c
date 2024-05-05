@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <libultraship/libultra.h>
+#include <string.h>
 #include <stubs.h>
 
 u32 osTvType = OS_TV_NTSC;
@@ -26,15 +27,15 @@ s32 osAiSetFrequency(u32 freq)
 }
 
 void mio0decode(u8* arg0, u8* arg1) {
-
+    arg1 = arg0;
 }
 
 s32 mio0encode(s32 input, s32 arg1, s32 arg2) {
     return 1;
 }
 
-void tkmk00decode(u8* arg0, u8* arg1, u8* arg2, s32 arg3) {
-
+void tkmk00decode(u8* src, u8* arg1, u8* dest, s32 n) {
+    memcpy(dest, src, 0x1000);
 }
 
 void osStartThread(OSThread* thread)

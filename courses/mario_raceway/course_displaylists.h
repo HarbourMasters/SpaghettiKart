@@ -1,3 +1,6 @@
+#ifndef MARIO_RACEWAY_DISPLAYLISTS_H
+#define MARIO_RACEWAY_DISPLAYLISTS_H
+
 #include <libultra/gbi.h>
 #include "macros.h"
 
@@ -176,3 +179,5 @@ extern Gfx d_course_mario_raceway_packed_dl_68C0[];
 extern Gfx d_course_mario_raceway_packed_dl_6928[2];
 
 #define d_course_mario_raceway_packed_end GET_PACKED_END(d_course_mario_raceway_packed_dl_6928)
+
+#endif // MARIO_RACEWAY_DISPLAYLISTS_H

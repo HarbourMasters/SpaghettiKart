@@ -112,18 +112,10 @@ void clear_object_list() {
 u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
 {
     baseAddress = devAddr;
-    return devAddr;
-    // u8 **tempAddress;
-    // u8 *address;
-    // address = baseAddress + offset;
-
-    // size = ALIGN16(size);
-    // osInvalDCache(address, (size));
-    // osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t)&_other_texturesSegmentRomStart[((u32) devAddr) & 0xFFFFFF], address, size, &gDmaMesgQueue);
-    // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
-    // tempAddress = &address;
-    // mio0decode(*tempAddress, (u8 *) baseAddress);
-    // return baseAddress;
+    // memcpy doesn't seem to be applicable here.
+    //memcpy(baseAddress, devAddr, size);
+    //baseAddress = devAddr;
+    return baseAddress;
 }
 
 void func_8006EE44(void) {

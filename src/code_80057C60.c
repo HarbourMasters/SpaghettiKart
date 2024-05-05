@@ -2518,7 +2518,7 @@ void func_8005C728(void) {
 
 void func_8005C980(void) {
     s32 var_v0;
-    s32 sp0;
+    s32 sp0 = 0; //! @warning this variable was uninitialized in decomp. This was likely supposed to be random!
     s32 temp_v1;
     for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         temp_v1 = gGPCurrentRaceRankByPlayerId[var_v0];

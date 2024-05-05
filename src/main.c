@@ -510,6 +510,10 @@ void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
 
 static u8 memoryPool[0xAB630];
 
+#define PRINT_MEMPOOL                                                                                  \
+    printf("\nPool Start: 0x%llX, Pool End: 0x%llX, size: 0x%llX\ngNextFreeMemoryAddress: 0x%llX\n\n", memoryPool,  \
+           memoryPool + sizeof(memoryPool), (memoryPool + sizeof(memoryPool)) - memoryPool, gNextFreeMemoryAddress)
+
 /**
  * Setup main segments and framebuffers.
  */
@@ -530,6 +534,8 @@ void setup_game_memory(void) {
     initialize_memory_pool(memoryPool, memoryPool + sizeof(memoryPool));
 
     func_80000BEC();
+
+    PRINT_MEMPOOL;
 
 //     // Initialize trig tables segment
 //     osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
@@ -559,7 +565,7 @@ void setup_game_memory(void) {
 
 //     // Common course data does not get reloaded when the race state resets.
 //     // Therefore, only reset the memory ptr to after the common course data.
-//     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
+     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
 /**

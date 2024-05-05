@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <macros.h>
+#include <string.h>
 #include <mk64.h>
 #include <stubs.h>
 #include <defines.h>
@@ -1416,7 +1417,7 @@ void func_80091B78(void) {
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
-    D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
+    D_8018D9B0 = (u16 *) get_next_available_memory_addr(0x000900B0);
     D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x0000CE00);
     D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00012C00);
     D_8018D9C0 = (struct_8018EE10_entry *) get_next_available_memory_addr(0x00001000);
@@ -1515,7 +1516,7 @@ void func_80091FA4(void) {
 
     //! @todo These sizes need to be sizeof() for shiftability if possible
     D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B0 = (u16 *)get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4);
 
@@ -2329,7 +2330,7 @@ void func_80093E60(void) {
     s32 i;
 
     D_8018D9B4 = get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B0 = (u16 *) get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4U);
 
@@ -2557,10 +2558,10 @@ void func_80094C60(void) {
         case START_MENU:
         // todo: figure this out. 
             add_8018D9E0_entry(2, 0, 0, 4);
-            //add_8018D9E0_entry(1, 0, 0, 0);
+            add_8018D9E0_entry(1, 0, 0, 0);
             add_8018D9E0_entry(0x000000FB, 0, 0, 0);
             if (gControllerBits & 1) {
-                //add_8018D9E0_entry(3, 0, 0, 2);
+                add_8018D9E0_entry(3, 0, 0, 2);
             } else {
                 add_8018D9E0_entry(4, 0, 0, 2);
             }
@@ -3495,7 +3496,7 @@ Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
 }
 
 void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
-    vaddr = arg0;
+    memcpy(vaddr, arg0, nbytes);
     // OSIoMesg sp30;
     // OSMesg sp2C;
 
@@ -3505,6 +3506,7 @@ void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
 }
 
 void dma_copy_base_7fa3c0(u64 *arg0, size_t nbytes, void *vaddr) {
+    memcpy(vaddr, arg0, nbytes);
     // OSIoMesg sp30;
     // OSMesg sp2C;
 
@@ -3529,10 +3531,6 @@ void *segmented_to_virtual_dupe(const void *addr) {
 }
 
 void *segmented_to_virtual_dupe_2(const void *addr) {
-    /*size_t segment = (uintptr_t) addr >> 24;
-    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
-
-    return (void *) ((gSegmentTable[segment] + offset) + 0x80000000);*/
     return addr;
 }
 
@@ -3548,9 +3546,6 @@ void func_80099184(MkTexture *arg0) {
     UNUSED s32 temp_s3;
     MkTexture *texture = arg0;
     UNUSED struct_8018E118_entry *thing;
-    texture->textureData = gTextureCopyright1996;
-    //texture = segmented_to_virtual_dupe(arg0);
-    printf("TEXTURE DATA: 0x%llX\n", texture->textureData[36]);
     while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
@@ -3570,12 +3565,13 @@ void func_80099184(MkTexture *arg0) {
                 if (var_a1_2 % 8) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
-                dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
-                mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+                //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
+                //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
             } else {
-                dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+                //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
             }
-
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = texture->textureData;
@@ -3589,7 +3585,6 @@ void func_80099184(MkTexture *arg0) {
         //texture++;
         break;
     }
-    printf("DID IT FAIL HERE?!?!?!?\n");
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -3660,7 +3655,8 @@ void func_8009952C(MkTexture *arg0) {
         }
         if (var_a1 == 0) {
             //dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
-            mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+            //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], D_8018D9B4, var_s1->width * var_s1->height);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
@@ -3690,22 +3686,24 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
-    MkTexture *var_s1;
+    MkTexture *texture;
     struct_8018E118_entry *thing;
 
-    var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    texture = segmented_to_virtual_dupe(arg0);
+    // Because it's loading an mkTexture. The second element in the array is usually all zeros.
+    // Despite this loop, it's usually only ran once.
+    while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0^0].textureData == (*var_s1).textureData) {
+            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
                 var_a1 = 1;
                 break;
             }
         }
         if ((var_a1 == 0) || (arg1 > 0)) {
-            if (var_s1->size != 0) {
-                var_a1_2 = var_s1->size;
+            if (texture->size != 0) {
+                var_a1_2 = texture->size;
             } else {
                 var_a1_2 = 0x1000;
             }
@@ -3715,38 +3713,42 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             switch (arg1) {                /* irregular */
             case -1:
             case 1:
-                dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
+                //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
                 break;
             case 0:
             case 2:
-                dma_copy_base_7fa3c0(var_s1->textureData, var_a1_2, D_8018D9B4);
+                //dma_copy_base_7fa3c0(texture->textureData, var_a1_2, D_8018D9B4);
                 break;
             }
             switch (arg1) {                /* switch 1; irregular */
             case -1:                            /* switch 1 */
             case 1:                             /* switch 1 */
-                mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+                //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
-                if (var_s1->type == 1) {
+                if (texture->type == 1) {
                     var_v0_2 = 0x000000BE;
                 } else {
                     var_v0_2 = 1;
                 }
                 if (1) {}
-                tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
+                //D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
+            //tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
                 break;
             }
+
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width);
+
             thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
+            thing->textureData = texture->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->offset = gD_8018E118TotalSize;
-            gD_8018E118TotalSize += var_s1->height * var_s1->width;
+            gD_8018E118TotalSize += texture->height * texture->width;
             gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
-        var_s1++;
+        texture++;
     }
 }
 #else
@@ -3769,8 +3771,9 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
             // Round up to the next multiple of eight
             var_a1 = ((var_a1 / 8) * 8) + 8;
         }
-        dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
-        mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        //dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
+        //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, D_8018D9B4, temp_v0->width * temp_v0->height);
         temp_v0++;
     }
 }
@@ -3850,7 +3853,9 @@ void func_80099AEC(void) {
             osInvalDCache(D_8018D9B4 + sp60*4, var_s0);
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height);
+
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -3872,6 +3877,8 @@ void func_80099AEC(void) {
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        // todo: memcpy can't figure out width/height for now.
+        //memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], D_8018D9B4 + sp60 * 4, var_s1->width * var_s1->height, );
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -3996,8 +4003,9 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     if (var_a3 % 8) {
         var_a3 = ((var_a3 / 8) * 8) + 8;
     }
-    dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
-    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
+    //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
+    //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
+    memcpy(&D_8018D9B0[temp_v1], sp24, arg0->height * arg0->width);
     D_8018E118[arg1].textureData = sp24;
 }
 
@@ -4326,7 +4334,7 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     }
 }
 
-void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
     s32 red;
     s32 green;
     s32 blue;
@@ -4339,7 +4347,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     u16 *color;
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
-    for (var_v1 = 0; var_v1 != arg1; var_v1++) {
+    for (var_v1 = 0; var_v1 < screen_size; var_v1++) {
         red   = ((*color & 0xF800) >> 0xB) * 0x4D;
         green = ((*color & 0x7C0) >> 6) * 0x96;
         blue  = ((*color & 0x3E) >> 1) * 0x1D;
@@ -4349,7 +4357,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         newred   = ((temp_t9 * arg2) >> 8) << 0xB;
         newgreen = ((temp_t9 * arg3) >> 8) << 6;
         newblue  = ((temp_t9 * arg4) >> 8) << 1;
-        *color++ = newred + newgreen + newblue + alpha;
+        *color++ = newred + newgreen + newblue + alpha;;
     }
 }
 
@@ -5607,7 +5615,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     case 0x2:
         func_8006EE44();
         gD_8018E118TotalSize += 0x10000;
-        //func_80099184(D_020045E8);
+        func_80099184(D_020045E8);
         break;
     case 0x3:
         func_80099184(D_02004610);
@@ -5618,7 +5626,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         func_800996BC(D_800E7D4C[func_800B555C()], 0);
         func_800996BC(D_02004B74, 0);
         func_8009B0A4(0, 0x00000019);
-        func_8009B538(0, 0x00012C00, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
+        func_8009B538(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
         break;
     case 0xF:
         var_ra->unk1C = 0x00000020;

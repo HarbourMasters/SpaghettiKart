@@ -183,17 +183,14 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
 }
 
 void func_80291198(void) {
-    // d_course_mario_raceway_packed_dl_1140
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07001140));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)d_course_mario_raceway_packed_dl_1140));
 }
 
 void func_802911C4(void) {
     if (gScreenModeSelection == SCREEN_MODE_1P) {
-        // d_course_mario_raceway_packed_dl_8E8
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070008E8));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)d_course_mario_raceway_packed_dl_8E8));
     } else {
-        // d_course_mario_raceway_packed_dl_2D68
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07002D68));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)d_course_mario_raceway_packed_dl_2D68));
     }
 }
 
@@ -515,8 +512,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        // d_course_mario_raceway_packed_dl_3050
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07003050));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3050));
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -599,26 +595,19 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    // d_course_mario_raceway_packed_dl_3508
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07003508));
-    // d_course_mario_raceway_packed_dl_3240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07003240));
-    // d_course_mario_raceway_packed_dl_14A0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070014A0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3508));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3240));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_14A0));
 
     load_surface_map((uintptr_t) mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    // d_course_mario_raceway_packed_dl_450
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000450));
-    // d_course_mario_raceway_packed_dl_240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000240));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_450));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_240));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    // d_course_mario_raceway_packed_dl_E0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070000E0));
-    // d_course_mario_raceway_packed_dl_160
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000160));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_E0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_160));
 }
 
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
@@ -1421,14 +1410,11 @@ void func_80295D88(void) {
     D_800DC5C8 = 0;
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            // d_course_mario_raceway_packed_dl_1140
-            set_vertex_data_with_defaults((Gfx *)0x07001140);
+            set_vertex_data_with_defaults((Gfx *) d_course_mario_raceway_packed_dl_1140);
             if (gScreenModeSelection == SCREEN_MODE_1P) {
-                // d_course_mario_raceway_packed_dl_8E8
-                set_vertex_data_with_defaults((Gfx *)0x070008E8);
+                set_vertex_data_with_defaults((Gfx *) d_course_mario_raceway_packed_dl_8E8);
             } else {
-                // d_course_mario_raceway_packed_dl_2D68
-                set_vertex_data_with_defaults((Gfx *)0x07002D68);
+                set_vertex_data_with_defaults((Gfx *) d_course_mario_raceway_packed_dl_2D68);
             }
             parse_course_displaylists((uintptr_t) d_course_mario_raceway_addr);
             func_80295C6C();
@@ -1446,18 +1432,12 @@ void func_80295D88(void) {
 
             // Spawn guardrail only for CC_50 and time trials.
             if ((gCCSelection != CC_50) && (gModeSelection != TIME_TRIALS)) {
-                // d_course_choco_mountain_packed_dl_0
-                nullify_displaylist((uintptr_t)0x07000000);
-                // d_course_choco_mountain_packed_dl_98
-                nullify_displaylist((uintptr_t)0x07000098);
-                // d_course_choco_mountain_packed_dl_178
-                nullify_displaylist((uintptr_t)0x07000178);
-                // d_course_choco_mountain_packed_dl_280
-                nullify_displaylist((uintptr_t)0x07000280);
-                // d_course_choco_mountain_packed_dl_340
-                nullify_displaylist((uintptr_t)0x07000340);
-                // d_course_choco_mountain_packed_dl_3C8
-                nullify_displaylist((uintptr_t)0x070003C8);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_0);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_98);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_178);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_280);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_340);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_3C8);
             }
             parse_course_displaylists((uintptr_t) &d_course_choco_mountain_addr);
             func_802B5CAC(0x238E, 0x31C7, D_8015F590);
@@ -1467,8 +1447,7 @@ void func_80295D88(void) {
         case COURSE_BOWSER_CASTLE:
             parse_course_displaylists((uintptr_t) d_course_bowsers_castle_addr);
             func_80295C6C();
-            // d_course_bowsers_castle_packed_dl_1350
-            find_vtx_and_set_colours((uintptr_t)0x07001350, 0x32, 0, 0, 0);
+            find_vtx_and_set_colours((uintptr_t) d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_BANSHEE_BOARDWALK:
@@ -1478,8 +1457,8 @@ void func_80295D88(void) {
             D_801625F0 = 0;
             parse_course_displaylists((uintptr_t) d_course_banshee_boardwalk_track_sections);
             func_80295C6C();
-            // d_course_banshee_boardwalk_packed_dl_878
-            find_vtx_and_set_colours((uintptr_t)0x07000878, 128, 0, 0, 0);
+            find_vtx_and_set_colours((uintptr_t) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0,
+                                     0);
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
@@ -1496,14 +1475,14 @@ void func_80295D88(void) {
         case COURSE_KOOPA_BEACH:
             parse_course_displaylists((uintptr_t) d_course_koopa_troopa_beach_addr);
             func_80295C6C();
-            // d_course_koopa_troopa_beach_packed_dl_ADE0
-            find_vtx_and_set_colours((uintptr_t)0x0700ADE0, -0x6A, 255, 255, 255);
-            // d_course_koopa_troopa_beach_packed_dl_A540
-            find_vtx_and_set_colours((uintptr_t)0x0700A540, -0x6A, 255, 255, 255);
-            // d_course_koopa_troopa_beach_packed_dl_9E70
-            find_vtx_and_set_colours((uintptr_t)0x07009E70, -0x6A, 255, 255, 255);
-            // d_course_koopa_troopa_beach_packed_dl_358
-            find_vtx_and_set_colours((uintptr_t)0x07000358, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_ADE0, -0x6A, 255,
+                                     255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_A540, -0x6A, 255,
+                                     255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9E70, -0x6A, 255,
+                                     255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_358, -0x6A, 255,
+                                     255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:
             parse_course_displaylists((uintptr_t) d_course_royal_raceway_addr);

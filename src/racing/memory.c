@@ -35,10 +35,11 @@ s32 memoryPadding[2];
  * @return Address of free memory
  */
 void *get_next_available_memory_addr(uintptr_t size) {
-    uintptr_t freeSpace = gNextFreeMemoryAddress;
+    uintptr_t freeSpace = (uintptr_t) gNextFreeMemoryAddress;
     size = ALIGN16(size);
-    gNextFreeMemoryAddress += malloc(freeSpace + size);
-    return (void*) freeSpace;
+    gNextFreeMemoryAddress += size;
+    //printf("\nNEXT MEM ADDR 0x%llX\n\n", freeSpace[0]);
+    return (void *) freeSpace;
 }
 
 /**
@@ -394,24 +395,24 @@ u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
     // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     // mio0decode((u8 *) temp_a0, temp_v0);
     // gNextFreeMemoryAddress += arg2;
-    // return temp_v0;
+    return texture;
 }
 
 uintptr_t MIO0_0F(u8 *arg0, uintptr_t arg1, uintptr_t arg2) {
-    // uintptr_t oldHeapEndPtr;
-    // void *temp_v0;
+    uintptr_t oldHeapEndPtr;
+    void *temp_v0;
 
-    // arg1 = ALIGN16(arg1);
-    // arg2 = ALIGN16(arg2);
-    // oldHeapEndPtr = gHeapEndPtr;
-    // temp_v0 = (void *) gNextFreeMemoryAddress;
+    arg1 = ALIGN16(arg1);
+    arg2 = ALIGN16(arg2);
+    oldHeapEndPtr = gHeapEndPtr;
+    temp_v0 = (void *) gNextFreeMemoryAddress;
 
-    // osInvalDCache(temp_v0, arg1);
-    // osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], temp_v0, arg1, &gDmaMesgQueue);
-    // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
-    // mio0decode((u8 *) temp_v0, (u8 *) oldHeapEndPtr);
-    // gHeapEndPtr += arg2;
-    // return oldHeapEndPtr;
+    osInvalDCache(temp_v0, arg1);
+    //osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], temp_v0, arg1, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    mio0decode((u8 *) temp_v0, (u8 *) oldHeapEndPtr);
+    gHeapEndPtr += arg2;
+    return oldHeapEndPtr;
 }
 
 void func_802A86A8(CourseVtx *data, uintptr_t arg1) {
@@ -1321,8 +1322,7 @@ void *decompress_segments(u8 *start, u8 *end) {
  * @brief Loads & DMAs course data. Vtx, textures, displaylists, etc.
  * @param courseId
 */
-u8 *load_course(s32 courseId) {
-    u8 a;
+void load_course(s32 courseId) {
     // UNUSED s32 pad[4];
     // u8 *vtxCompressed; // mio0 compressed
     // u8 *courseDataRomStart; // mio0 compressed
@@ -1373,5 +1373,4 @@ u8 *load_course(s32 courseId) {
     // displaylist_unpack((uintptr_t *) packedStart, finalDisplaylistOffset, unknown1);
     // decompress_textures(textures);
     // gNextFreeMemoryAddress = prevLoadedAddress_saved;
-    return a;
 }

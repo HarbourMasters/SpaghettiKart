@@ -1,6 +1,6 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
-#include "courses/royal_raceway/course_displaylists.h"
+#include <courses/royal_raceway/course_displaylists.h>
 
 // Init RDP - RSP (Ceremony)
 Gfx D_80284EE0[] = {
