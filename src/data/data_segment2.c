@@ -3,6 +3,7 @@
 #include <libultra/gbi.h>
 #include "data_segment2.h"
 #include <assets/startup_logo.h>
+#include <assets/common_data.h>
 
 Gfx D_02007650[] = {
     gsDPPipeSync(),
