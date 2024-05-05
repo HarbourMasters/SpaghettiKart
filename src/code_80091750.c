@@ -3656,7 +3656,7 @@ void func_8009952C(MkTexture *arg0) {
         if (var_a1 == 0) {
             //dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
             //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], D_8018D9B4, var_s1->width * var_s1->height);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], D_8018D9B4, var_s1->width * var_s1->height * 2);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
@@ -3717,6 +3717,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             if ((var_a1_2 % 8)) {
                 var_a1_2 = (((var_a1_2 / 8) * 8) + 8);
             }
+            printf("a1: %d\n",var_a1_2);
             switch (arg1) {                /* irregular */
             case -1:
             case 1:
@@ -3731,7 +3732,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             case -1:                            /* switch 1 */
             case 1:                             /* switch 1 */
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-                //memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height);
+                //printf("w: %d, h: %d", texture->width, texture->height);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height*2);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
@@ -3743,9 +3745,9 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                 if (1) {}
                 //D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
             //tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
                 break;
             }
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = texture->textureData;
@@ -3780,7 +3782,7 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
         }
         //dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
         //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
-        memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, D_8018D9B4, temp_v0->width * temp_v0->height);
+        memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, D_8018D9B4, temp_v0->width * temp_v0->height * 2);
         temp_v0++;
     }
 }
@@ -3861,7 +3863,7 @@ void func_80099AEC(void) {
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
 
         var_s1->texture = NULL;
         var_s1++;
@@ -3884,7 +3886,7 @@ void func_80099AEC(void) {
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -3965,7 +3967,9 @@ void func_80099EC4(void) {
             osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        //! todo: Confirm if temp_s2->textureData should be ++temp_s2->textureData
+        memcpy(D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array, temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -3986,7 +3990,9 @@ void func_80099EC4(void) {
             osInvalDCache(D_8018D9B4, var_s0);
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        //! todo: Confirm if temp_s2->textureData should be ++temp_s2->textureData
+        //mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        memcpy(D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array, temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -4011,7 +4017,7 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     }
     //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
     //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    memcpy(&D_8018D9B0[temp_v1], sp24, arg0->height * arg0->width);
+    memcpy(&D_8018D9B0[temp_v1], sp24, arg0->height * arg0->width * 2);
     D_8018E118[arg1].textureData = sp24;
 }
 
