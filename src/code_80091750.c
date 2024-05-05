@@ -67,10 +67,8 @@ s32 gNumD_8018E768Entries;
 struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 s32 gCycleFlashMenu;
 s8 D_8018E7AC[5];
-u32 D_8018E7B8[4];
-u32 D_8018E7C8;
-u32 D_8018E7D0[4];
-s32 D_8018E7E0;
+u32 D_8018E7B8[5];
+u32 D_8018E7D0[5];
 struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
 struct UnkStruct_8018E7E8 D_8018E810[D_8018E810_SIZE];
 s8 D_8018E838[4]; // Import to C was required for matching.
@@ -5229,11 +5227,11 @@ void func_8009DAA8(void) {
     u32 var_t0;
 
     D_8018E7D0[4]++;
-    if (D_8018E7D0[4] >= (D_8018E7C8 + 1)) {
+    if (D_8018E7D0[4] >= (D_8018E7B8[4] + 1)) {
         func_8009CE64(4);
     }
     gDPPipeSync(gDisplayListHead++);
-    var_t0 = (D_8018E7D0[4] * 255) / D_8018E7C8;
+    var_t0 = (D_8018E7D0[4] * 255) / D_8018E7B8[4];
     if ((s32) var_t0 >= 0x100) {
         var_t0 = 0x000000FF;
     }
@@ -5250,8 +5248,8 @@ void func_8009DB8C(void) {
     D_8018E7D0[4]++;
     // why?
     var_v1 = D_8018E7D0[4];
-    if ((u32) var_v1 >= D_8018E7C8) {
-        if ((u32) var_v1 == D_8018E7C8) {
+    if ((u32) var_v1 >= D_8018E7B8[4]) {
+        if ((u32) var_v1 == D_8018E7B8[4]) {
             for (var_s0 = 0; var_s0 < 0x4B0; var_s0++) {
                 D_8018D9B8[var_s0] = 1;
             }
@@ -5261,8 +5259,8 @@ void func_8009DB8C(void) {
     } else {
         var_s0 = 0;
         var_s3 = 0;
-        while (var_s3 < (0x4B0U / D_8018E7C8)) {
-            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7C8) == 0)) {
+        while (var_s3 < (0x4B0U / D_8018E7B8[4])) {
+            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
                 var_s3 += 1;
                 D_8018D9B8[var_s0] = 1;
             }
@@ -5284,7 +5282,7 @@ void func_8009DB8C(void) {
         }
     }
     gDPPipeSync(gDisplayListHead++);
-    var_v1 = (D_8018E7D0[4] * 255) / D_8018E7C8;
+    var_v1 = (D_8018E7D0[4] * 255) / D_8018E7B8[4];
     if (var_v1 >= 0x100) {
         var_v1 = 0x000000FF;
     }
@@ -5301,7 +5299,7 @@ void func_8009DEF8(u32 arg0, u32 arg1) {
         if (D_8018E7B8[4] >= 0x100U) {
             D_8018E7B8[4] = 0xFFU;
         }
-        D_8018E7E0 = 0;
+        D_8018E7D0[4] = 0;
     }
 }
 
@@ -5323,7 +5321,7 @@ void func_8009DF8C(u32 arg0, u32 arg1) {
         if (D_8018E7B8[4] >= 0x100U) {
             D_8018E7B8[4] = 0xFFU;
         }
-        D_8018E7E0 = 0;
+        D_8018E7D0[4] = 0;
     }
 }
 
@@ -5380,7 +5378,7 @@ void func_8009E0F0(s32 arg0) {
         if (D_8018E7B8[4] >= 0x100U) {
             D_8018E7B8[4] = 0x000000FF;
         }
-        D_8018E7E0 = 0;
+        D_8018E7D0[4] = 0;
         for (var_v0 = 0; var_v0 < 0x4B0; var_v0++) {
             D_8018D9B8[var_v0] = 0;
         }
@@ -5394,7 +5392,7 @@ void func_8009E17C(u32 arg0) {
         if (D_8018E7B8[4] >= 0x100U) {
             D_8018E7B8[4] = 0x000000FFU;
         }
-        D_8018E7E0 = 0;
+        D_8018E7D0[4] = 0;
     }
 }
 
