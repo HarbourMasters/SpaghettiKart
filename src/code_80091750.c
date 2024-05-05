@@ -2556,10 +2556,10 @@ void func_80094C60(void) {
         case START_MENU:
         // todo: figure this out. 
             add_8018D9E0_entry(2, 0, 0, 4);
-            add_8018D9E0_entry(1, 0, 0, 0);
+            //add_8018D9E0_entry(1, 0, 0, 0);
             add_8018D9E0_entry(0x000000FB, 0, 0, 0);
             if (gControllerBits & 1) {
-                add_8018D9E0_entry(3, 0, 0, 2);
+                //add_8018D9E0_entry(3, 0, 0, 2);
             } else {
                 add_8018D9E0_entry(4, 0, 0, 2);
             }
@@ -3494,7 +3494,7 @@ Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
 }
 
 void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
-    memcpy(vaddr, arg0, nbytes);
+    //memcpy(vaddr, arg0, nbytes);
     // OSIoMesg sp30;
     // OSMesg sp2C;
 
@@ -3504,7 +3504,7 @@ void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
 }
 
 void dma_copy_base_7fa3c0(u64 *arg0, size_t nbytes, void *vaddr) {
-    memcpy(vaddr, arg0, nbytes);
+    //memcpy(vaddr, arg0, nbytes);
     // OSIoMesg sp30;
     // OSMesg sp2C;
 
@@ -3544,6 +3544,7 @@ void func_80099184(MkTexture *arg0) {
     UNUSED s32 temp_s3;
     MkTexture *texture = arg0;
     UNUSED struct_8018E118_entry *thing;
+  
     while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
@@ -3565,11 +3566,14 @@ void func_80099184(MkTexture *arg0) {
                 }
                 //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
+              // * 2 here is just a guess  
+              memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
             } else {
                 //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+                // * 2 here is just a guess  
                 memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
             }
+
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = texture->textureData;
@@ -3583,6 +3587,7 @@ void func_80099184(MkTexture *arg0) {
         //texture++;
         break;
     }
+    printf("DID IT FAIL HERE?!?!?!?\n");
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -5613,7 +5618,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     case 0x2:
         func_8006EE44();
         gD_8018E118TotalSize += 0x10000;
-        func_80099184(D_020045E8);
+        //func_80099184(D_020045E8);
         break;
     case 0x3:
         func_80099184(D_02004610);
