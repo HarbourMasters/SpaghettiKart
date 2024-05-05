@@ -3648,7 +3648,7 @@ void func_8009952C(MkTexture *arg0) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0^0].textureData == (*var_s1).textureData) {
+            if (D_8018E118[var_v0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3656,7 +3656,7 @@ void func_8009952C(MkTexture *arg0) {
         if (var_a1 == 0) {
             //dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
             //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], D_8018D9B4, var_s1->width * var_s1->height * 2);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height * 2);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
@@ -3782,7 +3782,7 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
         }
         //dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
         //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
-        memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, D_8018D9B4, temp_v0->width * temp_v0->height * 2);
+        memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, temp_v0->textureData, temp_v0->width * temp_v0->height * 2);
         temp_v0++;
     }
 }
@@ -4017,8 +4017,8 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     }
     //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
     //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    memcpy(&D_8018D9B0[temp_v1], sp24, arg0->height * arg0->width * 2);
-    D_8018E118[arg1].textureData = sp24;
+    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, arg0->height * arg0->width * 2);
+    D_8018E118[arg1].textureData = arg0->textureData;
 }
 
 void func_8009A2F0(struct_8018E0E8_entry *arg0) {
