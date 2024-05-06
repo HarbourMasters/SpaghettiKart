@@ -102,16 +102,15 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v1;
 
     temp_v1 = objectListSize;
-    temp_v0 = 0; do
-    {
+    temp_v0 = 0;
+    do {
         ++temp_v1;
         ++temp_v0;
 
-        if (temp_v1 == 0x226) {
+        if (temp_v1 == OBJECT_LIST_SIZE) {
             temp_v1 = 0;
         }
-
-    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != 0x226));
+    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != OBJECT_LIST_SIZE));
 
     gObjectList[temp_v1].unk_0CA = 1;
 

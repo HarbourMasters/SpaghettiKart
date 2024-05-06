@@ -97,7 +97,7 @@ enum SURFACE_TYPE {
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 
-#define GFX_GET_OPCODE(var) ((s32)((var) & 0xFF000000))
+#define GFX_GET_OPCODE(var) ((uintptr_t)((var) & 0xFF000000))
 
 // Pointer casting is technically UB, and avoiding it gets rid of endian issues
 // as well as a nice side effect.

@@ -3717,7 +3717,6 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             if ((var_a1_2 % 8)) {
                 var_a1_2 = (((var_a1_2 / 8) * 8) + 8);
             }
-            printf("a1: %d\n",var_a1_2);
             switch (arg1) {                /* irregular */
             case -1:
             case 1:

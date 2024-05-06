@@ -71,11 +71,11 @@ void parse_course_displaylists(uintptr_t addr) {
 
 extern u32 isFlycam;
 
-void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
+void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;
     Camera *camera = arg1->camera;
     //! @todo Should be Gfx*
-    Gfx** gfx = (Gfx**) &addr;
+    Gfx **gfx = &addr;
     s16 var_a3;
     s16 temp_v1;
     s16 sp1E;
@@ -179,7 +179,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
 
-    gSPDisplayList(gDisplayListHead++, (Gfx *)gfx[temp_v1]);
+    gSPDisplayList(gDisplayListHead++, (Gfx *)&gfx[temp_v1]);
 }
 
 void func_80291198(void) {
@@ -598,8 +598,8 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3508));
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3240));
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_14A0));
-
-    load_surface_map((uintptr_t) mario_raceway_dls, arg0);
+    printf("LOADING SURFACE MAP\n");
+    load_surface_map(&mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -608,6 +608,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_E0));
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_160));
+    printf("SURFACE MAP LOADED\n");
 }
 
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
