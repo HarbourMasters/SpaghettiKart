@@ -6,6 +6,7 @@
 #include <libultraship.h>
 #include <mk64.h>
 #include <libultra/gbi.h>
+#include <align_asset_macro.h>
 #include <macros.h>
 #include <defines.h>
 #include <common_structs.h>
@@ -3081,19 +3082,22 @@ void func_80052080(void) {
     func_80051C60(240 - D_800DC5F0->cameraHeight, D_8018D1F0);
 }
 
+
 void func_800520C0(s32 arg0) {
+    Lights1 *D_800E45C0l = LOAD_ASSET(D_800E45C0);
     if (gObjectList[arg0].unk_0D5 == 0) {
-        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0;
-        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = -0x78;
-        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
+        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0;
+        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = -0x78;
+        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
     } else {
-        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0x63;
-        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = 0x42;
-        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
+        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0x63;
+        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = 0x42;
+        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
     }
 }
 
 void func_8005217C(UNUSED s32 arg0) {
+    Lights1 *D_800E45C0l = LOAD_ASSET(D_800E45C0);
     Objects *object;
     s32 temp_a3;
 
@@ -3105,17 +3109,17 @@ void func_8005217C(UNUSED s32 arg0) {
             func_800520C0(temp_a3);
 
             gSPDisplayList(gDisplayListHead++, D_0D007828);
-            gSPLight(gDisplayListHead++, &D_800E45C0[0].l[0], LIGHT_1);
-            gSPLight(gDisplayListHead++, &D_800E45C0[0].a, LIGHT_2);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[0].l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[0].a, LIGHT_2);
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7B38);
-            gSPLight(gDisplayListHead++, &D_800E45C0[1].l[0], LIGHT_1);
-            gSPLight(gDisplayListHead++, &D_800E45C0[1].a, LIGHT_2);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[1].l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[1].a, LIGHT_2);
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7978);
-            gSPLight(gDisplayListHead++, &D_800E45C0[2].l[0], LIGHT_1);
-            gSPLight(gDisplayListHead++, &D_800E45C0[2].a, LIGHT_2);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[2].l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[2].a, LIGHT_2);
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_78C0);
-            gSPLight(gDisplayListHead++, &D_800E45C0[3].l[0], LIGHT_1);
-            gSPLight(gDisplayListHead++, &D_800E45C0[3].a, LIGHT_2);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[3].l[0], LIGHT_1);
+            gSPLight(gDisplayListHead++, &D_800E45C0l[3].a, LIGHT_2);
             gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_7650);
         }
     }
@@ -3261,12 +3265,12 @@ void func_800528EC(s32 arg0) {
 void render_ice_block(s32 arg0) {
     s32 playerId;
     s32 objectIndex;
-
-    D_800E4620.l[0].l.dir[0] = D_80165840[0];
-    D_800E4620.l[0].l.dir[1] = D_80165840[1];
-    D_800E4620.l[0].l.dir[2] = D_80165840[2];
-    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
+    Lights1 D_800E4620l = LOAD_ASSET(D_800E4620);
+    D_800E4620l.l[0].l.dir[0] = D_80165840[0];
+    D_800E4620l.l[0].l.dir[1] = D_80165840[1];
+    D_800E4620l.l[0].l.dir[2] = D_80165840[2];
+    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
     for (playerId = 0; playerId < gPlayerCountSelection1; playerId++) {
         objectIndex = gIndexLakituList[playerId];
         if (objectIndex) {}
@@ -3294,12 +3298,12 @@ void func_80052D70(s32 playerId) {
 
 void func_80052E30(UNUSED s32 arg0) {
     s32 var_s0;
-
-    D_800E4620.l[0].l.dir[0] = D_80165840[0];
-    D_800E4620.l[0].l.dir[1] = D_80165840[1];
-    D_800E4620.l[0].l.dir[2] = D_80165840[2];
-    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
+    Lights1 D_800E4620l = LOAD_ASSET(D_800E4620);
+    D_800E4620l.l[0].l.dir[0] = D_80165840[0];
+    D_800E4620l.l[0].l.dir[1] = D_80165840[1];
+    D_800E4620l.l[0].l.dir[2] = D_80165840[2];
+    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0;
     D_80183E80[2] = 0;
