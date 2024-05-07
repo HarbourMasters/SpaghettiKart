@@ -87,9 +87,6 @@ extern s32 D_80164B80[];
 
 extern s32 D_8018D930[];
 
-extern Gfx common_square_plain_render[];
-extern Gfx D_0D008D58[];
-
 extern s32 gPlayersToRenderCount;
 extern void *D_800DDB5C[];
 extern Vtx *D_800DDBB4[];

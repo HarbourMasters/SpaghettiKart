@@ -449,12 +449,6 @@ extern u8* D_8018D4C0;
 
 extern u8 *gPortraitTextures[];
 
-extern Lights1 D_800E4638;
-extern Lights1 D_800E4650;
-extern Lights1 D_800E4668;
-extern Lights1 D_800E4680;
-extern Lights1 D_800E4698;
-
 extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 
 #endif

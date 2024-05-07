@@ -3525,7 +3525,7 @@ void func_80099110(void) {
  * @return void*
  */
 void *segmented_to_virtual_dupe(const void *addr) {
-    return addr;
+    return LOAD_ASSET(addr);
 }
 
 void *segmented_to_virtual_dupe_2(const void *addr) {

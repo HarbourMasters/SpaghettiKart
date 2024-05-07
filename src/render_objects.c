@@ -4,8 +4,8 @@
 **/
 
 #include <libultraship.h>
-#include <mk64.h>
 #include <libultra/gbi.h>
+#include <mk64.h>
 #include <align_asset_macro.h>
 #include <macros.h>
 #include <defines.h>
@@ -3220,14 +3220,15 @@ void func_800528EC(s32 arg0) {
     s32 var_s3;
     s32 objectIndex;
     Objects *object;
+    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
 
     D_80183E80[0] = D_8016582C[0];
     D_80183E80[1] = D_8016582C[1];
     D_80183E80[2] = D_8016582C[2];
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     gSPNumLights(gDisplayListHead++, 1);
-    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
+    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
@@ -3265,7 +3266,7 @@ void func_800528EC(s32 arg0) {
 void render_ice_block(s32 arg0) {
     s32 playerId;
     s32 objectIndex;
-    Lights1 D_800E4620l = LOAD_ASSET(D_800E4620);
+    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
     D_800E4620l.l[0].l.dir[0] = D_80165840[0];
     D_800E4620l.l[0].l.dir[1] = D_80165840[1];
     D_800E4620l.l[0].l.dir[2] = D_80165840[2];
@@ -3298,7 +3299,7 @@ void func_80052D70(s32 playerId) {
 
 void func_80052E30(UNUSED s32 arg0) {
     s32 var_s0;
-    Lights1 D_800E4620l = LOAD_ASSET(D_800E4620);
+    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
     D_800E4620l.l[0].l.dir[0] = D_80165840[0];
     D_800E4620l.l[0].l.dir[1] = D_80165840[1];
     D_800E4620l.l[0].l.dir[2] = D_80165840[2];
@@ -3409,33 +3410,42 @@ void render_lakitu(s32 cameraId) {
 
 void func_800534A4(UNUSED s32 arg0) {
     func_800419F8();
-    D_800E4638.l[0].l.dir[0] = D_80165840[0];
-    D_800E4638.l[0].l.dir[1] = D_80165840[1];
-    D_800E4638.l[0].l.dir[2] = D_80165840[2];
+    Lights1 D_800E4638l = *(Lights1 *) LOAD_ASSET(D_800E4638);
+    D_800E4638l.l[0].l.dir[0] = D_80165840[0];
+    D_800E4638l.l[0].l.dir[1] = D_80165840[1];
+    D_800E4638l.l[0].l.dir[2] = D_80165840[2];
 }
 
 void func_800534E8(s32 objectIndex) {
+
+    Lights1 D_800E4638l = *(Lights1 *) LOAD_ASSET(D_800E4638);
+    Lights1 D_800E4650l = *(Lights1 *) LOAD_ASSET(D_800E4650);
+    Lights1 D_800E4668l = *(Lights1 *) LOAD_ASSET(D_800E4668);
+    Lights1 D_800E4680l = *(Lights1 *) LOAD_ASSET(D_800E4680);
+    Lights1 D_800E4698l = *(Lights1 *) LOAD_ASSET(D_800E4698);
+    
+
     // Why these don't just use `gSPSetLights1` calls...
     switch (gObjectList[objectIndex].type) { // hmm very strange 80165C18
     case 0:
-        gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4638l.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4638l.a, LIGHT_2);
         break;
     case 1:
-        gSPLight(gDisplayListHead++, &D_800E4650.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4650.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4650l.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4650l.a, LIGHT_2);
         break;
     case 2:
-        gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4668l.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4668l.a, LIGHT_2);
         break;
     case 3:
-        gSPLight(gDisplayListHead++, &D_800E4680.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4680.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4680l.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4680l.a, LIGHT_2);
         break;
     case 4:
-        gSPLight(gDisplayListHead++, &D_800E4698.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4698.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4698l.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4698l.a, LIGHT_2);
         break;
     default:
         break;
@@ -3462,6 +3472,7 @@ void render_object_thwomps(s32 cameraId) {
     s16 minusone, plusone;
     Camera *camera;
     Objects *object;
+    Lights1 D_800E4668l = *(Lights1 *) LOAD_ASSET(D_800E4668);
 
     camera = &camera1[cameraId];
     if (cameraId == PLAYER_ONE) {
@@ -3488,8 +3499,8 @@ void render_object_thwomps(s32 cameraId) {
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPNumLights(gDisplayListHead++, 1);
-    gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
+    gSPLight(gDisplayListHead++, &D_800E4668l.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4668l.a, LIGHT_2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
     load_texture_block_rgba16_mirror(d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
@@ -4173,9 +4184,12 @@ void render_object_neon(s32 cameraId) {
 }
 
 void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
-    D_80165860 = D_800E46F8[arg0][0];
-    D_8016586C = D_800E46F8[arg0][1];
-    D_80165878 = D_800E46F8[arg0][2];
+
+    Vec3iu *A_800E46F8 = LOAD_ASSET(D_800E46F8);
+
+    D_80165860 = A_800E46F8[arg0][0];
+    D_8016586C = A_800E46F8[arg0][1];
+    D_80165878 = A_800E46F8[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     func_80044BF8(common_texture_particle_spark[arg1], 0x00000020, 0x00000020);
