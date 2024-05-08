@@ -1,0 +1,15 @@
+:config:
+  segments:
+    - [0x0F, 0x8EC390]
+  no_compression: true
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+d_course_royal_raceway_vertex:
+  symbol: d_course_royal_raceway_vertex
+  type: mk64:course_vtx
+  count: 8306
+  offset: 0x0

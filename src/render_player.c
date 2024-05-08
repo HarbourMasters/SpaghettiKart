@@ -22,6 +22,14 @@
 #include <assets/common_data.h>
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
+#include <assets/mario_kart.h>
+#include <assets/luigi_kart.h>
+#include <assets/peach_kart.h>
+#include <assets/yoshi_kart.h>
+#include <assets/toad_kart.h>
+#include <assets/bowser_kart.h>
+#include <assets/wario_kart.h>
+#include <assets/donkeykong_kart.h>
 
 s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02

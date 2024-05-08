@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <stubs.h>
+#include "course_metadata.h"
 
 #include "code_80005FD0.h"
 #include "math_util.h"
@@ -1757,12 +1758,12 @@ void func_80009B60(s32 playerId) {
                     if ((gPlayerCount > 0) && (gPlayerCount < 3) && (D_80163330[playerId] == 1) && (D_8016334C[playerId] < gGPCurrentRaceRankByPlayerId[playerId])) {
                         D_80163210[playerId] = 8.333333f;
                     } else if (D_80162FD0 == (s16) 1U) {
-                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][gCCSelection]);
+                        D_80163210[playerId] = D_0D0096B8[gCurrentCourseId][gCCSelection];
                         D_801634F8[playerId].unk4 = -0.5f;
                     } else if (D_801645E0[D_80162FCE] > 0) {
-                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][gCCSelection]);
+                        D_80163210[playerId] = D_0D009418[gCurrentCourseId][gCCSelection];
                     } else {
-                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009568[gCurrentCourseId][gCCSelection]);
+                        D_80163210[playerId] = D_0D009568[gCurrentCourseId][gCCSelection];
                     }
                     func_800131DC(playerId);
                     func_8000D3B8(playerId);
@@ -1951,15 +1952,15 @@ void func_80009B60(s32 playerId) {
                 func_8003680C(player, var_a1);
                 D_80163050[playerId] = var_a1;
                 if ((D_801630B8[playerId] == 1) || (D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1) || (player->effects & 0x1000000C)) {
-                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][gCCSelection]);
+                    D_80163028[playerId] = D_0D009418[gCurrentCourseId][gCCSelection];
                 } else {
-                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009568[gCurrentCourseId][gCCSelection]);
+                    D_80163028[playerId] = D_0D009568[gCurrentCourseId][gCCSelection];
                 }
                 if ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f)) {
-                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009808[gCurrentCourseId][gCCSelection]);
+                    D_80163028[playerId] = D_0D009808[gCurrentCourseId][gCCSelection];
                 }
                 if (D_80162FD0 == 1) {
-                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][gCCSelection]);
+                    D_80163028[playerId] = D_0D0096B8[gCurrentCourseId][gCCSelection];
                 }
                 if ((D_801630E8[playerId] == 2) || (D_801630E8[playerId] == -2) || (D_801630E8[playerId] == 3)) {
                     D_80163028[playerId] = 3.3333333f;
@@ -3475,7 +3476,7 @@ void func_8000F628(void) {
         if (gCurrentCourseId < (NUM_COURSES - 1)) {
             func_8000B95C(i, 0, 0);
         }
-        D_80163028[i] = *(f32 *) segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][gCCSelection]);
+        D_80163028[i] = *(f32 *) LOAD_ASSET(&D_0D009418[gCurrentCourseId][gCCSelection]);
         D_801630E8[i] = 0;
         D_80163100[i] = 0;
         D_80163178[i] = 0.0f;
@@ -3635,12 +3636,12 @@ void func_800100F0(s32 pathIndex) {
         pathDest = D_80164550[pathIndex];
             bInvalidPath = 1;
         if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
-            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(gCoursePathTable2[gCurrentCourseId][pathIndex]));
+            var_v0 = process_path_data(pathDest, LOAD_ASSET(gCoursePathTable2[gCurrentCourseId][pathIndex]));
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
-            path = segmented_to_virtual_dupe_2(gCoursePathTable[gCurrentCourseId][pathIndex]);
+            path = LOAD_ASSET(gCoursePathTable[gCurrentCourseId][pathIndex]);
             ptr = path;
 
             for (i = 0; i < 3000; i++, ptr++) {
@@ -4122,7 +4123,7 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
 void copy_courses_kart_ai_behaviour(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES - 1; i++) {
-        gCoursesKartAIBehaviour[i] = segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i]);
+        gCoursesKartAIBehaviour[i] = LOAD_ASSET(gKartAIBehaviourLUT[i]);
     }
 }
 

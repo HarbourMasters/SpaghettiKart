@@ -1,0 +1,15 @@
+:config:
+  segments:
+    - [0x0F, 0x90B3E0]
+  no_compression: true
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+d_course_moo_moo_farm_vertex:
+  symbol: d_course_moo_moo_farm_vertex
+  type: mk64:course_vtx
+  count: 7972
+  offset: 0x0

@@ -16,7 +16,6 @@ extern CourseVtx d_course_double_deck_vertex[];
 extern CourseVtx d_course_skyscraper_vertex[];
 extern CourseVtx d_course_choco_mountain_vertex[];
 extern CourseVtx d_course_frappe_snowland_vertex[];
-extern CourseVtx d_course_mario_raceway_vertex[0x167D];
 extern CourseVtx d_course_toads_turnpike_vertex[];
 extern CourseVtx d_course_kalimari_desert_vertex[];
 extern CourseVtx d_course_koopa_troopa_beach_vertex[];
@@ -37,7 +36,6 @@ extern CourseVtx d_course_wario_stadium_vertex[];
 #define d_course_skyscraper_vertex_count         ARRAY_COUNT(d_course_skyscraper_vertex)
 #define d_course_choco_mountain_vertex_count     ARRAY_COUNT(d_course_choco_mountain_vertex)
 #define d_course_frappe_snowland_vertex_count    ARRAY_COUNT(d_course_frappe_snowland_vertex)
-#define d_course_mario_raceway_vertex_count      ARRAY_COUNT(d_course_mario_raceway_vertex)
 #define d_course_toads_turnpike_vertex_count     ARRAY_COUNT(d_course_toads_turnpike_vertex)
 #define d_course_kalimari_desert_vertex_count    ARRAY_COUNT(d_course_kalimari_desert_vertex)
 #define d_course_koopa_troopa_beach_vertex_count ARRAY_COUNT(d_course_koopa_troopa_beach_vertex)

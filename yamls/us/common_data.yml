@@ -984,31 +984,6 @@ D_0D0093C0:
   symbol: D_0D0093C0
   type: mk64:driving_behaviour
   offset: 0x93C0
-D_0D009418:
-  symbol: D_0D009418
-  type: inc
-  offset: 0x9418
-  ctype: Vec4f
-  offset: 0x9418
-  file_path: "assets/course_metadata/D_0D009418.inc.c"
-D_0D009568:
-  symbol: D_0D009568
-  type: inc
-  offset: 0x9568
-  ctype: Vec4f
-  file_path: "assets/course_metadata/D_0D009568.inc.c"
-D_0D0096B8:
-  symbol: D_0D0096B8
-  type: inc
-  offset: 0x96B8
-  ctype: Vec4f
-  file_path: "assets/course_metadata/D_0D0096B8.inc.c"
-D_0D009808:
-  symbol: D_0D009808
-  type: inc
-  offset: 0x9808
-  ctype: Vec4f
-  file_path: "assets/course_metadata/D_0D009808.inc.c"
 common_texture_speedometer:
   symbol: common_texture_speedometer
   type: texture

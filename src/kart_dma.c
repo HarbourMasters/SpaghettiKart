@@ -5,6 +5,14 @@
 #include "common_structs.h"
 #include "kart_dma.h"
 #include "defines.h"
+#include <assets/mario_kart.h>
+#include <assets/luigi_kart.h>
+#include <assets/peach_kart.h>
+#include <assets/yoshi_kart.h>
+#include <assets/toad_kart.h>
+#include <assets/bowser_kart.h>
+#include <assets/wario_kart.h>
+#include <assets/donkeykong_kart.h>
 
 // Seemingly the largest compressed size for a frame for a given character
 // They seem slightly oversized too, either an alignemnt or safety thing

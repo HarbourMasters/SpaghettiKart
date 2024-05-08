@@ -2,9 +2,9 @@
 #include <macros.h>
 #include "main.h"
 #include <mk64.h>
+#include <assets/common_data.h>
 
 extern s16 D_800E43A8;
-extern Mtx D_0D008E98;
 
 // rsp init
 UNUSED void gfx_func_80040D00(void) {

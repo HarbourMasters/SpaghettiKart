@@ -1,0 +1,15 @@
+:config:
+  segments:
+    - [0x0F, 0x91B980]
+  no_compression: true
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+d_course_toads_turnpike_vertex:
+  symbol: d_course_toads_turnpike_vertex
+  type: mk64:course_vtx
+  count: 6359
+  offset: 0x0
