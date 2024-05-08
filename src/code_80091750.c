@@ -3525,7 +3525,7 @@ void func_80099110(void) {
  * @return void*
  */
 void *segmented_to_virtual_dupe(const void *addr) {
-    return LOAD_ASSET(addr);
+    return addr;
 }
 
 void *segmented_to_virtual_dupe_2(const void *addr) {
@@ -4720,7 +4720,7 @@ void func_8009CA6C(s32 arg0) {
          (find_8018D9E0_entry(0x000000AC) == NULL) &&
          (find_8018D9E0_entry(0x000000B0) == NULL))) {
         var_a1 = 0;
-        gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
+        gSPDisplayList(gDisplayListHead++, D_0D0076F8);
         if ((arg0 != 4) && (gIsGamePaused != 0)) {
             var_a1 = 1;
         }

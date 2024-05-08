@@ -426,7 +426,7 @@ void func_802A487C(Vtx *arg0, UNUSED struct UnkStruct_800DC5EC *arg1, UNUSED s32
         guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, D_0D008E98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPVertex(gDisplayListHead++, &arg0[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
@@ -478,7 +478,7 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, D_0D008E98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
