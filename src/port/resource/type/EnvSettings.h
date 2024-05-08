@@ -26,11 +26,11 @@ struct EnvSettingsData {
     /* 0x40 */ int32_t ambB;
 };
 
-class EnvSettings : public LUS::Resource<EnvSettingsData> {
+class EnvSettings : public Ship::Resource<EnvSettingsData> {
   public:
     using Resource::Resource;
 
-    EnvSettings() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    EnvSettings() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     EnvSettingsData* GetPointer();
     size_t GetPointerSize();

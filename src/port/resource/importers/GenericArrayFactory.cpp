@@ -3,13 +3,13 @@
 #include "spdlog/spdlog.h"
 
 namespace SF64 {
-std::shared_ptr<LUS::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResource(std::shared_ptr<LUS::File> file) {
+std::shared_ptr<Ship::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResource(std::shared_ptr<Ship::File> file) {
     if (!FileHasValidFormatAndReader(file)) {
         return nullptr;
     }
 
     auto arr = std::make_shared<GenericArray>(file->InitData);
-    auto reader = std::get<std::shared_ptr<LUS::BinaryReader>>(file->Reader);
+    auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     auto type = reader->ReadUInt32();
 

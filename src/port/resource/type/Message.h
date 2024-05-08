@@ -10,7 +10,7 @@ typedef struct {
     u16* msgPtr;
 } MsgLookup;
 
-class Message : public LUS::Resource<void> {
+class Message : public Ship::Resource<void> {
   public:
     using Resource::Resource;
 
@@ -20,7 +20,7 @@ class Message : public LUS::Resource<void> {
     std::vector<uint16_t> mMessage;
 };
 
-class MessageLookup : public LUS::Resource<MsgLookup> {
+class MessageLookup : public Ship::Resource<MsgLookup> {
   public:
     using Resource::Resource;
 

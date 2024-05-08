@@ -3,11 +3,11 @@
 #include "ResolutionEditor.h"
 
 #include <spdlog/spdlog.h>
-#include <ImGui/imgui.h>
+#include <imgui.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "libultraship/src/Context.h"
 
-#include <ImGui/imgui_internal.h>
+#include <imgui_internal.h>
 #include <libultraship/libultraship.h>
 #include <Fast3D/gfx_pc.h>
 #include "port/Engine.h"
@@ -18,14 +18,14 @@ extern "C" {
 
 namespace GameUI {
 std::shared_ptr<GameMenuBar> mGameMenuBar;
-std::shared_ptr<LUS::GuiWindow> mConsoleWindow;
-std::shared_ptr<LUS::GuiWindow> mStatsWindow;
-std::shared_ptr<LUS::GuiWindow> mInputEditorWindow;
-std::shared_ptr<LUS::GuiWindow> mGfxDebuggerWindow;
+std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
+std::shared_ptr<Ship::GuiWindow> mStatsWindow;
+std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
+std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
-    auto gui = LUS::Context::GetInstance()->GetWindow()->GetGui();
+    auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
 
     auto& style = ImGui::GetStyle();
     style.FramePadding = ImVec2(4.0f, 6.0f);
@@ -112,28 +112,28 @@ void DrawSettingsMenu(){
         //         audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
         //     }
         //
-        //     static std::unordered_map<LUS::AudioBackend, const char*> audioBackendNames = {
-        //             { LUS::AudioBackend::WASAPI, "Windows Audio Session API" },
-        //             { LUS::AudioBackend::PULSE, "PulseAudio" },
-        //             { LUS::AudioBackend::SDL, "SDL" },
+        //     static std::unordered_map<Ship::AudioBackend, const char*> audioBackendNames = {
+        //             { Ship::AudioBackend::WASAPI, "Windows Audio Session API" },
+        //             { Ship::AudioBackend::PULSE, "PulseAudio" },
+        //             { Ship::AudioBackend::SDL, "SDL" },
         //     };
         //
         //     ImGui::Text("Audio API (Needs reload)");
-        //     auto currentAudioBackend = LUS::Context::GetInstance()->GetAudio()->GetAudioBackend();
+        //     auto currentAudioBackend = Ship::Context::GetInstance()->GetAudio()->GetAudioBackend();
         //
-        //     if (LUS::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
+        //     if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
         //         UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
         //     }
         //     if (ImGui::BeginCombo("##AApi", audioBackendNames[currentAudioBackend])) {
-        //         for (uint8_t i = 0; i < LUS::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
-        //             auto backend = LUS::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i];
+        //         for (uint8_t i = 0; i < Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size(); i++) {
+        //             auto backend = Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->data()[i];
         //             if (ImGui::Selectable(audioBackendNames[backend], backend == currentAudioBackend)) {
-        //                 LUS::Context::GetInstance()->GetAudio()->SetAudioBackend(backend);
+        //                 Ship::Context::GetInstance()->GetAudio()->SetAudioBackend(backend);
         //             }
         //         }
         //         ImGui::EndCombo();
         //     }
-        //     if (LUS::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
+        //     if (Ship::Context::GetInstance()->GetAudio()->GetAvailableAudioBackends()->size() <= 1) {
         //         UIWidgets::ReEnableComponent("");
         //     }
         //
@@ -175,23 +175,23 @@ void DrawSettingsMenu(){
         UIWidgets::Spacer(0);
 
         // Previously was running every frame, and nothing was setting it? Maybe a bad copy/paste?
-        // LUS::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
+        // Ship::Context::GetInstance()->GetWindow()->SetResolutionMultiplier(CVarGetFloat("gInternalResolution", 1));
         // UIWidgets::Tooltip("Multiplies your output resolution by the value inputted, as a more intensive but effective form of anti-aliasing");
 #ifndef __WIIU__
         if (UIWidgets::CVarSliderInt("MSAA: %d", "gMSAAValue", 1, 8, 1, {
             .tooltip = "Activates multi-sample anti-aliasing when above 1x up to 8x for 8 samples for every pixel"
         })) {
-            LUS::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
+            Ship::Context::GetInstance()->GetWindow()->SetMsaaLevel(CVarGetInteger("gMSAAValue", 1));
         }
 #endif
 
         { // FPS Slider
             const int minFps = 30;
             static int maxFps;
-            if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
                 maxFps = 360;
             } else {
-                maxFps = LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+                maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
             }
             int currentFps = 0;
         #ifdef __WIIU__
@@ -253,15 +253,15 @@ void DrawSettingsMenu(){
                 currentFps = 60;
             }
             CVarSetInteger("gInterpolationFPS", currentFps);
-            LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
         #else
             bool matchingRefreshRate =
-                CVarGetInteger("gMatchRefreshRate", 0) && LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() != LUS::WindowBackend::DX11;
+                CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::DX11;
             UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps, maxFps, 1, {
                 .disabled = matchingRefreshRate
             });
         #endif
-            if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
                 UIWidgets::Tooltip(
                     "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
                     "visual and does not impact game logic, execution of glitches etc.\n\n"
@@ -275,13 +275,13 @@ void DrawSettingsMenu(){
             }
         } // END FPS Slider
 
-        if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
             UIWidgets::Spacer(0);
             if (ImGui::Button("Match Refresh Rate")) {
-                int hz = LUS::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
+                int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
                 if (hz >= 30 && hz <= 360) {
                     CVarSetInteger("gInterpolationFPS", hz);
-                    LUS::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
                 }
             }
         } else {
@@ -290,7 +290,7 @@ void DrawSettingsMenu(){
 
         UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
-        if (LUS::Context::GetInstance()->GetWindow()->GetWindowBackend() == LUS::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
             UIWidgets::PaddedEnhancementSliderInt(CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
                                                   "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
             UIWidgets::Tooltip("When Interpolation FPS setting is at least this threshold, add one frame of input lag (e.g. 16.6 ms for 60 FPS) in order to avoid jitter. This setting allows the CPU to work on one frame while GPU works on the previous frame.\nThis setting should be used when your computer is too slow to do CPU + GPU work in time.");
@@ -299,51 +299,51 @@ void DrawSettingsMenu(){
         UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
 
 
-        static std::unordered_map<LUS::WindowBackend, const char*> windowBackendNames = {
-                { LUS::WindowBackend::DX11, "DirectX" },
-                { LUS::WindowBackend::SDL_OPENGL, "OpenGL"},
-                { LUS::WindowBackend::SDL_METAL, "Metal" },
-                { LUS::WindowBackend::GX2, "GX2"}
+        static std::unordered_map<Ship::WindowBackend, const char*> windowBackendNames = {
+                { Ship::WindowBackend::DX11, "DirectX" },
+                { Ship::WindowBackend::SDL_OPENGL, "OpenGL"},
+                { Ship::WindowBackend::SDL_METAL, "Metal" },
+                { Ship::WindowBackend::GX2, "GX2"}
         };
 
         ImGui::Text("Renderer API (Needs reload)");
-        LUS::WindowBackend runningWindowBackend = LUS::Context::GetInstance()->GetWindow()->GetWindowBackend();
-        LUS::WindowBackend configWindowBackend;
-        int configWindowBackendId = LUS::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(LUS::WindowBackend::BACKEND_COUNT)) {
-            configWindowBackend = static_cast<LUS::WindowBackend>(configWindowBackendId);
+        Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
+        Ship::WindowBackend configWindowBackend;
+        int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
+        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(Ship::WindowBackend::BACKEND_COUNT)) {
+            configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
         } else {
             configWindowBackend = runningWindowBackend;
         }
 
-        if (LUS::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
             UIWidgets::DisableComponent(ImGui::GetStyle().Alpha * 0.5f);
         }
         if (ImGui::BeginCombo("##RApi", windowBackendNames[configWindowBackend])) {
-            for (size_t i = 0; i < LUS::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size(); i++) {
-                auto backend = LUS::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->data()[i];
+            for (size_t i = 0; i < Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size(); i++) {
+                auto backend = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->data()[i];
                 if (ImGui::Selectable(windowBackendNames[backend], backend == configWindowBackend)) {
-                    LUS::Context::GetInstance()->GetConfig()->SetInt("Window.Backend.Id", static_cast<int>(backend));
-                    LUS::Context::GetInstance()->GetConfig()->SetString("Window.Backend.Name",
+                    Ship::Context::GetInstance()->GetConfig()->SetInt("Window.Backend.Id", static_cast<int>(backend));
+                    Ship::Context::GetInstance()->GetConfig()->SetString("Window.Backend.Name",
                                                                         windowBackendNames[backend]);
-                    LUS::Context::GetInstance()->GetConfig()->Save();
+                    Ship::Context::GetInstance()->GetConfig()->Save();
                 }
             }
             ImGui::EndCombo();
         }
-        if (LUS::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends()->size() <= 1) {
             UIWidgets::ReEnableComponent("");
         }
 
-        if (LUS::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
+        if (Ship::Context::GetInstance()->GetWindow()->CanDisableVerticalSync()) {
             UIWidgets::PaddedEnhancementCheckbox("Enable Vsync", "gVsyncEnabled", true, false);
         }
 
-        if (LUS::Context::GetInstance()->GetWindow()->SupportsWindowedFullscreen()) {
+        if (Ship::Context::GetInstance()->GetWindow()->SupportsWindowedFullscreen()) {
             UIWidgets::PaddedEnhancementCheckbox("Windowed fullscreen", "gSdlWindowedFullscreen", true, false);
         }
 
-        if (LUS::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports()) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetGui()->SupportsViewports()) {
             UIWidgets::PaddedEnhancementCheckbox("Allow multi-windows", "gEnableMultiViewports", true, false, false, "", UIWidgets::CheckboxGraphics::Cross, true);
             UIWidgets::Tooltip("Allows windows to be able to be dragged off of the main game window. Requires a reload to take effect.");
         }
@@ -355,7 +355,7 @@ void DrawSettingsMenu(){
 
         UIWidgets::Spacer(0);
 
-        LUS::Context::GetInstance()->GetWindow()->GetGui()->GetGameOverlay()->DrawSettings();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGameOverlay()->DrawSettings();
 
         ImGui::EndMenu();
     }
@@ -364,11 +364,11 @@ void DrawSettingsMenu(){
 void DrawMenuBarIcon() {
     static bool gameIconLoaded = false;
     if (!gameIconLoaded) {
-        // LUS::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon", "textures/icons/gIcon.png");
+        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon", "textures/icons/gIcon.png");
         gameIconLoaded = false;
     }
 
-    if (LUS::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon")) {
+    if (Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon")) {
 #ifdef __SWITCH__
         ImVec2 iconSize = ImVec2(20.0f, 20.0f);
         float posScale = 1.0f;
@@ -380,7 +380,7 @@ void DrawMenuBarIcon() {
         float posScale = 1.5f;
 #endif
         ImGui::SetCursorPos(ImVec2(5, 2.5f) * posScale);
-        ImGui::Image(LUS::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon"), iconSize);
+        ImGui::Image(Ship::Context::GetInstance()->GetWindow()->GetGui()->GetTextureByName("Game_Icon"), iconSize);
         ImGui::SameLine();
         ImGui::SetCursorPos(ImVec2(25, 0) * posScale);
     }
@@ -400,11 +400,11 @@ void DrawGameMenu() {
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 
         if (UIWidgets::MenuItem("Toggle Fullscreen", "F9")) {
-            LUS::Context::GetInstance()->GetWindow()->ToggleFullscreen();
+            Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen();
         }
 
         if (UIWidgets::MenuItem("Quit")) {
-            LUS::Context::GetInstance()->GetWindow()->Close();
+            Ship::Context::GetInstance()->GetWindow()->Close();
         }
 #endif
         ImGui::EndMenu();

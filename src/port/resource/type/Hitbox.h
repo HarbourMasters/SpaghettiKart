@@ -4,7 +4,7 @@
 #include <Resource.h>
 
 namespace SF64 {
-class Hitbox : public LUS::Resource<float> {
+class Hitbox : public Ship::Resource<float> {
   public:
     using Resource::Resource;
 

@@ -16,11 +16,11 @@ struct ObjectInitData {
     /* 0x10 */ int16_t id;
 }; // size = 0x14
 
-class ObjectInit : public LUS::Resource<ObjectInitData> {
+class ObjectInit : public Ship::Resource<ObjectInitData> {
   public:
     using Resource::Resource;
 
-    ObjectInit() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    ObjectInit() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     ObjectInitData* GetPointer();
     size_t GetPointerSize();

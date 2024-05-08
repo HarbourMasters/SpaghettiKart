@@ -5,11 +5,11 @@
 #include <Resource.h>
 
 namespace SF64 {
-class Skeleton : public LUS::Resource<LimbData*> {
+class Skeleton : public Ship::Resource<LimbData*> {
   public:
     using Resource::Resource;
 
-    Skeleton() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    Skeleton() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     LimbData** GetPointer();
     size_t GetPointerSize();

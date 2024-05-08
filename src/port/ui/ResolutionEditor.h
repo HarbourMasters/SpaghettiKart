@@ -2,7 +2,7 @@
 #include <libultraship/libultraship.h>
 
 namespace AdvancedResolutionSettings {
-    class AdvancedResolutionSettingsWindow : public LUS::GuiWindow {
+    class AdvancedResolutionSettingsWindow : public Ship::GuiWindow {
     private:
         bool IsDroppingFrames();
 
@@ -10,7 +10,7 @@ namespace AdvancedResolutionSettings {
         bool IsBoolArrayTrue(bool*);
 
     public:
-        using LUS::GuiWindow::GuiWindow;
+        using Ship::GuiWindow::GuiWindow;
 
         void InitElement() override;
         void DrawElement() override;

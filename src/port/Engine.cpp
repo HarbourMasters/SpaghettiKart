@@ -1,6 +1,7 @@
 #include "Engine.h"
+
+#include "StringHelper.h"
 #include "ui/ImguiUI.h"
-#include "ZAPDUtils/Utils/StringHelper.h"
 #include "libultraship/src/Context.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
@@ -22,13 +23,13 @@ GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
     std::vector<std::string> OTRFiles;
-    if (const std::string cube_path = LUS::Context::GetPathRelativeToAppDirectory("mkcube.otr"); std::filesystem::exists(cube_path)) {
+    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("mkcube.otr"); std::filesystem::exists(cube_path)) {
         OTRFiles.push_back(cube_path);
     }
-    if (const std::string sm64_otr_path = LUS::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
+    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
         OTRFiles.push_back(sm64_otr_path);
     }
-    if (const std::string patches_path = LUS::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
+    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto&p: std::filesystem::recursive_directory_iterator(patches_path)) {
                 if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
@@ -38,7 +39,7 @@ GameEngine::GameEngine() {
         }
     }
 
-    this->context = LUS::Context::CreateInstance("Spaghettify", "skart64", "spaghettify.cfg.json", OTRFiles, {}, 3);
+    this->context = Ship::Context::CreateInstance("Spaghettify", "skart64", "spaghettify.cfg.json", OTRFiles, {}, 3);
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
     loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3fV0>(), RESOURCE_FORMAT_BINARY, "Vec3f", static_cast<uint32_t>(SF64::ResourceType::Vec3f), 0);
@@ -62,7 +63,7 @@ bool ShouldClearTextureCacheAtEndOfFrame = false;
 
 
 void GameEngine::StartFrame() const{
-    using LUS::KbScancode;
+    using Ship::KbScancode;
     const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
 
@@ -99,7 +100,7 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
-    auto player = LUS::Context::GetInstance()->GetAudio()->GetAudioPlayer();
+    auto player = Ship::Context::GetInstance()->GetAudio()->GetAudioPlayer();
     if (player == nullptr) {
         return 0;
     }

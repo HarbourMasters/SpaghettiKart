@@ -19,11 +19,11 @@ struct ColPolyData {
     ColPolyData(Vec3s tri, int16_t unk_06, Vec3s norm, int16_t unk_0E, int32_t dist) : tri(std::move(tri)), unk_06(unk_06), norm(std::move(norm)), unk_0E(unk_0E), dist(dist) {}
 }; // size = 0x14
 
-class ColPoly : public LUS::Resource<ColPolyData> {
+class ColPoly : public Ship::Resource<ColPolyData> {
   public:
     using Resource::Resource;
 
-    ColPoly() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    ColPoly() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     ColPolyData* GetPointer();
     size_t GetPointerSize();

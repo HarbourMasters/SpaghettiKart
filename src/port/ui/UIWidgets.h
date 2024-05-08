@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 #include <span>
-#include <stdint.h>
+#include <cstdint>
 #define IMGUI_DEFINE_MATH_OPERATORS
-#include <ImGui/imgui.h>
+#include <imgui.h>
 #include <libultraship/libultraship.h>
 
 namespace UIWidgets {
@@ -25,7 +25,7 @@ namespace UIWidgets {
             }
             return 1;
         }
-        
+
     };
 
     // MARK: - Enums
@@ -65,17 +65,17 @@ namespace UIWidgets {
 
     bool EnhancementCheckbox(const char* text, const char* cvarName, bool disabled = false, const char* disabledTooltipText = "", CheckboxGraphics disabledGraphic = CheckboxGraphics::Cross, bool defaultValue = false);
     bool PaddedEnhancementCheckbox(const char* text, const char* cvarName, bool padTop = true, bool padBottom = true, bool disabled = false, const char* disabledTooltipText = "", CheckboxGraphics disabledGraphic = CheckboxGraphics::Cross, bool defaultValue = false);
-    
+
     bool EnhancementCombobox(const char* cvarName, std::span<const char*, std::dynamic_extent> comboArray, uint8_t defaultIndex, bool disabled = false, const char* disabledTooltipText = "", uint8_t disabledValue = -1);
     bool LabeledRightAlignedEnhancementCombobox(const char* label, const char* cvarName, std::span<const char*, std::dynamic_extent> comboArray, uint8_t defaultIndex, bool disabled = false, const char* disabledTooltipText = "", uint8_t disabledValue = -1);
-    
+
     void PaddedText(const char* text, bool padTop = true, bool padBottom = true);
-    
+
     bool EnhancementSliderInt(const char* text, const char* id, const char* cvarName, int min, int max, const char* format, int defaultValue = 0, bool PlusMinusButton = true, bool disabled = false, const char* disabledTooltipText = "");
     bool PaddedEnhancementSliderInt(const char* text, const char* id, const char* cvarName, int min, int max, const char* format, int defaultValue = 0, bool PlusMinusButton = true, bool padTop = true, bool padBottom = true, bool disabled = false, const char* disabledTooltipText = "");
     bool EnhancementSliderFloat(const char* text, const char* id, const char* cvarName, float min, float max, const char* format, float defaultValue, bool isPercentage, bool PlusMinusButton = true, bool disabled = false, const char* disabledTooltipText = "");
     bool PaddedEnhancementSliderFloat(const char* text, const char* id, const char* cvarName, float min, float max, const char* format, float defaultValue, bool isPercentage, bool PlusMinusButton = true, bool padTop = true, bool padBottom = true, bool disabled = false, const char* disabledTooltipText = "");
-    
+
     bool EnhancementRadioButton(const char* text, const char* cvarName, int id);
 
     bool DrawResetColorButton(const char* cvarName, ImVec4* colors, ImVec4 defaultcolors, bool has_alpha);
@@ -141,7 +141,7 @@ namespace UIWidgets {
     void PushStyleButton(const ImVec4& color = Colors::Gray);
     void PopStyleButton();
     bool Button(const char* label, const ButtonOptions& options = {});
-    bool WindowButton(const char* label, const char* cvarName, std::shared_ptr<LUS::GuiWindow> windowPtr, const ButtonOptions& options = {});
+    bool WindowButton(const char* label, const char* cvarName, std::shared_ptr<Ship::GuiWindow> windowPtr, const ButtonOptions& options = {});
 
     struct CheckboxOptions {
         const ImVec4 color = Colors::Indigo;

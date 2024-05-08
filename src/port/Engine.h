@@ -18,7 +18,7 @@ class GameEngine {
   public:
     static GameEngine* Instance;
 
-    std::shared_ptr<LUS::Context> context;
+    std::shared_ptr<Ship::Context> context;
 
     GameEngine();
     static void Create();

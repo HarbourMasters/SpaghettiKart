@@ -4,7 +4,7 @@
 #include <Resource.h>
 
 namespace SF64 {
-class Script : public LUS::Resource<uint16_t*> {
+class Script : public Ship::Resource<uint16_t*> {
   public:
     using Resource::Resource;
 
@@ -14,7 +14,7 @@ class Script : public LUS::Resource<uint16_t*> {
     std::vector<uint16_t*> mScripts;
 };
 
-class ScriptCMDs : public LUS::Resource<uint16_t> {
+class ScriptCMDs : public Ship::Resource<uint16_t> {
   public:
     using Resource::Resource;
 

@@ -10,12 +10,12 @@ extern "C" void gSPDisplayList(Gfx* pkt, Gfx* dl) {
     char* imgData = (char*)dl;
 
     if (GameEngine_OTRSigCheck(imgData) == 1) {
-        auto resource = LUS::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
+        auto resource = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(imgData);
         auto res = std::static_pointer_cast<LUS::DisplayList>(resource);
         dl = &res->Instructions[0];
-        dl->words.trace.file = imgData;
-        dl->words.trace.idx = 0;
-        dl->words.trace.valid = true;
+        // dl->words.trace.file = imgData;
+        // dl->words.trace.idx = 0;
+        // dl->words.trace.valid = true;
     }
 
     __gSPDisplayList(pkt, dl);
@@ -34,7 +34,7 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
     auto data = reinterpret_cast<char*>(texAddr);
 
     if (texAddr != 0 && GameEngine_OTRSigCheck(data)) {
-        const auto res = LUS::Context::GetInstance()->GetResourceManager()->LoadResource(data);
+        const auto res = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(data);
         const auto type = static_cast<LUS::ResourceType>(res->GetInitData()->Type);
 
         switch(type) {

@@ -23,11 +23,11 @@ struct LimbData {
     /* 0x01C */ LimbData* child;
 }; // size = 0x20
 
-class Limb : public LUS::Resource<LimbData> {
+class Limb : public Ship::Resource<LimbData> {
   public:
     using Resource::Resource;
 
-    Limb() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    Limb() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     LimbData* GetPointer();
     size_t GetPointerSize();

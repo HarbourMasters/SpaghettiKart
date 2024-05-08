@@ -11,11 +11,11 @@ struct Vec3sData {
     Vec3sData(int16_t x, int16_t y, int16_t z) : x(x), y(y), z(z) {}
 };
 
-class Vec3sArray : public LUS::Resource<Vec3sData> {
+class Vec3sArray : public Ship::Resource<Vec3sData> {
   public:
     using Resource::Resource;
 
-    Vec3sArray() : Resource(std::shared_ptr<LUS::ResourceInitData>()) {}
+    Vec3sArray() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
 
     Vec3sData* GetPointer();
     size_t GetPointerSize();
