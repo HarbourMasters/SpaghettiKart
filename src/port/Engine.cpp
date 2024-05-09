@@ -7,6 +7,7 @@
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/Vec3fFactory.h"
 #include "resource/importers/Vec3sFactory.h"
+#include <Fast3D/Fast3dWindow.h>
 
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
@@ -79,9 +80,10 @@ void GameEngine::StartFrame() const{
     this->context->GetWindow()->StartFrame();
 }
 
-void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
-    this->context->GetWindow()->MainLoop(run_one_game_iter);
-}
+// void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
+//     //this->context->GetWindow()->MainLoop(run_one_game_iter);
+//     Instance->context->GetWindow()->MainLoop(run_one_game_iter);
+// }
 
 void GameEngine::RunCommands(Gfx* Commands) {
     gfx_run(Commands, {});
@@ -95,8 +97,11 @@ void GameEngine::RunCommands(Gfx* Commands) {
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
     RunCommands(commands);
-    Instance->context->GetWindow()->SetTargetFps(30);
-    Instance->context->GetWindow()->SetMaximumFrameLatency(1);
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+      if (wnd != nullptr) {
+        wnd->SetTargetFps(30);
+        wnd->SetMaximumFrameLatency(1);
+    }
 }
 
 extern "C" uint32_t GameEngine_GetSampleRate() {
