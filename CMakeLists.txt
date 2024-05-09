@@ -34,7 +34,10 @@ set(VCPKG_TARGET_TRIPLET x64-mingw-static)
 endif()
 
 vcpkg_bootstrap()
-vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3)
+vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3 spdlog)
+
+vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 sdl2-net glew glfw3 nlohmann-json tinyxml2)
+
 endif()
 
 if (MSVC)

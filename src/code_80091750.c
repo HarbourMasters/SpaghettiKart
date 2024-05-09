@@ -2462,7 +2462,7 @@ void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
 void func_80094A64(struct GfxPool *pool) {
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
     guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -4720,7 +4720,7 @@ void func_8009CA6C(s32 arg0) {
          (find_8018D9E0_entry(0x000000AC) == NULL) &&
          (find_8018D9E0_entry(0x000000B0) == NULL))) {
         var_a1 = 0;
-        gSPDisplayList(gDisplayListHead++, D_0D0076F8);
+        gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
         if ((arg0 != 4) && (gIsGamePaused != 0)) {
             var_a1 = 1;
         }

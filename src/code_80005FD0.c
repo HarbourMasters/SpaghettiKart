@@ -3,6 +3,7 @@
 #include <defines.h>
 #include <stubs.h>
 #include "course_metadata.h"
+#include <align_asset_macro.h>
 
 #include "code_80005FD0.h"
 #include "math_util.h"
@@ -7582,7 +7583,7 @@ UNUSED void func_8001C42C(void) {
             D_800DDB20 = 0;
         }
         func_80057C60();
-        gSPDisplayList(gDisplayListHead++, D_0D0076F8);
+        gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
         func_80057CE4();
     }
 }

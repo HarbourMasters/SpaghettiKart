@@ -25,6 +25,8 @@ typedef struct {
     char unk_18[0x8];
 } struct_D_8018CE10; // size = 0x20
 
+extern Gfx DD_0D0076F8[];
+
 /** @cond */
 
 void func_8005C674(s8, s16 *, s16 *, s16 *);

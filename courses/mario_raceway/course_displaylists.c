@@ -6,7 +6,7 @@
 #include "course_displaylists.h"
 #include <assets/other_textures.h>
 #include <common_structs.h>
-#include <assets/mario_raceway_vtx.h>
+#include <assets/mario_raceway_vertices.h>
 
 Gfx d_course_mario_raceway_packed_dl_0[] =
 {
