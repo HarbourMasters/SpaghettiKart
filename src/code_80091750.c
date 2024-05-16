@@ -2554,7 +2554,6 @@ void func_80094C60(void) {
             add_8018D9E0_entry(0x000000D9, 0, 0, 0x0A);
             break;
         case START_MENU:
-        // todo: figure this out. 
             add_8018D9E0_entry(2, 0, 0, 4);
             add_8018D9E0_entry(1, 0, 0, 0);
             add_8018D9E0_entry(0x000000FB, 0, 0, 0);
@@ -3809,7 +3808,7 @@ void func_80099A94(MkTexture *arg0, s32 arg1) {
 // Something's up with the handling of `_textures_0aSegmentRomStart`, I don't know how to fix it
 void func_80099AEC(void) {
     s8 var_s4;
-    s32 var_s0;
+    s32 size;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     s32 huh;
@@ -3820,29 +3819,29 @@ void func_80099AEC(void) {
     MkTexture *temp_s2;
     struct_8018E060_entry *var_s1;
 
-    if (gGamestate == 4) {
+    if (gGamestate == RACING) {
         sp60 = 0x00000500;
     } else {
         sp60 = 0x00001000;
     }
 
     var_s4 = 0;
-    var_s1 = D_8018E060;
+    var_s1 = &D_8018E060[0];
     temp_s2 = var_s1->texture;
 
     if (temp_s2 == NULL) return;
 
     huh = temp_s2->size;
     if (huh != 0) {
-        var_s0 = huh;
+        size = huh;
     } else {
-        var_s0 = 0x1400;
+        size = 0x1400;
     }
-    if (var_s0 % 8) {
-        var_s0 = ((var_s0 / 8) * 8) + 8;
+    if (size % 8) {
+        size = ((size / 8) * 8) + 8;
     }
-    osInvalDCache(D_8018D9B4, var_s0);
-    //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    osInvalDCache(D_8018D9B4, size);
+    //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, size, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
@@ -3851,18 +3850,18 @@ void func_80099AEC(void) {
             temp_s2 = (var_s1 + 1)->texture;
             huh = (var_s1 + 1)->texture->size;
             if (huh != 0) {
-                var_s0 = huh;
+                size = huh;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4 + sp60*4, var_s0);
-            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
+            osInvalDCache(D_8018D9B4 + sp60*4, size);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, size, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
 
         var_s1->texture = NULL;
         var_s1++;
@@ -3874,18 +3873,18 @@ void func_80099AEC(void) {
             temp_s2 = (var_s1 + 1)->texture;
             huh = (var_s1 + 1)->texture->size;
             if (huh != 0) {
-                var_s0 = huh;
+                size = huh;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4, var_s0);
-            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
+            osInvalDCache(D_8018D9B4, size);
+            //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, size, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;

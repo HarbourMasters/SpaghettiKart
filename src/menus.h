@@ -49,7 +49,7 @@ extern f32 D_8018EDDC;
 extern s32 D_8018EDE0;
 
 extern s8 gCharacterGridSelections[];
-extern bool D_8018EDE8[];
+extern s8 D_8018EDE8[];
 extern s8 D_8018EDEC;
 extern s8 gMainMenuSelectionDepth;
 extern s8 D_8018EDEE;

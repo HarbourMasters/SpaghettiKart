@@ -1183,6 +1183,11 @@ void update_gamestate(void) {
 }
 
 void thread5_game_loop(void) {
+
+    if (GfxDebuggerIsDebugging()) {
+        Graphics_PushFrame(gGfxPool->gfxPool);
+        return;
+    }
     setup_game_memory();
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);

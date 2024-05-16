@@ -52,16 +52,16 @@ s32 render_set_position(Mat4 arg0, s32 arg1) {
     mtxf_to_mtx(&gGfxPool->mtxObject[gMatrixObjectCount], arg0);
     switch (arg1) {                                 /* irregular */
         case 0:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, &gGfxPool->mtxObject[gMatrixObjectCount++], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             break;
         case 1:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]), G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, &gGfxPool->mtxObject[gMatrixObjectCount++], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             break;
         case 3:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, &gGfxPool->mtxObject[gMatrixObjectCount++], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             break;
         case 2:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gDisplayListHead++, &gGfxPool->mtxObject[gMatrixObjectCount++], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             break;
     }
     return 1;

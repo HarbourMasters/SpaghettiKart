@@ -234,7 +234,7 @@ void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
     mtx[2][1] = D_80287500[1][2] * arg2;
     mtx[2][2] = D_80287500[2][2] * arg2;
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxEffect[gMatrixEffectCount], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void render_fireworks(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
