@@ -1152,10 +1152,6 @@ s32 D_800E84A0[] = {
     0x13, 0x13, 0x13, 0x13,
 };
 
-Vtx *D_800E84C0[] = {
-    &D_02007BB8[0], &D_02007BB8[18], &D_02007BB8[36],
-};
-
 Gfx *D_800E84CC[] = {
     D_02007838, D_02007858, D_02007878, D_02007898,
     D_020078B8, D_020078D8, D_020078F8, D_02007918,
@@ -1609,6 +1605,16 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 a, b, c, d;
     Vtx *vtx;
 
+    Vtx *v1 = (Vtx *) LOAD_ASSET(D_02007BB8);
+    //Vtx *v2 = (Vtx *) LOAD_ASSET(D_02007CD8);
+    //Vtx *v3 = (Vtx *) LOAD_ASSET(D_02007DF8);
+
+    Vtx *D_800E84C0[] = {
+        &v1[0],
+        &v1[18],
+        &v1[36],
+    };
+
     if ((arg0 < 4) || (arg0 >= 6)) { return; }
 
     idx = (((arg0 * 4) + ((gGlobalTimer % 2) * 2)) - 6);
@@ -1620,7 +1626,14 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     }
 
     for (i = 0; i < 3; i++) {
-        vtx = (Vtx *) segmented_to_virtual_dupe_2(D_800E84C0[i]);
+        if (i == 0) {
+            vtx = (Vtx *) &v1[0];
+        } else if (i == 1) {
+            vtx = (Vtx *) &v1[18];
+        } else if (i == 2) {
+            vtx = (Vtx *) &v1[36];
+        }
+        //vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
 
         temp_v1 = (*arg1 * 2) + 2;
 
@@ -2391,6 +2404,7 @@ void func_800942D0(void) {
     s32 var_s2;
     s32 thing;
     test = &gGfxPool->mtxObject[0];
+    Gfx * a_D_02007F60 = LOAD_ASSET(D_02007F60);
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     guRotate(test, D_8018EDC8, 1.0f, 0.0f, 0.0f);
@@ -2401,7 +2415,7 @@ void func_800942D0(void) {
     gSPMatrix(gDisplayListHead++, test++, G_MTX_PUSH   | G_MTX_MUL | G_MTX_MODELVIEW);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
-    gSPDisplayList(gDisplayListHead++, D_02007F60);
+    gSPDisplayList(gDisplayListHead++, a_D_02007F60);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     if (D_800E8530 > 0) {
         var_f26 = D_800E8534;
@@ -2469,7 +2483,7 @@ void func_80094A64(struct GfxPool *pool) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
     func_80094C60();
     func_80092290(4, D_8018E850, D_8018E858);
-    func_80092290(5, &D_8018E850[1], &D_8018E858[1]);
+    func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
     func_80099A70();
     func_8009C918();
     switch (gMenuSelection) {
@@ -2757,29 +2771,22 @@ Gfx *draw_flash_select_case_fast(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx
 
 Gfx *func_800959F8(Gfx *displayListHead, Vtx *arg1) {
     s32 index;
+    Vtx *a_D_02007BB8 = (Vtx *) LOAD_ASSET(D_02007BB8);
+    //Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
+   // Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
 
     if ((s32) gTextColor < TEXT_BLUE_GREEN_RED_CYCLE_1) {
         index = gTextColor;
     } else {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
-#ifdef AVOID_UB
-    if (arg1 == D_02007BB8) {
+    if (arg1 == &a_D_02007BB8[0]) {
         gSPDisplayList(displayListHead++, D_800E84CC[index]);
-    } else if (arg1 == &D_02007BB8[18]) {
+    } else if (arg1 == &a_D_02007BB8[18]) {
         gSPDisplayList(displayListHead++, D_800E84EC[index]);
-    } else if (arg1 == &D_02007BB8[36]) {
+    } else if (arg1 == &a_D_02007BB8[36]) {
         gSPDisplayList(displayListHead++, D_800E850C[index]);
     }
-#else
-    if (arg1 == D_02007BB8) {
-        gSPDisplayList(displayListHead++, D_800E84CC[index]);
-    } else if (arg1 == D_02007CD8) {
-        gSPDisplayList(displayListHead++, D_800E84EC[index]);
-    } else if (arg1 == D_02007DF8) {
-        gSPDisplayList(displayListHead++, D_800E850C[index]);
-    }
-#endif
 
 
     return displayListHead;
@@ -2844,6 +2851,10 @@ Gfx *func_80095BD0(Gfx *displayListHead, u8 *arg1, f32 arg2, f32 arg3, u32 arg4,
     Vtx *var_a1;
     Mtx *sp28;
 
+    Vtx *a_D_02007BB8 = (Vtx *) LOAD_ASSET(D_02007BB8);
+    //Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
+    //Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
+
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
         goto func_80095BD0_label1;
@@ -2863,16 +2874,16 @@ func_80095BD0_label2:
     gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
     default:
-        var_a1 = &D_02007BB8[18];
+        var_a1 = &a_D_02007BB8[18];
         break;
     case 16:
-        var_a1 = &D_02007BB8[18];
+        var_a1 = &a_D_02007BB8[18];
         break;
     case 26:
-        var_a1 = D_02007BB8;
+        var_a1 = &a_D_02007BB8[0];
         break;
     case 30:
-        var_a1 = &D_02007BB8[36];
+        var_a1 = &a_D_02007BB8[36];
         break;
     }
 
