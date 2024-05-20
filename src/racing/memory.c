@@ -12,6 +12,8 @@
 #include "math_util.h"
 #include "courses/courseTable.h"
 #include "defines.h"
+#include <assets/mario_raceway_displaylists.h>
+#include <assets/mario_raceway_vertices.h>
 
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
@@ -73,7 +75,12 @@ void *segmented_to_virtual(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    return (void *) ((gSegmentTable[segment] + offset) | 0x80000000);
+    printf("0x%llX\n", addr);
+    printf("0x%X\n", segment);
+    printf("0x%X\n", offset);
+
+
+    return (void *) ((gSegmentTable[segment] + offset));
 }
 
 void move_segment_table_to_dmem(void) {
@@ -415,21 +422,15 @@ uintptr_t MIO0_0F(u8 *arg0, uintptr_t arg1, uintptr_t arg2) {
     return oldHeapEndPtr;
 }
 
-void func_802A86A8(CourseVtx *data, uintptr_t arg1) {
-    CourseVtx *courseVtx = data;
-    Vtx *vtx;
+void func_802A86A8(CourseVtx *courseVtx, Vtx *vtx, size_t arg1) {
     s32 tmp = ALIGN16(arg1 * 0x10);
-#ifdef AVOID_UB
-    uintptr_t i;
-#else
-    s32 i;
-#endif
+    size_t i;
     s8 temp_a0;
     s8 temp_a3;
     s8 flags;
 
-    gHeapEndPtr -= tmp;
-    vtx = (Vtx *) gHeapEndPtr;
+    //gHeapEndPtr -= tmp;
+    //vtx = (Vtx *) gHeapEndPtr;
 
     // s32 to uintptr_t comparison required for matching.
     for (i = 0; i < arg1; i++) {
@@ -469,7 +470,7 @@ void decompress_vtx(CourseVtx *arg0, uintptr_t vertexCount) {
     gNextFreeMemoryAddress += size;
 
     mio0decode(vtxCompressed, (u8 *) freeSpace);
-    func_802A86A8((CourseVtx *) freeSpace, vertexCount);
+    //func_802A86A8((CourseVtx *) freeSpace, vertexCount);
     set_segment_base_addr(4, (void *) gHeapEndPtr);
 }
 
@@ -961,18 +962,19 @@ UNUSED void func_802A9AEC(void) {
  * This issue is prevented so long as the packed file adheres to correct opcodes and unpack code
  * increments the file pointer the correct number of times.
  */
-void displaylist_unpack(uintptr_t *data, uintptr_t finalDisplaylistOffset, uintptr_t arg2) {
+
+void displaylist_unpack(Gfx *gfx, uintptr_t *data, uintptr_t arg2) {
     u8 *packed_dl = data;
 
-    Gfx *gfx;
     uintptr_t addr;
 
     u8 opcode;
 
-    finalDisplaylistOffset = ALIGN16(finalDisplaylistOffset) + 8;
-    gHeapEndPtr -= finalDisplaylistOffset;
-    addr = gHeapEndPtr;
-    gfx = (Gfx *) gHeapEndPtr;
+    // finalDisplaylistOffset = ALIGN16(finalDisplaylistOffset) + 8;
+    // gHeapEndPtr -= finalDisplaylistOffset;
+    // addr = gHeapEndPtr;
+    // gfx = (Gfx *) gHeapEndPtr;
+
     sGfxSeekPosition = 0;
     sPackedSeekPosition = 0;
 
@@ -1251,7 +1253,7 @@ void displaylist_unpack(uintptr_t *data, uintptr_t finalDisplaylistOffset, uintp
                 break;
         }
     }
-    set_segment_base_addr(0x7, (void *) addr);
+    //set_segment_base_addr(0x7, (void *) addr);
 }
 
 struct UnkStr_802AA7C8 {
@@ -1323,6 +1325,28 @@ void *decompress_segments(u8 *start, u8 *end) {
  * @param courseId
 */
 void load_course(s32 courseId) {
+    printf("Loading Course Data\n");
+
+    // Extract packed DLs
+    u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
+    Gfx *gfx = (Gfx *) allocate_memory(0x6938); // Size of unpacked DLs
+    displaylist_unpack(gfx, packed, 0);
+    gSegmentTable[7] = &gfx[0];
+
+    // Convert course vtx to vtx
+    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
+    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
+    func_802A86A8(cvtx, vtx, 5757);
+    gSegmentTable[4] = &vtx[0];
+
+
+
+
+//    __gSPSegment(gDisplayListHead++, 7, &gfx);
+
+
+    //printf("Course Data Loaded!\n");
+
     // Future implementation for Extra mode and course stretching.
 
     // if (gIsMirrorMode) {

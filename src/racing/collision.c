@@ -1998,10 +1998,12 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
 
         if (opcode == (G_DL << 24)) {
             // G_DL's hi contains an addr to another DL.
-            find_and_set_vertex_data((Gfx *) hi, surfaceType, sectionId);
+            Gfx *dl = segmented_to_virtual(hi);
+            printf("0x%llX\n", &dl);
+            find_and_set_vertex_data((Gfx *) (dl), surfaceType, sectionId);
 
         } else if (opcode == (G_VTX << 24)) {
-            set_vtx_buffer(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+            set_vtx_buffer(segmented_to_virtual(hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
 
         } else if (opcode == (G_TRI1 << 24)) {
             D_8015F58C += 1;

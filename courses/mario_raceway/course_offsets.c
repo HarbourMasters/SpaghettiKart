@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/mario_raceway_data.h>
 
 const course_texture mario_raceway_textures[] = {
     {gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0},

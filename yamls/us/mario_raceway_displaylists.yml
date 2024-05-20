@@ -1,0 +1,16 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x899104
+  no_compression: true
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+d_course_mario_raceway_packed_dls:
+  symbol: d_course_mario_raceway_packed_dls
+  type: blob
+  offset: 0x899104
+  size: 0x23FD

@@ -10,6 +10,6 @@
       - '#include <libultra/gbi.h>'
 d_course_mario_raceway_vertex:
   symbol: d_course_mario_raceway_vertex
-  type: mk64:course_vtx
-  count: 5757
+  type: blob
+  size: 0x13AD6
   offset: 0x0

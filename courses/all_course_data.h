@@ -7,7 +7,6 @@
 #include "courses/skyscraper/course_data.h"
 #include "courses/choco_mountain/course_data.h"
 #include "courses/frappe_snowland/course_data.h"
-#include "courses/mario_raceway/course_data.h"
 #include "courses/toads_turnpike/course_data.h"
 #include "courses/kalimari_desert/course_data.h"
 #include "courses/koopa_troopa_beach/course_data.h"

@@ -1,8 +1,8 @@
 #include <actors.h>
 #include <main.h>
 #include <libultra/gbi.h>
-#include "courses/mario_raceway/course_data.h"
 #include "courses/royal_raceway/course_data.h"
+#include <assets/mario_raceway_data.h>
 
 /**
  * @brief Renders the piranha plant actor.
@@ -110,7 +110,7 @@ void render_actor_piranha_plant(Camera *arg0, Mat4 arg1, struct PiranhaPlant *ar
 
 
         if (gCurrentCourseId == COURSE_MARIO_RACEWAY) {
-            gSPDisplayList(gDisplayListHead++, &d_course_mario_raceway_dl_piranha_plant);
+            gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_piranha_plant);
         } else {
             gSPDisplayList(gDisplayListHead++, &d_course_royal_raceway_dl_piranha_plant);
         }

@@ -1,6 +1,7 @@
 #include "data/path_spawn_metadata.h"
 #include "courses/all_course_data.h"
 #include <assets/ceremony_data.h>
+#include <assets/mario_raceway_data.h>
 
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour *gKartAIBehaviourLUT[] = {
