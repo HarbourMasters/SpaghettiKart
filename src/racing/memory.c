@@ -75,10 +75,14 @@ void *segmented_to_virtual(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    printf("0x%llX\n", addr);
-    printf("0x%X\n", segment);
-    printf("0x%X\n", offset);
+    return (void *) ((gSegmentTable[segment] + offset));
+}
 
+void *segmented_gfx_to_virtual(const void *addr) {
+    size_t segment = (uintptr_t) addr >> 24;
+    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
+
+    offset *= (sizeof(uintptr_t) / 2);
 
     return (void *) ((gSegmentTable[segment] + offset));
 }

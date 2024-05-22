@@ -185,16 +185,16 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
 
 void func_80291198(void) {
     // d_course_mario_raceway_packed_dl_1140
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07001140))); // 
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07001140))); // 
 }
 
 void func_802911C4(void) {
     if (gScreenModeSelection == SCREEN_MODE_1P) {
         // d_course_mario_raceway_packed_dl_8E8
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_to_virtual(0x070008E8)));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x070008E8)));
     } else {
         // d_course_mario_raceway_packed_dl_2D68
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_to_virtual(0x07002D68)));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x07002D68)));
     }
 }
 
@@ -517,7 +517,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_mario_raceway_packed_dl_3050
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07003050)));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003050)));
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -601,25 +601,25 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_mario_raceway_packed_dl_3508
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07003508)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003508)));
     // d_course_mario_raceway_packed_dl_3240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07003240)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003240)));
     // d_course_mario_raceway_packed_dl_14A0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x070014A0)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070014A0)));
     printf("LOADING SURFACE MAP\n");
     load_surface_map(&mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_mario_raceway_packed_dl_450
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07000450)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000450)));
     // d_course_mario_raceway_packed_dl_240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07000240)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000240)));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_mario_raceway_packed_dl_E0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x070000E0)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070000E0)));
     // d_course_mario_raceway_packed_dl_160
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_to_virtual(0x07000160)));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000160)));
     printf("SURFACE MAP LOADED\n");
 }
 
@@ -1424,13 +1424,13 @@ void func_80295D88(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // d_course_mario_raceway_packed_dl_1140
-            set_vertex_data_with_defaults((Gfx *) segmented_to_virtual(0x07001140));
+            set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07001140));
             if (gScreenModeSelection == SCREEN_MODE_1P) {
                 // d_course_mario_raceway_packed_dl_8E8
-                set_vertex_data_with_defaults((Gfx *) segmented_to_virtual(0x070008E8));
+                set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x070008E8));
             } else {
                 // d_course_mario_raceway_packed_dl_2D68
-                set_vertex_data_with_defaults((Gfx *) segmented_to_virtual(0x07002D68));
+                set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07002D68));
             }
             TrackSections *a_d_course_mario_raceway_addr = LOAD_ASSET(d_course_mario_raceway_addr);
             parse_course_displaylists(d_course_mario_raceway_addr);
