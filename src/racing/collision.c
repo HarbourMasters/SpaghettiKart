@@ -1986,38 +1986,38 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
     uintptr_t lo;
     uintptr_t hi;
     s32 i;
-    printf("Initial\n");
-    printf("ptr 0x%llX\n", &addr);
-    printf("w0 0x%llX\n", addr->words.w0);
-    printf("w1 0x%llX\n", addr->words.w1);
-    printf("----loop----\n");
+    //printf("Initial\n");
+    //printf("ptr 0x%llX\n", &addr);
+    //printf("w0 0x%llX\n", addr->words.w0);
+    //printf("w1 0x%llX\n", addr->words.w1);
+    //printf("----loop----\n");
     Gfx *gfx = (Gfx *) addr;
     D_8015F6FA = 0;
     D_8015F6FC = 0;
 
-    u8 *orig = segmented_gfx_to_virtual(0x07000000);
+    //u8 *orig = segmented_gfx_to_virtual(0x07000000);
 
-    printf("\n\nORIG:\n");
-    for (size_t i = 0; i < 100; i++) {
-        printf(" 0x%X ", orig[i]);
-    }
+    // printf("\n\nORIG:\n");
+    // for (size_t i = 0; i < 100; i++) {
+    //     printf(" 0x%X ", orig[i]);
+    // }
 
     for (i = 0; i < 0x1FFF; i++) {
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo);
         
-        printf("ptr 0x%llX\n", &addr);
-        printf("op 0x%llX\n", opcode);
-        printf("w0 0x%X\n", lo);
-        printf("w1 0x%X\n", hi);
+        //  printf("ptr 0x%llX\n", &addr);
+        //  printf("op 0x%llX\n", opcode);
+        //  printf("w0 0x%X\n", lo);
+        //  printf("w1 0x%X\n", hi);
 
         if (opcode == (G_DL << 24)) {
             // G_DL's hi contains an addr to another DL.
             Gfx *dl = segmented_gfx_to_virtual(hi);
-            printf("DL: 0x%llX\n", &dl);
-                printf("  w0 0x%X\n", dl->words.w0);
-                printf("  w1 0x%X\n", dl->words.w1);
+            // printf("DL: 0x%llX\n", &dl);
+            //     printf("  w0 0x%X\n", dl->words.w0);
+            //     printf("  w1 0x%X\n", dl->words.w1);
 
             find_and_set_vertex_data((Gfx *) (dl), surfaceType, sectionId);
 
@@ -2036,7 +2036,7 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
             D_8015F58C += 2;
             set_vtx_from_quadrangle(hi, surfaceType, sectionId);
 
-        } else if (opcode == (G_ENDDL << 24)) {
+        } else if (opcode == (int32_t)(G_ENDDL << 24)) {
             break;
         }
 

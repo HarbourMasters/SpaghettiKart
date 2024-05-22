@@ -78,11 +78,17 @@ void *segmented_to_virtual(const void *addr) {
     return (void *) ((gSegmentTable[segment] + offset));
 }
 
+void *segment_offset_to_virtual(uint32_t segment, uint32_t offset) {
+    return (void *) (gSegmentTable[segment] + ( (offset / 8) * sizeof(Gfx) ) );
+}
+
 void *segmented_gfx_to_virtual(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    offset *= (sizeof(uintptr_t) / 2);
+    offset = (offset / 8) * sizeof(Gfx);
+
+    printf("seg_gfx_to_virt: 0x%llX\n",addr);
 
     return (void *) ((gSegmentTable[segment] + offset));
 }
@@ -967,10 +973,10 @@ UNUSED void func_802A9AEC(void) {
  * increments the file pointer the correct number of times.
  */
 
-void displaylist_unpack(Gfx *gfx, uintptr_t *data, uintptr_t arg2) {
+void displaylist_unpack(Gfx *gfx, u8 *data, uintptr_t arg2) {
     u8 *packed_dl = data;
 
-    uintptr_t addr;
+    //uintptr_t addr;
 
     u8 opcode;
 
@@ -1333,8 +1339,9 @@ void load_course(s32 courseId) {
 
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
-    Gfx *gfx = (Gfx *) allocate_memory(0x6938); // Size of unpacked DLs
+    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3366); // Size of unpacked DLs
     displaylist_unpack(gfx, packed, 0);
+
     gSegmentTable[7] = &gfx[0];
 
     // Convert course vtx to vtx

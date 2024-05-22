@@ -45,6 +45,7 @@ void *get_next_available_memory_addr(uintptr_t);
 uintptr_t set_segment_base_addr(s32, void*);
 void *get_segment_base_addr(s32);
 void *segmented_to_virtual(const void *);
+void *segment_offset_to_virtual(uint32_t, uint32_t);
 void *segmented_gfx_to_virtual(const void *);
 void  move_segment_table_to_dmem(void);
 void  initialize_memory_pool(uintptr_t, uintptr_t);

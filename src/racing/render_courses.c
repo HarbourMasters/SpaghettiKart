@@ -47,7 +47,18 @@ s32 func_80290C20(Camera *camera) {
 }
 
 void parse_course_displaylists(TrackSections *addr) {
+    TrackSections *first = addr;
     TrackSections *section = addr;
+
+    while (addr->addr != 0) {
+        section->addr = segmented_gfx_to_virtual(addr->addr);
+        addr++;
+        section++;
+    }
+    section = first;
+    //section->surfaceType = addr->surfaceType;
+    //section->flags = addr->flags;
+    //section->sectionId = addr->sectionId;
 
     while(section->addr != 0) {
         if (section->flags & 0x8000) {
@@ -1402,6 +1413,14 @@ void func_80295D6C(void) {
     D_8015F6F6 = -3000;
 }
 
+typedef struct {
+    uint16_t segment;
+    uint16_t offset;
+    uint8_t surfaceType;
+    uint8_t sectionId;
+    uint16_t flags;
+} TrackSectionsI;
+
 void func_80295D88(void) {
     gNumActors = 0;
 
@@ -1432,8 +1451,9 @@ void func_80295D88(void) {
                 // d_course_mario_raceway_packed_dl_2D68
                 set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07002D68));
             }
-            TrackSections *a_d_course_mario_raceway_addr = LOAD_ASSET(d_course_mario_raceway_addr);
-            parse_course_displaylists(d_course_mario_raceway_addr);
+            TrackSections *section = (TrackSections *) LOAD_ASSET(d_course_mario_raceway_addr);
+            
+            parse_course_displaylists(section);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
