@@ -18,6 +18,9 @@
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 
+static u8 sMemoryPool[0xFFFFF]; // Stock memory pool size: 0xAB630
+uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
+
 uintptr_t sPoolFreeSpace;
 struct MainPoolBlock *sPoolListHeadL;
 struct MainPoolBlock *sPoolListHeadR;
@@ -30,6 +33,11 @@ struct UnkStruct_802B8CD4 D_802B8CD4[] = {
 s32 D_802B8CE4 = 0; // pad
 s32 memoryPadding[2];
 
+#define PRINT_MEMPOOL                                                                                  \
+    printf("\nPool Start: 0x%llX, Pool End: 0x%llX, size: 0x%llX\ngNextFreeMemoryAddress: 0x%llX\n\n", sMemoryPool,  \
+           sMemoryPool + sizeof(sMemoryPool), (sMemoryPool + sizeof(sMemoryPool)) - sMemoryPool, gNextFreeMemoryAddress)
+
+
 /**
  * @brief Returns the address of the next available memory location and updates the memory pointer
  * to reference the next location of available memory based provided size to allocate.
@@ -40,6 +48,14 @@ void *get_next_available_memory_addr(uintptr_t size) {
     uintptr_t freeSpace = (uintptr_t) gNextFreeMemoryAddress;
     size = ALIGN16(size);
     gNextFreeMemoryAddress += size;
+
+    if (gNextFreeMemoryAddress > sPoolEnd) {
+        printf("[memory.c] get_next_available_memory_addr(): Memory Pool Out of Bounds! Out of memory!\n");
+        PRINT_MEMPOOL;
+        printf("gNextFreeMemoryAddress 0x%llX\n", gNextFreeMemoryAddress);
+        while(1);
+    }
+
     //printf("\nNEXT MEM ADDR 0x%llX\n\n", freeSpace[0]);
     return (void *) freeSpace;
 }
@@ -106,15 +122,21 @@ void move_segment_table_to_dmem(void) {
  *
  * Default memory size, 701.984 Kilobytes.
 */
-void initialize_memory_pool(uintptr_t poolStart, uintptr_t poolEnd) {
+void initialize_memory_pool() {
+
+    uintptr_t poolStart = sMemoryPool;
+    //uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
+
+    bzero(sMemoryPool, sizeof(sMemoryPool));
 
     poolStart = ALIGN16(poolStart);
     // Truncate to a 16-byte boundary.
-    poolEnd &= ~0xF;
+    sPoolEnd &= ~0xF;
 
-    gFreeMemorySize = (poolEnd - poolStart) - 0x10;
+    gFreeMemorySize = (sPoolEnd - poolStart) - 0x10;
     gNextFreeMemoryAddress = poolStart;
-    int bp = 0;
+
+    PRINT_MEMPOOL;
 }
 
 /**
@@ -125,8 +147,23 @@ void *allocate_memory(uintptr_t size) {
 
     size = ALIGN16(size);
     gFreeMemorySize -= size;
+
+    if (gFreeMemorySize < 0) {
+        printf("[memory.c] allocate_memory(): gFreeMemorySize below zero!\n");
+        printf("gFreeMemorySize: 0x%X", gFreeMemorySize);
+        PRINT_MEMPOOL;
+        while(1);
+    }
+
     freeSpace = (uintptr_t ) gNextFreeMemoryAddress;
     gNextFreeMemoryAddress += size;
+
+    if (gNextFreeMemoryAddress > sPoolEnd) {
+        printf("[memory.c] allocate_memory(): Memory Pool Out of Bounds! Out of memory!\n");
+        PRINT_MEMPOOL;
+        printf("gNextFreeMemoryAddress 0x%llX\n", gNextFreeMemoryAddress);
+        while(1);
+    }
 
     return (void *) freeSpace;
 }

@@ -1,5 +1,6 @@
-#ifndef SOME_DATA_H
-#define SOME_DATA_H
+#ifndef SOME_DATA_HH
+#define SOME_DATA_HH
+// SOME_DATA_HH named this way prevent conflict with <assets/some_data.h>
 
 #include <libultra/gbi.h>
 #include "spline.h"
@@ -18,7 +19,6 @@ extern Vtx D_800E51D0[];
 extern Vtx D_800E5210[];
 extern Vtx gBalloonVertexPlane1[];
 extern Vtx gBalloonVertexPlane2[];
-extern u8 D_800E52D0[];
 extern u8 *gCourseOutlineTextures[];
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];

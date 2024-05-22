@@ -36,6 +36,7 @@
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"
+#include <assets/some_data.h>
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
@@ -3554,7 +3555,7 @@ void func_80053E6C(s32 arg0) {
     s32 objectIndex;
 
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
-    gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
+    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;

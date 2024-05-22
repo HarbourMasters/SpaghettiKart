@@ -48,7 +48,7 @@ void *segmented_to_virtual(const void *);
 void *segment_offset_to_virtual(uint32_t, uint32_t);
 void *segmented_gfx_to_virtual(const void *);
 void  move_segment_table_to_dmem(void);
-void  initialize_memory_pool(uintptr_t, uintptr_t);
+void  initialize_memory_pool(void);
 void *decompress_segments(u8*, u8*);
 void *allocate_memory(uintptr_t);
 void *load_data(uintptr_t, uintptr_t);

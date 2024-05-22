@@ -184,9 +184,12 @@ Vtx gBalloonVertexPlane2[] = {
     {{{ -9, 9, -6 }, 0, { 0, 0 }, {  0xFF, 0xFF, 0xFF, 0xFF }}},
 };
 
-u8 D_800E52D0[] = {
-    #include "assets/code/some_data/gTLUTOnomatopoeia.rgba16.inc.c"
-};
+// Moved to OTR asset see some_data.yml
+// Symbol renamed to gTLUTOnomatopoeia
+//
+// u8 D_800E52D0[] = {
+//     #include "assets/code/some_data/gTLUTOnomatopoeia.rgba16.inc.c"
+// };
 
 u8 *gCourseOutlineTextures[] = {
     gTextureCourseOutlineMarioRaceway, gTextureCourseOutlineChocoMountain, gTextureCourseOutlineBowsersCastle, gTextureCourseOutlineBansheeBoardwalk,

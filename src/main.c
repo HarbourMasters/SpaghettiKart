@@ -508,12 +508,6 @@ void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
     }
 }
 
-static u8 memoryPool[0xAB630];
-
-#define PRINT_MEMPOOL                                                                                  \
-    printf("\nPool Start: 0x%llX, Pool End: 0x%llX, size: 0x%llX\ngNextFreeMemoryAddress: 0x%llX\n\n", memoryPool,  \
-           memoryPool + sizeof(memoryPool), (memoryPool + sizeof(memoryPool)) - memoryPool, gNextFreeMemoryAddress)
-
 /**
  * Setup main segments and framebuffers.
  */
@@ -530,12 +524,9 @@ void setup_game_memory(void) {
 //     set_segment_base_addr(0, (void *) SEG_START);
 
 //     // Memory pool size of 0xAB630
-    bzero(memoryPool, sizeof(memoryPool));
-    initialize_memory_pool(memoryPool, memoryPool + sizeof(memoryPool));
+    initialize_memory_pool();
 
     func_80000BEC();
-
-    PRINT_MEMPOOL;
 
 //     // Initialize trig tables segment
 //     osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
@@ -1165,7 +1156,7 @@ void update_gamestate(void) {
              * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
              * In laymens terms, random_u16() outputs the same value every time.
              */
-            init_segment_racing();
+            //init_segment_racing();
             setup_race();
             break;
         case ENDING:
@@ -1175,7 +1166,7 @@ void update_gamestate(void) {
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            init_segment_racing();
+            //init_segment_racing();
             init_segment_ending_sequences();
             load_credits();
             break;
