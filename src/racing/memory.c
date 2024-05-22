@@ -14,6 +14,7 @@
 #include "defines.h"
 #include <assets/mario_raceway_displaylists.h>
 #include <assets/mario_raceway_vertices.h>
+#include <assert.h>
 
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
@@ -52,8 +53,7 @@ void *get_next_available_memory_addr(uintptr_t size) {
     if (gNextFreeMemoryAddress > sPoolEnd) {
         printf("[memory.c] get_next_available_memory_addr(): Memory Pool Out of Bounds! Out of memory!\n");
         PRINT_MEMPOOL;
-        printf("gNextFreeMemoryAddress 0x%llX\n", gNextFreeMemoryAddress);
-        while(1);
+        assert(false);
     }
 
     //printf("\nNEXT MEM ADDR 0x%llX\n\n", freeSpace[0]);
@@ -152,7 +152,7 @@ void *allocate_memory(uintptr_t size) {
         printf("[memory.c] allocate_memory(): gFreeMemorySize below zero!\n");
         printf("gFreeMemorySize: 0x%X", gFreeMemorySize);
         PRINT_MEMPOOL;
-        while(1);
+        assert(false);
     }
 
     freeSpace = (uintptr_t ) gNextFreeMemoryAddress;
@@ -161,8 +161,7 @@ void *allocate_memory(uintptr_t size) {
     if (gNextFreeMemoryAddress > sPoolEnd) {
         printf("[memory.c] allocate_memory(): Memory Pool Out of Bounds! Out of memory!\n");
         PRINT_MEMPOOL;
-        printf("gNextFreeMemoryAddress 0x%llX\n", gNextFreeMemoryAddress);
-        while(1);
+        assert(false);
     }
 
     return (void *) freeSpace;
