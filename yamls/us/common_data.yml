@@ -10,6 +10,7 @@
     - '#include <libultra/gbi.h>'
     - '#include <libultraship.h>'
     - '#include <common_structs.h>'
+    - '#include <align_asset_macro.h>'
   tables:
     common_texture_hud_place:
       range: [0xD258, 0x14258]

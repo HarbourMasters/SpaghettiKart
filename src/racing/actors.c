@@ -3,6 +3,7 @@
 #include <course_offsets.h>
 #include <macros.h>
 #include <mk64.h>
+#include <align_asset_macro.h>
 #include <sounds.h>
 #include <common_structs.h>
 #include <actor_types.h>

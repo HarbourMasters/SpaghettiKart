@@ -8,7 +8,7 @@
     - '#include <libultraship.h>'
     - '#include <common_structs.h>'
     - '#include <waypoints.h>'
-
+    - '#include <align_asset_macro.h>'
 silver_trophy_dl:
   symbol: silver_trophy_dl
   type: gfx

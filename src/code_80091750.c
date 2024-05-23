@@ -4730,7 +4730,7 @@ void func_8009CA6C(s32 arg0) {
          (find_8018D9E0_entry(0x000000AC) == NULL) &&
          (find_8018D9E0_entry(0x000000B0) == NULL))) {
         var_a1 = 0;
-        gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+        gSPDisplayList(gDisplayListHead++, D_0D0076F8);
         if ((arg0 != 4) && (gIsGamePaused != 0)) {
             var_a1 = 1;
         }

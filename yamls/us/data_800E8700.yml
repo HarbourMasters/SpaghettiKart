@@ -8,6 +8,7 @@
       - '#include <assets/data_800E8700.h>'
     header:
       - '#include <libultraship.h>'
+      - '#include <align_asset_macro.h>'
   tables:
     D_800E8900:
       range: [0x800E8900, 0x800E89C0]

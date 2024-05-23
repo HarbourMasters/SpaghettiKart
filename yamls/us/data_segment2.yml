@@ -8,6 +8,7 @@
       - '#include <common_structs.h>'
       - '#include <assets/data_segment2.h>'
       - '#include <assets/startup_logo.h>'
+      - '#include <align_asset_macro.h>'
     header:
       - '#include <libultraship.h>'
 D_02007650:

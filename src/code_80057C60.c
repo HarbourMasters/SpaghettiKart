@@ -488,25 +488,6 @@ void func_80057DD0(void) {
     }
 }
 
-Gfx DD_0D0076F8[] = {
-    gsDPPipeSync(),
-    gsDPSetCycleType(G_CYC_1CYCLE),
-    gsDPSetTextureLOD(G_TL_TILE),
-    gsDPSetTextureLUT(G_TT_NONE),
-    gsDPSetTextureDetail(G_TD_CLAMP),
-    gsDPSetTexturePersp(G_TP_PERSP),
-    gsDPSetTextureFilter(G_TF_BILERP),
-    gsDPSetTextureConvert(G_TC_FILT),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsDPSetCombineKey(G_CK_NONE),
-    gsDPSetAlphaCompare(G_AC_NONE),
-    gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
-    gsDPSetColorDither(G_CD_DISABLE),
-    gsSPSetGeometryMode(G_SHADE | G_CULL_BACK),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsSPEndDisplayList(),
-};
-
 void func_80057FC4(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
@@ -514,7 +495,7 @@ void func_80057FC4(u32 arg0) {
     if ((gHUDDisable != 0)) {
         return;
     }
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
     set_matrix_hud_screen();
 
     if ((D_801657C8 != 0)){
@@ -548,7 +529,7 @@ void render_object(u32 arg0) {
         return;
     }
 
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
 
     if (D_8018D22C != 0) {
         return;
@@ -657,7 +638,7 @@ void render_player_snow_effect(u32 arg0) {
         return;
     }
 
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
 
     if (D_8018D22C != 0) {
         return;
@@ -839,13 +820,13 @@ void render_snowing_effect(s32 arg0) {
 }
 
 void func_80058BF4(void) {
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
 }
 
 void func_80058C20(u32 arg0) {
 
     D_8018D21C = arg0;
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
 
     if (D_8018D22C == 0) {
         switch (arg0) {
@@ -913,7 +894,7 @@ void func_80058C20(u32 arg0) {
 void render_hud(u32 arg0) {
 
     D_8018D21C = arg0;
-    gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+    gSPDisplayList(gDisplayListHead++, D_0D0076F8);
     if (D_8018D22C == 0) {
         switch (arg0) {
         case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
@@ -1061,7 +1042,7 @@ void func_800591B4(void) {
 
     if ((gHUDDisable == 0) && (D_800DC5B8 != 0)) {
         func_80057C60();
-        gSPDisplayList(gDisplayListHead++, DD_0D0076F8);
+        gSPDisplayList(gDisplayListHead++, D_0D0076F8);
 
         if (gIsHUDVisible != 0) {
             if (D_801657D8 == 0) {

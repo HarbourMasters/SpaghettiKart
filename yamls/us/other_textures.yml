@@ -9,6 +9,7 @@
     - '#include <defines.h>'
     header:
     - '#include <libultraship.h>'
+    - '#include <align_asset_macro.h>'
 sign_shell_shot_0:
   symbol: gTextureSignShellShot0
   type: texture

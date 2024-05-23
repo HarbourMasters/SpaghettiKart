@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <libultra/types.h>
+#include <align_asset_macro.h>
 #include <macros.h>
 #include <common_structs.h>
 #include <segments.h>
