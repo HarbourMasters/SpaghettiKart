@@ -2404,7 +2404,6 @@ void func_800942D0(void) {
     s32 var_s2;
     s32 thing;
     test = &gGfxPool->mtxObject[0];
-    Gfx * a_D_02007F60 = LOAD_ASSET(D_02007F60);
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     guRotate(test, D_8018EDC8, 1.0f, 0.0f, 0.0f);
@@ -2415,7 +2414,7 @@ void func_800942D0(void) {
     gSPMatrix(gDisplayListHead++, test++, G_MTX_PUSH   | G_MTX_MUL | G_MTX_MODELVIEW);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
-    gSPDisplayList(gDisplayListHead++, a_D_02007F60);
+    gSPDisplayList(gDisplayListHead++, D_02007F60);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     if (D_800E8530 > 0) {
         var_f26 = D_800E8534;
