@@ -1,4 +1,6 @@
 :config:
+  external_files:
+    - "yamls/us\\mario_raceway_displaylists.yml"
   segments:
     - [0x06, 0x8284D0]
   header:
