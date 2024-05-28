@@ -1569,9 +1569,9 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     s16 maxY;
     s16 minZ;
 
-    tile->vtxPoly1 = vtx1;
-    tile->vtxPoly2 = vtx2;
-    tile->vtxPoly3 = vtx3;
+    tile->vtxPoly1 = &vtx1;
+    tile->vtxPoly2 = &vtx2;
+    tile->vtxPoly3 = &vtx3;
     if ((tile->vtxPoly1->v.flag == 4) &&
         (tile->vtxPoly2->v.flag == 4) &&
         (tile->vtxPoly3->v.flag == 4)) {
@@ -1729,9 +1729,9 @@ void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 sectionId) {
     u32 vert2 = ( ( triangle & 0x0000FF00 ) >>  8 ) / 2;
     u32 vert3 = (   triangle & 0x000000FF )         / 2;
 
-    Vtx *vtx1 = vtxBuffer[vert1];
-    Vtx *vtx2 = vtxBuffer[vert2];
-    Vtx *vtx3 = vtxBuffer[vert3];
+    Vtx *vtx1 = &vtxBuffer[vert1];
+    Vtx *vtx2 = &vtxBuffer[vert2];
+    Vtx *vtx3 = &vtxBuffer[vert3];
 
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
 }
@@ -1747,13 +1747,14 @@ void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 section
     u32 vert5 = ( ( triangle2 & 0x0000FF00 ) >>  8 ) / 2;
     u32 vert6 = (   triangle2 & 0x000000FF )         / 2;
 
-    Vtx *vtx1 = vtxBuffer[vert1];
-    Vtx *vtx2 = vtxBuffer[vert2];
-    Vtx *vtx3 = vtxBuffer[vert3];
 
-    Vtx *vtx4 = vtxBuffer[vert4];
-    Vtx *vtx5 = vtxBuffer[vert5];
-    Vtx *vtx6 = vtxBuffer[vert6];
+    Vtx *vtx1 = &vtxBuffer[vert1];
+    Vtx *vtx2 = &vtxBuffer[vert2];
+    Vtx *vtx3 = &vtxBuffer[vert3];
+
+    Vtx *vtx4 = &vtxBuffer[vert4];
+    Vtx *vtx5 = &vtxBuffer[vert5];
+    Vtx *vtx6 = &vtxBuffer[vert6];
 
     // Triangle 1
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
@@ -1773,10 +1774,10 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     u32 vert3 = (   line & 0x000000FF )         / 2;
     u32 vert4 = ( ( line & 0xFF000000 ) >> 24 ) / 2;
 
-    vtx1 = vtxBuffer[vert1];
-    vtx2 = vtxBuffer[vert2];
-    vtx3 = vtxBuffer[vert3];
-    vtx4 = vtxBuffer[vert4];
+    vtx1 = &vtxBuffer[vert1];
+    vtx2 = &vtxBuffer[vert2];
+    vtx3 = &vtxBuffer[vert3];
+    vtx4 = &vtxBuffer[vert4];
 
     // Triangle 1
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
@@ -1791,7 +1792,7 @@ void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
     u32 i;
     Vtx *vtx = (Vtx *) addr;
     for (i = 0; i < numVertices; i++) {
-        vtxBuffer[bufferIndex] = vtx;
+        vtxBuffer[bufferIndex] = &vtx;
         vtx++;
         bufferIndex++;
     }
@@ -2014,15 +2015,15 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
 
         if (opcode == (G_DL << 24)) {
             // G_DL's hi contains an addr to another DL.
-            Gfx *dl = segmented_gfx_to_virtual(hi);
+            //Gfx *dl = segmented_gfx_to_virtual(hi);
             // printf("DL: 0x%llX\n", &dl);
             //     printf("  w0 0x%X\n", dl->words.w0);
             //     printf("  w1 0x%X\n", dl->words.w1);
 
-            find_and_set_vertex_data((Gfx *) (dl), surfaceType, sectionId);
+            find_and_set_vertex_data((Gfx *) (hi), surfaceType, sectionId);
 
         } else if (opcode == (G_VTX << 24)) {
-            set_vtx_buffer(segmented_gfx_to_virtual(hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+            set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
 
         } else if (opcode == (G_TRI1 << 24)) {
             D_8015F58C += 1;

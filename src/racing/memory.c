@@ -550,7 +550,7 @@ void unpack_displaylist(Gfx *arg0, u8 *args, UNUSED s8 opcode) {
     uintptr_t temp_t7 = ((args[sPackedSeekPosition++]) << 8 | temp_v0) * 8;
     arg0[sGfxSeekPosition].words.w0 = 0x06000000;
     // Segment seven addr
-    arg0[sGfxSeekPosition].words.w1 = 0x07000000 + temp_t7;
+    arg0[sGfxSeekPosition].words.w1 = segment_offset_to_virtual(0x07, temp_t7); // (0x07000000 + temp_t7); // (gSegmentTable[segment] + ( (offset / 8) * sizeof(Gfx) ) );
     sGfxSeekPosition++;
 }
 
@@ -868,7 +868,7 @@ void unpack_vtx1(Gfx *gfx, u8 *args, UNUSED s8 arg2) {
     temp_t7_2 = temp & 0x3F;
 
     gfx[sGfxSeekPosition].words.w0 = (G_VTX << 24) | (temp_t7_2 * 2 << 16) | (((temp_t7 << 10) + ((0x10 * temp_t7) - 1)));
-    gfx[sGfxSeekPosition].words.w1 = 0x04000000 + temp2;
+    gfx[sGfxSeekPosition].words.w1 = segment_offset_to_virtual(0x04, temp2);
     sGfxSeekPosition++;
 }
 
@@ -883,7 +883,7 @@ void unpack_vtx2(Gfx *gfx, u8 *args, s8 arg2) {
     temp_t9 = arg2 - 50;
 
     gfx[sGfxSeekPosition].words.w0 = (G_VTX << 24) | ((temp_t9 << 10) + (((temp_t9) * 0x10) - 1));
-    gfx[sGfxSeekPosition].words.w1 = 0x4000000 + temp_v2;
+    gfx[sGfxSeekPosition].words.w1 = segment_offset_to_virtual(0x04, temp_v2);
     sGfxSeekPosition++;
 }
 
@@ -1377,15 +1377,15 @@ void load_course(s32 courseId) {
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
     Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3366); // Size of unpacked DLs
+    gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
 
-    gSegmentTable[7] = &gfx[0];
 
     // Convert course vtx to vtx
     CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
     Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
-    func_802A86A8(cvtx, vtx, 5757);
     gSegmentTable[4] = &vtx[0];
+    func_802A86A8(cvtx, vtx, 5757);
 
 
 
