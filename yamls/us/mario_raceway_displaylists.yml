@@ -1,6 +1,4 @@
 :config:
-  external_files:
-    - "yamls/us\\mario_raceway_vertices.yml"
   vram:
     addr: 0x800E8700 # not used for anything
     offset: 0x899104
