@@ -59,7 +59,7 @@ s8 D_8018EE0C;
 struct_8018EE10_entry D_8018EE10[2];
 
 /** Data **/
-s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 gMenuSelection = START_MENU;
 s32 D_800E86A4 = 0;
 s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 

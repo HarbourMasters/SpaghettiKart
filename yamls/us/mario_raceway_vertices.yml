@@ -1,7 +1,6 @@
 :config:
   segments:
     - [0x0F, 0x88FA10]
-  no_compression: true
   header:
     code:
       - '#include <libultraship.h>'
@@ -11,6 +10,6 @@
       - '#include <align_asset_macro.h>'
 d_course_mario_raceway_vertex:
   symbol: d_course_mario_raceway_vertex
-  type: blob
-  size: 0x13AD6
+  type: mk64:course_vtx
+  count: 5757
   offset: 0x0

@@ -1399,7 +1399,7 @@ void func_80295C6C(void) {
     gCourseMinX += -20;
     gCourseMinZ += -20;
     gCourseMinY += -20;
-    func_802AF314();
+    //func_802AF314();
     gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
 }
 

@@ -1547,6 +1547,13 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     s16 y3;
     s16 z3;
 
+    if (D_8015F588 == 5) { return; }
+
+    printf("mesh index: %d ", D_8015F588);
+    printf("sectionId: 0x%X ", sectionId);
+    printf("surfaceType: 0x%X ", surfaceType);
+    
+
     /* Unused variables placed around doubles for dramatic effect */
     UNUSED s32 pad2[7];
 
@@ -1569,9 +1576,9 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     s16 maxY;
     s16 minZ;
 
-    tile->vtxPoly1 = &vtx1;
-    tile->vtxPoly2 = &vtx2;
-    tile->vtxPoly3 = &vtx3;
+    tile->vtxPoly1 = vtx1;
+    tile->vtxPoly2 = vtx2;
+    tile->vtxPoly3 = vtx3;
     if ((tile->vtxPoly1->v.flag == 4) &&
         (tile->vtxPoly2->v.flag == 4) &&
         (tile->vtxPoly3->v.flag == 4)) {
@@ -1676,6 +1683,11 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
         gCourseMaxZ = maxZ;
     }
 
+    printf("X 0x%X\n ", normalX);
+    printf("Y 0x%X\n ", normalY);
+    printf("Z 0x%X\n ", normalZ);
+    printf("dist 0x%X\n\n", distance);
+
     tile->height = normalX;
     tile->gravity = normalY;
     tile->rotation = normalZ;
@@ -1729,9 +1741,9 @@ void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 sectionId) {
     u32 vert2 = ( ( triangle & 0x0000FF00 ) >>  8 ) / 2;
     u32 vert3 = (   triangle & 0x000000FF )         / 2;
 
-    Vtx *vtx1 = &vtxBuffer[vert1];
-    Vtx *vtx2 = &vtxBuffer[vert2];
-    Vtx *vtx3 = &vtxBuffer[vert3];
+    Vtx *vtx1 = vtxBuffer[vert1];
+    Vtx *vtx2 = vtxBuffer[vert2];
+    Vtx *vtx3 = vtxBuffer[vert3];
 
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
 }
@@ -1747,14 +1759,24 @@ void set_vtx_from_tri2(u32 triangle1, u32 triangle2, s8 surfaceType, u16 section
     u32 vert5 = ( ( triangle2 & 0x0000FF00 ) >>  8 ) / 2;
     u32 vert6 = (   triangle2 & 0x000000FF )         / 2;
 
+    printf("tr1: 0x%X \n", triangle1);
+    printf("tr2: 0x%X \n", triangle2);
 
-    Vtx *vtx1 = &vtxBuffer[vert1];
-    Vtx *vtx2 = &vtxBuffer[vert2];
-    Vtx *vtx3 = &vtxBuffer[vert3];
+    printf("\nv1 0x%X ", vert1);
+    printf("v2 0x%X ", vert2);
+    printf("v3 0x%X ", vert3);
+    printf("v4 0x%X ", vert4);
+    printf("v5 0x%X ", vert5);
+    printf("v6 0x%X\n", vert6);
 
-    Vtx *vtx4 = &vtxBuffer[vert4];
-    Vtx *vtx5 = &vtxBuffer[vert5];
-    Vtx *vtx6 = &vtxBuffer[vert6];
+
+    Vtx *vtx1 = vtxBuffer[vert1];
+    Vtx *vtx2 = vtxBuffer[vert2];
+    Vtx *vtx3 = vtxBuffer[vert3];
+
+    Vtx *vtx4 = vtxBuffer[vert4];
+    Vtx *vtx5 = vtxBuffer[vert5];
+    Vtx *vtx6 = vtxBuffer[vert6];
 
     // Triangle 1
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
@@ -1774,10 +1796,10 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     u32 vert3 = (   line & 0x000000FF )         / 2;
     u32 vert4 = ( ( line & 0xFF000000 ) >> 24 ) / 2;
 
-    vtx1 = &vtxBuffer[vert1];
-    vtx2 = &vtxBuffer[vert2];
-    vtx3 = &vtxBuffer[vert3];
-    vtx4 = &vtxBuffer[vert4];
+    vtx1 = vtxBuffer[vert1];
+    vtx2 = vtxBuffer[vert2];
+    vtx3 = vtxBuffer[vert3];
+    vtx4 = vtxBuffer[vert4];
 
     // Triangle 1
     func_802AE434(vtx1, vtx2, vtx3, surfaceType, sectionId);
@@ -1792,7 +1814,8 @@ void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
     u32 i;
     Vtx *vtx = (Vtx *) addr;
     for (i = 0; i < numVertices; i++) {
-        vtxBuffer[bufferIndex] = &vtx;
+        printf("VTX: 0x%llX",vtx);
+        vtxBuffer[bufferIndex] = vtx;
         vtx++;
         bufferIndex++;
     }
@@ -1978,6 +2001,7 @@ void set_vertex_data_with_default_section_id(Gfx *gfx, s8 surfaceType) {
 }
 
 extern u32 D_8015F58C;
+u32 numTimes = 0;
 
 /**
  * Recursive search and set for vertex data
@@ -1987,6 +2011,7 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
     uintptr_t lo;
     uintptr_t hi;
     s32 i;
+    numTimes++;
     //printf("Initial\n");
     //printf("ptr 0x%llX\n", &addr);
     //printf("w0 0x%llX\n", addr->words.w0);
@@ -2010,8 +2035,8 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
         
         //  printf("ptr 0x%llX\n", &addr);
         //  printf("op 0x%llX\n", opcode);
-        //  printf("w0 0x%X\n", lo);
-        //  printf("w1 0x%X\n", hi);
+          printf("w0 0x%llX\n", lo);
+          printf("w1 0x%llX\n", hi);
 
         if (opcode == (G_DL << 24)) {
             // G_DL's hi contains an addr to another DL.
@@ -2031,6 +2056,7 @@ void find_and_set_vertex_data(Gfx *addr, s8 surfaceType, u16 sectionId) {
 
         } else if (opcode == (G_TRI2 << 24)) {
             D_8015F58C += 2;
+
             set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
 
         } else if (opcode == (G_QUAD << 24)) {

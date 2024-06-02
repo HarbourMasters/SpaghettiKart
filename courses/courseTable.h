@@ -32,7 +32,6 @@ extern u8 _mario_raceway_vertexSegmentRomEnd[];
 extern u8 _course_mario_raceway_offsetsSegmentRomStart[];
 extern u8 _course_mario_raceway_offsetsSegmentRomEnd[];
 extern u8 d_course_mario_raceway_packed[];
-extern u32 mario_raceway_textures[];
 
 extern u8 _course_choco_mountain_dl_mio0SegmentRomStart[];
 extern u8 _course_choco_mountain_dl_mio0SegmentRomEnd[];

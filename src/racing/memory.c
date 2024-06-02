@@ -2,6 +2,7 @@
 #include <libultra/types.h>
 #include <align_asset_macro.h>
 #include <macros.h>
+#include <string.h>
 #include <common_structs.h>
 #include <segments.h>
 #include <decode.h>
@@ -16,6 +17,7 @@
 #include <assets/mario_raceway_displaylists.h>
 #include <assets/mario_raceway_vertices.h>
 #include <assert.h>
+#include <course_offsets.h>
 
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
@@ -95,8 +97,15 @@ void *segmented_to_virtual(const void *addr) {
     return (void *) ((gSegmentTable[segment] + offset));
 }
 
+
 void *segment_offset_to_virtual(uint32_t segment, uint32_t offset) {
     return (void *) (gSegmentTable[segment] + ( (offset / 8) * sizeof(Gfx) ) );
+}
+
+void *segment_vtx_to_virtual(size_t offset) {
+    printf("seg_vtx_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x04] + offset));
+
+    return (void *) (gSegmentTable[0x04] + (offset));
 }
 
 void *segmented_gfx_to_virtual(const void *addr) {
@@ -105,7 +114,7 @@ void *segmented_gfx_to_virtual(const void *addr) {
 
     offset = (offset / 8) * sizeof(Gfx);
 
-    printf("seg_gfx_to_virt: 0x%llX\n",addr);
+    printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
 
     return (void *) ((gSegmentTable[segment] + offset));
 }
@@ -143,7 +152,7 @@ void initialize_memory_pool() {
 /**
  * @brief Allocates memory and adjusts gFreeMemorySize.
 */
-void *allocate_memory(uintptr_t size) {
+void *allocate_memory(size_t size) {
     uintptr_t freeSpace;
 
     size = ALIGN16(size);
@@ -449,7 +458,7 @@ u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
     // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     // mio0decode((u8 *) temp_a0, temp_v0);
     // gNextFreeMemoryAddress += arg2;
-    return texture;
+    return LOAD_ASSET(texture);
 }
 
 uintptr_t MIO0_0F(u8 *arg0, uintptr_t arg1, uintptr_t arg2) {
@@ -842,6 +851,7 @@ void unpack_tile_load_sync(Gfx *gfx, u8 *args, s8 opcode) {
 
 void unpack_texture_on(Gfx *arg0, UNUSED u8 *args, UNUSED s8 arg2) {
     Gfx macro[] = { gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON) };
+
     arg0[sGfxSeekPosition].words.w0 = macro->words.w0;
     arg0[sGfxSeekPosition].words.w1 = macro->words.w1;
     sGfxSeekPosition++;
@@ -868,7 +878,7 @@ void unpack_vtx1(Gfx *gfx, u8 *args, UNUSED s8 arg2) {
     temp_t7_2 = temp & 0x3F;
 
     gfx[sGfxSeekPosition].words.w0 = (G_VTX << 24) | (temp_t7_2 * 2 << 16) | (((temp_t7 << 10) + ((0x10 * temp_t7) - 1)));
-    gfx[sGfxSeekPosition].words.w1 = segment_offset_to_virtual(0x04, temp2);
+    gfx[sGfxSeekPosition].words.w1 = (uintptr_t) segment_vtx_to_virtual(temp2);
     sGfxSeekPosition++;
 }
 
@@ -883,7 +893,7 @@ void unpack_vtx2(Gfx *gfx, u8 *args, s8 arg2) {
     temp_t9 = arg2 - 50;
 
     gfx[sGfxSeekPosition].words.w0 = (G_VTX << 24) | ((temp_t9 << 10) + (((temp_t9) * 0x10) - 1));
-    gfx[sGfxSeekPosition].words.w1 = segment_offset_to_virtual(0x04, temp_v2);
+    gfx[sGfxSeekPosition].words.w1 = (uintptr_t) segment_vtx_to_virtual(temp_v2);
     sGfxSeekPosition++;
 }
 
@@ -1024,6 +1034,10 @@ void displaylist_unpack(Gfx *gfx, u8 *data, uintptr_t arg2) {
 
     sGfxSeekPosition = 0;
     sPackedSeekPosition = 0;
+
+    gfx->words.trace.valid = true;
+    gfx->words.trace.idx = 0;
+    gfx->words.trace.file = "displaylist_unpack";
 
     while(true) {
 
@@ -1367,12 +1381,20 @@ void *decompress_segments(u8 *start, u8 *end) {
     return (void *)freeSpace;
 }
 
+extern const course_texture mario_raceway_textures[30];
+
 /**
  * @brief Loads & DMAs course data. Vtx, textures, displaylists, etc.
  * @param courseId
 */
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
+
+    // Convert course vtx to vtx
+    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
+    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
+    gSegmentTable[4] = &vtx[0];
+    func_802A86A8(cvtx, vtx, 5757);
 
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
@@ -1381,12 +1403,26 @@ void load_course(s32 courseId) {
     displaylist_unpack(gfx, packed, 0);
 
 
-    // Convert course vtx to vtx
-    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
-    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
-    gSegmentTable[4] = &vtx[0];
-    func_802A86A8(cvtx, vtx, 5757);
+    course_texture *textures = &mario_raceway_textures[0];
 
+
+    // Find size of textures needed to load into segment 5 for the course
+    size_t textureSize = 0;
+    while (textures->data_size) {
+        textureSize += textures->data_size;
+        textures++;
+    }
+    
+    // Load and allocate memory for course textures
+    u8 *allocatedTextures = (u8 *) allocate_memory(textureSize * 2);
+    gSegmentTable[5] = &allocatedTextures[0];
+
+    textureSize = 0;
+    for (size_t i = 0; i < 30; i++) {
+        u8 *texture = (u8 *) LOAD_ASSET(mario_raceway_textures[i].addr);
+        memcpy(&allocatedTextures[textureSize], texture, mario_raceway_textures[i].data_size);
+        textureSize += mario_raceway_textures[i].data_size;
+    }
 
 
 
