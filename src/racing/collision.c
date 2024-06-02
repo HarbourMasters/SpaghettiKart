@@ -9,6 +9,7 @@
 #include "collision.h"
 #include "math_util.h"
 #include "code_800029B0.h"
+#include <assert.h>
 
 // Used to delete the choco mountain guard rail
 void nullify_displaylist(uintptr_t addr) {
@@ -1815,6 +1816,9 @@ void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
     Vtx *vtx = (Vtx *) addr;
     for (i = 0; i < numVertices; i++) {
         printf("VTX: 0x%llX",vtx);
+        if (vtx == 0) {
+           assert(false);
+        }
         vtxBuffer[bufferIndex] = vtx;
         vtx++;
         bufferIndex++;

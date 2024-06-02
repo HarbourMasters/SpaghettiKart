@@ -108,11 +108,19 @@ void *segment_vtx_to_virtual(size_t offset) {
     return (void *) (gSegmentTable[0x04] + (offset));
 }
 
+void *segmented_texture_to_virtual(size_t offset) {
+    printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x05] + offset));
+
+    return (void *) (gSegmentTable[0x05] + (offset));
+}
+
 void *segmented_gfx_to_virtual(const void *addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    offset = (offset / 8) * sizeof(Gfx);
+    uint32_t numCommands = offset / 8;
+    printf("SIZE GFX: 0x%X", sizeof(Gfx));
+    offset = numCommands * sizeof(Gfx);
 
     printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
 
@@ -446,19 +454,22 @@ UNUSED u8 *func_802A841C(u8* arg0, s32 arg1, s32 arg2) {
 }
 
 u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
-    // u8 *temp_v0;
-    // void *temp_a0;
+    u8 *temp_v0;
+    void *temp_a0;
 
-    // temp_v0 = (u8 *) gNextFreeMemoryAddress;
-    // temp_a0 = temp_v0 + arg2;
-    // arg1 = ALIGN16(arg1);
-    // arg2 = ALIGN16(arg2);
-    // osInvalDCache((void *) temp_a0, arg1);
+    u8* tex = LOAD_ASSET(texture);
+
+    temp_v0 = (u8 *) gNextFreeMemoryAddress;
+    temp_a0 = temp_v0 + arg2;
+    arg1 = ALIGN16(arg1);
+    arg2 = ALIGN16(arg2);
+    osInvalDCache((void *) temp_a0, arg1);
     // osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(texture)], (void *)temp_a0, arg1, &gDmaMesgQueue);
     // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     // mio0decode((u8 *) temp_a0, temp_v0);
-    // gNextFreeMemoryAddress += arg2;
-    return LOAD_ASSET(texture);
+    memcpy(temp_v0, tex, arg2);
+    gNextFreeMemoryAddress += arg2;
+    return temp_v0;
 }
 
 uintptr_t MIO0_0F(u8 *arg0, uintptr_t arg1, uintptr_t arg2) {
@@ -773,6 +784,7 @@ void unpack_tile_load_sync(Gfx *gfx, u8 *args, s8 opcode) {
     uintptr_t siz;
     uintptr_t tmem;
     uintptr_t tile;
+    size_t offset;
 
     switch (opcode) {
         case 32:
@@ -812,7 +824,8 @@ void unpack_tile_load_sync(Gfx *gfx, u8 *args, s8 opcode) {
     // Waa?
     var = args[sPackedSeekPosition];
     // Generates a texture address.
-    addr = SEGMENT_ADDR(0x05, args[sPackedSeekPosition++] << 11);
+    offset = args[sPackedSeekPosition++] << 11;
+    addr = SEGMENT_ADDR(0x05, offset);
     sPackedSeekPosition++;
     arg = args[sPackedSeekPosition++];
     siz = G_IM_SIZ_16b;
@@ -823,7 +836,7 @@ void unpack_tile_load_sync(Gfx *gfx, u8 *args, s8 opcode) {
 
     lo = (G_SETTIMG << 24) | (fmt << 21) | (siz << 19);
     gfx[sGfxSeekPosition].words.w0 = lo;
-    gfx[sGfxSeekPosition].words.w1 = addr;
+    gfx[sGfxSeekPosition].words.w1 = segmented_texture_to_virtual(offset);
     sGfxSeekPosition++;
 
     gfx[sGfxSeekPosition].words.w0 = tileSync->words.w0;
@@ -1007,6 +1020,9 @@ UNUSED void func_802A9AEC(void) {
 
 }
 
+// Fake asset so that users can debug using trace
+static const ALIGN_ASSET(2) char _asset_displaylist_unpack_[] = "displaylist_unpack";
+
 /**
  * Unpacks course packed displaylists by iterating through each byte of the packed file.
  * Each packed displaylist entry has an opcode and any number of arguments.
@@ -1035,11 +1051,11 @@ void displaylist_unpack(Gfx *gfx, u8 *data, uintptr_t arg2) {
     sGfxSeekPosition = 0;
     sPackedSeekPosition = 0;
 
-    gfx->words.trace.valid = true;
-    gfx->words.trace.idx = 0;
-    gfx->words.trace.file = "displaylist_unpack";
-
     while(true) {
+
+        gfx[sGfxSeekPosition].words.trace.valid = true;
+        gfx[sGfxSeekPosition].words.trace.idx = sGfxSeekPosition;
+        gfx[sGfxSeekPosition].words.trace.file = &_asset_displaylist_unpack_[0];
 
         // Seek to the next byte
         opcode = packed_dl[sPackedSeekPosition++];
@@ -1396,13 +1412,6 @@ void load_course(s32 courseId) {
     gSegmentTable[4] = &vtx[0];
     func_802A86A8(cvtx, vtx, 5757);
 
-    // Extract packed DLs
-    u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
-    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3366); // Size of unpacked DLs
-    gSegmentTable[7] = &gfx[0];
-    displaylist_unpack(gfx, packed, 0);
-
-
     course_texture *textures = &mario_raceway_textures[0];
 
 
@@ -1424,23 +1433,11 @@ void load_course(s32 courseId) {
         textureSize += mario_raceway_textures[i].data_size;
     }
 
+    // Extract packed DLs
+    u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
+    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3366); // Size of unpacked DLs
+    gSegmentTable[7] = &gfx[0];
+    displaylist_unpack(gfx, packed, 0);
 
-
-//    __gSPSegment(gDisplayListHead++, 7, &gfx);
-
-
-    //printf("Course Data Loaded!\n");
-
-    // Future implementation for Extra mode and course stretching.
-
-    // if (gIsMirrorMode) {
-    //     for (size_t i = 0; i < sizeof(vtx); i++) {
-    //         dest->v.ob[0] = -courseVtx->ob[0];
-    //     }
-    // }
-
-    // if (vtxStretchY != 1.0f) {
-    //     dest->v.ob[1] *= vtxStretchY;
-    // }
 
 }
