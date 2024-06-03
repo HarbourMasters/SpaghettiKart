@@ -311,7 +311,7 @@ void func_80003040(void) {
         case COURSE_MARIO_RACEWAY:
             struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
             dma_textures(gTextureTrees1, 0x35B, 0x800);
-            spawn_foliage(a_d_course_mario_raceway_tree_spawns);
+            //spawn_foliage(a_d_course_mario_raceway_tree_spawns);
             break;
         case COURSE_BOWSER_CASTLE:
             // d_course_bowsers_castle_packed_dl_1350

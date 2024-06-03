@@ -9,8 +9,8 @@
 void load_kart_texture(Player*, s8, s8, s8, s8);
 void func_80027560(Player*, s8, s8, s8, s8);
 void load_kart_palette(Player*, s8, s8, s8);
-void func_80027BDC(Player*, s32, void*, u16);
-void func_80027C74(Player*, s32, void*, u16);
+void func_80027BDC(Player*, u8*, void*, u16);
+void func_80027C74(Player*, u8*, void*, u16);
 
 /* This is where I'd put my static data, if I had any */
 

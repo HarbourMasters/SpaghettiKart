@@ -1718,6 +1718,9 @@ void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
             //     &gDmaMesgQueue
             // );
 
+            // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+            // memcpy(&D_802DFB80[arg4][arg3][playerId], asset, D_800DDEB0[player->characterId]);
+
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         } else {
             osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
@@ -1733,8 +1736,9 @@ void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
-
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+            // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+            // memcpy(&D_802DFB80[arg4][arg3][playerId], asset, D_800DDEB0[player->characterId]);
+            //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
         osInvalDCache(&D_802DFB80[arg4][arg3][playerId], 0x780U);
@@ -1751,6 +1755,9 @@ void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
         //     &gDmaMesgQueue
         // );
 
+        // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8]);
+        // memcpy(&D_802DFB80[arg4][arg3][playerId], asset, 0x900);
+
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     } else {
         osInvalDCache(&D_802DFB80[arg4][arg3][playerId], D_800DDEB0[player->characterId]);
@@ -1766,6 +1773,9 @@ void load_kart_texture(Player *player, s8 playerId, s8 arg2, s8 arg3, s8 arg4) {
         //     D_800DDEB0[player->characterId],
         //     &gDmaMesgQueue
         // );
+
+        // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+        // memcpy(&D_802DFB80[arg4][arg3][playerId], asset, D_800DDEB0[player->characterId]);
 
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
@@ -1790,6 +1800,8 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
+            // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+            // memcpy(&D_802DFB80[arg4][arg3][arg1], asset, D_800DDEB0[player->characterId]);
         } else {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
@@ -1804,6 +1816,8 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
+            // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+            // memcpy(&D_802DFB80[arg4][arg3][arg1], asset, D_800DDEB0[player->characterId]);
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
@@ -1821,6 +1835,8 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         //     0x900,
         //     &gDmaMesgQueue
         // );
+        // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8]);
+        //     memcpy(&D_802DFB80[arg4][arg3][arg1], asset, 0x900);
     } else {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
@@ -1835,6 +1851,8 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4) {
         //     D_800DDEB0[player->characterId],
         //     &gDmaMesgQueue
         // );
+        // u8 *asset = (u8 *) LOAD_ASSET(gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]]);
+        //     memcpy(&D_802DFB80[arg4][arg3][arg1], asset, D_800DDEB0[player->characterId]);
     }
 }
 
@@ -1862,7 +1880,10 @@ void load_kart_palette(Player *player, s8 playerId, s8 arg2, s8 arg3) {
             //     &gDmaMesgQueue
             // );
 
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+        // u8 *asset = (u8 *) LOAD_ASSET(gKartPalettes[player->characterId]);
+        //     memcpy(temp_s0, asset, sizeof(struct_D_802F1F80));
+
+            //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN: // Code identical to above
             osInvalDCache(temp_s0, sizeof(struct_D_802F1F80));
@@ -1879,12 +1900,15 @@ void load_kart_palette(Player *player, s8 playerId, s8 arg2, s8 arg3) {
             //     &gDmaMesgQueue
             // );
 
-            osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+        // u8 *assets = (u8 *) LOAD_ASSET(gKartPalettes[player->characterId]);
+        //     memcpy(temp_s0, assets, sizeof(struct_D_802F1F80));
+
+            //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             break;
     }
 }
 
-void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
+void func_80027BDC(UNUSED Player *player, u8 *arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
 
     // osPiStartDma(
@@ -1897,10 +1921,13 @@ void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     //     &gDmaMesgQueue
     // );
 
-    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    // u8 *asset = (u8 *) LOAD_ASSET(arg1);
+    //     memcpy(vAddr, asset, size);
+
+    //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
-void func_80027C74(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
+void func_80027C74(UNUSED Player *player, u8 *arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
 
     // osPiStartDma(
@@ -1912,4 +1939,6 @@ void func_80027C74(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     //     size,
     //     &gDmaMesgQueue
     // );
+        // u8 *asset = (u8 *) LOAD_ASSET(arg1);
+        // memcpy(vAddr, asset, size);
 }
