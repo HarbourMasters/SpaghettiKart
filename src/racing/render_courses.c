@@ -93,6 +93,7 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
     s16 sp1E;
     s16 temp_v0_3;
     u16 rot;
+    printf("--------Loading Collision Mesh--------\n");
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
@@ -191,7 +192,10 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
 
-    gSPDisplayList(gDisplayListHead++, (Gfx *)&gfx[temp_v1]);
+    printf("----Collision DL Call----\n");
+    printf("Call: 0x%llX\n", gfx[temp_v1]);
+    gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
+    printf("--------Collision Mesh Loaded--------\n");
 }
 
 void func_80291198(void) {
@@ -618,7 +622,8 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     // d_course_mario_raceway_packed_dl_14A0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070014A0)));
     printf("LOADING SURFACE MAP\n");
-    load_surface_map(&mario_raceway_dls, arg0);
+    load_surface_map(mario_raceway_dls, arg0);
+    printf("SURFACE MAP LOADED\n");
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -631,7 +636,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070000E0)));
     // d_course_mario_raceway_packed_dl_160
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000160)));
-    printf("SURFACE MAP LOADED\n");
+    printf("RENDERED COURSE\n");
 }
 
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
