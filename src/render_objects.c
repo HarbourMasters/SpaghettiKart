@@ -46,7 +46,7 @@ void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
 
 void func_80043220(Vec3f pos, Vec3su orientation, f32 scale, Gfx *gfx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
-    gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
+    gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 
@@ -229,14 +229,14 @@ void func_80044924(u8 *texture, s32 width, s32 height) {
     // See comment above the `gDPLoadBlock` macro
     // gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    // The last argument to this macro really should be `CALC_DXT_4b(width)` but that creates a massive diff
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (((width * height) + 3) >> 2) - 1, ((width / 16) + 2047) / (width / 16));
-    gDPPipeSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, (((width >> 1) + 7) >> 3), G_TX_RENDERTILE, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width-1) << G_TEXTURE_IMAGE_FRAC, (height-1) << G_TEXTURE_IMAGE_FRAC);
+    // gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
+    // gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+    // gDPLoadSync(gDisplayListHead++);
+    // // The last argument to this macro really should be `CALC_DXT_4b(width)` but that creates a massive diff
+    // gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (((width * height) + 3) >> 2) - 1, ((width / 16) + 2047) / (width / 16));
+    // gDPPipeSync(gDisplayListHead++);
+    // gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, (((width >> 1) + 7) >> 3), G_TX_RENDERTILE, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+    // gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width-1) << G_TEXTURE_IMAGE_FRAC, (height-1) << G_TEXTURE_IMAGE_FRAC);
 }
 
 UNUSED void func_80044AB8(u8 *texture, s32 width, s32 height) {
@@ -3795,7 +3795,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
-            func_80048130(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+            func_80048130(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, LOAD_ASSET(D_0D0062B0), 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
 }

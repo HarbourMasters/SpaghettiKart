@@ -7,7 +7,7 @@
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
-void load_surface_map(Gfx*, struct UnkStruct_800DC5EC*);
+void load_surface_map(const char*[], struct UnkStruct_800DC5EC*);
 void func_80291198(void);
 void func_802911C4(void);
 void render_mario_raceway(struct UnkStruct_800DC5EC*);

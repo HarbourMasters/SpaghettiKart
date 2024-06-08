@@ -16,6 +16,7 @@
 #include "defines.h"
 #include <assets/mario_raceway_displaylists.h>
 #include <assets/mario_raceway_vertices.h>
+#include <assets/mario_raceway_data.h>
 #include <assert.h>
 #include <course_offsets.h>
 
@@ -112,6 +113,19 @@ void *segmented_texture_to_virtual(size_t offset) {
     printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x05] + offset));
 
     return (void *) (gSegmentTable[0x05] + (offset));
+}
+
+void *segmented_uintptr_t_to_virtual(uintptr_t addr) {
+    uint32_t newAddr = (uint32_t) addr;
+    size_t segment = (uintptr_t) newAddr >> 24;
+    size_t offset = (uintptr_t) newAddr & 0x00FFFFFF;
+
+    uint32_t numCommands = offset / 8;
+    offset = numCommands * sizeof(Gfx);
+
+    printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", newAddr, (gSegmentTable[segment] + offset));
+
+    return (void *) ((gSegmentTable[segment] + offset));
 }
 
 void *segmented_gfx_to_virtual(const void *addr) {
@@ -462,7 +476,7 @@ u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
     temp_a0 = temp_v0 + arg2;
     arg1 = ALIGN16(arg1);
     arg2 = ALIGN16(arg2);
-    osInvalDCache((void *) temp_a0, arg1);
+    //osInvalDCache((void *) temp_a0, arg1);
     // osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(texture)], (void *)temp_a0, arg1, &gDmaMesgQueue);
     // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     // mio0decode((u8 *) temp_a0, temp_v0);
@@ -1398,7 +1412,8 @@ extern const course_texture mario_raceway_textures[30];
 /* To help verify if ptrs are pointing within segments see gfx_pc.cpp gfx_step() */
 uintptr_t vtxSegEnd;
 uintptr_t dlSegEnd;
-uintptr_t texSegEnd;
+uintptr_t texSegEnd; size_t texSegSize;
+Gfx *testaaa;
 
 /**
  * @brief Loads & DMAs course data. Vtx, textures, displaylists, etc.
@@ -1407,6 +1422,8 @@ uintptr_t texSegEnd;
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
 
+    testaaa = (Gfx *) LOAD_ASSET(d_course_mario_raceway_dl_0);
+
     // Convert course vtx to vtx
     CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
     Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
@@ -1414,34 +1431,36 @@ void load_course(s32 courseId) {
     func_802A86A8(cvtx, vtx, 5757);
     vtxSegEnd = &vtx[5757];
 
-    course_texture *textures = &mario_raceway_textures[0];
-
-
-    // Find size of textures needed to load into segment 5 for the course
-    size_t textureSize = 0;
-    while (textures->data_size) {
-        textureSize += textures->data_size;
-        textures++;
-    }
-    
     // Load and allocate memory for course textures
-    u8 *allocatedTextures = (u8 *) allocate_memory(textureSize * 3);
-    gSegmentTable[5] = &allocatedTextures[0];
+    course_texture *asset = mario_raceway_textures;
+    u8 *freeMemory = NULL;
+    u8 *texture = NULL;
+    size_t size = 0;
+    texSegSize = 0;
+    while (asset->addr) {
+        size = ResourceGetTexSizeByName(asset->addr);
+        freeMemory = (u8 *) allocate_memory(size);
 
-    textureSize = 0;
-    for (size_t i = 0; i < 30; i++) {
-        u8 *texture = (u8 *) LOAD_ASSET(mario_raceway_textures[i].addr);
-        memcpy(&allocatedTextures[textureSize], texture, mario_raceway_textures[i].data_size);
-        textureSize += mario_raceway_textures[i].data_size;
+        texture = (u8 *) LOAD_ASSET(asset->addr);
+        if (texture) {
+            if (asset == &mario_raceway_textures[0]) {
+                gSegmentTable[5] = &freeMemory[0];
+            }
+            memcpy(freeMemory, texture, size);
+            texSegSize += size;
+            // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
+        }
+        asset++;
     }
-    texSegEnd = &allocatedTextures[textureSize];
+
+    texSegEnd = &((u8 *)gSegmentTable[5])[texSegSize];
 
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
-    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3366); // Size of unpacked DLs
+    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3367); // Size of unpacked DLs
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
-    dlSegEnd = &gfx[3366];
+    dlSegEnd = &gfx[3367];
 
 
 }

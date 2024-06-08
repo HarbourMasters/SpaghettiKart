@@ -7,7 +7,7 @@
 /* Function Prototypes */
 
 void load_kart_texture(Player*, s8, s8, s8, s8);
-void func_80027560(Player*, s8, s8, s8, s8);
+void func_80027560(Player*, s8, s8, s8, s8, size_t);
 void load_kart_palette(Player*, s8, s8, s8);
 void func_80027BDC(Player*, u8*, void*, u16);
 void func_80027C74(Player*, u8*, void*, u16);

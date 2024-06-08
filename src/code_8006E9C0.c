@@ -567,7 +567,7 @@ void func_8006FA94(void) {
     D_8018D17C = D_8018D18C;
     D_8018D174 = D_8018D18C;
     player = gPlayerOne;
-    for (var_a0 = 0; var_a0 < 8; var_a0++) {
+    for (var_a0 = 0; var_a0 < NUM_PLAYERS; var_a0++) {
         D_8018D0F0[var_a0] = D_8018D050[var_a0] = -32.0f;
         D_8018CE10[var_a0].unk_04[0] = D_8018CE10[var_a0].unk_04[1] = D_8018CE10[var_a0].unk_04[2] = 0.0f;
         D_8018CF50[var_a0] = var_a0;

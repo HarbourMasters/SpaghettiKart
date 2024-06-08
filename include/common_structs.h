@@ -372,7 +372,7 @@ typedef struct {
     /* 0x023C */ f32 unk_23C;
     /* 0x0240 */ s32 unk_240;
     /* 0x0244 */ u16 animFrameSelector[4]; // [0] Active texture group
-    /* 0x024C */ u16 animGroupSelector[4];
+    /* 0x024C */ u16 animGroupSelector[4]; // Based on screen
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
     /* 0x0258 */ UnkPlayerStruct258 unk_258[40];

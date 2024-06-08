@@ -333,16 +333,16 @@ void func_80297340(Camera *arg0) {
         if (D_800DC5BC != 0) {
 
             gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
-            gSPDisplayList(gDisplayListHead++, &D_0D001C20);
+            gSPDisplayList(gDisplayListHead++, D_0D001C20);
         } else {
-            gSPDisplayList(gDisplayListHead++, &D_0D001B90);
+            gSPDisplayList(gDisplayListHead++, D_0D001B90);
         }
     } else if (D_800DC5BC != 0) {
 
         gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
-        gSPDisplayList(gDisplayListHead++, &D_0D001C88);
+        gSPDisplayList(gDisplayListHead++, D_0D001C88);
     } else {
-        gSPDisplayList(gDisplayListHead++, &D_0D001BD8);
+        gSPDisplayList(gDisplayListHead++, D_0D001BD8);
     }
 }
 
@@ -747,32 +747,32 @@ void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, &D_0D001750);
+        gSPDisplayList(gDisplayListHead++, D_0D001750);
 
         switch (arg2->state) {
         case 0:
-            gSPDisplayList(gDisplayListHead++, &D_0D001780);
+            gSPDisplayList(gDisplayListHead++, D_0D001780);
             break;
         case 1:
-            gSPDisplayList(gDisplayListHead++, &D_0D001798);
+            gSPDisplayList(gDisplayListHead++, D_0D001798);
             break;
         case 2:
-            gSPDisplayList(gDisplayListHead++, &D_0D0017B0);
+            gSPDisplayList(gDisplayListHead++, D_0D0017B0);
             break;
         case 3:
-            gSPDisplayList(gDisplayListHead++, &D_0D0017C8);
+            gSPDisplayList(gDisplayListHead++, D_0D0017C8);
             break;
         case 4:
-            gSPDisplayList(gDisplayListHead++, &D_0D0017E0);
+            gSPDisplayList(gDisplayListHead++, D_0D0017E0);
             break;
         case 5:
-            gSPDisplayList(gDisplayListHead++, &D_0D0017F8);
+            gSPDisplayList(gDisplayListHead++, D_0D0017F8);
             break;
         case 6:
-            gSPDisplayList(gDisplayListHead++, &D_0D001810);
+            gSPDisplayList(gDisplayListHead++, D_0D001810);
             break;
         case 7:
-            gSPDisplayList(gDisplayListHead++, &D_0D001828);
+            gSPDisplayList(gDisplayListHead++, D_0D001828);
             break;
         }
     }

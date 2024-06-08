@@ -8,7 +8,7 @@ extern Gfx *bowsers_castle_dls[];
 extern Gfx *choco_mountain_dls[];
 extern Gfx *kalimari_desert_dls[];
 extern Gfx *luigi_raceway_dls[];
-extern Gfx *mario_raceway_dls[];
+extern const char *mario_raceway_dls[];
 extern Gfx *moo_moo_farm_dls[];
 extern Gfx *royal_raceway_dls[];
 extern Gfx *sherbet_land_dls[];

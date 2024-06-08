@@ -20,6 +20,7 @@
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
 #include <assets/mario_raceway_data.h>
+#include <assets/mario_raceway_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -47,12 +48,12 @@ s32 func_80290C20(Camera *camera) {
 }
 
 void parse_course_displaylists(TrackSections *addr) {
-    TrackSections *first = addr;
-    TrackSections *section = addr;
+    TrackSections *first = &addr[0];
+    TrackSections *section = &addr[0];
 
-    while (addr->addr != 0) {
-        section->addr = segmented_gfx_to_virtual(addr->addr);
-        addr++;
+    while (section->addr != 0) {
+        printf("SECTION ADDR: 0x%X\n", section->addr);
+        section->addr = segmented_uintptr_t_to_virtual(section->addr);
         section++;
     }
     section = first;
@@ -83,17 +84,15 @@ void parse_course_displaylists(TrackSections *addr) {
 
 extern u32 isFlycam;
 
-void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
+void load_surface_map(const char* addr[], struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;
     Camera *camera = arg1->camera;
-    //! @todo Should be Gfx*
-    Gfx **gfx = &addr;
     s16 var_a3;
     s16 temp_v1;
     s16 sp1E;
     s16 temp_v0_3;
     u16 rot;
-    printf("--------Loading Collision Mesh--------\n");
+    //printf("--------Loading Collision Mesh--------\n");
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
@@ -127,6 +126,7 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
+                printf("LOGIC\n");
         sp1E = func_802ABD40(camera->unk_54.unk3A);
         temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
         temp_v1 = sp1E - temp_v0_3;
@@ -181,6 +181,7 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
+                printf("ELSE\n");
         temp_v1 = func_802ABD40(camera->unk_54.unk3A);
         if (camera->unk_54.unk3C[2] > 30.0f) {
             temp_v1 = arg1->pathCounter;
@@ -193,8 +194,9 @@ void load_surface_map(Gfx *addr[], struct UnkStruct_800DC5EC *arg1) {
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
 
     printf("----Collision DL Call----\n");
-    printf("Call: 0x%llX\n", gfx[temp_v1]);
-    gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
+    //printf("temp_v1: %d\n", temp_v1);
+    //printf("Call: %s\n", addr[temp_v1]);
+    gSPDisplayList(gDisplayListHead++, addr[0]);
     printf("--------Collision Mesh Loaded--------\n");
 }
 
@@ -1404,7 +1406,7 @@ void func_80295C6C(void) {
     gCourseMinX += -20;
     gCourseMinZ += -20;
     gCourseMinY += -20;
-    //func_802AF314();
+    func_802AF314();
     gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
 }
 
@@ -1457,7 +1459,7 @@ void func_80295D88(void) {
                 set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07002D68));
             }
             TrackSections *section = (TrackSections *) LOAD_ASSET(d_course_mario_raceway_addr);
-            
+
             parse_course_displaylists(section);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;

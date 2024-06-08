@@ -58,7 +58,7 @@ void kart_render(Player*, s8, s8, s8);
 void ghost_render(Player*, s8, s8, s8);
 void func_80025DE8(Player*, s8, s8, s8);
 void player_ice_reflection_render(Player*, s8, s8, s8);
-void player_render(Player*, s8, s8);
+void render_player(Player*, s8, s8);
 void func_80026A48(Player*, s8);
 void func_80026B4C(Player*, s8, s8, s8);
 void func_80030A34(Player*);

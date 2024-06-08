@@ -47,7 +47,6 @@ common_tlut_finish_line_banner:
   type: texture
   ctype: u16
   offset: 0x0
-  size: 0x200
   width: 16
   height: 16
   format: RGBA16

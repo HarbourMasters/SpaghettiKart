@@ -3477,6 +3477,7 @@ void func_8000F628(void) {
         if (gCurrentCourseId < (NUM_COURSES - 1)) {
             func_8000B95C(i, 0, 0);
         }
+        //! todo: @BUG this doesn't seem right. This variable is metadata.
         D_80163028[i] = *(f32 *) LOAD_ASSET(&D_0D009418[gCurrentCourseId][gCCSelection]);
         D_801630E8[i] = 0;
         D_80163100[i] = 0;
