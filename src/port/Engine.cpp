@@ -34,11 +34,11 @@ GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
     std::vector<std::string> OTRFiles;
-    if (const std::string cube_path = Ship::Context::GetPathRelativeToAppDirectory("mkcube.otr"); std::filesystem::exists(cube_path)) {
-        OTRFiles.push_back(cube_path);
+    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.otr"); std::filesystem::exists(spaghetti_path)) {
+        OTRFiles.push_back(spaghetti_path);
     }
-    if (const std::string sm64_otr_path = Ship::Context::GetPathRelativeToAppBundle("sm64.otr"); std::filesystem::exists(sm64_otr_path)) {
-        OTRFiles.push_back(sm64_otr_path);
+    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.otr"); std::filesystem::exists(ship_otr_path)) {
+        OTRFiles.push_back(ship_otr_path);
     }
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
