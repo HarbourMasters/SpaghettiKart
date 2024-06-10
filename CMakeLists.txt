@@ -538,3 +538,21 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
         )
   endif()
 endif()
+
+include(ExternalProject)
+ExternalProject_Add(Torch
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools/torch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/tools/torch
+)
+
+ExternalProject_Get_Property(Torch install_dir)
+set(TORCH_EXECUTABLE ${install_dir}/src/Torch-build/torch)
+
+add_custom_target(
+    ExtractAssets
+    DEPENDS Torch
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${TORCH_EXECUTABLE} pack assets ship.otr
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/mk64.otr" "${CMAKE_BINARY_DIR}/mk64.otr"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.otr" "${CMAKE_BINARY_DIR}/ship.otr"
+)
