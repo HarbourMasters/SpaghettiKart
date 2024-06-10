@@ -7,7 +7,7 @@
     enums: 
       - include/defines.h
     output:
-      binary: mkcube.otr
+      binary: spaghetti.otr
       headers: include/assets
       code: assets/code
   metadata: [yamls/courses]
