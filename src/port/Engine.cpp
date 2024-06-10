@@ -52,6 +52,10 @@ GameEngine::GameEngine() {
 
     this->context = Ship::Context::CreateInstance("Spaghettify", "skart64", "spaghettify.cfg.json", OTRFiles, {}, 3);
 
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+
+    wnd->SetRendererUCode(ucode_f3dex);
+
     auto loader = context->GetResourceManager()->GetResourceLoader();
     loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3fV0>(), RESOURCE_FORMAT_BINARY, "Vec3f", static_cast<uint32_t>(SF64::ResourceType::Vec3f), 0);
     loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3sV0>(), RESOURCE_FORMAT_BINARY, "Vec3s", static_cast<uint32_t>(SF64::ResourceType::Vec3s), 0);
