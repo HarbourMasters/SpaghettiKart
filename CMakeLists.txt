@@ -546,7 +546,7 @@ ExternalProject_Add(Torch
 )
 
 ExternalProject_Get_Property(Torch install_dir)
-set(TORCH_EXECUTABLE ${install_dir}/src/Torch-build/torch)
+set(TORCH_EXECUTABLE ${install_dir}/tools/torch/build/x64/Debug/torch)
 
 add_custom_target(
     ExtractAssets
