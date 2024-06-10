@@ -5,33 +5,33 @@
 
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour *gKartAIBehaviourLUT[] = {
-    #include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
+    #include "course_metadata/gKartAIBehaviourLUT.inc.c"
 
 };
 
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 
 TrackWaypoint *gCoursePathTable[][4] = {
-    #include "assets/course_metadata/gCoursePathTableUnknown.inc.c"
+    #include "course_metadata/gCoursePathTableUnknown.inc.c"
 };
 
 TrackWaypoint *gCoursePathTable2[][4] = {
-    #include "assets/course_metadata/gCoursePathTable.inc.c"
+    #include "course_metadata/gCoursePathTable.inc.c"
 };
 
 // @warning Array contains an extra zero element at the end.
 s16 gKartAISteeringSensitivity[] = {
-    #include "assets/course_metadata/gCPUSteeringSensitivity.inc.c"
+    #include "course_metadata/gCPUSteeringSensitivity.inc.c"
 };
 
 // Possibly maximum cpu separation
 f32 gKartAICourseMaximumSeparation[] = {
-    #include "assets/course_metadata/gKartAICourseMaximumSeparation.inc.c"
+    #include "course_metadata/gKartAICourseMaximumSeparation.inc.c"
 };
 
 // Possibly minimum cpu separation
 f32 gKartAICourseMinimumSeparation[] = {
-    #include "assets/course_metadata/gKartAICourseMinimumSeparation.inc.c"
+    #include "course_metadata/gKartAICourseMinimumSeparation.inc.c"
 };
 
 // I think the types for D_800DCAF4, D_800DCB34, and D_800DCBB4 are all
@@ -58,15 +58,15 @@ s16 D_800DCB34[] = {
 };
 
 s16 *D_800DCBB4[] = {
-    #include "assets/course_metadata/D_800DCBB4.inc.c"
+    #include "course_metadata/D_800DCBB4.inc.c"
 };
 
 BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX] = {
-    #include "assets/course_metadata/gBombKartSpawns.inc.c"
+    #include "course_metadata/gBombKartSpawns.inc.c"
 };
 
 struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
-    #include "assets/course_metadata/gCoursePathSizes.inc.c"
+    #include "course_metadata/gCoursePathSizes.inc.c"
 };
 
 s32 D_800DDB20 = 0x00000000;

@@ -396,24 +396,24 @@ char *gCupNames[] = {
 
 // Displays at beginning of course
 char *gCourseNames[] = {
-    #include "assets/course_metadata/gCourseNames.inc.c"
+    #include "course_metadata/gCourseNames.inc.c"
 };
 
 char *gCourseNamesDup[] = {
-    #include "assets/course_metadata/gCourseNames.inc.c"
+    #include "course_metadata/gCourseNames.inc.c"
 };
 
 char *gCourseNamesDup2[] = {
-    #include "assets/course_metadata/gCourseNames.inc.c"
+    #include "course_metadata/gCourseNames.inc.c"
 };
 
 // Used in debug menu at splash screen
 char *gDebugCourseNames[] = {
-    #include "assets/course_metadata/gCourseDebugNames.inc.c"
+    #include "course_metadata/gCourseDebugNames.inc.c"
 };
 
 const s8 gPerCupIndexByCourseId[] = {
-    #include "assets/course_metadata/gPerCupIndexByCourseId.inc.c"
+    #include "course_metadata/gPerCupIndexByCourseId.inc.c"
 };
 
 // @todo Increase this array for more than eight players
@@ -421,7 +421,7 @@ const s8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
 
 // Maps course IDs (as defined in the COURSES enum) to the cup they belong to
 s8 gCupSelectionByCourseId[] = {
-    #include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
+    #include "course_metadata/gCupSelectionByCourseId.inc.c"
 };
 
 char *D_800E7678[] = {
@@ -557,7 +557,7 @@ char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
 char D_800E77D8[] = "distance";
 
 char *sCourseLengths[] = {
-    #include "assets/course_metadata/sCourseLengths.inc.c"
+    #include "course_metadata/sCourseLengths.inc.c"
 };
 
 char *D_800E7834[] = {
@@ -2889,6 +2889,7 @@ func_80095BD0_label2:
     return func_800959F8(displayListHead, var_a1);
 }
 
+// Player select menu character border
 Gfx *func_80095E10(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, u8 *argA, u32 argB, u32 argC) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
@@ -3332,6 +3333,7 @@ Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s
     return displayListHead;
 }
 
+// Render player characters at player select menu
 Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7, u8 *someTexture, u32 arg9, u32 argA, s32 width) {
     u32 ult;
     u32 temp;
@@ -3360,12 +3362,14 @@ Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u
         }
         temp_v1 = ((32 * lrs) << 10) / (lrs * (32 - width));
 
+        // Renders the left side
         gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp, ult, temp + lrs, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, (arg6 + lrs * width / 32) << 2, arg7 << 2, (arg6 + lrs) << 2, (arg7 + var_s2) << 2, 0, 0, (ult << 5) & 0xFFFF, temp_v1, 1024);
+        gSPTextureRectangle(displayListHead++, (arg6 + lrs * (width) / 32) << 2, arg7 << 2, (((arg6) + lrs) << 2), (((arg7) + var_s2) << 2), 0, 0, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 += lrs;
         temp_v1 = ((32 * spDC) << 10) / (spDC * (32 - width));
+        // Renders the right side
         gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp + lrs, ult, temp + arg9, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2, (arg6 + spDC * (32 - width) / 32) << 2, (arg7 + var_s2) << 2, 0, (lrs << 5) & 0xFFFF, (ult << 5) & 0xFFFF, temp_v1, 1024);
+        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2, ((arg6 + spDC * (32 - (width)) / 32) << 2), (((arg7) + var_s2) << 2), 0,  (1+lrs << 5) & 0xFFFF, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 = arg6Copy;
         arg7 += temp2;
     }
@@ -3741,7 +3745,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             case 1:                             /* switch 1 */
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 //printf("w: %d, h: %d", texture->width, texture->height);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height*2);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
@@ -3871,6 +3875,7 @@ void func_80099AEC(void) {
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, size, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        //u16 *asset = LOAD_ASSET(var_s1->texture->textureData);
         memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
 
         var_s1->texture = NULL;
@@ -3894,6 +3899,7 @@ void func_80099AEC(void) {
             //osPiStartDma(&sp68, 0, 0, (uintptr_t)&_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, size, &gDmaMesgQueue);
         }
         //mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        //u16 *asseta = LOAD_ASSET(var_s1->texture->textureData);
         memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
         var_s1->texture = NULL;
         var_s1++;

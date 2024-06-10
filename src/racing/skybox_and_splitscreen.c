@@ -321,7 +321,7 @@ UNUSED Gfx D_802B8A90[] = {
 };
 
 struct Skybox sSkyColors[] = {
-    #include "assets/course_metadata/sSkyColors.inc.c"
+    #include "course_metadata/sSkyColors.inc.c"
 
 };
 
@@ -350,7 +350,7 @@ struct Skybox sSkyColors[] = {
 // };
 
 struct Skybox sSkyColors2[] = {
-    #include "assets/course_metadata/sSkyColors2.inc.c"
+    #include "course_metadata/sSkyColors2.inc.c"
 };
 
 void func_802A450C(Vtx *skybox) {
