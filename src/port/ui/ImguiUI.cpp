@@ -188,7 +188,8 @@ void DrawSettingsMenu(){
         { // FPS Slider
             const int minFps = 30;
             static int maxFps;
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend()
+                == Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 maxFps = 360;
             } else {
                 maxFps = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
@@ -255,13 +256,15 @@ void DrawSettingsMenu(){
             CVarSetInteger("gInterpolationFPS", currentFps);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
         #else
-            bool matchingRefreshRate =
-                CVarGetInteger("gMatchRefreshRate", 0) && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() != Ship::WindowBackend::DX11;
+            bool matchingRefreshRate = CVarGetInteger("gMatchRefreshRate", 0)
+                                       && Ship::Context::GetInstance()->GetWindow()->GetWindowBackend()
+                                              != Ship::WindowBackend::FAST3D_DXGI_DX11;
             UIWidgets::CVarSliderInt((currentFps == 20) ? "FPS: Original (20)" : "FPS: %d", "gInterpolationFPS", minFps, maxFps, 1, {
                 .disabled = matchingRefreshRate
             });
         #endif
-            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+            if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend()
+                == Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 UIWidgets::Tooltip(
                     "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
                     "visual and does not impact game logic, execution of glitches etc.\n\n"
@@ -275,7 +278,8 @@ void DrawSettingsMenu(){
             }
         } // END FPS Slider
 
-        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend()
+            == Ship::WindowBackend::FAST3D_DXGI_DX11) {
             UIWidgets::Spacer(0);
             if (ImGui::Button("Match Refresh Rate")) {
                 int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
@@ -290,7 +294,8 @@ void DrawSettingsMenu(){
 
         UIWidgets::Tooltip("Matches interpolation value to the current game's window refresh rate");
 
-        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::DX11) {
+        if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend()
+            == Ship::WindowBackend::FAST3D_DXGI_DX11) {
             UIWidgets::PaddedEnhancementSliderInt(CVarGetInteger("gExtraLatencyThreshold", 80) == 0 ? "Jitter fix: Off" : "Jitter fix: >= %d FPS",
                                                   "##ExtraLatencyThreshold", "gExtraLatencyThreshold", 0, 360, "", 80, true, true, false);
             UIWidgets::Tooltip("When Interpolation FPS setting is at least this threshold, add one frame of input lag (e.g. 16.6 ms for 60 FPS) in order to avoid jitter. This setting allows the CPU to work on one frame while GPU works on the previous frame.\nThis setting should be used when your computer is too slow to do CPU + GPU work in time.");
@@ -300,17 +305,17 @@ void DrawSettingsMenu(){
 
 
         static std::unordered_map<Ship::WindowBackend, const char*> windowBackendNames = {
-                { Ship::WindowBackend::DX11, "DirectX" },
-                { Ship::WindowBackend::SDL_OPENGL, "OpenGL"},
-                { Ship::WindowBackend::SDL_METAL, "Metal" },
-                { Ship::WindowBackend::GX2, "GX2"}
+                { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
+                { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
+                { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
         };
 
         ImGui::Text("Renderer API (Needs reload)");
         Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
         Ship::WindowBackend configWindowBackend;
         int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-        if (configWindowBackendId != -1 && configWindowBackendId < static_cast<int>(Ship::WindowBackend::BACKEND_COUNT)) {
+        if (configWindowBackendId != -1
+            && configWindowBackendId < static_cast<int>(Ship::WindowBackend::WINDOW_BACKEND_COUNT)) {
             configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
         } else {
             configWindowBackend = runningWindowBackend;
