@@ -12,6 +12,7 @@
 #include "resource/importers/TrackSectionsFactory.h"
 #include "resource/importers/TrackWaypointFactory.h"
 #include "resource/importers/ActorSpawnDataFactory.h"
+#include "resource/importers/ArrayFactory.h"
 #include <Fast3D/Fast3dWindow.h>
 
 #include <Fast3D/gfx_pc.h>
@@ -66,6 +67,7 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
     loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryBlobV0>(), RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY, "Array", static_cast<uint32_t>(MK64::ResourceType::MK_Array), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryKartAIV0>(), RESOURCE_FORMAT_BINARY, "KartAI", static_cast<uint32_t>(MK64::ResourceType::KartAI), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCourseVtxV0>(), RESOURCE_FORMAT_BINARY, "CourseVtx", static_cast<uint32_t>(MK64::ResourceType::CourseVertex), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(), RESOURCE_FORMAT_BINARY, "TrackSections", static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);

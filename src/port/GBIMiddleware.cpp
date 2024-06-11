@@ -2,6 +2,8 @@
 
 #include "Engine.h"
 #include "DisplayList.h"
+#include "resource/type/ResourceType.h"
+#include "resource/type/Array.h"
 
 extern "C" int GameEngine_OTRSigCheck(const char* data);
 
@@ -33,13 +35,12 @@ extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
         const auto res = Ship::Context::GetInstance()->GetResourceManager()->LoadResource(data);
         const auto type = static_cast<LUS::ResourceType>(res->GetInitData()->Type);
 
-        switch(type) {
-            case LUS::ResourceType::DisplayList:
+        if (res->GetInitData()->Type == static_cast<uint32_t>(LUS::ResourceType::DisplayList)) {
                 texAddr = reinterpret_cast<uintptr_t>(&std::static_pointer_cast<LUS::DisplayList>(res)->Instructions[0]);
-                break;
-            default:
+        } else if (res->GetInitData()->Type == static_cast<uint32_t>(MK64::ResourceType::MK_Array)) {
+                texAddr = reinterpret_cast<uintptr_t>(std::static_pointer_cast<MK64::Array>(res)->Vertices.data());
+        } else {
                 texAddr = reinterpret_cast<uintptr_t>(res->GetRawPointer());
-                break;
         }
     }
 

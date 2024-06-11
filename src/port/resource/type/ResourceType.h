@@ -22,6 +22,7 @@ namespace SF64 {
 
 namespace MK64 {
     enum class ResourceType {
+        MK_Array = 0x4F415252,     // OARR
         CourseVertex = 0x43565458, // CVTX
         TrackSection = 0x5343544E, // SCTN
         Waypoints = 0x57505453,    // WPTS
