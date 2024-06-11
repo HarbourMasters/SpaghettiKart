@@ -56,7 +56,7 @@ xml/*
 
 # Torch
 include/assets/*
-tools/torch/*
+torch/*
 debug/*
 /debug/*
 

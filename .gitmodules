@@ -10,8 +10,8 @@
 [submodule "doxygen-awesome-css"]
 	path = doxygen-awesome-css
 	url = https://github.com/jothepro/doxygen-awesome-css.git
-[submodule "tools/torch"]
-	path = tools/torch
+[submodule "torch"]
+	path = torch
 	url = https://github.com/HarbourMasters/torch
 [submodule "libultraship"]
 	path = libultraship

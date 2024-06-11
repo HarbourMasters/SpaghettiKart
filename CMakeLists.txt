@@ -541,12 +541,12 @@ endif()
 
 include(ExternalProject)
 ExternalProject_Add(Torch
-    SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools/torch
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/tools/torch
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/torch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/torch
 )
 
 ExternalProject_Get_Property(Torch install_dir)
-set(TORCH_EXECUTABLE ${install_dir}/tools/torch/build/x64/Debug/torch)
+set(TORCH_EXECUTABLE ${install_dir}/torch/build/x64/Debug/torch)
 
 add_custom_target(
     ExtractAssets
