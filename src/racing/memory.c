@@ -1033,9 +1033,6 @@ UNUSED void func_802A9AEC(void) {
 
 }
 
-// Fake asset so that users can debug using trace
-static const ALIGN_ASSET(2) char _asset_displaylist_unpack_[] = "displaylist_unpack";
-
 /**
  * Unpacks course packed displaylists by iterating through each byte of the packed file.
  * Each packed displaylist entry has an opcode and any number of arguments.
