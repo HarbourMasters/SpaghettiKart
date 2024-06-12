@@ -453,7 +453,6 @@ d_course_mario_raceway_dl_90B0:
   symbol: d_course_mario_raceway_dl_90B0
   type: gfx
   offset: 0x90B0
-  otr_mode: index
 d_course_mario_raceway_dl_90C0:
   symbol: d_course_mario_raceway_dl_90C0
   type: gfx
@@ -473,12 +472,10 @@ d_course_mario_raceway_dl_9310:
   symbol: d_course_mario_raceway_dl_9310
   type: gfx
   offset: 0x9310
-  otr_mode: index
 d_course_mario_raceway_dl_sign:
   symbol: d_course_mario_raceway_dl_sign
   type: gfx
   offset: 0x9330
-  otr_mode: index
 d_course_mario_raceway_dl_9348:
   symbol: d_course_mario_raceway_dl_9348
   type: gfx

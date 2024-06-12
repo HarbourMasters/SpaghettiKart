@@ -86,6 +86,11 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResour
                 std::copy_n(reinterpret_cast<uint8_t*>(&vec), sizeof(Vec3i), std::back_inserter(arr->mData));
                 break;
             }
+            case ArrayType::Vec3iu: {
+                Vec3i vec(reader->ReadUInt32(), reader->ReadUInt32(), reader->ReadUInt32());
+                std::copy_n(reinterpret_cast<uint8_t*>(&vec), sizeof(Vec3iu), std::back_inserter(arr->mData));
+                break;
+            }
             case ArrayType::Vec4f: {
                 Vec4f vec(reader->ReadFloat(), reader->ReadFloat(), reader->ReadFloat(), reader->ReadFloat());
                 std::copy_n(reinterpret_cast<uint8_t*>(&vec), sizeof(Vec4f), std::back_inserter(arr->mData));
@@ -95,6 +100,9 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResour
                 Vec4s vec(reader->ReadInt16(), reader->ReadInt16(), reader->ReadInt16(), reader->ReadInt16());
                 std::copy_n(reinterpret_cast<uint8_t*>(&vec), sizeof(Vec4s), std::back_inserter(arr->mData));
                 break;
+            }
+            default: {
+                throw std::runtime_error("UNIMPLEMENTED GENERICARRAY TYPE");
             }
         }
     }

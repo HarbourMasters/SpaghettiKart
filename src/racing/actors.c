@@ -1028,16 +1028,16 @@ void spawn_course_actors(void) {
         struct ActorSpawnData *a_d_course_mario_raceway_piranha_plant_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_piranha_plant_spawns);
         struct ActorSpawnData *a_d_course_mario_raceway_item_box_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_item_box_spawns);
 
-        //spawn_foliage(a_d_course_mario_raceway_tree_spawns);
-        //spawn_piranha_plants(a_d_course_mario_raceway_piranha_plant_spawns);
-        //spawn_all_item_boxes(a_d_course_mario_raceway_item_box_spawns);
-        // vec3f_set(position, 150.0f, 40.0f, -1300.0f);
-        // position[0] *= gCourseDirection;
-        // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-        // vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
-        // position[0] *= gCourseDirection;
-        // actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
-        // actor->flags |= 0x4000;
+        spawn_foliage(a_d_course_mario_raceway_tree_spawns);
+        spawn_piranha_plants(a_d_course_mario_raceway_piranha_plant_spawns);
+        spawn_all_item_boxes(a_d_course_mario_raceway_item_box_spawns);
+        vec3f_set(position, 150.0f, 40.0f, -1300.0f);
+        position[0] *= gCourseDirection;
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
+        vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
+        position[0] *= gCourseDirection;
+        actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
+        actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
         spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);

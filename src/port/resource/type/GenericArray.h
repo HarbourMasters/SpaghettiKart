@@ -26,6 +26,11 @@ struct Vec3i {
     Vec3i(int32_t x, int32_t y, int32_t z) : x(x), y(y), z(z) {}
 };
 
+struct Vec3iu {
+    uint32_t x, y, z;
+    Vec3iu(uint32_t x, uint32_t y, uint32_t z) : x(x), y(y), z(z) {}
+};
+
 struct Vec4f {
     float x, y, z, w;
     Vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
@@ -37,7 +42,7 @@ struct Vec4s {
 };
 
 enum class ArrayType {
-    u8, s8, u16, s16, u32, s32, u64, f32, f64, Vec2f, Vec3f, Vec3s, Vec3i, Vec4f, Vec4s,
+    u8, s8, u16, s16, u32, s32, u64, f32, f64, Vec2f, Vec3f, Vec3s, Vec3i, Vec3iu, Vec4f, Vec4s,
 };
 
 class GenericArray : public Ship::Resource<uint8_t> {

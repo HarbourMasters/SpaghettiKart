@@ -50,7 +50,7 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryArrayV0::ReadResource(std:
                         data.u16 = reader->ReadUInt16();
                         break;
                     default:
-                        // OTRTODO: IMPLEMENT OTHER TYPES!
+                        throw std::runtime_error("ARRAY FACTORY TYPE NOT IMPLEMENTED");
                         break;
                 }
 

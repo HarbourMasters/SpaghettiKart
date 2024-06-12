@@ -314,8 +314,7 @@ void DrawSettingsMenu(){
         Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
         Ship::WindowBackend configWindowBackend;
         int configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-        if (configWindowBackendId != -1
-            && configWindowBackendId < static_cast<int>(Ship::WindowBackend::WINDOW_BACKEND_COUNT)) {
+        if (Ship::Context::GetInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
             configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
         } else {
             configWindowBackend = runningWindowBackend;

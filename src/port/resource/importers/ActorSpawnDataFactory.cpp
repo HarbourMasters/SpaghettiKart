@@ -21,7 +21,7 @@ namespace MK64 {
             data.pos[0] = reader->ReadInt16();
             data.pos[1] = reader->ReadInt16();
             data.pos[2] = reader->ReadInt16();
-            data.signedSomeId = reader->ReadUByte();
+            data.signedSomeId = reader->ReadInt16();
 
             section->ActorSpawnDataList.push_back(data);
         }
