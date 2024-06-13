@@ -61,6 +61,7 @@ endif()
 set(VERSION us)
 set(USE_NETWORKING OFF)
 set(SKIP_XCODE_VERSION_CHECK ON)
+set(GFX_DEBUG_DISASSEMBLER ON)
 
 # Add compile definitions for the target
 add_compile_definitions(

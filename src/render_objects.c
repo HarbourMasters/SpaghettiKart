@@ -227,7 +227,7 @@ void load_texture_block_i8_nomirror(u8 *texture, s32 width, s32 height) {
 void func_80044924(u8 *texture, s32 width, s32 height) {
     // This macro ought to be equivalent to the block of macros below but it doesn't match
     // See comment above the `gDPLoadBlock` macro
-    gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    //gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
     // gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
     // gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
@@ -598,15 +598,15 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     s32 vertexIndex = 0;
     u8 *img = texture;
 
-    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        rsp_load_texture(img, width, height);
-        gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += width * height;
-        vertexIndex += 4;
-    }
-    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+    // gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+    // for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
+    //     rsp_load_texture(img, width, height);
+    //     gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
+    //     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    //     img += width * height;
+    //     vertexIndex += 4;
+    // }
+    // gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
@@ -614,15 +614,15 @@ void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32
     s32 vertexIndex = 0;
     u8 *img = texture;
 
-    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        rsp_load_texture(img, width, height);
-        gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += width * (height - 1);
-        vertexIndex += 4;
-    }
-    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+    // gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+    // for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
+    //     rsp_load_texture(img, width, height);
+    //     gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
+    //     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    //     img += width * (height - 1);
+    //     vertexIndex += 4;
+    // }
+    // gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height, s32 someMask) {
@@ -630,15 +630,15 @@ void func_8004747C(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     s32 vertexIndex = 0;
     u8 *img = texture;
 
-    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        rsp_load_texture_mask(img, width, height, someMask);
-        gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += width * (height - 1);
-        vertexIndex += 4;
-    }
-    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+    // gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+    // for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
+    //     rsp_load_texture_mask(img, width, height, someMask);
+    //     gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
+    //     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    //     img += width * (height - 1);
+    //     vertexIndex += 4;
+    // }
+    // gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 height) {
@@ -646,16 +646,16 @@ void func_8004768C(u8 *tlut, u8 *texture, Vtx *arg2, s32 arg3, s32 width, s32 he
     s32 vertexIndex = 0;
     u8 *img = texture;
 
-    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
-        // Something seems off about arguments here, but if it matches it matches
-        rsp_load_texture(img, height, width);
-        gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += height * width;
-        vertexIndex += 4;
-    }
-    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+    // gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+    // for (heightIndex = 0; heightIndex < arg3 / height; heightIndex++) {
+    //     // Something seems off about arguments here, but if it matches it matches
+    //     rsp_load_texture(img, height, width);
+    //     gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
+    //     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    //     img += height * width;
+    //     vertexIndex += 4;
+    // }
+    // gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void func_8004788C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *texture, Vtx *arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {

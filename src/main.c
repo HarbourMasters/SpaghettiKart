@@ -39,6 +39,7 @@
 #include <debug.h>
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
+#include <bridge/gfxdebuggerbridge.h>
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -301,7 +302,9 @@ void create_gfx_task_structure(void) {
     func_8008C214();
     // gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
     // gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
-
+    if (GfxDebuggerIsDebuggingRequested()) {
+        GfxDebuggerDebugDisplayList(gGfxPool->gfxPool);
+    }
     Graphics_PushFrame(gGfxPool->gfxPool);
 }
 
@@ -1174,11 +1177,6 @@ void update_gamestate(void) {
 }
 
 void thread5_game_loop(void) {
-
-    // if (GfxDebuggerIsDebugging()) {
-    //     Graphics_PushFrame(gGfxPool->gfxPool);
-    //     return;
-    // }
     setup_game_memory();
     osCreateMesgQueue(&gGfxVblankQueue, gGfxMesgBuf, 1);
     osCreateMesgQueue(&gGameVblankQueue, &gGameMesgBuf, 1);
@@ -1204,6 +1202,10 @@ void thread5_game_loop(void) {
 void thread5_iteration(void){
     // func_800CB2C4();
 
+    if (GfxDebuggerIsDebugging()) {
+        Graphics_PushFrame(gGfxPool->gfxPool);
+        return;
+    }
     // Update the gamestate if it has changed (racing, menus, credits, etc.).
     if (gGamestateNext != gGamestate) {
         gGamestate = gGamestateNext;
