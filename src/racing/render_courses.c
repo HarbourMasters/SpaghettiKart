@@ -47,16 +47,24 @@ s32 func_80290C20(Camera *camera) {
     return 0;
 }
 
-void parse_course_displaylists(TrackSections *addr) {
-    TrackSections *first = &addr[0];
-    TrackSections *section = &addr[0];
+// Stupid hack to allocate memory to convert a u32 ptr DLs to 64 bit. Should probably be done in torch instead.
+TrackSections trackSectionsBuffer[100];
 
-    while (section->addr != 0) {
+void parse_course_displaylists(TrackSectionsI *addr) {
+    TrackSections *section = &trackSectionsBuffer[0];
+
+    while (addr->addr != 0) {
+
+        section->addr = segmented_uintptr_t_to_virtual(addr->addr);
+        section->flags = addr->flags;
+        section->sectionId = addr->sectionId;
+        section->surfaceType = addr->surfaceType;
+
         printf("SECTION ADDR: 0x%X\n", section->addr);
-        section->addr = segmented_uintptr_t_to_virtual(section->addr);
         section++;
+        addr++;
     }
-    section = first;
+    section = &trackSectionsBuffer[0];
     //section->surfaceType = addr->surfaceType;
     //section->flags = addr->flags;
     //section->sectionId = addr->sectionId;
@@ -92,7 +100,6 @@ void load_surface_map(const char* addr[], struct UnkStruct_800DC5EC *arg1) {
     s16 sp1E;
     s16 temp_v0_3;
     u16 rot;
-    //printf("--------Loading Collision Mesh--------\n");
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
@@ -181,7 +188,6 @@ void load_surface_map(const char* addr[], struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-                printf("ELSE\n");
         temp_v1 = func_802ABD40(camera->unk_54.unk3A);
         if (camera->unk_54.unk3C[2] > 30.0f) {
             temp_v1 = arg1->pathCounter;
@@ -192,12 +198,7 @@ void load_surface_map(const char* addr[], struct UnkStruct_800DC5EC *arg1) {
 
     arg1->pathCounter = temp_v1;
     temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
-
-    printf("----Collision DL Call----\n");
-    //printf("temp_v1: %d\n", temp_v1);
-    //printf("Call: %s\n", addr[temp_v1]);
-    gSPDisplayList(gDisplayListHead++, addr[0]);
-    printf("--------Collision Mesh Loaded--------\n");
+    gSPDisplayList(gDisplayListHead++, addr[temp_v1]);
 }
 
 void func_80291198(void) {
@@ -1420,14 +1421,6 @@ void func_80295D6C(void) {
     D_8015F6F6 = -3000;
 }
 
-typedef struct {
-    uint16_t segment;
-    uint16_t offset;
-    uint8_t surfaceType;
-    uint8_t sectionId;
-    uint16_t flags;
-} TrackSectionsI;
-
 void func_80295D88(void) {
     gNumActors = 0;
 
@@ -1458,7 +1451,7 @@ void func_80295D88(void) {
                 // d_course_mario_raceway_packed_dl_2D68
                 set_vertex_data_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07002D68));
             }
-            TrackSections *section = (TrackSections *) LOAD_ASSET(d_course_mario_raceway_addr);
+            TrackSectionsI *section = (TrackSectionsI *) LOAD_ASSET(d_course_mario_raceway_addr);
 
             parse_course_displaylists(section);
             func_80295C6C();

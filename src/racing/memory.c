@@ -123,7 +123,7 @@ void *segmented_uintptr_t_to_virtual(uintptr_t addr) {
     uint32_t numCommands = offset / 8;
     offset = numCommands * sizeof(Gfx);
 
-    printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", newAddr, (gSegmentTable[segment] + offset));
+    printf("seg_uintptr_t_to_virt: 0x%llX to 0x%llX\n", newAddr, (gSegmentTable[segment] + offset));
 
     return (void *) ((gSegmentTable[segment] + offset));
 }
