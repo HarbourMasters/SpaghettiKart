@@ -150,10 +150,10 @@ void load_credits(void) {
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
-    D_8015F588 = 0;
+    gCollisionMeshCount = 0;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
+    gCollisionMesh = (CollisionTriangle *) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;
     camera->pos[1] = 300.0f;
     camera->pos[2] = 1400.0f;

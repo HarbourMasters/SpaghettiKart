@@ -203,17 +203,18 @@ typedef struct {
         //bit 4: 1 = out of bounds
         //bit 3: 1 = player tumbles upon contact (may fall right through)
     /* 0x02 */ u16 surfaceType;
-    /* 0x04 */ s16 vtx31;
-               s16 vtx32;
-               s16 vtx33; //X, Y, Z of poly's third vertex
-               s16 vtx21;
-               s16 vtx22;
-    /* 0x0A */ s16 vtx23; //X, Y, Z of poly's second vertex
-    /* 0x10 */ Vtx *vtxPoly1; //pointer to the 3 vertices of this poly
-               Vtx *vtxPoly2;
-               Vtx *vtxPoly3;
-        //unsure why this exists along with a copy of two of the vertices.
-        //both are involved in hit detection.
+
+        // For AABB bounding-box style collision. Box collision is cheaper than checking each vtx.
+    /* 0x04 */ s16 minX; // Minimum x coordinate
+               s16 minY; // Minimum y coordinate
+               s16 minZ; // Minimum z coordinate
+               s16 maxX; // Maximum x coordinate
+               s16 maxY; // Maximum y coordinate
+    /* 0x0A */ s16 maxZ; // Maximum z coordinate
+        // Three vertices to make a triangle
+    /* 0x10 */ Vtx *vtx1;
+               Vtx *vtx2;
+               Vtx *vtx3;
     /* 0x1C */ f32 height;
         //normally 0; read at 0x802AB1A4. this value is added to the height Lakitu
         //drops you at. changing it seems to make the surface intangible.
@@ -227,7 +228,7 @@ typedef struct {
     /* 0x24 */ f32 rotation; //normally about -0.001. no idea what this actually is.
     /* 0x28 */ f32 height2; //changes Y position of all vertices (but not graphics or
         //Lakitu drop position). Normally set to (track_height * -1) + about 6.
-} mk64_surface_map_ram; // size = 0x2C
+} CollisionTriangle; // size = 0x2C
 
 typedef struct {
     /* 0x00 */ Vec3f cornerPos;

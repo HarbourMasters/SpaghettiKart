@@ -430,7 +430,7 @@ diff --git a/src/racing/render_courses.c b/src/racing/render_courses.c
 index c2a84aa..338e2bd 100644
 --- a/src/racing/render_courses.c
 +++ b/src/racing/render_courses.c
-@@ -180,6 +180,11 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
+@@ -180,6 +180,11 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
      arg1->pathCounter = temp_v1;
      temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
 
