@@ -30,7 +30,7 @@ f32   func_802AE1C0(f32, f32, f32);
 void  set_vtx_buffer(uintptr_t, u32, u32);
 s32   is_line_intersecting_rectangle(s16, s16, s16, s16, s16, s16, s16, s16);
 s32   is_triangle_intersecting_bounding_box(s16, s16, s16, s16, u16);
-void  func_802AF314(void);
+void  generate_collision_grid(void);
 void  generate_collision_mesh_with_defaults(Gfx*);
 void  generate_collision_mesh_with_default_section_id(Gfx*, s8);
 void  generate_collision_mesh(Gfx*, s8, u16);

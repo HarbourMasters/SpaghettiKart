@@ -1683,11 +1683,6 @@ void set_collision_triangle(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16
         gCourseMaxZ = maxZ;
     }
 
-    // printf("X 0x%X\n ", normalX);
-    // printf("Y 0x%X\n ", normalY);
-    // printf("Z 0x%X\n ", normalZ);
-    // printf("dist 0x%X\n\n", distance);
-
     triangle->height = normalX;
     triangle->gravity = normalY;
     triangle->rotation = normalZ;
@@ -1923,9 +1918,12 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
 }
 
 /**
- * Appears to generate a boundary around the course
+ * Appears to split the collision mesh into sections so that the game
+ * can check only nearby geography for a collision rather than checking against the whole collision mesh.
+ * D_8015F584 contains a list of indices of the collision mesh and D_8014F110
+ * contains a list of indices of D_8015F584.  
  */
-void func_802AF314(void) {
+void generate_collision_grid(void) {
     CollisionTriangle *triangle;
     s32 i, j, k;
     UNUSED s32 pad[5];
