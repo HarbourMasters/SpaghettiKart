@@ -68,9 +68,9 @@ extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
 
 extern CollisionTriangle *gCollisionMesh;
-extern u16 *D_8015F584;
+extern u16 *gCollisionIndices;
 extern u16 gCollisionMeshCount;
-extern u16 D_8015F58A;
+extern u16 gNumCollisionTriangles;
 extern u32 D_8015F58C;
 
 extern Vec3f D_8015F590;

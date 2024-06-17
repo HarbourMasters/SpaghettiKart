@@ -57,6 +57,6 @@ extern Lights1 D_800DC610[];
 
 extern Lights1 D_800DC610[]; // Light data?
 
-extern u16 D_8015F58A;
+extern u16 gNumCollisionTriangles;
 
 #endif

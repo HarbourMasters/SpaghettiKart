@@ -705,13 +705,13 @@ s32 func_802AC22C(KartBoundingBoxCorner *arg0) {
     }
 
     temp_v1_2 = (temp_f4 + temp_f6 * 32);
-    temp_v1 = D_8014F110[temp_v1_2].unk2;
+    temp_v1 = gCollisionGrid[temp_v1_2].numTriangles;
     if (temp_v1 == 0) {
         return 0;
     }
-    var_s1 = D_8014F110[temp_v1_2].unk0;
+    var_s1 = gCollisionGrid[temp_v1_2].triangle;
     for (var_s2 = 0; var_s2 < temp_v1; var_s2++) {
-        temp_s0 = D_8015F584[var_s1];
+        temp_s0 = gCollisionIndices[var_s1];
         if (gCollisionMesh[temp_s0].flags & 0x4000) {
             if (temp_s0 != arg0->surfaceMapIndex) {
                 if (func_802AAE4C(&spD0, 5.0f, temp_f22, temp_f24, temp_f26, temp_s0) == 1) {
@@ -1298,20 +1298,20 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32
     }
 
     temp_v1_2 = (temp_f10 + temp_f16 * 32);
-    temp_s6 = D_8014F110[temp_v1_2].unk2;
+    temp_s6 = gCollisionGrid[temp_v1_2].numTriangles;
 
     if (temp_s6 == 0) {
         return flags;
     }
 
-    phi_s2 = D_8014F110[temp_v1_2].unk0;
+    phi_s2 = gCollisionGrid[temp_v1_2].triangle;
 
     for (i = 0; i < temp_s6; i++) {
         if (flags == (0x4000 | 0x2000 | 0x8000)) {
             return flags;
         }
 
-        surfaceIndex = D_8015F584[phi_s2];
+        surfaceIndex = gCollisionIndices[phi_s2];
 
         if ((gCollisionMesh[surfaceIndex].flags & 0x4000)) {
             if ((flags & 0x4000) == 0) {
@@ -1407,17 +1407,17 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
     }
 
     temp = temp_f10 + temp_f16 * 32;
-    temp_v1 = D_8014F110[temp].unk2;
+    temp_v1 = gCollisionGrid[temp].numTriangles;
     if (temp_v1 == 0) {
         return var_s4;
     }
-    var_s2 = D_8014F110[temp].unk0;
+    var_s2 = gCollisionGrid[temp].triangle;
 
     for (i = 0; i < temp_v1; i++) {
         if (var_s4 == (0x8000 | 0x4000 | 0x2000)) {
             return var_s4;
         }
-        temp_v0_4 = D_8015F584[var_s2];
+        temp_v0_4 = gCollisionIndices[var_s2];
         if (gCollisionMesh[temp_v0_4].flags & 0x4000) {
             if (!(var_s4 & 0x4000)) {
                 if (temp_v0_4 != collision->unk3A) {
@@ -1475,7 +1475,7 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
     temp_f4 = (s16) ((posX - gCourseMinX) / c);
     temp_f6 = (s16) ((posZ - gCourseMinZ) / d);
     temp_f66 = temp_f4 + (temp_f6 * 32);
-    iter = D_8014F110[temp_f66].unk2;
+    iter = gCollisionGrid[temp_f66].numTriangles;
 
     if (temp_f4 < 0) {
         return 3000.0f;
@@ -1493,11 +1493,11 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
         return 3000.0f;
     }
 
-    phi_s1 = D_8014F110[temp_f66].unk0;
+    phi_s1 = gCollisionGrid[temp_f66].triangle;
 
     for (i = 0; i < iter; i++) {
 
-        index = D_8015F584[phi_s1];
+        index = gCollisionIndices[phi_s1];
 
         if ((gCollisionMesh[index].flags & 0x4000) && (func_802ABB04(posX, posZ, index) == 1)) {
             temp_f0 = func_802ABE30(posX, posY, posZ, index);
@@ -1918,10 +1918,9 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
 }
 
 /**
- * Appears to split the collision mesh into sections so that the game
- * can check only nearby geography for a collision rather than checking against the whole collision mesh.
- * D_8015F584 contains a list of indices of the collision mesh and D_8014F110
- * contains a list of indices of D_8015F584.  
+ * Splits the collision mesh into 32x32 sections. This allows the game to check only
+ * nearby geography for a collision rather than checking against the whole collision mesh.
+ * (checking against the whole mesh would be expensive)
  */
 void generate_collision_grid(void) {
     CollisionTriangle *triangle;
@@ -1931,39 +1930,36 @@ void generate_collision_grid(void) {
     s16 maxZ;
     s16 minX;
     s16 minZ;
-    s32 scaledZ;
-    s32 scaledX;
+    s32 sectionX;
+    s32 sectionZ;
     s32 courseLengthX;
     s32 courseLengthZ;
     s32 index;
+
     courseLengthX = (s32) gCourseMaxX - gCourseMinX;
     courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
 
-    scaledX = courseLengthX / 32;
-    scaledZ = courseLengthZ / 32;
+    // Separate the course into 32 sections
+    sectionX = courseLengthX / 32;
+    sectionZ = courseLengthZ / 32;
 
+    // Reset the collision grid
     for (i = 0; i < 1024; i++) {
-        D_8014F110[i].unk2 = 0;
+        gCollisionGrid[i].numTriangles = 0;
     }
 
-    D_8015F58A = 0;
-    /**
-     * @bug possibly bug. Allocate memory but not increment the pointer.
-     * This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
-     * It is incremented after this function completes using a different variable.
-     * Not good.
-    */
-    D_8015F584 = (u16 *) gNextFreeMemoryAddress;
+    gNumCollisionTriangles = 0;
 
     for (j = 0; j < 32; j++) {
         for (k = 0; k < 32; k++) {
             index = k + j * 32;
 
-            minX = (gCourseMinX + (scaledX * k)) - 20;
-            minZ = (gCourseMinZ + (scaledZ * j)) - 20;
+            // Select a section of the course using min/max akin to drawing a bounding-box
+            minX = (gCourseMinX + (sectionX * k)) - 20;
+            minZ = (gCourseMinZ + (sectionZ * j)) - 20;
 
-            maxX = minX + scaledX + 40;
-            maxZ = minZ + scaledZ + 40;
+            maxX = minX + sectionX + 40;
+            maxZ = minZ + sectionZ + 40;
 
             for (i = 0; i < gCollisionMeshCount; i++) {
                 triangle = gCollisionMesh + i;
@@ -1972,13 +1968,15 @@ void generate_collision_grid(void) {
                 if (triangle->maxX < minX) { continue; }
                 if (triangle->minX > maxX) { continue; }
 
+                // Add the collision triangle to the list if it's inside the bounding-box
                 if (is_triangle_intersecting_bounding_box(minX, maxX, minZ, maxZ, (u16) i) == 1) {
-                    if (D_8014F110[index].unk2 == 0) {
-                        D_8014F110[index].unk0 = D_8015F58A;
+                    // Point this grid section to the first triangle in the section
+                    if (gCollisionGrid[index].numTriangles == 0) {
+                        gCollisionGrid[index].triangle = gNumCollisionTriangles;
                     }
-                    D_8014F110[index].unk2++;
-                    D_8015F584[D_8015F58A] = (s16) i;
-                    D_8015F58A++;
+                    gCollisionGrid[index].numTriangles++;
+                    gCollisionIndices[gNumCollisionTriangles] = (u16) i;
+                    gNumCollisionTriangles++;
                 }
             }
 
@@ -2149,7 +2147,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
     u16 i;
     u16 colMeshIndex;
     u16 iter;
-    u16 phi_s2;
+    u16 section;
     f32 cornerPos1;
     f32 cornerPos2;
     f32 cornerPos3;
@@ -2234,14 +2232,14 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
 
 
     temp_v1_2 = temp_f10 + temp_f16 * 32;
-    iter = D_8014F110[temp_v1_2].unk2;
+    iter = gCollisionGrid[temp_v1_2].numTriangles;
 
     if (iter == 0) { return 0; }
 
-    phi_s2 = D_8014F110[temp_v1_2].unk0;
+    section = gCollisionGrid[temp_v1_2].triangle;
 
     for (i = 0; i < iter; i++) {
-        colMeshIndex = D_8015F584[phi_s2];
+        colMeshIndex = gCollisionIndices[section];
         if (gCollisionMesh[colMeshIndex].flags & 0x4000) {
             if (colMeshIndex != corner->surfaceMapIndex) {
                 if (is_colliding_with_drivable_surface(collision, boundingBoxSize, cornerPos1, cornerPos2, cornerPos3, colMeshIndex, cornerPosX, cornerPosY, cornerPosZ) == 1) {
@@ -2296,7 +2294,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
                 }
             }
         }
-        phi_s2++;
+        section++;
     }
     corner->cornerGroundY = cornerPos2;
     corner->surfaceType = 0;

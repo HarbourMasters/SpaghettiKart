@@ -58,10 +58,10 @@ struct GfxPool {
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
 
-struct UnkStruct_8015F584 {
-    u16 unk0;
-    u16 unk2;
-};
+typedef struct {
+    u16 triangle; // Index for gCollisionIndices which has indexes for gCollisionMesh
+    u16 numTriangles;
+} CollisionGrid;
 
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func(void);
@@ -159,7 +159,7 @@ extern OSContStatus gControllerStatuses[];
 extern OSContPad gControllerPads[];
 extern u8 gControllerBits;
 
-extern struct UnkStruct_8015F584 D_8014F110[];
+extern CollisionGrid gCollisionGrid[];
 extern u16 gNumActors;
 extern u16 gMatrixObjectCount;
 extern s32 gTickSpeed;

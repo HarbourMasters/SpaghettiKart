@@ -109,7 +109,8 @@ OSMesg gSIEventMesgBuf[3];
 OSContStatus gControllerStatuses[4];
 OSContPad gControllerPads[4];
 u8 gControllerBits;
-struct UnkStruct_8015F584 D_8014F110[1024];
+// Contains a 32x32 grid of indices into gCollisionIndices containing indices into gCollisionMesh
+CollisionGrid gCollisionGrid[1024];
 u16 gNumActors;
 u16 gMatrixObjectCount;
 s32 gTickSpeed;
