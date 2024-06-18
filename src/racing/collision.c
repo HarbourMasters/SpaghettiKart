@@ -1920,7 +1920,7 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
 /**
  * Splits the collision mesh into 32x32 sections. This allows the game to check only
  * nearby geography for a collision rather than checking against the whole collision mesh.
- * (checking against the whole mesh would be expensive)
+ * (checking against the whole mesh for every actor would be expensive)
  */
 void generate_collision_grid(void) {
     CollisionTriangle *triangle;
