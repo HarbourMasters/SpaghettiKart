@@ -40,7 +40,7 @@ typedef struct {
     /* 0x48 */ s32 unk_48;
     /* 0x4C */ s32 unk_4C;
     /* 0x50 */ s32 unk_50;
-    /* 0x54 */ Collision unk_54;
+    /* 0x54 */ Collision collision;
     // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?) of that bouncing
     /* 0x94 */ UnkCameraInner unk_94;
     // Timer for wall-hit bounce. Counts up instead of down

@@ -444,7 +444,7 @@ s32 func_800418E8(f32 arg0, f32 arg1, Vec3f arg2) {
 s32 func_80041924(Collision *arg0, Vec3f arg1) {
     s32 ret = 0;
 
-    func_802ADDC8(arg0, 10.0f, arg1[0], arg1[1], arg1[2]);
+    check_bounding_collision(arg0, 10.0f, arg1[0], arg1[1], arg1[2]);
     if (arg0->unk34 == 1) {
         ret = 1;
     }
@@ -802,32 +802,32 @@ void mtxf_set_matrix_scale_transl(Mat4 transformMatrix, Vec3f vec1, Vec3f vec2, 
 
 void mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     f32 sinX;
-    Objects *temp_s0 = &gObjectList[objectIndex];
+    Object *object = &gObjectList[objectIndex];
     f32 sinY;
     f32 cosY;
     f32 sinZ;
     f32 cosZ;
     f32 cosX;
 
-    sinX = sins(temp_s0->orientation[0]);
-    cosX = coss(temp_s0->orientation[0]);
-    sinY = sins(temp_s0->orientation[1]);
-    cosY = coss(temp_s0->orientation[1]);
-    sinZ = sins(temp_s0->orientation[2]);
-    cosZ = coss(temp_s0->orientation[2]);
+    sinX = sins(object->orientation[0]);
+    cosX = coss(object->orientation[0]);
+    sinY = sins(object->orientation[1]);
+    cosY = coss(object->orientation[1]);
+    sinZ = sins(object->orientation[2]);
+    cosZ = coss(object->orientation[2]);
 
-    transformMatrix[0][0] = temp_s0->sizeScaling * ((cosY * cosZ) + (sinX * sinY * sinZ));
-    transformMatrix[1][0] = temp_s0->sizeScaling * ((-cosY * sinZ) + sinX * sinY * cosZ);
-    transformMatrix[2][0] = temp_s0->sizeScaling * (cosX * sinY);
-    transformMatrix[3][0] = temp_s0->pos[0];
-    transformMatrix[0][1] = temp_s0->sizeScaling * (cosX * sinZ);
-    transformMatrix[1][1] = temp_s0->sizeScaling * (cosX * cosZ);
-    transformMatrix[2][1] = temp_s0->sizeScaling * -sinX;
-    transformMatrix[3][1] = temp_s0->pos[1];
-    transformMatrix[0][2] = temp_s0->sizeScaling * ((-sinY * cosZ) + (sinX * cosY * sinZ));
-    transformMatrix[1][2] = temp_s0->sizeScaling * ((sinY * sinZ) + (sinX * cosY * cosZ));
-    transformMatrix[2][2] = temp_s0->sizeScaling * (cosX * cosY);
-    transformMatrix[3][2] = temp_s0->pos[2];
+    transformMatrix[0][0] = object->sizeScaling * ((cosY * cosZ) + (sinX * sinY * sinZ));
+    transformMatrix[1][0] = object->sizeScaling * ((-cosY * sinZ) + sinX * sinY * cosZ);
+    transformMatrix[2][0] = object->sizeScaling * (cosX * sinY);
+    transformMatrix[3][0] = object->pos[0];
+    transformMatrix[0][1] = object->sizeScaling * (cosX * sinZ);
+    transformMatrix[1][1] = object->sizeScaling * (cosX * cosZ);
+    transformMatrix[2][1] = object->sizeScaling * -sinX;
+    transformMatrix[3][1] = object->pos[1];
+    transformMatrix[0][2] = object->sizeScaling * ((-sinY * cosZ) + (sinX * cosY * sinZ));
+    transformMatrix[1][2] = object->sizeScaling * ((sinY * sinZ) + (sinX * cosY * cosZ));
+    transformMatrix[2][2] = object->sizeScaling * (cosX * cosY);
+    transformMatrix[3][2] = object->pos[2];
     transformMatrix[0][3] = 0.0f;
     transformMatrix[1][3] = 0.0f;
     transformMatrix[2][3] = 0.0f;

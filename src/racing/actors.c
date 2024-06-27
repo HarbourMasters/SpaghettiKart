@@ -259,7 +259,7 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->flags = actor->flags | 0x4000 | 0x1000;
             actor->unk_08 = 0.35f;
             actor->boundingBoxSize = 1.925f;
-            func_802ADDC8(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
+            check_bounding_collision(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
             break;
         case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
             actor->flags |= 0x4000;
@@ -378,21 +378,21 @@ void func_80297760(struct Actor *arg0, Vec3f arg1) {
     arg1[0] = arg0->pos[0];
     arg1[1] = arg0->pos[1];
     arg1[2] = arg0->pos[2];
-    arg1[1] = func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk30.unk3A);
+    arg1[1] = calculate_surface_height(arg1[0], arg1[1], arg1[2], arg0->unk30.meshIndexZX);
 }
 
 void func_802977B0(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 |= 2;
-    arg0->boundingBoxCorners[0].unk_14 |= 2;
-    arg0->boundingBoxCorners[3].unk_14 |= 2;
-    arg0->boundingBoxCorners[2].unk_14 |= 2;
+    arg0->tyres[FRONT_RIGHT].unk_14 |= 2;
+    arg0->tyres[FRONT_LEFT].unk_14 |= 2;
+    arg0->tyres[BACK_RIGHT].unk_14 |= 2;
+    arg0->tyres[BACK_LEFT].unk_14 |= 2;
 }
 
 void func_802977E4(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[0].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[3].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[2].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Invert green and red on green shell texture
@@ -563,7 +563,7 @@ void evaluate_collision_players_palm_trees(void) {
 
     for (index = 0; index < 4; index++){
         // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to keep 8 first bit
-        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 24) >> 24) == GRASS)) {
+        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].collision.meshIndexZX) << 24) >> 24) == GRASS)) {
             evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }
@@ -845,7 +845,7 @@ void spawn_palm_trees(struct ActorSpawnData *spawnData) {
         temp_v1 = (struct PalmTree *) &gActorList[temp];
 
         temp_v1->variant = temp_s0->someId;
-        func_802ADDC8((Collision *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
+        check_bounding_collision((Collision *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
         func_802976EC((Collision *) &temp_v1->unk30, temp_v1->rot);
         temp_s0++;
     }
@@ -923,9 +923,9 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
         if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
-            func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
-            if (temp_s0->unk30.unk3C[2] < 0.0f) {
-                temp_s0->pos[1] = func_802ABE30(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
+            check_bounding_collision(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
+            if (temp_s0->unk30.surfaceDistance[2] < 0.0f) {
+                temp_s0->pos[1] = calculate_surface_height(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.meshIndexZX);
             }
             func_802976EC(&temp_s0->unk30, temp_s0->rot);
         }
@@ -953,7 +953,7 @@ void spawn_all_item_boxes(struct ActorSpawnData *spawnData) {
         startingRot[1] = random_u16();
         startingRot[2] = random_u16();
         temp_s1 = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-        temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_f0 = spawn_actor_on_surface(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
 
         // Should be struct ItemBox but not enough space in the stack.
         // It's either the ItemBox or the SEGMENT/OFFSET variables.

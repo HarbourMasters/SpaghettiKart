@@ -18,13 +18,13 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     s32 nearestWaypoint;
 
     player = &gPlayers[fruit->targetPlayer];
-    if (((player->type & PLAYER_KART_AI) != 0) || (player->unk_110.unk34 == 0)) {
+    if (((player->type & PLAYER_KART_AI) != 0) || (player->collision.unk34 == 0)) {
         fruit->state = 0;
         return;
     }
     switch (fruit->state) {                               /* irregular */
     case 0:
-        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != GRASS) {
+        if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) != GRASS) {
             return;
         }
         fruit->state = 1;

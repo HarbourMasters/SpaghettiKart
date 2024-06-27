@@ -330,7 +330,7 @@ glabel L8001AFD8
 /* 01BC94 8001B094 46283280 */  add.d $f10, $f6, $f8
 /* 01BC98 8001B098 8D86001C */  lw    $a2, 0x1c($t4)
 /* 01BC9C 8001B09C AFA70028 */  sw    $a3, 0x28($sp)
-/* 01BCA0 8001B0A0 0C0AB870 */  jal   func_802AE1C0
+/* 01BCA0 8001B0A0 0C0AB870 */  jal   spawn_actor_on_surface
 /* 01BCA4 8001B0A4 462053A0 */   cvt.s.d $f14, $f10
 /* 01BCA8 8001B0A8 8FA70028 */  lw    $a3, 0x28($sp)
 /* 01BCAC 8001B0AC 3C013F80 */  li    $at, 0x3F800000 # 1.000000
@@ -582,7 +582,7 @@ glabel L8001B3B4
 /* 01C054 8001B454 E4E00028 */  swc1  $f0, 0x28($a3)
 /* 01C058 8001B458 E4E0002C */  swc1  $f0, 0x2c($a3)
 /* 01C05C 8001B45C AFA70028 */  sw    $a3, 0x28($sp)
-/* 01C060 8001B460 0C0AB870 */  jal   func_802AE1C0
+/* 01C060 8001B460 0C0AB870 */  jal   spawn_actor_on_surface
 /* 01C064 8001B464 462033A0 */   cvt.s.d $f14, $f6
 /* 01C068 8001B468 8FA70028 */  lw    $a3, 0x28($sp)
 /* 01C06C 8001B46C 3C013F80 */  li    $at, 0x3F800000 # 1.000000
@@ -1122,7 +1122,7 @@ glabel L8001BB30
 /* 01C7F4 8001BBF4 46249180 */  add.d $f6, $f18, $f4
 /* 01C7F8 8001BBF8 8CE60020 */  lw    $a2, 0x20($a3)
 /* 01C7FC 8001BBFC AFA70028 */  sw    $a3, 0x28($sp)
-/* 01C800 8001BC00 0C0AB870 */  jal   func_802AE1C0
+/* 01C800 8001BC00 0C0AB870 */  jal   spawn_actor_on_surface
 /* 01C804 8001BC04 462033A0 */   cvt.s.d $f14, $f6
 /* 01C808 8001BC08 8FA70028 */  lw    $a3, 0x28($sp)
 /* 01C80C 8001BC0C C4E8000C */  lwc1  $f8, 0xc($a3)

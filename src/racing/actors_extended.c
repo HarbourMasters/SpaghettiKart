@@ -16,20 +16,20 @@
 #include "effects.h"
 #include "sounds.h"
 
-void copy_collision(Collision *arg0, Collision *arg1) {
-    arg1->unk30 = arg0->unk30;
-    arg1->unk32 = arg0->unk32;
-    arg1->unk34 = arg0->unk34;
-    arg1->unk36 = arg0->unk36;
-    arg1->unk38 = arg0->unk38;
-    arg1->unk3A = arg0->unk3A;
-    arg1->unk3C[0] = arg0->unk3C[0];
-    arg1->unk3C[1] = arg0->unk3C[1];
-    arg1->unk3C[2] = arg0->unk3C[2];
+void copy_collision(Collision *src, Collision *dest) {
+    dest->unk30 = src->unk30;
+    dest->unk32 = src->unk32;
+    dest->unk34 = src->unk34;
+    dest->meshIndexYX = src->meshIndexYX;
+    dest->meshIndexZY = src->meshIndexZY;
+    dest->meshIndexZX = src->meshIndexZX;
+    dest->surfaceDistance[0] = src->surfaceDistance[0];
+    dest->surfaceDistance[1] = src->surfaceDistance[1];
+    dest->surfaceDistance[2] = src->surfaceDistance[2];
 
-    vec3f_copy_return(arg1->unk48, arg0->unk48);
-    vec3f_copy_return(arg1->unk54, arg0->unk54);
-    vec3f_copy_return(arg1->orientationVector, arg0->orientationVector);
+    vec3f_copy_return(dest->unk48, src->unk48);
+    vec3f_copy_return(dest->unk54, src->unk54);
+    vec3f_copy_return(dest->orientationVector, src->orientationVector);
 }
 
 void triple_shell_actor_collide_with_player(struct ShellActor *shell, s32 shellType) {
@@ -572,7 +572,7 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->flags = 0x9000;
     switch (shellType) {
@@ -622,7 +622,7 @@ s32 use_green_shell_item(Player *player) {
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
@@ -661,7 +661,7 @@ s32 use_red_shell_item(Player *player) {
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
@@ -708,7 +708,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
         startingPos[0] = player->pos[0];
         startingPos[1] = player->pos[1];
         startingPos[2] = player->pos[2];
-        func_802AD950(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0], newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+        actor_terrain_collision(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0], newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
         func_802B4E30((struct Actor*)newBanana);
         newBanana->flags = 0x9000;
         newBanana->playerId = player - gPlayerOne;
@@ -960,19 +960,19 @@ void check_player_use_item(void) {
 #include "actors/blue_and_red_shells/update.inc.c"
 
 void func_802B4E30(struct Actor *arg0) {
-    if ((arg0->unk30.unk3C[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.orientationVector[0] * arg0->unk30.unk3C[2]);
-        arg0->pos[1] -= (arg0->unk30.orientationVector[1] * arg0->unk30.unk3C[2]);
-        arg0->pos[2] -= (arg0->unk30.orientationVector[2] * arg0->unk30.unk3C[2]);
+    if ((arg0->unk30.surfaceDistance[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.orientationVector[0] * arg0->unk30.surfaceDistance[2]);
+        arg0->pos[1] -= (arg0->unk30.orientationVector[1] * arg0->unk30.surfaceDistance[2]);
+        arg0->pos[2] -= (arg0->unk30.orientationVector[2] * arg0->unk30.surfaceDistance[2]);
     }
-    if ((arg0->unk30.unk3C[0] < 0.0f) && (arg0->unk30.unk30 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C[0]);
-        arg0->pos[1] -= (arg0->unk30.unk48[1] * arg0->unk30.unk3C[0]);
-        arg0->pos[2] -= (arg0->unk30.unk48[2] * arg0->unk30.unk3C[0]);
+    if ((arg0->unk30.surfaceDistance[0] < 0.0f) && (arg0->unk30.unk30 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.surfaceDistance[0]);
+        arg0->pos[1] -= (arg0->unk30.unk48[1] * arg0->unk30.surfaceDistance[0]);
+        arg0->pos[2] -= (arg0->unk30.unk48[2] * arg0->unk30.surfaceDistance[0]);
     }
-    if ((arg0->unk30.unk3C[1] < 0.0f) && (arg0->unk30.unk32 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk54[0] * arg0->unk30.unk3C[1]);
-        arg0->pos[1] -= (arg0->unk30.unk54[1] * arg0->unk30.unk3C[1]);
-        arg0->pos[2] -= (arg0->unk30.unk54[2] * arg0->unk30.unk3C[1]);
+    if ((arg0->unk30.surfaceDistance[1] < 0.0f) && (arg0->unk30.unk32 == 1)) {
+        arg0->pos[0] -= (arg0->unk30.unk54[0] * arg0->unk30.surfaceDistance[1]);
+        arg0->pos[1] -= (arg0->unk30.unk54[1] * arg0->unk30.surfaceDistance[1]);
+        arg0->pos[2] -= (arg0->unk30.unk54[2] * arg0->unk30.surfaceDistance[1]);
     }
 }

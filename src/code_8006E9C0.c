@@ -105,7 +105,7 @@ void func_8006EB10(void) {
 }
 
 void clear_object_list() {
-    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
+    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Object));
     objectListSize = -1;
 }
 
@@ -824,7 +824,7 @@ void init_course_object(void) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
                 gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
+                gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight = gHedgehogSpawns[i].pos[1] + 6.0;
                 gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;

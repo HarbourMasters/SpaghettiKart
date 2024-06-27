@@ -73,20 +73,20 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
     rock->pos[1] += rock->velocity[1];
     rock->pos[2] += rock->velocity[2];
     pad1 = rock->velocity[1];
-    func_802ADDC8(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
-    pad0 = rock->unk30.unk3C[2];
+    check_bounding_collision(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
+    pad0 = rock->unk30.surfaceDistance[2];
     if (pad0 < 0.0f) {
         unkVec[0] = -rock->unk30.orientationVector[0];
         unkVec[1] = -rock->unk30.orientationVector[1];
         unkVec[2] = -rock->unk30.orientationVector[2];
-        rock->pos[0] += unkVec[0] * rock->unk30.unk3C[2];
-        rock->pos[1] += unkVec[1] * rock->unk30.unk3C[2];
-        rock->pos[2] += unkVec[2] * rock->unk30.unk3C[2];
-        func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+        rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[2];
+        rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[2];
+        rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[2];
+        adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
         rock->velocity[1] = -1.2f * pad1;
         func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
     }
-    pad0 = rock->unk30.unk3C[0];
+    pad0 = rock->unk30.surfaceDistance[0];
     if (pad0 < 0.0f) {
         unkVec[1] = -rock->unk30.unk48[1];
         if (unkVec[1] == 0.0f) {
@@ -96,15 +96,15 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
         else {
             unkVec[0] = -rock->unk30.unk48[0];
             unkVec[2] = -rock->unk30.unk48[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[0];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[0];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[0];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+            rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[0];
+            rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[0];
+            rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[0];
+            adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
             rock->velocity[1] = -1.2f * pad1;
             func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
         }
     }
-    pad0 = rock->unk30.unk3C[1];
+    pad0 = rock->unk30.surfaceDistance[1];
     if (pad0 < 0.0f) {
         unkVec[1] = -rock->unk30.unk54[1];
         if (unkVec[1] == 0.0f) {
@@ -113,11 +113,11 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
         else {
             unkVec[0] = -rock->unk30.unk54[0];
             unkVec[2] = -rock->unk30.unk54[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[1];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[1];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[1];
+            rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[1];
+            rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[1];
+            rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[1];
             pad1 = rock->velocity[1];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+            adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
             rock->velocity[1] = -1.2f * pad1;
             func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
         }

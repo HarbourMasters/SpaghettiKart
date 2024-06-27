@@ -47,7 +47,7 @@ void update_actor_banana(struct BananaActor *banana) {
             banana->pos[1] = player->pos[1] - temp_f14 - 2.0f;
             banana->pos[2] = player->pos[2] - temp_f16;
         }
-        func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
+        check_bounding_collision(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         if ((player->type & PLAYER_HUMAN) != 0) {
             if (gDemoMode) {
@@ -99,15 +99,15 @@ void update_actor_banana(struct BananaActor *banana) {
         if ((banana->pos[2] < (f32) gCourseMinZ) || ((f32) gCourseMaxZ < banana->pos[2]) || (banana->pos[0] < (f32) gCourseMinX) || ((f32) gCourseMaxX < banana->pos[0]) || (banana->pos[1] < (f32) gCourseMinY)) {
             destroy_destructable_actor((struct Actor *) banana);
         } else {
-            func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
+            check_bounding_collision(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
-            if ((banana->unk30.unk34 != 0) && (banana->unk30.unk3C[2] < 0.0f)) {
+            if ((banana->unk30.unk34 != 0) && (banana->unk30.surfaceDistance[2] < 0.0f)) {
                 someOtherVelocity[0] = -banana->unk30.orientationVector[0];
                 someOtherVelocity[1] = -banana->unk30.orientationVector[1];
                 someOtherVelocity[2] = -banana->unk30.orientationVector[2];
-                banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk3C[2];
-                banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk3C[2];
-                banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk3C[2];
+                banana->pos[0] += someOtherVelocity[0] * banana->unk30.surfaceDistance[2];
+                banana->pos[1] += someOtherVelocity[1] * banana->unk30.surfaceDistance[2];
+                banana->pos[2] += someOtherVelocity[2] * banana->unk30.surfaceDistance[2];
                 banana->flags &= ~0x1000;
                 banana->state = 4;
             }
@@ -137,7 +137,7 @@ void update_actor_banana(struct BananaActor *banana) {
             banana->pos[1] = unkY - temp_f14 - 2.0f;
             banana->pos[2] = unkZ - temp_f16;
         }
-        func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
+        check_bounding_collision(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         break;
     case BANANA_BUNCH_BANANA:
@@ -159,7 +159,7 @@ void update_actor_banana(struct BananaActor *banana) {
             banana->pos[2] = elderBanana->pos[2] - temp_f16;
         }
         var_f8 = banana->pos[2];
-        func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
+        check_bounding_collision(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
         break;
     case DESTROYED_BANANA:

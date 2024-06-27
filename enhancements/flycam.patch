@@ -365,7 +365,7 @@ index 0000000..5569838
 +    f32 pitchChange = controller->rawStickY * SENSITIVITY_Y;
 +    Vec3f forwardVector;
 +
-+    func_802ADDC8(&camera->unk_54, 50, camera->pos[0], camera->pos[1], camera->pos[2]);
++    check_bounding_collision(&camera->collision, 50, camera->pos[0], camera->pos[1], camera->pos[2]);
 +
 +    camera->rot[1] += (short)(yawChange * 65535.0f / (2 * M_PI)); // Convert radians to 0-65535 range
 +

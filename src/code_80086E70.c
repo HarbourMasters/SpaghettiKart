@@ -425,33 +425,33 @@ void func_80088150(s32 arg0) {
 
 void func_80088178(s32 objectIndex, s32 arg1) {
     s16 temp_a1;
-    Objects *temp_v1;
+    Object *object;
 
-    temp_v1 = &gObjectList[objectIndex];
+    object = &gObjectList[objectIndex];
     temp_a1 = atan2s(D_80165760[1] - D_80165760[0], D_80165780[1] - D_80165780[0]);
-    temp_a1 -= temp_v1->direction_angle[1];
+    temp_a1 -= object->direction_angle[1];
     if (temp_a1 > 0) {
-        temp_v1->direction_angle[1] += (arg1 << 8);
+        object->direction_angle[1] += (arg1 << 8);
     } else if (temp_a1 < 0) {
-        temp_v1->direction_angle[1] -= (arg1 << 8);
+        object->direction_angle[1] -= (arg1 << 8);
     }
 }
 
 // if the code is too ugly for you, then go fix it without tampering with the register allocations
 void func_80088228(s32 objectIndex) {
-    Objects *temp_v0;
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_084[9] = 0;
-    temp_v0->controlPoints = temp_v0->spline->controlPoints;
+    Object *object;
+    object = &gObjectList[objectIndex];
+    object->unk_084[9] = 0;
+    object->controlPoints = object->spline->controlPoints;
     /*
     This is INCREDIBLY stupid. This should really be
     temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
     but for some unholy reason that doesn't match
     */
-    temp_v0->unk_084[8] = *((s16*)temp_v0->controlPoints - 1);
-    temp_v0->offset[0] = temp_v0->controlPoints[0].pos[0];
-    temp_v0->offset[1] = temp_v0->controlPoints[0].pos[1];
-    temp_v0->offset[2] = temp_v0->controlPoints[0].pos[2];
+    object->unk_084[8] = *((s16*)object->controlPoints - 1);
+    object->offset[0] = object->controlPoints[0].pos[0];
+    object->offset[1] = object->controlPoints[0].pos[1];
+    object->offset[2] = object->controlPoints[0].pos[2];
     func_80086FD4(objectIndex);
 }
 
@@ -473,16 +473,16 @@ s32 func_800882B0(s32 objectIndex, s32 arg1) {
 }
 
 void func_80088364(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
 
     func_800880E4(objectIndex);
     func_80088178(objectIndex, 1);
     func_800876A0(objectIndex);
     if (func_800882B0(objectIndex, 0x0000000A) != 0) {
-        temp_v0 = &gObjectList[objectIndex];
-        temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
-        if (((u16)temp_v0->unk_084[9] + 3) == (u16) temp_v0->unk_084[8]) {
-            temp_v0->unk_0AE += 1;
+        object = &gObjectList[objectIndex];
+        object->unk_084[9] = (u16) object->unk_084[9] + 1;
+        if (((u16)object->unk_084[9] + 3) == (u16) object->unk_084[8]) {
+            object->unk_0AE += 1;
         } else {
             func_80088150(objectIndex);
         }
@@ -511,12 +511,12 @@ s32 func_8008847C(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.meshIndexZX);
     }
     return sp2C;
 }
@@ -527,12 +527,12 @@ s32 func_80088538(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.meshIndexZX);
         gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
         gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
     }
@@ -545,12 +545,12 @@ s32 func_8008861C(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.meshIndexZX);
         gObjectList[objectIndex].unk_01C[0] = D_8018C3B0.orientationVector[0];
         gObjectList[objectIndex].unk_01C[1] = D_8018C3B0.orientationVector[1];
         gObjectList[objectIndex].unk_01C[2] = D_8018C3B0.orientationVector[2];
@@ -559,10 +559,10 @@ s32 func_8008861C(s32 objectIndex) {
 }
 
 void func_800886F4(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+    check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.meshIndexZX);
         gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
         gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
         return;
@@ -571,10 +571,10 @@ void func_800886F4(s32 objectIndex) {
 }
 
 void func_800887C0(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+    check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.meshIndexZX);
         gObjectList[objectIndex].velocity[0] = D_8018C3B0.orientationVector[0];
         gObjectList[objectIndex].velocity[1] = D_8018C3B0.orientationVector[1];
         gObjectList[objectIndex].velocity[2] = D_8018C3B0.orientationVector[2];
@@ -1005,26 +1005,26 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
     f32 var_f2;
     f32 something;
     s32 playerId;
-    Objects *temp_v0;
+    Object *object;
     struct_D_8018CE10 *temp_v1;
 
     playerId = player - gPlayerOne;
     temp_v1 = &D_8018CE10[playerId];
     var_f2 = 0.0f;
     if (temp_v1->unk_18[6] == 0) {
-        temp_v0 = &gObjectList[objectIndex];
+        object = &gObjectList[objectIndex];
         player->unk_046 |= 2;
         player->effects |= 0x8000;
         temp_v1->unk_18[6] = 4;
-        something = (player->pos[0] - temp_v0->pos[0]) * temp_v0->velocity[0];
+        something = (player->pos[0] - object->pos[0]) * object->velocity[0];
         if (something >= 0.0f) {
-            temp_v1->unk_04[0] = (-player->velocity[0] * arg2) + (temp_v0->velocity[0] * arg3);
+            temp_v1->unk_04[0] = (-player->velocity[0] * arg2) + (object->velocity[0] * arg3);
         } else {
             temp_v1->unk_04[0] = -player->velocity[0] * arg2;
         }
-        something = (player->pos[2] - temp_v0->pos[2]) * temp_v0->velocity[2];
+        something = (player->pos[2] - object->pos[2]) * object->velocity[2];
         if (something >= 0.0f) {
-            temp_v1->unk_04[2] = (-player->velocity[2] * arg2) + (temp_v0->velocity[2] * arg3);
+            temp_v1->unk_04[2] = (-player->velocity[2] * arg2) + (object->velocity[2] * arg3);
         } else {
             temp_v1->unk_04[2] = -player->velocity[2] * arg2;
         }
@@ -1415,11 +1415,11 @@ UNUSED void func_8008A850(s32 arg0) {
 }
 
 UNUSED s32 func_8008A870(Player *player) {
-    return func_802ABD40(player->unk_110.unk3A);
+    return get_section_id(player->collision.meshIndexZX);
 }
 
 s32 func_8008A890(Camera *camera) {
-    return func_802ABD40(camera->unk_54.unk3A);
+    return get_section_id(camera->collision.meshIndexZX);
 }
 
 s32 func_8008A8B0(s16 arg0, s16 arg1) {
@@ -1447,48 +1447,48 @@ void func_8008A920(s32 objectIndex) {
 
 void func_8008A9B8(s32 objectIndex) {
     UNUSED s32 temp_t9;
-    Objects *temp_v0;
+    Object *object;
 
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->controlPoints++;
-    temp_v0->unk_09A = (s16) (10000 / (s16) (temp_v0->controlPoints[0].velocity));
-    temp_v0->timer = 0;
+    object = &gObjectList[objectIndex];
+    object->controlPoints++;
+    object->unk_09A = (s16) (10000 / (s16) (object->controlPoints[0].velocity));
+    object->timer = 0;
     func_8008A920(objectIndex);
 }
 
 void func_8008AA3C(s32 objectIndex) {
-    Objects *temp_v0;
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->controlPoints = temp_v0->spline->controlPoints;
-    temp_v0->unk_084[9] = 0;
-    temp_v0->timer = 0;
+    Object *object;
+    object = &gObjectList[objectIndex];
+    object->controlPoints = object->spline->controlPoints;
+    object->unk_084[9] = 0;
+    object->timer = 0;
     /*
     This is INCREDIBLY stupid. This should really be
     temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
     but for some unholy reason that doesn't match
     */
-    temp_v0->unk_084[8] = *((s16*)temp_v0->controlPoints - 1);
-    temp_v0->offset[0] = temp_v0->controlPoints[0].pos[0];
-    temp_v0->offset[1] = temp_v0->controlPoints[0].pos[1];
-    temp_v0->offset[2] = temp_v0->controlPoints[0].pos[2];
-    temp_v0->unk_09A = (s16) (10000 / temp_v0->controlPoints[0].velocity);
+    object->unk_084[8] = *((s16*)object->controlPoints - 1);
+    object->offset[0] = object->controlPoints[0].pos[0];
+    object->offset[1] = object->controlPoints[0].pos[1];
+    object->offset[2] = object->controlPoints[0].pos[2];
+    object->unk_09A = (s16) (10000 / object->controlPoints[0].velocity);
     func_8008A920(objectIndex);
     func_80086FD4(objectIndex);
 }
 
 void func_8008AB10(s32 objectIndex) {
     UNUSED s16 temp_t3;
-    Objects *temp_v0;
+    Object *object;
 
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->offset[0] += temp_v0->velocity[0];
-    temp_v0->offset[1] += temp_v0->velocity[1];
-    temp_v0->offset[2] += temp_v0->velocity[2];
-    temp_v0->timer += (u16)temp_v0->unk_09A;
-    if (temp_v0->timer >= 0x2710) {
-        temp_v0->unk_084[9] = (u16)temp_v0->unk_084[9] + 1;
-        if (((u16)temp_v0->unk_084[9] + 1) == (u16) temp_v0->unk_084[8]) {
-            temp_v0->unk_0AE += 1;
+    object = &gObjectList[objectIndex];
+    object->offset[0] += object->velocity[0];
+    object->offset[1] += object->velocity[1];
+    object->offset[2] += object->velocity[2];
+    object->timer += (u16)object->unk_09A;
+    if (object->timer >= 0x2710) {
+        object->unk_084[9] = (u16)object->unk_084[9] + 1;
+        if (((u16)object->unk_084[9] + 1) == (u16) object->unk_084[8]) {
+            object->unk_0AE += 1;
         } else {
             func_8008A9B8(objectIndex);
         }
@@ -1577,12 +1577,12 @@ UNUSED void func_8008AE94(void) {
 
 // D_80183DC8 is where the spline's derivative polynomial calculations are stored
 void func_8008AE9C(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
 
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->velocity[0] = (D_80183DC8[0] * D_80165760[0]) + (D_80183DC8[1] * D_80165760[1]) + (D_80183DC8[2] * D_80165760[2]) + (D_80183DC8[3] * D_80165760[3]);
-    temp_v0->velocity[1] = (D_80183DC8[0] * D_80165770[0]) + (D_80183DC8[1] * D_80165770[1]) + (D_80183DC8[2] * D_80165770[2]) + (D_80183DC8[3] * D_80165770[3]);
-    temp_v0->velocity[2] = (D_80183DC8[0] * D_80165780[0]) + (D_80183DC8[1] * D_80165780[1]) + (D_80183DC8[2] * D_80165780[2]) + (D_80183DC8[3] * D_80165780[3]);
+    object = &gObjectList[objectIndex];
+    object->velocity[0] = (D_80183DC8[0] * D_80165760[0]) + (D_80183DC8[1] * D_80165760[1]) + (D_80183DC8[2] * D_80165760[2]) + (D_80183DC8[3] * D_80165760[3]);
+    object->velocity[1] = (D_80183DC8[0] * D_80165770[0]) + (D_80183DC8[1] * D_80165770[1]) + (D_80183DC8[2] * D_80165770[2]) + (D_80183DC8[3] * D_80165770[3]);
+    object->velocity[2] = (D_80183DC8[0] * D_80165780[0]) + (D_80183DC8[1] * D_80165780[1]) + (D_80183DC8[2] * D_80165780[2]) + (D_80183DC8[3] * D_80165780[3]);
 }
 
 void func_8008AFE0(s32 objectIndex, f32 arg1) {
@@ -1608,12 +1608,12 @@ UNUSED void func_8008B030(void) {
 
 // D_80183DA8 is where the spline's polynomial calculations are stored
 void func_8008B038(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
 
-    temp_v0 = &gObjectList[objectIndex];
-    temp_v0->offset[0] = (D_80183DA8[0] * D_80165760[0]) + (D_80183DA8[1] * D_80165760[1]) + (D_80183DA8[2] * D_80165760[2]) + (D_80183DA8[3] * D_80165760[3]);
-    temp_v0->offset[1] = (D_80183DA8[0] * D_80165770[0]) + (D_80183DA8[1] * D_80165770[1]) + (D_80183DA8[2] * D_80165770[2]) + (D_80183DA8[3] * D_80165770[3]);
-    temp_v0->offset[2] = (D_80183DA8[0] * D_80165780[0]) + (D_80183DA8[1] * D_80165780[1]) + (D_80183DA8[2] * D_80165780[2]) + (D_80183DA8[3] * D_80165780[3]);
+    object = &gObjectList[objectIndex];
+    object->offset[0] = (D_80183DA8[0] * D_80165760[0]) + (D_80183DA8[1] * D_80165760[1]) + (D_80183DA8[2] * D_80165760[2]) + (D_80183DA8[3] * D_80165760[3]);
+    object->offset[1] = (D_80183DA8[0] * D_80165770[0]) + (D_80183DA8[1] * D_80165770[1]) + (D_80183DA8[2] * D_80165770[2]) + (D_80183DA8[3] * D_80165770[3]);
+    object->offset[2] = (D_80183DA8[0] * D_80165780[0]) + (D_80183DA8[1] * D_80165780[1]) + (D_80183DA8[2] * D_80165780[2]) + (D_80183DA8[3] * D_80165780[3]);
 }
 
 void func_8008B17C(s32 objectIndex, f32 arg1) {
@@ -1683,20 +1683,20 @@ void func_8008B284(s32 objectIndex) {
 }
 
 void func_8008B3E4(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
     UNUSED SplineData *spline;
 
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
-        temp_v0 = &gObjectList[objectIndex];
-        temp_v0->unk_084[9] = 0;
-        temp_v0->timer = 0;
-        temp_v0->controlPoints = temp_v0->spline->controlPoints;
+        object = &gObjectList[objectIndex];
+        object->unk_084[9] = 0;
+        object->timer = 0;
+        object->controlPoints = object->spline->controlPoints;
         /*
         This is INCREDIBLY stupid. This should really be
         temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
         but for some unholy reason that doesn't match
         */
-        temp_v0->unk_084[8] = *(((s16*)temp_v0->controlPoints) - 1);
+        object->unk_084[8] = *(((s16*)object->controlPoints) - 1);
 
         set_object_flag_status_true(objectIndex, 8);
     }
@@ -1741,15 +1741,15 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
 
 void func_8008B620(s32 objectIndex) {
     UNUSED s16 temp_t0;
-    Objects *temp_v0;
+    Object *object;
 
     func_8008B478(objectIndex, 0);
-    temp_v0 = &gObjectList[objectIndex];
-    if (temp_v0->timer >= 0x2710) {
+    object = &gObjectList[objectIndex];
+    if (object->timer >= 0x2710) {
         // Have to do it this way due to the u16 cast
-        temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
-        if (((u16) temp_v0->unk_084[9] + 3) == (u16) temp_v0->unk_084[8]) {
-            temp_v0->unk_0AE += 1;
+        object->unk_084[9] = (u16) object->unk_084[9] + 1;
+        if (((u16) object->unk_084[9] + 3) == (u16) object->unk_084[8]) {
+            object->unk_0AE += 1;
         } else {
             func_8008B44C(objectIndex);
         }
@@ -1757,14 +1757,14 @@ void func_8008B620(s32 objectIndex) {
 }
 
 void func_8008B6A4(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
 
     func_8008B478(objectIndex, 1);
-    temp_v0 = &gObjectList[objectIndex];
-    if (temp_v0->timer >= 0x2710) {
+    object = &gObjectList[objectIndex];
+    if (object->timer >= 0x2710) {
         // Have to do it this way due to the u16 cast
-        temp_v0->unk_084[9] = (u16) temp_v0->unk_084[9] + 1;
-        if ((u16)temp_v0->unk_084[9] == (u16)temp_v0->unk_084[8]) {
+        object->unk_084[9] = (u16) object->unk_084[9] + 1;
+        if ((u16)object->unk_084[9] == (u16)object->unk_084[8]) {
             set_object_flag_status_false(objectIndex, 8);
         } else {
             func_8008B44C(objectIndex);
@@ -1834,19 +1834,19 @@ void set_obj_velocity(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, SplineData *spline) {
-    Objects *temp_s0;
+    Object *object;
 
-    temp_s0 = &gObjectList[objectIndex];
-    temp_s0->origin_pos[0] = (f32) arg1;
-    temp_s0->origin_pos[1] = (f32) arg2;
-    temp_s0->spline = spline;
-    temp_s0->origin_pos[2] = (f32) arg3;
-    temp_s0->velocity[0] = (f32) (spline->controlPoints[1].pos[0] - spline->controlPoints[0].pos[0]);
-    temp_s0->velocity[1] = (f32) (spline->controlPoints[1].pos[1] - spline->controlPoints[0].pos[1]);
-    temp_s0->velocity[2] = (f32) (spline->controlPoints[1].pos[2] - spline->controlPoints[0].pos[2]);
-    temp_s0->direction_angle[1] = get_y_direction_angle(objectIndex);
-    temp_s0->velocity[2] = func_800416D8(temp_s0->velocity[2], temp_s0->velocity[0], -temp_s0->direction_angle[1]);
-    temp_s0->direction_angle[0] = get_x_direction_angle(objectIndex);
+    object = &gObjectList[objectIndex];
+    object->origin_pos[0] = (f32) arg1;
+    object->origin_pos[1] = (f32) arg2;
+    object->spline = spline;
+    object->origin_pos[2] = (f32) arg3;
+    object->velocity[0] = (f32) (spline->controlPoints[1].pos[0] - spline->controlPoints[0].pos[0]);
+    object->velocity[1] = (f32) (spline->controlPoints[1].pos[1] - spline->controlPoints[0].pos[1]);
+    object->velocity[2] = (f32) (spline->controlPoints[1].pos[2] - spline->controlPoints[0].pos[2]);
+    object->direction_angle[1] = get_y_direction_angle(objectIndex);
+    object->velocity[2] = func_800416D8(object->velocity[2], object->velocity[0], -object->direction_angle[1]);
+    object->direction_angle[0] = get_x_direction_angle(objectIndex);
 }
 
 UNUSED void object_origin_pos_randomize_around_x(s32 objectIndex, s16 x, u16 arg2) {
@@ -1924,15 +1924,15 @@ void object_calculate_new_pos_offset(s32 objectIndex) {
 }
 
 void func_8008BF64(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *object;
 
-    temp_v0 = &gObjectList[objectIndex];
-    D_80183E40[0] = temp_v0->pos[0];
-    D_80183E40[1] = temp_v0->pos[1];
-    D_80183E40[2] = temp_v0->pos[2];
-    D_80183E80[0] = temp_v0->direction_angle[0];
-    D_80183E80[1] = temp_v0->direction_angle[1];
-    D_80183E80[2] = temp_v0->direction_angle[2];
+    object = &gObjectList[objectIndex];
+    D_80183E40[0] = object->pos[0];
+    D_80183E40[1] = object->pos[1];
+    D_80183E40[2] = object->pos[2];
+    D_80183E80[0] = object->direction_angle[0];
+    D_80183E80[1] = object->direction_angle[1];
+    D_80183E80[2] = object->direction_angle[2];
 }
 
 void func_8008BFC0(s32 objectIndex) {
@@ -1941,17 +1941,17 @@ void func_8008BFC0(s32 objectIndex) {
 }
 
 void func_8008BFFC(s32 objectIndex) {
-    Objects *temp_v1;
+    Object *object;
 
-    temp_v1 = &gObjectList[objectIndex];
-    switch (temp_v1->unk_0DE) {
+    object = &gObjectList[objectIndex];
+    switch (object->unk_0DE) {
     case 1:
-        if (temp_v1->unk_0AE == 1) {
+        if (object->unk_0AE == 1) {
             func_8008B620(objectIndex);
         }
         break;
     case 2:
-        switch (temp_v1->unk_0AE) {
+        switch (object->unk_0AE) {
         case 0:
             break;
         case 1:
@@ -1960,7 +1960,7 @@ void func_8008BFFC(s32 objectIndex) {
         }
         break;
     case 3:
-        switch (temp_v1->unk_0AE) {
+        switch (object->unk_0AE) {
         case 0:
             break;
         case 1:
@@ -1969,7 +1969,7 @@ void func_8008BFFC(s32 objectIndex) {
         }
         break;
     case 4:
-        switch (temp_v1->unk_0AE) {                        /* switch 1; irregular */
+        switch (object->unk_0AE) {                        /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                     /* switch 1 */
@@ -1981,7 +1981,7 @@ void func_8008BFFC(s32 objectIndex) {
         }
         break;
     case 5:
-        switch (temp_v1->unk_0AE) {                        /* switch 2; irregular */
+        switch (object->unk_0AE) {                        /* switch 2; irregular */
         case 0:                                         /* switch 2 */
             break;
         case 1:                                     /* switch 2 */
@@ -1993,7 +1993,7 @@ void func_8008BFFC(s32 objectIndex) {
         }
         break;
     case 6:
-        switch (temp_v1->unk_0AE) {
+        switch (object->unk_0AE) {
         case 0:
             break;
         case 1:
@@ -2002,7 +2002,7 @@ void func_8008BFFC(s32 objectIndex) {
         }
         break;
     case 7:
-        switch (temp_v1->unk_0AE) {                        /* switch 3; irregular */
+        switch (object->unk_0AE) {                        /* switch 3; irregular */
         case 0:                                         /* switch 3 */
             break;
         case 1:                                     /* switch 3 */

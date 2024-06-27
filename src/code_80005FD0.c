@@ -54,7 +54,7 @@ Vec3f D_80162FA0;
 Vec3f D_80162FB0;
 Vec3f D_80162FC0;
 s16 D_80162FCC;
-s16 D_80162FCE;
+s16 sSomeNearestWaypoint;
 s16 D_80162FD0;
 f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
 /*
@@ -132,7 +132,7 @@ s16 D_8016348C;
 s16 D_80163490[12];
 s16 D_801634A8[12];
 s16 D_801634C0[12];
-s16 D_801634D8[10];
+s16 bStopAICrossing[10];
 s16 D_801634EC;
 s32 D_801634F0;
 s32 D_801634F4;
@@ -140,8 +140,8 @@ Test D_801634F8[10];
 PathNoY *D_80163598;
 s32 D_8016359C;
 TrainStuff gTrainList[NUM_TRAINS];
-u16 isCrossingTriggeredByIndex[2];
-u16 D_801637BC[2];
+u16 isCrossingTriggeredByIndex[NUM_CROSSINGS];
+u16 sCrossingActiveTimer[NUM_CROSSINGS];
 PaddleBoatStuff gPaddleBoats[NUM_PADDLE_BOATS];
 VehicleStuff gBoxTruckList[NUM_RACE_BOX_TRUCKS];
 VehicleStuff gSchoolBusList[NUM_RACE_SCHOOL_BUSES];
@@ -601,61 +601,69 @@ void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
     arg0[2] = arg1[2] + temp2;
 }
 
-s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
-    Camera *var_a0_2;
-    Player *var_a0;
-    f32 temp_f0;
-    f32 temp_f2;
-    f32 temp_f12;
-    f32 temp_f14;
-    s32 var_a1;
-    s32 var_v1;
-    s8 var_v0;
+s32 set_vehicle_render_distance_flags(Vec3f vehiclePos, f32 renderDistance, s32 flags) {
+    Camera *camera;
+    Player *player;
+    f32 x;
+    f32 z;
+    f32 playerX;
+    f32 playerZ;
+    s32 i;
+    s32 flag;
+    s8 numScreens;
 
-    temp_f0 = arg0[0];
-    temp_f2 = arg0[2];
+    x = vehiclePos[0];
+    z = vehiclePos[2];
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
-        var_v0 = 1;
+        numScreens = 1;
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
     case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        var_v0 = 2;
+        numScreens = 2;
         break;
     case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        var_v0 = gPlayerCount;
+        numScreens = gPlayerCount;
         break;
     default:
-        var_v0 = 1;
+        numScreens = 1;
         break;
     }
-    var_v1 = arg2;
+    flag = flags;
     if (!gDemoMode) {
-        var_a0 = gPlayerOne;
-        for(var_a1 = 0; var_a1 < gPlayerCount; var_a1++, var_a0++) {
-            if (((var_a0->type & 0x4000) != 0) && ((var_a0->type & 0x1000) == 0)) {
-                temp_f12 = var_a0->pos[0];
-                temp_f14 = var_a0->pos[2];
-                if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
-                    var_v1 |=  (1 << var_a1);
+        player = gPlayerOne;
+        // Checks distance from each player.
+        for(i = 0; i < gPlayerCount; i++, player++) {
+            if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_KART_AI) == 0)) {
+                playerX = player->pos[0];
+                playerZ = player->pos[2];
+
+                // Is player within render distance
+                if (((playerX - renderDistance) < x) &&
+                    ((playerX + renderDistance) > x) &&
+                    ((playerZ - renderDistance) < z) &&
+                    ((playerZ + renderDistance) > z)) {
+                    // Sets the render flag to on for each player.
+                    flag |=  (RENDER_VEHICLE << i);
                 } else {
-                    var_v1 &= ~(1 << var_a1);
+                    // Sets the render flag to off for each player.
+                    flag &= ~(RENDER_VEHICLE << i);
                 }
             }
         }
-    } else {
-        var_a0_2 = camera1;
-        for(var_a1 = 0; var_a1 < var_v0; var_a1++, var_a0_2++) {
-            temp_f12 = var_a0_2->pos[0];
-            temp_f14 = var_a0_2->pos[2];
-            if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
-                var_v1 |=  (1 << var_a1);
+    } else { // Demo cinematic uses the camera to check render distance
+        camera = camera1;
+        for(i = 0; i < numScreens; i++, camera++) {
+            playerX = camera->pos[0];
+            playerZ = camera->pos[2];
+            if (((playerX - renderDistance) < x) && (x < (playerX + renderDistance)) && ((playerZ - renderDistance) < z) && (z < (playerZ + renderDistance))) {
+                flag |=  (RENDER_VEHICLE << i);
             } else {
-                var_v1 &= ~(1 << var_a1);
+                flag &= ~(RENDER_VEHICLE << i);
             }
         }
     }
-    return var_v1;
+    return flag;
 }
 
 void func_800065D0(s32 playerId, Player *player) {
@@ -995,7 +1003,7 @@ void func_80007D04(s32 playerId, Player* player) {
         D_801634C0[playerId] = 2;
     } else {
         player->effects &= ~0x200000;
-        func_80031F48(player, 1.0f);
+        decelerate_ai_player(player, 1.0f);
         D_801634C0[playerId] = -1;
     }
 }
@@ -1012,35 +1020,35 @@ void func_80007FA4(s32 arg0, Player *player, f32 arg2) {
     if (arg0 == 3) {
         if ((temp_f12 < 25.0f) && (D_80163410[arg0] < 5)) {
             D_80163410[arg0] = 4;
-            (arg2 < ((2.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : func_80031F48(player, 1.0f);
+            (arg2 < ((2.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : decelerate_ai_player(player, 1.0f);
         } else if ((temp_f12 < 3600.0f) && (D_80163410[arg0] < 4)) {
             D_80163410[arg0] = 3;
-            (arg2 < ((5.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : func_80031F48(player, 5.0f);
+            (arg2 < ((5.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : decelerate_ai_player(player, 5.0f);
         } else {
-            (arg2 < ((20.0 * 18.0) / 216.0)) ? func_80038BE4(player, 10) : func_80031F48(player, 1.0f);
+            (arg2 < ((20.0 * 18.0) / 216.0)) ? func_80038BE4(player, 10) : decelerate_ai_player(player, 1.0f);
         }
     } else {
         if ((temp_f12 < 25.0f) && (D_80163410[arg0] < 5)) {
             D_80163410[arg0] = 4;
             test = 2;
-            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : func_80031F48(player, 1.0f);
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : decelerate_ai_player(player, 1.0f);
         } else if ((temp_f12 < 4900.0f) && (D_80163410[arg0] < 4)) {
             D_80163410[arg0] = 3;
             test = 5;
-            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : func_80031F48(player, 15.0f);
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : decelerate_ai_player(player, 15.0f);
         } else if ((temp_f12 < 22500.0f) && (D_80163410[arg0] < 3)) {
             D_80163410[arg0] = 2;
             test = 20;
-            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 5) : func_80031F48(player, 1.0f);
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 5) : decelerate_ai_player(player, 1.0f);
         } else if ((temp_f12 < 90000.0f) && (D_80163410[arg0] < 2)) {
             D_80163410[arg0] = 1;
             test = 30;
-            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 6) : func_80031F48(player, 1.0f);
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 6) : decelerate_ai_player(player, 1.0f);
         } else if (D_80163410[arg0] == 0) {
             test = 35;
-            (arg2 < (((test^0) * 18.0) / 216.0)) ? func_80038BE4(player, 2) : func_80031F48(player, 1.0f);
+            (arg2 < (((test^0) * 18.0) / 216.0)) ? func_80038BE4(player, 2) : decelerate_ai_player(player, 1.0f);
         } else {
-            func_80031F48(player, 1.0f);
+            decelerate_ai_player(player, 1.0f);
         }
     }
 }
@@ -1061,8 +1069,8 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
         !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, var_f2);
-        } else if ((D_801634D8[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
-            func_80031F48(player, 10.0f);
+        } else if ((bStopAICrossing[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
+            decelerate_ai_player(player, 10.0f);
             if (player->currentSpeed == 0.0) {
                 player->velocity[0] = 0.0f;
                 player->velocity[2] = 0.0f;
@@ -1089,7 +1097,7 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
                     player_speed(player);
                 } else {
                     player->effects &= ~0x00200000;
-                    func_80031F48(player, 1.0f);
+                    decelerate_ai_player(player, 1.0f);
                 }
             } else if ((D_801631E0[playerId] == 1) && (D_80163330[playerId] != 1)) {
                 if (func_800088D8(playerId, gLapCountByPlayerId[playerId], D_80164408[playerId]) == 1) {
@@ -1097,7 +1105,7 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
                     player_speed(player);
                 } else {
                     player->effects &= ~0x00200000;
-                    func_80031F48(player, 1.0f);
+                    decelerate_ai_player(player, 1.0f);
                 }
             } else {
                 var_a1 = 1;
@@ -1132,14 +1140,14 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
                             player_speed(player);
                         } else {
                             player->effects &= ~0x00200000;
-                            func_80031F48(player, 1.0f);
+                            decelerate_ai_player(player, 1.0f);
                         }
                     } else {
                         player->effects &= ~0x00200000;
                         if (arg1 > 1.0f) {
-                            func_80031F48(player, 2.0f);
+                            decelerate_ai_player(player, 2.0f);
                         } else {
-                            func_80031F48(player, 5.0f);
+                            decelerate_ai_player(player, 5.0f);
                         }
                     }
                 }
@@ -1312,10 +1320,10 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     posY = player->pos[1];
     posZ = player->pos[2];
     stackPadding = pathIndex;
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
+    trackSegment = get_section_id(player->collision.meshIndexZX);
     D_80163318[payerId] = trackSegment;
-    D_80162FCE = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
-    gNearestWaypointByPlayerId[payerId] = D_80162FCE;
+    sSomeNearestWaypoint = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
+    gNearestWaypointByPlayerId[payerId] = sSomeNearestWaypoint;
     if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
     func_80008DC0(pathIndex);
@@ -1326,7 +1334,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
 void func_80008F38(s32 playerId) {
     f32 temp_f0;
 
-    D_80164450[playerId] = (gLapCountByPlayerId[playerId] * gWaypointCountByPathIndex[0]) + D_80162FCE;
+    D_80164450[playerId] = (gLapCountByPlayerId[playerId] * gWaypointCountByPathIndex[0]) + sSomeNearestWaypoint;
     temp_f0 = (f32) gNearestWaypointByPlayerId[playerId] / (f32) gWaypointCountByPathIndex[gPathIndexByPlayerId[playerId]];
     gLapCompletionPercentByPlayerId[playerId] = temp_f0;
     gCourseCompletionPercentByPlayerId[playerId] = temp_f0;
@@ -1337,26 +1345,26 @@ void func_80009000(s32 playerId) {
     s16 temp_v0;
 
     temp_v0 = D_801644F8[playerId];
-    if (D_80162FCE >= 0x6D) {
+    if (sSomeNearestWaypoint >= 0x6D) {
         D_801644F8[playerId] = 1;
         switch (D_80163448) {
         case 0:
-            if (D_80162FCE >= 0x20F) {
+            if (sSomeNearestWaypoint >= 0x20F) {
                 D_801644F8[playerId] = 0;
             }
             break;
         case 1:
-            if (D_80162FCE >= 0x206) {
+            if (sSomeNearestWaypoint >= 0x206) {
                 D_801644F8[playerId] = 0;
             }
             break;
         case 2:
-            if (D_80162FCE >= 0x211) {
+            if (sSomeNearestWaypoint >= 0x211) {
                 D_801644F8[playerId] = 0;
             }
             break;
         case 3:
-            if (D_80162FCE >= 0x283) {
+            if (sSomeNearestWaypoint >= 0x283) {
                 D_801644F8[playerId] = 0;
             }
             break;
@@ -1381,15 +1389,15 @@ void func_800090F0(s32 playerId, Player *player) {
     posZ = player->pos[2];
     if (D_80163490[playerId] == 1) {
         D_80163448 = func_80008E58(playerId, random_int(4U));
-        D_80162FCE = func_8000CD24(posX, posY, posZ, 0, player, playerId, D_80163448);
-        gNearestWaypointByPlayerId[playerId] = D_80162FCE;
+        sSomeNearestWaypoint = func_8000CD24(posX, posY, posZ, 0, player, playerId, D_80163448);
+        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
         func_80008F38(playerId);
         D_80163490[playerId] = 0;
     }
     if (D_801634A8[playerId] == 1) {
         D_80163448 = func_80008E58(playerId, 0);
-        D_80162FCE = func_8000CD24(posX, posY, posZ, 0, player, playerId, D_80163448);
-        gNearestWaypointByPlayerId[playerId] = D_80162FCE;
+        sSomeNearestWaypoint = func_8000CD24(posX, posY, posZ, 0, player, playerId, D_80163448);
+        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
         func_80008F38(playerId);
         D_801634A8[playerId] = 0;
     }
@@ -1423,18 +1431,18 @@ void func_8000929C(s32 playerId, Player *player) {
     tempPos2 = player->pos[2];
     D_801630E2 = 0;
     D_80163240[playerId] = 0;
-    D_80162FCE = func_8000CD24(tempPos0, tempPos1, tempPos2, gNearestWaypointByPlayerId[playerId], player, playerId, D_80163448);
-    D_801630E0 = D_80162FCE;
-    if (gNearestWaypointByPlayerId[playerId] != D_80162FCE) {
-        gNearestWaypointByPlayerId[playerId] = D_80162FCE;
+    sSomeNearestWaypoint = func_8000CD24(tempPos0, tempPos1, tempPos2, gNearestWaypointByPlayerId[playerId], player, playerId, D_80163448);
+    D_801630E0 = sSomeNearestWaypoint;
+    if (gNearestWaypointByPlayerId[playerId] != sSomeNearestWaypoint) {
+        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
         D_801630E2 = 1;
         func_80008F38(playerId);
     }
     if (gCurrentCourseId == 0x0014) {
-        func_8000B95C(playerId, D_80162FCE, D_80163448);
+        func_8000B95C(playerId, sSomeNearestWaypoint, D_80163448);
         return;
     }
-    if ((D_80162FCE < 0x14) || ((gWaypointCountByPathIndex[D_80163448] - 0x14) < D_80162FCE) || (gCurrentCourseId == 0x000B)) {
+    if ((sSomeNearestWaypoint < 0x14) || ((gWaypointCountByPathIndex[D_80163448] - 0x14) < sSomeNearestWaypoint) || (gCurrentCourseId == 0x000B)) {
         var_v1 = 0;
         var_t0 = 0;
         if (gCurrentCourseId == 0x000B) {
@@ -1489,7 +1497,7 @@ void func_8000929C(s32 playerId, Player *player) {
         }
     }
     D_80163450[playerId] = tempPos2;
-    if ((gCurrentCourseId == 4) && (D_801630E2 == 1)) {
+    if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (D_801630E2 == 1)) {
     	func_80009000(playerId);
     	if (((player->type & 0x4000) == 0) || (player->type & 0x1000)) {
 	        func_800090F0(playerId, player);
@@ -1507,7 +1515,7 @@ void func_8000929C(s32 playerId, Player *player) {
     } else {
         //????
     }
-    func_8000B95C(playerId, D_80162FCE, D_80163448);
+    func_8000B95C(playerId, sSomeNearestWaypoint, D_80163448);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000929C.s")
@@ -1761,12 +1769,12 @@ void func_80009B60(s32 playerId) {
                     } else if (D_80162FD0 == (s16) 1U) {
                         D_80163210[playerId] = D_0D0096B8[gCurrentCourseId][gCCSelection];
                         D_801634F8[playerId].unk4 = -0.5f;
-                    } else if (D_801645E0[D_80162FCE] > 0) {
+                    } else if (D_801645E0[sSomeNearestWaypoint] > 0) {
                         D_80163210[playerId] = D_0D009418[gCurrentCourseId][gCCSelection];
                     } else {
                         D_80163210[playerId] = D_0D009568[gCurrentCourseId][gCCSelection];
                     }
-                    func_800131DC(playerId);
+                    check_ai_crossing_distance(playerId);
                     func_8000D3B8(playerId);
                     func_8000D438(playerId, D_801630E0);
                     temp_f0 = D_80162FA0[0] - player->pos[0];
@@ -1795,7 +1803,7 @@ void func_80009B60(s32 playerId) {
                 }
                 if (D_801630E8[playerId] != 0) {
                     D_80163300[playerId] = -get_angle_between_two_vectors(&player->copy_rotation_x, player->pos);
-                    var_a0_2 = (D_801631DC[(D_80162FCE + 2) % D_80164430] * 0x168) / 65535;
+                    var_a0_2 = (D_801631DC[(sSomeNearestWaypoint + 2) % D_80164430] * 0x168) / 65535;
                     var_a1 = (D_80163300[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
                         var_a0_2 += 0x168;
@@ -1844,8 +1852,8 @@ void func_80009B60(s32 playerId) {
                     func_80008424(playerId, D_80163210[playerId], player);
                     return;
                 }
-                D_801630B8[playerId] = func_8000B7E4(playerId, D_80162FCE);
-                func_8000D438(playerId, D_80162FCE);
+                D_801630B8[playerId] = func_8000B7E4(playerId, sSomeNearestWaypoint);
+                func_8000D438(playerId, sSomeNearestWaypoint);
                 if (gCurrentCourseId != 0x0014) {
                     if (D_80164450[playerId] < 0xB) {
                         stackPadding1A = D_801630E0;
@@ -1969,7 +1977,7 @@ void func_80009B60(s32 playerId) {
                 D_8016320C = D_80163028[playerId];
                 player->effects &= ~0x00200000;
                 D_80163210[playerId] = D_8016320C;
-                func_800131DC(playerId);
+                check_ai_crossing_distance(playerId);
                 func_80008424(playerId, D_8016320C, player);
             }
         }
@@ -2479,7 +2487,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
     u16 trackSegment;
     s16 ret;
 
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
+    trackSegment = get_section_id(player->collision.meshIndexZX);
     if ((trackSegment <= 0) || (trackSegment >= 0x33)) {
         trackSegment = D_80163318[playerId];
     }
@@ -2497,7 +2505,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     TrackWaypoint *temp_v1;
 
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
-        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) func_802ABD40(player->unk_110.unk3A));
+        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) get_section_id(player->collision.meshIndexZX));
         if (sp5E == -1) {
             sp5E = func_8000CC88(posX, posY, posZ, player, playerId, &pathIndex);
         }
@@ -2512,8 +2520,8 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                 return waypointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
-                func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                check_bounding_collision(&player->collision, 10.0f, posX, posY, posZ);
+                D_80163318[playerId] = get_section_id(player->collision.meshIndexZX);
                 sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, D_80163318[playerId]);
                 if (sp5E == -1) {
                     sp5E = func_8000C9DC(posX, posY, posZ, waypointIndex, pathIndex);
@@ -2536,8 +2544,8 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[0] = posX;
                     player->pos[1] = posY;
                     player->pos[2] = posZ;
-                    func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                    D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                    check_bounding_collision(&player->collision, 10.0f, posX, posY, posZ);
+                    D_80163318[playerId] = get_section_id(player->collision.meshIndexZX);
                 }
             }
         } else {
@@ -2589,8 +2597,8 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     UNUSED s32 pad;
     Collision sp24;
 
-    func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
-    return func_8000C0BC(posX, posY, posZ, func_802ABD40(sp24.unk3A), pathIndex);
+    check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
+    return func_8000C0BC(posX, posY, posZ, get_section_id(sp24.meshIndexZX), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
@@ -2907,7 +2915,7 @@ void set_bomb_kart_spawn_positions(void) {
         case COURSE_YOSHI_VALLEY:
             startingXPos = temp_s1->startingXPos;
             startingZPos = temp_s1->startingZPos;
-            startingYPos = func_802AE1C0(startingXPos, 2000.0f, startingZPos);
+            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
             break;
         case COURSE_AWARD_CEREMONY:
             temp_v0 = &D_80164550[3][temp_s1->waypointIndex];
@@ -2945,7 +2953,7 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].unk_4A = 0;
         gBombKarts[var_s3].unk_4C = 1;
         gBombKarts[var_s3].yPos = startingYPos;
-        func_802ADDC8(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
+        check_bounding_collision(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
     }
 }
 
@@ -3144,11 +3152,11 @@ void func_8000DF8C(s32 bombKartId) {
                         var_f24 += temp_f16 / 5.0f;
                     }
                     temp_a0_4 = &D_80164038[bombKartId];
-                    var_f20 = func_802ABE30(var_f22, 2000.0f, var_f24, temp_a0_4->unk3A) + 3.5f;
+                    var_f20 = calculate_surface_height(var_f22, 2000.0f, var_f24, temp_a0_4->meshIndexZX) + 3.5f;
                     if (var_f20 < (-1000.0)) {
                         var_f20 = bombKart->bombPos[1];
                     }
-                    func_802ADDC8(temp_a0_4, 10.0f, var_f22, var_f20, var_f24);
+                    check_bounding_collision(temp_a0_4, 10.0f, var_f22, var_f20, var_f24);
                 }
                 break;
             case 4:
@@ -3536,12 +3544,19 @@ void func_8000F628(void) {
         D_80163150[i] = -1;
         D_80164538[i] = -1;
         D_801634C0[i] = 0;
-        D_801634D8[i] = 0;
+        bStopAICrossing[i] = 0;
         D_801630B8[i] = 1;
 
     }
-    D_801637BC[0] = 0;
-    D_801637BC[1] = 0;
+
+#ifdef AVOID_UB
+    for (i = 0; i < NUM_CROSSINGS; i++) {
+        sCrossingActiveTimer[i] = 0;
+    }
+#else
+    sCrossingActiveTimer[0] = 0;
+    sCrossingActiveTimer[1] = 0;
+#endif
     if (gDemoMode == DEMO_MODE_INACTIVE) {
 
         if (gModeSelection == GRAND_PRIX) {
@@ -3883,14 +3898,14 @@ void func_80010E6C(s32 pathIndex) {
 }
 
 f32 func_80010F40(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = func_802AE1C0(arg0, 2000.0f, arg2);
-    func_802ADDC8(&D_80162E70, 1.0f, arg0, arg1, arg2);
+    arg1 = spawn_actor_on_surface(arg0, 2000.0f, arg2);
+    check_bounding_collision(&D_80162E70, 1.0f, arg0, arg1, arg2);
     return arg1;
 }
 
 f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = func_802AE1C0(arg0, (f32) ((f64) arg1 + 30.0), arg2);
-    func_802ADDC8(&D_80162E70, 10.0f, arg0, arg1, arg2);
+    arg1 = spawn_actor_on_surface(arg0, (f32) ((f64) arg1 + 30.0), arg2);
+    check_bounding_collision(&D_80162E70, 10.0f, arg0, arg1, arg2);
     return arg1;
 }
 
@@ -3969,7 +3984,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
 
 
                 pathDest->posZ = (s16) temp_f22;
-                pathDest->trackSegment = func_802ABD40(D_80162E70.unk3A);
+                pathDest->trackSegment = get_section_id(D_80162E70.meshIndexZX);
 
                 if (var_f20_2 < -500.0) {
                     var_f20_2 = var_f28;
@@ -4261,7 +4276,7 @@ void kart_ai_behaviour(s32 playerIndex) {
 
 void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
     if ((((player->unk_094 / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[arg0] == 0)) {
-        switch (D_801631D8[D_80162FCE]) {
+        switch (D_801631D8[sSomeNearestWaypoint]) {
         case 0:
         case 2:
             if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
@@ -4305,7 +4320,7 @@ void func_800120C8(void) {
 
     temp = D_80163598;
     D_8016359C = func_8001168C(temp, waypoint, i - 1);
-    D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
+    D_80162EB0 = spawn_actor_on_surface(temp[0].x, 2000.0f, temp[0].z);
 }
 
 void func_80012190(void) {
@@ -4568,7 +4583,8 @@ void update_vehicle_trains(void) {
             func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
         }
 
-        gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
+        gTrainList[i].someFlags = set_vehicle_render_distance_flags(gTrainList[i].locomotive.position, TRAIN_SMOKE_RENDER_DISTANCE, gTrainList[i].someFlags);
+        // Renders locomotive smoke on all screens if any player is within range.
         if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
             sp90[0] = gTrainList[i].locomotive.position[0];
             sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
@@ -4655,7 +4671,7 @@ void func_80012DC0(s32 playerId, Player *player) {
 
 /**
  * Appears to check if the train is close to the crossing.
- * Implements D_801637BC as a counter
+ * Implements sCrossingActiveTimer as a counter
 */
 void func_80013054(void) {
     f32 temp_f16;
@@ -4682,31 +4698,31 @@ void func_80013054(void) {
         }
     }
 
-    for (i = 0; i < NUM_TRAINS; i++) {
+    for (i = 0; i < NUM_CROSSINGS; i++) {
         if (isCrossingTriggeredByIndex[i] == 1) {
-            D_801637BC[i] += 1;
+            sCrossingActiveTimer[i] += 1;
         } else {
-            D_801637BC[i] = 0;
+            sCrossingActiveTimer[i] = 0;
         }
     }
 }
 
-void func_800131DC(s32 playerId) {
-    D_801634D8[playerId] = 0;
+void check_ai_crossing_distance(s32 playerId) {
+    bStopAICrossing[playerId] = 0;
     if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
         if ((!(D_801631E0[playerId] != 0))
-           || (func_800061DC(gPlayers[playerId].pos, 1000.0f, 0))) {
+           || (set_vehicle_render_distance_flags(gPlayers[playerId].pos, TRAIN_CROSSING_AI_DISTANCE, 0))) {
 
             if ((isCrossingTriggeredByIndex[1] == 1)
-                && ((D_801637BC[1]) > 240)) {
-
-                if ((D_80162FCE > 176) && (D_80162FCE < 182)) {
-                    D_801634D8[playerId] = 1;
+                && ((sCrossingActiveTimer[1]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
+            
+                if ((sSomeNearestWaypoint > 176) && (sSomeNearestWaypoint < 182)) {
+                    bStopAICrossing[playerId] = 1;
                 }
             }
-            if ((isCrossingTriggeredByIndex[0] == 1) && (( D_801637BC[0]) > 240)) {
-                if ((D_80162FCE >= 306) && (D_80162FCE < 0x136)) {
-                    D_801634D8[playerId] = 1;
+            if ((isCrossingTriggeredByIndex[0] == 1) && (( sCrossingActiveTimer[0]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
+                if ((sSomeNearestWaypoint >= 306) && (sSomeNearestWaypoint < 310)) {
+                    bStopAICrossing[playerId] = 1;
                 }
             }
         }
@@ -4766,7 +4782,7 @@ void update_vehicle_paddle_boats(void) {
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
             func_8000DBAC(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->someMultiplier);
-            paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
+            paddleBoat->someFlags = set_vehicle_render_distance_flags(paddleBoat->position, BOAT_SMOKE_RENDER_DISTANCE, paddleBoat->someFlags);
             if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
@@ -4881,39 +4897,39 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
     for (i = 0; i < arg2; i++) {
-            waypointOffset = (((i * numWaypoints) / arg2) + arg3) % numWaypoints;
-            veh = &vehicle[i];
-            temp_v0 = &waypointList[waypointOffset];
-            veh->position[0] = (f32) temp_v0->posX;
-            veh->position[1] = (f32) temp_v0->posY;
-            veh->position[2] = (f32) temp_v0->posZ;
-            veh->actorIndex = -1;
-            veh->waypointIndex = waypointOffset;
-            veh->unused = 0;
-            veh->velocity[0] = 0.0f;
-            veh->velocity[1] = 0.0f;
-            veh->velocity[2] = 0.0f;
-            veh->someFlags = 0;
-            veh->someFlagsTheSequel = 0;
-            if (gModeSelection == TIME_TRIALS) {
-                veh->someType = (i % 3);
-            } else {
-                veh->someType = random_int(3);
-            }
-            veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
-            if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (veh->someType == 2)) {
-                veh->someMultiplier = arg0;
-            } else {
-                veh->someMultiplier = arg1;
-            }
-            veh->rotation[0] = 0;
-            veh->rotation[2] = 0;
-            if (D_8016347A == 0) {
-                veh->rotation[1] = func_8000D6D0(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
-            } else {
-                veh->rotation[1] = func_8000D940(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
-            }
+        waypointOffset = (((i * numWaypoints) / arg2) + arg3) % numWaypoints;
+        veh = &vehicle[i];
+        temp_v0 = &waypointList[waypointOffset];
+        veh->position[0] = (f32) temp_v0->posX;
+        veh->position[1] = (f32) temp_v0->posY;
+        veh->position[2] = (f32) temp_v0->posZ;
+        veh->actorIndex = -1;
+        veh->waypointIndex = waypointOffset;
+        veh->unused = 0;
+        veh->velocity[0] = 0.0f;
+        veh->velocity[1] = 0.0f;
+        veh->velocity[2] = 0.0f;
+        veh->someFlags = 0;
+        veh->someFlagsTheSequel = 0;
+        if (gModeSelection == TIME_TRIALS) {
+            veh->someType = (i % 3);
+        } else {
+            veh->someType = random_int(3);
         }
+        veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
+        if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (veh->someType == 2)) {
+            veh->someMultiplier = arg0;
+        } else {
+            veh->someMultiplier = arg1;
+        }
+        veh->rotation[0] = 0;
+        veh->rotation[2] = 0;
+        if (D_8016347A == 0) {
+            veh->rotation[1] = func_8000D6D0(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
+        } else {
+            veh->rotation[1] = func_8000D940(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
+        }
+    }
     D_801631C8 = 10;
 }
 
@@ -5052,12 +5068,12 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                          (temp_f22 > -20.0)) && (temp_f22 < 20.0) && (((temp_f14) > -300.0)) && ((temp_f14) < 300.0)) {
                         if ((D_801631C8 > 0) && (vehicle->someFlags == 0)) {
                             D_801631C8 -= 1;
-                            vehicle->someFlags |= (1 << playerId);
+                            vehicle->someFlags |= (RENDER_VEHICLE << playerId);
                             func_800C9D80(vehicle->position, vehicle->velocity, soundBits);
                         }
                     } else {
                         if (vehicle->someFlags != 0) {
-                            vehicle->someFlags &= ~(1 << playerId);
+                            vehicle->someFlags &= ~(RENDER_VEHICLE << playerId);
                             if (vehicle->someFlags == 0) {
                                 D_801631C8 += 1;
                                 func_800C9EF4(vehicle->position, soundBits);
@@ -5201,7 +5217,7 @@ void func_800146B8(s32 playerId, s32 arg1, VehicleStuff *vehicle) {
         for (var_s2 = 0; var_s2 < arg1; var_s2++, vehicle++) {
             temp_a1 = vehicle->waypointIndex;
             for (var_v0 = 0; var_v0 < 0x18; var_v0 += 3) {
-                if (((D_80162FCE + var_v0) % waypointCount) == temp_a1) {
+                if (((sSomeNearestWaypoint + var_v0) % waypointCount) == temp_a1) {
                     D_801634F8[playerId].unk4 = func_800145A8(vehicle->someType, D_80163068[playerId], temp_a1);
                     return;
                 }
@@ -5322,7 +5338,7 @@ void func_80014D30(s32 cameraId, s32 pathIndex) {
 
     cameraWaypoint = gNearestWaypointByCameraId[cameraId];
     temp_v0 = &D_80164550[pathIndex][cameraWaypoint];
-    func_802ADDC8(&cameras[cameraId].unk_54, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
+    check_bounding_collision(&cameras[cameraId].collision, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
 }
 
 void func_80014DE4(s32 arg0) {
@@ -5509,7 +5525,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
         adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
-    func_802ADDC8(&camera->unk_54, 10.0f, sp84, sp80, sp7C);
+    check_bounding_collision(&camera->collision, 10.0f, sp84, sp80, sp7C);
     camera->lookAt[0] = sp64[0];
     camera->lookAt[1] = sp64[1];
     camera->lookAt[2] = sp64[2];
@@ -5543,7 +5559,7 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
 
     temp_f2 = (f32) D_80164550[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = func_802AE1C0(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = spawn_actor_on_surface(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
     } else {
@@ -5694,7 +5710,7 @@ void func_80015C94(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_2 = func_802AE1C0(midX, (midY + 30.0), midZ);
+    temp_f2_2 = spawn_actor_on_surface(midX, (midY + 30.0), midZ);
     if ((temp_f2_2 < (midY - 20.0)) || (temp_f2_2 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -5820,7 +5836,7 @@ void func_80016494(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_5 = func_802AE1C0(midX, midY + 30.0, midZ);
+    temp_f2_5 = spawn_actor_on_surface(midX, midY + 30.0, midZ);
     if ((temp_f2_5 < (midY - 20.0)) || (temp_f2_5 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6340,7 +6356,7 @@ void func_800188F4(Camera *camera, UNUSED Player *unusePlayer, UNUSED s32 arg2, 
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_4 = func_802AE1C0(midX, midY + 30.0, midZ);
+    temp_f2_4 = spawn_actor_on_surface(midX, midY + 30.0, midZ);
     if ((temp_f2_4 < (midY - 20.0)) || (temp_f2_4 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6377,7 +6393,7 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     D_80164638[cameraId] = D_80162FA0[2];
     temp_f2 = (f32) D_80164550[0][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = func_802AE1C0(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = spawn_actor_on_surface(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
 
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
@@ -7080,7 +7096,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 banana->velocity[1] = 0.0f;
                 banana->velocity[2] = 0.0f;
                 if (D_801631E0[playerId] == ((u16) 1)) {
-                  banana->pos[1] = func_802AE1C0(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
+                  banana->pos[1] = spawn_actor_on_surface(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
                 }
             }
             player->soundEffects &= ~0x00040000;
@@ -7136,7 +7152,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 banana->velocity[0] = 0.0f;
                 banana->velocity[1] = 0.0f;
                 banana->velocity[2] = 0.0f;
-                banana->pos[1] = func_802AE1C0(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
+                banana->pos[1] = spawn_actor_on_surface(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
             }
             player->soundEffects &= ~0x00040000;
             temp_s0->unk_00 = 0;
@@ -7344,7 +7360,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
             } else {
                 func_802A1064(fakeItemBox);
                 if (D_801631E0[playerId] == 1) {
-                  fakeItemBox->pos[1] = func_802AE1C0(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) + fakeItemBox->boundingBoxSize;
+                  fakeItemBox->pos[1] = spawn_actor_on_surface(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) + fakeItemBox->boundingBoxSize;
                 }
             }
             temp_s0->unk_00 = 0;
@@ -7480,7 +7496,7 @@ void func_8001BE78(void) {
         }
         temp_s0 = &D_80164550[i][gNearestWaypointByPlayerId[i]];
         temp_s1->pos[0] = (f32) temp_s0->posX;
-        temp_s1->pos[1] = func_802AE1C0((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
+        temp_s1->pos[1] = spawn_actor_on_surface((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
         temp_s1->pos[2] = (f32) temp_s0->posZ;
         temp_s1->rotation[1] = (s16) *D_80164590[i];
         func_8003680C(temp_s1, 0);

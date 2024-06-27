@@ -230,11 +230,11 @@ char external_unused_string_eu_03[] = "SE FADE OUT TIME %d\n";
 #endif
 
 #ifdef VERSION_EU
-#define AUDIO_LEFT_TYRE  FRONT_LEFT_TYRE
-#define AUDIO_RIGHT_TYRE FRONT_RIGHT_TYRE
+#define AUDIO_LEFT_TYRE  FRONT_LEFT
+#define AUDIO_RIGHT_TYRE FRONT_RIGHT
 #else
-#define AUDIO_LEFT_TYRE  BACK_LEFT_TYRE
-#define AUDIO_RIGHT_TYRE BACK_RIGHT_TYRE
+#define AUDIO_LEFT_TYRE  BACK_LEFT
+#define AUDIO_RIGHT_TYRE BACK_RIGHT
 #endif
 
 // Requires void in the argument list to match properly.
@@ -674,8 +674,8 @@ void func_800C2474(void) {
         D_800E9E74[var_v0] = 0;
         D_800E9E84[var_v0] = 0;
         D_800E9E94[var_v0] = 0;
-        gPlayers[var_v0].boundingBoxCorners[AUDIO_LEFT_TYRE ].surfaceType = 0;
-        gPlayers[var_v0].boundingBoxCorners[AUDIO_RIGHT_TYRE].surfaceType = 0;
+        gPlayers[var_v0].tyres[AUDIO_LEFT_TYRE ].surfaceType = 0;
+        gPlayers[var_v0].tyres[AUDIO_RIGHT_TYRE].surfaceType = 0;
         gPlayers[var_v0].effects = 0;
         gPlayers[var_v0].unk_20C = 0.0f;
         gPlayers[var_v0].unk_0C0 = 0;
@@ -1933,15 +1933,15 @@ void func_800C5E38(u8 playerId) {
 }
 
 void func_800C6108(u8 playerId) {
-    Player *temp_v1;
+    Player *player;
 
-    temp_v1 = &gPlayers[playerId];
-    D_800E9E64[playerId] = (temp_v1->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
-    if ((temp_v1->unk_098 < 1800.0f) && ((temp_v1->unk_044 & 0x20) != 0x20)) {
-        D_800E9E64[playerId] = (temp_v1->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
+    player = &gPlayers[playerId];
+    D_800E9E64[playerId] = (player->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
+    if ((player->unk_098 < 1800.0f) && ((player->unk_044 & 0x20) != 0x20)) {
+        D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if(D_800E9EC4){} // ?
     }
-    if (temp_v1->unk_094 > 4.75f) {
+    if (player->unk_094 > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
             D_800E9DE4[playerId] += 0.005f;
         }
@@ -1949,11 +1949,11 @@ void func_800C6108(u8 playerId) {
         D_800E9DE4[playerId] = 0.0f;
     }
     if (gPlayers[playerId].unk_0C0 > 0) {
-        D_800E9E54[playerId] = (f32) temp_v1->unk_0C0;
+        D_800E9E54[playerId] = (f32) player->unk_0C0;
     } else {
-        D_800E9E54[playerId] = (f32) -temp_v1->unk_0C0;
+        D_800E9E54[playerId] = (f32) -player->unk_0C0;
     }
-    if ((temp_v1->effects & 0x10) == 0x10) {
+    if ((player->effects & 0x10) == 0x10) {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId];
     } else {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId] - (D_800E9E54[playerId] / 12000.0f);
@@ -2196,7 +2196,7 @@ void func_800C70A8(u8 playerId) {
         D_800E9E74[playerId] = 0;
         if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & 0x10) == 0x10)) {
             D_800E9E74[playerId] = 1;
-            switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {
+            switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {
                 case DIRT:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x0000000D;
                     break;
@@ -2228,7 +2228,7 @@ void func_800C70A8(u8 playerId) {
         }
         if ((gPlayers[playerId].effects & 0x10) == 0x10) {
             D_800E9E74[playerId] = 2;
-            switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {                      /* switch 2 */
+            switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {                      /* switch 2 */
                 case DIRT:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x0000000D;
                     break;
@@ -2258,7 +2258,7 @@ void func_800C70A8(u8 playerId) {
                     break;
             }
         }
-        switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {                          /* switch 3 */
+        switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {                          /* switch 3 */
             case GRASS:                                     /* switch 3 */
                 if (D_800E9E74[playerId] == 6) {
                     D_800E9E74[playerId] = 4;
@@ -2318,7 +2318,7 @@ void func_800C70A8(u8 playerId) {
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
-        switch (gPlayers[playerId].boundingBoxCorners[AUDIO_RIGHT_TYRE].surfaceType) {                          /* switch 4 */
+        switch (gPlayers[playerId].tyres[AUDIO_RIGHT_TYRE].surfaceType) {                          /* switch 4 */
             case GRASS:                                     /* switch 4 */
                 if (D_800E9E74[playerId] == 5) {
                     D_800E9E74[playerId] = 4;
