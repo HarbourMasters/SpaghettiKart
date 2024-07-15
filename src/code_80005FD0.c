@@ -1476,10 +1476,10 @@ void func_8000929C(s32 playerId, Player *player) {
         someTemp0 = D_80163450[playerId];
         if ((var_v1 != 0) && (tempPos2 <= D_8016344C)) {
             if (D_8016344C < someTemp0) {
-        		gLapCountByPlayerId[playerId]++;
+                gLapCountByPlayerId[playerId]++;
                 if ((gModeSelection == 0) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (D_80164408[playerId] == 7) {
-                    	for (var_v0 = 0; var_v0 < 8; var_v0++) { gLapCountByPlayerId[var_v0]--; }
+                        for (var_v0 = 0; var_v0 < 8; var_v0++) { gLapCountByPlayerId[var_v0]--; }
                     }
                 }
                 D_80163240[playerId] = 1;
@@ -1498,10 +1498,10 @@ void func_8000929C(s32 playerId, Player *player) {
     }
     D_80163450[playerId] = tempPos2;
     if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (D_801630E2 == 1)) {
-    	func_80009000(playerId);
-    	if (((player->type & 0x4000) == 0) || (player->type & 0x1000)) {
-	        func_800090F0(playerId, player);
-	    }
+        func_80009000(playerId);
+        if (((player->type & 0x4000) == 0) || (player->type & 0x1000)) {
+            func_800090F0(playerId, player);
+        }
     }
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
         func_800065D0(playerId, player);
@@ -1566,9 +1566,9 @@ void func_800098FC(s32 arg0, Player *player) {
     }
     if (D_801633B0[arg0] >= 0xB) {
         if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
-	        func_800C92CC(arg0, 0x2900800BU);
-	        D_801633B0[arg0] = 0;
-	    }
+            func_800C92CC(arg0, 0x2900800BU);
+            D_801633B0[arg0] = 0;
+        }
     }
 }
 
@@ -2555,7 +2555,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
             }
         }
         func_8000CBA4(posX, posY, posZ, &sp5E, pathIndex);
-	}
+    }
     func_8000CBF8(posX, posY, posZ, &sp5E, pathIndex);
     return sp5E;
 }
@@ -3290,7 +3290,7 @@ void func_8000EEDC(void) {
     s32 i;
 
     for (i = 0; i < NUM_PLAYERS; i++) {
-    	phi = &gUnexpiredActorsList[i];
+        phi = &gUnexpiredActorsList[i];
         phi->unkC = 0;
         phi->actorIndex = 1000; // out of bounds
     }
