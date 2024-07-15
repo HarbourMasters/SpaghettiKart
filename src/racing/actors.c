@@ -1150,7 +1150,7 @@ void spawn_course_actors(void) {
  *
  */
 void init_actors_and_load_textures(void) {
-    set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
+    set_segment_base_addr_x64(3, (void *) gNextFreeMemoryAddress);
     D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
     dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
     dma_textures(gTextureGreenShell2, 0x00000259U, 0x00000400U);

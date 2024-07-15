@@ -80,6 +80,11 @@ uintptr_t set_segment_base_addr(s32 segment, void *addr) {
     return gSegmentTable[segment];
 }
 
+uintptr_t set_segment_base_addr_x64(s32 segment, void *addr) {
+    gSegmentTable[segment] = (uintptr_t) addr;
+    return gSegmentTable[segment];
+}
+
 /**
  * @brief Returns the physical memory location of a segment.
  * @param permits segment numbers from 0x0 to 0xF.
