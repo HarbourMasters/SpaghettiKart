@@ -1197,7 +1197,7 @@ UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
 void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
     if (func_80041924(arg0, arg1) != 0) {
         D_80183E50[0] = arg1[0];
-        D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
+        D_80183E50[1] = calculate_surface_height(arg1[0], 0.0f, arg1[2], arg0->meshIndexZX) + 0.8;
         D_80183E50[2] = arg1[2];
         rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->orientationVector, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
@@ -1205,26 +1205,26 @@ void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
 }
 
 void func_8004A6EC(s32 objectIndex, f32 scale) {
-    Objects *temp_v0;
+    Object *object;
 
     if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (is_obj_flag_status_active(objectIndex, 0x00800000) != 0)) {
-        temp_v0 = &gObjectList[objectIndex];
-        D_80183E50[0] = temp_v0->pos[0];
-        D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->pos[2];
-        rsp_set_matrix_transformation(D_80183E50, temp_v0->unk_0B8, scale);
+        object = &gObjectList[objectIndex];
+        D_80183E50[0] = object->pos[0];
+        D_80183E50[1] = object->surfaceHeight + 0.8;
+        D_80183E50[2] = object->pos[2];
+        rsp_set_matrix_transformation(D_80183E50, object->unk_0B8, scale);
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
     }
 }
 
 void func_8004A7AC(s32 objectIndex, f32 arg1) {
-    Objects *temp_v0;
+    Object *object;
 
     if (is_obj_flag_status_active(objectIndex, 0x00000020) != 0) {
-        temp_v0 = &gObjectList[objectIndex];
-        D_80183E50[0] = temp_v0->pos[0];
-        D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->pos[2];
+        object = &gObjectList[objectIndex];
+        D_80183E50[0] = object->pos[0];
+        D_80183E50[1] = object->surfaceHeight + 0.8;
+        D_80183E50[2] = object->pos[2];
         D_80183E98[0] = 0x4000;
         D_80183E98[1] = 0;
         D_80183E98[2] = 0;
@@ -1235,14 +1235,14 @@ void func_8004A7AC(s32 objectIndex, f32 arg1) {
 
 void func_8004A870(s32 objectIndex, f32 arg1) {
     Mat4 sp30;
-    Objects *temp_v0;
+    Object *object;
 
     if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (is_obj_flag_status_active(objectIndex, 0x00800000) != 0)) {
-        temp_v0 = &gObjectList[objectIndex];
-        D_80183E50[0] = temp_v0->pos[0];
-        D_80183E50[1] = temp_v0->unk_044 + 0.8;
-        D_80183E50[2] = temp_v0->pos[2];
-        set_transform_matrix(sp30, temp_v0->unk_01C, D_80183E50, 0U, arg1);
+        object = &gObjectList[objectIndex];
+        D_80183E50[0] = object->pos[0];
+        D_80183E50[1] = object->surfaceHeight + 0.8;
+        D_80183E50[2] = object->pos[2];
+        set_transform_matrix(sp30, object->unk_01C, D_80183E50, 0U, arg1);
         convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
@@ -2195,27 +2195,27 @@ UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
 
 void draw_item_window(s32 playerId) {
     s32 objectIndex;
-    Objects *temp_v1;
+    Object *object;
     hud_player *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    temp_v1 = &gObjectList[objectIndex];
-    if (temp_v1->state >= 2) {
+    object = &gObjectList[objectIndex];
+    if (object->state >= 2) {
         temp_v0 = &playerHUD[playerId];
-        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture);
+        func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) object->activeTLUT, object->activeTexture);
     }
 }
 
 void func_8004E6C4(s32 playerId) {
     s32 objectIndex;
-    Objects *temp_v1;
+    Object *object;
     hud_player *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    temp_v1 = &gObjectList[objectIndex];
-    if (temp_v1->state >= 2) {
+    object = &gObjectList[objectIndex];
+    if (object->state >= 2) {
         temp_v0 = &playerHUD[playerId];
-        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) temp_v1->activeTLUT, (u8 *) temp_v1->activeTexture, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
+        func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) object->activeTLUT, (u8 *) object->activeTexture, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
     }
 }
 
@@ -2810,7 +2810,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     s32 characterId;
     s32 spB8;
     s32 temp_v0_2;
-    Objects *object;
+    Object *object;
     Player *player;
 
     player = &gPlayerOne[playerId];
@@ -2913,7 +2913,7 @@ void func_800514BC(void) {
 void render_object_leaf_particle(UNUSED s32 cameraId) {
     s32 someIndex;
     s32 leafIndex;
-    Objects *object;
+    Object *object;
 
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
@@ -2978,7 +2978,7 @@ void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
 void func_80051ABC(s16 arg0, s32 arg1) {
     s32 var_s0;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     D_8018D228 = 0xFF;
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
@@ -3003,7 +3003,7 @@ void func_80051C60(s16 arg0, s32 arg1) {
     s16 var_s5;
     s32 var_s0;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     if (D_801658FE == 0) {
         if (gCurrentCourseId == 6) {
@@ -3099,7 +3099,7 @@ void func_800520C0(s32 arg0) {
 
 void func_8005217C(UNUSED s32 arg0) {
     Lights1 *D_800E45C0l = LOAD_ASSET(D_800E45C0);
-    Objects *object;
+    Object *object;
     s32 temp_a3;
 
     temp_a3 = indexObjectList2[0];
@@ -3128,7 +3128,7 @@ void func_8005217C(UNUSED s32 arg0) {
 
 void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     UNUSED s32 pad[2];
-    Objects *object;
+    Object *object;
     Camera *camera = &camera1[arg1];
 
     object = &gObjectList[objectIndex];
@@ -3192,7 +3192,7 @@ void render_object_bat(s32 cameraId) {
 
 void render_object_trash_bin(s32 cameraId) {
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     objectIndex = indexObjectList1[1];
     func_8008A364(objectIndex, cameraId, 0x5555U, 0x00000320);
@@ -3220,7 +3220,7 @@ void func_8005285C(s32 arg0) {
 void func_800528EC(s32 arg0) {
     s32 var_s3;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
     Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
 
     D_80183E80[0] = D_8016582C[0];
@@ -3321,7 +3321,7 @@ void render_object_snowmans_list_2(s32 cameraId) {
     Camera *sp44;
     s32 someIndex;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     sp44 = &camera1[cameraId];
     load_texture_and_tlut(d_course_frappe_snowland_snow_tlut, d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
@@ -3379,7 +3379,7 @@ void render_lakitu(s32 cameraId) {
     f32 var_f0;
     f32 var_f2;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     objectIndex = gIndexLakituList[cameraId];
     camera = &camera1[cameraId];
@@ -3472,7 +3472,7 @@ void render_object_thwomps(s32 cameraId) {
     UNUSED s32 stackPadding0;
     s16 minusone, plusone;
     Camera *camera;
-    Objects *object;
+    Object *object;
     Lights1 D_800E4668l = *(Lights1 *) LOAD_ASSET(D_800E4668);
 
     camera = &camera1[cameraId];
@@ -3538,13 +3538,13 @@ void render_object_thwomps(s32 cameraId) {
 }
 
 void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
-    Objects *temp_v0;
+    Object *object;
 
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
-        temp_v0 = &gObjectList[objectIndex];
-        D_80183E80[2] = (s16) (temp_v0->unk_084[6] + 0x8000);
-        rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
-        set_color_render((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->primAlpha);
+        object = &gObjectList[objectIndex];
+        D_80183E80[2] = (s16) (object->unk_084[6] + 0x8000);
+        rsp_set_matrix_transformation(object->pos, (u16 *) D_80183E80, object->sizeScaling);
+        set_color_render((s32) object->unk_084[0], (s32) object->unk_084[1], (s32) object->unk_084[2], (s32) object->unk_084[3], (s32) object->unk_084[4], (s32) object->unk_084[5], (s32) object->primAlpha);
         gSPVertex(gDisplayListHead++, &common_vtx_hedgehog[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
@@ -3671,18 +3671,18 @@ void render_object_paddle_boat_smoke_particles(s32 cameraId) {
 
 void render_object_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
     Camera *camera;
-    Objects *temp_s0;
+    Object *object;
 
     camera = &camera1[cameraId];
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
-        temp_s0 = &gObjectList[objectIndex];
-        if (temp_s0->unk_0D5 == 9) {
-            func_8004B72C(0xFF, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->primAlpha);
+        object = &gObjectList[objectIndex];
+        if (object->unk_0D5 == 9) {
+            func_8004B72C(0xFF, (s32) object->type, 0, (s32) object->unk_0A2, 0, 0, (s32) object->primAlpha);
         } else {
-            func_8004B138(0xFF, (s32) temp_s0->type, 0, (s32) temp_s0->primAlpha);
+            func_8004B138(0xFF, (s32) object->type, 0, (s32) object->primAlpha);
         }
-        D_80183E80[1] = func_800418AC(temp_s0->pos[0], temp_s0->pos[2], camera->pos);
-        func_800431B0(temp_s0->pos, D_80183E80, temp_s0->sizeScaling, D_0D005AE0);
+        D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+        func_800431B0(object->pos, D_80183E80, object->sizeScaling, D_0D005AE0);
     }
 }
 
@@ -3731,7 +3731,7 @@ void render_object_smoke_particles(s32 cameraId) {
     Camera *sp54;
     s32 var_s0;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     sp54 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
@@ -3804,7 +3804,7 @@ void func_80054E10(s32 objectIndex) {
     if (gObjectList[objectIndex].state > 0) {
         if (is_obj_flag_status_active(objectIndex, 0x00800000) != 0) {
             D_80183E50[0] = gObjectList[objectIndex].pos[0];
-            D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
+            D_80183E50[1] = gObjectList[objectIndex].surfaceHeight + 0.8;
             D_80183E50[2] = gObjectList[objectIndex].pos[2];
             D_80183E70[0] = gObjectList[objectIndex].velocity[0];
             D_80183E70[1] = gObjectList[objectIndex].velocity[1];
@@ -3827,7 +3827,7 @@ void func_80054F04(s32 cameraId) {
     s32 var_s2;
     s32 objectIndex;
     Camera *sp44;
-    Objects * object;
+    Object *object;
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
@@ -3982,7 +3982,7 @@ UNUSED void func_800557AC() {
 
 void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     Vec3f sp34;
-    Objects *object;
+    Object *object;
 
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
@@ -4092,7 +4092,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (gObjectList[objectIndex].state >= 2) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
-        test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
+        test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].surfaceHeight;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
         if (is_obj_index_flag_status_inactive(objectIndex, 0x00100000) != 0) {
             func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
@@ -4125,7 +4125,7 @@ void render_object_hot_air_balloon(s32 arg0) {
 }
 
 void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
-    Objects *object;
+    Object *object;
 
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
@@ -4144,7 +4144,7 @@ void func_80055F48(s32 arg0) {
 void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     Mat4 someMatrix1;
     Mat4 someMatrix2;
-    Objects *object;
+    Object *object;
 
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
@@ -4169,7 +4169,7 @@ void render_object_neon(s32 cameraId) {
     Camera *camera;
     s32 var_s2;
     s32 objectIndex;
-    Objects *object;
+    Object *object;
 
     camera = &camera1[cameraId];
     for (var_s2 =0; var_s2 < 10; var_s2++) {
@@ -4203,7 +4203,7 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     s32 temp_v0;
     s32 residue;
     Camera *camera;
-    Objects *object;
+    Object *object;
 
     camera = &camera1[cameraId];
     object = &gObjectList[objectIndex];
@@ -4259,9 +4259,9 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
 
     player = &gPlayerOne[playerId];
     D_80183E50[0] = gObjectList[objectIndex].pos[0];
-    D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
+    D_80183E50[1] = gObjectList[objectIndex].surfaceHeight + 0.8;
     D_80183E50[2] = gObjectList[objectIndex].pos[2];
-    set_transform_matrix(sp30, player->unk_110.orientationVector, D_80183E50, 0U, 0.5f);
+    set_transform_matrix(sp30, player->collision.orientationVector, D_80183E50, 0U, 0.5f);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
@@ -4292,18 +4292,18 @@ void render_object_bomb_kart(s32 cameraId) {
     s32 temp_s1;
     s32 temp_s0;
     s32 payerId;
-    Objects *temp_v1;
+    Object *object;
 
     for (payerId = 0; payerId < NUM_BOMB_KARTS_BATTLE; payerId++) {
         temp_s0 = gIndexObjectBombKart[payerId];
-        temp_v1 = &gObjectList[temp_s0];
-        if (temp_v1->state != 0) {
-            temp_s1 = temp_v1->primAlpha;
+        object = &gObjectList[temp_s0];
+        if (object->state != 0) {
+            temp_s1 = object->primAlpha;
             temp_v0 = &gPlayerOne[payerId];
-            temp_v1->pos[0] = temp_v0->pos[0];
-            temp_v1->pos[1] = temp_v0->pos[1] - 2.0;
-            temp_v1->pos[2] = temp_v0->pos[2];
-            temp_v1->unk_044 = temp_v0->unk_074;
+            object->pos[0] = temp_v0->pos[0];
+            object->pos[1] = temp_v0->pos[1] - 2.0;
+            object->pos[2] = temp_v0->pos[2];
+            object->surfaceHeight = temp_v0->unk_074;
             func_800563DC(temp_s0, cameraId, temp_s1);
             func_8005669C(temp_s0, cameraId, temp_s1);
             func_800568A0(temp_s0, cameraId);

@@ -10,6 +10,11 @@
 #define NUM_TRAINS                2
 #define LOCOMOTIVE_ONLY           0
 
+#define NUM_CROSSINGS 2
+// This allows karts to jump the train despite the crossing being activated.
+// but still stop for the train once it's close
+#define FRAMES_SINCE_CROSSING_ACTIVATED 240
+
 // It seems like there's room for 2 Ferries, but only 1 is ever active
 #define NUM_ACTIVE_PADDLE_BOATS 1
 #define NUM_PADDLE_BOATS 2
@@ -23,6 +28,12 @@
 #define NUM_TIME_TRIAL_SCHOOL_BUSES  (NUM_RACE_SCHOOL_BUSES + 1)
 #define NUM_TIME_TRIAL_TANKER_TRUCKS (NUM_RACE_TANKER_TRUCKS + 1)
 #define NUM_TIME_TRIAL_CARS          (NUM_RACE_CARS + 1)
+
+#define TRAIN_SMOKE_RENDER_DISTANCE 2000.0f
+#define TRAIN_CROSSING_AI_DISTANCE 1000.0f
+#define BOAT_SMOKE_RENDER_DISTANCE 2000.0f
+
+#define RENDER_VEHICLE 1
 
 typedef struct {
 	/* 0x00 */ s16 isActive; // Only used for Tender and Passenger Cars, unused for Locomotives

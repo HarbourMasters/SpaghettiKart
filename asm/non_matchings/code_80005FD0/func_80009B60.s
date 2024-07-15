@@ -514,8 +514,8 @@ glabel func_80009B60
 /* 00AE78 8000A278 1000002C */  b     .L8000A32C
 /* 00AE7C 8000A27C E4700004 */   swc1  $f16, 4($v1)
 .L8000A280:
-/* 00AE80 8000A280 3C0F8016 */  lui   $t7, %hi(D_80162FCE) # $t7, 0x8016
-/* 00AE84 8000A284 85EF2FCE */  lh    $t7, %lo(D_80162FCE)($t7)
+/* 00AE80 8000A280 3C0F8016 */  lui   $t7, %hi(sSomeNearestWaypoint) # $t7, 0x8016
+/* 00AE84 8000A284 85EF2FCE */  lh    $t7, %lo(sSomeNearestWaypoint)($t7)
 /* 00AE88 8000A288 3C0B8016 */  lui   $t3, %hi(D_801645E0) # $t3, 0x8016
 /* 00AE8C 8000A28C 8D6B45E0 */  lw    $t3, %lo(D_801645E0)($t3)
 /* 00AE90 8000A290 000F7040 */  sll   $t6, $t7, 1
@@ -560,7 +560,7 @@ glabel func_80009B60
 /* 00AF28 8000A328 E5040000 */  swc1  $f4, ($t0)
 .L8000A32C:
 /* 00AF2C 8000A32C 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00AF30 8000A330 0C004C77 */  jal   func_800131DC
+/* 00AF30 8000A330 0C004C77 */  jal   check_ai_crossing_distance
 /* 00AF34 8000A334 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00AF38 8000A338 0C0034EE */  jal   func_8000D3B8
 /* 00AF3C 8000A33C 8FA400D0 */   lw    $a0, 0xd0($sp)
@@ -726,8 +726,8 @@ glabel func_80009B60
 /* 00B18C 8000A58C 0002C823 */  negu  $t9, $v0
 /* 00B190 8000A590 01981821 */  addu  $v1, $t4, $t8
 /* 00B194 8000A594 A4790000 */  sh    $t9, ($v1)
-/* 00B198 8000A598 3C0F8016 */  lui   $t7, %hi(D_80162FCE) # $t7, 0x8016
-/* 00B19C 8000A59C 85EF2FCE */  lh    $t7, %lo(D_80162FCE)($t7)
+/* 00B198 8000A598 3C0F8016 */  lui   $t7, %hi(sSomeNearestWaypoint) # $t7, 0x8016
+/* 00B19C 8000A59C 85EF2FCE */  lh    $t7, %lo(sSomeNearestWaypoint)($t7)
 /* 00B1A0 8000A5A0 3C0D8016 */  lui   $t5, %hi(D_80164430) # $t5, 0x8016
 /* 00B1A4 8000A5A4 95AD4430 */  lhu   $t5, %lo(D_80164430)($t5)
 /* 00B1A8 8000A5A8 25EA0002 */  addiu $t2, $t7, 2
@@ -893,18 +893,18 @@ glabel func_80009B60
 /* 00B3E8 8000A7E8 10000252 */  b     .L8000B134
 /* 00B3EC 8000A7EC 8FBF0014 */   lw    $ra, 0x14($sp)
 .L8000A7F0:
-/* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(D_80162FCE) # $a1, 0x8016
+/* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
 /* 00B3F4 8000A7F4 254D0014 */  addiu $t5, $t2, 0x14
 /* 00B3F8 8000A7F8 AFAD001C */  sw    $t5, 0x1c($sp)
 /* 00B3FC 8000A7FC 0C002DF9 */  jal   func_8000B7E4
-/* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(D_80162FCE)($a1)
+/* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
 /* 00B404 8000A804 8FAF0038 */  lw    $t7, 0x38($sp)
 /* 00B408 8000A808 3C0B8016 */  lui   $t3, %hi(D_801630B8) # $t3, 0x8016
 /* 00B40C 8000A80C 256B30B8 */  addiu $t3, %lo(D_801630B8) # addiu $t3, $t3, 0x30b8
 /* 00B410 8000A810 01EB1821 */  addu  $v1, $t7, $t3
 /* 00B414 8000A814 AC620000 */  sw    $v0, ($v1)
-/* 00B418 8000A818 3C058016 */  lui   $a1, %hi(D_80162FCE) # $a1, 0x8016
-/* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(D_80162FCE)($a1)
+/* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
+/* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
 /* 00B420 8000A820 AFA30028 */  sw    $v1, 0x28($sp)
 /* 00B424 8000A824 0C00350E */  jal   func_8000D438
 /* 00B428 8000A828 8FA400D0 */   lw    $a0, 0xd0($sp)
@@ -1520,7 +1520,7 @@ glabel func_80009B60
 /* 00BD08 8000B108 3C018016 */  lui   $at, %hi(D_80163210)
 /* 00BD0C 8000B10C 002F0821 */  addu  $at, $at, $t7
 /* 00BD10 8000B110 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00BD14 8000B114 0C004C77 */  jal   func_800131DC
+/* 00BD14 8000B114 0C004C77 */  jal   check_ai_crossing_distance
 /* 00BD18 8000B118 E4303210 */   swc1  $f16, %lo(D_80163210)($at)
 /* 00BD1C 8000B11C 3C058016 */  lui   $a1, %hi(D_8016320C) # $a1, 0x8016
 /* 00BD20 8000B120 8CA5320C */  lw    $a1, %lo(D_8016320C)($a1)

@@ -1197,16 +1197,16 @@ void func_802B8614(Player *arg0) {
     f64 temp_f4;
     f64 temp_f6;
 
-    temp_f6 = (f64) arg0->boundingBoxCorners[1].cornerPos[0];
+    temp_f6 = (f64) arg0->tyres[FRONT_RIGHT].pos[0];
     sp78 = temp_f6;
-    sp70 = (f64) arg0->boundingBoxCorners[1].cornerGroundY;
-    sp68 = (f64) arg0->boundingBoxCorners[1].cornerPos[2];
-    temp_f30 = (f64) arg0->boundingBoxCorners[0].cornerPos[0];
-    sp58 = (f64) arg0->boundingBoxCorners[0].cornerGroundY;
-    sp50 = (f64) arg0->boundingBoxCorners[0].cornerPos[2];
-    sp48 = (f64) arg0->boundingBoxCorners[3].cornerPos[0];
-    sp40 = (f64) arg0->boundingBoxCorners[3].cornerGroundY;
-    temp_f4 = (f64) arg0->boundingBoxCorners[3].cornerPos[2];
+    sp70 = (f64) arg0->tyres[FRONT_RIGHT].baseHeight;
+    sp68 = (f64) arg0->tyres[FRONT_RIGHT].pos[2];
+    temp_f30 = (f64) arg0->tyres[FRONT_LEFT].pos[0];
+    sp58 = (f64) arg0->tyres[FRONT_LEFT].baseHeight;
+    sp50 = (f64) arg0->tyres[FRONT_LEFT].pos[2];
+    sp48 = (f64) arg0->tyres[BACK_RIGHT].pos[0];
+    sp40 = (f64) arg0->tyres[BACK_RIGHT].baseHeight;
+    temp_f4 = (f64) arg0->tyres[BACK_RIGHT].pos[2];
     temp_f2 = sp58 - sp70;
     sp38 = temp_f4;
     temp_f12 = temp_f4 - sp50;

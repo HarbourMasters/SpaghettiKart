@@ -16,7 +16,7 @@ typedef struct
     /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
     /* 0x38 */ Vec3f velocity; // acceleration
-    /* 0x44 */ f32 unk_044;
+    /* 0x44 */ f32 surfaceHeight;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
     /* 0x50 */ s32 unk_050;
@@ -79,9 +79,9 @@ typedef struct
     /* 0xDD */ u8  unk_0DD;
     /* 0xDE */ s8  unk_0DE;
     /* 0xDF */ u8  unk_0DF;
-} Objects; // size = 0xE0
+} Object; // size = 0xE0
 
-extern Objects gObjectList[];
+extern Object gObjectList[];
 
 typedef struct
 {
