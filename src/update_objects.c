@@ -1199,18 +1199,20 @@ void func_800744CC(void) {
     }
 }
 
-void func_80074510(uintptr_t devAddr, void * vaddr, size_t nbytes) {
+void func_80074510(uintptr_t devAddr, void *vaddr, size_t nbytes) {
+    u8 *texture = (u8 *) LOAD_ASSET(devAddr); 
     func_800744CC();
-    osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, devAddr, vaddr, nbytes, &gDmaMesgQueue);
+    //osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, devAddr, vaddr, nbytes, &gDmaMesgQueue);
+    memcpy(vaddr, texture, nbytes);
     D_8018D224 = 1;
 }
 
 void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
-    //func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
+    func_80074510((uintptr_t) (arg0), arg1, arg2 * arg3);
 }
 
 //! @todo arg1 should likely be a u8 *
-void func_800745C8(s32 objectIndex, s32 arg1) {
+void func_800745C8(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1283,7 +1285,7 @@ void func_800747F0(s32 objectIndex, u8 *arg1) {
 
 void func_80074894(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_800745C8(objectIndex, (s32)arg1);
+    func_800745C8(objectIndex, (uintptr_t)arg1);
 }
 
 void func_800748C4(s32 objectIndex, u8 *arg1) {

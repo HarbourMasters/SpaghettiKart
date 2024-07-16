@@ -127,7 +127,7 @@ s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     f32 crossProductZX_1;
     f32 crossProductZX_2;
     f32 crossProductZX_3;
-    s32 bool = true;
+    s32 flag = true;
 
     if (triangle->normalY < -0.9f)
         return 0;
@@ -160,7 +160,7 @@ s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
         crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
         if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
-            bool = false;
+            flag = false;
         }
     } else {
 
@@ -170,16 +170,16 @@ s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
             crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
             if ((crossProductZX_1 * crossProductZX_3) < 0.0f) {
-                bool = false;
+                flag = false;
             }
         } else {
             if ((crossProductZX_1 * crossProductZX_2) < 0.0f) {
-                bool = false;
+                flag = false;
             } else {
                 crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
                 if (crossProductZX_3 != 0) {
                     if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
-                        bool = false;
+                        flag = false;
                     }
                 }
             }
@@ -232,7 +232,7 @@ s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     f32 crossProductYX_1;
     f32 crossProductYX_2;
     f32 crossProductYX_3;
-    s32 bool = true;
+    s32 flag = true;
 
     if (triangle->minX > posX) {
         return 0;
@@ -272,23 +272,23 @@ s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
         crossProductYX_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
 
         if ((crossProductYX_2 * crossProductYX_3) < 0.0f) {
-            bool = false;
+            flag = false;
         }
     } else {
         crossProductYX_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
         if (!crossProductYX_2) {
             crossProductYX_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
             if (crossProductYX_1 * crossProductYX_3 < 0.0f) {
-                bool = false;
+                flag = false;
             }
         } else {
             if ((crossProductYX_1 * crossProductYX_2) < 0.0f) {
-                bool = false;
+                flag = false;
             } else {
                 crossProductYX_3 = ((y3 - posY) * (x1 - posX)) - ((x3 - posX) * (y1 - posY));
                 if (crossProductYX_3 != 0) {
                     if ((crossProductYX_2 * crossProductYX_3) < 0.0f) {
-                        bool = false;
+                        flag = false;
                     }
                 }
             }
@@ -324,7 +324,7 @@ s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
 
 s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
-    s32 bool = true;
+    s32 flag = true;
 
     UNUSED f32 pad[7];
     f32 y3;
@@ -375,7 +375,7 @@ s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
         crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
 
         if ((crossProductYZ_2 * crossProductYZ_3) < 0.0f) {
-            bool = false;
+            flag = false;
         }
     } else {
 
@@ -385,17 +385,17 @@ s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
             crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
 
             if ((crossProductYZ_1 * crossProductYZ_3) < 0.0f) {
-                bool = false;
+                flag = false;
             }
         } else {
 
             if ((crossProductYZ_1 * crossProductYZ_2) < 0.0f) {
-                bool = false;
+                flag = false;
             } else {
                 crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
                 if (crossProductYZ_3 != 0) {
                     if ((crossProductYZ_2 * crossProductYZ_3) < 0.0f) {
-                        bool = false;
+                        flag = false;
                     }
                 }
             }
@@ -448,7 +448,7 @@ s32 check_horizontally_colliding_with_triangle(f32 posX, f32 posZ, u16 index) {
     f32 crossProductZX_1;
     f32 crossProductZX_3;
     f32 crossProductZX_2;
-    s32 bool = true;
+    s32 flag = true;
 
     x1 = triangle->vtx1->v.ob[0];
     z1 = triangle->vtx1->v.ob[2];
@@ -468,23 +468,23 @@ s32 check_horizontally_colliding_with_triangle(f32 posX, f32 posZ, u16 index) {
         crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
         if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
-            bool = false;
+            flag = false;
         }
     } else {
         crossProductZX_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
         if (!crossProductZX_2) {
             crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
             if (crossProductZX_1 * crossProductZX_3 < 0.0f) {
-                bool = false;
+                flag = false;
             }
         } else {
             if ((crossProductZX_1 * crossProductZX_2) < 0.0f) {
-                bool = false;
+                flag = false;
             } else {
                 crossProductZX_3 = ((z3 - posZ) * (x1 - posX)) - ((x3 - posX) * (z1 - posZ));
                 if (crossProductZX_3 != 0) {
                     if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
-                        bool = false;
+                        flag = false;
                     }
                 }
             }
@@ -879,7 +879,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     f32 area;
     f32 area2;
     f32 area3;
-    s32 bool = true;
+    s32 flag = true;
     if (triangle->minX > x1) {
         return 0;
     }
@@ -916,7 +916,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 
         if (area2 * area3 < 0.0f) {
-            bool = false;
+            flag = false;
         }
     } else {
 
@@ -927,23 +927,23 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 
             if ((area * area3) < 0.0f) {
-                bool = false;
+                flag = false;
             }
         } else {
             if ((area * area2) < 0.0f) {
-                bool = false;
+                flag = false;
             } else {
                 area3 = (y4 - y1) * (x2 - x1) - (x4 - x1) * (y2 - y1);
 
                 if (area3 != 0) {
                     if ((area2 * area3) < 0.0f) {
-                        bool = false;
+                        flag = false;
                     }
                 }
             }
         }
     }
-    if (!bool) {
+    if (!flag) {
         return 0;
     }
 

@@ -1714,7 +1714,7 @@ void render_player(Player *player, s8 playerId, s8 screenId) {
     }
     osRecvMesg(&gDmaMesgQueue, (OSMesg *) &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->collision.surfaceDistance[2] <= 30.0f)) {
-        render_player_ice_reflection(player, playerId, screenId, var_v1);
+        player_ice_reflection_render(player, playerId, screenId, var_v1);
     }
     if (player->boostPower >= 2.0f) {
         func_80025DE8(player, playerId, screenId, var_v1);

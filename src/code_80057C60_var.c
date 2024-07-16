@@ -106,7 +106,7 @@ s32 D_8018D22C;
 //! Something related to the display of the clouds/stars?
 s8 D_8018D230;
 UNUSED s32 D_8018D238[2];
-s32 D_8018D240;
+uintptr_t D_8018D240;
 u8 *D_8018D248[22];
 f32 D_8018D2A0;
 s32 D_8018D2A4;
