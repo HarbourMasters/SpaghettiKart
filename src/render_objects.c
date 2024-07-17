@@ -229,14 +229,14 @@ void func_80044924(u8 *texture, s32 width, s32 height) {
     // See comment above the `gDPLoadBlock` macro
     //gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
-    // gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
-    // gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    // gDPLoadSync(gDisplayListHead++);
-    // // The last argument to this macro really should be `CALC_DXT_4b(width)` but that creates a massive diff
-    // gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (((width * height) + 3) >> 2) - 1, ((width / 16) + 2047) / (width / 16));
-    // gDPPipeSync(gDisplayListHead++);
-    // gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, (((width >> 1) + 7) >> 3), G_TX_RENDERTILE, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    // gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width-1) << G_TEXTURE_IMAGE_FRAC, (height-1) << G_TEXTURE_IMAGE_FRAC);
+    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPLoadSync(gDisplayListHead++);
+    // The last argument to this macro really should be `CALC_DXT_4b(width)` but that creates a massive diff
+    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, (((width * height) + 3) >> 2) - 1, ((width / 16) + 2047) / (width / 16));
+    gDPPipeSync(gDisplayListHead++);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_4b, (((width >> 1) + 7) >> 3), G_TX_RENDERTILE, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, (width-1) << G_TEXTURE_IMAGE_FRAC, (height-1) << G_TEXTURE_IMAGE_FRAC);
 }
 
 UNUSED void func_80044AB8(u8 *texture, s32 width, s32 height) {
@@ -2220,8 +2220,8 @@ void func_8004E6C4(s32 playerId) {
 }
 
 void draw_simplified_lap_count(s32 playerId) {
-    draw_hud_2d_texture_32x8((s32) playerHUD[playerId].lapX, playerHUD[playerId].lapY + 3, (u8*) common_texture_hud_lap);
-    draw_hud_2d_texture_32x16(playerHUD[playerId].lapX + 0x1C, (s32) playerHUD[playerId].lapY, (u8*) gHudLapTextures[playerHUD[playerId].alsoLapCount]);
+    draw_hud_2d_texture_32x8(OTRGetDimensionFromLeftEdge((s32) playerHUD[playerId].lapX), playerHUD[playerId].lapY + 3, (u8*) common_texture_hud_lap);
+    draw_hud_2d_texture_32x16(OTRGetDimensionFromLeftEdge(playerHUD[playerId].lapX + 0x1C), (s32) playerHUD[playerId].lapY, (u8*) gHudLapTextures[playerHUD[playerId].alsoLapCount]);
 }
 
 void func_8004E800(s32 playerId) {
@@ -2533,6 +2533,7 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror((u8*) common_texture_hud_123, 32, 8);
     // Display current lap. Ex. 1/3
+    
     func_8004BA98(lapX     , lapY, 8, 8, lap * 8, 0, 0); // display the digit
     func_8004BA98(lapX + 8 , lapY, 8, 8,      24, 0, 0); // display the /
     func_8004BA98(lapX + 16, lapY, 8, 8,      16, 0, 0); // display the 3

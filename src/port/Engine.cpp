@@ -226,3 +226,23 @@ extern "C" void Timer_SetValue(int32_t* address, int32_t value) {
 //         }
 //     }
 // }
+
+extern "C" float OTRGetAspectRatio() {
+    return gfx_current_dimensions.aspect_ratio;
+}
+
+extern "C" float OTRGetDimensionFromLeftEdge(float v) {
+    return (SCREEN_WIDTH / 2 - SCREEN_HEIGHT / 2 * OTRGetAspectRatio() + (v));
+}
+
+extern "C" int16_t OTRGetRectDimensionFromLeftEdge(float v) {
+    return ((int)floorf(OTRGetDimensionFromLeftEdge(v)));
+}
+
+extern "C" float OTRGetDimensionFromRightEdge(float v) {
+    return (SCREEN_WIDTH / 2 + SCREEN_HEIGHT / 2 * OTRGetAspectRatio() - (SCREEN_WIDTH - v));
+}
+
+extern "C" int16_t OTRGetRectDimensionFromRightEdge(float v) {
+    return ((int)ceilf(OTRGetDimensionFromRightEdge(v)));
+}

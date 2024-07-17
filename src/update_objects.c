@@ -385,6 +385,7 @@ UNUSED s32 func_8007281C(s32 objectIndex, s32 arg1) {
     return phi_a2;
 }
 
+// arg1 or arg2 may be a uintptr_t
 UNUSED s32 func_800728B0(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 phi_a3;
 
@@ -1231,7 +1232,7 @@ void func_800745C8(s32 objectIndex, uintptr_t arg1) {
     }
 }
 
-void func_8007466C(s32 objectIndex, s32 arg1) {
+void func_8007466C(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1247,7 +1248,7 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
     }
 }
 
-void func_80074704(s32 objectIndex, s32 arg1) {
+void func_80074704(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1290,12 +1291,12 @@ void func_80074894(s32 objectIndex, u8 *arg1) {
 
 void func_800748C4(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_8007466C(objectIndex, (s32)arg1);
+    func_8007466C(objectIndex, (uintptr_t)arg1);
 }
 
 void func_800748F4(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_80074704(objectIndex, (s32)arg1);
+    func_80074704(objectIndex, (uintptr_t)arg1);
 }
 
 void func_80074924(s32 objectIndex) {
@@ -3620,7 +3621,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
     if (gModeSelection == VERSUS) {
         switch (gPlayerCountSelection1) {
             case TWO_PLAYERS_SELECTED:
-                //curve = segmented_to_virtual((void *) common_versus_2_player_item_curve);
+                //curve = (u8 *) LOAD_ASSET(common_versus_2_player_item_curve);
                 break;
             case THREE_PLAYERS_SELECTED:
                 //curve = segmented_to_virtual((void *) common_versus_3_player_item_curve);
@@ -3642,7 +3643,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
             //curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
         }
         // *((rank * 100) + curve + sRandomItemIndex)
-        randomItem = 1;
+        randomItem = random_int(16);
     }
     return randomItem;
 }

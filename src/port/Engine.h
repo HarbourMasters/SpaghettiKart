@@ -27,6 +27,11 @@ class GameEngine {
     void ProcessFrame(void (*run_one_game_iter)()) const;
     static void Destroy();
     static void ProcessGfxCommands(Gfx* commands);
+    float OTRGetAspectRatio(void);
+    float OTRGetDimensionFromLeftEdge(float v);
+    float OTRGetDimensionFromRightEdge(float v);
+    int16_t OTRGetRectDimensionFromLeftEdge(float v);
+    int16_t OTRGetRectDimensionFromRightEdge(float v);
 };
 #else
 void GameEngine_ProcessGfxCommands(Gfx* commands);
