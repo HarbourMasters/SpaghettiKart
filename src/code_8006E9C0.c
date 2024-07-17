@@ -1020,7 +1020,7 @@ void init_hud_one_player(void) {
     D_8018CFEC = playerHUD[PLAYER_ONE].speedometerX + 0x18;
     D_8018CFF4 = playerHUD[PLAYER_ONE].speedometerY + 6;
     D_8016579E = 0xDD00;
-    playerHUD[PLAYER_ONE].rankX = 0x0034;
+    playerHUD[PLAYER_ONE].rankX = 52;
     playerHUD[PLAYER_ONE].rankY = 0x00C8;
     playerHUD[PLAYER_ONE].slideRankX = 0;
     playerHUD[PLAYER_ONE].slideRankY = 0;

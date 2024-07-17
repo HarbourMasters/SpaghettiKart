@@ -3460,6 +3460,43 @@ Gfx *draw_box_fill(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32
     }
     gSPDisplayList(displayListHead++, D_02008030);
     gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32)blue, alpha) << 0x10 | GPACK_RGBA5551(red, green, (u32)blue, alpha)));
+    gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
+    gSPDisplayList(displayListHead++, D_02008058);
+    return displayListHead;
+}
+
+// draw a box filled with a solid color
+Gfx *draw_box_fill_wide(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, s32 blue, s32 alpha) {
+    red &= 0xFF;
+    green &= 0xFF;
+    blue &= 0xFF;
+    alpha &= 0xFF;
+    if (lrx < ulx) {
+        swap_values(&ulx, &lrx);
+    }
+    if (lry < uly) {
+        swap_values(&uly, &lry);
+    }
+    if ((ulx >= 0x140) || (uly >= 0xF0)) {
+        return displayListHead;
+    }
+    if (ulx < 0) {
+        ulx = 0;
+    }
+    if (uly < 0) {
+        uly = 0;
+    }
+    if ((lrx < 0) || (lry < 0)) {
+        return displayListHead;
+    }
+    if (lrx >= SCREEN_WIDTH) {
+        lrx = SCREEN_WIDTH - 1;
+    }
+    if (lry >= SCREEN_HEIGHT) {
+        lry = SCREEN_HEIGHT - 1;
+    }
+    gSPDisplayList(displayListHead++, D_02008030);
+    gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32)blue, alpha) << 0x10 | GPACK_RGBA5551(red, green, (u32)blue, alpha)));
     gDPFillWideRectangle(displayListHead++, OTRGetDimensionFromLeftEdge(ulx), uly, OTRGetDimensionFromRightEdge(lrx), lry);
     //gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
     gSPDisplayList(displayListHead++, D_02008058);
@@ -3502,6 +3539,10 @@ Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
     gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
     gDPPipeSync(displayListHead++);
     return displayListHead;
+}
+
+Gfx *draw_box_fill_wide_wrap(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
+    return draw_box_fill_wide(displayListHead, ulx, uly, lrx, lry, 0, 0, 0, 0xFF);
 }
 
 Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
@@ -7147,15 +7188,15 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1FB0.s")
 void func_800A2D1C(struct_8018D9E0_entry *arg0) {
     switch (D_80164A28) {
     case 1:
-        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, SCREEN_WIDTH - 1, 40);
-        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xC7, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+        gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, SCREEN_WIDTH - 1, 40);
+        gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xC7, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
         arg0->unk1C = 0x28;
         break;
     case 2:
         arg0->unk1C -= 2;
         if (arg0->unk1C > 0) {
-            gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-            gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+            gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
+            gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
         } else {
             arg0->type = 0;
         }
@@ -7166,8 +7207,8 @@ void func_800A2D1C(struct_8018D9E0_entry *arg0) {
         } else {
             arg0->unk1C -= 2;
             if (arg0->unk1C > 0) {
-                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+                gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
+                gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
             } else {
                 arg0->type = 0;
             }
