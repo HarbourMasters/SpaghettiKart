@@ -4,6 +4,7 @@
 #include <libultraship.h>
 #include <common_structs.h>
 #include <SDL2/SDL_net.h>
+#include <windows.h>
 
 #define NETWORK_MAX_PLAYERS 8
 #define NETWORK_USERNAME_LENGTH 64
@@ -34,6 +35,7 @@ typedef struct {
 
 extern Player *nLocalPlayer;
 extern TCPsocket client;
+extern TCPsocket remoteSocket;
 extern NetworkClient dummyClient;
 extern NetworkClient *localClient;
 extern NetworkClient clients[];
@@ -44,8 +46,9 @@ extern s32 nAllPlayersLoaded;
 void networking_init(void);
 void networking_update(void);
 void networking_cleanup(void);
-void networking_loop(void);
+DWORD WINAPI networking_loop(LPVOID);
 void handleReceivedData(const char *, size_t);
+void sendInitialData(void);
 
 /* Start Game */
 void spawn_network_players(f32*,f32*,f32);
