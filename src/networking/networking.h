@@ -7,11 +7,9 @@
 #include <windows.h>
 
 #define NETWORK_MAX_PLAYERS 8
-#define NETWORK_USERNAME_LENGTH 64
+#define NETWORK_USERNAME_LENGTH 32
 
 extern s32 gNetworkingEnabled;
-extern char* gNetworkingIp;
-extern u32 gNetworkingPort;
 
 enum {
     PACKET_JOIN,
@@ -47,12 +45,14 @@ extern NetworkClient clients[];
 extern s32 nAllPlayersLoaded;
 
 /* Main Networking */
-void networking_init(void);
+void ConnectToServer(char* ip, uint16_t port, char *username);
+void networking_init(char* ip, uint16_t port);
 void networking_update(void);
+void networking_ready_up(bool);
 void networking_cleanup(void);
 DWORD WINAPI networking_loop(LPVOID);
 void handleReceivedData(const char *, size_t);
-void sendInitialData(void);
+void set_username(const char *username);
 
 /* Start Game */
 void spawn_network_players(f32*,f32*,f32);
@@ -60,12 +60,12 @@ s32 network_all_players_loaded(void);
 void set_course(const char *data);
 void networking_start_session(const char *data);
 
-
 /* Replication */
 void replicate_player(const char* data);
 void assign_player_slots(const char* data);
 
 /* Packets */
+void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t size);
 void handleJoinPacket(const char *data);
 void handleLeavePacket(const char *data);
 void handleMessagePacket(const char *data);

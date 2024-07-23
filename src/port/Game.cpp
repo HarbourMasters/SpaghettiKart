@@ -38,12 +38,10 @@ int main(int argc, char *argv[]) {
     GameEngine::Create();
     // audio_init();
     // sound_init();
-    networking_init();
     thread5_game_loop();
     while (WindowIsRunning()) {
         push_frame();
     }
-    networking_cleanup();
     //GameEngine::Instance->ProcessFrame(push_frame);
     GameEngine::Instance->Destroy();
     return 0;

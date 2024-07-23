@@ -1,6 +1,7 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
+#include "GameInfoWindow.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -19,10 +20,10 @@ extern "C" {
 namespace GameUI {
 std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
-std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
+std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
@@ -62,12 +63,16 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
+    mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game info");
+    gui->AddGuiWindow(mGameInfoWindow);
+
     mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>("gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
     gui->AddGuiWindow(mAdvancedResolutionSettingsWindow);
 }
 
 void Destroy() {
     mAdvancedResolutionSettingsWindow = nullptr;
+    mGameInfoWindow = nullptr;
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
     mInputEditorWindow = nullptr;

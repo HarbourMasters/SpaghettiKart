@@ -18,6 +18,11 @@ void handleMessagePacket(const char *data) {
     // Handle message logic here
 }
 
+void handleMessageNumberPacket(const char *data) {
+    printf("%s\n", data);
+    // Handle message logic here
+}
+
 void handle_start_game() {
     nAllPlayersLoaded = true;
     gIsGamePaused = false;
@@ -94,7 +99,7 @@ void send_str_packet(TCPsocket socket, uint8_t type, const char *payload) {
 //     }
 // }
 
-void send_int_packet(TCPsocket socket, uint8_t type, int32_t payload, uint16_t size) {
+void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t size) {
     // Ensure the buffer is large enough to hold the type, colon, and payload
     if (sizeof(int) + 1 + size > BUFFER_SIZE) {
         fprintf(stderr, "Sending data too big for the buffer\n");
@@ -113,8 +118,8 @@ void send_int_packet(TCPsocket socket, uint8_t type, int32_t payload, uint16_t s
     offset += sizeof(uint16_t);
 
     // Write the payload into the buffer
-    *(int32_t *)(buffer + offset) = payload;
-    offset += sizeof(int32_t);
+    *(uint32_t *)(buffer + offset) = payload;
+    offset += sizeof(uint32_t);
 
     // Send the buffer through the socket
     int len = SDLNet_TCP_Send(socket, buffer, offset);

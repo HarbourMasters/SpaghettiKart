@@ -10,8 +10,6 @@
 #define BUFFER_SIZE 10240
 
 s32 gNetworkingEnabled = false;
-char* gNetworkingIp = "127.0.0.1";
-u32 gNetworkingPort = 64010;
 
 NetworkClient dummyClient; // For use before server sends the real client
 
@@ -22,143 +20,46 @@ NetworkClient clients[NETWORK_MAX_PLAYERS];
 SDLNet_SocketSet set;
 TCPsocket client;
 
-int isConnected = 0;
+bool isConnected = 0;
 
-// void set_username(char* username) {
-//     strcpy(localClient->username, username);
-// }
+IPaddress address;
+HANDLE sNetworkThread;
+DWORD threadID;
+bool threadStarted = false;
 
+TCPsocket remoteSocket;
+int isNetworkingThreadEnabled = true;
+void (*remoteConnectedHandler)(void);
 
-void set_username(const char *username) {
-    srand(time(NULL) + rand()); // Use a different seed for each call
-    int random_number = rand() % 10000; // Generate a random number between 0 and 9999
-    snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
-}
+void ConnectToServer(char* ip, uint16_t port, char *username) {
+    if (!threadStarted) {
+        threadStarted = true;
+        networking_init(ip, port);
 
-void send_json_string(TCPsocket socket, const char *str) {
-    char buffer[BUFFER_SIZE];
-    snprintf(buffer, BUFFER_SIZE, "\"%s\"", str); // Format as JSON string
-    int len = SDLNet_TCP_Send(socket, buffer, strlen(buffer));
-    if (len < strlen(buffer)) {
-        fprintf(stderr, "SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+        SDL_Delay(20);
+
+        localClient = &dummyClient; // Temporary until server sends the real data
+        set_username(username);
+        send_str_packet(remoteSocket, PACKET_JOIN, localClient->username);
+        send_int_packet(remoteSocket, PACKET_SET_CHARACTER, 2, sizeof(uint32_t));
+        send_str_packet(remoteSocket, PACKET_MESSAGE, "a message");
+        send_str_packet(remoteSocket, PACKET_MESSAGE, "another message");
     }
 }
 
-// void send_str_packet(TCPsocket socket, int type, const char *payload) {
-//     char buffer[BUFFER_SIZE];
-//     snprintf(buffer, BUFFER_SIZE, "%d:%s\n", type, payload); // Format as TYPE:Payload
-//     int len = SDLNet_TCP_Send(socket, buffer, strlen(buffer));
-//     if (len < strlen(buffer)) {
-//         fprintf(stderr, "SDLNet_TCP_Send: %s\n", SDLNet_GetError());
-//     }
-// }
-
-//uint32_t count = 0;
-// Original
-// void networking_loop() {
-//     // Check for ready sockets
-
-//     while (set) {
+void set_username(const char *username) {
+    //srand(time(NULL) + rand()); // Use a different seed for each call
+    //int random_number = rand() % 10000; // Generate a random number between 0 and 9999
+    //snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
 
 
-//         int numReadySockets = SDLNet_CheckSockets(set, 0);
-//         if (numReadySockets == -1) {
-//             fprintf(stderr, "SDLNet_CheckSockets: %s\n", SDLNet_GetError());
-//             return;
-//         }
-//         if (numReadySockets == 0) {
-//             continue;
-//         }
+    //strncpy(localClient->username, username, sizeof(localClient->username) );
 
-//         // Receive packets
-//         if (numReadySockets > 0) {
-//             if (SDLNet_SocketReady(client)) {
-//                 char buffer[BUFFER_SIZE];
-//                 int len = SDLNet_TCP_Recv(client, buffer, sizeof(buffer));
-//                 if (len <= 0) {
-//                     fprintf(stderr, "SDLNet_TCP_Recv: %s\n", SDLNet_GetError());
-//                     return;
-//                 } else {
-//                     handleReceivedData(buffer, len);
-//                 }
-//             }
-//         }
-//     }
+    strncpy(localClient->username, username, sizeof(localClient->username) - 1);
+    localClient->username[sizeof(localClient->username) - 1] = '\0';  // Ensure null-termination
+}
 
-//     // Send packets
-//     //char str[20];
-//     //sprintf(str, "packet: %d", +count++);
-//     if (!isConnected) {
-//         isConnected = 1;
-//         send_str_packet(client, PACKET_JOIN, localClient->username);
-//         send_str_packet(client, PACKET_MESSAGE, "a message");
-//         send_str_packet(client, PACKET_MESSAGE, "another message");
-//         send_int_packet(client, PACKET_READY_UP, 1, sizeof(int));
-//         send_int_packet(client, PACKET_SET_CHARACTER, 2, sizeof(int));
-//     } else {
-//         //send_str_packet(client, PACKET_MESSAGE, str);
-//     }
-// }
-
-// void networking_loop() {
-//     if (!isConnected) {
-//         client = SDLNet_TCP_Open(&ip);
-//         if (client) {
-//             isConnected = 1;
-//             fprintf(stdout, "Connection to server established!\n");
-//         } else {
-//             fprintf(stderr, "SDLNet_TCP_Open: %s\n", SDLNet_GetError());
-//             return;
-//         }
-//     }
-
-//     SDLNet_SocketSet socketSet = SDLNet_AllocSocketSet(1);
-//     SDLNet_TCP_AddSocket(socketSet, client);
-
-//     while (isConnected && client) {
-//         int numReadySockets = SDLNet_CheckSockets(socketSet, 0);
-//         if (numReadySockets == -1) {
-//             fprintf(stderr, "SDLNet_CheckSockets: %s\n", SDLNet_GetError());
-//             isConnected = 0;
-//             SDLNet_TCP_Close(client);
-//             return;
-//         }
-
-//         if (numReadySockets > 0) {
-//             if (SDLNet_SocketReady(client)) {
-//                 char buffer[BUFFER_SIZE];
-//                 int len = SDLNet_TCP_Recv(client, buffer, sizeof(buffer));
-//                 if (len <= 0) {
-//                     fprintf(stderr, "SDLNet_TCP_Recv: %s\n", SDLNet_GetError());
-//                     isConnected = 0;
-//                     SDLNet_TCP_Close(client);
-//                     return;
-//                 } else {
-//                     handleReceivedData(buffer, len);
-//                 }
-//             }
-//         }
-
-//         // Process other game logic and handle events
-//         // SDL_Event event;
-//         // while (SDL_PollEvent(&event)) {
-//         //     if (event.type == SDL_QUIT) {
-//         //         isConnected = 0;
-//         //         SDLNet_TCP_Close(client);
-//         //         return;
-//         //     }
-//         // }
-
-//         SDL_Delay(10);  // Add a short delay to control the loop rate
-//     }
-
-//     SDLNet_FreeSocketSet(socketSet);
-// }
-
-IPaddress ip;
-HANDLE remoteThreadReceive;
-DWORD threadID;
-void networking_init() {
+void networking_init(char* ip, uint16_t port) {
     if (SDL_Init(0) == -1) {
         fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
         exit(EXIT_FAILURE);
@@ -170,18 +71,18 @@ void networking_init() {
         exit(EXIT_FAILURE);
     }
 
-    if (SDLNet_ResolveHost(&ip, gNetworkingIp, gNetworkingPort) == -1) {
+    if (SDLNet_ResolveHost(&address, ip, port) == -1) {
         printf("[GameInteractor] SDLNet_ResolveHost: %s\n", SDLNet_GetError());
     }
 
     // Ensure no thread is already running
-    if (remoteThreadReceive != NULL) {
-        WaitForSingleObject(remoteThreadReceive, INFINITE);
-        CloseHandle(remoteThreadReceive);
-        remoteThreadReceive = NULL;
+    if (sNetworkThread != NULL) {
+        WaitForSingleObject(sNetworkThread, INFINITE);
+        CloseHandle(sNetworkThread);
+        sNetworkThread = NULL;
     }
 
-    remoteThreadReceive = CreateThread(
+    sNetworkThread = CreateThread(
         NULL,                   // default security attributes
         0,                      // default stack size
         networking_loop,      // thread function
@@ -190,26 +91,19 @@ void networking_init() {
         &threadID               // receive thread identifier
     );
 
-    if (remoteThreadReceive == NULL) {
+    if (sNetworkThread == NULL) {
         printf("CreateThread failed: %d\n", GetLastError());
         exit(EXIT_FAILURE);
     }
 
-    //remoteThreadReceive = std::thread(&GameInteractor::ReceiveFromServer, this);
+    //sNetworkThread = std::thread(&GameInteractor::ReceiveFromServer, this);
 }
 
-
-bool isRemoteInteractorConnected;
-TCPsocket remoteSocket;
-int isNetworkingThreadEnabled = 1;
-void (*remoteConnectedHandler)(void);
-void (*remoteDisconnectedHandler)(void);
-bool sendInitialPackets = 0;
 DWORD WINAPI networking_loop(LPVOID arg) {
     while (isNetworkingThreadEnabled) {
         while (!isConnected && isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
             printf("[SpaghettiOnline] Attempting to make connection to server...\n");
-            remoteSocket = SDLNet_TCP_Open(&ip);
+            remoteSocket = SDLNet_TCP_Open(&address);
 
             if (remoteSocket) {
                 isConnected = true;
@@ -269,8 +163,8 @@ DWORD WINAPI networking_loop(LPVOID arg) {
         if (isConnected) {
             SDLNet_TCP_Close(remoteSocket);
             isConnected = false;
-            if (remoteDisconnectedHandler) {
-                remoteDisconnectedHandler();
+            if (networking_cleanup) {
+                networking_cleanup();
             }
             printf("[SpaghettiOnline] Ending receiving thread...\n");
         }
@@ -280,21 +174,21 @@ DWORD WINAPI networking_loop(LPVOID arg) {
 }
 
 
-void sendInitialData(void) {
-    if (!sendInitialPackets) {
-        if (remoteSocket != NULL) {
-            sendInitialPackets = true;
-            printf("SENDING PACKETS!\n");
-            localClient = &dummyClient; // Temporary until server sends the real data
-            set_username("TestUser");
-            send_str_packet(remoteSocket, PACKET_JOIN, localClient->username);
-            send_str_packet(remoteSocket, PACKET_MESSAGE, "a message");
-            send_str_packet(remoteSocket, PACKET_MESSAGE, "another message");
-            send_int_packet(remoteSocket, PACKET_SET_CHARACTER, 2, sizeof(int));
-            send_int_packet(remoteSocket, PACKET_READY_UP, 1, sizeof(int));
-        }
-    }
-}
+// void sendInitialData(void) {
+//     if (!sendInitialPackets) {
+//         if (remoteSocket != NULL) {
+//             sendInitialPackets = true;
+//             printf("SENDING PACKETS!\n");
+//             localClient = &dummyClient; // Temporary until server sends the real data
+//             //set_username("TestUser");
+//             send_str_packet(remoteSocket, PACKET_JOIN, localClient->username);
+//             send_str_packet(remoteSocket, PACKET_MESSAGE, "a message");
+//             send_str_packet(remoteSocket, PACKET_MESSAGE, "another message");
+//             send_int_packet(remoteSocket, PACKET_SET_CHARACTER, 2, sizeof(int));
+//             send_int_packet(remoteSocket, PACKET_READY_UP, 1, sizeof(int));
+//         }
+//     }
+// }
 
 void networking_ready_up(bool value) {
     send_int_packet(remoteSocket, PACKET_READY_UP, value, sizeof(int));
@@ -365,7 +259,6 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
             handleLeavePacket(data);
             break;
         case PACKET_MESSAGE:
-            printf("Recived Msg\n");
             handleMessagePacket(data);
             break;
         case PACKET_LOADED:
@@ -439,7 +332,7 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
 //     printf("\nNetworking Initialized\n\n");
 // }
 
-void networking_cleanup() {
+void networking_cleanup(void) {
     send_str_packet(remoteSocket, PACKET_LEAVE, localClient->username);
     SDLNet_TCP_Close(remoteSocket);
     SDLNet_FreeSocketSet(set);

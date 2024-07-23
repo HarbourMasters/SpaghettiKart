@@ -1427,24 +1427,105 @@ Gfx *testaaa;
  * @param courseId
 */
 
+typedef struct {
+    char* data;
+    char* vtx;
+    size_t vtxSize;
+    course_texture* textures;
+    char* displaylists;
+    size_t dlSize;
+} NewCourseTable;
+
+NewCourseTable gNewCourseTable[] = {
+    {
+        .data = d_course_mario_raceway_dl_0,
+        .vtx = d_course_mario_raceway_vertex,
+        .vtxSize = 5757,
+        .textures = mario_raceway_textures,
+        .displaylists = d_course_mario_raceway_packed_dls,
+        .dlSize = 3367
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, {
+        .data = d_course_luigi_raceway_dl_0,
+        .vtx = d_course_luigi_raceway_vertex,
+        .vtxSize = 5936,
+        .textures = luigi_raceway_textures,
+        .displaylists = d_course_luigi_raceway_packed_dls,
+        .dlSize = 6377
+    }
+};
+
+
 void load_luigi_raceway(void);
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
 
-    load_luigi_raceway();
-    return;
+    char* data = gNewCourseTable[courseId].data;
+    char* vtxData = gNewCourseTable[courseId].vtx;
+    size_t vtxSize = gNewCourseTable[courseId].vtxSize;
+    course_texture *textures = gNewCourseTable[courseId].textures;
+    char* displaylists = gNewCourseTable[courseId].displaylists;
+    size_t dlSize = gNewCourseTable[courseId].dlSize;
 
-    testaaa = (Gfx *) LOAD_ASSET(d_course_mario_raceway_dl_0);
+    testaaa = (Gfx *) LOAD_ASSET(data);
 
     // Convert course vtx to vtx
-    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_mario_raceway_vertex);
-    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5757);
+    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(vtxData);
+    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * vtxSize);
     gSegmentTable[4] = &vtx[0];
-    func_802A86A8(cvtx, vtx, 5757);
-    vtxSegEnd = &vtx[5757];
+    func_802A86A8(cvtx, vtx, vtxSize);
+    vtxSegEnd = &vtx[vtxSize];
 
     // Load and allocate memory for course textures
-    course_texture *asset = mario_raceway_textures;
+    course_texture *asset = textures;
     u8 *freeMemory = NULL;
     u8 *texture = NULL;
     size_t size = 0;
@@ -1455,7 +1536,7 @@ void load_course(s32 courseId) {
 
         texture = (u8 *) LOAD_ASSET(asset->addr);
         if (texture) {
-            if (asset == &mario_raceway_textures[0]) {
+            if (asset == &textures[0]) {
                 gSegmentTable[5] = &freeMemory[0];
             }
             memcpy(freeMemory, texture, size);
@@ -1468,55 +1549,55 @@ void load_course(s32 courseId) {
     texSegEnd = &((u8 *)gSegmentTable[5])[texSegSize];
 
     // Extract packed DLs
-    u8 *packed = (u8 *) LOAD_ASSET(d_course_mario_raceway_packed_dls);
-    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 3367); // Size of unpacked DLs
+    u8 *packed = (u8 *) LOAD_ASSET(displaylists);
+    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
-    dlSegEnd = &gfx[3367];
+    dlSegEnd = &gfx[dlSize];
 
 
 }
 
-void load_luigi_raceway(void) {
-    testaaa = (Gfx *) LOAD_ASSET(d_course_luigi_raceway_dl_0);
+// void load_luigi_raceway(void) {
+//     testaaa = (Gfx *) LOAD_ASSET(d_course_luigi_raceway_dl_0);
 
-    // Convert course vtx to vtx
-    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_luigi_raceway_vertex);
-    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5936);
-    gSegmentTable[4] = &vtx[0];
-    func_802A86A8(cvtx, vtx, 5936);
-    vtxSegEnd = &vtx[5936];
+//     // Convert course vtx to vtx
+//     CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_luigi_raceway_vertex);
+//     Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5936);
+//     gSegmentTable[4] = &vtx[0];
+//     func_802A86A8(cvtx, vtx, 5936);
+//     vtxSegEnd = &vtx[5936];
 
-    // Load and allocate memory for course textures
-    course_texture *asset = luigi_raceway_textures;
-    u8 *freeMemory = NULL;
-    u8 *texture = NULL;
-    size_t size = 0;
-    texSegSize = 0;
-    while (asset->addr) {
-        size = ResourceGetTexSizeByName(asset->addr);
-        freeMemory = (u8 *) allocate_memory(size);
+//     // Load and allocate memory for course textures
+//     course_texture *asset = luigi_raceway_textures;
+//     u8 *freeMemory = NULL;
+//     u8 *texture = NULL;
+//     size_t size = 0;
+//     texSegSize = 0;
+//     while (asset->addr) {
+//         size = ResourceGetTexSizeByName(asset->addr);
+//         freeMemory = (u8 *) allocate_memory(size);
 
-        texture = (u8 *) LOAD_ASSET(asset->addr);
-        if (texture) {
-            if (asset == &luigi_raceway_textures[0]) {
-                gSegmentTable[5] = &freeMemory[0];
-            }
-            memcpy(freeMemory, texture, size);
-            texSegSize += size;
-            // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
-        }
-        asset++;
-    }
+//         texture = (u8 *) LOAD_ASSET(asset->addr);
+//         if (texture) {
+//             if (asset == &luigi_raceway_textures[0]) {
+//                 gSegmentTable[5] = &freeMemory[0];
+//             }
+//             memcpy(freeMemory, texture, size);
+//             texSegSize += size;
+//             // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
+//         }
+//         asset++;
+//     }
 
-    texSegEnd = &((u8 *)gSegmentTable[5])[texSegSize];
+//     texSegEnd = &((u8 *)gSegmentTable[5])[texSegSize];
 
-    // Extract packed DLs
-    u8 *packed = (u8 *) LOAD_ASSET(d_course_luigi_raceway_packed_dls);
-    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 6377); // Size of unpacked DLs
-    gSegmentTable[7] = &gfx[0];
-    displaylist_unpack(gfx, packed, 0);
-    dlSegEnd = &gfx[6377];
+//     // Extract packed DLs
+//     u8 *packed = (u8 *) LOAD_ASSET(d_course_luigi_raceway_packed_dls);
+//     Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 6377); // Size of unpacked DLs
+//     gSegmentTable[7] = &gfx[0];
+//     displaylist_unpack(gfx, packed, 0);
+//     dlSegEnd = &gfx[6377];
 
 
-}
+// }
