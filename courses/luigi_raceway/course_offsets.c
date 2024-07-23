@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/luigi_raceway_data.h>
 
 const course_texture luigi_raceway_textures[] = {
     {gTextureSignShellShot0,         0x038C, 0x1000, 0x0},

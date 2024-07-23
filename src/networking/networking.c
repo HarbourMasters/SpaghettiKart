@@ -7,9 +7,11 @@
 
 #include "networking.h"
 
-#define SERVER_PORT 64010
-#define SERVER_IP "127.0.0.1"
 #define BUFFER_SIZE 10240
+
+s32 gNetworkingEnabled = false;
+char* gNetworkingIp = "127.0.0.1";
+u32 gNetworkingPort = 64010;
 
 NetworkClient dummyClient; // For use before server sends the real client
 
@@ -22,8 +24,15 @@ TCPsocket client;
 
 int isConnected = 0;
 
-void set_username(char* username) {
-    strcpy(localClient->username, username);
+// void set_username(char* username) {
+//     strcpy(localClient->username, username);
+// }
+
+
+void set_username(const char *username) {
+    srand(time(NULL) + rand()); // Use a different seed for each call
+    int random_number = rand() % 10000; // Generate a random number between 0 and 9999
+    snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
 }
 
 void send_json_string(TCPsocket socket, const char *str) {
@@ -161,7 +170,7 @@ void networking_init() {
         exit(EXIT_FAILURE);
     }
 
-    if (SDLNet_ResolveHost(&ip, SERVER_IP, SERVER_PORT) == -1) {
+    if (SDLNet_ResolveHost(&ip, gNetworkingIp, gNetworkingPort) == -1) {
         printf("[GameInteractor] SDLNet_ResolveHost: %s\n", SDLNet_GetError());
     }
 
@@ -285,6 +294,10 @@ void sendInitialData(void) {
             send_int_packet(remoteSocket, PACKET_READY_UP, 1, sizeof(int));
         }
     }
+}
+
+void networking_ready_up(bool value) {
+    send_int_packet(remoteSocket, PACKET_READY_UP, value, sizeof(int));
 }
 
 // void networking_loop() {

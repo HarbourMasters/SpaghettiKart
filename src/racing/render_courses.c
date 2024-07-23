@@ -21,6 +21,8 @@
 #include "courses/all_course_offsets.h"
 #include <assets/mario_raceway_data.h>
 #include <assets/mario_raceway_displaylists.h>
+#include <assets/luigi_raceway_data.h>
+#include <assets/luigi_raceway_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -60,7 +62,7 @@ void parse_course_displaylists(TrackSectionsI *addr) {
         section->sectionId = addr->sectionId;
         section->surfaceType = addr->surfaceType;
 
-        printf("SECTION ADDR: 0x%X\n", section->addr);
+        //printf("SECTION ADDR: 0x%X\n", section->addr);
         section++;
         addr++;
     }
@@ -623,9 +625,9 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003240)));
     // d_course_mario_raceway_packed_dl_14A0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070014A0)));
-    printf("LOADING SURFACE MAP\n");
+    //printf("LOADING SURFACE MAP\n");
     render_course_segments(mario_raceway_dls, arg0);
-    printf("SURFACE MAP LOADED\n");
+    //printf("SURFACE MAP LOADED\n");
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -638,7 +640,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070000E0)));
     // d_course_mario_raceway_packed_dl_160
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000160)));
-    printf("RENDERED COURSE\n");
+    //printf("RENDERED COURSE\n");
 }
 
 void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
@@ -877,20 +879,20 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_luigi_raceway_packed_dl_9EC0
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07009EC0));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x07009EC0)));
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments((uintptr_t) luigi_raceway_dls, arg0);
+    render_course_segments(luigi_raceway_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_luigi_raceway_packed_dl_E0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070000E0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x070000E0)));
     // d_course_luigi_raceway_packed_dl_68
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000068));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x07000068)));
 
     D_800DC5DC = 88;
     D_800DC5E0 = 72;
@@ -1528,7 +1530,8 @@ void func_80295D88(void) {
             D_8015F8E4 = -60.0f;
             break;
         case COURSE_LUIGI_RACEWAY:
-            parse_course_displaylists((uintptr_t) d_course_luigi_raceway_addr);
+            TrackSectionsI *section8 = (TrackSectionsI *) LOAD_ASSET(d_course_luigi_raceway_addr);
+            parse_course_displaylists(section8);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;

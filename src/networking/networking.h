@@ -9,6 +9,10 @@
 #define NETWORK_MAX_PLAYERS 8
 #define NETWORK_USERNAME_LENGTH 64
 
+extern s32 gNetworkingEnabled;
+extern char* gNetworkingIp;
+extern u32 gNetworkingPort;
+
 enum {
     PACKET_JOIN,
     PACKET_LEAVE,

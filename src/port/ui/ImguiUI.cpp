@@ -19,6 +19,7 @@ extern "C" {
 namespace GameUI {
 std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
+std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
@@ -34,6 +35,12 @@ void SetupGuiElements() {
 
     mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     gui->SetMenuBar(mGameMenuBar);
+
+    mGameInfoWindow = gui->GetGuiWindow("GameInfo");
+    if (mGameInfoWindow == nullptr) {
+        SPDLOG_ERROR("Could not find game info window");
+    }
+
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {
         SPDLOG_ERROR("Could not find stats window");
@@ -475,6 +482,10 @@ void DrawDebugMenu() {
         });
 
         UIWidgets::Spacer(0);
+
+        UIWidgets::WindowButton("GameInfo", "gGameInfoEnabled", GameUI::mGameInfoWindow, {
+            .tooltip = "Shows the game info window, contains player and actor information"
+        });
 
         UIWidgets::WindowButton("Stats", "gStatsEnabled", GameUI::mStatsWindow, {
             .tooltip = "Shows the stats window, with your FPS and frametimes, and the OS you're playing on"

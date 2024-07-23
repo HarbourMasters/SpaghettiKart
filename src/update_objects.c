@@ -35,6 +35,7 @@
 #include <assets/other_textures.h>
 #include "data/some_data.h"
 #include "memory.h"
+#include <assets/luigi_raceway_data.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {

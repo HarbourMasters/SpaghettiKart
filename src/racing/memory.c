@@ -17,6 +17,11 @@
 #include <assets/mario_raceway_displaylists.h>
 #include <assets/mario_raceway_vertices.h>
 #include <assets/mario_raceway_data.h>
+
+#include <assets/luigi_raceway_displaylists.h>
+#include <assets/luigi_raceway_vertices.h>
+#include <assets/luigi_raceway_data.h>
+
 #include <assert.h>
 #include <course_offsets.h>
 
@@ -109,13 +114,13 @@ void *segment_offset_to_virtual(uint32_t segment, uint32_t offset) {
 }
 
 void *segment_vtx_to_virtual(size_t offset) {
-    printf("seg_vtx_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x04] + offset));
+    //printf("seg_vtx_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x04] + offset));
 
     return (void *) (gSegmentTable[0x04] + (offset));
 }
 
 void *segmented_texture_to_virtual(size_t offset) {
-    printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x05] + offset));
+    //printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x05] + offset));
 
     return (void *) (gSegmentTable[0x05] + (offset));
 }
@@ -128,7 +133,7 @@ void *segmented_uintptr_t_to_virtual(uintptr_t addr) {
     uint32_t numCommands = offset / 8;
     offset = numCommands * sizeof(Gfx);
 
-    printf("seg_uintptr_t_to_virt: 0x%llX to 0x%llX\n", newAddr, (gSegmentTable[segment] + offset));
+    //printf("seg_uintptr_t_to_virt: 0x%llX to 0x%llX\n", newAddr, (gSegmentTable[segment] + offset));
 
     return (void *) ((gSegmentTable[segment] + offset));
 }
@@ -140,7 +145,7 @@ void *segmented_gfx_to_virtual(const void *addr) {
     uint32_t numCommands = offset / 8;
     offset = numCommands * sizeof(Gfx);
 
-    printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
+    //printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
 
     return (void *) ((gSegmentTable[segment] + offset));
 }
@@ -1421,8 +1426,13 @@ Gfx *testaaa;
  * @brief Loads & DMAs course data. Vtx, textures, displaylists, etc.
  * @param courseId
 */
+
+void load_luigi_raceway(void);
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
+
+    load_luigi_raceway();
+    return;
 
     testaaa = (Gfx *) LOAD_ASSET(d_course_mario_raceway_dl_0);
 
@@ -1463,6 +1473,50 @@ void load_course(s32 courseId) {
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
     dlSegEnd = &gfx[3367];
+
+
+}
+
+void load_luigi_raceway(void) {
+    testaaa = (Gfx *) LOAD_ASSET(d_course_luigi_raceway_dl_0);
+
+    // Convert course vtx to vtx
+    CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(d_course_luigi_raceway_vertex);
+    Vtx *vtx = (Vtx *) allocate_memory(sizeof(Vtx) * 5936);
+    gSegmentTable[4] = &vtx[0];
+    func_802A86A8(cvtx, vtx, 5936);
+    vtxSegEnd = &vtx[5936];
+
+    // Load and allocate memory for course textures
+    course_texture *asset = luigi_raceway_textures;
+    u8 *freeMemory = NULL;
+    u8 *texture = NULL;
+    size_t size = 0;
+    texSegSize = 0;
+    while (asset->addr) {
+        size = ResourceGetTexSizeByName(asset->addr);
+        freeMemory = (u8 *) allocate_memory(size);
+
+        texture = (u8 *) LOAD_ASSET(asset->addr);
+        if (texture) {
+            if (asset == &luigi_raceway_textures[0]) {
+                gSegmentTable[5] = &freeMemory[0];
+            }
+            memcpy(freeMemory, texture, size);
+            texSegSize += size;
+            // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
+        }
+        asset++;
+    }
+
+    texSegEnd = &((u8 *)gSegmentTable[5])[texSegSize];
+
+    // Extract packed DLs
+    u8 *packed = (u8 *) LOAD_ASSET(d_course_luigi_raceway_packed_dls);
+    Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * 6377); // Size of unpacked DLs
+    gSegmentTable[7] = &gfx[0];
+    displaylist_unpack(gfx, packed, 0);
+    dlSegEnd = &gfx[6377];
 
 
 }

@@ -16,7 +16,7 @@ s32 localPlayerLoaded = false;
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI
 
 void assign_player_control_types(void) {
-    printf("Start network game\n");
+    printf("Assign player control types\n");
     for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
         s32 playerIndex = clients[i].slot;
 
@@ -46,7 +46,13 @@ void set_course(const char* data) {
     }
 }
 
+s32 testa = 0;
+
 void assign_player_slots(const char* data) {
+    if (testa) {
+        return;
+    }
+    testa = 1;
     int offset = 0;
     printf("Assign Player Slots\n");
     for (int i = 0; i < NETWORK_MAX_PLAYERS; ++i) {
@@ -74,14 +80,15 @@ void assign_player_slots(const char* data) {
         clients[i].character = *(int*)(data + offset);
         offset += sizeof(int);
 
-        gCharacterSelections[i] = clients[i].character;
+        //gCharacterSelections[i] = clients[i].character;
 
         // Read hasAuthority
         clients[i].hasAuthority = *(int*)(data + offset);
 
         if (clients[i].hasAuthority) {
             localClient = &clients[i];
-            printf("You have been assigned slot %d\n",  clients[i].slot);
+            gPlayers[clients[i].slot].nHasAuthority = true;
+            printf("You have been assigned slot %d\n",  clients[i].slot + 1);
         }
 
         offset += sizeof(int);
@@ -89,8 +96,14 @@ void assign_player_slots(const char* data) {
 
 }
 
+s32 sessionBool = 0;
+
 // Duplicate of setup_race
 void networking_start_session(const char *data) {
+    if (sessionBool) {
+        return;
+    }
+    sessionBool = 1;
     printf("Start session\n");
     //gIsInQuitToMenuTransition = 1;
     //gQuitToMenuTransitionCounter = 5;
@@ -123,7 +136,13 @@ s32 network_all_players_loaded() {
     }
 }
 
+s32 currentNetworkPlayers = 0;
+
 void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
+    if (currentNetworkPlayers) {
+        return;
+    }
+    currentNetworkPlayers = 1;
 
     assign_player_control_types();
 
@@ -147,6 +166,8 @@ void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
         //}
         //           This index isn't right like this ^
 
+        //if localClient.Slots
+
         spawn_player(&gPlayers[clients[0].slot], clients[0].slot, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, clients[0].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         spawn_player(&gPlayers[clients[1].slot],     clients[1].slot, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, clients[1].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
         spawn_player(&gPlayers[clients[2].slot],   clients[2].slot, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, clients[2].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
@@ -155,7 +176,6 @@ void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
         spawn_player(&gPlayers[clients[5].slot],     clients[5].slot, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, clients[5].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
         spawn_player(&gPlayers[clients[6].slot],   clients[6].slot, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f,  clients[6].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
         spawn_player(&gPlayers[clients[7].slot],   clients[7].slot, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, clients[7].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
-
 
 
     //}

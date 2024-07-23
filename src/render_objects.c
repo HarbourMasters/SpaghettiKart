@@ -37,6 +37,7 @@
 #include <vehicles.h>
 #include "data/some_data.h"
 #include <assets/some_data.h>
+#include <assets/luigi_raceway_data.h>
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);

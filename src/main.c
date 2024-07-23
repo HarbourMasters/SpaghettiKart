@@ -9,6 +9,8 @@
 #include <mk64.h>
 #include <stubs.h>
 
+#include "networking/networking.h"
+
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
@@ -597,6 +599,12 @@ void race_logic_loop(void) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
             staff_ghosts_loop();
+
+            // Wait for all racers to load
+            if (gNetworkingEnabled) {
+                network_all_players_loaded();
+            }
+
             if (gIsGamePaused == 0) {
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
