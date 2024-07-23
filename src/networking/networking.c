@@ -52,9 +52,6 @@ void set_username(const char *username) {
     //int random_number = rand() % 10000; // Generate a random number between 0 and 9999
     //snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
 
-
-    //strncpy(localClient->username, username, sizeof(localClient->username) );
-
     strncpy(localClient->username, username, sizeof(localClient->username) - 1);
     localClient->username[sizeof(localClient->username) - 1] = '\0';  // Ensure null-termination
 }
@@ -173,65 +170,9 @@ DWORD WINAPI networking_loop(LPVOID arg) {
     return 0;
 }
 
-
-// void sendInitialData(void) {
-//     if (!sendInitialPackets) {
-//         if (remoteSocket != NULL) {
-//             sendInitialPackets = true;
-//             printf("SENDING PACKETS!\n");
-//             localClient = &dummyClient; // Temporary until server sends the real data
-//             //set_username("TestUser");
-//             send_str_packet(remoteSocket, PACKET_JOIN, localClient->username);
-//             send_str_packet(remoteSocket, PACKET_MESSAGE, "a message");
-//             send_str_packet(remoteSocket, PACKET_MESSAGE, "another message");
-//             send_int_packet(remoteSocket, PACKET_SET_CHARACTER, 2, sizeof(int));
-//             send_int_packet(remoteSocket, PACKET_READY_UP, 1, sizeof(int));
-//         }
-//     }
-// }
-
 void networking_ready_up(bool value) {
     send_int_packet(remoteSocket, PACKET_READY_UP, value, sizeof(int));
 }
-
-// void networking_loop() {
-//     // Check for ready sockets
-//     int numReadySockets = SDLNet_CheckSockets(set, 0);
-//     if (numReadySockets == -1) {
-//         fprintf(stderr, "SDLNet_CheckSockets: %s\n", SDLNet_GetError());
-//         return;
-//     }
-
-//     // Receive packets
-//     while (numReadySockets > 0) {
-//         if (SDLNet_SocketReady(client)) {
-//             char buffer[BUFFER_SIZE];
-//             int len = SDLNet_TCP_Recv(client, buffer, sizeof(buffer));
-//             if (len <= 0) {
-//                 fprintf(stderr, "SDLNet_TCP_Recv: %s\n", SDLNet_GetError());
-//                 return;
-//             } else {
-//                 handleReceivedData(buffer, len);
-//             }
-//         }
-//         // Re-check for more ready sockets
-//         numReadySockets = SDLNet_CheckSockets(set, 0);
-//     }
-
-//     // Send packets
-//     //char str[20];
-//     //sprintf(str, "packet: %d", count++);
-//     if (!isConnected) {
-//         isConnected = 1;
-//         send_str_packet(client, PACKET_JOIN, localClient->username);
-//         send_str_packet(client, PACKET_MESSAGE, "a message");
-//         send_str_packet(client, PACKET_MESSAGE, "another message");
-//         send_int_packet(client, PACKET_READY_UP, 1, sizeof(int));
-//         send_int_packet(client, PACKET_SET_CHARACTER, 2, sizeof(int));
-//     } else {
-//         //send_str_packet(client, PACKET_MESSAGE, str)
-//     }
-// }
 
 void handleReceivedData(const char *buffer, size_t bufSize) {
     if (bufSize < 4) {
@@ -282,55 +223,6 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
             break;
     }
 }
-
-// void networking_init() {
-//     if (SDL_Init(0) == -1) {
-//         fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
-//         exit(EXIT_FAILURE);
-//     }
-
-//     if (SDLNet_Init() == -1) {
-//         fprintf(stderr, "SDLNet_Init: %s\n", SDLNet_GetError());
-//         SDL_Quit();
-//         exit(EXIT_FAILURE);
-//     }
-
-//     if (SDLNet_ResolveHost(&ip, SERVER_IP, SERVER_PORT) == -1) {
-//         fprintf(stderr, "SDLNet_ResolveHost: %s\n", SDLNet_GetError());
-//         SDLNet_Quit();
-//         SDL_Quit();
-//         exit(EXIT_FAILURE);
-//     }
-
-//     client = SDLNet_TCP_Open(&ip);
-//     if (!client) {
-//         fprintf(stderr, "SDLNet_TCP_Open: %s\n", SDLNet_GetError());
-//         SDLNet_Quit();
-//         SDL_Quit();
-//         exit(EXIT_FAILURE);
-//     }
-
-//     set = SDLNet_AllocSocketSet(1);
-//     if (!set) {
-//         fprintf(stderr, "SDLNet_AllocSocketSet: %s\n", SDLNet_GetError());
-//         SDLNet_TCP_Close(client);
-//         SDLNet_Quit();
-//         SDL_Quit();
-//         exit(EXIT_FAILURE);
-//     }
-
-//     if (SDLNet_TCP_AddSocket(set, client) == -1) {
-//         fprintf(stderr, "SDLNet_TCP_AddSocket: %s\n", SDLNet_GetError());
-//         SDLNet_TCP_Close(client);
-//         SDLNet_FreeSocketSet(set);
-//         SDLNet_Quit();
-//         SDL_Quit;
-//     }
-
-//     localClient = &dummyClient; // Temporary until server sends the real data
-//     set_username("TestUser");
-//     printf("\nNetworking Initialized\n\n");
-// }
 
 void networking_cleanup(void) {
     send_str_packet(remoteSocket, PACKET_LEAVE, localClient->username);
