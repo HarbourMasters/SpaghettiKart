@@ -83,6 +83,14 @@
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
+// Envelopes are always stored as big endian, to match sequence files which are
+// byte blobs and can embed envelopes. Hence this byteswapping macro.
+#if IS_BIG_ENDIAN
+  #define BSWAP16(x) (x)
+#else
+  #define BSWAP16(x) (((x) & 0xff) << 8 | (((x) >> 8) & 0xff))
+#endif
+
 /**
  * (u8*) dl : Cast array down to u8's
  * + sizeof(dl) : go to the end of the array

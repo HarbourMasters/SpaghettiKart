@@ -8,6 +8,7 @@
 #include <common_structs.h>
 #include <actor_types.h>
 #include <defines.h>
+#include <macros.h>
 
 #include "code_800029B0.h"
 #include "main.h"
@@ -396,18 +397,20 @@ void func_802977E4(Player *arg0) {
     arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
-// Invert green and red on green shell texture
+// Generate the red shell tlut by invert green the green one
 void init_red_shell_texture(void) {
+    s16 *tlut = (s16 *) LOAD_ASSET(common_tlut_green_shell);
     s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
-    s16 *green_shell_texture = (s16 *) common_tlut_green_shell;
+    s16 *green_shell_texture = (s16 *) tlut;
     s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
+    
     for (i = 0; i < 256; i++) {
-        color_pixel = *green_shell_texture;
-        red_color = color_pixel & 0xF800;
-        green_color = color_pixel & 0x7C0;
-        blue_color = color_pixel & 0x3E;
-        alpha_color = color_pixel & 0x1;
+        color_pixel = BSWAP16(*green_shell_texture);
+        red_color   = BSWAP16(color_pixel & 0xF800);
+        green_color = BSWAP16(color_pixel & 0x7C0);
+        blue_color  = BSWAP16(color_pixel & 0x3E);
+        alpha_color = BSWAP16(color_pixel & 0x1);
 
         *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green to red
         green_shell_texture++;

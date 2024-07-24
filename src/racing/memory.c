@@ -1504,6 +1504,26 @@ NewCourseTable gNewCourseTable[] = {
 };
 
 
+/**  Load Lakitu Textures  **/
+u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
+    // Calculate lakitu texture size to allocate
+    size_t size = 0;
+    for (size_t i = 0; i < length; i++) {
+        size += ResourceGetTexSizeByName(textureList[i]);
+    }
+
+    u8 *textures = (u8 *) gNextFreeMemoryAddress;
+    gNextFreeMemoryAddress += size;
+    size_t offset = 0;
+    for (size_t i = 0; i < length; i++) {
+        u8 *tex = (u8 *) LOAD_ASSET(textureList[i]);
+        size_t texSize = ResourceGetTexSizeByName(textureList[i]);
+        memcpy(&textures[offset], tex, texSize);
+        offset += texSize;
+    }
+    return textures;
+}
+
 void load_luigi_raceway(void);
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
