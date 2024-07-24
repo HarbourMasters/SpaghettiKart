@@ -24,7 +24,7 @@ void handleMessageNumberPacket(const char *data) {
 }
 
 void handle_start_game() {
-    nAllPlayersLoaded = true;
+    gNetwork.playersLoaded = true;
     gIsGamePaused = false;
 }
 

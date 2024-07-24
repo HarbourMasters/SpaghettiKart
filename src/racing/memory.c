@@ -476,13 +476,13 @@ UNUSED u8 *func_802A841C(u8* arg0, s32 arg1, s32 arg2) {
     return temp_v0;
 }
 
-u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
+u8 *dma_textures(const char *texture, size_t arg1, size_t arg2) {
     u8 *temp_v0;
     void *temp_a0;
 
     u8* tex = (u8 *) LOAD_ASSET(texture);
 
-    temp_v0 = (u8 *) gNextFreeMemoryAddress;
+    temp_v0 = (u8 *) allocate_memory(arg2); // gNextFreeMemoryAddress;
     temp_a0 = temp_v0 + arg2;
     arg1 = ALIGN16(arg1);
     arg2 = ALIGN16(arg2);
@@ -491,7 +491,7 @@ u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
     // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, (int) 1);
     // mio0decode((u8 *) temp_a0, temp_v0);
     memcpy(temp_v0, tex, arg2);
-    gNextFreeMemoryAddress += arg2;
+    //gNextFreeMemoryAddress += arg2;
     return temp_v0;
 }
 

@@ -6670,12 +6670,13 @@ void func_80083080(void) {
 
 void func_8008311C(s32 objectIndex, s32 arg1) {
     Object *object;
+    Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
 
     init_texture_object(objectIndex, d_course_yoshi_valley_hedgehog_tlut, d_course_yoshi_valley_hedgehog, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     object->activeTexture = d_course_yoshi_valley_hedgehog;
-    object->vertex = common_vtx_hedgehog;
+    object->vertex = vtx;
     object->sizeScaling = 0.2f;
     object->itemDisplay = 0;
     func_80072488(objectIndex);
@@ -6731,7 +6732,8 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
         break;
     }
     if (gObjectList[objectIndex].itemDisplay == 0) {
-        gObjectList[objectIndex].vertex = common_vtx_hedgehog;
+        Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
+        gObjectList[objectIndex].vertex = vtx;
     } else {
         gObjectList[objectIndex].vertex = D_0D006130;
     }
@@ -6873,8 +6875,9 @@ void func_80083A94(s32 objectIndex) {
 }
 
 void func_80083B0C(s32 objectIndex) {
+    Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
     init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
-    gObjectList[objectIndex].vertex = common_vtx_hedgehog;
+    gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].itemDisplay = 0;
     func_80072488(objectIndex);

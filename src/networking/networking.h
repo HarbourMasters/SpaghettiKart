@@ -9,8 +9,6 @@
 #define NETWORK_MAX_PLAYERS 8
 #define NETWORK_USERNAME_LENGTH 32
 
-extern s32 gNetworkingEnabled;
-
 enum {
     PACKET_JOIN,
     PACKET_LEAVE,
@@ -27,6 +25,19 @@ enum {
 };
 
 typedef struct {
+    bool enabled; // Enables networking
+    TCPsocket tcpSocket;
+    IPaddress address;
+    Player *localPlayer;
+    bool isConnected;
+    bool loaded;
+    bool playersLoaded; // Are all players loaded?
+    bool gameStarted;
+} Network;
+
+extern Network gNetwork;
+
+typedef struct {
     char username[NETWORK_USERNAME_LENGTH];
     s32 slot;
     s32 isPlayer;
@@ -35,14 +46,10 @@ typedef struct {
     s32 hasAuthority;
 } NetworkClient;
 
-extern Player *nLocalPlayer;
-extern TCPsocket client;
-extern TCPsocket remoteSocket;
 extern NetworkClient dummyClient;
 extern NetworkClient *localClient;
 extern NetworkClient clients[];
 
-extern s32 nAllPlayersLoaded;
 
 /* Main Networking */
 void ConnectToServer(char* ip, uint16_t port, char *username);

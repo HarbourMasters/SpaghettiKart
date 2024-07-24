@@ -601,7 +601,7 @@ void race_logic_loop(void) {
             staff_ghosts_loop();
 
             // Wait for all racers to load
-            if (gNetworkingEnabled) {
+            if (gNetwork.enabled) {
                 network_all_players_loaded();
             }
 

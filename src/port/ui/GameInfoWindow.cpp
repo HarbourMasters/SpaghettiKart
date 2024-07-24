@@ -21,7 +21,7 @@ GameInfoWindow::~GameInfoWindow() {
 void GameInfoWindow::InitElement() {
 }
 
-s32 sReadyUpBool = false;
+static s32 sReadyUpBool = false;
 
 void GameInfoWindow::DrawElement() {
     const float framerate = ImGui::GetIO().Framerate;
@@ -53,7 +53,7 @@ void GameInfoWindow::DrawElement() {
             port = (uint16_t)atoi(token);
         }
 
-        gNetworkingEnabled = true;
+        gNetwork.enabled = true;
         ConnectToServer(ip, port, username);
     }
 

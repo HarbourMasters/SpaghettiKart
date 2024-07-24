@@ -6,12 +6,6 @@
 #include "code_800029B0.h"
 #include "menus.h"
 
-Player *nLocalPlayer = &gPlayerFive;
-
-s32 nAllPlayersLoaded = true;
-s32 nGameStarted = false;
-s32 localPlayerLoaded = false;
-
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI
 
@@ -37,12 +31,12 @@ void assign_player_control_types(void) {
     }
 
     // Get and Set player
-    // nLocalPlayer = &gPlayers[i];
+    // gNetwork.localPlayer = &gPlayers[i];
 }
 
 void set_course(const char* data) {
     if (data != NULL) {
-        gCurrentCourseId = 0; //*(s16 *) data;
+        gCurrentCourseId = 8; //*(s16 *) data;
     }
 }
 
@@ -115,7 +109,7 @@ void networking_start_session(const char *data) {
     gScreenModeSelection = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     gPlayerCount = 1;
-    gCurrentCourseId = 0;
+    gCurrentCourseId = 8;
     gDebugMenuSelection = DEBUG_MENU_EXITED;
     func_8009E1C0();
     func_800CA330(0x19);
@@ -123,13 +117,13 @@ void networking_start_session(const char *data) {
 
 // Wait for all players to load
 s32 network_all_players_loaded() {
-    if (nGameStarted) { return; }
-    if (!localPlayerLoaded) {
-        localPlayerLoaded = true;
-        send_int_packet(remoteSocket, PACKET_LOADED, true, sizeof(int));
+    if (gNetwork.gameStarted) { return; }
+    if (!gNetwork.loaded) {
+        gNetwork.loaded = true;
+        send_int_packet(gNetwork.tcpSocket, PACKET_LOADED, true, sizeof(int));
     }
-    if (nAllPlayersLoaded) {
-        nGameStarted = true;
+    if (gNetwork.playersLoaded) {
+        gNetwork.gameStarted = true;
         gIsGamePaused = false;
     } else {
         gIsGamePaused = true;

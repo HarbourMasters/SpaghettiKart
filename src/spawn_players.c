@@ -525,7 +525,7 @@ void spawn_players_gp_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
         spawn_player(gPlayerEight,   7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseKartAIPlayers[6], PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
-        if (gNetworkingEnabled) {
+        if (gNetwork.enabled) {
             spawn_network_players(arg0, arg1, arg2);
         } else {
             spawn_player(gPlayerTwo,     1, arg0[0], arg1[0] + 250.0f, arg2, 32768.0f, chooseKartAIPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
