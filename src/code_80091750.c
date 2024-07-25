@@ -3541,6 +3541,7 @@ Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
     return displayListHead;
 }
 
+//! @todo Need to call this somewhere on func_800A2D1C
 Gfx *draw_box_fill_wide_wrap(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
     return draw_box_fill_wide(displayListHead, ulx, uly, lrx, lry, 0, 0, 0, 0xFF);
 }
@@ -3601,6 +3602,7 @@ void func_80099184(MkTexture *arg0) {
     MkTexture *texture = arg0;
     UNUSED struct_8018E118_entry *thing;
     while (texture->textureData != NULL) {
+    u8 *textureData = (u8 *) LOAD_ASSET(texture->textureData);
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
@@ -3622,14 +3624,17 @@ void func_80099184(MkTexture *arg0) {
                 //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
               // * 2 here is just a guess
-              memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
+              size_t size = ResourceGetTexSizeByName(texture->textureData);
+              memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
             } else {
                 //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
                 // * 2 here is just a guess
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->height * texture->width * 2);
+                size_t size = ResourceGetTexSizeByName(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
             }
 
             thing = &D_8018E118[gNumD_8018E118Entries];
+            printf("test: %s\n",texture->textureData);
             thing->textureData = texture->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->offset = gD_8018E118TotalSize;
@@ -7188,15 +7193,15 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1FB0.s")
 void func_800A2D1C(struct_8018D9E0_entry *arg0) {
     switch (D_80164A28) {
     case 1:
-        gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, SCREEN_WIDTH - 1, 40);
-        gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xC7, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, SCREEN_WIDTH - 1, 40);
+        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xC7, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
         arg0->unk1C = 0x28;
         break;
     case 2:
         arg0->unk1C -= 2;
         if (arg0->unk1C > 0) {
-            gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-            gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+            gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
+            gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
         } else {
             arg0->type = 0;
         }
@@ -7207,8 +7212,8 @@ void func_800A2D1C(struct_8018D9E0_entry *arg0) {
         } else {
             arg0->unk1C -= 2;
             if (arg0->unk1C > 0) {
-                gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-                gDisplayListHead = draw_box_fill_wide_wrap(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
+                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
             } else {
                 arg0->type = 0;
             }

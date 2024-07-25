@@ -371,9 +371,6 @@ void func_80086C14(s32);
 void func_80086C6C(s32);
 void func_80086D80(void);
 
-s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr, size_t nbytes, OSMesgQueue *mq);
-s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);
-
 extern f32 D_800E43B0[];
 extern Vtx D_800E43F0[];
 extern Vtx D_800E4470[];

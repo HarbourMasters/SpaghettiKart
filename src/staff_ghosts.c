@@ -38,7 +38,7 @@ s16 D_80162DB8;
 u32 *D_80162DBC;
 
 u16 D_80162DC0;
-u32 D_80162DC4;
+StaffGhost *D_80162DC4;
 s32 D_80162DC8;
 s32 D_80162DCC;
 s32 D_80162DD0;
@@ -70,6 +70,7 @@ void func_80004EF0(void) {
     D_80162DA4 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
     //osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4, 0x4000, &gDmaMesgQueue);
+    memcpy(&D_80162DA4, D_80162DC4, 0x4000);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;
@@ -114,7 +115,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = (u32) &d_mario_raceway_staff_ghost;
+            D_80162DC4 = &d_mario_raceway_staff_ghost;
             D_80162DE4 = 0;
             break;
         case COURSE_ROYAL_RACEWAY:
@@ -126,7 +127,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = (u32) &d_royal_raceway_staff_ghost;
+            D_80162DC4 = &d_royal_raceway_staff_ghost;
             D_80162DE4 = 6;
             break;
         case COURSE_LUIGI_RACEWAY:
@@ -138,7 +139,7 @@ void set_staff_ghost(void) {
                 D_80162DD6 = 1;
                 D_80162DF4 = 1;
             }
-            D_80162DC4 = (u32) &d_luigi_raceway_staff_ghost;
+            D_80162DC4 = &d_luigi_raceway_staff_ghost;
             D_80162DE4 = 1;
             break;
         default:
