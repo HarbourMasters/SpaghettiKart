@@ -3694,43 +3694,137 @@ void consume_item(s32 playerId) {
     }
 }
 
-//! @todo Cleanup this function to use array access and struct if possible.
-u8 gen_random_item(s16 rank, s16 isCpu)
-{
-    u16 rand = random_int(100);
-    u8 *curve;
-    u8 randomItem;
+typedef struct {
+    u8 banana;               // ITEM_BANANA
+    u8 bananaBunch;          // ITEM_BANANA_BUNCH
+    u8 greenShell;          // ITEM_GREEN_SHELL
+    u8 tripleGreenShell;    // ITEM_TRIPLE_GREEN_SHELL
+    u8 redShell;            // ITEM_RED_SHELL
+    u8 tripleRedShell;      // ITEM_TRIPLE_RED_SHELL
+    u8 blueSpinyShell;      // ITEM_BLUE_SPINY_SHELL
+    u8 thunderbolt;         // ITEM_THUNDERBOLT
+    u8 fakeItemBox;         // ITEM_FAKE_ITEM_BOX
+    u8 star;                // ITEM_STAR
+    u8 boo;                 // ITEM_BOO
+    u8 mushroom;            // ITEM_MUSHROOM
+    u8 doubleMushroom;      // ITEM_DOUBLE_MUSHROOM
+    u8 tripleMushroom;      // ITEM_TRIPLE_MUSHROOM
+    u8 superMushroom;       // ITEM_SUPER_MUSHROOM
+} ItemProbabilities;
 
-    // sRandomItemIndex not initialized for further randomness?
-    sRandomItemIndex = ((u32) rand + (sRandomItemIndex + gControllerRandom) + gRaceFrameCounter) % 100U;
+// Each row corresponds to a rank, each column to an item
+ItemProbabilities grandPrixHumanProbabilityTable[] = {
+    { .banana = 30, .bananaBunch = 5, .greenShell = 30, .tripleGreenShell = 5, .redShell = 5, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 0, .bananaBunch = 5, .greenShell = 5, .tripleGreenShell = 10, .redShell = 15, .tripleRedShell = 20, .blueSpinyShell = 0, .thunderbolt = 5, .fakeItemBox = 5, .star = 5, .boo = 5, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 15, .superMushroom = 5 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 10, .redShell = 20, .tripleRedShell = 20, .blueSpinyShell = 0, .thunderbolt = 5, .fakeItemBox = 0, .star = 10, .boo = 0, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 20, .superMushroom = 10 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 15, .tripleRedShell = 20, .blueSpinyShell = 5, .thunderbolt = 10, .fakeItemBox = 0, .star = 15, .boo = 0, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 20, .superMushroom = 10 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 10, .tripleRedShell = 20, .blueSpinyShell = 5, .thunderbolt = 10, .fakeItemBox = 0, .star = 15, .boo = 0, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 25, .superMushroom = 10 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 0, .tripleRedShell = 20, .blueSpinyShell = 10, .thunderbolt = 15, .fakeItemBox = 0, .star = 20, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 25, .superMushroom = 10 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 0, .tripleRedShell = 20, .blueSpinyShell = 10, .thunderbolt = 20, .fakeItemBox = 0, .star = 30, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 10, .superMushroom = 10 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 0, .tripleRedShell = 20, .blueSpinyShell = 15, .thunderbolt = 20, .fakeItemBox = 0, .star = 30, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 5, .superMushroom = 10 },
+};
 
-    if (gModeSelection == VERSUS) {
-        switch (gPlayerCountSelection1) {
+ItemProbabilities grandPrixAIProbabilityTable[] = {
+    { .banana = 60, .bananaBunch = 0, .greenShell = 25, .tripleGreenShell = 0, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 50, .bananaBunch = 0, .greenShell = 25, .tripleGreenShell = 5, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 40, .bananaBunch = 0, .greenShell = 25, .tripleGreenShell = 10, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 35, .bananaBunch = 0, .greenShell = 25, .tripleGreenShell = 15, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 30, .bananaBunch = 0, .greenShell = 20, .tripleGreenShell = 20, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 5, .star = 5, .boo = 0, .mushroom = 20, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 30, .bananaBunch = 0, .greenShell = 20, .tripleGreenShell = 20, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 5, .star = 5, .boo = 0, .mushroom = 20, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 30, .bananaBunch = 0, .greenShell = 20, .tripleGreenShell = 20, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 0, .star = 10, .boo = 0, .mushroom = 20, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 25, .bananaBunch = 0, .greenShell = 20, .tripleGreenShell = 20, .redShell = 0, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 1, .fakeItemBox = 0, .star = 10, .boo = 0, .mushroom = 24, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+};
+
+ItemProbabilities versus2PlayerProbabilityTable[] = {
+    { .banana = 25, .bananaBunch = 10, .greenShell = 30, .tripleGreenShell = 5, .redShell = 5, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 0, .bananaBunch = 5, .greenShell = 0, .tripleGreenShell = 5, .redShell = 5, .tripleRedShell = 15, .blueSpinyShell = 5, .thunderbolt = 15, .fakeItemBox = 0, .star = 15, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 15, .superMushroom = 20 },
+};
+
+ItemProbabilities versus3PlayerProbabilityTable[] = {
+    { .banana = 35, .bananaBunch = 5, .greenShell = 30, .tripleGreenShell = 0, .redShell = 5, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 5, .bananaBunch = 5, .greenShell = 0, .tripleGreenShell = 10, .redShell = 15, .tripleRedShell = 15, .blueSpinyShell = 0, .thunderbolt = 5, .fakeItemBox = 5, .star = 5, .boo = 5, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 20, .superMushroom = 5 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 10, .tripleRedShell = 20, .blueSpinyShell = 10, .thunderbolt = 15, .fakeItemBox = 0, .star = 15, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 20, .superMushroom = 10 },
+};
+
+ItemProbabilities versus4PlayerProbabilityTable[] = {
+    { .banana = 35, .bananaBunch = 5, .greenShell = 30, .tripleGreenShell = 0, .redShell = 5, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 10, .star = 0, .boo = 5, .mushroom = 10, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 },
+    { .banana = 5, .bananaBunch = 5, .greenShell = 5, .tripleGreenShell = 10, .redShell = 15, .tripleRedShell = 15, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 5, .star = 5, .boo = 5, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 25, .superMushroom = 0 },
+    { .banana = 0, .bananaBunch = 5, .greenShell = 0, .tripleGreenShell = 5, .redShell = 10, .tripleRedShell = 15, .blueSpinyShell = 5, .thunderbolt = 10, .fakeItemBox = 5, .star = 10, .boo = 0, .mushroom = 5, .doubleMushroom = 0, .tripleMushroom = 25, .superMushroom = 5 },
+    { .banana = 0, .bananaBunch = 0, .greenShell = 0, .tripleGreenShell = 0, .redShell = 0, .tripleRedShell = 20, .blueSpinyShell = 10, .thunderbolt = 15, .fakeItemBox = 0, .star = 20, .boo = 0, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 25, .superMushroom = 10 },
+};
+
+ItemProbabilities battleProbabilityCurve[] = {
+    { .banana = 10, .bananaBunch = 5, .greenShell = 5, .tripleGreenShell = 20, .redShell = 20, .tripleRedShell = 0, .blueSpinyShell = 0, .thunderbolt = 0, .fakeItemBox = 15, .star = 20, .boo = 5, .mushroom = 0, .doubleMushroom = 0, .tripleMushroom = 0, .superMushroom = 0 }
+};
+
+void getProbabilityArray(const ItemProbabilities *probStruct, u8 *probArray) {
+    probArray[0] = probStruct->banana;
+    probArray[1] = probStruct->bananaBunch;
+    probArray[2] = probStruct->greenShell;
+    probArray[3] = probStruct->tripleGreenShell;
+    probArray[4] = probStruct->redShell;
+    probArray[5] = probStruct->tripleRedShell;
+    probArray[6] = probStruct->blueSpinyShell;
+    probArray[7] = probStruct->thunderbolt;
+    probArray[8] = probStruct->fakeItemBox;
+    probArray[9] = probStruct->star;
+    probArray[10] = probStruct->boo;
+    probArray[11] = probStruct->mushroom;
+    probArray[12] = probStruct->doubleMushroom;
+    probArray[13] = probStruct->tripleMushroom;
+    probArray[14] = probStruct->superMushroom;
+}
+
+/**
+ * New random item system uses chance based on percent
+ * Likely functionally equivallent to the old system but easier to modify
+ */
+u8 gen_random_item(s16 rank, s16 isCpu) {
+    #define PERCENTAGE_BASE 100
+    u16 rand = random_int(PERCENTAGE_BASE);
+    #undef PERCENTAGE_BASE
+    ItemProbabilities *distributionTable;
+    u8 randomItem = 0;
+    u8 cumulativeProbability = 0;
+
+    switch(gModeSelection) {
+        case GRAND_PRIX:
+            if (isCpu == false) {
+                distributionTable = &grandPrixHumanProbabilityTable[rank];
+            } else {
+                distributionTable = &grandPrixAIProbabilityTable[rank];
+            }
+            break;
+        case VERSUS:
+            switch (gPlayerCountSelection1) {
             case TWO_PLAYERS_SELECTED:
-                //curve = (u8 *) LOAD_ASSET(common_versus_2_player_item_curve);
+                distributionTable = &versus2PlayerProbabilityTable[rank];
                 break;
             case THREE_PLAYERS_SELECTED:
-                //curve = segmented_to_virtual((void *) common_versus_3_player_item_curve);
+                distributionTable = &versus3PlayerProbabilityTable[rank];
                 break;
             case FOUR_PLAYERS_SELECTED:
-                //curve = segmented_to_virtual((void *) common_versus_4_player_item_curve);
+                distributionTable = &versus4PlayerProbabilityTable[rank];
                 break;
-        }
-        randomItem = *((rank * 100) + curve + sRandomItemIndex);
+            }
+            break;
+        case BATTLE:
+            distributionTable = &battleProbabilityCurve[rank];
+            break;
 
-    } else if (gModeSelection == BATTLE) {
-        //curve = segmented_to_virtual((void *) common_battle_item_curve);
-        randomItem = curve[sRandomItemIndex];
-    } else { // GP Mode
-        if (isCpu == 0) {
-            //curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
-        }
-        else {
-            //curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
-        }
-        // *((rank * 100) + curve + sRandomItemIndex)
-        randomItem = ITEM_RED_SHELL;
     }
+
+    u8 itemProbabilities[ITEM_MAX-1];
+    getProbabilityArray(distributionTable, itemProbabilities);
+
+    for (int i = 0; i < ITEM_MAX-1; i++) {
+        cumulativeProbability += itemProbabilities[i];
+        if (rand < cumulativeProbability) {
+            randomItem = i + 1; // + 1 to account for the ITEM_NONE spot
+            break;
+        }
+    }
+
     return randomItem;
 }
 

@@ -312,7 +312,8 @@ enum ITEMS {
     /* 0x0C */ ITEM_MUSHROOM,
     /* 0x0D */ ITEM_DOUBLE_MUSHROOM,
     /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
-    /* 0x0F */ ITEM_SUPER_MUSHROOM
+    /* 0x0F */ ITEM_SUPER_MUSHROOM,
+    /* 0x0G */ ITEM_MAX,
 };
 
 enum KART_AI_BEHAVIOURS {
