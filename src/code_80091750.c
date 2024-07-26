@@ -3601,13 +3601,15 @@ void func_80099184(MkTexture *arg0) {
     UNUSED s32 temp_s3;
     MkTexture *texture = arg0;
     UNUSED struct_8018E118_entry *thing;
+    thing = &D_8018E118[0];
+
     while (texture->textureData != NULL) {
-    u8 *textureData = (u8 *) LOAD_ASSET(texture->textureData);
+    //u8 *textureData = (u8 *) LOAD_ASSET(texture->textureData);
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
-                var_a1 = 1;
+            if (D_8018E118[var_v0].textureData == (thing+var_v0)->textureData) {
+                var_a1 += 1;
                 break;
             }
         }
@@ -3624,28 +3626,28 @@ void func_80099184(MkTexture *arg0) {
                 //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
               // * 2 here is just a guess
-              size_t size = ResourceGetTexSizeByName(texture->textureData);
-              memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
+              size_t texSize = ResourceGetTexSizeByName(texture->textureData);
+              u8 *tex = (u8 *) LOAD_ASSET(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texSize);
             } else {
                 //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
                 // * 2 here is just a guess
-                size_t size = ResourceGetTexSizeByName(texture->textureData);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
+                u8 *tex2 = (u8 *) LOAD_ASSET(texture->textureData);
+                size_t texSize2 = ResourceGetTexSizeByName(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex2, texSize2);
             }
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            printf("test: %s\n",texture->textureData);
-            thing->textureData = texture->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            (thing+gNumD_8018E118Entries)->textureData = texture->textureData;
+            (thing+gNumD_8018E118Entries)->offset = gD_8018E118TotalSize;
 
             gD_8018E118TotalSize += (texture->height * texture->width);
-            gNumD_8018E118Entries += 1;
             gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gNumD_8018E118Entries += 1;
         }
         texture++;
-        break;
+        //break;
     }
+    printf("\n\nDONE LOADING FONT TEXTURE\n\n");
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -3674,7 +3676,10 @@ void func_80099394(MkTexture *arg0) {
         }
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
-                dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
+                u8 *tex = (u8 *) LOAD_ASSET(var_s1->textureData);
+                size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, (var_s1->height * var_s1->width) / 2);
+                //dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
             }
 
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3717,7 +3722,10 @@ void func_8009952C(MkTexture *arg0) {
         if (var_a1 == 0) {
             //dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
             //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height * 2);
+
+            u8 *tex = (u8 *) LOAD_ASSET(var_s1->textureData);
+            size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize],tex, texSize);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
@@ -3747,12 +3755,12 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
-    MkTexture *texture;
+    MkTexture *texture = arg0;
     struct_8018E118_entry *thing;
 
-    texture = segmented_to_virtual_dupe(arg0);
+    //printf("LOAD: %X\n",texture->textureData);
 
-    size_t siz = texture->width * texture->height;
+    //size_t siz = texture->width * texture->height;
     // for (size_t i = 0; i < siz; i++) {
     //     printf(" 0x%llX", texture->textureData[i]);
     // }
@@ -3793,7 +3801,9 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             case 1:                             /* switch 1 */
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 //printf("w: %d, h: %d", texture->width, texture->height);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+                size_t texSize = ResourceGetTexSizeByName(texture->textureData);
+                u8 *tex = (u8 *) LOAD_ASSET(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texSize);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
@@ -3803,12 +3813,18 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                     var_v0_2 = 1;
                 }
                 if (1) {}
+
+                //size_t size = ResourceGetTexSizeByName(texture->textureData);
+               // u8 *tex2 = (u8 *) LOAD_ASSET(texture->textureData);
                 //D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
             //tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+
+                                        u8 *tex2 = (u8 *) LOAD_ASSET(texture->textureData);
+                size_t texSize2 = ResourceGetTexSizeByName(texture->textureData);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex2, texSize2);
                 break;
             }
-
+            //u8 *tex3 = (u8 *) LOAD_ASSET(texture->textureData);
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = texture->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3924,7 +3940,10 @@ void func_80099AEC(void) {
         }
         //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         //u16 *asset = LOAD_ASSET(var_s1->texture->textureData);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
+
+        u8 *tex = (u8 *) LOAD_ASSET(var_s1->texture->textureData);
+        size_t texSize = ResourceGetTexSizeByName(var_s1->texture->textureData);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], tex, texSize);
 
         var_s1->texture = NULL;
         var_s1++;
@@ -3948,7 +3967,10 @@ void func_80099AEC(void) {
         }
         //mio0decode(D_8018D9B4 + sp60*4, (u8*)&D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         //u16 *asseta = LOAD_ASSET(var_s1->texture->textureData);
-        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], var_s1->texture->textureData, var_s1->texture->width * var_s1->texture->height * 2);
+
+        u8 *tex2 = (u8 *) LOAD_ASSET(var_s1->texture->textureData);
+        size_t texSize2 = ResourceGetTexSizeByName(var_s1->texture->textureData);
+        memcpy(&D_8018D9B0[D_8018E118[var_s1->unk_4].offset], tex2, texSize2);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0) break;
@@ -4079,8 +4101,11 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     }
     //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
     //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, arg0->height * arg0->width * 2);
-    D_8018E118[arg1].textureData = arg0->textureData;
+
+            u8 *tex = (u8 *) LOAD_ASSET(arg0->textureData);
+        size_t texSize = ResourceGetTexSizeByName(arg0->textureData);
+    memcpy(&D_8018D9B0[temp_v1], tex, texSize);
+    D_8018E118[arg1].textureData = tex;
 }
 
 void func_8009A2F0(struct_8018E0E8_entry *arg0) {
@@ -4308,7 +4333,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     color0 = &D_8018D9B0[D_8018E118[arg0].offset];
     color1 = &D_8018D9B0[D_8018E118[arg1].offset];
     for (var_t1 = 0; (u32) var_t1 < arg2; var_t1++) {
-        temp_a0 = *color0++;
+        temp_a0 = BSWAP16(*color0++);
         red   = (temp_a0 & 0xF800) >> 0xB;
         green = (temp_a0 & 0x7C0) >> 6;
         blue  = (temp_a0 & 0x3E) >> 1;
@@ -4318,7 +4343,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         newred   = (((((temp_t9             -   red) * arg3) >> 8) +   red) << 0xB);
         newgreen = (((((((temp_t9 * 7) / 8) - green) * arg3) >> 8) + green) <<   6);
         newblue  = (((((((temp_t9 * 6) / 8) -  blue) * arg3) >> 8) +  blue) <<   1);
-        *color1++ = newblue + newgreen + newred + alpha;
+        *color1++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4336,16 +4361,17 @@ void func_8009AB7C(s32 arg0) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < 0x4B000; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         newred   = temp_t9 << 0xB;
         newgreen = temp_t9 << 6;
         newblue  = temp_t9 << 1;
-        *color++ = newblue + newgreen + newred + alpha;
+        *color++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4366,14 +4392,15 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_v1 = 0; var_v1 != size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         temp_t9 += ((0x20 - temp_t9) * arg1) >> 8;
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
 }
 
@@ -4394,17 +4421,39 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_s0 = 0; var_s0 < (u32) size; var_s0++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x55;
-        green = ((*color & 0x7C0) >> 6) * 0x4B;
-        blue  = ((*color & 0x3E) >> 1) * 0x5F;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x55;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x4B;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x5F;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         temp_t9 = sp48[temp_t9] * 32.0f;
         if (temp_t9 >= 0x20) {
             temp_t9 = 0x1F;
         }
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
+    }
+}
+
+
+void init_red_shell_texturea(void) {
+    s16 *tlut = (s16 *) LOAD_ASSET(common_tlut_green_shell);
+    s16 *red_shell_texture = NULL;
+    s16 *green_shell_texture = (s16 *) tlut;
+    s16 color_pixel, red_color, green_color, blue_color, alpha_color;
+    s32 i;
+    
+    for (i = 0; i < 256; i++) {
+        color_pixel = BSWAP16(*green_shell_texture);
+        red_color   = BSWAP16(color_pixel & 0xF800);
+        green_color = BSWAP16(color_pixel & 0x7C0);
+        blue_color  = BSWAP16(color_pixel & 0x3E);
+        alpha_color = BSWAP16(color_pixel & 0x1);
+
+        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green to red
+        green_shell_texture++;
+        red_shell_texture++;
     }
 }
 
@@ -4422,16 +4471,17 @@ void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < screen_size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  (color_pixel & 0x1);
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         newred   = ((temp_t9 * arg2) >> 8) << 0xB;
         newgreen = ((temp_t9 * arg3) >> 8) << 6;
         newblue  = ((temp_t9 * arg4) >> 8) << 1;
-        *color++ = newred + newgreen + newblue + alpha;;
+        *color++ = BSWAP16(newred + newgreen + newblue + alpha);
     }
 }
 
