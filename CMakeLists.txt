@@ -555,7 +555,11 @@ CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/torch
 )
 
 ExternalProject_Get_Property(torch install_dir)
-set(TORCH_EXECUTABLE ${install_dir}/src/Torch-build/$<CONFIGURATION>/torch)
+if (MSVC)
+  set(TORCH_EXECUTABLE ${install_dir}/src/torch-build/$<CONFIGURATION>/torch)
+else()
+  set(TORCH_EXECUTABLE ${install_dir}/src/torch-build/torch)
+endif()
 message(STATUS "Torch executable path: ${TORCH_EXECUTABLE}")
 
 add_custom_target(

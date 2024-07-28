@@ -1,7 +1,7 @@
 :config:
   external_files:
-    - "yamls/us\\startup_logo.yml"
-    - "yamls/us\\common_data.yml"
+    - "yamls/us/startup_logo.yml"
+    - "yamls/us/common_data.yml"
   segments:
     - [0x02, 0x12AAE0]
     - [0x0D, 0x132B50]

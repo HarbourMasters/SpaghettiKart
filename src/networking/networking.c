@@ -3,7 +3,6 @@
 #include <string.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_net.h>
-#include <windows.h>
 
 #include "networking.h"
 #include "main.h"
@@ -28,8 +27,7 @@ Network gNetwork = {
 // Global variables
 
 
-HANDLE sNetworkThread;
-DWORD threadID;
+SDL_Thread *sNetworkThread;
 bool threadStarted = false;
 
 int isNetworkingThreadEnabled = true;
@@ -78,29 +76,20 @@ void networking_init(char* ip, uint16_t port) {
 
     // Ensure no thread is already running
     if (sNetworkThread != NULL) {
-        WaitForSingleObject(sNetworkThread, INFINITE);
-        CloseHandle(sNetworkThread);
+        SDL_WaitThread(sNetworkThread, NULL);
         sNetworkThread = NULL;
     }
-
-    sNetworkThread = CreateThread(
-        NULL,                   // default security attributes
-        0,                      // default stack size
-        networking_loop,      // thread function
-        NULL,                   // argument to thread function
-        0,                      // default creation flags
-        &threadID               // receive thread identifier
-    );
+    sNetworkThread = SDL_CreateThread(networking_loop, "NetworkingThread", NULL);
 
     if (sNetworkThread == NULL) {
-        printf("CreateThread failed: %d\n", GetLastError());
+        printf("SDL_CreateThread failed: %s\n", SDL_GetError());
         exit(EXIT_FAILURE);
     }
 
     //sNetworkThread = std::thread(&GameInteractor::ReceiveFromServer, this);
 }
 
-DWORD WINAPI networking_loop(LPVOID arg) {
+int networking_loop(void* data) {
     while (isNetworkingThreadEnabled) {
         while (!gNetwork.isConnected && isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
             printf("[SpaghettiOnline] Attempting to make connection to server...\n");
@@ -207,7 +196,7 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
             handleMessagePacket(data);
             break;
         case PACKET_LOADED:
-            handle_start_game(data);
+            handle_start_game(); // handle_start_game(data);
             break;
         case PACKET_PLAYER:
             replicate_player(data);

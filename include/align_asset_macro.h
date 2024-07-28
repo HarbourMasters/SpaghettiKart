@@ -1,5 +1,7 @@
 #pragma once
 
+uint8_t GameEngine_OTRSigCheck(char* imgData);
+
 #if defined(_WIN32)
     #define ALIGN_ASSET(x) __declspec(align(x))
 #else

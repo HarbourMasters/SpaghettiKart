@@ -5,6 +5,8 @@
 #include "networking.h"
 #include "code_800029B0.h"
 #include "menus.h"
+#include "audio/external.h"
+#include "code_80091750.h"
 
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI

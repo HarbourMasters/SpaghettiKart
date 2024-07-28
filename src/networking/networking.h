@@ -4,7 +4,6 @@
 #include <libultraship.h>
 #include <common_structs.h>
 #include <SDL2/SDL_net.h>
-#include <windows.h>
 
 #define NETWORK_MAX_PLAYERS 8
 #define NETWORK_USERNAME_LENGTH 32
@@ -56,8 +55,8 @@ void ConnectToServer(char* ip, uint16_t port, char *username);
 void networking_init(char* ip, uint16_t port);
 void networking_update(void);
 void networking_ready_up(bool);
-void networking_cleanup(void);
-DWORD WINAPI networking_loop(LPVOID);
+void networking_cleanup(SDLNet_SocketSet);
+int networking_loop(void*);
 void handleReceivedData(const char *, size_t);
 void set_username(const char *username);
 
@@ -77,5 +76,7 @@ void handleJoinPacket(const char *data);
 void handleLeavePacket(const char *data);
 void handleMessagePacket(const char *data);
 
+void handle_start_game(void);
+void send_str_packet(TCPsocket, uint8_t, const char *);
 
 #endif // NETWORKING_H

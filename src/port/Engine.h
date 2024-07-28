@@ -37,4 +37,9 @@ class GameEngine {
 void GameEngine_ProcessGfxCommands(Gfx* commands);
 float GameEngine_GetAspectRatio();
 uint8_t GameEngine_OTRSigCheck(char* imgData);
+float OTRGetAspectRatio(void);
+float OTRGetDimensionFromLeftEdge(float v);
+float OTRGetDimensionFromRightEdge(float v);
+int16_t OTRGetRectDimensionFromLeftEdge(float v);
+int16_t OTRGetRectDimensionFromRightEdge(float v);
 #endif

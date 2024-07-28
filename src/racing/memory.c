@@ -25,6 +25,8 @@
 #include <assert.h>
 #include <course_offsets.h>
 
+#include <stdio.h>
+
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 

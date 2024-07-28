@@ -109,3 +109,8 @@ torch.hash.yml
 build*
 cmake*
 .idea
+
+# the game
+default.sav
+imgui.ini
+spaghettify.cfg.json

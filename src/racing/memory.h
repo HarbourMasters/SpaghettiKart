@@ -94,6 +94,7 @@ void  unpack_tile_load_sync(Gfx*, u8*, s8);
 void  unpack_texture_on(Gfx*, u8*, s8);
 void  unpack_texture_off(Gfx*, u8*, s8);
 void load_course(s32);
+uintptr_t set_segment_base_addr_x64(s32, void *);
 
 extern u8 _other_texturesSegmentRomStart[];
 

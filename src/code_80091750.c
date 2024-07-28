@@ -40,6 +40,9 @@
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
+#include "stdio.h"
+#include "port/Engine.h"
+
 u16 *D_8018D9B0;
 u8 *D_8018D9B4;
 u8 *D_8018D9B8;

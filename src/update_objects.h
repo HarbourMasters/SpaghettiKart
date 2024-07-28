@@ -104,7 +104,7 @@ void func_80074478(s32);
 void func_800744A0(s32);
 void func_800744CC(void);
 void func_80074510(uintptr_t, void*, size_t);
-void func_800745C8(s32, s32);
+void func_800745C8(s32, uintptr_t);
 void func_8007466C(s32, uintptr_t);
 void func_80074704(s32, uintptr_t);
 u8  *func_80074790(s32, u8*);
