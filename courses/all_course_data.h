@@ -16,7 +16,6 @@
 #include "courses/rainbow_road/course_data.h"
 #include "courses/yoshi_valley/course_data.h"
 #include "courses/bowsers_castle/course_data.h"
-#include "courses/royal_raceway/course_data.h"
 #include "courses/sherbet_land/course_data.h"
 #include "courses/wario_stadium/course_data.h"
 void gSPDisplayList(Gfx* pkt, Gfx* dl);
