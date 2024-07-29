@@ -3,7 +3,7 @@
 #include <defines.h>
 #include <segments.h>
 #include <mk64.h>
-#include <courses/royal_raceway/course_displaylists.h>
+#include <assets/royal_raceway_displaylists.h>
 
 #include "code_80281780.h"
 #include "memory.h"
