@@ -59,8 +59,7 @@ s8 D_8018D9D8;
 s8 D_8018D9D9;
 struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
-UNUSED u8 code_80091750_bss_padding0[8];
+struct_8018E060_entry D_8018E060[D_8018E060_SIZE + 1];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 gD_8018E118TotalSize;
 struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
@@ -1596,6 +1595,7 @@ void func_80092258(void) {
     }
 }
 
+//! @bug vtx overflow from idx + 36 in this func
 void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 i;
@@ -10137,30 +10137,45 @@ escape:
  * reasoning on the original author(s) part.
 **/
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (&D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
+    return NULL;
+	
+	
+//	struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
 
     // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//    while(true);
+//escape:
+//    return entry;
 }
 
 struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (&D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
-
     return NULL;
-escape:
-    return entry;
+
+//    struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
+
+//    return NULL;
+//escape:
+//    return entry;
 }
 
 s32 func_800AAF70(s32 arg0) {
