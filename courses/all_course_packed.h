@@ -25,7 +25,6 @@
 #include "courses/rainbow_road/course_displaylists.h"
 #include "courses/yoshi_valley/course_displaylists.h"
 #include "courses/bowsers_castle/course_displaylists.h"
-#include "courses/royal_raceway/course_displaylists.h"
 #include "courses/sherbet_land/course_displaylists.h"
 #include "courses/wario_stadium/course_displaylists.h"
 
