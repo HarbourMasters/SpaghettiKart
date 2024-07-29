@@ -26,7 +26,6 @@ extern CourseVtx d_course_dks_jungle_parkway_vertex[];
 extern CourseVtx d_course_rainbow_road_vertex[];
 extern CourseVtx d_course_yoshi_valley_vertex[];
 extern CourseVtx d_course_bowsers_castle_vertex[];
-extern CourseVtx d_course_royal_raceway_vertex[];
 extern CourseVtx d_course_sherbet_land_vertex[];
 extern CourseVtx d_course_wario_stadium_vertex[];
 
