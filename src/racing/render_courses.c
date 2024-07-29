@@ -23,6 +23,8 @@
 #include <assets/mario_raceway_displaylists.h>
 #include <assets/luigi_raceway_data.h>
 #include <assets/luigi_raceway_displaylists.h>
+#include <assets/royal_raceway_data.h>
+#include <assets/royal_raceway_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
