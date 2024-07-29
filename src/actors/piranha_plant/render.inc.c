@@ -3,6 +3,7 @@
 #include <libultra/gbi.h>
 #include "courses/royal_raceway/course_data.h"
 #include <assets/mario_raceway_data.h>
+#include <assets/royal_raceway_data.h>
 
 /**
  * @brief Renders the piranha plant actor.
