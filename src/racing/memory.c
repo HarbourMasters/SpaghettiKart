@@ -21,6 +21,9 @@
 #include <assets/luigi_raceway_displaylists.h>
 #include <assets/luigi_raceway_vertices.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/royal_raceway_displaylists.h>
+#include <assets/royal_raceway_vertices.h>
+#include <assets/royal_raceway_data.h>
 
 #include <assert.h>
 #include <course_offsets.h>
