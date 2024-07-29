@@ -10,17 +10,7 @@
 #include "math_util.h"
 #include <stdlib.h>
 
-/*** Data ***/
-Ambient D_800E8680 = {{
-    {31, 31, 31}, 0,
-    {31, 31, 31}, 0,
-}};
-
-Light D_800E8688 = {{
-    {255, 255, 255}, 0,
-    {255, 255, 255}, 0,
-    { 40,  40,  20}, 0,
-}};
+Lights1 D_800E8680 = gdSPDefLights1(31, 31, 31, 255, 255, 255, 40, 40, 20);
 
 /*** BSS ****/
 s16 D_8018EDB0;
@@ -173,8 +163,8 @@ void func_800B0004(void) {
     UNUSED u32 pad[0x5];
     s32 i, j;
 
-    gSPLight(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_800E8688), LIGHT_1);
-    gSPLight(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_800E8680), LIGHT_2);
+    gSPLight(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_800E8680.l[0]), LIGHT_1);
+    gSPLight(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_800E8680.a), LIGHT_2);
     gSPNumLights(gDisplayListHead++, NUMLIGHTS_1);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH);
     gDPSetCombineLERP(gDisplayListHead++, PRIMITIVE, 0, SHADE, 0, 0, 0, 0, SHADE, PRIMITIVE, 0, SHADE, 0, 0, 0, 0, SHADE);
