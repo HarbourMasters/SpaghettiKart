@@ -1492,12 +1492,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = NULL,
         .dlSize = 0
     }, {
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_royal_raceway_dl_0,
+        .vtx = d_course_royal_raceway_vertex,
+        .vtxSize = 8306,
+        .textures = royal_raceway_textures,
+        .displaylists = d_course_royal_raceway_packed_dls,
+        .dlSize = 5670
     }, {
         .data = d_course_luigi_raceway_dl_0,
         .vtx = d_course_luigi_raceway_vertex,
