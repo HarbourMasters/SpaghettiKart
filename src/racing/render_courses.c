@@ -847,23 +847,23 @@ void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_royal_raceway_packed_dl_B030
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700B030));
+        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x0700B030)));
     }
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_royal_raceway_packed_dl_A648
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700A648));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x0700A648)));
 
-    render_course_segments((uintptr_t) royal_raceway_dls, arg0);
+    render_course_segments(royal_raceway_dls, arg0);
 
     // d_course_royal_raceway_packed_dl_11A8
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070011A8));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x070011A8)));
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_royal_raceway_packed_dl_8A0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070008A0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x070008A0)));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
@@ -1527,7 +1527,8 @@ void func_80295D88(void) {
                                      255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:
-            parse_course_displaylists((uintptr_t) d_course_royal_raceway_addr);
+            TrackSectionsI *section7 = (TrackSectionsI *) LOAD_ASSET(d_course_royal_raceway_addr);
+            parse_course_displaylists(section7);
             func_80295C6C();
             D_8015F8E4 = -60.0f;
             break;
@@ -1696,9 +1697,9 @@ void func_802966A0(void) {
                 D_802B87BC = 0xFF;
             }
             // d_course_royal_raceway_packed_dl_A6A8
-            find_and_set_tile_size((uintptr_t)0x0700A6A8, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(0x0700A6A8), 0, D_802B87BC);
             // d_course_royal_raceway_packed_dl_A648
-            find_and_set_tile_size((uintptr_t)0x0700A648, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(0x0700A648), 0, D_802B87BC);
             break;
         case COURSE_DK_JUNGLE:
             D_802B87BC += 2;
