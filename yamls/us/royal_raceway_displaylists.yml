@@ -1,7 +1,7 @@
 :config:
   vram:
     addr: 0x800E8700 # not used for anything
-    offset: 0x8F74C0
+    offset: 0x8FAFF0
   no_compression: true
   header:
     code:
@@ -13,5 +13,5 @@
 d_course_royal_raceway_packed_dls:
   symbol: d_course_royal_raceway_packed_dls
   type: blob
-  offset: 0x8F74C0
-  size: 0x7173
+  offset: 0x8FAFF0
+  size: 0x3643

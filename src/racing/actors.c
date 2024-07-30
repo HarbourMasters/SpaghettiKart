@@ -800,8 +800,8 @@ UNUSED void func_8029AE14() {
 
 #include "actors/falling_rock/render.inc.c"
 
-void spawn_piranha_plants(struct ActorSpawnData *spawnData) {
-    struct ActorSpawnData *temp_s0 = spawnData;
+void spawn_piranha_plants(const char *spawnData) {
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     struct PiranhaPlant *temp_v1;
     UNUSED s32 pad;
     Vec3f startingPos;
@@ -858,7 +858,7 @@ void spawn_palm_trees(struct ActorSpawnData *spawnData) {
 #include "actors/falling_rock/update.inc.c"
 
 // Trees, cacti, shrubs, etc.
-void spawn_foliage(struct ActorSpawnData *arg0) {
+void spawn_foliage(const char *actor) {
     UNUSED s32 pad[4];
     Vec3f position;
     Vec3f velocity;
@@ -868,7 +868,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
     struct Actor *temp_s0;
     struct ActorSpawnData *var_s3;
 
-    var_s3 = arg0;
+    var_s3 = (struct ActorSpawnData*) LOAD_ASSET(actor);
     vec3f_set(velocity, 0.0f, 0.0f, 0.0f);
     rotation[0] = 0x4000;
     rotation[1] = 0;
@@ -937,13 +937,13 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
     }
 }
 
-void spawn_all_item_boxes(struct ActorSpawnData *spawnData) {
+void spawn_all_item_boxes(const char *spawnData) {
     s16 temp_s1;
     f32 temp_f0;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
-    struct ActorSpawnData *temp_s0 = spawnData;
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     //struct ItemBox *itemBox;
 
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) { return; }
@@ -1028,13 +1028,13 @@ void spawn_course_actors(void) {
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
-        struct ActorSpawnData *a_d_course_mario_raceway_piranha_plant_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_piranha_plant_spawns);
-        struct ActorSpawnData *a_d_course_mario_raceway_item_box_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_item_box_spawns);
+        //struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
+        //struct ActorSpawnData *a_d_course_mario_raceway_piranha_plant_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_piranha_plant_spawns);
+        //struct ActorSpawnData *a_d_course_mario_raceway_item_box_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_item_box_spawns);
 
-        spawn_foliage(a_d_course_mario_raceway_tree_spawns);
-        spawn_piranha_plants(a_d_course_mario_raceway_piranha_plant_spawns);
-        spawn_all_item_boxes(a_d_course_mario_raceway_item_box_spawns);
+        spawn_foliage(d_course_mario_raceway_tree_spawns);
+        spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
+        spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
@@ -1076,7 +1076,7 @@ void spawn_course_actors(void) {
         spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
-        spawn_foliage(d_course_luigi_raceway_tree_spawn);
+        //spawn_foliage(d_course_luigi_raceway_tree_spawn);
         spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
