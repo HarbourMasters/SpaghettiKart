@@ -1529,7 +1529,6 @@ u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
     return textures;
 }
 
-void load_luigi_raceway(void);
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
 
@@ -1539,8 +1538,6 @@ void load_course(s32 courseId) {
     course_texture *textures = gNewCourseTable[courseId].textures;
     char* displaylists = gNewCourseTable[courseId].displaylists;
     size_t dlSize = gNewCourseTable[courseId].dlSize;
-
-    testaaa = (Gfx *) LOAD_ASSET(data);
 
     // Convert course vtx to vtx
     CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(vtxData);
