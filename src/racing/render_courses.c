@@ -916,7 +916,10 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
         }
 
         u16 *fb = (u16 *) gSegmentTable[5] + 0xF800;
-        FB_WriteFramebufferSliceToCPU(gDisplayListHead, fb, true);
+
+        //FB_WriteFramebufferSliceToCPU(gDisplayListHead, fb, true);
+        //FB_DrawFromFramebuffer(gDisplayListHead, 0, fb, true);
+        //FB_CopyToFramebuffer(gDisplayListHead, 0, fb, false, NULL);
         /**
          * The jumbo television screen is split into six sections each section is copied one at a time.
          * This is done to fit within the n64's texture size requirements; 64x32

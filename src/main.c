@@ -1205,7 +1205,6 @@ void thread5_game_loop(void) {
     gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3
     gNmiUnknown6 = &pAppNmiBuffer[28]; // 4  u8's, tracking number of Battle mode wins by player 1/2/3/4
     rendering_init();
-    FB_CreateFramebuffers();
     read_controllers();
     func_800C5CB8();
 }
@@ -1224,6 +1223,7 @@ void thread5_iteration(void){
     }
     profiler_log_thread5_time(THREAD5_START);
     config_gfx_pool();
+    FB_CreateFramebuffers();
     read_controllers();
     game_state_handler();
     end_master_display_list();
