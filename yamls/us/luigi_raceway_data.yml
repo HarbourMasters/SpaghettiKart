@@ -808,7 +808,7 @@ d_course_luigi_raceway_tree_spawn:
   symbol: d_course_luigi_raceway_tree_spawn
   type: mk64:spawn_data
   count: 21
-  offset: 0xFEB0
+  offset: 0xFE80
 d_course_luigi_raceway_addr:
   symbol: d_course_luigi_raceway_addr
   type: mk64:track_sections

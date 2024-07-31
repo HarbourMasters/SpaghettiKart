@@ -1076,7 +1076,7 @@ void spawn_course_actors(void) {
         spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
-        //spawn_foliage(d_course_luigi_raceway_tree_spawn);
+        spawn_foliage(d_course_luigi_raceway_tree_spawn);
         spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
