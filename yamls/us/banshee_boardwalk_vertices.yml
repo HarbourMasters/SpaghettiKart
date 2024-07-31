@@ -1,7 +1,6 @@
 :config:
   segments:
     - [0x0F, 0x8B9630]
-  no_compression: true
   header:
     code:
       - '#include <libultraship.h>'

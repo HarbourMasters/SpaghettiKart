@@ -8,6 +8,7 @@
 #include <decode.h>
 #include <mk64.h>
 #include <stubs.h>
+#include "racing/framebuffer_effects.h"
 
 #include "networking/networking.h"
 
@@ -1204,6 +1205,7 @@ void thread5_game_loop(void) {
     gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3
     gNmiUnknown6 = &pAppNmiBuffer[28]; // 4  u8's, tracking number of Battle mode wins by player 1/2/3/4
     rendering_init();
+    FB_CreateFramebuffers();
     read_controllers();
     func_800C5CB8();
 }

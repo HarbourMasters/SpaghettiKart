@@ -32,6 +32,8 @@ class GameEngine {
     float OTRGetDimensionFromRightEdge(float v);
     int16_t OTRGetRectDimensionFromLeftEdge(float v);
     int16_t OTRGetRectDimensionFromRightEdge(float v);
+    uint32_t OTRGetGameRenderWidth();
+uint32_t OTRGetGameRenderHeight();
 };
 #else
 void GameEngine_ProcessGfxCommands(Gfx* commands);
@@ -42,4 +44,6 @@ float OTRGetDimensionFromLeftEdge(float v);
 float OTRGetDimensionFromRightEdge(float v);
 int16_t OTRGetRectDimensionFromLeftEdge(float v);
 int16_t OTRGetRectDimensionFromRightEdge(float v);
+uint32_t OTRGetGameRenderWidth(void);
+uint32_t OTRGetGameRenderHeight(void);
 #endif
