@@ -59,8 +59,7 @@ s8 D_8018D9D8;
 s8 D_8018D9D9;
 struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
-UNUSED u8 code_80091750_bss_padding0[8];
+struct_8018E060_entry D_8018E060[D_8018E060_SIZE + 1];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 gD_8018E118TotalSize;
 struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
@@ -1596,6 +1595,7 @@ void func_80092258(void) {
     }
 }
 
+//! @bug vtx overflow from idx + 36 in this func
 void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 i;
@@ -4309,7 +4309,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     color0 = &D_8018D9B0[D_8018E118[arg0].offset];
     color1 = &D_8018D9B0[D_8018E118[arg1].offset];
     for (var_t1 = 0; (u32) var_t1 < arg2; var_t1++) {
-        temp_a0 = *color0++;
+        temp_a0 = BSWAP16(*color0++);
         red   = (temp_a0 & 0xF800) >> 0xB;
         green = (temp_a0 & 0x7C0) >> 6;
         blue  = (temp_a0 & 0x3E) >> 1;
@@ -4319,7 +4319,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         newred   = (((((temp_t9             -   red) * arg3) >> 8) +   red) << 0xB);
         newgreen = (((((((temp_t9 * 7) / 8) - green) * arg3) >> 8) + green) <<   6);
         newblue  = (((((((temp_t9 * 6) / 8) -  blue) * arg3) >> 8) +  blue) <<   1);
-        *color1++ = newblue + newgreen + newred + alpha;
+        *color1++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4337,16 +4337,17 @@ void func_8009AB7C(s32 arg0) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < 0x4B000; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         newred   = temp_t9 << 0xB;
         newgreen = temp_t9 << 6;
         newblue  = temp_t9 << 1;
-        *color++ = newblue + newgreen + newred + alpha;
+        *color++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4367,14 +4368,15 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_v1 = 0; var_v1 != size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         temp_t9 += ((0x20 - temp_t9) * arg1) >> 8;
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
 }
 
@@ -4395,17 +4397,18 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_s0 = 0; var_s0 < (u32) size; var_s0++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x55;
-        green = ((*color & 0x7C0) >> 6) * 0x4B;
-        blue  = ((*color & 0x3E) >> 1) * 0x5F;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x55;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x4B;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x5F;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         temp_t9 = sp48[temp_t9] * 32.0f;
         if (temp_t9 >= 0x20) {
             temp_t9 = 0x1F;
         }
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
 }
 
@@ -4423,16 +4426,17 @@ void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < screen_size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  (color_pixel & 0x1);
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         newred   = ((temp_t9 * arg2) >> 8) << 0xB;
         newgreen = ((temp_t9 * arg3) >> 8) << 6;
         newblue  = ((temp_t9 * arg4) >> 8) << 1;
-        *color++ = newred + newgreen + newblue + alpha;;
+        *color++ = BSWAP16(newred + newgreen + newblue + alpha);
     }
 }
 
@@ -10135,30 +10139,45 @@ escape:
  * reasoning on the original author(s) part.
 **/
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (&D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
+    return NULL;
+	
+	
+//	struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
 
     // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//    while(true);
+//escape:
+//    return entry;
 }
 
 struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (&D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
-
     return NULL;
-escape:
-    return entry;
+
+//    struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
+
+//    return NULL;
+//escape:
+//    return entry;
 }
 
 s32 func_800AAF70(s32 arg0) {

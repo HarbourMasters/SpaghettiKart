@@ -59,7 +59,7 @@ typedef struct {
 } struct_8018E0E8_entry; //size = 0x8
 
 typedef struct {
-    /* 0x00 */ u64 *textureData; // This should be interpreted as a segmented address
+    /* 0x00 */ const char *textureData; // This should be interpreted as a segmented address
     /**
      * Its hard to tell what exactly what this is meant to be,
      * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
@@ -426,7 +426,7 @@ extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
+extern struct_8018E060_entry D_8018E060[];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 extern s32 gD_8018E118TotalSize;
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];

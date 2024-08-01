@@ -103,7 +103,7 @@ u16 D_80163318[12];
 u16 D_80163330[10];
 u16 D_80163344[2];
 u16 D_80163348[2];
-u16 D_8016334C[2];
+u16 D_8016334C[8]; // Increased from 2 to 8 to prevent array overflow.
 u16 gSpeedKartAIBehaviour[12];
 s32 D_80163368[4];
 s32 D_80163378;
