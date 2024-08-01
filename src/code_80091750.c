@@ -10140,7 +10140,7 @@ escape:
 **/
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
     for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
-        if (&D_8018D9E0[i].type == arg0) {
+        if (D_8018D9E0[i].type == arg0) {
             return &D_8018D9E0[i];
         }
     }
@@ -10162,7 +10162,7 @@ struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
 
 struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
     for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
-        if (&D_8018D9E0[i].type == arg0) {
+        if (D_8018D9E0[i].type == arg0) {
             return &D_8018D9E0[i];
         }
     }
