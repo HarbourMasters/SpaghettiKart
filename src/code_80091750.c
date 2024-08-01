@@ -3595,60 +3595,49 @@ void *segmented_to_virtual_dupe_2(const void *addr) {
 #include <assets/player_selection.h>
 
 #ifdef NON_MATCHING
-// https://decomp.me/scratch/NAZ12
-// Register allocation nonsense
-void func_80099184(MkTexture *arg0) {
-    u16 var_a1_2;
-    s32 var_v0;
-    s32 var_a1;
-    UNUSED s32 temp_s3;
-    MkTexture *texture = arg0;
-    UNUSED struct_8018E118_entry *thing;
-    while (texture->textureData != NULL) {
-    u8 *textureData = (u8 *) LOAD_ASSET(texture->textureData);
-        var_a1 = 0;
-        for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
-                var_a1 = 1;
-                break;
-            }
-        }
-        if (var_a1 == 0) {
-            if (texture->type == 3) {
-                if (texture->size != 0) {
-                    var_a1_2 = texture->size;
-                } else {
-                    var_a1_2 = 0x1000;
-                }
-                if (var_a1_2 % 8) {
-                    var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
-                }
-                //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
-                //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-              // * 2 here is just a guess
-              size_t size = ResourceGetTexSizeByName(texture->textureData);
-              memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
-            } else {
-                //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
-                // * 2 here is just a guess
-                size_t size = ResourceGetTexSizeByName(texture->textureData);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
-            }
-
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            printf("test: %s\n",texture->textureData);
-            thing->textureData = texture->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
-
-            gD_8018E118TotalSize += (texture->height * texture->width);
-            gNumD_8018E118Entries += 1;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
-        }
-        texture++;
+void func_80099184(MkTexture *arg0)
+{
+  u16 var_a1_2;
+  s32 var_v0;
+  s32 var_a1;
+  MkTexture *var_s1;
+  struct_8018E118_entry *thing = &D_8018E118[0];
+  var_s1 = segmented_to_virtual_dupe(arg0);
+  while (var_s1->textureData != NULL) {
+    var_a1 = 0;
+    for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
+      if ( var_s1->textureData == (thing+var_v0)->textureData) {
+        var_a1 = 1;
         break;
+      }
     }
+
+    if (var_a1 == 0) {
+      if (var_s1->type == 3) {
+        if (var_s1->size != 0) {
+          var_a1_2 = var_s1->size;
+        } else {
+          var_a1_2 = 0x1000;
+        }
+        if (var_a1_2 % 8) {
+          var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
+        }
+        //dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
+        //mio0decode(D_8018D9B4, &D_8018D9B0[gD_8018E118TotalSize]);
+        memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_a1_2);
+      } else {
+        //dma_copy_base_729a30(var_s1->textureData, (var_s1->height * var_s1->width) * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+        memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height*2);
+      }
+      thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+      thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
+      gD_8018E118TotalSize += var_s1->height * var_s1->width;
+      gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+      gNumD_8018E118Entries += 1;
+    }
+    var_s1++;
+  }
+
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -3670,14 +3659,17 @@ void func_80099394(MkTexture *arg0) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0^0].textureData == (*var_s1).textureData) {
+            if (D_8018E118[var_v0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
         }
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
-                dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
+                //dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
+                u8 *tex = LOAD_ASSET(var_s1->textureData);
+                size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texSize);
             }
 
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3745,6 +3737,7 @@ void func_8009969C(MkTexture *arg0) {
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/hwAAp
+// Load background?
 void func_800996BC(MkTexture *arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
@@ -3796,7 +3789,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             case 1:                             /* switch 1 */
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 //printf("w: %d, h: %d", texture->width, texture->height);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+                u8 *tex = (u8 *) LOAD_ASSET(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texture->width * texture->height * 2);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
@@ -3808,7 +3802,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                 if (1) {}
                 //D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
             //tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+            u8 *tex2 = (u8 *) LOAD_ASSET(texture->textureData);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex2, texture->width * texture->height * 2);
                 break;
             }
 
@@ -3845,6 +3840,7 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
         }
         //dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
         //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        u8 *tex = LOAD_ASSET(temp_v0->textureData);
         memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, temp_v0->textureData, temp_v0->width * temp_v0->height * 2);
         temp_v0++;
     }
@@ -4068,7 +4064,7 @@ void func_80099EC4(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")
 #endif
 
-void func_8009A238(MkTexture *arg0, s32 arg1) {
+UNUSED void func_8009A238(MkTexture *arg0, s32 arg1) {
     s32 var_a3;
     s32 temp_v1;
     u64 *sp24;
@@ -4082,7 +4078,9 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     }
     //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
     //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, arg0->height * arg0->width * 2);
+    //u8 *tex = (u8 *) LOAD_ASSET(arg0->textureData);
+    size_t texSize = ResourceGetTexSizeByName(arg0->textureData);
+    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, texSize);
     D_8018E118[arg1].textureData = arg0->textureData;
 }
 
