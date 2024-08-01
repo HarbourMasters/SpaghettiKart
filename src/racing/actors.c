@@ -1028,10 +1028,6 @@ void spawn_course_actors(void) {
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        //struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
-        //struct ActorSpawnData *a_d_course_mario_raceway_piranha_plant_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_piranha_plant_spawns);
-        //struct ActorSpawnData *a_d_course_mario_raceway_item_box_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_item_box_spawns);
-
         spawn_foliage(d_course_mario_raceway_tree_spawns);
         spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
         spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
