@@ -1078,7 +1078,6 @@ void displaylist_unpack(Gfx *gfx, u8 *data, uintptr_t arg2) {
 
     while(true) {
 
-
         // Seek to the next byte
         opcode = packed_dl[sPackedSeekPosition++];
 

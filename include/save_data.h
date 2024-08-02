@@ -1,7 +1,7 @@
 #ifndef SAVE_DATA_H
 #define SAVE_DATA_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 typedef struct {
     // 6 little endian 3-byte records.

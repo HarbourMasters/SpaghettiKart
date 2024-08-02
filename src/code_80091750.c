@@ -70,7 +70,8 @@ struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 s32 gCycleFlashMenu;
 s8 D_8018E7AC[5];
 u32 D_8018E7B8[5];
-u32 D_8018E7D0[5];
+u32 D_8018E7D0[4];
+s32 D_8018E7E0;
 struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
 struct UnkStruct_8018E7E8 D_8018E810[D_8018E810_SIZE];
 s8 D_8018E838[4]; // Import to C was required for matching.

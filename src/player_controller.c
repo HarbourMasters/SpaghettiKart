@@ -951,7 +951,6 @@ void func_8002934C(Player *player, Camera *camera, s8 screenId, s8 playerId) {
         || (player->effects & 0x800000)
         || (player->effects & 0x20000)
         || (player->unk_044 & 0x800)) {
-
         if ((player->animFrameSelector[screenId]) >= 0x14) {
             player->animFrameSelector[screenId] = 0;
         }
@@ -1029,7 +1028,6 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[FRONT_LEFT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[FRONT_LEFT].pos[2] = player->pos[2] + sp8C[2];
     process_collision(player, &player->tyres[FRONT_LEFT], sp80[0], sp80[1], sp80[2]);
-
     sp8C[0] = (-var_f12) + 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
@@ -1041,7 +1039,6 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[FRONT_RIGHT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[FRONT_RIGHT].pos[2] = player->pos[2] + sp8C[2];
     process_collision(player, &player->tyres[FRONT_RIGHT], sp80[0], sp80[1], sp80[2]);
-
     sp8C[0] = var_f12 - 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
@@ -1053,7 +1050,6 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[BACK_LEFT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[BACK_LEFT].pos[2] = player->pos[2] + sp8C[2];
     process_collision(player, &player->tyres[BACK_LEFT], sp80[0], sp80[1], sp80[2]);
-
     sp8C[0] = (-var_f12) + 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
@@ -1065,7 +1061,6 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[BACK_RIGHT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[BACK_RIGHT].pos[2] = player->pos[2] + sp8C[2];
     process_collision(player, &player->tyres[BACK_RIGHT], sp80[0], sp80[1], sp80[2]);
-
     if (!(player->effects & 8)) {
         a = (player->tyres[BACK_LEFT].baseHeight + player->tyres[FRONT_LEFT].baseHeight) / 2;
         move_f32_towards(&player->unk_230, a, 0.5f);
@@ -2918,7 +2913,6 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 screenId, s8
     player->velocity[0] = sp68[0];
     player->velocity[1] = sp68[1];
     player->velocity[2] = sp68[2];
-
     D_80165070[playerId][0] = sp68[0];
     D_80165070[playerId][1] = sp68[1];
     D_80165070[playerId][2] = sp68[2];

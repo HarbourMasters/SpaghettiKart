@@ -5135,7 +5135,6 @@ void func_80066BAC(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     //Vtx **A_800E8900 = (Vtx **) LOAD_ASSET(D_800E8900);
 
     if ((player->unk_258[arg2].unk_01C == 1) && (player->unk_258[arg2].unk_038 != 0x00FF)) {
-
         if (player->collision.surfaceDistance[2] >= 300.0f) {
             spDC[1] = player->pos[1] + 5.0f;
         } else {

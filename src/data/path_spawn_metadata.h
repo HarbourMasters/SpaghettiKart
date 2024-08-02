@@ -2,7 +2,7 @@
 #define PATH_SPAWN_METADATA_H
 
 #include "waypoints.h"
-#include "common_structs.h"
+#include <common_structs.h>
 #include <assets/common_data.h>
 #include "include/bomb_kart.h"
 

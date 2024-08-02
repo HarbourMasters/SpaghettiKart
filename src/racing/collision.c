@@ -1234,7 +1234,6 @@ u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f
     u16 flags = 0;
     s32 sectionX;
     s32 sectionZ;
-
     u16 i;
 
     collision->unk30 = 0;
@@ -1974,7 +1973,7 @@ void generate_collision_grid(void) {
                         gCollisionGrid[index].triangle = gNumCollisionTriangles;
                     }
                     gCollisionGrid[index].numTriangles++;
-                     gCollisionIndices[gNumCollisionTriangles] = (u16) i;
+                    gCollisionIndices[gNumCollisionTriangles] = (s16) i;
                     gNumCollisionTriangles++;
                 }
             }
@@ -2001,7 +2000,7 @@ extern u32 D_8015F58C;
 u32 numTimes = 0;
 
 /**
- * Recursive search and set for vertex data
+ * Generate via a recursive search and set for vertex data.
  */
 void generate_collision_mesh(Gfx *addr, s8 surfaceType, u16 sectionId) {
     s32 opcode;
@@ -2042,7 +2041,7 @@ void generate_collision_mesh(Gfx *addr, s8 surfaceType, u16 sectionId) {
             //     printf("  w0 0x%llX", lo);
             //     printf("  w1 0x%llX\n", hi);
 
-            generate_collision_mesh((Gfx *) (hi), surfaceType, sectionId);
+            generate_collision_mesh((Gfx *) hi, surfaceType, sectionId);
 
         } else if (opcode == (G_VTX << 24)) {
             set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);

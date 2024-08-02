@@ -1086,13 +1086,13 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 screenId) {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, playerId, screenId, screenId, 0);
-            //mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80.arraySize8[0][arg3][playerId]);
+            //mio0decode((u8 *) &D_802DFB80[0][screenId][playerId], (u8 *) &D_802BFB80.arraySize8[0][screenId][playerId]);
             memcpy(&D_802BFB80.arraySize8[0][screenId][playerId], &D_802DFB80[0][screenId][playerId], 0x1000);
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
-            //mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][arg3 - 2][playerId + 4]);
+            //mio0decode((u8 *) &D_802DFB80[0][screenId - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
             memcpy(&D_802BFB80.arraySize8[0][screenId - 2][playerId + 4], &D_802DFB80[0][screenId - 2][playerId + 4], 0x1000);
         }
 

@@ -787,10 +787,10 @@ void audio_init(void) {
     gAudioLoadLock = 0;
 
     // for (i = 0; i < gAudioHeapSize / 8; i++) {
-    //     ((u64 *) D_803B71B0)[i] = 0;
+    //     ((u64 *) gAudioHeap)[i] = 0;
     // }
 
-    memset(D_803B71B0, 0, gAudioHeapSize);
+    memset(gAudioHeap, 0, gAudioHeapSize);
 
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.

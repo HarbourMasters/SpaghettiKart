@@ -74,7 +74,7 @@ s16 gPlaceItemBoxes = 1;
 // Technically a pointer to an array, but declaring it so creates regalloc issues.
 CollisionTriangle *gCollisionMesh;
 u16 *gCollisionIndices;
-u16 gCollisionMeshCount;
+u16 gCollisionMeshCount; // Number of entries in gCollisionMesh
 u16 gNumCollisionTriangles;
 u32 D_8015F58C;
 

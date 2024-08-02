@@ -65,7 +65,7 @@ struct SPTask *create_next_audio_frame_task(void) {
 
     OSMesg audioMesg; // <-- new
     audioMesg.ptr = (void*)gAudioFrameCount; // <-- new
-    //osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, 0); <-- original
+    //osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, OS_MESG_NOBLOCK); <-- original
     osSendMesg(D_800EA3A8, audioMesg, OS_MESG_NOBLOCK); // <-- new
 
     gAudioTaskIndex ^= 1;

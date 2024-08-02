@@ -1,7 +1,7 @@
 #ifndef SPLINE_H
 #define SPLINE_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
 These are some very good videos about splines/Bezier curves in general

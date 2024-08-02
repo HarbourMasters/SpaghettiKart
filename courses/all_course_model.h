@@ -2,7 +2,7 @@
 #define ALL_COURSE_MODEL_H
 
 #include "macros.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 /** WARNING!!!
  * This header file has the sizes of the vertex array's hard coded.

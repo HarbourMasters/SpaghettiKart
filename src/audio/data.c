@@ -441,4 +441,4 @@ u16 D_803B7192; // unconfirmed
 u32 gAudioRandom;
 s32 gAudioErrorFlags;
 u32 D_803B71A0[4]; // unconfirmed
-ALIGNED8 u8 D_803B71B0[4]; // unconfirmed
+ALIGNED8 u8 gAudioHeap[4]; // unconfirmed

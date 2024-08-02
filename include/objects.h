@@ -2,7 +2,7 @@
 #define OBJECTS_H
 
 #include "spline.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 #define OBJECT_LIST_SIZE 0x226
 #define SOME_OBJECT_INDEX_LIST_SIZE 32

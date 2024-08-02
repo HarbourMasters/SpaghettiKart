@@ -1,7 +1,7 @@
 #ifndef WAYPOINTS_H
 #define WAYPOINTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 typedef struct {
     /* 0x00 */ s16 posX;

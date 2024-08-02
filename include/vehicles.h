@@ -1,7 +1,7 @@
 #ifndef VEHICLES_H
 #define VEHICLES_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 #define NUM_1P_PASSENGER_CARS     4
 #define NUM_2P_PASSENGER_CARS     1

@@ -195,8 +195,8 @@ void func_800B90E0(struct SoundAllocPool *pool) {
 
 // inspired by sound_init_main_pools in sm64
 void sound_init_main_pools(s32 arg0) {
-    sound_alloc_pool_init(&gAudioInitPool, &D_803B71B0, arg0);
-    sound_alloc_pool_init(&gAudioSessionPool, D_803B71B0 + arg0, gAudioHeapSize - arg0);
+    sound_alloc_pool_init(&gAudioInitPool, &gAudioHeap, arg0);
+    sound_alloc_pool_init(&gAudioSessionPool, gAudioHeap + arg0, gAudioHeapSize - arg0);
 }
 
 // inspired by session_pools_init in sm64

@@ -1210,7 +1210,8 @@ void thread5_game_loop(void) {
 }
 
 void thread5_iteration(void){
-    // func_800CB2C4();
+    // while(true) {
+    //    func_800CB2C4();
 
     if (GfxDebuggerIsDebugging()) {
         Graphics_PushFrame(gGfxPool->gfxPool);

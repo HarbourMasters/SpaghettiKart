@@ -1519,7 +1519,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
 
     btnAndStick = (controller->buttonPressed) | (controller->stickPressed);
     if (!gEnableDebugMode && btnAndStick & CONT_START) {
-        btnAndStick |= CONT_A;
+        btnAndStick |= A_BUTTON;
     }
 
     if (!func_800B4520()) {
@@ -1528,14 +1528,14 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
         {
             saved_selection = gCharacterGridSelections[arg1];
             if (saved_selection == 0) {
-                if (btnAndStick & CONT_B) {
+                if (btnAndStick & B_BUTTON) {
                     func_8009E208();
                     play_sound2(0x49008002);
                 }
                 return;
             }
             // L800B3630
-            if (btnAndStick & CONT_B) {
+            if (btnAndStick & B_BUTTON) {
                 if (D_8018EDE8[arg1]) {
                     D_8018EDE8[arg1] = false;
                     play_sound2(SOUND_MENU_GO_BACK);

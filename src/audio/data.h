@@ -57,7 +57,7 @@ extern u16 D_803B7192; // unconfirmed
 extern u32 gAudioRandom;
 extern s32 gAudioErrorFlags;
 extern u32 D_803B71A0[]; // unconfirmed
-extern u8 D_803B71B0[]; // unconfirmed
+extern u8 gAudioHeap[]; // unconfirmed
 
 extern struct ReverbSettingsEU sReverbSettings[];
 extern struct AudioSessionSettingsEU gAudioSessionPresets[];

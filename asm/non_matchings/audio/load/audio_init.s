@@ -34,8 +34,8 @@ glabel audio_init
 .L800BC128:
 /* 0BCD28 800BC128 19E0000C */  blez  $t7, .L800BC15C
 /* 0BCD2C 800BC12C 3C04803B */   lui   $a0, %hi(gGfxSPTaskOutputBufferSize) # 0x803b
-/* 0BCD30 800BC130 3C18803B */  lui   $t8, %hi(D_803B71B0) # 0x803b
-/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, %lo(D_803B71B0) # 0x71b0
+/* 0BCD30 800BC130 3C18803B */  lui   $t8, %hi(gAudioHeap) # 0x803b
+/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, %lo(gAudioHeap) # 0x71b0
 /* 0BCD38 800BC138 000FC8C0 */  sll   $t9, $t7, 3
 /* 0BCD3C 800BC13C 03221821 */  addu  $v1, $t9, $v0
 .L800BC140:
