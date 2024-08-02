@@ -1523,7 +1523,7 @@ u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
     for (size_t i = 0; i < length; i++) {
         //u8 *tex = (u8 *) LOAD_ASSET(textureList[i]);
         size_t texSize = ResourceGetTexSizeByName(textureList[i]);
-        printf("\nTEX SIZE: %X\n\n", texSize);
+        //printf("\nTEX SIZE: %X\n\n", texSize);
         memcpy(&textures[offset], textureList[i], texSize);
         offset += texSize;
     }
