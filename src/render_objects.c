@@ -4207,7 +4207,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     D_80165878 = A_800E46F8[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
-    func_80044BF8(common_texture_particle_spark[arg1], 0x00000020, 0x00000020);
+    func_80044BF8(common_texture_particle_spark[arg1], 32, 32);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
