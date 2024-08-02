@@ -1401,7 +1401,8 @@ void func_80091B78(void) {
         D_8018EDF5 = 5;
         D_8018EDF6 = 10;
         if (osEepromProbe(&gSIEventMesgQueue) != 0) {
-            load_save_data();
+            // save data disabled for now due to array overflow
+            //load_save_data();
         }
         if (func_80091D74() != 0) {
             gMenuSelection = CONTROLLER_PAK_MENU;
@@ -1638,12 +1639,18 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
         }
         //vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
 
+
         temp_v1 = (*arg1 * 2) + 2;
 
+        //! @bug vtx array overflow temp fix
+        if ((vtx+temp_v1) >= 54) {
+            return;
+        }
         temp_t6 = (vtx+temp_v1)->v.cn[0] * (256 - *arg2);
         temp_t9 = (vtx+temp_v1)->v.cn[1] * (256 - *arg2);
         temp_t7 = (vtx+temp_v1)->v.cn[2] * (256 - *arg2);
         temp_t8_2 = (vtx+temp_v1)->v.cn[3] * (256 - *arg2);
+
 
         temp_v1 = (((*arg1 * 2) + 2) % 6) + 2;
         a = ((vtx+temp_v1)->v.cn[0] * *arg2);
@@ -1651,6 +1658,10 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
         c = ((vtx+temp_v1)->v.cn[2] * *arg2);
         d = ((vtx+temp_v1)->v.cn[3] * *arg2);
 
+        //! @bug vtx array overflow temp fix
+        if ((vtx+idx) >= 54) {
+            return;
+        }
 
         (vtx+idx)->v.cn[0] = (temp_t6 + a) / 256;
         (vtx+idx)->v.cn[1] = (temp_t9 + b) / 256;
@@ -3606,7 +3617,7 @@ void func_80099184(MkTexture *arg0)
   while (var_s1->textureData != NULL) {
     var_a1 = 0;
     for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-      if ( var_s1->textureData == (thing+var_v0)->textureData) {
+      if (var_s1->textureData == (thing+var_v0)->textureData) {
         var_a1 = 1;
         break;
       }
@@ -3624,10 +3635,13 @@ void func_80099184(MkTexture *arg0)
         }
         //dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
         //mio0decode(D_8018D9B4, &D_8018D9B0[gD_8018E118TotalSize]);
-        memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_a1_2);
+        //size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+        //memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, texSize);
+        strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
       } else {
         //dma_copy_base_729a30(var_s1->textureData, (var_s1->height * var_s1->width) * 2, &D_8018D9B0[gD_8018E118TotalSize]);
-        memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height*2);
+        //memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height*2);
+        strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
       }
       thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
       thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
@@ -3744,7 +3758,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
     s32 var_a1;
     u8 var_v0_2;
     MkTexture *texture;
-    struct_8018E118_entry *thing;
+    struct_8018E118_entry *thing = &D_8018E118[0];
 
     texture = segmented_to_virtual_dupe(arg0);
 
@@ -3759,8 +3773,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
     while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
+            if (texture->textureData == (thing+var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3807,10 +3820,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                 break;
             }
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->textureData = texture->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing[gNumD_8018E118Entries].textureData = texture->textureData;
+            thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
             gD_8018E118TotalSize += texture->height * texture->width;
             gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
