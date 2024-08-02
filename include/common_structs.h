@@ -33,7 +33,7 @@ typedef enum {
 
 /***  types.h  ***/
 
-ty struct {
+typedef struct {
     /* 0x0 */ s16 waypointStart;
     /* 0x2 */ s16 waypointEnd;
     /* 0x4 */ s32 type;
