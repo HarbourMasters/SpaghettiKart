@@ -10093,19 +10093,27 @@ void func_800AAE18(struct_8018D9E0_entry *arg0) {
  * is found.
 **/
 struct_8018D9E0_entry *func_800AAE68(void) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    s32 thing = gPlayerCount - 1;
-
-    for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
-        if ((thing + 0xB) == entry->type) {
-            goto escape;
+    s32 count = gPlayerCount - 1;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == (count + 0xB)) {
+            return &D_8018D9E0[i];
         }
     }
+    printf("Error: func_800AAE68 returned a null value when searching id 0x%X", count+0xB);
+    return NULL;
+//     struct_8018D9E0_entry *entry = D_8018D9E0;
+//     s32 thing = gPlayerCount - 1;
 
-    // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//     for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+//         if ((thing + 0xB) == entry->type) {
+//             goto escape;
+//         }
+//     }
+
+//     // Something VERY wrong has occurred
+//     while(true);
+// escape:
+//     return entry;
 }
 
 /**
@@ -10114,18 +10122,27 @@ escape:
  * is found.
 **/
 struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
 
-    for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
-        if ((arg0 + 0x2B) == entry->type) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == (arg0 + 0x2B)) {
+            return &D_8018D9E0[i];
         }
     }
+    printf("Error: func_800AAEB4 returned a null value when searching id 0x%X", arg0+0x2B);
+    return NULL;
 
-    // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//     struct_8018D9E0_entry *entry = D_8018D9E0;
+
+//     for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+//         if ((arg0 + 0x2B) == entry->type) {
+//             goto escape;
+//         }
+//     }
+
+//     // Something VERY wrong has occurred
+//     while(true);
+// escape:
+//     return entry;
 }
 
 /**
@@ -10144,6 +10161,7 @@ struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
             return &D_8018D9E0[i];
         }
     }
+    printf("Error: find_8018D9E0_entry_dupe returned a null value when searching id 0x%X", arg0);
     return NULL;
 	
 	
@@ -10166,6 +10184,9 @@ struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
             return &D_8018D9E0[i];
         }
     }
+    // No printf here as returning null seems to be normal game logic
+    //printf("Error: find_8018D9E0_entry returned a null value when searching id 0x%X",
+    //             arg0);
     return NULL;
 
 //    struct_8018D9E0_entry *entry = D_8018D9E0;
