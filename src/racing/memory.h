@@ -42,6 +42,7 @@ struct AllocOnlyPool {
 extern f32 vtxStretchY;
 
 u8 *load_lakitu_textures_x64(const char** textureList, size_t length);
+u8 *load_lakitu_tlut_x64(const char**textureList, size_t length);
 void *get_next_available_memory_addr(uintptr_t);
 uintptr_t set_segment_base_addr(s32, void*);
 void *get_segment_base_addr(s32);

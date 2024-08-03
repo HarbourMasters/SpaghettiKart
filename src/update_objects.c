@@ -730,7 +730,7 @@ void func_80073404(s32 objectIndex, u8 arg1, u8 arg2, Vtx *arg3) {
   gObjectList[objectIndex].status = 0;
 }
 
-void init_texture_object(s32 objectIndex, u8 *texture, u8* arg2, u8 arg3, u16 arg4) {
+void init_texture_object(s32 objectIndex, u8 *texture, const char **arg2, u8 arg3, u16 arg4) {
     gObjectList[objectIndex].tlutList = texture;
     gObjectList[objectIndex].textureList = arg2;
     gObjectList[objectIndex].textureWidth = arg3;
@@ -762,7 +762,17 @@ void update_neon_texture(s32 objectIndex) {
 
 void func_80073514(s32 objectIndex) {
     gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
-    gObjectList[objectIndex].activeTexture = gObjectList[objectIndex].textureList + (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * gObjectList[objectIndex].itemDisplay);
+    printf("Before %s\n", gObjectList[objectIndex].textureList);
+    
+    const char* texture = *++gObjectList[objectIndex].textureList;
+    
+    if (texture == NULL) {
+        
+    }
+
+    gObjectList[objectIndex].activeTexture = texture;// + (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * gObjectList[objectIndex].itemDisplay);
+    
+    printf("After %s\n",gObjectList[objectIndex].textureList);
 }
 
 UNUSED void func_80073568() {
@@ -1201,20 +1211,26 @@ void func_800744CC(void) {
     }
 }
 
-void func_80074510(uintptr_t devAddr, void *vaddr, size_t nbytes) {
-    u8 *texture = (u8 *) LOAD_ASSET(devAddr); 
+uintptr_t devaddr2;
+
+void func_80074510(const char* devAddr, const char *vaddr, size_t nbytes) {
+    //u8 *texture = (u8 *) LOAD_ASSET(devAddr); 
     func_800744CC();
     //osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, devAddr, vaddr, nbytes, &gDmaMesgQueue);
-    memcpy(vaddr, texture, nbytes);
+    //u8 *tex = (u8 *) LOAD_ASSET(devAddr);
+    //memcpy(vaddr, tex, nbytes);
+    //devaddr2 = devAddr;
+    printf("LOADING LAKITU: %s\n", devAddr);
+    vaddr = devAddr;
     D_8018D224 = 1;
 }
 
-void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
-    func_80074510((uintptr_t) (arg0), arg1, arg2 * arg3);
+void func_80074574(const char *devAddr, const char *vaddr, u16 width, u16 height) {
+    func_80074510(devAddr, vaddr, width * height);
 }
 
 //! @todo arg1 should likely be a u8 *
-void func_800745C8(s32 objectIndex, uintptr_t arg1) {
+void func_800745C8(s32 objectIndex, const char **lakituTexturePtr) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1228,28 +1244,28 @@ void func_800745C8(s32 objectIndex, uintptr_t arg1) {
             phi_a1 = 1;
         }
 
-        gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
+        gObjectList[objectIndex].activeTexture = *gObjectList[objectIndex].textureList;
         func_800744A0(objectIndex);
     }
 }
 
-void func_8007466C(s32 objectIndex, uintptr_t arg1) {
+void func_8007466C(s32 objectIndex, const char **lakituTexturePtr) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
-        gObjectList[objectIndex].activeTLUT = (u8*) ((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7)) ;
+        gObjectList[objectIndex].activeTLUT = (u8*) ((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7));
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
-        gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
+        gObjectList[objectIndex].activeTexture = *gObjectList[objectIndex].textureList;
         func_800744A0(objectIndex);
     }
 }
 
-void func_80074704(s32 objectIndex, uintptr_t arg1) {
+void func_80074704(s32 objectIndex, const char **lakituTexturePtr) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1259,12 +1275,13 @@ void func_80074704(s32 objectIndex, uintptr_t arg1) {
         if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
-        gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
+        gObjectList[objectIndex].activeTexture = *gObjectList[objectIndex].textureList;
         func_800744A0(objectIndex);
     }
 }
 
-u8 *func_80074790(s32 objectIndex, u8 *arg1) {
+// Since the buffer only holds two textures, phi_a2 chooses which spot to load into
+const char *func_80074790(s32 objectIndex, const char **lakituTexturePtr) {
     s32 phi_a2;
 
     gObjectList[objectIndex].status ^= 4;
@@ -1272,32 +1289,32 @@ u8 *func_80074790(s32 objectIndex, u8 *arg1) {
     if ((gObjectList[objectIndex].status & 4) != 0) {
         phi_a2 = 1;
     }
-    return (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a2) + arg1;
+    return lakituTexturePtr[phi_a2];
 }
 
-void func_800747F0(s32 objectIndex, u8 *arg1) {
-    u8 *sp24;
+void func_800747F0(s32 objectIndex, const char **lakituTexturePtr) {
+    const char *nextTexture;
     if (gObjectList[objectIndex].itemDisplay != gObjectList[objectIndex].unk_0D3) {
-        sp24 = gObjectList[objectIndex].textureList + (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * gObjectList[objectIndex].itemDisplay);
-        func_80074574(sp24, (void *) func_80074790(objectIndex, arg1), gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
+        nextTexture = *++gObjectList[objectIndex].textureList;// + (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * gObjectList[objectIndex].itemDisplay);
+        func_80074574(nextTexture, func_80074790(objectIndex, lakituTexturePtr), gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
         gObjectList[objectIndex].unk_0D3 = gObjectList[objectIndex].itemDisplay;
         func_80074478(objectIndex);
     }
 }
 
-void func_80074894(s32 objectIndex, u8 *arg1) {
-    func_800747F0(objectIndex, arg1);
-    func_800745C8(objectIndex, (uintptr_t)arg1);
+void func_80074894(s32 objectIndex, const char **lakituTexturePtr) {
+    func_800747F0(objectIndex, lakituTexturePtr);
+    func_800745C8(objectIndex, lakituTexturePtr);
 }
 
-void func_800748C4(s32 objectIndex, u8 *arg1) {
-    func_800747F0(objectIndex, arg1);
-    func_8007466C(objectIndex, (uintptr_t)arg1);
+void func_800748C4(s32 objectIndex, const char **lakituTexturePtr) {
+    func_800747F0(objectIndex, lakituTexturePtr);
+    func_8007466C(objectIndex, lakituTexturePtr);
 }
 
-void func_800748F4(s32 objectIndex, u8 *arg1) {
-    func_800747F0(objectIndex, arg1);
-    func_80074704(objectIndex, (uintptr_t)arg1);
+void func_800748F4(s32 objectIndex, const char **lakituTexturePtr) {
+    func_800747F0(objectIndex, lakituTexturePtr);
+    func_80074704(objectIndex, lakituTexturePtr);
 }
 
 void func_80074924(s32 objectIndex) {
@@ -2921,7 +2938,7 @@ void func_80079114(s32 objectIndex, s32 playerId, s32 arg2) {
     if (gObjectList[objectIndex].state >= 2) {
         if ((u8)gObjectList[objectIndex].unk_0D8 == 1) {
             if (playerId == 0) {
-                func_80074894(objectIndex, D_8018C028);
+                func_80074894(objectIndex, gLakituTexturePtr);
                 return;
             }
             a = gIndexLakituList[0];
@@ -2932,13 +2949,13 @@ void func_80079114(s32 objectIndex, s32 playerId, s32 arg2) {
         }
         switch (arg2) {
             case 0:
-                func_800748F4(objectIndex, D_8018C028);
+                func_800748F4(objectIndex, gLakituTexturePtr);
                 break;
             case 1:
-                func_800748C4(objectIndex, D_8018C028);
+                func_800748C4(objectIndex, gLakituTexturePtr);
                 break;
             case 2:
-                func_80074894(objectIndex, D_8018C028);
+                func_80074894(objectIndex, gLakituTexturePtr);
                 break;
         }
     }
@@ -2986,7 +3003,7 @@ void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 playerId) {
     //u8 *tlut = (u8 *) LOAD_ASSET(common_tlut_lakitu_countdown);
     //u8 *lights = (u8 *) LOAD_ASSET(gTextureLakituNoLights1);
 
-    init_texture_object(objectIndex, (u8 *) load_lakitu_textures_x64(common_tlut_lakitu_countdown, ARRAY_COUNT(common_tlut_lakitu_countdown)), load_lakitu_textures_x64(sLakituTextures, ARRAY_COUNT(sLakituTextures)), 56, (u16) 72);
+    init_texture_object(objectIndex, (u8 *) load_lakitu_tlut_x64(common_tlut_lakitu_countdown, ARRAY_COUNT(common_tlut_lakitu_countdown)), sLakituTextures, 56, (u16) 72);
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_lakitu);
     gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].sizeScaling = 0.15f;
@@ -3093,12 +3110,12 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
 
     func_800791F0(objectIndex, playerIndex);
 
-    u8 *tlut = (u8 *) LOAD_ASSET(common_tlut_lakitu_checkered_flag);
+    u8 *tex = (u8 *) LOAD_ASSET(common_tlut_lakitu_checkered_flag);
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_also_lakitu);
 
-    init_texture_object(objectIndex, (u8*) tlut, load_lakitu_textures_x64(sLakituCheckeredList, ARRAY_COUNT(sLakituCheckeredList)), 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) tex, sLakituCheckeredList, 0x48U, (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = *gObjectList[objectIndex].textureList;
     object->vertex = vtx;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3177,11 +3194,10 @@ static const char *sLakituFishingTextures[] = {
 
 void init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
 
-    u8 *tlut = (u8 *) LOAD_ASSET(common_tlut_lakitu_fishing);
     Vtx *vtx = (Vtx *) LOAD_ASSET(D_0D005F30);
 
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, (u8*) tlut, load_lakitu_textures_x64(sLakituFishingTextures, ARRAY_COUNT(sLakituFishingTextures)), 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8*) load_lakitu_tlut_x64(common_tlut_lakitu_fishing, ARRAY_COUNT(common_tlut_lakitu_fishing)), sLakituFishingTextures, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3362,9 +3378,9 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
 
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_also_lakitu);
 
-    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_second_lap, load_lakitu_textures_x64(sLakituSecondLapTextures, ARRAY_COUNT(sLakituSecondLapTextures)), 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) load_lakitu_tlut_x64(common_tlut_lakitu_second_lap, ARRAY_COUNT(common_tlut_lakitu_second_lap)), sLakituSecondLapTextures, 0x48U, (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = *gObjectList[objectIndex].textureList;
     object->vertex = vtx;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3420,9 +3436,9 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_also_lakitu);
 
-    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_final_lap, load_lakitu_textures_x64(sLakituFinalLapTextures, ARRAY_COUNT(sLakituFinalLapTextures)), 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) load_lakitu_tlut_x64(common_tlut_lakitu_final_lap, ARRAY_COUNT(common_tlut_lakitu_final_lap)), sLakituFinalLapTextures, 0x48U, (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = *gObjectList[objectIndex].textureList;
     object->vertex = vtx;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3475,10 +3491,11 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
 
+    u8 *tex = (u8 *) LOAD_ASSET(common_tlut_lakitu_reverse);
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_also_lakitu);
 
-    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_reverse, load_lakitu_textures_x64(sLakituReverseTextures, ARRAY_COUNT(sLakituReverseTextures)), 72, (u16) 56);
-    gObjectList[objectIndex].activeTexture = D_8018C028;
+    init_texture_object(objectIndex, (u8*) tex, sLakituReverseTextures, 72, (u16) 56);
+    gObjectList[objectIndex].activeTexture = *gObjectList[objectIndex].textureList;
     gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].pos[2] = var;
     gObjectList[objectIndex].pos[1] = var;
@@ -3614,7 +3631,7 @@ void func_8007AA44(s32 playerId) {
 
     func_8007A910(playerId);
     objectIndex = gIndexLakituList[playerId];
-    D_8018C028 = D_80183FA8[playerId];
+    gLakituTexturePtr = &gLakituTextureBuffer[playerId];
     switch (gObjectList[objectIndex].unk_0D8) {
     case 1:
         func_80079114(objectIndex, playerId, 2);

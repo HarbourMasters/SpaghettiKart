@@ -1787,8 +1787,8 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_t2 = player->unk_240;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
-    u8 *wheel0 = LOAD_ASSET(D_800DDE34[player->characterId][temp_t1]);
-    u8 *wheel1 = LOAD_ASSET(D_800DDE54[player->characterId][temp_t1]);
+    u16 *wheel0 = (u16 *) LOAD_ASSET(D_800DDE34[player->characterId][temp_t1]);
+    u16 *wheel1 = (u16 *) LOAD_ASSET(D_800DDE54[player->characterId][temp_t1]);
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)

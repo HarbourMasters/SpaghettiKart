@@ -612,17 +612,20 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
+void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 w, s32 height, s32 width, s32 heighthalf) {
     s32 heightIndex;
     s32 vertexIndex = 0;
-    u8 *img = texture;
+    u8 *img = (u8 *) LOAD_ASSET(texture);
+
+    printf("lakitu tex: %s\n", texture);
+        printf("lakitutlut: %s\n", tlut);
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        rsp_load_texture(img, width, height);
+    for (heightIndex = 0; heightIndex < height / heighthalf; heightIndex++) {
+        rsp_load_texture(img, width, heighthalf);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += width * (height - 1);
+        img += width * (heighthalf - 1);
         vertexIndex += 4;
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -761,10 +764,10 @@ UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-void draw_2d_texture_at(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void draw_2d_texture_at(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 width, s32 height, s32 width2, s32 height2) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
-    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, width, height, width2, height2);
 }
 
 void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {

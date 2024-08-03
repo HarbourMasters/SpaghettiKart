@@ -410,10 +410,10 @@ extern Vec3su D_80183E98;
 // extern s32 indexObjectList1[]; -> objects.h
 // extern s32 indexObjectList2[]; -> objects.h
 
-extern u8 D_80183FA8[4][0x2000];
+extern const char *gLakituTextureBuffer[4][2];
 // extern s32 indexObjectList3[]; -> objects.h
 
-extern u8 *D_8018C028;
+extern const char **gLakituTexturePtr;
 // extern s32 indexObjectList4[]; -> objects.h
 // extern Collision D_8018C0B0[]; -> objects.h
 // extern s32 gObjectParticle1[]; -> objects.h

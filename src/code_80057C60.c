@@ -287,14 +287,14 @@ s32 indexObjectList2[32];
  * I'm also not certain about its dimensions
  * I think the entires in this array are way over-sized
  */
-u8 D_80183FA8[4][0x2000];
+const char *gLakituTextureBuffer[4][2];
 /**
  * Boos in Banshee Boardwalk
  * Spawners for the 4 small fire breaths inside Bowser's Castle
  */
 s32 indexObjectList3[32];
 //! Seemingly a pointer to Lakitu texture(s)
-u8 *D_8018C028;
+const char **gLakituTexturePtr;
 /**
  * Unused list of object indices
  */
