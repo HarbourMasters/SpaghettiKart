@@ -2,6 +2,8 @@
 #include "framebuffer_effects.h"
 #include "mk64.h"
 #include <assets/common_data.h>
+#include "port/Engine.h"
+#include <stdio.h>
 
 
 int gfx_create_framebuffer(uint32_t width, uint32_t height, uint32_t native_width, uint32_t native_height,
