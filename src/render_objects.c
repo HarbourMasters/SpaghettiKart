@@ -617,9 +617,6 @@ void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32
     s32 vertexIndex = 0;
     u8 *img = (u8 *) LOAD_ASSET(texture);
 
-    printf("lakitu tex: %s\n", texture);
-        printf("lakitutlut: %s\n", tlut);
-
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     for (heightIndex = 0; heightIndex < height / heighthalf; heightIndex++) {
         rsp_load_texture(img, width, heighthalf);
