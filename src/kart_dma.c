@@ -1704,15 +1704,9 @@ u8 *gKartPalettes[] = {
  **/
 void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s8 zero) {
     s32 temp = player->effects;
-    u8 *texture;
-    u8 *asset;
-    size_t size = 0;
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
         if (player->animFrameSelector[screenId] != 0) {
             osInvalDCache(&D_802DFB80[zero][screenId2][playerId], D_800DDEB0[player->characterId]);
-
-
-            texture = gKartTextureTable1[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
             // osPiStartDma(
             //     &gDmaIoMesg,
             //     OS_MESG_PRI_NORMAL, OS_READ,
@@ -1724,12 +1718,7 @@ void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s
             //     &gDmaMesgQueue
             // );
             //printf("T1 kart %s\n", texture);
-
-            //return gKartTextureTable1[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
-            size = ResourceGetTexSizeByName(texture);
-            asset = (u8 *) LOAD_ASSET(texture);
-            memcpy(&D_802DFB80[zero][screenId2][playerId], asset, 0x1000);
-
+            D_802DFB80[zero][screenId2][playerId].unk_00 = gKartTextureTable1[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
             //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         } else {
             osInvalDCache(&D_802DFB80[zero][screenId2][playerId], D_800DDEB0[player->characterId]);
@@ -1745,12 +1734,7 @@ void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
-
-            texture = gKartTextureTable0[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
-            size = ResourceGetTexSizeByName(texture);
-            //printf("T0 kart %s\n",texture);
-            asset = (u8 *) LOAD_ASSET(texture);
-            memcpy(&D_802DFB80[zero][screenId2][playerId], asset, 0x1000);
+            D_802DFB80[zero][screenId2][playerId].unk_00 = gKartTextureTable0[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
             //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) || ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000)) {
@@ -1767,12 +1751,7 @@ void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s
         //     0x900,
         //     &gDmaMesgQueue
         // );
-        texture = gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8];
-        //printf("Tum Kart %s\n",texture);
-        size = ResourceGetTexSizeByName(texture);
-        asset = (u8 *) LOAD_ASSET(texture);
-        memcpy(&D_802DFB80[zero][screenId2][playerId], asset, 0x1000);
-
+        D_802DFB80[zero][screenId2][playerId].unk_00 = gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8];
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     } else {
         osInvalDCache(&D_802DFB80[zero][screenId2][playerId], D_800DDEB0[player->characterId]);
@@ -1786,24 +1765,15 @@ void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s
         //     )],
         //     &D_802DFB80[arg4][arg3][playerId],
         //     D_800DDEB0[player->characterId],
-        //     &gDmaMesgQueue
+        //     &gDmaMesgQueue 
         // );
-
-        texture = gKartTextureTable0[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
-        //printf("T0 kart 2 %s\n", texture);
-        size = ResourceGetTexSizeByName(texture);
-        asset = (u8 *) LOAD_ASSET(texture);
-        memcpy(&D_802DFB80[zero][screenId2][playerId], asset, 0x1000);
-
+        D_802DFB80[zero][screenId2][playerId].unk_00 = gKartTextureTable0[player->characterId][player->animGroupSelector[screenId]][player->animFrameSelector[screenId]];
         //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 }
 
 void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4, size_t i) {
     s32 temp = player->effects;
-    u8 *asset;
-    u8 *texture;
-    size_t size;
 
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0))
     {
@@ -1821,14 +1791,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4, size_t i)
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
-
-            texture = gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
-            //printf("T1 kart 2 %s\n", texture);
-            size = ResourceGetTexSizeByName(texture);
-            asset = (u8 *) LOAD_ASSET(texture);
-            memcpy(&D_802DFB80[arg4][arg3][arg1],
-            asset, size);
-
+            D_802DFB80[arg4][arg3][arg1].unk_00 = gKartTextureTable1[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
         } else {
             osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
@@ -1843,11 +1806,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4, size_t i)
             //     D_800DDEB0[player->characterId],
             //     &gDmaMesgQueue
             // );
-            texture = gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
-            //printf("T0 kart 3 %s\n", texture);
-            size = ResourceGetTexSizeByName(texture);
-            asset = (u8 *) LOAD_ASSET(texture);
-            memcpy(&D_802DFB80[arg4][arg3][arg1], asset, size);
+            D_802DFB80[arg4][arg3][arg1].unk_00 = gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
         }
     } else if (((temp & 0x400) == 0x400) || ((temp & 0x01000000) == 0x01000000) ||
         ((temp & 0x02000000) == 0x02000000) || ((temp & 0x10000) == 0x10000))
@@ -1865,11 +1824,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4, size_t i)
         //     0x900,
         //     &gDmaMesgQueue
         // );
-        texture = gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8];
-        //printf("Tum kart 2 %s\n", texture);
-        size = ResourceGetTexSizeByName(texture);
-        asset = (u8 *) LOAD_ASSET(texture);
-        memcpy(&D_802DFB80[arg4][arg3][arg1], asset, size);
+        D_802DFB80[arg4][arg3][arg1].unk_00 = gKartTextureTumbles[player->characterId][player->unk_0A8 >> 8];
     } else {
         osInvalDCache(&D_802DFB80[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 
@@ -1884,11 +1839,7 @@ void func_80027560(Player *player, s8 arg1, s8 arg2, s8 arg3, s8 arg4, size_t i)
         //     D_800DDEB0[player->characterId],
         //     &gDmaMesgQueue
         // );
-        texture = gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
-        //printf("T0 kart 4 %s 0x%llX\n", texture, &D_802DFB80[arg4][arg3][arg1]);
-        size = ResourceGetTexSizeByName(texture);
-        asset = (u8 *) LOAD_ASSET(texture);
-        memcpy(&D_802DFB80[arg4][arg3][arg1], asset, size);
+        D_802DFB80[arg4][arg3][arg1].unk_00 = gKartTextureTable0[player->characterId][player->animGroupSelector[arg2]][player->animFrameSelector[arg2]];
     }
 }
 
@@ -1982,6 +1933,6 @@ void func_80027C74(UNUSED Player *player, u8 *texture, void *vAddr, u16 size) {
     // );
 
     //printf("test %s\n",texture);
-     //size_t textureSize = ResourceGetTexSizeByName(texture);
-         memcpy(vAddr, texture, size);
+    //size_t textureSize = ResourceGetTexSizeByName(texture);
+    memcpy(vAddr, texture, size);
 }

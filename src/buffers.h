@@ -36,8 +36,8 @@ typedef union {
  * Likely over-sized due to encoded textures having variable size
  */
 typedef struct {
-    char unk_00[0x920];
-} struct_D_802DFB80; // size = 0x920
+    const char *unk_00; // Original 0x920 because compressed. But no longer compressed.
+} struct_D_802DFB80; // size = 0x1000
 
 typedef struct {
     u16 red:5;

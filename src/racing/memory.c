@@ -1508,8 +1508,7 @@ NewCourseTable gNewCourseTable[] = {
 };
 
 
-/**  Load Lakitu Textures  **/
-u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
+u8 *load_lakitu_tlut_x64(const char** textureList, size_t length) {
     // Calculate lakitu texture size to allocate
     size_t size = 0;
     for (size_t i = 0; i < length; i++) {
@@ -1520,10 +1519,10 @@ u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
     gNextFreeMemoryAddress += size;
     size_t offset = 0;
     for (size_t i = 0; i < length; i++) {
-        //u8 *tex = (u8 *) LOAD_ASSET(textureList[i]);
+        u8 *tex = (u8 *) LOAD_ASSET(textureList[i]);
         size_t texSize = ResourceGetTexSizeByName(textureList[i]);
-        printf("\nTEX SIZE: %X\n\n", texSize);
-        memcpy(&textures[offset], textureList[i], texSize);
+        //printf("\nTEX SIZE: %X\n\n", texSize);
+        memcpy(&textures[offset], tex, texSize);
         offset += texSize;
     }
     return textures;

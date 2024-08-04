@@ -2126,6 +2126,7 @@ common_texture_particle_spark_2:
   offset: 0x2B058
   width: 32
   height: 32
+  ctype: u8
   type: texture
   format: i8
 common_texture_particle_spark_3:
@@ -2133,6 +2134,7 @@ common_texture_particle_spark_3:
   offset: 0x2B458
   width: 32
   height: 32
+  ctype: u8
   type: texture
   format: i8
 common_texture_particle_spark_4:
@@ -2140,6 +2142,7 @@ common_texture_particle_spark_4:
   offset: 0x2B858
   width: 32
   height: 32
+  ctype: u8
   type: texture
   format: i8
 common_texture_particle_smoke_1:
