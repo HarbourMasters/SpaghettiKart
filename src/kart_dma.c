@@ -1931,9 +1931,9 @@ void func_80027C74(UNUSED Player *player, const char *texture, void *vAddr, u16 
     //     size,
     //     &gDmaMesgQueue
     // );
-    u8 *tex = (u8 *) LOAD_ASSET(texture);
-//    printf("wheeltex: %s\n",texture);
-    //size_t textureSize = ResourceGetTexSizeByName(texture);
+    u16 *tex = (u16 *) LOAD_ASSET(texture);
+    //printf("wheeltex: %s\n",texture);
+    size_t textureSize = ResourceGetTexSizeByName(texture);
     //vAddr = texture;
     memcpy(vAddr, tex, size);
 }
