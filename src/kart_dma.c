@@ -1919,7 +1919,7 @@ void func_80027BDC(UNUSED Player *player, u8 *arg1, void *vAddr, u16 size) {
     //osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
-void func_80027C74(UNUSED Player *player, u8 *texture, void *vAddr, u16 size) {
+void func_80027C74(UNUSED Player *player, const char *texture, void *vAddr, u16 size) {
     //osInvalDCache(vAddr, size);
 
     // osPiStartDma(
@@ -1931,8 +1931,9 @@ void func_80027C74(UNUSED Player *player, u8 *texture, void *vAddr, u16 size) {
     //     size,
     //     &gDmaMesgQueue
     // );
-
-    //printf("test %s\n",texture);
+    u8 *tex = (u8 *) LOAD_ASSET(texture);
+//    printf("wheeltex: %s\n",texture);
     //size_t textureSize = ResourceGetTexSizeByName(texture);
-    memcpy(vAddr, texture, size);
+    //vAddr = texture;
+    memcpy(vAddr, tex, size);
 }

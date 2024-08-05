@@ -10,6 +10,10 @@
     header:
       - '#include <libultraship.h>'
       - '#include <align_asset_macro.h>'
+  tables:
+    yoshi_kart_wheels:
+      range: [0x731A8, 0x97328]
+      mode: APPEND
 yoshi_kart_frame000:
   symbol: gKartYoshi000
   type: texture
