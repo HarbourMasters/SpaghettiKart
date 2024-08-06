@@ -465,31 +465,31 @@ f32 gCharacterSize[] = {
 };
 
 
-u8 gKartMarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartMarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartMarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartMarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartLuigiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartLuigiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartLuigiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartLuigiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartBowserWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartBowserWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartBowserWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartBowserWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartToadWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartToadWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartToadWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartToadWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
 // Stopped doing this properly here and just copy pasted the below hoping it would work
 
-u8 gKartYoshiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartYoshiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartYoshiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartYoshiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartDKWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartDKWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartDKWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartDKWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartPeachWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartPeachWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartPeachWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartPeachWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
-u8 gKartWarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
-u8 gKartWarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+u32 gKartWarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartWarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 
 
 // Replace the below ptrs with the indexes into mario_kart_wheels
@@ -589,12 +589,12 @@ u8 gKartWarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
 //     gKartWario189Wheel0
 // };
 
-u8 *D_800DDE34[] = {
+u32 *D_800DDE34[] = {
     gKartMarioWheels0, gKartLuigiWheels0, gKartYoshiWheels0, gKartToadWheels0,
     gKartDKWheels0,    gKartWarioWheels0, gKartPeachWheels0, gKartBowserWheels0
 };
 
-u8 *D_800DDE54[] = {
+u32 *D_800DDE54[] = {
     gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1,
     gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
 };
@@ -1822,8 +1822,8 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
     u8 character = player->characterId;
-    u8 wheel0 = (D_800DDE34[player->characterId][temp_t1]);
-    u8 wheel1 = (D_800DDE54[player->characterId][temp_t1]);
+    u32 wheel0 = (D_800DDE34[player->characterId][temp_t1]);
+    u32 wheel1 = (D_800DDE54[player->characterId][temp_t1]);
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)
@@ -1831,18 +1831,18 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (temp_t0 <= 20) {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)) / 0x80;
+                int32_t offset = (((((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) ) + 0x600)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
@@ -1851,25 +1851,42 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x80000) != 0x80000) && ((player->effects & 0x800000) != 0x800000)
          && ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
-            printf("OFFSET VAL %d\n", ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80);
+    //printf("---start---\n");
+
 
             if (temp_t0 <= 20) {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
-
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+//printf("OFFSET VAL 0x%X\n", ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)));
+//printf("OFFSET IDX %d\n", offset);
                 func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)) / 0x80;
+
+// printf("wheel1\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel1 + (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)), wheel1, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1, player->characterId, temp_t1);
+
+                int32_t offset = (((((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40))+ 0x600)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
+// printf("wheel0\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel0 + ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel0, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel0, player->characterId, temp_t1);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) / 0x80;
+// printf("wheel1_2\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel1 + ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel1, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1, player->characterId, temp_t1);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
                 func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
+//printf("---end---\n");
     }
 }
 
