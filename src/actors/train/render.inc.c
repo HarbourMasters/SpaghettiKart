@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include "courses/kalimari_desert/course_data.h"
+#include <assets/kalimari_desert_data.h>
 
 /**
  * @brief Renders the train engine actor.
@@ -31,21 +31,21 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
 
     if (distance < 122500.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1C0F0));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1B978));
 
     } else if (distance < 640000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1D670));
+       gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1D160));
     } else {
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
+       gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1E910));
+       gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1E480));
     }
     if (1440000.0f < distance) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D28));
 
     mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
@@ -55,7 +55,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
@@ -66,7 +66,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -77,7 +77,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -88,7 +88,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
@@ -99,7 +99,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D70));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
@@ -110,7 +110,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D70));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -121,7 +121,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D70));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
@@ -132,7 +132,7 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(spA0, 3) == 0;
     if (maxObjectsReached) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D70));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -154,17 +154,17 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F228);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1F228));
 
     } else if (temp_f0 < 1000000.0f) {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F708);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1F708));
     } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1FAF8);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x1FAF8));
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D28));
 
     mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
@@ -173,7 +173,7 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
@@ -183,7 +183,7 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
@@ -193,7 +193,7 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
@@ -202,7 +202,7 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
     mtxf_multiplication(spA0, sp120, spE0);
 
     if (render_set_position(spA0, 3) == 0) { return; }
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -225,21 +225,21 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x20A20));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x20A08));
 
     } else if (temp_f0 < 1000000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21550);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21220);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x21550));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x21220));
     } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21C90);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21A80);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x21C90));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x21A80));
     }
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22D28));
 
     mtxf_rotate_x(sp120, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
@@ -248,7 +248,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
@@ -258,7 +258,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
@@ -268,7 +268,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
@@ -278,7 +278,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -288,7 +288,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
@@ -298,7 +298,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -308,7 +308,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
@@ -318,7 +318,7 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(spA0, 3) == 0) { return; }
 
-    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22DB8));
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }

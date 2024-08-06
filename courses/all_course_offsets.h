@@ -6,7 +6,7 @@
 extern Gfx *banshee_boardwalk_dls[];
 extern Gfx *bowsers_castle_dls[];
 extern Gfx *choco_mountain_dls[];
-extern Gfx *kalimari_desert_dls[];
+extern const char *kalimari_desert_dls[];
 extern const char *luigi_raceway_dls[];
 extern const char *mario_raceway_dls[];
 extern Gfx *moo_moo_farm_dls[];

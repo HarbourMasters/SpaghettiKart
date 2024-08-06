@@ -281,7 +281,7 @@ void render_actor_tree_cactus1_kalimari_desert(Camera *camera, Mat4 arg1, struct
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus1);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07008528));
     }
 }
 
@@ -310,7 +310,7 @@ void render_actor_tree_cactus2_kalimari_desert(Camera *camera, Mat4 arg1, struct
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus2);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07008628));
     }
 }
 
@@ -339,6 +339,6 @@ void render_actor_tree_cactus3_kalimari_desert(Camera *camera, Mat4 arg1, struct
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_cactus3);
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07008728));
     }
 }
