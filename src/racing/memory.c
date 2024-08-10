@@ -1530,7 +1530,7 @@ NewCourseTable gNewCourseTable[] = {
         .vtxSize = 6393,
         .textures = kalimari_desert_textures,
         .displaylists = d_course_kalimari_desert_packed_dls,
-        .dlSize = 5670
+        .dlSize = 5328
     }
 };
 
