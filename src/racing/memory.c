@@ -1530,7 +1530,7 @@ NewCourseTable gNewCourseTable[] = {
         .vtxSize = 6393,
         .textures = kalimari_desert_textures,
         .displaylists = d_course_kalimari_desert_packed_dls,
-        .dlSize = 5670
+        .dlSize = 5328
     }
 };
 
@@ -1599,6 +1599,7 @@ void load_course(s32 courseId) {
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(displaylists);
     Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
+    assert(gfx != NULL);
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
     dlSegEnd = &gfx[dlSize];

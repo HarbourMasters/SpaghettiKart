@@ -25,12 +25,12 @@ void render_actor_railroad_crossing(Camera *arg0, struct RailroadCrossing *rr_cr
             if (isCrossingTriggeredByIndex[rr_crossing->crossingId]) {
 
                 if (rr_crossing->someTimer < 20) {
-                    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_right_active);
+                    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x10ae8));
                 } else {
-                    gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_left_active);
+                    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x10c10));
                 }
             } else {
-                gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_both_inactive);
+                gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x10d38));
             }
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
         }
