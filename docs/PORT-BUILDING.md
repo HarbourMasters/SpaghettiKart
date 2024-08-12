@@ -15,7 +15,7 @@ If you have some problem to get it setup you can refer to [https://github.com/Ha
 
 ## Setup
 ```bat
-& 'C:\Program Files\CMake\bin\cmake' -S . -B "build/x64" -G "Visual Studio 17 2022" -T v142 -A x64
+& 'C:\Program Files\CMake\bin\cmake' -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64
 ```
 
 ## Extract Assets
