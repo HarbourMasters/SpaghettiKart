@@ -30,6 +30,8 @@
 #include <assets/kalimari_desert_displaylists.h>
 #include <assets/moo_moo_farm_data.h>
 #include <assets/moo_moo_farm_displaylists.h>
+#include <assets/choco_mountain_data.h>
+#include <assets/choco_mountain_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -660,7 +662,7 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_choco_mountain_packed_dl_4608
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07004608));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07004608));
     }
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
     gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
@@ -673,27 +675,27 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     // d_course_choco_mountain_packed_dl_5A70
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005A70));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005A70));
     // d_course_choco_mountain_packed_dl_828
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000828));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000828));
     // d_course_choco_mountain_packed_dl_8E0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070008E0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070008E0));
     // d_course_choco_mountain_packed_dl_5868
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005868));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005868));
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    render_course_segments((uintptr_t) choco_mountain_dls, arg0);
+    render_course_segments(choco_mountain_dls, arg0);
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
     // d_course_choco_mountain_packed_dl_448
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000448));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000448));
     // d_course_choco_mountain_packed_dl_5D8
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070005D8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070005D8));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_choco_mountain_packed_dl_718
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000718));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000718));
     gSPClearGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
     gDPPipeSync(gDisplayListHead++);
@@ -1484,14 +1486,21 @@ void func_80295D88(void) {
 
             // Spawn guardrail only for CC_50 and time trials.
             if ((gCCSelection != CC_50) && (gModeSelection != TIME_TRIALS)) {
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_0);
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_98);
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_178);
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_280);
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_340);
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_3C8);
+                // d_course_choco_mountain_packed_dl_0
+                nullify_displaylist(segmented_gfx_to_virtual(0x07000000));
+                // d_course_choco_mountain_packed_dl_98
+                nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x07000098));
+                // d_course_choco_mountain_packed_dl_178
+                nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x07000178));
+                // d_course_choco_mountain_packed_dl_280
+                nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x07000280));
+                // d_course_choco_mountain_packed_dl_340
+                nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x07000340));
+                // d_course_choco_mountain_packed_dl_3C8
+                nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x070003C8));
             }
-            parse_course_displaylists((uintptr_t) &d_course_choco_mountain_addr);
+            TrackSectionsI *section2 = (TrackSectionsI *) LOAD_ASSET(d_course_choco_mountain_addr);
+            parse_course_displaylists(section2);
             func_802B5CAC(0x238E, 0x31C7, D_8015F590);
             func_80295C6C();
             D_8015F8E4 = -80.0f;

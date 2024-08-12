@@ -5,7 +5,6 @@
 #include "courses/block_fort/course_data.h"
 #include "courses/double_deck/course_data.h"
 #include "courses/skyscraper/course_data.h"
-#include "courses/choco_mountain/course_data.h"
 #include "courses/frappe_snowland/course_data.h"
 #include "courses/toads_turnpike/course_data.h"
 #include "courses/koopa_troopa_beach/course_data.h"

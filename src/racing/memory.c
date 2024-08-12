@@ -38,6 +38,10 @@
 #include <assets/big_donut_vertices.h>
 #include <assets/big_donut_data.h>
 
+#include <assets/choco_mountain_displaylists.h>
+#include <assets/choco_mountain_vertices.h>
+#include <assets/choco_mountain_data.h>
+
 #include <assets/skyscraper_displaylists.h>
 #include <assets/skyscraper_vertices.h>
 #include <assets/skyscraper_data.h>
@@ -1475,12 +1479,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_mario_raceway_packed_dls,
         .dlSize = 3367
     }, { // choco_mountain
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_choco_mountain_dl_0,
+        .vtx = d_course_choco_mountain_vertex,
+        .vtxSize = 5560,
+        .textures = choco_mountain_textures,
+        .displaylists = d_course_choco_mountain_packed_dls,
+        .dlSize = 2910
     }, { // bowser_castle
         .data = NULL,
         .vtx = NULL,

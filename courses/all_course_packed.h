@@ -12,7 +12,6 @@
 #include "courses/block_fort/course_displaylists.h"
 #include "courses/double_deck/course_displaylists.h"
 #include "courses/skyscraper/course_displaylists.h"
-#include "courses/choco_mountain/course_displaylists.h"
 #include "courses/frappe_snowland/course_displaylists.h"
 #include "courses/mario_raceway/course_displaylists.h"
 #include "courses/toads_turnpike/course_displaylists.h"
