@@ -447,17 +447,14 @@ d_course_kalimari_desert_dl_cactus1:
   symbol: d_course_kalimari_desert_dl_cactus1
   type: gfx
   offset: 0x8528
-  otr_mode: index
 d_course_kalimari_desert_dl_cactus2:
   symbol: d_course_kalimari_desert_dl_cactus2
   type: gfx
   offset: 0x8628
-  otr_mode: index
 d_course_kalimari_desert_dl_cactus3:
   symbol: d_course_kalimari_desert_dl_cactus3
   type: gfx
   offset: 0x8728
-  otr_mode: index
 d_course_kalimari_desert_crossing_sign_inactive_top_left:
   symbol: d_course_kalimari_desert_crossing_sign_inactive_top_left
   type: texture
