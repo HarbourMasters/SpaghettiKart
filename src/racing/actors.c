@@ -476,7 +476,7 @@ void render_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     Vec3f sp88;
     u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
 
-    var_t1 = d_course_moo_moo_farm_cow_spawn;
+    var_t1 = (ActorSpawnData *) LOAD_ASSET(d_course_moo_moo_farm_cow_spawn);
     D_8015F704 = 6.4e7f;
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
