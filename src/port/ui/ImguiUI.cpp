@@ -434,6 +434,9 @@ void DrawEnhancementsMenu() {
             UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD", {
                 .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance"
             });
+            UIWidgets::CVarCheckbox("Ignore Rendering Limits", "gIgnoreRenderDistance", {
+                .tooltip = "Renders game objects regardless of camera distance"
+            });
             UIWidgets::CVarCheckbox("Select any star from menu", "gSelectAllStars", {
                 .tooltip = "Let's you select any star from the menu regardless of the courses completion status."
             });
