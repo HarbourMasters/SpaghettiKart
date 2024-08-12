@@ -30,6 +30,22 @@
 #include <assets/kalimari_desert_vertices.h>
 #include <assets/kalimari_desert_data.h>
 
+#include <assets/big_donut_displaylists.h>
+#include <assets/big_donut_vertices.h>
+#include <assets/big_donut_data.h>
+
+#include <assets/skyscraper_displaylists.h>
+#include <assets/skyscraper_vertices.h>
+#include <assets/skyscraper_data.h>
+
+#include <assets/block_fort_displaylists.h>
+#include <assets/block_fort_vertices.h>
+#include <assets/block_fort_data.h>
+
+#include <assets/double_deck_displaylists.h>
+#include <assets/double_deck_vertices.h>
+#include <assets/double_deck_data.h>
+
 #include <assert.h>
 #include <course_offsets.h>
 
@@ -1531,6 +1547,62 @@ NewCourseTable gNewCourseTable[] = {
         .textures = kalimari_desert_textures,
         .displaylists = d_course_kalimari_desert_packed_dls,
         .dlSize = 5328
+    }, { // sherbet
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // rainbow
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // wario
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // block fort
+        .data = d_course_block_fort_dl,
+        .vtx = d_course_block_fort_vertex,
+        .vtxSize = 1088,
+        .textures = block_fort_textures,
+        .displaylists = d_course_block_fort_packed_dls,
+        .dlSize = 699
+    }, { // skyscraper
+        .data = d_course_skyscraper_dl,
+        .vtx = d_course_skyscraper_vertex,
+        .vtxSize = 1086,
+        .textures = skyscraper_textures,
+        .displaylists = d_course_skyscraper_packed_dls,
+        .dlSize = 548
+    }, { // double decker
+        .data = d_course_double_deck_dl,
+        .vtx = d_course_double_deck_vertex,
+        .vtxSize = 555,
+        .textures = double_deck_textures,
+        .displaylists = d_course_double_deck_packed_dls,
+        .dlSize = 234
+    }, { // dk jungle
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // big donut
+        .data = d_course_big_donut_dl,
+        .vtx = d_course_big_donut_vertex,
+        .vtxSize = 1165,
+        .textures = big_donut_textures,
+        .displaylists = d_course_big_donut_packed_dls,
+        .dlSize = 528
     }
 };
 
