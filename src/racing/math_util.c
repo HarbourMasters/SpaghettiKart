@@ -1099,6 +1099,10 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     UNUSED s32 pad2[3];
     u16 extended_fov = ((u16) fov * 0xB6);
 
+    if (CVarGetInteger("gIgnoreRenderDistance", 0) == 1) {
+        return 1.0f;
+    };
+
     distanceX = objectPos[0] - cameraPos[0];
     distanceX = distanceX * distanceX;
     if (maxDistance < distanceX) {
