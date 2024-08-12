@@ -1,7 +1,7 @@
 #ifndef ALL_COURSE_DATA_H
 #define ALL_COURSE_DATA_H
 
-#include "gbi_extra.h"
+#include "mk64.h"
 
 #include "courses/big_donut/course_data.h"
 #include "courses/block_fort/course_data.h"
