@@ -5,6 +5,7 @@
 #include <assets/luigi_raceway_data.h>
 #include <assets/royal_raceway_data.h>
 #include <assets/kalimari_desert_data.h>
+#include <assets/moo_moo_farm_data.h>
 
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour *gKartAIBehaviourLUT[] = {

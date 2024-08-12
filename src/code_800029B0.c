@@ -25,6 +25,7 @@
 #include "menus.h"
 #include <assets/other_textures.h>
 #include <assets/mario_raceway_data.h>
+#include <assets/moo_moo_farm_data.h>
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;

@@ -36,6 +36,7 @@
 #include "data/some_data.h"
 #include "memory.h"
 #include <assets/luigi_raceway_data.h>
+#include <assets/moo_moo_farm_data.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {
@@ -6284,9 +6285,11 @@ void func_8008153C(s32 objectIndex) {
 
             if (gObjectList[loopObjectIndex].state != 0) continue;
 
+            u8 *mole = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_dirt);
+
             init_object(loopObjectIndex, 0);
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
-            gObjectList[loopObjectIndex].tlutList = d_course_moo_moo_farm_mole_dirt;
+            gObjectList[loopObjectIndex].tlutList = mole;
             gObjectList[loopObjectIndex].sizeScaling = 0.15f;
             gObjectList[loopObjectIndex].velocity[1] = random_int(0x000AU);
             gObjectList[loopObjectIndex].velocity[1] = (gObjectList[loopObjectIndex].velocity[1] * 0.1) + 4.8;
@@ -6319,7 +6322,9 @@ void func_80081790(s32 objectIndex) {
 }
 
 void func_80081848(s32 objectIndex) {
-    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, (u8*) d_course_moo_moo_farm_mole_frames, 0x20U, (u16) 0x00000040);
+    u8 *mole = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_frames);
+    u8 *tlut = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_tlut);
+    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, (u8*) mole, 0x20U, (u16) 0x00000040);
     gObjectList[objectIndex].sizeScaling = 0.15f;
     gObjectList[objectIndex].itemDisplay = 0;
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);

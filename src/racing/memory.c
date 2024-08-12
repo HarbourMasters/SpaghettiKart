@@ -30,6 +30,10 @@
 #include <assets/kalimari_desert_vertices.h>
 #include <assets/kalimari_desert_data.h>
 
+#include <assets/moo_moo_farm_displaylists.h>
+#include <assets/moo_moo_farm_vertices.h>
+#include <assets/moo_moo_farm_data.h>
+
 #include <assets/big_donut_displaylists.h>
 #include <assets/big_donut_vertices.h>
 #include <assets/big_donut_data.h>
@@ -1527,12 +1531,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_luigi_raceway_packed_dls,
         .dlSize = 6377
     }, { // moo_moo_farm
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_moo_moo_farm_dl_0,
+        .vtx = d_course_moo_moo_farm_vertex,
+        .vtxSize = 7972,
+        .textures = moo_moo_farm_textures,
+        .displaylists = d_course_moo_moo_farm_packed_dls,
+        .dlSize = 3304
     }, { // highway
         .data = NULL,
         .vtx = NULL,

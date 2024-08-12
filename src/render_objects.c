@@ -38,6 +38,7 @@
 #include "data/some_data.h"
 #include <assets/some_data.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/moo_moo_farm_data.h>
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
@@ -3843,7 +3844,7 @@ void func_80054F04(s32 cameraId) {
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
-    load_texture_block_rgba16_mirror(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
+    load_texture_block_rgba16_mirror((u8 *)LOAD_ASSET(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
         objectIndex = gObjectParticle2[var_s2];
         object = &gObjectList[objectIndex];

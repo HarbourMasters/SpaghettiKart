@@ -28,6 +28,8 @@
 #include <assets/royal_raceway_displaylists.h>
 #include <assets/kalimari_desert_data.h>
 #include <assets/kalimari_desert_displaylists.h>
+#include <assets/moo_moo_farm_data.h>
+#include <assets/moo_moo_farm_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -962,16 +964,15 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_moo_moo_farm_packed_dl_4DF8
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07004DF8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07004DF8));
     // d_course_moo_moo_farm_packed_dl_5640
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005640));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005640));
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
-    render_course_segments((uintptr_t) moo_moo_farm_dls, arg0);
+    render_course_segments(moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
-            //
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
 
     } else if (temp_s0 < 16) {
@@ -991,12 +992,12 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     if ((temp_s0 >= 16) && (temp_s0 < 24)) {
         if ((temp_s1 == 2) || (temp_s1 == 3))
             // d_course_moo_moo_farm_packed_dl_5410
-            gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005410));
 
     } else if (temp_s0 < 9) {
         if (temp_s1 == 2)
             // d_course_moo_moo_farm_packed_dl_5410
-            gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005410));
 
     }
     if (temp_s0 < 4) {
@@ -1017,7 +1018,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_moo_moo_farm_packed_dl_10C0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070010C0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070010C0));
 }
 
 void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
@@ -1548,7 +1549,8 @@ void func_80295D88(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_MOO_MOO_FARM:
-            parse_course_displaylists((uintptr_t) d_course_moo_moo_farm_addr);
+            TrackSectionsI *section9 = (TrackSectionsI *) LOAD_ASSET(d_course_moo_moo_farm_addr);
+            parse_course_displaylists(section9);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;

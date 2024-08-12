@@ -9,7 +9,6 @@
 #include "courses/frappe_snowland/course_data.h"
 #include "courses/toads_turnpike/course_data.h"
 #include "courses/koopa_troopa_beach/course_data.h"
-#include "courses/moo_moo_farm/course_data.h"
 #include "courses/banshee_boardwalk/course_data.h"
 #include "courses/dks_jungle_parkway/course_data.h"
 #include "courses/rainbow_road/course_data.h"
