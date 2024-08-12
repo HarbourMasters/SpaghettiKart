@@ -20,7 +20,6 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     Mat4 spA0;
 
     f32 distance = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 9000000.0f);
-
     if (distance < 0.0f) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -29,19 +28,27 @@ void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     maxObjectsReached = render_set_position(sp120, 0) == 0;
     if (maxObjectsReached) { return; }
 
-    if (distance < 122500.0f) {
-
+    if (CVarGetInteger("gDisableLOD", 0) == 1) {
+        // Play with no lod
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
+    } else { // Play with lod
+        if (distance < 122500.0f) {
 
-    } else if (distance < 640000.0f) {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1C0F0);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1B978);
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
-    } else {
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
-       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
+        } else if (distance < 640000.0f) {
+
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
+        } else {
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
+        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
+        }
     }
+
+    // Wheel render distance
     if (1440000.0f < distance) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -152,15 +159,20 @@ void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
     mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
     if (render_set_position(sp120, 0) == 0) { return; }
 
-    if (temp_f0 < 250000.0f) {
-
+    if (CVarGetInteger("gDisableLOD", 0) == 1) {
+        // No lod
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F228);
-
-    } else if (temp_f0 < 1000000.0f) {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F708);
-    } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1FAF8);
+    } else { // Play with lod
+        if (temp_f0 < 250000.0f) {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F228);
+        } else if (temp_f0 < 1000000.0f) {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1F708);
+        } else {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1FAF8);
+        }
     }
+
+    // Wheel render distance
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -223,19 +235,28 @@ void render_actor_train_passenger_car(Camera *camera, struct TrainCar *actor) {
 
     if (render_set_position(sp120, 0) == 0) { return; }
 
-    if (temp_f0 < 250000.0f) {
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
+    if (CVarGetInteger("gDisableLOD", 0) == 1) {
+            // Disable lod
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
+    } else { // Play with lod
+        if (temp_f0 < 250000.0f) {
 
-    } else if (temp_f0 < 1000000.0f) {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A20);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_20A08);
 
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21550);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21220);
-    } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21C90);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21A80);
+        } else if (temp_f0 < 1000000.0f) {
+
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21550);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21220);
+        } else {
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21C90);
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_21A80);
+        }
     }
+
+    // Wheel render distance
     if (1440000.0f < temp_f0) { return; }
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
