@@ -10,6 +10,10 @@
     header:
       - '#include <libultraship.h>'
       - '#include <align_asset_macro.h>'
+  tables:
+    mario_kart_wheels:
+      range: [0x6E4B0, 0x92630]
+      mode: APPEND
 mario_kart_frame000:
   symbol: gKartMario000
   type: texture

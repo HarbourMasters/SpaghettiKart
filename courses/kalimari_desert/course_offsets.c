@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/kalimari_desert_data.h>
 
 const course_texture kalimari_desert_textures[] = {
     {gTexture6684F8,                0x010D, 0x0800, 0x0},

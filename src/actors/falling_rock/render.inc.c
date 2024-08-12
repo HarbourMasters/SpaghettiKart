@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include "courses/choco_mountain/course_data.h"
+#include <assets/choco_mountain_data.h>
 
 /**
  * @brief Renders the falling rock actor.

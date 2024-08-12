@@ -38,6 +38,7 @@
 #include "data/some_data.h"
 #include <assets/some_data.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/moo_moo_farm_data.h>
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
@@ -612,17 +613,17 @@ void func_80047068(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, 
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
+void draw_rectangle_texture_overlap(u8 *tlut, u8 *texture, Vtx *arg2, UNUSED s32 w, s32 height, s32 width, s32 heighthalf) {
     s32 heightIndex;
     s32 vertexIndex = 0;
-    u8 *img = texture;
+    u8 *img = (u8 *) LOAD_ASSET(texture);
 
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    for (heightIndex = 0; heightIndex < arg4 / height; heightIndex++) {
-        rsp_load_texture(img, width, height);
+    for (heightIndex = 0; heightIndex < height / heighthalf; heightIndex++) {
+        rsp_load_texture(img, width, heighthalf);
         gSPVertex(gDisplayListHead++, &arg2[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-        img += width * (height - 1);
+        img += width * (heighthalf - 1);
         vertexIndex += 4;
     }
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -761,10 +762,10 @@ UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-void draw_2d_texture_at(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void draw_2d_texture_at(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 width, s32 height, s32 width2, s32 height2) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
-    draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
+    draw_rectangle_texture_overlap(tlut, texture, arg5, width, height, width2, height2);
 }
 
 void func_80048130(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
@@ -3843,7 +3844,7 @@ void func_80054F04(s32 cameraId) {
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
-    load_texture_block_rgba16_mirror(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
+    load_texture_block_rgba16_mirror((u8 *)LOAD_ASSET(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
         objectIndex = gObjectParticle2[var_s2];
         object = &gObjectList[objectIndex];
@@ -4207,7 +4208,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     D_80165878 = A_800E46F8[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
-    func_80044BF8(common_texture_particle_spark[arg1], 0x00000020, 0x00000020);
+    func_80044BF8(common_texture_particle_spark[arg1], 32, 32);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }

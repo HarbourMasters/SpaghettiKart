@@ -22,6 +22,38 @@
 #include <assets/luigi_raceway_vertices.h>
 #include <assets/luigi_raceway_data.h>
 
+#include <assets/royal_raceway_displaylists.h>
+#include <assets/royal_raceway_vertices.h>
+#include <assets/royal_raceway_data.h>
+
+#include <assets/kalimari_desert_displaylists.h>
+#include <assets/kalimari_desert_vertices.h>
+#include <assets/kalimari_desert_data.h>
+
+#include <assets/moo_moo_farm_displaylists.h>
+#include <assets/moo_moo_farm_vertices.h>
+#include <assets/moo_moo_farm_data.h>
+
+#include <assets/big_donut_displaylists.h>
+#include <assets/big_donut_vertices.h>
+#include <assets/big_donut_data.h>
+
+#include <assets/choco_mountain_displaylists.h>
+#include <assets/choco_mountain_vertices.h>
+#include <assets/choco_mountain_data.h>
+
+#include <assets/skyscraper_displaylists.h>
+#include <assets/skyscraper_vertices.h>
+#include <assets/skyscraper_data.h>
+
+#include <assets/block_fort_displaylists.h>
+#include <assets/block_fort_vertices.h>
+#include <assets/block_fort_data.h>
+
+#include <assets/double_deck_displaylists.h>
+#include <assets/double_deck_vertices.h>
+#include <assets/double_deck_data.h>
+
 #include <assert.h>
 #include <course_offsets.h>
 
@@ -1439,75 +1471,151 @@ typedef struct {
 } NewCourseTable;
 
 NewCourseTable gNewCourseTable[] = {
-    {
+    { // mario_raceway
         .data = d_course_mario_raceway_dl_0,
         .vtx = d_course_mario_raceway_vertex,
         .vtxSize = 5757,
         .textures = mario_raceway_textures,
         .displaylists = d_course_mario_raceway_packed_dls,
         .dlSize = 3367
-    }, {
+    }, { // choco_mountain
+        .data = d_course_choco_mountain_dl_0,
+        .vtx = d_course_choco_mountain_vertex,
+        .vtxSize = 5560,
+        .textures = choco_mountain_textures,
+        .displaylists = d_course_choco_mountain_packed_dls,
+        .dlSize = 2910
+    }, { // bowser_castle
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // banshee_boardwalk
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 4326,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // maze
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // snow
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // koopa_troopa_beach
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
-    }, {
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
-    }, {
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
-    }, {
+    }, { // royal_raceway
+        .data = d_course_royal_raceway_dl_0,
+        .vtx = d_course_royal_raceway_vertex,
+        .vtxSize = 8306,
+        .textures = royal_raceway_textures,
+        .displaylists = d_course_royal_raceway_packed_dls,
+        .dlSize = 5670
+    }, { // luigi_raceway
         .data = d_course_luigi_raceway_dl_0,
         .vtx = d_course_luigi_raceway_vertex,
         .vtxSize = 5936,
         .textures = luigi_raceway_textures,
         .displaylists = d_course_luigi_raceway_packed_dls,
         .dlSize = 6377
+    }, { // moo_moo_farm
+        .data = d_course_moo_moo_farm_dl_0,
+        .vtx = d_course_moo_moo_farm_vertex,
+        .vtxSize = 7972,
+        .textures = moo_moo_farm_textures,
+        .displaylists = d_course_moo_moo_farm_packed_dls,
+        .dlSize = 3304
+    }, { // highway
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // kalimari_desert
+        .data = d_course_kalimari_desert_dl_0,
+        .vtx = d_course_kalimari_desert_vertex,
+        .vtxSize = 6393,
+        .textures = kalimari_desert_textures,
+        .displaylists = d_course_kalimari_desert_packed_dls,
+        .dlSize = 5328
+    }, { // sherbet
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // rainbow
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // wario
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // block fort
+        .data = d_course_block_fort_dl,
+        .vtx = d_course_block_fort_vertex,
+        .vtxSize = 1088,
+        .textures = block_fort_textures,
+        .displaylists = d_course_block_fort_packed_dls,
+        .dlSize = 699
+    }, { // skyscraper
+        .data = d_course_skyscraper_dl,
+        .vtx = d_course_skyscraper_vertex,
+        .vtxSize = 1086,
+        .textures = skyscraper_textures,
+        .displaylists = d_course_skyscraper_packed_dls,
+        .dlSize = 548
+    }, { // double decker
+        .data = d_course_double_deck_dl,
+        .vtx = d_course_double_deck_vertex,
+        .vtxSize = 555,
+        .textures = double_deck_textures,
+        .displaylists = d_course_double_deck_packed_dls,
+        .dlSize = 234
+    }, { // dk jungle
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // big donut
+        .data = d_course_big_donut_dl,
+        .vtx = d_course_big_donut_vertex,
+        .vtxSize = 1165,
+        .textures = big_donut_textures,
+        .displaylists = d_course_big_donut_packed_dls,
+        .dlSize = 528
     }
 };
 
 
-/**  Load Lakitu Textures  **/
-u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
+u8 *load_lakitu_tlut_x64(const char** textureList, size_t length) {
     // Calculate lakitu texture size to allocate
     size_t size = 0;
     for (size_t i = 0; i < length; i++) {
@@ -1520,13 +1628,13 @@ u8 *load_lakitu_textures_x64(const char** textureList, size_t length) {
     for (size_t i = 0; i < length; i++) {
         u8 *tex = (u8 *) LOAD_ASSET(textureList[i]);
         size_t texSize = ResourceGetTexSizeByName(textureList[i]);
+        //printf("\nTEX SIZE: %X\n\n", texSize);
         memcpy(&textures[offset], tex, texSize);
         offset += texSize;
     }
     return textures;
 }
 
-void load_luigi_raceway(void);
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
 
@@ -1536,8 +1644,6 @@ void load_course(s32 courseId) {
     course_texture *textures = gNewCourseTable[courseId].textures;
     char* displaylists = gNewCourseTable[courseId].displaylists;
     size_t dlSize = gNewCourseTable[courseId].dlSize;
-
-    testaaa = (Gfx *) LOAD_ASSET(data);
 
     // Convert course vtx to vtx
     CourseVtx *cvtx = (CourseVtx *) LOAD_ASSET(vtxData);
@@ -1573,6 +1679,7 @@ void load_course(s32 courseId) {
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(displaylists);
     Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
+    assert(gfx != NULL);
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
     dlSegEnd = &gfx[dlSize];

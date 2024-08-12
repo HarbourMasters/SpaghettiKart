@@ -59,8 +59,7 @@ s8 D_8018D9D8;
 s8 D_8018D9D9;
 struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
-UNUSED u8 code_80091750_bss_padding0[8];
+struct_8018E060_entry D_8018E060[D_8018E060_SIZE + 1];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 gD_8018E118TotalSize;
 struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
@@ -1402,7 +1401,8 @@ void func_80091B78(void) {
         D_8018EDF5 = 5;
         D_8018EDF6 = 10;
         if (osEepromProbe(&gSIEventMesgQueue) != 0) {
-            load_save_data();
+            // save data disabled for now due to array overflow
+            //load_save_data();
         }
         if (func_80091D74() != 0) {
             gMenuSelection = CONTROLLER_PAK_MENU;
@@ -1596,6 +1596,7 @@ void func_80092258(void) {
     }
 }
 
+//! @bug vtx overflow from idx + 36 in this func
 void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 i;
@@ -1638,12 +1639,18 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
         }
         //vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
 
+
         temp_v1 = (*arg1 * 2) + 2;
 
+        //! @bug vtx array overflow temp fix
+        if ((vtx+temp_v1) >= 54) {
+            return;
+        }
         temp_t6 = (vtx+temp_v1)->v.cn[0] * (256 - *arg2);
         temp_t9 = (vtx+temp_v1)->v.cn[1] * (256 - *arg2);
         temp_t7 = (vtx+temp_v1)->v.cn[2] * (256 - *arg2);
         temp_t8_2 = (vtx+temp_v1)->v.cn[3] * (256 - *arg2);
+
 
         temp_v1 = (((*arg1 * 2) + 2) % 6) + 2;
         a = ((vtx+temp_v1)->v.cn[0] * *arg2);
@@ -1651,6 +1658,10 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
         c = ((vtx+temp_v1)->v.cn[2] * *arg2);
         d = ((vtx+temp_v1)->v.cn[3] * *arg2);
 
+        //! @bug vtx array overflow temp fix
+        if ((vtx+idx) >= 54) {
+            return;
+        }
 
         (vtx+idx)->v.cn[0] = (temp_t6 + a) / 256;
         (vtx+idx)->v.cn[1] = (temp_t9 + b) / 256;
@@ -3595,60 +3606,52 @@ void *segmented_to_virtual_dupe_2(const void *addr) {
 #include <assets/player_selection.h>
 
 #ifdef NON_MATCHING
-// https://decomp.me/scratch/NAZ12
-// Register allocation nonsense
-void func_80099184(MkTexture *arg0) {
-    u16 var_a1_2;
-    s32 var_v0;
-    s32 var_a1;
-    UNUSED s32 temp_s3;
-    MkTexture *texture = arg0;
-    UNUSED struct_8018E118_entry *thing;
-    while (texture->textureData != NULL) {
-    u8 *textureData = (u8 *) LOAD_ASSET(texture->textureData);
-        var_a1 = 0;
-        for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
-                var_a1 = 1;
-                break;
-            }
-        }
-        if (var_a1 == 0) {
-            if (texture->type == 3) {
-                if (texture->size != 0) {
-                    var_a1_2 = texture->size;
-                } else {
-                    var_a1_2 = 0x1000;
-                }
-                if (var_a1_2 % 8) {
-                    var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
-                }
-                //dma_copy_base_729a30(texture->textureData, var_a1_2, D_8018D9B4);
-                //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
-              // * 2 here is just a guess
-              size_t size = ResourceGetTexSizeByName(texture->textureData);
-              memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
-            } else {
-                //dma_copy_base_729a30(texture->textureData, texture->height * texture->width * 2, &D_8018D9B0[gD_8018E118TotalSize]);
-                // * 2 here is just a guess
-                size_t size = ResourceGetTexSizeByName(texture->textureData);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], textureData, size);
-            }
-
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            printf("test: %s\n",texture->textureData);
-            thing->textureData = texture->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
-
-            gD_8018E118TotalSize += (texture->height * texture->width);
-            gNumD_8018E118Entries += 1;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
-        }
-        texture++;
+void func_80099184(MkTexture *arg0)
+{
+  u16 var_a1_2;
+  s32 var_v0;
+  s32 var_a1;
+  MkTexture *var_s1;
+  struct_8018E118_entry *thing = &D_8018E118[0];
+  var_s1 = segmented_to_virtual_dupe(arg0);
+  while (var_s1->textureData != NULL) {
+    var_a1 = 0;
+    for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
+      if (var_s1->textureData == (thing+var_v0)->textureData) {
+        var_a1 = 1;
         break;
+      }
     }
+
+    if (var_a1 == 0) {
+      if (var_s1->type == 3) {
+        if (var_s1->size != 0) {
+          var_a1_2 = var_s1->size;
+        } else {
+          var_a1_2 = 0x1000;
+        }
+        if (var_a1_2 % 8) {
+          var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
+        }
+        //dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
+        //mio0decode(D_8018D9B4, &D_8018D9B0[gD_8018E118TotalSize]);
+        //size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+        //memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, texSize);
+        strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+      } else {
+        //dma_copy_base_729a30(var_s1->textureData, (var_s1->height * var_s1->width) * 2, &D_8018D9B0[gD_8018E118TotalSize]);
+        //memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height*2);
+        strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+      }
+      thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+      thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
+      gD_8018E118TotalSize += var_s1->height * var_s1->width;
+      gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+      gNumD_8018E118Entries += 1;
+    }
+    var_s1++;
+  }
+
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
@@ -3670,14 +3673,17 @@ void func_80099394(MkTexture *arg0) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0^0].textureData == (*var_s1).textureData) {
+            if (D_8018E118[var_v0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
         }
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
-                dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
+                //dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2), &D_8018D9B0[gD_8018E118TotalSize]);
+                u8 *tex = LOAD_ASSET(var_s1->textureData);
+                size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texSize);
             }
 
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3745,13 +3751,14 @@ void func_8009969C(MkTexture *arg0) {
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/hwAAp
+// Load background?
 void func_800996BC(MkTexture *arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
     MkTexture *texture;
-    struct_8018E118_entry *thing;
+    struct_8018E118_entry *thing = &D_8018E118[0];
 
     texture = segmented_to_virtual_dupe(arg0);
 
@@ -3766,8 +3773,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
     while (texture->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (D_8018E118[var_v0].textureData == (*texture).textureData) {
+            if (texture->textureData == (thing+var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3796,7 +3802,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             case 1:                             /* switch 1 */
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 //printf("w: %d, h: %d", texture->width, texture->height);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+                u8 *tex = (u8 *) LOAD_ASSET(texture->textureData);
+                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texture->width * texture->height * 2);
                 break;
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
@@ -3808,14 +3815,13 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                 if (1) {}
                 //D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
             //tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], texture->textureData, texture->width * texture->height * 2);
+            u8 *tex2 = (u8 *) LOAD_ASSET(texture->textureData);
+            memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex2, texture->width * texture->height * 2);
                 break;
             }
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->textureData = texture->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing[gNumD_8018E118Entries].textureData = texture->textureData;
+            thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
             gD_8018E118TotalSize += texture->height * texture->width;
             gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
@@ -3845,6 +3851,7 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
         }
         //dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
         //mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        u8 *tex = LOAD_ASSET(temp_v0->textureData);
         memcpy(D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array, temp_v0->textureData, temp_v0->width * temp_v0->height * 2);
         temp_v0++;
     }
@@ -4068,7 +4075,7 @@ void func_80099EC4(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")
 #endif
 
-void func_8009A238(MkTexture *arg0, s32 arg1) {
+UNUSED void func_8009A238(MkTexture *arg0, s32 arg1) {
     s32 var_a3;
     s32 temp_v1;
     u64 *sp24;
@@ -4082,7 +4089,9 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
     }
     //dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
     //tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, arg0->height * arg0->width * 2);
+    //u8 *tex = (u8 *) LOAD_ASSET(arg0->textureData);
+    size_t texSize = ResourceGetTexSizeByName(arg0->textureData);
+    memcpy(&D_8018D9B0[temp_v1], arg0->textureData, texSize);
     D_8018E118[arg1].textureData = arg0->textureData;
 }
 
@@ -4311,7 +4320,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     color0 = &D_8018D9B0[D_8018E118[arg0].offset];
     color1 = &D_8018D9B0[D_8018E118[arg1].offset];
     for (var_t1 = 0; (u32) var_t1 < arg2; var_t1++) {
-        temp_a0 = *color0++;
+        temp_a0 = BSWAP16(*color0++);
         red   = (temp_a0 & 0xF800) >> 0xB;
         green = (temp_a0 & 0x7C0) >> 6;
         blue  = (temp_a0 & 0x3E) >> 1;
@@ -4321,7 +4330,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         newred   = (((((temp_t9             -   red) * arg3) >> 8) +   red) << 0xB);
         newgreen = (((((((temp_t9 * 7) / 8) - green) * arg3) >> 8) + green) <<   6);
         newblue  = (((((((temp_t9 * 6) / 8) -  blue) * arg3) >> 8) +  blue) <<   1);
-        *color1++ = newblue + newgreen + newred + alpha;
+        *color1++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4339,16 +4348,17 @@ void func_8009AB7C(s32 arg0) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < 0x4B000; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         newred   = temp_t9 << 0xB;
         newgreen = temp_t9 << 6;
         newblue  = temp_t9 << 1;
-        *color++ = newblue + newgreen + newred + alpha;
+        *color++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
 }
 
@@ -4369,14 +4379,15 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_v1 = 0; var_v1 != size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         temp_t9 += ((0x20 - temp_t9) * arg1) >> 8;
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
 }
 
@@ -4397,17 +4408,18 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
     for (var_s0 = 0; var_s0 < (u32) size; var_s0++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x55;
-        green = ((*color & 0x7C0) >> 6) * 0x4B;
-        blue  = ((*color & 0x3E) >> 1) * 0x5F;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x55;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x4B;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x5F;
+        alpha =  color_pixel & 0x1;
         temp_t9 = red + green + blue;
         temp_t9 >>= 8;
         temp_t9 = sp48[temp_t9] * 32.0f;
         if (temp_t9 >= 0x20) {
             temp_t9 = 0x1F;
         }
-        *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
+        *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
 }
 
@@ -4425,16 +4437,17 @@ void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < screen_size; var_v1++) {
-        red   = ((*color & 0xF800) >> 0xB) * 0x4D;
-        green = ((*color & 0x7C0) >> 6) * 0x96;
-        blue  = ((*color & 0x3E) >> 1) * 0x1D;
-        alpha =  *color & 0x1;
+        u16 color_pixel = BSWAP16(*color);
+        red   = ((color_pixel & 0xF800) >> 0xB) * 0x4D;
+        green = ((color_pixel & 0x7C0) >> 6) * 0x96;
+        blue  = ((color_pixel & 0x3E) >> 1) * 0x1D;
+        alpha =  (color_pixel & 0x1);
         temp_t9 = red + green + blue;
         temp_t9 = temp_t9 >> 8;
         newred   = ((temp_t9 * arg2) >> 8) << 0xB;
         newgreen = ((temp_t9 * arg3) >> 8) << 6;
         newblue  = ((temp_t9 * arg4) >> 8) << 1;
-        *color++ = newred + newgreen + newblue + alpha;;
+        *color++ = BSWAP16(newred + newgreen + newblue + alpha);
     }
 }
 
@@ -10091,19 +10104,27 @@ void func_800AAE18(struct_8018D9E0_entry *arg0) {
  * is found.
 **/
 struct_8018D9E0_entry *func_800AAE68(void) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    s32 thing = gPlayerCount - 1;
-
-    for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
-        if ((thing + 0xB) == entry->type) {
-            goto escape;
+    s32 count = gPlayerCount - 1;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == (count + 0xB)) {
+            return &D_8018D9E0[i];
         }
     }
+    printf("Error: func_800AAE68 returned a null value when searching id 0x%X", count+0xB);
+    return NULL;
+//     struct_8018D9E0_entry *entry = D_8018D9E0;
+//     s32 thing = gPlayerCount - 1;
 
-    // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//     for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+//         if ((thing + 0xB) == entry->type) {
+//             goto escape;
+//         }
+//     }
+
+//     // Something VERY wrong has occurred
+//     while(true);
+// escape:
+//     return entry;
 }
 
 /**
@@ -10112,18 +10133,27 @@ escape:
  * is found.
 **/
 struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
 
-    for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
-        if ((arg0 + 0x2B) == entry->type) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == (arg0 + 0x2B)) {
+            return &D_8018D9E0[i];
         }
     }
+    printf("Error: func_800AAEB4 returned a null value when searching id 0x%X", arg0+0x2B);
+    return NULL;
 
-    // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//     struct_8018D9E0_entry *entry = D_8018D9E0;
+
+//     for(; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+//         if ((arg0 + 0x2B) == entry->type) {
+//             goto escape;
+//         }
+//     }
+
+//     // Something VERY wrong has occurred
+//     while(true);
+// escape:
+//     return entry;
 }
 
 /**
@@ -10137,30 +10167,49 @@ escape:
  * reasoning on the original author(s) part.
 **/
 struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
+    printf("Error: find_8018D9E0_entry_dupe returned a null value when searching id 0x%X", arg0);
+    return NULL;
+	
+	
+//	struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
 
     // Something VERY wrong has occurred
-    while(true);
-escape:
-    return entry;
+//    while(true);
+//escape:
+//    return entry;
 }
 
 struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
-            goto escape;
+    for (size_t i = 0; i < ARRAY_COUNT(D_8018D9E0); i++) {
+        if (D_8018D9E0[i].type == arg0) {
+            return &D_8018D9E0[i];
         }
     }
-
+    // No printf here as returning null seems to be normal game logic
+    //printf("Error: find_8018D9E0_entry returned a null value when searching id 0x%X",
+    //             arg0);
     return NULL;
-escape:
-    return entry;
+
+//    struct_8018D9E0_entry *entry = D_8018D9E0;
+//    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+//        if (entry->type == arg0) {
+//            goto escape;
+//        }
+//    }
+
+//    return NULL;
+//escape:
+//    return entry;
 }
 
 s32 func_800AAF70(s32 arg0) {

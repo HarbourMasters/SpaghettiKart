@@ -68,13 +68,24 @@ extern StaffGhost *d_luigi_raceway_staff_ghost;
 
 void func_80004EF0(void) {
     D_80162DA4 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
+    u8 *dest = (u8 *) D_80162DA4;
     osInvalDCache(&D_80162DA4[0], 0x4000);
-    //osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4, 0x4000, &gDmaMesgQueue);
-    memcpy(&D_80162DA4, D_80162DC4, 0x4000);
+
+    u8 *ghost = (u8 *) LOAD_ASSET(D_80162DC4);
+
+    // Manual memcpy required for byte swap
+    for (int i = 0; i < 0x4000; i += 4) {
+        dest[i] = ghost[i + 3];
+        dest[i + 1] = ghost[i + 2];
+        dest[i + 2] = ghost[i + 1];
+        dest[i + 3] = ghost[i];
+    }
+
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;
 }
+
 
 void func_80004FB0(void) {
     D_80162DB4 = (u32 *) &D_802BFB80.arraySize8[0][D_80162DD0][3];

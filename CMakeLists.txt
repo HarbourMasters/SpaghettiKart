@@ -67,7 +67,7 @@ set(GFX_DEBUG_DISASSEMBLER ON)
 add_compile_definitions(
     VERSION_US=1
     ENABLE_RUMBLE=1
-    F3DEX_GBI=1
+    # F3DEX_GBI=1
     _LANGUAGE_C
     _USE_MATH_DEFINES
     CIMGUI_DEFINE_ENUMS_AND_STRUCTS
@@ -357,6 +357,8 @@ endif()
 ################################################################################
 
 option(GBI_UCODE "Use F3DEX_GBI" F3DEX_GBI)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE F3DEX_GBI=1)
 
 if(MSVC)
   if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")

@@ -1349,7 +1349,7 @@ void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16 *source, u1
 
     targetIndex = 0;
     for (var_v1 = 0; var_v1 < height; var_v1++) {
-        sourceIndex = ((arg1 + var_v1) * 320) + arg0;
+        sourceIndex = ((arg1 + var_v1) * SCREEN_WIDTH) + arg0;
         for (var_a1 = 0; var_a1 < width; var_a1++, targetIndex++, sourceIndex++) {
             target[targetIndex] = source[sourceIndex];
         }

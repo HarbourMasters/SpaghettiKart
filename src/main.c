@@ -8,6 +8,7 @@
 #include <decode.h>
 #include <mk64.h>
 #include <stubs.h>
+#include "racing/framebuffer_effects.h"
 
 #include "networking/networking.h"
 
@@ -1222,6 +1223,7 @@ void thread5_iteration(void){
     }
     profiler_log_thread5_time(THREAD5_START);
     config_gfx_pool();
+    FB_CreateFramebuffers();
     read_controllers();
     game_state_handler();
     end_master_display_list();
