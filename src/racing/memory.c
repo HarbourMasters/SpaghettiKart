@@ -1471,7 +1471,7 @@ NewCourseTable gNewCourseTable[] = {
     }, { // banshee_boardwalk
         .data = NULL,
         .vtx = NULL,
-        .vtxSize = 0,
+        .vtxSize = 4326,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0

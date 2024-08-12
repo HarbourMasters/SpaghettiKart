@@ -1297,7 +1297,7 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
             break;
         case COURSE_KALAMARI_DESERT:
-            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000+0x22E00));
+            gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22E00);
             break;
         case COURSE_SHERBET_LAND:
             gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_9AE8);
