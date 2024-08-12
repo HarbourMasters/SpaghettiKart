@@ -16,7 +16,6 @@
 #include "courses/frappe_snowland/course_displaylists.h"
 #include "courses/mario_raceway/course_displaylists.h"
 #include "courses/toads_turnpike/course_displaylists.h"
-#include "courses/kalimari_desert/course_displaylists.h"
 #include "courses/koopa_troopa_beach/course_displaylists.h"
 #include "courses/luigi_raceway/course_displaylists.h"
 #include "courses/moo_moo_farm/course_displaylists.h"

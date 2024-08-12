@@ -17,7 +17,6 @@ extern CourseVtx d_course_skyscraper_vertex[];
 extern CourseVtx d_course_choco_mountain_vertex[];
 extern CourseVtx d_course_frappe_snowland_vertex[];
 extern CourseVtx d_course_toads_turnpike_vertex[];
-extern CourseVtx d_course_kalimari_desert_vertex[];
 extern CourseVtx d_course_koopa_troopa_beach_vertex[];
 extern CourseVtx d_course_luigi_raceway_vertex[];
 extern CourseVtx d_course_moo_moo_farm_vertex[];

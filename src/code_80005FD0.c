@@ -33,6 +33,7 @@
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/path_spawn_metadata.h"
+#include <assets/kalimari_desert_data.h>
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -4309,7 +4310,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
 void func_800120C8(void) {
     s32 i;
     PathNoY *temp;
-    TrackWaypoint *waypoint = (TrackWaypoint *) d_course_kalimari_desert_track_unknown_waypoints;
+    TrackWaypoint *waypoint = (TrackWaypoint *) LOAD_ASSET(d_course_kalimari_desert_track_unknown_waypoints);
 
     for (i = 0; ; i++) {
         if ((u16)waypoint[i].posX == 0x8000) {

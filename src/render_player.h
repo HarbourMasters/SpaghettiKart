@@ -106,26 +106,26 @@ extern Vtx D_800E4EC0[];
 extern Vtx D_800E4FD0[];
 extern Vtx D_800E50D0[];
 
-extern u8 **gKartMarioWheels0[];
-extern u8 **gKartMarioWheels1[];
-extern u8 **gKartLuigiWheels0[];
-extern u8 **gKartLuigiWheels1[];
-extern u8 **gKartBowserWheels0[];
-extern u8 **gKartBowserWheels1[];
-extern u8 **gKartToadWheels0[];
-extern u8 **gKartToadWheels1[];
-extern u8 **gKartYoshiWheels0[];
-extern u8 **gKartYoshiWheels1[];
-extern u8 **gKartDKWheels0[];
-extern u8 **gKartDKWheels1[];
-extern u8 **gKartPeachWheels0[];
-extern u8 **gKartPeachWheels1[];
-extern u8 **gKartWarioWheels0[];
-extern u8 **gKartWarioWheels1[];
+extern u32 gKartMarioWheels0[];
+extern u32 gKartMarioWheels1[];
+extern u32 gKartLuigiWheels0[];
+extern u32 gKartLuigiWheels1[];
+extern u32 gKartBowserWheels0[];
+extern u32 gKartBowserWheels1[];
+extern u32 gKartToadWheels0[];
+extern u32 gKartToadWheels1[];
+extern u32 gKartYoshiWheels0[];
+extern u32 gKartYoshiWheels1[];
+extern u32 gKartDKWheels0[];
+extern u32 gKartDKWheels1[];
+extern u32 gKartPeachWheels0[];
+extern u32 gKartPeachWheels1[];
+extern u32 gKartWarioWheels0[];
+extern u32 gKartWarioWheels1[];
 
 
-extern u16 **D_800DDE34[];
-extern u16 **D_800DDE54[];
+extern u32 *D_800DDE34[];
+extern u32 *D_800DDE54[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually

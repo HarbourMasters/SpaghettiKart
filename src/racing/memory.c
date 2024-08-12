@@ -21,9 +21,14 @@
 #include <assets/luigi_raceway_displaylists.h>
 #include <assets/luigi_raceway_vertices.h>
 #include <assets/luigi_raceway_data.h>
+
 #include <assets/royal_raceway_displaylists.h>
 #include <assets/royal_raceway_vertices.h>
 #include <assets/royal_raceway_data.h>
+
+#include <assets/kalimari_desert_displaylists.h>
+#include <assets/kalimari_desert_vertices.h>
+#include <assets/kalimari_desert_data.h>
 
 #include <assert.h>
 #include <course_offsets.h>
@@ -1441,69 +1446,90 @@ typedef struct {
 } NewCourseTable;
 
 NewCourseTable gNewCourseTable[] = {
-    {
+    { // mario_raceway
         .data = d_course_mario_raceway_dl_0,
         .vtx = d_course_mario_raceway_vertex,
         .vtxSize = 5757,
         .textures = mario_raceway_textures,
         .displaylists = d_course_mario_raceway_packed_dls,
         .dlSize = 3367
-    }, {
+    }, { // choco_mountain
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // bowser_castle
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // banshee_boardwalk
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 4326,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // maze
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // snow
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
+    }, { // koopa_troopa_beach
         .data = NULL,
         .vtx = NULL,
         .vtxSize = 0,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
-    }, {
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
-    }, {
+    }, { // royal_raceway
         .data = d_course_royal_raceway_dl_0,
         .vtx = d_course_royal_raceway_vertex,
         .vtxSize = 8306,
         .textures = royal_raceway_textures,
         .displaylists = d_course_royal_raceway_packed_dls,
         .dlSize = 5670
-    }, {
+    }, { // luigi_raceway
         .data = d_course_luigi_raceway_dl_0,
         .vtx = d_course_luigi_raceway_vertex,
         .vtxSize = 5936,
         .textures = luigi_raceway_textures,
         .displaylists = d_course_luigi_raceway_packed_dls,
         .dlSize = 6377
+    }, { // moo_moo_farm
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // highway
+        .data = NULL,
+        .vtx = NULL,
+        .vtxSize = 0,
+        .textures = NULL,
+        .displaylists = NULL,
+        .dlSize = 0
+    }, { // kalimari_desert
+        .data = d_course_kalimari_desert_dl_0,
+        .vtx = d_course_kalimari_desert_vertex,
+        .vtxSize = 6393,
+        .textures = kalimari_desert_textures,
+        .displaylists = d_course_kalimari_desert_packed_dls,
+        .dlSize = 5328
     }
 };
 
@@ -1572,6 +1598,7 @@ void load_course(s32 courseId) {
     // Extract packed DLs
     u8 *packed = (u8 *) LOAD_ASSET(displaylists);
     Gfx *gfx = (Gfx *) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
+    assert(gfx != NULL);
     gSegmentTable[7] = &gfx[0];
     displaylist_unpack(gfx, packed, 0);
     dlSegEnd = &gfx[dlSize];

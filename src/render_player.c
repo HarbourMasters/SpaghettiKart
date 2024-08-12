@@ -464,110 +464,144 @@ f32 gCharacterSize[] = {
     DK_SIZE, WARIO_SIZE, PEACH_SIZE, BOWSER_SIZE
 };
 
-u8 **gKartMarioWheels0[] = {
-    gKartMario168Wheel0, gKartMario147Wheel0, gKartMario126Wheel0, gKartMario105Wheel0,
-    gKartMario084Wheel0, gKartMario063Wheel0, gKartMario042Wheel0, gKartMario021Wheel0,
-    gKartMario000Wheel0
+
+u32 gKartMarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartMarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartLuigiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartLuigiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartBowserWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartBowserWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartToadWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartToadWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+// Stopped doing this properly here and just copy pasted the below hoping it would work
+
+u32 gKartYoshiWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartYoshiWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartDKWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartDKWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartPeachWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartPeachWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+u32 gKartWarioWheels0[] = { 672, 588, 504, 420, 336, 252, 168, 84, 0 };
+u32 gKartWarioWheels1[] = { 1076, 1076, 996, 916, 916, 916, 836, 756, 756 };
+
+
+// Replace the below ptrs with the indexes into mario_kart_wheels
+// u8 **gKartMarioWheels0[] = {
+//     gKartMario168Wheel0, gKartMario147Wheel0, gKartMario126Wheel0, gKartMario105Wheel0,
+//     gKartMario084Wheel0, gKartMario063Wheel0, gKartMario042Wheel0, gKartMario021Wheel0,
+//     gKartMario000Wheel0
+// };
+
+// u8 **gKartMarioWheels1[] = {
+//     gKartMario269Wheel0, gKartMario269Wheel0, gKartMario249Wheel0, gKartMario229Wheel0,
+//     gKartMario229Wheel0, gKartMario229Wheel0, gKartMario209Wheel0, gKartMario189Wheel0,
+//     gKartMario189Wheel0
+// };
+
+// u8 **gKartLuigiWheels0[] = {
+//     gKartLuigi168Wheel0, gKartLuigi147Wheel0, gKartLuigi126Wheel0, gKartLuigi105Wheel0,
+//     gKartLuigi084Wheel0, gKartLuigi063Wheel0, gKartLuigi042Wheel0, gKartLuigi021Wheel0,
+//     gKartLuigi000Wheel0
+// };
+
+// u8 **gKartLuigiWheels1[] = {
+//     gKartLuigi269Wheel0, gKartLuigi269Wheel0, gKartLuigi249Wheel0, gKartLuigi229Wheel0,
+//     gKartLuigi229Wheel0, gKartLuigi229Wheel0, gKartLuigi209Wheel0, gKartLuigi189Wheel0,
+//     gKartLuigi189Wheel0
+// };
+
+// u8 **gKartBowserWheels0[] = {
+//     gKartBowser168Wheel0, gKartBowser147Wheel0, gKartBowser126Wheel0, gKartBowser105Wheel0,
+//     gKartBowser084Wheel0, gKartBowser063Wheel0, gKartBowser042Wheel0, gKartBowser021Wheel0,
+//     gKartBowser000Wheel0
+// };
+
+// u8 **gKartBowserWheels1[] = {
+//     gKartBowser269Wheel0, gKartBowser269Wheel0, gKartBowser249Wheel0, gKartBowser229Wheel0,
+//     gKartBowser229Wheel0, gKartBowser229Wheel0, gKartBowser209Wheel0, gKartBowser189Wheel0,
+//     gKartBowser189Wheel0
+// };
+
+// u8 **gKartToadWheels0[] = {
+//     gKartToad168Wheel0, gKartToad147Wheel0, gKartToad126Wheel0, gKartToad105Wheel0,
+//     gKartToad084Wheel0, gKartToad063Wheel0, gKartToad042Wheel0, gKartToad021Wheel0,
+//     gKartToad000Wheel0
+// };
+
+// u8 **gKartToadWheels1[] = {
+//     gKartToad269Wheel0, gKartToad269Wheel0, gKartToad249Wheel0, gKartToad229Wheel0,
+//     gKartToad229Wheel0, gKartToad229Wheel0, gKartToad209Wheel0, gKartToad189Wheel0,
+//     gKartToad189Wheel0
+// };
+
+// u8 **gKartYoshiWheels0[] = {
+//     gKartYoshi168Wheel0, gKartYoshi147Wheel0, gKartYoshi126Wheel0, gKartYoshi105Wheel0,
+//     gKartYoshi084Wheel0, gKartYoshi063Wheel0, gKartYoshi042Wheel0, gKartYoshi021Wheel0,
+//     gKartYoshi000Wheel0
+// };
+
+// u8 **gKartYoshiWheels1[] = {
+//     gKartYoshi269Wheel0, gKartYoshi269Wheel0, gKartYoshi249Wheel0, gKartYoshi229Wheel0,
+//     gKartYoshi229Wheel0, gKartYoshi229Wheel0, gKartYoshi209Wheel0, gKartYoshi189Wheel0,
+//     gKartYoshi189Wheel0
+// };
+
+// u8 **gKartDKWheels0[] = {
+//     gKartDK168Wheel0, gKartDK147Wheel0, gKartDK126Wheel0, gKartDK105Wheel0,
+//     gKartDK084Wheel0, gKartDK063Wheel0, gKartDK042Wheel0, gKartDK021Wheel0,
+//     gKartDK000Wheel0
+// };
+
+// u8 **gKartDKWheels1[] = {
+//     gKartDK269Wheel0, gKartDK269Wheel0, gKartDK249Wheel0, gKartDK229Wheel0,
+//     gKartDK229Wheel0, gKartDK229Wheel0, gKartDK209Wheel0, gKartDK189Wheel0,
+//     gKartDK189Wheel0
+// };
+
+// u8 **gKartPeachWheels0[] = {
+//     gKartPeach168Wheel0, gKartPeach147Wheel0, gKartPeach126Wheel0, gKartPeach105Wheel0,
+//     gKartPeach084Wheel0, gKartPeach063Wheel0, gKartPeach042Wheel0, gKartPeach021Wheel0,
+//     gKartPeach000Wheel0
+// };
+
+// u8 **gKartPeachWheels1[] = {
+//     gKartPeach269Wheel0, gKartPeach269Wheel0, gKartPeach249Wheel0, gKartPeach229Wheel0,
+//     gKartPeach229Wheel0, gKartPeach229Wheel0, gKartPeach209Wheel0, gKartPeach189Wheel0,
+//     gKartPeach189Wheel0
+// };
+
+// u8 **gKartWarioWheels0[] = {
+//     gKartWario168Wheel0, gKartWario147Wheel0, gKartWario126Wheel0, gKartWario105Wheel0,
+//     gKartWario084Wheel0, gKartWario063Wheel0, gKartWario042Wheel0, gKartWario021Wheel0,
+//     gKartWario000Wheel0
+// };
+
+// u8 **gKartWarioWheels1[] = {
+//     gKartWario269Wheel0, gKartWario269Wheel0, gKartWario249Wheel0, gKartWario229Wheel0,
+//     gKartWario229Wheel0, gKartWario229Wheel0, gKartWario209Wheel0, gKartWario189Wheel0,
+//     gKartWario189Wheel0
+// };
+
+u32 *D_800DDE34[] = {
+    gKartMarioWheels0, gKartLuigiWheels0, gKartYoshiWheels0, gKartToadWheels0,
+    gKartDKWheels0,    gKartWarioWheels0, gKartPeachWheels0, gKartBowserWheels0
 };
 
-u8 **gKartMarioWheels1[] = {
-    gKartMario269Wheel0, gKartMario269Wheel0, gKartMario249Wheel0, gKartMario229Wheel0,
-    gKartMario229Wheel0, gKartMario229Wheel0, gKartMario209Wheel0, gKartMario189Wheel0,
-    gKartMario189Wheel0
+u32 *D_800DDE54[] = {
+    gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1,
+    gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
 };
 
-u8 **gKartLuigiWheels0[] = {
-    gKartLuigi168Wheel0, gKartLuigi147Wheel0, gKartLuigi126Wheel0, gKartLuigi105Wheel0,
-    gKartLuigi084Wheel0, gKartLuigi063Wheel0, gKartLuigi042Wheel0, gKartLuigi021Wheel0,
-    gKartLuigi000Wheel0
-};
-
-u8 **gKartLuigiWheels1[] = {
-    gKartLuigi269Wheel0, gKartLuigi269Wheel0, gKartLuigi249Wheel0, gKartLuigi229Wheel0,
-    gKartLuigi229Wheel0, gKartLuigi229Wheel0, gKartLuigi209Wheel0, gKartLuigi189Wheel0,
-    gKartLuigi189Wheel0
-};
-
-u8 **gKartBowserWheels0[] = {
-    gKartBowser168Wheel0, gKartBowser147Wheel0, gKartBowser126Wheel0, gKartBowser105Wheel0,
-    gKartBowser084Wheel0, gKartBowser063Wheel0, gKartBowser042Wheel0, gKartBowser021Wheel0,
-    gKartBowser000Wheel0
-};
-
-u8 **gKartBowserWheels1[] = {
-    gKartBowser269Wheel0, gKartBowser269Wheel0, gKartBowser249Wheel0, gKartBowser229Wheel0,
-    gKartBowser229Wheel0, gKartBowser229Wheel0, gKartBowser209Wheel0, gKartBowser189Wheel0,
-    gKartBowser189Wheel0
-};
-
-u8 **gKartToadWheels0[] = {
-    gKartToad168Wheel0, gKartToad147Wheel0, gKartToad126Wheel0, gKartToad105Wheel0,
-    gKartToad084Wheel0, gKartToad063Wheel0, gKartToad042Wheel0, gKartToad021Wheel0,
-    gKartToad000Wheel0
-};
-
-u8 **gKartToadWheels1[] = {
-    gKartToad269Wheel0, gKartToad269Wheel0, gKartToad249Wheel0, gKartToad229Wheel0,
-    gKartToad229Wheel0, gKartToad229Wheel0, gKartToad209Wheel0, gKartToad189Wheel0,
-    gKartToad189Wheel0
-};
-
-u8 **gKartYoshiWheels0[] = {
-    gKartYoshi168Wheel0, gKartYoshi147Wheel0, gKartYoshi126Wheel0, gKartYoshi105Wheel0,
-    gKartYoshi084Wheel0, gKartYoshi063Wheel0, gKartYoshi042Wheel0, gKartYoshi021Wheel0,
-    gKartYoshi000Wheel0
-};
-
-u8 **gKartYoshiWheels1[] = {
-    gKartYoshi269Wheel0, gKartYoshi269Wheel0, gKartYoshi249Wheel0, gKartYoshi229Wheel0,
-    gKartYoshi229Wheel0, gKartYoshi229Wheel0, gKartYoshi209Wheel0, gKartYoshi189Wheel0,
-    gKartYoshi189Wheel0
-};
-
-u8 **gKartDKWheels0[] = {
-    gKartDK168Wheel0, gKartDK147Wheel0, gKartDK126Wheel0, gKartDK105Wheel0,
-    gKartDK084Wheel0, gKartDK063Wheel0, gKartDK042Wheel0, gKartDK021Wheel0,
-    gKartDK000Wheel0
-};
-
-u8 **gKartDKWheels1[] = {
-    gKartDK269Wheel0, gKartDK269Wheel0, gKartDK249Wheel0, gKartDK229Wheel0,
-    gKartDK229Wheel0, gKartDK229Wheel0, gKartDK209Wheel0, gKartDK189Wheel0,
-    gKartDK189Wheel0
-};
-
-u8 **gKartPeachWheels0[] = {
-    gKartPeach168Wheel0, gKartPeach147Wheel0, gKartPeach126Wheel0, gKartPeach105Wheel0,
-    gKartPeach084Wheel0, gKartPeach063Wheel0, gKartPeach042Wheel0, gKartPeach021Wheel0,
-    gKartPeach000Wheel0
-};
-
-u8 **gKartPeachWheels1[] = {
-    gKartPeach269Wheel0, gKartPeach269Wheel0, gKartPeach249Wheel0, gKartPeach229Wheel0,
-    gKartPeach229Wheel0, gKartPeach229Wheel0, gKartPeach209Wheel0, gKartPeach189Wheel0,
-    gKartPeach189Wheel0
-};
-
-u8 **gKartWarioWheels0[] = {
-    gKartWario168Wheel0, gKartWario147Wheel0, gKartWario126Wheel0, gKartWario105Wheel0,
-    gKartWario084Wheel0, gKartWario063Wheel0, gKartWario042Wheel0, gKartWario021Wheel0,
-    gKartWario000Wheel0
-};
-
-u8 **gKartWarioWheels1[] = {
-    gKartWario269Wheel0, gKartWario269Wheel0, gKartWario249Wheel0, gKartWario229Wheel0,
-    gKartWario229Wheel0, gKartWario229Wheel0, gKartWario209Wheel0, gKartWario189Wheel0,
-    gKartWario189Wheel0
-};
-
-u16 **D_800DDE34[] = {
-    (u16 **)gKartMarioWheels0, (u16 **)gKartLuigiWheels0, (u16 **)gKartYoshiWheels0, (u16 **)gKartToadWheels0,
-    (u16 **)gKartDKWheels0,    (u16 **)gKartWarioWheels0, (u16 **)gKartPeachWheels0, (u16 **)gKartBowserWheels0
-};
-
-u16 **D_800DDE54[] = {
-    (u16 **)gKartMarioWheels1, (u16 **)gKartLuigiWheels1, (u16 **)gKartYoshiWheels1, (u16 **)gKartToadWheels1,
-    (u16 **)gKartDKWheels1,    (u16 **)gKartWarioWheels1, (u16 **)gKartPeachWheels1, (u16 **)gKartBowserWheels1
+const char** wheelPtr[] = {
+    mario_kart_wheels, luigi_kart_wheels, yoshi_kart_wheels, toad_kart_wheels,
+    donkeykong_kart_wheels, wario_kart_wheels, peach_kart_wheels, bowser_kart_wheels,
 };
 
 s32 D_800DDE74[] = {
@@ -1787,8 +1821,9 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_t2 = player->unk_240;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
-    u16 *wheel0 = (u16 *) LOAD_ASSET(D_800DDE34[player->characterId][temp_t1]);
-    u16 *wheel1 = (u16 *) LOAD_ASSET(D_800DDE54[player->characterId][temp_t1]);
+    u8 character = player->characterId;
+    u32 wheel0 = (D_800DDE34[player->characterId][temp_t1]);
+    u32 wheel1 = (D_800DDE54[player->characterId][temp_t1]);
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)
@@ -1796,15 +1831,19 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (temp_t0 <= 20) {
-                func_80027C74(player, (uintptr_t*) (wheel0 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (uintptr_t*) (wheel1 + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                int32_t offset = (((((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) ) + 0x600)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                func_80027C74(player, (uintptr_t*) (wheel0 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (uintptr_t*) (wheel1 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
     } else {
@@ -1812,18 +1851,42 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x80000) != 0x80000) && ((player->effects & 0x800000) != 0x800000)
          && ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
+    //printf("---start---\n");
+
+
             if (temp_t0 <= 20) {
-                func_80027C74(player, (uintptr_t*) (wheel0 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+//printf("OFFSET VAL 0x%X\n", ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)));
+//printf("OFFSET IDX %d\n", offset);
+                func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (uintptr_t*) (wheel1 + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+
+// printf("wheel1\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel1 + (((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)), wheel1, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1, player->characterId, temp_t1);
+
+                int32_t offset = (((((temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40))+ 0x600)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                func_80027C74(player, (uintptr_t*) (wheel0 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+// printf("wheel0\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel0 + ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel0, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel0, player->characterId, temp_t1);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel0 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (uintptr_t*) (wheel1 + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+// printf("wheel1_2\n");
+// printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), temp_t0, temp_num, temp_t2, (temp_t2 >> 8));
+// printf("wheel offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel1 + ((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel1, temp_t0);
+// printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1, player->characterId, temp_t1);
+                int32_t offset = (((temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                func_80027C74(player, wheelPtr[character][wheel1 + offset], D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
+//printf("---end---\n");
     }
 }
 
