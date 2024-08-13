@@ -41,6 +41,25 @@
 #include <assets/moo_moo_farm_data.h>
 #include <assets/bowsers_castle_data.h>
 
+Lights1 D_800E45C0[] = {
+    gdSPDefLights1(
+        100, 0, 0,
+        100, 0, 0, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 100, 0,
+        255, 255, 0, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 100, 100,
+        255, 255, 255, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 0, 0,
+        100, 0, 0, 0, -120, 0
+    ),
+};
+
 Lights1 D_800E4620 = gdSPDefLights1(
     150, 180, 250,
     255, 255, 255, 0, 0, 0
@@ -3137,15 +3156,15 @@ void func_80052080(void) {
 
 
 void func_800520C0(s32 arg0) {
-    Lights1 *D_800E45C0l = LOAD_ASSET(D_800E45C0);
+    //Lights1 *D_800E45C0 = LOAD_ASSET(D_800E45C0);
     if (gObjectList[arg0].unk_0D5 == 0) {
-        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0;
-        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = -0x78;
-        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
+        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0;
+        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = -0x78;
+        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
     } else {
-        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0x63;
-        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = 0x42;
-        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
+        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0x63;
+        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = 0x42;
+        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
     }
 }
 
@@ -4246,13 +4265,20 @@ void render_object_neon(s32 cameraId) {
     }
 }
 
+Vec3iu D_800E46F8A[] = {
+    {255, 255, 255}, {255, 255,   0}, {255,   0,   0}, 
+};
+u8 D_800E471CA[] = {
+    0, 1, 2, 3, 2, 1, 0, 
+};
+
 void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
 
-    Vec3iu *A_800E46F8 = LOAD_ASSET(D_800E46F8);
+    //Vec3iu *A_800E46F8 = LOAD_ASSET(D_800E46F8);
 
-    D_80165860 = A_800E46F8[arg0][0];
-    D_8016586C = A_800E46F8[arg0][1];
-    D_80165878 = A_800E46F8[arg0][2];
+    D_80165860 = D_800E46F8A[arg0][0];
+    D_8016586C = D_800E46F8A[arg0][1];
+    D_80165878 = D_800E46F8A[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     func_80044BF8(common_texture_particle_spark[arg1], 32, 32);
@@ -4382,7 +4408,7 @@ void func_80056BF0(s32 bombIndex) {
     BombKart sp40 = gBombKarts[bombIndex];
 
     temp_v0 = D_801655CC % 6U;
-    thing = D_800E471C[temp_v0];
+    thing = D_800E471CA[temp_v0];
     bombFrame = common_texture_bomb[thing];
     D_80183E40[0] = sp40.bombPos[0];
     D_80183E40[1] = sp40.bombPos[1] + 1.0;
