@@ -30,6 +30,10 @@
 #include <assets/kalimari_desert_vertices.h>
 #include <assets/kalimari_desert_data.h>
 
+#include <assets/wario_stadium_displaylists.h>
+#include <assets/wario_stadium_vertices.h>
+#include <assets/wario_stadium_data.h>
+
 #include <assets/moo_moo_farm_displaylists.h>
 #include <assets/moo_moo_farm_vertices.h>
 #include <assets/moo_moo_farm_data.h>
@@ -41,6 +45,10 @@
 #include <assets/choco_mountain_displaylists.h>
 #include <assets/choco_mountain_vertices.h>
 #include <assets/choco_mountain_data.h>
+
+#include <assets/bowsers_castle_displaylists.h>
+#include <assets/bowsers_castle_vertices.h>
+#include <assets/bowsers_castle_data.h>
 
 #include <assets/skyscraper_displaylists.h>
 #include <assets/skyscraper_vertices.h>
@@ -1486,12 +1494,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_choco_mountain_packed_dls,
         .dlSize = 2910
     }, { // bowser_castle
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_bowsers_castle_dl_0,
+        .vtx = d_course_bowsers_castle_vertex,
+        .vtxSize = 9527,
+        .textures = bowsers_castle_textures,
+        .displaylists = d_course_bowsers_castle_packed_dls,
+        .dlSize = 4900
     }, { // banshee_boardwalk
         .data = NULL,
         .vtx = NULL,
@@ -1565,17 +1573,17 @@ NewCourseTable gNewCourseTable[] = {
     }, { // rainbow
         .data = NULL,
         .vtx = NULL,
-        .vtxSize = 0,
+        .vtxSize = 6067,
         .textures = NULL,
         .displaylists = NULL,
         .dlSize = 0
     }, { // wario
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_wario_stadium_dl_0,
+        .vtx = d_course_wario_stadium_vertex,
+        .vtxSize = 6067,
+        .textures = wario_stadium_textures,
+        .displaylists = d_course_wario_stadium_packed_dls,
+        .dlSize = 5272
     }, { // block fort
         .data = d_course_block_fort_dl,
         .vtx = d_course_block_fort_vertex,

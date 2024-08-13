@@ -21,8 +21,6 @@
 #include "courses/dks_jungle_parkway/course_displaylists.h"
 #include "courses/rainbow_road/course_displaylists.h"
 #include "courses/yoshi_valley/course_displaylists.h"
-#include "courses/bowsers_castle/course_displaylists.h"
 #include "courses/sherbet_land/course_displaylists.h"
-#include "courses/wario_stadium/course_displaylists.h"
 
 #endif // ALL_COURSE_PACKED_H

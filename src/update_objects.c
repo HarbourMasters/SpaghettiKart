@@ -37,6 +37,7 @@
 #include "memory.h"
 #include <assets/luigi_raceway_data.h>
 #include <assets/moo_moo_farm_data.h>
+#include <assets/bowsers_castle_data.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {

@@ -4,6 +4,7 @@
 #include <assets/common_data.h>
 #include "courses/all_course_data.h"
 #include <assets/kalimari_desert_data.h>
+#include <assets/bowsers_castle_data.h>
 
 /**
  * @brief Renders the tree actor in Mario rawceay.

@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/bowsers_castle_data.h>
 
 const course_texture bowsers_castle_textures[] = {
     {gTexture64313C,         0x01B8, 0x0800, 0x0},

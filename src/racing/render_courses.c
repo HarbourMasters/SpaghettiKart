@@ -32,6 +32,10 @@
 #include <assets/moo_moo_farm_displaylists.h>
 #include <assets/choco_mountain_data.h>
 #include <assets/choco_mountain_displaylists.h>
+#include <assets/wario_stadium_data.h>
+#include <assets/wario_stadium_displaylists.h>
+#include <assets/bowsers_castle_data.h>
+#include <assets/bowsers_castle_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -372,7 +376,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
             gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
             // d_course_wario_stadium_packed_dl_EC0
-            gSPDisplayList(gDisplayListHead++, 0x07000EC0);
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000EC0));
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -712,7 +716,7 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_bowsers_castle_packed_dl_6A80
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07006A80));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07006A80));
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -722,12 +726,12 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
     }
-    render_course_segments((uintptr_t) bowsers_castle_dls, arg0);
+    render_course_segments(bowsers_castle_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_bowsers_castle_packed_dl_248
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000248));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000248));
 }
 
 void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
@@ -1116,21 +1120,21 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_wario_stadium_packed_dl_A0C8
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700A0C8));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700A0C8));
 
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGBA, G_CC_MODULATERGBA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments((uintptr_t) wario_stadium_dls, arg0);
+    render_course_segments(wario_stadium_dls, arg0);
 
     // d_course_wario_stadium_packed_dl_A228
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700A228));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700A228));
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_wario_stadium_packed_dl_A88
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000A88));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000A88));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
     D_800DC5DC = 88;
@@ -1148,22 +1152,22 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
         }
         switch (currentScreenSection) {
         case 0:
-            copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+            //copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
             break;
         case 1:
-            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
+            //copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
             break;
         case 2:
-            copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
+            //copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
             break;
         case 3:
-            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
+            //copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
             break;
         case 4:
-            copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
+            //copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
             break;
         case 5:
-            copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
+            //copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[prevFrame]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
             break;
         }
     }
@@ -1506,9 +1510,10 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_BOWSER_CASTLE:
-            parse_course_displaylists((uintptr_t) d_course_bowsers_castle_addr);
+            TrackSectionsI *section3 = (TrackSectionsI *) LOAD_ASSET(d_course_bowsers_castle_addr);
+            parse_course_displaylists(section3);
             func_80295C6C();
-            find_vtx_and_set_colours((uintptr_t) d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001350), 0x32, 0, 0, 0);
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_BANSHEE_BOARDWALK:
@@ -1605,25 +1610,26 @@ void func_80295D88(void) {
             }
             break;
         case COURSE_WARIO_STADIUM:
-            parse_course_displaylists((uintptr_t) d_course_wario_stadium_addr);
+            TrackSectionsI *sectionXIV = (TrackSectionsI *) LOAD_ASSET(d_course_wario_stadium_addr);
+            parse_course_displaylists(sectionXIV);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             // d_course_wario_stadium_packed_dl_C50
-            find_vtx_and_set_colours((uintptr_t)0x07000C50, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000C50), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_BD8
-            find_vtx_and_set_colours((uintptr_t)0x07000BD8, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000BD8), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_B60
-            find_vtx_and_set_colours((uintptr_t)0x07000B60, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000B60), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_AE8
-            find_vtx_and_set_colours((uintptr_t)0x07000AE8, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000AE8), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_CC8
-            find_vtx_and_set_colours((uintptr_t)0x07000CC8, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000CC8), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_D50
-            find_vtx_and_set_colours((uintptr_t)0x07000D50, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000D50), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_DD0
-            find_vtx_and_set_colours((uintptr_t)0x07000DD0, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000DD0), 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_E48
-            find_vtx_and_set_colours((uintptr_t)0x07000E48, 100, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000E48), 100, 255, 255, 255);
             break;
         case COURSE_BLOCK_FORT:
             // d_course_block_fort_packed_dl_15C0
