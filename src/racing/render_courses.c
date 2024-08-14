@@ -1220,7 +1220,7 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC *arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_double_deck_packed_dl_738
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x07000738)));
+    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(0x07000738)));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
@@ -1237,13 +1237,13 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_dks_jungle_parkway_packed_dl_92D8
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)segmented_gfx_to_virtual(0x070092D8)));
+        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(0x070092D8)));
     }
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    render_course_segments((uintptr_t) d_course_dks_jungle_parkway_unknown_dl_list, arg0);
+    render_course_segments(dks_jungle_parkway_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
@@ -1664,7 +1664,7 @@ void func_80295D88(void) {
             func_80295C6C();
             D_8015F8E4 =  -475.0f;
             // d_course_dks_jungle_parkway_packed_dl_3FA8
-            find_vtx_and_set_colours((uintptr_t)segmented_gfx_to_virtual(0x07003FA8), 120, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07003FA8), 120, 255, 255, 255);
             break;
         case COURSE_BIG_DONUT:
             // d_course_big_donut_packed_dl_1018

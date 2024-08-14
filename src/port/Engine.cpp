@@ -12,6 +12,7 @@
 #include "resource/importers/TrackSectionsFactory.h"
 #include "resource/importers/TrackWaypointFactory.h"
 #include "resource/importers/ActorSpawnDataFactory.h"
+#include "resource/importers/UnkActorSpawnDataFactory.h"
 #include "resource/importers/ArrayFactory.h"
 #include <Fast3D/Fast3dWindow.h>
 
@@ -74,7 +75,7 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(), RESOURCE_FORMAT_BINARY, "TrackSections", static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackWaypointsV0>(), RESOURCE_FORMAT_BINARY, "Waypoints", static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(), RESOURCE_FORMAT_BINARY, "SpawnData", static_cast<uint32_t>(MK64::ResourceType::SpawnData), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(), RESOURCE_FORMAT_BINARY, "UnkSpawnData", static_cast<uint32_t>(MK64::ResourceType::UnkSpawnData), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryUnkActorSpawnDataV0>(), RESOURCE_FORMAT_BINARY, "UnkSpawnData", static_cast<uint32_t>(MK64::ResourceType::UnkSpawnData), 0);
 
 }
 

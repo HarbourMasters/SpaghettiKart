@@ -18,9 +18,6 @@
 #include "courses/all_course_model.h"
 #include "defines.h"
 
-#include <assets/dks_jungle_parkway_displaylists.h>
-#include <assets/dks_jungle_parkway_vertices.h>
-#include <assets/dks_jungle_parkway_data.h>
 
 #include <assert.h>
 #include <course_offsets.h>
@@ -121,10 +118,16 @@ void *segment_vtx_to_virtual(size_t offset) {
     return (void *) (gSegmentTable[0x04] + (offset));
 }
 
-void *segmented_texture_to_virtual(size_t offset) {
+void *segment5_to_virtual(size_t offset) {
     //printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[0x05] + offset));
-
     return (void *) (gSegmentTable[0x05] + (offset));
+}
+
+void *segmented_texture_to_virtual(uintptr_t addr) {
+    uint32_t segment = SEGMENT_NUMBER(addr);
+    size_t offset = SEGMENT_OFFSET(addr);
+    //printf("seg_texture_to_virt: 0x%llX to 0x%llX\n", offset, (gSegmentTable[segment] + offset));
+    return (void *) (gSegmentTable[segment] + (offset));
 }
 
 void *segmented_uintptr_t_to_virtual(uintptr_t addr) {
@@ -861,7 +864,7 @@ void unpack_tile_load_sync(Gfx *gfx, u8 *args, s8 opcode) {
 
     lo = ((uintptr_t)(uint8_t)G_SETTIMG << 24) | (fmt << 21) | (siz << 19);
     gfx[sGfxSeekPosition].words.w0 = lo;
-    gfx[sGfxSeekPosition].words.w1 = segmented_texture_to_virtual(offset);
+    gfx[sGfxSeekPosition].words.w1 = segment5_to_virtual(offset);
     sGfxSeekPosition++;
 
     gfx[sGfxSeekPosition].words.w0 = tileSync->words.w0;
