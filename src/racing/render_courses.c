@@ -1043,16 +1043,16 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments((uintptr_t) d_course_toads_turnpike_dl_list, arg0);
+    render_course_segments(toads_turnpike_dls, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
     // d_course_toads_turnpike_packed_dl_0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000000));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000000));
     // d_course_toads_turnpike_packed_dl_68
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000068));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000068));
     // d_course_toads_turnpike_packed_dl_D8
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070000D8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070000D8));
     gSPClearGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
@@ -1577,7 +1577,8 @@ void func_80295D88(void) {
             D_801625F0 = 4;
             D_802B87B0 = 993;
             D_802B87B4 = 1000;
-            parse_course_displaylists((uintptr_t) d_course_toads_turnpike_addr);
+            TrackSectionsI *section10 = (TrackSectionsI *) LOAD_ASSET(d_course_toads_turnpike_addr);
+            parse_course_displaylists(section10);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;

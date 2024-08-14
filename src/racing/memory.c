@@ -1506,12 +1506,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_moo_moo_farm_packed_dls,
         .dlSize = 3304
     }, { // highway
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_toads_turnpike_dl_0,
+        .vtx = d_course_toads_turnpike_vertex,
+        .vtxSize = 6359,
+        .textures = toads_turnpike_textures,
+        .displaylists = d_course_toads_turnpike_packed_dls,
+        .dlSize = 3427
     }, { // kalimari_desert
         .data = d_course_kalimari_desert_dl_0,
         .vtx = d_course_kalimari_desert_vertex,

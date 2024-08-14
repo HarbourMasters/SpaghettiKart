@@ -28,16 +28,16 @@ void render_actor_car(Camera *arg0, struct Actor *arg1) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_9);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_9);
                 } else if (temp_f0 < 640000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_10);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_10);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_11);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_11);
                 }
             } else if (temp_f0 < 160000.0f) {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_10);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_10);
             } else {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_11);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_11);
             }
         }
     }

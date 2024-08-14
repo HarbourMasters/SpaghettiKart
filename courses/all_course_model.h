@@ -10,6 +10,7 @@
  * in this file or problems will arise in other parts of the code
  **/
 
+#include <assets/toads_turnpike_vertices.h>
 #include <assets/mario_raceway_vertices.h>
 #include <assets/luigi_raceway_vertices.h>
 #include <assets/royal_raceway_vertices.h>
@@ -26,7 +27,6 @@
 #include <assets/double_deck_vertices.h>
 #include <assets/banshee_boardwalk_vertices.h>
 
-extern CourseVtx d_course_toads_turnpike_vertex[];
 extern CourseVtx d_course_koopa_troopa_beach_vertex[];
 extern CourseVtx d_course_dks_jungle_parkway_vertex[];
 extern CourseVtx d_course_rainbow_road_vertex[];
