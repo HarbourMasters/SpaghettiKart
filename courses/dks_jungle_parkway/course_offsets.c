@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
+#include <assets/dks_jungle_parkway_data.h>
 
 const course_texture dks_jungle_parkway_textures[] = {
     {gTexture648508,          0x01FE, 0x1000, 0x0},
@@ -27,4 +28,33 @@ const course_texture dks_jungle_parkway_textures[] = {
     {gTextureWaves0,          0x04D0, 0x0800, 0x0},
     {gTexture683844,          0x0655, 0x0800, 0x0},
     {0x00000000,              0x0000, 0x0000, 0x0},
+};
+
+const char *d_course_dks_jungle_parkway_unknown_dl_list[] = {
+    d_course_dks_jungle_parkway_dl_20, d_course_dks_jungle_parkway_dl_210, d_course_dks_jungle_parkway_dl_180, d_course_dks_jungle_parkway_dl_310,
+    d_course_dks_jungle_parkway_dl_400, d_course_dks_jungle_parkway_dl_628, d_course_dks_jungle_parkway_dl_560, d_course_dks_jungle_parkway_dl_750,
+    d_course_dks_jungle_parkway_dl_888, d_course_dks_jungle_parkway_dl_B00, d_course_dks_jungle_parkway_dl_A10, d_course_dks_jungle_parkway_dl_C30,
+    d_course_dks_jungle_parkway_dl_D98, d_course_dks_jungle_parkway_dl_1028, d_course_dks_jungle_parkway_dl_EF0, d_course_dks_jungle_parkway_dl_1160,
+    d_course_dks_jungle_parkway_dl_12E8, d_course_dks_jungle_parkway_dl_15E0, d_course_dks_jungle_parkway_dl_1478, d_course_dks_jungle_parkway_dl_1718,
+    d_course_dks_jungle_parkway_dl_1890, d_course_dks_jungle_parkway_dl_1B20, d_course_dks_jungle_parkway_dl_1A00, d_course_dks_jungle_parkway_dl_1C20,
+    d_course_dks_jungle_parkway_dl_1DB8, d_course_dks_jungle_parkway_dl_1FD8, d_course_dks_jungle_parkway_dl_1F20, d_course_dks_jungle_parkway_dl_20A0,
+    d_course_dks_jungle_parkway_dl_2200, d_course_dks_jungle_parkway_dl_2398, d_course_dks_jungle_parkway_dl_2328, d_course_dks_jungle_parkway_dl_2480,
+    d_course_dks_jungle_parkway_dl_2558, d_course_dks_jungle_parkway_dl_2810, d_course_dks_jungle_parkway_dl_2728, d_course_dks_jungle_parkway_dl_2928,
+    d_course_dks_jungle_parkway_dl_2AC0, d_course_dks_jungle_parkway_dl_2D70, d_course_dks_jungle_parkway_dl_2B88, d_course_dks_jungle_parkway_dl_2E30,
+    d_course_dks_jungle_parkway_dl_3010, d_course_dks_jungle_parkway_dl_3338, d_course_dks_jungle_parkway_dl_3100, d_course_dks_jungle_parkway_dl_3498,
+    d_course_dks_jungle_parkway_dl_36A0, d_course_dks_jungle_parkway_dl_3988, d_course_dks_jungle_parkway_dl_3790, d_course_dks_jungle_parkway_dl_3B28,
+    d_course_dks_jungle_parkway_dl_3CC8, d_course_dks_jungle_parkway_dl_3F78, d_course_dks_jungle_parkway_dl_3D88, d_course_dks_jungle_parkway_dl_4100,
+    d_course_dks_jungle_parkway_dl_4250, d_course_dks_jungle_parkway_dl_4470, d_course_dks_jungle_parkway_dl_42F8, d_course_dks_jungle_parkway_dl_45C0,
+    d_course_dks_jungle_parkway_dl_4658, d_course_dks_jungle_parkway_dl_4848, d_course_dks_jungle_parkway_dl_4710, d_course_dks_jungle_parkway_dl_4980,
+    d_course_dks_jungle_parkway_dl_4A38, d_course_dks_jungle_parkway_dl_4C18, d_course_dks_jungle_parkway_dl_4AE8, d_course_dks_jungle_parkway_dl_4D10,
+    d_course_dks_jungle_parkway_dl_4E10, d_course_dks_jungle_parkway_dl_51B0, d_course_dks_jungle_parkway_dl_4FB0, d_course_dks_jungle_parkway_dl_53F8,
+    d_course_dks_jungle_parkway_dl_5580, d_course_dks_jungle_parkway_dl_57A0, d_course_dks_jungle_parkway_dl_5650, d_course_dks_jungle_parkway_dl_5920,
+    d_course_dks_jungle_parkway_dl_59B8, d_course_dks_jungle_parkway_dl_5B90, d_course_dks_jungle_parkway_dl_5A50, d_course_dks_jungle_parkway_dl_5CB0,
+    d_course_dks_jungle_parkway_dl_5D70, d_course_dks_jungle_parkway_dl_5EC8, d_course_dks_jungle_parkway_dl_5DF8, d_course_dks_jungle_parkway_dl_5FA8,
+    d_course_dks_jungle_parkway_dl_6048, d_course_dks_jungle_parkway_dl_62D0, d_course_dks_jungle_parkway_dl_6178, d_course_dks_jungle_parkway_dl_6468,
+    d_course_dks_jungle_parkway_dl_6588, d_course_dks_jungle_parkway_dl_6740, d_course_dks_jungle_parkway_dl_6680, d_course_dks_jungle_parkway_dl_67C0,
+    d_course_dks_jungle_parkway_dl_68D0, d_course_dks_jungle_parkway_dl_6A70, d_course_dks_jungle_parkway_dl_69C8, d_course_dks_jungle_parkway_dl_6AD8,
+    d_course_dks_jungle_parkway_dl_6BE8, d_course_dks_jungle_parkway_dl_6CB8, d_course_dks_jungle_parkway_dl_6C70, d_course_dks_jungle_parkway_dl_6D10,
+    d_course_dks_jungle_parkway_dl_6D88, d_course_dks_jungle_parkway_dl_6E48, d_course_dks_jungle_parkway_dl_6E00, d_course_dks_jungle_parkway_dl_6EB0,
+    d_course_dks_jungle_parkway_dl_6F10, d_course_dks_jungle_parkway_dl_7080, d_course_dks_jungle_parkway_dl_7008, d_course_dks_jungle_parkway_dl_7108,
 };

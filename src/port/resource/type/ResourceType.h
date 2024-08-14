@@ -28,6 +28,7 @@ namespace MK64 {
         Waypoints = 0x57505453,    // WPTS
         Metadata  = 0x4D444154,    // MDAT
         SpawnData = 0x53444154,    // SDAT
+        UnkSpawnData = 0x55534454,     // USDT
         KartAI = 0x44424856, // DBHV
     };
 }

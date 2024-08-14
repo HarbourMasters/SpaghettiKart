@@ -16,6 +16,7 @@ extern const char *royal_raceway_dls[];
 extern Gfx *sherbet_land_dls[];
 extern Gfx *sherbet_land_dls_2[];
 extern Gfx *wario_stadium_dls[];
+extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
 
 extern Gfx toads_turnpike_dl_0[];
 extern Gfx toads_turnpike_dl_1[];

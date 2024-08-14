@@ -4,7 +4,6 @@
 #include "mk64.h"
 
 #include "courses/koopa_troopa_beach/course_data.h"
-#include "courses/dks_jungle_parkway/course_data.h"
 #include "courses/rainbow_road/course_data.h"
 #include "courses/yoshi_valley/course_data.h"
 #include "courses/sherbet_land/course_data.h"

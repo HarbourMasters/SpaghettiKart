@@ -29,6 +29,7 @@
 #include <assets/other_textures.h>
 #include <assets/mario_raceway_data.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/dks_jungle_parkway_data.h>
 #include <assets/wario_stadium_data.h>
 #include <assets/frappe_snowland_data.h>
 
@@ -543,7 +544,7 @@ void render_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
 
 void evaluate_collision_player_palm_trees(Player *player) {
     Vec3f pos;
-    struct UnkActorSpawnData *data = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (data->pos[0] != END_OF_SPAWN_DATA) {
         pos[0] = data->pos[0] * gCourseDirection;
@@ -576,7 +577,7 @@ void evaluate_collision_players_palm_trees(void) {
 }
 
 void func_80298D10(void) {
-    struct UnkActorSpawnData *temp_v1 = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (temp_v1->pos[0] != END_OF_SPAWN_DATA) {
         temp_v1->pos[1] = temp_v1->unk8;
@@ -586,7 +587,7 @@ void func_80298D10(void) {
 }
 
 void render_palm_trees(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
-    struct UnkActorSpawnData *var_s1 = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
     UNUSED s32 pad;
     Vec3f spD4;
     f32 var_f22;
