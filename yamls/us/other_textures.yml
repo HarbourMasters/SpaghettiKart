@@ -3354,7 +3354,7 @@ texture_69C9C4:
   symbol: gTexture69C9C4
   type: texture
   mio0: true
-  ctype: u16
+  ctype: u8
   width: 16
   height: 16
   offset: 0x5AA54

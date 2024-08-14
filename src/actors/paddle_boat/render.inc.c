@@ -5,7 +5,7 @@
 #include "main.h"
 #include "actors.h"
 #include "courses/all_course_data.h"
-#include <assets/dks_jungle_parkway_data.h>
+//#include <assets/dks_jungle_parkway_data.h>
 #include <libultra/gbi.h>
 
 /**
@@ -38,8 +38,8 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
         if (render_set_position(spE0, 1) != 0) {
 
             // Render the boat
-            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_boat_dl);
-            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_railings_dl);
+            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_boat_dl);
+            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_railings_dl);
 
             mtxf_rotate_x(spE0, boat->wheelRot);
             vec3f_set(sp120, 0, 16.0f, -255.0f);
@@ -48,7 +48,7 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
             if (render_set_position(sp60, 3) != 0) {
                 // Render the paddle wheel
                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_paddle_wheel_dl);
+                gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_paddle_wheel_dl);
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             }

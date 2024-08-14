@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include <assets/dks_jungle_parkway_data.h>
+//#include <assets/dks_jungle_parkway_data.h>
 
 /**
  * @brief Renders the kiwano fruit actor.
@@ -24,7 +24,7 @@ void render_actor_kiwano_fruit(UNUSED Camera *camera, Mat4 arg1, struct Actor *a
     maxObjectsReached = render_set_position(arg1, 0) == 0;
     if (maxObjectsReached) { return; }
 
-    addr = (actor->rot[0] << 0xA) + 0x03009000; // Can this be a real symbol? Doesn't match.
+    addr = segmented_texture_to_virtual((actor->rot[0] << 0xA) + 0x03009000);
     gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr),
             G_IM_FMT_CI, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
             G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);

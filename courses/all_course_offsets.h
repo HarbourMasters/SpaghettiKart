@@ -16,7 +16,7 @@ extern const char *royal_raceway_dls[];
 extern Gfx *sherbet_land_dls[];
 extern Gfx *sherbet_land_dls_2[];
 extern Gfx *wario_stadium_dls[];
-extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
+extern const char *dks_jungle_parkway_dls[];
 
 extern Gfx toads_turnpike_dl_0[];
 extern Gfx toads_turnpike_dl_1[];
@@ -36,7 +36,6 @@ extern course_texture big_donut_textures[];
 extern course_texture block_fort_textures[];
 extern course_texture bowsers_castle_textures[];
 extern course_texture choco_mountain_textures[];
-extern course_texture dks_jungle_parkway_textures[];
 extern course_texture double_deck_textures[];
 extern course_texture frappe_snowland_textures[];
 extern course_texture kalimari_desert_textures[];

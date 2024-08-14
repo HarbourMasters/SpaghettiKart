@@ -8,6 +8,7 @@
 #include "courses/yoshi_valley/course_data.h"
 #include "courses/sherbet_land/course_data.h"
 
+#include <assets/dks_jungle_parkway_data.h>
 #include <assets/toads_turnpike_data.h>
 #include <assets/banshee_boardwalk_data.h>
 #include <assets/mario_raceway_data.h>

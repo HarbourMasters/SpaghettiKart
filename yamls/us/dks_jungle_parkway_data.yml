@@ -543,7 +543,7 @@ d_course_dks_jungle_parkway_mario_sign:
   width: 64
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_tree:
   symbol: d_course_dks_jungle_parkway_tree
   type: texture
@@ -551,7 +551,7 @@ d_course_dks_jungle_parkway_tree:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_boat_window_upper:
   symbol: d_course_dks_jungle_parkway_boat_window_upper
   type: texture
@@ -559,7 +559,7 @@ d_course_dks_jungle_parkway_boat_window_upper:
   width: 32
   height: 64
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_boat_window_lower:
   symbol: d_course_dks_jungle_parkway_boat_window_lower
   type: texture
@@ -567,7 +567,7 @@ d_course_dks_jungle_parkway_boat_window_lower:
   width: 32
   height: 64
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_boat_railing:
   symbol: d_course_dks_jungle_parkway_boat_railing
   type: texture
@@ -575,7 +575,7 @@ d_course_dks_jungle_parkway_boat_railing:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_dl_DE48:
   symbol: d_course_dks_jungle_parkway_dl_DE48
   type: gfx
@@ -674,7 +674,7 @@ d_course_dks_jungle_parkway_boat_paddle:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_boat_paddle2:
   symbol: d_course_dks_jungle_parkway_boat_paddle2
   type: texture
@@ -682,7 +682,7 @@ d_course_dks_jungle_parkway_boat_paddle2:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_dl_FAE0:
   symbol: d_course_dks_jungle_parkway_dl_FAE0
   type: gfx
@@ -715,7 +715,7 @@ d_course_dks_jungle_parkway_tree2_top:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_tree2_trunk:
   symbol: d_course_dks_jungle_parkway_tree2_trunk
   type: texture
@@ -723,7 +723,7 @@ d_course_dks_jungle_parkway_tree2_trunk:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_dl_tree1:
   symbol: d_course_dks_jungle_parkway_dl_tree1
   type: gfx
@@ -740,7 +740,7 @@ d_course_dks_jungle_parkway_tree3:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_tree4:
   symbol: d_course_dks_jungle_parkway_tree4
   type: texture
@@ -748,7 +748,7 @@ d_course_dks_jungle_parkway_tree4:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_dl_tree2:
   symbol: d_course_dks_jungle_parkway_dl_tree2
   type: gfx
@@ -765,7 +765,7 @@ d_course_dks_jungle_parkway_tree_trunk:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_tree5:
   symbol: d_course_dks_jungle_parkway_tree5
   type: texture
@@ -773,7 +773,7 @@ d_course_dks_jungle_parkway_tree5:
   width: 32
   height: 32
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_dl_tree3:
   symbol: d_course_dks_jungle_parkway_dl_tree3
   type: gfx
@@ -785,9 +785,12 @@ d_course_dks_jungle_parkway_palm_tree_model:
   count: 16
 d_course_dks_jungle_parkway_palm_tree:
   symbol: d_course_dks_jungle_parkway_palm_tree
-  type: vtx
+  type: texture
   offset: 0x13078
-  count: 16
+  ctype: u16
+  width: 32
+  height: 32
+  format: rgba16
 d_course_dks_jungle_parkway_dl_13878:
   symbol: d_course_dks_jungle_parkway_dl_13878
   type: gfx
@@ -803,7 +806,7 @@ d_course_dks_jungle_parkway_kiwano_tlut:
   width: 16
   height: 16
   format: rgba16
-  ctype: u8
+  ctype: u16
 d_course_dks_jungle_parkway_kiwano_model:
   symbol: d_course_dks_jungle_parkway_kiwano_model
   type: vtx
@@ -826,7 +829,7 @@ d_course_dks_jungle_parkway_tree_spawn:
   symbol: d_course_dks_jungle_parkway_tree_spawn
   type: mk64:unk_spawn_data
   offset: 0x13F78
-  count: 31
+  count: 96
 d_course_dks_jungle_parkway_addr:
   symbol: d_course_dks_jungle_parkway_addr
   type: mk64:track_sections
