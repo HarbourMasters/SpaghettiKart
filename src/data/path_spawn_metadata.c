@@ -9,6 +9,7 @@
 #include <assets/choco_mountain_data.h>
 #include <assets/wario_stadium_data.h>
 #include <assets/bowsers_castle_data.h>
+#include <assets/frappe_snowland_data.h>
 
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour *gKartAIBehaviourLUT[] = {

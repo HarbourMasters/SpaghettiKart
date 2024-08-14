@@ -13,54 +13,10 @@
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "courses/courseTable.h"
+#include "courses/all_course_data.h"
+#include "courses/all_course_packed.h"
+#include "courses/all_course_model.h"
 #include "defines.h"
-#include <assets/mario_raceway_displaylists.h>
-#include <assets/mario_raceway_vertices.h>
-#include <assets/mario_raceway_data.h>
-
-#include <assets/luigi_raceway_displaylists.h>
-#include <assets/luigi_raceway_vertices.h>
-#include <assets/luigi_raceway_data.h>
-
-#include <assets/royal_raceway_displaylists.h>
-#include <assets/royal_raceway_vertices.h>
-#include <assets/royal_raceway_data.h>
-
-#include <assets/kalimari_desert_displaylists.h>
-#include <assets/kalimari_desert_vertices.h>
-#include <assets/kalimari_desert_data.h>
-
-#include <assets/wario_stadium_displaylists.h>
-#include <assets/wario_stadium_vertices.h>
-#include <assets/wario_stadium_data.h>
-
-#include <assets/moo_moo_farm_displaylists.h>
-#include <assets/moo_moo_farm_vertices.h>
-#include <assets/moo_moo_farm_data.h>
-
-#include <assets/big_donut_displaylists.h>
-#include <assets/big_donut_vertices.h>
-#include <assets/big_donut_data.h>
-
-#include <assets/choco_mountain_displaylists.h>
-#include <assets/choco_mountain_vertices.h>
-#include <assets/choco_mountain_data.h>
-
-#include <assets/bowsers_castle_displaylists.h>
-#include <assets/bowsers_castle_vertices.h>
-#include <assets/bowsers_castle_data.h>
-
-#include <assets/skyscraper_displaylists.h>
-#include <assets/skyscraper_vertices.h>
-#include <assets/skyscraper_data.h>
-
-#include <assets/block_fort_displaylists.h>
-#include <assets/block_fort_vertices.h>
-#include <assets/block_fort_data.h>
-
-#include <assets/double_deck_displaylists.h>
-#include <assets/double_deck_vertices.h>
-#include <assets/double_deck_data.h>
 
 #include <assert.h>
 #include <course_offsets.h>
@@ -1501,12 +1457,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_bowsers_castle_packed_dls,
         .dlSize = 4900
     }, { // banshee_boardwalk
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 4326,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_banshee_boardwalk_dl_0,
+        .vtx = d_course_banshee_boardwalk_vertex,
+        .vtxSize = 4945,
+        .textures = banshee_boardwalk_textures,
+        .displaylists = d_course_banshee_boardwalk_packed_dls,
+        .dlSize = 3689
     }, { // maze
         .data = NULL,
         .vtx = NULL,
@@ -1515,12 +1471,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = NULL,
         .dlSize = 0
     }, { // snow
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_frappe_snowland_dl_0,
+        .vtx = d_course_frappe_snowland_vertex,
+        .vtxSize = 5529,
+        .textures = frappe_snowland_textures,
+        .displaylists = d_course_frappe_snowland_packed_dls,
+        .dlSize = 3274
     }, { // koopa_troopa_beach
         .data = NULL,
         .vtx = NULL,

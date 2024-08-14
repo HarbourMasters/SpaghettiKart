@@ -34,6 +34,7 @@
 #include "sounds.h"
 #include "data/path_spawn_metadata.h"
 #include <assets/kalimari_desert_data.h>
+#include <assets/frappe_snowland_data.h>
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -4324,7 +4325,7 @@ void func_800120C8(void) {
 }
 
 void func_80012190(void) {
-    TrackWaypoint *tree = d_frappe_snowland_tree;
+    TrackWaypoint *tree = NULL; // LOAD_ASSET(d_course_dks_jungle_parkway_unknown_waypoints2);
     s32 i;
 
     for (i = 0; ; i++) {

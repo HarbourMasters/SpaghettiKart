@@ -40,6 +40,7 @@
 #include <assets/luigi_raceway_data.h>
 #include <assets/moo_moo_farm_data.h>
 #include <assets/bowsers_castle_data.h>
+#include <assets/frappe_snowland_data.h>
 
 Lights1 D_800E45C0[] = {
     gdSPDefLights1(

@@ -38,6 +38,8 @@
 #include <assets/luigi_raceway_data.h>
 #include <assets/moo_moo_farm_data.h>
 #include <assets/bowsers_castle_data.h>
+#include <assets/frappe_snowland_data.h>
+#include <assets/boo_frames.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {
@@ -4398,7 +4400,7 @@ void func_8007C550(s32 objectIndex) {
 void func_8007C5B4(s32 objectIndex) {
     Object *object;
 
-    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_80165880, 48, 40);
+    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 48, 40);
     object = &gObjectList[objectIndex];
     object->pos[0] = 0.0f;
     object->pos[1] = 0.0f;
@@ -7002,12 +7004,16 @@ void func_8008379C(s32 objectIndex) {
     gObjectList[objectIndex].orientation[2] += gObjectList[objectIndex].primAlpha;
 }
 
+static const char*sSnowmanHeadList[] = {
+    d_course_frappe_snowland_snowman_head
+};
+
 void func_80083868(s32 objectIndex) {
     Object *object;
-
-    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_head, 0x40U, (u16) 0x00000040);
+    Vtx *vtx = (Vtx *) LOAD_ASSET(D_0D0061B0);
+    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, sSnowmanHeadList, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->vertex = D_0D0061B0;
+    object->vertex = vtx;
     object->sizeScaling = 0.1f;
     object->itemDisplay = 0;
     func_80072488(objectIndex);
@@ -7057,7 +7063,7 @@ void func_80083A94(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {
     case 0:
         break;
-    case 1:
+    case 1: // snowman head
         func_80083868(objectIndex);
         break;
     }
@@ -7067,9 +7073,13 @@ void func_80083A94(s32 objectIndex) {
     func_80083948(objectIndex);
 }
 
+static const char*sSnowmanBodyList[] = {
+    d_course_frappe_snowland_snowman_body
+};
+
 void func_80083B0C(s32 objectIndex) {
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
-    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, sSnowmanBodyList, 0x40U, (u16) 0x00000040);
     gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].itemDisplay = 0;
@@ -7094,7 +7104,7 @@ void func_80083C04(s32 objectIndex) {
     switch (object->state) {
     case 0:
         break;
-    case 1:
+    case 1: // snowmanbody
         func_80083B0C(objectIndex);
         break;
     case 2:
@@ -7149,8 +7159,8 @@ void update_snowmen(void) {
     for (var_s0 = 0; var_s0 < NUM_SNOWMEN; var_s0++) {
         var_s4 = indexObjectList1[var_s0];
         var_s3 = indexObjectList2[var_s0];
-        func_80083A94(var_s3);
-        func_80083C04(var_s4);
+        func_80083A94(var_s3); // snowman head
+        func_80083C04(var_s4); // snowman body
         if (is_obj_index_flag_status_inactive(var_s4, 0x00001000) != 0) {
             object = &gObjectList[var_s4];
             if ((func_8008A8B0(object->unk_0D5 - 1, object->unk_0D5 + 1) != 0) && (func_80089B50(var_s4) != 0)) {

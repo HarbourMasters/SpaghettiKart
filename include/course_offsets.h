@@ -27,5 +27,4 @@ extern Gfx toads_turnpike_dl_9[];
 extern Gfx toads_turnpike_dl_10[];
 extern Gfx toads_turnpike_dl_11[];
 
-
 #endif // COURSE_OFFSETS_H

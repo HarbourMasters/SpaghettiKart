@@ -36,6 +36,8 @@
 #include <assets/wario_stadium_displaylists.h>
 #include <assets/bowsers_castle_data.h>
 #include <assets/bowsers_castle_displaylists.h>
+#include <assets/frappe_snowland_data.h>
+#include <assets/frappe_snowland_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -282,7 +284,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             // d_course_banshee_boardwalk_packed_dl_878
-            gSPDisplayList(gDisplayListHead++, 0x07000878);
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000878));
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             gDPPipeSync(gDisplayListHead++);
             break;
@@ -744,7 +746,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     // d_course_banshee_boardwalk_packed_dl_7228
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07007228));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07007228));
 
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
@@ -759,13 +761,13 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     // d_course_banshee_boardwalk_packed_dl_5CD0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005CD0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005CD0));
     // d_course_banshee_boardwalk_packed_dl_4E60
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07004E60));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07004E60));
     // d_course_banshee_boardwalk_packed_dl_69B0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070069B0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070069B0));
 
-    render_course_segments((uintptr_t) banshee_boardwalk_dls, arg0);
+    render_course_segments(banshee_boardwalk_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -773,15 +775,15 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH);
     // d_course_banshee_boardwalk_packed_dl_580
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000580));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000580));
     // d_course_banshee_boardwalk_packed_dl_60
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000060));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000060));
     // d_course_banshee_boardwalk_packed_dl_540
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07000540));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000540));
 
     if (camera->pos[1] < -20.0f) {
         // d_course_banshee_boardwalk_packed_dl_6310
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07006310));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07006310));
     }
     spA8[0] = camera->pos[0];
     spA8[1] = -82.0f;
@@ -813,12 +815,12 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_frappe_snowland_packed_dl_65E0
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070065E0));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070065E0));
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments((uintptr_t) d_course_frappe_snowland_dl_list, arg0);
+    render_course_segments(frappe_snowland_dls, arg0);
 }
 
 void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
@@ -1521,10 +1523,10 @@ void func_80295D88(void) {
             D_801625EC = 0;
             D_801625F4 = 0;
             D_801625F0 = 0;
-            parse_course_displaylists((uintptr_t) d_course_banshee_boardwalk_track_sections);
+            TrackSectionsI *section4 = (TrackSectionsI *) LOAD_ASSET(d_course_banshee_boardwalk_track_sections);
+            parse_course_displaylists(section4);
             func_80295C6C();
-            find_vtx_and_set_colours((uintptr_t) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0,
-                                     0);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
@@ -1534,7 +1536,8 @@ void func_80295D88(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_FRAPPE_SNOWLAND:
-            parse_course_displaylists((uintptr_t) d_course_frappe_snowland_addr);
+            TrackSectionsI *section5 = (TrackSectionsI *) LOAD_ASSET(d_course_frappe_snowland_addr);
+            parse_course_displaylists(section5);
             func_80295C6C();
             D_8015F8E4 = -50.0f;
             break;
@@ -1697,9 +1700,9 @@ void func_802966A0(void) {
             }
             // waterfall animation
             // d_course_koopa_troopa_beach_packed_dl_9D58
-            find_and_set_tile_size((uintptr_t)0x07009D58, 0, D_802B87BC);
+            find_and_set_tile_size(segmented_gfx_to_virtual(0x07009D58), 0, D_802B87BC);
             // d_course_koopa_troopa_beach_packed_dl_9CD0
-            find_and_set_tile_size((uintptr_t)0x07009CD0, 0, D_802B87C4);
+            find_and_set_tile_size(segmented_gfx_to_virtual(0x07009CD0), 0, D_802B87C4);
             D_802B87CC = random_int(300) / 40;
             if (D_802B87C8 < 0) {
                 D_802B87C8 = random_int(300) / 40;
@@ -1708,7 +1711,7 @@ void func_802966A0(void) {
             }
             // Waterfall bubbling effect? (unused)
             // d_course_koopa_troopa_beach_packed_dl_2E8
-            find_and_set_tile_size((uintptr_t)0x070002E8, D_802B87C8, D_802B87CC);
+            find_and_set_tile_size(segmented_gfx_to_virtual(0x070002E8), D_802B87C8, D_802B87CC);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             D_802B87BC++;
@@ -1716,7 +1719,7 @@ void func_802966A0(void) {
             if (D_802B87BC >= 0x100) {
                 D_802B87BC = 0;
             }
-            find_and_set_tile_size((uintptr_t)d_course_banshee_boardwalk_dl_B278, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) LOAD_ASSET(d_course_banshee_boardwalk_dl_B278), 0, D_802B87BC);
             break;
         case COURSE_ROYAL_RACEWAY:
             D_802B87BC -= 20;

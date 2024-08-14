@@ -4636,17 +4636,18 @@ gTextureLakituFishing4:
   height: 72
   format: CI8
   tlut_symbol: common_tlut_lakitu_fishing
-gTextureGhosts: # This contains 29 individual boo images.
-  symbol: gTextureGhosts
-  type: texture
-  mio0: true
-  offset: 0xD0E50
-  ctype: u8
-  width: 48
-  height: 1160
-  mio0: true
-  format: CI8
-  tlut_symbol: gTLUTBoo
+# See boo_frames.yml since its all stuffed into one mio0 file.
+#gTextureGhosts: # This contains 29 individual boo images.
+#  symbol: gTextureGhosts
+#  type: texture
+#  mio0: true
+#  offset: 0xD0E50
+#  ctype: u8
+#  width: 48
+#  height: 1160
+#  mio0: true
+#  format: CI8
+#  tlut_symbol: gTLUTBoo
 exhaust_0:
   symbol: gTextureExhaust0
   type: texture
