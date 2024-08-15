@@ -157,7 +157,7 @@ s16 sIsController1Unplugged;
 s32 D_801625EC;
 s32 D_801625F0;
 s32 D_801625F4;
-s32 D_801625F8;
+uintptr_t D_801625F8;
 f32 D_801625FC;
 
 void func_800029B0(void) {
