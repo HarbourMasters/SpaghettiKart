@@ -420,7 +420,7 @@ void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
     func_802B5D64(0x9000000, arg0, arg1, arg2);
 }
 
-void func_802B5D64(uintptr_t addr, s16 arg1, s16 arg2, s32 arg3) {
+void func_802B5D64(Lights1 *addr, s16 arg1, s16 arg2, s32 arg3) {
     UNUSED s32 pad;
     f32 sp48;
     f32 sp44;

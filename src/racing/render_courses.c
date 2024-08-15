@@ -40,6 +40,8 @@
 #include <assets/bowsers_castle_displaylists.h>
 #include <assets/frappe_snowland_data.h>
 #include <assets/frappe_snowland_displaylists.h>
+#include <assets/yoshi_valley_data.h>
+#include <assets/yoshi_valley_displaylists.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -803,7 +805,7 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    render_course_segments((uintptr_t) d_course_yoshi_valley_dl_list, arg0);
+    render_course_segments(yoshi_valley_dls, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -1532,8 +1534,10 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
-            func_802B5D64((uintptr_t) &d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
-            parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
+            Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
+            func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
+            TrackSectionsI *section4butactually5 = (TrackSectionsI *) LOAD_ASSET(d_course_yoshi_valley_addr);
+            parse_course_displaylists(section4butactually5);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;

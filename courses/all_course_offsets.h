@@ -3,6 +3,7 @@
 
 #include "course_offsets.h"
 
+extern Gfx *yoshi_valley_dls[];
 extern Gfx *toads_turnpike_dls[];
 extern Gfx *banshee_boardwalk_dls[];
 extern Gfx *frappe_snowland_dls[];
@@ -31,24 +32,25 @@ extern Gfx toads_turnpike_dl_9[];
 extern Gfx toads_turnpike_dl_10[];
 extern Gfx toads_turnpike_dl_11[];
 
-extern course_texture banshee_boardwalk_textures[];
-extern course_texture big_donut_textures[];
-extern course_texture block_fort_textures[];
-extern course_texture bowsers_castle_textures[];
-extern course_texture choco_mountain_textures[];
-extern course_texture double_deck_textures[];
-extern course_texture frappe_snowland_textures[];
-extern course_texture kalimari_desert_textures[];
-extern course_texture koopa_troopa_beach_textures[];
-extern course_texture luigi_raceway_textures[];
-extern course_texture mario_raceway_textures[];
-extern course_texture moo_moo_farm_textures[];
-extern course_texture rainbow_road_textures[];
-extern course_texture royal_raceway_textures[];
-extern course_texture sherbet_land_textures[];
-extern course_texture skyscraper_textures[];
-extern course_texture toads_turnpike_textures[];
-extern course_texture wario_stadium_textures[];
-extern course_texture yoshi_valley_textures[];
+extern const course_texture banshee_boardwalk_textures[];
+extern const course_texture big_donut_textures[];
+extern const course_texture block_fort_textures[];
+extern const course_texture bowsers_castle_textures[];
+extern const course_texture choco_mountain_textures[];
+extern const course_texture double_deck_textures[];
+extern const course_texture frappe_snowland_textures[];
+extern const course_texture kalimari_desert_textures[];
+extern const course_texture koopa_troopa_beach_textures[];
+extern const course_texture luigi_raceway_textures[];
+extern const course_texture mario_raceway_textures[];
+extern const course_texture moo_moo_farm_textures[];
+extern const course_texture rainbow_road_textures[];
+extern const course_texture royal_raceway_textures[];
+extern const course_texture sherbet_land_textures[];
+extern const course_texture skyscraper_textures[];
+extern const course_texture toads_turnpike_textures[];
+extern const course_texture wario_stadium_textures[];
+extern const course_texture yoshi_valley_textures[];
+extern const course_texture dks_jungle_parkway_textures[];
 
 #endif

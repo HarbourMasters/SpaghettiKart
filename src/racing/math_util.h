@@ -41,7 +41,7 @@ void mtxf_s16_rotate_z(Mat4, s16);
 void func_802B5B14(Vec3f b, Vec3s rotate); // unused
 void func_802B5CAC(s16, s16, Vec3f);
 void func_802B5D30(s16, s16, s32);
-void func_802B5D64(uintptr_t, s16, s16, s32);
+void func_802B5D64(Lights1*, s16, s16, s32);
 void mtxf_scale(Mat4, f32);
 void mtxf_pos_rotation_xyz(Mat4, Vec3f, Vec3s);
 void mtxf_translate_vec3f_mat3(Vec3f, Mat3);

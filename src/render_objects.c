@@ -32,7 +32,6 @@
 #include "menus.h"
 #include "code_80086E70.h"
 #include "code_800029B0.h"
-#include <assets/data_800E45C0.h>
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"

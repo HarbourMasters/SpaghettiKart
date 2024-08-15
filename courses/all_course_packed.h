@@ -10,9 +10,9 @@
 
 #include "courses/koopa_troopa_beach/course_displaylists.h"
 #include "courses/rainbow_road/course_displaylists.h"
-#include "courses/yoshi_valley/course_displaylists.h"
 #include "courses/sherbet_land/course_displaylists.h"
 
+#include <assets/yoshi_valley_displaylists.h>
 #include <assets/dks_jungle_parkway_displaylists.h>
 #include <assets/toads_turnpike_displaylists.h>
 #include <assets/banshee_boardwalk_displaylists.h>

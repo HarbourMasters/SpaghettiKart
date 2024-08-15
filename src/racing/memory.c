@@ -16,6 +16,7 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "courses/all_course_model.h"
+#include "courses/all_course_offsets.h"
 #include "defines.h"
 
 
@@ -1471,12 +1472,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_banshee_boardwalk_packed_dls,
         .dlSize = 3689
     }, { // maze
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_yoshi_valley_dl_0,
+        .vtx = d_course_yoshi_valley_vertex,
+        .vtxSize = 3720,
+        .textures = yoshi_valley_textures,
+        .displaylists = d_course_yoshi_valley_packed_dls,
+        .dlSize = 4140
     }, { // snow
         .data = d_course_frappe_snowland_dl_0,
         .vtx = d_course_frappe_snowland_vertex,

@@ -40,6 +40,8 @@
 #include <assets/bowsers_castle_data.h>
 #include <assets/frappe_snowland_data.h>
 #include <assets/boo_frames.h>
+#include <assets/yoshi_valley_data.h>
+#include "courses/all_course_offsets.h"
 
 //! @todo unused?
 f32 D_800E43B0[] = {
@@ -6819,16 +6821,16 @@ void update_crabs(void) {
 // https://decomp.me/scratch/PYAg4
 // Stack issue caused by the `test` variable, but removing it causes much, much larger differences
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    YVFlagPoleSpawn *test;
-    gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
-    gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
-    gObjectList[objectIndex].sizeScaling = 0.027f;
-    if (test->rot && test->rot) {}
-    test = &D_800E5DF4[arg1];
-    func_80072488(objectIndex);
-    set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
-    set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
+    // YVFlagPoleSpawn *test;
+    // gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
+    // gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
+    // gObjectList[objectIndex].sizeScaling = 0.027f;
+    // //if (test->rot && test->rot) {}
+    // test = &D_800E5DF4[arg1];
+    // func_80072488(objectIndex);
+    // set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
+    // set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
+    // set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
@@ -6862,11 +6864,15 @@ void func_80083080(void) {
     }
 }
 
+const char *sHedgehogTexList[] = {
+    d_course_yoshi_valley_hedgehog
+};
+
 void func_8008311C(s32 objectIndex, s32 arg1) {
     Object *object;
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
 
-    init_texture_object(objectIndex, d_course_yoshi_valley_hedgehog_tlut, d_course_yoshi_valley_hedgehog, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_yoshi_valley_hedgehog_tlut, sHedgehogTexList, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     object->activeTexture = d_course_yoshi_valley_hedgehog;

@@ -10,6 +10,7 @@
  * in this file or problems will arise in other parts of the code
  **/
 
+#include <assets/yoshi_valley_vertices.h>
 #include <assets/toads_turnpike_vertices.h>
 #include <assets/mario_raceway_vertices.h>
 #include <assets/luigi_raceway_vertices.h>
@@ -30,7 +31,6 @@
 
 extern CourseVtx d_course_koopa_troopa_beach_vertex[];
 extern CourseVtx d_course_rainbow_road_vertex[];
-extern CourseVtx d_course_yoshi_valley_vertex[];
 extern CourseVtx d_course_sherbet_land_vertex[];
 
 #define d_course_big_donut_vertex_count          ARRAY_COUNT(d_course_big_donut_vertex)
