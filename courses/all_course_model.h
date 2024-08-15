@@ -28,8 +28,8 @@
 #include <assets/double_deck_vertices.h>
 #include <assets/banshee_boardwalk_vertices.h>
 #include <assets/dks_jungle_parkway_vertices.h>
+#include <assets/koopa_troopa_beach_vertices.h>
 
-extern CourseVtx d_course_koopa_troopa_beach_vertex[];
 extern CourseVtx d_course_rainbow_road_vertex[];
 extern CourseVtx d_course_sherbet_land_vertex[];
 

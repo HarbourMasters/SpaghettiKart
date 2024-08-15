@@ -35,13 +35,9 @@
 #include <assets/other_textures.h>
 #include "data/some_data.h"
 #include "memory.h"
-#include <assets/luigi_raceway_data.h>
-#include <assets/moo_moo_farm_data.h>
-#include <assets/bowsers_castle_data.h>
-#include <assets/frappe_snowland_data.h>
-#include <assets/boo_frames.h>
-#include <assets/yoshi_valley_data.h>
 #include "courses/all_course_offsets.h"
+#include "courses/all_course_data.h"
+#include <assets/boo_frames.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {
@@ -6722,7 +6718,7 @@ void update_seagulls(void) {
 void init_ktb_crab(s32 objectIndex) {
     Object *object;
 
-    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, (u8*) d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->sizeScaling = 0.15f;
     object->itemDisplay = 0;
@@ -6820,6 +6816,7 @@ void update_crabs(void) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/PYAg4
 // Stack issue caused by the `test` variable, but removing it causes much, much larger differences
+//! @todo Fix flag animations
 void func_80082F1C(s32 objectIndex, s32 arg1) {
     // YVFlagPoleSpawn *test;
     // gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;

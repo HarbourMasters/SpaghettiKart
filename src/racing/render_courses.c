@@ -20,28 +20,7 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
-#include <assets/mario_raceway_data.h>
-#include <assets/mario_raceway_displaylists.h>
-#include <assets/luigi_raceway_data.h>
-#include <assets/luigi_raceway_displaylists.h>
-#include <assets/royal_raceway_data.h>
-#include <assets/royal_raceway_displaylists.h>
-#include <assets/kalimari_desert_data.h>
-#include <assets/kalimari_desert_displaylists.h>
-#include <assets/moo_moo_farm_data.h>
-#include <assets/moo_moo_farm_displaylists.h>
-#include <assets/choco_mountain_data.h>
-#include <assets/choco_mountain_displaylists.h>
-#include <assets/dks_jungle_parkway_data.h>
-#include <assets/dks_jungle_parkway_displaylists.h>
-#include <assets/wario_stadium_data.h>
-#include <assets/wario_stadium_displaylists.h>
-#include <assets/bowsers_castle_data.h>
-#include <assets/bowsers_castle_displaylists.h>
-#include <assets/frappe_snowland_data.h>
-#include <assets/frappe_snowland_displaylists.h>
-#include <assets/yoshi_valley_data.h>
-#include <assets/yoshi_valley_displaylists.h>
+//#include "courses/koopa_troopa_beach/course_offsets.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -310,7 +289,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
                 case 37:
                     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     // d_course_koopa_troopa_beach_packed_dl_9E70
-                    gSPDisplayList(gDisplayListHead++, 0x07009E70);
+                    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07009E70));
                     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     break;
             }
@@ -324,7 +303,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            render_course_segments((uintptr_t)d_course_koopa_troopa_beach_dl_list2, arg0);
+            render_course_segments(koopa_troopa_beach_dls2, arg0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -838,18 +817,18 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_koopa_troopa_beach_packed_dl_9CC0
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07009CC0));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07009CC0));
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07009688));
-    render_course_segments((uintptr_t) d_course_koopa_troopa_beach_dl_list1, arg0);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07009688));
+    render_course_segments(koopa_troopa_beach_dls1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_koopa_troopa_beach_packed_dl_2C0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070002C0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070002C0));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPPipeSync(gDisplayListHead++);
 }
@@ -1548,15 +1527,16 @@ void func_80295D88(void) {
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_KOOPA_BEACH:
-            parse_course_displaylists((uintptr_t) d_course_koopa_troopa_beach_addr);
+            TrackSectionsI *section6 = (TrackSectionsI *) LOAD_ASSET(d_course_koopa_troopa_beach_addr);
+            parse_course_displaylists(section6);
             func_80295C6C();
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_ADE0, -0x6A, 255,
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x0700ADE0), -0x6A, 255,
                                      255, 255);
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_A540, -0x6A, 255,
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x0700A540), -0x6A, 255,
                                      255, 255);
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9E70, -0x6A, 255,
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07009E70), -0x6A, 255,
                                      255, 255);
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_358, -0x6A, 255,
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000358), -0x6A, 255,
                                      255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:

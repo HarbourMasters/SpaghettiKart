@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include "courses/koopa_troopa_beach/course_data.h"
+#include <assets/koopa_troopa_beach_data.h>
 
 /**
  * @brief Renders the palm tree actor.
@@ -34,23 +34,23 @@ void render_actor_palm_tree(Camera *arg0, UNUSED Mat4 arg1, struct PalmTree *arg
 
             switch(arg2->variant) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk1);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_trunk1);
                     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top1);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_top1);
                     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     break;
 
                 case 1:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk2);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_trunk2);
                     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top2);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_top2);
                     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     break;
 
                 case 2:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk3);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_trunk3);
                     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top3);
+                    gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_tree_top3);
                     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     break;
 

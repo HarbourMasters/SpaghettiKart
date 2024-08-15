@@ -740,10 +740,10 @@ void render_object_for_player(s32 cameraId) {
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_object_seagulls(cameraId);
+                    //render_object_seagulls(cameraId);
                 }
             } else {
-                render_object_seagulls(cameraId);
+                //render_object_seagulls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:

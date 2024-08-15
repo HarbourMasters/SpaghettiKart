@@ -1486,12 +1486,12 @@ NewCourseTable gNewCourseTable[] = {
         .displaylists = d_course_frappe_snowland_packed_dls,
         .dlSize = 3274
     }, { // koopa_troopa_beach
-        .data = NULL,
-        .vtx = NULL,
-        .vtxSize = 0,
-        .textures = NULL,
-        .displaylists = NULL,
-        .dlSize = 0
+        .data = d_course_koopa_troopa_beach_dl_0,
+        .vtx = d_course_koopa_troopa_beach_vertex,
+        .vtxSize = 9376,
+        .textures = koopa_troopa_beach_textures,
+        .displaylists = d_course_koopa_troopa_beach_packed_dls,
+        .dlSize = 5720
     }, { // royal_raceway
         .data = d_course_royal_raceway_dl_0,
         .vtx = d_course_royal_raceway_vertex,
