@@ -8,9 +8,8 @@
  * incorrect
  **/
 
-#include "courses/rainbow_road/course_displaylists.h"
-#include "courses/sherbet_land/course_displaylists.h"
-
+#include <assets/rainbow_road_displaylists.h>
+#include <assets/sherbet_land_displaylists.h>
 #include <assets/koopa_troopa_beach_displaylists.h>
 #include <assets/yoshi_valley_displaylists.h>
 #include <assets/dks_jungle_parkway_displaylists.h>

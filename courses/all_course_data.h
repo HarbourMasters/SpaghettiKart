@@ -3,9 +3,8 @@
 
 #include "mk64.h"
 
-#include "courses/rainbow_road/course_data.h"
-#include "courses/sherbet_land/course_data.h"
-
+#include <assets/rainbow_road_data.h>
+#include <assets/sherbet_land_data.h>
 #include <assets/frappe_snowland_data.h>
 #include <assets/koopa_troopa_beach_data.h>
 #include <assets/yoshi_valley_data.h>

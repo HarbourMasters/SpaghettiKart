@@ -29,9 +29,8 @@
 #include <assets/banshee_boardwalk_vertices.h>
 #include <assets/dks_jungle_parkway_vertices.h>
 #include <assets/koopa_troopa_beach_vertices.h>
-
-extern CourseVtx d_course_rainbow_road_vertex[];
-extern CourseVtx d_course_sherbet_land_vertex[];
+#include <assets/sherbet_land_vertices.h>
+#include <assets/rainbow_road_vertices.h>
 
 #define d_course_big_donut_vertex_count          ARRAY_COUNT(d_course_big_donut_vertex)
 #define d_course_block_fort_vertex_count         ARRAY_COUNT(d_course_block_fort_vertex)

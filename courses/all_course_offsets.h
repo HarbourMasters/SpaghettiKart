@@ -3,6 +3,7 @@
 
 #include "course_offsets.h"
 
+extern Gfx *rainbow_road_dls[];
 extern Gfx *yoshi_valley_dls[];
 extern Gfx *toads_turnpike_dls[];
 extern Gfx *banshee_boardwalk_dls[];

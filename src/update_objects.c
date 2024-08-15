@@ -7777,9 +7777,13 @@ void func_80085BB4(s32 objectIndex) {
     func_80072488(objectIndex);
 }
 
+const char *sNeonMushroomList[] = {
+    d_course_rainbow_road_neon_mushroom
+};
+
 void init_obj_neon_mushroom(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -1431.0, 827.0f, -2957.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mushroom_tlut_list, d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_mushroom_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_mushroom_tlut_list)), d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7815,9 +7819,13 @@ void func_80085CA0(s32 objectIndex) {
     }
 }
 
+const char* sNeonList[] = {
+    d_course_rainbow_road_neon_mario
+};
+
 void func_80085DB8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * 799.0, 1193.0f, -5891.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mario_tlut_list, d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_mario_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_mario_tlut_list)), d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7844,9 +7852,13 @@ void func_80085E38(s32 objectIndex) {
     }
 }
 
+const char *sNeonBooList[] = {
+    d_course_rainbow_road_neon_boo
+};
+
 void func_80085EF8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -2013.0, 555.0f, 0.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_boo_tlut_list, d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_boo_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_boo_tlut_list)), d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 

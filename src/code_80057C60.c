@@ -1637,12 +1637,12 @@ void update_object(void) {
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_800842C8();
             }
-            update_penguins();
+            //update_penguins();
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
                 update_neon();
-                update_chain_chomps();
+                //update_chain_chomps();
             }
             break;
         case COURSE_DK_JUNGLE:

@@ -20,7 +20,6 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
-//#include "courses/koopa_troopa_beach/course_offsets.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -321,7 +320,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
 
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
-            render_course_segments((uintptr_t) sherbet_land_dls_2, arg0);
+            render_course_segments(sherbet_land_dls_2, arg0);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {
@@ -329,7 +328,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
                 gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
                 // d_course_sherbet_land_packed_dl_2B48
-                gSPDisplayList(gDisplayListHead++, 0x07002B48);
+                gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07002B48));
             }
             gDPPipeSync(gDisplayListHead++);
             break;
@@ -338,7 +337,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            render_course_segments((uintptr_t) &d_course_rainbow_road_dl_list, arg0);
+            render_course_segments(rainbow_road_dls, arg0);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             gDPPipeSync(gDisplayListHead++);
@@ -1081,7 +1080,7 @@ void render_sherbet_land(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments((uintptr_t) sherbet_land_dls, arg0);
+    render_course_segments(sherbet_land_dls, arg0);
 }
 
 void render_rainbow_road(UNUSED struct UnkStruct_800DC5EC *arg0) {
@@ -1575,28 +1574,30 @@ void func_80295D88(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_SHERBET_LAND:
-            parse_course_displaylists((uintptr_t) d_course_sherbet_land_addr);
+            TrackSectionsI *section12 = (TrackSectionsI *) LOAD_ASSET(d_course_sherbet_land_addr);
+            parse_course_displaylists(section12);
             func_80295C6C();
             D_8015F8E4 = -18.0f;
             // d_course_sherbet_land_packed_dl_1EB8
-            find_vtx_and_set_colours((uintptr_t)0x07001EB8, -0x4C, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001EB8), -0x4C, 255, 255, 255);
             // d_course_sherbet_land_packed_dl_2308
-            find_vtx_and_set_colours((uintptr_t)0x07002308, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002308), -0x6A, 255, 255, 255);
             break;
         case COURSE_RAINBOW_ROAD:
             D_800DC5C8 = 1;
-            parse_course_displaylists((uintptr_t) d_course_rainbow_road_addr);
+            TrackSectionsI *sectionXIIV = (TrackSectionsI *) LOAD_ASSET(d_course_rainbow_road_addr);
+            parse_course_displaylists(sectionXIIV);
             func_80295C6C();
             D_8015F8E4 = 0.0f;
             // d_course_rainbow_road_packed_dl_2068
-            find_vtx_and_set_colours((uintptr_t)0x07002068, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002068), -0x6A, 255, 255, 255);
             // d_course_rainbow_road_packed_dl_1E18
-            find_vtx_and_set_colours((uintptr_t)0x07001E18, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001E18), -0x6A, 255, 255, 255);
             // d_course_rainbow_road_packed_dl_1318
-            find_vtx_and_set_colours((uintptr_t)0x07001318, 255, 255, 255, 0);
+            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001318), 255, 255, 255, 0);
             if (gGamestate != CREDITS_SEQUENCE) {
                 // d_course_rainbow_road_packed_dl_1FB8
-                find_vtx_and_set_colours((uintptr_t)0x07001FB8, -0x6A, 255, 255, 255);
+                find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001FB8), -0x6A, 255, 255, 255);
             }
             break;
         case COURSE_WARIO_STADIUM:
