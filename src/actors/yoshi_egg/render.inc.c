@@ -29,8 +29,12 @@ void render_actor_yoshi_egg(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg,
     }
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-    if ((arg3 > 12) && (arg3 < 20)) {
-        if (temp_f0 < 640000.0f) {
+
+
+    
+    
+    if ( ( (arg3 > 12) && (arg3 < 20) ) || (CVarGetInteger("gDisableLOD", 0) == 1) ) {
+        if ( (temp_f0 < 640000.0f) ) {
             sp54[0] = egg->pos[0];
             sp54[1] = 3.0f;
             sp54[2] = egg->pos[2];
