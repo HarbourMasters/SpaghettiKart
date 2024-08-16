@@ -20,6 +20,7 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
+#include <assert.h>
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -46,29 +47,10 @@ s32 func_80290C20(Camera *camera) {
     return 0;
 }
 
-// Stupid hack to allocate memory to convert a u32 ptr DLs to 64 bit. Should probably be done in torch instead.
-TrackSections trackSectionsBuffer[100];
+void parse_course_displaylists(const char *asset) {
+    TrackSections *section = (TrackSections *) LOAD_ASSET(asset);
 
-void parse_course_displaylists(TrackSectionsI *addr) {
-    TrackSections *section = &trackSectionsBuffer[0];
-
-    while (addr->addr != 0) {
-
-        section->addr = segmented_uintptr_t_to_virtual(addr->addr);
-        section->flags = addr->flags;
-        section->sectionId = addr->sectionId;
-        section->surfaceType = addr->surfaceType;
-
-        //printf("SECTION ADDR: 0x%X\n", section->addr);
-        section++;
-        addr++;
-    }
-    section = &trackSectionsBuffer[0];
-    //section->surfaceType = addr->surfaceType;
-    //section->flags = addr->flags;
-    //section->sectionId = addr->sectionId;
-
-    while(section->addr != 0) {
+    while (section->addr != 0) {
         if (section->flags & 0x8000) {
             D_8015F59C = 1;
         } else {
@@ -1456,9 +1438,8 @@ void func_80295D88(void) {
                 // d_course_mario_raceway_packed_dl_2D68
                 generate_collision_mesh_with_defaults((Gfx *) segmented_gfx_to_virtual(0x07002D68));
             }
-            TrackSectionsI *section = (TrackSectionsI *) LOAD_ASSET(d_course_mario_raceway_addr);
 
-            parse_course_displaylists(section);
+            parse_course_displaylists(d_course_mario_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
@@ -1487,15 +1468,14 @@ void func_80295D88(void) {
                 // d_course_choco_mountain_packed_dl_3C8
                 nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(0x070003C8));
             }
-            TrackSectionsI *section2 = (TrackSectionsI *) LOAD_ASSET(d_course_choco_mountain_addr);
-            parse_course_displaylists(section2);
+
+            parse_course_displaylists(d_course_choco_mountain_addr);
             func_802B5CAC(0x238E, 0x31C7, D_8015F590);
             func_80295C6C();
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_BOWSER_CASTLE:
-            TrackSectionsI *section3 = (TrackSectionsI *) LOAD_ASSET(d_course_bowsers_castle_addr);
-            parse_course_displaylists(section3);
+            parse_course_displaylists(d_course_bowsers_castle_addr);
             func_80295C6C();
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001350), 0x32, 0, 0, 0);
             D_8015F8E4 = -50.0f;
@@ -1505,8 +1485,7 @@ void func_80295D88(void) {
             D_801625EC = 0;
             D_801625F4 = 0;
             D_801625F0 = 0;
-            TrackSectionsI *section4 = (TrackSectionsI *) LOAD_ASSET(d_course_banshee_boardwalk_track_sections);
-            parse_course_displaylists(section4);
+            parse_course_displaylists(d_course_banshee_boardwalk_track_sections);
             func_80295C6C();
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
@@ -1514,20 +1493,17 @@ void func_80295D88(void) {
         case COURSE_YOSHI_VALLEY:
             Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
             func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
-            TrackSectionsI *section4butactually5 = (TrackSectionsI *) LOAD_ASSET(d_course_yoshi_valley_addr);
-            parse_course_displaylists(section4butactually5);
+            parse_course_displaylists(d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_FRAPPE_SNOWLAND:
-            TrackSectionsI *section5 = (TrackSectionsI *) LOAD_ASSET(d_course_frappe_snowland_addr);
-            parse_course_displaylists(section5);
+            parse_course_displaylists(d_course_frappe_snowland_addr);
             func_80295C6C();
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_KOOPA_BEACH:
-            TrackSectionsI *section6 = (TrackSectionsI *) LOAD_ASSET(d_course_koopa_troopa_beach_addr);
-            parse_course_displaylists(section6);
+            parse_course_displaylists(d_course_koopa_troopa_beach_addr);
             func_80295C6C();
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x0700ADE0), -0x6A, 255,
                                      255, 255);
@@ -1539,20 +1515,17 @@ void func_80295D88(void) {
                                      255, 255);
             break;
         case COURSE_ROYAL_RACEWAY:
-            TrackSectionsI *section7 = (TrackSectionsI *) LOAD_ASSET(d_course_royal_raceway_addr);
-            parse_course_displaylists(section7);
+            parse_course_displaylists(d_course_royal_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = -60.0f;
             break;
         case COURSE_LUIGI_RACEWAY:
-            TrackSectionsI *section8 = (TrackSectionsI *) LOAD_ASSET(d_course_luigi_raceway_addr);
-            parse_course_displaylists(section8);
+            parse_course_displaylists(d_course_luigi_raceway_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_MOO_MOO_FARM:
-            TrackSectionsI *section9 = (TrackSectionsI *) LOAD_ASSET(d_course_moo_moo_farm_addr);
-            parse_course_displaylists(section9);
+            parse_course_displaylists(d_course_moo_moo_farm_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
@@ -1562,20 +1535,17 @@ void func_80295D88(void) {
             D_801625F0 = 4;
             D_802B87B0 = 993;
             D_802B87B4 = 1000;
-            TrackSectionsI *section10 = (TrackSectionsI *) LOAD_ASSET(d_course_toads_turnpike_addr);
-            parse_course_displaylists(section10);
+            parse_course_displaylists(d_course_toads_turnpike_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_KALAMARI_DESERT:
-            TrackSectionsI *section11 = (TrackSectionsI *) LOAD_ASSET(d_course_kalimari_desert_addr);
-            parse_course_displaylists(section11);
+            parse_course_displaylists(d_course_kalimari_desert_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_SHERBET_LAND:
-            TrackSectionsI *section12 = (TrackSectionsI *) LOAD_ASSET(d_course_sherbet_land_addr);
-            parse_course_displaylists(section12);
+            parse_course_displaylists(d_course_sherbet_land_addr);
             func_80295C6C();
             D_8015F8E4 = -18.0f;
             // d_course_sherbet_land_packed_dl_1EB8
@@ -1585,8 +1555,7 @@ void func_80295D88(void) {
             break;
         case COURSE_RAINBOW_ROAD:
             D_800DC5C8 = 1;
-            TrackSectionsI *sectionXIIV = (TrackSectionsI *) LOAD_ASSET(d_course_rainbow_road_addr);
-            parse_course_displaylists(sectionXIIV);
+            parse_course_displaylists(d_course_rainbow_road_addr);
             func_80295C6C();
             D_8015F8E4 = 0.0f;
             // d_course_rainbow_road_packed_dl_2068
@@ -1601,8 +1570,7 @@ void func_80295D88(void) {
             }
             break;
         case COURSE_WARIO_STADIUM:
-            TrackSectionsI *sectionXIV = (TrackSectionsI *) LOAD_ASSET(d_course_wario_stadium_addr);
-            parse_course_displaylists(sectionXIV);
+            parse_course_displaylists(d_course_wario_stadium_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             // d_course_wario_stadium_packed_dl_C50
@@ -1644,8 +1612,7 @@ void func_80295D88(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_DK_JUNGLE:
-            TrackSectionsI *section18 = (TrackSectionsI *) LOAD_ASSET(d_course_dks_jungle_parkway_addr);
-            parse_course_displaylists(section18);
+            parse_course_displaylists(d_course_dks_jungle_parkway_addr);
             func_80295C6C();
             D_8015F8E4 =  -475.0f;
             // d_course_dks_jungle_parkway_packed_dl_3FA8

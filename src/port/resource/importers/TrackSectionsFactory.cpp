@@ -3,6 +3,10 @@
 #include "spdlog/spdlog.h"
 #include "libultraship/libultra/gbi.h"
 
+extern "C" {
+    #include "memory.h"
+}
+
 namespace MK64 {
     std::shared_ptr<Ship::IResource> ResourceFactoryBinaryTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> file) {
         if (!FileHasValidFormatAndReader(file)) {
@@ -17,7 +21,8 @@ namespace MK64 {
 
         for (uint32_t i = 0; i < count; i++) {
             TrackSectionsI data;
-            data.addr = reader->ReadUInt32();
+            //                      Convert n64 addr to native addr
+            data.addr = (uintptr_t) segmented_uintptr_t_to_virtual(reader->ReadUInt32());
             data.surfaceType = reader->ReadUByte();
             data.sectionId = reader->ReadUByte();
             data.flags = reader->ReadUInt16();
