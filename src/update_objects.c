@@ -35,7 +35,9 @@
 #include <assets/other_textures.h>
 #include "data/some_data.h"
 #include "memory.h"
-#include <assets/luigi_raceway_data.h>
+#include "courses/all_course_offsets.h"
+#include "courses/all_course_data.h"
+#include <assets/boo_frames.h>
 
 //! @todo unused?
 f32 D_800E43B0[] = {
@@ -4396,7 +4398,7 @@ void func_8007C550(s32 objectIndex) {
 void func_8007C5B4(s32 objectIndex) {
     Object *object;
 
-    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_80165880, 48, 40);
+    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 48, 40);
     object = &gObjectList[objectIndex];
     object->pos[0] = 0.0f;
     object->pos[1] = 0.0f;
@@ -6284,9 +6286,11 @@ void func_8008153C(s32 objectIndex) {
 
             if (gObjectList[loopObjectIndex].state != 0) continue;
 
+            u8 *mole = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_dirt);
+
             init_object(loopObjectIndex, 0);
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
-            gObjectList[loopObjectIndex].tlutList = d_course_moo_moo_farm_mole_dirt;
+            gObjectList[loopObjectIndex].tlutList = mole;
             gObjectList[loopObjectIndex].sizeScaling = 0.15f;
             gObjectList[loopObjectIndex].velocity[1] = random_int(0x000AU);
             gObjectList[loopObjectIndex].velocity[1] = (gObjectList[loopObjectIndex].velocity[1] * 0.1) + 4.8;
@@ -6319,7 +6323,9 @@ void func_80081790(s32 objectIndex) {
 }
 
 void func_80081848(s32 objectIndex) {
-    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, (u8*) d_course_moo_moo_farm_mole_frames, 0x20U, (u16) 0x00000040);
+    u8 *mole = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_frames);
+    u8 *tlut = (u8 *) LOAD_ASSET(d_course_moo_moo_farm_mole_tlut);
+    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, (u8*) mole, 0x20U, (u16) 0x00000040);
     gObjectList[objectIndex].sizeScaling = 0.15f;
     gObjectList[objectIndex].itemDisplay = 0;
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6712,7 +6718,7 @@ void update_seagulls(void) {
 void init_ktb_crab(s32 objectIndex) {
     Object *object;
 
-    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, (u8*) d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->sizeScaling = 0.15f;
     object->itemDisplay = 0;
@@ -6810,17 +6816,18 @@ void update_crabs(void) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/PYAg4
 // Stack issue caused by the `test` variable, but removing it causes much, much larger differences
+//! @todo Fix flag animations
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    YVFlagPoleSpawn *test;
-    gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
-    gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
-    gObjectList[objectIndex].sizeScaling = 0.027f;
-    if (test->rot && test->rot) {}
-    test = &D_800E5DF4[arg1];
-    func_80072488(objectIndex);
-    set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
-    set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
+    // YVFlagPoleSpawn *test;
+    // gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
+    // gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
+    // gObjectList[objectIndex].sizeScaling = 0.027f;
+    // //if (test->rot && test->rot) {}
+    // test = &D_800E5DF4[arg1];
+    // func_80072488(objectIndex);
+    // set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
+    // set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
+    // set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
@@ -6854,11 +6861,15 @@ void func_80083080(void) {
     }
 }
 
+const char *sHedgehogTexList[] = {
+    d_course_yoshi_valley_hedgehog
+};
+
 void func_8008311C(s32 objectIndex, s32 arg1) {
     Object *object;
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
 
-    init_texture_object(objectIndex, d_course_yoshi_valley_hedgehog_tlut, d_course_yoshi_valley_hedgehog, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_yoshi_valley_hedgehog_tlut, sHedgehogTexList, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     object->activeTexture = d_course_yoshi_valley_hedgehog;
@@ -6996,12 +7007,16 @@ void func_8008379C(s32 objectIndex) {
     gObjectList[objectIndex].orientation[2] += gObjectList[objectIndex].primAlpha;
 }
 
+static const char*sSnowmanHeadList[] = {
+    d_course_frappe_snowland_snowman_head
+};
+
 void func_80083868(s32 objectIndex) {
     Object *object;
-
-    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_head, 0x40U, (u16) 0x00000040);
+    Vtx *vtx = (Vtx *) LOAD_ASSET(D_0D0061B0);
+    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, sSnowmanHeadList, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->vertex = D_0D0061B0;
+    object->vertex = vtx;
     object->sizeScaling = 0.1f;
     object->itemDisplay = 0;
     func_80072488(objectIndex);
@@ -7051,7 +7066,7 @@ void func_80083A94(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {
     case 0:
         break;
-    case 1:
+    case 1: // snowman head
         func_80083868(objectIndex);
         break;
     }
@@ -7061,9 +7076,13 @@ void func_80083A94(s32 objectIndex) {
     func_80083948(objectIndex);
 }
 
+static const char*sSnowmanBodyList[] = {
+    d_course_frappe_snowland_snowman_body
+};
+
 void func_80083B0C(s32 objectIndex) {
     Vtx *vtx = (Vtx *) LOAD_ASSET(common_vtx_hedgehog);
-    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, sSnowmanBodyList, 0x40U, (u16) 0x00000040);
     gObjectList[objectIndex].vertex = vtx;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].itemDisplay = 0;
@@ -7088,7 +7107,7 @@ void func_80083C04(s32 objectIndex) {
     switch (object->state) {
     case 0:
         break;
-    case 1:
+    case 1: // snowmanbody
         func_80083B0C(objectIndex);
         break;
     case 2:
@@ -7143,8 +7162,8 @@ void update_snowmen(void) {
     for (var_s0 = 0; var_s0 < NUM_SNOWMEN; var_s0++) {
         var_s4 = indexObjectList1[var_s0];
         var_s3 = indexObjectList2[var_s0];
-        func_80083A94(var_s3);
-        func_80083C04(var_s4);
+        func_80083A94(var_s3); // snowman head
+        func_80083C04(var_s4); // snowman body
         if (is_obj_index_flag_status_inactive(var_s4, 0x00001000) != 0) {
             object = &gObjectList[var_s4];
             if ((func_8008A8B0(object->unk_0D5 - 1, object->unk_0D5 + 1) != 0) && (func_80089B50(var_s4) != 0)) {
@@ -7758,9 +7777,13 @@ void func_80085BB4(s32 objectIndex) {
     func_80072488(objectIndex);
 }
 
+const char *sNeonMushroomList[] = {
+    d_course_rainbow_road_neon_mushroom
+};
+
 void init_obj_neon_mushroom(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -1431.0, 827.0f, -2957.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mushroom_tlut_list, d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_mushroom_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_mushroom_tlut_list)), d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7796,9 +7819,13 @@ void func_80085CA0(s32 objectIndex) {
     }
 }
 
+const char* sNeonList[] = {
+    d_course_rainbow_road_neon_mario
+};
+
 void func_80085DB8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * 799.0, 1193.0f, -5891.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mario_tlut_list, d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_mario_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_mario_tlut_list)), d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7825,9 +7852,13 @@ void func_80085E38(s32 objectIndex) {
     }
 }
 
+const char *sNeonBooList[] = {
+    d_course_rainbow_road_neon_boo
+};
+
 void func_80085EF8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -2013.0, 555.0f, 0.0f);
-    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_boo_tlut_list, d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, load_lakitu_tlut_x64(d_course_rainbow_road_neon_boo_tlut_list, ARRAY_COUNT(d_course_rainbow_road_neon_boo_tlut_list)), d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 

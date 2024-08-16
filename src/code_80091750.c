@@ -8466,8 +8466,7 @@ void func_800A761C(struct_8018D9E0_entry *arg0) {
     UNUSED s32 stackPadding0;
     s32 sp48;
     s32 sp44;
-    UNUSED s32 stackPadding1;
-    char sp3C[3];
+    char sp3C[5];
     s32 temp_a0;
 
     temp_a0 = D_802874D8.unk1D + 1;

@@ -169,6 +169,6 @@ void load_credits(void) {
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}
-    D_801625F8 = ((s32)gHeapEndPtr - gNextFreeMemoryAddress);
+    D_801625F8 = ((uintptr_t)gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32)D_801625F8 / 1000.0f);
 }

@@ -3,6 +3,7 @@
 
 #include <libultraship.h>
 #include <string.h>
+#include <libultra/gbi.h>
 
 /**
  * @file mk64.h
@@ -119,7 +120,7 @@ enum SURFACE_TYPE {
 
 #define MACRO_COLOR_FLAG(r, g, b, flag) (r&~0x3) | (flag & 0x3), (g&~0x3) | ((flag>>2) & 0x3), b
 
-// libultra
+// Extra gbi commands
 void gSPSegmentLoadRes(void* value, int segNum, uintptr_t target);
 void gSPDisplayList(Gfx* pkt, Gfx* dl);
 void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);

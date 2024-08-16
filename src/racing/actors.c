@@ -29,6 +29,9 @@
 #include <assets/other_textures.h>
 #include <assets/mario_raceway_data.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/dks_jungle_parkway_data.h>
+#include <assets/wario_stadium_data.h>
+#include <assets/frappe_snowland_data.h>
 
 // Appears to be textures
 // or tluts
@@ -476,7 +479,7 @@ void render_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     Vec3f sp88;
     u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
 
-    var_t1 = d_course_moo_moo_farm_cow_spawn;
+    var_t1 = (struct ActorSpawnData *) LOAD_ASSET(d_course_moo_moo_farm_cow_spawn);
     D_8015F704 = 6.4e7f;
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -541,7 +544,7 @@ void render_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
 
 void evaluate_collision_player_palm_trees(Player *player) {
     Vec3f pos;
-    struct UnkActorSpawnData *data = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (data->pos[0] != END_OF_SPAWN_DATA) {
         pos[0] = data->pos[0] * gCourseDirection;
@@ -574,7 +577,7 @@ void evaluate_collision_players_palm_trees(void) {
 }
 
 void func_80298D10(void) {
-    struct UnkActorSpawnData *temp_v1 = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (temp_v1->pos[0] != END_OF_SPAWN_DATA) {
         temp_v1->pos[1] = temp_v1->unk8;
@@ -584,7 +587,7 @@ void func_80298D10(void) {
 }
 
 void render_palm_trees(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
-    struct UnkActorSpawnData *var_s1 = d_course_dks_jungle_parkway_tree_spawn;
+    struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
     UNUSED s32 pad;
     Vec3f spD4;
     f32 var_f22;
@@ -831,7 +834,7 @@ void spawn_piranha_plants(const char *spawnData) {
 }
 
 void spawn_palm_trees(struct ActorSpawnData *spawnData) {
-    struct ActorSpawnData *temp_s0 = spawnData;
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     struct PalmTree *temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;

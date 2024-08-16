@@ -403,7 +403,7 @@ void DrawMenuBarIcon() {
 }
 
 void DrawGameMenu() {
-    if (UIWidgets::BeginMenu("Lylat64")) {
+    if (UIWidgets::BeginMenu("Spaghetti")) {
         if (UIWidgets::MenuItem("Reset",
 #ifdef __APPLE__
                 "Command-R"
@@ -437,14 +437,8 @@ void DrawEnhancementsMenu() {
             UIWidgets::CVarCheckbox("Ignore Rendering Limits", "gIgnoreRenderDistance", {
                 .tooltip = "Renders game objects regardless of camera distance"
             });
-            UIWidgets::CVarCheckbox("Select any star from menu", "gSelectAllStars", {
-                .tooltip = "Let's you select any star from the menu regardless of the courses completion status."
-            });
-            UIWidgets::CVarCheckbox("Collecting Stars Will Not Exit Level", "gStarNoExit", {
-                .tooltip = "Stars act like the 100 coin star and will not take you out of the level"
-            });
-            UIWidgets::CVarCheckbox("Avoid playing peach cutscene", "gDisablePeachCutscene", {
-                .tooltip = "Avoid playing the peach cutscene when starting a new game"
+            UIWidgets::CVarCheckbox("Select any star from menu", "gCompletedGame", {
+                .tooltip = "Unlocks extra mode and sets all gold cups."
             });
             ImGui::EndMenu();
         }

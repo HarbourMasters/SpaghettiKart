@@ -27,16 +27,16 @@ void render_actor_tanker_truck(Camera *camera, struct Actor* arg1) {
             if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
 
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_6);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_6);
                 } else if (temp_f0 < 640000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_7);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_7);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_8);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_8);
                 }
                 } else if (temp_f0 < 160000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_7);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_7);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_8);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_8);
                 }
         }
     }

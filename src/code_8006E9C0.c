@@ -26,6 +26,7 @@
 #include "code_80091750.h"
 #include "src/data/some_data.h"
 #include "effects.h"
+#include <assets/boo_frames.h>
 
 void init_hud(void) {
 
@@ -742,6 +743,10 @@ void func_80070714(void) {
     D_80165748 = 0xA;
 }
 
+const char *sBoardwalkTexList[] = {
+    gTextureBat1, gTextureBat2, gTextureBat3, gTextureBat4
+};
+
 void init_course_object(void) {
     s32 objectId;
     s32 i;
@@ -807,7 +812,7 @@ void init_course_object(void) {
     case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != CREDITS_SEQUENCE) {
             objectId = indexObjectList1[0];
-            init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
+            init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U, (u16) 0x00000040);
             gObjectList[objectId].orientation[0] = 0;
             gObjectList[objectId].orientation[1] = 0;
             gObjectList[objectId].orientation[2] = 0x8000;

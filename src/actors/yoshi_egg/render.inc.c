@@ -2,7 +2,6 @@
 #include <actors.h>
 #include <defines.h>
 #include <main.h>
-#include "courses/yoshi_valley/course_data.h"
 
 /**
  * @brief Renders the Yoshi egg actor.

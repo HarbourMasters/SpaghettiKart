@@ -5,7 +5,7 @@
 #include <libultra/gbi.h>
 
 typedef struct {
-    uint32_t addr;
+    uintptr_t addr;
     uint8_t surfaceType;
     uint8_t sectionId;
     uint16_t flags;

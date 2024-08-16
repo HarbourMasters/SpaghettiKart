@@ -13,6 +13,7 @@
 #include "podium_ceremony_actors.h"
 #include "render_player.h"
 #include "defines.h"
+#include "memory.h"
 
 struct UnkStruct80287560 {
     s16 unk0;
@@ -75,7 +76,51 @@ void func_80281D00(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284F70));
+    
+    //gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284F70));
+
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070067E8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700AEF8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07001438));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700A970));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000CE0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000E88));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700A618));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x0700AC30));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003728));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036B8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003628));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003540));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DC0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E50));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F18));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070050B0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005138));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070055D0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005B50));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005C00));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005D18));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005DC8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005EF8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07005740));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070057F0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070058E8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07001788));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07001AA0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07001A30));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070023F8));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07002478));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003790));
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070006D0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070004D0));
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000840));
+
     render_players_on_screen_one();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();

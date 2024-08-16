@@ -32,12 +32,79 @@
 #include "menus.h"
 #include "code_80086E70.h"
 #include "code_800029B0.h"
-#include <assets/data_800E45C0.h>
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"
 #include <assets/some_data.h>
 #include <assets/luigi_raceway_data.h>
+#include <assets/moo_moo_farm_data.h>
+#include <assets/bowsers_castle_data.h>
+#include <assets/frappe_snowland_data.h>
+
+Lights1 D_800E45C0[] = {
+    gdSPDefLights1(
+        100, 0, 0,
+        100, 0, 0, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 100, 0,
+        255, 255, 0, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 100, 100,
+        255, 255, 255, 0, -120, 0
+    ),
+    gdSPDefLights1(
+        100, 0, 0,
+        100, 0, 0, 0, -120, 0
+    ),
+};
+
+Lights1 D_800E4620 = gdSPDefLights1(
+    150, 180, 250,
+    255, 255, 255, 0, 0, 0
+);
+
+Lights1 D_800E4638 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, -120, 0
+);
+
+Lights1 D_800E4650 = gdSPDefLights1(
+    85, 85, 0,
+    255, 255, 0, 0, 120, 0
+);
+
+Lights1 D_800E4668 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, -66, 82, -55
+);
+
+Lights1 D_800E4680 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, 0, 120
+);
+
+Lights1 D_800E4698 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, 0, 120
+);
+
+Lights1 D_800E46B0 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, 0, 120
+);
+
+Lights1 D_800E46C8 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, 0, 120
+);
+
+Lights1 D_800E46E0 = gdSPDefLights1(
+    85, 85, 85,
+    255, 255, 255, 0, 0, 120
+);
+
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
@@ -3089,15 +3156,15 @@ void func_80052080(void) {
 
 
 void func_800520C0(s32 arg0) {
-    Lights1 *D_800E45C0l = LOAD_ASSET(D_800E45C0);
+    //Lights1 *D_800E45C0 = LOAD_ASSET(D_800E45C0);
     if (gObjectList[arg0].unk_0D5 == 0) {
-        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0;
-        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = -0x78;
-        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
+        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0;
+        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = -0x78;
+        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
     } else {
-        D_800E45C0l[0].l[0].l.dir[0] = D_800E45C0l[1].l[0].l.dir[0] = D_800E45C0l[2].l[0].l.dir[0] = D_800E45C0l[3].l[0].l.dir[0] = 0x63;
-        D_800E45C0l[0].l[0].l.dir[1] = D_800E45C0l[1].l[0].l.dir[1] = D_800E45C0l[2].l[0].l.dir[1] = D_800E45C0l[3].l[0].l.dir[1] = 0x42;
-        D_800E45C0l[0].l[0].l.dir[2] = D_800E45C0l[1].l[0].l.dir[2] = D_800E45C0l[2].l[0].l.dir[2] = D_800E45C0l[3].l[0].l.dir[2] = 0;
+        D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0x63;
+        D_800E45C0[0].l[0].l.dir[1] = D_800E45C0[1].l[0].l.dir[1] = D_800E45C0[2].l[0].l.dir[1] = D_800E45C0[3].l[0].l.dir[1] = 0x42;
+        D_800E45C0[0].l[0].l.dir[2] = D_800E45C0[1].l[0].l.dir[2] = D_800E45C0[2].l[0].l.dir[2] = D_800E45C0[3].l[0].l.dir[2] = 0;
     }
 }
 
@@ -3225,15 +3292,15 @@ void func_800528EC(s32 arg0) {
     s32 var_s3;
     s32 objectIndex;
     Object *object;
-    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
+    //Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
 
     D_80183E80[0] = D_8016582C[0];
     D_80183E80[1] = D_8016582C[1];
     D_80183E80[2] = D_8016582C[2];
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     gSPNumLights(gDisplayListHead++, 1);
-    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
+    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
@@ -3271,12 +3338,12 @@ void func_800528EC(s32 arg0) {
 void render_ice_block(s32 arg0) {
     s32 playerId;
     s32 objectIndex;
-    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
-    D_800E4620l.l[0].l.dir[0] = D_80165840[0];
-    D_800E4620l.l[0].l.dir[1] = D_80165840[1];
-    D_800E4620l.l[0].l.dir[2] = D_80165840[2];
-    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
+    //Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
+    D_800E4620.l[0].l.dir[0] = D_80165840[0];
+    D_800E4620.l[0].l.dir[1] = D_80165840[1];
+    D_800E4620.l[0].l.dir[2] = D_80165840[2];
+    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
     for (playerId = 0; playerId < gPlayerCountSelection1; playerId++) {
         objectIndex = gIndexLakituList[playerId];
         if (objectIndex) {}
@@ -3304,12 +3371,12 @@ void func_80052D70(s32 playerId) {
 
 void func_80052E30(UNUSED s32 arg0) {
     s32 var_s0;
-    Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
-    D_800E4620l.l[0].l.dir[0] = D_80165840[0];
-    D_800E4620l.l[0].l.dir[1] = D_80165840[1];
-    D_800E4620l.l[0].l.dir[2] = D_80165840[2];
-    gSPLight(gDisplayListHead++, &D_800E4620l.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4620l.a, LIGHT_2);
+    //Lights1 D_800E4620l = *(Lights1 *) LOAD_ASSET(D_800E4620);
+    D_800E4620.l[0].l.dir[0] = D_80165840[0];
+    D_800E4620.l[0].l.dir[1] = D_80165840[1];
+    D_800E4620.l[0].l.dir[2] = D_80165840[2];
+    gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0;
     D_80183E80[2] = 0;
@@ -3415,42 +3482,42 @@ void render_lakitu(s32 cameraId) {
 
 void func_800534A4(UNUSED s32 arg0) {
     func_800419F8();
-    Lights1 D_800E4638l = *(Lights1 *) LOAD_ASSET(D_800E4638);
-    D_800E4638l.l[0].l.dir[0] = D_80165840[0];
-    D_800E4638l.l[0].l.dir[1] = D_80165840[1];
-    D_800E4638l.l[0].l.dir[2] = D_80165840[2];
+    //Lights1 *D_800E4638l = (Lights1 *) LOAD_ASSET(D_800E4638);
+    D_800E4638.l[0].l.dir[0] = D_80165840[0];
+    D_800E4638.l[0].l.dir[1] = D_80165840[1];
+    D_800E4638.l[0].l.dir[2] = D_80165840[2];
 }
 
 void func_800534E8(s32 objectIndex) {
 
-    Lights1 D_800E4638l = *(Lights1 *) LOAD_ASSET(D_800E4638);
-    Lights1 D_800E4650l = *(Lights1 *) LOAD_ASSET(D_800E4650);
-    Lights1 D_800E4668l = *(Lights1 *) LOAD_ASSET(D_800E4668);
-    Lights1 D_800E4680l = *(Lights1 *) LOAD_ASSET(D_800E4680);
-    Lights1 D_800E4698l = *(Lights1 *) LOAD_ASSET(D_800E4698);
+    //Lights1 *D_800E4638l = (Lights1 *) LOAD_ASSET(D_800E4638);
+    //Lights1 *D_800E4650l = (Lights1 *) LOAD_ASSET(D_800E4650);
+    //Lights1 *D_800E4668l = (Lights1 *) LOAD_ASSET(D_800E4668);
+    //Lights1 *D_800E4680l = (Lights1 *) LOAD_ASSET(D_800E4680);
+    //Lights1 *D_800E4698l = (Lights1 *) LOAD_ASSET(D_800E4698);
     
 
     // Why these don't just use `gSPSetLights1` calls...
     switch (gObjectList[objectIndex].type) { // hmm very strange 80165C18
     case 0:
-        gSPLight(gDisplayListHead++, &D_800E4638l.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4638l.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4638.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4638.a, LIGHT_2);
         break;
     case 1:
-        gSPLight(gDisplayListHead++, &D_800E4650l.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4650l.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4650.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4650.a, LIGHT_2);
         break;
     case 2:
-        gSPLight(gDisplayListHead++, &D_800E4668l.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4668l.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
         break;
     case 3:
-        gSPLight(gDisplayListHead++, &D_800E4680l.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4680l.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4680.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4680.a, LIGHT_2);
         break;
     case 4:
-        gSPLight(gDisplayListHead++, &D_800E4698l.l[0], LIGHT_1);
-        gSPLight(gDisplayListHead++, &D_800E4698l.a, LIGHT_2);
+        gSPLight(gDisplayListHead++, &D_800E4698.l[0], LIGHT_1);
+        gSPLight(gDisplayListHead++, &D_800E4698.a, LIGHT_2);
         break;
     default:
         break;
@@ -3477,7 +3544,7 @@ void render_object_thwomps(s32 cameraId) {
     s16 minusone, plusone;
     Camera *camera;
     Object *object;
-    Lights1 D_800E4668l = *(Lights1 *) LOAD_ASSET(D_800E4668);
+    //Lights1 *D_800E4668l = (Lights1 *) LOAD_ASSET(D_800E4668);
 
     camera = &camera1[cameraId];
     if (cameraId == PLAYER_ONE) {
@@ -3504,8 +3571,8 @@ void render_object_thwomps(s32 cameraId) {
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPNumLights(gDisplayListHead++, 1);
-    gSPLight(gDisplayListHead++, &D_800E4668l.l[0], LIGHT_1);
-    gSPLight(gDisplayListHead++, &D_800E4668l.a, LIGHT_2);
+    gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
+    gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
     load_texture_block_rgba16_mirror(d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
@@ -3843,7 +3910,7 @@ void func_80054F04(s32 cameraId) {
 
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
-    load_texture_block_rgba16_mirror(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
+    load_texture_block_rgba16_mirror((u8 *)LOAD_ASSET(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
         objectIndex = gObjectParticle2[var_s2];
         object = &gObjectList[objectIndex];
@@ -4198,13 +4265,20 @@ void render_object_neon(s32 cameraId) {
     }
 }
 
+Vec3iu D_800E46F8A[] = {
+    {255, 255, 255}, {255, 255,   0}, {255,   0,   0}, 
+};
+u8 D_800E471CA[] = {
+    0, 1, 2, 3, 2, 1, 0, 
+};
+
 void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
 
-    Vec3iu *A_800E46F8 = LOAD_ASSET(D_800E46F8);
+    //Vec3iu *A_800E46F8 = LOAD_ASSET(D_800E46F8);
 
-    D_80165860 = A_800E46F8[arg0][0];
-    D_8016586C = A_800E46F8[arg0][1];
-    D_80165878 = A_800E46F8[arg0][2];
+    D_80165860 = D_800E46F8A[arg0][0];
+    D_8016586C = D_800E46F8A[arg0][1];
+    D_80165878 = D_800E46F8A[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     func_80044BF8(common_texture_particle_spark[arg1], 32, 32);
@@ -4334,7 +4408,7 @@ void func_80056BF0(s32 bombIndex) {
     BombKart sp40 = gBombKarts[bombIndex];
 
     temp_v0 = D_801655CC % 6U;
-    thing = D_800E471C[temp_v0];
+    thing = D_800E471CA[temp_v0];
     bombFrame = common_texture_bomb[thing];
     D_80183E40[0] = sp40.bombPos[0];
     D_80183E40[1] = sp40.bombPos[1] + 1.0;
