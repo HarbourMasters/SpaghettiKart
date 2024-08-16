@@ -6,12 +6,10 @@
 void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
     struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     Vec3s sp24 = {60, 120, 180};
-    temp_v0 += rock->unk_06;
-    //! @todo: fix this sp24[rock->unk_06] results in crash
-    rock->respawnTimer = sp24[0]; // * 2
-    rock->pos[0] = (f32) temp_v0->pos[0] * gCourseDirection;
-    rock->pos[1] = (f32) temp_v0->pos[1] + 10.0f;
-    rock->pos[2] = (f32) temp_v0->pos[2];
+    rock->respawnTimer = sp24[rock->unk_06]; // * 2
+    rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
+    rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
+    rock->pos[2] = (f32) temp_v0[rock->unk_06].pos[2];
     vec3f_set(rock->velocity, 0, 0, 0);
     vec3s_set(rock->rot, 0, 0, 0);
 }
