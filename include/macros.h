@@ -99,6 +99,4 @@
  **/
 #define GET_PACKED_END(dl) (((u8 *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
 
-void gSPDisplayList(Gfx* pkt, Gfx* dl);
-
 #endif

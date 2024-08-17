@@ -111,11 +111,11 @@ void load_ceremony_cutscene(void) {
     D_800DC5EC->screenStartX = 160;
     D_800DC5EC->screenStartY = 120;
     gScreenModeSelection = SCREEN_MODE_1P;
-    gNextFreeMemoryAddress = (s32) gFreeMemoryResetAnchor;
+    gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
-    D_8015F730 = (s32) gNextFreeMemoryAddress;
+    D_8015F730 = gNextFreeMemoryAddress;
     //set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
     //set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
@@ -156,6 +156,6 @@ void load_ceremony_cutscene(void) {
     balloons_and_fireworks_init();
     func_802816B8();
     func_80093E60();
-    D_801625F8 = (s32) gHeapEndPtr - gNextFreeMemoryAddress;
+    D_801625F8 = (uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress;
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

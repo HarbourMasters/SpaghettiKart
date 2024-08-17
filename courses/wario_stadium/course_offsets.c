@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/wario_stadium_data.h>
 
 const course_texture wario_stadium_textures[] = {
     {gTexture67F15C,                 0x02F1, 0x0800, 0x0},

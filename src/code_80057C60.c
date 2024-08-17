@@ -740,10 +740,10 @@ void render_object_for_player(s32 cameraId) {
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_object_seagulls(cameraId);
+                    //render_object_seagulls(cameraId);
                 }
             } else {
-                render_object_seagulls(cameraId);
+                //render_object_seagulls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
@@ -1637,12 +1637,12 @@ void update_object(void) {
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_800842C8();
             }
-            update_penguins();
+            //update_penguins();
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
                 update_neon();
-                update_chain_chomps();
+                //update_chain_chomps();
             }
             break;
         case COURSE_DK_JUNGLE:

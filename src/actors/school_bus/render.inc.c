@@ -29,16 +29,16 @@ void render_actor_school_bus(Camera *arg0, struct Actor *arg1) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_3);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_3);
                 } else if (temp_f0 < 640000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_4);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_4);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_5);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_5);
                 }
             } else if (temp_f0 < 160000.0f) {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_4);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_4);
             } else {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_5);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_5);
             }
         }
 }

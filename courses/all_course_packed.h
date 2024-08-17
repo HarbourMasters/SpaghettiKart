@@ -8,23 +8,25 @@
  * incorrect
  **/
 
-#include "courses/big_donut/course_displaylists.h"
-#include "courses/block_fort/course_displaylists.h"
-#include "courses/double_deck/course_displaylists.h"
-#include "courses/skyscraper/course_displaylists.h"
-#include "courses/choco_mountain/course_displaylists.h"
-#include "courses/frappe_snowland/course_displaylists.h"
-#include "courses/mario_raceway/course_displaylists.h"
-#include "courses/toads_turnpike/course_displaylists.h"
-#include "courses/koopa_troopa_beach/course_displaylists.h"
-#include "courses/luigi_raceway/course_displaylists.h"
-#include "courses/moo_moo_farm/course_displaylists.h"
-#include "courses/banshee_boardwalk/course_displaylists.h"
-#include "courses/dks_jungle_parkway/course_displaylists.h"
-#include "courses/rainbow_road/course_displaylists.h"
-#include "courses/yoshi_valley/course_displaylists.h"
-#include "courses/bowsers_castle/course_displaylists.h"
-#include "courses/sherbet_land/course_displaylists.h"
-#include "courses/wario_stadium/course_displaylists.h"
+#include <assets/rainbow_road_displaylists.h>
+#include <assets/sherbet_land_displaylists.h>
+#include <assets/koopa_troopa_beach_displaylists.h>
+#include <assets/yoshi_valley_displaylists.h>
+#include <assets/dks_jungle_parkway_displaylists.h>
+#include <assets/toads_turnpike_displaylists.h>
+#include <assets/banshee_boardwalk_displaylists.h>
+#include <assets/mario_raceway_displaylists.h>
+#include <assets/luigi_raceway_displaylists.h>
+#include <assets/royal_raceway_displaylists.h>
+#include <assets/kalimari_desert_displaylists.h>
+#include <assets/frappe_snowland_displaylists.h>
+#include <assets/wario_stadium_displaylists.h>
+#include <assets/moo_moo_farm_displaylists.h>
+#include <assets/big_donut_displaylists.h>
+#include <assets/choco_mountain_displaylists.h>
+#include <assets/bowsers_castle_displaylists.h>
+#include <assets/skyscraper_displaylists.h>
+#include <assets/block_fort_displaylists.h>
+#include <assets/double_deck_displaylists.h>
 
 #endif // ALL_COURSE_PACKED_H

@@ -449,6 +449,4 @@ extern u8* D_8018D4C0;
 
 extern u8 *gPortraitTextures[];
 
-extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
-
 #endif

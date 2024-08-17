@@ -1,7 +1,7 @@
 #include <libultra/types.h>
 #include <libultra/gbi.h>
 #include "course_offsets.h"
-#include "courses/banshee_boardwalk/course_data.h"
+#include <assets/banshee_boardwalk_data.h>
 #include <libultra/gbi.h>
 
 const course_texture banshee_boardwalk_textures[] = {

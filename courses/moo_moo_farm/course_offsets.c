@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/moo_moo_farm_data.h>
 
 const course_texture moo_moo_farm_textures[] = {
     {gTextureWoodDoor0,            0x0294, 0x1000, 0x0},

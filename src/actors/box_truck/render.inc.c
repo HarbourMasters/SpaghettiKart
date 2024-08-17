@@ -26,28 +26,28 @@ void render_actor_box_truck(Camera *arg0, struct Actor *arg1) {
 
             switch(arg1->state) {
                 case 0:
-                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_23858);
+                    gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23858);
                     break;
                 case 1:
-                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238A0);
+                    gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_238A0);
                     break;
                 case 2:
-                    gSPDisplayList(gDisplayListHead++, &d_course_toads_turnpike_dl_238E8);
+                    gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_238E8);
                     break;
             }
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
                 if (temp_f0 < 160000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_0);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_0);
                 } else if (temp_f0 < 640000.0f) {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_1);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_1);
                 } else {
-                    gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_2);
+                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_2);
                 }
             } else if (temp_f0 < 160000.0f) {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_1);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_1);
             } else {
-                gSPDisplayList(gDisplayListHead++, &toads_turnpike_dl_2);
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_2);
             }
         }
 }

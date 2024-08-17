@@ -10,23 +10,27 @@
  * in this file or problems will arise in other parts of the code
  **/
 
-extern CourseVtx d_course_big_donut_vertex[];
-extern CourseVtx d_course_block_fort_vertex[];
-extern CourseVtx d_course_double_deck_vertex[];
-extern CourseVtx d_course_skyscraper_vertex[];
-extern CourseVtx d_course_choco_mountain_vertex[];
-extern CourseVtx d_course_frappe_snowland_vertex[];
-extern CourseVtx d_course_toads_turnpike_vertex[];
-extern CourseVtx d_course_koopa_troopa_beach_vertex[];
-extern CourseVtx d_course_luigi_raceway_vertex[];
-extern CourseVtx d_course_moo_moo_farm_vertex[];
-extern CourseVtx d_course_banshee_boardwalk_vertex[];
-extern CourseVtx d_course_dks_jungle_parkway_vertex[];
-extern CourseVtx d_course_rainbow_road_vertex[];
-extern CourseVtx d_course_yoshi_valley_vertex[];
-extern CourseVtx d_course_bowsers_castle_vertex[];
-extern CourseVtx d_course_sherbet_land_vertex[];
-extern CourseVtx d_course_wario_stadium_vertex[];
+#include <assets/yoshi_valley_vertices.h>
+#include <assets/toads_turnpike_vertices.h>
+#include <assets/mario_raceway_vertices.h>
+#include <assets/luigi_raceway_vertices.h>
+#include <assets/royal_raceway_vertices.h>
+#include <assets/kalimari_desert_vertices.h>
+#include <assets/frappe_snowland_vertices.h>
+#include <assets/frappe_snowland_data.h>
+#include <assets/wario_stadium_vertices.h>
+#include <assets/moo_moo_farm_vertices.h>
+#include <assets/big_donut_vertices.h>
+#include <assets/choco_mountain_vertices.h>
+#include <assets/bowsers_castle_vertices.h>
+#include <assets/skyscraper_vertices.h>
+#include <assets/block_fort_vertices.h>
+#include <assets/double_deck_vertices.h>
+#include <assets/banshee_boardwalk_vertices.h>
+#include <assets/dks_jungle_parkway_vertices.h>
+#include <assets/koopa_troopa_beach_vertices.h>
+#include <assets/sherbet_land_vertices.h>
+#include <assets/rainbow_road_vertices.h>
 
 #define d_course_big_donut_vertex_count          ARRAY_COUNT(d_course_big_donut_vertex)
 #define d_course_block_fort_vertex_count         ARRAY_COUNT(d_course_block_fort_vertex)

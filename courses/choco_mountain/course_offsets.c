@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include "course_data.h"
+#include <assets/choco_mountain_data.h>
 
 const course_texture choco_mountain_textures[] = {
     {gTexture64619C,               0x0124, 0x0800, 0x0},

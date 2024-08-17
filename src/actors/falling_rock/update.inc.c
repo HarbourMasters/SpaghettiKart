@@ -1,16 +1,15 @@
 #include <actors.h>
 #include <code_800029B0.h>
 #include <main.h>
-#include "courses/choco_mountain/course_data.h"
+#include <assets/choco_mountain_data.h>
 
 void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
-    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) spawnData;
+    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     Vec3s sp24 = {60, 120, 180};
-    temp_v0 += rock->unk_06;
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
-    rock->pos[0] = (f32) temp_v0->pos[0] * gCourseDirection;
-    rock->pos[1] = (f32) temp_v0->pos[1] + 10.0f;
-    rock->pos[2] = (f32) temp_v0->pos[2];
+    rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
+    rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
+    rock->pos[2] = (f32) temp_v0[rock->unk_06].pos[2];
     vec3f_set(rock->velocity, 0, 0, 0);
     vec3s_set(rock->rot, 0, 0, 0);
 }
@@ -23,7 +22,7 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
  */
 void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
     // Casting this to prevent warning does not work.
-    struct ActorSpawnData *temp_s0 = spawnData;
+    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
     struct FallingRock *temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
