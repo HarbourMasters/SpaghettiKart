@@ -1,10 +1,10 @@
 #include "libultra_internal.h"
 
-#include "PR/os_vi.h"
-#include "PR/os_internal.h"
-#include "PR/R4300.h"
-#include "PR/rcp.h"
-#include "PR/os_pi.h"
+#include <PR/os_vi.h>
+#include <PR/os_internal.h>
+#include <PR/R4300.h>
+#include <PR/rcp.h>
+#include <PR/os_pi.h>
 #include <libultraship.h>
 
 OSPiHandle CartRomHandle;

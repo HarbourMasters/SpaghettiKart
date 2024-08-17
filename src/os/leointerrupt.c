@@ -1,5 +1,5 @@
 #include "libultra_internal.h"
-#include "PR/rcp.h"
+#include <PR/rcp.h>
 #include "bstring.h"
 #include "piint.h"
 #include "osint.h"

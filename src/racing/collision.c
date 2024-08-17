@@ -1973,7 +1973,7 @@ void generate_collision_grid(void) {
                         gCollisionGrid[index].triangle = gNumCollisionTriangles;
                     }
                     gCollisionGrid[index].numTriangles++;
-                    gCollisionIndices[gNumCollisionTriangles] = (s16) i;
+                     gCollisionIndices[gNumCollisionTriangles] = (u16) i;
                     gNumCollisionTriangles++;
                 }
             }

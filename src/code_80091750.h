@@ -1,7 +1,7 @@
 #ifndef CODE_80091750_H
 #define CODE_80091750_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "textures.h"
 #include "main.h"
 

@@ -14,10 +14,10 @@ void func_8001F9E4(Player*, Camera*, s8);
 u16  check_player_camera_collision(Player*, Camera*, f32, f32);
 u16  func_8001FD78(Player*, f32, f32, f32);
 void init_render_player(Player*, Camera*, s8, s8);
-void func_80020524(void);
-void func_8002088C(void);
-void func_80020BF4(void);
-void func_80020F1C(void);
+void load_kart_texture_and_render_kart_particle_on_screen_one(void);
+void load_kart_texture_and_render_kart_particle_on_screen_two(void);
+void load_kart_texture_and_render_kart_particle_on_screen_three(void);
+void load_kart_texture_and_render_kart_particle_on_screen_four(void);
 void try_rendering_player(Player*, s8, s8);
 void render_players_on_screen_one(void);
 void render_players_on_screen_two(void);
@@ -60,7 +60,7 @@ void func_80025DE8(Player*, s8, s8, s8);
 void render_player_ice_reflection(Player*, s8, s8, s8);
 void render_player(Player*, s8, s8);
 void func_80026A48(Player*, s8);
-void func_80026B4C(Player*, s8, s8, s8);
+void update_wheel_palette(Player*, s8, s8, s8);
 void func_80030A34(Player*);
 void func_8002701C(void);
 void func_80027024(s32, s32, s32);
@@ -70,10 +70,10 @@ void func_80027024(s32, s32, s32);
 extern struct_D_802F1F80 *gPlayerPalette;
 
 extern s32 D_80164A28;
-extern s16 D_80164AB0[];
+extern s16 gPlayersToRenderPlayerId[];
 extern s16 D_80164ABE[];
-extern s16 D_80164AC0[];
-extern Player *D_80164AD0[];
+extern s16 gPlayersToRenderScreenId[];
+extern Player *gPlayersToRenderPlayer[];
 extern s16 gMatrixEffectCount;
 extern u16 gPlayerRedEffect[];
 extern u16 gPlayerGreenEffect[];
@@ -124,8 +124,8 @@ extern u32 gKartWarioWheels0[];
 extern u32 gKartWarioWheels1[];
 
 
-extern u32 *D_800DDE34[];
-extern u32 *D_800DDE54[];
+extern u32 *gKartWheels0[];
+extern u32 *gKartWheels1[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually
@@ -276,8 +276,8 @@ extern u32 *D_800DDE54[];
 
 extern s16 D_80165020[40];
 extern Vec3f D_80165070[8];
-extern s16 D_801650D0[4][8];
-extern s16  D_80165110[4][8];
+extern s16 gLastAnimFrameSelector[4][8];
+extern s16  gLastAnimGroupSelector[4][8];
 extern s16  D_80165150[4][8];
 extern s16  D_80165190[4][8];
 extern s16  D_801651D0[4][8];

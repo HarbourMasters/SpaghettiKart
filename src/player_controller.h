@@ -1,7 +1,7 @@
 #ifndef player_controller_H
 #define player_controller_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "camera.h"
 
 /* Function Prototypes */

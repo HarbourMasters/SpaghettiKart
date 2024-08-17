@@ -2,7 +2,7 @@
 #define SPAWN_PLAYERS_H
 
 #include "camera.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 /** @cond */

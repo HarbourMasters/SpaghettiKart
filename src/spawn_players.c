@@ -252,14 +252,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     idx = playerIndex;
 
-    D_801650D0[0][idx] = 0;
-    D_801650D0[1][idx] = 0;
-    D_801650D0[2][idx] = 0;
-    D_801650D0[3][idx] = 0;
-    D_80165110[0][idx] = 0;
-    D_80165110[1][idx] = 0;
-    D_80165110[2][idx] = 0;
-    D_80165110[3][idx] = 0;
+    gLastAnimFrameSelector[0][idx] = 0;
+    gLastAnimFrameSelector[1][idx] = 0;
+    gLastAnimFrameSelector[2][idx] = 0;
+    gLastAnimFrameSelector[3][idx] = 0;
+    gLastAnimGroupSelector[0][idx] = 0;
+    gLastAnimGroupSelector[1][idx] = 0;
+    gLastAnimGroupSelector[2][idx] = 0;
+    gLastAnimGroupSelector[3][idx] = 0;
     D_80165190[0][idx] = 0;
     D_80165190[1][idx] = 0;
     D_80165190[2][idx] = 0;
@@ -1086,20 +1086,20 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 screenId) {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, playerId, screenId, screenId, 0);
-            //mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80.arraySize8[0][arg3][playerId]);
-            // This memcpy does not seem to be required for some reason
-            //memcpy(&D_802BFB80.arraySize8[0][screenId][playerId], &D_802DFB80[0][screenId][playerId], 0x1000);
+            #ifdef TARGET_N64
+            mio0decode((u8 *) &gEncodedKartTexture[0][screenId][playerId], (u8 *) &D_802BFB80.arraySize8[0][screenId][playerId]);
+            #endif
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
-            //mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][arg3 - 2][playerId + 4]);
-            // This memcpy does not seem to be required for some reason
-            //memcpy(&D_802BFB80.arraySize8[0][screenId - 2][playerId + 4], &D_802DFB80[0][screenId - 2][playerId + 4], 0x1000);
+            #ifdef TARGET_N64
+            mio0decode((u8 *) &gEncodedKartTexture[0][screenId - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
+            #endif
         }
 
-        D_801650D0[screenId][playerId] = player->animFrameSelector[screenId];
-        D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+        gLastAnimFrameSelector[screenId][playerId] = player->animFrameSelector[screenId];
+        gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
         D_80165150[screenId][playerId] = player->unk_0A8;
         D_801651D0[screenId][playerId] = 0;
         render_player(player, playerId, screenId);

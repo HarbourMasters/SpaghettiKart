@@ -1,7 +1,7 @@
 #ifndef ACTORS_EXTENDED_H
 #define ACTORS_EXTENDED_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "actor_types.h"
 
 /** @cond */

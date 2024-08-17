@@ -5,6 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
+#include <mk64.h>
 #include <code_80004740.h>
 
 #include "course_displaylists.h"
@@ -5266,28 +5267,28 @@ struct ActorSpawnData d_course_sherbet_land_item_box_spawns[] = {
 
 // 0x9C20
 TrackSections d_course_sherbet_land_addr[] = {
-    { d_course_sherbet_land_packed_dl_1B20, 9, 1, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1A98, 9, 2, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1A18, 9, 3, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1998, 9, 4, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1C50, 9, 5, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1E40, 9, 6, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1DC0, 9, 7, 0x0000 },
-    { d_course_sherbet_land_packed_dl_730,  5, 8, 0x0000 },
-    { d_course_sherbet_land_packed_dl_5D0,  5, 9, 0x0000 },
-    { d_course_sherbet_land_packed_dl_470,  5, 10, 0x0000 },
-    { d_course_sherbet_land_packed_dl_348,  5, 11, 0x0000 },
-    { d_course_sherbet_land_packed_dl_858,  5, 12, 0x0000 },
-    { d_course_sherbet_land_packed_dl_9A0,  5, 13, 0x0000 },
-    { d_course_sherbet_land_packed_dl_B00,  5, 14, 0x0000 },
-    { d_course_sherbet_land_packed_dl_C30,  5, 15, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1D48, 9, 16, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1CD8, 9, 17, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1BE0, 9, 18, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1940, 255, 255, 0x0000 },
-    { d_course_sherbet_land_packed_dl_EA0,  255, 255, 0x0000 },
-    { d_course_sherbet_land_packed_dl_1450, 255, 255, 0x0000 },
-    { d_course_sherbet_land_packed_dl_2738, 255, 255, 0x0000 },
-    { d_course_sherbet_land_packed_dl_2798, 255, 255, 0x0000 },
-    { 0x00000000, 0, 0, 0x0000 },
+    { d_course_sherbet_land_packed_dl_1B20, ICE,  1,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1A98, ICE,  2,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1A18, ICE,  3,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1998, ICE,  4,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1C50, ICE,  5,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1E40, ICE,  6,   0x0000 },
+    { d_course_sherbet_land_packed_dl_1DC0, ICE,  7,   0x0000 },
+    { d_course_sherbet_land_packed_dl_730,  SNOW, 8,   0x0000 },
+    { d_course_sherbet_land_packed_dl_5D0,  SNOW, 9,   0x0000 },
+    { d_course_sherbet_land_packed_dl_470,  SNOW, 10,  0x0000 },
+    { d_course_sherbet_land_packed_dl_348,  SNOW, 11,  0x0000 },
+    { d_course_sherbet_land_packed_dl_858,  SNOW, 12,  0x0000 },
+    { d_course_sherbet_land_packed_dl_9A0,  SNOW, 13,  0x0000 },
+    { d_course_sherbet_land_packed_dl_B00,  SNOW, 14,  0x0000 },
+    { d_course_sherbet_land_packed_dl_C30,  SNOW, 15,  0x0000 },
+    { d_course_sherbet_land_packed_dl_1D48, ICE,  16,  0x0000 },
+    { d_course_sherbet_land_packed_dl_1CD8, ICE,  17,  0x0000 },
+    { d_course_sherbet_land_packed_dl_1BE0, ICE,  18,  0x0000 },
+    { d_course_sherbet_land_packed_dl_1940, RAMP, 255, 0x0000 },
+    { d_course_sherbet_land_packed_dl_EA0,  RAMP, 255, 0x0000 },
+    { d_course_sherbet_land_packed_dl_1450, RAMP, 255, 0x0000 },
+    { d_course_sherbet_land_packed_dl_2738, RAMP, 255, 0x0000 },
+    { d_course_sherbet_land_packed_dl_2798, RAMP, 255, 0x0000 },
+    { 0x00000000,                           0,    0,   0x0000 },
 };

@@ -1,7 +1,7 @@
 #ifndef CODE_80057C60_H
 #define CODE_80057C60_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "objects.h"
 #include "camera.h"
 
@@ -245,10 +245,10 @@ void func_8006DD3C(Player*, s8, s8);
 
 void func_8006E058(void);
 void func_8006E420(Player*, s8, s8);
-void func_8006E5AC(Player*, s8, s8);
-void func_8006E634(Player*, s8, s8);
-void func_8006E6BC(Player*, s8, s8);
-void func_8006E744(Player*, s8, s8);
+void render_kart_particle_on_screen_one(Player*, s8, s8);
+void render_kart_particle_on_screen_two(Player*, s8, s8);
+void render_kart_particle_on_screen_three(Player*, s8, s8);
+void render_kart_particle_on_screen_four(Player*, s8, s8);
 void func_8006E7CC(Player*, s8, s8);
 void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);

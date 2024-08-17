@@ -24,7 +24,7 @@
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
 #include <assets/common_data.h>
-#include "common_structs.h"
+#include <common_structs.h>
 #include "main.h"
 #include "menus.h"
 #include "code_80091750.h"
@@ -1410,7 +1410,7 @@ void func_800090F0(s32 playerId, Player *player) {
 f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
     f32 temp_f2 = D_8016344C - arg2;
     f32 temp_f12 = arg1 - D_8016344C;
-    return gCourseTimer - ( (COURSE_TIMER_ITER * temp_f2) / (temp_f2 + temp_f12) );
+    return gCourseTimer - ( (COURSE_TIMER_ITER_f * temp_f2) / (temp_f2 + temp_f12) );
 }
 
 #ifdef NON_MATCHING

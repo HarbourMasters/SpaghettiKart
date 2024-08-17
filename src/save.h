@@ -2,7 +2,7 @@
 #define SAVE_H
 
 #include <libultraship.h>
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* define symbols */
 

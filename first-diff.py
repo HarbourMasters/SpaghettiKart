@@ -2,6 +2,7 @@
 import os.path
 import argparse
 from subprocess import check_call
+import re
 
 # TODO: -S argument for shifted ROMs
 
@@ -118,8 +119,9 @@ def search_map(rom_addr):
                 if "noload" in line or "noload" in prev_line:
                     ram_offset = None
                     continue
-                ram = int(line[16 : 16 + 18], 0)
-                rom = int(line[59 : 59 + 18], 0)
+                hex_number = re.findall(r"0x[0-9a-fA-F]+", line)
+                ram = int(hex_number[0], 0) # int(line[16 : 16 + 18], 0)
+                rom = int(hex_number[2], 0)# int(line[59 : 59 + 18], 0)
                 ram_offset = ram - rom
                 continue
             prev_line = line
@@ -131,10 +133,11 @@ def search_map(rom_addr):
                 or " 0x" not in line
             ):
                 continue
-            ram = int(line[16 : 16 + 18], 0)
+            hex_number = re.findall(r"0x[0-9a-fA-F]+", line)
+            ram = int(hex_number[0], 0) # int(line[16 : 16 + 18], 0)
             rom = ram - ram_offset
             fn = line.split()[-1]
-            if "0x" in fn:
+            if fn.startswith("0x"):
                 ram_offset = None
                 continue
             if rom > rom_addr or (rom_addr & 0x80000000 and ram > rom_addr):
@@ -265,7 +268,7 @@ for i in range(24, len(mybin), 4):
         map_search_diff.append(search_map(i))
 if diffs == 0:
     print("No differences!")
-    exit()
+    exit(0)
 definite_shift = diffs > shift_cap
 if not definite_shift:
     if (diffs > 1):
@@ -288,7 +291,7 @@ if diffs > 100:
             + basemap
             + " and rerun this script."
         )
-        exit()
+        exit(1)
 
     if not map_diff():
         print(f"No ROM shift{' (!?)' if definite_shift else ''}")

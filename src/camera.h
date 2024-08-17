@@ -2,7 +2,7 @@
 #define CAMERA_H
 
 #include <libultraship.h>
-#include "common_structs.h"
+#include <common_structs.h>
 
 /**
  * @todo put this define in types.h or similar.

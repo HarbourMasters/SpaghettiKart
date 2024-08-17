@@ -1,7 +1,7 @@
 #ifndef CODE_80086E70_H
 #define CODE_80086E70_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "camera.h"
 #include "objects.h"
 

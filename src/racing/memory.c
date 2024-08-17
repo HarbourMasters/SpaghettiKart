@@ -461,9 +461,11 @@ UNUSED uintptr_t func_802A8348(s32 arg0, s32 arg1, s32 arg2) {
     oldAddr = gNextFreeMemoryAddress;
     newAddr = (void *) (oldAddr + offset);
     pad = &newAddr;
-    // osInvalDCache(newAddr, offset);
-    //osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], newAddr, offset, &gDmaMesgQueue);
-    // osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    #ifdef TARGET_N64
+    osInvalDCache(newAddr, offset);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], newAddr, offset, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
+    #endif
 
     func_80040030((u8 *) newAddr, (u8 *) oldAddr);
     gNextFreeMemoryAddress += offset;
@@ -1043,7 +1045,7 @@ void unpack_spline_3D(Gfx *gfx, u8 *arg1, UNUSED s8 arg2) {
         temp_v0 = arg1[sPackedSeekPosition++];
         phi_a0 |= (temp_v0 & 0xF) * 2;
     }
-    gfx[sGfxSeekPosition].words.w0 = ((uintptr_t)(uint8_t)G_LINE3D << 24);
+    gfx[sGfxSeekPosition].words.w0 = ((uintptr_t)(uint8_t)G_QUAD << 24);
     gfx[sGfxSeekPosition].words.w1 =
         ((phi_a0 * 2) << 24) | ((phi_t0 * 2) << 16) | ((phi_a3 * 2) << 8) | (phi_a2 * 2);
     sGfxSeekPosition++;

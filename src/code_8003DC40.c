@@ -2,7 +2,7 @@
 #include <macros.h>
 #include <mk64.h>
 #include "math_util.h"
-#include "common_structs.h"
+#include <common_structs.h>
 #include "player_controller.h"
 #include "effects.h"
 #include "code_8003DC40.h"

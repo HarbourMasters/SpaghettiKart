@@ -1,7 +1,7 @@
 #ifndef EFFECTS_H
 #define EFFECTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 

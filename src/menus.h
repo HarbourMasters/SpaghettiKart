@@ -1,7 +1,7 @@
 #ifndef MENUS_H
 #define MENUS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include <defines.h>
 
 // D_8018EDEC is position on options screen?

@@ -1,7 +1,7 @@
 #ifndef CODE_80004740_H
 #define CODE_80004740_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
 What I know about animation stuff so far

@@ -1,7 +1,7 @@
 #ifndef collision_H
 #define collision_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 #define COLLISION 0x1
 #define NO_COLLISION 0x0

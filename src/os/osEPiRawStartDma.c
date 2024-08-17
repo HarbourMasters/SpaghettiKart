@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 #include "hardware.h"
 #include "new_func.h"
-#include "PR/R4300.h"
+#include <PR/R4300.h>
 //! @todo This define is from piint.h, but including that causes problems...
 #define UPDATE_REG(reg, var)                                                                           \
     if (cHandle->var != pihandle->var) \

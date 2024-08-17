@@ -1,7 +1,7 @@
 #ifndef RENDER_OBJECTS_H
 #define RENDER_OBJECTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "main.h"
 
 void func_80045738(u8*, u8*, s32, s32);

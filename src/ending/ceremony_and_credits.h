@@ -1,7 +1,7 @@
 #ifndef CEREMONY_AND_CREDITS_H
 #define CEREMONY_AND_CREDITS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "camera.h"
 
 struct struct_80283431 {

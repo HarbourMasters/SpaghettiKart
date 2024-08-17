@@ -1,6 +1,6 @@
 #include "libultra_internal.h"
 
-#include "PR/os_pi.h"
+#include <PR/os_pi.h>
 #include "controller.h"
 
 OSPifRam __osPfsPifRam;

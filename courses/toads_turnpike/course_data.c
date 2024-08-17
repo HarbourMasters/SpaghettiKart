@@ -5,6 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
+#include <mk64.h>
 
 #include "course_displaylists.h"
 
@@ -8408,27 +8409,27 @@ struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[] = {
 
 // 0x23B68
 TrackSections d_course_toads_turnpike_addr[] = {
-    { d_course_toads_turnpike_packed_dl_32A0, 1, 1, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_33A8, 1, 2, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3478, 1, 3, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3548, 1, 4, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_31E8, 1, 5, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_2E40, 1, 6, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_2EE0, 1, 7, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_2FA0, 1, 8, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3060, 1, 9, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3118, 1, 10, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3638, 1, 11, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3AD0, 1, 12, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3B58, 1, 13, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3C28, 1, 14, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3D00, 1, 15, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_39A8, 1, 16, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_36C0, 1, 17, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3780, 1, 18, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_3850, 1, 19, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_38E8, 1, 20, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_FA8,  255, 255, 0x0000 },
-    { d_course_toads_turnpike_packed_dl_51C8, 255, 255, 0x0000 },
-    { 0x00000000, 0, 0, 0x0000 },
+    { d_course_toads_turnpike_packed_dl_32A0, ASPHALT, 1,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_33A8, ASPHALT, 2,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_3478, ASPHALT, 3,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_3548, ASPHALT, 4,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_31E8, ASPHALT, 5,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_2E40, ASPHALT, 6,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_2EE0, ASPHALT, 7,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_2FA0, ASPHALT, 8,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_3060, ASPHALT, 9,   0x0000 },
+    { d_course_toads_turnpike_packed_dl_3118, ASPHALT, 10,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3638, ASPHALT, 11,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3AD0, ASPHALT, 12,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3B58, ASPHALT, 13,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3C28, ASPHALT, 14,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3D00, ASPHALT, 15,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_39A8, ASPHALT, 16,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_36C0, ASPHALT, 17,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3780, ASPHALT, 18,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_3850, ASPHALT, 19,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_38E8, ASPHALT, 20,  0x0000 },
+    { d_course_toads_turnpike_packed_dl_FA8,  RAMP,    255, 0x0000 },
+    { d_course_toads_turnpike_packed_dl_51C8, RAMP,    255, 0x0000 },
+    { 0x00000000,                             0,       0,   0x0000 },
 };

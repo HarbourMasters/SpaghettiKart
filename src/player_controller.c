@@ -975,8 +975,8 @@ void func_8002934C(Player *player, Camera *camera, s8 screenId, s8 playerId) {
         D_80165190[screenId][playerId] = 1;
 
         if ((player->effects & 0x80) || (player->effects & 0x40)) {
-            if ((player->animFrameSelector[screenId] == D_801650D0[screenId][playerId])
-                && (player->animGroupSelector[screenId] == D_80165110[screenId][playerId])) {
+            if ((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId])
+                && (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) {
                 player->unk_002 &= ~(1 << (screenId * 4));
                 D_80165190[screenId][playerId] = 1;
             }
@@ -985,11 +985,11 @@ void func_8002934C(Player *player, Camera *camera, s8 screenId, s8 playerId) {
         }
     } else {
         player->unk_002 |= 1 << (screenId * 4);
-        if (((player->animFrameSelector[screenId] == D_801650D0[screenId][playerId]) && (player->animGroupSelector[screenId] == D_80165110[screenId][playerId])) && ((D_80165190[screenId][playerId]) == 0)) {
+        if (((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId]) && (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) && ((D_80165190[screenId][playerId]) == 0)) {
             player->unk_002 &= ~(1 << (screenId * 4));
         }
     }
-    temp_a0_2 = D_801650D0[screenId][playerId] - player->animFrameSelector[screenId];
+    temp_a0_2 = gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId];
     if ((temp_a0_2 >= 0x14) || (temp_a0_2 < (-0x13))) {
         player->unk_002 |= 1 << (screenId * 4);
     }
