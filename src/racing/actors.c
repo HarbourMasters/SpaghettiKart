@@ -2394,107 +2394,107 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
         if (actor->flags == 0) {
             continue;
         }
-            switch (actor->type) {
-                case ACTOR_TREE_MARIO_RACEWAY:
-                    render_actor_tree_mario_raceway(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_TREE_YOSHI_VALLEY:
-                    render_actor_tree_yoshi_valley(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_TREE_ROYAL_RACEWAY:
-                    render_actor_tree_royal_raceway(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_TREE_MOO_MOO_FARM:
-                    render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_UNKNOWN_0x1A:
-                    func_80299864(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_TREE_BOWSERS_CASTLE:
-                    render_actor_tree_bowser_castle(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_BUSH_BOWSERS_CASTLE:
-                    render_actor_bush_bowser_castle(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_TREE_FRAPPE_SNOWLAND:
-                    render_actor_tree_frappe_snowland(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_CACTUS1_KALAMARI_DESERT:
-                    render_actor_tree_cactus1_kalimari_desert(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_CACTUS2_KALAMARI_DESERT:
-                    render_actor_tree_cactus2_kalimari_desert(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_CACTUS3_KALAMARI_DESERT:
-                    render_actor_tree_cactus3_kalimari_desert(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_FALLING_ROCK:
-                    render_actor_falling_rock(camera, (struct FallingRock *) actor);
-                    break;
-                case ACTOR_KIWANO_FRUIT:
-                    render_actor_kiwano_fruit(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_BANANA:
-                    render_actor_banana(camera, D_801502C0, (struct BananaActor *) actor);
-                    break;
-                case ACTOR_GREEN_SHELL:
-                    render_actor_green_shell(camera, D_801502C0, (struct ShellActor *) actor);
-                    break;
-                case ACTOR_RED_SHELL:
-                    render_actor_red_shell(camera, D_801502C0, (struct ShellActor *) actor);
-                    break;
-                case ACTOR_BLUE_SPINY_SHELL:
-                    render_actor_blue_shell(camera, D_801502C0, (struct ShellActor *) actor);
-                    break;
-                case ACTOR_PIRANHA_PLANT:
-                    render_actor_piranha_plant(camera, D_801502C0, (struct PiranhaPlant *) actor);
-                    break;
-                case ACTOR_TRAIN_ENGINE:
-                    render_actor_train_engine(camera, (struct TrainCar *) actor);
-                    break;
-                case ACTOR_TRAIN_TENDER:
-                    render_actor_train_tender(camera, (struct TrainCar *) actor);
-                    break;
-                case ACTOR_TRAIN_PASSENGER_CAR:
-                    render_actor_train_passenger_car(camera, (struct TrainCar *) actor);
-                    break;
-                case ACTOR_COW:
-                    render_actor_cow(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_UNKNOWN_0x14:
-                    func_8029AC18(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_MARIO_SIGN:
-                    render_actor_mario_sign(camera, D_801502C0, actor);
-                    break;
-                case ACTOR_WARIO_SIGN:
-                    render_actor_wario_sign(camera, actor);
-                    break;
-                case ACTOR_PALM_TREE:
-                    render_actor_palm_tree(camera, D_801502C0, (struct PalmTree *) actor);
-                    break;
-                case ACTOR_PADDLE_BOAT:
-                    render_actor_paddle_boat(camera, (struct PaddleWheelBoat *) actor, D_801502C0, pathCounter);
-                    break;
-                case ACTOR_BOX_TRUCK:
-                    render_actor_box_truck(camera, actor);
-                    break;
-                case ACTOR_SCHOOL_BUS:
-                    render_actor_school_bus(camera, actor);
-                    break;
-                case ACTOR_TANKER_TRUCK:
-                    render_actor_tanker_truck(camera, actor);
-                    break;
-                case ACTOR_CAR:
-                    render_actor_car(camera, actor);
-                    break;
-                case ACTOR_RAILROAD_CROSSING:
-                    render_actor_railroad_crossing(camera, (struct RailroadCrossing *) actor);
-                    break;
-                case ACTOR_YOSHI_EGG:
-                    render_actor_yoshi_egg(camera, D_801502C0, (struct YoshiValleyEgg *) actor, pathCounter);
-                    break;
-            }
+        switch (actor->type) {
+            case ACTOR_TREE_MARIO_RACEWAY:
+                render_actor_tree_mario_raceway(camera, D_801502C0, actor);
+                break;
+            case ACTOR_TREE_YOSHI_VALLEY:
+                render_actor_tree_yoshi_valley(camera, D_801502C0, actor);
+                break;
+            case ACTOR_TREE_ROYAL_RACEWAY:
+                render_actor_tree_royal_raceway(camera, D_801502C0, actor);
+                break;
+            case ACTOR_TREE_MOO_MOO_FARM:
+                render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
+                break;
+            case ACTOR_UNKNOWN_0x1A:
+                func_80299864(camera, D_801502C0, actor);
+                break;
+            case ACTOR_TREE_BOWSERS_CASTLE:
+                render_actor_tree_bowser_castle(camera, D_801502C0, actor);
+                break;
+            case ACTOR_BUSH_BOWSERS_CASTLE:
+                render_actor_bush_bowser_castle(camera, D_801502C0, actor);
+                break;
+            case ACTOR_TREE_FRAPPE_SNOWLAND:
+                render_actor_tree_frappe_snowland(camera, D_801502C0, actor);
+                break;
+            case ACTOR_CACTUS1_KALAMARI_DESERT:
+                render_actor_tree_cactus1_kalimari_desert(camera, D_801502C0, actor);
+                break;
+            case ACTOR_CACTUS2_KALAMARI_DESERT:
+                render_actor_tree_cactus2_kalimari_desert(camera, D_801502C0, actor);
+                break;
+            case ACTOR_CACTUS3_KALAMARI_DESERT:
+                render_actor_tree_cactus3_kalimari_desert(camera, D_801502C0, actor);
+                break;
+            case ACTOR_FALLING_ROCK:
+                render_actor_falling_rock(camera, (struct FallingRock *) actor);
+                break;
+            case ACTOR_KIWANO_FRUIT:
+                render_actor_kiwano_fruit(camera, D_801502C0, actor);
+                break;
+            case ACTOR_BANANA:
+                render_actor_banana(camera, D_801502C0, (struct BananaActor *) actor);
+                break;
+            case ACTOR_GREEN_SHELL:
+                render_actor_green_shell(camera, D_801502C0, (struct ShellActor *) actor);
+                break;
+            case ACTOR_RED_SHELL:
+                render_actor_red_shell(camera, D_801502C0, (struct ShellActor *) actor);
+                break;
+            case ACTOR_BLUE_SPINY_SHELL:
+                render_actor_blue_shell(camera, D_801502C0, (struct ShellActor *) actor);
+                break;
+            case ACTOR_PIRANHA_PLANT:
+                render_actor_piranha_plant(camera, D_801502C0, (struct PiranhaPlant *) actor);
+                break;
+            case ACTOR_TRAIN_ENGINE:
+                render_actor_train_engine(camera, (struct TrainCar *) actor);
+                break;
+            case ACTOR_TRAIN_TENDER:
+                render_actor_train_tender(camera, (struct TrainCar *) actor);
+                break;
+            case ACTOR_TRAIN_PASSENGER_CAR:
+                render_actor_train_passenger_car(camera, (struct TrainCar *) actor);
+                break;
+            case ACTOR_COW:
+                render_actor_cow(camera, D_801502C0, actor);
+                break;
+            case ACTOR_UNKNOWN_0x14:
+                func_8029AC18(camera, D_801502C0, actor);
+                break;
+            case ACTOR_MARIO_SIGN:
+                render_actor_mario_sign(camera, D_801502C0, actor);
+                break;
+            case ACTOR_WARIO_SIGN:
+                render_actor_wario_sign(camera, actor);
+                break;
+            case ACTOR_PALM_TREE:
+                render_actor_palm_tree(camera, D_801502C0, (struct PalmTree *) actor);
+                break;
+            case ACTOR_PADDLE_BOAT:
+                render_actor_paddle_boat(camera, (struct PaddleWheelBoat *) actor, D_801502C0, pathCounter);
+                break;
+            case ACTOR_BOX_TRUCK:
+                render_actor_box_truck(camera, actor);
+                break;
+            case ACTOR_SCHOOL_BUS:
+                render_actor_school_bus(camera, actor);
+                break;
+            case ACTOR_TANKER_TRUCK:
+                render_actor_tanker_truck(camera, actor);
+                break;
+            case ACTOR_CAR:
+                render_actor_car(camera, actor);
+                break;
+            case ACTOR_RAILROAD_CROSSING:
+                render_actor_railroad_crossing(camera, (struct RailroadCrossing *) actor);
+                break;
+            case ACTOR_YOSHI_EGG:
+                render_actor_yoshi_egg(camera, D_801502C0, (struct YoshiValleyEgg *) actor, pathCounter);
+                break;
+        }
     }
     switch (gCurrentCourseId) {
         case COURSE_MOO_MOO_FARM:

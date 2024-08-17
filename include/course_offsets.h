@@ -15,19 +15,6 @@ typedef struct
     u32 padding;   // always zero
 } course_texture;
 
-extern Gfx toads_turnpike_dl_0[];
-extern Gfx toads_turnpike_dl_1[];
-extern Gfx toads_turnpike_dl_2[];
-extern Gfx toads_turnpike_dl_3[];
-extern Gfx toads_turnpike_dl_4[];
-extern Gfx toads_turnpike_dl_5[];
-extern Gfx toads_turnpike_dl_6[];
-extern Gfx toads_turnpike_dl_7[];
-extern Gfx toads_turnpike_dl_8[];
-extern Gfx toads_turnpike_dl_9[];
-extern Gfx toads_turnpike_dl_10[];
-extern Gfx toads_turnpike_dl_11[];
-
 extern u32 d_course_sherbet_land_unk_data1[];
 extern s16 d_course_sherbet_land_unk_data2[];
 extern animation_type_3_triplet d_course_sherbet_land_unk_data3[];
