@@ -431,14 +431,14 @@ void DrawEnhancementsMenu() {
     if (UIWidgets::BeginMenu("Enhancements")) {
 
         if (UIWidgets::BeginMenu("Gameplay")) {
+            UIWidgets::CVarCheckbox("Enable noclip", "gNoclip", {
+                .tooltip = "Allows you to fly around the course"
+            });
             UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD", {
                 .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance"
             });
             UIWidgets::CVarCheckbox("Ignore Rendering Limits", "gIgnoreRenderDistance", {
                 .tooltip = "Renders game objects regardless of camera distance"
-            });
-            UIWidgets::CVarCheckbox("Select any star from menu", "gCompletedGame", {
-                .tooltip = "Unlocks extra mode and sets all gold cups."
             });
             ImGui::EndMenu();
         }
