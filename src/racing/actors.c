@@ -622,7 +622,7 @@ void render_palm_trees(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) < 0.0f) {
+        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) < 0.0f && !CVarGetInteger("gNoculling", 0)) {
             var_s1++;
             continue;
         }
@@ -682,6 +682,9 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     uintptr_t phi_t3;
 
     f32 temp_f0 = is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
+    if (CVarGetInteger("gNoculling", 0)) {
+        temp_f0 = CLAMP(temp_f0, 0.0f, 40000.0f);
+    }
     s32 maxObjectsReached;
     if (temp_f0 < 0.0f) {
         actor_not_rendered(camera, (struct Actor *)shell);
@@ -747,7 +750,7 @@ UNUSED void func_8029ABD4(f32 *pos, s16 state) {
 }
 
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
-    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) < 0) { return; }
+    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f) < 0 && !CVarGetInteger("gNoculling", 0)) { return; }
 
     arg1[3][0] = arg2->pos[0];
     arg1[3][1] = arg2->pos[1] - arg2->boundingBoxSize;

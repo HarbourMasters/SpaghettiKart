@@ -29,6 +29,10 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
 
     temp = is_within_render_distance(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
 
+    if (CVarGetInteger("gNoculling", 0)) {
+        temp = MAX(temp, 0.0f);
+    }
+
     if (temp < 0.0f) { return; }
 
         gSPSetLights1(gDisplayListHead++, D_800DC610[1]);

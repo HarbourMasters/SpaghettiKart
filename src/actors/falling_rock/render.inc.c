@@ -20,6 +20,10 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
 
     height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1], 4000000.0f);
 
+    if (CVarGetInteger("gNoculling", 0)) {
+        height = CLAMP(height, 0.0f, 250000.0f);
+    }
+
     if (height < 0.0f) { return; }
 
     if (height < 250000.0f) {

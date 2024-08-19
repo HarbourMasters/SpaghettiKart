@@ -440,6 +440,9 @@ void DrawEnhancementsMenu() {
             UIWidgets::CVarCheckbox("Select any star from menu", "gCompletedGame", {
                 .tooltip = "Unlocks extra mode and sets all gold cups."
             });
+            UIWidgets::CVarCheckbox("Disable Culling", "gNoculling", {
+                .tooltip = "Disable original culling of mk64"
+            });
             ImGui::EndMenu();
         }
 
