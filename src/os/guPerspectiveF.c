@@ -9,7 +9,7 @@ void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect, fl
     int row;
     int col;
     if (CVarGetInteger("gNoculling", 0)) {
-        far = CVarGetFloat("gFarFrustrum",100000.0f);
+        far = CVarGetFloat("gFarFrustrum",10000.0f);
     }
     guMtxIdentF(mf);
     fovy *= GU_PI / 180.0;
