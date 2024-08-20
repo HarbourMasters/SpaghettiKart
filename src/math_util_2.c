@@ -455,7 +455,7 @@ bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
-    if (CVarGetInteger("gNoculling", 0)) {
+    if (CVarGetInteger("gNoculling", 0) == 1) {
         return true;
     }
 

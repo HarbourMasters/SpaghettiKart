@@ -443,6 +443,10 @@ void DrawEnhancementsMenu() {
             UIWidgets::CVarCheckbox("Disable Culling", "gNoculling", {
                 .tooltip = "Disable original culling of mk64"
             });
+            UIWidgets::CVarSliderFloat("Far Frustrum", "gFarFrustrum", 0.0f, 100000.0f, 100000.0f, {
+                .tooltip = "Say how Far the Frustrum are when 'Disable Culling' are enable",
+                .step = 10.0f
+            });
             ImGui::EndMenu();
         }
 

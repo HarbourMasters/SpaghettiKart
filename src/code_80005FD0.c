@@ -666,7 +666,7 @@ s32 set_vehicle_render_distance_flags(Vec3f vehiclePos, f32 renderDistance, s32 
             }
         }
     }
-    if (CVarGetInteger("gNoculling", 0)) {
+    if (CVarGetInteger("gNoculling", 0) == 1) {
         flag |= (RENDER_VEHICLE<<PLAYER_ONE)|(RENDER_VEHICLE<<PLAYER_TWO)|(RENDER_VEHICLE<<PLAYER_THREE)|(RENDER_VEHICLE<<PLAYER_FOUR);
     }
     return flag;
