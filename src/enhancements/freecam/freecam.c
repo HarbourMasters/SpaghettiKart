@@ -22,12 +22,14 @@ typedef struct {
 
 freecamSaveState fState;
 
-u32 fRankIndex = 0;
+u32 fRankIndex = -1;
 u32 fTargetPlayer = false;
 u32 fMode; // freecam mode should probably be an enum
 u32 fModeInit = false;
 
 int rightMouseButtonDown = 0; // Track if right mouse button is held down
+
+u32 gFreecamControllerType = 0;
 
 // void freecam_n64_calculate_forward_vector(Camera* camera, Vec3f forwardVector);
 // void freecam_n64_move_camera_forward(Camera* camera, struct Controller *controller, f32 distance);
@@ -119,13 +121,15 @@ void freecam(Camera *camera, Player *player, s8 index) {
 
     // if ((player->type & PLAYER_START_SEQUENCE)) { return; }
 
-    //freecam_n64_controller_manager(camera, controller, player);
 
-    freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
-    freecam_mouse_manager(camera, freeCam.forwardVector);
-    freecam_keyboard_manager(camera, freeCam.forwardVector);
-    //freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
-    //freecam_calculate_forward_vector(camera, freeCam.forwardVector);
+    // Mouse/Keyboard
+    if (gFreecamControllerType == 0) {
+        freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
+        freecam_mouse_manager(camera, freeCam.forwardVector);
+        freecam_keyboard_manager(camera, freeCam.forwardVector);
+    } else { // Stock N64 controller
+        freecam_n64_controller_manager(camera, controller, player);
+    }
     if (!fTargetPlayer) {
         freecam_update(camera, freeCam.forwardVector);
     }
@@ -219,14 +223,14 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     Vec3f totalMove = {0.0f, 0.0f, 0.0f};
 
 
-    if (keystate[SDL_SCANCODE_F]) {
-        fMode = !fMode;
-    }
+    // if (keystate[SDL_SCANCODE_F]) {
+    //     fMode = true;
+    // }
 
-    // Target a player
-    if (keystate[SDL_SCANCODE_G]) {
-        fTargetPlayer = false;
-    }
+    // // Target a player
+    // if (keystate[SDL_SCANCODE_G]) {
+    //     fTargetPlayer = false;
+    // }
 
     // Target next player
     if (keystate[SDL_SCANCODE_N]) {
@@ -247,7 +251,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     }
 
     // Target camera at chosen player
-    if (fTargetPlayer) {
+    if (fRankIndex != -1) {
         freecam_target_player(camera, gGPCurrentRacePlayerIdByRank[fRankIndex]);
         // Don't run the other camera code.
         return;

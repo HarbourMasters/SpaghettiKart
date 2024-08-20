@@ -12,6 +12,8 @@ void freecam(Camera*, Player*, s8);
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;
 extern f32 gFreecamRotateSmoothingFactor;
+extern u32 fRankIndex;
+extern u32 gFreecamControllerType;
 
 #ifdef __cplusplus
 }

@@ -43,6 +43,7 @@
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
 #include <bridge/gfxdebuggerbridge.h>
+#include "enhancements/freecam/freecam.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -355,7 +356,7 @@ void update_controller(s32 index) {
     }
 
     // Prevents pause menu intereference while controlling flycam
-    if (CVarGetInteger("gFreecam", 0) == 1 && (gGamestate == RACING)) {
+    if ((CVarGetInteger("gFreecam", 0) == 1) && (gFreecamControllerType == 0) && (gGamestate == RACING)) {
         return;
     }
 

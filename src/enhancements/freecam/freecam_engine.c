@@ -76,11 +76,6 @@ void freecam_pan_camera(Camera *camera, f32 moveSpeed) {
     // Update camera's position
     freeCam.velocity[0] = rightVector[0] * moveSpeed;
     freeCam.velocity[2] = rightVector[2] * moveSpeed;
-   // camera->pos[0] += rightVector[0] * moveSpeed;
-    //camera->pos[1] += 0; // Maintain the same height
-   // camera->pos[2] += rightVector[2] * moveSpeed;
-
-    // Update camera's lookAt position
 
 }
 
@@ -123,31 +118,11 @@ void freecam_move_camera_up(Camera* camera, f32 distance) {
     // Update the velocity of the camera in the Y direction
     freeCam.velocity[1] += distance;
     camera->lookAt[1] += distance;
-    // Apply damping to gradually reduce the velocity over time
-   // f32 dampingFactor = 0.5f;  // Adjust this value to control the damping effect
-   // freeCam.velocity[1] *= dampingFactor;
-
-    //freeCam.pos[1] += freeCam.velocity[1];
-
-   // freeCam.lookAt[1] += freeCam.velocity[1];
-
-    //camera->pos[1] = freeCam.pos[1];
-    //camera->lookAt[1] = freeCam.lookAt[1];
 }
 void freecam_move_camera_down(Camera* camera, f32 distance) {
     // Update the velocity of the camera in the Y direction
     freeCam.velocity[1] += distance;
     camera->lookAt[1] += distance;
-    // Apply damping to gradually reduce the velocity over time
-   // f32 dampingFactor = 0.5f;  // Adjust this value to control the damping effect
-   // freeCam.velocity[1] /= dampingFactor;
-
-   // freeCam.pos[1] -= freeCam.velocity[1];
-
-    //freeCam.lookAt[1] -= freeCam.velocity[1];
-
-  //  camera->pos[1] = freeCam.pos[1];
-    //camera->lookAt[1] = freeCam.lookAt[1];
 }
 
 void freecam_target_player(Camera *camera, u32 playerIndex) {
