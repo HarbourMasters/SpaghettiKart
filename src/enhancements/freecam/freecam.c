@@ -157,6 +157,8 @@ void freecam_load_state(Camera *camera) {
     camera->rot[2] = fState.rot[2];
 }
 
+f32 gFreecamRotateSmoothingFactor = 0.85f;
+
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
     int mouseX, mouseY;
     static int prevMouseX = 0, prevMouseY = 0;
@@ -173,7 +175,6 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
         f32 pitchChange = mouseY * MOUSE_SENSITIVITY_Y;
 
         // Smoothly update yaw and pitch
-        f32 smoothingFactor = 0.85f; // Adjust this factor for more/less smoothing
         camera->rot[1] += (short)(yawChange * 65535.0f / (2 * M_PI)); // Yaw (left/right)
         camera->rot[2] += (short)(pitchChange * 65535.0f / (2 * M_PI)); // Pitch (up/down)
 
@@ -192,9 +193,9 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
         };
 
         // Smoothing
-        camera->lookAt[0] += (targetLookAt[0] - camera->lookAt[0]) * smoothingFactor;
-        camera->lookAt[1] += (targetLookAt[1] - camera->lookAt[1]) * smoothingFactor;
-        camera->lookAt[2] += (targetLookAt[2] - camera->lookAt[2]) * smoothingFactor;
+        camera->lookAt[0] += (targetLookAt[0] - camera->lookAt[0]) * gFreecamRotateSmoothingFactor;
+        camera->lookAt[1] += (targetLookAt[1] - camera->lookAt[1]) * gFreecamRotateSmoothingFactor;
+        camera->lookAt[2] += (targetLookAt[2] - camera->lookAt[2]) * gFreecamRotateSmoothingFactor;
     }
 }
 

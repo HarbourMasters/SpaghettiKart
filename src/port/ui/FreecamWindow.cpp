@@ -20,6 +20,7 @@ extern "C" {
 extern f32 gDampValue;
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;
+extern f32 gFreecamRotateSmoothingFactor;
 }
 
 namespace Freecam {
@@ -38,6 +39,8 @@ float minSpeed = 1.0;
 float maxSpeed = 30.0f;
 float minSpeedMultiplier = 1.5f;
 float maxSpeedMultiplier = 15.0f;
+float minFreecamRotateFactor = 0.0f;
+float maxFreecamRotateFactor = 1.0f;
 
 void FreecamWindow::DrawElement() {
     const float framerate = ImGui::GetIO().Framerate;
@@ -57,6 +60,9 @@ void FreecamWindow::DrawElement() {
 
     };
     if (ImGui::SliderScalar("Camera Speed Multiplier", ImGuiDataType_Float, &gFreecamSpeedMultiplier, &minSpeedMultiplier, &maxSpeedMultiplier, "%f")) {
+
+    };
+    if (ImGui::SliderScalar("Camera Rotation Smoothing", ImGuiDataType_Float, &gFreecamRotateSmoothingFactor, &minFreecamRotateFactor, &maxFreecamRotateFactor, "%f")) {
 
     };
     
