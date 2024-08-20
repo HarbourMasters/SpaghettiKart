@@ -16,7 +16,7 @@
 #include "code_80005FD0.h"
 #include "main.h"
 #include "spawn_players.h"
-#include "noclip.h"
+#include "enhancements/freecam/freecam_engine.h"
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
@@ -974,8 +974,8 @@ void func_8001EE98(Player *player, Camera *camera, s8 index) {
                 func_8001E8E8(camera, player, index);
                 break;
             }
-            if (CVarGetInteger("gNoclip", 0) == 1) {
-                noclip(camera, player, index);
+            if (CVarGetInteger("gFreecam", 0) == 1) {
+                freecam(camera, player, index);
             } else {
                 func_8001E45C(camera, player, index);
             }

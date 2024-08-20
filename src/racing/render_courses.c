@@ -1302,7 +1302,7 @@ void func_8029569C(void) {
 void render_course(struct UnkStruct_800DC5EC *arg0) {
 
     func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    if (creditsRenderMode || (CVarGetInteger("gNoclip", 0) == 1) ) {
+    if (creditsRenderMode || (CVarGetInteger("gFreecam", 0) == 1) ) {
         func_8029569C();
         return;
     }
