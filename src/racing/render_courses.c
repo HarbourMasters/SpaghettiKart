@@ -929,7 +929,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -996,7 +996,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     UNUSED s32 pad[13];
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1023,7 +1023,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1141,7 +1141,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1151,7 +1151,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC *arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC *arg0) {
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1176,7 +1176,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1188,8 +1188,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64((uintptr_t) &D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1214,7 +1214,7 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1300,9 +1300,28 @@ void func_8029569C(void) {
 }
 
 void render_course(struct UnkStruct_800DC5EC *arg0) {
-
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610[0], D_802B87D4, 0, 1);
     if (creditsRenderMode || (CVarGetInteger("gFreecam", 0) == 1) ) {
+        // Enable course lighting for freecam mode
+        if ((CVarGetInteger("gFreecam", 0) == 1)) {
+            u16 perspNorm;
+            Mat4 matrix;
+            init_rdp();
+            func_802A53A4();
+            init_rdp();
+            func_80057FC4(0);
+            gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+            guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+            gSPPerspNormalize(gDisplayListHead++, perspNorm);
+            gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+            guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
+            gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+            mtxf_identity(matrix);
+            render_set_position(matrix, 0);
+            init_rdp();
+        }
+
+        // Render credits courses
         func_8029569C();
         return;
     }

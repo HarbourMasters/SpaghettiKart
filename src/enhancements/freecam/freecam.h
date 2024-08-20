@@ -1,11 +1,20 @@
 #ifndef FREECAM_H
 #define FREECAM_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <libultraship.h>
+#include "camera.h"
 
 void freecam(Camera*, Player*, s8);
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;
 extern f32 gFreecamRotateSmoothingFactor;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // FREECAM_H

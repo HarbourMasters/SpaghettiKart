@@ -178,7 +178,7 @@ Gfx *koopa_troopa_beach_dls2[] = {
 
 // 0x06014828
 // animations? lights?
-u32 d_course_koopa_troopa_beach_unk_data1[] = {
+uintptr_t d_course_koopa_troopa_beach_unk_data1[] = {
     0x00000000,
     0x00000001,
     0x00000000,
@@ -459,7 +459,7 @@ animation_type_2 d_course_koopa_troopa_beach_unk_data4 = {
 
 
 //! 0x60169b
-u32 d_course_koopa_troopa_beach_unk4[] = {
+uintptr_t d_course_koopa_troopa_beach_unk4[] = {
     0x00000001,
     0x00000002,
 
@@ -604,7 +604,7 @@ animation_type_2 *d_course_koopa_troopa_beach_unk_data5[] = {
 };
 
 // No idea what this stuff is
-u32 d_course_koopa_troopa_beach_unk_data6[] = {
+uintptr_t d_course_koopa_troopa_beach_unk_data6[] = {
     0x00000000,
     0x00000000,
     0x00000001,

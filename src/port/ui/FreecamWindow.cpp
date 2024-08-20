@@ -7,9 +7,10 @@
 #include "spdlog/spdlog.h"
 #include <common_structs.h>
 #include <defines.h>
+#include "enhancements/freecam/freecam_engine.h"
+#include "enhancements/freecam/freecam.h"
 
 extern "C" {
-//#include "enhancements/freecam/freecam_engine.h"
 // typedef struct {
 //     Vec3f pos;
 //     Vec3f velocity;
@@ -47,7 +48,7 @@ void FreecamWindow::DrawElement() {
     const float deltatime = ImGui::GetIO().DeltaTime;
     ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
 
-    ImGui::Text("Freecam");
+    ImGui::Text("Freecam: Requires OpenGL");
 
     UIWidgets::CVarCheckbox("Enable Flycam", "gFreecam", {
         .tooltip = "Allows you to fly around the course"

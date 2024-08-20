@@ -22,6 +22,11 @@ typedef struct {
 
 freecamSaveState fState;
 
+u32 fRankIndex = 0;
+u32 fTargetPlayer = false;
+u32 fMode; // freecam mode should probably be an enum
+u32 fModeInit = false;
+
 int rightMouseButtonDown = 0; // Track if right mouse button is held down
 
 // void freecam_n64_calculate_forward_vector(Camera* camera, Vec3f forwardVector);
@@ -37,9 +42,6 @@ void freecam_save_state(Camera *camera);
 void freecam_load_state(Camera *camera);
 void freecam_mouse_manager(Camera *camera);
 void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector);
-//void freecam_pan_camera(Camera *camera, f32 moveSpeed);
-// void freecam_calculate_forward_vector_allow_rotation(Camera* camera, Vec3f forwardVector);
-
 
 /**
  * Controls
@@ -124,8 +126,9 @@ void freecam(Camera *camera, Player *player, s8 index) {
     freecam_keyboard_manager(camera, freeCam.forwardVector);
     //freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
     //freecam_calculate_forward_vector(camera, freeCam.forwardVector);
-    freecam_update(camera, freeCam.forwardVector);
-
+    if (!fTargetPlayer) {
+        freecam_update(camera, freeCam.forwardVector);
+    }
 }
 
 void freecam_save_state(Camera *camera) {
@@ -214,6 +217,42 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
 
     // Determine movement direction based on keys pressed
     Vec3f totalMove = {0.0f, 0.0f, 0.0f};
+
+
+    if (keystate[SDL_SCANCODE_F]) {
+        fMode = !fMode;
+    }
+
+    // Target a player
+    if (keystate[SDL_SCANCODE_G]) {
+        fTargetPlayer = false;
+    }
+
+    // Target next player
+    if (keystate[SDL_SCANCODE_N]) {
+        if (fRankIndex > 0) {
+            fRankIndex--;
+            camera->playerId = fRankIndex;
+            D_800DC5EC->player = &gPlayers[fRankIndex];
+        }
+    }
+
+    // Target previous player
+    if (keystate[SDL_SCANCODE_M]) {
+        if (fRankIndex < 7) {
+            fRankIndex++;
+            camera->playerId = fRankIndex;
+            D_800DC5EC->player = &gPlayers[fRankIndex];
+        }
+    }
+
+    // Target camera at chosen player
+    if (fTargetPlayer) {
+        freecam_target_player(camera, gGPCurrentRacePlayerIdByRank[fRankIndex]);
+        // Don't run the other camera code.
+        return;
+    }
+
 
     if (keystate[SDL_SCANCODE_W]) {
         totalMove[0] += forwardVector[0] * moveSpeed;
