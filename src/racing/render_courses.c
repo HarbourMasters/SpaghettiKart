@@ -515,7 +515,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_mario_raceway_packed_dl_3050
-        gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003050)));
+        //gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003050)));
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -599,26 +599,26 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_mario_raceway_packed_dl_3508
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003508)));
+   // gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003508)));
     // d_course_mario_raceway_packed_dl_3240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003240)));
+   // gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07003240)));
     // d_course_mario_raceway_packed_dl_14A0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070014A0)));
+   // gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070014A0)));
     //printf("LOADING SURFACE MAP\n");
-    render_course_segments(mario_raceway_dls, arg0);
+   // render_course_segments(mario_raceway_dls, arg0);
     //printf("SURFACE MAP LOADED\n");
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_mario_raceway_packed_dl_450
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000450)));
+  //  gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000450)));
     // d_course_mario_raceway_packed_dl_240
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000240)));
+  //  gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000240)));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_mario_raceway_packed_dl_E0
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070000E0)));
+   // gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070000E0)));
     // d_course_mario_raceway_packed_dl_160
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000160)));
+  //  gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000160)));
     //printf("RENDERED COURSE\n");
 }
 
@@ -929,7 +929,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -996,7 +996,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     UNUSED s32 pad[13];
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1023,7 +1023,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1141,7 +1141,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1151,7 +1151,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC *arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC *arg0) {
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1176,7 +1176,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1188,8 +1188,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC *arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64((uintptr_t) &D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1214,7 +1214,7 @@ void render_big_donut(struct UnkStruct_800DC5EC *arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1299,9 +1299,217 @@ void func_8029569C(void) {
     }
 }
 
-void render_course(struct UnkStruct_800DC5EC *arg0) {
+void render_collision(void);
+Mtx gIdentityMtx2 = {
+    toFixedPointMatrix(1.0, 0.0, 0.0, 0.0, 
+                       0.0, 1.0, 0.0, 0.0, 
+                       0.0, 0.0, 1.0, 0.0, 
+                       0.0, 0.0, 0.0, 1.0),
+};
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+// enum SURFACE_TYPE {
+//     /* -0x1 */ SURFACE_DEFAULT = -1,
+//     /* 0x00 */ AIRBORNE,
+//     /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+//     /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+//     /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
+//     /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
+//     /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
+//     /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+//     /* 0x07 */ SAND_OFFROAD, // Mario Raceway
+//     /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
+//     /* 0x09 */ ICE, // Sherbert Land
+//     /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
+//     /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
+//     /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
+//     /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
+//     /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
+//     /* 0x0F */ CAVE, // DK Jungle cave
+//     /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
+//     /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+//     /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
+//     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
+//     /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
+//     /* 0xFF */ RAMP // Koopa Troopa beach
+// };
+
+extern char* gMRTextureRoadFinish0;
+
+ void render_collision(void) {
+    Mat4 matrix;
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
+    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+//    gSPLoadGeometryMode(gDisplayListHead++, G_ZBUFFER | G_CULL_BACK | G_SHADE | G_SHADING_SMOOTH | G_LIGHTING);
+    gDPPipeSync(gDisplayListHead++);
+    gDPSetOtherMode(gDisplayListHead++, G_AD_NOTPATTERN | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_NPRIMITIVE, G_AC_NONE | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+
+    // Set matrix
+    gSPMatrix(gDisplayListHead++, &gIdentityMtx2, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
+
+    for (size_t i = 0; i < gCollisionMeshCount; i++) {
+        // Load vertices for this tri
+
+        switch(gCollisionMesh[i].surfaceType) {
+            case ASPHALT:
+
+            //     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+            //     gDPTileSync(gDisplayListHead++);
+            //    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+            //     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
+            //     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gTextureRoad1);
+            //     gDPTileSync(gDisplayListHead++);
+            //     gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+            //     gDPLoadSync(gDisplayListHead++);
+            //     gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
+            //     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+                // gCollisionMesh[i].vtx1->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx1->v.cn[1] = 50;
+                // gCollisionMesh[i].vtx1->v.cn[2] = 50;
+                // gCollisionMesh[i].vtx2->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx2->v.cn[1] = 50;
+                // gCollisionMesh[i].vtx2->v.cn[2] = 50;
+                // gCollisionMesh[i].vtx3->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx3->v.cn[1] = 50;
+                // gCollisionMesh[i].vtx3->v.cn[2] = 50;
+                
+                break;
+            case GRASS: // gTextureGrass1
+
+                gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+                gDPTileSync(gDisplayListHead++);
+                gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+                gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
+                gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gTextureGrass1);
+                gDPTileSync(gDisplayListHead++);
+                gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+                gDPLoadSync(gDisplayListHead++);
+                gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
+                gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+
+
+                // gCollisionMesh[i].vtx1->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx1->v.cn[1] = 180;
+                // gCollisionMesh[i].vtx1->v.cn[2] = 50;
+                // gCollisionMesh[i].vtx2->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx2->v.cn[1] = 180;
+                // gCollisionMesh[i].vtx2->v.cn[2] = 50;
+                // gCollisionMesh[i].vtx3->v.cn[0] = 50;
+                // gCollisionMesh[i].vtx3->v.cn[1] = 180;
+                // gCollisionMesh[i].vtx3->v.cn[2] = 50;
+                break;
+            case DIRT:
+                gCollisionMesh[i].vtx1->v.cn[0] = 255;
+                gCollisionMesh[i].vtx1->v.cn[1] = 248;
+                gCollisionMesh[i].vtx1->v.cn[2] = 220;
+                gCollisionMesh[i].vtx2->v.cn[0] = 255;
+                gCollisionMesh[i].vtx2->v.cn[1] = 248;
+                gCollisionMesh[i].vtx2->v.cn[2] = 220;
+                gCollisionMesh[i].vtx3->v.cn[0] = 255;
+                gCollisionMesh[i].vtx3->v.cn[1] = 248;
+                gCollisionMesh[i].vtx3->v.cn[2] = 220;
+                break;
+            case SAND:
+                gCollisionMesh[i].vtx1->v.cn[0] = 255;
+                gCollisionMesh[i].vtx1->v.cn[1] = 121;
+                gCollisionMesh[i].vtx1->v.cn[2] = 25;
+                gCollisionMesh[i].vtx2->v.cn[0] = 255;
+                gCollisionMesh[i].vtx2->v.cn[1] = 121;
+                gCollisionMesh[i].vtx2->v.cn[2] = 25;
+                gCollisionMesh[i].vtx3->v.cn[0] = 255;
+                gCollisionMesh[i].vtx3->v.cn[1] = 121;
+                gCollisionMesh[i].vtx3->v.cn[2] = 25;
+                break;
+            case OUT_OF_BOUNDS:
+                gCollisionMesh[i].vtx1->v.cn[0] = 255;
+                gCollisionMesh[i].vtx1->v.cn[1] = 0;
+                gCollisionMesh[i].vtx1->v.cn[2] = 0;
+                gCollisionMesh[i].vtx2->v.cn[0] = 255;
+                gCollisionMesh[i].vtx2->v.cn[1] = 0;
+                gCollisionMesh[i].vtx2->v.cn[2] = 0;
+                gCollisionMesh[i].vtx3->v.cn[0] = 255;
+                gCollisionMesh[i].vtx3->v.cn[1] = 0;
+                gCollisionMesh[i].vtx3->v.cn[2] = 0;
+                break;
+            case STONE:
+                gCollisionMesh[i].vtx1->v.cn[0] = 128;
+                gCollisionMesh[i].vtx1->v.cn[1] = 128;
+                gCollisionMesh[i].vtx1->v.cn[2] = 128;
+                gCollisionMesh[i].vtx2->v.cn[0] = 128;
+                gCollisionMesh[i].vtx2->v.cn[1] = 128;
+                gCollisionMesh[i].vtx2->v.cn[2] = 128;
+                gCollisionMesh[i].vtx3->v.cn[0] = 128;
+                gCollisionMesh[i].vtx3->v.cn[1] = 128;
+                gCollisionMesh[i].vtx3->v.cn[2] = 128;
+                break;
+            case BOOST_RAMP_WOOD:
+            case BOOST_RAMP_ASPHALT:
+            case RAMP:
+                gCollisionMesh[i].vtx1->v.cn[0] = 255;
+                gCollisionMesh[i].vtx1->v.cn[1] = 255;
+                gCollisionMesh[i].vtx1->v.cn[2] = 0;
+                gCollisionMesh[i].vtx2->v.cn[0] = 255;
+                gCollisionMesh[i].vtx2->v.cn[1] = 255;
+                gCollisionMesh[i].vtx2->v.cn[2] = 0;
+                gCollisionMesh[i].vtx3->v.cn[0] = 255;
+                gCollisionMesh[i].vtx3->v.cn[1] = 255;
+                gCollisionMesh[i].vtx3->v.cn[2] = 0;
+                break;
+            case WOOD_BRIDGE:
+            case ROPE_BRIDGE:
+            case BRIDGE:
+                gCollisionMesh[i].vtx1->v.cn[0] = 0;
+                gCollisionMesh[i].vtx1->v.cn[1] = 255;
+                gCollisionMesh[i].vtx1->v.cn[2] = 0;
+                gCollisionMesh[i].vtx2->v.cn[0] = 0;
+                gCollisionMesh[i].vtx2->v.cn[1] = 255;
+                gCollisionMesh[i].vtx2->v.cn[2] = 0;
+                gCollisionMesh[i].vtx3->v.cn[0] = 0;
+                gCollisionMesh[i].vtx3->v.cn[1] = 255;
+                gCollisionMesh[i].vtx3->v.cn[2] = 0;
+                break;
+        }
+
+        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx1, 1, 0);
+        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx2, 1, 1);
+        gSPVertex(gDisplayListHead++, gCollisionMesh[i].vtx3, 1, 2);
+
+        // Draw tri
+        gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
+        gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
+    }
+ }
+void render_course(struct UnkStruct_800DC5EC *arg0) {
+    func_802B5D64(&D_800DC610[0], D_802B87D4, 0, 1);
+    if ((CVarGetInteger("gFreecam", 0) == 1) ) {
+        // Enable course lighting for freecam mode
+        u16 perspNorm;
+        Mat4 matrix;
+        init_rdp();
+        func_802A53A4();
+        init_rdp();
+        func_80057FC4(0);
+        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+        gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
+        guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+        gSPPerspNormalize(gDisplayListHead++, perspNorm);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        mtxf_identity(matrix);
+        gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+        render_set_position(matrix, 0);
+        init_rdp();
+
+        // Render credits courses
+        //func_8029569C();
+render_collision();
+        return;
+    }
+
     if (creditsRenderMode) {
         func_8029569C();
         return;
@@ -1369,7 +1577,9 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
         render_big_donut(arg0);
         break;
     }
+
 }
+
 
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
@@ -1427,7 +1637,6 @@ void func_80295D88(void) {
     gCollisionMesh = (CollisionTriangle *) gNextFreeMemoryAddress;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // d_course_mario_raceway_packed_dl_1140
@@ -1491,14 +1700,13 @@ void func_80295D88(void) {
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
             break;
-        case COURSE_YOSHI_VALLEY: {
+        case COURSE_YOSHI_VALLEY:
             Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
             func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists(d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
-        }
         case COURSE_FRAPPE_SNOWLAND:
             parse_course_displaylists(d_course_frappe_snowland_addr);
             func_80295C6C();
