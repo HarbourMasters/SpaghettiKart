@@ -159,11 +159,11 @@ D_80162D70 is a Vec3s that is used to set values in the some Vec3f that goes on 
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;
-    /* 0x04 */ s32 size;
-    /* 0x08 */ s32 always_zero_never_used;
+    /* 0x00 */ s64 type;
+    /* 0x04 */ s64 size;
+    /* 0x08 */ s64 always_zero_never_used;
     /* 0x0C */ Gfx *optional_segmented_dl_address;
-    /* 0x10 */ s32 thing[3];
+    /* 0x10 */ s64 thing[3];
 } animation_type_1;
 
 typedef struct {

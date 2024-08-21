@@ -146,7 +146,7 @@ void func_80004C30(animation_type_1 *arg0, animation_type_2 *arg1, s16 timeCycle
             temp_v0++;
             break;
         }
-        arg0 = (animation_type_1 *) ((u32 *) arg0 + arg0->size);
+        arg0 = (animation_type_1 *) ((uintptr_t *) arg0 + arg0->size);
     } while (new_var != 3);
 }
 
