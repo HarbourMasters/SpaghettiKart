@@ -1301,27 +1301,30 @@ void func_8029569C(void) {
 
 void render_course(struct UnkStruct_800DC5EC *arg0) {
     func_802B5D64(&D_800DC610[0], D_802B87D4, 0, 1);
-    if (creditsRenderMode || (CVarGetInteger("gFreecam", 0) == 1) ) {
+    if ((CVarGetInteger("gFreecam", 0) == 1) ) {
         // Enable course lighting for freecam mode
-        if ((CVarGetInteger("gFreecam", 0) == 1)) {
-            u16 perspNorm;
-            Mat4 matrix;
-            init_rdp();
-            func_802A53A4();
-            init_rdp();
-            func_80057FC4(0);
-            gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-            guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
-            gSPPerspNormalize(gDisplayListHead++, perspNorm);
-            gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
-            gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-            mtxf_identity(matrix);
-            render_set_position(matrix, 0);
-            init_rdp();
-        }
+        u16 perspNorm;
+        Mat4 matrix;
+        init_rdp();
+        func_802A53A4();
+        init_rdp();
+        func_80057FC4(0);
+        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+        guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+        gSPPerspNormalize(gDisplayListHead++, perspNorm);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        mtxf_identity(matrix);
+        render_set_position(matrix, 0);
+        init_rdp();
 
         // Render credits courses
+        func_8029569C();
+        return;
+    }
+
+    if (creditsRenderMode) {
         func_8029569C();
         return;
     }
