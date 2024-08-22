@@ -459,7 +459,7 @@ animation_type_2 d_course_koopa_troopa_beach_unk_data4 = {
 
 
 //! 0x60169b
-u32 d_course_koopa_troopa_beach_unk4[] = {
+uintptr_t d_course_koopa_troopa_beach_unk4[] = {
     0x00000001,
     0x00000002,
 

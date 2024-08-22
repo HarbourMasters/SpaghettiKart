@@ -1,6 +1,7 @@
 #include <actors.h>
 #include <main.h>
 #include <defines.h>
+#include <assets/toads_turnpike_offsets.h>
 
 /**
  * @brief Renders the car actor.

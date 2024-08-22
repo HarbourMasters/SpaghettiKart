@@ -432,8 +432,44 @@ d_course_choco_mountain_rock_texture:
 d_course_choco_mountain_falling_rock_model:
   symbol: d_course_choco_mountain_falling_rock_model
   type: vtx
-  offset: 0x6b38
-  count: 60
+  offset: 0x6B38
+  count: 65
+d_course_choco_mountain_6006C28:
+ symbol: d_course_choco_mountain_6006C28
+ type: vtx
+ offset: 0x6C28
+ count: 5
+d_course_choco_mountain_6006D08:
+ symbol: d_course_choco_mountain_6006D08
+ type: vtx
+ offset: 0x6D08
+ count: 15
+d_course_choco_mountain_6006C78:
+ symbol: d_course_choco_mountain_6006C78
+ type: vtx
+ offset: 0x6C78
+ count: 5
+d_course_choco_mountain_6006DA8:
+ symbol: d_course_choco_mountain_6006DA8
+ type: vtx
+ offset: 0x6DA8
+ count: 15
+d_course_choco_mountain_6006CC8:
+ symbol: d_course_choco_mountain_6006CC8
+ type: vtx
+ offset: 0x6CC8
+ count: 4
+d_course_choco_mountain_6006E48:
+ symbol: d_course_choco_mountain_6006E48
+ type: vtx
+ offset: 0x6E48
+ count: 12
+d_course_choco_mountain_6006EC8:
+ symbol: d_course_choco_mountain_6006EC8
+ type: vtx
+ offset: 0x6EC8
+ count: 3
+
 d_course_choco_mountain_dl_6EF8:
   symbol: d_course_choco_mountain_dl_6EF8
   type: gfx

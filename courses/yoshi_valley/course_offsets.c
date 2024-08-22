@@ -230,7 +230,7 @@ animation_type_2 *d_course_yoshi_valley_unk4[] = {
 };
 
 //! 0x06014798
-u32 d_course_yoshi_valley_unk5[] = {
+uintptr_t d_course_yoshi_valley_unk5[] = {
     0x00000001,
     0x00000002,
 

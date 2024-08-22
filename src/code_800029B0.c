@@ -309,11 +309,12 @@ void func_80003040(void) {
     set_segment_base_addr(0x3, (void *) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
     switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
+        case COURSE_MARIO_RACEWAY: {
             struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
             dma_textures(gTextureTrees1, 0x35B, 0x800);
             spawn_foliage(a_d_course_mario_raceway_tree_spawns);
             break;
+        }
         case COURSE_BOWSER_CASTLE:
             // d_course_bowsers_castle_packed_dl_1350
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001350), 0x32, 0, 0, 0);

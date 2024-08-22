@@ -20,19 +20,6 @@ extern Gfx *sherbet_land_dls_2[];
 extern Gfx *wario_stadium_dls[];
 extern const char *dks_jungle_parkway_dls[];
 
-extern Gfx toads_turnpike_dl_0[];
-extern Gfx toads_turnpike_dl_1[];
-extern Gfx toads_turnpike_dl_2[];
-extern Gfx toads_turnpike_dl_3[];
-extern Gfx toads_turnpike_dl_4[];
-extern Gfx toads_turnpike_dl_5[];
-extern Gfx toads_turnpike_dl_6[];
-extern Gfx toads_turnpike_dl_7[];
-extern Gfx toads_turnpike_dl_8[];
-extern Gfx toads_turnpike_dl_9[];
-extern Gfx toads_turnpike_dl_10[];
-extern Gfx toads_turnpike_dl_11[];
-
 extern const course_texture banshee_boardwalk_textures[];
 extern const course_texture big_donut_textures[];
 extern const course_texture block_fort_textures[];

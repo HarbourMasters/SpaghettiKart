@@ -156,7 +156,7 @@ animation_type_2 *d_rainbow_road_unk3[] = {
 };
 
 // 0x06016110
-u32 d_rainbow_road_unk4[] = {
+uintptr_t d_rainbow_road_unk4[] = {
     0x00000001,
     0x00000002,
 

@@ -3800,12 +3800,13 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             }
             switch (arg1) {                /* switch 1; irregular */
             case -1:                            /* switch 1 */
-            case 1:                             /* switch 1 */
+            case 1: {
                 //mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
                 //printf("w: %d, h: %d", texture->width, texture->height);
                 u8 *tex = (u8 *) LOAD_ASSET(texture->textureData);
                 memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texture->width * texture->height * 2);
                 break;
+            }
             case 0:                             /* switch 1 */
             case 2:                             /* switch 1 */
                 if (texture->type == 1) {
