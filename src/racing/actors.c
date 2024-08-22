@@ -569,8 +569,7 @@ void evaluate_collision_players_palm_trees(void) {
     s32 index;
 
     for (index = 0; index < 4; index++){
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to keep 8 first bit
-        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].collision.meshIndexZX) << 24) >> 24) == GRASS)) {
+        if (((gPlayers[index].type & 0xC000) != 0) && ((s8)(u8)get_surface_type(gPlayers[index].collision.meshIndexZX) == GRASS)) {
             evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }

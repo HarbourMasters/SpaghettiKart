@@ -13,9 +13,19 @@ To add submodules run `git submodule update --init --recursive` after cloning.
 Run `make assets` to extract assets.
 
 # Linux
+
+### Ubuntu
+
 ```bash
 sudo apt install cmake build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
 ```
+
+### Fedora
+
+```bash
+sudo dnf install make automake gcc gcc-c++ kernel-devel cmake pkg-config git python3 zlib-devel audiofile-devel capstone
+```
+and install [gcc toolchain of libdragon](https://github.com/DragonMinded/libdragon/releases/tag/toolchain-continuous-prerelease) and add `export PATH="/opt/libdragon/bin:$PATH"` to ~/.bashrc
 
 ### Arch
 
