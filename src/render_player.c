@@ -281,7 +281,7 @@ void load_kart_texture_and_render_kart_particle_on_screen_one(void) {
                        D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]][gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]].pixel_index_array);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
             #else
-            strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00);
+            strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]][gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]][gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]].unk_00);
             #endif
     }
 
@@ -289,7 +289,7 @@ void load_kart_texture_and_render_kart_particle_on_screen_one(void) {
     mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00,
                D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array);
     #else
-    strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00);
+    strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00);
     #endif
 }
 
@@ -315,14 +315,14 @@ void load_kart_texture_and_render_kart_particle_on_screen_two(void) {
                    D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         #else
-        strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00);
+        strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]].unk_00);
         #endif
     }
     #ifdef TARGET_N64
     mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00,
                D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array);
     #else
-    strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00);
+    strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00);
     #endif
 }
 
@@ -342,14 +342,14 @@ void load_kart_texture_and_render_kart_particle_on_screen_three(void) {
                    D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         #else
-        strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00);
+        strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].unk_00);
         #endif
     }
     #ifdef TARGET_N64
     mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00,
                D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array);
     #else
-    strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00);
+    strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00);
     #endif
 }
 
@@ -369,14 +369,14 @@ void load_kart_texture_and_render_kart_particle_on_screen_four(void) {
                    D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         #else
-        strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00);
+        strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].unk_00);
         #endif
     }
     #ifdef TARGET_N64
     mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00,
                D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array);
     #else
-    strcpy(D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00);
+    strcpy(D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array, gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00);
     #endif
 }
 
@@ -1813,8 +1813,8 @@ void update_wheel_palette(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
     u8 character = player->characterId;
-    u32 wheel0 = (D_800DDE34[player->characterId][temp_t1]);
-    u32 wheel1 = (D_800DDE54[player->characterId][temp_t1]);
+    u32 wheel0 = (D_800DDE34[player->characterId][groupId]);
+    u32 wheel1 = (D_800DDE54[player->characterId][groupId]);
 
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)

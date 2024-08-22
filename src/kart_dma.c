@@ -1924,7 +1924,7 @@ void load_kart_palette(Player *player, s8 playerId, s8 screenId, s8 buffer) {
             #else
             size = ResourceGetTexSizeByName(gKartPalettes[player->characterId]);
             asset = (u8 *) LOAD_ASSET(gKartPalettes[player->characterId]);
-            memcpy(&D_802F1F80[buffer][screenId][playerId], asset, size);
+            memcpy(&gPlayerPalettesList[buffer][screenId][playerId], asset, size);
             #endif
 
             break;
