@@ -388,7 +388,7 @@ s16 d_course_koopa_troopa_beach_unk_data2[] = {
 };
 
 // 0x06014B50
-animation_type_3_triplet d_course_koopa_troopa_beach_unk_data3[] = {
+AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0037, 0x0001 },
@@ -447,7 +447,7 @@ animation_type_3_triplet d_course_koopa_troopa_beach_unk_data3[] = {
 };
 
 // 0x06014BD4
-animation_type_2 d_course_koopa_troopa_beach_unk_data4 = {
+Animation d_course_koopa_troopa_beach_unk_data4 = {
     0x00010000,
     0x00000000,
     0x0037,
@@ -599,7 +599,7 @@ uintptr_t d_course_koopa_troopa_beach_unk4[] = {
 };
 
 // 0x06016B60
-animation_type_2 *d_course_koopa_troopa_beach_unk_data5[] = {
+Animation *d_course_koopa_troopa_beach_unk_data5[] = {
     &d_course_koopa_troopa_beach_unk_data4,
 };
 

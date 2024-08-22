@@ -166,7 +166,7 @@ s16 d_course_yoshi_valley_unk1[] = {
 };
 
 // 0x06014714
-animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
+AnimationLimbVector d_course_yoshi_valley_unk2[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -215,7 +215,7 @@ animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
 };
 
 // 0x06014780
-animation_type_2 d_course_yoshi_valley_unk3 = {
+Animation d_course_yoshi_valley_unk3 = {
     0x00010000,
     0x00000000,
     0x001d,
@@ -225,7 +225,7 @@ animation_type_2 d_course_yoshi_valley_unk3 = {
 };
 
 // 0x06014794
-animation_type_2 *d_course_yoshi_valley_unk4[] = {
+Animation *d_course_yoshi_valley_unk4[] = {
     &d_course_yoshi_valley_unk3,
 };
 

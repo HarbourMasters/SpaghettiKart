@@ -97,7 +97,7 @@ s16 d_rainbow_road_chomp_jaw_animation[] = {
 };
 
 // 0x06016098
-animation_type_3_triplet d_rainbow_road_unk1[] = {
+AnimationLimbVector d_rainbow_road_unk1[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -141,7 +141,7 @@ animation_type_3_triplet d_rainbow_road_unk1[] = {
 };
 
 // 0x060160F8
-animation_type_2 d_rainbow_road_unk2 = {
+Animation d_rainbow_road_unk2 = {
     0x00010000,
     0x00000000,
     0x0014,
@@ -151,7 +151,7 @@ animation_type_2 d_rainbow_road_unk2 = {
 };
 
 // 0x0601610C
-animation_type_2 *d_rainbow_road_unk3[] = {
+Animation *d_rainbow_road_unk3[] = {
     &d_rainbow_road_unk2,
 };
 

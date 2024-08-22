@@ -495,7 +495,7 @@ s16 d_course_sherbet_land_unk_data2[] = {
 };
 
 // 0x06009350
-animation_type_3_triplet d_course_sherbet_land_unk_data3[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data3[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0001 },
@@ -559,7 +559,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data3[] = {
 };
 
 // 0x060093E0
-animation_type_2 d_course_sherbet_land_unk_data4 = {
+Animation d_course_sherbet_land_unk_data4 = {
     0x00010000,
     0x00050000,
     0x0013,
@@ -720,7 +720,7 @@ s16 d_course_sherbet_land_unk_data5[] = {
 };
 
 // 0x06009640
-animation_type_3_triplet d_course_sherbet_land_unk_data6[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data6[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0019, 0x0001 },
@@ -784,7 +784,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data6[] = {
 };
 
 // 0x060096D0
-animation_type_2 d_course_sherbet_land_unk_data7 = {
+Animation d_course_sherbet_land_unk_data7 = {
     0x00000000,
     0x00000000,
     0x0019,
@@ -1006,7 +1006,7 @@ s16 d_course_sherbet_land_unk_data8[] = {
 };
 
 // 0x06009A24
-animation_type_3_triplet d_course_sherbet_land_unk_data9[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data9[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0019, 0x0001 },
@@ -1070,7 +1070,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data9[] = {
 };
 
 // 0x06009AB4
-animation_type_2 d_course_sherbet_land_unk_data10 = {
+Animation d_course_sherbet_land_unk_data10 = {
     0x00000000,
     0x00000000,
     0x0019,
@@ -1080,7 +1080,7 @@ animation_type_2 d_course_sherbet_land_unk_data10 = {
 };
 
 // 0x06009AC8
-animation_type_2 *d_course_sherbet_land_unk_data11[] = {
+Animation *d_course_sherbet_land_unk_data11[] = {
     &d_course_sherbet_land_unk_data4,
     &d_course_sherbet_land_unk_data7,
     &d_course_sherbet_land_unk_data10,

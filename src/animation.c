@@ -1,11 +1,11 @@
-#include <ultra64.h>
+#include <libultraship.h>
 #include <macros.h>
 #include <mk64.h>
 #include "math_util.h"
 #include "animation.h"
 #include "memory.h"
 #include <main.h>
-#include <PR/gbi.h>
+#include <libultra/gbi.h>
 #include "code_80057C60.h"
 
 Vec3s sOriginalPosAnimation;
