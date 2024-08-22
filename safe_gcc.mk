@@ -8,7 +8,7 @@ SAFE_C_FILES :=    \
     build/us/src/effects.o    \
     build/us/src/code_80057C60_var.o    \
     build/us/src/code_800029B0.o    \
-    build/us/src/code_80004740.o    \
+    build/us/src/animation.o    \
     build/us/src/player_controller.o    \
     build/us/src/profiler.o    \
     build/us/src/render_player.o    \

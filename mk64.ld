@@ -49,7 +49,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
       BUILD_DIR/src/crash_screen.o(.text*);
-      BUILD_DIR/src/code_80004740.o(.text*);
+      BUILD_DIR/src/animation.o(.text*);
       BUILD_DIR/src/staff_ghosts.o(.text*);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.jp.o(.text*);
@@ -267,7 +267,7 @@ SECTIONS
       BUILD_DIR/src/os/osViData.o(.data*);
       BUILD_DIR/src/os/_Litob.o(.data*);
       BUILD_DIR/src/main.o(.rodata*);
-      BUILD_DIR/src/code_80004740.o(.rodata*);
+      BUILD_DIR/src/animation.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
@@ -326,7 +326,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.bss*);
       BUILD_DIR/src/profiler.o(.bss*);
       BUILD_DIR/src/crash_screen.o(.bss*);
-      BUILD_DIR/src/code_80004740.o(.bss*);
+      BUILD_DIR/src/animation.o(.bss*);
       BUILD_DIR/src/staff_ghosts.o(.bss*);
       BUILD_DIR/src/code_80005FD0.jp.o(.bss*);
       BUILD_DIR/src/camera.o(.bss*);

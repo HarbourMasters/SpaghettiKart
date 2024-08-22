@@ -7273,7 +7273,7 @@ void func_80084430(s32 objectIndex, UNUSED s32 arg1) {
     func_80086EF0(objectIndex);
     object->spline = D_800E672C[0];
     set_object_flag_status_true(objectIndex, 0x04000800);
-    object->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
+    object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7391,7 +7391,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     }
     func_80086EF0(objectIndex);
     object->unk_034 = 0.0f;
-    object->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
+    object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7464,7 +7464,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             gObjectList[objectIndex].unk_09C = 1;
             gObjectList[objectIndex].unk_0D8 = 1;
             gObjectList[objectIndex].itemDisplay = 0;
-            gObjectList[objectIndex].type = func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+            gObjectList[objectIndex].type = get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             if (func_80072354(objectIndex, 0x00000020) != 0) {
@@ -7504,7 +7504,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
             func_800722A4(objectIndex, 2);
             gObjectList[objectIndex].unk_0D8 = 2;
             gObjectList[objectIndex].itemDisplay = 0;
-            gObjectList[objectIndex].type = func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+            gObjectList[objectIndex].type = get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
         }
@@ -7513,7 +7513,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
         if (func_80072354(objectIndex, 2) != 0) {
             gObjectList[objectIndex].unk_0D8 = 0;
             gObjectList[objectIndex].itemDisplay = 0;
-            gObjectList[objectIndex].type = func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+            gObjectList[objectIndex].type = get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
             gObjectList[objectIndex].unk_0C6 += 0x8000;
             func_800726CC(objectIndex, 2);
             func_8008701C(objectIndex, 1);
@@ -7727,7 +7727,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     set_obj_origin_offset(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;
-    object->type = func_80004EAC(d_rainbow_road_unk3, 0);
+    object->type = get_animation_length(d_rainbow_road_unk3, 0);
     func_80072488(objectIndex);
 }
 

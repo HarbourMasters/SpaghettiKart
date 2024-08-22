@@ -20,7 +20,7 @@
 #include "bomb_kart.h"
 #include <assets/common_data.h>
 #include "render_player.h"
-#include "code_80004740.h"
+#include "animation.h"
 #include "code_80005FD0.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
@@ -3947,9 +3947,9 @@ void func_80055164(s32 objectIndex) {
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {
-            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            gObjectList[objectIndex].unk_0A2 = render_animated_model((Armature *) gObjectList[objectIndex].model, (Animation **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         } else {
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            render_animated_model((Armature *) gObjectList[objectIndex].model, (Animation **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
     }
 }
@@ -3972,9 +3972,9 @@ void func_800552BC(s32 objectIndex) {
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         if (gIsGamePaused == 0) {
-            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            gObjectList[objectIndex].unk_0A2 = render_animated_model((Armature *) gObjectList[objectIndex].model, (Animation **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         } else {
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            render_animated_model((Armature *) gObjectList[objectIndex].model, (Animation **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
     }
 }
@@ -4074,7 +4074,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                     sp34[2] = object->pos[2];
                     rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, object->orientation, object->sizeScaling);
                     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-                    func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
+                    render_animated_model((Armature *) object->model, (Animation **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
                 }
             } else if (arg1 < 0x15F91U) {
                 func_8004A7AC(objectIndex, 1.5f);
@@ -4082,7 +4082,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
         }
         rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-        func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
+        render_animated_model((Armature *) object->model, (Animation **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
     }
 }
 
@@ -4146,7 +4146,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
         } else {
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
+            render_animated_model((Armature *) gObjectList[objectIndex].model, (Animation **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
         }
     }
 }
@@ -4155,7 +4155,7 @@ void render_object_chain_chomps(s32 cameraId) {
     s32 var_s1;
     s32 objectIndex;
 
-    for (var_s1 = 0; var_s1 < 3; var_s1++) {
+    for (var_s1 = 0; var_s1 < NUM_CHAIN_CHOMPS; var_s1++) {
         objectIndex = indexObjectList2[var_s1];
         func_8008A1D0(objectIndex, cameraId, 0x000005DC, 0x000009C4);
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {

@@ -1,7 +1,7 @@
 #ifndef UPDATE_OBJECTS_H
 #define UPDATE_OBJECTS_H
 
-#include "code_80004740.h"
+#include "animation.h"
 #include <common_structs.h>
 #include "camera.h"
 #include "objects.h"
