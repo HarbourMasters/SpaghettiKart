@@ -1325,7 +1325,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     stackPadding = pathIndex;
     trackSectionId = get_track_section_id(player->collision.meshIndexZX);
     D_80163318[payerId] = trackSectionId;
-    sSomeNearestWaypoint = find_closest_waypoint_track_segment(posX, posY, posZ, trackSectionId, &pathIndex);
+    sSomeNearestWaypoint = find_closest_waypoint_track_section(posX, posY, posZ, trackSectionId, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = sSomeNearestWaypoint;
     if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
@@ -2276,7 +2276,7 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     return nearestWaypointIndex;
 }
 
-s16 find_closest_waypoint_track_segment(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32 *pathIndex) {
+s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32 *pathIndex) {
     TrackWaypoint *pathWaypoints;
     TrackWaypoint *considerWaypoint;
     f32 x_dist;
@@ -2494,7 +2494,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
         trackSectionId = D_80163318[playerId];
     }
     D_80163318[playerId] = trackSectionId;
-    ret = find_closest_waypoint_track_segment(posX, posY, posZ, trackSectionId, pathIndex);
+    ret = find_closest_waypoint_track_section(posX, posY, posZ, trackSectionId, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
@@ -2529,7 +2529,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     newWaypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
                 }
                 if (newWaypoint == -1) {
-                    newWaypoint = find_closest_waypoint_track_segment(posX, posY, posZ, D_80163318[playerId], &pathIndex);
+                    newWaypoint = find_closest_waypoint_track_section(posX, posY, posZ, D_80163318[playerId], &pathIndex);
                     temp_v1 = &D_80164550[pathIndex][newWaypoint];
                     player->pos[0] = (f32) temp_v1->posX;
                     player->pos[1] = (f32) temp_v1->posY;
@@ -2600,7 +2600,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
-    return find_closest_waypoint_track_segment(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
+    return find_closest_waypoint_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {

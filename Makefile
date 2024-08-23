@@ -33,7 +33,7 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 DEBUG ?= 0
 
 # Compile with GCC
-GCC ?= 1
+GCC ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version

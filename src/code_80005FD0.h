@@ -97,7 +97,7 @@ void func_8000BA14(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
 s16  func_8000BD94(f32, f32, f32, s32);
 
-s16  find_closest_waypoint_track_segment(f32, f32, f32, u16, s32*);
+s16  find_closest_waypoint_track_section(f32, f32, f32, u16, s32*);
 s16  func_8000C884(f32, f32, f32, s16, s32, u16);
 s16  find_closest_waypoint_with_previous_waypoint(f32, f32, f32, s16, s32);
 void func_8000CBA4(f32, f32, f32, s16*, s32);
