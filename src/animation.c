@@ -146,7 +146,7 @@ void render_armature(Armature *animation, Animation *arg1, s16 timeCycle) {
             animation_cycle_list++;
             break;
         }
-        animation = (Armature *) ((u32 *) animation + animation->size);
+        animation = (Armature *) ((uintptr_t *) animation + animation->size);
     } while (animation_type != STOP_ANIMATION);
 }
 
