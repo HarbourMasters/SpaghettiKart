@@ -3,10 +3,20 @@
 #include <libultraship.h>
 #include "macros.h"
 
+
+typedef struct __OSEventState
+{
+    OSMesgQueue *messageQueue;
+    OSMesg message;
+} __OSEventState;
+
 typedef struct __osThreadTail
 {
-    OSThread *next;
-    OSPri priority;
+    /* 0x00 */ OSThread *next;
+    /* 0x04 */ OSPri priority;
+    /* 0x08 */ OSThread *queue;
+    /* 0x0c */ OSThread *tlnext;
+
 } OSThreadTail;
 
 /*
@@ -24,23 +34,12 @@ typedef struct
     /*0x10*/ struct OSThread_s *unk10;
     /*0x14*/ u32 unk14;
 } OSThread_ListHead;
-#ifdef AVOID_UB
 
-// Now fix the symbols to the new one.
-extern OSThread_ListHead __osThreadTail_fix;
-
-#define __osThreadTail __osThreadTail_fix.next
-#define D_80334894 __osThreadTail_fix.priority
-#define __osRunQueue __osThreadTail_fix.queue
-#define __osActiveQueue __osThreadTail_fix.tlnext
-#define __osRunningThread __osThreadTail_fix.unk10
-#else
 // Original OSThread_ListHead definitions
 extern OSThread *__osThreadTail;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osRunQueue;
 extern OSThread *__osRunningThread;
-#endif
 
 // Original EEPROM definitions
 extern u32 D_80365E00[15];

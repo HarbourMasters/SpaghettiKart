@@ -33,6 +33,13 @@
 #define NORETURN
 #endif
 
+// Avoid undefined behaviour for non-returning functions
+#ifdef __GNUC__
+#define NO_REORDER __attribute__((no_reorder))
+#else
+#define NO_REORDER
+#endif
+
 // Static assertions
 #ifdef __GNUC__
 #define STATIC_ASSERT(cond, msg) _Static_assert(cond, msg)

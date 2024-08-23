@@ -16,14 +16,10 @@ extern void __osTimerInterrupt(void);
 extern u32 __osProbeTLB(void *);
 extern int     __osSpDeviceBusy(void);
 
-#ifdef AVOID_UB
-extern OSThread_ListHead __osThreadTail_fix;
-#else
 extern OSThread *__osRunningThread;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osFaultedThread;
 extern OSThread *__osRunQueue;
-#endif
 
 extern OSTimer *__osTimerList;
 extern OSTimer __osBaseTimer;
