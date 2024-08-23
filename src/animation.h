@@ -181,11 +181,11 @@ enum animation_type {
  * @brief The armature is associated with an AnimationLimbVector which is equal to the number of RENDER_MODEL_OR_ADD_POS in the armature
  */
 typedef struct {
-    /* 0x00 */ s32 type;
-    /* 0x04 */ s32 size;
-    /* 0x08 */ s32 always_zero_never_used;
+    /* 0x00 */ s64 type;
+    /* 0x04 */ s64 size;
+    /* 0x08 */ s64 always_zero_never_used;
     /* 0x0C */ Gfx *model;
-    /* 0x10 */ s32 pos[3];
+    /* 0x10 */ s64 pos[3];
 } Armature;
 
 typedef struct {

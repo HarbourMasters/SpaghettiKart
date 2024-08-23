@@ -730,6 +730,10 @@ d_course_sherbet_land_penguin_unknown_model:
   type: vtx
   offset: 0x8768
   count: 10
+d_course_sherbet_land_dl_8808:
+  symbol: d_course_sherbet_land_dl_8808
+  type: gfx
+  offset: 0x8808
 d_course_sherbet_land_dl_8810:
   symbol: d_course_sherbet_land_dl_8810
   type: gfx

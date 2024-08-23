@@ -6818,16 +6818,16 @@ void update_crabs(void) {
 // Stack issue caused by the `test` variable, but removing it causes much, much larger differences
 //! @todo Fix flag animations
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    // YVFlagPoleSpawn *test;
-    // gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
-    // gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
-    // gObjectList[objectIndex].sizeScaling = 0.027f;
-    // //if (test->rot && test->rot) {}
-    // test = &D_800E5DF4[arg1];
-    // func_80072488(objectIndex);
-    // set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
-    // set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    // set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
+    YVFlagPoleSpawn *test;
+    gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
+    gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
+    gObjectList[objectIndex].sizeScaling = 0.027f;
+    //if (test->rot && test->rot) {}
+    test = &D_800E5DF4[arg1];
+    func_80072488(objectIndex);
+    set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
+    set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
+    set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")

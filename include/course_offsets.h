@@ -15,7 +15,7 @@ typedef struct
     u32 padding;   // always zero
 } course_texture;
 
-extern u32 d_course_sherbet_land_unk_data1[];
+extern uintptr_t d_course_sherbet_land_unk_data1[];
 extern s16 d_course_sherbet_land_unk_data2[];
 extern AnimationLimbVector d_course_sherbet_land_unk_data3[];
 extern Animation d_course_sherbet_land_unk_data4;
@@ -52,7 +52,7 @@ extern Animation *d_course_yoshi_valley_unk4[];
 extern uintptr_t d_course_yoshi_valley_unk5[];
 extern u32 d_course_yoshi_valley_unk6[];
 
-extern u32 d_course_sherbet_land_unk_data1[];
+extern uintptr_t d_course_sherbet_land_unk_data1[];
 extern s16 d_course_sherbet_land_unk_data2[];
 extern AnimationLimbVector d_course_sherbet_land_unk_data3[];
 extern Animation d_course_sherbet_land_unk_data4;
