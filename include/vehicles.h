@@ -49,7 +49,7 @@ typedef struct {
 	/* 0x000 */ TrainCarStuff locomotive;
 	/* 0x024 */ TrainCarStuff tender;
 	/* 0x048 */ TrainCarStuff passengerCars[NUM_PASSENGER_CAR_ENTRIES];
-	/* 0x0FC */ f32 someMultiplier;
+	/* 0x0FC */ f32 speed;
 	/* 0x100 */ s32 someFlags;
 	/* 0x104 */ s32 numCars; // Non-locomotive car count?
 	/* 0x108 */ s32 unused; // Not read or written. Could be padding?
@@ -62,7 +62,7 @@ typedef struct {
 	/* 0x10 */ Vec3f velocity; //
 	/* 0x1C */ u16 waypointIndex; //
 	/* 0x1E */ s16 actorIndex; //
-	/* 0x20 */ f32 someMultiplier; //
+	/* 0x20 */ f32 speed; //
 	/* 0x24 */ s16 rotY; // Only Y rotation is tracked in this struct
 	/* 0x26 */ // s16 compilerPadding2;
 	/**
@@ -79,7 +79,7 @@ typedef struct {
 	/* 0x10 */ Vec3f velocity;
 	/* 0x1C */ u16 waypointIndex;
 	/* 0x1E */ s16 actorIndex;
-	/* 0x20 */ f32 someMultiplier; //
+	/* 0x20 */ f32 speed; //
 	/* 0x24 */ f32 someMultiplierTheSequel; //
 	/* 0x28 */ Vec3s rotation;
 	/* 0x2E */ s16 someType; //

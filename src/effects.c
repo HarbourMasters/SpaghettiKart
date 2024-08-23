@@ -1897,7 +1897,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
                 player->unk_0CA &= ~0x0001;
             }
         } else {
-            move_f32_towards(&player->pos[1], player->copy_rotation_y + 40.0f, 0.02f);
+            move_f32_towards(&player->pos[1], player->oldPos[1] + 40.0f, 0.02f);
             player->unk_0C6 -= 8;
             if (player->unk_0C6 < 9) {
                 player->unk_0C6 = 0;

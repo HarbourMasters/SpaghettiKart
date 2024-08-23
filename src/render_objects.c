@@ -3668,8 +3668,8 @@ void render_object_train_smoke_particle(s32 objectIndex, s32 cameraId) {
     }
 }
 
-// Train smoke?
-void render_object_train_smoke_particles(s32 cameraId) {
+// Trains smoke particles.
+void render_object_trains_smoke_particles(s32 cameraId) {
     UNUSED s32 pad;
     UNUSED s32 j;
     Camera *camera;

@@ -312,11 +312,18 @@ s32 gObjectParticle1[gObjectParticle2_SIZE];
 Collision D_8018C3B0;
 /**
  * List of object list indices used for:
- *   Bats in Banshee's Boardwalk (but only 1 player mode?)
+ * - Bats in Banshee's Boardwalk (but only 1 player mode?)
+ * - Train index 0 smoke in Kalimari Desert
+ * - Ferry index 0 smoke in DK Jungle
  */
 s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
 UNUSED Collision D_8018C5F0;
+/**
+ * List of object list indices used for:
+ * - Train index 1 smoke in Kalimari Desert
+ * - Ferry index 1 smoke in DK Jungle
+ */
 s32 gObjectParticle3[gObjectParticle3_SIZE];
 Collision D_8018C830;
 /**
@@ -761,7 +768,7 @@ void render_object_for_player(s32 cameraId) {
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            render_object_train_smoke_particles(cameraId);
+            render_object_trains_smoke_particles(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {

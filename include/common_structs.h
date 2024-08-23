@@ -264,9 +264,7 @@ typedef struct {
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
-    /* 0x0020 */ f32 copy_rotation_x;
-    /* 0x0024 */ f32 copy_rotation_y;
-    /* 0x0028 */ f32 copy_rotation_z;
+    /* 0x0020 */ Vec3f oldPos;
     /* 0x002C */ Vec3s rotation;
     /* 0x0032 */ char unk_032[0x2];
     /* 0x0034 */ Vec3f velocity;

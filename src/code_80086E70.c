@@ -1415,11 +1415,11 @@ UNUSED void func_8008A850(s32 arg0) {
 }
 
 UNUSED s32 func_8008A870(Player *player) {
-    return get_section_id(player->collision.meshIndexZX);
+    return get_track_section_id(player->collision.meshIndexZX);
 }
 
 s32 func_8008A890(Camera *camera) {
-    return get_section_id(camera->collision.meshIndexZX);
+    return get_track_section_id(camera->collision.meshIndexZX);
 }
 
 s32 func_8008A8B0(s16 arg0, s16 arg1) {

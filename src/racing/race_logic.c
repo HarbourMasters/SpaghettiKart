@@ -501,7 +501,7 @@ void start_race(void) {
 
 f32 func_8028EE8C(s32 arg0) {
     f32 temp_v0 = gPlayers[arg0].pos[2];
-    f32 temp_v1 = gPlayers[arg0].copy_rotation_z;
+    f32 temp_v1 = gPlayers[arg0].oldPos[2];
     f32 temp_f14 = D_8015F8D0[2] - temp_v0;
     f32 temp_f16 = temp_v1 - D_8015F8D0[2];
     return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
