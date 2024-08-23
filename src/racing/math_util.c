@@ -936,6 +936,7 @@ f32 atan2f(f32 arg0, f32 arg1) {
     return atan2s(arg0, arg1);
 }
 
+#ifndef NON_MATCHING // The decomp does not support fabs
 UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
     f64 halfpi;
     f32 temp_f0;
@@ -970,6 +971,7 @@ UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
     }
     return var_f2;
 }
+#endif
 
 UNUSED u16 func_802B7B50(f32 arg0, f32 arg1) {
     return ((atan2f(arg0, arg1) * 32768.0f) / M_PI);

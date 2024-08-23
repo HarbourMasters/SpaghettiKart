@@ -51,12 +51,12 @@ extern struct SPTask *gAudioTask; // D_803B70D4
 extern struct SPTask gAudioTasks[2]; // D_803B70D8
 extern f32 D_803B7178;
 extern s32 gRefreshRate;
-extern s16 *gAiBuffers[NUMAIBUFFERS]; // D_803B7180
-extern s16 gAiBufferLengths[NUMAIBUFFERS]; // osAiSetNextBuffer nbytes
+extern s16 *gAiBuffers[]; // D_803B7180
+extern s16 gAiBufferLengths[]; // osAiSetNextBuffer nbytes
 extern u16 D_803B7192; // unconfirmed
 extern u32 gAudioRandom;
 extern s32 gAudioErrorFlags;
-extern u32 D_803B71A0[]; // unconfirmed
+extern u64 gAudioGlobalsEndMarker; // unconfirmed
 extern u8 gAudioHeap[]; // unconfirmed
 
 extern struct ReverbSettingsEU sReverbSettings[];

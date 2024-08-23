@@ -3,6 +3,7 @@
 
 #include "internal.h"
 #include "data.h"
+#include "../buffers/audio_heap.h"
 
 struct ReverbSettingsEU sReverbSettings[] = {
     {0x01, 0x28, 0x4fff},
@@ -33,8 +34,8 @@ struct AudioSessionSettingsEU gAudioSessionPresets[] = {
 
 s8 gUnusedCount800EA5C8 = 0x1c;
 s16 gTatumsPerBeat = TATUMS_PER_BEAT;
-s32 gAudioHeapSize = 0x00048c00;
-s32 gAudioInitPoolSize = 0x00002600;
+s32 gAudioHeapSize = AUDIO_HEAP_SIZE;
+s32 gAudioInitPoolSize = AUDIO_HEAP_INIT_SIZE;
 s32 D_800EA5D8 = 0;
 volatile s32 gAudioLoadLock = 0;
 

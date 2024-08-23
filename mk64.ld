@@ -316,8 +316,8 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.rodata*);
       BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
       BUILD_DIR/src/os/_Ldtob.o(.rodata*);
-      BUILD_DIR/data/rsp.o(.data);
-      BUILD_DIR/src/audio/data.o(.data);
+      BUILD_DIR/data/rsp.o(.data*);
+      BUILD_DIR/src/audio/data.o(.data*);
    }
    END_SEG(main)
 
@@ -424,6 +424,7 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss*);
       BUILD_DIR/src/audio/data.o(.bss*);
+      BUILD_DIR/src/buffers/audio_heap.o(.bss*);
       . = ALIGN(0x8);
    }
    END_NOLOAD(buffers)
@@ -579,7 +580,8 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data*); \
+         BUILD_DIR/courses/dir/course_offsets.o(.rodata*); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)

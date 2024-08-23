@@ -261,7 +261,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp38->unk8 = -1;
             }
             if (sp2C && gSoundMode != sp38->cursor) {
-                gSaveData.main.soundMode = gSoundMode;
+                gSaveData.main.saveInfo.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
                 sp38->cursor = gSoundMode;
@@ -270,7 +270,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
                 if (gSoundMode != sp38->cursor) {
-                    gSaveData.main.soundMode = gSoundMode;
+                    gSaveData.main.saveInfo.soundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
                     sp38->cursor = gSoundMode;
@@ -1124,7 +1124,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 func_800B44BC();
-                gSaveData.main.soundMode = gSoundMode;
+                gSaveData.main.saveInfo.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
             }
@@ -1135,7 +1135,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 func_800B44BC();
-                gSaveData.main.soundMode = gSoundMode;
+                gSaveData.main.saveInfo.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
             }
             if (btnAndStick & U_JPAD) {

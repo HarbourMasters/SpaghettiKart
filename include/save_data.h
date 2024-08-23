@@ -35,12 +35,17 @@ typedef struct {
     u8 unknownBytes[8];
 } OnlyBestTimeTrialRecords; // size = 0x38
 
+
 typedef struct {
     // GP Points scored for each CC mode
     // 1st place is 3 points, 2nd is 2, etc.
     // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
     u8 grandPrixPoints[4];
     u8 soundMode;
+} SaveInfo;
+
+typedef struct {
+    SaveInfo saveInfo;
     // It's unknown what the first byte is used for
     u8 checksum[3];
 } Stuff; // size = 0x8

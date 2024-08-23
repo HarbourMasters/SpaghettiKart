@@ -7,11 +7,9 @@ SAFE_C_FILES :=    \
     build/us/src/code_80091440.o    \
     build/us/src/effects.o    \
     build/us/src/code_80057C60_var.o    \
-    build/us/src/code_80091750.o    \
     build/us/src/code_800029B0.o    \
-    build/us/src/animation.o    \
+    build/us/src/code_80004740.o    \
     build/us/src/player_controller.o    \
-    build/us/src/code_80005FD0.o    \
     build/us/src/profiler.o    \
     build/us/src/render_player.o    \
     build/us/src/code_80086E70.o    \
@@ -20,7 +18,6 @@ SAFE_C_FILES :=    \
     build/us/src/kart_dma.o    \
     build/us/src/math_util_2.o    \
     build/us/src/main.o    \
-    build/us/src/data/some_data.o    \
     build/us/src/data/kart_attributes.o    \
     build/us/src/data/path_spawn_metadata.o    \
     build/us/src/data/textures.o    \
@@ -30,7 +27,6 @@ SAFE_C_FILES :=    \
     build/us/src/audio/heap.o    \
     build/us/src/audio/effects.o    \
     build/us/src/audio/playback.o    \
-    build/us/src/audio/data.o    \
     build/us/src/audio/audio_session_presets.o    \
     build/us/src/audio/port_eu.o    \
     build/us/src/buffers/gfx_output_buffer.o    \
@@ -169,13 +165,5 @@ SAFE_C_FILES :=    \
     build/us/src/os/math/cosf.o    \
     build/us/src/os/math/llmuldiv.o    \
     build/us/src/os/math/sinf.o    \
-
-#    build/us/src/save.o    
-#    build/us/src/crash_screen.o    
-#    build/us/src/code_8006E9C0.o    
-#    build/us/src/audio/synthesis.o    
-#    build/us/src/code_80057C60.o    
-#    build/us/src/menus.o    
-#    build/us/src/render_objects.o    
-#    build/us/src/code_800AF9B0.o    
-#    build/us/src/update_objects.o    
+    build/us/assets/code/common_data/common_data.o\
+    build/us/assets/code/common_data/common_data.mio0.o\

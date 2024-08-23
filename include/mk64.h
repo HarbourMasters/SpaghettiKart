@@ -14,6 +14,12 @@
     Configuration
 =======================*/
 
+
+#define AUDIO_HEAP_SIZE 0x48C00
+#define AUDIO_HEAP_INIT_SIZE 0x2600
+
+#define DOUBLE_SIZE_ON_64_BIT(size) ((size) * (sizeof(void *) / 4))
+
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
 

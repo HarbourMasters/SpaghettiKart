@@ -1,5 +1,6 @@
 #include <libultra/types.h>
 #include <macros.h>
+#include <mk64.h>
 
 #include "data.h"
 #include "effects.h"
@@ -435,10 +436,9 @@ struct SPTask *gAudioTask; // gAudioTask?
 struct SPTask gAudioTasks[2]; // gAudioTasks?
 f32 D_803B7178;
 s32 gRefreshRate;
-s16 *gAiBuffers[3]; // unconfirmed, osAiSetNextBuffer vaddr
+s16 *gAiBuffers[NUMAIBUFFERS]; // unconfirmed, osAiSetNextBuffer vaddr
 s16 gAiBufferLengths[NUMAIBUFFERS]; // osAiSetNextBuffer nbytes
 u16 D_803B7192; // unconfirmed
 u32 gAudioRandom;
 s32 gAudioErrorFlags;
-u32 D_803B71A0[4]; // unconfirmed
-ALIGNED8 u8 gAudioHeap[4]; // unconfirmed
+u64 gAudioGlobalsEndMarker;
