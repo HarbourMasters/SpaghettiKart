@@ -575,6 +575,47 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
+s32 calculate_updaterate(void) {
+    static u32 prevtime = 0;
+    static u32 remainder = 0;
+    static u32 gSkipUpdate = 0;
+    s32 total;
+    s32 rate;
+
+    u32 now = SDL_GetTicks();  // Replaces osGetTime()
+    if (gSkipUpdate) {
+        remainder = 0;
+        rate = 1;
+        gSkipUpdate = 0;
+    } else {
+        if (now > prevtime) {
+            total = (now - prevtime) + remainder;
+        } else {
+            // Handle counter reset (shouldn't happen with SDL_GetTicks, but kept for logic parity)
+            total = (0xffffffff - prevtime) + 1 + now + remainder;
+        }
+
+        // Convert OS_CPU_COUNTER logic to milliseconds
+        if (total < (1000 / 30)) {  // 30-60 fps range
+            rate = 1;
+        } else if (total < (1000 / 20)) {  // 20-30 fps range
+            rate = 2;
+        } else {
+            rate = 3;
+        }
+
+        remainder = total - rate * (1000 / 60);  // Adjust for 60 fps
+    }
+
+    prevtime = now;
+
+    if (gGamestate != RACING) {
+        gSkipUpdate = 1;
+    }
+
+    return rate;
+}
+
 void display_debug_info(void) {
     u16 rotY;
     if (!gEnableDebugMode) {
@@ -685,9 +726,6 @@ void race_logic_loop(void) {
     }
 
     func_802A4EF4();
-    gTickSpeed = 2;
-
-
 
     if (gPlayers == 1) {
         staff_ghosts_loop();
@@ -1106,7 +1144,7 @@ void thread5_game_loop(void) {
 void thread5_iteration(void){
     // while(true) {
     //    func_800CB2C4();
-
+    gTickSpeed = calculate_updaterate();
     if (GfxDebuggerIsDebugging()) {
         Graphics_PushFrame(gGfxPool->gfxPool);
         return;
