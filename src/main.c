@@ -748,6 +748,8 @@ void race_logic_loop(void) {
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             if (gPlayerWinningIndex == 0) {
+                // In VS Mode the winning players viewport takes over the whole screen.
+                // Rendering the winning player last places their screen above the other screens
                 render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 1, 1);
                 render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 0, 0);
             } else {
