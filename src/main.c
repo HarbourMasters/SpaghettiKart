@@ -607,6 +607,14 @@ void race_logic_loop(void) {
             }
 
             if (gIsGamePaused == 0) {
+
+               // freecam_activation(gPlayerOneCopy, camera1, 0);
+
+                //if (CVarGetInteger("gFreecam", 0) == 1) {
+                //    freecam(gPlayerOneCopy, camera1, 0);
+                //} else {
+                    //D_800DC5EC->camera = &cameras[0];
+               // }
                 for (i = 0; i < gTickSpeed; i++) {
                     if (D_8015011E) {
                         gCourseTimer += COURSE_TIMER_ITER;
@@ -629,7 +637,8 @@ void race_logic_loop(void) {
             sNumVBlanks = 0;
             profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             D_8015F788 = 0;
-            render_player_one_1p_screen();
+            //render_player_one_1p_screen();
+            render_screens(RENDER_SCREEN_MODE_1P_PLAYER_ONE, 0, 0);
             if (!gEnableDebugMode) {
                 D_800DC514 = false;
             } else {
@@ -701,11 +710,15 @@ void race_logic_loop(void) {
                 }
                 D_8015F788 = 0;
                 if (gPlayerWinningIndex == 0) {
-                    render_player_two_2p_screen_vertical();
-                    render_player_one_2p_screen_vertical();
+                    render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 1, 1);
+                    render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 0, 0);
+                    //render_player_two_2p_screen_vertical();
+                    //render_player_one_2p_screen_vertical();
                 } else {
-                    render_player_one_2p_screen_vertical();
-                    render_player_two_2p_screen_vertical();
+                    render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE, 0, 0);
+                    render_screens(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO, 1, 1);
+                    //render_player_one_2p_screen_vertical();
+                    //render_player_two_2p_screen_vertical();
                 }
             break;
 
@@ -747,11 +760,15 @@ void race_logic_loop(void) {
             }
             D_8015F788 = 0;
             if (gPlayerWinningIndex == 0) {
-                render_player_two_2p_screen_horizontal();
-                render_player_one_2p_screen_horizontal();
+                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 1, 1);
+                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 0, 0);
+                // render_player_two_2p_screen_horizontal();
+                // render_player_one_2p_screen_horizontal();
             } else {
-                render_player_one_2p_screen_horizontal();
-                render_player_two_2p_screen_horizontal();
+                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE, 0, 0);
+                render_screens(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO, 1, 1);
+                // render_player_one_2p_screen_horizontal();
+                // render_player_two_2p_screen_horizontal();
             }
 
             break;
@@ -819,25 +836,45 @@ void race_logic_loop(void) {
         }
         D_8015F788 = 0;
         if (gPlayerWinningIndex == 0) {
-            render_player_two_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_one_3p_4p_screen();
+
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
+
+            // render_player_two_3p_4p_screen();
+            // render_player_three_3p_4p_screen();
+            // render_player_four_3p_4p_screen();
+            // render_player_one_3p_4p_screen();
         } else if (gPlayerWinningIndex == 1) {
-            render_player_one_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_two_3p_4p_screen();
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
+            // render_player_one_3p_4p_screen();
+            // render_player_three_3p_4p_screen();
+            // render_player_four_3p_4p_screen();
+            // render_player_two_3p_4p_screen();
         } else if (gPlayerWinningIndex == 2) {
-            render_player_one_3p_4p_screen();
-            render_player_two_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_three_3p_4p_screen();
+
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
+
+            // render_player_one_3p_4p_screen();
+            // render_player_two_3p_4p_screen();
+            // render_player_four_3p_4p_screen();
+            // render_player_three_3p_4p_screen();
         } else {
-            render_player_one_3p_4p_screen();
-            render_player_two_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE, 0, 0);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO, 1, 1);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE, 2, 2);
+            render_screens(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR, 3, 3);
+            // render_player_one_3p_4p_screen();
+            // render_player_two_3p_4p_screen();
+            // render_player_three_3p_4p_screen();
+            // render_player_four_3p_4p_screen();
         }
         break;
     }
@@ -861,7 +898,10 @@ void race_logic_loop(void) {
         }
     }
     func_802A4300();
-    func_800591B4();
+    
+    if (CVarGetInteger("gFreecam", 0) == false) {
+        func_800591B4();
+    }
     func_80093E20();
 #if DVDL
 	display_dvdl();
