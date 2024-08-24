@@ -1,4 +1,4 @@
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 #include <macros.h>
 #include <mk64.h>
 

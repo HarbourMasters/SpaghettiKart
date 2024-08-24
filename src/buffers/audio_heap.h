@@ -1,7 +1,7 @@
 #ifndef AUDIO_HEAP_H
 #define AUDIO_HEAP_H
 
-#include <PR/ultratypes.h>
+#include <libultra/types.h>
 #include <mk64.h>
 
 #define AUDIO_HEAP_SIZE 0x48C00

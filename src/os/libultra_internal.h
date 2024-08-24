@@ -3,12 +3,13 @@
 #include <libultraship.h>
 #include "macros.h"
 
-
+#ifdef TARGET_N64
 typedef struct __OSEventState
 {
     OSMesgQueue *messageQueue;
     OSMesg message;
 } __OSEventState;
+#endif
 
 typedef struct __osThreadTail
 {
