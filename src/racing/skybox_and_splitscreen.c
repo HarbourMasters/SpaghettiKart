@@ -753,6 +753,137 @@ void func_802A5760(void) {
     }
 }
 
+void render_screens(s32 mode, s32 cameraId, s32 playerId) {
+    UNUSED s32 pad[4];
+    u16 perspNorm;
+    UNUSED s32 pad2[2];
+    UNUSED s32 pad3;
+    Mat4 matrix;
+
+    s32 screenId = 0;
+    s32 screenMode = SCREEN_MODE_1P;
+
+    switch(mode) {
+        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
+            func_802A53A4();
+            screenId = 0;
+            screenMode = SCREEN_MODE_1P;
+            break;
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
+            func_802A50EC();
+            screenId = 0;
+            screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
+            break;
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
+            func_802A5004();
+            screenId = 1;
+            screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
+            break;
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
+            func_802A51D4();
+            screenId = 0;
+            screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
+            break;
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
+            func_802A52BC();
+            screenId = 1;
+            screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
+            break;
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
+            func_802A54A8();
+            screenId = 0;
+            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+            break;
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
+            func_802A5590();
+            screenId = 1;
+            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+            break;
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
+            func_802A5678();
+            screenId = 2;
+            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+            break;
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
+            func_802A5760();
+            screenId = 3;
+            screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+            break;
+    }
+    struct UnkStruct_800DC5EC *screen = &D_8015F480[screenId];
+    Camera *camera = &cameras[cameraId];
+
+    init_rdp();
+    func_802A3730(screen);
+    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+
+    guPerspective(&gGfxPool->mtxPersp[cameraId], &perspNorm, gCameraZoom[cameraId], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+
+    gSPPerspNormalize(gDisplayListHead++, perspNorm);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[cameraId]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+    guLookAt(&gGfxPool->mtxLookAt[cameraId], camera->pos[0], camera->pos[1], camera->pos[2],
+             camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0],
+             camera->up[1], camera->up[2]);
+    if (D_800DC5C8 == 0) {
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[cameraId]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        mtxf_identity(matrix);
+        render_set_position(matrix, 0);
+    } else {
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[cameraId]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    }
+    render_course(screen);
+    if (D_800DC5C8 == 1) {
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[cameraId]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        mtxf_identity(matrix);
+        render_set_position(matrix, 0);
+    }
+    render_course_actors(screen);
+    render_object(mode);
+    switch(screenId) {
+        case 0:
+            render_players_on_screen_one();
+            break;
+        case 1:
+            render_players_on_screen_two();
+            break;
+        case 2:
+            render_players_on_screen_three();
+            break;
+        case 3:
+            render_players_on_screen_four();
+            break;
+    }
+    func_8029122C(screen, playerId);
+
+    switch(playerId) {
+        case 0:
+            func_80021B0C();
+            break;
+        case 1:
+            func_80021C78();
+            break;
+        case 2:
+            func_80021D40();
+            break;
+        case 3:
+            func_80021DA8();
+            break;
+    };
+
+    render_item_boxes(screen);
+    render_player_snow_effect(mode);
+    func_80058BF4();
+    if (D_800DC5B8 != 0) {
+        func_80058C20(mode);
+    }
+    func_80093A5C(mode);
+    if (D_800DC5B8 != 0) {
+        render_hud(mode);
+    }
+}
+
 void render_player_one_1p_screen(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[4];
