@@ -808,8 +808,17 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
             func_802A5760();
             screenId = 3;
             screenMode = SCREEN_MODE_3P_4P_SPLITSCREEN;
+            if (gPlayerCountSelection1 == 3) {
+                func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
+                if (D_800DC5B8 != 0) {
+                    render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
+                }
+                D_8015F788 += 1;
+                return;
+            }
             break;
     }
+
     struct UnkStruct_800DC5EC *screen = &D_8015F480[screenId];
     Camera *camera = &cameras[cameraId];
 
