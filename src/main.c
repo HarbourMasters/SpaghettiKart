@@ -606,6 +606,22 @@ void debug_display_direction(void) {
         D_800DC514 = true;
     }
 
+    if (!gEnableDebugMode) {
+        gEnableResourceMeters = 0;
+    } else {
+        if (gEnableResourceMeters) {
+            resource_display();
+            if (!(gControllerOne->button & L_TRIG) && 
+                 (gControllerOne->button & R_TRIG) && 
+                 (gControllerOne->buttonPressed & B_BUTTON)) {
+                gEnableResourceMeters = 0;
+            }
+        } else if (!(gControllerOne->button & L_TRIG) && 
+                   (gControllerOne->button & R_TRIG) && 
+                   (gControllerOne->buttonPressed & B_BUTTON)) {
+            gEnableResourceMeters = 1;
+        }
+    }
 }
 
 void process_game_tick(void) {
@@ -737,23 +753,6 @@ void race_logic_loop(void) {
     }
 
     debug_display_direction();
-
- if (!gEnableDebugMode) {
-        gEnableResourceMeters = 0;
-    } else {
-        if (gEnableResourceMeters) {
-            resource_display();
-            if (!(gControllerOne->button & L_TRIG) && 
-                 (gControllerOne->button & R_TRIG) && 
-                 (gControllerOne->buttonPressed & B_BUTTON)) {
-                gEnableResourceMeters = 0;
-            }
-        } else if (!(gControllerOne->button & L_TRIG) && 
-                   (gControllerOne->button & R_TRIG) && 
-                   (gControllerOne->buttonPressed & B_BUTTON)) {
-            gEnableResourceMeters = 1;
-        }
-    }
 
     func_802A4300();
     func_800591B4();
