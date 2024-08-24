@@ -575,7 +575,7 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
-void debug_display_direction(void) {
+void display_debug_info(void) {
     u16 rotY;
     if (!gEnableDebugMode) {
         D_800DC514 = false;
@@ -752,7 +752,7 @@ void race_logic_loop(void) {
             break;
     }
 
-    debug_display_direction();
+    display_debug_info();
 
     func_802A4300();
     func_800591B4();
