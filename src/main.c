@@ -647,7 +647,7 @@ void process_game_tick(void) {
 }
 
 
-void new_race_logic_loop(void) {
+void race_logic_loop(void) {
     s16 i;
 
     gMatrixObjectCount = 0;
