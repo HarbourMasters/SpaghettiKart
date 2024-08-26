@@ -29,7 +29,7 @@ extern u32 gFreecamControllerType;
 
 namespace Freecam {
 FreecamWindow::~FreecamWindow() {
-    SPDLOG_TRACE("destruct game info window");
+    SPDLOG_TRACE("destruct freecam window");
 }
 
 void FreecamWindow::InitElement() {
