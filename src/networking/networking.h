@@ -15,7 +15,8 @@ enum {
     PACKET_LOADED,
     PACKET_READY_UP,
     PACKET_SET_CHARACTER,
-    PACKET_COURSE,
+    PACKET_COURSE_VOTE,
+    PACKET_SET_COURSE,
     PACKET_PLAYER_ASSIGN_SLOTS,
     PACKET_START_SESSION,
     PACKET_PLAYER,
@@ -32,6 +33,8 @@ typedef struct {
     bool loaded;
     bool playersLoaded; // Are all players loaded?
     bool gameStarted;
+    uint32_t cupVote;
+    uint32_t character;
 } Network;
 
 extern Network gNetwork;
@@ -59,6 +62,9 @@ void networking_cleanup(SDLNet_SocketSet);
 int networking_loop(void*);
 void handleReceivedData(const char *, size_t);
 void set_username(const char *username);
+void network_character_vote(uint32_t course);
+void network_cup_vote(uint32_t course);
+void networking_disconnect(void);
 
 /* Start Game */
 void spawn_network_players(f32*,f32*,f32);
