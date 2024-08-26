@@ -201,7 +201,7 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
         case PACKET_PLAYER:
             replicate_player(data);
             break;
-        case PACKET_COURSE:
+        case PACKET_SET_COURSE:
             set_course(data);
             break;
         case PACKET_PLAYER_ASSIGN_SLOTS:
@@ -223,4 +223,8 @@ void networking_cleanup(SDLNet_SocketSet socketSet) {
     SDLNet_FreeSocketSet(socketSet);
     SDLNet_Quit();
     SDL_Quit;
+}
+
+void networking_disconnect(void) {
+    networking_cleanup(gNetwork.tcpSocket);
 }
