@@ -111,6 +111,25 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
             player->topSpeed = gTopSpeedTable[CC_BATTLE][player->characterId];
             break;
     }
+    if (CVarGetInteger("gEnableCustomCC", 0) == 1) {
+#define calc_a(x, y, x2, y2) (y2 - y) / (x2 - x)
+#define calc_b(x, y, b) y - (b * x)
+        f32 a;
+        f32 b;
+
+#define calc(table, field)                                                                      \
+    a = calc_a(50, table[CC_50][player->characterId], 150, table[CC_150][player->characterId]); \
+    b = calc_b(50, table[CC_50][player->characterId], a);                                       \
+    player->field = a * CVarGetFloat("gCustomCC", 150.0f) + b;
+
+        calc(gTopSpeedTable, topSpeed);
+        calc(D_800E2400, unk_084);
+        calc(D_800E24B4, unk_088);
+        calc(D_800E2568, unk_210);
+#undef calc_a
+#undef calc_b
+#undef calc
+    }
 
     player->pos[0] = startingRow;
     ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
