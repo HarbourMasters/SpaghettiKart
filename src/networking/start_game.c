@@ -151,6 +151,8 @@ s32 network_all_players_loaded() {
 
 s32 currentNetworkPlayers = 0;
 
+u32 gSwappedSlot = -1;
+
 void spawn_network_players(f32* arg0, f32* arg1, f32 arg2) {
     if (currentNetworkPlayers) {
         return;
@@ -184,15 +186,38 @@ void spawn_network_players(f32* arg0, f32* arg1, f32 arg2) {
         printf("a %d, %d\n", clients[i].slot, clients[i].character);
     }
 
+    // Swap gPlayer[0] with hasAuthority slot. As gPlayer[0] needs to be the local player.
     for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
         if (clients[i].hasAuthority) {
-            spawn_player(&gPlayers[0], i, arg0[clients[i].slot], arg1[clients[i].slot] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+
+            // No swap required
+            if (clients[i].slot == 0) {
+                break;
+            }
+
+            // Save the slot to swap
+            gSwappedSlot = clients[i].slot;
+
+            // Swap the slots
+            for (size_t j = 0; j < NETWORK_MAX_PLAYERS; j++) {
+                if (clients[j].slot == 0) {
+                    clients[j].slot = gSwappedSlot;
+                    clients[i].slot = 0;
+                }
+            }
+            break;
         }
     }
 
-    for (size_t i = 0; i < NETWORK_MAX_PLAYERS - 1; i++) {
-        if (!clients[i].hasAuthority) {
-            spawn_player(&gPlayers[clients[i].slot], i, arg0[clients[i].slot], arg1[clients[i].slot] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
+    for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
+        D_80165270[i] = clients[i].slot;
+
+        if (clients[i].hasAuthority) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        } else if (clients[i].isAI) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
+        } else if (!clients[i].isAI) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         }
     }
 

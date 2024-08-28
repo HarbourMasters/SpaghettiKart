@@ -28,22 +28,50 @@ void handle_start_game() {
     gIsGamePaused = false;
 }
 
+extern Player gPlayers[8];
+
 #define BUFFER_SIZE 1024
-void send_data_packet(TCPsocket socket, int type, const uint8_t* payload, size_t payload_size) {
-    // uint8_t buffer[BUFFER_SIZE];
-    // size_t packet_size = sizeof(type) + payload_size;
-    // if (packet_size > BUFFER_SIZE) {
-    //     fprintf(stderr, "Packet size exceeds buffer size\n");
-    //     return;
-    // }
+void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, size_t payload_size) {
+    uint8_t buffer[BUFFER_SIZE];
+    size_t offset = 0;
 
-    // memcpy(buffer, &type, sizeof(type));
-    // memcpy(buffer + sizeof(type), payload, payload_size);
+    // Write the type byte
+    buffer[offset] = type;
+    offset += sizeof(uint8_t);
 
-    // int len = SDLNet_TCP_Send(socket, buffer, packet_size);
-    // if (len < packet_size) {
-    //     fprintf(stderr, "SDLNet_TCP_Send: %s\n", SDLNet_GetError());
-    // }
+    // Write the payload size (ensure it's within range)
+    if (payload_size > UINT16_MAX) {
+        fprintf(stderr, "Payload size exceeds maximum allowed size\n");
+        return;
+    }
+    uint16_t size = (uint16_t)payload_size;
+    memcpy(buffer + offset, &size, sizeof(uint16_t));
+    offset += sizeof(uint16_t);
+
+    // Ensure there's enough space for player data and payload
+    size_t packet_size = sizeof(uint8_t) + sizeof(uint16_t) + payload_size;
+    if (packet_size > BUFFER_SIZE) {
+        fprintf(stderr, "Packet size exceeds buffer size\n");
+        return;
+    }
+
+    // Write player position data
+    memcpy(buffer + offset, &gPlayers[0].pos[0], sizeof(f32));
+    offset += sizeof(f32);
+    memcpy(buffer + offset, &gPlayers[0].pos[1], sizeof(f32));
+    offset += sizeof(f32);
+    memcpy(buffer + offset, &gPlayers[0].pos[2], sizeof(f32));
+    offset += sizeof(f32);
+
+    // Write the payload data
+    // memcpy(buffer + offset, payload, payload_size);
+    // offset += payload_size;
+
+    // Send the buffer through the socket
+    int len = SDLNet_TCP_Send(socket, buffer, offset);
+    if (len < (int)offset) {
+        fprintf(stderr, "SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+    }
 }
 
 void send_str_packet(TCPsocket socket, uint8_t type, const char* payload) {

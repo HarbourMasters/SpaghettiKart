@@ -1248,6 +1248,9 @@ void thread5_iteration(void) {
     game_state_handler();
     end_master_display_list();
     display_and_vsync();
+    if (gNetwork.enabled && (gGamestate == RACING) && ((gPlayerOne->type & PLAYER_START_SEQUENCE) == 0)) {
+        send_player();
+    }
 }
 
 /**

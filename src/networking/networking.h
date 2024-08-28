@@ -52,6 +52,8 @@ extern NetworkClient dummyClient;
 extern NetworkClient* localClient;
 extern NetworkClient clients[];
 
+extern u32 gSwappedSlot;
+
 /* Main Networking */
 void ConnectToServer(char* ip, uint16_t port, char* username);
 void networking_init(char* ip, uint16_t port);
@@ -80,6 +82,8 @@ void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t 
 void handleJoinPacket(const char* data);
 void handleLeavePacket(const char* data);
 void handleMessagePacket(const char* data);
+void send_player(void);
+void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, size_t payload_size);
 
 void handle_start_game(void);
 void send_str_packet(TCPsocket, uint8_t, const char*);
