@@ -13,4 +13,4 @@ class MultiplayerWindow : public Ship::GuiWindow {
     void DrawElement() override;
     void UpdateElement() override;
 };
-} // namespace GameInfo
+} // namespace Multiplayer
