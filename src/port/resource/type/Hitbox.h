@@ -13,4 +13,4 @@ class Hitbox : public Ship::Resource<float> {
 
     std::vector<float> mHitbox;
 };
-}
+} // namespace SF64

@@ -1,20 +1,17 @@
 #ifndef _ULTRA64_CONTROLLER_INTERNAL_H_
 #define _ULTRA64_CONTROLLER_INTERNAL_H_
 
-
-typedef struct
-{
+typedef struct {
     u8 padOrEnd;
     u8 txLen;
-    u8 rxLen; //includes errno
+    u8 rxLen; // includes errno
     u8 command;
     u16 button;
     s8 rawStickX;
     s8 rawStickY;
 } OSContPackedRead;
 
-typedef struct
-{
+typedef struct {
     u8 padOrEnd;
     u8 txLen;
     u8 rxLen;

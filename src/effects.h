@@ -6,7 +6,7 @@
 /* Function Prototypes */
 
 void func_unnamed(void);
-s32  func_8008C1D8(s32*);
+s32 func_8008C1D8(s32*);
 void func_8008C1E0(s32*, s32);
 void func_unnamed1(s32);
 void func_unnamed2(s32);
@@ -111,7 +111,7 @@ void func_80090178(Player*, s8, Vec3f, Vec3f);
 void func_80090778(Player*);
 void func_80090868(Player*);
 void func_80090970(Player*, s8, s8);
-bool  prevent_item_use(Player*);
+bool prevent_item_use(Player*);
 void func_800911B4(Player*, s8);
 void func_80091298(Player*, s8);
 

@@ -19,8 +19,8 @@ void assign_player_control_types(void) {
         gPlayers[playerIndex].nCharacter = clients[i].character;
         gPlayers[playerIndex].nStartingRank = clients[i].slot;
 
-        //printf("CHAR  %d\n", clients[i].character);
-        //printf("CHAR2 %d\n", gPlayers[playerIndex].nCharacter);
+        // printf("CHAR  %d\n", clients[i].character);
+        // printf("CHAR2 %d\n", gPlayers[playerIndex].nCharacter);
 
         if (clients[i].isAI) {
             gPlayers[playerIndex].nControlFlags = 0;
@@ -28,12 +28,14 @@ void assign_player_control_types(void) {
             //printf("PLAYER SLOT %d, INDEX %d\n", clients[i].slot, clients[i].character);
             
             // Set player to the camera
-            cameras[0].playerId = clients[i].slot;
-            D_800DC5EC->player = &gPlayers[clients[i].slot];
-            gPlayers[playerIndex].nControlFlags = PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE; // Requires server replication to move.
+            //cameras[0].playerId = clients[i].slot;
+            //D_800DC5EC->player = &gPlayers[clients[i].slot];
+            // printf("PLAYER SLOT %d, INDEX %d\n", clients[i].slot, clients[i].character);
+            gPlayers[playerIndex].nControlFlags =
+                PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE; // Requires server replication to move.
         }
 
-        //printf("Player Slot %d, character %d\n", playerIndex, clients[i].character);
+        // printf("Player Slot %d, character %d\n", playerIndex, clients[i].character);
     }
 
     // Get and Set player
@@ -68,55 +70,54 @@ void assign_player_slots(const char* data) {
     for (int i = 0; i < NETWORK_MAX_PLAYERS; ++i) {
         // Read username
 
-        int usernameLength = *(int*)(data + offset);
+        int usernameLength = *(int*) (data + offset);
         offset += sizeof(int);
 
         memcpy(clients[i].username, data + offset, usernameLength);
         offset += usernameLength;
 
         // Read slot
-        clients[i].slot = *(int*)(data + offset);
+        clients[i].slot = *(int*) (data + offset);
         offset += sizeof(int);
 
         // Read isPlayer
-        clients[i].isPlayer = *(int*)(data + offset);
+        clients[i].isPlayer = *(int*) (data + offset);
         offset += sizeof(int);
 
         // Read IsAI
-        clients[i].isAI = *(int*)(data + offset);
+        clients[i].isAI = *(int*) (data + offset);
         offset += sizeof(int);
 
         // Read character
-        clients[i].character = *(int*)(data + offset);
+        clients[i].character = *(int*) (data + offset);
         offset += sizeof(int);
 
-        //gCharacterSelections[i] = clients[i].character;
+        // gCharacterSelections[i] = clients[i].character;
 
         // Read hasAuthority
-        clients[i].hasAuthority = *(int*)(data + offset);
+        clients[i].hasAuthority = *(int*) (data + offset);
 
         if (clients[i].hasAuthority) {
             localClient = &clients[i];
             gPlayers[clients[i].slot].nHasAuthority = true;
-            printf("You have been assigned slot %d\n",  clients[i].slot + 1);
+            printf("You have been assigned slot %d\n", clients[i].slot + 1);
         }
 
         offset += sizeof(int);
     }
-
 }
 
 s32 sessionBool = 0;
 
 // Duplicate of setup_race
-void networking_start_session(const char *data) {
+void networking_start_session(const char* data) {
     if (sessionBool) {
         return;
     }
     sessionBool = 1;
     printf("Start session\n");
-    //gIsInQuitToMenuTransition = 1;
-    //gQuitToMenuTransitionCounter = 5;
+    // gIsInQuitToMenuTransition = 1;
+    // gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING; // Enter race state
     gGamestateNext = RACING;
     gCCSelection = CC_150;
@@ -133,7 +134,9 @@ void networking_start_session(const char *data) {
 
 // Wait for all players to load
 s32 network_all_players_loaded() {
-    if (gNetwork.gameStarted) { return; }
+    if (gNetwork.gameStarted) {
+        return;
+    }
     if (!gNetwork.loaded) {
         gNetwork.loaded = true;
         send_int_packet(gNetwork.tcpSocket, PACKET_LOADED, true, sizeof(int));
@@ -148,7 +151,7 @@ s32 network_all_players_loaded() {
 
 s32 currentNetworkPlayers = 0;
 
-void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_network_players(f32* arg0, f32* arg1, f32 arg2) {
     if (currentNetworkPlayers) {
         return;
     }
@@ -156,11 +159,10 @@ void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
 
     assign_player_control_types();
 
-    u32 posX[] = {0, 1, 3, 2, 5, 4, 7, 6};
-    u32 posZ[] = {0, 1, 2, 3, 4, 5, 6, 7};
+    u32 posX[] = { 0, 1, 3, 2, 5, 4, 7, 6 };
+    u32 posZ[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
-    u32 pos[] = {0, 1, 2, 3, 4, 5, 6, 7};
-
+    u32 pos[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
     printf("----- Spawn Players ------\n");
     //for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
@@ -203,7 +205,6 @@ void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
     // spawn_player(&gPlayers[clients[6].slot],   6, arg0[clients[6].slot], arg1[clients[6].slot] + 250.0f, arg2, 32768.0f,  clients[6].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
     // spawn_player(&gPlayers[clients[7].slot],   7, arg0[clients[7].slot], arg1[clients[7].slot] + 250.0f, arg2, 32768.0f, clients[7].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
 
-
     //}
     printf("--------------------------\n");
     // gPlayers[i].nControlFlags
@@ -215,5 +216,4 @@ void spawn_network_players(f32 *arg0, f32 *arg1, f32 arg2) {
     // spawn_player(&gPlayers[clients[5].slot],     clients[5].slot, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, chooseKartAIPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
     // spawn_player(&gPlayers[clients[6].slot],   clients[6].slot, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, chooseKartAIPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
     // spawn_player(&gPlayers[clients[7].slot],   clients[7].slot, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, chooseKartAIPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
-
 }

@@ -2,8 +2,8 @@
 #include "libultra_internal.h"
 #include "controller.h"
 
-s32 __osEepStatus(OSMesgQueue *, OSContStatus *);
-s32 osEepromProbe(OSMesgQueue *mq) {
+s32 __osEepStatus(OSMesgQueue*, OSContStatus*);
+s32 osEepromProbe(OSMesgQueue* mq) {
     s32 ret = 0;
     OSContStatus status;
 

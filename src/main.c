@@ -52,47 +52,45 @@ void audio_init();
 void create_debug_thread(void);
 void start_debug_thread(void);
 
+struct SPTask* create_next_audio_frame_task(void);
 
-struct SPTask *create_next_audio_frame_task(void);
+struct VblankHandler* gVblankHandler1 = NULL;
+struct VblankHandler* gVblankHandler2 = NULL;
 
-struct VblankHandler *gVblankHandler1 = NULL;
-struct VblankHandler *gVblankHandler2 = NULL;
-
-struct SPTask *gActiveSPTask = NULL;
-struct SPTask *sCurrentAudioSPTask = NULL;
-struct SPTask *sCurrentDisplaySPTask = NULL;
-struct SPTask *sNextAudioSPTask = NULL;
-struct SPTask *sNextDisplaySPTask = NULL;
-
+struct SPTask* gActiveSPTask = NULL;
+struct SPTask* sCurrentAudioSPTask = NULL;
+struct SPTask* sCurrentDisplaySPTask = NULL;
+struct SPTask* sNextAudioSPTask = NULL;
+struct SPTask* sNextDisplaySPTask = NULL;
 
 struct Controller gControllers[NUM_PLAYERS];
-struct Controller *gControllerOne = &gControllers[0];
-struct Controller *gControllerTwo = &gControllers[1];
-struct Controller *gControllerThree = &gControllers[2];
-struct Controller *gControllerFour = &gControllers[3];
-struct Controller *gControllerFive = &gControllers[4]; // All physical controllers combined.`
-struct Controller *gControllerSix = &gControllers[5];
-struct Controller *gControllerSeven = &gControllers[6];
-struct Controller *gControllerEight = &gControllers[7];
+struct Controller* gControllerOne = &gControllers[0];
+struct Controller* gControllerTwo = &gControllers[1];
+struct Controller* gControllerThree = &gControllers[2];
+struct Controller* gControllerFour = &gControllers[3];
+struct Controller* gControllerFive = &gControllers[4]; // All physical controllers combined.`
+struct Controller* gControllerSix = &gControllers[5];
+struct Controller* gControllerSeven = &gControllers[6];
+struct Controller* gControllerEight = &gControllers[7];
 
 Player gPlayers[NUM_PLAYERS];
-Player *gPlayerOne = &gPlayers[0];
-Player *gPlayerTwo = &gPlayers[1];
-Player *gPlayerThree = &gPlayers[2];
-Player *gPlayerFour = &gPlayers[3];
-Player *gPlayerFive = &gPlayers[4];
-Player *gPlayerSix = &gPlayers[5];
-Player *gPlayerSeven = &gPlayers[6];
-Player *gPlayerEight = &gPlayers[7];
+Player* gPlayerOne = &gPlayers[0];
+Player* gPlayerTwo = &gPlayers[1];
+Player* gPlayerThree = &gPlayers[2];
+Player* gPlayerFour = &gPlayers[3];
+Player* gPlayerFive = &gPlayers[4];
+Player* gPlayerSix = &gPlayers[5];
+Player* gPlayerSeven = &gPlayers[6];
+Player* gPlayerEight = &gPlayers[7];
 
-Player *gPlayerOneCopy = &gPlayers[0];
-Player *gPlayerTwoCopy = &gPlayers[1];
-UNUSED Player *gPlayerThreeCopy = &gPlayers[2];
-UNUSED Player *gPlayerFourCopy = &gPlayers[3];
+Player* gPlayerOneCopy = &gPlayers[0];
+Player* gPlayerTwoCopy = &gPlayers[1];
+UNUSED Player* gPlayerThreeCopy = &gPlayers[2];
+UNUSED Player* gPlayerFourCopy = &gPlayers[3];
 
 UNUSED s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
-struct GfxPool *gGfxPool;
+struct GfxPool* gGfxPool;
 
 UNUSED s32 gfxPool_padding; // is this necessary?
 struct VblankHandler gGameVblankHandler;
@@ -136,12 +134,12 @@ UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
 uintptr_t gSegmentTable[16];
-Gfx *gDisplayListHead;
+Gfx* gDisplayListHead;
 
-struct SPTask *gGfxSPTask;
+struct SPTask* gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
-u16 *gPhysicalFramebuffers[3];
+u16* gPhysicalFramebuffers[3];
 uintptr_t gPhysicalZBuffer;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
@@ -182,7 +180,7 @@ s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = SCREEN_MODE_1P;
-UNUSED s32 D_800DC534  = 0;
+UNUSED s32 D_800DC534 = 0;
 s32 gPlayerCountSelection1 = 2;
 
 s32 gModeSelection = GRAND_PRIX;
@@ -198,13 +196,13 @@ u16 sRenderedFramebuffer = 0;
 u16 sRenderingFramebuffer = 0;
 UNUSED u16 D_800DC564 = 0;
 s32 D_800DC568 = 0;
-s32 D_800DC56C[8] = {0};
+s32 D_800DC56C[8] = { 0 };
 s16 sNumVBlanks = 0;
 UNUSED s16 D_800DC590 = 0;
 f32 gVBlankTimer = 0.0f;
 f32 gCourseTimer = 0.0f;
 
-void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
+void create_thread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
     thread->next = NULL;
     thread->queue = NULL;
     osCreateThread(thread, id, entry, arg, sp, pri);
@@ -221,19 +219,19 @@ void main_func(void) {
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
-//extern OSViMode osViModeTable[];
+// extern OSViMode osViModeTable[];
 /**
  * Initialize hardware, start main thread, then idle.
  */
-void thread1_idle(void *arg) {
+void thread1_idle(void* arg) {
     osCreateViManager(OS_PRIORITY_VIMGR);
 #ifdef VERSION_EU
     osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
 #else // VERSION_US
     if (osTvType == OS_TV_NTSC) {
-        //osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
+        // osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
-        //osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
+        // osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
 #endif
     osViBlack(true);
@@ -247,7 +245,9 @@ void thread1_idle(void *arg) {
     osSetThreadPri(NULL, 0);
 
     // Halt
-    while (true);
+    while (true) {
+        ;
+    }
 }
 
 void setup_mesg_queues(void) {
@@ -278,40 +278,44 @@ extern void Graphics_PushFrame(Gfx* data);
  **/
 void create_gfx_task_structure(void) {
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
-    // gGfxSPTask->msg = OS_MESG_32(2);
-    // gGfxSPTask->task.t.type = M_GFXTASK;
-    // gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
-    // gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
-    // gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
+#ifdef TARGET_N64
+    gGfxSPTask->msg = (OSMesg) 2;
+    gGfxSPTask->task.t.type = M_GFXTASK;
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
+    gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
+    gGfxSPTask->task.t.ucode_boot_size = ((u8*) rspF3DBootEnd - (u8*) rspF3DBootStart);
     // The split-screen multiplayer racing state uses F3DLX which has a simple subpixel calculation.
     // Singleplayer race mode and all other game states use F3DEX.
     // http://n64devkit.square7.ch/n64man/ucode/gspF3DEX.htm
-    // if (gGamestate != RACING || gPlayerCountSelection1 == 1) {
-    //     gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
-    //     gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
-    // } else {
-    //     gGfxSPTask->task.t.ucode = gspF3DLXTextStart;
-    //     gGfxSPTask->task.t.ucode_data = gspF3DLXDataStart;
-    // }
-    // gGfxSPTask->task.t.flags = 0;
-    // gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
-    // gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE;
-    // gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
-    // gGfxSPTask->task.t.dram_stack = (u64 *) &gGfxSPTaskStack;
-    // // gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
-    // gGfxSPTask->task.t.output_buff = (u64 *) &gGfxSPTaskOutputBuffer;
-    // gGfxSPTask->task.t.output_buff_size = (u64 *) ((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    // gGfxSPTask->task.t.data_ptr = (u64 *) gGfxPool->gfxPool;
-    // gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
+    if (gGamestate != RACING || gPlayerCountSelection1 == 1) {
+        gGfxSPTask->task.t.ucode = gspF3DEXTextStart;
+        gGfxSPTask->task.t.ucode_data = gspF3DEXDataStart;
+    } else {
+        gGfxSPTask->task.t.ucode = gspF3DLXTextStart;
+        gGfxSPTask->task.t.ucode_data = gspF3DLXDataStart;
+    }
+    gGfxSPTask->task.t.flags = 0;
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
+    gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE;
+    gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
+    gGfxSPTask->task.t.dram_stack = (u64*) &gGfxSPTaskStack;
+    gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
+    gGfxSPTask->task.t.output_buff = (u64*) &gGfxSPTaskOutputBuffer;
+    gGfxSPTask->task.t.output_buff_size = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
+    gGfxSPTask->task.t.data_ptr = (u64*) gGfxPool->gfxPool;
+    gGfxSPTask->task.t.data_size = (gDisplayListHead - gGfxPool->gfxPool) * sizeof(Gfx);
+#endif
     func_8008C214();
-    // gGfxSPTask->task.t.yield_data_ptr = (u64 *) &gGfxSPTaskYieldBuffer;
-    // gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
+#ifdef TARGET_N64
+    gGfxSPTask->task.t.yield_data_ptr = (u64*) &gGfxSPTaskYieldBuffer;
+    gGfxSPTask->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
+#else
     if (GfxDebuggerIsDebuggingRequested()) {
         GfxDebuggerDebugDisplayList(gGfxPool->gfxPool);
     }
     Graphics_PushFrame(gGfxPool->gfxPool);
+#endif
 }
-
 
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
@@ -325,7 +329,7 @@ void init_controllers(void) {
 }
 
 void update_controller(s32 index) {
-    struct Controller *controller = &gControllers[index];
+    struct Controller* controller = &gControllers[index];
     u16 stick;
 
     if (sIsController1Unplugged) {
@@ -370,32 +374,42 @@ void read_controllers(void) {
     update_controller(1);
     update_controller(2);
     update_controller(3);
-    gControllerFive->button = (s16) (((gControllerOne->button | gControllerTwo->button) | gControllerThree->button) | gControllerFour->button);
-    gControllerFive->buttonPressed = (s16) (((gControllerOne->buttonPressed | gControllerTwo->buttonPressed) | gControllerThree->buttonPressed) | gControllerFour->buttonPressed);
-    gControllerFive->buttonDepressed = (s16) (((gControllerOne->buttonDepressed | gControllerTwo->buttonDepressed) | gControllerThree->buttonDepressed) | gControllerFour->buttonDepressed);
-    gControllerFive->stickDirection = (s16) (((gControllerOne->stickDirection | gControllerTwo->stickDirection) | gControllerThree->stickDirection) | gControllerFour->stickDirection);
-    gControllerFive->stickPressed = (s16) (((gControllerOne->stickPressed | gControllerTwo->stickPressed) | gControllerThree->stickPressed) | gControllerFour->stickPressed);
-    gControllerFive->stickDepressed = (s16) (((gControllerOne->stickDepressed | gControllerTwo->stickDepressed) | gControllerThree->stickDepressed) | gControllerFour->stickDepressed);
+    gControllerFive->button = (s16) (((gControllerOne->button | gControllerTwo->button) | gControllerThree->button) |
+                                     gControllerFour->button);
+    gControllerFive->buttonPressed =
+        (s16) (((gControllerOne->buttonPressed | gControllerTwo->buttonPressed) | gControllerThree->buttonPressed) |
+               gControllerFour->buttonPressed);
+    gControllerFive->buttonDepressed = (s16) (((gControllerOne->buttonDepressed | gControllerTwo->buttonDepressed) |
+                                               gControllerThree->buttonDepressed) |
+                                              gControllerFour->buttonDepressed);
+    gControllerFive->stickDirection =
+        (s16) (((gControllerOne->stickDirection | gControllerTwo->stickDirection) | gControllerThree->stickDirection) |
+               gControllerFour->stickDirection);
+    gControllerFive->stickPressed =
+        (s16) (((gControllerOne->stickPressed | gControllerTwo->stickPressed) | gControllerThree->stickPressed) |
+               gControllerFour->stickPressed);
+    gControllerFive->stickDepressed =
+        (s16) (((gControllerOne->stickDepressed | gControllerTwo->stickDepressed) | gControllerThree->stickDepressed) |
+               gControllerFour->stickDepressed);
 }
 
 void func_80000BEC(void) {
     gPhysicalZBuffer = VIRTUAL_TO_PHYSICAL(&gZBuffer);
 }
 
-void dispatch_audio_sptask(struct SPTask *spTask) {
+void dispatch_audio_sptask(struct SPTask* spTask) {
     osWritebackDCacheAll();
     osSendMesg(&gSPTaskMesgQueue, OS_MESG_PTR(spTask), OS_MESG_NOBLOCK);
 }
 
-void exec_display_list(struct SPTask *spTask) {
+void exec_display_list(struct SPTask* spTask) {
     osWritebackDCacheAll();
     spTask->state = SPTASK_STATE_NOT_STARTED;
     if (sCurrentDisplaySPTask == NULL) {
         sCurrentDisplaySPTask = spTask;
         sNextDisplaySPTask = NULL;
         osSendMesg(&gIntrMesgQueue, OS_MESG_32(MESG_START_GFX_SPTASK), OS_MESG_NOBLOCK);
-    }
-    else{
+    } else {
         sNextDisplaySPTask = spTask;
     }
 }
@@ -422,15 +436,14 @@ void end_master_display_list(void) {
 
 // clear_frame_buffer from SM64, with a few edits
 //! @todo Why did void* work for matching
-void *clear_framebuffer(s32 color) {
+void* clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
     gDPSetFillColor(gDisplayListHead++, color);
-    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1,
-                     SCREEN_HEIGHT - 1);
+    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -468,8 +481,10 @@ void display_and_vsync(void) {
     // osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     exec_display_list(&gGfxPool->spTask);
     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);
-    // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
+#ifdef TARGET_N64
+    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+#endif
+    osViSwapBuffer((void*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
     profiler_log_thread5_time(THREAD5_END);
     // osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     // crash_screen_set_framebuffer(gPhysicalFramebuffers[sRenderedFramebuffer]);
@@ -484,25 +499,29 @@ void display_and_vsync(void) {
 }
 
 void init_segment_ending_sequences(void) {
-    // bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
-    // osWritebackDCacheAll();
-    // dma_copy((u8 *) SEG_ENDING, (u8 *) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
-    // osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
-    // osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
+#ifdef TARGET_N64
+    bzero((void*) SEG_ENDING, SEG_ENDING_SIZE);
+    osWritebackDCacheAll();
+    dma_copy((u8*) SEG_ENDING, (u8*) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
+    osInvalICache((void*) SEG_ENDING, SEG_ENDING_SIZE);
+    osInvalDCache((void*) SEG_ENDING, SEG_ENDING_SIZE);
+#endif
 }
 
 void init_segment_racing(void) {
-    // bzero((void *) SEG_RACING, SEG_RACING_SIZE);
-    // osWritebackDCacheAll();
-    // dma_copy((u8 *) SEG_RACING, (u8 *) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
-    // osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
-    // osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
+#ifdef TARGET_N64
+    bzero((void*) SEG_RACING, SEG_RACING_SIZE);
+    osWritebackDCacheAll();
+    dma_copy((u8*) SEG_RACING, (u8*) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
+    osInvalICache((void*) SEG_RACING, SEG_RACING_SIZE);
+    osInvalDCache((void*) SEG_RACING, SEG_RACING_SIZE);
+#endif
 }
 
-void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
+void dma_copy(u8* dest, u8* romAddr, size_t size) {
 
     osInvalDCache(dest, size);
-    while(size > 0x100) {
+    while (size > 0x100) {
         osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) romAddr, dest, 0x100, &gDmaMesgQueue);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, 1);
         size -= 0x100;
@@ -519,51 +538,51 @@ void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
  * Setup main segments and framebuffers.
  */
 void setup_game_memory(void) {
-//     UNUSED u32 pad[2];
-//     ptrdiff_t commonCourseDataSize; // Compressed mio0 size
-//     uintptr_t textureSegSize;
-//     ptrdiff_t textureSegStart;
-//     uintptr_t allocatedMemory;
-//     UNUSED s32 unknown_padding;
+    //     UNUSED u32 pad[2];
+    //     ptrdiff_t commonCourseDataSize; // Compressed mio0 size
+    //     uintptr_t textureSegSize;
+    //     ptrdiff_t textureSegStart;
+    //     uintptr_t allocatedMemory;
+    //     UNUSED s32 unknown_padding;
 
     init_segment_racing();
     // gHeapEndPtr = SEG_RACING;
-//     set_segment_base_addr(0, (void *) SEG_START);
+    //     set_segment_base_addr(0, (void *) SEG_START);
 
-//     // Memory pool size of 0xAB630
+    //     // Memory pool size of 0xAB630
     initialize_memory_pool();
 
     func_80000BEC();
 
-//     // Initialize trig tables segment
-//     osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
-//     osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
-//     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    //     // Initialize trig tables segment
+    //     osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
+    //     osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE,
+    //     &gDmaMesgQueue); osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-//     set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
+    //     set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
 
-//     commonCourseDataSize = COMMON_TEXTURES_SIZE;
-//     commonCourseDataSize = ALIGN16(commonCourseDataSize);
+    //     commonCourseDataSize = COMMON_TEXTURES_SIZE;
+    //     commonCourseDataSize = ALIGN16(commonCourseDataSize);
 
-// #ifdef AVOID_UB
-//     textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
-// #else
-//     textureSegStart = SEG_RACING - commonCourseDataSize;
-// #endif
-//     osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
-//     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    // #ifdef AVOID_UB
+    //     textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
+    // #else
+    //     textureSegStart = SEG_RACING - commonCourseDataSize;
+    // #endif
+    //     osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize,
+    //     &gDmaMesgQueue); osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-//     textureSegSize = *(uintptr_t *)(textureSegStart + 4);
-//     textureSegSize = ALIGN16(textureSegSize);
-//     allocatedMemory = gNextFreeMemoryAddress;
-//     mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
-//     set_segment_base_addr(0xD, (void *) allocatedMemory);
+    //     textureSegSize = *(uintptr_t *)(textureSegStart + 4);
+    //     textureSegSize = ALIGN16(textureSegSize);
+    //     allocatedMemory = gNextFreeMemoryAddress;
+    //     mio0decode((u8 *) textureSegStart, (u8 *) allocatedMemory);
+    //     set_segment_base_addr(0xD, (void *) allocatedMemory);
 
-//     gNextFreeMemoryAddress += textureSegSize;
+    //     gNextFreeMemoryAddress += textureSegSize;
 
-//     // Common course data does not get reloaded when the race state resets.
-//     // Therefore, only reset the memory ptr to after the common course data.
-     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
+    //     // Common course data does not get reloaded when the race state resets.
+    //     // Therefore, only reset the memory ptr to after the common course data.
+    gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
 /**
@@ -585,7 +604,8 @@ void race_logic_loop(void) {
         func_80290B14();
     }
     if (gIsInQuitToMenuTransition != 0) {
-        func_802A38B4(); return;
+        func_802A38B4();
+        return;
     }
 
     if (sNumVBlanks >= 6) {
@@ -596,7 +616,7 @@ void race_logic_loop(void) {
     }
     func_802A4EF4();
 
-    switch(gActiveScreenMode) {
+    switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
             gTickSpeed = 2;
             staff_ghosts_loop();
@@ -621,7 +641,6 @@ void race_logic_loop(void) {
                     update_course_actors();
                     func_802966A0();
                     func_8028FCBC();
-
                 }
                 func_80022744();
             }
@@ -635,10 +654,9 @@ void race_logic_loop(void) {
             } else {
                 if (D_800DC514) {
 
-                    if ((gControllerOne->buttonPressed & R_TRIG) &&
-                        (gControllerOne->button & A_BUTTON) &&
+                    if ((gControllerOne->buttonPressed & R_TRIG) && (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = false;
+                        D_800DC514 = false;
                     }
 
                     rotY = camera1->rot[1];
@@ -656,10 +674,9 @@ void race_logic_loop(void) {
                     }
 
                 } else {
-                    if ((gControllerOne->buttonPressed & L_TRIG) &&
-                        (gControllerOne->button & A_BUTTON) &&
+                    if ((gControllerOne->buttonPressed & L_TRIG) && (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = true;
+                        D_800DC514 = true;
                     }
                 }
             }
@@ -672,41 +689,41 @@ void race_logic_loop(void) {
                 gTickSpeed = 2;
             }
             if (gIsGamePaused == 0) {
-                    for (i = 0; i < gTickSpeed; i++) {
-                        if (D_8015011E != 0) {
-                            gCourseTimer += COURSE_TIMER_ITER;
-                        }
-                        func_802909F0();
-                        evaluate_collision_for_players_and_actors();
-                        func_800382DC();
-                        func_8001EE98(gPlayerOneCopy, camera1, 0);
-                        func_80029060();
-                        func_8001EE98(gPlayerTwoCopy, camera2, 1);
-                        func_80029150();
-                        func_8028F474();
-                        func_80059AC8();
-                        update_course_actors();
-                        func_802966A0();
-                        func_8028FCBC();
+                for (i = 0; i < gTickSpeed; i++) {
+                    if (D_8015011E != 0) {
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
-                    func_80022744();
+                    func_802909F0();
+                    evaluate_collision_for_players_and_actors();
+                    func_800382DC();
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
+                    func_80029060();
+                    func_8001EE98(gPlayerTwoCopy, camera2, 1);
+                    func_80029150();
+                    func_8028F474();
+                    func_80059AC8();
+                    update_course_actors();
+                    func_802966A0();
+                    func_8028FCBC();
                 }
-                func_8005A070();
-                profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
-                sNumVBlanks = 0;
-                move_segment_table_to_dmem();
-                init_rdp();
-                if (D_800DC5B0 != 0) {
-                    select_framebuffer();
-                }
-                D_8015F788 = 0;
-                if (gPlayerWinningIndex == 0) {
-                    render_player_two_2p_screen_vertical();
-                    render_player_one_2p_screen_vertical();
-                } else {
-                    render_player_one_2p_screen_vertical();
-                    render_player_two_2p_screen_vertical();
-                }
+                func_80022744();
+            }
+            func_8005A070();
+            profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
+            sNumVBlanks = 0;
+            move_segment_table_to_dmem();
+            init_rdp();
+            if (D_800DC5B0 != 0) {
+                select_framebuffer();
+            }
+            D_8015F788 = 0;
+            if (gPlayerWinningIndex == 0) {
+                render_player_two_2p_screen_vertical();
+                render_player_one_2p_screen_vertical();
+            } else {
+                render_player_one_2p_screen_vertical();
+                render_player_two_2p_screen_vertical();
+            }
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
@@ -718,27 +735,27 @@ void race_logic_loop(void) {
             }
 
             if (gIsGamePaused == 0) {
-                    for (i = 0; i < gTickSpeed; i++) {
-                        if (D_8015011E != 0) {
-                            gCourseTimer += COURSE_TIMER_ITER;
-                        }
-                        func_802909F0();
-                        evaluate_collision_for_players_and_actors();
-                        func_800382DC();
-                        func_8001EE98(gPlayerOneCopy, camera1, 0);
-                        func_80029060();
-                        func_8001EE98(gPlayerTwoCopy, camera2, 1);
-                        func_80029150();
-                        func_8028F474();
-                        func_80059AC8();
-                        update_course_actors();
-                        func_802966A0();
-                        func_8028FCBC();
+                for (i = 0; i < gTickSpeed; i++) {
+                    if (D_8015011E != 0) {
+                        gCourseTimer += COURSE_TIMER_ITER;
                     }
+                    func_802909F0();
+                    evaluate_collision_for_players_and_actors();
+                    func_800382DC();
+                    func_8001EE98(gPlayerOneCopy, camera1, 0);
+                    func_80029060();
+                    func_8001EE98(gPlayerTwoCopy, camera2, 1);
+                    func_80029150();
+                    func_8028F474();
+                    func_80059AC8();
+                    update_course_actors();
+                    func_802966A0();
+                    func_8028FCBC();
+                }
                 func_80022744();
             }
             profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
-            sNumVBlanks = (u16)0;
+            sNumVBlanks = (u16) 0;
             func_8005A070();
             move_segment_table_to_dmem();
             init_rdp();
@@ -758,7 +775,7 @@ void race_logic_loop(void) {
 
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if (gPlayerCountSelection1 == 3) {
-                switch(gCurrentCourseId) {
+                switch (gCurrentCourseId) {
                     case COURSE_BOWSER_CASTLE:
                     case COURSE_MOO_MOO_FARM:
                     case COURSE_SKYSCRAPER:
@@ -771,7 +788,7 @@ void race_logic_loop(void) {
                 }
             } else {
                 // Four players
-                switch(gCurrentCourseId) {
+                switch (gCurrentCourseId) {
                     case COURSE_BLOCK_FORT:
                     case COURSE_DOUBLE_DECK:
                     case COURSE_BIG_DONUT:
@@ -809,37 +826,37 @@ void race_logic_loop(void) {
                 }
                 func_80022744();
             }
-        func_8005A070();
-        sNumVBlanks = 0;
-        profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
-        move_segment_table_to_dmem();
-        init_rdp();
-        if (D_800DC5B0 != 0) {
-            select_framebuffer();
-        }
-        D_8015F788 = 0;
-        if (gPlayerWinningIndex == 0) {
-            render_player_two_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_one_3p_4p_screen();
-        } else if (gPlayerWinningIndex == 1) {
-            render_player_one_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_two_3p_4p_screen();
-        } else if (gPlayerWinningIndex == 2) {
-            render_player_one_3p_4p_screen();
-            render_player_two_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-        } else {
-            render_player_one_3p_4p_screen();
-            render_player_two_3p_4p_screen();
-            render_player_three_3p_4p_screen();
-            render_player_four_3p_4p_screen();
-        }
-        break;
+            func_8005A070();
+            sNumVBlanks = 0;
+            profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
+            move_segment_table_to_dmem();
+            init_rdp();
+            if (D_800DC5B0 != 0) {
+                select_framebuffer();
+            }
+            D_8015F788 = 0;
+            if (gPlayerWinningIndex == 0) {
+                render_player_two_3p_4p_screen();
+                render_player_three_3p_4p_screen();
+                render_player_four_3p_4p_screen();
+                render_player_one_3p_4p_screen();
+            } else if (gPlayerWinningIndex == 1) {
+                render_player_one_3p_4p_screen();
+                render_player_three_3p_4p_screen();
+                render_player_four_3p_4p_screen();
+                render_player_two_3p_4p_screen();
+            } else if (gPlayerWinningIndex == 2) {
+                render_player_one_3p_4p_screen();
+                render_player_two_3p_4p_screen();
+                render_player_four_3p_4p_screen();
+                render_player_three_3p_4p_screen();
+            } else {
+                render_player_one_3p_4p_screen();
+                render_player_two_3p_4p_screen();
+                render_player_three_3p_4p_screen();
+                render_player_four_3p_4p_screen();
+            }
+            break;
     }
 
     if (!gEnableDebugMode) {
@@ -847,16 +864,14 @@ void race_logic_loop(void) {
     } else {
         if (gEnableResourceMeters) {
             resource_display();
-            if ((!(gControllerOne->button & L_TRIG)) &&
-                (gControllerOne->button & R_TRIG) &&
+            if ((!(gControllerOne->button & L_TRIG)) && (gControllerOne->button & R_TRIG) &&
                 (gControllerOne->buttonPressed & B_BUTTON)) {
-                    gEnableResourceMeters = 0;
+                gEnableResourceMeters = 0;
             }
         } else {
-            if ((!(gControllerOne->button & L_TRIG)) &&
-                (gControllerOne->button & R_TRIG) &&
+            if ((!(gControllerOne->button & L_TRIG)) && (gControllerOne->button & R_TRIG) &&
                 (gControllerOne->buttonPressed & B_BUTTON)) {
-                        gEnableResourceMeters = 1;
+                gEnableResourceMeters = 1;
             }
         }
     }
@@ -864,7 +879,7 @@ void race_logic_loop(void) {
     func_800591B4();
     func_80093E20();
 #if DVDL
-	display_dvdl();
+    display_dvdl();
 #endif
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
@@ -885,17 +900,13 @@ void race_logic_loop(void) {
 
 void game_state_handler(void) {
 #if DVDL
-	if ((gControllerOne->button & L_TRIG) &&
-		(gControllerOne->button & R_TRIG) &&
-		(gControllerOne->button & Z_TRIG) &&
-		(gControllerOne->button & A_BUTTON)) {
-			gGamestateNext = CREDITS_SEQUENCE;
-	} else if ((gControllerOne->button & L_TRIG) &&
-		(gControllerOne->button & R_TRIG) &&
-		(gControllerOne->button & Z_TRIG) &&
-		(gControllerOne->button & B_BUTTON)) {
-			gGamestateNext = ENDING;
-	}
+    if ((gControllerOne->button & L_TRIG) && (gControllerOne->button & R_TRIG) && (gControllerOne->button & Z_TRIG) &&
+        (gControllerOne->button & A_BUTTON)) {
+        gGamestateNext = CREDITS_SEQUENCE;
+    } else if ((gControllerOne->button & L_TRIG) && (gControllerOne->button & R_TRIG) &&
+               (gControllerOne->button & Z_TRIG) && (gControllerOne->button & B_BUTTON)) {
+        gGamestateNext = ENDING;
+    }
 #endif
 
     switch (gGamestate) {
@@ -912,7 +923,7 @@ void game_state_handler(void) {
             init_rcp();
             func_80094A64(gGfxPool);
 #if DVDL
-			display_dvdl();
+            display_dvdl();
 #endif
             break;
         case RACING:
@@ -936,11 +947,11 @@ void interrupt_gfx_sptask(void) {
 
 void receive_new_tasks(void) {
     UNUSED s32 pad;
-    struct SPTask *spTask;
+    struct SPTask* spTask;
 
-    while(osRecvMesg(&gSPTaskMesgQueue, (OSMesg *) &spTask, OS_MESG_NOBLOCK) != -1) {
+    while (osRecvMesg(&gSPTaskMesgQueue, (OSMesg*) &spTask, OS_MESG_NOBLOCK) != -1) {
         spTask->state = SPTASK_STATE_NOT_STARTED;
-        switch(spTask->task.t.type) {
+        switch (spTask->task.t.type) {
             case 2:
                 sNextAudioSPTask = spTask;
                 break;
@@ -960,7 +971,7 @@ void receive_new_tasks(void) {
     }
 }
 
-void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *queue, OSMesg *msg) {
+void set_vblank_handler(s32 index, struct VblankHandler* handler, OSMesgQueue* queue, OSMesg* msg) {
     handler->queue = queue;
     handler->msg = *msg;
     switch (index) {
@@ -974,8 +985,8 @@ void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *q
 }
 
 void start_gfx_sptask(void) {
-    if (gActiveSPTask == NULL && sCurrentDisplaySPTask != NULL
-        && sCurrentDisplaySPTask->state == SPTASK_STATE_NOT_STARTED) {
+    if (gActiveSPTask == NULL && sCurrentDisplaySPTask != NULL &&
+        sCurrentDisplaySPTask->state == SPTASK_STATE_NOT_STARTED) {
         profiler_log_gfx_time(TASKS_QUEUED);
         start_sptask(M_GFXTASK);
     }
@@ -1000,17 +1011,19 @@ void handle_vblank(void) {
             start_sptask(M_AUDTASK);
         }
     } else {
-        if (gActiveSPTask == NULL && sCurrentDisplaySPTask != NULL
-                && sCurrentDisplaySPTask->state != SPTASK_STATE_FINISHED) {
+        if (gActiveSPTask == NULL && sCurrentDisplaySPTask != NULL &&
+            sCurrentDisplaySPTask->state != SPTASK_STATE_FINISHED) {
             profiler_log_gfx_time(TASKS_QUEUED);
             start_sptask(M_GFXTASK);
         }
     }
 
-    /* This is where I would put my rumble code... If I had any. */
-    #if ENABLE_RUMBLE
-    // rumble_thread_update_vi();
-    #endif
+/* This is where I would put my rumble code... If I had any. */
+#if ENABLE_RUMBLE
+#ifdef TARGET_N64
+    rumble_thread_update_vi();
+#endif
+#endif
 
     if (gVblankHandler1 != NULL) {
         osSendMesg(gVblankHandler1->queue, gVblankHandler1->msg, OS_MESG_NOBLOCK);
@@ -1031,7 +1044,7 @@ void handle_dp_complete(void) {
 }
 
 void handle_sp_complete(void) {
-    struct SPTask *curSPTask = gActiveSPTask;
+    struct SPTask* curSPTask = gActiveSPTask;
 
     gActiveSPTask = NULL;
 
@@ -1039,7 +1052,7 @@ void handle_sp_complete(void) {
         // handle_vblank tried to start an audio task while there was already a
         // gfx task running, so it had to interrupt the gfx task. That interruption
         // just finished.
-        if (osSpTaskYielded((OSTask *) curSPTask) == 0) {
+        if (osSpTaskYielded((OSTask*) curSPTask) == 0) {
             // The gfx task completed before we had time to interrupt it.
             // Mark it finished, just like below.
             curSPTask->state = SPTASK_STATE_FINISHED;
@@ -1074,18 +1087,18 @@ void handle_sp_complete(void) {
     };
 }
 
-void thread3_video(UNUSED void *arg0) {
+void thread3_video(UNUSED void* arg0) {
     s32 i;
-    u64 *framebuffer1;
+    u64* framebuffer1;
     OSMesg msg;
     UNUSED s32 pad[4];
 
-    gPhysicalFramebuffers[0] = (u16 *) &gFramebuffer0;
-    gPhysicalFramebuffers[1] = (u16 *) &gFramebuffer1;
-    gPhysicalFramebuffers[2] = (u16 *) &gFramebuffer2;
+    gPhysicalFramebuffers[0] = (u16*) &gFramebuffer0;
+    gPhysicalFramebuffers[1] = (u16*) &gFramebuffer1;
+    gPhysicalFramebuffers[2] = (u16*) &gFramebuffer2;
 
     // Clear framebuffer.
-    framebuffer1 = (u64 *) &gFramebuffer1;
+    framebuffer1 = (u64*) &gFramebuffer1;
     for (i = 0; i < 19200; i++) {
         framebuffer1[i] = 0;
     }
@@ -1095,7 +1108,8 @@ void thread3_video(UNUSED void *arg0) {
     create_thread(&gAudioThread, 4, &thread4_audio, 0, gAudioThreadStack + ARRAY_COUNT(gAudioThreadStack), 20);
     osStartThread(&gAudioThread);
 
-    create_thread(&gGameLoopThread, 5, &thread5_game_loop, 0, gGameLoopThreadStack + ARRAY_COUNT(gGameLoopThreadStack), 10);
+    create_thread(&gGameLoopThread, 5, &thread5_game_loop, 0, gGameLoopThreadStack + ARRAY_COUNT(gGameLoopThreadStack),
+                  10);
     osStartThread(&gGameLoopThread);
 
     while (true) {
@@ -1169,7 +1183,7 @@ void update_gamestate(void) {
              * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
              * In laymens terms, random_u16() outputs the same value every time.
              */
-            //init_segment_racing();
+            // init_segment_racing();
             setup_race();
             break;
         case ENDING:
@@ -1179,11 +1193,11 @@ void update_gamestate(void) {
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            //init_segment_racing();
+            // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();
             break;
-        }
+    }
 }
 
 void thread5_game_loop(void) {
@@ -1198,9 +1212,11 @@ void thread5_game_loop(void) {
     // set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg *)(OS_EVENT_SW2));
     // These variables track stats such as player wins.
     // In the event of a console reset, it remembers them.
-    gNmiUnknown1 = &pAppNmiBuffer[0];  // 2  u8's, tracks number of times player 1/2 won a VS race
-    gNmiUnknown2 = &pAppNmiBuffer[2];  // 9  u8's, 3x3, tracks number of times player 1/2/3   has placed in 1st/2nd/3rd in a VS race
-    gNmiUnknown3 = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd in a VS race
+    gNmiUnknown1 = &pAppNmiBuffer[0]; // 2  u8's, tracks number of times player 1/2 won a VS race
+    gNmiUnknown2 =
+        &pAppNmiBuffer[2]; // 9  u8's, 3x3, tracks number of times player 1/2/3   has placed in 1st/2nd/3rd in a VS race
+    gNmiUnknown3 = &pAppNmiBuffer[11]; // 12 u8's, 4x3, tracks number of times player 1/2/3/4 has placed in 1st/2nd/3rd
+                                       // in a VS race
     gNmiUnknown4 = &pAppNmiBuffer[23]; // 2  u8's, tracking number of Battle mode wins by player 1/2
     gNmiUnknown5 = &pAppNmiBuffer[25]; // 3  u8's, tracking number of Battle mode wins by player 1/2/3
     gNmiUnknown6 = &pAppNmiBuffer[28]; // 4  u8's, tracking number of Battle mode wins by player 1/2/3/4
@@ -1209,9 +1225,12 @@ void thread5_game_loop(void) {
     func_800C5CB8();
 }
 
-void thread5_iteration(void){
-    // while(true) {
-    //    func_800CB2C4();
+void thread5_iteration(void) {
+#ifdef TARGET_N64
+    while (true) {
+        func_800CB2C4();
+    }
+#endif
 
     if (GfxDebuggerIsDebugging()) {
         Graphics_PushFrame(gGfxPool->gfxPool);
@@ -1234,15 +1253,15 @@ void thread5_iteration(void){
 /**
  * Sound processing thread. Runs at 50 or 60 FPS according to osTvType.
  */
-void thread4_audio(UNUSED void *arg) {
+void thread4_audio(UNUSED void* arg) {
     UNUSED u32 unused[3];
     audio_init();
     osCreateMesgQueue(&sSoundMesgQueue, sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
-    set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg *) 512);
+    set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg*) 512);
 
     while (true) {
         OSMesg msg;
-        struct SPTask *spTask;
+        struct SPTask* spTask;
 
         osRecvMesg(&sSoundMesgQueue, &msg, OS_MESG_BLOCK);
 

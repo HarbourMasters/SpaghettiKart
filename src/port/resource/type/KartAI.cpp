@@ -12,4 +12,4 @@ KartAIBehaviour* KartAI::GetPointer() {
 size_t KartAI::GetPointerSize() {
     return KartAIList.size() * sizeof(KartAIBehaviour);
 }
-} // namespace LUS
+} // namespace MK64

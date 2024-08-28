@@ -25,4 +25,4 @@ class UnkActorSpawn : public Ship::Resource<UnkActorSpawnData> {
 
     std::vector<UnkActorSpawnData> UnkActorSpawnDataList;
 };
-} // namespace LUS
+} // namespace MK64

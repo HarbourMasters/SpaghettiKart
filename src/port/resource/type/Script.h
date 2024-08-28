@@ -23,4 +23,4 @@ class ScriptCMDs : public Ship::Resource<uint16_t> {
 
     std::vector<uint16_t> mCommands;
 };
-}
+} // namespace SF64

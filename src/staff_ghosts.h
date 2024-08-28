@@ -9,7 +9,7 @@ void func_80004EF0(void);
 void func_80004FB0(void);
 void func_80004FF8(void);
 void set_staff_ghost(void);
-s32  func_800051C4(void);
+s32 func_800051C4(void);
 void func_8000522C(void);
 void func_800052A4(void);
 void func_80005310(void);

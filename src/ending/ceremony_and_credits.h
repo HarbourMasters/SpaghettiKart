@@ -10,8 +10,8 @@ struct struct_80283431 {
 };
 
 struct struct_80283430 {
-    s8 unk0; // index
-    s8 unk1; // speed
+    s8 unk0;  // index
+    s8 unk1;  // speed
     u16 unk2; // point
     s8 unk4;
     s8 unk5;
@@ -41,7 +41,6 @@ struct credits_data_1FA0 {
     s16 unk6E;
 };
 
-
 // Cinematic camera? Camera rails?
 // CutsceneVariable?
 /**
@@ -53,7 +52,7 @@ struct CinematicCamera {
     /* 0x00 */ Vec3f pos;
     /* 0x0C */ Vec3f lookAt;
     /* 0x18 */ f32 unk18;
-    /* 0x1C */ u8  cutscene;
+    /* 0x1C */ u8 cutscene;
     /* 0x20 */ f32 unk20;
     /* 0x24 */ Vec3f unk24;
     /* 0x30 */ Vec3f unk30;
@@ -88,8 +87,8 @@ struct struct_80285D80 {
 struct struct_80286A04 {
     u8 unk0;
     u8 unk1;
-    struct struct_80285D80 *unk4;
-    struct struct_80285D80 *unk8;
+    struct struct_80285D80* unk4;
+    struct struct_80285D80* unk8;
     u16 unkC;
 };
 
@@ -97,13 +96,12 @@ struct CutsceneSplinePoint {
     s8 index;
     u8 speed;
     Vec3s point;
-
 };
 
 struct Cutscene {
     /* 0x0 */ void (*shot)(struct CinematicCamera*);
     /* 0x4 */ s16 duration;
-    /* 0x6 */ //s16 pad;
+    /* 0x6 */ // s16 pad;
 }; /* size = 0x8 */
 
 /* Function Prototypes */
@@ -120,20 +118,20 @@ void func_80282040(void);
 void func_80282048(void);
 void func_80282050(Vec3f, Vec3f, s16);
 void func_802820F8(Vec3f, Vec3f, s16);
-s32  f32_lerp(f32*, f32, f32);
-s32  func_80282200(Vec3s, s16, s16);
-s32  set_transition_colour_fade_alpha_ending(f32*, f32, f32);
-s32  func_80282364(s16*, s16, s16);
+s32 f32_lerp(f32*, f32, f32);
+s32 func_80282200(Vec3s, s16, s16);
+s32 set_transition_colour_fade_alpha_ending(f32*, f32, f32);
+s32 func_80282364(s16*, s16, s16);
 void reset_spline(void);
 void func_80282434(struct CinematicCamera*);
 void func_80282454(Vec3f, Vec3f, f32*, s16*, s16*);
 void func_80282504(Vec3f, Vec3f, f32, s16, s16);
 void func_802825C8(Vec3f, Vec3f, Vec3f, Vec3s);
 void func_80282700(f32, Vec3f, f32*, f32[], f32[], f32[], f32[]);
-s32  move_point_along_spline(Vec3f, f32*, struct struct_80283430[], s16*, f32*);
+s32 move_point_along_spline(Vec3f, f32*, struct struct_80283430[], s16*, f32*);
 void func_80282BE4(struct struct_80283430*, s8, u8, s8, Vec3s, s32);
 void func_80282C40(struct struct_80283430*, struct struct_80282C40*, s32);
-s32  func_80282D90(struct CinematicCamera*, struct struct_80286A04*, struct struct_80286A04*, s32);
+s32 func_80282D90(struct CinematicCamera*, struct struct_80286A04*, struct struct_80286A04*, s32);
 void func_80282E58(struct CinematicCamera*, struct struct_80282C40*, s32);
 void func_80282EAC(s32, struct CinematicCamera*, s16, s16, s16);
 void func_80282F00(s16*, s16);
@@ -141,10 +139,10 @@ void func_80282F44(s32, struct CinematicCamera*, Camera*);
 void func_802830B4(struct CinematicCamera*, s16, s16, s16);
 void func_80283100(struct CinematicCamera*, f32*);
 void func_80283240(s16);
-s32  cutscene_event(CameraEvent event, struct CinematicCamera*, s16, s16);
-s32  func_80283330(s32);
-s32  func_8028336C(struct CinematicCamera*, Camera*);
-s32  func_80283428(void);
+s32 cutscene_event(CameraEvent event, struct CinematicCamera*, s16, s16);
+s32 func_80283330(s32);
+s32 func_8028336C(struct CinematicCamera*, Camera*);
+s32 func_80283428(void);
 void func_80283968(struct CinematicCamera*);
 void func_80283994(struct CinematicCamera*);
 void func_802839B4(struct CinematicCamera*);
@@ -254,6 +252,6 @@ extern struct Cutscene D_80285D10[];
 extern s16 D_80285D14;
 extern s32 D_802876D4;
 extern s32 D_802876D8;
-//extern struct credits_data_1FA0 *D_802876E0;
+// extern struct credits_data_1FA0 *D_802876E0;
 
 #endif // CEREMONY_AND_CREDITS_H

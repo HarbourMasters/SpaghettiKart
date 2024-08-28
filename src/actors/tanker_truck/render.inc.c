@@ -6,15 +6,16 @@
  * @brief Renders the tanker truck actor.
  * Actor used in Toad's Turnpike.
  * His update are made in vehicle.
- * 
- * @param camera 
- * @param arg1 
+ *
+ * @param camera
+ * @param arg1
  */
-void render_actor_tanker_truck(Camera *camera, struct Actor* arg1) {
+void render_actor_tanker_truck(Camera* camera, struct Actor* arg1) {
     UNUSED s32 pad[6];
     Mat4 spC8;
     UNUSED s32 pad2[32];
-    f32 temp_f0 = is_within_render_distance(camera->pos, arg1->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 9000000.0f);
+    f32 temp_f0 = is_within_render_distance(camera->pos, arg1->pos, camera->rot[1], 2500.0f,
+                                            gCameraZoom[camera - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
 
@@ -33,11 +34,11 @@ void render_actor_tanker_truck(Camera *camera, struct Actor* arg1) {
                 } else {
                     gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_8);
                 }
-                } else if (temp_f0 < 160000.0f) {
-                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_7);
-                } else {
-                    gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_8);
-                }
+            } else if (temp_f0 < 160000.0f) {
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_7);
+            } else {
+                gSPDisplayList(gDisplayListHead++, toads_turnpike_dl_8);
+            }
         }
     }
 }

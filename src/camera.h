@@ -10,11 +10,11 @@
  * actually return a value. This causes undefined behavior, which we'd rather
  * avoid on modern GCC. This only impacts -O2 and can matter for both the function
  * itself and functions that call it.
-*/
+ */
 #ifdef AVOID_UB
-    #define BAD_RETURN(cmd) void
+#define BAD_RETURN(cmd) void
 #else
-    #define BAD_RETURN(cmd) cmd
+#define BAD_RETURN(cmd) cmd
 #endif
 
 typedef struct {
@@ -41,7 +41,8 @@ typedef struct {
     /* 0x4C */ s32 unk_4C;
     /* 0x50 */ s32 unk_50;
     /* 0x54 */ Collision collision;
-    // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?) of that bouncing
+    // When you hit a wall (or another driver) the camera's pos and lookAt bounce up and down. This is the velocity(?)
+    // of that bouncing
     /* 0x94 */ UnkCameraInner unk_94;
     // Timer for wall-hit bounce. Counts up instead of down
     /* 0xA0 */ f32 unk_A0;
@@ -56,7 +57,7 @@ typedef struct {
     /* 0xB4 */ f32 unk_B4;
 } Camera; /* size = 0xB8 */
 
-typedef BAD_RETURN(s32) (*CameraEvent)(Camera *c);
+typedef BAD_RETURN(s32) (*CameraEvent)(Camera* c);
 typedef CameraEvent CutsceneShot;
 
 void camera_init(f32, f32, f32, s16, u32, s32);
@@ -78,10 +79,10 @@ void func_8001F87C(s32);
 extern f32 D_800DDB30[];
 
 extern Camera cameras[];
-extern Camera *camera1;
-extern Camera *camera2;
-extern Camera *camera3;
-extern Camera *camera4;
+extern Camera* camera1;
+extern Camera* camera2;
+extern Camera* camera3;
+extern Camera* camera4;
 
 // end of camera.c variables
 
@@ -94,6 +95,5 @@ extern s32 D_80164A2C;
 extern f32 D_80164A30;
 extern f32 D_80164A90[];
 extern f32 D_80164AA0[];
-
 
 #endif

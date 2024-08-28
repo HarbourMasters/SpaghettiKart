@@ -7,8 +7,7 @@
 #define OBJECT_LIST_SIZE 0x226
 #define SOME_OBJECT_INDEX_LIST_SIZE 32
 
-typedef struct
-{
+typedef struct {
     /* 0x00 */ f32 sizeScaling;
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
@@ -23,20 +22,20 @@ typedef struct
     /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ const char *activeTLUT;
-    /* 0x64 */ const char *activeTexture;
+    /* 0x60 */ const char* activeTLUT;
+    /* 0x64 */ const char* activeTexture;
     /**
      * "list" is something of a misnomer for the names here
      * they can be pointers to just 1 tlut/texture, but it is common for one or the other
      * to be a pointer to an array of tluts/textures.
-    **/
-    /* 0x68 */ u8 *tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
-    /* 0x6C */ const char **textureList;
-    /* 0x70 */ Gfx *model;
-    /* 0x74 */ Vtx *vertex;
-    /* 0x78 */ s8  unk_078[0x04];
-    /* 0x7C */ SplineControlPoint *controlPoints;
-    /* 0x80 */ SplineData *spline;
+     **/
+    /* 0x68 */ u8* tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
+    /* 0x6C */ const char** textureList;
+    /* 0x70 */ Gfx* model;
+    /* 0x74 */ Vtx* vertex;
+    /* 0x78 */ s8 unk_078[0x04];
+    /* 0x7C */ SplineControlPoint* controlPoints;
+    /* 0x80 */ SplineData* spline;
     /* 0x84 */ s16 unk_084[0xA];
     /* 0x98 */ u16 timer;
     /* 0x9A */ u16 unk_09A;
@@ -57,34 +56,33 @@ typedef struct
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 boundingBoxSize;
-    /* 0xCA */ s8  unk_0CA;
-    /* 0xCB */ s8  unk_0CB;
-    /* 0xCC */ s8  unk_0CC;
-    /* 0xCD */ s8  unk_0CD;
-    /* 0xCE */ s8  unk_0CE;
-    /* 0xCF */ s8  unk_0CF;
-    /* 0xD0 */ s8  unk_0D0;
-    /* 0xD1 */ s8  unk_0D1;
-    /* 0xD2 */ s8  itemDisplay;
-    /* 0xD3 */ s8  unk_0D3;
-    /* 0xD4 */ s8  unk_0D4;
-    /* 0xD5 */ u8  unk_0D5;
-    /* 0xD6 */ u8  unk_0D6;
-    /* 0xD7 */ u8  unk_0D7;
-    /* 0xD8 */ u8  unk_0D8;
-    /* 0xD9 */ u8  textureWidth;
-    /* 0xDA */ u8  textureHeight;
-    /* 0xDB */ u8  unk_0DB;
-    /* 0xDC */ u8  unk_0DC;
-    /* 0xDD */ u8  unk_0DD;
-    /* 0xDE */ s8  unk_0DE;
-    /* 0xDF */ u8  unk_0DF;
+    /* 0xCA */ s8 unk_0CA;
+    /* 0xCB */ s8 unk_0CB;
+    /* 0xCC */ s8 unk_0CC;
+    /* 0xCD */ s8 unk_0CD;
+    /* 0xCE */ s8 unk_0CE;
+    /* 0xCF */ s8 unk_0CF;
+    /* 0xD0 */ s8 unk_0D0;
+    /* 0xD1 */ s8 unk_0D1;
+    /* 0xD2 */ s8 itemDisplay;
+    /* 0xD3 */ s8 unk_0D3;
+    /* 0xD4 */ s8 unk_0D4;
+    /* 0xD5 */ u8 unk_0D5;
+    /* 0xD6 */ u8 unk_0D6;
+    /* 0xD7 */ u8 unk_0D7;
+    /* 0xD8 */ u8 unk_0D8;
+    /* 0xD9 */ u8 textureWidth;
+    /* 0xDA */ u8 textureHeight;
+    /* 0xDB */ u8 unk_0DB;
+    /* 0xDC */ u8 unk_0DC;
+    /* 0xDD */ u8 unk_0DD;
+    /* 0xDE */ s8 unk_0DE;
+    /* 0xDF */ u8 unk_0DF;
 } Object; // size = 0xE0
 
 extern Object gObjectList[];
 
-typedef struct
-{
+typedef struct {
     /* 0x00 */ f32 sizeScaling;
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
@@ -99,20 +97,20 @@ typedef struct
     /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ u8 *activeTLUT;
-    /* 0x64 */ u8 *activeTexture;
+    /* 0x60 */ u8* activeTLUT;
+    /* 0x64 */ u8* activeTexture;
     /**
      * "list" is something of a misnomer for the names here
      * they can be pointers to just 1 tlut/texture, but it is common for one or the other
      * to be a pointer to an array of tluts/textures.
-    **/
-    /* 0x68 */ u8 *tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
-    /* 0x6C */ u8 *textureList;
-    /* 0x70 */ Gfx *model;
-    /* 0x74 */ Vtx *vertex;
-    /* 0x78 */ s8  unk_078[0x04];
-    /* 0x7C */ Vec4s *unk_07C;
-    /* 0x80 */ Vec4s *unk_080; // unk_080[][4]?
+     **/
+    /* 0x68 */ u8* tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
+    /* 0x6C */ u8* textureList;
+    /* 0x70 */ Gfx* model;
+    /* 0x74 */ Vtx* vertex;
+    /* 0x78 */ s8 unk_078[0x04];
+    /* 0x7C */ Vec4s* unk_07C;
+    /* 0x80 */ Vec4s* unk_080; // unk_080[][4]?
     /* 0x84 */ s16 unk_084[0xA];
     /* 0x98 */ u16 goldenMushroomTimer;
     /* 0x9A */ u16 unk_09A;
@@ -133,28 +131,28 @@ typedef struct
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 unk_0C8;
-    /* 0xCA */ s8  unk_0CA;
-    /* 0xCB */ s8  unk_0CB;
-    /* 0xCC */ s8  unk_0CC;
-    /* 0xCD */ s8  unk_0CD;
-    /* 0xCE */ s8  unk_0CE;
-    /* 0xCF */ s8  unk_0CF;
-    /* 0xD0 */ s8  unk_0D0;
-    /* 0xD1 */ s8  unk_0D1;
-    /* 0xD2 */ s8  itemDisplay;
-    /* 0xD3 */ s8  unk_0D3;
-    /* 0xD4 */ s8  unk_0D4;
-    /* 0xD5 */ u8  unk_0D5;
-    /* 0xD6 */ u8  unk_0D6;
-    /* 0xD7 */ u8  unk_0D7;
-    /* 0xD8 */ u8  unk_0D8;
-    /* 0xD9 */ u8  textureWidth;
-    /* 0xDA */ u8  textureHeight;
-    /* 0xDB */ u8  unk_0DB;
-    /* 0xDC */ u8  unk_0DC;
-    /* 0xDD */ u8  unk_0DD;
-    /* 0xDE */ s8  unk_0DE;
-    /* 0xDF */ u8  unk_0DF;
+    /* 0xCA */ s8 unk_0CA;
+    /* 0xCB */ s8 unk_0CB;
+    /* 0xCC */ s8 unk_0CC;
+    /* 0xCD */ s8 unk_0CD;
+    /* 0xCE */ s8 unk_0CE;
+    /* 0xCF */ s8 unk_0CF;
+    /* 0xD0 */ s8 unk_0D0;
+    /* 0xD1 */ s8 unk_0D1;
+    /* 0xD2 */ s8 itemDisplay;
+    /* 0xD3 */ s8 unk_0D3;
+    /* 0xD4 */ s8 unk_0D4;
+    /* 0xD5 */ u8 unk_0D5;
+    /* 0xD6 */ u8 unk_0D6;
+    /* 0xD7 */ u8 unk_0D7;
+    /* 0xD8 */ u8 unk_0D8;
+    /* 0xD9 */ u8 textureWidth;
+    /* 0xDA */ u8 textureHeight;
+    /* 0xDB */ u8 unk_0DB;
+    /* 0xDC */ u8 unk_0DC;
+    /* 0xDD */ u8 unk_0DD;
+    /* 0xDE */ s8 unk_0DE;
+    /* 0xDF */ u8 unk_0DF;
 } ItemWindowObjects; // size = 0xE0
 
 // This are other lists of indices in gObjectList.
@@ -199,10 +197,11 @@ extern Collision D_8018C0B0[];
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
  * init_object_list_index initializes them in such a way that the indicies in each list are not adjacent.
- * First indexObjectList1 gets an unused index, then indexObjectList2, then indexObjectList3, then indexObjectList4, and then it loops.
- * 
+ * First indexObjectList1 gets an unused index, then indexObjectList2, then indexObjectList3, then indexObjectList4, and
+ *then it loops.
+ *
  * The objects found at the indices in each list appears to be course dependent
- **/ 
+ **/
 
 #define NUM_YV_FLAG_POLES 4
 
@@ -235,12 +234,12 @@ typedef struct {
     /* 0x2 */ s16 startZ;
     /* 0x4 */ s16 unk_4; // Group Id?
     /* 0x6 */ s16 unk_6; // Starting State?
-} ThwompSpawn; // size = 0x8;
+} ThwompSpawn;           // size = 0x8;
 
 extern ThwompSpawn gThomwpSpawns50CC[];
 extern ThwompSpawn gThwompSpawns100CCExtra[];
 extern ThwompSpawn gThomwpSpawns150CC[];
-extern ThwompSpawn *gThowmpSpawnList;
+extern ThwompSpawn* gThowmpSpawnList;
 
 extern s16 gNumActiveThwomps;
 
@@ -267,14 +266,14 @@ extern s32 indexObjectList1[];
 typedef struct {
     /* 0x0 */ Vec3s pos;
     /* 0x6 */ s16 unk_6; // Group Id?
-} SnowmanSpawn; // size = 0x8;
+} SnowmanSpawn;          // size = 0x8;
 
 extern SnowmanSpawn gSnowmanSpawns[];
 
 typedef struct {
     /* 0x0 */ Vec3s pos;
     /* 0x6 */ s16 unk_06; // Group Id?
-} HegdehogSpawn; // size = 0x8;
+} HegdehogSpawn;          // size = 0x8;
 
 extern HegdehogSpawn gHedgehogSpawns[];
 extern Vec3s gHedgehogPatrolPoints[];
@@ -311,15 +310,15 @@ extern s32 indexObjectList3[];
 extern s32 indexObjectList4[];
 
 #define gObjectParticle1_SIZE 128
-#define NUM_GROUP1_MOLES  8
+#define NUM_GROUP1_MOLES 8
 #define NUM_GROUP2_MOLES 11
 #define NUM_GROUP3_MOLES 12
-#define NUM_TOTAL_MOLES  (NUM_GROUP1_MOLES + NUM_GROUP2_MOLES + NUM_GROUP3_MOLES)
+#define NUM_TOTAL_MOLES (NUM_GROUP1_MOLES + NUM_GROUP2_MOLES + NUM_GROUP3_MOLES)
 #define NUM_SNOWFLAKES 0x32
 
 typedef union {
     Vec3s asVec3sList[NUM_TOTAL_MOLES];
-    s16 asFlatList[NUM_TOTAL_MOLES*3];
+    s16 asFlatList[NUM_TOTAL_MOLES * 3];
 } MoleSpawnUnion;
 extern MoleSpawnUnion gMoleSpawns;
 

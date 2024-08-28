@@ -12,4 +12,4 @@ UnkActorSpawnData* UnkActorSpawn::GetPointer() {
 size_t UnkActorSpawn::GetPointerSize() {
     return UnkActorSpawnDataList.size() * sizeof(UnkActorSpawnData);
 }
-} // namespace LUS
+} // namespace MK64

@@ -4,5 +4,4 @@
 extern "C" {
 
 u64 osClockRate = 62500000;
-
 }

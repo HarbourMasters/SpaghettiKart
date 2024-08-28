@@ -21,7 +21,7 @@ void func_80043764(s32, s32, u16, f32, Vtx*);
 void func_800437F8(s32, s32, u16, f32, Vtx*, s32);
 void func_800438C4(s32, s32, u16, f32, Vtx*, s32);
 void func_8004398C(s32, s32, u16, f32, Vtx*, s32);
-s32  func_80043A54(s32);
+s32 func_80043A54(s32);
 void load_texture_block_rgba32_nomirror(u8*, s32, s32);
 void load_texture_tile_rgba32_nomirror(u8*, s32, s32);
 void load_texture_block_rgba16_mirror(u8*, s32, s32);
@@ -297,7 +297,7 @@ void func_8004EF9C(s32);
 void func_8004F020(s32);
 void func_8004F168(s32, s32, s32);
 void func_8004F3E4(s32);
-s32  func_8004F674(s32*, s32);
+s32 func_8004F674(s32*, s32);
 void print_timer(s32, s32, s32);
 void func_8004F950(s32, s32, s32, s32);
 void print_timer_rainbow(s32, s32, s32);
@@ -306,7 +306,7 @@ void draw_lap_count(s16, s16, s8);
 void func_8004FDB4(f32, f32, s16, s16, s16, s32, s32, s32, s32);
 
 void func_80050320(void);
-s32  func_80050644(u16, s32*, s32*);
+s32 func_80050644(u16, s32*, s32*);
 void func_800507D8(u16, s32*, s32*);
 void func_800508C0(void);
 void func_80050C68(void);
@@ -318,7 +318,7 @@ void render_object_snowflakes_particles(void);
 void func_800518F8(s32, s16, s16);
 void func_800519D4(s32, s16, s16);
 void func_80051ABC(s16, s32);
-void func_80051C60(s16, s32); 
+void func_80051C60(s16, s32);
 void func_80051EBC(void);
 void func_80051EF8(void);
 void func_80051F9C(void);
@@ -349,7 +349,7 @@ void func_80053D74(s32, s32, s32);
 void func_80053E6C(s32);
 
 void render_object_train_smoke_particle(s32, s32);
-void render_object_train_smoke_particles(s32);
+void render_object_trains_smoke_particles(s32);
 void render_object_paddle_boat_smoke_particle(s32, s32);
 void render_object_paddle_boat_smoke_particles(s32);
 void render_object_bowser_flame_particle(s32, s32);
@@ -397,7 +397,7 @@ void func_80056E24(s32, Vec3f);
 void func_80056FCC(s32);
 
 void func_80057114(s32);
-void func_8005762C(s32*,s32*,s32,u32);
+void func_8005762C(s32*, s32*, s32, u32);
 void func_80057330(void);
 void func_80057338(void);
 void func_800573BC(void);
@@ -447,6 +447,6 @@ extern s16 D_8018D2E8;
 extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 
-extern u8 *gPortraitTextures[];
+extern u8* gPortraitTextures[];
 
 #endif

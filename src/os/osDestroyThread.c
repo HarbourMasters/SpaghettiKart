@@ -1,9 +1,9 @@
 #include "libultra_internal.h"
 
-void osDestroyThread(OSThread *thread) {
+void osDestroyThread(OSThread* thread) {
     register s32 int_disabled;
-    register OSThread *s1;
-    register OSThread *s2;
+    register OSThread* s1;
+    register OSThread* s2;
 
     int_disabled = __osDisableInt();
 

@@ -7,15 +7,15 @@
 
 // code_80057C60
 
-#define RENDER_SCREEN_MODE_1P_PLAYER_ONE            PLAYER_ONE+SCREEN_MODE_1P
-#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
-#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
-#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE   PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1
-#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO   PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1
-#define RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE         PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5
-#define RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO         PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5
-#define RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE       PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5
-#define RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR        PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5
+#define RENDER_SCREEN_MODE_1P_PLAYER_ONE PLAYER_ONE + SCREEN_MODE_1P
+#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE PLAYER_ONE + SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
+#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO PLAYER_TWO + SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
+#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE PLAYER_ONE + SCREEN_MODE_2P_SPLITSCREEN_VERTICAL + 1
+#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO PLAYER_TWO + SCREEN_MODE_2P_SPLITSCREEN_VERTICAL + 1
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE PLAYER_ONE + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO PLAYER_TWO + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE PLAYER_THREE + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR PLAYER_FOUR + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
 
 typedef struct {
     char unk_00[0x4];
@@ -27,7 +27,7 @@ typedef struct {
 
 /** @cond */
 
-void func_8005C674(s8, s16 *, s16 *, s16 *);
+void func_8005C674(s8, s16*, s16*, s16*);
 void func_80057C60(void);
 void func_80057CE4(void);
 void func_80057DD0(void);
@@ -118,9 +118,9 @@ void func_8005D1F4(s32);
 void func_8005D290(void);
 void func_8005D6C0(Player*);
 void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32  func_8005D7D8(UnkPlayerStruct258*, s8, f32);
-s32  func_8005D800(UnkPlayerStruct258*, s32, s16);
-s32  func_8005D82C(UnkPlayerStruct258*, s32, s16);
+s32 func_8005D7D8(UnkPlayerStruct258*, s8, f32);
+s32 func_8005D800(UnkPlayerStruct258*, s32, s16);
+s32 func_8005D82C(UnkPlayerStruct258*, s32, s16);
 void func_8005D898(Player*, s16, s32, s8, s8);
 void func_8005DA30(Player*, s16, s32, s8, s8);
 void func_8005DAD0(void);
@@ -257,8 +257,8 @@ void func_80075CA8(void);
 void func_80085214();
 
 extern s16 D_800E4730[];
-extern u8 **D_800E4770[];
-extern u8 **D_800E47A0[];
+extern u8** D_800E4770[];
+extern u8** D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
 
@@ -358,7 +358,7 @@ extern s32 D_80165860;
 extern s32 D_8016586C;
 extern s32 D_80165878;
 extern s32 D_8016587C;
-extern u8 *D_80165880;
+extern u8* D_80165880;
 extern s8 D_80165888;
 extern s8 D_80165890;
 extern s8 D_80165898;
@@ -377,7 +377,7 @@ extern s8 D_801658FE;
 extern u8 gControllerRandom;
 
 extern s16 D_80165900;
-extern s8  D_80165908;
+extern s8 D_80165908;
 
 extern s8 D_80165A90;
 // extern Object gObjectList[]; -> objects.h
@@ -410,10 +410,10 @@ extern Vec3su D_80183E98;
 // extern s32 indexObjectList1[]; -> objects.h
 // extern s32 indexObjectList2[]; -> objects.h
 
-extern const char *gLakituTextureBuffer[4][2];
+extern const char* gLakituTextureBuffer[4][2];
 // extern s32 indexObjectList3[]; -> objects.h
 
-extern const char **gLakituTexturePtr;
+extern const char** gLakituTexturePtr;
 // extern s32 indexObjectList4[]; -> objects.h
 // extern Collision D_8018C0B0[]; -> objects.h
 // extern s32 gObjectParticle1[]; -> objects.h
@@ -432,11 +432,11 @@ extern hud_player playerHUD[];
 extern struct_D_8018CE10 D_8018CE10[];
 // extern s32 D_8018CF10; -> objects.h
 
-extern Camera *D_8018CF14;
+extern Camera* D_8018CF14;
 extern s16 D_8018CF18;
-extern Player *D_8018CF1C;
+extern Player* D_8018CF1C;
 extern s16 D_8018CF20;
-extern Player *D_8018CF28[];
+extern Player* D_8018CF28[];
 extern s16 D_8018CF48;
 extern s16 D_8018CF50[];
 extern s16 D_8018CF60;
@@ -454,10 +454,10 @@ extern s16 D_8018CFC0;
 extern s16 D_8018CFC8;
 extern s16 D_8018CFD0;
 extern s16 D_8018CFD8;
-extern s8  D_8018CFAC[];
-extern s8  D_8018CFB4[];
-extern s8  D_8018CFBC[];
-extern s8  D_8018CFC4[];
+extern s8 D_8018CFAC[];
+extern s8 D_8018CFB4[];
+extern s8 D_8018CFBC[];
+extern s8 D_8018CFC4[];
 extern s16 D_8018CFE0;
 extern f32 D_8018CFE4;
 extern s16 D_8018CFE8;
@@ -521,7 +521,7 @@ extern s32 D_8018D1D4;
 // extern s32 D_8018D1D8; -> objects.h
 
 extern s32 D_8018D1DC;
-extern u8 *D_8018D1E0;
+extern u8* D_8018D1E0;
 extern f32 D_8018D1E8;
 extern s32 D_8018D1EC;
 // extern s32 D_8018D1F0; -> objects.h
@@ -538,12 +538,12 @@ extern s16 D_8018D218;
 extern s32 D_8018D21C;
 extern u8 (*D_8018D220)[1024];
 extern s32 D_8018D224;
-extern u8  D_8018D228;
+extern u8 D_8018D228;
 extern s32 D_8018D22C;
 // extern s8 D_8018D230; -> objects.h
 
 extern uintptr_t D_8018D240;
-extern u8 *D_8018D248[];
+extern u8* D_8018D248[];
 extern f32 D_8018D2A0;
 extern s32 D_8018D2A4;
 extern s32 D_8018D2AC;
@@ -585,48 +585,48 @@ extern s32 gRaceFrameCounter;
 extern s32 D_8018D400;
 extern s32 D_8018D40C;
 extern s32 D_8018D410;
-extern u8 *D_8018D420;
-extern u8 *D_8018D424;
-extern u8 *D_8018D428;
-extern u8 *D_8018D42C;
-extern u8 *D_8018D430;
-extern u8 *D_8018D434;
-extern u8 *D_8018D438;
-extern u8 *D_8018D43C;
-extern u8 *D_8018D440;
-extern u8 *D_8018D444;
-extern u8 *D_8018D448;
-extern u8 *D_8018D44C;
-extern u8 *D_8018D450;
-extern u8 *D_8018D454;
-extern u8 *D_8018D458;
-extern u8 *D_8018D45C;
-extern u8 *D_8018D460;
-extern u8 *D_8018D464;
-extern u8 *D_8018D468;
-extern u8 *D_8018D46C;
-extern u8 *D_8018D470;
-extern u8 *D_8018D474;
-extern u8 *D_8018D478;
-extern u8 *D_8018D480;
-extern u8 *D_8018D484;
-extern u8 *D_8018D488;
-extern u8 *D_8018D48C;
+extern u8* D_8018D420;
+extern u8* D_8018D424;
+extern u8* D_8018D428;
+extern u8* D_8018D42C;
+extern u8* D_8018D430;
+extern u8* D_8018D434;
+extern u8* D_8018D438;
+extern u8* D_8018D43C;
+extern u8* D_8018D440;
+extern u8* D_8018D444;
+extern u8* D_8018D448;
+extern u8* D_8018D44C;
+extern u8* D_8018D450;
+extern u8* D_8018D454;
+extern u8* D_8018D458;
+extern u8* D_8018D45C;
+extern u8* D_8018D460;
+extern u8* D_8018D464;
+extern u8* D_8018D468;
+extern u8* D_8018D46C;
+extern u8* D_8018D470;
+extern u8* D_8018D474;
+extern u8* D_8018D478;
+extern u8* D_8018D480;
+extern u8* D_8018D484;
+extern u8* D_8018D488;
+extern u8* D_8018D48C;
 extern u8* D_8018D490;
-extern u8 *D_8018D494;
-extern u8 *D_8018D498;
-extern u8 *D_8018D49C;
-extern u8 *D_8018D4A0;
-extern u8 *D_8018D4A4;
-extern u8 *D_8018D4A8;
-extern u8 *D_8018D4AC;
-extern u8 *D_8018D4B0;
-extern u8 *D_8018D4B4;
-extern u8 *D_8018D4B8;
-extern u8 *D_8018D4BC;
-extern u8 *D_8018D4C0;
-extern u8 *D_8018D4C4;
-extern u8 *D_8018D4C8;
+extern u8* D_8018D494;
+extern u8* D_8018D498;
+extern u8* D_8018D49C;
+extern u8* D_8018D4A0;
+extern u8* D_8018D4A4;
+extern u8* D_8018D4A8;
+extern u8* D_8018D4AC;
+extern u8* D_8018D4B0;
+extern u8* D_8018D4B4;
+extern u8* D_8018D4B8;
+extern u8* D_8018D4BC;
+extern u8* D_8018D4C0;
+extern u8* D_8018D4C4;
+extern u8* D_8018D4C8;
 extern Vec3f D_8018D4D0[];
 extern Vec3f D_8018D530[];
 extern Vec3f D_8018D590[];
@@ -644,7 +644,7 @@ extern Vec3s D_8018D800[];
 extern Vec3s D_8018D830[];
 extern Vec3s D_8018D860[];
 extern Vec3s D_8018D890[];
-extern s16 gPlayerBalloonCount[];      // D_8018D8C0
+extern s16 gPlayerBalloonCount[]; // D_8018D8C0
 extern Vec3s D_8018D8D0[];
 
 /** @endcond */

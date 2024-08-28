@@ -5,37 +5,35 @@
 #include <defines.h>
 
 // D_8018EDEC is position on options screen?
-enum MenuOptionsCursorPositions {
-    MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16
-};
+enum MenuOptionsCursorPositions { MENU_OPTIONS_CSRPOS_SOUNDMODE = 0x16 };
 
 // needs to be a union (or array...?) to go into rodata as a const
 // terrible for endianness... Best guess as to what this is for..
 union GameModePack {
-    u8  modes[4];
+    u8 modes[4];
     s32 word;
 };
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
-void rmonPrintf(const char *, ...);
+void rmonPrintf(const char*, ...);
 
 /* functions */
 void update_menus(void);
-void options_menu_act(struct Controller *, u16);
-void data_menu_act(struct Controller *, u16);
-void course_data_menu_act(struct Controller *, u16);
-void logo_intro_menu_act(struct Controller *, u16);
-void controller_pak_menu_act(struct Controller *, u16);
-void splash_menu_act(struct Controller *, u16);
+void options_menu_act(struct Controller*, u16);
+void data_menu_act(struct Controller*, u16);
+void course_data_menu_act(struct Controller*, u16);
+void logo_intro_menu_act(struct Controller*, u16);
+void controller_pak_menu_act(struct Controller*, u16);
+void splash_menu_act(struct Controller*, u16);
 void func_800B28C8(void);
-void main_menu_act(struct Controller *, u16);
+void main_menu_act(struct Controller*, u16);
 bool is_character_spot_free(s32);
-void player_select_menu_act(struct Controller *, u16);
-void course_select_menu_act(struct Controller *, u16);
+void player_select_menu_act(struct Controller*, u16);
+void course_select_menu_act(struct Controller*, u16);
 void func_800B3F74(s32);
 void func_800B44AC(void);
 void func_800B44BC(void);
-bool  func_800B4520(void);
+bool func_800B4520(void);
 
 /* data */
 extern s32 D_8018EDC0;

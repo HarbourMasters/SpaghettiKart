@@ -8,4 +8,4 @@ EnvSettingsData* EnvSettings::GetPointer() {
 size_t EnvSettings::GetPointerSize() {
     return sizeof(EnvSettingsData);
 }
-}
+} // namespace SF64

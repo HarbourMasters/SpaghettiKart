@@ -25,7 +25,7 @@ typedef struct {
  * In render_player, spawn_players, and staff_ghosts D_802BFB80 is the arraySize8 entry
  * But in code_80091750 its the arraySize4 entry
  * The only way to unify those 2 things is to use a union
-*/
+ */
 typedef union {
     struct_D_802BFB80_4 arraySize4[2][2][4];
     struct_D_802BFB80_8 arraySize8[2][2][8];
@@ -36,14 +36,14 @@ typedef union {
  * Likely over-sized due to encoded textures having variable size
  */
 typedef struct {
-    const char *unk_00; // Original 0x920 because compressed. But no longer compressed.
-} struct_gEncodedKartTexture; // size = 0x1000
+    const char* unk_00; // Original 0x920 because compressed. But no longer compressed.
+} struct_D_802DFB80;    // size = 0x1000
 
 typedef struct {
-    u16 red:5;
-    u16 green:5;
-    u16 blue:5;
-    u16 alpha:1;
+    u16 red : 5;
+    u16 green : 5;
+    u16 blue : 5;
+    u16 alpha : 1;
 } RGBA5551;
 
 /*
@@ -63,18 +63,18 @@ typedef struct {
  * helps with understanding.
  */
 typedef struct {
-    /* 0x000 */ RGBA5551  kart_palette[0xC0];
+    /* 0x000 */ RGBA5551 kart_palette[0xC0];
     /* 0x180 */ RGBA5551 wheel_palette[0x40];
 } struct_D_802F1F80; // size = 0x200
 
 extern u16 gRandomSeed16;
 extern u8 randomSeedPadding[216];
 extern union_D_802BFB80 D_802BFB80;
-extern struct_gEncodedKartTexture gEncodedKartTexture[][2][8];
+extern struct_D_802DFB80 gEncodedKartTexture[][2][8];
 
 /**
  * It would be nice to define gPlayerPalettesList as "struct_D_802F1F80 gPlayerPalettesList[2][4][8]".
- * But due to register allocation issues in load_kart_palette / update_wheel_palette 
+ * But due to register allocation issues in load_kart_palette / update_wheel_palette
  * we have to define it in a different manner to match those functions.
  * If AVOID_UB is defined, the struct is properly defined with their correct pointers.
  **/

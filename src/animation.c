@@ -13,7 +13,7 @@ s16 isNotTheFirst;
 s16 sMatrixShouldNotPop;
 s16 sMatrixStackSize;
 
-void convert_to_fixed_point_matrix_animation(Mtx *dest, Mat4 src) {
+void convert_to_fixed_point_matrix_animation(Mtx* dest, Mat4 src) {
 #ifdef AVOID_UB
     // Avoid type-casting which is technically UB by calling the equivalent
     // guMtxF2L function. This helps little-endian systems, as well.
@@ -21,12 +21,12 @@ void convert_to_fixed_point_matrix_animation(Mtx *dest, Mat4 src) {
 #else
     s32 asFixedPoint;
     register s32 i;
-    register s16 *a3 = (s16 *) dest;      // all integer parts stored in first 16 bytes
-    register s16 *t0 = (s16 *) dest + 16; // all fraction parts stored in last 16 bytes
-    register f32 *t1 = (f32 *) src;
+    register s16* a3 = (s16*) dest;      // all integer parts stored in first 16 bytes
+    register s16* t0 = (s16*) dest + 16; // all fraction parts stored in last 16 bytes
+    register f32* t1 = (f32*) src;
 
     for (i = 0; i < 16; i++) {
-        asFixedPoint = *t1++ * (1 << 16); //! float-to-integer conversion responsible for PU crashes
+        asFixedPoint = *t1++ * (1 << 16);         //! float-to-integer conversion responsible for PU crashes
         *a3++ = GET_HIGH_S16_OF_32(asFixedPoint); // integer part
         *t0++ = GET_LOW_S16_OF_32(asFixedPoint);  // fraction part
     }
@@ -64,14 +64,14 @@ void mtxf_translate_rotate2(Mat4 dest, Vec3f pos, Vec3s angle) {
     dest[3][3] = 1.0f;
 }
 
-void render_limb_or_add_mtx(Armature *arg0, s16 *arg1, AnimationLimbVector arg2, s32 timeCycle) {
+void render_limb_or_add_mtx(Armature* arg0, s16* arg1, AnimationLimbVector arg2, s32 timeCycle) {
     Vec3f pos;
     Vec3s angle;
     Mat4 modelMatrix;
     s32 i;
     s32 some_offset;
-    Gfx *model;
-    Gfx *virtualModel;
+    Gfx* model;
+    Gfx* virtualModel;
     virtualModel = arg0->model;
     if (isNotTheFirst == 0) {
         for (i = 0; i < 3; i++) {
@@ -91,22 +91,23 @@ void render_limb_or_add_mtx(Armature *arg0, s16 *arg1, AnimationLimbVector arg2,
         }
         angle[i] = arg1[arg2[i].indexCycle + some_offset];
     }
-    
+
     mtxf_translate_rotate2(modelMatrix, pos, angle);
     convert_to_fixed_point_matrix_animation(&gGfxPool->mtxHud[gMatrixHudCount], modelMatrix);
     sMatrixStackSize += 1;
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (virtualModel != NULL) {
         model = segmented_to_virtual(virtualModel);
         gSPDisplayList(gDisplayListHead++, model);
     }
 }
 
-void render_armature(Armature *animation, Animation *arg1, s16 timeCycle) {
-    UNUSED u32 *temp;
-    s16 *angle_array;
+void render_armature(Armature* animation, Animation* arg1, s16 timeCycle) {
+    UNUSED u32* temp;
+    s16* angle_array;
     s32 some_offset;
-    AnimationLimbVector *animation_cycle_list;
+    AnimationLimbVector* animation_cycle_list;
     s32 animation_type;
     s32 someIndex;
 
@@ -126,37 +127,38 @@ void render_armature(Armature *animation, Animation *arg1, s16 timeCycle) {
     sMatrixShouldNotPop = 0;
     do {
         animation_type = animation->type;
-        switch (animation_type) {                          /* irregular */
-        case STOP_ANIMATION:
-            break;
-        case DISABLE_AUTOMATIC_POP_MATRIX:
-            sMatrixShouldNotPop = 1;
-            break;
-        case POP_MATRIX:
-            gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-            sMatrixStackSize -= 1;
-            break;
-        case RENDER_MODEL_OR_ADD_POS:
-            if (sMatrixShouldNotPop == 0) {
+        switch (animation_type) { /* irregular */
+            case STOP_ANIMATION:
+                break;
+            case DISABLE_AUTOMATIC_POP_MATRIX:
+                sMatrixShouldNotPop = 1;
+                break;
+            case POP_MATRIX:
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 sMatrixStackSize -= 1;
-            }
-            render_limb_or_add_mtx(animation, angle_array, *animation_cycle_list, (s32) timeCycle);
-            sMatrixShouldNotPop = 0;
-            animation_cycle_list++;
-            break;
+                break;
+            case RENDER_MODEL_OR_ADD_POS:
+                if (sMatrixShouldNotPop == 0) {
+                    gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+                    sMatrixStackSize -= 1;
+                }
+                render_limb_or_add_mtx(animation, angle_array, *animation_cycle_list, (s32) timeCycle);
+                sMatrixShouldNotPop = 0;
+                animation_cycle_list++;
+                break;
         }
-        animation = (Armature *) ((uintptr_t *) animation + animation->size);
+        animation = (Armature*) ((uintptr_t*) animation + animation->size);
     } while (animation_type != STOP_ANIMATION);
 }
 
-s16 render_animated_model(Armature *virtualArmature, Animation **virtualListAnimation, s16 animationIndex, s16 timeCycle) {
-    Armature *armature;
-    Animation *animation;
-    Animation **listAnimation;
+s16 render_animated_model(Armature* virtualArmature, Animation** virtualListAnimation, s16 animationIndex,
+                          s16 timeCycle) {
+    Armature* armature;
+    Animation* animation;
+    Animation** listAnimation;
 
     armature = segmented_to_virtual(virtualArmature);
-    listAnimation = segmented_to_virtual(virtualListAnimation); // Convert the array's address
+    listAnimation = segmented_to_virtual(virtualListAnimation);      // Convert the array's address
     animation = segmented_to_virtual(listAnimation[animationIndex]); // Convert an array element's address
     if (timeCycle >= animation->animation_length) {
         timeCycle = 0;
@@ -169,9 +171,9 @@ s16 render_animated_model(Armature *virtualArmature, Animation **virtualListAnim
     return timeCycle;
 }
 
-s16 get_animation_length(Animation **addr, s16 offset) {
-    Animation **item = segmented_to_virtual(addr);
-    Animation *temp = (Animation *) segmented_to_virtual((void *) item[offset]);
-    
+s16 get_animation_length(Animation** addr, s16 offset) {
+    Animation** item = segmented_to_virtual(addr);
+    Animation* temp = (Animation*) segmented_to_virtual((void*) item[offset]);
+
     return temp->animation_length - 1;
 }

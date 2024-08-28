@@ -48,7 +48,6 @@ typedef struct {
 // Seagulls in KoopaTroopaBeach x 1
 // length of 24
 
-
 // Ghosts in BansheeBoardwalk x 1
 // Seagulls in KoopaTroopaBeach x 1
 // Penguins in Sherbet Land x 1

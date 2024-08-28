@@ -10,13 +10,13 @@
 #define BUFFER_SIZE 10240
 
 NetworkClient dummyClient; // For use before server sends the real client
-NetworkClient *localClient = NULL;
+NetworkClient* localClient = NULL;
 NetworkClient clients[NETWORK_MAX_PLAYERS];
 
 Network gNetwork = {
     .enabled = false,
     .tcpSocket = NULL,
-    .address = {0, 64010},
+    .address = { 0, 64010 },
     .localPlayer = &gPlayerOne,
     .isConnected = false,
     .loaded = false, // local player loaded?
@@ -26,14 +26,13 @@ Network gNetwork = {
 
 // Global variables
 
-
-SDL_Thread *sNetworkThread;
+SDL_Thread* sNetworkThread;
 bool threadStarted = false;
 
 int isNetworkingThreadEnabled = true;
 void (*remoteConnectedHandler)(void);
 
-void ConnectToServer(char* ip, uint16_t port, char *username) {
+void ConnectToServer(char* ip, uint16_t port, char* username) {
     if (!threadStarted) {
         threadStarted = true;
         networking_init(ip, port);
@@ -49,13 +48,13 @@ void ConnectToServer(char* ip, uint16_t port, char *username) {
     }
 }
 
-void set_username(const char *username) {
-    //srand(time(NULL) + rand()); // Use a different seed for each call
-    //int random_number = rand() % 10000; // Generate a random number between 0 and 9999
-    //snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
+void set_username(const char* username) {
+    // srand(time(NULL) + rand()); // Use a different seed for each call
+    // int random_number = rand() % 10000; // Generate a random number between 0 and 9999
+    // snprintf(localClient->username, sizeof(localClient->username), "%s%d", username, random_number);
 
     strncpy(localClient->username, username, sizeof(localClient->username) - 1);
-    localClient->username[sizeof(localClient->username) - 1] = '\0';  // Ensure null-termination
+    localClient->username[sizeof(localClient->username) - 1] = '\0'; // Ensure null-termination
 }
 
 void networking_init(char* ip, uint16_t port) {
@@ -86,7 +85,7 @@ void networking_init(char* ip, uint16_t port) {
         exit(EXIT_FAILURE);
     }
 
-    //sNetworkThread = std::thread(&GameInteractor::ReceiveFromServer, this);
+    // sNetworkThread = std::thread(&GameInteractor::ReceiveFromServer, this);
 }
 
 int networking_loop(void* data) {
@@ -112,7 +111,8 @@ int networking_loop(void* data) {
         }
 
         // Listen to socket messages
-        while (gNetwork.isConnected && gNetwork.tcpSocket && isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
+        while (gNetwork.isConnected && gNetwork.tcpSocket &&
+               isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
             // we check first if socket has data, to not block in the TCP_Recv
             int socketsReady = SDLNet_CheckSockets(socketSet, 0);
 
@@ -133,7 +133,7 @@ int networking_loop(void* data) {
                 break;
             }
 
-            handleReceivedData(remoteDataReceived, len); //HandleRemoteData(remoteDataReceived);
+            handleReceivedData(remoteDataReceived, len); // HandleRemoteData(remoteDataReceived);
 
             // receivedData.append(remoteDataReceived, len);
 
@@ -151,14 +151,13 @@ int networking_loop(void* data) {
         }
 
         if (gNetwork.isConnected) {
-            //SDLNet_TCP_Close(gNetwork.tcpSocket);
+            // SDLNet_TCP_Close(gNetwork.tcpSocket);
             gNetwork.isConnected = false;
-            //if (networking_cleanup) {
+            // if (networking_cleanup) {
             networking_cleanup(socketSet);
             //}
             printf("[SpaghettiOnline] Ending receiving thread...\n");
         }
-
     }
     return 0;
 }
@@ -167,14 +166,14 @@ void networking_ready_up(bool value) {
     send_int_packet(gNetwork.tcpSocket, PACKET_READY_UP, value, sizeof(int));
 }
 
-void handleReceivedData(const char *buffer, size_t bufSize) {
+void handleReceivedData(const char* buffer, size_t bufSize) {
     if (bufSize < 4) {
         printf("Malformed packet received: too short\n");
         return;
     }
 
-    uint8_t type = (uint8_t)buffer[0];
-    uint16_t length = (uint16_t)buffer[1] | ((uint16_t)buffer[2] << 8);
+    uint8_t type = (uint8_t) buffer[0];
+    uint16_t length = (uint16_t) buffer[1] | ((uint16_t) buffer[2] << 8);
 
     // Validate buffer size
     if (bufSize < 3 + length) {
@@ -183,7 +182,7 @@ void handleReceivedData(const char *buffer, size_t bufSize) {
     }
 
     // Point to the data
-    const char *data = buffer + 3;
+    const char* data = buffer + 3;
 
     switch (type) {
         case PACKET_JOIN:

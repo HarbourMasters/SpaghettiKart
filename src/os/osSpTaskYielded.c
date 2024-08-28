@@ -1,6 +1,6 @@
 #include "libultra_internal.h"
 
-OSYieldResult osSpTaskYielded(OSTask *task) {
+OSYieldResult osSpTaskYielded(OSTask* task) {
     s32 status;
     u32 int_disabledult;
     status = __osSpGetStatus();

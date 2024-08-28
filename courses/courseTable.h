@@ -7,19 +7,19 @@
 
 // dlRomStart, vertexRomStart, & vertexStart, are u8* because mio0 compressed.
 struct CourseTable {
-    u8 *dlRomStart;     // 0x00 ROM start for segment 6 DL data
-    u8 *dlRomEnd;       // 0x04 ROM end for segment 6 DL data
-    u8 *vertexRomStart; // 0x08 ROM start for segment 4 vertex data
-    u8 *vertexRomEnd;   // 0x0C ROM end for segment 7?
-    u8 *offsetRomStart; // 0x10 ROM start for uncompressed segment 9 texture and DL addresses
-    u8 *offsetRomEnd;   // 0x14 ROM end for uncompressed segment 9 texture and DL addresses
-    CourseVtx *vertexStart;    // 0x18 segmented address of vertex data
-    u32 vertexCount;    // 0x1C number of vertices in vertex data
-    u8 *packedStart;    // 0x20 packed display list start address
-    u8 *finalDisplaylistOffset;        // 0x24
-    u32 *textures;       // 0x20 segmented address of textures table
-    u16 unknown1;       // 0x2C
-    u16 padding;        // 0x2E
+    u8* dlRomStart;             // 0x00 ROM start for segment 6 DL data
+    u8* dlRomEnd;               // 0x04 ROM end for segment 6 DL data
+    u8* vertexRomStart;         // 0x08 ROM start for segment 4 vertex data
+    u8* vertexRomEnd;           // 0x0C ROM end for segment 7?
+    u8* offsetRomStart;         // 0x10 ROM start for uncompressed segment 9 texture and DL addresses
+    u8* offsetRomEnd;           // 0x14 ROM end for uncompressed segment 9 texture and DL addresses
+    CourseVtx* vertexStart;     // 0x18 segmented address of vertex data
+    u32 vertexCount;            // 0x1C number of vertices in vertex data
+    u8* packedStart;            // 0x20 packed display list start address
+    u8* finalDisplaylistOffset; // 0x24
+    u32* textures;              // 0x20 segmented address of textures table
+    u16 unknown1;               // 0x2C
+    u16 padding;                // 0x2E
 };
 
 extern struct CourseTable gCourseTable[];

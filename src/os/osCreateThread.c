@@ -2,12 +2,11 @@
 
 void __osCleanupThread(void);
 
-
 // Don't warn about pointer->u64 cast
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
 
-void osCreateThread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, void *sp, OSPri pri) {
+void osCreateThread(OSThread* thread, OSId id, void (*entry)(void*), void* arg, void* sp, OSPri pri) {
     register u32 int_disabled;
     u32 tmp;
     thread->id = id;

@@ -25,7 +25,7 @@ void func_802A40C4(void);
 void func_802A40CC(void);
 void func_802A40D4(void);
 void func_802A40DC(void);
-s32  set_viewport2(void);
+s32 set_viewport2(void);
 void set_viewport(void);
 void select_framebuffer(void);
 void func_802A4300(void);

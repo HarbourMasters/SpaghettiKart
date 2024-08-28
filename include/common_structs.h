@@ -16,20 +16,13 @@ typedef f32 Mat3[3][3];
 typedef f32 Mat4[4][4];
 
 // might not be real, used by func_8002C954
-typedef struct
-{
-	f32 x, y, z;
+typedef struct {
+    f32 x, y, z;
 } Vec3fs;
 
 // This was added as a silly idea:
 // In the data to use "A, B, Z, R" instead of hex numbers.
-typedef enum {
-    A = 0x80,
-    B = 0x40,
-    Z = 0x20,
-    R = 0x10
-} GhostController;
-
+typedef enum { A = 0x80, B = 0x40, Z = 0x20, R = 0x10 } GhostController;
 
 /***  types.h  ***/
 
@@ -47,17 +40,15 @@ enum SpTaskState {
     SPTASK_STATE_FINISHED_DP
 };
 
-struct SPTask
-{
+struct SPTask {
     /*0x00*/ OSTask task;
-    /*0x40*/ OSMesgQueue *msgqueue;
+    /*0x40*/ OSMesgQueue* msgqueue;
     /*0x44*/ OSMesg msg;
     /*0x48*/ enum SpTaskState state;
 }; // size = 0x4C, align = 0x8
 
-struct VblankHandler
-{
-    OSMesgQueue *queue;
+struct VblankHandler {
+    OSMesgQueue* queue;
     OSMesg msg;
 };
 
@@ -75,8 +66,8 @@ struct Controller {
     u16 buttonPressed;   // OnTriggered
     u16 buttonDepressed; // OffTriggered
     u16 stickDirection;
-    u16 stickPressed;    // OffTriggered
-    u16 stickDepressed;  // OnTriggered
+    u16 stickPressed;   // OffTriggered
+    u16 stickDepressed; // OnTriggered
 };
 
 // Camera path struct? Or something like that. For GP race won scene?
@@ -119,13 +110,16 @@ struct UnkStruct_802B53C8 {
 // end math util structs
 
 struct UnkStruct_800DDB68 {
-    s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;
-    s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
+    s32* D_800ED600;
+    s32* D_800ED608;
+    s32* D_800ED610;
+    s32* D_800ED618;
+    s32* D_800ED620;
+    s32* D_800ED628;
+    s32* D_800ED630;
+    s32* D_800ED638;
 };
 /*** Types.h end ***/
-
-
-
 
 typedef struct {
     u8 button;
@@ -182,9 +176,9 @@ typedef struct {
 // This struct is almost identical to the GBI Vtx_t type,
 // except that its missing the "flag" member.
 typedef struct {
-    s16 ob[3];    /* x, y, z */
-    s16 tc[2];    /* texture coord */
-    s8  ca[4];    /* color & alpha */
+    s16 ob[3]; /* x, y, z */
+    s16 tc[2]; /* texture coord */
+    s8 ca[4];  /* color & alpha */
 } CourseVtx;
 
 /*
@@ -195,26 +189,25 @@ The original author is assumed to be RenaKunisaki
 */
 typedef struct {
     /* 0x00 */ u16 flags;
-        // Top bytes is a collections of flags, bottom byte is of unknown purpose
-        //bit 7: 1 = only tangible if landed on, not if driven onto?
-        //       very weird. game crashes sometimes when playing with this.
-        //bit 6: 1 = Lakitu can drop you here (XXX verify)
-        //bit 4: 1 = out of bounds
-        //bit 3: 1 = player tumbles upon contact (may fall right through)
+    // Top bytes is a collections of flags, bottom byte is of unknown purpose
+    // bit 7: 1 = only tangible if landed on, not if driven onto?
+    //       very weird. game crashes sometimes when playing with this.
+    // bit 6: 1 = Lakitu can drop you here (XXX verify)
+    // bit 4: 1 = out of bounds
+    // bit 3: 1 = player tumbles upon contact (may fall right through)
     /* 0x02 */ u16 surfaceType;
 
-        // For AABB bounding-box style collision. Box style collision is cheaper than checking each vtx.
-    /* 0x04 */ s16 minX; // Minimum x coordinate
-               s16 minY; // Minimum y coordinate
-               s16 minZ; // Minimum z coordinate
-               s16 maxX; // Maximum x coordinate
-               s16 maxY; // Maximum y coordinate
-    /* 0x0A */ s16 maxZ; // Maximum z coordinate
-        // Three vertices to make a triangle
-    /* 0x10 */ Vtx *vtx1;
-               Vtx *vtx2;
-               Vtx *vtx3;
-        // Face normal. Should really be Vec3f normal
+    // For AABB bounding-box style collision. Box style collision is cheaper than checking each vtx.
+    /* 0x04 */ s16 minX;  // Minimum x coordinate
+    s16 minY;             // Minimum y coordinate
+    s16 minZ;             // Minimum z coordinate
+    s16 maxX;             // Maximum x coordinate
+    s16 maxY;             // Maximum y coordinate
+    /* 0x0A */ s16 maxZ;  // Maximum z coordinate
+    /* 0x10 */ Vtx* vtx1; // pointer to the 3 vertices of this poly
+    Vtx* vtx2;
+    Vtx* vtx3;
+    // Face normal. Should really be Vec3f normal
     /* 0x1C */ f32 normalX;
     /* 0x20 */ f32 normalY;
     /* 0x24 */ f32 normalZ;
@@ -223,20 +216,20 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ Vec3f pos;
-    /* 0x0C */ u8  surfaceType; // Surface type that the tyre is touching.
-    /* 0x0D */ u8  surfaceFlags;
+    /* 0x0C */ u8 surfaceType; // Surface type that the tyre is touching.
+    /* 0x0D */ u8 surfaceFlags;
     /* 0x0E */ u16 collisionMeshIndex; // Index into gCollisionMesh
-    // Height of tyre attached to ground. When flying it floats with the kart.
+                                       // Height of tyre attached to ground. When flying it floats with the kart.
     /* 0x10 */ f32 baseHeight;
     // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
     // 3 when getting crushed by a whomp, but curiously only the front left tyre will ever have this value
     /* 0x14 */ s32 unk_14;
 } KartTyre; // size = 0x18
 
-#define FRONT_LEFT  0
+#define FRONT_LEFT 0
 #define FRONT_RIGHT 1
-#define BACK_LEFT   2
-#define BACK_RIGHT  3
+#define BACK_LEFT 2
+#define BACK_RIGHT 3
 
 struct UnkPlayerInner {
     /* 0xDB4 */ s16 unk0;
@@ -260,13 +253,11 @@ typedef struct {
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 soundEffects; // Bitflag.
+    /* 0x000C */ s32 soundEffects;    // Bitflag.
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
-    /* 0x0020 */ f32 copy_rotation_x;
-    /* 0x0024 */ f32 copy_rotation_y;
-    /* 0x0028 */ f32 copy_rotation_z;
+    /* 0x0020 */ Vec3f oldPos;
     /* 0x002C */ Vec3s rotation;
     /* 0x0032 */ char unk_032[0x2];
     /* 0x0034 */ Vec3f velocity;
@@ -373,22 +364,32 @@ typedef struct {
     /* 0x0DAC */ f32 unk_DAC;
     /* 0x0DB0 */ f32 unk_DB0;
     /* 0x0DB4 */ struct UnkPlayerInner unk_DB4;
-                 u32 nControlFlags; // Is racer human, ai, or networked controlled?
-                 s32 nCharacter; // Networked character choice
-                 s32 nStartingRank;
-                 u32 nHasAuthority;
+    /* 0x0DB6 */       // s16 unk_DB6;
+    /* 0x0DB8 */       // f32 unk_DB8;
+    /* 0x0DBC */       // f32 unk_DBC;
+    /* 0x0DC0 */       // f32 unk_DC0;
+    /* 0x0DC4 */       // f32 unk_DC4;
+    /* 0x0DC8 */       // f32 unk_DC8;
+    /* 0x0DCC */       // s16 unk_DCC;
+    /* 0x0DCE */       // s16 unk_DCE;
+    /* 0x0DD0 */       // s16 unk_DD0;
+    /* 0x0DD2 */       // s16 unk_DD2;
+    /* 0x0DD4 */       // s16 unk_DD4;
+    u32 nControlFlags; // Is racer human, ai, or networked controlled?
+    s32 nCharacter;    // Networked character choice
+    s32 nStartingRank;
+    u32 nHasAuthority;
 } Player; // size = 0xDD8
 
-typedef struct
-{
+typedef struct {
     // Something related to time trial ghost data?
     /* 0x00 */ s32 unk_00;
-    /* 0x04 */ u8  ghostDataSaved;
-    /* 0x05 */ s8  courseIndex;
-    /* 0x06 */ u8  characterId;
-    /* 0x07 */ u8  unk_07[0x3C];
-    /* 0x43 */ u8  pad_43[0x7F-0x43];
-    /* 0x7F */ u8  checksum;
+    /* 0x04 */ u8 ghostDataSaved;
+    /* 0x05 */ s8 courseIndex;
+    /* 0x06 */ u8 characterId;
+    /* 0x07 */ u8 unk_07[0x3C];
+    /* 0x43 */ u8 pad_43[0x7F - 0x43];
+    /* 0x7F */ u8 checksum;
 } struct_8018EE10_entry; // size = 0x80
 
 typedef struct {
@@ -402,9 +403,9 @@ typedef struct {
 // Also might be used for the camera during the post race screens
 typedef struct {
     /* 0x00 */ f32 unknownScaling; // Looks to be some type of scaling, unknown use
-    /* 0x04 */ f32 rankScaling; // Scaling done on the rank text in the bottom left corner of the screen
-    // All time measurements are in centiseconds
-    /* 0x08 */ u32 someTimer; // The someTimers seem to always have the same value, the total time since race start
+    /* 0x04 */ f32 rankScaling;    // Scaling done on the rank text in the bottom left corner of the screen
+                                   // All time measurements are in centiseconds
+    /* 0x08 */ u32 someTimer;      // The someTimers seem to always have the same value, the total time since race start
     /* 0x0C */ u32 someTimer1;
     /* 0x10 */ u32 timeLastTouchedFinishLine; // Sum of time of all completed laps
     // Times at which each lap was completed
@@ -447,30 +448,33 @@ typedef struct {
     // These 4 X coordinates are "slide" values
     union {
         struct {
-        /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
-        /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
-        /* 0x54 */ s16 lap3CompletionTimeX;
+            /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
+            /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
+            /* 0x54 */ s16 lap3CompletionTimeX;
         };
         /* 0x50 */ s16 lapCompletionTimeXs[3];
     };
     /* 0x56 */ s16 totalTimeX;
-    /* 0x58 */ s16 timerY; // Y coordinate of the on screen timer (used as Y coordinate for lap completion times in post-race screen)
-    /* 0x5A */ s16 lapX; // X coordinate of the on screen lap counter
-    // 0x5C and 0x5E seem to be relative to lapX
+    /* 0x58 */ s16 timerY; // Y coordinate of the on screen timer (used as Y coordinate for lap completion times in
+                           // post-race screen)
+    /* 0x5A */ s16 lapX;   // X coordinate of the on screen lap counter
+                           // 0x5C and 0x5E seem to be relative to lapX
     /* 0x5C */ s16 lapAfterImage1X;
     /* 0x5E */ s16 lapAfterImage2X;
-    /* 0x60 */ s16 lapY; // Y coordinate of the on screen lap counter
+    /* 0x60 */ s16 lapY;  // Y coordinate of the on screen lap counter
     /* 0x62 */ s16 rankX; // X coordinate of the on screen rank indicator
     /* 0x64 */ s16 rankY; // Y coordinate of the on screen rank indicator
-    /* 0x66 */ s16 slideRankX; // Adds with the other rankX, used during post race screen to make the rank "slide" into place
-    /* 0x68 */ s16 slideRankY; // Adds with the other rankY, used during post race screen to make the rank "slide" into place
+    /* 0x66 */ s16
+        slideRankX; // Adds with the other rankX, used during post race screen to make the rank "slide" into place
+    /* 0x68 */ s16
+        slideRankY; // Adds with the other rankY, used during post race screen to make the rank "slide" into place
     /* 0x6A */ s16 stagingPosition; // Position to take during race staging
     // These s16's occasionally have values, but I have yet to identify any places that read them
     // They appear to have values when in 3/4 player split screen mode, otherwise they're 0
     /* 0x6C */ s16 unk_6C;
     /* 0x6E */ s16 unk_6E;
     /* 0x70 */ s8 raceCompleteBool; // Indicates if race is over?
-    /* 0x71 */ s8 lapCount; // This increases to 3 when a race is over, while alsoLapCount stays at 2
+    /* 0x71 */ s8 lapCount;         // This increases to 3 when a race is over, while alsoLapCount stays at 2
     /* 0x72 */ s8 alsoLapCount;
     // Related to the timer blinking on lap completion
     // If blinkTimer is counting down:
@@ -483,7 +487,8 @@ typedef struct {
     /* 0x76 */ u8 itemOverride; // Something related to item generation. If non-zero, it determines the item you get
     /* 0x77 */ s8 unk_77;
     // 0x78 to 0x7F appear to be some type of "state" trackers for the lap and timer text during a race start
-    // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the bouncing (somehow)
+    // When a race starts those texts (and their afterimages) slide in and "bounce" a bit. These states control the
+    // bouncing (somehow)
     /* 0x78 */ u8 unk_78;
     /* 0x79 */ u8 unk_79;
     /* 0x7A */ u8 unk_7A;

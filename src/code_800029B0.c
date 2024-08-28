@@ -55,15 +55,15 @@ u16 D_800DC5E4 = 0;
 s32 gPlayerWinningIndex = 0;
 
 ALIGNED16 struct UnkStruct_800DC5EC D_8015F480[4];
-struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
-struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
-struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
-struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
+struct UnkStruct_800DC5EC* D_800DC5EC = &D_8015F480[0];
+struct UnkStruct_800DC5EC* D_800DC5F0 = &D_8015F480[1];
+struct UnkStruct_800DC5EC* D_800DC5F4 = &D_8015F480[2];
+struct UnkStruct_800DC5EC* D_800DC5F8 = &D_8015F480[3];
 u16 gIsGamePaused = 0; // 1 if the game is paused and 0 if the game is not paused
-u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
+u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;
-f32 vtxStretchY =  1.0f;
+f32 vtxStretchY = 1.0f;
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
@@ -73,8 +73,8 @@ s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
 s16 gPlaceItemBoxes = 1;
 
 // Technically a pointer to an array, but declaring it so creates regalloc issues.
-CollisionTriangle *gCollisionMesh;
-u16 *gCollisionIndices;
+CollisionTriangle* gCollisionMesh;
+u16* gCollisionIndices;
 u16 gCollisionMeshCount; // Number of entries in gCollisionMesh
 u16 gNumCollisionTriangles;
 u32 D_8015F58C;
@@ -84,7 +84,7 @@ s32 D_8015F59C;
 s32 D_8015F5A0;
 s32 D_8015F5A4;
 s32 code_800029B0_bss_pad[48];
-Vtx *vtxBuffer[32];
+Vtx* vtxBuffer[32];
 
 s16 gCourseMaxX;
 s16 gCourseMinX;
@@ -131,12 +131,12 @@ u16 D_8015F894;
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 f32 gTimePlayerLastTouchedFinishLine[NUM_PLAYERS];
 
-u8 *gNmiUnknown1;
-u8 *gNmiUnknown2;
-u8 *gNmiUnknown3;
-u8 *gNmiUnknown4;
-u8 *gNmiUnknown5;
-u8 *gNmiUnknown6;
+u8* gNmiUnknown1;
+u8* gNmiUnknown2;
+u8* gNmiUnknown3;
+u8* gNmiUnknown4;
+u8* gNmiUnknown5;
+u8* gNmiUnknown6;
 
 Vec3f D_8015F8D0;
 s32 D_8015F8DC;
@@ -161,7 +161,7 @@ uintptr_t D_801625F8;
 f32 D_801625FC;
 
 void func_800029B0(void) {
-    switch(D_800DC5A8) {
+    switch (D_800DC5A8) {
         case 0:
             func_800C8F44(127);
             break;
@@ -175,7 +175,7 @@ void func_800029B0(void) {
 }
 
 void setup_race(void) {
-    struct Controller *controller;
+    struct Controller* controller;
     int i;
 
     gPlayerCountSelection1 = gPlayerCount;
@@ -217,16 +217,13 @@ void setup_race(void) {
     init_actors_and_load_textures();
 
     if (gModeSelection != BATTLE) {
-        D_8015F8D0[1] = (f32) (D_80164490->posY - 15);;
+        D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
+        ;
         D_8015F8D0[2] = D_80164490->posZ;
         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ?
-                              D_80164490->posX + 138.0f :
-                              D_80164490->posX - 138.0f;
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
         } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ?
-                              D_80164490->posX + 12.0f :
-                              D_80164490->posX - 12.0f;
+            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
         } else {
             D_8015F8D0[0] = D_80164490->posX;
         }
@@ -238,7 +235,7 @@ void setup_race(void) {
 
     controller = gControllerOne;
 
-    for (i = 0; i < 7; i++, controller++){
+    for (i = 0; i < 7; i++, controller++) {
         controller->rawStickX = 0;
         controller->rawStickY = 0;
         controller->buttonPressed = 0;
@@ -296,8 +293,8 @@ void clear_nmi_buffer(void) {
 
 void func_80003040(void) {
     Vec3f position;
-    Vec3f velocity = {0, 0, 0};
-    Vec3s rotation = {0, 0, 0};
+    Vec3f velocity = { 0, 0, 0 };
+    Vec3s rotation = { 0, 0, 0 };
 
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
@@ -306,11 +303,12 @@ void func_80003040(void) {
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr(0x3, (void *) (gNextFreeMemoryAddress + 0xFFFF7000));
+    set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY: {
-            struct ActorSpawnData *a_d_course_mario_raceway_tree_spawns = (struct ActorSpawnData *) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
+            struct ActorSpawnData* a_d_course_mario_raceway_tree_spawns =
+                (struct ActorSpawnData*) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
             dma_textures(gTextureTrees1, 0x35B, 0x800);
             spawn_foliage(a_d_course_mario_raceway_tree_spawns);
             break;
@@ -329,18 +327,18 @@ void func_80003040(void) {
             add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
-            dma_textures(gTextureTrees4Left,  0x3E8, 0x800);
+            dma_textures(gTextureTrees4Left, 0x3E8, 0x800);
             dma_textures(gTextureTrees4Right, 0x3E8, 0x800);
-            dma_textures(gTextureCow01Left,   0x400, 0x800);
-            dma_textures(gTextureCow01Right,  0x400, 0x800);
-            dma_textures(gTextureCow02Left,   0x400, 0x800);
-            dma_textures(gTextureCow02Right,  0x400, 0x800);
-            dma_textures(gTextureCow03Left,   0x400, 0x800);
-            dma_textures(gTextureCow03Right,  0x400, 0x800);
-            dma_textures(gTextureCow04Left,   0x400, 0x800);
-            dma_textures(gTextureCow04Right,  0x400, 0x800);
-            dma_textures(gTextureCow05Left,   0x400, 0x800);
-            dma_textures(gTextureCow05Right,  0x400, 0x800);
+            dma_textures(gTextureCow01Left, 0x400, 0x800);
+            dma_textures(gTextureCow01Right, 0x400, 0x800);
+            dma_textures(gTextureCow02Left, 0x400, 0x800);
+            dma_textures(gTextureCow02Right, 0x400, 0x800);
+            dma_textures(gTextureCow03Left, 0x400, 0x800);
+            dma_textures(gTextureCow03Right, 0x400, 0x800);
+            dma_textures(gTextureCow04Left, 0x400, 0x800);
+            dma_textures(gTextureCow04Right, 0x400, 0x800);
+            dma_textures(gTextureCow05Left, 0x400, 0x800);
+            dma_textures(gTextureCow05Right, 0x400, 0x800);
             spawn_foliage(d_course_moo_moo_farm_tree_spawn);
             break;
         case COURSE_SHERBET_LAND:

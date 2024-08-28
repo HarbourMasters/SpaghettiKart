@@ -22,7 +22,7 @@ void profiler_log_thread5_time(enum ProfilerGameEvent eventID) {
 }
 
 void profiler_log_thread4_time(void) {
-    struct ProfilerFrameData *profiler = &gProfilerFrameData[D_800DC668];
+    struct ProfilerFrameData* profiler = &gProfilerFrameData[D_800DC668];
 
     if (profiler->numSoundTimes < ARRAY_COUNT(profiler->soundTimes)) {
         profiler->soundTimes[profiler->numSoundTimes++] = osGetTime();
@@ -38,7 +38,7 @@ void profiler_log_gfx_time(enum ProfilerGfxEvent eventID) {
 }
 
 void profiler_log_vblank_time(void) {
-    struct ProfilerFrameData *profiler = &gProfilerFrameData[D_800DC66C];
+    struct ProfilerFrameData* profiler = &gProfilerFrameData[D_800DC66C];
 
     if (profiler->numVblankTimes < ARRAY_COUNT(profiler->vblankTimes)) {
         profiler->vblankTimes[profiler->numVblankTimes++] = osGetTime();
@@ -88,26 +88,22 @@ void draw_reference_profiler_bars(void) {
 
     // Blue
     gDPPipeSync(gDisplayListHead++);
-    gDPSetFillColor(gDisplayListHead++,
-                    GPACK_RGBA5551(40, 80, 255, 1) << 16 | GPACK_RGBA5551(40, 80, 255, 1));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(40, 80, 255, 1) << 16 | GPACK_RGBA5551(40, 80, 255, 1));
     gDPFillRectangle(gDisplayListHead++, 30, 220, 79, 222);
 
     // Yellow
     gDPPipeSync(gDisplayListHead++);
-    gDPSetFillColor(gDisplayListHead++,
-                    GPACK_RGBA5551(255, 255, 40, 1) << 16 | GPACK_RGBA5551(255, 255, 40, 1));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(255, 255, 40, 1) << 16 | GPACK_RGBA5551(255, 255, 40, 1));
     gDPFillRectangle(gDisplayListHead++, 79, 220, 128, 222);
 
     // Orange
     gDPPipeSync(gDisplayListHead++);
-    gDPSetFillColor(gDisplayListHead++,
-                    GPACK_RGBA5551(255, 120, 40, 1) << 16 | GPACK_RGBA5551(255, 120, 40, 1));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(255, 120, 40, 1) << 16 | GPACK_RGBA5551(255, 120, 40, 1));
     gDPFillRectangle(gDisplayListHead++, 128, 220, 177, 222);
 
     // Red
     gDPPipeSync(gDisplayListHead++);
-    gDPSetFillColor(gDisplayListHead++,
-                    GPACK_RGBA5551(255, 40, 40, 1) << 16 | GPACK_RGBA5551(255, 40, 40, 1));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(255, 40, 40, 1) << 16 | GPACK_RGBA5551(255, 40, 40, 1));
     gDPFillRectangle(gDisplayListHead++, 177, 220, 226, 222);
 }
 
@@ -115,7 +111,6 @@ void draw_reference_profiler_bars(void) {
  * Likely identical to sm64 but in mk64 they likely commented it out.
  */
 void draw_profiler_mode_1(void) {
-
 }
 
 /*
@@ -135,7 +130,7 @@ void draw_profiler_mode_1(void) {
 */
 void draw_profiler_mode_0(void) {
     s32 i;
-    struct ProfilerFrameData *profiler;
+    struct ProfilerFrameData* profiler;
 
     u64 clockStart;
     // Does this naming apply to MK64?
@@ -152,8 +147,7 @@ void draw_profiler_mode_0(void) {
     profiler = &gProfilerFrameData[D_800DC668 ^ 1];
 
     // was thread 5 ran before thread 4? set the lower one to be the clockStart.
-    clockStart = profiler->gameTimes[0] <= profiler->soundTimes[0] ? profiler->gameTimes[0]
-                                                                    : profiler->soundTimes[0];
+    clockStart = profiler->gameTimes[0] <= profiler->soundTimes[0] ? profiler->gameTimes[0] : profiler->soundTimes[0];
 
     // set variables for duration of tasks.
     levelScriptDuration = profiler->gameTimes[1] - clockStart;
@@ -200,13 +194,11 @@ void draw_profiler_mode_0(void) {
 
     // draw level script execution duration. (yellow)
     clockStart += taskStart;
-    draw_profiler_bar(0, clockStart, clockStart + levelScriptDuration, 212,
-                      GPACK_RGBA5551(255, 255, 40, 1));
+    draw_profiler_bar(0, clockStart, clockStart + levelScriptDuration, 212, GPACK_RGBA5551(255, 255, 40, 1));
 
     // draw render duration. (orange)
     clockStart += levelScriptDuration;
-    draw_profiler_bar(0, clockStart, clockStart + renderDuration, 212,
-                      GPACK_RGBA5551(255, 120, 40, 1));
+    draw_profiler_bar(0, clockStart, clockStart + renderDuration, 212, GPACK_RGBA5551(255, 120, 40, 1));
 
     // Two added lines in Mario Kart 64
     D_800DC568 = (s32) (clockStart + renderDuration);

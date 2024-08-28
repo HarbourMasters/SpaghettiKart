@@ -6,20 +6,21 @@
 /**
  * @brief Renders the Yoshi egg actor.
  * Actor used in Yoshi Valley.
- * 
- * @param arg0 
- * @param arg1 
- * @param egg 
- * @param arg3 
+ *
+ * @param arg0
+ * @param arg1
+ * @param egg
+ * @param arg3
  */
-void render_actor_yoshi_egg(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3) {
+void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg, u16 arg3) {
     Mat4 sp60;
     Vec3s sp5C;
     Vec3f sp54;
     f32 temp_f0;
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        temp_f0 = is_within_render_distance(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1], 16000000.0f);
+        temp_f0 = is_within_render_distance(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1],
+                                            16000000.0f);
         if (temp_f0 < 0.0f) {
             return;
         }
@@ -41,7 +42,9 @@ void render_actor_yoshi_egg(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg,
         sp5C[1] = egg->eggRot;
         sp5C[2] = 0;
         mtxf_pos_rotation_xyz(sp60, egg->pos, sp5C);
-        if (render_set_position(sp60, 0) == 0) { return; }
+        if (render_set_position(sp60, 0) == 0) {
+            return;
+        }
 
         gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_16D70);

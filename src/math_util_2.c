@@ -13,21 +13,21 @@
 #include "defines.h"
 #include "camera.h"
 
-#pragma intrinsic (sqrtf)
+#pragma intrinsic(sqrtf)
 
-UNUSED void operator_or(s32 *arg0, s32 arg1) {
+UNUSED void operator_or(s32* arg0, s32 arg1) {
     *arg0 = (s32) (*arg0 | arg1);
 }
 
-UNUSED void operator_and_not(s32 *arg0,s32 arg1) {
+UNUSED void operator_and_not(s32* arg0, s32 arg1) {
     *arg0 = (s32) (*arg0 & ~arg1);
 }
 
-UNUSED void operator_xor(s32 *arg0, s32 arg1) {
+UNUSED void operator_xor(s32* arg0, s32 arg1) {
     *arg0 = (s32) (*arg0 ^ arg1);
 }
 
-UNUSED bool func_80040E84(s32 *arg0, s32 arg1) {
+UNUSED bool func_80040E84(s32* arg0, s32 arg1) {
     bool phi_v1;
 
     phi_v1 = false;
@@ -37,7 +37,7 @@ UNUSED bool func_80040E84(s32 *arg0, s32 arg1) {
     return phi_v1;
 }
 
-UNUSED s32 func_80040EA4(s32 *arg0, s32 arg1) {
+UNUSED s32 func_80040EA4(s32* arg0, s32 arg1) {
     s32 phi_v1;
 
     phi_v1 = 0;
@@ -53,7 +53,7 @@ void vec3f_copy(Vec3f dest, Vec3f arg1) {
     dest[2] = arg1[2];
 }
 
-s32 f32_step_up_towards(f32 *value, f32 target, f32 step) {
+s32 f32_step_up_towards(f32* value, f32 target, f32 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -66,7 +66,7 @@ s32 f32_step_up_towards(f32 *value, f32 target, f32 step) {
     return targetReached;
 }
 
-s32 f32_step_down_towards(f32 *value, f32 target, f32 step) {
+s32 f32_step_down_towards(f32* value, f32 target, f32 step) {
     s32 targetReached = 0;
 
     if (target < *value) {
@@ -79,13 +79,13 @@ s32 f32_step_down_towards(f32 *value, f32 target, f32 step) {
     return targetReached;
 }
 
-s32 s32_step_up_towards(s32 *value, s32 target, s32 step) {
+s32 s32_step_up_towards(s32* value, s32 target, s32 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
         *value = *value + step;
         targetReached = 0;
-        if (*value  >= target) {
+        if (*value >= target) {
             *value = target;
             targetReached = 1;
         }
@@ -93,11 +93,12 @@ s32 s32_step_up_towards(s32 *value, s32 target, s32 step) {
     return targetReached;
 }
 
-s32 s32_step_down_towards(s32 *value, s32 target, s32 step) {
+s32 s32_step_down_towards(s32* value, s32 target, s32 step) {
     s32 targetReached = 0;
 
     if (target < *value) {
-        *value = *value - step;;
+        *value = *value - step;
+        ;
         if (target >= *value) {
             *value = target;
             targetReached = 1;
@@ -106,7 +107,7 @@ s32 s32_step_down_towards(s32 *value, s32 target, s32 step) {
     return targetReached;
 }
 
-s32 s16_step_up_towards(s16 *value, s16 target, s16 step) {
+s32 s16_step_up_towards(s16* value, s16 target, s16 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -119,7 +120,7 @@ s32 s16_step_up_towards(s16 *value, s16 target, s16 step) {
     return targetReached;
 }
 
-s32 u16_step_up_towards(u16 *value, u16 target, u16 step) {
+s32 u16_step_up_towards(u16* value, u16 target, u16 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -132,7 +133,7 @@ s32 u16_step_up_towards(u16 *value, u16 target, u16 step) {
     return targetReached;
 }
 
-s32 s16_step_down_towards(s16 *value, s16 target, s16 step) {
+s32 s16_step_down_towards(s16* value, s16 target, s16 step) {
     s32 targetReached = 0;
 
     if (target < *value) {
@@ -146,7 +147,7 @@ s32 s16_step_down_towards(s16 *value, s16 target, s16 step) {
 }
 
 // wtf is up with the argument types for this one?
-s32 u16_step_down_towards(u16 *value, s32 target, s32 step) {
+s32 u16_step_down_towards(u16* value, s32 target, s32 step) {
     s32 targetReached = 0;
     s32 temp = *value;
 
@@ -161,7 +162,7 @@ s32 u16_step_down_towards(u16 *value, s32 target, s32 step) {
     return targetReached;
 }
 
-UNUSED s32 f32_step_up_towards_alternate(f32 *value, f32 target, f32 *step) {
+UNUSED s32 f32_step_up_towards_alternate(f32* value, f32 target, f32* step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -174,7 +175,7 @@ UNUSED s32 f32_step_up_towards_alternate(f32 *value, f32 target, f32 *step) {
     return targetReached;
 }
 
-UNUSED s32 f32_step_down_towards_alternate(f32 *value, f32 target, f32 *step) {
+UNUSED s32 f32_step_down_towards_alternate(f32* value, f32 target, f32* step) {
     s32 targetReached = 0;
 
     if (target < *value) {
@@ -187,7 +188,7 @@ UNUSED s32 f32_step_down_towards_alternate(f32 *value, f32 target, f32 *step) {
     return targetReached;
 }
 
-UNUSED s32 s32_step_up_towards_alternate(s32 *value, s32 target, s32 *step) {
+UNUSED s32 s32_step_up_towards_alternate(s32* value, s32 target, s32* step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -200,7 +201,7 @@ UNUSED s32 s32_step_up_towards_alternate(s32 *value, s32 target, s32 *step) {
     return targetReached;
 }
 
-UNUSED s32 s32_step_down_towards_alternate(s32 *value, s32 target, s32 *step) {
+UNUSED s32 s32_step_down_towards_alternate(s32* value, s32 target, s32* step) {
     s32 targetReached = 0;
 
     if (target < *value) {
@@ -213,7 +214,7 @@ UNUSED s32 s32_step_down_towards_alternate(s32 *value, s32 target, s32 *step) {
     return targetReached;
 }
 
-UNUSED s32 s16_step_up_towards_alternate(s16 *value, s16 target, s16 *step) {
+UNUSED s32 s16_step_up_towards_alternate(s16* value, s16 target, s16* step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -226,7 +227,7 @@ UNUSED s32 s16_step_up_towards_alternate(s16 *value, s16 target, s16 *step) {
     return targetReached;
 }
 
-UNUSED s32 s16_step_down_towards_alternate(s16 *value, s16 target, s16 *step) {
+UNUSED s32 s16_step_down_towards_alternate(s16* value, s16 target, s16* step) {
     s32 targetReached = 0;
 
     if (target < *value) {
@@ -239,7 +240,7 @@ UNUSED s32 s16_step_down_towards_alternate(s16 *value, s16 target, s16 *step) {
     return targetReached;
 }
 
-s32 s16_step_towards(s16 *value, s16 target, s16 step) {
+s32 s16_step_towards(s16* value, s16 target, s16 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -266,7 +267,7 @@ s32 s16_step_towards(s16 *value, s16 target, s16 step) {
     return targetReached;
 }
 
-UNUSED s32 s32_step_towards(s32 *value, s32 target, s32 step) {
+UNUSED s32 s32_step_towards(s32* value, s32 target, s32 step) {
     s32 temp_v0;
     s32 targetReached;
 
@@ -297,7 +298,7 @@ UNUSED s32 s32_step_towards(s32 *value, s32 target, s32 step) {
     return targetReached;
 }
 
-s32 f32_step_towards(f32 *value, f32 target, f32 step) {
+s32 f32_step_towards(f32* value, f32 target, f32 step) {
     s32 targetReached = 0;
 
     if (*value < target) {
@@ -324,7 +325,7 @@ s32 f32_step_towards(f32 *value, f32 target, f32 step) {
     return targetReached;
 }
 
-void func_80041480(s16 *arg0, s16 arg1, s16 arg2, s16 *arg3) {
+void func_80041480(s16* arg0, s16 arg1, s16 arg2, s16* arg3) {
     *arg0 += *arg3;
     if (*arg3 >= 0) {
         if (*arg0 >= arg2) {
@@ -337,29 +338,29 @@ void func_80041480(s16 *arg0, s16 arg1, s16 arg2, s16 *arg3) {
     }
 }
 
-Vec3f *vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
+Vec3f* vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;
     arg0[2] = arg3;
-    return (Vec3f *) &arg0;
+    return (Vec3f*) &arg0;
 }
 
-Vec3f *vec3f_normalize(Vec3f dest) {
+Vec3f* vec3f_normalize(Vec3f dest) {
     f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
 
     dest[0] = dest[0] * invsqrt;
     dest[1] = dest[1] * invsqrt;
     dest[2] = dest[2] * invsqrt;
-    return (Vec3f *) &dest;
+    return (Vec3f*) &dest;
 }
 
-Vec3f *vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
+Vec3f* vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
 
     dest[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
     dest[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
     dest[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
 
-    return (Vec3f *) &dest;
+    return (Vec3f*) &dest;
 }
 
 UNUSED s32 is_within_distance_2d(f32 x1, f32 y1, f32 x2, f32 y2, f32 distance) {
@@ -420,7 +421,7 @@ u16 func_800417B4(u16 angle1, u16 angle2) {
             out_angle = angle1 + 0x700;
         } else if (out_angle < 0xC000) {
             out_angle = angle1 - 0x700;
-        }else if (out_angle < 0xF800) {
+        } else if (out_angle < 0xF800) {
             out_angle = angle1 - 0x400;
         } else if (out_angle < 0xFC00) {
             out_angle = angle1 - 0x200;
@@ -441,7 +442,7 @@ s32 func_800418E8(f32 arg0, f32 arg1, Vec3f arg2) {
     return atan2s(arg0 - arg2[1], arg1 - arg2[2]);
 }
 
-s32 func_80041924(Collision *arg0, Vec3f arg1) {
+s32 func_80041924(Collision* arg0, Vec3f arg1) {
     s32 ret = 0;
 
     check_bounding_collision(arg0, 10.0f, arg1[0], arg1[1], arg1[2]);
@@ -451,7 +452,7 @@ s32 func_80041924(Collision *arg0, Vec3f arg1) {
     return ret;
 }
 
-bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
+bool is_particle_on_screen(Vec3f arg0, Camera* arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
@@ -477,7 +478,6 @@ void func_800419F8(void) {
 }
 
 UNUSED void func_80041A70(void) {
-
 }
 
 void mtfx_translation_x_y(Mat4 arg0, s32 x, s32 y) {
@@ -579,25 +579,25 @@ UNUSED void mtxf_rotate_z_scale_x_y(Mat4 dest, u16 angle, f32 scale) {
  * @param scale
  */
 void mtxf_translation_x_y_rotate_z_scale_x_y(Mat4 dest, s32 x, s32 y, u16 angle, f32 scale) {
-  f32 sin_theta = sins(angle);
-  f32 cos_theta = coss(angle) * scale;
+    f32 sin_theta = sins(angle);
+    f32 cos_theta = coss(angle) * scale;
 
-  dest[2][0] = 0.0f;
-  dest[0][0] = cos_theta;
-  dest[1][0] = (-sin_theta) * scale;
-  dest[3][0] = (f32) x;
-  dest[1][1] = cos_theta;
-  dest[0][1] = sin_theta * scale;
-  dest[2][1] = 0.0f;
-  dest[3][1] = (f32) y;
-  dest[0][2] = 0.0f;
-  dest[1][2] = 0.0f;
-  dest[2][2] = 1.0f;
-  dest[3][3] = 1.0f;
-  dest[3][2] = 0.0f;
-  dest[0][3] = 0.0f;
-  dest[1][3] = 0.0f;
-  dest[2][3] = 0.0f;
+    dest[2][0] = 0.0f;
+    dest[0][0] = cos_theta;
+    dest[1][0] = (-sin_theta) * scale;
+    dest[3][0] = (f32) x;
+    dest[1][1] = cos_theta;
+    dest[0][1] = sin_theta * scale;
+    dest[2][1] = 0.0f;
+    dest[3][1] = (f32) y;
+    dest[0][2] = 0.0f;
+    dest[1][2] = 0.0f;
+    dest[2][2] = 1.0f;
+    dest[3][3] = 1.0f;
+    dest[3][2] = 0.0f;
+    dest[0][3] = 0.0f;
+    dest[1][3] = 0.0f;
+    dest[2][3] = 0.0f;
 }
 
 // Likely D_801658**[index] = 1; * denotes wildcard
@@ -605,38 +605,38 @@ void func_80041D24(void) {
     D_801658FE = 1;
 }
 
-void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
+void guOrtho(Mtx*, f32, f32, f32, f32, f32, f32, f32); /* extern */
 extern s8 D_801658FE;
 
 void func_80041D34(void) {
     guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
-    case SCREEN_MODE_1P:
-        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
-        break;
-    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
-        break;
-    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-        if (D_801658FE == 0) {
-            guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
-        }
-        else {
+        case SCREEN_MODE_1P:
             guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
-        }
-        break;
-    case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
-        break;
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            guOrtho(&gGfxPool->mtxOrtho, 0.0f, 160.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            if (D_801658FE == 0) {
+                guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 120.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            } else {
+                guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            }
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+            break;
     }
 }
 
 void set_matrix_hud_screen(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-//void convert_to_fixed_point_matrix(Mtx*, Mat4);
+// void convert_to_fixed_point_matrix(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 x, s32 y) {
     Mat4 matrix;
@@ -644,7 +644,8 @@ UNUSED void func_80041F54(s32 x, s32 y) {
     mtfx_translation_x_y(matrix, x, y);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_80042000(u16 angle_z) {
@@ -653,7 +654,8 @@ UNUSED void func_80042000(u16 angle_z) {
     mtxf_u16_rotate_z(matrix, angle_z);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800420A8(f32 scale) {
@@ -662,8 +664,8 @@ UNUSED void func_800420A8(f32 scale) {
     mtxf_scale_x_y(matrix, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_8004214C(u16 angle, f32 scale) {
@@ -672,7 +674,8 @@ UNUSED void func_8004214C(u16 angle, f32 scale) {
     mtxf_rotate_z_scale_x_y(matrix, angle, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800421FC(s32 x, s32 y, f32 scale) {
@@ -681,18 +684,21 @@ UNUSED void func_800421FC(s32 x, s32 y, f32 scale) {
     mtfx_translation_x_y(matrix, x, y);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     mtxf_scale_x_y(matrix, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 }
 
 void func_80042330(s32 x, s32 y, u16 angle, f32 scale) {
     Mat4 matrix;
     mtxf_translation_x_y_rotate_z_scale_x_y(matrix, x, y, angle, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
@@ -703,14 +709,12 @@ UNUSED void func_800423F0(Mat4 arg0, u16 arg1, u16 arg2, u16 arg3) {
     f32 sp2C;
     f32 temp_f0;
 
-
     sp3C = sins(arg1);
     temp_f20 = coss(arg1);
     sp34 = sins(arg2);
     sp30 = coss(arg2);
     sp2C = sins(arg3);
     temp_f0 = coss(arg3);
-
 
     arg0[0][0] = (f32) (sp30 * temp_f0 + (sp3C * sp34 * sp2C));
     arg0[1][0] = (f32) ((-sp30 * sp2C) + (sp3C * sp34 * temp_f0));
@@ -747,7 +751,8 @@ UNUSED void func_8004252C(Mat4 arg0, u16 arg1, u16 arg2) {
     arg0[2][2] = sp28 * cos_theta_y;
 }
 
-void mtxf_set_matrix_transformation(Mat4 transformMatrix, Vec3f translationVector, Vec3su rotationVector, f32 scalingFactor) {
+void mtxf_set_matrix_transformation(Mat4 transformMatrix, Vec3f translationVector, Vec3su rotationVector,
+                                    f32 scalingFactor) {
     f32 sinX = sins(rotationVector[0]);
     f32 cosX = coss(rotationVector[0]);
     f32 sinY = sins(rotationVector[1]);
@@ -755,7 +760,7 @@ void mtxf_set_matrix_transformation(Mat4 transformMatrix, Vec3f translationVecto
     f32 sinZ = sins(rotationVector[2]);
     f32 cosZ = coss(rotationVector[2]);
 
-    transformMatrix[0][0] = (( cosY * cosZ) + (sinX * sinY * sinZ)) * scalingFactor;
+    transformMatrix[0][0] = ((cosY * cosZ) + (sinX * sinY * sinZ)) * scalingFactor;
     transformMatrix[1][0] = ((-cosY * sinZ) + (sinX * sinY * cosZ)) * scalingFactor;
     transformMatrix[2][0] = (cosX * sinY) * scalingFactor;
     transformMatrix[3][0] = translationVector[0];
@@ -764,7 +769,7 @@ void mtxf_set_matrix_transformation(Mat4 transformMatrix, Vec3f translationVecto
     transformMatrix[2][1] = -sinX * scalingFactor;
     transformMatrix[3][1] = translationVector[1];
     transformMatrix[0][2] = ((-sinY * cosZ) + (sinX * cosY * sinZ)) * scalingFactor;
-    transformMatrix[1][2] = (( sinY * sinZ) + (sinX * cosY * cosZ)) * scalingFactor;
+    transformMatrix[1][2] = ((sinY * sinZ) + (sinX * cosY * cosZ)) * scalingFactor;
     transformMatrix[2][2] = cosX * cosY * scalingFactor;
     transformMatrix[3][2] = translationVector[2];
     transformMatrix[0][3] = 0.0f;
@@ -802,7 +807,7 @@ void mtxf_set_matrix_scale_transl(Mat4 transformMatrix, Vec3f vec1, Vec3f vec2, 
 
 void mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     f32 sinX;
-    Object *object = &gObjectList[objectIndex];
+    Object* object = &gObjectList[objectIndex];
     f32 sinY;
     f32 cosY;
     f32 sinZ;
@@ -852,7 +857,8 @@ UNUSED void mtxf_mult_third_column(Mat4 arg0, f32 arg1) {
     arg0[2][2] *= arg1;
 }
 
-void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVector, u16 rotationAngle, f32 scaleFactor) {
+void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVector, u16 rotationAngle,
+                          f32 scaleFactor) {
     Vec3f sp44;
     Vec3f sp38;
     Vec3f sp2C;
@@ -899,14 +905,14 @@ UNUSED void vec3f_rotate(Vec3f dest, Vec3f pos, Vec3s rot) {
     f32 sine3;
     f32 cosine3;
 
-    sine1   = sins(rot[0]);
+    sine1 = sins(rot[0]);
     cosine1 = coss(rot[0]);
-    sine2   = sins(rot[1]);
+    sine2 = sins(rot[1]);
     cosine2 = coss(rot[1]);
-    sine3   = sins(rot[2]);
+    sine3 = sins(rot[2]);
     cosine3 = coss(rot[2]);
     // it's a matrix multiplication
-    sp74    = pos[0] * ((cosine2 * cosine3) + ((sine1 * sine2) * sine3));
+    sp74 = pos[0] * ((cosine2 * cosine3) + ((sine1 * sine2) * sine3));
     temp_f4 = pos[1] * ((-cosine2 * sine3) + ((sine1 * sine2) * cosine3));
     temp_f8 = pos[2] * (cosine1 * sine2);
     sp70 = pos[0] * (cosine1 * sine3);
@@ -933,9 +939,9 @@ void vec3f_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
     sp2C = pos[0];
     sp28 = pos[1];
     sp24 = pos[2];
-    sine1   = sins(rot[0]);
+    sine1 = sins(rot[0]);
     cosine1 = coss(rot[0]);
-    sine2   = sins(rot[1]);
+    sine2 = sins(rot[1]);
     cosine2 = coss(rot[1]);
     dest[0] = (sp2C * cosine2) - (sp24 * sine2);
     dest[1] = (sp2C * sine1 * sine2) + (sp28 * cosine1) + (sp24 * sine1 * cosine2);
@@ -954,7 +960,8 @@ void rsp_set_matrix_transformation(Vec3f translate, Vec3su orientation, f32 scal
 
     mtxf_set_matrix_transformation(matrix, translate, orientation, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 UNUSED void rsp_set_matrix_diff_translation_scale(Vec3f pos1, Vec3f pos2, f32 scale) {
@@ -962,9 +969,9 @@ UNUSED void rsp_set_matrix_diff_translation_scale(Vec3f pos1, Vec3f pos2, f32 sc
 
     mtxf_set_matrix_scale_transl(matrix, pos1, pos2, scale);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
-
 
 void rsp_set_matrix_transformation_inverted_x_y_orientation(Vec3f arg0, Vec3su arg1, f32 arg2) {
     Mat4 matrix;
@@ -976,15 +983,17 @@ void rsp_set_matrix_transformation_inverted_x_y_orientation(Vec3f arg0, Vec3su a
     mtxf_set_matrix_transformation(matrix, arg0, orientation, arg2);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
-void rsp_set_matrix_transl_rot_scale(Vec3f arg0,Vec3f arg1, f32 arg2) {
+void rsp_set_matrix_transl_rot_scale(Vec3f arg0, Vec3f arg1, f32 arg2) {
     Mat4 matrix;
 
     set_transform_matrix(matrix, arg1, arg0, 0, arg2);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void rsp_set_matrix_gObjectList(s32 transformIndex) {
@@ -993,5 +1002,6 @@ void rsp_set_matrix_gObjectList(s32 transformIndex) {
     mtxf_set_matrix_gObjectList(transformIndex, matrix);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], matrix);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }

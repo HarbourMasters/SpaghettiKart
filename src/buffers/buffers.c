@@ -8,7 +8,7 @@
  */
 ALIGNED8 union_D_802BFB80 D_802BFB80;
 // [nothing][screen][player]
-ALIGNED8 struct_gEncodedKartTexture gEncodedKartTexture[2][2][8];
+ALIGNED8 struct_D_802DFB80 gEncodedKartTexture[2][2][8];
 #ifdef AVOID_UB
 // [buffer][screen][player] Buffer might be two separate buffers or something?
 ALIGNED8 struct_D_802F1F80 gPlayerPalettesList[2][4][8];

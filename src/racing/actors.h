@@ -80,9 +80,9 @@ void spawn_course_actors(void);
 void init_actors_and_load_textures(void);
 void play_sound_before_despawn(struct Actor*);
 void destroy_actor(struct Actor*);
-s16  try_remove_destructable_item(Vec3f, Vec3s, Vec3f, s16);
-s16  add_actor_to_empty_slot(Vec3f, Vec3s, Vec3f, s16);
-s16  spawn_actor_at_pos(Vec3f, s16);
+s16 try_remove_destructable_item(Vec3f, Vec3s, Vec3f, s16);
+s16 add_actor_to_empty_slot(Vec3f, Vec3s, Vec3f, s16);
+s16 spawn_actor_at_pos(Vec3f, s16);
 bool query_and_resolve_collision_player_actor(Player*, Vec3f, f32, f32, f32);
 bool collision_mario_sign(Player*, struct Actor*);
 bool collision_piranha_plant(Player*, struct PiranhaPlant*);
@@ -116,12 +116,12 @@ void update_course_actors(void);
 extern void func_800C98B8(Vec3f, Vec3f, u32);
 extern void func_800C99E0(Vec3f, s32);
 
-extern u8 *D_802BA050;
-extern u8 *D_802BA054;
-extern u8 *D_802BA058;
-extern struct Actor *gActorHotAirBalloonItemBox;
+extern u8* D_802BA050;
+extern u8* D_802BA054;
+extern u8* D_802BA058;
+extern struct Actor* gActorHotAirBalloonItemBox;
 extern s8 gTLUTRedShell[]; // tlut 256
-extern u16 D_802BA260; // Box Truck sub-type?
+extern u16 D_802BA260;     // Box Truck sub-type?
 
 // end of definition of actor.c variables
 

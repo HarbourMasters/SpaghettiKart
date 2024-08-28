@@ -8,7 +8,7 @@ void init_hud(void);
 void reset_object_variable(void);
 void func_8006EB10(void);
 void clear_object_list(void);
-u8  *func_8006ED94(u8*, u8*, u32, u32);
+u8* func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
 void init_item_window(s32);
 void func_8006EEE8(s32);
@@ -33,6 +33,6 @@ void init_hud_two_player_horizontal(void);
 
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];
-extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
+extern u8* gCourseOutlineTextures[0x14]; // 800e54d0
 
 #endif

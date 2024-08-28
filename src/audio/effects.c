@@ -7,7 +7,7 @@
 #include "audio/load.h"
 #include "audio/data.h"
 
-void sequence_channel_process_sound(struct SequenceChannel *seqChannel, s32 recalculateVolume) {
+void sequence_channel_process_sound(struct SequenceChannel* seqChannel, s32 recalculateVolume) {
     f32 channelVolume;
     s32 i;
 
@@ -24,7 +24,7 @@ void sequence_channel_process_sound(struct SequenceChannel *seqChannel, s32 reca
     }
 
     for (i = 0; i < 4; ++i) {
-        struct SequenceChannelLayer *layer = seqChannel->layers[i];
+        struct SequenceChannelLayer* layer = seqChannel->layers[i];
         if (layer != NULL && layer->enabled && layer->note != NULL) {
             if (layer->notePropertiesNeedInit) {
                 layer->noteFreqScale = layer->freqScale * seqChannel->freqScale;
@@ -47,7 +47,7 @@ void sequence_channel_process_sound(struct SequenceChannel *seqChannel, s32 reca
     seqChannel->changes.as_u8 = 0;
 }
 
-void sequence_player_process_sound(struct SequencePlayer *seqPlayer) {
+void sequence_player_process_sound(struct SequencePlayer* seqPlayer) {
     s32 i;
 
     if (seqPlayer->fadeRemainingFrames != 0) {
@@ -75,8 +75,7 @@ void sequence_player_process_sound(struct SequencePlayer *seqPlayer) {
 
     // Process channels
     for (i = 0; i < CHANNELS_MAX; i++) {
-        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == true
-            && seqPlayer->channels[i]->enabled == true) {
+        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == true && seqPlayer->channels[i]->enabled == true) {
             sequence_channel_process_sound(seqPlayer->channels[i], seqPlayer->recalculateVolume);
         }
     }
@@ -84,15 +83,14 @@ void sequence_player_process_sound(struct SequencePlayer *seqPlayer) {
     seqPlayer->recalculateVolume = false;
 }
 
-f32 get_portamento_freq_scale(struct Portamento *p) {
+f32 get_portamento_freq_scale(struct Portamento* p) {
     u32 v0;
     f32 result;
 
     p->cur += p->speed;
     v0 = (u32) p->cur;
 
-    if (v0 > 127)
-    {
+    if (v0 > 127) {
         v0 = 127;
     }
 
@@ -100,14 +98,14 @@ f32 get_portamento_freq_scale(struct Portamento *p) {
     return result;
 }
 
-s16 get_vibrato_pitch_change(struct VibratoState *vib) {
+s16 get_vibrato_pitch_change(struct VibratoState* vib) {
     s32 index;
     vib->time += (s32) vib->rate;
     index = (vib->time >> 10) & 0x3F;
     return vib->curve[index] >> 8;
 }
 
-f32 get_vibrato_freq_scale(struct VibratoState *vib) {
+f32 get_vibrato_freq_scale(struct VibratoState* vib) {
     s32 pitchChange;
     f32 extent;
     f32 result;
@@ -121,8 +119,7 @@ f32 get_vibrato_freq_scale(struct VibratoState *vib) {
         if (vib->extentChangeTimer == 1) {
             vib->extent = (s32) vib->seqChannel->vibratoExtentTarget;
         } else {
-            vib->extent +=
-                ((s32) vib->seqChannel->vibratoExtentTarget - vib->extent) / (s32) vib->extentChangeTimer;
+            vib->extent += ((s32) vib->seqChannel->vibratoExtentTarget - vib->extent) / (s32) vib->extentChangeTimer;
         }
 
         vib->extentChangeTimer--;
@@ -157,7 +154,7 @@ f32 get_vibrato_freq_scale(struct VibratoState *vib) {
     return result;
 }
 
-void note_vibrato_update(struct Note *note) {
+void note_vibrato_update(struct Note* note) {
     if (note->portamento.mode != 0) {
         note->portamentoFreqScale = get_portamento_freq_scale(&note->portamento);
     }
@@ -166,10 +163,10 @@ void note_vibrato_update(struct Note *note) {
     }
 }
 
-void note_vibrato_init(struct Note *note) {
-    struct VibratoState *vib;
-    UNUSED struct SequenceChannel *seqChannel;
-    struct NotePlaybackState *seqPlayerState = (struct NotePlaybackState *) &note->priority;
+void note_vibrato_init(struct Note* note) {
+    struct VibratoState* vib;
+    UNUSED struct SequenceChannel* seqChannel;
+    struct NotePlaybackState* seqPlayerState = (struct NotePlaybackState*) &note->priority;
 
     note->vibratoFreqScale = 1.0f;
     note->portamentoFreqScale = 1.0f;
@@ -197,7 +194,7 @@ void note_vibrato_init(struct Note *note) {
     seqPlayerState->portamento = seqPlayerState->parentLayer->portamento;
 }
 
-void adsr_init(struct AdsrState *adsr, struct AdsrEnvelope *envelope, UNUSED s16 *volOut) {
+void adsr_init(struct AdsrState* adsr, struct AdsrEnvelope* envelope, UNUSED s16* volOut) {
     adsr->action = 0;
     adsr->state = ADSR_STATE_DISABLED;
     adsr->delay = 0;
@@ -206,7 +203,7 @@ void adsr_init(struct AdsrState *adsr, struct AdsrEnvelope *envelope, UNUSED s16
     adsr->current = 0.0f;
 }
 
-f32 adsr_update(struct AdsrState *adsr) {
+f32 adsr_update(struct AdsrState* adsr) {
     u8 action = adsr->action;
     u8 state = adsr->state;
     switch (state) {
@@ -226,7 +223,7 @@ f32 adsr_update(struct AdsrState *adsr) {
             adsr->state = ADSR_STATE_LOOP;
             // fallthrough
 
-restart:
+        restart:
         case ADSR_STATE_LOOP:
             adsr->delay = BSWAP16(adsr->envelope[adsr->envIndex].delay);
             switch (adsr->delay) {
@@ -245,9 +242,8 @@ restart:
 
                 default:
                     if (adsr->delay >= 4) {
-                        adsr->delay = adsr->delay * gAudioBufferParameters.updatesPerFrame
-                        / gAudioBufferParameters.presetUnk4
-                        / 4;
+                        adsr->delay = adsr->delay * gAudioBufferParameters.updatesPerFrame /
+                                      gAudioBufferParameters.presetUnk4 / 4;
                     }
                     if (adsr->delay == 0) {
                         adsr->delay = 1;

@@ -12,8 +12,8 @@ s32 get_player_index_for_player(Player*);
 void func_80027DA8(Player*, s8);
 void func_80027EDC(Player*, s8);
 
-void func_80029B4C(Player *, f32, f32, f32);
-void func_8002F730(Player *player, Camera *camera, s8 arg2, s8 arg3);
+void func_80029B4C(Player*, f32, f32, f32);
+void func_8002F730(Player* player, Camera* camera, s8 arg2, s8 playerId);
 
 void func_80028864(Player*, Camera*, s8, s8);
 void func_80028C44(Player*, Camera*, s8, s8);
@@ -64,12 +64,12 @@ void func_8002D028(Player*, s8);
 void func_8002D268(Player*, Camera*, s8, s8);
 
 void func_8002E4C4(Player*);
-void control_kart_ai_movement(Player*,Camera*, s8, s8);
+void control_kart_ai_movement(Player*, Camera*, s8, s8);
 
 void func_8002FCA8(Player*, s8);
 void func_8002FE84(Player*, f32);
 
-f32  func_80030150(Player*, s8);
+f32 func_80030150(Player*, s8);
 void func_80030A34(Player*);
 void detect_triple_a_combo_a_released(Player*);
 void detect_triple_a_combo_a_pressed(Player*);
@@ -101,13 +101,13 @@ void func_80037614(Player*, Vec3f, Vec3f);
 void func_8003777C(Player*, Vec3f, Vec3f);
 void func_800378E8(Player*, Vec3f, Vec3f);
 void func_80037A4C(Player*, Vec3f, Vec3f);
-void func_80037BB4(Player*player, Vec3f);
+void func_80037BB4(Player* player, Vec3f);
 void func_80037CFC(Player*, struct Controller*, s8);
 
 void func_800381AC(Player*, struct Controller*, s8);
 void func_800382DC(void);
-s16  func_80038534(struct Controller*);
-s16  func_800388B0(struct Controller*);
+s16 func_80038534(struct Controller*);
+s16 func_800388B0(struct Controller*);
 void func_80038BE4(Player*, s16);
 void func_80038C6C(Player*, Camera*, s8, s8);
 
@@ -121,7 +121,7 @@ extern s16 gKartAIforDk[];
 extern s16 gKartAIforWario[];
 extern s16 gKartAIforPeach[];
 extern s16 gKartAIforBowser[];
-extern s16 *gKartAIforPlayer[];
+extern s16* gKartAIforPlayer[];
 
 extern s16 gKartAIforMarioAndLuigi[];
 extern s16 gKartAIforMarioAndYoshi[];
@@ -179,15 +179,15 @@ extern s16 gKartAIforBowserAndDk[];
 extern s16 gKartAIforBowserAndWario[];
 extern s16 gKartAIforBowserAndToad[];
 extern s16 gKartAIforBowserAndPeach[];
-extern s16 *gListKartAIforMario[];
-extern s16 *gListKartAIforLuigi[];
-extern s16 *gListKartAIforYoshi[];
-extern s16 *gListKartAIforToad[];
-extern s16 *gListKartAIforDk[];
-extern s16 *gListKartAIforWario[];
-extern s16 *gListKartAIforPeach[];
-extern s16 *gListKartAIforBowser[];
-extern s16 **gKartAIforTwoPlayer[];
+extern s16* gListKartAIforMario[];
+extern s16* gListKartAIforLuigi[];
+extern s16* gListKartAIforYoshi[];
+extern s16* gListKartAIforToad[];
+extern s16* gListKartAIforDk[];
+extern s16* gListKartAIforWario[];
+extern s16* gListKartAIforPeach[];
+extern s16* gListKartAIforBowser[];
+extern s16** gKartAIforTwoPlayer[];
 
 extern s16 D_801656F0;
 

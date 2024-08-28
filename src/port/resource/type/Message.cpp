@@ -16,4 +16,4 @@ MsgLookup* MessageLookup::GetPointer() {
 size_t MessageLookup::GetPointerSize() {
     return mLookupTable.size() * sizeof(MsgLookup);
 }
-}
+} // namespace SF64
