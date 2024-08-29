@@ -44,24 +44,54 @@ void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, si
         fprintf(stderr, "Payload size exceeds maximum allowed size\n");
         return;
     }
-    uint16_t size = (uint16_t)payload_size;
-    memcpy(buffer + offset, &size, sizeof(uint16_t));
+    uint16_t size = (uint16_t)22;
+    *(uint16_t *)(buffer+offset) = size;
     offset += sizeof(uint16_t);
 
     // Ensure there's enough space for player data and payload
-    size_t packet_size = sizeof(uint8_t) + sizeof(uint16_t) + payload_size;
-    if (packet_size > BUFFER_SIZE) {
-        fprintf(stderr, "Packet size exceeds buffer size\n");
-        return;
-    }
+    // size_t packet_size = sizeof(uint8_t) + sizeof(uint16_t) + payload_size;
+    // if (packet_size > BUFFER_SIZE) {
+    //     fprintf(stderr, "Packet size exceeds buffer size\n");
+    //     return;
+    // }
 
-    // Write player position data
-    memcpy(buffer + offset, &gPlayers[0].pos[0], sizeof(f32));
+    
+    *(uint16_t*)(buffer+offset) = gPlayers[0].unk_002;
+    offset += sizeof(uint16_t);
+    *(uint16_t*)(buffer+offset) = gPlayers[0].unk_006;
+    offset += sizeof(uint16_t);
+
+    // Pos test
+    *(f32*)(buffer+offset) = gPlayers[0].pos[0];
     offset += sizeof(f32);
-    memcpy(buffer + offset, &gPlayers[0].pos[1], sizeof(f32));
+    *(f32*)(buffer+offset) = gPlayers[0].pos[1];
     offset += sizeof(f32);
-    memcpy(buffer + offset, &gPlayers[0].pos[2], sizeof(f32));
+    *(f32*)(buffer+offset) = gPlayers[0].pos[2];
     offset += sizeof(f32);
+
+    *(int16_t*)(buffer+offset) = gPlayers[0].rotation[0];
+    offset += sizeof(int16_t);
+    *(int16_t*)(buffer+offset) = gPlayers[0].rotation[1];
+    offset += sizeof(int16_t);
+    *(int16_t*)(buffer+offset) = gPlayers[0].rotation[2];
+    offset += sizeof(int16_t);
+
+    //     *(int16_t*)(buffer+offset) = gPlayers[0].velocity[0];
+    // offset += sizeof(int16_t);
+    // *(int16_t*)(buffer+offset) = gPlayers[0].velocity[1];
+    // offset += sizeof(int16_t);
+    // *(int16_t*)(buffer+offset) = gPlayers[0].velocity[2];
+    // offset += sizeof(int16_t);
+
+   // memcpy(buffer+offset, &gPlayers[0], sizeof(Player));
+
+    // // Write player position data
+    // memcpy(buffer + offset, 0x12345678, sizeof(int32_t));
+    // offset += sizeof(f32);
+    // memcpy(buffer + offset, 0x11223344, sizeof(int32_t));
+    // offset += sizeof(f32);
+    // memcpy(buffer + offset, 0x99887766, sizeof(int32_t));
+    // offset += sizeof(f32);
 
     // Write the payload data
     // memcpy(buffer + offset, payload, payload_size);
