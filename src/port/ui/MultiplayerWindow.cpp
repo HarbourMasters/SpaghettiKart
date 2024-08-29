@@ -13,7 +13,7 @@ extern "C" {
 #include "networking/networking.h"
 #include "actor_types.h"
 #include "code_800029B0.h"
-struct Actor gActorList[];
+extern struct Actor gActorList[];
 extern char* gCourseNames[];
 extern char* gCupNames[];
 extern char* D_800E76A8[];
