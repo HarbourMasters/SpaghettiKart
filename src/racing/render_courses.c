@@ -176,6 +176,12 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     arg1->pathCounter = index;
     index = ((index - 1) * 4) + var_a3;
     gSPDisplayList(gDisplayListHead++, addr[index]);
+
+    if (CVarGetInteger("gDisableLod", 0) == 1 && gCurrentCourseId == COURSE_BOWSER_CASTLE &&
+        (index < 20 || index > 99)) { // always render higher version of bowser statue
+        gDisplayListHead--;
+        gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the course
+    }
 }
 
 void func_80291198(void) {
