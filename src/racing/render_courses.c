@@ -1064,7 +1064,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1205,7 +1205,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(2B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
