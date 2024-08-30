@@ -8,4 +8,4 @@ AnimationData* Animation::GetPointer() {
 size_t Animation::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SF64

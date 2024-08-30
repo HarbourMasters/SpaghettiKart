@@ -1,7 +1,7 @@
 #ifndef CODE_80280000_H
 #define CODE_80280000_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 

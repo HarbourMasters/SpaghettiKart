@@ -12,4 +12,4 @@ TrackWaypoint* TrackWaypoints::GetPointer() {
 size_t TrackWaypoints::GetPointerSize() {
     return TrackWaypointList.size() * sizeof(TrackWaypoint);
 }
-} // namespace LUS
+} // namespace MK64

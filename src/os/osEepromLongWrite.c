@@ -7,7 +7,7 @@ extern OSMesgQueue _osContMesgQueue;
 extern OSMesg _osContMesgBuff[4];
 
 // exactly the same as osEepromLongRead except for osEepromWrite call
-s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, s32 nbytes) {
+s32 osEepromLongWrite(OSMesgQueue* mq, u8 address, u8* buffer, s32 nbytes) {
     s32 result = 0;
     if (address > 0x40) {
         return -1;

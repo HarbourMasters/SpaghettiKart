@@ -15,30 +15,30 @@
 #include "code_80057C60.h"
 #include "kart_dma.h"
 
-u8 *D_80162D80;
+u8* D_80162D80;
 s16 D_80162D84;
 s16 D_80162D86;
 u16 D_80162D88;
 
 u32 D_80162D8C;
 s16 D_80162D90;
-u32 *D_80162D94;
+u32* D_80162D94;
 
 u16 D_80162D98;
 u32 D_80162D9C;
 s16 D_80162DA0;
-u32 *D_80162DA4;
+u32* D_80162DA4;
 
 u16 D_80162DA8;
 s32 D_80162DAC;
 s16 D_80162DB0;
-u32 *D_80162DB4;
+u32* D_80162DB4;
 
 s16 D_80162DB8;
-u32 *D_80162DBC;
+u32* D_80162DBC;
 
 u16 D_80162DC0;
-StaffGhost *D_80162DC4;
+StaffGhost* D_80162DC4;
 s32 D_80162DC8;
 s32 D_80162DCC;
 s32 D_80162DD0;
@@ -57,21 +57,21 @@ s32 D_80162DFC;
 
 s32 D_80162E00;
 
-u32 *D_800DC710 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
-u32 *D_800DC714 = (u32 *) &D_802BFB80.arraySize8[1][1][3];
+u32* D_800DC710 = (u32*) &D_802BFB80.arraySize8[0][2][3];
+u32* D_800DC714 = (u32*) &D_802BFB80.arraySize8[1][1][3];
 
 extern s32 gLapCountByPlayerId[];
 
-extern StaffGhost *d_mario_raceway_staff_ghost;
-extern StaffGhost *d_royal_raceway_staff_ghost;
-extern StaffGhost *d_luigi_raceway_staff_ghost;
+extern StaffGhost* d_mario_raceway_staff_ghost;
+extern StaffGhost* d_royal_raceway_staff_ghost;
+extern StaffGhost* d_luigi_raceway_staff_ghost;
 
 void func_80004EF0(void) {
-    D_80162DA4 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
-    u8 *dest = (u8 *) D_80162DA4;
+    D_80162DA4 = (u32*) &D_802BFB80.arraySize8[0][2][3];
+    u8* dest = (u8*) D_80162DA4;
     osInvalDCache(&D_80162DA4[0], 0x4000);
 
-    u8 *ghost = (u8 *) LOAD_ASSET(D_80162DC4);
+    u8* ghost = (u8*) LOAD_ASSET(D_80162DC4);
 
     // Manual memcpy required for byte swap
     for (int i = 0; i < 0x4000; i += 4) {
@@ -82,19 +82,18 @@ void func_80004EF0(void) {
     }
 
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    D_80162D9C =  (*D_80162DA4 & 0xFF0000);
+    D_80162D9C = (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;
 }
 
-
 void func_80004FB0(void) {
-    D_80162DB4 = (u32 *) &D_802BFB80.arraySize8[0][D_80162DD0][3];
+    D_80162DB4 = (u32*) &D_802BFB80.arraySize8[0][D_80162DD0][3];
     D_80162DAC = *D_80162DB4 & 0xFF0000;
     D_80162DB0 = 0;
 }
 
 void func_80004FF8(void) {
-    D_80162D94 = (u32 *) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     D_80162D8C = (s32) *D_80162D94 & 0xFF0000;
     D_80162D90 = 0;
 }
@@ -116,7 +115,7 @@ void func_80004FF8(void) {
 void set_staff_ghost(void) {
     u32 temp_v0; // Appears to be player total lap time.
 
-    switch(gCurrentCourseId) {
+    switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;
             if (temp_v0 <= BLAH) {
@@ -164,15 +163,15 @@ s32 func_800051C4(void) {
 
     if (D_80162D84 != 0) {
         // func_80040174 in mio0_decode.s
-        func_80040174((void *) D_80162D80, (D_80162D84 * 4) + 0x20, (s32) D_800DC710);
+        func_80040174((void*) D_80162D80, (D_80162D84 * 4) + 0x20, (s32) D_800DC710);
         phi_v0 = mio0encode((s32) D_800DC710, (D_80162D84 * 4) + 0x20, (s32) D_800DC714);
         return phi_v0 + 0x1e;
     }
 }
 
 void func_8000522C(void) {
-    D_80162D94 = (u32 *) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    mio0decode((u8 *) D_800DC714, (u8 *) D_80162D94);
+    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    mio0decode((u8*) D_800DC714, (u8*) D_80162D94);
     D_80162D8C = (s32) (*D_80162D94 & 0xFF0000);
     D_80162D90 = 0;
     D_80162E00 = 1;
@@ -189,7 +188,7 @@ void func_800052A4(void) {
         D_80162DCC = 0;
     }
     temp_v0 = D_80162DB8;
-    D_80162D80 = (void *) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    D_80162D80 = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     D_80162D84 = temp_v0;
     D_80162D86 = temp_v0;
 }
@@ -222,7 +221,7 @@ void func_80005310(void) {
             } else {
 
                 D_80162DD8 = 1U;
-                D_80162DBC = (u32 *) &D_802BFB80.arraySize8[0][D_80162DCC][3];
+                D_80162DBC = (u32*) &D_802BFB80.arraySize8[0][D_80162DCC][3];
                 D_80162DBC[0] = -1;
                 D_80162DB8 = 0;
                 D_80162DDC = 0;
@@ -409,7 +408,7 @@ void func_800057DC(void) {
         D_80162D90++;
         D_80162D8C = (s32) (D_80162D94[D_80162D90] & 0xFF0000);
     } else {
-       D_80162D8C += (s32) 0xFFFF0000;
+        D_80162D8C += (s32) 0xFFFF0000;
     }
 }
 
@@ -422,9 +421,7 @@ void func_8000599C(void) {
     u32 temp_t0;
     u32 temp_a0_2;
 
-    if (((D_80162DB8 >= 0x1000) ||
-        ((gPlayerOne->unk_0CA & 2) != 0)) ||
-        ((gPlayerOne->unk_0CA & 8) != 0)) {
+    if (((D_80162DB8 >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
         D_80162DF8 = 1;
         return;
     }
@@ -437,7 +434,8 @@ void func_8000599C(void) {
     phi_a3 = 0;
     if (temp_a2 & 0x8000) {
         phi_a3 |= 0x80000000;
-    } if (temp_a2 & 0x4000) {
+    }
+    if (temp_a2 & 0x4000) {
         phi_a3 |= 0x40000000;
     }
     if (temp_a2 & 0x2000) {
@@ -468,15 +466,15 @@ void func_8000599C(void) {
 
             temp_t0 += 0x10000;
             D_80162DBC[D_80162DB8] = temp_t0;
-
         }
     } else {
-        D_80162DB8++; D_80162DBC[D_80162DB8] = phi_a3;
+        D_80162DB8++;
+        D_80162DBC[D_80162DB8] = phi_a3;
     }
 }
 
 // sets player to AI? (unconfirmed)
-void func_80005AE8(Player *ply) {
+void func_80005AE8(Player* ply) {
     if (((ply->type & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != gPlayerOne)) {
         ply->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_KART_AI;
     }
@@ -550,13 +548,13 @@ void func_80005B18(void) {
 void func_80005E6C(void) {
     if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
         if ((D_80162DD8 == 0) && (gLapCountByPlayerId[1] != 3)) {
-            func_800057DC(); //3
+            func_800057DC(); // 3
         }
         if ((D_80162DD6 == 0) && (gLapCountByPlayerId[2] != 3)) {
-            func_8000561C(); //2
+            func_8000561C(); // 2
         }
         if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
-            func_8000546C(); //1
+            func_8000546C(); // 1
             return;
         }
         func_80005AE8(gPlayerTwo);

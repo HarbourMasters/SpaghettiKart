@@ -8,4 +8,4 @@ Vec3fData* Vec3fArray::GetPointer() {
 size_t Vec3fArray::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SF64

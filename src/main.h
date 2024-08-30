@@ -43,17 +43,17 @@
 #define GFX_POOL_SIZE 15000
 
 struct GfxPool {
-    /* 0x00000 */ Mtx mtxScreen; // Matrix for skybox and startup logo
-    /* 0x00040 */ Mtx mtxPersp[4]; // Matrix for perspective screen modes
-    /* 0x00140 */ Mtx mtxOrtho; // Matrix for ortho hud screen modes
-    /* 0x00180 */ Mtx mtxUnk; // Matrix unused
-    /* 0x001C0 */ Mtx mtxLookAt[4]; // Matrix for lookat screen modes
-    /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE]; // Matrix hud elements and 2D related effects
+    /* 0x00000 */ Mtx mtxScreen;                       // Matrix for skybox and startup logo
+    /* 0x00040 */ Mtx mtxPersp[4];                     // Matrix for perspective screen modes
+    /* 0x00140 */ Mtx mtxOrtho;                        // Matrix for ortho hud screen modes
+    /* 0x00180 */ Mtx mtxUnk;                          // Matrix unused
+    /* 0x001C0 */ Mtx mtxLookAt[4];                    // Matrix for lookat screen modes
+    /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE];       // Matrix hud elements and 2D related effects
     /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix course objects
     /* 0x0EAC0 */ Mtx mtxShadow[MTX_SHADOW_POOL_SIZE]; // Matrix shadow characters
-    /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE]; // Matrix kart characters
+    /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE];     // Matrix kart characters
     /* 0x0FAC0 */ Mtx mtxEffect[MTX_EFFECT_POOL_SIZE]; // Matrix misc effects
-    /* 0x19FC0 */ Mtx mtxArr[4]; // Matrix unused array
+    /* 0x19FC0 */ Mtx mtxArr[4];                       // Matrix unused array
     /* 0x1A0C0 */ Gfx gfxPool[GFX_POOL_SIZE];
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
@@ -63,7 +63,7 @@ typedef struct {
     u16 numTriangles;
 } CollisionGrid;
 
-void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
+void create_thread(OSThread*, OSId, void (*entry)(void*), void*, void*, OSPri);
 void main_func(void);
 void thread1_idle(void*);
 void setup_mesg_queues(void);
@@ -77,7 +77,7 @@ void dispatch_audio_sptask(struct SPTask*);
 void exec_display_list(struct SPTask*);
 void init_rcp(void);
 void end_master_display_list(void);
-void *clear_framebuffer(s32);
+void* clear_framebuffer(s32);
 void rendering_init(void);
 void config_gfx_pool(void);
 void display_and_vsync(void);
@@ -105,41 +105,40 @@ void thread5_game_loop(void);
 void thread5_iteration(void);
 void thread4_audio(void*);
 
+extern struct VblankHandler* gVblankHandler1;
+extern struct VblankHandler* gVblankHandler2;
 
-extern struct VblankHandler *gVblankHandler1;
-extern struct VblankHandler *gVblankHandler2;
-
-extern struct SPTask *gActiveSPTask;
-extern struct SPTask *sCurrentAudioSPTask;
+extern struct SPTask* gActiveSPTask;
+extern struct SPTask* sCurrentAudioSPTask;
 extern struct SPTask* sCurrentDisplaySPTask;
 extern struct SPTask* sNextAudioSPTask;
 extern struct SPTask* sNextDisplaySPTask;
 
 extern struct Controller gControllers[];
-extern struct Controller *gControllerOne;
-extern struct Controller *gControllerTwo;
-extern struct Controller *gControllerThree;
-extern struct Controller *gControllerFour;
-extern struct Controller *gControllerFive;
-extern struct Controller *gControllerSix;
-extern struct Controller *gControllerSeven;
-extern struct Controller *gControllerEight;
+extern struct Controller* gControllerOne;
+extern struct Controller* gControllerTwo;
+extern struct Controller* gControllerThree;
+extern struct Controller* gControllerFour;
+extern struct Controller* gControllerFive;
+extern struct Controller* gControllerSix;
+extern struct Controller* gControllerSeven;
+extern struct Controller* gControllerEight;
 
 extern Player gPlayers[];
-extern Player *gPlayerOne;
-extern Player *gPlayerTwo;
-extern Player *gPlayerThree;
-extern Player *gPlayerFour;
-extern Player *gPlayerFive;
-extern Player *gPlayerSix;
-extern Player *gPlayerSeven;
-extern Player *gPlayerEight;
+extern Player* gPlayerOne;
+extern Player* gPlayerTwo;
+extern Player* gPlayerThree;
+extern Player* gPlayerFour;
+extern Player* gPlayerFive;
+extern Player* gPlayerSix;
+extern Player* gPlayerSeven;
+extern Player* gPlayerEight;
 
-extern Player *gPlayerOneCopy;
-extern Player *gPlayerTwoCopy;
+extern Player* gPlayerOneCopy;
+extern Player* gPlayerTwoCopy;
 
 extern struct GfxPool gGfxPools[];
-extern struct GfxPool *gGfxPool;
+extern struct GfxPool* gGfxPool;
 
 extern struct VblankHandler gGameVblankHandler;
 extern struct VblankHandler sSoundVblankHandler;
@@ -177,11 +176,11 @@ extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[];
 extern uintptr_t gSegmentTable[];
-extern Gfx *gDisplayListHead;
-extern struct SPTask *gGfxSPTask;
+extern Gfx* gDisplayListHead;
+extern struct SPTask* gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
-extern u16 *gPhysicalFramebuffers[];
+extern u16* gPhysicalFramebuffers[];
 extern uintptr_t gPhysicalZBuffer;
 extern Mat4 D_801502C0;
 
@@ -206,13 +205,13 @@ extern OSMesgQueue gPIMesgQueue;
 void race_logic_loop(void);
 extern s32 gGamestate;
 #ifndef D_800DC510_AS_U16
-  // Prevent overlapping writes in gcc
-  // Whether D_800DC510 was intended to be a separate variable in main.c from the rest of the game is unknown
-  #ifdef GCC
-  extern u16 D_800DC510;
-  #else
-  extern s32 D_800DC510;
-  #endif
+// Prevent overlapping writes in gcc
+// Whether D_800DC510 was intended to be a separate variable in main.c from the rest of the game is unknown
+#ifdef GCC
+extern u16 D_800DC510;
+#else
+extern s32 D_800DC510;
+#endif
 #endif
 
 extern u16 D_800DC514;

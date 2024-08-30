@@ -12,7 +12,7 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryArrayV0::ReadResource(std:
     auto array = std::make_shared<Array>(file->InitData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    array->ArrayType = (ArrayResourceType)reader->ReadUInt32();
+    array->ArrayType = (ArrayResourceType) reader->ReadUInt32();
     array->ArrayCount = reader->ReadUInt32();
 
     for (uint32_t i = 0; i < array->ArrayCount; i++) {
@@ -31,7 +31,7 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryArrayV0::ReadResource(std:
             data.v.cn[3] = reader->ReadUByte();
             array->Vertices.push_back(data);
         } else {
-            array->ArrayScalarType = (ScalarType)reader->ReadUInt32();
+            array->ArrayScalarType = (ScalarType) reader->ReadUInt32();
 
             int iter = 1;
 
@@ -61,4 +61,4 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryArrayV0::ReadResource(std:
 
     return array;
 }
-} // namespace LUS
+} // namespace MK64

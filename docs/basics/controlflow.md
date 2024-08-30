@@ -10,7 +10,7 @@ After boot, the game begins by setting up its four threads; [idle](@ref thread1_
 
 The [idle thread](@ref thread1_idle) allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.
 
-As such, the [idle thread](@ref thread1_idle) runs the following loop: `while(TRUE);` (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this:
+As such, the [idle thread](@ref thread1_idle) runs the following loop: `while(true);` (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this:
 ```
 .L800005B8:
 b     .L800005B8

@@ -23,4 +23,4 @@ class TrackWaypoints : public Ship::Resource<TrackWaypoint> {
 
     std::vector<TrackWaypoint> TrackWaypointList;
 };
-} // namespace LUS
+} // namespace MK64

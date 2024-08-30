@@ -3,8 +3,7 @@
 extern OSTime __osCurrentTime;
 extern u32 __osBaseCounter;
 
-OSTime osGetTime()
-{
+OSTime osGetTime() {
     u32 tmptime;
     u32 elapseCount;
     OSTime currentCount;

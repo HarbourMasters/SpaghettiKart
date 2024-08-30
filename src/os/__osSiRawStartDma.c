@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 #include "hardware.h"
 
-s32 __osSiRawStartDma(s32 dir, void *addr) {
+s32 __osSiRawStartDma(s32 dir, void* addr) {
     if (__osSiDeviceBusy()) {
         return -1;
     }
@@ -10,7 +10,7 @@ s32 __osSiRawStartDma(s32 dir, void *addr) {
         osWritebackDCache(addr, 64);
     }
 
-    HW_REG(SI_DRAM_ADDR_REG, void *) = (void *) osVirtualToPhysical(addr);
+    HW_REG(SI_DRAM_ADDR_REG, void*) = (void*) osVirtualToPhysical(addr);
 
     if (dir == OS_READ) {
         HW_REG(SI_PIF_ADDR_RD64B_REG, u32) = 0x1FC007C0;

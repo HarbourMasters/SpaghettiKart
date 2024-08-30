@@ -50,7 +50,7 @@ void GameInfoWindow::DrawElement() {
 
         token = strtok(NULL, ":");
         if (token != NULL) {
-            port = (uint16_t)atoi(token);
+            port = (uint16_t) atoi(token);
         }
 
         gNetwork.enabled = true;
@@ -58,7 +58,7 @@ void GameInfoWindow::DrawElement() {
     }
 
     char buttonLabel[32];
-    
+
     if (sReadyUpBool) {
         strcpy(buttonLabel, "Lets Go!");
     } else {
@@ -73,7 +73,8 @@ void GameInfoWindow::DrawElement() {
     if (gGamestate == RACING) {
 
         for (int i = 0; i < NUM_PLAYERS; i++) {
-            ImGui::Text("Player %d: type: %X, char: %d, rank: %d, hasAuthority: %d", i, gPlayers[i].type, gPlayers[i].characterId, gPlayers[i].currentRank, gPlayers[i].nHasAuthority);
+            ImGui::Text("Player %d: type: %X, char: %d, rank: %d, hasAuthority: %d", i, gPlayers[i].type,
+                        gPlayers[i].characterId, gPlayers[i].currentRank, gPlayers[i].nHasAuthority);
         }
     }
     ImGui::PopStyleColor();

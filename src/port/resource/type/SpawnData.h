@@ -25,4 +25,4 @@ class ActorSpawn : public Ship::Resource<ActorSpawnData> {
 
     std::vector<ActorSpawnData> ActorSpawnDataList;
 };
-} // namespace LUS
+} // namespace MK64

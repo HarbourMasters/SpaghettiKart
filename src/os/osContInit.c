@@ -2,7 +2,7 @@
 #include "osContInternal.h"
 
 void __osPackRequestData(u8);
-void __osContGetInitData(u8 *, OSContStatus *);
+void __osContGetInitData(u8*, OSContStatus*);
 
 u32 _osContInitialized = 0;
 
@@ -14,7 +14,7 @@ u8 _osContNumControllers;
 OSTimer D_80196548;
 OSMesgQueue _osContMesgQueue;
 OSMesg _osContMesgBuff[4];
-s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
+s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* status) {
     OSMesg mesg;
     u32 ret = 0;
     OSTime currentTime;
@@ -32,7 +32,7 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
         osRecvMesg(&timerMesgQueue, &mesg, OS_MESG_BLOCK);
     }
     //! @todo figure out what it means
-    _osContNumControllers = 4; 
+    _osContNumControllers = 4;
     __osPackRequestData(0);
     ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
@@ -44,8 +44,8 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
     osCreateMesgQueue(&_osContMesgQueue, _osContMesgBuff, 1);
     return ret;
 }
-void __osContGetInitData(u8 *bitpattern, OSContStatus *status) {
-    OSContPackedRequest *cmdBufPtr;
+void __osContGetInitData(u8* bitpattern, OSContStatus* status) {
+    OSContPackedRequest* cmdBufPtr;
     OSContPackedRequest response;
     s32 i;
     u8 sp7;
@@ -53,7 +53,7 @@ void __osContGetInitData(u8 *bitpattern, OSContStatus *status) {
     sp7 = 0;
     cmdBufPtr = &(_osContCmdBuf[0].request);
     for (i = 0; i < _osContNumControllers; i++, cmdBufPtr++, status++) {
-        response = *(OSContPackedRequest *) cmdBufPtr;
+        response = *(OSContPackedRequest*) cmdBufPtr;
         status->errnum = (response.rxLen & 0xc0) >> 4;
         if (status->errnum == 0) {
             status->type = response.data2 << 8 | response.data1;
@@ -65,13 +65,13 @@ void __osContGetInitData(u8 *bitpattern, OSContStatus *status) {
     *bitpattern = sp7;
 }
 void __osPackRequestData(u8 command) {
-    OSContPackedRequest *cmdBufPtr;
+    OSContPackedRequest* cmdBufPtr;
     OSContPackedRequest request;
     s32 i;
 
     // some kind of weird zeroing code
     for (i = 0; i < 0x10; i++) {
-        *((u32 *) &_osContCmdBuf + i) = 0;
+        *((u32*) &_osContCmdBuf + i) = 0;
     }
 
     _osContPifCtrl = 1;

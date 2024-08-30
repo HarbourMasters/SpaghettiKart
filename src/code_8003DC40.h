@@ -1,7 +1,7 @@
 #ifndef CODE_8003DC40_H
 #define CODE_8003DC40_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 

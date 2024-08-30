@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include "mixer.h"
 
-#pragma GCC optimize ("unroll-loops")
+#pragma GCC optimize("unroll-loops")
 
 #define ROUND_UP_64(v) (((v) + 63) & ~63)
 #define ROUND_UP_32(v) (((v) + 31) & ~31)
@@ -43,7 +43,7 @@ static struct {
     int16_t vol_wet;
 #endif
 
-    ADPCM_STATE *adpcm_loop_state;
+    ADPCM_STATE* adpcm_loop_state;
 
     int16_t adpcm_table[8][2][8];
 
@@ -59,19 +59,27 @@ static struct {
 } rspa;
 
 void aDownsampleHalfImpl(uint16_t n_samples, uint16_t in_addr, uint16_t out_addr) {
-    int16_t *in = BUF_S16(in_addr);
-    int16_t *out = BUF_S16(out_addr);
+    int16_t* in = BUF_S16(in_addr);
+    int16_t* out = BUF_S16(out_addr);
     int n = ROUND_UP_8(n_samples);
 
     do {
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
-        *out++ = *in++; in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
+        *out++ = *in++;
+        in++;
 
         n -= 8;
     } while (n > 0);

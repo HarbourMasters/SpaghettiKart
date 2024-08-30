@@ -4,12 +4,7 @@
 #include <libultraship.h>
 #include <common_structs.h>
 
-enum CeremonyActorType {
-    Initial,
-    Balloon,
-    FireworkCone,
-    FireworkBurst
-};
+enum CeremonyActorType { Initial, Balloon, FireworkCone, FireworkBurst };
 
 // unk
 typedef struct {
@@ -45,7 +40,7 @@ typedef struct {
     /* 0x1C */ f32 unk1C;
     /* 0x20 */ f32 unk20;
     /* 0x24 */ f32 unk24;
-    /* 0x28 */ ActorInitParams *initParams;
+    /* 0x28 */ ActorInitParams* initParams;
     /* 0x2C */ s16 unk2C;
     /* 0x2E */ s16 unk2E;
     /* 0x30 */ s16 unk30;
@@ -72,7 +67,7 @@ typedef struct {
     /* 0x1C */ f32 unk1C;
     /* 0x20 */ f32 unk20;
     /* 0x24 */ f32 unk24;
-    /* 0x28 */ ActorInitParams *initParams;
+    /* 0x28 */ ActorInitParams* initParams;
     /* 0x2C */ s32 unk2C;
     /* 0x30 */ s32 unk30; // s32 instead of s16
     /* 0x34 */ f32 unk34; // f32 instead of s16
@@ -86,14 +81,14 @@ typedef struct {
 void update_actors_loop(void);
 void func_80280650(void);
 void set_initial_position(CeremonyActor*);
-CeremonyActor *find_available_entry(void);
-CeremonyActor *new_actor(ActorInitParams*);
-u16  random_u16_credits(void);
-f32  random_float_between_0_and_1(void);
-f32  random_who_knows(f32);
+CeremonyActor* find_available_entry(void);
+CeremonyActor* new_actor(ActorInitParams*);
+u16 random_u16_credits(void);
+f32 random_float_between_0_and_1(void);
+f32 random_who_knows(f32);
 void func_80280884(void);
-void firework_cone_update_and_spawn_burst(Firework *);
-void func_80280A28(Vec3f, Vec3s, f32 );
+void firework_cone_update_and_spawn_burst(Firework*);
+void func_80280A28(Vec3f, Vec3s, f32);
 void render_fireworks(Vec3f, f32, s32, s16);
 void balloons_and_fireworks_init(void);
 void func_80280FFC(void);
@@ -107,7 +102,7 @@ void func_80281540(void);
 void podium_ceremony_loop(void);
 
 extern struct_D_802874D8 D_802874D8;
-extern CeremonyActor *sPodiumActorList;
+extern CeremonyActor* sPodiumActorList;
 extern s32 D_802874FC;
 
 extern ActorInitParams initBalloon;
@@ -115,8 +110,8 @@ extern ActorInitParams initCone;
 extern ActorInitParams initInitUnk;
 extern ActorInitParams initBurst;
 
-extern Gfx *D_802874D4;
-extern s32  D_802874FC;
+extern Gfx* D_802874D4;
+extern s32 D_802874FC;
 extern Mat4 D_80287500;
 
 #endif

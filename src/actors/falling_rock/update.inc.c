@@ -3,9 +3,9 @@
 #include <main.h>
 #include <assets/choco_mountain_data.h>
 
-void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
-    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
-    Vec3s sp24 = {60, 120, 180};
+void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
+    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    Vec3s sp24 = { 60, 120, 180 };
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
     rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
     rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
@@ -20,10 +20,9 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
  *
  * @param spawnData
  */
-void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
-    // Casting this to prevent warning does not work.
-    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) LOAD_ASSET(spawnData);
-    struct FallingRock *temp_v1;
+void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    struct FallingRock* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
@@ -36,10 +35,10 @@ void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
         vec3f_set(startingVelocity, 0, 0, 0);
         vec3s_set(startingRot, 0, 0, 0);
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
-        temp_v1 = (struct FallingRock *) &gActorList[temp];
+        temp_v1 = (struct FallingRock*) &gActorList[temp];
 
         temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((Collision *) &temp_v1->unk30);
+        func_802AAAAC((Collision*) &temp_v1->unk30);
         temp_s0++;
     }
 }
@@ -50,7 +49,7 @@ void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
  *
  * @param rock
  */
-void update_actor_falling_rocks(struct FallingRock *rock) {
+void update_actor_falling_rocks(struct FallingRock* rock) {
     Vec3f unkVec;
     f32 pad0;
     f32 pad1;
@@ -91,8 +90,7 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
         if (unkVec[1] == 0.0f) {
             rock->velocity[1] *= -1.2f;
             return;
-        }
-        else {
+        } else {
             unkVec[0] = -rock->unk30.unk48[0];
             unkVec[2] = -rock->unk30.unk48[2];
             rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[0];
@@ -108,8 +106,7 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
         unkVec[1] = -rock->unk30.unk54[1];
         if (unkVec[1] == 0.0f) {
             rock->velocity[1] *= -1.2f;
-        }
-        else {
+        } else {
             unkVec[0] = -rock->unk30.unk54[0];
             unkVec[2] = -rock->unk30.unk54[2];
             rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[1];

@@ -24,4 +24,4 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryVec3fV0::ReadResource(std:
 
     return vec;
 }
-} // namespace LUS
+} // namespace SF64
