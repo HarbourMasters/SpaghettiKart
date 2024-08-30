@@ -1,6 +1,8 @@
 #include <libultraship.h>
 #include "mk64.h"
 
+//! @todo decide to use colours or textures and fix displaylists because they are buggy
+
 void render_collision(void) {
     Mat4 matrix;
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
