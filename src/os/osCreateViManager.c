@@ -17,7 +17,7 @@ extern void __osTimerInterrupt(void);
 extern OSTime __osCurrentTime;
 extern u32 __osBaseCounter;
 extern u32 __osViIntrCount;
-void viMgrMain(void *);
+void viMgrMain(void*);
 
 void osCreateViManager(OSPri pri) {
     u32 int_disabled;
@@ -49,7 +49,7 @@ void osCreateViManager(OSPri pri) {
         viMgrMainArgs.piDmaCallback = NULL;
         viMgrMainArgs.epiDmaCallback = NULL;
 
-        osCreateThread(&viMgrThread, 0, viMgrMain, (void *) &viMgrMainArgs, &viMgrStack[0x400], pri);
+        osCreateThread(&viMgrThread, 0, viMgrMain, (void*) &viMgrMainArgs, &viMgrStack[0x400], pri);
         __osViInit();
         osStartThread(&viMgrThread);
         __osRestoreInt(int_disabled);
@@ -59,10 +59,10 @@ void osCreateViManager(OSPri pri) {
     }
 }
 
-void viMgrMain(void *vargs) {
+void viMgrMain(void* vargs) {
     static u16 retrace;
-    OSViContext *context;
-    OSMgrArgs *args;
+    OSViContext* context;
+    OSMgrArgs* args;
     OSMesg mesg;
     u32 sp28; // always 0
     u32 sp24; // time related
@@ -74,11 +74,11 @@ void viMgrMain(void *vargs) {
         retrace = 1;
     }
 
-    args = (OSMgrArgs *) vargs;
+    args = (OSMgrArgs*) vargs;
 
     while (true) {
         osRecvMesg(args->eventQueue, &mesg, OS_MESG_BLOCK);
-        switch (*(u16 *) mesg) {
+        switch (*(u16*) mesg) {
             case 13:
                 __osViSwapContext();
                 if (!--retrace) {

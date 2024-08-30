@@ -3,7 +3,7 @@
 #include "hardware.h"
 #include <macros.h>
 
-#define PIF_ADDR_START (void *) 0x1FC007FC
+#define PIF_ADDR_START (void*) 0x1FC007FC
 
 typedef struct {
     u32 instr00;
@@ -15,7 +15,7 @@ typedef struct {
 u32 D_80194040;
 
 u64 osClockRate = 62500000;
-u32 D_800EA5E8 = 0;
+u32 __osShutdown = 0;
 u32 __OSGlobalIntMask = OS_IM_ALL;
 u32 D_800EA5F0 = 0;
 
@@ -43,14 +43,12 @@ void osInitialize(void) {
     while (__osSiRawWriteIo(PIF_ADDR_START, sp34 | 8)) {
         ;
     }
-    *(exceptionPreamble *) EXCEPTION_TLB_MISS = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_XTLB_MISS = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_CACHE_ERROR = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_GENERAL = __osExceptionPreamble;
-    osWritebackDCache((void *) 0x80000000,
-                      EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
-    osInvalICache((void *) 0x80000000,
-                  EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
+    *(exceptionPreamble*) EXCEPTION_TLB_MISS = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_XTLB_MISS = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_CACHE_ERROR = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_GENERAL = __osExceptionPreamble;
+    osWritebackDCache((void*) 0x80000000, EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
+    osInvalICache((void*) 0x80000000, EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
     osMapTLBRdb();
     osPiRawReadIo(4, &sp30);
     sp30 &= ~0xf;
@@ -59,7 +57,7 @@ void osInitialize(void) {
     }
     osClockRate = osClockRate * 3 / 4;
     if (osResetType == RESET_TYPE_COLD_RESET) {
-        //bzero(osAppNmiBuffer, sizeof(osAppNmiBuffer));
+        // bzero(osAppNmiBuffer, sizeof(osAppNmiBuffer));
     }
 
     eu_sp30 = HW_REG(PI_STATUS_REG, u32);

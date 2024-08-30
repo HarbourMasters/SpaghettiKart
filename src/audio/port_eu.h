@@ -30,10 +30,10 @@ extern OSMesg D_80194028[];
 extern OSMesg D_80194038[];
 extern OSMesg D_8019403C[];
 
-extern OSMesgQueue *D_800EA3A8;
-extern OSMesgQueue *D_800EA3AC;
-extern OSMesgQueue *D_800EA3B0;
-extern OSMesgQueue *D_800EA3B4;
+extern OSMesgQueue* D_800EA3A8;
+extern OSMesgQueue* D_800EA3AC;
+extern OSMesgQueue* D_800EA3B0;
+extern OSMesgQueue* D_800EA3B4;
 extern s32 D_800EA484;
 extern s32 D_800EA4A4;
 

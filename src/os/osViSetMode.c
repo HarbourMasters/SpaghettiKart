@@ -1,8 +1,8 @@
 #include "libultra_internal.h"
 
-extern OSViContext *__osViNext;
+extern OSViContext* __osViNext;
 
-void osViSetMode(OSViMode *mode) {
+void osViSetMode(OSViMode* mode) {
     register u32 int_disabled = __osDisableInt();
     __osViNext->modep = mode;
     __osViNext->state = 1;

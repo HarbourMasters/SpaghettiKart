@@ -29,4 +29,4 @@ class MessageLookup : public Ship::Resource<MsgLookup> {
 
     std::vector<MsgLookup> mLookupTable;
 };
-}
+} // namespace SF64

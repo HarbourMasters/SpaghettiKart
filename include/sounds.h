@@ -15,7 +15,7 @@
     ((sound_bank << 24) | (byte2 << 16) | (byte3 << 8) | sound_id)
 
 /* Intro */
-#define SOUND_INTRO_LOGO SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08) //SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08)
+#define SOUND_INTRO_LOGO SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08) // SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08)
 // Welcome to Mario Kart. Used in intro and credits.
 #define SOUND_INTRO_WELCOME SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x09)
 #define SOUND_INTRO_ENTER_MENU SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1A)
@@ -66,7 +66,6 @@
 #define SOUND_MENU_HEADPHONES SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x25)
 #define SOUND_MENU_MONO SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x29)
 
-
 /* Staging */
 // Red and orange staging lights that Lakitu holds.
 #define SOUND_ACTION_COUNTDOWN_LIGHT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x03)
@@ -93,14 +92,12 @@
 #define SOUND_ITEM_STAR SOUND_ARG_LOAD(0x31, 0x02, 0x90, 0x08)
 #define SOUND_ITEM_THUNDERBOLT SOUND_ARG_LOAD(0x51, 0x01, 0xC0, 0x0C)
 
-
 /* Score Screen */
 // Coin pickup sound (perfect fourth; B to E)
 #define SOUND_ACTION_COUNT_SCORE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x17)
 #define SOUND_ACTION_NEXT_COURSE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x15)
 // Same sound as ENTER_MENU
 #define SOUND_ACTION_CONTINUE_UNKNOWN SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1B)
-
 
 /* Ceremony */
 // Congratulation
@@ -117,9 +114,5 @@
 /* Credits */
 // Hey, you're very good. See you next time!
 #define SOUND_CREDITS_FAREWELL SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x26)
-
-
-
-
 
 #endif // SOUNDS_H

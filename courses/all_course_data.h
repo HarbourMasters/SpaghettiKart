@@ -25,5 +25,4 @@
 #include <assets/block_fort_data.h>
 #include <assets/double_deck_data.h>
 
-
 #endif // ALL_COURSE_DATA_H

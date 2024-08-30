@@ -11,7 +11,7 @@
 #include <camera_junk.h>
 #include <ceremony_and_credits.h>
 #include <code_800029B0.h>
-#include <code_80004740.h>
+#include <animation.h>
 #include <code_80005FD0.h>
 #include <render_player.h>
 #include <player_controller.h>

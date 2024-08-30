@@ -8,4 +8,4 @@ LimbData** Skeleton::GetPointer() {
 size_t Skeleton::GetPointerSize() {
     return mLimbs.size() * sizeof(LimbData*);
 }
-}
+} // namespace SF64

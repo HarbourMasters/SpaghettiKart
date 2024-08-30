@@ -6,12 +6,12 @@
 // this file must include some globally referenced data because it is not called anywhere
 // data, comes shortly before _Ldtob I think, before crash_screen
 
-extern OSPiHandle *__osPiTable;
+extern OSPiHandle* __osPiTable;
 // bss
 OSPiHandle LeoDiskHandle;
-OSPiHandle *__osDiskHandle;
+OSPiHandle* __osDiskHandle;
 
-OSPiHandle *osLeoDiskInit(void) {
+OSPiHandle* osLeoDiskInit(void) {
     s32 sp1c;
     LeoDiskHandle.type = 2;
     LeoDiskHandle.baseAddress = (0xa0000000 | 0x05000000);

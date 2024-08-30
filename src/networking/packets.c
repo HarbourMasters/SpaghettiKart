@@ -3,22 +3,22 @@
 #include "networking.h"
 #include "code_800029B0.h"
 
-void handleJoinPacket(const char *data) {
+void handleJoinPacket(const char* data) {
     printf("Join packet received: %s\n", data);
     // Handle join logic here
 }
 
-void handleLeavePacket(const char *data) {
+void handleLeavePacket(const char* data) {
     printf("Leave packet received: %s\n", data);
     // Handle leave logic here
 }
 
-void handleMessagePacket(const char *data) {
+void handleMessagePacket(const char* data) {
     printf("%s\n", data);
     // Handle message logic here
 }
 
-void handleMessageNumberPacket(const char *data) {
+void handleMessageNumberPacket(const char* data) {
     printf("%s\n", data);
     // Handle message logic here
 }
@@ -46,7 +46,7 @@ void send_data_packet(TCPsocket socket, int type, const uint8_t* payload, size_t
     // }
 }
 
-void send_str_packet(TCPsocket socket, uint8_t type, const char *payload) {
+void send_str_packet(TCPsocket socket, uint8_t type, const char* payload) {
     char buffer[BUFFER_SIZE];
     int offset = 0;
 
@@ -61,7 +61,7 @@ void send_str_packet(TCPsocket socket, uint8_t type, const char *payload) {
         return;
     }
 
-    *(uint16_t *)(buffer + offset) = size;
+    *(uint16_t*) (buffer + offset) = size;
     offset += sizeof(uint16_t);
 
     memcpy(buffer + offset, payload, size);
@@ -114,11 +114,11 @@ void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t 
     offset += sizeof(uint8_t);
 
     // Write the data size into the buffer
-    *(uint16_t *)(buffer +offset) = size;
+    *(uint16_t*) (buffer + offset) = size;
     offset += sizeof(uint16_t);
 
     // Write the payload into the buffer
-    *(uint32_t *)(buffer + offset) = payload;
+    *(uint32_t*) (buffer + offset) = payload;
     offset += sizeof(uint32_t);
 
     // Send the buffer through the socket

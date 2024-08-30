@@ -35,7 +35,7 @@ OSViMode osViModePalLan1 = {
 };
 
 OSViMode osViModeMpalLan1 = {
-    /*type*/ 30, //osViModePalLan1
+    /*type*/ 30, // osViModePalLan1
     /*comRegs*/
     { /*ctrl*/ 12574,
       /*width*/ 320,

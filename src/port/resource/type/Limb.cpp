@@ -8,4 +8,4 @@ LimbData* Limb::GetPointer() {
 size_t Limb::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SF64

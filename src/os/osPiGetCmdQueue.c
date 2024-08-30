@@ -2,7 +2,7 @@
 
 extern OSMgrArgs __osPiDevMgr;
 
-OSMesgQueue *osPiGetCmdQueue(void) {
+OSMesgQueue* osPiGetCmdQueue(void) {
     if (!__osPiDevMgr.initialized) {
         return NULL;
     }

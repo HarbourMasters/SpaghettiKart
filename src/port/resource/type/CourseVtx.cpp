@@ -12,4 +12,4 @@ CourseVtxData* CourseVtxClass::GetPointer() {
 size_t CourseVtxClass::GetPointerSize() {
     return CourseVtxList.size() * sizeof(CourseVtxData);
 }
-} // namespace LUS
+} // namespace MK64

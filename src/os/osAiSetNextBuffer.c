@@ -18,8 +18,8 @@ u8 hdwrBugFlag = 0;
  * because it is now patched by osAiSetNextBuffer.
  */
 
-s32 osAiSetNextBuffer(void *buff, u32 len) {
-    u8 *sp1c = buff;
+s32 osAiSetNextBuffer(void* buff, u32 len) {
+    u8* sp1c = buff;
     if (hdwrBugFlag != 0) {
         sp1c -= 0x2000;
     }
@@ -34,7 +34,7 @@ s32 osAiSetNextBuffer(void *buff, u32 len) {
         return -1;
     }
 
-    HW_REG(AI_DRAM_ADDR_REG, void *) = (void *) osVirtualToPhysical(sp1c);
+    HW_REG(AI_DRAM_ADDR_REG, void*) = (void*) osVirtualToPhysical(sp1c);
     HW_REG(AI_LEN_REG, u32) = len;
     return 0;
 }

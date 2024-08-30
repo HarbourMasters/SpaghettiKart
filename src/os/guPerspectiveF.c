@@ -1,15 +1,11 @@
 #include "libultra_internal.h"
 
-extern s16 D_802B87B4;
-extern s16 D_802B87B0;
-
-void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect, float near, float far,
-                    float scale) {
+void guPerspectiveF(float mf[4][4], u16* perspNorm, float fovy, float aspect, float near, float far, float scale) {
     float yscale;
     int row;
     int col;
     if (CVarGetInteger("gNoculling", 0)) {
-        far = CVarGetFloat("gFarFrustrum",10000.0f);
+        far = CVarGetFloat("gFarFrustrum", 10000.0f);
     }
     guMtxIdentF(mf);
     fovy *= GU_PI / 180.0;
@@ -37,8 +33,7 @@ void guPerspectiveF(float mf[4][4], u16 *perspNorm, float fovy, float aspect, fl
     }
 }
 
-void guPerspective(Mtx *m, u16 *perspNorm, float fovy, float aspect, float near, float far,
-                   float scale) {
+void guPerspective(Mtx* m, u16* perspNorm, float fovy, float aspect, float near, float far, float scale) {
     float mat[4][4];
     guPerspectiveF(mat, perspNorm, fovy, aspect, near, far, scale);
     guMtxF2L(mat, m);

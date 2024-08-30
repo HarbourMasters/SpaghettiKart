@@ -2,10 +2,10 @@
 
 extern OSMgrArgs __osPiDevMgr;
 
-s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr,
-                 size_t nbytes, OSMesgQueue *mq) {
+s32 osPiStartDma(OSIoMesg* mb, s32 priority, s32 direction, uintptr_t devAddr, void* vAddr, size_t nbytes,
+                 OSMesgQueue* mq) {
     register s32 result;
-    register OSMesgQueue *cmdQueue;
+    register OSMesgQueue* cmdQueue;
     if (!__osPiDevMgr.initialized) {
         return -1;
     }

@@ -7,7 +7,7 @@
 .section .text, "ax"
 
 glabel __osSetSR
-    mtc0  $a0, $12
+    mtc0  $a0, C0_SR
     nop
     jr    $ra
      nop

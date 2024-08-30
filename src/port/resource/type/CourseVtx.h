@@ -5,9 +5,9 @@
 #include <libultra/gbi.h>
 
 typedef struct {
-    s16 ob[3];    /* x, y, z */
-    s16 tc[2];    /* texture coord */
-    s8  ca[4];    /* color & alpha */
+    s16 ob[3]; /* x, y, z */
+    s16 tc[2]; /* texture coord */
+    s8 ca[4];  /* color & alpha */
 } CourseVtxData;
 
 namespace MK64 {
@@ -22,4 +22,4 @@ class CourseVtxClass : public Ship::Resource<CourseVtxData> {
 
     std::vector<CourseVtxData> CourseVtxList;
 };
-} // namespace LUS
+} // namespace MK64

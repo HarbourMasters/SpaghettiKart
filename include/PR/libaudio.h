@@ -3,19 +3,17 @@
 
 #include <libultra/abi.h>
 
-typedef struct
-{
-    u8 *offset;
+typedef struct {
+    u8* offset;
     s32 len;
 } ALSeqData;
 
-typedef struct
-{
+typedef struct {
     s16 revision;
     s16 seqCount;
     ALSeqData seqArray[1];
 } ALSeqFile;
 
-void alSeqFileNew(ALSeqFile *f, u8 *base);
+void alSeqFileNew(ALSeqFile* f, u8* base);
 
 #endif

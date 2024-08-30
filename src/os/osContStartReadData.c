@@ -15,7 +15,7 @@ extern u8 __osContLastCmd;
 extern u8 _osContNumControllers;
 
 void __osPackReadData(void);
-s32 osContStartReadData(OSMesgQueue *mesg) {
+s32 osContStartReadData(OSMesgQueue* mesg) {
     s32 ret = 0;
     s32 i;
     __osSiGetAccess();
@@ -25,7 +25,7 @@ s32 osContStartReadData(OSMesgQueue *mesg) {
         osRecvMesg(mesg, NULL, OS_MESG_BLOCK);
     }
     for (i = 0; i < 0x10; i++) {
-        *((u32 *) &_osContCmdBuf + i) = 255;
+        *((u32*) &_osContCmdBuf + i) = 255;
     }
 
     _osContPifCtrl = 0;
@@ -34,8 +34,8 @@ s32 osContStartReadData(OSMesgQueue *mesg) {
     __osSiRelAccess();
     return ret;
 }
-void osContGetReadData(OSContPad *pad) {
-    OSContPackedRead *cmdBufPtr;
+void osContGetReadData(OSContPad* pad) {
+    OSContPackedRead* cmdBufPtr;
     OSContPackedRead response;
     s32 i;
     cmdBufPtr = &_osContCmdBuf[0].read;
@@ -50,12 +50,12 @@ void osContGetReadData(OSContPad *pad) {
     };
 }
 void __osPackReadData() {
-    OSContPackedRead *cmdBufPtr;
+    OSContPackedRead* cmdBufPtr;
     OSContPackedRead request;
     s32 i;
     cmdBufPtr = &_osContCmdBuf[0].read;
     for (i = 0; i < 0x10; i++) {
-        *((u32 *) &_osContCmdBuf + i) = 0;
+        *((u32*) &_osContCmdBuf + i) = 0;
     }
 
     _osContPifCtrl = 1;

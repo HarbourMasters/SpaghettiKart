@@ -5,9 +5,9 @@
 #include <macros.h>
 #include <common_structs.h>
 
-//#pragma GCC diagnostic push
-//#pragma GCC diagnostic ignored "-Wmicrosoft-extension"
-//#pragma GCC diagnostic ignored "-Wmissing-member-name-in-structure-/-union"
+// #pragma GCC diagnostic push
+// #pragma GCC diagnostic ignored "-Wmicrosoft-extension"
+// #pragma GCC diagnostic ignored "-Wmissing-member-name-in-structure-/-union"
 
 /**
  * gActorList should be understood to be populated by generic Actor structs.
@@ -90,16 +90,16 @@ enum ActorType {
 
 // Actor shell->state (green, red and blue)
 enum ShellState {
-    HELD_SHELL,                   // Single shell that has not been dropped. (probably holding Z).
-    RELEASED_SHELL,               // This is the short window where single shells aren't being held or launched.
-    MOVING_SHELL,                 // Moving towards its target after being shot.
-    RED_SHELL_LOCK_ON,            // Red shell is targeting.
-    TRIPLE_GREEN_SHELL,           // Loses triple shell state when shot.
-    GREEN_SHELL_HIT_A_RACER,      // A racer has been hit by a green shell.
-    TRIPLE_RED_SHELL,             // Loses triple shell state when shot.
-    DESTROYED_SHELL,              // Collision with the shell.
-    BLUE_SHELL_LOCK_ON,           // A blue shell has found a target and is hastily approaching it.
-    BLUE_SHELL_TARGET_ELIMINATED  // Mission completed, well done boss.
+    HELD_SHELL,                  // Single shell that has not been dropped. (probably holding Z).
+    RELEASED_SHELL,              // This is the short window where single shells aren't being held or launched.
+    MOVING_SHELL,                // Moving towards its target after being shot.
+    RED_SHELL_LOCK_ON,           // Red shell is targeting.
+    TRIPLE_GREEN_SHELL,          // Loses triple shell state when shot.
+    GREEN_SHELL_HIT_A_RACER,     // A racer has been hit by a green shell.
+    TRIPLE_RED_SHELL,            // Loses triple shell state when shot.
+    DESTROYED_SHELL,             // Collision with the shell.
+    BLUE_SHELL_LOCK_ON,          // A blue shell has found a target and is hastily approaching it.
+    BLUE_SHELL_TARGET_ELIMINATED // Mission completed, well done boss.
 };
 
 // Actor banana->state
@@ -113,7 +113,7 @@ enum BananaState {
 };
 
 // Actor fakeItemBox->state
-#define HELD_FAKE_ITEM_BOX 0 // Item box is being held be Z.
+#define HELD_FAKE_ITEM_BOX 0      // Item box is being held be Z.
 #define FAKE_ITEM_BOX_ON_GROUND 1 // Item box is on the ground.
 #define DESTROYED_FAKE_ITEM_BOX 2 // Collision with fake item box.
 
@@ -200,7 +200,7 @@ struct ActorSpawnData {
  * So, this struct type acts as both spawn data AND a stripped down Actor for those trees.
  * Give the tree a position, a byte for flags stuffed into an s16 used to indicate tree sub-type,
  * and an s16 containing as the tree's original Y position.
-**/
+ **/
 struct UnkActorSpawnData {
     /* 0x00 */ Vec3s pos;
     // Techinically only the bottom byte of someId is the "id". The top byte is used for flags.
@@ -230,9 +230,11 @@ struct YoshiValleyEgg {
 struct KiwanoFruit {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
-    /* 0x04 */ s16 targetPlayer; // Id of the player this actor tracks. Each player has their own kiwano actor just for them
+    /* 0x04 */ s16
+        targetPlayer; // Id of the player this actor tracks. Each player has their own kiwano actor just for them
     /* 0x06 */ s16 state;
-    /* 0x08 */ f32 bonkTimer; // bonkState? Not sure what this is tracking, but its some form of count down that starts after the fruit hits you
+    /* 0x08 */ f32 bonkTimer; // bonkState? Not sure what this is tracking, but its some form of count down that starts
+                              // after the fruit hits you
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ s16 animState;
     /* 0x12 */ s16 animTimer;
@@ -315,8 +317,9 @@ struct ShellActor {
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ s16 rotVelocity; // Change in rotAngle on a per-update basis
     union {
-        /* 0x12 */ s16 rotAngle; // Angle of rotation around player (or parent?), not the rotation of the shell itself
-        /* 0x12 */ u16 pathIndex; // Index in the set of points that make up the "path" the red/blue shell follows (may be GP mode exclusive)
+        /* 0x12 */ s16 rotAngle;  // Angle of rotation around player (or parent?), not the rotation of the shell itself
+        /* 0x12 */ u16 pathIndex; // Index in the set of points that make up the "path" the red/blue shell follows (may
+                                  // be GP mode exclusive)
     };
     /* 0x14 */ s16 playerId; // Id of the player that "owns" the shell
     /* 0x16 */ s16 unk_16;
@@ -331,8 +334,8 @@ struct ItemBox {
     /* 0x04 */ s16 someTimer;
     /* 0x06 */ s16 state;
     /* 0x08 */ f32 resetDistance; // Value added to the Y position when box is touched. Expected to be negative
-    // Distance at which a player can activate the item box
-    // Named "bounding box" to match the name used for the "size" of a kart
+                                  // Distance at which a player can activate the item box
+                                  // Named "bounding box" to match the name used for the "size" of a kart
     /* 0x0C */ f32 boundingBoxSize;
     /* 0x10 */ Vec3s rot;
     /* 0x16 */ s16 unk_16;
@@ -366,7 +369,7 @@ struct BananaBunchParent {
     /* 0x06 */ s16 state;
     /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 unk_0C;
-    /* 0x10 */ s16 playerId; // Player that own the bananas
+    /* 0x10 */ s16 playerId;         // Player that own the bananas
     /* 0x12 */ s16 bananaIndices[5]; // Indices in gActorList for the bananas owned by this parent
     /* 0x1C */ s16 bananasAvailable;
     /* 0x1E */ s16 unk_1E;
@@ -385,9 +388,9 @@ struct BananaActor {
     union {
         /* 0x10 */ Vec3s rot;
         struct {
-        /* 0x10 */ s16 playerId; // Id of the player that owns this banana
-        /* 0x12 */ s16 elderIndex; // Index in gActorList of the next-oldest banana in the bunch
-        /* 0x14 */ s16 youngerIndex; // Index in gActorList of the next-youngest banana in the bunch
+            /* 0x10 */ s16 playerId;     // Id of the player that owns this banana
+            /* 0x12 */ s16 elderIndex;   // Index in gActorList of the next-oldest banana in the bunch
+            /* 0x14 */ s16 youngerIndex; // Index in gActorList of the next-youngest banana in the bunch
         };
     };
     /* 0x16 */ s16 unk_16;
@@ -396,6 +399,6 @@ struct BananaActor {
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
-//#pragma GCC diagnostic pop
+// #pragma GCC diagnostic pop
 
 #endif // ACTOR_TYPES_H

@@ -4,11 +4,11 @@
 
 /**
  * @brief Renders the item box actor.
- * 
- * @param camera 
- * @param item_box 
+ *
+ * @param camera
+ * @param item_box
  */
-void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
+void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
     UNUSED s32 pad[2];
     Vec3f someVec1;
     Vec3f someVec2;
@@ -26,7 +26,8 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
     f32 temp_f2_2;
     f32 someMultiplier;
 
-    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
+                                        4000000.0f);
     if (CVarGetInteger("gNoculling", 0) == 1) {
         temp_f0 = CLAMP(temp_f0, 0.0f, 600000.0f);
     }
@@ -40,28 +41,36 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec2[2] = item_box->pos[2];
             mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
 
-            if (!render_set_position(someMatrix1, 0)) { return; }
+            if (!render_set_position(someMatrix1, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D002EE8);
             someRot[1] = item_box->rot[1] * 2;
             someVec2[1] = item_box->pos[1];
             mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
 
-            if (!render_set_position(someMatrix1, 0)) { return; }
+            if (!render_set_position(someMatrix1, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state == 5) {
             mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
 
-            if (!render_set_position(someMatrix1, 0)) { return; }
+            if (!render_set_position(someMatrix1, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state != 3) {
             mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
 
-            if (!render_set_position(someMatrix1, 0)) { return; }
+            if (!render_set_position(someMatrix1, 0)) {
+                return;
+            }
 
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -102,7 +111,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = thing;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D003158);
             temp_f2_2 = 0.8f * thing;
@@ -112,7 +123,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = temp_f12;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D0031B8);
             temp_f0_2 = -0.5f * thing;
@@ -121,7 +134,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = temp_f0_2;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D003128);
             if (!(item_box->someTimer & 1)) {
@@ -134,7 +149,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = -1.0f * thing;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D0031E8);
             temp_f0_3 = -0.8f * thing;
@@ -143,7 +160,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = temp_f0_2;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D003188);
             someVec1[0] = temp_f0_3;
@@ -151,7 +170,9 @@ void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
             someVec1[2] = temp_f12;
             add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
 
-            if (!render_set_position(someMatrix2, 0)) { return; }
+            if (!render_set_position(someMatrix2, 0)) {
+                return;
+            }
 
             gSPDisplayList(gDisplayListHead++, D_0D0030F8);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);

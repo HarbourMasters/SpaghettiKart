@@ -109,4 +109,4 @@ std::shared_ptr<Ship::IResource> ResourceFactoryBinaryGenericArrayV0::ReadResour
 
     return arr;
 }
-} // namespace LUS
+} // namespace SF64

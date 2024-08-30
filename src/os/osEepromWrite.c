@@ -7,13 +7,13 @@ OSPifRam __osEepPifRam;
 
 extern u8 __osContLastCmd;
 
-s32 __osEepStatus(OSMesgQueue *, OSContStatus *);
-void __osPackEepWriteData(u8, u8 *);
+s32 __osEepStatus(OSMesgQueue*, OSContStatus*);
+void __osPackEepWriteData(u8, u8*);
 
-s32 osEepromWrite(OSMesgQueue *mq, u8 address, u8 *buffer) {
+s32 osEepromWrite(OSMesgQueue* mq, u8 address, u8* buffer) {
     s32 ret = 0;
     s32 i;
-    u8 *ptr = (u8 *) &__osEepPifRam.ramarray;
+    u8* ptr = (u8*) &__osEepPifRam.ramarray;
     __OSContEepromFormat eepromformat;
     OSContStatus sdata;
 
@@ -50,14 +50,14 @@ s32 osEepromWrite(OSMesgQueue *mq, u8 address, u8 *buffer) {
         ptr++;
     }
 
-    eepromformat = *(__OSContEepromFormat *) ptr;
+    eepromformat = *(__OSContEepromFormat*) ptr;
     ret = CHNL_ERR(eepromformat);
     __osSiRelAccess();
     return ret;
 }
 
-void __osPackEepWriteData(u8 address, u8 *buffer) {
-    u8 *ptr = (u8 *) &__osEepPifRam.ramarray;
+void __osPackEepWriteData(u8 address, u8* buffer) {
+    u8* ptr = (u8*) &__osEepPifRam.ramarray;
     __OSContEepromFormat eepromformat;
     s32 i;
 
@@ -78,15 +78,15 @@ void __osPackEepWriteData(u8 address, u8 *buffer) {
     for (i = 0; i < 4; i++) {
         *ptr++ = 0;
     }
-    *(__OSContEepromFormat *) ptr = eepromformat;
+    *(__OSContEepromFormat*) ptr = eepromformat;
     ptr += sizeof(__OSContEepromFormat);
     *ptr = CONT_CMD_END;
 }
 
-s32 __osEepStatus(OSMesgQueue *mq, OSContStatus *data) {
+s32 __osEepStatus(OSMesgQueue* mq, OSContStatus* data) {
     u32 ret = 0;
     s32 i;
-    u8 *ptr = (u8 *) __osEepPifRam.ramarray;
+    u8* ptr = (u8*) __osEepPifRam.ramarray;
     __OSContRequesFormat requestformat;
 
     for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
@@ -94,7 +94,7 @@ s32 __osEepStatus(OSMesgQueue *mq, OSContStatus *data) {
     }
     __osEepPifRam.pifstatus = CONT_CMD_EXE;
 
-    ptr = (u8 *) __osEepPifRam.ramarray;
+    ptr = (u8*) __osEepPifRam.ramarray;
     for (i = 0; i < 4; i++) {
         *ptr++ = 0;
     }
@@ -107,7 +107,7 @@ s32 __osEepStatus(OSMesgQueue *mq, OSContStatus *data) {
     requestformat.typel = CONT_CMD_NOP;
     requestformat.status = CONT_CMD_NOP;
     requestformat.dummy1 = CONT_CMD_NOP;
-    *(__OSContRequesFormat *) ptr = requestformat;
+    *(__OSContRequesFormat*) ptr = requestformat;
 
     ptr += sizeof(__OSContRequesFormat);
     *ptr = CONT_CMD_END;
@@ -124,12 +124,12 @@ s32 __osEepStatus(OSMesgQueue *mq, OSContStatus *data) {
         return ret;
     }
 
-    ptr = (u8 *) __osEepPifRam.ramarray;
+    ptr = (u8*) __osEepPifRam.ramarray;
     for (i = 0; i < 4; i++) {
         *ptr++ = 0;
     }
 
-    requestformat = *(__OSContRequesFormat *) ptr;
+    requestformat = *(__OSContRequesFormat*) ptr;
     data->errnum = CHNL_ERR(requestformat);
     data->type = (requestformat.typel << 8) | requestformat.typeh;
     data->status = requestformat.status;

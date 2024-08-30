@@ -30,11 +30,12 @@ class EnvSettings : public Ship::Resource<EnvSettingsData> {
   public:
     using Resource::Resource;
 
-    EnvSettings() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    EnvSettings() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     EnvSettingsData* GetPointer();
     size_t GetPointerSize();
 
     EnvSettingsData mSettings{};
 };
-}
+} // namespace SF64

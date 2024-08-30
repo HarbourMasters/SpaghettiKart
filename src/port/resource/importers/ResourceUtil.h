@@ -12,4 +12,4 @@ template <typename T> T LoadChild(uint64_t crc) {
     auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
     return asset ? static_cast<T>(asset->GetRawPointer()) : nullptr;
 }
-}
+} // namespace SF64

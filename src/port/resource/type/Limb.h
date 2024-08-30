@@ -27,11 +27,12 @@ class Limb : public Ship::Resource<LimbData> {
   public:
     using Resource::Resource;
 
-    Limb() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    Limb() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     LimbData* GetPointer();
     size_t GetPointerSize();
 
     LimbData mData{};
 };
-}
+} // namespace SF64
