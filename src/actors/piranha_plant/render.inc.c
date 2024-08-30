@@ -53,6 +53,10 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
         return;
     }
 
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        temp_f0 = 0.0f;
+    }
+
     if (90000.0f < temp_f0) {
 
         switch (temp_lo) {
