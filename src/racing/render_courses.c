@@ -1567,13 +1567,14 @@ void func_80295D88(void) {
             find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
             D_8015F8E4 = -80.0f;
             break;
-        case COURSE_YOSHI_VALLEY:
+        case COURSE_YOSHI_VALLEY: {
             Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
             func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists(d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
+        }
         case COURSE_FRAPPE_SNOWLAND:
             parse_course_displaylists(d_course_frappe_snowland_addr);
             func_80295C6C();
