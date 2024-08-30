@@ -1371,13 +1371,6 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
         return;
     }
 
-    if ((CVarGetInteger("gFreecam", 0) == 1) ) {
-        freecam_render_setup();
-        // Render credits courses
-        func_8029569C();
-        return;
-    }
-
     if (creditsRenderMode) {
         func_8029569C();
         return;
