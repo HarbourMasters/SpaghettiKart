@@ -965,7 +965,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1037,7 +1037,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad[13];
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1205,7 +1205,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(2B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1214,7 +1214,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
-    func_802B5D64((uintptr_t) &D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1238,7 +1238,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1250,8 +1250,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64((uintptr_t) &D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1363,7 +1363,7 @@ void func_8029569C(void) {
 
 void render_course(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     if (creditsRenderMode) {
         func_8029569C();
         return;
