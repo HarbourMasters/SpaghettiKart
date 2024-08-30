@@ -22,6 +22,8 @@
 #include "courses/all_course_offsets.h"
 #include <assert.h>
 
+#include "enhancements/collision_viewer.h"
+
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
 UNUSED s32 D_802B87B8 = 0;
