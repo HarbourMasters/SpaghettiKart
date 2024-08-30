@@ -26,7 +26,7 @@ enum {
 
 typedef struct {
     bool enabled; // Enables networking
-    TCPsocket tcpSocket;
+    TCPsocket socket;
     IPaddress address;
     Player* localPlayer;
     bool isConnected;
@@ -38,6 +38,21 @@ typedef struct {
 } Network;
 
 extern Network gNetwork;
+
+typedef struct {
+    bool enabled; // Enables networking
+    UDPsocket socket;
+    IPaddress address;
+    Player* localPlayer;
+    bool isConnected;
+    bool loaded;
+    bool playersLoaded; // Are all players loaded?
+    bool gameStarted;
+    uint32_t cupVote;
+    uint32_t character;
+} UDPNetwork;
+
+extern UDPNetwork gNetworkUDP;
 
 typedef struct {
     char username[NETWORK_USERNAME_LENGTH];
@@ -56,7 +71,7 @@ extern u32 gSwappedSlot;
 
 /* Main Networking */
 void ConnectToServer(char* ip, uint16_t port, char* username);
-void networking_init(char* ip, uint16_t port);
+void start_tcp_client(char* ip, uint16_t port);
 void networking_update(void);
 void networking_ready_up(bool);
 void networking_cleanup(SDLNet_SocketSet);
@@ -66,6 +81,9 @@ void set_username(const char* username);
 void network_character_vote(uint32_t course);
 void network_cup_vote(uint32_t course);
 void networking_disconnect(void);
+
+/* UDP Networking */
+void start_udp_client(const char* ip, uint16_t port);
 
 /* Start Game */
 void spawn_network_players(f32*, f32*, f32);

@@ -43,11 +43,11 @@ void assign_player_control_types(void) {
 }
 
 void network_character_vote(uint32_t course) {
-    send_int_packet(gNetwork.tcpSocket, PACKET_SET_CHARACTER, course, sizeof(uint32_t));
+    send_int_packet(gNetwork.socket, PACKET_SET_CHARACTER, course, sizeof(uint32_t));
 }
 
 void network_cup_vote(uint32_t course) {
-    send_int_packet(gNetwork.tcpSocket, PACKET_COURSE_VOTE, course, sizeof(uint32_t));
+    send_int_packet(gNetwork.socket, PACKET_COURSE_VOTE, course, sizeof(uint32_t));
 }
 
 
@@ -139,7 +139,7 @@ s32 network_all_players_loaded() {
     }
     if (!gNetwork.loaded) {
         gNetwork.loaded = true;
-        send_int_packet(gNetwork.tcpSocket, PACKET_LOADED, true, sizeof(int));
+        send_int_packet(gNetwork.socket, PACKET_LOADED, true, sizeof(int));
     }
     if (gNetwork.playersLoaded) {
         gNetwork.gameStarted = true;

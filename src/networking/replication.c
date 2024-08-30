@@ -9,7 +9,7 @@ void replicate_player(const char* data) {
     if (gSwappedSlot != -1 && idx == 0) {
         idx = gSwappedSlot;
     }
-    printf("Swapped slot: %d", idx);
+    //printf("Swapped slot: %d", idx);
 
     gPlayers[idx].unk_002 = *(uint16_t*)data;
     data += sizeof(uint16_t);
@@ -38,7 +38,7 @@ void replicate_player(const char* data) {
 }
 
 void send_player(void) {
-    send_data_packet(gNetwork.tcpSocket, PACKET_PLAYER, &gPlayerOne, sizeof(Player));
+    send_data_packet(gNetwork.socket, PACKET_PLAYER, &gPlayerOne, sizeof(Player));
 }
 
 void ActorReplication() {
