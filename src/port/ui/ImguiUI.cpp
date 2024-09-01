@@ -442,7 +442,7 @@ void DrawEnhancementsMenu() {
 
         if (UIWidgets::BeginMenu("Gameplay")) {
             UIWidgets::CVarCheckbox(
-                "No Level of Detail (LOD)", "gDisableLOD",
+                "No Level of Detail (LOD)", "gDisableLod",
                 { .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance" });
             UIWidgets::CVarCheckbox("Ignore Rendering Limits", "gIgnoreRenderDistance",
                                     { .tooltip = "Renders game objects regardless of camera distance" });

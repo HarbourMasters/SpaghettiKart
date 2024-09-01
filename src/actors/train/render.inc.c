@@ -30,6 +30,10 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
         return;
     }
 
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        distance = 0.0f;
+    }
+
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
@@ -181,6 +185,10 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
         return;
     }
 
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        temp_f0 = 0.0f;
+    }
+
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
@@ -268,6 +276,10 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
 
     if (temp_f0 < 0.0f) {
         return;
+    }
+
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        temp_f0 = 0.0f;
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
