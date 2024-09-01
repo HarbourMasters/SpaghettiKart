@@ -448,7 +448,7 @@ void DrawEnhancementsMenu() {
                                     { .tooltip = "Renders game objects regardless of camera distance" });
             UIWidgets::CVarCheckbox("Select any star from menu", "gCompletedGame",
                                     { .tooltip = "Unlocks extra mode and sets all gold cups." });
-            UIWidgets::CVarCheckbox("Disable Culling", "gNoculling", { .tooltip = "Disable original culling of mk64" });
+            UIWidgets::CVarCheckbox("Disable Culling", "gNoCulling", { .tooltip = "Disable original culling of mk64" });
             UIWidgets::CVarSliderFloat(
                 "Far Frustrum", "gFarFrustrum", 0.0f, 10000.0f, 10000.0f,
                 { .tooltip = "Say how Far the Frustrum are when 'Disable Culling' are enable", .step = 10.0f });

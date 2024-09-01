@@ -16,7 +16,7 @@ void render_actor_railroad_crossing(Camera* arg0, struct RailroadCrossing* rr_cr
     f32 unk = is_within_render_distance(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1],
                                         4000000.0f);
 
-    if (CVarGetInteger("gNoculling", 0) == 1) {
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
         unk = MAX(unk, 0.0f);
     }
 

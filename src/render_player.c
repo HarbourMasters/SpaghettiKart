@@ -110,7 +110,7 @@ u16 check_player_camera_collision(Player* player, Camera* camera, f32 arg2, f32 
     s16 var_v0;
     u16 ret;
 
-    if (CVarGetInteger("gNoculling", 0) == 1) {
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
         return true;
     }
 

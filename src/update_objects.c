@@ -2788,7 +2788,7 @@ void func_800788F8(s32 objectIndex, u16 rot, Camera* camera) {
         set_object_flag_status_true(objectIndex, 0x00000010);
         return;
     }
-    if (CVarGetInteger("gNoculling", 0) == 1) {
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
         gObjectList[objectIndex].unk_09C = (D_8018D218 + (D_8018D1E8 * temp_v0));
         set_object_flag_status_true(objectIndex, 0x00000010);
         return;
