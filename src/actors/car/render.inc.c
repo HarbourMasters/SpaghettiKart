@@ -19,6 +19,9 @@ void render_actor_car(Camera* arg0, struct Actor* arg1) {
         is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
 
     if (!(temp_f0 < 0.0f)) {
+        if (CVarGetInteger("gDisableLod", 0) == 1) {
+            temp_f0 = 0.0f;
+        }
 
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

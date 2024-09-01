@@ -29,6 +29,11 @@ void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg,
         temp_f0 = 0.0f;
     }
 
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        arg3 = 15;
+        temp_f0 = 0.0f;
+    }
+
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     if ((arg3 > 12) && (arg3 < 20)) {
         if (temp_f0 < 640000.0f) {

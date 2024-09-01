@@ -23,6 +23,10 @@ void render_actor_school_bus(Camera* arg0, struct Actor* arg1) {
         return;
     }
 
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        temp_f0 = 0.0f;
+    }
+
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
