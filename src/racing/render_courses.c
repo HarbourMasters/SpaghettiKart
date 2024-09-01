@@ -1257,7 +1257,7 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64(D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
