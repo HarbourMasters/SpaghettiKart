@@ -30,7 +30,7 @@ void handle_start_game() {
 
 extern Player gPlayers[8];
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 4096
 void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, size_t payload_size) {
     uint8_t buffer[BUFFER_SIZE];
     size_t offset = 0;
@@ -54,8 +54,6 @@ void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, si
     //     fprintf(stderr, "Packet size exceeds buffer size\n");
     //     return;
     // }
-
-    
     *(uint16_t*)(buffer+offset) = gPlayers[0].unk_002;
     offset += sizeof(uint16_t);
     *(uint16_t*)(buffer+offset) = gPlayers[0].unk_006;
@@ -76,14 +74,8 @@ void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, si
     *(int16_t*)(buffer+offset) = gPlayers[0].rotation[2];
     offset += sizeof(int16_t);
 
-    //     *(int16_t*)(buffer+offset) = gPlayers[0].velocity[0];
-    // offset += sizeof(int16_t);
-    // *(int16_t*)(buffer+offset) = gPlayers[0].velocity[1];
-    // offset += sizeof(int16_t);
-    // *(int16_t*)(buffer+offset) = gPlayers[0].velocity[2];
-    // offset += sizeof(int16_t);
-
-   // memcpy(buffer+offset, &gPlayers[0], sizeof(Player));
+    // memcpy(buffer + offset, gPlayers, sizeof(Player));
+    // offset += sizeof(Player);
 
     // // Write player position data
     // memcpy(buffer + offset, 0x12345678, sizeof(int32_t));
@@ -178,6 +170,38 @@ void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t 
     // Write the payload into the buffer
     *(uint32_t*) (buffer + offset) = payload;
     offset += sizeof(uint32_t);
+
+    // Send the buffer through the socket
+    int len = SDLNet_TCP_Send(socket, buffer, offset);
+    if (len < offset) {
+        fprintf(stderr, "SDLNet_TCP_Send: %s\n", SDLNet_GetError());
+    }
+}
+
+void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip) {
+    // Ensure the buffer is large enough to hold the type, colon, and payload
+    if (sizeof(int) + 1 + sizeof(IPaddress) > BUFFER_SIZE) {
+        fprintf(stderr, "Sending data too big for the buffer\n");
+        return;
+    }
+
+    char buffer[BUFFER_SIZE];
+    int offset = 0;
+
+    // Write the packet type into the buffer
+    buffer[offset] = type;
+    offset += sizeof(uint8_t);
+
+    // Write the data size into the buffer
+    *(uint16_t*) (buffer + offset) = sizeof(IPaddress);
+    offset += sizeof(uint16_t);
+
+    // Write the payload into the buffer
+    *(uint32_t*) (buffer + offset) = ip->host;
+    offset += sizeof(uint32_t);
+
+    *(uint16_t*) (buffer + offset) = ip->port;
+    offset += sizeof(uint16_t);
 
     // Send the buffer through the socket
     int len = SDLNet_TCP_Send(socket, buffer, offset);

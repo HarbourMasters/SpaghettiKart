@@ -10,6 +10,7 @@
 
 enum {
     PACKET_JOIN,
+    PACKET_UDP_JOIN,
     PACKET_LEAVE,
     PACKET_MESSAGE,
     PACKET_LOADED,
@@ -19,6 +20,8 @@ enum {
     PACKET_SET_COURSE,
     PACKET_PLAYER_ASSIGN_SLOTS,
     PACKET_START_SESSION,
+    // udp packets
+    PACKET_REGISTER_UDP,
     PACKET_PLAYER,
     PACKET_ACTOR,
     PACKET_OBJECT
@@ -97,6 +100,7 @@ void assign_player_slots(const char* data);
 
 /* Packets */
 void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t size);
+void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip);
 void handleJoinPacket(const char* data);
 void handleLeavePacket(const char* data);
 void handleMessagePacket(const char* data);

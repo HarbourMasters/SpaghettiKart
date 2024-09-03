@@ -87,10 +87,9 @@ void udp_server_loop(void) {
         if (SDLNet_UDP_Recv(gNetworkUDP.socket, recvPacket)) {
             UdpPacket* packet = (UdpPacket*) recvPacket;
 
+            handleNetworkPlayerPacket(packet->data);
+            printf("udp packet: %d\n", packet->type);
             switch(packet->type) {
-                // case PACKET_PLAYER:
-                //     handleNetworkPlayerPacket(packet->data);
-                //     break;
                 case PACKET_PLAYER:
                     replicate_player(packet->data);
                     break;
@@ -102,13 +101,26 @@ void udp_server_loop(void) {
             // Send a response if necessary
         }
         SDL_Delay(10); // Prevent CPU overload
-        sendNetworkPlayerPacket(PACKET_PLAYER);
+        //sendNetworkPlayerPacket(PACKET_PLAYER);
     }
 }
 
 void handleNetworkPlayerPacket(UdpPacket* packet) {
     printf("Received packet from player 0x%X)\n", packet->data);
 }
+
+void udp_server_cleanup(void) {
+    SDLNet_FreePacket(udpPacket);
+    SDLNet_FreePacket(recvPacket);
+    SDLNet_UDP_Close(gNetworkUDP.socket);
+    SDLNet_Quit();
+}
+
+typedef struct {
+    uint8_t type;
+    uint16_t size;
+    u8 data[4096];
+} PacketUDP;
 
 void sendNetworkPlayerPacket(UdpPacket* packet) {
     // gNetworkUDP->address.host = dest->host;
@@ -118,12 +130,18 @@ void sendNetworkPlayerPacket(UdpPacket* packet) {
 
     //unsigned data
 
-    //memcpy();
+    PacketUDP pckt = {
+        .type = PACKET_PLAYER,
+        .size = sizeof(Player),
+        .data = 0,
+    };
+
+    memcpy(&pckt.data, &gPlayers[0], sizeof(Player));
 
     UDPpacket test = {
         .channel = -1,
-        .data = (uint8_t*) &gPlayers[0],
-        .len = sizeof(Player),
+        .data = (uint8_t*) &pckt,
+        .len = 4096,
         .maxlen = 4096,
         .status = 1,
         .address = gNetworkUDP.address,
@@ -135,9 +153,24 @@ void sendNetworkPlayerPacket(UdpPacket* packet) {
     }
 }
 
-void udp_server_cleanup() {
-    SDLNet_FreePacket(udpPacket);
-    SDLNet_FreePacket(recvPacket);
-    SDLNet_UDP_Close(gNetworkUDP.socket);
-    SDLNet_Quit();
+void send_udp_registration_packet(void) {
+    PacketUDP packet = {
+        .type = PACKET_REGISTER_UDP,
+        .size = 1,
+        .data = 0
+    };
+
+    UDPpacket test = {
+        .channel = -1,
+        .data = (uint8_t*) &packet,
+        .len = 4,
+        .maxlen = 4096,
+        .status = 1,
+        .address = gNetworkUDP.address,
+    };
+
+    // Send the packet
+    if (SDLNet_UDP_Send(gNetworkUDP.socket, -1, &test) == 0) {
+        printf("SDLNet_UDP_Send failed: %s\n", SDLNet_GetError());
+    }
 }
