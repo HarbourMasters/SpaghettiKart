@@ -179,13 +179,7 @@ void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t 
 }
 
 void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip) {
-    // Ensure the buffer is large enough to hold the type, colon, and payload
-    if (sizeof(int) + 1 + sizeof(IPaddress) > BUFFER_SIZE) {
-        fprintf(stderr, "Sending data too big for the buffer\n");
-        return;
-    }
-
-    char buffer[BUFFER_SIZE];
+    unsigned char buffer[10];
     int offset = 0;
 
     // Write the packet type into the buffer
@@ -193,7 +187,7 @@ void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip) {
     offset += sizeof(uint8_t);
 
     // Write the data size into the buffer
-    *(uint16_t*) (buffer + offset) = sizeof(IPaddress);
+    *(uint16_t*) (buffer + offset) = 6;
     offset += sizeof(uint16_t);
 
     // Write the payload into the buffer
