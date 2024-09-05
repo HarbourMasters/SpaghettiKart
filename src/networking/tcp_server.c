@@ -15,7 +15,7 @@ NetworkClient clients[NETWORK_MAX_PLAYERS];
 
 Network gNetwork = {
     .enabled = false,
-    .tcpSocket = NULL,
+    .socket = NULL,
     .address = { 0, 64010 },
     .localPlayer = &gPlayerOne,
     .isConnected = false,
@@ -35,16 +35,17 @@ void (*remoteConnectedHandler)(void);
 void ConnectToServer(char* ip, uint16_t port, char* username) {
     if (!threadStarted) {
         threadStarted = true;
-        networking_init(ip, port);
+        start_tcp_client(ip, port);
+        start_udp_client(ip, port+1);
 
         SDL_Delay(20);
 
         localClient = &dummyClient; // Temporary until server sends the real data
         set_username(username);
-        send_str_packet(gNetwork.tcpSocket, PACKET_JOIN, localClient->username);
-        send_int_packet(gNetwork.tcpSocket, PACKET_SET_CHARACTER, 2, sizeof(uint32_t));
-        send_str_packet(gNetwork.tcpSocket, PACKET_MESSAGE, "a message");
-        send_str_packet(gNetwork.tcpSocket, PACKET_MESSAGE, "another message");
+        send_str_packet(gNetwork.socket, PACKET_JOIN, localClient->username);
+        //send_int_packet(gNetwork.socket, PACKET_SET_CHARACTER, 2, sizeof(uint32_t));
+        send_str_packet(gNetwork.socket, PACKET_MESSAGE, "a message");
+        send_str_packet(gNetwork.socket, PACKET_MESSAGE, "another message");
     }
 }
 
@@ -57,7 +58,7 @@ void set_username(const char* username) {
     localClient->username[sizeof(localClient->username) - 1] = '\0'; // Ensure null-termination
 }
 
-void networking_init(char* ip, uint16_t port) {
+void start_tcp_client(char* ip, uint16_t port) {
     if (SDL_Init(0) == -1) {
         fprintf(stderr, "SDL_Init: %s\n", SDL_GetError());
         exit(EXIT_FAILURE);
@@ -92,9 +93,9 @@ int networking_loop(void* data) {
     while (isNetworkingThreadEnabled) {
         while (!gNetwork.isConnected && isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
             printf("[SpaghettiOnline] Attempting to make connection to server...\n");
-            gNetwork.tcpSocket = SDLNet_TCP_Open(&gNetwork.address);
+            gNetwork.socket = SDLNet_TCP_Open(&gNetwork.address);
 
-            if (gNetwork.tcpSocket) {
+            if (gNetwork.socket) {
                 gNetwork.isConnected = true;
                 printf("[SpaghettiOnline] Connection to server established!\n");
 
@@ -106,12 +107,12 @@ int networking_loop(void* data) {
         }
 
         SDLNet_SocketSet socketSet = SDLNet_AllocSocketSet(1);
-        if (gNetwork.tcpSocket) {
-            SDLNet_TCP_AddSocket(socketSet, gNetwork.tcpSocket);
+        if (gNetwork.socket) {
+            SDLNet_TCP_AddSocket(socketSet, gNetwork.socket);
         }
 
         // Listen to socket messages
-        while (gNetwork.isConnected && gNetwork.tcpSocket &&
+        while (gNetwork.isConnected && gNetwork.socket &&
                isNetworkingThreadEnabled) { // && isRemoteInteractorEnabled) {
             // we check first if socket has data, to not block in the TCP_Recv
             int socketsReady = SDLNet_CheckSockets(socketSet, 0);
@@ -125,10 +126,10 @@ int networking_loop(void* data) {
                 continue;
             }
 
-            char remoteDataReceived[512];
+            char remoteDataReceived[4096];
             memset(remoteDataReceived, 0, sizeof(remoteDataReceived));
-            int len = SDLNet_TCP_Recv(gNetwork.tcpSocket, &remoteDataReceived, sizeof(remoteDataReceived));
-            if (!len || !gNetwork.tcpSocket || len == -1) {
+            int len = SDLNet_TCP_Recv(gNetwork.socket, &remoteDataReceived, sizeof(remoteDataReceived));
+            if (!len || !gNetwork.socket || len == -1) {
                 printf("[SpaghettiOnline] SDLNet_TCP_Recv: %s\n", SDLNet_GetError());
                 break;
             }
@@ -151,7 +152,7 @@ int networking_loop(void* data) {
         }
 
         if (gNetwork.isConnected) {
-            // SDLNet_TCP_Close(gNetwork.tcpSocket);
+            // SDLNet_TCP_Close(gNetwork.socket);
             gNetwork.isConnected = false;
             // if (networking_cleanup) {
             networking_cleanup(socketSet);
@@ -163,7 +164,7 @@ int networking_loop(void* data) {
 }
 
 void networking_ready_up(bool value) {
-    send_int_packet(gNetwork.tcpSocket, PACKET_READY_UP, value, sizeof(int));
+    send_int_packet(gNetwork.socket, PACKET_READY_UP, value, sizeof(int));
 }
 
 void handleReceivedData(const char* buffer, size_t bufSize) {
@@ -188,6 +189,9 @@ void handleReceivedData(const char* buffer, size_t bufSize) {
         case PACKET_JOIN:
             handleJoinPacket(data);
             break;
+        case PACKET_IDENTIFIER:
+            handleIdentifierPacket(data);
+            break;
         case PACKET_LEAVE:
             handleLeavePacket(data);
             break;
@@ -196,9 +200,6 @@ void handleReceivedData(const char* buffer, size_t bufSize) {
             break;
         case PACKET_LOADED:
             handle_start_game(); // handle_start_game(data);
-            break;
-        case PACKET_PLAYER:
-            replicate_player(data);
             break;
         case PACKET_SET_COURSE:
             set_course(data);
@@ -217,13 +218,13 @@ void handleReceivedData(const char* buffer, size_t bufSize) {
 }
 
 void networking_cleanup(SDLNet_SocketSet socketSet) {
-    send_str_packet(gNetwork.tcpSocket, PACKET_LEAVE, localClient->username);
-    SDLNet_TCP_Close(gNetwork.tcpSocket);
+    send_str_packet(gNetwork.socket, PACKET_LEAVE, localClient->username);
+    SDLNet_TCP_Close(gNetwork.socket);
     SDLNet_FreeSocketSet(socketSet);
     SDLNet_Quit();
     SDL_Quit;
 }
 
 void networking_disconnect(void) {
-    networking_cleanup(gNetwork.tcpSocket);
+    networking_cleanup(gNetwork.socket);
 }

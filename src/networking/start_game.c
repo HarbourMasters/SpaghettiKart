@@ -43,11 +43,11 @@ void assign_player_control_types(void) {
 }
 
 void network_character_vote(uint32_t course) {
-    send_int_packet(gNetwork.tcpSocket, PACKET_SET_CHARACTER, course, sizeof(uint32_t));
+    send_int_packet(gNetwork.socket, PACKET_SET_CHARACTER, course, sizeof(uint32_t));
 }
 
 void network_cup_vote(uint32_t course) {
-    send_int_packet(gNetwork.tcpSocket, PACKET_COURSE_VOTE, course, sizeof(uint32_t));
+    send_int_packet(gNetwork.socket, PACKET_COURSE_VOTE, course, sizeof(uint32_t));
 }
 
 
@@ -98,7 +98,9 @@ void assign_player_slots(const char* data) {
         clients[i].hasAuthority = *(int*) (data + offset);
 
         if (clients[i].hasAuthority) {
+            uint8_t *uuid = &localClient->uuid;
             localClient = &clients[i];
+            WriteUUID(uuid, localClient->uuid);
             gPlayers[clients[i].slot].nHasAuthority = true;
             printf("You have been assigned slot %d\n", clients[i].slot + 1);
         }
@@ -139,7 +141,7 @@ s32 network_all_players_loaded() {
     }
     if (!gNetwork.loaded) {
         gNetwork.loaded = true;
-        send_int_packet(gNetwork.tcpSocket, PACKET_LOADED, true, sizeof(int));
+        send_int_packet(gNetwork.socket, PACKET_LOADED, true, sizeof(int));
     }
     if (gNetwork.playersLoaded) {
         gNetwork.gameStarted = true;
@@ -150,6 +152,8 @@ s32 network_all_players_loaded() {
 }
 
 s32 currentNetworkPlayers = 0;
+
+u32 gSwappedSlot = -1;
 
 void spawn_network_players(f32* arg0, f32* arg1, f32 arg2) {
     if (currentNetworkPlayers) {
@@ -184,15 +188,38 @@ void spawn_network_players(f32* arg0, f32* arg1, f32 arg2) {
         printf("a %d, %d\n", clients[i].slot, clients[i].character);
     }
 
+    // Swap gPlayer[0] with hasAuthority slot. As gPlayer[0] needs to be the local player.
     for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
         if (clients[i].hasAuthority) {
-            spawn_player(&gPlayers[0], i, arg0[clients[i].slot], arg1[clients[i].slot] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+
+            // No swap required
+            if (clients[i].slot == 0) {
+                break;
+            }
+
+            // Save the slot to swap
+            gSwappedSlot = clients[i].slot;
+
+            // Swap the slots
+            for (size_t j = 0; j < NETWORK_MAX_PLAYERS; j++) {
+                if (clients[j].slot == 0) {
+                    clients[j].slot = gSwappedSlot;
+                    clients[i].slot = 0;
+                }
+            }
+            break;
         }
     }
 
-    for (size_t i = 0; i < NETWORK_MAX_PLAYERS - 1; i++) {
-        if (!clients[i].hasAuthority) {
-            spawn_player(&gPlayers[clients[i].slot], i, arg0[clients[i].slot], arg1[clients[i].slot] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
+    for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {
+        D_80165270[i] = clients[i].slot;
+
+        if (clients[i].hasAuthority) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        } else if (clients[i].isAI) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
+        } else if (!clients[i].isAI) {
+            spawn_player(&gPlayers[clients[i].slot], i, arg0[D_80165270[i]], arg1[D_80165270[i]] + 250.0f, arg2, 32768.0f, clients[i].character, PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         }
     }
 
