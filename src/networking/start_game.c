@@ -98,7 +98,9 @@ void assign_player_slots(const char* data) {
         clients[i].hasAuthority = *(int*) (data + offset);
 
         if (clients[i].hasAuthority) {
+            uint8_t *uuid = &localClient->uuid;
             localClient = &clients[i];
+            WriteUUID(uuid, localClient->uuid);
             gPlayers[clients[i].slot].nHasAuthority = true;
             printf("You have been assigned slot %d\n", clients[i].slot + 1);
         }

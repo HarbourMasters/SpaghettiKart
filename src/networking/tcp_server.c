@@ -43,11 +43,9 @@ void ConnectToServer(char* ip, uint16_t port, char* username) {
         localClient = &dummyClient; // Temporary until server sends the real data
         set_username(username);
         send_str_packet(gNetwork.socket, PACKET_JOIN, localClient->username);
-        send_udp_join_packet(gNetwork.socket, PACKET_UDP_JOIN, &gNetworkUDP.address);
         //send_int_packet(gNetwork.socket, PACKET_SET_CHARACTER, 2, sizeof(uint32_t));
         send_str_packet(gNetwork.socket, PACKET_MESSAGE, "a message");
         send_str_packet(gNetwork.socket, PACKET_MESSAGE, "another message");
-        send_udp_registration_packet();
     }
 }
 
@@ -190,6 +188,9 @@ void handleReceivedData(const char* buffer, size_t bufSize) {
     switch (type) {
         case PACKET_JOIN:
             handleJoinPacket(data);
+            break;
+        case PACKET_IDENTIFIER:
+            handleIdentifierPacket(data);
             break;
         case PACKET_LEAVE:
             handleLeavePacket(data);

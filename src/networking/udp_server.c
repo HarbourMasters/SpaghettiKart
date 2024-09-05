@@ -118,30 +118,43 @@ void udp_server_cleanup(void) {
 
 typedef struct {
     uint8_t type;
+    uint8_t uuid[16];
     uint16_t size;
-    u8 data[4096];
-} PacketUDP;
+} packetUDP;
 
-void sendNetworkPlayerPacket(UdpPacket* packet) {
-    // gNetworkUDP->address.host = dest->host;
-    // gNetworkUDP->address.port = dest->port;
-    // gNetworkUDP->len = sizeof(UdpPacket);
-    // memcpy(udpPacket->data, packet, sizeof(UdpPacket));
+typedef struct {
+    packetUDP p;
+    Vec3f pos;
+    Vec3f rot;
+    Vec3f velocity;
+} PlayerDataPacket;
 
-    //unsigned data
+void printUUIDs(const uint8_t uuid[16]) {
+    // Print the UUID in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    printf("%02x%02x%02x%02x-",    // First 4 bytes
+           uuid[0], uuid[1], uuid[2], uuid[3]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[4], uuid[5]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[6], uuid[7]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[8], uuid[9]);
+    printf("%02x%02x%02x%02x%02x%02x\n", // Last 6 bytes
+           uuid[10], uuid[11], uuid[12], uuid[13], uuid[14], uuid[15]);
+}
 
-    PacketUDP pckt = {
-        .type = PACKET_PLAYER,
-        .size = sizeof(Player),
-        .data = 0,
+void send_udp_registration_packet(void) {
+    packetUDP packet = {
+        .type = PACKET_REGISTER_UDP,
+        .size = 1,
     };
 
-    memcpy(&pckt.data, &gPlayers[0], sizeof(Player));
+    WriteUUID(localClient->uuid, packet.uuid);
 
     UDPpacket test = {
         .channel = -1,
-        .data = (uint8_t*) &pckt,
-        .len = 4096,
+        .data = (uint8_t*) &packet,
+        .len = sizeof(packetUDP),
         .maxlen = 4096,
         .status = 1,
         .address = gNetworkUDP.address,
@@ -153,17 +166,31 @@ void sendNetworkPlayerPacket(UdpPacket* packet) {
     }
 }
 
-void send_udp_registration_packet(void) {
-    PacketUDP packet = {
-        .type = PACKET_REGISTER_UDP,
-        .size = 1,
-        .data = 0
-    };
+void sendNetworkPlayerPacket(UdpPacket* packet) {
+    // gNetworkUDP->address.host = dest->host;
+    // gNetworkUDP->address.port = dest->port;
+    // gNetworkUDP->len = sizeof(UdpPacket);
+    // memcpy(udpPacket->data, packet, sizeof(UdpPacket));
+    PlayerDataPacket playerPacket;
+    Player* player = &gPlayers[0];
+    //unsigned data
+
+    playerPacket.p.type = PACKET_PLAYER;
+
+    WriteUUID(localClient->uuid, playerPacket.p.uuid);
+
+    playerPacket.p.size = 9;
+
+    memcpy(playerPacket.pos, player->pos, sizeof(player->pos));
+    memcpy(playerPacket.rot, player->rotation, sizeof(player->rotation));
+    memcpy(playerPacket.velocity, player->velocity, sizeof(player->velocity));
+
+    //memcpy(&pckt.data, &gPlayers[0], sizeof(Player));
 
     UDPpacket test = {
         .channel = -1,
-        .data = (uint8_t*) &packet,
-        .len = 4,
+        .data = (uint8_t*) &playerPacket,
+        .len = sizeof(PlayerDataPacket),
         .maxlen = 4096,
         .status = 1,
         .address = gNetworkUDP.address,

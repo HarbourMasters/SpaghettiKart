@@ -10,7 +10,7 @@
 
 enum {
     PACKET_JOIN,
-    PACKET_UDP_JOIN,
+    PACKET_IDENTIFIER,
     PACKET_LEAVE,
     PACKET_MESSAGE,
     PACKET_LOADED,
@@ -20,8 +20,7 @@ enum {
     PACKET_SET_COURSE,
     PACKET_PLAYER_ASSIGN_SLOTS,
     PACKET_START_SESSION,
-    // udp packets
-    PACKET_REGISTER_UDP,
+    PACKET_REGISTER_UDP, // UDP Packets
     PACKET_PLAYER,
     PACKET_ACTOR,
     PACKET_OBJECT
@@ -58,6 +57,7 @@ typedef struct {
 extern UDPNetwork gNetworkUDP;
 
 typedef struct {
+    uint8_t uuid[16];
     char username[NETWORK_USERNAME_LENGTH];
     s32 slot;
     s32 isPlayer;
@@ -86,6 +86,7 @@ void network_cup_vote(uint32_t course);
 void networking_disconnect(void);
 
 /* UDP Networking */
+void send_udp_registration_packet(void);
 void start_udp_client(const char* ip, uint16_t port);
 
 /* Start Game */
@@ -102,6 +103,7 @@ void assign_player_slots(const char* data);
 void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t size);
 void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip);
 void handleJoinPacket(const char* data);
+void handleIdentifierPacket(const char* data);
 void handleLeavePacket(const char* data);
 void handleMessagePacket(const char* data);
 void send_player(void);
@@ -109,5 +111,8 @@ void send_data_packet(TCPsocket socket, uint8_t type, const uint8_t* payload, si
 
 void handle_start_game(void);
 void send_str_packet(TCPsocket, uint8_t, const char*);
+
+/* Misc */
+void WriteUUID(uint8_t *src, uint8_t *dest);
 
 #endif // NETWORKING_H

@@ -18,21 +18,21 @@ void replicate_player(const char* data) {
     // gPlayers[idx].unk_006 = *(uint16_t*)data;
     // data += sizeof(uint16_t);
 
-    // gPlayers[idx].pos[0] = *(f32*)data;
-    // data += sizeof(f32);
-    // gPlayers[idx].pos[1] = *(f32*)data;
-    // data += sizeof(f32);
-    // gPlayers[idx].pos[2] = *(f32*)data;
-    // data += sizeof(f32);
+    gPlayers[idx].pos[0] = *(f32*)data;
+    data += sizeof(f32);
+    gPlayers[idx].pos[1] = *(f32*)data;
+    data += sizeof(f32);
+    gPlayers[idx].pos[2] = *(f32*)data;
+    data += sizeof(f32);
 
-    // gPlayers[idx].rotation[0] = *(int16_t*)data;
-    // data += sizeof(int16_t);
-    // gPlayers[idx].rotation[1] = *(int16_t*)data;
-    // data += sizeof(int16_t);
-    // gPlayers[idx].rotation[2] = *(int16_t*)data;
+    gPlayers[idx].rotation[0] = *(int16_t*)data;
+    data += sizeof(int16_t);
+    gPlayers[idx].rotation[1] = *(int16_t*)data;
+    data += sizeof(int16_t);
+    gPlayers[idx].rotation[2] = *(int16_t*)data;
 
 
-    memcpy(&gPlayers[idx], data, sizeof(Player));
+    //memcpy(&gPlayers[idx], data, sizeof(Player));
 
     // if (idx > NETWORK_MAX_PLAYERS) {
     //     memcpy(&gPlayers[idx], data, sizeof(Player));

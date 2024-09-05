@@ -3,9 +3,38 @@
 #include "networking.h"
 #include "code_800029B0.h"
 
+
+void printUUID(const uint8_t uuid[16]) {
+    // Print the UUID in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    printf("%02x%02x%02x%02x-",    // First 4 bytes
+           uuid[0], uuid[1], uuid[2], uuid[3]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[4], uuid[5]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[6], uuid[7]);
+    printf("%02x%02x-",            // Next 2 bytes
+           uuid[8], uuid[9]);
+    printf("%02x%02x%02x%02x%02x%02x\n", // Last 6 bytes
+           uuid[10], uuid[11], uuid[12], uuid[13], uuid[14], uuid[15]);
+}
+
+void WriteUUID(uint8_t *src, uint8_t *dest) {
+    for (size_t i = 0; i < 16; i++) {
+        dest[i] = src[i];
+    }
+    //printUUID(dest);
+}
+
 void handleJoinPacket(const char* data) {
     printf("Join packet received: %s\n", data);
-    // Handle join logic here
+}
+
+void handleIdentifierPacket(const char* data) {
+    for (size_t i = 0; i < 16; i++) {
+        localClient->uuid[i] = data[i];
+    }
+    //printUUID(localClient->uuid);
+    send_udp_registration_packet();
 }
 
 void handleLeavePacket(const char* data) {
@@ -179,7 +208,7 @@ void send_int_packet(TCPsocket socket, uint8_t type, uint32_t payload, uint16_t 
 }
 
 void send_udp_join_packet(TCPsocket socket, uint8_t type, IPaddress *ip) {
-    unsigned char buffer[10];
+    unsigned char buffer[9];
     int offset = 0;
 
     // Write the packet type into the buffer
