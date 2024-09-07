@@ -1,42 +1,17 @@
 #include <cstdint>
 #include <iostream>
 
-extern "C" {
-    #include "actor_types.h"
-}
-
-class GameActor {
+class Actor {
 public:
-    explicit GameActor(Actor* actor) : myActor(actor) {}
+    uint32_t id;
+    virtual ~Actor() = default;  // Make sure to have a virtual destructor in a base class
 
-    void Init() {
-        std::cout << "Initializing actor of type " << myActor->type << "\n";
-        // Additional initialization logic
-    }
+    Actor(uint32_t actorId) : id(actorId) {}
 
-    void Update() {
-        std::cout << "Updating actor of type " << myActor->type << "\n";
-        // Update actor properties
-        // myActor->pos.x += myActor->velocity.x;
-        // myActor->pos.y += myActor->velocity.y;
-        // myActor->pos.z += myActor->velocity.z;
-    }
-
-    void Render() {
-        std::cout << "Rendering actor of type " << myActor->type << "\n";
-        // Render logic
-    }
-
-    void Expire() {
-        std::cout << "Expiring actor of type " << myActor->type << "\n";
-        // Expire logic
-    }
-
-    void Destroy() {
-        std::cout << "Destroying actor of type " << myActor->type << "\n";
-        // Destroy logic
-    }
-
-private:
-    Actor* myActor;
+    // Virtual functions to be overridden by derived classes
+    virtual void Init() { std::cout << "Initializing Actor " << id << "\n"; }
+    virtual void Update() { std::cout << "Updating Actor " << id << "\n"; }
+    virtual void Render() { std::cout << "Rendering Actor " << id << "\n"; }
+    virtual void Expire() { std::cout << "Expiring Actor " << id << "\n"; }
+    virtual void Destroy() { std::cout << "Destroying Actor " << id << "\n"; }
 };
