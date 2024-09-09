@@ -15,6 +15,7 @@ void ActorManager_AddActor();
 void ActorManager_UpdateActors();
 void ActorManager_RenderActors(Camera*);
 void ActorManager_RemoveExpiredActors();
+struct BananaActor *ActorManager_SpawnBanana(const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]);
 
 
 #ifdef __cplusplus

@@ -2,12 +2,15 @@
 //#include <memory>
 #include "ActorManager.h"
 #include "GameActor.h"
+#include "ABanana.h"
 #include "structs.h"
 
 class ActorManager {
 public:
-    void AddActor(std::unique_ptr<GameActor> actor) {
+    GameActor* AddActor(std::unique_ptr<GameActor> actor) {
+        GameActor* rawPtr = actor.get();
         actors.push_back(std::move(actor));
+        return rawPtr;
     }
 
     void UpdateActors() {
@@ -52,7 +55,8 @@ extern "C" {
         gActorManager.RemoveExpiredActors();
     }
 
-    void ActorManager_SpawnBanana(const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]) {
-        gActorManager.AddActor(std::make_unique<BananaActor>(startingPos, startingRot, startingVelocity));
+    struct BananaActor *ActorManager_SpawnBanana(const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]) {
+        auto newBanana = dynamic_cast<struct BananaActor*>(gActorManager.AddActor(std::make_unique<ABanana>(startingPos, startingRot, startingVelocity)));
+        return newBanana;
     }
 }
