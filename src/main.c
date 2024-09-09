@@ -44,6 +44,8 @@
 #include "buffers/gfx_output_buffer.h"
 #include <bridge/gfxdebuggerbridge.h>
 
+#include "engine/ActorManager.h"
+
 // Declarations (not in this file)
 void func_80091B78(void);
 
@@ -639,6 +641,7 @@ void race_logic_loop(void) {
                     func_8028F474();
                     func_80059AC8();
                     update_course_actors();
+                    ActorManager_UpdateActors();
                     func_802966A0();
                     func_8028FCBC();
                 }

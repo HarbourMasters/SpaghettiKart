@@ -1,17 +1,30 @@
-#include <cstdint>
-#include <iostream>
+#include <libultraship.h>
 
-class Actor {
+#include "structs.h"
+
+class GameActor {
 public:
-    uint32_t id;
-    virtual ~Actor() = default;  // Make sure to have a virtual destructor in a base class
+    uint8_t uuid[16];
+    int16_t type;
+    int16_t flags;
+    int16_t unk_04;
+    int16_t state;
+    float unk_08;
+    float boundingBoxSize;
+    s16 rot[3];
+    int16_t unk_16;
+    float pos[3];
+    float velocity[3];
+    Collision unk30;
 
-    Actor(uint32_t actorId) : id(actorId) {}
+    virtual ~GameActor() = default;  // Make sure to have a virtual destructor in a base class
+
+    //GameActor()
 
     // Virtual functions to be overridden by derived classes
-    virtual void Init() { std::cout << "Initializing Actor " << id << "\n"; }
-    virtual void Update() { std::cout << "Updating Actor " << id << "\n"; }
-    virtual void Render() { std::cout << "Rendering Actor " << id << "\n"; }
-    virtual void Expire() { std::cout << "Expiring Actor " << id << "\n"; }
-    virtual void Destroy() { std::cout << "Destroying Actor " << id << "\n"; }
+    virtual void Init() {  }
+    virtual void Update() {  }
+    virtual void Render() { }
+    virtual void Expire() { }
+    virtual void Destroy() { }
 };

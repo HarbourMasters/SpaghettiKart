@@ -1,11 +1,11 @@
-#include <vector>
-#include <memory>
+//#include <vector>
+//#include <memory>
+#include "ActorManager.h"
+#include "GameActor.h"
 
 class ActorManager {
 public:
-    std::vector<std::unique_ptr<Actor>> actors;
-
-    void AddActor(std::unique_ptr<Actor> actor) {
+    void AddActor(std::unique_ptr<GameActor> actor) {
         actors.push_back(std::move(actor));
     }
 
@@ -24,7 +24,30 @@ public:
     void RemoveExpiredActors() {
         actors.erase(
             std::remove_if(actors.begin(), actors.end(),
-                           [](const std::unique_ptr<Actor>& actor) { return actor->id == 0; }), // Example condition
+                           [](const std::unique_ptr<GameActor>& actor) { return actor->uuid == 0; }), // Example condition
             actors.end());
     }
+private:
+    std::vector<std::unique_ptr<GameActor>> actors;
 };
+
+ActorManager gActorManager;
+
+extern "C" {
+
+    void ActorManager_AddActor() {
+        //gActorManager.AddActor(std::unique_ptr<GameActor>(actor));
+    }
+
+    void ActorManager_UpdateActors() {
+        gActorManager.UpdateActors();
+    }
+
+    void ActorManager_RenderActors() {
+        gActorManager.RenderActors();
+    }
+
+    void ActorManager_RemoveExpiredActors() {
+        gActorManager.RemoveExpiredActors();
+    }
+}
