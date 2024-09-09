@@ -26,11 +26,11 @@ void ABanana::Init() {
 }
 
 void ABanana::Update() { 
-    update_actor_banana(reinterpret_cast<struct BananaActor*>(this));
+    update_actor_banana(this->a);
 }
 
 void ABanana::Render(Camera *camera) {
-    render_actor_banana(camera, NULL, reinterpret_cast<struct BananaActor*>(this));
+    render_actor_banana(camera, NULL, this->a);
 }
 void ABanana::Collision() { }
 void ABanana::Expire() { }
