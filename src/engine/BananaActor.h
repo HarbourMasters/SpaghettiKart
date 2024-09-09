@@ -1,10 +1,11 @@
-#ifndef GAMEACTOR_H
-#define GAMEACTOR_H
+#ifndef ABANANA_H
+#define ABANANA_H
 
 #include <libultraship.h>
 #include "structs.h"
+#include "GameActor.h"
 
-class GameActor {
+class ABanana : public GameActor {
 public:
     uint8_t uuid[16];
     int16_t type;
@@ -33,4 +34,4 @@ public:
     virtual void Destroy();
 };
 
-#endif // GAMEACTOR_H
+#endif // ABANANA_H

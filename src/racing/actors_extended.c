@@ -842,7 +842,8 @@ s32 use_banana_item(Player* player) {
     startingRot[1] = 0;
     startingRot[2] = 0;
 
-    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
+    //actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
+    ActorManager_SpawnBanana(startingPos, startingRot, startingVelocity);
     if (actorIndex < 0) {
         return actorIndex;
     }

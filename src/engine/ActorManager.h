@@ -13,7 +13,7 @@ typedef struct ActorManager ActorManager_t;
 
 void ActorManager_AddActor();
 void ActorManager_UpdateActors();
-void ActorManager_RenderActors();
+void ActorManager_RenderActors(Camera*);
 void ActorManager_RemoveExpiredActors();
 
 

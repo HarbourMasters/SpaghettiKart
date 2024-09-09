@@ -2,6 +2,7 @@
 //#include <memory>
 #include "ActorManager.h"
 #include "GameActor.h"
+#include "structs.h"
 
 class ActorManager {
 public:
@@ -15,9 +16,9 @@ public:
         }
     }
 
-    void RenderActors() {
+    void RenderActors(Camera *camera) {
         for (auto& actor : actors) {
-            actor->Render();
+            actor->Render(camera);
         }
     }
 
@@ -43,11 +44,15 @@ extern "C" {
         gActorManager.UpdateActors();
     }
 
-    void ActorManager_RenderActors() {
-        gActorManager.RenderActors();
+    void ActorManager_RenderActors(Camera* camera) {
+        gActorManager.RenderActors(camera);
     }
 
     void ActorManager_RemoveExpiredActors() {
         gActorManager.RemoveExpiredActors();
+    }
+
+    void ActorManager_SpawnBanana(const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]) {
+        gActorManager.AddActor(std::make_unique<BananaActor>(startingPos, startingRot, startingVelocity));
     }
 }

@@ -24,7 +24,8 @@ public:
     // Virtual functions to be overridden by derived classes
     virtual void Init() {  }
     virtual void Update() {  }
-    virtual void Render() { }
+    virtual void Render(Camera *camera) { }
+    virtual void Collision() {}
     virtual void Expire() { }
     virtual void Destroy() { }
 };
