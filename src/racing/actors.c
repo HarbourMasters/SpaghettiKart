@@ -2456,6 +2456,8 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
     gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 
+    ActorManager_RenderActors(D_800DC5EC->camera);
+
     if (gModeSelection != BATTLE) {
         func_80297340(camera);
     }
@@ -2508,7 +2510,7 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
                 render_actor_kiwano_fruit(camera, D_801502C0, actor);
                 break;
             case ACTOR_BANANA:
-                render_actor_banana(camera, D_801502C0, (struct BananaActor*) actor);
+                //render_actor_banana(camera, D_801502C0, (struct BananaActor*) actor);
                 break;
             case ACTOR_GREEN_SHELL:
                 render_actor_green_shell(camera, D_801502C0, (struct ShellActor*) actor);
@@ -2606,7 +2608,7 @@ void update_course_actors(void) {
                 update_actor_kiwano_fruit((struct KiwanoFruit*) actor);
                 break;
             case ACTOR_BANANA:
-                update_actor_banana((struct BananaActor*) actor);
+                //update_actor_banana((struct BananaActor*) actor);
                 break;
             case ACTOR_PADDLE_BOAT:
                 update_actor_paddle_boat((struct PaddleWheelBoat*) actor);

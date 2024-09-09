@@ -19,6 +19,20 @@ typedef struct {
     /* 0x3C */ f32 unk6C;
 } Collision;
 
+struct Actor {
+    /* 0x00 */ s16 type;
+    /* 0x02 */ s16 flags;
+    /* 0x04 */ s16 unk_04;
+    /* 0x06 */ s16 state;
+    /* 0x08 */ f32 unk_08;
+    /* 0x0C */ f32 boundingBoxSize;
+    /* 0x10 */ s16 rot[3];
+    /* 0x16 */ s16 unk_16;
+    /* 0x18 */ Vec3f pos;
+    /* 0x24 */ Vec3f velocity;
+    /* 0x30 */ Collision unk30;
+}; // size = 0x70
+
 struct BananaActor {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;

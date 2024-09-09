@@ -36,6 +36,7 @@
 #include <assets/kalimari_desert_data.h>
 #include <assets/frappe_snowland_data.h>
 #include <assets/dks_jungle_parkway_data.h>
+#include "engine/ActorManager.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -7200,7 +7201,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 break;
 
             case 3:
-                banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
+                banana = (struct BananaActor*) ActorManager_GetActorByIndex(temp_s0->actorIndex);
                 if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 0)) ||
                     (playerId != banana->playerId)) {
                     if (playerId != banana->playerId) {}
@@ -7223,7 +7224,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
             case 34:
                 temp_s0->actorIndex = use_banana_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                    banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
+                    banana = (struct BananaActor*) ActorManager_GetActorByIndex(temp_s0->actorIndex);
                     banana->state = 4;
                     player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
                     temp_s0->unk_00 = 0x0023;
@@ -7245,7 +7246,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 break;
 
             case 35:
-                banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
+                banana = (struct BananaActor*) ActorManager_GetActorByIndex(temp_s0->actorIndex);
                 if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 4)) ||
                     (playerId != banana->playerId)) {
                     temp_s0->unk_00 = 0;

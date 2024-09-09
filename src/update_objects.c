@@ -4241,7 +4241,7 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
 }
 
 u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
-    return gen_random_item(rank, false);
+    return 1;
 }
 
 u8 kart_ai_gen_random_item(UNUSED s32 arg0, s16 rank) {

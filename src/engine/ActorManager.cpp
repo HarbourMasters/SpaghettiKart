@@ -7,10 +7,14 @@
 
 class ActorManager {
 public:
-    GameActor* AddActor(std::unique_ptr<GameActor> actor) {
+    Actor* AddActor(std::unique_ptr<GameActor> actor) {
         GameActor* rawPtr = actor.get();
         actors.push_back(std::move(actor));
-        return rawPtr;
+        return rawPtr->a;
+    }
+
+    struct BananaActor* SpawnBanana(uint16_t playerId, const Vec3f startingPos, const s16 startingRot[3], const Vec3f startingVelocity) {
+        return reinterpret_cast<struct BananaActor*>(AddActor(std::make_unique<ABanana>(playerId, startingPos, startingRot, startingVelocity)));
     }
 
     void UpdateActors() {
@@ -31,6 +35,15 @@ public:
                            [](const std::unique_ptr<GameActor>& actor) { return actor->uuid == 0; }), // Example condition
             actors.end());
     }
+
+    Actor* GetActorByIndex(size_t index) {
+        if (index < actors.size()) {
+            // Assuming GameActor::a is accessible, use reinterpret_cast if needed
+            return reinterpret_cast<Actor*>(actors[index]->a);
+        }
+        return nullptr; // Or handle the error as needed
+    }
+
 private:
     std::vector<std::unique_ptr<GameActor>> actors;
 };
@@ -55,8 +68,11 @@ extern "C" {
         gActorManager.RemoveExpiredActors();
     }
 
-    struct BananaActor *ActorManager_SpawnBanana(const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]) {
-        auto newBanana = dynamic_cast<struct BananaActor*>(gActorManager.AddActor(std::make_unique<ABanana>(startingPos, startingRot, startingVelocity)));
-        return newBanana;
+    struct BananaActor *ActorManager_SpawnBanana(uint16_t playerId, const float startingPos[3], const s16 startingRot[3], const float startingVelocity[3]) {
+        return gActorManager.SpawnBanana(playerId, startingPos, startingRot, startingVelocity);
+    }
+
+    Actor* ActorManager_GetActorByIndex(size_t index) {
+        return gActorManager.GetActorByIndex(index);
     }
 }

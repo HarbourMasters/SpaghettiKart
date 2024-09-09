@@ -16,6 +16,8 @@
 #include "effects.h"
 #include "sounds.h"
 
+#include "ActorManager.h"
+
 void copy_collision(Collision* src, Collision* dest) {
     dest->unk30 = src->unk30;
     dest->unk32 = src->unk32;
@@ -78,7 +80,7 @@ void func_802B0464(s16 bananaIndex) {
     struct BananaActor* banana;
 
     if (bananaIndex != -1) {
-        banana = (struct BananaActor*) &gActorList[bananaIndex];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(bananaIndex);
         func_802B039C(banana);
         func_802B0464(banana->youngerIndex);
     }
@@ -88,7 +90,7 @@ void func_802B04E8(UNUSED struct BananaActor* arg0, s16 bananaIndex) {
     struct BananaActor* banana;
 
     if (bananaIndex != -1) {
-        banana = (struct BananaActor*) &gActorList[bananaIndex];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(bananaIndex);
         func_802B039C(banana);
         func_802B04E8(banana, banana->elderIndex);
     }
@@ -107,7 +109,7 @@ void destroy_banana_in_banana_bunch(struct BananaActor* banana) {
     banana->unk_04 = 0x003C;
     banana->state = DESTROYED_BANANA;
     banana->velocity[1] = 3.0f;
-    temp_v0_2 = (struct BananaBunchParent*) &gActorList[banana->parentIndex];
+    temp_v0_2 = (struct BananaBunchParent*) ActorManager_GetActorByIndex(banana->parentIndex);
     temp_v0_2->bananaIndices[0] = -1;
     temp_v0_2->bananaIndices[1] = -1;
     temp_v0_2->bananaIndices[2] = -1;
@@ -122,19 +124,19 @@ void func_802B0648(struct BananaBunchParent* banana_bunch) {
 
     banana_bunch->bananasAvailable -= 1;
     if (banana_bunch->bananaIndices[4] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[4]];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(banana_bunch->bananaIndices[4]);
         banana_bunch->bananaIndices[4] = -1;
     } else if (banana_bunch->bananaIndices[3] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(banana_bunch->bananaIndices[3]);
         banana_bunch->bananaIndices[3] = -1;
     } else if (banana_bunch->bananaIndices[2] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(banana_bunch->bananaIndices[2]);
         banana_bunch->bananaIndices[2] = -1;
     } else if (banana_bunch->bananaIndices[1] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(banana_bunch->bananaIndices[1]);
         banana_bunch->bananaIndices[1] = -1;
     } else if (banana_bunch->bananaIndices[0] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
+        banana = (struct BananaActor*) ActorManager_GetActorByIndex(banana_bunch->bananaIndices[0]);
         banana_bunch->bananaIndices[0] = -1;
     } else {
         return;
@@ -147,7 +149,7 @@ void func_802B0648(struct BananaBunchParent* banana_bunch) {
     banana->velocity[2] = 0.0f;
     elderIndex = banana->elderIndex;
     if (elderIndex != -1) {
-        ((struct BananaActor*) &gActorList[elderIndex])->youngerIndex = -1;
+        ((struct BananaActor*) ActorManager_GetActorByIndex(elderIndex))->youngerIndex = -1;
     }
 }
 
@@ -842,17 +844,19 @@ s32 use_banana_item(Player* player) {
     startingRot[1] = 0;
     startingRot[2] = 0;
 
+    struct BananaActor* this;
+
     //actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
-    ActorManager_SpawnBanana(startingPos, startingRot, startingVelocity);
-    if (actorIndex < 0) {
+    this = ActorManager_SpawnBanana(playerId, startingPos, startingRot, startingVelocity);
+    /*if (actorIndex < 0) {
         return actorIndex;
-    }
-    banana = (struct BananaActor*) &gActorList[actorIndex];
-    banana->playerId = playerId;
-    banana->state = HELD_BANANA;
-    banana->unk_04 = 0x0014;
+    }*/
+    //banana = (struct BananaActor*) &gActorList[actorIndex];
+    //this->playerId = playerId;
+    //this->state = HELD_BANANA;
+    //this->unk_04 = 0x0014;
     player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
-    return actorIndex;
+    return 0;
 }
 
 /**
