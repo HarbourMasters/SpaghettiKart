@@ -15,7 +15,7 @@ void func_8028E678(void);
 void func_8028EC38(s32);
 void func_8028EC98(s32);
 void start_race(void);
-f32  func_8028EE8C(s32);
+f32 func_8028EE8C(s32);
 void func_8028EEF0(s32);
 void func_8028EF28(void);
 void func_8028F3E8(void);

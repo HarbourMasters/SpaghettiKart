@@ -26,7 +26,7 @@ glabel audio_init
 /* 0BCD08 800BC108 3C04800F */  lui   $a0, %hi(gAudioHeapSize) # $a0, 0x800f
 /* 0BCD0C 800BC10C 8C84A5D0 */  lw    $a0, %lo(gAudioHeapSize)($a0)
 /* 0BCD10 800BC110 00001825 */  move  $v1, $zero
-/* 0BCD14 800BC114 3C0A803B */  lui   $t2, %hi(D_803B71A0) # $t2, 0x803b
+/* 0BCD14 800BC114 3C0A803B */  lui   $t2, %hi(gAudioGlobalsEndMarker) # $t2, 0x803b
 /* 0BCD18 800BC118 04810003 */  bgez  $a0, .L800BC128
 /* 0BCD1C 800BC11C 000478C3 */   sra   $t7, $a0, 3
 /* 0BCD20 800BC120 24810007 */  addiu $at, $a0, 7
@@ -34,8 +34,8 @@ glabel audio_init
 .L800BC128:
 /* 0BCD28 800BC128 19E0000C */  blez  $t7, .L800BC15C
 /* 0BCD2C 800BC12C 3C04803B */   lui   $a0, %hi(gGfxSPTaskOutputBufferSize) # 0x803b
-/* 0BCD30 800BC130 3C18803B */  lui   $t8, %hi(D_803B71B0) # 0x803b
-/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, %lo(D_803B71B0) # 0x71b0
+/* 0BCD30 800BC130 3C18803B */  lui   $t8, %hi(gAudioHeap) # 0x803b
+/* 0BCD34 800BC134 270271B0 */  addiu $v0, $t8, %lo(gAudioHeap) # 0x71b0
 /* 0BCD38 800BC138 000FC8C0 */  sll   $t9, $t7, 3
 /* 0BCD3C 800BC13C 03221821 */  addu  $v1, $t9, $v0
 .L800BC140:
@@ -48,7 +48,7 @@ glabel audio_init
 /* 0BCD58 800BC158 AC48FFF8 */   sw    $t0, -8($v0)
 .L800BC15C:
 /* 0BCD5C 800BC15C 2482F780 */  addiu $v0, $a0, %lo(gGfxSPTaskOutputBufferSize) # -0x880
-/* 0BCD60 800BC160 254A71A0 */  addiu $t2, %lo(D_803B71A0) # addiu $t2, $t2, 0x71a0
+/* 0BCD60 800BC160 254A71A0 */  addiu $t2, %lo(gAudioGlobalsEndMarker) # addiu $t2, $t2, 0x71a0
 /* 0BCD64 800BC164 01421823 */  subu  $v1, $t2, $v0
 /* 0BCD68 800BC168 000380C2 */  srl   $s0, $v1, 3
 /* 0BCD6C 800BC16C 06000007 */  bltz  $s0, .L800BC18C

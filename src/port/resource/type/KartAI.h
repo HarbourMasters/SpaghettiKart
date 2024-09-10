@@ -21,4 +21,4 @@ class KartAI : public Ship::Resource<KartAIBehaviour> {
 
     std::vector<KartAIBehaviour> KartAIList;
 };
-} // namespace LUS
+} // namespace MK64

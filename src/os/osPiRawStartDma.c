@@ -2,18 +2,18 @@
 #include "hardware.h"
 
 //! @todo figure out why this is like this
-extern u32 osRomBase; 
+extern u32 osRomBase;
 
-s32 osPiRawStartDma(s32 dir, u32 cart_addr, void *dram_addr, size_t size) {
+s32 osPiRawStartDma(s32 dir, u32 cart_addr, void* dram_addr, size_t size) {
     register int status;
     status = HW_REG(PI_STATUS_REG, u32);
     while (status & (PI_STATUS_BUSY | PI_STATUS_IOBUSY | PI_STATUS_ERROR)) {
         status = HW_REG(PI_STATUS_REG, u32);
     }
 
-    HW_REG(PI_DRAM_ADDR_REG, void *) = (void *) osVirtualToPhysical(dram_addr);
+    HW_REG(PI_DRAM_ADDR_REG, void*) = (void*) osVirtualToPhysical(dram_addr);
 
-    HW_REG(PI_CART_ADDR_REG, void *) = (void *) (((uintptr_t) osRomBase | cart_addr) & 0x1fffffff);
+    HW_REG(PI_CART_ADDR_REG, void*) = (void*) (((uintptr_t) osRomBase | cart_addr) & 0x1fffffff);
 
     switch (dir) {
         case 0:

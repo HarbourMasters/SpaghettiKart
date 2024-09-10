@@ -6,7 +6,7 @@ u32 __osBaseCounter;
 u32 __osViIntrCount;
 u32 __osTimerCounter;
 
-OSTimer *__osTimerList = &__osBaseTimer;
+OSTimer* __osTimerList = &__osBaseTimer;
 void __osTimerServicesInit(void) {
     __osCurrentTime = 0;
     __osBaseCounter = 0;
@@ -20,7 +20,7 @@ void __osTimerServicesInit(void) {
 }
 
 void __osTimerInterrupt(void) {
-    OSTimer *sp24;
+    OSTimer* sp24;
     u32 sp20;
     u32 sp1c;
     if (__osTimerList->next == __osTimerList) {
@@ -65,8 +65,8 @@ void __osSetTimerIntr(u64 a0) {
     __osRestoreInt(intDisabled);
 }
 
-u64 __osInsertTimer(OSTimer *a0) {
-    OSTimer *sp34;
+u64 __osInsertTimer(OSTimer* a0) {
+    OSTimer* sp34;
     u64 sp28;
     s32 intDisabled;
     intDisabled = __osDisableInt();

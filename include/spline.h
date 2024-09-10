@@ -1,7 +1,7 @@
 #ifndef SPLINE_H
 #define SPLINE_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
 These are some very good videos about splines/Bezier curves in general
@@ -47,7 +47,6 @@ typedef struct {
 // Ghosts in BansheeBoardwalk x 2
 // Seagulls in KoopaTroopaBeach x 1
 // length of 24
-
 
 // Ghosts in BansheeBoardwalk x 1
 // Seagulls in KoopaTroopaBeach x 1

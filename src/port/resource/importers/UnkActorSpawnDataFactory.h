@@ -9,4 +9,4 @@ class ResourceFactoryBinaryUnkActorSpawnDataV0 : public Ship::ResourceFactoryBin
     std::shared_ptr<Ship::IResource> ReadResource(std::shared_ptr<Ship::File> file) override;
 };
 
-} // namespace LUS
+} // namespace MK64

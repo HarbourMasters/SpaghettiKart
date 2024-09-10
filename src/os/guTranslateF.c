@@ -7,7 +7,7 @@ void guTranslateF(float m[4][4], float x, float y, float z) {
     m[3][2] = z;
 }
 
-void guTranslate(Mtx *m, float x, float y, float z) {
+void guTranslate(Mtx* m, float x, float y, float z) {
     float mf[4][4];
     guTranslateF(mf, x, y, z);
     guMtxF2L(mf, m);

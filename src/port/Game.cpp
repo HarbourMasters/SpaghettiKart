@@ -10,8 +10,7 @@ extern "C" {
 #include "networking/networking.h"
 }
 
-extern "C"
-void Graphics_PushFrame(Gfx* data) {
+extern "C" void Graphics_PushFrame(Gfx* data) {
     GameEngine::ProcessGfxCommands(data);
 }
 
@@ -28,12 +27,13 @@ void push_frame() {
 }
 
 #ifdef _WIN32
-int SDL_main(int argc, char **argv) {
+int SDL_main(int argc, char** argv) {
 #else
 #if defined(__cplusplus) && defined(PLATFORM_IOS)
 extern "C"
 #endif
-int main(int argc, char *argv[]) {
+    int
+    main(int argc, char* argv[]) {
 #endif
     GameEngine::Create();
     // audio_init();
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     while (WindowIsRunning()) {
         push_frame();
     }
-    //GameEngine::Instance->ProcessFrame(push_frame);
+    // GameEngine::Instance->ProcessFrame(push_frame);
     GameEngine::Instance->Destroy();
     return 0;
 }

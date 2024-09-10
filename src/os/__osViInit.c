@@ -5,8 +5,8 @@
 #include <stubs.h>
 
 OSViContext sViContexts[2] = { 0 };
-OSViContext *__osViCurr = &sViContexts[0];
-OSViContext *__osViNext = &sViContexts[1];
+OSViContext* __osViCurr = &sViContexts[0];
+OSViContext* __osViNext = &sViContexts[1];
 
 u32 osViClock = 0x02E6D354; // used for audio frequency calculations
 

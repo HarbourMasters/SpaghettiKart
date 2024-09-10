@@ -1,6 +1,6 @@
 #include "libultra_internal.h"
 
-extern OSViContext *__osViNext;
+extern OSViContext* __osViNext;
 
 void osViSetSpecialFeatures(u32 func) {
     register u32 int_disabled = __osDisableInt();

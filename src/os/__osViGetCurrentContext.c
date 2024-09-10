@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 
-extern OSViContext *__osViCurr;
+extern OSViContext* __osViCurr;
 
-OSViContext *__osViGetCurrentContext() {
+OSViContext* __osViGetCurrentContext() {
     return __osViCurr;
 }

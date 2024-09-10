@@ -5,22 +5,27 @@
 /**
  * @brief Renders the falling rock actor.
  * Actor used in Choco Mountain.
- * 
- * @param camera 
- * @param rock 
+ *
+ * @param camera
+ * @param rock
  */
-void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
+void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
     Vec3s sp98;
     Vec3f sp8C;
     Mat4 sp4C;
     f32 height;
     UNUSED s32 pad[4];
 
-    if (rock->respawnTimer != 0) { return; }
+    if (rock->respawnTimer != 0) {
+        return;
+    }
 
-    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1], 4000000.0f);
+    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
+                                       4000000.0f);
 
-    if (height < 0.0f) { return; }
+    if (height < 0.0f) {
+        return;
+    }
 
     if (height < 250000.0f) {
 
@@ -43,7 +48,7 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
     if (render_set_position(sp4C, 0) == 0) {
         return;
     }
-    //gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_falling_rock);
+    // gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_falling_rock);
     //! @todo: Placeholder DLs weird vtx issues
     gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
@@ -55,11 +60,13 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPPipeSync(gDisplayListHead++);
     gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0,
+               G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, d_course_choco_mountain_wall_texture);
     gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
+               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gDisplayListHead++);
     gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
     gSPVertex(gDisplayListHead++, d_course_choco_mountain_falling_rock_model, 15, 0);
@@ -89,11 +96,13 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
     gSP1Triangle(gDisplayListHead++, 2, 8, 9, 0);
     gSP1Triangle(gDisplayListHead++, 3, 10, 11, 0);
     gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_MIRROR | G_TX_WRAP,
+               5, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, d_course_choco_mountain_rock_texture);
     gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
+               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gDisplayListHead++);
     gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
     gSPVertex(gDisplayListHead++, d_course_choco_mountain_6006EC8, 3, 0);

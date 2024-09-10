@@ -9,7 +9,7 @@
 #include "main.h"
 
 void setup_camera_podium_ceremony(void) {
-    Camera *camera;
+    Camera* camera;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;

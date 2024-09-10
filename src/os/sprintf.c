@@ -3,9 +3,9 @@
 #include "printf.h"
 #include <string.h>
 
-char *proutSprintf(char *dst, const char *src, size_t count);
+char* proutSprintf(char* dst, const char* src, size_t count);
 
-int sprintf(char *dst, const char *fmt, ...) {
+int sprintf(char* dst, const char* fmt, ...) {
     s32 written;
     va_list args;
     va_start(args, fmt);
@@ -16,6 +16,6 @@ int sprintf(char *dst, const char *fmt, ...) {
     return written;
 }
 
-char *proutSprintf(char *dst, const char *src, size_t count) {
-    return (char *) memcpy((u8 *) dst, (u8 *) src, count) + count;
+char* proutSprintf(char* dst, const char* src, size_t count) {
+    return (char*) memcpy((u8*) dst, (u8*) src, count) + count;
 }

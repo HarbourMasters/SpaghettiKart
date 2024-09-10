@@ -22,12 +22,14 @@ typedef struct {
 
 freecamSaveState fState;
 
-u32 fRankIndex = 0;
+u32 fRankIndex = -1;
 u32 fTargetPlayer = false;
 u32 fMode; // freecam mode should probably be an enum
 u32 fModeInit = false;
 
 int rightMouseButtonDown = 0; // Track if right mouse button is held down
+
+u32 gFreecamControllerType = 0;
 
 // void freecam_n64_calculate_forward_vector(Camera* camera, Vec3f forwardVector);
 // void freecam_n64_move_camera_forward(Camera* camera, struct Controller *controller, f32 distance);
@@ -42,9 +44,6 @@ void freecam_save_state(Camera *camera);
 void freecam_load_state(Camera *camera);
 void freecam_mouse_manager(Camera *camera);
 void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector);
-//void freecam_pan_camera(Camera *camera, f32 moveSpeed);
-// void freecam_calculate_forward_vector_allow_rotation(Camera* camera, Vec3f forwardVector);
-
 
 /**
  * Controls
@@ -122,15 +121,18 @@ void freecam(Camera *camera, Player *player, s8 index) {
 
     // if ((player->type & PLAYER_START_SEQUENCE)) { return; }
 
-    //freecam_n64_controller_manager(camera, controller, player);
 
-    freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
-    freecam_mouse_manager(camera, freeCam.forwardVector);
-    freecam_keyboard_manager(camera, freeCam.forwardVector);
-    //freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
-    //freecam_calculate_forward_vector(camera, freeCam.forwardVector);
-    freecam_update(camera, freeCam.forwardVector);
-
+    // Mouse/Keyboard
+    if (gFreecamControllerType == 0) {
+        freecam_calculate_forward_vector_allow_rotation(camera, freeCam.forwardVector);
+        freecam_mouse_manager(camera, freeCam.forwardVector);
+        freecam_keyboard_manager(camera, freeCam.forwardVector);
+    } else { // Stock N64 controller
+        freecam_n64_controller_manager(camera, controller, player);
+    }
+    if (!fTargetPlayer) {
+        freecam_update(camera, freeCam.forwardVector);
+    }
 }
 
 void freecam_save_state(Camera *camera) {
@@ -219,6 +221,42 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
 
     // Determine movement direction based on keys pressed
     Vec3f totalMove = {0.0f, 0.0f, 0.0f};
+
+
+    // if (keystate[SDL_SCANCODE_F]) {
+    //     fMode = true;
+    // }
+
+    // // Target a player
+    // if (keystate[SDL_SCANCODE_G]) {
+    //     fTargetPlayer = false;
+    // }
+
+    // Target next player
+    if (keystate[SDL_SCANCODE_N]) {
+        if (fRankIndex > 0) {
+            fRankIndex--;
+            camera->playerId = fRankIndex;
+            D_800DC5EC->player = &gPlayers[fRankIndex];
+        }
+    }
+
+    // Target previous player
+    if (keystate[SDL_SCANCODE_M]) {
+        if (fRankIndex < 7) {
+            fRankIndex++;
+            camera->playerId = fRankIndex;
+            D_800DC5EC->player = &gPlayers[fRankIndex];
+        }
+    }
+
+    // Target camera at chosen player
+    if (fRankIndex != -1) {
+        freecam_target_player(camera, gGPCurrentRacePlayerIdByRank[fRankIndex]);
+        // Don't run the other camera code.
+        return;
+    }
+
 
     if (keystate[SDL_SCANCODE_W]) {
         totalMove[0] += forwardVector[0] * moveSpeed;
@@ -313,4 +351,24 @@ void freecam_n64_controller_manager(Camera *camera, struct Controller *controlle
     if (controller->button & D_CBUTTONS) {
         freecam_n64_move_camera_up(camera, controller, -2.0f);
     }
+}
+
+void freecam_render_setup(void) {
+        u16 perspNorm;
+        Mat4 matrix;
+        init_rdp();
+        func_802A53A4();
+        init_rdp();
+        func_80057FC4(0);
+        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+        gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
+        guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+        gSPPerspNormalize(gDisplayListHead++, perspNorm);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
+        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        mtxf_identity(matrix);
+        gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+        render_set_position(matrix, 0);
+        init_rdp();
 }

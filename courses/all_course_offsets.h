@@ -3,22 +3,22 @@
 
 #include "course_offsets.h"
 
-extern Gfx *rainbow_road_dls[];
-extern Gfx *yoshi_valley_dls[];
-extern Gfx *toads_turnpike_dls[];
-extern Gfx *banshee_boardwalk_dls[];
-extern Gfx *frappe_snowland_dls[];
-extern Gfx *bowsers_castle_dls[];
-extern Gfx *choco_mountain_dls[];
-extern const char *kalimari_desert_dls[];
-extern const char *luigi_raceway_dls[];
-extern const char *mario_raceway_dls[];
-extern Gfx *moo_moo_farm_dls[];
-extern const char *royal_raceway_dls[];
-extern Gfx *sherbet_land_dls[];
-extern Gfx *sherbet_land_dls_2[];
-extern Gfx *wario_stadium_dls[];
-extern const char *dks_jungle_parkway_dls[];
+extern const char* rainbow_road_dls[];
+extern const char* yoshi_valley_dls[];
+extern const char* toads_turnpike_dls[];
+extern const char* banshee_boardwalk_dls[];
+extern const char* frappe_snowland_dls[];
+extern const char* bowsers_castle_dls[];
+extern const char* choco_mountain_dls[];
+extern const char* kalimari_desert_dls[];
+extern const char* luigi_raceway_dls[];
+extern const char* mario_raceway_dls[];
+extern const char* moo_moo_farm_dls[];
+extern const char* royal_raceway_dls[];
+extern const char* sherbet_land_dls[];
+extern const char* sherbet_land_dls_2[];
+extern const char* wario_stadium_dls[];
+extern const char* dks_jungle_parkway_dls[];
 
 extern const course_texture banshee_boardwalk_textures[];
 extern const course_texture big_donut_textures[];

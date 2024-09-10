@@ -1,7 +1,12 @@
 #ifndef FREE_CAM_ENGINE_H
 #define FREE_CAM_ENGINE_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <libultraship.h>
+#include "camera.h"
 
 // Yaw/pitch rotation sensitivity
 #define MOUSE_SENSITIVITY_X 0.006f
@@ -24,5 +29,11 @@ void freecam_target_player(Camera *camera, u32 playerIndex);
 void freecam_update(Camera* camera, Vec3f forwardVector);
 void freecam_move_camera_up(Camera* camera, f32);
 void freecam_move_camera_down(Camera* camera, f32);
+
+extern f32 gDampValue;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // FREE_CAM_ENGINE_H

@@ -20,11 +20,12 @@ class ObjectInit : public Ship::Resource<ObjectInitData> {
   public:
     using Resource::Resource;
 
-    ObjectInit() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    ObjectInit() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     ObjectInitData* GetPointer();
     size_t GetPointerSize();
 
     std::vector<ObjectInitData> mObjects;
 };
-}
+} // namespace SF64

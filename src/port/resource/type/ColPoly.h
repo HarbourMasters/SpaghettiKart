@@ -16,18 +16,21 @@ struct ColPolyData {
     /* 0x08 */ Vec3s norm;
     /* 0x0E */ int16_t unk_0E;
     /* 0x10 */ int32_t dist;
-    ColPolyData(Vec3s tri, int16_t unk_06, Vec3s norm, int16_t unk_0E, int32_t dist) : tri(std::move(tri)), unk_06(unk_06), norm(std::move(norm)), unk_0E(unk_0E), dist(dist) {}
+    ColPolyData(Vec3s tri, int16_t unk_06, Vec3s norm, int16_t unk_0E, int32_t dist)
+        : tri(std::move(tri)), unk_06(unk_06), norm(std::move(norm)), unk_0E(unk_0E), dist(dist) {
+    }
 }; // size = 0x14
 
 class ColPoly : public Ship::Resource<ColPolyData> {
   public:
     using Resource::Resource;
 
-    ColPoly() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    ColPoly() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     ColPolyData* GetPointer();
     size_t GetPointerSize();
 
     std::vector<ColPolyData> mColPolys;
 };
-}
+} // namespace SF64

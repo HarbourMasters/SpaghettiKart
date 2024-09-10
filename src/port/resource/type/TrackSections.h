@@ -23,4 +23,4 @@ class TrackSectionsClass : public Ship::Resource<TrackSectionsI> {
 
     std::vector<TrackSectionsI> TrackSectionsList;
 };
-} // namespace LUS
+} // namespace MK64

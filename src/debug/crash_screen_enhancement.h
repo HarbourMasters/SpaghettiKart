@@ -7,14 +7,12 @@
 void crash_screen_draw(OSThread* thread);
 
 // Add this to the top of main.c or crash_screen.c
-//#define CRASH_SCREEN_ENHANCEMENT
-
-
+// #define CRASH_SCREEN_ENHANCEMENT
 
 /**
  * Example of how to force crash screen to run.
  * Make sure to include the header crash_screen_enhancement.h in main.h
-*/
+ */
 
 // void display_and_vsync(void) {
 //     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);
