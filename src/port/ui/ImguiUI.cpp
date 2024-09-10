@@ -2,6 +2,8 @@
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
 #include "GameInfoWindow.h"
+#include "MultiplayerWindow.h"
+#include "FreecamWindow.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -22,6 +24,8 @@ std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
+std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
+std::shared_ptr<Ship::GuiWindow> mFreecamWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
@@ -34,6 +38,11 @@ void SetupGuiElements() {
 
     mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
     gui->SetMenuBar(mGameMenuBar);
+
+    mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
+    if (mMultiplayerWindow == nullptr) {
+        SPDLOG_ERROR("Could not find multiplayer window");
+    }
 
     mGameInfoWindow = gui->GetGuiWindow("GameInfo");
     if (mGameInfoWindow == nullptr) {
@@ -60,6 +69,17 @@ void SetupGuiElements() {
     if (mGfxDebuggerWindow == nullptr) {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
+
+    mMultiplayerWindow = std::make_shared<Multiplayer::MultiplayerWindow>("gMultiplayerWindowEnabled", "Multiplayer");
+    gui->AddGuiWindow(mMultiplayerWindow);
+
+    mFreecamWindow = gui->GetGuiWindow("FreecamWindow");
+    if (mFreecamWindow == nullptr) {
+        SPDLOG_ERROR("Could not find input FreecamWindow");
+    }
+
+    mFreecamWindow = std::make_shared<Freecam::FreecamWindow>("gFreecamEnabled", "Freecam");
+    gui->AddGuiWindow(mFreecamWindow);
 
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game info");
     gui->AddGuiWindow(mGameInfoWindow);
@@ -106,19 +126,22 @@ void DrawSettingsMenu() {
         //         .format = "%.0f%%",
         //         .isPercentage = true,
         //     });
-        //     if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f, {
+        //     if (UIWidgets::CVarSliderFloat("Main Music Volume", "gMainMusicVolume", 0.0f, 1.0f, 1.0f,
+        //     {
         //         .format = "%.0f%%",
         //         .isPercentage = true,
         //     })) {
         //         audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
         //     }
-        //     if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume", 0.0f, 1.0f, 1.0f, {
+        //     if (UIWidgets::CVarSliderFloat("Sound Effects Volume", "gSFXMusicVolume",
+        //     0.0f, 1.0f, 1.0f, {
         //         .format = "%.0f%%",
         //         .isPercentage = true,
         //     })) {
         //         audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
         //     }
-        //     if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume", 0.0f, 1.0f, 1.0f, {
+        //     if (UIWidgets::CVarSliderFloat("Environment Volume", "gEnvironmentVolume",
+        //     0.0f, 1.0f, 1.0f, {
         //         .format = "%.0f%%",
         //         .isPercentage = true,
         //     })) {
@@ -285,7 +308,8 @@ void DrawSettingsMenu() {
             if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
                 Ship::WindowBackend::FAST3D_DXGI_DX11) {
                 UIWidgets::Tooltip(
-                    "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is purely "
+                    "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. "
+                    "This is purely "
                     "visual and does not impact game logic, execution of glitches etc.\n\n"
                     "A higher target FPS than your monitor's refresh rate will waste resources, and might give a worse "
                     "result.");
@@ -390,7 +414,8 @@ void DrawSettingsMenu() {
 void DrawMenuBarIcon() {
     static bool gameIconLoaded = false;
     if (!gameIconLoaded) {
-        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon", "textures/icons/gIcon.png");
+        // Ship::Context::GetInstance()->GetWindow()->GetGui()->LoadTexture("Game_Icon",
+        // "textures/icons/gIcon.png");
         gameIconLoaded = false;
     }
 
@@ -440,15 +465,34 @@ void DrawGameMenu() {
 void DrawEnhancementsMenu() {
     if (UIWidgets::BeginMenu("Enhancements")) {
 
+        UIWidgets::WindowButton("Multiplayer", "gMultiplayerWindowEnabled", GameUI::mMultiplayerWindow,
+                                { .tooltip = "Shows the multiplayer window" });
+
+
         if (UIWidgets::BeginMenu("Gameplay")) {
+            UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD",
+                                    { .tooltip = "Disable Level of Detail (LOD) to avoid models using "
+                                                 "lower poly versions at a distance" });
+
+
+            UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow, {
+                .tooltip = "Allows you to fly around the course"
+            });
             UIWidgets::CVarCheckbox(
-                "No Level of Detail (LOD)", "gDisableLOD",
+                "No Level of Detail (LOD)", "gDisableLod",
                 { .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance" });
+
             UIWidgets::CVarCheckbox("Ignore Rendering Limits", "gIgnoreRenderDistance",
                                     { .tooltip = "Renders game objects regardless of camera distance" });
             UIWidgets::CVarCheckbox("Select any star from menu", "gCompletedGame",
                                     { .tooltip = "Unlocks extra mode and sets all gold cups." });
+
+            UIWidgets::CVarCheckbox("Disable Culling", "gNoCulling", { .tooltip = "Disable original culling of mk64" });
+            UIWidgets::CVarSliderFloat(
+                "Far Frustrum", "gFarFrustrum", 0.0f, 10000.0f, 10000.0f,
+                { .tooltip = "Say how Far the Frustrum are when 'Disable Culling' are enable", .step = 10.0f });
             ImGui::EndMenu();
+
         }
 
         ImGui::EndMenu();
@@ -461,6 +505,11 @@ void DrawCheatsMenu() {
         UIWidgets::CVarCheckbox("Infinite Lives", "gInfiniteLives");
         UIWidgets::CVarCheckbox("Enable Custom CC", "gEnableCustomCC");
         UIWidgets::CVarSliderFloat("Custom CC", "gCustomCC", 0.0, 1000.0, 150.0, { .step = 10.0 });
+        UIWidgets::CVarCheckbox("Disable Wall Collision", "gNoWallColision", { .tooltip = "Disable wall collision." });
+        UIWidgets::CVarSliderFloat(
+            "Min Height", "gMinHeight", -50.0f, 50.0f, 0.0f,
+            { .tooltip = "When Disable Wall Collision are enable what is the minimal height you can get." });
+        ImGui::EndMenu();
 
         ImGui::EndMenu();
     }
@@ -477,13 +526,19 @@ void DrawDebugMenu() {
             { .tooltip =
                   "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples" });
 
-        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", { .tooltip = "TBD" });
+        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
+            .tooltip = "Enable debug mode"
+        });
 
         UIWidgets::CVarCheckbox("Level Selector", "gLevelSelector",
                                 { .tooltip = "Allows you to select any level from the main menu" });
 
         UIWidgets::CVarCheckbox("SFX Jukebox", "gSfxJukebox",
                                 { .tooltip = "Allows you to play sound effects from the game" });
+
+        UIWidgets::CVarCheckbox("Render Collision", "gRenderCollisionMesh", {
+            .tooltip = "Renders the collision mesh instead of the course mesh"
+        });
 
         UIWidgets::Spacer(0);
 
