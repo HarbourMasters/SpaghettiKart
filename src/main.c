@@ -43,6 +43,7 @@
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
 #include <bridge/gfxdebuggerbridge.h>
+#include "enhancements/freecam/freecam.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -317,6 +318,29 @@ void create_gfx_task_structure(void) {
 #endif
 }
 
+f32 gDeltaTime = 0.0f;
+f32 calculate_delta_time(void) {
+    static u32 prevtime = 0;
+    u32 now = osGetCount();
+    f32 deltaTime;
+
+    if (now > prevtime) {
+        deltaTime = (f32)(now - prevtime) / OS_CPU_COUNTER;
+    } else {
+        // Handle counter reset
+        deltaTime = (f32)((0xffffffff - prevtime) + 1 + now) / OS_CPU_COUNTER;
+    }
+
+    prevtime = now;
+    
+    // Cap deltaTime to avoid large jumps (e.g., on pause/resume)
+    if (deltaTime > 1.0f / 15.0f) { // Assume 15 FPS is the lowest acceptable rate
+        deltaTime = 1.0f / 15.0f;
+    }
+
+    gDeltaTime = deltaTime;
+}
+
 void init_controllers(void) {
     osCreateMesgQueue(&gSIEventMesgQueue, &gSIEventMesgBuf[0], ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, OS_MESG_32(0x33333333));
@@ -333,6 +357,11 @@ void update_controller(s32 index) {
     u16 stick;
 
     if (sIsController1Unplugged) {
+        return;
+    }
+
+    // Prevents pause menu intereference while controlling flycam
+    if ((CVarGetInteger("gFreecam", 0) == 1) && (gFreecamControllerType == 0) && (gGamestate == RACING)) {
         return;
     }
 
@@ -1226,6 +1255,8 @@ void thread5_game_loop(void) {
 }
 
 void thread5_iteration(void) {
+    // func_800CB2C4();
+    calculate_delta_time();
 #ifdef TARGET_N64
     while (true) {
         func_800CB2C4();

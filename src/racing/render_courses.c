@@ -178,6 +178,12 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     arg1->pathCounter = index;
     index = ((index - 1) * 4) + var_a3;
     gSPDisplayList(gDisplayListHead++, addr[index]);
+
+    if (CVarGetInteger("gDisableLod", 0) == 1 && gCurrentCourseId == COURSE_BOWSER_CASTLE &&
+        (index < 20 || index > 99)) { // always render higher version of bowser statue
+        gDisplayListHead--;
+        gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the course
+    }
 }
 
 void func_80291198(void) {
@@ -1253,7 +1259,7 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64(D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1366,8 +1372,15 @@ void func_8029569C(void) {
 void render_course(struct UnkStruct_800DC5EC *arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
-    if (CVarGetInteger("gRenderCollisionMesh", 0) == 1) {
+    // Freecam priority renders collision.
+    if (CVarGetInteger("gRenderCollisionMesh", 0) == true) {
         render_collision();
+        return;
+    }
+
+    if ((CVarGetInteger("gFreecam", 0) == true) ) {
+        // Render credits courses
+        func_8029569C();
         return;
     }
 

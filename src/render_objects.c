@@ -3359,6 +3359,9 @@ void render_object_boos(s32 arg0) {
         objectIndex = indexObjectList3[someIndex];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
+            if (CVarGetInteger("gNoCulling", 0) == 1) {
+                temp_s2 = MIN(temp_s2, 0x15F91U);
+            }
             if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800523B8(objectIndex, arg0, temp_s2);
             }
@@ -4171,7 +4174,7 @@ void render_object_seagulls(s32 arg0) {
 
     for (i = 0; i < NUM_SEAGULLS; i++) {
         var_s1 = indexObjectList2[i];
-        if (func_8008A364(var_s1, arg0, 0x5555U, 0x000005DC) < 0x9C401) {
+        if (func_8008A364(var_s1, arg0, 0x5555U, 0x000005DC) < 0x9C401 && CVarGetInteger("gNoCulling", 0) == 0) {
             D_80165908 = 1;
             func_800722A4(var_s1, 2);
         }
@@ -4232,6 +4235,9 @@ void render_object_hedgehogs(s32 arg0) {
     for (someIndex = 0; someIndex < NUM_HEDGEHOGS; someIndex++) {
         test = indexObjectList2[someIndex];
         something = func_8008A364(test, arg0, 0x4000U, 0x000003E8);
+        if (CVarGetInteger("gNoCulling", 0) == 1) {
+            something = MIN(something, 0x52211U - 1);
+        }
         if (is_obj_flag_status_active(test, VISIBLE) != 0) {
             set_object_flag_status_true(test, 0x00200000);
             if (something < 0x2711U) {
