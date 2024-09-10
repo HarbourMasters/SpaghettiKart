@@ -142,6 +142,7 @@ s32 D_801634F4;
 Test D_801634F8[10];
 Path2D* gVehicle2DWaypoint;
 s32 gVehicle2DWaypointLength;
+size_t gNumTrains = 0;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[NUM_CROSSINGS];
 u16 sCrossingActiveTimer[NUM_CROSSINGS];
@@ -4390,60 +4391,6 @@ void spawn_vehicle_on_road(VehicleStuff* vehicle) {
     vehicle->velocity[2] = vehicle->position[2] - origZPos;
 }
 
-spawn_train(size_t trainIndex) {
-    s16 trainCarYRot;
-    Vec3s trainCarRot;
-    TrainCarStuff* tempLocomotive;
-    TrainCarStuff* tempTender;
-    TrainCarStuff* tempPassengerCar;
-
-    f32 origXPos;
-    f32 origZPos;
-
-    printf("\nSPAWN TRAIN\n\n");
-
-    tempLocomotive = &gTrainList[trainIndex].locomotive;
-    origXPos = tempLocomotive->position[0];
-    origZPos = tempLocomotive->position[2];
-    trainCarYRot = update_vehicle_following_waypoint(
-        tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, gTrainList[trainIndex].speed);
-    tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
-    tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
-    vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-    tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot,
-                                                            tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
-
-    tempTender = &gTrainList[trainIndex].tender;
-    if (tempTender->isActive == 1) {
-        origXPos = tempTender->position[0];
-        origZPos = tempTender->position[2];
-        trainCarYRot = update_vehicle_following_waypoint(
-            tempTender->position, (s16*) &tempTender->waypointIndex, gTrainList[trainIndex].speed);
-        tempTender->velocity[0] = tempTender->position[0] - origXPos;
-        tempTender->velocity[2] = tempTender->position[2] - origZPos;
-        vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-        tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot,
-                                                            tempTender->velocity, ACTOR_TRAIN_TENDER);
-    }
-
-    for (size_t i = 0; i < gTrainList[trainIndex].numCarriages; i++) {
-        tempPassengerCar = &gTrainList[trainIndex].passengerCars[i];
-        if (tempPassengerCar->isActive == 1) {
-            origXPos = tempPassengerCar->position[0];
-            origZPos = tempPassengerCar->position[2];
-            trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
-                                                                (s16*) &tempPassengerCar->waypointIndex,
-                                                                gTrainList[trainIndex].speed);
-            tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
-            tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
-            vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-            tempPassengerCar->actorIndex =
-                add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity,
-                                        ACTOR_TRAIN_PASSENGER_CAR);
-        }
-    }
-}
-
 void spawn_course_vehicles(void) {
     s16 trainCarYRot;
     UNUSED Vec3f pad;
@@ -4464,8 +4411,48 @@ void spawn_course_vehicles(void) {
 
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
-            spawn_train(0);
-            spawn_train(1);
+            for (loopIndex = 0; loopIndex < gNumTrains; loopIndex++) {
+                tempLocomotive = &gTrainList[loopIndex].locomotive;
+                origXPos = tempLocomotive->position[0];
+                origZPos = tempLocomotive->position[2];
+                trainCarYRot = update_vehicle_following_waypoint(
+                    tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
+                tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
+                tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
+                vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+                tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot,
+                                                                     tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
+
+                tempTender = &gTrainList[loopIndex].tender;
+                if (tempTender->isActive == 1) {
+                    origXPos = tempTender->position[0];
+                    origZPos = tempTender->position[2];
+                    trainCarYRot = update_vehicle_following_waypoint(
+                        tempTender->position, (s16*) &tempTender->waypointIndex, gTrainList[loopIndex].speed);
+                    tempTender->velocity[0] = tempTender->position[0] - origXPos;
+                    tempTender->velocity[2] = tempTender->position[2] - origZPos;
+                    vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+                    tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot,
+                                                                     tempTender->velocity, ACTOR_TRAIN_TENDER);
+                }
+
+                for (loopIndex2 = 0; loopIndex2 < gTrainList[loopIndex].numCarriages; loopIndex2++) {
+                    tempPassengerCar = &gTrainList[loopIndex].passengerCars[loopIndex2];
+                    if (tempPassengerCar->isActive == 1) {
+                        origXPos = tempPassengerCar->position[0];
+                        origZPos = tempPassengerCar->position[2];
+                        trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
+                                                                         (s16*) &tempPassengerCar->waypointIndex,
+                                                                         gTrainList[loopIndex].speed);
+                        tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
+                        tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
+                        vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+                        tempPassengerCar->actorIndex =
+                            add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity,
+                                                    ACTOR_TRAIN_PASSENGER_CAR);
+                    }
+                }
+            }
             break;
         case COURSE_DK_JUNGLE:
             for (loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_BOATS; loopIndex++) {
@@ -4527,7 +4514,6 @@ void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoi
     trainCar->velocity[2] = 0.0f;
 }
 
-size_t gNumTrains = 0;
 /**
  * Set waypoint spawn locations for each rolling stock
  * The railroad has 465 waypoints
