@@ -30,7 +30,7 @@ float gInterpolationStep = 0.0f;
 #include <MatrixFactory.h>
 #include <BlobFactory.h>
 #include <VertexFactory.h>
-//#include <LightsFactory.h>
+#include <LightsFactory.h>
 }
 
 GameEngine* GameEngine::Instance;
