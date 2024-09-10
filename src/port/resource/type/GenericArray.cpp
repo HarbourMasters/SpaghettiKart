@@ -8,4 +8,4 @@ uint8_t* GenericArray::GetPointer() {
 size_t GenericArray::GetPointerSize() {
     return mData.size();
 }
-}
+} // namespace SF64

@@ -7,7 +7,7 @@
 
 /**
  * @file Include for course gfx.inc.c.
-*/
+ */
 
 typedef struct {
     uintptr_t addr;

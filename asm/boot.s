@@ -19,8 +19,8 @@ glabel ipl3_entry # 0xA4000040
     mtc0  $zero, $13
     mtc0  $zero, $9
     mtc0  $zero, $11
-    lui   $t0, %hi(RI_MODE_REG)
-    addiu $t0, %lo(RI_MODE_REG)
+    lui   $t0, %hi(PHYS_TO_K1|RI_MODE_REG)
+    addiu $t0, %lo(PHYS_TO_K1|RI_MODE_REG)
     lw    $t1, 0xc($t0)
     bnez  $t1, .LA4000410
      nop
@@ -30,12 +30,12 @@ glabel ipl3_entry # 0xA4000040
     sw    $s5, 8($sp)
     sw    $s6, 0xc($sp)
     sw    $s7, 0x10($sp)
-    lui   $t0, %hi(RI_MODE_REG)
-    addiu $t0, %lo(RI_MODE_REG)
+    lui   $t0, %hi(PHYS_TO_K1|RI_MODE_REG)
+    addiu $t0, %lo(PHYS_TO_K1|RI_MODE_REG)
     lui   $t2, (0xa3f80000 >> 16)
     lui   $t3, (0xa3f00000 >> 16)
-    lui   $t4, %hi(MI_MODE_REG)
-    addiu $t4, %lo(MI_MODE_REG)
+    lui   $t4, %hi(PHYS_TO_K1|MI_MODE_REG)
+    addiu $t4, %lo(PHYS_TO_K1|MI_MODE_REG)
     ori   $t1, $zero, 64
     sw    $t1, 4($t0)
     li   $s1, 8000
@@ -81,8 +81,8 @@ glabel ipl3_entry # 0xA4000040
     lui   $s4, (0xA0000000 >> 16)
     addiu $sp, $sp, -0x48
     move  $fp, $sp
-    lui   $s0, %hi(MI_VERSION_REG)
-    lw    $s0, %lo(MI_VERSION_REG)($s0)
+    lui   $s0, %hi(PHYS_TO_K1|MI_VERSION_REG)
+    lw    $s0, %lo(PHYS_TO_K1|MI_VERSION_REG)($s0)
     lui   $s1, (0x01010101 >> 16)
     addiu $s1, (0x01010101 & 0xFFFF)
     bne   $s0, $s1, .LA4000160
@@ -232,13 +232,13 @@ glabel ipl3_entry # 0xA4000040
     slt   $t0, $v1, $t5
     bnez  $t0, .LA4000274
      nop
-    lui   $t2, %hi(RI_REFRESH_REG)
+    lui   $t2, %hi(PHYS_TO_K1|RI_REFRESH_REG)
     sll   $s2, $s2, 0x13
     lui   $t1, (0x00063634 >> 16)
     ori   $t1, (0x00063634 & 0xFFFF)
     or    $t1, $t1, $s2
-    sw    $t1, %lo(RI_REFRESH_REG)($t2)
-    lw    $t1, %lo(RI_REFRESH_REG)($t2)
+    sw    $t1, %lo(PHYS_TO_K1|RI_REFRESH_REG)($t2)
+    lw    $t1, %lo(PHYS_TO_K1|RI_REFRESH_REG)($t2)
     lui   $t0, (0xA0000300 >> 16)
     ori   $t0, (0xA0000300 & 0xFFFF)
     lui   $t1, (0x0FFFFFFF >> 16)
@@ -328,24 +328,24 @@ glabel ipl3_entry # 0xA4000040
     lw    $t1, %lo(D_B0000008)($t3)
     lui   $t2, (0x1FFFFFFF >> 16)
     ori   $t2, (0x1FFFFFFF & 0xFFFF)
-    lui   $at, %hi(PI_DRAM_ADDR_REG)
+    lui   $at, %hi(PHYS_TO_K1|PI_DRAM_ADDR_REG)
     and   $t1, $t1, $t2
-    sw    $t1, %lo(PI_DRAM_ADDR_REG)($at)
-    lui   $t0, %hi(PI_STATUS_REG)
+    sw    $t1, %lo(PHYS_TO_K1|PI_DRAM_ADDR_REG)($at)
+    lui   $t0, %hi(PHYS_TO_K1|PI_STATUS_REG)
 .LA40004D0:
-    lw    $t0, %lo(PI_STATUS_REG)($t0)
+    lw    $t0, %lo(PHYS_TO_K1|PI_STATUS_REG)($t0)
     andi  $t0, $t0, 2
     bnezl $t0, .LA40004D0
-     lui   $t0, %hi(PI_STATUS_REG)
+     lui   $t0, %hi(PHYS_TO_K1|PI_STATUS_REG)
     li    $t0, 0x1000
     add   $t0, $t0, $t3
     and   $t0, $t0, $t2
-    lui   $at, %hi(PI_CART_ADDR_REG)
-    sw    $t0, %lo(PI_CART_ADDR_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|PI_CART_ADDR_REG)
+    sw    $t0, %lo(PHYS_TO_K1|PI_CART_ADDR_REG)($at)
     lui   $t2, 0x0010
     addiu $t2, 0xFFFF
-    lui   $at, %hi(PI_WR_LEN_REG)
-    sw    $t2, %lo(PI_WR_LEN_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|PI_WR_LEN_REG)
+    sw    $t2, %lo(PHYS_TO_K1|PI_WR_LEN_REG)($at)
 
 .LA4000514:
     nop
@@ -376,8 +376,8 @@ glabel ipl3_entry # 0xA4000040
     nop
     nop
     nop
-    lui   $t3, %hi(PI_STATUS_REG)
-    lw    $t3, %lo(PI_STATUS_REG)($t3)
+    lui   $t3, %hi(PHYS_TO_K1|PI_STATUS_REG)
+    lw    $t3, %lo(PHYS_TO_K1|PI_STATUS_REG)($t3)
     andi  $t3, $t3, 0x1
     bnez  $t3, .LA4000514
      nop
@@ -451,37 +451,37 @@ halt: # checksum fail
      nop
 
 func_A4000690:
-    lui   $t1, %hi(SP_PC)
-    lw    $t1, %lo(SP_PC)($t1)
+    lui   $t1, %hi(PHYS_TO_K1|SP_PC_REG)
+    lw    $t1, %lo(PHYS_TO_K1|SP_PC_REG)($t1)
     lw    $s0, 0x14($sp)
     lw    $ra, 0x1c($sp)
     beqz  $t1, .LA40006BC
      addiu $sp, $sp, 0x20
     li    $t2, 65
-    lui   $at, %hi(SP_STATUS_REG)
-    sw    $t2, %lo(SP_STATUS_REG)($at)
-    lui   $at, %hi(SP_PC)
-    sw    $zero, %lo(SP_PC)($at)
+    lui   $at, %hi(PHYS_TO_K1|SP_STATUS_REG)
+    sw    $t2, %lo(PHYS_TO_K1|SP_STATUS_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|SP_PC_REG)
+    sw    $zero, %lo(PHYS_TO_K1|SP_PC_REG)($at)
 .LA40006BC:
     lui   $t3, (0x00AAAAAE >> 16)
     ori   $t3, (0x00AAAAAE & 0xFFFF)
-    lui   $at, %hi(SP_STATUS_REG)
-    sw    $t3, %lo(SP_STATUS_REG)($at)
-    lui   $at, %hi(MI_INTR_MASK_REG)
+    lui   $at, %hi(PHYS_TO_K1|SP_STATUS_REG)
+    sw    $t3, %lo(PHYS_TO_K1|SP_STATUS_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|MI_INTR_MASK_REG)
     li    $t0, 1365
-    sw    $t0, %lo(MI_INTR_MASK_REG)($at)
-    lui   $at, %hi(SI_STATUS_REG)
-    sw    $zero, %lo(SI_STATUS_REG)($at)
-    lui   $at, %hi(AI_STATUS_REG)
-    sw    $zero, %lo(AI_STATUS_REG)($at)
-    lui   $at, %hi(MI_MODE_REG)
+    sw    $t0, %lo(PHYS_TO_K1|MI_INTR_MASK_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|SI_STATUS_REG)
+    sw    $zero, %lo(PHYS_TO_K1|SI_STATUS_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|AI_STATUS_REG)
+    sw    $zero, %lo(PHYS_TO_K1|AI_STATUS_REG)($at)
+    lui   $at, %hi(PHYS_TO_K1|MI_MODE_REG)
     li    $t1, 2048
-    sw    $t1, %lo(MI_MODE_REG)($at)
+    sw    $t1, %lo(PHYS_TO_K1|MI_MODE_REG)($at)
     li    $t1, 2
-    lui   $at, %hi(PI_STATUS_REG)
+    lui   $at, %hi(PHYS_TO_K1|PI_STATUS_REG)
     lui   $t0, (0xA0000300 >> 16)
     ori   $t0, (0xA0000300 & 0xFFFF)
-    sw    $t1, %lo(PI_STATUS_REG)($at)
+    sw    $t1, %lo(PHYS_TO_K1|PI_STATUS_REG)($at)
     sw    $s7, 0x14($t0)
     sw    $s5, 0xc($t0)
     sw    $s3, 0x4($t0)
@@ -747,8 +747,8 @@ func_A4000A40:
     li    $k1, 1
     bne   $a1, $k1, .LA4000AC0
      sw    $t7, ($s5)
-    lui   $k0, %hi(MI_MODE_REG)
-    sw    $zero, %lo(MI_MODE_REG)($k0)
+    lui   $k0, %hi(PHYS_TO_K1|MI_MODE_REG)
+    sw    $zero, %lo(PHYS_TO_K1|MI_MODE_REG)($k0)
 .LA4000AC0:
     lw    $ra, 0x1c($sp)
     addiu $sp, $sp, 0x28
@@ -759,12 +759,12 @@ func_A4000AD0:
     addiu $sp, $sp, -0x28
     sw    $ra, 0x1c($sp)
     li    $k0, 0x2000
-    lui   $k1, %hi(MI_MODE_REG)
-    sw    $k0, %lo(MI_MODE_REG)($k1)
+    lui   $k1, %hi(PHYS_TO_K1|MI_MODE_REG)
+    sw    $k0, %lo(PHYS_TO_K1|MI_MODE_REG)($k1)
     move  $fp, $zero
     lw    $fp, ($s5)
     li    $k0, 0x1000
-    sw    $k0, %lo(MI_MODE_REG)($k1)
+    sw    $k0, %lo(PHYS_TO_K1|MI_MODE_REG)($k1)
     li    $k1, 0x40
     and   $k1, $k1, $fp
     srl   $k1, $k1, 6

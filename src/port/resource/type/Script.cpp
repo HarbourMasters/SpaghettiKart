@@ -16,4 +16,4 @@ uint16_t* ScriptCMDs::GetPointer() {
 size_t ScriptCMDs::GetPointerSize() {
     return sizeof(uint16_t) * mCommands.size();
 }
-}
+} // namespace SF64

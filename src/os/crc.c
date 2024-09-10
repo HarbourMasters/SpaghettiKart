@@ -13,14 +13,14 @@ u8 __osContAddressCrc(u16 addr) {
         }
 
         temp <<= 1;
-        temp |= (u8)((addr & 0x400) ? 1 : 0);
+        temp |= (u8) ((addr & 0x400) ? 1 : 0);
         addr <<= 1;
         temp ^= temp2;
     }
     return temp & 0x1f;
 }
 
-u8 __osContDataCrc(u8 *data) {
+u8 __osContDataCrc(u8* data) {
     u8 temp;
     u8 temp2;
     int i;

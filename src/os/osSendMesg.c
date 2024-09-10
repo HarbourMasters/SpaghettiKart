@@ -1,9 +1,9 @@
 #include "libultra_internal.h"
 
-s32 osSendMesg(OSMesgQueue *mq, OSMesg msg, s32 flag) {
+s32 osSendMesg(OSMesgQueue* mq, OSMesg msg, s32 flag) {
     register u32 int_disabled;
     register s32 index;
-    register OSThread *s2;
+    register OSThread* s2;
     int_disabled = __osDisableInt();
 
     while (mq->validCount >= mq->msgCount) {

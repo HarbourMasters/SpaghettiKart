@@ -65,7 +65,7 @@
 #include "src/camera.h"
 #include "src/camera_junk.h"
 #include "src/code_800029B0.h"
-#include "src/code_80004740.h"
+#include "src/animation.h"
 #include "src/code_80005FD0.h"
 #include "src/code_8003DC40.h"
 #include "src/code_80057C60.h"

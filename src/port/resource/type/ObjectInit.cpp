@@ -8,4 +8,4 @@ ObjectInitData* ObjectInit::GetPointer() {
 size_t ObjectInit::GetPointerSize() {
     return sizeof(ObjectInitData) * mObjects.size();
 }
-}
+} // namespace SF64

@@ -7,10 +7,10 @@
 #include "camera.h"
 
 struct UnkStruct_800DC5EC {
-    /* 0x00 */ struct Controller *controllers; // gControllers ptr 800F6910
-    /* 0x04 */ Camera *camera; // Player camera ptr
-    /* 0x08 */ Player *player; // Player ptr 800F6990
-    /* 0x0C */ s32 *unkC; // unk struct?
+    /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
+    /* 0x04 */ Camera* camera;                 // Player camera ptr
+    /* 0x08 */ Player* player;                 // Player ptr 800F6990
+    /* 0x0C */ s32* unkC;                      // unk struct?
     /* 0x10 */ Vp viewport;
     /* 0x20 */ s32 pad[2];
     /* 0x28 */ s16 cameraHeight;
@@ -25,7 +25,6 @@ struct UnkStruct_800DC5EC {
     /* 0x3A */ s16 unk42;
     /* 0x3C */ s32 pad2;
 }; // size = 0x40
-
 
 /* Function Prototypes */
 
@@ -57,18 +56,18 @@ extern u16 D_800DC5E4;
 extern s32 gPlayerWinningIndex;
 
 extern struct UnkStruct_800DC5EC D_8015F480[4];
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-extern u16  gIsGamePaused;
-extern u8 *pAppNmiBuffer;
+extern struct UnkStruct_800DC5EC* D_800DC5EC;
+extern struct UnkStruct_800DC5EC* D_800DC5F0;
+extern struct UnkStruct_800DC5EC* D_800DC5F4;
+extern struct UnkStruct_800DC5EC* D_800DC5F8;
+extern u16 gIsGamePaused;
+extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
 extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
 
-extern CollisionTriangle *gCollisionMesh;
-extern u16 *gCollisionIndices;
+extern CollisionTriangle* gCollisionMesh;
+extern u16* gCollisionIndices;
 extern u16 gCollisionMeshCount;
 extern u16 gNumCollisionTriangles;
 extern u32 D_8015F58C;
@@ -78,7 +77,7 @@ extern s32 D_8015F59C;
 extern s32 D_8015F5A0;
 extern s32 D_8015F5A4;
 
-extern Vtx *vtxBuffer[];
+extern Vtx* vtxBuffer[];
 extern s16 gCourseMaxX;
 extern s16 gCourseMinX;
 
@@ -120,12 +119,12 @@ extern u16 D_8015F892;
 extern u16 D_8015F894;
 extern f32 gTimePlayerLastTouchedFinishLine[];
 
-extern u8 *gNmiUnknown1;
-extern u8 *gNmiUnknown2;
-extern u8 *gNmiUnknown3;
-extern u8 *gNmiUnknown4;
-extern u8 *gNmiUnknown5;
-extern u8 *gNmiUnknown6;
+extern u8* gNmiUnknown1;
+extern u8* gNmiUnknown2;
+extern u8* gNmiUnknown3;
+extern u8* gNmiUnknown4;
+extern u8* gNmiUnknown5;
+extern u8* gNmiUnknown6;
 
 extern Vec3f D_8015F8D0;
 extern s32 D_8015F8DC;

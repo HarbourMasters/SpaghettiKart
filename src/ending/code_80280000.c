@@ -25,9 +25,8 @@
 #include "main.h"
 #include "render_player.h"
 
-
 s32 D_802874A0;
-//s32 D_802874A4[5];
+// s32 D_802874A4[5];
 
 void func_80280000(void) {
     func_802966A0();
@@ -38,7 +37,7 @@ void func_80280000(void) {
 
 void func_80280038(void) {
     u16 perspNorm;
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
     UNUSED s32 pad;
     Mat4 matrix;
 
@@ -53,16 +52,19 @@ void func_80280038(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    render_object(PLAYER_ONE+SCREEN_MODE_1P);
-    render_player_snow_effect(PLAYER_ONE+SCREEN_MODE_1P);
+    render_object(PLAYER_ONE + SCREEN_MODE_1P);
+    render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
     transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -81,7 +83,7 @@ void func_80280268(s32 arg0) {
 }
 
 void credits_loop(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
 
     f32 temp_f12;
     f32 temp;
@@ -111,7 +113,7 @@ void credits_loop(void) {
             func_80280000();
             func_80280038();
 #if DVDL
-			display_dvdl();
+            display_dvdl();
 #endif
             gDPFullSync(gDisplayListHead++);
             gSPEndDisplayList(gDisplayListHead++);
@@ -120,7 +122,7 @@ void credits_loop(void) {
 }
 
 void load_credits(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
 
     gCurrentCourseId = gCreditsCourseId;
     D_800DC5B4 = 1;
@@ -138,7 +140,9 @@ void load_credits(void) {
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
-    //set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
+#ifdef TARGET_N64
+    set_segment_base_addr(0xB, (void*) decompress_segments((u8*) CEREMONY_DATA_ROM_START, (u8*) CEREMONY_DATA_ROM_END));
+#endif
 
     gCourseMinX = -0x15A1;
     gCourseMinY = -0x15A1;
@@ -153,7 +157,7 @@ void load_credits(void) {
     gCollisionMeshCount = 0;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    gCollisionMesh = (CollisionTriangle *) gNextFreeMemoryAddress;
+    gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;
     camera->pos[1] = 300.0f;
     camera->pos[2] = 1400.0f;
@@ -169,6 +173,6 @@ void load_credits(void) {
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}
-    D_801625F8 = ((uintptr_t)gHeapEndPtr - gNextFreeMemoryAddress);
-    D_801625FC = ((f32)D_801625F8 / 1000.0f);
+    D_801625F8 = ((uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress);
+    D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

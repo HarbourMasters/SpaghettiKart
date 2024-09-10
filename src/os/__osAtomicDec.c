@@ -1,6 +1,6 @@
 #include "libultra_internal.h"
 
-s32 __osAtomicDec(u32 *a0) {
+s32 __osAtomicDec(u32* a0) {
     s32 sp1c;
     s32 sp18;
     sp1c = __osDisableInt();

@@ -10,7 +10,7 @@ typedef struct {
 u32 D_80334A40 = 0;
 u32 D_80334A44 = 1;
 
-void __osSyncPutChars(s32 a0, s32 a1, u8 *a2) {
+void __osSyncPutChars(s32 a0, s32 a1, u8* a2) {
     unkStruct sp24;
     s32 sp20;
     u32 sp1c;
@@ -27,11 +27,11 @@ void __osSyncPutChars(s32 a0, s32 a1, u8 *a2) {
 
     sp1c = __osDisableInt();
 
-    *(u32 *) 0xC0000000 = *(u32 *) &sp24;
+    *(u32*) 0xC0000000 = *(u32*) &sp24;
     while (!(__osGetCause() & 0x2000)) {
         ;
     }
-    *(u32 *) 0xC000000C = 0;
+    *(u32*) 0xC000000C = 0;
     D_80334A44++;
 
     __osRestoreInt(sp1c);

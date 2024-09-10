@@ -49,7 +49,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
       BUILD_DIR/src/crash_screen.o(.text*);
-      BUILD_DIR/src/code_80004740.o(.text*);
+      BUILD_DIR/src/animation.o(.text*);
       BUILD_DIR/src/staff_ghosts.o(.text*);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.jp.o(.text*);
@@ -267,7 +267,7 @@ SECTIONS
       BUILD_DIR/src/os/osViData.o(.data*);
       BUILD_DIR/src/os/_Litob.o(.data*);
       BUILD_DIR/src/main.o(.rodata*);
-      BUILD_DIR/src/code_80004740.o(.rodata*);
+      BUILD_DIR/src/animation.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
@@ -316,8 +316,8 @@ SECTIONS
       BUILD_DIR/src/os/_Printf.o(.rodata*);
       BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
       BUILD_DIR/src/os/_Ldtob.o(.rodata*);
-      BUILD_DIR/data/rsp.o(.data);
-      BUILD_DIR/src/audio/data.o(.data);
+      BUILD_DIR/data/rsp.o(.data*);
+      BUILD_DIR/src/audio/data.o(.data*);
    }
    END_SEG(main)
 
@@ -326,7 +326,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.bss*);
       BUILD_DIR/src/profiler.o(.bss*);
       BUILD_DIR/src/crash_screen.o(.bss*);
-      BUILD_DIR/src/code_80004740.o(.bss*);
+      BUILD_DIR/src/animation.o(.bss*);
       BUILD_DIR/src/staff_ghosts.o(.bss*);
       BUILD_DIR/src/code_80005FD0.jp.o(.bss*);
       BUILD_DIR/src/camera.o(.bss*);
@@ -424,6 +424,7 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss*);
       BUILD_DIR/src/audio/data.o(.bss*);
+      BUILD_DIR/src/buffers/audio_heap.o(.bss*);
       . = ALIGN(0x8);
    }
    END_NOLOAD(buffers)
@@ -579,7 +580,8 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data*); \
+         BUILD_DIR/courses/dir/course_offsets.o(.rodata*); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)

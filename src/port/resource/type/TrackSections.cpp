@@ -12,4 +12,4 @@ TrackSectionsI* TrackSectionsClass::GetPointer() {
 size_t TrackSectionsClass::GetPointerSize() {
     return TrackSectionsList.size() * sizeof(TrackSectionsI);
 }
-} // namespace LUS
+} // namespace MK64

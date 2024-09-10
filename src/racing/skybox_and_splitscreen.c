@@ -17,57 +17,57 @@
 #include "math_util.h"
 #include "main.h"
 #include "menus.h"
-
+#include "port/Engine.h"
 
 Vp D_802B8880[] = {
-    {{{640,  480,  511,  0},  {640,  480,  511,  0}}},
+    { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
 };
 
 Vtx D_802B8890[] = {
-    {{{  SCREEN_WIDTH,  SCREEN_HEIGHT,  -1  },  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1  },  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             120,            -1  },  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             SCREEN_HEIGHT,  -1  },  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1  },  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  0,              -1  },  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             0,              -1  },  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             120,            -1  },  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
+    { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
+    { { { SCREEN_WIDTH, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
 Vtx D_802B8910[] = {
-    {{{  SCREEN_WIDTH,  SCREEN_HEIGHT,  -1  },  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1  },  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             120,            -1  },  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             SCREEN_HEIGHT,  -1  },  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1  },  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  0,              -1  },  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             0,              -1  },  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             120,            -1  },  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
+    { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
+    { { { SCREEN_WIDTH, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-Vtx  D_802B8990[] = {
-    {{{  SCREEN_WIDTH,  SCREEN_HEIGHT,  -1},  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1},  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             120,            -1},  0,  {  0,  0  },  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             SCREEN_HEIGHT,  -1},  0,  {  0,  0  },  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1},  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  0,              -1},  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             0,              -1},  0,  {  0,  0  },  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             120,            -1},  0,  {  0,  0  },  {  0x00,  0xDC,  0x00,  0xFF  }}},
+Vtx D_802B8990[] = {
+    { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
+    { { { SCREEN_WIDTH, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
 Vtx D_802B8A10[] = {
-    {{{  SCREEN_WIDTH,  SCREEN_HEIGHT,  -1},  0,  {  0,  0},  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1},  0,  {  0,  0},  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             120,            -1},  0,  {  0,  0},  {  0x1E,  0x1E,  0xFF,  0xFF  }}},
-    {{{  0,             SCREEN_HEIGHT,  -1},  0,  {  0,  0},  {  0xC8,  0xC8,  0xFF,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  120,            -1},  0,  {  0,  0},  {  0x00,  0xDC,  0x00,  0xFF  }}},
-    {{{  SCREEN_WIDTH,  0,              -1},  0,  {  0,  0},  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             0,              -1},  0,  {  0,  0},  {  0x78,  0xFF,  0x78,  0xFF  }}},
-    {{{  0,             120,            -1},  0,  {  0,  0},  {  0x00,  0xDC,  0x00,  0xFF  }}},
+    { { { SCREEN_WIDTH, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x1E, 0x1E, 0xFF, 0xFF } } },
+    { { { 0, SCREEN_HEIGHT, -1 }, 0, { 0, 0 }, { 0xC8, 0xC8, 0xFF, 0xFF } } },
+    { { { SCREEN_WIDTH, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
+    { { { SCREEN_WIDTH, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 0, -1 }, 0, { 0, 0 }, { 0x78, 0xFF, 0x78, 0xFF } } },
+    { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-void func_802A3730(struct UnkStruct_800DC5EC *arg0) {
+void func_802A3730(struct UnkStruct_800DC5EC* arg0) {
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -111,7 +111,6 @@ void func_802A3730(struct UnkStruct_800DC5EC *arg0) {
 }
 
 UNUSED void func_802A38AC(void) {
-
 }
 
 void func_802A38B4(void) {
@@ -131,7 +130,7 @@ void func_802A38B4(void) {
     gQuitToMenuTransitionCounter = 0;
     D_800E86A4 = 1;
 
-    switch(gGotoMode) {
+    switch (gGotoMode) {
         case START_MENU_FROM_QUIT:
             if (gMenuSelection != LOGO_INTRO_MENU) {
                 gMenuSelection = START_MENU;
@@ -149,7 +148,7 @@ void func_802A38B4(void) {
     }
 }
 
-void func_802A39E0(struct UnkStruct_800DC5EC *arg0) {
+void func_802A39E0(struct UnkStruct_800DC5EC* arg0) {
     s32 ulx = arg0->screenStartX - (arg0->screenWidth / 2);
     s32 uly = arg0->screenStartY - (arg0->screenHeight / 2);
     s32 lrx = arg0->screenStartX + (arg0->screenWidth / 2);
@@ -182,10 +181,11 @@ void func_802A39E0(struct UnkStruct_800DC5EC *arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
-    gDPFillRectangle(gDisplayListHead++, ulx, uly, lrx - 1, lry -1);
+    gDPFillRectangle(gDisplayListHead++, ulx, uly, lrx - 1, lry - 1);
 
     gDPPipeSync(gDisplayListHead++);
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer])); // 0x1FFFFFFF
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                     VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer])); // 0x1FFFFFFF
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
     gDPSetDepthSource(gDisplayListHead++, G_ZS_PIXEL);
 }
@@ -203,7 +203,8 @@ void init_z_buffer(void) {
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPFillRectangle(gDisplayListHead++, 0, 0, 319, 239);
     gDPPipeSync(gDisplayListHead++);
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                     VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
     gDPSetDepthSource(gDisplayListHead++, G_ZS_PIXEL);
 }
@@ -231,20 +232,28 @@ void init_rdp(void) {
     gSPClipRatio(gDisplayListHead++, FRUSTRATIO_1);
 }
 
-UNUSED void func_802A40A4(void) {}
-UNUSED void func_802A40AC(void) {}
-UNUSED void func_802A40B4(void) {}
-UNUSED void func_802A40BC(void) {}
-UNUSED void func_802A40C4(void) {}
-UNUSED void func_802A40CC(void) {}
-UNUSED void func_802A40D4(void) {}
-UNUSED void func_802A40DC(void) {}
+UNUSED void func_802A40A4(void) {
+}
+UNUSED void func_802A40AC(void) {
+}
+UNUSED void func_802A40B4(void) {
+}
+UNUSED void func_802A40BC(void) {
+}
+UNUSED void func_802A40C4(void) {
+}
+UNUSED void func_802A40CC(void) {
+}
+UNUSED void func_802A40D4(void) {
+}
+UNUSED void func_802A40DC(void) {
+}
 
 UNUSED s32 set_viewport2(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
-    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE |
-        G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
+    gSPSetGeometryMode(gDisplayListHead++,
+                       G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
 }
 
 void set_viewport(void) {
@@ -257,11 +266,13 @@ void set_viewport(void) {
  * Tells the RDP which of the three framebuffers it shall draw to.
  */
 void select_framebuffer(void) {
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
-    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1) << 0x10 | GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1));
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                     VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
+    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1) << 0x10 |
+                                            GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1));
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
+    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
@@ -277,13 +288,14 @@ void func_802A4300(void) {
 
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                     VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
     gDPSetFillColor(gDisplayListHead++, 0x00010001);
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPPipeSync(gDisplayListHead++);
 
-    switch(gActiveScreenMode) {
+    switch (gActiveScreenMode) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             gDPFillRectangle(gDisplayListHead++, 157, 0, 159, 239);
             break;
@@ -297,7 +309,6 @@ void func_802A4300(void) {
     }
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
-
 }
 
 struct Skybox {
@@ -321,7 +332,7 @@ UNUSED Gfx D_802B8A90[] = {
 };
 
 struct Skybox sSkyColors[] = {
-    #include "course_metadata/sSkyColors.inc.c"
+#include "assets/course_metadata/sSkyColors.inc.c"
 
 };
 
@@ -350,10 +361,10 @@ struct Skybox sSkyColors[] = {
 // };
 
 struct Skybox sSkyColors2[] = {
-    #include "course_metadata/sSkyColors2.inc.c"
+#include "assets/course_metadata/sSkyColors2.inc.c"
 };
 
-void func_802A450C(Vtx *skybox) {
+void func_802A450C(Vtx* skybox) {
     s32 i;
 
     if (D_800DC5BC != 0) {
@@ -416,7 +427,8 @@ void func_802A450C(Vtx *skybox) {
     skybox[7].v.cn[2] = sSkyColors2[gCurrentCourseId].unk4;
 }
 
-void func_802A487C(Vtx *arg0, UNUSED struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32 *arg4) {
+void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
+                   UNUSED f32* arg4) {
 
     init_rdp();
     if (gCurrentCourseId != COURSE_RAINBOW_ROAD) {
@@ -425,15 +437,18 @@ void func_802A487C(Vtx *arg0, UNUSED struct UnkStruct_800DC5EC *arg1, UNUSED s32
         gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
         guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        gSPMatrix(gDisplayListHead++, D_0D008E98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPVertex(gDisplayListHead++, &arg0[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
 }
 
-void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32 *arg4) {
-    Camera *camera = arg1->camera;
+void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+    s32 id = arg1 - D_8015F480;
+    arg1->camera = &cameras[id]; // bad fix of bowser castle crash where camera get an invalid value
+    Camera* camera = arg1->camera;
     s16 temp_t5;
     f32 temp_f0;
     UNUSED s32 pad[2];
@@ -446,6 +461,16 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     f32 sp58;
 
     func_802A450C(vtx);
+    // Widescreen skybox
+    vtx[0].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
+    vtx[1].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
+    vtx[2].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+    vtx[3].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+    vtx[4].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
+    vtx[5].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
+    vtx[6].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+    vtx[7].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+
     sp5C[0] = 0.0f;
     sp5C[1] = 0.0f;
     sp5C[2] = 30000.0f;
@@ -465,7 +490,7 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     sp5C[0] *= 160.0f;
     sp5C[1] *= 120.0f;
 
-    temp_t5 = 120 - (s16)sp5C[1];
+    temp_t5 = 120 - (s16) sp5C[1];
     arg1->cameraHeight = temp_t5;
     vtx[1].v.ob[1] = temp_t5;
     vtx[2].v.ob[1] = temp_t5;
@@ -477,8 +502,9 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
     guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 5.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, D_0D008E98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxScreen),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
@@ -493,67 +519,67 @@ void func_802A4D18(void) {
         D_80150150 = 3.0f;
     } else {
         switch (gCurrentCourseId) {
-        case COURSE_BOWSER_CASTLE:
-        case COURSE_BANSHEE_BOARDWALK:
-        case COURSE_RAINBOW_ROAD:
-        case COURSE_BLOCK_FORT:
-        case COURSE_SKYSCRAPER:
-            D_8015014C = 2700.0f;
-            D_80150150 = 2.0f;
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-        case COURSE_DOUBLE_DECK:
-            D_8015014C = 1500.0f;
-            D_80150150 = 2.0f;
-            break;
-        case COURSE_KOOPA_BEACH:
-            D_8015014C = 5000.0f;
-            D_80150150 = 1.0f;
-            break;
-        case COURSE_WARIO_STADIUM:
-            D_8015014C = 4800.0f;
-            D_80150150 = 10.0f;
-            break;
-        case COURSE_MARIO_RACEWAY:
-        case COURSE_YOSHI_VALLEY:
-        case COURSE_FRAPPE_SNOWLAND:
-        case COURSE_ROYAL_RACEWAY:
-        case COURSE_LUIGI_RACEWAY:
-        case COURSE_MOO_MOO_FARM:
-        case COURSE_TOADS_TURNPIKE:
-        case COURSE_SHERBET_LAND:
-        case COURSE_DK_JUNGLE:
-            D_8015014C = 4500.0f;
-            D_80150150 = 9.0f;
-            break;
-        case COURSE_KALAMARI_DESERT:
-            D_8015014C = 7000.0f;
-            D_80150150 = 10.0f;
-            break;
-        default:
-            D_8015014C = 6800.0f;
-            D_80150150 = 3.0f;
-            break;
+            case COURSE_BOWSER_CASTLE:
+            case COURSE_BANSHEE_BOARDWALK:
+            case COURSE_RAINBOW_ROAD:
+            case COURSE_BLOCK_FORT:
+            case COURSE_SKYSCRAPER:
+                D_8015014C = 2700.0f;
+                D_80150150 = 2.0f;
+                break;
+            case COURSE_CHOCO_MOUNTAIN:
+            case COURSE_DOUBLE_DECK:
+                D_8015014C = 1500.0f;
+                D_80150150 = 2.0f;
+                break;
+            case COURSE_KOOPA_BEACH:
+                D_8015014C = 5000.0f;
+                D_80150150 = 1.0f;
+                break;
+            case COURSE_WARIO_STADIUM:
+                D_8015014C = 4800.0f;
+                D_80150150 = 10.0f;
+                break;
+            case COURSE_MARIO_RACEWAY:
+            case COURSE_YOSHI_VALLEY:
+            case COURSE_FRAPPE_SNOWLAND:
+            case COURSE_ROYAL_RACEWAY:
+            case COURSE_LUIGI_RACEWAY:
+            case COURSE_MOO_MOO_FARM:
+            case COURSE_TOADS_TURNPIKE:
+            case COURSE_SHERBET_LAND:
+            case COURSE_DK_JUNGLE:
+                D_8015014C = 4500.0f;
+                D_80150150 = 9.0f;
+                break;
+            case COURSE_KALAMARI_DESERT:
+                D_8015014C = 7000.0f;
+                D_80150150 = 10.0f;
+                break;
+            default:
+                D_8015014C = 6800.0f;
+                D_80150150 = 3.0f;
+                break;
         }
     }
-    switch (gScreenModeSelection) {                 /* switch 1; irregular */
-    case SCREEN_MODE_1P:                                         /* switch 1 */
-        gScreenAspect = 1.33333334f;
-        return;
-    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:                                         /* switch 1 */
-        gScreenAspect = 0.66666667f;
-        return;
-    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:                                         /* switch 1 */
-        gScreenAspect = 2.66666667f;
-        return;
-    case SCREEN_MODE_3P_4P_SPLITSCREEN:                                         /* switch 1 */
-        gScreenAspect = 1.33333334f;
-        return;
+    switch (gScreenModeSelection) { /* switch 1; irregular */
+        case SCREEN_MODE_1P:        /* switch 1 */
+            gScreenAspect = 1.33333334f;
+            return;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL: /* switch 1 */
+            gScreenAspect = 0.66666667f;
+            return;
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: /* switch 1 */
+            gScreenAspect = 2.66666667f;
+            return;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN: /* switch 1 */
+            gScreenAspect = 1.33333334f;
+            return;
     }
 }
 
 void func_802A4EF4(void) {
-    switch(gActiveScreenMode) {
+    switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
             func_8001F394(gPlayerOne, &gCameraZoom[0]);
             break;
@@ -586,9 +612,9 @@ void func_802A5004(void) {
 
     func_802A39E0(D_800DC5F0);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(2);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(2);
     }
 }
@@ -603,9 +629,9 @@ void func_802A50EC(void) {
 
     func_802A39E0(D_800DC5EC);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(1);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(1);
     }
 }
@@ -620,9 +646,9 @@ void func_802A51D4(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80057FC4(3);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
         func_80093A30(3);
     }
 }
@@ -637,9 +663,9 @@ void func_802A52BC(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(4);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(4);
     }
 }
@@ -656,11 +682,11 @@ void func_802A53A4(void) {
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(0);
     }
 }
@@ -675,9 +701,9 @@ void func_802A54A8(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80057FC4(8);
-        func_802A487C((Vtx *) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
         func_80093A30(8);
     }
 }
@@ -692,9 +718,9 @@ void func_802A5590(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80057FC4(9);
-        func_802A487C((Vtx *) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
         func_80093A30(9);
     }
 }
@@ -709,14 +735,12 @@ void func_802A5678(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A4A0C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80057FC4(10);
-        func_802A487C((Vtx *) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A487C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
         func_80093A30(10);
     }
 }
-
-
 
 void func_802A5760(void) {
 
@@ -730,11 +754,12 @@ void func_802A5760(void) {
         gDPPipeSync(gDisplayListHead++);
         func_802A39E0(D_800DC5F8);
         gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-        gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
+        gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
+                         VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
         gDPSetFillColor(gDisplayListHead++, 0x00010001);
         gDPPipeSync(gDisplayListHead++);
         gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 160, 120, SCREEN_WIDTH, SCREEN_HEIGHT);
-        gDPFillRectangle(gDisplayListHead++, 160, 120, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
+        gDPFillRectangle(gDisplayListHead++, 160, 120, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
         gDPPipeSync(gDisplayListHead++);
         gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
@@ -754,7 +779,7 @@ void func_802A5760(void) {
 }
 
 void render_player_one_1p_screen(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
     UNUSED s32 pad[4];
     u16 perspNorm;
     UNUSED s32 pad2[2];
@@ -778,21 +803,24 @@ void render_player_one_1p_screen(void) {
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2],
-             camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0],
-             camera->up[1], camera->up[2]);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -814,15 +842,15 @@ void render_player_one_1p_screen(void) {
 }
 
 void render_player_one_2p_screen_vertical(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    #ifdef VERSION_EU
+#ifdef VERSION_EU
     f32 sp9C;
-    #else
+#else
     UNUSED f32 sp9C;
-    #endif
+#endif
 
     func_802A50EC();
 #ifdef VERSION_EU
@@ -837,21 +865,26 @@ void render_player_one_2p_screen_vertical(void) {
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5EC);
     if (D_800DC5C8 == 1) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
@@ -875,15 +908,15 @@ void render_player_one_2p_screen_vertical(void) {
 }
 
 void render_player_two_2p_screen_vertical(void) {
-    Camera *camera = &cameras[1];
+    Camera* camera = &cameras[1];
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    #ifdef VERSION_EU
+#ifdef VERSION_EU
     f32 sp9C;
-    #else
+#else
     UNUSED f32 sp9C;
-    #endif
+#endif
 
     func_802A5004();
     init_rdp();
@@ -898,19 +931,24 @@ void render_player_two_2p_screen_vertical(void) {
     guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -933,7 +971,7 @@ void render_player_two_2p_screen_vertical(void) {
 }
 
 void render_player_one_2p_screen_horizontal(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -955,20 +993,25 @@ void render_player_one_2p_screen_horizontal(void) {
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
 
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -991,7 +1034,7 @@ void render_player_one_2p_screen_horizontal(void) {
 }
 
 void render_player_two_2p_screen_horizontal(void) {
-    Camera *camera = &cameras[1];
+    Camera* camera = &cameras[1];
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -1013,19 +1056,24 @@ void render_player_two_2p_screen_horizontal(void) {
     guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -1048,7 +1096,7 @@ void render_player_two_2p_screen_horizontal(void) {
 }
 
 void render_player_one_3p_4p_screen(void) {
-    Camera *camera = camera1;
+    Camera* camera = camera1;
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -1067,19 +1115,24 @@ void render_player_one_3p_4p_screen(void) {
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
 
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5EC);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -1102,7 +1155,7 @@ void render_player_one_3p_4p_screen(void) {
 }
 
 void render_player_two_3p_4p_screen(void) {
-    Camera *camera = camera2;
+    Camera* camera = camera2;
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -1121,19 +1174,24 @@ void render_player_two_3p_4p_screen(void) {
     guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    guLookAt(&gGfxPool->mtxLookAt[1], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5F0);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -1156,7 +1214,7 @@ void render_player_two_3p_4p_screen(void) {
 }
 
 void render_player_three_3p_4p_screen(void) {
-    Camera *camera = camera3;
+    Camera* camera = camera3;
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -1176,19 +1234,24 @@ void render_player_three_3p_4p_screen(void) {
     guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[2], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[2], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5F4);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -1211,7 +1274,7 @@ void render_player_three_3p_4p_screen(void) {
 }
 
 void render_player_four_3p_4p_screen(void) {
-    Camera *camera = camera4;
+    Camera* camera = camera4;
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
@@ -1240,18 +1303,23 @@ void render_player_four_3p_4p_screen(void) {
     guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], gScreenAspect, D_80150150, D_8015014C, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[3], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[3], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
     if (D_800DC5C8 == 0) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
+                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     }
     render_course(D_800DC5F8);
     if (D_800DC5C8 == 1) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
+                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(matrix);
         render_set_position(matrix, 0);
     }
@@ -1274,13 +1342,13 @@ void render_player_four_3p_4p_screen(void) {
 }
 
 void func_802A74BC(void) {
-    struct UnkStruct_800DC5EC *wrapper = &D_8015F480[0];
-    Player *player = &gPlayers[0];
-    Camera *camera = &cameras[0];
-    struct Controller *controller = &gControllers[0];
+    struct UnkStruct_800DC5EC* wrapper = &D_8015F480[0];
+    Player* player = &gPlayers[0];
+    Camera* camera = &cameras[0];
+    struct Controller* controller = &gControllers[0];
 
     // struct? size = 0x10. unk++ doesn't work cause s32 too small.
-    s32 *unk = &D_8015F790[0];
+    s32* unk = &D_8015F790[0];
     s32 i;
 
     for (i = 0; i < 4; i++) {
@@ -1292,8 +1360,7 @@ void func_802A74BC(void) {
         wrapper->screenHeight = 4;
         wrapper->pathCounter = 1;
 
-
-        switch(gActiveScreenMode) {
+        switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
                 if (i == 0) {
                     wrapper->screenStartX = 160;
@@ -1341,7 +1408,7 @@ void func_802A74BC(void) {
     }
 }
 
-void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16 *source, u16 *target) {
+void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16* source, u16* target) {
     s32 var_v1;
     s32 var_a1;
     s32 targetIndex;
@@ -1371,12 +1438,20 @@ void func_802A7728(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-    copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0x8800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0x9800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0xA800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0xB800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0xC800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5]+0xD800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
 }
 
 void func_802A7940(void) {
@@ -1394,10 +1469,21 @@ void func_802A7940(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-    copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20, (u16 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]), (u16 *) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
+    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
+    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
+                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
 }

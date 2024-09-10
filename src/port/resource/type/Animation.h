@@ -25,7 +25,8 @@ class Animation : public Ship::Resource<AnimationData> {
   public:
     using Resource::Resource;
 
-    Animation() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    Animation() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     AnimationData* GetPointer();
     size_t GetPointerSize();
@@ -35,4 +36,4 @@ class Animation : public Ship::Resource<AnimationData> {
     std::vector<uint16_t> frameData;
     std::vector<JointKey> jointKey;
 };
-}
+} // namespace SF64

@@ -30,22 +30,25 @@ float gInterpolationStep = 0.0f;
 #include <MatrixFactory.h>
 #include <BlobFactory.h>
 #include <VertexFactory.h>
-#include <LightsFactory.h>
+#include <LightFactory.h>
 }
 
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
     std::vector<std::string> OTRFiles;
-    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.otr"); std::filesystem::exists(spaghetti_path)) {
+    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.otr");
+        std::filesystem::exists(spaghetti_path)) {
         OTRFiles.push_back(spaghetti_path);
     }
-    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.otr"); std::filesystem::exists(ship_otr_path)) {
+    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.otr");
+        std::filesystem::exists(ship_otr_path)) {
         OTRFiles.push_back(ship_otr_path);
     }
-    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods"); !patches_path.empty() && std::filesystem::exists(patches_path)) {
+    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
+        !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
-            for (const auto&p: std::filesystem::recursive_directory_iterator(patches_path)) {
+            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
                 if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
                     OTRFiles.push_back(p.path().generic_string());
                 }
@@ -61,28 +64,48 @@ GameEngine::GameEngine() {
     this->context->InitGfxDebugger();
 
     auto loader = context->GetResourceManager()->GetResourceLoader();
-    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3fV0>(), RESOURCE_FORMAT_BINARY, "Vec3f", static_cast<uint32_t>(SF64::ResourceType::Vec3f), 0);
-    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3sV0>(), RESOURCE_FORMAT_BINARY, "Vec3s", static_cast<uint32_t>(SF64::ResourceType::Vec3s), 0);
-    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(), RESOURCE_FORMAT_BINARY, "GenericArray", static_cast<uint32_t>(SF64::ResourceType::GenericArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY, "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 1);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY, "Vertex", static_cast<uint32_t>(LUS::ResourceType::Vertex), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY, "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY, "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
-    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryBlobV0>(), RESOURCE_FORMAT_BINARY, "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
-   // Waiting on PRs merged
-    // loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryLightsV0>(), RESOURCE_FORMAT_BINARY, "Lights1", static_cast<uint32_t>(LUS::ResourceType::Lights), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY, "Array", static_cast<uint32_t>(MK64::ResourceType::MK_Array), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryKartAIV0>(), RESOURCE_FORMAT_BINARY, "KartAI", static_cast<uint32_t>(MK64::ResourceType::KartAI), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCourseVtxV0>(), RESOURCE_FORMAT_BINARY, "CourseVtx", static_cast<uint32_t>(MK64::ResourceType::CourseVertex), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(), RESOURCE_FORMAT_BINARY, "TrackSections", static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackWaypointsV0>(), RESOURCE_FORMAT_BINARY, "Waypoints", static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(), RESOURCE_FORMAT_BINARY, "SpawnData", static_cast<uint32_t>(MK64::ResourceType::SpawnData), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryUnkActorSpawnDataV0>(), RESOURCE_FORMAT_BINARY, "UnkSpawnData", static_cast<uint32_t>(MK64::ResourceType::UnkSpawnData), 0);
-
+    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3fV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Vec3f", static_cast<uint32_t>(SF64::ResourceType::Vec3f), 0);
+    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryVec3sV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Vec3s", static_cast<uint32_t>(SF64::ResourceType::Vec3s), 0);
+    loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(),
+                                    RESOURCE_FORMAT_BINARY, "GenericArray",
+                                    static_cast<uint32_t>(SF64::ResourceType::GenericArray), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
+                                    "Texture", static_cast<uint32_t>(LUS::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Vertex", static_cast<uint32_t>(LUS::ResourceType::Vertex), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY,
+                                    "DisplayList", static_cast<uint32_t>(LUS::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryMatrixV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Matrix", static_cast<uint32_t>(LUS::ResourceType::Matrix), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryBlobV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Blob", static_cast<uint32_t>(LUS::ResourceType::Blob), 0);
+    loader->RegisterResourceFactory(std::make_shared<LUS::ResourceFactoryBinaryLightV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Lights1", static_cast<uint32_t>(LUS::ResourceType::Light), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY,
+                                    "Array", static_cast<uint32_t>(MK64::ResourceType::MK_Array), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryKartAIV0>(), RESOURCE_FORMAT_BINARY,
+                                    "KartAI", static_cast<uint32_t>(MK64::ResourceType::KartAI), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCourseVtxV0>(), RESOURCE_FORMAT_BINARY,
+                                    "CourseVtx", static_cast<uint32_t>(MK64::ResourceType::CourseVertex), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(),
+                                    RESOURCE_FORMAT_BINARY, "TrackSections",
+                                    static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackWaypointsV0>(),
+                                    RESOURCE_FORMAT_BINARY, "Waypoints",
+                                    static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(),
+                                    RESOURCE_FORMAT_BINARY, "SpawnData",
+                                    static_cast<uint32_t>(MK64::ResourceType::SpawnData), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryUnkActorSpawnDataV0>(),
+                                    RESOURCE_FORMAT_BINARY, "UnkSpawnData",
+                                    static_cast<uint32_t>(MK64::ResourceType::UnkSpawnData), 0);
 }
 
-void GameEngine::Create(){
+void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
     GameUI::SetupGuiElements();
 #if defined(__SWITCH__) || defined(__WIIU__)
@@ -90,14 +113,12 @@ void GameEngine::Create(){
 #endif
 }
 
-void GameEngine::Destroy(){
-
+void GameEngine::Destroy() {
 }
 
 bool ShouldClearTextureCacheAtEndOfFrame = false;
 
-
-void GameEngine::StartFrame() const{
+void GameEngine::StartFrame() const {
     using Ship::KbScancode;
     const int32_t dwScancode = this->context->GetWindow()->GetLastScancode();
     this->context->GetWindow()->SetLastScancode(-1);
@@ -109,7 +130,8 @@ void GameEngine::StartFrame() const{
             ShouldClearTextureCacheAtEndOfFrame = true;
             break;
         }
-        default: break;
+        default:
+            break;
     }
     this->context->GetWindow()->StartFrame();
 }
@@ -132,7 +154,7 @@ void GameEngine::RunCommands(Gfx* Commands) {
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
     RunCommands(commands);
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
-      if (wnd != nullptr) {
+    if (wnd != nullptr) {
         wnd->SetTargetFps(30);
         wnd->SetMaximumFrameLatency(1);
     }
@@ -151,7 +173,7 @@ extern "C" uint32_t GameEngine_GetSampleRate() {
     return player->GetSampleRate();
 }
 
-extern "C" uint32_t GameEngine_GetSamplesPerFrame(){
+extern "C" uint32_t GameEngine_GetSamplesPerFrame() {
     return SAMPLES_PER_FRAME;
 }
 
@@ -181,7 +203,6 @@ extern "C" uint8_t GameEngine_OTRSigCheck(const char* data) {
 // };
 
 // std::vector<TimedEntry> gTimerTasks;
-
 
 // uint64_t Timer_GetCurrentMillis() {
 //     return SDL_GetTicks();
@@ -241,7 +262,7 @@ extern "C" float OTRGetDimensionFromLeftEdge(float v) {
 }
 
 extern "C" int16_t OTRGetRectDimensionFromLeftEdge(float v) {
-    return ((int)floorf(OTRGetDimensionFromLeftEdge(v)));
+    return ((int) floorf(OTRGetDimensionFromLeftEdge(v)));
 }
 
 extern "C" float OTRGetDimensionFromRightEdge(float v) {
@@ -249,7 +270,7 @@ extern "C" float OTRGetDimensionFromRightEdge(float v) {
 }
 
 extern "C" int16_t OTRGetRectDimensionFromRightEdge(float v) {
-    return ((int)ceilf(OTRGetDimensionFromRightEdge(v)));
+    return ((int) ceilf(OTRGetDimensionFromRightEdge(v)));
 }
 
 // Gets the width of the current render target area

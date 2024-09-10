@@ -315,7 +315,7 @@ course_name = sys.argv[1]
 
 # This depends on the texture lists in each courses/<course_name_here>/course_offsets.c
 # look like: `{gTexture6447C4, 0x0106, 0x0800, 0x0},`
-texture_regex = re.compile(r"{(\S+),\s+\S+,\s+(\S+),\s+\S+}")
+texture_regex = re.compile(r"{\s*(\S+),\s+\S+,\s+(\S+),\s+\S+\s*}")
 
 h_string = ""
 c_string = ""

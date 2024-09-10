@@ -2,18 +2,18 @@
 #include "libultra_internal.h"
 #include "controller.h"
 
-extern s32 __osPfsGetStatus(OSMesgQueue *, s32);
-void __osPackRamWriteData(int channel, u16 address, u8 *buffer);
+extern s32 __osPfsGetStatus(OSMesgQueue*, s32);
+void __osPackRamWriteData(int channel, u16 address, u8* buffer);
 
-s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int force) {
+s32 __osContRamWrite(OSMesgQueue* mq, int channel, u16 address, u8* buffer, int force) {
     s32 ret;
     int i;
-    u8 *ptr;
+    u8* ptr;
     __OSContRamReadFormat ramreadformat;
     int retry;
 
     ret = 0;
-    ptr = (u8 *)&__osPfsPifRam;
+    ptr = (u8*) &__osPfsPifRam;
     retry = 2;
     if (force != 1 && address < 7 && address != 0) {
         return 0;
@@ -30,14 +30,14 @@ s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int 
         __osPfsPifRam.pifstatus = 0;
         ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
         osRecvMesg(mq, NULL, OS_MESG_BLOCK);
-        ptr = (u8 *)&__osPfsPifRam;
+        ptr = (u8*) &__osPfsPifRam;
         if (channel != 0) {
             for (i = 0; i < channel; i++) {
                 ptr++;
             }
         }
 
-        ramreadformat = *(__OSContRamReadFormat *)ptr;
+        ramreadformat = *(__OSContRamReadFormat*) ptr;
 
         ret = CHNL_ERR(ramreadformat);
         if (ret == 0) {
@@ -58,12 +58,12 @@ s32 __osContRamWrite(OSMesgQueue *mq, int channel, u16 address, u8 *buffer, int 
     return ret;
 }
 
-void __osPackRamWriteData(int channel, u16 address, u8 *buffer) {
-    u8 *ptr;
+void __osPackRamWriteData(int channel, u16 address, u8* buffer) {
+    u8* ptr;
     __OSContRamReadFormat ramreadformat;
     int i;
 
-    ptr = (u8 *)__osPfsPifRam.ramarray;
+    ptr = (u8*) __osPfsPifRam.ramarray;
 
     for (i = 0; i < ARRLEN(__osPfsPifRam.ramarray) + 1; i++) { // also clear pifstatus
         __osPfsPifRam.ramarray[i] = 0;
@@ -84,7 +84,7 @@ void __osPackRamWriteData(int channel, u16 address, u8 *buffer) {
             *ptr++ = 0;
         }
     }
-    *(__OSContRamReadFormat *)ptr = ramreadformat;
+    *(__OSContRamReadFormat*) ptr = ramreadformat;
     ptr += sizeof(__OSContRamReadFormat);
     ptr[0] = CONT_CMD_END;
 }

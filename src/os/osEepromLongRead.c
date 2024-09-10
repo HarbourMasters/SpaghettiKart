@@ -7,7 +7,7 @@ extern OSTimer D_80196548; // not sure what this is yet
 extern OSMesgQueue _osContMesgQueue;
 extern OSMesg _osContMesgBuff[4];
 
-s32 osEepromLongRead(OSMesgQueue *mq, u8 address, u8 *buffer, s32 nbytes) {
+s32 osEepromLongRead(OSMesgQueue* mq, u8 address, u8* buffer, s32 nbytes) {
     s32 status = 0;
     if (address > 0x40) {
         return -1;

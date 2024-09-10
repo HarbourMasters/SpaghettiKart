@@ -8,6 +8,6 @@
  *
  * @param boat
  */
-void update_actor_paddle_boat(struct PaddleWheelBoat *boat) {
+void update_actor_paddle_boat(struct PaddleWheelBoat* boat) {
     boat->wheelRot += 0x38E;
 }

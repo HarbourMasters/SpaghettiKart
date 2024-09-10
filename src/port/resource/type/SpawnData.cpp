@@ -12,4 +12,4 @@ ActorSpawnData* ActorSpawn::GetPointer() {
 size_t ActorSpawn::GetPointerSize() {
     return ActorSpawnDataList.size() * sizeof(ActorSpawnData);
 }
-} // namespace LUS
+} // namespace MK64

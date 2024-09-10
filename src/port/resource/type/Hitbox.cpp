@@ -8,4 +8,4 @@ float* Hitbox::GetPointer() {
 size_t Hitbox::GetPointerSize() {
     return sizeof(float) * mHitbox.size();
 }
-}
+} // namespace SF64

@@ -4,11 +4,11 @@
  * @brief Updates the item box under the hot air balloon object.
  * It used in Luigi Raceway.
  * (here it's just update the rotation of the item box not the position, for the position it's in object)
- * 
- * @param itemBox 
+ *
+ * @param itemBox
  */
-void update_actor_item_box_hot_air_balloon(struct ItemBox *itemBox) {
-    switch(itemBox->state) {
+void update_actor_item_box_hot_air_balloon(struct ItemBox* itemBox) {
+    switch (itemBox->state) {
         case 5:
             itemBox->rot[0] += 0xB6;
             itemBox->rot[1] -= 0x16C;
@@ -30,10 +30,10 @@ void update_actor_item_box_hot_air_balloon(struct ItemBox *itemBox) {
 
 /**
  * @brief Updates the item box actor.
- * 
- * @param itemBox 
+ *
+ * @param itemBox
  */
-void update_actor_item_box(struct ItemBox *itemBox) {
+void update_actor_item_box(struct ItemBox* itemBox) {
     switch (itemBox->state) {
         case 0:
             itemBox->state = 1;
