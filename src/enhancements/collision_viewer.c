@@ -1,7 +1,14 @@
 #include <libultraship.h>
+#include <libultra/gbi.h>
+#include <common_structs.h>
+#include "code_800029B0.h"
 #include "mk64.h"
+#include "main.h"
 
 #include "collision_viewer.h"
+
+#include "assets/other_textures.h"
+#include "assets/common_data.h"
 
 //! @todo decide to use colours or textures and fix displaylists because they are buggy
 
@@ -15,7 +22,7 @@ void render_collision(void) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
 
     // Set matrix
-    gSPMatrix(gDisplayListHead++, &gIdentityMtx2, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
+    gSPMatrix(gDisplayListHead++, LOAD_ASSET(D_0D008E98), G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH);
 
     for (size_t i = 0; i < gCollisionMeshCount; i++) {
         // Load vertices for this tri

@@ -34,16 +34,6 @@ extern Animation* d_rainbow_road_unk3[];
 extern uintptr_t d_rainbow_road_unk4[];
 extern u32 d_rainbow_road_unk5[];
 
-extern Gfx* koopa_troopa_beach_dls1[];
-extern Gfx* koopa_troopa_beach_dls2[];
-extern u32 d_course_koopa_troopa_beach_unk_data1[];
-extern s16 d_course_koopa_troopa_beach_unk_data2[];
-extern AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[];
-extern Animation d_course_koopa_troopa_beach_unk_data4;
-extern uintptr_t d_course_koopa_troopa_beach_unk4[];
-extern Animation* d_course_koopa_troopa_beach_unk_data5[];
-extern u32 d_course_koopa_troopa_beach_unk_data6[];
-
 extern s16 d_course_yoshi_valley_unk1[];
 extern AnimationLimbVector d_course_yoshi_valley_unk2[];
 extern Animation d_course_yoshi_valley_unk3;
@@ -72,12 +62,13 @@ extern u32 d_rainbow_road_unk5[];
 
 extern Gfx* koopa_troopa_beach_dls1[];
 extern Gfx* koopa_troopa_beach_dls2[];
-extern u32 d_course_koopa_troopa_beach_unk_data1[];
+extern uintptr_t d_course_koopa_troopa_beach_unk_data1[];
 extern s16 d_course_koopa_troopa_beach_unk_data2[];
 extern AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[];
 extern Animation d_course_koopa_troopa_beach_unk_data4;
+extern uintptr_t d_course_koopa_troopa_beach_unk4[];
 extern Animation* d_course_koopa_troopa_beach_unk_data5[];
-extern u32 d_course_koopa_troopa_beach_unk_data6[];
+extern uintptr_t d_course_koopa_troopa_beach_unk_data6[];
 
 extern s16 d_course_yoshi_valley_unk1[];
 extern AnimationLimbVector d_course_yoshi_valley_unk2[];
