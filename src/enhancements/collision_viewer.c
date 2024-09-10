@@ -1,6 +1,8 @@
 #include <libultraship.h>
 #include "mk64.h"
 
+#include "collision_viewer.h"
+
 //! @todo decide to use colours or textures and fix displaylists because they are buggy
 
 void render_collision(void) {

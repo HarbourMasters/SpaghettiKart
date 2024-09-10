@@ -130,7 +130,7 @@ Gfx* koopa_troopa_beach_dls2[] = {
 
 // 0x06014828
 // animations? lights?
-uintptr_t d_course_koopa_troopa_beach_unk_data1[] = {
+u32 d_course_koopa_troopa_beach_unk_data1[] = {
     0x00000000,
     0x00000001,
     0x00000000,

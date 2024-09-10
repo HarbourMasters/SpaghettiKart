@@ -94,6 +94,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/audio
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
     ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements/freecam
 )
 
@@ -134,6 +135,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "courses/*.h"
     "src/networking/*.c"
     "src/networking/*.h"
+    "src/enhancements/*.c"
+    "src/enhancements/*.h"
     "src/enhancements/freecam/*.c"
     "src/enhancements/freecam/*.h"
 )
