@@ -501,8 +501,6 @@ void DrawEnhancementsMenu() {
 
 void DrawCheatsMenu() {
     if (UIWidgets::BeginMenu("Cheats")) {
-        UIWidgets::CVarCheckbox("Infinite Health", "gInfiniteHealth");
-        UIWidgets::CVarCheckbox("Infinite Lives", "gInfiniteLives");
         UIWidgets::CVarCheckbox("Enable Custom CC", "gEnableCustomCC");
         UIWidgets::CVarSliderFloat("Custom CC", "gCustomCC", 0.0, 1000.0, 150.0, { .step = 10.0 });
         UIWidgets::CVarCheckbox("Disable Wall Collision", "gNoWallColision", { .tooltip = "Disable wall collision." });
