@@ -1257,7 +1257,7 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64(D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1282,7 +1282,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
+    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1367,9 +1367,16 @@ void func_8029569C(void) {
     }
 }
 
-void render_course(struct UnkStruct_800DC5EC* arg0) {
+void render_course(struct UnkStruct_800DC5EC *arg0) {
 
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+
+    if ((CVarGetInteger("gFreecam", 0) == 1) ) {
+        // Render credits courses
+        func_8029569C();
+        return;
+    }
+
     if (creditsRenderMode) {
         func_8029569C();
         return;

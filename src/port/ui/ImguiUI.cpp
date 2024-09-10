@@ -2,6 +2,7 @@
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
 #include "GameInfoWindow.h"
+#include "FreecamWindow.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -22,6 +23,7 @@ std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
+std::shared_ptr<Ship::GuiWindow> mFreecamWindow;
 std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
@@ -60,6 +62,14 @@ void SetupGuiElements() {
     if (mGfxDebuggerWindow == nullptr) {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
+
+    mFreecamWindow = gui->GetGuiWindow("FreecamWindow");
+    if (mFreecamWindow == nullptr) {
+        SPDLOG_ERROR("Could not find input FreecamWindow");
+    }
+
+    mFreecamWindow = std::make_shared<Freecam::FreecamWindow>("gFreecamEnabled", "Freecam");
+    gui->AddGuiWindow(mFreecamWindow);
 
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game info");
     gui->AddGuiWindow(mGameInfoWindow);
@@ -441,6 +451,11 @@ void DrawEnhancementsMenu() {
     if (UIWidgets::BeginMenu("Enhancements")) {
 
         if (UIWidgets::BeginMenu("Gameplay")) {
+
+
+            UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow, {
+                .tooltip = "Allows you to fly around the course"
+            });
             UIWidgets::CVarCheckbox(
                 "No Level of Detail (LOD)", "gDisableLod",
                 { .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance" });

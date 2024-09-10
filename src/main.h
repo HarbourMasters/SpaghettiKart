@@ -104,6 +104,7 @@ void update_gamestate(void);
 void thread5_game_loop(void);
 void thread5_iteration(void);
 void thread4_audio(void*);
+extern f32 gDeltaTime;
 
 extern struct VblankHandler* gVblankHandler1;
 extern struct VblankHandler* gVblankHandler2;
