@@ -470,11 +470,6 @@ void DrawEnhancementsMenu() {
 
 
         if (UIWidgets::BeginMenu("Gameplay")) {
-            UIWidgets::CVarCheckbox("No Level of Detail (LOD)", "gDisableLOD",
-                                    { .tooltip = "Disable Level of Detail (LOD) to avoid models using "
-                                                 "lower poly versions at a distance" });
-
-
             UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow, {
                 .tooltip = "Allows you to fly around the course"
             });
@@ -507,8 +502,6 @@ void DrawCheatsMenu() {
         UIWidgets::CVarSliderFloat(
             "Min Height", "gMinHeight", -50.0f, 50.0f, 0.0f,
             { .tooltip = "When Disable Wall Collision are enable what is the minimal height you can get." });
-        ImGui::EndMenu();
-
         ImGui::EndMenu();
     }
 }
