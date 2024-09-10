@@ -11,11 +11,6 @@
 #include <camera.h>
 #include "freecam_engine.h"
 
-u32 fRankIndex = 0;
-u32 fTargetPlayer = false;
-u32 fMode; // freecam mode should probably be an enum
-u32 fModeInit = false;
-
 FreeCam freeCam;
 
 #include <math.h>
