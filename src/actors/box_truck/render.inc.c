@@ -18,8 +18,15 @@ void render_actor_box_truck(Camera* arg0, struct Actor* arg1) {
     UNUSED s32 pad2[32];
     f32 temp_f0 =
         is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
+        temp_f0 = MAX(temp_f0, 0.0f);
+    }
     if (temp_f0 < 0.0f) {
         return;
+    }
+
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
+        temp_f0 = 0.0f;
     }
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

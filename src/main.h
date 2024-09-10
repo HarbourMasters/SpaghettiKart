@@ -11,7 +11,7 @@
 #define MESG_START_GFX_SPTASK 103
 #define MESG_NMI_REQUEST 104
 
-#define MTX_HUD_POOL_SIZE 800
+#define MTX_HUD_POOL_SIZE 1600
 
 #ifdef AVOID_UB
 #define MTX_HUD_POOL_SIZE_MAX MTX_HUD_POOL_SIZE
@@ -104,6 +104,7 @@ void update_gamestate(void);
 void thread5_game_loop(void);
 void thread5_iteration(void);
 void thread4_audio(void*);
+extern f32 gDeltaTime;
 
 extern struct VblankHandler* gVblankHandler1;
 extern struct VblankHandler* gVblankHandler2;

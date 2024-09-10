@@ -21,10 +21,20 @@ void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg,
     if (gGamestate != CREDITS_SEQUENCE) {
         temp_f0 = is_within_render_distance(arg0->pos, egg->pos, arg0->rot[1], 200.0f, gCameraZoom[arg0 - camera1],
                                             16000000.0f);
+
+        if (CVarGetInteger("gNoCulling", 0) == 1) {
+            temp_f0 = MAX(temp_f0, 0.0f);
+        }
+
         if (temp_f0 < 0.0f) {
             return;
         }
     } else {
+        arg3 = 15;
+        temp_f0 = 0.0f;
+    }
+
+    if (CVarGetInteger("gDisableLod", 0) == 1) {
         arg3 = 15;
         temp_f0 = 0.0f;
     }
