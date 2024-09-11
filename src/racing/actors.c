@@ -426,7 +426,7 @@ void init_red_shell_texture(void) {
     }
 }
 
-UNUSED void func_80297944(void){};
+UNUSED void func_80297944(void) {};
 
 void func_8029794C(Vec3f pos, Vec3s rot, f32 scale) {
     Mat4 sp20;
