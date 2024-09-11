@@ -186,10 +186,10 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
         // Clamp pitch to avoid extreme values
         if (camera->rot[2] > 15999) {
             camera->rot[2] = 15999;
-}
+        }
         if (camera->rot[2] < -15999) {
             camera->rot[2] = -15999;
-}
+        }
 
         // Calculate the forward vector based on the new yaw and pitch
         // freecam_calculate_forward_vector_allow_rotation(camera, forwardVector);

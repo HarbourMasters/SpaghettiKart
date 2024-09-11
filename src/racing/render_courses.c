@@ -1369,7 +1369,7 @@ void func_8029569C(void) {
     }
 }
 
-void render_course(struct UnkStruct_800DC5EC *arg0) {
+void render_course(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
     // Freecam priority renders collision.
@@ -1378,7 +1378,7 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
         return;
     }
 
-    if ((CVarGetInteger("gFreecam", 0) == true) ) {
+    if ((CVarGetInteger("gFreecam", 0) == true)) {
         // Render credits courses
         func_8029569C();
         return;
