@@ -37,7 +37,7 @@ void FreecamWindow::InitElement() {
 
 static s32 sReadyUpBool = false;
 
-float dampMin = 0.995;
+float dampMin = 0.990;
 float dampMax = 1.0f;
 float minSpeed = 1.0;
 float maxSpeed = 30.0f;
@@ -61,27 +61,20 @@ void FreecamWindow::DrawElement() {
         gFreecamControllerType = current_item;
     }
 
-    ImGui::Text("Move: W,A,S,D\nUp: Space, Down: Shift\nFaster: Ctrl\nLook: Right-mouse button\nTarget previous player: N, Target next player: M");
+    ImGui::Text("Move: W,A,S,D\nUp: Space, Down: Shift\nFaster: Ctrl\nLook: Right-mouse button\nTarget previous "
+                "player: N, Target next player: M");
     ImGui::Spacing();
-    UIWidgets::CVarCheckbox("Enable Flycam", "gFreecam", {
-        .tooltip = "Allows you to fly around the course"
-    });
+    UIWidgets::CVarCheckbox("Enable Flycam", "gFreecam", { .tooltip = "Allows you to fly around the course" });
 
     ImGui::Spacing();
 
-    if (ImGui::SliderScalar("Camera Damping", ImGuiDataType_Float, &gDampValue, &dampMin, &dampMax, "%f")) {
+    if (ImGui::SliderScalar("Camera Damping", ImGuiDataType_Float, &gDampValue, &dampMin, &dampMax, "%f")) {};
+    if (ImGui::SliderScalar("Camera Speed", ImGuiDataType_Float, &gFreecamSpeed, &minSpeed, &maxSpeed, "%f")) {};
+    if (ImGui::SliderScalar("Camera Speed Multiplier", ImGuiDataType_Float, &gFreecamSpeedMultiplier,
+                            &minSpeedMultiplier, &maxSpeedMultiplier, "%f")) {};
+    if (ImGui::SliderScalar("Camera Rotation Smoothing", ImGuiDataType_Float, &gFreecamRotateSmoothingFactor,
+                            &minFreecamRotateFactor, &maxFreecamRotateFactor, "%f")) {};
 
-    };
-    if (ImGui::SliderScalar("Camera Speed", ImGuiDataType_Float, &gFreecamSpeed, &minSpeed, &maxSpeed, "%f")) {
-
-    };
-    if (ImGui::SliderScalar("Camera Speed Multiplier", ImGuiDataType_Float, &gFreecamSpeedMultiplier, &minSpeedMultiplier, &maxSpeedMultiplier, "%f")) {
-
-    };
-    if (ImGui::SliderScalar("Camera Rotation Smoothing", ImGuiDataType_Float, &gFreecamRotateSmoothingFactor, &minFreecamRotateFactor, &maxFreecamRotateFactor, "%f")) {
-
-    };
-    
     ImGui::Spacing();
 
     ImGui::Text("Target Player");
@@ -100,7 +93,6 @@ void FreecamWindow::DrawElement() {
         }
     }
 
-    
     ImGui::PopStyleColor();
 }
 

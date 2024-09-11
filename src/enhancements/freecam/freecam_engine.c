@@ -17,7 +17,7 @@ FreeCam freeCam;
 
 f32 gDampValue = 0.99f;
 
-void freecam_update(Camera *camera, Vec3f forwardVector) {
+void freecam_update(Camera* camera, Vec3f forwardVector) {
     // Update FreeCam state
     camera->pos[0] += freeCam.velocity[0] * gDeltaTime;
     camera->pos[1] += freeCam.velocity[1] * gDeltaTime;
@@ -34,10 +34,10 @@ void freecam_update(Camera *camera, Vec3f forwardVector) {
 }
 
 // Function to move the camera forward or backward without changing its height
-void freecam_move_camera_forward(Camera *camera, f32 moveSpeed, Vec3f forwardVector) {
+void freecam_move_camera_forward(Camera* camera, f32 moveSpeed, Vec3f forwardVector) {
     // Calculate the forward vector
     forwardVector[0] = camera->lookAt[0] - camera->pos[0];
-    //forwardVector[1] = 0;  // Don't change the height
+    // forwardVector[1] = 0;  // Don't change the height
     forwardVector[2] = camera->lookAt[2] - camera->pos[2];
 
     // Normalize the forward vector
@@ -53,17 +53,15 @@ void freecam_move_camera_forward(Camera *camera, f32 moveSpeed, Vec3f forwardVec
 
     camera->lookAt[0] = camera->pos[0] + forwardVector[0];
     camera->lookAt[2] = camera->pos[0] + forwardVector[2];
-
 }
 
-
-void freecam_pan_camera(Camera *camera, f32 moveSpeed) {
+void freecam_pan_camera(Camera* camera, f32 moveSpeed) {
     Vec3f rightVector;
     f32 length;
 
     // Calculate the right vector for pan movement
     rightVector[0] = camera->lookAt[2] - camera->pos[2];
-   // rightVector[1] = 0; // Maintain the same height
+    // rightVector[1] = 0; // Maintain the same height
     rightVector[2] = -(camera->lookAt[0] - camera->pos[0]);
 
     // Normalize the right vector
@@ -76,11 +74,7 @@ void freecam_pan_camera(Camera *camera, f32 moveSpeed) {
     // Update camera's position
     freeCam.velocity[0] = rightVector[0] * moveSpeed;
     freeCam.velocity[2] = rightVector[2] * moveSpeed;
-
 }
-
-
-
 
 void freecam_calculate_forward_vector_allow_rotation(Camera* camera, Vec3f forwardVector) {
     // Convert yaw from 0-65535 to degrees
@@ -93,16 +87,16 @@ void freecam_calculate_forward_vector_allow_rotation(Camera* camera, Vec3f forwa
 
     // Calculate the forward vector based on yaw, ignoring pitch to keep height unchanged
     forwardVector[0] = -sinf(yaw);
-    forwardVector[1] = -sinf(pitch);  // Keep the height unchanged
+    forwardVector[1] = -sinf(pitch); // Keep the height unchanged
     forwardVector[2] = cosf(yaw);
 }
 
 // Calculates the forward direction vector based on camera orientation
-void freecam_calculate_forward_vector(Camera *camera, Vec3f forwardVector) {
+void freecam_calculate_forward_vector(Camera* camera, Vec3f forwardVector) {
     // Convert yaw from 0-65535 to degrees
     f32 yaw = (camera->rot[0] / 65535.0f) * 360.0f;
     f32 pitch = (camera->rot[2] / 65535.0f) * 360.0f;
-    
+
     // Convert degrees to radians
     yaw = yaw * M_PI / 180.0f;
     pitch = pitch * M_PI / 180.0f;
@@ -125,9 +119,9 @@ void freecam_move_camera_down(Camera* camera, f32 distance) {
     camera->lookAt[1] += distance;
 }
 
-void freecam_target_player(Camera *camera, u32 playerIndex) {
-    Vec3f forwardVector;// = 2.0f;
-    Player *player = &gPlayers[playerIndex];
+void freecam_target_player(Camera* camera, u32 playerIndex) {
+    Vec3f forwardVector; // = 2.0f;
+    Player* player = &gPlayers[playerIndex];
 
     // Calculate the direction from the player to the camera
     f32 dirX = player->pos[0] - camera->pos[0];

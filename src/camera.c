@@ -17,6 +17,7 @@
 #include "main.h"
 #include "spawn_players.h"
 #include "enhancements/freecam/freecam_engine.h"
+#include "freecam.h"
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
