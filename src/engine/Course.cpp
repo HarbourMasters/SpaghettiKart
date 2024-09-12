@@ -1,12 +1,13 @@
 #include <libultraship.h>
 
 #include "Course.h"
+#include "MarioRaceway.h"
 
 extern "C" {
+    #include "main.h"
     #include "memory.h"
     #include "common_structs.h"
     #include "course_offsets.h"
-    extern uintptr_t gSegmentTable[];
 }
 
 Course::Course() {}
@@ -23,7 +24,6 @@ void Course::Init() {  }
 void Course::BeginPlay() {  }
 void Course::Render(Camera *camera) { }
 void Course::Collision() {}
-void Course::Expire() { }
 void Course::Destroy() { }
 
 
@@ -33,12 +33,12 @@ void StockCourse::Load(const char* courseVtx,
                   course_texture* textures, const char* displaylists, size_t dlSize) {
 
     size_t vtxSize = (ResourceGetSizeByName(courseVtx) / sizeof(CourseVtx)) * sizeof(Vtx);
+    size_t texSegSize;
 
     // Convert course vtx to vtx
     Vtx* vtx = (Vtx*) allocate_memory(vtxSize);
-    gSegmentTable[4] = &vtx[0];
-    func_802A86A8(LOAD_ASSET(courseVtx), vtx, vtxSize);
-    vtxSegEnd = &vtx[vtxSize];
+    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
+    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(courseVtx)), vtx, vtxSize);
 
     // Load and allocate memory for course textures
     course_texture* asset = textures;
@@ -50,10 +50,10 @@ void StockCourse::Load(const char* courseVtx,
         size = ResourceGetTexSizeByName(asset->addr);
         freeMemory = (u8*) allocate_memory(size);
 
-        texture = (u8*) LOAD_ASSET(asset->addr);
+        texture = reinterpret_cast<u8*>(LOAD_ASSET_RAW(asset->addr));
         if (texture) {
             if (asset == &textures[0]) {
-                gSegmentTable[5] = &freeMemory[0];
+                gSegmentTable[5] = reinterpret_cast<uintptr_t>(&freeMemory[0]);
             }
             memcpy(freeMemory, texture, size);
             texSegSize += size;
@@ -62,20 +62,25 @@ void StockCourse::Load(const char* courseVtx,
         asset++;
     }
 
-    texSegEnd = &((u8*) gSegmentTable[5])[texSegSize];
-
     // Extract packed DLs
-    u8* packed = (u8*) LOAD_ASSET(displaylists);
+    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(displaylists));
     Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
     assert(gfx != NULL);
-    gSegmentTable[7] = &gfx[0];
-    displaylist_unpack(gfx, packed, 0);
-    dlSegEnd = &gfx[dlSize];
+    gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
+    displaylist_unpack(reinterpret_cast<uintptr_t *>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
 }
 void StockCourse::LoadTextures() { }
 void StockCourse::Init() {  }
 void StockCourse::BeginPlay() {  }
 void StockCourse::Render(Camera *camera) { }
 void StockCourse::Collision() {}
-void StockCourse::Expire() { }
 void StockCourse::Destroy() { }
+
+extern "C" {
+    void load_stock_course(const char* courseVtx, 
+                      course_texture* textures, const char* displaylists, size_t dlSize) {
+    CourseMarioRaceway* course = new CourseMarioRaceway();
+        course->Load(courseVtx, textures, displaylists, dlSize);
+
+    }
+}

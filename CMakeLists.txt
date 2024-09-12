@@ -136,7 +136,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "courses/*.h"
     "src/networking/*.c"
     "src/networking/*.h"
-    "src/engine/*.c"
+    "src/engine/*.cpp"
     "src/engine/*.h"
     "src/enhancements/*.c"
     "src/enhancements/*.h"

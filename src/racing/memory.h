@@ -1,6 +1,8 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
+#include "common_structs.h"
+
 struct MainPoolBlock {
     struct MainPoolBlock* prev;
     struct MainPoolBlock* next;
@@ -57,6 +59,9 @@ void* decompress_segments(u8*, u8*);
 void* allocate_memory(size_t);
 void* load_data(uintptr_t, uintptr_t);
 void func_802A7D54(s32, s32);
+
+void func_802A86A8(CourseVtx* data, Vtx* vtx, size_t arg1);
+void displaylist_unpack(uintptr_t* data, uintptr_t finalDisplaylistOffset, u32 arg2);
 
 void main_pool_init(uintptr_t, uintptr_t);
 void* main_pool_alloc(uintptr_t, uintptr_t);

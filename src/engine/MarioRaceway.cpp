@@ -1,15 +1,20 @@
 #include <libultraship.h>
 
-#include "Course.h"
+#include "MarioRaceway.h"
 
 extern "C" {
+    #include "camera.h"
     #include "course_offsets.h"
 }
 
 CourseMarioRaceway::CourseMarioRaceway() {}
 
     // Virtual functions to be overridden by derived classes
-
+void CourseMarioRaceway::Load(const char* courseVtx, 
+                  course_texture* textures, const char* displaylists, size_t dlSize) {
+    StockCourse::Load(courseVtx, textures, displaylists, dlSize);
+}
+void CourseMarioRaceway::LoadTextures() {}
 void CourseMarioRaceway::Init() {  }
 void CourseMarioRaceway::BeginPlay() {  }
 void CourseMarioRaceway::Render(Camera *camera) { }
