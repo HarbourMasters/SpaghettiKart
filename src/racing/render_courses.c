@@ -1389,6 +1389,10 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
         return;
     }
 
+    CourseManager_RenderCourse(arg0);
+
+    return;
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             render_mario_raceway(arg0);

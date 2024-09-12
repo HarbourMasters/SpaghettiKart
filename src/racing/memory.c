@@ -140,7 +140,7 @@ void* segmented_uintptr_t_to_virtual(uintptr_t addr) {
     return (void*) ((gSegmentTable[segment] + offset));
 }
 
-void* segmented_gfx_to_virtual(const void* addr) {
+Gfx* segmented_gfx_to_virtual(const void* addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
@@ -149,7 +149,7 @@ void* segmented_gfx_to_virtual(const void* addr) {
 
     // printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
 
-    return (void*) ((gSegmentTable[segment] + offset));
+    return (Gfx*) ((gSegmentTable[segment] + offset));
 }
 
 void move_segment_table_to_dmem(void) {
@@ -1644,7 +1644,95 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
 void load_course(s32 courseId) {
     printf("Loading Course Data\n");
 
-    CourseManager_LoadCourse(gNewCourseTable[courseId].vtx, gNewCourseTable[courseId].textures, gNewCourseTable[courseId].displaylists, gNewCourseTable[courseId].dlSize);
+    //CourseManager_LoadCourse(courseId);
+
+switch (courseId) {
+    case COURSE_MARIO_RACEWAY:
+        CourseManager_LoadCourse(d_course_mario_raceway_vertex, mario_raceway_textures, d_course_mario_raceway_packed_dls, 3367);
+        break;
+
+    case COURSE_CHOCO_MOUNTAIN:
+        CourseManager_LoadCourse(d_course_choco_mountain_vertex, choco_mountain_textures, d_course_choco_mountain_packed_dls, 2910);
+        break;
+
+    case COURSE_BOWSER_CASTLE:
+        CourseManager_LoadCourse(d_course_bowsers_castle_vertex, bowsers_castle_textures, d_course_bowsers_castle_packed_dls, 4900);
+        break;
+
+    case COURSE_BANSHEE_BOARDWALK:
+        CourseManager_LoadCourse(d_course_banshee_boardwalk_vertex, banshee_boardwalk_textures, d_course_banshee_boardwalk_packed_dls, 3689);
+        break;
+
+    case COURSE_YOSHI_VALLEY:
+        CourseManager_LoadCourse(d_course_yoshi_valley_vertex, yoshi_valley_textures, d_course_yoshi_valley_packed_dls, 4140);
+        break;
+
+    case COURSE_FRAPPE_SNOWLAND:
+        CourseManager_LoadCourse(d_course_frappe_snowland_vertex, frappe_snowland_textures, d_course_frappe_snowland_packed_dls, 3274);
+        break;
+
+    case COURSE_KOOPA_BEACH:
+        CourseManager_LoadCourse(d_course_koopa_troopa_beach_vertex, koopa_troopa_beach_textures, d_course_koopa_troopa_beach_packed_dls, 5720);
+        break;
+
+    case COURSE_ROYAL_RACEWAY:
+        CourseManager_LoadCourse(d_course_royal_raceway_vertex, royal_raceway_textures, d_course_royal_raceway_packed_dls, 5670);
+        break;
+
+    case COURSE_LUIGI_RACEWAY:
+        CourseManager_LoadCourse(d_course_luigi_raceway_vertex, luigi_raceway_textures, d_course_luigi_raceway_packed_dls, 6377);
+        break;
+
+    case COURSE_MOO_MOO_FARM:
+        CourseManager_LoadCourse(d_course_moo_moo_farm_vertex, moo_moo_farm_textures, d_course_moo_moo_farm_packed_dls, 3304);
+        break;
+
+    case COURSE_TOADS_TURNPIKE:
+        CourseManager_LoadCourse(d_course_toads_turnpike_vertex, toads_turnpike_textures, d_course_toads_turnpike_packed_dls, 3427);
+        break;
+
+    case COURSE_KALAMARI_DESERT:
+        CourseManager_LoadCourse(d_course_kalimari_desert_vertex, kalimari_desert_textures, d_course_kalimari_desert_packed_dls, 5328);
+        break;
+
+    case COURSE_SHERBET_LAND:
+        CourseManager_LoadCourse(d_course_sherbet_land_vertex, sherbet_land_textures, d_course_sherbet_land_packed_dls, 1803);
+        break;
+
+    case COURSE_RAINBOW_ROAD:
+        CourseManager_LoadCourse(d_course_rainbow_road_vertex, rainbow_road_textures, d_course_rainbow_road_packed_dls, 1057);
+        break;
+
+    case COURSE_WARIO_STADIUM:
+        CourseManager_LoadCourse(d_course_wario_stadium_vertex, wario_stadium_textures, d_course_wario_stadium_packed_dls, 5272);
+        break;
+
+    case COURSE_BLOCK_FORT:
+        CourseManager_LoadCourse(d_course_block_fort_vertex, block_fort_textures, d_course_block_fort_packed_dls, 699);
+        break;
+
+    case COURSE_SKYSCRAPER:
+        CourseManager_LoadCourse(d_course_skyscraper_vertex, skyscraper_textures, d_course_skyscraper_packed_dls, 548);
+        break;
+
+    case COURSE_DOUBLE_DECK:
+        CourseManager_LoadCourse(d_course_double_deck_vertex, double_deck_textures, d_course_double_deck_packed_dls, 234);
+        break;
+
+    case COURSE_DK_JUNGLE:
+        CourseManager_LoadCourse(d_course_dks_jungle_parkway_vertex, dks_jungle_parkway_textures, d_course_dks_jungle_parkway_packed_dls, 4997);
+        break;
+
+    case COURSE_BIG_DONUT:
+        CourseManager_LoadCourse(d_course_big_donut_vertex, big_donut_textures, d_course_big_donut_packed_dls, 528);
+        break;
+
+    default:
+        // Handle unknown or unsupported courseId
+        printf("Unknown course id passed through load_course");
+        assert(1);
+        break;
+    }
 
     // char* data = gNewCourseTable[courseId].data;
     // char* vtxData = gNewCourseTable[courseId].vtx;

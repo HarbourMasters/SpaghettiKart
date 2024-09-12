@@ -52,7 +52,7 @@ void* segment_offset_to_virtual(uint32_t, uint32_t);
 void* segment_vtx_to_virtual(size_t offset);
 void* segmented_texture_to_virtual(uintptr_t addr);
 void* segmented_uintptr_t_to_virtual(uintptr_t);
-void* segmented_gfx_to_virtual(const void*);
+Gfx* segmented_gfx_to_virtual(const void*);
 void move_segment_table_to_dmem(void);
 void initialize_memory_pool(void);
 void* decompress_segments(u8*, u8*);

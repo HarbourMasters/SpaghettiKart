@@ -2124,7 +2124,7 @@ void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 al
 /**
  * Recursive search for vertices and set their colour values.
  */
-void find_vtx_and_set_colours(uintptr_t displayList, s8 alpha, u8 red, u8 green, u8 blue) {
+void find_vtx_and_set_colours(Gfx *displayList, s8 alpha, u8 red, u8 green, u8 blue) {
     Gfx* gfx = (Gfx*) displayList;
     uintptr_t lo;
     uintptr_t hi;
@@ -2137,7 +2137,7 @@ void find_vtx_and_set_colours(uintptr_t displayList, s8 alpha, u8 red, u8 green,
         if (opcode == (G_ENDDL << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
-            find_vtx_and_set_colours(hi, alpha, red, green, blue);
+            find_vtx_and_set_colours((Gfx *)hi, alpha, red, green, blue);
         } else if (opcode == (G_VTX << 24)) {
             // G_VTX contains an addr hi
             set_vertex_colours(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1, alpha, red, green, blue);
