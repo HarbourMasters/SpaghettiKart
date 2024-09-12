@@ -12,33 +12,21 @@ extern "C" {
 
 Course::Course() {}
 
-void Course::Load(Vtx *vtx, 
-                  Gfx* gfx) {
-
+void Course::Load(const char* vtx, const char* gfx) {
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
 }
 
-void Course::LoadTextures() { }
-void Course::Init() {  }
-void Course::BeginPlay() {  }
-void Course::Render(Camera *camera) { }
-void Course::Collision() {}
-void Course::Destroy() { }
+void Course::Load() {
 
-
-StockCourse::StockCourse() {}
-
-void StockCourse::Load(const char* courseVtx, 
-                  course_texture* textures, const char* displaylists, size_t dlSize) {
-
-    size_t vtxSize = (ResourceGetSizeByName(courseVtx) / sizeof(CourseVtx)) * sizeof(Vtx);
+    size_t vtxSize = (ResourceGetSizeByName(this->cvtx) / sizeof(CourseVtx)) * sizeof(Vtx);
     size_t texSegSize;
 
     // Convert course vtx to vtx
-    Vtx* vtx = (Vtx*) allocate_memory(vtxSize);
+    Vtx* vtx = reinterpret_cast<Vtx*>(allocate_memory(vtxSize));
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
-    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(courseVtx)), vtx, vtxSize);
+    printf("\nVtxsize: 0x%X\n\n",vtxSize);
+    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(this->cvtx)), vtx, vtxSize / sizeof(Vtx));
 
     // Load and allocate memory for course textures
     course_texture* asset = textures;
@@ -63,24 +51,25 @@ void StockCourse::Load(const char* courseVtx,
     }
 
     // Extract packed DLs
-    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(displaylists));
-    Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
+    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(this->displaylists));
+    Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * this->dlSize); // Size of unpacked DLs
     assert(gfx != NULL);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
     displaylist_unpack(reinterpret_cast<uintptr_t *>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
 }
-void StockCourse::LoadTextures() { }
-void StockCourse::Init() {  }
-void StockCourse::BeginPlay() {  }
-void StockCourse::Render(Camera *camera) { }
-void StockCourse::Collision() {}
-void StockCourse::Destroy() { }
+
+void Course::LoadTextures() { }
+void Course::Init() {  }
+void Course::BeginPlay() {  }
+void Course::Render(Camera *camera) { }
+void Course::Collision() {}
+void Course::Destroy() { }
 
 extern "C" {
-    void load_stock_course(const char* courseVtx, 
+    void CourseManager_LoadCourse(const char* courseVtx, 
                       course_texture* textures, const char* displaylists, size_t dlSize) {
     CourseMarioRaceway* course = new CourseMarioRaceway();
-        course->Load(courseVtx, textures, displaylists, dlSize);
+        course->Load();
 
     }
 }

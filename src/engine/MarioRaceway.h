@@ -2,25 +2,33 @@
 
 #include <libultraship.h>
 #include "Course.h"
+#include "mario_raceway_vertices.h"
+#include "mario_raceway_displaylists.h"
 
 extern "C" {
     #include "course_offsets.h"
     #include "camera.h"
+    extern const course_texture mario_raceway_textures[];
 }
 
-class CourseMarioRaceway : public StockCourse {
+class CourseMarioRaceway : public Course {
 public:
     virtual ~CourseMarioRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit CourseMarioRaceway();
+    explicit CourseMarioRaceway() : Course();
 
-    virtual void Load(const char* courseVtx, 
-                  course_texture* textures, const char* displaylists, size_t dlSize) override;
+//    virtual void Load(const char* courseVtx, 
+//                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void LoadTextures() override;
     virtual void Init() override;
     virtual void BeginPlay() override;
     virtual void Render(Camera*) override;
     virtual void Collision() override;
     virtual void Destroy() override;
+private:
+    const char* cvtx = d_course_mario_raceway_vertex;
+    const char* displaylists = d_course_mario_raceway_packed_dls;
+    size_t dlSize = 3367;
+    const course_texture* textures = mario_raceway_textures;
 };
