@@ -140,7 +140,10 @@ void Course::SetStaffGhost() {
 
 void Course::BeginPlay() {  }
 void Course::Render(struct UnkStruct_800DC5EC* arg0) { }
+void Course::RenderCredits() { }
 void Course::Collision() {}
+void Course::GenerateCollision() {
+}
 void Course::Destroy() { }
 
 Course* currentCourse = nullptr;
@@ -251,6 +254,12 @@ extern "C" {
         }
     }
 
+    void CourseManager_RenderCredits() {
+        if (currentCourse) {
+            currentCourse->RenderCredits();
+        }
+    }
+
     void CourseManager_SpawnActors() {
         if (currentCourse) {
             currentCourse->SpawnActors();
@@ -266,6 +275,12 @@ extern "C" {
     void CourseManager_UpdateClouds(s32 arg0, Camera* camera) {
         if (currentCourse) {
             currentCourse->UpdateClouds(arg0, camera);
+        }
+    }
+
+    void CourseManager_GenerateCollision() {
+        if (currentCourse) {
+            currentCourse->GenerateCollision();
         }
     }
 

@@ -22,7 +22,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "mario_raceway_data.h"
-    //#include "all_course_offsets.h"
+    #include "collision.h"
     #include "memory.h"
     extern const char *mario_raceway_dls[];
 }
@@ -266,5 +266,26 @@ void CourseMarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070000E0))));
     gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000160))));
 }
+
+void CourseMarioRaceway::RenderCredits() {
+    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_mario_raceway_dl_9348));
+}
+
 void CourseMarioRaceway::Collision() {}
+
+void CourseMarioRaceway::GenerateCollision() {
+    generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
+    if (gScreenModeSelection == SCREEN_MODE_1P) {
+        // d_course_mario_raceway_packed_dl_8E8
+        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070008E8)));
+    } else {
+        // d_course_mario_raceway_packed_dl_2D68
+        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07002D68)));
+    }
+
+    parse_course_displaylists(d_course_mario_raceway_addr);
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void CourseMarioRaceway::Destroy() { }

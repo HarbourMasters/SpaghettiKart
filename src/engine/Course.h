@@ -49,7 +49,9 @@ public:
     virtual void SetStaffGhost();
     virtual void BeginPlay();
     virtual void Render(struct UnkStruct_800DC5EC*);
+    virtual void RenderCredits();
     virtual void Collision();
+    virtual void GenerateCollision();
     virtual void Destroy();
 
     CloudData *clouds = gKalimariDesertClouds;

@@ -1189,9 +1189,12 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void func_8029569C(void) {
+
+    CourseManager_RenderCredits();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
+            //gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
             break;
         case COURSE_CHOCO_MOUNTAIN:
             gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_71B8);
@@ -1274,8 +1277,6 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
     }
 
     CourseManager_RenderCourse(arg0);
-
-    return;
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -1398,21 +1399,23 @@ void func_80295D88(void) {
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
 
+    CourseManager_GenerateCollision();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            // d_course_mario_raceway_packed_dl_1140
-            generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x07001140));
-            if (gScreenModeSelection == SCREEN_MODE_1P) {
-                // d_course_mario_raceway_packed_dl_8E8
-                generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x070008E8));
-            } else {
-                // d_course_mario_raceway_packed_dl_2D68
-                generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x07002D68));
-            }
+            // // d_course_mario_raceway_packed_dl_1140
+            // generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x07001140));
+            // if (gScreenModeSelection == SCREEN_MODE_1P) {
+            //     // d_course_mario_raceway_packed_dl_8E8
+            //     generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x070008E8));
+            // } else {
+            //     // d_course_mario_raceway_packed_dl_2D68
+            //     generate_collision_mesh_with_defaults((Gfx*) segmented_gfx_to_virtual(0x07002D68));
+            // }
 
-            parse_course_displaylists(d_course_mario_raceway_addr);
-            func_80295C6C();
-            D_8015F8E4 = gCourseMinY - 10.0f;
+            // parse_course_displaylists(d_course_mario_raceway_addr);
+            // func_80295C6C();
+            // D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_CHOCO_MOUNTAIN:
             D_800DC5BC = 1;
