@@ -245,20 +245,23 @@ void func_80027EDC(Player* player, s8 playerId) {
     UNUSED s32 pad;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+        
+        CourseManager_WhatDoesThisDo(playerId);
+        
         switch (gCurrentCourseId) {
-            case COURSE_MARIO_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
+            // case COURSE_MARIO_RACEWAY:
+            //     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
+            //         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+            //         if (D_80165300[playerId] != 1) {
+            //             func_800CA288(playerId, 0x55);
+            //         }
+            //         D_80165300[playerId] = 1;
+            //     } else {
+            //         if (D_80165300[playerId] != 0) {
+            //             func_800CA2B8(playerId);
+            //             D_80165300[playerId] = 0;
+            //         }
+            //     }
                 break;
             case COURSE_CHOCO_MOUNTAIN:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
@@ -376,20 +379,23 @@ void func_80027EDC(Player* player, s8 playerId) {
                 break;
         }
     } else {
+
+        CourseManager_WhatDoesThisDoAI(player, playerId);
+
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
+                // if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
+                //     ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+                //     if (D_80165300[playerId] != 1) {
+                //         func_800CA2E4(playerId, 0x55);
+                //     }
+                //     D_80165300[playerId] = 1;
+                // } else {
+                //     if (D_80165300[playerId] != 0) {
+                //         func_800CA30C(playerId);
+                //         D_80165300[playerId] = 0;
+                //     }
+                // }
                 break;
             case COURSE_CHOCO_MOUNTAIN:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&

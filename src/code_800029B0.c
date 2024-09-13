@@ -245,10 +245,13 @@ void setup_race(void) {
 }
 
 void func_80002DAC(void) {
+
+    CourseManager_SomeSounds();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
-            func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
+           // vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
+           // func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
             break;
         case COURSE_ROYAL_RACEWAY:
             vec3f_set(D_8015F748, 177.0f, 87.0f, -393.0f);
@@ -305,6 +308,9 @@ void func_80003040(void) {
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
+
+    CourseManager_SetCourseVtxColours();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY: {
             struct ActorSpawnData* a_d_course_mario_raceway_tree_spawns =

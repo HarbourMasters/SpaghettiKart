@@ -2881,10 +2881,13 @@ void func_80078C70(s32 arg0) {
         D_8018D210 = (-(D_8018D200 / 2) * 0xB6) - 0x71C;
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
+
+        CourseManager_UpdateClouds(sp1C, camera);
+
         switch (gCurrentCourseId) {    /* switch 2 */
             case COURSE_MARIO_RACEWAY: /* switch 2 */
                 // Uses Luigi Raceway's clouds for display purposes?
-                update_clouds(sp1C, camera, gLuigiRacewayClouds);
+                //update_clouds(sp1C, camera, gLuigiRacewayClouds);
                 break;
             case COURSE_YOSHI_VALLEY: /* switch 2 */
                 update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);

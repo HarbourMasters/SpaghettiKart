@@ -8,6 +8,12 @@ extern "C" {
     #include "memory.h"
     #include "common_structs.h"
     #include "course_offsets.h"
+    #include "some_data.h"
+    #include "code_8006E9C0.h"
+    #include "code_8003DC40.h"
+    #include "assets/common_data.h"
+    #include "render_objects.h"
+    extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
 Course::Course() {}
@@ -59,7 +65,79 @@ void Course::Load(const char* courseVtx, course_texture* textures, const char* d
 }
 
 void Course::LoadTextures() { }
-void Course::Init() {  }
+
+void Course::SpawnActors() {
+
+}
+
+void Course::Init() {
+}
+void Course::InitClouds() {
+    if (this->clouds) {
+        init_clouds(this->clouds);
+    }
+}
+
+void Course::UpdateClouds(s32 arg0, Camera* camera) {
+    s32 cloudIndex;
+    s32 objectIndex;
+    CloudData* cloud;
+
+    for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
+        cloud = &this->cloudList[cloudIndex];
+        objectIndex = D_8018CC80[arg0 + cloudIndex];
+        func_800788F8(objectIndex, cloud->rotY, camera);
+    }
+}
+
+void Course::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
+
+
+void Course::MinimapSettings() {
+
+}
+
+void Course::InitCourseObjects() {
+
+}
+
+void Course::UpdateCourseObjects() {
+
+}
+
+void Course::RenderCourseObjects() {
+
+}
+
+// Implemented for the first cup of each course plus Koopa Beach
+void Course::SomeSounds() {
+
+}
+
+void Course::SetCourseVtxColours() {
+
+}
+
+void Course::WhatDoesThisDo(Player* player, int8_t playerId) {
+
+}
+
+void Course::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+
+}
+
+// Positions the finishline on the minimap
+void Course::MinimapFinishlinePosition() {
+    //! todo: Place hard-coded values here.
+    draw_hud_2d_texture_8x8(this->MinimapFinishlineX, this->MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
+}
+
+void Course::SetStaffGhost() {
+
+}
+
 void Course::BeginPlay() {  }
 void Course::Render(struct UnkStruct_800DC5EC* arg0) { }
 void Course::Collision() {}
@@ -161,9 +239,99 @@ extern "C" {
         currentCourse->Load(courseVtx, textures, displaylists, dlSize);
     }
 
+    void CourseManager_LoadTextures() {
+        if (currentCourse) {
+            currentCourse->LoadTextures();
+        }
+    }
+
     void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
         if (currentCourse) {
             currentCourse->Render(arg0);
+        }
+    }
+
+    void CourseManager_SpawnActors() {
+        if (currentCourse) {
+            currentCourse->SpawnActors();
+        }
+    }
+
+    void CourseManager_InitClouds() {
+        if (currentCourse) {
+            currentCourse->InitClouds();
+        }
+    }
+
+    void CourseManager_UpdateClouds(s32 arg0, Camera* camera) {
+        if (currentCourse) {
+            currentCourse->UpdateClouds(arg0, camera);
+        }
+    }
+
+    void CourseManager_SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+        if (currentCourse) {
+            currentCourse->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        }
+    }
+
+    void CourseManager_MinimapSettings() {
+        if (currentCourse) {
+            currentCourse->MinimapSettings();
+        }
+    }
+
+    void CourseManager_InitCourseObjects() {
+        if (currentCourse) {
+            currentCourse->InitCourseObjects();
+        }
+    }
+
+    void CourseManager_UpdateCourseObjects() {
+        if (currentCourse) {
+            currentCourse->UpdateCourseObjects();
+        }
+    }
+
+    void CourseManager_RenderCourseObjects() {
+        if (currentCourse) {
+            currentCourse->RenderCourseObjects();
+        }
+    }
+
+    void CourseManager_SomeSounds() {
+        if (currentCourse) {
+            currentCourse->SomeSounds();
+        }
+    }
+
+    void CourseManager_SetCourseVtxColours() {
+        if (currentCourse) {
+            currentCourse->SetCourseVtxColours();
+        }
+    }
+
+    void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId) {
+        if (currentCourse) {
+            currentCourse->WhatDoesThisDo(player, playerId);
+        }
+    }
+
+    void CourseManager_WhatDoesThisDoAI(Player* player, int8_t playerId) {
+        if (currentCourse) {
+            currentCourse->WhatDoesThisDoAI(player, playerId);
+        }
+    }
+
+    void CourseManager_MinimapFinishlinePosition() {
+        if (currentCourse) {
+            currentCourse->MinimapFinishlinePosition();
+        }
+    }
+
+    void CourseManager_SetStaffGhost() {
+        if (currentCourse) {
+            currentCourse->SetStaffGhost();
         }
     }
 }

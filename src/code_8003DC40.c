@@ -231,9 +231,10 @@ void func_8003F46C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player->kartHopVelocity = 0.0f;
         return;
     } else {
+        CourseManager_SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
-                func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+                //func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
                 break;
             case COURSE_CHOCO_MOUNTAIN:
             case COURSE_KOOPA_BEACH:

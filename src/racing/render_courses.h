@@ -17,7 +17,6 @@ void parse_course_displaylists(const char*);
 void render_course_segments(const char*[], struct UnkStruct_800DC5EC*);
 void func_80291198(void);
 void func_802911C4(void);
-void render_mario_raceway(struct UnkStruct_800DC5EC*);
 void render_choco_mountain(struct UnkStruct_800DC5EC*);
 void render_bowsers_castle(struct UnkStruct_800DC5EC*);
 void render_banshee_boardwalk(struct UnkStruct_800DC5EC*);

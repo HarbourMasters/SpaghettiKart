@@ -2481,6 +2481,9 @@ void func_8004F020(s32 arg0) {
     f32 var_f0;
     f32 var_f2;
 
+    //! @todo: Hardcode these x and y values. Because why not?
+    CourseManager_MinimapFinishlinePosition();
+
     var_f2 = ((D_8018D2C0[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0;
     var_f0 = ((D_8018D2D8[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8;
     switch (gCurrentCourseId) { /* irregular */

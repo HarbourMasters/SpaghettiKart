@@ -874,6 +874,7 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
 #include "actors/falling_rock/update.inc.c"
 
 // Trees, cacti, shrubs, etc.
+//! @todo actorType needs to be passed into this function for flexibility
 void spawn_foliage(const char* actor) {
     UNUSED s32 pad[4];
     Vec3f position;
@@ -1047,19 +1048,21 @@ void spawn_course_actors(void) {
     struct Actor* actor;
     struct RailroadCrossing* rrxing;
 
+    CourseManager_SpawnActors();
+
     gNumPermanentActors = 0;
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            spawn_foliage(d_course_mario_raceway_tree_spawns);
-            spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
-            spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
-            vec3f_set(position, 150.0f, 40.0f, -1300.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-            vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
-            position[0] *= gCourseDirection;
-            actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
-            actor->flags |= 0x4000;
+            // spawn_foliage(d_course_mario_raceway_tree_spawns);
+            // spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
+            // spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
+            // vec3f_set(position, 150.0f, 40.0f, -1300.0f);
+            // position[0] *= gCourseDirection;
+            // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
+            // vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
+            // position[0] *= gCourseDirection;
+            // actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
+            // actor->flags |= 0x4000;
             break;
         case COURSE_CHOCO_MOUNTAIN:
             spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);
@@ -1203,18 +1206,21 @@ void init_actors_and_load_textures(void) {
     dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
+    
+    CourseManager_LoadTextures();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
-            D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
+            // D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
+            // dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
             break;
         case COURSE_BOWSER_CASTLE:
             dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);

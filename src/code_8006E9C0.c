@@ -193,17 +193,19 @@ void func_8006F008(void) {
     if (gCurrentCourseId < NUM_COURSES - 1) {
         func_8006EEE8((s32) gCurrentCourseId);
     }
+    CourseManager_MinimapSettings();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
-            D_8018D2A0 = 0.022f;
-            D_8018D2E0 = 6;
-            D_8018D2E8 = 28;
-            D_8018D2C0[0] = 260;
-            D_8018D2D8[0] = 170;
-            D_80165718 = 0;
-            D_80165720 = 5;
-            D_80165728 = -240;
+            // D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
+            // D_8018D2A0 = 0.022f;
+            // D_8018D2E0 = 6;
+            // D_8018D2E8 = 28;
+            // D_8018D2C0[0] = 260;
+            // D_8018D2D8[0] = 170;
+            // D_80165718 = 0;
+            // D_80165720 = 5;
+            // D_80165728 = -240;
             break;
         case COURSE_CHOCO_MOUNTAIN:
             D_8018D2A0 = 0.022f;
@@ -697,10 +699,12 @@ void func_8007055C(void) {
     s32 var_s0;
     s32 var_s4;
 
+    CourseManager_InitClouds();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // Uses Kalimari Desert's clouds for initialization?
-            init_clouds(gKalimariDesertClouds);
+            //init_clouds(gKalimariDesertClouds);
             break;
         case COURSE_YOSHI_VALLEY:
             init_clouds(gYoshiValleyMooMooFarmClouds);
@@ -767,17 +771,19 @@ void init_course_object(void) {
     s32 objectId;
     s32 i;
 
+    CourseManager_InitCourseObjects();
+
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            if (gGamestate != 9) {
-                if (gModeSelection == GRAND_PRIX) {
-                    func_80070714();
-                }
-                for (i = 0; i < D_80165738; i++) {
-                    find_unused_obj_index(&gObjectParticle3[i]);
-                    init_object(gObjectParticle3[i], 0);
-                }
-            }
+            // if (gGamestate != 9) {
+            //     if (gModeSelection == GRAND_PRIX) {
+            //         func_80070714();
+            //     }
+            //     for (i = 0; i < D_80165738; i++) {
+            //         find_unused_obj_index(&gObjectParticle3[i]);
+            //         init_object(gObjectParticle3[i], 0);
+            //     }
+            // }
             break;
         case COURSE_BOWSER_CASTLE:
             gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
