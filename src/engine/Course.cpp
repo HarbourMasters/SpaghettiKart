@@ -1,8 +1,8 @@
 #include <libultraship.h>
 
-#include "Course.hpp"
-#include "MarioRaceway.hpp"
-#include "World.hpp"
+#include "Course.h"
+#include "MarioRaceway.h"
+#include "World.h"
 
 extern "C" {
     #include "main.h"
@@ -184,7 +184,7 @@ void Course::SetStaffGhost() {
 }
 
 void Course::SpawnBombKarts() {
-    // SpawnObject();
+//    GetWorld()->SpawnBombKarts();
 }
 
 World* Course::GetWorld() {
@@ -409,9 +409,11 @@ extern "C" {
         }
     }
 
-    //CProperties* CourseManager_GetBombKartSpawns() {
-    //    
-    //}
+    void CourseManager_SpawnBombKarts() {
+        if (currentCourse) {
+            currentCourse->SpawnBombKarts();
+        }
+    }
 
     struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes() {
         if (currentCourse) {

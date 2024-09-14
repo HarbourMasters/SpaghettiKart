@@ -1,18 +1,17 @@
 #include <libultraship.h>
-#include "World.hpp"
+#include "World.h"
 
 extern "C" {
    #include "camera.h"
+   #include "objects.h"
 }
 
 World::World() {}
 
-World gWorldInstance;
-
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
     GameObject* rawPtr = object.get();
     this->GameObjects.push_back(std::move(object));
-    return rawPtr->o;
+    return &rawPtr->o;
 }
 
 void World::UpdateObjects() {
@@ -41,7 +40,9 @@ void World::DestroyObjects() {
 Object* World::GetObjectByIndex(size_t index) {
     if (index < this->GameObjects.size()) {
         // Assuming GameActor::a is accessible, use reinterpret_cast if needed
-        return reinterpret_cast<Object*>(this->GameObjects[index]->o);
+        return reinterpret_cast<Object*>(&this->GameObjects[index]->o);
     }
     return nullptr; // Or handle the error as needed
 }
+
+World gWorldInstance;

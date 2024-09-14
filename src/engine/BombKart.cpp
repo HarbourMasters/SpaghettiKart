@@ -1,4 +1,4 @@
-#include "BombKart.hpp"
+#include "BombKart.h"
 
 extern "C" {
     #include "bomb_kart.h"
@@ -8,7 +8,7 @@ extern "C" {
  * BombKarts derive their Y position from the waypoint Y value or 'spawn_actor_on_surface' function
  */
 
-OBombKart::OBombKart() {}
+OBombKart::OBombKart(uint16_t waypoint, uint16_t state, float unk_04, float x, float z, float unk_10, float unk_14) {}
 
 void OBombKart::Init() {
    // BombKarts.emplace_back(this);

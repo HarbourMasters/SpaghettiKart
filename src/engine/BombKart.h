@@ -2,10 +2,10 @@
 #define BOMBKART_H
 
 #include <libultraship.h>
-#include "GameObject.hpp"
 
 
 #ifdef __cplusplus
+#include "GameObject.h"
 extern "C" {
 #endif
 
@@ -24,7 +24,7 @@ public:
     virtual ~OBombKart() = default;
 
     // Constructor
-    explicit OBombKart();
+    explicit OBombKart(uint16_t waypoint, uint16_t state, float unk_04, float x, float z, float unk_10, float unk_14);
 
     BombKart vehicle;
     virtual void Init();

@@ -1,9 +1,12 @@
-#ifndef WORLD_H
-#define WORLD_H
+#pragma once
 
 #include <libultraship.h>
-#include "GameObject.hpp"
+#include "GameObject.h"
 
+extern "C" {
+#include "camera.h"
+#include "objects.h"
+};
 
 class World {
 public:
@@ -21,8 +24,12 @@ public:
     virtual Object *GetObjectByIndex(size_t);
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
-    // std::vector<GameActor> GameActors;
+    // std::vector<std::unique_ptr<GameActor>> GameActors;
 
 };
 
-#endif // WORLD_H
+extern World gWorldInstance;
+
+extern "C" {
+    
+}

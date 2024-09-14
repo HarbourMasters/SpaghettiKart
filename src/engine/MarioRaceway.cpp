@@ -3,10 +3,10 @@
 #include <vector>
 #include <memory>
 
-#include "MarioRaceway.hpp"
-#include "GameObject.hpp"
-#include "World.hpp"
-#include "BombKart.hpp"
+#include "MarioRaceway.h"
+#include "GameObject.h"
+#include "World.h"
+#include "BombKart.h"
 
 extern "C" {
     #include "main.h"

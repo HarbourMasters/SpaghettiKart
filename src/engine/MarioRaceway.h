@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.hpp"
+#include "Course.h"
 
 extern "C" {
     #include "mario_raceway_vertices.h"

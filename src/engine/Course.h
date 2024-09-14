@@ -2,11 +2,11 @@
 #define COURSE_H
 
 #include <libultraship.h>
-#include "World.hpp"
 
 
 // C-compatible function declaration
 #ifdef __cplusplus
+#include "World.h"
 extern "C" {
 #endif
 
