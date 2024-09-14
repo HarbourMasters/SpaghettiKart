@@ -38,7 +38,7 @@
 #include <assets/dks_jungle_parkway_data.h>
 
 #include "engine/Engine.h"
-#include "engine/Course.h"
+#include "engine/Course.hpp"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -3496,6 +3496,8 @@ void func_8000F2DC(void) {
             init_vehicles_cars();
             break;
     }
+    
+    CourseManager_SpawnBombKarts();
     set_bomb_kart_spawn_positions();
     func_8000EEDC();
 }

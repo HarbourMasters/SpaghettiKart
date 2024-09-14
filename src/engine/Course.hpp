@@ -2,6 +2,7 @@
 #define COURSE_H
 
 #include <libultraship.h>
+#include "World.hpp"
 
 
 // C-compatible function declaration
@@ -82,12 +83,14 @@ public:
     virtual void WhatDoesThisDoAI(Player*, int8_t);
     virtual void MinimapFinishlinePosition();
     virtual void SetStaffGhost();
+    virtual void SpawnBombKarts();
     virtual void BeginPlay();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();
     virtual void Collision();
     virtual void GenerateCollision();
     virtual void Destroy();
+    virtual World* GetWorld();
 
 };
 

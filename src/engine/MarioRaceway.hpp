@@ -1,11 +1,11 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
-#include "mario_raceway_vertices.h"
-#include "mario_raceway_displaylists.h"
+#include "Course.hpp"
 
 extern "C" {
+    #include "mario_raceway_vertices.h"
+    #include "mario_raceway_displaylists.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -40,6 +40,7 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
+    virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
     virtual void Destroy() override;
 };

@@ -1,7 +1,12 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include <vector>
+#include <memory>
 
-#include "MarioRaceway.h"
+#include "MarioRaceway.hpp"
+#include "GameObject.hpp"
+#include "World.hpp"
+#include "BombKart.hpp"
 
 extern "C" {
     #include "main.h"
@@ -188,6 +193,20 @@ void CourseMarioRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             func_800CA30C(playerId);
             D_80165300[playerId] = 0;
         }
+    }
+}
+
+void CourseMarioRaceway::SpawnBombKarts() {
+    World* world = GetWorld();
+
+    if (world) {
+        world->SpawnObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
+        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
     }
 }
 

@@ -1,7 +1,8 @@
 #include <libultraship.h>
 
-#include "Course.h"
-#include "MarioRaceway.h"
+#include "Course.hpp"
+#include "MarioRaceway.hpp"
+#include "World.hpp"
 
 extern "C" {
     #include "main.h"
@@ -28,16 +29,6 @@ Course::Course() {
     Props.AIMinimumSeparation = 0.3f;
     Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
-
-    Props.BombKartSpawns.resize(7);
-
-    Props.BombKartSpawns[0] = { 40, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[1] = { 100, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[2] = { 265, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[3] = { 285, 1, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[4] = { 420, 1, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[5] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[6] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
 
     Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
@@ -190,6 +181,14 @@ void Course::MinimapFinishlinePosition() {
 
 void Course::SetStaffGhost() {
 
+}
+
+void Course::SpawnBombKarts() {
+    // SpawnObject();
+}
+
+World* Course::GetWorld() {
+    return &gWorldInstance;
 }
 
 void Course::BeginPlay() {  }
@@ -409,6 +408,10 @@ extern "C" {
             return (CProperties*) &currentCourse->Props;
         }
     }
+
+    //CProperties* CourseManager_GetBombKartSpawns() {
+    //    
+    //}
 
     struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes() {
         if (currentCourse) {
