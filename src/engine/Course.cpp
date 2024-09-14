@@ -13,10 +13,64 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "assets/common_data.h"
     #include "render_objects.h"
+    #include "Engine.h"
     extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
-Course::Course() {}
+Course::Course() {
+    Props.Name = "Course Name";
+    Props.DebugName = "CName";
+    Props.CourseLength = "567m";
+    Props.Cup = FLOWER_CUP;
+    Props.CupIndex = 3;
+    Props.AIBehaviour = D_0D008F28;
+    Props.AIMaximumSeparation = 50.0f;
+    Props.AIMinimumSeparation = 0.3f;
+    Props.SomePtr = D_800DCB34;
+    Props.AISteeringSensitivity = 48;
+
+    Props.BombKartSpawns.resize(7);
+
+    Props.BombKartSpawns[0] = { 40, 3, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[1] = { 100, 3, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[2] = { 265, 3, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[3] = { 285, 1, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[4] = { 420, 1, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[5] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
+    Props.BombKartSpawns[6] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
+
+    Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+
+    Props.D_0D009418[0] = 4.1666665f;
+    Props.D_0D009418[1] = 5.5833334f;
+    Props.D_0D009418[2] = 6.1666665f;
+    Props.D_0D009418[3] = 6.75f;
+
+    Props.D_0D009568[0] = 3.75f;
+    Props.D_0D009568[1] = 5.1666665f;
+    Props.D_0D009568[2] = 5.75f;
+    Props.D_0D009568[3] = 6.3333334f;
+
+    Props.D_0D0096B8[0] = 3.3333332f;
+    Props.D_0D0096B8[1] = 3.9166667f;
+    Props.D_0D0096B8[2] = 4.5f;
+    Props.D_0D0096B8[3] = 5.0833334f;
+
+    Props.D_0D009808[0] = 3.75f;
+    Props.D_0D009808[1] = 5.1666665f;
+    Props.D_0D009808[2] = 5.75f;
+    Props.D_0D009808[3] = 6.3333334f;
+
+    Props.PathTable[0] = nullptr;
+    Props.PathTable[1] = nullptr;
+    Props.PathTable[2] = nullptr;
+    Props.PathTable[3] = nullptr;
+
+    Props.Clouds = gKalimariDesertClouds;
+    Props.CloudList = gLuigiRacewayClouds;
+    Props.MinimapFinishlineX = 0;
+    Props.MinimapFinishlineY = 0;
+}
 
 void Course::Load(const char* vtx, const char* gfx) {
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
@@ -73,8 +127,8 @@ void Course::SpawnActors() {
 void Course::Init() {
 }
 void Course::InitClouds() {
-    if (this->clouds) {
-        init_clouds(this->clouds);
+    if (this->Props.Clouds) {
+        init_clouds(this->Props.Clouds);
     }
 }
 
@@ -84,7 +138,7 @@ void Course::UpdateClouds(s32 arg0, Camera* camera) {
     CloudData* cloud;
 
     for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
-        cloud = &this->cloudList[cloudIndex];
+        cloud = &this->Props.CloudList[cloudIndex];
         objectIndex = D_8018CC80[arg0 + cloudIndex];
         func_800788F8(objectIndex, cloud->rotY, camera);
     }
@@ -131,7 +185,7 @@ void Course::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 // Positions the finishline on the minimap
 void Course::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->MinimapFinishlineX, this->MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
+    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void Course::SetStaffGhost() {
@@ -347,6 +401,18 @@ extern "C" {
     void CourseManager_SetStaffGhost() {
         if (currentCourse) {
             currentCourse->SetStaffGhost();
+        }
+    }
+
+    CProperties *CourseManager_GetProperties() {
+        if (currentCourse) {
+            return (CProperties*) &currentCourse->Props;
+        }
+    }
+
+    struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes() {
+        if (currentCourse) {
+            return (struct _struct_gCoursePathSizes_0x10*) &currentCourse->Props.PathSizes;
         }
     }
 }

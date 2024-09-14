@@ -15,17 +15,49 @@ extern "C" {
     #include "defines.h"
     #include "bomb_kart.h"
     #include "path_spawn_metadata.h"
+    #include "Engine.h"
 void CourseManager_LoadCourse(const char* courseVtx, 
                       course_texture* textures, const char* displaylists, size_t dlSize);
+
+CProperties *CourseManager_GetProperties();
+struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes();
 
 #ifdef __cplusplus
 }
 #endif
 
+#ifdef __cplusplus
 
 class Course {
 
 public:
+
+    typedef struct {
+        const char* Name;
+        const char* DebugName;
+        const char* CourseLength;
+        uint32_t Cup;
+        uint32_t CupIndex;
+        const char* AIBehaviour;
+        float AIMaximumSeparation;
+        float AIMinimumSeparation;
+        int16_t *SomePtr;
+        uint32_t AISteeringSensitivity;
+        std::vector<BombKartSpawn> BombKartSpawns;
+        struct _struct_gCoursePathSizes_0x10 PathSizes;
+        Vec4f D_0D009418;
+        Vec4f D_0D009568;
+        Vec4f D_0D0096B8;
+        Vec4f D_0D009808;
+        const char* PathTable[4];
+        CloudData *Clouds;
+        CloudData *CloudList;
+        int32_t MinimapFinishlineX;
+        int32_t MinimapFinishlineY;
+    } Properties;
+
+    Properties Props;
+
     virtual ~Course() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
@@ -57,40 +89,8 @@ public:
     virtual void GenerateCollision();
     virtual void Destroy();
 
-    const char* name = "Course Name";
-    const char* debugName = "CName";
-    const char* courseLength = "567m";
-    uint32_t cup = FLOWER_CUP;
-    uint32_t cupIndex = 3;
-    const char* KartAIBehaviour = D_0D008F28;
-    float KartAIMaximumseparation = 50.0f;
-    float MinimumAISeparation = 0.3f;
-    int16_t *somePtr = D_800DCB34;
-    uint32_t AISteeringSensitivity = 48;
-    BombKartSpawn gBombKartSpawns[7] = {
-        { 40, 3, 0.8333333, 0, 0, 0, 0 },
-        { 100, 3, 0.8333333, 0, 0, 0, 0 },
-        { 265, 3, 0.8333333, 0, 0, 0, 0 },
-        { 285, 1, 0.8333333, 0, 0, 0, 0 },
-        { 420, 1, 0.8333333, 0, 0, 0, 0 },
-        { 0, 0, 0.8333333, 0, 0, 0, 0 },
-        { 0, 0, 0.8333333, 0, 0, 0, 0 },
-    };
-    struct _struct_gCoursePathSizes_0x10 PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
-
-    Vec4f D_0D009418 = {4.1666665f, 5.5833334f, 6.1666665f, 6.75f};
-    Vec4f D_0D009568 = {3.75f, 5.1666665f, 5.75f, 6.3333334f};
-    Vec4f D_0D0096B8 = {3.3333332f, 3.9166667f, 4.5f, 5.0833334f};
-    Vec4f D_0D009808 = {3.75f, 5.1666665f, 5.75f, 6.3333334f};
-
-    const char *PathTable[4] = {
-        nullptr, nullptr, nullptr, nullptr
-    };
-
-    CloudData *clouds = gKalimariDesertClouds;
-    CloudData *cloudList = gLuigiRacewayClouds;
-    int32_t MinimapFinishlineX = 0;
-    int32_t MinimapFinishlineY = 0;
 };
+
+#endif
 
 #endif // COURSE_H
