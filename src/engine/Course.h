@@ -20,8 +20,7 @@ extern "C" {
 void CourseManager_LoadCourse(const char* courseVtx, 
                       course_texture* textures, const char* displaylists, size_t dlSize);
 
-CProperties *CourseManager_GetProperties();
-struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes();
+CProperties *CourseManager_GetProps();
 
 #ifdef __cplusplus
 }
@@ -32,7 +31,9 @@ struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes();
 class Course {
 
 public:
-
+    typedef struct {
+        uint8_t r, g, b;
+    } RGB8;
     typedef struct {
         const char* Name;
         const char* DebugName;
@@ -44,17 +45,21 @@ public:
         float AIMinimumSeparation;
         int16_t *SomePtr;
         uint32_t AISteeringSensitivity;
-        std::vector<BombKartSpawn> BombKartSpawns;
         struct _struct_gCoursePathSizes_0x10 PathSizes;
         Vec4f D_0D009418;
         Vec4f D_0D009568;
         Vec4f D_0D0096B8;
         Vec4f D_0D009808;
         const char* PathTable[4];
+        const char* PathTable2[4];
         CloudData *Clouds;
         CloudData *CloudList;
         int32_t MinimapFinishlineX;
         int32_t MinimapFinishlineY;
+        RGB8 Colours;
+        RGB8 Colours2;
+        RGB8 Colours3;
+        RGB8 Colours4;
     } Properties;
 
     Properties Props;

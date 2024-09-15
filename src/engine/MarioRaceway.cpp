@@ -44,16 +44,6 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
 
-    Props.BombKartSpawns.resize(7);
-
-    Props.BombKartSpawns[0] = { 40, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[1] = { 100, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[2] = { 265, 3, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[3] = { 285, 1, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[4] = { 420, 1, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[5] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
-    Props.BombKartSpawns[6] = { 0, 0, 0.8333333, 0, 0, 0, 0 };
-
     Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
@@ -76,15 +66,31 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = nullptr;
+    Props.PathTable[0] = d_course_mario_raceway_unknown_waypoints;
     Props.PathTable[1] = nullptr;
     Props.PathTable[2] = nullptr;
     Props.PathTable[3] = nullptr;
+
+    Props.PathTable2[0] = d_course_mario_raceway_track_waypoints;
+    Props.PathTable2[1] = nullptr;
+    Props.PathTable2[2] = nullptr;
+    Props.PathTable2[3] = nullptr;
 
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
+
+
+    Props.Colours = {0, 184, 248}; // 4280, 6136, 216, 7144, 32248};
+    Props.Colours2 = {216, 232, 248};
+    Props.Colours3 = {0, 0, 0};
+    Props.Colours4 = {0, 0, 0};
+
+    // Props.Colours = {128, 16, 184}; // 4280, 6136, 216, 7144, 32248};
+    // Props.Colours2 = {23, 248, 216};
+    // Props.Colours3 = {0, 0, 0};
+    // Props.Colours4 = {0, 0, 0};
 }
 
 void CourseMarioRaceway::LoadTextures() {

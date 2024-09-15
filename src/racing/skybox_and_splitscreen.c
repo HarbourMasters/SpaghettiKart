@@ -18,6 +18,8 @@
 #include "main.h"
 #include "menus.h"
 #include "port/Engine.h"
+#include "engine/Course.h"
+#include "engine/Engine.h"
 
 Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
@@ -311,15 +313,6 @@ void func_802A4300(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
 
-struct Skybox {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-};
-
 UNUSED Gfx D_802B8A90[] = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
@@ -401,30 +394,37 @@ void func_802A450C(Vtx* skybox) {
         }
         return;
     }
-    skybox[0].v.cn[0] = sSkyColors[gCurrentCourseId].unk0;
-    skybox[0].v.cn[1] = sSkyColors[gCurrentCourseId].unk2;
-    skybox[0].v.cn[2] = sSkyColors[gCurrentCourseId].unk4;
-    skybox[1].v.cn[0] = sSkyColors[gCurrentCourseId].unk6;
-    skybox[1].v.cn[1] = sSkyColors[gCurrentCourseId].unk8;
-    skybox[1].v.cn[2] = sSkyColors[gCurrentCourseId].unkA;
-    skybox[2].v.cn[0] = sSkyColors[gCurrentCourseId].unk6;
-    skybox[2].v.cn[1] = sSkyColors[gCurrentCourseId].unk8;
-    skybox[2].v.cn[2] = sSkyColors[gCurrentCourseId].unkA;
-    skybox[3].v.cn[0] = sSkyColors[gCurrentCourseId].unk0;
-    skybox[3].v.cn[1] = sSkyColors[gCurrentCourseId].unk2;
-    skybox[3].v.cn[2] = sSkyColors[gCurrentCourseId].unk4;
-    skybox[4].v.cn[0] = sSkyColors2[gCurrentCourseId].unk0;
-    skybox[4].v.cn[1] = sSkyColors2[gCurrentCourseId].unk2;
-    skybox[4].v.cn[2] = sSkyColors2[gCurrentCourseId].unk4;
-    skybox[5].v.cn[0] = sSkyColors2[gCurrentCourseId].unk6;
-    skybox[5].v.cn[1] = sSkyColors2[gCurrentCourseId].unk8;
-    skybox[5].v.cn[2] = sSkyColors2[gCurrentCourseId].unkA;
-    skybox[6].v.cn[0] = sSkyColors2[gCurrentCourseId].unk6;
-    skybox[6].v.cn[1] = sSkyColors2[gCurrentCourseId].unk8;
-    skybox[6].v.cn[2] = sSkyColors2[gCurrentCourseId].unkA;
-    skybox[7].v.cn[0] = sSkyColors2[gCurrentCourseId].unk0;
-    skybox[7].v.cn[1] = sSkyColors2[gCurrentCourseId].unk2;
-    skybox[7].v.cn[2] = sSkyColors2[gCurrentCourseId].unk4;
+
+
+    RGB8 *colours = (RGB8 *)&CourseManager_GetProps()->Colours;
+    RGB8 *colours2 = (RGB8 *)&CourseManager_GetProps()->Colours2;
+    RGB8 *colours3 = (RGB8 *)&CourseManager_GetProps()->Colours2;
+    RGB8 *colours4 = (RGB8 *)&CourseManager_GetProps()->Colours2;
+
+    skybox[0].v.cn[0] = colours->r;
+    skybox[0].v.cn[1] = colours->g;
+    skybox[0].v.cn[2] = colours->b;
+    skybox[1].v.cn[0] = colours2->r;
+    skybox[1].v.cn[1] = colours2->g;
+    skybox[1].v.cn[2] = colours2->b;
+    skybox[2].v.cn[0] = colours2->r;
+    skybox[2].v.cn[1] = colours2->g;
+    skybox[2].v.cn[2] = colours2->b;
+    skybox[3].v.cn[0] = colours->r;
+    skybox[3].v.cn[1] = colours->g;
+    skybox[3].v.cn[2] = colours->b;
+    skybox[4].v.cn[0] = colours3->r;
+    skybox[4].v.cn[1] = colours3->g;
+    skybox[4].v.cn[2] = colours3->b;
+    skybox[5].v.cn[0] = colours4->r;
+    skybox[5].v.cn[1] = colours4->g;
+    skybox[5].v.cn[2] = colours4->b;
+    skybox[6].v.cn[0] = colours4->r;
+    skybox[6].v.cn[1] = colours4->g;
+    skybox[6].v.cn[2] = colours4->b;
+    skybox[7].v.cn[0] = colours3->r;
+    skybox[7].v.cn[1] = colours3->g;
+    skybox[7].v.cn[2] = colours3->b;
 }
 
 void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,

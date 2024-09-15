@@ -57,6 +57,11 @@ Course::Course() {
     Props.PathTable[2] = nullptr;
     Props.PathTable[3] = nullptr;
 
+    Props.PathTable2[0] = nullptr;
+    Props.PathTable2[1] = nullptr;
+    Props.PathTable2[2] = nullptr;
+    Props.PathTable2[3] = nullptr;
+
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
     Props.MinimapFinishlineX = 0;
@@ -403,7 +408,7 @@ extern "C" {
         }
     }
 
-    CProperties *CourseManager_GetProperties() {
+    CProperties *CourseManager_GetProps() {
         if (currentCourse) {
             return (CProperties*) &currentCourse->Props;
         }
@@ -412,12 +417,6 @@ extern "C" {
     void CourseManager_SpawnBombKarts() {
         if (currentCourse) {
             currentCourse->SpawnBombKarts();
-        }
-    }
-
-    struct _struct_gCoursePathSizes_0x10 *CourseManager_GetPathSizes() {
-        if (currentCourse) {
-            return (struct _struct_gCoursePathSizes_0x10*) &currentCourse->Props.PathSizes;
         }
     }
 }
