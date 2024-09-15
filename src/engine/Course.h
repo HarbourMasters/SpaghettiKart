@@ -35,6 +35,17 @@ public:
         uint8_t r, g, b;
     } RGB8;
     typedef struct {
+        RGB8 TopRight;
+        RGB8 BottomRight;
+        RGB8 BottomLeft;
+        RGB8 TopLeft;
+        RGB8 FloorTopRight;
+        RGB8 FloorBottomRight;
+        RGB8 FloorBottomLeft;
+        RGB8 FloorTopLeft;
+    } SkyboxColours;
+
+    typedef struct {
         const char* Name;
         const char* DebugName;
         const char* CourseLength;
@@ -56,10 +67,7 @@ public:
         CloudData *CloudList;
         int32_t MinimapFinishlineX;
         int32_t MinimapFinishlineY;
-        RGB8 SkyColourTop; // The top/bottom colours are used to make a gradient
-        RGB8 SkyColourBottom;
-        RGB8 WaterColour1;
-        RGB8 WaterColour2;
+        SkyboxColours Skybox;
     } Properties;
 
     Properties Props;

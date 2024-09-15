@@ -395,36 +395,39 @@ void func_802A450C(Vtx* skybox) {
         return;
     }
 
+    SkyboxColours *prop = (SkyboxColours *)&CourseManager_GetProps()->Skybox;
 
-    RGB8 *skyColourTop = (RGB8 *)&CourseManager_GetProps()->SkyColourTop;
-    RGB8 *skyColourBottom = (RGB8 *)&CourseManager_GetProps()->SkyColourBottom;
-    RGB8 *WaterColour1 = (RGB8 *)&CourseManager_GetProps()->WaterColour1;
-    RGB8 *WaterColour2 = (RGB8 *)&CourseManager_GetProps()->WaterColour2;
+    skybox[0].v.cn[0] = prop->TopRight.r;
+    skybox[0].v.cn[1] = prop->TopRight.g;
+    skybox[0].v.cn[2] = prop->TopRight.b;
 
-    skybox[0].v.cn[0] = skyColourTop->r;
-    skybox[0].v.cn[1] = skyColourTop->g;
-    skybox[0].v.cn[2] = skyColourTop->b;
-    skybox[1].v.cn[0] = skyColourBottom->r;
-    skybox[1].v.cn[1] = skyColourBottom->g;
-    skybox[1].v.cn[2] = skyColourBottom->b;
-    skybox[2].v.cn[0] = skyColourBottom->r;
-    skybox[2].v.cn[1] = skyColourBottom->g;
-    skybox[2].v.cn[2] = skyColourBottom->b;
-    skybox[3].v.cn[0] = skyColourTop->r;
-    skybox[3].v.cn[1] = skyColourTop->g;
-    skybox[3].v.cn[2] = skyColourTop->b;
-    skybox[4].v.cn[0] = WaterColour1->r;
-    skybox[4].v.cn[1] = WaterColour1->g;
-    skybox[4].v.cn[2] = WaterColour1->b;
-    skybox[5].v.cn[0] = WaterColour2->r;
-    skybox[5].v.cn[1] = WaterColour2->g;
-    skybox[5].v.cn[2] = WaterColour2->b;
-    skybox[6].v.cn[0] = WaterColour2->r;
-    skybox[6].v.cn[1] = WaterColour2->g;
-    skybox[6].v.cn[2] = WaterColour2->b;
-    skybox[7].v.cn[0] = WaterColour1->r;
-    skybox[7].v.cn[1] = WaterColour1->g;
-    skybox[7].v.cn[2] = WaterColour1->b;
+    skybox[1].v.cn[0] = prop->BottomRight.r;
+    skybox[1].v.cn[1] = prop->BottomRight.g;
+    skybox[1].v.cn[2] = prop->BottomRight.b;
+
+    skybox[2].v.cn[0] = prop->BottomLeft.r;
+    skybox[2].v.cn[1] = prop->BottomLeft.g;
+    skybox[2].v.cn[2] = prop->BottomLeft.b;
+
+    skybox[3].v.cn[0] = prop->TopLeft.r;
+    skybox[3].v.cn[1] = prop->TopLeft.g;
+    skybox[3].v.cn[2] = prop->TopLeft.b;
+
+    skybox[4].v.cn[0] = prop->FloorTopRight.r;
+    skybox[4].v.cn[1] = prop->FloorTopRight.g;
+    skybox[4].v.cn[2] = prop->FloorTopRight.b;
+
+    skybox[5].v.cn[0] = prop->FloorBottomRight.r;
+    skybox[5].v.cn[1] = prop->FloorBottomRight.g;
+    skybox[5].v.cn[2] = prop->FloorBottomRight.b;
+
+    skybox[6].v.cn[0] = prop->FloorBottomLeft.r;
+    skybox[6].v.cn[1] = prop->FloorBottomLeft.g;
+    skybox[6].v.cn[2] = prop->FloorBottomLeft.b;
+
+    skybox[7].v.cn[0] = prop->FloorTopLeft.r;
+    skybox[7].v.cn[1] = prop->FloorTopLeft.g;
+    skybox[7].v.cn[2] = prop->FloorTopLeft.b;
 }
 
 void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,

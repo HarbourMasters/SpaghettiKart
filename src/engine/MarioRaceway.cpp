@@ -81,11 +81,14 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
-
-    Props.SkyColourTop = {0, 184, 248}; // 4280, 6136, 216, 7144, 32248};
-    Props.SkyColourBottom = {216, 232, 248};
-    Props.WaterColour1 = {0, 0, 0};
-    Props.WaterColour2 = {0, 0, 0};
+    Props.Skybox.TopRight = {0, 184, 248};
+    Props.Skybox.BottomRight = {216, 232, 248};
+    Props.Skybox.BottomLeft = {216, 232, 248};
+    Props.Skybox.TopLeft = {0, 184, 248};
+    Props.Skybox.FloorTopRight = {0, 0, 0};
+    Props.Skybox.FloorBottomRight = {0, 0, 0};
+    Props.Skybox.FloorBottomLeft = {0, 0, 0};
+    Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
 void CourseMarioRaceway::LoadTextures() {

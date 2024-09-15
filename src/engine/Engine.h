@@ -7,6 +7,17 @@
 #include "path_spawn_metadata.h"
 
 typedef struct {
+    RGB8 TopRight;
+    RGB8 BottomRight;
+    RGB8 BottomLeft;
+    RGB8 TopLeft;
+    RGB8 FloorTopRight;
+    RGB8 FloorBottomRight;
+    RGB8 FloorBottomLeft;
+    RGB8 FloorTopLeft;
+} SkyboxColours;
+
+typedef struct {
 
     const char* Name;
     const char* DebugName;
@@ -29,10 +40,7 @@ typedef struct {
     CloudData *CloudList;
     s32 MinimapFinishlineX;
     s32 MinimapFinishlineY;
-    Color_RGB8 SkyColourTop;
-    Color_RGB8 SkyColourBottom;
-    Color_RGB8 WaterColour1;
-    Color_RGB8 WaterColour2;
+    SkyboxColours Skybox;
 } CProperties;
 
 #endif // __ENGINE_H__
