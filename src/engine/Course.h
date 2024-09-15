@@ -56,10 +56,10 @@ public:
         CloudData *CloudList;
         int32_t MinimapFinishlineX;
         int32_t MinimapFinishlineY;
-        RGB8 Colours;
-        RGB8 Colours2;
-        RGB8 Colours3;
-        RGB8 Colours4;
+        RGB8 SkyColourTop; // The top/bottom colours are used to make a gradient
+        RGB8 SkyColourBottom;
+        RGB8 WaterColour1;
+        RGB8 WaterColour2;
     } Properties;
 
     Properties Props;

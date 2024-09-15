@@ -82,15 +82,10 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.MinimapFinishlineY = 0;
 
 
-    Props.Colours = {0, 184, 248}; // 4280, 6136, 216, 7144, 32248};
-    Props.Colours2 = {216, 232, 248};
-    Props.Colours3 = {0, 0, 0};
-    Props.Colours4 = {0, 0, 0};
-
-    // Props.Colours = {128, 16, 184}; // 4280, 6136, 216, 7144, 32248};
-    // Props.Colours2 = {23, 248, 216};
-    // Props.Colours3 = {0, 0, 0};
-    // Props.Colours4 = {0, 0, 0};
+    Props.SkyColourTop = {0, 184, 248}; // 4280, 6136, 216, 7144, 32248};
+    Props.SkyColourBottom = {216, 232, 248};
+    Props.WaterColour1 = {0, 0, 0};
+    Props.WaterColour2 = {0, 0, 0};
 }
 
 void CourseMarioRaceway::LoadTextures() {

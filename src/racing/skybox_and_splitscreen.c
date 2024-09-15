@@ -396,35 +396,35 @@ void func_802A450C(Vtx* skybox) {
     }
 
 
-    RGB8 *colours = (RGB8 *)&CourseManager_GetProps()->Colours;
-    RGB8 *colours2 = (RGB8 *)&CourseManager_GetProps()->Colours2;
-    RGB8 *colours3 = (RGB8 *)&CourseManager_GetProps()->Colours2;
-    RGB8 *colours4 = (RGB8 *)&CourseManager_GetProps()->Colours2;
+    RGB8 *skyColourTop = (RGB8 *)&CourseManager_GetProps()->SkyColourTop;
+    RGB8 *skyColourBottom = (RGB8 *)&CourseManager_GetProps()->SkyColourBottom;
+    RGB8 *WaterColour1 = (RGB8 *)&CourseManager_GetProps()->WaterColour1;
+    RGB8 *WaterColour2 = (RGB8 *)&CourseManager_GetProps()->WaterColour2;
 
-    skybox[0].v.cn[0] = colours->r;
-    skybox[0].v.cn[1] = colours->g;
-    skybox[0].v.cn[2] = colours->b;
-    skybox[1].v.cn[0] = colours2->r;
-    skybox[1].v.cn[1] = colours2->g;
-    skybox[1].v.cn[2] = colours2->b;
-    skybox[2].v.cn[0] = colours2->r;
-    skybox[2].v.cn[1] = colours2->g;
-    skybox[2].v.cn[2] = colours2->b;
-    skybox[3].v.cn[0] = colours->r;
-    skybox[3].v.cn[1] = colours->g;
-    skybox[3].v.cn[2] = colours->b;
-    skybox[4].v.cn[0] = colours3->r;
-    skybox[4].v.cn[1] = colours3->g;
-    skybox[4].v.cn[2] = colours3->b;
-    skybox[5].v.cn[0] = colours4->r;
-    skybox[5].v.cn[1] = colours4->g;
-    skybox[5].v.cn[2] = colours4->b;
-    skybox[6].v.cn[0] = colours4->r;
-    skybox[6].v.cn[1] = colours4->g;
-    skybox[6].v.cn[2] = colours4->b;
-    skybox[7].v.cn[0] = colours3->r;
-    skybox[7].v.cn[1] = colours3->g;
-    skybox[7].v.cn[2] = colours3->b;
+    skybox[0].v.cn[0] = skyColourTop->r;
+    skybox[0].v.cn[1] = skyColourTop->g;
+    skybox[0].v.cn[2] = skyColourTop->b;
+    skybox[1].v.cn[0] = skyColourBottom->r;
+    skybox[1].v.cn[1] = skyColourBottom->g;
+    skybox[1].v.cn[2] = skyColourBottom->b;
+    skybox[2].v.cn[0] = skyColourBottom->r;
+    skybox[2].v.cn[1] = skyColourBottom->g;
+    skybox[2].v.cn[2] = skyColourBottom->b;
+    skybox[3].v.cn[0] = skyColourTop->r;
+    skybox[3].v.cn[1] = skyColourTop->g;
+    skybox[3].v.cn[2] = skyColourTop->b;
+    skybox[4].v.cn[0] = WaterColour1->r;
+    skybox[4].v.cn[1] = WaterColour1->g;
+    skybox[4].v.cn[2] = WaterColour1->b;
+    skybox[5].v.cn[0] = WaterColour2->r;
+    skybox[5].v.cn[1] = WaterColour2->g;
+    skybox[5].v.cn[2] = WaterColour2->b;
+    skybox[6].v.cn[0] = WaterColour2->r;
+    skybox[6].v.cn[1] = WaterColour2->g;
+    skybox[6].v.cn[2] = WaterColour2->b;
+    skybox[7].v.cn[0] = WaterColour1->r;
+    skybox[7].v.cn[1] = WaterColour1->g;
+    skybox[7].v.cn[2] = WaterColour1->b;
 }
 
 void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,

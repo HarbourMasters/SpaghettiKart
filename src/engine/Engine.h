@@ -29,10 +29,10 @@ typedef struct {
     CloudData *CloudList;
     s32 MinimapFinishlineX;
     s32 MinimapFinishlineY;
-    Color_RGB8 Colours;
-    Color_RGB8 Colours2;
-    Color_RGB8 Colours3;
-    Color_RGB8 Colours4;
+    Color_RGB8 SkyColourTop;
+    Color_RGB8 SkyColourBottom;
+    Color_RGB8 WaterColour1;
+    Color_RGB8 WaterColour2;
 } CProperties;
 
 #endif // __ENGINE_H__
