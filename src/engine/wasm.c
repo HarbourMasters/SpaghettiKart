@@ -90,7 +90,7 @@ void load_wasm() {
 
     func = wasm_runtime_lookup_function(module_inst, "fib");
     if (func==NULL) {
-        printf("error to find the function");
+        printf("error to find the function\n");
         exit(-1);
     }
     uint32_t argv[2];
