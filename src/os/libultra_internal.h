@@ -10,14 +10,10 @@ typedef struct __OSEventState {
 } __OSEventState;
 #endif
 
-typedef struct // __osThreadTail
-{
-    /* 0x00 */ OSThread* next;
-    /* 0x04 */ OSPri priority;
-    /* 0x08 */ OSThread* queue;
-    /* 0x0c */ OSThread* tlnext;
-
-} OSThreadTail;
+extern struct __osThreadTail {
+    OSThread* next;
+    OSPri priority;
+} __osThreadTail;
 
 /*
  * This define is needed because the original definitions in __osDequeueThread.c are declared
@@ -35,10 +31,10 @@ typedef struct {
 } OSThread_ListHead;
 
 // Original OSThread_ListHead definitions
-extern OSThread* __osThreadTail;
-extern OSThread* __osActiveQueue;
-extern OSThread* __osRunQueue;
 extern OSThread* __osRunningThread;
+extern OSThread* __osActiveQueue;
+extern OSThread* __osFaultedThread;
+extern OSThread* __osRunQueue;
 
 // Original EEPROM definitions
 extern u32 D_80365E00[15];

@@ -1,0 +1,17 @@
+name: clang-format Suggest
+on: [pull_request]
+jobs:
+  formatting-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependance
+        run: |
+          sudo apt install clang-format make
+      - name: Run clang-format style check for C/C++/Protobuf programs.
+        run: |
+          clang-format --version
+          python tools/format.py
+      - uses: parkerbxyz/suggest-changes@v1
+        with:
+          comment: 'Please commit the suggested changes from clang-format.'

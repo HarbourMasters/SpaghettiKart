@@ -19,3 +19,6 @@ NULL_OUT = /dev/null
 endif
 # Returns the path to the command $(1) if exists. Otherwise returns an empty string.
 find-command = $(shell which $(1) 2> $(NULL_OUT))
+
+# recursive wildcard
+rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))

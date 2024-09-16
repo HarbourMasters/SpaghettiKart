@@ -1,7 +1,11 @@
 #ifndef _COMMON_STRUCTS_H_
 #define _COMMON_STRUCTS_H_
 
+#ifndef TARGET_N64
 #include <libultraship.h>
+#else
+#include <ultra64.h>
+#endif
 
 typedef f32 Vec3f[3];
 typedef f32 Vec4f[4];
@@ -364,22 +368,23 @@ typedef struct {
     /* 0x0DAC */ f32 unk_DAC;
     /* 0x0DB0 */ f32 unk_DB0;
     /* 0x0DB4 */ struct UnkPlayerInner unk_DB4;
-    /* 0x0DB6 */       // s16 unk_DB6;
-    /* 0x0DB8 */       // f32 unk_DB8;
-    /* 0x0DBC */       // f32 unk_DBC;
-    /* 0x0DC0 */       // f32 unk_DC0;
-    /* 0x0DC4 */       // f32 unk_DC4;
-    /* 0x0DC8 */       // f32 unk_DC8;
-    /* 0x0DCC */       // s16 unk_DCC;
-    /* 0x0DCE */       // s16 unk_DCE;
-    /* 0x0DD0 */       // s16 unk_DD0;
-    /* 0x0DD2 */       // s16 unk_DD2;
-    /* 0x0DD4 */       // s16 unk_DD4;
+    /* 0x0DB6 */ // s16 unk_DB6;
+    /* 0x0DB8 */ // f32 unk_DB8;
+    /* 0x0DBC */ // f32 unk_DBC;
+    /* 0x0DC0 */ // f32 unk_DC0;
+    /* 0x0DC4 */ // f32 unk_DC4;
+    /* 0x0DC8 */ // f32 unk_DC8;
+    /* 0x0DCC */ // s16 unk_DCC;
+    /* 0x0DCE */ // s16 unk_DCE;
+    /* 0x0DD0 */ // s16 unk_DD0;
+    /* 0x0DD2 */ // s16 unk_DD2;
+    /* 0x0DD4 */ // s16 unk_DD4;
+
     u32 nControlFlags; // Is racer human, ai, or networked controlled?
     s32 nCharacter;    // Networked character choice
     s32 nStartingRank;
     u32 nHasAuthority;
-} Player; // size = 0xDD8
+} Player;        // size = 0xDD8
 
 typedef struct {
     // Something related to time trial ghost data?

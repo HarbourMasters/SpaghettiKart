@@ -25,7 +25,7 @@ glabel func_80082F1C
 /* 083B5C 80082F5C AFB00018 */  sw    $s0, 0x18($sp)
 /* 083B60 80082F60 00808025 */  move  $s0, $a0
 /* 083B64 80082F64 AFA5002C */  sw    $a1, 0x2c($sp)
-/* 083B68 80082F68 0C01C922 */  jal   func_80072488
+/* 083B68 80082F68 0C01C922 */  jal   object_next_state
 /* 083B6C 80082F6C E4440000 */   swc1  $f4, ($v0)
 /* 083B70 80082F70 8FA9002C */  lw    $t1, 0x2c($sp)
 /* 083B74 80082F74 3C0B800E */  lui   $t3, %hi(D_800E5DF4) # $t3, 0x800e

@@ -10,7 +10,7 @@
  */
 
 typedef struct {
-    uintptr_t addr;
+    Gfx* addr;
     u8 surfaceType;
     u8 sectionId;
     u16 flags;

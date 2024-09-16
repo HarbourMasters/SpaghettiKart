@@ -65,7 +65,7 @@ void func_80280038(void) {
     render_course_actors(D_800DC5EC);
     render_object(PLAYER_ONE + SCREEN_MODE_1P);
     render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
-    transition_sliding_borders();
+    ceremony_transition_sliding_borders();
     func_80281C40();
     init_rdp();
     func_80093F10();

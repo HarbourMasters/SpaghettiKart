@@ -44,8 +44,8 @@ void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgC
         __osPiDevMgr.cmdQueue = cmdQ;
         __osPiDevMgr.eventQueue = &__osPiMesgQueue;
         __osPiDevMgr.accessQueue = &gOsPiMessageQueue;
-        __osPiDevMgr.piDmaCallback = osPiRawStartDma;
-        __osPiDevMgr.epiDmaCallback = osEPiRawStartDma;
+        __osPiDevMgr.dma_func = osPiRawStartDma;
+        __osPiDevMgr.edma_func = osEPiRawStartDma;
         osCreateThread(&piMgrThread, 0, __osDevMgrMain, (void*) &__osPiDevMgr, &piMgrStack[0x400], pri);
         osStartThread(&piMgrThread);
         __osRestoreInt(int_disabled);

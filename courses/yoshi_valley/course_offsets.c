@@ -3,7 +3,22 @@
 #include <assets/other_textures.h>
 #include <assets/yoshi_valley_data.h>
 
-course_texture yoshi_valley_textures[] = {
+extern u8 gTexture66EBF0[];
+extern u8 gTextureWoodBridgeSlats[];
+extern u8 gTexture65E2EC[];
+extern u8 gTexture6846DC[];
+extern u8 gTextureFenceRope[];
+extern u8 gTexture685108[];
+extern u8 gTexture64CC20[];
+extern u8 gTextureGrass4[];
+extern u8 gTexture6775EC[];
+extern u8 gTexture68E2D0[];
+extern u8 gTextureCheckerboardBlackWhite[];
+extern u8 gTexture643B3C[];
+extern u8 gTextureSignWoodRedArrow[];
+extern u8 gTexture68DEC0[];
+
+const course_texture yoshi_valley_textures[] = {
     { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
     { gTextureWoodBridgeSlats, 0x0DAB, 0x1000, 0x0 },
     { gTexture65E2EC, 0x02B0, 0x0800, 0x0 },

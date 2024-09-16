@@ -1,15 +1,6 @@
 #include "libultra_internal.h"
-#include "osContInternal.h"
+#include "controller.h"
 #include <macros.h>
-
-#ifndef AVOID_UB
-ALIGNED8 OSContPackedStruct _osContCmdBuf[7];
-UNUSED static u32 unused; // padding between these two variables
-u32 _osContPifCtrl;
-#else
-// Reordered gcc vars above will disturb the aliasing done to access all 8 members of this array, hence AVOID_UB.
-ALIGNED8 OSContPackedStruct _osContCmdBuf[8];
-#endif
 
 extern u8 __osContLastCmd;
 extern u8 _osContNumControllers;
@@ -18,56 +9,66 @@ void __osPackReadData(void);
 s32 osContStartReadData(OSMesgQueue* mesg) {
     s32 ret = 0;
     s32 i;
+
     __osSiGetAccess();
-    if (__osContLastCmd != 1) {
+
+    if (__osContLastCmd != CONT_CMD_READ_BUTTON) {
         __osPackReadData();
-        ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
+        ret = __osSiRawStartDma(OS_WRITE, __osContPifRam.ramarray);
         osRecvMesg(mesg, NULL, OS_MESG_BLOCK);
     }
-    for (i = 0; i < 0x10; i++) {
-        *((u32*) &_osContCmdBuf + i) = 255;
+
+    for (i = 0; i < ARRLEN(__osContPifRam.ramarray) + 1; i++) {
+        __osContPifRam.ramarray[i] = CONT_CMD_NOP;
     }
 
-    _osContPifCtrl = 0;
-    ret = __osSiRawStartDma(OS_READ, _osContCmdBuf);
-    __osContLastCmd = 1;
+    __osContPifRam.pifstatus = 0;
+    ret = __osSiRawStartDma(OS_READ, __osContPifRam.ramarray);
+    __osContLastCmd = CONT_CMD_READ_BUTTON;
+
     __osSiRelAccess();
+
     return ret;
 }
 void osContGetReadData(OSContPad* pad) {
-    OSContPackedRead* cmdBufPtr;
-    OSContPackedRead response;
+    u8* ptr = (u8*) __osContPifRam.ramarray;
+    __OSContReadFormat readformat;
     s32 i;
-    cmdBufPtr = &_osContCmdBuf[0].read;
-    for (i = 0; i < _osContNumControllers; i++, cmdBufPtr++, pad++) {
-        response = *cmdBufPtr;
-        pad->errno = (response.rxLen & 0xc0) >> 4;
-        if (pad->errno == 0) {
-            pad->button = response.button;
-            pad->stick_x = response.rawStickX;
-            pad->stick_y = response.rawStickY;
+
+    for (i = 0; i < _osContNumControllers; i++, ptr += sizeof(readformat), pad++) {
+        readformat = *(__OSContReadFormat*) ptr;
+        pad->errno = CHNL_ERR(readformat);
+
+        if (pad->errno != 0) {
+            continue;
         }
-    };
+
+        pad->button = readformat.button;
+        pad->stick_x = readformat.stick_x;
+        pad->stick_y = readformat.stick_y;
+    }
 }
 void __osPackReadData() {
-    OSContPackedRead* cmdBufPtr;
-    OSContPackedRead request;
+    u8* ptr = (u8*) __osContPifRam.ramarray;
+    __OSContReadFormat readformat;
     s32 i;
-    cmdBufPtr = &_osContCmdBuf[0].read;
-    for (i = 0; i < 0x10; i++) {
-        *((u32*) &_osContCmdBuf + i) = 0;
+
+    for (i = 0; i < ARRLEN(__osContPifRam.ramarray) + 1; i++) {
+        __osContPifRam.ramarray[i] = 0;
     }
 
-    _osContPifCtrl = 1;
-    request.padOrEnd = 255;
-    request.txLen = 1;
-    request.rxLen = 4;
-    request.command = 1;
-    request.button = 65535;
-    request.rawStickX = -1;
-    request.rawStickY = -1;
+    __osContPifRam.pifstatus = CONT_CMD_EXE;
+    readformat.dummy = CONT_CMD_NOP;
+    readformat.txsize = CONT_CMD_READ_BUTTON_TX;
+    readformat.rxsize = CONT_CMD_READ_BUTTON_RX;
+    readformat.cmd = CONT_CMD_READ_BUTTON;
+    readformat.button = 0xFFFF;
+    readformat.stick_x = -1;
+    readformat.stick_y = -1;
+
     for (i = 0; i < _osContNumControllers; i++) {
-        *cmdBufPtr++ = request;
+        *(__OSContReadFormat*) ptr = readformat;
+        ptr += sizeof(readformat);
     }
-    cmdBufPtr->padOrEnd = 254;
+    *ptr = CONT_CMD_END;
 }
