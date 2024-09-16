@@ -5,7 +5,7 @@
 
 #ifndef TARGET_N64
 extern const char* rainbow_road_dls[];
-extern const char* yoshi_valley_dls[];
+extern const char* d_course_yoshi_valley_dl_list[];
 extern const char* toads_turnpike_dls[];
 extern const char* banshee_boardwalk_dls[];
 extern const char* frappe_snowland_dls[];
