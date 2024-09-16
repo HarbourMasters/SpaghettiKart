@@ -121,7 +121,7 @@ void networking_start_session(const char* data) {
     gGamestateNext = RACING;
     gCCSelection = CC_150;
     // gCupSelection = FLOWER_CUP;
-    gCupCourseSelection = CUP_COURSE_ONE;
+    gCourseIndexInCup = CUP_COURSE_ONE;
     gScreenModeSelection = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     gPlayerCount = 1;
