@@ -1,0 +1,6 @@
+cd mods/lua
+sudo docker pull ysugimoto/webassembly-lua
+sudo docker run --rm -v $PWD:/src ysugimoto/webassembly-lua emcc-lua
+cd ../..
+rm build/test.wasm
+cp testlua.wasm build/test.wasm

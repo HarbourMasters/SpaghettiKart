@@ -19,7 +19,7 @@ static char global_heap_buf[512 * 1024];
 char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
     FILE* file = fopen(path, "rb");
     if (!file) {
-        perror("fopen");
+        perror(path);
         return NULL;
     }
 
@@ -49,7 +49,7 @@ void load_wasm() {
     wasm_runtime_init();
 
     /* read WASM file into a memory buffer */
-    buffer = read_wasm_binary_to_buffer("./test.wasm", &size);
+    buffer = read_wasm_binary_to_buffer("test.wasm", &size);
     if (buffer == NULL) {
         exit(-1);
     }
