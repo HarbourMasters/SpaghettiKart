@@ -362,7 +362,7 @@ endif()
 # Compile and link options
 ################################################################################
 
-option(GBI_UCODE "Use F3DEX_GBI" F3DEX_GBI)
+set(GBI_UCODE F3DEX_GBI)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE F3DEX_GBI=1)
 
