@@ -4984,6 +4984,7 @@ void func_8009CE64(s32 arg0) {
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
                     }
+                    printf("\nSELECTED!!!!!\n");
                     gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
                     D_800DC540 = (s32) gCupSelection;
                     gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];

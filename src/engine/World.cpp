@@ -8,6 +8,12 @@ extern "C" {
 
 World::World() {}
 
+Cup* World::AddCup(std::unique_ptr<Cup> cup) {
+    Cup* tmp = cup.get();
+    Cups.push_back(std::move(cup));
+    return tmp;
+}
+
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
     GameObject* rawPtr = object.get();
     this->GameObjects.push_back(std::move(object));

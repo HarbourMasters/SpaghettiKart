@@ -1258,7 +1258,7 @@ void func_8029569C(void) {
 
 void render_course(struct UnkStruct_800DC5EC *arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-return;
+
     // Freecam priority renders collision.
     if (CVarGetInteger("gRenderCollisionMesh", 0) == true) {
         render_collision();

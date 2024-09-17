@@ -34,6 +34,7 @@ public:
     typedef struct {
         uint8_t r, g, b;
     } RGB8;
+
     typedef struct {
         RGB8 TopRight;
         RGB8 BottomRight;
@@ -45,12 +46,13 @@ public:
         RGB8 FloorTopLeft;
     } SkyboxColours;
 
+    const char* Name;
+    const char* DebugName;
+    const char* CourseLength;
+    uint32_t Cup;
+    uint32_t CupIndex;
+
     typedef struct {
-        const char* Name;
-        const char* DebugName;
-        const char* CourseLength;
-        uint32_t Cup;
-        uint32_t CupIndex;
         const char* AIBehaviour;
         float AIMaximumSeparation;
         float AIMinimumSeparation;

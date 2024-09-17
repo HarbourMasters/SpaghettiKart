@@ -133,10 +133,12 @@ void Course::UpdateClouds(s32 arg0, Camera* camera) {
     s32 objectIndex;
     CloudData* cloud;
 
-    for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
-        cloud = &this->Props.CloudList[cloudIndex];
-        objectIndex = D_8018CC80[arg0 + cloudIndex];
-        func_800788F8(objectIndex, cloud->rotY, camera);
+    if (this->Props.CloudList) {
+        for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
+            cloud = &this->Props.CloudList[cloudIndex];
+            objectIndex = D_8018CC80[arg0 + cloudIndex];
+            func_800788F8(objectIndex, cloud->rotY, camera);
+        }
     }
 }
 
