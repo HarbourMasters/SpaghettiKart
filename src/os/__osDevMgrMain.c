@@ -64,11 +64,11 @@ void __osDevMgrMain(void* args) {
                     break;
                 case 15:
                     osRecvMesg(sp34->accessQueue, &dummy, OS_MESG_BLOCK);
-                    ret = sp34->epiDmaCallback(mb->piHandle, OS_READ, mb->devAddr, mb->dramAddr, mb->size);
+                    ret = sp34->edma_func(mb->piHandle, OS_READ, mb->devAddr, mb->dramAddr, mb->size);
                     break;
                 case 16:
                     osRecvMesg(sp34->accessQueue, &dummy, OS_MESG_BLOCK);
-                    ret = sp34->epiDmaCallback(mb->piHandle, OS_WRITE, mb->devAddr, mb->dramAddr, mb->size);
+                    ret = sp34->edma_func(mb->piHandle, OS_WRITE, mb->devAddr, mb->dramAddr, mb->size);
                     break;
                 case 10:
                     osSendMesg(mb->hdr.retQueue, mb, OS_MESG_NOBLOCK);

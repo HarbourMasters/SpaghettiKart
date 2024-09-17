@@ -30,7 +30,7 @@ const course_texture dks_jungle_parkway_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* dks_jungle_parkway_dls[] = {
+const Gfx* d_course_dks_jungle_parkway_unknown_dl_list[] = {
     d_course_dks_jungle_parkway_dl_20,   d_course_dks_jungle_parkway_dl_210,  d_course_dks_jungle_parkway_dl_180,
     d_course_dks_jungle_parkway_dl_310,  d_course_dks_jungle_parkway_dl_400,  d_course_dks_jungle_parkway_dl_628,
     d_course_dks_jungle_parkway_dl_560,  d_course_dks_jungle_parkway_dl_750,  d_course_dks_jungle_parkway_dl_888,

@@ -400,6 +400,7 @@ void func_800AF740(struct_8018D9E0_entry*);
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char*, ...);
+void tkmk00decode(u8*, u8*, u8*, s32);
 
 /* File specific defines */
 

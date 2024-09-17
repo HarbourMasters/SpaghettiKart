@@ -53,7 +53,7 @@ void network_cup_vote(uint32_t course) {
 void set_course(const char* data) {
     if (data != NULL) {
         gCupSelection = data[0];
-        gCurrentCourseId = gCupCourseOrder[gCupSelection][CUP_COURSE_ONE];
+        gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
     }
 }
 
@@ -121,7 +121,7 @@ void networking_start_session(const char* data) {
     gGamestateNext = RACING;
     gCCSelection = CC_150;
     // gCupSelection = FLOWER_CUP;
-    gCupCourseSelection = CUP_COURSE_ONE;
+    gCourseIndexInCup = COURSE_ONE;
     gScreenModeSelection = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     gPlayerCount = 1;

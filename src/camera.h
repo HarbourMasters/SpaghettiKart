@@ -57,9 +57,6 @@ typedef struct {
     /* 0xB4 */ f32 unk_B4;
 } Camera; /* size = 0xB8 */
 
-typedef BAD_RETURN(s32) (*CameraEvent)(Camera* c);
-typedef CameraEvent CutsceneShot;
-
 void camera_init(f32, f32, f32, s16, u32, s32);
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);

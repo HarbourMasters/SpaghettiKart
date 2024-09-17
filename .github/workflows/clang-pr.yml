@@ -1,0 +1,20 @@
+name: clang-format PR
+on: [push]
+jobs:
+  formatting-check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependance
+        run: |
+          sudo apt install clang-format make
+      - name: Run clang-format style check for C/C++/Protobuf programs.
+        run: |
+          clang-format --version
+          python tools/format.py
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: clang format
+          title: Applid Clang format on the branch
+          branch: clang-format

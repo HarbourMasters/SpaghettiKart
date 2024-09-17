@@ -1025,8 +1025,8 @@ glabel L8009F388
 /* 0A000C 8009F40C 8FBF001C */   lw    $ra, 0x1c($sp)
 /* 0A0010 8009F410 804F0000 */  lb    $t7, ($v0)
 .L8009F414:
-/* 0A0014 8009F414 3C198019 */  lui   $t9, %hi(gCupCourseSelection) # $t9, 0x8019
-/* 0A0018 8009F418 8339EE0B */  lb    $t9, %lo(gCupCourseSelection)($t9)
+/* 0A0014 8009F414 3C198019 */  lui   $t9, %hi(gCourseIndexInCup) # $t9, 0x8019
+/* 0A0018 8009F418 8339EE0B */  lb    $t9, %lo(gCourseIndexInCup)($t9)
 /* 0A001C 8009F41C 000F7080 */  sll   $t6, $t7, 2
 /* 0A0020 8009F420 0C02D567 */  jal   func_800B559C
 /* 0A0024 8009F424 01D92021 */   addu  $a0, $t6, $t9

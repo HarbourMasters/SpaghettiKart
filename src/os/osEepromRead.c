@@ -35,7 +35,7 @@ s32 osEepromRead(OSMesgQueue* mq, u8 address, u8* buffer) {
     ret = __osSiRawStartDma(OS_WRITE, &__osEepPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
 
-    for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
+    for (i = 0; i < ARRLEN(__osEepPifRam.ramarray) + 1; i++) {
         __osEepPifRam.ramarray[i] = CONT_CMD_NOP;
     }
     __osEepPifRam.pifstatus = 0;
@@ -66,7 +66,7 @@ void __osPackEepReadData(u8 address) {
     __OSContEepromFormat eepromformat;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
+    for (i = 0; i < ARRLEN(__osEepPifRam.ramarray) + 1; i++) {
         __osEepPifRam.ramarray[i] = CONT_CMD_NOP;
     }
     __osEepPifRam.pifstatus = CONT_CMD_EXE;
@@ -75,7 +75,7 @@ void __osPackEepReadData(u8 address) {
     eepromformat.rxsize = CONT_CMD_READ_EEPROM_RX;
     eepromformat.cmd = CONT_CMD_READ_EEPROM;
     eepromformat.address = address;
-    for (i = 0; i < ARRAY_COUNT(eepromformat.data); i++) {
+    for (i = 0; i < ARRLEN(eepromformat.data); i++) {
         eepromformat.data[i] = 0;
     }
 
