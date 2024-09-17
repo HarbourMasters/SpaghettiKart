@@ -41,7 +41,7 @@ void func_8007266C(s32);
 void func_800726CC(s32, s32);
 void func_8007271C(s32, s32);
 void func_8007274C(s32);
-s32 set_and_run_timer_object(s32, s32);
+bool set_and_run_timer_object(s32, s32);
 s32 func_8007281C(s32, s32);
 s32 func_800728B0(s32, s32, s32);
 void func_80072950(s32, s32, s32, s32);

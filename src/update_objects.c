@@ -749,7 +749,7 @@ void func_80073404(s32 objectIndex, u8 arg1, u8 arg2, Vtx* arg3) {
     gObjectList[objectIndex].status = 0;
 }
 
-void init_texture_object(s32 objectIndex, u8* texture, u8* arg2, u8 arg3, u16 arg4) {
+void init_texture_object(s32 objectIndex, u8* texture, const char** arg2, u8 arg3, u16 arg4) {
     gObjectList[objectIndex].tlutList = texture;
     gObjectList[objectIndex].textureList = arg2;
     gObjectList[objectIndex].textureWidth = arg3;
@@ -1298,13 +1298,13 @@ size_t func_80074790(s32 objectIndex, const char** lakituTexturePtr) {
 
 void func_800747F0(s32 objectIndex, const char** lakituTexturePtr) {
     const char* nextTexture = NULL;
-    if (gObjectList[objectIndex].itemDisplay != gObjectList[objectIndex].unk_0D3) {
-        nextTexture = gObjectList[objectIndex].textureList[gObjectList[objectIndex].itemDisplay];
+    if (gObjectList[objectIndex].textureListIndex != gObjectList[objectIndex].unk_0D3) {
+        nextTexture = gObjectList[objectIndex].textureList[gObjectList[objectIndex].textureListIndex];
 
         if (nextTexture != NULL) {
             func_80074574(lakituTexturePtr, nextTexture, func_80074790(objectIndex, lakituTexturePtr),
                           gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
-            gObjectList[objectIndex].unk_0D3 = gObjectList[objectIndex].itemDisplay;
+            gObjectList[objectIndex].unk_0D3 = gObjectList[objectIndex].textureListIndex;
             func_80074478(objectIndex);
         }
     }
@@ -3043,13 +3043,13 @@ void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 playerId) {
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
 
-void update_object_lakitu_countdown(s32 objectIndex, s32 playerId) {
+void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
-            init_obj_lakitu_red_flag_countdown(objectIndex, playerId);
+            init_obj_lakitu_red_flag_countdown(objectIndex, arg1);
             break;
         case 2:
             set_and_run_timer_object(objectIndex, gObjectList[objectIndex].unk_048);
@@ -3076,7 +3076,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 playerId) {
         case 7:
             if (set_and_run_timer_object(objectIndex, 0x00000014) != 0) {
                 gObjectList[objectIndex].tlutList += 0x200;
-                if (playerId == 0) {
+                if (arg1 == 0) {
                     play_sound2(SOUND_ACTION_COUNTDOWN_LIGHT);
                 }
             }
@@ -3090,14 +3090,14 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 playerId) {
             }
             break;
         case 10:
-            if ((func_80072E54(objectIndex, 0x00000010, 0x00000017, 1, 6, 0) != 0) && (playerId == 0)) {
+            if ((func_80072E54(objectIndex, 0x00000010, 0x00000017, 1, 6, 0) != 0) && (arg1 == 0)) {
                 D_801656F0 = 1;
             }
             break;
         case 11:
             if (set_and_run_timer_object(objectIndex, 8) != 0) {
                 gObjectList[objectIndex].tlutList += 0x200;
-                if (playerId == 0) {
+                if (arg1 == 0) {
                     play_sound2(SOUND_ACTION_GREEN_LIGHT);
                 }
             }
@@ -3106,7 +3106,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 playerId) {
             func_80072E54(objectIndex, 0x00000018, 0x0000001B, 1, 6, 0);
             break;
         case 13:
-            if (playerId == 0) {
+            if (arg1 == 0) {
                 func_800729EC(objectIndex);
                 D_8018D160 = 1;
                 break;
@@ -7358,7 +7358,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     object->activeTexture = d_course_yoshi_valley_hedgehog;
     object->vertex = vtx;
     object->sizeScaling = 0.2f;
-    object->itemDisplay = 0;
+    object->textureListIndex = 0;
     object_next_state(objectIndex);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
@@ -7413,7 +7413,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
             func_80072D3C(objectIndex, 0, 1, 4, -1);
             break;
     }
-    if (gObjectList[objectIndex].itemDisplay == 0) {
+    if (gObjectList[objectIndex].textureListIndex == 0) {
         Vtx* vtx = (Vtx*) LOAD_ASSET(common_vtx_hedgehog);
         gObjectList[objectIndex].vertex = vtx;
     } else {
@@ -7505,7 +7505,7 @@ void func_80083868(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     object->vertex = vtx;
     object->sizeScaling = 0.1f;
-    object->itemDisplay = 0;
+    object->textureListIndex = 0;
     object_next_state(objectIndex);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     object->orientation[0] = 0;

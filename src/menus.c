@@ -31,7 +31,7 @@ f32 D_8018EDD8;
 f32 D_8018EDDC;
 s32 D_8018EDE0;
 s8 gCharacterGridSelections[4]; // map from player id to current grid position
-bool8 D_8018EDE8[4];            // map player id to isCharSelected on CSS
+s8 D_8018EDE8[4];               // map player id to isCharSelected on CSS
 s8 D_8018EDEC;
 s8 gMainMenuSelectionDepth;
 s8 D_8018EDEE; // grid screen state?
