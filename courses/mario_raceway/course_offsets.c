@@ -36,7 +36,11 @@ const course_texture mario_raceway_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
+#ifndef TARGET_N64
 const char* mario_raceway_dls[] = {
+#else
+const Gfx* mario_raceway_dls[] = {
+#endif
     d_course_mario_raceway_dl_0,    d_course_mario_raceway_dl_1D0,  d_course_mario_raceway_dl_E8,
     d_course_mario_raceway_dl_2C8,  d_course_mario_raceway_dl_3A8,  d_course_mario_raceway_dl_568,
     d_course_mario_raceway_dl_478,  d_course_mario_raceway_dl_668,  d_course_mario_raceway_dl_750,

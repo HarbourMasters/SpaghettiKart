@@ -1,5 +1,10 @@
+#ifndef TARGET_N64
 #include <libultra/types.h>
 #include <libultra/gbi.h>
+#else
+#include <PR/ultratypes.h>
+#include <PR/gbi.h>
+#endif
 #include "course_offsets.h"
 #include <assets/banshee_boardwalk_data.h>
 #include <libultra/gbi.h>

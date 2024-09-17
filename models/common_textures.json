@@ -1,0 +1,32 @@
+[
+    {
+        "file": "src/data/common_textures.c",
+        "out_dir": "common_textures/assets",
+        "models": [
+            "D_0D001B90",
+            "D_0D001BD8",
+            "D_0D001C20",
+            "D_0D001C88",
+            "D_0D002EE8",
+            "common_model_fake_itembox",
+            "itemBoxQuestionMarkModel",
+            "D_0D0030F8",
+            "D_0D003128",
+            "D_0D003158",
+            "D_0D003188",
+            "D_0D0031B8",
+            "D_0D0031E8",
+            "D_0D003218",
+            "D_0D003248",
+            "D_0D003288",
+            "common_model_banana",
+            "common_model_flat_banana",
+            "D_0D0052B8",
+            "D_0D005338",
+            "D_0D005368",
+            "D_0D007B20",
+            "D_0D007B98",
+            "D_0D007C10"
+        ]
+    }
+]

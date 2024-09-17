@@ -255,7 +255,7 @@ glabel L800AC7CC
 /* 0AD3DC 800AC7DC ACEF001C */  sw    $t7, 0x1c($a3)
 /* 0AD3E0 800AC7E0 8318D9D8 */  lb    $t8, %lo(D_8018D9D8)($t8)
 /* 0AD3E4 800AC7E4 25EAFFFB */  addiu $t2, $t7, -5
-/* 0AD3E8 800AC7E8 3C0D8019 */  lui   $t5, %hi(gCupCourseSelection) # $t5, 0x8019
+/* 0AD3E8 800AC7E8 3C0D8019 */  lui   $t5, %hi(gCourseIndexInCup) # $t5, 0x8019
 /* 0AD3EC 800AC7EC 53000003 */  beql  $t8, $zero, .L800AC7FC
 /* 0AD3F0 800AC7F0 8CEB001C */   lw    $t3, 0x1c($a3)
 /* 0AD3F4 800AC7F4 ACEA001C */  sw    $t2, 0x1c($a3)
@@ -265,7 +265,7 @@ glabel L800AC7CC
 /* 0AD400 800AC800 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 0AD404 800AC804 ACEC0004 */  sw    $t4, 4($a3)
 /* 0AD408 800AC808 ACE0001C */  sw    $zero, 0x1c($a3)
-/* 0AD40C 800AC80C 81ADEE0B */  lb    $t5, %lo(gCupCourseSelection)($t5)
+/* 0AD40C 800AC80C 81ADEE0B */  lb    $t5, %lo(gCourseIndexInCup)($t5)
 /* 0AD410 800AC810 24010003 */  li    $at, 3
 /* 0AD414 800AC814 00002825 */  move  $a1, $zero
 /* 0AD418 800AC818 15A10053 */  bne   $t5, $at, .L800AC968

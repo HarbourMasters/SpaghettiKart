@@ -4,6 +4,9 @@
 #include <libultraship.h>
 #include <common_structs.h>
 
+// #define sins(x) gSineTable[(u16) (x) >> 4]
+// #define coss(x) gCosineTable[(u16) (x) >> 4]
+
 // #define min(a, b) ((a) <= (b) ? (a) : (b))
 // #define max(a, b) ((a) > (b) ? (a) : (b))
 

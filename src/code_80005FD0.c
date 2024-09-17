@@ -2388,7 +2388,7 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
 /**
  * Tries to find the waypoint nearest to (posX, posY, posZ)
  * Only consider waypoints in the same segment as trackSectionId
- * Only considers waypoints within 500 units of (posX, posY, posZ)
+ * Only considers waypoints within 500 units of(posX, posY, posZ)
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
 s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 trackSectionId) {
@@ -2931,24 +2931,24 @@ void set_bomb_kart_spawn_positions(void) {
     s32 var_s3;
     TrackWaypoint* temp_v0;
     UNUSED BombKart* var_s0;
-    BombKartSpawn* temp_s1;
+    BombKartSpawn* bombKartSpawn;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        temp_s1 = &gBombKartSpawns[gCurrentCourseId][var_s3];
+        bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
         switch (gCurrentCourseId) {
             case COURSE_YOSHI_VALLEY:
-                startingXPos = temp_s1->startingXPos;
-                startingZPos = temp_s1->startingZPos;
+                startingXPos = bombKartSpawn->startingXPos;
+                startingZPos = bombKartSpawn->startingZPos;
                 startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
                 break;
             case COURSE_AWARD_CEREMONY:
-                temp_v0 = &D_80164550[3][temp_s1->waypointIndex];
+                temp_v0 = &D_80164550[3][bombKartSpawn->waypointIndex];
                 startingXPos = temp_v0->posX;
                 startingYPos = temp_v0->posY;
                 startingZPos = temp_v0->posZ;
                 break;
             default:
-                temp_v0 = &D_80164550[0][temp_s1->waypointIndex];
+                temp_v0 = &D_80164550[0][bombKartSpawn->waypointIndex];
                 startingXPos = temp_v0->posX;
                 startingYPos = temp_v0->posY;
                 startingZPos = temp_v0->posZ;
@@ -2969,11 +2969,11 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
         gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
         gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = temp_s1->waypointIndex;
-        gBombKarts[var_s3].unk_3C = temp_s1->unk_04;
+        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
+        gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
         gBombKarts[var_s3].bounceTimer = 0;
         gBombKarts[var_s3].circleTimer = 0;
-        gBombKarts[var_s3].state = temp_s1->startingState;
+        gBombKarts[var_s3].state = bombKartSpawn->startingState;
         gBombKarts[var_s3].unk_4A = 0;
         gBombKarts[var_s3].unk_4C = 1;
         gBombKarts[var_s3].yPos = startingYPos;
@@ -5423,26 +5423,26 @@ void func_80014D30(s32 cameraId, s32 pathIndex) {
                              (f32) temp_v0->posZ);
 }
 
-void func_80014DE4(s32 arg0) {
+void func_80014DE4(s32 cameraIndex) {
     s32 cameraId;
 
     D_801646CC = 0;
-    D_80164678[arg0] = D_80164670[arg0];
-    if ((gModeSelection != 1) && ((gCupCourseSelection == 0) || (gDemoMode == (u16) 1))) {
-        D_80164678[arg0] = 0;
-    } else if ((D_80164678[arg0] != 0) && (D_80164678[arg0] != (s16) 1) && (D_80164678[arg0] != 2) &&
-               (D_80164678[arg0] != 3)) {
-        D_80164678[arg0] = 0;
+    D_80164678[cameraIndex] = D_80164670[cameraIndex];
+    if ((gModeSelection != 1) && ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == (u16) 1))) {
+        D_80164678[cameraIndex] = 0;
+    } else if ((D_80164678[cameraIndex] != 0) && (D_80164678[cameraIndex] != (s16) 1) &&
+               (D_80164678[cameraIndex] != 2) && (D_80164678[cameraIndex] != 3)) {
+        D_80164678[cameraIndex] = 0;
     }
-    D_80164680[arg0] = -1;
+    D_80164680[cameraIndex] = -1;
     D_80163238 = 0;
-    D_801646C0[arg0] = 0;
+    D_801646C0[cameraIndex] = 0;
     D_801646C8 = 0;
-    D_801646D0[arg0].unk0 = 0;
-    D_801646D0[arg0].unk2 = 0;
-    D_801646D0[arg0].unk4 = 0;
+    D_801646D0[cameraIndex].unk0 = 0;
+    D_801646D0[cameraIndex].unk2 = 0;
+    D_801646D0[cameraIndex].unk4 = 0;
     if ((gModeSelection == 1) && (D_8018EDFC == 0)) {
-        D_80164678[arg0] = 0;
+        D_80164678[cameraIndex] = 0;
     }
 
     for (cameraId = 0; cameraId < 4; cameraId++) {
@@ -5529,7 +5529,7 @@ f32 func_80014EE4(f32 arg0, s32 arg1) {
     return arg0;
 }
 
-void func_800151A4(Camera* camera, s32 arg1) {
+void calculate_camera_up_vector(Camera* camera, s32 cameraIndex) {
     f32 xnorm;
     f32 ynorm;
     f32 znorm;
@@ -5540,7 +5540,7 @@ void func_800151A4(Camera* camera, s32 arg1) {
     f32 sp28;
     u16 thing;
 
-    thing = D_801646C0[arg1];
+    thing = D_801646C0[cameraIndex];
     if (thing == 0) {
         camera->up[0] = 0.0f;
         camera->up[2] = 0.0f;
@@ -6662,10 +6662,10 @@ void func_80019890(s32 playerId, s32 cameraId) {
     }
 }
 
-void func_80019B50(s32 arg0, u16 arg1) {
+void func_80019B50(s32 cameraIndex, u16 arg1) {
     u16 var_v0;
 
-    var_v0 = D_801646C0[arg0];
+    var_v0 = D_801646C0[cameraIndex];
     if (var_v0 < arg1) {
         if ((arg1 - var_v0) < 0x8000) {
             var_v0 += 0x5A;
@@ -6689,10 +6689,10 @@ void func_80019B50(s32 arg0, u16 arg1) {
             }
         } else if ((var_v0 - arg1) >= 0x8000) {
             var_v0 += 0x5A;
-            if (!arg0) {} // wtf?
+            if (!cameraIndex) {} // wtf?
         }
     }
-    D_801646C0[arg0] = (s16) var_v0;
+    D_801646C0[cameraIndex] = (s16) var_v0;
 }
 
 void func_80019C50(s32 arg0) {
@@ -6720,7 +6720,7 @@ void func_80019D2C(Camera* camera, Player* player, s32 arg2) {
 
     playerId = camera->playerId;
     if ((D_80163378 != 0) && (gCurrentCourseId == 8)) {
-        func_800151A4(camera, arg2);
+        calculate_camera_up_vector(camera, arg2);
         nearestWaypoint = gNearestWaypointByPlayerId[playerId];
         if (((nearestWaypoint >= 0x65) && (nearestWaypoint < 0xFA)) ||
             ((nearestWaypoint >= 0x1AF) && (nearestWaypoint < 0x226))) {
@@ -6956,7 +6956,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
         func_80019D2C(camera, player, cameraIndex);
     } else {
         D_801646C0[cameraIndex] = 0;
-        func_800151A4(camera, cameraIndex);
+        calculate_camera_up_vector(camera, cameraIndex);
     }
     switch ((u16) D_801646CC) {
         case 1:

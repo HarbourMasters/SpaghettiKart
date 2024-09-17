@@ -1,0 +1,70 @@
+[
+    {
+        "file": "courses/rainbow_road/course_data.c",
+        "out_dir": "tracks/rainbow_road/objects",
+        "models": [
+            "d_course_rainbow_road_dl_151A8",
+            "d_course_rainbow_road_dl_15550",
+            "d_course_rainbow_road_dl_158C0",
+            "d_course_rainbow_road_dl_15C68",
+            "d_course_rainbow_road_dl_15F18"
+        ]
+    },
+    {
+        "file": "courses/rainbow_road/course_data.c",
+        "out_dir": "tracks/rainbow_road/sections",
+        "models": [
+            "d_course_rainbow_road_dl_D8", "d_course_rainbow_road_dl_210",
+            "d_course_rainbow_road_dl_178", "d_course_rainbow_road_dl_288",
+            "d_course_rainbow_road_dl_338", "d_course_rainbow_road_dl_4A0",
+            "d_course_rainbow_road_dl_3D0", "d_course_rainbow_road_dl_528",
+            "d_course_rainbow_road_dl_5F8", "d_course_rainbow_road_dl_6E0",
+            "d_course_rainbow_road_dl_658", "d_course_rainbow_road_dl_730",
+            "d_course_rainbow_road_dl_7A8", "d_course_rainbow_road_dl_880",
+            "d_course_rainbow_road_dl_7F8", "d_course_rainbow_road_dl_8E0",
+            "d_course_rainbow_road_dl_958", "d_course_rainbow_road_dl_A70",
+            "d_course_rainbow_road_dl_9C8", "d_course_rainbow_road_dl_B08",
+            "d_course_rainbow_road_dl_B70", "d_course_rainbow_road_dl_C70",
+            "d_course_rainbow_road_dl_BF0", "d_course_rainbow_road_dl_D10",
+            "d_course_rainbow_road_dl_D80", "d_course_rainbow_road_dl_E98",
+            "d_course_rainbow_road_dl_E08", "d_course_rainbow_road_dl_F50",
+            "d_course_rainbow_road_dl_FB0", "d_course_rainbow_road_dl_10A8",
+            "d_course_rainbow_road_dl_1030", "d_course_rainbow_road_dl_1150",
+            "d_course_rainbow_road_dl_1198", "d_course_rainbow_road_dl_12A0",
+            "d_course_rainbow_road_dl_1228", "d_course_rainbow_road_dl_1340",
+            "d_course_rainbow_road_dl_13F0", "d_course_rainbow_road_dl_14E8",
+            "d_course_rainbow_road_dl_1488", "d_course_rainbow_road_dl_1530",
+            "d_course_rainbow_road_dl_15D0", "d_course_rainbow_road_dl_16C0",
+            "d_course_rainbow_road_dl_1678", "d_course_rainbow_road_dl_1738",
+            "d_course_rainbow_road_dl_17D0", "d_course_rainbow_road_dl_18D0",
+            "d_course_rainbow_road_dl_1878", "d_course_rainbow_road_dl_1948"
+        ]
+    },
+    {
+        "file":"courses/rainbow_road/course_displaylists.inc.c",
+        "out_dir": "tracks/rainbow_road/collision_sections",
+        "models": [
+            "d_course_rainbow_road_packed_dl_20C0",
+            "d_course_rainbow_road_packed_dl_1850",
+            "d_course_rainbow_road_packed_dl_1758",
+            "d_course_rainbow_road_packed_dl_1698",
+            "d_course_rainbow_road_packed_dl_15F8",
+            "d_course_rainbow_road_packed_dl_1528",
+            "d_course_rainbow_road_packed_dl_13A0",
+            "d_course_rainbow_road_packed_dl_1978",
+            "d_course_rainbow_road_packed_dl_1D30",
+            "d_course_rainbow_road_packed_dl_1C70",
+            "d_course_rainbow_road_packed_dl_1BC0",
+            "d_course_rainbow_road_packed_dl_1B28",
+            "d_course_rainbow_road_packed_dl_1A20",
+            "d_course_rainbow_road_packed_dl_1318"
+        ]
+    },
+    {
+        "file":"courses/rainbow_road/course_data.c",
+        "out_dir": "tracks/rainbow_road/preview",
+        "models": [
+            "d_course_rainbow_road_dl_16220"
+        ]
+    }
+]

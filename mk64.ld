@@ -356,7 +356,7 @@ SECTIONS
       BUILD_DIR/src/os/osContInit.o(.bss*);
       BUILD_DIR/src/os/osPfsIsPlug.o(.bss*);
       BUILD_DIR/src/os/guRotateF.o(.bss*);
-      BUILD_DIR/src/os/leointerrupt.o(.bss*);
+      BUILD_DIR/src/os/__osLeoInterrupt.o(.bss*);
       BUILD_DIR/src/os/osTimer.o(.bss*);
       BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss*);
       BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss*);
