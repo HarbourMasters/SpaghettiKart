@@ -624,6 +624,7 @@ endif ()
 if (NOT DEFINED WAMR_BUILD_AOT)
   # Enable AOT by default.
   set (WAMR_BUILD_AOT 1)
+  set (WAMR_BUILD_DEBUG_AOT 1)
 endif ()
 
 if (NOT DEFINED WAMR_BUILD_JIT)

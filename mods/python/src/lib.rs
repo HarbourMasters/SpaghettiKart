@@ -1,5 +1,5 @@
-use wasm_bindgen::prelude::*;
 use rustpython::vm;
+use wasm_bindgen::prelude::*;
 
 fn main() {
     rustpython::run(|vm| {
@@ -7,7 +7,8 @@ fn main() {
         let source = r#"print("Hello World!")"#;
         let code_obj = vm
             .compile(source, vm::compiler::Mode::Exec, "<embedded>".to_owned())
-            .map_err(|err| vm.new_syntax_error(&err, Some(source))).unwrap();
+            .map_err(|err| vm.new_syntax_error(&err, Some(source)))
+            .unwrap();
 
         vm.run_code_obj(code_obj, scope);
     });

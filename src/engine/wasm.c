@@ -7,8 +7,17 @@
 #include <sys/stat.h>
 #include <dirent.h>
 
+unsigned int __getrandom_custom(wasm_exec_env_t exec_env, unsigned char* buffer, int buf_len) {
+    unsigned int ret = 0;
+    for (int i = 0; i < buf_len; i++) {
+        ret = (buffer + ret) && 0xFFFFFFFF;
+    }
+    return ret;
+}
+
 /* the native functions that will be exported to WASM app */
 static NativeSymbol native_symbols[] = {
+    { "__getrandom_custom", __getrandom_custom, "(*~)i" },
     // EXPORT_WASM_API_WITH_SIG(display_input_read, "(*)i"),
     // EXPORT_WASM_API_WITH_SIG(display_flush, "(iiii*)")
 };
@@ -63,11 +72,6 @@ void load_wasm() {
     init_args.mem_alloc_option.pool.heap_buf = global_heap_buf;
     init_args.mem_alloc_option.pool.heap_size = sizeof(global_heap_buf);
 
-    /* configure the native functions being exported to WASM app */
-    init_args.native_module_name = "env";
-    init_args.n_native_symbols = sizeof(native_symbols) / sizeof(NativeSymbol);
-    init_args.native_symbols = native_symbols;
-
     /* set maximum thread number if needed when multi-thread is enabled,
     the default value is 4 */
     init_args.max_thread_num = 4;
@@ -75,6 +79,11 @@ void load_wasm() {
     /* initialize runtime environment with user configurations*/
     if (!wasm_runtime_full_init(&init_args)) {
         return -1;
+    }
+
+    int n_native_symbols = sizeof(native_symbols) / sizeof(NativeSymbol);
+    if (!wasm_runtime_register_natives("env", native_symbols, n_native_symbols)) {
+        exit(1);
     }
 
     /* parse the WASM file from buffer and create a WASM module */
@@ -98,7 +107,7 @@ void load_wasm() {
 
     /* arguments are always transferred in 32-bit element */
     argv[0] = 8;
-
+    printf("run fib function\n");
     /* call the WASM function */
     if (wasm_runtime_call_wasm(exec_env, func, 1, argv)) {
         /* the return value is stored in argv[0] */
