@@ -38,12 +38,13 @@ char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
 }
 
 void load_wasm() {
+    printf("load wasm\n");
     char *buffer, error_buf[128];
     wasm_module_t module;
     wasm_module_inst_t module_inst;
     wasm_function_inst_t func;
     wasm_exec_env_t exec_env;
-    uint32_t size, stack_size = 8092, heap_size = 8092;
+    uint32_t size, stack_size = 8092 * 8, heap_size = 8092 * 8;
 
     /* initialize the wasm runtime by default configurations */
     wasm_runtime_init();
@@ -89,7 +90,7 @@ void load_wasm() {
     exec_env = wasm_runtime_create_exec_env(module_inst, stack_size);
 
     func = wasm_runtime_lookup_function(module_inst, "fib");
-    if (func==NULL) {
+    if (func == NULL) {
         printf("error to find the function\n");
         exit(-1);
     }
@@ -106,4 +107,5 @@ void load_wasm() {
         /* exception is thrown if call fails */
         printf("%s\n", wasm_runtime_get_exception(module_inst));
     }
+    exit(0);
 }

@@ -1,0 +1,1 @@
+cargo build --target wasm32-unknown-unknown --lib --release
