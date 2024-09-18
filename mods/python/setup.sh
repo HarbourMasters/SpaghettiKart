@@ -1,1 +1,1 @@
-rustup target add wasm32-wasip1
+rustup target add wasm32-unknown-unknown

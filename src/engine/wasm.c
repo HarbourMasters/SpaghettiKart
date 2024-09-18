@@ -1,23 +1,15 @@
 #include <iwasm/include/wasm_c_api.h>
 #include <iwasm/include/wasm_export.h>
 #include <iwasm/include/lib_export.h>
+#include <iwasm/interpreter/wasm_runtime.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <dirent.h>
 
-unsigned int __getrandom_custom(wasm_exec_env_t exec_env, unsigned char* buffer, int buf_len) {
-    unsigned int ret = 0;
-    for (int i = 0; i < buf_len; i++) {
-        ret = (buffer + ret) && 0xFFFFFFFF;
-    }
-    return ret;
-}
-
 /* the native functions that will be exported to WASM app */
 static NativeSymbol native_symbols[] = {
-    { "__getrandom_custom", __getrandom_custom, "(*~)i" },
     // EXPORT_WASM_API_WITH_SIG(display_input_read, "(*)i"),
     // EXPORT_WASM_API_WITH_SIG(display_flush, "(iiii*)")
 };
@@ -53,7 +45,7 @@ void load_wasm() {
     wasm_module_inst_t module_inst;
     wasm_function_inst_t func;
     wasm_exec_env_t exec_env;
-    uint32_t size, stack_size = 8092 * 8, heap_size = 8092 * 8;
+    uint32_t size, stack_size = 8092*8092, heap_size = 8092 * 8;
 
     /* initialize the wasm runtime by default configurations */
     wasm_runtime_init();
@@ -114,6 +106,7 @@ void load_wasm() {
         printf("fib function return: %d\n", argv[0]);
     } else {
         /* exception is thrown if call fails */
+        wasm_runtime_dump_call_stack(exec_env);
         printf("%s\n", wasm_runtime_get_exception(module_inst));
     }
     exit(0);
