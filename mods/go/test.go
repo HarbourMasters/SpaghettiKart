@@ -1,6 +1,6 @@
 package main
 
-//go:wasmimport yourmodulename add
+//export fib
 func fib(n uint32) uint32 {
 	if (n <= 1) {
         return n
