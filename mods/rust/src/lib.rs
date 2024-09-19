@@ -2,7 +2,7 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 
-#[wasm_bindgen]
+#[no_mangle]
 pub fn fib(n: u32) -> u32 {
     if n <= 1 {
         return n;
