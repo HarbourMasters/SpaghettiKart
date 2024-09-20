@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include "World.h"
+#include "Cup.h"
 
 extern "C" {
    #include "camera.h"
@@ -12,6 +13,18 @@ Cup* World::AddCup(std::unique_ptr<Cup> cup) {
     Cup* tmp = cup.get();
     Cups.push_back(std::move(cup));
     return tmp;
+}
+
+u32 World::NextCup() {
+    if (Cups.size() - 1) {
+        return ++this->CupIndex;
+    }
+}
+
+u32 World::PreviousCup() {
+    if (Cups.size() > 0) {
+        return --this->CupIndex;
+    }
 }
 
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
@@ -52,3 +65,17 @@ Object* World::GetObjectByIndex(size_t index) {
 }
 
 World gWorldInstance;
+
+World* GetWorld() {
+    return &gWorldInstance;
+}
+
+extern "C" {
+    u32 WorldNextCup() {
+        return gWorldInstance.NextCup();
+    }
+
+    u32 WorldPreviousCup() {
+        return gWorldInstance.PreviousCup();
+    }
+}

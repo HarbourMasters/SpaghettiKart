@@ -10,11 +10,15 @@ void Cup::SetCourses(std::vector<std::shared_ptr<Course>>& courses) {
     Courses = courses;
 }
 
-// Print details of all courses in the cup
-void Cup::PrintCupInfo() const {
-   // std::cout << "Cup: " << CupName << "\n";
-    for (const auto& course : Courses) {
-       // course->PrintInfo();
+void Cup::Next() {
+    if (Index < Courses.size() - 1) {
+        Index++;
+    }
+}
+
+void Cup::Previous() {
+    if (Index > 0) {
+        Index--;
     }
 }
 
@@ -23,10 +27,4 @@ void Cup::ShuffleCourses() {
     // std::random_device rd;
     // std::mt19937 g(rd());
     //std::shuffle(Courses.begin(), Courses.end(), g);
-}
-
-Cup* currentCup;
-
-Cup* CupProps() {
-    return currentCup;
 }

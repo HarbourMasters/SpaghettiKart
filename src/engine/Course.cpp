@@ -19,11 +19,11 @@ extern "C" {
 }
 
 Course::Course() {
-    Props.Name = "Course Name";
-    Props.DebugName = "CName";
-    Props.CourseLength = "567m";
-    Props.Cup = FLOWER_CUP;
-    Props.CupIndex = 3;
+    // Props.Name = "Course Name";
+    // Props.DebugName = "CName";
+    // Props.CourseLength = "567m";
+    // Props.Cup = FLOWER_CUP;
+    // Props.CupIndex = 3;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
@@ -52,15 +52,15 @@ Course::Course() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = nullptr;
-    Props.PathTable[1] = nullptr;
-    Props.PathTable[2] = nullptr;
-    Props.PathTable[3] = nullptr;
+    Props.PathTable[0] = NULL;
+    Props.PathTable[1] = NULL;
+    Props.PathTable[2] = NULL;
+    Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = nullptr;
-    Props.PathTable2[1] = nullptr;
-    Props.PathTable2[2] = nullptr;
-    Props.PathTable2[3] = nullptr;
+    Props.PathTable2[0] = NULL;
+    Props.PathTable2[1] = NULL;
+    Props.PathTable2[2] = NULL;
+    Props.PathTable2[3] = NULL;
 
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;

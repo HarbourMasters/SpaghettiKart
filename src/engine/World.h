@@ -9,19 +9,18 @@ extern "C" {
 #include "objects.h"
 };
 
+class Cup; // <-- Forward declaration
+
 class World {
 public:
     //Actor actors;
     virtual ~World() = default;
     explicit World();
 
-    
-
     // virtual Actor* SpawnActor(std::unique_ptr<GameActor> actor);
 
     virtual Object* SpawnObject(std::unique_ptr<GameObject> object);
     
-    virtual Cup* AddCup(std::unique_ptr<Cup> cup);
     
     virtual void UpdateObjects();
     virtual void RenderObjects(Camera *camera);
@@ -29,7 +28,14 @@ public:
     virtual void DestroyObjects();
     virtual Object *GetObjectByIndex(size_t);
 
+    Cup* AddCup(std::unique_ptr<Cup>);
+    virtual u32 NextCup();
+    virtual u32 PreviousCup();
+
+    World* GetWorld();
+
     std::vector<std::unique_ptr<Cup>> Cups;
+    u32 CupIndex = 0;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     // std::vector<std::unique_ptr<GameActor>> GameActors;

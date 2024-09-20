@@ -3429,7 +3429,7 @@ void func_8000F2BC(TrackWaypoint* arg0, size_t size) {
 // Appears to allocate memory for each course.
 void func_8000F2DC(void) {
 
-    struct _struct_gCoursePathSizes_0x10* ptr = &CourseManager_GetProps()->PathSizes;// CourseManager_GetPathSizes();
+    _struct_gCoursePathSizes_0x10* ptr = &CourseManager_GetProps()->PathSizes;
     s32 temp;
     s32 i;
 
@@ -3688,8 +3688,8 @@ void func_800100F0(s32 pathIndex) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
-            var_v0 = process_path_data(pathDest, LOAD_ASSET(CourseManager_GetProps()->PathTable2[pathIndex]));
-            gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
+                var_v0 = process_path_data(pathDest, LOAD_ASSET(CourseManager_GetProps()->PathTable2[pathIndex]));
+                gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.

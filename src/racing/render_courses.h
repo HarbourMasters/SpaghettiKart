@@ -52,6 +52,9 @@ extern s32 D_802B87C8;
 extern s32 D_802B87CC;
 extern s32 D_802B87BC;
 
+extern s16 D_802B87B0;
+extern s16 D_802B87B4;
+
 extern Lights1 D_800DC610[];
 
 extern Lights1 D_800DC610[]; // Light data?

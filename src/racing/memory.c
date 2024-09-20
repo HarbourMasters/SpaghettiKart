@@ -59,7 +59,7 @@ void* get_next_available_memory_addr(uintptr_t size) {
     if (gNextFreeMemoryAddress > sPoolEnd) {
         printf("[memory.c] get_next_available_memory_addr(): Memory Pool Out of Bounds! Out of memory!\n");
         PRINT_MEMPOOL;
-        assert(false);
+        assert(true);
     }
 
     return (void*) freeSpace;

@@ -19,17 +19,17 @@ typedef struct {
 
 typedef struct {
 
-    const char* Name;
-    const char* DebugName;
-    const char* CourseLength;
-    u32 Cup;
-    u32 CupIndex;
+    // const char* Name;
+    // const char* DebugName;
+    // const char* CourseLength;
+    // u32 Cup;
+    // u32 CupIndex;
     const char* AIBehaviour;
     float AIMaximumSeparation;
     float AIMinimumSeparation;
     s16 *SomePtr;
     u32 AISteeringSensitivity;
-    struct _struct_gCoursePathSizes_0x10 PathSizes;
+    _struct_gCoursePathSizes_0x10 PathSizes;
     Vec4f D_0D009418;
     Vec4f D_0D009568;
     Vec4f D_0D0096B8;

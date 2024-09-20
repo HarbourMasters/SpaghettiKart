@@ -28,6 +28,8 @@ CProperties *CourseManager_GetProps();
 
 #ifdef __cplusplus
 
+class World; // <-- Forward declare
+
 class Course {
 
 public:
@@ -58,7 +60,7 @@ public:
         float AIMinimumSeparation;
         int16_t *SomePtr;
         uint32_t AISteeringSensitivity;
-        struct _struct_gCoursePathSizes_0x10 PathSizes;
+        _struct_gCoursePathSizes_0x10 PathSizes;
         Vec4f D_0D009418;
         Vec4f D_0D009568;
         Vec4f D_0D0096B8;

@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "World.h"
 #include "BombKart.h"
+#include "choco_mountain_data.h"
 
 extern "C" {
     #include "main.h"
@@ -26,17 +27,16 @@ extern "C" {
     #include "save.h"
     #include "staff_ghosts.h"
     #include "actors.h"
-    #include "choco_mountain_data.h"
     #include "collision.h"
     #include "memory.h"
     extern const char *choco_mountain_dls[];
 }
 
-    Props.Name = "Choco Mountain";
-    Props.DebugName = "m circuit";
-    Props.CourseLength = "567m";
-    Props.Cup = FLOWER_CUP;
-    Props.CupIndex = 2;
+    // Props.Name = "Choco Mountain";
+    // Props.DebugName = "m circuit";
+    // Props.CourseLength = "567m";
+    // Props.Cup = FLOWER_CUP;
+    // Props.CupIndex = 2;
 ChocoMountain::ChocoMountain() {
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

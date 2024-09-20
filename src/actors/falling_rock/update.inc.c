@@ -20,7 +20,7 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
  *
  * @param spawnData
  */
-void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
+void spawn_falling_rocks(const char* spawnData) {
     struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
     struct FallingRock* temp_v1;
     Vec3f startingPos;

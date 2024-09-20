@@ -33,11 +33,11 @@ extern "C" {
 }
 
 CourseMarioRaceway::CourseMarioRaceway() {
-    Props.Name = "Mario Raceway";
-    Props.DebugName = "m circuit";
-    Props.CourseLength = "567m";
-    Props.Cup = FLOWER_CUP;
-    Props.CupIndex = 3;
+    // Props.Name = "Mario Raceway";
+    // Props.DebugName = "m circuit";
+    // Props.CourseLength = "567m";
+    // Props.Cup = FLOWER_CUP;
+    // Props.CupIndex = 3;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
@@ -67,14 +67,14 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.D_0D009808[3] = 6.3333334f;
 
     Props.PathTable[0] = d_course_mario_raceway_unknown_waypoints;
-    Props.PathTable[1] = nullptr;
-    Props.PathTable[2] = nullptr;
-    Props.PathTable[3] = nullptr;
+    Props.PathTable[1] = NULL;
+    Props.PathTable[2] = NULL;
+    Props.PathTable[3] = NULL;
 
     Props.PathTable2[0] = d_course_mario_raceway_track_waypoints;
-    Props.PathTable2[1] = nullptr;
-    Props.PathTable2[2] = nullptr;
-    Props.PathTable2[3] = nullptr;
+    Props.PathTable2[1] = NULL;
+    Props.PathTable2[2] = NULL;
+    Props.PathTable2[3] = NULL;
 
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
