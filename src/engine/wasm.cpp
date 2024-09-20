@@ -12,6 +12,8 @@ extern "C" {
 
 #include <fstream>
 #include <iostream>
+#include <vector>
+#include <filesystem>
 
 /* the native functions that will be exported to WASM app */
 static NativeSymbol native_symbols[] = {
@@ -22,46 +24,33 @@ static NativeSymbol native_symbols[] = {
 /* all the runtime memory allocations are retricted in the global_heap_buf array */
 static char global_heap_buf[512 * 1024];
 
-void read_wasm_binary_to_buffer(char* path, std::string &buffer) {
+char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
     std::ifstream file;
     file.open(path, std::ios::binary);
     if (!file.is_open()) {
         perror(path);
     }
 
-    file >> buffer;
-}
+    file.seekg(0, std::ios::end);
 
-extern "C" char* read_wasm_binary_to_buffer_c(char* path, uint32_t* size) {
-    FILE* file = fopen(path, "rb");
-    if (!file) {
-        perror(path);
-        return NULL;
-    }
+    *size = file.tellg();
 
-    struct stat st;
-    int serr = stat(path, &st);
-    if (serr == -1) {
-        perror("stat");
-        return NULL;
-    }
-    *size = (uint32_t) st.st_size;
+    file.seekg(0);
 
-    char* buffer = (char *) malloc(*size);
-    fread(buffer, *size, 1, file);
-
-    return buffer;
+    char* c_buffer = (char*) malloc(*size);
+    file.read(c_buffer, *size);
+    return c_buffer;
 }
 
 extern "C" void load_wasm() {
     printf("load wasm\n");
     char error_buf[128];
-    std::string buffer;
+    char* buffer;
     wasm_module_t module;
     wasm_module_inst_t module_inst;
     wasm_function_inst_t func;
     wasm_exec_env_t exec_env;
-    uint32_t stack_size = 8092*8092, heap_size = 8092 * 8;
+    uint32_t stack_size = 8092 * 8092, heap_size = 8092 * 8;
 
     /* initialize the wasm runtime by default configurations */
     wasm_runtime_init();
@@ -87,28 +76,25 @@ extern "C" void load_wasm() {
     if (!wasm_runtime_register_natives("env", native_symbols, n_native_symbols)) {
         exit(-1);
     }
-
+    uint32_t size;
     /* read WASM file into a memory buffer */
-    read_wasm_binary_to_buffer("test.wasm", buffer);
-    if (buffer.empty()) {
+    buffer = read_wasm_binary_to_buffer("test.wasm", &size);
+    if (buffer == NULL) {
+        printf("error read binary\n");
         exit(-1);
     }
 
-    uint32_t size;
-    char *bin = read_wasm_binary_to_buffer_c("test.wasm", &size);
-
-    printf("cpp:%d vs c:%d\n", buffer.size(), size);
-
     /* parse the WASM file from buffer and create a WASM module */
-    module = wasm_runtime_load((uint8_t *) bin, size, error_buf, sizeof(error_buf));
-    wasm_runtime_register_module("testmodule", module, error_buf,
-                                      sizeof(error_buf));
-    printf("load %s module\n", wasm_runtime_get_module_name(module));
+    module = wasm_runtime_load((uint8_t*) buffer, size, error_buf, sizeof(error_buf));
 
     if (module == NULL) {
         printf("%s\n", error_buf);
         exit(-1);
     }
+    wasm_runtime_register_module("testmodule", module, error_buf, sizeof(error_buf));
+    printf("load %s module\n", wasm_runtime_get_module_name(module));
+
+    printf("error? %s\n", error_buf);
 
     /* create an instance of the WASM module (WASM linear memory is ready) */
     module_inst = wasm_runtime_instantiate(module, stack_size, heap_size, error_buf, sizeof(error_buf));
