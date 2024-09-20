@@ -625,8 +625,6 @@ if (NOT DEFINED WAMR_BUILD_AOT)
   # Enable AOT by default.
   set (WAMR_BUILD_AOT 1)
 endif ()
-
-set (WAMR_BUILD_DUMP_CALL_STACK 1)
   
 if (NOT DEFINED WAMR_BUILD_JIT)
   # Disable JIT by default.
@@ -699,6 +697,9 @@ endif ()
 if (WAMR_BUILD_WASI_NN EQUAL 1)
   set (WAMR_BUILD_SHARED 1)
 endif ()
+
+set (WAMR_BUILD_DUMP_CALL_STACK 1)
+set (WAMR_BUILD_MULTI_MODULE 1)
 
 set (WAMR_ROOT_DIR lib/wasm-micro-runtime)
 

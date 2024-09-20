@@ -101,6 +101,9 @@ extern "C" void load_wasm() {
 
     /* parse the WASM file from buffer and create a WASM module */
     module = wasm_runtime_load((uint8_t *) bin, size, error_buf, sizeof(error_buf));
+    wasm_runtime_register_module("testmodule", module, error_buf,
+                                      sizeof(error_buf));
+    printf("load %s module\n", wasm_runtime_get_module_name(module));
 
     if (module == NULL) {
         printf("%s\n", error_buf);
