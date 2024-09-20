@@ -29,6 +29,7 @@ public:
     virtual Object *GetObjectByIndex(size_t);
 
     Cup* AddCup(std::unique_ptr<Cup>);
+    virtual u32 GetCupIndex();
     virtual u32 NextCup();
     virtual u32 PreviousCup();
 

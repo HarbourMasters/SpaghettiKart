@@ -15,16 +15,20 @@ Cup* World::AddCup(std::unique_ptr<Cup> cup) {
     return tmp;
 }
 
+u32 World::GetCupIndex() {
+    return this->CupIndex;
+}
+
 u32 World::NextCup() {
-    if (Cups.size() - 1) {
+    //if (CupIndex < Cups.size() - 1) {
         return ++this->CupIndex;
-    }
+    //}
 }
 
 u32 World::PreviousCup() {
-    if (Cups.size() > 0) {
+    //if (Cups.size() > 0) {
         return --this->CupIndex;
-    }
+    //}
 }
 
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
@@ -71,11 +75,15 @@ World* GetWorld() {
 }
 
 extern "C" {
-    u32 WorldNextCup() {
+    u32 WorldNextCup(void) {
         return gWorldInstance.NextCup();
     }
 
-    u32 WorldPreviousCup() {
+    u32 WorldPreviousCup(void) {
         return gWorldInstance.PreviousCup();
+    }
+
+    u32 GetCupIndex(void) {
+        return gWorldInstance.GetCupIndex();
     }
 }

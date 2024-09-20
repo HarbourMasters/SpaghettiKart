@@ -1256,7 +1256,7 @@ void func_80091EE4(void) {
     tmp = func_800B5F30();
 
     if ((D_8018EDFB != 0) && (tmp == 0)) {
-        temp_s2 = (gCupSelection * 4) + gCupCourseSelection;
+        temp_s2 = (GetCupIndex() * 4) + gCupCourseSelection;
         func_800B6708();
 
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
@@ -4780,7 +4780,7 @@ void func_8009CE64(s32 arg0) {
             goto func_8009CE64_label2;
         }
     func_8009CE64_label2:
-        if ((D_802874D8.unk1D < 3) && (gCupSelection == 3)) {
+        if ((D_802874D8.unk1D < 3) && (GetCupIndex() == SPECIAL_CUP)) {
             var_a1 = 1;
         }
     func_8009CE64_label1:
@@ -5680,8 +5680,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->row = D_800E7248[type - 0x65].row;
             break;
         case 0x67:
-            var_ra->unk1C = (s32) gCupSelection;
-            var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
+            var_ra->unk1C = (s32) GetCupIndex();
+            var_ra->unk20 = func_800B54C0(GetCupIndex(), gCCSelection);
             var_ra->D_8018DEE0_index =
                 func_8009A374(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
             var_ra->column = D_800E7268[0].column;
@@ -5780,7 +5780,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 }
             }
             if ((var_ra->unk1C == 0) || (var_ra->unk20 != 0)) {
-                func_800B559C((gCupSelection * 4) + gCupCourseSelection);
+                func_800B559C((GetCupIndex() * 4) + gCupCourseSelection);
             }
             break;
         case 0xE6:
@@ -7222,7 +7222,7 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
+    temp_s0 = (s32) (((f32) (get_string_width(gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2);
     draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
               arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
@@ -7338,7 +7338,7 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
             }
         }
         set_text_color(5);
-        temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
+        temp_s0_3 = ((get_string_width(gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2;
         draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
                   arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
@@ -7414,7 +7414,7 @@ void func_800A3C84(struct_8018D9E0_entry* arg0) {
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     draw_text(arg0->column + 0x43, arg0->row + 0x19,
-              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
+              gCourseNamesDup[gCupCourseOrder[GetCupIndex()][gCupCourseSelection]], 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
@@ -7751,7 +7751,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f,
+    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][gCupCourseSelection]], 0, 1.0f,
               1.0f);
     set_text_color(TEXT_RED);
     draw_text(0x0000009D, 0x00000060, D_800E7728[0], 0, 0.8f, 0.8f);
@@ -7832,14 +7832,14 @@ void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
                                 temp_t0 + temp_t4, 0, 0, 0, 140);
     temp_s3 = &D_800E85C0[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
-    temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
+    temp_s0 = ((get_string_width(gCupNames[GetCupIndex()]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection]) * one) + 10.0f) / 2;
     set_text_color(TEXT_YELLOW);
-    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
+    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[GetCupIndex()], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f,
+    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][gCupCourseSelection]], 0, 1.0f,
               1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->cursor - 31, var_s0, TEXT_YELLOW);
@@ -9102,7 +9102,7 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry* arg1) {
         gDPPipeSync(gDisplayListHead++);
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-        if (arg0 == gCupSelection) {
+        if (arg0 == GetCupIndex()) {
             if (D_8018EDEC == 1) {
                 gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
                                                                (temp_t1 - temp_t7) + 64, temp_a2 + 39);
@@ -9200,7 +9200,7 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
     switch (D_8018EDEC) { /* irregular */
         case 1:
             for (var_s1 = 0; var_s1 < 4; var_s1++) {
-                if (func_800B639C((gCupSelection * 4) + var_s1) >= 0) {
+                if (func_800B639C((GetCupIndex() * 4) + var_s1) >= 0) {
                     temp_v0 = &D_800E7168[var_s1];
                     temp_v1 = temp_v0->column;
                     temp_s0 = temp_v0->row;
@@ -9214,7 +9214,7 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
             break;
         case 2:
         default:
-            if (func_800B639C((gCupSelection * 4) + gCupCourseSelection) >= 0) {
+            if (func_800B639C((GetCupIndex() * 4) + gCupCourseSelection) >= 0) {
                 gDisplayListHead = func_80098FC8(gDisplayListHead, 0x00000057, 0x00000070, 0x00000096, 0x00000081);
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A0C, 0x00000057, 0x00000070);
             }
@@ -10302,14 +10302,14 @@ void func_800AB020(struct_8018D9E0_entry* arg0) {
 void func_800AB098(struct_8018D9E0_entry* arg0) {
     switch (arg0->cursor) {
         case 0:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
             } else {
                 arg0->cursor = 1;
             }
             break;
         case 4:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
                 arg0->unk1C = 0;
                 break;
@@ -10326,7 +10326,7 @@ void func_800AB098(struct_8018D9E0_entry* arg0) {
             }
             break;
         case 3:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
             }
             break;
@@ -10339,7 +10339,7 @@ void func_800AB098(struct_8018D9E0_entry* arg0) {
 void func_800AB164(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
 
-    if ((gCupSelection + 0x53) == arg0->type) {
+    if ((GetCupIndex() + 0x53) == arg0->type) {
         arg0->priority = 0x0A;
     } else {
         arg0->priority = 4;
@@ -10370,7 +10370,7 @@ void func_800AB164(struct_8018D9E0_entry* arg0) {
 
 void func_800AB260(struct_8018D9E0_entry* arg0) {
     s32 temp = (arg0->type - 0x58);
-    if (temp == gCupSelection) {
+    if (temp == GetCupIndex()) {
         arg0->visible = 1;
     } else {
         arg0->visible = 0;
@@ -10378,10 +10378,10 @@ void func_800AB260(struct_8018D9E0_entry* arg0) {
 }
 
 void func_800AB290(struct_8018D9E0_entry* arg0) {
-    if (arg0->unk1C != gCupSelection) {
-        arg0->unk1C = gCupSelection;
+    if (arg0->unk1C != GetCupIndex()) {
+        arg0->unk1C = GetCupIndex();
         func_8009A594(arg0->D_8018DEE0_index, 0,
-                      segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
+                      segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[GetCupIndex()][arg0->type - 0x5F]]));
     }
 }
 
@@ -11403,7 +11403,7 @@ void func_800AD2E8(struct_8018D9E0_entry* arg0) {
         case 17: /* switch 1 */
         case 18: /* switch 1 */
             arg0->unk20 = arg0->cursor - 0x11;
-            if (func_800B639C((gCupSelection * 4) + gCupCourseSelection) != arg0->unk20) {
+            if (func_800B639C((GetCupIndex() * 4) + gCupCourseSelection) != arg0->unk20) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->cursor >= 0x12) {
                         arg0->cursor--;
@@ -11805,7 +11805,7 @@ void func_800AE218(struct_8018D9E0_entry* arg0) {
         case 30: /* switch 1 */
         case 31: /* switch 1 */
             arg0->unk20 = (u32) arg0->cursor - 0x1E;
-            if (func_800B639C((gCupSelection * 4) + gCupCourseSelection) != arg0->unk20) {
+            if (func_800B639C((GetCupIndex() * 4) + gCupCourseSelection) != arg0->unk20) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->cursor >= 0x1F) {
                         arg0->cursor--;
