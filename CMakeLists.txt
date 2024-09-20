@@ -140,7 +140,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/enhancements/*.h"
     "src/enhancements/freecam/*.c"
     "src/enhancements/freecam/*.h"
-    "src/engine/*.c"
+    "src/engine/*.cpp"
     "src/engine/*.h"
 )
 

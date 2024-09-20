@@ -1,3 +1,6 @@
+
+__attribute__((import_module("test"), import_name("test"))) void test();
+
 int fib(int n) {
     if (n <= 1) {
         return n;
