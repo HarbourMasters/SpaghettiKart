@@ -29,6 +29,7 @@ char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
     file.open(path, std::ios::binary);
     if (!file.is_open()) {
         perror(path);
+        return NULL;
     }
 
     file.seekg(0, std::ios::end);
@@ -40,6 +41,43 @@ char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
     char* c_buffer = (char*) malloc(*size);
     file.read(c_buffer, *size);
     return c_buffer;
+}
+
+static char* module_search_path = ".";
+
+static bool module_reader_callback(package_type_t module_type, const char* module_name, uint8** p_buffer,
+                                   uint32* p_size) {
+    char* file_format = NULL;
+#if WASM_ENABLE_INTERP != 0
+    if (module_type == Wasm_Module_Bytecode)
+        file_format = ".wasm";
+#endif
+#if WASM_ENABLE_AOT != 0
+    if (module_type == Wasm_Module_AoT)
+        file_format = ".aot";
+
+#endif
+    bh_assert(file_format != NULL);
+    const char* format = "%s/%s%s";
+    int sz = strlen(module_search_path) + strlen("/") + strlen(module_name) + strlen(file_format) + 1;
+    char* wasm_file_name = (char*) wasm_runtime_malloc(sz);
+    if (!wasm_file_name) {
+        return false;
+    }
+    snprintf(wasm_file_name, sz, format, module_search_path, module_name, file_format);
+    *p_buffer = (uint8_t*) read_wasm_binary_to_buffer(wasm_file_name, p_size);
+
+    wasm_runtime_free(wasm_file_name);
+    return *p_buffer != NULL;
+}
+
+static void module_destroyer_callback(uint8* buffer, uint32 size) {
+    if (!buffer) {
+        return;
+    }
+
+    wasm_runtime_free(buffer);
+    buffer = NULL;
 }
 
 extern "C" void load_wasm() {
@@ -72,6 +110,8 @@ extern "C" void load_wasm() {
         exit(-1);
     }
 
+    wasm_runtime_set_module_reader(module_reader_callback, module_destroyer_callback);
+
     int n_native_symbols = sizeof(native_symbols) / sizeof(NativeSymbol);
     if (!wasm_runtime_register_natives("env", native_symbols, n_native_symbols)) {
         exit(-1);
@@ -91,10 +131,11 @@ extern "C" void load_wasm() {
         printf("%s\n", error_buf);
         exit(-1);
     }
-    wasm_runtime_register_module("testmodule", module, error_buf, sizeof(error_buf));
-    printf("load %s module\n", wasm_runtime_get_module_name(module));
-
+    if (!wasm_runtime_register_module("testmodule", module, error_buf, sizeof(error_buf))) {
+        exit(-1);
+    }
     printf("error? %s\n", error_buf);
+    printf("load %s module\n", wasm_runtime_get_module_name(module));
 
     /* create an instance of the WASM module (WASM linear memory is ready) */
     module_inst = wasm_runtime_instantiate(module, stack_size, heap_size, error_buf, sizeof(error_buf));
