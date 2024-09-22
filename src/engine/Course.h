@@ -17,7 +17,7 @@ extern "C" {
     #include "bomb_kart.h"
     #include "path_spawn_metadata.h"
     #include "Engine.h"
-void CourseManager_LoadCourse(const char* courseVtx, 
+void CourseManager_LoadCourse(uint32_t courseId, const char* courseVtx, 
                       course_texture* textures, const char* displaylists, size_t dlSize);
 
 CProperties *CourseManager_GetProps();

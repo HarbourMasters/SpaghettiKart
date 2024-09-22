@@ -20,8 +20,8 @@ public:
     // virtual Actor* SpawnActor(std::unique_ptr<GameActor> actor);
 
     virtual Object* SpawnObject(std::unique_ptr<GameObject> object);
-    
-    
+
+
     virtual void UpdateObjects();
     virtual void RenderObjects(Camera *camera);
     virtual void ExpiredObjects();
@@ -29,14 +29,16 @@ public:
     virtual Object *GetObjectByIndex(size_t);
 
     Cup* AddCup(std::unique_ptr<Cup>);
+    const char* GetCupName();
     virtual u32 GetCupIndex();
+    virtual void SetCupIndex(int16_t courseId);
     virtual u32 NextCup();
     virtual u32 PreviousCup();
 
     World* GetWorld();
 
     std::vector<std::unique_ptr<Cup>> Cups;
-    u32 CupIndex = 0;
+    u32 CupIndex = 1;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     // std::vector<std::unique_ptr<GameActor>> GameActors;

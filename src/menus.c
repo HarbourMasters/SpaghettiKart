@@ -1008,7 +1008,7 @@ void splash_menu_act(struct Controller* controller, u16 arg1) {
                 if (btnAndStick & (R_JPAD | L_JPAD)) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (gEnableDebugMode) {
-                        gEnableDebugMode = DEBUG_MODE;
+                        gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
                     } else {
                         gEnableDebugMode = true;
                     }
@@ -1700,7 +1700,7 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 
                 D_800DC540 = GetCupIndex();
                 //CourseManager_SetCourse();
-                //gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
+                gCurrentCourseId = gCupCourseOrder[GetCupIndex()][gCupCourseSelection];
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1783,7 +1783,7 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = DEBUG_MENU;
+    gDebugMenuSelection = CVarGetInteger("gEnableDebugMode", 0) + 1;
     gMenuTimingCounter = 0;
     gMenuDelayTimer = 0;
     D_8018EE08 = 0;
@@ -1819,7 +1819,8 @@ void func_800B3F74(s32 menuSelection) {
         case 0:
         case 10: {
             gIsMirrorMode = 0;
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
+            SetCupIndex(MUSHROOM_CUP);
             gCupSelection = MUSHROOM_CUP;
             gCupCourseSelection = 0;
             gTimeTrialDataCourseIndex = 0;
@@ -1837,7 +1838,7 @@ void func_800B3F74(s32 menuSelection) {
         }
         case 1:
         case 11: {
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             gIsMirrorMode = 0;
             D_8018EDFC = 0;
             func_800B5F30();
@@ -1930,12 +1931,14 @@ void func_800B3F74(s32 menuSelection) {
         case 3:
         case 13: {
             if (gModeSelection == BATTLE) {
-                gCupSelection = BATTLE_CUP;
+                SetCupIndex(BATTLE_CUP);
+                //gCupSelection = BATTLE_CUP;
                 D_800DC540 = 4;
                 D_8018EDEC = 4;
             } else {
-                if (gCupSelection == BATTLE_CUP) {
-                    gCupSelection = MUSHROOM_CUP;
+                if (GetCupIndex() == BATTLE_CUP) {
+                    SetCupIndex(MUSHROOM_CUP);
+                    //gCupSelection = MUSHROOM_CUP;
                 }
                 D_8018EDEC = 1;
             }

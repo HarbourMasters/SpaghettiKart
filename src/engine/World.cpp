@@ -15,6 +15,14 @@ Cup* World::AddCup(std::unique_ptr<Cup> cup) {
     return tmp;
 }
 
+//const char* World::GetCupName() {
+//    //return this->Cups[CupIndex].Name;
+//}
+
+void World::SetCupIndex(int16_t courseId) {
+    this->CupIndex = courseId;
+}
+
 u32 World::GetCupIndex() {
     return this->CupIndex;
 }
@@ -83,7 +91,17 @@ extern "C" {
         return gWorldInstance.PreviousCup();
     }
 
+    void SetCupIndex(int16_t courseId) {
+        gWorldInstance.SetCupIndex(courseId);
+    }
+
     u32 GetCupIndex(void) {
-        return gWorldInstance.GetCupIndex();
+        printf("Cup Index: %d\n", gWorldInstance.GetCupIndex());
+        return 1;
+    }
+
+
+    const char* GetCupName(void) {
+        return gWorldInstance.Cups[gWorldInstance.CupIndex]->Name;
     }
 }
