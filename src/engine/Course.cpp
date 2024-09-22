@@ -2,6 +2,7 @@
 
 #include "Course.h"
 #include "MarioRaceway.h"
+#include "ChocoMountain.h"
 #include "World.h"
 
 extern "C" {
@@ -209,18 +210,17 @@ void Course::Destroy() { }
 Course* currentCourse = nullptr;
 
 extern "C" {
-    void CourseManager_LoadCourse(const char* courseVtx, course_texture* textures, const char* displaylists, size_t dlSize) {
+    void CourseManager_LoadCourse(uint32_t courseId, const char* courseVtx, course_texture* textures, const char* displaylists, size_t dlSize) {
 
     delete currentCourse;
 
-    //switch (0) {
-      //  case COURSE_MARIO_RACEWAY:
+    switch (courseId) {
+       case COURSE_MARIO_RACEWAY:
             currentCourse = new CourseMarioRaceway();
-      //      break;
-
-        // case COURSE_CHOCO_MOUNTAIN:
-        //     currentCourse = new CourseChocoMountain();
-        //     break;
+           break;
+        case COURSE_CHOCO_MOUNTAIN:
+            currentCourse = new ChocoMountain();
+            break;
 
         // case COURSE_BOWSER_CASTLE:
         //     currentCourse = new CourseBowsersCastle();
@@ -294,11 +294,11 @@ extern "C" {
         //     currentCourse = new CourseBigDonut();
         //     break;
 
-      //  default:
+        default:
             // Handle invalid course ID
-   //         return;
-   // }
-
+            std::runtime_error("Invalid courseId passed into Course base class");
+            return;
+        }
         currentCourse->Load(courseVtx, textures, displaylists, dlSize);
     }
 

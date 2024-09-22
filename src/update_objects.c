@@ -1322,10 +1322,10 @@ void func_800748F4(s32 objectIndex, const char** lakituTexturePtr) {
 }
 
 void func_80074924(s32 objectIndex) {
-    s32 sp2C;
+    s32 sp2C = 0;
     s32 sp28;
     s32 sp24;
-    s32 sp20;
+    s32 sp20 = 0;
     s16 temp_v0;
     s32 temp_a0;
     Object* object;

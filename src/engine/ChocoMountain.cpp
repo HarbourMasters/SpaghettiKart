@@ -38,13 +38,13 @@ extern "C" {
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 2;
 ChocoMountain::ChocoMountain() {
-    Props.AIBehaviour = D_0D008F28;
+    Props.AIBehaviour = D_0D008F80;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
-    Props.SomePtr = D_800DCB34;
+    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 48;
 
-    Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {700, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -67,17 +67,17 @@ ChocoMountain::ChocoMountain() {
     Props.D_0D009808[3] = 6.3333334f;
 
     Props.PathTable[0] = d_course_choco_mountain_unknown_waypoints;
-    Props.PathTable[1] = nullptr;
-    Props.PathTable[2] = nullptr;
-    Props.PathTable[3] = nullptr;
+    Props.PathTable[1] = NULL;
+    Props.PathTable[2] = NULL;
+    Props.PathTable[3] = NULL;
 
     Props.PathTable2[0] = d_course_choco_mountain_track_waypoints;
-    Props.PathTable2[1] = nullptr;
-    Props.PathTable2[2] = nullptr;
-    Props.PathTable2[3] = nullptr;
+    Props.PathTable2[1] = NULL;
+    Props.PathTable2[2] = NULL;
+    Props.PathTable2[3] = NULL;
 
-    Props.Clouds = nullptr; // no clouds
-    Props.CloudList = nullptr;
+    Props.Clouds = NULL; // no clouds
+    Props.CloudList = NULL;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -228,24 +228,41 @@ void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void ChocoMountain::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_mario_raceway_dl_9348));
+    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_choco_mountain_dl_71B8));
 }
 
 void ChocoMountain::Collision() {}
 
 void ChocoMountain::GenerateCollision() {
-    generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
-    if (gScreenModeSelection == SCREEN_MODE_1P) {
-        // d_course_mario_raceway_packed_dl_8E8
-        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070008E8)));
-    } else {
-        // d_course_mario_raceway_packed_dl_2D68
-        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07002D68)));
+    D_800DC5BC = 1;
+    D_801625EC = 255;
+    D_801625F4 = 255;
+    D_801625F0 = 255;
+    D_802B87B0 = 0x3E3;
+    D_802B87B4 = 0x3E8;
+    D_802B87D4 = 0x71C;
+    D_802B87D0 = 0xE38;
+
+    // Spawn guardrail only for CC_50 and time trials.
+    if ((gCCSelection != CC_50) && (gModeSelection != TIME_TRIALS)) {
+        // d_course_choco_mountain_packed_dl_0
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000000)));
+        // d_course_choco_mountain_packed_dl_98
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000098)));
+        // d_course_choco_mountain_packed_dl_178
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000178)));
+        // d_course_choco_mountain_packed_dl_280
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000280)));
+        // d_course_choco_mountain_packed_dl_340
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000340)));
+        // d_course_choco_mountain_packed_dl_3C8
+        nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070003C8)));
     }
 
-    parse_course_displaylists(d_course_mario_raceway_addr);
+    parse_course_displaylists(d_course_choco_mountain_addr);
+    func_802B5CAC(0x238E, 0x31C7, D_8015F590);
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    D_8015F8E4 = -80.0f;
 }
 
 void ChocoMountain::Destroy() { }

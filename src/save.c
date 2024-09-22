@@ -247,8 +247,8 @@ u32 func_800B4DF4(u8* arr) {
 // Get a time trial record, infer course index
 s32 func_800B4E24(s32 recordIndex) {
     return func_800B4DF4(
-        gSaveData.allCourseTimeTrialRecords.cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)]
-            .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)]
+        gSaveData.allCourseTimeTrialRecords.cupRecords[(((GetCupIndex() * 4) + gCupCourseSelection) / 4)]
+            .courseRecords[(((GetCupIndex() * 4) + gCupCourseSelection) % 4)]
             .records[recordIndex]);
 }
 
@@ -262,8 +262,8 @@ u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
 // Get Best Lap record of the inferred course index
 s32 func_800B4F2C(void) {
     return func_800B4DF4(
-        gSaveData.allCourseTimeTrialRecords.cupRecords[(((gCupSelection * 4) + gCupCourseSelection) / 4)]
-            .courseRecords[(((gCupSelection * 4) + gCupCourseSelection) % 4)]
+        gSaveData.allCourseTimeTrialRecords.cupRecords[(((GetCupIndex() * 4) + gCupCourseSelection) / 4)]
+            .courseRecords[(((GetCupIndex() * 4) + gCupCourseSelection) % 4)]
             .records[TIME_TRIAL_1LAP_RECORD]);
 }
 
@@ -281,7 +281,7 @@ s32 func_800B5020(u32 time, s32 charId) {
     s32 j;
     CourseTimeTrialRecords* tt;
 
-    course = gCupSelection * 4 + gCupCourseSelection;
+    course = GetCupIndex() * 4 + gCupCourseSelection;
     tt = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
 
     i = 0;
@@ -328,7 +328,7 @@ s32 func_800B5218(void) {
     s32 checkLapIndex;
     s32 character;
     s32 lapBitmask;
-    recordIndex = (gCupSelection * 4) + gCupCourseSelection;
+    recordIndex = (GetCupIndex() * 4) + gCupCourseSelection;
     recordPointer =
         &gSaveData.allCourseTimeTrialRecords.cupRecords[recordIndex / 4].courseRecords[recordIndex % 4].records[0][0];
     lapBitmask = 1;
@@ -365,10 +365,10 @@ void func_800B536C(s32 arg0) {
 
     if (arg0 >= 0) {
         points = &gSaveData.main.saveInfo.grandPrixPoints[gCCSelection];
-        tmp = func_800B54EC(gCupSelection, *points);
+        tmp = func_800B54EC(GetCupIndex(), *points);
         tmp2 = 3 - arg0;
         if ((arg0 < 3) && (tmp < (3 - arg0))) {
-            *points = func_800B5508(gCupSelection, *points, tmp2);
+            *points = func_800B5508(GetCupIndex(), *points, tmp2);
             write_save_data_grand_prix_points_and_sound_mode();
             update_save_data_backup();
         }
@@ -787,7 +787,7 @@ s32 func_800B6178(s32 arg0) {
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == 4) {
-                temp_s3->courseIndex = (gCupSelection * 4) + gCupCourseSelection;
+                temp_s3->courseIndex = (GetCupIndex() * 4) + gCupCourseSelection;
             }
             temp_s3->unk_00 = D_80162DFC;
             temp_s3->characterId = (u8) D_80162DE0;
@@ -836,7 +836,7 @@ s32 func_800B63F0(s32 arg0) {
     func_80005AE8(gPlayerThree);
 
     phi_s3 = 0;
-    if (((gCupSelection * 4) + gCupCourseSelection) != D_8018EE10[arg0].courseIndex) {
+    if (((GetCupIndex() * 4) + gCupCourseSelection) != D_8018EE10[arg0].courseIndex) {
         phi_s3 = 2;
     } else if (D_80162DFC != D_8018EE10[arg0].unk_00) {
         phi_s3 = 3;

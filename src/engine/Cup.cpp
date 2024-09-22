@@ -1,6 +1,8 @@
 #include "Cup.h"
 
-Cup::Cup() {}
+Cup::Cup() {
+    this->Name = "Mushroom Cup";
+}
 
 // Function for subclasses to set the tracks
 void Cup::SetCourses(std::vector<std::shared_ptr<Course>>& courses) {

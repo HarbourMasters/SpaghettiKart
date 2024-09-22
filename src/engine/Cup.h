@@ -9,9 +9,9 @@ class Course; // <-- Forward declare
 
 class Cup {
 public:
-    const char* CupName;
+    const char* Name;
     u8 *Thumbnail;
-    u32 Index = 0;
+    u32 Index = 1;
     std::vector<std::shared_ptr<Course>> Courses;
 
     explicit Cup();

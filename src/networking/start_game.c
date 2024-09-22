@@ -52,8 +52,9 @@ void network_cup_vote(uint32_t course) {
 
 void set_course(const char* data) {
     if (data != NULL) {
+        SetCupIndex(data[0]);
         gCupSelection = data[0];
-        gCurrentCourseId = gCupCourseOrder[gCupSelection][CUP_COURSE_ONE];
+        gCurrentCourseId = gCupCourseOrder[GetCupIndex()][CUP_COURSE_ONE];
     }
 }
 
