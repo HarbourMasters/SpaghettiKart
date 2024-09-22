@@ -1018,7 +1018,7 @@ void splash_menu_act(struct Controller* controller, u16 arg1) {
                 if (btnAndStick & (R_JPAD | L_JPAD)) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (gEnableDebugMode) {
-                        gEnableDebugMode = DEBUG_MODE;
+                        gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
                     } else {
                         gEnableDebugMode = true;
                     }
@@ -1786,7 +1786,7 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = DEBUG_MENU;
+    gDebugMenuSelection = CVarGetInteger("gEnableDebugMode", 0) + 1; // Make the menu visible
     gMenuTimingCounter = 0;
     gMenuDelayTimer = 0;
     D_8018EE08 = 0;
@@ -1822,7 +1822,7 @@ void func_800B3F74(s32 menuSelection) {
         case 0:
         case 10: {
             gIsMirrorMode = 0;
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             gCupSelection = MUSHROOM_CUP;
             gCourseIndexInCup = 0;
             gTimeTrialDataCourseIndex = 0;
@@ -1840,7 +1840,7 @@ void func_800B3F74(s32 menuSelection) {
         }
         case 1:
         case 11: {
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             gIsMirrorMode = 0;
             D_8018EDFC = 0;
             func_800B5F30();
