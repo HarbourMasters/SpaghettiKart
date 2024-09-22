@@ -41,8 +41,8 @@
 #define DEBUG_MODE 1
 #define DEBUG_MENU 2
 #else
-#define DEBUG_MODE 1
-#define DEBUG_MENU 2
+#define DEBUG_MODE 0
+#define DEBUG_MENU 1
 #endif
 
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
