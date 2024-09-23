@@ -15,10 +15,10 @@ glabel func_8009952C
 /* 09A160 80099560 26B5D9B0 */   addiu $s5, %lo(D_8018D9B0) # addiu $s5, $s5, -0x2650
 /* 09A164 80099564 3C148019 */  lui   $s4, %hi(D_8018D9B4) # $s4, 0x8019
 /* 09A168 80099568 3C138019 */  lui   $s3, %hi(gNumD_8018E118Entries) # $s3, 0x8019
-/* 09A16C 8009956C 3C128019 */  lui   $s2, %hi(gD_8018E118TotalSize) # $s2, 0x8019
+/* 09A16C 8009956C 3C128019 */  lui   $s2, %hi(gMenuTextureBufferIndex) # $s2, 0x8019
 /* 09A170 80099570 3C108019 */  lui   $s0, %hi(D_8018E118) # $s0, 0x8019
 /* 09A174 80099574 2610E118 */  addiu $s0, %lo(D_8018E118) # addiu $s0, $s0, -0x1ee8
-/* 09A178 80099578 2652E110 */  addiu $s2, %lo(gD_8018E118TotalSize) # addiu $s2, $s2, -0x1ef0
+/* 09A178 80099578 2652E110 */  addiu $s2, %lo(gMenuTextureBufferIndex) # addiu $s2, $s2, -0x1ef0
 /* 09A17C 8009957C 2673E758 */  addiu $s3, %lo(gNumD_8018E118Entries) # addiu $s3, $s3, -0x18a8
 /* 09A180 80099580 2694D9B4 */  addiu $s4, %lo(D_8018D9B4) # addiu $s4, $s4, -0x264c
 /* 09A184 80099584 8E630000 */  lw    $v1, ($s3)

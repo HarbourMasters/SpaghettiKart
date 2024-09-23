@@ -142,7 +142,7 @@ void func_802A38B4(void) {
             gMenuSelection = MAIN_MENU;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
-            gMenuSelection = PLAYER_SELECT_MENU;
+            gMenuSelection = CHARACTER_SELECT_MENU;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             gMenuSelection = COURSE_SELECT_MENU;

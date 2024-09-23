@@ -148,7 +148,7 @@ void update_menus(void) {
                         func_800CA330(0x19);
                         // deliberate (?) fallthru
                     case MAIN_MENU:
-                    case PLAYER_SELECT_MENU:
+                    case CHARACTER_SELECT_MENU:
                         play_sound2(SOUND_MENU_OK_CLICKED);
                         break;
                 }
@@ -189,7 +189,7 @@ void update_menus(void) {
                     main_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case PLAYER_SELECT_MENU_FROM_QUIT:
-                case PLAYER_SELECT_MENU:
+                case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case COURSE_SELECT_MENU_FROM_QUIT:
@@ -1371,7 +1371,7 @@ void main_menu_act(struct Controller* controller, u16 arg1) {
                 // L800B3068
                 if (btnAndStick & D_JPAD) {
                     sp24 = false;
-                    if (func_800B555C()) {
+                    if (has_unlocked_extra_mode()) {
                         if (sp28 < D_800F2B60[gPlayerCount + 4][D_800E86AC[gPlayerCount - 1] + 1]) {
                             sp24 = true;
                         }

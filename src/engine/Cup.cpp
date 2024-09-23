@@ -1,12 +1,10 @@
 #include "Cup.h"
+#include "Course.h"
 
-Cup::Cup() {
-    this->Name = "Mushroom Cup";
-}
+Cup::Cup() {}
 
-// Function for subclasses to set the tracks
 void Cup::SetCourses(std::vector<std::shared_ptr<Course>>& courses) {
-    if (this->Courses.size() != 4) {
+    if (Courses.size() != 4) {
         throw std::invalid_argument("A cup must contain exactly 4 courses.");
     }
     Courses = courses;
@@ -22,6 +20,10 @@ void Cup::Previous() {
     if (Index > 0) {
         Index--;
     }
+}
+
+Course* Cup::GetCourse() {
+    return Courses[this->Index].get();
 }
 
 // Function to shuffle the courses randomly

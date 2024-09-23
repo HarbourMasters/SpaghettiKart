@@ -5,13 +5,22 @@
 extern "C" {
    #include "camera.h"
    #include "objects.h"
+   #include "main.h"
 }
 
 World::World() {}
 
-Cup* World::AddCup(std::unique_ptr<Cup> cup) {
+Cup* World::AddCup() {
+    // Create a new unique_ptr for Cup
+    auto cup = std::make_unique<Cup>();
+
+    // Get raw pointer before moving the ownership
     Cup* tmp = cup.get();
+
+    // Add the Cup to the container
     Cups.push_back(std::move(cup));
+
+    // Return the raw pointer to the Cup
     return tmp;
 }
 
@@ -28,15 +37,22 @@ u32 World::GetCupIndex() {
 }
 
 u32 World::NextCup() {
-    //if (CupIndex < Cups.size() - 1) {
+    s32 hack = 1;
+
+    // Prevent battle mode
+    if (gModeSelection == GRAND_PRIX) {
+        hack = 2;
+    }
+
+    if (this->CupIndex < Cups.size() - 2) {
         return ++this->CupIndex;
-    //}
+    }
 }
 
 u32 World::PreviousCup() {
-    //if (Cups.size() > 0) {
+    if (CupIndex > 0) {
         return --this->CupIndex;
-    //}
+    }
 }
 
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
@@ -74,34 +90,4 @@ Object* World::GetObjectByIndex(size_t index) {
         return reinterpret_cast<Object*>(&this->GameObjects[index]->o);
     }
     return nullptr; // Or handle the error as needed
-}
-
-World gWorldInstance;
-
-World* GetWorld() {
-    return &gWorldInstance;
-}
-
-extern "C" {
-    u32 WorldNextCup(void) {
-        return gWorldInstance.NextCup();
-    }
-
-    u32 WorldPreviousCup(void) {
-        return gWorldInstance.PreviousCup();
-    }
-
-    void SetCupIndex(int16_t courseId) {
-        gWorldInstance.SetCupIndex(courseId);
-    }
-
-    u32 GetCupIndex(void) {
-        printf("Cup Index: %d\n", gWorldInstance.GetCupIndex());
-        return 1;
-    }
-
-
-    const char* GetCupName(void) {
-        return gWorldInstance.Cups[gWorldInstance.CupIndex]->Name;
-    }
 }

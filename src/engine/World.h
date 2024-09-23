@@ -28,7 +28,7 @@ public:
     virtual void DestroyObjects();
     virtual Object *GetObjectByIndex(size_t);
 
-    Cup* AddCup(std::unique_ptr<Cup>);
+    Cup* AddCup();
     const char* GetCupName();
     virtual u32 GetCupIndex();
     virtual void SetCupIndex(int16_t courseId);
@@ -38,7 +38,7 @@ public:
     World* GetWorld();
 
     std::vector<std::unique_ptr<Cup>> Cups;
-    u32 CupIndex = 1;
+    size_t CupIndex = 0;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     // std::vector<std::unique_ptr<GameActor>> GameActors;

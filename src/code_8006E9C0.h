@@ -9,7 +9,7 @@ void reset_object_variable(void);
 void func_8006EB10(void);
 void clear_object_list(void);
 u8* func_8006ED94(u8*, u8*, u32, u32);
-void func_8006EE44(void);
+void load_mario_kart_64_logo(void);
 void init_item_window(s32);
 void func_8006EEE8(s32);
 void func_8006EF60(void);

@@ -28,7 +28,7 @@ void splash_menu_act(struct Controller*, u16);
 void func_800B28C8(void);
 void main_menu_act(struct Controller*, u16);
 bool is_character_spot_free(s32);
-void player_select_menu_act(struct Controller*, u16);
+void player_select_menu_act(struct Controller* controller, u16 arg1);
 void course_select_menu_act(struct Controller*, u16);
 void func_800B3F74(s32);
 void func_800B44AC(void);

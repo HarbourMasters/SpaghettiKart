@@ -2,6 +2,7 @@
 
 #include <Fast3D/gfx_pc.h>
 #include "Engine.h"
+#include "engine/World.h"
 
 extern "C" {
 #include "main.h"
@@ -15,6 +16,51 @@ extern "C" void Graphics_PushFrame(Gfx* data) {
 }
 
 extern "C" void Timer_Update();
+
+// Create the world instance
+World gWorldInstance;
+
+void CustomEngineInit() {
+    Cup* mushroom = gWorldInstance.AddCup();
+    mushroom->Name = "mushroom cup";
+    //mushroom->SetCourses();
+
+    Cup* flower = gWorldInstance.AddCup();
+    flower->Name = "flower cup";
+
+    Cup* star = gWorldInstance.AddCup();
+    star->Name = "star cup";
+
+    Cup* special = gWorldInstance.AddCup();
+    special->Name = "special cup";
+
+    Cup* battle = gWorldInstance.AddCup();
+    battle->Name = "battle";
+}
+ 
+extern "C" {
+    u32 WorldNextCup(void) {
+        return gWorldInstance.NextCup();
+    }
+
+    u32 WorldPreviousCup(void) {
+        return gWorldInstance.PreviousCup();
+    }
+
+    void SetCupIndex(int16_t courseId) {
+        gWorldInstance.SetCupIndex(courseId);
+    }
+
+    u32 GetCupIndex(void) {
+        printf("Cup Index: %d\n", gWorldInstance.GetCupIndex());
+        return gWorldInstance.GetCupIndex();
+    }
+
+
+    const char* GetCupName(void) {
+        return gWorldInstance.Cups[gWorldInstance.CupIndex]->Name;
+    }
+}
 
 void push_frame() {
     // GameEngine::StartAudioFrame();
@@ -38,6 +84,8 @@ extern "C"
     GameEngine::Create();
     // audio_init();
     // sound_init();
+
+    CustomEngineInit();
     thread5_game_loop();
     while (WindowIsRunning()) {
         push_frame();

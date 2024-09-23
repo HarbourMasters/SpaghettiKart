@@ -434,12 +434,12 @@ s32 func_800B5530(s32 cc_mode) {
 }
 
 // Check if the 150CC mode has all 4 gold cups
-s32 func_800B555C(void) {
+s32 has_unlocked_extra_mode(void) {
     return func_800B5530(CC_150);
 }
 
 // Check if the Extra mode has all 4 gold cups
-s32 func_800B557C(void) {
+s32 has_completed_extra_mode(void) {
     return func_800B5530(CC_EXTRA);
 }
 
