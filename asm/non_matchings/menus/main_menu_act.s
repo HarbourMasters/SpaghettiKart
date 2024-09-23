@@ -463,7 +463,7 @@ glabel L800B2F70 # case 5, 8
 /* 0B3C70 800B3070 00000000 */   nop   
 /* 0B3C74 800B3074 AFA00024 */  sw    $zero, 0x24($sp)
 /* 0B3C78 800B3078 AFA50028 */  sw    $a1, 0x28($sp)
-/* 0B3C7C 800B307C 0C02D557 */  jal   func_800B555C
+/* 0B3C7C 800B307C 0C02D557 */  jal   has_unlocked_extra_mode
 /* 0B3C80 800B3080 AFA6001C */   sw    $a2, 0x1c($sp)
 /* 0B3C84 800B3084 8FA30024 */  lw    $v1, 0x24($sp)
 /* 0B3C88 800B3088 8FA50028 */  lw    $a1, 0x28($sp)
