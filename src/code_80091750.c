@@ -4219,6 +4219,9 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         newblue = (((((((temp_t9 * 6) / 8) - blue) * arg3) >> 8) + blue) << 1);
         *color1++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg1].offset);
 }
 
 void func_8009AB7C(s32 arg0) {
@@ -4247,6 +4250,8 @@ void func_8009AB7C(s32 arg0) {
         newblue = temp_t9 << 1;
         *color++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009AD78(s32 arg0, s32 arg1) {
@@ -4276,6 +4281,8 @@ void func_8009AD78(s32 arg0, s32 arg1) {
         temp_t9 += ((0x20 - temp_t9) * arg1) >> 8;
         *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009B0A4(s32 arg0, u32 arg1) {
@@ -4308,6 +4315,8 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
         }
         *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
@@ -4336,6 +4345,8 @@ void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
         newblue = ((temp_t9 * arg4) >> 8) << 1;
         *color++ = BSWAP16(newred + newgreen + newblue + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 u16* func_8009B8C4(u64* arg0) {
