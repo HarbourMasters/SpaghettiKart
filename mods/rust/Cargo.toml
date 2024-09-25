@@ -8,5 +8,4 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-rustpython = { git = "https://github.com/RustPython/RustPython", version = "0.4.0" }
 wasi = "0.11"
