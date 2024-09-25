@@ -99,14 +99,6 @@ u8 D_8018ED90;
 u8 D_8018ED91;
 s32 s8018ED94;
 
-f32 D_8018ED98; // Rotation
-f32 D_8018ED9C; // Rotation
-f32 D_8018EDA0; // Rotation
-
-f32 D_8018EDA4;
-f32 D_8018EDA8;
-f32 D_8018EDAC;
-
 Unk_D_800E70A0 D_800E70A0[] = {
     { 0x3d, 0x11, 0x00, 0x00 }, { 0x15, 0x3e, 0x00, 0x00 }, { 0x5c, 0x3e, 0x00, 0x00 },
     { 0xa3, 0x3e, 0x00, 0x00 }, { 0xea, 0x3e, 0x00, 0x00 }, { 0x10a, 0xc8, 0x00, 0x00 },
@@ -8212,53 +8204,45 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-#ifdef NON_MATCHING
-void guMtxCatL(Mtx*, Mtx*, Mtx*);
-// https://decomp.me/scratch/GUqCE
-// All the math stuff at the top is messed up
-void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
-    Mtx* temp_s0;
-    Mtx* temp_s1;
-    f32 temp_f2;
-    f32 temp_f12;
-    f32 temp_f14;
-
-    temp_s1 = &gGfxPool->mtxEffect[gMatrixEffectCount];
+void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
+    Mtx *mtx;
+    f32 tmp;
+    static float x2, y2, z2;
+    static float x1, y1, z1;
+    
+    mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (arg0->unk24 > 1.5) {
         arg0->unk24 *= 0.95;
     } else {
-        arg0->unk24 = 1.5f;
+        arg0->unk24 = 1.5;
     }
-    temp_f2 = arg0->unk24 * 3.0f * arg0->unk8;
-    temp_f12 = arg0->unk24 * 4.0f;
-    temp_f14 = arg0->unk24 * 2.0f;
-    D_8018EDA4 = temp_f2;
-    D_8018EDA8 = temp_f12;
-    D_8018EDAC = temp_f14;
-    D_8018ED98 += D_8018EDA4;
-    D_8018ED9C += D_8018EDA8;
-    D_8018EDA0 += D_8018EDAC;
-    guScale(temp_s1, 1.2f, 1.2f, 1.2f);
-    temp_s0 = temp_s1 + 1;
-    guRotate(temp_s0, D_8018ED9C, 0.0f, 1.0f, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guRotate(temp_s0, D_8018EDA0, 0.0f, 0.0f, 1.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guRotate(temp_s0, D_8018ED98, 1.0f, 0.0f, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guTranslate(temp_s0, arg1->column, arg1->row, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    tmp = arg0->unk24;
+    x1 = (tmp * 3) * arg0->unk8;
+    y1 = tmp * 4;
+    z1 = tmp * 2;
+    x2 += x1;
+    y2 += y1;
+    z2 += z1;
+
+    if(x2); if(y2); if(z2);
+
+    guScale(mtx, 1.2f, 1.2f, 1.2f);
+    guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx + 1, z2, 0.0f, 0.0f, 1.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx + 1, x2, 1.0f, 0.0f, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPDisplayList(gDisplayListHead++, D_0D003090);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
-#endif
 
 void func_800A69C8(UNUSED struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* thing;
