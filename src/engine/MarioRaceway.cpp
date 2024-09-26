@@ -33,11 +33,15 @@ extern "C" {
 }
 
 CourseMarioRaceway::CourseMarioRaceway() {
-    // Props.Name = "Mario Raceway";
-    // Props.DebugName = "m circuit";
-    // Props.CourseLength = "567m";
-    // Props.Cup = FLOWER_CUP;
-    // Props.CupIndex = 3;
+    this->vtx = d_course_mario_raceway_vertex;
+    this->gfx = d_course_mario_raceway_packed_dls;
+    this->gfxSize = 3367;
+    this->textures = mario_raceway_textures;
+
+    Props.Name = "Mario Raceway";
+    Props.DebugName = "m circuit";
+    Props.CourseLength = "567m";
+
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;

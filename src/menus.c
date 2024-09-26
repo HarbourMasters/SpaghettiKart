@@ -1022,19 +1022,23 @@ void splash_menu_act(struct Controller* controller, u16 arg1) {
             case DEBUG_MENU_COURSE: {
                 if (btnAndStick & R_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (gCurrentCourseId < (NUM_COURSES - 2)) {
-                        gCurrentCourseId += 1;
-                    } else {
-                        gCurrentCourseId = 0;
-                    }
+                    NextCourse();
+                    gCurrentCourseId = GetCourseIndex();
+                    // if (gCurrentCourseId < (NUM_COURSES - 2)) {
+                    //     gCurrentCourseId += 1;
+                    // } else {
+                    //     gCurrentCourseId = 0;
+                    // }
                 }
                 if (btnAndStick & L_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (gCurrentCourseId > 0) {
-                        gCurrentCourseId -= 1;
-                    } else {
-                        gCurrentCourseId = (NUM_COURSES - 2);
-                    }
+                    PreviousCourse();
+                    gCurrentCourseId = GetCourseIndex();
+                    // if (gCurrentCourseId > 0) {
+                    //     gCurrentCourseId -= 1;
+                    // } else {
+                    //     gCurrentCourseId = (NUM_COURSES - 2);
+                    // }
                 }
                 if (btnAndStick & U_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);

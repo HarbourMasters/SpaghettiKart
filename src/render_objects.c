@@ -3705,7 +3705,7 @@ void render_object_thwomps_model(s32 objectIndex) {
 }
 
 void render_object_thwomps(s32 cameraId) {
-    s32 objectIndex;
+    s32 objectIndex = 0;
     s32 i;
     UNUSED s32 stackPadding0;
     s16 minusone, plusone;

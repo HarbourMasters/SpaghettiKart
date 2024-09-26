@@ -32,19 +32,22 @@ extern "C" {
     extern const char *choco_mountain_dls[];
 }
 
-    // Props.Name = "Choco Mountain";
-    // Props.DebugName = "m circuit";
-    // Props.CourseLength = "567m";
-    // Props.Cup = FLOWER_CUP;
-    // Props.CupIndex = 2;
 ChocoMountain::ChocoMountain() {
+    this->vtx = d_course_choco_mountain_vertex;
+    this->gfx = d_course_choco_mountain_packed_dls;
+    this->gfxSize = 2910;
+    this->textures = choco_mountain_textures;
+
+    Props.Name = "choco mountain";
+    Props.DebugName = "mountain";
+    Props.CourseLength = "687m";
     Props.AIBehaviour = D_0D008F80;
-    Props.AIMaximumSeparation = 50.0f;
+    Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.3f;
     Props.SomePtr = D_800DCAF4;
-    Props.AISteeringSensitivity = 48;
+    Props.AISteeringSensitivity = 53;
 
-    Props.PathSizes = {700, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;

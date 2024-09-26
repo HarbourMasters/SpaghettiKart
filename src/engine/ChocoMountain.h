@@ -4,15 +4,15 @@
 #include "Course.h"
 
 extern "C" {
-    #include "mario_raceway_vertices.h"
-    #include "mario_raceway_displaylists.h"
+    #include "assets/choco_mountain_vertices.h"
+    #include "assets/choco_mountain_displaylists.h"
+    #include "assets/choco_mountain_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    #include "mario_raceway_data.h"
-    extern const course_texture mario_raceway_textures[];
+    extern const course_texture choco_mountain_textures[];
 }
 
 class ChocoMountain : public Course {

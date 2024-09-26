@@ -18,12 +18,9 @@ typedef struct {
 } SkyboxColours;
 
 typedef struct {
-
-    // const char* Name;
-    // const char* DebugName;
-    // const char* CourseLength;
-    // u32 Cup;
-    // u32 CupIndex;
+    const char* Name;
+    const char* DebugName;
+    const char* CourseLength;
     const char* AIBehaviour;
     float AIMaximumSeparation;
     float AIMinimumSeparation;

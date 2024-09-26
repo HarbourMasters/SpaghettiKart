@@ -1,14 +1,18 @@
 #include <libultraship.h>
 #include "World.h"
 #include "Cup.h"
+#include "Course.h"
 
 extern "C" {
    #include "camera.h"
    #include "objects.h"
    #include "main.h"
+   #include "engine/Engine.h"
 }
 
 World::World() {}
+
+Course* CurrentCourse;
 
 Cup* World::AddCup() {
     // Create a new unique_ptr for Cup
@@ -29,6 +33,7 @@ Cup* World::AddCup() {
 //}
 
 void World::SetCupIndex(int16_t courseId) {
+
     this->CupIndex = courseId;
 }
 
@@ -53,6 +58,41 @@ u32 World::PreviousCup() {
     if (CupIndex > 0) {
         return --this->CupIndex;
     }
+}
+
+CProperties* World::GetCourseProps() {
+    if (Courses[CourseIndex]) {
+        return (CProperties*) &Courses[CourseIndex]->Props;
+    }
+    return nullptr;
+}
+
+void World::SetCourse(const char*name) {
+    for (size_t i = 0; i < Courses.size(); i++) {
+        if (Courses[i]->Props.Name == name) {
+            CurrentCourse = Courses[i].get();
+            break;
+        }
+    }
+    std::runtime_error("SetCourse() Course name not found in Courses list");
+};
+
+void World::NextCourse() {
+    if (CourseIndex < Courses.size() - 1) {
+        CourseIndex++;
+    } else {
+        CourseIndex = 0;
+    }
+    gWorldInstance.CurrentCourse = Courses[CourseIndex].get();
+}
+
+void World::PreviousCourse() {
+    if (CourseIndex > 0) {
+        CourseIndex--;
+    } else {
+        CourseIndex = Courses.size() - 1;
+    }
+    gWorldInstance.CurrentCourse = Courses[CourseIndex].get();
 }
 
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {

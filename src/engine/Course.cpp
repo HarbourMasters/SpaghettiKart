@@ -3,7 +3,6 @@
 #include "Course.h"
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
-#include "World.h"
 
 extern "C" {
     #include "main.h"
@@ -74,19 +73,19 @@ void Course::Load(const char* vtx, const char* gfx) {
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
 }
 
-void Course::Load(const char* courseVtx, course_texture* textures, const char* displaylists, size_t dlSize) {
+void Course::Load() {
 
-    size_t vtxSize = (ResourceGetSizeByName(courseVtx) / sizeof(CourseVtx)) * sizeof(Vtx);
+    size_t vtxSize = (ResourceGetSizeByName(this->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);
     size_t texSegSize;
 
     // Convert course vtx to vtx
     Vtx* vtx = reinterpret_cast<Vtx*>(allocate_memory(vtxSize));
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
     printf("\nVtxsize: 0x%X\n\n",vtxSize);
-    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(courseVtx)), vtx, vtxSize / sizeof(Vtx));
+    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(this->vtx)), vtx, vtxSize / sizeof(Vtx));
 
     // Load and allocate memory for course textures
-    course_texture* asset = textures;
+    const course_texture* asset = this->textures;
     u8* freeMemory = NULL;
     u8* texture = NULL;
     size_t size = 0;
@@ -108,8 +107,8 @@ void Course::Load(const char* courseVtx, course_texture* textures, const char* d
     }
 
     // Extract packed DLs
-    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(displaylists));
-    Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
+    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(this->gfx));
+    Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * this->gfxSize); // Size of unpacked DLs
     assert(gfx != NULL);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
     displaylist_unpack(reinterpret_cast<uintptr_t *>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
@@ -196,7 +195,8 @@ void Course::SpawnBombKarts() {
 }
 
 World* Course::GetWorld() {
-    return &gWorldInstance;
+    return nullptr;
+     //&gWorldInstance;
 }
 
 void Course::BeginPlay() {  }
@@ -299,126 +299,6 @@ extern "C" {
             std::runtime_error("Invalid courseId passed into Course base class");
             return;
         }
-        currentCourse->Load(courseVtx, textures, displaylists, dlSize);
-    }
-
-    void CourseManager_LoadTextures() {
-        if (currentCourse) {
-            currentCourse->LoadTextures();
-        }
-    }
-
-    void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
-        if (currentCourse) {
-            currentCourse->Render(arg0);
-        }
-    }
-
-    void CourseManager_RenderCredits() {
-        if (currentCourse) {
-            currentCourse->RenderCredits();
-        }
-    }
-
-    void CourseManager_SpawnActors() {
-        if (currentCourse) {
-            currentCourse->SpawnActors();
-        }
-    }
-
-    void CourseManager_InitClouds() {
-        if (currentCourse) {
-            currentCourse->InitClouds();
-        }
-    }
-
-    void CourseManager_UpdateClouds(s32 arg0, Camera* camera) {
-        if (currentCourse) {
-            currentCourse->UpdateClouds(arg0, camera);
-        }
-    }
-
-    void CourseManager_GenerateCollision() {
-        if (currentCourse) {
-            currentCourse->GenerateCollision();
-        }
-    }
-
-    void CourseManager_SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
-        if (currentCourse) {
-            currentCourse->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-        }
-    }
-
-    void CourseManager_MinimapSettings() {
-        if (currentCourse) {
-            currentCourse->MinimapSettings();
-        }
-    }
-
-    void CourseManager_InitCourseObjects() {
-        if (currentCourse) {
-            currentCourse->InitCourseObjects();
-        }
-    }
-
-    void CourseManager_UpdateCourseObjects() {
-        if (currentCourse) {
-            currentCourse->UpdateCourseObjects();
-        }
-    }
-
-    void CourseManager_RenderCourseObjects() {
-        if (currentCourse) {
-            currentCourse->RenderCourseObjects();
-        }
-    }
-
-    void CourseManager_SomeSounds() {
-        if (currentCourse) {
-            currentCourse->SomeSounds();
-        }
-    }
-
-    void CourseManager_SetCourseVtxColours() {
-        if (currentCourse) {
-            currentCourse->SetCourseVtxColours();
-        }
-    }
-
-    void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId) {
-        if (currentCourse) {
-            currentCourse->WhatDoesThisDo(player, playerId);
-        }
-    }
-
-    void CourseManager_WhatDoesThisDoAI(Player* player, int8_t playerId) {
-        if (currentCourse) {
-            currentCourse->WhatDoesThisDoAI(player, playerId);
-        }
-    }
-
-    void CourseManager_MinimapFinishlinePosition() {
-        if (currentCourse) {
-            currentCourse->MinimapFinishlinePosition();
-        }
-    }
-
-    void CourseManager_SetStaffGhost() {
-        if (currentCourse) {
-            currentCourse->SetStaffGhost();
-        }
-    }
-
-    CProperties *CourseManager_GetProps() {
-        if (currentCourse) {
-            return (CProperties*) &currentCourse->Props;
-        }
-    }
-
-    void CourseManager_SpawnBombKarts() {
-        if (currentCourse) {
-            currentCourse->SpawnBombKarts();
-        }
+        currentCourse->Load();
     }
 }

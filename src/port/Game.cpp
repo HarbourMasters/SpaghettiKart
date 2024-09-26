@@ -3,6 +3,10 @@
 #include <Fast3D/gfx_pc.h>
 #include "Engine.h"
 #include "engine/World.h"
+#include "engine/MarioRaceway.h"
+#include "engine/ChocoMountain.h"
+#include "engine/BowsersCastle.h"
+#include "engine/BansheeBoardwalk.h"
 
 extern "C" {
 #include "main.h"
@@ -36,8 +40,13 @@ void CustomEngineInit() {
 
     Cup* battle = gWorldInstance.AddCup();
     battle->Name = "battle";
+
+    gWorldInstance.Courses.push_back(std::make_unique<CourseMarioRaceway>());
+    gWorldInstance.Courses.push_back(std::make_unique<ChocoMountain>());
+    gWorldInstance.Courses.push_back(std::make_unique<BowsersCastle>());
+    gWorldInstance.Courses.push_back(std::make_unique<BansheeBoardwalk>());
 }
- 
+
 extern "C" {
     u32 WorldNextCup(void) {
         return gWorldInstance.NextCup();
@@ -56,9 +65,154 @@ extern "C" {
         return gWorldInstance.GetCupIndex();
     }
 
-
     const char* GetCupName(void) {
         return gWorldInstance.Cups[gWorldInstance.CupIndex]->Name;
+    }
+
+    void LoadCourse() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->Load();
+        }
+    }
+
+    CProperties* GetCoursePropsA() {
+        return (CProperties*) gWorldInstance.GetCourseProps();
+    }
+
+    size_t GetCourseIndex() {
+        return gWorldInstance.CourseIndex;
+    }
+
+    void SetCourse(const char* name) {
+        gWorldInstance.SetCourse(name);
+    }
+
+    void NextCourse() {
+        gWorldInstance.NextCourse();
+    }
+
+    void PreviousCourse() {
+        gWorldInstance.PreviousCourse();
+    }
+
+        void CourseManager_LoadTextures() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->LoadTextures();
+        }
+    }
+
+    void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->Render(arg0);
+        }
+    }
+
+    void CourseManager_RenderCredits() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->RenderCredits();
+        }
+    }
+
+    void CourseManager_SpawnActors() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SpawnActors();
+        }
+    }
+
+    void CourseManager_InitClouds() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->InitClouds();
+        }
+    }
+
+    void CourseManager_UpdateClouds(s32 arg0, Camera* camera) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->UpdateClouds(arg0, camera);
+        }
+    }
+
+    void CourseManager_GenerateCollision() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->GenerateCollision();
+        }
+    }
+
+    void CourseManager_SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+        }
+    }
+
+    void CourseManager_MinimapSettings() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->MinimapSettings();
+        }
+    }
+
+    void CourseManager_InitCourseObjects() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->InitCourseObjects();
+        }
+    }
+
+    void CourseManager_UpdateCourseObjects() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->UpdateCourseObjects();
+        }
+    }
+
+    void CourseManager_RenderCourseObjects() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->RenderCourseObjects();
+        }
+    }
+
+    void CourseManager_SomeSounds() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SomeSounds();
+        }
+    }
+
+    void CourseManager_SetCourseVtxColours() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SetCourseVtxColours();
+        }
+    }
+
+    void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->WhatDoesThisDo(player, playerId);
+        }
+    }
+
+    void CourseManager_WhatDoesThisDoAI(Player* player, int8_t playerId) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->WhatDoesThisDoAI(player, playerId);
+        }
+    }
+
+    void CourseManager_MinimapFinishlinePosition() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->MinimapFinishlinePosition();
+        }
+    }
+
+    void CourseManager_SetStaffGhost() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SetStaffGhost();
+        }
+    }
+
+    CProperties *CourseManager_GetProps() {
+        if (gWorldInstance.CurrentCourse) {
+            return (CProperties*) &gWorldInstance.CurrentCourse->Props;
+        }
+    }
+
+    void CourseManager_SpawnBombKarts() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SpawnBombKarts();
+        }
     }
 }
 

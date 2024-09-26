@@ -43,6 +43,8 @@
 #include "stdio.h"
 #include "port/Engine.h"
 
+#include "engine/Engine.h"
+
 u16* D_8018D9B0;
 u8* D_8018D9B4;
 u8* D_8018D9B8;
@@ -2433,6 +2435,8 @@ void render_menus(void) {
     }
 }
 
+CProperties* GetCoursePropsA(void);
+
 void func_80095574(void) {
     s32 var_v0;
 
@@ -2470,13 +2474,13 @@ void func_80095574(void) {
         if ((gCurrentCourseId >= (NUM_COURSES - 1)) || (gCurrentCourseId < 0)) {
             gCurrentCourseId = 0;
         }
-        print_str_num(0x00000050, 0x0000006E, "map_number", gCurrentCourseId);
+        print_str_num(0x00000050, 0x0000006E, "map_number", GetCourseIndex());
         if (gCurrentCourseId < 0xA) {
             var_v0 = 0;
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, gDebugCourseNames[gCurrentCourseId]);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, GetCoursePropsA()->DebugName);
         debug_print_str2(0x00000050, 0x00000078, "screen_mode");
         debug_print_str2(0x000000AA, 0x00000078, gDebugScreenModeNames[D_8018EDF1]);
         debug_print_str2(0x00000050, 0x00000082, "player");
@@ -4985,8 +4989,8 @@ void func_8009CE64(s32 arg0) {
                         gNextDemoId = 0;
                     }
                     printf("\nSELECTED!!!!!\n");
-                    SetCupIndex(gCurrentCourseId);
-                    //gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
+                    //SetCupIndex(gCurrentCourseId); // World->GetCourse
+                    gCupSelection = GetCupIndex(); //gCupSelectionByCourseId[gCurrentCourseId];
                     D_800DC540 = (s32) GetCupIndex();
                     gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
                     break;

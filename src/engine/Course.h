@@ -6,7 +6,7 @@
 
 // C-compatible function declaration
 #ifdef __cplusplus
-#include "World.h"
+//#include "World.h"
 extern "C" {
 #endif
 
@@ -30,6 +30,7 @@ CProperties *CourseManager_GetProps();
 
 class World; // <-- Forward declare
 
+
 class Course {
 
 public:
@@ -48,13 +49,11 @@ public:
         RGB8 FloorTopLeft;
     } SkyboxColours;
 
-    const char* Name;
-    const char* DebugName;
-    const char* CourseLength;
-    uint32_t Cup;
-    uint32_t CupIndex;
 
     typedef struct {
+        const char* Name;
+        const char* DebugName;
+        const char* CourseLength;
         const char* AIBehaviour;
         float AIMaximumSeparation;
         float AIMinimumSeparation;
@@ -76,14 +75,20 @@ public:
 
     Properties Props;
 
+    const char* vtx = nullptr;
+    const char* gfx = nullptr;
+    size_t gfxSize = 0;
+    const course_texture* textures = nullptr;
+
     virtual ~Course() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
     explicit Course();  // UUID should be passed in constructor
 
     // Virtual functions to be overridden by derived classes
-    virtual void Load(const char* courseVtx, course_texture* textures, const char* displaylists, size_t dlSize);
+    virtual void Load();
     virtual void Load(const char* vtx, const char *gfx);
+    // This function may not be needed due to otr system.
     virtual void LoadTextures();
     virtual void SpawnActors();
     virtual void Init();

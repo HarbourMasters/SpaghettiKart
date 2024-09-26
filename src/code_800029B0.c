@@ -188,14 +188,15 @@ void setup_race(void) {
         gCourseDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
-        gCurrentCourseId = gCupCourseOrder[GetCupIndex()][gCupCourseSelection];
+        //gCurrentCourseId = gCupCourseOrder[GetCupIndex()][gCupCourseSelection];
     }
     gActiveScreenMode = gScreenModeSelection;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        load_course(gCurrentCourseId);
+        LoadCourse();
+        //load_course(gCurrentCourseId);
         func_80295D88();
         D_8015F730 = gNextFreeMemoryAddress;
     } else {
@@ -313,10 +314,8 @@ void func_80003040(void) {
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY: {
-            struct ActorSpawnData* a_d_course_mario_raceway_tree_spawns =
-                (struct ActorSpawnData*) LOAD_ASSET(d_course_mario_raceway_tree_spawns);
             dma_textures(gTextureTrees1, 0x35B, 0x800);
-            spawn_foliage(a_d_course_mario_raceway_tree_spawns);
+            spawn_foliage(d_course_mario_raceway_tree_spawns);
             break;
         }
         case COURSE_BOWSER_CASTLE:
