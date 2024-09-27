@@ -846,7 +846,7 @@ void spawn_piranha_plants(const char* spawnData) {
     }
 }
 
-void spawn_palm_trees(struct ActorSpawnData* spawnData) {
+void spawn_palm_trees(const char* spawnData) {
     struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
     struct PalmTree* temp_v1;
     Vec3f startingPos;

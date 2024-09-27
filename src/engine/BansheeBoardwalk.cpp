@@ -106,7 +106,7 @@ void BansheeBoardwalk::Init() {  }
 
 // Likely sets minimap boundaries
 void BansheeBoardwalk::MinimapSettings() {
-    D_80165880 = dma_textures(*gTextureGhosts, 0x4CC2, 0xD980);
+    D_80165880 = dma_textures((const char*)gTextureGhosts, 0x4CC2, 0xD980);
     D_8018D2A0 = 0.016f;
     D_8018D2C0[0] = 0x0106;
     D_8018D2E0 = 55;
@@ -261,6 +261,15 @@ void BansheeBoardwalk::GenerateCollision() {
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000878)), 128, 0, 0, 0);
     D_8015F8E4 = -80.0f;
+}
+
+void BansheeBoardwalk::Water() {
+    D_802B87BC++;
+
+    if (D_802B87BC >= 0x100) {
+        D_802B87BC = 0;
+    }
+    find_and_set_tile_size((uintptr_t) LOAD_ASSET_RAW(d_course_banshee_boardwalk_dl_B278), 0, D_802B87BC);
 }
 
 void BansheeBoardwalk::Destroy() { }

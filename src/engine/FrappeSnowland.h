@@ -4,23 +4,23 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/banshee_boardwalk_vertices.h"
-    #include "assets/banshee_boardwalk_displaylists.h"
-    #include "assets/banshee_boardwalk_data.h"
+    #include "assets/frappe_snowland_vertices.h"
+    #include "assets/frappe_snowland_displaylists.h"
+    #include "assets/frappe_snowland_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    extern const course_texture banshee_boardwalk_textures[];
+    extern const course_texture frappe_snowland_textures[];
 }
 
-class BansheeBoardwalk : public Course {
+class FrappeSnowland : public Course {
 public:
-    virtual ~BansheeBoardwalk() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~FrappeSnowland() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit BansheeBoardwalk();
+    explicit FrappeSnowland();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);

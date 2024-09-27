@@ -4,23 +4,23 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/banshee_boardwalk_vertices.h"
-    #include "assets/banshee_boardwalk_displaylists.h"
-    #include "assets/banshee_boardwalk_data.h"
+    #include "assets/skyscraper_vertices.h"
+    #include "assets/skyscraper_displaylists.h"
+    #include "assets/skyscraper_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    extern const course_texture banshee_boardwalk_textures[];
+    extern const course_texture skyscraper_textures[];
 }
 
-class BansheeBoardwalk : public Course {
+class Skyscraper : public Course {
 public:
-    virtual ~BansheeBoardwalk() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~Skyscraper() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit BansheeBoardwalk();
+    explicit Skyscraper();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
@@ -41,6 +41,5 @@ public:
     virtual void Collision() override;
     virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
-    virtual void Water() override;
     virtual void Destroy() override;
 };

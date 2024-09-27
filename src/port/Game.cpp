@@ -7,6 +7,24 @@
 #include "engine/ChocoMountain.h"
 #include "engine/BowsersCastle.h"
 #include "engine/BansheeBoardwalk.h"
+#include "engine/YoshiValley.h"
+#include "engine/FrappeSnowland.h"
+#include "engine/KoopaTroopaBeach.h"
+#include "engine/RoyalRaceway.h"
+#include "engine/LuigiRaceway.h"
+#include "engine/MooMooFarm.h"
+#include "engine/ToadsTurnpike.h"
+#include "engine/KalimariDesert.h"
+#include "engine/SherbetLand.h"
+#include "engine/RainbowRoad.h"
+#include "engine/WarioStadium.h"
+#include "engine/BlockFort.h"
+#include "engine/Skyscraper.h"
+#include "engine/DoubleDeck.h"
+#include "engine/DKJungle.h"
+#include "engine/BigDonut.h"
+
+#include "engine/PodiumCeremony.h"
 
 extern "C" {
 #include "main.h"
@@ -45,6 +63,22 @@ void CustomEngineInit() {
     gWorldInstance.Courses.push_back(std::make_unique<ChocoMountain>());
     gWorldInstance.Courses.push_back(std::make_unique<BowsersCastle>());
     gWorldInstance.Courses.push_back(std::make_unique<BansheeBoardwalk>());
+    gWorldInstance.Courses.push_back(std::make_unique<YoshiValley>());
+    gWorldInstance.Courses.push_back(std::make_unique<FrappeSnowland>());
+    gWorldInstance.Courses.push_back(std::make_unique<KoopaTroopaBeach>());
+    gWorldInstance.Courses.push_back(std::make_unique<RoyalRaceway>());
+    gWorldInstance.Courses.push_back(std::make_unique<LuigiRaceway>());
+    gWorldInstance.Courses.push_back(std::make_unique<MooMooFarm>());
+    gWorldInstance.Courses.push_back(std::make_unique<ToadsTurnpike>());
+    gWorldInstance.Courses.push_back(std::make_unique<KalimariDesert>());
+    gWorldInstance.Courses.push_back(std::make_unique<SherbetLand>());
+    gWorldInstance.Courses.push_back(std::make_unique<RainbowRoad>());
+    gWorldInstance.Courses.push_back(std::make_unique<WarioStadium>());
+    gWorldInstance.Courses.push_back(std::make_unique<BlockFort>());
+    gWorldInstance.Courses.push_back(std::make_unique<Skyscraper>());
+    gWorldInstance.Courses.push_back(std::make_unique<DoubleDeck>());
+    gWorldInstance.Courses.push_back(std::make_unique<DKJungle>());
+    gWorldInstance.Courses.push_back(std::make_unique<BigDonut>());
 }
 
 extern "C" {
@@ -214,6 +248,13 @@ extern "C" {
             gWorldInstance.CurrentCourse->SpawnBombKarts();
         }
     }
+
+    void CourseManager_Water() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->Water();
+        }
+    }
+
 }
 
 void push_frame() {

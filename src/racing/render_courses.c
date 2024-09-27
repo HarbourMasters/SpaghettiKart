@@ -719,7 +719,6 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void render_royal_raceway(struct UnkStruct_800DC5EC* arg0) {
-
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1283,13 +1282,13 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
             //render_mario_raceway(arg0);
             break;
         case COURSE_CHOCO_MOUNTAIN:
-            render_choco_mountain(arg0);
+            //render_choco_mountain(arg0);
             break;
         case COURSE_BOWSER_CASTLE:
-            render_bowsers_castle(arg0);
+            //render_bowsers_castle(arg0);
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            render_banshee_boardwalk(arg0);
+            //render_banshee_boardwalk(arg0);
             break;
         case COURSE_YOSHI_VALLEY:
             render_yoshi_valley(arg0);
@@ -1455,14 +1454,14 @@ void func_80295D88(void) {
             D_8015F8E4 = -50.0f;
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            D_800DC5BC = 1;
-            D_801625EC = 0;
-            D_801625F4 = 0;
-            D_801625F0 = 0;
-            parse_course_displaylists(d_course_banshee_boardwalk_track_sections);
-            func_80295C6C();
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
-            D_8015F8E4 = -80.0f;
+            // D_800DC5BC = 1;
+            // D_801625EC = 0;
+            // D_801625F4 = 0;
+            // D_801625F0 = 0;
+            // parse_course_displaylists(d_course_banshee_boardwalk_track_sections);
+            // func_80295C6C();
+            // find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), 128, 0, 0, 0);
+            // D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY: {
             Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
@@ -1608,6 +1607,8 @@ void func_80295D88(void) {
 
 void func_802966A0(void) {
 
+    CourseManager_Water();
+
     switch (gCurrentCourseId) {
         case COURSE_KOOPA_BEACH:
             // clang-format off
@@ -1643,12 +1644,12 @@ void func_802966A0(void) {
             find_and_set_tile_size(segmented_gfx_to_virtual(0x070002E8), D_802B87C8, D_802B87CC);
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            D_802B87BC++;
+            // D_802B87BC++;
 
-            if (D_802B87BC >= 0x100) {
-                D_802B87BC = 0;
-            }
-            find_and_set_tile_size((uintptr_t) LOAD_ASSET(d_course_banshee_boardwalk_dl_B278), 0, D_802B87BC);
+            // if (D_802B87BC >= 0x100) {
+            //     D_802B87BC = 0;
+            // }
+            // find_and_set_tile_size((uintptr_t) LOAD_ASSET(d_course_banshee_boardwalk_dl_B278), 0, D_802B87BC);
             break;
         case COURSE_ROYAL_RACEWAY:
             D_802B87BC -= 20;

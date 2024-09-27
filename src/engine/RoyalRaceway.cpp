@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 
-#include "PodiumCeremony.h"
+#include "RoyalRaceway.h"
 #include "GameObject.h"
 #include "World.h"
 #include "BombKart.h"
@@ -32,7 +32,7 @@ extern "C" {
     extern const char *royal_raceway_dls[];
 }
 
-PodiumCeremony::PodiumCeremony() {
+RoyalRaceway::RoyalRaceway() {
     this->vtx = d_course_royal_raceway_vertex;
     this->gfx = d_course_royal_raceway_packed_dls;
     this->gfxSize = 5670;
@@ -94,19 +94,19 @@ PodiumCeremony::PodiumCeremony() {
     Props.Skybox.FloorTopLeft = {255, 224, 240};
 }
 
-void PodiumCeremony::LoadTextures() {
+void RoyalRaceway::LoadTextures() {
 }
 
-void PodiumCeremony::SpawnActors() {
+void RoyalRaceway::SpawnActors() {
     spawn_foliage(d_course_royal_raceway_tree_spawn);
     spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
     spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
 }
 
-void PodiumCeremony::Init() {  }
+void RoyalRaceway::Init() {  }
 
 // Likely sets minimap boundaries
-void PodiumCeremony::MinimapSettings() {
+void RoyalRaceway::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust4, 0x3F8, 0x1000));
     D_8018D2C0[0] = 262;
     D_8018D2A0 = 0.014f;
@@ -117,7 +117,7 @@ void PodiumCeremony::MinimapSettings() {
     D_80165728 = -330;
 }
 
-void PodiumCeremony::InitCourseObjects() {
+void RoyalRaceway::InitCourseObjects() {
     size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
@@ -130,10 +130,10 @@ void PodiumCeremony::InitCourseObjects() {
     }
 }
 
-void PodiumCeremony::SomeSounds() {
+void RoyalRaceway::SomeSounds() {
 }
 
-void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
+void RoyalRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -148,7 +148,7 @@ void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void RoyalRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
@@ -163,7 +163,7 @@ void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void PodiumCeremony::SpawnBombKarts() {
+void RoyalRaceway::SpawnBombKarts() {
     World* world = GetWorld();
 
     if (world) {
@@ -178,12 +178,12 @@ void PodiumCeremony::SpawnBombKarts() {
 }
 
 // Positions the finishline on the minimap
-void PodiumCeremony::MinimapFinishlinePosition() {
+void RoyalRaceway::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void PodiumCeremony::SetStaffGhost() {
+void RoyalRaceway::SetStaffGhost() {
     u32 temp_v0 = func_800B4E24(0) & 0xfffff;
     if (temp_v0 <= 16000) {
         D_80162DD6 = 0;
@@ -196,8 +196,8 @@ void PodiumCeremony::SetStaffGhost() {
     D_80162DE4 = 6;
 }
 
-void PodiumCeremony::BeginPlay() {  }
-void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {
+void RoyalRaceway::BeginPlay() {  }
+void RoyalRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -226,16 +226,16 @@ void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void PodiumCeremony::RenderCredits() {
+void RoyalRaceway::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
 }
 
-void PodiumCeremony::Collision() {}
+void RoyalRaceway::Collision() {}
 
-void PodiumCeremony::GenerateCollision() {
+void RoyalRaceway::GenerateCollision() {
     parse_course_displaylists(d_course_royal_raceway_addr);
     func_80295C6C();
     D_8015F8E4 = -60.0f;
 }
 
-void PodiumCeremony::Destroy() { }
+void RoyalRaceway::Destroy() { }

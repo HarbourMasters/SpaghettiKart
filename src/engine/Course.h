@@ -111,6 +111,7 @@ public:
     virtual void RenderCredits();
     virtual void Collision();
     virtual void GenerateCollision();
+    virtual void Water();
     virtual void Destroy();
     virtual World* GetWorld();
 

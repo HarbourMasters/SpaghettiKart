@@ -234,7 +234,7 @@ void CourseMarioRaceway::SetStaffGhost() {
         D_80162DD6 = 1;
         D_80162DF4 = 1;
     }
-    D_80162DC4 = &d_mario_raceway_staff_ghost[0];
+    D_80162DC4 = d_mario_raceway_staff_ghost;
     D_80162DE4 = 0;
 }
 

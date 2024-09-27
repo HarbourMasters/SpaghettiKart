@@ -246,7 +246,7 @@ void func_80027EDC(Player* player, s8 playerId) {
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         
-        CourseManager_WhatDoesThisDo(playerId);
+        CourseManager_WhatDoesThisDo(player, playerId);
         
         switch (gCurrentCourseId) {
             // case COURSE_MARIO_RACEWAY:
