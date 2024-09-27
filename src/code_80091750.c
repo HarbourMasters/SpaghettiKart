@@ -938,6 +938,12 @@ s32 D_800E84A0[] = {
     0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13,
 };
 
+Vtx* D_800E84C0[] = {
+    D_02007BB8,
+    D_02007CD8,
+    D_02007DF8,
+};
+
 #ifndef AVOID_UB
 Gfx* D_800E84CC[] = {
     D_02007838, D_02007858, D_02007878, D_02007898, D_020078B8, D_020078D8, D_020078F8, D_02007918,
@@ -1351,7 +1357,6 @@ void func_80092258(void) {
     }
 }
 
-//! @bug vtx overflow from idx + 36 in this func
 void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_v1;
     s32 i;
@@ -1363,16 +1368,6 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_t0;
     s32 a, b, c, d;
     Vtx* vtx;
-
-    Vtx* v1 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    Vtx *v2 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    Vtx *v3 = (Vtx *) LOAD_ASSET(D_02007DF8);
-
-    Vtx* D_800E84C0[] = {
-        &v1[0],
-        &v2[0],
-        &v3[0],
-    };
 
     if ((arg0 < 4) || (arg0 >= 6)) {
         return;
@@ -1387,21 +1382,10 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     }
 
     for (i = 0; i < 3; i++) {
-        if (i == 0) {
-            vtx = (Vtx*) &v1[0];
-        } else if (i == 1) {
-            vtx = (Vtx*) &v2[0];
-        } else if (i == 2) {
-            vtx = (Vtx*) &v3[0];
-        }
-        // vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
+        vtx = (Vtx*) LOAD_ASSET(D_800E84C0[i]);
 
         temp_v1 = (*arg1 * 2) + 2;
 
-        //! @bug vtx array overflow temp fix
-        if ((vtx + temp_v1) >= 54) {
-            return;
-        }
         temp_t6 = (vtx + temp_v1)->v.cn[0] * (256 - *arg2);
         temp_t9 = (vtx + temp_v1)->v.cn[1] * (256 - *arg2);
         temp_t7 = (vtx + temp_v1)->v.cn[2] * (256 - *arg2);
@@ -1413,10 +1397,10 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
         c = ((vtx + temp_v1)->v.cn[2] * *arg2);
         d = ((vtx + temp_v1)->v.cn[3] * *arg2);
 
-        //! @bug vtx array overflow temp fix
-        if ((vtx + idx) >= 54) {
-            return;
-        }
+        (vtx + idx)->v.cn[0] = (temp_t6 + a) / 256;
+        (vtx + idx)->v.cn[1] = (temp_t9 + b) / 256;
+        (vtx + idx)->v.cn[2] = (temp_t7 + c) / 256;
+        (vtx + idx)->v.cn[3] = (temp_t8_2 + d) / 256;
 
         (vtx + idx + 1)->v.cn[0] = (temp_t6 + a) / 256;
         (vtx + idx + 1)->v.cn[1] = (temp_t9 + b) / 256;
@@ -2532,9 +2516,6 @@ Gfx* draw_flash_select_case_fast(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx
 
 Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     s32 index;
-    Vtx* a_D_02007BB8 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
 
     if ((s32) gTextColor < TEXT_BLUE_GREEN_RED_CYCLE_1) {
         index = gTextColor;
@@ -2542,6 +2523,7 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
 #ifdef AVOID_UB
+    arg1 = LOAD_ASSET(arg1);
     gSPVertex(displayListHead++, arg1, 2, 0);
     gSPVertex(displayListHead++, &arg1[(index + 1) * 2], 2, 2);
     gSPDisplayList(displayListHead++, common_rectangle_display);
@@ -2636,10 +2618,6 @@ void func_80095AE0(MTX_TYPE* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
     Vtx* var_a1;
     Mtx* sp28;
-
-    Vtx* a_D_02007BB8 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
 
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
