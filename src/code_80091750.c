@@ -938,6 +938,7 @@ s32 D_800E84A0[] = {
     0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13,
 };
 
+#ifndef AVOID_UB
 Gfx* D_800E84CC[] = {
     D_02007838, D_02007858, D_02007878, D_02007898, D_020078B8, D_020078D8, D_020078F8, D_02007918,
 };
@@ -949,6 +950,7 @@ Gfx* D_800E84EC[] = {
 Gfx* D_800E850C[] = {
     D_02007A38, D_02007A58, D_02007A78, D_02007A98, D_02007AB8, D_02007AD8, D_02007AF8, D_02007B18,
 };
+#endif
 
 s8 D_800E852C = 1;
 
@@ -1363,13 +1365,13 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     Vtx* vtx;
 
     Vtx* v1 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *v2 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *v3 = (Vtx *) LOAD_ASSET(D_02007DF8);
+    Vtx *v2 = (Vtx *) LOAD_ASSET(D_02007CD8);
+    Vtx *v3 = (Vtx *) LOAD_ASSET(D_02007DF8);
 
     Vtx* D_800E84C0[] = {
         &v1[0],
-        &v1[18],
-        &v1[36],
+        &v2[0],
+        &v3[0],
     };
 
     if ((arg0 < 4) || (arg0 >= 6)) {
@@ -1388,9 +1390,9 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
         if (i == 0) {
             vtx = (Vtx*) &v1[0];
         } else if (i == 1) {
-            vtx = (Vtx*) &v1[18];
+            vtx = (Vtx*) &v2[0];
         } else if (i == 2) {
-            vtx = (Vtx*) &v1[36];
+            vtx = (Vtx*) &v3[0];
         }
         // vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
 
@@ -2540,13 +2542,9 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
 #ifdef AVOID_UB
-    if (arg1 == D_02007BB8) {
-        gSPDisplayList(displayListHead++, D_800E84CC[index]);
-    } else if (arg1 == &D_02007BB8[18]) {
-        gSPDisplayList(displayListHead++, D_800E84EC[index]);
-    } else if (arg1 == &D_02007BB8[36]) {
-        gSPDisplayList(displayListHead++, D_800E850C[index]);
-    }
+    gSPVertex(displayListHead++, arg1, 2, 0);
+    gSPVertex(displayListHead++, &arg1[(index + 1) * 2], 2, 2);
+    gSPDisplayList(displayListHead++, common_rectangle_display);
 #else
     if (arg1 == D_02007BB8) {
         gSPDisplayList(displayListHead++, D_800E84CC[index]);
@@ -2664,16 +2662,16 @@ func_80095BD0_label2:
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
         default:
-            var_a1 = &D_02007BB8[18];
+            var_a1 = D_02007CD8;
             break;
         case 16:
-            var_a1 = &D_02007BB8[18];
+            var_a1 = D_02007CD8;
             break;
         case 26:
             var_a1 = D_02007BB8;
             break;
         case 30:
-            var_a1 = &D_02007BB8[36];
+            var_a1 = D_02007DF8;
             break;
     }
 
