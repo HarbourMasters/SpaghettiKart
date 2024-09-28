@@ -80,8 +80,8 @@ LuigiRaceway::LuigiRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gLuigiRacewayClouds;
+    Props.CloudList = gLuigiRacewayClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -103,7 +103,7 @@ void LuigiRaceway::SpawnActors() {
     spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
 }
 
-void LuigiRaceway::Init() {  }
+void LuigiRaceway::Init() {}
 
 // Likely sets minimap boundaries
 void LuigiRaceway::MinimapSettings() {

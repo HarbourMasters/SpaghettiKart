@@ -79,8 +79,8 @@ KalimariDesert::KalimariDesert() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gKalimariDesertClouds;
+    Props.CloudList = gKalimariDesertClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -133,7 +133,7 @@ void KalimariDesert::SpawnActors() {
     rrxing->crossingId = 0;
 }
 
-void KalimariDesert::Init() {  }
+void KalimariDesert::Init() {}
 
 // Likely sets minimap boundaries
 void KalimariDesert::MinimapSettings() {

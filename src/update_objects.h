@@ -8,6 +8,7 @@
 
 /** @cond */
 
+void func_80078170(s32 arg0, Camera* arg1);
 void func_80077D5C(s32);
 s32 find_unused_obj_index(s32*);
 void delete_object(s32*);

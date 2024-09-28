@@ -80,8 +80,8 @@ WarioStadium::WarioStadium() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gWarioStadiumStars;
+    Props.CloudList = gWarioStadiumStars;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -115,7 +115,14 @@ void WarioStadium::SpawnActors() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
 }
 
-void WarioStadium::Init() {  }
+void WarioStadium::Init() {}
+void WarioStadium::InitClouds() {
+    init_stars(this->Props.Clouds);
+}
+
+void WarioStadium::UpdateClouds(s32 sp1C, Camera* camera) {
+    update_stars(sp1C, camera, this->Props.CloudList);
+}
 
 // Likely sets minimap boundaries
 void WarioStadium::MinimapSettings() {

@@ -30,7 +30,9 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "update_objects.h"
     extern const char *frappe_snowland_dls[];
+    extern s8 gPlayerCount;
 }
 
 FrappeSnowland::FrappeSnowland() {
@@ -80,7 +82,7 @@ FrappeSnowland::FrappeSnowland() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
+    Props.Clouds = NULL; // not used for frappe
     Props.CloudList = NULL;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
@@ -104,6 +106,25 @@ void FrappeSnowland::SpawnActors() {
 }
 
 void FrappeSnowland::Init() {  }
+void FrappeSnowland::InitClouds() {
+    s32 var_s0;
+    s32 var_s4;
+
+    if (gPlayerCount == 1) {
+        var_s4 = 0x32;
+    } else {
+        var_s4 = 0x19;
+    }
+    for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
+        find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
+    }
+    D_8018D1F8 += var_s0;
+    D_8018D1F0 = var_s0;
+}
+
+void FrappeSnowland::UpdateClouds(s32 sp1C, Camera* camera) {
+    func_80078170(sp1C, camera);
+}
 
 // Likely sets minimap boundaries
 void FrappeSnowland::MinimapSettings() {

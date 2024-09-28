@@ -82,8 +82,8 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gToadsTurnpikeRainbowRoadStars;
+    Props.CloudList = gToadsTurnpikeRainbowRoadStars;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -111,7 +111,14 @@ void ToadsTurnpike::SpawnActors() {
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
-void ToadsTurnpike::Init() {  }
+void ToadsTurnpike::Init() {}
+void ToadsTurnpike::InitClouds() {
+    init_stars(this->Props.Clouds);
+}
+
+void ToadsTurnpike::UpdateClouds(s32 sp1C, Camera* camera) {
+    update_stars(sp1C, camera, this->Props.CloudList);
+}
 
 // Likely sets minimap boundaries
 void ToadsTurnpike::MinimapSettings() {

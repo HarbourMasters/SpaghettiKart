@@ -79,8 +79,8 @@ RainbowRoad::RainbowRoad() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gToadsTurnpikeRainbowRoadStars;
+    Props.CloudList = gToadsTurnpikeRainbowRoadStars;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -101,7 +101,15 @@ void RainbowRoad::SpawnActors() {
     spawn_all_item_boxes(d_course_rainbow_road_item_box_spawns);
 }
 
-void RainbowRoad::Init() {  }
+void RainbowRoad::Init() {}
+
+void RainbowRoad::InitClouds() {
+    init_stars(this->Props.Clouds);
+}
+
+void RainbowRoad::UpdateClouds(s32 sp1C, Camera* camera) {
+    update_stars(sp1C, camera, this->Props.CloudList);
+}
 
 // Likely sets minimap boundaries
 void RainbowRoad::MinimapSettings() {

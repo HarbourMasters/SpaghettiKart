@@ -80,8 +80,8 @@ YoshiValley::YoshiValley() {
     Props.PathTable2[2] = d_course_yoshi_valley_track_waypoints_3;
     Props.PathTable2[3] = d_course_yoshi_valley_track_waypoints_4;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gYoshiValleyMooMooFarmClouds;
+    Props.CloudList = gYoshiValleyMooMooFarmClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -111,7 +111,7 @@ void YoshiValley::SpawnActors() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 }
 
-void YoshiValley::Init() {  }
+void YoshiValley::Init() {}
 
 // Likely sets minimap boundaries
 void YoshiValley::MinimapSettings() {

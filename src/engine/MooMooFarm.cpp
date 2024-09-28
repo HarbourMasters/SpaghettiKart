@@ -82,8 +82,8 @@ MooMooFarm::MooMooFarm() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gYoshiValleyMooMooFarmClouds;
+    Props.CloudList = gYoshiValleyMooMooFarmClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -107,7 +107,7 @@ void MooMooFarm::SpawnActors() {
     spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
 }
 
-void MooMooFarm::Init() {  }
+void MooMooFarm::Init() {}
 
 // Likely sets minimap boundaries
 void MooMooFarm::MinimapSettings() {

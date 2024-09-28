@@ -79,8 +79,8 @@ RoyalRaceway::RoyalRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gRoyalRacewayClouds;
+    Props.CloudList = gRoyalRacewayClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -103,7 +103,7 @@ void RoyalRaceway::SpawnActors() {
     spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
 }
 
-void RoyalRaceway::Init() {  }
+void RoyalRaceway::Init() {}
 
 // Likely sets minimap boundaries
 void RoyalRaceway::MinimapSettings() {

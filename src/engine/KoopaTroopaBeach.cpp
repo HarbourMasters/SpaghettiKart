@@ -79,8 +79,8 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gKoopaTroopaBeachClouds;
+    Props.CloudList = gKoopaTroopaBeachClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -103,7 +103,7 @@ void KoopaTroopaBeach::SpawnActors() {
     spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
 }
 
-void KoopaTroopaBeach::Init() {  }
+void KoopaTroopaBeach::Init() {}
 
 // Likely sets minimap boundaries
 void KoopaTroopaBeach::MinimapSettings() {

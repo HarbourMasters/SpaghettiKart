@@ -79,8 +79,8 @@ SherbetLand::SherbetLand() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = NULL; // no clouds
-    Props.CloudList = NULL;
+    Props.Clouds = gSherbetLandClouds;
+    Props.CloudList = gSherbetLandClouds;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -101,7 +101,7 @@ void SherbetLand::SpawnActors() {
     spawn_all_item_boxes(d_course_sherbet_land_item_box_spawns);
 }
 
-void SherbetLand::Init() {  }
+void SherbetLand::Init() {}
 
 // Likely sets minimap boundaries
 void SherbetLand::MinimapSettings() {
