@@ -706,48 +706,48 @@ void func_8007055C(void) {
             // Uses Kalimari Desert's clouds for initialization?
             //init_clouds(gKalimariDesertClouds);
             break;
-        case COURSE_YOSHI_VALLEY:
-            init_clouds(gYoshiValleyMooMooFarmClouds);
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gPlayerCount == 1) {
-                var_s4 = 0x32;
-            } else {
-                var_s4 = 0x19;
-            }
-            for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
-                find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
-            }
-            D_8018D1F8 += var_s0;
-            D_8018D1F0 = var_s0;
-            break;
-        case COURSE_KOOPA_BEACH:
-            init_clouds(gKoopaTroopaBeachClouds);
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            init_clouds(gRoyalRacewayClouds);
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            init_clouds(gLuigiRacewayClouds);
-            break;
-        case COURSE_MOO_MOO_FARM:
-            init_clouds(gYoshiValleyMooMooFarmClouds);
-            break;
-        case COURSE_TOADS_TURNPIKE:
-            init_stars(gToadsTurnpikeRainbowRoadStars);
-            break;
-        case COURSE_KALAMARI_DESERT:
-            init_clouds(gKalimariDesertClouds);
-            break;
-        case COURSE_SHERBET_LAND:
-            init_clouds(gSherbetLandClouds);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            init_stars(gToadsTurnpikeRainbowRoadStars);
-            break;
-        case COURSE_WARIO_STADIUM:
-            init_stars(gWarioStadiumStars);
-            break;
+        // case COURSE_YOSHI_VALLEY:
+        //     init_clouds(gYoshiValleyMooMooFarmClouds);
+        //     break;
+        // case COURSE_FRAPPE_SNOWLAND:
+        //     if (gPlayerCount == 1) {
+        //         var_s4 = 0x32;
+        //     } else {
+        //         var_s4 = 0x19;
+        //     }
+        //     for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
+        //         find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
+        //     }
+        //     D_8018D1F8 += var_s0;
+        //     D_8018D1F0 = var_s0;
+        //     break;
+        // case COURSE_KOOPA_BEACH:
+        //     init_clouds(gKoopaTroopaBeachClouds);
+        //     break;
+        // case COURSE_ROYAL_RACEWAY:
+        //     init_clouds(gRoyalRacewayClouds);
+        //     break;
+        // case COURSE_LUIGI_RACEWAY:
+        //     init_clouds(gLuigiRacewayClouds);
+        //     break;
+        // case COURSE_MOO_MOO_FARM:
+        //     init_clouds(gYoshiValleyMooMooFarmClouds);
+        //     break;
+        // case COURSE_TOADS_TURNPIKE:
+        //     init_stars(gToadsTurnpikeRainbowRoadStars);
+        //     break;
+        // case COURSE_KALAMARI_DESERT:
+        //     init_clouds(gKalimariDesertClouds);
+        //     break;
+        // case COURSE_SHERBET_LAND:
+        //     init_clouds(gSherbetLandClouds);
+        //     break;
+        // case COURSE_RAINBOW_ROAD:
+        //     init_stars(gToadsTurnpikeRainbowRoadStars);
+        //     break;
+        // case COURSE_WARIO_STADIUM:
+        //     init_stars(gWarioStadiumStars);
+        //     break;
     }
     func_8008C23C();
 }

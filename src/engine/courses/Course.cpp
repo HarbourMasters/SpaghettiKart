@@ -62,8 +62,8 @@ Course::Course() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.Clouds = gKalimariDesertClouds;
-    Props.CloudList = gLuigiRacewayClouds;
+    Props.Clouds = NULL;
+    Props.CloudList = NULL;
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 }

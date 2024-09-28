@@ -100,6 +100,8 @@ void CustomEngineInit() {
             bigDonut, blockFort, doubleDeck, skyscraper});
 
 
+    /* Set default course; mario raceway */
+    gWorldInstance.CurrentCourse = marioRaceway.get();
 }
 
 extern "C" {
@@ -150,7 +152,7 @@ extern "C" {
         gWorldInstance.PreviousCourse();
     }
 
-        void CourseManager_LoadTextures() {
+    void CourseManager_LoadTextures() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->LoadTextures();
         }

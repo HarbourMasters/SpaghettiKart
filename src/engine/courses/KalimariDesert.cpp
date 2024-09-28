@@ -137,10 +137,12 @@ void KalimariDesert::Init() {}
 
 // Likely sets minimap boundaries
 void KalimariDesert::MinimapSettings() {
-    D_8018D2A0 = 0.022f;
-    D_8018D2C0[0] = 265;
-    D_8018D2E0 = 19;
-    D_8018D2E8 = 37;
+    D_8018D2C0[0] = 263;
+    D_8018D2D8[0] = 165;
+    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust5, 0x443, 0x1000));
+    D_8018D2A0 = 0.015f;
+    D_8018D2E0 = 55;
+    D_8018D2E8 = 27;
 }
 
 void KalimariDesert::InitCourseObjects() {
