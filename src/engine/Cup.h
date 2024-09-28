@@ -3,7 +3,7 @@
 // Base Cup class
 #include <vector>
 #include <memory>
-#include "Course.h"
+#include "courses/Course.h"
 
 class Course; // <-- Forward declare
 
@@ -14,10 +14,8 @@ public:
     size_t Index = 0;
     std::vector<std::shared_ptr<Course>> Courses;
 
-    explicit Cup();
+    explicit Cup(const char* name, std::vector<std::shared_ptr<Course>>& courses);
 
-
-    virtual void SetCourses(std::vector<std::shared_ptr<Course>>&);
     virtual void ShuffleCourses();
 
     virtual void Next();

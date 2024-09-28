@@ -1,22 +1,23 @@
 #include <libultraship.h>
 #include "World.h"
 #include "Cup.h"
-#include "Course.h"
+#include "courses/Course.h"
 
 extern "C" {
    #include "camera.h"
    #include "objects.h"
    #include "main.h"
    #include "engine/Engine.h"
+   #include "defines.h"
 }
 
 World::World() {}
 
 Course* CurrentCourse;
 
-Cup* World::AddCup() {
+Cup* World::AddCup(const char* name, std::vector<std::shared_ptr<Course>> courses) {
     // Create a new unique_ptr for Cup
-    auto cup = std::make_unique<Cup>();
+    auto cup = std::make_unique<Cup>(name, courses);
 
     // Get raw pointer before moving the ownership
     Cup* tmp = cup.get();

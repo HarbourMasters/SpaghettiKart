@@ -3,28 +3,28 @@
 #include <Fast3D/gfx_pc.h>
 #include "Engine.h"
 #include "engine/World.h"
-#include "engine/MarioRaceway.h"
-#include "engine/ChocoMountain.h"
-#include "engine/BowsersCastle.h"
-#include "engine/BansheeBoardwalk.h"
-#include "engine/YoshiValley.h"
-#include "engine/FrappeSnowland.h"
-#include "engine/KoopaTroopaBeach.h"
-#include "engine/RoyalRaceway.h"
-#include "engine/LuigiRaceway.h"
-#include "engine/MooMooFarm.h"
-#include "engine/ToadsTurnpike.h"
-#include "engine/KalimariDesert.h"
-#include "engine/SherbetLand.h"
-#include "engine/RainbowRoad.h"
-#include "engine/WarioStadium.h"
-#include "engine/BlockFort.h"
-#include "engine/Skyscraper.h"
-#include "engine/DoubleDeck.h"
-#include "engine/DKJungle.h"
-#include "engine/BigDonut.h"
+#include "engine/courses/MarioRaceway.h"
+#include "engine/courses/ChocoMountain.h"
+#include "engine/courses/BowsersCastle.h"
+#include "engine/courses/BansheeBoardwalk.h"
+#include "engine/courses/YoshiValley.h"
+#include "engine/courses/FrappeSnowland.h"
+#include "engine/courses/KoopaTroopaBeach.h"
+#include "engine/courses/RoyalRaceway.h"
+#include "engine/courses/LuigiRaceway.h"
+#include "engine/courses/MooMooFarm.h"
+#include "engine/courses/ToadsTurnpike.h"
+#include "engine/courses/KalimariDesert.h"
+#include "engine/courses/SherbetLand.h"
+#include "engine/courses/RainbowRoad.h"
+#include "engine/courses/WarioStadium.h"
+#include "engine/courses/BlockFort.h"
+#include "engine/courses/Skyscraper.h"
+#include "engine/courses/DoubleDeck.h"
+#include "engine/courses/DKJungle.h"
+#include "engine/courses/BigDonut.h"
 
-#include "engine/PodiumCeremony.h"
+#include "engine/courses/PodiumCeremony.h"
 
 extern "C" {
 #include "main.h"
@@ -43,42 +43,63 @@ extern "C" void Timer_Update();
 World gWorldInstance;
 
 void CustomEngineInit() {
-    Cup* mushroom = gWorldInstance.AddCup();
-    mushroom->Name = "mushroom cup";
-    //mushroom->SetCourses();
+    /* Instantiate Courses */
+    auto marioRaceway = std::make_shared<CourseMarioRaceway>();
+    auto chocoMountain = std::make_shared<ChocoMountain>();
+    auto bowsersCastle = std::make_shared<BowsersCastle>();
+    auto bansheeBoardwalk = std::make_shared<BansheeBoardwalk>();
+    auto yoshiValley = std::make_shared<YoshiValley>();
+    auto frappeSnowland = std::make_shared<FrappeSnowland>();
+    auto koopaTroopaBeach = std::make_shared<KoopaTroopaBeach>();
+    auto royalRaceway = std::make_shared<RoyalRaceway>();
+    auto luigiRaceway = std::make_shared<LuigiRaceway>();
+    auto mooMooFarm = std::make_shared<MooMooFarm>();
+    auto toadsTurnpike = std::make_shared<ToadsTurnpike>();
+    auto kalimariDesert = std::make_shared<KalimariDesert>();
+    auto sherbetLand = std::make_shared<SherbetLand>();
+    auto rainbowRoad = std::make_shared<RainbowRoad>();
+    auto warioStadium = std::make_shared<WarioStadium>();
+    auto blockFort = std::make_shared<BlockFort>();
+    auto skyscraper = std::make_shared<Skyscraper>();
+    auto doubleDeck = std::make_shared<DoubleDeck>();
+    auto dkJungle = std::make_shared<DKJungle>();
+    auto bigDonut = std::make_shared<BigDonut>();
 
-    Cup* flower = gWorldInstance.AddCup();
-    flower->Name = "flower cup";
+    /* Add all courses to the global course list */
+    gWorldInstance.Courses.push_back(marioRaceway);
+    gWorldInstance.Courses.push_back(chocoMountain);
+    gWorldInstance.Courses.push_back(bowsersCastle);
+    gWorldInstance.Courses.push_back(bansheeBoardwalk);
+    gWorldInstance.Courses.push_back(yoshiValley);
+    gWorldInstance.Courses.push_back(frappeSnowland);
+    gWorldInstance.Courses.push_back(koopaTroopaBeach);
+    gWorldInstance.Courses.push_back(royalRaceway);
+    gWorldInstance.Courses.push_back(luigiRaceway);
+    gWorldInstance.Courses.push_back(mooMooFarm);
+    gWorldInstance.Courses.push_back(toadsTurnpike);
+    gWorldInstance.Courses.push_back(kalimariDesert);
+    gWorldInstance.Courses.push_back(sherbetLand);
+    gWorldInstance.Courses.push_back(rainbowRoad);
+    gWorldInstance.Courses.push_back(warioStadium);
+    gWorldInstance.Courses.push_back(blockFort);
+    gWorldInstance.Courses.push_back(skyscraper);
+    gWorldInstance.Courses.push_back(doubleDeck);
+    gWorldInstance.Courses.push_back(dkJungle);
+    gWorldInstance.Courses.push_back(bigDonut);
 
-    Cup* star = gWorldInstance.AddCup();
-    star->Name = "star cup";
+    /* Instantiate Cups */
+    Cup* mushroom = gWorldInstance.AddCup("mushroom cup", std::vector<std::shared_ptr<Course>>{
+            luigiRaceway, mooMooFarm, koopaTroopaBeach, kalimariDesert});
+    Cup* flower = gWorldInstance.AddCup("flower cup", std::vector<std::shared_ptr<Course>>{
+            toadsTurnpike, frappeSnowland, chocoMountain, marioRaceway});
+    Cup* star = gWorldInstance.AddCup("star cup", std::vector<std::shared_ptr<Course>>{
+            warioStadium, sherbetLand, royalRaceway, bowsersCastle});
+    Cup* special = gWorldInstance.AddCup("special cup", std::vector<std::shared_ptr<Course>>{
+            dkJungle, yoshiValley, bansheeBoardwalk, rainbowRoad});
+    Cup* battle = gWorldInstance.AddCup("battle", std::vector<std::shared_ptr<Course>>{
+            bigDonut, blockFort, doubleDeck, skyscraper});
 
-    Cup* special = gWorldInstance.AddCup();
-    special->Name = "special cup";
 
-    Cup* battle = gWorldInstance.AddCup();
-    battle->Name = "battle";
-
-    gWorldInstance.Courses.push_back(std::make_unique<CourseMarioRaceway>());
-    gWorldInstance.Courses.push_back(std::make_unique<ChocoMountain>());
-    gWorldInstance.Courses.push_back(std::make_unique<BowsersCastle>());
-    gWorldInstance.Courses.push_back(std::make_unique<BansheeBoardwalk>());
-    gWorldInstance.Courses.push_back(std::make_unique<YoshiValley>());
-    gWorldInstance.Courses.push_back(std::make_unique<FrappeSnowland>());
-    gWorldInstance.Courses.push_back(std::make_unique<KoopaTroopaBeach>());
-    gWorldInstance.Courses.push_back(std::make_unique<RoyalRaceway>());
-    gWorldInstance.Courses.push_back(std::make_unique<LuigiRaceway>());
-    gWorldInstance.Courses.push_back(std::make_unique<MooMooFarm>());
-    gWorldInstance.Courses.push_back(std::make_unique<ToadsTurnpike>());
-    gWorldInstance.Courses.push_back(std::make_unique<KalimariDesert>());
-    gWorldInstance.Courses.push_back(std::make_unique<SherbetLand>());
-    gWorldInstance.Courses.push_back(std::make_unique<RainbowRoad>());
-    gWorldInstance.Courses.push_back(std::make_unique<WarioStadium>());
-    gWorldInstance.Courses.push_back(std::make_unique<BlockFort>());
-    gWorldInstance.Courses.push_back(std::make_unique<Skyscraper>());
-    gWorldInstance.Courses.push_back(std::make_unique<DoubleDeck>());
-    gWorldInstance.Courses.push_back(std::make_unique<DKJungle>());
-    gWorldInstance.Courses.push_back(std::make_unique<BigDonut>());
 }
 
 extern "C" {

@@ -38,7 +38,7 @@
 #include <assets/dks_jungle_parkway_data.h>
 
 #include "engine/Engine.h"
-#include "engine/Course.h"
+#include "engine/courses/Course.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;

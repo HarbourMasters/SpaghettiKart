@@ -1,13 +1,13 @@
 #include "Cup.h"
-#include "Course.h"
+#include "courses/Course.h"
 
-Cup::Cup() {}
+Cup::Cup(const char* name, std::vector<std::shared_ptr<Course>>& courses) {
+    this->Name = name;
+    this->Courses = courses;
 
-void Cup::SetCourses(std::vector<std::shared_ptr<Course>>& courses) {
     if (Courses.size() != 4) {
         throw std::invalid_argument("A cup must contain exactly 4 courses.");
     }
-    Courses = courses;
 }
 
 void Cup::Next() {
