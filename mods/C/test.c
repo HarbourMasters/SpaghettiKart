@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-extern __attribute__((import_module("testmodule"), import_name("testfunc"))) void test();
+extern call_function(char* module, char* function_name, );
 
 int fib(int n) {
     test();
