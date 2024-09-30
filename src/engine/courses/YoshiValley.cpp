@@ -30,7 +30,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
-    extern const char *yoshi_valley_dls[];
+    extern const char *d_course_yoshi_valley_dl_list[];
 }
 
 YoshiValley::YoshiValley() {
@@ -180,7 +180,7 @@ void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    render_course_segments(yoshi_valley_dls, arg0);
+    render_course_segments(d_course_yoshi_valley_dl_list, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 

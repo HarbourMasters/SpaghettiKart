@@ -30,7 +30,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "sounds.h"
-    extern const char *dks_jungle_parkway_dls[];
+    extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
     extern s16 currentScreenSection;
 }
 
@@ -208,7 +208,7 @@ void DKJungle::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    render_course_segments(dks_jungle_parkway_dls, arg0);
+    render_course_segments(d_course_dks_jungle_parkway_unknown_dl_list, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }

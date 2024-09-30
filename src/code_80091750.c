@@ -3436,21 +3436,21 @@ void load_menu_img(MkTexture* arg0) {
                 if (var_a1_2 % 8) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
-// mio0decode(D_8018D9B4, &D_8018D9B0[gD_8018E118TotalSize]);
+// mio0decode(D_8018D9B4, &D_8018D9B0[gMenuTextureBufferIndex]);
 // size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
-// memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, texSize);
+// memcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData, texSize);
 #ifdef TARGET_N64
                 dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
-                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
-                strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+                strcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData);
 #endif
             } else {
 #ifdef TARGET_N64
                 dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2,
-                                     &D_8018D9B0[gD_8018E118TotalSize]);
+                                     &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
-                strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+                strcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData);
 #endif
             }
             thing[gNumD_8018E118Entries].textureData = var_s1->textureData;

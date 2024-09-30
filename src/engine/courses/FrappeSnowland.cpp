@@ -31,7 +31,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "update_objects.h"
-    extern const char *frappe_snowland_dls[];
+    extern const char *d_course_frappe_snowland_dl_list[];
     extern s8 gPlayerCount;
 }
 
@@ -206,7 +206,7 @@ void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments(frappe_snowland_dls, arg0);
+    render_course_segments(d_course_frappe_snowland_dl_list, arg0);
 }
 
 void FrappeSnowland::RenderCredits() {

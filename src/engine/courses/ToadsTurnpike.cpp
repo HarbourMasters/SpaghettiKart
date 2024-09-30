@@ -30,7 +30,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "code_80086E70.h"
-    extern const char *toads_turnpike_dls[];
+    extern const char *d_course_toads_turnpike_dl_list[];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
 }
@@ -196,7 +196,7 @@ void ToadsTurnpike::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments(toads_turnpike_dls, arg0);
+    render_course_segments(d_course_toads_turnpike_dl_list, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
