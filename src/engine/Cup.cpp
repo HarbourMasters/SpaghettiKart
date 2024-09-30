@@ -11,19 +11,23 @@ Cup::Cup(const char* name, std::vector<std::shared_ptr<Course>>& courses) {
 }
 
 void Cup::Next() {
-    if (Index < Courses.size() - 1) {
-        Index++;
+    if (CursorPosition < Courses.size() - 1) {
+        CursorPosition++;
     }
 }
 
 void Cup::Previous() {
-    if (Index > 0) {
-        Index--;
+    if (CursorPosition > 0) {
+        CursorPosition--;
     }
 }
 
 Course* Cup::GetCourse() {
-    return Courses[this->Index].get();
+    return Courses[CursorPosition].get();
+}
+
+size_t Cup::GetSize() {
+    return Courses.size();
 }
 
 // Function to shuffle the courses randomly

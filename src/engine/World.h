@@ -72,13 +72,16 @@ public:
     virtual Object *GetObjectByIndex(size_t);
 
     Cup* AddCup(const char* name, std::vector<std::shared_ptr<Course>> courses);
+    Cup* GetCup();
     const char* GetCupName();
     virtual u32 GetCupIndex();
     virtual void SetCupIndex(int16_t courseId);
     virtual u32 NextCup();
     virtual u32 PreviousCup();
+    virtual void SetCourseFromCup();
 
     World* GetWorld();
+
 
     // These are only for browsing through the course list
     void SetCourse(const char*);
@@ -88,8 +91,9 @@ public:
     // Holds all available courses
 
     Course* CurrentCourse;
+    Cup* CurrentCup;
 
-    std::vector<std::unique_ptr<Cup>> Cups;
+    std::vector<std::shared_ptr<Cup>> Cups;
     size_t CupIndex = 1;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;

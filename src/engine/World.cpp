@@ -14,10 +14,11 @@ extern "C" {
 World::World() {}
 
 Course* CurrentCourse;
+Cup* CurrentCup;
 
 Cup* World::AddCup(const char* name, std::vector<std::shared_ptr<Course>> courses) {
     // Create a new unique_ptr for Cup
-    auto cup = std::make_unique<Cup>(name, courses);
+    auto cup = std::make_shared<Cup>(name, courses);
 
     // Get raw pointer before moving the ownership
     Cup* tmp = cup.get();
@@ -27,6 +28,14 @@ Cup* World::AddCup(const char* name, std::vector<std::shared_ptr<Course>> course
 
     // Return the raw pointer to the Cup
     return tmp;
+}
+
+Cup* World::GetCup() {
+    return Cups[CupIndex].get();
+}
+
+void World::SetCourseFromCup() {
+    CurrentCourse = CurrentCup->GetCourse();
 }
 
 //const char* World::GetCupName() {

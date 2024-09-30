@@ -1704,7 +1704,7 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 
                 D_800DC540 = GetCupIndex();
                 //CourseManager_SetCourse();
-                gCurrentCourseId = gCupCourseOrder[GetCupIndex()][gCupCourseSelection];
+                gCurrentCourseId = gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()];
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1723,18 +1723,21 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                 break;
             case 2:
             case 4:
-                if (((buttonAndStickPress & D_JPAD) != 0) && (gCupCourseSelection < CUP_COURSE_FOUR)) {
+                if (((buttonAndStickPress & D_JPAD) != 0) && (GetCupCursorPosition() < GetCupSize())) {
                     ++gCupCourseSelection;
+                    SetCupCursorPosition(GetCupCursorPosition() + 1);
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                if (((buttonAndStickPress & U_JPAD) != 0) && (gCupCourseSelection > CUP_COURSE_ONE)) {
+                if (((buttonAndStickPress & U_JPAD) != 0) && (GetCupCursorPosition() > CUP_COURSE_ONE)) {
                     --gCupCourseSelection;
+                    SetCupCursorPosition(GetCupCursorPosition() - 1);
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
-                gCurrentCourseId = gCupCourseOrder[GetCupIndex()][gCupCourseSelection];
+                gCurrentCourseId = gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()];
+                SetCourseFromCup();
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     if (D_8018EDEC == 2) {
                         D_8018EDEC = 1;

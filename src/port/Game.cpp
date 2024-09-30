@@ -99,9 +99,9 @@ void CustomEngineInit() {
     Cup* battle = gWorldInstance.AddCup("battle", std::vector<std::shared_ptr<Course>>{
             bigDonut, blockFort, doubleDeck, skyscraper});
 
-
     /* Set default course; mario raceway */
     gWorldInstance.CurrentCourse = marioRaceway.get();
+    gWorldInstance.CurrentCup = mushroom;
 }
 
 extern "C" {
@@ -278,6 +278,21 @@ extern "C" {
         }
     }
 
+    size_t GetCupCursorPosition() {
+        return gWorldInstance.CurrentCup->CursorPosition;
+    }
+
+    void SetCupCursorPosition(size_t position) {
+        gWorldInstance.CurrentCup->CursorPosition = position;
+    }
+
+    size_t GetCupSize() {
+        return gWorldInstance.CurrentCup->GetSize();
+    }
+
+    void SetCourseFromCup() {
+        gWorldInstance.CurrentCourse = gWorldInstance.CurrentCup->GetCourse();
+    }
 }
 
 void push_frame() {

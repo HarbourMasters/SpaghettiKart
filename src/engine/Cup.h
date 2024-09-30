@@ -11,7 +11,7 @@ class Cup {
 public:
     const char* Name;
     u8 *Thumbnail;
-    size_t Index = 0;
+    size_t CursorPosition = 0; // Course index in cup
     std::vector<std::shared_ptr<Course>> Courses;
 
     explicit Cup(const char* name, std::vector<std::shared_ptr<Course>>& courses);
@@ -21,4 +21,5 @@ public:
     virtual void Next();
     virtual void Previous();
     virtual Course* GetCourse();
+    virtual size_t GetSize();
 };
