@@ -165,12 +165,14 @@ enum PlayerId {
  * the battle courses could be displayed in the same
  * way race courses are.
  */
-#define MUSHROOM_CUP 0
-#define FLOWER_CUP 1
-#define STAR_CUP 2
-#define SPECIAL_CUP 3
-#define BATTLE_CUP 4
-#define NUM_CUPS 5
+enum { MUSHROOM_CUP, FLOWER_CUP, STAR_CUP, SPECIAL_CUP, BATTLE_CUP, NUM_CUPS };
+
+#define NUM_COURSES_PER_CUP 4
+
+/**
+ * @brief Options for gCourseIndexInCup
+ */
+enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 
 /**
  * @brief Character IDs
@@ -297,12 +299,6 @@ enum PlayerId {
 #define DEMO_SIX 5   // Mario Luigi Peach Toad, Sherbert Land,   Versus
 #define NUM_DEMOS 6
 
-#define CUP_COURSE_ONE 0
-#define CUP_COURSE_TWO 1
-#define CUP_COURSE_THREE 2
-#define CUP_COURSE_FOUR 3
-#define NUM_COURSES_PER_CUP 4
-
 /**
  * @brief Item IDs
  */
@@ -339,6 +335,13 @@ enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_9,
     BEHAVIOUR_10,
     BEHAVIOUR_MAX_SPEED
+};
+
+enum DIRECTION {
+    NORTH,
+    EAST,
+    SOUTH,
+    WEST
 };
 
 /**

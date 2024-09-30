@@ -62,112 +62,127 @@ D_02007818:
   symbol: D_02007818
   type: Gfx
   offset: 0x7818
-D_02007838:
-  symbol: D_02007838
-  type: Gfx
-  offset: 0x7838
-D_02007858:
-  symbol: D_02007858
-  type: Gfx
-  offset: 0x7858
-D_02007878:
-  symbol: D_02007878
-  type: Gfx
-  offset: 0x7878
-D_02007898:
-  symbol: D_02007898
-  type: Gfx
-  offset: 0x7898
-D_020078B8:
-  symbol: D_020078B8
-  type: Gfx
-  offset: 0x78B8
-D_020078D8:
-  symbol: D_020078D8
-  type: Gfx
-  offset: 0x78D8
-D_020078F8:
-  symbol: D_020078F8
-  type: Gfx
-  offset: 0x78F8
-D_02007918:
-  symbol: D_02007918
-  type: Gfx
-  offset: 0x7918
-D_02007938:
-  symbol: D_02007938
-  type: Gfx
-  offset: 0x7938
-D_02007958:
-  symbol: D_02007958
-  type: Gfx
-  offset: 0x7958
-D_02007978:
-  symbol: D_02007978
-  type: Gfx
-  offset: 0x7978
-D_02007998:
-  symbol: D_02007998
-  type: Gfx
-  offset: 0x7998
-D_020079B8:
-  symbol: D_020079B8
-  type: Gfx
-  offset: 0x79B8
-D_020079D8:
-  symbol: D_020079D8
-  type: Gfx
-  offset: 0x79D8
-D_020079F8:
-  symbol: D_020079F8
-  type: Gfx
-  offset: 0x79F8
-D_02007A18:
-  symbol: D_02007A18
-  type: Gfx
-  offset: 0x7A18
-D_02007A38:
-  symbol: D_02007A38
-  type: Gfx
-  offset: 0x7A38
-D_02007A58:
-  symbol: D_02007A58
-  type: Gfx
-  offset: 0x7A58
-D_02007A78:
-  symbol: D_02007A78
-  type: Gfx
-  offset: 0x7A78
-D_02007A98:
-  symbol: D_02007A98
-  type: Gfx
-  offset: 0x7A98
-D_02007AB8:
-  symbol: D_02007AB8
-  type: Gfx
-  offset: 0x7AB8
-D_02007AD8:
-  symbol: D_02007AD8
-  type: Gfx
-  offset: 0x7AD8
-D_02007AF8:
-  symbol: D_02007AF8
-  type: Gfx
-  offset: 0x7AF8
-D_02007B18:
-  symbol: D_02007B18
-  type: Gfx
-  offset: 0x7B18
+#D_02007838:
+#  symbol: D_02007838
+#  type: Gfx
+#  offset: 0x7838
+#D_02007858:
+#  symbol: D_02007858
+#  type: Gfx
+#  offset: 0x7858
+#D_02007878:
+#  symbol: D_02007878
+#  type: Gfx
+#  offset: 0x7878
+#D_02007898:
+#  symbol: D_02007898
+#  type: Gfx
+#  offset: 0x7898
+#D_020078B8:
+#  symbol: D_020078B8
+#  type: Gfx
+#  offset: 0x78B8
+#D_020078D8:
+#  symbol: D_020078D8
+#  type: Gfx
+#  offset: 0x78D8
+#D_020078F8:
+#  symbol: D_020078F8
+#  type: Gfx
+#  offset: 0x78F8
+#D_02007918:
+#  symbol: D_02007918
+#  type: Gfx
+#  offset: 0x7918
+#D_02007938:
+#  symbol: D_02007938
+#  type: Gfx
+#  offset: 0x7938
+#D_02007958:
+#  symbol: D_02007958
+#  type: Gfx
+#  offset: 0x7958
+#D_02007978:
+#  symbol: D_02007978
+#  type: Gfx
+#  offset: 0x7978
+#D_02007998:
+#  symbol: D_02007998
+#  type: Gfx
+#  offset: 0x7998
+#D_020079B8:
+#  symbol: D_020079B8
+#  type: Gfx
+#  offset: 0x79B8
+#D_020079D8:
+#  symbol: D_020079D8
+#  type: Gfx
+#  offset: 0x79D8
+#D_020079F8:
+#  symbol: D_020079F8
+#  type: Gfx
+#  offset: 0x79F8
+#D_02007A18:
+#  symbol: D_02007A18
+#  type: Gfx
+#  offset: 0x7A18
+#D_02007A38:
+#  symbol: D_02007A38
+#  type: Gfx
+#  offset: 0x7A38
+#D_02007A58:
+#  symbol: D_02007A58
+#  type: Gfx
+#  offset: 0x7A58
+#D_02007A78:
+#  symbol: D_02007A78
+#  type: Gfx
+#  offset: 0x7A78
+#D_02007A98:
+#  symbol: D_02007A98
+#  type: Gfx
+#  offset: 0x7A98
+#D_02007AB8:
+#  symbol: D_02007AB8
+#  type: Gfx
+#  offset: 0x7AB8
+#D_02007AD8:
+#  symbol: D_02007AD8
+#  type: Gfx
+#  offset: 0x7AD8
+#D_02007AF8:
+#  symbol: D_02007AF8
+#  type: Gfx
+#  offset: 0x7AF8
+#D_02007B18:
+#  symbol: D_02007B18
+#  type: Gfx
+#  offset: 0x7B18
 D_02007B38: # unused
   symbol: D_02007B38
   type: vtx
   offset: 0x7B38
-  count: 8
+  count: 4
+D_02007B78: # unused
+  symbol: D_02007B78
+  type: vtx
+  offset: 0x7B78
+  count: 4
 D_02007BB8:
   symbol: D_02007BB8
   type: vtx
   offset: 0x7BB8
-  count: 52
+  count: 18
+D_02007CD8:
+  symbol: D_02007CD8
+  type: vtx
+  offset: 0x7CD8
+  count: 18
+D_02007DF8:
+  symbol: D_02007DF8
+  type: vtx
+  offset: 0x7DF8
+  count: 18
 D_02007F18:
   symbol: D_02007F18
   type: gfx

@@ -468,11 +468,9 @@ void DrawEnhancementsMenu() {
         UIWidgets::WindowButton("Multiplayer", "gMultiplayerWindowEnabled", GameUI::mMultiplayerWindow,
                                 { .tooltip = "Shows the multiplayer window" });
 
-
         if (UIWidgets::BeginMenu("Gameplay")) {
-            UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow, {
-                .tooltip = "Allows you to fly around the course"
-            });
+            UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow,
+                                    { .tooltip = "Allows you to fly around the course" });
             UIWidgets::CVarCheckbox(
                 "No Level of Detail (LOD)", "gDisableLod",
                 { .tooltip = "Disable Level of Detail (LOD) to avoid models using lower poly versions at a distance" });
@@ -485,7 +483,6 @@ void DrawEnhancementsMenu() {
                 "Far Frustrum", "gFarFrustrum", 0.0f, 10000.0f, 10000.0f,
                 { .tooltip = "Say how Far the Frustrum are when 'Disable Culling' are enable", .step = 10.0f });
             ImGui::EndMenu();
-
         }
 
         ImGui::EndMenu();
@@ -515,9 +512,7 @@ void DrawDebugMenu() {
             { .tooltip =
                   "Enables the Gfx Debugger window, allowing you to input commands, type help for some examples" });
 
-        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", {
-            .tooltip = "Enable debug mode"
-        });
+        UIWidgets::CVarCheckbox("Debug mode", "gEnableDebugMode", { .tooltip = "Enable debug mode" });
 
         UIWidgets::CVarCheckbox("Level Selector", "gLevelSelector",
                                 { .tooltip = "Allows you to select any level from the main menu" });
@@ -525,9 +520,8 @@ void DrawDebugMenu() {
         UIWidgets::CVarCheckbox("SFX Jukebox", "gSfxJukebox",
                                 { .tooltip = "Allows you to play sound effects from the game" });
 
-        UIWidgets::CVarCheckbox("Render Collision", "gRenderCollisionMesh", {
-            .tooltip = "Renders the collision mesh instead of the course mesh"
-        });
+        UIWidgets::CVarCheckbox("Render Collision", "gRenderCollisionMesh",
+                                { .tooltip = "Renders the collision mesh instead of the course mesh" });
 
         UIWidgets::Spacer(0);
 

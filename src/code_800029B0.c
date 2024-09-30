@@ -188,8 +188,7 @@ void setup_race(void) {
         gCourseDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
-        gCurrentCourseId = gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()];
-        //SetCourse();
+        gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
         SetCourseFromCup();
     }
     gActiveScreenMode = gScreenModeSelection;

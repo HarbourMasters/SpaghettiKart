@@ -9,6 +9,8 @@ extern u8 leoDiskStack[OS_PIM_STACKSIZE]; // technically should have a OS_LEO_ST
 
 extern u32 D_800EA5F0;
 
+u8 leoDiskStack[OS_PIM_STACKSIZE]; // technically should have a OS_LEO_STACKSIZE or something..
+
 s32 __osLeoInterrupt() {
     u32 stat;
     volatile u32 pistat;

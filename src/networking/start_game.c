@@ -54,7 +54,8 @@ void set_course(const char* data) {
     if (data != NULL) {
         SetCupIndex(data[0]);
         gCupSelection = data[0];
-        gCurrentCourseId = gCupCourseOrder[GetCupIndex()][CUP_COURSE_ONE];
+        //gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
+        //! @todo SetCourse();
     }
 }
 
@@ -122,7 +123,7 @@ void networking_start_session(const char* data) {
     gGamestateNext = RACING;
     gCCSelection = CC_150;
     // gCupSelection = FLOWER_CUP;
-    gCupCourseSelection = CUP_COURSE_ONE;
+    gCourseIndexInCup = COURSE_ONE;
     gScreenModeSelection = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     gPlayerCount = 1;

@@ -143,7 +143,6 @@ void func_8028E298(void) {
 void func_8028E3A0(void) {
 
     if (D_80150120) {
-
         if (GetCupCursorPosition() == GetCupSize()) {// CUP_COURSE_FOUR) {
             gGotoMode = ENDING;
         } else {
@@ -154,7 +153,7 @@ void func_8028E3A0(void) {
         }
     } else {
         D_800DC544++;
-        gCupCourseSelection++;
+        gCourseIndexInCup++;
         SetCupCursorPosition(GetCupCursorPosition() + 1);
         gGotoMode = RACING;
     }

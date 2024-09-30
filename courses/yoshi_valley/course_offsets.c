@@ -3,7 +3,24 @@
 #include <assets/other_textures.h>
 #include <assets/yoshi_valley_data.h>
 
-course_texture yoshi_valley_textures[] = {
+#ifdef TARGET_N64
+extern u8 gTexture66EBF0[];
+extern u8 gTextureWoodBridgeSlats[];
+extern u8 gTexture65E2EC[];
+extern u8 gTexture6846DC[];
+extern u8 gTextureFenceRope[];
+extern u8 gTexture685108[];
+extern u8 gTexture64CC20[];
+extern u8 gTextureGrass4[];
+extern u8 gTexture6775EC[];
+extern u8 gTexture68E2D0[];
+extern u8 gTextureCheckerboardBlackWhite[];
+extern u8 gTexture643B3C[];
+extern u8 gTextureSignWoodRedArrow[];
+extern u8 gTexture68DEC0[];
+#endif
+
+const course_texture yoshi_valley_textures[] = {
     { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
     { gTextureWoodBridgeSlats, 0x0DAB, 0x1000, 0x0 },
     { gTexture65E2EC, 0x02B0, 0x0800, 0x0 },
@@ -21,7 +38,7 @@ course_texture yoshi_valley_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-Gfx* yoshi_valley_dls[] = {
+Gfx* d_course_yoshi_valley_dl_list[] = {
     d_course_yoshi_valley_dl_40,   d_course_yoshi_valley_dl_3F0,  d_course_yoshi_valley_dl_290,
     d_course_yoshi_valley_dl_4E8,  d_course_yoshi_valley_dl_7A0,  d_course_yoshi_valley_dl_BC0,
     d_course_yoshi_valley_dl_9C8,  d_course_yoshi_valley_dl_CC0, // <- No idea what this is supposed to be a pointer to

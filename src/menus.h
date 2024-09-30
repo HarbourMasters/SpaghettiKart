@@ -70,7 +70,7 @@ extern s32 gMenuDelayTimer;
 extern s8 D_8018EE08;
 extern s8 gCupSelection;
 extern s8 D_8018EE0A;
-extern s8 gCupCourseSelection;
+extern s8 gCourseIndexInCup;
 extern s8 D_8018EE0C;
 extern struct_8018EE10_entry D_8018EE10[];
 
@@ -89,14 +89,14 @@ extern u32 sVIGammaOffDitherOn;
 
 extern const s8 D_800F2B50[5];
 extern const s8 D_800F2B58[5];
-extern const s8 D_800F2B60[5][3];
-extern const s32 gGameModeFromNumPlayersAndRowSelection[5][3];
+extern const s8 gPlayerModeSelection[];
+extern const s8 gGameModePlayerColumnDefault[][3];
+extern const s8 gGameModePlayerColumnExtra[][3];
+extern const s32 gGameModePlayerSelection[][3];
 extern const s8 D_800F2BAC[8];
 extern const s16 gCupCourseOrder[NUM_CUPS][NUM_COURSES_PER_CUP];
 
-extern const s8 D_800F2BDC[8];
-
-extern const union GameModePack D_800F2BE4;
+extern const union GameModePack gSoundMenuPack;
 
 // end of menus.c variables
 

@@ -325,14 +325,14 @@ f32 calculate_delta_time(void) {
     f32 deltaTime;
 
     if (now > prevtime) {
-        deltaTime = (f32)(now - prevtime) / OS_CPU_COUNTER;
+        deltaTime = (f32) (now - prevtime) / OS_CPU_COUNTER;
     } else {
         // Handle counter reset
-        deltaTime = (f32)((0xffffffff - prevtime) + 1 + now) / OS_CPU_COUNTER;
+        deltaTime = (f32) ((0xffffffff - prevtime) + 1 + now) / OS_CPU_COUNTER;
     }
 
     prevtime = now;
-    
+
     // Cap deltaTime to avoid large jumps (e.g., on pause/resume)
     if (deltaTime > 1.0f / 15.0f) { // Assume 15 FPS is the lowest acceptable rate
         deltaTime = 1.0f / 15.0f;

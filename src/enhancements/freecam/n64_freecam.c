@@ -7,6 +7,8 @@
 #include "camera.h"
 #include <common_structs.h>
 #include "player_controller.h"
+#include "collision.h"
+#include "freecam_engine.h"
 
 #define N64_SENSITIVITY_X 0.0003f
 #define N64_SENSITIVITY_Y 0.0003f
@@ -26,7 +28,7 @@ void freecam_n64_calculate_forward_vector(Camera* camera, Vec3f forwardVector) {
 }
 
 // Function to move the camera forward
-void freecam_n64_move_camera_forward(Camera* camera, struct Controller *controller, f32 distance) {
+void freecam_n64_move_camera_forward(Camera* camera, struct Controller* controller, f32 distance) {
     Vec3f forwardVector;
     Vec3f rightVector;
     f32 length;
@@ -37,7 +39,8 @@ void freecam_n64_move_camera_forward(Camera* camera, struct Controller *controll
     }
 
     // Normalize the forward vector
-    length = sqrtf(forwardVector[0] * forwardVector[0] + forwardVector[1] * forwardVector[1] + forwardVector[2] * forwardVector[2]);
+    length = sqrtf(forwardVector[0] * forwardVector[0] + forwardVector[1] * forwardVector[1] +
+                   forwardVector[2] * forwardVector[2]);
     forwardVector[0] /= length;
     forwardVector[1] /= length;
     forwardVector[2] /= length;
@@ -59,7 +62,7 @@ void freecam_n64_move_camera_forward(Camera* camera, struct Controller *controll
 }
 
 // Function to move the camera forward
-void freecam_n64_move_camera_up(Camera* camera, struct Controller *controller, f32 distance) {
+void freecam_n64_move_camera_up(Camera* camera, struct Controller* controller, f32 distance) {
     // Check if the Z button is pressed (for faster movement)
     if (controller->button & Z_TRIG) {
         distance *= 3;
@@ -73,7 +76,7 @@ void freecam_n64_move_camera_up(Camera* camera, struct Controller *controller, f
 }
 
 // Update camera rotation and lookAt point based on input
-void freecam_n64_update(Camera* camera, struct Controller *controller) {
+void freecam_n64_update(Camera* camera, struct Controller* controller) {
     // Calculate yaw (horizontal movement)
     f32 yawChange = controller->rawStickX * N64_SENSITIVITY_X;
     f32 pitchChange = controller->rawStickY * N64_SENSITIVITY_Y;
@@ -81,9 +84,9 @@ void freecam_n64_update(Camera* camera, struct Controller *controller) {
 
     check_bounding_collision(&camera->collision, 50, camera->pos[0], camera->pos[1], camera->pos[2]);
 
-    camera->rot[1] += (short)(yawChange * 65535.0f / (2 * M_PI)); // Convert radians to 0-65535 range
+    camera->rot[1] += (short) (yawChange * 65535.0f / (2 * M_PI)); // Convert radians to 0-65535 range
 
-    camera->rot[2] += (short)(-pitchChange * 65535.0f / (2 * M_PI)); // Convert radians to 0-65535 range
+    camera->rot[2] += (short) (-pitchChange * 65535.0f / (2 * M_PI)); // Convert radians to 0-65535 range
 
     if (camera->rot[2] > 15999) {
         camera->rot[2] = 15999;

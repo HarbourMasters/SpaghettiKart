@@ -60,7 +60,7 @@ extern Animation d_rainbow_road_unk2;
 extern Animation* d_rainbow_road_unk3[];
 extern u32 d_rainbow_road_unk5[];
 
-extern Gfx* koopa_troopa_beach_dls1[];
+extern Gfx* d_course_koopa_troopa_beach_dl_list1[];
 extern Gfx* koopa_troopa_beach_dls2[];
 extern uintptr_t d_course_koopa_troopa_beach_unk_data1[];
 extern s16 d_course_koopa_troopa_beach_unk_data2[];

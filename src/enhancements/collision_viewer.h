@@ -5,5 +5,4 @@
 
 void render_collision(void);
 
-
 #endif // COLLISION_VIEWER_H

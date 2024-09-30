@@ -13,6 +13,9 @@
 #include <SDL2/SDL.h>
 #include "freecam_engine.h"
 #include "n64_freecam.h"
+#include "math_util.h"
+#include "skybox_and_splitscreen.h"
+#include "freecam.h"
 
 typedef struct {
     Vec3f pos;
@@ -40,10 +43,6 @@ u32 gFreecamControllerType = 0;
 // void freecam_n64_controller_manager(Camera *camera, struct Controller *controller, Player *player);
 // void freecam_target_player(Camera *camera, u32 playerIndex);
 // void freecam_move_camera_up(Camera* camera, struct Controller *controller, f32 distance);
-void freecam_save_state(Camera *camera);
-void freecam_load_state(Camera *camera);
-void freecam_mouse_manager(Camera *camera);
-void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector);
 
 /**
  * Controls
@@ -67,10 +66,10 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector);
  * Camera mode 1: Enter freecam at the player's position
  * Camera mode 2: Enter freecam at previous freecam spot
  *
-*/
+ */
 
-void freecam(Camera *camera, Player *player, s8 index) {
-    struct Controller *controller = &gControllers[0];
+void freecam(Camera* camera, Player* player, s8 index) {
+    struct Controller* controller = &gControllers[0];
     f32 dirX;
     f32 dirY;
     f32 dirZ;
@@ -101,7 +100,7 @@ void freecam(Camera *camera, Player *player, s8 index) {
 
             return;
         } else {
-            if(fMode) {
+            if (fMode) {
                 freecam_save_state(camera);
             }
         }
@@ -114,13 +113,12 @@ void freecam(Camera *camera, Player *player, s8 index) {
         return;
     }
 
-    //if (player == gPlayerOne) { return; }
+    // if (player == gPlayerOne) { return; }
 
-    //player->type &= ~PLAYER_HUMAN;
-    //player->type |= PLAYER_HUMAN;
+    // player->type &= ~PLAYER_HUMAN;
+    // player->type |= PLAYER_HUMAN;
 
     // if ((player->type & PLAYER_START_SEQUENCE)) { return; }
-
 
     // Mouse/Keyboard
     if (gFreecamControllerType == 0) {
@@ -135,7 +133,7 @@ void freecam(Camera *camera, Player *player, s8 index) {
     }
 }
 
-void freecam_save_state(Camera *camera) {
+void freecam_save_state(Camera* camera) {
     fState.pos[0] = camera->pos[0];
     fState.pos[1] = camera->pos[1];
     fState.pos[2] = camera->pos[2];
@@ -150,7 +148,7 @@ void freecam_save_state(Camera *camera) {
     fModeInit = true;
 }
 
-void freecam_load_state(Camera *camera) {
+void freecam_load_state(Camera* camera) {
     camera->pos[0] = fState.pos[0];
     camera->pos[1] = fState.pos[1];
     camera->pos[2] = fState.pos[2];
@@ -182,22 +180,23 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
         f32 pitchChange = mouseY * MOUSE_SENSITIVITY_Y;
 
         // Smoothly update yaw and pitch
-        camera->rot[1] += (short)(yawChange * 65535.0f / (2 * M_PI)); // Yaw (left/right)
-        camera->rot[2] += (short)(pitchChange * 65535.0f / (2 * M_PI)); // Pitch (up/down)
+        camera->rot[1] += (short) (yawChange * 65535.0f / (2 * M_PI));   // Yaw (left/right)
+        camera->rot[2] += (short) (pitchChange * 65535.0f / (2 * M_PI)); // Pitch (up/down)
 
         // Clamp pitch to avoid extreme values
-        if (camera->rot[2] > 15999) camera->rot[2] = 15999;
-        if (camera->rot[2] < -15999) camera->rot[2] = -15999;
+        if (camera->rot[2] > 15999) {
+            camera->rot[2] = 15999;
+        }
+        if (camera->rot[2] < -15999) {
+            camera->rot[2] = -15999;
+        }
 
         // Calculate the forward vector based on the new yaw and pitch
-        //freecam_calculate_forward_vector_allow_rotation(camera, forwardVector);
+        // freecam_calculate_forward_vector_allow_rotation(camera, forwardVector);
 
         // Smoothly interpolate the lookAt position
-        Vec3f targetLookAt = {
-            camera->pos[0] + forwardVector[0],
-            camera->pos[1] + forwardVector[1],
-            camera->pos[2] + forwardVector[2]
-        };
+        Vec3f targetLookAt = { camera->pos[0] + forwardVector[0], camera->pos[1] + forwardVector[1],
+                               camera->pos[2] + forwardVector[2] };
 
         // Smoothing
         camera->lookAt[0] += (targetLookAt[0] - camera->lookAt[0]) * gFreecamRotateSmoothingFactor;
@@ -205,7 +204,6 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
         camera->lookAt[2] += (targetLookAt[2] - camera->lookAt[2]) * gFreecamRotateSmoothingFactor;
     }
 }
-
 
 f32 gFreecamSpeed = 3.0f;
 f32 gFreecamSpeedMultiplier = 2.0f;
@@ -220,8 +218,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     }
 
     // Determine movement direction based on keys pressed
-    Vec3f totalMove = {0.0f, 0.0f, 0.0f};
-
+    Vec3f totalMove = { 0.0f, 0.0f, 0.0f };
 
     // if (keystate[SDL_SCANCODE_F]) {
     //     fMode = true;
@@ -257,7 +254,6 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         return;
     }
 
-
     if (keystate[SDL_SCANCODE_W]) {
         totalMove[0] += forwardVector[0] * moveSpeed;
         totalMove[2] += forwardVector[2] * moveSpeed;
@@ -290,7 +286,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
 }
 
 // Control the camera using the n64 controller
-void freecam_n64_controller_manager(Camera *camera, struct Controller *controller, Player *player) {
+void freecam_n64_controller_manager(Camera* camera, struct Controller* controller, Player* player) {
 
     if (controller->buttonPressed & U_JPAD) {
         fMode = !fMode;
@@ -334,12 +330,12 @@ void freecam_n64_controller_manager(Camera *camera, struct Controller *controlle
     }
 
     // Forward
-    if (controller->button & A_BUTTON)  {
+    if (controller->button & A_BUTTON) {
         freecam_n64_move_camera_forward(camera, controller, 3.0f);
     }
 
     // Backward     B button but not A button.
-    if (controller->button & B_BUTTON && !(controller->button & A_BUTTON))  {
+    if (controller->button & B_BUTTON && !(controller->button & A_BUTTON)) {
         freecam_n64_move_camera_forward(camera, controller, -3.0f);
     }
 
@@ -354,21 +350,22 @@ void freecam_n64_controller_manager(Camera *camera, struct Controller *controlle
 }
 
 void freecam_render_setup(void) {
-        u16 perspNorm;
-        Mat4 matrix;
-        init_rdp();
-        func_802A53A4();
-        init_rdp();
-        func_80057FC4(0);
-        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
-        gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
-        guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
-        gSPPerspNormalize(gDisplayListHead++, perspNorm);
-        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0], camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
-        gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-        mtxf_identity(matrix);
-        gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-        render_set_position(matrix, 0);
-        init_rdp();
+    u16 perspNorm;
+    Mat4 matrix;
+    init_rdp();
+    func_802A53A4();
+    init_rdp();
+    func_80057FC4(0);
+    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    gSPPerspNormalize(gDisplayListHead++, perspNorm);
+    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0],
+             camera1->lookAt[1], camera1->lookAt[2], camera1->up[0], camera1->up[1], camera1->up[2]);
+    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    mtxf_identity(matrix);
+    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    render_set_position(matrix, 0);
+    init_rdp();
 }
