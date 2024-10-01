@@ -44,6 +44,7 @@
 #include "port/Engine.h"
 
 #include "engine/Engine.h"
+const char* GetCupName(void);
 
 u16* D_8018D9B0;
 u8* D_8018D9B4;

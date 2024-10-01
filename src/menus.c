@@ -1699,7 +1699,6 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                     //if (GetCupIndex() < SPECIAL_CUP) {
                         D_8018EE0A = WorldNextCup();
                         //++gCupSelection;
-                        //WorldNextCup();
                         func_800B44AC();
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
                     //}
@@ -1707,7 +1706,6 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                 if (((buttonAndStickPress & L_JPAD) != 0)) {
                     D_8018EE0A = WorldPreviousCup();
                     //--gCupSelection;
-                    //WorldPreviousCup();
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
