@@ -201,6 +201,10 @@ void YoshiValley::GenerateCollision() {
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
+void YoshiValley::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+}
+
 void YoshiValley::Water() {}
 
 void YoshiValley::Destroy() {}

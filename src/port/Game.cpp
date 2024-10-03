@@ -228,6 +228,12 @@ extern "C" {
         }
     }
 
+    void CourseManager_Waypoints(Player* player, int8_t playerId) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->Waypoints(player, playerId);
+        }
+    }
+
     void CourseManager_GenerateCollision() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->GenerateCollision();

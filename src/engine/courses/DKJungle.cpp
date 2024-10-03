@@ -270,4 +270,16 @@ void DKJungle::GenerateCollision() {
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 120, 255, 255, 255);
 }
 
+void DKJungle::Waypoints(Player* player, int8_t playerId) {
+    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
+        player->nearestWaypointId = 0xB9U;
+    } else {
+        player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+        if (player->nearestWaypointId < 0) {
+            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        }
+    }
+}
+
 void DKJungle::Destroy() { }

@@ -41,5 +41,6 @@ public:
     virtual void Collision() override;
     virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
+    virtual void Waypoints(Player* player, int8_t playerId) override;
     virtual void Destroy() override;
 };

@@ -152,4 +152,8 @@ void DoubleDeck::GenerateCollision() {
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
+void DoubleDeck::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = 0;
+}
+
 void DoubleDeck::Destroy() { }

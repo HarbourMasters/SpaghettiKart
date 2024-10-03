@@ -168,4 +168,8 @@ void Skyscraper::GenerateCollision() {
     D_8015F8E4 = -480.0f;
 }
 
+void Skyscraper::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = 0;
+}
+
 void Skyscraper::Destroy() { }

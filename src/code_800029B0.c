@@ -252,40 +252,40 @@ void func_80002DAC(void) {
 
     CourseManager_SomeSounds();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-           // vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
-           // func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            vec3f_set(D_8015F748, 177.0f, 87.0f, -393.0f);
-            func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            vec3f_set(D_8015F748, 85.0f, 21.0f, -219.0f);
-            func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-            break;
-        case COURSE_WARIO_STADIUM:
-            vec3f_set(D_8015F748, 298.0f, 202.0f, -850.0f);
-            func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-            vec3f_set(D_8015F758, -1600.0f, 202.0f, -2430.0f);
-            func_800C9D80(D_8015F758, D_802B91C8, 0x5103700B);
-            vec3f_set(D_8015F768, -2708.0f, 202.0f, 1762.0f);
-            func_800C9D80(D_8015F768, D_802B91C8, 0x5103700B);
-            vec3f_set(D_8015F778, -775.0f, 202.0f, 1930.0f);
-            func_800C9D80(D_8015F778, D_802B91C8, 0x5103700B);
-            break;
-        case COURSE_KOOPA_BEACH:
-            vec3f_set(D_8015F738, 153.0f, 0.0f, 2319.0f);
-            func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
-            break;
-        case COURSE_DK_JUNGLE:
-            vec3f_set(D_8015F738, -790.0f, -255.0f, -447.0f);
-            func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
-            break;
-        default:
-            break;
-    }
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //        // vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
+    //        // func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
+    //         break;
+    //     case COURSE_ROYAL_RACEWAY:
+    //         vec3f_set(D_8015F748, 177.0f, 87.0f, -393.0f);
+    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         vec3f_set(D_8015F748, 85.0f, 21.0f, -219.0f);
+    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         vec3f_set(D_8015F748, 298.0f, 202.0f, -850.0f);
+    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
+    //         vec3f_set(D_8015F758, -1600.0f, 202.0f, -2430.0f);
+    //         func_800C9D80(D_8015F758, D_802B91C8, 0x5103700B);
+    //         vec3f_set(D_8015F768, -2708.0f, 202.0f, 1762.0f);
+    //         func_800C9D80(D_8015F768, D_802B91C8, 0x5103700B);
+    //         vec3f_set(D_8015F778, -775.0f, 202.0f, 1930.0f);
+    //         func_800C9D80(D_8015F778, D_802B91C8, 0x5103700B);
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         vec3f_set(D_8015F738, 153.0f, 0.0f, 2319.0f);
+    //         func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         vec3f_set(D_8015F738, -790.0f, -255.0f, -447.0f);
+    //         func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
+    //         break;
+    //     default:
+    //         break;
+    // }
 }
 
 /**
@@ -315,84 +315,84 @@ void func_80003040(void) {
 
     CourseManager_SetCourseVtxColours();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY: {
-            dma_textures(gTextureTrees1, 0x35B, 0x800);
-            spawn_foliage(d_course_mario_raceway_tree_spawns);
-            break;
-        }
-        case COURSE_BOWSER_CASTLE:
-            // d_course_bowsers_castle_packed_dl_1350
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001350), 0x32, 0, 0, 0);
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            // d_course_banshee_boardwalk_packed_dl_878
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), -0x80, 0, 0, 0);
-            break;
-        case COURSE_YOSHI_VALLEY:
-            vec3f_set(position, -2300.0f, 0.0f, 634.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
-            break;
-        case COURSE_MOO_MOO_FARM:
-            dma_textures(gTextureTrees4Left, 0x3E8, 0x800);
-            dma_textures(gTextureTrees4Right, 0x3E8, 0x800);
-            dma_textures(gTextureCow01Left, 0x400, 0x800);
-            dma_textures(gTextureCow01Right, 0x400, 0x800);
-            dma_textures(gTextureCow02Left, 0x400, 0x800);
-            dma_textures(gTextureCow02Right, 0x400, 0x800);
-            dma_textures(gTextureCow03Left, 0x400, 0x800);
-            dma_textures(gTextureCow03Right, 0x400, 0x800);
-            dma_textures(gTextureCow04Left, 0x400, 0x800);
-            dma_textures(gTextureCow04Right, 0x400, 0x800);
-            dma_textures(gTextureCow05Left, 0x400, 0x800);
-            dma_textures(gTextureCow05Right, 0x400, 0x800);
-            spawn_foliage(d_course_moo_moo_farm_tree_spawn);
-            break;
-        case COURSE_SHERBET_LAND:
-            // d_course_sherbet_land_packed_dl_1EB8
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001EB8), -0x4C, 0xFF, 0xFF, 0xFF);
-            // d_course_sherbet_land_packed_dl_2308
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            // d_course_rainbow_road_packed_dl_2068
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002068), -0x6A, 0xFF, 0xFF, 0xFF);
-            // d_course_rainbow_road_packed_dl_1E18
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001E18), -0x6A, 0xFF, 0xFF, 0xFF);
-            // d_course_rainbow_road_packed_dl_1318
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001318), -1, 0xFF, 0xFF, 0);
-            break;
-        case COURSE_WARIO_STADIUM:
-            vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            // d_course_wario_stadium_packed_dl_C50
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000C50), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_BD8
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000BD8), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_B60
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000B60), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_AE8
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000AE8), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_CC8
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000CC8), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_D50
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000D50), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_DD0
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000DD0), 0x64, 0xFF, 0xFF, 0xFF);
-            // d_course_wario_stadium_packed_dl_E48
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000E48), 0x64, 0xFF, 0xFF, 0xFF);
-            break;
-        case COURSE_DK_JUNGLE:
-            // d_course_dks_jungle_parkway_packed_dl_3FA8
-            find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07003FA8), 0x78, 0xFF, 0xFF, 0xFF);
-            break;
-        default:
-            break;
-    }
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY: {
+    //         dma_textures(gTextureTrees1, 0x35B, 0x800);
+    //         spawn_foliage(d_course_mario_raceway_tree_spawns);
+    //         break;
+    //     }
+    //     case COURSE_BOWSER_CASTLE:
+    //         // d_course_bowsers_castle_packed_dl_1350
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001350), 0x32, 0, 0, 0);
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         // d_course_banshee_boardwalk_packed_dl_878
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000878), -0x80, 0, 0, 0);
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
+    //         position[0] *= gCourseDirection;
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         dma_textures(gTextureTrees4Left, 0x3E8, 0x800);
+    //         dma_textures(gTextureTrees4Right, 0x3E8, 0x800);
+    //         dma_textures(gTextureCow01Left, 0x400, 0x800);
+    //         dma_textures(gTextureCow01Right, 0x400, 0x800);
+    //         dma_textures(gTextureCow02Left, 0x400, 0x800);
+    //         dma_textures(gTextureCow02Right, 0x400, 0x800);
+    //         dma_textures(gTextureCow03Left, 0x400, 0x800);
+    //         dma_textures(gTextureCow03Right, 0x400, 0x800);
+    //         dma_textures(gTextureCow04Left, 0x400, 0x800);
+    //         dma_textures(gTextureCow04Right, 0x400, 0x800);
+    //         dma_textures(gTextureCow05Left, 0x400, 0x800);
+    //         dma_textures(gTextureCow05Right, 0x400, 0x800);
+    //         spawn_foliage(d_course_moo_moo_farm_tree_spawn);
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         // d_course_sherbet_land_packed_dl_1EB8
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001EB8), -0x4C, 0xFF, 0xFF, 0xFF);
+    //         // d_course_sherbet_land_packed_dl_2308
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         // d_course_rainbow_road_packed_dl_2068
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07002068), -0x6A, 0xFF, 0xFF, 0xFF);
+    //         // d_course_rainbow_road_packed_dl_1E18
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001E18), -0x6A, 0xFF, 0xFF, 0xFF);
+    //         // d_course_rainbow_road_packed_dl_1318
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07001318), -1, 0xFF, 0xFF, 0);
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         // d_course_wario_stadium_packed_dl_C50
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000C50), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_BD8
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000BD8), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_B60
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000B60), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_AE8
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000AE8), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_CC8
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000CC8), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_D50
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000D50), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_DD0
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000DD0), 0x64, 0xFF, 0xFF, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_E48
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07000E48), 0x64, 0xFF, 0xFF, 0xFF);
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         // d_course_dks_jungle_parkway_packed_dl_3FA8
+    //         find_vtx_and_set_colours(segmented_gfx_to_virtual(0x07003FA8), 0x78, 0xFF, 0xFF, 0xFF);
+    //         break;
+    //     default:
+    //         break;
+    // }
     gNumPermanentActors = gNumActors;
 }

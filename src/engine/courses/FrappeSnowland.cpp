@@ -224,6 +224,19 @@ void FrappeSnowland::GenerateCollision() {
     D_8015F8E4 = -50.0f;
 }
 
+void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {
+    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+
+    if ((waypoint >= 0xF0) && (waypoint < 0x105)) {
+        player->nearestWaypointId = 0xF0U;
+    } else {
+        player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+        if (player->nearestWaypointId < 0) {
+            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        }
+    }
+}
+
 void FrappeSnowland::Water() {}
 
 void FrappeSnowland::Destroy() {}

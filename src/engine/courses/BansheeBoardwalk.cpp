@@ -276,4 +276,16 @@ void BansheeBoardwalk::Water() {
     find_and_set_tile_size((uintptr_t) LOAD_ASSET_RAW(d_course_banshee_boardwalk_dl_B278), 0, D_802B87BC);
 }
 
+void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {
+    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    if ((waypoint >= 0x12C) && (waypoint < 0x13C)) {
+        player->nearestWaypointId = 0x12CU;
+    } else {
+        player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+        if (player->nearestWaypointId < 0) {
+            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        }
+    }
+}
+
 void BansheeBoardwalk::Destroy() { }

@@ -297,7 +297,6 @@ extern u16 D_80163240[];
 extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
-// Exact pointer type unknown
 extern KartAIBehaviour* sCurrentKartAIBehaviour;
 extern u16 gCurrentKartAIBehaviourId[];
 extern u16 gPreviousKartAIBehaviourId[];

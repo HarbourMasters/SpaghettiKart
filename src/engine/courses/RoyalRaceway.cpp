@@ -241,4 +241,16 @@ void RoyalRaceway::GenerateCollision() {
     D_8015F8E4 = -60.0f;
 }
 
+void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
+    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
+        player->nearestWaypointId = 0x258U;
+    } else {
+        player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+        if (player->nearestWaypointId < 0) {
+            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        }
+    }
+}
+
 void RoyalRaceway::Destroy() { }

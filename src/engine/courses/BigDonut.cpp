@@ -170,4 +170,8 @@ void BigDonut::GenerateCollision() {
     D_8015F8E4 = 100.0f;
 }
 
+void BigDonut::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = 0;
+}
+
 void BigDonut::Destroy() { }

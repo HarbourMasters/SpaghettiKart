@@ -4000,35 +4000,30 @@ s32 func_80011014(TrackWaypoint* pathDest, TrackWaypoint* path, s32 numPathPoint
                     var_f20_2 = var_f28;
                 } else {
 
-                    switch (gCurrentCourseId) {
-                        case 13:
-                            if (var_f20_2 < (var_f28 - 15.0)) {
-                                var_f20_2 = (f32) var_f28 - 15.0;
-                            }
-                            break;
-                        case 14:
-                            if ((var_s0 >= 1140) && (var_s0 <= 1152)) {
-                                var_f20_2 = var_f28;
-                            } else {
-                                if (var_f20_2 < (var_f28 - 10.0)) {
-                                    var_f20_2 = (f32) (var_f28 - 4.0);
-                                }
-                            }
-                            break;
-                        case 18:
-                            if ((var_s0 > 204) && (var_s0 < 220)) {
-                                var_f20_2 = var_f28;
-                            } else {
-                                if (var_f20_2 < (var_f28 - 10.0)) {
-                                    var_f20_2 = (f32) (var_f28 - 4.0);
-                                }
-                            }
-                            break;
-                        default:
+                    if (GetCourse() == GetRainbowRoad()) {
+                        if (var_f20_2 < (var_f28 - 15.0)) {
+                            var_f20_2 = (f32) var_f28 - 15.0;
+                        }
+                    } else if (GetCourse() == GetWarioStadium()) {
+                        if ((var_s0 >= 1140) && (var_s0 <= 1152)) {
+                            var_f20_2 = var_f28;
+                        } else {
                             if (var_f20_2 < (var_f28 - 10.0)) {
-                                var_f20_2 = (f32) var_f28 - 10.0;
+                                var_f20_2 = (f32) (var_f28 - 4.0);
                             }
-                            break;
+                        }
+                    } else if (GetCourse() == GetDkJungle()) {
+                        if ((var_s0 > 204) && (var_s0 < 220)) {
+                            var_f20_2 = var_f28;
+                        } else {
+                            if (var_f20_2 < (var_f28 - 10.0)) {
+                                var_f20_2 = (f32) (var_f28 - 4.0);
+                            }
+                        }
+                    } else {
+                        if (var_f20_2 < (var_f28 - 10.0)) {
+                            var_f20_2 = (f32) var_f28 - 10.0;
+                        }
                     }
                 }
                 var_f28 = var_f20_2;
@@ -4175,7 +4170,11 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gCurrentKartAIBehaviourId[playerId]];
+    KartAIBehaviour *beh = (KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour);
+
+    sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
+
+
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
@@ -4184,7 +4183,7 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     behaviourType = sCurrentKartAIBehaviour->type;
 
     if ((waypointStart == -1) && (waypointEnd == -1)) {
-        sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][0];
+        sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[0];
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
@@ -4239,7 +4238,7 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
     u32 waypointEnd;
     s32 behaviourType;
 
-    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gPreviousKartAIBehaviourId[playerIndex]];
+    sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
     behaviourType = sCurrentKartAIBehaviour->type;
     waypointEnd = sCurrentKartAIBehaviour->waypointEnd;

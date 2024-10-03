@@ -264,4 +264,18 @@ void BowsersCastle::GenerateCollision() {
     D_8015F8E4 = -50.0f;
 }
 
+void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
+    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    if ((waypoint >= 0x235) && (waypoint < 0x247)) {
+        player->nearestWaypointId = 0x214;
+    } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
+        player->nearestWaypointId = 0x25B;
+    } else {
+        player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+        if (player->nearestWaypointId < 0) {
+            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        }
+    }
+}
+
 void BowsersCastle::Destroy() { }

@@ -205,6 +205,13 @@ World* Course::GetWorld() {
      //&gWorldInstance;
 }
 
+void Course::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+    if (player->nearestWaypointId < 0) {
+        player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    }
+}
+
 void Course::SpawnVehicles() {}
 void Course::UpdateVehicles() {}
 

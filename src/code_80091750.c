@@ -44,6 +44,8 @@
 #include "port/Engine.h"
 
 #include "engine/Engine.h"
+#include "engine/courses/Course.h"
+
 const char* GetCupName(void);
 
 u16* D_8018D9B0;
@@ -5072,25 +5074,25 @@ void func_8009CE64(s32 arg0) {
                         break;
                 }
             }
-            switch (gCurrentCourseId) {
-                case COURSE_BLOCK_FORT:
-                case COURSE_SKYSCRAPER:
-                case COURSE_DOUBLE_DECK:
-                case COURSE_BIG_DONUT:
-                    gModeSelection = 3;
-                    if (gPlayerCountSelection1 == 1) {
-                        gPlayerCount = 2;
-                        gScreenModeSelection = 1;
-                        gPlayerCountSelection1 = gPlayerCount;
-                    }
-                    break;
-                default:
-                    if (gModeSelection == 3) {
-                        gModeSelection = 0;
-                    }
-                    if ((gModeSelection == 2) && (gPlayerCountSelection1 == 1)) {
-                        gModeSelection = 0;
-                    }
+
+            if (GetCourse() == GetBlockFort() ||
+                GetCourse() == GetSkyscraper() ||
+                GetCourse() == GetDoubleDeck() ||
+                GetCourse() == GetBigDonut()) {
+
+                gModeSelection = BATTLE;
+                if (gPlayerCountSelection1 == 1) {
+                    gPlayerCount = 2;
+                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
+                    gPlayerCountSelection1 = gPlayerCount;
+                }
+            } else {
+                if (gModeSelection == 3) {
+                    gModeSelection = 0;
+                }
+                if ((gModeSelection == 2) && (gPlayerCountSelection1 == 1)) {
+                    gModeSelection = 0;
+                }
             }
 
             gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
@@ -6296,7 +6298,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 break;
             case 0x97: /* switch 6 */
                 set_text_color(5);
-                func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
+                func_80093324(arg0->column, arg0->row, CourseManager_GetProps()->Name, arg0->unk1C, arg0->unk24, 1.0f);
                 break;
             case 0x98: /* switch 6 */
                 func_800A2D1C(arg0);
@@ -8118,7 +8120,7 @@ void func_800A6034(struct_8018D9E0_entry* arg0) {
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
-        text = gCourseNames[gCurrentCourseId];
+        text = CourseManager_GetProps()->Name;
         set_text_color((s32) gCurrentCourseId % 4);
         func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
@@ -10719,7 +10721,7 @@ void func_800ABF68(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = 0x140;
             arg0->cursor = 1;
-            arg0->unk20 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
+            arg0->unk20 = 0xA0 - (get_string_width(CourseManager_GetProps()->Name) / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);

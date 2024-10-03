@@ -196,4 +196,8 @@ void RainbowRoad::GenerateCollision() {
     }
 }
 
+void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
+    player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+}
+
 void RainbowRoad::Destroy() {}

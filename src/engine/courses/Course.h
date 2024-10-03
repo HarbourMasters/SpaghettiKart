@@ -112,6 +112,7 @@ public:
     virtual void RenderCredits();
     virtual void SpawnVehicles();
     virtual void UpdateVehicles();
+    virtual void Waypoints(Player* player, int8_t playerId);
     virtual void Collision();
     virtual void GenerateCollision();
     virtual void Water();
