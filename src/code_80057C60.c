@@ -694,7 +694,7 @@ void render_player_snow_effect_four(void) {
 
 void render_object_for_player(s32 cameraId) {
 
-    CourseManager_RenderCourseObjects();
+    CourseManager_RenderCourseObjects(cameraId);
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:

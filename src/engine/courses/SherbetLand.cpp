@@ -124,6 +124,20 @@ void SherbetLand::InitCourseObjects() {
     }
 }
 
+void SherbetLand::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        func_800842C8();
+    }
+    update_penguins();
+}
+
+void SherbetLand::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        func_80052E30(cameraId);
+    }
+    render_object_train_penguins(cameraId);
+}
+
 void SherbetLand::SomeSounds() {
 }
 

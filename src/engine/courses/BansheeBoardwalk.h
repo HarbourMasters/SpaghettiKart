@@ -30,6 +30,8 @@ public:
     //virtual void InitClouds() override;
     virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
+    virtual void UpdateCourseObjects() override;
+    virtual void RenderCourseObjects(s32 cameraId) override;
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;

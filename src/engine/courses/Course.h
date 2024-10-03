@@ -99,7 +99,7 @@ public:
     virtual void MinimapSettings();
     virtual void InitCourseObjects();
     virtual void UpdateCourseObjects();
-    virtual void RenderCourseObjects();
+    virtual void RenderCourseObjects(s32 cameraId);
     virtual void SomeSounds();
     virtual void SetCourseVtxColours();
     virtual void WhatDoesThisDo(Player*, int8_t);

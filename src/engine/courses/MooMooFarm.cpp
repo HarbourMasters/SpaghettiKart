@@ -192,6 +192,18 @@ void MooMooFarm::InitCourseObjects() {
     }
 }
 
+void MooMooFarm::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_moles();
+    }
+}
+
+void MooMooFarm::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_moles(cameraId);
+    }
+}
+
 void MooMooFarm::SomeSounds() {}
 
 void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {

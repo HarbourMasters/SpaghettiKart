@@ -138,6 +138,18 @@ void LuigiRaceway::InitCourseObjects() {
     }
 }
 
+void LuigiRaceway::UpdateCourseObjects() {
+    if (D_80165898 != 0) {
+        update_hot_air_balloon();
+    }
+}
+
+void LuigiRaceway::RenderCourseObjects(s32 cameraId) {
+    if (D_80165898 != 0) {
+        render_object_hot_air_balloon(cameraId);
+    }
+}
+
 void LuigiRaceway::SomeSounds() {
     vec3f_set(D_8015F748, 85.0f, 21.0f, -219.0f);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);

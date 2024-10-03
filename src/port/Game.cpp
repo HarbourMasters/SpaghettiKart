@@ -264,9 +264,9 @@ extern "C" {
         }
     }
 
-    void CourseManager_RenderCourseObjects() {
+    void CourseManager_RenderCourseObjects(s32 cameraId) {
         if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->RenderCourseObjects();
+            gWorldInstance.CurrentCourse->RenderCourseObjects(cameraId);
         }
     }
 

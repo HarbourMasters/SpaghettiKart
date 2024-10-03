@@ -165,6 +165,14 @@ void KalimariDesert::InitCourseObjects() {
     }
 }
 
+void KalimariDesert::UpdateCourseObjects() {
+    update_train_smoke();
+}
+
+void KalimariDesert::RenderCourseObjects(s32 cameraId) {
+    render_object_trains_smoke_particles(cameraId);
+}
+
 void KalimariDesert::SomeSounds() {}
 
 void KalimariDesert::WhatDoesThisDo(Player* player, int8_t playerId) {}

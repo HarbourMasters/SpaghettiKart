@@ -146,6 +146,20 @@ void YoshiValley::InitCourseObjects() {
     }
 }
 
+void YoshiValley::UpdateCourseObjects() {
+    func_80083080();
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_hedgehogs();
+    }
+}
+
+void YoshiValley::RenderCourseObjects(s32 cameraId) {
+    func_80055228(cameraId);
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_hedgehogs(cameraId);
+    }
+}
+
 void YoshiValley::SomeSounds() {
 }
 

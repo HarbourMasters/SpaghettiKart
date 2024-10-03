@@ -121,7 +121,23 @@ void DKJungle::MinimapSettings() {
     D_8018D2E8 = 47;
 }
 
-void DKJungle::InitCourseObjects() {}
+void DKJungle::InitCourseObjects() {
+    for (size_t i = 0; i < NUM_TORCHES; i++) {
+        init_smoke_particles(i);
+        // wtf?
+        if (D_8018CF10) {}
+    }
+}
+
+void DKJungle::UpdateCourseObjects() {
+    update_ferries_smoke_particle();
+}
+
+void DKJungle::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_paddle_boat_smoke_particles(cameraId);
+    }
+}
 
 void DKJungle::SomeSounds() {
     vec3f_set(D_8015F738, -790.0f, -255.0f, -447.0f);

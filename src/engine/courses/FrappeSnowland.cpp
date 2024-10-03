@@ -165,6 +165,19 @@ void FrappeSnowland::InitCourseObjects() {
     }
 }
 
+void FrappeSnowland::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_snowmen();
+    }
+    update_snowflakes();
+}
+
+void FrappeSnowland::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_snowmans(cameraId);
+    }
+}
+
 void FrappeSnowland::SomeSounds() {
 }
 

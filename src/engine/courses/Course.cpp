@@ -164,7 +164,7 @@ void Course::UpdateCourseObjects() {
 
 }
 
-void Course::RenderCourseObjects() {
+void Course::RenderCourseObjects(s32 cameraId) {
 
 }
 

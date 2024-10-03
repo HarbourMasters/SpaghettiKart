@@ -133,6 +133,27 @@ void BansheeBoardwalk::InitCourseObjects() {
     }
 }
 
+void BansheeBoardwalk::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_trash_bin();
+        func_8007E4C4();
+        if (gModeSelection != TIME_TRIALS) {
+            update_bat();
+        }
+        wrapper_update_boos();
+        update_cheep_cheep(0);
+    }
+}
+
+void BansheeBoardwalk::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_trash_bin(cameraId);
+        render_object_bat(cameraId);
+        func_8005217C(cameraId);
+        render_object_boos(cameraId);
+    }
+}
+
 void BansheeBoardwalk::SomeSounds() {
 }
 

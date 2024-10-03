@@ -30,6 +30,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     extern const char *koopa_troopa_beach_dls[];
+    extern s8 gPlayerCount;
 }
 
 KoopaTroopaBeach::KoopaTroopaBeach() {
@@ -142,6 +143,29 @@ void KoopaTroopaBeach::InitCourseObjects() {
         } else {
             gObjectList[objectId].unk_0D5 = 1;
         }
+    }
+}
+
+void KoopaTroopaBeach::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_crabs();
+    }
+    if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+        update_seagulls();
+    }
+}
+
+void KoopaTroopaBeach::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_crabs(cameraId);
+    }
+    if (gGamestate != CREDITS_SEQUENCE) {
+
+        if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
+            render_object_seagulls(cameraId);
+        }
+    } else {
+        render_object_seagulls(cameraId);
     }
 }
 

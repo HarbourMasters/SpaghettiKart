@@ -167,6 +167,16 @@ void BowsersCastle::InitCourseObjects() {
     }
 }
 
+void BowsersCastle::UpdateCourseObjects() {
+    func_80081208();
+    update_flame_particle();
+}
+
+void BowsersCastle::RenderCourseObjects(s32 cameraId) {
+    render_object_thwomps(cameraId);
+    render_object_bowser_flame(cameraId);
+}
+
 void BowsersCastle::SomeSounds() {
 }
 

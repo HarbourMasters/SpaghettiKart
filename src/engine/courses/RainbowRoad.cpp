@@ -135,6 +135,20 @@ void RainbowRoad::InitCourseObjects() {
     }
 }
 
+void RainbowRoad::UpdateCourseObjects() {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        update_neon();
+        update_chain_chomps();
+    }
+}
+
+void RainbowRoad::RenderCourseObjects(s32 cameraId) {
+    if (gGamestate != CREDITS_SEQUENCE) {
+        render_object_neon(cameraId);
+        render_object_chain_chomps(cameraId);
+    }
+}
+
 void RainbowRoad::SomeSounds() {
 }
 
