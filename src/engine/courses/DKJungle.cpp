@@ -222,6 +222,42 @@ void DKJungle::RenderCredits() {
 
 void DKJungle::Collision() {}
 
+void DKJungle::SpawnVehicles() {
+    s16 trainCarYRot;
+    UNUSED Vec3f pad;
+    TrainCarStuff* tempLocomotive;
+    TrainCarStuff* tempTender;
+    TrainCarStuff* tempPassengerCar;
+    Vec3s trainCarRot;
+    VehicleStuff* tempBoxTruck;
+    VehicleStuff* tempSchoolBus;
+    VehicleStuff* tempTankerTruck;
+    VehicleStuff* tempCar;
+    PaddleBoatStuff* tempPaddleWheelBoat;
+    Vec3s paddleWheelBoatRot;
+    s32 loopIndex;
+    s32 loopIndex2;
+    f32 origXPos;
+    f32 origZPos;
+
+    for (loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_BOATS; loopIndex++) {
+        tempPaddleWheelBoat = &gPaddleBoats[loopIndex];
+        if (tempPaddleWheelBoat->isActive == 1) {
+            origXPos = tempPaddleWheelBoat->position[0];
+            origZPos = tempPaddleWheelBoat->position[2];
+            tempPaddleWheelBoat->rotY = update_vehicle_following_waypoint(
+                tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->waypointIndex,
+                tempPaddleWheelBoat->speed);
+            tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
+            tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
+            vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
+            tempPaddleWheelBoat->actorIndex =
+                add_actor_to_empty_slot(tempPaddleWheelBoat->position, paddleWheelBoatRot,
+                                        tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
+        }
+    }
+}
+
 void DKJungle::UpdateVehicles() {
     update_vehicle_paddle_boats();
 }

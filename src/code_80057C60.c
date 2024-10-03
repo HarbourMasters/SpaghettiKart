@@ -696,90 +696,90 @@ void render_object_for_player(s32 cameraId) {
 
     CourseManager_RenderCourseObjects();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-            break;
-        case COURSE_BOWSER_CASTLE:
-            render_object_thwomps(cameraId);
-            render_object_bowser_flame(cameraId);
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_trash_bin(cameraId);
-                render_object_bat(cameraId);
-                func_8005217C(cameraId);
-                render_object_boos(cameraId);
-            }
-            break;
-        case COURSE_YOSHI_VALLEY:
-            func_80055228(cameraId);
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_hedgehogs(cameraId);
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_snowmans(cameraId);
-            }
-            break;
-        case COURSE_KOOPA_BEACH:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_crabs(cameraId);
-            }
-            if (gGamestate != CREDITS_SEQUENCE) {
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //         break;
+    //     case COURSE_CHOCO_MOUNTAIN:
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         render_object_thwomps(cameraId);
+    //         render_object_bowser_flame(cameraId);
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_trash_bin(cameraId);
+    //             render_object_bat(cameraId);
+    //             func_8005217C(cameraId);
+    //             render_object_boos(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         func_80055228(cameraId);
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_hedgehogs(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_snowmans(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_crabs(cameraId);
+    //         }
+    //         if (gGamestate != CREDITS_SEQUENCE) {
 
-                if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_object_seagulls(cameraId);
-                }
-            } else {
-                render_object_seagulls(cameraId);
-            }
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            if (D_80165898 != 0) {
-                render_object_hot_air_balloon(cameraId);
-            }
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_moles(cameraId);
-            }
-            break;
-        case COURSE_TOADS_TURNPIKE:
-            break;
-        case COURSE_KALAMARI_DESERT:
-            render_object_trains_smoke_particles(cameraId);
-            break;
-        case COURSE_SHERBET_LAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                func_80052E30(cameraId);
-            }
-            render_object_train_penguins(cameraId);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_neon(cameraId);
-                render_object_chain_chomps(cameraId);
-            }
-            break;
-        case COURSE_WARIO_STADIUM:
-            break;
-        case COURSE_BLOCK_FORT:
-            break;
-        case COURSE_SKYSCRAPER:
-            break;
-        case COURSE_DOUBLE_DECK:
-            break;
-        case COURSE_DK_JUNGLE:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_paddle_boat_smoke_particles(cameraId);
-            }
-            break;
-    }
+    //             if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
+    //                 render_object_seagulls(cameraId);
+    //             }
+    //         } else {
+    //             render_object_seagulls(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_ROYAL_RACEWAY:
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         if (D_80165898 != 0) {
+    //             render_object_hot_air_balloon(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_moles(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_TOADS_TURNPIKE:
+    //         break;
+    //     case COURSE_KALAMARI_DESERT:
+    //         render_object_trains_smoke_particles(cameraId);
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             func_80052E30(cameraId);
+    //         }
+    //         render_object_train_penguins(cameraId);
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_neon(cameraId);
+    //             render_object_chain_chomps(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         break;
+    //     case COURSE_BLOCK_FORT:
+    //         break;
+    //     case COURSE_SKYSCRAPER:
+    //         break;
+    //     case COURSE_DOUBLE_DECK:
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_paddle_boat_smoke_particles(cameraId);
+    //         }
+    //         break;
+    // }
 
     render_object_smoke_particles(cameraId);
     render_object_leaf_particle(cameraId);
@@ -793,19 +793,16 @@ void render_object_for_player(s32 cameraId) {
 }
 
 void render_snowing_effect(s32 arg0) {
-    switch (gCurrentCourseId) {
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != 9) {
-                if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    render_object_snowflakes_particles();
-                }
-            } else {
+    if (GetCourse() == GetFrappeSnowland()) {
+        if (gGamestate != 9) {
+            if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
                 render_object_snowflakes_particles();
             }
-            break;
-        case COURSE_SHERBET_LAND:
-            render_ice_block(arg0);
-            break;
+        } else {
+            render_object_snowflakes_particles();
+        }
+    } else if (GetCourse() == GetSherbetLand()) {
+        render_ice_block(arg0);
     }
 }
 
@@ -1573,74 +1570,74 @@ void update_object(void) {
 
     CourseManager_UpdateCourseObjects();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-        case COURSE_CHOCO_MOUNTAIN:
-            break;
-        case COURSE_BOWSER_CASTLE:
-            func_80081208();
-            update_flame_particle();
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_trash_bin();
-                func_8007E4C4();
-                if (gModeSelection != TIME_TRIALS) {
-                    update_bat();
-                }
-                wrapper_update_boos();
-                update_cheep_cheep(0);
-            }
-            break;
-        case COURSE_YOSHI_VALLEY:
-            func_80083080();
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_hedgehogs();
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_snowmen();
-            }
-            update_snowflakes();
-            break;
-        case COURSE_KOOPA_BEACH:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_crabs();
-            }
-            if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-                update_seagulls();
-            }
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            if (D_80165898 != 0) {
-                update_hot_air_balloon();
-            }
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_moles();
-            }
-            break;
-        case COURSE_KALAMARI_DESERT:
-            update_train_smoke();
-            break;
-        case COURSE_SHERBET_LAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                func_800842C8();
-            }
-            update_penguins();
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_neon();
-                update_chain_chomps();
-            }
-            break;
-        case COURSE_DK_JUNGLE:
-            update_ferries_smoke_particle();
-            break;
-    }
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //     case COURSE_CHOCO_MOUNTAIN:
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         func_80081208();
+    //         update_flame_particle();
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_trash_bin();
+    //             func_8007E4C4();
+    //             if (gModeSelection != TIME_TRIALS) {
+    //                 update_bat();
+    //             }
+    //             wrapper_update_boos();
+    //             update_cheep_cheep(0);
+    //         }
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         func_80083080();
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_hedgehogs();
+    //         }
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_snowmen();
+    //         }
+    //         update_snowflakes();
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_crabs();
+    //         }
+    //         if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+    //             update_seagulls();
+    //         }
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         if (D_80165898 != 0) {
+    //             update_hot_air_balloon();
+    //         }
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_moles();
+    //         }
+    //         break;
+    //     case COURSE_KALAMARI_DESERT:
+    //         update_train_smoke();
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             func_800842C8();
+    //         }
+    //         update_penguins();
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_neon();
+    //             update_chain_chomps();
+    //         }
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         update_ferries_smoke_particle();
+    //         break;
+    // }
     if (D_80165730 != 0) {
         func_80074EE8();
     }

@@ -2486,17 +2486,14 @@ void func_8004F020(s32 arg0) {
 
     var_f2 = ((D_8018D2C0[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0;
     var_f0 = ((D_8018D2D8[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8;
-    switch (gCurrentCourseId) { /* irregular */
-        case COURSE_MARIO_RACEWAY:
-            var_f0 = var_f0 - 2.0;
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-            var_f0 = var_f0 - 16.0;
-            break;
-        case COURSE_KALAMARI_DESERT:
-            var_f0 = var_f0 + 4.0;
-            break;
+    if (GetCourse() == GetMarioRaceway()) {
+        var_f0 = var_f0 - 2.0;
+    } else if (GetCourse() == GetChocoMountain()) {
+        var_f0 = var_f0 - 16.0;
+    } else if (GetCourse() == GetKalimariDesert()) {
+        var_f0 = var_f0 + 4.0;
     }
+
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
 }
 

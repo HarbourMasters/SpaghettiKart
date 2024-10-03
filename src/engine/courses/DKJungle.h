@@ -38,6 +38,7 @@ public:
     virtual void BeginPlay() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;
+    virtual void SpawnVehicles() override;
     virtual void UpdateVehicles() override;
     virtual void Collision() override;
     virtual void SpawnBombKarts() override;

@@ -109,51 +109,7 @@ void func_80004FF8(void) {
 #endif
 
 void set_staff_ghost(void) {
-    u32 temp_v0; // Appears to be player total lap time.
-
     CourseManager_SetStaffGhost();
-
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            // temp_v0 = func_800B4E24(0) & 0xfffff;
-            // if (temp_v0 <= BLAH) {
-            //     D_80162DD6 = 0;
-            //     D_80162DF4 = 0;
-            // } else {
-            //     D_80162DD6 = 1;
-            //     D_80162DF4 = 1;
-            // }
-            // D_80162DC4 = &d_mario_raceway_staff_ghost;
-            // D_80162DE4 = 0;
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= BLAH2) {
-                D_80162DD6 = 0;
-                D_80162DF4 = 0;
-            } else {
-                D_80162DD6 = 1;
-                D_80162DF4 = 1;
-            }
-            D_80162DC4 = &d_royal_raceway_staff_ghost;
-            D_80162DE4 = 6;
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            temp_v0 = func_800B4E24(0) & 0xfffff;
-            if (temp_v0 <= BLAH3) {
-                D_80162DD6 = 0;
-                D_80162DF4 = 0;
-            } else {
-                D_80162DD6 = 1;
-                D_80162DF4 = 1;
-            }
-            D_80162DC4 = &d_luigi_raceway_staff_ghost;
-            D_80162DE4 = 1;
-            break;
-        default:
-            D_80162DD6 = 1;
-            D_80162DF4 = 1;
-    }
 }
 
 s32 func_800051C4(void) {

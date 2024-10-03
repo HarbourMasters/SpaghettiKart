@@ -14,6 +14,8 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "assets/common_data.h"
     #include "render_objects.h"
+    #include "save.h"
+    #include "staff_ghosts.h"
     #include "Engine.h"
     extern StaffGhost* d_mario_raceway_staff_ghost;
 }
@@ -190,7 +192,8 @@ void Course::MinimapFinishlinePosition() {
 }
 
 void Course::SetStaffGhost() {
-
+    D_80162DD6 = 1;
+    D_80162DF4 = 1;
 }
 
 void Course::SpawnBombKarts() {
@@ -202,6 +205,7 @@ World* Course::GetWorld() {
      //&gWorldInstance;
 }
 
+void Course::SpawnVehicles() {}
 void Course::UpdateVehicles() {}
 
 void Course::BeginPlay() {}

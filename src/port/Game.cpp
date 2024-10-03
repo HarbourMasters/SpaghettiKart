@@ -180,6 +180,12 @@ extern "C" {
         gWorldInstance.PreviousCourse();
     }
 
+    void CourseManager_SpawnVehicles() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->SpawnVehicles();
+        }
+    }
+
     void CourseManager_UpdateVehicles() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->UpdateVehicles();
