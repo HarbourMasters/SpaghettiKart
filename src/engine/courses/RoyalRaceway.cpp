@@ -98,6 +98,17 @@ RoyalRaceway::RoyalRaceway() {
 }
 
 void RoyalRaceway::LoadTextures() {
+    dma_textures(gTextureTrees3, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees7, 0x000003E8U, 0x00000800U);
+    D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
+    dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
 void RoyalRaceway::SpawnActors() {

@@ -101,6 +101,18 @@ MooMooFarm::MooMooFarm() {
 }
 
 void MooMooFarm::LoadTextures() {
+    dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
 }
 
 void MooMooFarm::SpawnActors() {

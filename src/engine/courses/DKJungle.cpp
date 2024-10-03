@@ -100,6 +100,9 @@ DKJungle::DKJungle() {
 }
 
 void DKJungle::LoadTextures() {
+    dma_textures(gTextureDksJungleParkwayKiwanoFruit1, 0x0000032FU, 0x00000400U);
+    dma_textures(gTextureDksJungleParkwayKiwanoFruit2, 0x00000369U, 0x00000400U);
+    dma_textures(gTextureDksJungleParkwayKiwanoFruit3, 0x00000364U, 0x00000400U);
 }
 
 void DKJungle::SpawnActors() {

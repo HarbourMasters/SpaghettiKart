@@ -100,6 +100,8 @@ LuigiRaceway::LuigiRaceway() {
 }
 
 void LuigiRaceway::LoadTextures() {
+    dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
 }
 
 void LuigiRaceway::SpawnActors() {

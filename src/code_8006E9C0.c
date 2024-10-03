@@ -352,7 +352,7 @@ void func_8006F008(void) {
         return;
     }
     if (gPlayerCount == 2) {
-        if (GetCourse() != GetSkyscraper()) {
+        if (GetCourse() != GetToadsTurnpike()) {
             D_8018D2C0[1] = 265;
             D_8018D2C0[0] = D_8018D2C0[1];
         } else {

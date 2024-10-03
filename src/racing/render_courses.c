@@ -131,7 +131,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
                 index = sp1E;
             }
         } else {
-            if (GetBowsersCastle()) {
+            if (GetCourse() == GetBowsersCastle()) {
                 if ((temp_v0_3 >= 0x11) && (temp_v0_3 < 0x18)) {
                     index = temp_v0_3;
                 } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
@@ -141,7 +141,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
                 } else {
                     index = arg1->pathCounter;
                 }
-            } else if (GetChocoMountain()) {
+            } else if (GetCourse() == GetChocoMountain()) {
                 if ((temp_v0_3 >= 0xE) && (temp_v0_3 < 0x16)) {
                     index = temp_v0_3;
                 } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
@@ -174,7 +174,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     index = ((index - 1) * 4) + direction;
     gSPDisplayList(gDisplayListHead++, addr[index]);
 
-    if (CVarGetInteger("gDisableLod", 0) == 1 && GetCourse() == GetBowsersCastle() &&
+    if (CVarGetInteger("gDisableLod", 0) == 1 && (GetCourse() == GetBowsersCastle()) &&
         (index < 20 || index > 99)) { // always render higher version of bowser statue
         gDisplayListHead--;
         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the course

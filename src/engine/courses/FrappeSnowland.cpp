@@ -101,6 +101,8 @@ FrappeSnowland::FrappeSnowland() {
 }
 
 void FrappeSnowland::LoadTextures() {
+    dma_textures(gTextureFrappeSnowlandTreeLeft, 0x00000454U, 0x00000800U);
+    dma_textures(gTextureFrappeSnowlandTreeRight, 0x00000432U, 0x00000800U);
 }
 
 void FrappeSnowland::SpawnActors() {

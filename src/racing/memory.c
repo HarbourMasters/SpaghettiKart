@@ -1646,49 +1646,4 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
 void load_course(s32 courseId) {
     printf("Loading Course %d\n", courseId);
     LoadCourse();
-    // char* data = gNewCourseTable[courseId].data;
-    // char* vtxData = gNewCourseTable[courseId].vtx;
-    // size_t vtxSize = gNewCourseTable[courseId].vtxSize;
-    // course_texture* textures = gNewCourseTable[courseId].textures;
-    // char* displaylists = gNewCourseTable[courseId].displaylists;
-    // size_t dlSize = gNewCourseTable[courseId].dlSize;
-
-    // // Convert course vtx to vtx
-    // CourseVtx* cvtx = (CourseVtx*) LOAD_ASSET(vtxData);
-    // Vtx* vtx = (Vtx*) allocate_memory(sizeof(Vtx) * vtxSize);
-    // gSegmentTable[4] = &vtx[0];
-    // func_802A86A8(cvtx, vtx, vtxSize);
-    // vtxSegEnd = &vtx[vtxSize];
-
-    // // Load and allocate memory for course textures
-    // course_texture* asset = textures;
-    // u8* freeMemory = NULL;
-    // u8* texture = NULL;
-    // size_t size = 0;
-    // texSegSize = 0;
-    // while (asset->addr) {
-    //     size = ResourceGetTexSizeByName(asset->addr);
-    //     freeMemory = (u8*) allocate_memory(size);
-
-    //     texture = (u8*) LOAD_ASSET(asset->addr);
-    //     if (texture) {
-    //         if (asset == &textures[0]) {
-    //             gSegmentTable[5] = &freeMemory[0];
-    //         }
-    //         memcpy(freeMemory, texture, size);
-    //         texSegSize += size;
-    //         // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
-    //     }
-    //     asset++;
-    // }
-
-    // texSegEnd = &((u8*) gSegmentTable[5])[texSegSize];
-
-    // // Extract packed DLs
-    // u8* packed = (u8*) LOAD_ASSET(displaylists);
-    // Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * dlSize); // Size of unpacked DLs
-    // assert(gfx != NULL);
-    // gSegmentTable[7] = &gfx[0];
-    // displaylist_unpack(gfx, packed, 0);
-    // dlSegEnd = &gfx[dlSize];
 }
