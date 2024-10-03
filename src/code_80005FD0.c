@@ -1075,7 +1075,7 @@ void func_80008424(s32 playerId, f32 arg1, Player* player) {
     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
         !(player->soundEffects & 0x400000) && !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) &&
         !(player->soundEffects & 4)) {
-        if (GetPodiumCeremony()) {
+        if (GetCourse() == GetPodiumCeremony()) {
             func_80007FA4(playerId, player, var_f2);
         } else if ((bStopAICrossing[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
             decelerate_ai_player(player, 10.0f);
@@ -1646,7 +1646,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -2157,7 +2157,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] =
                 func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
@@ -3024,7 +3024,7 @@ void func_8000DF8C(s32 bombKartId) {
         return;
     }
 
-    if (((bombKart->unk_4A != 1) || (GetPodiumCeremony()))) {
+    if (((bombKart->unk_4A != 1) || (GetCourse() == GetPodiumCeremony()))) {
         var_f22 = bombKart->bombPos[0];
         var_f20 = bombKart->bombPos[1];
         var_f24 = bombKart->bombPos[2];
@@ -3035,7 +3035,7 @@ void func_8000DF8C(s32 bombKartId) {
         var_s1 = bombKart->circleTimer;
         if ((sp7E != 0) && (sp7E != 4)) {
             if (1) {}
-            if (GetPodiumCeremony()) {
+            if (GetCourse() == GetPodiumCeremony()) {
                 if (D_8016347E == 1) {
                     var_v0 = gPlayerFour;
                     temp_f0 = var_f22 - var_v0->pos[0];
@@ -3704,7 +3704,7 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint* var_s1;
     TrackWaypoint* var_s2;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
         waypointWidth = CourseManager_GetProps()->AIMaximumSeparation;
         waypoint = &D_80164550[pathIndex][0];
         var_s1 = &D_80164560[pathIndex][0];
@@ -3755,7 +3755,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 root2;
     f32 root1;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation < 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation <= -1.0f) {
         return 0.0f;
     }
     waypointCount = gWaypointCountByPathIndex[pathIndex];
@@ -3797,7 +3797,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16* wut;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for (var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3865,7 +3865,7 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16* angle;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
         for (angle = (u16*) &D_80164590[pathIndex][0], waypointIndex = 0;
              waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
@@ -3894,7 +3894,7 @@ void func_80010E6C(s32 pathIndex) {
             } else {
                 break;
             }
-            if (GetPodiumCeremony()) {
+            if (GetCourse() == GetPodiumCeremony()) {
                 break;
             }
         }
@@ -7654,7 +7654,7 @@ void func_8001C14C(void) {
 }
 
 void func_8001C3C4(s32 cameraId) {
-    if (GetPodiumCeremony()) {
+    if (GetCourse() == GetPodiumCeremony()) {
         if (gBombKarts[0].waypointIndex >= 16) {
             func_80057114(PLAYER_FOUR);
         }
