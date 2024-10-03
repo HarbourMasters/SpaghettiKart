@@ -23,6 +23,7 @@
 #include "engine/courses/DoubleDeck.h"
 #include "engine/courses/DKJungle.h"
 #include "engine/courses/BigDonut.h"
+#include "engine/courses/TestCourse.h"
 
 #include "engine/courses/PodiumCeremony.h"
 
@@ -63,6 +64,7 @@ DoubleDeck* gDoubleDeck;
 DKJungle* gDkJungle;
 BigDonut* gBigDonut;
 PodiumCeremony* gPodiumCeremony;
+TestCourse* gTestCourse;
 
  void CustomEngineInit() {
 
@@ -87,6 +89,7 @@ PodiumCeremony* gPodiumCeremony;
     gDkJungle = new DKJungle();
     gBigDonut = new BigDonut();
     gPodiumCeremony = new PodiumCeremony();
+    gTestCourse = new TestCourse();
 
     /* Add all courses to the global course list */
     gWorldInstance.Courses.push_back(gMarioRaceway);
@@ -109,6 +112,7 @@ PodiumCeremony* gPodiumCeremony;
     gWorldInstance.Courses.push_back(gDoubleDeck);
     gWorldInstance.Courses.push_back(gDkJungle);
     gWorldInstance.Courses.push_back(gBigDonut);
+    gWorldInstance.Courses.push_back(gTestCourse);
 
     /* Instantiate Cups */
     Cup* mushroom = gWorldInstance.AddCup("mushroom cup", std::vector<Course*>{
@@ -430,6 +434,10 @@ extern "C" {
 
     void* GetPodiumCeremony(void) {
         return gPodiumCeremony;
+    }
+
+    void* GetTestCourse(void) {
+        return gTestCourse;
     }
 }
 

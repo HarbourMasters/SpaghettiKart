@@ -73,7 +73,7 @@ Course::Course() {
     Props.MinimapFinishlineY = 0;
 }
 
-void Course::Load(const char* vtx, const char* gfx) {
+void Course::Load(Vtx* vtx, Gfx* gfx) {
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
 }

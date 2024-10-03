@@ -88,7 +88,7 @@ public:
 
     // Virtual functions to be overridden by derived classes
     virtual void Load();
-    virtual void Load(const char* vtx, const char *gfx);
+    virtual void Load(Vtx* vtx, Gfx *gfx);
     // This function may not be needed due to otr system.
     virtual void LoadTextures();
     virtual void SpawnActors();

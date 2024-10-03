@@ -131,8 +131,6 @@ void ToadsTurnpike::MinimapSettings() {
     D_8018D2E8 = 44;
 }
 
-void ToadsTurnpike::InitCourseObjects() {}
-
 void ToadsTurnpike::SomeSounds() {}
 
 void ToadsTurnpike::WhatDoesThisDo(Player* player, int8_t playerId) {

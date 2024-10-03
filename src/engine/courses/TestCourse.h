@@ -4,32 +4,32 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/toads_turnpike_vertices.h"
-    #include "assets/toads_turnpike_displaylists.h"
-    #include "assets/toads_turnpike_data.h"
+    #include "mario_raceway_vertices.h"
+    #include "mario_raceway_displaylists.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    extern const course_texture toads_turnpike_textures[];
+    #include "mario_raceway_data.h"
+    extern const course_texture test_course_textures[];
 }
 
-class ToadsTurnpike : public Course {
+class TestCourse : public Course {
 public:
-    virtual ~ToadsTurnpike() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~TestCourse() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit ToadsTurnpike();
+    explicit TestCourse();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
+    virtual void Load() override;
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
     virtual void Init() override;
-    virtual void InitClouds() override;
-    virtual void UpdateClouds(s32, Camera*) override;
     virtual void MinimapSettings() override;
+    virtual void InitCourseObjects() override;
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
@@ -39,8 +39,6 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
-    virtual void SpawnVehicles() override;
-    virtual void UpdateVehicles() override;
     virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
     virtual void Destroy() override;
