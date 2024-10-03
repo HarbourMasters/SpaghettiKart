@@ -1452,10 +1452,10 @@ void func_8000929C(s32 playerId, Player* player) {
         return;
     }
     if ((sSomeNearestWaypoint < 0x14) || ((gWaypointCountByPathIndex[D_80163448] - 0x14) < sSomeNearestWaypoint) ||
-        (GetCourse() == COURSE_KALAMARI_DESERT)) {
+        (GetCourse() == GetKalimariDesert())) {
         var_v1 = 0;
         var_t0 = 0;
-        if (GetCourse() == COURSE_KALAMARI_DESERT) {
+        if (GetCourse() == GetKalimariDesert()) {
             D_801634EC = 0;
             if (player->effects & 0x200) {
                 D_801634EC = 1;
@@ -1538,7 +1538,7 @@ void update_vehicles(void) {
     generate_player_smoke();
     D_8016337C++;
 
-    if (GetPodiumCeremony()) {
+    if (GetCourse() == GetPodiumCeremony()) {
         for (i = 0; i < 7; i++) {
             func_8000DF8C(i);
         }
@@ -1646,7 +1646,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -1741,9 +1741,7 @@ void func_80009B60(s32 playerId) {
 
                 if ((GetCourse() == GetYoshiValley()) || (GetCourse() == GetPodiumCeremony())) {
                     D_801634F8[playerId].unk4 = 0.0f;
-                }
-
-                if (GetCourse() == GetSkyscraper()) {
+                } else if (GetCourse() == GetToadsTurnpike()) {
                     func_8001490C(playerId);
                     func_80014A60(playerId);
                     func_80014BB4(playerId);
@@ -2159,7 +2157,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] =
                 func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
@@ -2306,7 +2304,7 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
     considerWaypoint = &pathWaypoints[0];
     for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount;
          considerWaypointIndex++, considerWaypoint++) {
-        if ((considerWaypoint->trackSectionId == trackSectionId) || (GetPodiumCeremony())) {
+        if ((considerWaypoint->trackSectionId == trackSectionId) || (GetCourse() == GetPodiumCeremony())) {
             var_t1 = 1;
             x_dist = (f32) considerWaypoint->posX - posX;
             y_dist = (f32) considerWaypoint->posY - posY;
@@ -3655,8 +3653,7 @@ void func_800100F0(s32 pathIndex) {
     s16 bInvalidPath;
     s32 i;
 
-    // cast required
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (GetCourse() != GetPodiumCeremony()) {
@@ -3707,7 +3704,7 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint* var_s1;
     TrackWaypoint* var_s2;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         waypointWidth = CourseManager_GetProps()->AIMaximumSeparation;
         waypoint = &D_80164550[pathIndex][0];
         var_s1 = &D_80164560[pathIndex][0];
@@ -3800,7 +3797,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16* wut;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for (var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3868,7 +3865,7 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16* angle;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
         for (angle = (u16*) &D_80164590[pathIndex][0], waypointIndex = 0;
              waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
