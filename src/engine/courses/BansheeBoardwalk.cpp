@@ -39,6 +39,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
     this->gfxSize = 3689;
     this->textures = banshee_boardwalk_textures;
 
+    Props.Id = "mk:banshee_boardwalk";
     Props.Name = "banshee boardwalk";
     Props.DebugName = "ghost";
     Props.CourseLength = "747m";
@@ -47,6 +48,9 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.AIMinimumSeparation = 0.4f;
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
+
+    Props.NearPersp = 2.0f;
+    Props.FarPersp = 2700.0f;
 
     Props.PathSizes = {0x2EE, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 

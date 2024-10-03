@@ -1683,6 +1683,7 @@ GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 u32 WorldNextCup(void);
 u32 WorldPreviousCup(void);
 u32 GetCupIndex(void);
+void SetCup(void);
 
 // Handle navigating the course menu interface
 void course_select_menu_act(struct Controller* arg0, u16 arg1) {
@@ -1712,7 +1713,9 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 
                 D_800DC540 = GetCupIndex();
                 //! @todo SetCourse();
+                SetCup();
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
+                SetCourseFromCup();
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1724,6 +1727,8 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                         D_8018EDEC = 3;
                         play_sound2(SOUND_MENU_SELECT);
                         //! @todo SetCourse() to course one;
+                        SetCupCursorPosition(COURSE_ONE);
+                        SetCourseFromCup();
                         gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
                         gMenuTimingCounter = 0;
                     }

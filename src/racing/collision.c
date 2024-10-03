@@ -45,69 +45,68 @@ f32 func_802AAB4C(Player* player) {
 
     playerX = player->pos[0];
     playerZ = player->pos[2];
-    switch (gCurrentCourseId) {
-        case COURSE_BOWSER_CASTLE:
-            if (playerX > 1859.0f) {
-                return D_8015F8E4;
-            }
-            if (playerX < 1549.0f) {
-                return D_8015F8E4;
-            }
-            if (playerZ > -1102.0f) {
-                return D_8015F8E4;
-            }
-            if (playerZ < -1402.0f) {
-                return D_8015F8E4;
-            }
-            return 20.0f;
-        case COURSE_KOOPA_BEACH:
-            if (playerX > 239.0f) {
-                return D_8015F8E4;
-            }
-            if (playerX < 67.0f) {
-                return D_8015F8E4;
-            }
-            if (playerZ > 2405.0f) {
-                return D_8015F8E4;
-            }
-            if (playerZ < 2233.0f) {
-                return D_8015F8E4;
-            }
-            return 0.8f;
-        case COURSE_SHERBET_LAND:
-            if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == SNOW) {
-                return (f32) (gCourseMinY - 0xA);
-            }
+    if (GetCourse() == GetBowsersCastle()) {
+        if (playerX > 1859.0f) {
             return D_8015F8E4;
-        case COURSE_DK_JUNGLE:
-            temp_v1 = get_track_section_id(player->collision.meshIndexZX) & 0xFF;
-            if (temp_v1 == 0xFF) {
-                if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == CAVE) {
-                    return -475.0f;
-                }
-                if (playerX > -478.0f) {
-                    return -33.9f;
-                }
-                if (playerX < -838.0f) {
-                    return -475.0f;
-                }
-                if (playerZ > -436.0f) {
-                    return -475.0f;
-                }
-                if (playerZ < -993.0f) {
-                    return -33.9f;
-                }
-                if (playerZ < playerX) {
-                    return -475.0f;
-                }
+        }
+        if (playerX < 1549.0f) {
+            return D_8015F8E4;
+        }
+        if (playerZ > -1102.0f) {
+            return D_8015F8E4;
+        }
+        if (playerZ < -1402.0f) {
+            return D_8015F8E4;
+        }
+        return 20.0f;
+    } else if (GetCourse() == GetKoopaTroopaBeach()) {
+        if (playerX > 239.0f) {
+            return D_8015F8E4;
+        }
+        if (playerX < 67.0f) {
+            return D_8015F8E4;
+        }
+        if (playerZ > 2405.0f) {
+            return D_8015F8E4;
+        }
+        if (playerZ < 2233.0f) {
+            return D_8015F8E4;
+        }
+        return 0.8f;
+    } else if (GetCourse() == GetSherbetLand()) {
+        if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == SNOW) {
+            return (f32) (gCourseMinY - 0xA);
+        }
+        return D_8015F8E4;
+    } else if (GetCourse() == GetDkJungle()) {
+        temp_v1 = get_track_section_id(player->collision.meshIndexZX) & 0xFF;
+        if (temp_v1 == 0xFF) {
+            if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == CAVE) {
+                return -475.0f;
+            }
+            if (playerX > -478.0f) {
                 return -33.9f;
             }
-            if (temp_v1 >= 0x14) {
+            if (playerX < -838.0f) {
+                return -475.0f;
+            }
+            if (playerZ > -436.0f) {
+                return -475.0f;
+            }
+            if (playerZ < -993.0f) {
+                return -33.9f;
+            }
+            if (playerZ < playerX) {
                 return -475.0f;
             }
             return -33.9f;
-        default:
-            return D_8015F8E4;
+        }
+        if (temp_v1 >= 0x14) {
+            return -475.0f;
+        }
+        return -33.9f;
+    } else {
+        return D_8015F8E4;
     }
 }
 
@@ -1596,7 +1595,7 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
     triangle->vtx1 = vtx1;
     triangle->vtx2 = vtx2;
     triangle->vtx3 = vtx3;
-    if ((triangle->vtx1->v.flag == 4) && (triangle->vtx2->v.flag == 4) && (triangle->vtx3->v.flag == 4)) {
+     if ((triangle->vtx1->v.flag == 4) && (triangle->vtx2->v.flag == 4) && (triangle->vtx3->v.flag == 4)) {
 
         return;
     }

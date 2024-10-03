@@ -92,6 +92,7 @@ void load_ceremony_cutscene(void) {
     Camera* camera = &cameras[0];
 
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
+    SetCourseByClass(GetPodiumCeremony());
     D_800DC5B4 = (u16) 1;
     gIsMirrorMode = 0;
     gGotoMenu = 0xFFFF;

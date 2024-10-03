@@ -17,8 +17,6 @@ extern "C" {
     #include "bomb_kart.h"
     #include "path_spawn_metadata.h"
     #include "Engine.h"
-void CourseManager_LoadCourse(uint32_t courseId, const char* courseVtx, 
-                      course_texture* textures, const char* displaylists, size_t dlSize);
 
 CProperties *CourseManager_GetProps();
 
@@ -51,12 +49,15 @@ public:
 
 
     typedef struct {
+        const char* Id;
         const char* Name;
         const char* DebugName;
         const char* CourseLength;
         const char* AIBehaviour;
         float AIMaximumSeparation;
         float AIMinimumSeparation;
+        float NearPersp;
+        float FarPersp;
         int16_t *SomePtr;
         uint32_t AISteeringSensitivity;
         _struct_gCoursePathSizes_0x10 PathSizes;
@@ -109,6 +110,7 @@ public:
     virtual void BeginPlay();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();
+    virtual void UpdateVehicles();
     virtual void Collision();
     virtual void GenerateCollision();
     virtual void Water();

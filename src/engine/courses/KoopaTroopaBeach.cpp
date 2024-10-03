@@ -38,6 +38,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     this->gfxSize = 5720;
     this->textures = koopa_troopa_beach_textures;
 
+    Props.Id = "mk:koopa_beach";
     Props.Name = "koopa troopa beach";
     Props.DebugName = "beach";
     Props.CourseLength = "691m";
@@ -46,6 +47,9 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.AIMinimumSeparation = 0.5f;
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
+
+    Props.NearPersp = 1.0f;
+    Props.FarPersp = 5000.0f;
 
     Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 

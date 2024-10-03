@@ -934,9 +934,9 @@ void func_8028FCBC(void) {
             func_8028F914();
             if (D_802BA034 == 1.0f) {
                 if (gActiveScreenMode != SCREEN_MODE_1P) {
-                    if (gCurrentCourseId == COURSE_LUIGI_RACEWAY) {
+                    if (GetCourse() == GetLuigiRaceway()) {
                         func_802A7940();
-                    } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    } else if (GetCourse() == GetWarioStadium()) {
                         func_802A7728();
                     }
                 }

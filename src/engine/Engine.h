@@ -18,12 +18,15 @@ typedef struct {
 } SkyboxColours;
 
 typedef struct {
+    const char* Id;
     const char* Name;
     const char* DebugName;
     const char* CourseLength;
     const char* AIBehaviour;
     float AIMaximumSeparation;
     float AIMinimumSeparation;
+    float NearPersp;
+    float FarPersp;
     s16 *SomePtr;
     u32 AISteeringSensitivity;
     _struct_gCoursePathSizes_0x10 PathSizes;

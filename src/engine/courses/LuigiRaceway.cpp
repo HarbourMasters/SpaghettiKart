@@ -39,6 +39,7 @@ LuigiRaceway::LuigiRaceway() {
     this->gfxSize = 6377;
     this->textures = luigi_raceway_textures;
 
+    Props.Id = "mk:luigi_raceway";
     Props.Name = "luigi raceway";
     Props.DebugName = "l circuit";
     Props.CourseLength = "717m";
@@ -47,6 +48,9 @@ LuigiRaceway::LuigiRaceway() {
     Props.AIMinimumSeparation = 0.7f;
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 48;
+
+    Props.NearPersp = 9.0f;
+    Props.FarPersp = 4500.0f;
 
     Props.PathSizes = {0x2DA, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 

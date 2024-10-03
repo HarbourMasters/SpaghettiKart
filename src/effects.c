@@ -1800,14 +1800,14 @@ void func_80090868(Player* player) {
         player->unk_0CA |= 2;
         player->unk_0C8 = 0;
         if ((player->unk_0DE & 1) == 1) {
-            if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
+            if ((GetCourse() == GetBowsersCastle()) || (GetCourse() == GetBigDonut())) {
                 player->unk_0CA |= 0x1000;
             } else {
                 player->unk_0CA |= 0x2000;
             }
 
-            if ((gCurrentCourseId == COURSE_SHERBET_LAND) || (gCurrentCourseId == COURSE_SKYSCRAPER) ||
-                (gCurrentCourseId == COURSE_RAINBOW_ROAD)) {
+            if ((GetCourse() == GetSherbetLand()) || (GetCourse() == GetSkyscraper()) ||
+                (GetCourse() == GetRainbowRoad())) {
                 player->unk_0CA &= ~0x3000;
             }
         }

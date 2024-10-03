@@ -12,9 +12,9 @@ public:
     const char* Name;
     u8 *Thumbnail;
     size_t CursorPosition = 0; // Course index in cup
-    std::vector<std::shared_ptr<Course>> Courses;
+    std::vector<Course*> Courses;
 
-    explicit Cup(const char* name, std::vector<std::shared_ptr<Course>>& courses);
+    explicit Cup(const char* name, std::vector<Course*> courses);
 
     virtual void ShuffleCourses();
 

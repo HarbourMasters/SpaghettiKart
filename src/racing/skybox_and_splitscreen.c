@@ -400,7 +400,7 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
                    UNUSED f32* arg4) {
 
     init_rdp();
-    if (gCurrentCourseId != COURSE_RAINBOW_ROAD) {
+    if (GetCourse() != GetRainbowRoad()) {
 
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);
@@ -443,7 +443,7 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     sp5C[0] = 0.0f;
     sp5C[1] = 0.0f;
     sp5C[2] = 30000.0f;
-    func_802B5564(matrix1, &sp128, camera->unk_B4, gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    func_802B5564(matrix1, &sp128, camera->unk_B4, gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
     func_802B5794(matrix2, camera->pos, camera->lookAt);
     mtxf_multiplication(matrix3, matrix1, matrix2);
 
@@ -476,60 +476,60 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     gSPMatrix(gDisplayListHead++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPVertex(gDisplayListHead++, &vtx[0], 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
-    if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
+    if (GetCourse() == GetRainbowRoad()) {
         gSPVertex(gDisplayListHead++, &vtx[4], 4, 0);
         gSP2Triangles(gDisplayListHead++, 0, 3, 1, 0, 1, 3, 2, 0);
     }
 }
 
 void func_802A4D18(void) {
-    if (gGamestate != 4) {
+    if (gGamestate != RACING) {
         D_8015014C = 6800.0f;
         D_80150150 = 3.0f;
     } else {
-        switch (gCurrentCourseId) {
-            case COURSE_BOWSER_CASTLE:
-            case COURSE_BANSHEE_BOARDWALK:
-            case COURSE_RAINBOW_ROAD:
-            case COURSE_BLOCK_FORT:
-            case COURSE_SKYSCRAPER:
-                D_8015014C = 2700.0f;
-                D_80150150 = 2.0f;
-                break;
-            case COURSE_CHOCO_MOUNTAIN:
-            case COURSE_DOUBLE_DECK:
-                D_8015014C = 1500.0f;
-                D_80150150 = 2.0f;
-                break;
-            case COURSE_KOOPA_BEACH:
-                D_8015014C = 5000.0f;
-                D_80150150 = 1.0f;
-                break;
-            case COURSE_WARIO_STADIUM:
-                D_8015014C = 4800.0f;
-                D_80150150 = 10.0f;
-                break;
-            case COURSE_MARIO_RACEWAY:
-            case COURSE_YOSHI_VALLEY:
-            case COURSE_FRAPPE_SNOWLAND:
-            case COURSE_ROYAL_RACEWAY:
-            case COURSE_LUIGI_RACEWAY:
-            case COURSE_MOO_MOO_FARM:
-            case COURSE_TOADS_TURNPIKE:
-            case COURSE_SHERBET_LAND:
-            case COURSE_DK_JUNGLE:
-                D_8015014C = 4500.0f;
-                D_80150150 = 9.0f;
-                break;
-            case COURSE_KALAMARI_DESERT:
-                D_8015014C = 7000.0f;
-                D_80150150 = 10.0f;
-                break;
-            default:
-                D_8015014C = 6800.0f;
-                D_80150150 = 3.0f;
-                break;
-        }
+        // switch (gCurrentCourseId) {
+        //     case COURSE_BOWSER_CASTLE:
+        //     case COURSE_BANSHEE_BOARDWALK:
+        //     case COURSE_RAINBOW_ROAD:
+        //     case COURSE_BLOCK_FORT:
+        //     case COURSE_SKYSCRAPER:
+        //         D_8015014C = 2700.0f;
+        //         D_80150150 = 2.0f;
+        //         break;
+        //     case COURSE_CHOCO_MOUNTAIN:
+        //     case COURSE_DOUBLE_DECK:
+        //         D_8015014C = 1500.0f;
+        //         D_80150150 = 2.0f;
+        //         break;
+        //     case COURSE_KOOPA_BEACH:
+        //         D_8015014C = 5000.0f;
+        //         D_80150150 = 1.0f;
+        //         break;
+        //     case COURSE_WARIO_STADIUM:
+        //         D_8015014C = 4800.0f;
+        //         D_80150150 = 10.0f;
+        //         break;
+        //     case COURSE_MARIO_RACEWAY:
+        //     case COURSE_YOSHI_VALLEY:
+        //     case COURSE_FRAPPE_SNOWLAND:
+        //     case COURSE_ROYAL_RACEWAY:
+        //     case COURSE_LUIGI_RACEWAY:
+        //     case COURSE_MOO_MOO_FARM:
+        //     case COURSE_TOADS_TURNPIKE:
+        //     case COURSE_SHERBET_LAND:
+        //     case COURSE_DK_JUNGLE:
+        //         D_8015014C = 4500.0f;
+        //         D_80150150 = 9.0f;
+        //         break;
+        //     case COURSE_KALAMARI_DESERT:
+        //         D_8015014C = 7000.0f;
+        //         D_80150150 = 10.0f;
+        //         break;
+        //     default:
+        //         D_8015014C = 6800.0f;
+        //         D_80150150 = 3.0f;
+        //         break;
+        // }
     }
     switch (gScreenModeSelection) { /* switch 1; irregular */
         case SCREEN_MODE_1P:        /* switch 1 */
@@ -767,9 +767,9 @@ void render_player_one_1p_screen(void) {
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
@@ -829,9 +829,9 @@ void render_player_one_2p_screen_vertical(void) {
     func_802A3730(D_800DC5EC);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
@@ -895,9 +895,9 @@ void render_player_two_2p_screen_vertical(void) {
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
@@ -957,9 +957,9 @@ void render_player_one_2p_screen_horizontal(void) {
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
@@ -1020,9 +1020,9 @@ void render_player_two_2p_screen_horizontal(void) {
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
@@ -1079,9 +1079,9 @@ void render_player_one_3p_4p_screen(void) {
     func_802A3730(D_800DC5EC);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
@@ -1138,9 +1138,9 @@ void render_player_two_3p_4p_screen(void) {
     func_802A3730(D_800DC5F0);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[1], &perspNorm, gCameraZoom[1], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]),
@@ -1198,9 +1198,9 @@ void render_player_three_3p_4p_screen(void) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[2], &perspNorm, gCameraZoom[2], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]),
@@ -1267,9 +1267,9 @@ void render_player_four_3p_4p_screen(void) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
 #ifdef VERSION_EU
-    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], sp9C, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], sp9C, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #else
-    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[3], &perspNorm, gCameraZoom[3], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp, 1.0f);
 #endif
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]),

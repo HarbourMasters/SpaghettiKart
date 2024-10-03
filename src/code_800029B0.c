@@ -189,15 +189,17 @@ void setup_race(void) {
     }
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
-        SetCourseFromCup();
+        // Skip for debug menu
+        if (gDebugMenuSelection < DEBUG_MENU) {
+            SetCourseFromCup();
+        }
     }
     gActiveScreenMode = gScreenModeSelection;
     if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        LoadCourse();
-        //load_course(gCurrentCourseId);
+        load_course(gCurrentCourseId);
         func_80295D88();
         D_8015F730 = gNextFreeMemoryAddress;
     } else {
@@ -222,9 +224,9 @@ void setup_race(void) {
         D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
         ;
         D_8015F8D0[2] = D_80164490->posZ;
-        if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
+        if (GetCourse() == GetToadsTurnpike()) {
             D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
-        } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+        } else if (GetCourse() == GetWarioStadium()) {
             D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
         } else {
             D_8015F8D0[0] = D_80164490->posX;

@@ -458,7 +458,7 @@ void func_800729EC(s32 objectIndex) {
     D_8018D2BC = 1;
     D_8018D2A4 = 1;
 
-    if (gCurrentCourseId != COURSE_YOSHI_VALLEY) {
+    if (GetCourse() != GetYoshiValley()) {
         for (i = 0; i < gPlayerCount; i++) {
             playerHUD[i].unk_81 = temp_v1;
         }
@@ -3001,13 +3001,13 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
 
     if ((gObjectList[objectIndex].unk_0D8 != 3) && (gObjectList[objectIndex].unk_0D8 != 7)) {
         func_800722CC(objectIndex, 1);
-        if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+        if (GetCourse() == GetSherbetLand()) {
             player->unk_0CA &= 0xFFEF;
         }
     } else {
         // ?????
     }
-    if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+    if (GetCourse() == GetSherbetLand()) {
         func_800722CC(objectIndex, 0x00000010);
         player->unk_0CA &= 0xFFDF;
     }
@@ -3186,7 +3186,7 @@ void func_800797AC(s32 playerId) {
 
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
-    if ((gCurrentCourseId == COURSE_SHERBET_LAND) && (player->unk_0CA & 1)) {
+    if ((GetCourse() == GetSherbetLand()) && (player->unk_0CA & 1)) {
         init_object(objectIndex, 7);
         player->unk_0CA |= 0x10;
     } else {

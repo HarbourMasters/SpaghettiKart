@@ -50,6 +50,9 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 40;
 
+    Props.NearPersp = 9.0f;
+    Props.FarPersp = 4500.0f;
+
     Props.PathSizes = {0x3E8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
@@ -215,6 +218,13 @@ void ToadsTurnpike::RenderCredits() {
 }
 
 void ToadsTurnpike::Collision() {}
+
+void ToadsTurnpike::UpdateVehicles() {
+    update_vehicle_box_trucks();
+    update_vehicle_school_bus();
+    update_vehicle_tanker_trucks();
+    update_vehicle_cars();
+}
 
 void ToadsTurnpike::GenerateCollision() {
     D_801625EC = 43;

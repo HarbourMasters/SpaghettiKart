@@ -16,7 +16,7 @@ World::World() {}
 Course* CurrentCourse;
 Cup* CurrentCup;
 
-Cup* World::AddCup(const char* name, std::vector<std::shared_ptr<Course>> courses) {
+Cup* World::AddCup(const char* name, std::vector<Course*> courses) {
     // Create a new unique_ptr for Cup
     auto cup = std::make_shared<Cup>(name, courses);
 
@@ -60,14 +60,23 @@ u32 World::NextCup() {
     }
 
     if (this->CupIndex < Cups.size() - 2) {
-        return ++this->CupIndex;
+        CupIndex++;
+        CurrentCup = Cups[CupIndex].get();
+        return CupIndex;
     }
 }
 
 u32 World::PreviousCup() {
     if (CupIndex > 0) {
-        return --this->CupIndex;
+        CupIndex--;
+        CurrentCup = Cups[CupIndex].get();
+        return CupIndex;
     }
+}
+
+void World::SetCup() {
+    CurrentCup = Cups[CupIndex].get();
+    CurrentCup->CursorPosition = 0;
 }
 
 CProperties* World::GetCourseProps() {
@@ -80,12 +89,12 @@ CProperties* World::GetCourseProps() {
 void World::SetCourse(const char*name) {
     for (size_t i = 0; i < Courses.size(); i++) {
         if (Courses[i]->Props.Name == name) {
-            CurrentCourse = Courses[i].get();
+            CurrentCourse = Courses[i];
             break;
         }
     }
     std::runtime_error("SetCourse() Course name not found in Courses list");
-};
+}
 
 void World::NextCourse() {
     if (CourseIndex < Courses.size() - 1) {
@@ -93,7 +102,7 @@ void World::NextCourse() {
     } else {
         CourseIndex = 0;
     }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex].get();
+    gWorldInstance.CurrentCourse = Courses[CourseIndex];
 }
 
 void World::PreviousCourse() {
@@ -102,7 +111,7 @@ void World::PreviousCourse() {
     } else {
         CourseIndex = Courses.size() - 1;
     }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex].get();
+    gWorldInstance.CurrentCourse = Courses[CourseIndex];
 }
 
 Object* World::SpawnObject(std::unique_ptr<GameObject> object) {

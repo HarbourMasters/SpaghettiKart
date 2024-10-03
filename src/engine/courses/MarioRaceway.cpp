@@ -32,12 +32,13 @@ extern "C" {
     extern const char *mario_raceway_dls[];
 }
 
-CourseMarioRaceway::CourseMarioRaceway() {
+MarioRaceway::MarioRaceway() {
     this->vtx = d_course_mario_raceway_vertex;
     this->gfx = d_course_mario_raceway_packed_dls;
     this->gfxSize = 3367;
     this->textures = mario_raceway_textures;
 
+    Props.Id = "mk:mario_raceway";
     Props.Name = "Mario Raceway";
     Props.DebugName = "m circuit";
     Props.CourseLength = "567m";
@@ -47,6 +48,9 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.AIMinimumSeparation = 0.3f;
     Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
+
+    Props.NearPersp = 9.0f;
+    Props.FarPersp = 4500.0f;
 
     Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
@@ -95,7 +99,7 @@ CourseMarioRaceway::CourseMarioRaceway() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
-void CourseMarioRaceway::LoadTextures() {
+void MarioRaceway::LoadTextures() {
     dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
     D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
     dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
@@ -108,7 +112,7 @@ void CourseMarioRaceway::LoadTextures() {
     dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
-void CourseMarioRaceway::SpawnActors() {
+void MarioRaceway::SpawnActors() {
     struct Actor* actor;
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
@@ -125,10 +129,10 @@ void CourseMarioRaceway::SpawnActors() {
     actor->flags |= 0x4000;
 }
 
-void CourseMarioRaceway::Init() {}
+void MarioRaceway::Init() {}
 
 // Likely sets minimap boundaries
-void CourseMarioRaceway::MinimapSettings() {
+void MarioRaceway::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust5, 0x443, 0x1000));
     D_8018D2A0 = 0.022f;
     D_8018D2E0 = 6;
@@ -140,7 +144,7 @@ void CourseMarioRaceway::MinimapSettings() {
     D_80165728 = -240;
 }
 
-void CourseMarioRaceway::InitCourseObjects() {
+void MarioRaceway::InitCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -152,12 +156,12 @@ void CourseMarioRaceway::InitCourseObjects() {
     }
 }
 
-void CourseMarioRaceway::SomeSounds() {
+void MarioRaceway::SomeSounds() {
     vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 
-void CourseMarioRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
+void MarioRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
@@ -172,7 +176,7 @@ void CourseMarioRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void CourseMarioRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void MarioRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
@@ -187,7 +191,7 @@ void CourseMarioRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void CourseMarioRaceway::SpawnBombKarts() {
+void MarioRaceway::SpawnBombKarts() {
     World* world = GetWorld();
 
     if (world) {
@@ -202,12 +206,12 @@ void CourseMarioRaceway::SpawnBombKarts() {
 }
 
 // Positions the finishline on the minimap
-void CourseMarioRaceway::MinimapFinishlinePosition() {
+void MarioRaceway::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void CourseMarioRaceway::SetStaffGhost() {
+void MarioRaceway::SetStaffGhost() {
     u32 temp_v0;
     if (temp_v0 <= 9000) {
         D_80162DD6 = 0;
@@ -220,8 +224,8 @@ void CourseMarioRaceway::SetStaffGhost() {
     D_80162DE4 = 0;
 }
 
-void CourseMarioRaceway::BeginPlay() {  }
-void CourseMarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
+void MarioRaceway::BeginPlay() {  }
+void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     u16 sp22 = arg0->pathCounter;
     u16 temp_t0 = arg0->playerDirection;
 
@@ -326,13 +330,13 @@ void CourseMarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000160))));
 }
 
-void CourseMarioRaceway::RenderCredits() {
+void MarioRaceway::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_mario_raceway_dl_9348));
 }
 
-void CourseMarioRaceway::Collision() {}
+void MarioRaceway::Collision() {}
 
-void CourseMarioRaceway::GenerateCollision() {
+void MarioRaceway::GenerateCollision() {
     generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
     if (gScreenModeSelection == SCREEN_MODE_1P) {
         // d_course_mario_raceway_packed_dl_8E8
@@ -347,4 +351,4 @@ void CourseMarioRaceway::GenerateCollision() {
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
-void CourseMarioRaceway::Destroy() { }
+void MarioRaceway::Destroy() { }

@@ -38,6 +38,7 @@ BowsersCastle::BowsersCastle() {
     this->gfxSize = 4900;
     this->textures = bowsers_castle_textures;
 
+    Props.Id = "mk:bowsers_castle";
     Props.Name = "bowser's castle";
     Props.DebugName = "castle";
     Props.CourseLength = "777m";
@@ -46,6 +47,9 @@ BowsersCastle::BowsersCastle() {
     Props.AIMinimumSeparation = 0.2f;
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
+
+    Props.NearPersp = 2.0f;
+    Props.FarPersp = 2700.0f;
 
     Props.PathSizes = {0x30C, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 

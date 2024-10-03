@@ -71,7 +71,7 @@ public:
     virtual void DestroyObjects();
     virtual Object *GetObjectByIndex(size_t);
 
-    Cup* AddCup(const char* name, std::vector<std::shared_ptr<Course>> courses);
+    Cup* AddCup(const char* name, std::vector<Course*> courses);
     Cup* GetCup();
     const char* GetCupName();
     virtual u32 GetCupIndex();
@@ -79,6 +79,7 @@ public:
     virtual u32 NextCup();
     virtual u32 PreviousCup();
     virtual void SetCourseFromCup();
+    void SetCup();
 
     World* GetWorld();
 
@@ -99,7 +100,7 @@ public:
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     // std::vector<std::unique_ptr<GameActor>> GameActors;
 
-    std::vector<std::shared_ptr<Course>> Courses;
+    std::vector<Course*> Courses;
     size_t CourseIndex = 0; // For browsing courses.
 private:
 

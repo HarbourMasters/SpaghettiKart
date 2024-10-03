@@ -15,12 +15,12 @@ extern "C" {
     extern const course_texture mario_raceway_textures[];
 }
 
-class CourseMarioRaceway : public Course {
+class MarioRaceway : public Course {
 public:
-    virtual ~CourseMarioRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~MarioRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit CourseMarioRaceway();
+    explicit MarioRaceway();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);

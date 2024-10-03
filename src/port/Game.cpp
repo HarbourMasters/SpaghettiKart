@@ -42,66 +42,90 @@ extern "C" void Timer_Update();
 // Create the world instance
 World gWorldInstance;
 
-void CustomEngineInit() {
-    /* Instantiate Courses */
-    auto marioRaceway = std::make_shared<CourseMarioRaceway>();
-    auto chocoMountain = std::make_shared<ChocoMountain>();
-    auto bowsersCastle = std::make_shared<BowsersCastle>();
-    auto bansheeBoardwalk = std::make_shared<BansheeBoardwalk>();
-    auto yoshiValley = std::make_shared<YoshiValley>();
-    auto frappeSnowland = std::make_shared<FrappeSnowland>();
-    auto koopaTroopaBeach = std::make_shared<KoopaTroopaBeach>();
-    auto royalRaceway = std::make_shared<RoyalRaceway>();
-    auto luigiRaceway = std::make_shared<LuigiRaceway>();
-    auto mooMooFarm = std::make_shared<MooMooFarm>();
-    auto toadsTurnpike = std::make_shared<ToadsTurnpike>();
-    auto kalimariDesert = std::make_shared<KalimariDesert>();
-    auto sherbetLand = std::make_shared<SherbetLand>();
-    auto rainbowRoad = std::make_shared<RainbowRoad>();
-    auto warioStadium = std::make_shared<WarioStadium>();
-    auto blockFort = std::make_shared<BlockFort>();
-    auto skyscraper = std::make_shared<Skyscraper>();
-    auto doubleDeck = std::make_shared<DoubleDeck>();
-    auto dkJungle = std::make_shared<DKJungle>();
-    auto bigDonut = std::make_shared<BigDonut>();
+MarioRaceway* gMarioRaceway;
+ChocoMountain* gChocoMountain;
+BowsersCastle* gBowsersCastle;
+BansheeBoardwalk* gBansheeBoardwalk;
+YoshiValley* gYoshiValley;
+FrappeSnowland* gFrappeSnowland;
+KoopaTroopaBeach* gKoopaTroopaBeach;
+RoyalRaceway* gRoyalRaceway;
+LuigiRaceway* gLuigiRaceway;
+MooMooFarm* gMooMooFarm;
+ToadsTurnpike* gToadsTurnpike;
+KalimariDesert* gKalimariDesert;
+SherbetLand* gSherbetLand;
+RainbowRoad* gRainbowRoad;
+WarioStadium* gWarioStadium;
+BlockFort* gBlockFort;
+Skyscraper* gSkyscraper;
+DoubleDeck* gDoubleDeck;
+DKJungle* gDkJungle;
+BigDonut* gBigDonut;
+PodiumCeremony* gPodiumCeremony;
+
+ void CustomEngineInit() {
+
+    gMarioRaceway = new MarioRaceway();
+    gChocoMountain = new ChocoMountain();
+    gBowsersCastle = new BowsersCastle();
+    gBansheeBoardwalk = new BansheeBoardwalk();
+    gYoshiValley = new YoshiValley();
+    gFrappeSnowland = new FrappeSnowland();
+    gKoopaTroopaBeach = new KoopaTroopaBeach();
+    gRoyalRaceway = new RoyalRaceway();
+    gLuigiRaceway = new LuigiRaceway();
+    gMooMooFarm = new MooMooFarm();
+    gToadsTurnpike = new ToadsTurnpike();
+    gKalimariDesert = new KalimariDesert();
+    gSherbetLand = new SherbetLand();
+    gRainbowRoad = new RainbowRoad();
+    gWarioStadium = new WarioStadium();
+    gBlockFort = new BlockFort();
+    gSkyscraper = new Skyscraper();
+    gDoubleDeck = new DoubleDeck();
+    gDkJungle = new DKJungle();
+    gBigDonut = new BigDonut();
+    gPodiumCeremony = new PodiumCeremony();
 
     /* Add all courses to the global course list */
-    gWorldInstance.Courses.push_back(marioRaceway);
-    gWorldInstance.Courses.push_back(chocoMountain);
-    gWorldInstance.Courses.push_back(bowsersCastle);
-    gWorldInstance.Courses.push_back(bansheeBoardwalk);
-    gWorldInstance.Courses.push_back(yoshiValley);
-    gWorldInstance.Courses.push_back(frappeSnowland);
-    gWorldInstance.Courses.push_back(koopaTroopaBeach);
-    gWorldInstance.Courses.push_back(royalRaceway);
-    gWorldInstance.Courses.push_back(luigiRaceway);
-    gWorldInstance.Courses.push_back(mooMooFarm);
-    gWorldInstance.Courses.push_back(toadsTurnpike);
-    gWorldInstance.Courses.push_back(kalimariDesert);
-    gWorldInstance.Courses.push_back(sherbetLand);
-    gWorldInstance.Courses.push_back(rainbowRoad);
-    gWorldInstance.Courses.push_back(warioStadium);
-    gWorldInstance.Courses.push_back(blockFort);
-    gWorldInstance.Courses.push_back(skyscraper);
-    gWorldInstance.Courses.push_back(doubleDeck);
-    gWorldInstance.Courses.push_back(dkJungle);
-    gWorldInstance.Courses.push_back(bigDonut);
+    gWorldInstance.Courses.push_back(gMarioRaceway);
+    gWorldInstance.Courses.push_back(gChocoMountain);
+    gWorldInstance.Courses.push_back(gBowsersCastle);
+    gWorldInstance.Courses.push_back(gBansheeBoardwalk);
+    gWorldInstance.Courses.push_back(gYoshiValley);
+    gWorldInstance.Courses.push_back(gFrappeSnowland);
+    gWorldInstance.Courses.push_back(gKoopaTroopaBeach);
+    gWorldInstance.Courses.push_back(gRoyalRaceway);
+    gWorldInstance.Courses.push_back(gLuigiRaceway);
+    gWorldInstance.Courses.push_back(gMooMooFarm);
+    gWorldInstance.Courses.push_back(gToadsTurnpike);
+    gWorldInstance.Courses.push_back(gKalimariDesert);
+    gWorldInstance.Courses.push_back(gSherbetLand);
+    gWorldInstance.Courses.push_back(gRainbowRoad);
+    gWorldInstance.Courses.push_back(gWarioStadium);
+    gWorldInstance.Courses.push_back(gBlockFort);
+    gWorldInstance.Courses.push_back(gSkyscraper);
+    gWorldInstance.Courses.push_back(gDoubleDeck);
+    gWorldInstance.Courses.push_back(gDkJungle);
+    gWorldInstance.Courses.push_back(gBigDonut);
 
     /* Instantiate Cups */
-    Cup* mushroom = gWorldInstance.AddCup("mushroom cup", std::vector<std::shared_ptr<Course>>{
-            luigiRaceway, mooMooFarm, koopaTroopaBeach, kalimariDesert});
-    Cup* flower = gWorldInstance.AddCup("flower cup", std::vector<std::shared_ptr<Course>>{
-            toadsTurnpike, frappeSnowland, chocoMountain, marioRaceway});
-    Cup* star = gWorldInstance.AddCup("star cup", std::vector<std::shared_ptr<Course>>{
-            warioStadium, sherbetLand, royalRaceway, bowsersCastle});
-    Cup* special = gWorldInstance.AddCup("special cup", std::vector<std::shared_ptr<Course>>{
-            dkJungle, yoshiValley, bansheeBoardwalk, rainbowRoad});
-    Cup* battle = gWorldInstance.AddCup("battle", std::vector<std::shared_ptr<Course>>{
-            bigDonut, blockFort, doubleDeck, skyscraper});
+    Cup* mushroom = gWorldInstance.AddCup("mushroom cup", std::vector<Course*>{
+            gLuigiRaceway, gMooMooFarm, gKoopaTroopaBeach, gKalimariDesert});
+    Cup* flower = gWorldInstance.AddCup("flower cup", std::vector<Course*>{
+            gToadsTurnpike, gFrappeSnowland, gChocoMountain, gMarioRaceway});
+    Cup* star = gWorldInstance.AddCup("star cup", std::vector<Course*>{
+            gWarioStadium, gSherbetLand, gRoyalRaceway, gBowsersCastle});
+    Cup* special = gWorldInstance.AddCup("special cup", std::vector<Course*>{
+            gDkJungle, gYoshiValley, gBansheeBoardwalk, gRainbowRoad});
+    Cup* battle = gWorldInstance.AddCup("battle", std::vector<Course*>{
+            gBigDonut, gBlockFort, gDoubleDeck, gSkyscraper});
 
     /* Set default course; mario raceway */
-    gWorldInstance.CurrentCourse = marioRaceway.get();
-    gWorldInstance.CurrentCup = mushroom;
+    gWorldInstance.CurrentCourse = gMarioRaceway;
+    gWorldInstance.CurrentCup = flower;
+    gWorldInstance.CurrentCup->CursorPosition = 3;
 }
 
 extern "C" {
@@ -115,6 +139,10 @@ extern "C" {
 
     void SetCupIndex(int16_t courseId) {
         gWorldInstance.SetCupIndex(courseId);
+    }
+
+    void SetCup() {
+        gWorldInstance.SetCup();
     }
 
     u32 GetCupIndex(void) {
@@ -150,6 +178,12 @@ extern "C" {
 
     void PreviousCourse() {
         gWorldInstance.PreviousCourse();
+    }
+
+    void CourseManager_UpdateVehicles() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->UpdateVehicles();
+        }
     }
 
     void CourseManager_LoadTextures() {
@@ -292,6 +326,98 @@ extern "C" {
 
     void SetCourseFromCup() {
         gWorldInstance.CurrentCourse = gWorldInstance.CurrentCup->GetCourse();
+    }
+
+    Course* GetCourse(void) {
+        return gWorldInstance.CurrentCourse;
+    }
+
+    void SetCourseByClass(void* course) {
+        gWorldInstance.CurrentCourse = (Course*) course;
+    }
+
+    void* GetMarioRaceway(void) {
+        return gMarioRaceway;
+    }
+
+    void* GetLuigiRaceway(void) {
+        return gLuigiRaceway;
+    }
+
+    void* GetChocoMountain(void) {
+        return gChocoMountain;
+    }
+
+    void* GetBowsersCastle(void) {
+        return gBowsersCastle;
+    }
+
+    void* GetBansheeBoardwalk(void) {
+        return gBansheeBoardwalk;
+    }
+
+    void* GetYoshiValley(void) {
+        return gYoshiValley;
+    }
+
+    void* GetFrappeSnowland(void) {
+        return gFrappeSnowland;
+    }
+
+    void* GetKoopaTroopaBeach(void) {
+        return gKoopaTroopaBeach;
+    }
+
+    void* GetRoyalRaceway(void) {
+        return gRoyalRaceway;
+    }
+
+    void* GetMooMooFarm(void) {
+        return gMooMooFarm;
+    }
+
+    void* GetToadsTurnpike(void) {
+        return gToadsTurnpike;
+    }
+
+    void* GetKalimariDesert(void) {
+        return gKalimariDesert;
+    }
+
+    void* GetSherbetLand(void) {
+        return gSherbetLand;
+    }
+
+    void* GetRainbowRoad(void) {
+        return gRainbowRoad;
+    }
+
+    void* GetWarioStadium(void) {
+        return gWarioStadium;
+    }
+
+    void* GetBlockFort(void) {
+        return gBlockFort;
+    }
+
+    void* GetSkyscraper(void) {
+        return gSkyscraper;
+    }
+
+    void* GetDoubleDeck(void) {
+        return gDoubleDeck;
+    }
+
+    void* GetDkJungle(void) {
+        return gDkJungle;
+    }
+
+    void* GetBigDonut(void) {
+        return gBigDonut;
+    }
+
+    void* GetPodiumCeremony(void) {
+        return gPodiumCeremony;
     }
 }
 

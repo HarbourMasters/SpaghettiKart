@@ -48,6 +48,9 @@ YoshiValley::YoshiValley() {
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
+    Props.NearPersp = 9.0f;
+    Props.FarPersp = 4500.0f;
+
     Props.PathSizes = {0x02B2, 0x02A8, 0x02B2, 0x0320, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;

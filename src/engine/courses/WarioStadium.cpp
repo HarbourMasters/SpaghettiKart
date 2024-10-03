@@ -48,6 +48,9 @@ WarioStadium::WarioStadium() {
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
+    Props.NearPersp = 10.0f;
+    Props.FarPersp = 4800.0f;
+
     Props.PathSizes = {0x640, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;

@@ -18,21 +18,21 @@ s32 gReusableFrameBuffer = -1;
 s32 gN64ResFrameBuffer = -1;
 
 void FB_CreateFramebuffers(void) {
-    if (gPauseFrameBuffer == -1) {
-        gPauseFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
-    }
+    // if (gPauseFrameBuffer == -1) {
+    //     gPauseFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
+    // }
 
-    if (gBlurFrameBuffer == -1) {
-        gBlurFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
-    }
+    // if (gBlurFrameBuffer == -1) {
+    //     gBlurFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
+    // }
 
-    if (gReusableFrameBuffer == -1) {
-        gReusableFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
-    }
+    // if (gReusableFrameBuffer == -1) {
+    //     gReusableFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
+    // }
 
-    if (gN64ResFrameBuffer == -1) {
-        gN64ResFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, false);
-    }
+    // if (gN64ResFrameBuffer == -1) {
+    //     gN64ResFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, false);
+    // }
 }
 
 // Fixed point macros
@@ -69,26 +69,26 @@ void FB_CreateFramebuffers(void) {
  */
 void FB_CopyToFramebuffer(Gfx* gfx, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8* hasCopied) {
 
-    gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    gDPSetOtherMode(gfx++,
-                    G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE |
-                        G_TD_CLAMP | G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
-                    G_AC_NONE | G_ZS_PRIM | G_RM_OPA_SURF | G_RM_OPA_SURF2);
+    // gDPSetOtherMode(gfx++,
+    //                 G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE |
+    //                     G_TD_CLAMP | G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
+    //                 G_AC_NONE | G_ZS_PRIM | G_RM_OPA_SURF | G_RM_OPA_SURF2);
 
-    gSPClearGeometryMode(gfx++, G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
-    gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    // gSPClearGeometryMode(gfx++, G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
+    // gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
 
-    gDPSetBlendColor(gfx++, 255, 255, 255, 8);
-    gDPSetPrimDepth(gfx++, 0xFFFF, 0xFFFF);
+    // gDPSetBlendColor(gfx++, 255, 255, 255, 8);
+    // gDPSetPrimDepth(gfx++, 0xFFFF, 0xFFFF);
 
-    gDPSetEnvColor(gfx++, 255, 255, 255, 255);
-    gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
-                      ENVIRONMENT);
+    // gDPSetEnvColor(gfx++, 255, 255, 255, 255);
+    // gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
+    //                   ENVIRONMENT);
 
-    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    gDPCopyFB(gfx++, fb_dest, fb_src, oncePerFrame, hasCopied);
+    // gDPCopyFB(gfx++, fb_dest, fb_src, oncePerFrame, hasCopied);
 }
 
 /**
@@ -99,40 +99,40 @@ void FB_CopyToFramebuffer(Gfx* gfx, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8
  */
 void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
     // Gfx* gfx = *gfxp;
-    printf("write!\n");
-    FB_CopyToFramebuffer(gfx, 0, gReusableFrameBuffer, false, NULL);
+    // printf("write!\n");
+    // FB_CopyToFramebuffer(gfx, 0, gReusableFrameBuffer, false, NULL);
 
-    // Set the N64 resolution framebuffer as the draw target (320x240)
-    gsSPSetFB(gfx++, gN64ResFrameBuffer);
-    // Reset scissor for new framebuffer
-    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // // Set the N64 resolution framebuffer as the draw target (320x240)
+    // gsSPSetFB(gfx++, gN64ResFrameBuffer);
+    // // Reset scissor for new framebuffer
+    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    int16_t s0 = 0, t0 = 0;
-    int16_t s1 = OTRGetGameRenderWidth();
-    int16_t t1 = OTRGetGameRenderHeight();
-    printf("half!\n");
-    float aspectRatio = OTRGetAspectRatio();
-    float fourByThree = 4.0f / 3.0f;
+    // int16_t s0 = 0, t0 = 0;
+    // int16_t s1 = OTRGetGameRenderWidth();
+    // int16_t t1 = OTRGetGameRenderHeight();
+    // printf("half!\n");
+    // float aspectRatio = OTRGetAspectRatio();
+    // float fourByThree = 4.0f / 3.0f;
 
-    // Adjust the texture coordinates so that only a 4:3 region from the center is drawn
-    // to the N64 resolution buffer. Currently ratios smaller than 4:3 will just stretch to fill.
-    if (aspectRatio > fourByThree) {
-        int16_t adjustedWidth = OTRGetGameRenderWidth() / (aspectRatio / fourByThree);
-        s0 = (OTRGetGameRenderWidth() - adjustedWidth) / 2;
-        s1 -= s0;
-    }
-    printf("Aspect!\n");
-    gDPSetTextureImageFB(gfx++, 0, 0, 0, gReusableFrameBuffer);
-    gDPImageRectangle(gfx++, 0 << 2, 0 << 2, s0, t0, SCREEN_WIDTH << 2, SCREEN_HEIGHT << 2, s1, t1, G_TX_RENDERTILE,
-                      OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
+    // // Adjust the texture coordinates so that only a 4:3 region from the center is drawn
+    // // to the N64 resolution buffer. Currently ratios smaller than 4:3 will just stretch to fill.
+    // if (aspectRatio > fourByThree) {
+    //     int16_t adjustedWidth = OTRGetGameRenderWidth() / (aspectRatio / fourByThree);
+    //     s0 = (OTRGetGameRenderWidth() - adjustedWidth) / 2;
+    //     s1 -= s0;
+    // }
+    // printf("Aspect!\n");
+    // gDPSetTextureImageFB(gfx++, 0, 0, 0, gReusableFrameBuffer);
+    // gDPImageRectangle(gfx++, 0 << 2, 0 << 2, s0, t0, SCREEN_WIDTH << 2, SCREEN_HEIGHT << 2, s1, t1, G_TX_RENDERTILE,
+    //                   OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
 
-    // Read the final N64 framebuffer back as rgba16 into the CPU-side buffer
-    gDPReadFB(gfx++, gN64ResFrameBuffer, buffer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, byteSwap);
+    // // Read the final N64 framebuffer back as rgba16 into the CPU-side buffer
+    // gDPReadFB(gfx++, gN64ResFrameBuffer, buffer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, byteSwap);
 
-    gsSPResetFB(gfx++);
-    // Reset scissor for original framebuffer
-    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    printf("Complete!\n");
+    // gsSPResetFB(gfx++);
+    // // Reset scissor for original framebuffer
+    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // printf("Complete!\n");
 }
 
 /**
@@ -140,27 +140,27 @@ void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
  */
 void FB_DrawFromFramebuffer(Gfx* gfx, s32 fb, u8 alpha) {
 
-    gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
+    // gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
 
-    gDPSetOtherMode(gfx++,
-                    G_AD_NOISE | G_CD_NOISE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE | G_TD_CLAMP |
-                        G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
-                    G_AC_NONE | G_ZS_PRIM | G_RM_CLD_SURF | G_RM_CLD_SURF2);
+    // gDPSetOtherMode(gfx++,
+    //                 G_AD_NOISE | G_CD_NOISE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE | G_TD_CLAMP |
+    //                     G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
+    //                 G_AC_NONE | G_ZS_PRIM | G_RM_CLD_SURF | G_RM_CLD_SURF2);
 
-    gSPClearGeometryMode(gfx++, G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
-    gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    // gSPClearGeometryMode(gfx++, G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
+    // gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
 
-    gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
-                      ENVIRONMENT);
+    // gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
+    //                   ENVIRONMENT);
 
-    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    gDPSetTextureImageFB(gfx++, 0, 0, 0, fb);
-    gDPImageRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0) << 2, 0 << 2, 0, 0,
-                      OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) << 2, SCREEN_HEIGHT << 2, OTRGetGameRenderWidth(),
-                      OTRGetGameRenderHeight(), G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
+    // gDPSetTextureImageFB(gfx++, 0, 0, 0, fb);
+    // gDPImageRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0) << 2, 0 << 2, 0, 0,
+    //                   OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) << 2, SCREEN_HEIGHT << 2, OTRGetGameRenderWidth(),
+    //                   OTRGetGameRenderHeight(), G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
 }
 
 /**
@@ -170,25 +170,25 @@ void FB_DrawFromFramebuffer(Gfx* gfx, s32 fb, u8 alpha) {
  */
 void FB_DrawFromFramebufferScaled(Gfx* gfx, s32 fb, u8 alpha, float scaleX, float scaleY) {
 
-    gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
+    // gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
 
-    gDPSetOtherMode(gfx++,
-                    G_AD_NOISE | G_CD_NOISE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE | G_TD_CLAMP |
-                        G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
-                    G_AC_NONE | G_ZS_PRIM | G_RM_CLD_SURF | G_RM_CLD_SURF2);
+    // gDPSetOtherMode(gfx++,
+    //                 G_AD_NOISE | G_CD_NOISE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE | G_TD_CLAMP |
+    //                     G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
+    //                 G_AC_NONE | G_ZS_PRIM | G_RM_CLD_SURF | G_RM_CLD_SURF2);
 
-    gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
-                      ENVIRONMENT);
+    // gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
+    //                   ENVIRONMENT);
 
-    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    gDPSetTextureImageFB(gfx++, 0, 0, 0, fb);
+    // gDPSetTextureImageFB(gfx++, 0, 0, 0, fb);
 
-    float x0 = SCREEN_WIDTH * 0.5f * scaleX;
-    float y0 = SCREEN_HEIGHT * 0.5f * scaleY;
+    // float x0 = SCREEN_WIDTH * 0.5f * scaleX;
+    // float y0 = SCREEN_HEIGHT * 0.5f * scaleY;
 
-    gDPImageRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(x0) << 2, (int) (y0) << 2, 0, 0,
-                      OTRGetRectDimensionFromRightEdge((float) (SCREEN_WIDTH - x0)) << 2,
-                      (int) ((float) (SCREEN_HEIGHT - y0)) << 2, OTRGetGameRenderWidth(), OTRGetGameRenderHeight(),
-                      G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
+    // gDPImageRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(x0) << 2, (int) (y0) << 2, 0, 0,
+    //                   OTRGetRectDimensionFromRightEdge((float) (SCREEN_WIDTH - x0)) << 2,
+    //                   (int) ((float) (SCREEN_HEIGHT - y0)) << 2, OTRGetGameRenderWidth(), OTRGetGameRenderHeight(),
+    //                   G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
 }

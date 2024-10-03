@@ -47,6 +47,9 @@ KalimariDesert::KalimariDesert() {
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
+    Props.NearPersp = 10.0f;
+    Props.FarPersp = 7000.0f;
+
     Props.PathSizes = {0x2BC, 1, 1, 1, 0x226, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
@@ -189,6 +192,10 @@ void KalimariDesert::MinimapFinishlinePosition() {
 }
 
 void KalimariDesert::SetStaffGhost() {}
+
+void KalimariDesert::UpdateVehicles() {
+    update_vehicle_trains();
+}
 
 void KalimariDesert::BeginPlay() {  }
 void KalimariDesert::Render(struct UnkStruct_800DC5EC* arg0) {

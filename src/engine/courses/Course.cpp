@@ -30,6 +30,9 @@ Course::Course() {
     Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
 
+    Props.NearPersp = 3.0f;
+    Props.FarPersp = 6800.0f;
+
     Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
@@ -199,6 +202,8 @@ World* Course::GetWorld() {
      //&gWorldInstance;
 }
 
+void Course::UpdateVehicles() {}
+
 void Course::BeginPlay() {}
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {}
 void Course::RenderCredits() {}
@@ -209,97 +214,3 @@ void Course::Water() {}
 void Course::Destroy() { }
 
 Course* currentCourse = nullptr;
-
-extern "C" {
-    void CourseManager_LoadCourse(uint32_t courseId, const char* courseVtx, course_texture* textures, const char* displaylists, size_t dlSize) {
-
-    delete currentCourse;
-
-    switch (courseId) {
-       case COURSE_MARIO_RACEWAY:
-            currentCourse = new CourseMarioRaceway();
-           break;
-        case COURSE_CHOCO_MOUNTAIN:
-            currentCourse = new ChocoMountain();
-            break;
-
-        // case COURSE_BOWSER_CASTLE:
-        //     currentCourse = new CourseBowsersCastle();
-        //     break;
-
-        // case COURSE_BANSHEE_BOARDWALK:
-        //     currentCourse = new CourseBansheeBoardwalk();
-        //     break;
-
-        // case COURSE_YOSHI_VALLEY:
-        //     currentCourse = new CourseYoshiValley();
-        //     break;
-
-        // case COURSE_FRAPPE_SNOWLAND:
-        //     currentCourse = new CourseFrappeSnowland();
-        //     break;
-
-        // case COURSE_KOOPA_BEACH:
-        //     currentCourse = new CourseKoopaBeach();
-        //     break;
-
-        // case COURSE_ROYAL_RACEWAY:
-        //     currentCourse = new CourseRoyalRaceway();
-        //     break;
-
-        // case COURSE_LUIGI_RACEWAY:
-        //     currentCourse = new CourseLuigiRaceway();
-        //     break;
-
-        // case COURSE_MOO_MOO_FARM:
-        //     currentCourse = new CourseMooMooFarm();
-        //     break;
-
-        // case COURSE_TOADS_TURNPIKE:
-        //     currentCourse = new CourseToadsTurnpike();
-        //     break;
-
-        // case COURSE_KALAMARI_DESERT:
-        //     currentCourse = new CourseKalamariDesert();
-        //     break;
-
-        // case COURSE_SHERBET_LAND:
-        //     currentCourse = new CourseSherbetLand();
-        //     break;
-
-        // case COURSE_RAINBOW_ROAD:
-        //     currentCourse = new CourseRainbowRoad();
-        //     break;
-
-        // case COURSE_WARIO_STADIUM:
-        //     currentCourse = new CourseWarioStadium();
-        //     break;
-
-        // case COURSE_BLOCK_FORT:
-        //     currentCourse = new CourseBlockFort();
-        //     break;
-
-        // case COURSE_SKYSCRAPER:
-        //     currentCourse = new CourseSkyscraper();
-        //     break;
-
-        // case COURSE_DOUBLE_DECK:
-        //     currentCourse = new CourseDoubleDeck();
-        //     break;
-
-        // case COURSE_DK_JUNGLE:
-        //     currentCourse = new CourseDKJungle();
-        //     break;
-
-        // case COURSE_BIG_DONUT:
-        //     currentCourse = new CourseBigDonut();
-        //     break;
-
-        default:
-            // Handle invalid course ID
-            std::runtime_error("Invalid courseId passed into Course base class");
-            return;
-        }
-        currentCourse->Load();
-    }
-}

@@ -38,6 +38,7 @@ ChocoMountain::ChocoMountain() {
     this->gfxSize = 2910;
     this->textures = choco_mountain_textures;
 
+    Props.Id = "mk:choco_mountain";
     Props.Name = "choco mountain";
     Props.DebugName = "mountain";
     Props.CourseLength = "687m";
@@ -46,6 +47,9 @@ ChocoMountain::ChocoMountain() {
     Props.AIMinimumSeparation = 0.3f;
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
+
+    Props.NearPersp = 2.0f;
+    Props.FarPersp = 1500.0f;
 
     Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 

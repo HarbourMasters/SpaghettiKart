@@ -190,7 +190,7 @@ void func_8006F008(void) {
     D_8018D308 = 255;
     D_8018D310 = 255;
     D_8018D318 = 255;
-    if (gCurrentCourseId < NUM_COURSES - 1) {
+    if (GetCourse() != GetPodiumCeremony()) {
         func_8006EEE8((s32) gCurrentCourseId);
     }
     CourseManager_MinimapSettings();
@@ -352,7 +352,7 @@ void func_8006F008(void) {
         return;
     }
     if (gPlayerCount == 2) {
-        if (gCurrentCourseId != 10) {
+        if (GetCourse() != GetSkyscraper()) {
             D_8018D2C0[1] = 265;
             D_8018D2C0[0] = D_8018D2C0[1];
         } else {
@@ -773,258 +773,258 @@ void init_course_object(void) {
 
     CourseManager_InitCourseObjects();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            // if (gGamestate != 9) {
-            //     if (gModeSelection == GRAND_PRIX) {
-            //         func_80070714();
-            //     }
-            //     for (i = 0; i < D_80165738; i++) {
-            //         find_unused_obj_index(&gObjectParticle3[i]);
-            //         init_object(gObjectParticle3[i], 0);
-            //     }
-            // }
-            break;
-        case COURSE_BOWSER_CASTLE:
-            gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
-            gThowmpSpawnList = gThwompSpawns100CCExtra;
-            switch (gCCSelection) { /* switch 1; irregular */
-                case CC_100:        /* switch 1 */
-                case CC_EXTRA:      /* switch 1 */
-                    break;
-                case CC_50: /* switch 1 */
-                    gNumActiveThwomps = NUM_THWOMPS_50CC;
-                    gThowmpSpawnList = gThomwpSpawns50CC;
-                    break;
-                case CC_150: /* switch 1 */
-                    gNumActiveThwomps = NUM_THWOMPS_150CC;
-                    gThowmpSpawnList = gThomwpSpawns150CC;
-                    break;
-            }
-            for (i = 0; i < gNumActiveThwomps; i++) {
-                objectId = indexObjectList1[i];
-                init_object(objectId, 0);
-                gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
-                gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
-                gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
-                gObjectList[objectId].primAlpha = gThowmpSpawnList[i].unk_6;
-            }
-            // Handle the big statue's fire breath
-            objectId = indexObjectList2[0];
-            init_object(objectId, 0);
-            gObjectList[objectId].pos[0] = -68.0 * xOrientation;
-            gObjectList[objectId].pos[1] = 80.0f;
-            gObjectList[objectId].pos[2] = -1840.0f;
-            // Handle the smaller statues' fire breath
-            for (i = 0; i < NUM_FIRE_BREATHS; i++) {
-                objectId = indexObjectList3[i];
-                init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
-                gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
-                gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
-                gObjectList[objectId].direction_angle[1] = 0;
-                if (i % 2U) {
-                    gObjectList[objectId].direction_angle[1] += 0x8000;
-                }
-            }
-            for (i = 0; i < 32; i++) {
-                delete_object(&indexObjectList4[i]);
-            }
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                objectId = indexObjectList1[0];
-                init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
-                                    (u16) 0x00000040);
-                gObjectList[objectId].orientation[0] = 0;
-                gObjectList[objectId].orientation[1] = 0;
-                gObjectList[objectId].orientation[2] = 0x8000;
-                init_object(indexObjectList1[1], 0);
-                init_object(indexObjectList1[2], 0);
-            }
-            break;
-        case COURSE_YOSHI_VALLEY:
-            for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
-                init_object(indexObjectList1[i], 0);
-            }
-            if (gGamestate != CREDITS_SEQUENCE) {
-                for (i = 0; i < NUM_HEDGEHOGS; i++) {
-                    objectId = indexObjectList2[i];
-                    init_object(objectId, 0);
-                    gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] =
-                        gHedgehogSpawns[i].pos[0] * xOrientation;
-                    gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight =
-                        gHedgehogSpawns[i].pos[1] + 6.0;
-                    gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
-                    gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
-                    gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
-                    gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
-                }
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            for (i = 0; i < NUM_SNOWFLAKES; i++) {
-                find_unused_obj_index(&gObjectParticle1[i]);
-            }
-            if (gGamestate != CREDITS_SEQUENCE) {
-                for (i = 0; i < NUM_SNOWMEN; i++) {
-                    objectId = indexObjectList2[i];
-                    init_object(objectId, 0);
-                    gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                    gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
-                    gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
-                    objectId = indexObjectList1[i];
-                    init_object(objectId, 0);
-                    gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                    gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 3.0;
-                    gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
-                    gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
-                }
-            }
-            break;
-        case COURSE_KOOPA_BEACH:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                for (i = 0; i < NUM_CRABS; i++) {
-                    objectId = indexObjectList1[i];
-                    init_object(objectId, 0);
-                    gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] =
-                        gCrabSpawns[i].startX * xOrientation;
-                    gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //         // if (gGamestate != 9) {
+    //         //     if (gModeSelection == GRAND_PRIX) {
+    //         //         func_80070714();
+    //         //     }
+    //         //     for (i = 0; i < D_80165738; i++) {
+    //         //         find_unused_obj_index(&gObjectParticle3[i]);
+    //         //         init_object(gObjectParticle3[i], 0);
+    //         //     }
+    //         // }
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
+    //         gThowmpSpawnList = gThwompSpawns100CCExtra;
+    //         switch (gCCSelection) { /* switch 1; irregular */
+    //             case CC_100:        /* switch 1 */
+    //             case CC_EXTRA:      /* switch 1 */
+    //                 break;
+    //             case CC_50: /* switch 1 */
+    //                 gNumActiveThwomps = NUM_THWOMPS_50CC;
+    //                 gThowmpSpawnList = gThomwpSpawns50CC;
+    //                 break;
+    //             case CC_150: /* switch 1 */
+    //                 gNumActiveThwomps = NUM_THWOMPS_150CC;
+    //                 gThowmpSpawnList = gThomwpSpawns150CC;
+    //                 break;
+    //         }
+    //         for (i = 0; i < gNumActiveThwomps; i++) {
+    //             objectId = indexObjectList1[i];
+    //             init_object(objectId, 0);
+    //             gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
+    //             gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
+    //             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
+    //             gObjectList[objectId].primAlpha = gThowmpSpawnList[i].unk_6;
+    //         }
+    //         // Handle the big statue's fire breath
+    //         objectId = indexObjectList2[0];
+    //         init_object(objectId, 0);
+    //         gObjectList[objectId].pos[0] = -68.0 * xOrientation;
+    //         gObjectList[objectId].pos[1] = 80.0f;
+    //         gObjectList[objectId].pos[2] = -1840.0f;
+    //         // Handle the smaller statues' fire breath
+    //         for (i = 0; i < NUM_FIRE_BREATHS; i++) {
+    //             objectId = indexObjectList3[i];
+    //             init_object(objectId, 0);
+    //             gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
+    //             gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
+    //             gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
+    //             gObjectList[objectId].direction_angle[1] = 0;
+    //             if (i % 2U) {
+    //                 gObjectList[objectId].direction_angle[1] += 0x8000;
+    //             }
+    //         }
+    //         for (i = 0; i < 32; i++) {
+    //             delete_object(&indexObjectList4[i]);
+    //         }
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             objectId = indexObjectList1[0];
+    //             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
+    //                                 (u16) 0x00000040);
+    //             gObjectList[objectId].orientation[0] = 0;
+    //             gObjectList[objectId].orientation[1] = 0;
+    //             gObjectList[objectId].orientation[2] = 0x8000;
+    //             init_object(indexObjectList1[1], 0);
+    //             init_object(indexObjectList1[2], 0);
+    //         }
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
+    //             init_object(indexObjectList1[i], 0);
+    //         }
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             for (i = 0; i < NUM_HEDGEHOGS; i++) {
+    //                 objectId = indexObjectList2[i];
+    //                 init_object(objectId, 0);
+    //                 gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] =
+    //                     gHedgehogSpawns[i].pos[0] * xOrientation;
+    //                 gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight =
+    //                     gHedgehogSpawns[i].pos[1] + 6.0;
+    //                 gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
+    //                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
+    //                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
+    //                 gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         for (i = 0; i < NUM_SNOWFLAKES; i++) {
+    //             find_unused_obj_index(&gObjectParticle1[i]);
+    //         }
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             for (i = 0; i < NUM_SNOWMEN; i++) {
+    //                 objectId = indexObjectList2[i];
+    //                 init_object(objectId, 0);
+    //                 gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+    //                 gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
+    //                 gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
+    //                 objectId = indexObjectList1[i];
+    //                 init_object(objectId, 0);
+    //                 gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+    //                 gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 3.0;
+    //                 gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
+    //                 gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             for (i = 0; i < NUM_CRABS; i++) {
+    //                 objectId = indexObjectList1[i];
+    //                 init_object(objectId, 0);
+    //                 gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] =
+    //                     gCrabSpawns[i].startX * xOrientation;
+    //                 gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
 
-                    gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gCrabSpawns[i].startZ;
-                    gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
-                }
-            }
-            for (i = 0; i < NUM_SEAGULLS; i++) {
-                objectId = indexObjectList2[i];
-                init_object(objectId, 0);
-                if (i < (NUM_SEAGULLS / 2)) {
-                    gObjectList[objectId].unk_0D5 = 0;
-                } else {
-                    gObjectList[objectId].unk_0D5 = 1;
-                }
-            }
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                if (gModeSelection == GRAND_PRIX) {
-                    func_80070714();
-                }
-                for (i = 0; i < D_80165738; i++) {
-                    find_unused_obj_index(&gObjectParticle3[i]);
-                    init_object(gObjectParticle3[i], 0);
-                }
-            }
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                if (gModeSelection == GRAND_PRIX) {
-                    func_80070714();
-                }
-                D_80165898 = 0;
-                init_object(indexObjectList1[0], 0);
-                for (i = 0; i < D_80165738; i++) {
-                    find_unused_obj_index(&gObjectParticle3[i]);
-                    init_object(gObjectParticle3[i], 0);
-                }
-            }
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
-                    switch (gCCSelection) { /* switch 2; irregular */
-                        case CC_50:         /* switch 2 */
-                            D_8018D1C8 = 4;
-                            D_8018D1D0 = 6;
-                            D_8018D1D8 = 6;
-                            break;
-                        case CC_100: /* switch 2 */
-                            D_8018D1C8 = 5;
-                            D_8018D1D0 = 8;
-                            D_8018D1D8 = 8;
-                            break;
-                        case CC_150: /* switch 2 */
-                            D_8018D1C8 = 5;
-                            D_8018D1D0 = 8;
-                            D_8018D1D8 = 10;
-                            break;
-                        case CC_EXTRA: /* switch 2 */
-                            D_8018D1C8 = 5;
-                            D_8018D1D0 = 8;
-                            D_8018D1D8 = 8;
-                            break;
-                    }
-                } else {
-                    D_8018D1C8 = 4;
-                    D_8018D1D0 = 6;
-                    D_8018D1D8 = 6;
-                }
-                for (i = 0; i < NUM_GROUP1_MOLES; i++) {
-                    D_8018D198[i] = 0;
-                    find_unused_obj_index(&indexObjectList1[i]);
-                }
-                for (i = 0; i < NUM_GROUP2_MOLES; i++) {
-                    D_8018D1A8[i] = 0;
-                    find_unused_obj_index(&indexObjectList1[i]);
-                }
-                for (i = 0; i < NUM_GROUP3_MOLES; i++) {
-                    D_8018D1B8[i] = 0;
-                    find_unused_obj_index(&indexObjectList1[i]);
-                }
-                for (i = 0; i < NUM_TOTAL_MOLES; i++) {
-                    find_unused_obj_index(&gObjectParticle1[i]);
-                    objectId = gObjectParticle1[i];
-                    init_object(objectId, 0);
-                    gObjectList[objectId].pos[0] = gMoleSpawns.asVec3sList[i][0] * xOrientation;
-                    gObjectList[objectId].pos[2] = gMoleSpawns.asVec3sList[i][2];
-                    func_800887C0(objectId);
-                    gObjectList[objectId].sizeScaling = 0.7f;
-                }
-                for (i = 0; i < gObjectParticle2_SIZE; i++) {
-                    find_unused_obj_index(&gObjectParticle2[i]);
-                }
-            }
-            break;
-        case COURSE_KALAMARI_DESERT:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                find_unused_obj_index(&D_8018CF10);
-                init_object(D_8018CF10, 0);
-                for (i = 0; i < 50; i++) {
-                    find_unused_obj_index(&gObjectParticle1[i]);
-                }
-                for (i = 0; i < 5; i++) {
-                    find_unused_obj_index(&gObjectParticle2[i]);
-                }
-                for (i = 0; i < 32; i++) {
-                    find_unused_obj_index(&gObjectParticle3[i]);
-                }
-            }
-            break;
-        case COURSE_SHERBET_LAND:
-            for (i = 0; i < NUM_PENGUINS; i++) {
-                init_object(indexObjectList1[i], 0);
-            }
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                for (i = 0; i < NUM_NEON_SIGNS; i++) {
-                    init_object(indexObjectList1[i], 0);
-                }
-                for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
-                    init_object(indexObjectList2[i], 0);
-                }
-            }
-            break;
-        case COURSE_DK_JUNGLE:
-            for (i = 0; i < NUM_TORCHES; i++) {
-                init_smoke_particles(i);
-                // wtf?
-                if (D_8018CF10) {}
-            }
-            break;
-        default:
-            break;
-    }
+    //                 gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gCrabSpawns[i].startZ;
+    //                 gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
+    //             }
+    //         }
+    //         for (i = 0; i < NUM_SEAGULLS; i++) {
+    //             objectId = indexObjectList2[i];
+    //             init_object(objectId, 0);
+    //             if (i < (NUM_SEAGULLS / 2)) {
+    //                 gObjectList[objectId].unk_0D5 = 0;
+    //             } else {
+    //                 gObjectList[objectId].unk_0D5 = 1;
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_ROYAL_RACEWAY:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             if (gModeSelection == GRAND_PRIX) {
+    //                 func_80070714();
+    //             }
+    //             for (i = 0; i < D_80165738; i++) {
+    //                 find_unused_obj_index(&gObjectParticle3[i]);
+    //                 init_object(gObjectParticle3[i], 0);
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             if (gModeSelection == GRAND_PRIX) {
+    //                 func_80070714();
+    //             }
+    //             D_80165898 = 0;
+    //             init_object(indexObjectList1[0], 0);
+    //             for (i = 0; i < D_80165738; i++) {
+    //                 find_unused_obj_index(&gObjectParticle3[i]);
+    //                 init_object(gObjectParticle3[i], 0);
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
+    //                 switch (gCCSelection) { /* switch 2; irregular */
+    //                     case CC_50:         /* switch 2 */
+    //                         D_8018D1C8 = 4;
+    //                         D_8018D1D0 = 6;
+    //                         D_8018D1D8 = 6;
+    //                         break;
+    //                     case CC_100: /* switch 2 */
+    //                         D_8018D1C8 = 5;
+    //                         D_8018D1D0 = 8;
+    //                         D_8018D1D8 = 8;
+    //                         break;
+    //                     case CC_150: /* switch 2 */
+    //                         D_8018D1C8 = 5;
+    //                         D_8018D1D0 = 8;
+    //                         D_8018D1D8 = 10;
+    //                         break;
+    //                     case CC_EXTRA: /* switch 2 */
+    //                         D_8018D1C8 = 5;
+    //                         D_8018D1D0 = 8;
+    //                         D_8018D1D8 = 8;
+    //                         break;
+    //                 }
+    //             } else {
+    //                 D_8018D1C8 = 4;
+    //                 D_8018D1D0 = 6;
+    //                 D_8018D1D8 = 6;
+    //             }
+    //             for (i = 0; i < NUM_GROUP1_MOLES; i++) {
+    //                 D_8018D198[i] = 0;
+    //                 find_unused_obj_index(&indexObjectList1[i]);
+    //             }
+    //             for (i = 0; i < NUM_GROUP2_MOLES; i++) {
+    //                 D_8018D1A8[i] = 0;
+    //                 find_unused_obj_index(&indexObjectList1[i]);
+    //             }
+    //             for (i = 0; i < NUM_GROUP3_MOLES; i++) {
+    //                 D_8018D1B8[i] = 0;
+    //                 find_unused_obj_index(&indexObjectList1[i]);
+    //             }
+    //             for (i = 0; i < NUM_TOTAL_MOLES; i++) {
+    //                 find_unused_obj_index(&gObjectParticle1[i]);
+    //                 objectId = gObjectParticle1[i];
+    //                 init_object(objectId, 0);
+    //                 gObjectList[objectId].pos[0] = gMoleSpawns.asVec3sList[i][0] * xOrientation;
+    //                 gObjectList[objectId].pos[2] = gMoleSpawns.asVec3sList[i][2];
+    //                 func_800887C0(objectId);
+    //                 gObjectList[objectId].sizeScaling = 0.7f;
+    //             }
+    //             for (i = 0; i < gObjectParticle2_SIZE; i++) {
+    //                 find_unused_obj_index(&gObjectParticle2[i]);
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_KALAMARI_DESERT:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             find_unused_obj_index(&D_8018CF10);
+    //             init_object(D_8018CF10, 0);
+    //             for (i = 0; i < 50; i++) {
+    //                 find_unused_obj_index(&gObjectParticle1[i]);
+    //             }
+    //             for (i = 0; i < 5; i++) {
+    //                 find_unused_obj_index(&gObjectParticle2[i]);
+    //             }
+    //             for (i = 0; i < 32; i++) {
+    //                 find_unused_obj_index(&gObjectParticle3[i]);
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         for (i = 0; i < NUM_PENGUINS; i++) {
+    //             init_object(indexObjectList1[i], 0);
+    //         }
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             for (i = 0; i < NUM_NEON_SIGNS; i++) {
+    //                 init_object(indexObjectList1[i], 0);
+    //             }
+    //             for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
+    //                 init_object(indexObjectList2[i], 0);
+    //             }
+    //         }
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         for (i = 0; i < NUM_TORCHES; i++) {
+    //             init_smoke_particles(i);
+    //             // wtf?
+    //             if (D_8018CF10) {}
+    //         }
+    //         break;
+    //     default:
+    //         break;
+    // }
 }
 
 void init_hud_one_player(void) {
