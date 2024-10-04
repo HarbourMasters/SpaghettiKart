@@ -29,7 +29,7 @@ TrackWaypoint test_course_path[] = {
     {  92,    0,     38, 1 }  // Point at 337.5 degrees
 };
 
-TrackSections d_course_mario_raceway_addr[] = {
+TrackSections test_course_addr[] = {
     { test_course_dls, 1,  1, 0x0000 },
     { 0x00000000, 0, 0, 0x00000 },
 };

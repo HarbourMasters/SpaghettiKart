@@ -50,7 +50,13 @@ s32 func_80290C20(Camera* camera) {
 }
 
 void parse_course_displaylists(const char* asset) {
-    TrackSections* section = (TrackSections*) LOAD_ASSET(asset);
+    TrackSections* section;
+
+    if (GetCourse() == GetTestCourse()) {
+        section = (TrackSections*) asset;
+    } else {
+        section = (TrackSections*) LOAD_ASSET(asset);
+    }
 
     while (section->addr != 0) {
         if (section->flags & 0x8000) {

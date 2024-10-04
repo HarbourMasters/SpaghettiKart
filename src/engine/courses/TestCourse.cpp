@@ -28,11 +28,17 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    typedef struct {
+    Gfx* addr;
+    u8 surfaceType;
+    u8 sectionId;
+    u16 flags;
+    } TrackSections;
     extern Gfx test_course_dls[];
     extern Vtx test_course_vertices[];
     extern const course_texture test_course_textures[];
     extern TrackWaypoint test_course_path[];
-
+    extern TrackSections test_course_addr[];
 }
 
 TestCourse::TestCourse() {
@@ -230,7 +236,7 @@ void TestCourse::Collision() {}
 void TestCourse::GenerateCollision() {
     generate_collision_mesh_with_defaults(test_course_dls);
 
-    parse_course_displaylists(d_course_mario_raceway_addr);
+    parse_course_displaylists((const char*)test_course_addr);
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
