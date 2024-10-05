@@ -30,6 +30,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     extern const char *kalimari_desert_dls[];
+    extern size_t gNumTrains;
 }
 
 KalimariDesert::KalimariDesert() {
@@ -202,65 +203,9 @@ void KalimariDesert::MinimapFinishlinePosition() {
 void KalimariDesert::SetStaffGhost() {}
 
 void KalimariDesert::SpawnVehicles() {
-    s16 trainCarYRot;
-    UNUSED Vec3f pad;
-    TrainCarStuff* tempLocomotive;
-    TrainCarStuff* tempTender;
-    TrainCarStuff* tempPassengerCar;
-    Vec3s trainCarRot;
-    VehicleStuff* tempBoxTruck;
-    VehicleStuff* tempSchoolBus;
-    VehicleStuff* tempTankerTruck;
-    VehicleStuff* tempCar;
-    PaddleBoatStuff* tempPaddleWheelBoat;
-    Vec3s paddleWheelBoatRot;
-    s32 loopIndex;
-    s32 loopIndex2;
-    f32 origXPos;
-    f32 origZPos;
-
-    for (loopIndex = 0; loopIndex < NUM_TRAINS; loopIndex++) {
-        tempLocomotive = &gTrainList[loopIndex].locomotive;
-        origXPos = tempLocomotive->position[0];
-        origZPos = tempLocomotive->position[2];
-        trainCarYRot = update_vehicle_following_waypoint(
-            tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
-        tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
-        tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
-        vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-        tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot,
-                                                                tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
-
-        tempTender = &gTrainList[loopIndex].tender;
-        if (tempTender->isActive == 1) {
-            origXPos = tempTender->position[0];
-            origZPos = tempTender->position[2];
-            trainCarYRot = update_vehicle_following_waypoint(
-                tempTender->position, (s16*) &tempTender->waypointIndex, gTrainList[loopIndex].speed);
-            tempTender->velocity[0] = tempTender->position[0] - origXPos;
-            tempTender->velocity[2] = tempTender->position[2] - origZPos;
-            vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-            tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot,
-                                                                tempTender->velocity, ACTOR_TRAIN_TENDER);
-        }
-
-        for (loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
-            tempPassengerCar = &gTrainList[loopIndex].passengerCars[loopIndex2];
-            if (tempPassengerCar->isActive == 1) {
-                origXPos = tempPassengerCar->position[0];
-                origZPos = tempPassengerCar->position[2];
-                trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
-                                                                    (s16*) &tempPassengerCar->waypointIndex,
-                                                                    gTrainList[loopIndex].speed);
-                tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
-                tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
-                vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-                tempPassengerCar->actorIndex =
-                    add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity,
-                                            ACTOR_TRAIN_PASSENGER_CAR);
-            }
-        }
-    }
+    generate_train_waypoints();
+    init_vehicles_trains(0, 5, 5.0f);
+    init_vehicles_trains(1, 5, 5.0f);
 }
 
 void KalimariDesert::UpdateVehicles() {

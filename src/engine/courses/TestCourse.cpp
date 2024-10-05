@@ -145,6 +145,16 @@ struct ActorSpawnData rocks[] = {
 };
     spawn_all_item_boxes((const char*)itemboxes);
     spawn_falling_rocks((const char*)rocks);
+
+    struct RailroadCrossing* rrxing;
+    Vec3f position;
+    Vec3f velocity = { 0.0f, 0.0f, 0.0f };
+    Vec3s rotation = { 0, 0, 0 };
+    vec3f_set(position, 50.0f, 2.0f, 50.0f);
+    position[0] *= gCourseDirection;
+    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING)];
+
 }
 
 void TestCourse::Init() {}
@@ -160,6 +170,76 @@ void TestCourse::MinimapSettings() {
     D_80165718 = 0;
     D_80165720 = 5;
     D_80165728 = -240;
+}
+
+Path2D test_course_path2D[] = {
+    {    0, 0},
+    {    0, -100},
+    {    0, -200},
+    {    0, -300},
+    {    0, -400},
+    {    0, -500},
+    {    0, -600},
+    {    0, -700},
+    {    0, -800},
+    {    0, -900},
+    {    0, -1000},
+    {    0, -1096},    // Main point 1
+    {  100, -1090},
+    {  200, -1085},
+    {  300, -1080},
+    {  400, -1075},
+    {  500, -1072},    // Curve begins to smooth here
+    {  600, -1068},
+    {  700, -1065},
+    {  800, -1063},
+    {  900, -1061},
+    {  984, -1060},    // Main point 2
+    {  990, -900},
+    {  995, -800},
+    {  997, -700},
+    {  998, -600},
+    {  999, -500},
+    {  999, -400},
+    {  999, -300},
+    {  999, -200},
+    {  999, -100},
+    {  999, 0},
+    {  999, 100},
+    {  999, 200},
+    {  999, 300},
+    {  999, 400},
+    {  999, 500},
+    {  999, 600},
+    {  999, 700},
+    {  999, 800},
+    {  999, 900},
+    {  999, 940},      // Main point 3
+    {  900, 945},
+    {  800, 945},
+    {  700, 947},
+    {  600, 948},
+    {  500, 949},
+    {  400, 949},
+    {  300, 949},
+    {  200, 950},
+    {  100, 950},
+    {    0, 950},      // Main point 4
+
+    // End of path
+    { -32768, -32768 } // Terminator
+};
+
+void TestCourse::SpawnVehicles() {
+    gVehicle2DWaypoint = test_course_path2D;
+    gVehicle2DWaypointLength = 53;
+    D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
+    init_vehicles_trains(0, 5, 5.0f);
+    init_vehicles_trains(1, 5, 5.0f);
+}
+
+void TestCourse::UpdateVehicles() {
+    update_vehicle_trains();
 }
 
 void TestCourse::InitCourseObjects() {}

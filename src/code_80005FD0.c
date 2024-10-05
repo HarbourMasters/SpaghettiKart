@@ -3456,36 +3456,7 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
 
-    switch (gCurrentCourseId) {
-        case COURSE_KALAMARI_DESERT:
-            generate_train_waypoints(d_course_kalimari_desert_track_unknown_waypoints);
-            init_vehicles_trains(0, 5, 5.0f);
-            init_vehicles_trains(1, 5, 5.0f);
-            break;
-        case COURSE_DK_JUNGLE:
-            generate_ferry_waypoints();
-            init_vehicles_ferry();
-            break;
-        case COURSE_TOADS_TURNPIKE:
-            init_vehicles_box_trucks();
-            init_vehicles_school_buses();
-            init_vehicles_trucks();
-            init_vehicles_cars();
-            break;
-    }
-    if (GetCourse() == GetKalimariDesert()) {
-        generate_train_waypoints(d_course_kalimari_desert_track_unknown_waypoints);
-        init_vehicles_trains(0, 5, 5.0f);
-        init_vehicles_trains(1, 5, 5.0f);
-    } else if (GetCourse() == GetDkJungle()) {
-        generate_ferry_waypoints();
-        init_vehicles_ferry();
-    } else if (GetCourse() == GetToadsTurnpike()) {
-        init_vehicles_box_trucks();
-        init_vehicles_school_buses();
-        init_vehicles_trucks();
-        init_vehicles_cars();
-    }
+    CourseManager_SpawnVehicles();
 
     CourseManager_SpawnBombKarts();
     set_bomb_kart_spawn_positions();
@@ -4358,10 +4329,10 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
         }                                       \
     }
 
-void generate_train_waypoints(const char* path) {
+void generate_train_waypoints(void) {
     s32 i;
     Path2D* temp;
-    TrackWaypoint* waypoint = (TrackWaypoint*) LOAD_ASSET(path);
+    TrackWaypoint* waypoint = (TrackWaypoint*) LOAD_ASSET(d_course_kalimari_desert_track_unknown_waypoints);
     GET_PATH_LENGTH(waypoint)
 
     temp = gVehicle2DWaypoint;
@@ -4423,7 +4394,99 @@ void spawn_course_vehicles(void) {
     f32 origXPos;
     f32 origZPos;
 
-    CourseManager_SpawnVehicles();
+    //CourseManager_SpawnVehicles();
+
+    //if (GetCourse() == GetKalimariDesert()) {
+        for (loopIndex = 0; loopIndex < gNumTrains; loopIndex++) {
+            tempLocomotive = &gTrainList[loopIndex].locomotive;
+            origXPos = tempLocomotive->position[0];
+            origZPos = tempLocomotive->position[2];
+            trainCarYRot = update_vehicle_following_waypoint(
+                tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
+            tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
+            tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
+            vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+            tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot,
+                                                                    tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
+
+            tempTender = &gTrainList[loopIndex].tender;
+            if (tempTender->isActive == 1) {
+                origXPos = tempTender->position[0];
+                origZPos = tempTender->position[2];
+                trainCarYRot = update_vehicle_following_waypoint(
+                    tempTender->position, (s16*) &tempTender->waypointIndex, gTrainList[loopIndex].speed);
+                tempTender->velocity[0] = tempTender->position[0] - origXPos;
+                tempTender->velocity[2] = tempTender->position[2] - origZPos;
+                vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+                tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot,
+                                                                    tempTender->velocity, ACTOR_TRAIN_TENDER);
+            }
+
+            for (loopIndex2 = 0; loopIndex2 < gTrainList[loopIndex].numCarriages; loopIndex2++) {
+                tempPassengerCar = &gTrainList[loopIndex].passengerCars[loopIndex2];
+                if (tempPassengerCar->isActive == 1) {
+                    origXPos = tempPassengerCar->position[0];
+                    origZPos = tempPassengerCar->position[2];
+                    trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
+                                                                        (s16*) &tempPassengerCar->waypointIndex,
+                                                                        gTrainList[loopIndex].speed);
+                    tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
+                    tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
+                    vec3s_set(trainCarRot, 0, trainCarYRot, 0);
+                    tempPassengerCar->actorIndex =
+                        add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity,
+                                                ACTOR_TRAIN_PASSENGER_CAR);
+                }
+            }
+        }
+    //} else 
+    if (GetCourse() == GetToadsTurnpike()) {
+        for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
+            tempBoxTruck = &gBoxTruckList[loopIndex];
+            spawn_vehicle_on_road(tempBoxTruck);
+            tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation,
+                                                                tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
+        }
+        for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
+            tempSchoolBus = &gSchoolBusList[loopIndex];
+            spawn_vehicle_on_road(tempSchoolBus);
+            tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation,
+                                                                tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
+        }
+        for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
+            tempTankerTruck = &gTankerTruckList[loopIndex];
+            spawn_vehicle_on_road(tempTankerTruck);
+            tempTankerTruck->actorIndex =
+                add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
+                                        tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
+        }
+        for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
+            tempCar = &gCarList[loopIndex];
+            spawn_vehicle_on_road(tempCar);
+            tempCar->actorIndex =
+                add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
+        }
+    } else if (GetCourse() == GetDkJungle()) {
+        for (loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_BOATS; loopIndex++) {
+            tempPaddleWheelBoat = &gPaddleBoats[loopIndex];
+            if (tempPaddleWheelBoat->isActive == 1) {
+                origXPos = tempPaddleWheelBoat->position[0];
+                origZPos = tempPaddleWheelBoat->position[2];
+                tempPaddleWheelBoat->rotY = update_vehicle_following_waypoint(
+                    tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->waypointIndex,
+                    tempPaddleWheelBoat->speed);
+                tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
+                tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
+                vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
+                tempPaddleWheelBoat->actorIndex =
+                    add_actor_to_empty_slot(tempPaddleWheelBoat->position, paddleWheelBoatRot,
+                                            tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
+            }
+        }
+    }
+
+
+
 }
 
 void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoint) {
