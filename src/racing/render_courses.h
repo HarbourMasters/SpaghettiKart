@@ -13,11 +13,10 @@ typedef struct {
 
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32 func_80290C20(Camera*);
-void parse_course_displaylists(const char*);
+void parse_course_displaylists(const char* asset);
 void render_course_segments(const char*[], struct UnkStruct_800DC5EC*);
 void func_80291198(void);
 void func_802911C4(void);
-void render_mario_raceway(struct UnkStruct_800DC5EC*);
 void render_choco_mountain(struct UnkStruct_800DC5EC*);
 void render_bowsers_castle(struct UnkStruct_800DC5EC*);
 void render_banshee_boardwalk(struct UnkStruct_800DC5EC*);
@@ -53,9 +52,12 @@ extern s32 D_802B87C8;
 extern s32 D_802B87CC;
 extern s32 D_802B87BC;
 
-extern Lights1 D_800DC610[];
+extern s16 D_802B87B0;
+extern s16 D_802B87B4;
+extern s16 D_802B87D0;
+extern s16 D_802B87D4;
 
-extern Lights1 D_800DC610[]; // Light data?
+extern Lights1 D_800DC610[];
 
 extern u16 gNumCollisionTriangles;
 

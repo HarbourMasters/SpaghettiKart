@@ -245,252 +245,258 @@ void func_80027EDC(Player* player, s8 playerId) {
     UNUSED s32 pad;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        switch (gCurrentCourseId) {
-            case COURSE_MARIO_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_CHOCO_MOUNTAIN:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_BOWSER_CASTLE:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x41);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_BANSHEE_BOARDWALK:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x41);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_LUIGI_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_TOADS_TURNPIKE:
-                if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x1e);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_SHERBET_LAND:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x11C) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x209)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA288(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA2B8(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_DK_JUNGLE:
-                if ((((s16) gNearestWaypointByPlayerId[playerId] >= 0) &&
-                     ((s16) gNearestWaypointByPlayerId[playerId] < 0x65)) ||
-                    (((s16) gNearestWaypointByPlayerId[playerId] >= 0x14A) &&
-                     ((s16) gNearestWaypointByPlayerId[playerId] < 0x21F))) {
-                    if (D_80165300[playerId] != 2) {
-                        func_800C8F80(playerId, 0x0170802D);
-                    }
-                    D_80165300[playerId] = 2;
-                } else {
-                    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
-                        ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
-                        if (D_80165300[playerId] != 1) {
-                            func_800CA288(playerId, 0x55);
-                        }
-                        D_80165300[playerId] = 1;
-                    } else {
-                        if (D_80165300[playerId] != 0) {
-                            if (D_80165300[playerId] == 1) {
-                                func_800CA2B8(playerId);
-                            }
-                            if (D_80165300[playerId] == 2) {
-                                func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x70, 0x80, 0x2D));
-                            }
-                            D_80165300[playerId] = 0;
-                        }
-                    }
-                }
-                break;
-            default:
-                break;
-        }
+        
+        CourseManager_WhatDoesThisDo(player, playerId);
+        
+        // switch (gCurrentCourseId) {
+        //     // case COURSE_MARIO_RACEWAY:
+        //     //     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
+        //     //         ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+        //     //         if (D_80165300[playerId] != 1) {
+        //     //             func_800CA288(playerId, 0x55);
+        //     //         }
+        //     //         D_80165300[playerId] = 1;
+        //     //     } else {
+        //     //         if (D_80165300[playerId] != 0) {
+        //     //             func_800CA2B8(playerId);
+        //     //             D_80165300[playerId] = 0;
+        //     //         }
+        //     //     }
+        //         break;
+        //     case COURSE_CHOCO_MOUNTAIN:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_BOWSER_CASTLE:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x41);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_BANSHEE_BOARDWALK:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x41);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_LUIGI_RACEWAY:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_TOADS_TURNPIKE:
+        //         if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x1e);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_SHERBET_LAND:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x11C) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x209)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA288(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA2B8(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_DK_JUNGLE:
+        //         if ((((s16) gNearestWaypointByPlayerId[playerId] >= 0) &&
+        //              ((s16) gNearestWaypointByPlayerId[playerId] < 0x65)) ||
+        //             (((s16) gNearestWaypointByPlayerId[playerId] >= 0x14A) &&
+        //              ((s16) gNearestWaypointByPlayerId[playerId] < 0x21F))) {
+        //             if (D_80165300[playerId] != 2) {
+        //                 func_800C8F80(playerId, 0x0170802D);
+        //             }
+        //             D_80165300[playerId] = 2;
+        //         } else {
+        //             if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
+        //                 ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
+        //                 if (D_80165300[playerId] != 1) {
+        //                     func_800CA288(playerId, 0x55);
+        //                 }
+        //                 D_80165300[playerId] = 1;
+        //             } else {
+        //                 if (D_80165300[playerId] != 0) {
+        //                     if (D_80165300[playerId] == 1) {
+        //                         func_800CA2B8(playerId);
+        //                     }
+        //                     if (D_80165300[playerId] == 2) {
+        //                         func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x70, 0x80, 0x2D));
+        //                     }
+        //                     D_80165300[playerId] = 0;
+        //                 }
+        //             }
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
     } else {
-        switch (gCurrentCourseId) {
-            case COURSE_MARIO_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_CHOCO_MOUNTAIN:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_BOWSER_CASTLE:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x41);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_BANSHEE_BOARDWALK:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x41);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_LUIGI_RACEWAY:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_TOADS_TURNPIKE:
-                if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x1E);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_SHERBET_LAND:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x11C) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x209)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            case COURSE_DK_JUNGLE:
-                if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
-                    ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
-                    if (D_80165300[playerId] != 1) {
-                        func_800CA2E4(playerId, 0x55);
-                    }
-                    D_80165300[playerId] = 1;
-                } else {
-                    if (D_80165300[playerId] != 0) {
-                        func_800CA30C(playerId);
-                        D_80165300[playerId] = 0;
-                    }
-                }
-                break;
-            default:
-                break;
-        }
+
+        CourseManager_WhatDoesThisDoAI(player, playerId);
+
+        // switch (gCurrentCourseId) {
+        //     case COURSE_MARIO_RACEWAY:
+        //         // if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
+        //         //     ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+        //         //     if (D_80165300[playerId] != 1) {
+        //         //         func_800CA2E4(playerId, 0x55);
+        //         //     }
+        //         //     D_80165300[playerId] = 1;
+        //         // } else {
+        //         //     if (D_80165300[playerId] != 0) {
+        //         //         func_800CA30C(playerId);
+        //         //         D_80165300[playerId] = 0;
+        //         //     }
+        //         // }
+        //         break;
+        //     case COURSE_CHOCO_MOUNTAIN:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_BOWSER_CASTLE:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x41);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_BANSHEE_BOARDWALK:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x41);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_LUIGI_RACEWAY:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_TOADS_TURNPIKE:
+        //         if ((player->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x1E);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_SHERBET_LAND:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x11C) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x209)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     case COURSE_DK_JUNGLE:
+        //         if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
+        //             ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
+        //             if (D_80165300[playerId] != 1) {
+        //                 func_800CA2E4(playerId, 0x55);
+        //             }
+        //             D_80165300[playerId] = 1;
+        //         } else {
+        //             if (D_80165300[playerId] != 0) {
+        //                 func_800CA30C(playerId);
+        //                 D_80165300[playerId] = 0;
+        //             }
+        //         }
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 }
 
@@ -1699,59 +1705,53 @@ void func_8002C11C(Player* player) {
 }
 
 void func_8002C17C(Player* player, s8 playerId) {
-    switch (gCurrentCourseId) { /* irregular */
-        case COURSE_YOSHI_VALLEY:
-            if ((player->collision.surfaceDistance[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
-                D_80165330[playerId] = 1;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (D_80165330[playerId] == 0) {
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (!(player->effects & 8)) {
-                if (func_802ABDF4(player->collision.meshIndexZX) == 0) {
-                    D_80165330[playerId] = 0;
-                }
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if ((player->surfaceType == SNOW_OFFROAD) && (D_80165330[playerId] == 0)) {
-                D_80165330[playerId] = 1;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (player->surfaceType != SNOW_OFFROAD) {
-                D_80165330[playerId] = 0;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            }
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) != 0) && (D_80165330[playerId] == 0)) {
-                D_80165330[playerId] = 1;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == 0) && !(player->effects & 8)) {
-                D_80165330[playerId] = 0;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            }
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if ((player->collision.surfaceDistance[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
-                D_80165330[playerId] = 1;
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (D_80165330[playerId] == 0) {
-                gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
-                gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-            } else if (!((player->effects & 8) || (player->unk_0CA & 1))) {
+    if (GetCourse() == GetYoshiValley()) {
+        if ((player->collision.surfaceDistance[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (D_80165330[playerId] == 0) {
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (!(player->effects & 8)) {
+            if (func_802ABDF4(player->collision.meshIndexZX) == 0) {
                 D_80165330[playerId] = 0;
             }
-            break;
-        default:
+        }
+    } else if (GetCourse() == GetFrappeSnowland()) {
+        if ((player->surfaceType == SNOW_OFFROAD) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (player->surfaceType != SNOW_OFFROAD) {
             D_80165330[playerId] = 0;
-            if (1) {}
-            break;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        }
+    } else if (GetCourse() == GetRoyalRaceway()) {
+        if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) != 0) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == 0) && !(player->effects & 8)) {
+            D_80165330[playerId] = 0;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        }
+    } else if (GetCourse() == GetRainbowRoad()) {
+        if ((player->collision.surfaceDistance[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
+            D_80165330[playerId] = 1;
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (D_80165330[playerId] == 0) {
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
+        } else if (!((player->effects & 8) || (player->unk_0CA & 1))) {
+            D_80165330[playerId] = 0;
+        }
+    } else {
+        D_80165330[playerId] = 0;
+        if (1) {}
     }
 }
 
@@ -1772,9 +1772,9 @@ void func_8002C4F8(Player* player, s8 arg1) {
         if ((player->unk_0DE & 4) != 4) {
             player->unk_0DE |= 8;
             player->unk_0DE |= 4;
-            if ((gCurrentCourseId != COURSE_KOOPA_BEACH) && (gCurrentCourseId != COURSE_SKYSCRAPER) &&
-                (gCurrentCourseId != COURSE_RAINBOW_ROAD) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-                if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
+            if ((GetCourse() != GetKoopaTroopaBeach()) && (GetCourse() != GetSkyscraper()) &&
+                (GetCourse() != GetRainbowRoad()) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((GetCourse() == GetBowsersCastle()) || (GetCourse() == GetBigDonut())) {
                     func_800C9060((u8) arg1, 0x1900801CU);
                 } else {
                     func_800C9060((u8) arg1, 0x19008008U);
@@ -1782,8 +1782,8 @@ void func_8002C4F8(Player* player, s8 arg1) {
             }
         }
     }
-    if ((gCurrentCourseId == COURSE_KOOPA_BEACH) || (gCurrentCourseId == COURSE_SKYSCRAPER) ||
-        (gCurrentCourseId == COURSE_RAINBOW_ROAD)) {
+    if ((GetCourse() == GetKoopaTroopaBeach()) || (GetCourse() == GetSkyscraper()) ||
+        (GetCourse() == GetRainbowRoad())) {
         player->unk_0DE &= ~0x000C;
     }
     if ((player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) &&
@@ -2248,7 +2248,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
             player->unk_DB4.unkC = 1.5f;
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
                 ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-                if (((player->unk_0C2 < 0xB) && (player->unk_0C2 >= 4)) && (gCurrentCourseId == COURSE_BOWSER_CASTLE)) {
+                if (((player->unk_0C2 < 0xB) && (player->unk_0C2 >= 4)) && (GetCourse() == GetBowsersCastle())) {
                     func_800CADD0((u8) playerId, player->unk_0C2 / 14.0f);
                 } else {
                     func_800CADD0((u8) playerId, player->unk_0C2 / 25.0f);

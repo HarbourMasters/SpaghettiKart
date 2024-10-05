@@ -2481,19 +2481,19 @@ void func_8004F020(s32 arg0) {
     f32 var_f0;
     f32 var_f2;
 
+    //! @todo: Hardcode these x and y values. Because why not?
+    CourseManager_MinimapFinishlinePosition();
+
     var_f2 = ((D_8018D2C0[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0;
     var_f0 = ((D_8018D2D8[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8;
-    switch (gCurrentCourseId) { /* irregular */
-        case COURSE_MARIO_RACEWAY:
-            var_f0 = var_f0 - 2.0;
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-            var_f0 = var_f0 - 16.0;
-            break;
-        case COURSE_KALAMARI_DESERT:
-            var_f0 = var_f0 + 4.0;
-            break;
+    if (GetCourse() == GetMarioRaceway()) {
+        var_f0 = var_f0 - 2.0;
+    } else if (GetCourse() == GetChocoMountain()) {
+        var_f0 = var_f0 - 16.0;
+    } else if (GetCourse() == GetKalimariDesert()) {
+        var_f0 = var_f0 + 4.0;
     }
+
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
 }
 
@@ -2736,7 +2736,7 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
 }
 
 void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (arg3 < 3) && (arg8 == 0)) {
+    if ((GetCourse() == GetYoshiValley()) && (arg3 < 3) && (arg8 == 0)) {
         func_80042330((s32) arg0, (s32) arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, D_8018D3E0);
@@ -3033,7 +3033,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         spB8 = 0;
     }
 
-    if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (lapCount < 3)) {
+    if ((GetCourse() == GetYoshiValley()) && (lapCount < 3)) {
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_portrait_bomb_kart_and_question_mark);
         rsp_load_texture(common_texture_portrait_question_mark, 0x00000020, 0x00000020);
@@ -3211,16 +3211,16 @@ void func_80051C60(s16 arg0, s32 arg1) {
     Object* object;
 
     if (D_801658FE == 0) {
-        if (gCurrentCourseId == 6) {
+        if (GetCourse() == GetKoopaTroopaBeach()) {
             var_s5 = arg0;
-        } else if (gCurrentCourseId == 9) {
+        } else if (GetCourse() == GetMooMooFarm()) {
             var_s5 = arg0 - 0x10;
-        } else if (gCurrentCourseId == 4) {
+        } else if (GetCourse() == GetYoshiValley()) {
             var_s5 = arg0 - 0x10;
         } else {
             var_s5 = arg0 + 0x10;
         }
-    } else if (gCurrentCourseId == 6) {
+    } else if (GetCourse() == GetKoopaTroopaBeach()) {
         var_s5 = arg0 * 2;
     } else {
         var_s5 = arg0 + 0x20;
@@ -3252,11 +3252,11 @@ void func_80051EF8(void) {
     s16 temp_a0;
 
     temp_a0 = 0xF0 - D_800DC5EC->cameraHeight;
-    if (gCurrentCourseId == COURSE_KOOPA_BEACH) {
+    if (GetCourse() == GetKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
-    } else if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+    } else if (GetCourse() == GetMooMooFarm()) {
         temp_a0 = temp_a0 - 0x40;
-    } else if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+    } else if (GetCourse() == GetYoshiValley()) {
         temp_a0 = temp_a0 - 0x40;
     } else {
         temp_a0 = temp_a0 - 0x30;
@@ -3268,11 +3268,11 @@ void func_80051F9C(void) {
     s16 temp_a0;
 
     temp_a0 = 0xF0 - D_800DC5F0->cameraHeight;
-    if (gCurrentCourseId == COURSE_KOOPA_BEACH) {
+    if (GetCourse() == GetKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
-    } else if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+    } else if (GetCourse() == GetMooMooFarm()) {
         temp_a0 = temp_a0 - 0x40;
-    } else if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+    } else if (GetCourse() == GetYoshiValley()) {
         temp_a0 = temp_a0 - 0x40;
     } else {
         temp_a0 = temp_a0 - 0x30;
@@ -3702,7 +3702,7 @@ void render_object_thwomps_model(s32 objectIndex) {
 }
 
 void render_object_thwomps(s32 cameraId) {
-    s32 objectIndex;
+    s32 objectIndex = 0;
     s32 i;
     UNUSED s32 stackPadding0;
     s16 minusone, plusone;

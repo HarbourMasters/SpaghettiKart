@@ -125,6 +125,15 @@ struct UnkStruct_800DDB68 {
 };
 /*** Types.h end ***/
 
+struct Skybox {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+};
+
 typedef struct {
     u8 button;
     s8 frameDuration;
@@ -396,6 +405,11 @@ typedef struct {
     /* 0x43 */ u8 pad_43[0x7F - 0x43];
     /* 0x7F */ u8 checksum;
 } struct_8018EE10_entry; // size = 0x80
+
+typedef struct {
+    uint8_t r, g, b;
+} RGB8;
+
 
 typedef struct {
     /* 0x00 */ u16 red;

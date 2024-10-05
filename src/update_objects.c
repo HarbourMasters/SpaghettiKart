@@ -458,7 +458,7 @@ void func_800729EC(s32 objectIndex) {
     D_8018D2BC = 1;
     D_8018D2A4 = 1;
 
-    if (gCurrentCourseId != COURSE_YOSHI_VALLEY) {
+    if (GetCourse() != GetYoshiValley()) {
         for (i = 0; i < gPlayerCount; i++) {
             playerHUD[i].unk_81 = temp_v1;
         }
@@ -1326,46 +1326,42 @@ void func_800748F4(s32 objectIndex, const char** lakituTexturePtr) {
 }
 
 void func_80074924(s32 objectIndex) {
-    s32 sp2C;
+    s32 sp2C = 0;
     s32 sp28;
     s32 sp24;
-    s32 sp20;
-    s16 temp_v0;
+    s32 sp20 = 0;
     s32 temp_a0;
     Object* object;
 
     object = &gObjectList[objectIndex];
     object->sizeScaling = 0.15f;
-    temp_v0 = gCurrentCourseId;
-    switch (temp_v0) { /* irregular */
-        case COURSE_MARIO_RACEWAY:
-            sp2C = random_int(0x00C8U);
-            sp28 = random_int(D_80165748);
-            sp24 = random_int(0x0096U);
-            sp20 = random_int(0x2000U);
-            object->origin_pos[0] = (f32) ((((f64) D_80165718 + 100.0) - (f64) sp2C) * (f64) xOrientation);
-            object->origin_pos[1] = (f32) (D_80165720 + sp28);
-            object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            sp2C = random_int(0x0168U);
-            sp28 = random_int(D_80165748);
-            sp24 = random_int(0x00B4U);
-            sp20 = random_int(0x2000U);
-            object->origin_pos[0] = (f32) ((((f64) D_80165718 + 180.0) - (f64) sp2C) * (f64) xOrientation);
-            object->origin_pos[1] = (f32) (D_80165720 + sp28);
-            object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            sp2C = random_int(0x012CU);
-            sp28 = random_int(D_80165748);
-            sp24 = random_int(0x0096U);
-            sp20 = random_int(0x2000U);
-            object->origin_pos[0] = (f32) ((((f64) D_80165718 + 150.0) - (f64) sp2C) * (f64) xOrientation);
-            object->origin_pos[1] = (f32) (D_80165720 + sp28);
-            object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
-            break;
+
+    if (GetCourse() == GetMarioRaceway()) {
+        sp2C = random_int(0x00C8U);
+        sp28 = random_int(D_80165748);
+        sp24 = random_int(0x0096U);
+        sp20 = random_int(0x2000U);
+        object->origin_pos[0] = (f32) ((((f64) D_80165718 + 100.0) - (f64) sp2C) * (f64) xOrientation);
+        object->origin_pos[1] = (f32) (D_80165720 + sp28);
+        object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
+    } else if (GetCourse() == GetRoyalRaceway()) {
+        sp2C = random_int(0x0168U);
+        sp28 = random_int(D_80165748);
+        sp24 = random_int(0x00B4U);
+        sp20 = random_int(0x2000U);
+        object->origin_pos[0] = (f32) ((((f64) D_80165718 + 180.0) - (f64) sp2C) * (f64) xOrientation);
+        object->origin_pos[1] = (f32) (D_80165720 + sp28);
+        object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
+    } else if (GetCourse() == GetLuigiRaceway()) {
+        sp2C = random_int(0x012CU);
+        sp28 = random_int(D_80165748);
+        sp24 = random_int(0x0096U);
+        sp20 = random_int(0x2000U);
+        object->origin_pos[0] = (f32) ((((f64) D_80165718 + 150.0) - (f64) sp2C) * (f64) xOrientation);
+        object->origin_pos[1] = (f32) (D_80165720 + sp28);
+        object->origin_pos[2] = (f32) (((f64) D_80165728 + 200.0) - (f64) sp24);
     }
+
     set_obj_origin_offset(objectIndex, 0, 0, 0);
     if (gPlayerCount == 1) {
         object->velocity[1] = (f32) (((f64) (f32) (sp2C % 4) * 0.25) + 0.8);
@@ -2429,28 +2425,25 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
     gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].surfaceHeight = arg1[1];
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
-            gObjectList[objectIndex].unk_034 = 1.5f;
-            gObjectList[objectIndex].velocity[1] = 1.5f;
-            break;
-        case COURSE_YOSHI_VALLEY:
-            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
-            gObjectList[objectIndex].unk_034 = 2.0f;
-            gObjectList[objectIndex].velocity[1] = 2.0f;
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 30.0, arg1[2], 0x10, 0x28, 0x10);
-            gObjectList[objectIndex].unk_034 = 2.0f;
-            gObjectList[objectIndex].velocity[1] = 2.0f;
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
-            gObjectList[objectIndex].unk_034 = 1.5f;
-            gObjectList[objectIndex].velocity[1] = 1.0f;
-            break;
+    
+    if (GetCourse() == GetMarioRaceway()) {
+        object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+        gObjectList[objectIndex].unk_034 = 1.5f;
+        gObjectList[objectIndex].velocity[1] = 1.5f;
+    } else if (GetCourse() == GetYoshiValley()) {
+        object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+        gObjectList[objectIndex].unk_034 = 2.0f;
+        gObjectList[objectIndex].velocity[1] = 2.0f;
+    } else if (GetCourse() == GetRoyalRaceway()) {
+        object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 30.0, arg1[2], 0x10, 0x28, 0x10);
+        gObjectList[objectIndex].unk_034 = 2.0f;
+        gObjectList[objectIndex].velocity[1] = 2.0f;
+    } else if (GetCourse() == GetLuigiRaceway()) {
+        object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+        gObjectList[objectIndex].unk_034 = 1.5f;
+        gObjectList[objectIndex].velocity[1] = 1.0f;
     }
+
     temp_s0 = random_int(0x0010U) << 0xC;
     sp3E = random_int(0x0010U) << 0xC;
     sp3C = random_int(0x0010U) << 0xC;
@@ -2885,45 +2878,48 @@ void func_80078C70(s32 arg0) {
         D_8018D210 = (-(D_8018D200 / 2) * 0xB6) - 0x71C;
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
-        switch (gCurrentCourseId) {    /* switch 2 */
-            case COURSE_MARIO_RACEWAY: /* switch 2 */
-                // Uses Luigi Raceway's clouds for display purposes?
-                update_clouds(sp1C, camera, gLuigiRacewayClouds);
-                break;
-            case COURSE_YOSHI_VALLEY: /* switch 2 */
-                update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-                break;
-            case COURSE_FRAPPE_SNOWLAND: /* switch 2 */
-                func_80078170(sp1C, camera);
-                break;
-            case COURSE_KOOPA_BEACH: /* switch 2 */
-                update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
-                break;
-            case COURSE_ROYAL_RACEWAY: /* switch 2 */
-                update_clouds(sp1C, camera, gRoyalRacewayClouds);
-                break;
-            case COURSE_LUIGI_RACEWAY: /* switch 2 */
-                update_clouds(sp1C, camera, gLuigiRacewayClouds);
-                break;
-            case COURSE_MOO_MOO_FARM: /* switch 2 */
-                update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-                break;
-            case COURSE_TOADS_TURNPIKE: /* switch 2 */
-                update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-                break;
-            case COURSE_KALAMARI_DESERT: /* switch 2 */
-                update_clouds(sp1C, camera, gKalimariDesertClouds);
-                break;
-            case COURSE_SHERBET_LAND: /* switch 2 */
-                update_clouds(sp1C, camera, gSherbetLandClouds);
-                break;
-            case COURSE_RAINBOW_ROAD: /* switch 2 */
-                update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-                break;
-            case COURSE_WARIO_STADIUM: /* switch 2 */
-                update_stars(sp1C, camera, gWarioStadiumStars);
-                break;
-        }
+
+        CourseManager_UpdateClouds(sp1C, camera);
+
+        // switch (gCurrentCourseId) {    /* switch 2 */
+        //     case COURSE_MARIO_RACEWAY: /* switch 2 */
+        //         // Uses Luigi Raceway's clouds for display purposes?
+        //         //update_clouds(sp1C, camera, gLuigiRacewayClouds);
+        //         break;
+            // case COURSE_YOSHI_VALLEY: /* switch 2 */
+            //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+            //     break;
+            // case COURSE_FRAPPE_SNOWLAND: /* switch 2 */
+            //     func_80078170(sp1C, camera);
+            //     break;
+            // case COURSE_KOOPA_BEACH: /* switch 2 */
+            //     update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
+            //     break;
+            // case COURSE_ROYAL_RACEWAY: /* switch 2 */
+            //     update_clouds(sp1C, camera, gRoyalRacewayClouds);
+            //     break;
+            // case COURSE_LUIGI_RACEWAY: /* switch 2 */
+            //     update_clouds(sp1C, camera, gLuigiRacewayClouds);
+            //     break;
+            // case COURSE_MOO_MOO_FARM: /* switch 2 */
+            //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+            //     break;
+            // case COURSE_TOADS_TURNPIKE: /* switch 2 */
+            //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+            //     break;
+            // case COURSE_KALAMARI_DESERT: /* switch 2 */
+            //     update_clouds(sp1C, camera, gKalimariDesertClouds);
+            //     break;
+            // case COURSE_SHERBET_LAND: /* switch 2 */
+            //     update_clouds(sp1C, camera, gSherbetLandClouds);
+            //     break;
+            // case COURSE_RAINBOW_ROAD: /* switch 2 */
+            //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+            //     break;
+            // case COURSE_WARIO_STADIUM: /* switch 2 */
+            //     update_stars(sp1C, camera, gWarioStadiumStars);
+            //     break;
+        //}
     }
 }
 
@@ -2998,13 +2994,13 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
 
     if ((gObjectList[objectIndex].unk_0D8 != 3) && (gObjectList[objectIndex].unk_0D8 != 7)) {
         func_800722CC(objectIndex, 1);
-        if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+        if (GetCourse() == GetSherbetLand()) {
             player->unk_0CA &= 0xFFEF;
         }
     } else {
         // ?????
     }
-    if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+    if (GetCourse() == GetSherbetLand()) {
         func_800722CC(objectIndex, 0x00000010);
         player->unk_0CA &= 0xFFDF;
     }
@@ -3183,7 +3179,7 @@ void func_800797AC(s32 playerId) {
 
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
-    if ((gCurrentCourseId == COURSE_SHERBET_LAND) && (player->unk_0CA & 1)) {
+    if ((GetCourse() == GetSherbetLand()) && (player->unk_0CA & 1)) {
         init_object(objectIndex, 7);
         player->unk_0CA |= 0x10;
     } else {

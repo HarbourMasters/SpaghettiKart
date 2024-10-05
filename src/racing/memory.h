@@ -1,6 +1,8 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 
+#include "common_structs.h"
+
 struct MainPoolBlock {
     struct MainPoolBlock* prev;
     struct MainPoolBlock* next;
@@ -50,13 +52,16 @@ void* segment_offset_to_virtual(uint32_t, uint32_t);
 void* segment_vtx_to_virtual(size_t offset);
 void* segmented_texture_to_virtual(uintptr_t addr);
 void* segmented_uintptr_t_to_virtual(uintptr_t);
-void* segmented_gfx_to_virtual(const void*);
+Gfx* segmented_gfx_to_virtual(const void*);
 void move_segment_table_to_dmem(void);
 void initialize_memory_pool(void);
 void* decompress_segments(u8*, u8*);
 void* allocate_memory(size_t);
 void* load_data(uintptr_t, uintptr_t);
 void func_802A7D54(s32, s32);
+
+void func_802A86A8(CourseVtx* data, Vtx* vtx, size_t arg1);
+void displaylist_unpack(uintptr_t* data, uintptr_t finalDisplaylistOffset, u32 arg2);
 
 void main_pool_init(uintptr_t, uintptr_t);
 void* main_pool_alloc(uintptr_t, uintptr_t);
