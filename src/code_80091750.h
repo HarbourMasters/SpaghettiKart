@@ -5,6 +5,10 @@
 #include "textures.h"
 #include "main.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 
 /* File specific types */
@@ -614,5 +618,9 @@ extern f32 D_8018EDA0;
 extern f32 D_8018EDA4;
 extern f32 D_8018EDA8;
 extern f32 D_8018EDAC;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

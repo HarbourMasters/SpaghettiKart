@@ -5,6 +5,10 @@
 #include <string.h>
 #include <libultra/gbi.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @file mk64.h
  * Global header for mk64
@@ -133,5 +137,9 @@ void gSPDisplayList(Gfx* pkt, Gfx* dl);
 void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);
 void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
 void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // MK64_H

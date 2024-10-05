@@ -4,6 +4,10 @@
 #include <common_structs.h>
 #include "main.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 void func_80045738(u8*, u8*, s32, s32);
 void func_80057114(s32);
 void func_800431B0(Vec3f, Vec3su, f32, Vtx*);
@@ -448,5 +452,9 @@ extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 
 extern u8* gPortraitTextures[];
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

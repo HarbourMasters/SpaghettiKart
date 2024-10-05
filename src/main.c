@@ -44,6 +44,7 @@
 #include "buffers/gfx_output_buffer.h"
 #include <bridge/gfxdebuggerbridge.h>
 #include "enhancements/freecam/freecam.h"
+#include "engine/wasm.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -937,7 +938,6 @@ void game_state_handler(void) {
         gGamestateNext = ENDING;
     }
 #endif
-
     switch (gGamestate) {
         case 7:
             game_init_clear_framebuffer();
@@ -965,6 +965,7 @@ void game_state_handler(void) {
             credits_loop();
             break;
     }
+    call_render_hook();
 }
 
 void interrupt_gfx_sptask(void) {

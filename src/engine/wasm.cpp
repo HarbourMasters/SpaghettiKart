@@ -14,6 +14,12 @@ extern "C" {
 #include <iostream>
 #include <vector>
 #include <filesystem>
+#include <functional>
+#include <main.h>
+#include <code_80091750.h>
+#include <common_data.h>
+#include <data_segment2.h>
+#include <render_objects.h>
 
 struct mod_instance {
     wasm_exec_env_t exec_env;
@@ -21,6 +27,18 @@ struct mod_instance {
 };
 
 std::vector<mod_instance> mods_instance = {};
+
+std::vector<std::function<void()>> render_hook = {};
+
+void hook_render(wasm_exec_env_t exec_env, uint32 func1) {
+    render_hook.push_back([exec_env, func1]() { wasm_runtime_call_indirect(exec_env, func1, 0, NULL); });
+}
+
+extern "C" void call_render_hook() {
+    for (auto f : render_hook) {
+        f();
+    }
+}
 
 void load_mod_wasm_file(char* mod_name, char* buffer, size_t size) {
     char error_buf[128];
@@ -94,9 +112,25 @@ uint32 call_extern_function(wasm_exec_env_t exec_env, char* mod_name, char* func
     return mod_call_function_wasm(mod_name, function_name, argc, argv);
 }
 
+void post_debug_print(wasm_exec_env_t exec_env) {
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007EB8);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_020076E0);
+    func_80093C98(1);
+}
+
+void load_debug_font_wrapper(wasm_exec_env_t exec_env) {
+    load_debug_font();
+}
+
+void debug_print_str2_wrapper(wasm_exec_env_t exec_env, uint32 x, uint32 y, char* str) {
+    debug_print_str2(x, y, str);
+}
+
 /* the native functions that will be exported to WASM app */
 static NativeSymbol native_symbols[] = {
-    { "call_extern_function", call_extern_function, "($$ii)i", NULL }
+    EXPORT_WASM_API_WITH_SIG(call_extern_function, "($$ii)i"), EXPORT_WASM_API_WITH_SIG(hook_render, "(i)"),
+    EXPORT_WASM_API_WITH_SIG(post_debug_print, "()"),          EXPORT_WASM_API_WITH_SIG2(load_debug_font, "()"),
+    EXPORT_WASM_API_WITH_SIG2(debug_print_str2, "(ii$)"),
     // EXPORT_WASM_API_WITH_SIG(display_input_read, "(*)i"),
     // EXPORT_WASM_API_WITH_SIG(display_flush, "(iiii*)")
 };
@@ -175,5 +209,5 @@ extern "C" void load_wasm() {
         // wasm_runtime_dump_call_stack(exec_env);
         mod_print_exception("test");
     }
-    exit(0);
+    mod_call_function_wasm("test", "init", 0, NULL);
 }
