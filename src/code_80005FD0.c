@@ -3637,7 +3637,7 @@ void func_8000F628(void) {
     copy_courses_kart_ai_behaviour();
 }
 
-extern TrackWaypoint test_course_path[];
+extern TrackWaypoint test_course_path[17];
 
 // @arg index from 0 to 3.
 
@@ -3659,10 +3659,15 @@ void func_800100F0(s32 pathIndex) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (GetCourse() != GetPodiumCeremony()) {
+
+            if (GetCourse() == GetTestCourse()) {
+            var_v0 = process_path_data(pathDest, test_course_path);
+            gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
+            } else {
+
                 var_v0 = process_path_data(pathDest, LOAD_ASSET(CourseManager_GetProps()->PathTable2[pathIndex]));
                 gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
-        } else if (GetCourse() == GetTestCourse()) {
-            var_v0 = process_path_data(pathDest, test_course_path);
+            }
         }
         
         else {

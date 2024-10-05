@@ -35,7 +35,8 @@ extern "C" {
     u16 flags;
     } TrackSections;
     extern Gfx test_course_dls[];
-    extern Vtx test_course_vertices[];
+    extern Vtx mario_Plane_mesh_vtx_0[];
+    extern Gfx mario_Plane_mesh[];
     extern const course_texture test_course_textures[];
     extern TrackWaypoint test_course_path[];
     extern TrackSections test_course_addr[];
@@ -59,7 +60,7 @@ TestCourse::TestCourse() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {16, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -107,8 +108,8 @@ TestCourse::TestCourse() {
 }
 
 void TestCourse::Load() {
-    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
-    gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
+    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&mario_Plane_mesh_vtx_0[0]);
+    //gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
 }
 
 void TestCourse::LoadTextures() {
@@ -143,22 +144,9 @@ void TestCourse::MinimapSettings() {
     D_80165728 = -240;
 }
 
-void TestCourse::InitCourseObjects() {
-    if (gGamestate != CREDITS_SEQUENCE) {
-        if (gModeSelection == GRAND_PRIX) {
-            func_80070714();
-        }
-        for (size_t i = 0; i < D_80165738; i++) {
-            find_unused_obj_index(&gObjectParticle3[i]);
-            init_object(gObjectParticle3[i], 0);
-        }
-    }
-}
+void TestCourse::InitCourseObjects() {}
 
-void TestCourse::SomeSounds() {
-    vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
-    func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-}
+void TestCourse::SomeSounds() {}
 
 void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
@@ -225,7 +213,7 @@ void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_big_donut_packed_dl_DE8
     }
-    gSPDisplayList(gDisplayListHead++, test_course_dls);
+    gSPDisplayList(gDisplayListHead++, mario_Plane_mesh);
 }
 
 void TestCourse::RenderCredits() {
@@ -234,7 +222,7 @@ void TestCourse::RenderCredits() {
 void TestCourse::Collision() {}
 
 void TestCourse::GenerateCollision() {
-    generate_collision_mesh_with_defaults(test_course_dls);
+    generate_collision_mesh_with_defaults(mario_Plane_mesh);
 
     parse_course_displaylists((const char*)test_course_addr);
     func_80295C6C();

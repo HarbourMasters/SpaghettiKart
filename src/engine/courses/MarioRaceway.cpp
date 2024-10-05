@@ -212,7 +212,7 @@ void MarioRaceway::MinimapFinishlinePosition() {
 }
 
 void MarioRaceway::SetStaffGhost() {
-    u32 temp_v0;
+    u32 temp_v0 = func_800B4E24(0) & 0xfffff;
     if (temp_v0 <= 9000) {
         D_80162DD6 = 0;
         D_80162DF4 = 0;
