@@ -48,7 +48,7 @@ TestCourse::TestCourse() {
 
     Props.Id = "mk:test_course";
     Props.Name = "Test Course";
-    Props.DebugName = "test";
+    Props.DebugName = "test track";
     Props.CourseLength = "100m";
 
     Props.AIBehaviour = D_0D008F28;
@@ -60,7 +60,7 @@ TestCourse::TestCourse() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {16, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {28, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -126,7 +126,46 @@ void TestCourse::LoadTextures() {
 }
 
 void TestCourse::SpawnActors() {
+struct ActorSpawnData itemboxes[] = {
+    {    0, 0, 0 , 0},
+    {    0, 0, -90 , 0},
+    {    0, 0, -180 , 0},
+    {    0, 0, -270 , 0},
+    {    0, 0, -360 , {0}},
+    {   150, 0, -360 , {0}},
+    {   300, 0, -360 , {0}},
+    {   450, 0, -360 , {0}},
+    {   600, 0, -360 , {0}},
+    {   750, 0, -360 , {0}},
+    {   900, 0, -320 , {0}},  // Start curving to the right
+    {   950, 0, -250 , {0}},
+    {   950, 0, -180 , {0}},
+    {   950, 0, -90 , {0}},
+    {   950, 0, 0 , 0},       // Right of the starting point
+    {   950, 0, 90 , {0}},
+    {   950, 0, 180 , {0}},
+    {   900, 0, 250 , {0}},
+    {   850, 0, 300 , {0}},   // Heading back left
+    {   750, 0, 360 , 0},     // Mirroring the curve on the left
+    {   600, 0, 360 , 0},
+    {   450, 0, 360 , 0},
+    {   300, 0, 360 , 0},
+    {   150, 0, 360 , 0},
+    {    0, 0, 360 , 0},      // Returning to x=0
+    {    0, 0, 270 , 0},
+    {    0, 0, 180 , 0},
+    {    0, 0, 90 , 0},
+    {{ -32768, 0,    0 }, {0}},
+};
 
+struct ActorSpawnData rocks[] = {
+    {{   200, 3000, 200 }, {0}},
+    {{   350, 2500, 300 }, {1}},
+    {{   400, 2000, 350 }, {2}},
+    {{ -32768,   0,   0 }, {0}},
+};
+    spawn_all_item_boxes((const char*)itemboxes);
+    spawn_falling_rocks((const char*)rocks);
 }
 
 void TestCourse::Init() {}

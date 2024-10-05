@@ -134,8 +134,8 @@ void ChocoMountain::SomeSounds() {
 }
 
 void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
+        ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
         }
@@ -149,8 +149,8 @@ void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
+        ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }

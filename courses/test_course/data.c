@@ -12,23 +12,35 @@ Gfx test_course_data_dl[] = {
 };
 
 TrackWaypoint test_course_path[] = {
-    { 92,   6,    38,  1 }, // Point at 337.5 degrees
-    { 71,   6,    71,  1 }, // Point at 315 degrees
-    { 38,   6,    92,  1 }, // Point at 292.5 degrees
-    { 0,    6,   100, 1 },  // Point at 270 degrees
-    { -38,  6,    92,  1 }, // Point at 247.5 degrees
-    { -71,  6,    71,  1 }, // Point at 225 degrees
-    { -92,  6,    38,  1 }, // Point at 202.5 degrees
-    { -100, 6,    0,   1 }, // Point at 180 degrees
-    { -92,  6,   -38,  1 }, // Point at 157.5 degrees
-    { -71,  6,   -71,  1 }, // Point at 135 degrees
-    { -38,  6,   -92,  1 }, // Point at 112.5 degrees
-    { 0,    6,   -100, 1 }, // Point at 90 degrees
-    { 38,   6,   -92,  1 }, // Point at 67.5 degrees
-    { 71,   6,   -71,  1 }, // Point at 45 degrees
-    { 92,   6,   -38,  1 }, // Point at 22.5 degrees
-    { 100,  6,    0,   1 }, // Point at 0 degrees
-    { -32768, -32768, -32768, 0 }
+    {    0, 0, 0 , 0},
+    {    0, 0, -90 , 0},
+    {    0, 0, -180 , 0},
+    {    0, 0, -270 , 0},
+    {    0, 0, -360 , {0}},
+    {   150, 0, -360 , {0}},
+    {   300, 0, -360 , {0}},
+    {   450, 0, -360 , {0}},
+    {   600, 0, -360 , {0}},
+    {   750, 0, -360 , {0}},
+    {   900, 0, -320 , {0}},  // Start curving to the right
+    {   950, 0, -250 , {0}},
+    {   950, 0, -180 , {0}},
+    {   950, 0, -90 , {0}},
+    {   950, 0, 0 , 0},       // Right of the starting point
+    {   950, 0, 90 , {0}},
+    {   950, 0, 180 , {0}},
+    {   900, 0, 250 , {0}},
+    {   850, 0, 300 , {0}},   // Heading back left
+    {   750, 0, 360 , 0},     // Mirroring the curve on the left
+    {   600, 0, 360 , 0},
+    {   450, 0, 360 , 0},
+    {   300, 0, 360 , 0},
+    {   150, 0, 360 , 0},
+    {    0, 0, 360 , 0},      // Returning to x=0
+    {    0, 0, 270 , 0},
+    {    0, 0, 180 , 0},
+    {    0, 0, 90 , 0},
+    { -32768, -32768, -32768, 0 } // Terminator
 };
 
 TrackSections test_course_addr[] = {

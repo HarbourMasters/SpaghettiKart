@@ -952,7 +952,12 @@ void spawn_all_item_boxes(const char* spawnData) {
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    struct ActorSpawnData* temp_s0;
+    if (GetCourse() == GetTestCourse()) {
+        temp_s0 = (struct ActorSpawnData*) spawnData;
+    } else {
+        temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    }
     // struct ItemBox *itemBox;
 
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) {
