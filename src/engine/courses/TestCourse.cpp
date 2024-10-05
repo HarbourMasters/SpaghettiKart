@@ -37,14 +37,13 @@ extern "C" {
     extern Gfx test_course_dls[];
     extern Vtx mario_Plane_001_mesh_vtx_1[];
     extern Gfx mario_Plane_001_mesh[];
-    extern const course_texture test_course_textures[];
     extern TrackWaypoint test_course_path[];
     extern TrackSections test_course_addr[];
 }
 
 TestCourse::TestCourse() {
     this->gfxSize = 100;
-    this->textures = test_course_textures;
+    this->textures = NULL;
 
     Props.Id = "mk:test_course";
     Props.Name = "Test Course";
@@ -97,10 +96,10 @@ TestCourse::TestCourse() {
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
-    Props.Skybox.TopRight = {30, 184, 248};
+    Props.Skybox.TopRight = {120, 140, 188};
     Props.Skybox.BottomRight = {216, 232, 248};
     Props.Skybox.BottomLeft = {216, 232, 248};
-    Props.Skybox.TopLeft = {30, 184, 248};
+    Props.Skybox.TopLeft = {40, 184, 208};
     Props.Skybox.FloorTopRight = {0, 0, 0};
     Props.Skybox.FloorBottomRight = {0, 0, 0};
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
