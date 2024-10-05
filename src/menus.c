@@ -158,7 +158,7 @@ void update_menus(void) {
                         func_800CA330(0x19);
                         // deliberate (?) fallthru
                     case MAIN_MENU:
-                    case PLAYER_SELECT_MENU:
+                    case CHARACTER_SELECT_MENU:
                         play_sound2(SOUND_MENU_OK_CLICKED);
                         break;
                 }
@@ -199,7 +199,7 @@ void update_menus(void) {
                     main_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case PLAYER_SELECT_MENU_FROM_QUIT:
-                case PLAYER_SELECT_MENU:
+                case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case COURSE_SELECT_MENU_FROM_QUIT:
@@ -1018,7 +1018,7 @@ void splash_menu_act(struct Controller* controller, u16 arg1) {
                 if (btnAndStick & (R_JPAD | L_JPAD)) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (gEnableDebugMode) {
-                        gEnableDebugMode = DEBUG_MODE;
+                        gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
                     } else {
                         gEnableDebugMode = true;
                     }
@@ -1032,19 +1032,23 @@ void splash_menu_act(struct Controller* controller, u16 arg1) {
             case DEBUG_MENU_COURSE: {
                 if (btnAndStick & R_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (gCurrentCourseId < (NUM_COURSES - 2)) {
-                        gCurrentCourseId += 1;
-                    } else {
-                        gCurrentCourseId = 0;
-                    }
+                    NextCourse();
+                    gCurrentCourseId = GetCourseIndex();
+                    // if (gCurrentCourseId < (NUM_COURSES - 2)) {
+                    //     gCurrentCourseId += 1;
+                    // } else {
+                    //     gCurrentCourseId = 0;
+                    // }
                 }
                 if (btnAndStick & L_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (gCurrentCourseId > 0) {
-                        gCurrentCourseId -= 1;
-                    } else {
-                        gCurrentCourseId = (NUM_COURSES - 2);
-                    }
+                    PreviousCourse();
+                    gCurrentCourseId = GetCourseIndex();
+                    // if (gCurrentCourseId > 0) {
+                    //     gCurrentCourseId -= 1;
+                    // } else {
+                    //     gCurrentCourseId = (NUM_COURSES - 2);
+                    // }
                 }
                 if (btnAndStick & U_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -1381,7 +1385,7 @@ void main_menu_act(struct Controller* controller, u16 arg1) {
                 // L800B3068
                 if (btnAndStick & D_JPAD) {
                     sp24 = false;
-                    if (func_800B555C()) {
+                    if (has_unlocked_extra_mode()) {
                         if (sp28 < gGameModePlayerColumnExtra[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1] + 1]) {
                             sp24 = true;
                         }
@@ -1676,6 +1680,11 @@ void player_select_menu_act(struct Controller* controller, u16 arg1) {
 GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 #endif
 
+u32 WorldNextCup(void);
+u32 WorldPreviousCup(void);
+u32 GetCupIndex(void);
+void SetCup(void);
+
 // Handle navigating the course menu interface
 void course_select_menu_act(struct Controller* arg0, u16 arg1) {
     u16 buttonAndStickPress = (arg0->buttonPressed | arg0->stickPressed);
@@ -1688,22 +1697,25 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
         switch (D_8018EDEC) {
             case 1:
                 if ((buttonAndStickPress & R_JPAD) != 0) {
-                    if (gCupSelection < SPECIAL_CUP) {
-                        D_8018EE0A = gCupSelection;
-                        ++gCupSelection;
+                    //if (GetCupIndex() < SPECIAL_CUP) {
+                        D_8018EE0A = WorldNextCup();
+                        //++gCupSelection;
                         func_800B44AC();
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    }
+                    //}
                 }
-                if (((buttonAndStickPress & L_JPAD) != 0) && (gCupSelection > MUSHROOM_CUP)) {
-                    D_8018EE0A = gCupSelection;
-                    --gCupSelection;
+                if (((buttonAndStickPress & L_JPAD) != 0)) {
+                    D_8018EE0A = WorldPreviousCup();
+                    //--gCupSelection;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
-                D_800DC540 = gCupSelection;
+                D_800DC540 = GetCupIndex();
+                //! @todo SetCourse();
+                SetCup();
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
+                SetCourseFromCup();
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1714,6 +1726,9 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                     } else {
                         D_8018EDEC = 3;
                         play_sound2(SOUND_MENU_SELECT);
+                        //! @todo SetCourse() to course one;
+                        SetCupCursorPosition(COURSE_ONE);
+                        SetCourseFromCup();
                         gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
                         gMenuTimingCounter = 0;
                     }
@@ -1722,18 +1737,21 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                 break;
             case 2:
             case 4:
-                if (((buttonAndStickPress & D_JPAD) != 0) && (gCourseIndexInCup < COURSE_FOUR)) {
+                if (((buttonAndStickPress & D_JPAD) != 0) && (GetCupCursorPosition() < GetCupSize())) {
                     ++gCourseIndexInCup;
+                    SetCupCursorPosition(GetCupCursorPosition() + 1);
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                if (((buttonAndStickPress & U_JPAD) != 0) && (gCourseIndexInCup > COURSE_ONE)) {
+                if (((buttonAndStickPress & U_JPAD) != 0) && (GetCupCursorPosition() > COURSE_ONE)) {
                     --gCourseIndexInCup;
+                    SetCupCursorPosition(GetCupCursorPosition() - 1);
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
+                SetCourseFromCup();
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
                     if (D_8018EDEC == 2) {
                         D_8018EDEC = 1;
@@ -1786,7 +1804,7 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
 void func_800B3F74(s32 menuSelection) {
     s32 i;
 
-    gDebugMenuSelection = DEBUG_MENU;
+    gDebugMenuSelection = CVarGetInteger("gEnableDebugMode", 0) + 1;
     gMenuTimingCounter = 0;
     gMenuDelayTimer = 0;
     D_8018EE08 = 0;
@@ -1822,7 +1840,8 @@ void func_800B3F74(s32 menuSelection) {
         case 0:
         case 10: {
             gIsMirrorMode = 0;
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
+            SetCupIndex(MUSHROOM_CUP);
             gCupSelection = MUSHROOM_CUP;
             gCourseIndexInCup = 0;
             gTimeTrialDataCourseIndex = 0;
@@ -1840,7 +1859,7 @@ void func_800B3F74(s32 menuSelection) {
         }
         case 1:
         case 11: {
-            gEnableDebugMode = DEBUG_MODE;
+            gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             gIsMirrorMode = 0;
             D_8018EDFC = 0;
             func_800B5F30();
@@ -1933,12 +1952,14 @@ void func_800B3F74(s32 menuSelection) {
         case 3:
         case 13: {
             if (gModeSelection == BATTLE) {
-                gCupSelection = BATTLE_CUP;
+                SetCupIndex(BATTLE_CUP);
+                //gCupSelection = BATTLE_CUP;
                 D_800DC540 = 4;
                 D_8018EDEC = 4;
             } else {
-                if (gCupSelection == BATTLE_CUP) {
-                    gCupSelection = MUSHROOM_CUP;
+                if (GetCupIndex() == BATTLE_CUP) {
+                    SetCupIndex(MUSHROOM_CUP);
+                    //gCupSelection = MUSHROOM_CUP;
                 }
                 D_8018EDEC = 1;
             }

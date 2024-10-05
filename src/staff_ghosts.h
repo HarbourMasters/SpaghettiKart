@@ -21,10 +21,15 @@ void func_80005AE8(Player*);
 void func_80005E6C(void);
 void staff_ghosts_loop(void);
 
+extern StaffGhost* d_mario_raceway_staff_ghost;
+extern StaffGhost* d_royal_raceway_staff_ghost;
+extern StaffGhost* d_luigi_raceway_staff_ghost;
+
 // mi0decode
 
 extern s32 mio0encode(s32 input, s32, s32);
 
+extern StaffGhost* D_80162DC4;
 extern s32 D_80162DC8;
 extern s32 D_80162DCC;
 extern u16 D_80162DD4;
@@ -35,6 +40,7 @@ extern s32 D_80162DE0;
 extern s32 D_80162DE4;
 extern s32 D_80162DE8;
 extern s32 D_80162DF0;
+extern s32 D_80162DF4;
 extern s32 D_80162DF8;
 
 #endif /* STAFF_GHOSTS_H */

@@ -19,6 +19,8 @@
 #include "enhancements/freecam/freecam_engine.h"
 #include "freecam.h"
 
+#include "engine/GameAPI.h"
+
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
 Camera cameras[4];
@@ -235,7 +237,7 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     arg2[2] = camera->lookAt[2];
     calculate_orientation_matrix(sp74, 0, 1, 0, -0x00008000);
     mtxf_translate_vec3f_mat3(sp5C, sp74);
-    if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
+    if (GetCourse() == GetToadsTurnpike()) {
         var_f14 = sp5C[0];
     } else {
         var_f14 = sp5C[0] + temp_s2->posX;
@@ -246,7 +248,7 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     arg2[1] += (temp_f18 - camera->lookAt[1]) * 1;
     arg2[2] += (temp_f16 - camera->lookAt[2]) * 1;
     mtxf_translate_vec3f_mat3(sp68, sp74);
-    if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
+    if (GetCourse() == GetToadsTurnpike()) {
         var_f14 = sp68[0];
     } else {
         var_f14 = sp68[0] + temp_s2->posX;
@@ -339,7 +341,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
                 move_f32_towards(&D_80164AA0[index], 10, 0.02f);
                 break;
             default:
-                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                if (GetCourse() == GetYoshiValley()) {
                     move_f32_towards(&D_80164A90[index], 50, 0.04f);
                     move_f32_towards(&D_80164AA0[index], 35, 0.04f);
                 } else {

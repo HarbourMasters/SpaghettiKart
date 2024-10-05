@@ -70,7 +70,7 @@ BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX] = {
 #include "assets/course_metadata/gBombKartSpawns.inc.c"
 };
 
-struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
+_struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
 #include "assets/course_metadata/gCoursePathSizes.inc.c"
 };
 

@@ -15,6 +15,9 @@
 #include "defines.h"
 #include "memory.h"
 
+#include "engine/Engine.h"
+#include "engine/courses/Course.h"
+
 struct UnkStruct80287560 {
     s16 unk0;
     s16 unk2;
@@ -69,7 +72,7 @@ void func_80281D00(void) {
     }
     func_8028150C();
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective((Mtx*) &gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C,
+    guPerspective((Mtx*) &gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CourseManager_GetProps()->NearPersp, CourseManager_GetProps()->FarPersp,
                   1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),

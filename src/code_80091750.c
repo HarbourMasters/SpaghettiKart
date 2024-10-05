@@ -43,6 +43,11 @@
 #include "stdio.h"
 #include "port/Engine.h"
 
+#include "engine/Engine.h"
+#include "engine/courses/Course.h"
+
+const char* GetCupName(void);
+
 u16* D_8018D9B0;
 u8* D_8018D9B4;
 u8* D_8018D9B8;
@@ -61,7 +66,7 @@ struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 struct_8018E060_entry D_8018E060[D_8018E060_SIZE + 1];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-s32 gD_8018E118TotalSize;
+s32 gMenuTextureBufferIndex;
 struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
 s32 gNumD_8018E118Entries;
 Gfx* D_8018E75C;
@@ -1195,7 +1200,7 @@ void func_80091B78(void) {
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800E86A4 = 1;
-    func_80094C60();
+    render_menus();
 
     for (i = 0; i < 4; i++) {
         func_800C97C4((u8) i);
@@ -1256,7 +1261,7 @@ void func_80091EE4(void) {
     tmp = func_800B5F30();
 
     if ((D_8018EDFB != 0) && (tmp == 0)) {
-        temp_s2 = (gCupSelection * 4) + gCourseIndexInCup;
+        temp_s2 = (GetCupIndex() * 4) + GetCupCursorPosition();
         func_800B6708();
 
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
@@ -1290,19 +1295,19 @@ void func_80091FA4(void) {
     func_8009A344();
     func_8009E620();
     func_80092258();
-    add_8018D9E0_entry(0x00000096, 0x00000064, 0x00000024, 1);
-    add_8018D9E0_entry(0x00000097, 0x00000064, 0x000000DD, 1);
-    add_8018D9E0_entry(0x00000098, 0, 0, 0);
-    add_8018D9E0_entry(0x000000C7, 0, 0, 0);
+    add_ui_element(0x00000096, 0x00000064, 0x00000024, 1);
+    add_ui_element(0x00000097, 0x00000064, 0x000000DD, 1);
+    add_ui_element(0x00000098, 0, 0, 0);
+    add_ui_element(0x000000C7, 0, 0, 0);
     if (gModeSelection == TIME_TRIALS) {
-        add_8018D9E0_entry(0x000000BE, 0, 0, 0);
-        add_8018D9E0_entry(0x0000010E, 0, 0, 0);
+        add_ui_element(0x000000BE, 0, 0, 0);
+        add_ui_element(0x0000010E, 0, 0, 0);
     }
     if ((D_8015F890 != 0) && (gModeSelection == TIME_TRIALS)) {
-        add_8018D9E0_entry(0x000000BD, 0, 0, 0);
+        add_ui_element(0x000000BD, 0, 0, 0);
     }
     if (!(gControllerBits & 1) && (D_8018EE08 != 0)) {
-        add_8018D9E0_entry(4, 0, 0, 2);
+        add_ui_element(4, 0, 0, 2);
     }
     func_800B5F30();
 }
@@ -1413,22 +1418,22 @@ void func_80092500(void) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            add_8018D9E0_entry(0xAA, 0, 0, 0);
+            add_ui_element(0xAA, 0, 0, 0);
             break;
         case TIME_TRIALS:
-            add_8018D9E0_entry(0xB9, 0, 0, 0);
+            add_ui_element(0xB9, 0, 0, 0);
             break;
     }
 }
 
 void func_80092564(void) {
-    add_8018D9E0_entry(0xAC, 0, 0, 0);
+    add_ui_element(0xAC, 0, 0, 0);
     func_8005D18C();
     func_8001968C();
 }
 
 void func_800925A0(void) {
-    add_8018D9E0_entry(0xAF, 0, 0, 0);
+    add_ui_element(0xAF, 0, 0, 0);
 }
 
 void func_800925CC(void) {
@@ -1439,122 +1444,122 @@ void func_800925CC(void) {
 }
 
 void func_80092604(void) {
-    add_8018D9E0_entry(0xB0, 0, 0, 0);
+    add_ui_element(0xB0, 0, 0, 0);
 }
 
 void func_80092630(void) {
-    add_8018D9E0_entry(0xBC, 0, 0, 0);
+    add_ui_element(0xBC, 0, 0, 0);
 }
 
 void func_8009265C(void) {
-    add_8018D9E0_entry(0x12B, 0, 0, 2);
+    add_ui_element(0x12B, 0, 0, 2);
 }
 
 void func_80092688(void) {
     switch (D_800DC5E4) {
         case 0:
-            add_8018D9E0_entry(0x1CE, 0, 0, 2);
+            add_ui_element(0x1CE, 0, 0, 2);
             return;
         default:
-            add_8018D9E0_entry(0x190, 0, 0, 2);
-            add_8018D9E0_entry(0x191, 0, 0, 2);
+            add_ui_element(0x190, 0, 0, 2);
+            add_ui_element(0x191, 0, 0, 2);
             return;
         case 2:
-            add_8018D9E0_entry(0x192, 0, 0, 2);
-            add_8018D9E0_entry(0x193, 0, 0, 2);
+            add_ui_element(0x192, 0, 0, 2);
+            add_ui_element(0x193, 0, 0, 2);
             return;
         case 3:
-            add_8018D9E0_entry(0x194, 0, 0, 2);
-            add_8018D9E0_entry(0x195, 0, 0, 2);
+            add_ui_element(0x194, 0, 0, 2);
+            add_ui_element(0x195, 0, 0, 2);
             return;
         case 4:
-            add_8018D9E0_entry(0x196, 0, 0, 2);
-            add_8018D9E0_entry(0x197, 0, 0, 2);
+            add_ui_element(0x196, 0, 0, 2);
+            add_ui_element(0x197, 0, 0, 2);
             return;
         case 5:
-            add_8018D9E0_entry(0x198, 0, 0, 2);
-            add_8018D9E0_entry(0x199, 0, 0, 2);
-            add_8018D9E0_entry(0x19A, 0, 0, 2);
-            add_8018D9E0_entry(0x19B, 0, 0, 2);
+            add_ui_element(0x198, 0, 0, 2);
+            add_ui_element(0x199, 0, 0, 2);
+            add_ui_element(0x19A, 0, 0, 2);
+            add_ui_element(0x19B, 0, 0, 2);
             return;
         case 6:
-            add_8018D9E0_entry(0x198, 0, 0, 2);
-            add_8018D9E0_entry(0x19C, 0, 0, 2);
-            add_8018D9E0_entry(0x19D, 0, 0, 2);
-            add_8018D9E0_entry(0x19E, 0, 0, 2);
+            add_ui_element(0x198, 0, 0, 2);
+            add_ui_element(0x19C, 0, 0, 2);
+            add_ui_element(0x19D, 0, 0, 2);
+            add_ui_element(0x19E, 0, 0, 2);
             return;
         case 7:
-            add_8018D9E0_entry(0x19F, 0, 0, 2);
-            add_8018D9E0_entry(0x1A0, 0, 0, 2);
-            add_8018D9E0_entry(0x1A1, 0, 0, 2);
-            add_8018D9E0_entry(0x1A2, 0, 0, 2);
+            add_ui_element(0x19F, 0, 0, 2);
+            add_ui_element(0x1A0, 0, 0, 2);
+            add_ui_element(0x1A1, 0, 0, 2);
+            add_ui_element(0x1A2, 0, 0, 2);
             return;
         case 8:
-            add_8018D9E0_entry(0x1A3, 0, 0, 2);
-            add_8018D9E0_entry(0x1A4, 0, 0, 2);
+            add_ui_element(0x1A3, 0, 0, 2);
+            add_ui_element(0x1A4, 0, 0, 2);
             return;
         case 9:
-            add_8018D9E0_entry(0x1A5, 0, 0, 2);
-            add_8018D9E0_entry(0x1A6, 0, 0, 2);
-            add_8018D9E0_entry(0x1A7, 0, 0, 2);
-            add_8018D9E0_entry(0x1A8, 0, 0, 2);
-            add_8018D9E0_entry(0x1A9, 0, 0, 2);
+            add_ui_element(0x1A5, 0, 0, 2);
+            add_ui_element(0x1A6, 0, 0, 2);
+            add_ui_element(0x1A7, 0, 0, 2);
+            add_ui_element(0x1A8, 0, 0, 2);
+            add_ui_element(0x1A9, 0, 0, 2);
             return;
         case 10:
-            add_8018D9E0_entry(0x1A5, 0, 0, 2);
-            add_8018D9E0_entry(0x1A6, 0, 0, 2);
-            add_8018D9E0_entry(0x1AA, 0, 0, 2);
-            add_8018D9E0_entry(0x1AB, 0, 0, 2);
-            add_8018D9E0_entry(0x1AC, 0, 0, 2);
+            add_ui_element(0x1A5, 0, 0, 2);
+            add_ui_element(0x1A6, 0, 0, 2);
+            add_ui_element(0x1AA, 0, 0, 2);
+            add_ui_element(0x1AB, 0, 0, 2);
+            add_ui_element(0x1AC, 0, 0, 2);
             return;
         case 11:
-            add_8018D9E0_entry(0x1AD, 0, 0, 2);
-            add_8018D9E0_entry(0x1AE, 0, 0, 2);
-            add_8018D9E0_entry(0x1AF, 0, 0, 2);
-            add_8018D9E0_entry(0x1B0, 0, 0, 2);
+            add_ui_element(0x1AD, 0, 0, 2);
+            add_ui_element(0x1AE, 0, 0, 2);
+            add_ui_element(0x1AF, 0, 0, 2);
+            add_ui_element(0x1B0, 0, 0, 2);
             return;
         case 12:
-            add_8018D9E0_entry(0x1B1, 0, 0, 2);
-            add_8018D9E0_entry(0x1B2, 0, 0, 2);
+            add_ui_element(0x1B1, 0, 0, 2);
+            add_ui_element(0x1B2, 0, 0, 2);
             return;
         case 13:
-            add_8018D9E0_entry(0x1B3, 0, 0, 2);
-            add_8018D9E0_entry(0x1B4, 0, 0, 2);
-            add_8018D9E0_entry(0x1B5, 0, 0, 2);
+            add_ui_element(0x1B3, 0, 0, 2);
+            add_ui_element(0x1B4, 0, 0, 2);
+            add_ui_element(0x1B5, 0, 0, 2);
             return;
         case 14:
-            add_8018D9E0_entry(0x1B6, 0, 0, 2);
-            add_8018D9E0_entry(0x1B7, 0, 0, 2);
-            add_8018D9E0_entry(0x1B8, 0, 0, 2);
-            add_8018D9E0_entry(0x1B9, 0, 0, 2);
-            add_8018D9E0_entry(0x1BA, 0, 0, 2);
-            add_8018D9E0_entry(0x1BB, 0, 0, 2);
-            add_8018D9E0_entry(0x1BC, 0, 0, 2);
+            add_ui_element(0x1B6, 0, 0, 2);
+            add_ui_element(0x1B7, 0, 0, 2);
+            add_ui_element(0x1B8, 0, 0, 2);
+            add_ui_element(0x1B9, 0, 0, 2);
+            add_ui_element(0x1BA, 0, 0, 2);
+            add_ui_element(0x1BB, 0, 0, 2);
+            add_ui_element(0x1BC, 0, 0, 2);
             return;
         case 15:
-            add_8018D9E0_entry(0x1BD, 0, 0, 2);
-            add_8018D9E0_entry(0x1BE, 0, 0, 2);
-            add_8018D9E0_entry(0x1BF, 0, 0, 2);
-            add_8018D9E0_entry(0x1C0, 0, 0, 2);
+            add_ui_element(0x1BD, 0, 0, 2);
+            add_ui_element(0x1BE, 0, 0, 2);
+            add_ui_element(0x1BF, 0, 0, 2);
+            add_ui_element(0x1C0, 0, 0, 2);
             return;
         case 16:
-            add_8018D9E0_entry(0x1C1, 0, 0, 2);
-            add_8018D9E0_entry(0x1C2, 0, 0, 2);
-            add_8018D9E0_entry(0x1C3, 0, 0, 2);
+            add_ui_element(0x1C1, 0, 0, 2);
+            add_ui_element(0x1C2, 0, 0, 2);
+            add_ui_element(0x1C3, 0, 0, 2);
             return;
         case 17:
-            add_8018D9E0_entry(0x1C4, 0, 0, 2);
-            add_8018D9E0_entry(0x1C5, 0, 0, 2);
-            add_8018D9E0_entry(0x1C6, 0, 0, 2);
-            add_8018D9E0_entry(0x1C7, 0, 0, 2);
-            add_8018D9E0_entry(0x1C8, 0, 0, 2);
-            add_8018D9E0_entry(0x1C9, 0, 0, 2);
-            add_8018D9E0_entry(0x1CA, 0, 0, 2);
-            add_8018D9E0_entry(0x1CB, 0, 0, 2);
-            add_8018D9E0_entry(0x1CC, 0, 0, 2);
+            add_ui_element(0x1C4, 0, 0, 2);
+            add_ui_element(0x1C5, 0, 0, 2);
+            add_ui_element(0x1C6, 0, 0, 2);
+            add_ui_element(0x1C7, 0, 0, 2);
+            add_ui_element(0x1C8, 0, 0, 2);
+            add_ui_element(0x1C9, 0, 0, 2);
+            add_ui_element(0x1CA, 0, 0, 2);
+            add_ui_element(0x1CB, 0, 0, 2);
+            add_ui_element(0x1CC, 0, 0, 2);
             return;
         case 18:
-            add_8018D9E0_entry(0x1CD, 0, 0, 2);
+            add_ui_element(0x1CD, 0, 0, 2);
             return;
     }
 }
@@ -1817,7 +1822,7 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         do {
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                func_80099184((MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
+                load_menu_img((MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
                 gDisplayListHead =
                     print_letter(gDisplayListHead,
                                  (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]),
@@ -1896,7 +1901,7 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     while (*text != 0) {
         glyphIndex = char_to_glyph_index(text);
         if (glyphIndex >= 0) {
-            func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
+            load_menu_img(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
             gDisplayListHead = print_letter(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]),
                                             column, row, sp60, scaleX, scaleY);
             column = column + (s32) ((gGlyphDisplayWidth[glyphIndex] + tracking) * scaleX);
@@ -1942,7 +1947,7 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
                 glyphTexture = (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]);
-                func_80099184(glyphTexture);
+                load_menu_img(glyphTexture);
                 gDisplayListHead =
                     print_letter(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
                                  arg6, scaleX, scaleY);
@@ -2194,7 +2199,7 @@ void func_80094660(struct GfxPool* arg0, UNUSED s32 arg1) {
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
-void func_800947B4(struct GfxPool* arg0, UNUSED s32 arg1) {
+void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     guPerspective(&arg0->mtxPersp[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
@@ -2225,7 +2230,7 @@ void func_80094A64(struct GfxPool* pool) {
     guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
-    func_80094C60();
+    render_menus();
     func_80092290(4, D_8018E850, D_8018E858);
     func_80092290(5, (s32*) &D_8018E850[1], (s32*) &D_8018E858[1]);
     func_80099A70();
@@ -2241,7 +2246,7 @@ void func_80094A64(struct GfxPool* pool) {
         case LOGO_INTRO_MENU:
         case CONTROLLER_PAK_MENU:
         case MAIN_MENU:
-        case PLAYER_SELECT_MENU:
+        case CHARACTER_SELECT_MENU:
         case COURSE_SELECT_MENU:
             func_800A8230();
             func_80099AEC();
@@ -2253,7 +2258,7 @@ void func_80094A64(struct GfxPool* pool) {
     gSPDisplayList(gDisplayListHead++, D_020076B0);
 }
 
-void func_80094C60(void) {
+void render_menus(void) {
     if (D_800E86A4 != 0) {
         func_80099110();
         func_8009A344();
@@ -2265,133 +2270,133 @@ void func_80094C60(void) {
         func_800B3F74(gMenuSelection);
         switch (gMenuSelection) {
             case OPTIONS_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x000000F1, 0, 0, 4);
-                add_8018D9E0_entry(0x000000F0, 0, 0, 2);
+                add_ui_element(0x00000023, 0, 0, 2);
+                add_ui_element(0x000000F1, 0, 0, 4);
+                add_ui_element(0x000000F0, 0, 0, 2);
                 break;
             case DATA_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x0000008C, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007C, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007E, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000080, 0, 0, 6);
-                add_8018D9E0_entry(0x00000081, 0, 0, 6);
-                add_8018D9E0_entry(0x00000082, 0, 0, 6);
-                add_8018D9E0_entry(0x00000083, 0, 0, 6);
-                add_8018D9E0_entry(0x00000084, 0, 0, 6);
-                add_8018D9E0_entry(0x00000085, 0, 0, 6);
-                add_8018D9E0_entry(0x00000086, 0, 0, 6);
-                add_8018D9E0_entry(0x00000087, 0, 0, 6);
-                add_8018D9E0_entry(0x00000088, 0, 0, 6);
-                add_8018D9E0_entry(0x00000089, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008A, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008B, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008D, 0, 0, 8);
+                add_ui_element(0x00000023, 0, 0, 2);
+                add_ui_element(0x0000008C, 0, 0, 6);
+                add_ui_element(0x0000007C, 0, 0, 6);
+                add_ui_element(0x0000007D, 0, 0, 6);
+                add_ui_element(0x0000007E, 0, 0, 6);
+                add_ui_element(0x0000007F, 0, 0, 6);
+                add_ui_element(0x00000080, 0, 0, 6);
+                add_ui_element(0x00000081, 0, 0, 6);
+                add_ui_element(0x00000082, 0, 0, 6);
+                add_ui_element(0x00000083, 0, 0, 6);
+                add_ui_element(0x00000084, 0, 0, 6);
+                add_ui_element(0x00000085, 0, 0, 6);
+                add_ui_element(0x00000086, 0, 0, 6);
+                add_ui_element(0x00000087, 0, 0, 6);
+                add_ui_element(0x00000088, 0, 0, 6);
+                add_ui_element(0x00000089, 0, 0, 6);
+                add_ui_element(0x0000008A, 0, 0, 6);
+                add_ui_element(0x0000008B, 0, 0, 6);
+                add_ui_element(0x0000008D, 0, 0, 8);
                 break;
             case COURSE_DATA_MENU:
-                add_8018D9E0_entry(0x000000E6, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E7, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E8, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E9, 0, 0, 8);
-                add_8018D9E0_entry(0x000000EA, 0, 0, 8);
+                add_ui_element(0x000000E6, 0, 0, 8);
+                add_ui_element(0x000000E7, 0, 0, 8);
+                add_ui_element(0x000000E8, 0, 0, 8);
+                add_ui_element(0x000000E9, 0, 0, 8);
+                add_ui_element(0x000000EA, 0, 0, 8);
                 break;
             case LOGO_INTRO_MENU:
-                add_8018D9E0_entry(0x000000FA, 0, 0, 0);
+                add_ui_element(0x000000FA, 0, 0, 0);
                 break;
             case CONTROLLER_PAK_MENU:
-                add_8018D9E0_entry(0x000000DA, 0, 0, 0);
-                add_8018D9E0_entry(0x000000D2, 0, 0, 4);
-                add_8018D9E0_entry(0x000000D4, 0, 0, 6);
-                add_8018D9E0_entry(0x000000D3, 0, 0, 8);
-                add_8018D9E0_entry(0x000000D5, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D6, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D7, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D8, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D9, 0, 0, 0x0A);
+                add_ui_element(0x000000DA, 0, 0, 0);
+                add_ui_element(0x000000D2, 0, 0, 4);
+                add_ui_element(0x000000D4, 0, 0, 6);
+                add_ui_element(0x000000D3, 0, 0, 8);
+                add_ui_element(0x000000D5, 0, 0, 0x0A);
+                add_ui_element(0x000000D6, 0, 0, 0x0A);
+                add_ui_element(0x000000D7, 0, 0, 0x0A);
+                add_ui_element(0x000000D8, 0, 0, 0x0A);
+                add_ui_element(0x000000D9, 0, 0, 0x0A);
                 break;
             case START_MENU:
-                add_8018D9E0_entry(2, 0, 0, 4);
-                add_8018D9E0_entry(1, 0, 0, 0);
-                add_8018D9E0_entry(0x000000FB, 0, 0, 0);
+                add_ui_element(2, 0, 0, 4);
+                add_ui_element(1, 0, 0, 0);
+                add_ui_element(0x000000FB, 0, 0, 0);
                 if (gControllerBits & 1) {
-                    add_8018D9E0_entry(3, 0, 0, 2);
+                    add_ui_element(3, 0, 0, 2);
                 } else {
-                    add_8018D9E0_entry(4, 0, 0, 2);
+                    add_ui_element(4, 0, 0, 2);
                 }
-                add_8018D9E0_entry(5, 0, 0, 6);
+                add_ui_element(5, 0, 0, 6);
                 gDemoMode = 0;
                 D_8018EE08 = 0;
                 break;
             case MAIN_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x0000000A, 0x0000015E, 0x00000011, 6);
-                add_8018D9E0_entry(0x0000000E, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000D, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000C, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000B, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000F, 0x0000015E, 0x000000C8, 6);
-                add_8018D9E0_entry(0x00000011, 0x0000015E, 0x000000C8, 6);
-                add_8018D9E0_entry(0x00000010, 0x0000015E, 0x000000C8, 6);
-                if (func_800B555C() != 0) {
-                    add_8018D9E0_entry(0x00000015, 0, 0, 6);
+                add_ui_element(0x00000023, 0, 0, 2);
+                add_ui_element(0x0000000A, 0x0000015E, 0x00000011, 6);
+                add_ui_element(0x0000000E, 0x0000015E, 0x0000003E, 6);
+                add_ui_element(0x0000000D, 0x0000015E, 0x0000003E, 6);
+                add_ui_element(0x0000000C, 0x0000015E, 0x0000003E, 6);
+                add_ui_element(0x0000000B, 0x0000015E, 0x0000003E, 6);
+                add_ui_element(0x0000000F, 0x0000015E, 0x000000C8, 6);
+                add_ui_element(0x00000011, 0x0000015E, 0x000000C8, 6);
+                add_ui_element(0x00000010, 0x0000015E, 0x000000C8, 6);
+                if (has_unlocked_extra_mode() != 0) {
+                    add_ui_element(0x00000015, 0, 0, 6);
                 }
-                add_8018D9E0_entry(0x00000014, 0, 0, 6);
-                add_8018D9E0_entry(0x00000013, 0, 0, 6);
-                add_8018D9E0_entry(0x00000012, 0, 0, 6);
-                add_8018D9E0_entry(0x00000019, 0, 0, 6);
-                add_8018D9E0_entry(0x00000018, 0, 0, 6);
-                add_8018D9E0_entry(0x0000001B, 0, 0, 0x0C);
+                add_ui_element(0x00000014, 0, 0, 6);
+                add_ui_element(0x00000013, 0, 0, 6);
+                add_ui_element(0x00000012, 0, 0, 6);
+                add_ui_element(0x00000019, 0, 0, 6);
+                add_ui_element(0x00000018, 0, 0, 6);
+                add_ui_element(0x0000001B, 0, 0, 0x0C);
                 break;
-            case PLAYER_SELECT_MENU:
-                add_8018D9E0_entry(0x00000024, 0, 0, 2);
-                add_8018D9E0_entry(0x0000002A, 0, 0, 6);
-                add_8018D9E0_entry(0x00000033, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002B, 0, 0, 8);
-                add_8018D9E0_entry(0x0000002C, 0, 0, 8);
-                add_8018D9E0_entry(0x0000002D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002E, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000030, 0, 0, 6);
-                add_8018D9E0_entry(0x00000031, 0, 0, 6);
-                add_8018D9E0_entry(0x00000032, 0, 0, 8);
-                add_8018D9E0_entry(0x00000034, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000035, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000036, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000037, 0, 0, 0x0C);
+            case CHARACTER_SELECT_MENU:
+                add_ui_element(0x00000024, 0, 0, 2);
+                add_ui_element(0x0000002A, 0, 0, 6);
+                add_ui_element(0x00000033, 0, 0, 6);
+                add_ui_element(0x0000002B, 0, 0, 8);
+                add_ui_element(0x0000002C, 0, 0, 8);
+                add_ui_element(0x0000002D, 0, 0, 6);
+                add_ui_element(0x0000002E, 0, 0, 6);
+                add_ui_element(0x0000002F, 0, 0, 6);
+                add_ui_element(0x00000030, 0, 0, 6);
+                add_ui_element(0x00000031, 0, 0, 6);
+                add_ui_element(0x00000032, 0, 0, 8);
+                add_ui_element(0x00000034, 0, 0, 0x0C);
+                add_ui_element(0x00000035, 0, 0, 0x0C);
+                add_ui_element(0x00000036, 0, 0, 0x0C);
+                add_ui_element(0x00000037, 0, 0, 0x0C);
                 break;
             case COURSE_SELECT_MENU:
-                add_8018D9E0_entry(0x00000025, 0, 0, 2);
-                add_8018D9E0_entry(0x00000052, 0, 0, 6);
+                add_ui_element(0x00000025, 0, 0, 2);
+                add_ui_element(0x00000052, 0, 0, 6);
                 if (gModeSelection != BATTLE) {
-                    add_8018D9E0_entry(0x00000053, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000054, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000055, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000056, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000058, 0, 0, 6);
-                    add_8018D9E0_entry(0x00000059, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000005A, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000005B, 0, 0, 6);
+                    add_ui_element(0x00000053, 0, 0, 4);
+                    add_ui_element(0x00000054, 0, 0, 4);
+                    add_ui_element(0x00000055, 0, 0, 4);
+                    add_ui_element(0x00000056, 0, 0, 4);
+                    add_ui_element(0x00000058, 0, 0, 6);
+                    add_ui_element(0x00000059, 0, 0, 6);
+                    add_ui_element(0x0000005A, 0, 0, 6);
+                    add_ui_element(0x0000005B, 0, 0, 6);
                 } else {
-                    add_8018D9E0_entry(0x0000005C, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000006E, 0, 0, 6);
+                    add_ui_element(0x0000005C, 0, 0, 6);
+                    add_ui_element(0x0000006E, 0, 0, 6);
                 }
-                add_8018D9E0_entry(0x00000064, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000060, 0, 0, 6);
-                add_8018D9E0_entry(0x00000061, 0, 0, 6);
-                add_8018D9E0_entry(0x00000062, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005E, 0, 0, 8);
+                add_ui_element(0x00000064, 0, 0, 6);
+                add_ui_element(0x0000005F, 0, 0, 6);
+                add_ui_element(0x00000060, 0, 0, 6);
+                add_ui_element(0x00000061, 0, 0, 6);
+                add_ui_element(0x00000062, 0, 0, 6);
+                add_ui_element(0x0000005D, 0, 0, 6);
+                add_ui_element(0x0000005E, 0, 0, 8);
                 if (gModeSelection == TIME_TRIALS) {
-                    add_8018D9E0_entry(0x00000065, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000066, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000069, 0, 0, 8);
+                    add_ui_element(0x00000065, 0, 0, 8);
+                    add_ui_element(0x00000066, 0, 0, 8);
+                    add_ui_element(0x00000069, 0, 0, 8);
                 }
                 if (gModeSelection == GRAND_PRIX) {
-                    add_8018D9E0_entry(0x00000068, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000067, 0, 0, 5);
+                    add_ui_element(0x00000068, 0, 0, 8);
+                    add_ui_element(0x00000067, 0, 0, 5);
                 }
                 break;
             case 0:
@@ -2410,6 +2415,8 @@ void func_80094C60(void) {
         D_800E86A4 = 0;
     }
 }
+
+CProperties* GetCoursePropsA(void);
 
 void func_80095574(void) {
     s32 var_v0;
@@ -2448,13 +2455,14 @@ void func_80095574(void) {
         if ((gCurrentCourseId >= (NUM_COURSES - 1)) || (gCurrentCourseId < 0)) {
             gCurrentCourseId = 0;
         }
-        print_str_num(0x00000050, 0x0000006E, "map_number", gCurrentCourseId);
-        if (gCurrentCourseId < 0xA) {
+        print_str_num(0x00000050, 0x0000006E, "map_number", GetCourseIndex());
+        // This isn't functionally equivallent, but who cares.
+        if (gCurrentCourseId < COURSE_TOADS_TURNPIKE) {
             var_v0 = 0;
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, gDebugCourseNames[gCurrentCourseId]);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, GetCoursePropsA()->DebugName);
         debug_print_str2(0x00000050, 0x00000078, "screen_mode");
         debug_print_str2(0x000000AA, 0x00000078, gDebugScreenModeNames[D_8018EDF1]);
         debug_print_str2(0x00000050, 0x00000082, "player");
@@ -3369,7 +3377,7 @@ void dma_copy_base_7fa3c0(u64* arg0, size_t nbytes, void* vaddr) {
 }
 
 void func_80099110(void) {
-    gD_8018E118TotalSize = 0;
+    gMenuTextureBufferIndex = 0;
     gNumD_8018E118Entries = 0;
 }
 
@@ -3406,7 +3414,7 @@ void* segmented_to_virtual_dupe_2(const void* addr) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NAZ12
 // Register allocation nonsense
-void func_80099184(MkTexture* arg0) {
+void load_menu_img(MkTexture* arg0) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
@@ -3432,34 +3440,34 @@ void func_80099184(MkTexture* arg0) {
                 if (var_a1_2 % 8) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
-// mio0decode(D_8018D9B4, &D_8018D9B0[gD_8018E118TotalSize]);
+// mio0decode(D_8018D9B4, &D_8018D9B0[gMenuTextureBufferIndex]);
 // size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
-// memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, texSize);
+// memcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData, texSize);
 #ifdef TARGET_N64
                 dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
-                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
-                strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+                strcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData);
 #endif
             } else {
 #ifdef TARGET_N64
                 dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2,
-                                     &D_8018D9B0[gD_8018E118TotalSize]);
+                                     &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
-                strcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData);
+                strcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData);
 #endif
             }
             thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
-            thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
-            gD_8018E118TotalSize += var_s1->height * var_s1->width;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += var_s1->height * var_s1->width;
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -3487,21 +3495,21 @@ void func_80099394(MkTexture* arg0) {
             if (var_s1->type == 5) {
 #ifdef TARGET_N64
                 dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2),
-                                     &D_8018D9B0[gD_8018E118TotalSize]);
+                                     &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
                 u8* tex = LOAD_ASSET(var_s1->textureData);
                 size_t texSize = ResourceGetTexSizeByName(var_s1->textureData);
-                memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texSize);
+                memcpy(&D_8018D9B0[gMenuTextureBufferIndex], tex, texSize);
 #endif
             }
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing->offset = gMenuTextureBufferIndex;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
@@ -3535,18 +3543,18 @@ void func_8009952C(MkTexture* arg0) {
         if (var_a1 == 0) {
 #ifdef TARGET_N64
             dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
-            mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+            mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gMenuTextureBufferIndex]);
 #else
-            memcpy(&D_8018D9B0[gD_8018E118TotalSize], var_s1->textureData, var_s1->width * var_s1->height * 2);
+            memcpy(&D_8018D9B0[gMenuTextureBufferIndex], var_s1->textureData, var_s1->width * var_s1->height * 2);
 #endif
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
             thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing->offset = gMenuTextureBufferIndex;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
@@ -3556,14 +3564,14 @@ void func_8009952C(MkTexture* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009952C.s")
 #endif
 
-void func_8009969C(MkTexture* arg0) {
-    func_800996BC(arg0, 1);
+void load_img_wrap(MkTexture* arg0) {
+    load_menu_img2(arg0, 1);
 }
 
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/hwAAp
-void func_800996BC(MkTexture* arg0, s32 arg1) {
+void load_menu_img2(MkTexture* arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
@@ -3610,10 +3618,10 @@ void func_800996BC(MkTexture* arg0, s32 arg1) {
             switch (arg1) { /* switch 1; irregular */
                 case -1:    /* switch 1 */
                 case 1: {
-                    // mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gD_8018E118TotalSize]);
+                    // mio0decode(D_8018D9B4, (u8*)&D_8018D9B0[gMenuTextureBufferIndex]);
                     // printf("w: %d, h: %d", texture->width, texture->height);
                     u8* tex = (u8*) LOAD_ASSET(texture->textureData);
-                    memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex, texture->width * texture->height * 2);
+                    memcpy(&D_8018D9B0[gMenuTextureBufferIndex], tex, texture->width * texture->height * 2);
                     break;
                 }
                 case 0: /* switch 1 */
@@ -3624,24 +3632,24 @@ void func_800996BC(MkTexture* arg0, s32 arg1) {
                         var_v0_2 = 1;
                     }
                     if (1) {}
-                    // D_8018D9B0[gD_8018E118TotalSize] = &gTextureBackgroundBlueSky;
-                    // tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
+                    // D_8018D9B0[gMenuTextureBufferIndex] = &gTextureBackgroundBlueSky;
+                    // tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gMenuTextureBufferIndex], var_v0_2);
                     u8* tex2 = (u8*) LOAD_ASSET(texture->textureData);
-                    memcpy(&D_8018D9B0[gD_8018E118TotalSize], tex2, texture->width * texture->height * 2);
+                    memcpy(&D_8018D9B0[gMenuTextureBufferIndex], tex2, texture->width * texture->height * 2);
                     break;
             }
 
             thing[gNumD_8018E118Entries].textureData = texture->textureData;
-            thing[gNumD_8018E118Entries].offset = gD_8018E118TotalSize;
-            gD_8018E118TotalSize += texture->height * texture->width;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += texture->height * texture->width;
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         texture++;
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800996BC.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img2.s")
 #endif
 
 void func_80099958(MkTexture* arg0, s32 arg1, s32 arg2) {
@@ -3954,7 +3962,7 @@ void func_8009A2F0(struct_8018E0E8_entry* arg0) {
         if (var_a0 == NULL) {
             break;
         }
-        func_800996BC(var_a0, 0);
+        load_menu_img2(var_a0, 0);
         if (1) {}
         temp_v0++;
         var_a0 = temp_v0->mk64Texture;
@@ -3968,7 +3976,7 @@ void func_8009A344(void) {
     }
 }
 
-s32 func_8009A374(MkAnimation* anim) {
+s32 animate_character_select_menu(MkAnimation* anim) {
     s32 i;
     struct_8018DEE0_entry* entry;
 
@@ -3992,12 +4000,12 @@ s32 func_8009A374(MkAnimation* anim) {
     entry->D_8018E118_index = gNumD_8018E118Entries;
 
     if (anim[0].mk64Texture) {
-        func_8009969C(anim[0].mk64Texture);
+        load_img_wrap(anim[0].mk64Texture);
     }
     if (anim[1].mk64Texture) {
-        func_8009969C(anim[1].mk64Texture);
+        load_img_wrap(anim[1].mk64Texture);
     } else {
-        func_8009969C(anim[0].mk64Texture);
+        load_img_wrap(anim[0].mk64Texture);
     }
 
     entry->unk14 = 0;
@@ -4253,7 +4261,7 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
-void func_8009B0A4(s32 arg0, u32 arg1) {
+void convert_img_to_greyscale(s32 arg0, u32 arg1) {
     u32 var_s0;
     s32 red;
     s32 green;
@@ -4287,7 +4295,7 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
-void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
+void adjust_img_colour(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
     s32 red;
     s32 green;
     s32 blue;
@@ -4790,7 +4798,7 @@ void func_8009CE64(s32 arg0) {
             goto func_8009CE64_label2;
         }
     func_8009CE64_label2:
-        if ((D_802874D8.unk1D < 3) && (gCupSelection == 3)) {
+        if ((D_802874D8.unk1D < 3) && (GetCupIndex() == SPECIAL_CUP)) {
             var_a1 = 1;
         }
     func_8009CE64_label1:
@@ -4934,6 +4942,7 @@ void func_8009CE64(s32 arg0) {
                     gCCSelection = (s32) 1;
                     switch (gNextDemoId) { /* switch 4 */
                         case 0:            /* switch 4 */
+                            SetCourseByClass(GetMarioRaceway());
                             gCurrentCourseId = 0;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
@@ -4942,6 +4951,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 1: /* switch 4 */
+                            SetCourseByClass(GetLuigiRaceway());
                             gCurrentCourseId = (s16) 1;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
@@ -4951,7 +4961,8 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 2;
                             break;
                         case 2: /* switch 4 */
-                            gCurrentCourseId = 0x000B;
+                            SetCourseByClass(GetKalimariDesert());
+                            gCurrentCourseId = COURSE_KALAMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -4959,6 +4970,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 3: /* switch 4 */
+                            SetCourseByClass(GetWarioStadium());
                             gCurrentCourseId = 0x000E;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
@@ -4969,6 +4981,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = (s32) 2;
                             break;
                         case 4: /* switch 4 */
+                            SetCourseByClass(GetBowsersCastle());
                             gCurrentCourseId = 2;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
@@ -4977,6 +4990,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 5: /* switch 4 */
+                            SetCourseByClass(GetSherbetLand());
                             gCurrentCourseId = 0x000C;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
@@ -4994,9 +5008,13 @@ void func_8009CE64(s32 arg0) {
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
                     }
-                    gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
-                    D_800DC540 = (s32) gCupSelection;
-                    gCourseIndexInCup = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
+                    printf("\nSELECTED!!!!!\n");
+                    //SetCupIndex(gCurrentCourseId); // World->GetCourse
+                    gCupSelection = GetCupIndex(); //gCupSelectionByCourseId[gCurrentCourseId];
+                    D_800DC540 = (s32) GetCupIndex();
+                    gCourseIndexInCup = GetCupCursorPosition();
+                    //gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
+                    //SetCupCursorPosition(); // 
                     break;
                 case 3: /* switch 3 */
                     switch (gMenuSelection) {
@@ -5056,29 +5074,31 @@ void func_8009CE64(s32 arg0) {
                         break;
                 }
             }
-            switch (gCurrentCourseId) {
-                case COURSE_BLOCK_FORT:
-                case COURSE_SKYSCRAPER:
-                case COURSE_DOUBLE_DECK:
-                case COURSE_BIG_DONUT:
-                    gModeSelection = 3;
-                    if (gPlayerCountSelection1 == 1) {
-                        gPlayerCount = 2;
-                        gScreenModeSelection = 1;
-                        gPlayerCountSelection1 = gPlayerCount;
-                    }
-                    break;
-                default:
-                    if (gModeSelection == 3) {
-                        gModeSelection = 0;
-                    }
-                    if ((gModeSelection == 2) && (gPlayerCountSelection1 == 1)) {
-                        gModeSelection = 0;
-                    }
+
+            if (GetCourse() == GetBlockFort() ||
+                GetCourse() == GetSkyscraper() ||
+                GetCourse() == GetDoubleDeck() ||
+                GetCourse() == GetBigDonut()) {
+
+                gModeSelection = BATTLE;
+                if (gPlayerCountSelection1 == 1) {
+                    gPlayerCount = 2;
+                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
+                    gPlayerCountSelection1 = gPlayerCount;
+                }
+            } else {
+                if (gModeSelection == 3) {
+                    gModeSelection = 0;
+                }
+                if ((gModeSelection == 2) && (gPlayerCountSelection1 == 1)) {
+                    gModeSelection = 0;
+                }
             }
+
             gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
-            D_800DC540 = gCupSelection;
+            D_800DC540 = GetCupIndex();
             gCourseIndexInCup = gPerCupIndexByCourseId[gCurrentCourseId];
+
             switch (gDebugGotoScene) { /* switch 6; irregular */
                 case 1:                /* switch 6 */
                     break;
@@ -5468,7 +5488,7 @@ void func_8009E620(void) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
-void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
+void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
     struct_8018D9E0_entry* var_ra;
     s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -5486,13 +5506,14 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     // ????????
     // Credit to Vetri for the idea to mess around with this loop
     // to fix the issue near the 0xD4 case
-    while (1) {
+    while (true) {
         var_v0++;
         if (var_ra->type == 0)
             break;
 
-        if (var_v0 > 0x20) {
-            while (1) {}
+        if (var_v0 > D_8018D9E0_SIZE) {
+            printf("Ran out of buffer space for UI elements");
+            while (true) {}
         }
         var_ra++;
     }
@@ -5534,27 +5555,27 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->unk20 = one;
             break;
         case 0xD2:
-            func_800996BC(D_020014C8, 0);
+            load_menu_img2(D_020014C8, 0);
             func_8009B954(D_020014C8);
             D_8018E75C = func_8009BA74(D_8018E75C, D_020014C8, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD3:
-            func_800996BC(D_02001540, 0);
+            load_menu_img2(D_02001540, 0);
             func_8009B954(D_02001540);
             D_8018E75C = func_8009BA74(D_8018E75C, D_02001540, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD4:
-            func_800996BC(D_0200157C, 0);
-            func_80099184(D_02001874);
+            load_menu_img2(D_0200157C, 0);
+            load_menu_img(D_02001874);
             var_ra->row = 0x00000069;
             for (var_v0 = 0; var_v0 < 133; var_v0++) {
-                func_80099184(segmented_to_virtual_dupe(D_800E7AF8[var_v0]));
+                load_menu_img(segmented_to_virtual_dupe(D_800E7AF8[var_v0]));
             }
             break;
         case 0xD5:
-            func_80099184(D_020015A4);
+            load_menu_img(D_020015A4);
             func_8009B954(D_020015A4);
             D_8018E75C = func_8009BA74(D_8018E75C, D_020015A4, var_ra->column, var_ra->row);
             gDPLoadTextureBlock(D_8018E75C++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b, 256, 5, 0,
@@ -5562,49 +5583,49 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                                 G_TX_NOLOD, G_TX_NOLOD);
             gSPTextureRectangle(D_8018E75C++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80, 0x0400, 0xFC00);
             func_8009B998();
-            func_80099184(D_020015CC);
+            load_menu_img(D_020015CC);
             func_8009B954(D_020015CC);
             D_8018E75C = func_8009BA74(D_8018E75C, D_020015CC, var_ra->column, var_ra->row);
             func_8009B998();
-            func_80099184(D_02001630);
+            load_menu_img(D_02001630);
             func_8009B954(D_02001630);
             D_8018E75C = func_8009BA74(D_8018E75C, D_02001630, var_ra->column, var_ra->row);
             func_8009B998();
-            func_80099184(D_02001658);
+            load_menu_img(D_02001658);
             func_8009B954(D_02001658);
             D_8018E75C = func_8009BA74(D_8018E75C, D_02001658, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD6:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7D34[0]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7D34[0]));
             break;
         case 0xD7:
             for (var_v0 = 0; var_v0 < 10; var_v0++) {
-                func_80099184(segmented_to_virtual_dupe(D_800E7D0C[var_v0]));
+                load_menu_img(segmented_to_virtual_dupe(D_800E7D0C[var_v0]));
             }
             break;
         case 0xD8:
         case 0xD9:
-            func_80099184(D_0200184C);
+            load_menu_img(D_0200184C);
             break;
         case 0x1:
-            func_800996BC(D_800E7D4C[func_800B555C()], 0);
+            load_menu_img2(D_800E7D4C[has_unlocked_extra_mode()], 0);
             break;
         case 0x2:
-            func_8006EE44();
-            gD_8018E118TotalSize += 0x10000;
-            func_80099184(D_020045E8);
+            load_mario_kart_64_logo();
+            gMenuTextureBufferIndex += 0x10000;
+            load_menu_img(D_020045E8);
             break;
         case 0x3:
-            func_80099184(D_02004610);
+            load_menu_img(D_02004610);
             break;
         case 0x23:
         case 0x24:
         case 0x25:
-            func_800996BC(D_800E7D4C[func_800B555C()], 0);
-            func_800996BC(D_02004B74, 0);
-            func_8009B0A4(0, 0x00000019);
-            func_8009B538(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green,
+            load_menu_img2(D_800E7D4C[has_unlocked_extra_mode()], 0);
+            load_menu_img2(D_02004B74, 0);
+            convert_img_to_greyscale(0, 0x00000019);
+            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green,
                           D_800E74E8[type - 0x23].blue);
             break;
         case 0xF:
@@ -5621,27 +5642,27 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x17:
         case 0x18:
         case 0x19:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8274[type - 0x12]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8274[type - 0x12]), 0);
             break;
         case 0xB:
         case 0xC:
         case 0xD:
         case 0xE:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 0]), 0);
-            func_80099184(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 1]));
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 0]), 0);
+            load_menu_img(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 1]));
             break;
         case 0x2A:
-            func_800996BC(D_02004B4C, 0);
+            load_menu_img2(D_02004B4C, 0);
             break;
         case 0x33:
-            func_800996BC(D_02004B74, 0);
+            load_menu_img2(D_02004B74, 0);
             var_ra->unk1C = 0x00000020;
             break;
         case 0x34:
         case 0x35:
         case 0x36:
         case 0x37:
-            func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0x34]));
+            load_menu_img(segmented_to_virtual_dupe(D_800E82B4[type - 0x34]));
             break;
         case 0x2B:
         case 0x2C:
@@ -5651,12 +5672,12 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x30:
         case 0x31:
         case 0x32:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
             break;
         case 0xA0:
         case 0xA1:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
         case 0x5D:
             var_ra->unk1C = 0x00000020;
@@ -5671,14 +5692,14 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x5A:
         case 0x5B:
         case 0x5C:
-            func_800996BC(segmented_to_virtual_dupe(D_800E82C4[type - 0x52]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E82C4[type - 0x52]), 0);
             break;
         case 0x5F:
         case 0x60:
         case 0x61:
         case 0x62:
             var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
             break;
         case 0x5E:
             var_ra->unk20 = random_int(4U) + 2;
@@ -5689,20 +5710,20 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->row = D_800E7248[type - 0x65].row;
             break;
         case 0x67:
-            var_ra->unk1C = (s32) gCupSelection;
-            var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
+            var_ra->unk1C = (s32) GetCupIndex();
+            var_ra->unk20 = func_800B54C0(GetCupIndex(), gCCSelection);
             var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
         case 0x68:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8294[gCCSelection]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8294[gCCSelection]), 0);
             var_ra->column = 0x00000037;
             var_ra->row = 0x000000C3;
             break;
         case 0x69:
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
             } else {
@@ -5714,10 +5735,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x79:
         case 0x7A:
         case 0x7B:
-            func_800996BC(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), 0);
             break;
         case 0x8C:
-            func_800996BC(segmented_to_virtual_dupe(D_02004A34), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A34), 0);
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
             } else {
@@ -5726,7 +5747,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             }
             break;
         case 0x8D:
-            func_80099184(segmented_to_virtual_dupe(D_02001FA4));
+            load_menu_img(segmented_to_virtual_dupe(D_02001FA4));
             break;
         case 0x7C:
         case 0x7D:
@@ -5745,10 +5766,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x8A:
         case 0x8B:
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             break;
         case 0xB1:
         case 0xB2:
@@ -5777,8 +5798,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 var_a0 = D_800E8320[temp_a1];
             }
             var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), stackPadding0);
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
-            func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+            load_menu_img(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
             break;
         case 0xBB:
             var_ra->unk1C = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
@@ -5789,14 +5810,14 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 }
             }
             if ((var_ra->unk1C == 0) || (var_ra->unk20 != 0)) {
-                func_800B559C((gCupSelection * 4) + gCourseIndexInCup);
+                func_800B559C((GetCupIndex() * 4) + GetCupCursorPosition());
             }
             break;
         case 0xE6:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(
                 D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
             var_ra->unk1C = gTimeTrialDataCourseIndex;
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             func_8006EF60();
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
@@ -5809,7 +5830,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->cursor = (s32) gSoundMode;
             break;
         case 0xF1:
-            func_800996BC(segmented_to_virtual_dupe(D_02004638), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004638), 0);
             break;
         case 0xBE:
             D_8018ED90 = 0;
@@ -5827,7 +5848,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 var_a0 = D_800E8320[temp_a1];
             }
             var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), 0);
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
             break;
         case 0x190:
         case 0x191:
@@ -5897,7 +5918,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/add_8018D9E0_entry.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/add_ui_element.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -5933,7 +5954,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 func_80094660(gGfxPool, arg0->unk1C);
                 break;
             case 0xFB: /* switch 6 */
-                func_800947B4(gGfxPool, arg0->unk1C);
+                render_checkered_flag(gGfxPool, arg0->unk1C);
                 break;
             case 0xD2: /* switch 6 */
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020014C8);
@@ -5971,7 +5992,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 break;
             case 0x1: /* switch 6 */
                 gDisplayListHead =
-                    func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row);
+                    func_8009BA74(gDisplayListHead, D_800E7D4C[has_unlocked_extra_mode()], arg0->column, arg0->row);
                 break;
             case 0x2: /* switch 6 */
                 func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
@@ -6025,7 +6046,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
             case 0x24: /* switch 6 */
             case 0x25: /* switch 6 */
                 gDisplayListHead =
-                    func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row, 3, 0);
+                    func_8009BC9C(gDisplayListHead, D_800E7D4C[has_unlocked_extra_mode()], arg0->column, arg0->row, 3, 0);
                 break;
             case 0xA: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
@@ -6277,7 +6298,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 break;
             case 0x97: /* switch 6 */
                 set_text_color(5);
-                func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
+                func_80093324(arg0->column, arg0->row, CourseManager_GetProps()->Name, arg0->unk1C, arg0->unk24, 1.0f);
                 break;
             case 0x98: /* switch 6 */
                 func_800A2D1C(arg0);
@@ -7210,7 +7231,7 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
     func_80093324(arg0->column + 0x1E, arg0->row + 0x19, "results", 0, 1.0f, 1.0f);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
     func_80093324(arg0->column + 0x2C, arg0->row + 0x28, "round", 0, 0.7f, 0.7f);
-    convert_number_to_ascii(gCourseIndexInCup + 1, sp68);
+    convert_number_to_ascii(GetCupCursorPosition() + 1, sp68);
     func_80093324(arg0->column + 0x57, arg0->row + 0x28, &sp68[1], 0, 0.7f, 0.7f);
     for (var_s2 = 0; var_s2 < 4; var_s2++) {
         if (gGPCurrentRacePlayerIdByRank[var_s2] < gPlayerCount) {
@@ -7231,7 +7252,7 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
+    temp_s0 = (s32) (((f32) (get_string_width(GetCupName()) + 8) * 0.6f) / 2);//  gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2);
     draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
               arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
@@ -7289,7 +7310,7 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
         func_80093324(arg0->column + 0x19, 0x19 - arg0->row, "driver's points", 0, 0.8f, 0.8f);
         set_text_color(5);
         func_80093324(arg0->column + 0x36, 0x28 - arg0->row, "round", 0, 0.7f, 0.7f);
-        convert_number_to_ascii(gCourseIndexInCup + 1, sp78);
+        convert_number_to_ascii(GetCupCursorPosition() + 1, sp78);
         func_80093324(arg0->column + 0x61, (0x28 & 0xFFFFFFFF) - arg0->row, &sp78[1], 0, 0.7f, 0.7f);
         for (rank = 0; rank < 4; rank++) {
             test = arg0->cursor;
@@ -7347,7 +7368,7 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
             }
         }
         set_text_color(5);
-        temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
+        temp_s0_3 = ((get_string_width(gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2;
         draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
                   arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
@@ -7422,8 +7443,8 @@ void func_800A3C84(struct_8018D9E0_entry* arg0) {
     s32 rowOffset;
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]],
-              0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x43, arg0->row + 0x19, CourseManager_GetProps()->Name
+              , 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
@@ -7462,8 +7483,8 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
     }
 
     set_text_color(4);
-    draw_text(arg0->column + 0x55, 0x19 - arg0->row, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]],
-              0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x55, 0x19 - arg0->row,
+              gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 0.6f, 0.6f);
     set_text_color(3);
     draw_text(arg0->column + 0x55, 0x28 - arg0->row, D_800E7730, 0, 0.75f, 0.75f);
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
@@ -7760,7 +7781,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f,
+    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 1.0f,
               1.0f);
     set_text_color(TEXT_RED);
     draw_text(0x0000009D, 0x00000060, D_800E7728[0], 0, 0.8f, 0.8f);
@@ -7841,14 +7862,14 @@ void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
     gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
                                 temp_t0 + temp_t4, 0, 0, 0, 140);
     temp_s3 = &D_800E85C0[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
-    temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
+    temp_s0 = ((get_string_width(gCupNames[GetCupIndex()]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection]) * one) + 10.0f) / 2;
     set_text_color(TEXT_YELLOW);
-    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
+    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[GetCupIndex()], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f,
+    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 1.0f,
               1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->cursor - 31, var_s0, TEXT_YELLOW);
@@ -7963,7 +7984,7 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(3);
-        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0,
+        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0,
                       1.0f, 1.0f);
         switch (arg0->cursor) { /* switch 1 */
             case 1:             /* switch 1 */
@@ -8099,7 +8120,7 @@ void func_800A6034(struct_8018D9E0_entry* arg0) {
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
-        text = gCourseNames[gCurrentCourseId];
+        text = CourseManager_GetProps()->Name;
         set_text_color((s32) gCurrentCourseId % 4);
         func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
@@ -8407,11 +8428,11 @@ void func_800A7258(struct_8018D9E0_entry* arg0) {
 // Podium scene, top line
 void func_800A72FC(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
-    s32 cupNameLength = (((f32) get_string_width(gCupNames[gCupSelection]) * 1) + 10) / 2;
+    s32 cupNameLength = (((f32) get_string_width(GetCupName()) * 1) + 10) / 2;
     s32 ccNameLength = (((f32) get_string_width(D_800E76CC[gCCSelection]) * 1) + 10) / 2;
 
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column - ccNameLength, arg0->row, gCupNames[gCupSelection], 0, 1, 1);
+    draw_text(arg0->column - ccNameLength, arg0->row, GetCupName(), 0, 1, 1);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
@@ -9103,7 +9124,7 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry* arg1) {
         gDPPipeSync(gDisplayListHead++);
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-        if (arg0 == gCupSelection) {
+        if (arg0 == GetCupIndex()) {
             if (D_8018EDEC == 1) {
                 gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
                                                                (temp_t1 - temp_t7) + 64, temp_a2 + 39);
@@ -9128,8 +9149,8 @@ void func_800A8A98(struct_8018D9E0_entry* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-    for (someIndex = 0; someIndex < NUM_COURSES_PER_CUP; someIndex++) {
-        if ((someIndex == gCourseIndexInCup) && (D_8018EDEC >= 2) && (gModeSelection != GRAND_PRIX)) {
+    for (someIndex = 0; someIndex < GetCupSize(); someIndex++) {
+        if ((someIndex == GetCupCursorPosition()) && (D_8018EDEC >= 2) && (gModeSelection != GRAND_PRIX)) {
             if ((D_8018EDEC == 2) || (D_8018EDEC == 4)) {
                 gDisplayListHead = draw_flash_select_case_slow(
                     gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3,
@@ -9201,7 +9222,7 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
     switch (D_8018EDEC) { /* irregular */
         case 1:
             for (var_s1 = 0; var_s1 < 4; var_s1++) {
-                if (func_800B639C((gCupSelection * 4) + var_s1) >= 0) {
+                if (func_800B639C((GetCupIndex() * 4) + var_s1) >= 0) {
                     temp_v0 = &D_800E7168[var_s1];
                     temp_v1 = temp_v0->column;
                     temp_s0 = temp_v0->row;
@@ -9215,7 +9236,7 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
             break;
         case 2:
         default:
-            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) >= 0) {
+            if (func_800B639C((GetCupIndex() * 4) + GetCupCursorPosition()) >= 0) {
                 gDisplayListHead = func_80098FC8(gDisplayListHead, 0x00000057, 0x00000070, 0x00000096, 0x00000081);
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A0C, 0x00000057, 0x00000070);
             }
@@ -10303,14 +10324,14 @@ void func_800AB020(struct_8018D9E0_entry* arg0) {
 void func_800AB098(struct_8018D9E0_entry* arg0) {
     switch (arg0->cursor) {
         case 0:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
             } else {
                 arg0->cursor = 1;
             }
             break;
         case 4:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
                 arg0->unk1C = 0;
                 break;
@@ -10327,7 +10348,7 @@ void func_800AB098(struct_8018D9E0_entry* arg0) {
             }
             break;
         case 3:
-            if ((gCupSelection + 0x53) == arg0->type) {
+            if ((GetCupIndex() + 0x53) == arg0->type) {
                 arg0->cursor = 2;
             }
             break;
@@ -10340,7 +10361,7 @@ void func_800AB098(struct_8018D9E0_entry* arg0) {
 void func_800AB164(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
 
-    if ((gCupSelection + 0x53) == arg0->type) {
+    if ((GetCupIndex() + 0x53) == arg0->type) {
         arg0->priority = 0x0A;
     } else {
         arg0->priority = 4;
@@ -10371,7 +10392,7 @@ void func_800AB164(struct_8018D9E0_entry* arg0) {
 
 void func_800AB260(struct_8018D9E0_entry* arg0) {
     s32 temp = (arg0->type - 0x58);
-    if (temp == gCupSelection) {
+    if (temp == GetCupIndex()) {
         arg0->visible = 1;
     } else {
         arg0->visible = 0;
@@ -10379,10 +10400,10 @@ void func_800AB260(struct_8018D9E0_entry* arg0) {
 }
 
 void func_800AB290(struct_8018D9E0_entry* arg0) {
-    if (arg0->unk1C != gCupSelection) {
-        arg0->unk1C = gCupSelection;
+    if (arg0->unk1C != GetCupIndex()) {
+        arg0->unk1C = GetCupIndex();
         func_8009A594(arg0->D_8018DEE0_index, 0,
-                      segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
+                      segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[GetCupIndex()][arg0->type - 0x5F]]));
     }
 }
 
@@ -10404,8 +10425,8 @@ void func_800AB314(struct_8018D9E0_entry* arg0) {
             if (D_8018EDEC != one) {
                 arg0->cursor = 0;
                 arg0->unk20 = 0;
-                for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                    if (gCourseIndexInCup == var_a1) {
+                for (var_a1 = 0; var_a1 < GetCupSize(); var_a1++) {
+                    if (GetCupCursorPosition() == var_a1) {
                         sp24[var_a1]->visible = one;
                         if (arg0->unk1C != var_a1) {
                             arg0->unk1C = var_a1;
@@ -10425,17 +10446,17 @@ void func_800AB314(struct_8018D9E0_entry* arg0) {
         case 0:
             switch (arg0->cursor) { /* irregular */
                 case 0:
-                    if ((arg0->unk1C / 4) == gCupSelection) {
+                    if ((arg0->unk1C / 4) == GetCupIndex()) {
                         arg0->unk20++;
                         if (arg0->unk20 >= 0x33) {
                             arg0->cursor = one;
                             arg0->unk20 = 0;
-                            var_v0 = gCupSelection * 4;
+                            var_v0 = GetCupIndex() * 4;
                             arg0->unk1C = var_v0 + 1;
                         }
                     } else {
                         arg0->unk20 = 0;
-                        arg0->unk1C = gCupSelection * 4;
+                        arg0->unk1C = GetCupIndex() * 4;
                     }
                     if (D_8018EDEC == 3) {
                         arg0->cursor = 2;
@@ -10443,7 +10464,7 @@ void func_800AB314(struct_8018D9E0_entry* arg0) {
                     }
                     break;
                 case 1:
-                    if ((arg0->unk1C / 4) != gCupSelection) {
+                    if ((arg0->unk1C / 4) != GetCupIndex()) {
                         arg0->cursor = 0;
                         arg0->unk20 = 0;
                         arg0->unk1C = 0;
@@ -10451,7 +10472,7 @@ void func_800AB314(struct_8018D9E0_entry* arg0) {
                         arg0->unk20++;
                         if (arg0->unk20 >= 0x1F) {
                             arg0->unk20 = 0;
-                            arg0->unk1C = (gCupSelection * 4) + (((arg0->unk1C % 4) + one) % 4);
+                            arg0->unk1C = (GetCupIndex() * 4) + (((arg0->unk1C % 4) + one) % 4);
                         } else {
                             if (D_8018EDEC == 3) {
                                 arg0->cursor = 2;
@@ -10543,9 +10564,9 @@ void func_800AB904(struct_8018D9E0_entry* arg0) {
 void func_800AB9B0(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* temp_v1;
 
-    if (arg0->unk1C != gCupSelection) {
-        arg0->unk1C = gCupSelection;
-        arg0->unk20 = func_800B54C0((s32) gCupSelection, gCCSelection);
+    if (arg0->unk1C != GetCupIndex()) {
+        arg0->unk1C = GetCupIndex();
+        arg0->unk20 = func_800B54C0((s32) GetCupIndex(), gCCSelection);
         func_8009A594(arg0->D_8018DEE0_index, 0,
                       segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - arg0->unk20]));
         arg0->column = (s32) D_800E7268->column;
@@ -10700,7 +10721,7 @@ void func_800ABF68(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = 0x140;
             arg0->cursor = 1;
-            arg0->unk20 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
+            arg0->unk20 = 0xA0 - (get_string_width(CourseManager_GetProps()->Name) / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);
@@ -10789,7 +10810,7 @@ void func_800AC324(struct_8018D9E0_entry* arg0) {
             if (((D_8018D9D8 != 0) || (arg0->unk20 >= 0x5B)) && (D_800DDB24 != 0)) {
                 arg0->cursor = 3;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(0xAB, 0, 0, 0);
+                add_ui_element(0xAB, 0, 0, 0);
             }
             break;
         case 3:
@@ -11045,7 +11066,7 @@ void func_800ACC50(struct_8018D9E0_entry* arg0) {
                 arg0->cursor = 1;
                 arg0->unk1C = 0;
                 for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
-                    add_8018D9E0_entry(var_s0 + 0xB1, 0, 0, (s8) (5 - var_s0));
+                    add_ui_element(var_s0 + 0xB1, 0, 0, (s8) (5 - var_s0));
                 }
             }
             break;
@@ -11178,7 +11199,7 @@ void func_800AD1A4(struct_8018D9E0_entry* arg0) {
             arg0->column = 0x0000014A;
             arg0->cursor = 1;
             func_800921B4();
-            add_8018D9E0_entry(0x000000BB, 0, 0, 0);
+            add_ui_element(0x000000BB, 0, 0, 0);
             break;
         case 1:
             func_800A9208(arg0, 0x000000A0);
@@ -11198,7 +11219,7 @@ void func_800AD1A4(struct_8018D9E0_entry* arg0) {
                 func_800921B4();
                 arg0->cursor = 4;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(0x000000BA, 0, 0, 0);
+                add_ui_element(0x000000BA, 0, 0, 0);
             }
             break;
         case 4:
@@ -11307,7 +11328,7 @@ void func_800AD2E8(struct_8018D9E0_entry* arg0) {
                                     break;
                                 case 0: /* switch 4 */
                                     func_800B6708();
-                                    arg0->cursor = func_800B6348((gCupSelection * 4) + gCourseIndexInCup) + 0x11;
+                                    arg0->cursor = func_800B6348((GetCupIndex() * 4) + GetCupCursorPosition()) + 0x11;
                                     var_v1 = 1;
                                     play_sound2(SOUND_MENU_SELECT);
                                     break;
@@ -11354,7 +11375,7 @@ void func_800AD2E8(struct_8018D9E0_entry* arg0) {
                                 if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
                                                   (u8*) gExtCode, &gControllerPak1FileNote) == 0) {
                                     func_800B6708();
-                                    arg0->cursor = func_800B6348((gCupSelection * 4) + gCourseIndexInCup) + 0x11;
+                                    arg0->cursor = func_800B6348((GetCupIndex() * 4) + GetCupCursorPosition()) + 0x11;
                                     play_sound2(SOUND_MENU_SELECT);
                                     return;
                                 }
@@ -11404,7 +11425,7 @@ void func_800AD2E8(struct_8018D9E0_entry* arg0) {
         case 17: /* switch 1 */
         case 18: /* switch 1 */
             arg0->unk20 = arg0->cursor - 0x11;
-            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->unk20) {
+            if (func_800B639C((GetCupIndex() * 4) + GetCupCursorPosition()) != arg0->unk20) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->cursor >= 0x12) {
                         arg0->cursor--;
@@ -11711,7 +11732,7 @@ void func_800AE218(struct_8018D9E0_entry* arg0) {
                                     break;
                                 case PFS_NO_ERROR: /* switch 3 */
                                     func_800B6708();
-                                    arg0->cursor = func_800B6348((gCupSelection * 4) + gCourseIndexInCup) + 0x1E;
+                                    arg0->cursor = func_800B6348((GetCupIndex() * 4) + GetCupCursorPosition()) + 0x1E;
                                     var_v1 = 1;
                                     break;
                                 case PFS_ERR_NEW_PACK: /* switch 3 */
@@ -11760,7 +11781,7 @@ void func_800AE218(struct_8018D9E0_entry* arg0) {
                             if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
                                               (u8*) gExtCode, &gControllerPak1FileNote) == 0) {
                                 func_800B6708();
-                                arg0->cursor = func_800B6348((gCupSelection * 4) + gCourseIndexInCup) + 0x1E;
+                                arg0->cursor = func_800B6348((GetCupIndex() * 4) + GetCupCursorPosition()) + 0x1E;
                                 play_sound2(SOUND_MENU_SELECT);
                                 return;
                             }
@@ -11806,7 +11827,7 @@ void func_800AE218(struct_8018D9E0_entry* arg0) {
         case 30: /* switch 1 */
         case 31: /* switch 1 */
             arg0->unk20 = (u32) arg0->cursor - 0x1E;
-            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->unk20) {
+            if (func_800B639C((GetCupIndex() * 4) + GetCupCursorPosition()) != arg0->unk20) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->cursor >= 0x1F) {
                         arg0->cursor--;
@@ -12035,9 +12056,9 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
             if (arg0->unk1C >= 0x65) {
                 arg0->unk1C = 0;
                 arg0->cursor = 1;
-                gCupSelection %= 4;
-                gCCSelection %= 4;
-                add_8018D9E0_entry(0x0000012C, 0, 0, 4);
+                //gCupSelection %= 4;
+                //gCCSelection %= 4;
+                add_ui_element(0x0000012C, 0, 0, 4);
             }
             break;
         case 1:
@@ -12048,7 +12069,7 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
             if (arg0->unk1C >= 9) {
                 arg0->unk1C = 0;
                 arg0->cursor++;
-                add_8018D9E0_entry(arg0->cursor + 0x12B, 0, 0, 4);
+                add_ui_element(arg0->cursor + 0x12B, 0, 0, 4);
             }
             break;
         case 5:

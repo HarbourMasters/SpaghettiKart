@@ -143,17 +143,18 @@ void func_8028E298(void) {
 void func_8028E3A0(void) {
 
     if (D_80150120) {
-
-        if (gCourseIndexInCup == COURSE_FOUR) {
+        if (GetCupCursorPosition() == GetCupSize()) {// CUP_COURSE_FOUR) {
             gGotoMode = ENDING;
         } else {
             D_800DC544++;
+            SetCupCursorPosition(GetCupCursorPosition() + 1);
             gCourseIndexInCup++;
             gGotoMode = RACING;
         }
     } else {
         D_800DC544++;
         gCourseIndexInCup++;
+        SetCupCursorPosition(GetCupCursorPosition() + 1);
         gGotoMode = RACING;
     }
 }
@@ -421,51 +422,38 @@ void func_8028EC98(s32 arg0) {
 
     func_800029B0();
 
-    switch (arg0) {
-        case 0:
-        case 7:
-        case 8:
-        case 14:
-            func_800C8EAC(3);
-            break;
-        case 10:
-            func_800C8EAC(21);
-            break;
-        case 4:
-        case 9:
-            func_800C8EAC(4);
-            break;
-        case 1:
-        case 15:
-        case 17:
-            func_800C8EAC(5);
-            break;
-        case 11:
-            func_800C8EAC(10);
-            break;
-        case 6:
-            func_800C8EAC(6);
-            break;
-        case 2:
-            func_800C8EAC(9);
-            break;
-        case 3:
-            func_800C8EAC(7);
-            break;
-        case 5:
-        case 12:
-            func_800C8EAC(8);
-            break;
-        case 13:
-            func_800C8EAC(18);
-            break;
-        case 18:
-            func_800C8EAC(19);
-            break;
-        case 16:
-        case 19:
-            func_800C8EAC(25);
-            break;
+    if (GetCourse() == GetMarioRaceway() || 
+        GetCourse() == GetRoyalRaceway() || 
+        GetCourse() == GetLuigiRaceway() || 
+        GetCourse() == GetWarioStadium()) {
+        func_800C8EAC(3);
+    } else if (GetCourse() == GetToadsTurnpike()) {
+        func_800C8EAC(21);
+    } else if (GetCourse() == GetYoshiValley() || 
+            GetCourse() == GetMooMooFarm()) {
+        func_800C8EAC(4);
+    } else if (GetCourse() == GetChocoMountain() || 
+            GetCourse() == GetBlockFort() || 
+            GetCourse() == GetDoubleDeck()) {
+        func_800C8EAC(5);
+    } else if (GetCourse() == GetKalimariDesert()) {
+        func_800C8EAC(10);
+    } else if (GetCourse() == GetKoopaTroopaBeach()) {
+        func_800C8EAC(6);
+    } else if (GetCourse() == GetBowsersCastle()) {
+        func_800C8EAC(9);
+    } else if (GetCourse() == GetBansheeBoardwalk()) {
+        func_800C8EAC(7);
+    } else if (GetCourse() == GetFrappeSnowland() || 
+            GetCourse() == GetSherbetLand()) {
+        func_800C8EAC(8);
+    } else if (GetCourse() == GetRainbowRoad()) {
+        func_800C8EAC(18);
+    } else if (GetCourse() == GetDkJungle()) {
+        func_800C8EAC(19);
+    } else if (GetCourse() == GetSkyscraper() || 
+            GetCourse() == GetBigDonut()) {
+        func_800C8EAC(25);
     }
 }
 
@@ -933,9 +921,9 @@ void func_8028FCBC(void) {
             func_8028F914();
             if (D_802BA034 == 1.0f) {
                 if (gActiveScreenMode != SCREEN_MODE_1P) {
-                    if (gCurrentCourseId == COURSE_LUIGI_RACEWAY) {
+                    if (GetCourse() == GetLuigiRaceway()) {
                         func_802A7940();
-                    } else if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    } else if (GetCourse() == GetWarioStadium()) {
                         func_802A7728();
                     }
                 }

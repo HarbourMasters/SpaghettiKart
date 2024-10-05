@@ -713,7 +713,7 @@ void race_logic_loop(void) {
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+            if (GetCourse() == GetDkJungle()) {
                 gTickSpeed = 3;
             } else {
                 gTickSpeed = 2;
@@ -758,7 +758,7 @@ void race_logic_loop(void) {
 
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
 
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+            if (GetCourse() == GetDkJungle()) {
                 gTickSpeed = 3;
             } else {
                 gTickSpeed = 2;

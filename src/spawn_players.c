@@ -486,7 +486,7 @@ void func_80039DA4(void) {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
-    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
@@ -504,7 +504,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
@@ -638,7 +638,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
+    if ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
@@ -728,7 +728,7 @@ void spawn_players_versus_two_player(f32* arg0, f32* arg1, f32 arg2) {
 }
 
 void spawn_players_2p_battle(f32* arg0, f32* arg1, f32 arg2) {
-    if (gCurrentCourseId == COURSE_BIG_DONUT) {
+    if (GetCourse() == GetBigDonut()) {
         spawn_player(gPlayerOne, 0, arg0[0], arg1[0], arg2, -16384.0f, gCharacterSelections[0],
                      PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         spawn_player(gPlayerTwo, 1, arg0[1], arg1[1], arg2, 16384.0f, gCharacterSelections[1],
@@ -777,7 +777,7 @@ void func_8003B318(f32* arg0, f32* arg1, f32 arg2) {
 }
 
 void spawn_players_3p_battle(f32* arg0, f32* arg1, f32 arg2) {
-    if (gCurrentCourseId == COURSE_BIG_DONUT) {
+    if (GetCourse() == GetBigDonut()) {
         spawn_player(gPlayerOne, 0, arg0[0], arg1[0], arg2, -16384.0f, gCharacterSelections[0],
                      PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         spawn_player(gPlayerTwo, 1, arg0[1], arg1[1], arg2, 16384.0f, gCharacterSelections[1],
@@ -829,7 +829,7 @@ void func_8003B870(f32* arg0, f32* arg1, f32 arg2) {
 }
 
 void spawn_players_4p_battle(f32* arg0, f32* arg1, f32 arg2) {
-    if (gCurrentCourseId == COURSE_BIG_DONUT) {
+    if (GetCourse() == GetBigDonut()) {
         spawn_player(gPlayerOne, 0, arg0[0], arg1[0], arg2, -16384.0f, gCharacterSelections[0],
                      PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         spawn_player(gPlayerTwo, 1, arg0[1], arg1[1], arg2, 16384.0f, gCharacterSelections[1],
@@ -884,310 +884,262 @@ void func_8003C0F0(void) {
     s16 sp5A;
     s32 temp;
     UNUSED s32 pad[4];
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-        case COURSE_CHOCO_MOUNTAIN:
-        case COURSE_BOWSER_CASTLE:
-        case COURSE_BANSHEE_BOARDWALK:
-        case COURSE_YOSHI_VALLEY:
-        case COURSE_FRAPPE_SNOWLAND:
-        case COURSE_KOOPA_BEACH:
-        case COURSE_ROYAL_RACEWAY:
-        case COURSE_LUIGI_RACEWAY:
-        case COURSE_MOO_MOO_FARM:
-        case COURSE_TOADS_TURNPIKE:
-        case COURSE_KALAMARI_DESERT:
-        case COURSE_SHERBET_LAND:
-        case COURSE_RAINBOW_ROAD:
-        case COURSE_WARIO_STADIUM:
-        case COURSE_DK_JUNGLE:
-            func_8000F2DC();
-            sp5E = (f32) D_80164550[0][0].posX;
-            sp5C = (f32) D_80164550[0][0].posZ;
-            sp5A = (f32) D_80164550[0][0].posY;
-            if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-                sp5E = 0;
-            }
-            break;
 
-        case COURSE_BLOCK_FORT:
-        case COURSE_SKYSCRAPER:
-        case COURSE_DOUBLE_DECK:
-        case COURSE_BIG_DONUT:
-            func_8000EEDC();
-            break;
+    if (gModeSelection == BATTLE) {
+        func_8000EEDC();
+    } else if (GetCourse() != GetPodiumCeremony()) {
+        func_8000F2DC();
+        sp5E = (f32) D_80164550[0][0].posX;
+        sp5C = (f32) D_80164550[0][0].posZ;
+        sp5A = (f32) D_80164550[0][0].posY;
+        if (GetCourse() == GetToadsTurnpike()) {
+            sp5E = 0;
+        }
     }
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-        case COURSE_CHOCO_MOUNTAIN:
-        case COURSE_BOWSER_CASTLE:
-        case COURSE_BANSHEE_BOARDWALK:
-        case COURSE_YOSHI_VALLEY:
-        case COURSE_FRAPPE_SNOWLAND:
-        case COURSE_KOOPA_BEACH:
-        case COURSE_ROYAL_RACEWAY:
-        case COURSE_LUIGI_RACEWAY:
-        case COURSE_MOO_MOO_FARM:
-        case COURSE_TOADS_TURNPIKE:
-        case COURSE_KALAMARI_DESERT:
-        case COURSE_SHERBET_LAND:
-        case COURSE_RAINBOW_ROAD:
-        case COURSE_WARIO_STADIUM:
-        case COURSE_DK_JUNGLE:
-            switch (gActiveScreenMode) {
-                case SCREEN_MODE_1P:
-                    switch (gModeSelection) {
-                        case GRAND_PRIX:
-                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
-                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
-                            D_80165230[0] = sp5C + 0x1E;
-                            D_80165230[1] = sp5C + 0x32;
-                            D_80165230[2] = sp5C + 0x46;
-                            D_80165230[3] = sp5C + 0x5A;
-                            D_80165230[4] = sp5C + 0x6E;
-                            D_80165230[5] = sp5C + 0x82;
-                            D_80165230[6] = sp5C + 0x96;
-                            D_80165230[7] = sp5C + 0xAA;
-                            spawn_players_gp_one_player(D_80165210, D_80165230, sp5A);
-                            break;
+    if ((gModeSelection != BATTLE) && (GetCourse() != GetPodiumCeremony())) {
+        switch (gActiveScreenMode) {
+            case SCREEN_MODE_1P:
+                switch (gModeSelection) {
+                    case GRAND_PRIX:
+                        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
+                        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x32;
+                        D_80165230[2] = sp5C + 0x46;
+                        D_80165230[3] = sp5C + 0x5A;
+                        D_80165230[4] = sp5C + 0x6E;
+                        D_80165230[5] = sp5C + 0x82;
+                        D_80165230[6] = sp5C + 0x96;
+                        D_80165230[7] = sp5C + 0xAA;
+                        spawn_players_gp_one_player(D_80165210, D_80165230, sp5A);
+                        break;
 
-                        case TIME_TRIALS:
-                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E)));
-                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E)));
-                            D_80165230[0] = sp5C + 0x1E;
-                            D_80165230[1] = sp5C + 0x1E;
-                            D_80165230[2] = sp5C + 0x1E;
-                            D_80165230[3] = sp5C + 0x1E;
-                            D_80165230[4] = sp5C + 0x1E;
-                            D_80165230[5] = sp5C + 0x1E;
-                            D_80165230[6] = sp5C + 0x1E;
-                            D_80165230[7] = sp5C + 0x1E;
-                            spawn_players_versus_one_player(D_80165210, D_80165230, sp5A);
-                            break;
-                    }
-                    break;
+                    case TIME_TRIALS:
+                        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E)));
+                        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E)));
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x1E;
+                        D_80165230[2] = sp5C + 0x1E;
+                        D_80165230[3] = sp5C + 0x1E;
+                        D_80165230[4] = sp5C + 0x1E;
+                        D_80165230[5] = sp5C + 0x1E;
+                        D_80165230[6] = sp5C + 0x1E;
+                        D_80165230[7] = sp5C + 0x1E;
+                        spawn_players_versus_one_player(D_80165210, D_80165230, sp5A);
+                        break;
+                }
+                break;
 
-                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                    switch (gModeSelection) {
-                        case GRAND_PRIX:
-                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
-                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
-                            D_80165230[0] = sp5C + 0x1E;
-                            D_80165230[1] = sp5C + 0x32;
-                            D_80165230[2] = sp5C + 0x46;
-                            D_80165230[3] = sp5C + 0x5A;
-                            D_80165230[4] = sp5C + 0x6E;
-                            D_80165230[5] = sp5C + 0x82;
-                            D_80165230[6] = sp5C + 0x96;
-                            D_80165230[7] = sp5C + 0xAA;
-                            spawn_players_gp_two_player(D_80165210, D_80165230, sp5A);
-                            break;
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                switch (gModeSelection) {
+                    case GRAND_PRIX:
+                        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0x14)));
+                        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0x14)));
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x32;
+                        D_80165230[2] = sp5C + 0x46;
+                        D_80165230[3] = sp5C + 0x5A;
+                        D_80165230[4] = sp5C + 0x6E;
+                        D_80165230[5] = sp5C + 0x82;
+                        D_80165230[6] = sp5C + 0x96;
+                        D_80165230[7] = sp5C + 0xAA;
+                        spawn_players_gp_two_player(D_80165210, D_80165230, sp5A);
+                        break;
 
-                        case VERSUS:
-                            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0xA)));
-                            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0xA)));
-                            D_80165230[0] = sp5C + 0x1E;
-                            D_80165230[1] = sp5C + 0x1E;
-                            D_80165230[2] = sp5C + 0x1E;
-                            D_80165230[3] = sp5C + 0x1E;
-                            D_80165230[4] = sp5C + 0x1E;
-                            D_80165230[5] = sp5C + 0x1E;
-                            D_80165230[6] = sp5C + 0x1E;
-                            D_80165230[7] = sp5C + 0x1E;
-                            spawn_players_versus_two_player(D_80165210, D_80165230, sp5A);
-                            break;
-                    }
-                    break;
+                    case VERSUS:
+                        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = sp5E + 0xA)));
+                        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = sp5E - 0xA)));
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x1E;
+                        D_80165230[2] = sp5C + 0x1E;
+                        D_80165230[3] = sp5C + 0x1E;
+                        D_80165230[4] = sp5C + 0x1E;
+                        D_80165230[5] = sp5C + 0x1E;
+                        D_80165230[6] = sp5C + 0x1E;
+                        D_80165230[7] = sp5C + 0x1E;
+                        spawn_players_versus_two_player(D_80165210, D_80165230, sp5A);
+                        break;
+                }
+                break;
 
-                case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                    switch (gModeSelection) {
-                        case VERSUS:
-                            D_80165210[0] = sp5E + 0x1E;
-                            D_80165210[6] = sp5E - 0xA;
-                            D_80165210[1] = sp5E + 0xA;
-                            D_80165210[7] = sp5E - 0x1E;
-                            D_80165210[4] = sp5E - 0xA;
-                            D_80165210[2] = sp5E - 0xA;
-                            D_80165210[5] = sp5E - 0x1E;
-                            D_80165210[3] = sp5E - 0x1E;
-                            D_80165230[0] = sp5C + 0x1E;
-                            D_80165230[1] = sp5C + 0x1E;
-                            D_80165230[2] = sp5C + 0x1E;
-                            D_80165230[3] = sp5C + 0x1E;
-                            D_80165230[4] = sp5C + 0x1E;
-                            D_80165230[5] = sp5C + 0x1E;
-                            D_80165230[6] = sp5C + 0x1E;
-                            D_80165230[7] = sp5C + 0x1E;
-                            if (gPlayerCountSelection1 == 4) {
-                                func_8003B870(D_80165210, D_80165230, sp5A);
-                            } else {
-                                func_8003B318(D_80165210, D_80165230, sp5A);
-                            }
-                            break;
-                    }
-                    break;
-            }
-            break;
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                switch (gModeSelection) {
+                    case VERSUS:
+                        D_80165210[0] = sp5E + 0x1E;
+                        D_80165210[6] = sp5E - 0xA;
+                        D_80165210[1] = sp5E + 0xA;
+                        D_80165210[7] = sp5E - 0x1E;
+                        D_80165210[4] = sp5E - 0xA;
+                        D_80165210[2] = sp5E - 0xA;
+                        D_80165210[5] = sp5E - 0x1E;
+                        D_80165210[3] = sp5E - 0x1E;
+                        D_80165230[0] = sp5C + 0x1E;
+                        D_80165230[1] = sp5C + 0x1E;
+                        D_80165230[2] = sp5C + 0x1E;
+                        D_80165230[3] = sp5C + 0x1E;
+                        D_80165230[4] = sp5C + 0x1E;
+                        D_80165230[5] = sp5C + 0x1E;
+                        D_80165230[6] = sp5C + 0x1E;
+                        D_80165230[7] = sp5C + 0x1E;
+                        if (gPlayerCountSelection1 == 4) {
+                            func_8003B870(D_80165210, D_80165230, sp5A);
+                        } else {
+                            func_8003B318(D_80165210, D_80165230, sp5A);
+                        }
+                        break;
+                }
+                break;
+        }
+    } else if (GetCourse() == GetBlockFort()) {
+        switch (gActiveScreenMode) {
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                temp = 5;
+                if (1) {};
+                D_80165210[0] = 0;
+                D_80165210[1] = 0;
+                D_80165230[1] = -200.0f;
+                D_80165230[0] = 200.0f;
+                spawn_players_2p_battle(D_80165210, D_80165230, temp);
+                break;
 
-        case COURSE_BLOCK_FORT:
-            switch (gActiveScreenMode) {
-                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                    temp = 5;
-                    if (1) {};
-                    D_80165210[0] = 0;
-                    D_80165210[1] = 0;
-                    D_80165230[1] = -200.0f;
-                    D_80165230[0] = 200.0f;
-                    spawn_players_2p_battle(D_80165210, D_80165230, temp);
-                    break;
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                temp = 5;
+                D_80165210[2] = -200.0f;
+                D_80165230[1] = -200.0f;
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165230[2] = 0.0f;
+                D_80165230[3] = 0.0f;
+                D_80165210[3] = 200.0f;
+                D_80165230[0] = 200.0f;
+                if (gPlayerCountSelection1 == 4) {
+                    spawn_players_4p_battle(D_80165210, D_80165230, temp);
+                } else {
+                    spawn_players_3p_battle(D_80165210, D_80165230, temp);
+                }
+                break;
+        }
+    } else if (GetCourse() == GetSkyscraper()) {
+        switch (gActiveScreenMode) {
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                temp = 0x1E0;
+                if (1) {};
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165230[1] = -400.0f;
+                D_80165230[0] = 400.0f;
+                spawn_players_2p_battle(D_80165210, D_80165230, temp);
+                break;
 
-                case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                    temp = 5;
-                    D_80165210[2] = -200.0f;
-                    D_80165230[1] = -200.0f;
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165230[2] = 0.0f;
-                    D_80165230[3] = 0.0f;
-                    D_80165210[3] = 200.0f;
-                    D_80165230[0] = 200.0f;
-                    if (gPlayerCountSelection1 == 4) {
-                        spawn_players_4p_battle(D_80165210, D_80165230, temp);
-                    } else {
-                        spawn_players_3p_battle(D_80165210, D_80165230, temp);
-                    }
-                    break;
-            }
-            break;
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                temp = 0x1E0;
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165210[2] = -400.0f;
+                D_80165210[3] = 400.0f;
+                D_80165230[0] = 400.0f;
+                D_80165230[1] = -400.0f;
+                D_80165230[2] = 0.0f;
+                D_80165230[3] = 0.0f;
+                if (gPlayerCountSelection1 == 4) {
+                    spawn_players_4p_battle(D_80165210, D_80165230, temp);
+                } else {
+                    spawn_players_3p_battle(D_80165210, D_80165230, temp);
+                }
+                break;
+        }
+    } else if (GetCourse() == GetDoubleDeck()) {
+        switch (gActiveScreenMode) {
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                temp = 0x37;
+                if (1) {};
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165230[1] = -160.0f;
+                D_80165230[0] = 160.0f;
+                spawn_players_2p_battle(D_80165210, D_80165230, temp);
+                break;
 
-        case COURSE_SKYSCRAPER:
-            switch (gActiveScreenMode) {
-                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                    temp = 0x1E0;
-                    if (1) {};
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165230[1] = -400.0f;
-                    D_80165230[0] = 400.0f;
-                    spawn_players_2p_battle(D_80165210, D_80165230, temp);
-                    break;
+            case 3:
+                temp = 0x37;
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165210[2] = -160.0f;
+                D_80165210[3] = 160.0f;
+                D_80165230[0] = 160.0f;
+                D_80165230[1] = -160.0f;
+                D_80165230[2] = 0.0f;
+                D_80165230[3] = 0.0f;
+                if (gPlayerCountSelection1 == 4) {
+                    spawn_players_4p_battle(D_80165210, D_80165230, temp);
+                } else {
+                    spawn_players_3p_battle(D_80165210, D_80165230, temp);
+                }
+                break;
+        }
+    } else if (GetCourse() == GetBigDonut()) {
+        switch (gActiveScreenMode) {
+            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+                temp = 0xC8;
+                if (1) {};
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165230[1] = -575.0f;
+                D_80165230[0] = 575.0f;
+                spawn_players_2p_battle(D_80165210, D_80165230, temp);
+                break;
 
-                case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                    temp = 0x1E0;
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165210[2] = -400.0f;
-                    D_80165210[3] = 400.0f;
-                    D_80165230[0] = 400.0f;
-                    D_80165230[1] = -400.0f;
-                    D_80165230[2] = 0.0f;
-                    D_80165230[3] = 0.0f;
-                    if (gPlayerCountSelection1 == 4) {
-                        spawn_players_4p_battle(D_80165210, D_80165230, temp);
-                    } else {
-                        spawn_players_3p_battle(D_80165210, D_80165230, temp);
-                    }
-                    break;
-            }
-            break;
-
-        case COURSE_DOUBLE_DECK:
-            switch (gActiveScreenMode) {
-                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                    temp = 0x37;
-                    if (1) {};
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165230[1] = -160.0f;
-                    D_80165230[0] = 160.0f;
-                    spawn_players_2p_battle(D_80165210, D_80165230, temp);
-                    break;
-
-                case 3:
-                    temp = 0x37;
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165210[2] = -160.0f;
-                    D_80165210[3] = 160.0f;
-                    D_80165230[0] = 160.0f;
-                    D_80165230[1] = -160.0f;
-                    D_80165230[2] = 0.0f;
-                    D_80165230[3] = 0.0f;
-                    if (gPlayerCountSelection1 == 4) {
-                        spawn_players_4p_battle(D_80165210, D_80165230, temp);
-                    } else {
-                        spawn_players_3p_battle(D_80165210, D_80165230, temp);
-                    }
-                    break;
-            }
-            break;
-
-        case COURSE_BIG_DONUT:
-            switch (gActiveScreenMode) {
-                case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-                case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                    temp = 0xC8;
-                    if (1) {};
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165230[1] = -575.0f;
-                    D_80165230[0] = 575.0f;
-                    spawn_players_2p_battle(D_80165210, D_80165230, temp);
-                    break;
-
-                case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                    temp = 0xC8;
-                    D_80165210[0] = 0.0f;
-                    D_80165210[1] = 0.0f;
-                    D_80165210[2] = -575.0f;
-                    D_80165210[3] = 575.0f;
-                    D_80165230[0] = 575.0f;
-                    D_80165230[1] = -575.0f;
-                    D_80165230[2] = 0.0f;
-                    D_80165230[3] = 0.0f;
-                    if (gPlayerCountSelection1 == 4) {
-                        spawn_players_4p_battle(D_80165210, D_80165230, temp);
-                    } else {
-                        spawn_players_3p_battle(D_80165210, D_80165230, temp);
-                    }
-                    break;
-            }
-            break;
-
-        default:
-            D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = 20.0f)));
-            D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = -20.0f)));
-            D_80165230[0] = 30.0f;
-            D_80165230[1] = 50.0f;
-            D_80165230[2] = 70.0f;
-            D_80165230[3] = 90.0f;
-            D_80165230[4] = 110.0f;
-            D_80165230[5] = 130.0f;
-            D_80165230[6] = 150.0f;
-            D_80165230[7] = 170.0f;
-            spawn_player(gPlayerOneCopy, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, gCharacterSelections[0],
-                         PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-            spawn_player(gPlayerTwo, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerThree, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerFour, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerFive, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerSix, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerSeven, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            spawn_player(gPlayerEight, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7,
-                         PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
-            D_80164A28 = 0;
-            break;
+            case SCREEN_MODE_3P_4P_SPLITSCREEN:
+                temp = 0xC8;
+                D_80165210[0] = 0.0f;
+                D_80165210[1] = 0.0f;
+                D_80165210[2] = -575.0f;
+                D_80165210[3] = 575.0f;
+                D_80165230[0] = 575.0f;
+                D_80165230[1] = -575.0f;
+                D_80165230[2] = 0.0f;
+                D_80165230[3] = 0.0f;
+                if (gPlayerCountSelection1 == 4) {
+                    spawn_players_4p_battle(D_80165210, D_80165230, temp);
+                } else {
+                    spawn_players_3p_battle(D_80165210, D_80165230, temp);
+                }
+                break;
+        }
+    } else {
+        D_80165210[0] = (D_80165210[2] = (D_80165210[4] = (D_80165210[6] = 20.0f)));
+        D_80165210[1] = (D_80165210[3] = (D_80165210[5] = (D_80165210[7] = -20.0f)));
+        D_80165230[0] = 30.0f;
+        D_80165230[1] = 50.0f;
+        D_80165230[2] = 70.0f;
+        D_80165230[3] = 90.0f;
+        D_80165230[4] = 110.0f;
+        D_80165230[5] = 130.0f;
+        D_80165230[6] = 150.0f;
+        D_80165230[7] = 170.0f;
+        spawn_player(gPlayerOneCopy, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, gCharacterSelections[0],
+                        PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerTwo, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerThree, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFour, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFive, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSix, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSeven, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerEight, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7,
+                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+        D_80164A28 = 0;
     }
 
     if (gModeSelection != BATTLE) {
@@ -1246,7 +1198,7 @@ void func_8003D080(void) {
             case SCREEN_MODE_1P:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
-                        if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
+                        if (GetCourse() == GetToadsTurnpike()) {
                             camera_init(0.0f, player->pos[1], D_80165230[7], player->rotation[1], 8, 0);
                         } else {
                             camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_80165230[7],

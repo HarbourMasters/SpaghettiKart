@@ -1262,86 +1262,80 @@ void change_player_color_effect_cmy(UNUSED Player* player, s8 arg1, s32 arg2, f3
  * Sort of an atmospheric effect.
  */
 bool is_player_under_light_luigi_raceway(Player* player, s8 arg1) {
-    switch (gCurrentCourseId) {
-        case COURSE_LUIGI_RACEWAY:
-            if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x164)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x17E) &&
-                 (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
-                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
-                D_80164B80[arg1] = 0;
-                return true;
-            }
-            return false;
+    if (GetCourse() == GetLuigiRaceway()) {
+        if (((gNearestWaypointByPlayerId[arg1] >= 0x14F) && (gNearestWaypointByPlayerId[arg1] < 0x158)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x15E) && (gNearestWaypointByPlayerId[arg1] < 0x164)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x17E) &&
+                (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
+            change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
+            D_80164B80[arg1] = 0;
+            return true;
+        }
+        return false;
 
-        default:
-            return false;
     }
+    return false;
 }
 
 void render_light_environment_on_player(Player* player, s8 arg1) {
-    switch (gCurrentCourseId) {
-        case COURSE_BOWSER_CASTLE:
-            if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4)) ||
-                (player->collision.surfaceDistance[2] >= 500.0f)) { // over lava
-                change_player_color_effect_rgb(player, arg1, COLOR_LAVA, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
-                D_80164B80[arg1] = 0;
-            } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5)) ||
-                       ((gNearestWaypointByPlayerId[arg1] >= 0xFB) && (gNearestWaypointByPlayerId[arg1] < 0xFF)) ||
-                       ((gNearestWaypointByPlayerId[arg1] >= 0x105) && (gNearestWaypointByPlayerId[arg1] < 0x109)) ||
-                       ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113)) ||
-                       ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A)) ||
-                       ((gNearestWaypointByPlayerId[arg1] >= 0x15E) &&
-                        (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
-                D_80164B80[arg1] = 0;
-            } else { // normal color
-                change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0, 0.3f);
-                D_80164B80[arg1] = 0;
-            }
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (((gNearestWaypointByPlayerId[arg1] >= 0xD) && (gNearestWaypointByPlayerId[arg1] < 0x15)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x29) && (gNearestWaypointByPlayerId[arg1] < 0x39)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x46) && (gNearestWaypointByPlayerId[arg1] < 0x4E)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x5F) && (gNearestWaypointByPlayerId[arg1] < 0x67)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x7B) && (gNearestWaypointByPlayerId[arg1] < 0x86)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x9D) && (gNearestWaypointByPlayerId[arg1] < 0xA6)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0xB9) && (gNearestWaypointByPlayerId[arg1] < 0xC3)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0xB9) && (gNearestWaypointByPlayerId[arg1] < 0xC3)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0xD7) && (gNearestWaypointByPlayerId[arg1] < 0xE1)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x10E) && (gNearestWaypointByPlayerId[arg1] < 0x119)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x154) && (gNearestWaypointByPlayerId[arg1] < 0x15F)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x1EF) && (gNearestWaypointByPlayerId[arg1] < 0x1F7)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x202) && (gNearestWaypointByPlayerId[arg1] < 0x209)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x216) && (gNearestWaypointByPlayerId[arg1] < 0x21D)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x230) && (gNearestWaypointByPlayerId[arg1] < 0x23A)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269)) ||
-                ((gNearestWaypointByPlayerId[arg1] >= 0x274) &&
-                 (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
-                change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
-                D_80164B80[arg1] = 0;
-            } else {
-                change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
-                change_player_color_effect_cmy(player, arg1, 0, 0.3f);
-                D_80164B80[arg1] = 0;
-            }
-            break;
-        default:
+    if (GetCourse() == GetBowsersCastle()) {
+        if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4)) ||
+            (player->collision.surfaceDistance[2] >= 500.0f)) { // over lava
+            change_player_color_effect_rgb(player, arg1, COLOR_LAVA, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
+            D_80164B80[arg1] = 0;
+        } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5)) ||
+                    ((gNearestWaypointByPlayerId[arg1] >= 0xFB) && (gNearestWaypointByPlayerId[arg1] < 0xFF)) ||
+                    ((gNearestWaypointByPlayerId[arg1] >= 0x105) && (gNearestWaypointByPlayerId[arg1] < 0x109)) ||
+                    ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113)) ||
+                    ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A)) ||
+                    ((gNearestWaypointByPlayerId[arg1] >= 0x15E) &&
+                    (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
+            change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
+            D_80164B80[arg1] = 0;
+        } else { // normal color
             change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0, 0.3f);
             D_80164B80[arg1] = 0;
-            break;
+        }
+    } else if (GetCourse() == GetBansheeBoardwalk()) {
+        if (((gNearestWaypointByPlayerId[arg1] >= 0xD) && (gNearestWaypointByPlayerId[arg1] < 0x15)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x29) && (gNearestWaypointByPlayerId[arg1] < 0x39)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x46) && (gNearestWaypointByPlayerId[arg1] < 0x4E)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x5F) && (gNearestWaypointByPlayerId[arg1] < 0x67)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x7B) && (gNearestWaypointByPlayerId[arg1] < 0x86)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x9D) && (gNearestWaypointByPlayerId[arg1] < 0xA6)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0xB9) && (gNearestWaypointByPlayerId[arg1] < 0xC3)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0xB9) && (gNearestWaypointByPlayerId[arg1] < 0xC3)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0xD7) && (gNearestWaypointByPlayerId[arg1] < 0xE1)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x10E) && (gNearestWaypointByPlayerId[arg1] < 0x119)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x154) && (gNearestWaypointByPlayerId[arg1] < 0x15F)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x1EF) && (gNearestWaypointByPlayerId[arg1] < 0x1F7)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x202) && (gNearestWaypointByPlayerId[arg1] < 0x209)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x216) && (gNearestWaypointByPlayerId[arg1] < 0x21D)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x230) && (gNearestWaypointByPlayerId[arg1] < 0x23A)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269)) ||
+            ((gNearestWaypointByPlayerId[arg1] >= 0x274) &&
+                (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
+            change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
+            D_80164B80[arg1] = 0;
+        } else {
+            change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
+            change_player_color_effect_cmy(player, arg1, 0, 0.3f);
+            D_80164B80[arg1] = 0;
+        }
+    } else {
+        change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
+        change_player_color_effect_cmy(player, arg1, 0, 0.3f);
+        D_80164B80[arg1] = 0;
     }
 }
 

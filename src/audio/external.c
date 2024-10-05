@@ -2646,11 +2646,11 @@ void func_800C847C(u8 playerId) {
             func_800C97C4(playerId);
             D_800E9F74[playerId] = 1;
             func_800C94A4(playerId);
-            if (((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_BOWSER_CASTLE) ||
-                 (gCurrentCourseId == COURSE_BANSHEE_BOARDWALK) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) ||
-                 (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) || (gCurrentCourseId == COURSE_KOOPA_BEACH) ||
-                 (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_SHERBET_LAND) ||
-                 (gCurrentCourseId == COURSE_DK_JUNGLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) &&
+            if (((GetCourse() == GetChocoMountain()) || (GetCourse() == GetBowsersCastle()) ||
+                 (GetCourse() == GetBansheeBoardwalk()) || (GetCourse() == GetYoshiValley()) ||
+                 (GetCourse() == GetFrappeSnowland()) || (GetCourse() == GetKoopaTroopaBeach()) ||
+                 (GetCourse() == GetRoyalRaceway()) || (GetCourse() == GetSherbetLand()) ||
+                 (GetCourse() == GetDkJungle()) || (GetCourse() == GetBigDonut())) &&
                 (D_800EA0EC[playerId] == 0)) {
                 play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05),
                            &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
@@ -2663,7 +2663,7 @@ void func_800C847C(u8 playerId) {
             D_800E9F74[playerId] = 2;
             func_800C94A4(playerId);
             D_800E9F74[playerId] = 0;
-            if ((gCurrentCourseId == COURSE_KOOPA_BEACH) && (D_800EA0EC[playerId] == 0)) {
+            if ((GetCourse() == GetKoopaTroopaBeach()) && (D_800EA0EC[playerId] == 0)) {
                 play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08),
                            &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,
                            (u8*) &D_800E9F7C[playerId].unk_14);
@@ -2745,7 +2745,7 @@ void func_800C89E4(void) {
 }
 
 void func_800C8AE4(void) {
-    if (gCurrentCourseId == COURSE_LUIGI_RACEWAY) {
+    if (GetCourse() == GetLuigiRaceway()) {
         if (D_800EA184 != 0) {
             if ((u8) D_800EA16C == 0) {
                 // Has to be this way, can't be D_800EA184++
@@ -2823,11 +2823,11 @@ void func_800C8CCC() {
 }
 
 void play_sound2(s32 soundBits) {
-    if ((soundBits == SOUND_ACTION_REV_ENGINE) && (gCurrentCourseId == COURSE_DK_JUNGLE)) {
+    if ((soundBits == SOUND_ACTION_REV_ENGINE) && (GetCourse() == GetDkJungle())) {
         soundBits = SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x27);
     }
 
-    if ((soundBits == SOUND_ACTION_REV_ENGINE_2) && (gCurrentCourseId == COURSE_DK_JUNGLE)) {
+    if ((soundBits == SOUND_ACTION_REV_ENGINE_2) && (GetCourse() == GetDkJungle())) {
         soundBits = SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x28);
     }
     play_sound(soundBits, &D_800EA1C8, 4, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
