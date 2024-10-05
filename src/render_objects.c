@@ -3853,7 +3853,7 @@ void render_object_trains_smoke_particles(s32 cameraId) {
 
 // Render smoke for any number of trains. Don't know enough about these variables yet.
 #ifdef AVOID_UB_WIP
-    for (j = 0; j < NUM_TRAINS; j++) {
+    for (j = 0; j < gNumTrains; j++) {
         if ((gTrainList[j].someFlags != 0) &&
             (is_particle_on_screen(&gTrainList[j].locomotive.position, camera, 0x4000U) != 0)) {
 

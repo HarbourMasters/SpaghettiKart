@@ -56,6 +56,7 @@ typedef struct {
     /* 0x048 */ TrainCarStuff passengerCars[NUM_PASSENGER_CAR_ENTRIES];
     /* 0x0FC */ f32 speed;
     /* 0x100 */ s32 someFlags;
+                s32 numCarriages;
     /* 0x104 */ s32 numCars; // Non-locomotive car count?
     /* 0x108 */ s32 unused;  // Not read or written. Could be padding?
 } TrainStuff;                // size = 0x10C

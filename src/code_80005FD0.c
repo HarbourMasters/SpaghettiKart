@@ -145,6 +145,7 @@ s32 D_801634F4;
 Test D_801634F8[10];
 Path2D* gVehicle2DWaypoint;
 s32 gVehicle2DWaypointLength;
+size_t gNumTrains = 0;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[NUM_CROSSINGS];
 u16 sCrossingActiveTimer[NUM_CROSSINGS];
@@ -3454,9 +3455,28 @@ void func_8000F2DC(void) {
     }
 
     D_80164430 = *gWaypointCountByPathIndex;
+
+    switch (gCurrentCourseId) {
+        case COURSE_KALAMARI_DESERT:
+            generate_train_waypoints(d_course_kalimari_desert_track_unknown_waypoints);
+            init_vehicles_trains(0, 5, 5.0f);
+            init_vehicles_trains(1, 5, 5.0f);
+            break;
+        case COURSE_DK_JUNGLE:
+            generate_ferry_waypoints();
+            init_vehicles_ferry();
+            break;
+        case COURSE_TOADS_TURNPIKE:
+            init_vehicles_box_trucks();
+            init_vehicles_school_buses();
+            init_vehicles_trucks();
+            init_vehicles_cars();
+            break;
+    }
     if (GetCourse() == GetKalimariDesert()) {
-        generate_train_waypoints();
-        init_vehicles_trains();
+        generate_train_waypoints(d_course_kalimari_desert_track_unknown_waypoints);
+        init_vehicles_trains(0, 5, 5.0f);
+        init_vehicles_trains(1, 5, 5.0f);
     } else if (GetCourse() == GetDkJungle()) {
         generate_ferry_waypoints();
         init_vehicles_ferry();
@@ -4338,10 +4358,10 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
         }                                       \
     }
 
-void generate_train_waypoints(void) {
+void generate_train_waypoints(const char* path) {
     s32 i;
     Path2D* temp;
-    TrackWaypoint* waypoint = (TrackWaypoint*) LOAD_ASSET(d_course_kalimari_desert_track_unknown_waypoints);
+    TrackWaypoint* waypoint = (TrackWaypoint*) LOAD_ASSET(path);
     GET_PATH_LENGTH(waypoint)
 
     temp = gVehicle2DWaypoint;
@@ -4404,56 +4424,6 @@ void spawn_course_vehicles(void) {
     f32 origZPos;
 
     CourseManager_SpawnVehicles();
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_KALAMARI_DESERT:
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         for (loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_BOATS; loopIndex++) {
-    //             tempPaddleWheelBoat = &gPaddleBoats[loopIndex];
-    //             if (tempPaddleWheelBoat->isActive == 1) {
-    //                 origXPos = tempPaddleWheelBoat->position[0];
-    //                 origZPos = tempPaddleWheelBoat->position[2];
-    //                 tempPaddleWheelBoat->rotY = update_vehicle_following_waypoint(
-    //                     tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->waypointIndex,
-    //                     tempPaddleWheelBoat->speed);
-    //                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
-    //                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
-    //                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
-    //                 tempPaddleWheelBoat->actorIndex =
-    //                     add_actor_to_empty_slot(tempPaddleWheelBoat->position, paddleWheelBoatRot,
-    //                                             tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
-    //             }
-    //         }
-    //         break;
-    //     case COURSE_TOADS_TURNPIKE:
-    //         for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-    //             tempBoxTruck = &gBoxTruckList[loopIndex];
-    //             spawn_vehicle_on_road(tempBoxTruck);
-    //             tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation,
-    //                                                                tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
-    //         }
-    //         for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-    //             tempSchoolBus = &gSchoolBusList[loopIndex];
-    //             spawn_vehicle_on_road(tempSchoolBus);
-    //             tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation,
-    //                                                                 tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
-    //         }
-    //         for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-    //             tempTankerTruck = &gTankerTruckList[loopIndex];
-    //             spawn_vehicle_on_road(tempTankerTruck);
-    //             tempTankerTruck->actorIndex =
-    //                 add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
-    //                                         tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
-    //         }
-    //         for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-    //             tempCar = &gCarList[loopIndex];
-    //             spawn_vehicle_on_road(tempCar);
-    //             tempCar->actorIndex =
-    //                 add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
-    //         }
-    //         break;
-    // }
 }
 
 void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoint) {
@@ -4471,22 +4441,26 @@ void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoi
 /**
  * Set waypoint spawn locations for each rolling stock
  * The railroad has 465 waypoints
+ * @arg speed default 5.0f, 120.0f is about the maximum usable value
  */
-void init_vehicles_trains(void) {
+void init_vehicles_trains(size_t i, size_t numCarriages, f32 speed) {
     u16 waypointOffset;
     TrainCarStuff* ptr1;
     Path2D* pos;
-    s32 i;
     s32 j;
 
-    for (i = 0; i < NUM_TRAINS; i++) {
+    gNumTrains += 1;
+
+    gTrainList[i].numCarriages = numCarriages;
+
+    //for (i = 0; i < NUM_TRAINS; i++) {
         // outputs 160 or 392 depending on the train.
         // Wraps the value around to always output a valid waypoint.
-        waypointOffset = (((i * gVehicle2DWaypointLength) / NUM_TRAINS) + 160) % gVehicle2DWaypointLength;
+        waypointOffset = (((i * gVehicle2DWaypointLength) / gNumTrains) + 160) % gVehicle2DWaypointLength;
 
         // 120.0f is about the maximum usable value
-        gTrainList[i].speed = 5.0f;
-        for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
+        gTrainList[i].speed = speed;
+        for (j = 0; j < gTrainList[i].numCarriages; j++) {
             waypointOffset += 4;
             ptr1 = &gTrainList[i].passengerCars[j];
             pos = &gVehicle2DWaypoint[waypointOffset];
@@ -4504,32 +4478,32 @@ void init_vehicles_trains(void) {
 
         // Only use locomotive unless overwritten below.
         gTrainList[i].numCars = LOCOMOTIVE_ONLY;
-    }
+    //}
 
     // Spawn all rolling stock in single player mode.
     switch (gScreenModeSelection) {
         case SCREEN_MODE_1P: // single player
-            for (i = 0; i < NUM_TRAINS; i++) {
+            //for (i = 0; i < NUM_TRAINS; i++) {
                 gTrainList[i].tender.isActive = 1;
 
                 // clang-format off
                 // Same line required for matching...
-                for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
+                for (j = 0; j < gTrainList[i].numCarriages; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
                 // clang-format on
 
-                gTrainList[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
-            }
+                gTrainList[i].numCars = NUM_TENDERS + gTrainList[i].numCarriages;
+            //}
             break;
 
         // Spawn locomotive, tender, and one passenger car in versus 2/3 player mode.
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: // multiplayer fall-through
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gModeSelection != GRAND_PRIX) {
-                for (i = 0; i < NUM_TRAINS; i++) {
+                //for (i = 0; i < NUM_TRAINS; i++) {
                     gTrainList[i].tender.isActive = 1;
                     gTrainList[i].passengerCars[4].isActive = 1;
                     gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
-                }
+                //}
             }
             break;
     }
@@ -4571,7 +4545,7 @@ void update_vehicle_trains(void) {
 
     gTrainSmokeTimer += 1;
 
-    for (i = 0; i < NUM_TRAINS; i++) {
+    for (i = 0; i < gNumTrains; i++) {
         oldWaypointIndex = (u16) gTrainList[i].locomotive.waypointIndex;
 
         temp_f20 = gTrainList[i].locomotive.position[0];
@@ -4618,7 +4592,7 @@ void update_vehicle_trains(void) {
             sync_train_components(car, orientationYUpdate);
         }
 
-        for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
+        for (j = 0; j < gTrainList[i].numCarriages; j++) {
             car = &gTrainList[i].passengerCars[j];
             if (car->isActive == 1) {
                 temp_f20 = car->position[0];
@@ -4647,7 +4621,7 @@ void func_80012DC0(s32 playerId, Player* player) {
         if (!(player->effects & 0x01000000)) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
-            for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
+            for (trainIndex = 0; trainIndex < gNumTrains; trainIndex++) {
                 trainCar = &gTrainList[trainIndex].locomotive;
                 x_dist = playerPosX - trainCar->position[0];
                 z_dist = playerPosZ - trainCar->position[2];
@@ -4667,7 +4641,7 @@ void func_80012DC0(s32 playerId, Player* player) {
                     }
                 }
 
-                for (passengerCarIndex = 0; passengerCarIndex < NUM_PASSENGER_CAR_ENTRIES; passengerCarIndex++) {
+                for (passengerCarIndex = 0; passengerCarIndex < gTrainList[trainIndex].numCarriages; passengerCarIndex++) {
                     trainCar = &gTrainList[trainIndex].passengerCars[passengerCarIndex];
                     x_dist = playerPosX - trainCar->position[0];
                     z_dist = playerPosZ - trainCar->position[2];
@@ -4699,7 +4673,7 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[0] = 0;
     isCrossingTriggeredByIndex[1] = 0;
 
-    for (i = 0; i < NUM_TRAINS; i++) {
+    for (i = 0; i < gNumTrains; i++) {
         temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) gVehicle2DWaypointLength);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
