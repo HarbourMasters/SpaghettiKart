@@ -3359,6 +3359,9 @@ void render_object_boos(s32 arg0) {
         objectIndex = indexObjectList3[someIndex];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
+            if (CVarGetInteger("gNoCulling", 0) == 1) {
+                temp_s2 = MIN(temp_s2, 0x15F91U);
+            }
             if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800523B8(objectIndex, arg0, temp_s2);
             }
@@ -4171,7 +4174,7 @@ void render_object_seagulls(s32 arg0) {
 
     for (i = 0; i < NUM_SEAGULLS; i++) {
         var_s1 = indexObjectList2[i];
-        if (func_8008A364(var_s1, arg0, 0x5555U, 0x000005DC) < 0x9C401) {
+        if (func_8008A364(var_s1, arg0, 0x5555U, 0x000005DC) < 0x9C401 && CVarGetInteger("gNoCulling", 0) == 0) {
             D_80165908 = 1;
             func_800722A4(var_s1, 2);
         }
@@ -4232,6 +4235,9 @@ void render_object_hedgehogs(s32 arg0) {
     for (someIndex = 0; someIndex < NUM_HEDGEHOGS; someIndex++) {
         test = indexObjectList2[someIndex];
         something = func_8008A364(test, arg0, 0x4000U, 0x000003E8);
+        if (CVarGetInteger("gNoCulling", 0) == 1) {
+            something = MIN(something, 0x52211U - 1);
+        }
         if (is_obj_flag_status_active(test, VISIBLE) != 0) {
             set_object_flag_status_true(test, 0x00200000);
             if (something < 0x2711U) {
@@ -4268,7 +4274,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                                                                            object->sizeScaling);
                     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
                     render_animated_model((Armature*) object->model, (Animation**) object->vertex,
-                                          (s16) object->unk_0D8, (s16) object->itemDisplay);
+                                          (s16) object->unk_0D8, (s16) object->textureListIndex);
                 }
             } else if (arg1 < 0x15F91U) {
                 func_8004A7AC(objectIndex, 1.5f);
@@ -4277,7 +4283,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
         rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         render_animated_model((Armature*) object->model, (Animation**) object->vertex, (s16) object->unk_0D8,
-                              (s16) object->itemDisplay);
+                              (s16) object->textureListIndex);
     }
 }
 
@@ -4346,7 +4352,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
             gSPDisplayList(gDisplayListHead++, D_0D0077D0);
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0,
-                                  (s16) gObjectList[objectIndex].itemDisplay);
+                                  (s16) gObjectList[objectIndex].textureListIndex);
         }
     }
 }

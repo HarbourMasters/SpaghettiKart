@@ -1,5 +1,5 @@
 #include "libultra_internal.h"
-#include "osContInternal.h"
+#include "controller.h"
 
 void __osPackRequestData(u8);
 void __osContGetInitData(u8*, OSContStatus*);
@@ -9,6 +9,7 @@ u32 _osContInitialized = 0;
 extern u64 osClockRate;
 
 // these probably belong in EEPROMlongread or something
+ALIGNED16 OSPifRam __osContPifRam;
 u8 __osContLastCmd;
 u8 _osContNumControllers;
 OSTimer D_80196548;
@@ -34,9 +35,9 @@ s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* status) {
     //! @todo figure out what it means
     _osContNumControllers = 4;
     __osPackRequestData(0);
-    ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
+    ret = __osSiRawStartDma(OS_WRITE, __osContPifRam.ramarray);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
-    ret = __osSiRawStartDma(OS_READ, _osContCmdBuf);
+    ret = __osSiRawStartDma(OS_READ, __osContPifRam.ramarray);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
     __osContGetInitData(bitpattern, status);
     __osContLastCmd = 0;
@@ -45,48 +46,49 @@ s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* status) {
     return ret;
 }
 void __osContGetInitData(u8* bitpattern, OSContStatus* status) {
-    OSContPackedRequest* cmdBufPtr;
-    OSContPackedRequest response;
+    u8* ptr;
+    __OSContRequesFormat response;
     s32 i;
-    u8 sp7;
+    u8 bits;
 
-    sp7 = 0;
-    cmdBufPtr = &(_osContCmdBuf[0].request);
-    for (i = 0; i < _osContNumControllers; i++, cmdBufPtr++, status++) {
-        response = *(OSContPackedRequest*) cmdBufPtr;
-        status->errnum = (response.rxLen & 0xc0) >> 4;
+    bits = 0;
+    ptr = (u8*) __osContPifRam.ramarray;
+    for (i = 0; i < _osContNumControllers; i++, ptr += sizeof(response), status++) {
+        response = *((__OSContRequesFormat*) (ptr));
+        status->errnum = CHNL_ERR(response);
         if (status->errnum == 0) {
-            status->type = response.data2 << 8 | response.data1;
-            status->status = response.data3;
+            status->type = response.typel << 8 | response.typeh;
+            status->status = response.status;
 
-            sp7 |= 1 << i;
+            bits |= 1 << i;
         }
     }
-    *bitpattern = sp7;
+
+    *bitpattern = bits;
 }
 void __osPackRequestData(u8 command) {
-    OSContPackedRequest* cmdBufPtr;
-    OSContPackedRequest request;
+    u8* ptr;
+    __OSContRequesFormat requestHeader;
     s32 i;
 
-    // some kind of weird zeroing code
-    for (i = 0; i < 0x10; i++) {
-        *((u32*) &_osContCmdBuf + i) = 0;
+    for (i = 0; i < ARRLEN(__osContPifRam.ramarray) + 1; i++) {
+        __osContPifRam.ramarray[i] = 0;
     }
 
-    _osContPifCtrl = 1;
-    cmdBufPtr = &_osContCmdBuf[0].request;
-    request.padOrEnd = 255;
-    request.txLen = 1;
-    request.rxLen = 3;
-    request.command = command;
-    request.data1 = 255;
-    request.data2 = 255;
-    request.data3 = 255;
-    request.data4 = 255;
+    __osContPifRam.pifstatus = CONT_CMD_EXE;
+    ptr = (u8*) __osContPifRam.ramarray;
+    requestHeader.dummy = CONT_CMD_NOP;
+    requestHeader.txsize = CONT_CMD_RESET_TX;
+    requestHeader.rxsize = CONT_CMD_RESET_RX;
+    requestHeader.cmd = command;
+    requestHeader.typeh = CONT_CMD_NOP;
+    requestHeader.typel = CONT_CMD_NOP;
+    requestHeader.status = CONT_CMD_NOP;
+    requestHeader.dummy1 = CONT_CMD_NOP;
 
     for (i = 0; i < _osContNumControllers; i++) {
-        *cmdBufPtr++ = request;
+        *(__OSContRequesFormat*) ptr = requestHeader;
+        ptr += sizeof(requestHeader);
     }
-    cmdBufPtr->padOrEnd = 254;
+    *ptr = CONT_CMD_END;
 }

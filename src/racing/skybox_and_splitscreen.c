@@ -446,6 +446,8 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
 }
 
 void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+    s32 id = arg1 - D_8015F480;
+    arg1->camera = &cameras[id]; // bad fix of bowser castle crash where camera get an invalid value
     Camera* camera = arg1->camera;
     s16 temp_t5;
     f32 temp_f0;

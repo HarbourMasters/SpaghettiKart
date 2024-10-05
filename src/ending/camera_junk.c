@@ -8,7 +8,7 @@
 #include "ceremony_and_credits.h"
 #include "main.h"
 
-void setup_camera_podium_ceremony(void) {
+void update_camera_podium_ceremony(void) {
     Camera* camera;
     f32 x_dist;
     f32 y_dist;
@@ -26,7 +26,7 @@ void setup_camera_podium_ceremony(void) {
 }
 
 // GP podium ceremony camera settings?
-void func_802816B8(void) {
+void init_camera_podium_ceremony(void) {
     cameras[0].pos[0] = -3133.0f;
     cameras[0].pos[1] = 19.0f;
     cameras[0].pos[2] = -467.0f;

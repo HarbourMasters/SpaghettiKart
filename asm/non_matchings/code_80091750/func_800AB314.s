@@ -27,10 +27,10 @@ glabel func_800AB314
 /* 0ABF74 800AB374 24040001 */  li    $a0, 1
 /* 0ABF78 800AB378 24030003 */  li    $v1, 3
 /* 0ABF7C 800AB37C 108F003A */  beq   $a0, $t7, .L800AB468
-/* 0ABF80 800AB380 3C028019 */   lui   $v0, %hi(gCupCourseSelection) # $v0, 0x8019
+/* 0ABF80 800AB380 3C028019 */   lui   $v0, %hi(gCourseIndexInCup) # $v0, 0x8019
 /* 0ABF84 800AB384 ACC00004 */  sw    $zero, 4($a2)
 /* 0ABF88 800AB388 ACC00020 */  sw    $zero, 0x20($a2)
-/* 0ABF8C 800AB38C 2442EE0B */  addiu $v0, %lo(gCupCourseSelection) # addiu $v0, $v0, -0x11f5
+/* 0ABF8C 800AB38C 2442EE0B */  addiu $v0, %lo(gCourseIndexInCup) # addiu $v0, $v0, -0x11f5
 /* 0ABF90 800AB390 80580000 */  lb    $t8, ($v0)
 /* 0ABF94 800AB394 8FB90024 */  lw    $t9, 0x24($sp)
 /* 0ABF98 800AB398 8FAB0024 */  lw    $t3, 0x24($sp)

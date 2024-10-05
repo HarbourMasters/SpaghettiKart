@@ -47,6 +47,7 @@ UNUSED void func_800914E0(void) {
     camera->pos[1] = (f32) (tempData->pos[1] + 7);
     camera->pos[2] = (f32) (tempData->pos[2] - 20);
     camera->lookAt[0] = gPlayerOneCopy->pos[0];
+
     camera->lookAt[1] = gPlayerOneCopy->pos[1];
     camera->lookAt[2] = gPlayerOneCopy->pos[2];
     check_bounding_collision(&camera->collision, 20.0f, camera->pos[0], camera->pos[1], camera->pos[2]);

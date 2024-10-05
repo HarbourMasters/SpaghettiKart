@@ -22,7 +22,7 @@ const course_texture koopa_troopa_beach_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-Gfx* koopa_troopa_beach_dls1[] = {
+Gfx* d_course_koopa_troopa_beach_dl_list1[] = {
     d_course_koopa_troopa_beach_dl_90,   d_course_koopa_troopa_beach_dl_278,  d_course_koopa_troopa_beach_dl_188,
     d_course_koopa_troopa_beach_dl_3C0,  d_course_koopa_troopa_beach_dl_4B0,  d_course_koopa_troopa_beach_dl_6E0,
     d_course_koopa_troopa_beach_dl_5A0,  d_course_koopa_troopa_beach_dl_828,  d_course_koopa_troopa_beach_dl_960,
@@ -130,7 +130,7 @@ Gfx* koopa_troopa_beach_dls2[] = {
 
 // 0x06014828
 // animations? lights?
-u32 d_course_koopa_troopa_beach_unk_data1[] = {
+uintptr_t d_course_koopa_troopa_beach_unk_data1[] = {
     0x00000000,
     0x00000001,
     0x00000000,
@@ -316,6 +316,6 @@ Animation* d_course_koopa_troopa_beach_unk_data5[] = {
 };
 
 // No idea what this stuff is
-u32 d_course_koopa_troopa_beach_unk_data6[] = {
+uintptr_t d_course_koopa_troopa_beach_unk_data6[] = {
     0x00000000, 0x00000000, 0x00000001, 0x00000000, 0x00000001,
 };

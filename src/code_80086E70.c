@@ -1306,6 +1306,10 @@ bool is_object_visible_on_camera(s32 objectIndex, Camera* camera, u16 angle) {
     u16 temp_t2;
     s32 var_t0;
 
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
+        return true;
+    }
+
     var_t0 = false;
     temp_t2 = (get_angle_between_xy(camera->pos[0], gObjectList[objectIndex].pos[0], camera->pos[2],
                                     gObjectList[objectIndex].pos[2]) +
@@ -1325,6 +1329,9 @@ void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
     camera = &camera1[cameraId];
     set_object_flag_status_false(objectIndex, 0x00100000 | VISIBLE);
     temp_v0 = get_horizontal_distance_to_camera(objectIndex, camera);
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
+        temp_v0 = MIN(temp_v0, arg3 * arg3);
+    }
     if (temp_v0 < 0x2711U) {
         var_a2 = 0x5555;
     } else if (temp_v0 < 0x9C41U) {
@@ -1368,6 +1375,9 @@ s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
     camera = &camera1[cameraId];
     set_object_flag_status_false(objectIndex, 0x00020000 | VISIBLE);
     dist = get_horizontal_distance_to_camera(objectIndex, camera);
+    if (CVarGetInteger("gNoCulling", 0) == 1) {
+        dist = MIN(dist, (arg3 * arg3) - 1);
+    }
     if (dist < (arg3 * arg3)) {
         set_object_flag_status_true(objectIndex, 0x00020000);
         if (dist < 0x2711U) {
@@ -1497,7 +1507,7 @@ void func_8008A9B8(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     object->controlPoints++;
     object->unk_09A = (s16) (10000 / (s16) (object->controlPoints[0].velocity));
-    object->timer = 0;
+    object->animationTimer = 0;
     func_8008A920(objectIndex);
 }
 
@@ -1506,7 +1516,7 @@ void func_8008AA3C(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     object->controlPoints = object->spline->controlPoints;
     object->unk_084[9] = 0;
-    object->timer = 0;
+    object->animationTimer = 0;
     /*
     This is INCREDIBLY stupid. This should really be
     temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
@@ -1529,8 +1539,8 @@ void func_8008AB10(s32 objectIndex) {
     object->offset[0] += object->velocity[0];
     object->offset[1] += object->velocity[1];
     object->offset[2] += object->velocity[2];
-    object->timer += (u16) object->unk_09A;
-    if (object->timer >= 0x2710) {
+    object->animationTimer += (u16) object->unk_09A;
+    if (object->animationTimer >= 0x2710) {
         object->unk_084[9] = (u16) object->unk_084[9] + 1;
         if (((u16) object->unk_084[9] + 1) == (u16) object->unk_084[8]) {
             object->unk_0AE += 1;
@@ -1724,7 +1734,7 @@ void func_8008B3E4(s32 objectIndex) {
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
         object = &gObjectList[objectIndex];
         object->unk_084[9] = 0;
-        object->timer = 0;
+        object->animationTimer = 0;
         object->controlPoints = object->spline->controlPoints;
         /*
         This is INCREDIBLY stupid. This should really be
@@ -1738,7 +1748,7 @@ void func_8008B3E4(s32 objectIndex) {
 }
 
 void func_8008B44C(s32 objectIndex) {
-    gObjectList[objectIndex].timer = 0;
+    gObjectList[objectIndex].animationTimer = 0;
     gObjectList[objectIndex].controlPoints++;
 }
 
@@ -1758,7 +1768,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
     // I think the game treats each spline as being having a lenght of 10000
     // This is getting the percent along the spline we want to reach,
     // which is then treated as the `t` value given to the curve calculations
-    sp34 = ((f32) gObjectList[objectIndex].timer / 10000.0);
+    sp34 = ((f32) gObjectList[objectIndex].animationTimer / 10000.0);
     // Calculate the curve at `t`
     func_8008B17C(objectIndex, sp34);
     if (is_obj_flag_status_active(objectIndex, 0x800) != 0) {
@@ -1771,7 +1781,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
     temp = gObjectList[objectIndex].controlPoints[1].velocity;
 
     gObjectList[objectIndex].unk_09A = 10000.0 / (((temp - var_f6) * sp34) + var_f6);
-    gObjectList[objectIndex].timer += gObjectList[objectIndex].unk_09A;
+    gObjectList[objectIndex].animationTimer += gObjectList[objectIndex].unk_09A;
 }
 
 void func_8008B620(s32 objectIndex) {
@@ -1780,7 +1790,7 @@ void func_8008B620(s32 objectIndex) {
 
     func_8008B478(objectIndex, 0);
     object = &gObjectList[objectIndex];
-    if (object->timer >= 0x2710) {
+    if (object->animationTimer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         object->unk_084[9] = (u16) object->unk_084[9] + 1;
         if (((u16) object->unk_084[9] + 3) == (u16) object->unk_084[8]) {
@@ -1796,7 +1806,7 @@ void func_8008B6A4(s32 objectIndex) {
 
     func_8008B478(objectIndex, 1);
     object = &gObjectList[objectIndex];
-    if (object->timer >= 0x2710) {
+    if (object->animationTimer >= 0x2710) {
         // Have to do it this way due to the u16 cast
         object->unk_084[9] = (u16) object->unk_084[9] + 1;
         if ((u16) object->unk_084[9] == (u16) object->unk_084[8]) {

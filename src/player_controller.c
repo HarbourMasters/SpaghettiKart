@@ -2317,6 +2317,9 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         player->pos[2] = nextZ;
     }
     player->pos[1] = nextY;
+    if (CVarGetInteger("gNoWallColision", 0)) {
+        player->pos[1] = nextY < CVarGetFloat("gMinHeight", 0.0f) ? CVarGetFloat("gMinHeight", 0.0f) : nextY;
+    }
     if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_KART_AI))) {
         func_8002BB9C(player, &nextX, &nextZ, screenId, playerId, sp98);
     }

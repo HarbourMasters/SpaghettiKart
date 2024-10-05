@@ -111,6 +111,25 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
             player->topSpeed = gTopSpeedTable[CC_BATTLE][player->characterId];
             break;
     }
+    if (CVarGetInteger("gEnableCustomCC", 0) == 1) {
+#define calc_a(x, y, x2, y2) (y2 - y) / (x2 - x)
+#define calc_b(x, y, b) y - (b * x)
+        f32 a;
+        f32 b;
+
+#define calc(table, field)                                                                      \
+    a = calc_a(50, table[CC_50][player->characterId], 150, table[CC_150][player->characterId]); \
+    b = calc_b(50, table[CC_50][player->characterId], a);                                       \
+    player->field = a * CVarGetFloat("gCustomCC", 150.0f) + b;
+
+        calc(gTopSpeedTable, topSpeed);
+        calc(D_800E2400, unk_084);
+        calc(D_800E24B4, unk_088);
+        calc(D_800E2568, unk_210);
+#undef calc_a
+#undef calc_b
+#undef calc
+    }
 
     player->pos[0] = startingRow;
     ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
@@ -467,7 +486,7 @@ void func_80039DA4(void) {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
@@ -485,7 +504,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
@@ -619,7 +638,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
+    if ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 

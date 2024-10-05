@@ -1,1 +1,0 @@
-"mario raceway", "choco mountain", "bowser's castle", "banshee boardwalk", "yoshi valley", "frappe snowland", "koopa troopa beach", "royal raceway", "luigi raceway", "moo moo farm", "toad's turnpike", "kalimari desert", "sherbet land", "rainbow road", "wario stadium", "block fort", "skyscraper", "double deck", "d.k.'s jungle parkway", "big donut", 

@@ -26,7 +26,7 @@ const course_texture toads_turnpike_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-Gfx* toads_turnpike_dls[] = {
+Gfx* d_course_toads_turnpike_dl_list[] = {
     d_course_toads_turnpike_dl_80,   d_course_toads_turnpike_dl_1F8,  d_course_toads_turnpike_dl_158,
     d_course_toads_turnpike_dl_2D0,  d_course_toads_turnpike_dl_380,  d_course_toads_turnpike_dl_4E8,
     d_course_toads_turnpike_dl_438,  d_course_toads_turnpike_dl_5B8,  d_course_toads_turnpike_dl_668,

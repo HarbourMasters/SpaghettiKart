@@ -40,12 +40,6 @@
 
 #define RENDER_VEHICLE 1
 
-#define TRAIN_SMOKE_RENDER_DISTANCE 2000.0f
-#define TRAIN_CROSSING_AI_DISTANCE 1000.0f
-#define BOAT_SMOKE_RENDER_DISTANCE 2000.0f
-
-#define RENDER_VEHICLE 1
-
 typedef struct {
     /* 0x00 */ s16 isActive; // Only used for Tender and Passenger Cars, unused for Locomotives
     /* 0x02 */ s16 compilerPadding;

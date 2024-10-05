@@ -419,7 +419,7 @@ void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2) {
 }
 
 void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
-    func_802B5D64(0x9000000, arg0, arg1, arg2);
+    func_802B5D64((Lights1*) 0x9000000, arg0, arg1, arg2);
 }
 
 void func_802B5D64(Lights1* addr, s16 arg1, s16 arg2, s32 arg3) {

@@ -18,26 +18,35 @@ typedef struct {
     /* 0x44 */ f32 surfaceHeight;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
-    /* 0x50 */ s32 unk_050;
+    /* 0x50 */ s32 timer;
     /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
+#ifndef TARGET_N64
     /* 0x60 */ const char* activeTLUT;
     /* 0x64 */ const char* activeTexture;
+#else
+    /* 0x60 */ u8* activeTLUT;
+    /* 0x64 */ u8* activeTexture;
+#endif
     /**
      * "list" is something of a misnomer for the names here
      * they can be pointers to just 1 tlut/texture, but it is common for one or the other
      * to be a pointer to an array of tluts/textures.
      **/
     /* 0x68 */ u8* tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
+#ifndef TARGET_N64
     /* 0x6C */ const char** textureList;
+#else
+    /* 0x6C */ u8* textureList;
+#endif
     /* 0x70 */ Gfx* model;
     /* 0x74 */ Vtx* vertex;
     /* 0x78 */ s8 unk_078[0x04];
     /* 0x7C */ SplineControlPoint* controlPoints;
     /* 0x80 */ SplineData* spline;
     /* 0x84 */ s16 unk_084[0xA];
-    /* 0x98 */ u16 timer;
+    /* 0x98 */ u16 animationTimer;
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
@@ -57,14 +66,14 @@ typedef struct {
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 boundingBoxSize;
     /* 0xCA */ s8 unk_0CA;
-    /* 0xCB */ s8 unk_0CB;
+    /* 0xCB */ s8 isTimerActive;
     /* 0xCC */ s8 unk_0CC;
     /* 0xCD */ s8 unk_0CD;
     /* 0xCE */ s8 unk_0CE;
     /* 0xCF */ s8 unk_0CF;
     /* 0xD0 */ s8 unk_0D0;
     /* 0xD1 */ s8 unk_0D1;
-    /* 0xD2 */ s8 itemDisplay;
+    /* 0xD2 */ s8 textureListIndex;
     /* 0xD3 */ s8 unk_0D3;
     /* 0xD4 */ s8 unk_0D4;
     /* 0xD5 */ u8 unk_0D5;
@@ -93,7 +102,7 @@ typedef struct {
     /* 0x44 */ f32 unk_044;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
-    /* 0x50 */ s32 unk_050;
+    /* 0x50 */ s32 timer;
     /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
@@ -132,14 +141,14 @@ typedef struct {
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 unk_0C8;
     /* 0xCA */ s8 unk_0CA;
-    /* 0xCB */ s8 unk_0CB;
+    /* 0xCB */ s8 isTimerActive;
     /* 0xCC */ s8 unk_0CC;
     /* 0xCD */ s8 unk_0CD;
     /* 0xCE */ s8 unk_0CE;
     /* 0xCF */ s8 unk_0CF;
     /* 0xD0 */ s8 unk_0D0;
     /* 0xD1 */ s8 unk_0D1;
-    /* 0xD2 */ s8 itemDisplay;
+    /* 0xD2 */ s8 textureListIndex;
     /* 0xD3 */ s8 unk_0D3;
     /* 0xD4 */ s8 unk_0D4;
     /* 0xD5 */ u8 unk_0D5;

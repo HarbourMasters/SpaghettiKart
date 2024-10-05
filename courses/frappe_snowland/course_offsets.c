@@ -10,7 +10,7 @@ const course_texture frappe_snowland_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* frappe_snowland_dls[] = {
+const Gfx* d_course_frappe_snowland_dl_list[] = {
     d_course_frappe_snowland_dl_0,    d_course_frappe_snowland_dl_1B8,  d_course_frappe_snowland_dl_C8,
     d_course_frappe_snowland_dl_298,  d_course_frappe_snowland_dl_398,  d_course_frappe_snowland_dl_540,
     d_course_frappe_snowland_dl_458,  d_course_frappe_snowland_dl_610,  d_course_frappe_snowland_dl_728,

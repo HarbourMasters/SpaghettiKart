@@ -450,7 +450,7 @@ void func_80281540(void) {
 void podium_ceremony_loop(void) {
     gMatrixObjectCount = 0;
     D_802874FC = 0;
-    setup_camera_podium_ceremony();
+    update_camera_podium_ceremony();
     func_80028F70();
     func_80022744();
     func_80059AC8();

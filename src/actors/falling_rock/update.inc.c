@@ -4,8 +4,17 @@
 #include <assets/choco_mountain_data.h>
 
 void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
+#ifndef TARGET_N64
     struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+#else
+    s32 segment = SEGMENT_NUMBER2(spawnData);
+    s32 offset = SEGMENT_OFFSET(spawnData);
+    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+#endif
     Vec3s sp24 = { 60, 120, 180 };
+#ifndef TARGET_N64
+    temp_v0 += rock->unk_06;
+#endif
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
     rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
     rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
@@ -21,7 +30,14 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
  * @param spawnData
  */
 void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
+#ifndef TARGET_N64
     struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+#else
+    s32 addr = SEGMENT_NUMBER2(spawnData);
+    s32 offset = SEGMENT_OFFSET(spawnData);
+    // Casting this to prevent warning does not work.
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
+#endif
     struct FallingRock* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;

@@ -94,6 +94,8 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/audio
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
     ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements/freecam
 )
 
 # Collect source files to build the executable
@@ -133,6 +135,10 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "courses/*.h"
     "src/networking/*.c"
     "src/networking/*.h"
+    "src/enhancements/*.c"
+    "src/enhancements/*.h"
+    "src/enhancements/freecam/*.c"
+    "src/enhancements/freecam/*.h"
 )
 
 list(APPEND ALL_FILES ${ALL_FILES_ROOT})
@@ -356,7 +362,7 @@ endif()
 # Compile and link options
 ################################################################################
 
-option(GBI_UCODE "Use F3DEX_GBI" F3DEX_GBI)
+set(GBI_UCODE F3DEX_GBI)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE F3DEX_GBI=1)
 

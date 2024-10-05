@@ -87,6 +87,7 @@
     }
 
 // convert a virtual address to physical.
+#ifndef TARGET_N64
 #define VIRTUAL_TO_PHYSICAL(addr) (addr)
 
 // convert a physical address to virtual.
@@ -94,6 +95,15 @@
 
 // another way of converting virtual to physical
 #define VIRTUAL_TO_PHYSICAL2(addr) (addr)
+#else
+#define VIRTUAL_TO_PHYSICAL(addr) ((uintptr_t) (addr) & 0x1FFFFFFF)
+
+// convert a physical address to virtual.
+#define PHYSICAL_TO_VIRTUAL(addr) ((uintptr_t) (addr) | 0x80000000)
+
+// another way of converting virtual to physical
+#define VIRTUAL_TO_PHYSICAL2(addr) ((u8*) (addr) - 0x80000000U)
+#endif
 
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
@@ -113,5 +123,17 @@
  * - 0x07000000 : get just the offset
  **/
 #define GET_PACKED_END(dl) (((u8*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
+
+#ifndef MAX
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#endif
+
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
+#ifndef CLAMP
+#define CLAMP(var, min, max) ((var) < (min) ? min : (var) > (max) ? max : var)
+#endif
 
 #endif

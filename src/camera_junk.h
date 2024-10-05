@@ -3,8 +3,8 @@
 
 /* Function Prototypes */
 
-void setup_camera_podium_ceremony(void);
-void func_802816B8(void);
+void update_camera_podium_ceremony(void);
+void init_camera_podium_ceremony(void);
 
 // guPerspective params
 
