@@ -35,8 +35,8 @@ extern "C" {
     u16 flags;
     } TrackSections;
     extern Gfx test_course_dls[];
-    extern Vtx mario_Plane_mesh_vtx_0[];
-    extern Gfx mario_Plane_mesh[];
+    extern Vtx mario_Plane_001_mesh_vtx_1[];
+    extern Gfx mario_Plane_001_mesh[];
     extern const course_texture test_course_textures[];
     extern TrackWaypoint test_course_path[];
     extern TrackSections test_course_addr[];
@@ -60,7 +60,7 @@ TestCourse::TestCourse() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {28, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {52, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -97,10 +97,10 @@ TestCourse::TestCourse() {
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
-    Props.Skybox.TopRight = {0, 184, 248};
+    Props.Skybox.TopRight = {30, 184, 248};
     Props.Skybox.BottomRight = {216, 232, 248};
     Props.Skybox.BottomLeft = {216, 232, 248};
-    Props.Skybox.TopLeft = {0, 184, 248};
+    Props.Skybox.TopLeft = {30, 184, 248};
     Props.Skybox.FloorTopRight = {0, 0, 0};
     Props.Skybox.FloorBottomRight = {0, 0, 0};
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
@@ -108,7 +108,7 @@ TestCourse::TestCourse() {
 }
 
 void TestCourse::Load() {
-    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&mario_Plane_mesh_vtx_0[0]);
+    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&mario_Plane_001_mesh_vtx_1[0]);
     //gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
 }
 
@@ -127,34 +127,14 @@ void TestCourse::LoadTextures() {
 
 void TestCourse::SpawnActors() {
 struct ActorSpawnData itemboxes[] = {
-    {    0, 0, 0 , 0},
-    {    0, 0, -90 , 0},
-    {    0, 0, -180 , 0},
-    {    0, 0, -270 , 0},
-    {    0, 0, -360 , {0}},
-    {   150, 0, -360 , {0}},
-    {   300, 0, -360 , {0}},
-    {   450, 0, -360 , {0}},
-    {   600, 0, -360 , {0}},
-    {   750, 0, -360 , {0}},
-    {   900, 0, -320 , {0}},  // Start curving to the right
-    {   950, 0, -250 , {0}},
-    {   950, 0, -180 , {0}},
-    {   950, 0, -90 , {0}},
-    {   950, 0, 0 , 0},       // Right of the starting point
-    {   950, 0, 90 , {0}},
-    {   950, 0, 180 , {0}},
-    {   900, 0, 250 , {0}},
-    {   850, 0, 300 , {0}},   // Heading back left
-    {   750, 0, 360 , 0},     // Mirroring the curve on the left
-    {   600, 0, 360 , 0},
-    {   450, 0, 360 , 0},
-    {   300, 0, 360 , 0},
-    {   150, 0, 360 , 0},
-    {    0, 0, 360 , 0},      // Returning to x=0
-    {    0, 0, 270 , 0},
-    {    0, 0, 180 , 0},
-    {    0, 0, 90 , 0},
+    {    40, 0, -800, 0},
+    {    -40, 0, -800, 0},
+    {    0, 0, -800, 0},
+    {    999, 6, 482, 0},
+    {    1064, 8, 275, {0}},
+    {   1028, 5, -39 , {0}},
+    {    320, 0, 1020, {0}},
+    {   293, 0, 950, {0}},
     {{ -32768, 0,    0 }, {0}},
 };
 
@@ -252,7 +232,7 @@ void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_big_donut_packed_dl_DE8
     }
-    gSPDisplayList(gDisplayListHead++, mario_Plane_mesh);
+    gSPDisplayList(gDisplayListHead++, mario_Plane_001_mesh);
 }
 
 void TestCourse::RenderCredits() {
@@ -261,7 +241,7 @@ void TestCourse::RenderCredits() {
 void TestCourse::Collision() {}
 
 void TestCourse::GenerateCollision() {
-    generate_collision_mesh_with_defaults(mario_Plane_mesh);
+    generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
     parse_course_displaylists((const char*)test_course_addr);
     func_80295C6C();
