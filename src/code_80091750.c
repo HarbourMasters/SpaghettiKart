@@ -99,14 +99,6 @@ u8 D_8018ED90;
 u8 D_8018ED91;
 s32 s8018ED94;
 
-f32 D_8018ED98; // Rotation
-f32 D_8018ED9C; // Rotation
-f32 D_8018EDA0; // Rotation
-
-f32 D_8018EDA4;
-f32 D_8018EDA8;
-f32 D_8018EDAC;
-
 Unk_D_800E70A0 D_800E70A0[] = {
     { 0x3d, 0x11, 0x00, 0x00 }, { 0x15, 0x3e, 0x00, 0x00 }, { 0x5c, 0x3e, 0x00, 0x00 },
     { 0xa3, 0x3e, 0x00, 0x00 }, { 0xea, 0x3e, 0x00, 0x00 }, { 0x10a, 0xc8, 0x00, 0x00 },
@@ -946,6 +938,13 @@ s32 D_800E84A0[] = {
     0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13,
 };
 
+Vtx* D_800E84C0[] = {
+    D_02007BB8,
+    D_02007CD8,
+    D_02007DF8,
+};
+
+#ifndef AVOID_UB
 Gfx* D_800E84CC[] = {
     D_02007838, D_02007858, D_02007878, D_02007898, D_020078B8, D_020078D8, D_020078F8, D_02007918,
 };
@@ -957,6 +956,7 @@ Gfx* D_800E84EC[] = {
 Gfx* D_800E850C[] = {
     D_02007A38, D_02007A58, D_02007A78, D_02007A98, D_02007AB8, D_02007AD8, D_02007AF8, D_02007B18,
 };
+#endif
 
 s8 D_800E852C = 1;
 
@@ -1357,7 +1357,6 @@ void func_80092258(void) {
     }
 }
 
-//! @bug vtx overflow from idx + 36 in this func
 void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_v1;
     s32 i;
@@ -1369,16 +1368,6 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_t0;
     s32 a, b, c, d;
     Vtx* vtx;
-
-    Vtx* v1 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *v2 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *v3 = (Vtx *) LOAD_ASSET(D_02007DF8);
-
-    Vtx* D_800E84C0[] = {
-        &v1[0],
-        &v1[18],
-        &v1[36],
-    };
 
     if ((arg0 < 4) || (arg0 >= 6)) {
         return;
@@ -1393,21 +1382,10 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     }
 
     for (i = 0; i < 3; i++) {
-        if (i == 0) {
-            vtx = (Vtx*) &v1[0];
-        } else if (i == 1) {
-            vtx = (Vtx*) &v1[18];
-        } else if (i == 2) {
-            vtx = (Vtx*) &v1[36];
-        }
-        // vtx = (Vtx *) segmented_to_virtual_dupe_2(&v1[0]);
+        vtx = (Vtx*) LOAD_ASSET(D_800E84C0[i]);
 
         temp_v1 = (*arg1 * 2) + 2;
 
-        //! @bug vtx array overflow temp fix
-        if ((vtx + temp_v1) >= 54) {
-            return;
-        }
         temp_t6 = (vtx + temp_v1)->v.cn[0] * (256 - *arg2);
         temp_t9 = (vtx + temp_v1)->v.cn[1] * (256 - *arg2);
         temp_t7 = (vtx + temp_v1)->v.cn[2] * (256 - *arg2);
@@ -1419,10 +1397,10 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
         c = ((vtx + temp_v1)->v.cn[2] * *arg2);
         d = ((vtx + temp_v1)->v.cn[3] * *arg2);
 
-        //! @bug vtx array overflow temp fix
-        if ((vtx + idx) >= 54) {
-            return;
-        }
+        (vtx + idx)->v.cn[0] = (temp_t6 + a) / 256;
+        (vtx + idx)->v.cn[1] = (temp_t9 + b) / 256;
+        (vtx + idx)->v.cn[2] = (temp_t7 + c) / 256;
+        (vtx + idx)->v.cn[3] = (temp_t8_2 + d) / 256;
 
         (vtx + idx + 1)->v.cn[0] = (temp_t6 + a) / 256;
         (vtx + idx + 1)->v.cn[1] = (temp_t9 + b) / 256;
@@ -2538,9 +2516,6 @@ Gfx* draw_flash_select_case_fast(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx
 
 Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     s32 index;
-    Vtx* a_D_02007BB8 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
 
     if ((s32) gTextColor < TEXT_BLUE_GREEN_RED_CYCLE_1) {
         index = gTextColor;
@@ -2548,13 +2523,10 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
 #ifdef AVOID_UB
-    if (arg1 == D_02007BB8) {
-        gSPDisplayList(displayListHead++, D_800E84CC[index]);
-    } else if (arg1 == &D_02007BB8[18]) {
-        gSPDisplayList(displayListHead++, D_800E84EC[index]);
-    } else if (arg1 == &D_02007BB8[36]) {
-        gSPDisplayList(displayListHead++, D_800E850C[index]);
-    }
+    arg1 = LOAD_ASSET(arg1);
+    gSPVertex(displayListHead++, arg1, 2, 0);
+    gSPVertex(displayListHead++, &arg1[(index + 1) * 2], 2, 2);
+    gSPDisplayList(displayListHead++, common_rectangle_display);
 #else
     if (arg1 == D_02007BB8) {
         gSPDisplayList(displayListHead++, D_800E84CC[index]);
@@ -2647,10 +2619,6 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
     Vtx* var_a1;
     Mtx* sp28;
 
-    Vtx* a_D_02007BB8 = (Vtx*) LOAD_ASSET(D_02007BB8);
-    // Vtx *a_D_02007CD8 = (Vtx *) LOAD_ASSET(D_02007CD8);
-    // Vtx *a_D_02007DF8 = (Vtx *) LOAD_ASSET(D_02007DF8);
-
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
         goto func_80095BD0_label1;
@@ -2672,16 +2640,16 @@ func_80095BD0_label2:
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
         default:
-            var_a1 = &D_02007BB8[18];
+            var_a1 = D_02007CD8;
             break;
         case 16:
-            var_a1 = &D_02007BB8[18];
+            var_a1 = D_02007CD8;
             break;
         case 26:
             var_a1 = D_02007BB8;
             break;
         case 30:
-            var_a1 = &D_02007BB8[36];
+            var_a1 = D_02007DF8;
             break;
     }
 
@@ -4219,6 +4187,9 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         newblue = (((((((temp_t9 * 6) / 8) - blue) * arg3) >> 8) + blue) << 1);
         *color1++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg1].offset);
 }
 
 void func_8009AB7C(s32 arg0) {
@@ -4247,6 +4218,8 @@ void func_8009AB7C(s32 arg0) {
         newblue = temp_t9 << 1;
         *color++ = BSWAP16(newblue + newgreen + newred + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009AD78(s32 arg0, s32 arg1) {
@@ -4276,6 +4249,8 @@ void func_8009AD78(s32 arg0, s32 arg1) {
         temp_t9 += ((0x20 - temp_t9) * arg1) >> 8;
         *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009B0A4(s32 arg0, u32 arg1) {
@@ -4308,6 +4283,8 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
         }
         *color++ = BSWAP16((temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
@@ -4336,6 +4313,8 @@ void func_8009B538(s32 arg0, s32 screen_size, s32 arg2, s32 arg3, s32 arg4) {
         newblue = ((temp_t9 * arg4) >> 8) << 1;
         *color++ = BSWAP16(newred + newgreen + newblue + alpha);
     }
+    // Invalidate texture to properly apply color manipulation
+    gSPInvalidateTexCache(gDisplayListHead++, D_8018E118[arg0].offset);
 }
 
 u16* func_8009B8C4(u64* arg0) {
@@ -8212,53 +8191,45 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-#ifdef NON_MATCHING
-void guMtxCatL(Mtx*, Mtx*, Mtx*);
-// https://decomp.me/scratch/GUqCE
-// All the math stuff at the top is messed up
-void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
-    Mtx* temp_s0;
-    Mtx* temp_s1;
-    f32 temp_f2;
-    f32 temp_f12;
-    f32 temp_f14;
-
-    temp_s1 = &gGfxPool->mtxEffect[gMatrixEffectCount];
+void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
+    Mtx *mtx;
+    f32 tmp;
+    static float x2, y2, z2;
+    static float x1, y1, z1;
+    
+    mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (arg0->unk24 > 1.5) {
         arg0->unk24 *= 0.95;
     } else {
-        arg0->unk24 = 1.5f;
+        arg0->unk24 = 1.5;
     }
-    temp_f2 = arg0->unk24 * 3.0f * arg0->unk8;
-    temp_f12 = arg0->unk24 * 4.0f;
-    temp_f14 = arg0->unk24 * 2.0f;
-    D_8018EDA4 = temp_f2;
-    D_8018EDA8 = temp_f12;
-    D_8018EDAC = temp_f14;
-    D_8018ED98 += D_8018EDA4;
-    D_8018ED9C += D_8018EDA8;
-    D_8018EDA0 += D_8018EDAC;
-    guScale(temp_s1, 1.2f, 1.2f, 1.2f);
-    temp_s0 = temp_s1 + 1;
-    guRotate(temp_s0, D_8018ED9C, 0.0f, 1.0f, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guRotate(temp_s0, D_8018EDA0, 0.0f, 0.0f, 1.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guRotate(temp_s0, D_8018ED98, 1.0f, 0.0f, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    guTranslate(temp_s0, arg1->column, arg1->row, 0.0f);
-    guMtxCatL(temp_s1, temp_s0, temp_s1);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    tmp = arg0->unk24;
+    x1 = (tmp * 3) * arg0->unk8;
+    y1 = tmp * 4;
+    z1 = tmp * 2;
+    x2 += x1;
+    y2 += y1;
+    z2 += z1;
+
+    if(x2); if(y2); if(z2);
+
+    guScale(mtx, 1.2f, 1.2f, 1.2f);
+    guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx + 1, z2, 0.0f, 0.0f, 1.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx + 1, x2, 1.0f, 0.0f, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
+    guMtxCatL(mtx, mtx + 1, mtx);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPDisplayList(gDisplayListHead++, D_0D003090);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
-#endif
 
 void func_800A69C8(UNUSED struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* thing;
