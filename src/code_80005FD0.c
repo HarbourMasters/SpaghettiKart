@@ -3479,7 +3479,7 @@ void func_8000F2DC(void) {
         case COURSE_KALAMARI_DESERT:
             generate_train_waypoints(d_course_kalimari_desert_track_unknown_waypoints);
             init_vehicles_trains(0, 5, 5.0f);
-            init_vehicles_trains(1, 1, 25.0f);
+            init_vehicles_trains(1, 5, 5.0f);
             break;
         case COURSE_DK_JUNGLE:
             generate_ferry_waypoints();
