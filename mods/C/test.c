@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-extern call_function(char* module, char* function_name, );
+__attribute__((import_name("call_extern_function"))) int call_extern_function(char* module, char* function_name,
+                                                                              int argc, int* argv);
 
 int fib(int n) {
-    test();
+    call_extern_function("test", "testfunc", 0, NULL);
     if (n <= 1) {
         return n;
     }

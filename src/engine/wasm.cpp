@@ -53,7 +53,7 @@ void load_mod_wasm_file(char* mod_name, char* buffer, size_t size) {
 }
 
 mod_instance* find_mod(char* name) {
-    for (int i = 0; i < mods_instance.size(); i++) {
+    for (size_t i = 0; i < mods_instance.size(); i++) {
         if (strcmp(mods_instance[i].name, name) == 0) {
             return &mods_instance[i];
         }
@@ -69,35 +69,34 @@ wasm_function_inst_t mod_lookup_function(char* mod_name, char* function_name) {
     return wasm_runtime_lookup_function(get_mods_instance(mod_name), function_name);
 }
 
-bool mod_call_wasm(char* mod_name, wasm_function_inst_t function, uint32 argc, uint32 argv[]) {
-    return wasm_runtime_call_wasm(find_mod(mod_name)->exec_env, function, 1, argv);
+bool mod_call_function_wasm(char* mod_name, char* function_name, uint32 argc, uint32 argv[]) {
+    wasm_function_inst_t func = mod_lookup_function(mod_name, function_name);
+    if (func == NULL) {
+        printf("error to find the function\n");
+        return false;
+    }
+
+    return wasm_runtime_call_wasm(find_mod(mod_name)->exec_env, func, 1, argv);
 }
 
 void mod_print_exception(char* mod_name) {
     printf("%s\n", wasm_runtime_get_exception(get_mods_instance(mod_name)));
 }
 
-bool mod_execute_function(wasm_exec_env_t exec_env, uint32 msg_offset, uint32 buffer_offset, int32 buf_len) {
-    wasm_module_inst_t module_inst = get_module_inst(exec_env);
-    char* buffer;
-    char* msg;
-
-    // do boundary check
-    if (!wasm_runtime_validate_app_str_add(msg_offset))
-        return 0;
-
-    if (!wasm_runtime_validate_app_addr((uint64) buffer_offset, (uint64) buf_len))
-        return;
-
-    // do address conversion
-    buffer = wasm_runtime_addr_app_to_native((uint64) buffer_offset);
-    msg = wasm_runtime_addr_app_to_native((uint64) msg_offset);
-
-    strncpy(buffer, msg, buf_len);
+uint32 call_extern_function(wasm_exec_env_t exec_env, char* mod_name, char* function_name, uint32 argc,
+                            uint32 argv_offset) {
+    if (!wasm_runtime_validate_app_addr(wasm_exec_env_get_module_inst(exec_env), (uint64) argv_offset,
+                                        (uint64) argc * 4)) {
+        return false;
+    }
+    uint32* argv =
+        (uint32*) wasm_runtime_addr_app_to_native(wasm_exec_env_get_module_inst(exec_env), (uint64) argv_offset);
+    return mod_call_function_wasm(mod_name, function_name, argc, argv);
 }
 
 /* the native functions that will be exported to WASM app */
 static NativeSymbol native_symbols[] = {
+    { "call_extern_function", call_extern_function, "($$ii)i", NULL }
     // EXPORT_WASM_API_WITH_SIG(display_input_read, "(*)i"),
     // EXPORT_WASM_API_WITH_SIG(display_flush, "(iiii*)")
 };
@@ -127,7 +126,6 @@ char* read_wasm_binary_to_buffer(char* path, uint32_t* size) {
 extern "C" void load_wasm() {
     printf("load wasm\n");
     char* buffer;
-    wasm_function_inst_t func;
 
     /* initialize the wasm runtime by default configurations */
     wasm_runtime_init();
@@ -163,18 +161,13 @@ extern "C" void load_wasm() {
 
     load_mod_wasm_file("test", buffer, size);
 
-    func = mod_lookup_function("test", "fib");
-    if (func == NULL) {
-        printf("error to find the function\n");
-        exit(-1);
-    }
     uint32_t argv[2];
 
     /* arguments are always transferred in 32-bit element */
     argv[0] = 8;
     printf("run fib function\n");
     /* call the WASM function */
-    if (mod_call_wasm("test", func, 1, argv)) {
+    if (mod_call_function_wasm("test", "fib", 1, argv)) {
         /* the return value is stored in argv[0] */
         printf("fib function return: %d\n", argv[0]);
     } else {
