@@ -17,6 +17,7 @@
 #include "audio/external.h"
 #include "spawn_players.h"
 #include "code_80091750.h"
+#include "port/Game.h"
 
 s32 D_8018D900[8];
 s16 D_8018D920[8];
@@ -1594,87 +1595,89 @@ void func_8008FF08(Player* player, s8 playerId) {
 
     CourseManager_Waypoints(player, playerId);
 
-//     switch (gCurrentCourseId) {
-//         case COURSE_BOWSER_CASTLE:
-//             waypoint = gNearestWaypointByPlayerId[playerId];
-//             if ((waypoint >= 0x235) && (waypoint < 0x247)) {
-//                 player->nearestWaypointId = 0x214;
-//             } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
-//                 player->nearestWaypointId = 0x25B;
-//             } else {
-//                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-//                 if (player->nearestWaypointId < 0) {
-//                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//                 }
-//             }
-//             break;
-//         case COURSE_BANSHEE_BOARDWALK:
-//             waypoint = gNearestWaypointByPlayerId[playerId];
-//             if ((waypoint >= 0x12C) && (waypoint < 0x13C)) {
-//                 player->nearestWaypointId = 0x12CU;
-//             } else {
-//                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-//                 if (player->nearestWaypointId < 0) {
-//                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//                 }
-//             }
-//             break;
-//         case COURSE_YOSHI_VALLEY:
-//         case COURSE_RAINBOW_ROAD:
-//             player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
-//             break;
-//         case COURSE_FRAPPE_SNOWLAND:
-//             waypoint = gNearestWaypointByPlayerId[playerId];
-// #ifdef VERSION_EU
-//             if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0) &&
-//                                                                (gCopyNearestWaypointByPlayerId[playerId] < 0x11E)))
-// #else
-//             if ((waypoint >= 0xF0) && (waypoint < 0x105))
-// #endif
-//             {
-//                 player->nearestWaypointId = 0xF0U;
-//             } else {
-//                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
-//                 if (player->nearestWaypointId < 0) {
-//                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//                 }
-//             }
-//             break;
-//         case COURSE_ROYAL_RACEWAY:
-//             waypoint = gNearestWaypointByPlayerId[playerId];
-//             if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
-//                 player->nearestWaypointId = 0x258U;
-//             } else {
-//                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
-//                 if (player->nearestWaypointId < 0) {
-//                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//                 }
-//             }
-//             break;
-//         case COURSE_DK_JUNGLE:
-//             waypoint = gNearestWaypointByPlayerId[playerId];
-//             if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
-//                 player->nearestWaypointId = 0xB9U;
-//             } else {
-//                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-//                 if (player->nearestWaypointId < 0) {
-//                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//                 }
-//             }
-//             break;
-//         case COURSE_BLOCK_FORT:
-//         case COURSE_SKYSCRAPER:
-//         case COURSE_DOUBLE_DECK:
-//         case COURSE_BIG_DONUT:
-//             player->nearestWaypointId = 0U;
-//             break;
-//         default:
-//             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-//             if (player->nearestWaypointId < 0) {
-//                 player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
-//             }
-//             break;
-//     }
+    //     switch (gCurrentCourseId) {
+    //         case COURSE_BOWSER_CASTLE:
+    //             waypoint = gNearestWaypointByPlayerId[playerId];
+    //             if ((waypoint >= 0x235) && (waypoint < 0x247)) {
+    //                 player->nearestWaypointId = 0x214;
+    //             } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
+    //                 player->nearestWaypointId = 0x25B;
+    //             } else {
+    //                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+    //                 if (player->nearestWaypointId < 0) {
+    //                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //                 }
+    //             }
+    //             break;
+    //         case COURSE_BANSHEE_BOARDWALK:
+    //             waypoint = gNearestWaypointByPlayerId[playerId];
+    //             if ((waypoint >= 0x12C) && (waypoint < 0x13C)) {
+    //                 player->nearestWaypointId = 0x12CU;
+    //             } else {
+    //                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+    //                 if (player->nearestWaypointId < 0) {
+    //                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //                 }
+    //             }
+    //             break;
+    //         case COURSE_YOSHI_VALLEY:
+    //         case COURSE_RAINBOW_ROAD:
+    //             player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+    //             break;
+    //         case COURSE_FRAPPE_SNOWLAND:
+    //             waypoint = gNearestWaypointByPlayerId[playerId];
+    // #ifdef VERSION_EU
+    //             if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0)
+    //             &&
+    //                                                                (gCopyNearestWaypointByPlayerId[playerId] <
+    //                                                                0x11E)))
+    // #else
+    //             if ((waypoint >= 0xF0) && (waypoint < 0x105))
+    // #endif
+    //             {
+    //                 player->nearestWaypointId = 0xF0U;
+    //             } else {
+    //                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+    //                 if (player->nearestWaypointId < 0) {
+    //                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //                 }
+    //             }
+    //             break;
+    //         case COURSE_ROYAL_RACEWAY:
+    //             waypoint = gNearestWaypointByPlayerId[playerId];
+    //             if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
+    //                 player->nearestWaypointId = 0x258U;
+    //             } else {
+    //                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+    //                 if (player->nearestWaypointId < 0) {
+    //                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //                 }
+    //             }
+    //             break;
+    //         case COURSE_DK_JUNGLE:
+    //             waypoint = gNearestWaypointByPlayerId[playerId];
+    //             if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
+    //                 player->nearestWaypointId = 0xB9U;
+    //             } else {
+    //                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+    //                 if (player->nearestWaypointId < 0) {
+    //                     player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //                 }
+    //             }
+    //             break;
+    //         case COURSE_BLOCK_FORT:
+    //         case COURSE_SKYSCRAPER:
+    //         case COURSE_DOUBLE_DECK:
+    //         case COURSE_BIG_DONUT:
+    //             player->nearestWaypointId = 0U;
+    //             break;
+    //         default:
+    //             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
+    //             if (player->nearestWaypointId < 0) {
+    //                 player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    //             }
+    //             break;
+    //     }
 }
 
 void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
@@ -1704,8 +1707,8 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
         arg2[1] = temp_v1->posY;
         arg2[2] = temp_v1->posZ;
         temp_v1 = &D_80164550[gCopyPathIndexByPlayerId[playerId]]
-                                [(player->nearestWaypointId + 5) %
-                                (gWaypointCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
+                             [(player->nearestWaypointId + 5) %
+                              (gWaypointCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
         arg3[0] = temp_v1->posX;
         arg3[1] = temp_v1->posY;
         arg3[2] = temp_v1->posZ;

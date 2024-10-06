@@ -38,6 +38,7 @@
 #include <assets/dks_jungle_parkway_data.h>
 
 #include "engine/Engine.h"
+#include "port/Game.h"
 #include "engine/courses/Course.h"
 
 s32 unk_code_80005FD0_pad[24];
@@ -1920,7 +1921,7 @@ void func_80009B60(s32 playerId) {
                 }
 
                 var_v1 = CourseManager_GetProps()->AISteeringSensitivity;
-                //var_v1 = gKartAISteeringSensitivity[gCurrentCourseId];
+                // var_v1 = gKartAISteeringSensitivity[gCurrentCourseId];
 
                 switch (D_801631D8[playerId]) { /* switch 4; irregular */
                     case 2:                     /* switch 4 */
@@ -3681,15 +3682,15 @@ void func_800100F0(s32 pathIndex) {
         if (GetCourse() != GetPodiumCeremony()) {
 
             if (GetCourse() == GetTestCourse()) {
-            var_v0 = process_path_data(pathDest, test_course_path);
-            gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
+                var_v0 = process_path_data(pathDest, test_course_path);
+                gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
             } else {
 
                 var_v0 = process_path_data(pathDest, LOAD_ASSET(CourseManager_GetProps()->PathTable2[pathIndex]));
                 gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
             }
         }
-        
+
         else {
             // Course path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
@@ -4203,11 +4204,10 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    KartAIBehaviour *beh = (KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour);
+    KartAIBehaviour* beh = (KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour);
 
-    sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
-
-
+    sCurrentKartAIBehaviour =
+        &((KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
@@ -4216,7 +4216,7 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     behaviourType = sCurrentKartAIBehaviour->type;
 
     if ((waypointStart == -1) && (waypointEnd == -1)) {
-        sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[0];
+        sCurrentKartAIBehaviour = &((KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[0];
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
@@ -4271,7 +4271,8 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
     u32 waypointEnd;
     s32 behaviourType;
 
-    sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
+    sCurrentKartAIBehaviour = &(
+        (KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
     behaviourType = sCurrentKartAIBehaviour->type;
     waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
@@ -4453,45 +4454,45 @@ void init_vehicles_trains(size_t i, size_t numCarriages, f32 speed) {
 
     gTrainList[i].numCarriages = numCarriages;
 
-    //for (i = 0; i < NUM_TRAINS; i++) {
-        // outputs 160 or 392 depending on the train.
-        // Wraps the value around to always output a valid waypoint.
-        waypointOffset = (((i * gVehicle2DWaypointLength) / gNumTrains) + 160) % gVehicle2DWaypointLength;
+    // for (i = 0; i < NUM_TRAINS; i++) {
+    //  outputs 160 or 392 depending on the train.
+    //  Wraps the value around to always output a valid waypoint.
+    waypointOffset = (((i * gVehicle2DWaypointLength) / gNumTrains) + 160) % gVehicle2DWaypointLength;
 
-        // 120.0f is about the maximum usable value
-        gTrainList[i].speed = speed;
-        for (j = 0; j < gTrainList[i].numCarriages; j++) {
-            waypointOffset += 4;
-            ptr1 = &gTrainList[i].passengerCars[j];
-            pos = &gVehicle2DWaypoint[waypointOffset];
-            set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
-        }
-        // Smaller offset for the tender
-        waypointOffset += 3;
-        ptr1 = &gTrainList[i].tender;
-        pos = &gVehicle2DWaypoint[waypointOffset];
-        set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+    // 120.0f is about the maximum usable value
+    gTrainList[i].speed = speed;
+    for (j = 0; j < gTrainList[i].numCarriages; j++) {
         waypointOffset += 4;
-        ptr1 = &gTrainList[i].locomotive;
+        ptr1 = &gTrainList[i].passengerCars[j];
         pos = &gVehicle2DWaypoint[waypointOffset];
         set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+    }
+    // Smaller offset for the tender
+    waypointOffset += 3;
+    ptr1 = &gTrainList[i].tender;
+    pos = &gVehicle2DWaypoint[waypointOffset];
+    set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+    waypointOffset += 4;
+    ptr1 = &gTrainList[i].locomotive;
+    pos = &gVehicle2DWaypoint[waypointOffset];
+    set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
 
-        // Only use locomotive unless overwritten below.
-        gTrainList[i].numCars = LOCOMOTIVE_ONLY;
+    // Only use locomotive unless overwritten below.
+    gTrainList[i].numCars = LOCOMOTIVE_ONLY;
     //}
 
     // Spawn all rolling stock in single player mode.
     switch (gScreenModeSelection) {
         case SCREEN_MODE_1P: // single player
-            //for (i = 0; i < NUM_TRAINS; i++) {
-                gTrainList[i].tender.isActive = 1;
+                             // for (i = 0; i < NUM_TRAINS; i++) {
+            gTrainList[i].tender.isActive = 1;
 
-                // clang-format off
+            // clang-format off
                 // Same line required for matching...
                 for (j = 0; j < gTrainList[i].numCarriages; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
-                // clang-format on
+            // clang-format on
 
-                gTrainList[i].numCars = NUM_TENDERS + gTrainList[i].numCarriages;
+            gTrainList[i].numCars = NUM_TENDERS + gTrainList[i].numCarriages;
             //}
             break;
 
@@ -4499,10 +4500,10 @@ void init_vehicles_trains(size_t i, size_t numCarriages, f32 speed) {
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL: // multiplayer fall-through
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gModeSelection != GRAND_PRIX) {
-                //for (i = 0; i < NUM_TRAINS; i++) {
-                    gTrainList[i].tender.isActive = 1;
-                    gTrainList[i].passengerCars[4].isActive = 1;
-                    gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
+                // for (i = 0; i < NUM_TRAINS; i++) {
+                gTrainList[i].tender.isActive = 1;
+                gTrainList[i].passengerCars[4].isActive = 1;
+                gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
                 //}
             }
             break;
@@ -4641,7 +4642,8 @@ void func_80012DC0(s32 playerId, Player* player) {
                     }
                 }
 
-                for (passengerCarIndex = 0; passengerCarIndex < gTrainList[trainIndex].numCarriages; passengerCarIndex++) {
+                for (passengerCarIndex = 0; passengerCarIndex < gTrainList[trainIndex].numCarriages;
+                     passengerCarIndex++) {
                     trainCar = &gTrainList[trainIndex].passengerCars[passengerCarIndex];
                     x_dist = playerPosX - trainCar->position[0];
                     z_dist = playerPosZ - trainCar->position[2];

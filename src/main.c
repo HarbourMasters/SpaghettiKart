@@ -45,6 +45,7 @@
 #include <bridge/gfxdebuggerbridge.h>
 #include "enhancements/freecam/freecam.h"
 #include "engine/wasm.h"
+#include "port/Game.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);

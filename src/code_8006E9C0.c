@@ -27,6 +27,7 @@
 #include "src/data/some_data.h"
 #include "effects.h"
 #include <assets/boo_frames.h>
+#include "port/Game.h"
 
 void init_hud(void) {
 
@@ -207,136 +208,136 @@ void func_8006F008(void) {
             // D_80165720 = 5;
             // D_80165728 = -240;
             break;
-        // case COURSE_CHOCO_MOUNTAIN:
-        //     D_8018D2A0 = 0.022f;
-        //     D_8018D2C0[0] = 265;
-        //     D_8018D2E0 = 19;
-        //     D_8018D2E8 = 37;
-        //     break;
-        // case COURSE_BOWSER_CASTLE:
-        //     D_8018D2C0[0] = 265;
-        //     D_8018D2A0 = 0.0174f;
-        //     D_8018D2E0 = 12;
-        //     D_8018D2E8 = 48;
-        //     break;
-        // case COURSE_BANSHEE_BOARDWALK:
-        //     D_80165880 = (void*) dma_textures(gTextureGhosts, 0x4CC2, 0xD980);
-        //     D_8018D2A0 = 0.016f;
-        //     D_8018D2C0[0] = 0x0106;
-        //     D_8018D2E0 = 55;
-        //     D_8018D2E8 = 39;
-        //     break;
-        // case COURSE_YOSHI_VALLEY:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
-        //     D_8018D2A0 = 0.018f;
-        //     D_8018D2E0 = 61;
-        //     D_8018D2E8 = 38;
-        //     break;
-        // case COURSE_FRAPPE_SNOWLAND:
-        //     D_8018D2C0[0] = 262;
-        //     D_8018D2A0 = 0.016f;
-        //     D_8018D2E0 = 36;
-        //     D_8018D2E8 = 40;
-        //     D_8018D300 = 72;
-        //     D_8018D308 = 100;
-        //     D_8018D310 = 255;
-        //     break;
-        // case COURSE_KOOPA_BEACH:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust3, 0x3C8U, 0x1000);
-        //     D_8018D2A0 = 0.014f;
-        //     D_8018D2C0[0] = 268;
-        //     D_8018D2E0 = 40;
-        //     D_8018D2E8 = 21;
-        //     break;
-        // case COURSE_ROYAL_RACEWAY:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust4, 0x3F8, 0x1000);
-        //     D_8018D2C0[0] = 262;
-        //     D_8018D2A0 = 0.014f;
-        //     D_8018D2E0 = 37;
-        //     D_8018D2E8 = 50;
-        //     D_80165718 = -64;
-        //     D_80165720 = 5;
-        //     D_80165728 = -330;
-        //     break;
-        // case COURSE_LUIGI_RACEWAY:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust2, 0x4F4U, 0xC00);
-        //     D_8018D2A0 = 0.0155f;
-        //     D_8018D2C0[0] = 271;
-        //     D_8018D2E0 = 45;
-        //     D_8018D2E8 = 60;
-        //     D_80165718 = -140;
-        //     D_80165720 = -44;
-        //     D_80165728 = -215;
-        //     break;
-        // case COURSE_MOO_MOO_FARM:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
-        //     D_8018D2A0 = 0.0155f;
-        //     D_8018D2C0[0] = 271;
-        //     D_8018D2E0 = 18;
-        //     D_8018D2E8 = 36;
-        //     break;
-        // case COURSE_TOADS_TURNPIKE:
-        //     D_8018D2A0 = 0.013f;
-        //     D_8018D2C0[0] = 252;
-        //     D_8018D2E0 = 57;
-        //     D_8018D2E8 = 44;
-        //     break;
-        // case COURSE_KALAMARI_DESERT:
-        //     D_8018D2C0[0] = 263;
-        //     D_8018D2D8[0] = 165;
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
-        //     D_8018D2A0 = 0.015f;
-        //     D_8018D2E0 = 55;
-        //     D_8018D2E8 = 27;
-        //     break;
-        // case COURSE_SHERBET_LAND:
-        //     D_8018D220 = (void*) dma_textures(gTextureExhaust1, 0x485, 0xC00);
-        //     D_8018D2A0 = 0.015f;
-        //     D_8018D2C0[0] = 262;
-        //     D_8018D2E0 = 52;
-        //     D_8018D2E8 = 33;
-        //     D_8018D300 = 72;
-        //     D_8018D308 = 100;
-        //     D_8018D310 = 255;
-        //     break;
-        // case COURSE_RAINBOW_ROAD:
-        //     D_8018D2A0 = 0.0103f;
-        //     D_8018D2C0[0] = 261;
-        //     D_8018D2D8[0] = 166;
-        //     D_8018D2E0 = 39;
-        //     D_8018D2E8 = 55;
-        //     break;
-        // case COURSE_WARIO_STADIUM:
-        //     D_8018D2A0 = 0.0155f;
-        //     D_8018D2C0[0] = 0x0106;
-        //     D_8018D2E0 = 53;
-        //     D_8018D2E8 = 35;
-        //     break;
-        // case COURSE_BLOCK_FORT:
-        //     D_8018D2A0 = 0.0335f;
-        //     D_8018D2E0 = 32;
-        //     D_8018D2E8 = 32;
-        //     break;
-        // case COURSE_SKYSCRAPER:
-        //     D_8018D2A0 = 0.0445f;
-        //     D_8018D2E0 = 32;
-        //     D_8018D2E8 = 32;
-        //     break;
-        // case COURSE_DOUBLE_DECK:
-        //     D_8018D2A0 = 0.0285f;
-        //     D_8018D2E0 = 32;
-        //     D_8018D2E8 = 32;
-        //     break;
-        // case COURSE_DK_JUNGLE:
-        //     D_8018D2A0 = 0.0155f;
-        //     D_8018D2C0[0] = 255;
-        //     D_8018D2E0 = 29;
-        //     D_8018D2E8 = 47;
-        //     break;
-        // case COURSE_BIG_DONUT:
-        //     D_8018D2A0 = 0.0257f;
-        //     D_8018D2E0 = 32;
-        //     D_8018D2E8 = 31;
+            // case COURSE_CHOCO_MOUNTAIN:
+            //     D_8018D2A0 = 0.022f;
+            //     D_8018D2C0[0] = 265;
+            //     D_8018D2E0 = 19;
+            //     D_8018D2E8 = 37;
+            //     break;
+            // case COURSE_BOWSER_CASTLE:
+            //     D_8018D2C0[0] = 265;
+            //     D_8018D2A0 = 0.0174f;
+            //     D_8018D2E0 = 12;
+            //     D_8018D2E8 = 48;
+            //     break;
+            // case COURSE_BANSHEE_BOARDWALK:
+            //     D_80165880 = (void*) dma_textures(gTextureGhosts, 0x4CC2, 0xD980);
+            //     D_8018D2A0 = 0.016f;
+            //     D_8018D2C0[0] = 0x0106;
+            //     D_8018D2E0 = 55;
+            //     D_8018D2E8 = 39;
+            //     break;
+            // case COURSE_YOSHI_VALLEY:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
+            //     D_8018D2A0 = 0.018f;
+            //     D_8018D2E0 = 61;
+            //     D_8018D2E8 = 38;
+            //     break;
+            // case COURSE_FRAPPE_SNOWLAND:
+            //     D_8018D2C0[0] = 262;
+            //     D_8018D2A0 = 0.016f;
+            //     D_8018D2E0 = 36;
+            //     D_8018D2E8 = 40;
+            //     D_8018D300 = 72;
+            //     D_8018D308 = 100;
+            //     D_8018D310 = 255;
+            //     break;
+            // case COURSE_KOOPA_BEACH:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust3, 0x3C8U, 0x1000);
+            //     D_8018D2A0 = 0.014f;
+            //     D_8018D2C0[0] = 268;
+            //     D_8018D2E0 = 40;
+            //     D_8018D2E8 = 21;
+            //     break;
+            // case COURSE_ROYAL_RACEWAY:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust4, 0x3F8, 0x1000);
+            //     D_8018D2C0[0] = 262;
+            //     D_8018D2A0 = 0.014f;
+            //     D_8018D2E0 = 37;
+            //     D_8018D2E8 = 50;
+            //     D_80165718 = -64;
+            //     D_80165720 = 5;
+            //     D_80165728 = -330;
+            //     break;
+            // case COURSE_LUIGI_RACEWAY:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust2, 0x4F4U, 0xC00);
+            //     D_8018D2A0 = 0.0155f;
+            //     D_8018D2C0[0] = 271;
+            //     D_8018D2E0 = 45;
+            //     D_8018D2E8 = 60;
+            //     D_80165718 = -140;
+            //     D_80165720 = -44;
+            //     D_80165728 = -215;
+            //     break;
+            // case COURSE_MOO_MOO_FARM:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
+            //     D_8018D2A0 = 0.0155f;
+            //     D_8018D2C0[0] = 271;
+            //     D_8018D2E0 = 18;
+            //     D_8018D2E8 = 36;
+            //     break;
+            // case COURSE_TOADS_TURNPIKE:
+            //     D_8018D2A0 = 0.013f;
+            //     D_8018D2C0[0] = 252;
+            //     D_8018D2E0 = 57;
+            //     D_8018D2E8 = 44;
+            //     break;
+            // case COURSE_KALAMARI_DESERT:
+            //     D_8018D2C0[0] = 263;
+            //     D_8018D2D8[0] = 165;
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
+            //     D_8018D2A0 = 0.015f;
+            //     D_8018D2E0 = 55;
+            //     D_8018D2E8 = 27;
+            //     break;
+            // case COURSE_SHERBET_LAND:
+            //     D_8018D220 = (void*) dma_textures(gTextureExhaust1, 0x485, 0xC00);
+            //     D_8018D2A0 = 0.015f;
+            //     D_8018D2C0[0] = 262;
+            //     D_8018D2E0 = 52;
+            //     D_8018D2E8 = 33;
+            //     D_8018D300 = 72;
+            //     D_8018D308 = 100;
+            //     D_8018D310 = 255;
+            //     break;
+            // case COURSE_RAINBOW_ROAD:
+            //     D_8018D2A0 = 0.0103f;
+            //     D_8018D2C0[0] = 261;
+            //     D_8018D2D8[0] = 166;
+            //     D_8018D2E0 = 39;
+            //     D_8018D2E8 = 55;
+            //     break;
+            // case COURSE_WARIO_STADIUM:
+            //     D_8018D2A0 = 0.0155f;
+            //     D_8018D2C0[0] = 0x0106;
+            //     D_8018D2E0 = 53;
+            //     D_8018D2E8 = 35;
+            //     break;
+            // case COURSE_BLOCK_FORT:
+            //     D_8018D2A0 = 0.0335f;
+            //     D_8018D2E0 = 32;
+            //     D_8018D2E8 = 32;
+            //     break;
+            // case COURSE_SKYSCRAPER:
+            //     D_8018D2A0 = 0.0445f;
+            //     D_8018D2E0 = 32;
+            //     D_8018D2E8 = 32;
+            //     break;
+            // case COURSE_DOUBLE_DECK:
+            //     D_8018D2A0 = 0.0285f;
+            //     D_8018D2E0 = 32;
+            //     D_8018D2E8 = 32;
+            //     break;
+            // case COURSE_DK_JUNGLE:
+            //     D_8018D2A0 = 0.0155f;
+            //     D_8018D2C0[0] = 255;
+            //     D_8018D2E0 = 29;
+            //     D_8018D2E8 = 47;
+            //     break;
+            // case COURSE_BIG_DONUT:
+            //     D_8018D2A0 = 0.0257f;
+            //     D_8018D2E0 = 32;
+            //     D_8018D2E8 = 31;
     }
     if (gIsMirrorMode != 0) {
         D_8018D2E0 = D_8018D2B0 - D_8018D2E0;
@@ -704,50 +705,50 @@ void func_8007055C(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // Uses Kalimari Desert's clouds for initialization?
-            //init_clouds(gKalimariDesertClouds);
+            // init_clouds(gKalimariDesertClouds);
             break;
-        // case COURSE_YOSHI_VALLEY:
-        //     init_clouds(gYoshiValleyMooMooFarmClouds);
-        //     break;
-        // case COURSE_FRAPPE_SNOWLAND:
-        //     if (gPlayerCount == 1) {
-        //         var_s4 = 0x32;
-        //     } else {
-        //         var_s4 = 0x19;
-        //     }
-        //     for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
-        //         find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
-        //     }
-        //     D_8018D1F8 += var_s0;
-        //     D_8018D1F0 = var_s0;
-        //     break;
-        // case COURSE_KOOPA_BEACH:
-        //     init_clouds(gKoopaTroopaBeachClouds);
-        //     break;
-        // case COURSE_ROYAL_RACEWAY:
-        //     init_clouds(gRoyalRacewayClouds);
-        //     break;
-        // case COURSE_LUIGI_RACEWAY:
-        //     init_clouds(gLuigiRacewayClouds);
-        //     break;
-        // case COURSE_MOO_MOO_FARM:
-        //     init_clouds(gYoshiValleyMooMooFarmClouds);
-        //     break;
-        // case COURSE_TOADS_TURNPIKE:
-        //     init_stars(gToadsTurnpikeRainbowRoadStars);
-        //     break;
-        // case COURSE_KALAMARI_DESERT:
-        //     init_clouds(gKalimariDesertClouds);
-        //     break;
-        // case COURSE_SHERBET_LAND:
-        //     init_clouds(gSherbetLandClouds);
-        //     break;
-        // case COURSE_RAINBOW_ROAD:
-        //     init_stars(gToadsTurnpikeRainbowRoadStars);
-        //     break;
-        // case COURSE_WARIO_STADIUM:
-        //     init_stars(gWarioStadiumStars);
-        //     break;
+            // case COURSE_YOSHI_VALLEY:
+            //     init_clouds(gYoshiValleyMooMooFarmClouds);
+            //     break;
+            // case COURSE_FRAPPE_SNOWLAND:
+            //     if (gPlayerCount == 1) {
+            //         var_s4 = 0x32;
+            //     } else {
+            //         var_s4 = 0x19;
+            //     }
+            //     for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
+            //         find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
+            //     }
+            //     D_8018D1F8 += var_s0;
+            //     D_8018D1F0 = var_s0;
+            //     break;
+            // case COURSE_KOOPA_BEACH:
+            //     init_clouds(gKoopaTroopaBeachClouds);
+            //     break;
+            // case COURSE_ROYAL_RACEWAY:
+            //     init_clouds(gRoyalRacewayClouds);
+            //     break;
+            // case COURSE_LUIGI_RACEWAY:
+            //     init_clouds(gLuigiRacewayClouds);
+            //     break;
+            // case COURSE_MOO_MOO_FARM:
+            //     init_clouds(gYoshiValleyMooMooFarmClouds);
+            //     break;
+            // case COURSE_TOADS_TURNPIKE:
+            //     init_stars(gToadsTurnpikeRainbowRoadStars);
+            //     break;
+            // case COURSE_KALAMARI_DESERT:
+            //     init_clouds(gKalimariDesertClouds);
+            //     break;
+            // case COURSE_SHERBET_LAND:
+            //     init_clouds(gSherbetLandClouds);
+            //     break;
+            // case COURSE_RAINBOW_ROAD:
+            //     init_stars(gToadsTurnpikeRainbowRoadStars);
+            //     break;
+            // case COURSE_WARIO_STADIUM:
+            //     init_stars(gWarioStadiumStars);
+            //     break;
     }
     func_8008C23C();
 }
@@ -765,7 +766,7 @@ void func_80070714(void) {
     D_80165748 = 0xA;
 }
 
-const char* sBoardwalkTexList[] = { gTextureBat1, gTextureBat2, gTextureBat3, gTextureBat4 };
+// const char* sBoardwalkTexList[] = { gTextureBat1, gTextureBat2, gTextureBat3, gTextureBat4 };
 
 void init_course_object(void) {
     s32 objectId;

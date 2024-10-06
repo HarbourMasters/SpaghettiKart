@@ -32,6 +32,7 @@
 #include <assets/dks_jungle_parkway_data.h>
 #include <assets/wario_stadium_data.h>
 #include <assets/frappe_snowland_data.h>
+#include "port/Game.h"
 
 // Appears to be textures
 // or tluts
@@ -1202,7 +1203,7 @@ void init_actors_and_load_textures(void) {
     dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
-    
+
     CourseManager_LoadTextures();
 
     init_red_shell_texture();

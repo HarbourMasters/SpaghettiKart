@@ -21,6 +21,7 @@
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
 #include <assert.h>
+#include "port/Game.h"
 
 #include "enhancements/collision_viewer.h"
 

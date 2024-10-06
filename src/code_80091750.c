@@ -42,6 +42,7 @@
 
 #include "stdio.h"
 #include "port/Engine.h"
+#include "port/Game.h"
 
 #include "engine/Engine.h"
 #include "engine/courses/Course.h"
@@ -3633,7 +3634,8 @@ void load_menu_img2(MkTexture* arg0, s32 arg1) {
                     }
                     if (1) {}
                     // D_8018D9B0[gMenuTextureBufferIndex] = &gTextureBackgroundBlueSky;
-                    // tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gMenuTextureBufferIndex], var_v0_2);
+                    // tkmk00decode(D_8018D9B4, texture->textureData, (u8*)&D_8018D9B0[gMenuTextureBufferIndex],
+                    // var_v0_2);
                     u8* tex2 = (u8*) LOAD_ASSET(texture->textureData);
                     memcpy(&D_8018D9B0[gMenuTextureBufferIndex], tex2, texture->width * texture->height * 2);
                     break;
@@ -5009,12 +5011,12 @@ void func_8009CE64(s32 arg0) {
                         gNextDemoId = 0;
                     }
                     printf("\nSELECTED!!!!!\n");
-                    //SetCupIndex(gCurrentCourseId); // World->GetCourse
-                    gCupSelection = GetCupIndex(); //gCupSelectionByCourseId[gCurrentCourseId];
+                    // SetCupIndex(gCurrentCourseId); // World->GetCourse
+                    gCupSelection = GetCupIndex(); // gCupSelectionByCourseId[gCurrentCourseId];
                     D_800DC540 = (s32) GetCupIndex();
                     gCourseIndexInCup = GetCupCursorPosition();
-                    //gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
-                    //SetCupCursorPosition(); // 
+                    // gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
+                    // SetCupCursorPosition(); //
                     break;
                 case 3: /* switch 3 */
                     switch (gMenuSelection) {
@@ -5075,9 +5077,7 @@ void func_8009CE64(s32 arg0) {
                 }
             }
 
-            if (GetCourse() == GetBlockFort() ||
-                GetCourse() == GetSkyscraper() ||
-                GetCourse() == GetDoubleDeck() ||
+            if (GetCourse() == GetBlockFort() || GetCourse() == GetSkyscraper() || GetCourse() == GetDoubleDeck() ||
                 GetCourse() == GetBigDonut()) {
 
                 gModeSelection = BATTLE;
@@ -5625,8 +5625,8 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             load_menu_img2(D_800E7D4C[has_unlocked_extra_mode()], 0);
             load_menu_img2(D_02004B74, 0);
             convert_img_to_greyscale(0, 0x00000019);
-            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green,
-                          D_800E74E8[type - 0x23].blue);
+            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red,
+                              D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
             break;
         case 0xF:
             var_ra->unk1C = 0x00000020;
@@ -5672,12 +5672,14 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
         case 0x30:
         case 0x31:
         case 0x32:
-            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
+            var_ra->D_8018DEE0_index =
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
             load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
             break;
         case 0xA0:
         case 0xA1:
-            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
+            var_ra->D_8018DEE0_index =
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
         case 0x5D:
             var_ra->unk1C = 0x00000020;
@@ -5698,8 +5700,8 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
         case 0x60:
         case 0x61:
         case 0x62:
-            var_ra->D_8018DEE0_index =
-                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(
+                segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
             break;
         case 0x5E:
             var_ra->unk20 = random_int(4U) + 2;
@@ -5712,8 +5714,8 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
         case 0x67:
             var_ra->unk1C = (s32) GetCupIndex();
             var_ra->unk20 = func_800B54C0(GetCupIndex(), gCCSelection);
-            var_ra->D_8018DEE0_index =
-                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(
+                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
@@ -6045,8 +6047,8 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
             case 0x23: /* switch 6 */
             case 0x24: /* switch 6 */
             case 0x25: /* switch 6 */
-                gDisplayListHead =
-                    func_8009BC9C(gDisplayListHead, D_800E7D4C[has_unlocked_extra_mode()], arg0->column, arg0->row, 3, 0);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E7D4C[has_unlocked_extra_mode()], arg0->column,
+                                                 arg0->row, 3, 0);
                 break;
             case 0xA: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
@@ -7252,7 +7254,8 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
         func_800A32B4(0xBE - arg0->column, arg0->row + (0x10 * var_s2) + 0x5A, sp70[var_s2], var_s2);
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    temp_s0 = (s32) (((f32) (get_string_width(GetCupName()) + 8) * 0.6f) / 2);//  gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2);
+    temp_s0 = (s32) (((f32) (get_string_width(GetCupName()) + 8) * 0.6f) /
+                     2); //  gCupNames[GetCupIndex()]) + 8) * 0.6f) / 2);
     draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
               arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
@@ -7443,8 +7446,7 @@ void func_800A3C84(struct_8018D9E0_entry* arg0) {
     s32 rowOffset;
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, CourseManager_GetProps()->Name
-              , 0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x43, arg0->row + 0x19, CourseManager_GetProps()->Name, 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
@@ -7984,8 +7986,8 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(3);
-        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0,
-                      1.0f, 1.0f);
+        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]],
+                      0, 1.0f, 1.0f);
         switch (arg0->cursor) { /* switch 1 */
             case 1:             /* switch 1 */
             case 11:            /* switch 1 */
@@ -8212,12 +8214,12 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
-    Mtx *mtx;
+void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
+    Mtx* mtx;
     f32 tmp;
     static float x2, y2, z2;
     static float x1, y1, z1;
-    
+
     mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (arg0->unk24 > 1.5) {
         arg0->unk24 *= 0.95;
@@ -8233,7 +8235,12 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
     y2 += y1;
     z2 += z1;
 
-    if(x2); if(y2); if(z2);
+    if (x2)
+        ;
+    if (y2)
+        ;
+    if (z2)
+        ;
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
     guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
@@ -8244,7 +8251,8 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
     guMtxCatL(mtx, mtx + 1, mtx);
     guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
     guMtxCatL(mtx, mtx + 1, mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+              (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);
@@ -12056,8 +12064,8 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
             if (arg0->unk1C >= 0x65) {
                 arg0->unk1C = 0;
                 arg0->cursor = 1;
-                //gCupSelection %= 4;
-                //gCCSelection %= 4;
+                // gCupSelection %= 4;
+                // gCCSelection %= 4;
                 add_ui_element(0x0000012C, 0, 0, 4);
             }
             break;

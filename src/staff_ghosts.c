@@ -14,6 +14,7 @@
 #include "code_80091750.h"
 #include "code_80057C60.h"
 #include "kart_dma.h"
+#include "port/Game.h"
 
 u8* D_80162D80;
 s16 D_80162D84;

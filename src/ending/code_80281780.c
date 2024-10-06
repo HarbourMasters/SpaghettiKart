@@ -22,6 +22,7 @@
 #include "menus.h"
 #include "render_courses.h"
 #include <string.h>
+#include "port/Game.h"
 
 #define bcopy memcpy
 

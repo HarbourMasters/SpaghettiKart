@@ -14,6 +14,7 @@
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include <stdbool.h>
+#include "port/Game.h"
 
 s8 D_8018EF10;
 UnkStruct8018EF18 D_8018EF18[16];

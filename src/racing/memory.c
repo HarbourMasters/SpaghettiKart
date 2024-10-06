@@ -26,6 +26,8 @@
 
 #include <stdio.h>
 
+#include "port/Game.h"
+
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 

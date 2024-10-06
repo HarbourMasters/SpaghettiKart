@@ -11,6 +11,7 @@
 #include "code_800029B0.h"
 #include <assert.h>
 #include <defines.h>
+#include "port/Game.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -1595,7 +1596,7 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
     triangle->vtx1 = vtx1;
     triangle->vtx2 = vtx2;
     triangle->vtx3 = vtx3;
-     if ((triangle->vtx1->v.flag == 4) && (triangle->vtx2->v.flag == 4) && (triangle->vtx3->v.flag == 4)) {
+    if ((triangle->vtx1->v.flag == 4) && (triangle->vtx2->v.flag == 4) && (triangle->vtx3->v.flag == 4)) {
 
         return;
     }
@@ -2123,7 +2124,7 @@ void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 al
 /**
  * Recursive search for vertices and set their colour values.
  */
-void find_vtx_and_set_colours(Gfx *displayList, s8 alpha, u8 red, u8 green, u8 blue) {
+void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 blue) {
     Gfx* gfx = (Gfx*) displayList;
     uintptr_t lo;
     uintptr_t hi;
@@ -2136,7 +2137,7 @@ void find_vtx_and_set_colours(Gfx *displayList, s8 alpha, u8 red, u8 green, u8 b
         if (opcode == (G_ENDDL << 24)) {
             break;
         } else if (opcode == (G_DL << 24)) {
-            find_vtx_and_set_colours((Gfx *)hi, alpha, red, green, blue);
+            find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);
         } else if (opcode == (G_VTX << 24)) {
             // G_VTX contains an addr hi
             set_vertex_colours(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1, alpha, red, green, blue);

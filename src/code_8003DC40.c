@@ -7,6 +7,7 @@
 #include "effects.h"
 #include "code_8003DC40.h"
 #include "defines.h"
+#include "port/Game.h"
 
 void func_8003DC40(Player* player) {
     player->unk_DAC = 1.0f;

@@ -37,6 +37,7 @@
 #include "sounds.h"
 #include "data/some_data.h"
 #include <assets/some_data.h>
+#include "port/Game.h"
 
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r, g, b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -2592,7 +2593,8 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 case 1: /* switch 1 */
                     func_80079084(playerId);
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
-                    if ((GetCourse() == GetLuigiRaceway()) && (D_80165898 == 0) && (gModeSelection != (s32) TIME_TRIALS)) {
+                    if ((GetCourse() == GetLuigiRaceway()) && (D_80165898 == 0) &&
+                        (gModeSelection != (s32) TIME_TRIALS)) {
                         D_80165898 = 1;
                     }
                     break;

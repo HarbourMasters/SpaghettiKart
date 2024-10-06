@@ -26,6 +26,7 @@
 #include "code_80091750.h"
 #include "effects.h"
 #include "decode.h"
+#include "port/Game.h"
 
 f32 D_80165210[8];
 f32 D_80165230[8];
@@ -1124,21 +1125,21 @@ void func_8003C0F0(void) {
         D_80165230[6] = 150.0f;
         D_80165230[7] = 170.0f;
         spawn_player(gPlayerOneCopy, 0, D_80165210[0], D_80165230[0], sp5A, 32768.0f, gCharacterSelections[0],
-                        PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+                     PLAYER_EXISTS | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
         spawn_player(gPlayerTwo, 1, D_80165210[1], D_80165230[1], sp5A, 32768.0f, 1,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerThree, 2, D_80165210[2], D_80165230[2], sp5A, 32768.0f, 2,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerFour, 3, D_80165210[3], D_80165230[3], sp5A, 32768.0f, 3,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerFive, 4, D_80165210[4], D_80165230[4], sp5A, 32768.0f, 4,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerSix, 5, D_80165210[5], D_80165230[5], sp5A, 32768.0f, 5,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerSeven, 6, D_80165210[6], D_80165230[6], sp5A, 32768.0f, 6,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         spawn_player(gPlayerEight, 7, D_80165210[7], D_80165230[7], sp5A, 32768.0f, 7,
-                        PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
+                     PLAYER_EXISTS | PLAYER_KART_AI | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     }
 
