@@ -10,7 +10,7 @@ IMPORT_FUNC(void, post_debug_print)();
 IMPORT_FUNC(void, debug_print_str2)(int x, int y, char*);
 
 int fib(int n) {
-    call_extern_function("test", "testfunc", 0, NULL);
+    // call_extern_function("test", "testfunc", 0, NULL);
     if (n <= 1) {
         return n;
     }
