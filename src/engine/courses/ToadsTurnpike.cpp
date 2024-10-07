@@ -107,14 +107,7 @@ void ToadsTurnpike::LoadTextures() {
 }
 
 void ToadsTurnpike::SpawnActors() {
-    D_801625EC = 43;
-    D_801625F4 = 13;
-    D_801625F0 = 4;
-    D_802B87B0 = 993;
-    D_802B87B4 = 1000;
-    parse_course_displaylists(d_course_toads_turnpike_addr);
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
 }
 
 void ToadsTurnpike::Init() {}
