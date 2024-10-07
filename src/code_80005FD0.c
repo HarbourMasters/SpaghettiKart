@@ -2916,25 +2916,22 @@ void set_bomb_kart_spawn_positions(void) {
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
         bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
-        switch (gCurrentCourseId) {
-            case COURSE_YOSHI_VALLEY:
-                startingXPos = bombKartSpawn->startingXPos;
-                startingZPos = bombKartSpawn->startingZPos;
-                startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
-                break;
-            case COURSE_AWARD_CEREMONY:
-                temp_v0 = &D_80164550[3][bombKartSpawn->waypointIndex];
-                startingXPos = temp_v0->posX;
-                startingYPos = temp_v0->posY;
-                startingZPos = temp_v0->posZ;
-                break;
-            default:
-                temp_v0 = &D_80164550[0][bombKartSpawn->waypointIndex];
-                startingXPos = temp_v0->posX;
-                startingYPos = temp_v0->posY;
-                startingZPos = temp_v0->posZ;
-                break;
+        if (GetCourse() == GetYoshiValley()) {
+            startingXPos = bombKartSpawn->startingXPos;
+            startingZPos = bombKartSpawn->startingZPos;
+            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
+        } else if (GetCourse() == GetPodiumCeremony()) {
+            temp_v0 = &D_80164550[3][bombKartSpawn->waypointIndex];
+            startingXPos = temp_v0->posX;
+            startingYPos = temp_v0->posY;
+            startingZPos = temp_v0->posZ;
+        } else {
+            temp_v0 = &D_80164550[0][bombKartSpawn->waypointIndex];
+            startingXPos = temp_v0->posX;
+            startingYPos = temp_v0->posY;
+            startingZPos = temp_v0->posZ;
         }
+
         gBombKarts[var_s3].bombPos[0] = startingXPos;
         gBombKarts[var_s3].bombPos[1] = startingYPos;
         gBombKarts[var_s3].bombPos[2] = startingZPos;
@@ -3456,6 +3453,7 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
 
+    gNumTrains = 0; // Reset num trains to zero
     CourseManager_SpawnVehicles();
 
     CourseManager_SpawnBombKarts();

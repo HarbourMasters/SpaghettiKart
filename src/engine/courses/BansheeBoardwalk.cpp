@@ -38,6 +38,9 @@ BansheeBoardwalk::BansheeBoardwalk() {
     this->gfx = d_course_banshee_boardwalk_packed_dls;
     this->gfxSize = 3689;
     this->textures = banshee_boardwalk_textures;
+    Props.MinimapTexture = gTextureCourseOutlineBansheeBoardwalk;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Id = "mk:banshee_boardwalk";
     Props.Name = "banshee boardwalk";

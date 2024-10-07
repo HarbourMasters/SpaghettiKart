@@ -37,6 +37,9 @@ MarioRaceway::MarioRaceway() {
     this->gfx = d_course_mario_raceway_packed_dls;
     this->gfxSize = 3367;
     this->textures = mario_raceway_textures;
+    Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Id = "mk:mario_raceway";
     Props.Name = "Mario Raceway";

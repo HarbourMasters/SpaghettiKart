@@ -28,6 +28,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "collision.h"
+    #include "code_8003DC40.h"
     #include "memory.h"
     #include "sounds.h"
     extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
@@ -39,6 +40,9 @@ DKJungle::DKJungle() {
     this->gfx = d_course_dks_jungle_parkway_packed_dls;
     this->gfxSize = 4997;
     this->textures = dks_jungle_parkway_textures;
+    Props.MinimapTexture = gTextureCourseOutlineDksJungleParkway;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "d.k.'s jungle parkway";
     Props.DebugName = "jungle";
@@ -240,6 +244,10 @@ void DKJungle::RenderCredits() {
 }
 
 void DKJungle::Collision() {}
+
+void DKJungle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003F138(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
 
 void DKJungle::SpawnVehicles() {
     generate_ferry_waypoints();

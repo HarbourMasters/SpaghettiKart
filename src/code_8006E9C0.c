@@ -28,6 +28,9 @@
 #include "effects.h"
 #include <assets/boo_frames.h>
 
+#include "engine/Engine.h"
+#include "engine/courses/Course.h"
+
 void init_hud(void) {
 
     reset_object_variable();
@@ -158,11 +161,12 @@ void init_item_window(s32 objectIndex) {
 }
 
 void func_8006EEE8(s32 courseId) {
-    D_8018D240 = (uintptr_t) dma_textures(gCourseOutlineTextures[courseId], D_800E5520[courseId], D_800E5520[courseId]);
+    D_8018D240 = (uintptr_t) dma_textures(CourseManager_GetProps()->MinimapTexture, D_800E5520[courseId],
+                                          ResourceGetTexSizeByName(CourseManager_GetProps()->MinimapTexture));
     // This is incredibly dumb. D_800E5548 ought to be something more like
     // `u16 D_800E5548[][2]` but that doesn't match for some insane reason
-    D_8018D2B0 = D_800E5548[courseId * 2];
-    D_8018D2B8 = D_800E5548[courseId * 2 + 1];
+    D_8018D2B0 = CourseManager_GetProps()->D_800E5548[0]; // D_800E5548[courseId * 2];
+    D_8018D2B8 = CourseManager_GetProps()->D_800E5548[1]; // D_800E5548[courseId * 2 + 1];
 }
 
 void func_8006EF60(void) {
@@ -174,7 +178,7 @@ void func_8006EF60(void) {
     wut = D_8018D9B4 + 0xFFFF0000;
     // clang-format off
     // God forgive me for my sins...
-    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
+    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(CourseManager_GetProps()->MinimapTexture, wut, ResourceGetTexSizeByName(CourseManager_GetProps()->MinimapTexture), D_800E5520[i]); wut += D_800E5520[i]; }
     // clang-format on
 }
 

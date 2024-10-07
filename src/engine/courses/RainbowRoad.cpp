@@ -37,6 +37,9 @@ RainbowRoad::RainbowRoad() {
     this->gfx = d_course_rainbow_road_packed_dls;
     this->gfxSize = 5670;
     this->textures = rainbow_road_textures;
+    Props.MinimapTexture = gTextureCourseOutlineRainbowRoad;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 96;
 
     Props.Name = "rainbow road";
     Props.DebugName = "rainbow";

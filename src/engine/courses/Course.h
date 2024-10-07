@@ -54,6 +54,8 @@ public:
         const char* DebugName;
         const char* CourseLength;
         const char* AIBehaviour;
+        const char* MinimapTexture;
+        s16 D_800E5548[2];
         float AIMaximumSeparation;
         float AIMinimumSeparation;
         float NearPersp;

@@ -28,6 +28,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "collision.h"
+    #include "code_8003DC40.h"
     #include "memory.h"
     extern const char *koopa_troopa_beach_dls[];
     extern s8 gPlayerCount;
@@ -38,6 +39,9 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     this->gfx = d_course_koopa_troopa_beach_packed_dls;
     this->gfxSize = 5720;
     this->textures = koopa_troopa_beach_textures;
+    Props.MinimapTexture = gTextureCourseOutlineKoopaTroopaBeach;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Id = "mk:koopa_beach";
     Props.Name = "koopa troopa beach";
@@ -234,6 +238,10 @@ void KoopaTroopaBeach::RenderCredits() {
 }
 
 void KoopaTroopaBeach::Collision() {}
+
+void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
 
 void KoopaTroopaBeach::GenerateCollision() {
     parse_course_displaylists(d_course_koopa_troopa_beach_addr);

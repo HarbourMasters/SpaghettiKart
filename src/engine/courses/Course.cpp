@@ -147,6 +147,7 @@ void Course::UpdateClouds(s32 arg0, Camera* camera) {
     }
 }
 
+// Adjusts player speed on steep hills
 void Course::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }

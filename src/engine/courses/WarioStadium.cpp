@@ -28,6 +28,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "collision.h"
+    #include "code_8003DC40.h"
     #include "memory.h"
     extern const char *wario_stadium_dls[];
     extern s16 currentScreenSection;
@@ -38,6 +39,9 @@ WarioStadium::WarioStadium() {
     this->gfx = d_course_wario_stadium_packed_dls;
     this->gfxSize = 5272;
     this->textures = wario_stadium_textures;
+    Props.MinimapTexture = gTextureCourseOutlineWarioStadium;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "wario stadium";
     Props.DebugName = "stadium";
@@ -268,6 +272,10 @@ void WarioStadium::RenderCredits() {
 }
 
 void WarioStadium::Collision() {}
+
+void WarioStadium::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
 
 void WarioStadium::GenerateCollision() {
     parse_course_displaylists(d_course_wario_stadium_addr);

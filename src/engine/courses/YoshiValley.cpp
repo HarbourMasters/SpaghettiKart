@@ -38,6 +38,9 @@ YoshiValley::YoshiValley() {
     this->gfx = d_course_yoshi_valley_packed_dls;
     this->gfxSize = 4140;
     this->textures = yoshi_valley_textures;
+    Props.MinimapTexture = gTextureCourseOutlineYoshiValley;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "yoshi valley";
     Props.DebugName = "maze";

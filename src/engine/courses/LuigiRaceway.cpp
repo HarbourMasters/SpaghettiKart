@@ -28,6 +28,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "collision.h"
+    #include "code_8003DC40.h"
     #include "memory.h"
     extern const char *luigi_raceway_dls[];
     extern s16 currentScreenSection;
@@ -38,6 +39,9 @@ LuigiRaceway::LuigiRaceway() {
     this->gfx = d_course_luigi_raceway_packed_dls;
     this->gfxSize = 6377;
     this->textures = luigi_raceway_textures;
+    Props.MinimapTexture = gTextureCourseOutlineLuigiRaceway;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 96;
 
     Props.Id = "mk:luigi_raceway";
     Props.Name = "luigi raceway";
@@ -327,6 +331,10 @@ void LuigiRaceway::RenderCredits() {
 }
 
 void LuigiRaceway::Collision() {}
+
+void LuigiRaceway::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003E9EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
 
 void LuigiRaceway::GenerateCollision() {
     parse_course_displaylists(d_course_luigi_raceway_addr);

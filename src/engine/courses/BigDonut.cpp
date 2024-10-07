@@ -38,6 +38,9 @@ BigDonut::BigDonut() {
     this->gfx = d_course_big_donut_packed_dls;
     this->gfxSize = 528;
     this->textures = big_donut_textures;
+    Props.MinimapTexture = gTextureCourseOutlineBigDonut;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "big donut";
     Props.DebugName = "doughnut";

@@ -40,6 +40,9 @@ ToadsTurnpike::ToadsTurnpike() {
     this->gfx = d_course_toads_turnpike_packed_dls;
     this->gfxSize = 3427;
     this->textures = toads_turnpike_textures;
+    Props.MinimapTexture = gTextureCourseOutlineToadsTurnpike;
+    Props.D_800E5548[0] = 128;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "toad's turnpike";
     Props.DebugName = "highway";
@@ -53,7 +56,7 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {0x3E8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {1000, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;

@@ -30,7 +30,6 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     extern const char *kalimari_desert_dls[];
-    extern size_t gNumTrains;
 }
 
 KalimariDesert::KalimariDesert() {
@@ -38,6 +37,9 @@ KalimariDesert::KalimariDesert() {
     this->gfx = d_course_kalimari_desert_packed_dls;
     this->gfxSize = 5328;
     this->textures = kalimari_desert_textures;
+    Props.MinimapTexture = gTextureCourseOutlineKalimariDesert;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 96;
 
     Props.Name = "kalimari desert";
     Props.DebugName = "desert";

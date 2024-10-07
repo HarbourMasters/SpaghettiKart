@@ -44,6 +44,7 @@ extern "C" {
 TestCourse::TestCourse() {
     this->gfxSize = 100;
     this->textures = NULL;
+    Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
 
     Props.Id = "mk:test_course";
     Props.Name = "Test Course";

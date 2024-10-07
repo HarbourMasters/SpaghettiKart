@@ -37,6 +37,9 @@ SherbetLand::SherbetLand() {
     this->gfx = d_course_sherbet_land_packed_dls;
     this->gfxSize = 1803;
     this->textures = sherbet_land_textures;
+    Props.MinimapTexture = gTextureCourseOutlineSherbetLand;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "sherbet land";
     Props.DebugName = "sherbet";

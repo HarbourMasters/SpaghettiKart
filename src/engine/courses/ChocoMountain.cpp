@@ -28,6 +28,7 @@ extern "C" {
     #include "staff_ghosts.h"
     #include "actors.h"
     #include "collision.h"
+    #include "code_8003DC40.h"
     #include "memory.h"
     extern const char *choco_mountain_dls[];
 }
@@ -37,6 +38,9 @@ ChocoMountain::ChocoMountain() {
     this->gfx = d_course_choco_mountain_packed_dls;
     this->gfxSize = 2910;
     this->textures = choco_mountain_textures;
+    Props.MinimapTexture = gTextureCourseOutlineChocoMountain;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Id = "mk:choco_mountain";
     Props.Name = "choco mountain";
@@ -239,6 +243,10 @@ void ChocoMountain::RenderCredits() {
 }
 
 void ChocoMountain::Collision() {}
+
+void ChocoMountain::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+    func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+}
 
 void ChocoMountain::GenerateCollision() {
     D_800DC5BC = 1;

@@ -40,6 +40,9 @@ MooMooFarm::MooMooFarm() {
     this->gfx = d_course_moo_moo_farm_packed_dls;
     this->gfxSize = 3304;
     this->textures = moo_moo_farm_textures;
+    Props.MinimapTexture = gTextureCourseOutlineMooMooFarm;
+    Props.D_800E5548[0] = 64;
+    Props.D_800E5548[1] = 64;
 
     Props.Name = "moo moo farm";
     Props.DebugName = "farm";
