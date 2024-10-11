@@ -20,6 +20,7 @@ public:
 
     virtual void Next();
     virtual void Previous();
+    virtual void SetCourse(size_t position);
     virtual Course* GetCourse();
     virtual size_t GetSize();
 };

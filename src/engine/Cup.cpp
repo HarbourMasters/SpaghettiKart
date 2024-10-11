@@ -22,6 +22,13 @@ void Cup::Previous() {
     }
 }
 
+void Cup::SetCourse(size_t position) {
+    if ((position < 0) || (position >= Courses.size())) {
+        throw std::invalid_argument("Invalid course index.");
+    }
+    CursorPosition = position;
+}
+
 Course* Cup::GetCourse() {
     return Courses[CursorPosition];
 }

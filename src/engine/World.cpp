@@ -2,6 +2,12 @@
 #include "World.h"
 #include "Cup.h"
 #include "courses/Course.h"
+#include "vehicles/Vehicle.h"
+#include "vehicles/Train.h"
+#include "vehicles/Boat.h"
+#include "TrainCrossing.h"
+#include <memory>
+
 
 extern "C" {
    #include "camera.h"
@@ -36,6 +42,25 @@ Cup* World::GetCup() {
 
 void World::SetCourseFromCup() {
     CurrentCourse = CurrentCup->GetCourse();
+}
+
+static size_t trains;
+static size_t trucks;
+static size_t boats;
+void World::AddTrain(size_t numCarriages, f32 speed) {
+            trains++;
+            Vehicles.push_back(std::make_unique<ATrain>(trains, numCarriages, speed));
+}
+
+void World::AddBoat(f32 speed) {
+    boats++;
+    Vehicles.push_back(std::make_unique<ABoat>(boats, speed));
+}
+
+TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {
+    auto crossing = std::make_shared<TrainCrossing>(position, waypointMin, waypointMax, approachRadius, exitRadius);
+    Crossings.push_back(crossing);
+    return crossing.get();
 }
 
 //const char* World::GetCupName() {

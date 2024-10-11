@@ -9,7 +9,7 @@
  */
 void update_actor_railroad_crossing(struct RailroadCrossing* crossing) {
     // If train close?
-    if (isCrossingTriggeredByIndex[crossing->crossingId] != 0) {
+    if (CourseManager_GetCrossingOnTriggered(crossing->crossingTrigger)) {
         // Timer++
         crossing->someTimer++;
         // Reset timer

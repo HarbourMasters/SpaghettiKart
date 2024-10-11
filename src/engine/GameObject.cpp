@@ -19,6 +19,3 @@ void GameObject::Render(Camera* camera) { }
 void GameObject::Collision() {}
 void GameObject::Expire() { }
 void GameObject::Destroy() { }
-// World* GameObject::GetWorld() {
-//   //  return &gWorldInstance;
-// }

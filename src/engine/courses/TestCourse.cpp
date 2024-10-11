@@ -127,6 +127,9 @@ void TestCourse::LoadTextures() {
 
 void TestCourse::SpawnActors() {
 struct ActorSpawnData itemboxes[] = {
+    {   200, 1500, 200 , 0},
+    {   350, 2500, 300 , 1},
+    {   400, 2000, 350 , 2},
     {    40, 0, -800, 0},
     {    -40, 0, -800, 0},
     {    0, 0, -800, 0},
@@ -139,7 +142,7 @@ struct ActorSpawnData itemboxes[] = {
 };
 
 struct ActorSpawnData rocks[] = {
-    {{   200, 3000, 200 }, {0}},
+    {{   200, 1500, 200 }, {0}},
     {{   350, 2500, 300 }, {1}},
     {{   400, 2000, 350 }, {2}},
     {{ -32768,   0,   0 }, {0}},
@@ -152,10 +155,14 @@ struct ActorSpawnData rocks[] = {
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
     vec3f_set(position, 50.0f, 2.0f, 50.0f);
+
+    Vec3f crossingPos = {0, 2, 0};
+    uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);
+
     position[0] *= gCourseDirection;
     rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING)];
-
+    rrxing->crossingTrigger = crossing1;
 }
 
 void TestCourse::Init() {}
@@ -235,8 +242,9 @@ void TestCourse::SpawnVehicles() {
     gVehicle2DWaypoint = test_course_path2D;
     gVehicle2DWaypointLength = 53;
     D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
-    init_vehicles_trains(0, 5, 5.0f);
-    init_vehicles_trains(1, 5, 5.0f);
+    
+    gWorldInstance.AddTrain(5, 5.0f);
+    gWorldInstance.AddTrain(5, 5.0f);
 }
 
 void TestCourse::UpdateVehicles() {
@@ -278,17 +286,13 @@ void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 }
 
 void TestCourse::SpawnBombKarts() {
-    World* world = GetWorld();
-
-    if (world) {
-        world->SpawnObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    }
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap

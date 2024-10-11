@@ -4,6 +4,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <common_structs.h>
+#include <assert.h>
 
 // #pragma GCC diagnostic push
 // #pragma GCC diagnostic ignored "-Wmicrosoft-extension"
@@ -159,15 +160,17 @@ struct RailroadCrossing {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 someTimer;
-    /* 0x06 */ s16 crossingId;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
+    /* 0x06 */ s16 crossingId; // unused now
+    /* 0x08 */ uintptr_t* crossingTrigger; // Crossing Trigger Class
     /* 0x10 */ Vec3s rot;
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
+
+// crossingTrigger might ruin struct size when compiled on 32 bit
+static_assert(sizeof(struct RailroadCrossing) == sizeof(struct Actor), "RailroadCrossing struct size does not match base struct size");
 
 struct FallingRock {
     /* 0x00 */ s16 type;

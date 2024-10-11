@@ -27,6 +27,8 @@
 
 #include "engine/courses/PodiumCeremony.h"
 
+#include "engine/TrainCrossing.h"
+
 extern "C" {
 #include "main.h"
 #include "audio/load.h"
@@ -130,10 +132,15 @@ TestCourse* gTestCourse;
     /* Set default course; mario raceway */
     gWorldInstance.CurrentCourse = gMarioRaceway;
     gWorldInstance.CurrentCup = flower;
-    gWorldInstance.CurrentCup->CursorPosition = 3;
+    gWorldInstance.CurrentCup->CursorPosition = 2;
 }
 
 extern "C" {
+
+    World* GetWorld(void) {
+        return &gWorldInstance;
+    }
+
     u32 WorldNextCup(void) {
         return gWorldInstance.NextCup();
     }
@@ -191,9 +198,50 @@ extern "C" {
         }
     }
 
-    void CourseManager_UpdateVehicles() {
-        if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->UpdateVehicles();
+    void CourseManager_VehiclesSpawn() {
+        for (auto& vehicle : gWorldInstance.Vehicles) {
+            if (vehicle) {
+                vehicle->Spawn();
+            }
+        }
+    }
+
+    void CourseManager_VehiclesTick() {
+        for (auto& vehicle : gWorldInstance.Vehicles) {
+            if (vehicle) {
+                vehicle->Tick();
+            }
+        }
+    }
+
+    void CourseManager_VehiclesCollision(s32 playerId, Player* player) {
+        for (auto& vehicle : gWorldInstance.Vehicles) {
+            if (vehicle) {
+                vehicle->Collision(playerId, player);
+            }
+        }
+    }
+
+    void CourseManager_CrossingTrigger() {
+        for (auto& crossing : gWorldInstance.Crossings) {
+            if (crossing) {
+                crossing->CrossingTrigger();
+            }
+        }
+    }
+
+    void CourseManager_AICrossingBehaviour(s32 playerId) {
+        for (auto& crossing : gWorldInstance.Crossings) {
+            if (crossing) {
+                crossing->AICrossingBehaviour(playerId);
+            }
+        }
+    }
+
+    s32 CourseManager_GetCrossingOnTriggered(uintptr_t* crossing) {
+        TrainCrossing* ptr = (TrainCrossing*) crossing;
+        if (ptr) {
+            return ptr->OnTriggered;
         }
     }
 
@@ -334,7 +382,8 @@ extern "C" {
     }
 
     void SetCupCursorPosition(size_t position) {
-        gWorldInstance.CurrentCup->CursorPosition = position;
+        gWorldInstance.CurrentCup->SetCourse(position);
+        //gWorldInstance.CurrentCup->CursorPosition = position;
     }
 
     size_t GetCupSize() {
@@ -461,7 +510,7 @@ extern "C"
     int
     main(int argc, char* argv[]) {
 #endif
-    load_wasm();
+    //load_wasm();
     GameEngine::Create();
     // audio_init();
     // sound_init();

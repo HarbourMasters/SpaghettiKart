@@ -9,6 +9,8 @@
 #include "BombKart.h"
 #include "kalimari_desert_data.h"
 
+#include "../vehicles/Vehicle.h"
+
 extern "C" {
     #include "main.h"
     #include "camera.h"
@@ -116,27 +118,33 @@ void KalimariDesert::SpawnActors() {
 
     spawn_foliage(d_course_kalimari_desert_cactus_spawn);
     spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
+
+    Vec3f crossingPos = {-2500, 2, 2355};
+    Vec3f crossingPos2 = {-1639, 2, 68};
+    uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
+    uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
+
     vec3f_set(position, -1680.0f, 2.0f, 35.0f);
     position[0] *= gCourseDirection;
     rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING)];
-    rrxing->crossingId = 1;
+    rrxing->crossingTrigger = crossing2;
     vec3f_set(position, -1600.0f, 2.0f, 35.0f);
     position[0] *= gCourseDirection;
     rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING)];
-    rrxing->crossingId = 1;
+    rrxing->crossingTrigger = crossing2;
     vec3s_set(rotation, 0, -0x2000, 0);
     vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
     position[0] *= gCourseDirection;
     rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING)];
-    rrxing->crossingId = 0;
+    rrxing->crossingTrigger = crossing1;
     vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
     position[0] *= gCourseDirection;
     rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING)];
-    rrxing->crossingId = 0;
+    rrxing->crossingTrigger = crossing1;
 }
 
 void KalimariDesert::Init() {}
@@ -183,17 +191,13 @@ void KalimariDesert::WhatDoesThisDo(Player* player, int8_t playerId) {}
 void KalimariDesert::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
 void KalimariDesert::SpawnBombKarts() {
-    World* world = GetWorld();
-
-    if (world) {
-        world->SpawnObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-        world->SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    }
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap
@@ -206,12 +210,16 @@ void KalimariDesert::SetStaffGhost() {}
 
 void KalimariDesert::SpawnVehicles() {
     generate_train_waypoints();
-    init_vehicles_trains(0, 5, 5.0f);
-    init_vehicles_trains(1, 5, 5.0f);
+
+    gWorldInstance.AddTrain(5, 5.0f);
+    gWorldInstance.AddTrain(5, 5.0f);
+
+    //init_vehicles_trains(0, 5, 5.0f);
+    //init_vehicles_trains(1, 5, 5.0f);
 }
 
 void KalimariDesert::UpdateVehicles() {
-    update_vehicle_trains();
+    //update_vehicle_trains();
 }
 
 void KalimariDesert::BeginPlay() {  }

@@ -1,0 +1,36 @@
+#pragma once
+
+#include <libultraship.h>
+#include "Vehicle.h"
+#include <vector>
+
+extern "C" {
+#include "main.h"
+#include "vehicles.h"
+}
+
+class AVehicle; // Forward declare
+
+class ABoat : public AVehicle {
+    public:
+
+    size_t Index;
+    bool IsActive; // The paddle wheel boat only shows up if the number of players is < 3
+    Vec3f Position;
+    Vec3f Velocity;
+    u16 WaypointIndex;
+    s16 ActorIndex;
+    f32 Speed;
+    s16 RotY = 0;
+    s32 SomeFlags;
+
+    explicit ABoat(size_t idx, f32 speed);
+
+    virtual void Spawn() override;
+    virtual void BeginPlay() override;
+    virtual void Tick() override;
+    virtual void Draw() override;
+    virtual void Collision(s32 playerId, Player* player) override;
+    virtual s32 AddSmoke(size_t, Vec3f, f32);
+
+};
