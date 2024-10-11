@@ -253,10 +253,6 @@ void DKJungle::SpawnVehicles() {
 //    init_vehicles_ferry();
 }
 
-void DKJungle::UpdateVehicles() {
-    //update_vehicle_paddle_boats();
-}
-
 void DKJungle::GenerateCollision() {
     parse_course_displaylists(d_course_dks_jungle_parkway_addr);
     func_80295C6C();

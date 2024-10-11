@@ -218,10 +218,6 @@ void KalimariDesert::SpawnVehicles() {
     //init_vehicles_trains(1, 5, 5.0f);
 }
 
-void KalimariDesert::UpdateVehicles() {
-    //update_vehicle_trains();
-}
-
 void KalimariDesert::BeginPlay() {  }
 void KalimariDesert::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);

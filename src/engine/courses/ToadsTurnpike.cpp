@@ -216,13 +216,6 @@ void ToadsTurnpike::SpawnVehicles() {
     init_vehicles_cars();
 }
 
-void ToadsTurnpike::UpdateVehicles() {
-    update_vehicle_box_trucks();
-    update_vehicle_school_bus();
-    update_vehicle_tanker_trucks();
-    update_vehicle_cars();
-}
-
 void ToadsTurnpike::GenerateCollision() {
     D_801625EC = 43;
     D_801625F4 = 13;
