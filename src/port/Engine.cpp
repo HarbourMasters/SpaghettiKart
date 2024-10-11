@@ -49,7 +49,8 @@ GameEngine::GameEngine() {
         !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
-                if (StringHelper::IEquals(p.path().extension().string(), ".otr")) {
+                auto ext = p.path().extension().string();
+                if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
                     OTRFiles.push_back(p.path().generic_string());
                 }
             }
