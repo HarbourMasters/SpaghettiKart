@@ -1,5 +1,6 @@
 
 #include <libultraship.h>
+#include <libultra/gbi.h>
 #include "Train.h"
 #include <vector>
 
@@ -14,10 +15,14 @@ extern "C" {
 #include "sounds.h"
 #include "update_objects.h"
 #include "waypoints.h"
+#include "code_80057C60.h"
+#include "math_util_2.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
   //  #include "common_structs.h"
 }
 
-ATrain::ATrain(size_t idx, size_t numCarriages, f32 speed) {
+ATrain::ATrain(size_t idx, size_t numCarriages, f32 speed, uint32_t waypoint) {
     u16 waypointOffset;
     TrainCarStuff* ptr1;
     Path2D* pos;
@@ -25,13 +30,16 @@ ATrain::ATrain(size_t idx, size_t numCarriages, f32 speed) {
     Index = idx;
     Speed = speed;
 
+    // Set to the default value
+    std::fill(SmokeParticles, SmokeParticles + 128, NULL_OBJECT_ID);
+
     for (size_t i = 0; i < numCarriages; i++) {
         PassengerCars.push_back(TrainCarStuff());
     }
 
     // outputs 160 or 392 depending on the train.
     // Wraps the value around to always output a valid waypoint.
-    waypointOffset = (((Index * gVehicle2DWaypointLength) / 2) + 160) % gVehicle2DWaypointLength;
+    waypointOffset = waypoint;
 
     // 120.0f is about the maximum usable value
     for (size_t i = 0; i < PassengerCars.size(); i++) {
@@ -75,7 +83,7 @@ ATrain::ATrain(size_t idx, size_t numCarriages, f32 speed) {
             break;
     }
 
-    gTrainSmokeTimer = 0;
+    AnotherSmokeTimer = 0;
 }
 
 void ATrain::Spawn() {
@@ -158,7 +166,7 @@ void ATrain::Tick() {
     s32 j;
     Vec3f smokePos;
 
-    gTrainSmokeTimer += 1;
+    AnotherSmokeTimer += 1;
 
     oldWaypointIndex = (u16) Locomotive.waypointIndex;
 
@@ -186,12 +194,13 @@ void ATrain::Tick() {
     SomeFlags = set_vehicle_render_distance_flags(
         Locomotive.position, TRAIN_SMOKE_RENDER_DISTANCE, SomeFlags);
     // Renders locomotive smoke on all screens if any player is within range.
-    if ((((s16) gTrainSmokeTimer % 5) == 0) && (SomeFlags != 0)) {
+    if ((((s16) AnotherSmokeTimer % 5) == 0) && (SomeFlags != 0)) {
         smokePos[0] = Locomotive.position[0];
         smokePos[1] = (f32) ((f64) Locomotive.position[1] + 65.0);
         smokePos[2] = (f32) ((f64) Locomotive.position[2] + 25.0);
         adjust_position_by_angle(smokePos, Locomotive.position, orientationYUpdate);
         //spawn_train_smoke(Index, smokePos, 1.1f);
+        printf("\nSMOKE HERE: %d\n\n", Index);
         AddSmoke(Index, smokePos, 1.1f);
     }
 
@@ -274,69 +283,12 @@ void ATrain::Collision(s32 playerId, Player* player) {
 
 
 void ATrain::Draw(s32 playerId) {
-
-}
-
-void ATrain::CrossingActivation() {
-    f32 temp_f16;
-    f32 temp_f18;
-    f32 temp_f12;
-    s32 i;
-    isCrossingTriggeredByIndex[0] = 0;
-    isCrossingTriggeredByIndex[1] = 0;
-
-    temp_f16 = Locomotive.waypointIndex / ((f32) gVehicle2DWaypointLength);
-    temp_f18 = 0.72017354f;
-    temp_f12 = 0.42299348f;
-
-    if (((temp_f12 - 0.1) < temp_f16) &&
-        (temp_f16 < ((((f64) NumCars) * 0.01) + (temp_f12 + 0.01)))) {
-
-        isCrossingTriggeredByIndex[0] = 1;
-    }
-    if (((temp_f18 - 0.1) < temp_f16) &&
-        (temp_f16 < ((((f64) NumCars) * 0.01) + (temp_f18 + 0.01)))) {
-
-        isCrossingTriggeredByIndex[1] = 1;
-    }
-
-    for (i = 0; i < NUM_CROSSINGS; i++) {
-        if (isCrossingTriggeredByIndex[i] == 1) {
-            sCrossingActiveTimer[i] += 1;
-        } else {
-            sCrossingActiveTimer[i] = 0;
-        }
-    }
-}
-
-void ATrain::AICrossingBehaviour(s32 playerId) {
-    bStopAICrossing[playerId] = 0;
-
-    if ((!(D_801631E0[playerId] != 0)) ||
-        (set_vehicle_render_distance_flags(gPlayers[playerId].pos, TRAIN_CROSSING_AI_DISTANCE, 0))) {
-
-        if ((isCrossingTriggeredByIndex[1] == 1) && ((sCrossingActiveTimer[1]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
-
-            if ((sSomeNearestWaypoint > 176) && (sSomeNearestWaypoint < 182)) {
-                bStopAICrossing[playerId] = 1;
-            }
-        }
-        if ((isCrossingTriggeredByIndex[0] == 1) && ((sCrossingActiveTimer[0]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
-            if ((sSomeNearestWaypoint >= 306) && (sSomeNearestWaypoint < 310)) {
-                bStopAICrossing[playerId] = 1;
-            }
-        }
-    }
 }
 
 s32 ATrain::AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity) {
-    s32 objectIndex;
-
-    if (trainIndex == 0) {
-        objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
-        if (objectIndex != NULL_OBJECT_ID) {
-            init_train_smoke(objectIndex, pos, velocity);
-        }
+    s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
+    if (objectIndex != NULL_OBJECT_ID) {
+        init_train_smoke(objectIndex, pos, velocity);
     }
     return objectIndex;
 }

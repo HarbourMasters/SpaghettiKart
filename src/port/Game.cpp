@@ -29,6 +29,8 @@
 
 #include "engine/TrainCrossing.h"
 
+#include "Smoke.h"
+
 extern "C" {
 #include "main.h"
 #include "audio/load.h"
@@ -255,6 +257,14 @@ extern "C" {
         if (ptr) {
             return ptr->OnTriggered;
         }
+    }
+
+    void CourseManager_TrainSmokeTick(void) {
+        TrainSmokeTick();
+    }
+
+    void CourseManager_TrainSmokeDraw(s32 cameraId) {
+        TrainSmokeDraw(cameraId);
     }
 
     void CourseManager_LoadTextures() {

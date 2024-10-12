@@ -109,12 +109,12 @@ public:
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     // std::vector<std::unique_ptr<GameActor>> GameActors;
 
-    void AddBoat(f32 speed);
-    void AddTrain(size_t numCarriages, f32 speed);
-    void AddTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
-    void AddBus(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
-    void AddTankerTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
-    void AddCar(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
+    void AddBoat(f32 speed, uint32_t waypoint);
+    void AddTrain(size_t numCarriages, f32 speed, uint32_t waypoint);
+    void AddTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
+    void AddBus(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
+    void AddTankerTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
+    void AddCar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
     std::vector<std::unique_ptr<AVehicle>> Vehicles;
     void ResetVehicles(void);
 

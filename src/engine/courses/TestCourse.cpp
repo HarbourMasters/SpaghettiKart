@@ -243,8 +243,8 @@ void TestCourse::SpawnVehicles() {
     gVehicle2DWaypointLength = 53;
     D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
     
-    gWorldInstance.AddTrain(5, 5.0f);
-    gWorldInstance.AddTrain(5, 5.0f);
+    gWorldInstance.AddTrain(5, 5.0f, 0);
+    gWorldInstance.AddTrain(5, 5.0f, 8);
 }
 
 void TestCourse::UpdateVehicles() {

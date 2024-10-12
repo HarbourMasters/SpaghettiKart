@@ -9,6 +9,8 @@
 #include "BombKart.h"
 #include "assets/dks_jungle_parkway_data.h"
 
+#include "engine/vehicles/Utils.h"
+
 extern "C" {
     #include "main.h"
     #include "camera.h"
@@ -248,9 +250,7 @@ void DKJungle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f 
 void DKJungle::SpawnVehicles() {
     generate_ferry_waypoints();
 
-    gWorldInstance.AddBoat(1.6666666f);
-    gWorldInstance.AddBoat(1.6666666f);
-//    init_vehicles_ferry();
+    gWorldInstance.AddBoat(1.6666666f, 0);
 }
 
 void DKJungle::GenerateCollision() {

@@ -16,15 +16,14 @@ extern "C" {
 extern s8 gPlayerCount;
 }
 
-ATankerTruck::ATankerTruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+ATankerTruck::ATankerTruck(size_t idx, f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
     TrackWaypoint* temp_v0;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
 
     Index = idx;
-    Lane = lane;
 
-    waypointOffset = ((((Index - 1) * numWaypoints) / Index) + Lane) % numWaypoints;
+    waypointOffset = waypoint;
     temp_v0 = &path[waypointOffset];
     Position[0] = (f32) temp_v0->posX;
     Position[1] = (f32) temp_v0->posY;

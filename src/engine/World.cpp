@@ -55,34 +55,34 @@ static size_t busses;
 static size_t tankerTrucks;
 static size_t cars;
 static size_t boats;
-void World::AddTrain(size_t numCarriages, f32 speed) {
+void World::AddTrain(size_t numCarriages, f32 speed, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ATrain>(trains, numCarriages, speed, waypoint));
     trains++;
-    Vehicles.push_back(std::make_unique<ATrain>(trains, numCarriages, speed));
 }
 
-void World::AddBoat(f32 speed) {
+void World::AddBoat(f32 speed, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ABoat>(boats, speed, waypoint));
     boats++;
-    Vehicles.push_back(std::make_unique<ABoat>(boats, speed));
 }
 
-void World::AddTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+void World::AddTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ATruck>(trucks, speedA, speedB, path, waypoint));
     trucks++;
-    Vehicles.push_back(std::make_unique<ATruck>(trucks, speedA, speedB, lane, path));
 }
 
-void World::AddBus(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+void World::AddBus(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ABus>(busses, speedA, speedB, path, waypoint));
     busses++;
-    Vehicles.push_back(std::make_unique<ABus>(busses, speedA, speedB, lane, path));
 }
 
-void World::AddTankerTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+void World::AddTankerTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ATankerTruck>(tankerTrucks, speedA, speedB, path, waypoint));
     tankerTrucks++;
-    Vehicles.push_back(std::make_unique<ATankerTruck>(tankerTrucks, speedA, speedB, lane, path));
 }
 
-void World::AddCar(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+void World::AddCar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Vehicles.push_back(std::make_unique<ACar>(cars, speedA, speedB, path, waypoint));
     cars++;
-    Vehicles.push_back(std::make_unique<ACar>(cars, speedA, speedB, lane, path));
 }
 
 void World::ResetVehicles(void) {

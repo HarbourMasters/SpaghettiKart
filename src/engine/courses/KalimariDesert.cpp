@@ -8,8 +8,9 @@
 #include "World.h"
 #include "BombKart.h"
 #include "kalimari_desert_data.h"
+#include "engine/vehicles/Utils.h"
 
-#include "../vehicles/Vehicle.h"
+#include "engine/vehicles/Vehicle.h"
 
 extern "C" {
     #include "main.h"
@@ -176,14 +177,6 @@ void KalimariDesert::InitCourseObjects() {
     }
 }
 
-void KalimariDesert::UpdateCourseObjects() {
-    update_train_smoke();
-}
-
-void KalimariDesert::RenderCourseObjects(s32 cameraId) {
-    render_object_trains_smoke_particles(cameraId);
-}
-
 void KalimariDesert::SomeSounds() {}
 
 void KalimariDesert::WhatDoesThisDo(Player* player, int8_t playerId) {}
@@ -211,11 +204,15 @@ void KalimariDesert::SetStaffGhost() {}
 void KalimariDesert::SpawnVehicles() {
     generate_train_waypoints();
 
-    gWorldInstance.AddTrain(5, 5.0f);
-    gWorldInstance.AddTrain(5, 5.0f);
+    s32 numTrains = 2;
+    s32 centerWaypoint = 160;
 
-    //init_vehicles_trains(0, 5, 5.0f);
-    //init_vehicles_trains(1, 5, 5.0f);
+    // Spawn two trains
+    for (size_t i = 0; i < numTrains; ++i) {
+        uint32_t waypoint = CalculateWaypointDistribution(i, numTrains, gVehicle2DWaypointLength, centerWaypoint);
+        
+        gWorldInstance.AddTrain(5, 5.0f, waypoint);
+    }
 }
 
 void KalimariDesert::BeginPlay() {  }

@@ -695,6 +695,7 @@ void render_player_snow_effect_four(void) {
 void render_object_for_player(s32 cameraId) {
 
     CourseManager_RenderCourseObjects(cameraId);
+    CourseManager_TrainSmokeDraw(cameraId);
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -1569,6 +1570,7 @@ void func_8005A71C(void) {
 void update_object(void) {
 
     CourseManager_UpdateCourseObjects();
+    CourseManager_TrainSmokeTick();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:

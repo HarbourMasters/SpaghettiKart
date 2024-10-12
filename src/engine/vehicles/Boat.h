@@ -25,7 +25,12 @@ class ABoat : public AVehicle {
     s16 RotY = 0;
     s32 SomeFlags;
 
-    explicit ABoat(size_t idx, f32 speed);
+    int32_t SmokeParticles[128];
+    int32_t NextParticlePtr = 0;
+    int16_t AnotherSmokeTimer = 0;
+    int16_t SmokeTimer = 0;
+
+    explicit ABoat(size_t idx, f32 speed, uint32_t waypoint);
 
     virtual void Spawn() override;
     virtual void BeginPlay() override;

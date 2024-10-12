@@ -25,7 +25,6 @@ class ATankerTruck : public AVehicle {
     Vec3s Rotation;
     f32 SomeMultiplierTheSequel;
     s8 SomeFlagsTheSequel = 0;
-    s32 Lane;
     u16 WaypointIndex;
     s8 SomeFlags = 0;
     s16 SomeType;
@@ -34,7 +33,7 @@ class ATankerTruck : public AVehicle {
     f32 SomeArg4 = 12.5f;
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03);
 
-    explicit ATankerTruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
+    explicit ATankerTruck(size_t idx, f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
 
     virtual void Spawn() override;
     virtual void BeginPlay() override;

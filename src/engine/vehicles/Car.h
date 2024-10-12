@@ -16,7 +16,7 @@ class AVehicle; // Forward declare
 class ACar : public AVehicle {
     public:
 
-    explicit ACar(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
+    explicit ACar(size_t idx, f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
 
     const char* Type;
     size_t Index;
@@ -27,7 +27,6 @@ class ACar : public AVehicle {
     Vec3s Rotation;
     f32 SomeMultiplierTheSequel;
     s8 SomeFlagsTheSequel = 0;
-    s32 Lane;
     u16 WaypointIndex;
     s8 SomeFlags = 0;
     s16 SomeType;
@@ -35,8 +34,6 @@ class ACar : public AVehicle {
     f32 SomeArg3 = 11.5f;
     f32 SomeArg4 = 8.5f;
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x05);
-
-    //explicit ACar(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
 
     virtual void Spawn() override;
     virtual void BeginPlay() override;

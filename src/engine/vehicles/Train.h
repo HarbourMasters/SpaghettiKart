@@ -25,7 +25,12 @@ class ATrain : public AVehicle {
     const char* Type = "mk:train";
     size_t Index; // Spawns the train in halves of the train path
 
-    explicit ATrain(size_t idx, size_t numCarriages, f32 speed);
+    int32_t SmokeParticles[128];
+    int32_t NextParticlePtr = 0;
+    int16_t AnotherSmokeTimer = 0;
+    int16_t SmokeTimer = 0;
+
+    explicit ATrain(size_t idx, size_t numCarriages, f32 speed, uint32_t waypoint);
 
     virtual void Spawn() override;
     virtual void BeginPlay() override;
@@ -34,7 +39,4 @@ class ATrain : public AVehicle {
     virtual void Collision(s32 playerId, Player* player) override;
     s32 AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity);
     void SyncComponents(TrainCarStuff* trainCar, s16 orientationY);
-    void AICrossingBehaviour(s32 playerId);
-    void CrossingActivation();
-
 };

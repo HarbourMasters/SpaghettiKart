@@ -14,14 +14,17 @@ extern "C" {
 extern s8 gPlayerCount;
 }
 
-ABoat::ABoat(size_t idx, f32 speed) {
+ABoat::ABoat(size_t idx, f32 speed, u32 waypoint) {
     Path2D* temp_a2;
-    u16 temp;
+    u16 waypointOffset;
     Index = idx;
     Speed = speed;
 
-    temp = Index * 0xB4;
-    temp_a2 = &gVehicle2DWaypoint[temp];
+    // Set to the default value
+    std::fill(SmokeParticles, SmokeParticles + 128, NULL_OBJECT_ID);
+
+    waypointOffset = waypoint;
+    temp_a2 = &gVehicle2DWaypoint[waypointOffset];
     Position[0] = temp_a2->x;
     Position[1] = D_80162EB2;
     Position[2] = temp_a2->z;
@@ -36,7 +39,6 @@ ABoat::ABoat(size_t idx, f32 speed) {
     Velocity[0] = 0.0f;
     Velocity[1] = 0.0f;
     Velocity[2] = 0.0f;
-    gFerrySmokeTimer = 0;
 }
 
 void ABoat::Spawn() {
@@ -71,7 +73,7 @@ void ABoat::Tick() {
     UNUSED s32 pad;
     Vec3f smokePos;
     UNUSED s32 pad2;
-    gFerrySmokeTimer += 1;
+    AnotherSmokeTimer += 1;
     if (IsActive == 1) {
         temp_f26 = Position[0];
         temp_f28 = Position[1];
@@ -80,7 +82,7 @@ void ABoat::Tick() {
                                             Speed);
         SomeFlags = set_vehicle_render_distance_flags(Position, BOAT_SMOKE_RENDER_DISTANCE,
                                                                     SomeFlags);
-        if ((((s16) gFerrySmokeTimer % 10) == 0) && (SomeFlags != 0)) {
+        if ((((s16) AnotherSmokeTimer % 10) == 0) && (SomeFlags != 0)) {
             smokePos[0] = (f32) ((f64) Position[0] - 30.0);
             smokePos[1] = (f32) ((f64) Position[1] + 180.0);
             smokePos[2] = (f32) ((f64) Position[2] + 45.0);
@@ -187,7 +189,7 @@ void ABoat::Collision(s32 playerId, Player* player) {
 }
 
 s32 ABoat::AddSmoke(size_t ferryIndex, Vec3f pos, f32 velocity) {
-    s32 objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
+    s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
         init_ferry_smoke(objectIndex, pos, velocity);
     }
