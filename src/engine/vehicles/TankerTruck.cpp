@@ -60,24 +60,7 @@ ATankerTruck::ATankerTruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWa
 void ATankerTruck::Spawn() {
         spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
                               Speed);
-        ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_BOX_TRUCK);
-    //if (Compare(Dict[Type], "mk:bus")) {
-    //    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel, Speed);
-    //    ActorIndex = add_actor_to_empty_slot(Position, Rotation,
-    //                                                        Velocity, ACTOR_SCHOOL_BUS);
-    //}
-    // if (Compare(Dict[Type], "mk:tanker")) {
-    //     spawn_vehicle_on_road(tempTankerTruck);
-    //     tempTankerTruck->actorIndex =
-    //         add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
-    //                                 tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
-    // }
-    // if (Compare(Dict[Type], "mk:car")) {
-    //     tempCar = &gCarList[loopIndex];
-    //     spawn_vehicle_on_road(tempCar);
-    //     tempCar->actorIndex =
-    //         add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
-    // }
+        ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_TANKER_TRUCK);
 }
 
 void ATankerTruck::BeginPlay() {
