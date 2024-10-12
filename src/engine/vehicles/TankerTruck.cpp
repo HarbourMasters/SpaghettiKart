@@ -1,5 +1,5 @@
 #include <libultraship.h>
-#include "Truck.h"
+#include "TankerTruck.h"
 #include <vector>
 
 extern "C" {
@@ -16,7 +16,7 @@ extern "C" {
 extern s8 gPlayerCount;
 }
 
-ATruck::ATruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+ATankerTruck::ATankerTruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
     TrackWaypoint* temp_v0;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
@@ -57,7 +57,7 @@ ATruck::ATruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path
     D_801631C8 = 10;
 }
 
-void ATruck::Spawn() {
+void ATankerTruck::Spawn() {
         spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
                               Speed);
         ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_BOX_TRUCK);
@@ -80,11 +80,11 @@ void ATruck::Spawn() {
     // }
 }
 
-void ATruck::BeginPlay() {
+void ATankerTruck::BeginPlay() {
 
 }
 
-void ATruck::Draw(s32 playerId) {
+void ATankerTruck::Draw(s32 playerId) {
     s32 var_v0;
     s32 var_s2;
     s32 waypointCount;
@@ -102,7 +102,7 @@ void ATruck::Draw(s32 playerId) {
     }
 }
 
-void ATruck::Tick() {
+void ATankerTruck::Tick() {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;
@@ -167,7 +167,7 @@ void ATruck::Tick() {
     vehicleActor->velocity[2] = Velocity[2];
 }
 
-void ATruck::Collision(s32 playerId, Player* player) {
+void ATankerTruck::Collision(s32 playerId, Player* player) {
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f22;

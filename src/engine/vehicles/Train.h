@@ -22,7 +22,7 @@ class ATrain : public AVehicle {
     f32 SomeMultiplier;
     size_t NumCars; // Non-locomotive car count?
 
-    VType type = VType::Train;
+    const char* Type = "mk:train";
     size_t Index; // Spawns the train in halves of the train path
 
     explicit ATrain(size_t idx, size_t numCarriages, f32 speed);
@@ -30,7 +30,7 @@ class ATrain : public AVehicle {
     virtual void Spawn() override;
     virtual void BeginPlay() override;
     virtual void Tick() override;
-    virtual void Draw() override;
+    virtual void Draw(s32 playerId) override;
     virtual void Collision(s32 playerId, Player* player) override;
     s32 AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity);
     void SyncComponents(TrainCarStuff* trainCar, s16 orientationY);

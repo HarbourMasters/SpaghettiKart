@@ -13,7 +13,7 @@ extern "C" {
 
 class AVehicle; // Forward declare
 
-class ATruck : public AVehicle {
+class ATankerTruck : public AVehicle {
     public:
 
     const char* Type;
@@ -34,7 +34,7 @@ class ATruck : public AVehicle {
     f32 SomeArg4 = 12.5f;
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03);
 
-    explicit ATruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
+    explicit ATankerTruck(size_t idx, f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path);
 
     virtual void Spawn() override;
     virtual void BeginPlay() override;

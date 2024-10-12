@@ -56,7 +56,7 @@ void ABoat::Spawn() {
 }
 
 void ABoat::BeginPlay() {}
-void ABoat::Draw() {}
+void ABoat::Draw(s32 playerId) {}
 void ABoat::Tick() {
     Path2D* waypoint;
     struct Actor* paddleBoatActor;

@@ -5,6 +5,10 @@
 #include "vehicles/Vehicle.h"
 #include "vehicles/Train.h"
 #include "vehicles/Boat.h"
+#include "vehicles/Truck.h"
+#include "vehicles/Bus.h"
+#include "vehicles/TankerTruck.h"
+#include "vehicles/Car.h"
 #include "TrainCrossing.h"
 #include <memory>
 
@@ -44,17 +48,46 @@ void World::SetCourseFromCup() {
     CurrentCourse = CurrentCup->GetCourse();
 }
 
+// Required for spawning vehicles in divisions across path points
 static size_t trains;
 static size_t trucks;
+static size_t busses;
+static size_t tankerTrucks;
+static size_t cars;
 static size_t boats;
 void World::AddTrain(size_t numCarriages, f32 speed) {
-            trains++;
-            Vehicles.push_back(std::make_unique<ATrain>(trains, numCarriages, speed));
+    trains++;
+    Vehicles.push_back(std::make_unique<ATrain>(trains, numCarriages, speed));
 }
 
 void World::AddBoat(f32 speed) {
     boats++;
     Vehicles.push_back(std::make_unique<ABoat>(boats, speed));
+}
+
+void World::AddTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+    trucks++;
+    Vehicles.push_back(std::make_unique<ATruck>(trucks, speedA, speedB, lane, path));
+}
+
+void World::AddBus(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+    busses++;
+    Vehicles.push_back(std::make_unique<ABus>(busses, speedA, speedB, lane, path));
+}
+
+void World::AddTankerTruck(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+    tankerTrucks++;
+    Vehicles.push_back(std::make_unique<ATankerTruck>(tankerTrucks, speedA, speedB, lane, path));
+}
+
+void World::AddCar(f32 speedA, f32 speedB, s32 lane, TrackWaypoint* path) {
+    cars++;
+    Vehicles.push_back(std::make_unique<ACar>(cars, speedA, speedB, lane, path));
+}
+
+void World::ResetVehicles(void) {
+    trains = trucks = busses = tankerTrucks = cars = boats = 0;
+    Vehicles.clear();
 }
 
 TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {

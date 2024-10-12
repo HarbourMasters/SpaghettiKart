@@ -222,6 +222,18 @@ extern "C" {
         }
     }
 
+    void CourseManager_RenderTrucks(s32 playerId) {
+        for (auto& vehicle : gWorldInstance.Vehicles) {
+            if (vehicle) {
+                vehicle->Draw(playerId);
+            }
+        }
+    }
+
+    void CourseManager_ResetVehicles(void) {
+        gWorldInstance.ResetVehicles();
+    }
+
     void CourseManager_CrossingTrigger() {
         for (auto& crossing : gWorldInstance.Crossings) {
             if (crossing) {

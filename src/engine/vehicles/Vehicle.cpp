@@ -12,7 +12,7 @@ void AVehicle::BeginPlay() {
 void AVehicle::Tick() {
 }
 
-void AVehicle::Draw() {
+void AVehicle::Draw(s32 playerId) {
 }
 
 void AVehicle::Collision(s32 playerId, Player* player) {

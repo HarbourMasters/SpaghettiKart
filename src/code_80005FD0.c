@@ -1742,13 +1742,15 @@ void func_80009B60(s32 playerId) {
                 }
                 D_801631F8[playerId] = D_801631E0[playerId];
 
+                CourseManager_RenderTrucks(playerId);
+
                 if ((GetCourse() == GetYoshiValley()) || (GetCourse() == GetPodiumCeremony())) {
                     D_801634F8[playerId].unk4 = 0.0f;
                 } else if (GetCourse() == GetToadsTurnpike()) {
-                    func_8001490C(playerId);
-                    func_80014A60(playerId);
-                    func_80014BB4(playerId);
-                    func_80014D08(playerId);
+                    // func_8001490C(playerId);
+                    // func_80014A60(playerId);
+                    // func_80014BB4(playerId);
+                    // func_80014D08(playerId);
                 }
 
                 if (D_801631E0[playerId] == 1) {
@@ -3457,6 +3459,8 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
 
+    CourseManager_ResetVehicles();
+
     CourseManager_SpawnVehicles();
 
     CourseManager_SpawnBombKarts();
@@ -4179,8 +4183,6 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
 
     sCurrentKartAIBehaviour = &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
 
-
-
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
     waypointStart = sCurrentKartAIBehaviour->waypointStart;
@@ -4353,28 +4355,28 @@ void generate_ferry_waypoints(void) {
     D_80162EB2 = -40;
 }
 
-void spawn_vehicle_on_road(VehicleStuff* vehicle) {
+void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex, s32 someMultiplierTheSequel, f32 speed) {
     f32 origXPos;
     UNUSED f32 pad;
     f32 origZPos;
 
-    origXPos = vehicle->position[0];
-    origZPos = vehicle->position[2];
+    origXPos = position[0];
+    origZPos = position[2];
     if (D_8016347A == 0) {
-        func_8000D6D0(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
-                      vehicle->someMultiplierTheSequel, 0, 3);
-        vehicle->rotation[0] = 0;
-        vehicle->rotation[1] = -0x8000;
-        vehicle->rotation[2] = 0;
+        func_8000D6D0(position, (s16*) &waypointIndex, speed,
+                      someMultiplierTheSequel, 0, 3);
+        rotation[0] = 0;
+        rotation[1] = -0x8000;
+        rotation[2] = 0;
     } else {
-        func_8000D940(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
-                      vehicle->someMultiplierTheSequel, 0);
-        vehicle->rotation[0] = 0;
-        vehicle->rotation[1] = 0;
-        vehicle->rotation[2] = 0;
+        func_8000D940(position, (s16*) &waypointIndex, speed,
+                      someMultiplierTheSequel, 0);
+        rotation[0] = 0;
+        rotation[1] = 0;
+        rotation[2] = 0;
     }
-    vehicle->velocity[0] = vehicle->position[0] - origXPos;
-    vehicle->velocity[2] = vehicle->position[2] - origZPos;
+    velocity[0] = position[0] - origXPos;
+    velocity[2] = position[2] - origZPos;
 }
 
 void spawn_course_vehicles(void) {
@@ -4397,33 +4399,33 @@ void spawn_course_vehicles(void) {
 
     CourseManager_SpawnVehicles();
 
-    if (GetCourse() == GetToadsTurnpike()) {
-        for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-            tempBoxTruck = &gBoxTruckList[loopIndex];
-            spawn_vehicle_on_road(tempBoxTruck);
-            tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation,
-                                                                tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
-        }
-        for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-            tempSchoolBus = &gSchoolBusList[loopIndex];
-            spawn_vehicle_on_road(tempSchoolBus);
-            tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation,
-                                                                tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
-        }
-        for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-            tempTankerTruck = &gTankerTruckList[loopIndex];
-            spawn_vehicle_on_road(tempTankerTruck);
-            tempTankerTruck->actorIndex =
-                add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
-                                        tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
-        }
-        for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-            tempCar = &gCarList[loopIndex];
-            spawn_vehicle_on_road(tempCar);
-            tempCar->actorIndex =
-                add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
-        }
-    }
+    // if (GetCourse() == GetToadsTurnpike()) {
+    //     for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
+    //         tempBoxTruck = &gBoxTruckList[loopIndex];
+    //         spawn_vehicle_on_road(tempBoxTruck);
+    //         tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation,
+    //                                                             tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
+    //     }
+    //     for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
+    //         tempSchoolBus = &gSchoolBusList[loopIndex];
+    //         spawn_vehicle_on_road(tempSchoolBus);
+    //         tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation,
+    //                                                             tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
+    //     }
+    //     for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
+    //         tempTankerTruck = &gTankerTruckList[loopIndex];
+    //         spawn_vehicle_on_road(tempTankerTruck);
+    //         tempTankerTruck->actorIndex =
+    //             add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
+    //                                     tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
+    //     }
+    //     for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
+    //         tempCar = &gCarList[loopIndex];
+    //         spawn_vehicle_on_road(tempCar);
+    //         tempCar->actorIndex =
+    //             add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
+    //     }
+    // }
 }
 
 void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoint) {

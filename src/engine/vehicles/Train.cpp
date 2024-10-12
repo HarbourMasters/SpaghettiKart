@@ -13,6 +13,7 @@ extern "C" {
 #include "math_util.h"
 #include "sounds.h"
 #include "update_objects.h"
+#include "waypoints.h"
   //  #include "common_structs.h"
 }
 
@@ -272,7 +273,7 @@ void ATrain::Collision(s32 playerId, Player* player) {
 }
 
 
-void ATrain::Draw() {
+void ATrain::Draw(s32 playerId) {
 
 }
 

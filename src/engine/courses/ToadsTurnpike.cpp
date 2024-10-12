@@ -210,10 +210,24 @@ void ToadsTurnpike::RenderCredits() {
 void ToadsTurnpike::Collision() {}
 
 void ToadsTurnpike::SpawnVehicles() {
-    init_vehicles_box_trucks();
-    init_vehicles_school_buses();
-    init_vehicles_trucks();
-    init_vehicles_cars();
+    f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
+    f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
+
+    if (gModeSelection == TIME_TRIALS) {
+        for (size_t i = 0; i < NUM_TIME_TRIAL_BOX_TRUCKS; i++) {
+            gWorldInstance.AddTruck(a, b, 0, &D_80164550[0][0]);
+            gWorldInstance.AddBus(a, b, 75, &D_80164550[0][0]);
+            gWorldInstance.AddTankerTruck(a, b, 50, &D_80164550[0][0]);
+            gWorldInstance.AddCar(a, b, 25, &D_80164550[0][0]);
+        }
+    } else { // All other modes
+        for (size_t i = 0; i < NUM_RACE_BOX_TRUCKS; i++) {
+            gWorldInstance.AddTruck(a, b, 0, &D_80164550[0][0]);
+            gWorldInstance.AddBus(a, b, 75, &D_80164550[0][0]);
+            gWorldInstance.AddTankerTruck(a, b, 50, &D_80164550[0][0]);
+            gWorldInstance.AddCar(a, b, 25, &D_80164550[0][0]);
+        }
+    }
 }
 
 void ToadsTurnpike::GenerateCollision() {

@@ -14,6 +14,7 @@ class AVehicle; // Forward declare
 class ABoat : public AVehicle {
     public:
 
+    const char* Type = "mk:boat";
     size_t Index;
     bool IsActive; // The paddle wheel boat only shows up if the number of players is < 3
     Vec3f Position;
@@ -29,7 +30,7 @@ class ABoat : public AVehicle {
     virtual void Spawn() override;
     virtual void BeginPlay() override;
     virtual void Tick() override;
-    virtual void Draw() override;
+    virtual void Draw(s32 playerId) override;
     virtual void Collision(s32 playerId, Player* player) override;
     virtual s32 AddSmoke(size_t, Vec3f, f32);
 
