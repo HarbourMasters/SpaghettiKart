@@ -95,10 +95,10 @@ void render_limb_or_add_mtx(Armature* arg0, s16* arg1, AnimationLimbVector arg2,
     mtxf_translate_rotate2(modelMatrix, pos, angle);
     convert_to_fixed_point_matrix_animation(&gGfxPool->mtxHud[gMatrixHudCount], modelMatrix);
     sMatrixStackSize += 1;
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&gGfxPool->mtxHud[gMatrixHudCount++]),
+    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxHud[gMatrixHudCount++]),
               G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (virtualModel != NULL) {
-        model = segmented_to_virtual(virtualModel);
+        model = (virtualModel);
         gSPDisplayList(gDisplayListHead++, model);
     }
 }
@@ -111,8 +111,10 @@ void render_armature(Armature* animation, Animation* arg1, s16 timeCycle) {
     s32 animation_type;
     s32 someIndex;
 
-    angle_array = segmented_to_virtual(arg1->angle_array);
-    animation_cycle_list = segmented_to_virtual(arg1->animation_cycle_spec_vector);
+    printf("model: %d %d %d\n", animation->pos[0], animation->pos[1], animation->pos[2]);
+
+    angle_array = (arg1->angle_array);
+    animation_cycle_list = (arg1->animation_cycle_spec_vector);
     sMatrixStackSize = 0;
     isNotTheFirst = 0;
     for (someIndex = 0; someIndex < 3; someIndex++) {
@@ -157,9 +159,9 @@ s16 render_animated_model(Armature* virtualArmature, Animation** virtualListAnim
     Animation* animation;
     Animation** listAnimation;
 
-    armature = segmented_to_virtual(virtualArmature);
-    listAnimation = segmented_to_virtual(virtualListAnimation);      // Convert the array's address
-    animation = segmented_to_virtual(listAnimation[animationIndex]); // Convert an array element's address
+    armature = (virtualArmature);
+    listAnimation = (virtualListAnimation);      // Convert the array's address
+    animation = (listAnimation[animationIndex]); // Convert an array element's address
     if (timeCycle >= animation->animation_length) {
         timeCycle = 0;
     }
@@ -172,8 +174,7 @@ s16 render_animated_model(Armature* virtualArmature, Animation** virtualListAnim
 }
 
 s16 get_animation_length(Animation** addr, s16 offset) {
-    Animation** item = segmented_to_virtual(addr);
-    Animation* temp = (Animation*) segmented_to_virtual((void*) item[offset]);
-
+    Animation** item = (addr);
+    Animation* temp = (Animation*) ((void*) item[offset]);
     return temp->animation_length - 1;
 }

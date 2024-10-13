@@ -83,15 +83,12 @@ public:
     size_t gfxSize = 0;
     const course_texture* textures = nullptr;
 
-    virtual ~Course() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~Course() = default;
 
-    // Constructor
-    explicit Course();  // UUID should be passed in constructor
+    explicit Course();
 
-    // Virtual functions to be overridden by derived classes
-    virtual void Load();
-    virtual void Load(Vtx* vtx, Gfx *gfx);
-    // This function may not be needed due to otr system.
+    virtual void Load(); // Decompress and load stock courses. Must be overridden for custom courses
+    virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom course
     virtual void LoadTextures();
     virtual void SpawnActors();
     virtual void Init();
