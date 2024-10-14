@@ -77,12 +77,12 @@ WarioStadium::WarioStadium() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_wario_stadium_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_wario_stadium_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_wario_stadium_track_waypoints;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_wario_stadium_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -110,7 +110,7 @@ void WarioStadium::SpawnActors() {
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
 
-    spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
     vec3f_set(position, -131.0f, 83.0f, 286.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
@@ -274,7 +274,7 @@ void WarioStadium::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Ve
 }
 
 void WarioStadium::GenerateCollision() {
-    parse_course_displaylists(d_course_wario_stadium_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
     // d_course_wario_stadium_packed_dl_C50

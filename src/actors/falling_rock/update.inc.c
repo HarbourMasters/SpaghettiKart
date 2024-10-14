@@ -5,7 +5,7 @@
 
 void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
 #ifndef TARGET_N64
-    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    struct ActorSpawnData* temp_v0 = spawnData;
 #else
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
@@ -24,21 +24,16 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
 }
 
 /**
- * @brief Spawns falling rocks.
+ * @brief Spawns falling sRockSpawnData.
  * Used in Choco Mountain.
  *
  * @param spawnData
  */
-struct ActorSpawnData* rocks;
-void spawn_falling_rocks(const char* spawnData) {
+static struct ActorSpawnData* sRockSpawnData;
+void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
 #ifndef TARGET_N64
-    struct ActorSpawnData* temp_s0;
-    if (GetCourse() == GetTestCourse()) {
-        temp_s0 = (struct ActorSpawnData*) spawnData;
-    } else {
-        temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
-    }
-    rocks = temp_s0;
+    struct ActorSpawnData* temp_s0 = spawnData;
+    sRockSpawnData = spawnData;
 #else
     s32 addr = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
@@ -82,7 +77,7 @@ void update_actor_falling_rocks(struct FallingRock* rock) {
         return;
     }
     if (rock->pos[1] < D_8015F8E4) {
-        func_8029CF0C(rocks, rock);
+        func_8029CF0C(sRockSpawnData, rock);
     }
     rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);
     rock->rot[2] += (s16) ((rock->velocity[0] * 5461.0f) / 20.0f);

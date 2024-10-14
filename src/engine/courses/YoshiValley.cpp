@@ -76,15 +76,15 @@ YoshiValley::YoshiValley() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_yoshi_valley_unknown_waypoints;
-    Props.PathTable[1] = d_course_yoshi_valley_unknown_waypoints_2;
-    Props.PathTable[2] = d_course_yoshi_valley_unknown_waypoints_3;
-    Props.PathTable[3] = d_course_yoshi_valley_unknown_waypoints_4;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints);
+    Props.PathTable[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_2);
+    Props.PathTable[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_3);
+    Props.PathTable[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_4);
 
-    Props.PathTable2[0] = d_course_yoshi_valley_track_waypoints;
-    Props.PathTable2[1] = d_course_yoshi_valley_track_waypoints_2;
-    Props.PathTable2[2] = d_course_yoshi_valley_track_waypoints_3;
-    Props.PathTable2[3] = d_course_yoshi_valley_track_waypoints_4;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints);
+    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_2);
+    Props.PathTable2[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
+    Props.PathTable2[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
 
     Props.Clouds = gYoshiValleyMooMooFarmClouds;
     Props.CloudList = gYoshiValleyMooMooFarmClouds;
@@ -110,8 +110,8 @@ void YoshiValley::SpawnActors() {
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
 
-    spawn_foliage(d_course_yoshi_valley_tree_spawn);
-    spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
+    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));
     vec3f_set(position, -2300.0f, 0.0f, 634.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
@@ -209,7 +209,7 @@ void YoshiValley::Collision() {}
 void YoshiValley::GenerateCollision() {
     Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
     func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
-    parse_course_displaylists(d_course_yoshi_valley_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
 }

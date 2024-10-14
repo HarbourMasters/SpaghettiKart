@@ -77,12 +77,12 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_banshee_boardwalk_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_banshee_boardwalk_track_waypoints;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -106,7 +106,7 @@ void BansheeBoardwalk::LoadTextures() {
 }
 
 void BansheeBoardwalk::SpawnActors() {
-    spawn_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
 }
 
 void BansheeBoardwalk::Init() {  }
@@ -281,7 +281,7 @@ void BansheeBoardwalk::GenerateCollision() {
     D_801625EC = 0;
     D_801625F4 = 0;
     D_801625F0 = 0;
-    parse_course_displaylists(d_course_banshee_boardwalk_track_sections);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000878)), 128, 0, 0, 0);
     D_8015F8E4 = -80.0f;

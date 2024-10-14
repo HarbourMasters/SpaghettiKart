@@ -63,7 +63,6 @@ TrackWaypoint test_course_path[] = {
     {  300, 0, 949, 4},
     {  200, 0, 950, 4},
     {  100, 0, 950, 4},
-    {    0, 0, 950, 1},      // Main point 4
 
     // End of path
     { -32768, -32768, -32768, 0 } // Terminator

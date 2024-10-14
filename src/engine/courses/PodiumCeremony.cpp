@@ -71,12 +71,12 @@ PodiumCeremony::PodiumCeremony() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_royal_raceway_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_royal_raceway_track_waypoints;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -100,9 +100,9 @@ void PodiumCeremony::LoadTextures() {
 }
 
 void PodiumCeremony::SpawnActors() {
-    spawn_foliage(d_course_royal_raceway_tree_spawn);
-    spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-    spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
+    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
+    spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
 }
 
 void PodiumCeremony::Init() {  }
@@ -231,7 +231,7 @@ void PodiumCeremony::RenderCredits() {
 void PodiumCeremony::Collision() {}
 
 void PodiumCeremony::GenerateCollision() {
-    parse_course_displaylists(d_course_royal_raceway_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
     D_8015F8E4 = -60.0f;
 }

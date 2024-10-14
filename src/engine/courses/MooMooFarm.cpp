@@ -78,12 +78,12 @@ MooMooFarm::MooMooFarm() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_moo_moo_farm_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_moo_moo_farm_track_waypoints;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -120,9 +120,9 @@ void MooMooFarm::LoadTextures() {
 
 void MooMooFarm::SpawnActors() {
     if (gPlayerCountSelection1 != 4) {
-        spawn_foliage(d_course_moo_moo_farm_tree_spawn);
+        spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
     }
-    spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_item_box_spawns));
 }
 
 void MooMooFarm::Init() {}
@@ -339,7 +339,7 @@ void MooMooFarm::RenderCredits() {
 void MooMooFarm::Collision() {}
 
 void MooMooFarm::GenerateCollision() {
-    parse_course_displaylists(d_course_moo_moo_farm_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
 }

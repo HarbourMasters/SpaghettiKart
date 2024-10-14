@@ -77,12 +77,12 @@ BowsersCastle::BowsersCastle() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_bowsers_castle_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_bowsers_castle_track_waypoints;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -107,8 +107,8 @@ void BowsersCastle::LoadTextures() {
 }
 
 void BowsersCastle::SpawnActors() {
-    spawn_foliage(d_course_bowsers_castle_tree_spawn);
-    spawn_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
+    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
 }
 
 void BowsersCastle::Init() {  }
@@ -272,7 +272,7 @@ void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, V
 }
 
 void BowsersCastle::GenerateCollision() {
-    parse_course_displaylists(d_course_bowsers_castle_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
     D_8015F8E4 = -50.0f;

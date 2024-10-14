@@ -3633,8 +3633,6 @@ void func_8000F628(void) {
     copy_courses_kart_ai_behaviour();
 }
 
-extern TrackWaypoint test_course_path[17];
-
 // @arg index from 0 to 3.
 
 // Processes course path by index.
@@ -3655,26 +3653,12 @@ void func_800100F0(s32 pathIndex) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (GetCourse() != GetPodiumCeremony()) {
-
-            if (GetCourse() == GetTestCourse()) {
-            var_v0 = process_path_data(pathDest, test_course_path);
+            var_v0 = process_path_data(pathDest, CourseManager_GetProps()->PathTable2[pathIndex]);
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
-            } else {
-
-                var_v0 = process_path_data(pathDest, LOAD_ASSET(CourseManager_GetProps()->PathTable2[pathIndex]));
-                gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
-            }
-        }
-        
-        else {
+        } else {
             // Course path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
-
-            if (GetCourse() == GetTestCourse()) {
-                path = test_course_path;
-            } else {
-                path = LOAD_ASSET(CourseManager_GetProps()->PathTable[pathIndex]);
-            }
+            path = CourseManager_GetProps()->PathTable[pathIndex];
             ptr = path;
 
             for (i = 0; i < 3000; i++, ptr++) {

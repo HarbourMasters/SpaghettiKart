@@ -60,7 +60,7 @@ TestCourse::TestCourse() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {52, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {51, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -82,12 +82,12 @@ TestCourse::TestCourse() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    //Props.PathTable[0] = test_course_path;
+    Props.PathTable[0] = test_course_path;
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    //Props.PathTable2[0] = test_course_path;
+    Props.PathTable2[0] = test_course_path;
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -147,8 +147,8 @@ struct ActorSpawnData rocks[] = {
     {{   400, 2000, 350 }, {2}},
     {{ -32768,   0,   0 }, {0}},
 };
-    spawn_all_item_boxes((const char*)itemboxes);
-    spawn_falling_rocks((const char*)rocks);
+    spawn_all_item_boxes(itemboxes);
+    spawn_falling_rocks(rocks);
 
     struct RailroadCrossing* rrxing;
     Vec3f position;
@@ -327,7 +327,7 @@ void TestCourse::Collision() {}
 void TestCourse::GenerateCollision() {
     generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
-    parse_course_displaylists((const char*)test_course_addr);
+    parse_course_displaylists((TrackSectionsI*)test_course_addr);
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
 }

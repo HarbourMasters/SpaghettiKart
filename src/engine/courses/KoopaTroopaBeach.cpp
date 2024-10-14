@@ -78,13 +78,13 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = d_course_koopa_troopa_beach_unknown_waypoints;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = d_course_koopa_troopa_beach_track_waypoints;
-    Props.PathTable2[1] = d_course_koopa_troopa_beach_track_waypoints_2;
+    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints);
+    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints_2);
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
@@ -108,8 +108,8 @@ void KoopaTroopaBeach::LoadTextures() {
 
 void KoopaTroopaBeach::SpawnActors() {
     init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
-    spawn_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-    spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
+    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));
+    spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 }
 
 void KoopaTroopaBeach::Init() {}
@@ -240,7 +240,7 @@ void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2
 }
 
 void KoopaTroopaBeach::GenerateCollision() {
-    parse_course_displaylists(d_course_koopa_troopa_beach_addr);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700ADE0)), -0x6A, 255, 255, 255);
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A540)), -0x6A, 255, 255, 255);
