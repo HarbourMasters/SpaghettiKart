@@ -152,7 +152,7 @@ void kart_ai_behaviour_end(s32, Player*);
 void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
-void generate_train_waypoints(const char*);
+void generate_train_waypoints(void);
 void generate_ferry_waypoints(void);
 void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex, s32 someMultiplierTheSequel, f32 speed);
 void spawn_course_vehicles(void);
