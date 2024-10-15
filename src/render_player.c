@@ -30,6 +30,7 @@
 #include <assets/bowser_kart.h>
 #include <assets/wario_kart.h>
 #include <assets/donkeykong_kart.h>
+#include "port/Game.h"
 
 s8 gRenderingFramebufferByPlayer[] = { 0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02 };
 
@@ -1268,14 +1269,13 @@ bool is_player_under_light_luigi_raceway(Player* player, s8 arg1) {
             ((gNearestWaypointByPlayerId[arg1] >= 0x169) && (gNearestWaypointByPlayerId[arg1] < 0x170)) ||
             ((gNearestWaypointByPlayerId[arg1] >= 0x174) && (gNearestWaypointByPlayerId[arg1] < 0x17A)) ||
             ((gNearestWaypointByPlayerId[arg1] >= 0x17E) &&
-                (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
+             (gNearestWaypointByPlayerId[arg1] < 0x184))) { // under a light in the tunnel
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
             D_80164B80[arg1] = 0;
             return true;
         }
         return false;
-
     }
     return false;
 }
@@ -1290,11 +1290,11 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
             D_80164B80[arg1] = 0;
         } else if (((gNearestWaypointByPlayerId[arg1] >= 0xF1) && (gNearestWaypointByPlayerId[arg1] < 0xF5)) ||
-                    ((gNearestWaypointByPlayerId[arg1] >= 0xFB) && (gNearestWaypointByPlayerId[arg1] < 0xFF)) ||
-                    ((gNearestWaypointByPlayerId[arg1] >= 0x105) && (gNearestWaypointByPlayerId[arg1] < 0x109)) ||
-                    ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113)) ||
-                    ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A)) ||
-                    ((gNearestWaypointByPlayerId[arg1] >= 0x15E) &&
+                   ((gNearestWaypointByPlayerId[arg1] >= 0xFB) && (gNearestWaypointByPlayerId[arg1] < 0xFF)) ||
+                   ((gNearestWaypointByPlayerId[arg1] >= 0x105) && (gNearestWaypointByPlayerId[arg1] < 0x109)) ||
+                   ((gNearestWaypointByPlayerId[arg1] >= 0x10F) && (gNearestWaypointByPlayerId[arg1] < 0x113)) ||
+                   ((gNearestWaypointByPlayerId[arg1] >= 0x145) && (gNearestWaypointByPlayerId[arg1] < 0x14A)) ||
+                   ((gNearestWaypointByPlayerId[arg1] >= 0x15E) &&
                     (gNearestWaypointByPlayerId[arg1] < 0x163))) { // under a lamp
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
@@ -1323,7 +1323,7 @@ void render_light_environment_on_player(Player* player, s8 arg1) {
             ((gNearestWaypointByPlayerId[arg1] >= 0x24C) && (gNearestWaypointByPlayerId[arg1] < 0x256)) ||
             ((gNearestWaypointByPlayerId[arg1] >= 0x288) && (gNearestWaypointByPlayerId[arg1] < 0x269)) ||
             ((gNearestWaypointByPlayerId[arg1] >= 0x274) &&
-                (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
+             (gNearestWaypointByPlayerId[arg1] < 0x27E))) { // under a lamp
             change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0x0000E0, 0.3f);
             D_80164B80[arg1] = 0;

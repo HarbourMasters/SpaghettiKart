@@ -19,6 +19,7 @@
 #include "save_data.h"
 #include <sounds.h>
 #include "spawn_players.h"
+#include "port/Game.h"
 
 /** BSS **/
 s32 D_8018EDC0;
@@ -1697,11 +1698,11 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
         switch (D_8018EDEC) {
             case 1:
                 if ((buttonAndStickPress & R_JPAD) != 0) {
-                    //if (GetCupIndex() < SPECIAL_CUP) {
-                        D_8018EE0A = WorldNextCup();
-                        //++gCupSelection;
-                        func_800B44AC();
-                        play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    // if (GetCupIndex() < SPECIAL_CUP) {
+                    D_8018EE0A = WorldNextCup();
+                    //++gCupSelection;
+                    func_800B44AC();
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
                     //}
                 }
                 if (((buttonAndStickPress & L_JPAD) != 0)) {
@@ -1953,13 +1954,13 @@ void func_800B3F74(s32 menuSelection) {
         case 13: {
             if (gModeSelection == BATTLE) {
                 SetCupIndex(BATTLE_CUP);
-                //gCupSelection = BATTLE_CUP;
+                // gCupSelection = BATTLE_CUP;
                 D_800DC540 = 4;
                 D_8018EDEC = 4;
             } else {
                 if (GetCupIndex() == BATTLE_CUP) {
                     SetCupIndex(MUSHROOM_CUP);
-                    //gCupSelection = MUSHROOM_CUP;
+                    // gCupSelection = MUSHROOM_CUP;
                 }
                 D_8018EDEC = 1;
             }

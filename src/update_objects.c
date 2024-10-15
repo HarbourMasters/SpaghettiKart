@@ -38,6 +38,7 @@
 #include "courses/all_course_offsets.h"
 #include "courses/all_course_data.h"
 #include <assets/boo_frames.h>
+#include "port/Game.h"
 
 //! @todo unused?
 f32 D_800E43B0[] = { 65536.0, 0.0, 1.0, 0.0, 0.0, 65536.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
@@ -2425,7 +2426,7 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
     gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].surfaceHeight = arg1[1];
-    
+
     if (GetCourse() == GetMarioRaceway()) {
         object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
         gObjectList[objectIndex].unk_034 = 1.5f;
@@ -2886,39 +2887,39 @@ void func_80078C70(s32 arg0) {
         //         // Uses Luigi Raceway's clouds for display purposes?
         //         //update_clouds(sp1C, camera, gLuigiRacewayClouds);
         //         break;
-            // case COURSE_YOSHI_VALLEY: /* switch 2 */
-            //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-            //     break;
-            // case COURSE_FRAPPE_SNOWLAND: /* switch 2 */
-            //     func_80078170(sp1C, camera);
-            //     break;
-            // case COURSE_KOOPA_BEACH: /* switch 2 */
-            //     update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
-            //     break;
-            // case COURSE_ROYAL_RACEWAY: /* switch 2 */
-            //     update_clouds(sp1C, camera, gRoyalRacewayClouds);
-            //     break;
-            // case COURSE_LUIGI_RACEWAY: /* switch 2 */
-            //     update_clouds(sp1C, camera, gLuigiRacewayClouds);
-            //     break;
-            // case COURSE_MOO_MOO_FARM: /* switch 2 */
-            //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-            //     break;
-            // case COURSE_TOADS_TURNPIKE: /* switch 2 */
-            //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-            //     break;
-            // case COURSE_KALAMARI_DESERT: /* switch 2 */
-            //     update_clouds(sp1C, camera, gKalimariDesertClouds);
-            //     break;
-            // case COURSE_SHERBET_LAND: /* switch 2 */
-            //     update_clouds(sp1C, camera, gSherbetLandClouds);
-            //     break;
-            // case COURSE_RAINBOW_ROAD: /* switch 2 */
-            //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-            //     break;
-            // case COURSE_WARIO_STADIUM: /* switch 2 */
-            //     update_stars(sp1C, camera, gWarioStadiumStars);
-            //     break;
+        // case COURSE_YOSHI_VALLEY: /* switch 2 */
+        //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+        //     break;
+        // case COURSE_FRAPPE_SNOWLAND: /* switch 2 */
+        //     func_80078170(sp1C, camera);
+        //     break;
+        // case COURSE_KOOPA_BEACH: /* switch 2 */
+        //     update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
+        //     break;
+        // case COURSE_ROYAL_RACEWAY: /* switch 2 */
+        //     update_clouds(sp1C, camera, gRoyalRacewayClouds);
+        //     break;
+        // case COURSE_LUIGI_RACEWAY: /* switch 2 */
+        //     update_clouds(sp1C, camera, gLuigiRacewayClouds);
+        //     break;
+        // case COURSE_MOO_MOO_FARM: /* switch 2 */
+        //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+        //     break;
+        // case COURSE_TOADS_TURNPIKE: /* switch 2 */
+        //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+        //     break;
+        // case COURSE_KALAMARI_DESERT: /* switch 2 */
+        //     update_clouds(sp1C, camera, gKalimariDesertClouds);
+        //     break;
+        // case COURSE_SHERBET_LAND: /* switch 2 */
+        //     update_clouds(sp1C, camera, gSherbetLandClouds);
+        //     break;
+        // case COURSE_RAINBOW_ROAD: /* switch 2 */
+        //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+        //     break;
+        // case COURSE_WARIO_STADIUM: /* switch 2 */
+        //     update_stars(sp1C, camera, gWarioStadiumStars);
+        //     break;
         //}
     }
 }

@@ -40,6 +40,19 @@ extern "C" void call_render_hook() {
     }
 }
 
+bool CreateDirectoryRecursive(std::string const& dirName, std::error_code& err) {
+    err.clear();
+    if (!std::filesystem::create_directories(dirName, err)) {
+        if (std::filesystem::exists(dirName)) {
+            // The folder already exists:
+            err.clear();
+            return true;
+        }
+        return false;
+    }
+    return true;
+}
+
 void load_mod_wasm_file(char* mod_name, char* buffer, size_t size) {
     char error_buf[128];
     wasm_module_t module;
@@ -186,28 +199,49 @@ extern "C" void load_wasm() {
         exit(-1);
     }
     uint32_t size;
+
+    std::error_code err;
+    if (!CreateDirectoryRecursive("mods", err)) {
+        // Report the error:
+        std::cout << "CreateDirectoryRecursive FAILED, err: " << err.message() << std::endl;
+    }
+
     /* read WASM file into a memory buffer */
-    buffer = read_wasm_binary_to_buffer("test.wasm", &size);
-    if (buffer == NULL) {
-        printf("error read binary\n");
-        exit(-1);
+    for (const auto& entry : std::filesystem::directory_iterator("mods")) {
+        if (std::filesystem::is_regular_file(entry) && entry.path().extension() == ".wasm") {
+            std::string path = entry.path().string();
+            std::string name = entry.path().stem().string();
+            printf("found %s\n", name.c_str());
+            buffer = read_wasm_binary_to_buffer((char*) path.c_str(), &size);
+            if (buffer == NULL) {
+                printf("error read binary\n");
+            }
+            load_mod_wasm_file((char*) name.c_str(), buffer, size);
+            mod_call_function_wasm((char*) name.c_str(), "init", 0, NULL);
+        }
     }
+    // buffer = read_wasm_binary_to_buffer("test.wasm", &size);
+    // if (buffer == NULL) {
+    //     printf("error read binary\n");
+    //     exit(-1);
+    // }
 
-    load_mod_wasm_file("test", buffer, size);
+    // load_mod_wasm_file("test", buffer, size);
 
-    uint32_t argv[2];
+    // uint32_t argv[2];
 
-    /* arguments are always transferred in 32-bit element */
-    argv[0] = 8;
-    printf("run fib function\n");
-    /* call the WASM function */
-    if (mod_call_function_wasm("test", "fib", 1, argv)) {
-        /* the return value is stored in argv[0] */
-        printf("fib function return: %d\n", argv[0]);
-    } else {
-        /* exception is thrown if call fails */
-        // wasm_runtime_dump_call_stack(exec_env);
-        mod_print_exception("test");
-    }
-    mod_call_function_wasm("test", "init", 0, NULL);
+    // /* arguments are always transferred in 32-bit element */
+    // argv[0] = 8;
+    // printf("run fib function\n");
+    // /* call the WASM function */
+    // if (mod_call_function_wasm("test", "fib", 1, argv)) {
+    //     /* the return value is stored in argv[0] */
+    //     printf("fib function return: %d\n", argv[0]);
+    // } else {
+    //     /* exception is thrown if call fails */
+    //     // wasm_runtime_dump_call_stack(exec_env);
+    //     mod_print_exception("test");
+    // }
+    // mod_call_function_wasm("test", "init", 0, NULL);
+    // exit(-1);
 }

@@ -20,6 +20,7 @@
 #include "freecam.h"
 
 #include "engine/GameAPI.h"
+#include "port/Game.h"
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 

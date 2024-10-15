@@ -10,6 +10,7 @@
 #include "save_data.h"
 #include "staff_ghosts.h"
 #include "code_80057C60.h"
+#include "port/Game.h"
 
 /*** macros ***/
 #define PFS_COMPANY_CODE(c0, c1) ((u16) (((c0) << 8) | ((c1))))

@@ -20,6 +20,7 @@
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "sounds.h"
+#include "port/Game.h"
 
 extern s32 D_8018D168;
 
@@ -245,9 +246,9 @@ void func_80027EDC(Player* player, s8 playerId) {
     UNUSED s32 pad;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        
+
         CourseManager_WhatDoesThisDo(player, playerId);
-        
+
         // switch (gCurrentCourseId) {
         //     // case COURSE_MARIO_RACEWAY:
         //     //     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
