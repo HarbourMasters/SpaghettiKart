@@ -26,7 +26,6 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
-    virtual void Init() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32 sp1C, Camera* camera) override;
     virtual void MinimapSettings() override;

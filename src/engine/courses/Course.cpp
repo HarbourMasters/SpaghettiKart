@@ -125,8 +125,6 @@ void Course::SpawnActors() {
 
 }
 
-void Course::Init() {
-}
 void Course::InitClouds() {
     if (this->Props.Clouds) {
         init_clouds(this->Props.Clouds);

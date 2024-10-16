@@ -26,22 +26,12 @@ World::World() {}
 Course* CurrentCourse;
 Cup* CurrentCup;
 
-Cup* World::AddCup(const char* name, std::vector<Course*> courses) {
-    // Create a new unique_ptr for Cup
-    auto cup = std::make_shared<Cup>(name, courses);
-
-    // Get raw pointer before moving the ownership
-    Cup* tmp = cup.get();
-
-    // Add the Cup to the container
-    Cups.push_back(std::move(cup));
-
-    // Return the raw pointer to the Cup
-    return tmp;
+void World::AddCourse(Course* course) {
+    gWorldInstance.Courses.push_back(course);
 }
 
-Cup* World::GetCup() {
-    return Cups[CupIndex].get();
+void World::AddCup(Cup* cup) {
+    Cups.push_back(cup);
 }
 
 void World::SetCourseFromCup() {
@@ -96,15 +86,6 @@ TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointM
     return crossing.get();
 }
 
-//const char* World::GetCupName() {
-//    //return this->Cups[CupIndex].Name;
-//}
-
-void World::SetCupIndex(int16_t courseId) {
-
-    this->CupIndex = courseId;
-}
-
 u32 World::GetCupIndex() {
     return this->CupIndex;
 }
@@ -117,9 +98,10 @@ u32 World::NextCup() {
         hack = 2;
     }
 
-    if (this->CupIndex < Cups.size() - 2) {
+    if (CupIndex < Cups.size() - hack) {
         CupIndex++;
-        CurrentCup = Cups[CupIndex].get();
+        CurrentCup = Cups[CupIndex];
+        CurrentCup->CursorPosition = 0;
         return CupIndex;
     }
 }
@@ -127,14 +109,17 @@ u32 World::NextCup() {
 u32 World::PreviousCup() {
     if (CupIndex > 0) {
         CupIndex--;
-        CurrentCup = Cups[CupIndex].get();
+        CurrentCup = Cups[CupIndex];
+        CurrentCup->CursorPosition = 0;
         return CupIndex;
     }
 }
 
-void World::SetCup() {
-    CurrentCup = Cups[CupIndex].get();
-    CurrentCup->CursorPosition = 0;
+void World::SetCup(Cup* cup) {
+    if (cup) {
+        CurrentCup = cup;
+        CurrentCup->CursorPosition = 0;
+    }
 }
 
 CProperties* World::GetCourseProps() {
@@ -144,9 +129,10 @@ CProperties* World::GetCourseProps() {
     return nullptr;
 }
 
-void World::SetCourse(const char*name) {
+void World::SetCourse(const char* name) {
+    //! @todo Use content dictionary instead
     for (size_t i = 0; i < Courses.size(); i++) {
-        if (Courses[i]->Props.Name == name) {
+        if (strcmp(Courses[i]->Props.Name, name) == 0) {
             CurrentCourse = Courses[i];
             break;
         }

@@ -1,15 +1,18 @@
+#ifndef _GAME_H
+#define _GAME_H
+
 #include <libultraship.h>
 #include "engine/Engine.h"
 
 #ifdef __cplusplus
 extern "C" {
+#include "camera.h"
 #endif
+
 u32 WorldNextCup(void);
 
 u32 WorldPreviousCup(void);
 
-void SetCupIndex(int16_t courseId);
-void SetCup();
 u32 GetCupIndex(void);
 
 const char* GetCupName(void);
@@ -24,6 +27,8 @@ void SetCourse(const char* name);
 
 void NextCourse();
 void PreviousCourse();
+
+void CourseManager_SetCup(void*);
 
 void CourseManager_SpawnVehicles();
 
@@ -128,7 +133,18 @@ void* GetBigDonut(void);
 
 void* GetPodiumCeremony(void);
 
-void* GetTestCourse(void);
+void* GetMushroomCup(void);
+
+void* GetFlowerCup(void);
+
+void* GetStarCup(void);
+
+void* GetSpecialCup(void);
+
+void* GetBattleCup(void);
+
 #ifdef __cplusplus
 }
 #endif
+
+#endif // _GAME_H

@@ -120,8 +120,6 @@ void RoyalRaceway::SpawnActors() {
     spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
 }
 
-void RoyalRaceway::Init() {}
-
 // Likely sets minimap boundaries
 void RoyalRaceway::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust4, 0x3F8, 0x1000));

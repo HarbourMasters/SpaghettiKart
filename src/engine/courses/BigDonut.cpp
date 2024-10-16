@@ -103,8 +103,6 @@ void BigDonut::LoadTextures() {
 
 void BigDonut::SpawnActors() {}
 
-void BigDonut::Init() {  }
-
 // Likely sets minimap boundaries
 void BigDonut::MinimapSettings() {
     D_8018D2A0 = 0.0257f;

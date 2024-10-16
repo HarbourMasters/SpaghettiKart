@@ -109,8 +109,6 @@ void BansheeBoardwalk::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
 }
 
-void BansheeBoardwalk::Init() {  }
-
 // Likely sets minimap boundaries
 void BansheeBoardwalk::MinimapSettings() {
     D_80165880 = dma_textures((const char*)gTextureGhosts, 0x4CC2, 0xD980);

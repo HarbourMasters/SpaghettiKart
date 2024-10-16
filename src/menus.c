@@ -1684,7 +1684,6 @@ GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 u32 WorldNextCup(void);
 u32 WorldPreviousCup(void);
 u32 GetCupIndex(void);
-void SetCup(void);
 
 // Handle navigating the course menu interface
 void course_select_menu_act(struct Controller* arg0, u16 arg1) {
@@ -1713,8 +1712,6 @@ void course_select_menu_act(struct Controller* arg0, u16 arg1) {
                 }
 
                 D_800DC540 = GetCupIndex();
-                //! @todo SetCourse();
-                SetCup();
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
                 SetCourseFromCup();
                 if ((buttonAndStickPress & B_BUTTON) != 0) {
@@ -1842,7 +1839,7 @@ void func_800B3F74(s32 menuSelection) {
         case 10: {
             gIsMirrorMode = 0;
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
-            SetCupIndex(MUSHROOM_CUP);
+            CourseManager_SetCup(GetMushroomCup());
             gCupSelection = MUSHROOM_CUP;
             gCourseIndexInCup = 0;
             gTimeTrialDataCourseIndex = 0;
@@ -1953,13 +1950,13 @@ void func_800B3F74(s32 menuSelection) {
         case 3:
         case 13: {
             if (gModeSelection == BATTLE) {
-                SetCupIndex(BATTLE_CUP);
+                CourseManager_SetCup(GetBattleCup());
                 // gCupSelection = BATTLE_CUP;
                 D_800DC540 = 4;
                 D_8018EDEC = 4;
             } else {
-                if (GetCupIndex() == BATTLE_CUP) {
-                    SetCupIndex(MUSHROOM_CUP);
+                if (GetCup() == GetBattleCup()) {
+                    CourseManager_SetCup(GetMushroomCup());
                     // gCupSelection = MUSHROOM_CUP;
                 }
                 D_8018EDEC = 1;

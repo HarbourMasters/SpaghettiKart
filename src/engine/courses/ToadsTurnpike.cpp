@@ -112,7 +112,6 @@ void ToadsTurnpike::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_toads_turnpike_item_box_spawns));
 }
 
-void ToadsTurnpike::Init() {}
 void ToadsTurnpike::InitClouds() {
     init_stars(this->Props.Clouds);
 }

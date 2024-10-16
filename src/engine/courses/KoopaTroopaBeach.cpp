@@ -112,8 +112,6 @@ void KoopaTroopaBeach::SpawnActors() {
     spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 }
 
-void KoopaTroopaBeach::Init() {}
-
 // Likely sets minimap boundaries
 void KoopaTroopaBeach::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust3, 0x3C8U, 0x1000));

@@ -113,8 +113,6 @@ void LuigiRaceway::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_luigi_raceway_item_box_spawns));
 }
 
-void LuigiRaceway::Init() {}
-
 // Likely sets minimap boundaries
 void LuigiRaceway::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust2, 0x4F4U, 0xC00));

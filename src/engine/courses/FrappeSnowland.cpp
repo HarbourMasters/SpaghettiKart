@@ -113,7 +113,6 @@ void FrappeSnowland::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
 }
 
-void FrappeSnowland::Init() {  }
 void FrappeSnowland::InitClouds() {
     s32 var_s0;
     s32 var_s4;

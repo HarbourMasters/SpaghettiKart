@@ -110,8 +110,6 @@ void ChocoMountain::SpawnActors() {
     spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
 }
 
-void ChocoMountain::Init() {  }
-
 // Likely sets minimap boundaries
 void ChocoMountain::MinimapSettings() {
     D_8018D2A0 = 0.022f;

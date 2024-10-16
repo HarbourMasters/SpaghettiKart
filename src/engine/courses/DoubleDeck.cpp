@@ -106,8 +106,6 @@ void DoubleDeck::LoadTextures() {
 
 void DoubleDeck::SpawnActors() {}
 
-void DoubleDeck::Init() {  }
-
 // Likely sets minimap boundaries
 void DoubleDeck::MinimapSettings() {
     D_8018D2A0 = 0.0285f;

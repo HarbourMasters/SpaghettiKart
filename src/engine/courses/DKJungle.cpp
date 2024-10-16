@@ -117,8 +117,6 @@ void DKJungle::SpawnActors() {
     func_80298D10();
 }
 
-void DKJungle::Init() {  }
-
 // Likely sets minimap boundaries
 void DKJungle::MinimapSettings() {
     D_8018D2A0 = 0.0155f;

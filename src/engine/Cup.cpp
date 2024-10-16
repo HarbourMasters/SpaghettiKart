@@ -1,9 +1,10 @@
 #include "Cup.h"
 #include "courses/Course.h"
 
-Cup::Cup(const char* name, std::vector<Course*> courses) {
-    this->Name = name;
-    this->Courses = courses;
+Cup::Cup(const char* id, const char* name, std::vector<Course*> courses) {
+    Id = id;
+    Name = name;
+    Courses = courses;
 
     if (Courses.size() != 4) {
         throw std::invalid_argument("A cup must contain exactly 4 courses.");

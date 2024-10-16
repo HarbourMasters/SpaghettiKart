@@ -107,20 +107,7 @@ void WarioStadium::LoadTextures() {
 }
 
 void WarioStadium::SpawnActors() {
-    Vec3f position;
-    Vec3f velocity = { 0.0f, 0.0f, 0.0f };
-    Vec3s rotation = { 0, 0, 0 };
-
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
-    // vec3f_set(position, -131.0f, 83.0f, 286.0f);
-    // position[0] *= gCourseDirection;
-    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    // vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-    // position[0] *= gCourseDirection;
-    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    // vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-    // position[0] *= gCourseDirection;
-    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
 
     Vec3f pos = {-131.0f, 83.0f, 286.0f};
     pos[0] *= gCourseDirection;
@@ -135,7 +122,6 @@ void WarioStadium::SpawnActors() {
     gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos3));
 }
 
-void WarioStadium::Init() {}
 void WarioStadium::InitClouds() {
     init_stars(this->Props.Clouds);
 }

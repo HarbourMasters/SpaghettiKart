@@ -117,8 +117,6 @@ void YoshiValley::SpawnActors() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 }
 
-void YoshiValley::Init() {}
-
 // Likely sets minimap boundaries
 void YoshiValley::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust0, 0x479, 0xC00));

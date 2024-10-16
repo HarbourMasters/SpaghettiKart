@@ -125,8 +125,6 @@ void MooMooFarm::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_item_box_spawns));
 }
 
-void MooMooFarm::Init() {}
-
 // Likely sets minimap boundaries
 void MooMooFarm::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust0, 0x479, 0xC00));

@@ -111,8 +111,6 @@ void BowsersCastle::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
 }
 
-void BowsersCastle::Init() {  }
-
 // Likely sets minimap boundaries
 void BowsersCastle::MinimapSettings() {
     D_8018D2C0[0] = 265;

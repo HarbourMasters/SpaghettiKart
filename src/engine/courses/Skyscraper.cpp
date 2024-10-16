@@ -106,8 +106,6 @@ void Skyscraper::LoadTextures() {
 
 void Skyscraper::SpawnActors() {}
 
-void Skyscraper::Init() {  }
-
 // Likely sets minimap boundaries
 void Skyscraper::MinimapSettings() {
     D_8018D2A0 = 0.0445f;

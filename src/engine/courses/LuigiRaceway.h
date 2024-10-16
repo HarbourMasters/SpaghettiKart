@@ -26,7 +26,6 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
-    virtual void Init() override;
     virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;

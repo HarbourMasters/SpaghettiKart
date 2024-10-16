@@ -1,8 +1,11 @@
 #include <libultraship.h>
 
+#include "Game.h"
+
 #include <Fast3D/gfx_pc.h>
 #include "Engine.h"
 #include "engine/World.h"
+#include "engine/courses/Course.h"
 #include "engine/courses/MarioRaceway.h"
 #include "engine/courses/ChocoMountain.h"
 #include "engine/courses/BowsersCastle.h"
@@ -71,6 +74,12 @@ BigDonut* gBigDonut;
 PodiumCeremony* gPodiumCeremony;
 TestCourse* gTestCourse;
 
+Cup* gMushroomCup;
+Cup* gFlowerCup;
+Cup* gStarCup;
+Cup* gSpecialCup;
+Cup* gBattleCup;
+
 void CustomEngineInit() {
 
     gMarioRaceway = new MarioRaceway();
@@ -97,44 +106,45 @@ void CustomEngineInit() {
     gTestCourse = new TestCourse();
 
     /* Add all courses to the global course list */
-    gWorldInstance.Courses.push_back(gMarioRaceway);
-    gWorldInstance.Courses.push_back(gChocoMountain);
-    gWorldInstance.Courses.push_back(gBowsersCastle);
-    gWorldInstance.Courses.push_back(gBansheeBoardwalk);
-    gWorldInstance.Courses.push_back(gYoshiValley);
-    gWorldInstance.Courses.push_back(gFrappeSnowland);
-    gWorldInstance.Courses.push_back(gKoopaTroopaBeach);
-    gWorldInstance.Courses.push_back(gRoyalRaceway);
-    gWorldInstance.Courses.push_back(gLuigiRaceway);
-    gWorldInstance.Courses.push_back(gMooMooFarm);
-    gWorldInstance.Courses.push_back(gToadsTurnpike);
-    gWorldInstance.Courses.push_back(gKalimariDesert);
-    gWorldInstance.Courses.push_back(gSherbetLand);
-    gWorldInstance.Courses.push_back(gRainbowRoad);
-    gWorldInstance.Courses.push_back(gWarioStadium);
-    gWorldInstance.Courses.push_back(gBlockFort);
-    gWorldInstance.Courses.push_back(gSkyscraper);
-    gWorldInstance.Courses.push_back(gDoubleDeck);
-    gWorldInstance.Courses.push_back(gDkJungle);
-    gWorldInstance.Courses.push_back(gBigDonut);
-    gWorldInstance.Courses.push_back(gTestCourse);
+    gWorldInstance.AddCourse(gMarioRaceway);
+    gWorldInstance.AddCourse(gChocoMountain);
+    gWorldInstance.AddCourse(gBowsersCastle);
+    gWorldInstance.AddCourse(gBansheeBoardwalk);
+    gWorldInstance.AddCourse(gYoshiValley);
+    gWorldInstance.AddCourse(gFrappeSnowland);
+    gWorldInstance.AddCourse(gKoopaTroopaBeach);
+    gWorldInstance.AddCourse(gRoyalRaceway);
+    gWorldInstance.AddCourse(gLuigiRaceway);
+    gWorldInstance.AddCourse(gMooMooFarm);
+    gWorldInstance.AddCourse(gToadsTurnpike);
+    gWorldInstance.AddCourse(gKalimariDesert);
+    gWorldInstance.AddCourse(gSherbetLand);
+    gWorldInstance.AddCourse(gRainbowRoad);
+    gWorldInstance.AddCourse(gWarioStadium);
+    gWorldInstance.AddCourse(gBlockFort);
+    gWorldInstance.AddCourse(gSkyscraper);
+    gWorldInstance.AddCourse(gDoubleDeck);
+    gWorldInstance.AddCourse(gDkJungle);
+    gWorldInstance.AddCourse(gBigDonut);
+    gWorldInstance.AddCourse(gTestCourse);
+
+    gMushroomCup = new Cup("mk:mushroom_cup", "mushroom cup", std::vector<Course*>{ gLuigiRaceway, gMooMooFarm, gKoopaTroopaBeach, gKalimariDesert });
+    gFlowerCup = new Cup("mk:flower_cup", "flower cup", std::vector<Course*>{ gToadsTurnpike, gFrappeSnowland, gChocoMountain, gMarioRaceway });
+    gStarCup = new Cup("mk:star_cup", "star cup", std::vector<Course*>{ gWarioStadium, gSherbetLand, gRoyalRaceway, gBowsersCastle });
+    gSpecialCup = new Cup("mk:special_cup", "special cup", std::vector<Course*>{ gDkJungle, gYoshiValley, gBansheeBoardwalk, gRainbowRoad });
+    gBattleCup = new Cup("mk:battle_cup", "battle", std::vector<Course*>{ gBigDonut, gBlockFort, gDoubleDeck, gSkyscraper });
 
     /* Instantiate Cups */
-    Cup* mushroom = gWorldInstance.AddCup(
-        "mushroom cup", std::vector<Course*>{ gLuigiRaceway, gMooMooFarm, gKoopaTroopaBeach, gKalimariDesert });
-    Cup* flower = gWorldInstance.AddCup(
-        "flower cup", std::vector<Course*>{ gToadsTurnpike, gFrappeSnowland, gChocoMountain, gMarioRaceway });
-    Cup* star = gWorldInstance.AddCup(
-        "star cup", std::vector<Course*>{ gWarioStadium, gSherbetLand, gRoyalRaceway, gBowsersCastle });
-    Cup* special = gWorldInstance.AddCup(
-        "special cup", std::vector<Course*>{ gDkJungle, gYoshiValley, gBansheeBoardwalk, gRainbowRoad });
-    Cup* battle =
-        gWorldInstance.AddCup("battle", std::vector<Course*>{ gBigDonut, gBlockFort, gDoubleDeck, gSkyscraper });
+    gWorldInstance.AddCup(gMushroomCup);
+    gWorldInstance.AddCup(gFlowerCup);
+    gWorldInstance.AddCup(gStarCup);
+    gWorldInstance.AddCup(gSpecialCup);
+    gWorldInstance.AddCup(gBattleCup);
 
     /* Set default course; mario raceway */
     gWorldInstance.CurrentCourse = gMarioRaceway;
-    gWorldInstance.CurrentCup = flower;
-    gWorldInstance.CurrentCup->CursorPosition = 2;
+    gWorldInstance.CurrentCup = gFlowerCup;
+    gWorldInstance.CurrentCup->CursorPosition = 3;
 }
 
 extern "C" {
@@ -151,12 +161,12 @@ extern "C" {
         return gWorldInstance.PreviousCup();
     }
 
-    void SetCupIndex(int16_t courseId) {
-        gWorldInstance.SetCupIndex(courseId);
+    void CourseManager_SetCup(void* cup) {
+        gWorldInstance.SetCup((Cup*)cup);
     }
 
-    void SetCup() {
-        gWorldInstance.SetCup();
+    void* GetCup() {
+        return gWorldInstance.CurrentCup;
     }
 
     u32 GetCupIndex(void) {
@@ -165,7 +175,7 @@ extern "C" {
     }
 
     const char* GetCupName(void) {
-        return gWorldInstance.Cups[gWorldInstance.CupIndex]->Name;
+        return gWorldInstance.CurrentCup->Name;
     }
 
     void LoadCourse() {
@@ -521,9 +531,26 @@ extern "C" {
         return gPodiumCeremony;
     }
 
-    void* GetTestCourse(void) {
-        return gTestCourse;
+    void* GetMushroomCup(void) {
+        return gMushroomCup;
     }
+
+    void* GetFlowerCup(void) {
+        return gFlowerCup;
+    }
+
+    void* GetStarCup(void) {
+        return gStarCup;
+    }
+
+    void* GetSpecialCup(void) {
+        return gSpecialCup;
+    }
+
+    void* GetBattleCup(void) {
+        return gBattleCup;
+    }
+
 }
 
 void push_frame() {
@@ -545,7 +572,7 @@ extern "C"
     int
     main(int argc, char* argv[]) {
 #endif
-    //load_wasm();
+    load_wasm();
     GameEngine::Create();
     // audio_init();
     // sound_init();

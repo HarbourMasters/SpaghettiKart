@@ -107,8 +107,6 @@ void SherbetLand::SpawnActors() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
 }
 
-void SherbetLand::Init() {}
-
 // Likely sets minimap boundaries
 void SherbetLand::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust1, 0x485, 0xC00));

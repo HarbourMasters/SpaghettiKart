@@ -27,7 +27,6 @@ public:
     virtual void Load() override;
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
-    virtual void Init() override;
     virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
     virtual void SomeSounds() override;

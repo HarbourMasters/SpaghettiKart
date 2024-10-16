@@ -106,8 +106,6 @@ void BlockFort::LoadTextures() {
 
 void BlockFort::SpawnActors() {}
 
-void BlockFort::Init() {  }
-
 // Likely sets minimap boundaries
 void BlockFort::MinimapSettings() {
     D_8018D2A0 = 0.0335f;

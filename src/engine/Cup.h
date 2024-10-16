@@ -9,12 +9,13 @@ class Course; // <-- Forward declare
 
 class Cup {
 public:
+    const char* Id;
     const char* Name;
     u8 *Thumbnail;
     size_t CursorPosition = 0; // Course index in cup
     std::vector<Course*> Courses;
 
-    explicit Cup(const char* name, std::vector<Course*> courses);
+    explicit Cup(const char* id, const char* name, std::vector<Course*> courses);
 
     virtual void ShuffleCourses();
 
