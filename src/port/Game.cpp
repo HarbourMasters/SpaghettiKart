@@ -285,6 +285,18 @@ extern "C" {
         }
     }
 
+    void CourseManager_TickActors() {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.TickActors();
+        }
+    }
+
+    void CourseManager_DrawActors(Camera* camera) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.DrawActors(camera);
+        }
+    }
+
     void CourseManager_SpawnActors() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->SpawnActors();
@@ -533,7 +545,7 @@ extern "C"
     int
     main(int argc, char* argv[]) {
 #endif
-    load_wasm();
+    //load_wasm();
     GameEngine::Create();
     // audio_init();
     // sound_init();

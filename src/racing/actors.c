@@ -2393,6 +2393,8 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
     gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 
+    CourseManager_DrawActors(D_800DC5EC->camera);
+
     if (gModeSelection != BATTLE) {
         func_80297340(camera);
     }

@@ -8,6 +8,7 @@
 #include "World.h"
 #include "BombKart.h"
 #include "assets/wario_stadium_data.h"
+#include "engine/actors/AWarioSign.h"
 
 extern "C" {
     #include "main.h"
@@ -111,15 +112,27 @@ void WarioStadium::SpawnActors() {
     Vec3s rotation = { 0, 0, 0 };
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
-    vec3f_set(position, -131.0f, 83.0f, 286.0f);
-    position[0] *= gCourseDirection;
-    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-    position[0] *= gCourseDirection;
-    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-    position[0] *= gCourseDirection;
-    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    // vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    // position[0] *= gCourseDirection;
+    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    // vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    // position[0] *= gCourseDirection;
+    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    // vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    // position[0] *= gCourseDirection;
+    // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+
+    Vec3f pos = {-131.0f, 83.0f, 286.0f};
+    pos[0] *= gCourseDirection;
+    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos));
+
+    Vec3f pos2 = {-2353.0f, 72.0f, -1608.0f};
+    pos2[0] *= gCourseDirection;
+    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos2));
+
+    Vec3f pos3 = {-2622.0f, 79.0f, 739.0f};
+    pos3[0] *= gCourseDirection;
+    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos3));
 }
 
 void WarioStadium::Init() {}
@@ -157,13 +170,13 @@ void WarioStadium::WhatDoesThisDo(Player* player, int8_t playerId) {}
 void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
 void WarioStadium::SpawnBombKarts() {
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.SpawnObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
+    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap

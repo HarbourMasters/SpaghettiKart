@@ -200,7 +200,6 @@ void ATrain::Tick() {
         smokePos[2] = (f32) ((f64) Locomotive.position[2] + 25.0);
         adjust_position_by_angle(smokePos, Locomotive.position, orientationYUpdate);
         //spawn_train_smoke(Index, smokePos, 1.1f);
-        printf("\nSMOKE HERE: %d\n\n", Index);
         AddSmoke(Index, smokePos, 1.1f);
     }
 
