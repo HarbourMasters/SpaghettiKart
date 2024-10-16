@@ -13,9 +13,8 @@ extern "C" {
 GameObject::GameObject() {}
 
     // Virtual functions to be overridden by derived classes
-void GameObject::Init() {  }
-void GameObject::Update() {  }
-void GameObject::Render(Camera* camera) { }
+void GameObject::Tick() {  }
+void GameObject::Draw(Camera* camera) { }
 void GameObject::Collision() {}
 void GameObject::Expire() { }
 void GameObject::Destroy() { }

@@ -172,21 +172,46 @@ void World::PreviousCourse() {
     gWorldInstance.CurrentCourse = Courses[CourseIndex];
 }
 
-Object* World::SpawnObject(std::unique_ptr<GameObject> object) {
+Object* World::AddObject(std::unique_ptr<GameObject> object) {
     GameObject* rawPtr = object.get();
-    this->GameObjects.push_back(std::move(object));
+    GameObjects.push_back(std::move(object));
     return &rawPtr->o;
 }
 
-void World::UpdateObjects() {
-    for (const auto& object : this->GameObjects) {
-        object->Update();
+AActor* World::AddActor(std::unique_ptr<AActor> actor) {
+    AActor* rawPtr = actor.get();
+    Actors.push_back(std::move(actor));
+    return rawPtr;
+}
+
+void World::TickActors() {
+    for (auto& actor : Actors) {
+        actor->Tick();
     }
 }
 
-void World::RenderObjects(Camera *camera) {
+void World::DrawActors(Camera* camera) {
+    for (auto& actor : Actors) {
+        actor->Draw(camera);
+    }
+}
+
+void RemoveExpiredActors() {
+    //Actors.erase(
+    //    std::remove_if(Actors.begin(), Actors.end(),
+    //                    [](const std::unique_ptr<AActor>& actor) { return actor->uuid == 0; }), // Example condition
+    //    Actors.end());
+}
+
+void World::TickObjects() {
     for (const auto& object : this->GameObjects) {
-        object->Render(camera);
+        object->Tick();
+    }
+}
+
+void World::DrawObjects(Camera *camera) {
+    for (const auto& object : this->GameObjects) {
+        object->Draw(camera);
     }
 }
 

@@ -8,6 +8,7 @@
 #include "vehicles/Car.h"
 #include "TrainCrossing.h"
 #include <memory>
+#include "Actor.h"
 
 extern "C" {
 #include "camera.h"
@@ -64,30 +65,31 @@ class World {
     } Properties;
 
 public:
-    //Actor actors;
-    virtual ~World() = default;
     explicit World();
 
-    // virtual Actor* SpawnActor(std::unique_ptr<GameActor> actor);
+    AActor* AddActor(std::unique_ptr<AActor> actor);
+    void TickActors();
+    void DrawActors(Camera* camera);
+    void RemoveExpiredActors();
 
-    virtual Object* SpawnObject(std::unique_ptr<GameObject> object);
+    Object* AddObject(std::unique_ptr<GameObject> object);
 
 
-    virtual CProperties* GetCourseProps();
-    virtual void UpdateObjects();
-    virtual void RenderObjects(Camera *camera);
-    virtual void ExpiredObjects();
-    virtual void DestroyObjects();
-    virtual Object *GetObjectByIndex(size_t);
+    CProperties* GetCourseProps();
+    void TickObjects();
+    void DrawObjects(Camera *camera);
+    void ExpiredObjects();
+    void DestroyObjects();
+    Object *GetObjectByIndex(size_t);
 
     Cup* AddCup(const char* name, std::vector<Course*> courses);
     Cup* GetCup();
     const char* GetCupName();
-    virtual u32 GetCupIndex();
-    virtual void SetCupIndex(int16_t courseId);
-    virtual u32 NextCup();
-    virtual u32 PreviousCup();
-    virtual void SetCourseFromCup();
+    u32 GetCupIndex();
+    void SetCupIndex(int16_t courseId);
+    u32 NextCup();
+    u32 PreviousCup();
+    void SetCourseFromCup();
     void SetCup();
 
     World* GetWorld(void);
@@ -107,7 +109,7 @@ public:
     size_t CupIndex = 1;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
-    // std::vector<std::unique_ptr<GameActor>> GameActors;
+    std::vector<std::unique_ptr<AActor>> Actors;
 
     void AddBoat(f32 speed, uint32_t waypoint);
     void AddTrain(size_t numCarriages, f32 speed, uint32_t waypoint);

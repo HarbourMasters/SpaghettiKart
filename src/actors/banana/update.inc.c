@@ -28,7 +28,7 @@ void update_actor_banana(struct BananaActor* banana) {
     f32 unkY;
     f32 unkZ;
 
-    player = &gPlayers[banana->rot[0]];
+    player = &gPlayers[banana->playerId];
     switch (banana->state) {
         case HELD_BANANA:
             temp_f2 = player->pos[0] - banana->pos[0];
@@ -54,7 +54,7 @@ void update_actor_banana(struct BananaActor* banana) {
                 if (gDemoMode) {
                     controller = gControllerOne;
                 } else {
-                    controller = &gControllers[banana->rot[0]];
+                    controller = &gControllers[banana->playerId];
                 }
                 if ((controller->buttonDepressed & Z_TRIG) != 0) {
                     controller->buttonDepressed &= ~Z_TRIG;

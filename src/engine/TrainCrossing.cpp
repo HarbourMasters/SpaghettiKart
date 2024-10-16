@@ -53,7 +53,6 @@ void TrainCrossing::AICrossingBehaviour(s32 playerId) {
         (set_vehicle_render_distance_flags(gPlayers[playerId].pos, TRAIN_CROSSING_AI_DISTANCE, 0))) {
         if ((OnTriggered == 1) && ((Timer) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
             if ((sSomeNearestWaypoint > WaypointMin) && (sSomeNearestWaypoint < WaypointMax)) {
-            printf("STOP AI\n");
                 bStopAICrossing[playerId] = 1;
             }
         }
