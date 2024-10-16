@@ -550,7 +550,6 @@ extern "C" {
     void* GetBattleCup(void) {
         return gBattleCup;
     }
-
 }
 
 void push_frame() {

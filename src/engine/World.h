@@ -76,7 +76,6 @@ public:
 
     Object* AddObject(std::unique_ptr<GameObject> object);
 
-
     CProperties* GetCourseProps();
     void TickObjects();
     void DrawObjects(Camera *camera);
