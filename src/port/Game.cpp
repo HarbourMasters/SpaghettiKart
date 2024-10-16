@@ -545,7 +545,7 @@ extern "C"
     int
     main(int argc, char* argv[]) {
 #endif
-    //load_wasm();
+    load_wasm();
     GameEngine::Create();
     // audio_init();
     // sound_init();
