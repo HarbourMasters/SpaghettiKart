@@ -39,7 +39,7 @@ extern "C" {
 #include "audio/load.h"
 #include "audio/external.h"
 #include "networking/networking.h"
-#include "engine/wasm.h"
+//#include "engine/wasm.h"
 }
 
 extern "C" void Graphics_PushFrame(Gfx* data) {
@@ -234,7 +234,47 @@ extern "C" {
         }
     }
 
-    void CourseManager_RenderTrucks(s32 playerId) {
+    void CourseManager_SpawnBombKarts() {
+        for (auto& kart : gWorldInstance.BombKarts) {
+            if (kart) {
+                kart->Spawn();
+            }
+        }
+    }
+
+    void CourseManager_TickBombKarts() {
+        for (auto& kart : gWorldInstance.BombKarts) {
+            if (kart) {
+                kart->Tick();
+            }
+        }
+    }
+
+    void CourseManager_DrawBombKarts(s32 cameraId) {
+        for (auto& kart : gWorldInstance.BombKarts) {
+            if (kart) {
+                kart->Draw(cameraId);
+            }
+        }
+    }
+
+    void CourseManager_DrawBattleBombKarts(s32 cameraId) {
+        for (auto& kart : gWorldInstance.BombKarts) {
+            if (kart) {
+                kart->DrawBattle(cameraId);
+            }
+        }
+    }
+
+    void CourseManager_BombKartsWaypoint(s32 cameraId) {
+        for (auto& kart : gWorldInstance.BombKarts) {
+            if (kart) {
+                kart->Waypoint(cameraId);
+            }
+        }
+    }
+
+    void CourseManager_DrawVehicles(s32 playerId) {
         for (auto& vehicle : gWorldInstance.Vehicles) {
             if (vehicle) {
                 vehicle->Draw(playerId);
@@ -410,12 +450,6 @@ extern "C" {
         }
     }
 
-    void CourseManager_SpawnBombKarts() {
-        if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->SpawnBombKarts();
-        }
-    }
-
     void CourseManager_Water() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->Water();
@@ -571,7 +605,7 @@ extern "C"
     int
     main(int argc, char* argv[]) {
 #endif
-    load_wasm();
+    //load_wasm();
     GameEngine::Create();
     // audio_init();
     // sound_init();

@@ -6,7 +6,7 @@
 #include "ChocoMountain.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "choco_mountain_data.h"
 
 extern "C" {
@@ -110,6 +110,20 @@ void ChocoMountain::SpawnActors() {
     spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
 }
 
+void ChocoMountain::SpawnVehicles() {
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][165], 165, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][330], 330, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][550], 550, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][595], 595, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+    }
+}
+
 // Likely sets minimap boundaries
 void ChocoMountain::MinimapSettings() {
     D_8018D2A0 = 0.022f;
@@ -163,16 +177,6 @@ void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-void ChocoMountain::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap

@@ -195,9 +195,6 @@ void Course::SetStaffGhost() {
     D_80162DF4 = 1;
 }
 
-void Course::SpawnBombKarts() {
-}
-
 void Course::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
     if (player->nearestWaypointId < 0) {

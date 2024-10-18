@@ -26,6 +26,7 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
+    virtual void SpawnVehicles() override;
     //virtual void InitClouds() override;
     virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
@@ -40,7 +41,6 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
-    virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
     virtual void Water() override;
     virtual void Waypoints(Player*, int8_t) override;

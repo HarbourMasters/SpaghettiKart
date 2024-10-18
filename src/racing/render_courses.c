@@ -1334,7 +1334,7 @@ void func_8029569C(void) {
     //     case COURSE_TOADS_TURNPIKE:
     //         gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22E00);
     //         break;
     //     case COURSE_SHERBET_LAND:
@@ -1420,7 +1420,7 @@ void render_course(struct UnkStruct_800DC5EC* arg0) {
     //     case COURSE_TOADS_TURNPIKE:
     //         render_toads_turnpike(arg0);
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         render_kalimari_desert(arg0);
     //         break;
     //     case COURSE_SHERBET_LAND:
@@ -1618,7 +1618,7 @@ void func_80295D88(void) {
     //         func_80295C6C();
     //         D_8015F8E4 = gCourseMinY - 10.0f;
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         parse_course_displaylists(d_course_kalimari_desert_addr);
     //         func_80295C6C();
     //         D_8015F8E4 = gCourseMinY - 10.0f;

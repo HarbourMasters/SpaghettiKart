@@ -26,6 +26,7 @@ public:
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
+    virtual void SpawnVehicles() override;
     //virtual void InitClouds() override;
     virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
@@ -39,7 +40,6 @@ public:
     virtual void RenderCredits() override;    
     virtual void Collision() override;
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) override;
-    virtual void SpawnBombKarts() override;
     virtual void GenerateCollision() override;
     virtual void Destroy() override;
 };

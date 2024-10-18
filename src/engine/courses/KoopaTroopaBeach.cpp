@@ -6,7 +6,7 @@
 #include "KoopaTroopaBeach.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "assets/koopa_troopa_beach_data.h"
 
 extern "C" {
@@ -112,6 +112,20 @@ void KoopaTroopaBeach::SpawnActors() {
     spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 }
 
+void KoopaTroopaBeach::SpawnVehicles() {
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][60], 60, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][120], 120, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][280], 280, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][435], 435, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+    }
+}
+
 // Likely sets minimap boundaries
 void KoopaTroopaBeach::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust3, 0x3C8U, 0x1000));
@@ -179,16 +193,6 @@ void KoopaTroopaBeach::SomeSounds() {
 void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-void KoopaTroopaBeach::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-}
 
 // Positions the finishline on the minimap
 void KoopaTroopaBeach::MinimapFinishlinePosition() {

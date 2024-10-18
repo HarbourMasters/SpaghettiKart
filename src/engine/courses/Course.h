@@ -105,7 +105,6 @@ public:
     virtual void WhatDoesThisDoAI(Player*, int8_t);
     virtual void MinimapFinishlinePosition();
     virtual void SetStaffGhost();
-    virtual void SpawnBombKarts();
     virtual void BeginPlay();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();

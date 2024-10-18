@@ -6,7 +6,7 @@
 #include "ToadsTurnpike.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "assets/toads_turnpike_data.h"
 
 #include "engine/vehicles/Utils.h"
@@ -158,16 +158,6 @@ void ToadsTurnpike::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void ToadsTurnpike::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-}
-
 // Positions the finishline on the minimap
 void ToadsTurnpike::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
@@ -213,6 +203,8 @@ void ToadsTurnpike::Collision() {}
 void ToadsTurnpike::SpawnVehicles() {
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
     f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
+    a /= 2; // Normally vehicle logic is only ran every 2 frames. This slows the vehicles down to match.
+    b /= 2;
     uint32_t waypoint;
 
     if (gModeSelection == TIME_TRIALS) {
@@ -255,6 +247,18 @@ void ToadsTurnpike::SpawnVehicles() {
             waypoint = CalculateWaypointDistribution(i, NUM_RACE_CARS, gWaypointCountByPathIndex[0], 25);
             gWorldInstance.AddCar(a, b, &D_80164550[0][0], waypoint);
         }
+    }
+
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
     }
 }
 

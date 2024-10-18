@@ -4599,7 +4599,7 @@ void func_80056A94(s32 playerIndex) {
     func_80072428(gIndexObjectBombKart[playerIndex]);
 }
 
-void render_object_bomb_kart(s32 cameraId) {
+void render_battle_bomb_karts(s32 cameraId) {
     Player* temp_v0;
     s32 temp_s1;
     s32 temp_s0;
@@ -4680,14 +4680,14 @@ void func_80056FCC(s32 bombIndex) {
     D_80183E50[0] = temp_v0->bombPos[0];
     D_80183E50[1] = temp_v0->yPos + 1.0;
     D_80183E50[2] = temp_v0->bombPos[2];
-    set_transform_matrix(mat, D_80164038[bombIndex].orientationVector, D_80183E50, 0U, 0.5f);
+    set_transform_matrix(mat, gBombKartCollision[bombIndex].orientationVector, D_80183E50, 0U, 0.5f);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
               G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }
 
-void func_80057114(s32 cameraId) {
+void render_bomb_karts(s32 cameraId) {
     Camera* camera;
     s32 objectIndex;
     s32 temp_s4;

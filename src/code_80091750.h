@@ -489,14 +489,7 @@ extern RGBA16 D_800E74D0[];
 extern RGBA16 D_800E74E8[];
 extern const s16 gGlyphDisplayWidth[];
 extern char* gCupNames[];
-extern char* gCourseNames[];
-extern char* gCourseNamesDup[];
-extern char* gCourseNamesDup2[];
-extern char* gDebugCourseNames[];
-// Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
-extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
-extern s8 gCupSelectionByCourseId[];
 extern char* D_800E7678[];
 extern char* gDebugCharacterNames[];
 extern char* D_800E76A8[];
@@ -517,7 +510,6 @@ extern char* D_800E77A0[];
 extern char* D_800E77A8[];
 extern char D_800E77B4[];
 extern char D_800E77D8[];
-extern char* sCourseLengths[];
 extern char* D_800E7834[];
 extern char* D_800E7840[];
 extern char* D_800E7848[];

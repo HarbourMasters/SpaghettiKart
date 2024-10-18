@@ -15,18 +15,9 @@ typedef struct {
     /* 0x0A */ char padA[6];
 } _struct_gCoursePathSizes_0x10; // size 0x10
 
-extern KartAIBehaviour* gKartAIBehaviourLUT[];
 extern TrackWaypoint nullPath;
-extern TrackWaypoint* gCoursePathTable[][4];
-extern TrackWaypoint* gCoursePathTable2[][4];
-extern s16 gKartAISteeringSensitivity[];
-extern f32 gKartAICourseMaximumSeparation[];
-extern f32 gKartAICourseMinimumSeparation[];
 extern s16 D_800DCAF4[];
 extern s16 D_800DCB34[];
-extern s16* D_800DCBB4[];
-extern BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX];
-extern _struct_gCoursePathSizes_0x10 gCoursePathSizes[];
 extern s32 D_800DDB20;
 extern s32 D_800DDB24;
 

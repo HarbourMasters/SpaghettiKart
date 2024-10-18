@@ -557,7 +557,8 @@ void render_object_p1(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    func_8001C3C4(PLAYER_ONE);
+    CourseManager_DrawBombKarts(PLAYER_ONE);
+    //render_bomb_karts_wrap(PLAYER_ONE);
     if (gGamestate == ENDING) {
         func_80055F48(PLAYER_ONE);
         func_80056160(PLAYER_ONE);
@@ -578,7 +579,8 @@ void render_object_p2(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_TWO);
+    CourseManager_DrawBombKarts(PLAYER_TWO);
+    //render_bomb_karts_wrap(PLAYER_TWO);
     if (!gDemoMode) {
         render_lakitu(PLAYER_TWO);
     }
@@ -591,7 +593,8 @@ void render_object_p3(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_THREE);
+    CourseManager_DrawBombKarts(PLAYER_THREE);
+    //render_bomb_karts_wrap(PLAYER_THREE);
     if (!gDemoMode) {
         render_lakitu(PLAYER_THREE);
     }
@@ -605,7 +608,8 @@ void render_object_p4(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_FOUR);
+    CourseManager_DrawBombKarts(PLAYER_FOUR);
+    //render_bomb_karts_wrap(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         render_lakitu(PLAYER_FOUR);
     }
@@ -753,7 +757,7 @@ void render_object_for_player(s32 cameraId) {
     //         break;
     //     case COURSE_TOADS_TURNPIKE:
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         render_object_trains_smoke_particles(cameraId);
     //         break;
     //     case COURSE_SHERBET_LAND:
@@ -790,7 +794,8 @@ void render_object_for_player(s32 cameraId) {
         func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        render_object_bomb_kart(cameraId);
+        CourseManager_DrawBattleBombKarts(cameraId);
+        //render_battle_bomb_karts(cameraId);
     }
 }
 
@@ -1622,7 +1627,7 @@ void update_object(void) {
     //             update_moles();
     //         }
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         update_train_smoke();
     //         break;
     //     case COURSE_SHERBET_LAND:
@@ -2715,29 +2720,31 @@ void func_8005D18C(void) {
     }
 }
 
-void func_8005D1F4(s32 arg0) {
-    s32 playerWaypoint;
-    s32 bombWaypoint;
-    s32 var_a2;
-    s32 waypointDiff;
+void func_8005D1F4(s32 cameraId) {
 
-    if (gModeSelection == 2) {
-        playerWaypoint = gNearestWaypointByPlayerId[arg0];
-        playerHUD[arg0].unk_74 = 0;
-        for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
-            if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
-                (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
-                continue;
-            }
-            bombWaypoint = gBombKarts[var_a2].waypointIndex;
-            waypointDiff = bombWaypoint - playerWaypoint;
-            if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
-                continue;
-            }
-            playerHUD[arg0].unk_74 = 1;
-            break;
-        }
-    }
+    CourseManager_BombKartsWaypoint(cameraId);
+    // s32 playerWaypoint;
+    // s32 bombWaypoint;
+    // s32 var_a2;
+    // s32 waypointDiff;
+
+    // if (gModeSelection == 2) {
+    //     playerWaypoint = gNearestWaypointByPlayerId[cameraId];
+    //     playerHUD[cameraId].unk_74 = 0;
+    //     for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
+    //         if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
+    //             (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
+    //             continue;
+    //         }
+    //         bombWaypoint = gBombKarts[var_a2].waypointIndex;
+    //         waypointDiff = bombWaypoint - playerWaypoint;
+    //         if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
+    //             continue;
+    //         }
+    //         playerHUD[cameraId].unk_74 = 1;
+    //         break;
+    //     }
+    // }
 }
 
 // Appears to load GP Mode race staging balloons and kart shadows.

@@ -6,7 +6,7 @@
 #include "TestCourse.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 
 extern "C" {
     #include "main.h"
@@ -241,8 +241,14 @@ void TestCourse::SpawnVehicles() {
     gVehicle2DWaypointLength = 53;
     D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
     
-    gWorldInstance.AddTrain(5, 5.0f, 0);
-    gWorldInstance.AddTrain(5, 5.0f, 8);
+    gWorldInstance.AddTrain(5, 2.5f, 0);
+    gWorldInstance.AddTrain(5, 2.5f, 8);
+
+    Vec3f pos = {0, 0, 0};
+
+    gWorldInstance.AddBombKart(pos, &D_80164550[0][25], 25, 2, 0.8333333f);
+    gWorldInstance.AddBombKart(pos, &D_80164550[0][45], 45, 3, 0.8333333f);
+
 }
 
 void TestCourse::UpdateVehicles() {
@@ -281,16 +287,6 @@ void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-void TestCourse::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap

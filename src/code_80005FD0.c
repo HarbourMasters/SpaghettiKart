@@ -156,7 +156,7 @@ VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
 VehicleStuff gCarList[NUM_RACE_CARS];
 s32 D_80163DD8[4];
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
-Collision D_80164038[NUM_BOMB_KARTS_MAX];
+Collision gBombKartCollision[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
 D_801642D8_entry D_801642D8[8];
 s16 D_80164358;
@@ -1541,20 +1541,15 @@ void update_vehicles(void) {
 
     if (GetCourse() == GetPodiumCeremony()) {
         for (i = 0; i < 7; i++) {
-            func_8000DF8C(i);
+            //func_8000DF8C(i);
         }
         return;
     }
 
-    if (D_8016337C & 1) {
-        if (gModeSelection == VERSUS) {
-            for (i = 0; i < 7; i++) {
-                func_8000DF8C(i);
-            }
-        }
-
+    //if (D_8016337C & 1) {
+        CourseManager_TickBombKarts();
         CourseManager_VehiclesTick();
-    }
+   // }
 }
 
 void func_800098FC(s32 arg0, Player* player) {
@@ -1743,7 +1738,7 @@ void func_80009B60(s32 playerId) {
                 }
                 D_801631F8[playerId] = D_801631E0[playerId];
 
-                CourseManager_RenderTrucks(playerId);
+                CourseManager_DrawVehicles(playerId);
 
                 if ((GetCourse() == GetYoshiValley()) || (GetCourse() == GetPodiumCeremony())) {
                     D_801634F8[playerId].unk4 = 0.0f;
@@ -1926,7 +1921,6 @@ void func_80009B60(s32 playerId) {
                 }
 
                 var_v1 = CourseManager_GetProps()->AISteeringSensitivity;
-                // var_v1 = gKartAISteeringSensitivity[gCurrentCourseId];
 
                 switch (D_801631D8[playerId]) { /* switch 4; irregular */
                     case 2:                     /* switch 4 */
@@ -2922,7 +2916,7 @@ void set_bomb_kart_spawn_positions(void) {
     BombKartSpawn* bombKartSpawn;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
+        //bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
         if (GetCourse() == GetYoshiValley()) {
             startingXPos = bombKartSpawn->startingXPos;
             startingZPos = bombKartSpawn->startingZPos;
@@ -2962,7 +2956,7 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].unk_4A = 0;
         gBombKarts[var_s3].unk_4C = 1;
         gBombKarts[var_s3].yPos = startingYPos;
-        check_bounding_collision(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
+        check_bounding_collision(&gBombKartCollision[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
     }
 }
 
@@ -3157,7 +3151,7 @@ void func_8000DF8C(s32 bombKartId) {
                         var_f22 += temp_f14 / 5.0f;
                         var_f24 += temp_f16 / 5.0f;
                     }
-                    temp_a0_4 = &D_80164038[bombKartId];
+                    temp_a0_4 = &gBombKartCollision[bombKartId];
                     var_f20 = calculate_surface_height(var_f22, 2000.0f, var_f24, temp_a0_4->meshIndexZX) + 3.5f;
                     if (var_f20 < (-1000.0)) {
                         var_f20 = bombKart->bombPos[1];
@@ -3464,8 +3458,7 @@ void func_8000F2DC(void) {
 
     CourseManager_SpawnVehicles();
 
-    CourseManager_SpawnBombKarts();
-    set_bomb_kart_spawn_positions();
+    //set_bomb_kart_spawn_positions();
     func_8000EEDC();
 }
 
@@ -7631,14 +7624,14 @@ void func_8001C14C(void) {
     }
 }
 
-void func_8001C3C4(s32 cameraId) {
+void render_bomb_karts_wrap(s32 cameraId) {
     if (GetCourse() == GetPodiumCeremony()) {
         if (gBombKarts[0].waypointIndex >= 16) {
-            func_80057114(PLAYER_FOUR);
+            render_bomb_karts(PLAYER_FOUR);
         }
     } else {
         if (gModeSelection == VERSUS) {
-            func_80057114(cameraId);
+            render_bomb_karts(cameraId);
         }
     }
 }

@@ -56,9 +56,6 @@ typedef struct {
 extern s32 gIndexObjectBombKart[NUM_BOMB_KARTS_MAX];
 
 extern BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
-extern Collision D_80164038[NUM_BOMB_KARTS_MAX];
-
-// data/data_0DD0A0_1.s
-extern BombKartSpawn gBombKartSpawns[NUM_COURSES][NUM_BOMB_KARTS_MAX];
+extern Collision gBombKartCollision[NUM_BOMB_KARTS_MAX];
 
 #endif

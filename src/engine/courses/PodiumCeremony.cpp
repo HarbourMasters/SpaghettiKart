@@ -6,7 +6,7 @@
 #include "PodiumCeremony.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "assets/royal_raceway_data.h"
 
 extern "C" {
@@ -105,6 +105,18 @@ void PodiumCeremony::SpawnActors() {
     spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
 }
 
+void PodiumCeremony::SpawnVehicles() {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][3], 3, 5, 1.25f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][40], 40, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][60], 60, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][80], 80, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][100], 100, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][120], 120, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[3][140], 140, 0, 1.0f);
+}
+
 // Likely sets minimap boundaries
 void PodiumCeremony::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust4, 0x3F8, 0x1000));
@@ -161,16 +173,6 @@ void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-void PodiumCeremony::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(40, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(100, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(265, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(285, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(420, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
 }
 
 // Positions the finishline on the minimap

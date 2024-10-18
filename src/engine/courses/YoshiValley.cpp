@@ -6,7 +6,7 @@
 #include "YoshiValley.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "assets/yoshi_valley_data.h"
 #include "assets/boo_frames.h"
 
@@ -147,6 +147,30 @@ void YoshiValley::InitCourseObjects() {
     }
 }
 
+void YoshiValley::SpawnVehicles() {
+    if (gModeSelection == VERSUS) {
+
+        // Note that the waypoint values might be unused for Yoshi's Valley. Entered them because
+        // the original data has values here.
+
+        // Note that the Y height is calculated automatically to place the kart on the surface
+        Vec3f pos = {-1533, 0, -682};
+        gWorldInstance.AddBombKart(pos, NULL, 0, 0, 0.8333333f);
+        Vec3f pos2 = {-1565, 0, -619};
+        gWorldInstance.AddBombKart(pos2, NULL, 10, 0, 0.8333333f);
+        Vec3f pos3 = {-1529, 0, -579};
+        gWorldInstance.AddBombKart(pos3, NULL, 20, 0, 0.8333333f);
+        Vec3f pos4 = {-1588, 0, -534};
+        gWorldInstance.AddBombKart(pos4, NULL, 30, 0, 0.8333333f);
+        Vec3f pos5 = {-1598, 0, -207};
+        gWorldInstance.AddBombKart(pos5, NULL, 40, 0, 0.8333333f);
+        Vec3f pos6 = {-1646, 0, -147};
+        gWorldInstance.AddBombKart(pos6, NULL, 50, 0, 0.8333333f);
+        Vec3f pos7 = {-2532, 0, -445};
+        gWorldInstance.AddBombKart(pos7, NULL, 60, 0, 0.8333333f);
+    }
+}
+
 void YoshiValley::UpdateCourseObjects() {
     func_80083080();
     if (gGamestate != CREDITS_SEQUENCE) {
@@ -167,16 +191,6 @@ void YoshiValley::SomeSounds() {
 void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-void YoshiValley::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-}
 
 // Positions the finishline on the minimap
 void YoshiValley::MinimapFinishlinePosition() {

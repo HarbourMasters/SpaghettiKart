@@ -9,6 +9,7 @@
 #include "vehicles/Bus.h"
 #include "vehicles/TankerTruck.h"
 #include "vehicles/Car.h"
+#include "vehicles/OBombKart.h"
 #include "TrainCrossing.h"
 #include <memory>
 
@@ -84,6 +85,10 @@ TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointM
     auto crossing = std::make_shared<TrainCrossing>(position, waypointMin, waypointMax, approachRadius, exitRadius);
     Crossings.push_back(crossing);
     return crossing.get();
+}
+
+void World::AddBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
+    BombKarts.push_back(std::make_unique<OBombKart>(pos, waypoint, waypointIndex, state, unk_3C));
 }
 
 u32 World::GetCupIndex() {

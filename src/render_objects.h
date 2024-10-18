@@ -9,7 +9,7 @@ extern "C" {
 #endif
 
 void func_80045738(u8*, u8*, s32, s32);
-void func_80057114(s32);
+void render_bomb_karts(s32);
 void func_800431B0(Vec3f, Vec3su, f32, Vtx*);
 void func_80043220(Vec3f, Vec3su, f32, Gfx*);
 void func_80043328(Vec3f, Vec3su, f32, Gfx*);
@@ -396,11 +396,11 @@ void func_8005669C(s32, s32, s32);
 void func_800569F4(s32);
 void func_80056A40(s32, s32);
 void func_80056A94(s32);
-void render_object_bomb_kart(s32);
+void render_battle_bomb_karts(s32);
 void func_80056E24(s32, Vec3f);
 void func_80056FCC(s32);
 
-void func_80057114(s32);
+void render_bomb_karts(s32);
 void func_8005762C(s32*, s32*, s32, u32);
 void func_80057330(void);
 void func_80057338(void);

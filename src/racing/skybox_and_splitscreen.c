@@ -523,7 +523,7 @@ void func_802A4D18(void) {
         //         D_8015014C = 4500.0f;
         //         D_80150150 = 9.0f;
         //         break;
-        //     case COURSE_KALAMARI_DESERT:
+        //     case COURSE_KALIMARI_DESERT:
         //         D_8015014C = 7000.0f;
         //         D_80150150 = 10.0f;
         //         break;

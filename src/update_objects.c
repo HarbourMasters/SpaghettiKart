@@ -2908,7 +2908,7 @@ void func_80078C70(s32 arg0) {
         // case COURSE_TOADS_TURNPIKE: /* switch 2 */
         //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
         //     break;
-        // case COURSE_KALAMARI_DESERT: /* switch 2 */
+        // case COURSE_KALIMARI_DESERT: /* switch 2 */
         //     update_clouds(sp1C, camera, gKalimariDesertClouds);
         //     break;
         // case COURSE_SHERBET_LAND: /* switch 2 */

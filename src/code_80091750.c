@@ -323,35 +323,8 @@ char* gCupNames[] = {
     "special cup",
 };
 
-// Displays at beginning of course
-char* gCourseNames[] = {
-#include "assets/course_metadata/gCourseNames.inc.c"
-};
-
-char* gCourseNamesDup[] = {
-#include "assets/course_metadata/gCourseNames.inc.c"
-};
-
-char* gCourseNamesDup2[] = {
-#include "assets/course_metadata/gCourseNames.inc.c"
-};
-
-// Used in debug menu at splash screen
-char* gDebugCourseNames[] = {
-#include "assets/course_metadata/gCourseDebugNames.inc.c"
-};
-
-const s8 gPerCupIndexByCourseId[] = {
-#include "assets/course_metadata/gPerCupIndexByCourseId.inc.c"
-};
-
 // @todo Increase this array for more than eight players
 const s8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
-
-// Maps course IDs (as defined in the COURSES enum) to the cup they belong to
-s8 gCupSelectionByCourseId[] = {
-#include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
-};
 
 char* D_800E7678[] = {
     "none",
@@ -447,10 +420,6 @@ char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
 
 // This is plain data, it should not end up in rodata
 char D_800E77D8[] = "distance";
-
-char* sCourseLengths[] = {
-#include "assets/course_metadata/sCourseLengths.inc.c"
-};
 
 char* D_800E7834[] = {
     "return to menu",
@@ -4966,7 +4935,7 @@ void func_8009CE64(s32 arg0) {
                         case 2: /* switch 4 */
                             SetCourseByClass(GetKalimariDesert());
                             CourseManager_SetCup(GetMushroomCup());
-                            gCurrentCourseId = COURSE_KALAMARI_DESERT;
+                            gCurrentCourseId = COURSE_KALIMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -5100,9 +5069,9 @@ void func_8009CE64(s32 arg0) {
                 }
             }
 
-            gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
+            //gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
             D_800DC540 = GetCupIndex();
-            gCourseIndexInCup = gPerCupIndexByCourseId[gCurrentCourseId];
+            gCourseIndexInCup = GetCupCursorPosition();;
 
             switch (gDebugGotoScene) { /* switch 6; irregular */
                 case 1:                /* switch 6 */
@@ -6011,11 +5980,11 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 }
                 break;
             case 0x5: /* switch 6 */
-                var_t0 = (s32) ((f32) (get_string_width(gCourseNamesDup[0]) + 5) * 0.9f) / 2;
+                var_t0 = (s32) ((f32) (get_string_width(CourseManager_GetProps()->Name) + 5) * 0.9f) / 2;
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0, 0x000000A4, 0,
                                             0, 0, 0x00000096);
                 set_text_color(1);
-                draw_text(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
+                draw_text(0x0000009B, 0x0000008C, CourseManager_GetProps()->Name, 0, 0.9f, 0.9f);
                 temp_v1 = func_800B4EB4(0, 7) & 0xFFFFF;
                 if (temp_v1 < 0x1EAA) {
                     set_text_color((s32) gGlobalTimer % 2);
@@ -6813,10 +6782,10 @@ void func_800A1A20(struct_8018D9E0_entry* arg0) {
     courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
+    draw_text(0x69, arg0->row + 0x19, CourseManager_GetProps()->Name, 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
     func_80093324(0x2D, arg0->row + 0x28, (char*) &D_800E77D8, 0, 0.75f, 0.75f);
-    func_800936B8(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
+    func_800936B8(0xA5, arg0->row + 0x28, CourseManager_GetProps()->CourseLength, 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
     func_80093324(0xA0, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
     // Print the 3 Lap Time Trial records
@@ -7072,7 +7041,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                     } else {
                         func_80093324(
                             0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            CourseManager_GetProps()->Name, 0,
                             0.5f, 0.5f);
                     }
                 }
@@ -7111,7 +7080,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                     } else {
                         func_80093324(
                             0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            CourseManager_GetProps()->Name, 0,
                             0.5f, 0.5f);
                     }
                 }
@@ -7163,7 +7132,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                     } else {
                         func_80093324(
                             0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            CourseManager_GetProps()->Name, 0,
                             0.5f, 0.5f);
                     }
                 }
@@ -7491,7 +7460,7 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
 
     set_text_color(4);
     draw_text(arg0->column + 0x55, 0x19 - arg0->row,
-              gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 0.6f, 0.6f);
+              CourseManager_GetProps()->Name, 0, 0.6f, 0.6f);
     set_text_color(3);
     draw_text(arg0->column + 0x55, 0x28 - arg0->row, D_800E7730, 0, 0.75f, 0.75f);
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
@@ -7558,8 +7527,7 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
                     func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f, 0.45f);
                 } else {
                     func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1),
-                                  gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
-                                                                  [D_8018EE10[var_s1].courseIndex % 4]],
+                                  CourseManager_GetProps()->Name,
                                   0, 0.45f, 0.45f);
                 }
             }
@@ -7788,7 +7756,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 1.0f,
+    draw_text(0x000000A0, 0x00000050, CourseManager_GetProps()->Name, 0, 1.0f,
               1.0f);
     set_text_color(TEXT_RED);
     draw_text(0x0000009D, 0x00000060, D_800E7728[0], 0, 0.8f, 0.8f);
@@ -7876,7 +7844,7 @@ void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]], 0, 1.0f,
+    draw_text(160, temp_s3->row - 30, CourseManager_GetProps()->Name, 0, 1.0f,
               1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->cursor - 31, var_s0, TEXT_YELLOW);
@@ -7991,7 +7959,7 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(3);
-        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[GetCupIndex()][GetCupCursorPosition()]],
+        func_80093754(0x000000A0, 0x00000050, CourseManager_GetProps()->Name,
                       0, 1.0f, 1.0f);
         switch (arg0->cursor) { /* switch 1 */
             case 1:             /* switch 1 */
@@ -8056,8 +8024,7 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
                         func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
                     } else {
                         func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                                      gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
-                                                                      [D_8018EE10[var_s1].courseIndex % 4]],
+                                      CourseManager_GetProps()->Name,
                                       0, 0.75f, 0.75f);
                     }
                 }

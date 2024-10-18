@@ -250,7 +250,7 @@ void func_8001BE78(void);
 
 void func_8001C05C(void);
 void func_8001C14C(void);
-void func_8001C3C4(s32);
+void render_bomb_karts_wrap(s32);
 void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */

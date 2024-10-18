@@ -286,7 +286,7 @@ void func_8006F008(void) {
             //     D_8018D2E0 = 57;
             //     D_8018D2E8 = 44;
             //     break;
-            // case COURSE_KALAMARI_DESERT:
+            // case COURSE_KALIMARI_DESERT:
             //     D_8018D2C0[0] = 263;
             //     D_8018D2D8[0] = 165;
             //     D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
@@ -624,9 +624,11 @@ void init_object_list_index(void) {
         find_unused_obj_index(&indexObjectList4[loopIndex]);
     }
 
-    for (loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
-        find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
-    }
+    CourseManager_SpawnBombKarts();
+
+    // for (loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
+    //     find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
+    // }
 }
 
 void init_cloud_object(s32 objectIndex, s32 arg1, CloudData* arg2) {
@@ -741,7 +743,7 @@ void func_8007055C(void) {
             // case COURSE_TOADS_TURNPIKE:
             //     init_stars(gToadsTurnpikeRainbowRoadStars);
             //     break;
-            // case COURSE_KALAMARI_DESERT:
+            // case COURSE_KALIMARI_DESERT:
             //     init_clouds(gKalimariDesertClouds);
             //     break;
             // case COURSE_SHERBET_LAND:
@@ -990,7 +992,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             find_unused_obj_index(&D_8018CF10);
     //             init_object(D_8018CF10, 0);

@@ -1099,7 +1099,7 @@ void spawn_course_actors(void) {
     //     case COURSE_TOADS_TURNPIKE:
     //         spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
     //         break;
-    //     case COURSE_KALAMARI_DESERT:
+    //     case COURSE_KALIMARI_DESERT:
     //         spawn_foliage(d_course_kalimari_desert_cactus_spawn);
     //         spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
     //         vec3f_set(position, -1680.0f, 2.0f, 35.0f);

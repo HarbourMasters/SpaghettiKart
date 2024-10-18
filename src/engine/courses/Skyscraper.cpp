@@ -6,7 +6,7 @@
 #include "Skyscraper.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "assets/skyscraper_data.h"
 
 extern "C" {
@@ -106,6 +106,20 @@ void Skyscraper::LoadTextures() {
 
 void Skyscraper::SpawnActors() {}
 
+void Skyscraper::SpawnVehicles() {
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][20], 20, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][40], 40, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][60], 60, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][80], 80, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][120], 120, 0, 1.0f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 0, 1.0f);
+    }
+}
+
 // Likely sets minimap boundaries
 void Skyscraper::MinimapSettings() {
     D_8018D2A0 = 0.0445f;
@@ -120,8 +134,6 @@ void Skyscraper::SomeSounds() {}
 void Skyscraper::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void Skyscraper::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-void Skyscraper::SpawnBombKarts() {}
 
 // Positions the finishline on the minimap
 void Skyscraper::MinimapFinishlinePosition() {

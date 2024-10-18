@@ -6,7 +6,7 @@
 #include "KalimariDesert.h"
 #include "GameObject.h"
 #include "World.h"
-#include "BombKart.h"
+#include "engine/vehicles/OBombKart.h"
 #include "kalimari_desert_data.h"
 #include "engine/vehicles/Utils.h"
 
@@ -181,16 +181,6 @@ void KalimariDesert::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KalimariDesert::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void KalimariDesert::SpawnBombKarts() {
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(140, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(165, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(330, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(550, 1, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(595, 3, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-    gWorldInstance.AddObject(std::make_unique<OBombKart>(0, 0, 0.8333333, 0, 0, 0, 0));
-}
-
 // Positions the finishline on the minimap
 void KalimariDesert::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
@@ -209,7 +199,19 @@ void KalimariDesert::SpawnVehicles() {
     for (size_t i = 0; i < numTrains; ++i) {
         uint32_t waypoint = CalculateWaypointDistribution(i, numTrains, gVehicle2DWaypointLength, centerWaypoint);
         
-        gWorldInstance.AddTrain(5, 5.0f, waypoint);
+        gWorldInstance.AddTrain(5, 2.5f, waypoint);
+    }
+
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][138], 138, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][280], 280, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][404], 404, 1, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][510], 510, 3, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
     }
 }
 

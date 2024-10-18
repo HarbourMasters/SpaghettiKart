@@ -77,6 +77,8 @@ CProperties* CourseManager_GetProps();
 
 void CourseManager_SpawnBombKarts();
 
+void CourseManager_BombKartsWaypoint(s32 cameraId);
+
 void CourseManager_Water();
 
 size_t GetCupCursorPosition();

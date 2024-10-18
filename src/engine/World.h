@@ -6,6 +6,7 @@
 #include "vehicles/Vehicle.h"
 #include "vehicles/Train.h"
 #include "vehicles/Car.h"
+#include "vehicles/OBombKart.h"
 #include "TrainCrossing.h"
 #include <memory>
 #include "Actor.h"
@@ -110,6 +111,7 @@ public:
     std::vector<std::unique_ptr<GameObject>> GameObjects;
     std::vector<std::unique_ptr<AActor>> Actors;
 
+    /** Actors */
     void AddBoat(f32 speed, uint32_t waypoint);
     void AddTrain(size_t numCarriages, f32 speed, uint32_t waypoint);
     void AddTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
@@ -118,6 +120,10 @@ public:
     void AddCar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
     std::vector<std::unique_ptr<AVehicle>> Vehicles;
     void ResetVehicles(void);
+
+    /** Objects **/
+    void AddBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
+    std::vector<std::unique_ptr<OBombKart>> BombKarts;
 
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
