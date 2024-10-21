@@ -15,7 +15,6 @@ AWarioSign::AWarioSign(Vec3f pos) {
     Pos[2] = pos[2];
 }
 
-    // Virtual functions to be overridden by derived classes
 void AWarioSign::Tick() {
     Rot[1] += 0xB6;
 }
