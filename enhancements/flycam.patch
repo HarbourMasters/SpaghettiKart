@@ -411,11 +411,11 @@ index 7c90951..135e98c 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -578,6 +578,7 @@ void race_logic_loop(void) {
-             gTickSpeed = 2;
+             gTickLogic = 2;
              staff_ghosts_loop();
              if (gIsGamePaused == 0) {
 +                func_8001EE98(gPlayerOneCopy, camera1, 0);
-                 for (i = 0; i < gTickSpeed; i++) {
+                 for (i = 0; i < gTickLogic; i++) {
                      if (D_8015011E) {
                          gCourseTimer += 0.01666666; // 1 / 60
 @@ -585,7 +586,6 @@ void race_logic_loop(void) {

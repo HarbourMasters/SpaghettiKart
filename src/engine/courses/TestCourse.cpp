@@ -7,6 +7,10 @@
 #include "GameObject.h"
 #include "World.h"
 #include "engine/vehicles/OBombKart.h"
+#include "assets/mario_raceway_data.h"
+#include "assets/bowsers_castle_data.h"
+#include "assets/bowsers_castle_displaylists.h"
+#include "engine/actors/ATree.h"
 
 extern "C" {
     #include "main.h"
@@ -29,10 +33,10 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     typedef struct {
-    Gfx* addr;
-    u8 surfaceType;
-    u8 sectionId;
-    u16 flags;
+        Gfx* addr;
+        u8 surfaceType;
+        u8 sectionId;
+        u16 flags;
     } TrackSections;
     extern Gfx test_course_dls[];
     extern Vtx mario_Plane_001_mesh_vtx_1[];
@@ -149,6 +153,10 @@ struct ActorSpawnData rocks[] = {
 };
     spawn_all_item_boxes(itemboxes);
     spawn_falling_rocks(rocks);
+
+    Vec3f test = {0, 0, 0};
+
+    gWorldInstance.AddActor(std::make_unique<ATree>(test, (Gfx*)d_course_mario_raceway_dl_tree, 10000.0f, 2500.0f, nullptr));
 
     struct RailroadCrossing* rrxing;
     Vec3f position;
@@ -298,6 +306,7 @@ void TestCourse::MinimapFinishlinePosition() {
 void TestCourse::SetStaffGhost() {}
 
 void TestCourse::BeginPlay() {  }
+
 void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
