@@ -111,8 +111,6 @@ void render_armature(Armature* animation, Animation* arg1, s16 timeCycle) {
     s32 animation_type;
     s32 someIndex;
 
-    printf("model: %d %d %d\n", animation->pos[0], animation->pos[1], animation->pos[2]);
-
     angle_array = (arg1->angle_array);
     animation_cycle_list = (arg1->animation_cycle_spec_vector);
     sMatrixStackSize = 0;

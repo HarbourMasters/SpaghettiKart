@@ -146,7 +146,7 @@ void update_actor_banana(struct BananaActor* banana) {
             func_802B4E30((struct Actor*) banana);
             break;
         case BANANA_BUNCH_BANANA:
-            elderBanana = (struct BananaActor*) &gActorList[banana->elderIndex];
+            elderBanana = (struct BananaActor*) GET_ACTOR(banana->elderIndex);
             temp_f2 = elderBanana->pos[0] - banana->pos[0];
             temp_f14 = elderBanana->pos[1] - banana->pos[1];
             temp_f16 = elderBanana->pos[2] - banana->pos[2];

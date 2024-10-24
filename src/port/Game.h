@@ -93,6 +93,11 @@ void* GetCourse(void);
 
 void SetCourseByClass(void* course);
 
+struct Actor* m_GetActor(size_t index);
+void m_DeleteActor(size_t index);
+struct Actor* m_AddBaseActor(void);
+size_t m_GetActorSize();
+
 void* GetMarioRaceway(void);
 
 void* GetLuigiRaceway(void);

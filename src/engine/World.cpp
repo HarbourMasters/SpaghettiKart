@@ -169,28 +169,56 @@ Object* World::AddObject(std::unique_ptr<GameObject> object) {
     return &rawPtr->o;
 }
 
-AActor* World::AddActor(std::unique_ptr<AActor> actor) {
-    AActor* rawPtr = actor.get();
-    Actors.push_back(std::move(actor));
-    return rawPtr;
+AActor* World::AddActor(AActor* actor) {
+    Actors.push_back(actor);
+    return Actors.back();
+}
+
+struct Actor* World::AddBaseActor() {
+    Actors.push_back(new AActor());
+    // Skip C++ vtable to access variables in C
+    return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
+}
+
+/**
+ * Converts a C struct Actor* to its C++ AActor class
+ */
+AActor* World::ConvertActorToAActor(Actor* actor) {
+    // Move the ptr back so that it points at the vtable.
+    // Which is the initial item in the class, or in other words
+    // Point to the class.
+    return reinterpret_cast<AActor*>((char*)actor - sizeof(void*));
+}
+
+/**
+ * Converts a C++ AActor class to a C Actor* struct.
+ */
+Actor* World::ConvertAActorToActor(AActor* actor) {
+    // Move the ptr forward past the vtable.
+    // This allows C to access the class variables like a normal Actor* struct.
+    return reinterpret_cast<Actor*>((char*)actor + sizeof(void*));
+}
+
+AActor* World::GetActor(size_t index) {
+    return Actors[index];
 }
 
 void World::TickActors() {
-    for (auto& actor : Actors) {
+    for (AActor* actor : Actors) {
         actor->Tick();
     }
 }
 
 void World::DrawActors(Camera* camera) {
-    for (auto& actor : Actors) {
+    for (AActor* actor : Actors) {
         actor->Draw(camera);
     }
 }
 
 void RemoveExpiredActors() {
-    //Actors.erase(
+    // Actors.erase(
     //    std::remove_if(Actors.begin(), Actors.end(),
-    //                    [](const std::unique_ptr<AActor>& actor) { return actor->uuid == 0; }), // Example condition
+    //                    [](const std::unique_ptr<AActor>& actor) { return actor->uuid == 0; }),
     //    Actors.end());
 }
 

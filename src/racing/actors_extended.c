@@ -33,7 +33,7 @@ void copy_collision(Collision* src, Collision* dest) {
 }
 
 void triple_shell_actor_collide_with_player(struct ShellActor* shell, s32 shellType) {
-    TripleShellParent* parent = (TripleShellParent*) &gActorList[shell->parentIndex];
+    TripleShellParent* parent = (TripleShellParent*) GET_ACTOR(shell->parentIndex);
 
     parent->shellsAvailable--;
 
@@ -78,7 +78,7 @@ void func_802B0464(s16 bananaIndex) {
     struct BananaActor* banana;
 
     if (bananaIndex != -1) {
-        banana = (struct BananaActor*) &gActorList[bananaIndex];
+        banana = (struct BananaActor*) GET_ACTOR(bananaIndex);
         func_802B039C(banana);
         func_802B0464(banana->youngerIndex);
     }
@@ -88,7 +88,7 @@ void func_802B04E8(UNUSED struct BananaActor* arg0, s16 bananaIndex) {
     struct BananaActor* banana;
 
     if (bananaIndex != -1) {
-        banana = (struct BananaActor*) &gActorList[bananaIndex];
+        banana = (struct BananaActor*) GET_ACTOR(bananaIndex);
         func_802B039C(banana);
         func_802B04E8(banana, banana->elderIndex);
     }
@@ -107,7 +107,7 @@ void destroy_banana_in_banana_bunch(struct BananaActor* banana) {
     banana->unk_04 = 0x003C;
     banana->state = DESTROYED_BANANA;
     banana->velocity[1] = 3.0f;
-    temp_v0_2 = (struct BananaBunchParent*) &gActorList[banana->parentIndex];
+    temp_v0_2 = (struct BananaBunchParent*) GET_ACTOR(banana->parentIndex);
     temp_v0_2->bananaIndices[0] = -1;
     temp_v0_2->bananaIndices[1] = -1;
     temp_v0_2->bananaIndices[2] = -1;
@@ -122,19 +122,19 @@ void func_802B0648(struct BananaBunchParent* banana_bunch) {
 
     banana_bunch->bananasAvailable -= 1;
     if (banana_bunch->bananaIndices[4] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[4]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[4]);
         banana_bunch->bananaIndices[4] = -1;
     } else if (banana_bunch->bananaIndices[3] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[3]);
         banana_bunch->bananaIndices[3] = -1;
     } else if (banana_bunch->bananaIndices[2] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[2]);
         banana_bunch->bananaIndices[2] = -1;
     } else if (banana_bunch->bananaIndices[1] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[1]);
         banana_bunch->bananaIndices[1] = -1;
     } else if (banana_bunch->bananaIndices[0] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[0]);
         banana_bunch->bananaIndices[0] = -1;
     } else {
         return;
@@ -147,7 +147,7 @@ void func_802B0648(struct BananaBunchParent* banana_bunch) {
     banana->velocity[2] = 0.0f;
     elderIndex = banana->elderIndex;
     if (elderIndex != -1) {
-        ((struct BananaActor*) &gActorList[elderIndex])->youngerIndex = -1;
+        ((struct BananaActor*) GET_ACTOR(elderIndex))->youngerIndex = -1;
     }
 }
 
@@ -161,19 +161,19 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player
 
     banana_bunch->bananasAvailable -= 1;
     if (banana_bunch->bananaIndices[4] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[4]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[4]);
         banana_bunch->bananaIndices[4] = -1;
     } else if (banana_bunch->bananaIndices[3] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[3]);
         banana_bunch->bananaIndices[3] = -1;
     } else if (banana_bunch->bananaIndices[2] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[2]);
         banana_bunch->bananaIndices[2] = -1;
     } else if (banana_bunch->bananaIndices[1] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[1]);
         banana_bunch->bananaIndices[1] = -1;
     } else if (banana_bunch->bananaIndices[0] != -1) {
-        banana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
+        banana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[0]);
         banana_bunch->bananaIndices[0] = -1;
     } else {
         return;
@@ -182,7 +182,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player
     banana->state = DROPPED_BANANA;
     banana->unk_04 = 0x001E;
     if (banana->elderIndex != -1) {
-        elderBanana = (struct BananaActor*) &gActorList[banana->elderIndex];
+        elderBanana = (struct BananaActor*) GET_ACTOR(banana->elderIndex);
         elderBanana->youngerIndex = -1;
     }
     if (player->unk_094 < 2.0f) {
@@ -204,7 +204,7 @@ s32 func_802B09C0(s16 bananaId) {
     if (bananaId == -1) {
         return 0;
     }
-    banana = (struct BananaActor*) &gActorList[bananaId];
+    banana = (struct BananaActor*) GET_ACTOR(bananaId);
     if (banana->state == FIRST_BANANA_BUNCH_BANANA) {
         return 1;
     }
@@ -268,11 +268,11 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
             banana_bunch->state = 6;
             // Unnecessary type-casting done here purely to help with understanding.
             // We're setting the ->flags of BananaActors, not plain Actors.
-            ((struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]])->flags |= 0x5000;
-            ((struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]])->flags |= 0x5000;
-            ((struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]])->flags |= 0x5000;
-            ((struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]])->flags |= 0x5000;
-            ((struct BananaActor*) &gActorList[banana_bunch->bananaIndices[4]])->flags |= 0x5000;
+            ((struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[0]))->flags |= 0x5000;
+            ((struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[1]))->flags |= 0x5000;
+            ((struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[2]))->flags |= 0x5000;
+            ((struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[3]))->flags |= 0x5000;
+            ((struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[4]))->flags |= 0x5000;
             break;
         case 6:
             someCount = 0;
@@ -318,7 +318,7 @@ bool is_shell_exist(s16 arg0) {
     if (arg0 < 0) {
         return false;
     }
-    actor = (struct ShellActor*) &gActorList[arg0];
+    actor = (struct ShellActor*) GET_ACTOR(arg0);
     if (actor->type == ACTOR_GREEN_SHELL) {
         if (actor->state == TRIPLE_GREEN_SHELL) {
             return true;
@@ -392,11 +392,11 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case 3:
             parent->state = 4;
-            shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
+            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
             shell->flags |= 0x4000;
-            shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
+            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
             shell->flags |= 0x4000;
-            shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
+            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[2]);
             shell->flags |= 0x4000;
             break;
         case 4:
@@ -426,7 +426,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             }
             if (parent->unk_08 > 0.0f) {
                 if (parent->shellIndices[0] > 0.0f) {
-                    shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[0]];
+                    shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
                     if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
@@ -452,7 +452,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                     }
                 }
                 if (parent->shellIndices[1] > 0.0f) {
-                    shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[1]];
+                    shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
                     if ((shell->rotAngle < 0xAA1) || (shell->rotAngle >= 0x38F)) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
@@ -478,7 +478,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                     }
                 }
                 if (parent->shellIndices[2] > 0.0f) {
-                    shell = (struct ShellActor*) &gActorList[(s16) parent->shellIndices[2]];
+                    shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[2]);
                     if ((shell->rotAngle < -0x38E) || (shell->rotAngle >= -0x71B)) {
                         someVelocity[0] = 0;
                         someVelocity[1] = 0;
@@ -522,7 +522,7 @@ s32 use_banana_bunch_item(Player* player) {
     if (actorIndex < 0) {
         return actorIndex;
     }
-    bananaBunch = (struct BananaBunchParent*) &gActorList[actorIndex];
+    bananaBunch = (struct BananaBunchParent*) GET_ACTOR(actorIndex);
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
     player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
@@ -541,7 +541,7 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     if (actorIndex < 0) {
         return actorIndex;
     }
-    parent = (TripleShellParent*) &gActorList[actorIndex];
+    parent = (TripleShellParent*) GET_ACTOR(actorIndex);
     parent->state = 0;
     parent->rotVelocity = 0x05B0;
     parent->rotAngle = -0x8000;
@@ -572,7 +572,7 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
         return -1;
     }
 
-    shell = (struct ShellActor*) &gActorList[actorIndex];
+    shell = (struct ShellActor*) GET_ACTOR(actorIndex);
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
@@ -591,9 +591,9 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
     shell->rotVelocity = 0;
     shell->rotAngle = -0x8000;
     shell->playerId = player - gPlayerOne;
-    shell->parentIndex = (struct Actor*) parent - gActorList;
+    shell->parentIndex = m_FindActorIndex(parent);
     shell->shellId = shellId;
-    parent->shellIndices[shellId] = (struct Actor*) shell - gActorList;
+    parent->shellIndices[shellId] = (f32) m_FindActorIndex(shell);
     return 1;
 }
 
@@ -623,7 +623,7 @@ s32 use_green_shell_item(Player* player) {
         return actorIndex;
     }
 
-    shell = (struct ShellActor*) &gActorList[actorIndex];
+    shell = (struct ShellActor*) GET_ACTOR(actorIndex);
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
@@ -663,7 +663,7 @@ s32 use_red_shell_item(Player* player) {
         return actorIndex;
     }
 
-    shell = (struct ShellActor*) &gActorList[actorIndex];
+    shell = (struct ShellActor*) GET_ACTOR(actorIndex);
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
@@ -680,7 +680,7 @@ s32 use_red_shell_item(Player* player) {
 // Interestingly blue shells start their life as a red shell,
 // and then just change the type from red to blue shell
 void use_blue_shell_item(Player* player) {
-    gActorList[use_red_shell_item(player)].type = ACTOR_BLUE_SPINY_SHELL;
+    GET_ACTOR(use_red_shell_item(player))->type = ACTOR_BLUE_SPINY_SHELL;
 }
 
 #include "actors/banana/update.inc.c"
@@ -711,7 +711,7 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
     startingRot[2] = 0;
     actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
     if (actorIndex >= 0) {
-        newBanana = (struct BananaActor*) &gActorList[actorIndex];
+        newBanana = (struct BananaActor*) GET_ACTOR(actorIndex);
         startingPos[0] = player->pos[0];
         startingPos[1] = player->pos[1];
         startingPos[2] = player->pos[2];
@@ -720,7 +720,7 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
         func_802B4E30((struct Actor*) newBanana);
         newBanana->flags = 0x9000;
         newBanana->playerId = player - gPlayerOne;
-        newBanana->parentIndex = (struct Actor*) banana_bunch - gActorList;
+        newBanana->parentIndex = (struct Actor*) m_FindActorIndex(banana_bunch);
         newBanana->youngerIndex = -1;
         newBanana->unk_04 = 0x0014;
         newBanana->bananaId = bananaId;
@@ -734,28 +734,28 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
                 newBanana->state = 3;
                 banana_bunch->bananaIndices[1] = actorIndex;
                 newBanana->elderIndex = banana_bunch->bananaIndices[0];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[0]];
+                tempBanana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[0]);
                 tempBanana->youngerIndex = actorIndex;
                 break;
             case 2:
                 newBanana->state = 3;
                 banana_bunch->bananaIndices[2] = actorIndex;
                 newBanana->elderIndex = banana_bunch->bananaIndices[1];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[1]];
+                tempBanana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[1]);
                 tempBanana->youngerIndex = actorIndex;
                 break;
             case 3:
                 newBanana->state = 3;
                 banana_bunch->bananaIndices[3] = actorIndex;
                 newBanana->elderIndex = banana_bunch->bananaIndices[2];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[2]];
+                tempBanana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[2]);
                 tempBanana->youngerIndex = actorIndex;
                 break;
             case 4:
                 newBanana->state = 3;
                 banana_bunch->bananaIndices[4] = actorIndex;
                 newBanana->elderIndex = banana_bunch->bananaIndices[3];
-                tempBanana = (struct BananaActor*) &gActorList[banana_bunch->bananaIndices[3]];
+                tempBanana = (struct BananaActor*) GET_ACTOR(banana_bunch->bananaIndices[3]);
                 tempBanana->youngerIndex = actorIndex;
                 break;
         }
@@ -800,7 +800,7 @@ s32 use_fake_itembox_item(Player* player) {
     if (actorIndex < 0) {
         return actorIndex;
     }
-    itemBox = (struct FakeItemBox*) &gActorList[actorIndex];
+    itemBox = (struct FakeItemBox*) GET_ACTOR(actorIndex);
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
     player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
@@ -846,7 +846,7 @@ s32 use_banana_item(Player* player) {
     if (actorIndex < 0) {
         return actorIndex;
     }
-    banana = (struct BananaActor*) &gActorList[actorIndex];
+    banana = (struct BananaActor*) GET_ACTOR(actorIndex);
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;

@@ -104,7 +104,9 @@ DoubleDeck::DoubleDeck() {
 void DoubleDeck::LoadTextures() {
 }
 
-void DoubleDeck::SpawnActors() {}
+void DoubleDeck::SpawnActors() {
+    spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_double_deck_item_box_spawns));
+}
 
 void DoubleDeck::SpawnVehicles() {
     if (gModeSelection == VERSUS) {

@@ -1647,5 +1647,6 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
 
 void load_course(s32 courseId) {
     printf("Loading Course %d\n", courseId);
+    m_ClearActors();
     LoadCourse();
 }

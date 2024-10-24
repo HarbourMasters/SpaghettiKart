@@ -7,11 +7,10 @@ extern "C" {
 #include "main.h"
 #include "camera.h"
 #include "common_structs.h"
-}
+
 
 class AActor {
 public:
-    uint8_t uuid[16];
 
     /* 0x00 */ s16 Type;
     /* 0x02 */ s16 Flags;
@@ -24,6 +23,7 @@ public:
     /* 0x18 */ Vec3f Pos;
     /* 0x24 */ Vec3f Velocity = {0, 0, 0};
     /* 0x30 */ Collision Unk30;
+    uint8_t uuid[16];
 
     virtual ~AActor() = default;  // Virtual destructor for proper cleanup in derived classes
 
@@ -31,6 +31,9 @@ public:
 
     virtual void Tick();
     virtual void Draw(Camera*);
-    virtual void Collision();
+    virtual void Collision(Player* player, AActor* actor);
     virtual void Destroy();
+    virtual bool IsMod();
 };
+
+}

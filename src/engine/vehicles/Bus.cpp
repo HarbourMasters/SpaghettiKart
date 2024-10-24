@@ -133,7 +133,7 @@ void ABus::Tick() {
     Velocity[0] = Position[0] - sp5C;
     Velocity[1] = Position[1] - sp58;
     Velocity[2] = Position[2] - sp54;
-    struct Actor* vehicleActor = &gActorList[ActorIndex];
+    struct Actor* vehicleActor = GET_ACTOR(ActorIndex);
     vehicleActor->pos[0] = Position[0];
     vehicleActor->pos[1] = Position[1];
     vehicleActor->pos[2] = Position[2];

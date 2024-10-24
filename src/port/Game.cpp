@@ -481,6 +481,57 @@ extern "C" {
         gWorldInstance.CurrentCourse = (Course*) course;
     }
 
+    struct Actor* m_GetActor(size_t index) {
+        if (index < gWorldInstance.Actors.size()) {
+            AActor* actor = gWorldInstance.Actors[index];
+            return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
+        } else {
+            //throw std::runtime_error("GetActor() index out of bounds");
+            return NULL;
+        }
+    }
+
+    size_t m_FindActorIndex(Actor* actor) {
+        // Move the ptr back to look at the vtable.
+        // This gets us the proper C++ class instead of just the variables used in C.
+        AActor* a = reinterpret_cast<AActor*>((char*)actor - sizeof(void*));
+        auto actors = gWorldInstance.Actors;
+
+        auto it = std::find(actors.begin(), actors.end(), static_cast<AActor*>(a));
+        if (it != actors.end()) {
+            return std::distance(actors.begin(), it);
+        }
+        printf("FindActorIndex() actor not found\n");
+        return 0;
+    }
+
+    void m_DeleteActor(size_t index) {
+        std::vector<AActor*> actors = gWorldInstance.Actors;
+        if (index < actors.size()) {
+            actors.erase(actors.begin() + index);
+        }
+    }
+    
+    void m_ClearActors(void) {
+        gWorldInstance.Actors.clear();
+    }
+
+    struct Actor* m_AddBaseActor(void) {
+        return (struct Actor*) gWorldInstance.AddBaseActor();
+    }
+
+    size_t m_GetActorSize() {
+        return gWorldInstance.Actors.size();
+    }
+
+    void m_ActorCollision(Player* player, Actor* actor) {
+        AActor* a = gWorldInstance.ConvertActorToAActor(actor);
+
+        if (a->IsMod()) {
+            a->Collision(player, a);
+        }
+    }
+
     void* GetMarioRaceway(void) {
         return gMarioRaceway;
     }

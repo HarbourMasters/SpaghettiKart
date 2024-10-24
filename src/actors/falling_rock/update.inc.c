@@ -53,7 +53,7 @@ void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
         vec3f_set(startingVelocity, 0, 0, 0);
         vec3s_set(startingRot, 0, 0, 0);
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
-        temp_v1 = (struct FallingRock*) &gActorList[temp];
+        temp_v1 = (struct FallingRock*) GET_ACTOR(temp);
 
         temp_v1->unk_06 = temp_s0->someId;
         func_802AAAAC((Collision*) &temp_v1->unk30);

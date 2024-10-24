@@ -144,7 +144,7 @@ void ATrain::SyncComponents(TrainCarStuff* trainCar, s16 orientationY) {
     struct TrainCar* trainCarActor;
 
     //! @todo: Change actorIndex to ptr to TrainCar actor
-    trainCarActor = (struct TrainCar*) &gActorList[trainCar->actorIndex];
+    trainCarActor = (struct TrainCar*) GET_ACTOR(trainCar->actorIndex);
     trainCarActor->pos[0] = trainCar->position[0];
     trainCarActor->pos[1] = trainCar->position[1];
     trainCarActor->pos[2] = trainCar->position[2];

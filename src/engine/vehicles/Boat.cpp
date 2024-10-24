@@ -143,7 +143,7 @@ void ABoat::Tick() {
         Velocity[0] = Position[0] - temp_f26;
         Velocity[1] = Position[1] - temp_f28;
         Velocity[2] = Position[2] - temp_f30;
-        paddleBoatActor = &gActorList[ActorIndex];
+        paddleBoatActor = GET_ACTOR(ActorIndex);
         paddleBoatActor->pos[0] = Position[0];
         paddleBoatActor->pos[1] = Position[1];
         paddleBoatActor->pos[2] = Position[2];

@@ -127,24 +127,24 @@ void KalimariDesert::SpawnActors() {
 
     vec3f_set(position, -1680.0f, 2.0f, 35.0f);
     position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING)];
+    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing2;
     vec3f_set(position, -1600.0f, 2.0f, 35.0f);
     position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING)];
+    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing2;
     vec3s_set(rotation, 0, -0x2000, 0);
     vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
     position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING)];
+    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
     vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
     position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING)];
+    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
 }
 

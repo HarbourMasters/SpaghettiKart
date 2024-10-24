@@ -111,15 +111,15 @@ void WarioStadium::SpawnActors() {
 
     Vec3f pos = {-131.0f, 83.0f, 286.0f};
     pos[0] *= gCourseDirection;
-    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos));
+    gWorldInstance.AddActor(new AWarioSign(pos));
 
     Vec3f pos2 = {-2353.0f, 72.0f, -1608.0f};
     pos2[0] *= gCourseDirection;
-    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos2));
+    gWorldInstance.AddActor(new AWarioSign(pos2));
 
     Vec3f pos3 = {-2622.0f, 79.0f, 739.0f};
     pos3[0] *= gCourseDirection;
-    gWorldInstance.AddActor(std::make_unique<AWarioSign>(pos3));
+    gWorldInstance.AddActor(new AWarioSign(pos3));
 }
 
 void WarioStadium::SpawnVehicles() {

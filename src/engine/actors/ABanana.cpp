@@ -54,7 +54,7 @@ void ABanana::Tick() {
 void ABanana::Draw(Camera *camera) {
     render_actor_banana(camera, NULL, (BananaActor*)this);
 }
-void ABanana::Collision() { }
+void ABanana::Collision(Player* player, AActor*) { }
 void ABanana::Destroy() { }
 
 //void ABanana::Held() {}

@@ -104,7 +104,9 @@ BlockFort::BlockFort() {
 void BlockFort::LoadTextures() {
 }
 
-void BlockFort::SpawnActors() {}
+void BlockFort::SpawnActors() {
+    spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_block_fort_item_box_spawns));
+}
 
 void BlockFort::SpawnVehicles() {
     if (gModeSelection == VERSUS) {

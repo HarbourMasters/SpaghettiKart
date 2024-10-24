@@ -70,10 +70,15 @@ public:
 
     void AddCourse(Course* course);
 
-    AActor* AddActor(std::unique_ptr<AActor> actor);
+    AActor* AddActor(AActor* actor);
+    struct Actor* AddBaseActor();
+    AActor* GetActor(size_t index);
+
     void TickActors();
     void DrawActors(Camera* camera);
     void RemoveExpiredActors();
+    AActor* ConvertActorToAActor(Actor* actor);
+    Actor* ConvertAActorToActor(AActor* actor);
 
     Object* AddObject(std::unique_ptr<GameObject> object);
 
@@ -109,7 +114,7 @@ public:
     size_t CupIndex = 1;
 
     std::vector<std::unique_ptr<GameObject>> GameObjects;
-    std::vector<std::unique_ptr<AActor>> Actors;
+    std::vector<AActor*> Actors;
 
     /** Actors */
     void AddBoat(f32 speed, uint32_t waypoint);

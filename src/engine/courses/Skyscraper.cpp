@@ -104,7 +104,9 @@ Skyscraper::Skyscraper() {
 void Skyscraper::LoadTextures() {
 }
 
-void Skyscraper::SpawnActors() {}
+void Skyscraper::SpawnActors() {
+    spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_skyscraper_item_box_spawns));
+}
 
 void Skyscraper::SpawnVehicles() {
     if (gModeSelection == VERSUS) {

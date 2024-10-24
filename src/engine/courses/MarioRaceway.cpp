@@ -128,8 +128,7 @@ void MarioRaceway::SpawnActors() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
     vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
     position[0] *= gCourseDirection;
-    actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
-    actor->flags |= 0x4000;
+    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
 }
 
 void MarioRaceway::SpawnVehicles() {

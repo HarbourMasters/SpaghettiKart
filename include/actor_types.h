@@ -83,8 +83,11 @@ enum ActorType {
     ACTOR_CAR,
     ACTOR_KIWANO_FRUIT
 };
+size_t m_GetActorSize(void);
+#define ACTOR_LIST_SIZE m_GetActorSize()
 
-#define ACTOR_LIST_SIZE 100
+struct Actor* m_GetActor(size_t);
+#define GET_ACTOR(index) m_GetActor(index)
 
 // Actor flags
 #define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed
@@ -133,7 +136,7 @@ struct Actor {
 }; // size = 0x70
 
 // Duplicate declare for simplicity when externing actors & packed files.
-extern struct Actor gActorList[ACTOR_LIST_SIZE]; // D_8015F9B8
+extern struct Actor gActorList[100]; // D_8015F9B8
 
 /*
 Specialized actor types

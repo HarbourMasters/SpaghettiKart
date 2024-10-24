@@ -16,6 +16,6 @@ public:
     // Virtual functions to be overridden by derived classes
     virtual void Tick() override;
     virtual void Draw(Camera*) override;
-    virtual void Collision() override;
+    virtual void Collision(Player*, AActor*) override;
     virtual void Destroy() override;
 };

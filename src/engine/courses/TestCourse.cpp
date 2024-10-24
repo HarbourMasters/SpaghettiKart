@@ -12,6 +12,8 @@
 #include "assets/bowsers_castle_displaylists.h"
 #include "engine/actors/ATree.h"
 
+#include "engine/actors/ACoin.h"
+
 extern "C" {
     #include "main.h"
     #include "camera.h"
@@ -154,9 +156,11 @@ struct ActorSpawnData rocks[] = {
     spawn_all_item_boxes(itemboxes);
     spawn_falling_rocks(rocks);
 
-    Vec3f test = {0, 0, 0};
+    Vec3f test = {-100, 0, -150};
+    Vec3s rot = {0, 0, 0};
+    Vec3f vel = {0, 0, 0};
 
-    gWorldInstance.AddActor(std::make_unique<ATree>(test, (Gfx*)d_course_mario_raceway_dl_tree, 10000.0f, 2500.0f, nullptr));
+    add_actor_to_empty_slot(test, rot, vel, ACTOR_TREE_MARIO_RACEWAY);
 
     struct RailroadCrossing* rrxing;
     Vec3f position;
@@ -168,9 +172,12 @@ struct ActorSpawnData rocks[] = {
     uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);
 
     position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING)];
+    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                            ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
+
+    Vec3f pos = {0, 7, 0};
+    gWorldInstance.AddActor(new ACoin(pos));
 }
 
 // Likely sets minimap boundaries
