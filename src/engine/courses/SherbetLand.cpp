@@ -30,6 +30,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     extern const char *sherbet_land_dls[];
+    extern const char *sherbet_land_dls_2[];
 }
 
 SherbetLand::SherbetLand() {
@@ -184,7 +185,7 @@ void SherbetLand::RenderCredits() {
 
 void SherbetLand::Collision() {}
 
-void SherbetLand::GenerateCollision() {
+void SherbetLand::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     D_8015F8E4 = -18.0f;
@@ -192,6 +193,32 @@ void SherbetLand::GenerateCollision() {
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 255, 255, 255);
+}
+
+void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    Mat4 matrix;
+
+    gDPPipeSync(gDisplayListHead++);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
+    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
+
+    mtxf_identity(matrix);
+    render_set_position(matrix, 0);
+    render_course_segments(sherbet_land_dls_2, screen);
+
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    if ((func_80290C20(screen->camera) == 1) && (func_802AAB4C(screen->player) < screen->player->pos[1])) {
+        gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
+        gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+        gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+        // d_course_sherbet_land_packed_dl_2B48
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07002B48));
+    }
+    gDPPipeSync(gDisplayListHead++);
 }
 
 void SherbetLand::Destroy() { }

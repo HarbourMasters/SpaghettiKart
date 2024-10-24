@@ -336,7 +336,7 @@ void MarioRaceway::RenderCredits() {
 
 void MarioRaceway::Collision() {}
 
-void MarioRaceway::GenerateCollision() {
+void MarioRaceway::ModifyDisplaylists() {
     generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
     if (gScreenModeSelection == SCREEN_MODE_1P) {
         // d_course_mario_raceway_packed_dl_8E8

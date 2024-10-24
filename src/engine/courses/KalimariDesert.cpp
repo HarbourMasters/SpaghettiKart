@@ -255,7 +255,7 @@ void KalimariDesert::RenderCredits() {
 
 void KalimariDesert::Collision() {}
 
-void KalimariDesert::GenerateCollision() {
+void KalimariDesert::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;

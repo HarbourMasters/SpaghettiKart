@@ -209,8 +209,9 @@ void Course::BeginPlay() {}
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {}
 void Course::RenderCredits() {}
 void Course::Collision() {}
-void Course::GenerateCollision() {}
-void Course::Water() {}
+void Course::ModifyDisplaylists() {}
+void Course::ScrollingTextures() {}
+void Course::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {}
 
 void Course::Destroy() { }
 

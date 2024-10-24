@@ -112,8 +112,9 @@ public:
     virtual void UpdateVehicles();
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual void Collision();
-    virtual void GenerateCollision();
-    virtual void Water();
+    virtual void ModifyDisplaylists();
+    virtual void ScrollingTextures();
+    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
     virtual void Destroy();
 };
 

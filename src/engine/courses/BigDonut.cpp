@@ -168,7 +168,7 @@ void BigDonut::RenderCredits() {}
 
 void BigDonut::Collision() {}
 
-void BigDonut::GenerateCollision() {
+void BigDonut::ModifyDisplaylists() {
     // d_course_big_donut_packed_dl_1018
     generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07001018), 6);
     // d_course_big_donut_packed_dl_450

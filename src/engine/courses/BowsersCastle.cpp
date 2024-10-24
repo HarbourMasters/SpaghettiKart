@@ -273,7 +273,7 @@ void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, V
     func_8003E6EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void BowsersCastle::GenerateCollision() {
+void BowsersCastle::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
@@ -292,6 +292,27 @@ void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
             player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
         }
     }
+}
+
+void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    if (gActiveScreenMode != SCREEN_MODE_1P) {
+        return;
+    }
+    if (pathCounter < 6) {
+        return;
+    }
+    if (pathCounter > 9) {
+        return;
+    }
+    if (pathCounter == 9) {
+        if (cameraRot < 0xA000) {
+            return;
+        }
+        if (cameraRot > 0xE000) {
+            return;
+        }
+    }
+    gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_bowsers_castle_dl_9228);
 }
 
 void BowsersCastle::Destroy() { }

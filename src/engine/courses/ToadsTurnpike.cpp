@@ -262,7 +262,7 @@ void ToadsTurnpike::SpawnVehicles() {
     }
 }
 
-void ToadsTurnpike::GenerateCollision() {
+void ToadsTurnpike::ModifyDisplaylists() {
     D_801625EC = 43;
     D_801625F4 = 13;
     D_801625F0 = 4;

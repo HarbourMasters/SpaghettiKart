@@ -38,6 +38,6 @@ public:
     virtual void RenderCredits() override;
     virtual void SpawnVehicles() override;
     virtual void Collision() override;
-    virtual void GenerateCollision() override;
+    virtual void ModifyDisplaylists() override;
     virtual void Destroy() override;
 };

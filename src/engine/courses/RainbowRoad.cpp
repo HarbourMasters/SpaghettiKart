@@ -194,7 +194,7 @@ void RainbowRoad::RenderCredits() {
 
 void RainbowRoad::Collision() {}
 
-void RainbowRoad::GenerateCollision() {
+void RainbowRoad::ModifyDisplaylists() {
     D_800DC5C8 = 1;
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
@@ -213,6 +213,19 @@ void RainbowRoad::GenerateCollision() {
 
 void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+}
+
+void RainbowRoad::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    Mat4 matrix;
+
+    gDPPipeSync(gDisplayListHead++);
+    mtxf_identity(matrix);
+    render_set_position(matrix, 0);
+    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    render_course_segments(rainbow_road_dls, screen);
+    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    gDPPipeSync(gDisplayListHead++);
 }
 
 void RainbowRoad::Destroy() {}

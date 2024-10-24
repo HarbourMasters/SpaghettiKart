@@ -246,7 +246,7 @@ void ChocoMountain::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, V
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void ChocoMountain::GenerateCollision() {
+void ChocoMountain::ModifyDisplaylists() {
     D_800DC5BC = 1;
     D_801625EC = 255;
     D_801625F4 = 255;

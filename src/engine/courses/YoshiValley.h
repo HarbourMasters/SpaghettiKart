@@ -40,8 +40,8 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
-    virtual void GenerateCollision() override;
-    virtual void Water() override;
+    virtual void ModifyDisplaylists() override;
+    virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
     virtual void Destroy() override;
 };

@@ -235,7 +235,7 @@ void FrappeSnowland::RenderCredits() {
 
 void FrappeSnowland::Collision() {}
 
-void FrappeSnowland::GenerateCollision() {
+void FrappeSnowland::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
     D_8015F8E4 = -50.0f;
@@ -254,6 +254,6 @@ void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void FrappeSnowland::Water() {}
+void FrappeSnowland::ScrollingTextures() {}
 
 void FrappeSnowland::Destroy() {}

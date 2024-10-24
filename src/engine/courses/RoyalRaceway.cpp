@@ -247,7 +247,7 @@ void RoyalRaceway::RenderCredits() {
 
 void RoyalRaceway::Collision() {}
 
-void RoyalRaceway::GenerateCollision() {
+void RoyalRaceway::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
     D_8015F8E4 = -60.0f;
@@ -263,6 +263,17 @@ void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
             player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
         }
     }
+}
+
+void RoyalRaceway::ScrollingTextures() {
+    D_802B87BC -= 20;
+    if (D_802B87BC < 0) {
+        D_802B87BC = 0xFF;
+    }
+    // d_course_royal_raceway_packed_dl_A6A8
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*)0x0700A6A8), 0, D_802B87BC);
+    // d_course_royal_raceway_packed_dl_A648
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*)0x0700A648), 0, D_802B87BC);
 }
 
 void RoyalRaceway::Destroy() { }

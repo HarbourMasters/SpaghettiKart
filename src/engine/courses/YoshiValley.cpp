@@ -218,7 +218,7 @@ void YoshiValley::RenderCredits() {
 
 void YoshiValley::Collision() {}
 
-void YoshiValley::GenerateCollision() {
+void YoshiValley::ModifyDisplaylists() {
     Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
     func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
@@ -230,6 +230,6 @@ void YoshiValley::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void YoshiValley::Water() {}
+void YoshiValley::ScrollingTextures() {}
 
 void YoshiValley::Destroy() {}

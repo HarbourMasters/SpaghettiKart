@@ -334,7 +334,7 @@ void TestCourse::RenderCredits() {
 
 void TestCourse::Collision() {}
 
-void TestCourse::GenerateCollision() {
+void TestCourse::ModifyDisplaylists() {
     generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
     parse_course_displaylists((TrackSectionsI*)test_course_addr);

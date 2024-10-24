@@ -38,6 +38,6 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
-    virtual void GenerateCollision() override;
+    virtual void ModifyDisplaylists() override;
     virtual void Destroy() override;
 };

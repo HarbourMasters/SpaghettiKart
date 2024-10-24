@@ -173,7 +173,7 @@ void Skyscraper::RenderCredits() {}
 
 void Skyscraper::Collision() {}
 
-void Skyscraper::GenerateCollision() {
+void Skyscraper::ModifyDisplaylists() {
     // d_course_skyscraper_packed_dl_1110
     generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07001110), 1);
     // d_course_skyscraper_packed_dl_258

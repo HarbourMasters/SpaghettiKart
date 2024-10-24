@@ -334,7 +334,7 @@ void LuigiRaceway::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Ve
     func_8003E9EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void LuigiRaceway::GenerateCollision() {
+void LuigiRaceway::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;

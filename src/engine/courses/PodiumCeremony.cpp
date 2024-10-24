@@ -230,7 +230,7 @@ void PodiumCeremony::RenderCredits() {
 
 void PodiumCeremony::Collision() {}
 
-void PodiumCeremony::GenerateCollision() {
+void PodiumCeremony::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
     D_8015F8E4 = -60.0f;

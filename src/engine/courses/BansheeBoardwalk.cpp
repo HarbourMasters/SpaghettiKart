@@ -278,7 +278,7 @@ void BansheeBoardwalk::RenderCredits() {
 
 void BansheeBoardwalk::Collision() {}
 
-void BansheeBoardwalk::GenerateCollision() {
+void BansheeBoardwalk::ModifyDisplaylists() {
     D_800DC5BC = 1;
     D_801625EC = 0;
     D_801625F4 = 0;
@@ -289,7 +289,7 @@ void BansheeBoardwalk::GenerateCollision() {
     D_8015F8E4 = -80.0f;
 }
 
-void BansheeBoardwalk::Water() {
+void BansheeBoardwalk::ScrollingTextures() {
     D_802B87BC++;
 
     if (D_802B87BC >= 0x100) {
@@ -308,6 +308,19 @@ void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {
             player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
         }
     }
+}
+
+void BansheeBoardwalk::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    gDPPipeSync(gDisplayListHead++);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    // d_course_banshee_boardwalk_packed_dl_878
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07000878));
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    gDPPipeSync(gDisplayListHead++);
 }
 
 void BansheeBoardwalk::Destroy() { }

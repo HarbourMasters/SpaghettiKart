@@ -241,7 +241,7 @@ void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void KoopaTroopaBeach::GenerateCollision() {
+void KoopaTroopaBeach::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700ADE0)), -0x6A, 255, 255, 255);
@@ -250,7 +250,7 @@ void KoopaTroopaBeach::GenerateCollision() {
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), -0x6A, 255, 255, 255);
 }
 
-void KoopaTroopaBeach::Water() {
+void KoopaTroopaBeach::ScrollingTextures() {
     // clang-format off
     if (D_8015F8E8 < 0.0f) {
         if (D_8015F8E4 < -20.0f) { D_8015F8E8 *= -1.0f; }
@@ -283,6 +283,47 @@ void KoopaTroopaBeach::Water() {
     // d_course_koopa_troopa_beach_packed_dl_2E8
     find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070002E8)), D_802B87C8, D_802B87CC);
 
+}
+
+void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    Mat4 matrix;
+    Vec3f vector;
+
+    gDPPipeSync(gDisplayListHead++);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+
+    switch (pathCounter) {
+        case 22:
+        case 23:
+        case 29:
+        case 30:
+        case 31:
+        case 37:
+            gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+            // d_course_koopa_troopa_beach_packed_dl_9E70
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07009E70));
+            gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+            break;
+    }
+    vector[0] = 0.0f;
+    vector[1] = D_8015F8E4;
+    vector[2] = 0.0f;
+    mtxf_translate(matrix, vector);
+    render_set_position(matrix, 0);
+
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    render_course_segments((const char**)koopa_troopa_beach_dls2, screen);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
+    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    gDPPipeSync(gDisplayListHead++);
 }
 
 void KoopaTroopaBeach::Destroy() {}

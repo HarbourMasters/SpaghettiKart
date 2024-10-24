@@ -340,7 +340,7 @@ void MooMooFarm::RenderCredits() {
 
 void MooMooFarm::Collision() {}
 
-void MooMooFarm::GenerateCollision() {
+void MooMooFarm::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;

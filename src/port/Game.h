@@ -48,7 +48,7 @@ void CourseManager_UpdateClouds(s32 arg0, Camera* camera);
 
 void CourseManager_Waypoints(Player* player, int8_t playerId);
 
-void CourseManager_GenerateCollision();
+void CourseManager_ModifyDisplaylists();
 
 void CourseManager_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
                                       f32* arg6, f32* arg7);
@@ -79,7 +79,7 @@ void CourseManager_SpawnBombKarts();
 
 void CourseManager_BombKartsWaypoint(s32 cameraId);
 
-void CourseManager_Water();
+void CourseManager_ScrollingTextures();
 
 size_t GetCupCursorPosition();
 

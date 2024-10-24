@@ -276,7 +276,7 @@ void WarioStadium::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Ve
     func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void WarioStadium::GenerateCollision() {
+void WarioStadium::ModifyDisplaylists() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
     D_8015F8E4 = gCourseMinY - 10.0f;
@@ -296,6 +296,33 @@ void WarioStadium::GenerateCollision() {
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000DD0), 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_E48
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000E48), 100, 255, 255, 255);
+}
+
+void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    Mat4 matrix;
+
+    gDPPipeSync(gDisplayListHead++);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
+    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
+
+    mtxf_identity(matrix);
+    render_set_position(matrix, 0);
+
+    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+    // d_course_wario_stadium_packed_dl_EC0
+    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07000EC0));
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
+    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    gDPPipeSync(gDisplayListHead++);
 }
 
 void WarioStadium::Destroy() { }

@@ -371,9 +371,9 @@ extern "C" {
         }
     }
 
-    void CourseManager_GenerateCollision() {
+    void CourseManager_ModifyDisplaylists() {
         if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->GenerateCollision();
+            gWorldInstance.CurrentCourse->ModifyDisplaylists();
         }
     }
 
@@ -450,9 +450,15 @@ extern "C" {
         }
     }
 
-    void CourseManager_Water() {
+    void CourseManager_ScrollingTextures() {
         if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->Water();
+            gWorldInstance.CurrentCourse->ScrollingTextures();
+        }
+    }
+
+    void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+        if (gWorldInstance.CurrentCourse) {
+            gWorldInstance.CurrentCourse->DrawWater(screen, pathCounter, cameraRot, playerDirection);
         }
     }
 
