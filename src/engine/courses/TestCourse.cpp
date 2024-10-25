@@ -176,7 +176,7 @@ struct ActorSpawnData rocks[] = {
                                                                             ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
 
-    Vec3f pos = {0, 7, 0};
+    Vec3f pos = {-80, 7, -20};
     gWorldInstance.AddActor(new ACoin(pos));
 }
 

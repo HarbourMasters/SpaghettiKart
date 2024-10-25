@@ -881,8 +881,8 @@ void race_logic_loop(void) {
 #if DVDL
     display_dvdl();
 #endif
-    gDPFullSync(gDisplayListHead++);
-    gSPEndDisplayList(gDisplayListHead++);
+    //gDPFullSync(gDisplayListHead++);
+    //gSPEndDisplayList(gDisplayListHead++);
 }
 
 /**
