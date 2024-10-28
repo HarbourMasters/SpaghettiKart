@@ -6,6 +6,7 @@
 #include "RoyalRaceway.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/royal_raceway_data.h"
 
@@ -115,6 +116,8 @@ void RoyalRaceway::LoadTextures() {
 }
 
 void RoyalRaceway::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
     spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));

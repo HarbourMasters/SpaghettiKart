@@ -8,6 +8,7 @@
 #include "World.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/luigi_raceway_data.h"
+#include "engine/actors/AFinishline.h"
 
 extern "C" {
     #include "main.h"
@@ -109,6 +110,7 @@ void LuigiRaceway::LoadTextures() {
 }
 
 void LuigiRaceway::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_luigi_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_luigi_raceway_item_box_spawns));
 }

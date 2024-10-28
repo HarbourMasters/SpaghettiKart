@@ -6,6 +6,7 @@
 #include "KoopaTroopaBeach.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/koopa_troopa_beach_data.h"
 
@@ -107,6 +108,8 @@ void KoopaTroopaBeach::LoadTextures() {
 }
 
 void KoopaTroopaBeach::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));
     spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));

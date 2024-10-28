@@ -6,13 +6,14 @@
 #include "TestCourse.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/mario_raceway_data.h"
 #include "assets/bowsers_castle_data.h"
 #include "assets/bowsers_castle_displaylists.h"
 #include "engine/actors/ATree.h"
 
-#include "engine/actors/ACoin.h"
+#include "engine/actors/ACloud.h"
 
 extern "C" {
     #include "main.h"
@@ -132,27 +133,30 @@ void TestCourse::LoadTextures() {
 }
 
 void TestCourse::SpawnActors() {
-struct ActorSpawnData itemboxes[] = {
-    {   200, 1500, 200 , 0},
-    {   350, 2500, 300 , 1},
-    {   400, 2000, 350 , 2},
-    {    40, 0, -800, 0},
-    {    -40, 0, -800, 0},
-    {    0, 0, -800, 0},
-    {    999, 6, 482, 0},
-    {    1064, 8, 275, {0}},
-    {   1028, 5, -39 , {0}},
-    {    320, 0, 1020, {0}},
-    {   293, 0, 950, {0}},
-    {{ -32768, 0,    0 }, {0}},
-};
+    struct ActorSpawnData itemboxes[] = {
+        {   200, 1500, 200 , 0},
+        {   350, 2500, 300 , 1},
+        {   400, 2000, 350 , 2},
+        {    40, 0, -800, 0},
+        {    -40, 0, -800, 0},
+        {    0, 0, -800, 0},
+        {    999, 6, 482, 0},
+        {    1064, 8, 275, {0}},
+        {   1028, 5, -39 , {0}},
+        {    320, 0, 1020, {0}},
+        {   293, 0, 950, {0}},
+        {{ -32768, 0,    0 }, {0}},
+    };
 
-struct ActorSpawnData rocks[] = {
-    {{   200, 1500, 200 }, {0}},
-    {{   350, 2500, 300 }, {1}},
-    {{   400, 2000, 350 }, {2}},
-    {{ -32768,   0,   0 }, {0}},
-};
+    struct ActorSpawnData rocks[] = {
+        {{   200, 1500, 200 }, {0}},
+        {{   350, 2500, 300 }, {1}},
+        {{   400, 2000, 350 }, {2}},
+        {{ -32768,   0,   0 }, {0}},
+    };
+
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_all_item_boxes(itemboxes);
     spawn_falling_rocks(rocks);
 
@@ -177,7 +181,7 @@ struct ActorSpawnData rocks[] = {
     rrxing->crossingTrigger = crossing1;
 
     Vec3f pos = {-80, 7, -20};
-    gWorldInstance.AddActor(new ACoin(pos));
+    gWorldInstance.AddActor(new ACloud(pos));
 }
 
 // Likely sets minimap boundaries

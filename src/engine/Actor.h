@@ -12,7 +12,7 @@ extern "C" {
 class AActor {
 public:
 
-    /* 0x00 */ s16 Type;
+    /* 0x00 */ s16 Type = 0;
     /* 0x02 */ s16 Flags;
     /* 0x04 */ s16 Unk_04;
     /* 0x06 */ s16 State;

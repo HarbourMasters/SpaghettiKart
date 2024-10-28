@@ -221,18 +221,19 @@ void setup_race(void) {
     func_80091FA4();
     init_actors_and_load_textures();
 
-    if (gModeSelection != BATTLE) {
-        D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
-        ;
-        D_8015F8D0[2] = D_80164490->posZ;
-        if (GetCourse() == GetToadsTurnpike()) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
-        } else if (GetCourse() == GetWarioStadium()) {
-            D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
-        } else {
-            D_8015F8D0[0] = D_80164490->posX;
-        }
-    }
+    // Set finishline position. This is now done in files in src/engine/courses/*
+    // if (gModeSelection != BATTLE) {
+    //     D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
+    //     D_8015F8D0[2] = D_80164490->posZ;
+
+    //     if (GetCourse() == GetToadsTurnpike()) {
+    //         D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
+    //     } else if (GetCourse() == GetWarioStadium()) {
+    //         D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
+    //     } else {
+    //         D_8015F8D0[0] = D_80164490->posX;
+    //     }
+    // }
     if (!gDemoMode) {
         func_800CA008(gPlayerCountSelection1 - 1, gCurrentCourseId + 4);
         func_800CB2C4();

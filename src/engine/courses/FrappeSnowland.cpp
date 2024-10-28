@@ -6,6 +6,7 @@
 #include "FrappeSnowland.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/frappe_snowland_data.h"
 #include "assets/boo_frames.h"
@@ -109,6 +110,8 @@ void FrappeSnowland::LoadTextures() {
 }
 
 void FrappeSnowland::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
 }

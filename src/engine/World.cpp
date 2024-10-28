@@ -205,13 +205,9 @@ AActor* World::GetActor(size_t index) {
 
 void World::TickActors() {
     for (AActor* actor : Actors) {
-        actor->Tick();
-    }
-}
-
-void World::DrawActors(Camera* camera) {
-    for (AActor* actor : Actors) {
-        actor->Draw(camera);
+        if (actor->IsMod()) {
+            actor->Tick();
+        }
     }
 }
 

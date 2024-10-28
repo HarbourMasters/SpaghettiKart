@@ -6,6 +6,7 @@
 #include "BansheeBoardwalk.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/banshee_boardwalk_data.h"
 #include "assets/boo_frames.h"
@@ -106,6 +107,8 @@ void BansheeBoardwalk::LoadTextures() {
 }
 
 void BansheeBoardwalk::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
 }
 

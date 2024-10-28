@@ -9,6 +9,7 @@
 #include "engine/vehicles/OBombKart.h"
 #include "assets/wario_stadium_data.h"
 #include "engine/actors/AWarioSign.h"
+#include "engine/actors/AFinishline.h"
 
 extern "C" {
     #include "main.h"
@@ -107,6 +108,13 @@ void WarioStadium::LoadTextures() {
 }
 
 void WarioStadium::SpawnActors() {
+    Vec3f finish;
+    finish[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;(gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
+    finish[1] = D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
+    finish[2] = D_8015F8D0[2] = D_80164490->posZ;
+
+    gWorldInstance.AddActor(new AFinishline(finish));
+
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
 
     Vec3f pos = {-131.0f, 83.0f, 286.0f};

@@ -341,9 +341,10 @@ extern "C" {
         }
     }
 
-    void CourseManager_DrawActors(Camera* camera) {
-        if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.DrawActors(camera);
+    void CourseManager_DrawActor(Camera* camera, struct Actor* actor) {
+        AActor* a = gWorldInstance.ConvertActorToAActor(actor);
+        if (a->IsMod()) {
+            a->Draw(camera);
         }
     }
 

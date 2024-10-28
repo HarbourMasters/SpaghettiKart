@@ -148,7 +148,7 @@ u16* gPhysicalFramebuffers[3];
 uintptr_t gPhysicalZBuffer;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
-Mat4 D_801502C0;
+Mat4 sBillBoardMtx; // Faces 2D actors at the camera
 
 s32 padding[2048];
 

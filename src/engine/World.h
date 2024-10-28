@@ -75,7 +75,6 @@ public:
     AActor* GetActor(size_t index);
 
     void TickActors();
-    void DrawActors(Camera* camera);
     void RemoveExpiredActors();
     AActor* ConvertActorToAActor(Actor* actor);
     Actor* ConvertAActorToActor(AActor* actor);

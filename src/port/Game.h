@@ -8,6 +8,7 @@
 extern "C" {
 #include "camera.h"
 #endif
+#include "actor_types.h"
 
 u32 WorldNextCup(void);
 
@@ -43,6 +44,8 @@ void CourseManager_RenderCredits();
 void CourseManager_SpawnActors();
 
 void CourseManager_InitClouds();
+
+void CourseManager_DrawActor(Camera* camera, struct Actor* actor);
 
 void CourseManager_UpdateClouds(s32 arg0, Camera* camera);
 

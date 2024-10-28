@@ -5422,12 +5422,12 @@ void func_8009E2F0(s32 arg0) {
         temp_t0 = &D_8018E810[arg0];
         temp_v0 = &D_800E7AC8[temp_t7];
         if ((u32) D_8018E840[arg0] < 0x1BU) {
-            gDisplayListHead = draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
+            gDisplayListHead = draw_box_fill_wide(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
                                         temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
                                         temp_v0->green, temp_v0->blue, temp_v0->alpha);
         } else {
             temp_t7_2 = ((u32) (38 - D_8018E840[arg0])) / 11.0;
-            gDisplayListHead = draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
+            gDisplayListHead = draw_box_fill_wide(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
                                         temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
                                         temp_v0->green, temp_v0->blue, (u32) (temp_v0->alpha * temp_t7_2));
         }

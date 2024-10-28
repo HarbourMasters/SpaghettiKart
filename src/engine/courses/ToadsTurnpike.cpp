@@ -8,6 +8,7 @@
 #include "World.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/toads_turnpike_data.h"
+#include "engine/actors/AFinishline.h"
 
 #include "engine/vehicles/Utils.h"
 
@@ -109,6 +110,13 @@ void ToadsTurnpike::LoadTextures() {
 }
 
 void ToadsTurnpike::SpawnActors() {
+    Vec3f pos;
+    pos[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
+    pos[1] = (f32) (D_80164490->posY - 15);
+    pos[2] = D_80164490->posZ;
+
+    gWorldInstance.AddActor(new AFinishline(pos));
+
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_toads_turnpike_item_box_spawns));
 }
 

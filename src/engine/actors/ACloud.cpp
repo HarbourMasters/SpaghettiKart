@@ -1,6 +1,6 @@
 #include <libultraship.h>
 
-#include "ACoin.h"
+#include "ACloud.h"
 #include "engine/Actor.h"
 #include "World.h"
 
@@ -13,7 +13,8 @@ extern "C" {
 extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }
-ACoin::ACoin(const float pos[3]) {
+
+ACloud::ACloud(const float pos[3]) {
     // Initialize the actor's position
     std::copy(pos, pos + 3, Pos);
 
@@ -23,14 +24,14 @@ ACoin::ACoin(const float pos[3]) {
     BoundingBoxSize = 2.0f;
 }
 
-void ACoin::Tick() {
+void ACloud::Tick() {
     Rot[1] += 0x200;
 
     if (PickedUp) {
-        Timer++;
+        Timer++; // Increment timer
     }
 
-    if (Timer > 500) {
+    if (Timer > 500) { // Time has expired, reset the actor and player
         PickedUp = false;
         if (_player) {
             gKartHopInitialVelocityTable[_player->characterId] = OldHop; // reset back to normal
@@ -41,27 +42,27 @@ void ACoin::Tick() {
     }
 }
 
-extern Gfx coin_mesh[];
+extern Gfx cloud_mesh[];
 
-void ACoin::Draw(Camera *camera) {
+void ACloud::Draw(Camera *camera) {
     Mat4 mtx;
 
     if (PickedUp) {
-        return;
+        return; // Skip drawing if the actor has been picked up
     }
 
     mtxf_pos_rotation_xyz(mtx, Pos, Rot);
     if (render_set_position(mtx, 0) != 0) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
-        gSPDisplayList(gDisplayListHead++, (Gfx*)coin_mesh);
+        gSPDisplayList(gDisplayListHead++, (Gfx*)cloud_mesh);
     }
 }
 
-void ACoin::Collision(Player* player, AActor* actor) {
+void ACloud::Collision(Player* player, AActor* actor) {
     if (!PickedUp) {
         if (query_collision_player_vs_actor_item(player, gWorldInstance.ConvertAActorToActor(actor))) {
-
+			// Player has picked up the actor, activate the cloud effect
             _player = player;
             PickedUp = true;
 
@@ -73,9 +74,9 @@ void ACoin::Collision(Player* player, AActor* actor) {
     }
 }
 
-bool ACoin::IsMod() { return true; }
+bool ACloud::IsMod() { return true; }
 
-Vtx coin_mesh_vtx_cull[8] = {
+Vtx cloud_mesh_vtx_cull[8] = {
 	{{ {0, -4, -4}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {0, -4, 4}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {0, 4, 4}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -86,20 +87,20 @@ Vtx coin_mesh_vtx_cull[8] = {
 	{{ {0, 4, -4}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx coin_mesh_vtx_0[4] = {
+Vtx cloud_mesh_vtx_0[4] = {
 	{{ {0, 4, 4}, 0, {-524, -530}, {255, 255, 255, 166} }},
 	{{ {0, -4, 4}, 0, {-530, 1516}, {255, 255, 255, 201} }},
 	{{ {0, -4, -4}, 0, {1516, 1522}, {255, 255, 255, 188} }},
 	{{ {0, 4, -4}, 0, {1522, -524}, {255, 255, 255, 154} }},
 };
 
-Gfx coin_mesh_tri_0[] = {
-	gsSPVertex(coin_mesh_vtx_0 + 0, 4, 0),
+Gfx cloud_mesh_tri_0[] = {
+	gsSPVertex(cloud_mesh_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_coin_cutout[] = {
+Gfx mat_cloud_cutout[] = {
 	gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_FOG | G_SHADING_SMOOTH),
 	gsSPClearGeometryMode(G_CULL_FRONT | G_CULL_BACK | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_CLIPPING),
 	gsDPPipeSync(),
@@ -121,13 +122,13 @@ Gfx mat_coin_cutout[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx coin_mesh[] = {
+Gfx cloud_mesh[] = {
 	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(coin_mesh_vtx_cull + 0, 8, 0),
+	gsSPVertex(cloud_mesh_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_coin_cutout),
-	gsSPDisplayList(coin_mesh_tri_0),
+	gsSPDisplayList(mat_cloud_cutout),
+	gsSPDisplayList(cloud_mesh_tri_0),
 	gsSPEndDisplayList(),
 };
 

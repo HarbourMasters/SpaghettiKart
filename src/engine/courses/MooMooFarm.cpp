@@ -6,6 +6,7 @@
 #include "MooMooFarm.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/moo_moo_farm_data.h"
 
@@ -119,6 +120,8 @@ void MooMooFarm::LoadTextures() {
 }
 
 void MooMooFarm::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     if (gPlayerCountSelection1 != 4) {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
     }

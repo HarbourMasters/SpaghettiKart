@@ -6,6 +6,7 @@
 #include "SherbetLand.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/sherbet_land_data.h"
 
@@ -105,6 +106,8 @@ void SherbetLand::LoadTextures() {
 }
 
 void SherbetLand::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
 }
 

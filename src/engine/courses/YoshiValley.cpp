@@ -6,6 +6,7 @@
 #include "YoshiValley.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/yoshi_valley_data.h"
 #include "assets/boo_frames.h"
@@ -109,6 +110,8 @@ void YoshiValley::SpawnActors() {
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
+
+    gWorldInstance.AddActor(new AFinishline());
 
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));

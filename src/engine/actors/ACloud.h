@@ -10,14 +10,14 @@ extern "C" {
 #include "common_structs.h"
 }
 
-class ACoin : public AActor {
+class ACloud : public AActor {
 public:
 
 
     // Constructor
-    ACoin(const float pos[3]);
+    ACloud(const float pos[3]);
 
-    virtual ~ACoin() override = default;
+    virtual ~ACloud() override = default;
 
     // Virtual functions to be overridden by derived classes
     virtual void Tick() override;

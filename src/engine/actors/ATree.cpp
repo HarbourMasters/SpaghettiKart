@@ -50,11 +50,11 @@ void ATree::Draw(Camera* camera) {
     if (((Flags & 0x400) == 0) && (dist < MinDrawDistance)) {
         func_8029794C(Pos, Rot, 3.0f);
     }
-    D_801502C0[3][0] = Pos[0];
-    D_801502C0[3][1] = Pos[1];
-    D_801502C0[3][2] = Pos[2];
+    sBillBoardMtx[3][0] = Pos[0];
+    sBillBoardMtx[3][1] = Pos[1];
+    sBillBoardMtx[3][2] = Pos[2];
 
-    if (render_set_position(D_801502C0, 0) != 0) {
+    if (render_set_position(sBillBoardMtx, 0) != 0) {
         if (Tlut) {
             gDPLoadTLUT_pal256(gDisplayListHead++, Tlut);
         }

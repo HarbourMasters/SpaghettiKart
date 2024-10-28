@@ -326,7 +326,7 @@ void actor_rendered(Camera* arg0, struct Actor* arg1) {
 }
 
 void func_80297340(Camera* arg0) {
-    Mat4 sp38;
+    Mat4 mtx;
     s16 temp = D_8015F8D0[2];
     s32 maxObjectsReached;
 
@@ -334,9 +334,9 @@ void func_80297340(Camera* arg0) {
         return;
     }
 
-    mtxf_translate(sp38, D_8015F8D0);
+    mtxf_translate(mtx, D_8015F8D0);
 
-    maxObjectsReached = render_set_position(sp38, 0) == 0;
+    maxObjectsReached = render_set_position(mtx, 0) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -2386,28 +2386,27 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
     f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
     f32 temp_f0 = coss(camera->rot[1] - 0x8000);
 
-    D_801502C0[0][0] = temp_f0;
-    D_801502C0[0][2] = -sp48;
-    D_801502C0[2][2] = temp_f0;
-    D_801502C0[1][0] = 0.0f;
-    D_801502C0[0][1] = 0.0f;
-    D_801502C0[2][1] = 0.0f;
-    D_801502C0[1][2] = 0.0f;
-    D_801502C0[0][3] = 0.0f;
-    D_801502C0[1][3] = 0.0f;
-    D_801502C0[2][3] = 0.0f; // 2c
-    D_801502C0[2][0] = sp48;
-    D_801502C0[1][1] = 1.0f;
-    D_801502C0[3][3] = 1.0f; // unk3c
+    sBillBoardMtx[0][0] = temp_f0;
+    sBillBoardMtx[0][2] = -sp48;
+    sBillBoardMtx[2][2] = temp_f0;
+    sBillBoardMtx[1][0] = 0.0f;
+    sBillBoardMtx[0][1] = 0.0f;
+    sBillBoardMtx[2][1] = 0.0f;
+    sBillBoardMtx[1][2] = 0.0f;
+    sBillBoardMtx[0][3] = 0.0f;
+    sBillBoardMtx[1][3] = 0.0f;
+    sBillBoardMtx[2][3] = 0.0f; // 2c
+    sBillBoardMtx[2][0] = sp48;
+    sBillBoardMtx[1][1] = 1.0f;
+    sBillBoardMtx[3][3] = 1.0f; // unk3c
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 
-    CourseManager_DrawActors(D_800DC5EC->camera);
 
     if (gModeSelection != BATTLE) {
-        func_80297340(camera);
+        //func_80297340(camera);
     }
     D_8015F8E0 = 0;
 
@@ -2418,59 +2417,62 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
             continue;
         }
         switch (actor->type) {
+            default: // Draw custom actor
+                CourseManager_DrawActor(D_800DC5EC->camera, actor);
+                break;
             case ACTOR_TREE_MARIO_RACEWAY:
-                render_actor_tree_mario_raceway(camera, D_801502C0, actor);
+                render_actor_tree_mario_raceway(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_YOSHI_VALLEY:
-                render_actor_tree_yoshi_valley(camera, D_801502C0, actor);
+                render_actor_tree_yoshi_valley(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_ROYAL_RACEWAY:
-                render_actor_tree_royal_raceway(camera, D_801502C0, actor);
+                render_actor_tree_royal_raceway(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_MOO_MOO_FARM:
-                render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
+                render_actor_tree_moo_moo_farm(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_UNKNOWN_0x1A:
-                func_80299864(camera, D_801502C0, actor);
+                func_80299864(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_BOWSERS_CASTLE:
-                render_actor_tree_bowser_castle(camera, D_801502C0, actor);
+                render_actor_tree_bowser_castle(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_BUSH_BOWSERS_CASTLE:
-                render_actor_bush_bowser_castle(camera, D_801502C0, actor);
+                render_actor_bush_bowser_castle(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_FRAPPE_SNOWLAND:
-                render_actor_tree_frappe_snowland(camera, D_801502C0, actor);
+                render_actor_tree_frappe_snowland(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS1_KALAMARI_DESERT:
-                render_actor_tree_cactus1_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus1_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS2_KALAMARI_DESERT:
-                render_actor_tree_cactus2_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus2_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS3_KALAMARI_DESERT:
-                render_actor_tree_cactus3_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus3_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_FALLING_ROCK:
                 render_actor_falling_rock(camera, (struct FallingRock*) actor);
                 break;
             case ACTOR_KIWANO_FRUIT:
-                render_actor_kiwano_fruit(camera, D_801502C0, actor);
+                render_actor_kiwano_fruit(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_BANANA:
-                render_actor_banana(camera, D_801502C0, (struct BananaActor*) actor);
+                render_actor_banana(camera, sBillBoardMtx, (struct BananaActor*) actor);
                 break;
             case ACTOR_GREEN_SHELL:
-                render_actor_green_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_green_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_RED_SHELL:
-                render_actor_red_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_red_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_BLUE_SPINY_SHELL:
-                render_actor_blue_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_blue_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_PIRANHA_PLANT:
-                render_actor_piranha_plant(camera, D_801502C0, (struct PiranhaPlant*) actor);
+                render_actor_piranha_plant(camera, sBillBoardMtx, (struct PiranhaPlant*) actor);
                 break;
             case ACTOR_TRAIN_ENGINE:
                 render_actor_train_engine(camera, (struct TrainCar*) actor);
@@ -2482,22 +2484,22 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
                 render_actor_train_passenger_car(camera, (struct TrainCar*) actor);
                 break;
             case ACTOR_COW:
-                render_actor_cow(camera, D_801502C0, actor);
+                render_actor_cow(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_UNKNOWN_0x14:
-                func_8029AC18(camera, D_801502C0, actor);
+                func_8029AC18(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_MARIO_SIGN:
-                render_actor_mario_sign(camera, D_801502C0, actor);
+                render_actor_mario_sign(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_WARIO_SIGN:
                 render_actor_wario_sign(camera, actor);
                 break;
             case ACTOR_PALM_TREE:
-                render_actor_palm_tree(camera, D_801502C0, (struct PalmTree*) actor);
+                render_actor_palm_tree(camera, sBillBoardMtx, (struct PalmTree*) actor);
                 break;
             case ACTOR_PADDLE_BOAT:
-                render_actor_paddle_boat(camera, (struct PaddleWheelBoat*) actor, D_801502C0, pathCounter);
+                render_actor_paddle_boat(camera, (struct PaddleWheelBoat*) actor, sBillBoardMtx, pathCounter);
                 break;
             case ACTOR_BOX_TRUCK:
                 render_actor_box_truck(camera, actor);
@@ -2515,14 +2517,14 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
                 render_actor_railroad_crossing(camera, (struct RailroadCrossing*) actor);
                 break;
             case ACTOR_YOSHI_EGG:
-                render_actor_yoshi_egg(camera, D_801502C0, (struct YoshiValleyEgg*) actor, pathCounter);
+                render_actor_yoshi_egg(camera, sBillBoardMtx, (struct YoshiValleyEgg*) actor, pathCounter);
                 break;
         }
     }
     if (GetCourse() == GetMooMooFarm()) {
-        render_cows(camera, D_801502C0, actor);
+        render_cows(camera, sBillBoardMtx, actor);
     } else if (GetCourse() == GetDkJungle()) {
-        render_palm_trees(camera, D_801502C0, actor);
+        render_palm_trees(camera, sBillBoardMtx, actor);
     }
 }
 

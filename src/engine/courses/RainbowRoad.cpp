@@ -6,6 +6,7 @@
 #include "RainbowRoad.h"
 #include "GameObject.h"
 #include "World.h"
+#include "engine/actors/AFinishline.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/rainbow_road_data.h"
 
@@ -104,6 +105,8 @@ void RainbowRoad::LoadTextures() {
 }
 
 void RainbowRoad::SpawnActors() {
+    gWorldInstance.AddActor(new AFinishline());
+
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
 }
 

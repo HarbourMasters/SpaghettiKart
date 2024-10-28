@@ -184,7 +184,7 @@ extern s32 D_801502A0;
 extern s32 D_801502A4;
 extern u16* gPhysicalFramebuffers[];
 extern uintptr_t gPhysicalZBuffer;
-extern Mat4 D_801502C0;
+extern Mat4 sBillBoardMtx;
 
 extern s32 padding[];
 
