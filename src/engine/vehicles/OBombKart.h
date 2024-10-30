@@ -3,6 +3,7 @@
 #include <libultraship.h>
 #include "Vehicle.h"
 #include <vector>
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "macros.h"

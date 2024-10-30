@@ -46,6 +46,7 @@
 
 #include "engine/Engine.h"
 #include "engine/courses/Course.h"
+#include "engine/Matrix.h"
 
 const char* GetCupName(void);
 
@@ -2032,9 +2033,10 @@ UNUSED void func_80093C90(void) {
 
 void func_80093C98(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    // guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    AddEffectMatrixOrtho();
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800A8250();
@@ -2043,6 +2045,7 @@ void func_80093C98(s32 arg0) {
         func_8009CA6C(4);
         D_80165754 = gMatrixEffectCount;
         gMatrixEffectCount = 0;
+        ClearEffectsMatrixPool();
     }
 }
 
@@ -2079,9 +2082,10 @@ void func_80093E60(void) {
 
 void func_80093F10(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    // guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    AddEffectMatrixOrtho();
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_80092290(4, D_8018E850, D_8018E858);
@@ -2095,14 +2099,16 @@ void func_80093F10(void) {
     func_8009CA2C();
     gSPDisplayList(gDisplayListHead++, D_02007F48);
     gMatrixEffectCount = 0;
+    ClearEffectsMatrixPool();
 }
 
 void func_800940EC(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    // guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    AddEffectMatrixOrtho();
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     func_80092290(4, D_8018E850, D_8018E858);
     func_80092290(5, (s32*) &D_8018E850[1], (s32*) &D_8018E858[1]);
@@ -2192,6 +2198,8 @@ void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
 }
 
 void func_80094A64(struct GfxPool* pool) {
+    ClearHudMatrixPool();
+    ClearEffectsMatrixPool();
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
@@ -2594,13 +2602,10 @@ void func_80095AE0(MTX_TYPE* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
     Vtx* var_a1;
-    Mtx* sp28;
-
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
         goto func_80095BD0_label1;
     }
-    sp28 = &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (gMatrixEffectCount < 0) {
         rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
     }
@@ -2609,10 +2614,9 @@ func_80095BD0_label1:
     rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
     return displayListHead;
 func_80095BD0_label2:
-    func_80095AE0(sp28, arg2, arg3, arg6, arg7);
-    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gMatrixEffectCount += 1;
+    func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
+    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
@@ -7897,9 +7901,10 @@ void func_800A54EC(void) {
     sp48 = find_8018D9E0_entry(0x000000C7);
     if (why) {} // ?????
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    // guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    AddEffectMatrixOrtho();
     switch (why) { /* irregular */
         default:
             break;
@@ -8187,12 +8192,12 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
 }
 
 void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
-    Mtx* mtx;
+    Mtx *mtx;
     f32 tmp;
     static float x2, y2, z2;
     static float x1, y1, z1;
 
-    mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
+    mtx = GetEffectMatrix(); // &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (arg0->unk24 > 1.5) {
         arg0->unk24 *= 0.95;
     } else {
@@ -8223,8 +8228,9 @@ void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
     guMtxCatL(mtx, mtx + 1, mtx);
     guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
     guMtxCatL(mtx, mtx + 1, mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
+    //gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //          (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
+    AddEffectMatrixFixed(G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);

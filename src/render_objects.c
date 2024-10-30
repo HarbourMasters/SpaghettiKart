@@ -44,6 +44,7 @@
 
 #include "engine/Engine.h"
 #include "engine/courses/Course.h"
+#include "engine/Matrix.h"
 
 Lights1 D_800E45C0[] = {
     gdSPDefLights1(100, 0, 0, 100, 0, 0, 0, -120, 0),
@@ -1370,7 +1371,7 @@ void func_8004A7AC(s32 objectIndex, f32 arg1) {
 }
 
 void func_8004A870(s32 objectIndex, f32 arg1) {
-    Mat4 sp30;
+    Mat4 mtx;
     Object* object;
 
     if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) &&
@@ -1379,10 +1380,12 @@ void func_8004A870(s32 objectIndex, f32 arg1) {
         D_80183E50[0] = object->pos[0];
         D_80183E50[1] = object->surfaceHeight + 0.8;
         D_80183E50[2] = object->pos[2];
-        set_transform_matrix(sp30, object->unk_01C, D_80183E50, 0U, arg1);
-        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        set_transform_matrix(mtx, object->unk_01C, D_80183E50, 0U, arg1);
+        // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mtx);
+        // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+        //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+        AddHudMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
@@ -4447,9 +4450,12 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         mtxf_set_matrix_transformation(someMatrix1, object->pos, object->direction_angle, object->sizeScaling);
-        convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-                  G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
+        //gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+        //          G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+        AddHudMatrix(someMatrix1, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
         gSPDisplayList(gDisplayListHead++, object->model);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
@@ -4565,17 +4571,19 @@ void func_8005669C(s32 objectIndex, UNUSED s32 arg1, s32 arg2) {
 }
 
 void func_800568A0(s32 objectIndex, s32 playerId) {
-    Mat4 sp30;
+    Mat4 mtx;
     Player* player;
 
     player = &gPlayerOne[playerId];
     D_80183E50[0] = gObjectList[objectIndex].pos[0];
     D_80183E50[1] = gObjectList[objectIndex].surfaceHeight + 0.8;
     D_80183E50[2] = gObjectList[objectIndex].pos[2];
-    set_transform_matrix(sp30, player->collision.orientationVector, D_80183E50, 0U, 0.5f);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    set_transform_matrix(mtx, player->collision.orientationVector, D_80183E50, 0U, 0.5f);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mtx);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    AddHudMatrix(mtx, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }
 
@@ -4681,9 +4689,10 @@ void func_80056FCC(s32 bombIndex) {
     D_80183E50[1] = temp_v0->yPos + 1.0;
     D_80183E50[2] = temp_v0->bombPos[2];
     set_transform_matrix(mat, gBombKartCollision[bombIndex].orientationVector, D_80183E50, 0U, 0.5f);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-              G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
+    //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
+    //gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+    //          G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
+    AddHudMatrix(mat, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }
 

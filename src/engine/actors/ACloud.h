@@ -15,7 +15,7 @@ public:
 
 
     // Constructor
-    ACloud(const float pos[3]);
+    ACloud(Vec3f pos);
 
     virtual ~ACloud() override = default;
 

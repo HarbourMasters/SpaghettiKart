@@ -14,12 +14,15 @@ extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }
 
-ACloud::ACloud(const float pos[3]) {
-    // Initialize the actor's position
-    std::copy(pos, pos + 3, Pos);
+ACloud::ACloud(Vec3f pos) {
+	Pos[0] = pos[0];
+	Pos[1] = pos[1];
+	Pos[2] = pos[2];
+	Rot[0] = 0;
+	Rot[1] = 0;
+	Rot[2] = 0;
 
-
-    Flags = -0x8000 | 0x4000;
+    //Flags = -0x8000 | 0x4000;
 
     BoundingBoxSize = 2.0f;
 }
@@ -54,7 +57,6 @@ void ACloud::Draw(Camera *camera) {
     mtxf_pos_rotation_xyz(mtx, Pos, Rot);
     if (render_set_position(mtx, 0) != 0) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-
         gSPDisplayList(gDisplayListHead++, (Gfx*)cloud_mesh);
     }
 }
@@ -123,10 +125,10 @@ Gfx mat_cloud_cutout[] = {
 };
 
 Gfx cloud_mesh[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(cloud_mesh_vtx_cull + 0, 8, 0),
+	//gsSPClearGeometryMode(G_LIGHTING),
+	//gsSPVertex(cloud_mesh_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
+	//gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_cloud_cutout),
 	gsSPDisplayList(cloud_mesh_tri_0),
 	gsSPEndDisplayList(),

@@ -4979,13 +4979,15 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
-    Mat4 sp20;
+    Mat4 mtx;
 
-    mtxf_translate_rotate(sp20, arg0, arg1);
-    mtxf_scale2(sp20, arg2);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    mtxf_translate_rotate(mtx, arg0, arg1);
+    mtxf_scale2(mtx, arg2);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
@@ -6012,7 +6014,7 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
 }
 
 void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
-    Mat4 sp140;
+    Mat4 mtx;
     Vec3f sp134;
     Vec3s sp12C;
     UNUSED s16 stackPadding;
@@ -6068,12 +6070,13 @@ void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     sp12C[1] = player->unk_048[arg3];
     sp12C[2] = D_8018D7D0[arg1][arg2] - (D_8018D860[arg1][arg2] * coss(temp_t1)) -
                ((D_8018D890[arg1][arg2] * 8) * sins(temp_t1));
-    mtxf_translate_rotate(sp140, sp134, sp12C);
-    mtxf_scale2(sp140, var_f20);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
+    mtxf_translate_rotate(mtx, sp134, sp12C);
+    mtxf_scale2(mtx, var_f20);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -6160,7 +6163,7 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
  * Used in podium ceremony.
  */
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
-    Mat4 sp108;
+    Mat4 mtx;
     Vec3f spFC;
     Vec3s spF4;
     UNUSED s16 stackPadding;
@@ -6191,11 +6194,12 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[0] = 0;
     spF4[1] = camera1->rot[1];
     spF4[2] = arg2;
-    mtxf_translate_rotate(sp108, spFC, spF4);
-    mtxf_scale2(sp108, arg1);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    mtxf_translate_rotate(mtx, spFC, spF4);
+    mtxf_scale2(mtx, arg1);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);

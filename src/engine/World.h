@@ -65,6 +65,14 @@ class World {
         SkyboxColours Skybox;
     } Properties;
 
+    typedef struct {
+        std::vector<Mtx> Hud;
+        std::vector<Mtx> Objects;
+        std::vector<Mtx> Shadows;
+        std::vector<Mtx> Karts;
+        std::vector<Mtx> Effects;
+    } Matrix;
+
 public:
     explicit World();
 
@@ -103,6 +111,8 @@ public:
     void SetCourse(const char*);
     void NextCourse(void);
     void PreviousCourse(void);
+
+    Matrix Mtx;
 
     // Holds all available courses
 

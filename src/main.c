@@ -783,6 +783,7 @@ void process_game_tick(void) {
 }
 
 void race_logic_loop(void) {
+    ClearMatrixPools();
     gMatrixObjectCount = 0;
     gMatrixEffectCount = 0;
 

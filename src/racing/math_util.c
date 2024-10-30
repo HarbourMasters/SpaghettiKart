@@ -43,27 +43,31 @@ UNUSED void func_802B4FF0() {
  * object already render Note that gMatrixObjectCount gets reset at the beginning of the game loop. So no cleanup needs
  * to be performed.
  */
-s32 render_set_position(Mat4 arg0, s32 arg1) {
+s32 render_set_position(Mat4 mtx, s32 arg1) {
     if (gMatrixObjectCount >= MTX_OBJECT_POOL_SIZE) {
         return 0;
     }
-    mtxf_to_mtx(&gGfxPool->mtxObject[gMatrixObjectCount], arg0);
+    //mtxf_to_mtx(&gGfxPool->mtxObject[gMatrixObjectCount], arg0);
     switch (arg1) { /* irregular */
         case 0:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
+            //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             break;
         case 1:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
-                      G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            AddObjectMatrix(mtx, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
+            //           G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             break;
         case 3:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
-                      G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            AddObjectMatrix(mtx, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
+            //           G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             break;
         case 2:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
-                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxObject[gMatrixObjectCount++]),
+            //           G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             break;
     }
     return 1;

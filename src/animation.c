@@ -93,10 +93,12 @@ void render_limb_or_add_mtx(Armature* arg0, s16* arg1, AnimationLimbVector arg2,
     }
 
     mtxf_translate_rotate2(modelMatrix, pos, angle);
-    convert_to_fixed_point_matrix_animation(&gGfxPool->mtxHud[gMatrixHudCount], modelMatrix);
+    //convert_to_fixed_point_matrix_animation(&gGfxPool->mtxHud[gMatrixHudCount], modelMatrix);
     sMatrixStackSize += 1;
-    gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxHud[gMatrixHudCount++]),
-              G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxHud[gMatrixHudCount++]),
+    //           G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+
+    AddHudMatrix(modelMatrix, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     if (virtualModel != NULL) {
         model = (virtualModel);
         gSPDisplayList(gDisplayListHead++, model);

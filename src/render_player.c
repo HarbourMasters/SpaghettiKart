@@ -1447,7 +1447,7 @@ void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 }
 
 void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
-    Mat4 sp118;
+    Mat4 mtx;
     UNUSED Mat4 pad;
     Vec3f spCC;
     Vec3s spC4;
@@ -1485,7 +1485,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-        set_transform_matrix(sp118, spB4, spCC, (spC0 + player->unk_042),
+        set_transform_matrix(mtx, spB4, spCC, (spC0 + player->unk_042),
                              gCharacterSize[player->characterId] * player->size * var_f2);
     } else {
         spC4[0] = player->slopeAccel;
@@ -1495,13 +1495,14 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
         spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-        mtxf_translate_rotate(sp118, spCC, spC4);
-        mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);
+        mtxf_translate_rotate(mtx, spCC, spC4);
+        mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
     }
-    convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (screenId * 8)], sp118);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (screenId * 8)], mtx);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (screenId * 8)]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (screenId * 8)]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddShadowMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -1524,7 +1525,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
 }
 
 void render_player_shadow_credits(Player* player, s8 playerId, s8 arg2) {
-    Mat4 sp118;
+    Mat4 mtx;
     UNUSED Mat4 pad;
     Vec3f spCC;
     Vec3s spC4;
@@ -1550,12 +1551,14 @@ void render_player_shadow_credits(Player* player, s8 playerId, s8 arg2) {
     spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
     spCC[1] = gObjectList[indexObjectList1[playerId]].pos[1] + sp94[playerId];
 
-    mtxf_translate_rotate(sp118, spCC, spC4);
-    mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (arg2 * 8)], sp118);
+    mtxf_translate_rotate(mtx, spCC, spC4);
+    mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (arg2 * 8)], mtx);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (arg2 * 8)]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (arg2 * 8)]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    AddShadowMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -1577,9 +1580,9 @@ void render_player_shadow_credits(Player* player, s8 playerId, s8 arg2) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
+void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     UNUSED s32 pad;
-    Mat4 sp1A4;
+    Mat4 mtx;
     UNUSED s32 pad2[17];
     Vec3f sp154;
     Vec3s sp14C;
@@ -1591,60 +1594,61 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
 
     if (player->unk_044 & 0x2000) {
         sp14C[0] = 0;
-        sp14C[1] = player->unk_048[arg2];
+        sp14C[1] = player->unk_048[screenId];
         sp14C[2] = 0;
-        func_80062B18(&sp148, &sp144, &sp140, 0.0f, 1.5f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
+        func_80062B18(&sp148, &sp144, &sp140, 0.0f, 1.5f, 0.0f, -player->unk_048[screenId], player->unk_050[screenId]);
         sp154[1] = (player->pos[1] - player->boundingBoxSize) + (sp144 - 2.0);
         sp154[0] = player->pos[0] + sp148;
         sp154[2] = player->pos[2] + sp140;
     } else {
-        thing = (u16) (player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
-        temp_v1 = player->unk_0CC[arg2] * sins(thing);
+        thing = (u16) (player->unk_048[screenId] + player->rotation[1] + player->unk_0C0);
+        temp_v1 = player->unk_0CC[screenId] * sins(thing);
         if ((player->effects & 8) == 8) {
-            sp14C[0] = cameras[arg2].rot[0] - 0x4000;
+            sp14C[0] = cameras[screenId].rot[0] - 0x4000;
         } else {
             sp14C[0] = -temp_v1 * 0.8;
         }
-        sp14C[1] = player->unk_048[arg2];
-        sp14C[2] = player->unk_050[arg2];
+        sp14C[1] = player->unk_048[screenId];
+        sp14C[2] = player->unk_050[screenId];
         if (((s32) player->effects & HIT_EFFECT) == HIT_EFFECT) {
-            func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
+            func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[screenId], player->unk_050[screenId]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
             sp154[0] = player->pos[0] + sp148;
             sp154[2] = player->pos[2] + sp140;
         } else {
-            func_80062B18(&sp148, &sp144, &sp140, 0.0f, 1.5f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
+            func_80062B18(&sp148, &sp144, &sp140, 0.0f, 1.5f, 0.0f, -player->unk_048[screenId], player->unk_050[screenId]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108 + (sp144 - 2.0);
             sp154[0] = player->pos[0] + sp148;
             sp154[2] = player->pos[2] + sp140;
         }
     }
 #ifdef AVOID_UB
-    gPlayerPalette = &gPlayerPalettesList[D_801651D0[arg2][playerId]][arg2][playerId];
+    gPlayerPalette = &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId];
 #else
-    gPlayerPalette = (struct_D_802F1F80*) &gPlayerPalettesList[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = (struct_D_802F1F80*) &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
 #endif
-    if ((arg2 == 0) || (arg2 == 1)) {
-        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+    if ((screenId == 0) || (screenId == 1)) {
+        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0];
 #ifdef TARGET_N64
-        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0x7C0];
 #endif
     } else {
         sKartUpperTexture =
-            &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+            &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0];
 #ifdef TARGET_N64
         sKartLowerTexture =
-            &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+            &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0x7C0];
 #endif
     }
-    mtxf_translate_rotate(sp1A4, sp154, sp14C);
-    mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (arg2 * 8)], sp1A4);
+    mtxf_translate_rotate(mtx, sp154, sp14C);
+    mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
+    //convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (screenId * 8)], mtx);
 
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-        if (arg2 == playerId) {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        if (screenId == playerId) {
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
+            //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
             gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1657,8 +1661,9 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         } else {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
+            //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
             gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1673,8 +1678,9 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
         }
     } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & 0x08000000) ||
                (player->soundEffects & 0x04000000)) {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
-                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
+        //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1684,8 +1690,9 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     } else {
-        gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]),
-                  G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
+        //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1715,7 +1722,7 @@ void render_kart(Player* player, s8 playerId, s8 arg2, s8 arg3) {
 
 void render_ghost(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     UNUSED s32 pad;
-    Mat4 sp12C;
+    Mat4 mtx;
     UNUSED s32 pad2[17];
     Vec3f spDC;
     Vec3s spD4;
@@ -1758,12 +1765,14 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 arg3) {
         // 4].pixel_index_array[0x7C0];
     }
 
-    mtxf_translate_rotate(sp12C, spDC, spD4);
-    mtxf_scale2(sp12C, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (screenId * 8)], sp12C);
+    mtxf_translate_rotate(mtx, spDC, spD4);
+    mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (screenId * 8)], mtx);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
     gSPDisplayList(gDisplayListHead++, common_setting_render_character);
     gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
@@ -1792,7 +1801,7 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 }
 
 void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 arg3) {
-    Mat4 spA8;
+    Mat4 mtx;
     Vec3f sp9C;
     Vec3s sp94;
 
@@ -1803,12 +1812,13 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     sp94[1] = player->unk_048[screenId];
     sp94[2] = player->unk_050[screenId];
 
-    mtxf_translate_rotate(spA8, sp9C, sp94);
-    mtxf_scale2(spA8, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    mtxf_translate_rotate(mtx, sp9C, sp94);
+    mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008D10);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
@@ -1837,7 +1847,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 }
 
 void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 arg3) {
-    Mat4 spA8;
+    Mat4 mtx;
     Vec3f sp9C;
     Vec3s sp94;
 
@@ -1853,12 +1863,13 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 a
         arg3 = 0;
     }
 
-    mtxf_translate_rotate(spA8, sp9C, sp94);
-    mtxf_scale2(spA8, gCharacterSize[player->characterId] * player->size);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], spA8);
+    mtxf_translate_rotate(mtx, sp9C, sp94);
+    mtxf_scale2(mtx, gCharacterSize[player->characterId] * player->size);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, common_setting_render_character);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],

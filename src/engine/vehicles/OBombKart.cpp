@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "port/Game.h"
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "macros.h"
@@ -420,9 +421,12 @@ void OBombKart::LoadMtx() {
     D_80183E50[1] = CenterY + 1.0;
     D_80183E50[2] = Pos[2];
     set_transform_matrix(mat, _Collision.orientationVector, D_80183E50, 0U, 0.5f);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-              G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
+    //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
+
+    AddHudMatrix(mat, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
+
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+    //           G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B98);
 }
 

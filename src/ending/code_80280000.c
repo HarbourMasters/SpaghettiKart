@@ -27,6 +27,7 @@
 
 #include "engine/Engine.h"
 #include "engine/courses/Course.h"
+#include "engine/Matrix.h"
 
 s32 D_802874A0;
 // s32 D_802874A4[5];
@@ -43,6 +44,8 @@ void func_80280038(void) {
     Camera* camera = &cameras[0];
     UNUSED s32 pad;
     Mat4 matrix;
+
+    ClearMatrixPools();
 
     gMatrixObjectCount = 0;
     gMatrixEffectCount = 0;
