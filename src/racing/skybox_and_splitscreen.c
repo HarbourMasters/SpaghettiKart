@@ -766,22 +766,22 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
             screenMode = SCREEN_MODE_1P;
             break;
         case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-            func_802A50EC();
+            func_802A51D4();
             screenId = 0;
             screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
             break;
         case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-            func_802A5004();
+            func_802A52BC();
             screenId = 1;
             screenMode = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
             break;
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-            func_802A51D4();
+            func_802A50EC();
             screenId = 0;
             screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
             break;
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            func_802A52BC();
+            func_802A5004();
             screenId = 1;
             screenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
             break;
@@ -809,7 +809,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
                 if (D_800DC5B8 != 0) {
                     render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
                 }
-                D_8015F788 += 1;
+                gNumScreens += 1;
                 return;
             }
             break;
@@ -817,6 +817,10 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
 
     struct UnkStruct_800DC5EC *screen = &D_8015F480[screenId];
     Camera *camera = &cameras[cameraId];
+
+    if (screenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
+        gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
+    }
 
     init_rdp();
     func_802A3730(screen);
@@ -886,6 +890,11 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     func_80093A5C(mode);
     if (D_800DC5B8 != 0) {
         render_hud(mode);
+    }
+
+    // Do not increment in single player mode
+    if (mode != RENDER_SCREEN_MODE_1P_PLAYER_ONE) {
+        gNumScreens += 1;
     }
 }
 

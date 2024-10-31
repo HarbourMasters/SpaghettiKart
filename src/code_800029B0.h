@@ -111,7 +111,7 @@ extern Vec3f D_8015F768;
 extern Vec3f D_8015F778;
 
 extern f32 gCourseDirection;
-extern s32 D_8015F788;
+extern s32 gNumScreens;
 
 extern s32 D_8015F790[];
 extern u16 D_8015F890;

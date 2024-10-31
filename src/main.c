@@ -784,6 +784,8 @@ void process_game_tick(void) {
 
 void race_logic_loop(void) {
     ClearMatrixPools();
+    ClearObjectsMatrixPool();
+    ClearEffectsMatrixPool();
     gMatrixObjectCount = 0;
     gMatrixEffectCount = 0;
 
@@ -820,9 +822,14 @@ void race_logic_loop(void) {
         func_80022744();
     }
     func_8005A070();
-    sNumVBlanks = 0;
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
-    D_8015F788 = 0;
+    sNumVBlanks = 0;
+    gNumScreens = 0;
+    move_segment_table_to_dmem();
+    init_rdp();
+    if (D_800DC5B0 != 0) {
+        select_framebuffer();
+    }
 
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
@@ -882,8 +889,8 @@ void race_logic_loop(void) {
 #if DVDL
     display_dvdl();
 #endif
-    //gDPFullSync(gDisplayListHead++);
-    //gSPEndDisplayList(gDisplayListHead++);
+    gDPFullSync(gDisplayListHead++);
+    gSPEndDisplayList(gDisplayListHead++);
 }
 
 /**

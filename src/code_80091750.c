@@ -1957,7 +1957,7 @@ void func_80093A30(s32 arg0) {
 }
 
 void func_80093A5C(u32 arg0) {
-    if (D_8015F788 == 0) {
+    if (gNumScreens == 0) {
         func_8009C918();
     }
     switch (arg0) {
@@ -1968,7 +1968,7 @@ void func_80093A5C(u32 arg0) {
         case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            if (D_8015F788 == 0) {
+            if (gNumScreens == 0) {
                 func_80093C1C((s32) D_800F0B1C[arg0]);
             } else {
                 func_800940EC((s32) D_800F0B1C[arg0]);
@@ -1978,7 +1978,7 @@ void func_80093A5C(u32 arg0) {
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-            if (D_8015F788 == 3) {
+            if (gNumScreens == 3) {
                 func_800940EC((s32) D_800F0B1C[arg0]);
             } else {
                 func_80093C1C((s32) D_800F0B1C[arg0]);

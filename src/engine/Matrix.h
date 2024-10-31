@@ -18,6 +18,7 @@ void SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 Mtx* GetEffectMatrix(void);
 void ClearHudMatrixPool(void);
 void ClearEffectsMatrixPool(void);
+void ClearObjectsMatrixPool(void);
 
 #ifdef __cplusplus
 }

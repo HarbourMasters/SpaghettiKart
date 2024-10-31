@@ -147,4 +147,8 @@ extern "C" {
     void ClearEffectsMatrixPool(void) {
         gWorldInstance.Mtx.Effects.clear();
     }
+
+    void ClearObjectsMatrixPool(void) {
+        gWorldInstance.Mtx.Objects.clear();
+    }
 }
