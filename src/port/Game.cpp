@@ -143,8 +143,9 @@ void CustomEngineInit() {
 
     /* Set default course; mario raceway */
     gWorldInstance.CurrentCourse = gMarioRaceway;
-    gWorldInstance.CurrentCup = gFlowerCup;
+    gWorldInstance.CurrentCup = gMushroomCup;
     gWorldInstance.CurrentCup->CursorPosition = 3;
+    gWorldInstance.CupIndex = 0;
 }
 
 extern "C" {
