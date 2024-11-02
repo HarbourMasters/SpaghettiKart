@@ -1205,6 +1205,7 @@ void init_actors_and_load_textures(void) {
 
     init_red_shell_texture();
     destroy_all_actors();
+    m_ClearActors();
     spawn_course_actors();
 
     CourseManager_VehiclesSpawn();

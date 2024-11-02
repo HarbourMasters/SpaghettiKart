@@ -1,6 +1,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <common_structs.h>
+#include "staff_ghost_data.h"
 
 /*
  * This file is required for data alignment
@@ -11,7 +12,7 @@ StaffGhost d_mario_raceway_staff_ghost[] = {
 #include "courses/mario_raceway/staff_ghost.inc.c"
 };
 
-StaffGhost d_luigi_raceway_staff_ghost[1046] = {
+StaffGhost d_luigi_raceway_staff_ghost[] = {
 #include "courses/luigi_raceway/staff_ghost.inc.c"
 };
 

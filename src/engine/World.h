@@ -133,7 +133,7 @@ public:
     void AddTankerTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
     void AddCar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
     std::vector<std::unique_ptr<AVehicle>> Vehicles;
-    void ResetVehicles(void);
+    void ClearVehicles(void);
 
     /** Objects **/
     void AddBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);

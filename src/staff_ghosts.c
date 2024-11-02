@@ -15,6 +15,7 @@
 #include "code_80057C60.h"
 #include "kart_dma.h"
 #include "port/Game.h"
+#include "courses/staff_ghost_data.h"
 
 u8* D_80162D80;
 s16 D_80162D84;
@@ -68,7 +69,7 @@ void func_80004EF0(void) {
     u8* dest = (u8*) D_80162DA4;
     osInvalDCache(&D_80162DA4[0], 0x4000);
 
-    u8* ghost = (u8*) LOAD_ASSET(D_80162DC4);
+    u8* ghost = (u8*) D_80162DC4;
 
     // Manual memcpy required for byte swap
     for (int i = 0; i < 0x4000; i += 4) {

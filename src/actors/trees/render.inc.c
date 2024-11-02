@@ -204,8 +204,6 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
         // This comment can be removed when this is confirmed to work.
         if (GetCourse() == GetLuigiRaceway()) {
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
-        } else if (GetCourse() == GetMooMooFarm()) {
-            gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_mole_tlut);
         }
     }
 }

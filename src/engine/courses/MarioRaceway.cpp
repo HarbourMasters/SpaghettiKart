@@ -30,6 +30,7 @@ extern "C" {
     #include "mario_raceway_data.h"
     #include "collision.h"
     #include "memory.h"
+    #include "courses/staff_ghost_data.h"
     extern const char *mario_raceway_dls[];
 }
 

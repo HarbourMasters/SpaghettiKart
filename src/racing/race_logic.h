@@ -9,7 +9,7 @@ void func_8028DF38(void);
 void func_8028E028(void);
 void update_player_battle_status(void);
 void func_8028E298(void);
-void func_8028E3A0(void);
+void set_next_course(void);
 void func_8028E438(void);
 void func_8028E678(void);
 void func_8028EC38(s32);

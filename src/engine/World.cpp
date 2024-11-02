@@ -76,7 +76,7 @@ void World::AddCar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoin
     cars++;
 }
 
-void World::ResetVehicles(void) {
+void World::ClearVehicles(void) {
     trains = trucks = busses = tankerTrucks = cars = boats = 0;
     Vehicles.clear();
 }

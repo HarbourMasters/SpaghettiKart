@@ -141,15 +141,14 @@ void func_8028E298(void) {
     func_800070F4();
 }
 
-void func_8028E3A0(void) {
+void set_next_course(void) {
 
     if (D_80150120) {
-        if (GetCupCursorPosition() == GetCupSize()) { // CUP_COURSE_FOUR) {
+        if (GetCupCursorPosition() == GetCupSize() - 1) { // CUP_COURSE_FOUR) {
             gGotoMode = ENDING;
         } else {
             D_800DC544++;
             SetCupCursorPosition(GetCupCursorPosition() + 1);
-            SetCourseFromCup();
             gCourseIndexInCup++;
             gGotoMode = RACING;
         }
@@ -157,7 +156,6 @@ void func_8028E3A0(void) {
         D_800DC544++;
         gCourseIndexInCup++;
         SetCupCursorPosition(GetCupCursorPosition() + 1);
-        SetCourseFromCup();
         gGotoMode = RACING;
     }
 }
@@ -401,7 +399,7 @@ void func_8028E678(void) {
             gIsInQuitToMenuTransition = 1;
             gQuitToMenuTransitionCounter = 5;
             D_800DC510 = 7;
-            func_8028E3A0();
+            set_next_course();
             break;
     }
 }

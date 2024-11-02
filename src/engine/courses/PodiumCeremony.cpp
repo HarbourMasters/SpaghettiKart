@@ -29,6 +29,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "courses/staff_ghost_data.h"
     extern const char *royal_raceway_dls[];
 }
 

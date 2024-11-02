@@ -179,6 +179,8 @@ void setup_race(void) {
     struct Controller* controller;
     int i;
 
+    printf("Setup Race!\n");
+
     gPlayerCountSelection1 = gPlayerCount;
     if (gGamestate != RACING) {
         gIsMirrorMode = 0;
@@ -191,7 +193,7 @@ void setup_race(void) {
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
         // Skip for debug menu
-        if (gDebugMenuSelection < DEBUG_MENU) {
+        if (gMenuSelection != START_MENU) {
             SetCourseFromCup();
         }
     }
@@ -314,6 +316,7 @@ void func_80003040(void) {
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
+    m_ClearActors();
 
     CourseManager_SetCourseVtxColours();
 

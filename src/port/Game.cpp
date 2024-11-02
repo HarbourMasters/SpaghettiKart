@@ -171,7 +171,6 @@ extern "C" {
     }
 
     u32 GetCupIndex(void) {
-        printf("Cup Index: %d\n", gWorldInstance.GetCupIndex());
         return gWorldInstance.GetCupIndex();
     }
 
@@ -283,8 +282,8 @@ extern "C" {
         }
     }
 
-    void CourseManager_ResetVehicles(void) {
-        gWorldInstance.ResetVehicles();
+    void CourseManager_ClearVehicles(void) {
+        gWorldInstance.ClearVehicles();
     }
 
     void CourseManager_CrossingTrigger() {

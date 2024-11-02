@@ -31,6 +31,7 @@ extern "C" {
     #include "collision.h"
     #include "code_8003DC40.h"
     #include "memory.h"
+    #include "courses/staff_ghost_data.h"
     extern const char *luigi_raceway_dls[];
     extern s16 currentScreenSection;
 }

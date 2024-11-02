@@ -21,10 +21,6 @@ void func_80005AE8(Player*);
 void func_80005E6C(void);
 void staff_ghosts_loop(void);
 
-extern StaffGhost* d_mario_raceway_staff_ghost;
-extern StaffGhost* d_royal_raceway_staff_ghost;
-extern StaffGhost* d_luigi_raceway_staff_ghost;
-
 // mi0decode
 
 extern s32 mio0encode(s32 input, s32, s32);

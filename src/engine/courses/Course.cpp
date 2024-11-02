@@ -86,7 +86,6 @@ void Course::Load() {
     // Convert course vtx to vtx
     Vtx* vtx = reinterpret_cast<Vtx*>(allocate_memory(vtxSize));
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
-    printf("\nVtxsize: 0x%X\n\n",vtxSize);
     func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(this->vtx)), vtx, vtxSize / sizeof(Vtx));
 
     // Load and allocate memory for course textures
