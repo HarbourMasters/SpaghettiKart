@@ -3454,7 +3454,7 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
 
-    CourseManager_ResetVehicles();
+    CourseManager_ClearVehicles();
 
     CourseManager_SpawnVehicles();
 
@@ -7578,7 +7578,7 @@ void func_8001C14C(void) {
     f32 temp_f0;
     f32 temp_f2;
     s32 var_s1;
-    Player* temp_s0;
+    Player* player;
 
     if (D_8016347C == 1) {
         D_80163480 += 1;
@@ -7596,28 +7596,28 @@ void func_8001C14C(void) {
             break;
         }
 
-        temp_s0 = &gPlayerOne[var_s1];
+        player = &gPlayerOne[var_s1];
         func_80009B60(var_s1);
-        if (!(temp_s0->type & 0x2000)) {
-            temp_f0 = D_80163418[var_s1] - temp_s0->pos[0];
-            temp_f2 = D_80163438[var_s1] - temp_s0->pos[2];
+        if (!(player->type & 0x2000)) {
+            temp_f0 = D_80163418[var_s1] - player->pos[0];
+            temp_f2 = D_80163438[var_s1] - player->pos[2];
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
                 if (var_s1 != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
-                    (D_8016347C == 0) ? (temp_s0->type |= 0x2000) : (temp_s0->type &= ~0x2000);
+                    (D_8016347C == 0) ? (player->type |= 0x2000) : (player->type &= ~0x2000);
                     if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
-                    if (!(temp_s0->effects & 0x01000000)) {
-                        temp_s0->type |= 0x2000;
+                    if (!(player->effects & 0x01000000)) {
+                        player->type |= 0x2000;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
-                } else if (!(temp_s0->effects & 0x01000000)) {
-                    temp_s0->type |= 0x2000;
+                } else if (!(player->effects & 0x01000000)) {
+                    player->type |= 0x2000;
                 }
             }
         }

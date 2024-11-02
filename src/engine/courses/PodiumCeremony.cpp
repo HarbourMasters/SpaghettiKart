@@ -8,6 +8,7 @@
 #include "World.h"
 #include "engine/vehicles/OBombKart.h"
 #include "assets/royal_raceway_data.h"
+#include "assets/ceremony_data.h"
 
 extern "C" {
     #include "main.h"
@@ -50,7 +51,7 @@ PodiumCeremony::PodiumCeremony() {
     Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
-    Props.PathSizes = {0x3E8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = {500, 500, 500, 500, 1, 0, 0, 0, 0, 0, 0};
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -72,12 +73,12 @@ PodiumCeremony::PodiumCeremony() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_unknown_waypoints);
-    Props.PathTable[1] = NULL;
-    Props.PathTable[2] = NULL;
-    Props.PathTable[3] = NULL;
+    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path);
+    Props.PathTable[1] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_2);
+    Props.PathTable[2] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_3);
+    Props.PathTable[3] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_4);
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_track_waypoints);
+    Props.PathTable2[0] = NULL;
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
