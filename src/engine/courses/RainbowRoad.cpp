@@ -231,4 +231,13 @@ void RainbowRoad::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
     gDPPipeSync(gDisplayListHead++);
 }
 
+void RainbowRoad::CreditsSpawnActors() {
+    // d_course_rainbow_road_packed_dl_2068
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), -0x6A, 0xFF, 0xFF, 0xFF);
+    // d_course_rainbow_road_packed_dl_1E18
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001E18), -0x6A, 0xFF, 0xFF, 0xFF);
+    // d_course_rainbow_road_packed_dl_1318
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001318), -1, 0xFF, 0xFF, 0);
+}
+
 void RainbowRoad::Destroy() {}

@@ -171,7 +171,7 @@ void Course::SomeSounds() {
 
 }
 
-void Course::SetCourseVtxColours() {
+void Course::CreditsSpawnActors() {
 
 }
 

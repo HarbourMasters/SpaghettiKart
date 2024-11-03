@@ -424,9 +424,9 @@ extern "C" {
         }
     }
 
-    void CourseManager_SetCourseVtxColours() {
+    void CourseManager_CreditsSpawnActors() {
         if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->SetCourseVtxColours();
+            gWorldInstance.CurrentCourse->CreditsSpawnActors();
         }
     }
 

@@ -356,4 +356,9 @@ void MarioRaceway::ModifyDisplaylists() {
     D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
+void MarioRaceway::CreditsSpawnActors() {
+    dma_textures(gTextureTrees1, 0x35B, 0x800);
+    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_mario_raceway_tree_spawns));
+}
+
 void MarioRaceway::Destroy() { }

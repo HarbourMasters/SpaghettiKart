@@ -333,4 +333,33 @@ void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCou
     gDPPipeSync(gDisplayListHead++);
 }
 
+void WarioStadium::CreditsSpawnActors() {
+    Vec3f position;
+    Vec3f velocity = { 0, 0, 0 };
+    Vec3s rotation = { 0, 0, 0 };
+
+    vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    // d_course_wario_stadium_packed_dl_C50
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000C50), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_BD8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000BD8), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_B60
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000B60), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_AE8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000AE8), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_CC8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000CC8), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_D50
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000D50), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_DD0
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000DD0), 0x64, 0xFF, 0xFF, 0xFF);
+    // d_course_wario_stadium_packed_dl_E48
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000E48), 0x64, 0xFF, 0xFF, 0xFF);
+}
+
 void WarioStadium::Destroy() { }

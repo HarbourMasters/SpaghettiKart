@@ -457,4 +457,9 @@ void DKJungle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter
     gDPPipeSync(gDisplayListHead++);
 }
 
+void DKJungle::CreditsSpawnActors() {
+    // d_course_dks_jungle_parkway_packed_dl_3FA8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 0x78, 0xFF, 0xFF, 0xFF);
+}
+
 void DKJungle::Destroy() { }

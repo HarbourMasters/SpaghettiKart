@@ -43,5 +43,6 @@ public:
     virtual void ModifyDisplaylists() override;
     virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
+    virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

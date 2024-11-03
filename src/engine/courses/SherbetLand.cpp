@@ -224,4 +224,11 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
     gDPPipeSync(gDisplayListHead++);
 }
 
+void SherbetLand::CreditsSpawnActors() {
+    // d_course_sherbet_land_packed_dl_1EB8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 0xFF, 0xFF, 0xFF);
+    // d_course_sherbet_land_packed_dl_2308
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
+}
+
 void SherbetLand::Destroy() { }

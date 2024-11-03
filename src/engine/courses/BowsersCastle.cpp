@@ -318,4 +318,8 @@ void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCo
     gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_bowsers_castle_dl_9228);
 }
 
+void BowsersCastle::CreditsSpawnActors() {
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001350), 0x32, 0, 0, 0);
+}
+
 void BowsersCastle::Destroy() { }

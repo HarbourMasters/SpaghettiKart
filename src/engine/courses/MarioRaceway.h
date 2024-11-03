@@ -39,5 +39,6 @@ public:
     virtual void RenderCredits() override;    
     virtual void Collision() override;
     virtual void ModifyDisplaylists() override;
+    virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

@@ -100,7 +100,7 @@ public:
     virtual void UpdateCourseObjects();
     virtual void RenderCourseObjects(s32 cameraId);
     virtual void SomeSounds();
-    virtual void SetCourseVtxColours();
+    virtual void CreditsSpawnActors();
     virtual void WhatDoesThisDo(Player*, int8_t);
     virtual void WhatDoesThisDoAI(Player*, int8_t);
     virtual void MinimapFinishlinePosition();

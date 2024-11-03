@@ -235,4 +235,14 @@ void YoshiValley::Waypoints(Player* player, int8_t playerId) {
 
 void YoshiValley::ScrollingTextures() {}
 
+void YoshiValley::CreditsSpawnActors() {
+    Vec3f position;
+    Vec3f velocity = { 0, 0, 0 };
+    Vec3s rotation = { 0, 0, 0 };
+
+    vec3f_set(position, -2300.0f, 0.0f, 634.0f);
+    position[0] *= gCourseDirection;
+    add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
+}
+
 void YoshiValley::Destroy() {}

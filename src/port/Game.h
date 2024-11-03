@@ -66,7 +66,7 @@ void CourseManager_RenderCourseObjects(s32 cameraId);
 
 void CourseManager_SomeSounds();
 
-void CourseManager_SetCourseVtxColours();
+void CourseManager_CreditsSpawnActors();
 
 void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId);
 

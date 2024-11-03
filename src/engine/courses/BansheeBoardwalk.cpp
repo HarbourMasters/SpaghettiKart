@@ -326,4 +326,8 @@ void BansheeBoardwalk::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pat
     gDPPipeSync(gDisplayListHead++);
 }
 
+void BansheeBoardwalk::CreditsSpawnActors() {
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 0x32, 0, 0, 0);
+}
+
 void BansheeBoardwalk::Destroy() { }
