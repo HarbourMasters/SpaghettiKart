@@ -995,20 +995,20 @@ void func_802A7728(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-    copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
-    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+    // copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
+    // copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
+    // copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
 }
 
 void func_802A7940(void) {
@@ -1026,21 +1026,21 @@ void func_802A7940(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-    copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
-                     (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+    // copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
+    // copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
+    // copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
+    // copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+    //                  (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
 }

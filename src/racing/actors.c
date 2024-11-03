@@ -479,7 +479,7 @@ void update_actor_static_plant(struct Actor* arg0) {
 
 #include "actors/piranha_plant/render.inc.c"
 
-void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
+void render_cows(Camera* camera, Mat4 arg1) {
     u16 temp_s1;
     f32 temp_f0;
     struct ActorSpawnData* var_t1;
@@ -597,7 +597,7 @@ void func_80298D10(void) {
     }
 }
 
-void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
+void render_palm_trees(Camera* camera, Mat4 arg1) {
     struct UnkActorSpawnData* var_s1 = (struct UnkActorSpawnData*) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
     UNUSED s32 pad;
     Vec3f spD4;
@@ -2523,9 +2523,9 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
         }
     }
     if (GetCourse() == GetMooMooFarm()) {
-        render_cows(camera, sBillBoardMtx, actor);
+        render_cows(camera, sBillBoardMtx);
     } else if (GetCourse() == GetDkJungle()) {
-        render_palm_trees(camera, sBillBoardMtx, actor);
+        render_palm_trees(camera, sBillBoardMtx);
     }
 }
 

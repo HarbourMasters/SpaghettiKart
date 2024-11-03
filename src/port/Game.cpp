@@ -200,8 +200,17 @@ extern "C" {
         gWorldInstance.NextCourse();
     }
 
+
     void PreviousCourse() {
         gWorldInstance.PreviousCourse();
+    }
+
+    void SetCourseById(s32 course) {
+        if (course < 0 || course >= gWorldInstance.Courses.size()) {
+            return;
+        }
+        gWorldInstance.CourseIndex = course;
+        gWorldInstance.CurrentCourse = gWorldInstance.Courses[gWorldInstance.CourseIndex];
     }
 
     void CourseManager_SpawnVehicles() {

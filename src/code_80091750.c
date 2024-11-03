@@ -4778,7 +4778,7 @@ void func_8009CE64(s32 arg0) {
     func_8009CE64_label1:
         if (var_a1) {
             gGotoMenu = 9;
-            gCreditsCourseId = 8;
+            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
         } else {
             gGotoMenu = 1;
             gMenuSelection = 0x0000000B;
@@ -4918,6 +4918,7 @@ void func_8009CE64(s32 arg0) {
                         case 0:            /* switch 4 */
                             SetCourseByClass(GetMarioRaceway());
                             CourseManager_SetCup(GetFlowerCup());
+                            SetCupCursorPosition(COURSE_FOUR);
                             gCurrentCourseId = 0;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
@@ -4928,6 +4929,7 @@ void func_8009CE64(s32 arg0) {
                         case 1: /* switch 4 */
                             SetCourseByClass(GetLuigiRaceway());
                             CourseManager_SetCup(GetMushroomCup());
+                            SetCupCursorPosition(COURSE_ONE);
                             gCurrentCourseId = (s16) 1;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
@@ -4939,6 +4941,7 @@ void func_8009CE64(s32 arg0) {
                         case 2: /* switch 4 */
                             SetCourseByClass(GetKalimariDesert());
                             CourseManager_SetCup(GetMushroomCup());
+                            SetCupCursorPosition(COURSE_FOUR);
                             gCurrentCourseId = COURSE_KALIMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
@@ -4949,6 +4952,7 @@ void func_8009CE64(s32 arg0) {
                         case 3: /* switch 4 */
                             SetCourseByClass(GetWarioStadium());
                             CourseManager_SetCup(GetStarCup());
+                            SetCupCursorPosition(COURSE_ONE);
                             gCurrentCourseId = 0x000E;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
@@ -4961,6 +4965,7 @@ void func_8009CE64(s32 arg0) {
                         case 4: /* switch 4 */
                             SetCourseByClass(GetBowsersCastle());
                             CourseManager_SetCup(GetStarCup());
+                            SetCupCursorPosition(COURSE_FOUR);
                             gCurrentCourseId = 2;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
@@ -4971,6 +4976,7 @@ void func_8009CE64(s32 arg0) {
                         case 5: /* switch 4 */
                             SetCourseByClass(GetSherbetLand());
                             CourseManager_SetCup(GetFlowerCup());
+                            SetCupCursorPosition(COURSE_TWO);
                             gCurrentCourseId = 0x000C;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
@@ -4984,6 +4990,7 @@ void func_8009CE64(s32 arg0) {
                         default:
                             break;
                     }
+                    SetCourseFromCup();
                     gNextDemoId += 1;
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
@@ -5036,7 +5043,7 @@ void func_8009CE64(s32 arg0) {
                 case 2: /* switch 5 */
                 case 3: /* switch 5 */
                     gGamestateNext = 9;
-                    gCreditsCourseId = 8;
+                    gCreditsCourseId = COURSE_LUIGI_RACEWAY;
                     break;
                 default: /* switch 5 */
                     gGamestateNext = 4;

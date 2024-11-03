@@ -78,14 +78,15 @@ void func_80280038(void) {
     init_rdp();
 }
 
-void func_80280268(s32 arg0) {
+void func_80280268(s32 courseId) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
-    if ((arg0 < 0) || ((arg0 >= 20))) {
-        arg0 = 0;
+    if ((courseId < 0) || ((courseId >= NUM_COURSES - 1))) {
+        courseId = 0;
     }
-    gCreditsCourseId = arg0;
+    gCreditsCourseId = courseId;
+    SetCourseById(courseId);
 }
 
 void credits_loop(void) {
