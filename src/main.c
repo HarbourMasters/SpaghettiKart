@@ -485,7 +485,7 @@ void* clear_framebuffer(s32 color) {
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
-    set_segment_base_addr(1, gGfxPool);
+    set_segment_base_addr_x64(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
     init_rcp();
@@ -498,7 +498,7 @@ void rendering_init(void) {
 
 void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer & 1];
-    set_segment_base_addr(1, gGfxPool);
+    set_segment_base_addr_x64(1, gGfxPool);
     gDisplayListHead = gGfxPool->gfxPool;
     gGfxSPTask = &gGfxPool->spTask;
 }

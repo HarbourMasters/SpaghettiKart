@@ -317,7 +317,10 @@ void credits_spawn_actors(void) {
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress));
+    set_segment_base_addr_x64(3, (void*) (gNextFreeMemoryAddress));
+
+    // Stupid hack to sync segment 3 memory allocations with hard-coded address in data.
+    gNextFreeMemoryAddress += 0x9000;
     destroy_all_actors();
     m_ClearActors();
 
