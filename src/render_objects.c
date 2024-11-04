@@ -4865,8 +4865,7 @@ UNUSED void func_80057708() {
 void load_debug_font(void) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D008080);
-    //! todo: Implement alpha compare
-    // gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
 }
 
 void func_80057778(void) {

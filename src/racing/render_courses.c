@@ -236,291 +236,291 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                       G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
     }
-    //mtxf_identity(matrix);
-    //render_set_position(matrix, 0);
+    mtxf_identity(matrix);
+    render_set_position(matrix, 0);
     CourseManager_DrawWater(arg0, pathCounter, cameraRot, playerDirection);
-    switch (gCurrentCourseId) {
-        case COURSE_BOWSER_CASTLE:
-            // if (gActiveScreenMode != SCREEN_MODE_1P) {
-            //     return;
-            // }
-            // if (pathCounter < 6) {
-            //     return;
-            // }
-            // if (pathCounter > 9) {
-            //     return;
-            // }
-            // if (pathCounter == 9) {
-            //     if (cameraRot < 0xA000) {
-            //         return;
-            //     }
-            //     if (cameraRot > 0xE000) {
-            //         return;
-            //     }
-            // }
-            // gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9228);
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            // gDPPipeSync(gDisplayListHead++);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // // d_course_banshee_boardwalk_packed_dl_878
-            // gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000878));
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-        case COURSE_KOOPA_BEACH:
+    // switch (gCurrentCourseId) {
+    //     case COURSE_BOWSER_CASTLE:
+    //         if (gActiveScreenMode != SCREEN_MODE_1P) {
+    //             return;
+    //         }
+    //         if (pathCounter < 6) {
+    //             return;
+    //         }
+    //         if (pathCounter > 9) {
+    //             return;
+    //         }
+    //         if (pathCounter == 9) {
+    //             if (cameraRot < 0xA000) {
+    //                 return;
+    //             }
+    //             if (cameraRot > 0xE000) {
+    //                 return;
+    //             }
+    //         }
+    //         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9228);
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         gDPPipeSync(gDisplayListHead++);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         // d_course_banshee_boardwalk_packed_dl_878
+    //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000878));
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
 
-            // gDPPipeSync(gDisplayListHead++);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
 
-            // switch (pathCounter) {
-            //     case 22:
-            //     case 23:
-            //     case 29:
-            //     case 30:
-            //     case 31:
-            //     case 37:
-            //         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            //         // d_course_koopa_troopa_beach_packed_dl_9E70
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07009E70));
-            //         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            //         break;
-            // }
-            // vector[0] = 0.0f;
-            // vector[1] = D_8015F8E4;
-            // vector[2] = 0.0f;
-            // mtxf_translate(matrix, vector);
-            // render_set_position(matrix, 0);
+    //         switch (pathCounter) {
+    //             case 22:
+    //             case 23:
+    //             case 29:
+    //             case 30:
+    //             case 31:
+    //             case 37:
+    //                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //                 // d_course_koopa_troopa_beach_packed_dl_9E70
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07009E70));
+    //                 gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //                 break;
+    //         }
+    //         vector[0] = 0.0f;
+    //         vector[1] = D_8015F8E4;
+    //         vector[2] = 0.0f;
+    //         mtxf_translate(matrix, vector);
+    //         render_set_position(matrix, 0);
 
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // render_course_segments(koopa_troopa_beach_dls2, arg0);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
-            // gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-        case COURSE_SHERBET_LAND:
-            // gDPPipeSync(gDisplayListHead++);
-            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
-            // gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         render_course_segments(koopa_troopa_beach_dls2, arg0);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
+    //         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         gDPPipeSync(gDisplayListHead++);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
+    //         gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
-            // mtxf_identity(matrix);
-            // render_set_position(matrix, 0);
-            // render_course_segments(sherbet_land_dls_2, arg0);
+    //         mtxf_identity(matrix);
+    //         render_set_position(matrix, 0);
+    //         render_course_segments(sherbet_land_dls_2, arg0);
 
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {
-            //     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
-            //     gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
-            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            //     // d_course_sherbet_land_packed_dl_2B48
-            //     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07002B48));
-            // }
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            // gDPPipeSync(gDisplayListHead++);
-            // mtxf_identity(matrix);
-            // render_set_position(matrix, 0);
-            // gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // render_course_segments(rainbow_road_dls, arg0);
-            // gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-        case COURSE_WARIO_STADIUM:
-            // gDPPipeSync(gDisplayListHead++);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
-            // gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {
+    //             gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
+    //             gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+    //             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    //             // d_course_sherbet_land_packed_dl_2B48
+    //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07002B48));
+    //         }
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         gDPPipeSync(gDisplayListHead++);
+    //         mtxf_identity(matrix);
+    //         render_set_position(matrix, 0);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         render_course_segments(rainbow_road_dls, arg0);
+    //         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         gDPPipeSync(gDisplayListHead++);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
+    //         gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
-            // mtxf_identity(matrix);
-            // render_set_position(matrix, 0);
+    //         mtxf_identity(matrix);
+    //         render_set_position(matrix, 0);
 
-            // gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-            // gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
-            // // d_course_wario_stadium_packed_dl_EC0
-            // gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000EC0));
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
-            // gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-        case COURSE_DK_JUNGLE:
-            // gDPPipeSync(gDisplayListHead++);
-            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-            // gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            // gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
-            // gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    //         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+    //         // d_course_wario_stadium_packed_dl_EC0
+    //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000EC0));
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
+    //         gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         gDPPipeSync(gDisplayListHead++);
+    //         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    //         gDPSetBlendMask(gDisplayListHead++, 0xFF);
+    //         gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
+    //         gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
-            // mtxf_identity(matrix);
-            // render_set_position(matrix, 0);
+    //         mtxf_identity(matrix);
+    //         render_set_position(matrix, 0);
 
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
 
-            // if (pathCounter < 17) {
-            //     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            //     // d_course_dks_jungle_parkway_packed_dl_3E40
-            //     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //     // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //     if ((pathCounter >= 6) && (pathCounter < 13)) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            //         // d_course_dks_jungle_parkway_packed_dl_3DD0
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
-            //     }
-            // } else if ((pathCounter == 21) || (pathCounter == 22)) {
-            //     if (playerDirection == 3) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     }
-            //     if ((playerDirection == 1) || (playerDirection == 0)) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     } else {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            //         // d_course_dks_jungle_parkway_packed_dl_3F30
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     }
-            // } else if (pathCounter == 24) {
-            //     if ((playerDirection == 0) || (playerDirection == 3)) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     }
-            // } else if (pathCounter == 23) {
-            //     if (playerDirection == 3) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     } else if (playerDirection == 0) {
-            //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
-            //         // d_course_dks_jungle_parkway_packed_dl_36A8
-            //         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
-            //     }
-            // }
-            // gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // switch (pathCounter) {
-            //     case 5:
-            //         if (playerDirection != 3) {
-            //             // d_course_dks_jungle_parkway_packed_dl_3DD0
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
-            //         }
-            //         break;
-            //     case 17:
-            //         switch (playerDirection) {
-            //             case 0:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3E40
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 break;
-            //             case 1:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3DD0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3E40
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 break;
-            //             case 2:
-            //                 // d_course_dks_jungle_parkway_packed_dl_
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3F30
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //                 break;
-            //             case 3:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3F30
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //                 break;
-            //         }
-            //         break;
-            //     case 18:
-            //         switch (playerDirection) {
-            //             case 0:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3E40
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 break;
-            //             case 1:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3DD0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3E40
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 break;
-            //             case 2:
-            //                 // d_course_dks_jungle_parkway_packed_dl_3E40
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //                 // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //                 break;
-            //         }
-            //         break;
-            //     case 21:
-            //         if ((playerDirection == 0) || (playerDirection == 1)) {
-            //             // d_course_dks_jungle_parkway_packed_dl_3E40
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
-            //             // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //             // d_course_dks_jungle_parkway_packed_dl_3F30
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //         } else {
-            //             // d_course_dks_jungle_parkway_packed_dl_3EB0
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
-            //         }
-            //         break;
-            //     case 22:
-            //         if (playerDirection == 0) {
-            //             // d_course_dks_jungle_parkway_packed_dl_3F30
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //         }
-            //         break;
-            //     case 23:
-            //         if (playerDirection != 1) {
-            //             // d_course_dks_jungle_parkway_packed_dl_3F30
-            //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
-            //         }
-            //         break;
-            // }
-            // gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
-            // gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-            // gDPPipeSync(gDisplayListHead++);
-            break;
-    }
+    //         if (pathCounter < 17) {
+    //             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //             // d_course_dks_jungle_parkway_packed_dl_3E40
+    //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //             // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //             gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //             if ((pathCounter >= 6) && (pathCounter < 13)) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_3DD0
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
+    //             }
+    //         } else if ((pathCounter == 21) || (pathCounter == 22)) {
+    //             if (playerDirection == 3) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             }
+    //             if ((playerDirection == 1) || (playerDirection == 0)) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             } else {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             }
+    //         } else if (pathCounter == 24) {
+    //             if ((playerDirection == 0) || (playerDirection == 3)) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             }
+    //         } else if (pathCounter == 23) {
+    //             if (playerDirection == 3) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             } else if (playerDirection == 0) {
+    //                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+    //                 // d_course_dks_jungle_parkway_packed_dl_36A8
+    //                 gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070036A8));
+    //             }
+    //         }
+    //         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    //         switch (pathCounter) {
+    //             case 5:
+    //                 if (playerDirection != 3) {
+    //                     // d_course_dks_jungle_parkway_packed_dl_3DD0
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
+    //                 }
+    //                 break;
+    //             case 17:
+    //                 switch (playerDirection) {
+    //                     case 0:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         break;
+    //                     case 1:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3DD0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         break;
+    //                     case 2:
+    //                         // d_course_dks_jungle_parkway_packed_dl_
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                         break;
+    //                     case 3:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                         break;
+    //                 }
+    //                 break;
+    //             case 18:
+    //                 switch (playerDirection) {
+    //                     case 0:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         break;
+    //                     case 1:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3DD0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003DD0));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         break;
+    //                     case 2:
+    //                         // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                         // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                         gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                         break;
+    //                 }
+    //                 break;
+    //             case 21:
+    //                 if ((playerDirection == 0) || (playerDirection == 1)) {
+    //                     // d_course_dks_jungle_parkway_packed_dl_3E40
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003E40));
+    //                     // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                     // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                 } else {
+    //                     // d_course_dks_jungle_parkway_packed_dl_3EB0
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003EB0));
+    //                 }
+    //                 break;
+    //             case 22:
+    //                 if (playerDirection == 0) {
+    //                     // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                 }
+    //                 break;
+    //             case 23:
+    //                 if (playerDirection != 1) {
+    //                     // d_course_dks_jungle_parkway_packed_dl_3F30
+    //                     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07003F30));
+    //                 }
+    //                 break;
+    //         }
+    //         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
+    //         gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
+    //         gDPPipeSync(gDisplayListHead++);
+    //         break;
+    // }
 }
 
 void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {

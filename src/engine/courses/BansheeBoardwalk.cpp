@@ -288,7 +288,7 @@ void BansheeBoardwalk::ModifyDisplaylists() {
     D_801625F0 = 0;
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000878)), 128, 0, 0, 0);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 128, 0, 0, 0);
     D_8015F8E4 = -80.0f;
 }
 
