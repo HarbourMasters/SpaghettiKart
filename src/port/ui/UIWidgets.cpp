@@ -216,7 +216,7 @@ bool EnhancementCheckbox(const char* text, const char* cvarName, bool disabled, 
     bool val = (bool) CVarGetInteger(cvarName, defaultValue);
     if (CustomCheckbox(text, &val, disabled, disabledGraphic)) {
         CVarSetInteger(cvarName, val);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         changed = true;
     }
 
@@ -260,7 +260,7 @@ bool EnhancementCombobox(const char* cvarName, std::span<const char*, std::dynam
                     CVarSetInteger(cvarName, i);
                     selected = i;
                     changed = true;
-                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 }
             }
         }
@@ -273,7 +273,7 @@ bool EnhancementCombobox(const char* cvarName, std::span<const char*, std::dynam
         if (disabledValue >= 0 && selected != disabledValue) {
             CVarSetInteger(cvarName, disabledValue);
             changed = true;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         }
     }
 
@@ -369,7 +369,7 @@ bool EnhancementSliderInt(const char* text, const char* id, const char* cvarName
 
     if (changed) {
         CVarSetInteger(cvarName, val);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
     }
 
     return changed;
@@ -448,7 +448,7 @@ bool EnhancementSliderFloat(const char* text, const char* id, const char* cvarNa
 
     if (changed) {
         CVarSetFloat(cvarName, val);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
     }
 
     return changed;
@@ -505,7 +505,7 @@ bool EnhancementRadioButton(const char* text, const char* cvarName, int id) {
     int val = CVarGetInteger(cvarName, 0);
     if (ImGui::RadioButton(make_invisible.c_str(), id == val)) {
         CVarSetInteger(cvarName, id);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         ret = true;
     }
     ImGui::SameLine();
@@ -532,7 +532,7 @@ bool DrawResetColorButton(const char* cvarName, ImVec4* colors, ImVec4 defaultco
 
         CVarSetColor(cvarName, colorsRGBA);
         CVarSetInteger(Cvar_RBM.c_str(), 0); // On click disable rainbow mode.
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         changed = true;
     }
     Tooltip("Revert colors to the game's original colors (GameCube version)\nOverwrites previously chosen color");
@@ -805,7 +805,7 @@ bool CVarCheckbox(const char* label, const char* cvarName, const CheckboxOptions
     bool value = (bool) CVarGetInteger(cvarName, options.defaultValue);
     if (Checkbox(label, &value, options)) {
         CVarSetInteger(cvarName, value);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     return dirty;
@@ -914,7 +914,7 @@ bool CVarCombobox(const char* label, const char* cvarName, std::span<const char*
     uint8_t value = (uint8_t) CVarGetInteger(cvarName, options.defaultIndex);
     if (Combobox(label, &value, comboArray, options)) {
         CVarSetInteger(cvarName, value);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     return dirty;
@@ -962,7 +962,7 @@ bool SliderInt(const char* label, int32_t* value, int32_t min, int32_t max, cons
             *value -= options.step;
             if (*value < min)
                 *value = min;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         ImGui::SameLine(0, 3.0f);
@@ -971,7 +971,7 @@ bool SliderInt(const char* label, int32_t* value, int32_t min, int32_t max, cons
         ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x);
     }
     if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_S32, value, &min, &max, options.format, options.flags)) {
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     if (options.showButtons) {
@@ -981,7 +981,7 @@ bool SliderInt(const char* label, int32_t* value, int32_t min, int32_t max, cons
             *value += options.step;
             if (*value > max)
                 *value = max;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
     }
@@ -1004,7 +1004,7 @@ bool CVarSliderInt(const char* label, const char* cvarName, int32_t min, int32_t
     int32_t value = CVarGetInteger(cvarName, defaultValue);
     if (SliderInt(label, &value, min, max, options)) {
         CVarSetInteger(cvarName, value);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     return dirty;
@@ -1037,7 +1037,7 @@ bool SliderFloat(const char* label, float* value, float min, float max, const Fl
             *value -= options.step;
             if (*value < min)
                 *value = min;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
         ImGui::SameLine(0, 3.0f);
@@ -1048,7 +1048,7 @@ bool SliderFloat(const char* label, float* value, float min, float max, const Fl
     if (ImGui::SliderScalar(invisibleLabel, ImGuiDataType_Float, &valueToDisplay, &minToDisplay, &maxToDisplay,
                             options.format, options.flags)) {
         *value = options.isPercentage ? valueToDisplay / 100.0f : valueToDisplay;
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     if (options.showButtons) {
@@ -1058,7 +1058,7 @@ bool SliderFloat(const char* label, float* value, float min, float max, const Fl
             *value += options.step;
             if (*value > max)
                 *value = max;
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             dirty = true;
         }
     }
@@ -1081,7 +1081,7 @@ bool CVarSliderFloat(const char* label, const char* cvarName, float min, float m
     float value = CVarGetFloat(cvarName, defaultValue);
     if (SliderFloat(label, &value, min, max, options)) {
         CVarSetFloat(cvarName, value);
-        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         dirty = true;
     }
     return dirty;

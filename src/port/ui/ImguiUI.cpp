@@ -297,7 +297,7 @@ void DrawSettingsMenu() {
                 currentFps = 60;
             }
             CVarSetInteger("gInterpolationFPS", currentFps);
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+            Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
 #else
             bool matchingRefreshRate =
                 CVarGetInteger("gMatchRefreshRate", 0) &&
@@ -326,7 +326,7 @@ void DrawSettingsMenu() {
                 int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
                 if (hz >= 30 && hz <= 360) {
                     CVarSetInteger("gInterpolationFPS", hz);
-                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesOnNextTick();
+                    Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
                 }
             }
         } else {
