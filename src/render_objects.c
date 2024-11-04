@@ -4202,8 +4202,8 @@ void draw_crabs(s32 objectIndex, s32 cameraId) {
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
         draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                            gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                           gObjectList[objectIndex].activeTexture, common_vtx_hedgehog, 0x00000040, 0x00000040,
-                           0x00000040, 0x00000020);
+                           gObjectList[objectIndex].activeTexture, vtx, 64, 64,
+                           64, 32);
     }
 }
 
