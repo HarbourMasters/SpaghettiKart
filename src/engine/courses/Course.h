@@ -105,17 +105,17 @@ public:
     virtual void WhatDoesThisDoAI(Player*, int8_t);
     virtual void MinimapFinishlinePosition();
     virtual void SetStaffGhost();
-    virtual void BeginPlay();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();
     virtual void SpawnVehicles();
     virtual void UpdateVehicles();
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual void Collision();
-    virtual void ModifyDisplaylists();
     virtual void ScrollingTextures();
     virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
     virtual void Destroy();
+private:
+    void Init();
 };
 
 #endif

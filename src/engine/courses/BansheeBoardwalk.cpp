@@ -103,6 +103,19 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void BansheeBoardwalk::Load() {
+    Course::Load();
+
+    D_800DC5BC = 1;
+    D_801625EC = 0;
+    D_801625F4 = 0;
+    D_801625F0 = 0;
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
+    func_80295C6C();
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 128, 0, 0, 0);
+    D_8015F8E4 = -80.0f;
+}
+
 void BansheeBoardwalk::LoadTextures() {
 }
 
@@ -211,11 +224,6 @@ void BansheeBoardwalk::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void BansheeBoardwalk::SetStaffGhost() {
-}
-
-void BansheeBoardwalk::BeginPlay() {  }
-
 void BansheeBoardwalk::Render(struct UnkStruct_800DC5EC* arg0) {
     Camera* camera = arg0->camera;
     Mat4 spCC;
@@ -280,17 +288,6 @@ void BansheeBoardwalk::RenderCredits() {
 }
 
 void BansheeBoardwalk::Collision() {}
-
-void BansheeBoardwalk::ModifyDisplaylists() {
-    D_800DC5BC = 1;
-    D_801625EC = 0;
-    D_801625F4 = 0;
-    D_801625F0 = 0;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
-    func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 128, 0, 0, 0);
-    D_8015F8E4 = -80.0f;
-}
 
 void BansheeBoardwalk::ScrollingTextures() {
     D_802B87BC++;

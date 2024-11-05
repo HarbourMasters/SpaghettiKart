@@ -104,6 +104,14 @@ KalimariDesert::KalimariDesert() {
     Props.Skybox.FloorTopLeft = {255, 192, 0};
 }
 
+void KalimariDesert::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void KalimariDesert::LoadTextures() {
     dma_textures(gTextureCactus1Left, 0x0000033EU, 0x00000800U);
     dma_textures(gTextureCactus1Right, 0x000002FBU, 0x00000800U);
@@ -190,8 +198,6 @@ void KalimariDesert::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void KalimariDesert::SetStaffGhost() {}
-
 void KalimariDesert::SpawnVehicles() {
     generate_train_waypoints();
 
@@ -218,7 +224,6 @@ void KalimariDesert::SpawnVehicles() {
     }
 }
 
-void KalimariDesert::BeginPlay() {  }
 void KalimariDesert::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
 
@@ -257,11 +262,5 @@ void KalimariDesert::RenderCredits() {
 }
 
 void KalimariDesert::Collision() {}
-
-void KalimariDesert::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void KalimariDesert::Destroy() { }

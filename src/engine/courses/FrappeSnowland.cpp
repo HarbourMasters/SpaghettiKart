@@ -104,6 +104,14 @@ FrappeSnowland::FrappeSnowland() {
     Props.Skybox.FloorTopLeft = {0, 99, 164};
 }
 
+void FrappeSnowland::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
+    func_80295C6C();
+    D_8015F8E4 = -50.0f;
+}
+
 void FrappeSnowland::LoadTextures() {
     dma_textures(gTextureFrappeSnowlandTreeLeft, 0x00000454U, 0x00000800U);
     dma_textures(gTextureFrappeSnowlandTreeRight, 0x00000432U, 0x00000800U);
@@ -210,11 +218,6 @@ void FrappeSnowland::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void FrappeSnowland::SetStaffGhost() {
-}
-
-void FrappeSnowland::BeginPlay() {  }
-
 void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -237,12 +240,6 @@ void FrappeSnowland::RenderCredits() {
 }
 
 void FrappeSnowland::Collision() {}
-
-void FrappeSnowland::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
-    func_80295C6C();
-    D_8015F8E4 = -50.0f;
-}
 
 void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {
     s16 waypoint = gNearestWaypointByPlayerId[playerId];

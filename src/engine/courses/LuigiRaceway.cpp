@@ -105,6 +105,14 @@ LuigiRaceway::LuigiRaceway() {
     Props.Skybox.FloorTopLeft = {216, 232, 248};
 }
 
+void LuigiRaceway::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void LuigiRaceway::LoadTextures() {
     dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U);
     dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
@@ -223,8 +231,6 @@ void LuigiRaceway::SetStaffGhost() {
     D_80162DE4 = 1;
 }
 
-void LuigiRaceway::BeginPlay() {}
-
 void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad;
     u16 sp22 = (u16) arg0->pathCounter;
@@ -335,12 +341,6 @@ void LuigiRaceway::Collision() {}
 
 void LuigiRaceway::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E9EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-}
-
-void LuigiRaceway::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
 void LuigiRaceway::Destroy() { }

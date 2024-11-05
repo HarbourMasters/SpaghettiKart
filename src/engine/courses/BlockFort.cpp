@@ -101,6 +101,14 @@ BlockFort::BlockFort() {
     Props.Skybox.FloorTopLeft = {216, 232, 248};
 }
 
+void BlockFort::Load() {
+    Course::Load();
+
+    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x070015C0), 1);
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void BlockFort::LoadTextures() {
 }
 
@@ -143,9 +151,6 @@ void BlockFort::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void BlockFort::SetStaffGhost() {}
-
-void BlockFort::BeginPlay() {  }
 void BlockFort::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -158,12 +163,6 @@ void BlockFort::Render(struct UnkStruct_800DC5EC* arg0) {
 void BlockFort::RenderCredits() {}
 
 void BlockFort::Collision() {}
-
-void BlockFort::ModifyDisplaylists() {
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x070015C0), 1);
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void BlockFort::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = 0;

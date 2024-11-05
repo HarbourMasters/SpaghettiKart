@@ -101,6 +101,18 @@ Skyscraper::Skyscraper() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void Skyscraper::Load() {
+    Course::Load();
+
+    // d_course_skyscraper_packed_dl_1110
+    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07001110), 1);
+    // d_course_skyscraper_packed_dl_258
+    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07000258), 1);
+    func_80295C6C();
+
+    D_8015F8E4 = -480.0f;
+}
+
 void Skyscraper::LoadTextures() {
 }
 
@@ -143,9 +155,6 @@ void Skyscraper::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void Skyscraper::SetStaffGhost() {}
-
-void Skyscraper::BeginPlay() {  }
 void Skyscraper::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -172,16 +181,6 @@ void Skyscraper::Render(struct UnkStruct_800DC5EC* arg0) {
 void Skyscraper::RenderCredits() {}
 
 void Skyscraper::Collision() {}
-
-void Skyscraper::ModifyDisplaylists() {
-    // d_course_skyscraper_packed_dl_1110
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07001110), 1);
-    // d_course_skyscraper_packed_dl_258
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07000258), 1);
-    func_80295C6C();
-
-    D_8015F8E4 = -480.0f;
-}
 
 void Skyscraper::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = 0;

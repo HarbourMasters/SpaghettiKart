@@ -102,6 +102,14 @@ RoyalRaceway::RoyalRaceway() {
     Props.Skybox.FloorTopLeft = {255, 224, 240};
 }
 
+void RoyalRaceway::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    func_80295C6C();
+    D_8015F8E4 = -60.0f;
+}
+
 void RoyalRaceway::LoadTextures() {
     dma_textures(gTextureTrees3, 0x000003E8U, 0x00000800U);
     dma_textures(gTextureTrees7, 0x000003E8U, 0x00000800U);
@@ -215,7 +223,6 @@ void RoyalRaceway::SetStaffGhost() {
     D_80162DE4 = 6;
 }
 
-void RoyalRaceway::BeginPlay() {  }
 void RoyalRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -250,12 +257,6 @@ void RoyalRaceway::RenderCredits() {
 }
 
 void RoyalRaceway::Collision() {}
-
-void RoyalRaceway::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
-    func_80295C6C();
-    D_8015F8E4 = -60.0f;
-}
 
 void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
     s16 waypoint = gNearestWaypointByPlayerId[playerId];

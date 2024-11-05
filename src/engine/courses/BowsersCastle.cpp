@@ -103,6 +103,15 @@ BowsersCastle::BowsersCastle() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void BowsersCastle::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
+    func_80295C6C();
+    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
+    D_8015F8E4 = -50.0f;
+}
+
 void BowsersCastle::LoadTextures() {
     dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
 }
@@ -235,10 +244,6 @@ void BowsersCastle::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void BowsersCastle::SetStaffGhost() {
-}
-
-void BowsersCastle::BeginPlay() {  }
 void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -274,13 +279,6 @@ void BowsersCastle::Collision() {}
 
 void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E6EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-}
-
-void BowsersCastle::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
-    func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
-    D_8015F8E4 = -50.0f;
 }
 
 void BowsersCastle::Waypoints(Player* player, int8_t playerId) {

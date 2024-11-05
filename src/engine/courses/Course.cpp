@@ -17,6 +17,8 @@ extern "C" {
     #include "save.h"
     #include "staff_ghosts.h"
     #include "Engine.h"
+    #include "code_800029B0.h"
+    #include "render_courses.h"
     extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
@@ -76,6 +78,8 @@ Course::Course() {
 void Course::Load(Vtx* vtx, Gfx* gfx) {
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
+
+    Course::Init();
 }
 
 void Course::Load() {
@@ -116,6 +120,28 @@ void Course::Load() {
     assert(gfx != NULL);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
     displaylist_unpack(reinterpret_cast<uintptr_t *>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
+
+    Course::Init();
+}
+
+void Course::Init() {
+    gNumActors = 0;
+    gCourseMinX = 0;
+    gCourseMinY = 0;
+    gCourseMinZ = 0;
+
+    gCourseMaxX = 0;
+    gCourseMaxY = 0;
+    gCourseMaxZ = 0;
+
+    D_8015F59C = 0;
+    D_8015F5A0 = 0;
+    func_80295D6C();
+    D_8015F58C = 0; 
+    gCollisionMeshCount = 0;
+    gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
+    D_800DC5BC = 0;
+    D_800DC5C8 = 0;
 }
 
 void Course::LoadTextures() { }
@@ -204,11 +230,9 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 void Course::SpawnVehicles() {}
 void Course::UpdateVehicles() {}
 
-void Course::BeginPlay() {}
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {}
 void Course::RenderCredits() {}
 void Course::Collision() {}
-void Course::ModifyDisplaylists() {}
 void Course::ScrollingTextures() {}
 void Course::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {}
 

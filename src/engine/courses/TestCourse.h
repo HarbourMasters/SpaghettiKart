@@ -33,13 +33,10 @@ public:
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void MinimapFinishlinePosition() override;
-    virtual void SetStaffGhost() override;
-    virtual void BeginPlay() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
     virtual void SpawnVehicles() override;
     virtual void UpdateVehicles() override;
-    virtual void ModifyDisplaylists() override;
     virtual void Destroy() override;
 };

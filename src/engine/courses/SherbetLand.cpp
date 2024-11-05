@@ -102,6 +102,18 @@ SherbetLand::SherbetLand() {
     Props.Skybox.FloorTopLeft = {216, 232, 248};
 }
 
+void SherbetLand::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
+    func_80295C6C();
+    D_8015F8E4 = -18.0f;
+    // d_course_sherbet_land_packed_dl_1EB8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);
+    // d_course_sherbet_land_packed_dl_2308
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 255, 255, 255);
+}
+
 void SherbetLand::LoadTextures() {
 }
 
@@ -170,9 +182,6 @@ void SherbetLand::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void SherbetLand::SetStaffGhost() {}
-
-void SherbetLand::BeginPlay() {  }
 void SherbetLand::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -187,16 +196,6 @@ void SherbetLand::RenderCredits() {
 }
 
 void SherbetLand::Collision() {}
-
-void SherbetLand::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
-    func_80295C6C();
-    D_8015F8E4 = -18.0f;
-    // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);
-    // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 255, 255, 255);
-}
 
 void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     Mat4 matrix;

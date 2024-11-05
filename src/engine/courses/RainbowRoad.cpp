@@ -101,6 +101,25 @@ RainbowRoad::RainbowRoad() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void RainbowRoad::Load() {
+    Course::Load();
+
+    D_800DC5C8 = 1;
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
+    func_80295C6C();
+    D_8015F8E4 = 0.0f;
+    // d_course_rainbow_road_packed_dl_2068
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), -0x6A, 255, 255, 255);
+    // d_course_rainbow_road_packed_dl_1E18
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001E18), -0x6A, 255, 255, 255);
+    // d_course_rainbow_road_packed_dl_1318
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001318), 255, 255, 255, 0);
+    if (gGamestate != CREDITS_SEQUENCE) {
+        // d_course_rainbow_road_packed_dl_1FB8
+        find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001FB8), -0x6A, 255, 255, 255);
+    }
+}
+
 void RainbowRoad::LoadTextures() {
 }
 
@@ -180,9 +199,6 @@ void RainbowRoad::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void RainbowRoad::SetStaffGhost() {}
-
-void RainbowRoad::BeginPlay() {}
 void RainbowRoad::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -196,23 +212,6 @@ void RainbowRoad::RenderCredits() {
 }
 
 void RainbowRoad::Collision() {}
-
-void RainbowRoad::ModifyDisplaylists() {
-    D_800DC5C8 = 1;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
-    func_80295C6C();
-    D_8015F8E4 = 0.0f;
-    // d_course_rainbow_road_packed_dl_2068
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), -0x6A, 255, 255, 255);
-    // d_course_rainbow_road_packed_dl_1E18
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001E18), -0x6A, 255, 255, 255);
-    // d_course_rainbow_road_packed_dl_1318
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001318), 255, 255, 255, 0);
-    if (gGamestate != CREDITS_SEQUENCE) {
-        // d_course_rainbow_road_packed_dl_1FB8
-        find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001FB8), -0x6A, 255, 255, 255);
-    }
-}
 
 void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];

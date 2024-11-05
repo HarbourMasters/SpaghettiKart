@@ -102,6 +102,16 @@ YoshiValley::YoshiValley() {
     Props.Skybox.FloorTopLeft = {95, 40, 15};
 }
 
+void YoshiValley::Load() {
+    Course::Load();
+
+    Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
+    func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void YoshiValley::LoadTextures() {
     dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
 }
@@ -201,11 +211,6 @@ void YoshiValley::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void YoshiValley::SetStaffGhost() {
-}
-
-void YoshiValley::BeginPlay() {  }
-
 void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
@@ -220,14 +225,6 @@ void YoshiValley::RenderCredits() {
 }
 
 void YoshiValley::Collision() {}
-
-void YoshiValley::ModifyDisplaylists() {
-    Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
-    func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void YoshiValley::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];

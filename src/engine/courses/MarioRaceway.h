@@ -24,6 +24,7 @@ public:
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
+    virtual void Load() override;
     virtual void LoadTextures() override;
     virtual void SpawnActors() override;
     virtual void SpawnVehicles() override;
@@ -34,11 +35,9 @@ public:
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void MinimapFinishlinePosition() override;
     virtual void SetStaffGhost() override;
-    virtual void BeginPlay() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
     virtual void Collision() override;
-    virtual void ModifyDisplaylists() override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

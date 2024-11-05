@@ -104,6 +104,14 @@ MooMooFarm::MooMooFarm() {
     Props.Skybox.FloorTopLeft = {255, 184, 99};
 }
 
+void MooMooFarm::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void MooMooFarm::LoadTextures() {
     dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
     dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
@@ -260,10 +268,6 @@ void MooMooFarm::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void MooMooFarm::SetStaffGhost() {}
-
-void MooMooFarm::BeginPlay() {}
-
 void MooMooFarm::Render(struct UnkStruct_800DC5EC* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
@@ -342,12 +346,6 @@ void MooMooFarm::RenderCredits() {
 }
 
 void MooMooFarm::Collision() {}
-
-void MooMooFarm::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void MooMooFarm::CreditsSpawnActors() {
     dma_textures(gTextureTrees4Left, 0x3E8, 0x800);

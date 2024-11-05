@@ -104,6 +104,17 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Skybox.FloorTopLeft = {48, 152, 120};
 }
 
+void KoopaTroopaBeach::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
+    func_80295C6C();
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07009E70), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), -0x6A, 255, 255, 255);
+}
+
 void KoopaTroopaBeach::LoadTextures() {
 }
 
@@ -203,11 +214,6 @@ void KoopaTroopaBeach::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void KoopaTroopaBeach::SetStaffGhost() {
-}
-
-void KoopaTroopaBeach::BeginPlay() {  }
-
 void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -242,15 +248,6 @@ void KoopaTroopaBeach::Collision() {}
 
 void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-}
-
-void KoopaTroopaBeach::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
-    func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700ADE0)), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A540)), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009E70)), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), -0x6A, 255, 255, 255);
 }
 
 void KoopaTroopaBeach::ScrollingTextures() {

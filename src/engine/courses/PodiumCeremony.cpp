@@ -98,6 +98,14 @@ PodiumCeremony::PodiumCeremony() {
     Props.Skybox.FloorTopLeft = {255, 224, 240};
 }
 
+void PodiumCeremony::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    func_80295C6C();
+    D_8015F8E4 = -60.0f;
+}
+
 void PodiumCeremony::LoadTextures() {
 }
 
@@ -183,20 +191,6 @@ void PodiumCeremony::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void PodiumCeremony::SetStaffGhost() {
-    u32 temp_v0 = func_800B4E24(0) & 0xfffff;
-    if (temp_v0 <= 16000) {
-        D_80162DD6 = 0;
-        D_80162DF4 = 0;
-    } else {
-        D_80162DD6 = 1;
-        D_80162DF4 = 1;
-    }
-    D_80162DC4 = d_royal_raceway_staff_ghost;
-    D_80162DE4 = 6;
-}
-
-void PodiumCeremony::BeginPlay() {  }
 void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -231,11 +225,5 @@ void PodiumCeremony::RenderCredits() {
 }
 
 void PodiumCeremony::Collision() {}
-
-void PodiumCeremony::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
-    func_80295C6C();
-    D_8015F8E4 = -60.0f;
-}
 
 void PodiumCeremony::Destroy() { }

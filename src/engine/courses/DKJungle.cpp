@@ -106,6 +106,16 @@ DKJungle::DKJungle() {
     Props.Skybox.FloorTopLeft = {22, 145, 22};
 }
 
+void DKJungle::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
+    func_80295C6C();
+    D_8015F8E4 = -475.0f;
+    // d_course_dks_jungle_parkway_packed_dl_3FA8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 120, 255, 255, 255);
+}
+
 void DKJungle::LoadTextures() {
     dma_textures(gTextureDksJungleParkwayKiwanoFruit1, 0x0000032FU, 0x00000400U);
     dma_textures(gTextureDksJungleParkwayKiwanoFruit2, 0x00000369U, 0x00000400U);
@@ -202,9 +212,6 @@ void DKJungle::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void DKJungle::SetStaffGhost() {}
-
-void DKJungle::BeginPlay() {  }
 void DKJungle::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
@@ -256,14 +263,6 @@ void DKJungle::SpawnVehicles() {
         gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
         gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
     }
-}
-
-void DKJungle::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
-    func_80295C6C();
-    D_8015F8E4 = -475.0f;
-    // d_course_dks_jungle_parkway_packed_dl_3FA8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 120, 255, 255, 255);
 }
 
 void DKJungle::Waypoints(Player* player, int8_t playerId) {

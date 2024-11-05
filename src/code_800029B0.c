@@ -203,7 +203,7 @@ void setup_race(void) {
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
-        func_80295D88();
+        course_init();
         D_8015F730 = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = D_8015F730;

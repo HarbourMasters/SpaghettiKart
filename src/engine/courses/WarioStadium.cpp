@@ -104,6 +104,30 @@ WarioStadium::WarioStadium() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void WarioStadium::Load() {
+    Course::Load();
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_wario_stadium_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+    // d_course_wario_stadium_packed_dl_C50
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000C50), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_BD8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000BD8), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_B60
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000B60), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_AE8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000AE8), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_CC8
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000CC8), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_D50
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000D50), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_DD0
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000DD0), 100, 255, 255, 255);
+    // d_course_wario_stadium_packed_dl_E48
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000E48), 100, 255, 255, 255);
+}
+
 void WarioStadium::LoadTextures() {
 }
 
@@ -183,9 +207,6 @@ void WarioStadium::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void WarioStadium::SetStaffGhost() {}
-
-void WarioStadium::BeginPlay() {  }
 void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
     s16 prevFrame;
 
@@ -282,28 +303,6 @@ void WarioStadium::Collision() {}
 
 void WarioStadium::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-}
-
-void WarioStadium::ModifyDisplaylists() {
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_wario_stadium_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-    // d_course_wario_stadium_packed_dl_C50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000C50), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_BD8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000BD8), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_B60
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000B60), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_AE8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000AE8), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_CC8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000CC8), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_D50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000D50), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_DD0
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000DD0), 100, 255, 255, 255);
-    // d_course_wario_stadium_packed_dl_E48
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000E48), 100, 255, 255, 255);
 }
 
 void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {

@@ -106,6 +106,19 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.Skybox.FloorTopLeft = {209, 65, 23};
 }
 
+void ToadsTurnpike::Load() {
+    Course::Load();
+
+    D_801625EC = 43;
+    D_801625F4 = 13;
+    D_801625F0 = 4;
+    D_802B87B0 = 993;
+    D_802B87B4 = 1000;
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void ToadsTurnpike::LoadTextures() {
 }
 
@@ -171,10 +184,6 @@ void ToadsTurnpike::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
-
-void ToadsTurnpike::SetStaffGhost() {}
-
-void ToadsTurnpike::BeginPlay() {}
 
 void ToadsTurnpike::Render(struct UnkStruct_800DC5EC* arg0) {
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
@@ -268,17 +277,6 @@ void ToadsTurnpike::SpawnVehicles() {
         gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
         gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
     }
-}
-
-void ToadsTurnpike::ModifyDisplaylists() {
-    D_801625EC = 43;
-    D_801625F4 = 13;
-    D_801625F0 = 4;
-    D_802B87B0 = 993;
-    D_802B87B4 = 1000;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
 void ToadsTurnpike::Destroy() { }

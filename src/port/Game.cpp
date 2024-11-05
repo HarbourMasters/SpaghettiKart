@@ -381,12 +381,6 @@ extern "C" {
         }
     }
 
-    void CourseManager_ModifyDisplaylists() {
-        if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->ModifyDisplaylists();
-        }
-    }
-
     void CourseManager_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
                                         f32* arg6, f32* arg7) {
         if (gWorldInstance.CurrentCourse) {

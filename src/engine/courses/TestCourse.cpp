@@ -115,8 +115,13 @@ TestCourse::TestCourse() {
 }
 
 void TestCourse::Load() {
-    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&mario_Plane_001_mesh_vtx_1[0]);
-    //gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
+    Course::Load(mario_Plane_001_mesh_vtx_1, NULL);
+
+    generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
+
+    parse_course_displaylists((TrackSectionsI*)test_course_addr);
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
 }
 
 void TestCourse::LoadTextures() {
@@ -314,10 +319,6 @@ void TestCourse::MinimapFinishlinePosition() {
     draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
-void TestCourse::SetStaffGhost() {}
-
-void TestCourse::BeginPlay() {  }
-
 void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -337,13 +338,5 @@ void TestCourse::RenderCredits() {
 }
 
 void TestCourse::Collision() {}
-
-void TestCourse::ModifyDisplaylists() {
-    generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
-
-    parse_course_displaylists((TrackSectionsI*)test_course_addr);
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void TestCourse::Destroy() { }

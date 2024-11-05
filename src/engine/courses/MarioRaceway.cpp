@@ -104,6 +104,23 @@ MarioRaceway::MarioRaceway() {
     Props.Skybox.FloorTopLeft = {0, 0, 0};
 }
 
+void MarioRaceway::Load() {
+    Course::Load();
+
+    generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
+    if (gScreenModeSelection == SCREEN_MODE_1P) {
+        // d_course_mario_raceway_packed_dl_8E8
+        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070008E8)));
+    } else {
+        // d_course_mario_raceway_packed_dl_2D68
+        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07002D68)));
+    }
+
+    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
+    func_80295C6C();
+    D_8015F8E4 = gCourseMinY - 10.0f;
+}
+
 void MarioRaceway::LoadTextures() {
     dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
     D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
@@ -229,7 +246,6 @@ void MarioRaceway::SetStaffGhost() {
     D_80162DE4 = 0;
 }
 
-void MarioRaceway::BeginPlay() {  }
 void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     u16 sp22 = arg0->pathCounter;
     u16 temp_t0 = arg0->playerDirection;
@@ -340,21 +356,6 @@ void MarioRaceway::RenderCredits() {
 }
 
 void MarioRaceway::Collision() {}
-
-void MarioRaceway::ModifyDisplaylists() {
-    generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001140)));
-    if (gScreenModeSelection == SCREEN_MODE_1P) {
-        // d_course_mario_raceway_packed_dl_8E8
-        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070008E8)));
-    } else {
-        // d_course_mario_raceway_packed_dl_2D68
-        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07002D68)));
-    }
-
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
-    func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
-}
 
 void MarioRaceway::CreditsSpawnActors() {
     dma_textures(gTextureTrees1, 0x35B, 0x800);

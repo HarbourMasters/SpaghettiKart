@@ -1487,27 +1487,7 @@ void func_80295D6C(void) {
     D_8015F6F6 = -3000;
 }
 
-void func_80295D88(void) {
-    gNumActors = 0;
-
-    gCourseMinX = 0;
-    gCourseMinY = 0;
-    gCourseMinZ = 0;
-
-    gCourseMaxX = 0;
-    gCourseMaxY = 0;
-    gCourseMaxZ = 0;
-
-    D_8015F59C = 0;
-    D_8015F5A0 = 0;
-    func_80295D6C();
-    D_8015F58C = 0;
-    gCollisionMeshCount = 0;
-    gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
-    D_800DC5BC = 0;
-    D_800DC5C8 = 0;
-
-    CourseManager_ModifyDisplaylists();
+void course_init(void) {
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
