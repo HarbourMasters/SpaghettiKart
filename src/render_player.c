@@ -559,6 +559,12 @@ void render_players_on_screen_one(void) {
         init_render_player(gPlayerSeven, camera1, PLAYER_SEVEN, PLAYER_ONE);
         init_render_player(gPlayerEight, camera1, PLAYER_EIGHT, PLAYER_ONE);
     }
+
+    // This call moved here to sync kart texture and wheel texture tlut loading/rendering
+    if (gPlayersToRenderCount != 0) {
+        load_kart_texture_and_render_kart_particle_on_screen_one();
+    }
+
     try_rendering_player(gPlayerOne, PLAYER_ONE, PLAYER_ONE);
     try_rendering_player(gPlayerTwo, PLAYER_TWO, PLAYER_ONE);
     try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_ONE);
@@ -569,8 +575,10 @@ void render_players_on_screen_one(void) {
         try_rendering_player(gPlayerSeven, PLAYER_SEVEN, PLAYER_ONE);
         try_rendering_player(gPlayerEight, PLAYER_EIGHT, PLAYER_ONE);
     }
+
+    // Old call which is out of sync
     if (gPlayersToRenderCount != 0) {
-        load_kart_texture_and_render_kart_particle_on_screen_one();
+        // load_kart_texture_and_render_kart_particle_on_screen_one();
     } else {
         render_kart_particle_on_screen_one(gPlayerOneCopy, PLAYER_ONE, PLAYER_ONE);
         render_kart_particle_on_screen_one(gPlayerTwo, PLAYER_TWO, PLAYER_ONE);
@@ -1646,8 +1654,6 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
         if (screenId == playerId) {
-            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
-            //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             AddKartMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
             gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
@@ -1656,9 +1662,9 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
                           gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
                           (s32) player->unk_0C6);
             gDPSetRenderMode(gDisplayListHead++,
-                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                                  GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         } else {
             // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (screenId * 8)]),
@@ -1670,11 +1676,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                           gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
                           D_8018D970[playerId]);
-            gDPSetRenderMode(gDisplayListHead++,
-                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                                 GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                             AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                                 GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+            gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
     } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & 0x08000000) ||
                (player->soundEffects & 0x04000000)) {
@@ -1711,7 +1713,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 
     // Render karts
     u8* test = (u8*) LOAD_ASSET(sKartUpperTexture);
-    gDPLoadTextureBlock(gDisplayListHead++, test + 0x800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
+    gDPLoadTextureBlock(gDisplayListHead++, test + 0x7C0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
@@ -1779,9 +1781,9 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                   gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId], spC2);
     gDPSetRenderMode(gDisplayListHead++,
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                          GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                          GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
 
     gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
@@ -1791,7 +1793,7 @@ void render_ghost(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
     u8* test = (u8*) LOAD_ASSET(sKartUpperTexture);
-    gDPLoadTextureBlock(gDisplayListHead++, test + 0x800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
+    gDPLoadTextureBlock(gDisplayListHead++, test + 0x7C0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
@@ -1825,9 +1827,9 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 arg3) {
                   gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
                   0x00000040);
     gDPSetRenderMode(gDisplayListHead++,
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                          GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
                          GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
 
     gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
@@ -1837,7 +1839,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
     u8* test = (u8*) LOAD_ASSET(sKartUpperTexture);
-    gDPLoadTextureBlock(gDisplayListHead++, test + 0x800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
+    gDPLoadTextureBlock(gDisplayListHead++, test + 0x7C0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
@@ -1883,7 +1885,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 a
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
     u8* test = (u8*) LOAD_ASSET(sKartUpperTexture);
-    gDPLoadTextureBlock(gDisplayListHead++, test + 0x800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
+    gDPLoadTextureBlock(gDisplayListHead++, test + 0x7C0, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
@@ -1921,6 +1923,8 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     } else {
         render_ghost(player, playerId, screenId, var_v1);
     }
+    // Allows wheels to spin
+    gSPInvalidateTexCache(gDisplayListHead++, sKartLowerTexture);
     osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
@@ -1955,9 +1959,9 @@ void func_80026A48(Player* player, s8 arg1) {
 
 // Properly define struct pointers, see buffers.h comment for more information.
 #ifdef AVOID_UB
-#define D_802F1F80_WHEEL(a, b, c) &gPlayerPalettesList[a][b][c].wheel_palette
+#define D_802F1F80_WHEEL(a, screenId, playerId) &gPlayerPalettesList[a][screenId][playerId].wheel_palette
 #else
-#define D_802F1F80_WHEEL(a, b, c) &gPlayerPalettesList[a][b][(c * 0x100) + 0xC0]
+#define D_802F1F80_WHEEL(a, screenId, playerId) &gPlayerPalettesList[a][screenId][(PlayerId * 0x100) + 0xC0]
 #endif
 
 void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
@@ -1977,21 +1981,21 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
 
             if (frameId <= 20) {
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel0 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
                 int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel1 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (frameId == 0) {
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel0 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel1 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
@@ -2000,49 +2004,27 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             ((player->effects & 0x80000) != 0x80000) && ((player->effects & 0x800000) != 0x800000) &&
             ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
-            // printf("---start---\n");
-
             if (frameId <= 20) {
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                // printf("OFFSET VAL 0x%X\n", ((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)));
-                // printf("OFFSET IDX %d\n", offset);
-                load_player_data_non_blocking(player, wheelPtr[character][wheel0 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
 
-                // printf("wheel1\n");
-                // printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (((frameId - 21) * (temp_num
-                // * 4) + ((temp_t2 >> 8) * 0x40) + 0x600)), frameId, temp_num, temp_t2, (temp_t2 >> 8)); printf("wheel
-                // offset: 0x%X, w0: 0x%X, t0: 0x%X\n", wheel1 + (((frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) *
-                // 0x40) + 0x600)), wheel1, frameId); printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1,
-                // player->characterId, temp_t1);
-
                 int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel1 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (frameId == 0) {
-                // printf("wheel0\n");
-                // printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (frameId * temp_num * 4) +
-                // ((temp_t2 >> 8) * 0x40), frameId, temp_num, temp_t2, (temp_t2 >> 8)); printf("wheel offset: 0x%X, w0:
-                // 0x%X, t0: 0x%X\n", wheel0 + ((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel0, frameId);
-                // printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel0, player->characterId, temp_t1);
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel0 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                // printf("wheel1_2\n");
-                // printf("OFFSET: 0x%X, t0: 0x%X, temp_num: 0x%X t2: 0x%X, t2_8: 0x%X\n", (frameId * temp_num * 4) +
-                // ((temp_t2 >> 8) * 0x40), frameId, temp_num, temp_t2, (temp_t2 >> 8)); printf("wheel offset: 0x%X, w0:
-                // 0x%X, t0: 0x%X\n", wheel1 + ((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), wheel1, frameId);
-                // printf("wheel: 0x%X, char: 0x%X, t1: 0x%X\n", wheel1, player->characterId, temp_t1);
                 int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
-                load_player_data_non_blocking(player, wheelPtr[character][wheel1 + offset],
+                load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                               D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
-        // printf("---end---\n");
     }
 }
 

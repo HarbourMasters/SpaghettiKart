@@ -1350,7 +1350,7 @@ void load_kart_palette(Player* player, s8 playerId, s8 screenId, s8 buffer) {
 #else
             size = ResourceGetTexSizeByName(gKartPalettes[player->characterId]);
             asset = (u8*) LOAD_ASSET(gKartPalettes[player->characterId]);
-            memcpy(&gPlayerPalettesList[buffer][screenId][playerId], asset, size);
+            memcpy(&gPlayerPalettesList[buffer][screenId][playerId].kart_palette[0], asset, size);
 #endif
 
             break;
@@ -1366,7 +1366,7 @@ void load_kart_palette(Player* player, s8 playerId, s8 screenId, s8 buffer) {
 #else
             size = ResourceGetTexSizeByName(gKartPalettes[player->characterId]);
             asset = (u8*) LOAD_ASSET(gKartPalettes[player->characterId]);
-            memcpy(&gPlayerPalettesList[buffer][screenId][playerId], asset, size);
+            memcpy(&gPlayerPalettesList[buffer][screenId][playerId].kart_palette[0], asset, size);
 #endif
 
             break;
@@ -1392,7 +1392,7 @@ void load_player_data(UNUSED Player* player, s32 arg1, void* vAddr, u16 size) {
  * @param vAddr Virtual address
  * @param size Size of data to read
  */
-void load_player_data_non_blocking(UNUSED Player* player, const char* texture, void* vAddr, u16 size) {
+void load_wheel_palette_non_blocking(UNUSED Player* player, const char* texture, void* vAddr, u16 size) {
     osInvalDCache(vAddr, size);
 
 #ifdef TARGET_N64
@@ -1400,9 +1400,7 @@ void load_player_data_non_blocking(UNUSED Player* player, const char* texture, v
                  (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(arg1)], vAddr, size, &gDmaMesgQueue);
 #else
     u16* tex = (u16*) LOAD_ASSET(texture);
-    // printf("wheeltex: %s\n",texture);
     size_t textureSize = ResourceGetTexSizeByName(texture);
-    // vAddr = texture;
     memcpy(vAddr, tex, size);
 #endif
 }
