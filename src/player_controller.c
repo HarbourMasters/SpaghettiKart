@@ -21,6 +21,7 @@
 #include "code_80005FD0.h"
 #include "sounds.h"
 #include "port/Game.h"
+#include "src/enhancements/moon_jump.h"
 
 extern s32 D_8018D168;
 
@@ -4481,6 +4482,11 @@ void func_80037BB4(Player* player, Vec3f arg1) {
 }
 
 void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
+
+    if (CVarGetInteger("gEnableMoonJump", 0)) {
+        moon_jump(player, controller);
+    }
+
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40) &&
         ((player->effects & 0x400) != 0x400) && ((player->effects & 0x4000) != 0x4000) &&
         ((player->effects & 0x01000000) != 0x01000000) &&
