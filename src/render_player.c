@@ -1923,8 +1923,6 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     } else {
         render_ghost(player, playerId, screenId, var_v1);
     }
-    // Allows wheels to spin
-    gSPInvalidateTexCache(gDisplayListHead++, sKartLowerTexture);
     osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
@@ -1933,6 +1931,8 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     if (player->boostPower >= 2.0f) {
         func_80025DE8(player, playerId, screenId, var_v1);
     }
+    // Allows wheels to spin
+    gSPInvalidateTexCache(gDisplayListHead++, sKartLowerTexture);
 }
 
 void func_80026A48(Player* player, s8 arg1) {
