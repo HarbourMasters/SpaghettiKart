@@ -558,6 +558,12 @@ void render_players_on_screen_one(void) {
         init_render_player(gPlayerSeven, camera1, PLAYER_SEVEN, PLAYER_ONE);
         init_render_player(gPlayerEight, camera1, PLAYER_EIGHT, PLAYER_ONE);
     }
+
+    // This call moved here to sync kart texture and wheel texture tlut loading/rendering
+    if (gPlayersToRenderCount != 0) {
+        load_kart_texture_and_render_kart_particle_on_screen_one();
+    }
+
     try_rendering_player(gPlayerOne, PLAYER_ONE, PLAYER_ONE);
     try_rendering_player(gPlayerTwo, PLAYER_TWO, PLAYER_ONE);
     try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_ONE);
@@ -569,7 +575,7 @@ void render_players_on_screen_one(void) {
         try_rendering_player(gPlayerEight, PLAYER_EIGHT, PLAYER_ONE);
     }
     if (gPlayersToRenderCount != 0) {
-        load_kart_texture_and_render_kart_particle_on_screen_one();
+        // load_kart_texture_and_render_kart_particle_on_screen_one();
     } else {
         render_kart_particle_on_screen_one(gPlayerOneCopy, PLAYER_ONE, PLAYER_ONE);
         render_kart_particle_on_screen_one(gPlayerTwo, PLAYER_TWO, PLAYER_ONE);
@@ -1924,6 +1930,8 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     if (player->boostPower >= 2.0f) {
         func_80025DE8(player, playerId, screenId, var_v1);
     }
+    // Allows wheels to spin
+    gSPInvalidateTexCache(gDisplayListHead++, sKartLowerTexture);
 }
 
 void func_80026A48(Player* player, s8 arg1) {
