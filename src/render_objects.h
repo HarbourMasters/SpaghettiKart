@@ -350,7 +350,7 @@ void func_800534E8(s32);
 void render_object_thwomps_model(s32);
 void render_object_thwomps(s32);
 void func_80053D74(s32, s32, s32);
-void func_80053E6C(s32);
+void render_balloons_grand_prix(s32);
 
 void render_object_train_smoke_particle(s32, s32);
 void render_object_trains_smoke_particles(s32);
