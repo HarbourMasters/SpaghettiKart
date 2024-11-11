@@ -806,7 +806,7 @@ void race_logic_loop(void) {
 
     func_802A4EF4();
 
-    if (gPlayers == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         staff_ghosts_loop();
     }
 
