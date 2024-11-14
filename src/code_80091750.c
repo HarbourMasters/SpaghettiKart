@@ -3314,9 +3314,9 @@ Gfx* draw_box(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
     }
     gSPDisplayList(displayListHead++, D_02008008);
     gDPSetPrimColor(displayListHead++, 0, 0, red, green, blue, alpha);
-    // gDPFillWideRectangle(displayListHead++, OTRGetRectDimensionFromLeftEdge(0), uly,
-    // OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH), lry);
-    gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
+    gDPFillWideRectangle(displayListHead++, OTRGetRectDimensionFromLeftEdge(ulx), uly,
+       OTRGetRectDimensionFromRightEdge(lrx), lry);
+    //gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
     gDPPipeSync(displayListHead++);
     return displayListHead;
 }
@@ -8491,11 +8491,11 @@ void func_800A7790(struct_8018D9E0_entry* arg0) {
     slideDirection = D_802850C0[creditIndex].slideDirection;
     if ((slideDirection == SLIDE_RIGHT) || (slideDirection != SLIDE_LEFT)) {
         someScaling = D_802850C0[creditIndex].textScaling;
-        func_800936B8(arg0->column, arg0->row, D_802854B0[creditIndex], arg0->unk1C * someScaling,
+        func_800936B8(arg0->column, arg0->row, gCreditsText[creditIndex], arg0->unk1C * someScaling,
                       arg0->unk24 * someScaling, someScaling);
     } else {
         someScaling = D_802850C0[creditIndex].textScaling;
-        func_80093324(arg0->column, arg0->row, D_802854B0[creditIndex], arg0->unk1C * someScaling,
+        func_80093324(arg0->column, arg0->row, gCreditsText[creditIndex], arg0->unk1C * someScaling,
                       arg0->unk24 * someScaling, someScaling);
     }
 }
@@ -12188,7 +12188,7 @@ void func_800AF4DC(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->cursor = 1;
-            arg0->unk20 = temp_v1->columnExtra + (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra + (get_string_width(gCreditsText[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);
@@ -12240,7 +12240,7 @@ void func_800AF740(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->cursor = 1;
-            arg0->unk20 = temp_v1->columnExtra - (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra - (get_string_width(gCreditsText[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);

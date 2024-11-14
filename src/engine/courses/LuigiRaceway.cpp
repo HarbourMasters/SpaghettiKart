@@ -32,6 +32,7 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "memory.h"
     #include "courses/staff_ghost_data.h"
+    #include "framebuffer_effects.h"
     extern const char *luigi_raceway_dls[];
     extern s16 currentScreenSection;
 }
@@ -277,9 +278,8 @@ void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
             currentScreenSection = 0;
         }
 
-        u16* fb = (u16*) gSegmentTable[5] + 0xF800;
-
-        // FB_WriteFramebufferSliceToCPU(gDisplayListHead, fb, true);
+        uintptr_t fb = (uintptr_t) gSegmentTable[5] + 0xF800;
+        FB_WriteFramebufferSliceToCPU(gDisplayListHead, (void*)fb, true);
         // FB_DrawFromFramebuffer(gDisplayListHead, 0, fb, true);
         // FB_CopyToFramebuffer(gDisplayListHead, 0, fb, false, NULL);
         /**
