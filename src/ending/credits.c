@@ -67,7 +67,7 @@ struct_802850C0_entry D_802850C0[] = {
     { 0.90f, 520, 130, 160, 130, SLIDE_LEFT, TEXT_YELLOW, 0 },
 };
 
-char* D_802854B0[] = {
+char* gCreditsText[] = {
     // English Credits
     "executive producer", "hiroshi yamauchi", "producer", "shigeru miyamoto", "director", "hideki konno",
     "assistant director", "yasuyuki oyagi", "programmer", "masato kimura", "kenji yamamoto", "yasuhiro kawaguchi",

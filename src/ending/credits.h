@@ -22,6 +22,6 @@ typedef struct {
 } struct_802850C0_entry;    // size = 0x10
 
 extern struct_802850C0_entry D_802850C0[]; // D_802850C0
-extern char* D_802854B0[];
+extern char* gCreditsText[];
 
 #endif

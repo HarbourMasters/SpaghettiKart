@@ -1,0 +1,14 @@
+:config:
+  vram:
+    addr: 0x802854B0
+    offset: 0x3F0
+  header:
+    code:
+      - '#include <assets/credits_text.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <align_asset_macro.h>'
+gCreditsText:
+  symbol: gCreditsText
+  type: text
+  offset: 0x802854B0
