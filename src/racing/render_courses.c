@@ -874,6 +874,16 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
+    // Invalidate Jumbotron textures so they update each frame
+    // This could be more efficient if we exposed the non-opcode based invalidation to be called
+    // inside copy_framebuffers_port
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xF800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x10800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x11800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x12800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x13800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x14800);
+
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -911,11 +921,6 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
             currentScreenSection = 0;
         }
 
-        u16* fb = (u16*) gSegmentTable[5] + 0xF800;
-
-        // FB_WriteFramebufferSliceToCPU(gDisplayListHead, fb, true);
-        // FB_DrawFromFramebuffer(gDisplayListHead, 0, fb, true);
-        // FB_CopyToFramebuffer(gDisplayListHead, 0, fb, false, NULL);
         /**
          * The jumbo television screen is split into six sections each section is copied one at a time.
          * This is done to fit within the n64's texture size requirements; 64x32
@@ -964,6 +969,10 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
 #endif
                 break;
         }
+
+        copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, currentScreenSection,
+                               (u16*) PHYSICAL_TO_VIRTUAL(gPortFramebuffers[prevFrame]),
+                               (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
     }
 }
 
@@ -1127,6 +1136,16 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
+    // Invalidate Jumbotron textures so they update each frame
+    // This could be more efficient if we exposed the non-opcode based invalidation to be called
+    // inside copy_framebuffers_port
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x8800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x9800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xA800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xB800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xC800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xD800);
+
     if (func_80290C20(arg0->camera) == 1) {
 
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
@@ -1205,6 +1224,10 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 #endif
                 break;
         }
+
+        copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, currentScreenSection,
+                               (u16*) PHYSICAL_TO_VIRTUAL(gPortFramebuffers[prevFrame]),
+                               (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
     }
 }
 

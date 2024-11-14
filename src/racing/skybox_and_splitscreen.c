@@ -1423,6 +1423,49 @@ void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16* source, u1
     }
 }
 
+// Handles copying framebuffer to course texture data region for the Jumbotron in the port
+// This only supports framebuffers and copy regions being within 320x240
+// Any attempt to support larger sizes would require reworking course data
+void copy_jumbotron_fb_port(s32 ulx, s32 uly, s16 portionToDraw, u16* source, u16* target) {
+    // Add CVar if we want to expose a user toggle for only updating 1/6 of the jumbotron per frame
+    u8 updateWholeJumbo = true;
+
+    ulx = 0;
+    uly = 0;
+
+    if (portionToDraw == -1 || updateWholeJumbo) {
+        copy_framebuffer(ulx, uly, 64, 32, source, target);
+        copy_framebuffer(ulx + 64, uly, 64, 32, source, target + (64 * 32 * 1));
+        copy_framebuffer(ulx, uly + 32, 64, 32, source, target + (64 * 32 * 2));
+        copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, target + (64 * 32 * 3));
+        copy_framebuffer(ulx, uly + 64, 64, 32, source, target + (64 * 32 * 4));
+        copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, target + (64 * 32 * 5));
+    } else {
+        switch (portionToDraw) {
+            case 0:
+                copy_framebuffer(ulx, uly, 64, 32, source, target);
+                break;
+            case 1:
+                copy_framebuffer(ulx + 64, uly, 64, 32, source, target + (64 * 32 * 1));
+                break;
+            case 2:
+                copy_framebuffer(ulx, uly + 32, 64, 32, source, target + (64 * 32 * 2));
+                break;
+            case 3:
+                copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, target + (64 * 32 * 3));
+                break;
+            case 4:
+                copy_framebuffer(ulx, uly + 64, 64, 32, source, target + (64 * 32 * 4));
+                break;
+            case 5:
+                copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, target + (64 * 32 * 5));
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 void func_802A7728(void) {
     s16 temp_v0;
 
@@ -1438,6 +1481,7 @@ void func_802A7728(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
+#if TARGET_N64
     copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
                      (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
     copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
@@ -1452,6 +1496,10 @@ void func_802A7728(void) {
     copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
                      (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
+#else
+    copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, -1, PHYSICAL_TO_VIRTUAL(gPortFramebuffers[temp_v0]),
+                           (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+#endif
 }
 
 void func_802A7940(void) {
@@ -1469,6 +1517,7 @@ void func_802A7940(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
+#if TARGET_N64
     copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
                      (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
     copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
@@ -1486,4 +1535,8 @@ void func_802A7940(void) {
     copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
                      (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
+#else
+    copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, -1, (u16*) PHYSICAL_TO_VIRTUAL(gPortFramebuffers[temp_v0]),
+                           (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
+#endif
 }

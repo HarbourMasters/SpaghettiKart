@@ -141,6 +141,7 @@ struct SPTask* gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
 u16* gPhysicalFramebuffers[3];
+u16 gPortFramebuffers[3][SCREEN_WIDTH * SCREEN_HEIGHT];
 uintptr_t gPhysicalZBuffer;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
@@ -910,6 +911,10 @@ void race_logic_loop(void) {
 #if DVDL
     display_dvdl();
 #endif
+    // Copies after all the main rendering is complete. This is accurate to hardware.
+    // This means things like jumbotron will have the pause menu rendered in it.
+    // To avoid that, this line can be moved above func_800591B4.
+    FB_WriteFramebufferSliceToCPU(&gDisplayListHead, gPortFramebuffers[sRenderingFramebuffer], true);
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }

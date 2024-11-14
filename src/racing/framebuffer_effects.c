@@ -8,8 +8,6 @@
 int gfx_create_framebuffer(uint32_t width, uint32_t height, uint32_t native_width, uint32_t native_height,
                            uint8_t resize);
 
-s32 gPauseFrameBuffer = -1;
-s32 gBlurFrameBuffer = -1;
 // A framebuffer that should only be used for drawing in the same frame that it is copied too
 // i.e. the VisMono and VisFbuf effects
 s32 gReusableFrameBuffer = -1;
@@ -18,14 +16,6 @@ s32 gReusableFrameBuffer = -1;
 s32 gN64ResFrameBuffer = -1;
 
 void FB_CreateFramebuffers(void) {
-    if (gPauseFrameBuffer == -1) {
-        gPauseFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
-    }
-
-    if (gBlurFrameBuffer == -1) {
-        gBlurFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
-    }
-
     if (gReusableFrameBuffer == -1) {
         gReusableFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
     }
@@ -35,30 +25,6 @@ void FB_CreateFramebuffers(void) {
     }
 }
 
-// Fixed point macros
-#define FTOFIX(f) ((s32) ((f) * 65536.0))
-#define ITOFIX(i) ((s32) ((i) << 16))
-#define FIXTOF(x) ((double) ((x) / 65536.0))
-#define FIXTOI(x) ((s32) ((x) >> 16))
-
-#define toFixedInt(f) (FTOFIX(f) >> 16)
-#define toFrac(f) (FTOFIX(f) & 0xFFFF)
-
-// Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.
-#define toFixedPointMatrix(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                    \
-    {                                                                                                                \
-        { ((toFixedInt(x1)) << 16) | toFixedInt(x2), ((toFixedInt(x3)) << 16) | toFixedInt(x4),                      \
-          (toFixedInt(x5) << 16) | toFixedInt(x6), (toFixedInt(x7) << 16) | toFixedInt(x8) },                        \
-            { ((toFixedInt(x9)) << 16) | toFixedInt(x10), ((toFixedInt(x11)) << 16) | toFixedInt(x12),               \
-              (toFixedInt(x13) << 16) | toFixedInt(x14), (toFixedInt(x15) << 16) | toFixedInt(x16) },                \
-            { ((toFrac(x1)) << 16) | toFrac(x2), ((toFrac(x3)) << 16) | toFrac(x4), (toFrac(x5) << 16) | toFrac(x6), \
-              (toFrac(x7) << 16) | toFrac(x8) },                                                                     \
-        {                                                                                                            \
-            ((toFrac(x9)) << 16) | toFrac(x10), ((toFrac(x11)) << 16) | toFrac(x12),                                 \
-                (toFrac(x13) << 16) | toFrac(x14), (toFrac(x15) << 16) | toFrac(x16)                                 \
-        }                                                                                                            \
-    }
-
 /**
  * Copies the current texture data from the source frame buffer to the destination frame buffer
  * Setting oncePerFrame ensures that the copy will only happen once every game frame. This
@@ -67,7 +33,8 @@ void FB_CreateFramebuffers(void) {
  * This function uses opcodes from f3dex2 but may be called when s2dex is loaded, such as during shrink window. Make
  * sure f3dex2 is loaded before this function is called.
  */
-void FB_CopyToFramebuffer(Gfx* gfx, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8* hasCopied) {
+void FB_CopyToFramebuffer(Gfx** gfxP, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8* hasCopied) {
+    Gfx* gfx = *gfxP;
 
     gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
@@ -89,6 +56,8 @@ void FB_CopyToFramebuffer(Gfx* gfx, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8
     gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     gDPCopyFB(gfx++, fb_dest, fb_src, oncePerFrame, hasCopied);
+
+    *gfxP = gfx;
 }
 
 /**
@@ -97,10 +66,10 @@ void FB_CopyToFramebuffer(Gfx* gfx, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8
  * Specify the byteswap flag to force the buffer data to be written as BigEndian, which is
  * required if the buffer is being used as a texture in F3D.
  */
-void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
-    // Gfx* gfx = *gfxp;
-    printf("write!\n");
-    FB_CopyToFramebuffer(gfx, 0, gReusableFrameBuffer, false, NULL);
+void FB_WriteFramebufferSliceToCPU(Gfx** gfxP, void* buffer, u8 byteSwap) {
+    Gfx* gfx = *gfxP;
+
+    FB_CopyToFramebuffer(&gfx, 0, gReusableFrameBuffer, false, NULL);
 
     // Set the N64 resolution framebuffer as the draw target (320x240)
     gsSPSetFB(gfx++, gN64ResFrameBuffer);
@@ -110,7 +79,6 @@ void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
     int16_t s0 = 0, t0 = 0;
     int16_t s1 = OTRGetGameRenderWidth();
     int16_t t1 = OTRGetGameRenderHeight();
-    printf("half!\n");
     float aspectRatio = OTRGetAspectRatio();
     float fourByThree = 4.0f / 3.0f;
 
@@ -121,7 +89,7 @@ void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
         s0 = (OTRGetGameRenderWidth() - adjustedWidth) / 2;
         s1 -= s0;
     }
-    printf("Aspect!\n");
+
     gDPSetTextureImageFB(gfx++, 0, 0, 0, gReusableFrameBuffer);
     gDPImageRectangle(gfx++, 0 << 2, 0 << 2, s0, t0, SCREEN_WIDTH << 2, SCREEN_HEIGHT << 2, s1, t1, G_TX_RENDERTILE,
                       OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
@@ -132,13 +100,15 @@ void FB_WriteFramebufferSliceToCPU(Gfx* gfx, void* buffer, u8 byteSwap) {
     gsSPResetFB(gfx++);
     // Reset scissor for original framebuffer
     gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    printf("Complete!\n");
+
+    *gfxP = gfx;
 }
 
 /**
  * Draws the texture data from the specified frame buffer as a full screen image
  */
-void FB_DrawFromFramebuffer(Gfx* gfx, s32 fb, u8 alpha) {
+void FB_DrawFromFramebuffer(Gfx** gfxP, s32 fb, u8 alpha) {
+    Gfx* gfx = *gfxP;
 
     gSPMatrix(gfx++, LOAD_ASSET(D_0D008E98), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
@@ -161,6 +131,8 @@ void FB_DrawFromFramebuffer(Gfx* gfx, s32 fb, u8 alpha) {
     gDPImageRectangle(gfx++, OTRGetRectDimensionFromLeftEdge(0) << 2, 0 << 2, 0, 0,
                       OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH) << 2, SCREEN_HEIGHT << 2, OTRGetGameRenderWidth(),
                       OTRGetGameRenderHeight(), G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
+
+    *gfxP = gfx;
 }
 
 /**
@@ -168,7 +140,8 @@ void FB_DrawFromFramebuffer(Gfx* gfx, s32 fb, u8 alpha) {
  * This function uses opcodes from f3dex2 but may be called when s2dex is loaded, such as during shrink window. Make
  * sure f3dex2 is loaded before this function is called.
  */
-void FB_DrawFromFramebufferScaled(Gfx* gfx, s32 fb, u8 alpha, float scaleX, float scaleY) {
+void FB_DrawFromFramebufferScaled(Gfx** gfxP, s32 fb, u8 alpha, float scaleX, float scaleY) {
+    Gfx* gfx = *gfxP;
 
     gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
 
@@ -191,4 +164,6 @@ void FB_DrawFromFramebufferScaled(Gfx* gfx, s32 fb, u8 alpha, float scaleX, floa
                       OTRGetRectDimensionFromRightEdge((float) (SCREEN_WIDTH - x0)) << 2,
                       (int) ((float) (SCREEN_HEIGHT - y0)) << 2, OTRGetGameRenderWidth(), OTRGetGameRenderHeight(),
                       G_TX_RENDERTILE, OTRGetGameRenderWidth(), OTRGetGameRenderHeight());
+
+    *gfxP = gfx;
 }
