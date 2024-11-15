@@ -6,30 +6,6 @@ extern "C" {
 #include "common_structs.h"
 }
 
-// void matrix_hud_load(Mat4 matrix) {
-//     // Reserve space if needed to avoid reallocation overhead
-//     gWorldInstance.Mtx.Hud.reserve(1000);
-
-//     // Directly add a new Mtx to the Hud vector
-//     gWorldInstance.Mtx.Hud.emplace_back();  // Construct a new Mtx at the back
-
-//     // Convert the given matrix to fixed-point and store it in the back of the Hud vector
-//     guMtxF2L(matrix, &gWorldInstance.Mtx.Hud.back());
-
-//     // Load the matrix to the display list
-//     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gWorldInstance.Mtx.Hud.back()),
-//               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-// }
-
-// void matrix_hud_mul(Mtx mtx) {
-//    gWorldInstance.Mtx.Hud.push_back(mtx);
-   
-
-//    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gWorldInstance.Mtx.Hud.back()),
-//              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-// }
-
-
 void AddMatrix(std::vector<Mtx>& stack, Mat4 mtx, s32 flags) {
     // Reserve space if needed to avoid reallocation overhead
     stack.reserve(1000);
@@ -76,13 +52,6 @@ void SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     mtx[3][1] = arg2;
     mtx[3][2] = 0.0f;
     mtx[3][3] = 1.0f;
-
-    // auto& stack = gWorldInstance.Mtx.Effects;
-    // stack.reserve(1000);
-    // stack.emplace_back();
-    // guMtxF2L(mtx, &stack.back());
-    // gSPMatrix(gDisplayListHead++, &stack.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-
 
     AddMatrix(gWorldInstance.Mtx.Effects, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }

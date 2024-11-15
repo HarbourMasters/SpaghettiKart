@@ -1539,17 +1539,8 @@ void update_vehicles(void) {
     generate_player_smoke();
     D_8016337C++;
 
-    if (GetCourse() == GetPodiumCeremony()) {
-        for (i = 0; i < 7; i++) {
-            //func_8000DF8C(i);
-        }
-        return;
-    }
-
-    //if (D_8016337C & 1) {
-        CourseManager_TickBombKarts();
-        CourseManager_VehiclesTick();
-   // }
+    CourseManager_TickBombKarts();
+    CourseManager_VehiclesTick();
 }
 
 void func_800098FC(s32 arg0, Player* player) {
