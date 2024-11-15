@@ -37,6 +37,7 @@
 #include "sounds.h"
 #include "data/some_data.h"
 #include <assets/some_data.h>
+#include "port/Game.h"
 
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r, g, b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
@@ -556,7 +557,8 @@ void render_object_p1(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    func_8001C3C4(PLAYER_ONE);
+    CourseManager_DrawBombKarts(PLAYER_ONE);
+    //render_bomb_karts_wrap(PLAYER_ONE);
     if (gGamestate == ENDING) {
         func_80055F48(PLAYER_ONE);
         func_80056160(PLAYER_ONE);
@@ -577,7 +579,8 @@ void render_object_p2(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_TWO);
+    CourseManager_DrawBombKarts(PLAYER_TWO);
+    //render_bomb_karts_wrap(PLAYER_TWO);
     if (!gDemoMode) {
         render_lakitu(PLAYER_TWO);
     }
@@ -590,7 +593,8 @@ void render_object_p3(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_THREE);
+    CourseManager_DrawBombKarts(PLAYER_THREE);
+    //render_bomb_karts_wrap(PLAYER_THREE);
     if (!gDemoMode) {
         render_lakitu(PLAYER_THREE);
     }
@@ -604,7 +608,8 @@ void render_object_p4(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_FOUR);
+    CourseManager_DrawBombKarts(PLAYER_FOUR);
+    //render_bomb_karts_wrap(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         render_lakitu(PLAYER_FOUR);
     }
@@ -694,116 +699,117 @@ void render_player_snow_effect_four(void) {
 
 void render_object_for_player(s32 cameraId) {
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-            break;
-        case COURSE_BOWSER_CASTLE:
-            render_object_thwomps(cameraId);
-            render_object_bowser_flame(cameraId);
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_trash_bin(cameraId);
-                render_object_bat(cameraId);
-                func_8005217C(cameraId);
-                render_object_boos(cameraId);
-            }
-            break;
-        case COURSE_YOSHI_VALLEY:
-            func_80055228(cameraId);
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_hedgehogs(cameraId);
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_snowmans(cameraId);
-            }
-            break;
-        case COURSE_KOOPA_BEACH:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_crabs(cameraId);
-            }
-            if (gGamestate != CREDITS_SEQUENCE) {
+    CourseManager_RenderCourseObjects(cameraId);
+    CourseManager_TrainSmokeDraw(cameraId);
 
-                if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_object_seagulls(cameraId);
-                }
-            } else {
-                render_object_seagulls(cameraId);
-            }
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            if (D_80165898 != 0) {
-                render_object_hot_air_balloon(cameraId);
-            }
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_moles(cameraId);
-            }
-            break;
-        case COURSE_TOADS_TURNPIKE:
-            break;
-        case COURSE_KALAMARI_DESERT:
-            render_object_trains_smoke_particles(cameraId);
-            break;
-        case COURSE_SHERBET_LAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                func_80052E30(cameraId);
-            }
-            render_object_train_penguins(cameraId);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_neon(cameraId);
-                render_object_chain_chomps(cameraId);
-            }
-            break;
-        case COURSE_WARIO_STADIUM:
-            break;
-        case COURSE_BLOCK_FORT:
-            break;
-        case COURSE_SKYSCRAPER:
-            break;
-        case COURSE_DOUBLE_DECK:
-            break;
-        case COURSE_DK_JUNGLE:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                render_object_paddle_boat_smoke_particles(cameraId);
-            }
-            break;
-    }
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //         break;
+    //     case COURSE_CHOCO_MOUNTAIN:
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         render_object_thwomps(cameraId);
+    //         render_object_bowser_flame(cameraId);
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_trash_bin(cameraId);
+    //             render_object_bat(cameraId);
+    //             func_8005217C(cameraId);
+    //             render_object_boos(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         func_80055228(cameraId);
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_hedgehogs(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_snowmans(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_crabs(cameraId);
+    //         }
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+
+    //             if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
+    //                 render_object_seagulls(cameraId);
+    //             }
+    //         } else {
+    //             render_object_seagulls(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_ROYAL_RACEWAY:
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         if (D_80165898 != 0) {
+    //             render_object_hot_air_balloon(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_moles(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_TOADS_TURNPIKE:
+    //         break;
+    //     case COURSE_KALIMARI_DESERT:
+    //         render_object_trains_smoke_particles(cameraId);
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             func_80052E30(cameraId);
+    //         }
+    //         render_object_train_penguins(cameraId);
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_neon(cameraId);
+    //             render_object_chain_chomps(cameraId);
+    //         }
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         break;
+    //     case COURSE_BLOCK_FORT:
+    //         break;
+    //     case COURSE_SKYSCRAPER:
+    //         break;
+    //     case COURSE_DOUBLE_DECK:
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             render_object_paddle_boat_smoke_particles(cameraId);
+    //         }
+    //         break;
+    // }
 
     render_object_smoke_particles(cameraId);
     render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
-        func_80053E6C(cameraId);
+        render_balloons_grand_prix(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        render_object_bomb_kart(cameraId);
+        CourseManager_DrawBattleBombKarts(cameraId);
+        //render_battle_bomb_karts(cameraId);
     }
 }
 
 void render_snowing_effect(s32 arg0) {
-    switch (gCurrentCourseId) {
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != 9) {
-                if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    render_object_snowflakes_particles();
-                }
-            } else {
+    if (GetCourse() == GetFrappeSnowland()) {
+        if (gGamestate != 9) {
+            if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
                 render_object_snowflakes_particles();
             }
-            break;
-        case COURSE_SHERBET_LAND:
-            render_ice_block(arg0);
-            break;
+        } else {
+            render_object_snowflakes_particles();
+        }
+    } else if (GetCourse() == GetSherbetLand()) {
+        render_ice_block(arg0);
     }
 }
 
@@ -1562,85 +1568,89 @@ void func_8005A3C0(void) {
 }
 
 void func_8005A71C(void) {
-    if (gCurrentCourseId == COURSE_BOWSER_CASTLE) {
+    if (GetCourse() == GetBowsersCastle()) {
         func_80081210();
     }
 }
 
 void update_object(void) {
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-        case COURSE_CHOCO_MOUNTAIN:
-            break;
-        case COURSE_BOWSER_CASTLE:
-            func_80081208();
-            update_flame_particle();
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_trash_bin();
-                func_8007E4C4();
-                if (gModeSelection != TIME_TRIALS) {
-                    update_bat();
-                }
-                wrapper_update_boos();
-                update_cheep_cheep(0);
-            }
-            break;
-        case COURSE_YOSHI_VALLEY:
-            func_80083080();
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_hedgehogs();
-            }
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_snowmen();
-            }
-            update_snowflakes();
-            break;
-        case COURSE_KOOPA_BEACH:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_crabs();
-            }
-            if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-                update_seagulls();
-            }
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            if (D_80165898 != 0) {
-                update_hot_air_balloon();
-            }
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_moles();
-            }
-            break;
-        case COURSE_KALAMARI_DESERT:
-            update_train_smoke();
-            break;
-        case COURSE_SHERBET_LAND:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                func_800842C8();
-            }
-            update_penguins();
-            break;
-        case COURSE_RAINBOW_ROAD:
-            if (gGamestate != CREDITS_SEQUENCE) {
-                update_neon();
-                update_chain_chomps();
-            }
-            break;
-        case COURSE_DK_JUNGLE:
-            update_ferries_smoke_particle();
-            break;
-    }
+
+    CourseManager_UpdateCourseObjects();
+    CourseManager_TrainSmokeTick();
+
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //     case COURSE_CHOCO_MOUNTAIN:
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         func_80081208();
+    //         update_flame_particle();
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_trash_bin();
+    //             func_8007E4C4();
+    //             if (gModeSelection != TIME_TRIALS) {
+    //                 update_bat();
+    //             }
+    //             wrapper_update_boos();
+    //             update_cheep_cheep(0);
+    //         }
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         func_80083080();
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_hedgehogs();
+    //         }
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_snowmen();
+    //         }
+    //         update_snowflakes();
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_crabs();
+    //         }
+    //         if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+    //             update_seagulls();
+    //         }
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         if (D_80165898 != 0) {
+    //             update_hot_air_balloon();
+    //         }
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_moles();
+    //         }
+    //         break;
+    //     case COURSE_KALIMARI_DESERT:
+    //         update_train_smoke();
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             func_800842C8();
+    //         }
+    //         update_penguins();
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         if (gGamestate != CREDITS_SEQUENCE) {
+    //             update_neon();
+    //             update_chain_chomps();
+    //         }
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         update_ferries_smoke_particle();
+    //         break;
+    // }
     if (D_80165730 != 0) {
         func_80074EE8();
     }
     func_80076F2C();
-    if ((s16) gCurrentCourseId != COURSE_FRAPPE_SNOWLAND) {
+    if ((s16) GetCourse() != GetFrappeSnowland()) {
         update_leaf();
     }
 }
@@ -2590,7 +2600,8 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 case 1: /* switch 1 */
                     func_80079084(playerId);
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
-                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != (s32) 1)) {
+                    if ((GetCourse() == GetLuigiRaceway()) && (D_80165898 == 0) &&
+                        (gModeSelection != (s32) TIME_TRIALS)) {
                         D_80165898 = 1;
                     }
                     break;
@@ -2611,7 +2622,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                     if (D_8018D114 == 2) {
                         D_80165800[playerId] = 0;
                     }
-                    if (gCurrentCourseId == 4) {
+                    if (GetCourse() == GetYoshiValley()) {
                         playerHUD[playerId].unk_81 = 1;
                     }
                     playerHUD[playerId].lap1CompletionTimeX = 0x0140;
@@ -2709,29 +2720,31 @@ void func_8005D18C(void) {
     }
 }
 
-void func_8005D1F4(s32 arg0) {
-    s32 playerWaypoint;
-    s32 bombWaypoint;
-    s32 var_a2;
-    s32 waypointDiff;
+void func_8005D1F4(s32 cameraId) {
 
-    if (gModeSelection == 2) {
-        playerWaypoint = gNearestWaypointByPlayerId[arg0];
-        playerHUD[arg0].unk_74 = 0;
-        for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
-            if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
-                (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
-                continue;
-            }
-            bombWaypoint = gBombKarts[var_a2].waypointIndex;
-            waypointDiff = bombWaypoint - playerWaypoint;
-            if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
-                continue;
-            }
-            playerHUD[arg0].unk_74 = 1;
-            break;
-        }
-    }
+    CourseManager_BombKartsWaypoint(cameraId);
+    // s32 playerWaypoint;
+    // s32 bombWaypoint;
+    // s32 var_a2;
+    // s32 waypointDiff;
+
+    // if (gModeSelection == 2) {
+    //     playerWaypoint = gNearestWaypointByPlayerId[cameraId];
+    //     playerHUD[cameraId].unk_74 = 0;
+    //     for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
+    //         if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
+    //             (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
+    //             continue;
+    //         }
+    //         bombWaypoint = gBombKarts[var_a2].waypointIndex;
+    //         waypointDiff = bombWaypoint - playerWaypoint;
+    //         if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
+    //             continue;
+    //         }
+    //         playerHUD[cameraId].unk_74 = 1;
+    //         break;
+    //     }
+    // }
 }
 
 // Appears to load GP Mode race staging balloons and kart shadows.
@@ -2926,22 +2939,22 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-                    if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                    if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                     }
-                    if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                    if (GetCourse() == GetKalimariDesert()) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                     }
-                    if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                    if (GetCourse() == GetMooMooFarm()) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                     }
-                    if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    if (GetCourse() == GetWarioStadium()) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                     }
-                    if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                    if (GetCourse() == GetYoshiValley()) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
                     }
-                    if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                    if (GetCourse() == GetDkJungle()) {
                         func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
                     }
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
@@ -2950,22 +2963,22 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
@@ -3192,44 +3205,44 @@ void func_8005ED48(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             } else if (player->unk_258[10 + arg2].unk_01E > 0) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
                 }
-                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
@@ -3385,50 +3398,52 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         var_f12 = player->pos[2];
         surfaceType = player->tyres[BACK_RIGHT].surfaceType;
     }
+
+    //! @todo This likely needs to be implemented for custom courses
     switch (surfaceType) {
         case DIRT:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000B) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 9) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000E) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 4) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x0012) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             } else if (player->unk_258[10 + arg2].unk_01E > 0) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000B) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 9) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000E) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 4) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x0012) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
@@ -3627,13 +3642,13 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         var_f0 = 0.0f;
     }
     sp4C = (D_801652A0[arg3] - player->pos[1]) - 3.0f;
-    if ((player->unk_0DE & 1) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
+    if ((player->unk_0DE & 1) && (GetCourse() != GetKoopaTroopaBeach())) {
         var_f0 = 2.5f;
         sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
     }
     func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     func_8005D7D8(&player->unk_258[arg1], 3, var_f0);
-    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
+    if ((GetCourse() == GetBowsersCastle()) || (GetCourse() == GetBigDonut())) {
         func_8005D800(&player->unk_258[arg1], 0, 0x00AF);
     } else {
         func_8005D800(&player->unk_258[arg1], 0x00FFFFFF, 0x00CF);
@@ -3647,7 +3662,7 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
 }
 
 void func_80060B14(Player* player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
-    if ((gCurrentCourseId != COURSE_SKYSCRAPER) && (gCurrentCourseId != COURSE_RAINBOW_ROAD)) {
+    if ((GetCourse() != GetSkyscraper()) && (GetCourse() != GetRainbowRoad())) {
         if ((arg1 == 0) && ((player->unk_258[arg2].unk_01E > 0) || (player->unk_258[arg2].unk_01C == 0))) {
             func_800608E0(player, arg1, arg2, arg3, arg4);
         } else if (player->unk_258[arg2].unk_01E > 0) {
@@ -3663,10 +3678,10 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     f32 sp48;
     f32 sp44;
 
-    if (gCurrentCourseId == COURSE_SKYSCRAPER) {
+    if (GetCourse() == GetSkyscraper()) {
         return;
     }
-    if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
+    if (GetCourse() == GetRainbowRoad()) {
         return;
     }
     sp54 = random_int(0x0168U) - 0xB4;
@@ -3701,7 +3716,7 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
     func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
     func_8005D7D8(&player->unk_258[arg1], 5, 4.0f);
 
-    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) || (gCurrentCourseId == COURSE_BIG_DONUT)) {
+    if ((GetCourse() == GetBowsersCastle()) || (GetCourse() == GetBigDonut())) {
         func_8005D800(&player->unk_258[arg1], 0xFF0000, 0xFF);
     } else {
         func_8005D800(&player->unk_258[arg1], 0xFFFFFF, 0xFF);
@@ -4047,22 +4062,22 @@ void func_800624D8(Player* player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     switch (player->surfaceType) {
         case DIRT:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
-                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                if ((GetCourse() == GetChocoMountain()) || (GetCourse() == GetRoyalRaceway())) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 1, 0, 0x00A8);
                 }
-                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                if (GetCourse() == GetKalimariDesert()) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 7, 0, 0x00A8);
                 }
-                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                if (GetCourse() == GetMooMooFarm()) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 8, 0, 0x00A8);
                 }
-                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                if (GetCourse() == GetWarioStadium()) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 9, 0, 0x00A8);
                 }
-                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                if (GetCourse() == GetYoshiValley()) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000A, 0, 0x00A8);
                 }
-                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                if (GetCourse() == GetDkJungle()) {
                     func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000B, 0, 0x00A8);
                 }
                 func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
@@ -4617,7 +4632,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 sp3C;
 
     sp40 = D_801652A0[arg2] - player->pos[1] - 3.0f;
-    if (((player->unk_0DE & 1) != 0) && (gCurrentCourseId != COURSE_KOOPA_BEACH)) {
+    if (((player->unk_0DE & 1) != 0) && (GetCourse() != GetKoopaTroopaBeach())) {
         sp40 = D_801652A0[arg2] - player->pos[1] + 0.1;
     }
 
@@ -4964,13 +4979,15 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 }
 
 void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
-    Mat4 sp20;
+    Mat4 mtx;
 
-    mtxf_translate_rotate(sp20, arg0, arg1);
-    mtxf_scale2(sp20, arg2);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp20);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    mtxf_translate_rotate(mtx, arg0, arg1);
+    mtxf_scale2(mtx, arg2);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
@@ -5592,10 +5609,16 @@ void func_80068AA4(Player* player, UNUSED s8 arg1, UNUSED f32 arg2, s8 arg3, s8 
     Vec3f sp64;
     Vec3s sp5C;
 
+        sp64[1] = player->pos[1];
+        sp64[2] = player->pos[2];
+        sp64[0] = player->pos[0];
+
     if ((player->unk_258[20 + arg4].unk_01C == 1) && (player->animFrameSelector[arg3] < 0xD)) {
+if (gTickVisuals) {
         sp64[1] = player->pos[1] - 3.0f;
         sp64[2] = player->pos[2] + ((-2.5 * player->unk_258[20 + arg4].unk_01E) * coss(player->unk_048[arg3]));
         sp64[0] = player->pos[0] + ((-2.5 * player->unk_258[20 + arg4].unk_01E) * sins(player->unk_048[arg3]));
+}
         sp5C[0] = 0;
         sp5C[1] = player->unk_048[arg3];
         sp5C[2] = 0;
@@ -5991,7 +6014,7 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
 }
 
 void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
-    Mat4 sp140;
+    Mat4 mtx;
     Vec3f sp134;
     Vec3s sp12C;
     UNUSED s16 stackPadding;
@@ -6047,23 +6070,24 @@ void render_battle_balloon(Player* player, s8 arg1, s16 arg2, s8 arg3) {
     sp12C[1] = player->unk_048[arg3];
     sp12C[2] = D_8018D7D0[arg1][arg2] - (D_8018D860[arg1][arg2] * coss(temp_t1)) -
                ((D_8018D890[arg1][arg2] * 8) * sins(temp_t1));
-    mtxf_translate_rotate(sp140, sp134, sp12C);
-    mtxf_scale2(sp140, var_f20);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
+    mtxf_translate_rotate(mtx, sp134, sp12C);
+    mtxf_scale2(mtx, var_f20);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
 
     func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
-
     gDPSetRenderMode(gDisplayListHead++,
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                         GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                         GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+                    AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                        GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
+                    AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                        GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, gBalloonVertexPlane1, 4, 0);
@@ -6139,7 +6163,7 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
  * Used in podium ceremony.
  */
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
-    Mat4 sp108;
+    Mat4 mtx;
     Vec3f spFC;
     Vec3s spF4;
     UNUSED s16 stackPadding;
@@ -6170,20 +6194,22 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[0] = 0;
     spF4[1] = camera1->rot[1];
     spF4[2] = arg2;
-    mtxf_translate_rotate(sp108, spFC, spF4);
-    mtxf_scale2(sp108, arg1);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    mtxf_translate_rotate(mtx, spFC, spF4);
+    mtxf_scale2(mtx, arg1);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
     gDPSetRenderMode(gDisplayListHead++,
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                         GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
-                         GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+                    AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                        GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
+                    AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
+                        GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
+
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, gBalloonVertexPlane1, 4, 0);

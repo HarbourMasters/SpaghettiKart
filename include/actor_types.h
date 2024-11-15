@@ -4,6 +4,7 @@
 #include <libultraship.h>
 #include <macros.h>
 #include <common_structs.h>
+#include <assert.h>
 
 // #pragma GCC diagnostic push
 // #pragma GCC diagnostic ignored "-Wmicrosoft-extension"
@@ -82,8 +83,11 @@ enum ActorType {
     ACTOR_CAR,
     ACTOR_KIWANO_FRUIT
 };
+size_t m_GetActorSize(void);
+#define ACTOR_LIST_SIZE m_GetActorSize()
 
-#define ACTOR_LIST_SIZE 100
+struct Actor* m_GetActor(size_t);
+#define GET_ACTOR(index) m_GetActor(index)
 
 // Actor flags
 #define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed
@@ -132,7 +136,7 @@ struct Actor {
 }; // size = 0x70
 
 // Duplicate declare for simplicity when externing actors & packed files.
-extern struct Actor gActorList[ACTOR_LIST_SIZE]; // D_8015F9B8
+extern struct Actor gActorList[100]; // D_8015F9B8
 
 /*
 Specialized actor types
@@ -159,15 +163,17 @@ struct RailroadCrossing {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
     /* 0x04 */ s16 someTimer;
-    /* 0x06 */ s16 crossingId;
-    /* 0x08 */ f32 unk_08;
-    /* 0x0C */ f32 unk_0C;
+    /* 0x06 */ s16 crossingId; // unused now
+    /* 0x08 */ void* crossingTrigger; // Crossing Trigger Class
     /* 0x10 */ Vec3s rot;
     /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
+
+// crossingTrigger might ruin struct size when compiled on 32 bit
+static_assert(sizeof(struct RailroadCrossing) == sizeof(struct Actor), "RailroadCrossing struct size does not match base struct size");
 
 struct FallingRock {
     /* 0x00 */ s16 type;

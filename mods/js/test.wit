@@ -1,0 +1,5 @@
+package local:main;
+
+world index-world {
+  export fib: func(); 
+}

@@ -156,7 +156,7 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
     RunCommands(commands);
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
     if (wnd != nullptr) {
-        wnd->SetTargetFps(30);
+        wnd->SetTargetFps(CVarGetInteger("gInterpolationFPS", 30));
         wnd->SetMaximumFrameLatency(1);
     }
 }

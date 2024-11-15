@@ -16,6 +16,9 @@
 [submodule "libultraship"]
 	path = libultraship
 	url = https://github.com/Kenix3/libultraship
+[submodule "lib/wasm-micro-runtime"]
+	path = lib/wasm-micro-runtime
+	url = https://github.com/bytecodealliance/wasm-micro-runtime.git
 [submodule "tools/blender/fast64"]
 	path = tools/blender/fast64
 	url = https://github.com/Fast-64/fast64.git

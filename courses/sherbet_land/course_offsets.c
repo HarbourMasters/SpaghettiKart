@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 #include <assets/sherbet_land_data.h>
+#include "animation.h"
 
 const course_texture sherbet_land_textures[] = {
     { gTexture643B3C, 0x0798, 0x0800, 0x0 }, { gTexture66D024, 0x04EA, 0x0800, 0x0 },

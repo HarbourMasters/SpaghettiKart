@@ -1482,7 +1482,7 @@ void func_802847CC(CinematicCamera* camera) {
 
     if (gCutsceneShotTimer == sp2C) {
         if (D_80286A04[D_800DC5E4].unk0 != 2) {
-            func_80280268(D_80286A04[D_800DC5E4 + 1].unk1);
+            func_80280268(D_80286A04[D_800DC5E4 + 1].courseId);
         }
     }
 }

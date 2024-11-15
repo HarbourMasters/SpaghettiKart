@@ -32,7 +32,7 @@ void func_800029B0(void);
 void setup_race(void);
 void func_80002DAC(void);
 void clear_nmi_buffer(void);
-void func_80003040(void);
+void credits_spawn_actors(void);
 
 extern s16 gCurrentCourseId; // D_800DC5A0
 extern s16 gCurrentlyLoadedCourseId;
@@ -111,7 +111,7 @@ extern Vec3f D_8015F768;
 extern Vec3f D_8015F778;
 
 extern f32 gCourseDirection;
-extern s32 D_8015F788;
+extern s32 gNumScreens;
 
 extern s32 D_8015F790[];
 extern u16 D_8015F890;

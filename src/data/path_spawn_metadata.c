@@ -12,36 +12,7 @@
 #include <assets/frappe_snowland_data.h>
 #include <assets/dks_jungle_parkway_data.h>
 
-// @warning Array contains an extra zero element at the end.
-KartAIBehaviour* gKartAIBehaviourLUT[] = {
-#include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
-
-};
-
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
-
-TrackWaypoint* gCoursePathTable[][4] = {
-#include "assets/course_metadata/gCoursePathTableUnknown.inc.c"
-};
-
-TrackWaypoint* gCoursePathTable2[][4] = {
-#include "assets/course_metadata/gCoursePathTable.inc.c"
-};
-
-// @warning Array contains an extra zero element at the end.
-s16 gKartAISteeringSensitivity[] = {
-#include "assets/course_metadata/gCPUSteeringSensitivity.inc.c"
-};
-
-// Possibly maximum cpu separation
-f32 gKartAICourseMaximumSeparation[] = {
-#include "assets/course_metadata/gKartAICourseMaximumSeparation.inc.c"
-};
-
-// Possibly minimum cpu separation
-f32 gKartAICourseMinimumSeparation[] = {
-#include "assets/course_metadata/gKartAICourseMinimumSeparation.inc.c"
-};
 
 // I think the types for D_800DCAF4, D_800DCB34, and D_800DCBB4 are all
 // wrong in some way based on their usage in func_800088D8
@@ -60,18 +31,6 @@ s16 D_800DCB34[] = {
     0x003c, 0x003f, 0x0049, 0x004e, 0x006c, 0x008a, 0x000a, 0x0005, 0x000a, 0x000f, 0x0014, 0x0019, 0x001e,
     0x0023, 0x000a, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005, 0x000a, 0x0005, 0x0005, 0x0005,
     0x0005, 0x0005, 0x0005, 0x0005, 0x000a, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005, 0x0005,
-};
-
-s16* D_800DCBB4[] = {
-#include "assets/course_metadata/D_800DCBB4.inc.c"
-};
-
-BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX] = {
-#include "assets/course_metadata/gBombKartSpawns.inc.c"
-};
-
-struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
-#include "assets/course_metadata/gCoursePathSizes.inc.c"
 };
 
 s32 D_800DDB20 = 0x00000000;

@@ -14,7 +14,6 @@ extern "C" {
 #include "actor_types.h"
 #include "code_800029B0.h"
 extern struct Actor gActorList[];
-extern char* gCourseNames[];
 extern char* gCupNames[];
 extern char* D_800E76A8[];
 extern Network gNetwork;

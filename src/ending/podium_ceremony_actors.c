@@ -19,6 +19,8 @@
 #include "math_util.h"
 #include <string.h>
 
+#include "engine/Matrix.h"
+
 s32 fireworkConeColour[] = {
     0x00FF4080, // pink
     0x008040FF, // purple
@@ -223,9 +225,10 @@ void func_80280A28(Vec3f arg0, Vec3s arg1, f32 arg2) {
     mtx[2][0] = D_80287500[0][2] * arg2;
     mtx[2][1] = D_80287500[1][2] * arg2;
     mtx[2][2] = D_80287500[2][2] * arg2;
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
+    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }
 
 void render_fireworks(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha) {
@@ -448,6 +451,7 @@ void func_80281540(void) {
 }
 
 void podium_ceremony_loop(void) {
+    ClearMatrixPools();
     gMatrixObjectCount = 0;
     D_802874FC = 0;
     update_camera_podium_ceremony();

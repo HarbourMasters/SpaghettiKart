@@ -1,0 +1,11 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["coco875 <pereira.jannin@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasi = "0.11"

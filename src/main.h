@@ -162,7 +162,8 @@ extern u8 gControllerBits;
 extern CollisionGrid gCollisionGrid[];
 extern u16 gNumActors;
 extern u16 gMatrixObjectCount;
-extern s32 gTickSpeed;
+extern s32 gTickLogic;
+extern s32 gTickVisuals;
 extern f32 D_80150118;
 extern u16 wasSoftReset;
 extern u16 D_8015011E;
@@ -184,7 +185,7 @@ extern s32 D_801502A4;
 extern u16* gPhysicalFramebuffers[];
 extern u16 gPortFramebuffers[3][SCREEN_WIDTH * SCREEN_HEIGHT];
 extern uintptr_t gPhysicalZBuffer;
-extern Mat4 D_801502C0;
+extern Mat4 sBillBoardMtx;
 
 extern s32 padding[];
 

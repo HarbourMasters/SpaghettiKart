@@ -32,6 +32,7 @@
 #include <assets/dks_jungle_parkway_data.h>
 #include <assets/wario_stadium_data.h>
 #include <assets/frappe_snowland_data.h>
+#include "port/Game.h"
 
 // Appears to be textures
 // or tluts
@@ -53,7 +54,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
 
     // try finding the dead green shell
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_GREEN_SHELL)) {
             if (compare->state == MOVING_SHELL) {
                 delete_actor_in_unexpired_actor_list(actorIndex);
@@ -66,7 +67,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
 
     // try finding the dead red shell
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_RED_SHELL)) {
             switch (compare->state) {
                 case MOVING_SHELL:
@@ -88,7 +89,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
 
     // try finding the green shell
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         if ((shell != compare) && (compare->type == ACTOR_GREEN_SHELL)) {
             switch (compare->state) {
                 case MOVING_SHELL:
@@ -103,7 +104,7 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
 
     // try finding the red or blue shell
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         if ((shell != compare) && (compare->type == ACTOR_RED_SHELL)) {
             switch (compare->state) {
                 case MOVING_SHELL:
@@ -192,6 +193,9 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 20.0f;
+            break;
+        case ACTOR_MARIO_SIGN:
+            actor->flags |= 0x4000;
             break;
         case ACTOR_TREE_YOSHI_VALLEY:
             actor->flags |= 0x4000;
@@ -322,7 +326,7 @@ void actor_rendered(Camera* arg0, struct Actor* arg1) {
 }
 
 void func_80297340(Camera* arg0) {
-    Mat4 sp38;
+    Mat4 mtx;
     s16 temp = D_8015F8D0[2];
     s32 maxObjectsReached;
 
@@ -330,9 +334,9 @@ void func_80297340(Camera* arg0) {
         return;
     }
 
-    mtxf_translate(sp38, D_8015F8D0);
+    mtxf_translate(mtx, D_8015F8D0);
 
-    maxObjectsReached = render_set_position(sp38, 0) == 0;
+    maxObjectsReached = render_set_position(mtx, 0) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -475,7 +479,7 @@ void update_actor_static_plant(struct Actor* arg0) {
 
 #include "actors/piranha_plant/render.inc.c"
 
-void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
+void render_cows(Camera* camera, Mat4 arg1) {
     u16 temp_s1;
     f32 temp_f0;
     struct ActorSpawnData* var_t1;
@@ -593,7 +597,7 @@ void func_80298D10(void) {
     }
 }
 
-void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
+void render_palm_trees(Camera* camera, Mat4 arg1) {
     struct UnkActorSpawnData* var_s1 = (struct UnkActorSpawnData*) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
     UNUSED s32 pad;
     Vec3f spD4;
@@ -753,7 +757,7 @@ UNUSED s16 D_802B8810[] = { 0x0fc0, 0x0000, 0xffff, 0xffff, 0x0014, 0x0000, 0x00
 
 UNUSED void func_8029ABD4(f32* pos, s16 state) {
     gNumActors = 0;
-    gActorList[spawn_actor_at_pos(pos, ACTOR_UNKNOWN_0x14)].state = state;
+    GET_ACTOR(spawn_actor_at_pos(pos, ACTOR_UNKNOWN_0x14))->state = state;
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
@@ -816,8 +820,8 @@ UNUSED void func_8029AE14() {
 
 #include "actors/falling_rock/render.inc.c"
 
-void spawn_piranha_plants(const char* spawnData) {
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
+    struct ActorSpawnData* temp_s0 = spawnData;
     struct PiranhaPlant* temp_v1;
     UNUSED s32 pad;
     Vec3f startingPos;
@@ -833,7 +837,7 @@ void spawn_piranha_plants(const char* spawnData) {
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
-        temp_v1 = (struct PiranhaPlant*) &gActorList[temp];
+        temp_v1 = (struct PiranhaPlant*) m_GetActor(temp);
         temp_v1->visibilityStates[0] = 0;
         temp_v1->visibilityStates[1] = 0;
         temp_v1->visibilityStates[2] = 0;
@@ -846,8 +850,8 @@ void spawn_piranha_plants(const char* spawnData) {
     }
 }
 
-void spawn_palm_trees(struct ActorSpawnData* spawnData) {
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+void spawn_palm_trees(const char* spawnData) {
+    struct ActorSpawnData* temp_s0 = spawnData;
     struct PalmTree* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
@@ -862,7 +866,7 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
-        temp_v1 = (struct PalmTree*) &gActorList[temp];
+        temp_v1 = (struct PalmTree*) m_GetActor(temp);
 
         temp_v1->variant = temp_s0->someId;
         check_bounding_collision((Collision*) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
@@ -874,17 +878,16 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
 #include "actors/falling_rock/update.inc.c"
 
 // Trees, cacti, shrubs, etc.
-void spawn_foliage(const char* actor) {
+//! @todo actorType needs to be passed into this function for flexibility
+void spawn_foliage(struct ActorSpawnData* actor) {
     UNUSED s32 pad[4];
     Vec3f position;
     Vec3f velocity;
     Vec3s rotation;
     UNUSED s16 pad2;
-    s16 actorType;
+    s16 actorType = 0;
     struct Actor* temp_s0;
-    struct ActorSpawnData* var_s3;
-
-    var_s3 = (struct ActorSpawnData*) LOAD_ASSET(actor);
+    struct ActorSpawnData* var_s3 = actor;
     vec3f_set(velocity, 0.0f, 0.0f, 0.0f);
     rotation[0] = 0x4000;
     rotation[1] = 0;
@@ -895,51 +898,42 @@ void spawn_foliage(const char* actor) {
         position[2] = var_s3->pos[2];
         position[1] = var_s3->pos[1];
 
-        switch (gCurrentCourseId) {
-            case COURSE_MARIO_RACEWAY:
-                actorType = 2;
-                break;
-            case COURSE_BOWSER_CASTLE:
-                actorType = 0x0021;
-                break;
-            case COURSE_YOSHI_VALLEY:
-                actorType = 3;
-                break;
-            case COURSE_FRAPPE_SNOWLAND:
-                actorType = 0x001D;
-                break;
-            case COURSE_ROYAL_RACEWAY:
-                switch (var_s3->signedSomeId) {
-                    case 6:
-                        actorType = 0x001C;
-                        break;
-                    case 7:
-                        actorType = 4;
-                        break;
-                }
-                break;
-            case COURSE_LUIGI_RACEWAY:
-                actorType = 0x001A;
-                break;
-            case COURSE_MOO_MOO_FARM:
-                actorType = 0x0013;
-                break;
-            case COURSE_KALAMARI_DESERT:
-                switch (var_s3->signedSomeId) {
-                    case 5:
-                        actorType = 0x001E;
-                        break;
-                    case 6:
-                        actorType = 0x001F;
-                        break;
-                    case 7:
-                        actorType = 0x0020;
-                        break;
-                }
-                break;
+        if (GetCourse() == GetMarioRaceway()) {
+            actorType = 2;
+        } else if (GetCourse() == GetBowsersCastle()) {
+            actorType = 0x0021;
+        } else if (GetCourse() == GetYoshiValley()) {
+            actorType = 3;
+        } else if (GetCourse() == GetFrappeSnowland()) {
+            actorType = 0x001D;
+        } else if (GetCourse() == GetRoyalRaceway()) {
+            switch (var_s3->signedSomeId) {
+                case 6:
+                    actorType = 0x001C;
+                    break;
+                case 7:
+                    actorType = 4;
+                    break;
+            }
+        } else if (GetCourse() == GetLuigiRaceway()) {
+            actorType = 0x001A;
+        } else if (GetCourse() == GetMooMooFarm()) {
+            actorType = 0x0013;
+        } else if (GetCourse() == GetKalimariDesert()) {
+            switch (var_s3->signedSomeId) {
+                case 5:
+                    actorType = 0x001E;
+                    break;
+                case 6:
+                    actorType = 0x001F;
+                    break;
+                case 7:
+                    actorType = 0x0020;
+                    break;
+            }
         }
 
-        temp_s0 = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, actorType)];
+        temp_s0 = m_GetActor(add_actor_to_empty_slot(position, rotation, velocity, actorType));
         if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
@@ -954,13 +948,13 @@ void spawn_foliage(const char* actor) {
     }
 }
 
-void spawn_all_item_boxes(const char* spawnData) {
+void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
     s16 temp_s1;
     f32 temp_f0;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) LOAD_ASSET(spawnData);
+    struct ActorSpawnData* temp_s0 = spawnData;
     // struct ItemBox *itemBox;
 
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) {
@@ -980,15 +974,15 @@ void spawn_all_item_boxes(const char* spawnData) {
 
         // Should be struct ItemBox but not enough space in the stack.
         // It's either the ItemBox or the SEGMENT/OFFSET variables.
-        // itemBox = (struct ItemBox *) &gActorList[temp_s1];
+        // itemBox = (struct ItemBox *) GET_ACTOR(temp_s1);
 
-        gActorList[temp_s1].unk_08 = temp_f0;
+        m_GetActor(temp_s1)->unk_08 = temp_f0;
         // itemBox->resetDistance = temp_f0;
 
-        gActorList[temp_s1].velocity[0] = startingPos[1];
+        m_GetActor(temp_s1)->velocity[0] = startingPos[1];
         // itemBox->origY = startingPos[1];
 
-        gActorList[temp_s1].pos[1] = temp_f0 - 20.0f;
+        m_GetActor(temp_s1)->pos[1] = temp_f0 - 20.0f;
         // itemBox->pos[1] = temp_f0 - 20.0f;
 
         temp_s0++;
@@ -1016,7 +1010,7 @@ void init_kiwano_fruit(void) {
         }
 
         phi_s0 = add_actor_to_empty_slot(sp64, sp50, sp58, ACTOR_KIWANO_FRUIT);
-        actor = &gActorList[phi_s0];
+        actor = m_GetActor(phi_s0);
         actor->unk_04 = i;
     }
 }
@@ -1030,12 +1024,13 @@ void destroy_all_actors(void) {
     s32 i;
     gNumActors = 0;
     for (i = 0; i < ACTOR_LIST_SIZE; i++) {
-        gActorList[i].flags = 0;
-        gActorList[i].type = 0;
-        gActorList[i].unk_04 = 0;
-        gActorList[i].state = 0;
-        gActorList[i].unk_08 = 0.0f;
-        gActorList[i].boundingBoxSize = 0.0f;
+        struct Actor* actor = m_GetActor(i);
+        actor->flags = 0;
+        actor->type = 0;
+        actor->unk_04 = 0;
+        actor->state = 0;
+        actor->unk_08 = 0.0f;
+        actor->boundingBoxSize = 0.0f;
     }
 }
 
@@ -1048,125 +1043,127 @@ void spawn_course_actors(void) {
     struct RailroadCrossing* rrxing;
 
     gNumPermanentActors = 0;
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            spawn_foliage(d_course_mario_raceway_tree_spawns);
-            spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
-            spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
-            vec3f_set(position, 150.0f, 40.0f, -1300.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-            vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
-            position[0] *= gCourseDirection;
-            actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
-            actor->flags |= 0x4000;
-            break;
-        case COURSE_CHOCO_MOUNTAIN:
-            spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);
-            spawn_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
-            break;
-        case COURSE_BOWSER_CASTLE:
-            spawn_foliage(d_course_bowsers_castle_tree_spawn);
-            spawn_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
-            break;
-        case COURSE_BANSHEE_BOARDWALK:
-            spawn_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
-            break;
-        case COURSE_YOSHI_VALLEY:
-            spawn_foliage(d_course_yoshi_valley_tree_spawn);
-            spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
-            vec3f_set(position, -2300.0f, 0.0f, 634.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            spawn_foliage(d_course_frappe_snowland_tree_spawns);
-            spawn_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
-            break;
-        case COURSE_KOOPA_BEACH:
-            init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
-            spawn_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-            spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            spawn_foliage(d_course_royal_raceway_tree_spawn);
-            spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-            spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            spawn_foliage(d_course_luigi_raceway_tree_spawn);
-            spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
-            break;
-        case COURSE_MOO_MOO_FARM:
-            if (gPlayerCountSelection1 != 4) {
-                spawn_foliage(d_course_moo_moo_farm_tree_spawn);
-            }
-            spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
-            break;
-        case COURSE_TOADS_TURNPIKE:
-            spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
-            break;
-        case COURSE_KALAMARI_DESERT:
-            spawn_foliage(d_course_kalimari_desert_cactus_spawn);
-            spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
-            vec3f_set(position, -1680.0f, 2.0f, 35.0f);
-            position[0] *= gCourseDirection;
-            rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                                    ACTOR_RAILROAD_CROSSING)];
-            rrxing->crossingId = 1;
-            vec3f_set(position, -1600.0f, 2.0f, 35.0f);
-            position[0] *= gCourseDirection;
-            rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                                    ACTOR_RAILROAD_CROSSING)];
-            rrxing->crossingId = 1;
-            vec3s_set(rotation, 0, -0x2000, 0);
-            vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
-            position[0] *= gCourseDirection;
-            rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                                    ACTOR_RAILROAD_CROSSING)];
-            rrxing->crossingId = 0;
-            vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
-            position[0] *= gCourseDirection;
-            rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-                                                                                    ACTOR_RAILROAD_CROSSING)];
-            rrxing->crossingId = 0;
-            break;
-        case COURSE_SHERBET_LAND:
-            spawn_all_item_boxes(d_course_sherbet_land_item_box_spawns);
-            break;
-        case COURSE_RAINBOW_ROAD:
-            spawn_all_item_boxes(d_course_rainbow_road_item_box_spawns);
-            break;
-        case COURSE_WARIO_STADIUM:
-            spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
-            vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            position[0] *= gCourseDirection;
-            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-            break;
-        case COURSE_BLOCK_FORT:
-            spawn_all_item_boxes(d_course_block_fort_item_box_spawns);
-            break;
-        case COURSE_SKYSCRAPER:
-            spawn_all_item_boxes(d_course_skyscraper_item_box_spawns);
-            break;
-        case COURSE_DOUBLE_DECK:
-            spawn_all_item_boxes(d_course_double_deck_item_box_spawns);
-            break;
-        case COURSE_DK_JUNGLE:
-            spawn_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
-            init_kiwano_fruit();
-            func_80298D10();
-            break;
-        case COURSE_BIG_DONUT:
-            spawn_all_item_boxes(d_course_big_donut_item_box_spawns);
-            break;
-    }
+    CourseManager_SpawnActors();
+
+    // switch (gCurrentCourseId) {
+    //     case COURSE_MARIO_RACEWAY:
+    //         // spawn_foliage(d_course_mario_raceway_tree_spawns);
+    //         // spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
+    //         // spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
+    //         // vec3f_set(position, 150.0f, 40.0f, -1300.0f);
+    //         // position[0] *= gCourseDirection;
+    //         // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
+    //         // vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
+    //         // position[0] *= gCourseDirection;
+    //         // actor = GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN));
+    //         // actor->flags |= 0x4000;
+    //         break;
+    //     case COURSE_CHOCO_MOUNTAIN:
+    //         spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);
+    //         spawn_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
+    //         break;
+    //     case COURSE_BOWSER_CASTLE:
+    //         spawn_foliage(d_course_bowsers_castle_tree_spawn);
+    //         spawn_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
+    //         break;
+    //     case COURSE_BANSHEE_BOARDWALK:
+    //         spawn_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
+    //         break;
+    //     case COURSE_YOSHI_VALLEY:
+    //         spawn_foliage(d_course_yoshi_valley_tree_spawn);
+    //         spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
+    //         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
+    //         position[0] *= gCourseDirection;
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
+    //         break;
+    //     case COURSE_FRAPPE_SNOWLAND:
+    //         spawn_foliage(d_course_frappe_snowland_tree_spawns);
+    //         spawn_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
+    //         break;
+    //     case COURSE_KOOPA_BEACH:
+    //         init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
+    //         spawn_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
+    //         spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
+    //         break;
+    //     case COURSE_ROYAL_RACEWAY:
+    //         spawn_foliage(d_course_royal_raceway_tree_spawn);
+    //         spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
+    //         spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
+    //         break;
+    //     case COURSE_LUIGI_RACEWAY:
+    //         spawn_foliage(d_course_luigi_raceway_tree_spawn);
+    //         spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
+    //         break;
+    //     case COURSE_MOO_MOO_FARM:
+    //         if (gPlayerCountSelection1 != 4) {
+    //             spawn_foliage(d_course_moo_moo_farm_tree_spawn);
+    //         }
+    //         spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
+    //         break;
+    //     case COURSE_TOADS_TURNPIKE:
+    //         spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
+    //         break;
+    //     case COURSE_KALIMARI_DESERT:
+    //         spawn_foliage(d_course_kalimari_desert_cactus_spawn);
+    //         spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
+    //         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
+    //         position[0] *= gCourseDirection;
+    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
+    //                                                                                 ACTOR_RAILROAD_CROSSING)];
+    //         rrxing->crossingId = 1;
+    //         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
+    //         position[0] *= gCourseDirection;
+    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
+    //                                                                                 ACTOR_RAILROAD_CROSSING)];
+    //         rrxing->crossingId = 1;
+    //         vec3s_set(rotation, 0, -0x2000, 0);
+    //         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
+    //         position[0] *= gCourseDirection;
+    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
+    //                                                                                 ACTOR_RAILROAD_CROSSING)];
+    //         rrxing->crossingId = 0;
+    //         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
+    //         position[0] *= gCourseDirection;
+    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
+    //                                                                                 ACTOR_RAILROAD_CROSSING)];
+    //         rrxing->crossingId = 0;
+    //         break;
+    //     case COURSE_SHERBET_LAND:
+    //         spawn_all_item_boxes(d_course_sherbet_land_item_box_spawns);
+    //         break;
+    //     case COURSE_RAINBOW_ROAD:
+    //         spawn_all_item_boxes(d_course_rainbow_road_item_box_spawns);
+    //         break;
+    //     case COURSE_WARIO_STADIUM:
+    //         spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
+    //         vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    //         position[0] *= gCourseDirection;
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    //         position[0] *= gCourseDirection;
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    //         position[0] *= gCourseDirection;
+    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+    //         break;
+    //     case COURSE_BLOCK_FORT:
+    //         spawn_all_item_boxes(d_course_block_fort_item_box_spawns);
+    //         break;
+    //     case COURSE_SKYSCRAPER:
+    //         spawn_all_item_boxes(d_course_skyscraper_item_box_spawns);
+    //         break;
+    //     case COURSE_DOUBLE_DECK:
+    //         spawn_all_item_boxes(d_course_double_deck_item_box_spawns);
+    //         break;
+    //     case COURSE_DK_JUNGLE:
+    //         spawn_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
+    //         init_kiwano_fruit();
+    //         func_80298D10();
+    //         break;
+    //     case COURSE_BIG_DONUT:
+    //         spawn_all_item_boxes(d_course_big_donut_item_box_spawns);
+    //         break;
+    // }
     gNumPermanentActors = gNumActors;
 }
 
@@ -1203,77 +1200,17 @@ void init_actors_and_load_textures(void) {
     dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
-            D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
-            break;
-        case COURSE_BOWSER_CASTLE:
-            dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
-            break;
-        case COURSE_YOSHI_VALLEY:
-            dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
-            break;
-        case COURSE_FRAPPE_SNOWLAND:
-            dma_textures(gTextureFrappeSnowlandTreeLeft, 0x00000454U, 0x00000800U);
-            dma_textures(gTextureFrappeSnowlandTreeRight, 0x00000432U, 0x00000800U);
-            break;
-        case COURSE_ROYAL_RACEWAY:
-            dma_textures(gTextureTrees3, 0x000003E8U, 0x00000800U);
-            dma_textures(gTextureTrees7, 0x000003E8U, 0x00000800U);
-            D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
-            dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
-            break;
-        case COURSE_LUIGI_RACEWAY:
-            dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U);
-            dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
-            break;
-        case COURSE_MOO_MOO_FARM:
-            dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
-            dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
-            dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U);
-            dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
-            break;
-        case COURSE_KALAMARI_DESERT:
-            dma_textures(gTextureCactus1Left, 0x0000033EU, 0x00000800U);
-            dma_textures(gTextureCactus1Right, 0x000002FBU, 0x00000800U);
-            dma_textures(gTextureCactus2Left, 0x000002A8U, 0x00000800U);
-            dma_textures(gTextureCactus2Right, 0x00000374U, 0x00000800U);
-            dma_textures(gTextureCactus3, 0x000003AFU, 0x00000800U);
-            break;
-        case COURSE_DK_JUNGLE:
-            dma_textures(gTextureDksJungleParkwayKiwanoFruit1, 0x0000032FU, 0x00000400U);
-            dma_textures(gTextureDksJungleParkwayKiwanoFruit2, 0x00000369U, 0x00000400U);
-            dma_textures(gTextureDksJungleParkwayKiwanoFruit3, 0x00000364U, 0x00000400U);
-            break;
-    }
+
+    CourseManager_LoadTextures();
+
     init_red_shell_texture();
     destroy_all_actors();
+    m_ClearActors();
     spawn_course_actors();
-    spawn_course_vehicles();
+
+    CourseManager_VehiclesSpawn();
+
+    // spawn_course_vehicles();
 }
 
 void play_sound_before_despawn(struct Actor* actor) {
@@ -1318,7 +1255,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
 
     // try removing a red shell, green shell, banana, or a fake item box if the actor is expired
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         if (!(compare->flags & ACTOR_IS_NOT_EXPIRED)) {
             switch (compare->type) {
                 case ACTOR_RED_SHELL:
@@ -1375,7 +1312,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
 
     // will remove the oldest destructable actor in the list
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
-        compare = (struct ShellActor*) &gActorList[actorIndex];
+        compare = (struct ShellActor*) m_GetActor(actorIndex);
         switch (compare->type) {
             case ACTOR_RED_SHELL:
                 switch (compare->state) {
@@ -1433,19 +1370,24 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
 
 // returns actor index if any slot avaible returns -1
 s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
-    s32 index;
+    size_t index;
 
-    if (gNumActors >= ACTOR_LIST_SIZE) {
-        return try_remove_destructable_item(pos, rot, velocity, actorType);
+    // if (gNumActors >= m_GetActorSize()) {
+    //     return try_remove_destructable_item(pos, rot, velocity, actorType);
+    // }
+
+    // Cleanup unused actors
+    for (index = 0; index < m_GetActorSize(); index++) {
+        //if (m_GetActor(index)->flags == 0) {
+            //! @todo Commented out because deletes too soon.
+            //m_DeleteActor(index);
+            //gNumActors--;
+        //}
     }
-    for (index = 0; index < ACTOR_LIST_SIZE; index++) {
-        if (gActorList[index].flags == 0) {
-            gNumActors++;
-            actor_init(&gActorList[index], pos, rot, velocity, actorType);
-            return index;
-        }
-    }
-    return -1;
+    gNumActors++;
+    struct Actor* actor = m_AddBaseActor();
+    actor_init(actor, pos, rot, velocity, actorType);
+    return (s16)m_GetActorSize() - 1; // Return current index;
 }
 
 UNUSED s16 spawn_actor_at_pos(Vec3f pos, s16 actorType) {
@@ -1719,8 +1661,8 @@ bool collision_tree(Player* player, struct Actor* actor) {
     actorPos[0] = actor->pos[0];
     actorPos[1] = actor->pos[1];
     actorPos[2] = actor->pos[2];
-    if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) ||
-         (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) &&
+    if (((GetCourse() == GetMarioRaceway()) || (GetCourse() == GetYoshiValley()) ||
+         (GetCourse() == GetRoyalRaceway()) || (GetCourse() == GetLuigiRaceway())) &&
         (player->unk_094 > 1.0f)) {
         spawn_leaf(actorPos, 0);
     }
@@ -1866,7 +1808,7 @@ void destroy_destructable_actor(struct Actor* actor) {
             if (shell->state != GREEN_SHELL_HIT_A_RACER) {
                 switch (shell->state) {
                     case MOVING_SHELL:
-                        delete_actor_in_unexpired_actor_list(actor - gActorList);
+                        delete_actor_in_unexpired_actor_list(m_FindActorIndex(actor));
                         /* fallthrough */
                     case HELD_SHELL:
                     case RELEASED_SHELL:
@@ -1895,7 +1837,7 @@ void destroy_destructable_actor(struct Actor* actor) {
                     case BLUE_SHELL_LOCK_ON:
                     case BLUE_SHELL_TARGET_ELIMINATED:
                         func_800C9EF4(shell->pos, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
-                        delete_actor_in_unexpired_actor_list(actor - gActorList);
+                        delete_actor_in_unexpired_actor_list(m_FindActorIndex(actor));
                         /* fallthrough */
                     case HELD_SHELL:
                     case RELEASED_SHELL:
@@ -1920,7 +1862,7 @@ void destroy_destructable_actor(struct Actor* actor) {
                     case GREEN_SHELL_HIT_A_RACER:
                     case BLUE_SHELL_LOCK_ON:
                     case BLUE_SHELL_TARGET_ELIMINATED:
-                        delete_actor_in_unexpired_actor_list(actor - gActorList);
+                        delete_actor_in_unexpired_actor_list(m_FindActorIndex(actor));
                         /* fallthrough */
                     case HELD_SHELL:
                     case RELEASED_SHELL:
@@ -2053,6 +1995,8 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
     Player* owner;
     f32 temp_f0;
     f32 temp_f2;
+
+    m_ActorCollision(player, actor);
 
     temp_lo = player - gPlayerOne;
     switch (actor->type) {
@@ -2269,7 +2213,7 @@ void evaluate_collision_for_players_and_actors(void) {
         if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
             for (j = 0; j < ACTOR_LIST_SIZE; j++) {
-                temp_a1 = &gActorList[j];
+                temp_a1 = m_GetActor(j);
 
                 if ((phi_s1->effects & 0x4000000) == 0) {
                     // temp_v0 = temp_a1->unk2;
@@ -2289,8 +2233,8 @@ void evaluate_collision_for_destructible_actors(void) {
     s32 i, j;
     UNUSED s32 pad;
 
-    for (i = gNumPermanentActors; i < (ACTOR_LIST_SIZE - 1); i++) {
-        actor1 = &gActorList[i];
+    for (i = gNumPermanentActors; i < (ACTOR_LIST_SIZE); i++) {
+        actor1 = m_GetActor(i);
 
         if ((actor1->flags & 0x8000) == 0) {
             continue;
@@ -2307,7 +2251,7 @@ void evaluate_collision_for_destructible_actors(void) {
             case ACTOR_FAKE_ITEM_BOX:
 
                 for (j = i + 1; j < ACTOR_LIST_SIZE; j++) {
-                    actor2 = &gActorList[j];
+                    actor2 = m_GetActor(j);
 
                     if ((actor1->flags & 0x8000) == 0) {
                         continue;
@@ -2359,7 +2303,7 @@ void evaluate_collision_for_destructible_actors(void) {
 }
 
 void func_802A1064(struct FakeItemBox* fake_item_box) {
-    if ((u32) (fake_item_box - (struct FakeItemBox*) gActorList) <= (u32) ACTOR_LIST_SIZE) {
+    if ((u32) (m_FindActorIndex(fake_item_box)) <= (u32) ACTOR_LIST_SIZE) {
         if (((fake_item_box->flags & 0x8000) != 0) && (fake_item_box->type == ACTOR_FAKE_ITEM_BOX)) {
             fake_item_box->state = 1;
             fake_item_box->targetY = func_802ABEAC(&fake_item_box->unk30, fake_item_box->pos) + 8.66f;
@@ -2386,7 +2330,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
     pos[1] = y;
     pos[2] = z;
     id = add_actor_to_empty_slot(pos, rot, velocity, ACTOR_HOT_AIR_BALLOON_ITEM_BOX);
-    gActorHotAirBalloonItemBox = &gActorList[id];
+    gActorHotAirBalloonItemBox = m_GetActor(id);
 }
 
 #include "actors/item_box/update.inc.c"
@@ -2411,8 +2355,8 @@ void render_item_boxes(struct UnkStruct_800DC5EC* arg0) {
     s32 i;
     D_8015F8DC = 0;
 
-    for (i = 0; i < ACTOR_LIST_SIZE; i++) {
-        actor = &gActorList[i];
+    for (i = 0; i < m_GetActorSize(); i++) {
+        actor = m_GetActor(i);
 
         if (actor->flags == 0) {
             continue;
@@ -2443,89 +2387,93 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
     f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
     f32 temp_f0 = coss(camera->rot[1] - 0x8000);
 
-    D_801502C0[0][0] = temp_f0;
-    D_801502C0[0][2] = -sp48;
-    D_801502C0[2][2] = temp_f0;
-    D_801502C0[1][0] = 0.0f;
-    D_801502C0[0][1] = 0.0f;
-    D_801502C0[2][1] = 0.0f;
-    D_801502C0[1][2] = 0.0f;
-    D_801502C0[0][3] = 0.0f;
-    D_801502C0[1][3] = 0.0f;
-    D_801502C0[2][3] = 0.0f; // 2c
-    D_801502C0[2][0] = sp48;
-    D_801502C0[1][1] = 1.0f;
-    D_801502C0[3][3] = 1.0f; // unk3c
+    sBillBoardMtx[0][0] = temp_f0;
+    sBillBoardMtx[0][2] = -sp48;
+    sBillBoardMtx[2][2] = temp_f0;
+    sBillBoardMtx[1][0] = 0.0f;
+    sBillBoardMtx[0][1] = 0.0f;
+    sBillBoardMtx[2][1] = 0.0f;
+    sBillBoardMtx[1][2] = 0.0f;
+    sBillBoardMtx[0][3] = 0.0f;
+    sBillBoardMtx[1][3] = 0.0f;
+    sBillBoardMtx[2][3] = 0.0f; // 2c
+    sBillBoardMtx[2][0] = sp48;
+    sBillBoardMtx[1][1] = 1.0f;
+    sBillBoardMtx[3][3] = 1.0f; // unk3c
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 
+
     if (gModeSelection != BATTLE) {
-        func_80297340(camera);
+        //func_80297340(camera);
     }
     D_8015F8E0 = 0;
 
-    for (i = 0; i < ACTOR_LIST_SIZE; i++) {
-        actor = &gActorList[i];
+    for (i = 0; i < m_GetActorSize(); i++) {
+        actor = m_GetActor(i);
 
         if (actor->flags == 0) {
             continue;
         }
         switch (actor->type) {
+            default: // Draw custom actor
+                CourseManager_DrawActor(D_800DC5EC->camera, actor);
+                break;
             case ACTOR_TREE_MARIO_RACEWAY:
-                render_actor_tree_mario_raceway(camera, D_801502C0, actor);
+                render_actor_tree_mario_raceway(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_YOSHI_VALLEY:
-                render_actor_tree_yoshi_valley(camera, D_801502C0, actor);
+                render_actor_tree_yoshi_valley(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_ROYAL_RACEWAY:
-                render_actor_tree_royal_raceway(camera, D_801502C0, actor);
+                render_actor_tree_royal_raceway(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_MOO_MOO_FARM:
-                render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
+                render_actor_tree_moo_moo_farm(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_UNKNOWN_0x1A:
-                func_80299864(camera, D_801502C0, actor);
+                func_80299864(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_BOWSERS_CASTLE:
-                render_actor_tree_bowser_castle(camera, D_801502C0, actor);
+                render_actor_tree_bowser_castle(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_BUSH_BOWSERS_CASTLE:
-                render_actor_bush_bowser_castle(camera, D_801502C0, actor);
+                render_actor_bush_bowser_castle(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_TREE_FRAPPE_SNOWLAND:
-                render_actor_tree_frappe_snowland(camera, D_801502C0, actor);
+                render_actor_tree_frappe_snowland(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS1_KALAMARI_DESERT:
-                render_actor_tree_cactus1_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus1_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS2_KALAMARI_DESERT:
-                render_actor_tree_cactus2_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus2_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_CACTUS3_KALAMARI_DESERT:
-                render_actor_tree_cactus3_kalimari_desert(camera, D_801502C0, actor);
+                render_actor_tree_cactus3_kalimari_desert(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_FALLING_ROCK:
                 render_actor_falling_rock(camera, (struct FallingRock*) actor);
                 break;
             case ACTOR_KIWANO_FRUIT:
-                render_actor_kiwano_fruit(camera, D_801502C0, actor);
+                render_actor_kiwano_fruit(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_BANANA:
-                render_actor_banana(camera, D_801502C0, (struct BananaActor*) actor);
+                render_actor_banana(camera, sBillBoardMtx, (struct BananaActor*) actor);
                 break;
             case ACTOR_GREEN_SHELL:
-                render_actor_green_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_green_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_RED_SHELL:
-                render_actor_red_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_red_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_BLUE_SPINY_SHELL:
-                render_actor_blue_shell(camera, D_801502C0, (struct ShellActor*) actor);
+                render_actor_blue_shell(camera, sBillBoardMtx, (struct ShellActor*) actor);
                 break;
             case ACTOR_PIRANHA_PLANT:
-                render_actor_piranha_plant(camera, D_801502C0, (struct PiranhaPlant*) actor);
+                render_actor_piranha_plant(camera, sBillBoardMtx, (struct PiranhaPlant*) actor);
                 break;
             case ACTOR_TRAIN_ENGINE:
                 render_actor_train_engine(camera, (struct TrainCar*) actor);
@@ -2537,22 +2485,22 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
                 render_actor_train_passenger_car(camera, (struct TrainCar*) actor);
                 break;
             case ACTOR_COW:
-                render_actor_cow(camera, D_801502C0, actor);
+                render_actor_cow(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_UNKNOWN_0x14:
-                func_8029AC18(camera, D_801502C0, actor);
+                func_8029AC18(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_MARIO_SIGN:
-                render_actor_mario_sign(camera, D_801502C0, actor);
+                render_actor_mario_sign(camera, sBillBoardMtx, actor);
                 break;
             case ACTOR_WARIO_SIGN:
                 render_actor_wario_sign(camera, actor);
                 break;
             case ACTOR_PALM_TREE:
-                render_actor_palm_tree(camera, D_801502C0, (struct PalmTree*) actor);
+                render_actor_palm_tree(camera, sBillBoardMtx, (struct PalmTree*) actor);
                 break;
             case ACTOR_PADDLE_BOAT:
-                render_actor_paddle_boat(camera, (struct PaddleWheelBoat*) actor, D_801502C0, pathCounter);
+                render_actor_paddle_boat(camera, (struct PaddleWheelBoat*) actor, sBillBoardMtx, pathCounter);
                 break;
             case ACTOR_BOX_TRUCK:
                 render_actor_box_truck(camera, actor);
@@ -2570,26 +2518,23 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
                 render_actor_railroad_crossing(camera, (struct RailroadCrossing*) actor);
                 break;
             case ACTOR_YOSHI_EGG:
-                render_actor_yoshi_egg(camera, D_801502C0, (struct YoshiValleyEgg*) actor, pathCounter);
+                render_actor_yoshi_egg(camera, sBillBoardMtx, (struct YoshiValleyEgg*) actor, pathCounter);
                 break;
         }
     }
-    switch (gCurrentCourseId) {
-        case COURSE_MOO_MOO_FARM:
-            render_cows(camera, D_801502C0, actor);
-            break;
-        case COURSE_DK_JUNGLE:
-            render_palm_trees(camera, D_801502C0, actor);
-            break;
+    if (GetCourse() == GetMooMooFarm()) {
+        render_cows(camera, sBillBoardMtx);
+    } else if (GetCourse() == GetDkJungle()) {
+        render_palm_trees(camera, sBillBoardMtx);
     }
 }
 
 void update_course_actors(void) {
     struct Actor* actor;
     s32 i;
-    for (i = 0; i < ACTOR_LIST_SIZE; i++) {
+    for (i = 0; i < m_GetActorSize(); i++) {
 
-        actor = &gActorList[i];
+        actor = m_GetActor(i);
         if (actor->flags == 0) {
             continue;
         }

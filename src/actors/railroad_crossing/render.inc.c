@@ -27,7 +27,7 @@ void render_actor_railroad_crossing(Camera* arg0, struct RailroadCrossing* rr_cr
             gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
-            if (isCrossingTriggeredByIndex[rr_crossing->crossingId]) {
+            if (CourseManager_GetCrossingOnTriggered(rr_crossing->crossingTrigger)) {
 
                 if (rr_crossing->someTimer < 20) {
                     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_crossing_right_active);

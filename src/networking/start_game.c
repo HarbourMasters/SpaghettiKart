@@ -7,6 +7,7 @@
 #include "menus.h"
 #include "audio/external.h"
 #include "code_80091750.h"
+#include "port/Game.h"
 
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI
@@ -52,8 +53,10 @@ void network_cup_vote(uint32_t course) {
 
 void set_course(const char* data) {
     if (data != NULL) {
+        //SetCup(data[0]);
         gCupSelection = data[0];
-        gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
+        // gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
+        //! @todo SetCourse();
     }
 }
 

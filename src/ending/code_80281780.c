@@ -22,6 +22,7 @@
 #include "menus.h"
 #include "render_courses.h"
 #include <string.h>
+#include "port/Game.h"
 
 #define bcopy memcpy
 
@@ -92,6 +93,7 @@ void load_ceremony_cutscene(void) {
     Camera* camera = &cameras[0];
 
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
+    SetCourseByClass(GetPodiumCeremony());
     D_800DC5B4 = (u16) 1;
     gIsMirrorMode = 0;
     gGotoMenu = 0xFFFF;

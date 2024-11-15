@@ -8,6 +8,7 @@
 
 /** @cond */
 
+void func_80078170(s32 arg0, Camera* arg1);
 void func_80077D5C(s32);
 s32 find_unused_obj_index(s32*);
 void delete_object(s32*);
@@ -88,7 +89,7 @@ bool func_80073D0C(s32, s16*, s32, s32, s32, s32, s32);
 void func_80073D68(s32, s16*, s16, s32);
 void func_80073DC0(s32, s16*, s16, s32);
 bool func_80073E18(s32, u16*, u16, s32);
-UNUSED bool func_80073ED4(s32, u16*, u16, s32);
+bool func_80073ED4(s32, u16*, u16, s32); // unused
 void func_80073F90(s32, s32);
 void func_80073FAC(s32);
 void func_80073FD4(s32);

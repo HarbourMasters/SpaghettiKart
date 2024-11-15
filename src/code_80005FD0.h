@@ -154,10 +154,10 @@ void func_80011EC0(s32, Player*, s32, u16);
 
 void generate_train_waypoints(void);
 void generate_ferry_waypoints(void);
-void spawn_vehicle_on_road(VehicleStuff*);
+void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex, s32 someMultiplierTheSequel, f32 speed);
 void spawn_course_vehicles(void);
 void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
-void init_vehicles_trains(void);
+void init_vehicles_trains(size_t, size_t, f32);
 void sync_train_components(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
@@ -250,7 +250,7 @@ void func_8001BE78(void);
 
 void func_8001C05C(void);
 void func_8001C14C(void);
-void func_8001C3C4(s32);
+void render_bomb_karts_wrap(s32);
 void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
@@ -297,7 +297,6 @@ extern u16 D_80163240[];
 extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
-// Exact pointer type unknown
 extern KartAIBehaviour* sCurrentKartAIBehaviour;
 extern u16 gCurrentKartAIBehaviourId[];
 extern u16 gPreviousKartAIBehaviourId[];

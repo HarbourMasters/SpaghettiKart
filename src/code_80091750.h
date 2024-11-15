@@ -5,6 +5,10 @@
 #include "textures.h"
 #include "main.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 
 /* File specific types */
@@ -148,9 +152,9 @@ void func_80093F10(void);
 void func_800940EC(s32);
 void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
-void func_800947B4(struct GfxPool*, s32);
+void render_checkered_flag(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
-void func_80094C60(void);
+void render_menus(void);
 void func_80095574(void);
 Gfx* draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx* draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
@@ -174,11 +178,11 @@ Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110(void);
-void func_80099184(MkTexture*);
+void load_menu_img(MkTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void func_8009969C(MkTexture*);
-void func_800996BC(MkTexture*, s32);
+void load_img_wrap(MkTexture*);
+void load_menu_img2(MkTexture*, s32);
 void func_80099958(MkTexture*, s32, s32);
 void func_80099E54(void);
 void func_80099E60(MkTexture*, s32, s32);
@@ -189,7 +193,7 @@ void func_80099AEC(void);
 void func_8009A238(MkTexture*, s32);
 void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
-s32 func_8009A374(MkAnimation*);
+s32 animate_character_select_menu(MkAnimation*);
 s32 func_8009A478(MkAnimation*, s32);
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
@@ -201,8 +205,8 @@ MkTexture* func_8009A944(struct_8018DEE0_entry*, s32);
 void func_8009A9FC(s32, s32, u32, s32);
 void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
-void func_8009B0A4(s32, u32);
-void func_8009B538(s32, s32, s32, s32, s32);
+void convert_img_to_greyscale(s32, u32);
+void adjust_img_colour(s32, s32, s32, s32, s32);
 u16* func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
@@ -248,7 +252,7 @@ void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
-void add_8018D9E0_entry(s32, s32, s32, s8);
+void add_ui_element(s32, s32, s32, s8);
 void func_8009F5E0(struct_8018D9E0_entry*);
 void func_800A08D8(u8, s32, s32);
 s32 func_800A095C(char*, s32, s32, s32);
@@ -431,7 +435,7 @@ extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gD_8018E118TotalSize;
+extern s32 gMenuTextureBufferIndex;
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
 extern s32 gNumD_8018E118Entries;
 extern Gfx* D_8018E75C;
@@ -485,14 +489,7 @@ extern RGBA16 D_800E74D0[];
 extern RGBA16 D_800E74E8[];
 extern const s16 gGlyphDisplayWidth[];
 extern char* gCupNames[];
-extern char* gCourseNames[];
-extern char* gCourseNamesDup[];
-extern char* gCourseNamesDup2[];
-extern char* gDebugCourseNames[];
-// Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
-extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
-extern s8 gCupSelectionByCourseId[];
 extern char* D_800E7678[];
 extern char* gDebugCharacterNames[];
 extern char* D_800E76A8[];
@@ -513,7 +510,6 @@ extern char* D_800E77A0[];
 extern char* D_800E77A8[];
 extern char D_800E77B4[];
 extern char D_800E77D8[];
-extern char* sCourseLengths[];
 extern char* D_800E7834[];
 extern char* D_800E7840[];
 extern char* D_800E7848[];
@@ -614,5 +610,9 @@ extern f32 D_8018EDA0;
 extern f32 D_8018EDA4;
 extern f32 D_8018EDA8;
 extern f32 D_8018EDAC;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

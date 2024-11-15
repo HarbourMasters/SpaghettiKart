@@ -15,6 +15,7 @@
 #include "main.h"
 #include "code_80057C60.h"
 #include "defines.h"
+#include "port/Game.h"
 
 void func_80086E70(s32 objectIndex) {
     gObjectList[objectIndex].unk_0AE = 1; // * 0xE0)) = 1;
@@ -976,7 +977,7 @@ void func_80089020(s32 playerId, f32* arg1) {
         var_f2 = -*arg1;
     }
     if (player->effects & 0xC0) {
-        if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+        if (GetCourse() == GetSherbetLand()) {
             if (var_f2 <= 0.5) {
                 var_f0 = 0.025f;
             } else if (var_f2 <= 2.0) {
@@ -997,7 +998,7 @@ void func_80089020(s32 playerId, f32* arg1) {
                 var_f0 = 0.25f;
             }
         }
-    } else if (gCurrentCourseId == COURSE_SHERBET_LAND) {
+    } else if (GetCourse() == GetSherbetLand()) {
         if (var_f2 <= 0.5) {
             var_f0 = 0.025f;
         } else if (var_f2 <= 2.0) {

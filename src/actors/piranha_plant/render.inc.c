@@ -120,7 +120,7 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
                         G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
 
-    if (gCurrentCourseId == COURSE_MARIO_RACEWAY) {
+    if (GetCourse() == GetMarioRaceway()) {
         gSPDisplayList(gDisplayListHead++, &d_course_mario_raceway_dl_piranha_plant);
     } else {
         gSPDisplayList(gDisplayListHead++, &d_course_royal_raceway_dl_piranha_plant);

@@ -202,14 +202,8 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
         // Unless both courses use this actor and use the same addr for the texture.
         // Just in-case changed the code into a switch to prevent future crashes.
         // This comment can be removed when this is confirmed to work.
-
-        switch (gCurrentCourseId) {
-            case COURSE_LUIGI_RACEWAY:
-                gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
-                break;
-            case COURSE_MOO_MOO_FARM:
-                gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_mole_tlut);
-                break;
+        if (GetCourse() == GetLuigiRaceway()) {
+            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
         }
     }
 }

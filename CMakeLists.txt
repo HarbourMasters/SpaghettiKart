@@ -94,8 +94,11 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/audio
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
     ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/courses
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements/freecam
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine
 )
 
 # Collect source files to build the executable
@@ -135,10 +138,16 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "courses/*.h"
     "src/networking/*.c"
     "src/networking/*.h"
+    "src/engine/*.cpp"
+    "src/engine/*.h"
+    "src/engine/courses/*.c"
+    "src/engine/courses/*.h"
     "src/enhancements/*.c"
     "src/enhancements/*.h"
     "src/enhancements/freecam/*.c"
     "src/enhancements/freecam/*.h"
+    "src/engine/*.cpp"
+    "src/engine/*.h"
 )
 
 list(APPEND ALL_FILES ${ALL_FILES_ROOT})
@@ -580,3 +589,197 @@ add_custom_target(
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.otr" "${CMAKE_BINARY_DIR}/spaghetti.otr"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.otr" "${CMAKE_BINARY_DIR}/ship.otr"
 )
+
+if(MSVC)
+set (WAMR_BUILD_PLATFORM "windows")
+else()
+set (WAMR_BUILD_PLATFORM "linux")
+endif()
+
+# Set WAMR_BUILD_TARGET, currently values supported:
+# "X86_64", "AMD_64", "X86_32", "AARCH64[sub]", "ARM[sub]", "THUMB[sub]",
+# "MIPS", "XTENSA", "RISCV64[sub]", "RISCV32[sub]"
+if (NOT DEFINED WAMR_BUILD_TARGET)
+  if (CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm64|aarch64)")
+    set (WAMR_BUILD_TARGET "AARCH64")
+    if (NOT DEFINED WAMR_BUILD_SIMD)
+      set (WAMR_BUILD_SIMD 1)
+    endif ()
+  elseif (CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv64")
+    set (WAMR_BUILD_TARGET "RISCV64")
+  elseif (CMAKE_SIZEOF_VOID_P EQUAL 8)
+    # Build as X86_64 by default in 64-bit platform
+    set (WAMR_BUILD_TARGET "X86_64")
+    if (NOT DEFINED WAMR_BUILD_SIMD)
+      set (WAMR_BUILD_SIMD 1)
+    endif ()
+  elseif (CMAKE_SIZEOF_VOID_P EQUAL 4)
+    # Build as X86_32 by default in 32-bit platform
+    set (WAMR_BUILD_TARGET "X86_32")
+  else ()
+    message(SEND_ERROR "Unsupported build target platform!")
+  endif ()
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_INTERP)
+  # Enable Interpreter by default
+  set (WAMR_BUILD_INTERP 1)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_AOT)
+  # Enable AOT by default.
+  set (WAMR_BUILD_AOT 1)
+endif ()
+  
+if (NOT DEFINED WAMR_BUILD_JIT)
+  # Disable JIT by default.
+  set (WAMR_BUILD_JIT 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_FAST_JIT)
+  # Disable Fast JIT by default
+  set (WAMR_BUILD_FAST_JIT 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_LIBC_BUILTIN)
+  # Enable libc builtin support by default
+  set (WAMR_BUILD_LIBC_BUILTIN 1)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_LIBC_WASI)
+  # Enable libc wasi support by default
+  set (WAMR_BUILD_LIBC_WASI 1)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_FAST_INTERP)
+  # Enable fast interpreter
+  set (WAMR_BUILD_FAST_INTERP 1)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_MULTI_MODULE)
+  # Disable multiple modules by default
+  set (WAMR_BUILD_MULTI_MODULE 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_LIB_PTHREAD)
+  # Disable pthread library by default
+  set (WAMR_BUILD_LIB_PTHREAD 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_LIB_WASI_THREADS)
+  # Disable wasi threads library by default
+  set (WAMR_BUILD_LIB_WASI_THREADS 0)
+endif()
+
+if (NOT DEFINED WAMR_BUILD_MINI_LOADER)
+  # Disable wasm mini loader by default
+  set (WAMR_BUILD_MINI_LOADER 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_SIMD)
+  # Enable SIMD by default
+  set (WAMR_BUILD_SIMD 1)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_REF_TYPES)
+  # Disable reference types by default
+  set (WAMR_BUILD_REF_TYPES 0)
+endif ()
+
+if (NOT DEFINED WAMR_BUILD_DEBUG_INTERP)
+  # Disable Debug feature by default
+  set (WAMR_BUILD_DEBUG_INTERP 0)
+endif ()
+
+if (WAMR_BUILD_DEBUG_INTERP EQUAL 1)
+  set (WAMR_BUILD_FAST_INTERP 0)
+  set (WAMR_BUILD_MINI_LOADER 0)
+  set (WAMR_BUILD_SIMD 0)
+endif ()
+
+# if enable wasi-nn, both wasi-nn-backends and iwasm
+# need to use same WAMR (dynamic) libraries
+if (WAMR_BUILD_WASI_NN EQUAL 1)
+  set (WAMR_BUILD_SHARED 1)
+endif ()
+
+if(MSVC)
+if (WAMR_BUILD_LIBC_WASI EQUAL 1)
+  set (CMAKE_C_STANDARD 11)
+  if (MSVC)
+    add_compile_options(/experimental:c11atomics)
+  endif()
+else()
+  set (CMAKE_C_STANDARD 99)
+endif()
+endif()
+
+set (WAMR_BUILD_DUMP_CALL_STACK 1)
+
+set (WAMR_ROOT_DIR lib/wasm-micro-runtime)
+
+include (${WAMR_ROOT_DIR}/build-scripts/runtime_lib.cmake)
+add_library(vmlib ${WAMR_RUNTIME_LIB_SOURCE})
+
+if(MSVC)
+
+#set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DWIN32_LEAN_AND_MEAN")
+if (NOT MINGW)
+  set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SAFESEH:NO")
+  set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} /SAFESEH:NO")
+endif ()
+
+# set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wformat -Wformat-security")
+# set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wconversion -Wsign-conversion")
+
+if (WAMR_BUILD_TARGET MATCHES "X86_.*" OR WAMR_BUILD_TARGET STREQUAL "AMD_64")
+  if (NOT (CMAKE_C_COMPILER MATCHES ".*clang.*" OR CMAKE_C_COMPILER_ID MATCHES ".*Clang" OR MSVC))
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mindirect-branch-register")
+  endif ()
+endif ()
+
+# The following flags are to enhance security, but it may impact performance,
+# we disable them by default.
+#if (WAMR_BUILD_TARGET MATCHES "X86_.*" OR WAMR_BUILD_TARGET STREQUAL "AMD_64")
+#  set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ftrapv -D_FORTIFY_SOURCE=2")
+#endif ()
+#set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fstack-protector-strong --param ssp-buffer-size=4")
+#set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-z,noexecstack,-z,relro,-z,now")
+
+include (${SHARED_DIR}/utils/uncommon/shared_uncommon.cmake)
+
+add_executable (iwasm main.c ${UNCOMMON_SHARED_SOURCE})
+
+install (TARGETS iwasm DESTINATION bin)
+
+target_link_libraries (iwasm vmlib ${LLVM_AVAILABLE_LIBS} ${UV_A_LIBS})
+
+if (MINGW)
+  target_link_libraries (iwasm ws2_32)
+endif ()
+
+add_library (libiwasm SHARED ${WAMR_RUNTIME_LIB_SOURCE})
+
+install (TARGETS libiwasm DESTINATION lib)
+
+set_target_properties (libiwasm PROPERTIES OUTPUT_NAME libiwasm)
+
+target_link_libraries (libiwasm ${LLVM_AVAILABLE_LIBS} ${UV_A_LIBS})
+
+if (MINGW)
+  target_link_libraries (libiwasm ws2_32)
+endif ()
+
+if (WIN32)
+  target_link_libraries(libiwasm ntdll)
+
+  target_link_libraries(iwasm ntdll)  
+endif()
+
+else()
+target_link_libraries (${PROJECT_NAME} PRIVATE vmlib)
+
+include_directories(
+    ${WAMR_ROOT_DIR}/core
+)
+endif ()

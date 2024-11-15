@@ -5,6 +5,10 @@
 #include <string.h>
 #include <libultra/gbi.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @file mk64.h
  * Global header for mk64
@@ -39,7 +43,7 @@ typedef enum {
     /* 0x08 */ COURSE_LUIGI_RACEWAY,
     /* 0x09 */ COURSE_MOO_MOO_FARM,
     /* 0x0A */ COURSE_TOADS_TURNPIKE,
-    /* 0x0B */ COURSE_KALAMARI_DESERT,
+    /* 0x0B */ COURSE_KALIMARI_DESERT,
     /* 0x0C */ COURSE_SHERBET_LAND,
     /* 0x0D */ COURSE_RAINBOW_ROAD,
     /* 0x0E */ COURSE_WARIO_STADIUM,
@@ -133,5 +137,9 @@ void gSPDisplayList(Gfx* pkt, Gfx* dl);
 void gSPDisplayListOffset(Gfx* pkt, Gfx* dl, int offset);
 void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0);
 void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // MK64_H

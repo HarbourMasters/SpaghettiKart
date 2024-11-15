@@ -293,9 +293,9 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     func_800C90F4(shell->playerId,
                                   (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (pad13 == ACTOR_RED_SHELL) {
-                        add_red_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
+                        add_red_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
                     } else {
-                        add_blue_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
+                        add_blue_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
                         func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                     }
                 }
@@ -307,9 +307,9 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     func_800C90F4(shell->playerId,
                                   (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (pad13 == ACTOR_RED_SHELL) {
-                        add_red_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
+                        add_red_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
                     } else {
-                        add_blue_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
+                        add_blue_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
                         func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                     }
                 }
@@ -429,7 +429,7 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             break;
         case TRIPLE_RED_SHELL:
             player = &gPlayers[shell->playerId];
-            parent = (TripleShellParent*) &gActorList[shell->parentIndex];
+            parent = (TripleShellParent*) GET_ACTOR(shell->parentIndex);
             if (parent->type != ACTOR_TRIPLE_RED_SHELL) {
                 destroy_destructable_actor((struct Actor*) shell);
             } else {

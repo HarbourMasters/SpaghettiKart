@@ -195,7 +195,7 @@ glabel L8009F6CC
 glabel L8009F6E4
 /* 0A02E4 8009F6E4 3C048015 */  lui   $a0, %hi(gGfxPool) # $a0, 0x8015
 /* 0A02E8 8009F6E8 8C84EF40 */  lw    $a0, %lo(gGfxPool)($a0)
-/* 0A02EC 8009F6EC 0C0251ED */  jal   func_800947B4
+/* 0A02EC 8009F6EC 0C0251ED */  jal   render_checkered_flag
 /* 0A02F0 8009F6F0 8E25001C */   lw    $a1, 0x1c($s1)
 /* 0A02F4 8009F6F4 10000474 */  b     .L800A08C8
 /* 0A02F8 8009F6F8 8FBF0034 */   lw    $ra, 0x34($sp)
@@ -289,7 +289,7 @@ glabel L8009F830
 /* 0A043C 8009F83C 10000422 */  b     .L800A08C8
 /* 0A0440 8009F840 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009F844
-/* 0A0444 8009F844 0C02D557 */  jal   func_800B555C
+/* 0A0444 8009F844 0C02D557 */  jal   has_unlocked_extra_mode
 /* 0A0448 8009F848 00000000 */   nop
 /* 0A044C 8009F84C 00025880 */  sll   $t3, $v0, 2
 /* 0A0450 8009F850 3C05800E */  lui   $a1, %hi(D_800E7D4C)
@@ -597,7 +597,7 @@ glabel L8009FB24
 /* 0A08D0 8009FCD0 100002FD */  b     .L800A08C8
 /* 0A08D4 8009FCD4 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009FCD8
-/* 0A08D8 8009FCD8 0C02D557 */  jal   func_800B555C
+/* 0A08D8 8009FCD8 0C02D557 */  jal   has_unlocked_extra_mode
 /* 0A08DC 8009FCDC 00000000 */   nop
 /* 0A08E0 8009FCE0 00026880 */  sll   $t5, $v0, 2
 /* 0A08E4 8009FCE4 3C05800E */  lui   $a1, %hi(D_800E7D4C)

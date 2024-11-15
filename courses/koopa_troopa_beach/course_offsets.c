@@ -1,6 +1,7 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
 #include <assets/koopa_troopa_beach_data.h>
+#include "animation.h"
 
 const course_texture koopa_troopa_beach_textures[] = {
     { gTexture643B3C, 0x0798, 0x0800, 0x0 },
