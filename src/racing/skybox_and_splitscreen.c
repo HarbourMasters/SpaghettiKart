@@ -1430,9 +1430,6 @@ void copy_jumbotron_fb_port(s32 ulx, s32 uly, s16 portionToDraw, u16* source, u1
     // Add CVar if we want to expose a user toggle for only updating 1/6 of the jumbotron per frame
     u8 updateWholeJumbo = true;
 
-    ulx = 0;
-    uly = 0;
-
     if (portionToDraw == -1 || updateWholeJumbo) {
         copy_framebuffer(ulx, uly, 64, 32, source, target);
         copy_framebuffer(ulx + 64, uly, 64, 32, source, target + (64 * 32 * 1));
