@@ -177,7 +177,7 @@ u16 D_800DC510 = 0;
 u16 D_800DC514 = 0;
 u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
-u16 gEnableDebugMode = DEBUG_MODE;
+u16 gEnableDebugMode = false;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
 UNUSED s32 D_800DC528 = 1;
 s32 gActiveScreenMode = SCREEN_MODE_1P;
