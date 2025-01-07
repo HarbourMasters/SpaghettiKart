@@ -28,9 +28,9 @@ void TrainCrossing::CrossingTrigger() {
     s32 i;
     OnTriggered = 0;
 
-
     for (const auto& vehicle : gWorldInstance.Vehicles) {
-        if (auto train = dynamic_cast<ATrain*>(vehicle)) {;
+        if (auto train = dynamic_cast<ATrain*>(vehicle)) {
+            ;
             f32 radius = DynamicRadius(train->Locomotive.position, train->Locomotive.velocity, Position);
 
             if (Distance(train->Locomotive.position, Position) < radius) {
@@ -60,9 +60,9 @@ void TrainCrossing::AICrossingBehaviour(s32 playerId) {
 }
 
 f32 TrainCrossing::Distance(Vec3f a, Vec3f b) {
-    float dx = b[0] - a[0]; // Difference in x-coordinates
-    float dy = b[1] - a[1]; // Difference in y-coordinates
-    float dz = b[2] - a[2]; // Difference in z-coordinates
+    float dx = b[0] - a[0];                   // Difference in x-coordinates
+    float dy = b[1] - a[1];                   // Difference in y-coordinates
+    float dz = b[2] - a[2];                   // Difference in z-coordinates
     return sqrt(dx * dx + dy * dy + dz * dz); // Return the distance
 }
 
@@ -74,8 +74,7 @@ f32 TrainCrossing::DynamicRadius(Vec3f trainPos, Vec3f trainVelocity, Vec3f cros
     trainToCrossing[2] = crossingPos[2] - trainPos[2];
 
     // Dot product to check if the train is approaching or moving away from the crossing
-    f32 dotProduct = trainToCrossing[0] * trainVelocity[0] + 
-                     trainToCrossing[1] * trainVelocity[1] + 
+    f32 dotProduct = trainToCrossing[0] * trainVelocity[0] + trainToCrossing[1] * trainVelocity[1] +
                      trainToCrossing[2] * trainVelocity[2];
 
     if (dotProduct > 0) {

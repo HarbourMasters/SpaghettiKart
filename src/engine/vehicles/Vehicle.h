@@ -9,8 +9,8 @@ extern "C" {
 
 // Base class
 class AVehicle {
-public:
-    virtual ~AVehicle() = default;  // Virtual destructor for proper cleanup in derived classes
+  public:
+    virtual ~AVehicle() = default; // Virtual destructor for proper cleanup in derived classes
 
     explicit AVehicle();
 

@@ -20,11 +20,11 @@ extern "C" {
  * Otherwise Lakitu will animate faster than normal.
  */
 class OLakitu : public OObject {
-public:
+  public:
     enum LakituType : uint32_t {
         STARTER = 1,
         FINISH, // Checkered flag
-        TOW, // Picks up an out of bounds player
+        TOW,    // Picks up an out of bounds player
         SECOND_LAP,
         FINAL_LAP,
         REVERSE,
@@ -36,7 +36,7 @@ public:
         ICE, // Used in sherbet land to put an ice-cube on the player
     };
 
-public:
+  public:
     explicit OLakitu(s32 playerId, LakituType type);
 
     void Activate(LakituType type); // Triggers Lakitu into a behaviour
@@ -76,7 +76,7 @@ public:
     void func_8007A910(s32 arg0);
     void func_8007AA44(s32 playerId); // animate lakitu
 
-private:
+  private:
     LakituType _type;
     s32 _playerId;
 };

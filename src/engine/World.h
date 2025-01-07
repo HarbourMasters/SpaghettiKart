@@ -50,7 +50,6 @@ class World {
         RGB8 FloorTopLeft;
     } SkyboxColours;
 
-
     typedef struct {
         const char* Name;
         const char* DebugName;
@@ -58,7 +57,7 @@ class World {
         const char* AIBehaviour;
         float AIMaximumSeparation;
         float AIMinimumSeparation;
-        int16_t *SomePtr;
+        int16_t* SomePtr;
         uint32_t AISteeringSensitivity;
         _struct_gCoursePathSizes_0x10 PathSizes;
         Vec4f D_0D009418;
@@ -67,8 +66,8 @@ class World {
         Vec4f D_0D009808;
         const char* PathTable[4];
         const char* PathTable2[4];
-        CloudData *Clouds;
-        CloudData *CloudList;
+        CloudData* Clouds;
+        CloudData* CloudList;
         int32_t MinimapFinishlineX;
         int32_t MinimapFinishlineY;
         SkyboxColours Skybox;
@@ -83,7 +82,7 @@ class World {
         std::vector<Mtx> Effects;
     } Matrix;
 
-public:
+  public:
     explicit World();
 
     void AddCourse(Course* course);
@@ -102,7 +101,7 @@ public:
     void TickObjects();
     void TickObjects60fps();
     void DrawObjects(s32 cameraId);
-    Object *GetObjectByIndex(size_t);
+    Object* GetObjectByIndex(size_t);
 
     void TickParticles();
     void DrawParticles(s32 cameraId);
@@ -117,7 +116,6 @@ public:
     void SetCourseFromCup();
 
     World* GetWorld(void);
-
 
     // These are only for browsing through the course list
     void SetCourse(const char*);
@@ -154,8 +152,7 @@ public:
 
     std::vector<Course*> Courses;
     size_t CourseIndex = 0; // For browsing courses.
-private:
-
+  private:
 };
 
 extern World gWorldInstance;

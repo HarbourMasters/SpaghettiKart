@@ -15,19 +15,13 @@ extern "C" {
 #include "some_data.h"
 }
 
-
 class OCheepCheep : public OObject {
-public:
-    enum CheepType {
-        RACE,
-        PODIUM_CEREMONY
-    };
+  public:
+    enum CheepType { RACE, PODIUM_CEREMONY };
 
-    enum Behaviour : uint16_t {
-    };
+    enum Behaviour : uint16_t {};
 
-public:
-
+  public:
     explicit OCheepCheep(const FVector& pos, CheepType type, IPathSpan span);
 
     virtual void Tick() override;
@@ -38,11 +32,9 @@ public:
     void func_8007BEC8(s32 objectIndex);
     void func_8007BFB0(s32 objectIndex);
 
-private:
-
+  private:
     s32 _idx;
     CheepType _type;
     FVector _spawnPos;
     IPathSpan _span;
-
 };

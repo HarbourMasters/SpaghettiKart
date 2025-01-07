@@ -16,8 +16,7 @@ class AVehicle; // Forward declare
  * @arg waypoint initial waypoint to spawn at.
  */
 class ATrain : public AVehicle {
-    public:
-
+  public:
     enum TenderStatus {
         NO_TENDER,
         HAS_TENDER,
@@ -57,6 +56,6 @@ class ATrain : public AVehicle {
     s32 AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity);
     void SyncComponents(TrainCarStuff* trainCar, s16 orientationY);
 
-private:
+  private:
     static size_t _count;
 };

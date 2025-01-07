@@ -1,7 +1,7 @@
 #include "Vehicle.h"
 
-
-AVehicle::AVehicle() {}
+AVehicle::AVehicle() {
+}
 
 void AVehicle::Spawn() {
 }

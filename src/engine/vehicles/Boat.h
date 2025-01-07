@@ -12,8 +12,7 @@ extern "C" {
 class AVehicle; // Forward declare
 
 class ABoat : public AVehicle {
-    public:
-
+  public:
     const char* Type = "mk:boat";
     size_t Index;
     bool IsActive; // The paddle wheel boat only shows up if the number of players is < 3
@@ -46,7 +45,7 @@ class ABoat : public AVehicle {
     virtual void Draw(s32 playerId) override;
     virtual void Collision(s32 playerId, Player* player) override;
     virtual s32 AddSmoke(size_t, Vec3f, f32);
-private:
-    static size_t _count;
 
+  private:
+    static size_t _count;
 };

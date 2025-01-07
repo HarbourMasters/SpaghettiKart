@@ -456,14 +456,14 @@ extern "C" int16_t OTRGetRectDimensionFromRightEdge(float v) {
 
 /**
  * Centers an item in a given area.
- * 
+ *
  * Adds the number of extended screen pixels to the location to center.
  * This allows stretching the game window really wide, and the item will stay in-place.
- * 
+ *
  * This is not for centering in the direct center of the screen.
- * 
+ *
  * How to use:
- * 
+ *
  * s32 center = OTRCalculateCenterOfAreaFromRightEdge((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
  * x = center - (texWidth / 2)
  * x2 = center + (texWidth / 2)

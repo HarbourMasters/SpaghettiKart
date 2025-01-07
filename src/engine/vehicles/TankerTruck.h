@@ -14,8 +14,7 @@ extern "C" {
 class AVehicle; // Forward declare
 
 class ATankerTruck : public AVehicle {
-    public:
-
+  public:
     const char* Type;
     size_t Index;
     f32 Speed;
@@ -49,6 +48,6 @@ class ATankerTruck : public AVehicle {
     virtual void Draw(s32 playerId) override;
     virtual void Collision(s32 playerId, Player* player) override;
 
-private:
+  private:
     static size_t _count;
 };

@@ -56,22 +56,22 @@ void OCheepCheep::Draw(s32 cameraId) { // func_8005217C
     object = &gObjectList[temp_a3];
     if (object->state >= 2) {
         if (is_obj_flag_status_active(temp_a3, 0x10) != 0) {
-             rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
-             func_800520C0(temp_a3);
+            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+            func_800520C0(temp_a3);
 
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007828);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007828);
             gSPLight(gDisplayListHead++, &D_800E45C0l[0].l[0], LIGHT_1);
             gSPLight(gDisplayListHead++, &D_800E45C0l[0].a, LIGHT_2);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_banshee_boardwalk_dl_7B38);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_dl_7B38);
             gSPLight(gDisplayListHead++, &D_800E45C0l[1].l[0], LIGHT_1);
             gSPLight(gDisplayListHead++, &D_800E45C0l[1].a, LIGHT_2);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_banshee_boardwalk_dl_7978);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_dl_7978);
             gSPLight(gDisplayListHead++, &D_800E45C0l[2].l[0], LIGHT_1);
             gSPLight(gDisplayListHead++, &D_800E45C0l[2].a, LIGHT_2);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_banshee_boardwalk_dl_78C0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_dl_78C0);
             gSPLight(gDisplayListHead++, &D_800E45C0l[3].l[0], LIGHT_1);
             gSPLight(gDisplayListHead++, &D_800E45C0l[3].a, LIGHT_2);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_banshee_boardwalk_dl_7650);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_dl_7650);
         }
     }
 }
@@ -83,7 +83,7 @@ void OCheepCheep::func_8007BBBC(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     switch (object->state) {
         case 1:
-            func_800735BC(objectIndex, (Gfx*)d_course_banshee_boardwalk_dl_cheep_cheep, 2.0f);
+            func_800735BC(objectIndex, (Gfx*) d_course_banshee_boardwalk_dl_cheep_cheep, 2.0f);
             set_object_flag(objectIndex, 0x00000010);
             object->unk_0D5 = 0;
             break;
@@ -128,7 +128,7 @@ void OCheepCheep::init_var_cheep_cheep(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     object->unk_0D5 = 1;
     object->status = 0;
-    object->model = (Gfx*)d_course_banshee_boardwalk_dl_cheep_cheep;
+    object->model = (Gfx*) d_course_banshee_boardwalk_dl_cheep_cheep;
     object->sizeScaling = 0.2f;
     object_next_state(objectIndex);
     set_obj_origin_pos(objectIndex, D_800E634C[0][0], D_800E634C[0][1] + 55.0, D_800E634C[0][2]);

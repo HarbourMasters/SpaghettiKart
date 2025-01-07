@@ -48,7 +48,7 @@ s32 render_set_position(Mat4 mtx, s32 arg1) {
     if (gMatrixObjectCount >= MTX_OBJECT_POOL_SIZE) {
         return 0;
     }
-    //mtxf_to_mtx(&gGfxPool->mtxObject[gMatrixObjectCount], arg0);
+    // mtxf_to_mtx(&gGfxPool->mtxObject[gMatrixObjectCount], arg0);
     switch (arg1) { /* irregular */
         case 0:
             AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

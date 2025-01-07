@@ -66,7 +66,8 @@ WarioStadium::WarioStadium() {
     this->gfxSize = 5272;
     Props.textures = wario_stadium_textures;
     Props.MinimapTexture = gTextureCourseOutlineWarioStadium;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.MinimapDimensions =
+        IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Name = "wario stadium";
     Props.DebugName = "stadium";

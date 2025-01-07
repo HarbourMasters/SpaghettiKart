@@ -14,8 +14,7 @@ extern "C" {
 class AVehicle; // Forward declare
 
 class ACar : public AVehicle {
-    public:
-
+  public:
     explicit ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
 
     ~ACar() {
@@ -48,6 +47,7 @@ class ACar : public AVehicle {
     virtual void Tick() override;
     virtual void Draw(s32 playerId) override;
     virtual void Collision(s32 playerId, Player* player) override;
-private:
+
+  private:
     static size_t _count;
 };

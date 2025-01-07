@@ -19,7 +19,8 @@ class AudioSequence : public Ship::Resource<AudioSequenceData> {
   public:
     using Resource::Resource;
 
-    AudioSequence() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {}
+    AudioSequence() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
+    }
 
     AudioSequenceData* GetPointer();
     size_t GetPointerSize();
@@ -28,5 +29,5 @@ class AudioSequence : public Ship::Resource<AudioSequenceData> {
     std::vector<uint8_t> banks;
     std::vector<uint8_t> sampleData;
 };
-}
+} // namespace SM64
 #endif

@@ -18,10 +18,9 @@ extern "C" {
 }
 
 class OTrashBin : public OObject {
-public:
-
+  public:
     enum Behaviour {
-        STATIC, // The lid stays shut
+        STATIC,  // The lid stays shut
         MUNCHING // The lid opens/closes in a scary munching manner
     };
     explicit OTrashBin(const FVector& pos, const FRotation& rotation, f32 scale, OTrashBin::Behaviour bhv);
@@ -31,7 +30,7 @@ public:
     void func_8007E00C(s32 objectIndex);
     void init_bb_trash_bin(s32);
 
-private:
+  private:
     static Gfx BinMod[];
     static Vtx BinVtx[];
     static Vtx BinVtx2[];

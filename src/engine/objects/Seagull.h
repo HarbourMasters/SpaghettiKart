@@ -18,7 +18,7 @@ extern "C" {
 
 //! @todo unk_0D5 needs to be a struct variable probably. What does it do? Behaviour?
 class OSeagull : public OObject {
-public:
+  public:
     explicit OSeagull(Vec3f pos);
 
     ~OSeagull() {
@@ -37,11 +37,12 @@ public:
     void func_8008275C(s32 objectIndex);
     void func_8008241C(s32 objectIndex, s32 arg1);
     void func_80082714(s32 objectIndex, s32 arg1);
-private:
+
+  private:
     Vec3f _pos;
     static size_t _count;
     s32 _idx;
     bool _toggle;
 
-    SplineData *spline;
+    SplineData* spline;
 };

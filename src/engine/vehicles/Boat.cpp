@@ -47,19 +47,18 @@ void ABoat::Spawn() {
     if (IsActive == 1) {
         f32 origXPos = Position[0];
         f32 origZPos = Position[2];
-        RotY = update_vehicle_following_waypoint(
-            Position, (s16*) &WaypointIndex,
-            Speed);
+        RotY = update_vehicle_following_waypoint(Position, (s16*) &WaypointIndex, Speed);
         Velocity[0] = Position[0] - origXPos;
         Velocity[2] = Position[2] - origZPos;
         vec3s_set(paddleWheelBoatRot, 0, RotY, 0);
-        ActorIndex = add_actor_to_empty_slot(Position, paddleWheelBoatRot,
-                                    Velocity, ACTOR_PADDLE_BOAT);
+        ActorIndex = add_actor_to_empty_slot(Position, paddleWheelBoatRot, Velocity, ACTOR_PADDLE_BOAT);
     }
 }
 
-void ABoat::BeginPlay() {}
-void ABoat::Draw(s32 playerId) {}
+void ABoat::BeginPlay() {
+}
+void ABoat::Draw(s32 playerId) {
+}
 void ABoat::Tick() {
     Path2D* waypoint;
     struct Actor* paddleBoatActor;
@@ -79,22 +78,20 @@ void ABoat::Tick() {
         temp_f26 = Position[0];
         temp_f28 = Position[1];
         temp_f30 = Position[2];
-        update_vehicle_following_waypoint(Position, (s16*) &WaypointIndex,
-                                            Speed);
-        SomeFlags = set_vehicle_render_distance_flags(Position, BOAT_SMOKE_RENDER_DISTANCE,
-                                                                    SomeFlags);
+        update_vehicle_following_waypoint(Position, (s16*) &WaypointIndex, Speed);
+        SomeFlags = set_vehicle_render_distance_flags(Position, BOAT_SMOKE_RENDER_DISTANCE, SomeFlags);
         if ((((s16) AnotherSmokeTimer % 10) == 0) && (SomeFlags != 0)) {
             smokePos[0] = (f32) ((f64) Position[0] - 30.0);
             smokePos[1] = (f32) ((f64) Position[1] + 180.0);
             smokePos[2] = (f32) ((f64) Position[2] + 45.0);
             adjust_position_by_angle(smokePos, Position, RotY);
-            //spawn_ferry_smoke(Index, smokePos, 1.1f);
+            // spawn_ferry_smoke(Index, smokePos, 1.1f);
             AddSmoke(Index, smokePos, 1.1f);
             smokePos[0] = (f32) ((f64) Position[0] + 30.0);
             smokePos[1] = (f32) ((f64) Position[1] + 180.0);
             smokePos[2] = (f32) ((f64) Position[2] + 45.0);
             adjust_position_by_angle(smokePos, Position, RotY);
-            //spawn_ferry_smoke(Index, smokePos, 1.1f);
+            // spawn_ferry_smoke(Index, smokePos, 1.1f);
             AddSmoke(Index, smokePos, 1.1f);
         }
         if (random_int(100) == 0) {
@@ -177,9 +174,8 @@ void ABoat::Collision(s32 playerId, Player* player) {
             z_diff = playerZ - Position[2];
             if ((x_diff > -300.0) && (x_diff < 300.0)) {
                 if ((z_diff > -300.0) && (z_diff < 300.0)) {
-                    if ((func_80006018(Position[0], Position[2],
-                                        Velocity[0], Velocity[2], 200.0f,
-                                        60.0f, playerX, playerZ) == 1) &&
+                    if ((func_80006018(Position[0], Position[2], Velocity[0], Velocity[2], 200.0f, 60.0f, playerX,
+                                       playerZ) == 1) &&
                         (y_diff < 60.0)) {
                         player->soundEffects |= 0x80000;
                     }

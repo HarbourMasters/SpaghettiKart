@@ -72,7 +72,7 @@ void GameInfoWindow::DrawElement() {
 
     if (gGamestate == RACING) {
 
-         ImGui::Text("Player %f, %f, %f", gPlayers[0].pos[0], gPlayers[0].pos[1], gPlayers[0].pos[2]);
+        ImGui::Text("Player %f, %f, %f", gPlayers[0].pos[0], gPlayers[0].pos[1], gPlayers[0].pos[2]);
 
         for (int i = 0; i < NUM_PLAYERS; i++) {
             ImGui::Text("Player %d: type: %X, char: %d, rank: %d, hasAuthority: %d", i, gPlayers[i].type,

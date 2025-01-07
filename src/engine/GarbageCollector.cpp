@@ -2,7 +2,7 @@
 #include "World.h"
 
 void RunGarbageCollector() {
-    //CleanActors();
+    // CleanActors();
     CleanObjects();
 }
 

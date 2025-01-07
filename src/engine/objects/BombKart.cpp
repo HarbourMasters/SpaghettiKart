@@ -30,7 +30,7 @@ size_t OBombKart::_count = 0;
 
 OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
     _idx = _count;
-    Vec3f _pos = {0, 0, 0};
+    Vec3f _pos = { 0, 0, 0 };
 
     if (waypoint) { // Spawn kart on waypoint
         _pos[0] = waypoint->posX;
@@ -79,7 +79,6 @@ void OBombKart::Spawn() {
 }
 
 void OBombKart::BeginPlay() {
-
 }
 
 void OBombKart::Tick() {
@@ -166,7 +165,7 @@ void OBombKart::Tick() {
                 }
             }
         }
-        switch(state) {
+        switch (state) {
             case States::CCW:
                 circleTimer = (circleTimer + 356) % 360;
                 temp_t6 = (circleTimer * 0xFFFF) / 360;
@@ -412,16 +411,16 @@ void OBombKart::DrawBattle(s32 cameraId) {
 void OBombKart::SomeRender(Vec3f arg1) {
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079C8);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
     load_texture_block_rgba16_mirror((u8*) D_0D02AA58, 0x00000010, 0x00000010);
     D_80183E80[1] = func_800418AC(WheelPos[0][0], WheelPos[0][2], arg1);
-    func_800431B0(WheelPos[0], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(WheelPos[0], D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(WheelPos[1][0], WheelPos[1][2], arg1);
-    func_800431B0(WheelPos[1], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(WheelPos[1], D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(WheelPos[2][0], WheelPos[2][2], arg1);
-    func_800431B0(WheelPos[2], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(WheelPos[2], D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E80[1] = func_800418AC(WheelPos[3][0], WheelPos[3][2], arg1);
-    func_800431B0(WheelPos[3], D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(WheelPos[3], D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
@@ -432,13 +431,13 @@ void OBombKart::LoadMtx() {
     D_80183E50[1] = CenterY + 1.0;
     D_80183E50[2] = Pos[2];
     set_transform_matrix(mat, _Collision.orientationVector, D_80183E50, 0U, 0.5f);
-    //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
+    // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
 
     AddHudMatrix(mat, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
 
     // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
     //           G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B98);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B98);
 }
 
 void OBombKart::Waypoint(s32 screenId) {
@@ -448,15 +447,18 @@ void OBombKart::Waypoint(s32 screenId) {
 
     playerWaypoint = gNearestWaypointByPlayerId[screenId];
     playerHUD[screenId].unk_74 = 0;
-    if ((State == States::EXPLODE) || (State == States::DISABLED)) { return; };
+    if ((State == States::EXPLODE) || (State == States::DISABLED)) {
+        return;
+    };
     bombWaypoint = WaypointIndex;
     waypointDiff = bombWaypoint - playerWaypoint;
-    if ((waypointDiff < -5) || (waypointDiff > 0x1E)) { return; };
+    if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
+        return;
+    };
     playerHUD[screenId].unk_74 = 1;
 }
 
 void OBombKart::Collision(s32 playerId, Player* player) {
-
 }
 
 Player* OBombKart::FindTarget() {
@@ -473,7 +475,8 @@ Player* OBombKart::FindTarget() {
 void OBombKart::Chase(Player* player, Vec3f pos) {
     const f32 speed = 2.7f; // Speed the kart uses in a chase
 
-    if (!player) return; // Ensure player is valid
+    if (!player)
+        return; // Ensure player is valid
 
     // Calculate the directional vector toward the player
     Vec3f direction;
@@ -503,7 +506,7 @@ void OBombKart::Chase(Player* player, Vec3f pos) {
     }
 
     if (xz_dist > 0.0f) {
-        
+
         // Normalize the direction vector in the XZ plane
         direction[0] /= xz_dist;
         direction[2] /= xz_dist;

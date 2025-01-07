@@ -11,7 +11,7 @@ extern "C" {
 }
 
 class AFinishline : public AActor {
-public:
+  public:
     /**
      * Default behaviour places the finishline at the first waypoint.
      * @arg pos, optional. Sets a custom position
@@ -28,13 +28,12 @@ public:
 
     bool PickedUp = false;
     uint32_t Timer = 0;
-    
+
     Player* _player = NULL;
-    
+
     f32 Hop = 3.0f;
     f32 Gravity = 200.0f;
 
     f32 OldHop = 0;
     f32 OldGravity = 0;
-
 };

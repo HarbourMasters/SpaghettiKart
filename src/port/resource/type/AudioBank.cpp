@@ -8,4 +8,4 @@ CtlEntry* AudioBank::GetPointer() {
 size_t AudioBank::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SM64

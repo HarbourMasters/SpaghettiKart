@@ -10,28 +10,28 @@
 #include "engine/actors/AFinishline.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "code_8003DC40.h"
-    #include "memory.h"
-    #include "course_offsets.h"
-    extern const char *choco_mountain_dls[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "code_8003DC40.h"
+#include "memory.h"
+#include "course_offsets.h"
+extern const char* choco_mountain_dls[];
 }
 
 const course_texture choco_mountain_textures[] = {
@@ -64,7 +64,8 @@ ChocoMountain::ChocoMountain() {
     this->gfxSize = 2910;
     Props.textures = choco_mountain_textures;
     Props.MinimapTexture = gTextureCourseOutlineChocoMountain;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.MinimapDimensions =
+        IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:choco_mountain";
     Props.Name = "choco mountain";
@@ -79,7 +80,7 @@ ChocoMountain::ChocoMountain() {
     Props.NearPersp = 2.0f;
     Props.FarPersp = 1500.0f;
 
-    Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -101,12 +102,12 @@ ChocoMountain::ChocoMountain() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_choco_mountain_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_choco_mountain_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_choco_mountain_track_waypoints);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_choco_mountain_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -116,14 +117,14 @@ ChocoMountain::ChocoMountain() {
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
-    Props.Skybox.TopRight = {255, 255, 255};
-    Props.Skybox.BottomRight = {255, 255, 255};
-    Props.Skybox.BottomLeft = {255, 255, 255};
-    Props.Skybox.TopLeft = {255, 255, 255};
-    Props.Skybox.FloorTopRight = {255, 255, 255};
-    Props.Skybox.FloorBottomRight = {255, 255, 255};
-    Props.Skybox.FloorBottomLeft = {255, 255, 255};
-    Props.Skybox.FloorTopLeft = {255, 255, 255};
+    Props.Skybox.TopRight = { 255, 255, 255 };
+    Props.Skybox.BottomRight = { 255, 255, 255 };
+    Props.Skybox.BottomLeft = { 255, 255, 255 };
+    Props.Skybox.TopLeft = { 255, 255, 255 };
+    Props.Skybox.FloorTopRight = { 255, 255, 255 };
+    Props.Skybox.FloorBottomRight = { 255, 255, 255 };
+    Props.Skybox.FloorBottomLeft = { 255, 255, 255 };
+    Props.Skybox.FloorTopLeft = { 255, 255, 255 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_CHOCO_MOUNTAIN;
 }
 
@@ -154,7 +155,7 @@ void ChocoMountain::Load() {
         nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070003C8)));
     }
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
+    parse_course_displaylists((TrackSectionsI*) LOAD_ASSET_RAW(d_course_choco_mountain_addr));
     func_802B5CAC(0x238E, 0x31C7, D_8015F590);
     func_80295C6C();
     D_8015F8E4 = -80.0f;
@@ -165,13 +166,14 @@ void ChocoMountain::LoadTextures() {
 
 void ChocoMountain::SpawnActors() {
     gWorldInstance.AddActor(new AFinishline());
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
-    spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
+    spawn_falling_rocks(
+        (struct ActorSpawnData*) LOAD_ASSET_RAW((const char*) d_course_choco_mountain_falling_rock_spawns));
 }
 
 void ChocoMountain::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        Vec3f pos = { 0, 0, 0 };
 
         gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f);
         gWorldInstance.AddBombKart(pos, &D_80164550[0][165], 165, 1, 0.8333333f);
@@ -209,8 +211,7 @@ void ChocoMountain::SomeSounds() {
 }
 
 void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
         }
@@ -224,8 +225,7 @@ void ChocoMountain::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0xA0) && ((s16) gNearestWaypointByPlayerId[playerId] < 0xB4)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }
@@ -241,7 +241,8 @@ void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 // Positions the finishline on the minimap
 void ChocoMountain::MinimapFinishlinePosition() {
     //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
+    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY,
+                            (u8*) common_texture_minimap_finish_line);
 }
 
 void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {
@@ -292,13 +293,16 @@ void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void ChocoMountain::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_choco_mountain_dl_71B8));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_choco_mountain_dl_71B8));
 }
 
-void ChocoMountain::Collision() {}
+void ChocoMountain::Collision() {
+}
 
-void ChocoMountain::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+void ChocoMountain::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
+                                       f32* arg6, f32* arg7) {
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void ChocoMountain::Destroy() { }
+void ChocoMountain::Destroy() {
+}

@@ -9,14 +9,15 @@
 #include "objects/Object.h"
 
 extern "C" {
-   #include "camera.h"
-   #include "objects.h"
-   #include "main.h"
-   #include "engine/Engine.h"
-   #include "defines.h"
+#include "camera.h"
+#include "objects.h"
+#include "main.h"
+#include "engine/Engine.h"
+#include "defines.h"
 }
 
-World::World() {}
+World::World() {
+}
 
 Course* CurrentCourse;
 Cup* CurrentCup;
@@ -33,7 +34,6 @@ void World::SetCourseFromCup() {
     CurrentCourse = CurrentCup->GetCourse();
 }
 
-
 AVehicle* World::AddVehicle(AVehicle* vehicle) {
     Vehicles.push_back(vehicle);
     return Vehicles.back();
@@ -43,7 +43,8 @@ void World::ClearVehicles(void) {
     Vehicles.clear();
 }
 
-TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {
+TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius,
+                                  f32 exitRadius) {
     auto crossing = std::make_shared<TrainCrossing>(position, waypointMin, waypointMax, approachRadius, exitRadius);
     Crossings.push_back(crossing);
     return crossing.get();
@@ -143,7 +144,7 @@ AActor* World::ConvertActorToAActor(Actor* actor) {
     // Move the ptr back so that it points at the vtable.
     // Which is the initial item in the class, or in other words
     // Point to the class.
-    return reinterpret_cast<AActor*>((char*)actor - sizeof(void*));
+    return reinterpret_cast<AActor*>((char*) actor - sizeof(void*));
 }
 
 /**
@@ -152,7 +153,7 @@ AActor* World::ConvertActorToAActor(Actor* actor) {
 Actor* World::ConvertAActorToActor(AActor* actor) {
     // Move the ptr forward past the vtable.
     // This allows C to access the class variables like a normal Actor* struct.
-    return reinterpret_cast<Actor*>((char*)actor + sizeof(void*));
+    return reinterpret_cast<Actor*>((char*) actor + sizeof(void*));
 }
 
 AActor* World::GetActor(size_t index) {
@@ -182,7 +183,7 @@ void World::TickObjects() {
 // This is a fallback to support those objects. Probably don't use this.
 void World::TickObjects60fps() {
     for (const auto& object : Objects) {
-       object->Tick60fps();
+        object->Tick60fps();
     }
 }
 
@@ -193,25 +194,25 @@ ParticleEmitter* World::AddEmitter(ParticleEmitter* emitter) {
 
 void World::DrawObjects(s32 cameraId) {
     for (const auto& object : Objects) {
-       object->Draw(cameraId);
+        object->Draw(cameraId);
     }
 }
 
 void World::TickParticles() {
     for (const auto& emitter : Emitters) {
-       emitter->Tick();
+        emitter->Tick();
     }
 }
 
 void World::DrawParticles(s32 cameraId) {
     for (const auto& emitter : Emitters) {
-       emitter->Draw(cameraId);
+        emitter->Draw(cameraId);
     }
 }
 
 Object* World::GetObjectByIndex(size_t index) {
-    //if (index < this->Objects.size()) {
-        // Assuming GameActor::a is accessible, use reinterpret_cast if needed
+    // if (index < this->Objects.size()) {
+    //  Assuming GameActor::a is accessible, use reinterpret_cast if needed
     //    return reinterpret_cast<Object*>(&this->Objects[index]->o);
     //}
     return nullptr; // Or handle the error as needed

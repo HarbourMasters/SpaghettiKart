@@ -23,7 +23,7 @@ OHedgehog::OHedgehog(const FVector& pos, const FVector2D& patrolPoint, s16 unk) 
     gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = pos.x * xOrientation;
     gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight = pos.y + 6.0;
     gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = pos.z;
-    gObjectList[objectId].unk_0D5 = (u8)unk;
+    gObjectList[objectId].unk_0D5 = (u8) unk;
     gObjectList[objectId].unk_09C = patrolPoint.x * xOrientation;
     gObjectList[objectId].unk_09E = patrolPoint.z;
 
@@ -36,10 +36,10 @@ void OHedgehog::Tick() {
     OHedgehog::func_800833D0(objectIndex, _idx);
     OHedgehog::func_80083248(objectIndex);
     OHedgehog::func_80083474(objectIndex);
-    
+
     // This func clears a bit from all hedgehogs. This results in setting the height of all hedgehogs to zero.
     // The solution is to only clear the bit from the current instance; `self` or `this`
-    //func_80072120(indexObjectList2, NUM_HEDGEHOGS);
+    // func_80072120(indexObjectList2, NUM_HEDGEHOGS);
     clear_object_flag(objectIndex, 0x00600000); // The fix
 }
 
@@ -76,7 +76,8 @@ void OHedgehog::func_800555BC(s32 objectIndex, s32 cameraId) {
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
         draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                            gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                           (u8*)gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
+                           (u8*) gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64,
+                           32);
     }
 }
 
@@ -96,7 +97,7 @@ void OHedgehog::func_8004A870(s32 objectIndex, f32 arg1) {
         //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
         AddHudMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B98);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B98);
     }
 }
 
@@ -106,7 +107,8 @@ void OHedgehog::func_8008311C(s32 objectIndex, s32 arg1) {
     Object* object;
     Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
 
-    init_texture_object(objectIndex, (u8*)d_course_yoshi_valley_hedgehog_tlut, sHedgehogTexList, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_yoshi_valley_hedgehog_tlut, sHedgehogTexList, 0x40U,
+                        (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     object->activeTexture = d_course_yoshi_valley_hedgehog;

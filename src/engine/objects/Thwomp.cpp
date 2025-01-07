@@ -50,8 +50,8 @@ OThwomp::OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 prim
     _idx = _count;
     _faceDirection = direction;
     _boundingBoxSize = boundingBoxSize;
-    State = (States)behaviour;
-    
+    State = (States) behaviour;
+
     if (_idx >= 32) {
         printf("MAX THWOMPS REACHED (32), skipping\n");
         return;
@@ -131,7 +131,6 @@ void OThwomp::Tick60fps() { // func_80081210
         if (is_obj_flag_status_active(objectIndex, 0x00010000) != 0) {
             OThwomp::func_80080A4C(objectIndex, var_s4);
         }
-
     }
     OThwomp::func_8007542C(3);
 
@@ -185,8 +184,8 @@ void OThwomp::func_80081080(s32 objectIndex) {
     Object* object;
 
     object = &gObjectList[objectIndex];
-    object->activeTexture = (const char*)D_8018D490;
-    object->textureList = (const char**)D_8018D490;
+    object->activeTexture = (const char*) D_8018D490;
+    object->textureList = (const char**) D_8018D490;
     object->primAlpha = 0x00FF;
     object->direction_angle[1] = 0;
     object->orientation[0] = 0;
@@ -638,8 +637,8 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                     }
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
-                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + _boundingBoxSize) !=
-                        0)) {
+                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0,
+                                                                (temp_s0->unk_094 * 0.5) + _boundingBoxSize) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -692,29 +691,29 @@ void OThwomp::Draw(s32 cameraId) {
         OThwomp::DrawModel(objectIndex);
     }
 
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079C8);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPNumLights(gDisplayListHead++, 1);
     gSPLight(gDisplayListHead++, &D_800E4668.l[0], LIGHT_1);
     gSPLight(gDisplayListHead++, &D_800E4668.a, LIGHT_2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
-    load_texture_block_rgba16_mirror((u8*)d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
+    load_texture_block_rgba16_mirror((u8*) d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
     for (i = 0; i < gObjectParticle3_SIZE; i++) {
         objectIndex = gObjectParticle3[i];
         if (objectIndex != NULL_OBJECT_ID) {
             object = &gObjectList[objectIndex];
             if ((object->state > 0) && (State == MOVE_FAR) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
-                gSPVertex(gDisplayListHead++, (uintptr_t)D_0D005C00, 3, 0);
-                gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D006930);
+                gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005C00, 3, 0);
+                gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D006930);
             }
         }
     }
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
     load_texture_block_ia8_nomirror(D_8018D490, 0x00000020, 0x00000020);
     func_8004B3C8(0);
     D_80183E80[0] = 0;
@@ -726,7 +725,7 @@ void OThwomp::Draw(s32 cameraId) {
             if ((object->state >= 2) && (State == MOVE_AND_ROTATE) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) object->primAlpha);
                 D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
-                func_800431B0(object->pos, D_80183E80, object->sizeScaling, (Vtx*)D_0D005AE0);
+                func_800431B0(object->pos, D_80183E80, object->sizeScaling, (Vtx*) D_0D005AE0);
             }
         }
     }
@@ -738,10 +737,10 @@ void OThwomp::DrawModel(s32 objectIndex) {
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                       gObjectList[objectIndex].sizeScaling);
         OThwomp::ThwompLights(objectIndex);
-        gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007828);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
-        rsp_load_texture_mask((u8*)gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
+        rsp_load_texture_mask((u8*) gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
         gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].model);
     }
 }
@@ -839,9 +838,9 @@ void OThwomp::func_8007EC30(s32 objectIndex) {
         set_obj_direction_angle(objectIndex, 0U, _faceDirection, 0U);
         set_obj_orientation(objectIndex, 0U, _faceDirection, 0U);
     }
-    init_texture_object(objectIndex, (uint8_t*) d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    init_texture_object(objectIndex, (uint8_t*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     object->unk_01C[1] = 30.0f;
     set_object_flag(objectIndex, 0x05000220);
     object->type = 0;
@@ -876,10 +875,10 @@ void OThwomp::MoveAndRotateBehaviour(s32 objectIndex) { // func_8007F5A8
 void OThwomp::func_8007EE5C(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, (u8*)d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     set_object_flag(objectIndex, 0x04000220);
     object->type = 0;
     object->unk_0DF = 6;
@@ -929,10 +928,10 @@ void OThwomp::MoveFarBehaviour(s32 objectIndex) { // func_8007FFC0
 void OThwomp::func_8007FA08(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, (u8*)d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     set_object_flag(objectIndex, 0x04000220);
     object->type = 0;
     object->surfaceHeight = 0.0f;
@@ -1095,10 +1094,10 @@ void OThwomp::StationaryFastBehaviour(s32 objectIndex) { // func_800801FC
 void OThwomp::func_80080078(s32 objectIndex) { // func_80080078
     Object* object;
 
-    init_texture_object(objectIndex, (u8*)d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     set_object_flag(objectIndex, 0x04000220);
     object->type = 2;
     object->unk_0DF = 8;
@@ -1166,11 +1165,11 @@ void OThwomp::func_800802C0(s32 objectIndex) {
 
     object = &gObjectList[objectIndex];
     object->unk_0D8 = 0;
-    init_texture_object(objectIndex, (u8*)d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     object->textureListIndex = 0;
-    //object->sizeScaling = 1.5f;
+    // object->sizeScaling = 1.5f;
     set_object_flag(objectIndex, 0x05000220);
     object->type = 1;
     object->unk_0DF = 6;
@@ -1192,7 +1191,7 @@ void OThwomp::func_800802C0(s32 objectIndex) {
 }
 
 void OThwomp::SlidingBehaviour(s32 objectIndex) { // func_800808CC
-    switch (gObjectList[objectIndex].state) { /* irregular */
+    switch (gObjectList[objectIndex].state) {     /* irregular */
         case 0:
             break;
         case 1:
@@ -1276,10 +1275,10 @@ void OThwomp::func_8008078C(s32 objectIndex) {
 void OThwomp::func_80080524(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, (u8*)d_course_bowsers_castle_thwomp_tlut, (const char**) d_course_bowsers_castle_thwomp_faces,
-                        0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_bowsers_castle_thwomp_tlut,
+                        (const char**) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->model = (Gfx*)d_course_bowsers_castle_dl_thwomp;
+    object->model = (Gfx*) d_course_bowsers_castle_dl_thwomp;
     object->textureListIndex = 0;
     set_object_flag(objectIndex, 0x04000220);
     object->type = 0;

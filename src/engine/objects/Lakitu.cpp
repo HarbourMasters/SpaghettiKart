@@ -31,7 +31,7 @@ extern "C" {
 #include "course_offsets.h"
 #include "data/some_data.h"
 #include "race_logic.h"
-#include  "effects.h"
+#include "effects.h"
 #include "memory.h"
 extern s8 gPlayerCount;
 }
@@ -39,11 +39,11 @@ extern s8 gPlayerCount;
 OLakitu::OLakitu(s32 playerId, LakituType type) {
     _playerId = playerId;
 
-    init_object(gIndexLakituList[playerId], (s32)type);
+    init_object(gIndexLakituList[playerId], (s32) type);
 }
 
 void OLakitu::Activate(LakituType type) {
-    init_object(gIndexLakituList[_playerId], (s32)type);
+    init_object(gIndexLakituList[_playerId], (s32) type);
 }
 
 void OLakitu::Tick() {
@@ -103,13 +103,14 @@ void OLakitu::Draw(s32 cameraId) {
         object->orientation[2] = 0x8000;
         if (func_80072354(objectIndex, 2) != 0) {
             draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8*) object->activeTLUT,
-                               (u8*)object->activeTexture, object->vertex, (s32) object->textureWidth,
+                               (u8*) object->activeTexture, object->vertex, (s32) object->textureWidth,
                                (s32) object->textureHeight, (s32) object->textureWidth,
                                (s32) object->textureHeight / 2);
         } else {
             func_800485C4(object->pos, object->orientation, object->sizeScaling, (s32) object->primAlpha,
-                          (u8*) object->activeTLUT, (u8*)object->activeTexture, object->vertex, (s32) object->textureWidth,
-                          (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
+                          (u8*) object->activeTLUT, (u8*) object->activeTexture, object->vertex,
+                          (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth,
+                          (s32) object->textureHeight / 2);
         }
         if (gScreenModeSelection == SCREEN_MODE_1P) {
             var_f0 = object->pos[0] - camera->pos[0];
@@ -361,7 +362,7 @@ void OLakitu::func_800797AC(s32 playerId) {
 
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
-    //if ((GetCourse() == GetSherbetLand()) && (player->unk_0CA & 1)) {
+    // if ((GetCourse() == GetSherbetLand()) && (player->unk_0CA & 1)) {
     if ((CourseManager_GetProps()->LakituTowType == LakituTowType::ICE) && (player->unk_0CA & 1)) {
         init_object(objectIndex, 7);
         player->unk_0CA |= 0x10;
@@ -764,14 +765,12 @@ void OLakitu::func_8007A66C(s32 objectIndex) {
     u16 rot = 0x8000 - camera->rot[1];
 
     gObjectList[objectIndex].pos[0] =
-        (player->pos[0] +
-         (coss(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) -
+        (player->pos[0] + (coss(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) -
         (sins(rot) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].offset[2]));
     gObjectList[objectIndex].pos[1] =
         player->unk_074 + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].offset[1];
     gObjectList[objectIndex].pos[2] =
-        (player->pos[2] +
-         (sins(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) +
+        (player->pos[2] + (sins(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) +
         (coss(rot) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].offset[2]));
 }
 
@@ -779,16 +778,14 @@ void OLakitu::func_8007A778(s32 objectIndex) {
     Player* player = &gPlayers[_playerId];
     Camera* camera = &cameras[_playerId];
     u16 rot = 0x8000 - camera->rot[1];
-    
+
     gObjectList[objectIndex].pos[0] =
-        (player->pos[0] +
-         (coss(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) -
+        (player->pos[0] + (coss(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) -
         (sins(rot) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].offset[2]));
     gObjectList[objectIndex].pos[1] =
         player->pos[1] + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].offset[1];
     gObjectList[objectIndex].pos[2] =
-        (player->pos[2] +
-         (sins(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) +
+        (player->pos[2] + (sins(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) +
         (coss(rot) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].offset[2]));
 }
 
@@ -800,7 +797,7 @@ void OLakitu::func_8007A88C(s32 playerId) {
     player = &gPlayerOne[playerId];
 
     if ((gObjectList[objectIndex].state == 0) && (player->effects & 0x400000)) {
-        //func_800790E4(playerId);
+        // func_800790E4(playerId);
         init_object(gIndexLakituList[playerId], 6);
     }
 }
@@ -818,7 +815,7 @@ void OLakitu::func_8007AA44(s32 playerId) {
 
     OLakitu::func_8007A910(playerId);
     objectIndex = gIndexLakituList[playerId];
-    gLakituTexturePtr = (const char**)&gLakituTextureBuffer[playerId];
+    gLakituTexturePtr = (const char**) &gLakituTextureBuffer[playerId];
     switch (gObjectList[objectIndex].unk_0D8) {
         case 1:
             OLakitu::func_80079114(objectIndex, playerId, 2);
@@ -853,4 +850,3 @@ void OLakitu::func_8007AA44(s32 playerId) {
             break;
     }
 }
-

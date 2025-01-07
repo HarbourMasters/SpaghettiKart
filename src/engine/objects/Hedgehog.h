@@ -23,7 +23,7 @@ extern "C" {
  * @arg unk unknown. Likely actor type.
  */
 class OHedgehog : public OObject {
-public:
+  public:
     explicit OHedgehog(const FVector& pos, const FVector2D& patrolPoint, s16 unk);
 
     ~OHedgehog() {
@@ -45,8 +45,7 @@ public:
     void func_800833D0(s32 objectIndex, s32 arg1);
     void func_80083474(s32 objectIndex);
 
-
-private:
+  private:
     FVector _pos;
     static size_t _count;
     size_t _idx;

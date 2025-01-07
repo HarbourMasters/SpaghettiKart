@@ -4,11 +4,10 @@
 
 /**
  * @file CoreMath.h
- * 
+ *
  * Basic vector structs for manipulating 2D and 3D coordinates
- * 
+ *
  */
-
 
 struct FVector {
     float x, y, z;
@@ -41,10 +40,11 @@ struct FVector2D {
 struct IVector2D {
     int32_t X, Z;
 
-    IVector2D() : X(0), Z(0) {}  // Default constructor
+    IVector2D() : X(0), Z(0) {
+    } // Default constructor
 
-    IVector2D(int32_t x, int32_t z) : X(x), Z(z) {}  // Constructor to initialize with values
-
+    IVector2D(int32_t x, int32_t z) : X(x), Z(z) {
+    } // Constructor to initialize with values
 
     IVector2D& operator=(const IVector2D& other) {
         X = other.X;
@@ -72,11 +72,12 @@ struct IPathSpan {
     int Start, End;
 
     // Default Constructor
-    IPathSpan() : Start(0), End(0) {}
+    IPathSpan() : Start(0), End(0) {
+    }
 
     // Parameterized Constructor
-    IPathSpan(int InStart, int InEnd)
-        : Start(InStart), End(InEnd) {}
+    IPathSpan(int InStart, int InEnd) : Start(InStart), End(InEnd) {
+    }
 
     // Copy Assignment Operator
     IPathSpan& operator=(const IPathSpan& Other) {

@@ -154,7 +154,8 @@ void func_80011EC0(s32, Player*, s32, u16);
 
 void generate_train_waypoints(void);
 void generate_ferry_waypoints(void);
-void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex, s32 someMultiplierTheSequel, f32 speed);
+void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex,
+                           s32 someMultiplierTheSequel, f32 speed);
 void spawn_course_vehicles(void);
 void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(size_t, size_t, f32);

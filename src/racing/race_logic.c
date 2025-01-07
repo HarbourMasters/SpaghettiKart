@@ -426,7 +426,7 @@ void func_8028EC98(s32 arg0) {
 
     enum MusicSeq sequence = CourseManager_GetProps()->Sequence;
 
-    if(sequence != MUSIC_SEQ_UNKNOWN){
+    if (sequence != MUSIC_SEQ_UNKNOWN) {
         play_sequence(sequence);
     }
 }

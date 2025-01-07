@@ -38,7 +38,7 @@ typedef struct {
     float AIMinimumSeparation;
     float NearPersp;
     float FarPersp;
-    s16 *SomePtr;
+    s16* SomePtr;
     u32 AISteeringSensitivity;
     _struct_gCoursePathSizes_0x10 PathSizes;
     Vec4f D_0D009418;
@@ -47,12 +47,12 @@ typedef struct {
     Vec4f D_0D009808;
     TrackWaypoint* PathTable[4];
     TrackWaypoint* PathTable2[4];
-    CloudData *Clouds;
-    CloudData *CloudList;
+    CloudData* Clouds;
+    CloudData* CloudList;
     s32 MinimapFinishlineX;
     s32 MinimapFinishlineY;
     SkyboxColours Skybox;
-    const course_texture *textures;
+    const course_texture* textures;
     enum MusicSeq Sequence;
 } CProperties;
 

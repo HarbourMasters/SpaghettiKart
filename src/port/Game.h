@@ -101,7 +101,8 @@ s32 CourseManager_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CourseManager_VehiclesSpawn();
 
-void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                             uint16_t playerDirection);
 
 void CourseManager_AICrossingBehaviour(s32 playerId);
 

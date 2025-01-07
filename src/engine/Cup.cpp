@@ -42,5 +42,5 @@ size_t Cup::GetSize() {
 void Cup::ShuffleCourses() {
     // std::random_device rd;
     // std::mt19937 g(rd());
-    //std::shuffle(Courses.begin(), Courses.end(), g);
+    // std::shuffle(Courses.begin(), Courses.end(), g);
 }
