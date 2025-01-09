@@ -376,7 +376,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
     u16 noteSamplesDmemAddrBeforeResampling;
     UNUSED s32 pad6[1];
     struct Note* note;
-    u16 addr;
+    s16 addr;
 
     curLoadedBook = NULL;
     note = &gNotes[noteIndex];
@@ -481,7 +481,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                     var_t2 = ((uintptr_t) var_a0_2 & 0xF);
 
                     aligned = ALIGN(((loopInfo_2 * 9) + 16), 4);
-                    addr = (0x540 - aligned) & 0xFFFF; // DMEM_ADDR_COMPRESSED_ADPCM_DATA
+                    addr = (0x540 - aligned); // DMEM_ADDR_COMPRESSED_ADPCM_DATA
 
                     aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(var_a0_2 - var_t2), addr, aligned);
                 } else {
@@ -500,7 +500,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                 if (nAdpcmSamplesProcessed == 0) {
 
                     aligned = ALIGN(((loopInfo_2 * 9) + 16), 4);
-                    addr = (0x540 - aligned) & 0xFFFF;
+                    addr = (0x540 - aligned);
                     aSetBuffer(cmd++, 0, addr + var_t2, 0x1A0,
                                s1 * 2); // unsure
                                         //                                        s1 or s3 here?
@@ -510,7 +510,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                 } else {
 
                     aligned = ALIGN(((loopInfo_2 * 9) + 16), 4);
-                    addr = (0x540 - aligned) & 0xFFFF;
+                    addr = (0x540 - aligned);
                     aSetBuffer(cmd++, 0, addr + var_t2, 0x1A0 + s5Aligned, s1 * 2); // unsure
 
                     aADPCMdec(cmd++, flags, VIRTUAL_TO_PHYSICAL2(synthesisState->synthesisBuffers->adpcmdecState));
@@ -541,8 +541,10 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                     aClearBuffer(cmd++, 0x1A0 + s4, (samplesLenAdjusted - nAdpcmSamplesProcessed) * 2);
                     noteSubEu->finished = 1; // sm64 says = 1
                     note->noteSubEu.finished = 1;
+                    note->noteSubEu.enabled = 0;
 
                     func_800B6FB4(updateIndex, noteIndex);
+                    break;
                 } else {
                     if (restart) {
                         synthesisState->restart = true;
@@ -573,7 +575,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                                             resampledTempLen + DMEM_ADDR_RESAMPLED);
                             break;
                     }
-                    break;
+                    //break;
             }
             if (noteSubEu->finished != false) {
                 break;
