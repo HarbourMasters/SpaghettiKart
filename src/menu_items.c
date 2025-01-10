@@ -358,6 +358,13 @@ char* D_800E76DC[] = {
     "extra",
 };
 
+char* gDebugCCModeNames[] = {
+    "50CC",
+    "100CC",
+    "150CC",
+    "EXTRA",
+};
+
 char* gDebugScreenModeNames[] = {
     "1p", "2players UD", "2players LR", "3players", "4players",
 };
@@ -2504,7 +2511,7 @@ void func_80095574(void) {
         debug_print_str2(var_v0 + 0xB9, 0x0000006E, GetCoursePropsA()->DebugName);
 
         debug_print_str2(80, 120, "cc_mode");
-        debug_print_str2(170, 120, D_800E76DC[gCCSelection]);
+        debug_print_str2(170, 120, gDebugCCModeNames[gCCSelection]);
 
         debug_print_str2(80, 130, "screen_mode");
         debug_print_str2(170, 130, gDebugScreenModeNames[gScreenModeListIndex]);
