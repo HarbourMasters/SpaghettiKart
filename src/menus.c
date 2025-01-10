@@ -1072,7 +1072,26 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & D_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    gDebugMenuSelection = DEBUG_MENU_CC;
+                }
+                break;
+            }
+            case DEBUG_MENU_CC: {
+                if ((btnAndStick & R_JPAD) && (gCCSelection < 3)) {
+                    gCCSelection += 1;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                if ((btnAndStick & L_JPAD) && (gCCSelection > 0)) {
+                    gCCSelection -= 1;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                if (btnAndStick & U_JPAD) {
+                    gDebugMenuSelection = DEBUG_MENU_COURSE;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                if (btnAndStick & D_JPAD) {
                     gDebugMenuSelection = DEBUG_MENU_SCREEN_MODE;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 break;
             }
@@ -1088,7 +1107,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     gScreenModeSelection = sScreenModePlayerTable[gScreenModeListIndex];
                 }
                 if (btnAndStick & U_JPAD) {
-                    gDebugMenuSelection = DEBUG_MENU_COURSE;
+                    gDebugMenuSelection = DEBUG_MENU_CC;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (btnAndStick & D_JPAD) {

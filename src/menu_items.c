@@ -2462,25 +2462,28 @@ void func_80095574(void) {
     }
     if (gDebugMenuSelection >= 2) {
         load_debug_font();
-        debug_print_str2(0x00000050, 0x00000064, "debug_mode");
+        debug_print_str2(80, 100, "debug_mode");
         switch (gDebugMenuSelection) {
             case DEBUG_MENU_DEBUG_MODE:
-                debug_print_str2(0x00000046, 0x00000064, "*");
+                debug_print_str2(70, 100, "*");
                 break;
             case DEBUG_MENU_COURSE:
-                debug_print_str2(0x00000046, 0x0000006E, "*");
+                debug_print_str2(70, 110, "*");
+                break;
+            case DEBUG_MENU_CC:
+                debug_print_str2(70, 120, "*");
                 break;
             case DEBUG_MENU_SCREEN_MODE:
-                debug_print_str2(0x00000046, 0x00000078, "*");
+                debug_print_str2(70, 130, "*");
                 break;
             case DEBUG_MENU_PLAYER:
-                debug_print_str2(0x00000046, 0x00000082, "*");
+                debug_print_str2(70, 140, "*");
                 break;
             case DEBUG_MENU_SOUND_MODE:
-                debug_print_str2(0x00000046, 0x0000008C, "*");
+                debug_print_str2(70, 150, "*");
                 break;
             case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
-                debug_print_str2(0x00000046, 0x00000096, "*");
+                debug_print_str2(70, 160, "*");
                 break;
         }
         if (gEnableDebugMode) {
@@ -2499,14 +2502,18 @@ void func_80095574(void) {
             var_v0 = 8;
         }
         debug_print_str2(var_v0 + 0xB9, 0x0000006E, GetCoursePropsA()->DebugName);
-        debug_print_str2(0x00000050, 0x00000078, "screen_mode");
-        debug_print_str2(0x000000AA, 0x00000078, gDebugScreenModeNames[gScreenModeListIndex]);
-        debug_print_str2(0x00000050, 0x00000082, "player");
-        debug_print_str2(0x000000AA, 0x00000082, gDebugCharacterNames[gCharacterSelections[0]]);
-        debug_print_str2(0x00000050, 0x0000008C, "sound mode");
-        debug_print_str2(0x000000AA, 0x0000008C, gDebugSoundModeNames[gSoundMode]);
+
+        debug_print_str2(80, 120, "cc_mode");
+        debug_print_str2(170, 120, D_800E76DC[gCCSelection]);
+
+        debug_print_str2(80, 130, "screen_mode");
+        debug_print_str2(170, 130, gDebugScreenModeNames[gScreenModeListIndex]);
+        debug_print_str2(80, 140, "player");
+        debug_print_str2(170, 140, gDebugCharacterNames[gCharacterSelections[0]]);
+        debug_print_str2(80, 150, "sound mode");
+        debug_print_str2(170, 150, gDebugSoundModeNames[gSoundMode]);
         if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
-            debug_print_str2(0x00000050, 0x00000096, "push b to get all goldcup");
+            debug_print_str2(80, 160, "push b to get all goldcup");
         }
         func_80057778();
     }
