@@ -81,18 +81,14 @@ void ModelLoader::Extract(Course* course) {
 }
 
 void ModelLoader::UpdateVtx(LoadModelList list) {
-    printf("UPDATING VRTX\n");
     for (size_t i = 0; i < list.gfxStart + list.gfxBufferSize; i++) {
         Gfx* gfx = &list.gfxBuffer[i];
 
         // Check if the current Gfx command is G_VTX
-        printf("w0: %llX\n",gfx->words.w0);
         if (GFX_GET_OPCODE(gfx->words.w0) == (G_VTX << 24)) {
-
+            // Re-write the vtx to point at the provided vtx buffer.
             size_t vtxIndex = (gfx->words.w1 / sizeof(Vtx)) - list.vtxStart;
             gfx->words.w1 = reinterpret_cast<uintptr_t>(&list.vtxBuffer[vtxIndex]);
-            printf("vtx index: 0x%X\n", vtxIndex);
-            printf("FOUND VTX %llX\n", gfx->words.w1);
         }
     }
 }
