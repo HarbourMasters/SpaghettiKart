@@ -7,6 +7,7 @@
 #include "TestCourse.h"
 #include "World.h"
 #include "engine/actors/AFinishline.h"
+#include "engine/actors/BowserStatue.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
 #include "assets/mario_raceway_data.h"
@@ -207,14 +208,15 @@ void TestCourse::SpawnActors() {
     // gWorldInstance.AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
     // gWorldInstance.AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
     //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
-    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), FRotation(0, 90, 0), 1.0f));
+    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), FRotation(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
 //gWorldInstance.AddEmitter(new StarEmitter(FVector(0,50,0)));
     //gWorldInstance.AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
     //gWorldInstance.AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
 //    gWorldInstance.AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
 
-    gWorldInstance.AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
+    //gWorldInstance.AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
+    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
 }
 
 // Likely sets minimap boundaries

@@ -35,7 +35,7 @@ typedef struct {
 freecamSaveState fState;
 
 u32 fRankIndex = 0;
-u32 fTargetPlayer = true;
+u32 fTargetPlayer = false;
 u32 fMode; // freecam mode should probably be an enum
 u32 fModeInit = false;
 
