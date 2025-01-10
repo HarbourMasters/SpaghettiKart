@@ -1726,6 +1726,7 @@ void func_8004B97C_wide(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     }
 }
 
+// extra mode minimap
 void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     UNUSED s32 pad[2];
     s32 sp2C;
@@ -1746,7 +1747,7 @@ void func_8004BA08(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
             phi_v0 = -arg1;
             phi_a1 = 0;
         }
-        render_texture_rectangle(sp2C, phi_a1, arg2 - phi_v1, arg3 - phi_v0, phi_v1 + arg2, phi_v0, arg4);
+        render_texture_rectangle_wide(sp2C, phi_a1, arg2 - phi_v1, arg3 - phi_v0, phi_v1 + arg2, phi_v0, arg4);
     }
 }
 
