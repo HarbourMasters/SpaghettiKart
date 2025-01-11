@@ -30,7 +30,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
         return;
     }
 
-    if (CVarGetInteger("gDisableLod", 0) == 1) {
+    if (CVarGetInteger("gDisableLod", 1) == 1) {
         distance = 0.0f;
     }
 
@@ -185,7 +185,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
         return;
     }
 
-    if (CVarGetInteger("gDisableLod", 0) == 1) {
+    if (CVarGetInteger("gDisableLod", 1) == 1) {
         temp_f0 = 0.0f;
     }
 
@@ -278,7 +278,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
         return;
     }
 
-    if (CVarGetInteger("gDisableLod", 0) == 1) {
+    if (CVarGetInteger("gDisableLod", 1) == 1) {
         temp_f0 = 0.0f;
     }
 

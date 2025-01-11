@@ -174,7 +174,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     index = ((index - 1) * 4) + direction;
     gSPDisplayList(gDisplayListHead++, addr[index]);
 
-    if (CVarGetInteger("gDisableLod", 0) == 1 && (GetCourse() == GetBowsersCastle()) &&
+    if (CVarGetInteger("gDisableLod", 1) == 1 && (GetCourse() == GetBowsersCastle()) &&
         (index < 20 || index > 99)) { // always render higher version of bowser statue
         gDisplayListHead--;
         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the course
@@ -191,7 +191,7 @@ void render_mario_raceway_pipe(void) {
         // d_course_mario_raceway_packed_dl_8E8
         gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070008E8)));
     } else {
-        if (CVarGetInteger("gDisableLod", 0) == true) {
+        if (CVarGetInteger("gDisableLod", 1) == true) {
             gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x070008E8)));
             return;
         }

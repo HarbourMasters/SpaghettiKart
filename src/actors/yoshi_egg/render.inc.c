@@ -34,7 +34,7 @@ void render_actor_yoshi_egg(Camera* arg0, Mat4 arg1, struct YoshiValleyEgg* egg,
         temp_f0 = 0.0f;
     }
 
-    if (CVarGetInteger("gDisableLod", 0) == 1) {
+    if (CVarGetInteger("gDisableLod", 1) == 1) {
         arg3 = 15;
         temp_f0 = 0.0f;
     }

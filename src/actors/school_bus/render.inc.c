@@ -28,7 +28,7 @@ void render_actor_school_bus(Camera* arg0, struct Actor* arg1) {
         return;
     }
 
-    if (CVarGetInteger("gDisableLod", 0) == 1) {
+    if (CVarGetInteger("gDisableLod", 1) == 1) {
         temp_f0 = 0.0f;
     }
 
