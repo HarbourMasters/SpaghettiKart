@@ -3340,7 +3340,7 @@ void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
             func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth,
                           gObjectList[objectIndex].textureHeight);
         }
-        func_80042330(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
+        func_80042330_unchanged(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
         gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
@@ -3354,7 +3354,7 @@ void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
                           gObjectList[objectIndex].textureHeight);
         }
         func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, gObjectList[objectIndex].primAlpha);
-        func_80042330(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
+        func_80042330_unchanged(arg1, arg2, 0U, gObjectList[objectIndex].sizeScaling);
         gSPVertex(gDisplayListHead++, gObjectList[objectIndex].vertex, 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
