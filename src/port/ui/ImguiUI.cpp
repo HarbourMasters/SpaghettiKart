@@ -451,7 +451,11 @@ void DrawGameMenu() {
 #endif
                                 )) {
             gGamestateNext = MAIN_MENU_FROM_QUIT;
-            gMenuSelection = START_MENU;
+            if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+                gMenuSelection = START_MENU;
+            } else {
+                gMenuSelection = LOGO_INTRO_MENU;
+            }
         }
 #if !defined(__SWITCH__) && !defined(__WIIU__)
 
