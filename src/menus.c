@@ -1744,14 +1744,14 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & R_JPAD) != 0) {
                     sTempCupSelection = WorldNextCup();
                     //++gCupSelection;
-                    reset_cycle_flash_menu();
-                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    //reset_cycle_flash_menu();
+                    //play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (((btnAndStick & L_JPAD) != 0)) {
                     sTempCupSelection = WorldPreviousCup();
                     //--gCupSelection;
-                    reset_cycle_flash_menu();
-                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    //reset_cycle_flash_menu();
+                    //play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
                 D_800DC540 = GetCupIndex();
