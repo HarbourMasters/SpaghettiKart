@@ -1879,12 +1879,48 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 
+// Time trials 
+void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
+    s32 stringWidth = 0;
+    s32 glyphIndex;
+
+    gSPDisplayList(gDisplayListHead++, D_020077A8);
+    if (*text != 0) {
+        do {
+            glyphIndex = char_to_glyph_index(text);
+            if (glyphIndex >= 0) {
+                load_menu_img((MenuTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
+                gDisplayListHead =
+                    print_letter_wide_right(gDisplayListHead,
+                                 (MenuTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]),
+                                 column + (stringWidth * scaleX), row, mode, scaleX, scaleY);
+                stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
+            } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
+                stringWidth += tracking + 7;
+            } else {
+                gSPDisplayList(gDisplayListHead++, D_020077D8);
+                return;
+            }
+            if (glyphIndex >= 0x30) {
+                text += 2;
+            } else {
+                text += 1;
+            }
+        } while (*text != 0);
+    }
+    gSPDisplayList(gDisplayListHead++, D_020077D8);
+}
+
 void print_text_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
 void print_text_mode_2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 2);
+}
+
+void print_text_mode_2_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text0_wide_right(column, row, text, tracking, scaleX, scaleY, 2);
 }
 
 // "tracking" is a uniform spacing between all characters in a given word
@@ -2715,6 +2751,43 @@ func_80095BD0_label2:
     return func_800959F8(displayListHead, var_a1);
 }
 
+Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
+    Vtx* var_a1;
+    // A match is a match, but why are goto's required here?
+    if (gMatrixEffectCount >= 0x2F7) {
+        goto func_80095BD0_label1;
+    }
+    if (gMatrixEffectCount < 0) {
+        rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
+    }
+    goto func_80095BD0_label2;
+func_80095BD0_label1:
+    rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
+    return displayListHead;
+func_80095BD0_label2:
+    func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
+    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gMKLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    switch (arg4) {
+        default:
+            var_a1 = D_02007CD8;
+            break;
+        case 16:
+            var_a1 = D_02007CD8;
+            break;
+        case 26:
+            var_a1 = D_02007BB8;
+            break;
+        case 30:
+            var_a1 = D_02007DF8;
+            break;
+    }
+
+    return func_800959F8(displayListHead, var_a1);
+}
+
 // Player select menu character border
 Gfx* func_80095E10(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 texScaleT, s32 srcX, s32 srcY,
                    s32 srcWidth, s32 srcHeight, s32 screenX, s32 screenY, u8* textureData, u32 texWidth,
@@ -3243,6 +3316,44 @@ Gfx* draw_box_wide(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32
     gSPDisplayList(displayListHead++, D_02008008);
     gDPSetPrimColor(displayListHead++, 0, 0, red, green, blue, alpha);
     gDPFillWideRectangle(displayListHead++, OTRGetRectDimensionFromLeftEdge(ulx), uly,
+                         OTRGetRectDimensionFromRightEdge(lrx), lry);
+    gDPPipeSync(displayListHead++);
+    return displayListHead;
+}
+
+// Time trials race data cannot be saved for ghost box
+Gfx* draw_box_wide_right(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green, u32 blue, u32 alpha) {
+    red &= 0xFF;
+    green &= 0xFF;
+    blue &= 0xFF;
+    alpha &= 0xFF;
+    if (lrx < ulx) {
+        swap_values(&ulx, &lrx);
+    }
+    if (lry < uly) {
+        swap_values(&uly, &lry);
+    }
+    if ((ulx >= 0x140) || (uly >= 0xF0)) {
+        return displayListHead;
+    }
+    if (ulx < 0) {
+        ulx = 0;
+    }
+    if (uly < 0) {
+        uly = 0;
+    }
+    if ((lrx < 0) || (lry < 0)) {
+        return displayListHead;
+    }
+    if (lrx >= 0x141) {
+        lrx = 0x140;
+    }
+    if (lry >= 0xF1) {
+        lry = 0xF0;
+    }
+    gSPDisplayList(displayListHead++, D_02008008);
+    gDPSetPrimColor(displayListHead++, 0, 0, red, green, blue, alpha);
+    gDPFillWideRectangle(displayListHead++, OTRGetRectDimensionFromRightEdge(ulx), uly,
                          OTRGetRectDimensionFromRightEdge(lrx), lry);
     gDPPipeSync(displayListHead++);
     return displayListHead;
@@ -4331,6 +4442,58 @@ Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 
                     case 2:
                         gSPDisplayList(arg0++, D_02007818);
                         arg0 = func_80095BD0(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
+                                             var_s0->height, scaleX, scaleY);
+                        break;
+                }
+            }
+            var_s0++;
+        }
+    }
+    return arg0;
+}
+
+Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY) {
+    s32 var_v0;
+    u8* temp_v0_2;
+    f32 thing0;
+    f32 thing1;
+    MenuTexture* var_s0;
+
+    var_s0 = segmented_to_virtual_dupe(glyphTexture);
+    while (var_s0->textureData != NULL) {
+        var_v0 = 0;
+
+        thing0 = var_s0->dX + arg2;
+        if (thing0 > 320.0f) {
+            var_v0 = 1;
+        }
+        thing0 += var_s0->width * scaleX;
+        if (thing0 < 0.0f) {
+            var_v0 += 1;
+        }
+        thing1 = var_s0->dY + arg3;
+        if (thing1 < 0.0f) {
+            var_v0 += 1;
+        }
+        thing1 -= var_s0->height * scaleY;
+        if (thing1 > 240.0f) {
+            var_v0 += 1;
+        }
+
+        if (var_v0 != 0) {
+            var_s0++;
+        } else {
+            temp_v0_2 = (u8*) func_8009B8C4(var_s0->textureData);
+            if (temp_v0_2 != 0) {
+                switch (mode) {
+                    case 1:
+                        gSPDisplayList(arg0++, D_020077F8);
+                        arg0 = func_80095BD0_wide_right(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
+                                             var_s0->height, scaleX, scaleY);
+                        break;
+                    case 2:
+                        gSPDisplayList(arg0++, D_02007818);
+                        arg0 = func_80095BD0_wide_right(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
                                              var_s0->height, scaleX, scaleY);
                         break;
                 }
@@ -8322,7 +8485,7 @@ void func_800A70E8(MenuItem* arg0) {
             var_s0 = temp_f6;
         }
         gDisplayListHead =
-            draw_box(gDisplayListHead, 0x000000C0, 0x00000022, var_s0 + 0xC6, 0x00000039, 0, 0, 0, 0x00000096);
+            draw_box_wide_right(gDisplayListHead, (192), 34, (var_s0 + 198), 57, 0, 0, 0, 150);
         alpha = 0x180 - ((arg0->param1 % 32) * 8);
         if (alpha >= 0x100) {
             alpha = 0xFF;
@@ -8330,7 +8493,7 @@ void func_800A70E8(MenuItem* arg0) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, alpha);
         set_text_color(TEXT_RED);
         for (loopIndex = 0x2C, stringIndex = 0; loopIndex < 0x40; loopIndex += 0xA, stringIndex++) {
-            print_text_mode_2(0x000000C0, loopIndex, D_800E7A34[stringIndex], 0, 0.45f, 0.45f);
+            print_text_mode_2_wide_right(192, loopIndex, D_800E7A34[stringIndex], 0, 0.45f, 0.45f);
         }
     }
 }
