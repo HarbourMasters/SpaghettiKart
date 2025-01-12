@@ -687,12 +687,6 @@ void load_texture_and_tlut(u8* tlut, u8* texture, s32 width, s32 height) {
     rsp_load_texture(texture, width, height);
 }
 
-void func_80046F60(u8* tlut, u8* arg1, s32 arg2, s32 arg3, s32 arg4) {
-    gSPDisplayList(gDisplayListHead++, D_0D007D78);
-    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
-    rsp_load_texture_mask(arg1, arg2, arg3, arg4);
-}
-
 void func_80047068(u8* tlut, u8* texture, Vtx* arg2, UNUSED s32 arg3, s32 arg4, s32 width, s32 height) {
     s32 heightIndex;
     s32 vertexIndex = 0;
@@ -3520,50 +3514,6 @@ void render_object_boos(s32 arg0) {
     }
 }
 
-void render_object_bat(s32 cameraId) {
-    s32 var_s2;
-    s32 objectIndex;
-    Camera* temp_s7;
-
-    objectIndex = indexObjectList1[0];
-    temp_s7 = &camera1[cameraId];
-    func_80046F60(gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, 0x00000020, 0x00000040,
-                  5);
-    D_80183E80[0] = gObjectList[objectIndex].orientation[0];
-    D_80183E80[2] = gObjectList[objectIndex].orientation[2];
-    if ((D_8018CFB0 != 0) || (D_8018CFC8 != 0)) {
-        for (var_s2 = 0; var_s2 < 40; var_s2++) {
-            objectIndex = gObjectParticle2[var_s2];
-            if (objectIndex == -1) {
-                continue;
-            }
-
-            if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
-                D_80183E80[1] =
-                    func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
-                func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
-                              D_0D0062B0);
-            }
-        }
-    }
-    if ((D_8018CFE8 != 0) || (D_8018D000 != 0)) {
-        for (var_s2 = 0; var_s2 < 30; var_s2++) {
-            objectIndex = gObjectParticle3[var_s2];
-            if (objectIndex == -1) {
-                continue;
-            }
-
-            if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
-                D_80183E80[1] =
-                    func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
-                func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
-                              D_0D0062B0);
-            }
-        }
-    }
-    gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
-}
-
 void func_8005285C(s32 arg0) {
     Player* temp_v0;
 
@@ -3986,45 +3936,6 @@ void render_object_train_penguins(s32 cameraId) {
             if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800557B4(objectIndex, (u32) temp_s1, var_s3);
             }
-        }
-    }
-}
-
-void func_80055AB8(s32 objectIndex, s32 cameraId) {
-    Camera* camera;
-
-    camera = &camera1[cameraId];
-    if (gObjectList[objectIndex].state >= 2) {
-        if (is_obj_flag_status_active(objectIndex, 0x00100000) != 0) {
-            D_80183E40[0] = gObjectList[objectIndex].pos[0];
-            D_80183E40[1] = gObjectList[objectIndex].pos[1] + 16.0;
-            D_80183E40[2] = gObjectList[objectIndex].pos[2];
-            D_80183E80[0] = 0;
-            D_80183E80[1] =
-                func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-            D_80183E80[2] = 0x8000;
-            func_800468E0(D_80183E40, D_80183E80, 0.54f, d_course_rainbow_road_sphere, D_0D0062B0, 0x00000020,
-                          0x00000040, 0x00000020, 0x00000040, 5);
-        } else {
-            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
-                                          gObjectList[objectIndex].sizeScaling);
-            gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-            render_animated_model((Armature*) gObjectList[objectIndex].model,
-                                  (Animation**) gObjectList[objectIndex].vertex, 0,
-                                  (s16) gObjectList[objectIndex].textureListIndex);
-        }
-    }
-}
-
-void render_object_chain_chomps(s32 cameraId) {
-    s32 var_s1;
-    s32 objectIndex;
-
-    for (var_s1 = 0; var_s1 < NUM_CHAIN_CHOMPS; var_s1++) {
-        objectIndex = indexObjectList2[var_s1];
-        func_8008A1D0(objectIndex, cameraId, 0x000005DC, 0x000009C4);
-        if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-            func_80055AB8(objectIndex, cameraId);
         }
     }
 }

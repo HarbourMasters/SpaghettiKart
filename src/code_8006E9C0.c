@@ -770,8 +770,6 @@ void func_80070714(void) {
     D_80165748 = 0xA;
 }
 
-// const char* sBoardwalkTexList[] = { gTextureBat1, gTextureBat2, gTextureBat3, gTextureBat4 };
-
 void init_course_object(void) {
     s32 objectId;
     s32 i;

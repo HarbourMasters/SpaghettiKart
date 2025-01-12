@@ -6,6 +6,7 @@
 #include "RainbowRoad.h"
 #include "World.h"
 #include "engine/actors/AFinishline.h"
+#include "engine/objects/ChainChomp.h"
 #include "engine/objects/BombKart.h"
 #include "assets/rainbow_road_data.h"
 
@@ -136,6 +137,16 @@ void RainbowRoad::SpawnActors() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
+
+    if (gGamestate != CREDITS_SEQUENCE) {
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+        gWorldInstance.AddObject(new OChainChomp());
+    }
 }
 
 void RainbowRoad::SpawnVehicles() {
@@ -175,23 +186,20 @@ void RainbowRoad::InitCourseObjects() {
         for (i = 0; i < NUM_NEON_SIGNS; i++) {
             init_object(indexObjectList1[i], 0);
         }
-        for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
-            init_object(indexObjectList2[i], 0);
-        }
     }
 }
 
 void RainbowRoad::UpdateCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         update_neon();
-        update_chain_chomps();
+        //update_chain_chomps();
     }
 }
 
 void RainbowRoad::RenderCourseObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         render_object_neon(cameraId);
-        render_object_chain_chomps(cameraId);
+        //render_object_chain_chomps(cameraId);
     }
 }
 

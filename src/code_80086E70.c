@@ -1154,24 +1154,6 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     }
 }
 
-void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
-    Player* player;
-    s32 var_s1;
-
-    player = gPlayerOne;
-    if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & (BOO_EFFECT | STAR_EFFECT)) &&
-                (has_collided_with_player(objectIndex, player) != 0)) {
-                func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
-                if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
-                    func_80072180();
-                }
-            }
-        }
-    }
-}
-
 s32 func_80089B50(s32 objectIndex) {
     Player* player;
     s32 sp40;
