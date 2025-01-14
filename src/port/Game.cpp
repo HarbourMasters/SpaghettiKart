@@ -48,6 +48,7 @@ extern "C" {
 #include "audio/external.h"
 #include "networking/networking.h"
 #include "render_courses.h"
+#include "menus.h"
 //#include "engine/wasm.h"
 }
 
@@ -803,6 +804,11 @@ int main(int argc, char* argv[]) {
     sound_init();
 
     CustomEngineInit();
+
+    if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+        gMenuSelection = START_MENU;
+    }
+
     thread5_game_loop();
     while (WindowIsRunning()) {
         push_frame();
