@@ -3362,14 +3362,14 @@ void func_80051ABC(s16 arg0, s32 arg1) {
     D_8018D228 = 0xFF;
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
     if ((u8) D_8018D230 != 0) {
-        func_8004B414(0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF);
+        func_8004B414(255, 255, 255, 255);
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
             func_800519D4(objectIndex, object->unk_09C, arg0 - object->unk_09E);
         }
     } else {
-        func_8004B6C4(0x000000FF, 0x000000FF, 0x000000FF);
+        func_8004B6C4(255, 255, 255);
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
@@ -3388,28 +3388,30 @@ void func_80051C60(s16 arg0, s32 arg1) {
         if (GetCourse() == GetKoopaTroopaBeach()) {
             var_s5 = arg0;
         } else if (GetCourse() == GetMooMooFarm()) {
-            var_s5 = arg0 - 0x10;
+            var_s5 = arg0 - 16;
         } else if (GetCourse() == GetYoshiValley()) {
-            var_s5 = arg0 - 0x10;
+            var_s5 = arg0 - 16;
         } else {
-            var_s5 = arg0 + 0x10;
+            var_s5 = arg0 + 16;
         }
     } else if (GetCourse() == GetKoopaTroopaBeach()) {
         var_s5 = arg0 * 2;
     } else {
-        var_s5 = arg0 + 0x20;
+        var_s5 = arg0 + 32;
     }
+
     D_8018D228 = 0xFF;
     gSPDisplayList(gDisplayListHead++, D_0D007A60);
+
     if ((u8) D_8018D230 != 0) {
-        func_8004B414(0x000000FF, 0x000000FF, 0x000000FF, 0x000000FF);
+        func_8004B414(255, 255, 255, 255);
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
             func_800519D4(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
         }
     } else {
-        func_8004B6C4(0x000000FF, 0x000000FF, 0x000000FF);
+        func_8004B6C4(255, 255, 255);
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
