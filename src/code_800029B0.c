@@ -115,7 +115,7 @@ UNUSED u32 D_8015F718[3]; // Likely held ptrs to segmented data.
 size_t gFreeMemorySize;
 uintptr_t gNextFreeMemoryAddress;
 uintptr_t gHeapEndPtr;
-uintptr_t D_8015F730;
+uintptr_t gFreeMemoryCourseAnchor; // Reset gNextFreeMemoryAddress to just after courses were loaded
 uintptr_t gFreeMemoryResetAnchor;
 Vec3f D_8015F738;
 Vec3f D_8015F748;
@@ -204,9 +204,9 @@ void setup_race(void) {
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
         course_init();
-        D_8015F730 = gNextFreeMemoryAddress;
+        gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
-        gNextFreeMemoryAddress = D_8015F730;
+        gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
     }
     func_802969F8();
     func_80005310();

@@ -148,7 +148,7 @@ void load_credits(void) {
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     load_course(gCurrentCourseId);
-    D_8015F730 = gNextFreeMemoryAddress;
+    gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
 #ifdef TARGET_N64
     set_segment_base_addr(0xB, (void*) decompress_segments((u8*) CEREMONY_DATA_ROM_START, (u8*) CEREMONY_DATA_ROM_END));
 #endif

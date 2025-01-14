@@ -102,7 +102,14 @@ extern size_t gFreeMemorySize;
 extern uintptr_t gNextFreeMemoryAddress;
 extern uintptr_t gHeapEndPtr;
 
-extern uintptr_t D_8015F730;
+/**
+ * This repoints gNextFreeMemoryAddress to the point in the memory pool just after a course was loaded.
+ * This allows players to retry or reset a course without reloading the whole course.
+ * Memory allocated after course load is not zeroed or reset. But should get overwritten by future allocations.
+ *
+ * This is a relatively unsafe way to architect a memory pool as old memory could accidentally be used if future allocations do not zero or fully overwrite their free memory.
+ */
+extern uintptr_t gFreeMemoryCourseAnchor;
 extern uintptr_t gFreeMemoryResetAnchor;
 extern Vec3f D_8015F738;
 extern Vec3f D_8015F748;

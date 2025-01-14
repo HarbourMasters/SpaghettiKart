@@ -111,7 +111,7 @@ void setup_podium_ceremony(void) {
     gActiveScreenMode = SCREEN_MODE_1P;
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
-    D_8015F730 = (s32) gNextFreeMemoryAddress;
+    gFreeMemoryCourseAnchor = (s32) gNextFreeMemoryAddress;
 #ifdef TARGET_N64
     set_segment_base_addr(0xB, (void*) decompress_segments((u8*) CEREMONY_DATA_ROM_START, (u8*) CEREMONY_DATA_ROM_END));
     set_segment_base_addr(6, (void*) decompress_segments((u8*) &_course_banshee_boardwalk_dl_mio0SegmentRomStart,
