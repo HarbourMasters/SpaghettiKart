@@ -177,9 +177,12 @@ void func_8006EF60(void) {
     s16 huh;
     u8* wut = 0;
 
+    // Commented the below code out because it is sketchy.
+    // Just-in-case it results in ub or similar.
+
     // clang-format off
     // God forgive me for my sins...
-    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = CourseManager_GetProps()->MinimapTexture; wut += ResourceGetTexSizeByName(CourseManager_GetProps()->MinimapTexture); }
+    // huh = 0x14; if (0) {} for (i = 0; i < huh; i++) {D_8018D248[i] = CourseManager_GetProps()->MinimapTexture; wut += ResourceGetTexSizeByName(CourseManager_GetProps()->MinimapTexture); }
     // clang-format on
 }
 
