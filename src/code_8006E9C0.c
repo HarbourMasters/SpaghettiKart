@@ -175,7 +175,7 @@ void func_8006EF60(void) {
     s32 i;
     // `huh`'s and `i`'s types have to differ, for some reason
     s16 huh;
-    u8* wut;
+    u8* wut = 0;
 
     // clang-format off
     // God forgive me for my sins...
