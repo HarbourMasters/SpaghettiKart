@@ -7899,11 +7899,13 @@ void render_pause_grand_prix(MenuItem* arg0) {
             gDisplayListHead = draw_box_wide(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
                                              temp_t0 + temp_t4, 0, 0, 0, 140);
             break;
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL: {
+
             s32 leftEdge = OTRGetDimensionFromLeftEdge(0);
             s32 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
             gDisplayListHead = draw_box_wide(gDisplayListHead, leftEdge - rightEdge, temp_t0 - temp_t4,
                                              leftEdge + rightEdge, temp_t0 + temp_t4, 0, 0, 0, 140);
+            }
             break;
         default:
             gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
