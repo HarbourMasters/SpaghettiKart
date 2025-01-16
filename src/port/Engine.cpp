@@ -42,11 +42,11 @@ GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
     std::vector<std::string> OTRFiles;
-    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.otr");
+    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.o2r");
         std::filesystem::exists(spaghetti_path)) {
         OTRFiles.push_back(spaghetti_path);
     }
-    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.otr");
+    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.o2r");
         std::filesystem::exists(ship_otr_path)) {
         OTRFiles.push_back(ship_otr_path);
     }

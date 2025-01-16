@@ -590,8 +590,8 @@ add_custom_target(
     DEPENDS torch
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} header -o baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} otr baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} pack assets ship.otr
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.otr" "${CMAKE_BINARY_DIR}/spaghetti.otr"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.otr" "${CMAKE_BINARY_DIR}/ship.otr"
+    COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
+    COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
 )
