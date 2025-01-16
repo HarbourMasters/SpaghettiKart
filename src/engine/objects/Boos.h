@@ -28,6 +28,7 @@ extern "C" {
  * or rightBoundary. leftBoundary is really only used to deactivate the boos when the player is
  * driving in the reverse direction.
  * 
+ * @arg numBoos to show, default 5, maximum 10 allowed due to limited splines
  * @arg leftBoundary When the player enters this area, deactivate the boos.
  * @arg active When the player enters this area, activate the boos.
  * @arg rightBoundary When the player enters this area, deactivate the boos.
@@ -35,7 +36,7 @@ extern "C" {
  */
 class OBoos : public OObject {
 public:
-    explicit OBoos(IPathSpan& leftBoundary, IPathSpan& active, IPathSpan& rightBoundary);
+    explicit OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active, const IPathSpan& rightBoundary);
 
     ~OBoos() {
         _count--;
@@ -62,6 +63,8 @@ private:
     FVector _pos;
     static size_t _count;
     size_t _idx;
+    std::vector<s32> _indices; // indices into gObjectList
+    size_t _numBoos;
 
     bool _isActive = false;
     s32 _playerId = 0;

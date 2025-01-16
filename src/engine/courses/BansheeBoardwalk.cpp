@@ -172,8 +172,8 @@ void BansheeBoardwalk::SpawnActors() {
 
     if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != TIME_TRIALS)) {
         gWorldInstance.AddObject(new OBat(FVector(0,0,0), FRotation(0, 0, 90.0f)));
-        gWorldInstance.AddObject(new OBoos(IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290)));
-        gWorldInstance.AddObject(new OBoos(IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630)));
+        gWorldInstance.AddObject(new OBoos(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290)));
+        gWorldInstance.AddObject(new OBoos(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630)));
     }
 }
 

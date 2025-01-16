@@ -22,9 +22,23 @@ extern "C" {
 
 size_t OBoos::_count = 0;
 
-OBoos::OBoos(IPathSpan& leftBoundary, IPathSpan& active, IPathSpan& rightBoundary) {
-    //init_object(indexObjectList1[2], 0);
+OBoos::OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active, const IPathSpan& rightBoundary) {
+    // Max five boos allowed due to limited splines
+    // D_800E5D9C
+    if (numBoos > 10) {
+        printf("Boos.cpp: Only 10 boos allowed.\n");
+        numBoos = 10;
+    }
 
+    _indices.resize(numBoos, 0);
+
+
+    // Generate objects
+    for (size_t i = 0; i < numBoos; i++) {
+        find_unused_obj_index(&_indices[i]);
+    }
+
+    _numBoos = numBoos;
     _leftBoundary = leftBoundary;
     _active = active;
     _rightBoundary = rightBoundary;
@@ -32,15 +46,14 @@ OBoos::OBoos(IPathSpan& leftBoundary, IPathSpan& active, IPathSpan& rightBoundar
 
 void OBoos::Tick() {
     u16 temp_t4;
-    s32 someIndex;
     s32 objectIndex;
     Player* player;
     Camera* camera;
     Object* object;
 
     OBoos::func_8007CA70();
-    for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
-        objectIndex = indexObjectList3[someIndex];
+    for (size_t i = 0; i < _numBoos; i++) {
+        objectIndex = _indices[i]; //indexObjectList3[i];
         object = &gObjectList[objectIndex];
         if (object->state != 0) {
             func_8007C684(objectIndex);
@@ -65,11 +78,10 @@ void OBoos::Tick() {
 
 void OBoos::Draw(s32 cameraId) {
     u32 temp_s2;
-    s32 someIndex;
     s32 objectIndex;
 
-    for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
-        objectIndex = indexObjectList3[someIndex];
+    for (size_t i = 0; i < _numBoos; i++) {
+        objectIndex = _indices[i]; //indexObjectList3[i];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, cameraId, 0x4000U, 0x00000320);
             if (CVarGetInteger("gNoCulling", 0) == 1) {
@@ -103,6 +115,7 @@ void OBoos::func_8007CA70(void) {
     if (_isActive == false) {
         _playerId = OBoos::func_8007C9F8();
         point = &gNearestWaypointByPlayerId[_playerId];
+        printf("point %d\n", *point);
         if ((*point > _active.Start) && (*point < _active.End)) {
             // First group entrance
             OBoos::BooStart(0, _playerId);
@@ -110,7 +123,9 @@ void OBoos::func_8007CA70(void) {
     }
     if (_isActive == true) {
         point = &gNearestWaypointByPlayerId[_playerId];
-        if ((*point > _leftBoundary.Start) && (*point < _rightBoundary.End)) {
+        printf("point %d\n", *point);
+
+        if ((*point > _leftBoundary.Start) && (*point < _leftBoundary.End)) {
             // First group exit reverse direction
             OBoos::BooExit(0);
         }
@@ -220,23 +235,22 @@ s32 OBoos::func_8007C9F8(void) {
 }
 
 void OBoos::BooStart(s32 group, s32 playerId) {
-    s32 temp_a0;
     s32 objectIndex;
     s16 temp_s1_2;
     s16 temp_s4;
     s16 temp_s5;
-    SplineData* something;
-
-    for (temp_a0 = 0; temp_a0 < 5; temp_a0++) {
-        objectIndex = indexObjectList3[group + temp_a0];
+    SplineData* spline;
+printf("Boo Start\n");
+    for (size_t i = 0; i < _numBoos; i++) {
+        objectIndex = _indices[i]; // indexObjectList3[group + i];
         init_object(objectIndex, 1);
         gObjectList[objectIndex].unk_0D1 = playerId;
         temp_s1_2 = random_int(0x003CU) - 0x1E;
         temp_s4 = random_int(0x0014U) - 0xA;
         temp_s5 = random_int(0x0050U) - 0x28;
         random_int(0x1000U);
-        something = D_800E5D9C[temp_a0];
-        gObjectList[objectIndex].spline = something;
+        spline = D_800E5D9C[i];
+        gObjectList[objectIndex].spline = spline;
         gObjectList[objectIndex].origin_pos[0] = (f32) temp_s1_2;
         gObjectList[objectIndex].origin_pos[1] = (f32) temp_s4;
         gObjectList[objectIndex].origin_pos[2] = (f32) temp_s5;
@@ -247,11 +261,10 @@ void OBoos::BooStart(s32 group, s32 playerId) {
 }
 
 void OBoos::BooExit(s32 group) {
-    s32 temp_a0;
     s32 objectIndex;
-
-    for (temp_a0 = 0; temp_a0 < 5; temp_a0++) {
-        objectIndex = indexObjectList3[group + temp_a0];
+printf("Boo Exit\n");
+    for (size_t i = 0; i < _numBoos; i++) {
+        objectIndex = _indices[i]; //indexObjectList3[group + temp_a0];
         gObjectList[objectIndex].unk_0DC += 1;
     }
 
