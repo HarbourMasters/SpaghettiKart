@@ -5985,7 +5985,7 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
         diffZ = D_80164638[cameraId];
     }
 
-    if (((camX > (-10000.0))) && ((camX < 10000.0))) {
+    if (((diffX > (-10000.0))) && ((diffX < 10000.0))) {
         camera->pos[0] = diffX;
         camera->pos[2] = diffZ;
     }
