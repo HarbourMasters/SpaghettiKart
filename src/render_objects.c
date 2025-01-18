@@ -3483,39 +3483,6 @@ void func_800520C0(s32 arg0) {
     }
 }
 
-void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
-    UNUSED s32 pad[2];
-    Object* object;
-    Camera* camera = &camera1[arg1];
-
-    object = &gObjectList[objectIndex];
-    object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
-    func_800484BC(object->pos, object->orientation, object->sizeScaling, object->primAlpha, (u8*) object->activeTLUT,
-                  object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
-    if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
-        func_8004A630(&D_8018C830, object->pos, 0.4f);
-    }
-}
-
-void render_object_boos(s32 arg0) {
-    u32 temp_s2;
-    s32 someIndex;
-    s32 objectIndex;
-
-    for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
-        objectIndex = indexObjectList3[someIndex];
-        if (gObjectList[objectIndex].state >= 2) {
-            temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
-            if (CVarGetInteger("gNoCulling", 0) == 1) {
-                temp_s2 = MIN(temp_s2, 0x15F91U);
-            }
-            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-                func_800523B8(objectIndex, arg0, temp_s2);
-            }
-        }
-    }
-}
-
 void func_8005285C(s32 arg0) {
     Player* temp_v0;
 

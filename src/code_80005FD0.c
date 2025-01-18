@@ -5904,31 +5904,28 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
 // There's something really, really wrong with the empty `if` statement
 void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 cameraId) {
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
-    f32 spAC;
-    f32 spA8;
-    f32 spA4;
-    UNUSED s32 stackPadding2;
-    UNUSED s32 stackPadding3;
-    f32 sp98;
-    f32 sp94;
-    f32 sp90;
-    f32 sp8C;
-    f32 sp88;
-    f32 sp84;
-    UNUSED f32 stackPadding4;
-    UNUSED f32 stackPadding5;
-    UNUSED f32 stackPadding6;
-    UNUSED s32 stackPadding7;
-    UNUSED s32 stackPadding8;
-    s16 sp6E;
-    s16 sp6C;
-    UNUSED s32 stackPadding9;
-    UNUSED s32 stackPaddingA;
-    UNUSED s32 stackPaddingB;
+    s32 pad5[2];
+    f32 diffX2;
+    f32 diffY2;
+    f32 diffZ2;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    f32 camX;
+    f32 camY;
+    f32 camZ;
+    f32 lookAtX;
+    f32 lookAtY;
+    f32 lookAtZ;
+    f32 diffX;
+    f32 diffZ;
+    f32 diffY;
+    f32 distance;
+    s32 pad;
+    s16 waypoint1;
+    s16 waypoint2;
+    s32 pad2[3];
     s32 pathIndex;
-    UNUSED s32 stackPaddingC;
+    s32 pad3;
     s32 sp58;
     s16 sp56;
     s32 playerId;
@@ -5939,71 +5936,76 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     sp58 = gWaypointCountByPathIndex[pathIndex];
     D_80163238 = playerId;
     sp56 = gNearestWaypointByCameraId[cameraId];
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    if (GetCourse() == GetYoshiValley()) {
+    gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
+    // if (GetCourse() == GetYoshiValley()) {
+    if (gCurrentCourseId == 4) {
         if ((sp56 != gNearestWaypointByCameraId[cameraId]) && (gNearestWaypointByCameraId[cameraId] == 1)) {
             pathIndex = (D_80163DD8[cameraId] = random_int(4U));
-            gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2],
-                                                                 gNearestWaypointByCameraId[cameraId], pathIndex);
+            gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
         }
     }
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 0xA) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 0xB) % sp58;
-    func_8000BBD8(sp6E, D_80164688[cameraId], pathIndex);
-    sp8C = D_80162FA0[0] * 0.5;
-    sp84 = D_80162FA0[2] * 0.5;
-    func_8000BBD8(sp6C, D_80164688[cameraId], pathIndex);
-    sp8C += D_80162FA0[0] * 0.5;
-    sp84 += D_80162FA0[2] * 0.5;
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 5) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 6) % sp58;
-    sp88 = (D_80164550[pathIndex][sp6E].posY + D_80164550[pathIndex][sp6C].posY) * 0.5f;
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 1) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 2) % sp58;
-    func_8000BBD8(sp6E, D_80164688[cameraId], pathIndex);
-    sp98 = D_80162FA0[0] * 0.5;
-    sp90 = D_80162FA0[2] * 0.5;
-    func_8000BBD8(sp6C, D_80164688[cameraId], pathIndex);
-    sp98 += D_80162FA0[0] * 0.5;
-    sp90 += D_80162FA0[2] * 0.5;
-    sp94 = (D_80164550[pathIndex][sp6E].posY + D_80164550[pathIndex][sp6C].posY) * 0.5f;
-    stackPadding4 = sp98 - D_801645F8[cameraId];
-    stackPadding5 = sp90 - D_80164618[cameraId];
-    stackPadding6 = sp94 - D_80164638[cameraId];
-    spAC = sqrtf(((sp98 * sp98) + (sp94 * sp94)) + (sp90 * sp90));
-    if (spAC != 0.0) {
-        sp98 = D_801645F8[cameraId] + ((D_80164648[cameraId] * stackPadding4) / spAC);
-        sp94 = D_80164618[cameraId] + ((D_80164648[cameraId] * stackPadding5) / spAC);
-        sp90 = D_80164638[cameraId] + ((D_80164648[cameraId] * stackPadding6) / spAC);
+
+    // LookAt XZ 0xA points ahead
+    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 0xA) % sp58;
+    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 0xB) % sp58;
+    func_8000BBD8(waypoint1, D_80164688[cameraId], pathIndex);
+    lookAtX = D_80162FA0[0] * 0.5;
+    lookAtZ = D_80162FA0[2] * 0.5;
+    func_8000BBD8(waypoint2, D_80164688[cameraId], pathIndex);
+    lookAtX += D_80162FA0[0] * 0.5;
+    lookAtZ += D_80162FA0[2] * 0.5;
+
+    // LookAt Y 5 points ahead
+    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 5) % sp58;
+    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 6) % sp58;
+    lookAtY = (D_80164550[pathIndex][waypoint1].posY + D_80164550[pathIndex][waypoint2].posY) * 0.5f;
+    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % sp58;
+    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % sp58;
+    func_8000BBD8(waypoint1, D_80164688[cameraId], pathIndex);
+    camX = D_80162FA0[0] * 0.5;
+    camZ = D_80162FA0[2] * 0.5;
+    func_8000BBD8(waypoint2, D_80164688[cameraId], pathIndex);
+    camX += D_80162FA0[0] * 0.5;
+    camZ += D_80162FA0[2] * 0.5;
+    camY = (D_80164550[pathIndex][waypoint1].posY + D_80164550[pathIndex][waypoint2].posY) * 0.5f;
+    
+    diffX = camX - D_801645F8[cameraId];
+    diffY = camY - D_80164618[cameraId];
+    diffZ = camZ - D_80164638[cameraId];
+    // magnitude
+    #define SQ(x) (x * x)
+    distance = sqrtf(SQ(diffX) + SQ(diffY) + SQ(diffZ) );
+    if (distance != 0.0) {
+        diffX = D_801645F8[cameraId] + ((D_80164648[cameraId] * diffX) / distance);
+        diffY = D_80164618[cameraId] + ((D_80164648[cameraId] * diffY) / distance);
+        diffZ = D_80164638[cameraId] + ((D_80164648[cameraId] * diffZ) / distance);
     } else {
-        sp98 = D_801645F8[cameraId];
-        sp94 = D_80164618[cameraId];
-        sp90 = D_80164638[cameraId];
+        diffX = D_801645F8[cameraId];
+        diffY = D_80164618[cameraId];
+        diffZ = D_80164638[cameraId];
     }
-    if ((!(sp98 < (-10000.0))) && (sp98 > 10000.0)) {
-        if (sp98 && sp98) {}
+
+    if (((diffX > (-10000.0))) && ((diffX < 10000.0))) {
+        camera->pos[0] = diffX;
+        camera->pos[2] = diffZ;
     }
-    camera->pos[0] = sp98;
-    camera->pos[1] = sp94 + 10.0;
-    camera->pos[2] = sp90;
-    if (1) {}
-    if (1) {}
-    if (1) {}
-    if (1) {}
-    if (1) {}
-    D_801645F8[cameraId] = sp98;
-    D_80164638[cameraId] = sp90;
-    D_80164618[cameraId] = sp94;
-    camera->lookAt[0] = sp8C;
-    camera->lookAt[1] = sp88 + 8.0;
-    camera->lookAt[2] = sp84;
+
+    //camera->pos[0] = camX;
+    camera->pos[1] = diffY + 10.0; // Set camera 10 points above the ground
+    
+    if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+    D_801645F8[cameraId] = diffX;
+    D_80164638[cameraId] = diffZ;
+    D_80164618[cameraId] = camY;
+    camera->lookAt[0] = lookAtX;
+    camera->lookAt[1] = lookAtY + 8.0;
+    camera->lookAt[2] = lookAtZ;
     func_80014D30(cameraId, pathIndex);
-    spAC = camera->lookAt[0] - camera->pos[0];
-    spA8 = camera->lookAt[1] - camera->pos[1];
-    spA4 = camera->lookAt[2] - camera->pos[2];
-    camera->rot[1] = atan2s(spAC, spA4);
-    camera->rot[0] = atan2s(sqrtf((spAC * spAC) + (spA4 * spA4)), spA8);
+    diffX2 = camera->lookAt[0] - camera->pos[0];
+    diffY2 = camera->lookAt[1] - camera->pos[1];
+    diffZ2 = camera->lookAt[2] - camera->pos[2];
+    camera->rot[1] = atan2s(diffX2, diffZ2);
+    camera->rot[0] = atan2s(sqrtf((diffX2 * diffX2) + (diffZ2 * diffZ2)), diffY2);
     camera->rot[2] = 0;
 }
 #else

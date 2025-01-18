@@ -19,6 +19,9 @@ struct FVector {
         z = other.z;
         return *this;
     }
+
+    FVector() : x(0), y(0), z(0) {}
+    FVector(float x, float y, float z) : x(x), y(y), z(z) {}
 };
 
 /**
@@ -35,6 +38,9 @@ struct FVector2D {
         z = other.z;
         return *this;
     }
+
+    FVector2D() : x(0), z(0) {}
+    FVector2D(float x, float z) : x(x), z(z) {}
 };
 
 // Sets integer X Z coordinates
@@ -62,6 +68,9 @@ struct FRotation {
         roll = other.roll;
         return *this;
     }
+
+    FRotation() : pitch(0), yaw(0), roll(0) {}
+    FRotation(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
 };
 
 /**

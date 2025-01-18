@@ -24,6 +24,7 @@
 #include "engine/objects/Flagpole.h"
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/objects/Crab.h"
+#include "engine/objects/Boos.h"
 #include "engine/particles/StarEmitter.h"
 
 extern "C" {
@@ -216,7 +217,10 @@ void TestCourse::SpawnActors() {
 //    gWorldInstance.AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
 
     //gWorldInstance.AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
-    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
+//    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
+
+//    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
+
 }
 
 // Likely sets minimap boundaries
