@@ -10,6 +10,7 @@
 #include "engine/objects/CheepCheep.h"
 #include "engine/objects/TrashBin.h"
 #include "engine/objects/Bat.h"
+#include "engine/objects/Boos.h"
 #include "assets/banshee_boardwalk_data.h"
 #include "assets/boo_frames.h"
 
@@ -171,6 +172,8 @@ void BansheeBoardwalk::SpawnActors() {
 
     if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != TIME_TRIALS)) {
         gWorldInstance.AddObject(new OBat(FVector(0,0,0), FRotation(0, 0, 90.0f)));
+        gWorldInstance.AddObject(new OBoos(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290)));
+        gWorldInstance.AddObject(new OBoos(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630)));
     }
 }
 
@@ -210,14 +213,14 @@ void BansheeBoardwalk::UpdateCourseObjects() {
         if (gModeSelection != TIME_TRIALS) {
             //update_bat();
         }
-        wrapper_update_boos();
+        //wrapper_update_boos();
     }
 }
 
 void BansheeBoardwalk::RenderCourseObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         //render_object_bat(cameraId);
-        render_object_boos(cameraId);
+        //render_object_boos(cameraId);
     }
 }
 
