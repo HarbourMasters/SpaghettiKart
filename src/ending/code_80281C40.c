@@ -15,8 +15,8 @@
 #include "defines.h"
 #include "memory.h"
 
-#include "engine/Engine.h"
 #include "engine/courses/Course.h"
+#include "port/Game.h"
 
 struct UnkStruct80287560 {
     s16 unk0;

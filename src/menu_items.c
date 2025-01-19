@@ -44,7 +44,6 @@
 #include "port/Engine.h"
 #include "port/Game.h"
 
-#include "engine/Engine.h"
 #include "engine/courses/Course.h"
 #include "engine/Matrix.h"
 
@@ -2500,8 +2499,6 @@ void setup_menus(void) {
     }
 }
 
-CProperties* GetCoursePropsA(void);
-
 void func_80095574(void) {
     s32 var_v0;
 
@@ -2549,7 +2546,7 @@ void func_80095574(void) {
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, GetCoursePropsA()->DebugName);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, CourseManager_GetProps()->DebugName);
 
         debug_print_str2(80, 120, "cc_mode");
         debug_print_str2(170, 120, gDebugCCModeNames[gCCSelection]);

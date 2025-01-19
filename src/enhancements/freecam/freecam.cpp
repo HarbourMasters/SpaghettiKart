@@ -23,7 +23,6 @@ extern "C" {
 #include "freecam.h"
 }
 
-#include "engine/Engine.h"
 #include "engine/courses/Course.h"
 
 typedef struct {

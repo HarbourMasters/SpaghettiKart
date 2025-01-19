@@ -2,10 +2,10 @@
 #define COURSE_H
 
 #include <libultraship.h>
+#include "CoreMath.h"
 
 // C-compatible function declaration
 #ifdef __cplusplus
-#include "CoreMath.h"
 #include "engine/objects/Lakitu.h"
 extern "C" {
 #endif
@@ -16,70 +16,65 @@ extern "C" {
     #include "defines.h"
     #include "bomb_kart.h"
     #include "path_spawn_metadata.h"
-    #include "Engine.h"
     #include "waypoints.h"
-
-CProperties *CourseManager_GetProps();
+    #include "sounds.h"
+    #include "common_structs.h"
+// Properties *CourseManager_GetProps();
 
 #ifdef __cplusplus
 }
 #endif
 
+typedef struct SkyboxColours {
+    RGB8 TopRight;
+    RGB8 BottomRight;
+    RGB8 BottomLeft;
+    RGB8 TopLeft;
+    RGB8 FloorTopRight;
+    RGB8 FloorBottomRight;
+    RGB8 FloorBottomLeft;
+    RGB8 FloorTopLeft;
+} SkyboxColours;
+
+
+typedef struct Properties {
+    const char* Id;
+    const char* Name;
+    const char* DebugName;
+    const char* CourseLength;
+    const char* AIBehaviour;
+    const char* MinimapTexture;
+    s32 LakituTowType;
+    IVector2D MinimapDimensions;
+    float AIMaximumSeparation;
+    float AIMinimumSeparation;
+    float NearPersp;
+    float FarPersp;
+    int16_t *SomePtr;
+    uint32_t AISteeringSensitivity;
+    _struct_gCoursePathSizes_0x10 PathSizes;
+    Vec4f D_0D009418;
+    Vec4f D_0D009568;
+    Vec4f D_0D0096B8;
+    Vec4f D_0D009808;
+    TrackWaypoint* PathTable[4];
+    TrackWaypoint* PathTable2[4];
+    CloudData *Clouds;
+    CloudData *CloudList;
+    int32_t MinimapFinishlineX;
+    int32_t MinimapFinishlineY;
+    SkyboxColours Skybox;
+    const course_texture *textures;
+    enum MusicSeq Sequence;
+} Properties;
+
 #ifdef __cplusplus
 
 class World; // <-- Forward declare
 
-
 class Course {
 
 public:
-    typedef struct {
-        uint8_t r, g, b;
-    } RGB8;
-
-    typedef struct {
-        RGB8 TopRight;
-        RGB8 BottomRight;
-        RGB8 BottomLeft;
-        RGB8 TopLeft;
-        RGB8 FloorTopRight;
-        RGB8 FloorBottomRight;
-        RGB8 FloorBottomLeft;
-        RGB8 FloorTopLeft;
-    } SkyboxColours;
-
-
-    typedef struct {
-        const char* Id;
-        const char* Name;
-        const char* DebugName;
-        const char* CourseLength;
-        const char* AIBehaviour;
-        const char* MinimapTexture;
-        s32 LakituTowType;
-        IVector2D MinimapDimensions;
-        float AIMaximumSeparation;
-        float AIMinimumSeparation;
-        float NearPersp;
-        float FarPersp;
-        int16_t *SomePtr;
-        uint32_t AISteeringSensitivity;
-        _struct_gCoursePathSizes_0x10 PathSizes;
-        Vec4f D_0D009418;
-        Vec4f D_0D009568;
-        Vec4f D_0D0096B8;
-        Vec4f D_0D009808;
-        TrackWaypoint* PathTable[4];
-        TrackWaypoint* PathTable2[4];
-        CloudData *Clouds;
-        CloudData *CloudList;
-        int32_t MinimapFinishlineX;
-        int32_t MinimapFinishlineY;
-        SkyboxColours Skybox;
-        const course_texture *textures;
-        MusicSeq Sequence;
-    } Properties;
-
     Properties Props;
 
     const char* vtx = nullptr;

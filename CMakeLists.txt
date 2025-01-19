@@ -385,14 +385,14 @@ if(MSVC)
   if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
-              /w;
+              /Wall;
               /Od;
               /MTd
           >
           $<$<CONFIG:Release>:
               /Oi;
               /Gy;
-              /W3;
+              /Wall;
               /MT
           >
           /permissive-;

@@ -3,7 +3,6 @@
 #include "Game.h"
 
 #include <Fast3D/gfx_pc.h>
-#include "Engine.h"
 #include "engine/World.h"
 #include "engine/courses/Course.h"
 #include "engine/courses/MarioRaceway.h"
@@ -210,9 +209,6 @@ extern "C" {
         }
     }
 
-    CProperties* GetCoursePropsA() {
-        return (CProperties*) gWorldInstance.GetCourseProps();
-    }
 
     size_t GetCourseIndex() {
         return gWorldInstance.CourseIndex;
@@ -526,9 +522,9 @@ extern "C" {
         }
     }
 
-    CProperties* CourseManager_GetProps() {
+    Properties* CourseManager_GetProps() {
         if (gWorldInstance.CurrentCourse) {
-            return (CProperties*) &gWorldInstance.CurrentCourse->Props;
+            return &gWorldInstance.CurrentCourse->Props;
         }
     }
 

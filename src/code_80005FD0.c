@@ -37,7 +37,6 @@
 #include <assets/frappe_snowland_data.h>
 #include <assets/dks_jungle_parkway_data.h>
 
-#include "engine/Engine.h"
 #include "port/Game.h"
 #include "engine/courses/Course.h"
 

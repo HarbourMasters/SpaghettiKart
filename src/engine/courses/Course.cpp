@@ -16,7 +16,6 @@ extern "C" {
 #include "render_objects.h"
 #include "save.h"
 #include "staff_ghosts.h"
-#include "Engine.h"
 #include "code_800029B0.h"
 #include "render_courses.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;

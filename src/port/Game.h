@@ -2,13 +2,16 @@
 #define _GAME_H
 
 #include <libultraship.h>
-#include "engine/Engine.h"
+#include "engine/courses/Course.h"
 
 #ifdef __cplusplus
+class Course;
 extern "C" {
 #include "camera.h"
 #endif
 #include "actor_types.h"
+
+Properties* CourseManager_GetProps();
 
 u32 WorldNextCup(void);
 
@@ -19,8 +22,6 @@ u32 GetCupIndex(void);
 const char* GetCupName(void);
 
 void LoadCourse();
-
-CProperties* GetCoursePropsA();
 
 size_t GetCourseIndex();
 
@@ -89,7 +90,6 @@ void CourseManager_MinimapFinishlinePosition();
 
 void CourseManager_SetStaffGhost();
 
-CProperties* CourseManager_GetProps();
 
 void CourseManager_SpawnBombKarts();
 

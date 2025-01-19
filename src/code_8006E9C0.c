@@ -29,7 +29,6 @@
 #include <assets/boo_frames.h>
 #include "port/Game.h"
 
-#include "engine/Engine.h"
 #include "engine/courses/Course.h"
 
 void init_hud(void) {

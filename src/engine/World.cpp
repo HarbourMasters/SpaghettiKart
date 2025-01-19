@@ -12,7 +12,6 @@ extern "C" {
    #include "camera.h"
    #include "objects.h"
    #include "main.h"
-   #include "engine/Engine.h"
    #include "defines.h"
    #include "audio/external.h"
    #include "menus.h"
@@ -95,13 +94,6 @@ void World::SetCup(Cup* cup) {
         CurrentCup = cup;
         CurrentCup->CursorPosition = 0;
     }
-}
-
-CProperties* World::GetCourseProps() {
-    if (Courses[CourseIndex]) {
-        return (CProperties*) &Courses[CourseIndex]->Props;
-    }
-    return nullptr;
 }
 
 void World::SetCourse(const char* name) {

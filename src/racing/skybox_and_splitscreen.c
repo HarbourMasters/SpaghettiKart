@@ -19,7 +19,6 @@
 #include "menus.h"
 #include "port/Engine.h"
 #include "engine/courses/Course.h"
-#include "engine/Engine.h"
 #include "port/Game.h"
 
 Vp D_802B8880[] = {

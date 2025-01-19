@@ -13,12 +13,14 @@
 struct FVector {
     float x, y, z;
 
+#ifdef __cplusplus
     FVector& operator=(const FVector& other) {
         x = other.x;
         y = other.y;
         z = other.z;
         return *this;
     }
+#endif // __cplusplus
 };
 
 /**
@@ -30,17 +32,20 @@ struct FVector {
 struct FVector2D {
     float x, z;
 
+#ifdef __cplusplus
     FVector2D& operator=(const FVector2D& other) {
         x = other.x;
         z = other.z;
         return *this;
     }
+#endif // __cplusplus
 };
 
 // Sets integer X Z coordinates
-struct IVector2D {
+typedef struct IVector2D {
     int32_t X, Z;
 
+#ifdef __cplusplus
     IVector2D() : X(0), Z(0) {}  // Default constructor
 
     IVector2D(int32_t x, int32_t z) : X(x), Z(z) {}  // Constructor to initialize with values
@@ -51,17 +56,20 @@ struct IVector2D {
         Z = other.Z;
         return *this;
     }
-};
+#endif // __cplusplus
+} IVector2D;
 
 struct FRotation {
     float pitch, yaw, roll;
 
+#ifdef __cplusplus
     FRotation& operator=(const FRotation& other) {
         pitch = other.pitch;
         yaw = other.yaw;
         roll = other.roll;
         return *this;
     }
+#endif // __cplusplus
 };
 
 /**
@@ -71,6 +79,7 @@ struct FRotation {
 struct IPathSpan {
     int Start, End;
 
+#ifdef __cplusplus
     // Default Constructor
     IPathSpan() : Start(0), End(0) {}
 
@@ -96,4 +105,5 @@ struct IPathSpan {
     bool operator!=(const IPathSpan& Other) const {
         return !(*this == Other);
     }
+#endif // __cplusplus
 };
