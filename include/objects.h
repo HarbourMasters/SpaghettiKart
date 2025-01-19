@@ -301,7 +301,7 @@ extern Vec3s gHedgehogPatrolPoints[];
  */
 extern s32 indexObjectList2[];
 
-#define NUM_BOOS 0xA
+#define NUM_BOOS 10
 #define NUM_FIRE_BREATHS 4
 
 extern Vec3s gFireBreathsSpawns[];

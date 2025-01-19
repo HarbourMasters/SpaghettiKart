@@ -1,5 +1,7 @@
 name: clang-format PR
-on: [push]
+on:
+  push:
+    branches: ["main"]
 jobs:
   formatting-check:
     runs-on: ubuntu-24.04

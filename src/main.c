@@ -693,10 +693,6 @@ void calculate_updaterate(void) {
     }
 }
 
-
-
-
-
 void display_debug_info(void) {
     u16 rotY;
     if (!gEnableDebugMode) {

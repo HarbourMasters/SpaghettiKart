@@ -7,7 +7,7 @@
     enums: 
       - include/defines.h
     output:
-      binary: spaghetti.otr
+      binary: spaghetti.o2r
       headers: include/assets
       code: assets/code
   segments:
