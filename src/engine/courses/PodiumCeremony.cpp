@@ -171,31 +171,18 @@ void PodiumCeremony::SpawnActors() {
 
     OTrophy::TrophyType type = OTrophy::TrophyType::BRONZE;
     switch(D_802874D8.unk1D) {
-        case 0: // Bronze
-            if (gCCSelection == CC_150) {
-                OTrophy::TrophyType::BRONZE_150;
-            } else {
-                OTrophy::TrophyType::BRONZE;
-            }
+        case 2: // Bronze
+            type = gCCSelection == CC_150 ? OTrophy::TrophyType::BRONZE_150 : OTrophy::TrophyType::BRONZE;
             break;
         case 1: // Silver
             pos.x -= 3.0;
             pos.z += 15.0;
-
-            if (gCCSelection == CC_150) {
-                OTrophy::TrophyType::SILVER_150;
-            } else {
-                OTrophy::TrophyType::SILVER;
-            }
+            type = gCCSelection == CC_150 ? OTrophy::TrophyType::SILVER_150 : OTrophy::TrophyType::SILVER;
             break;
-        case 2: // Gold
+        case 0: // Gold
             pos.x -= 2.0;
             pos.z -= 15.0;
-            if (gCCSelection == CC_150) {
-                OTrophy::TrophyType::GOLD_150;
-            } else {
-                OTrophy::TrophyType::GOLD;
-            }
+            type = gCCSelection == CC_150 ? OTrophy::TrophyType::GOLD_150 : OTrophy::TrophyType::GOLD;
             break;
     }
 
