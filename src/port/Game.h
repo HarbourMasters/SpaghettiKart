@@ -7,11 +7,12 @@
 #ifdef __cplusplus
 class Course;
 extern "C" {
-#include "camera.h"
 #endif
+#include "camera.h"
 #include "actor_types.h"
 
 Properties* CourseManager_GetProps();
+
 
 u32 WorldNextCup(void);
 

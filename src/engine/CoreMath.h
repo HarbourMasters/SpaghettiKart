@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CORE_MATH_H
+#define CORE_MATH_H
 
 #include <libultraship.h>
 
@@ -107,3 +108,5 @@ struct IPathSpan {
     }
 #endif // __cplusplus
 };
+
+#endif // CORE_MATH_H

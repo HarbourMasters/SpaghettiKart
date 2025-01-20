@@ -1,5 +1,5 @@
-#ifndef COURSE_H
-#define COURSE_H
+#ifndef ENGINE_COURSE_H
+#define ENGINE_COURSE_H
 
 #include <libultraship.h>
 #include "CoreMath.h"
@@ -10,15 +10,15 @@
 extern "C" {
 #endif
 
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "data/some_data.h"
-    #include "defines.h"
-    #include "bomb_kart.h"
-    #include "path_spawn_metadata.h"
-    #include "waypoints.h"
-    #include "sounds.h"
-    #include "common_structs.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "data/some_data.h"
+#include "defines.h"
+#include "bomb_kart.h"
+#include "path_spawn_metadata.h"
+#include "waypoints.h"
+#include "sounds.h"
+#include "common_structs.h"
 // Properties *CourseManager_GetProps();
 
 #ifdef __cplusplus
@@ -119,4 +119,4 @@ private:
 
 #endif
 
-#endif // COURSE_H
+#endif // ENGINE_COURSE_H

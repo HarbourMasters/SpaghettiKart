@@ -526,6 +526,7 @@ extern "C" {
         if (gWorldInstance.CurrentCourse) {
             return &gWorldInstance.CurrentCourse->Props;
         }
+        return NULL;
     }
 
     void CourseManager_ScrollingTextures() {
