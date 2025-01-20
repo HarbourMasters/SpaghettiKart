@@ -1,6 +1,7 @@
 #include <libultraship.h>
 
 #include "Game.h"
+#include "port/Engine.h"
 
 #include <Fast3D/gfx_pc.h>
 #include "engine/World.h"
