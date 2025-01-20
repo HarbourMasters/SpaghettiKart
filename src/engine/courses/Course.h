@@ -4,7 +4,6 @@
 #include <libultraship.h>
 #include "CoreMath.h"
 
-// C-compatible function declaration
 #ifdef __cplusplus
 #include "engine/objects/Lakitu.h"
 extern "C" {
@@ -19,7 +18,6 @@ extern "C" {
 #include "waypoints.h"
 #include "sounds.h"
 #include "common_structs.h"
-// Properties *CourseManager_GetProps();
 
 #ifdef __cplusplus
 }
@@ -35,7 +33,6 @@ typedef struct SkyboxColours {
     RGB8 FloorBottomLeft;
     RGB8 FloorTopLeft;
 } SkyboxColours;
-
 
 typedef struct Properties {
     const char* Id;
