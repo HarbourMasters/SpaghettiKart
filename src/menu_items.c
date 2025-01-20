@@ -784,10 +784,12 @@ MenuTexture* D_800E7DC4[] = { seg2_mario_raceway_title_texture,
                               D_02005060,
                               D_02005088,
                               D_020050B0,
-                              D_020050D8 };
-
-MenuTexture* D_800E7E00[] = {
-    D_02005100, D_02005128, D_02005150, D_02005178, D_020051A0,
+                              D_020050D8,
+                              D_02005100,
+                              D_02005128,
+                              D_02005150,
+                              D_02005178,
+                              D_020051A0,
 };
 
 // Unused?
@@ -7896,11 +7898,13 @@ void render_pause_grand_prix(MenuItem* arg0) {
             gDisplayListHead = draw_box_wide(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
                                              temp_t0 + temp_t4, 0, 0, 0, 140);
             break;
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL: {
+
             s32 leftEdge = OTRGetDimensionFromLeftEdge(0);
             s32 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
             gDisplayListHead = draw_box_wide(gDisplayListHead, leftEdge - rightEdge, temp_t0 - temp_t4,
                                              leftEdge + rightEdge, temp_t0 + temp_t4, 0, 0, 0, 140);
+            }
             break;
         default:
             gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,

@@ -2,6 +2,9 @@ name: clang-format Suggest
 on: [pull_request]
 jobs:
   formatting-check:
+    permissions: # needed in forks? https://github.com/parkerbxyz/suggest-changes/issues/33
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -14,4 +17,4 @@ jobs:
           python tools/format.py
       - uses: parkerbxyz/suggest-changes@v1
         with:
-          comment: 'Please commit the suggested changes from clang-format.'
+          comment: "Please commit the suggested changes from clang-format."
