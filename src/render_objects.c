@@ -1649,13 +1649,8 @@ void render_texture_rectangle_wide(s32 x, s32 y, s32 width, s32 height, s32 arg4
                 }
                 break;
             default:
-                if ((xl - (width / 2)) < (SCREEN_WIDTH / 2)) {
-                    coordX = (s32) OTRGetDimensionFromLeftEdge(xl) << 2;
-                    coordX2 = (s32) (xh2) << 2;
-                } else {
-                    coordX = (s32) OTRGetDimensionFromRightEdge(xl) << 2;
-                    coordX2 = (s32) OTRGetDimensionFromRightEdge(xh2) << 2;
-                }
+                coordX = (s32) OTRGetDimensionFromRightEdge(xl) << 2;
+                coordX2 = (s32) OTRGetDimensionFromRightEdge(xh2) << 2;
                 gSPWideTextureRectangle(gDisplayListHead++, coordX, yl, coordX2, yh2, G_TX_RENDERTILE, arg4 << 5,
                                         (arg5 << 5), 1 << 10, 1 << 10);
                 break;
