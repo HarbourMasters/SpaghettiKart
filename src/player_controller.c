@@ -585,7 +585,7 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 }
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->unk_0CA & 2) != 0 ||
+    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (gRaceState != RACE_FINISHED)) || (player->unk_0CA & 2) != 0 ||
         (player->unk_0CA & 8) != 0 || (player->effects & 0x4F010CC0) != 0) {
         player->effects &= ~0x1000;
 
@@ -1974,7 +1974,7 @@ void apply_effect(Player* player, s8 arg1, s8 arg2) {
         func_8008D8B4(player, arg1);
         decelerate_ai_player(player, 10.0f);
     }
-    if (D_800DC510 != 5) {
+    if (gRaceState != RACE_FINISHED) {
         if (player->soundEffects & 0x04000000) {
             func_8008FC64(player, arg1);
         }

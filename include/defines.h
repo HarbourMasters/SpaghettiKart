@@ -196,6 +196,19 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define CREDITS_SEQUENCE 9
 
 /**
+ * @brief Options for gRaceState
+ */
+#define RACE_INIT 0
+#define RACE_SETUP 1
+#define RACE_STAGING 2
+#define RACE_IN_PROGRESS 3
+#define RACE_CALCULATE_RANKS 4
+#define RACE_FINISHED 5 // End of race and score screen
+#define RACE_UNK 6
+#define RACE_EXIT 7
+
+
+/**
  * @brief Options for gScreenModeSelection and gActiveScreenMode
  */
 #define SCREEN_MODE_1P 0
