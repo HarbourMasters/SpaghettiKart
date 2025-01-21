@@ -149,7 +149,7 @@ void BansheeBoardwalk::Load() {
 void BansheeBoardwalk::LoadTextures() {
 }
 
-void BansheeBoardwalk::SpawnActors() {
+void BansheeBoardwalk::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
@@ -175,19 +175,17 @@ void BansheeBoardwalk::SpawnActors() {
         gWorldInstance.AddObject(new OBoos(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290)));
         gWorldInstance.AddObject(new OBoos(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630)));
     }
-}
 
-void BansheeBoardwalk::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][110], 110, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][475], 475, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][610], 610, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][110], 110, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][475], 475, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][610], 610, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

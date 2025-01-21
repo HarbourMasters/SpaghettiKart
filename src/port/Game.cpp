@@ -242,58 +242,10 @@ extern "C" {
         }
     }
 
-    void CourseManager_VehiclesSpawn() {
-        for (auto& vehicle : gWorldInstance.Vehicles) {
-            if (vehicle) {
-                vehicle->Spawn();
-            }
-        }
-    }
-
-    void CourseManager_VehiclesTick() {
-        for (auto& vehicle : gWorldInstance.Vehicles) {
-            if (vehicle) {
-                vehicle->Tick();
-            }
-        }
-    }
-
-    void CourseManager_VehiclesCollision(s32 playerId, Player* player) {
-        for (auto& vehicle : gWorldInstance.Vehicles) {
-            if (vehicle) {
-                vehicle->Collision(playerId, player);
-            }
-        }
-    }
-
-    void CourseManager_SpawnBombKarts() {
-        for (auto& kart : gWorldInstance.BombKarts) {
-            if (kart) {
-                kart->Spawn();
-            }
-        }
-    }
-
-    void CourseManager_TickBombKarts() {
-        for (auto& kart : gWorldInstance.BombKarts) {
-            if (kart) {
-                kart->Tick();
-            }
-        }
-    }
-
-    void CourseManager_DrawBombKarts(s32 cameraId) {
-        for (auto& kart : gWorldInstance.BombKarts) {
-            if (kart) {
-                kart->Draw(cameraId);
-            }
-        }
-    }
-
-    void CourseManager_DrawBattleBombKarts(s32 cameraId) {
-        for (auto& kart : gWorldInstance.BombKarts) {
-            if (kart) {
-                kart->DrawBattle(cameraId);
+    void CourseManager_VehicleCollision(s32 playerId, Player* player) {
+        for (auto& actor : gWorldInstance.Actors) {
+            if (actor) {
+                actor->VehicleCollision(playerId, player);
             }
         }
     }
@@ -302,14 +254,6 @@ extern "C" {
         for (auto& kart : gWorldInstance.BombKarts) {
             if (kart) {
                 kart->Waypoint(cameraId);
-            }
-        }
-    }
-
-    void CourseManager_DrawVehicles(s32 playerId) {
-        for (auto& vehicle : gWorldInstance.Vehicles) {
-            if (vehicle) {
-                vehicle->Draw(playerId);
             }
         }
     }
@@ -341,14 +285,6 @@ extern "C" {
         if (ptr) {
             return ptr->OnTriggered;
         }
-    }
-
-    void CourseManager_TrainSmokeTick(void) {
-        TrainSmokeTick();
-    }
-
-    void CourseManager_TrainSmokeDraw(s32 cameraId) {
-        TrainSmokeDraw(cameraId);
     }
 
     void CourseManager_LoadTextures() {
@@ -390,9 +326,9 @@ extern "C" {
         }
     }
 
-    void CourseManager_SpawnActors() {
+    void CourseManager_BeginPlay() {
         if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->SpawnActors();
+            gWorldInstance.CurrentCourse->BeginPlay();
         }
     }
 
@@ -411,6 +347,11 @@ extern "C" {
     }
 
     void CourseManager_DrawObjects(s32 cameraId) {
+        // for (auto& kart : gWorldInstance.BombKarts) {
+        //     if (kart) {
+        //         kart->Draw(cameraId);
+        //     }
+        // }
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.DrawObjects(cameraId);
         }
@@ -479,12 +420,15 @@ extern "C" {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->UpdateCourseObjects();
         }
+        TrainSmokeTick();
     }
 
     void CourseManager_RenderCourseObjects(s32 cameraId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->RenderCourseObjects(cameraId);
         }
+
+        TrainSmokeDraw(cameraId);
     }
 
     void CourseManager_SomeSounds() {

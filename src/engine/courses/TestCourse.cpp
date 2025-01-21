@@ -151,7 +151,7 @@ void TestCourse::LoadTextures() {
     dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
-void TestCourse::SpawnActors() {
+void TestCourse::BeginPlay() {
     struct ActorSpawnData itemboxes[] = {
         {   200, 1500, 200 , 0},
         {   350, 2500, 300 , 1},
@@ -304,9 +304,8 @@ void TestCourse::SpawnVehicles() {
 
     Vec3f pos = {0, 0, 0};
 
-    gWorldInstance.AddBombKart(pos, &D_80164550[0][25], 25, 4, 0.8333333f);
-    gWorldInstance.AddBombKart(pos, &D_80164550[0][45], 45, 4, 0.8333333f);
-
+    gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][25], 25, 4, 0.8333333f));
+    gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][45], 45, 4, 0.8333333f));
 }
 
 void TestCourse::UpdateVehicles() {

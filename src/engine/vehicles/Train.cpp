@@ -76,10 +76,6 @@ ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint
 
     AnotherSmokeTimer = 0;
 
-    _count++;
-}
-
-void ATrain::Spawn() {
     TrainCarStuff* tempLocomotive;
     TrainCarStuff* tempTender;
     TrainCarStuff* tempPassengerCar;
@@ -128,9 +124,12 @@ void ATrain::Spawn() {
                                         ACTOR_TRAIN_PASSENGER_CAR);
         }
     }
+
+    _count++;
 }
 
-void ATrain::BeginPlay() {
+bool ATrain::IsMod() {
+    return true;
 }
 
 void ATrain::SyncComponents(TrainCarStuff* trainCar, s16 orientationY) {
@@ -223,7 +222,7 @@ void ATrain::Tick() {
     }
 }
 
-void ATrain::Collision(s32 playerId, Player* player) {
+void ATrain::VehicleCollision(s32 playerId, Player* player) {
     TrainCarStuff* trainCar;
     f32 playerPosX;
     f32 playerPosZ;
@@ -274,12 +273,13 @@ void ATrain::Collision(s32 playerId, Player* player) {
 }
 
 
-void ATrain::Draw(s32 playerId) {
+void ATrain::Draw(Camera* camera) {
 }
 
 s32 ATrain::AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
+        printf("ADD TRAIN SMOKE\n");
         init_train_smoke(objectIndex, pos, velocity);
     }
     return objectIndex;

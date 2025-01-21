@@ -129,7 +129,7 @@ void SherbetLand::Load() {
 void SherbetLand::LoadTextures() {
 }
 
-void SherbetLand::SpawnActors() {
+void SherbetLand::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
@@ -199,19 +199,15 @@ void SherbetLand::SpawnActors() {
     auto penguin14 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos11, 0x9000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
     penguin14->MirrorModeAngleOffset = -0x4000;
 
-}
-
-void SherbetLand::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
-
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        Vec3f kart = {0, 0, 0};
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][100], 100, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][150], 150, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][200], 200, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][250], 250, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

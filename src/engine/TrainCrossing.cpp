@@ -29,7 +29,7 @@ void TrainCrossing::CrossingTrigger() {
     OnTriggered = 0;
 
 
-    for (const auto& vehicle : gWorldInstance.Vehicles) {
+    for (const auto& vehicle : gWorldInstance.Actors) {
         if (auto train = dynamic_cast<ATrain*>(vehicle)) {;
             f32 radius = DynamicRadius(train->Locomotive.position, train->Locomotive.velocity, Position);
 

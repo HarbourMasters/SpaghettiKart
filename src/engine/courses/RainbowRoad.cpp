@@ -133,7 +133,7 @@ void RainbowRoad::Load() {
 void RainbowRoad::LoadTextures() {
 }
 
-void RainbowRoad::SpawnActors() {
+void RainbowRoad::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
@@ -147,19 +147,17 @@ void RainbowRoad::SpawnActors() {
         gWorldInstance.AddObject(new OChainChomp());
         gWorldInstance.AddObject(new OChainChomp());
     }
-}
 
-void RainbowRoad::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

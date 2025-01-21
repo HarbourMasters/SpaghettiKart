@@ -55,6 +55,7 @@ typedef struct {
     /* 0xB0 */ s16 unk_B0;
     /* 0xB2 */ s16 unk_B2;
     /* 0xB4 */ f32 unk_B4;
+               size_t cameraId;
 } Camera; /* size = 0xB8 */
 
 void camera_init(f32, f32, f32, s16, u32, s32);

@@ -115,7 +115,6 @@ void OBoos::func_8007CA70(void) {
     if (_isActive == false) {
         _playerId = OBoos::func_8007C9F8();
         point = &gNearestWaypointByPlayerId[_playerId];
-        printf("point %d\n", *point);
         if ((*point > _active.Start) && (*point < _active.End)) {
             // First group entrance
             OBoos::BooStart(0, _playerId);
@@ -123,7 +122,6 @@ void OBoos::func_8007CA70(void) {
     }
     if (_isActive == true) {
         point = &gNearestWaypointByPlayerId[_playerId];
-        printf("point %d\n", *point);
 
         if ((*point > _leftBoundary.Start) && (*point < _leftBoundary.End)) {
             // First group exit reverse direction
@@ -240,7 +238,6 @@ void OBoos::BooStart(s32 group, s32 playerId) {
     s16 temp_s4;
     s16 temp_s5;
     SplineData* spline;
-printf("Boo Start\n");
     for (size_t i = 0; i < _numBoos; i++) {
         objectIndex = _indices[i]; // indexObjectList3[group + i];
         init_object(objectIndex, 1);
@@ -262,7 +259,6 @@ printf("Boo Start\n");
 
 void OBoos::BooExit(s32 group) {
     s32 objectIndex;
-printf("Boo Exit\n");
     for (size_t i = 0; i < _numBoos; i++) {
         objectIndex = _indices[i]; //indexObjectList3[group + temp_a0];
         gObjectList[objectIndex].unk_0DC += 1;

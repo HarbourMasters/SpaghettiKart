@@ -34,16 +34,6 @@ void World::SetCourseFromCup() {
     CurrentCourse = CurrentCup->GetCourse();
 }
 
-
-AVehicle* World::AddVehicle(AVehicle* vehicle) {
-    Vehicles.push_back(vehicle);
-    return Vehicles.back();
-}
-
-void World::ClearVehicles(void) {
-    Vehicles.clear();
-}
-
 TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {
     auto crossing = std::make_shared<TrainCrossing>(position, waypointMin, waypointMax, approachRadius, exitRadius);
     Crossings.push_back(crossing);
@@ -160,9 +150,16 @@ AActor* World::GetActor(size_t index) {
 }
 
 void World::TickActors() {
+    // This only ticks modded actors
     for (AActor* actor : Actors) {
         if (actor->IsMod()) {
             actor->Tick();
+        }
+    }
+
+    for (auto& kart : gWorldInstance.BombKarts) {
+        if (kart) {
+            kart->Tick();
         }
     }
 }

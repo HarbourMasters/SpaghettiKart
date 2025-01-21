@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Vehicle.h"
+#include "Actor.h"
 #include <vector>
 
 extern "C" {
@@ -9,13 +9,11 @@ extern "C" {
 #include "vehicles.h"
 }
 
-class AVehicle; // Forward declare
-
 /**
  * Note that you can only remove the tender if there are no carriages
  * @arg waypoint initial waypoint to spawn at.
  */
-class ATrain : public AVehicle {
+class ATrain : public AActor {
     public:
 
     enum TenderStatus {
@@ -49,11 +47,10 @@ class ATrain : public AVehicle {
         return _count;
     }
 
-    virtual void Spawn() override;
-    virtual void BeginPlay() override;
     virtual void Tick() override;
-    virtual void Draw(s32 playerId) override;
-    virtual void Collision(s32 playerId, Player* player) override;
+    virtual void Draw(Camera* camera) override;
+    virtual void VehicleCollision(s32 playerId, Player* player) override;
+    virtual bool IsMod() override;
     s32 AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity);
     void SyncComponents(TrainCarStuff* trainCar, s16 orientationY);
 

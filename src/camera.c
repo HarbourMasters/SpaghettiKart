@@ -58,6 +58,8 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
     Player* player = gPlayerOne;
     Camera* camera = &cameras[cameraId];
 
+    camera->cameraId = cameraId;
+
     D_80152300[cameraId] = arg4;
     switch (arg4) {
         case 0:

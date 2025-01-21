@@ -142,21 +142,19 @@ void Skyscraper::Load() {
 void Skyscraper::LoadTextures() {
 }
 
-void Skyscraper::SpawnActors() {
+void Skyscraper::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_skyscraper_item_box_spawns));
-}
 
-void Skyscraper::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][20], 20, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][40], 40, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][60], 60, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][80], 80, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][120], 120, 0, 1.0f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 0, 1.0f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][20], 20, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][40], 40, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][60], 60, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][80], 80, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][120], 120, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 0, 1.0f));
     }
 }
 

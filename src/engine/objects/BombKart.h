@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
+#include "engine/objects/Object.h"
 #include "src/engine/vehicles/Vehicle.h"
 #include <vector>
 #include "engine/Matrix.h"
@@ -22,8 +23,8 @@ extern "C" {
  * This differs from the other vehicle classes in that it does not get added to the standard actor list
  * So this is sort of its own thing. Draw call in different place too.
  */
-class OBombKart {
-private:
+class OBombKart : public OObject {
+public:
     enum States : uint16_t { // 0,1,3,5
         DISABLED,
         CCW,
@@ -33,8 +34,6 @@ private:
         EXPLODE,
         PODIUM_CEREMONY,
     };
-
-public:
 
     const char* Type;
 
@@ -63,12 +62,9 @@ public:
         return _count;
     }
 
-    void Spawn();
-    void BeginPlay();
-    void Tick();
-    void Draw(s32 cameraId);
+    virtual void Tick() override;
+    virtual void Draw(s32 cameraId) override;
     void DrawBattle(s32 cameraId);
-    void Collision(s32 playerId, Player* player);
     void SomeRender(Vec3f arg1);
     void LoadMtx();
     void Waypoint(s32 screenId);

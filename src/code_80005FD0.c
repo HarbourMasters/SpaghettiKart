@@ -1538,8 +1538,8 @@ void update_vehicles(void) {
     generate_player_smoke();
     D_8016337C++;
 
-    CourseManager_TickBombKarts();
-    CourseManager_VehiclesTick();
+    //CourseManager_TickBombKarts();
+    //CourseManager_VehiclesTick();
 }
 
 void func_800098FC(s32 arg0, Player* player) {
@@ -1664,7 +1664,7 @@ void func_80009B60(s32 playerId) {
             D_80163448 = gPathIndexByPlayerId[playerId];
             func_80008DC0(D_80163448);
             //if (GetCourse() == GetKalimariDesert()) {
-                CourseManager_VehiclesCollision(playerId, player);
+                CourseManager_VehicleCollision(playerId, player);
                 //func_80012DC0(playerId, player);
                 if (playerId == 0) {
                     CourseManager_CrossingTrigger();
@@ -1728,7 +1728,7 @@ void func_80009B60(s32 playerId) {
                 }
                 D_801631F8[playerId] = D_801631E0[playerId];
 
-                CourseManager_DrawVehicles(playerId);
+                // Old vehicle draw method was here
 
                 if ((GetCourse() == GetYoshiValley()) || (GetCourse() == GetPodiumCeremony())) {
                     D_801634F8[playerId].unk4 = 0.0f;

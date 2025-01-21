@@ -170,25 +170,23 @@ void RoyalRaceway::LoadTextures() {
     dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
-void RoyalRaceway::SpawnActors() {
+void RoyalRaceway::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
     spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
-}
 
-void RoyalRaceway::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][296], 296, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][400], 400, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][746], 746, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][296], 296, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][400], 400, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][746], 746, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

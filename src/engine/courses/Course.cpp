@@ -152,7 +152,7 @@ void Course::Init() {
 void Course::LoadTextures() {
 }
 
-void Course::SpawnActors() {
+void Course::BeginPlay() {
 }
 
 void Course::InitClouds() {

@@ -557,8 +557,6 @@ void render_object_p1(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    CourseManager_DrawBombKarts(PLAYER_ONE); // render_bomb_karts_wrap(PLAYER_ONE);
-
     // if (gGamestate == ENDING) {
     //     //func_80055F48(PLAYER_ONE);
     //     //func_80056160(PLAYER_ONE);
@@ -576,7 +574,6 @@ void render_object_p2(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    CourseManager_DrawBombKarts(PLAYER_TWO);
     // render_bomb_karts_wrap(PLAYER_TWO);
     render_object_for_player(PLAYER_TWO);
 }
@@ -587,7 +584,6 @@ void render_object_p3(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    CourseManager_DrawBombKarts(PLAYER_THREE);
     // render_bomb_karts_wrap(PLAYER_THREE);
     render_object_for_player(PLAYER_THREE);
 }
@@ -599,7 +595,6 @@ void render_object_p4(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    CourseManager_DrawBombKarts(PLAYER_FOUR);
     // render_bomb_karts_wrap(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         // render_lakitu(PLAYER_FOUR);
@@ -785,7 +780,6 @@ void render_object_for_player(s32 cameraId) {
         render_balloons_grand_prix(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        CourseManager_DrawBattleBombKarts(cameraId);
         // render_battle_bomb_karts(cameraId);
     }
 }

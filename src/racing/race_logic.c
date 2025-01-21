@@ -858,7 +858,6 @@ void func_8028FCBC(void) {
     }
     switch (gRaceState) {
         case RACE_INIT:
-        printf("RACE STATE 0\n");
             if (!gDemoMode) {
                 if (gModeSelection == GRAND_PRIX) {
                     func_800C8EF8(11);
@@ -891,12 +890,9 @@ void func_8028FCBC(void) {
                 ply++;
             }
             D_800DC5B8 = 1;
-        printf("RACE STATE 0 end\n");
 
             break;
         case RACE_SETUP:
-        printf("RACE STATE 1\n");
-
             func_8028F914();
             if (D_802BA034 == 1.0f) {
                 if (gActiveScreenMode != SCREEN_MODE_1P) {
@@ -925,12 +921,8 @@ void func_8028FCBC(void) {
                 }
             }
             func_8028F4E8();
-        printf("RACE STATE 1 end\n");
-
             break;
         case RACE_STAGING:
-        printf("RACE STATE 2\n");
-
             if (gDemoMode) {
                 start_race();
             }
@@ -938,12 +930,8 @@ void func_8028FCBC(void) {
                 start_race();
             }
             func_8028F4E8();
-        printf("RACE STATE 2 end\n");
-
             break;
         case RACE_IN_PROGRESS:
-        printf("RACE STATE 3\n");
-
             if (gModeSelection == BATTLE) {
                 update_player_battle_status();
             } else {
@@ -952,12 +940,8 @@ void func_8028FCBC(void) {
             }
             func_8028F4E8();
             func_8028F970();
-        printf("RACE STATE 3 end\n");
-
             break;
         case RACE_CALCULATE_RANKS:
-        printf("RACE STATE 4\n");
-
             switch (gModeSelection) {
                 case GRAND_PRIX:
                     func_8028F4E8();
@@ -1004,12 +988,8 @@ void func_8028FCBC(void) {
                     }
                     break;
             }
-        printf("RACE STATE 4 end\n");
-
             break;
         case RACE_FINISHED:
-        printf("RACE STATE 5\n");
-
             if (D_802BA038 != 0) {
                 D_802BA038--;
             } else {
@@ -1034,23 +1014,15 @@ void func_8028FCBC(void) {
                 }
             }
             func_8028F4E8();
-        printf("RACE STATE 5 end\n");
-
             break;
         case RACE_UNK:
-        printf("RACE STATE 6\n");
-
             func_8028F8BC();
             if (D_802BA034 <= 0) {
                 gIsInQuitToMenuTransition = 1;
                 gQuitToMenuTransitionCounter = 5;
             }
-        printf("RACE STATE 6 end\n");
-
             break;
         case RACE_EXIT:
-        printf("RACE STATE DONE\n");
-
             break;
     }
 }

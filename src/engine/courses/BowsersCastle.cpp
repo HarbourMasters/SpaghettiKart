@@ -148,7 +148,7 @@ void BowsersCastle::LoadTextures() {
     dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
 }
 
-void BowsersCastle::SpawnActors() {
+void BowsersCastle::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
@@ -194,19 +194,17 @@ void BowsersCastle::SpawnActors() {
             gWorldInstance.AddObject(new OThwomp(0x073a, 0xf9f2, 0x4000, 1.0f, 5, 1));
             break;
     }
-}
 
-void BowsersCastle::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][150], 150, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][260], 260, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][435], 435, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][260], 260, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][435], 435, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

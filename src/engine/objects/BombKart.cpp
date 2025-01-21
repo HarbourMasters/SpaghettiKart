@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include "engine/objects/Object.h"
 #include "BombKart.h"
 #include <vector>
 
@@ -71,15 +72,9 @@ OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex,
     WheelPos[3][2] = _pos[2];
     check_bounding_collision(&_Collision, 2.0f, _pos[0], _pos[1], _pos[2]);
 
-    _count++;
-}
-
-void OBombKart::Spawn() {
     find_unused_obj_index(&ObjectIndex);
-}
 
-void OBombKart::BeginPlay() {
-
+    _count++;
 }
 
 void OBombKart::Tick() {
@@ -453,10 +448,6 @@ void OBombKart::Waypoint(s32 screenId) {
     waypointDiff = bombWaypoint - playerWaypoint;
     if ((waypointDiff < -5) || (waypointDiff > 0x1E)) { return; };
     playerHUD[screenId].unk_74 = 1;
-}
-
-void OBombKart::Collision(s32 playerId, Player* player) {
-
 }
 
 Player* OBombKart::FindTarget() {

@@ -39,10 +39,6 @@ ABoat::ABoat(f32 speed, u32 waypoint) {
     Velocity[1] = 0.0f;
     Velocity[2] = 0.0f;
 
-    _count++;
-}
-
-void ABoat::Spawn() {
     Vec3s paddleWheelBoatRot;
     if (IsActive == 1) {
         f32 origXPos = Position[0];
@@ -56,10 +52,18 @@ void ABoat::Spawn() {
         ActorIndex = add_actor_to_empty_slot(Position, paddleWheelBoatRot,
                                     Velocity, ACTOR_PADDLE_BOAT);
     }
+
+    _count++;
 }
 
-void ABoat::BeginPlay() {}
-void ABoat::Draw(s32 playerId) {}
+void ABoat::Draw(Camera* camera) {
+
+}
+
+bool ABoat::IsMod() {
+    return true;
+}
+
 void ABoat::Tick() {
     Path2D* waypoint;
     struct Actor* paddleBoatActor;
@@ -159,7 +163,7 @@ void ABoat::Tick() {
     }
 }
 
-void ABoat::Collision(s32 playerId, Player* player) {
+void ABoat::VehicleCollision(s32 playerId, Player* player) {
     f32 x_diff;
     f32 y_diff;
     f32 z_diff;

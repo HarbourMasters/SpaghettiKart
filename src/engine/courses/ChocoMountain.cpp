@@ -163,23 +163,21 @@ void ChocoMountain::Load() {
 void ChocoMountain::LoadTextures() {
 }
 
-void ChocoMountain::SpawnActors() {
+void ChocoMountain::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
     spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
-}
 
-void ChocoMountain::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][165], 165, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][330], 330, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][550], 550, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][595], 595, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][165], 165, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][330], 330, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][550], 550, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][595], 595, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

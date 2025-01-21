@@ -6,6 +6,7 @@
 #include "MarioRaceway.h"
 #include "World.h"
 #include "engine/actors/AFinishline.h"
+#include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
 
 extern "C" {
@@ -173,7 +174,7 @@ void MarioRaceway::LoadTextures() {
     dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
-void MarioRaceway::SpawnActors() {
+void MarioRaceway::BeginPlay() {
     struct Actor* actor;
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
@@ -190,20 +191,21 @@ void MarioRaceway::SpawnActors() {
     vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
+
+    if (gModeSelection == VERSUS) {
+        Vec3f pos = {0, 0, 0};
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][40], 40, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][265], 265, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][285], 285, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][420], 420, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+    }
 }
 
 void MarioRaceway::SpawnVehicles() {
-    if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][40], 40, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][100], 100, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][265], 265, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][285], 285, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][420], 420, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-    }
 }
 
 // Likely sets minimap boundaries

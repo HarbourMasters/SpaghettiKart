@@ -32,6 +32,8 @@ public:
     virtual void Tick();
     virtual void Draw(Camera*);
     virtual void Collision(Player* player, AActor* actor);
+    virtual void VehicleCollision(s32 playerId, Player* player);
+
     virtual void Destroy();
     virtual bool IsMod();
 };

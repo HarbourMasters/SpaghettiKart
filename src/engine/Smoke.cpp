@@ -3,7 +3,6 @@
 
 #include "Smoke.h"
 #include "World.h"
-#include "vehicles/Vehicle.h"
 #include "vehicles/Train.h"
 #include "vehicles/Boat.h"
 
@@ -23,8 +22,8 @@ void TrainSmokeTick() {
     s32 temp_a0;
     Object* object;
 
-    for (auto& vehicle : gWorldInstance.Vehicles) {
-        if (auto train = dynamic_cast<ATrain*>(vehicle)) {
+    for (auto& actor : gWorldInstance.Actors) {
+        if (auto train = dynamic_cast<ATrain*>(actor)) {
             if (train->SmokeTimer != 0) {
                 train->SmokeTimer -= 1;
             }
@@ -48,7 +47,7 @@ void TrainSmokeTick() {
                     train->SmokeTimer = 100;
                 }
             }
-        } else if (auto boat = dynamic_cast<ABoat*>(vehicle)) {
+        } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
             if (boat->SmokeTimer != 0) {
                 boat->SmokeTimer -= 1;
             }
@@ -78,8 +77,9 @@ void TrainSmokeTick() {
 
 void TrainSmokeDraw(s32 cameraId) {
     Camera* camera = &camera1[cameraId];
-    for (auto& vehicle : gWorldInstance.Vehicles) {
-        if (auto train = dynamic_cast<ATrain*>(vehicle)) {
+
+    for (auto& actor : gWorldInstance.Actors) {
+        if (auto train = dynamic_cast<ATrain*>(actor)) {
             gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
             load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
@@ -92,7 +92,7 @@ void TrainSmokeDraw(s32 cameraId) {
                     render_object_train_smoke_particle(train->SmokeParticles[i], cameraId);
                 }
             }
-        } else if (auto boat = dynamic_cast<ABoat*>(vehicle)) {
+        } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
             gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
 
             load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);

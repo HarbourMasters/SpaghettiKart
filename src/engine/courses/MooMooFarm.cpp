@@ -159,26 +159,24 @@ void MooMooFarm::LoadTextures() {
     dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
 }
 
-void MooMooFarm::SpawnActors() {
+void MooMooFarm::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
     if (gPlayerCountSelection1 != 4) {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
     }
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_item_box_spawns));
-}
 
-void MooMooFarm::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][225], 225, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][316], 316, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][434], 434, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][225], 225, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][316], 316, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][434], 434, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

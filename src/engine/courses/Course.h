@@ -86,7 +86,12 @@ public:
     virtual void Load(); // Decompress and load stock courses. Must be overridden for custom courses
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom course
     virtual void LoadTextures();
-    virtual void SpawnActors();
+
+    /**
+     * @brief BeginPlay This function is called once at the start of gameplay.
+     * Actor spawning should go here.
+     */
+    virtual void BeginPlay();
     virtual void InitClouds();
     virtual void UpdateClouds(s32, Camera*);
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);

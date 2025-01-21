@@ -35,15 +35,11 @@ void CourseManager_SetCup(void*);
 
 void CourseManager_SpawnVehicles();
 
-void CourseManager_UpdateVehicles();
-
 void CourseManager_LoadTextures();
 
 void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0);
 
 void CourseManager_RenderCredits();
-
-void CourseManager_SpawnActors();
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -91,16 +87,13 @@ void CourseManager_MinimapFinishlinePosition();
 
 void CourseManager_SetStaffGhost();
 
-
-void CourseManager_SpawnBombKarts();
-
 void CourseManager_BombKartsWaypoint(s32 cameraId);
 
 void CourseManager_ScrollingTextures();
 
 s32 CourseManager_GetCrossingOnTriggered(uintptr_t* crossing);
 
-void CourseManager_VehiclesSpawn();
+void CourseManager_BeginPlay();
 
 void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
 
@@ -108,25 +101,13 @@ void CourseManager_AICrossingBehaviour(s32 playerId);
 
 void CourseManager_ClearVehicles(void);
 
-void CourseManager_DrawVehicles(s32 playerId);
-
 void CourseManager_CrossingTrigger();
 
-void CourseManager_VehiclesCollision(s32 playerId, Player* player);
-
-void CourseManager_VehiclesTick();
-
-void CourseManager_TickBombKarts();
+void CourseManager_VehicleCollision(s32 playerId, Player* player);
 
 void CourseManager_TickActors();
 
-void CourseManager_TrainSmokeTick(void);
-
-void CourseManager_DrawBattleBombKarts(s32 cameraId);
-
 void CourseManager_DrawBombKarts(s32 cameraId);
-
-void CourseManager_TrainSmokeDraw(s32 cameraId);
 
 size_t GetCupCursorPosition();
 

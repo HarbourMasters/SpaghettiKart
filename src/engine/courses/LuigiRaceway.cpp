@@ -164,7 +164,7 @@ void LuigiRaceway::LoadTextures() {
     dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
 }
 
-void LuigiRaceway::SpawnActors() {
+void LuigiRaceway::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
     spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_luigi_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_luigi_raceway_item_box_spawns));
@@ -174,19 +174,17 @@ void LuigiRaceway::SpawnActors() {
     } else { // Normal gameplay
         gWorldInstance.AddObject(new OHotAirBalloon(FVector(-176.0, 0.0f, -2323.0f)));
     }
-}
 
-void LuigiRaceway::SpawnVehicles() {
     if (gModeSelection == VERSUS) {
         Vec3f pos = { 0, 0, 0 };
 
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][50], 50, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][305], 305, 1, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][440], 440, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][515], 515, 3, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
-        gWorldInstance.AddBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f);
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][305], 305, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][440], 440, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][515], 515, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
 }
 

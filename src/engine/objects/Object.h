@@ -20,7 +20,6 @@ public:
     virtual void Tick();
     virtual void Tick60fps();
     virtual void Draw(s32 cameraId);
-    virtual void Collision();
     virtual void Expire();
     virtual void Destroy(); // Mark object for deletion at the start of the next frame
 };

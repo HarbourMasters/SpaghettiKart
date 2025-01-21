@@ -94,13 +94,10 @@ public:
 
     std::vector<AActor*> Actors;
     std::vector<OObject*> Objects;
-    std::vector<AVehicle*> Vehicles;
     std::vector<OBombKart*> BombKarts;
     std::vector<ParticleEmitter*> Emitters;
 
     std::unordered_map<s32, OLakitu*> Lakitus;
-
-    AVehicle* AddVehicle(AVehicle* vehicle);
 
     void ClearVehicles(void);
 

@@ -16,7 +16,6 @@ OObject::OObject() {}
 void OObject::Tick() { }
 void OObject::Tick60fps() {}
 void OObject::Draw(s32 cameraId) { }
-void OObject::Collision() {}
 void OObject::Expire() { }
 void OObject::Destroy() {
     PendingDestroy = true;

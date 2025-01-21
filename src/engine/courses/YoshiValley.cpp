@@ -137,7 +137,7 @@ void YoshiValley::LoadTextures() {
     dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
 }
 
-void YoshiValley::SpawnActors() {
+void YoshiValley::BeginPlay() {
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
@@ -173,6 +173,27 @@ void YoshiValley::SpawnActors() {
         gWorldInstance.AddObject(new OHedgehog(FVector(-2493, 94, -454), FVector2D(-2505, -397), 28));
         gWorldInstance.AddObject(new OHedgehog(FVector(-2477, 3, -57), FVector2D(-2539, -66), 28));
     }
+
+    if (gModeSelection == VERSUS) {
+        // Note that the waypoint values might be unused for Yoshi's Valley. Entered them because
+        // the original data has values here.
+
+        // Note that the Y height is calculated automatically to place the kart on the surface
+        Vec3f pos = {-1533, 0, -682};
+        gWorldInstance.AddObject(new OBombKart(pos, NULL, 0, 0, 0.8333333f));
+        Vec3f pos2 = {-1565, 0, -619};
+        gWorldInstance.AddObject(new OBombKart(pos2, NULL, 10, 0, 0.8333333f));
+        Vec3f pos3 = {-1529, 0, -579};
+        gWorldInstance.AddObject(new OBombKart(pos3, NULL, 20, 0, 0.8333333f));
+        Vec3f pos4 = {-1588, 0, -534};
+        gWorldInstance.AddObject(new OBombKart(pos4, NULL, 30, 0, 0.8333333f));
+        Vec3f pos5 = {-1598, 0, -207};
+        gWorldInstance.AddObject(new OBombKart(pos5, NULL, 40, 0, 0.8333333f));
+        Vec3f pos6 = {-1646, 0, -147};
+        gWorldInstance.AddObject(new OBombKart(pos6, NULL, 50, 0, 0.8333333f));
+        Vec3f pos7 = {-2532, 0, -445};
+        gWorldInstance.AddObject(new OBombKart(pos7, NULL, 60, 0, 0.8333333f));
+    }
 }
 
 // Likely sets minimap boundaries
@@ -184,30 +205,6 @@ void YoshiValley::MinimapSettings() {
 }
 
 void YoshiValley::InitCourseObjects() {
-}
-
-void YoshiValley::SpawnVehicles() {
-    if (gModeSelection == VERSUS) {
-
-        // Note that the waypoint values might be unused for Yoshi's Valley. Entered them because
-        // the original data has values here.
-
-        // Note that the Y height is calculated automatically to place the kart on the surface
-        Vec3f pos = {-1533, 0, -682};
-        gWorldInstance.AddBombKart(pos, NULL, 0, 0, 0.8333333f);
-        Vec3f pos2 = {-1565, 0, -619};
-        gWorldInstance.AddBombKart(pos2, NULL, 10, 0, 0.8333333f);
-        Vec3f pos3 = {-1529, 0, -579};
-        gWorldInstance.AddBombKart(pos3, NULL, 20, 0, 0.8333333f);
-        Vec3f pos4 = {-1588, 0, -534};
-        gWorldInstance.AddBombKart(pos4, NULL, 30, 0, 0.8333333f);
-        Vec3f pos5 = {-1598, 0, -207};
-        gWorldInstance.AddBombKart(pos5, NULL, 40, 0, 0.8333333f);
-        Vec3f pos6 = {-1646, 0, -147};
-        gWorldInstance.AddBombKart(pos6, NULL, 50, 0, 0.8333333f);
-        Vec3f pos7 = {-2532, 0, -445};
-        gWorldInstance.AddBombKart(pos7, NULL, 60, 0, 0.8333333f);
-    }
 }
 
 void YoshiValley::UpdateCourseObjects() {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Vehicle.h"
+#include "Actor.h"
 #include <vector>
 
 extern "C" {
@@ -11,9 +11,7 @@ extern "C" {
 #include "sounds.h"
 }
 
-class AVehicle; // Forward declare
-
-class ACar : public AVehicle {
+class ACar : public AActor {
     public:
 
     explicit ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
@@ -43,11 +41,10 @@ class ACar : public AVehicle {
     f32 SomeArg4 = 8.5f;
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x05);
 
-    virtual void Spawn() override;
-    virtual void BeginPlay() override;
     virtual void Tick() override;
-    virtual void Draw(s32 playerId) override;
-    virtual void Collision(s32 playerId, Player* player) override;
+    virtual void Draw(Camera*) override;
+    virtual void VehicleCollision(s32 playerId, Player* player) override;
+    virtual bool IsMod() override;
 private:
     static size_t _count;
 };

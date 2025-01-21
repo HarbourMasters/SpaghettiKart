@@ -1044,12 +1044,11 @@ void spawn_course_actors(void) {
     struct RailroadCrossing* rrxing;
 
     gNumPermanentActors = 0;
-    CourseManager_SpawnActors();
 
     if (gModeSelection != BATTLE) {
         if (!cm_DoesFinishlineExist()) {
             printf("\n[actors.c] COURSE MISSING THE FINISHLINE\n");
-            printf("  In the course class SpawnActors() function make sure to include:\n");
+            printf("  In the Course class BeginPlay() function make sure to include:\n");
             printf("  gWorldInstance.AddActor(new AFinishline());\n\n");
             printf("\n  Otherwise, course textures may glitch out or other strange issues may occur.\n");
         }
@@ -1216,9 +1215,9 @@ void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
     CM_CleanWorld();
-    spawn_course_actors();
 
-    CourseManager_VehiclesSpawn();
+    CourseManager_BeginPlay();
+    spawn_course_actors();
 
     // spawn_course_vehicles();
 }

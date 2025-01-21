@@ -57,48 +57,29 @@ ATruck::ATruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
     }
     D_801631C8 = 10;
 
+    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
+                            Speed);
+    ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_BOX_TRUCK);
+
     _count++;
 }
 
-void ATruck::Spawn() {
-        spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
-                              Speed);
-        ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_BOX_TRUCK);
-    //if (Compare(Dict[Type], "mk:bus")) {
-    //    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel, Speed);
-    //    ActorIndex = add_actor_to_empty_slot(Position, Rotation,
-    //                                                        Velocity, ACTOR_SCHOOL_BUS);
-    //}
-    // if (Compare(Dict[Type], "mk:tanker")) {
-    //     spawn_vehicle_on_road(tempTankerTruck);
-    //     tempTankerTruck->actorIndex =
-    //         add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
-    //                                 tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
-    // }
-    // if (Compare(Dict[Type], "mk:car")) {
-    //     tempCar = &gCarList[loopIndex];
-    //     spawn_vehicle_on_road(tempCar);
-    //     tempCar->actorIndex =
-    //         add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
-    // }
+bool ATruck::IsMod() {
+    return true;
 }
 
-void ATruck::BeginPlay() {
-
-}
-
-void ATruck::Draw(s32 playerId) {
+void ATruck::Draw(Camera* camera) {
     s32 var_v0;
     s32 var_s2;
     s32 waypointCount;
     u16 temp_a1;
 
     waypointCount = gWaypointCountByPathIndex[0];
-    if (!(gPlayers[playerId].unk_094 < 1.6666666666666667)) {
+    if (!(gPlayers[camera->playerId].unk_094 < 1.6666666666666667)) {
         temp_a1 = WaypointIndex;
         for (var_v0 = 0; var_v0 < 0x18; var_v0 += 3) {
             if (((sSomeNearestWaypoint + var_v0) % waypointCount) == temp_a1) {
-                D_801634F8[playerId].unk4 = func_800145A8(SomeType, D_80163068[playerId], temp_a1);
+                D_801634F8[camera->playerId].unk4 = func_800145A8(SomeType, D_80163068[camera->playerId], temp_a1);
                 return;
             }
         }
@@ -170,7 +151,7 @@ void ATruck::Tick() {
     vehicleActor->velocity[2] = Velocity[2];
 }
 
-void ATruck::Collision(s32 playerId, Player* player) {
+void ATruck::VehicleCollision(s32 playerId, Player* player) {
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f22;
