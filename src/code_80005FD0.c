@@ -3446,8 +3446,6 @@ void func_8000F2DC(void) {
 
     CourseManager_ClearVehicles();
 
-    CourseManager_SpawnVehicles();
-
     //set_bomb_kart_spawn_positions();
     func_8000EEDC();
 }
@@ -4347,55 +4345,6 @@ void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 w
     }
     velocity[0] = position[0] - origXPos;
     velocity[2] = position[2] - origZPos;
-}
-
-void spawn_course_vehicles(void) {
-    s16 trainCarYRot;
-    UNUSED Vec3f pad;
-    TrainCarStuff* tempLocomotive;
-    TrainCarStuff* tempTender;
-    TrainCarStuff* tempPassengerCar;
-    Vec3s trainCarRot;
-    VehicleStuff* tempBoxTruck;
-    VehicleStuff* tempSchoolBus;
-    VehicleStuff* tempTankerTruck;
-    VehicleStuff* tempCar;
-    PaddleBoatStuff* tempPaddleWheelBoat;
-    Vec3s paddleWheelBoatRot;
-    s32 loopIndex;
-    s32 loopIndex2;
-    f32 origXPos;
-    f32 origZPos;
-
-    CourseManager_SpawnVehicles();
-
-    // if (GetCourse() == GetToadsTurnpike()) {
-    //     for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-    //         tempBoxTruck = &gBoxTruckList[loopIndex];
-    //         spawn_vehicle_on_road(tempBoxTruck);
-    //         tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation,
-    //                                                             tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
-    //     }
-    //     for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-    //         tempSchoolBus = &gSchoolBusList[loopIndex];
-    //         spawn_vehicle_on_road(tempSchoolBus);
-    //         tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation,
-    //                                                             tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
-    //     }
-    //     for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-    //         tempTankerTruck = &gTankerTruckList[loopIndex];
-    //         spawn_vehicle_on_road(tempTankerTruck);
-    //         tempTankerTruck->actorIndex =
-    //             add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation,
-    //                                     tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
-    //     }
-    //     for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-    //         tempCar = &gCarList[loopIndex];
-    //         spawn_vehicle_on_road(tempCar);
-    //         tempCar->actorIndex =
-    //             add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
-    //     }
-    // }
 }
 
 void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoint) {

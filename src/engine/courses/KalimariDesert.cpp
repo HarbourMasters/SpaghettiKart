@@ -11,7 +11,6 @@
 #include "engine/vehicles/Utils.h"
 
 #include "engine/vehicles/Train.h"
-#include "engine/vehicles/Vehicle.h"
 
 extern "C" {
     #include "main.h"

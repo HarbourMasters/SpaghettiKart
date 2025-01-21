@@ -1218,8 +1218,6 @@ void init_actors_and_load_textures(void) {
 
     CourseManager_BeginPlay();
     spawn_course_actors();
-
-    // spawn_course_vehicles();
 }
 
 void play_sound_before_despawn(struct Actor* actor) {

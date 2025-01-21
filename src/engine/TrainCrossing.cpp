@@ -1,7 +1,7 @@
 #include <libultraship.h>
 #include "TrainCrossing.h"
 #include "World.h"
-#include "vehicles/Vehicle.h"
+#include "engine/Actor.h"
 #include "vehicles/Train.h"
 #include <memory>
 
@@ -29,8 +29,8 @@ void TrainCrossing::CrossingTrigger() {
     OnTriggered = 0;
 
 
-    for (const auto& vehicle : gWorldInstance.Actors) {
-        if (auto train = dynamic_cast<ATrain*>(vehicle)) {;
+    for (const auto& actor : gWorldInstance.Actors) {
+        if (auto train = dynamic_cast<ATrain*>(actor)) {;
             f32 radius = DynamicRadius(train->Locomotive.position, train->Locomotive.velocity, Position);
 
             if (Distance(train->Locomotive.position, Position) < radius) {

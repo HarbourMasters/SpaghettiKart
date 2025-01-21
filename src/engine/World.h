@@ -5,7 +5,6 @@
 #include "engine/courses/Course.h"
 #include "objects/Object.h"
 #include "Cup.h"
-#include "vehicles/Vehicle.h"
 #include "vehicles/Train.h"
 #include "vehicles/Car.h"
 #include "objects/BombKart.h"
@@ -94,12 +93,9 @@ public:
 
     std::vector<AActor*> Actors;
     std::vector<OObject*> Objects;
-    std::vector<OBombKart*> BombKarts;
     std::vector<ParticleEmitter*> Emitters;
 
     std::unordered_map<s32, OLakitu*> Lakitus;
-
-    void ClearVehicles(void);
 
     /** Objects **/
     void AddBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);

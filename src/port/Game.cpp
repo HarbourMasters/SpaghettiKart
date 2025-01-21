@@ -236,12 +236,6 @@ extern "C" {
         gWorldInstance.CurrentCourse = gWorldInstance.Courses[gWorldInstance.CourseIndex];
     }
 
-    void CourseManager_SpawnVehicles() {
-        if (gWorldInstance.CurrentCourse) {
-            gWorldInstance.CurrentCourse->SpawnVehicles();
-        }
-    }
-
     void CourseManager_VehicleCollision(s32 playerId, Player* player) {
         for (auto& actor : gWorldInstance.Actors) {
             if (actor) {
@@ -251,17 +245,17 @@ extern "C" {
     }
 
     void CourseManager_BombKartsWaypoint(s32 cameraId) {
-        for (auto& kart : gWorldInstance.BombKarts) {
-            if (kart) {
-                kart->Waypoint(cameraId);
+        for (auto& object : gWorldInstance.Objects) {
+            if (auto kart = dynamic_cast<OBombKart*>(object)) {;
+                if (kart) {
+                    kart->Waypoint(cameraId);
+                }
             }
         }
     }
 
     void CourseManager_ClearVehicles(void) {
-        gWorldInstance.ClearVehicles();
         gWorldInstance.Crossings.clear();
-        gWorldInstance.BombKarts.clear();
     }
 
     void CourseManager_CrossingTrigger() {
@@ -347,11 +341,6 @@ extern "C" {
     }
 
     void CourseManager_DrawObjects(s32 cameraId) {
-        // for (auto& kart : gWorldInstance.BombKarts) {
-        //     if (kart) {
-        //         kart->Draw(cameraId);
-        //     }
-        // }
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.DrawObjects(cameraId);
         }

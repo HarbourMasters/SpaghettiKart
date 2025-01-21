@@ -2,7 +2,6 @@
 
 #include <libultraship.h>
 #include "engine/objects/Object.h"
-#include "src/engine/vehicles/Vehicle.h"
 #include <vector>
 #include "engine/Matrix.h"
 

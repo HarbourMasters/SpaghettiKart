@@ -33,8 +33,6 @@ void PreviousCourse();
 
 void CourseManager_SetCup(void*);
 
-void CourseManager_SpawnVehicles();
-
 void CourseManager_LoadTextures();
 
 void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0);
