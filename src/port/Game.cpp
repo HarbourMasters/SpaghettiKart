@@ -160,19 +160,21 @@ void CustomEngineInit() {
     gWorldInstance.CurrentCup->CursorPosition = 3;
     gWorldInstance.CupIndex = 0;
 
-    ModelLoader::LoadModelList bowserStatueList = {
-        .course = gBowsersCastle,
-        .gfxBuffer = &gBowserStatueGfx[0],
-        .gfxBufferSize = 162,
-        .gfxStart = (0x2BB8 / 8), // 0x2BB8 / sizeof(OldGfx)
-        .vtxBuffer = &gBowserStatueVtx[0],
-        .vtxBufferSize = 717,
-        .vtxStart = 1942,
-    };
+    // ModelLoader::LoadModelList bowserStatueList = {
+    //     .course = gBowsersCastle,
+    //     .gfxBuffer = &gBowserStatueGfx[0],
+    //     .gfxBufferSize = 162,
+    //     .gfxStart = (0x2BB8 / 8), // 0x2BB8 / sizeof(OldGfx)
+    //     .vtxBuffer = &gBowserStatueVtx[0],
+    //     .vtxBufferSize = 717,
+    //     .vtxStart = 1942,
+    // };
 
-    gModelLoader.Add(bowserStatueList);
+    // Model loader systems allows cutting pieces out of courses and making them actors.
+    // Commented out due to alleged stability issues.
+    //gModelLoader.Add(bowserStatueList);
 
-    gModelLoader.Load();
+    //gModelLoader.Load();
 }
 
 extern "C" {
@@ -566,7 +568,7 @@ extern "C" {
         gWorldInstance.CurrentCourse = (Course*) course;
     }
 
-    struct Actor* m_GetActor(size_t index) {
+    struct Actor* CM_GetActor(size_t index) {
         if (index < gWorldInstance.Actors.size()) {
             AActor* actor = gWorldInstance.Actors[index];
             return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
@@ -576,7 +578,7 @@ extern "C" {
         }
     }
 
-    size_t m_FindActorIndex(Actor* actor) {
+    size_t CM_FindActorIndex(Actor* actor) {
         // Move the ptr back to look at the vtable.
         // This gets us the proper C++ class instead of just the variables used in C.
         AActor* a = reinterpret_cast<AActor*>((char*)actor - sizeof(void*));
@@ -590,7 +592,7 @@ extern "C" {
         return 0;
     }
 
-    void m_DeleteActor(size_t index) {
+    void CM_DeleteActor(size_t index) {
         std::vector<AActor*> actors = gWorldInstance.Actors;
         if (index < actors.size()) {
             actors.erase(actors.begin() + index);
@@ -607,15 +609,15 @@ extern "C" {
         gWorldInstance.Lakitus.clear();
     }
 
-    struct Actor* m_AddBaseActor(void) {
+    struct Actor* CM_AddBaseActor(void) {
         return (struct Actor*) gWorldInstance.AddBaseActor();
     }
 
-    size_t m_GetActorSize() {
+    size_t CM_GetActorSize() {
         return gWorldInstance.Actors.size();
     }
 
-    void m_ActorCollision(Player* player, Actor* actor) {
+    void CM_ActorCollision(Player* player, Actor* actor) {
         AActor* a = gWorldInstance.ConvertActorToAActor(actor);
 
         if (a->IsMod()) {

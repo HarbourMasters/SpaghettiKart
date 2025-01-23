@@ -294,9 +294,9 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     func_800C90F4(shell->playerId,
                                   (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (pad13 == ACTOR_RED_SHELL) {
-                        add_red_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
+                        add_red_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                     } else {
-                        add_blue_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
+                        add_blue_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                         func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                     }
                 }
@@ -308,9 +308,9 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     func_800C90F4(shell->playerId,
                                   (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (pad13 == ACTOR_RED_SHELL) {
-                        add_red_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
+                        add_red_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                     } else {
-                        add_blue_shell_in_unexpired_actor_list(m_FindActorIndex(shell));
+                        add_blue_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                         func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                     }
                 }

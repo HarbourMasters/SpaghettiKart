@@ -3239,7 +3239,7 @@ s32 add_actor_in_unexpired_actor_list(s32 actorIndex, s16 arg1) {
 }
 
 s32 add_red_shell_in_unexpired_actor_list(s32 actorIndex) {
-    struct Actor* actor = m_GetActor(actorIndex);
+    struct Actor* actor = CM_GetActor(actorIndex);
     if (actor->type != ACTOR_RED_SHELL) {
         return -1;
     }
@@ -3247,7 +3247,7 @@ s32 add_red_shell_in_unexpired_actor_list(s32 actorIndex) {
 }
 
 s32 add_green_shell_in_unexpired_actor_list(s32 actorIndex) {
-    struct Actor* actor = m_GetActor(actorIndex);
+    struct Actor* actor = CM_GetActor(actorIndex);
     if (actor->type != ACTOR_GREEN_SHELL) {
         return -1;
     }
@@ -3255,7 +3255,7 @@ s32 add_green_shell_in_unexpired_actor_list(s32 actorIndex) {
 }
 
 s32 add_blue_shell_in_unexpired_actor_list(s32 arg0) {
-    struct Actor* actor = m_GetActor(arg0);
+    struct Actor* actor = CM_GetActor(arg0);
     if (actor->type != ACTOR_BLUE_SPINY_SHELL) {
         return -1;
     }

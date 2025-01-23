@@ -83,11 +83,11 @@ enum ActorType {
     ACTOR_CAR,
     ACTOR_KIWANO_FRUIT
 };
-size_t m_GetActorSize(void);
-#define ACTOR_LIST_SIZE m_GetActorSize()
+size_t CM_GetActorSize(void);
+#define ACTOR_LIST_SIZE CM_GetActorSize()
 
-struct Actor* m_GetActor(size_t);
-#define GET_ACTOR(index) m_GetActor(index)
+struct Actor* CM_GetActor(size_t);
+#define GET_ACTOR(index) CM_GetActor(index)
 
 // Actor flags
 #define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed

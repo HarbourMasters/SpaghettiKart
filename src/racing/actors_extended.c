@@ -592,9 +592,9 @@ s32 init_triple_shell(TripleShellParent* parent, Player* player, s16 shellType, 
     shell->rotVelocity = 0;
     shell->rotAngle = -0x8000;
     shell->playerId = player - gPlayerOne;
-    shell->parentIndex = m_FindActorIndex(parent);
+    shell->parentIndex = CM_FindActorIndex(parent);
     shell->shellId = shellId;
-    parent->shellIndices[shellId] = (f32) m_FindActorIndex(shell);
+    parent->shellIndices[shellId] = (f32) CM_FindActorIndex(shell);
     return 1;
 }
 
@@ -721,7 +721,7 @@ void func_802B2914(struct BananaBunchParent* banana_bunch, Player* player, s16 b
         func_802B4E30((struct Actor*) newBanana);
         newBanana->flags = 0x9000;
         newBanana->playerId = player - gPlayerOne;
-        newBanana->parentIndex = (struct Actor*) m_FindActorIndex(banana_bunch);
+        newBanana->parentIndex = (struct Actor*) CM_FindActorIndex(banana_bunch);
         newBanana->youngerIndex = -1;
         newBanana->unk_04 = 0x0014;
         newBanana->bananaId = bananaId;

@@ -123,12 +123,12 @@ void SetCourseById(s32 course);
 
 void SetCourseByClass(void* course);
 
-struct Actor* m_GetActor(size_t index);
-void m_DeleteActor(size_t index);
-struct Actor* m_AddBaseActor(void);
-size_t m_GetActorSize();
-size_t m_FindActorIndex(struct Actor* actor);
-void m_ActorCollision(Player* player, struct Actor* actor);
+struct Actor* CM_GetActor(size_t index);
+void CM_DeleteActor(size_t index);
+struct Actor* CM_AddBaseActor(void);
+size_t CM_GetActorSize();
+size_t CM_FindActorIndex(struct Actor* actor);
+void CM_ActorCollision(Player* player, struct Actor* actor);
 void CM_CleanWorld(void);
 
 void* GetMarioRaceway(void);
