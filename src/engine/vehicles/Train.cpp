@@ -279,7 +279,6 @@ void ATrain::Draw(Camera* camera) {
 s32 ATrain::AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex = add_unused_obj_index(SmokeParticles, &NextParticlePtr, gObjectParticle2_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
-        printf("ADD TRAIN SMOKE\n");
         init_train_smoke(objectIndex, pos, velocity);
     }
     return objectIndex;

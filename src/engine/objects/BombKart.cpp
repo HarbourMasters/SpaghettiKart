@@ -327,10 +327,7 @@ void OBombKart::Tick() {
 }
 
 void OBombKart::Draw(s32 cameraId) {
-printf("DRAW\n");
     if (gModeSelection == BATTLE) {
-        printf("DRAW BOMB KART\n");
-
         for (size_t playerId = 0; playerId < NUM_BOMB_KARTS_BATTLE; playerId++) {
             Object* object = &gObjectList[ObjectIndex];
             if (object->state != 0) {
