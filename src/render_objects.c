@@ -4031,23 +4031,17 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
 }
 
 void func_800569F4(s32 playerIndex) {
-    s32 objectIndex;
-
-    objectIndex = gIndexObjectBombKart[playerIndex];
-    init_object(objectIndex, 0);
-    gObjectList[objectIndex].primAlpha = 0;
+    CM_DisplayBattleBombKart(playerIndex, 0);
 }
 
-void func_80056A40(s32 playerIndex, s32 arg1) {
-    s32 objectIndex;
 
-    objectIndex = gIndexObjectBombKart[playerIndex];
-    init_object(objectIndex, 0);
-    gObjectList[objectIndex].primAlpha = (s16) arg1;
+void func_80056A40(s32 playerIndex, s32 arg1) {
+    CM_DisplayBattleBombKart(playerIndex, arg1);
 }
 
 void func_80056A94(s32 playerIndex) {
-    func_80072428(gIndexObjectBombKart[playerIndex]);
+    //func_80072428(gIndexObjectBombKart[playerIndex]);
+    CM_DisplayBattleBombKart(playerIndex, 0);
 }
 
 void render_battle_bomb_karts(s32 cameraId) {

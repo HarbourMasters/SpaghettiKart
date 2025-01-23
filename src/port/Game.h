@@ -13,6 +13,8 @@ extern "C" {
 
 Properties* CourseManager_GetProps();
 
+void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
+void CM_DrawBattleBombKarts(s32 cameraId);
 
 u32 WorldNextCup(void);
 

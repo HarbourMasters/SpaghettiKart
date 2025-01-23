@@ -49,6 +49,7 @@ extern "C" {
 #include "networking/networking.h"
 #include "render_courses.h"
 #include "menus.h"
+#include "update_objects.h"
 //#include "engine/wasm.h"
 }
 
@@ -251,6 +252,27 @@ extern "C" {
                     kart->Waypoint(cameraId);
                 }
             }
+        }
+    }
+
+    void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha) {
+
+        if ((playerId < 0) || (playerId > 4)) {
+            return;
+        }
+
+        if (primAlpha == 0) {
+            gWorldInstance.playerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+            gWorldInstance.playerBombKart[playerId]._primAlpha = primAlpha;
+        } else {
+            gWorldInstance.playerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::ACTIVE;
+            gWorldInstance.playerBombKart[playerId]._primAlpha = primAlpha;
+        }
+    }
+
+    void CM_DrawBattleBombKarts(s32 cameraId) {
+        for (size_t i = 0; i < gPlayerCount; i++) {
+            gWorldInstance.playerBombKart[i].Draw(i, cameraId);
         }
     }
 

@@ -8,6 +8,7 @@
 #include "vehicles/Train.h"
 #include "vehicles/Car.h"
 #include "objects/BombKart.h"
+#include "PlayerBombKart.h"
 #include "vehicles/Train.h"
 #include "TrainCrossing.h"
 #include "objects/Thwomp.h"
@@ -98,7 +99,7 @@ public:
     std::unordered_map<s32, OLakitu*> Lakitus;
 
     /** Objects **/
-    void AddBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
+    PlayerBombKart playerBombKart[4]; // Used in battle mode
 
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;

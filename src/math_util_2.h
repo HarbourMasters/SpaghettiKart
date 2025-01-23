@@ -11,7 +11,7 @@
 void operator_or(s32*, s32);
 void operator_and_not(s32*, s32);
 void operator_xor(s32*, s32);
-UNUSED bool func_80040E84(s32*, s32);
+bool func_80040E84(s32*, s32); // UNUSED
 s32 func_80040EA4(s32*, s32);
 s32 f32_step_up_towards_alternate(f32*, f32, f32*);
 s32 f32_step_down_towards_alternate(f32*, f32, f32*);

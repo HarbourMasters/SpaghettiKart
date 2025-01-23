@@ -1510,7 +1510,7 @@ void func_8008FC1C(Player* player) {
 
     if ((player->type & PLAYER_UNKNOWN_0x40) != 0) {
         playerIndex = get_player_index_for_player(player);
-        player->type = 0x7000;
+        player->type = PLAYER_HUMAN | PLAYER_START_SEQUENCE | PLAYER_KART_AI;
         func_80056A94(playerIndex);
     }
 }
@@ -1522,7 +1522,6 @@ void func_8008FC64(Player* player, s8 arg1) {
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
-
         func_8008FDA8(player, arg1);
         func_800569F4(arg1);
     }
@@ -1534,7 +1533,6 @@ void func_8008FCDC(Player* player, s8 arg1) {
         player->unk_0C6 = 0xFF;
         player->soundEffects &= ~0x08000000;
     }
-
     func_80056A40(arg1, (u32) player->unk_0C6);
 }
 

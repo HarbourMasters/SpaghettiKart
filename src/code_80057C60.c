@@ -780,7 +780,7 @@ void render_object_for_player(s32 cameraId) {
         render_balloons_grand_prix(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        // render_battle_bomb_karts(cameraId);
+        CM_DrawBattleBombKarts(cameraId);
     }
 }
 
