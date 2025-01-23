@@ -111,7 +111,7 @@ void func_80004FF8(void) {
 #endif
 
 void set_staff_ghost(void) {
-    CourseManager_SetStaffGhost();
+    CM_SetStaffGhost();
 }
 
 s32 func_800051C4(void) {

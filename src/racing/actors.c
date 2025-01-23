@@ -1046,7 +1046,7 @@ void spawn_course_actors(void) {
     gNumPermanentActors = 0;
 
     if (gModeSelection != BATTLE) {
-        if (!cm_DoesFinishlineExist()) {
+        if (!CM_DoesFinishlineExist()) {
             printf("\n[actors.c] COURSE MISSING THE FINISHLINE\n");
             printf("  In the Course class BeginPlay() function make sure to include:\n");
             printf("  gWorldInstance.AddActor(new AFinishline());\n\n");
@@ -1210,13 +1210,13 @@ void init_actors_and_load_textures(void) {
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
 
-    CourseManager_LoadTextures();
+    CM_LoadTextures();
 
     init_red_shell_texture();
     destroy_all_actors();
     CM_CleanWorld();
 
-    CourseManager_BeginPlay();
+    CM_BeginPlay();
     spawn_course_actors();
 }
 
@@ -2425,7 +2425,7 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
         }
         switch (actor->type) {
             default: // Draw custom actor
-                CourseManager_DrawActors(D_800DC5EC->camera, actor);
+                CM_DrawActors(D_800DC5EC->camera, actor);
                 break;
             case ACTOR_TREE_MARIO_RACEWAY:
                 render_actor_tree_mario_raceway(camera, sBillBoardMtx, actor);

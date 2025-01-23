@@ -163,11 +163,11 @@ void init_item_window(s32 objectIndex) {
 }
 
 void func_8006EEE8(s32 courseId) {
-    D_8018D240 = (uintptr_t) CourseManager_GetProps()->MinimapTexture;
+    D_8018D240 = (uintptr_t) CM_GetProps()->MinimapTexture;
     // This is incredibly dumb. MinimapDimensions ought to be something more like
     // `u16 MinimapDimensions[][2]` but that doesn't match for some insane reason
-    gMinimapWidth = CourseManager_GetProps()->MinimapDimensions.X; // MinimapDimensions[courseId * 2];
-    gMinimapHeight = CourseManager_GetProps()->MinimapDimensions.Z; // MinimapDimensions[courseId * 2 + 1];
+    gMinimapWidth = CM_GetProps()->MinimapDimensions.X; // MinimapDimensions[courseId * 2];
+    gMinimapHeight = CM_GetProps()->MinimapDimensions.Z; // MinimapDimensions[courseId * 2 + 1];
 }
 
 void func_8006EF60(void) {
@@ -181,7 +181,7 @@ void func_8006EF60(void) {
 
     // clang-format off
     // God forgive me for my sins...
-    // huh = 0x14; if (0) {} for (i = 0; i < huh; i++) {D_8018D248[i] = CourseManager_GetProps()->MinimapTexture; wut += ResourceGetTexSizeByName(CourseManager_GetProps()->MinimapTexture); }
+    // huh = 0x14; if (0) {} for (i = 0; i < huh; i++) {D_8018D248[i] = CM_GetProps()->MinimapTexture; wut += ResourceGetTexSizeByName(CM_GetProps()->MinimapTexture); }
     // clang-format on
 }
 
@@ -200,7 +200,7 @@ void func_8006F008(void) {
     if (GetCourse() != GetPodiumCeremony()) {
         func_8006EEE8((s32) gCurrentCourseId);
     }
-    CourseManager_MinimapSettings();
+    CM_MinimapSettings();
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -704,7 +704,7 @@ void func_8007055C(void) {
     s32 var_s0;
     s32 var_s4;
 
-    CourseManager_InitClouds();
+    CM_InitClouds();
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -774,7 +774,7 @@ void init_course_object(void) {
     s32 objectId;
     s32 i;
 
-    CourseManager_InitCourseObjects();
+    CM_InitCourseObjects();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:

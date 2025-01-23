@@ -1225,7 +1225,7 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         return true;
     }
     arg1_times_8 = arg1 * 8;
-    temp_a3 = &CourseManager_GetProps()->SomePtr[arg1_times_8];
+    temp_a3 = &CM_GetProps()->SomePtr[arg1_times_8];
     if (arg2 == 0) {
         if (gDemoMode == 1) {
             temp_a2 = D_80164450[playerId] - D_80164450[D_80164378[7]];
@@ -1538,8 +1538,8 @@ void update_vehicles(void) {
     generate_player_smoke();
     D_8016337C++;
 
-    //CourseManager_TickBombKarts();
-    //CourseManager_VehiclesTick();
+    //CM_TickBombKarts();
+    //CM_VehiclesTick();
 }
 
 void func_800098FC(s32 arg0, Player* player) {
@@ -1632,7 +1632,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CM_GetProps()->AIMaximumSeparation >= 0.0f) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -1664,10 +1664,10 @@ void func_80009B60(s32 playerId) {
             D_80163448 = gPathIndexByPlayerId[playerId];
             func_80008DC0(D_80163448);
             //if (GetCourse() == GetKalimariDesert()) {
-                CourseManager_VehicleCollision(playerId, player);
+                CM_VehicleCollision(playerId, player);
                 //func_80012DC0(playerId, player);
                 if (playerId == 0) {
-                    CourseManager_CrossingTrigger();
+                    CM_CrossingTrigger();
                     //func_80013054();
                 }
             //}
@@ -1751,14 +1751,14 @@ void func_80009B60(s32 playerId) {
                         (D_8016334C[playerId] < gGPCurrentRaceRankByPlayerId[playerId])) {
                         D_80163210[playerId] = 8.333333f;
                     } else if (D_80162FD0 == (s16) 1U) {
-                        D_80163210[playerId] = CourseManager_GetProps()->D_0D0096B8[gCCSelection];
+                        D_80163210[playerId] = CM_GetProps()->D_0D0096B8[gCCSelection];
                         D_801634F8[playerId].unk4 = -0.5f;
                     } else if (D_801645E0[sSomeNearestWaypoint] > 0) {
-                        D_80163210[playerId] = CourseManager_GetProps()->D_0D009418[gCCSelection];
+                        D_80163210[playerId] = CM_GetProps()->D_0D009418[gCCSelection];
                     } else {
-                        D_80163210[playerId] = CourseManager_GetProps()->D_0D009568[gCCSelection];
+                        D_80163210[playerId] = CM_GetProps()->D_0D009568[gCCSelection];
                     }
-                    CourseManager_AICrossingBehaviour(playerId);
+                    CM_AICrossingBehaviour(playerId);
                     //check_ai_crossing_distance(playerId);
                     func_8000D3B8(playerId);
                     func_8000D438(playerId, D_801630E0);
@@ -1910,7 +1910,7 @@ void func_80009B60(s32 playerId) {
                     var_a2 = temp_f6;
                 }
 
-                var_v1 = CourseManager_GetProps()->AISteeringSensitivity;
+                var_v1 = CM_GetProps()->AISteeringSensitivity;
 
                 switch (D_801631D8[playerId]) { /* switch 4; irregular */
                     case 2:                     /* switch 4 */
@@ -1956,15 +1956,15 @@ void func_80009B60(s32 playerId) {
                 D_80163050[playerId] = var_a1;
                 if ((D_801630B8[playerId] == 1) || (D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1) ||
                     (player->effects & 0x1000000C)) {
-                    D_80163028[playerId] = CourseManager_GetProps()->D_0D009418[gCCSelection];
+                    D_80163028[playerId] = CM_GetProps()->D_0D009418[gCCSelection];
                 } else {
-                    D_80163028[playerId] = CourseManager_GetProps()->D_0D009568[gCCSelection];
+                    D_80163028[playerId] = CM_GetProps()->D_0D009568[gCCSelection];
                 }
                 if ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f)) {
-                    D_80163028[playerId] = CourseManager_GetProps()->D_0D009808[gCCSelection];
+                    D_80163028[playerId] = CM_GetProps()->D_0D009808[gCCSelection];
                 }
                 if (D_80162FD0 == 1) {
-                    D_80163028[playerId] = CourseManager_GetProps()->D_0D0096B8[gCCSelection];
+                    D_80163028[playerId] = CM_GetProps()->D_0D0096B8[gCCSelection];
                 }
                 if ((D_801630E8[playerId] == 2) || (D_801630E8[playerId] == -2) || (D_801630E8[playerId] == 3)) {
                     D_80163028[playerId] = 3.3333333f;
@@ -1972,7 +1972,7 @@ void func_80009B60(s32 playerId) {
                 D_8016320C = D_80163028[playerId];
                 player->effects &= ~0x00200000;
                 D_80163210[playerId] = D_8016320C;
-                CourseManager_AICrossingBehaviour(playerId);
+                CM_AICrossingBehaviour(playerId);
                 //check_ai_crossing_distance(playerId);
                 func_80008424(playerId, D_8016320C, player);
             }
@@ -2149,7 +2149,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CM_GetProps()->AIMaximumSeparation >= 0.0f) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] =
                 func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
@@ -3392,7 +3392,7 @@ void func_8000F2BC(TrackWaypoint* arg0, size_t size) {
 // Appears to allocate memory for each course.
 void func_8000F2DC(void) {
 
-    _struct_gCoursePathSizes_0x10* ptr = &CourseManager_GetProps()->PathSizes;
+    _struct_gCoursePathSizes_0x10* ptr = &CM_GetProps()->PathSizes;
     s32 temp;
     s32 i;
 
@@ -3444,7 +3444,7 @@ void func_8000F2DC(void) {
 
     D_80164430 = *gWaypointCountByPathIndex;
 
-    CourseManager_ClearVehicles();
+    CM_ClearVehicles();
 
     //set_bomb_kart_spawn_positions();
     func_8000EEDC();
@@ -3469,7 +3469,7 @@ void func_8000F628(void) {
             func_8000B95C(i, 0, 0);
         }
         //! todo: @BUG this doesn't seem right. This variable is metadata.
-        D_80163028[i] = CourseManager_GetProps()->D_0D009418[gCCSelection];
+        D_80163028[i] = CM_GetProps()->D_0D009418[gCCSelection];
         D_801630E8[i] = 0;
         D_80163100[i] = 0;
         D_80163178[i] = 0.0f;
@@ -3501,7 +3501,7 @@ void func_8000F628(void) {
         D_80163068[i] = 0.0f;
         D_80163090[i] = 0.0f;
         var_s5 = &D_801634F8[i];
-        var_s5->unkC = CourseManager_GetProps()->AIMinimumSeparation * (f32) (((i + 1) % 3) - 1);
+        var_s5->unkC = CM_GetProps()->AIMinimumSeparation * (f32) (((i + 1) % 3) - 1);
         var_s5->unk4 = var_s5->unkC;
         var_s5->unk0 = 0.0f;
         var_s5->unk8 = 0.015f;
@@ -3631,16 +3631,16 @@ void func_800100F0(s32 pathIndex) {
     s16 bInvalidPath;
     s32 i;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 1.0f) {
+    if (CM_GetProps()->AIMaximumSeparation >= 1.0f) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (GetCourse() != GetPodiumCeremony()) {
-            var_v0 = process_path_data(pathDest, CourseManager_GetProps()->PathTable2[pathIndex]);
+            var_v0 = process_path_data(pathDest, CM_GetProps()->PathTable2[pathIndex]);
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
-            path = CourseManager_GetProps()->PathTable[pathIndex];
+            path = CM_GetProps()->PathTable[pathIndex];
             ptr = path;
 
             for (i = 0; i < 3000; i++, ptr++) {
@@ -3682,8 +3682,8 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint* var_s1;
     TrackWaypoint* var_s2;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
-        waypointWidth = CourseManager_GetProps()->AIMaximumSeparation;
+    if (CM_GetProps()->AIMaximumSeparation >= 0.0f) {
+        waypointWidth = CM_GetProps()->AIMaximumSeparation;
         waypoint = &D_80164550[pathIndex][0];
         var_s1 = &D_80164560[pathIndex][0];
         var_s2 = &D_80164570[pathIndex][0];
@@ -3733,7 +3733,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 root2;
     f32 root1;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation <= -1.0f) {
+    if (CM_GetProps()->AIMaximumSeparation <= -1.0f) {
         return 0.0f;
     }
     waypointCount = gWaypointCountByPathIndex[pathIndex];
@@ -3775,7 +3775,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16* wut;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CM_GetProps()->AIMaximumSeparation >= 0.0f) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for (var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3843,7 +3843,7 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16* angle;
 
-    if (CourseManager_GetProps()->AIMaximumSeparation >= 0.0f) {
+    if (CM_GetProps()->AIMaximumSeparation >= 0.0f) {
         for (angle = (u16*) &D_80164590[pathIndex][0], waypointIndex = 0;
              waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
@@ -4122,7 +4122,7 @@ s32 generate_2d_path(Path2D* pathDest, TrackWaypoint* pathSrc, s32 numWaypoints)
 void copy_courses_kart_ai_behaviour(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES - 1; i++) {
-        gCoursesKartAIBehaviour[i] = LOAD_ASSET(CourseManager_GetProps()->AIBehaviour);
+        gCoursesKartAIBehaviour[i] = LOAD_ASSET(CM_GetProps()->AIBehaviour);
     }
 }
 
@@ -4145,10 +4145,10 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    KartAIBehaviour *beh = (KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour);
+    KartAIBehaviour *beh = (KartAIBehaviour*)LOAD_ASSET(CM_GetProps()->AIBehaviour);
 
     sCurrentKartAIBehaviour = 
-        &((KartAIBehaviour*)LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
+        &((KartAIBehaviour*)LOAD_ASSET(CM_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
@@ -4157,7 +4157,7 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     behaviourType = sCurrentKartAIBehaviour->type;
 
     if ((waypointStart == -1) && (waypointEnd == -1)) {
-        sCurrentKartAIBehaviour = &((KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[0];
+        sCurrentKartAIBehaviour = &((KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[0];
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
@@ -4213,7 +4213,7 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
     s32 behaviourType;
 
     sCurrentKartAIBehaviour = &(
-        (KartAIBehaviour*) LOAD_ASSET(CourseManager_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
+        (KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
     behaviourType = sCurrentKartAIBehaviour->type;
     waypointEnd = sCurrentKartAIBehaviour->waypointEnd;

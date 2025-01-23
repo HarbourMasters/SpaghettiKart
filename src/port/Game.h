@@ -11,7 +11,7 @@ extern "C" {
 #include "camera.h"
 #include "actor_types.h"
 
-Properties* CourseManager_GetProps();
+Properties* CM_GetProps();
 
 void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
 void CM_DrawBattleBombKarts(s32 cameraId);
@@ -33,13 +33,13 @@ void SetCourse(const char* name);
 void NextCourse();
 void PreviousCourse();
 
-void CourseManager_SetCup(void*);
+void CM_SetCup(void*);
 
-void CourseManager_LoadTextures();
+void CM_LoadTextures();
 
-void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0);
+void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0);
 
-void CourseManager_RenderCredits();
+void CM_RenderCredits();
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -47,67 +47,67 @@ void CM_ActivateSecondLapLakitu(s32 playerId);
 void CM_ActivateFinalLapLakitu(s32 playerId);
 void CM_ActivateReverseLakitu(s32 playerId);
 
-bool cm_DoesFinishlineExist();
+bool CM_DoesFinishlineExist();
 
-void CourseManager_InitClouds();
+void CM_InitClouds();
 
-void CourseManager_DrawActors(Camera* camera, struct Actor* actor);
+void CM_DrawActors(Camera* camera, struct Actor* actor);
 
-void CourseManager_TickObjects();
-void CourseManager_TickObjects60fps();
-void CourseManager_DrawObjects(s32 cameraId);
+void CM_TickObjects();
+void CM_TickObjects60fps();
+void CM_DrawObjects(s32 cameraId);
 
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
 
-void CourseManager_UpdateClouds(s32 arg0, Camera* camera);
+void CM_UpdateClouds(s32 arg0, Camera* camera);
 
-void CourseManager_Waypoints(Player* player, int8_t playerId);
+void CM_Waypoints(Player* player, int8_t playerId);
 
-void CourseManager_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
+void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
                                       f32* arg6, f32* arg7);
 
-void CourseManager_MinimapSettings();
+void CM_MinimapSettings();
 
-void CourseManager_InitCourseObjects();
+void CM_InitCourseObjects();
 
-void CourseManager_UpdateCourseObjects();
+void CM_UpdateCourseObjects();
 
-void CourseManager_RenderCourseObjects(s32 cameraId);
+void CM_RenderCourseObjects(s32 cameraId);
 
-void CourseManager_SomeSounds();
+void CM_SomeSounds();
 
-void CourseManager_CreditsSpawnActors();
+void CM_CreditsSpawnActors();
 
-void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId);
+void CM_WhatDoesThisDo(Player* player, int8_t playerId);
 
-void CourseManager_WhatDoesThisDoAI(Player* player, int8_t playerId);
+void CM_WhatDoesThisDoAI(Player* player, int8_t playerId);
 
-void CourseManager_MinimapFinishlinePosition();
+void CM_MinimapFinishlinePosition();
 
-void CourseManager_SetStaffGhost();
+void CM_SetStaffGhost();
 
-void CourseManager_BombKartsWaypoint(s32 cameraId);
+void CM_BombKartsWaypoint(s32 cameraId);
 
-void CourseManager_ScrollingTextures();
+void CM_ScrollingTextures();
 
-s32 CourseManager_GetCrossingOnTriggered(uintptr_t* crossing);
+s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
-void CourseManager_BeginPlay();
+void CM_BeginPlay();
 
-void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
 
-void CourseManager_AICrossingBehaviour(s32 playerId);
+void CM_AICrossingBehaviour(s32 playerId);
 
-void CourseManager_ClearVehicles(void);
+void CM_ClearVehicles(void);
 
-void CourseManager_CrossingTrigger();
+void CM_CrossingTrigger();
 
-void CourseManager_VehicleCollision(s32 playerId, Player* player);
+void CM_VehicleCollision(s32 playerId, Player* player);
 
-void CourseManager_TickActors();
+void CM_TickActors();
 
-void CourseManager_DrawBombKarts(s32 cameraId);
+void CM_DrawBombKarts(s32 cameraId);
 
 size_t GetCupCursorPosition();
 

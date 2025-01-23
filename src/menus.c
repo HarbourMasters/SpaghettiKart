@@ -1885,7 +1885,7 @@ void load_menu_states(s32 menuSelection) {
         case START_MENU: {
             gIsMirrorMode = 0;
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
-            CourseManager_SetCup(GetMushroomCup());
+            CM_SetCup(GetMushroomCup());
             gCupSelection = MUSHROOM_CUP;
             gCourseIndexInCup = 0;
             gTimeTrialDataCourseIndex = 0;
@@ -1996,13 +1996,13 @@ void load_menu_states(s32 menuSelection) {
         case 3:
         case COURSE_SELECT_MENU: {
             if (gModeSelection == BATTLE) {
-                CourseManager_SetCup(GetBattleCup());
+                CM_SetCup(GetBattleCup());
                 // gCupSelection = BATTLE_CUP;
                 D_800DC540 = 4;
                 gSubMenuSelection = SUB_MENU_MAP_SELECT_BATTLE_COURSE;
             } else {
                 if (GetCup() == GetBattleCup()) {
-                    CourseManager_SetCup(GetMushroomCup());
+                    CM_SetCup(GetMushroomCup());
                     // gCupSelection = MUSHROOM_CUP;
                 }
                 gSubMenuSelection = SUB_MENU_MAP_SELECT_CUP;

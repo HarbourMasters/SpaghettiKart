@@ -254,7 +254,7 @@ void setup_race(void) {
 
 void func_80002DAC(void) {
 
-    CourseManager_SomeSounds();
+    CM_SomeSounds();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -324,7 +324,7 @@ void credits_spawn_actors(void) {
     destroy_all_actors();
     CM_CleanWorld();
 
-    CourseManager_CreditsSpawnActors();
+    CM_CreditsSpawnActors();
 
     gNumPermanentActors = gNumActors;
 }

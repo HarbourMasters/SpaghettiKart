@@ -2620,9 +2620,9 @@ void func_8004EF9C(s32 arg0) {
     s16 temp_t0;
     s16 temp_v0;
 
-    temp_v0 = CourseManager_GetProps()->MinimapDimensions.X;
-    temp_t0 = CourseManager_GetProps()->MinimapDimensions.Z;
-    func_8004D37C(0x00000104, 0x0000003C, CourseManager_GetProps()->MinimapTexture, 0x000000FF, 0x000000FF, 0x000000FF,
+    temp_v0 = CM_GetProps()->MinimapDimensions.X;
+    temp_t0 = CM_GetProps()->MinimapDimensions.Z;
+    func_8004D37C(0x00000104, 0x0000003C, CM_GetProps()->MinimapTexture, 0x000000FF, 0x000000FF, 0x000000FF,
                   0x000000FF, temp_v0, temp_t0, temp_v0, temp_t0);
 }
 
@@ -2652,7 +2652,7 @@ void set_minimap_finishline_position(s32 arg0) {
     }
 
     //! @todo Get course minimap props from course.
-    CourseManager_MinimapFinishlinePosition();
+    CM_MinimapFinishlinePosition();
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
 }
 

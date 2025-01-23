@@ -242,7 +242,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
     }
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    CourseManager_DrawWater(arg0, pathCounter, cameraRot, playerDirection);
+    CM_DrawWater(arg0, pathCounter, cameraRot, playerDirection);
     // switch (gCurrentCourseId) {
     //     case COURSE_BOWSER_CASTLE:
     //         if (gActiveScreenMode != SCREEN_MODE_1P) {
@@ -1325,7 +1325,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 
 void func_8029569C(void) {
 
-    CourseManager_RenderCredits();
+    CM_RenderCredits();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -1405,7 +1405,7 @@ void render_course(struct UnkStruct_800DC5EC* arg0) {
         return;
     }
 
-    CourseManager_RenderCourse(arg0);
+    CM_RenderCourse(arg0);
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -1717,7 +1717,7 @@ void course_init(void) {
 
 void func_802966A0(void) {
 
-    CourseManager_ScrollingTextures();
+    CM_ScrollingTextures();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_KOOPA_BEACH:

@@ -2675,7 +2675,7 @@ void func_80078C70(s32 arg0) {
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
 
-        CourseManager_UpdateClouds(sp1C, camera);
+        CM_UpdateClouds(sp1C, camera);
 
         // switch (gCurrentCourseId) {    /* switch 2 */
         //     case COURSE_MARIO_RACEWAY: /* switch 2 */

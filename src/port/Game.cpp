@@ -189,7 +189,7 @@ extern "C" {
         return gWorldInstance.PreviousCup();
     }
 
-    void CourseManager_SetCup(void* cup) {
+    void CM_SetCup(void* cup) {
         gWorldInstance.SetCup((Cup*)cup);
     }
 
@@ -237,7 +237,7 @@ extern "C" {
         gWorldInstance.CurrentCourse = gWorldInstance.Courses[gWorldInstance.CourseIndex];
     }
 
-    void CourseManager_VehicleCollision(s32 playerId, Player* player) {
+    void CM_VehicleCollision(s32 playerId, Player* player) {
         for (auto& actor : gWorldInstance.Actors) {
             if (actor) {
                 actor->VehicleCollision(playerId, player);
@@ -245,7 +245,7 @@ extern "C" {
         }
     }
 
-    void CourseManager_BombKartsWaypoint(s32 cameraId) {
+    void CM_BombKartsWaypoint(s32 cameraId) {
         for (auto& object : gWorldInstance.Objects) {
             if (auto kart = dynamic_cast<OBombKart*>(object)) {;
                 if (kart) {
@@ -276,11 +276,11 @@ extern "C" {
         }
     }
 
-    void CourseManager_ClearVehicles(void) {
+    void CM_ClearVehicles(void) {
         gWorldInstance.Crossings.clear();
     }
 
-    void CourseManager_CrossingTrigger() {
+    void CM_CrossingTrigger() {
         for (auto& crossing : gWorldInstance.Crossings) {
             if (crossing) {
                 crossing->CrossingTrigger();
@@ -288,7 +288,7 @@ extern "C" {
         }
     }
 
-    void CourseManager_AICrossingBehaviour(s32 playerId) {
+    void CM_AICrossingBehaviour(s32 playerId) {
         for (auto& crossing : gWorldInstance.Crossings) {
             if (crossing) {
                 crossing->AICrossingBehaviour(playerId);
@@ -296,20 +296,20 @@ extern "C" {
         }
     }
 
-    s32 CourseManager_GetCrossingOnTriggered(uintptr_t* crossing) {
+    s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
         TrainCrossing* ptr = (TrainCrossing*) crossing;
         if (ptr) {
             return ptr->OnTriggered;
         }
     }
 
-    void CourseManager_LoadTextures() {
+    void CM_LoadTextures() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->LoadTextures();
         }
     }
 
-    void CourseManager_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
+    void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
         if (gWorldInstance.CurrentCourse->IsMod() == false) {
             if ((CVarGetInteger("gFreecam", 0) == true)) {
                 // Render credits courses
@@ -323,32 +323,32 @@ extern "C" {
         }
     }
 
-    void CourseManager_RenderCredits() {
+    void CM_RenderCredits() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->RenderCredits();
         }
     }
 
-    void CourseManager_TickActors() {
+    void CM_TickActors() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.TickActors();
         }
     }
 
-    void CourseManager_DrawActors(Camera* camera, struct Actor* actor) {
+    void CM_DrawActors(Camera* camera, struct Actor* actor) {
         AActor* a = gWorldInstance.ConvertActorToAActor(actor);
         if (a->IsMod()) {
             a->Draw(camera);
         }
     }
 
-    void CourseManager_BeginPlay() {
+    void CM_BeginPlay() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->BeginPlay();
         }
     }
 
-    void CourseManager_TickObjects() {
+    void CM_TickObjects() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.TickObjects();
         }
@@ -356,13 +356,13 @@ extern "C" {
 
     // A couple objects such as lakitu are ticked inside of process_game_tick which support 60fps.
     // This is a fallback to support that.
-    void CourseManager_TickObjects60fps() {
+    void CM_TickObjects60fps() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.TickObjects60fps();
         }
     }
 
-    void CourseManager_DrawObjects(s32 cameraId) {
+    void CM_DrawObjects(s32 cameraId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.DrawObjects(cameraId);
         }
@@ -381,7 +381,7 @@ extern "C" {
     }
 
     // Helps prevents users from forgetting to add a finishline to their course
-    bool cm_DoesFinishlineExist() {
+    bool CM_DoesFinishlineExist() {
         for (AActor* actor : gWorldInstance.Actors) {
             if (dynamic_cast<AFinishline*>(actor))  {
                 return true;
@@ -390,51 +390,51 @@ extern "C" {
         return false;
     }
 
-    void CourseManager_InitClouds() {
+    void CM_InitClouds() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->InitClouds();
         }
     }
 
-    void CourseManager_UpdateClouds(s32 arg0, Camera* camera) {
+    void CM_UpdateClouds(s32 arg0, Camera* camera) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->UpdateClouds(arg0, camera);
         }
     }
 
-    void CourseManager_Waypoints(Player* player, int8_t playerId) {
+    void CM_Waypoints(Player* player, int8_t playerId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->Waypoints(player, playerId);
         }
     }
 
-    void CourseManager_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
+    void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
                                         f32* arg6, f32* arg7) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
         }
     }
 
-    void CourseManager_MinimapSettings() {
+    void CM_MinimapSettings() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->MinimapSettings();
         }
     }
 
-    void CourseManager_InitCourseObjects() {
+    void CM_InitCourseObjects() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->InitCourseObjects();
         }
     }
 
-    void CourseManager_UpdateCourseObjects() {
+    void CM_UpdateCourseObjects() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->UpdateCourseObjects();
         }
         TrainSmokeTick();
     }
 
-    void CourseManager_RenderCourseObjects(s32 cameraId) {
+    void CM_RenderCourseObjects(s32 cameraId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->RenderCourseObjects(cameraId);
         }
@@ -442,56 +442,56 @@ extern "C" {
         TrainSmokeDraw(cameraId);
     }
 
-    void CourseManager_SomeSounds() {
+    void CM_SomeSounds() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->SomeSounds();
         }
     }
 
-    void CourseManager_CreditsSpawnActors() {
+    void CM_CreditsSpawnActors() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->CreditsSpawnActors();
         }
     }
 
-    void CourseManager_WhatDoesThisDo(Player* player, int8_t playerId) {
+    void CM_WhatDoesThisDo(Player* player, int8_t playerId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->WhatDoesThisDo(player, playerId);
         }
     }
 
-    void CourseManager_WhatDoesThisDoAI(Player* player, int8_t playerId) {
+    void CM_WhatDoesThisDoAI(Player* player, int8_t playerId) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->WhatDoesThisDoAI(player, playerId);
         }
     }
 
-    void CourseManager_MinimapFinishlinePosition() {
+    void CM_MinimapFinishlinePosition() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->MinimapFinishlinePosition();
         }
     }
 
-    void CourseManager_SetStaffGhost() {
+    void CM_SetStaffGhost() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->SetStaffGhost();
         }
     }
 
-    Properties* CourseManager_GetProps() {
+    Properties* CM_GetProps() {
         if (gWorldInstance.CurrentCourse) {
             return &gWorldInstance.CurrentCourse->Props;
         }
         return NULL;
     }
 
-    void CourseManager_ScrollingTextures() {
+    void CM_ScrollingTextures() {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->ScrollingTextures();
         }
     }
 
-    void CourseManager_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
         if (gWorldInstance.CurrentCourse) {
             gWorldInstance.CurrentCourse->DrawWater(screen, pathCounter, cameraRot, playerDirection);
         }

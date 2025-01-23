@@ -1586,12 +1586,12 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
     player->kartHopAcceleration = 0.0f;
 }
 
-void CourseManager_Waypoints(Player*, s8);
+void CM_Waypoints(Player*, s8);
 
 void func_8008FF08(Player* player, s8 playerId) {
     s16 waypoint;
 
-    CourseManager_Waypoints(player, playerId);
+    CM_Waypoints(player, playerId);
 
     //     switch (gCurrentCourseId) {
     //         case COURSE_BOWSER_CASTLE:

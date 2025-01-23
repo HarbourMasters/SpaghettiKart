@@ -160,12 +160,12 @@ void OLakitu::func_800791F0(s32 objectIndex, s32 playerId) {
 
     if ((gObjectList[objectIndex].unk_0D8 != 3) && (gObjectList[objectIndex].unk_0D8 != 7)) {
         func_800722CC(objectIndex, 1);
-        if (CourseManager_GetProps()->LakituTowType == LakituTowType::ICE) {
+        if (CM_GetProps()->LakituTowType == LakituTowType::ICE) {
             player->unk_0CA &= 0xFFEF;
         }
     }
 
-    if (CourseManager_GetProps()->LakituTowType == LakituTowType::ICE) {
+    if (CM_GetProps()->LakituTowType == LakituTowType::ICE) {
         func_800722CC(objectIndex, 0x00000010);
         player->unk_0CA &= 0xFFDF;
     }
@@ -362,7 +362,7 @@ void OLakitu::func_800797AC(s32 playerId) {
     objectIndex = gIndexLakituList[playerId];
     player = &gPlayerOne[playerId];
     //if ((GetCourse() == GetSherbetLand()) && (player->unk_0CA & 1)) {
-    if ((CourseManager_GetProps()->LakituTowType == LakituTowType::ICE) && (player->unk_0CA & 1)) {
+    if ((CM_GetProps()->LakituTowType == LakituTowType::ICE) && (player->unk_0CA & 1)) {
         init_object(objectIndex, 7);
         player->unk_0CA |= 0x10;
     } else {

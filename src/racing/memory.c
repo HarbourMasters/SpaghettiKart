@@ -823,7 +823,7 @@ void unpack_tile_sync(Gfx* gfx, u8* args, s8 opcode) {
 }
 
 uintptr_t get_texture(size_t offset) {
-    course_texture* textures = CourseManager_GetProps()->textures;
+    course_texture* textures = CM_GetProps()->textures;
     size_t totalOffset = 0;
 
     while (textures->addr) {

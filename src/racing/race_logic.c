@@ -418,13 +418,14 @@ void func_8028EC38(s32 arg0) {
 
 void func_8028EC98(s32 arg0) {
 
-    if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        return;
-    }
+    // We want music in mutilplayer
+    //if (gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) {
+    //    return;
+    //}
 
     func_800029B0();
 
-    enum MusicSeq sequence = CourseManager_GetProps()->Sequence;
+    enum MusicSeq sequence = CM_GetProps()->Sequence;
 
     if(sequence != MUSIC_SEQ_UNKNOWN){
         play_sequence(sequence);

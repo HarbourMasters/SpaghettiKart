@@ -775,7 +775,7 @@ void process_game_tick(void) {
     func_8028F474();
     func_80059AC8();
     update_course_actors();
-    CourseManager_TickActors();
+    CM_TickActors();
     func_802966A0();
     func_8028FCBC();
 }

@@ -684,9 +684,9 @@ void render_player_snow_effect_four(void) {
 }
 
 void render_object_for_player(s32 cameraId) {
-    CourseManager_DrawObjects(cameraId);
+    CM_DrawObjects(cameraId);
     CM_DrawParticles(cameraId);
-    CourseManager_RenderCourseObjects(cameraId);
+    CM_RenderCourseObjects(cameraId);
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -794,7 +794,7 @@ void render_snowing_effect(s32 playerId) {
             render_object_snowflakes_particles();
         }
     }
-    if (CourseManager_GetProps()->LakituTowType == 1) {
+    if (CM_GetProps()->LakituTowType == 1) {
         render_ice_block(playerId);
     }
 }
@@ -1235,7 +1235,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        // update_object_lakitu(playerId); // Moved to CourseManager_TickObjects60fps
+        // update_object_lakitu(playerId); // Moved to CM_TickObjects60fps
         func_8007BB9C(playerId);
     }
 }
@@ -1277,7 +1277,7 @@ void func_80059AC8(void) {
                 break;
         }
 
-        CourseManager_TickObjects60fps();
+        CM_TickObjects60fps();
     }
 }
 
@@ -1394,7 +1394,7 @@ void func_80059D00(void) {
                 break;
         }
         update_object();
-        CourseManager_TickObjects();
+        CM_TickObjects();
         CM_TickParticles();
         func_800744CC();
     }
@@ -1412,12 +1412,12 @@ void func_8005A070(void) {
             // func_80086D80();
             // update_cheep_cheep(1);
             // func_80077640();
-            CourseManager_TickObjects();
+            CM_TickObjects();
             CM_TickParticles();
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70(0);
-            CourseManager_TickObjects();
+            CM_TickObjects();
             CM_TickParticles();
         } else { // normal gameplay
             func_80059D00();
@@ -1566,7 +1566,7 @@ void func_8005A71C(void) {
 
 void update_object(void) {
 
-    CourseManager_UpdateCourseObjects();
+    CM_UpdateCourseObjects();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
@@ -2712,7 +2712,7 @@ void func_8005D18C(void) {
 
 void func_8005D1F4(s32 cameraId) {
 
-    CourseManager_BombKartsWaypoint(cameraId);
+    CM_BombKartsWaypoint(cameraId);
     // s32 playerWaypoint;
     // s32 bombWaypoint;
     // s32 var_a2;

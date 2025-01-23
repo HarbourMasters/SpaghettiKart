@@ -164,7 +164,7 @@ void setup_podium_ceremony(void) {
     balloons_and_fireworks_init();
     init_camera_podium_ceremony();
     func_80093E60();
-    CourseManager_BeginPlay();
+    CM_BeginPlay();
     D_801625F8 = (uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress;
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }
