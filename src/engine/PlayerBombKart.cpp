@@ -12,20 +12,16 @@ extern "C" {
 }
 
 void PlayerBombKart::Draw(size_t playerId, s32 cameraId) { // render_player_bomb_kart
-    //Object* object = &gObjectList[ObjectIndex];
-        //s32 primAlpha = object->primAlpha;
-    //for (size_t i = 0; i < gPlayerCount; i++) {
-        Player* player = &gPlayerOne[playerId];
-        if (state != PlayerBombKartState::DISABLED) {
-            pos.x = player->pos[0];
-            pos.y = player->pos[1] - 2.0;
-            pos.z = player->pos[2];
-            surfaceHeight = player->unk_074;
-            PlayerBombKart::func_800563DC(cameraId, _primAlpha);
-            PlayerBombKart::func_8005669C(_primAlpha);
-            PlayerBombKart::func_800568A0(cameraId);
-        }
-    //}
+    Player* player = &gPlayerOne[playerId];
+    if (state != PlayerBombKartState::DISABLED) {
+        pos.x = player->pos[0];
+        pos.y = player->pos[1] - 2.0;
+        pos.z = player->pos[2];
+        surfaceHeight = player->unk_074;
+        PlayerBombKart::func_800563DC(cameraId, _primAlpha);
+        PlayerBombKart::func_8005669C(_primAlpha);
+        PlayerBombKart::func_800568A0(cameraId);
+    }
 }
 
 void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
@@ -33,9 +29,7 @@ void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
     s32 temp_v0;
     s32 residue;
     Camera* camera = &camera1[cameraId];
-    //Object* object;
 
-    //object = &gObjectList[objectIndex];
     residue = D_801655CC % 4U;
     D_80183E40[0] = pos.x;
     D_80183E40[1] = pos.y + 1.0;
