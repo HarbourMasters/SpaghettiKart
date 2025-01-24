@@ -403,6 +403,7 @@ char* D_800E7744[] = {
     "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
 };
 
+// Also used to render the replay text in the replay mode
 char* gTextPauseButton[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
 };
@@ -1916,6 +1917,10 @@ void print_text_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX
     print_text0(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
+void print_text_mode_1_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text0_wide_right(column, row, text, tracking, scaleX, scaleY, 1);
+}
+
 void print_text_mode_2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 2);
 }
@@ -3320,7 +3325,7 @@ Gfx* draw_box_wide(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32
     return displayListHead;
 }
 
-// Time trials race data cannot be saved for ghost box
+// Time trials race data cannot be saved for ghost box and time trials replay box
 Gfx* draw_box_wide_right(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green, u32 blue, u32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
@@ -8034,6 +8039,7 @@ void func_800A54EC(void) {
     func_800A66A8(sp48, &sp50);
 }
 
+// Also used to render the replay text box in time trials replay mode
 void render_menu_item_end_course_option(MenuItem* arg0) {
     Unk_D_800E70A0 sp98;
     f32 why;
@@ -8049,10 +8055,10 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
     if (arg0->state == 0) {
         if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
             why = get_string_width(gTextPauseButton[REPLAY]) * 0.8f;
-            gDisplayListHead = draw_box_wide(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032,
+            gDisplayListHead = draw_box_wide_right(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032,
                                              0, 0, 0, 0x00000096);
             set_text_color(TEXT_GREEN);
-            print_text_mode_1(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
+            print_text_mode_1_wide_right(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
         }
     } else {
         if (arg0->state == 1) {
