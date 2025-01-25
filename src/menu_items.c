@@ -340,7 +340,7 @@ char* gDebugCharacterNames[] = {
 
 char* D_800E76A8[] = {
     "MARIO",    "LUIGI", "YOSHI", "TOAD", "D.K.", "WARIO", "PEACH", "BOWSER",
-    "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
+    "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC", // These are EUC-JP characters. Looks sort of like - or ー
 };
 
 char* D_800E76CC[] = {
@@ -398,9 +398,8 @@ char* gPrefixTimeText[] = {
 };
 
 char* D_800E7744[] = {
-    // The s/n/r/t here are not ASCII, they are EUC-JP characters
-    // 0xae 0xf3/0xae 0xee/0xae 0xf2/0xae 0xf4
-    "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
+    // These are EUC-JP characters; 1 st, 2 st, 3 rd, 4 th, 5 th
+    "1 \xA3\xF3", "2 \xA3\xEE", "3 \xA3\xF2", "4 \xA3\xF4", "5 \xA3\xF4", " ",
 };
 
 // Also used to render the replay text in the replay mode
@@ -8311,7 +8310,7 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
     }
     set_text_color(TEXT_BLUE);
     // Not a hyphen, that is an EUC-JP character
-    text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
+    text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "\xA1\xBC", 0, 1.0f, 1.0f);
 }
 
 void func_800A6BEC(UNUSED MenuItem* arg0) {
@@ -8369,7 +8368,6 @@ void func_800A6D94(s32 arg0, s32 arg1, u8* arg2) {
               0.75f);
 }
 
-// The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
 void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     UNUSED s32 stackPadding0;
     u8* temp_v0;
@@ -8386,7 +8384,8 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     } else {
         set_text_color(TEXT_YELLOW);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 ｓ ー", 0, 0.8f, 0.8f);
+    //                                       EUC-JP char 1 st       ー
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x5A, "1 \xA3\xF3 \xA1\xBC", 0, 0.8f, 0.8f);
     temp_v0 = arg2 + (arg1 * 3);
     convert_number_to_ascii(temp_v0[0], sp40);
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x5A, sp40, 0, 0.8f, 0.8f);
@@ -8395,7 +8394,8 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     } else {
         set_text_color(TEXT_BLUE);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 ｎ ー", 0, 0.8f, 0.8f);
+    //                                       EUC-JP char 2 nd       ー
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x69, "2 \xA3\xEE \xA1\xBC", 0, 0.8f, 0.8f);
     convert_number_to_ascii(temp_v0[1], sp40);
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x69, sp40, 0, 0.8f, 0.8f);
     if (++sp38 == rank) {
@@ -8403,7 +8403,8 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     } else {
         set_text_color(TEXT_RED);
     }
-    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 ｒ ー", 0, 0.8f, 0.8f);
+    //                                       EUC-JP char 3 rd       ー
+    text_draw(temp_s0->column + 4, temp_s0->row + 0x78, "3 \xA3\xF2 \xA1\xBC", 0, 0.8f, 0.8f);
     convert_number_to_ascii(temp_v0[2], sp40);
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }

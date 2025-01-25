@@ -77,7 +77,8 @@ void MultiplayerWindow::DrawElement() {
         ImGui::Spacing();
 
         for (size_t i = 0; i < NUM_PLAYERS; i++) {
-            if (D_800E76A8[i] == NULL || D_800E76A8[i] == "ーーーー") {
+            // These are euc-jp characters that look sort of like a hyphen -
+            if (D_800E76A8[i] == NULL || D_800E76A8[i] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC") {
                 break;
             }
             ImGui::SameLine();
