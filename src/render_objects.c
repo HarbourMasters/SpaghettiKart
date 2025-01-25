@@ -1659,6 +1659,52 @@ void render_texture_rectangle_wide(s32 x, s32 y, s32 width, s32 height, s32 arg4
     //                     1 << 10);
 }
 
+void render_texture_rectangle_wide_left(s32 x, s32 y, s32 width, s32 height, s32 arg4, s32 arg5, s32 arg6) {
+    s32 xh = (((x + width) - 1));
+    s32 yh = (((y + height) - 1) << 2);
+    s32 xl = ((x));
+    s32 yl = y << 2;
+
+    s32 xh2 = (((x + width)));
+    s32 yh2 = ((y + height) << 2);
+
+    // if center of image is to the left side of the screen then align left,
+    // otherwise align right
+
+    s32 coordX = 0;
+    s32 coordX2 = 0;
+
+    switch (gScreenModeSelection) {
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if (gPlayerCount == 3) {
+                // Center item in area of screen
+                s32 center = (s32) ((OTRGetDimensionFromLeftEdge(SCREEN_WIDTH) - SCREEN_WIDTH) / 2) +
+                                ((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
+                s32 coordX = (s32) (center - (width / 2)) << 2;
+                s32 coordX2 = (s32) (center + (width / 2)) << 2;
+                gSPWideTextureRectangle(gDisplayListHead++, coordX, yl, coordX2, yh2, G_TX_RENDERTILE, arg4 << 5,
+                                        (arg5 << 5), 1 << 10, 1 << 10);
+            } else { // 4 players
+                s32 renderWidth = SCREEN_WIDTH;
+                s32 center = (renderWidth / 2);
+                coordX = (s32) (center - (width / 2)) << 2;
+                coordX2 = (s32) (center + (width / 2)) << 2;
+                gSPWideTextureRectangle(gDisplayListHead++, coordX, yl, coordX2, yh2, G_TX_RENDERTILE, arg4 << 5,
+                                        (arg5 << 5), 1 << 10, 1 << 10);
+            }
+            break;
+        default:
+            coordX = (s32) OTRGetDimensionFromLeftEdge(xl) << 2;
+            coordX2 = (s32) OTRGetDimensionFromLeftEdge(xh2) << 2;
+            gSPWideTextureRectangle(gDisplayListHead++, coordX, yl, coordX2, yh2, G_TX_RENDERTILE, arg4 << 5,
+                                    (arg5 << 5), 1 << 10, 1 << 10);
+            break;
+    }
+
+    // gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, arg4 << 5, (arg5 << 5), 1 << 10,
+    //                     1 << 10);
+}
+
 void render_texture_rectangle_wrap(s32 x, s32 y, s32 width, s32 height, s32 mode) {
     // (0, 0) means texture coordinates will be rendered from the top left corner
     render_texture_rectangle(x, y, width, height, 0, 0, mode);
@@ -1711,6 +1757,30 @@ void func_8004B97C_wide(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
             var_a1 = 0;
         }
         render_texture_rectangle_wide(sp2C, var_a1, arg2 - var_v1, arg3 - var_v0, var_v1, var_v0, arg4);
+    }
+}
+
+void func_8004B97C_wide_left(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    UNUSED s32 pad[2];
+    s32 sp2C;
+    s32 var_a1;
+    s32 var_v0;
+    s32 var_v1;
+
+    if ((-arg2 < arg0) && (-arg3 < arg1)) {
+        var_v0 = 0;
+        var_v1 = 0;
+        sp2C = arg0;
+        var_a1 = arg1;
+        if (arg0 < 0) {
+            var_v1 = -arg0;
+            sp2C = 0;
+        }
+        if (arg1 < 0) {
+            var_v0 = -arg1;
+            var_a1 = 0;
+        }
+        render_texture_rectangle_wide_left(sp2C, var_a1, arg2 - var_v1, arg3 - var_v0, var_v1, var_v0, arg4);
     }
 }
 
@@ -1904,6 +1974,27 @@ void func_8004C268(u32 arg0, u32 arg1, u8* texture, u32 width, u32 arg4, u32 hei
     }
 }
 
+void func_8004C268_wide(u32 arg0, u32 arg1, u8* texture, u32 width, u32 arg4, u32 height, s32 arg6) {
+    s32 i;
+    u8* img2;
+
+    arg0 -= (width / 2);
+    arg1 -= (arg4 / 2);
+    img2 = texture;
+
+    for (i = 0; (u32) i < (arg4 / height); i++) {
+        load_texture_block_rgba16_mirror(img2, width, height);
+        func_8004B97C_wide_left(arg0, arg1, width, height, arg6);
+//! @todo fakematch?
+#ifdef AVOID_UB
+        img2 += (width * height) * 2;
+#else
+        img2 += (width * height) * 2 ^ ((arg4 / height) * 0);
+#endif
+        arg1 += height;
+    }
+}
+
 UNUSED void func_8004C354() {
 }
 
@@ -1999,6 +2090,12 @@ void func_8004C9D8(s32 arg0, s32 arg1, s32 arg2, u8* texture, s32 arg4, s32 arg5
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     set_transparency(arg2);
     func_8004C268(arg0, arg1, texture, arg4, arg5, arg7, 1);
+}
+
+void func_8004C9D8_wide(s32 arg0, s32 arg1, s32 arg2, u8* texture, s32 arg4, s32 arg5, UNUSED s32 arg6, s32 arg7) {
+    gSPDisplayList(gDisplayListHead++, D_0D007F38);
+    set_transparency(arg2);
+    func_8004C268_wide(arg0, arg1, texture, arg4, arg5, arg7, 1);
 }
 
 void func_8004CA58(s32 arg0, s32 arg1, f32 arg2, u8* texture, s32 arg4, s32 arg5) {
@@ -2584,15 +2681,15 @@ void func_8004EB38(s32 playerId) {
         func_8004F950((s32) temp_s0->lap2CompletionTimeX, (s32) temp_s0->timerY, 0x00000050, (s32) temp_s0->someTimer);
     }
     if ((u8) temp_s0->unk_7E != 0) {
-        func_8004C9D8((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, (u8*) common_texture_hud_lap,
+        func_8004C9D8_wide((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, (u8*) common_texture_hud_lap,
                       0x00000020, 8, 0x00000020, 8);
-        func_8004C9D8(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080,
+        func_8004C9D8_wide(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080,
                       (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
     if ((u8) temp_s0->unk_7F != 0) {
-        func_8004C9D8((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, (u8*) common_texture_hud_lap,
+        func_8004C9D8_wide((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, (u8*) common_texture_hud_lap,
                       0x00000020, 8, 0x00000020, 8);
-        func_8004C9D8(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050,
+        func_8004C9D8_wide(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050,
                       (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
 }

@@ -292,7 +292,6 @@ void func_8004E800(s32);
 void func_8004E998(s32);
 void func_8004EB30(s32);
 void func_8004EB38(s32);
-void func_8004EB38(s32);
 void func_8004ED40(s32);
 void func_8004EE54(s32);
 
