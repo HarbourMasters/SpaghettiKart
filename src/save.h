@@ -87,7 +87,7 @@ s32 func_800B6A68(void);
 /* data */
 // these might not be in this file, but for now...
 
-extern u32* D_800DC714;
+extern u32* gReplayGhostCompressed;
 extern struct_8018EE10_entry D_8018EE10[];
 
 extern u16 gCompanyCode;
