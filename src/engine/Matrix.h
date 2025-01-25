@@ -14,7 +14,7 @@ void AddObjectMatrix(Mat4 mtx, s32 flags);
 void AddEffectMatrix(Mat4 mtx, s32 flags);
 void AddEffectMatrixOrtho(void);
 void AddEffectMatrixFixed(s32 flags);
-void SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+Mtx* SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 Mtx* GetEffectMatrix(void);
 void ClearHudMatrixPool(void);
 void ClearEffectsMatrixPool(void);

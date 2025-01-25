@@ -34,28 +34,29 @@ void AddMatrixFixed(std::vector<Mtx>& stack, s32 flags) {
 }
 
 // Used in func_80095BD0
-void SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Mat4 mtx;
-    mtx[0][0] = arg3;
-    mtx[0][1] = 0.0f;
-    mtx[0][2] = 0.0f;
-    mtx[0][3] = 0.0f;
-    mtx[1][0] = 0.0f;
-    mtx[1][1] = arg4;
-    mtx[1][2] = 0.0f;
-    mtx[1][3] = 0.0f;
-    mtx[2][0] = 0.0f;
-    mtx[2][1] = 0.0f;
-    mtx[2][2] = 1.0f;
-    mtx[2][3] = 0.0f;
-    mtx[3][0] = arg1;
-    mtx[3][1] = arg2;
-    mtx[3][2] = 0.0f;
-    mtx[3][3] = 1.0f;
+Mtx* SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    Mat4 matrix;
+    matrix[0][0] = arg3;
+    matrix[0][1] = 0.0f;
+    matrix[0][2] = 0.0f;
+    matrix[0][3] = 0.0f;
+    matrix[1][0] = 0.0f;
+    matrix[1][1] = arg4;
+    matrix[1][2] = 0.0f;
+    matrix[1][3] = 0.0f;
+    matrix[2][0] = 0.0f;
+    matrix[2][1] = 0.0f;
+    matrix[2][2] = 1.0f;
+    matrix[2][3] = 0.0f;
+    matrix[3][0] = arg1;
+    matrix[3][1] = arg2;
+    matrix[3][2] = 0.0f;
+    matrix[3][3] = 1.0f;
+    Mtx* mtx = GetMatrix(gWorldInstance.Mtx.Effects);
+    guMtxF2L(matrix, mtx);
 
-    AddMatrix(gWorldInstance.Mtx.Effects, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return mtx;
 }
-
 
 // API
 extern "C" {

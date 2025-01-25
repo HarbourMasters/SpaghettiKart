@@ -2732,8 +2732,9 @@ func_80095BD0_label1:
     rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
     return displayListHead;
 func_80095BD0_label2:
-    func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
-    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
+    Mtx* mtx = SetTextMatrix(arg2, arg3, arg6, arg7);
+    gSPMatrix(displayListHead++, mtx,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMKLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
