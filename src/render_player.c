@@ -1958,23 +1958,30 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
 
 void func_80026A48(Player* player, s8 arg1) {
     f32 temp_f0;
-
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
-        player->unk_240 += D_800DDE74[8];
-        if (player->unk_240 >= 0x400) {
-            player->unk_240 = 0;
+        player->tyreSpeed += D_800DDE74[8];
+        if (player->tyreSpeed >= 0x400) {
+            player->tyreSpeed = 0;
         }
         return;
     }
-
     temp_f0 = ((player->unk_094 * (1.0f + player->unk_104)) / 18.0f) * 216.0f;
+
     if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == true)) {
-        player->unk_240 = 0;
+        player->tyreSpeed = 0;
     } else {
-        player->unk_240 += D_800DDE74[(s32) (temp_f0 / 12.0f)];
+        s32 temp = (s32) (temp_f0 / 12.0f);
+        //! @warning This condition prevents an array overflow.
+        // It's possible on hardware the tyres stop spinning despite that the player is still moving.
+        // This prevents that overflow/bug
+        // The ARRAY_COUNT is so if D_800DDE74 is changed, this fix automatically adjusts to the new size.
+        if (temp >= ARRAY_COUNT(D_800DDE74)) {
+            temp = ARRAY_COUNT(D_800DDE74) - 1;
+        }
+        player->tyreSpeed += D_800DDE74[temp];
     }
-    if (player->unk_240 >= 0x400) {
-        player->unk_240 = 0;
+    if (player->tyreSpeed >= 0x400) {
+        player->tyreSpeed = 0;
     }
 }
 
@@ -1988,7 +1995,7 @@ void func_80026A48(Player* player, s8 arg1) {
 void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     s16 frameId = gLastAnimFrameSelector[screenId][playerId];
     s16 groupId = gLastAnimGroupSelector[screenId][playerId];
-    s16 temp_t2 = player->unk_240;
+    s16 tyreSpeed = player->tyreSpeed;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
     u8 character = player->characterId;
@@ -2001,21 +2008,21 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
+                int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (frameId == 0) {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
@@ -2026,22 +2033,22 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (frameId <= 20) {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
 
-                int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
+                int32_t offset = (((((frameId - 21) * (temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) + 0x600)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
             if (frameId == 0) {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel0 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                int32_t offset = (((frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)) * 2) / 0x80;
+                int32_t offset = (((frameId * temp_num * 4) + ((tyreSpeed >> 8) * 0x40)) * 2) / 0x80;
                 load_wheel_palette_non_blocking(player, wheelPtr[character][wheel1 + offset],
                                                 D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }

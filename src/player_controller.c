@@ -2027,7 +2027,7 @@ void func_8002D028(Player* player, s8 arg1) {
         player->unk_08C = 0;
         player->unk_094 = 0;
         player->unk_104 = 0;
-        player->unk_240 = 0;
+        player->tyreSpeed = 0;
         player->unk_07C = 0;
         player->velocity[0] = 0;
         player->velocity[1] = 0;
