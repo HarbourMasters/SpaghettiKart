@@ -6698,7 +6698,7 @@ void func_800A15EC(MenuItem* arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
         func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D74[courseId]), arg0->column, arg0->row, 2);
-    gDisplayListHead = draw_box_wide(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40,
+    gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40,
                                      arg0->row + 0x30, 0, 0, 0, 0xFF);
     gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7DC4[courseId]), arg0->column,
                                      arg0->row + 0x27, 3);
@@ -9220,7 +9220,7 @@ void func_800A8CA4(MenuItem* arg0) {
                 // Wut?
                 if ((var_s0 != (temp_v0->param1 % 4)) != 0) {
                     gDisplayListHead =
-                        draw_box_wide(gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
+                        draw_box(gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
                                       D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
                                       D_800E7208[var_s0][1].row + temp_s3, 0, 0, 0, 0x00000064);
                 }
