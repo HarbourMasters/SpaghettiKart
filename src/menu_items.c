@@ -8304,7 +8304,8 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     static float x2, y2, z2;
     static float x1, y1, z1;
 
-    mtx = GetEffectMatrix(); // &gGfxPool->mtxEffect[gMatrixEffectCount];
+    mtx = GetEffectMatrix();
+    mtx2 = GetEffectMatrix();
     if (arg0->paramf > 1.5) {
         arg0->paramf *= 0.95;
     } else {
@@ -8326,14 +8327,14 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
-    guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guRotate(mtx + 1, z2, 0.0f, 0.0f, 1.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guRotate(mtx + 1, x2, 1.0f, 0.0f, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx2, y2, 0.0f, 1.0f, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guRotate(mtx2, z2, 0.0f, 0.0f, 1.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guRotate(mtx2, x2, 1.0f, 0.0f, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guTranslate(mtx2, arg1->column, arg1->row, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
     // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
     //           (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     AddEffectMatrixFixed(G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
