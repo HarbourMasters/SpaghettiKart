@@ -8309,7 +8309,7 @@ void func_800A69C8(UNUSED MenuItem* arg0) {
         print_text1_center_mode_2(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
     }
     set_text_color(TEXT_BLUE);
-    // Not a hyphen, that is an EUC-JP character
+    // EUC-JP character which sort of looks like a hyphen -
     text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "\xA1\xBC", 0, 1.0f, 1.0f);
 }
 
