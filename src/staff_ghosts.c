@@ -71,8 +71,17 @@ void func_80004EF0(void) {
 
     u8* ghost = (u8*) D_80162DC4;
 
+    size_t size = 0;
+    if (ghost == d_luigi_raceway_staff_ghost) {
+        size = 187 * sizeof(StaffGhost);
+    } else if (ghost == d_mario_raceway_staff_ghost) {
+        size = 208 * sizeof(StaffGhost);
+    } else if (ghost == d_royal_raceway_staff_ghost) {
+        size = 377 * sizeof(StaffGhost);
+    }
+    
     // Manual memcpy required for byte swap
-    for (int i = 0; i < 0x4000; i += 4) {
+    for (int i = 0; i < size; i += 4) {
         dest[i] = ghost[i + 3];
         dest[i + 1] = ghost[i + 2];
         dest[i + 2] = ghost[i + 1];
