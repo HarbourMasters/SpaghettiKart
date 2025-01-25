@@ -47,7 +47,7 @@ typedef struct Properties {
     float AIMinimumSeparation;
     float NearPersp;
     float FarPersp;
-    int16_t *SomePtr;
+    int16_t* SomePtr;
     uint32_t AISteeringSensitivity;
     _struct_gCoursePathSizes_0x10 PathSizes;
     Vec4f D_0D009418;
@@ -56,12 +56,12 @@ typedef struct Properties {
     Vec4f D_0D009808;
     TrackWaypoint* PathTable[4];
     TrackWaypoint* PathTable2[4];
-    CloudData *Clouds;
-    CloudData *CloudList;
+    CloudData* Clouds;
+    CloudData* CloudList;
     int32_t MinimapFinishlineX;
     int32_t MinimapFinishlineY;
     SkyboxColours Skybox;
-    const course_texture *textures;
+    const course_texture* textures;
     enum MusicSeq Sequence;
 } Properties;
 
@@ -71,7 +71,7 @@ class World; // <-- Forward declare
 
 class Course {
 
-public:
+  public:
     Properties Props;
 
     const char* vtx = nullptr;
@@ -83,8 +83,8 @@ public:
 
     explicit Course();
 
-    virtual void Load(); // Decompress and load stock courses. Must be overridden for custom courses
-    virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom course
+    virtual void Load();                   // Decompress and load stock courses. Must be overridden for custom courses
+    virtual void Load(Vtx* vtx, Gfx* gfx); // Load custom course
     virtual void LoadTextures();
 
     /**
@@ -94,7 +94,8 @@ public:
     virtual void BeginPlay();
     virtual void InitClouds();
     virtual void UpdateClouds(s32, Camera*);
-    virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);
+    virtual void SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
+                                    f32* arg7);
     virtual void MinimapSettings();
     virtual void InitCourseObjects();
     virtual void UpdateCourseObjects();
@@ -112,10 +113,12 @@ public:
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual void Collision();
     virtual void ScrollingTextures();
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                           uint16_t playerDirection);
     virtual void Destroy();
     virtual bool IsMod();
-private:
+
+  private:
     void Init();
 };
 

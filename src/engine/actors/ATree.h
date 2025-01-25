@@ -7,13 +7,11 @@ extern "C" {
 #include "common_structs.h"
 }
 
-
 // Note that this doesn't seem to work right
 // Use add_actor_to_empty_slot(test, rot, vel, ACTOR_TREE_MARIO_RACEWAY);
 // to spawn stock actors
 class ATree : public AActor {
-public:
-
+  public:
     Gfx* Displaylist;
     const char* Tlut;
     f32 DrawDistance;

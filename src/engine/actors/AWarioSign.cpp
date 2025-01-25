@@ -19,7 +19,7 @@ void AWarioSign::Tick() {
     Rot[1] += 0xB6;
 }
 
-void AWarioSign::Draw(Camera *camera) {
+void AWarioSign::Draw(Camera* camera) {
     Mat4 sp38;
     f32 unk =
         is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 16000000.0f);
@@ -35,7 +35,7 @@ void AWarioSign::Draw(Camera *camera) {
         mtxf_pos_rotation_xyz(sp38, Pos, Rot);
         if (render_set_position(sp38, 0) != 0) {
 
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_wario_stadium_dl_sign);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_dl_sign);
         }
     }
 }

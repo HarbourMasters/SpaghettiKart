@@ -4,15 +4,14 @@
 #include "CoreMath.h"
 
 class PlayerBombKart {
-public:
-
+  public:
     enum PlayerBombKartState {
         DISABLED,
         ACTIVE,
     };
 
     s16 state = PlayerBombKartState::DISABLED;
-    FVector pos = {0, 0, 0};
+    FVector pos = { 0, 0, 0 };
     f32 surfaceHeight = 0;
     s32 _primAlpha = 0;
 

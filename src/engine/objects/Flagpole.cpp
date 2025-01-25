@@ -45,7 +45,7 @@ void OFlagpole::Draw(s32 cameraId) { // func_80055228
 
 void OFlagpole::func_80055164(s32 objectIndex) { // func_80055164
     if (gObjectList[objectIndex].state >= 2) {
-        gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
                                       gObjectList[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {

@@ -16,17 +16,12 @@ extern "C" {
 }
 
 class OPenguin : public OObject {
-public:
-    enum PenguinType : uint32_t {
-        CHICK,
-        ADULT,
-        CREDITS,
-        EMPEROR
-    };
+  public:
+    enum PenguinType : uint32_t { CHICK, ADULT, CREDITS, EMPEROR };
 
     enum Behaviour : uint16_t {
         DISABLED,
-        STRUT, // Emperor penguin
+        STRUT,  // Emperor penguin
         CIRCLE, // Waddle in a circle
         SLIDE3,
         SLIDE4,
@@ -34,7 +29,7 @@ public:
         SLIDE6,
     };
 
-public:
+  public:
     f32 Diameter = 0.0f; // Waddle in a circle around the spawn point at this diameter.
     uint16_t MirrorModeAngleOffset;
 
@@ -48,10 +43,10 @@ public:
         return _count;
     }
 
-
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
-private:
+
+  private:
     void Behaviours(s32 objectIndex, s32 arg1);
     void EmperorPenguin(s32 objectIndex);
     void func_80085080(s32 objectIndex);
@@ -66,6 +61,4 @@ private:
     s32 _idx;
     PenguinType _type;
     Behaviour _bhv;
-
-
 };

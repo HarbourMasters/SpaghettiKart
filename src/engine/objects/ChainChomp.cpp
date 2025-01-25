@@ -20,7 +20,6 @@ OChainChomp::OChainChomp() {
     _idx = _count;
     init_object(indexObjectList2[_count], 0);
 
-
     _count++;
 }
 
@@ -64,12 +63,12 @@ void OChainChomp::func_80055AB8(s32 objectIndex, s32 cameraId) {
             D_80183E80[1] =
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
-            func_800468E0(D_80183E40, D_80183E80, 0.54f, (u8*)d_course_rainbow_road_sphere, (Vtx*)D_0D0062B0, 0x00000020,
-                          0x00000040, 0x00000020, 0x00000040, 5);
+            func_800468E0(D_80183E40, D_80183E80, 0.54f, (u8*) d_course_rainbow_road_sphere, (Vtx*) D_0D0062B0,
+                          0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         } else {
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
                                           gObjectList[objectIndex].sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077D0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077D0);
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0,
                                   (s16) gObjectList[objectIndex].textureListIndex);
@@ -98,7 +97,6 @@ void OChainChomp::func_80085878(s32 objectIndex, s32 arg1) {
     object_next_state(objectIndex);
 }
 
-
 void OChainChomp::func_800859C8(s32 objectIndex, s32 arg1) {
     Object* object;
 
@@ -118,8 +116,3 @@ void OChainChomp::func_800859C8(s32 objectIndex, s32 arg1) {
     }
     func_80074344(objectIndex, &object->surfaceHeight, -0.8f, 0.8f, 0.03f, 0, -1);
 }
-
-
-
-
-

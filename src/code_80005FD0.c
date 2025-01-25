@@ -1538,8 +1538,8 @@ void update_vehicles(void) {
     generate_player_smoke();
     D_8016337C++;
 
-    //CM_TickBombKarts();
-    //CM_VehiclesTick();
+    // CM_TickBombKarts();
+    // CM_VehiclesTick();
 }
 
 void func_800098FC(s32 arg0, Player* player) {
@@ -1663,16 +1663,16 @@ void func_80009B60(s32 playerId) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
             D_80163448 = gPathIndexByPlayerId[playerId];
             func_80008DC0(D_80163448);
-            //if (GetCourse() == GetKalimariDesert()) {
-                CM_VehicleCollision(playerId, player);
-                //func_80012DC0(playerId, player);
-                if (playerId == 0) {
-                    CM_CrossingTrigger();
-                    //func_80013054();
-                }
+            // if (GetCourse() == GetKalimariDesert()) {
+            CM_VehicleCollision(playerId, player);
+            // func_80012DC0(playerId, player);
+            if (playerId == 0) {
+                CM_CrossingTrigger();
+                // func_80013054();
+            }
             //}
             if (GetCourse() == GetDkJungle()) {
-                //func_80013854(player);
+                // func_80013854(player);
             } else if (GetCourse() == GetToadsTurnpike()) {
                 func_800148C4(playerId, player);
                 func_80014A18(playerId, player);
@@ -1759,7 +1759,7 @@ void func_80009B60(s32 playerId) {
                         D_80163210[playerId] = CM_GetProps()->D_0D009568[gCCSelection];
                     }
                     CM_AICrossingBehaviour(playerId);
-                    //check_ai_crossing_distance(playerId);
+                    // check_ai_crossing_distance(playerId);
                     func_8000D3B8(playerId);
                     func_8000D438(playerId, D_801630E0);
                     temp_f0 = D_80162FA0[0] - player->pos[0];
@@ -1973,7 +1973,7 @@ void func_80009B60(s32 playerId) {
                 player->effects &= ~0x00200000;
                 D_80163210[playerId] = D_8016320C;
                 CM_AICrossingBehaviour(playerId);
-                //check_ai_crossing_distance(playerId);
+                // check_ai_crossing_distance(playerId);
                 func_80008424(playerId, D_8016320C, player);
             }
         }
@@ -2906,7 +2906,7 @@ void set_bomb_kart_spawn_positions(void) {
     BombKartSpawn* bombKartSpawn;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        //bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
+        // bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
         if (GetCourse() == GetYoshiValley()) {
             startingXPos = bombKartSpawn->startingXPos;
             startingZPos = bombKartSpawn->startingZPos;
@@ -3446,7 +3446,7 @@ void func_8000F2DC(void) {
 
     CM_ClearVehicles();
 
-    //set_bomb_kart_spawn_positions();
+    // set_bomb_kart_spawn_positions();
     func_8000EEDC();
 }
 
@@ -4145,10 +4145,10 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    KartAIBehaviour *beh = (KartAIBehaviour*)LOAD_ASSET(CM_GetProps()->AIBehaviour);
+    KartAIBehaviour* beh = (KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour);
 
-    sCurrentKartAIBehaviour = 
-        &((KartAIBehaviour*)LOAD_ASSET(CM_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
+    sCurrentKartAIBehaviour =
+        &((KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gCurrentKartAIBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
@@ -4212,8 +4212,8 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
     u32 waypointEnd;
     s32 behaviourType;
 
-    sCurrentKartAIBehaviour = &(
-        (KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
+    sCurrentKartAIBehaviour =
+        &((KartAIBehaviour*) LOAD_ASSET(CM_GetProps()->AIBehaviour))[gPreviousKartAIBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
     behaviourType = sCurrentKartAIBehaviour->type;
     waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
@@ -4323,7 +4323,8 @@ void generate_ferry_waypoints(void) {
     D_80162EB2 = -40;
 }
 
-void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex, s32 someMultiplierTheSequel, f32 speed) {
+void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex,
+                           s32 someMultiplierTheSequel, f32 speed) {
     f32 origXPos;
     UNUSED f32 pad;
     f32 origZPos;
@@ -4331,14 +4332,12 @@ void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 w
     origXPos = position[0];
     origZPos = position[2];
     if (D_8016347A == 0) {
-        func_8000D6D0(position, (s16*) &waypointIndex, speed,
-                      someMultiplierTheSequel, 0, 3);
+        func_8000D6D0(position, (s16*) &waypointIndex, speed, someMultiplierTheSequel, 0, 3);
         rotation[0] = 0;
         rotation[1] = -0x8000;
         rotation[2] = 0;
     } else {
-        func_8000D940(position, (s16*) &waypointIndex, speed,
-                      someMultiplierTheSequel, 0);
+        func_8000D940(position, (s16*) &waypointIndex, speed, someMultiplierTheSequel, 0);
         rotation[0] = 0;
         rotation[1] = 0;
         rotation[2] = 0;
@@ -4372,9 +4371,9 @@ void init_vehicles_trains(size_t i, size_t numCarriages, f32 speed) {
 
     gTrainList[i].numCarriages = numCarriages;
 
-    //for (i = 0; i < NUM_TRAINS; i++) {
-    // outputs 160 or 392 depending on the train.
-    // Wraps the value around to always output a valid waypoint.
+    // for (i = 0; i < NUM_TRAINS; i++) {
+    //  outputs 160 or 392 depending on the train.
+    //  Wraps the value around to always output a valid waypoint.
     waypointOffset = (((i * gVehicle2DWaypointLength) / 2) + 160) % gVehicle2DWaypointLength;
 
     // 120.0f is about the maximum usable value
@@ -5884,12 +5883,14 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     sp58 = gWaypointCountByPathIndex[pathIndex];
     D_80163238 = playerId;
     sp56 = gNearestWaypointByCameraId[cameraId];
-    gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
+    gNearestWaypointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
     // if (GetCourse() == GetYoshiValley()) {
     if (gCurrentCourseId == 4) {
         if ((sp56 != gNearestWaypointByCameraId[cameraId]) && (gNearestWaypointByCameraId[cameraId] == 1)) {
             pathIndex = (D_80163DD8[cameraId] = random_int(4U));
-            gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
+            gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2],
+                                                                 gNearestWaypointByCameraId[cameraId], pathIndex);
         }
     }
 
@@ -5916,13 +5917,13 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     camX += D_80162FA0[0] * 0.5;
     camZ += D_80162FA0[2] * 0.5;
     camY = (D_80164550[pathIndex][waypoint1].posY + D_80164550[pathIndex][waypoint2].posY) * 0.5f;
-    
+
     diffX = camX - D_801645F8[cameraId];
     diffY = camY - D_80164618[cameraId];
     diffZ = camZ - D_80164638[cameraId];
-    // magnitude
-    #define SQ(x) (x * x)
-    distance = sqrtf(SQ(diffX) + SQ(diffY) + SQ(diffZ) );
+// magnitude
+#define SQ(x) (x * x)
+    distance = sqrtf(SQ(diffX) + SQ(diffY) + SQ(diffZ));
     if (distance != 0.0) {
         diffX = D_801645F8[cameraId] + ((D_80164648[cameraId] * diffX) / distance);
         diffY = D_80164618[cameraId] + ((D_80164648[cameraId] * diffY) / distance);
@@ -5938,10 +5939,14 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
         camera->pos[2] = diffZ;
     }
 
-    //camera->pos[0] = camX;
+    // camera->pos[0] = camX;
     camera->pos[1] = diffY + 10.0; // Set camera 10 points above the ground
-    
-    if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+
+    if (1) {}
+    if (1) {}
+    if (1) {}
+    if (1) {}
+    if (1) {}
     D_801645F8[cameraId] = diffX;
     D_80164638[cameraId] = diffZ;
     D_80164618[cameraId] = camY;

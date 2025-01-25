@@ -18,7 +18,7 @@ extern "C" {
 }
 
 class OSnowman : public OObject {
-public:
+  public:
     explicit OSnowman(const FVector& pos);
 
     ~OSnowman() {
@@ -46,8 +46,7 @@ public:
     void func_80083538(s32 objectIndex, Vec3f arg1, s32 arg2, s32 arg3);
     void func_8008379C(s32 objectIndex);
 
-
-private:
+  private:
     FVector _pos;
     static size_t _count;
     size_t _idx;

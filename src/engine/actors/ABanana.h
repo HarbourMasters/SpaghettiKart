@@ -4,8 +4,7 @@
 #include "engine/Actor.h"
 
 class ABanana : public AActor {
-public:
-
+  public:
     uint16_t PlayerId;
 
     // Constructor

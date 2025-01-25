@@ -42,10 +42,11 @@ s8 gScreenModeListIndex; // 0-4 index, selects a screen mode in sScreenModePlaye
 u8 gSoundMode;
 s8 gPlayerCount;
 s8 gVersusResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
-s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when selecting an option (excluding Save Ghost)
+s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when selecting an option (excluding Save
+                                     // Ghost)
 s8 gBattleResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
 s8 gTimeTrialDataCourseIndex;
-s8 gCourseRecordsMenuSelection; // Used for selecting an option in course record data
+s8 gCourseRecordsMenuSelection;    // Used for selecting an option in course record data
 s8 gCourseRecordsSubMenuSelection; // Used for erase records and ghosts (Quit - Erase)
 s8 gDebugGotoScene;
 bool gGhostPlayerInit;
@@ -87,13 +88,9 @@ u32 sVIGammaOffDitherOn = (OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON);
 /** Rodata **/
 
 // Sets the actual screen mode based on values set in sScreenModePlayerCount
-const s8 sScreenModePlayerTable[] = {
-    SCREEN_MODE_1P, 
-    SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL,
-    SCREEN_MODE_2P_SPLITSCREEN_VERTICAL,
-    SCREEN_MODE_3P_4P_SPLITSCREEN,
-    SCREEN_MODE_3P_4P_SPLITSCREEN
-};
+const s8 sScreenModePlayerTable[] = { SCREEN_MODE_1P, SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL,
+                                      SCREEN_MODE_2P_SPLITSCREEN_VERTICAL, SCREEN_MODE_3P_4P_SPLITSCREEN,
+                                      SCREEN_MODE_3P_4P_SPLITSCREEN };
 
 // Sets how many players can load on each screen mode set in sScreenModePlayerTable
 const s8 sScreenModePlayerCount[] = { 1, 2, 2, 3, 4 };
@@ -436,7 +433,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             }
             case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:
             case SUB_MENU_COPY_PAK_FROM_GHOST2_1P: {
-                if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_FROM_GHOST_MAX) && (sp30[PLAYER_TWO].ghostDataSaved)) {
+                if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_FROM_GHOST_MAX) &&
+                    (sp30[PLAYER_TWO].ghostDataSaved)) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (sp38->paramf < 4.2) {
@@ -444,7 +442,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     }
                     sp38->subState = 1;
                 }
-                if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_FROM_GHOST_MIN) && sp30[PLAYER_ONE].ghostDataSaved) {
+                if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_FROM_GHOST_MIN) &&
+                    sp30[PLAYER_ONE].ghostDataSaved) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (sp38->paramf < 4.2) {
@@ -459,7 +458,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & A_BUTTON) {
                     sp38->param2 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
-                    if (sp30[sp38->param2].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex && D_8018EE10[PLAYER_TWO].ghostDataSaved) {
+                    if (sp30[sp38->param2].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
+                        D_8018EE10[PLAYER_TWO].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST2_2P;
                     } else {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST1_2P;
@@ -471,7 +471,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->param2].courseIndex != ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
+                if ((sp30[sp38->param2].courseIndex !=
+                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
@@ -1425,11 +1426,13 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (btnAndStick & D_JPAD) {
                     cursorMoved = false;
                     if (has_unlocked_extra_mode()) {
-                        if (subMode < sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     } else {
-                        if (subMode < sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     }
@@ -1640,8 +1643,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     }
                     // L800B38FC
                     if (btnAndStick & CONT_RIGHT) {
-                        if (savedSelection == 4 || savedSelection == 8)
+                        if (savedSelection == 4 || savedSelection == 8) {
                             return;
+                        }
                         savedSelection += 1;
                         do {
                             // L800B391C
@@ -1651,15 +1655,17 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                                 break;
                             }
                             savedSelection += 1;
-                            if ((savedSelection == 5) || (savedSelection == 9))
+                            if ((savedSelection == 5) || (savedSelection == 9)) {
                                 return;
+                            }
                         } while (savedSelection < 10);
                         return;
                     }
                     // L800B3978
                     if (btnAndStick & CONT_LEFT) {
-                        if (savedSelection == 1 || savedSelection == 5)
+                        if (savedSelection == 1 || savedSelection == 5) {
                             return;
+                        }
                         savedSelection -= 1;
                         do {
                             if (is_character_spot_free(savedSelection)) {
@@ -1668,8 +1674,9 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                                 break;
                             }
                             savedSelection -= 1;
-                            if ((savedSelection == 0) || (savedSelection == 4))
+                            if ((savedSelection == 0) || (savedSelection == 4)) {
                                 return;
+                            }
                         } while (savedSelection >= 0);
                         return;
                     }
@@ -1744,14 +1751,14 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & R_JPAD) != 0) {
                     sTempCupSelection = WorldNextCup();
                     //++gCupSelection;
-                    //reset_cycle_flash_menu();
-                    //play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    // reset_cycle_flash_menu();
+                    // play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (((btnAndStick & L_JPAD) != 0)) {
                     sTempCupSelection = WorldPreviousCup();
                     //--gCupSelection;
-                    //reset_cycle_flash_menu();
-                    //play_sound2(SOUND_MENU_CURSOR_MOVE);
+                    // reset_cycle_flash_menu();
+                    // play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
                 D_800DC540 = GetCupIndex();
@@ -1811,7 +1818,8 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 break;
             case SUB_MENU_MAP_SELECT_OK:
-                if ((controllerIdx == PLAYER_ONE) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
+                if ((controllerIdx == PLAYER_ONE) &&
+                    ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                     play_sound2(SOUND_MENU_OK);
                 }
 

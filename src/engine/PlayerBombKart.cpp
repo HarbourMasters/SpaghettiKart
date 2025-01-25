@@ -38,12 +38,12 @@ void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
     D_80183E80[1] = func_800418AC(pos.x, pos.z, camera->pos);
     D_80183E80[2] = 0x8000;
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007E98);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007E98);
     func_8004B310(arg2);
-    draw_rectangle_texture_overlap((u8*) common_tlut_bomb, (u8*)common_texture_bomb[residue], (Vtx*)D_0D005AE0, 0x00000020,
-                                   0x00000020, 0x00000020, 0x00000020);
+    draw_rectangle_texture_overlap((u8*) common_tlut_bomb, (u8*) common_texture_bomb[residue], (Vtx*) D_0D005AE0,
+                                   0x00000020, 0x00000020, 0x00000020, 0x00000020);
     temp_s0 = D_8018D400;
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B00);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B00);
     func_8004B414(0, 0, 0, arg2);
     D_80183E40[1] = D_80183E40[1] + 4.0;
     D_80183E80[2] = 0;
@@ -58,22 +58,22 @@ void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
 }
 
 void PlayerBombKart::func_8005669C(s32 arg2) {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079E8);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079E8);
     func_8004B310(arg2);
     load_texture_block_rgba16_mirror((u8*) D_0D02AA58, 0x00000010, 0x00000010);
     D_80183E40[1] = pos.y - 2.0;
     D_80183E40[0] = pos.x + 2.0;
     D_80183E40[2] = pos.z + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E40[0] = pos.x + 2.0;
     D_80183E40[2] = pos.z - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E40[0] = pos.x - 2.0;
     D_80183E40[2] = pos.z - 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     D_80183E40[0] = pos.x - 2.0;
     D_80183E40[2] = pos.z + 2.0;
-    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*)common_vtx_rectangle);
+    func_800431B0(D_80183E40, D_80183E80, 0.15f, (Vtx*) common_vtx_rectangle);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
@@ -91,5 +91,5 @@ void PlayerBombKart::func_800568A0(s32 cameraId) {
     //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     AddHudMatrix(mtx, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007B98);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B98);
 }

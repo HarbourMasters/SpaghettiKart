@@ -18,7 +18,7 @@ extern "C" {
 }
 
 class OHotAirBalloon : public OObject {
-public:
+  public:
     explicit OHotAirBalloon(const FVector& pos);
 
     virtual void Tick() override;
@@ -28,7 +28,7 @@ public:
     void func_80085534(s32 objectIndex);
     void func_80085768(s32 objectIndex);
 
-private:
+  private:
     FVector _pos;
-    bool *_visible;
+    bool* _visible;
 };

@@ -2206,8 +2206,6 @@ void init_smoke_particles(s32 arg0) {
     }
 }
 
-
-
 void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
     UNUSED s32 stackPadding1;
     UNUSED u16 stackPadding0;
@@ -2718,7 +2716,6 @@ void func_80078C70(s32 arg0) {
         //}
     }
 }
-
 
 void func_8007ABFC(s32 playerId, bool arg1) {
     s32 itemWindow;
@@ -3566,7 +3563,7 @@ void func_8007BB9C(s32 arg0) {
 }
 
 void wrapper_update_boos(void) {
-    //update_boos();
+    // update_boos();
 }
 
 // Updates the display status on an object based on its relative direction to the camera
@@ -3593,7 +3590,6 @@ void func_8007C420(s32 objectIndex, Player* player, Camera* camera) {
         func_800417B4(gObjectList[objectIndex].direction_angle[1], atan2s(x, z));
     func_8007C360(objectIndex, camera);
 }
-
 
 void func_8007CE0C(s32 objectIndex) {
     Object* object;
@@ -4030,8 +4026,6 @@ void func_800842C8(void) {
         }
     }
 }
-
-
 
 void func_80085BB4(s32 objectIndex) {
     gObjectList[objectIndex].sizeScaling = 8.0f;

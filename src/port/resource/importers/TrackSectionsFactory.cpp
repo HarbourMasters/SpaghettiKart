@@ -4,7 +4,7 @@
 #include "libultraship/libultra/gbi.h"
 
 extern "C" {
-//#include "memory.h" // Removed to prevent C linkage errors likely related with #include common_structs.h
+// #include "memory.h" // Removed to prevent C linkage errors likely related with #include common_structs.h
 void* segmented_uintptr_t_to_virtual(uintptr_t);
 }
 

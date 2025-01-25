@@ -483,7 +483,7 @@ void func_800B559C(s32 arg0) {
  * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
  **/
 u8 func_800B578C(s32 arg0) {
-    u8* times = (u8*)&gSaveData.onlyBestTimeTrialRecords[arg0];
+    u8* times = (u8*) &gSaveData.onlyBestTimeTrialRecords[arg0];
     s32 checksum = 0;
     s32 i;
     s32 j;

@@ -14,11 +14,8 @@ extern Vtx gBowserStatueVtx[717];
 extern Gfx gBowserStatueGfx[162];
 
 class ABowserStatue : public AActor {
-public:
-    enum Behaviour {
-        DEFAULT,
-        CRUSH
-    };
+  public:
+    enum Behaviour { DEFAULT, CRUSH };
 
     virtual ~ABowserStatue() = default;
     explicit ABowserStatue(FVector pos, ABowserStatue::Behaviour behaviour);
@@ -28,7 +25,8 @@ public:
     virtual bool IsMod() override;
 
     FVector Pos;
-private:
+
+  private:
     ABowserStatue::Behaviour _behaviour;
     f32 scale;
 };

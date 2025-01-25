@@ -5,7 +5,6 @@
 #include "Object.h"
 #include "World.h"
 
-
 void RunGarbageCollector();
 void CleanActors();
 void CleanObjects();

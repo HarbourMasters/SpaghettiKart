@@ -31,8 +31,8 @@ OPodium::OPodium(const FVector& pos) {
 
     for (size_t i = 0; i < NUM_PODIUMS; i++) {
         s32 objectIndex = indexObjectList1[i];
-        //init_object(objectIndex, 0);
-        //set_obj_origin_pos(objectIndex, pos.x - 1.5, pos.y, pos.z);
+        // init_object(objectIndex, 0);
+        // set_obj_origin_pos(objectIndex, pos.x - 1.5, pos.y, pos.z);
     }
 }
 
@@ -62,9 +62,9 @@ void OPodium::Draw(s32 cameraId) { // func_80055F48
 
         object = &gObjectList[indexObjectList1[i]];
         if (object->state >= 2) {
-            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+            // func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
             rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
             gSPDisplayList(gDisplayListHead++, object->model);
         }
     }
@@ -73,15 +73,15 @@ void OPodium::Draw(s32 cameraId) { // func_80055F48
 void OPodium::func_8008629C(s32 objectIndex, s32 arg1) {
     switch (arg1) { /* irregular */
         case 0:
-            gObjectList[objectIndex].model = (Gfx*)podium_dl3;
+            gObjectList[objectIndex].model = (Gfx*) podium_dl3;
             gObjectList[objectIndex].unk_04C = 0x00000038;
             break;
         case 1:
-            gObjectList[objectIndex].model = (Gfx*)podium2_dl3;
+            gObjectList[objectIndex].model = (Gfx*) podium2_dl3;
             gObjectList[objectIndex].unk_04C = 0x0000002B;
             break;
         case 2:
-            gObjectList[objectIndex].model = (Gfx*)podium3_dl3;
+            gObjectList[objectIndex].model = (Gfx*) podium3_dl3;
             gObjectList[objectIndex].unk_04C = 0x0000001E;
             break;
         default:

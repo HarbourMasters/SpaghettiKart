@@ -70,7 +70,6 @@ void ModelLoader::Extract(Course* course) {
         memcpy(list.gfxBuffer, &gfx[list.gfxStart], list.gfxBufferSize * sizeof(Gfx));
 
         UpdateVtx(list);
-
     }
 
     free(vtx);

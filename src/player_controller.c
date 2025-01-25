@@ -585,8 +585,8 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 }
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (gRaceState != RACE_FINISHED)) || (player->unk_0CA & 2) != 0 ||
-        (player->unk_0CA & 8) != 0 || (player->effects & 0x4F010CC0) != 0) {
+    if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (gRaceState != RACE_FINISHED)) ||
+        (player->unk_0CA & 2) != 0 || (player->unk_0CA & 8) != 0 || (player->effects & 0x4F010CC0) != 0) {
         player->effects &= ~0x1000;
 
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||

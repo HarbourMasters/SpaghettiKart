@@ -166,7 +166,7 @@ void func_8006EEE8(s32 courseId) {
     D_8018D240 = (uintptr_t) CM_GetProps()->MinimapTexture;
     // This is incredibly dumb. MinimapDimensions ought to be something more like
     // `u16 MinimapDimensions[][2]` but that doesn't match for some insane reason
-    gMinimapWidth = CM_GetProps()->MinimapDimensions.X; // MinimapDimensions[courseId * 2];
+    gMinimapWidth = CM_GetProps()->MinimapDimensions.X;  // MinimapDimensions[courseId * 2];
     gMinimapHeight = CM_GetProps()->MinimapDimensions.Z; // MinimapDimensions[courseId * 2 + 1];
 }
 

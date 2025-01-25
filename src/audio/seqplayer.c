@@ -733,14 +733,15 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer* layer) {
     if (seqChannel) {}
 }
 
-u8 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut, struct AdsrSettings *adsr) {
-    struct CtlEntry *bank = GameEngine_LoadBank(seqChannel->bankId);
-    if(instId >= bank->numInstruments) {
+u8 get_instrument(struct SequenceChannel* seqChannel, u8 instId, struct Instrument** instOut,
+                  struct AdsrSettings* adsr) {
+    struct CtlEntry* bank = GameEngine_LoadBank(seqChannel->bankId);
+    if (instId >= bank->numInstruments) {
         *instOut = NULL;
         return 0;
     }
     struct Instrument* inst = bank->instruments[instId];
-    if(inst == NULL) {
+    if (inst == NULL) {
         *instOut = NULL;
         return 0;
     }
@@ -911,9 +912,9 @@ void sequence_channel_process_script(struct SequenceChannel* seqChannel) {
 
                     case 0xEB: {
                         cmd = m64_read_u8(state);
-                        struct AudioSequenceData *sequence = GameEngine_LoadSequence(seqPlayer->seqId);
+                        struct AudioSequenceData* sequence = GameEngine_LoadSequence(seqPlayer->seqId);
                         cmd = sequence->banks[cmd];
-                        if(IS_BANK_LOAD_COMPLETE(cmd)) {
+                        if (IS_BANK_LOAD_COMPLETE(cmd)) {
                             seqChannel->bankId = cmd;
                         }
                     }
@@ -1009,9 +1010,9 @@ void sequence_channel_process_script(struct SequenceChannel* seqChannel) {
 
                     case 0xC6: {
                         cmd = m64_read_u8(state);
-                        struct AudioSequenceData *sequence = GameEngine_LoadSequence(seqPlayer->seqId);
+                        struct AudioSequenceData* sequence = GameEngine_LoadSequence(seqPlayer->seqId);
                         cmd = sequence->banks[cmd];
-                        if(IS_BANK_LOAD_COMPLETE(cmd)) {
+                        if (IS_BANK_LOAD_COMPLETE(cmd)) {
                             seqChannel->bankId = cmd;
                         }
                         break;
@@ -1214,7 +1215,7 @@ void sequence_player_process_sequence(struct SequencePlayer* seqPlayer) {
     if (seqPlayer->enabled == false) {
         return;
     }
-    
+
     GameEngine_LoadSequence(seqPlayer->seqId);
     GameEngine_LoadBank(seqPlayer->defaultBank[0]);
 

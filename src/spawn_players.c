@@ -552,9 +552,11 @@ void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
         if (gNetwork.enabled) {
             spawn_network_players(arg0, arg1, arg2);
         } else {
-            spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, gCharacterSelections[0],
+            spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f,
+                         gCharacterSelections[0],
                          PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-            spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, chooseKartAIPlayers[0],
+            spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f,
+                         chooseKartAIPlayers[0],
                          PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI);
             spawn_player(gPlayerThree, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f,
                          chooseKartAIPlayers[1],
@@ -639,7 +641,8 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
+    if ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == 1) ||
+        (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         s16 rand;
         s16 i;
 

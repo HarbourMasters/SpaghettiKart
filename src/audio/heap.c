@@ -663,7 +663,7 @@ void audio_reset_session(void) {
     for (var_s5 = 0; var_s5 < 4; var_s5++) {
         gSynthesisReverbs[var_s5].useReverb = 0;
     }
- 
+
     gNumSynthesisReverbs = temp_s6->numReverbs;
     for (var_s5 = 0; var_s5 < gNumSynthesisReverbs; var_s5++) {
         reverb = &gSynthesisReverbs[var_s5];

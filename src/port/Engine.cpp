@@ -62,11 +62,11 @@ GameEngine::GameEngine() {
         }
     }
 
-    this->context =
-        Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
+    this->context = Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
 
-    this->context->InitConfiguration(); // without this line InitConsoleVariables fails at Config::Reload()
-    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
+    this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
+    this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
+                                           // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
 
@@ -74,14 +74,12 @@ GameEngine::GameEngine() {
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
 
     auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
-    //auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
+    // auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     this->context->Init(OTRFiles, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
 
-    
     // this->context = Ship::Context::CreateInstance("Spaghettify", "skart64", "spaghettify.cfg.json", OTRFiles, {}, 3,
     //                                               { 26800, 512, 1100 });
-
 
     wnd->SetRendererUCode(ucode_f3dex);
     this->context->InitGfxDebugger();
@@ -110,8 +108,9 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLVertexV0>(), RESOURCE_FORMAT_XML, "Vertex",
                                     static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
 
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(), RESOURCE_FORMAT_BINARY,
-                                    "DisplayList", static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
+    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryDisplayListV0>(),
+                                    RESOURCE_FORMAT_BINARY, "DisplayList",
+                                    static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLDisplayListV0>(), RESOURCE_FORMAT_XML,
                                     "DisplayList", static_cast<uint32_t>(Fast::ResourceType::DisplayList), 0);
 
@@ -472,14 +471,14 @@ extern "C" int16_t OTRGetRectDimensionFromRightEdge(float v) {
 
 /**
  * Centers an item in a given area.
- * 
+ *
  * Adds the number of extended screen pixels to the location to center.
  * This allows stretching the game window really wide, and the item will stay in-place.
- * 
+ *
  * This is not for centering in the direct center of the screen.
- * 
+ *
  * How to use:
- * 
+ *
  * s32 center = OTRCalculateCenterOfAreaFromRightEdge((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
  * x = center - (texWidth / 2)
  * x2 = center + (texWidth / 2)

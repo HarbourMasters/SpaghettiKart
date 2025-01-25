@@ -8,10 +8,9 @@ extern "C" {
 #include "camera.h"
 #include "common_structs.h"
 
-
 class ParticleEmitter {
-public:
-    virtual ~ParticleEmitter() = default;  // Virtual destructor for proper cleanup in derived classes
+  public:
+    virtual ~ParticleEmitter() = default; // Virtual destructor for proper cleanup in derived classes
 
     explicit ParticleEmitter();
 
@@ -19,5 +18,4 @@ public:
     virtual void Draw(s32 cameraId);
     virtual bool IsMod();
 };
-
 }

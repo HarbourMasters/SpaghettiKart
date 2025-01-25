@@ -558,7 +558,7 @@ struct AudioBufferParametersEU {
  *     The version of that function in MK64 is significantly different
  *     from its SM64 counterpart
  * Or we just have a poor understanding of this part of the system.
-**/
+ **/
 
 struct EuAudioCmd {
     union {

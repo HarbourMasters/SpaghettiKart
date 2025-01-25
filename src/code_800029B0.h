@@ -107,7 +107,8 @@ extern uintptr_t gHeapEndPtr;
  * This allows players to retry or reset a course without reloading the whole course.
  * Memory allocated after course load is not zeroed or reset. But should get overwritten by future allocations.
  *
- * This is a relatively unsafe way to architect a memory pool as old memory could accidentally be used if future allocations do not zero or fully overwrite their free memory.
+ * This is a relatively unsafe way to architect a memory pool as old memory could accidentally be used if future
+ * allocations do not zero or fully overwrite their free memory.
  */
 extern uintptr_t gFreeMemoryCourseAnchor;
 extern uintptr_t gFreeMemoryResetAnchor;

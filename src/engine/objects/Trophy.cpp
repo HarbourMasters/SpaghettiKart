@@ -39,22 +39,22 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
 
     switch (trophy) {
         case TrophyType::GOLD:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl10;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl10;
             break;
         case TrophyType::SILVER:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl12;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl12;
             break;
         case TrophyType::BRONZE:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl14;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl14;
             break;
         case TrophyType::GOLD_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl11;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl11;
             break;
         case TrophyType::SILVER_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl13;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl13;
             break;
         case TrophyType::BRONZE_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl15;
+            gObjectList[objectIndex].model = (Gfx*) gold_trophy_dl15;
             break;
     }
 
@@ -66,13 +66,13 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
         func_80086E70(objectIndex);
     }
 
-    switch(_bhv) {
+    switch (_bhv) {
         case OTrophy::Behaviour::GO_FISH:
             gObjectList[objectIndex].sizeScaling = 0.010f;
             break;
     }
 
-    Object *object = &gObjectList[objectIndex];
+    Object* object = &gObjectList[objectIndex];
     object->origin_pos[0] = _spawnPos.x;
     object->origin_pos[1] = _spawnPos.y;
     object->origin_pos[2] = _spawnPos.z;
@@ -91,7 +91,7 @@ void OTrophy::Tick() { // func_80086D80
         D_801658DC = 1;
     }
 
-    switch(_bhv) {
+    switch (_bhv) {
         case OTrophy::Behaviour::PODIUM_CEREMONY:
             if (gObjectList[objectIndex].state != 0 && (*_toggleVisibility == true)) {
                 OTrophy::func_80086C14(objectIndex);
@@ -110,15 +110,14 @@ void OTrophy::Tick() { // func_80086D80
 
         case OTrophy::Behaviour::STATIONARY:
             if (gObjectList[objectIndex].state != 0) {
-                    gObjectList[objectIndex].sizeScaling = 0.025f;
-                    set_obj_origin_pos(objectIndex, _spawnPos.x,
-                                    _spawnPos.y + 16.0, _spawnPos.z);
-                    set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-                    set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
-                    gObjectList[objectIndex].unk_084[1] = 0x0200;
-                    object_next_state(objectIndex);
-                    func_80086E70(objectIndex);
-                    OTrophy::func_80086940(objectIndex);
+                gObjectList[objectIndex].sizeScaling = 0.025f;
+                set_obj_origin_pos(objectIndex, _spawnPos.x, _spawnPos.y + 16.0, _spawnPos.z);
+                set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
+                set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
+                gObjectList[objectIndex].unk_084[1] = 0x0200;
+                object_next_state(objectIndex);
+                func_80086E70(objectIndex);
+                OTrophy::func_80086940(objectIndex);
             }
             break;
         case OTrophy::Behaviour::ROTATE:
@@ -140,8 +139,8 @@ void OTrophy::Tick() { // func_80086D80
             if (gObjectList[objectIndex].state != 0) {
 
                 // Get the player's yaw
-                Player *player = &gPlayers[0];
-                float yaw = (player->rotation[1] + 0x4000) * (M_PI / 32768.0f);   // Convert degrees to radians
+                Player* player = &gPlayers[0];
+                float yaw = (player->rotation[1] + 0x4000) * (M_PI / 32768.0f); // Convert degrees to radians
 
                 // Calculate forward direction based on yaw (same as before)
                 float lookAtX = player->pos[0] + cos(yaw);
@@ -162,33 +161,37 @@ void OTrophy::Tick() { // func_80086D80
 
                 // Calculate the object's position in front of the player (same as before)
                 gObjectList[objectIndex].pos[0] = player->pos[0] + forwardX * distance;
-                gObjectList[objectIndex].pos[1] = player->pos[1] + 8.0f;  // Optional height offset
+                gObjectList[objectIndex].pos[1] = player->pos[1] + 8.0f; // Optional height offset
                 gObjectList[objectIndex].pos[2] = player->pos[2] + forwardZ * distance;
 
                 // Apply more sensitive random movement based on player velocity to simulate floating behavior
                 float velocityFactor = 0.1f; // Increased factor for more sensitivity
                 gObjectList[objectIndex].pos[0] += player->velocity[0] * velocityFactor;
-                gObjectList[objectIndex].pos[1] += player->velocity[1] * velocityFactor; // Optional: Add vertical movement
+                gObjectList[objectIndex].pos[1] +=
+                    player->velocity[1] * velocityFactor; // Optional: Add vertical movement
                 gObjectList[objectIndex].pos[2] += player->velocity[2] * velocityFactor;
 
                 // Increase oscillation for more dynamic movement (sine wave effect)
-                float oscillationSpeed = 4.0f; // Increased speed for quicker oscillations
+                float oscillationSpeed = 4.0f;     // Increased speed for quicker oscillations
                 float oscillationAmplitude = 0.4f; // Increased amplitude for more noticeable movement
-                gObjectList[objectIndex].pos[1] += oscillationAmplitude * sinf(oscillationSpeed * gGlobalTimer); // Vertical oscillation based on time
+                gObjectList[objectIndex].pos[1] +=
+                    oscillationAmplitude * sinf(oscillationSpeed * gGlobalTimer); // Vertical oscillation based on time
 
                 // Now use smooth interpolation (lerp) to gradually move the trophy towards its target position
-                float lerpFactor = 0.25f;  // Increased to make the trophy follow the player more quickly
+                float lerpFactor = 0.25f; // Increased to make the trophy follow the player more quickly
 
-                gObjectList[objectIndex].pos[0] = _oldPos[0] + lerpFactor * (gObjectList[objectIndex].pos[0] - _oldPos[0]);
-                gObjectList[objectIndex].pos[1] = _oldPos[1] + lerpFactor * (gObjectList[objectIndex].pos[1] - _oldPos[1]);
-                gObjectList[objectIndex].pos[2] = _oldPos[2] + lerpFactor * (gObjectList[objectIndex].pos[2] - _oldPos[2]);
+                gObjectList[objectIndex].pos[0] =
+                    _oldPos[0] + lerpFactor * (gObjectList[objectIndex].pos[0] - _oldPos[0]);
+                gObjectList[objectIndex].pos[1] =
+                    _oldPos[1] + lerpFactor * (gObjectList[objectIndex].pos[1] - _oldPos[1]);
+                gObjectList[objectIndex].pos[2] =
+                    _oldPos[2] + lerpFactor * (gObjectList[objectIndex].pos[2] - _oldPos[2]);
 
                 // Save the current position for the next frame
                 _oldPos[0] = gObjectList[objectIndex].pos[0];
                 _oldPos[1] = gObjectList[objectIndex].pos[1];
                 _oldPos[2] = gObjectList[objectIndex].pos[2];
 
-            
                 gObjectList[objectIndex].direction_angle[0] += 0x400;
                 gObjectList[objectIndex].direction_angle[1] -= 0x200;
             }
@@ -205,20 +208,20 @@ void OTrophy::Draw(s32 cameraId) {
         object = &gObjectList[listIndex];
         if (object->state >= 2) {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
-                    G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
-                    G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             mtxf_set_matrix_transformation(someMatrix1, object->pos, object->direction_angle, object->sizeScaling);
-            //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
-            //gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
-            //          G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
+            // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
+            //           G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             AddHudMatrix(someMatrix1, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077A0);
             gSPDisplayList(gDisplayListHead++, object->model);
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
-                    G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             mtxf_identity(someMatrix2);
             render_set_position(someMatrix2, 0);
         }

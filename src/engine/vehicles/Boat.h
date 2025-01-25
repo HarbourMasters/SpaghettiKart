@@ -10,8 +10,7 @@ extern "C" {
 }
 
 class ABoat : public AActor {
-    public:
-
+  public:
     const char* Type = "mk:boat";
     size_t Index;
     bool IsActive; // The paddle wheel boat only shows up if the number of players is < 3
@@ -43,7 +42,7 @@ class ABoat : public AActor {
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual s32 AddSmoke(size_t, Vec3f, f32);
     virtual bool IsMod() override;
-private:
-    static size_t _count;
 
+  private:
+    static size_t _count;
 };

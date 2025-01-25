@@ -20,11 +20,10 @@ extern "C" {
  * Used in the podium ceremony when the trophy appears
  */
 class StarEmitter : public ParticleEmitter {
-public:
-    enum Behaviour : uint16_t {
-    };
+  public:
+    enum Behaviour : uint16_t {};
 
-public:
+  public:
     f32 Diameter = 0.0f; // Waddle in a circle around the spawn point at this diameter.
     uint16_t MirrorModeAngleOffset;
 
@@ -37,7 +36,6 @@ public:
     void func_80077450(s32 objectIndex);
     void func_80054AFC(s32 objectIndex, Vec3f arg1);
 
-private:
-
+  private:
     s32 _idx;
 };

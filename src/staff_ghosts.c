@@ -79,7 +79,7 @@ void func_80004EF0(void) {
     } else if (ghost == d_royal_raceway_staff_ghost) {
         size = 377 * sizeof(StaffGhost);
     }
-    
+
     // Manual memcpy required for byte swap
     for (int i = 0; i < size; i += 4) {
         dest[i] = ghost[i + 3];
@@ -129,7 +129,8 @@ s32 func_800051C4(void) {
     if (sReplayGhostBufferSize != 0) {
         // func_80040174 in mio0_decode.s
         func_80040174((void*) sReplayGhostBuffer, (sReplayGhostBufferSize * 4) + 0x20, (s32) sReplayGhostEncoded);
-        phi_v0 = mio0encode((s32) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20, (s32) gReplayGhostCompressed);
+        phi_v0 =
+            mio0encode((s32) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20, (s32) gReplayGhostCompressed);
         return phi_v0 + 0x1e;
     }
 }

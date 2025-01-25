@@ -522,7 +522,8 @@ SplineData D_800E5D78 = {
 
 // Note the use of the plain SplineData type here. Since these are pointers, we don't care
 // about their internal array size
-SplineData* D_800E5D9C[] = { &D_800E5988, &D_800E5A44, &D_800E5B08, &D_800E5BD4, &D_800E5C90, &boo6, &boo7, &boo8, &boo9, &boo10 };
+SplineData* D_800E5D9C[] = { &D_800E5988, &D_800E5A44, &D_800E5B08, &D_800E5BD4, &D_800E5C90,
+                             &boo6,       &boo7,       &boo8,       &boo9,       &boo10 };
 
 // Unused
 SplineData* D_800E5DB0 = &D_800E5988;

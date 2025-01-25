@@ -24,7 +24,7 @@ StarEmitter::StarEmitter(FVector pos) {
 
     if (objectIndex == NULL_OBJECT_ID) {
         return;
-        //func_80077138(objectIndex, arg0, arg1);
+        // func_80077138(objectIndex, arg0, arg1);
     }
 
     D_801658F4 = 1;
@@ -84,12 +84,12 @@ void StarEmitter::Tick() { // func_80077640
         objectIndex = gObjectParticle3[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-    printf("Tick Star %d\n", object->state);
+            printf("Tick Star %d\n", object->state);
             if (object->state != 0) {
                 StarEmitter::func_80077450(objectIndex);
                 StarEmitter::func_80077584(objectIndex);
                 if (object->state == 0) {
-                    //delete_object_wrapper(&gObjectParticle3[someIndex]);
+                    // delete_object_wrapper(&gObjectParticle3[someIndex]);
                 }
             }
         }
@@ -102,14 +102,14 @@ void StarEmitter::Draw(s32 cameraId) { // func_80054BE8
     Camera* camera;
 
     camera = &camera1[cameraId];
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
     load_texture_block_ia8_nomirror(D_8018D488, 0x00000020, 0x00000020);
     func_8004B35C(0x000000FF, 0x000000FF, 0, 0x000000FF);
     D_80183E80[0] = 0;
     for (var_s0 = 0; var_s0 < gObjectParticle3_SIZE; var_s0++) {
         temp_a0 = gObjectParticle3[var_s0];
         if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
-    printf("Draw Star\n");
+            printf("Draw Star\n");
             StarEmitter::func_80054AFC(temp_a0, camera->pos);
         }
     }
@@ -124,8 +124,8 @@ void StarEmitter::func_80054AFC(s32 objectIndex, Vec3f arg1) {
                   (s32) gObjectList[objectIndex].unk_084[2], (s32) gObjectList[objectIndex].primAlpha);
     rsp_set_matrix_transformation(gObjectList[objectIndex].pos, (u16*) D_80183E80,
                                   gObjectList[objectIndex].sizeScaling);
-    gSPVertex(gDisplayListHead++, (uintptr_t)D_0D005AE0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)common_rectangle_display);
+    gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
 }
 
 void StarEmitter::func_80077428(s32 objectIndex) {
@@ -168,12 +168,12 @@ void StarEmitter::func_80077450(s32 objectIndex) {
                 (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0x000000FF, 0, 0x00000010, 0, 0) !=
                  0)) {
                 func_80086F60(objectIndex);
-                //func_80072428(objectIndex);
+                // func_80072428(objectIndex);
             }
             break;
     }
     if (gObjectList[objectIndex].unk_048 != 0) {
-    printf("SOME THING\n");
+        printf("SOME THING\n");
 
         gObjectList[objectIndex].unk_084[4] = (s16) ((s32) (gObjectList[objectIndex].unk_084[4] + 1) % 3);
         func_8005C6B4(gObjectList[objectIndex].unk_084[4], &sp3C, &sp3A, &sp38);

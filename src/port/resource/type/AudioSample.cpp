@@ -8,4 +8,4 @@ AudioBankSample* AudioSample::GetPointer() {
 size_t AudioSample::GetPointerSize() {
     return sizeof(mData);
 }
-}
+} // namespace SM64

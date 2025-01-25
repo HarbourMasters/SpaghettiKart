@@ -73,7 +73,6 @@ void OMole::Tick() {
 }
 
 void OMole::Draw(s32 cameraId) {
-
 }
 
 void OMole::func_80081790(s32 objectIndex) {
@@ -93,10 +92,6 @@ void OMole::func_80081790(s32 objectIndex) {
             break;
     }
 }
-
-
-
-
 
 void OMole::func_80081AFC(s32 objectIndex, s32 arg1) {
     s8* sp2C;
@@ -209,7 +204,6 @@ void OMole::func_80081D34(s32 objectIndex) {
     }
 }
 
-
 void OMole::func_80081FF4(s32 objectIndex, s32 arg1) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -268,7 +262,8 @@ void OMole::func_80081FF4(s32 objectIndex, s32 arg1) {
 void OMole::func_80081848(s32 objectIndex) {
     u8* mole = (u8*) LOAD_ASSET_RAW(d_course_moo_moo_farm_mole_frames);
     u8* tlut = (u8*) LOAD_ASSET_RAW(d_course_moo_moo_farm_mole_tlut);
-    init_texture_object(objectIndex, (u8*)d_course_moo_moo_farm_mole_tlut, (const char**) mole, 0x20U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_moo_moo_farm_mole_tlut, (const char**) mole, 0x20U,
+                        (u16) 0x00000040);
     gObjectList[objectIndex].sizeScaling = 0.15f;
     gObjectList[objectIndex].textureListIndex = 0;
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -279,7 +274,6 @@ void OMole::func_80081848(s32 objectIndex) {
     set_object_flag(objectIndex, 0x04000000);
     object_next_state(objectIndex);
 }
-
 
 void OMole::func_80081924(s32 objectIndex) {
     switch (gObjectList[objectIndex].unk_0AE) {
@@ -316,7 +310,6 @@ void OMole::func_80081924(s32 objectIndex) {
             break;
     }
 }
-
 
 void OMole::func_80081A88(s32 objectIndex) {
     switch (gObjectList[objectIndex].unk_0DD) { /* irregular */
@@ -375,8 +368,8 @@ void OMole::func_80054D00(s32 objectIndex, s32 cameraId) {
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
             func_80048130(gObjectList[objectIndex].pos, (u16*) D_80183E80, gObjectList[objectIndex].sizeScaling,
-                          (u8*) gObjectList[objectIndex].activeTLUT, (u8*)gObjectList[objectIndex].activeTexture,
-                          (Vtx*)LOAD_ASSET_RAW(D_0D0062B0), 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
+                          (u8*) gObjectList[objectIndex].activeTLUT, (u8*) gObjectList[objectIndex].activeTexture,
+                          (Vtx*) LOAD_ASSET_RAW(D_0D0062B0), 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
 }
@@ -388,7 +381,7 @@ void OMole::func_80054F04(s32 cameraId) {
     Object* object;
 
     sp44 = &camera1[cameraId];
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079C8);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
     load_texture_block_rgba16_mirror((u8*) LOAD_ASSET_RAW(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
     for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
         objectIndex = gObjectParticle2[var_s2];
@@ -398,7 +391,7 @@ void OMole::func_80054F04(s32 cameraId) {
             if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                 rsp_set_matrix_gObjectList(objectIndex);
-                gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D006980);
+                gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D006980);
             }
         }
     }

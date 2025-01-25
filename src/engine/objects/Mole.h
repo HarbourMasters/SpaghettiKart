@@ -15,13 +15,11 @@ extern "C" {
 #include "some_data.h"
 }
 
-
 class OMole : public OObject {
-public:
-    enum Behaviour : uint16_t {
-    };
+  public:
+    enum Behaviour : uint16_t {};
 
-public:
+  public:
     explicit OMole(Vec3f pos);
 
     virtual void Tick() override;
@@ -41,12 +39,12 @@ public:
     void func_80081848(s32 objectIndex);
     void func_80081790(s32 objectIndex);
 
-private:
+  private:
     s32 _idx;
     s32 _state;
     s32 _timer;
     s32 _status;
     bool _toggle;
 
-    SplineData *spline;
+    SplineData* spline;
 };

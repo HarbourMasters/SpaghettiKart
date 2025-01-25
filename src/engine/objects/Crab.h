@@ -20,16 +20,16 @@ extern "C" {
 /**
  * @arg start x and z spawn location
  * @arg end x and z patrol location
- * 
+ *
  * Crab patrols between start and end.
  * The game automatically places the actor on the course surface.
  * Therefore, providing a Y height is unnecessary.
- * 
+ *
  * Crab appears to have a maximum patrolling distance and will patrol between
  * end --> max distance rather than start --> end or start --> max distance.
  */
 class OCrab : public OObject {
-public:
+  public:
     explicit OCrab(const FVector2D& start, const FVector2D& end);
 
     virtual void Tick() override;
@@ -41,7 +41,7 @@ public:
     void func_80082C30(s32 objectIndex);
     void func_80082E18(s32 objectIndex);
 
-private:
+  private:
     FVector2D _start;
     FVector2D _end;
     static size_t _count;

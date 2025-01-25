@@ -49,16 +49,13 @@ ACar::ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
     Rotation[0] = 0;
     Rotation[2] = 0;
     if (D_8016347A == 0) {
-        Rotation[1] = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed,
-                                            SomeMultiplierTheSequel, 0, 3);
+        Rotation[1] = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0, 3);
     } else {
-        Rotation[1] =
-            func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
+        Rotation[1] = func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
     }
     D_801631C8 = 10;
 
-    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
-                              Speed);
+    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel, Speed);
     ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_CAR);
 
     _count++;
@@ -100,11 +97,9 @@ void ACar::Tick() {
         }
     }
     if (D_8016347A == 0) {
-        var_a1 = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed,
-                               SomeMultiplierTheSequel, 0, 3);
+        var_a1 = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0, 3);
     } else {
-        var_a1 = func_8000D940(Position, (s16*) &WaypointIndex, Speed,
-                               SomeMultiplierTheSequel, 0);
+        var_a1 = func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
     }
     adjust_angle(&Rotation[1], var_a1, 100);
     temp_f0_3 = Position[0] - sp5C;
@@ -175,8 +170,8 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
             if ((temp_f22 > -20.0) && (temp_f22 < 20.0)) {
 
                 if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
-                    if (func_80006018(Position[0], Position[2], Velocity[0],
-                                        Velocity[2], SomeArg3, SomeArg4, spC4, spBC) == (s32) 1) {
+                    if (func_80006018(Position[0], Position[2], Velocity[0], Velocity[2], SomeArg3, SomeArg4, spC4,
+                                      spBC) == (s32) 1) {
                         player->soundEffects |= REVERSE_SOUND_EFFECT;
                     }
                 }
@@ -211,8 +206,7 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
 
                     switch (D_8016347A) {
                         case 0:
-                            t1 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 10, 0,
-                                                path);
+                            t1 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 10, 0, path);
                             if ((D_80163270[playerId] == 0) && (t1 > 0) && (player->unk_094 < Speed)) {
                                 var_s1 = 1;
                             }
@@ -221,8 +215,7 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
                             }
                             break;
                         case 1:
-                            t2 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 0, 10,
-                                                path);
+                            t2 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 0, 10, path);
                             if (t2 > 0) {
                                 if (random_int(2) == 0) {
                                     // temp_v1_2 = D_80163270[playerId];

@@ -6,26 +6,26 @@
 #include "engine/vehicles/Train.h"
 
 extern "C" {
-    #include "assets/kalimari_desert_vertices.h"
-    #include "assets/kalimari_desert_displaylists.h"
-    #include "assets/kalimari_desert_data.h"
-    #include "course_offsets.h"
-    #include "camera.h"
-    #include "data/some_data.h"
-    #include "objects.h"
-    #include "path_spawn_metadata.h"
-    extern const course_texture kalimari_desert_textures[];
+#include "assets/kalimari_desert_vertices.h"
+#include "assets/kalimari_desert_displaylists.h"
+#include "assets/kalimari_desert_data.h"
+#include "course_offsets.h"
+#include "camera.h"
+#include "data/some_data.h"
+#include "objects.h"
+#include "path_spawn_metadata.h"
+extern const course_texture kalimari_desert_textures[];
 }
 
 class KalimariDesert : public Course {
-public:
-    virtual ~KalimariDesert() = default;  // Virtual destructor for proper cleanup in derived classes
+  public:
+    virtual ~KalimariDesert() = default; // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
     explicit KalimariDesert();
 
-//    virtual void Load(const char* courseVtx, 
-//                  course_texture* textures, const char* displaylists, size_t dlSize);
+    //    virtual void Load(const char* courseVtx,
+    //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void LoadTextures() override;
     virtual void BeginPlay() override;
@@ -40,7 +40,7 @@ public:
     virtual void Collision() override;
     virtual void Destroy() override;
 
-private:
+  private:
     size_t _numTrains = 2;
     size_t _numCarriages = 5;
     ATrain::TenderStatus _tender = ATrain::TenderStatus::HAS_TENDER;

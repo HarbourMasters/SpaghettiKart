@@ -20,7 +20,7 @@ typedef struct {
     /* 0x0C */ u16 dX;
     /* 0x0E */ u16 dY;
     /* 0x10 */ u16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
-} MenuTexture; // size = 0x14
+} MenuTexture;           // size = 0x14
 
 /**
  * @brief struct for an animation

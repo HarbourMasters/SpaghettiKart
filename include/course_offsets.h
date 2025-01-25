@@ -8,10 +8,10 @@
 #include "animation.h"
 
 typedef struct {
-    const char* addr;      // segmented address texture file
-    u32 file_size; // compressed file size
-    u32 data_size; // uncompressed texture size
-    u32 padding;   // always zero
+    const char* addr; // segmented address texture file
+    u32 file_size;    // compressed file size
+    u32 data_size;    // uncompressed texture size
+    u32 padding;      // always zero
 } course_texture;
 
 extern uintptr_t d_course_sherbet_land_unk_data1[];

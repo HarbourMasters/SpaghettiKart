@@ -393,7 +393,7 @@ typedef struct {
     s32 nCharacter;    // Networked character choice
     s32 nStartingRank;
     u32 nHasAuthority;
-} Player;        // size = 0xDD8
+} Player; // size = 0xDD8
 
 typedef struct {
     // Something related to time trial ghost data?
@@ -409,7 +409,6 @@ typedef struct {
 typedef struct {
     uint8_t r, g, b;
 } RGB8;
-
 
 typedef struct {
     /* 0x00 */ u16 red;

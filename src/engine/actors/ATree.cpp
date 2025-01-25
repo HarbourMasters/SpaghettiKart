@@ -36,13 +36,12 @@ void ATree::Draw(Camera* camera) {
         return;
     }
 
-    dist = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
-                                        DrawDistance);
+    dist = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1], DrawDistance);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         dist = MAX(dist, 0.0f);
     }
- 
+
     if (dist < 0.0f) {
         return;
     }
@@ -62,5 +61,7 @@ void ATree::Draw(Camera* camera) {
     }
 }
 
-void ATree::Collision(Player* player, AActor*) { }
-void ATree::Destroy() { }
+void ATree::Collision(Player* player, AActor*) {
+}
+void ATree::Destroy() {
+}

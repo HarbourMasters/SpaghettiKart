@@ -575,7 +575,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                                             resampledTempLen + DMEM_ADDR_RESAMPLED);
                             break;
                     }
-                    //break;
+                    // break;
             }
             if (noteSubEu->finished != false) {
                 break;

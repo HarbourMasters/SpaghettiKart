@@ -5,11 +5,10 @@
 
 /**
  * @file CoreMath.h
- * 
+ *
  * Basic vector structs for manipulating 2D and 3D coordinates
- * 
+ *
  */
-
 
 struct FVector {
     float x, y, z;
@@ -22,8 +21,10 @@ struct FVector {
         return *this;
     }
 
-    FVector() : x(0), y(0), z(0) {}
-    FVector(float x, float y, float z) : x(x), y(y), z(z) {}
+    FVector() : x(0), y(0), z(0) {
+    }
+    FVector(float x, float y, float z) : x(x), y(y), z(z) {
+    }
 #endif // __cplusplus
 };
 
@@ -43,8 +44,10 @@ struct FVector2D {
         return *this;
     }
 
-    FVector2D() : x(0), z(0) {}
-    FVector2D(float x, float z) : x(x), z(z) {}
+    FVector2D() : x(0), z(0) {
+    }
+    FVector2D(float x, float z) : x(x), z(z) {
+    }
 #endif // __cplusplus
 };
 
@@ -53,10 +56,11 @@ typedef struct IVector2D {
     int32_t X, Z;
 
 #ifdef __cplusplus
-    IVector2D() : X(0), Z(0) {}  // Default constructor
+    IVector2D() : X(0), Z(0) {
+    } // Default constructor
 
-    IVector2D(int32_t x, int32_t z) : X(x), Z(z) {}  // Constructor to initialize with values
-
+    IVector2D(int32_t x, int32_t z) : X(x), Z(z) {
+    } // Constructor to initialize with values
 
     IVector2D& operator=(const IVector2D& other) {
         X = other.X;
@@ -77,8 +81,10 @@ struct FRotation {
         return *this;
     }
 
-    FRotation() : pitch(0), yaw(0), roll(0) {}
-    FRotation(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
+    FRotation() : pitch(0), yaw(0), roll(0) {
+    }
+    FRotation(float p, float y, float r) : pitch(p), yaw(y), roll(r) {
+    }
 #endif // __cplusplus
 };
 
@@ -91,11 +97,12 @@ struct IPathSpan {
 
 #ifdef __cplusplus
     // Default Constructor
-    IPathSpan() : Start(0), End(0) {}
+    IPathSpan() : Start(0), End(0) {
+    }
 
     // Parameterized Constructor
-    IPathSpan(int InStart, int InEnd)
-        : Start(InStart), End(InEnd) {}
+    IPathSpan(int InStart, int InEnd) : Start(InStart), End(InEnd) {
+    }
 
     // Copy Assignment Operator
     IPathSpan& operator=(const IPathSpan& Other) {
