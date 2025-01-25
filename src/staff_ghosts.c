@@ -17,14 +17,14 @@
 #include "port/Game.h"
 #include "courses/staff_ghost_data.h"
 
-u8* D_80162D80;
-s16 D_80162D84;
+u8* sReplayGhostBuffer;
+s16 sReplayGhostBufferSize;
 s16 D_80162D86;
 u16 D_80162D88;
 
 u32 D_80162D8C;
 s16 D_80162D90;
-u32* D_80162D94;
+u32* sReplayGhostDecompressed;
 
 u16 D_80162D98;
 u32 D_80162D9C;
@@ -59,8 +59,8 @@ s32 D_80162DFC;
 
 s32 D_80162E00;
 
-u32* D_800DC710 = (u32*) &D_802BFB80.arraySize8[0][2][3];
-u32* D_800DC714 = (u32*) &D_802BFB80.arraySize8[1][1][3];
+u32* sReplayGhostEncoded = (u32*) &D_802BFB80.arraySize8[0][2][3];
+u32* gReplayGhostCompressed = (u32*) &D_802BFB80.arraySize8[1][1][3];
 
 extern s32 gLapCountByPlayerId[];
 
@@ -71,8 +71,17 @@ void func_80004EF0(void) {
 
     u8* ghost = (u8*) D_80162DC4;
 
+    size_t size = 0;
+    if (ghost == d_luigi_raceway_staff_ghost) {
+        size = 187 * sizeof(StaffGhost);
+    } else if (ghost == d_mario_raceway_staff_ghost) {
+        size = 208 * sizeof(StaffGhost);
+    } else if (ghost == d_royal_raceway_staff_ghost) {
+        size = 377 * sizeof(StaffGhost);
+    }
+    
     // Manual memcpy required for byte swap
-    for (int i = 0; i < 0x4000; i += 4) {
+    for (int i = 0; i < size; i += 4) {
         dest[i] = ghost[i + 3];
         dest[i + 1] = ghost[i + 2];
         dest[i + 2] = ghost[i + 1];
@@ -91,8 +100,8 @@ void func_80004FB0(void) {
 }
 
 void func_80004FF8(void) {
-    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    D_80162D8C = (s32) *D_80162D94 & 0xFF0000;
+    sReplayGhostDecompressed = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    D_80162D8C = (s32) *sReplayGhostDecompressed & 0xFF0000;
     D_80162D90 = 0;
 }
 /**
@@ -117,18 +126,18 @@ void set_staff_ghost(void) {
 s32 func_800051C4(void) {
     s32 phi_v0;
 
-    if (D_80162D84 != 0) {
+    if (sReplayGhostBufferSize != 0) {
         // func_80040174 in mio0_decode.s
-        func_80040174((void*) D_80162D80, (D_80162D84 * 4) + 0x20, (s32) D_800DC710);
-        phi_v0 = mio0encode((s32) D_800DC710, (D_80162D84 * 4) + 0x20, (s32) D_800DC714);
+        func_80040174((void*) sReplayGhostBuffer, (sReplayGhostBufferSize * 4) + 0x20, (s32) sReplayGhostEncoded);
+        phi_v0 = mio0encode((s32) sReplayGhostEncoded, (sReplayGhostBufferSize * 4) + 0x20, (s32) gReplayGhostCompressed);
         return phi_v0 + 0x1e;
     }
 }
 
 void func_8000522C(void) {
-    D_80162D94 = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    mio0decode((u8*) D_800DC714, (u8*) D_80162D94);
-    D_80162D8C = (s32) (*D_80162D94 & 0xFF0000);
+    sReplayGhostDecompressed = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    mio0decode((u8*) gReplayGhostCompressed, (u8*) sReplayGhostDecompressed);
+    D_80162D8C = (s32) (*sReplayGhostDecompressed & 0xFF0000);
     D_80162D90 = 0;
     D_80162E00 = 1;
 }
@@ -144,8 +153,8 @@ void func_800052A4(void) {
         D_80162DCC = 0;
     }
     temp_v0 = D_80162DB8;
-    D_80162D80 = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
-    D_80162D84 = temp_v0;
+    sReplayGhostBuffer = (void*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    sReplayGhostBufferSize = temp_v0;
     D_80162D86 = temp_v0;
 }
 
@@ -320,7 +329,7 @@ void func_800057DC(void) {
         func_80005AE8(gPlayerTwo);
         return;
     }
-    temp_a0 = D_80162D94[D_80162D90];
+    temp_a0 = sReplayGhostDecompressed[D_80162D90];
     temp_v0 = temp_a0 & 0xFF;
     if (temp_v0 < 0x80U) {
         phi_v1 = (s16) (temp_v0 & 0xFF);
@@ -362,7 +371,7 @@ void func_800057DC(void) {
 
     if (D_80162D8C == 0) {
         D_80162D90++;
-        D_80162D8C = (s32) (D_80162D94[D_80162D90] & 0xFF0000);
+        D_80162D8C = (s32) (sReplayGhostDecompressed[D_80162D90] & 0xFF0000);
     } else {
         D_80162D8C += (s32) 0xFFFF0000;
     }
@@ -461,8 +470,8 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else {
-                D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
-                D_80162D84 = D_80162D86;
+                sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
+                sReplayGhostBufferSize = D_80162D86;
                 D_80162DD0 = D_80162DCC;
                 D_80162DE8 = gPlayerOne->characterId;
                 D_80162DD8 = 0;
@@ -473,8 +482,8 @@ void func_80005B18(void) {
             }
         } else {
             if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 == 1)) {
-                D_80162D80 = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
-                D_80162D84 = D_80162D86;
+                sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
+                sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
             }
             if ((gPlayerOne->type & 0x800) == 0x800) {

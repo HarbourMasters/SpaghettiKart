@@ -722,9 +722,7 @@ const char** wheelPtr[] = {
     donkeykong_kart_wheels, wario_kart_wheels, peach_kart_wheels, bowser_kart_wheels,
 };
 
-s32 D_800DDE74[] = { 96, 128, 192, 256, 288, 384, 512, 544, 576 };
-
-s32 maybeCompilerPadding = 0;
+s32 D_800DDE74[] = { 96, 128, 192, 256, 288, 384, 512, 544, 576, 0, 0};
 
 void render_players_on_screen_two(void) {
     gPlayersToRenderCount = 0;

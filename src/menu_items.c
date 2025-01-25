@@ -340,7 +340,7 @@ char* gDebugCharacterNames[] = {
 
 char* D_800E76A8[] = {
     "MARIO",    "LUIGI", "YOSHI", "TOAD", "D.K.", "WARIO", "PEACH", "BOWSER",
-    "ーーーー", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
+    "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
 };
 
 char* D_800E76CC[] = {
@@ -403,6 +403,7 @@ char* D_800E7744[] = {
     "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
 };
 
+// Also used to render the replay text in the replay mode
 char* gTextPauseButton[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
 };
@@ -820,47 +821,25 @@ MenuTexture* gGlyphTextureLUT[] = {
     D_020029B4, D_0200301C, D_020029DC, D_02003044, D_02002A04, D_0200306C, D_02002A2C, D_02003094, D_02002A54,
     D_020030BC, D_02002A7C, D_020030E4, D_02002AA4, D_0200310C, D_020033B4, D_02002ACC, D_02003134, D_02002AF4,
     D_0200315C, D_02002B1C, D_02003184, D_02002B44, D_02002B6C, D_02002B94, D_02002BBC, D_02002BE4, D_02002C0C,
-    D_020031AC,
-};
-
-MenuTexture* D_800E7FF0[] = {
-    D_02003274, D_02002C34, D_020031D4, D_0200329C, D_02002C5C, D_020031FC, D_020032C4, D_02002C84, D_02003224,
+    D_020031AC, D_02003274, D_02002C34, D_020031D4, D_0200329C, D_02002C5C, D_020031FC, D_020032C4, D_02002C84, D_02003224,
     D_020032EC, D_02002CAC, D_0200324C, D_02003314, D_02002CD4, D_02002CFC, D_02002D24, D_02002D4C, D_02002D74,
     D_0200333C, D_02002D9C, D_02003364, D_02002DC4, D_0200338C, D_02002DEC, D_02002E14, D_02002E3C, D_02002E64,
     D_02002E8C, D_02002EB4, D_02002EDC, D_02002F04, D_02002F2C, D_020033DC, D_02003404, D_0200342C, D_02003454,
     D_0200347C, D_020034A4, D_020034CC, D_020034F4, D_0200351C, D_02003544, D_0200356C, D_02003BD4,
-};
-
-MenuTexture* D_800E80A0[] = {
     D_02003594, D_02003BFC, D_020035BC, D_02003C24, D_020035E4, D_02003C4C, D_0200360C, D_02003C74,
     D_02003634, D_02003C9C, D_0200365C, D_02003CC4, D_02003684, D_02003CEC, D_020036AC, D_02003D14,
     D_020036D4, D_02003D3C, D_020036FC, D_02003D64, D_02003724, D_02003D8C, D_02004034, D_0200374C,
     D_02003DB4, D_02003774, D_02003DDC, D_0200379C, D_02003E04,
-};
-
-MenuTexture* D_800E8114[] = {
     D_020037C4, D_020037EC, D_02003814, D_0200383C, D_02003864, D_0200388C, D_02003E2C, D_02003EF4,
     D_020038B4, D_02003E54, D_02003F1C, D_020038DC, D_02003E7C, D_02003F44, D_02003904, D_02003EA4,
     D_02003F6C, D_0200392C, D_02003ECC, D_02003F94, D_02003954, D_0200397C, D_020039A4, D_020039CC,
-};
-
-MenuTexture* D_800E8174[] = {
     D_020039F4,
     D_02003FBC,
-};
-
-MenuTexture* D_800E817C[] = {
     D_02003A1C, D_02003FE4, D_02003A44, D_0200400C, D_02003A6C, D_02003A94, D_02003ABC, D_02003AE4, D_02003B0C,
     D_02003B34, D_02003B5C, D_02003B84, D_02003BAC, D_0200405C, D_02004084, D_020040AC, D_020040D4, D_020040FC,
     D_020043CC, D_02004444, D_0200437C, D_020043F4, D_02004124, D_0200414C, D_02004174, D_0200419C,
-};
-
-MenuTexture* D_800E81E4[] = {
     D_020041C4, D_020041EC, D_02004214, D_0200423C, D_02004264, D_0200428C, D_020042B4, D_020042DC, D_02004354,
     D_020043A4, D_0200441C, D_0200446C, D_02004494, D_020044BC, D_02004304, D_0200432C, D_020044E4, D_0200450C,
-};
-
-MenuTexture* D_800E822C[] = {
     D_02004534,
     D_0200455C,
 };
@@ -1204,8 +1183,7 @@ void func_80091B78(void) {
         gTimeTrialsResultCursorSelection = 5;
         gBattleResultCursorSelection = 10;
         if (osEepromProbe(&gSIEventMesgQueue) != 0) {
-            // save data disabled for now due to array overflow
-            // load_save_data();
+            load_save_data();
         }
         if (func_80091D74() != 0) {
             gMenuSelection = CONTROLLER_PAK_MENU;
@@ -1914,6 +1892,10 @@ void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 s
 
 void print_text_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 1);
+}
+
+void print_text_mode_1_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text0_wide_right(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
 void print_text_mode_2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -2727,8 +2709,9 @@ func_80095BD0_label1:
     rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
     return displayListHead;
 func_80095BD0_label2:
-    func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
-    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
+    Mtx* mtx = SetTextMatrix(arg2, arg3, arg6, arg7);
+    gSPMatrix(displayListHead++, mtx,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMKLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -2818,10 +2801,6 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 
 #define D_0B002A00 gTextureTitleChocoMountain
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/xV83r
-// Possibly a missed variable rename or just weird diffs.
-
 // I don't know what this actually meant to be. Its plausible that its meant to be a reference to
 // `gTextureTitleChocoMountain` That would be weird though because this function doesn't draw that picture at all. So
 // its plausible that its instead using it as some form semi-random data for the static pattern?
@@ -2830,98 +2809,52 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 // over the course images when loading the cup selection screen
 // Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it
 // last longer
+Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height) {
+    s32 rnd;
 
-Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4) {
-    u32 var_s1_3;
-    u32 var_fp;
-    u32 var_v0;
-    u32 var_a1;
-    s32 var_ra = 1;
-    s32 spCC;
-    s32 masks = 0;
-    s32 maskt = 0;
-    s32 rand;
-
-    while (var_ra < (s32) width) {
-        var_ra *= 2;
+    // Ensure position and dimensions are within valid bounds
+    if (xPos < 0) {
+        width -= xPos;
+        xPos = 0;
+    } else if ((xPos + width) > 320) {
+        width = 320 - xPos;
+    }
+    if (yPos < 0) {
+        height -= yPos;
+        yPos = 0;
+    } else if ((yPos + height) > 240) {
+        height = 240 - yPos;
     }
 
-    spCC = 0x400 / var_ra;
-
-    while ((spCC / 2) > (s32) arg4) {
-        spCC /= 2;
-    }
-
-    rand = var_ra;
-    while (rand > 1) {
-        rand /= 2;
-        masks += 1;
-    }
-    rand = spCC;
-    while (rand > 1) {
-        rand /= 2;
-        maskt += 1;
-    }
-
-    if (arg1 < 0) {
-        width -= arg1;
-        arg1 = 0;
-    } else if ((arg1 + width) > SCREEN_WIDTH) {
-        width = SCREEN_WIDTH - arg1;
-    }
-    if (arg2 < 0) {
-        arg4 -= arg2;
-        arg2 = 0;
-    } else if ((arg2 + arg4) > SCREEN_HEIGHT) {
-        arg4 = SCREEN_HEIGHT - arg2;
-    }
-
-    if (width == 0) {
-        return displayListHead;
-    }
-    if (arg4 == 0) {
+    if (width == 0 || height == 0) {
         return displayListHead;
     }
 
-    rand = random_int(100);
-    displayListHead = draw_box(displayListHead, arg1, arg2, arg1 + width, arg2 + arg4, 0, 0, 0, rand);
-    rand += 150;
+    rnd = random_int(100);
+    displayListHead = draw_box(displayListHead, xPos, yPos, xPos + width, yPos + height, 0, 0, 0, rnd);
+    rnd += 150;
+
     gDPPipeSync(displayListHead++);
     gDPSetRenderMode(displayListHead++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gDPSetPrimColor(displayListHead++, 0, 0, rand, rand, rand, rand);
+    gDPSetPrimColor(displayListHead++, 0, 0, rnd, rnd, rnd, rnd);
     gDPSetCombineMode(displayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
-    for (var_fp = arg2; var_fp < (arg2 + arg4); var_fp += spCC) {
-        if ((var_fp + spCC) > (arg2 + arg4)) {
-            var_v0 = (arg2 + arg4) - var_fp;
-            if (var_v0 == 0) {
-                break;
-            }
-        } else {
-            var_v0 = spCC;
-        }
-        for (var_s1_3 = arg1; var_s1_3 < (arg1 + width); var_s1_3 += var_ra) {
-            if ((var_s1_3 + var_ra) > (arg1 + width)) {
-                var_a1 = (arg1 + width) - var_s1_3;
-                if (var_a1 == 0) {
-                    break;
-                }
-            } else {
-                var_a1 = var_ra;
-            }
-            gMKLoadTextureTile(displayListHead++, D_0B002A00 + (random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
-                               arg4, var_s1_3, var_fp, var_s1_3 + var_a1, var_fp + var_v0, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                               G_TX_NOMIRROR | G_TX_WRAP, masks, maskt, G_TX_NOLOD, G_TX_NOLOD);
 
-            gSPTextureRectangle(displayListHead++, var_s1_3 * 4, var_fp * 4, (var_s1_3 + var_a1) * 4,
-                                (var_fp + var_v0) * 4, 0, (var_s1_3 * 32) & 0xFFFF, (var_fp * 32) & 0xFFFF, 1024, 1024);
-        }
-    }
+    // Directly load and draw the entire texture
+    gDPLoadTextureBlock(
+        displayListHead++,  ((u8*)LOAD_ASSET(D_0B002A00)) + (random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width, height, 0, 
+        G_TX_WRAP, G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD
+    );
+    // Clamp positions to valid range
+    s32 xStart = CLAMP(xPos << 2, -32768, 32767); // Ensure no overflow in fixed-point
+    s32 yStart = CLAMP(yPos << 2, -32768, 32767);
+    s32 xEnd = CLAMP((xPos + width) << 2, -32768, 32767);
+    s32 yEnd = CLAMP((yPos + height) << 2, -32768, 32767);
+
+    // Updated call with clamped values
+    gSPWideTextureRectangle(displayListHead++, xStart, yStart, xEnd, yEnd, G_TX_RENDERTILE, 0, 0, 1024, 1024);
 
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80096CD8.s")
-#endif
 
 #ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
@@ -3320,7 +3253,7 @@ Gfx* draw_box_wide(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32
     return displayListHead;
 }
 
-// Time trials race data cannot be saved for ghost box
+// Time trials race data cannot be saved for ghost box and time trials replay box
 Gfx* draw_box_wide_right(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green, u32 blue, u32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
@@ -8034,6 +7967,7 @@ void func_800A54EC(void) {
     func_800A66A8(sp48, &sp50);
 }
 
+// Also used to render the replay text box in time trials replay mode
 void render_menu_item_end_course_option(MenuItem* arg0) {
     Unk_D_800E70A0 sp98;
     f32 why;
@@ -8049,10 +7983,10 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
     if (arg0->state == 0) {
         if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
             why = get_string_width(gTextPauseButton[REPLAY]) * 0.8f;
-            gDisplayListHead = draw_box_wide(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032,
+            gDisplayListHead = draw_box_wide_right(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032,
                                              0, 0, 0, 0x00000096);
             set_text_color(TEXT_GREEN);
-            print_text_mode_1(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
+            print_text_mode_1_wide_right(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
         }
     } else {
         if (arg0->state == 1) {
@@ -8293,11 +8227,13 @@ void func_800A638C(MenuItem* arg0) {
 
 void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     Mtx* mtx;
+    Mtx* mtx2;
     f32 tmp;
     static float x2, y2, z2;
     static float x1, y1, z1;
 
-    mtx = GetEffectMatrix(); // &gGfxPool->mtxEffect[gMatrixEffectCount];
+    mtx = GetEffectMatrix();
+    mtx2 = GetEffectMatrix();
     if (arg0->paramf > 1.5) {
         arg0->paramf *= 0.95;
     } else {
@@ -8319,14 +8255,14 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
-    guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guRotate(mtx + 1, z2, 0.0f, 0.0f, 1.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guRotate(mtx + 1, x2, 1.0f, 0.0f, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
-    guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
-    guMtxCatL(mtx, mtx + 1, mtx);
+    guRotate(mtx2, y2, 0.0f, 1.0f, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guRotate(mtx2, z2, 0.0f, 0.0f, 1.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guRotate(mtx2, x2, 1.0f, 0.0f, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
+    guTranslate(mtx2, arg1->column, arg1->row, 0.0f);
+    guMtxCatL(mtx, mtx2, mtx);
     // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
     //           (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     AddEffectMatrixFixed(G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

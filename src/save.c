@@ -473,7 +473,6 @@ void func_800B559C(s32 arg0) {
                       bestRecord->bestThreelaps[0], 0x38);
 }
 
-#ifdef NON_MATCHING
 /**
  * This one is weird. Its some type of checksum calculator, seemingly for the
  * best time trial records. But the number of bytes it operates over is
@@ -483,26 +482,19 @@ void func_800B559C(s32 arg0) {
  *
  * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
  **/
-s32 func_800B578C(s32 arg0) {
-    u8* var_a2;
-    s32 var_a0;
-    s32 var_v0;
-    s32 var_v1;
-    var_a2 = &gSaveData.onlyBestTimeTrialRecords[arg0].bestThreelaps[0][0];
-    var_v1 = 0;
-    for (var_v0 = 0; var_v0 < 3;) {
-        ++var_v0;
-        for (var_a0 = 0; var_a0 != 0x11; var_a0++) {
-            if (var_a0) {}
-            var_v1 += (((*var_a2++) + 1) * var_v0) + var_a0;
+u8 func_800B578C(s32 arg0) {
+    u8* times = (u8*)&gSaveData.onlyBestTimeTrialRecords[arg0];
+    s32 checksum = 0;
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 0x11; j++) {
+            checksum += (times[i * 0x11 + j] + 1) * (i + 1) + j;
         }
-        var_a2 += 0x11;
     }
-    return (var_v1 % 256) & 0xFF;
+    return (checksum % 256);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B578C.s")
-#endif
 
 s32 func_800B5888(s32 arg0) {
     s32 tmp = gSaveData.onlyBestTimeTrialRecords[arg0].unknownBytes[6] + 90;
@@ -754,7 +746,7 @@ u8 func_800B60E8(s32 page) {
     u32 checksum = 0;
     u8* addr;
 
-    for (i = 0, addr = (u8*) &((u8*) D_800DC714)[page * 256]; i < 256; i++) {
+    for (i = 0, addr = (u8*) &((u8*) gReplayGhostCompressed)[page * 256]; i < 256; i++) {
         checksum += (*addr++ * (page + 1) + i);
     }
     return checksum;
@@ -785,7 +777,7 @@ s32 func_800B6178(s32 arg0) {
         }
     } else {
         var_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, 1U, (arg0 * 0x3C00) + 0x100,
-                                    0x00003C00, (u8*) D_800DC714);
+                                    0x00003C00, (u8*) gReplayGhostCompressed);
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == 4) {
@@ -874,7 +866,7 @@ s32 func_800B64EC(s32 arg0) {
     }
 
     temp_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, (arg0 * 0x3C00) + 0x100,
-                                 0x3C00, (u8*) D_800DC714);
+                                 0x3C00, (u8*) gReplayGhostCompressed);
     if (temp_v0 == 0) {
         // clang-format off
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
@@ -912,7 +904,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
             return -1;
     }
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100,
-                                     0x00003C00, (u8*) D_800DC714);
+                                     0x00003C00, (u8*) gReplayGhostCompressed);
     if (writeStatus == 0) {
         temp_s3 = &((struct_8018EE10_entry*) gSomeDLBuffer)[arg0];
         for (i = 0; i < 0x3C; i++) {
