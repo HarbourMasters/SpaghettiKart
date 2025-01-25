@@ -18,7 +18,7 @@
 #include "courses/staff_ghost_data.h"
 
 u8* sReplayGhostBuffer;
-s16 sReplayGhostBufferSize;
+size_t sReplayGhostBufferSize;
 s16 D_80162D86;
 u16 D_80162D88;
 

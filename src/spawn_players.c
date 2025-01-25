@@ -221,7 +221,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_236 = 0;
     player->unk_238 = 0;
     player->unk_23A = 0;
-    player->unk_240 = 0;
+    player->tyreSpeed = 0;
     player->unk_256 = 0;
 
     player->size = 1.0f;
