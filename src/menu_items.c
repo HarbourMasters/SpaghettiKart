@@ -2824,10 +2824,6 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 
 #define D_0B002A00 gTextureTitleChocoMountain
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/xV83r
-// Possibly a missed variable rename or just weird diffs.
-
 // I don't know what this actually meant to be. Its plausible that its meant to be a reference to
 // `gTextureTitleChocoMountain` That would be weird though because this function doesn't draw that picture at all. So
 // its plausible that its instead using it as some form semi-random data for the static pattern?
@@ -2836,98 +2832,98 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 // over the course images when loading the cup selection screen
 // Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it
 // last longer
-
-Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4) {
-    u32 var_s1_3;
-    u32 var_fp;
-    u32 var_v0;
-    u32 var_a1;
-    s32 var_ra = 1;
-    s32 spCC;
+Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height) {
+    u32 x;
+    u32 y;
+    s32 pad;
+    u32 rectXoffset;
+    u32 rectYoffset;
+    s32 tileWidth = 1;
+    s32 tileHeight;
     s32 masks = 0;
     s32 maskt = 0;
-    s32 rand;
+    s32 rnd;
 
-    while (var_ra < (s32) width) {
-        var_ra *= 2;
+    while (tileWidth < width) {
+        tileWidth *= 2;
     }
 
-    spCC = 0x400 / var_ra;
-
-    while ((spCC / 2) > (s32) arg4) {
-        spCC /= 2;
+    tileHeight = 1024 / tileWidth;
+    while ((tileHeight / 2) > height) {
+        tileHeight /= 2;
     }
 
-    rand = var_ra;
-    while (rand > 1) {
-        rand /= 2;
+    rnd = tileWidth;
+    while (rnd > 1) {
+        rnd /= 2;
         masks += 1;
     }
-    rand = spCC;
-    while (rand > 1) {
-        rand /= 2;
+    rnd = tileHeight;
+    while (rnd > 1) {
+        rnd /= 2;
         maskt += 1;
     }
 
-    if (arg1 < 0) {
-        width -= arg1;
-        arg1 = 0;
-    } else if ((arg1 + width) > SCREEN_WIDTH) {
-        width = SCREEN_WIDTH - arg1;
+    if (xPos < 0) {
+        width -= xPos;
+        xPos = 0;
+    } else if ((xPos + width) > 320) {
+        width = 320 - xPos;
     }
-    if (arg2 < 0) {
-        arg4 -= arg2;
-        arg2 = 0;
-    } else if ((arg2 + arg4) > SCREEN_HEIGHT) {
-        arg4 = SCREEN_HEIGHT - arg2;
+    if (yPos < 0) {
+        height -= yPos;
+        yPos = 0;
+    } else if ((yPos + height) > 240) {
+        height = 240 - yPos;
     }
 
     if (width == 0) {
         return displayListHead;
     }
-    if (arg4 == 0) {
+    if (height == 0) {
         return displayListHead;
     }
 
-    rand = random_int(100);
-    displayListHead = draw_box(displayListHead, arg1, arg2, arg1 + width, arg2 + arg4, 0, 0, 0, rand);
-    rand += 150;
+    rnd = random_int(100);
+    displayListHead = draw_box(displayListHead, xPos, yPos, xPos + width, yPos + height, 0, 0, 0, rnd);
+    rnd += 150;
+
     gDPPipeSync(displayListHead++);
     gDPSetRenderMode(displayListHead++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gDPSetPrimColor(displayListHead++, 0, 0, rand, rand, rand, rand);
+    gDPSetPrimColor(displayListHead++, 0, 0, rnd, rnd, rnd, rnd);
     gDPSetCombineMode(displayListHead++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
-    for (var_fp = arg2; var_fp < (arg2 + arg4); var_fp += spCC) {
-        if ((var_fp + spCC) > (arg2 + arg4)) {
-            var_v0 = (arg2 + arg4) - var_fp;
-            if (var_v0 == 0) {
+
+    for (y = yPos; y < (yPos + height); y += tileHeight) {
+        if ((y + tileHeight) > (yPos + height)) {
+            rectYoffset = yPos + height - y;
+            if (rectYoffset == 0) {
                 break;
             }
         } else {
-            var_v0 = spCC;
+            rectYoffset = tileHeight;
         }
-        for (var_s1_3 = arg1; var_s1_3 < (arg1 + width); var_s1_3 += var_ra) {
-            if ((var_s1_3 + var_ra) > (arg1 + width)) {
-                var_a1 = (arg1 + width) - var_s1_3;
-                if (var_a1 == 0) {
+        for (x = xPos; x < xPos + width; x += tileWidth) {
+            if (x + tileWidth > xPos + width) {
+                rectXoffset = xPos + width - x;
+                if (rectXoffset == 0) {
                     break;
                 }
-            } else {
-                var_a1 = var_ra;
-            }
-            gMKLoadTextureTile(displayListHead++, D_0B002A00 + (random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
-                               arg4, var_s1_3, var_fp, var_s1_3 + var_a1, var_fp + var_v0, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                               G_TX_NOMIRROR | G_TX_WRAP, masks, maskt, G_TX_NOLOD, G_TX_NOLOD);
+            } else
+                rectXoffset = tileWidth;
 
-            gSPTextureRectangle(displayListHead++, var_s1_3 * 4, var_fp * 4, (var_s1_3 + var_a1) * 4,
-                                (var_fp + var_v0) * 4, 0, (var_s1_3 * 32) & 0xFFFF, (var_fp * 32) & 0xFFFF, 1024, 1024);
+            gDPLoadTextureTile(
+                displayListHead++, (D_0B002A00 + random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width, height, x, y,
+                x + rectXoffset, y + rectYoffset, 0, G_TX_WRAP, G_TX_WRAP, masks, maskt, G_TX_NOLOD, G_TX_NOLOD
+            );
+            gSPTextureRectangle(
+                displayListHead++, x << 2, y << 2, (x + rectXoffset) << 2, (y + rectYoffset) << 2, G_TX_RENDERTILE,
+                (x * 32) & 0xFFFF, (y * 32) & 0xFFFF, 1024, 1024
+            );
         }
     }
 
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80096CD8.s")
-#endif
 
 #ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
