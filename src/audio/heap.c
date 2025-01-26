@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <stubs.h>
 
+#include "mk64.h"
 #include "audio/data.h"
 #include "audio/effects.h"
 #include "audio/heap.h"
@@ -159,7 +160,7 @@ void* soundAlloc(struct SoundAllocPool* pool, u32 size) {
             *pos = 0;
         }
     } else {
-        // eu_stubbed_printf_1("Heap OverFlow : Not Allocate %d!\n", size);
+        printf("audio/heap.c: Heap OverFlow : Not Allocate %d!\n", size);
         return NULL;
     }
     pool->numAllocatedEntries++;
@@ -600,9 +601,9 @@ void audio_reset_session(void) {
     s32 var_s1;
     s32 var_s5;
     s32 temp;
-    u32 totalMem;
-    u32 temporaryMem;
-    u32 persistentMem;
+    s32 totalMem;
+    s32 temporaryMem;
+    s32 persistentMem;
     s16* mem;
     struct SynthesisReverb* reverb;
     struct ReverbSettingsEU* reverbSettings;
@@ -633,8 +634,8 @@ void audio_reset_session(void) {
     gAudioBufferParameters.updatesPerFrame *= gAudioBufferParameters.presetUnk4;
     gMaxAudioCmds =
         (gMaxSimultaneousNotes * 0x14 * gAudioBufferParameters.updatesPerFrame) + (temp_s6->numReverbs * 0x20) + 0x1E0;
-    persistentMem = temp_s6->persistentSeqMem + temp_s6->persistentBankMem + temp_s6->unk_18;
-    temporaryMem = temp_s6->temporarySeqMem + temp_s6->temporaryBankMem + temp_s6->unk_24;
+    persistentMem = DOUBLE_SIZE_ON_64_BIT(temp_s6->persistentSeqMem + temp_s6->persistentBankMem + temp_s6->unk_18);
+    temporaryMem = DOUBLE_SIZE_ON_64_BIT(temp_s6->temporarySeqMem + temp_s6->temporaryBankMem + temp_s6->unk_24);
     totalMem = persistentMem + temporaryMem;
     temp = (gAudioSessionPool.size - totalMem) - 0x100;
     sSessionPoolSplit.wantSeq = temp;
@@ -643,12 +644,12 @@ void audio_reset_session(void) {
     sSeqAndBankPoolSplit.wantPersistent = persistentMem;
     sSeqAndBankPoolSplit.wantTemporary = temporaryMem;
     seq_and_bank_pool_init(&sSeqAndBankPoolSplit);
-    sPersistentCommonPoolSplit.wantSeq = temp_s6->persistentSeqMem;
-    sPersistentCommonPoolSplit.wantBank = temp_s6->persistentBankMem;
+    sPersistentCommonPoolSplit.wantSeq = DOUBLE_SIZE_ON_64_BIT(temp_s6->persistentSeqMem);
+    sPersistentCommonPoolSplit.wantBank = DOUBLE_SIZE_ON_64_BIT(temp_s6->persistentBankMem);
     sPersistentCommonPoolSplit.wantUnused = temp_s6->unk_18;
     persistent_pools_init(&sPersistentCommonPoolSplit);
-    sTemporaryCommonPoolSplit.wantSeq = temp_s6->temporarySeqMem;
-    sTemporaryCommonPoolSplit.wantBank = temp_s6->temporaryBankMem;
+    sTemporaryCommonPoolSplit.wantSeq = DOUBLE_SIZE_ON_64_BIT(temp_s6->temporarySeqMem);
+    sTemporaryCommonPoolSplit.wantBank = DOUBLE_SIZE_ON_64_BIT(temp_s6->temporaryBankMem);
     sTemporaryCommonPoolSplit.wantUnused = temp_s6->unk_24;
     temporary_pools_init(&sTemporaryCommonPoolSplit);
     reset_bank_and_seq_load_status();

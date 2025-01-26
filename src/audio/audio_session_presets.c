@@ -1,6 +1,7 @@
 #ifndef AUDIO_SESSION_PRESETS_H
 #define AUDIO_SESSION_PRESETS_H
 
+#include "mk64.h"
 #include "internal.h"
 #include "data.h"
 #include "../buffers/audio_heap.h"
@@ -32,9 +33,9 @@ struct AudioSessionSettingsEU gAudioSessionPresets[] = {
 
 s8 gUnusedCount800EA5C8 = 0x1c;
 s16 gTatumsPerBeat = TATUMS_PER_BEAT;
-s32 gAudioHeapSize = AUDIO_HEAP_SIZE;
-s32 gAudioInitPoolSize = AUDIO_HEAP_INIT_SIZE;
+s32 gAudioHeapSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_HEAP_SIZE);
+s32 gAudioInitPoolSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_HEAP_INIT_SIZE);
 s32 D_800EA5D8 = 0;
-volatile s32 gAudioLoadLock = 0;
+volatile s32 gAudioLoadLock = AUDIO_LOCK_UNINITIALIZED;
 
 #endif

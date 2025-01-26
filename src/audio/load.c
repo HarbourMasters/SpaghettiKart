@@ -129,9 +129,9 @@ void audio_dma_copy_async(uintptr_t devAddr, void* vAddr, size_t nbytes, OSMesgQ
  * Performs a partial asynchronous (normal priority) DMA copy. This is limited
  * to 0x1000 bytes transfer at once.
  */
-void audio_dma_partial_copy_async(uintptr_t* devAddr, u8** vAddr, size_t* remaining, OSMesgQueue* queue,
+void audio_dma_partial_copy_async(uintptr_t* devAddr, u8** vAddr, ssize_t* remaining, OSMesgQueue* queue,
                                   OSIoMesg* mesg) {
-    size_t transfer = (*remaining >= 0x1000 ? 0x1000 : *remaining);
+    ssize_t transfer = (*remaining >= 0x1000 ? 0x1000 : *remaining);
     *remaining -= transfer;
     osInvalDCache(*vAddr, transfer);
     osPiStartDma(mesg, OS_MESG_PRI_NORMAL, OS_READ, *devAddr, *vAddr, transfer, queue);
@@ -174,7 +174,7 @@ void* dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8* dmaIndexRef) {
     u32 transfer;
     u32 i;
     u32 dmaIndex;
-    size_t bufferPos;
+    ssize_t bufferPos;
     UNUSED u32 pad;
 
     if (arg2 != 0 || *dmaIndexRef >= sSampleDmaListSize1) {
