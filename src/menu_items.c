@@ -3290,7 +3290,7 @@ Gfx* draw_box_wide_right(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lr
     return displayListHead;
 }
 
-// Renders pause background
+// Renders pause background and lakitu tow transition black fade in/out
 Gfx* draw_box_wide_pause_background(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green,
                                     u32 blue, u32 alpha) {
     red &= 0xFF;
@@ -4636,9 +4636,12 @@ void func_8009CA6C(s32 arg0) {
     }
 }
 
+// Lakitu tow transition out of black
 void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     RGBA16* color;
     s16 x, y, w, h;
+    s32 leftEdge;
+    s32 rightEdge;
     UNUSED s32 pad[3];
     struct UnkStruct_800DC5EC* unk;
     struct UnkStruct_8018E7E8 *size, *start;
@@ -4665,8 +4668,31 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
         h = unk->screenHeight;
     }
     color = &D_800E7AE8[arg2];
-    gDisplayListHead = draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
-                                     color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+
+    switch(gScreenModeSelection) {
+        case SCREEN_MODE_1P:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            gDisplayListHead = draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            gDisplayListHead = draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if ((arg0 == 0) || (arg0 == 2)) {
+                leftEdge = OTRGetDimensionFromLeftEdge(0);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - (x - (w / 2)), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            } else if ((arg0 == 1) || (arg0 == 3)) {
+                rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, x - (w / 2), y - (h / 2), rightEdge + ((w / 2) + x), (h / 2) + y, color->red,
+                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            }
+            break;
+    }
 
     if ((arg1 == 0) && (D_8018E7D0[arg0] += 1, (D_8018E7D0[arg0] >= D_8018E7B8[arg0]))) {
         if (gGamestate == 4) {
@@ -5040,6 +5066,7 @@ void func_8009CE64(s32 arg0) {
     }
 }
 
+// Lakitu tow transition to black
 void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     s16 var_ra;
     s16 var_t3;
@@ -5052,6 +5079,8 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     RGBA16* temp_v0_2;
     s32 sp44;
     UNUSED s32 stackPadding0;
+    s32 leftEdge;
+    s32 rightEdge;
 
     if ((gModeSelection == 0) || (gModeSelection == 1)) {
         var_t3 = D_8018E7E8[arg0].x;
@@ -5081,8 +5110,33 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     someMath0 += var_t3;
     someMath1 = temp_t8;
     someMath1 += var_t4;
-    gDisplayListHead = draw_box_wide(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
-                                     temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+
+    switch(gScreenModeSelection) {
+        case SCREEN_MODE_1P:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            gDisplayListHead = draw_box_wide(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
+                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            gDisplayListHead = draw_box_wide(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
+                                            temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if ((arg0 == 0) || (arg0 == 2)) {
+                leftEdge = OTRGetDimensionFromLeftEdge(0);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - (var_t3 - temp_v1), var_t4 - temp_t8, someMath0, someMath1,
+                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+
+            } else if ((arg0 == 1) || (arg0 == 3)) {
+                rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, rightEdge + someMath0, someMath1,
+                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+            }
+            break;
+    }
+
     if (arg1 == 0) {
         D_8018E7D0[arg0]++;
         if ((D_8018E7B8[arg0] + 1) < D_8018E7D0[arg0]) {
@@ -5099,6 +5153,7 @@ void func_8009D978(s32 arg0, s32 arg1) {
     func_8009D77C(arg0, arg1, 1);
 }
 
+// Lakitu tow transition box show up for 1 frame; full black
 void func_8009D998(s32 arg0) {
     s16 var_t0;
     s16 var_t1;
@@ -5108,6 +5163,8 @@ void func_8009D998(s32 arg0) {
     s32 temp_v1;
     s32 someMath0;
     s32 someMath1;
+    s32 leftEdge;
+    s32 rightEdge;
 
     if ((gModeSelection == 0) || (gModeSelection == 1)) {
         var_t0 = D_8018E7E8[arg0].x;
@@ -5132,8 +5189,30 @@ void func_8009D998(s32 arg0) {
     someMath0 += var_t0;
     someMath1 = temp_v1;
     someMath1 += var_t1;
-    gDisplayListHead =
-        draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+
+    switch(gScreenModeSelection) {
+        case SCREEN_MODE_1P:
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            gDisplayListHead =
+                draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            gDisplayListHead =
+                draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if ((arg0 == 0) || (arg0 == 2)) {
+                leftEdge = OTRGetDimensionFromLeftEdge(0);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+
+            } else if ((arg0 == 1) || (arg0 == 3)) {
+                rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
+                gDisplayListHead =
+                    draw_box_wide_pause_background(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, rightEdge + someMath0, someMath1, 0, 0, 0, 0x000000FF);
+            }
+            break;
+    }
 }
 
 void func_8009DAA8(void) {
