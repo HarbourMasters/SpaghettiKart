@@ -12,6 +12,7 @@ extern "C" {
 #include "actor_types.h"
 
 Properties* CM_GetProps();
+Properties* CM_GetPropsCourseId(s32 courseId);
 
 void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
 void CM_DrawBattleBombKarts(s32 cameraId);
@@ -64,8 +65,8 @@ void CM_UpdateClouds(s32 arg0, Camera* camera);
 
 void CM_Waypoints(Player* player, int8_t playerId);
 
-void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
-                                      f32* arg6, f32* arg7);
+void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
+                           f32* arg7);
 
 void CM_MinimapSettings();
 
@@ -95,7 +96,8 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CM_BeginPlay();
 
-void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                  uint16_t playerDirection);
 
 void CM_AICrossingBehaviour(s32 playerId);
 

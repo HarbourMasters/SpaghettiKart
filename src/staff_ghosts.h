@@ -39,4 +39,8 @@ extern s32 D_80162DF0;
 extern s32 D_80162DF4;
 extern s32 D_80162DF8;
 
+extern u8* sReplayGhostBuffer;
+extern s16 sReplayGhostBufferSize;
+extern u32* sReplayGhostDecompressed;
+
 #endif /* STAFF_GHOSTS_H */
