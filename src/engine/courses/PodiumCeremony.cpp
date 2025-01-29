@@ -11,6 +11,7 @@
 #include "engine/objects/Trophy.h"
 #include "engine/objects/Podium.h"
 #include "engine/objects/CheepCheep.h"
+#include "engine/particles/StarEmitter.h"
 
 extern "C" {
     #include "main.h"
@@ -186,7 +187,7 @@ void PodiumCeremony::BeginPlay() {
             break;
     }
 
-    gWorldInstance.AddObject(new OTrophy(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY));
+    OTrophy* trophy = reinterpret_cast<OTrophy*>(gWorldInstance.AddObject(new OTrophy(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY)));
 
     Vec3f kart = {0, 0, 0};
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][3], 3, 5, 1.25f));

@@ -25,7 +25,6 @@
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/objects/Crab.h"
 #include "engine/objects/Boos.h"
-#include "engine/particles/StarEmitter.h"
 
 extern "C" {
     #include "main.h"
@@ -151,6 +150,64 @@ void TestCourse::LoadTextures() {
     dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
 }
 
+Path2D test_course_path2D[] = {
+    {    0, 0},
+    {    0, -100},
+    {    0, -200},
+    {    0, -300},
+    {    0, -400},
+    {    0, -500},
+    {    0, -600},
+    {    0, -700},
+    {    0, -800},
+    {    0, -900},
+    {    0, -1000},
+    {    0, -1096},    // Main point 1
+    {  100, -1090},
+    {  200, -1085},
+    {  300, -1080},
+    {  400, -1075},
+    {  500, -1072},    // Curve begins to smooth here
+    {  600, -1068},
+    {  700, -1065},
+    {  800, -1063},
+    {  900, -1061},
+    {  984, -1060},    // Main point 2
+    {  990, -900},
+    {  995, -800},
+    {  997, -700},
+    {  998, -600},
+    {  999, -500},
+    {  999, -400},
+    {  999, -300},
+    {  999, -200},
+    {  999, -100},
+    {  999, 0},
+    {  999, 100},
+    {  999, 200},
+    {  999, 300},
+    {  999, 400},
+    {  999, 500},
+    {  999, 600},
+    {  999, 700},
+    {  999, 800},
+    {  999, 900},
+    {  999, 940},      // Main point 3
+    {  900, 945},
+    {  800, 945},
+    {  700, 947},
+    {  600, 948},
+    {  500, 949},
+    {  400, 949},
+    {  300, 949},
+    {  200, 950},
+    {  100, 950},
+    {    0, 950},      // Main point 4
+
+    // End of path
+    { -32768, -32768 } // Terminator
+};
+
 void TestCourse::BeginPlay() {
     struct ActorSpawnData itemboxes[] = {
         {   200, 1500, 200 , 0},
@@ -211,7 +268,6 @@ void TestCourse::BeginPlay() {
     //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
     //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), FRotation(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
-//gWorldInstance.AddEmitter(new StarEmitter(FVector(0,50,0)));
     //gWorldInstance.AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
     //gWorldInstance.AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
 //    gWorldInstance.AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
@@ -220,6 +276,18 @@ void TestCourse::BeginPlay() {
 //    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
 
 //    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
+
+    gVehicle2DWaypoint = test_course_path2D;
+    gVehicle2DWaypointLength = 53;
+    D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
+
+    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
+    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
+
+    Vec3f pos2 = {0, 0, 0};
+
+    gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][25], 25, 4, 0.8333333f));
+    gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][45], 45, 4, 0.8333333f));
 
 }
 
@@ -234,82 +302,6 @@ void TestCourse::MinimapSettings() {
     D_80165718 = 0;
     D_80165720 = 5;
     D_80165728 = -240;
-}
-
-Path2D test_course_path2D[] = {
-    {    0, 0},
-    {    0, -100},
-    {    0, -200},
-    {    0, -300},
-    {    0, -400},
-    {    0, -500},
-    {    0, -600},
-    {    0, -700},
-    {    0, -800},
-    {    0, -900},
-    {    0, -1000},
-    {    0, -1096},    // Main point 1
-    {  100, -1090},
-    {  200, -1085},
-    {  300, -1080},
-    {  400, -1075},
-    {  500, -1072},    // Curve begins to smooth here
-    {  600, -1068},
-    {  700, -1065},
-    {  800, -1063},
-    {  900, -1061},
-    {  984, -1060},    // Main point 2
-    {  990, -900},
-    {  995, -800},
-    {  997, -700},
-    {  998, -600},
-    {  999, -500},
-    {  999, -400},
-    {  999, -300},
-    {  999, -200},
-    {  999, -100},
-    {  999, 0},
-    {  999, 100},
-    {  999, 200},
-    {  999, 300},
-    {  999, 400},
-    {  999, 500},
-    {  999, 600},
-    {  999, 700},
-    {  999, 800},
-    {  999, 900},
-    {  999, 940},      // Main point 3
-    {  900, 945},
-    {  800, 945},
-    {  700, 947},
-    {  600, 948},
-    {  500, 949},
-    {  400, 949},
-    {  300, 949},
-    {  200, 950},
-    {  100, 950},
-    {    0, 950},      // Main point 4
-
-    // End of path
-    { -32768, -32768 } // Terminator
-};
-
-void TestCourse::SpawnVehicles() {
-    gVehicle2DWaypoint = test_course_path2D;
-    gVehicle2DWaypointLength = 53;
-    D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
-    
-    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
-    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
-
-    Vec3f pos = {0, 0, 0};
-
-    gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][25], 25, 4, 0.8333333f));
-    gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][45], 45, 4, 0.8333333f));
-}
-
-void TestCourse::UpdateVehicles() {
-    update_vehicle_trains();
 }
 
 void TestCourse::InitCourseObjects() {}

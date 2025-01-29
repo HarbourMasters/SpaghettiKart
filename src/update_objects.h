@@ -353,7 +353,6 @@ void func_80086700(s32);
 void func_80086940(s32);
 void func_80086C14(s32);
 void func_80086C6C(s32);
-void func_80086D80(void);
 
 extern f32 D_800E43B0[];
 extern Vtx D_800E43F0[];

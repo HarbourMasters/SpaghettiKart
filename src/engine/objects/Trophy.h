@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 #include "World.h"
+#include "engine/particles/StarEmitter.h"
 
 extern "C" {
 #include "macros.h"
@@ -43,10 +44,9 @@ public:
     void func_80086940(s32 objectIndex);
     void func_80086C14(s32 objectIndex);
     void func_80086C6C(s32 objectIndex);
-    void func_800773D8(f32* arg0, s32 arg1);
-    void func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2);
 
 private:
+    StarEmitter* _emitter;
 
     s32 _idx;
     TrophyType _trophy;

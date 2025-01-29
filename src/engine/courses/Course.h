@@ -107,8 +107,6 @@ public:
     virtual void SetStaffGhost();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();
-    virtual void SpawnVehicles();
-    virtual void UpdateVehicles();
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual void Collision();
     virtual void ScrollingTextures();

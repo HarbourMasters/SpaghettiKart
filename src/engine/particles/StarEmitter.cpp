@@ -12,30 +12,30 @@ extern "C" {
 #include "math_util_2.h"
 }
 
-StarEmitter::StarEmitter(FVector pos) {
-    s32 objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
+StarEmitter::StarEmitter() {
+    for (size_t i = 0; i < gObjectParticle3_SIZE; i++) {
+        ObjectIndex[i] = NULL_OBJECT_ID;
+    }
+}
+
+void StarEmitter::Emit(Vec3f arg1, s32 arg2) { // func_80077138
+    s32 objectIndex;
     s8 temp_v0_3;
     Vec3s sp30;
 
-    for (size_t i = 0; i < D_80165738; i++) {
-        find_unused_obj_index(&gObjectParticle3[i]);
-        init_object(gObjectParticle3[i], 0);
-    }
+    objectIndex = add_unused_obj_index(&ObjectIndex[0], &_next, gObjectParticle3_SIZE);
 
     if (objectIndex == NULL_OBJECT_ID) {
         return;
-        //func_80077138(objectIndex, arg0, arg1);
     }
 
-    D_801658F4 = 1;
-
-    init_object(objectIndex, D_801658F4);
+    init_object(objectIndex, arg2);
     gObjectList[objectIndex].unk_0D5 = 0x0C;
     gObjectList[objectIndex].sizeScaling = 0.05f;
-    set_obj_origin_pos(objectIndex, pos.x, pos.y, pos.z);
+    set_obj_origin_pos(objectIndex, arg1[0], arg1[1], arg1[2]);
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    switch (D_801658F4) {
+    switch (arg2) {
         case 0:
             gObjectList[objectIndex].velocity[1] = -1.0f;
             gObjectList[objectIndex].unk_034 = (f32) ((random_int(0x004BU) * 0.01) + 0.25);
@@ -81,15 +81,14 @@ void StarEmitter::Tick() { // func_80077640
     Object* object;
 
     for (someIndex = 0; someIndex < gObjectParticle3_SIZE; someIndex++) {
-        objectIndex = gObjectParticle3[someIndex];
+        objectIndex = ObjectIndex[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-    printf("Tick Star %d\n", object->state);
             if (object->state != 0) {
                 StarEmitter::func_80077450(objectIndex);
                 StarEmitter::func_80077584(objectIndex);
                 if (object->state == 0) {
-                    //delete_object_wrapper(&gObjectParticle3[someIndex]);
+                    delete_object_wrapper(&ObjectIndex[someIndex]);
                 }
             }
         }
@@ -107,16 +106,14 @@ void StarEmitter::Draw(s32 cameraId) { // func_80054BE8
     func_8004B35C(0x000000FF, 0x000000FF, 0, 0x000000FF);
     D_80183E80[0] = 0;
     for (var_s0 = 0; var_s0 < gObjectParticle3_SIZE; var_s0++) {
-        temp_a0 = gObjectParticle3[var_s0];
+        temp_a0 = ObjectIndex[var_s0];
         if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
-    printf("Draw Star\n");
             StarEmitter::func_80054AFC(temp_a0, camera->pos);
         }
     }
 }
 
 void StarEmitter::func_80054AFC(s32 objectIndex, Vec3f arg1) {
-    printf("Drawing Star!\n");
     D_80183E80[0] = func_800418E8(gObjectList[objectIndex].pos[2], gObjectList[objectIndex].pos[1], arg1);
     D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], arg1);
     D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
@@ -168,13 +165,11 @@ void StarEmitter::func_80077450(s32 objectIndex) {
                 (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0x000000FF, 0, 0x00000010, 0, 0) !=
                  0)) {
                 func_80086F60(objectIndex);
-                //func_80072428(objectIndex);
+                func_80072428(objectIndex);
             }
             break;
     }
     if (gObjectList[objectIndex].unk_048 != 0) {
-    printf("SOME THING\n");
-
         gObjectList[objectIndex].unk_084[4] = (s16) ((s32) (gObjectList[objectIndex].unk_084[4] + 1) % 3);
         func_8005C6B4(gObjectList[objectIndex].unk_084[4], &sp3C, &sp3A, &sp38);
         gObjectList[objectIndex].unk_084[0] = sp3C;

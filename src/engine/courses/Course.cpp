@@ -225,11 +225,6 @@ void Course::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void Course::SpawnVehicles() {
-}
-void Course::UpdateVehicles() {
-}
-
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 void Course::RenderCredits() {

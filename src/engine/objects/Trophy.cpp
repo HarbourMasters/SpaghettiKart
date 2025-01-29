@@ -8,6 +8,7 @@ extern "C" {
 #include "code_80057C60.h"
 #include "assets/ceremony_data.h"
 #include "podium_ceremony_actors.h"
+#include "engine/particles/StarEmitter.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "data/some_data.h"
@@ -79,6 +80,8 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
     object->pos[0] = _spawnPos.x;
     object->pos[1] = _spawnPos.y;
     object->pos[2] = _spawnPos.z;
+
+    _emitter = reinterpret_cast<StarEmitter*>(gWorldInstance.AddEmitter(new StarEmitter()));
 }
 
 void OTrophy::Tick() { // func_80086D80
@@ -333,62 +336,8 @@ void OTrophy::func_80086C6C(s32 objectIndex) {
     } else {
         sp24[1] = gObjectList[objectIndex].pos[1] - 2.0;
     }
-    func_800773D8(sp24, (s32) D_801658F4);
-}
 
-void OTrophy::func_800773D8(f32* arg0, s32 arg1) {
-    s32 objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
-    if (objectIndex != NULL_OBJECT_ID) {
-        func_80077138(objectIndex, arg0, arg1);
-    }
-}
-
-void OTrophy::func_80077138(s32 objectIndex, Vec3f arg1, s32 arg2) {
-    s8 temp_v0_3;
-    Vec3s sp30;
-
-    init_object(objectIndex, arg2);
-    gObjectList[objectIndex].unk_0D5 = 0x0C;
-    gObjectList[objectIndex].sizeScaling = 0.05f;
-    set_obj_origin_pos(objectIndex, arg1[0], arg1[1], arg1[2]);
-    set_obj_orientation(objectIndex, 0U, 0U, 0U);
-    set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    switch (arg2) {
-        case 0:
-            gObjectList[objectIndex].velocity[1] = -1.0f;
-            gObjectList[objectIndex].unk_034 = (f32) ((random_int(0x004BU) * 0.01) + 0.25);
-            gObjectList[objectIndex].direction_angle[1] = random_int(0x0040U) << 0xA;
-            func_8008751C(objectIndex);
-            gObjectList[objectIndex].unk_084[5] = 0x001E;
-            break;
-        case 1:
-            gObjectList[objectIndex].velocity[1] = 1.5f;
-            gObjectList[objectIndex].unk_034 = (f32) ((random_int(0x0064U) * 0.01) + 0.5);
-            gObjectList[objectIndex].direction_angle[1] = random_int(0x0040U) << 0xA;
-            func_8008751C(objectIndex);
-            gObjectList[objectIndex].unk_084[5] = 0x0032;
-            break;
-    }
-    temp_v0_3 = random_int(0x000CU);
-    if (temp_v0_3 < 9) {
-        func_8005C674(temp_v0_3, &sp30[2], &sp30[1], sp30);
-        gObjectList[objectIndex].unk_048 = 0;
-        gObjectList[objectIndex].unk_084[0] = sp30[2];
-        gObjectList[objectIndex].unk_084[1] = sp30[1];
-        gObjectList[objectIndex].unk_084[2] = sp30[0];
-    } else {
-        temp_v0_3 = random_int(3U);
-        func_8005C6B4(temp_v0_3, &sp30[2], &sp30[1], sp30);
-        gObjectList[objectIndex].unk_084[0] = sp30[2];
-        gObjectList[objectIndex].unk_084[1] = sp30[1];
-        gObjectList[objectIndex].unk_084[2] = sp30[0];
-        gObjectList[objectIndex].unk_084[4] = temp_v0_3;
-        gObjectList[objectIndex].unk_048 = 1;
-    }
-    gObjectList[objectIndex].primAlpha = 0x00FF;
-    gObjectList[objectIndex].unk_084[3] = random_int(0x0800U) + 0x400;
-    if ((gObjectList[objectIndex].direction_angle[1] < 0x3000) ||
-        (gObjectList[objectIndex].direction_angle[1] >= 0xB001)) {
-        gObjectList[objectIndex].unk_084[3] = -gObjectList[objectIndex].unk_084[3];
+    if (_emitter != nullptr) {
+        _emitter->Emit(sp24, D_801658F4);
     }
 }

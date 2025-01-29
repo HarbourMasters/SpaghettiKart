@@ -204,10 +204,6 @@ void MarioRaceway::BeginPlay() {
     }
 }
 
-void MarioRaceway::SpawnVehicles() {
-
-}
-
 // Likely sets minimap boundaries
 void MarioRaceway::MinimapSettings() {
     D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust5, 0x443, 0x1000));

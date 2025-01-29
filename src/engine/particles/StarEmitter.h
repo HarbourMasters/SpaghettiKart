@@ -28,16 +28,17 @@ public:
     f32 Diameter = 0.0f; // Waddle in a circle around the spawn point at this diameter.
     uint16_t MirrorModeAngleOffset;
 
-    explicit StarEmitter(FVector pos);
+    explicit StarEmitter();
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
+    void Emit(Vec3f arg1, s32 arg2);
     void func_80077428(s32 objectIndex);
     void func_80077584(s32 objectIndex);
     void func_80077450(s32 objectIndex);
     void func_80054AFC(s32 objectIndex, Vec3f arg1);
 
 private:
-
-    s32 _idx;
+    s32 ObjectIndex[128];
+    s32 _next = 0;
 };
