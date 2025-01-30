@@ -20,3 +20,4 @@ void OObject::Expire() { }
 void OObject::Destroy() {
     PendingDestroy = true;
 }
+void OObject::Reset() { }

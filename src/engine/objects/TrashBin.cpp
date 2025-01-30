@@ -26,7 +26,9 @@ OTrashBin::OTrashBin(const FVector& pos, const FRotation& rotation, f32 scale, O
     _scale = scale;
     _bhv = bhv;
 
-    init_object(indexObjectList1[1], 0);
+    find_unused_obj_index(&_objectIndex);
+
+    init_object(_objectIndex, 0);
 
     if (GetCourse() != GetBansheeBoardwalk()) {
         _drawBin = true;
@@ -34,26 +36,23 @@ OTrashBin::OTrashBin(const FVector& pos, const FRotation& rotation, f32 scale, O
 }
 
 void OTrashBin::Tick() {
-    s32 objectIndex = indexObjectList1[1];
-    OTrashBin::func_8007E00C(objectIndex);
+    OTrashBin::func_8007E00C(_objectIndex);
 
     switch(_bhv) {
         case STATIC:
             break;
         case MUNCHING:
-            func_8007DDC0(objectIndex);
+            func_8007DDC0(_objectIndex);
             break;
     }
 }
 
 void OTrashBin::Draw(s32 cameraId) {
-    s32 objectIndex;
     Object* object;
 
-    objectIndex = indexObjectList1[1];
-    func_8008A364(objectIndex, cameraId, 0x5555U, 0x00000320);
-    if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        object = &gObjectList[objectIndex];
+    func_8008A364(_objectIndex, cameraId, 0x5555U, 0x00000320);
+    if (is_obj_flag_status_active(_objectIndex, VISIBLE) != 0) {
+        object = &gObjectList[_objectIndex];
         if (object->state >= 2) {
             func_80043220(object->pos, object->orientation, object->sizeScaling, object->model);
         }

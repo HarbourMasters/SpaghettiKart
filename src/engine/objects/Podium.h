@@ -33,7 +33,8 @@ public:
     void func_80086528(s32 objectIndex, s32 arg1);
 
 private:
-
-    s32 _idx;
+    s32 _podium1Index;
+    s32 _podium2Index;
+    s32 _podium3Index;
     FVector _pos;
 };

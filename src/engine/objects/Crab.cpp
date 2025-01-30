@@ -28,26 +28,24 @@ extern "C" {
 size_t OCrab::_count = 0;
 
 OCrab::OCrab(const FVector2D& start, const FVector2D& end) {
-    s32 objectId;
     _idx = _count;
     _start = start;
     _end = end;
 
-    objectId = indexObjectList1[_idx];
-    init_object(objectId, 0);
-    gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = start.x * xOrientation;
-    gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = start.z;
+    find_unused_obj_index(&_objectIndex);
 
-    gObjectList[objectId].unk_01C[0] = end.x * xOrientation;
-    gObjectList[objectId].unk_01C[2] = end.z;
+    init_object(_objectIndex, 0);
+    gObjectList[_objectIndex].pos[0] = gObjectList[_objectIndex].origin_pos[0] = start.x * xOrientation;
+    gObjectList[_objectIndex].pos[2] = gObjectList[_objectIndex].origin_pos[2] = start.z;
+
+    gObjectList[_objectIndex].unk_01C[0] = end.x * xOrientation;
+    gObjectList[_objectIndex].unk_01C[2] = end.z;
 
     _count++;
 }
 
 void OCrab::Tick(void) {
-    s32 objectIndex;
-
-    objectIndex = indexObjectList1[_idx];
+    s32 objectIndex = _objectIndex;
     if (gObjectList[objectIndex].state != 0) {
         OCrab::func_80082B34(objectIndex);
         func_8008A6DC(objectIndex, 500.0f);
@@ -58,7 +56,7 @@ void OCrab::Tick(void) {
 
 void OCrab::Draw(s32 cameraId) {
     Camera* camera;
-    s32 objectIndex = indexObjectList1[_idx];
+    s32 objectIndex = _objectIndex;
     if (gObjectList[objectIndex].state >= 2) {
         Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
         camera = &camera1[cameraId];
@@ -74,11 +72,9 @@ void OCrab::Draw(s32 cameraId) {
 
 void OCrab::DrawModel(s32 cameraId) {
     s32 someIndex;
-    s32 test;
-
-    test = indexObjectList1[_idx];
-    func_8008A364(test, cameraId, 0x2AABU, 800);
-    if (is_obj_flag_status_active(test, VISIBLE) != 0) {
+    s32 objectIndex = _objectIndex;
+    func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
+    if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
         Camera *camera;
         s32 objectIndex;
 

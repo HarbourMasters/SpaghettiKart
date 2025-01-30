@@ -363,7 +363,6 @@ void render_object_seagulls(s32);
 void render_object_crabs(s32);
 void func_800557AC(void);
 void func_800557B4(s32, u32, u32);
-void render_object_train_penguins(s32);
 void func_80055AB8(s32, s32);
 void render_object_chain_chomps(s32);
 void func_80055EF4(s32, s32);

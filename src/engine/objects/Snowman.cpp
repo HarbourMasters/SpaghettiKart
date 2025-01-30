@@ -20,31 +20,30 @@ OSnowman::OSnowman(const FVector& pos) {
     _idx = _count;
     _pos = pos;
 
-    s32 objectId = indexObjectList2[_idx];
-    init_object(objectId, 0);
-    gObjectList[objectId].origin_pos[0] = pos.x * xOrientation;
-    gObjectList[objectId].origin_pos[1] = pos.y + 5.0 + 3.0;
-    gObjectList[objectId].origin_pos[2] = pos.z;
-    gObjectList[objectId].pos[0] = pos.x * xOrientation; 
-    gObjectList[objectId].pos[1] = pos.y + 5.0 + 3.0;
-    gObjectList[objectId].pos[2] = pos.z;
+    find_unused_obj_index(&_headIndex);
+    init_object(_headIndex, 0);
+    gObjectList[_headIndex].origin_pos[0] = pos.x * xOrientation;
+    gObjectList[_headIndex].origin_pos[1] = pos.y + 5.0 + 3.0;
+    gObjectList[_headIndex].origin_pos[2] = pos.z;
+    gObjectList[_headIndex].pos[0] = pos.x * xOrientation; 
+    gObjectList[_headIndex].pos[1] = pos.y + 5.0 + 3.0;
+    gObjectList[_headIndex].pos[2] = pos.z;
 
-    objectId = indexObjectList1[_idx];
-    init_object(objectId, 0);
-    gObjectList[objectId].origin_pos[0] = pos.x * xOrientation;
-    gObjectList[objectId].origin_pos[1] = pos.y + 3.0;
-    gObjectList[objectId].origin_pos[2] = pos.z;
-    gObjectList[objectId].unk_0D5 = 0; // Section Id no longer used.
+    find_unused_obj_index(&_bodyIndex);
+    init_object(_bodyIndex, 0);
+    gObjectList[_bodyIndex].origin_pos[0] = pos.x * xOrientation;
+    gObjectList[_bodyIndex].origin_pos[1] = pos.y + 3.0;
+    gObjectList[_bodyIndex].origin_pos[2] = pos.z;
+    gObjectList[_bodyIndex].unk_0D5 = 0; // Section Id no longer used.
 
-    gObjectList[objectId].pos[0] = pos.x * xOrientation; 
-    gObjectList[objectId].pos[1] = pos.y + 3.0;
-    gObjectList[objectId].pos[2] = pos.z;
+    gObjectList[_bodyIndex].pos[0] = pos.x * xOrientation; 
+    gObjectList[_bodyIndex].pos[1] = pos.y + 3.0;
+    gObjectList[_bodyIndex].pos[2] = pos.z;
 
     _count++;
 }
 
 void OSnowman::Tick() {
-    s32 var_s0;
     s32 var_s3;
     s32 var_s4;
     s32 objectIndex;
@@ -52,8 +51,8 @@ void OSnowman::Tick() {
 
     //! @todo quick hack to add the snow particles on hit. Need to separate into its own class
     if (_idx == 0) {
-        for (var_s0 = 0; var_s0 < gObjectParticle2_SIZE; var_s0++) {
-            objectIndex = gObjectParticle2[var_s0];
+        for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+            objectIndex = gObjectParticle2[i];
 
             if (objectIndex == DELETED_OBJECT_ID) {
                 continue;
@@ -66,14 +65,13 @@ void OSnowman::Tick() {
             if (gObjectList[objectIndex].state != 0) {
                 continue;
             }
-            delete_object_wrapper(&gObjectParticle2[var_s0]);
-            if (var_s0) {} // ??
+            delete_object_wrapper(&gObjectParticle2[i]);
         }
     }
 
     //for (var_s0 = 0; var_s0 < NUM_SNOWMEN; var_s0++) {
-    var_s4 = indexObjectList1[_idx];
-    var_s3 = indexObjectList2[_idx];
+    var_s4 = _bodyIndex;
+    var_s3 = _headIndex;
     OSnowman::func_80083A94(var_s3); // snowman head
     OSnowman::func_80083C04(var_s4); // snowman body
     if (is_obj_index_flag_status_inactive(var_s4, 0x00001000) != 0) {
@@ -113,7 +111,7 @@ void OSnowman::func_800836F0(Vec3f pos) {
 void OSnowman::DrawHead(s32 cameraId) {
     s32 objectIndex;
     Camera* camera = &camera1[cameraId];
-    objectIndex = indexObjectList1[_idx];
+    objectIndex = _bodyIndex;
     if (gObjectList[objectIndex].state >= 2) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
@@ -127,7 +125,7 @@ void OSnowman::DrawHead(s32 cameraId) {
                                     (u8*)gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex,
                                     0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
-            objectIndex = indexObjectList2[_idx];
+            objectIndex = _headIndex;
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
             draw_2d_texture_at(gObjectList[objectIndex].pos, (u16*) D_80183E80,

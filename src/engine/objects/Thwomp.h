@@ -113,6 +113,7 @@ public:
 private:
     static size_t _count;
     s32 _idx;
+    s32 _objectIndex;
     s16 _faceDirection;
     //! @todo Write this better. This effects the squish size and the bounding box size.
     // We should probably return to the programmer the pointer to the actor so they can do thwomp->squishSize = value.

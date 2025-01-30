@@ -11,6 +11,8 @@ extern "C" {
 #include "camera.h"
 #include "actor_types.h"
 
+extern s32 gTrophyIndex;
+
 Properties* CM_GetProps();
 Properties* CM_GetPropsCourseId(s32 courseId);
 

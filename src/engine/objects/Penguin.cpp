@@ -33,22 +33,16 @@ extern "C" {
 extern s8 gPlayerCount;
 }
 
-size_t OPenguin::_count = 0;
 
 OPenguin::OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behaviour) {
-    _idx = _count;
     _type = type;
     _bhv = behaviour;
 
-    if (_idx >= 32) {
-        printf("MAX penguin REACHED (32), skipping\n");
-        return;
-    }
+    find_unused_obj_index(&_objectIndex);
 
-    s32 objectIndex = indexObjectList1[_idx];
-    init_object(objectIndex, 0);
+    init_object(_objectIndex, 0);
 
-    Object *object = &gObjectList[objectIndex];
+    Object *object = &gObjectList[_objectIndex];
     object->origin_pos[0] = pos[0] * xOrientation;
     object->origin_pos[1] = pos[1];
     object->origin_pos[2] = pos[2];
@@ -75,14 +69,11 @@ OPenguin::OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behavio
             object->boundingBoxSize = 0x000C;
             break;
     }
-
-    _count++;
 }
 
 void OPenguin::Tick(void) {
-    s32 objectIndex;
+    s32 objectIndex = _objectIndex;
 
-    objectIndex = indexObjectList1[_idx];
     if (gObjectList[objectIndex].state != 0) {
         if (_type == PenguinType::EMPEROR) {
             OPenguin::EmperorPenguin(objectIndex);
@@ -90,7 +81,7 @@ void OPenguin::Tick(void) {
             OPenguin::OtherPenguin(objectIndex);
         }
 
-        OPenguin::Behaviours(objectIndex, _idx);
+        OPenguin::Behaviours(objectIndex);
     }
     if (func_80072320(objectIndex, 1) != 0) {
         func_80089820(objectIndex, 1.75f, 1.5f, 0x1900A046U);
@@ -107,7 +98,7 @@ void OPenguin::Tick(void) {
 }
 
 void OPenguin::Draw(s32 cameraId) {
-    s32 objectIndex;
+    s32 objectIndex = _objectIndex;
     s32 temp_s1;
     s32 drawDistance;
     u16 var_s1;
@@ -121,26 +112,26 @@ void OPenguin::Draw(s32 cameraId) {
         var_s3 = 0x00015F90;
     }
 
-    objectIndex = indexObjectList1[_idx];
+
     if (gObjectList[objectIndex].state >= 2) {
-        if (gPlayerCountSelection1 == 1) {
+
+        // This code decreased draw dist if there's more players.
+        // The var_s1 = 0x4000 for everything is just a guess.
+        // It seems to check the angle of the camera.
+        // These changes were so instance indices are not required.
+
+        //if (gPlayerCountSelection1 == 1) {
             var_s1 = 0x4000;
-            if (_idx == 0) {
-                drawDistance = 0x000005DC;
-            } else if (func_80072320(objectIndex, 8) != 0) {
-                drawDistance = 0x00000320;
-            } else {
-                drawDistance = 0x000003E8;
-            }
-        } else {
-            if (func_80072320(objectIndex, 8) != 0) {
-                drawDistance = 0x000001F4;
-                var_s1 = 0x4000;
-            } else {
-                drawDistance = 0x00000258;
-                var_s1 = 0x5555;
-            }
-        }
+            drawDistance = 1500;
+        //} else {
+        //    if (func_80072320(objectIndex, 8) != 0) {
+        //        drawDistance = 500;
+        //        var_s1 = 0x4000;
+        //    } else {
+        //        drawDistance = 600;
+        //        var_s1 = 0x5555;
+        //    }
+        //}
         temp_s1 = func_8008A364(objectIndex, cameraId, var_s1, drawDistance);
         if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
             func_800557B4(objectIndex, (u32) temp_s1, var_s3);
@@ -148,7 +139,7 @@ void OPenguin::Draw(s32 cameraId) {
     }
 }
 
-void OPenguin::Behaviours(s32 objectIndex, s32 arg1) { // func_800850B0
+void OPenguin::Behaviours(s32 objectIndex) { // func_800850B0
     Object* object;
 
     object = &gObjectList[objectIndex];
@@ -157,7 +148,7 @@ void OPenguin::Behaviours(s32 objectIndex, s32 arg1) { // func_800850B0
             OPenguin::func_80085080(objectIndex);
             break;
         case 2:
-            OPenguin::func_8008502C(objectIndex, arg1);
+            OPenguin::func_8008502C(objectIndex);
             break;
         case 3:
             OPenguin::func_80084D2C(objectIndex, 0);
@@ -226,17 +217,17 @@ void OPenguin::func_80084D2C(s32 objectIndex, s32 arg1) {
             }
             break;
         case 3:
-            switch (arg1) { /* switch 1; irregular */
-                case 0:     /* switch 1 */
+            switch (arg1) {
+                case 0:
                     sp24 = 1.0f;
                     break;
-                case 1: /* switch 1 */
+                case 1:
                     sp24 = 1.5f;
                     break;
-                case 2: /* switch 1 */
+                case 2:
                     sp24 = 2.0f;
                     break;
-                case 3: /* switch 1 */
+                case 3:
                     sp24 = 2.5f;
                     break;
             }
@@ -285,7 +276,7 @@ void OPenguin::func_80085080(s32 objectIndex) {
     func_800873F4(objectIndex);
 }
 
-void OPenguin::func_8008502C(s32 objectIndex, s32 arg1) {
+void OPenguin::func_8008502C(s32 objectIndex) {
     func_80088038(objectIndex, gObjectList[objectIndex].unk_01C[1], gObjectList[objectIndex].unk_0C6);
     object_calculate_new_pos_offset(objectIndex);
     func_800873F4(objectIndex);
@@ -371,6 +362,8 @@ void OPenguin::OtherPenguin(s32 objectIndex) {
     }
 }
 
+bool OPenguin::_toggle = false;
+
 void OPenguin::InitOtherPenguin(s32 objectIndex) {
     Object* object;
 
@@ -380,7 +373,7 @@ void OPenguin::InitOtherPenguin(s32 objectIndex) {
     object->vertex = (Vtx*) d_course_sherbet_land_unk_data11;
     //object->boundingBoxSize = 4;
     object->unk_09C = 2;
-    object->unk_04C = random_int(0x012CU);
+    object->unk_04C = random_int(300);
     set_object_flag(objectIndex, 0x04000220);
 
     // This code has been significantly refactored from the original func_800845C8
@@ -388,7 +381,15 @@ void OPenguin::InitOtherPenguin(s32 objectIndex) {
     switch(_bhv) {
         case Behaviour::CIRCLE:
             object->unk_01C[1] = Diameter;
-            object->unk_0C4 = (_idx << 0xF) & 0xFFFF;
+
+            if (_toggle) {
+                object->unk_0C4 = 0x8000;
+            } else {
+                object->unk_0C4 = 0;
+            }
+
+            _toggle = !_toggle;
+
             //object->unk_0DD = 2;
             func_800722A4(objectIndex, 8);
             break;
@@ -410,4 +411,8 @@ void OPenguin::InitOtherPenguin(s32 objectIndex) {
     object->unk_034 = 0.0f;
     object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
     object_next_state(objectIndex);
+}
+
+void OPenguin::Reset() {
+    _toggle = false;
 }

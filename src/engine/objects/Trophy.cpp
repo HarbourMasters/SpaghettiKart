@@ -1,6 +1,8 @@
 #include "Trophy.h"
 #include "assets/common_data.h"
 #include "assets/data_segment2.h"
+#include "port/Game.h"
+
 extern "C" {
 #include "main.h"
 #include "defines.h"
@@ -19,11 +21,17 @@ extern "C" {
 }
 
 OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
-    s32 objectIndex = indexObjectList1[3];
     _trophy = trophy;
     _spawnPos = pos;
     _spawnPos.y += 16.0f; // Adjust the height so the trophy sits on the surface when positioned to 0,0,0
     _bhv = bhv;
+
+    find_unused_obj_index(&_objectIndex);
+
+    // If you're trying to place multiple trophies in the podium ceremony
+    // This will make the camera look at the last trophy spawned.
+    // Thus this will need to be changed if that's not desired.
+    gTrophyIndex = _objectIndex;
 
     if (bhv == OTrophy::Behaviour::PODIUM_CEREMONY) {
         _toggleVisibility = &D_801658CE;
@@ -35,45 +43,45 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
 
     // This allows spawning for mods
     if (*_toggleVisibility == true) {
-        init_object(objectIndex, 0);
+        init_object(_objectIndex, 0);
     }
 
     switch (trophy) {
         case TrophyType::GOLD:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl10;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl10;
             break;
         case TrophyType::SILVER:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl12;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl12;
             break;
         case TrophyType::BRONZE:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl14;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl14;
             break;
         case TrophyType::GOLD_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl11;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl11;
             break;
         case TrophyType::SILVER_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl13;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl13;
             break;
         case TrophyType::BRONZE_150:
-            gObjectList[objectIndex].model = (Gfx*)gold_trophy_dl15;
+            gObjectList[_objectIndex].model = (Gfx*)gold_trophy_dl15;
             break;
     }
 
     // Set defaults for modded behaviours
     if (_bhv != OTrophy::Behaviour::PODIUM_CEREMONY) {
-        gObjectList[objectIndex].sizeScaling = 0.025f;
-        gObjectList[objectIndex].unk_084[1] = 0x0200;
-        object_next_state(objectIndex);
-        func_80086E70(objectIndex);
+        gObjectList[_objectIndex].sizeScaling = 0.025f;
+        gObjectList[_objectIndex].unk_084[1] = 0x0200;
+        object_next_state(_objectIndex);
+        func_80086E70(_objectIndex);
     }
 
     switch(_bhv) {
         case OTrophy::Behaviour::GO_FISH:
-            gObjectList[objectIndex].sizeScaling = 0.010f;
+            gObjectList[_objectIndex].sizeScaling = 0.010f;
             break;
     }
 
-    Object *object = &gObjectList[objectIndex];
+    Object *object = &gObjectList[_objectIndex];
     object->origin_pos[0] = _spawnPos.x;
     object->origin_pos[1] = _spawnPos.y;
     object->origin_pos[2] = _spawnPos.z;
@@ -85,7 +93,7 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
 }
 
 void OTrophy::Tick() { // func_80086D80
-    s32 objectIndex = indexObjectList1[3];
+    s32 objectIndex = _objectIndex;
     s32 var_s0;
 
     // Fallback for podium ceremony where the trophy is not spawned until it is needed
@@ -200,7 +208,7 @@ void OTrophy::Tick() { // func_80086D80
 }
 
 void OTrophy::Draw(s32 cameraId) {
-    s32 listIndex = indexObjectList1[3];
+    s32 listIndex = _objectIndex;
     Mat4 someMatrix1;
     Mat4 someMatrix2;
     Object* object;

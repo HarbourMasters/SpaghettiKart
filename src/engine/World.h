@@ -65,6 +65,7 @@ public:
     void TickParticles();
     void DrawParticles(s32 cameraId);
     ParticleEmitter* AddEmitter(ParticleEmitter* emitter);
+    void Reset(void); // Sets OObjects or AActors static member variables back to default values
 
     void AddCup(Cup*);
     void SetCup(Cup* cup);

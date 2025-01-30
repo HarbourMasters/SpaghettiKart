@@ -27,11 +27,13 @@ OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
         _visible = &mod;
     }
 
-    init_object(indexObjectList1[0], 0);
+    find_unused_obj_index(&_objectIndex);
+
+    init_object(_objectIndex, 0);
 }
 
 void OHotAirBalloon::Tick() {
-    s32 objectIndex = indexObjectList1[0];
+    s32 objectIndex = _objectIndex;
     
     if (*_visible) {
         if (gObjectList[objectIndex].state != 0) {
@@ -49,7 +51,7 @@ void OHotAirBalloon::Tick() {
 
 void OHotAirBalloon::Draw(s32 cameraId) {
     s32 objectIndex;
-    objectIndex = indexObjectList1[0];
+    objectIndex = _objectIndex;
     if (*_visible) {
         if (gGamestate != CREDITS_SEQUENCE) {
             func_8008A1D0(objectIndex, cameraId, 0x000005DC, 0x00000BB8);

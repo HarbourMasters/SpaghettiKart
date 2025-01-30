@@ -134,18 +134,16 @@ void SherbetLand::BeginPlay() {
 
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
 
-
-
-// Originally, multiplayer did not spawn the big penguin
-//    if (gPlayerCountSelection1 == 1) {
-        Vec3f pos = {-383.0f, 2.0f, -690.0f};
-        gWorldInstance.AddObject(new OPenguin(pos, 0, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT));
-//    }
-
     //! @bug Skip spawning penguins due to animation crash for now
     if (gGamestate == CREDITS_SEQUENCE) {
         return;
     }
+
+    // Multiplayer does not spawn the big penguin
+//  if (gPlayerCountSelection1 == 1) {
+        Vec3f pos = {-383.0f, 2.0f, -690.0f};
+        gWorldInstance.AddObject(new OPenguin(pos, 0, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT));
+//  }
 
     Vec3f pos2 = {-2960.0f, -80.0f, 1521.0f};
     auto penguin = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos2, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));

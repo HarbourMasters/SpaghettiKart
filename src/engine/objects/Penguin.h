@@ -40,32 +40,22 @@ public:
 
     explicit OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behaviour);
 
-    ~OPenguin() {
-        _count--;
-    }
-
-    static size_t GetCount() {
-        return _count;
-    }
-
-
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
+    virtual void Reset() override;
 private:
-    void Behaviours(s32 objectIndex, s32 arg1);
+    void Behaviours(s32 objectIndex);
     void EmperorPenguin(s32 objectIndex);
     void func_80085080(s32 objectIndex);
-    void func_8008502C(s32 objectIndex, s32 arg1);
+    void func_8008502C(s32 objectIndex);
     void func_80084D2C(s32 objectIndex, s32 arg1);
 
     void InitEmperorPenguin(s32 objectIndex);
     void OtherPenguin(s32 objectIndex);
     void InitOtherPenguin(s32 objectIndex);
 
-    static size_t _count;
-    s32 _idx;
+    static bool _toggle;
+    s32 _objectIndex;
     PenguinType _type;
     Behaviour _bhv;
-
-
 };

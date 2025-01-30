@@ -195,6 +195,13 @@ void World::DrawParticles(s32 cameraId) {
     }
 }
 
+// Sets OObjects or AActors static member variables back to default values
+void World::Reset() {
+    for (const auto& object : Objects) {
+        object->Reset();
+    }
+}
+
 Object* World::GetObjectByIndex(size_t index) {
     //if (index < this->Objects.size()) {
         // Assuming GameActor::a is accessible, use reinterpret_cast if needed

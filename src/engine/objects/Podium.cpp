@@ -29,45 +29,66 @@ OPodium::OPodium(const FVector& pos) {
 
     _pos = pos;
 
-    for (size_t i = 0; i < NUM_PODIUMS; i++) {
-        s32 objectIndex = indexObjectList1[i];
-        //init_object(objectIndex, 0);
-        //set_obj_origin_pos(objectIndex, pos.x - 1.5, pos.y, pos.z);
-    }
+    find_unused_obj_index(&_podium1Index);
+    find_unused_obj_index(&_podium2Index);
+    find_unused_obj_index(&_podium3Index);
+
+    //init_object(objectIndex, 0);
+    //set_obj_origin_pos(objectIndex, pos.x - 1.5, pos.y, pos.z);
 }
 
 void OPodium::Tick() { // func_80086604
-    s32 objectIndex;
     if ((D_8016347C != 0) && (D_802874D8.unk1D < 3)) {
         if (D_801658C6 == 0) {
             for (size_t i = 0; i < 3; i++) {
-                objectIndex = indexObjectList1[i];
-                init_object(objectIndex, 0);
+                init_object(_podium1Index, 0);
+                init_object(_podium2Index, 0);
+                init_object(_podium3Index, 0);
             }
             D_801658C6 = 1;
         }
     }
-    for (size_t i = 0; i != NUM_PODIUMS; i++) {
-        objectIndex = indexObjectList1[i];
-        if (gObjectList[objectIndex].state != 0) {
-            OPodium::func_80086528(objectIndex, i);
-            OPodium::func_80086424(objectIndex);
-        }
+
+    if (gObjectList[_podium1Index].state != 0) {
+        OPodium::func_80086528(_podium1Index, 0);
+        OPodium::func_80086424(_podium1Index);
+    }
+
+    if (gObjectList[_podium2Index].state != 0) {
+        OPodium::func_80086528(_podium2Index, 1);
+        OPodium::func_80086424(_podium2Index);
+    }
+
+    if (gObjectList[_podium3Index].state != 0) {
+        OPodium::func_80086528(_podium3Index, 2);
+        OPodium::func_80086424(_podium3Index);
     }
 }
 
 void OPodium::Draw(s32 cameraId) { // func_80055F48
-    for (size_t i = 0; i < NUM_PODIUMS; i++) {
-        Object* object;
-
-        object = &gObjectList[indexObjectList1[i]];
+        Object* object = &gObjectList[_podium1Index];
         if (object->state >= 2) {
             //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
             rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
             gSPDisplayList(gDisplayListHead++, object->model);
         }
-    }
+
+        object = &gObjectList[_podium2Index];
+        if (object->state >= 2) {
+            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+            gSPDisplayList(gDisplayListHead++, object->model);
+        }
+
+        object = &gObjectList[_podium3Index];
+        if (object->state >= 2) {
+            //func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
+            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
+            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
+            gSPDisplayList(gDisplayListHead++, object->model);
+        }
 }
 
 void OPodium::func_8008629C(s32 objectIndex, s32 arg1) {

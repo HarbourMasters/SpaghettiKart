@@ -3956,50 +3956,6 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     }
 }
 
-void render_object_train_penguins(s32 cameraId) {
-    s32 i;
-    s32 objectIndex;
-    s32 temp_s1;
-    s32 var_a3;
-    u16 var_s1;
-    u32 var_s3;
-
-    if (gPlayerCountSelection1 == 1) {
-        var_s3 = 0x0003D090;
-    } else if (gPlayerCountSelection1 == 2) {
-        var_s3 = 0x00027100;
-    } else {
-        var_s3 = 0x00015F90;
-    }
-    for (i = 0; i < NUM_PENGUINS; i++) {
-        objectIndex = indexObjectList1[i];
-        if (gObjectList[objectIndex].state >= 2) {
-            if (gPlayerCountSelection1 == 1) {
-                var_s1 = 0x4000;
-                if (i == 0) {
-                    var_a3 = 0x000005DC;
-                } else if (func_80072320(objectIndex, 8) != 0) {
-                    var_a3 = 0x00000320;
-                } else {
-                    var_a3 = 0x000003E8;
-                }
-            } else {
-                if (func_80072320(objectIndex, 8) != 0) {
-                    var_a3 = 0x000001F4;
-                    var_s1 = 0x4000;
-                } else {
-                    var_a3 = 0x00000258;
-                    var_s1 = 0x5555;
-                }
-            }
-            temp_s1 = func_8008A364(objectIndex, cameraId, var_s1, var_a3);
-            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-                func_800557B4(objectIndex, (u32) temp_s1, var_s3);
-            }
-        }
-    }
-}
-
 void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
     Object* object;
 

@@ -22,4 +22,5 @@ public:
     virtual void Draw(s32 cameraId);
     virtual void Expire();
     virtual void Destroy(); // Mark object for deletion at the start of the next frame
+    virtual void Reset();
 };

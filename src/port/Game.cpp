@@ -93,6 +93,8 @@ Cup* gBattleCup;
 
 ModelLoader gModelLoader;
 
+s32 gTrophyIndex = NULL;
+
 void CustomEngineInit() {
 
     gMarioRaceway = new MarioRaceway();
@@ -615,6 +617,7 @@ void CM_CleanWorld(void) {
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();
     gWorldInstance.Lakitus.clear();
+    gWorldInstance.Reset();
 }
 
 struct Actor* CM_AddBaseActor(void) {

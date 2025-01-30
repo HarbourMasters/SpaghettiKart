@@ -22,7 +22,8 @@
 #include "code_80057C60.h"
 #include "defines.h"
 
-#include "src/port/Engine.h"
+#include "port/Engine.h"
+#include "port/Game.h"
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -996,8 +997,11 @@ void func_80284154(CinematicCamera* camera) {
 
 void func_80284184(CinematicCamera* camera) {
     f32 trophy;
-    trophy = ((gObjectList[indexObjectList1[3]].pos[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
-    f32_lerp(&camera->pos[1], trophy, 0.5);
+
+    if (gTrophyIndex != NULL) {
+        trophy = ((gObjectList[gTrophyIndex].pos[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
+        f32_lerp(&camera->pos[1], trophy, 0.5);
+    }
 }
 
 void func_802841E8(CinematicCamera* camera) {

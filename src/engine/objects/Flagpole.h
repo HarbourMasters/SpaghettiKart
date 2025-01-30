@@ -42,4 +42,5 @@ private:
     s16 _direction;
     static size_t _count;
     size_t _idx;
+    s32 _objectIndex;
 };
