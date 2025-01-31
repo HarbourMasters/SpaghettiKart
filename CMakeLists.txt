@@ -20,6 +20,7 @@ set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Spaghetti
 # Add a custom module path to locate additional CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 include(FindFontconfig)
+include(CMake/lus-cvars.cmake)
 
 if (WIN32)
 include(libultraship/cmake/automate-vcpkg.cmake)
