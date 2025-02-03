@@ -1,4 +1,4 @@
-#include "UIWidgets.hpp"
+#include "UIWidgets.h"
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include <imgui_internal.h>
 #include <sstream>
@@ -6,7 +6,6 @@
 #include <string>
 #include <unordered_map>
 #include <libultraship/libultra/types.h>
-#include "2s2h/ShipUtils.h"
 #include <spdlog/fmt/fmt.h>
 
 namespace UIWidgets {
@@ -293,7 +292,6 @@ bool CVarCheckbox(const char* label, const char* cvarName, const CheckboxOptions
     if (Checkbox(label, &value, options)) {
         CVarSetInteger(cvarName, value);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-        ShipInit::Init(cvarName);
         dirty = true;
     }
     return dirty;
@@ -407,7 +405,6 @@ bool CVarSliderInt(const char* label, const char* cvarName, const IntSliderOptio
     if (SliderInt(label, &value, options)) {
         CVarSetInteger(cvarName, value);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-        ShipInit::Init(cvarName);
         dirty = true;
     }
     return dirty;
@@ -518,7 +515,6 @@ bool CVarSliderFloat(const char* label, const char* cvarName, const FloatSliderO
     if (SliderFloat(label, &value, options)) {
         CVarSetFloat(cvarName, value);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-        ShipInit::Init(cvarName);
         dirty = true;
     }
     return dirty;
@@ -536,7 +532,6 @@ bool CVarColorPicker(const char* label, const char* cvarName, Color_RGBA8 defaul
         color.a = (uint8_t)(colorVec.w * 255.0f);
         CVarSetColor(cvarName, color);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-        ShipInit::Init(cvarName);
         changed = true;
     }
     PopStyleCombobox();

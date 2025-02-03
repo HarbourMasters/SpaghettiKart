@@ -666,7 +666,6 @@ namespace UIWidgets {
         if (Combobox<T>(label, &value, comboMap, options)) {
             CVarSetInteger(cvarName, value);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-            ShipInit::Init(cvarName);
             dirty = true;
         }
         return dirty;
@@ -679,7 +678,6 @@ namespace UIWidgets {
         if (Combobox<T>(label, &value, comboVector, options)) {
             CVarSetInteger(cvarName, value);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-            ShipInit::Init(cvarName);
             dirty = true;
         }
         return dirty;
@@ -692,7 +690,6 @@ namespace UIWidgets {
         if (Combobox<T>(label, &value, comboArray, options)) {
             CVarSetInteger(cvarName, value);
             Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
-            ShipInit::Init(cvarName);
             dirty = true;
         }
         return dirty;

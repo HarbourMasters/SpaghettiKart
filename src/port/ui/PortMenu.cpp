@@ -175,6 +175,7 @@ void PortMenu::AddSettings() {
 
     // Graphics Settings
     static int32_t maxFps;
+    static bool isFullscreen = false;
     const char* tooltip = "";
     if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         maxFps = 360;
@@ -188,8 +189,9 @@ void PortMenu::AddSettings() {
     }
     path.sidebarName = "Graphics";
     AddSidebarEntry("Settings", "Graphics", 3);
-    AddWidget(path, "Toggle Fullscreen", WIDGET_CVAR_CHECKBOX)
-        .CVar("gSettings.Fullscreen")
+    AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
+        .ValuePointer(&isFullscreen)
+        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetInstance()->GetWindow()->IsFullscreen(); })
         .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
 #ifndef __APPLE__
@@ -363,7 +365,7 @@ void PortMenu::AddEnhancements() {
 void PortMenu::AddDevTools() {
     AddMenuEntry("Developer", "gSettings.Menu.DevToolsSidebarSection");
     AddSidebarEntry("Developer", "General", 3);
-    WidgetPath path = { "Developer Tools", "General", SECTION_COLUMN_1 };
+    WidgetPath path = { "Developer", "General", SECTION_COLUMN_1 };
     AddWidget(path, "Popout Menu", WIDGET_CVAR_CHECKBOX)
         .CVar("gSettings.Menu.Popout")
         .Options(CheckboxOptions().Tooltip("Changes the menu display from overlay to windowed."));

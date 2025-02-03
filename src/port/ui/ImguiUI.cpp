@@ -33,7 +33,6 @@ std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
 std::shared_ptr<Ship::GuiWindow> mFreecamWindow;
-std::shared_ptr<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow> mAdvancedResolutionSettingsWindow;
 
 void SetupGuiElements() {
     auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
@@ -88,14 +87,9 @@ void SetupGuiElements() {
 
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");
     gui->AddGuiWindow(mGameInfoWindow);
-
-    mAdvancedResolutionSettingsWindow = std::make_shared<AdvancedResolutionSettings::AdvancedResolutionSettingsWindow>(
-        "gAdvancedResolutionEditorEnabled", "Advanced Resolution Settings");
-    gui->AddGuiWindow(mAdvancedResolutionSettingsWindow);
 }
 
 void Destroy() {
-    mAdvancedResolutionSettingsWindow = nullptr;
     mGameInfoWindow = nullptr;
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
