@@ -2702,16 +2702,12 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
     Vtx* var_a1;
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
-        goto func_80095BD0_label1;
+        rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
+        return displayListHead;
     }
     if (gMatrixEffectCount < 0) {
         rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
     }
-    goto func_80095BD0_label2;
-func_80095BD0_label1:
-    rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
-    return displayListHead;
-func_80095BD0_label2:
     // func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
     Mtx* mtx = SetTextMatrix(arg2, arg3, arg6, arg7);
     gSPMatrix(displayListHead++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -4674,27 +4670,29 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
     }
     color = &D_800E7AE8[arg2];
 
-    switch(gScreenModeSelection) {
+    switch (gScreenModeSelection) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            gDisplayListHead = draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
-                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            gDisplayListHead =
+                draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                              color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            gDisplayListHead = draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
-                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+            gDisplayListHead =
+                draw_box_wide(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                              color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if ((arg0 == 0) || (arg0 == 2)) {
                 leftEdge = OTRGetDimensionFromLeftEdge(0);
-                gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - (x - (w / 2)), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
-                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+                gDisplayListHead = draw_box_wide_pause_background(
+                    gDisplayListHead, leftEdge - (x - (w / 2)), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                    color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
             } else if ((arg0 == 1) || (arg0 == 3)) {
                 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
-                gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, x - (w / 2), y - (h / 2), rightEdge + ((w / 2) + x), (h / 2) + y, color->red,
-                                            color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+                gDisplayListHead = draw_box_wide_pause_background(
+                    gDisplayListHead, x - (w / 2), y - (h / 2), rightEdge + ((w / 2) + x), (h / 2) + y, color->red,
+                    color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
             }
             break;
     }
@@ -5116,28 +5114,28 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     someMath1 = temp_t8;
     someMath1 += var_t4;
 
-    switch(gScreenModeSelection) {
+    switch (gScreenModeSelection) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             gDisplayListHead = draw_box_wide(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
-                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+                                             temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             gDisplayListHead = draw_box_wide(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
-                                            temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+                                             temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if ((arg0 == 0) || (arg0 == 2)) {
                 leftEdge = OTRGetDimensionFromLeftEdge(0);
-                gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - (var_t3 - temp_v1), var_t4 - temp_t8, someMath0, someMath1,
-                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+                gDisplayListHead = draw_box_wide_pause_background(
+                    gDisplayListHead, leftEdge - (var_t3 - temp_v1), var_t4 - temp_t8, someMath0, someMath1,
+                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
 
             } else if ((arg0 == 1) || (arg0 == 3)) {
                 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
-                gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, rightEdge + someMath0, someMath1,
-                                    temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+                gDisplayListHead = draw_box_wide_pause_background(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8,
+                                                                  rightEdge + someMath0, someMath1, temp_v0_2->red,
+                                                                  temp_v0_2->green, temp_v0_2->blue, var_t2);
             }
             break;
     }
@@ -5195,26 +5193,27 @@ void func_8009D998(s32 arg0) {
     someMath1 = temp_v1;
     someMath1 += var_t1;
 
-    switch(gScreenModeSelection) {
+    switch (gScreenModeSelection) {
         case SCREEN_MODE_1P:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            gDisplayListHead =
-                draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+            gDisplayListHead = draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1,
+                                             0, 0, 0, 0x000000FF);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            gDisplayListHead =
-                draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+            gDisplayListHead = draw_box_wide(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1,
+                                             0, 0, 0, 0x000000FF);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             if ((arg0 == 0) || (arg0 == 2)) {
                 leftEdge = OTRGetDimensionFromLeftEdge(0);
-                gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, leftEdge - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
+                gDisplayListHead = draw_box_wide_pause_background(
+                    gDisplayListHead, leftEdge - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
 
             } else if ((arg0 == 1) || (arg0 == 3)) {
                 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
                 gDisplayListHead =
-                    draw_box_wide_pause_background(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, rightEdge + someMath0, someMath1, 0, 0, 0, 0x000000FF);
+                    draw_box_wide_pause_background(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1,
+                                                   rightEdge + someMath0, someMath1, 0, 0, 0, 0x000000FF);
             }
             break;
     }
@@ -6781,8 +6780,8 @@ void func_800A15EC(MenuItem* arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
         func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D74[courseId]), arg0->column, arg0->row, 2);
-    gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40,
-                                     arg0->row + 0x30, 0, 0, 0, 0xFF);
+    gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40, arg0->row + 0x30,
+                                0, 0, 0, 0xFF);
     gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7DC4[courseId]), arg0->column,
                                      arg0->row + 0x27, 3);
     if (func_800B639C(arg0->type - 0x7C) >= 0) {
@@ -9302,8 +9301,8 @@ void func_800A8CA4(MenuItem* arg0) {
                 if ((var_s0 != (temp_v0->param1 % 4)) != 0) {
                     gDisplayListHead =
                         draw_box(gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
-                                      D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
-                                      D_800E7208[var_s0][1].row + temp_s3, 0, 0, 0, 0x00000064);
+                                 D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
+                                 D_800E7208[var_s0][1].row + temp_s3, 0, 0, 0, 0x00000064);
                 }
             }
         }
