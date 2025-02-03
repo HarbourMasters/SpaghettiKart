@@ -536,7 +536,7 @@ bool IsDroppingFrames() {
     return ImGui::GetIO().Framerate < targetFPS - threshold;
 }
 
-// static RegisterMenuUpdateFunc updateFunc(UpdateResolutionVars, "Settings", "Graphics");
-// static RegisterMenuInitFunc initFunc(RegisterResolutionWidgets);
+static RegisterMenuUpdateFunc updateFunc(UpdateResolutionVars, "Settings", "Graphics");
+static RegisterMenuInitFunc initFunc(RegisterResolutionWidgets);
 
 } // namespace BenGui

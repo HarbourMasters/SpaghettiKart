@@ -32,7 +32,6 @@ std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
-std::shared_ptr<Ship::GuiWindow> mFreecamWindow;
 
 void SetupGuiElements() {
     auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
@@ -76,14 +75,6 @@ void SetupGuiElements() {
 
     mMultiplayerWindow = std::make_shared<Multiplayer::MultiplayerWindow>("gMultiplayerWindowEnabled", "Multiplayer");
     gui->AddGuiWindow(mMultiplayerWindow);
-
-    mFreecamWindow = gui->GetGuiWindow("FreecamWindow");
-    if (mFreecamWindow == nullptr) {
-        SPDLOG_ERROR("Could not find input FreecamWindow");
-    }
-
-    mFreecamWindow = std::make_shared<Freecam::FreecamWindow>("gFreecamEnabled", "Freecam");
-    gui->AddGuiWindow(mFreecamWindow);
 
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");
     gui->AddGuiWindow(mGameInfoWindow);
