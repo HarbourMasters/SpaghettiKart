@@ -8,6 +8,7 @@
 #include "engine/actors/AFinishline.h"
 #include "engine/objects/BombKart.h"
 #include "assets/moo_moo_farm_data.h"
+#include "engine/objects/MoleGroup.h"
 #include "engine/objects/Mole.h"
 
 extern "C" {
@@ -159,6 +160,46 @@ void MooMooFarm::LoadTextures() {
     dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
 }
 
+static std::vector<FVector> sMoleSpawns1 = {
+    { FVector(771, 20, -2022) },
+    { FVector(807, 15, -2063) },
+    { FVector(847, 18, -2040) },
+    { FVector(913, 14, -2054) },
+    { FVector(939, 21, -1997) },
+    { FVector(941, 17, -2024) },
+    { FVector(994, 17, -1994) },
+    { FVector(863, 22, -2010) },
+};
+
+static std::vector<FVector> sMoleSpawns2 = {
+    { FVector(1500, 2, 1140) },
+    { FVector(1510, 15, 1050) },
+    { FVector(1609, 21, 935) },
+    { FVector(1289, 3, 1269) },
+    { FVector(1468, 22, 1046) },
+    { FVector(1380, 12, 1154) },
+    { FVector(1297, 19, 1170) },
+    { FVector(1589, 11, 1004) },
+    { FVector(1414, 3, 1185) },
+    { FVector(1405, 4, 1254) },
+    { FVector(1463, 8, 1118) },
+};
+
+static std::vector<FVector> sMoleSpawns3 = {
+    { FVector(701, 2, 1279) },
+    { FVector(811, 8, 1278) },
+    { FVector(791, 16, 1229) },
+    { FVector(876, 15, 1266) },
+    { FVector(984, 23, 1248) },
+    { FVector(891, 20, 1242) },
+    { FVector(920, 15, 1304) },
+    { FVector(823, 6, 1327) },
+    { FVector(717, 8, 1239) },
+    { FVector(695, 19, 1176) },
+    { FVector(628, 8, 1191) },
+    { FVector(724, 4, 1339) },
+};
+
 void MooMooFarm::BeginPlay() {
     gWorldInstance.AddActor(new AFinishline());
 
@@ -166,6 +207,27 @@ void MooMooFarm::BeginPlay() {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
     }
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_item_box_spawns));
+
+    // for (size_t i = 0; i < NUM_TOTAL_MOLES; i++) {
+    //     D_8018D198[i] = 0;
+    // }
+    // pos.y = 22.0f; ????
+
+    OMoleGroup* group1 = new OMoleGroup(sMoleSpawns1);
+
+    OMoleGroup* group2 = new OMoleGroup(sMoleSpawns2);
+
+    OMoleGroup* group3 = new OMoleGroup(sMoleSpawns3);
+
+    // for (size_t i = 0; i < NUM_TOTAL_MOLES; i++) {
+    //     D_8018D198[i] = 0;
+    //     FVector pos;
+    //     pos.x = gMoleSpawns.asVec3sList[i][0] * xOrientation;
+    //     pos.y = 22.0f;
+    //     pos.z = gMoleSpawns.asVec3sList[i][2];
+
+    //     gWorldInstance.AddObject(new OMole(pos, group));
+    // }
 
     if (gModeSelection == VERSUS) {
         Vec3f pos = {0, 0, 0};
@@ -220,13 +282,6 @@ void MooMooFarm::InitCourseObjects() {
             D_8018D1C8 = 4;
             D_8018D1D0 = 6;
             D_8018D1D8 = 6;
-        }
-
-        Vec3f pos = {0, 22, 0};
-        for (size_t i = 0; i < NUM_GROUP1_MOLES; i++) {
-            D_8018D198[i] = 0;
-            gWorldInstance.AddObject(new OMole(pos));
-
         }
 
         // for (i = 0; i < NUM_GROUP1_MOLES; i++) {

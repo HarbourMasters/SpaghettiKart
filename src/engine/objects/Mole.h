@@ -3,6 +3,8 @@
 #include <libultraship.h>
 #include <vector>
 #include "Object.h"
+#include "CoreMath.h"
+#include "MoleGroup.h"
 
 extern "C" {
 #include "macros.h"
@@ -15,14 +17,11 @@ extern "C" {
 #include "some_data.h"
 }
 
+class OMoleGroup;
 
 class OMole : public OObject {
 public:
-    enum Behaviour : uint16_t {
-    };
-
-public:
-    explicit OMole(Vec3f pos);
+    explicit OMole(FVector pos, OMoleGroup* group);
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
@@ -33,7 +32,6 @@ public:
     void render_object_moles(s32 cameraId);
     void func_80054D00(s32 objectIndex, s32 cameraId);
     void func_800821AC(s32 objectIndex, s32 arg1);
-    void func_80081FF4(s32 objectIndex, s32 arg1);
     void func_80081D34(s32 objectIndex);
     void func_80081AFC(s32 objectIndex, s32 arg1);
     void func_80081A88(s32 objectIndex);
@@ -41,12 +39,10 @@ public:
     void func_80081848(s32 objectIndex);
     void func_80081790(s32 objectIndex);
 
+    s32 _objectIndex;
+    s32 _moleIndex;
 private:
-    s32 _idx;
-    s32 _state;
-    s32 _timer;
-    s32 _status;
-    bool _toggle;
-
-    SplineData *spline;
+    static size_t _count;
+    size_t _idx;
+    OMoleGroup* _group;
 };

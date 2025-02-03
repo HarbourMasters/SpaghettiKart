@@ -289,7 +289,6 @@ void func_80081924(s32);
 void func_80081A88(s32);
 void func_80081AFC(s32, s32);
 void func_80081D34(s32);
-void func_80081FF4(s32, s32);
 void func_800821AC(s32, s32);
 void update_moles(void);
 void func_8008241C(s32, s32);
