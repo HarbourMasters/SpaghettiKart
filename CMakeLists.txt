@@ -216,6 +216,12 @@ if (MSVC)
   endif()
 endif()
 
+#=================== SSE2NEON ===================
+set(SSE2NEON_DIR ${CMAKE_BINARY_DIR}/_deps/sse2neon)
+file(DOWNLOAD "https://raw.githubusercontent.com/DLTcollab/sse2neon/refs/heads/master/sse2neon.h" "${SSE2NEON_DIR}/sse2neon.h")
+
+include_directories(${SSE2NEON_DIR})
+
 #==============================================================================#
 # Libultraship Integration                                                            #
 #==============================================================================#

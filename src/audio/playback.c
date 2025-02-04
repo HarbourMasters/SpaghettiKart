@@ -229,11 +229,6 @@ void process_notes(void) {
         note = &gNotes[i];
         playbackState = (struct NotePlaybackState*) &note->priority;
         if (note->parentLayer != NO_LAYER) {
-#ifndef NO_SEGMENTED_MEMORY
-            if ((uintptr_t) playbackState->parentLayer < 0x7fffffffU) {
-                continue;
-            }
-#endif
 
 #ifdef VERSION_EU_1_0
             // Just threw these in here. They are probably wrong place and variables.

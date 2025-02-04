@@ -26,7 +26,7 @@ struct SharedDma {
 void audio_init(void);
 void audio_dma_copy_immediate(u8* devAddr, void* vAddr, size_t nbytes);
 void audio_dma_copy_async(uintptr_t, void*, size_t, OSMesgQueue*, OSIoMesg*);
-void audio_dma_partial_copy_async(uintptr_t*, u8**, ssize_t*, OSMesgQueue*, OSIoMesg*);
+void audio_dma_partial_copy_async(uintptr_t*, u8**, size_t*, OSMesgQueue*, OSIoMesg*);
 void decrease_sample_dma_ttls(void);
 void* dma_sample_data(uintptr_t, u32, s32, u8*);
 void func_800BB030(s32);
