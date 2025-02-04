@@ -50,47 +50,9 @@ OMole::OMole(FVector pos, OMoleGroup* group) {
 }
 
 void OMole::Tick() {
-    s32 var_s1;
-    s32 objectIndex;
-
-    //for (var_s1 = 0; var_s1 < D_8018D1C8; var_s1++) {
-        objectIndex = _objectIndex;
-        if (gObjectList[objectIndex].state == 0) {
-            //if (are_players_in_course_section(8, 9) != 0) {
-
-            //! @todo Need ref to MoleGroup here
-            //func_80081FF4(objectIndex, 1);
-            //}
-        } else {
-            OMole::func_800821AC(objectIndex, 1);
-        }
-    //}
-
-    // for (var_s1 = 0; var_s1 < D_8018D1D0; var_s1++) {
-    //     objectIndex = indexObjectList2[var_s1];
-    //     if (gObjectList[objectIndex].state == 0) {
-    //         if (are_players_in_course_section(0x0010, 0x0013) != 0) {
-    //             OMole::func_80081FF4(objectIndex, 2);
-    //         }
-    //     } else {
-    //         OMole::func_800821AC(objectIndex, 2);
-    //     }
-    // }
-
-    // for (var_s1 = 0; var_s1 < D_8018D1D8; var_s1++) {
-    //     objectIndex = indexObjectList3[var_s1];
-    //     if (gObjectList[objectIndex].state == 0) {
-    //         if (are_players_in_course_section(0x0011, 0x0014) != 0) {
-    //             func_80081FF4(objectIndex, 3);
-    //         }
-    //     } else {
-    //         OMole::func_800821AC(objectIndex, 3);
-    //     }
-    // }
-
     if (_idx == 0) {
-        for (var_s1 = 0; var_s1 < gObjectParticle2_SIZE; var_s1++) {
-            objectIndex = gObjectParticle2[var_s1];
+        for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+            s32 objectIndex = gObjectParticle2[i];
             if (gObjectList[objectIndex].state != 0) {
                 OMole::func_80081790(objectIndex);
             }
@@ -101,17 +63,12 @@ void OMole::Tick() {
 void OMole::Draw(s32 cameraId) {
     size_t i;
 
-    //for (i = 0; i < NUM_GROUP1_MOLES; i++) {
-        OMole::func_80054D00(_objectIndex, cameraId);
-    //}
-    // for (i = 0; i < NUM_GROUP2_MOLES; i++) {
-    //     OMole::func_80054D00(indexObjectList2[i], cameraId);
-    // }
-    // for (i = 0; i < NUM_GROUP3_MOLES; i++) {
-    //     OMole::func_80054D00(indexObjectList3[i], cameraId);
-    // }
+    OMole::func_80054D00(_objectIndex, cameraId);
+
     OMole::func_80054EB8();
-    OMole::func_80054F04(cameraId);
+    if (_idx == 0) {
+        OMole::func_80054F04(cameraId);
+    }
 }
 
 void OMole::func_80081790(s32 objectIndex) {
@@ -378,26 +335,20 @@ void OMole::func_80054D00(s32 objectIndex, s32 cameraId) {
 }
 
 void OMole::func_80054F04(s32 cameraId) {
-    s32 var_s2;
-    s32 objectIndex;
-    Camera* sp44;
-    Object* object;
+    Camera* camera = &camera1[cameraId];
 
-    sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0079C8);
     load_texture_block_rgba16_mirror((u8*) LOAD_ASSET_RAW(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
 
-    if (_idx == 0) {
-        for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
-            objectIndex = gObjectParticle2[var_s2];
-            object = &gObjectList[objectIndex];
-            if (object->state > 0) {
-                func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
-                if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                    object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
-                    rsp_set_matrix_gObjectList(objectIndex);
-                    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D006980);
-                }
+    for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+        s32 objectIndex = gObjectParticle2[i];
+        Object* object = &gObjectList[objectIndex];
+        if (object->state > 0) {
+            func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
+            if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+                rsp_set_matrix_gObjectList(objectIndex);
+                gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D006980);
             }
         }
     }

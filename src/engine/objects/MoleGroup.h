@@ -18,7 +18,7 @@ public:
 
     explicit OMoleGroup(std::vector<FVector> moles);
 
-    virtual void Tick();
+    virtual void Tick() override;
 
     void func_80081FF4(s32 objectIndex);
 

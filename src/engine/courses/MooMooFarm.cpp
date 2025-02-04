@@ -213,11 +213,14 @@ void MooMooFarm::BeginPlay() {
     // }
     // pos.y = 22.0f; ????
 
-    OMoleGroup* group1 = new OMoleGroup(sMoleSpawns1);
 
-    OMoleGroup* group2 = new OMoleGroup(sMoleSpawns2);
+    for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+        find_unused_obj_index(&gObjectParticle2[i]);
+    }
 
-    OMoleGroup* group3 = new OMoleGroup(sMoleSpawns3);
+    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns1));
+    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns2));
+    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns3));
 
     // for (size_t i = 0; i < NUM_TOTAL_MOLES; i++) {
     //     D_8018D198[i] = 0;
@@ -253,7 +256,6 @@ void MooMooFarm::MinimapSettings() {
 
 void MooMooFarm::InitCourseObjects() {
     size_t objectId;
-    size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
             switch (gCCSelection) { /* switch 2; irregular */
@@ -305,11 +307,6 @@ void MooMooFarm::InitCourseObjects() {
         //     func_800887C0(objectId);
         //     gObjectList[objectId].sizeScaling = 0.7f;
         // }
-
-
-        for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            find_unused_obj_index(&gObjectParticle2[i]);
-        }
     }
 }
 
