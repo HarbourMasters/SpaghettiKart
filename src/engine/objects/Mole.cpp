@@ -74,7 +74,7 @@ void OMole::Draw(s32 cameraId) {
 void OMole::func_80081790(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
-            break; /* irregular */
+            break;
         case 1:
             if (func_80087E08(objectIndex, gObjectList[objectIndex].velocity[1], 0.3f, gObjectList[objectIndex].unk_034,
                               gObjectList[objectIndex].orientation[1], 0x00000032) != 0) {
@@ -133,14 +133,14 @@ void OMole::func_80081AFC(s32 objectIndex, s32 arg1) {
 
                 _group->_moles[object->type].Active = false;
 
-                // switch (arg1) { /* switch 1; irregular */
-                //     case 1:     /* switch 1 */
+                // switch (arg1) {
+                //     case 1:
                 //         sp2C = D_8018D198;
                 //         break;
-                //     case 2: /* switch 1 */
+                //     case 2:
                 //         sp2C = D_8018D1A8;
                 //         break;
-                //     case 3: /* switch 1 */
+                //     case 3:
                 //         sp2C = D_8018D1B8;
                 //         break;
                 // }

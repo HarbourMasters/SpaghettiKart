@@ -160,6 +160,7 @@ void MooMooFarm::LoadTextures() {
     dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
 }
 
+// These are full arrays that are not used in the original game
 static std::vector<FVector> sMoleSpawns1 = {
     { FVector(771, 20, -2022) },
     { FVector(807, 15, -2063) },
@@ -218,9 +219,156 @@ void MooMooFarm::BeginPlay() {
         find_unused_obj_index(&gObjectParticle2[i]);
     }
 
-    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns1));
-    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns2));
-    gWorldInstance.AddObject(new OMoleGroup(sMoleSpawns3));
+    if (gGamestate != CREDITS_SEQUENCE) {
+        switch(gCCSelection) {
+            case CC_50:
+                std::vector<FVector> moleSpawns1_50 = {
+                    { FVector(771, 20, -2022) },
+                    { FVector(807, 15, -2063) },
+                    { FVector(847, 18, -2040) },
+                    { FVector(913, 14, -2054) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_50));
+
+                std::vector<FVector> moleSpawns2_50 = {
+                    { FVector(1500, 2, 1140) },
+                    { FVector(1510, 15, 1050) },
+                    { FVector(1609, 21, 935) },
+                    { FVector(1289, 3, 1269) },
+                    { FVector(1468, 22, 1046) },
+                    { FVector(1380, 12, 1154) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_50));
+
+                std::vector<FVector> moleSpawns3_50 = {
+                    { FVector(701, 2, 1279) },
+                    { FVector(811, 8, 1278) },
+                    { FVector(791, 16, 1229) },
+                    { FVector(876, 15, 1266) },
+                    { FVector(984, 23, 1248) },
+                    { FVector(891, 20, 1242) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_50));
+                break;
+            case CC_100:
+                std::vector<FVector> moleSpawns1_100 = {
+                    { FVector(771, 20, -2022) },
+                    { FVector(807, 15, -2063) },
+                    { FVector(847, 18, -2040) },
+                    { FVector(913, 14, -2054) },
+                    { FVector(939, 21, -1997) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_100));
+
+                std::vector<FVector> moleSpawns2_100 = {
+                    { FVector(1500, 2, 1140) },
+                    { FVector(1510, 15, 1050) },
+                    { FVector(1609, 21, 935) },
+                    { FVector(1289, 3, 1269) },
+                    { FVector(1468, 22, 1046) },
+                    { FVector(1380, 12, 1154) },
+                    { FVector(1297, 19, 1170) },
+                    { FVector(1589, 11, 1004) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_100));
+
+                std::vector<FVector> moleSpawns3_100 = {
+                    { FVector(701, 2, 1279) },
+                    { FVector(811, 8, 1278) },
+                    { FVector(791, 16, 1229) },
+                    { FVector(876, 15, 1266) },
+                    { FVector(984, 23, 1248) },
+                    { FVector(891, 20, 1242) },
+                    { FVector(920, 15, 1304) },
+                    { FVector(823, 6, 1327) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_100));
+                break;
+            case CC_150:
+                std::vector<FVector> moleSpawns1_150 = {
+                    { FVector(771, 20, -2022) },
+                    { FVector(807, 15, -2063) },
+                    { FVector(847, 18, -2040) },
+                    { FVector(913, 14, -2054) },
+                    { FVector(939, 21, -1997) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_150));
+
+                std::vector<FVector> moleSpawns2_150 = {
+                    { FVector(1500, 2, 1140) },
+                    { FVector(1510, 15, 1050) },
+                    { FVector(1609, 21, 935) },
+                    { FVector(1289, 3, 1269) },
+                    { FVector(1468, 22, 1046) },
+                    { FVector(1380, 12, 1154) },
+                    { FVector(1297, 19, 1170) },
+                    { FVector(1589, 11, 1004) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_150));
+
+                std::vector<FVector> moleSpawns3_150 = {
+                    { FVector(701, 2, 1279) },
+                    { FVector(811, 8, 1278) },
+                    { FVector(791, 16, 1229) },
+                    { FVector(876, 15, 1266) },
+                    { FVector(984, 23, 1248) },
+                    { FVector(891, 20, 1242) },
+                    { FVector(920, 15, 1304) },
+                    { FVector(823, 6, 1327) },
+                    { FVector(717, 8, 1239) },
+                    { FVector(695, 19, 1176) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_150));
+                break;
+            case CC_EXTRA:
+                std::vector<FVector> moleSpawns1_extra = {
+                    { FVector(771, 20, -2022) },
+                    { FVector(807, 15, -2063) },
+                    { FVector(847, 18, -2040) },
+                    { FVector(913, 14, -2054) },
+                    { FVector(939, 21, -1997) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_extra));
+
+                std::vector<FVector> moleSpawns2_extra = {
+                    { FVector(1500, 2, 1140) },
+                    { FVector(1510, 15, 1050) },
+                    { FVector(1609, 21, 935) },
+                    { FVector(1289, 3, 1269) },
+                    { FVector(1468, 22, 1046) },
+                    { FVector(1380, 12, 1154) },
+                    { FVector(1297, 19, 1170) },
+                    { FVector(1589, 11, 1004) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_extra));
+
+                std::vector<FVector> moleSpawns3_extra = {
+                    { FVector(701, 2, 1279) },
+                    { FVector(811, 8, 1278) },
+                    { FVector(791, 16, 1229) },
+                    { FVector(876, 15, 1266) },
+                    { FVector(984, 23, 1248) },
+                    { FVector(891, 20, 1242) },
+                    { FVector(920, 15, 1304) },
+                    { FVector(823, 6, 1327) }
+                };
+
+                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_extra));
+                break;
+        }
+    }
+
 
     // for (size_t i = 0; i < NUM_TOTAL_MOLES; i++) {
     //     D_8018D198[i] = 0;
@@ -253,76 +401,6 @@ void MooMooFarm::MinimapSettings() {
     D_8018D2E0 = 18;
     D_8018D2E8 = 36;
 }
-
-void MooMooFarm::InitCourseObjects() {
-    size_t objectId;
-    if (gGamestate != CREDITS_SEQUENCE) {
-        if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
-            switch (gCCSelection) { /* switch 2; irregular */
-                case CC_50:         /* switch 2 */
-                    D_8018D1C8 = 4;
-                    D_8018D1D0 = 6;
-                    D_8018D1D8 = 6;
-                    break;
-                case CC_100: /* switch 2 */
-                    D_8018D1C8 = 5;
-                    D_8018D1D0 = 8;
-                    D_8018D1D8 = 8;
-                    break;
-                case CC_150: /* switch 2 */
-                    D_8018D1C8 = 5;
-                    D_8018D1D0 = 8;
-                    D_8018D1D8 = 10;
-                    break;
-                case CC_EXTRA: /* switch 2 */
-                    D_8018D1C8 = 5;
-                    D_8018D1D0 = 8;
-                    D_8018D1D8 = 8;
-                    break;
-            }
-        } else {
-            D_8018D1C8 = 4;
-            D_8018D1D0 = 6;
-            D_8018D1D8 = 6;
-        }
-
-        // for (i = 0; i < NUM_GROUP1_MOLES; i++) {
-        //     D_8018D198[i] = 0;
-        //     find_unused_obj_index(&indexObjectList1[i]);
-        // }
-        // for (i = 0; i < NUM_GROUP2_MOLES; i++) {
-        //     D_8018D1A8[i] = 0;
-        //     find_unused_obj_index(&indexObjectList1[i]);
-        // }
-        // for (i = 0; i < NUM_GROUP3_MOLES; i++) {
-        //     D_8018D1B8[i] = 0;
-        //     find_unused_obj_index(&indexObjectList1[i]);
-        // }
-        // for (i = 0; i < NUM_TOTAL_MOLES; i++) {
-        //     find_unused_obj_index(&gObjectParticle1[i]);
-        //     objectId = gObjectParticle1[i];
-        //     init_object(objectId, 0);
-        //     gObjectList[objectId].pos[0] = gMoleSpawns.asVec3sList[i][0] * xOrientation;
-        //     gObjectList[objectId].pos[2] = gMoleSpawns.asVec3sList[i][2];
-        //     func_800887C0(objectId);
-        //     gObjectList[objectId].sizeScaling = 0.7f;
-        // }
-    }
-}
-
-void MooMooFarm::UpdateCourseObjects() {
-    if (gGamestate != CREDITS_SEQUENCE) {
-        //update_moles();
-    }
-}
-
-void MooMooFarm::RenderCourseObjects(s32 cameraId) {
-    if (gGamestate != CREDITS_SEQUENCE) {
-        //render_object_moles(cameraId);
-    }
-}
-
-void MooMooFarm::SomeSounds() {}
 
 void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
