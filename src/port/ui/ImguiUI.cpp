@@ -73,9 +73,6 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mMultiplayerWindow = std::make_shared<Multiplayer::MultiplayerWindow>("gMultiplayerWindowEnabled", "Multiplayer");
-    gui->AddGuiWindow(mMultiplayerWindow);
-
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");
     gui->AddGuiWindow(mGameInfoWindow);
 }

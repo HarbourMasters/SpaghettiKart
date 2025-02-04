@@ -44,6 +44,10 @@ std::unordered_map<int32_t, const char*> controlType = {{ 0, "Mouse/Keyboard" },
 
 uint32_t focusPlayer;
 
+bool IsPlayerValid(const char* string) {
+    return string != NULL && (strncmp(string, "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC", 8) != 0);
+}
+
 void RegisterFreecamWidgets() {
     mPortMenu->AddSidebarEntry("Enhancements", "Freecam", 2);
     WidgetPath path = { "Enhancements", "Freecam", SECTION_COLUMN_1 };
@@ -56,7 +60,7 @@ void RegisterFreecamWidgets() {
     //static int current_item = 0;
     mPortMenu->AddWidget(path, "Control Type", WIDGET_COMBOBOX)
         .ValuePointer(&controllerType)
-        .Callback([](WidgetInfo& info) { gFreecamControllerType = *std::get<int32_t*>(info.valuePointer); })
+        .Callback([](WidgetInfo& info) { gFreecamControllerType = (uint32_t)*std::get<int32_t*>(info.valuePointer); })
         .Options(UIWidgets::ComboboxOptions().ComboMap(controlType));
 
     mPortMenu->AddWidget(path, "Move: W,A,S,D\nUp: Space, Down: Shift\nFaster: Ctrl\nLook: Right-mouse button\nTarget Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);
@@ -86,8 +90,10 @@ void RegisterFreecamWidgets() {
 
     mPortMenu->AddWidget(path, "Player 1", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[0] == NULL || D_800E76A8[0] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[0];
+            info.isHidden = !IsPlayerValid(D_800E76A8[0]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[0];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .Callback([](WidgetInfo& info) {
@@ -96,8 +102,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 2", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[1] == NULL || D_800E76A8[1] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[1];
+            info.isHidden = !IsPlayerValid(D_800E76A8[1]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[1];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)
@@ -107,8 +115,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 3", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[2] == NULL || D_800E76A8[2] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[2];
+            info.isHidden = !IsPlayerValid(D_800E76A8[2]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[2];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)
@@ -118,8 +128,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 4", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[3] == NULL || D_800E76A8[3] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[3];
+            info.isHidden = !IsPlayerValid(D_800E76A8[3]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[3];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)
@@ -129,8 +141,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 5", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[4] == NULL || D_800E76A8[4] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[4];
+            info.isHidden = !IsPlayerValid(D_800E76A8[4]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[4];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .Callback([](WidgetInfo& info) {
@@ -139,8 +153,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 6", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[5] == NULL || D_800E76A8[5] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[5];
+            info.isHidden = !IsPlayerValid(D_800E76A8[5]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[5];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)
@@ -150,8 +166,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 7", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[6] == NULL || D_800E76A8[6] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[6];
+            info.isHidden = !IsPlayerValid(D_800E76A8[6]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[6];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)
@@ -161,8 +179,10 @@ void RegisterFreecamWidgets() {
         });
     mPortMenu->AddWidget(path, "Player 8", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {
-            info.isHidden = D_800E76A8[7] == NULL || D_800E76A8[7] == "\xA1\xBC\xA1\xBC\xA1\xBC\xA1\xBC";
-            info.name = D_800E76A8[7];
+            info.isHidden = !IsPlayerValid(D_800E76A8[7]);
+            if (!info.isHidden) {
+                info.name = D_800E76A8[7];
+            }
         })
         .Options(UIWidgets::ButtonOptions().Size(UIWidgets::Sizes::Inline))
         .SameLine(true)

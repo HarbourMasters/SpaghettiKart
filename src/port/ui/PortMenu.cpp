@@ -412,6 +412,10 @@ PortMenu::PortMenu(const std::string& consoleVariable, const std::string& name)
     : Menu(consoleVariable, name, 0, UIWidgets::Colors::LightBlue) {
 }
 
+//bool CheckNetworkConnected(disabledInfo& info) {
+//    return gNetwork.isConnected;
+//}
+
 void PortMenu::InitElement() {
     Ship::Menu::InitElement();
     AddSettings();
@@ -427,24 +431,10 @@ void PortMenu::InitElement() {
     }
 
     disabledMap = {
-        { DISABLE_FOR_CAMERAS_OFF,
-          { [](disabledInfo& info) -> bool {
-               return !CVarGetInteger("gEnhancements.Camera.DebugCam.Enable", 0) &&
-                      !CVarGetInteger("gEnhancements.Camera.FreeLook.Enable", 0);
-           },
-            "Both Debug Camera and Free Look are Disabled" } },
-        { DISABLE_FOR_DEBUG_CAM_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gEnhancements.Camera.DebugCam.Enable", 0); },
-            "Debug Camera is Enabled" } },
-        { DISABLE_FOR_DEBUG_CAM_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnhancements.Camera.DebugCam.Enable", 0); },
-            "Debug Camera is Disabled" } },
-        { DISABLE_FOR_FREE_LOOK_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gEnhancements.Camera.FreeLook.Enable", 0); },
-            "Free Look is Enabled" } },
-        { DISABLE_FOR_FREE_LOOK_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnhancements.Camera.FreeLook.Enable", 0); },
-            "Free Look is Disabled" } },
+        { DISABLE_FOR_FREE_CAM_ON,
+          { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Free Cam is Enabled" } },
+        { DISABLE_FOR_FREE_CAM_OFF,
+          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Free Cam is Disabled" } },
         { DISABLE_FOR_DEBUG_MODE_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
             "Debug Mode is Disabled" } },
@@ -488,6 +478,8 @@ void PortMenu::InitElement() {
             "Vertical Resolution Toggle Enabled" } },
         { DISABLE_FOR_LOW_RES_MODE_ON,
           { [](disabledInfo& info) -> bool { return CVarGetInteger(CVAR_LOW_RES_MODE, 0); }, "N64 Mode Enabled" } },
+        //{ DISABLE_FOR_MULTIPLAYER_CONNECTED,
+        //  { CheckNetworkConnected, "Multiplayer Connected"}},
     };
 }
 
