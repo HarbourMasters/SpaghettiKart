@@ -149,8 +149,6 @@ void BowsersCastle::LoadTextures() {
 }
 
 void BowsersCastle::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
 

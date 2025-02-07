@@ -164,7 +164,6 @@ void ChocoMountain::LoadTextures() {
 }
 
 void ChocoMountain::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
     spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
 

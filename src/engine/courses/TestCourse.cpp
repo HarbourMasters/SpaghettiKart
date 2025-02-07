@@ -231,8 +231,6 @@ void TestCourse::BeginPlay() {
         {{ -32768,   0,   0 }, {0}},
     };
 
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_all_item_boxes(itemboxes);
     spawn_falling_rocks(rocks);
 

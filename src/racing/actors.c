@@ -830,6 +830,10 @@ void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
     Vec3s startingRot;
     s32 temp;
 
+    if (gGamestate == CREDITS_SEQUENCE) {
+        return;
+    }
+
     vec3f_set(startingVelocity, 0, 0, 0);
     vec3s_set(startingRot, 0, 0, 0);
 
@@ -893,6 +897,10 @@ void spawn_foliage(struct ActorSpawnData* actor) {
     rotation[0] = 0x4000;
     rotation[1] = 0;
     rotation[2] = 0;
+
+    if (gGamestate == CREDITS_SEQUENCE) {
+        return;
+    }
 
     while (var_s3->pos[0] != END_OF_SPAWN_DATA) {
         position[0] = var_s3->pos[0] * gCourseDirection;
@@ -958,7 +966,7 @@ void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
     struct ActorSpawnData* temp_s0 = spawnData;
     // struct ItemBox *itemBox;
 
-    if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) {
+    if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
 

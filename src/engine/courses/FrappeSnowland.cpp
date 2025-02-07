@@ -128,8 +128,6 @@ void FrappeSnowland::LoadTextures() {
 }
 
 void FrappeSnowland::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
     

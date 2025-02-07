@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
+#include "CoreMath.h"
 #include "engine/Actor.h"
 
 extern "C" {
@@ -16,7 +17,7 @@ public:
      * Default behaviour places the finishline at the first waypoint.
      * @arg pos, optional. Sets a custom position
      */
-    AFinishline(Vec3f pos = nullptr);
+    AFinishline(std::optional<FVector> pos);
 
     virtual ~AFinishline() override = default;
 

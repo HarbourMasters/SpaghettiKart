@@ -114,6 +114,14 @@ WarioStadium::WarioStadium() {
 
     Props.Clouds = gWarioStadiumStars;
     Props.CloudList = gWarioStadiumStars;
+
+    FVector finish;
+    finish.x = (gIsMirrorMode != 0) ? 13 + 12.0f : 13 - 12.0f;
+    finish.y = (f32) (0 - 15);
+    finish.z = -9;
+
+    this->FinishlineSpawnPoint = finish;
+
     Props.MinimapFinishlineX = 0;
     Props.MinimapFinishlineY = 0;
 
@@ -156,14 +164,6 @@ void WarioStadium::LoadTextures() {
 }
 
 void WarioStadium::BeginPlay() {
-    Vec3f finish;
-    finish[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
-    (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
-    finish[1] = D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
-    finish[2] = D_8015F8D0[2] = D_80164490->posZ;
-
-    gWorldInstance.AddActor(new AFinishline(finish));
-
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
 
     Vec3f pos = { -131.0f, 83.0f, 286.0f };

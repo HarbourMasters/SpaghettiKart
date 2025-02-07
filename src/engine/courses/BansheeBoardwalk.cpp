@@ -150,8 +150,6 @@ void BansheeBoardwalk::LoadTextures() {
 }
 
 void BansheeBoardwalk::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
 
 

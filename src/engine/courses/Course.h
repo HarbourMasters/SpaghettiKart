@@ -78,6 +78,8 @@ public:
     const char* gfx = nullptr;
     size_t gfxSize = 0;
     const course_texture* textures = nullptr;
+    bool bSpawnFinishline = true;
+    std::optional<FVector> FinishlineSpawnPoint;
 
     virtual ~Course() = default;
 

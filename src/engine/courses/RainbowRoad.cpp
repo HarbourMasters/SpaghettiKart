@@ -134,8 +134,6 @@ void RainbowRoad::LoadTextures() {
 }
 
 void RainbowRoad::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {

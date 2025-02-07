@@ -1,5 +1,6 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include "CoreMath.h"
 
 #include "AFinishline.h"
 #include "engine/Actor.h"
@@ -16,22 +17,23 @@ extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }
 
-AFinishline::AFinishline(Vec3f pos) {
-    if (pos != nullptr) { // Allow user to set their own values
-        Pos[0] = pos[0];
-        Pos[1] = pos[1] - 15;
-        Pos[2] = pos[2];
-    } else { // Default to first waypoint position
-        Pos[0] = D_80164490->posX;
-        Pos[1] = (f32) (D_80164490->posY - 15);
-        Pos[2] = D_80164490->posZ;
+AFinishline::AFinishline(std::optional<FVector> pos) {
+
+    if (pos.has_value()) {
+        // Set spawn point to the provided position
+        Pos[0] = D_8015F8D0[0] = pos.value().x;
+        Pos[1] = D_8015F8D0[1] = pos.value().y - 15;
+        Pos[2] = D_8015F8D0[2] = pos.value().z;
+    } else {
+        // Set spawn point to the tracks first path point.
+        Pos[0] = D_8015F8D0[0] = D_80164490->posX;
+        Pos[1] = D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
+        Pos[2] = D_8015F8D0[2] = D_80164490->posZ;
     }
 
     Rot[0] = 0;
     Rot[1] = 0;
     Rot[2] = 0;
-
-
 
     Flags = -0x8000 | 0x4000;
 
@@ -39,8 +41,6 @@ AFinishline::AFinishline(Vec3f pos) {
 }
 
 void AFinishline::Tick() {}
-
-extern Gfx cloud_mesh[];
 
 void AFinishline::Draw(Camera *camera) {
     Mat4 mtx;

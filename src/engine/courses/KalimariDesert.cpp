@@ -141,75 +141,75 @@ void KalimariDesert::BeginPlay() {
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
 
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_kalimari_desert_cactus_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_kalimari_desert_item_box_spawns));
 
-    Vec3f crossingPos = {-2500, 2, 2355};
-    Vec3f crossingPos2 = {-1639, 2, 68};
-    uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
-    uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
+    if (gGamestate != CREDITS_SEQUENCE) {
 
-    vec3f_set(position, -1680.0f, 2.0f, 35.0f);
-    position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING));
-    rrxing->crossingTrigger = crossing2;
-    vec3f_set(position, -1600.0f, 2.0f, 35.0f);
-    position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING));
-    rrxing->crossingTrigger = crossing2;
-    vec3s_set(rotation, 0, -0x2000, 0);
-    vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
-    position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING));
-    rrxing->crossingTrigger = crossing1;
-    vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
-    position[0] *= gCourseDirection;
-    rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
-                                                                            ACTOR_RAILROAD_CROSSING));
-    rrxing->crossingTrigger = crossing1;
+        Vec3f crossingPos = {-2500, 2, 2355};
+        Vec3f crossingPos2 = {-1639, 2, 68};
+        uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
+        uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
+
+        vec3f_set(position, -1680.0f, 2.0f, 35.0f);
+        position[0] *= gCourseDirection;
+        rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                                ACTOR_RAILROAD_CROSSING));
+        rrxing->crossingTrigger = crossing2;
+        vec3f_set(position, -1600.0f, 2.0f, 35.0f);
+        position[0] *= gCourseDirection;
+        rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                                ACTOR_RAILROAD_CROSSING));
+        rrxing->crossingTrigger = crossing2;
+        vec3s_set(rotation, 0, -0x2000, 0);
+        vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
+        position[0] *= gCourseDirection;
+        rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                                ACTOR_RAILROAD_CROSSING));
+        rrxing->crossingTrigger = crossing1;
+        vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
+        position[0] *= gCourseDirection;
+        rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
+                                                                                ACTOR_RAILROAD_CROSSING));
+        rrxing->crossingTrigger = crossing1;
 
 
+        generate_train_waypoints();
 
-    generate_train_waypoints();
+        s32 centerWaypoint = 160;
 
-    s32 centerWaypoint = 160;
+        // Spawn two trains
+        for (size_t i = 0; i < _numTrains; ++i) {
+            uint32_t waypoint = CalculateWaypointDistribution(i, _numTrains, gVehicle2DWaypointLength, centerWaypoint);
 
-    // Spawn two trains
-    for (size_t i = 0; i < _numTrains; ++i) {
-        uint32_t waypoint = CalculateWaypointDistribution(i, _numTrains, gVehicle2DWaypointLength, centerWaypoint);
+            if (CVarGetInteger("gMultiplayerNoFeatureCuts", 0) == false) {
+                // Multiplayer modes have no tender and no carriages
+                if (gActiveScreenMode != SCREEN_MODE_1P) {
+                    _tender = ATrain::TenderStatus::NO_TENDER;
+                    _numCarriages = 0;
+                }
 
-        if (CVarGetInteger("gMultiplayerNoFeatureCuts", 0) == false) {
-            // Multiplayer modes have no tender and no carriages
-            if (gActiveScreenMode != SCREEN_MODE_1P) {
-                _tender = ATrain::TenderStatus::NO_TENDER;
-                _numCarriages = 0;
+                // 2 player versus mode has a tender and a carriage
+                if ((gModeSelection == VERSUS) && (gPlayerCountSelection1 == 2)) {
+                    _tender = ATrain::TenderStatus::HAS_TENDER;
+                    _numCarriages = 1;
+                }
             }
 
-            // 2 player versus mode has a tender and a carriage
-            if ((gModeSelection == VERSUS) && (gPlayerCountSelection1 == 2)) {
-                _tender = ATrain::TenderStatus::HAS_TENDER;
-                _numCarriages = 1;
-            }
+            gWorldInstance.AddActor(new ATrain(_tender, _numCarriages, 2.5f, waypoint));
         }
 
-        gWorldInstance.AddActor(new ATrain(_tender, _numCarriages, 2.5f, waypoint));
-    }
+        if (gModeSelection == VERSUS) {
+            Vec3f pos = {0, 0, 0};
 
-    if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
-
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][138], 138, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][280], 280, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][404], 404, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][510], 510, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][138], 138, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][280], 280, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][404], 404, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][510], 510, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        }
     }
 }
 

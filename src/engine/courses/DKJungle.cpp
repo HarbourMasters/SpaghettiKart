@@ -151,29 +151,29 @@ void DKJungle::LoadTextures() {
 }
 
 void DKJungle::BeginPlay() {
-    gWorldInstance.AddActor(new AFinishline());
-
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_item_box_spawns));
+
     init_kiwano_fruit();
     func_80298D10();
+    if (gGamestate != CREDITS_SEQUENCE) {
 
+        generate_ferry_waypoints();
 
-    generate_ferry_waypoints();
+        // The original game only ran vehicle logic every second frame.
+        // Thus the speed gets divided by two to set speed to match properly
+        gWorldInstance.AddActor(new ABoat((0.6666666f)/4, 0));
 
-    // The original game only ran vehicle logic every second frame.
-    // Thus the speed gets divided by two to set speed to match properly
-    gWorldInstance.AddActor(new ABoat((0.6666666f)/4, 0));
+        if (gModeSelection == VERSUS) {
+            Vec3f pos = {0, 0, 0};
 
-    if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
-
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        }
     }
 }
 
