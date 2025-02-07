@@ -30,8 +30,8 @@ void OMoleGroup::func_80081FF4(s32 objectIndex) {
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_04C = random_int(30) + 5;
 
-    s16 mole = random_int(_moles.size());
-    for (size_t i = 0; i < _moles.size(); i++) {
+    s16 mole = random_int(_moles.size() - 1);
+    for (size_t i = 0; i < _moles.size() - 1; i++) {
         if (_moles[mole].Active == true) {
             mole++;
             if (mole == _moles.size()) {
@@ -47,5 +47,4 @@ void OMoleGroup::func_80081FF4(s32 objectIndex) {
     gObjectList[objectIndex].origin_pos[0] = _moles[mole].Pos.x * xOrientation;
     gObjectList[objectIndex].origin_pos[1] = _moles[mole].Pos.y - 9.0;
     gObjectList[objectIndex].origin_pos[2] = _moles[mole].Pos.z;
-
 }

@@ -3910,46 +3910,6 @@ void func_8007E4C4(void) {
     }
 }
 
-void func_8008153C(s32 objectIndex) {
-    UNUSED s32 stackPadding[3];
-    s32 sp70;
-    s32 var_s1;
-    s32 var_s7;
-    s32 loopObjectIndex;
-
-    if (gPlayerCountSelection1 == 1) {
-        sp70 = 8;
-    } else {
-        sp70 = 4;
-    }
-
-    for (var_s7 = 0; var_s7 < sp70; var_s7++) {
-        for (var_s1 = 0; var_s1 < gObjectParticle2_SIZE; var_s1++) {
-            loopObjectIndex = gObjectParticle2[var_s1];
-
-            if (gObjectList[loopObjectIndex].state != 0) {
-                continue;
-            }
-
-            u8* mole = (u8*) LOAD_ASSET(d_course_moo_moo_farm_mole_dirt);
-
-            init_object(loopObjectIndex, 0);
-            gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
-            gObjectList[loopObjectIndex].tlutList = mole;
-            gObjectList[loopObjectIndex].sizeScaling = 0.15f;
-            gObjectList[loopObjectIndex].velocity[1] = random_int(0x000AU);
-            gObjectList[loopObjectIndex].velocity[1] = (gObjectList[loopObjectIndex].velocity[1] * 0.1) + 4.8;
-            gObjectList[loopObjectIndex].unk_034 = random_int(5U);
-            gObjectList[loopObjectIndex].unk_034 = (gObjectList[loopObjectIndex].unk_034 * 0.01) + 0.8;
-            gObjectList[loopObjectIndex].orientation[1] = (0x10000 / sp70) * var_s1;
-            gObjectList[loopObjectIndex].origin_pos[0] = gObjectList[objectIndex].origin_pos[0];
-            gObjectList[loopObjectIndex].origin_pos[1] = gObjectList[objectIndex].origin_pos[1] - 13.0;
-            gObjectList[loopObjectIndex].origin_pos[2] = gObjectList[objectIndex].origin_pos[2];
-            break;
-        }
-    }
-}
-
 void func_80083F18(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:

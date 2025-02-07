@@ -282,7 +282,6 @@ void func_80081080(s32);
 void func_800810F4(s32);
 void func_80081208(void);
 void func_80081210(void);
-void func_8008153C(s32);
 void func_80081790(s32);
 void func_80081848(s32);
 void func_80081924(s32);

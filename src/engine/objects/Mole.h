@@ -38,6 +38,7 @@ public:
     void func_80081924(s32 objectIndex);
     void func_80081848(s32 objectIndex);
     void func_80081790(s32 objectIndex);
+    void func_8008153C(s32 objectIndex);
 
     s32 _objectIndex;
     s32 _moleIndex;
