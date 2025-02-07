@@ -162,12 +162,8 @@ void KalimariDesert::BeginPlay() {
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing2;
 
-        // Original game forgot to put this here which means the second crossing signs are facing the wrong direction
-        if (gCCSelection == CC_EXTRA) {
-            vec3s_set(rotation, 0, 0x2000, 0);
-        } else {
-            vec3s_set(rotation, 0, -0x2000, 0);
-        }
+        // Original game forgot to put gCourseDirection to face the crossing the right direction in extra mode
+        vec3s_set(rotation, 0, -0x2000 * gCourseDirection, 0);
         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
