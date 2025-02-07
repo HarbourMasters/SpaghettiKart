@@ -10,11 +10,12 @@ extern "C" {
 #include "main.h"
 #include "vehicles.h"
 #include "code_80005FD0.h"
+#include "code_80057C60.h"
 #include "common_structs.h"
 }
 
 TrainCrossing::TrainCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {
-    Position[0] = position[0];
+    Position[0] = position[0] * xOrientation;
     Position[1] = position[1];
     Position[2] = position[2];
     ApproachRadius = approachRadius;
