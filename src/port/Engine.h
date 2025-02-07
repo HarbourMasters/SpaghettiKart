@@ -29,6 +29,13 @@ class GameEngine {
     std::vector<std::string> sequenceTable;
     std::vector<AudioSequenceData*> audioSequenceTable;
 
+    ImFont* fontStandard;
+    ImFont* fontStandardLarger;
+    ImFont* fontStandardLargest;
+    ImFont* fontMono;
+    ImFont* fontMonoLarger;
+    ImFont* fontMonoLargest;
+
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
     static void Create();
@@ -54,6 +61,8 @@ class GameEngine {
     uint32_t OTRGetGameRenderHeight();
     uint32_t OTRCalculateCenterOfAreaFromRightEdge(int32_t center);
     uint32_t OTRCalculateCenterOfAreaFromLeftEdge(int32_t center);
+  private:
+    ImFont* CreateFontWithSize(float size, std::string fontPath = "");
 };
 #endif
 

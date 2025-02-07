@@ -120,6 +120,8 @@ s32 osPfsFileState(OSPfs* pfs, s32 file_no, OSPfsState* state) {
 }
 
 s32 osPfsFreeBlocks(OSPfs* pfs, s32* bytes_not_used) {
+    *bytes_not_used = 0x1000;
+    return PFS_NO_ERROR;
 }
 
 s32 osPfsFindFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name, s32* file_no) {

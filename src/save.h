@@ -73,7 +73,7 @@ s32 controller_pak_2_status(void);
 s32 func_800B5F30(void);
 s32 func_800B6014(void);
 s32 func_800B6088(s32);
-u8 func_800B60E8(s32);
+u8 func_800B60E8(s32, u8*);
 s32 func_800B6178(s32);
 s32 func_800B64EC(s32);
 s32 func_800B65F4(s32, s32);

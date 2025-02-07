@@ -20,6 +20,7 @@ set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Spaghetti
 # Add a custom module path to locate additional CMake modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 include(FindFontconfig)
+include(cmake/lus-cvars.cmake)
 
 if (WIN32)
 include(libultraship/cmake/automate-vcpkg.cmake)
@@ -214,6 +215,12 @@ if (MSVC)
 	  set_target_properties(${PROJECT_NAME} PROPERTIES MSVC_RUNTIME_LIBRARY ${MSVC_RUNTIME_LIBRARY_STR})
   endif()
 endif()
+
+#=================== SSE2NEON ===================
+set(SSE2NEON_DIR ${CMAKE_BINARY_DIR}/_deps/sse2neon)
+file(DOWNLOAD "https://raw.githubusercontent.com/DLTcollab/sse2neon/refs/heads/master/sse2neon.h" "${SSE2NEON_DIR}/sse2neon.h")
+
+include_directories(${SSE2NEON_DIR})
 
 #==============================================================================#
 # Libultraship Integration                                                            #

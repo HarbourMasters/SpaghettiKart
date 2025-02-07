@@ -129,9 +129,9 @@ void audio_dma_copy_async(uintptr_t devAddr, void* vAddr, size_t nbytes, OSMesgQ
  * Performs a partial asynchronous (normal priority) DMA copy. This is limited
  * to 0x1000 bytes transfer at once.
  */
-void audio_dma_partial_copy_async(uintptr_t* devAddr, u8** vAddr, ssize_t* remaining, OSMesgQueue* queue,
+void audio_dma_partial_copy_async(uintptr_t* devAddr, u8** vAddr, size_t* remaining, OSMesgQueue* queue,
                                   OSIoMesg* mesg) {
-    ssize_t transfer = (*remaining >= 0x1000 ? 0x1000 : *remaining);
+    size_t transfer = (*remaining >= 0x1000 ? 0x1000 : *remaining);
     *remaining -= transfer;
     osInvalDCache(*vAddr, transfer);
     osPiStartDma(mesg, OS_MESG_PRI_NORMAL, OS_READ, *devAddr, *vAddr, transfer, queue);
@@ -174,7 +174,7 @@ void* dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8* dmaIndexRef) {
     u32 transfer;
     u32 i;
     u32 dmaIndex;
-    ssize_t bufferPos;
+    size_t bufferPos;
     UNUSED u32 pad;
 
     if (arg2 != 0 || *dmaIndexRef >= sSampleDmaListSize1) {
@@ -604,11 +604,11 @@ uint8_t* load_sequence_immediate(s32 seqId, s32 arg1) {
     return GameEngine_LoadSequence(seqId)->data;
 }
 
-struct CtlEntry* load_banks_immediate(s32 seqId, u8 *outDefaultBank) {
+struct CtlEntry* load_banks_immediate(s32 seqId, u8* outDefaultBank) {
     u32 bankId;
-    struct AudioSequenceData *seqData = GameEngine_LoadSequence(seqId);
-    struct CtlEntry *output;
-    for(size_t i = 0; i < seqData->bankCount; i++) {
+    struct AudioSequenceData* seqData = GameEngine_LoadSequence(seqId);
+    struct CtlEntry* output;
+    for (size_t i = 0; i < seqData->bankCount; i++) {
         output = GameEngine_LoadBank(bankId = seqData->banks[i]);
     }
     *outDefaultBank = bankId;
@@ -659,7 +659,7 @@ void load_sequence(u32 player, u32 seqId, s32 loadAsync) {
 }
 
 void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
-    struct SequencePlayer *seqPlayer = &gSequencePlayers[player];
+    struct SequencePlayer* seqPlayer = &gSequencePlayers[player];
 
     if (seqId >= gSequenceCount) {
         return;
@@ -808,7 +808,6 @@ void audio_init(void) {
     audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f));
     audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f));
     audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f));
-
 }
 #else
 #ifdef VERSION_EU

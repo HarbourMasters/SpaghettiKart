@@ -741,12 +741,12 @@ s32 func_800B6088(s32 arg0) {
                               (u8*) temp_v1);
 }
 
-u8 func_800B60E8(s32 page) {
+u8 func_800B60E8(s32 page, u8* data) {
     s32 i;
     u32 checksum = 0;
     u8* addr;
 
-    for (i = 0, addr = (u8*) &((u8*) sReplayGhostDecompressed)[page * 256]; i < 256; i++) {
+    for (i = 0, addr = (u8*) &(data)[page * 256]; i < 256; i++) {
         checksum += (*addr++ * (page + 1) + i);
     }
     return checksum;
@@ -787,7 +787,7 @@ s32 func_800B6178(s32 arg0) {
             temp_s3->unk_00 = D_80162DFC;
             temp_s3->characterId = (u8) D_80162DE0;
             for (var_s0 = 0; var_s0 < 0x3C; var_s0++) {
-                temp_s3->unk_07[var_s0] = func_800B60E8(var_s0);
+                temp_s3->unk_07[var_s0] = func_800B60E8(var_s0, (u8*) sReplayGhostBuffer);
             }
             var_v0 = func_800B6088(arg0);
         }
@@ -843,7 +843,7 @@ s32 func_800B63F0(s32 arg0) {
             phi_s1 = (u8*) &D_8018EE10[arg0];
 
             while (temp_s0 < 0x3C) {
-                if (phi_s1[7] != func_800B60E8(temp_s0)) {
+                if (phi_s1[7] != func_800B60E8(temp_s0, (u8*) sReplayGhostBuffer)) {
                     phi_s3 = 1;
                     break;
                 }
@@ -875,7 +875,7 @@ s32 func_800B64EC(s32 arg0) {
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
             // clang-format on
 
-            if (phi_s1[7] != func_800B60E8(temp_s0)) {
+            if (phi_s1[7] != func_800B60E8(temp_s0, (u8*) sReplayGhostDecompressed)) {
                 D_8018EE10[arg0].ghostDataSaved = 0;
                 return -2;
             }
@@ -912,7 +912,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     if (writeStatus == 0) {
         temp_s3 = &((struct_8018EE10_entry*) gSomeDLBuffer)[arg0];
         for (i = 0; i < 0x3C; i++) {
-            if (temp_s3->unk_07[i] != func_800B60E8(i)) {
+            if (temp_s3->unk_07[i] != func_800B60E8(i, (u8*) sReplayGhostBuffer)) {
                 temp_s3->ghostDataSaved = 0;
                 return -2;
             }
