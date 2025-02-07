@@ -162,6 +162,7 @@ void KalimariDesert::BeginPlay() {
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing2;
 
+        // Original game forgot to put this here which means the second crossing signs are facing the wrong direction
         if (gCCSelection == CC_EXTRA) {
             vec3s_set(rotation, 0, 0x2000, 0);
         } else {
