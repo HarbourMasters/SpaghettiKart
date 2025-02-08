@@ -29,7 +29,7 @@ extern f32 gFreecamFollowFactor;
 extern char* D_800E76A8[];
 extern u32 fRankIndex;
 extern u32 fTargetPlayer;
-extern u32 gFreecamControllerType;
+extern u32 bFreecamUseController;
 void freecam_get_player_from_character(s32 characterId);
 }
 
@@ -60,7 +60,7 @@ void RegisterFreecamWidgets() {
     //static int current_item = 0;
     mPortMenu->AddWidget(path, "Control Type", WIDGET_COMBOBOX)
         .ValuePointer(&controllerType)
-        .Callback([](WidgetInfo& info) { gFreecamControllerType = (uint32_t)*std::get<int32_t*>(info.valuePointer); })
+        .Callback([](WidgetInfo& info) { bFreecamUseController = (uint32_t)*std::get<int32_t*>(info.valuePointer); })
         .Options(UIWidgets::ComboboxOptions().ComboMap(controlType));
 
     mPortMenu->AddWidget(path, "Move: W,A,S,D\nUp: Space, Down: Shift\nFaster: Ctrl\nLook: Right-mouse button\nTarget Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);

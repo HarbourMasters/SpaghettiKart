@@ -66,6 +66,8 @@ struct D_80150158 {
 struct Controller {
     s16 rawStickX;
     s16 rawStickY;
+    s16 rightRawStickX;
+    s16 rightRawStickY;
     u16 button;          // HeldButton
     u16 buttonPressed;   // OnTriggered
     u16 buttonDepressed; // OffTriggered

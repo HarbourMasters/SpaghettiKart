@@ -33,6 +33,8 @@ typedef struct {
 
 freecamSaveState fState;
 
+Controller fController;
+
 u32 fRankIndex = 0;
 u32 fTargetPlayer = false;
 u32 fMode; // freecam mode should probably be an enum
@@ -40,7 +42,7 @@ u32 fModeInit = false;
 
 int rightMouseButtonDown = 0; // Track if right mouse button is held down
 
-u32 gFreecamControllerType = 0;
+u32 bFreecamUseController = false;
 
 /**
  * Controls
@@ -105,26 +107,35 @@ void freecam(Camera* camera, Player* player, s8 index) {
 }
 
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
-    static int prevMouseX = 0, prevMouseY = 0;
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMouseDelta();
 
-    // Uint32 mouseState = SDL_GetRelativeMouseState(&mouse.x, &mouse.y);
+    f32 yawChange = 0.0f;
+    f32 pitchChange = 0.0f;
 
-    // printf("MOUSE %d %d\n", mouse.x, mouse.y);
+    if (bFreecamUseController) {
+        // Controller controls
+            f32 stickX = ((f32)fController.rightRawStickX);
+            f32 stickY = ((f32)fController.rightRawStickY);
 
-    mouse.x = (mouse.x + prevMouseX) / 2;
-    mouse.y = (mouse.y + prevMouseY) / 2;
-    prevMouseX = mouse.x;
-    prevMouseY = mouse.y;
+            // Sensitivity multipliers
+            float controllerSensitivityX = 5.0f; // Adjust as needed
+            float controllerSensitivityY = 3.0f;
 
-    f32 dampingFactor = 0.98f; // Damping factor to gradually slow down the rotation.
+            // Deadzone handling (ignore tiny stick movements)
+            const float deadzone = 0.1f;
+            if (fabs(stickX) < deadzone) stickX = 0.0f;
+            if (fabs(stickY) < deadzone) stickY = 0.0f;
 
-    if (wnd->GetMouseState(Ship::LUS_MOUSE_BTN_RIGHT)) {
+            // Instead of adding, directly set rotation velocity (so holding gives a steady rotation)
+            freeCam.rotVelocity[1] += stickX * controllerSensitivityX;  // Yaw (left/right)
+            freeCam.rotVelocity[2] += stickY * controllerSensitivityY;  // Pitch (up/down)
+    } else { // Mouse controls
         // Calculate yaw (left/right) and pitch (up/down) changes
-        f32 yawChange = mouse.x * MOUSE_SENSITIVITY_X;
-        f32 pitchChange = mouse.y * MOUSE_SENSITIVITY_Y;
-
+        if (wnd->GetMouseState(Ship::LUS_MOUSE_BTN_RIGHT)) {
+            yawChange = mouse.x * MOUSE_SENSITIVITY_X;
+            pitchChange = mouse.y * MOUSE_SENSITIVITY_Y;
+        }
         // Update rotational velocity based on mouse movement
         freeCam.rotVelocity[1] += yawChange * 65535.0f / (2 * M_PI);  // Yaw (left/right)
         freeCam.rotVelocity[2] += pitchChange * 65535.0f / (2 * M_PI); // Pitch (up/down)
@@ -190,37 +201,43 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
 
     // Use n64 controls for use with a controller
     //! @todo configure this properly
-    if (gFreecamControllerType == 1) {
+    if (bFreecamUseController) {
         // Targeting /fMode is broken
         // if (controller->buttonPressed & U_JPAD) {
         //     fMode = !fMode;
         // }
         // Target a player
-        if (controller->buttonPressed & R_TRIG) {
-            fTargetPlayer = !fTargetPlayer;
+
+        if (fController.buttonDepressed & R_TRIG) {
+            fTargetPlayer = true;
         }
-        if (controller->buttonPressed & L_CBUTTONS) {
+
+        if (fController.buttonDepressed & L_TRIG) {
+            fTargetPlayer = false;
+        }
+
+        if (fController.buttonPressed & L_JPAD) {
             TargetPreviousPlayer = true;
         }
-        if (controller->buttonPressed & R_CBUTTONS) {
+        if (fController.buttonPressed & R_JPAD) {
             TargetNextPlayer = true;
         }
-        if (controller->button & A_BUTTON) {
+        if (fController.rawStickY > 10) {
             Forward = true;
         }
-        if (controller->button & B_BUTTON) {
+        if (fController.rawStickY < -10) {
             Backward = true;
         }
-        if (controller->button & L_JPAD) {
+        if (fController.rawStickX > 10) {
+            PanRight = true;
+        }
+        if (fController.rawStickX < -10) {
             PanLeft = true;
         }
-        if (controller->button & R_JPAD) {
-            PanLeft = true;
-        }
-        if (controller->button & U_CBUTTONS) {
+        if (fController.button & B_BUTTON) {
             Down = true;
         }
-        if (controller->button & U_CBUTTONS) {
+        if (fController.button & A_BUTTON) {
             Up = true;
         }
         // if (controller->button ??) {
@@ -345,6 +362,24 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     freeCam.velocity[0] += totalMove[0];
     freeCam.velocity[1] += totalMove[1];
     freeCam.velocity[2] += totalMove[2];
+}
+
+void freecam_update_controller(void) {
+    fController.rawStickX = gControllerPads[0].stick_x;
+    fController.rawStickY = gControllerPads[0].stick_y;
+
+    fController.rightRawStickX = gControllerPads[0].right_stick_x;
+    fController.rightRawStickY = gControllerPads[0].right_stick_y;
+
+    if ((gControllerPads[0].button & 4) != 0) {
+        gControllerPads[0].button |= Z_TRIG;
+    }
+
+    fController.buttonPressed = gControllerPads[0].button & (gControllerPads[0].button ^ fController.button);
+    fController.buttonDepressed = fController.button & (gControllerPads[0].button ^ fController.button);
+    fController.button = gControllerPads[0].button;
+
+    // Note that D Pad as stick code has been removed. So if it's needed, it needs to be put back in.
 }
 
 void freecam_render_setup(void) {

@@ -367,12 +367,17 @@ void update_controller(s32 index) {
     }
 
     // Prevents pause menu intereference while controlling flycam
-    if ((CVarGetInteger("gFreecam", 0) == 1) && (gFreecamControllerType == 0) && (gGamestate == RACING)) {
+    // Freecam only works with controller 1
+    if ((CVarGetInteger("gFreecam", 0) == 1) && (gGamestate == RACING) && (index == 0)) {
+        freecam_update_controller();
         return;
     }
 
     controller->rawStickX = gControllerPads[index].stick_x;
     controller->rawStickY = gControllerPads[index].stick_y;
+
+    controller->rightRawStickX = gControllerPads[index].right_stick_x;
+    controller->rightRawStickY = gControllerPads[index].right_stick_y;
 
     if ((gControllerPads[index].button & 4) != 0) {
         gControllerPads[index].button |= Z_TRIG;
