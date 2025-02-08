@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 # Set the project version and language
 project(Spaghettify VERSION 0.1.0 LANGUAGES C CXX ASM)
+include(FetchContent)
 
 if(APPLE)
   enable_language(OBJCXX)
@@ -376,8 +377,8 @@ if(USE_NETWORKING)
     endif()
     find_package(SDL2_net REQUIRED)
     include_directories(${SDL2_NET_INCLUDE_DIRS})
-#    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
-#    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
+    # target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+    # target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
 option(USE_STANDALONE "Build as a standalone executable" OFF)

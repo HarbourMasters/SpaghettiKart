@@ -1,32 +1,23 @@
-name: Windows Compile test
+name: Windows Validation
 
 on:
-  push:
-    branches: [ "*" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "*" ]
 
 jobs:
   build:
-    if: 0
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
         with:
-          submodules: "true"
-      - name: Get Complementary file
-        uses: actions/checkout@v4.1.1
-        with:
-          path: complementary_file
-          repository: UnspaghettifyKart/action-build-private-file
-          ssh-key: ${{ secrets.WINDOWS_SSH_PRIVATE_KEY }}
-      - name: Install dependencies
-        run: |
-          Invoke-WebRequest https://github.com/coco875/mk64-tools/releases/download/v0.0.8/mips-tools-chain-windows.zip -OutFile mips-tools-chain-windows.zip
-          Expand-Archive mips-tools-chain-windows.zip -DestinationPath mips-tools-chain-windows
-          Copy-Item -Path mips-tools-chain-windows/mingw64 -Destination tools -Recurse
+          submodules: recursive
       - name: Build
         run: |
-          Copy-Item -Path complementary_file/* -Destination . -Recurse
-          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
-          python tools/windows_build.py
+          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
+          cmake --build ./build/x64
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaghetti-windows
+          path: ./build/x64/Debug
+          retention-days: 1
