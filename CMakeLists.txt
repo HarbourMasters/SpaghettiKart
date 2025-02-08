@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 # Set the project version and language
 project(Spaghettify VERSION 0.1.0 LANGUAGES C CXX ASM)
+include(FetchContent)
 
 if(APPLE)
   enable_language(OBJCXX)
