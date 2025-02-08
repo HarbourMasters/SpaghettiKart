@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include "StringHelper.h"
+#include "GameExtractor.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
 #include "resource/type/ResourceType.h"
@@ -44,22 +45,41 @@ float gInterpolationStep = 0.0f;
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
-    std::vector<std::string> OTRFiles;
-    if (const std::string spaghetti_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.o2r");
-        std::filesystem::exists(spaghetti_path)) {
-        OTRFiles.push_back(spaghetti_path);
+    std::vector<std::string> archiveFiles;
+
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.o2r");
+    const std::string assets_path = Ship::Context::GetPathRelativeToAppDirectory("ship.o2r");
+
+#ifdef _WIN32
+    AllocConsole();
+#endif
+
+    if (std::filesystem::exists(main_path)) {
+        archiveFiles.push_back(main_path);
+    } else {
+        if (ShowYesNoBox("No O2R Files", "No O2R files found. Generate one now?") == IDYES) {
+            if(!GenAssetFile()){
+                ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
+                exit(1);
+            } else {
+                archiveFiles.push_back(main_path);
+            }
+        } else {
+            exit(1);
+        }
     }
-    if (const std::string ship_otr_path = Ship::Context::GetPathRelativeToAppBundle("ship.o2r");
-        std::filesystem::exists(ship_otr_path)) {
-        OTRFiles.push_back(ship_otr_path);
+
+    if (std::filesystem::exists(assets_path)) {
+        archiveFiles.push_back(assets_path);
     }
+
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
         !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
                 auto ext = p.path().extension().string();
                 if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
-                    OTRFiles.push_back(p.path().generic_string());
+                    archiveFiles.push_back(p.path().generic_string());
                 }
             }
         }
@@ -73,13 +93,13 @@ GameEngine::GameEngine() {
 
     auto controlDeck = std::make_shared<LUS::ControlDeck>();
 
-    this->context->InitResourceManager(OTRFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
+    this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
 
     auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     //auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
-    this->context->Init(OTRFiles, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
+    this->context->Init(archiveFiles, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
 
     
     // this->context = Ship::Context::CreateInstance("Spaghettify", "skart64", "spaghettify.cfg.json", OTRFiles, {}, 3,
@@ -150,6 +170,58 @@ GameEngine::GameEngine() {
     fontStandardLarger = CreateFontWithSize(20.0f, "fonts/Montserrat-Regular.ttf");
     fontStandardLargest = CreateFontWithSize(24.0f, "fonts/Montserrat-Regular.ttf");
     ImGui::GetIO().FontDefault = fontMono;
+}
+
+bool GameEngine::GenAssetFile() {
+    auto extractor = new GameExtractor();
+
+    if (!extractor->SelectGameFromUI()) {
+        ShowMessage("Error", "No ROM selected.\n\nExiting...");
+        exit(1);
+    }
+
+    auto game = extractor->ValidateChecksum();
+    if (!game.has_value()) {
+        ShowMessage("Unsupported ROM", "The provided ROM is not supported.\n\nCheck the readme for a list of supported versions.");
+        exit(1);
+    }
+
+    ShowMessage(("Found " + game.value()).c_str(), "The extraction process will now begin.\n\nThis may take a few minutes.", SDL_MESSAGEBOX_INFORMATION);
+
+    return extractor->GenerateOTR();
+}
+
+void GameEngine::ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type) {
+    #if defined(__SWITCH__)
+        SPDLOG_ERROR(message);
+    #else
+        SDL_ShowSimpleMessageBox(type, title, message, nullptr);
+        SPDLOG_ERROR(message);
+    #endif
+}
+
+int GameEngine::ShowYesNoBox(const char* title, const char* box) {
+    int ret;
+#ifdef _WIN32
+    ret = MessageBoxA(nullptr, box, title, MB_YESNO | MB_ICONQUESTION);
+#else
+    SDL_MessageBoxData boxData = { 0 };
+    SDL_MessageBoxButtonData buttons[2] = { { 0 } };
+
+    buttons[0].buttonid = IDYES;
+    buttons[0].text = "Yes";
+    buttons[0].flags = SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT;
+    buttons[1].buttonid = IDNO;
+    buttons[1].text = "No";
+    buttons[1].flags = SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT;
+    boxData.numbuttons = 2;
+    boxData.flags = SDL_MESSAGEBOX_INFORMATION;
+    boxData.message = box;
+    boxData.title = title;
+    boxData.buttons = buttons;
+    SDL_ShowMessageBox(&boxData, &ret);
+#endif
+    return ret;
 }
 
 void GameEngine::Create() {
