@@ -6,6 +6,12 @@
 #include "graphic/Fast3D/gfx_rendering_api.h"
 #include "MenuTypes.h"
 
+extern "C" {
+#include "defines.h"
+#include "main.h"
+#include "menus.h"
+}
+
 namespace Ship {
 uint32_t GetVectorIndexOf(std::vector<std::string>& vector, std::string value);
 class Menu : public GuiWindow {
@@ -51,7 +57,14 @@ class Menu : public GuiWindow {
                                .options = std::make_shared<UIWidgets::WidgetOptions>(UIWidgets::WidgetOptions{}.Tooltip(
                                    "Searches all menus for the given text, including tooltips.")) } } }
     };
-    virtual void ProcessReset() {}
+    virtual void ProcessReset() {
+      gGamestateNext = MAIN_MENU_FROM_QUIT;
+      if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+          gMenuSelection = START_MENU;
+      } else {
+          gMenuSelection = LOGO_INTRO_MENU;
+      }
+    }
 
   private:
     bool allowPopout = true; // PortNote: should be set to false on small screen ports

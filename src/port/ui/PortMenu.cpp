@@ -390,7 +390,7 @@ void PortMenu::AddDevTools() {
         .CVar("gGameInfoEnabled")
         .Options(ButtonOptions().Tooltip(
             "Shows the game info window, contains player and actor information"))
-        .WindowName("GfxDebuggerWindow");
+        .WindowName("GameInfo");
 
     path = { "Developer", "Stats", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Stats", 1);

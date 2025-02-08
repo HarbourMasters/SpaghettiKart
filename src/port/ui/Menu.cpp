@@ -646,15 +646,7 @@ void Menu::DrawElement() {
     UIWidgets::ButtonOptions options2 = {};
     options2.color = UIWidgets::Colors::Red;
     options2.size = UIWidgets::Sizes::Inline;
-    options2.tooltip = "Reset"
-#ifdef __APPLE__
-                       " (Command-R)"
-#elif !defined(__SWITCH__) && !defined(__WIIU__)
-                       " (Ctrl+R)"
-#else
-                       ""
-#endif
-        ;
+    options2.tooltip = "Reset";
     if (UIWidgets::Button(ICON_FA_UNDO, options2)) {
         ProcessReset();
     }
@@ -662,7 +654,7 @@ void Menu::DrawElement() {
     UIWidgets::ButtonOptions options3 = {};
     options3.color = UIWidgets::Colors::Red;
     options3.size = UIWidgets::Sizes::Inline;
-    options3.tooltip = "Quit 2S2H";
+    options3.tooltip = "Quit";
     if (UIWidgets::Button(ICON_FA_POWER_OFF, options3)) {
         if (!popped) {
             ToggleVisibility();
