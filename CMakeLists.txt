@@ -363,7 +363,15 @@ include_directories(${SDL2_NET_INCLUDE_DIRS})
 #target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
-target_link_libraries(${PROJECT_NAME} PRIVATE "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
+option(USE_STANDALONE "Build as a standalone executable" OFF)
+option(BUILD_STORMLIB "Build with StormLib support" OFF)
+
+option(BUILD_SM64 "Build with Super Mario 64 support" OFF)
+option(BUILD_SF64 "Build with Star Fox 64 support" OFF)
+option(BUILD_FZERO "Build with F-Zero X support" OFF)
+
+add_subdirectory(torch)
+target_link_libraries(${PROJECT_NAME} PRIVATE torch "${ADDITIONAL_LIBRARY_DEPENDENCIES}")
 
 if(CMAKE_SYSTEM_NAME MATCHES "NintendoSwitch")
 
@@ -578,27 +586,35 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
 endif()
 
 include(ExternalProject)
-ExternalProject_Add(torch
-PREFIX torch
+ExternalProject_Add(TorchExternal
+PREFIX TorchExternal
 SOURCE_DIR ${CMAKE_SOURCE_DIR}/torch
 CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/torch
 )
 
-ExternalProject_Get_Property(torch install_dir)
+ExternalProject_Get_Property(TorchExternal install_dir)
 if (MSVC)
-  set(TORCH_EXECUTABLE ${install_dir}/src/torch-build/$<CONFIGURATION>/torch)
+  set(TORCH_EXECUTABLE ${install_dir}/src/TorchExternal-build/$<CONFIGURATION>/torch)
 else()
-  set(TORCH_EXECUTABLE ${install_dir}/src/torch-build/torch)
+  set(TORCH_EXECUTABLE ${install_dir}/src/TorchExternal-build/torch)
 endif()
 message(STATUS "Torch executable path: ${TORCH_EXECUTABLE}")
 
 add_custom_target(
     ExtractAssets
-    DEPENDS torch
+    DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} header -o baserom.us.z64
     COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
     COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
+)
+
+add_custom_target(
+    GenerateO2R
+    DEPENDS TorchExternal
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMAND ${TORCH_EXECUTABLE} pack port spaghetti.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
 )
