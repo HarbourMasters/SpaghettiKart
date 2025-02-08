@@ -23,23 +23,19 @@ include(FindFontconfig)
 include(cmake/lus-cvars.cmake)
 
 if (WIN32)
-include(libultraship/cmake/automate-vcpkg.cmake)
-# Forced to use MSVC
-set(MSVC ON)
-
-if(MSVC)
+include(cmake/automate-vcpkg.cmake)
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
-else()
-set(VCPKG_TRIPLET x64-mingw-static)
-set(VCPKG_TARGET_TRIPLET x64-mingw-static)
+vcpkg_bootstrap()
+vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 glew glfw3 nlohmann-json tinyxml2 spdlog libogg libvorbis)
+
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
 
-vcpkg_bootstrap()
-vcpkg_install_packages(fontconfig sdl2 zlib bzip2 libzip libpng getopt dirent libusb pthread glew glfw3 spdlog)
-
-vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 sdl2-net glew glfw3 nlohmann-json tinyxml2)
-
+if(NOT EXISTS ${CMAKE_BINARY_DIR}/config.yml)
+	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "${CMAKE_BINARY_DIR}/config.yml")
+	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "${CMAKE_BINARY_DIR}/assets/")
 endif()
 
 if (MSVC)
@@ -56,6 +52,21 @@ add_compile_definitions(
 )
 set(CMAKE_XCODE_ATTRIBUTE_DEVELOPMENT_TEAM "YOUR_TEAM_ID")
 set(PROJECT_ID "dev.net64.game")
+endif()
+
+################################################################################
+# Set target arch type if empty. Visual studio solution generator provides it.
+################################################################################
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    if(NOT CMAKE_VS_PLATFORM_NAME)
+        set(CMAKE_VS_PLATFORM_NAME "x64")
+    endif()
+    message("${CMAKE_VS_PLATFORM_NAME} architecture in use")
+
+    if(NOT ("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64"
+        OR "${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32"))
+        message(FATAL_ERROR "${CMAKE_VS_PLATFORM_NAME} arch is not supported!")
+    endif()
 endif()
 
 # Set game compilation version
@@ -222,6 +233,14 @@ file(DOWNLOAD "https://raw.githubusercontent.com/DLTcollab/sse2neon/refs/heads/m
 
 include_directories(${SSE2NEON_DIR})
 
+#=================== DRLibs ===================
+FetchContent_Declare(
+    dr_libs
+    GIT_REPOSITORY https://github.com/mackron/dr_libs.git
+	GIT_TAG da35f9d6c7374a95353fd1df1d394d44ab66cf01
+)
+FetchContent_MakeAvailable(dr_libs)
+
 #==============================================================================#
 # Libultraship Integration                                                            #
 #==============================================================================#
@@ -258,45 +277,31 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic
   ${SDL2_INCLUDE_DIRS}
   ${GLEW_INCLUDE_DIRS}
+  ${dr_libs_SOURCE_DIR}
 )
 
+add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
+add_dependencies(${PROJECT_NAME} libultraship)
+target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
+
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-	if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
-		target_compile_definitions(${PROJECT_NAME} PRIVATE
-			"$<$<CONFIG:Debug>:"
-				"_DEBUG;"
-				"_CRT_SECURE_NO_WARNINGS;"
-				"ENABLE_DX11;"
-			">"
-			"$<$<CONFIG:Release>:"
-				"NDEBUG"
-			">"
-			"INCLUDE_GAME_PRINTF;"
-			"UNICODE;"
-			"_UNICODE"
-			STORMLIB_NO_AUTO_LINK
-			"_CRT_SECURE_NO_WARNINGS;"
-            "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;"
-		)
-	elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
-		target_compile_definitions(${PROJECT_NAME} PRIVATE
-			"$<$<CONFIG:Debug>:"
-				"NOINCLUDE_GAME_PRINTF;"
-				"_DEBUG;"
-				"_CRT_SECURE_NO_WARNINGS;"
-				"ENABLE_OPENGL"
-			">"
-			"$<$<CONFIG:Release>:"
-				"NDEBUG;"
-			">"
-			"INCLUDE_GAME_PRINTF;"
-			"WIN32;"
-			"UNICODE;"
-			"_UNICODE"
-			STORMLIB_NO_AUTO_LINK
-            "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;"
-		)
-	endif()
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        "$<$<CONFIG:Debug>:"
+            "_DEBUG;"
+            "_CRT_SECURE_NO_WARNINGS;"
+            "ENABLE_DX11;"
+        ">"
+        "$<$<CONFIG:Release>:"
+            "NDEBUG"
+        ">"
+        "INCLUDE_GAME_PRINTF;"
+        "UNICODE;"
+        "_UNICODE;"
+        "_CRT_SECURE_NO_WARNINGS;"
+        "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;"
+    )
+    add_compile_definitions(STORMLIB_NO_AUTO_LINK)
+	set(STORMLIB_NO_AUTO_LINK ON)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
 	target_compile_definitions(${PROJECT_NAME} PRIVATE
 		"$<$<CONFIG:Debug>:"
@@ -327,13 +332,18 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
 	)
 endif()
 
-add_subdirectory(libultraship ${CMAKE_CURRENT_SOURCE_DIR}/libultraship)
-
-add_dependencies(${PROJECT_NAME} libultraship)
-target_link_libraries(${PROJECT_NAME} PRIVATE libultraship)
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    find_package(Ogg CONFIG REQUIRED)
+    link_libraries(Ogg::ogg)
+
+    find_package(Vorbis CONFIG REQUIRED)
+    link_libraries(Vorbis::vorbisfile)
 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
         "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
+        "Ogg::ogg"
+        "Vorbis::vorbis"
+        "Vorbis::vorbisenc"
+        "Vorbis::vorbisfile"
     )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
@@ -347,20 +357,26 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
         ${DEVKITPRO}/portlibs/wiiu/include/
     )
 else()
+    find_package(Ogg REQUIRED)
+    find_package(Vorbis REQUIRED)
  	set(ADDITIONAL_LIBRARY_DEPENDENCIES
         "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
+        "Ogg::ogg"
+        "Vorbis::vorbis"
+        "Vorbis::vorbisenc"
+        "Vorbis::vorbisfile"
 	)
 endif()
 
 
 if(USE_NETWORKING)
-if(MSVC)
-vcpkg_install_packages(sdl2-net)
-endif()
-find_package(SDL2_net REQUIRED)
-include_directories(${SDL2_NET_INCLUDE_DIRS})
-#target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
-#target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
+    if(MSVC)
+        vcpkg_install_packages(sdl2-net)
+    endif()
+    find_package(SDL2_net REQUIRED)
+    include_directories(${SDL2_NET_INCLUDE_DIRS})
+    target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE USE_NETWORKING)
 endif()
 
 option(USE_STANDALONE "Build as a standalone executable" OFF)
@@ -375,14 +391,14 @@ target_link_libraries(${PROJECT_NAME} PRIVATE torch "${ADDITIONAL_LIBRARY_DEPEND
 
 if(CMAKE_SYSTEM_NAME MATCHES "NintendoSwitch")
 
-nx_generate_nacp(Lylat.nacp
-NAME "${PROJECT_NAME}"
-AUTHOR "${PROJECT_TEAM}"
-VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+nx_generate_nacp(${PROJECT_NAME}.nacp
+   NAME "${PROJECT_NAME}"
+   AUTHOR "${PROJECT_TEAM}"
+   VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
 )
 
 nx_create_nro(${PROJECT_NAME}
-NACP Lylat.nacp
+    NACP ${PROJECT_NAME}.nacp
 )
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.nro DESTINATION . COMPONENT ${PROJECT_NAME})
@@ -400,14 +416,14 @@ if(MSVC)
   if("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "x64")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
-              /Wall;
+              /w;
               /Od;
               /MTd
           >
           $<$<CONFIG:Release>:
               /Oi;
               /Gy;
-              /Wall;
+              /W3;
               /MT
           >
           /permissive-;
@@ -416,6 +432,7 @@ if(MSVC)
           ${DEFAULT_CXX_EXCEPTION_HANDLING}
       )
       target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Debug>:/ZI;>)
+      target_compile_options(${PROJECT_NAME} PRIVATE  $<$<CONFIG:Release>:/Zi;>)
   elseif("${CMAKE_VS_PLATFORM_NAME}" STREQUAL "Win32")
       target_compile_options(${PROJECT_NAME} PRIVATE
           $<$<CONFIG:Debug>:
@@ -553,43 +570,43 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
           >
       )
   else()
-        if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-            set(CPU_OPTION -msse2 -mfpmath=sse)
-        endif()
+      if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
+        set(CPU_OPTION -msse2 -mfpmath=sse)
+      endif()
 
-        target_compile_options(${PROJECT_NAME} PRIVATE
-            -Wall -Wextra -Wno-error
-            -Wno-unused-parameter
-            -Wno-unused-function
-            -Wno-unused-variable
-            -Wno-missing-field-initializers
-            -Wno-parentheses
-            -Wno-narrowing
-            -Wno-missing-braces
-            -Wno-int-conversion
-            $<$<COMPILE_LANGUAGE:C>:
-                -Werror-implicit-function-declaration
-                -Wno-incompatible-pointer-types
-                -fpermissive
-            >
-            $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
-            $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
-            -pthread
-            ${CPU_OPTION}
-        )
+      target_compile_options(${PROJECT_NAME} PRIVATE
+          -Wall -Wextra -Wno-error
+          -Wno-unused-parameter
+          -Wno-unused-function
+          -Wno-unused-variable
+          -Wno-missing-field-initializers
+          -Wno-parentheses
+          -Wno-narrowing
+          -Wno-missing-braces
+          -Wno-int-conversion
+          $<$<COMPILE_LANGUAGE:C>:
+              -Werror-implicit-function-declaration
+              -Wno-incompatible-pointer-types
+              -fpermissive
+          >
+          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
+          $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
+          -pthread
+    ${CPU_OPTION}
+      )
 
-        target_link_options(${PROJECT_NAME} PRIVATE
-            -pthread
-            -Wl,-export-dynamic
-        )
+      target_link_options(${PROJECT_NAME} PRIVATE
+          -pthread
+          -Wl,-export-dynamic
+      )
   endif()
 endif()
 
 include(ExternalProject)
 ExternalProject_Add(TorchExternal
-PREFIX TorchExternal
-SOURCE_DIR ${CMAKE_SOURCE_DIR}/torch
-CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/torch
+    PREFIX TorchExternal
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/torch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/torch
 )
 
 ExternalProject_Get_Property(TorchExternal install_dir)
@@ -618,3 +635,39 @@ add_custom_target(
     COMMAND ${TORCH_EXECUTABLE} pack port spaghetti.o2r o2r
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
 )
+
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+add_custom_target(CreateOSXIcons
+    COMMAND mkdir -p ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset
+    COMMAND sips -z 16 16     logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_16x16.png
+    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_16x16@2x.png
+    COMMAND sips -z 32 32     logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_32x32.png
+    COMMAND sips -z 64 64     logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_32x32@2x.png
+    COMMAND sips -z 128 128   logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_128x128.png
+    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_128x128@2x.png
+    COMMAND sips -z 256 256   logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_256x256.png
+    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_256x256@2x.png
+    COMMAND sips -z 512 512   logo.png --out ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_512x512.png
+    COMMAND cp                logo.png ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset/icon_512x512@2x.png
+    COMMAND iconutil -c icns -o ${CMAKE_BINARY_DIR}/macosx/spaghettikart.icns ${CMAKE_BINARY_DIR}/macosx/spaghettikart.iconset
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Creating OSX icons ..."
+    )
+    add_dependencies(${PROJECT_NAME} CreateOSXIcons)
+    configure_file("${CMAKE_SOURCE_DIR}/Info.plist" "${CMAKE_BINARY_DIR}/Info.plist" COPYONLY)
+endif()
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE_TERMINAL YES)
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_DESKTOP_FILE "${CMAKE_SOURCE_DIR}/SpaghettiKart.desktop")
+set_property(TARGET ${PROJECT_NAME} PROPERTY APPIMAGE_ICON_FILE "${CMAKE_SOURCE_DIR}/logo.png")
+
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(CPACK_GENERATOR "External")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Windows|NintendoSwitch|CafeOS")
+    set(CPACK_GENERATOR "ZIP")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(CPACK_GENERATOR "Bundle")
+endif()
+
+set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_SOURCE_DIR}/cmake/configure-packaging.cmake)
+include(cmake/packaging.cmake)
