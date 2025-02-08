@@ -35,7 +35,7 @@ endif()
 
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/config.yml)
 	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "${CMAKE_BINARY_DIR}/config.yml")
-	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/assets/" "${CMAKE_BINARY_DIR}/assets/")
+	execute_process(COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/yamls/" "${CMAKE_BINARY_DIR}/yamls/")
 endif()
 
 if (MSVC)
