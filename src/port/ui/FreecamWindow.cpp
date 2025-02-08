@@ -58,12 +58,13 @@ void RegisterFreecamWidgets() {
     //mPortMenu->AddWidget(path, "Controller mode is not configured yet.", WIDGET_TEXT);
 
     //static int current_item = 0;
-    mPortMenu->AddWidget(path, "Control Type", WIDGET_COMBOBOX)
+    mPortMenu->AddWidget(path, "Human Interface Device", WIDGET_COMBOBOX)
         .ValuePointer(&controllerType)
         .Callback([](WidgetInfo& info) { bFreecamUseController = (uint32_t)*std::get<int32_t*>(info.valuePointer); })
         .Options(UIWidgets::ComboboxOptions().ComboMap(controlType));
 
-    mPortMenu->AddWidget(path, "Move: W,A,S,D\nUp: Space, Down: Shift\nFaster: Ctrl\nLook: Right-mouse button\nTarget Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);
+    mPortMenu->AddWidget(path, "Keyboard: Move: W,A,S,D, Up: Space, Down: Shift\n  Faster: Ctrl, Look: Right-mouse button\n  Target Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);
+    mPortMenu->AddWidget(path, "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: Left DPad\n  Driving Mode: L and R Buttons", WIDGET_TEXT);
     mPortMenu->AddWidget(path, "Enable Flycam", WIDGET_CVAR_CHECKBOX)
         .CVar("gFreecam")
         .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}));

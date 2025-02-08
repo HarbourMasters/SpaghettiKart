@@ -68,25 +68,43 @@ u32 bFreecamUseController = false;
  *
  */
 void freecam(Camera* camera, Player* player, s8 index) {
-    struct Controller* controller = &gControllers[0];
     f32 dirX;
     f32 dirY;
     f32 dirZ;
     f32 length;
+    static bool enabled = false; // Tracks previous activation state
+    bool freecamEnabled = CVarGetInteger("gFreecam", 0);
 
-    if (controller->buttonPressed & L_TRIG) {
+    if (freecamEnabled && !enabled) {
+        enabled = true; // Mark that freecam was activated
+        on_freecam();
+    } else if (!freecamEnabled && enabled) {
+        off_freecam();
+        enabled = false; // Reset when freecam is turned off
+    }
+
+    // Freecam mode is enabled
+    if (enabled) {
+        freecam_loop(camera, player, index);
+    } else {
+        func_8001E45C(camera, player, index);
+    }
+}
+
+void on_freecam(void) {
+    gIsHUDVisible = false;
+    gPlayerOne->type |= PLAYER_KART_AI;
+}
+
+void off_freecam(void) {
+    gIsHUDVisible = true;
+    gPlayerOne->type &= ~PLAYER_KART_AI;
+}
+
+void freecam_loop(Camera* camera, Player* player, s8 index) {
+    if ((fController.buttonPressed & L_TRIG) && (fController.buttonPressed & R_TRIG)) {
         // Toggle freecam
         CVarSetInteger("gFreecam", !CVarGetInteger("gFreecam", 0));
-
-        // Don't use `bool = !bool` here as the game code can swap these on you.
-        // Which will confuse the code. This forces it to always be correct
-        if (CVarGetInteger("gFreecam", 0) == 1) {
-            player->type |= PLAYER_KART_AI;
-        } else {
-            player->type &= PLAYER_KART_AI;
-        }
-
-        gIsHUDVisible = !CVarGetInteger("gFreecam", 0);
     }
 
     // Calculate forward direction
@@ -180,7 +198,6 @@ bool FreecamKeyDown(int virtualKey) {
 void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     auto wnd = GameEngine::Instance->context->GetWindow();
     float moveSpeed = gFreecamSpeed;
-    Controller* controller = &gControllers[0];
 
     // Determine movement direction based on keys pressed
     Vec3f totalMove = { 0.0f, 0.0f, 0.0f };
@@ -202,20 +219,12 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     // Use n64 controls for use with a controller
     //! @todo configure this properly
     if (bFreecamUseController) {
-        // Targeting /fMode is broken
-        // if (controller->buttonPressed & U_JPAD) {
-        //     fMode = !fMode;
-        // }
-        // Target a player
-
         if (fController.buttonDepressed & R_TRIG) {
             fTargetPlayer = true;
         }
-
         if (fController.buttonDepressed & L_TRIG) {
             fTargetPlayer = false;
         }
-
         if (fController.buttonPressed & L_JPAD) {
             TargetPreviousPlayer = true;
         }
@@ -240,11 +249,11 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         if (fController.button & A_BUTTON) {
             Up = true;
         }
-        // if (controller->button ??) {
-        //    FastMove = true;
-        // }
-        // Keyboard and mouse DX
+        if (fController.button & Z_TRIG) {
+           FastMove = true;
+        }
     }
+    // Keyboard and mouse DX
 #ifdef _WIN32
     else if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         if (FreecamKeyDown('F')) {
@@ -374,7 +383,6 @@ void freecam_update_controller(void) {
     if ((gControllerPads[0].button & 4) != 0) {
         gControllerPads[0].button |= Z_TRIG;
     }
-
     fController.buttonPressed = gControllerPads[0].button & (gControllerPads[0].button ^ fController.button);
     fController.buttonDepressed = fController.button & (gControllerPads[0].button ^ fController.button);
     fController.button = gControllerPads[0].button;
