@@ -1,31 +1,51 @@
-name: Linux Compile test
+name: Linux Validation
 
 on:
-    push:
-      branches: [ "*" ]
-    pull_request:
-      branches: [ "master" ]
+  pull_request:
+    branches: [ "*" ]
 
 jobs:
   build:
-    if: 0
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
         with:
-          submodules: "true"
-      - name: Get Complementary file
-        uses: actions/checkout@v4.1.1
-        with:
-          path: complementary_file
-          repository: UnspaghettifyKart/action-build-private-file
-          ssh-key: ${{ secrets.LINUX_SSH_PRIVATE_KEY }}
+          submodules: recursive
+      - name: Update machine
+        run: sudo apt update
       - name: Install dependencies
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
+      - name: Install latest SDL
         run: |
-          sudo apt install build-essential cmake pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          wget https://www.libsdl.org/release/SDL2-2.24.1.tar.gz
+          tar -xzf SDL2-2.24.1.tar.gz
+          cd SDL2-2.24.1
+          ./configure
+          make -j 10
+          sudo make install
+      - name: Install latest tinyxml2
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
+          tar -xzf 10.0.0.tar.gz
+          cd tinyxml2-10.0.0
+          mkdir -p build
+          cd build
+          cmake ..
+          make
+          sudo make install
       - name: Build
         run: |
-          cp -r complementary_file/* .
-          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
-          make assets
-          make -j  || ./first-diff.py
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-cmake -j
+      - name: Create Package
+        run: |
+          mkdir spaghetti-release
+          mv build-cmake/spaghetti spaghetti-release/
+      - name: Publish packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaghetti-linux-x64
+          path: spaghetti-release
+          retention-days: 1

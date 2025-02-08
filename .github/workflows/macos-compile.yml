@@ -1,32 +1,29 @@
-name: Macos Compile test
+name: MacOS Validation
 
 on:
-    push:
-      branches: [ "*" ]
-    pull_request:
-      branches: [ "master" ]
+  pull_request:
+    branches: [ "*" ]
 
 jobs:
   build:
-    if: 0
-    runs-on: macos-latest
+    runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4
         with:
-          submodules: "true"
-      - name: Get Complementary file
-        uses: actions/checkout@v4.1.1
-        with:
-          path: complementary_file
-          repository: UnspaghettifyKart/action-build-private-file
-          ssh-key: ${{ secrets.MACOS_SSH_PRIVATE_KEY }}
+          submodules: recursive
       - name: Install dependencies
-        run: |
-          brew update
-          brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils cmake
+        run: brew install sdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
       - name: Build
         run: |
-          cp -r complementary_file/* .
-          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
-          make assets
-          make -j
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-cmake -j
+      - name: Create Package
+        run: |
+          mkdir spaghetti-release
+          mv build-cmake/spaghetti spaghetti-release/
+      - name: Publish packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+            name: spaghetti-mac-x64
+            path: spaghetti-release
+            retention-days: 1

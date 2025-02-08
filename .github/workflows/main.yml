@@ -1,0 +1,195 @@
+name: GenerateBuilds
+
+on:
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-port-o2r:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Install dependencies
+      run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release
+    - name: ccache
+      uses: hendrikmuhs/ccache-action@v1.2.13
+      with:
+        key: ${{ runner.os }}-o2r-ccache-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-o2r-ccache-${{ github.ref }}
+          ${{ runner.os }}-o2r-ccache-
+    - name: Cache build folders
+      uses: actions/cache@v4
+      with:
+        key: ${{ runner.os }}-o2r-build-${{ github.ref }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-o2r-build-${{ github.ref }}
+          ${{ runner.os }}-o2r-build-
+        path: |
+          torch/cmake-build-release
+    - name: Generate spaghetti.o2r
+      run: |
+        export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+        make -C torch type=release -j3
+        torch/cmake-build-release/torch pack port spaghetti.o2r o2r
+    - uses: actions/upload-artifact@v4
+      with:
+        name: spaghetti.o2r
+        path: spaghetti.o2r
+        retention-days: 1
+
+  build-windows:
+    needs: generate-port-o2r
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
+          cmake --build ./build/x64 --config Release --parallel 10
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build/x64/Release
+      - name: Create Package
+        run: |
+          mkdir spaghetti-release
+          mv build/x64/Release/Spaghetti.exe spaghetti-release/
+          mv build/x64/Release/spaghetti.o2r spaghetti-release/
+          mv config.yml spaghetti-release/
+          mv assets spaghetti-release/
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-release/gamecontrollerdb.txt"
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaghetti-windows
+          path: spaghetti-release
+
+  build-macos:
+    needs: generate-port-o2r
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: brew install sdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
+      - name: Build
+        run: |
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-cmake --config Release -j3
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build-cmake
+      - name: Create Package
+        run: |
+          mkdir spaghetti-release
+          mv build-cmake/Spaghetti spaghetti-release/
+          mv build-cmake/spaghetti.o2r spaghetti-release/
+          mv config.yml spaghetti-release/
+          mv assets spaghetti-release/
+          wget -O spaghetti-release/gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+      - name: Publish packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+            name: spaghetti-mac-x64
+            path: spaghetti-release
+
+  build-linux:
+    needs: generate-port-o2r
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Update machine
+        run: sudo apt update
+      - name: Install dependencies
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.14
+        with:
+          key: linux-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            linux-ccache-${{ github.ref }}
+            linux-ccache-
+      - name: Cache build folders
+        uses: actions/cache@v4
+        with:
+          key: linux-build-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            linux-build-${{ github.ref }}
+            linux-build-
+          path: |
+            SDL2-2.30.3
+            tinyxml2-10.0.0
+            libzip-1.10.1
+      - name: Install latest SDL
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          if [ ! -d "SDL2-2.30.3" ]; then
+            wget https://www.libsdl.org/release/SDL2-2.30.3.tar.gz
+            tar -xzf SDL2-2.30.3.tar.gz
+          fi
+          cd SDL2-2.30.3
+          ./configure --enable-hidapi-libusb
+          make -j 10
+          sudo make install
+          sudo cp -av /usr/local/lib/libSDL* /lib/x86_64-linux-gnu/
+      - name: Install latest tinyxml2
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
+          tar -xzf 10.0.0.tar.gz
+          cd tinyxml2-10.0.0
+          mkdir -p build
+          cd build
+          cmake ..
+          make
+          sudo make install
+      - name: Install libzip without crypto
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          if [ ! -d "libzip-1.10.1" ]; then
+            wget https://github.com/nih-at/libzip/releases/download/v1.10.1/libzip-1.10.1.tar.gz
+            tar -xzf libzip-1.10.1.tar.gz
+          fi
+          cd libzip-1.10.1
+          mkdir -p build
+          cd build
+          cmake .. -DENABLE_COMMONCRYPTO=OFF -DENABLE_GNUTLS=OFF -DENABLE_MBEDTLS=OFF -DENABLE_OPENSSL=OFF
+          make
+          sudo make install
+          sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build-cmake
+      - name: Build
+        run: |
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-cmake --config Release -j3
+          (cd build-cmake && cpack -G External)
+          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          mv README.md readme.txt
+          mv build-cmake/*.appimage spaghetti.appimage
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Spaghetti-linux
+          path: |
+            spaghetti.appimage
+            config.yml
+            assets
+            gamecontrollerdb.txt
