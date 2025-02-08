@@ -104,8 +104,6 @@ void freecam(Camera* camera, Player* player, s8 index) {
     freecam_tick(camera, freeCam.forwardVector);
 }
 
-f32 gFreecamRotateSmoothingFactor = 0.85f;
-
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
     static int prevMouseX = 0, prevMouseY = 0;
     auto wnd = GameEngine::Instance->context->GetWindow();
@@ -120,31 +118,16 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
     prevMouseX = mouse.x;
     prevMouseY = mouse.y;
 
+    f32 dampingFactor = 0.98f; // Damping factor to gradually slow down the rotation.
+
     if (wnd->GetMouseState(Ship::LUS_MOUSE_BTN_RIGHT)) {
         // Calculate yaw (left/right) and pitch (up/down) changes
         f32 yawChange = mouse.x * MOUSE_SENSITIVITY_X;
         f32 pitchChange = mouse.y * MOUSE_SENSITIVITY_Y;
 
-        // Smoothly update yaw and pitch
-        camera->rot[1] += (short) (yawChange * 65535.0f / (2 * M_PI));   // Yaw (left/right)
-        camera->rot[2] += (short) (pitchChange * 65535.0f / (2 * M_PI)); // Pitch (up/down)
-
-        // Clamp pitch to avoid extreme values
-        if (camera->rot[2] > 15999) {
-            camera->rot[2] = 15999;
-        }
-        if (camera->rot[2] < -15999) {
-            camera->rot[2] = -15999;
-        }
-
-        // Smoothly interpolate the lookAt position
-        Vec3f targetLookAt = { camera->pos[0] + forwardVector[0], camera->pos[1] + forwardVector[1],
-                               camera->pos[2] + forwardVector[2] };
-
-        // Smoothing
-        camera->lookAt[0] += (targetLookAt[0] - camera->lookAt[0]) * gFreecamRotateSmoothingFactor;
-        camera->lookAt[1] += (targetLookAt[1] - camera->lookAt[1]) * gFreecamRotateSmoothingFactor;
-        camera->lookAt[2] += (targetLookAt[2] - camera->lookAt[2]) * gFreecamRotateSmoothingFactor;
+        // Update rotational velocity based on mouse movement
+        freeCam.rotVelocity[1] += yawChange * 65535.0f / (2 * M_PI);  // Yaw (left/right)
+        freeCam.rotVelocity[2] += pitchChange * 65535.0f / (2 * M_PI); // Pitch (up/down)
     }
 }
 

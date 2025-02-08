@@ -15,7 +15,6 @@ void freecam_keyboard_manager(Camera*, Vec3f);
 
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;
-extern f32 gFreecamRotateSmoothingFactor;
 extern f32 gFreecamRotateFollowFactor;
 extern u32 fRankIndex;
 extern u32 gFreecamControllerType;

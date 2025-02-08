@@ -16,18 +16,32 @@ FreeCam freeCam;
 #include <math.h>
 
 f32 gDampValue = 0.99f;
+f32 gRotDampValue = 0.96f;
 
+// Update FreeCam state
 void freecam_tick(Camera* camera, Vec3f forwardVector) {
-    // Update FreeCam state
+
+    // Apply camera movement
     camera->pos[0] += freeCam.velocity[0] * gDeltaTime;
     camera->pos[1] += freeCam.velocity[1] * gDeltaTime;
     camera->pos[2] += freeCam.velocity[2] * gDeltaTime;
 
-    // Apply damping to velocity
+    // Damp the velocity back to zero over time (camera slowly comes to a stop)
     freeCam.velocity[0] *= gDampValue;
     freeCam.velocity[1] *= gDampValue;
     freeCam.velocity[2] *= gDampValue;
 
+    // Apply camera rotation
+    camera->rot[0] += freeCam.rotVelocity[0] * gDeltaTime;
+    camera->rot[1] += freeCam.rotVelocity[1] * gDeltaTime;
+    camera->rot[2] += freeCam.rotVelocity[2] * gDeltaTime;
+
+    // Damp the velocity back to zero over time (camera rot slowly comes to a stop)
+    freeCam.rotVelocity[0] *= gRotDampValue;
+    freeCam.rotVelocity[1] *= gRotDampValue;
+    freeCam.rotVelocity[2] *= gRotDampValue;
+
+    // Update lookAt
     camera->lookAt[0] = camera->pos[0] + forwardVector[0];
     camera->lookAt[1] = camera->pos[1] + forwardVector[1];
     camera->lookAt[2] = camera->pos[2] + forwardVector[2];

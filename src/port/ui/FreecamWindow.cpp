@@ -22,9 +22,9 @@ extern "C" {
 // } FreeCam;
 
 extern f32 gDampValue;
+extern f32 gRotDampValue;
 extern f32 gFreecamSpeed;
 extern f32 gFreecamSpeedMultiplier;
-extern f32 gFreecamRotateSmoothingFactor;
 extern f32 gFreecamFollowFactor;
 extern char* D_800E76A8[];
 extern u32 fRankIndex;
@@ -77,8 +77,8 @@ void RegisterFreecamWidgets() {
     mPortMenu->AddWidget(path, "Camera Speed Multiplier", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gFreecamSpeedMultiplier)
         .Options(UIWidgets::FloatSliderOptions().Min(1.5f).Max(15.0f).Step(0.1f).Format("%.1f"));
-    mPortMenu->AddWidget(path, "Camera Rotation Smoothing", WIDGET_SLIDER_FLOAT)
-        .ValuePointer(&gFreecamRotateSmoothingFactor)
+    mPortMenu->AddWidget(path, "Camera Rotator Damping", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gRotDampValue)
         .Options(UIWidgets::FloatSliderOptions().Min(0.0f).Max(1.0f).Step(0.01f).Format("%.2f"));
     mPortMenu->AddWidget(path, "Follow Factor", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gFreecamFollowFactor)
