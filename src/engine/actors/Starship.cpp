@@ -1,4 +1,4 @@
-#include "Ship.h"
+#include "Starship.h"
 
 #include <libultra/gbi.h>
 
@@ -6,29 +6,14 @@ extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
 #include "main.h"
-#include "courses/hm64/ghostship_model.h"
-#include "courses/hm64/ship2_model.h"
-#include "courses/hm64/ship3_model.h"
+#include "courses/hm64/starship_model.h"
 }
 
-AShip::AShip(FVector pos, AShip::Skin skin) {
+AStarship::AStarship(FVector pos) {
     Pos = pos;
-    Pos.y += 10;
-
-    switch(skin) {
-        case GHOSTSHIP:
-            _skin = ghostship_Plane_mesh;
-            break;
-        case SHIP2:
-            _skin = ship2_SoH_mesh;
-            break;
-        case SHIP3:
-            _skin = ship3_2Ship_mesh;
-            break;
-    }
 }
 
-void AShip::Tick() {
+void AStarship::Tick() {
     static float angle = 0.0f; // Keeps track of the ship's rotation around the circle
     float radius = 150.0f;      // The radius of the circular path
     float speed = 0.01f;       // Speed of rotation
@@ -40,10 +25,13 @@ void AShip::Tick() {
     Pos.z = radius * sinf(angle);
 
     // Rotate to face forward along the circle
-    Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
+    Rot.yaw = angle * (180.0f / M_PI) + 90.0f; // Add 90° offset
 }
 
-void AShip::Draw(Camera *camera) {
+
+
+
+void AStarship::Draw(Camera *camera) {
     Mat4 shipMtx;
     Vec3f hullPos = {Pos.x, Pos.y, Pos.z};
     Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
@@ -54,8 +42,8 @@ void AShip::Draw(Camera *camera) {
     mtxf_pos_rotation_xyz(shipMtx, hullPos, hullRot);
     mtxf_scale(shipMtx, 0.4);
     if (render_set_position(shipMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, _skin);
+        gSPDisplayList(gDisplayListHead++, starship_Cube_mesh);
     }
 }
 
-bool AShip::IsMod() { return true; }
+bool AStarship::IsMod() { return true; }

@@ -10,17 +10,10 @@ extern "C" {
 #include "assets/other_textures.h"
 }
 
-class AShip : public AActor {
+class AStarship : public AActor {
 public:
-
-    enum Skin {
-        GHOSTSHIP,
-        SHIP2,
-        SHIP3,
-    };
-
-    explicit AShip(FVector pos, AShip::Skin);
-    virtual ~AShip() = default;
+    explicit AStarship(FVector pos);
+    virtual ~AStarship() = default;
 
     virtual void Tick() override;
     virtual void Draw(Camera*) override;
@@ -28,6 +21,4 @@ public:
 
     FVector Pos;
     FRotation Rot = {0, 0, 0};
-private:
-    Gfx* _skin;
 };

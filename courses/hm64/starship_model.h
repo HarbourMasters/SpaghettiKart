@@ -1,0 +1,33 @@
+#include <libultraship.h>
+
+extern u8 starship_SoHShinyBlueish_rgba16[];
+extern u8 starship_tire_i8[];
+extern u8 starship_superFXBlue_rgba32[];
+extern u8 starship_SoHShiny_rgba16[];
+extern u8 starship_superFXBlue_rgba16[];
+extern u8 starship_shiplogov2_rgba32[];
+extern u8 starship_flare1_ci8[];
+extern u8 starship_flare1_pal_rgba16[];
+extern Vtx starship_Cube_mesh_vtx_cull[8];
+extern Vtx starship_Cube_mesh_vtx_0[56];
+extern Gfx starship_Cube_mesh_tri_0[];
+extern Vtx starship_Cube_mesh_vtx_1[18];
+extern Gfx starship_Cube_mesh_tri_1[];
+extern Vtx starship_Cube_mesh_vtx_2[21];
+extern Gfx starship_Cube_mesh_tri_2[];
+extern Vtx starship_Cube_mesh_vtx_3[210];
+extern Gfx starship_Cube_mesh_tri_3[];
+extern Vtx starship_Cube_mesh_vtx_4[9];
+extern Gfx starship_Cube_mesh_tri_4[];
+extern Vtx starship_Cube_mesh_vtx_5[8];
+extern Gfx starship_Cube_mesh_tri_5[];
+extern Vtx starship_Cube_mesh_vtx_6[60];
+extern Gfx starship_Cube_mesh_tri_6[];
+extern Gfx mat_starship_starship1[];
+extern Gfx mat_starship_black[];
+extern Gfx mat_starship_starship2[];
+extern Gfx mat_starship_starship3[];
+extern Gfx mat_starship_glass[];
+extern Gfx mat_starship_f3dlite_material_008[];
+extern Gfx mat_starship_flare[];
+extern Gfx starship_Cube_mesh[];
