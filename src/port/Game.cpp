@@ -26,6 +26,7 @@
 #include "engine/courses/DoubleDeck.h"
 #include "engine/courses/DKJungle.h"
 #include "engine/courses/BigDonut.h"
+#include "engine/courses/Harbour.h"
 #include "engine/courses/TestCourse.h"
 #include "engine/actors/AFinishline.h"
 
@@ -83,6 +84,7 @@ DoubleDeck* gDoubleDeck;
 DKJungle* gDkJungle;
 BigDonut* gBigDonut;
 PodiumCeremony* gPodiumCeremony;
+Harbour* gHarbour;
 TestCourse* gTestCourse;
 
 Cup* gMushroomCup;
@@ -118,6 +120,7 @@ void CustomEngineInit() {
     gDkJungle = new DKJungle();
     gBigDonut = new BigDonut();
     gPodiumCeremony = new PodiumCeremony();
+    gHarbour = new Harbour();
     gTestCourse = new TestCourse();
 
     /* Add all courses to the global course list */
@@ -141,6 +144,7 @@ void CustomEngineInit() {
     gWorldInstance.AddCourse(gDoubleDeck);
     gWorldInstance.AddCourse(gDkJungle);
     gWorldInstance.AddCourse(gBigDonut);
+    gWorldInstance.AddCourse(gHarbour);
     gWorldInstance.AddCourse(gTestCourse);
 
     gMushroomCup = new Cup("mk:mushroom_cup", "mushroom cup",

@@ -6,30 +6,30 @@ extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
 #include "main.h"
-#include "courses/hm64/starship_model.h"
+#include "courses/harbour/starship_model.h"
 }
 
 AStarship::AStarship(FVector pos) {
-    Pos = pos;
+    Spawn = pos;
 }
 
 void AStarship::Tick() {
-    static float angle = 0.0f; // Keeps track of the ship's rotation around the circle
-    float radius = 150.0f;      // The radius of the circular path
-    float speed = 0.01f;       // Speed of rotation
+    static float angle = 0.0f;
+    float radius = 150.0f;
+    float speed = 0.01f;
 
-    angle += speed; // Increment the angle to move in a circle
+    angle += speed;
 
-    // Update the position based on a circular path
-    Pos.x = radius * cosf(angle);
-    Pos.z = radius * sinf(angle);
+    // Move relative to the initial position
+    Pos.x = Spawn.x + radius * cosf(angle);
+    Pos.z = Spawn.z + radius * sinf(angle);
+
+    // Keep y from changing (or adjust it if necessary)
+    Pos.y = Spawn.y;
 
     // Rotate to face forward along the circle
-    Rot.yaw = angle * (180.0f / M_PI) + 90.0f; // Add 90° offset
+    Rot.yaw = angle * (180.0f / M_PI) + 90.0f;
 }
-
-
-
 
 void AStarship::Draw(Camera *camera) {
     Mat4 shipMtx;
@@ -40,7 +40,7 @@ void AStarship::Draw(Camera *camera) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
     mtxf_pos_rotation_xyz(shipMtx, hullPos, hullRot);
-    mtxf_scale(shipMtx, 0.4);
+    mtxf_scale(shipMtx, 1.5);
     if (render_set_position(shipMtx, 0) != 0) {
         gSPDisplayList(gDisplayListHead++, starship_Cube_mesh);
     }

@@ -6,12 +6,12 @@ extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
 #include "main.h"
-#include "courses/hm64/ship_model.h"
+#include "courses/harbour/ship_model.h"
 }
 
 ASpaghettiShip::ASpaghettiShip(FVector pos) {
-    Pos = pos;
-    Pos.y += 10;
+    Spawn = pos;
+    Spawn.y += 10;
 }
 
 void ASpaghettiShip::Tick() {
@@ -22,8 +22,8 @@ void ASpaghettiShip::Tick() {
     angle += speed; // Increment the angle to move in a circle
 
     // Update the position based on a circular path
-    Pos.x = radius * cosf(angle);
-    Pos.z = radius * sinf(angle);
+    Pos.x = Spawn.x + radius * cosf(angle);
+    Pos.z = Spawn.z + radius * sinf(angle);
 
     // Rotate to face forward along the circle
     Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
