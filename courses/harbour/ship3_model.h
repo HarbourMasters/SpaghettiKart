@@ -1,0 +1,36 @@
+#include <libultraship.h>
+
+extern u8 ship3_wood2_ci8[];
+extern u8 ship3_wood2_pal_rgba16[];
+extern u8 ship3_flag_rgba16[];
+extern u8 ship3_window_i8[];
+extern u8 ship3_wood1_ci4[];
+extern u8 ship3_wood1_pal_rgba16[];
+extern u8 ship3__2shipBetaLogo_rgba32[];
+extern u8 ship3_sail1_rgba16[];
+extern Vtx ship3_2Ship_mesh_vtx_cull[8];
+extern Vtx ship3_2Ship_mesh_vtx_0[1147];
+extern Gfx ship3_2Ship_mesh_tri_0[];
+extern Vtx ship3_2Ship_mesh_vtx_1[92];
+extern Gfx ship3_2Ship_mesh_tri_1[];
+extern Vtx ship3_2Ship_mesh_vtx_2[16];
+extern Gfx ship3_2Ship_mesh_tri_2[];
+extern Vtx ship3_2Ship_mesh_vtx_3[237];
+extern Gfx ship3_2Ship_mesh_tri_3[];
+extern Vtx ship3_2Ship_mesh_vtx_4[199];
+extern Gfx ship3_2Ship_mesh_tri_4[];
+extern Vtx ship3_2Ship_mesh_vtx_5[199];
+extern Gfx ship3_2Ship_mesh_tri_5[];
+extern Gfx mat_ship3_f3d_material_008[];
+extern Gfx mat_revert_ship3_f3d_material_008[];
+extern Gfx mat_ship3_flag1[];
+extern Gfx mat_revert_ship3_flag1[];
+extern Gfx mat_ship3_f3dlite_material_003[];
+extern Gfx mat_revert_ship3_f3dlite_material_003[];
+extern Gfx mat_ship3_wood2_001[];
+extern Gfx mat_revert_ship3_wood2_001[];
+extern Gfx mat_ship3__2shipLogo[];
+extern Gfx mat_revert_ship3__2shipLogo[];
+extern Gfx mat_ship3_sail2[];
+extern Gfx mat_revert_ship3_sail2[];
+extern Gfx ship3_2Ship_mesh[];

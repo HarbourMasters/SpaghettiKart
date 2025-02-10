@@ -8,6 +8,9 @@
 #include "World.h"
 #include "engine/actors/AFinishline.h"
 #include "engine/actors/BowserStatue.h"
+#include "engine/actors/Ship.h"
+#include "engine/actors/SpaghettiShip.h"
+#include "engine/actors/Starship.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
 #include "assets/mario_raceway_data.h"
@@ -286,6 +289,8 @@ void TestCourse::BeginPlay() {
 
     gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][25], 25, 4, 0.8333333f));
     gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][45], 45, 4, 0.8333333f));
+
+    gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 
 }
 

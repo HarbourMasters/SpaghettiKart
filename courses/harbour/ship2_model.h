@@ -1,0 +1,31 @@
+#include <libultraship.h>
+
+extern u8 ship2_flag_rgba16[];
+extern u8 ship2_window_i8[];
+extern u8 ship2_wood1_ci8[];
+extern u8 ship2_wood1_pal_rgba16[];
+extern u8 ship2_wood2_ci4[];
+extern u8 ship2_wood2_pal_rgba16[];
+extern u8 ship2_sail2_rgba16[];
+extern Vtx ship2_SoH_mesh_vtx_cull[8];
+extern Vtx ship2_SoH_mesh_vtx_0[95];
+extern Gfx ship2_SoH_mesh_tri_0[];
+extern Vtx ship2_SoH_mesh_vtx_1[16];
+extern Gfx ship2_SoH_mesh_tri_1[];
+extern Vtx ship2_SoH_mesh_vtx_2[236];
+extern Gfx ship2_SoH_mesh_tri_2[];
+extern Vtx ship2_SoH_mesh_vtx_3[455];
+extern Gfx ship2_SoH_mesh_tri_3[];
+extern Vtx ship2_SoH_mesh_vtx_4[64];
+extern Gfx ship2_SoH_mesh_tri_4[];
+extern Gfx mat_ship2_f3d_material_002[];
+extern Gfx mat_revert_ship2_f3d_material_002[];
+extern Gfx mat_ship2_f3d_material_003[];
+extern Gfx mat_revert_ship2_f3d_material_003[];
+extern Gfx mat_ship2_wood1_001[];
+extern Gfx mat_revert_ship2_wood1_001[];
+extern Gfx mat_ship2_wood2[];
+extern Gfx mat_revert_ship2_wood2[];
+extern Gfx mat_ship2_sohSail[];
+extern Gfx mat_revert_ship2_sohSail[];
+extern Gfx ship2_SoH_mesh[];
