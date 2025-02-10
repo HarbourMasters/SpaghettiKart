@@ -8,6 +8,7 @@
 #include "audio/external.h"
 #include "menu_items.h"
 #include "port/Game.h"
+#include <stdio.h>
 
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN
 // PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_KART_AI

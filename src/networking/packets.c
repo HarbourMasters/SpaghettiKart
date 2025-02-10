@@ -2,6 +2,8 @@
 #include <SDL2/SDL_net.h>
 #include "networking.h"
 #include "code_800029B0.h"
+#include <stdio.h>
+#include <string.h>
 
 void handleJoinPacket(const char* data) {
     printf("Join packet received: %s\n", data);
