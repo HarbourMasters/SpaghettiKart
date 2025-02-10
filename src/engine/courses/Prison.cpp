@@ -437,15 +437,15 @@ PrisonCourse::PrisonCourse() {
 }
 
 TrackSections prisonSections[] = {
-    { PrisonCourse_PrisonCourse_mesh, 255,  255, ASPHALT },
+    { PrisonTrack, 255,  255, ASPHALT },
     { PrisonGrass_PrisonGrass_mesh, 255,  255, GRASS },
     { 0x00000000, 0, 0, 0x00000 },
 };
 
 void PrisonCourse::Load() {
-    Course::Load(PrisonCourse_PrisonCourse_mesh_vtx_0, NULL);
+    Course::Load(PrisonTrack_vtx_0, NULL);
 
-    generate_collision_mesh_with_default_section_id(PrisonCourse_PrisonCourse_mesh, ASPHALT);
+    generate_collision_mesh_with_default_section_id(PrisonTrack, ASPHALT);
     generate_collision_mesh_with_default_section_id(PrisonGrass_PrisonGrass_mesh, GRASS);
 
     parse_course_displaylists((TrackSectionsI*)prisonSections);
@@ -671,7 +671,7 @@ void PrisonCourse::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_big_donut_packed_dl_DE8
     }
-    gSPDisplayList(gDisplayListHead++, PrisonCourse_PrisonCourse_mesh);
+    gSPDisplayList(gDisplayListHead++, PrisonTrack);
     gSPDisplayList(gDisplayListHead++, PrisonGrass_PrisonGrass_mesh);
 }
 
