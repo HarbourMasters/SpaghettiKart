@@ -384,6 +384,7 @@ PrisonCourse::PrisonCourse() {
     Props.AIMinimumSeparation = 0.3f;
     Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
+    Props.Sequence = MusicSeq::MUSIC_SEQ_KALIMARI_DESERT;
 
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
@@ -438,7 +439,7 @@ PrisonCourse::PrisonCourse() {
 
 TrackSections prisonSections[] = {
     { PrisonTrack, 255,  255, ASPHALT },
-    { PrisonGrass_PrisonGrass_mesh, 255,  255, GRASS },
+    { PrisonGrass, 255,  255, GRASS },
     { 0x00000000, 0, 0, 0x00000 },
 };
 
@@ -446,7 +447,7 @@ void PrisonCourse::Load() {
     Course::Load(PrisonTrack_vtx_0, NULL);
 
     generate_collision_mesh_with_default_section_id(PrisonTrack, ASPHALT);
-    generate_collision_mesh_with_default_section_id(PrisonGrass_PrisonGrass_mesh, GRASS);
+    generate_collision_mesh_with_default_section_id(PrisonGrass, GRASS);
 
     parse_course_displaylists((TrackSectionsI*)prisonSections);
     func_80295C6C();
@@ -672,7 +673,7 @@ void PrisonCourse::Render(struct UnkStruct_800DC5EC* arg0) {
         // d_course_big_donut_packed_dl_DE8
     }
     gSPDisplayList(gDisplayListHead++, PrisonTrack);
-    gSPDisplayList(gDisplayListHead++, PrisonGrass_PrisonGrass_mesh);
+    gSPDisplayList(gDisplayListHead++, PrisonGrass);
 }
 
 void PrisonCourse::RenderCourseObjects(s32 cameraId) {
