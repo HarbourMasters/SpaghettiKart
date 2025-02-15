@@ -183,6 +183,7 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define CHARACTER_SELECT_MENU 12
 #define COURSE_SELECT_MENU 13
 #define RACING_DUPLICATE 14
+#define HARBOUR_MASTERS_MENU 15
 
 /**
  * @brief Options for gGameState gGotoMode and gGotoMenu

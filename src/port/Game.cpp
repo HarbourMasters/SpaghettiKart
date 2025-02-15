@@ -43,6 +43,8 @@
 
 #include "Smoke.h"
 
+#include "engine/HM_Intro.h"
+
 extern "C" {
 #include "main.h"
 #include "audio/load.h"
@@ -94,6 +96,8 @@ Cup* gSpecialCup;
 Cup* gBattleCup;
 
 ModelLoader gModelLoader;
+
+HarbourMastersIntro gMenuIntro;
 
 s32 gTrophyIndex = NULL;
 
@@ -189,6 +193,19 @@ void CustomEngineInit() {
 }
 
 extern "C" {
+
+void HM_InitIntro() {
+    gMenuIntro.HM_InitIntro();
+}
+
+void HM_TickIntro() {
+    gMenuIntro.HM_TickIntro();
+}
+
+void HM_DrawIntro() {
+    gMenuIntro.HM_DrawIntro();
+}
+
 
 World* GetWorld(void) {
     return &gWorldInstance;
@@ -625,6 +642,19 @@ void CM_DeleteActor(size_t index) {
  * Clean up actors and other game objects.
  */
 void CM_CleanWorld(void) {
+    World* world = &gWorldInstance;
+    for (auto& actor : world->Actors) {
+        delete actor;
+    }
+
+    for (auto& object : world->Objects) {
+        delete object;
+    }
+
+    for (auto& emitter : world->Emitters) {
+        delete emitter;
+    }
+
     gWorldInstance.Actors.clear();
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();

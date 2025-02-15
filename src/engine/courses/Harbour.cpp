@@ -518,10 +518,6 @@ TrackWaypoint harbour_path[] = {
     {13,-121,0,0},
     {15,-121,-14,0},
     {-32768, -32768, -32768, 0}
-
-
-
-
 };
 
 Harbour::Harbour() {
@@ -600,6 +596,12 @@ TrackSections harbour_surfaces[] = {
 
 void Harbour::Load() {
     Course::Load(road_map_001_mesh_vtx_0, NULL);
+
+    // The light gets overridden in hm_intro, reset to normal
+    ground_f3d_material_013_lights = gdSPDefLights1(
+        0x7F, 0x7F, 0x7F,
+        0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49
+    );
 
     generate_collision_mesh_with_default_section_id(ground_map_mesh, 8);
     generate_collision_mesh_with_default_section_id(road_map_001_mesh, 1);

@@ -53,7 +53,7 @@ void ASpaghettiShip::Draw(Camera *camera) {
     mtxf_translate(objectMtx, hullPos2);
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
-        gSPDisplayList(gDisplayListHead++, ship1_Spaghetti_mesh);
+        gSPDisplayList(gDisplayListHead++, ship1_spag1_mesh);
     }
 
     // Front tyre

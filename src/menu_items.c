@@ -46,6 +46,7 @@
 
 #include "engine/courses/Course.h"
 #include "engine/Matrix.h"
+#include "src/engine/HM_Intro.h"
 
 const char* GetCupName(void);
 
@@ -2312,6 +2313,7 @@ void func_80094A64(struct GfxPool* pool) {
         case OPTIONS_MENU:
         case DATA_MENU:
         case COURSE_DATA_MENU:
+        case HARBOUR_MASTERS_MENU:
         case LOGO_INTRO_MENU:
         case CONTROLLER_PAK_MENU:
         case MAIN_MENU:
@@ -2372,7 +2374,10 @@ void setup_menus(void) {
                 add_menu_item(MENU_ITEM_TYPE_0E9, 0, 0, MENU_ITEM_PRIORITY_8);
                 add_menu_item(MENU_ITEM_TYPE_0EA, 0, 0, MENU_ITEM_PRIORITY_8);
                 break;
+            case HARBOUR_MASTERS_MENU:
             case LOGO_INTRO_MENU:
+                add_menu_item(MENU_ITEM_UI_HARBOUR_MASTERS, 0, 0, MENU_ITEM_PRIORITY_0);
+                break;
                 add_menu_item(MENU_ITEM_UI_LOGO_INTRO, 0, 0, MENU_ITEM_PRIORITY_0);
                 break;
             case CONTROLLER_PAK_MENU:
@@ -5530,6 +5535,11 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
     var_ra->param1 = 0;
     var_ra->param2 = 0;
     switch (type) {
+        case MENU_ITEM_UI_HARBOUR_MASTERS:
+            HM_InitIntro();
+            var_ra->param1 = -1;
+            var_ra->param2 = one;
+            break;
         case MENU_ITEM_UI_LOGO_INTRO:
             sIntroLogoTimer = 0;
             sIntroModelMotionSpeed = 0.0f;
@@ -5965,6 +5975,9 @@ void render_menus(MenuItem* arg0) {
     if ((s8) arg0->visible) {
         gDPPipeSync(gDisplayListHead++);
         switch (arg0->type) {
+            case MENU_ITEM_UI_HARBOUR_MASTERS:
+                HM_DrawIntro();
+                break;
             case MENU_ITEM_UI_LOGO_INTRO:
                 func_80094660(gGfxPool, arg0->param1);
                 break;
@@ -8698,6 +8711,10 @@ void handle_menus_with_pri_arg(s32 priSpecial) {
         }
 
         switch (type) {
+            case MENU_ITEM_UI_HARBOUR_MASTERS:
+                HM_TickIntro();
+                menuItem->param1++;
+                break;
             case MENU_ITEM_UI_LOGO_INTRO:
                 if (sIntroLogoTimer < 80) {
                     sIntroModelSpeed = 3.0f;

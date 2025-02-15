@@ -59,7 +59,7 @@ s8 gCourseIndexInCup;
 s8 unref_D_8018EE0C; // Set to 0 but never referenced
 
 /** Data **/
-s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 gMenuSelection = START_MENU;
 s32 gFadeModeSelection = FADE_MODE_NONE;
 s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 
