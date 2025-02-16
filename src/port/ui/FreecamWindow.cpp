@@ -65,7 +65,7 @@ void RegisterFreecamWidgets() {
 
     mPortMenu->AddWidget(path, "Keyboard: Move: W,A,S,D, Up: Space, Down: Shift\n  Faster: Ctrl, Look: Right-mouse button\n  Target Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);
     mPortMenu->AddWidget(path, "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: Left DPad\n  Driving Mode: L and R Buttons", WIDGET_TEXT);
-    mPortMenu->AddWidget(path, "Enable Flycam", WIDGET_CVAR_CHECKBOX)
+    mPortMenu->AddWidget(path, "Enable Freecam", WIDGET_CVAR_CHECKBOX)
         .CVar("gFreecam")
         .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}));
 
