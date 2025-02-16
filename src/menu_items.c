@@ -2375,9 +2375,9 @@ void setup_menus(void) {
                 add_menu_item(MENU_ITEM_TYPE_0EA, 0, 0, MENU_ITEM_PRIORITY_8);
                 break;
             case HARBOUR_MASTERS_MENU:
-            case LOGO_INTRO_MENU:
                 add_menu_item(MENU_ITEM_UI_HARBOUR_MASTERS, 0, 0, MENU_ITEM_PRIORITY_0);
                 break;
+            case LOGO_INTRO_MENU:
                 add_menu_item(MENU_ITEM_UI_LOGO_INTRO, 0, 0, MENU_ITEM_PRIORITY_0);
                 break;
             case CONTROLLER_PAK_MENU:
@@ -4751,7 +4751,7 @@ void func_8009CE64(s32 arg0) {
             gCreditsCourseId = COURSE_LUIGI_RACEWAY;
         } else {
             gGotoMenu = 1;
-            gMenuSelection = 0x0000000B;
+            gMenuSelection = MAIN_MENU;
         }
     } else if (gGamestate == 4) {
         if (D_8018E7AC[arg0] == 2) {
@@ -4869,8 +4869,11 @@ void func_8009CE64(s32 arg0) {
         if (gDebugMenuSelection != 0x40) {
             switch (gMenuFadeType) {
                 case 0:
-                    if (gMenuSelection == 8) {
-                        gMenuSelection = 0x0000000A;
+                    if (gMenuSelection == HARBOUR_MASTERS_MENU) {
+                        gMenuSelection = LOGO_INTRO_MENU;
+                        gFadeModeSelection = 0;
+                    } else if (gMenuSelection == LOGO_INTRO_MENU) {
+                        gMenuSelection = START_MENU;
                         gFadeModeSelection = 2;
                     } else {
                         gMenuSelection++;

@@ -13,16 +13,14 @@ extern "C" {
 #include "courses/harbour/ship2_model.h"
 #include "courses/harbour/ship3_model.h"
 #include "collision.h"
+#include "menu_items.h"
+#include "external.h"
+#include "menus.h"
 extern Gfx ship1_spag1_mesh[];
 }
 
 HarbourMastersIntro::HarbourMastersIntro() {
 }
-
-    // Lights1 hmIntroLight = gdSPDefLights1(
-    //     0x7F, 0x30, 0x80,
-    //     0x60, 20, 10, 0x49, 0x49, 0x49
-    // );
 
 void HarbourMastersIntro::HM_InitIntro() {
     _camera.Pos.x = 0;
@@ -78,25 +76,17 @@ void HarbourMastersIntro::HM_TickIntro() {
         _water = 0;
     }
 
-    HarbourMastersIntro::SpagBob(_pos, _rot, 2.0f, 0.13f, 1.5f, 0.05f, 1.6f, 0.05f);
+    HarbourMastersIntro::SpagBob(_pos, _rot, 2.5f, 0.18f, 1.5f, 0.05f, 1.7f, 0.06f);
     HarbourMastersIntro::Bob(_shipPos, _shipRot, 1.2f, 0.06f, 1.6f, -0.04f, 1.1f, -0.04f);
     HarbourMastersIntro::Bob(_ship2Pos, _ship2Rot, 1.2f, 0.06f, 1.6f, -0.04f, 1.1f, -0.04f);
 
-//_pos = FVector(0, -210, 1);
-// _camera.Pos.x = 0;
-// _camera.Pos.z = 0;
-// _camera.Pos.y = 0;
     _pos.x += 9;
+    _camera.Pos.x -= 1;
 
-    // Phase 1
-    if (_posHM64.y < 1) {
-        _posHM64.y += 5;
-    } else { // Phase 2
-        if (_posHM64.y < 400) {
-
-        } else { // Phase 3
-
-        }
+    if (_pos.x >= 880) {
+        gMenuFadeType = 0;
+        gMenuSelection = LOGO_INTRO_MENU;
+        gFadeModeSelection = FADE_MODE_LOGO;
     }
 
     find_and_set_tile_size((uintptr_t) ((void*)mat_water_water1), 0, _water);
@@ -134,7 +124,6 @@ void HarbourMastersIntro::HM_DrawIntro() {
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     mtxf_identity(someMtx);
     render_set_position(someMtx, 0);
-    //gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
 
@@ -161,14 +150,6 @@ void HarbourMastersIntro::HM_DrawIntro() {
     mtxf_scale(matrix3, _scale);
     render_set_position(matrix3, 0);
     gSPDisplayList(gDisplayListHead++, ship3_2Ship_mesh);
-
-    // Mat4 matrix3;
-    // Vec3f pos3 = {_posHM64.x, _posHM64.y, _posHM64.z};
-    // Vec3s rot3 = {_rotHM64.pitch * conv, _rotHM64.yaw * conv, _rotHM64.roll * conv};
-    // mtxf_pos_rotation_xyz(matrix3, pos3, rot3);
-    // mtxf_scale(matrix3, 2.0f);
-    // render_set_position(matrix3, 0);
-    // gSPDisplayList(gDisplayListHead++, hm64_Text_001_mesh);
 
     Mat4 hMatrix;
     Vec3f hPos = {_hPos.x, _hPos.y, _hPos.z};

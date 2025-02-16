@@ -2344,7 +2344,44 @@ u8 ship1_enginepiece_rgba16[] = {
 	
 };
 
-Vtx ship1_spag1_mesh_vtx_cull[8] = {
+Gfx ship1_metal1_i8_copy_aligner[] = {gsSPEndDisplayList()};
+u8 ship1_metal1_i8_copy[] = {
+	0x45, 0x45, 0x45, 0x45, 0x45, 0x4b, 0x52, 0x52, 
+	0x52, 0x52, 0x4b, 0x4b, 0x4b, 0x45, 0x45, 0x45, 
+	0x45, 0x45, 0x4b, 0x52, 0x52, 0x6e, 0x8e, 0x8e, 
+	0x8e, 0x72, 0x72, 0x6e, 0x60, 0x4b, 0x45, 0x45, 
+	0x3e, 0x45, 0x4b, 0x5a, 0x52, 0x67, 0x72, 0x72, 
+	0x72, 0x7b, 0xa5, 0x8e, 0x6e, 0x60, 0x4b, 0x45, 
+	0x3e, 0x45, 0x4b, 0x5a, 0x5a, 0x4b, 0x4b, 0x4b, 
+	0x60, 0x6e, 0x6e, 0x8e, 0x8e, 0x67, 0x67, 0x45, 
+	0x3e, 0x3e, 0x52, 0x52, 0x52, 0x4b, 0x4b, 0x4b, 
+	0x52, 0x52, 0x5a, 0x72, 0x7b, 0x8e, 0x67, 0x4b, 
+	0x45, 0x45, 0x52, 0x52, 0x4b, 0x4b, 0x45, 0x45, 
+	0x4b, 0x52, 0x52, 0x60, 0x7b, 0x6e, 0x5a, 0x4b, 
+	0x45, 0x45, 0x4b, 0x4b, 0x4b, 0x4b, 0x45, 0x45, 
+	0x45, 0x4b, 0x52, 0x5a, 0x6e, 0x6e, 0x5a, 0x4b, 
+	0x3e, 0x3e, 0x3d, 0x45, 0x4b, 0x4b, 0x45, 0x45, 
+	0x45, 0x45, 0x4b, 0x5a, 0x67, 0x60, 0x52, 0x45, 
+	0x45, 0x3e, 0x45, 0x4b, 0x45, 0x45, 0x45, 0x4b, 
+	0x4b, 0x4b, 0x45, 0x52, 0x60, 0x67, 0x52, 0x45, 
+	0x4b, 0x3e, 0x45, 0x4b, 0x4b, 0x45, 0x45, 0x4b, 
+	0x4b, 0x4b, 0x45, 0x4b, 0x60, 0x6e, 0x5a, 0x45, 
+	0x4b, 0x3d, 0x36, 0x45, 0x52, 0x4b, 0x45, 0x45, 
+	0x45, 0x4b, 0x4b, 0x4b, 0x60, 0x67, 0x5a, 0x45, 
+	0x3e, 0x38, 0x33, 0x38, 0x4b, 0x52, 0x45, 0x45, 
+	0x45, 0x4b, 0x4b, 0x4b, 0x5a, 0x5a, 0x4b, 0x45, 
+	0x36, 0x38, 0x36, 0x33, 0x38, 0x45, 0x3e, 0x3e, 
+	0x3e, 0x45, 0x45, 0x4b, 0x4b, 0x52, 0x4b, 0x45, 
+	0x33, 0x33, 0x32, 0x32, 0x32, 0x32, 0x38, 0x3e, 
+	0x4b, 0x45, 0x45, 0x52, 0x52, 0x4b, 0x4b, 0x45, 
+	0x38, 0x33, 0x32, 0x33, 0x32, 0x30, 0x3d, 0x3d, 
+	0x38, 0x38, 0x3e, 0x45, 0x4b, 0x4b, 0x45, 0x45, 
+	0x45, 0x45, 0x38, 0x36, 0x3d, 0x3d, 0x3e, 0x38, 
+	0x36, 0x38, 0x3e, 0x3e, 0x45, 0x45, 0x45, 0x45, 
+	
+};
+
+Vtx ship1_spag1_003_mesh_vtx_cull[8] = {
 	{{ {-202, -32, -387}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-202, -32, 465}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-202, 784, 465}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -2355,7 +2392,7 @@ Vtx ship1_spag1_mesh_vtx_cull[8] = {
 	{{ {230, 784, -387}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx ship1_spag1_mesh_vtx_0[86] = {
+Vtx ship1_spag1_003_mesh_vtx_0[86] = {
 	{{ {186, 80, 111}, 0, {336, 654}, {109, 202, 37, 255} }},
 	{{ {132, 231, -340}, 0, {1439, -16}, {79, 215, 165, 255} }},
 	{{ {196, 172, 130}, 0, {291, 247}, {120, 238, 39, 255} }},
@@ -2444,8 +2481,8 @@ Vtx ship1_spag1_mesh_vtx_0[86] = {
 	{{ {-202, 627, -211}, 0, {-528, 496}, {185, 0, 151, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_0[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_0 + 0, 32, 0),
+Gfx ship1_spag1_003_mesh_tri_0[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_0 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 5, 4, 0, 0),
 	gsSP2Triangles(5, 0, 6, 0, 0, 7, 6, 0),
@@ -2468,7 +2505,7 @@ Gfx ship1_spag1_mesh_tri_0[] = {
 	gsSP2Triangles(24, 19, 21, 0, 24, 21, 23, 0),
 	gsSP2Triangles(26, 27, 28, 0, 29, 28, 27, 0),
 	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_0 + 32, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_0 + 32, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
 	gsSP2Triangles(3, 4, 1, 0, 3, 5, 4, 0),
 	gsSP2Triangles(3, 6, 5, 0, 6, 7, 5, 0),
@@ -2487,7 +2524,7 @@ Gfx ship1_spag1_mesh_tri_0[] = {
 	gsSP2Triangles(27, 22, 28, 0, 22, 24, 28, 0),
 	gsSP2Triangles(29, 28, 24, 0, 29, 24, 30, 0),
 	gsSP2Triangles(23, 30, 24, 0, 23, 31, 30, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_0 + 64, 22, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_0 + 64, 22, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 1, 3, 0, 4, 3, 5, 0),
 	gsSP2Triangles(6, 4, 5, 0, 2, 4, 6, 0),
@@ -2506,7 +2543,7 @@ Gfx ship1_spag1_mesh_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_1[32] = {
+Vtx ship1_spag1_003_mesh_vtx_1[44] = {
 	{{ {0, -32, -138}, 0, {-580, -580}, {0, 134, 221, 255} }},
 	{{ {-25, -7, -138}, 0, {-580, -1092}, {134, 0, 221, 255} }},
 	{{ {0, -7, -172}, 0, {-580, -580}, {0, 0, 129, 255} }},
@@ -2527,22 +2564,34 @@ Vtx ship1_spag1_mesh_vtx_1[32] = {
 	{{ {0, -7, 120}, 0, {-580, -1092}, {0, 0, 127, 255} }},
 	{{ {0, -7, 120}, 0, {-1092, -1092}, {0, 0, 127, 255} }},
 	{{ {0, -7, 120}, 0, {-1092, -580}, {0, 0, 127, 255} }},
+	{{ {41, 40, -264}, 0, {-580, -1092}, {130, 0, 12, 255} }},
+	{{ {59, 58, -264}, 0, {-1092, -1092}, {0, 126, 12, 255} }},
+	{{ {59, 67, -360}, 0, {-1092, -1092}, {0, 107, 187, 255} }},
+	{{ {87, 40, -360}, 0, {-1092, -580}, {107, 0, 187, 255} }},
+	{{ {78, 40, -264}, 0, {-1092, -580}, {126, 0, 12, 255} }},
+	{{ {59, 12, -360}, 0, {-580, -580}, {0, 149, 187, 255} }},
+	{{ {59, 21, -264}, 0, {-580, -580}, {0, 130, 12, 255} }},
+	{{ {32, 40, -360}, 0, {-580, -1092}, {149, 0, 187, 255} }},
 	{{ {-7, 655, -216}, 0, {246, -836}, {202, 115, 0, 255} }},
 	{{ {0, 655, -208}, 0, {246, -908}, {0, 115, 54, 255} }},
 	{{ {0, 688, -208}, 0, {246, -908}, {0, 0, 127, 255} }},
 	{{ {7, 688, -216}, 0, {246, -836}, {127, 0, 0, 255} }},
+	{{ {0, 655, -208}, 0, {246, -908}, {0, 115, 54, 255} }},
 	{{ {7, 655, -216}, 0, {246, -836}, {54, 115, 0, 255} }},
+	{{ {7, 688, -216}, 0, {246, -836}, {127, 0, 0, 255} }},
 	{{ {0, 688, -223}, 0, {246, -764}, {221, 0, 134, 255} }},
 	{{ {0, 655, -223}, 0, {246, -764}, {0, 115, 202, 255} }},
 	{{ {-7, 688, -216}, 0, {246, -836}, {129, 0, 0, 255} }},
+	{{ {-7, 655, -216}, 0, {246, -836}, {202, 115, 0, 255} }},
+	{{ {0, 688, -208}, 0, {246, -908}, {0, 0, 127, 255} }},
 	{{ {0, 784, -208}, 0, {246, -908}, {0, 73, 104, 255} }},
 	{{ {7, 784, -216}, 0, {246, -836}, {104, 73, 0, 255} }},
 	{{ {0, 784, -223}, 0, {246, -764}, {201, 66, 162, 255} }},
 	{{ {-7, 784, -216}, 0, {246, -836}, {152, 73, 0, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_1[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_1 + 0, 32, 0),
+Gfx ship1_spag1_003_mesh_tri_1[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_1 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 0, 5, 0),
 	gsSP2Triangles(5, 0, 6, 0, 7, 4, 5, 0),
@@ -2560,15 +2609,20 @@ Gfx ship1_spag1_mesh_tri_1[] = {
 	gsSP2Triangles(21, 24, 23, 0, 24, 25, 23, 0),
 	gsSP2Triangles(24, 26, 25, 0, 26, 27, 25, 0),
 	gsSP2Triangles(26, 20, 27, 0, 20, 22, 27, 0),
-	gsSP2Triangles(27, 22, 28, 0, 22, 29, 28, 0),
-	gsSP2Triangles(22, 23, 29, 0, 23, 30, 29, 0),
-	gsSP2Triangles(23, 25, 30, 0, 25, 31, 30, 0),
-	gsSP2Triangles(25, 27, 31, 0, 27, 28, 31, 0),
-	gsSP2Triangles(28, 30, 31, 0, 28, 29, 30, 0),
+	gsSP2Triangles(28, 29, 30, 0, 29, 31, 30, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_1 + 32, 12, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 3, 2, 0),
+	gsSP2Triangles(1, 4, 3, 0, 4, 5, 3, 0),
+	gsSP2Triangles(4, 6, 5, 0, 6, 7, 5, 0),
+	gsSP2Triangles(5, 7, 8, 0, 7, 9, 8, 0),
+	gsSP2Triangles(7, 2, 9, 0, 2, 10, 9, 0),
+	gsSP2Triangles(2, 3, 10, 0, 3, 11, 10, 0),
+	gsSP2Triangles(3, 5, 11, 0, 5, 8, 11, 0),
+	gsSP2Triangles(8, 10, 11, 0, 8, 9, 10, 0),
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_2[15] = {
+Vtx ship1_spag1_003_mesh_vtx_2[15] = {
 	{{ {0, 338, -161}, 0, {496, 1008}, {0, 211, 119, 255} }},
 	{{ {202, 338, -161}, 0, {1008, 1008}, {44, 214, 111, 255} }},
 	{{ {202, 389, -113}, 0, {1008, 828}, {0, 194, 111, 255} }},
@@ -2586,8 +2640,8 @@ Vtx ship1_spag1_mesh_vtx_2[15] = {
 	{{ {-202, 627, -161}, 0, {-16, -16}, {212, 39, 113, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_2[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_2 + 0, 15, 0),
+Gfx ship1_spag1_003_mesh_tri_2[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_2 + 0, 15, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
@@ -2599,7 +2653,7 @@ Gfx ship1_spag1_mesh_tri_2[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_3[12] = {
+Vtx ship1_spag1_003_mesh_vtx_3[12] = {
 	{{ {192, 80, 111}, 0, {-446, 619}, {125, 240, 237, 255} }},
 	{{ {137, 172, -290}, 0, {2227, 12}, {125, 247, 237, 255} }},
 	{{ {202, 172, 130}, 0, {-574, 12}, {125, 247, 237, 255} }},
@@ -2614,8 +2668,8 @@ Vtx ship1_spag1_mesh_vtx_3[12] = {
 	{{ {-115, 0, -250}, 0, {-993, 1164}, {121, 33, 19, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_3[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_3 + 0, 12, 0),
+Gfx ship1_spag1_003_mesh_tri_3[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_3 + 0, 12, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 5, 3, 0),
 	gsSP2Triangles(6, 7, 8, 0, 6, 9, 7, 0),
@@ -2623,7 +2677,7 @@ Gfx ship1_spag1_mesh_tri_3[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_4[17] = {
+Vtx ship1_spag1_003_mesh_vtx_4[17] = {
 	{{ {-143, 166, 113}, 0, {-516, 524}, {255, 126, 13, 255} }},
 	{{ {0, 166, 265}, 0, {-559, 1620}, {0, 127, 0, 255} }},
 	{{ {143, 166, 113}, 0, {494, 1311}, {1, 126, 13, 255} }},
@@ -2643,8 +2697,8 @@ Vtx ship1_spag1_mesh_vtx_4[17] = {
 	{{ {-74, 209, -160}, 0, {710, -548}, {246, 126, 17, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_4[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_4 + 0, 17, 0),
+Gfx ship1_spag1_003_mesh_tri_4[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_4 + 0, 17, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 2, 5, 4, 0),
 	gsSP2Triangles(2, 6, 5, 0, 2, 7, 6, 0),
@@ -2657,7 +2711,7 @@ Gfx ship1_spag1_mesh_tri_4[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_5[16] = {
+Vtx ship1_spag1_003_mesh_vtx_5[16] = {
 	{{ {-87, 225, -300}, 0, {574, -621}, {255, 126, 12, 255} }},
 	{{ {-109, 202, -137}, 0, {243, -277}, {243, 125, 17, 255} }},
 	{{ {-74, 209, -160}, 0, {347, -282}, {246, 126, 17, 255} }},
@@ -2676,8 +2730,8 @@ Vtx ship1_spag1_mesh_vtx_5[16] = {
 	{{ {41, 208, -141}, 0, {517, -80}, {2, 126, 17, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_5[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_5 + 0, 16, 0),
+Gfx ship1_spag1_003_mesh_tri_5[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_5 + 0, 16, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(2, 4, 3, 0, 2, 5, 4, 0),
 	gsSP2Triangles(5, 6, 4, 0, 4, 7, 3, 0),
@@ -2687,7 +2741,7 @@ Gfx ship1_spag1_mesh_tri_5[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_6[79] = {
+Vtx ship1_spag1_003_mesh_vtx_6[79] = {
 	{{ {-57, 204, -203}, 0, {-1117, 1963}, {72, 164, 51, 255} }},
 	{{ {-53, 228, -197}, 0, {-656, 1165}, {92, 37, 80, 255} }},
 	{{ {-74, 217, -189}, 0, {-1577, 1165}, {238, 231, 123, 255} }},
@@ -2769,8 +2823,8 @@ Vtx ship1_spag1_mesh_vtx_6[79] = {
 	{{ {22, 250, -278}, 0, {-1577, -431}, {184, 92, 205, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_6[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_6 + 0, 32, 0),
+Gfx ship1_spag1_003_mesh_tri_6[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_6 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(1, 4, 3, 0, 1, 5, 4, 0),
 	gsSP2Triangles(1, 6, 5, 0, 5, 7, 4, 0),
@@ -2785,7 +2839,7 @@ Gfx ship1_spag1_mesh_tri_6[] = {
 	gsSP2Triangles(23, 26, 25, 0, 23, 27, 26, 0),
 	gsSP2Triangles(23, 28, 27, 0, 27, 29, 26, 0),
 	gsSP2Triangles(27, 30, 29, 0, 31, 30, 27, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_6 + 32, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_6 + 32, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 3, 5, 1, 0),
 	gsSP2Triangles(3, 6, 5, 0, 7, 6, 3, 0),
@@ -2799,7 +2853,7 @@ Gfx ship1_spag1_mesh_tri_6[] = {
 	gsSP2Triangles(25, 27, 24, 0, 25, 28, 27, 0),
 	gsSP2Triangles(29, 28, 25, 0, 28, 30, 27, 0),
 	gsSP1Triangle(28, 31, 30, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_6 + 64, 15, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_6 + 64, 15, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 9, 3, 10, 0),
 	gsSP2Triangles(7, 9, 11, 0, 12, 6, 13, 0),
@@ -2807,19 +2861,19 @@ Gfx ship1_spag1_mesh_tri_6[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_7[3] = {
+Vtx ship1_spag1_003_mesh_vtx_7[3] = {
 	{{ {0, 688, -223}, 0, {-16, 762}, {221, 0, 134, 255} }},
 	{{ {0, 784, -223}, 0, {-16, -262}, {201, 66, 162, 255} }},
 	{{ {0, 737, -387}, 0, {1018, 764}, {129, 0, 0, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_7[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_7 + 0, 3, 0),
+Gfx ship1_spag1_003_mesh_tri_7[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_7 + 0, 3, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_8[17] = {
+Vtx ship1_spag1_003_mesh_vtx_8[17] = {
 	{{ {33, 172, 304}, 0, {582, 1395}, {0, 126, 240, 255} }},
 	{{ {0, 217, 453}, 0, {496, 1901}, {0, 121, 219, 255} }},
 	{{ {44, 217, 453}, 0, {611, 1901}, {0, 121, 219, 255} }},
@@ -2839,8 +2893,8 @@ Vtx ship1_spag1_mesh_vtx_8[17] = {
 	{{ {-44, 217, 453}, 0, {381, 1901}, {0, 121, 219, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_8[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_8 + 0, 17, 0),
+Gfx ship1_spag1_003_mesh_tri_8[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_8 + 0, 17, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 0, 5, 0),
 	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
@@ -2853,7 +2907,7 @@ Gfx ship1_spag1_mesh_tri_8[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_9[276] = {
+Vtx ship1_spag1_003_mesh_vtx_9[276] = {
 	{{ {0, 230, -84}, 0, {-529, 495}, {204, 204, 152, 255} }},
 	{{ {0, 230, 113}, 0, {-529, 495}, {255, 199, 114, 255} }},
 	{{ {0, 234, -84}, 0, {-529, 495}, {226, 0, 133, 255} }},
@@ -3132,8 +3186,8 @@ Vtx ship1_spag1_mesh_vtx_9[276] = {
 	{{ {-120, 257, -48}, 0, {-529, 495}, {77, 101, 4, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_9[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 0, 32, 0),
+Gfx ship1_spag1_003_mesh_tri_9[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
 	gsSP2Triangles(9, 10, 6, 0, 6, 10, 11, 0),
@@ -3145,7 +3199,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(27, 25, 26, 0, 28, 27, 26, 0),
 	gsSP2Triangles(26, 29, 28, 0, 28, 29, 30, 0),
 	gsSP1Triangle(29, 31, 30, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 32, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 32, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(4, 6, 5, 0, 4, 7, 6, 0),
@@ -3162,7 +3216,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(27, 19, 26, 0, 28, 27, 26, 0),
 	gsSP2Triangles(28, 26, 29, 0, 30, 28, 29, 0),
 	gsSP2Triangles(30, 29, 0, 0, 31, 0, 29, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 64, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 64, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 3, 4, 0),
 	gsSP2Triangles(1, 5, 3, 0, 1, 6, 5, 0),
 	gsSP2Triangles(7, 8, 9, 0, 7, 10, 8, 0),
@@ -3176,7 +3230,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(23, 16, 24, 0, 21, 25, 17, 0),
 	gsSP2Triangles(21, 26, 25, 0, 26, 27, 25, 0),
 	gsSP2Triangles(26, 28, 27, 0, 29, 30, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 96, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 96, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 7, 6, 0),
 	gsSP2Triangles(5, 8, 7, 0, 8, 9, 7, 0),
@@ -3190,7 +3244,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(25, 24, 26, 0, 27, 25, 26, 0),
 	gsSP2Triangles(27, 26, 28, 0, 29, 27, 28, 0),
 	gsSP2Triangles(29, 28, 30, 0, 27, 29, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 128, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 128, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 2, 4, 0),
 	gsSP2Triangles(5, 3, 4, 0, 5, 4, 6, 0),
 	gsSP2Triangles(7, 5, 6, 0, 7, 6, 8, 0),
@@ -3202,7 +3256,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(25, 24, 23, 0, 26, 25, 23, 0),
 	gsSP2Triangles(27, 25, 26, 0, 28, 29, 30, 0),
 	gsSP1Triangle(28, 30, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 160, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 160, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 1, 3, 0, 4, 5, 1, 0),
 	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
@@ -3219,7 +3273,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(25, 28, 27, 0, 28, 29, 27, 0),
 	gsSP2Triangles(28, 30, 29, 0, 30, 31, 29, 0),
 	gsSP2Triangles(30, 24, 31, 0, 24, 26, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 192, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 192, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 3, 2, 0),
 	gsSP2Triangles(1, 4, 3, 0, 4, 5, 3, 0),
 	gsSP2Triangles(4, 6, 5, 0, 6, 7, 5, 0),
@@ -3240,7 +3294,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(22, 23, 29, 0, 23, 30, 29, 0),
 	gsSP2Triangles(23, 25, 30, 0, 25, 31, 30, 0),
 	gsSP2Triangles(25, 27, 31, 0, 27, 28, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 224, 32, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 224, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 5, 3, 0),
 	gsSP2Triangles(6, 5, 4, 0, 6, 7, 5, 0),
@@ -3261,7 +3315,7 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSP2Triangles(28, 27, 24, 0, 28, 29, 27, 0),
 	gsSP2Triangles(30, 29, 28, 0, 30, 31, 29, 0),
 	gsSP2Triangles(26, 31, 30, 0, 26, 25, 31, 0),
-	gsSPVertex(ship1_spag1_mesh_vtx_9 + 256, 20, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_9 + 256, 20, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 5, 3, 0),
 	gsSP2Triangles(6, 5, 4, 0, 6, 7, 5, 0),
@@ -3277,7 +3331,11 @@ Gfx ship1_spag1_mesh_tri_9[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_10[32] = {
+Vtx ship1_spag1_003_mesh_vtx_10[36] = {
+	{{ {87, 40, -360}, 0, {-16, 1008}, {107, 0, 187, 255} }},
+	{{ {59, 12, -360}, 0, {1008, 1008}, {0, 149, 187, 255} }},
+	{{ {32, 40, -360}, 0, {1008, -16}, {149, 0, 187, 255} }},
+	{{ {59, 67, -360}, 0, {-16, -16}, {0, 107, 187, 255} }},
 	{{ {120, 257, 101}, 0, {-16, 1008}, {179, 101, 4, 255} }},
 	{{ {137, 252, 118}, 0, {1008, 1008}, {24, 70, 103, 255} }},
 	{{ {153, 247, 101}, 0, {1008, -16}, {122, 36, 252, 255} }},
@@ -3312,8 +3370,8 @@ Vtx ship1_spag1_mesh_vtx_10[32] = {
 	{{ {-137, 252, -31}, 0, {1008, 1008}, {232, 70, 103, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_10[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_10 + 0, 32, 0),
+Gfx ship1_spag1_003_mesh_tri_10[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_10 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),
@@ -3322,10 +3380,12 @@ Gfx ship1_spag1_mesh_tri_10[] = {
 	gsSP2Triangles(20, 21, 22, 0, 20, 22, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 24, 26, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 28, 30, 31, 0),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_10 + 32, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSPEndDisplayList(),
 };
 
-Vtx ship1_spag1_mesh_vtx_11[10] = {
+Vtx ship1_spag1_003_mesh_vtx_11[10] = {
 	{{ {84, 239, 111}, 0, {2058, 924}, {0, 0, 127, 255} }},
 	{{ {84, 266, 111}, 0, {2058, 117}, {0, 0, 127, 255} }},
 	{{ {75, 271, 111}, 0, {1900, -16}, {0, 0, 127, 255} }},
@@ -3338,12 +3398,45 @@ Vtx ship1_spag1_mesh_vtx_11[10] = {
 	{{ {-84, 266, 111}, 0, {-1066, 117}, {0, 0, 127, 255} }},
 };
 
-Gfx ship1_spag1_mesh_tri_11[] = {
-	gsSPVertex(ship1_spag1_mesh_vtx_11 + 0, 10, 0),
+Gfx ship1_spag1_003_mesh_tri_11[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_11 + 0, 10, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
 	gsSP2Triangles(2, 4, 3, 0, 5, 3, 4, 0),
 	gsSP2Triangles(6, 5, 4, 0, 4, 7, 6, 0),
 	gsSP2Triangles(6, 7, 8, 0, 7, 9, 8, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx ship1_spag1_003_mesh_vtx_12[8] = {
+	{{ {-78, 40, -264}, 0, {-580, -1092}, {130, 0, 12, 255} }},
+	{{ {-60, 58, -264}, 0, {-1092, -1092}, {0, 126, 12, 255} }},
+	{{ {-60, 67, -360}, 0, {-1092, -1092}, {0, 107, 187, 255} }},
+	{{ {-32, 40, -360}, 0, {-1092, -580}, {107, 0, 187, 255} }},
+	{{ {-41, 40, -264}, 0, {-1092, -580}, {126, 0, 12, 255} }},
+	{{ {-60, 12, -360}, 0, {-580, -580}, {0, 149, 187, 255} }},
+	{{ {-60, 21, -264}, 0, {-580, -580}, {0, 130, 12, 255} }},
+	{{ {-87, 40, -360}, 0, {-580, -1092}, {149, 0, 187, 255} }},
+};
+
+Gfx ship1_spag1_003_mesh_tri_12[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_12 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 3, 2, 0),
+	gsSP2Triangles(1, 4, 3, 0, 4, 5, 3, 0),
+	gsSP2Triangles(4, 6, 5, 0, 6, 7, 5, 0),
+	gsSP2Triangles(6, 0, 7, 0, 0, 2, 7, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx ship1_spag1_003_mesh_vtx_13[4] = {
+	{{ {-32, 40, -360}, 0, {-16, 1008}, {107, 0, 187, 255} }},
+	{{ {-60, 12, -360}, 0, {1008, 1008}, {0, 149, 187, 255} }},
+	{{ {-87, 40, -360}, 0, {1008, -16}, {149, 0, 187, 255} }},
+	{{ {-60, 67, -360}, 0, {-16, -16}, {0, 107, 187, 255} }},
+};
+
+Gfx ship1_spag1_003_mesh_tri_13[] = {
+	gsSPVertex(ship1_spag1_003_mesh_vtx_13 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -3549,38 +3642,70 @@ Gfx mat_ship1_engine2[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx ship1_spag1_mesh[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(ship1_spag1_mesh_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_ship1_boat1),
-	gsSPDisplayList(ship1_spag1_mesh_tri_0),
-	gsSPDisplayList(mat_ship1_metal1),
-	gsSPDisplayList(ship1_spag1_mesh_tri_1),
-	gsSPDisplayList(mat_ship1_sail),
-	gsSPDisplayList(ship1_spag1_mesh_tri_2),
-	gsSPDisplayList(mat_ship1_logo),
-	gsSPDisplayList(ship1_spag1_mesh_tri_3),
-	gsSPDisplayList(mat_ship1_spag1),
-	gsSPDisplayList(ship1_spag1_mesh_tri_4),
-	gsSPDisplayList(mat_ship1_sauce1),
-	gsSPDisplayList(ship1_spag1_mesh_tri_5),
-	gsSPDisplayList(mat_ship1_meat1),
-	gsSPDisplayList(ship1_spag1_mesh_tri_6),
-	gsSPDisplayList(mat_ship1_flag),
-	gsSPDisplayList(ship1_spag1_mesh_tri_7),
-	gsSPDisplayList(mat_ship1_wood2),
-	gsSPDisplayList(ship1_spag1_mesh_tri_8),
-	gsSPDisplayList(mat_ship1_engine),
-	gsSPDisplayList(ship1_spag1_mesh_tri_9),
-	gsSPDisplayList(mat_ship1_black),
-	gsSPDisplayList(ship1_spag1_mesh_tri_10),
-	gsSPDisplayList(mat_ship1_engine2),
-	gsSPDisplayList(ship1_spag1_mesh_tri_11),
+Gfx mat_ship1_metal1_001[] = {
+	gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_SHADING_SMOOTH),
+	gsSPClearGeometryMode(G_CULL_FRONT | G_TEXTURE_GEN_LINEAR | G_LOD | G_CLIPPING),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_2CYCLE | G_PM_NPRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
+	gsSPTexture(960, 960, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, ship1_metal1_i8_copy),
+	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 127, 1024),
+	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b, 2, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 4, 0, G_TX_WRAP | G_TX_NOMIRROR, 4, 0),
+	gsDPSetTileSize(0, 0, 0, 60, 60),
 	gsSPEndDisplayList(),
 };
 
+Gfx mat_ship1_black_001[] = {
+	gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_FOG | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPClearGeometryMode(G_CULL_FRONT | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_CLIPPING),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, 1, COMBINED, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_2CYCLE | G_PM_NPRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 0, 0, 0, 255),
+	gsSPEndDisplayList(),
+};
+
+Gfx ship1_spag1_mesh[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(ship1_spag1_003_mesh_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPDisplayList(mat_ship1_boat1),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_0),
+	gsSPDisplayList(mat_ship1_metal1),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_1),
+	gsSPDisplayList(mat_ship1_sail),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_2),
+	gsSPDisplayList(mat_ship1_logo),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_3),
+	gsSPDisplayList(mat_ship1_spag1),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_4),
+	gsSPDisplayList(mat_ship1_sauce1),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_5),
+	gsSPDisplayList(mat_ship1_meat1),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_6),
+	gsSPDisplayList(mat_ship1_flag),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_7),
+	gsSPDisplayList(mat_ship1_wood2),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_8),
+	gsSPDisplayList(mat_ship1_engine),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_9),
+	gsSPDisplayList(mat_ship1_black),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_10),
+	gsSPDisplayList(mat_ship1_engine2),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_11),
+	gsSPDisplayList(mat_ship1_metal1_001),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_12),
+	gsSPDisplayList(mat_ship1_black_001),
+	gsSPDisplayList(ship1_spag1_003_mesh_tri_13),
+	gsSPEndDisplayList(),
+};
 
 
 
