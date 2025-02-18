@@ -54,84 +54,123 @@ void Editor::MouseClick() {
 
     // Convert mouse to NDS screen coordinates
     float x = (2.0f * mouse.x) / width - 1.0f;  // Normalized X: -1 to 1
-    float y = 1.0f - (2.0f * -mouse.y) / height; // Normalized Y: -1 to 1
+    float y = 1.0f - (2.0f * mouse.y) / height; // Normalized Y: -1 to 1
     float z = 1.0f; // z is typically 1.0 for the near plane
 
-    float rayClip[4] = {x, y, z, 1.0f};
+    FVector4 rayClip = {x, y, z, 1.0f};
 
    // printf("rayClip %f %f %f\n", x, y, z);
 
-    Mat4 inversePerspMtx;
-
     Mat4 perspMtx;
-    guMtxL2F(perspMtx, &gGfxPools->mtxPersp[0]);
-    Mat4 lookAtMtx;
-    guMtxL2F(lookAtMtx, &gGfxPools->mtxLookAt[0]);
+    u16 perspNorm;
+    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
-    Mat4 combinedMtx;
-    mtxf_multiplication(combinedMtx, lookAtMtx, perspMtx);
-    Mat4 inverseViewMtx;
-    float invRayWor[4];
-    Editor::Inverse((MtxF*)&combinedMtx[0][0], (MtxF*)&inverseViewMtx[0][0]);
-    MultiplyMatrixVector(inverseViewMtx, rayClip, invRayWor);
-
-    Vec3f direction = {invRayWor[0], invRayWor[1], invRayWor[2]};
-
-    float rayLength = 400.0f;
-
-    float nearPlaneOffset = 9.0f;
-    Vec3f rayStart;
-    rayStart[0] = camera->pos[0];// + direction[0] * nearPlaneOffset;
-    rayStart[1] = camera->pos[1];// + direction[1] * nearPlaneOffset;
-    rayStart[2] = camera->pos[2];// + direction[2] * nearPlaneOffset;
-
-    Vec3f rayEnd;
-    rayEnd[0] = (rayStart[0] + direction[0] * 400.0); //* (rayLength + ray_wor[0]);
-    rayEnd[1] = (rayStart[1] + direction[1] * 400.0);  //* (rayLength + ray_wor[1]);
-    rayEnd[2] = (rayStart[2] + direction[2] * 400.0);  // * (rayLength + ray_wor[2]);
-
-    _ray[0] = direction[0];
-    _ray[1] = direction[1];
-    _ray[2] = direction[2];
-
-    printf("cam pos %f, ray*len %f, cam+ray*len %f, brckt %f\n", camera->pos[0], _ray[0] * 300, camera->pos[0] + _ray[0] * 300, camera->pos[0] + (_ray[0] * 300));
-
-   // printf("pos %f %f %f dir %f %f %f\n", camera->pos[0], camera->pos[1], camera->pos[2], rayLength * ray_wor[0], rayLength * ray_wor[1], rayLength * ray_wor[2]);
-
-    //printf("3 %f %f %f\n", direction[0], direction[1], direction[2]);
-    object->Pos.x = rayEnd[0];
-    object->Pos.y = rayEnd[1];
-    object->Pos.z = rayEnd[2];
+    Mat4 inversePerspMtx;
+    if (Editor::Inverse((MtxF*)&perspMtx, (MtxF*)&inversePerspMtx) != 2) {
+        FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*)&rayClip.x);
+        
+        Mat4 lookAtMtx;
+        guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+        //Mat4 combinedMtx;
+        // mtxf_multiplication(combinedMtx, lookAtMtx, perspMtx);
+        Mat4 inverseViewMtx;
+        if (Editor::Inverse((MtxF*)&lookAtMtx, (MtxF*)&inverseViewMtx[0][0]) != 2) {
+            rayEye.w = 0;
+            FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*)&rayEye.x);
+            //printf("rayEye %f %f %f\n", invRayWor.x, invRayWor.y, invRayWor.z);
+            
+            
+            
+            FVector direction;
+            direction = FVector(invRayWor.x, invRayWor.y, invRayWor.z);
+            // if (invRayWor.w != 1) {
+            //     direction = FVector(invRayWor.x / invRayWor.w, invRayWor.y / invRayWor.w, invRayWor.z / invRayWor.w);
+                 printf("3 %f %f %f div\n", direction.x, direction.y, direction.z);
+            // } else {
+            //     printf("3 %f %f %f\n", direction.x, direction.y, direction.z);
+            // }
+            
+            float rayLength = 400.0f;
+            
+            float nearPlaneOffset = 1.0f;
+            
+            FVector camDirection;
+            camDirection.x = camera->lookAt[0] - camera->pos[0];
+            camDirection.y = camera->lookAt[1] - camera->pos[1];
+            camDirection.z = camera->lookAt[2] - camera->pos[2];
+            
+            float length = sqrt(camDirection.x * camDirection.x + camDirection.y * camDirection.y + camDirection.z * camDirection.x);
+            
+            if (length != 0) {
+                camDirection.x /= length; camDirection.y /= length; camDirection.z /= length;
+            }
+            
+            FVector rayStart;
+            rayStart.x = camera->pos[0];// + direction.x * nearPlaneOffset;
+            rayStart.y = camera->pos[1];// + direction.y * nearPlaneOffset;
+            rayStart.z = camera->pos[2];// + direction.z * nearPlaneOffset;
+            
+            
+            // FVector rotatedDirection = RotateVectorWithMatrix(direction, camera->lookAt);
+            
+            FVector rayEnd;
+            rayEnd.x = 0; //* (rayLength + ray_wor[0]);
+            rayEnd.y = 0;  //* (rayLength + ray_wor[1]);
+            rayEnd.z = 0;  // * (rayLength + ray_wor[2]);
+            
+            
+            float length2 = 400.0f;
+            FVector ray;
+            ray.x = (rayStart.x + rayEnd.x) + direction.x * length2;
+            ray.y = (rayStart.y + rayEnd.y) + direction.y * length2;
+            ray.z = (rayStart.z + rayEnd.z) + direction.z * length2;
+            
+            _ray[0] = ray.x;
+            _ray[1] = ray.y;
+            _ray[2] = ray.z;
+            
+            // printf("cam pos %f, ray*len %f, cam+ray*len %f, brckt %f\n", camera->pos[0], _ray[0] * 300, camera->pos[0] + _ray[0] * 300, camera->pos[0] + (_ray[0] * 300));
+            
+            // printf("pos %f %f %f dir %f %f %f\n", camera->pos[0], camera->pos[1], camera->pos[2], rayLength * ray_wor[0], rayLength * ray_wor[1], rayLength * ray_wor[2]);
+            
+            object->Pos.x = ray.x;
+            object->Pos.y = ray.y;
+            object->Pos.z = ray.z;
+            
+        }
+    }
 }
 
 void Editor::Draw() {
     if (_draw) {
        // DrawObj(0);
         //DrawObj(5);
-        //DrawObj(100);
-        //DrawObj(500);
+    DrawObj(20);
+        DrawObj(100);
         //DrawObj(1000);
-        DrawObj(2000);
+        //DrawObj(2000);
     }
 }
 
 void Editor::DrawObj(float length) {
     Mat4 mtx;
-    Vec3f pos2 = { cameras[0].pos[0] + _ray[0] * length, cameras[0].pos[1] + _ray[1] * length,
-                   cameras[0].pos[2] + _ray[2] * length };
+    Vec3f pos2 = { _ray[0], _ray[1], _ray[2] };
     mtxf_translate(mtx, pos2);
-    mtxf_scale(mtx, 0.1);
+    mtxf_scale(mtx, 0.03);
     render_set_position(mtx, 0);
     gSPDisplayList(gDisplayListHead++, Editor::box_Cube_mesh);
 }
 
-void Editor::MultiplyMatrixVector(float matrix[4][4], float vector[4], float result[4]) {
+FVector4 Editor::MultiplyMatrixVector(float matrix[4][4], float vector[4]) {
+    FVector4 result;
+    float* resultPtr = &result.x;
     for (int i = 0; i < 4; i++) {
-        result[i] = 0.0f;
+        resultPtr[i] = 0;
         for (int j = 0; j < 4; j++) {
-            result[i] += matrix[i][j] * vector[j];
+            resultPtr[i] += matrix[j][i] * vector[j];  // Swap [i][j] → [j][i] for column order
         }
     }
+    return result;
 }
 
 s32 Editor::Inverse(MtxF* src, MtxF* dest) {

@@ -13,7 +13,7 @@ public:
     void Tick();
     void Draw();
     void MouseClick();
-    void MultiplyMatrixVector(float matrix[4][4], float vector[4], float result[4]);
+    FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
 private:
     bool _spawned = false;
     bool _draw = false;

@@ -27,6 +27,16 @@ struct FVector {
 #endif // __cplusplus
 };
 
+struct FVector4 {
+    float x, y, z, w;
+
+#ifdef __cplusplus
+
+    FVector4() : x(0), y(0), z(0), w(0) {}
+    FVector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+#endif // __cplusplus
+};
+
 /**
  * For providing X and Z when you do not need Y
  * Some actors set themselves on the surface automatically
