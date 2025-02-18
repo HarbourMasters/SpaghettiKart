@@ -3,6 +3,7 @@
 
 #include <libultraship.h>
 #include "engine/courses/Course.h"
+#include "engine/HM_Intro.h"
 
 #ifdef __cplusplus
 class Course;
@@ -15,6 +16,10 @@ extern s32 gTrophyIndex;
 
 Properties* CM_GetProps();
 Properties* CM_GetPropsCourseId(s32 courseId);
+
+void HM_InitIntro(void);
+void HM_TickIntro(void);
+void HM_DrawIntro(void);
 
 void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
 void CM_DrawBattleBombKarts(s32 cameraId);

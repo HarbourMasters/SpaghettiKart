@@ -59,7 +59,7 @@ s8 gCourseIndexInCup;
 s8 unref_D_8018EE0C; // Set to 0 but never referenced
 
 /** Data **/
-s32 gMenuSelection = LOGO_INTRO_MENU;
+s32 gMenuSelection = HARBOUR_MASTERS_MENU;
 s32 gFadeModeSelection = FADE_MODE_NONE;
 s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 
@@ -195,6 +195,9 @@ void update_menus(void) {
                     break;
                 case COURSE_DATA_MENU:
                     course_data_menu_act(&gControllers[controllerIdx], controllerIdx);
+                    break;
+                case HARBOUR_MASTERS_MENU:
+                    logo_intro_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case LOGO_INTRO_MENU:
                     logo_intro_menu_act(&gControllers[controllerIdx], controllerIdx);
@@ -1872,6 +1875,9 @@ void load_menu_states(s32 menuSelection) {
             break;
         case COURSE_DATA_MENU:
             gSubMenuSelection = SUB_MENU_DATA_OPTIONS;
+            break;
+        case HARBOUR_MASTERS_MENU:
+            func_800CA008(0, 0);
             break;
         case LOGO_INTRO_MENU:
             func_800CA008(0, 0);
