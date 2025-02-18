@@ -40,8 +40,6 @@ u32 fTargetPlayer = false;
 u32 fMode; // freecam mode should probably be an enum
 u32 fModeInit = false;
 
-int rightMouseButtonDown = 0; // Track if right mouse button is held down
-
 u32 bFreecamUseController = false;
 
 /**

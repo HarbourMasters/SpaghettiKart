@@ -44,6 +44,7 @@
 #include "Smoke.h"
 
 #include "engine/HM_Intro.h"
+#include "engine/editor/Editor.h"
 
 extern "C" {
 #include "main.h"
@@ -98,6 +99,8 @@ Cup* gBattleCup;
 ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
+
+Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
@@ -388,6 +391,7 @@ void CM_TickObjects() {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.TickObjects();
     }
+gEditor.Tick();
 }
 
 // A couple objects such as lakitu are ticked inside of process_game_tick which support 60fps.
@@ -402,6 +406,7 @@ void CM_DrawObjects(s32 cameraId) {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.DrawObjects(cameraId);
     }
+    gEditor.Draw();
 }
 
 void CM_TickParticles() {
