@@ -38,13 +38,16 @@ void Editor::Tick() {
 }
 
 void Editor::MouseClick() {
+    FVector ray = ScreenRayTrace();
+
+    _ray[0] = ray.x;
+    _ray[1] = ray.y;
+    _ray[2] = ray.z;
+}
+
+FVector Editor::ScreenRayTrace() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Camera* camera = &cameras[0];
-
-    if (!_spawned) {
-        _spawned = true;
-        object = reinterpret_cast<AShip*>(gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP2)));
-    }
 
     Ship::Coords mouse = wnd->GetMousePos();
 
@@ -59,84 +62,32 @@ void Editor::MouseClick() {
 
     FVector4 rayClip = {x, y, z, 1.0f};
 
-   // printf("rayClip %f %f %f\n", x, y, z);
-
     Mat4 perspMtx;
     u16 perspNorm;
-    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
     if (Editor::Inverse((MtxF*)&perspMtx, (MtxF*)&inversePerspMtx) != 2) {
         FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*)&rayClip.x);
-        
+
         Mat4 lookAtMtx;
         guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-        //Mat4 combinedMtx;
-        // mtxf_multiplication(combinedMtx, lookAtMtx, perspMtx);
         Mat4 inverseViewMtx;
         if (Editor::Inverse((MtxF*)&lookAtMtx, (MtxF*)&inverseViewMtx[0][0]) != 2) {
             rayEye.w = 0;
             FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*)&rayEye.x);
-            //printf("rayEye %f %f %f\n", invRayWor.x, invRayWor.y, invRayWor.z);
-            
-            
-            
+
             FVector direction;
             direction = FVector(invRayWor.x, invRayWor.y, invRayWor.z);
-            // if (invRayWor.w != 1) {
-            //     direction = FVector(invRayWor.x / invRayWor.w, invRayWor.y / invRayWor.w, invRayWor.z / invRayWor.w);
-                 printf("3 %f %f %f div\n", direction.x, direction.y, direction.z);
-            // } else {
-            //     printf("3 %f %f %f\n", direction.x, direction.y, direction.z);
-            // }
-            
-            float rayLength = 400.0f;
-            
-            float nearPlaneOffset = 1.0f;
-            
-            FVector camDirection;
-            camDirection.x = camera->lookAt[0] - camera->pos[0];
-            camDirection.y = camera->lookAt[1] - camera->pos[1];
-            camDirection.z = camera->lookAt[2] - camera->pos[2];
-            
-            float length = sqrt(camDirection.x * camDirection.x + camDirection.y * camDirection.y + camDirection.z * camDirection.x);
-            
-            if (length != 0) {
-                camDirection.x /= length; camDirection.y /= length; camDirection.z /= length;
-            }
-            
-            FVector rayStart;
-            rayStart.x = camera->pos[0];// + direction.x * nearPlaneOffset;
-            rayStart.y = camera->pos[1];// + direction.y * nearPlaneOffset;
-            rayStart.z = camera->pos[2];// + direction.z * nearPlaneOffset;
-            
-            
-            // FVector rotatedDirection = RotateVectorWithMatrix(direction, camera->lookAt);
-            
-            FVector rayEnd;
-            rayEnd.x = 0; //* (rayLength + ray_wor[0]);
-            rayEnd.y = 0;  //* (rayLength + ray_wor[1]);
-            rayEnd.z = 0;  // * (rayLength + ray_wor[2]);
-            
-            
-            float length2 = 400.0f;
+
+            float length = 400.0f;
             FVector ray;
-            ray.x = (rayStart.x + rayEnd.x) + direction.x * length2;
-            ray.y = (rayStart.y + rayEnd.y) + direction.y * length2;
-            ray.z = (rayStart.z + rayEnd.z) + direction.z * length2;
-            
-            _ray[0] = ray.x;
-            _ray[1] = ray.y;
-            _ray[2] = ray.z;
-            
-            // printf("cam pos %f, ray*len %f, cam+ray*len %f, brckt %f\n", camera->pos[0], _ray[0] * 300, camera->pos[0] + _ray[0] * 300, camera->pos[0] + (_ray[0] * 300));
-            
-            // printf("pos %f %f %f dir %f %f %f\n", camera->pos[0], camera->pos[1], camera->pos[2], rayLength * ray_wor[0], rayLength * ray_wor[1], rayLength * ray_wor[2]);
-            
-            object->Pos.x = ray.x;
-            object->Pos.y = ray.y;
-            object->Pos.z = ray.z;
-            
+            // ray = rayStart + direction * length of ray
+            ray.x = camera->pos[0] + direction.x * length;
+            ray.y = camera->pos[1] + direction.y * length;
+            ray.z = camera->pos[2] + direction.z * length;
+
+            return ray;
         }
     }
 }

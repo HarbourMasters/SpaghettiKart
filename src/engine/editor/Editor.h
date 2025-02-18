@@ -13,9 +13,9 @@ public:
     void Tick();
     void Draw();
     void MouseClick();
+	FVector ScreenRayTrace();
     FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
 private:
-    bool _spawned = false;
     bool _draw = false;
     AShip* object;
     Vec3f _ray;
