@@ -14,11 +14,13 @@ public:
     void Draw();
     void MouseClick();
 	FVector ScreenRayTrace();
+	bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t);
     FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
 private:
     bool _draw = false;
     AShip* object;
     Vec3f _ray;
+	AActor* _heldActor;
     s32 Inverse(MtxF* src, MtxF* dest);
     void Copy(MtxF* src, MtxF* dest);
     void Clear(MtxF* mf);

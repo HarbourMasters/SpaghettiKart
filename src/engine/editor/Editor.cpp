@@ -35,16 +35,66 @@ void Editor::Tick() {
     } else {
         _draw = false;
     }
+
+    if (_heldActor != nullptr) {
+        FVector ray = ScreenRayTrace();
+        float length = 400.0f;
+        _heldActor->Pos[0] = cameras[0].pos[0] + ray.x * length;
+        _heldActor->Pos[1] = cameras[0].pos[1] + ray.y * length;
+        _heldActor->Pos[2] = cameras[0].pos[2] + ray.z * length;
+    }
 }
 
 void Editor::MouseClick() {
     FVector ray = ScreenRayTrace();
+    //Actor* foundActor = nullptr;
+    s32 type = 0;
+    bool found = false;
+    for (auto& actor : gWorldInstance.Actors) {
+        float boundingBox = actor->BoundingBoxSize;
+        if (boundingBox == 0.0f) {
+            boundingBox = 2.0f;
+        }
+        float t;
+        float max = 2.0f;
+        float min = -2.0f;
+        Vec3f boxMin = { actor->Pos[0] + boundingBox * min, 
+            actor->Pos[1] + boundingBox * min,
+            actor->Pos[2] + boundingBox * min };
 
-    _ray[0] = ray.x;
-    _ray[1] = ray.y;
-    _ray[2] = ray.z;
+            Vec3f boxMax = { actor->Pos[0] + actor->BoundingBoxSize * max, 
+                            actor->Pos[1] + actor->BoundingBoxSize * max, 
+                            actor->Pos[2] + actor->BoundingBoxSize * max };
+
+        if (Editor::QueryCollisionRayActor(cameras[0].pos, &ray.x, boxMin, boxMax, &t)) {
+            if (actor == _heldActor) {
+                _heldActor = nullptr;
+                break;
+            }
+            found = true;
+            //foundActor = &actor;
+            type = actor->Type;
+            _heldActor = actor;
+            break;
+        }
+    }
+    if (found) {
+        printf("FOUND COLLISION %d\n", type);
+    } else {
+        printf("NO COLLISION\n");
+        _heldActor = nullptr;
+    }
 }
 
+/**
+ * Projects 2D cursor into the game world
+ * 
+ * @return FVector ray direction
+ * 
+ * ray.x = camera->pos[0] + direction.x * length;
+ * ray.y = camera->pos[1] + direction.y * length;
+ * ray.z = camera->pos[2] + direction.z * length;
+ */
 FVector Editor::ScreenRayTrace() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Camera* camera = &cameras[0];
@@ -80,26 +130,15 @@ FVector Editor::ScreenRayTrace() {
             FVector direction;
             direction = FVector(invRayWor.x, invRayWor.y, invRayWor.z);
 
-            float length = 400.0f;
-            FVector ray;
-            // ray = rayStart + direction * length of ray
-            ray.x = camera->pos[0] + direction.x * length;
-            ray.y = camera->pos[1] + direction.y * length;
-            ray.z = camera->pos[2] + direction.z * length;
-
-            return ray;
+            return direction;
         }
     }
 }
 
 void Editor::Draw() {
     if (_draw) {
-       // DrawObj(0);
-        //DrawObj(5);
-    DrawObj(20);
+        DrawObj(20);
         DrawObj(100);
-        //DrawObj(1000);
-        //DrawObj(2000);
     }
 }
 
@@ -222,3 +261,25 @@ void Editor::Clear(MtxF* mf) {
     mf->zw = 0.0f;
 }
 
+bool Editor::QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t) {
+    float tmin = -FLT_MAX, tmax = FLT_MAX;
+
+    for (int i = 0; i < 3; i++) {
+        if (fabs(rayDir[i]) > 1e-6f) { // Avoid division by zero
+            float t1 = (actorMin[i] - rayOrigin[i]) / rayDir[i];
+            float t2 = (actorMax[i] - rayOrigin[i]) / rayDir[i];
+
+            if (t1 > t2) { float temp = t1; t1 = t2; t2 = temp; }
+
+            tmin = fmax(tmin, t1);
+            tmax = fmin(tmax, t2);
+
+            if (tmax < tmin) return false; // No intersection
+        } else if (rayOrigin[i] < actorMin[i] || rayOrigin[i] > actorMax[i]) {
+            return false; // Ray is outside the slab
+        }
+    }
+
+    *t = tmin; // Distance to first intersection
+    return true;
+}
