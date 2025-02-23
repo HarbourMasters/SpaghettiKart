@@ -255,7 +255,6 @@ void GameEngine::StartFrame() const {
         default:
             break;
     }
-    this->context->GetWindow()->StartFrame();
 }
 
 // void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
@@ -270,6 +269,7 @@ void GameEngine::RunCommands(Gfx* Commands) {
         return;
     }
 
+    // Process window events for resize, mouse, keyboard events
     wnd->HandleEvents();
 
     wnd->DrawAndRunGraphicsCommands(Commands, {});
