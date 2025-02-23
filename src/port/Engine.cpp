@@ -30,6 +30,7 @@
 #include <utility>
 
 extern "C" {
+bool prevAltAssets = false;
 float gInterpolationStep = 0.0f;
 #include <macros.h>
 #include <DisplayListFactory.h>
@@ -263,12 +264,21 @@ void GameEngine::StartFrame() const {
 // }
 
 void GameEngine::RunCommands(Gfx* Commands) {
-    gfx_run(Commands, {});
-    gfx_end_frame();
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
-    if (ShouldClearTextureCacheAtEndOfFrame) {
+    if (wnd == nullptr) {
+        return;
+    }
+
+    wnd->HandleEvents();
+
+    wnd->DrawAndRunGraphicsCommands(Commands, {});
+
+    bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
+    if (prevAltAssets != curAltAssets) {
+        prevAltAssets = curAltAssets;
+        Ship::Context::GetInstance()->GetResourceManager()->SetAltAssetsEnabled(curAltAssets);
         gfx_texture_cache_clear();
-        ShouldClearTextureCacheAtEndOfFrame = false;
     }
 }
 
