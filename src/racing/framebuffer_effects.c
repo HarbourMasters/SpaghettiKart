@@ -16,13 +16,19 @@ s32 gReusableFrameBuffer = -1;
 // N64 resolution sized buffer (320x240), used by picto box and deku bubble
 s32 gN64ResFrameBuffer = -1;
 
+s32 buf = -1;
+
 void FB_CreateFramebuffers(void) {
     if (gReusableFrameBuffer == -1) {
-        gReusableFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true);
+        gReusableFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, true, true, true, NULL);
     }
 
     if (gN64ResFrameBuffer == -1) {
-        gN64ResFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, false);
+        gN64ResFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, false, true, true, NULL);
+    }
+
+    if (buf == -1) {
+        gN64ResFrameBuffer = gfx_create_framebuffer(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, false, true, true, NULL);
     }
 }
 
@@ -69,9 +75,8 @@ void FB_CopyToFramebuffer(Gfx** gfxP, s32 fb_src, s32 fb_dest, u8 oncePerFrame, 
  */
 void FB_WriteFramebufferSliceToCPU(Gfx** gfxP, void* buffer, u8 byteSwap) {
     Gfx* gfx = *gfxP;
-
     FB_CopyToFramebuffer(&gfx, 0, gReusableFrameBuffer, false, NULL);
-
+    
     // Set the N64 resolution framebuffer as the draw target (320x240)
     gsSPSetFB(gfx++, gN64ResFrameBuffer);
     // Reset scissor for new framebuffer

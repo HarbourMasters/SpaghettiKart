@@ -22,6 +22,16 @@ struct FVector {
         return *this;
     }
 
+    // Operator to add two FVector objects
+    FVector operator+(const FVector& other) const {
+        return FVector(x + other.x, y + other.y, z + other.z);
+    }
+
+    // Operator to subtract two FVector objects
+    FVector operator-(const FVector& other) const {
+        return FVector(x - other.x, y - other.y, z - other.z);
+    }
+
     FVector() : x(0), y(0), z(0) {}
     FVector(float x, float y, float z) : x(x), y(y), z(z) {}
 #endif // __cplusplus

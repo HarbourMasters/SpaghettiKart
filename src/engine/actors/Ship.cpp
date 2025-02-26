@@ -29,18 +29,18 @@ AShip::AShip(FVector pos, AShip::Skin skin) {
 }
 
 void AShip::Tick() {
-    static float angle = 0.0f; // Keeps track of the ship's rotation around the circle
-    float radius = 150.0f;      // The radius of the circular path
-    float speed = 0.01f;       // Speed of rotation
+    // static float angle = 0.0f; // Keeps track of the ship's rotation around the circle
+    // float radius = 150.0f;      // The radius of the circular path
+    // float speed = 0.01f;       // Speed of rotation
 
-    angle += speed; // Increment the angle to move in a circle
+    // angle += speed; // Increment the angle to move in a circle
 
-    // Update the position based on a circular path
-    Pos.x = Spawn.x + radius * cosf(angle);
-    Pos.z = Spawn.z + radius * sinf(angle);
+    // // Update the position based on a circular path
+    // Pos.x = Spawn.x + radius * cosf(angle);
+    // Pos.z = Spawn.z + radius * sinf(angle);
 
-    // Rotate to face forward along the circle
-    Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
+    // // Rotate to face forward along the circle
+    // Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
 }
 
 void AShip::Draw(Camera *camera) {

@@ -1250,7 +1250,6 @@ void thread5_iteration(void) {
         func_800CB2C4();
     }
 #endif
-
     calculate_updaterate();
     if (GfxDebuggerIsDebugging()) {
         Graphics_PushFrame(gGfxPool->gfxPool);

@@ -3914,6 +3914,15 @@ Vtx wheels_Spaghetti_002_mesh_vtx_0[111] = {
 };
 
 Gfx wheels_Spaghetti_002_mesh_tri_0[] = {
+	gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+    gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+    gsDPSetPrimColor(0, 0, 255, 0, 0, 255),
+
+    gsSPClearGeometryMode(G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR),
+    gsSPSetGeometryMode(G_SHADE | G_SHADING_SMOOTH),
+
 	gsSPVertex(wheels_Spaghetti_002_mesh_vtx_0 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
 	gsSP2Triangles(4, 3, 0, 0, 4, 0, 5, 0),

@@ -15,9 +15,9 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     UNUSED s32 pad[2];
     s32 maxObjectsReached;
     Vec3f sp160;
-    Mat4 sp120;
-    Mat4 spE0;
-    Mat4 spA0;
+    Mat4 mainMtx;
+    Mat4 objectMtx;
+    Mat4 resultMtx;
 
     f32 distance = is_within_render_distance(camera->pos, actor->pos, camera->rot[1], 2500.0f,
                                              gCameraZoom[camera - camera1], 9000000.0f);
@@ -36,8 +36,8 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
-    maxObjectsReached = render_set_position(sp120, 0) == 0;
+    mtxf_pos_rotation_xyz(mainMtx, actor->pos, actor->rot);
+    maxObjectsReached = render_set_position(mainMtx, 0) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -62,12 +62,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
-    mtxf_rotate_x(sp120, actor->wheelRot);
+    mtxf_rotate_x(mainMtx, actor->wheelRot);
     vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -75,12 +75,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, actor->wheelRot);
+    mtxf_rotate_x(mainMtx, actor->wheelRot);
     vec3f_set(sp160, -17.0, 6.0f, 32.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -88,12 +88,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, 17.0f, 6.0f, 16.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -101,12 +101,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x16C));
     vec3f_set(sp160, -17.0f, 6.0f, 16.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -114,12 +114,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22DB8);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, 17.0f, 12.0f, -12.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -127,12 +127,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x444));
     vec3f_set(sp160, -17.0f, 12.0f, -12.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -140,12 +140,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x2D8));
     vec3f_set(sp160, 17.0f, 12.0f, -34.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
@@ -153,12 +153,12 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D70);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x2D8));
+    mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x2D8));
     vec3f_set(sp160, -17.0f, 12.0f, -34.0f);
-    mtxf_translate(spE0, sp160);
-    mtxf_multiplication(spA0, sp120, spE0);
+    mtxf_translate(objectMtx, sp160);
+    mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
-    maxObjectsReached = render_set_position(spA0, 3) == 0;
+    maxObjectsReached = render_set_position(resultMtx, 3) == 0;
     if (maxObjectsReached) {
         return;
     }
