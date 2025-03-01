@@ -15,13 +15,6 @@ struct FVector {
     float x, y, z;
 
 #ifdef __cplusplus
-    FVector& operator=(const FVector& other) {
-        x = other.x;
-        y = other.y;
-        z = other.z;
-        return *this;
-    }
-
     // Operator to add two FVector objects
     FVector operator+(const FVector& other) const {
         return FVector(x + other.x, y + other.y, z + other.z);
@@ -30,6 +23,25 @@ struct FVector {
     // Operator to subtract two FVector objects
     FVector operator-(const FVector& other) const {
         return FVector(x - other.x, y - other.y, z - other.z);
+    }
+
+    float Dot(const FVector& other) const {
+        return x * other.x + y * other.y + z * other.z;
+    }
+
+    FVector Cross(const FVector& other) const {
+        return FVector(
+            y * other.z - z * other.y,
+            z * other.x - x * other.z,
+            x * other.y - y * other.x
+        );
+    }
+
+    FVector Normalize() const {
+        float len = std::sqrt(x * x + y * y + z * z);
+        return FVector(
+            x / len, y / len, z / len
+        );
     }
 
     FVector() : x(0), y(0), z(0) {}

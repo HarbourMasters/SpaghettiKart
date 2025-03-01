@@ -2,6 +2,7 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include "Collision.h"
 #include "engine/objects/Flagpole.h"
 
 class Gizmo {
@@ -19,9 +20,10 @@ public:
 
     void Tick();
     void Draw();
+    void Load();
 
     void StartManipulation(GizmoHandle handle);
-    void Enable(Vec3f* object, FVector ray);
+    void Enable(GameObject* object, Ray ray);
     void Translate();
     void DrawHandles();
 
@@ -30,6 +32,10 @@ public:
 
     bool Enabled;
     GizmoHandle SelectedHandle;
+
+    GameObject RedCollision;
+    GameObject GreenCollision;
+    GameObject BlueCollision;
 
     FVector Pos; // Global scene view
     float _gizmoOffset = 5.0f;
@@ -48,7 +54,7 @@ public:
     private:
     bool _draw = false;
     FVector _ray;
-    Vec3f* _selected;
+    GameObject* _selected;
 
 
 Lights1 handle_f3dlite_material_lights = gdSPDefLights1(

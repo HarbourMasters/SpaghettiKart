@@ -1400,7 +1400,7 @@ s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType)
         //}
     }
     gNumActors++;
-    struct Actor* actor = CM_AddBaseActor();
+    struct Actor* actor = CM_AddBaseActor(actorType);
     actor_init(actor, pos, rot, velocity, actorType);
     return (s16) CM_GetActorSize() - 1; // Return current index;
 }

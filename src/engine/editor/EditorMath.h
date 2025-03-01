@@ -7,6 +7,29 @@ extern "C" {
 #include "common_structs.h"
 }
 
+enum class CollisionType {
+    VTX_INTERSECT,
+    BOUNDING_BOX,
+    BOUNDING_SPHERE
+};
+
+struct Ray {
+    FVector Origin;
+    FVector Direction;
+};
+
+struct Triangle {
+    FVector v0, v1, v2;
+};
+
+struct GameObject {
+    FVector* Pos;
+    Gfx* Model;
+    std::vector<Triangle> Triangles;
+    CollisionType Collision;
+    float BoundingBoxSize;
+};
+
 /**
  * Projects 2D cursor into the game world
  * 
@@ -22,5 +45,8 @@ FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
 s32 Inverse(MtxF* src, MtxF* dest);
 void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
+
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t);
+
 
 

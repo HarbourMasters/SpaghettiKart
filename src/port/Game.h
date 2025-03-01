@@ -6,6 +6,7 @@
 #include "engine/HM_Intro.h"
 
 #ifdef __cplusplus
+#include "engine/editor/Editor.h"
 class Course;
 extern "C" {
 #endif
@@ -13,6 +14,10 @@ extern "C" {
 #include "actor_types.h"
 
 extern s32 gTrophyIndex;
+
+#ifdef __cplusplus
+extern Editor gEditor;
+#endif
 
 Properties* CM_GetProps();
 Properties* CM_GetPropsCourseId(s32 courseId);
@@ -134,7 +139,7 @@ void SetCourseByClass(void* course);
 
 struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);
-struct Actor* CM_AddBaseActor(void);
+struct Actor* CM_AddBaseActor(s16 actorType);
 size_t CM_GetActorSize();
 size_t CM_FindActorIndex(struct Actor* actor);
 void CM_ActorCollision(Player* player, struct Actor* actor);

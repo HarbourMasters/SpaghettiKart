@@ -44,7 +44,9 @@
 #include "Smoke.h"
 
 #include "engine/HM_Intro.h"
+
 #include "engine/editor/Editor.h"
+#include "engine/editor/EditorMath.h"
 
 extern "C" {
 #include "main.h"
@@ -667,8 +669,8 @@ void CM_CleanWorld(void) {
     gWorldInstance.Reset();
 }
 
-struct Actor* CM_AddBaseActor(void) {
-    return (struct Actor*) gWorldInstance.AddBaseActor();
+struct Actor* CM_AddBaseActor(s16 actorType) {
+    return (struct Actor*) gWorldInstance.AddBaseActor(actorType);
 }
 
 size_t CM_GetActorSize() {
@@ -824,6 +826,7 @@ extern "C"
     }
 
     thread5_game_loop();
+    gEditor.Load();
     while (WindowIsRunning()) {
         push_frame();
     }

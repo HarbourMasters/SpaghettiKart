@@ -2,6 +2,7 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include "Collision.h"
 #include "engine/objects/Flagpole.h"
 #include "Gizmo.h"
 
@@ -9,20 +10,20 @@ class ObjectPicker {
     public:
         ObjectPicker();
     
-        void SelectObject();
+        void SelectObject(std::vector<GameObject>& objects);
         void Draw();
-        void FindObject(FVector ray);
+        void FindObject(Ray ray, std::vector<GameObject>& objects);
+        void Load();
     private:
         bool _draw = false;
         Vec3f _ray;
-        AActor* _selected;
-        AActor* _lastSelected;
+        GameObject* _selected;
+        GameObject* _lastSelected;
         s32 Inverse(MtxF* src, MtxF* dest);
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
     
         void DrawObj(float length);
     
-        Gizmo eGizmo;  
-
+        Gizmo eGizmo;
 };

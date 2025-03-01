@@ -4,14 +4,18 @@
 #include "port/Game.h"
 #include "port/Engine.h"
 
+#include <vector>
+#include <limits>
+#include <cmath>
+
 extern "C" {
-    #include "common_structs.h"
-    #include "main.h"
-    #include "defines.h"
-    #include "actors.h"
-    #include "math_util.h"
-    #include "math_util_2.h"
-    #include "camera.h"
+#include "common_structs.h"
+#include "main.h"
+#include "defines.h"
+#include "actors.h"
+#include "math_util.h"
+#include "math_util_2.h"
+#include "camera.h"
 }
 
 FVector ScreenRayTrace() {
@@ -186,3 +190,55 @@ void Clear(MtxF* mf) {
     mf->yw = 0.0f;
     mf->zw = 0.0f;
 }
+
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t) {
+    const float EPSILON = 1e-6f;
+
+    FVector edge1 = tri.v1 - tri.v0;
+    FVector edge2 = tri.v2 - tri.v0;
+    FVector h = ray.Direction.Cross(edge2);
+    float a = edge1.Dot(h);
+
+    if (std::abs(a) < EPSILON)
+        return false; // Ray is parallel to triangle
+
+    float f = 1.0f / a;
+    FVector s = ray.Origin - tri.v0;
+    float u = f * s.Dot(h);
+
+    if (u < 0.0f || u > 1.0f)
+        return false;
+
+    FVector q = s.Cross(edge1);
+    float v = f * ray.Direction.Dot(q);
+
+    if (v < 0.0f || u + v > 1.0f)
+        return false;
+
+    t = f * edge2.Dot(q);
+    return t > EPSILON;
+}
+
+bool FindClosestObject(const Ray& ray, const std::vector<GameObject>& objects, GameObject& outObject, float& outDistance) {
+    float closestDist = std::numeric_limits<float>::max();
+    bool found = false;
+
+    for (const auto& obj : objects) {
+        for (const auto& tri : obj.Triangles) {
+            float t;
+            if (IntersectRayTriangle(ray, tri, t) && t < closestDist) {
+                closestDist = t;
+                outObject = obj;
+                found = true;
+            }
+        }
+    }
+
+    if (found) {
+        outDistance = closestDist;
+        return true;
+    }
+    
+    return false;
+}
+

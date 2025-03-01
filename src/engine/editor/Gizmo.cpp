@@ -26,6 +26,21 @@ extern "C" {
 Gizmo::Gizmo() {
 }
 
+void Gizmo::Load() {
+    RedCollision.Pos = &Pos;
+    RedCollision.Model = handle_Cylinder_mesh;
+
+    GreenCollision.Pos = &Pos;
+    GreenCollision.Model = handle_Cylinder_mesh;
+
+    BlueCollision.Pos = &Pos;
+    BlueCollision.Model = handle_Cylinder_mesh;
+
+    GenerateCollisionMesh(RedCollision, RedCollision.Model);
+    GenerateCollisionMesh(GreenCollision, GreenCollision.Model);
+    GenerateCollisionMesh(BlueCollision, BlueCollision.Model);
+}
+
 void Gizmo::Tick() {
     
 }
@@ -57,7 +72,7 @@ void Gizmo::StartManipulation(GizmoHandle handle) {
     }
 }
 
-void Gizmo::Enable(Vec3f* object, FVector ray) {
+void Gizmo::Enable(GameObject* object, Ray ray) {
     static float length = 180.0f; // Default value
 
     // static AActor* lastSelected = nullptr;
@@ -73,12 +88,14 @@ void Gizmo::Enable(Vec3f* object, FVector ray) {
     //_selected->Pos[0] = cameras[0].pos[0] + ray.x * length;
     //object->Pos[1] = cameras[0].pos[1] + ray.y * length;
     //_selected->Pos[2] = cameras[0].pos[2] + ray.z * length;
-    _selected = &object[0];
-    _ray = ray;
+
+
+    _selected = object;
+    _ray = ray.Direction;
     Pos = FVector(
-        object[0][0],
-        object[0][1],
-        object[0][2]
+        object->Pos->x,
+        object->Pos->y,
+        object->Pos->z
     );
 }
 
@@ -89,18 +106,18 @@ void Gizmo::Translate() {
         //FVector ray = ScreenRayTrace();
 
         length = sqrt(
-            pow(_selected[0][0] - cameras[0].pos[0], 2) +
-            pow(_selected[0][1] - cameras[0].pos[1], 2) +
-            pow(_selected[0][2] - cameras[0].pos[2], 2)
+            pow(_selected->Pos->x - cameras[0].pos[0], 2) +
+            pow(_selected->Pos->y - cameras[0].pos[1], 2) +
+            pow(_selected->Pos->z - cameras[0].pos[2], 2)
         );
 
         //_selected->Pos[0] = cameras[0].pos[0] + ray.x * length;
-        _selected[0][0] = cameras[0].pos[1] + _ray.y * length;
+        _selected->Pos->x = cameras[0].pos[1] + _ray.y * length;
         //_selected->Pos[2] = cameras[0].pos[2] + ray.z * length;
         Pos = FVector(
-            _selected[0][0],
-            _selected[0][1],
-            _selected[0][2]
+            _selected->Pos->x,
+            _selected->Pos->y,
+            _selected->Pos->z
         );
     }
 }

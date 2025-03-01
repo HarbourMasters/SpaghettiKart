@@ -5,6 +5,8 @@
 #include "../World.h"
 
 #include "Editor.h"
+#include "Collision.h"
+
 #include "port/Engine.h"
 #include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
 #include <window/Window.h>
@@ -30,18 +32,34 @@ Editor::Editor() {
    // gsSPSetFB(gDisplayListHead++, &test);
 }
 
-void Editor::Tick() {
-    auto wnd = GameEngine::Instance->context->GetWindow();
-
-
-    // GetMouseState
-    if (wnd->MouseClick(Ship::LUS_MOUSE_BTN_LEFT)) {
-        eObjectPicker.SelectObject();
+void Editor::Load() {
+    eObjectPicker.Load();
+    for (auto& object : eGameObjects) {
+        GenerateCollisionMesh(object, object.Model);
     }
 }
 
+void Editor::Tick() {
+    auto wnd = GameEngine::Instance->context->GetWindow();
+
+    // GetMouseState
+    if (wnd->MouseClick(Ship::LUS_MOUSE_BTN_LEFT)) {
+        eObjectPicker.SelectObject(eGameObjects);
+    }
+}
+ 
 void Editor::Draw() {
     eObjectPicker.Draw();
+}
+
+void Editor::AddObject(FVector* pos, Gfx* model, CollisionType collision, float boundingBoxSize) {
+    
+    if (model != NULL) {
+        eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize});
+        GenerateCollisionMesh(eGameObjects.back(), model);
+    } else { // to bounding box or sphere collision
+        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 2.0f});
+    }
 }
 
 void Editor::DrawObj(float length) {

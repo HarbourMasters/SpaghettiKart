@@ -5,23 +5,24 @@
 #include "engine/objects/Flagpole.h"
 #include "ObjectPicker.h"
 
-class AShip;
+class ObjectPicker;
 
 class Editor {
 public:
     Editor();
 
+
+    ObjectPicker eObjectPicker;
+    std::vector<GameObject> eGameObjects;
+
     void Tick();
     void Draw();
     void MouseClick();
+	void Load();
+    void AddObject(FVector* pos, Gfx* model, CollisionType collision, float boundingBoxSize);
 private:
     bool _draw = false;
-    AShip* object;
     Vec3f _ray;
-    AActor* _selected;
-    AActor* _lastSelected;
-
-	s32 _colourIdFramebuffer = -1;
 
     s32 Inverse(MtxF* src, MtxF* dest);
     void Copy(MtxF* src, MtxF* dest);
@@ -29,7 +30,6 @@ private:
 
     void DrawObj(float length);
 
-    ObjectPicker eObjectPicker;
 
 
 Vtx box_Cube_mesh_vtx_cull[8] = {

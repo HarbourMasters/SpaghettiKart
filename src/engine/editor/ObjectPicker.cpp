@@ -29,13 +29,19 @@ ObjectPicker::ObjectPicker() {
 
 }
 
-void ObjectPicker::SelectObject() {
-    FVector ray = ScreenRayTrace();
+void ObjectPicker::Load() {
+    eGizmo.Load();
+}
 
-    ObjectPicker::FindObject(ray);
+void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
+    Ray ray;
+    ray.Origin = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+    ray.Direction = ScreenRayTrace();
+
+    ObjectPicker::FindObject(ray, objects);
 
     if (_selected != nullptr) {
-        eGizmo.Enable(&_selected->Pos, ray);
+        eGizmo.Enable(_selected, ray);
         eGizmo.Enabled = true;
     } else {
         //eGizmo.Disable();
@@ -49,54 +55,87 @@ void ObjectPicker::Draw() {
     }
 }
 
-void ObjectPicker::FindObject(FVector ray) {
+void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
     // Is the gizmo being clicked?
     if (eGizmo.Enabled) {
         Gizmo::GizmoHandle handle = Gizmo::GizmoHandle::None;
-        for (size_t i = 0; i < 4; i++) {
-            float t;
-            auto [boxMin, boxMax] = eGizmo.GetBoundingBox((Gizmo::GizmoHandle) i);
 
-            if (QueryCollisionRayActor(cameras[0].pos, &ray.x, &boxMin.x, &boxMax.x, &t)) {
-                handle = (Gizmo::GizmoHandle) i;
+        for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
+            float t;
+            if (IntersectRayTriangle(ray, *tri, t)) {
+                handle = Gizmo::GizmoHandle::X_Axis;
                 break;
             }
         }
-        
+
+        for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
+            float t;
+            if (IntersectRayTriangle(ray, *tri, t)) {
+                handle = Gizmo::GizmoHandle::Y_Axis;
+                break;
+            }
+        }
+
+        for (auto tri = eGizmo.BlueCollision.Triangles.begin(); tri < eGizmo.BlueCollision.Triangles.end(); tri++) {
+            float t;
+            if (IntersectRayTriangle(ray, *tri, t)) {
+                handle = Gizmo::GizmoHandle::Z_Axis;
+                break;
+            }
+        }
+
         if (handle != Gizmo::GizmoHandle::None) {
             eGizmo.StartManipulation(handle);
             return; // Stop checking objects if we selected a Gizmo handle
         }
     }
-    
-    s32 type = 0;
+
+    //s32 type = 0;
     bool found = false;
-    for (auto& actor : gWorldInstance.Actors) {
-        float boundingBox = actor->BoundingBoxSize;
+    for (auto& object : objects) {
+        float boundingBox = object.BoundingBoxSize;
         if (boundingBox == 0.0f) {
             boundingBox = 2.0f;
         }
         float t;
-        float max = 2.0f;
-        float min = -2.0f;
-        Vec3f boxMin = { actor->Pos[0] + boundingBox * min, 
-            actor->Pos[1] + boundingBox * min,
-            actor->Pos[2] + boundingBox * min };
 
-            Vec3f boxMax = { actor->Pos[0] + actor->BoundingBoxSize * max, 
-                            actor->Pos[1] + actor->BoundingBoxSize * max, 
-                            actor->Pos[2] + actor->BoundingBoxSize * max };
+        switch(object.Collision) {
+            case CollisionType::VTX_INTERSECT:
+                for (const auto& tri : object.Triangles) {
+                    if (IntersectRayTriangle(ray, tri, t)) {
+                        printf("\nSELECTED OBJECT\n\n");
+                        _selected = &object;
+                    }
+                }
+                break;
+            case CollisionType::BOUNDING_BOX: {
+                float max = 2.0f;
+                float min = -2.0f;
+                Vec3f boxMin = { object.Pos->x + boundingBox * min, 
+                                 object.Pos->y + boundingBox * min,
+                                 object.Pos->z + boundingBox * min };
 
-        if (QueryCollisionRayActor(cameras[0].pos, &ray.x, boxMin, boxMax, &t)) {
-            // if (actor == _selected) {
-            //     _selected = nullptr;
-            //     break;
-            // }
-            found = true;
-            //foundActor = &actor;
-            type = actor->Type;
-            _selected = actor;
-            break;
+                Vec3f boxMax = { object.Pos->x + boundingBox * max, 
+                                 object.Pos->y + boundingBox * max, 
+                                 object.Pos->z + boundingBox * max };
+
+                if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
+                    // if (actor == _selected) {
+                    //     _selected = nullptr;
+                    //     break;
+                    // }
+                    printf("FOUND BOUNDING BOX OBJECT\n");
+                    found = true;
+                    //foundActor = &actor;
+                    //type = object.Type;
+                    _selected = &object;
+                    break;
+                }
+                break;
+            }
+            case CollisionType::BOUNDING_SPHERE:
+                printf("Editor::ObjectPicker.cpp Bounding sphere collision type not yet supported\n");
+                break;
         }
     }
     if (found) {

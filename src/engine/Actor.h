@@ -25,6 +25,8 @@ public:
     /* 0x30 */ Collision Unk30;
     uint8_t uuid[16];
 
+    Gfx* Model = NULL;
+
     virtual ~AActor() = default;  // Virtual destructor for proper cleanup in derived classes
 
     explicit AActor();

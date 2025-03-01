@@ -48,7 +48,7 @@ public:
     void AddCourse(Course* course);
 
     AActor* AddActor(AActor* actor);
-    struct Actor* AddBaseActor();
+    struct Actor* AddBaseActor(s16 actorType);
     AActor* GetActor(size_t index);
 
     void TickActors();
