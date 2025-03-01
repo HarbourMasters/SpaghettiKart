@@ -19,7 +19,7 @@ public:
     void Draw();
     void MouseClick();
 	void Load();
-    void AddObject(FVector* pos, Gfx* model, CollisionType collision, float boundingBoxSize);
+    void AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize);
 private:
     bool _draw = false;
     Vec3f _ray;

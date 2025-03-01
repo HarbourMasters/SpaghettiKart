@@ -46,7 +46,7 @@ s32 Inverse(MtxF* src, MtxF* dest);
 void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
 
-bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t);
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
 
 
 

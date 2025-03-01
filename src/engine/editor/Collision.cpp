@@ -1,7 +1,7 @@
 #include "Collision.h"
 
 
-void GenerateCollisionMesh(GameObject& object, Gfx* model) {
+void GenerateCollisionMesh(GameObject& object, Gfx* model, float scale) {
     int8_t opcode;
     uintptr_t lo;
     uintptr_t hi;
@@ -18,7 +18,7 @@ void GenerateCollisionMesh(GameObject& object, Gfx* model) {
 
         switch(opcode) {
             case G_DL:
-                GenerateCollisionMesh(object, (Gfx*)hi);
+                GenerateCollisionMesh(object, (Gfx*)hi, scale);
                 break;
             case G_VTX:
                 vtx = (Vtx*)ptr->words.w1;

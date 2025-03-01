@@ -36,13 +36,23 @@ void Gizmo::Load() {
     BlueCollision.Pos = &Pos;
     BlueCollision.Model = handle_Cylinder_mesh;
 
-    GenerateCollisionMesh(RedCollision, RedCollision.Model);
-    GenerateCollisionMesh(GreenCollision, GreenCollision.Model);
-    GenerateCollisionMesh(BlueCollision, BlueCollision.Model);
+    GenerateCollisionMesh(RedCollision, RedCollision.Model, 0.05f);
+    GenerateCollisionMesh(GreenCollision, GreenCollision.Model, 0.05f);
+    GenerateCollisionMesh(BlueCollision, BlueCollision.Model, 0.05f);
 }
 
 void Gizmo::Tick() {
-    
+    switch(SelectedHandle) {
+        case GizmoHandle::X_Axis:
+    Gizmo::Translate();
+            break;
+        case GizmoHandle::Y_Axis:
+    Gizmo::Translate();
+            break;
+        case GizmoHandle::Z_Axis:
+    Gizmo::Translate();
+            break;
+    }
 }
 
 std::pair<FVector, FVector> Gizmo::GetBoundingBox(GizmoHandle handle) {
@@ -64,7 +74,6 @@ void Gizmo::StartManipulation(GizmoHandle handle) {
             case GizmoHandle::X_Axis:
                 break;
             case GizmoHandle::Y_Axis:
-            Gizmo::Translate();
                 break;
             case GizmoHandle::Z_Axis:
                 break;
@@ -102,18 +111,31 @@ void Gizmo::Enable(GameObject* object, Ray ray) {
 void Gizmo::Translate() {
     static float length = 180.0f; // Default value
 
+    // Prevent nullptr exceptions
+    if (_selected == NULL || _selected->Pos == NULL) {
+        return;
+    }
+
     if (Enabled) {
         //FVector ray = ScreenRayTrace();
-
         length = sqrt(
             pow(_selected->Pos->x - cameras[0].pos[0], 2) +
             pow(_selected->Pos->y - cameras[0].pos[1], 2) +
             pow(_selected->Pos->z - cameras[0].pos[2], 2)
         );
 
-        //_selected->Pos[0] = cameras[0].pos[0] + ray.x * length;
-        _selected->Pos->x = cameras[0].pos[1] + _ray.y * length;
-        //_selected->Pos[2] = cameras[0].pos[2] + ray.z * length;
+        switch(SelectedHandle) {
+            case GizmoHandle::X_Axis:
+                _selected->Pos->x = cameras[0].pos[0] + _ray.x * length;
+                break;
+            case GizmoHandle::Y_Axis:
+                _selected->Pos->y = cameras[0].pos[1] + _ray.y * length;
+                break;
+            case GizmoHandle::Z_Axis:
+                _selected->Pos->z = cameras[0].pos[2] + _ray.z * length;
+                break;
+        }
+
         Pos = FVector(
             _selected->Pos->x,
             _selected->Pos->y,

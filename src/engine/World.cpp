@@ -115,7 +115,7 @@ void World::PreviousCourse() {
 AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
 
-    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, CollisionType::VTX_INTERSECT, 0.0f);
+    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
 
     return Actors.back();
 }
@@ -125,10 +125,9 @@ struct Actor* World::AddBaseActor(s16 actorType) {
 
     AActor* actor = Actors.back();
     if (actorType == ACTOR_ITEM_BOX) {
-        printf("ADD ITEM BOX\n");
         actor->Model = (Gfx*)LOAD_ASSET_RAW(itemBoxQuestionMarkModel);
     }
-    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, CollisionType::VTX_INTERSECT, 0.0f);
+    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
     // Skip C++ vtable to access variables in C
     return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
 }

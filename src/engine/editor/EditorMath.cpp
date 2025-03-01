@@ -191,11 +191,16 @@ void Clear(MtxF* mf) {
     mf->zw = 0.0f;
 }
 
-bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t) {
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t) {
     const float EPSILON = 1e-6f;
 
-    FVector edge1 = tri.v1 - tri.v0;
-    FVector edge2 = tri.v2 - tri.v0;
+    // Adjust the triangle vertices by the object's position
+    FVector v0 = tri.v0 + objectPos;
+    FVector v1 = tri.v1 + objectPos;
+    FVector v2 = tri.v2 + objectPos;
+
+    FVector edge1 = v1 - v0;
+    FVector edge2 = v2 - v0;
     FVector h = ray.Direction.Cross(edge2);
     float a = edge1.Dot(h);
 
@@ -203,7 +208,7 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t) {
         return false; // Ray is parallel to triangle
 
     float f = 1.0f / a;
-    FVector s = ray.Origin - tri.v0;
+    FVector s = ray.Origin - v0;
     float u = f * s.Dot(h);
 
     if (u < 0.0f || u > 1.0f)
@@ -219,6 +224,7 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t) {
     return t > EPSILON;
 }
 
+
 bool FindClosestObject(const Ray& ray, const std::vector<GameObject>& objects, GameObject& outObject, float& outDistance) {
     float closestDist = std::numeric_limits<float>::max();
     bool found = false;
@@ -226,7 +232,7 @@ bool FindClosestObject(const Ray& ray, const std::vector<GameObject>& objects, G
     for (const auto& obj : objects) {
         for (const auto& tri : obj.Triangles) {
             float t;
-            if (IntersectRayTriangle(ray, tri, t) && t < closestDist) {
+            if (IntersectRayTriangle(ray, tri, *obj.Pos, t) && t < closestDist) {
                 closestDist = t;
                 outObject = obj;
                 found = true;

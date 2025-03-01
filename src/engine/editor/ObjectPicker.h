@@ -11,9 +11,12 @@ class ObjectPicker {
         ObjectPicker();
     
         void SelectObject(std::vector<GameObject>& objects);
+        void DragHandle();
         void Draw();
         void FindObject(Ray ray, std::vector<GameObject>& objects);
         void Load();
+        void Tick();
+        Gizmo eGizmo;
     private:
         bool _draw = false;
         Vec3f _ray;
@@ -25,5 +28,4 @@ class ObjectPicker {
     
         void DrawObj(float length);
     
-        Gizmo eGizmo;
 };

@@ -51,9 +51,9 @@ public:
         {0,  5,  0},  // Y-Axis (Green)
         {-5,   0, 0}   // Z-Axis (Blue)
     };
+    FVector _ray;
     private:
     bool _draw = false;
-    FVector _ray;
     GameObject* _selected;
 
 

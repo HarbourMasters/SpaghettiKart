@@ -33,6 +33,10 @@ void ObjectPicker::Load() {
     eGizmo.Load();
 }
 
+void ObjectPicker::Tick() {
+    eGizmo.Tick();
+}
+
 void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
     Ray ray;
     ray.Origin = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
@@ -49,6 +53,53 @@ void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
     }
 }
 
+void ObjectPicker::DragHandle() {
+    Ray ray;
+    ray.Origin = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+    ray.Direction = ScreenRayTrace();
+
+    // Skip if a drag is already in progress
+    if (eGizmo.SelectedHandle != Gizmo::GizmoHandle::None) {
+        eGizmo._ray = ray.Direction;
+        return;
+    }
+
+    // Is the gizmo being dragged?
+    if (eGizmo.Enabled) {
+        for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
+            float t;
+            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset);
+            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+                //eGizmo.StartManipulation(Gizmo::GizmoHandle::X_Axis);
+                eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
+                eGizmo._ray = ray.Direction;
+                return; // Stop checking objects if we selected a Gizmo handle
+            }
+        }
+
+        for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
+            float t;
+            FVector pos = FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z);
+            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+                //eGizmo.StartManipulation(Gizmo::GizmoHandle::Y_Axis);
+                eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
+                eGizmo._ray = ray.Direction;
+                return; // Stop checking objects if we selected a Gizmo handle
+            }
+        }
+
+        for (auto tri = eGizmo.BlueCollision.Triangles.begin(); tri < eGizmo.BlueCollision.Triangles.end(); tri++) {
+            float t;
+            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y + eGizmo._gizmoOffset, eGizmo.Pos.z);
+            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+                eGizmo.SelectedHandle = Gizmo::GizmoHandle::Y_Axis;
+                eGizmo._ray = ray.Direction;
+                return; // Stop checking objects if we selected a Gizmo handle
+            }
+        }
+    }
+}
+
 void ObjectPicker::Draw() {
     if (_selected != nullptr) {
         eGizmo.Draw();
@@ -56,41 +107,6 @@ void ObjectPicker::Draw() {
 }
 
 void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
-    // Is the gizmo being clicked?
-    if (eGizmo.Enabled) {
-        Gizmo::GizmoHandle handle = Gizmo::GizmoHandle::None;
-
-        for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
-            float t;
-            if (IntersectRayTriangle(ray, *tri, t)) {
-                handle = Gizmo::GizmoHandle::X_Axis;
-                break;
-            }
-        }
-
-        for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
-            float t;
-            if (IntersectRayTriangle(ray, *tri, t)) {
-                handle = Gizmo::GizmoHandle::Y_Axis;
-                break;
-            }
-        }
-
-        for (auto tri = eGizmo.BlueCollision.Triangles.begin(); tri < eGizmo.BlueCollision.Triangles.end(); tri++) {
-            float t;
-            if (IntersectRayTriangle(ray, *tri, t)) {
-                handle = Gizmo::GizmoHandle::Z_Axis;
-                break;
-            }
-        }
-
-        if (handle != Gizmo::GizmoHandle::None) {
-            eGizmo.StartManipulation(handle);
-            return; // Stop checking objects if we selected a Gizmo handle
-        }
-    }
-
-    //s32 type = 0;
     bool found = false;
     for (auto& object : objects) {
         float boundingBox = object.BoundingBoxSize;
@@ -102,7 +118,7 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
         switch(object.Collision) {
             case CollisionType::VTX_INTERSECT:
                 for (const auto& tri : object.Triangles) {
-                    if (IntersectRayTriangle(ray, tri, t)) {
+                    if (IntersectRayTriangle(ray, tri, *object.Pos, t)) {
                         printf("\nSELECTED OBJECT\n\n");
                         _selected = &object;
                     }

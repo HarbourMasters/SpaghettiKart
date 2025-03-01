@@ -16,4 +16,4 @@
 
 #define EDITOR_GFX_GET_OPCODE(var) ((uint32_t) ((var) & 0xFF000000))
 
-void GenerateCollisionMesh(GameObject& object, Gfx* model);
+void GenerateCollisionMesh(GameObject& object, Gfx* model, float scale);
