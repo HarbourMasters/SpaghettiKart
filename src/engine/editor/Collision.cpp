@@ -14,15 +14,27 @@ void GenerateCollisionMesh(GameObject& object, Gfx* model, float scale) {
         i++;
         lo = ptr->words.w0;
         hi = ptr->words.w1;
+
+        printf("w0 0x%llX 0x%llX\n", lo, hi);
         opcode = (EDITOR_GFX_GET_OPCODE(lo) >> 24);
 
         switch(opcode) {
             case G_DL:
                 GenerateCollisionMesh(object, (Gfx*)hi, scale);
                 break;
+            case G_DL_OTR_HASH:
+                ptr++;
+                GenerateCollisionMesh(object, (Gfx*)ResourceGetDataByCrc(((uint64_t)(ptr->words.w0 << 32)) + ptr->words.w1), scale);
+                break;
             case G_VTX:
                 vtx = (Vtx*)ptr->words.w1;
                 break;
+            case G_VTX_OTR_HASH: {
+                const uintptr_t offset = hi;
+                ptr++;
+                vtx = (Vtx*)ResourceGetDataByCrc(((uint64_t)(ptr->words.w0 << 32)) + ptr->words.w1);
+                break;
+            }
             case G_TRI1: {
                 if (vtx == NULL) {
                     ptr++;

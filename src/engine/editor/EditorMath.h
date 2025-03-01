@@ -45,6 +45,7 @@ FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
 s32 Inverse(MtxF* src, MtxF* dest);
 void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
+void DrawObj();
 
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
 

@@ -113,14 +113,16 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
         if (boundingBox == 0.0f) {
             boundingBox = 2.0f;
         }
-        float t;
 
         switch(object.Collision) {
             case CollisionType::VTX_INTERSECT:
+            printf("vtx object\n");
                 for (const auto& tri : object.Triangles) {
+                    float t;
                     if (IntersectRayTriangle(ray, tri, *object.Pos, t)) {
                         printf("\nSELECTED OBJECT\n\n");
                         _selected = &object;
+                        found = true;
                     }
                 }
                 break;
@@ -134,7 +136,7 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
                 Vec3f boxMax = { object.Pos->x + boundingBox * max, 
                                  object.Pos->y + boundingBox * max, 
                                  object.Pos->z + boundingBox * max };
-
+                float t;
                 if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
                     // if (actor == _selected) {
                     //     _selected = nullptr;

@@ -35,7 +35,7 @@ Editor::Editor() {
 void Editor::Load() {
     eObjectPicker.Load();
     for (auto& object : eGameObjects) {
-        GenerateCollisionMesh(object, object.Model, 1.0f);
+        //GenerateCollisionMesh(object, object.Model, 1.0f);
     }
 }
 
@@ -84,6 +84,7 @@ void Editor::Tick() {
  
 void Editor::Draw() {
     eObjectPicker.Draw();
+    DrawObj();
 }
 
 void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize) {
@@ -91,16 +92,8 @@ void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType coll
     if (model != NULL) {
         eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize});
         GenerateCollisionMesh(eGameObjects.back(), model, scale);
+        printf("\n");
     } else { // to bounding box or sphere collision
         eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 2.0f});
     }
-}
-
-void Editor::DrawObj(float length) {
-    Mat4 mtx;
-    Vec3f pos2 = { _ray[0], _ray[1], _ray[2] };
-    mtxf_translate(mtx, pos2);
-    mtxf_scale(mtx, 0.03);
-    render_set_position(mtx, 0);
-    gSPDisplayList(gDisplayListHead++, Editor::box_Cube_mesh);
 }

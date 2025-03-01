@@ -16,6 +16,7 @@ extern "C" {
 #include "audio/external.h"
 #include "menus.h"
 #include "common_data.h"
+#include "mario_raceway_data.h"
 }
 
 World::World() {}
@@ -124,9 +125,16 @@ struct Actor* World::AddBaseActor(s16 actorType) {
     Actors.push_back(new AActor());
 
     AActor* actor = Actors.back();
-    if (actorType == ACTOR_ITEM_BOX) {
-        actor->Model = (Gfx*)LOAD_ASSET_RAW(itemBoxQuestionMarkModel);
+
+    switch(actorType) {
+        case ACTOR_ITEM_BOX:
+            actor->Model = (Gfx*)LOAD_ASSET_RAW(D_0D003090);
+            break;
+        case ACTOR_PIRANHA_PLANT:
+            actor->Model = (Gfx*)LOAD_ASSET_RAW(d_course_mario_raceway_dl_piranha_plant);
+            break;
     }
+
     gEditor.AddObject((FVector*) &actor->Pos, actor->Model, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
     // Skip C++ vtable to access variables in C
     return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
