@@ -40,7 +40,6 @@ public:
     void func_80081790(s32 objectIndex);
     void func_8008153C(s32 objectIndex);
 
-    s32 _objectIndex;
     s32 _moleIndex;
 private:
     static size_t _count;

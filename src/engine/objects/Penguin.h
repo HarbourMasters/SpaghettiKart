@@ -55,7 +55,6 @@ private:
     void InitOtherPenguin(s32 objectIndex);
 
     static bool _toggle;
-    s32 _objectIndex;
     PenguinType _type;
     Behaviour _bhv;
 };

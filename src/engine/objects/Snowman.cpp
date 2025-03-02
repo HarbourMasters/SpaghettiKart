@@ -22,6 +22,7 @@ OSnowman::OSnowman(const FVector& pos) {
 
     find_unused_obj_index(&_headIndex);
     init_object(_headIndex, 0);
+    _objectIndex = _headIndex;
     gObjectList[_headIndex].origin_pos[0] = pos.x * xOrientation;
     gObjectList[_headIndex].origin_pos[1] = pos.y + 5.0 + 3.0;
     gObjectList[_headIndex].origin_pos[2] = pos.z;

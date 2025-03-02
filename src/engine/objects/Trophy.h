@@ -48,7 +48,6 @@ public:
 private:
     StarEmitter* _emitter;
 
-    s32 _objectIndex;
     TrophyType _trophy;
     FVector _spawnPos;
     Behaviour _bhv;

@@ -28,14 +28,12 @@ int gfx_create_framebuffer(uint32_t width, uint32_t height, uint32_t native_widt
     uint8_t resize);
 
 Editor::Editor() {
-    s32 test = 1;
-   // gsSPSetFB(gDisplayListHead++, &test);
 }
 
 void Editor::Load() {
     eObjectPicker.Load();
     for (auto& object : eGameObjects) {
-        //GenerateCollisionMesh(object, object.Model, 1.0f);
+        GenerateCollisionMesh(object, object.Model, 1.0f);
     }
 }
 
@@ -84,7 +82,6 @@ void Editor::Tick() {
  
 void Editor::Draw() {
     eObjectPicker.Draw();
-    DrawObj();
 }
 
 void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize) {
@@ -92,7 +89,6 @@ void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType coll
     if (model != NULL) {
         eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize});
         GenerateCollisionMesh(eGameObjects.back(), model, scale);
-        printf("\n");
     } else { // to bounding box or sphere collision
         eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 2.0f});
     }

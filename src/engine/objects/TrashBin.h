@@ -41,6 +41,5 @@ private:
     FRotation _rot;
     float _scale;
     size_t _idx;
-    s32 _objectIndex;
     bool _drawBin = false;
 };

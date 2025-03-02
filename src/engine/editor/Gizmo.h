@@ -52,9 +52,9 @@ public:
         {-5,   0, 0}   // Z-Axis (Blue)
     };
     FVector _ray;
+    GameObject* _selected;
     private:
     bool _draw = false;
-    GameObject* _selected;
 
 
 Lights1 handle_f3dlite_material_lights = gdSPDefLights1(

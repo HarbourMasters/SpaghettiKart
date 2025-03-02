@@ -51,10 +51,8 @@ public:
     void func_8007D794(s32 objectIndex);
     void func_8007DA4C(s32 objectIndex);
 
-
 private:
     FVector _pos;
     static size_t _count;
     size_t _idx;
-    s32 _objectIndex;
 };

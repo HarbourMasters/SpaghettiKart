@@ -72,7 +72,7 @@ OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex,
     WheelPos[3][2] = _pos[2];
     check_bounding_collision(&_Collision, 2.0f, _pos[0], _pos[1], _pos[2]);
 
-    find_unused_obj_index(&ObjectIndex);
+    find_unused_obj_index(&_objectIndex);
 
     _count++;
 }
@@ -329,7 +329,7 @@ void OBombKart::Tick() {
 void OBombKart::Draw(s32 cameraId) {
     if (gModeSelection == BATTLE) {
         for (size_t playerId = 0; playerId < NUM_BOMB_KARTS_BATTLE; playerId++) {
-            Object* object = &gObjectList[ObjectIndex];
+            Object* object = &gObjectList[_objectIndex];
             if (object->state != 0) {
                 s32 primAlpha = object->primAlpha;
                 Player* player = &gPlayerOne[playerId];
@@ -337,9 +337,9 @@ void OBombKart::Draw(s32 cameraId) {
                 object->pos[1] = player->pos[1] - 2.0;
                 object->pos[2] = player->pos[2];
                 object->surfaceHeight = player->unk_074;
-                func_800563DC(ObjectIndex, cameraId, primAlpha);
-                func_8005669C(ObjectIndex, cameraId, primAlpha);
-                func_800568A0(ObjectIndex, cameraId);
+                func_800563DC(_objectIndex, cameraId, primAlpha);
+                func_8005669C(_objectIndex, cameraId, primAlpha);
+                func_800568A0(_objectIndex, cameraId);
             }
         }
         return;
@@ -358,27 +358,27 @@ void OBombKart::Draw(s32 cameraId) {
     }
     Camera* camera = &camera1[cameraId];
     if (cameraId == PLAYER_ONE) {
-        if (is_obj_flag_status_active(ObjectIndex, 0x00200000) != 0) {
+        if (is_obj_flag_status_active(_objectIndex, 0x00200000) != 0) {
             Unk_4A = 0;
         } else if (gGamestate != ENDING) {
             Unk_4A = 1;
         }
-        clear_object_flag(ObjectIndex, 0x00200000);
+        clear_object_flag(_objectIndex, 0x00200000);
     }
 
     // huh???
     s32 state = State;
     if (State != States::DISABLED) {
-        gObjectList[ObjectIndex].pos[0] = Pos[0];
-        gObjectList[ObjectIndex].pos[1] = Pos[1];
-        gObjectList[ObjectIndex].pos[2] = Pos[2];
-        s32 temp_s4 = func_8008A364(ObjectIndex, cameraId, 0x31C4U, 0x000001F4);
-        if (is_obj_flag_status_active(ObjectIndex, VISIBLE) != 0) {
-            set_object_flag(ObjectIndex, 0x00200000);
+        gObjectList[_objectIndex].pos[0] = Pos[0];
+        gObjectList[_objectIndex].pos[1] = Pos[1];
+        gObjectList[_objectIndex].pos[2] = Pos[2];
+        s32 temp_s4 = func_8008A364(_objectIndex, cameraId, 0x31C4U, 0x000001F4);
+        if (is_obj_flag_status_active(_objectIndex, VISIBLE) != 0) {
+            set_object_flag(_objectIndex, 0x00200000);
             D_80183E80[0] = 0;
             D_80183E80[1] = func_800418AC(Pos[0], Pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
-            func_800563DC(ObjectIndex, cameraId, 0x000000FF);
+            func_800563DC(_objectIndex, cameraId, 0x000000FF);
             OBombKart::SomeRender(camera->pos);
             if (((u32) temp_s4 < 0x4E21U) && (state != BOMB_STATE_EXPLODED)) {
                 OBombKart::LoadMtx();

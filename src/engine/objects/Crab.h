@@ -46,5 +46,4 @@ private:
     FVector2D _end;
     static size_t _count;
     s32 _idx;
-    s32 _objectIndex;
 };

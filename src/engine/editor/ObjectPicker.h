@@ -25,7 +25,4 @@ class ObjectPicker {
         s32 Inverse(MtxF* src, MtxF* dest);
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
-    
-        void DrawObj(float length);
-    
 };

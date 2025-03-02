@@ -174,6 +174,18 @@ void World::TickActors() {
 
 OObject* World::AddObject(OObject* object) {
     Objects.push_back(object);
+
+    if (object->_objectIndex != -1) {
+        Object* cObj = &gObjectList[object->_objectIndex];
+        printf("model 0x%llX\n", cObj->model);
+
+        if (cObj->model != NULL) {
+            gEditor.AddObject((FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+        } else {
+            gEditor.AddObject((FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+        }
+    }
+
     return Objects.back();
 }
 

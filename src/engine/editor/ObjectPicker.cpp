@@ -50,6 +50,7 @@ void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
     } else {
         //eGizmo.Disable();
         eGizmo.Enabled = false;
+        eGizmo._selected = NULL;
     }
 }
 

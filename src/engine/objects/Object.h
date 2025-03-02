@@ -12,6 +12,7 @@ public:
     uint8_t uuid[16];
     Object o;
     bool PendingDestroy = false;
+    s32 _objectIndex = -1;
 
     virtual ~OObject() = default;
 

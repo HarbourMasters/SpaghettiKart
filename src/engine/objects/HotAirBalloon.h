@@ -31,5 +31,4 @@ public:
 private:
     FVector _pos;
     bool *_visible;
-    s32 _objectIndex;
 };
