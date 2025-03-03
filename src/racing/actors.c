@@ -135,6 +135,7 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
     actor->state = 0;
     actor->unk_08 = 0.0f;
     actor->boundingBoxSize = 0.0f;
+    actor->model = NULL;
     func_802AAAAC(&actor->unk30);
     switch (actorType) {
         case ACTOR_BOX_TRUCK:
@@ -151,6 +152,7 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->velocity[0] = actor->pos[0];
             actor->velocity[1] = actor->pos[1];
             actor->velocity[2] = actor->pos[2] + 70.0f;
+            actor->model = d_course_yoshi_valley_dl_egg_lod0;
             break;
         case ACTOR_KIWANO_FRUIT:
             actor->state = 0;
@@ -158,10 +160,12 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->rot[1] = 0;
             actor->rot[2] = 0;
             actor->boundingBoxSize = 2.0f;
+            actor->model = d_course_dks_jungle_parkway_dl_kiwano_fruit;
             break;
         case ACTOR_FALLING_ROCK:
             actor->flags |= 0x4000;
             actor->boundingBoxSize = 10.0f;
+            actor->model = d_course_choco_mountain_dl_falling_rock;
             break;
         case ACTOR_TRAIN_ENGINE:
             actor->unk_08 = 10.0f;
@@ -169,6 +173,7 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
         case ACTOR_BANANA:
             actor->flags = actor->flags | 0x4000 | 0x1000;
             actor->boundingBoxSize = 2.0f;
+            actor->model = common_model_flat_banana;
             break;
         case ACTOR_GREEN_SHELL:
             gNumSpawnedShells += 1;
@@ -194,27 +199,32 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 20.0f;
+            actor->model = d_course_mario_raceway_dl_tree;
             break;
         case ACTOR_MARIO_SIGN:
             actor->flags |= 0x4000;
+            actor->model = d_course_mario_raceway_dl_sign;
             break;
         case ACTOR_TREE_YOSHI_VALLEY:
             actor->flags |= 0x4000;
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 23.0f;
+            actor->model = d_course_yoshi_valley_dl_tree;
             break;
         case ACTOR_TREE_ROYAL_RACEWAY:
             actor->flags |= 0x4000;
             actor->state = 0x0043;
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 17.0f;
+            actor->model = d_course_royal_raceway_dl_tree;
             break;
         case ACTOR_TREE_MOO_MOO_FARM:
             actor->state = 0x0043;
             actor->flags = -0x8000;
             actor->boundingBoxSize = 3.0f;
             actor->unk_08 = 17.0f;
+            actor->model = d_course_moo_moo_farm_dl_tree;
             break;
         case 26:
             actor->flags |= 0x4000;
@@ -275,17 +285,20 @@ void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->unk_04 = 0;
             actor->state = 5;
             actor->boundingBoxSize = 5.5f;
+            actor->model = D_0D003090;
             break;
         case ACTOR_ITEM_BOX:
             actor->flags |= 0x4000;
             actor->unk_04 = 0;
             actor->state = 0;
             actor->boundingBoxSize = 5.5f;
+            actor->model = D_0D003090;
             break;
         case ACTOR_PIRANHA_PLANT:
             actor->flags |= 0x4000;
             actor->state = 0x001E;
             actor->boundingBoxSize = 5.0f;
+            actor->model = d_course_mario_raceway_dl_piranha_plant;
             break;
         default:
             break;
@@ -1400,8 +1413,9 @@ s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType)
         //}
     }
     gNumActors++;
-    struct Actor* actor = CM_AddBaseActor(actorType);
+    struct Actor* actor = CM_AddBaseActor();
     actor_init(actor, pos, rot, velocity, actorType);
+    CM_AddEditorObject(actor);
     return (s16) CM_GetActorSize() - 1; // Return current index;
 }
 

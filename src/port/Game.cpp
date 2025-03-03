@@ -669,8 +669,12 @@ void CM_CleanWorld(void) {
     gWorldInstance.Reset();
 }
 
-struct Actor* CM_AddBaseActor(s16 actorType) {
-    return (struct Actor*) gWorldInstance.AddBaseActor(actorType);
+struct Actor* CM_AddBaseActor() {
+    return (struct Actor*) gWorldInstance.AddBaseActor();
+}
+
+void CM_AddEditorObject(struct Actor* actor) {
+    gWorldInstance.AddEditorObject(actor);
 }
 
 size_t CM_GetActorSize() {

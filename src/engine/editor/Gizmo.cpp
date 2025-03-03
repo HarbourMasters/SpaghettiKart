@@ -42,6 +42,10 @@ void Gizmo::Load() {
 }
 
 void Gizmo::Tick() {
+    if (!Enabled) {
+        return;
+    }
+
     switch(SelectedHandle) {
         case GizmoHandle::X_Axis:
     Gizmo::Translate();

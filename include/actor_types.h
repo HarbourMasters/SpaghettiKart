@@ -133,6 +133,7 @@ struct Actor {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 // Duplicate declare for simplicity when externing actors & packed files.
@@ -157,6 +158,7 @@ struct TrainCar {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct RailroadCrossing {
@@ -170,6 +172,7 @@ struct RailroadCrossing {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 // crossingTrigger might ruin struct size when compiled on 32 bit
@@ -187,6 +190,7 @@ struct FallingRock {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct ActorSpawnData {
@@ -231,6 +235,7 @@ struct YoshiValleyEgg {
     // pathCenter[0] and pathCenter[2] are the X,Z coordinates of the center of the path
     /* 0x24 */ Vec3f pathCenter;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct KiwanoFruit {
@@ -249,6 +254,7 @@ struct KiwanoFruit {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct PaddleWheelBoat {
@@ -263,6 +269,7 @@ struct PaddleWheelBoat {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct PiranhaPlant {
@@ -275,6 +282,7 @@ struct PiranhaPlant {
     /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
     /* 0x2C */ f32 unk_02C;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct PalmTree {
@@ -289,6 +297,7 @@ struct PalmTree {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 typedef struct {
@@ -305,6 +314,7 @@ typedef struct {
     /* 0x18 */ Vec3f unk_18;
     /* 0x24 */ Vec3f shellIndices; // Indices in gActorList for the shells "owned" by this parent
     /* 0x30 */ Collision unk30;
+               const char* model;
 } TripleShellParent; // size = 0x70
 
 struct ShellActor {
@@ -332,6 +342,7 @@ struct ShellActor {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity; // All 0 until the shell is fired
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct ItemBox {
@@ -350,6 +361,7 @@ struct ItemBox {
     /* 0x28 */ f32 unk_028;
     /* 0x2C */ f32 unk_02C;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct FakeItemBox {
@@ -366,6 +378,7 @@ struct FakeItemBox {
     /* 0x28 */ f32 targetY;
     /* 0x2C */ f32 unk_02C;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct BananaBunchParent {
@@ -381,6 +394,7 @@ struct BananaBunchParent {
     /* 0x1E */ s16 unk_1E;
     /* 0x20 */ f32 unk_20[4];
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 struct BananaActor {
@@ -403,6 +417,7 @@ struct BananaActor {
     /* 0x18 */ Vec3f pos;
     /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
+               const char* model;
 }; // size = 0x70
 
 // #pragma GCC diagnostic pop

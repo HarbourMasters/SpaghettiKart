@@ -52,7 +52,7 @@ public:
         {-5,   0, 0}   // Z-Axis (Blue)
     };
     FVector _ray;
-    GameObject* _selected;
+    GameObject* _selected = nullptr;
     private:
     bool _draw = false;
 

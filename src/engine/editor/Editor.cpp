@@ -90,6 +90,6 @@ void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType coll
         eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize});
         GenerateCollisionMesh(eGameObjects.back(), model, scale);
     } else { // to bounding box or sphere collision
-        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 2.0f});
+        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 22.0f});
     }
 }

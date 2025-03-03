@@ -50,7 +50,7 @@ void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
     } else {
         //eGizmo.Disable();
         eGizmo.Enabled = false;
-        eGizmo._selected = NULL;
+        eGizmo._selected = nullptr;
     }
 }
 
@@ -102,7 +102,7 @@ void ObjectPicker::DragHandle() {
 }
 
 void ObjectPicker::Draw() {
-    if (_selected != nullptr) {
+    if (_selected != NULL) {
         eGizmo.Draw();
     }
 }

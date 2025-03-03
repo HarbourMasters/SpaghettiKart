@@ -121,23 +121,21 @@ AActor* World::AddActor(AActor* actor) {
     return Actors.back();
 }
 
-struct Actor* World::AddBaseActor(s16 actorType) {
+struct Actor* World::AddBaseActor() {
     Actors.push_back(new AActor());
 
     AActor* actor = Actors.back();
 
-    switch(actorType) {
-        case ACTOR_ITEM_BOX:
-            actor->Model = (Gfx*)LOAD_ASSET_RAW(D_0D003090);
-            break;
-        case ACTOR_PIRANHA_PLANT:
-            actor->Model = (Gfx*)LOAD_ASSET_RAW(d_course_mario_raceway_dl_piranha_plant);
-            break;
-    }
-
-    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
     // Skip C++ vtable to access variables in C
     return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
+}
+
+void World::AddEditorObject(Actor* actor) {
+    if (actor->model != NULL) {
+        gEditor.AddObject((FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+    } else {
+        gEditor.AddObject((FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+    }
 }
 
 /**
