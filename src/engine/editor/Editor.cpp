@@ -31,10 +31,12 @@ Editor::Editor() {
 }
 
 void Editor::Load() {
-    eObjectPicker.Load();
+    printf("Editor: Loading Editor...\n");
+    eObjectPicker.Load();;
     for (auto& object : eGameObjects) {
         GenerateCollisionMesh(object, object.Model, 1.0f);
     }
+    printf("Editor: Loading Complete!\n");
 }
 
 void Editor::Tick() {
@@ -46,6 +48,11 @@ void Editor::Tick() {
 
     Ship::Coords mousePos = wnd->GetMousePos();
     bool isMouseDown = wnd->GetMouseState(Ship::LUS_MOUSE_BTN_LEFT);
+
+    eGameObjects.erase(
+        std::remove_if(eGameObjects.begin(), eGameObjects.end(),
+                    [](const auto& object) { return (*object.DespawnFlag) == object.DespawnValue; printf("DELETED OBJ\n"); }),
+        eGameObjects.end());
 
     if (isMouseDown && !wasMouseDown) {  
         // Mouse just pressed (Pressed state)
@@ -84,12 +91,15 @@ void Editor::Draw() {
     eObjectPicker.Draw();
 }
 
-void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize) {
-    
+void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
     if (model != NULL) {
-        eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize});
+        eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize, despawnFlag, despawnValue});
         GenerateCollisionMesh(eGameObjects.back(), model, scale);
     } else { // to bounding box or sphere collision
-        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 22.0f});
+        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 22.0f, despawnFlag, despawnValue});
     }
+}
+
+void Editor::ClearObjects() {
+    eGameObjects.clear();
 }

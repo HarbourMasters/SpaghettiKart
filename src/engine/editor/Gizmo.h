@@ -39,6 +39,7 @@ public:
 
     FVector Pos; // Global scene view
     float _gizmoOffset = 5.0f;
+    FVector _cursorOffset;
     FVector RedPos = {0, 0, -_gizmoOffset}; // Local model view
     FVector GreenPos = {-_gizmoOffset, 0, 0}; // Local model view
     FVector BluePos = {0, _gizmoOffset, 0}; // Local model view
@@ -514,7 +515,7 @@ Gfx handle_Cylinder_mesh_tri_0[106] = {
 };
 
 Gfx mat_handle_f3dlite_material[9] = {
-	gsSPClearGeometryMode(G_CLIPPING),
+	gsSPClearGeometryMode(G_CLIPPING | G_ZBUFFER),
 	gsSPSetLights1(handle_f3dlite_material_lights),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
@@ -524,7 +525,7 @@ Gfx mat_handle_f3dlite_material[9] = {
 };
 
 Gfx mat_revert_handle_f3dlite_material[4] = {
-	gsSPSetGeometryMode(G_CLIPPING),
+	gsSPSetGeometryMode(G_CLIPPING | G_ZBUFFER),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayList(),

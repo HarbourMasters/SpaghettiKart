@@ -15,7 +15,6 @@ void GenerateCollisionMesh(GameObject& object, Gfx* model, float scale) {
         lo = ptr->words.w0;
         hi = ptr->words.w1;
 
-        printf("w0 0x%llX 0x%llX\n", lo, hi);
         opcode = (EDITOR_GFX_GET_OPCODE(lo) >> 24);
 
         switch(opcode) {

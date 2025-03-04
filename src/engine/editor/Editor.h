@@ -19,7 +19,9 @@ public:
     void Draw();
     void MouseClick();
 	void Load();
-    void AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize);
+    void AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    void ClearObjects();
+    void RemoveObject();
 private:
     bool _draw = false;
     Vec3f _ray;
@@ -27,4 +29,5 @@ private:
     s32 Inverse(MtxF* src, MtxF* dest);
     void Copy(MtxF* src, MtxF* dest);
     void Clear(MtxF* mf);
+
 };

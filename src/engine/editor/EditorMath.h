@@ -28,6 +28,8 @@ struct GameObject {
     std::vector<Triangle> Triangles;
     CollisionType Collision;
     float BoundingBoxSize;
+    int32_t* DespawnFlag;
+    int32_t DespawnValue;
 };
 
 /**

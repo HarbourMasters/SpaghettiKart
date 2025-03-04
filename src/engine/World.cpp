@@ -116,8 +116,6 @@ void World::PreviousCourse() {
 AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
 
-    gEditor.AddObject((FVector*) &actor->Pos, actor->Model, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
-
     return Actors.back();
 }
 
@@ -132,9 +130,9 @@ struct Actor* World::AddBaseActor() {
 
 void World::AddEditorObject(Actor* actor) {
     if (actor->model != NULL) {
-        gEditor.AddObject((FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+        gEditor.AddObject((FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     } else {
-        gEditor.AddObject((FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+        gEditor.AddObject((FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     }
 }
 
@@ -175,12 +173,11 @@ OObject* World::AddObject(OObject* object) {
 
     if (object->_objectIndex != -1) {
         Object* cObj = &gObjectList[object->_objectIndex];
-        printf("model 0x%llX\n", cObj->model);
 
         if (cObj->model != NULL) {
-            gEditor.AddObject((FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+            gEditor.AddObject((FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         } else {
-            gEditor.AddObject((FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f);
+            gEditor.AddObject((FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         }
     }
 

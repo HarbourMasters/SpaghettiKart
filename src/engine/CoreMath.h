@@ -25,6 +25,11 @@ struct FVector {
         return FVector(x - other.x, y - other.y, z - other.z);
     }
 
+    // Operator to multiply a FVector by a scalar (float)
+    FVector operator*(float scalar) const {
+        return FVector(x * scalar, y * scalar, z * scalar);
+    }
+
     float Dot(const FVector& other) const {
         return x * other.x + y * other.y + z * other.z;
     }

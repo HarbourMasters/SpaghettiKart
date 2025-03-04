@@ -130,13 +130,13 @@ void Gizmo::Translate() {
 
         switch(SelectedHandle) {
             case GizmoHandle::X_Axis:
-                _selected->Pos->x = cameras[0].pos[0] + _ray.x * length;
+                _selected->Pos->x = (cameras[0].pos[0] + _ray.x * length) + _cursorOffset.x;
                 break;
             case GizmoHandle::Y_Axis:
-                _selected->Pos->y = cameras[0].pos[1] + _ray.y * length;
+                _selected->Pos->y = (cameras[0].pos[1] + _ray.y * length) + _cursorOffset.y;
                 break;
             case GizmoHandle::Z_Axis:
-                _selected->Pos->z = cameras[0].pos[2] + _ray.z * length;
+                _selected->Pos->z = (cameras[0].pos[2] + _ray.z * length) + _cursorOffset.z;
                 break;
         }
 
