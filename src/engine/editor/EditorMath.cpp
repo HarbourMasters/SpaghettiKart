@@ -226,6 +226,43 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& ob
     return t > EPSILON;
 }
 
+bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t) {
+    const float EPSILON = 1e-6f;
+
+    // Vector from ray origin to sphere center
+    FVector oc = ray.Origin - sphereCenter;
+
+    // Quadratic equation coefficients
+    float a = ray.Direction.Dot(ray.Direction);
+    float b = 2.0f * oc.Dot(ray.Direction);
+    float c = oc.Dot(oc) - (radius * radius);
+
+    // Compute discriminant
+    float discriminant = (b * b) - (4 * a * c);
+
+    // No intersection if discriminant is negative
+    if (discriminant < 0) {
+        return false;
+    }
+
+    // Compute nearest intersection point
+    float sqrtD = sqrtf(discriminant);
+    float t0 = (-b - sqrtD) / (2.0f * a);
+    float t1 = (-b + sqrtD) / (2.0f * a);
+
+    // Select the closest valid intersection
+    if (t0 > EPSILON) {
+        t = t0;
+        return true;
+    } else if (t1 > EPSILON) {
+        t = t1;
+        return true;
+    }
+
+    return false; // Sphere is behind the ray origin
+}
+
+
 bool FindClosestObject(const Ray& ray, const std::vector<GameObject>& objects, GameObject& outObject, float& outDistance) {
     float closestDist = std::numeric_limits<float>::max();
     bool found = false;

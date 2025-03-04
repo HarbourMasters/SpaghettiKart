@@ -10,7 +10,7 @@ public:
 
     enum class GizmoHandle {
         None,
-        Center,
+        All_Axis,
         X_Axis,
         Y_Axis,
         Z_Axis
@@ -22,13 +22,10 @@ public:
     void Draw();
     void Load();
 
-    void StartManipulation(GizmoHandle handle);
     void Enable(GameObject* object, Ray ray);
     void Translate();
     void DrawHandles();
 
-
-    std::pair<FVector, FVector> GetBoundingBox(GizmoHandle handle);
 
     bool Enabled;
     GizmoHandle SelectedHandle;
@@ -38,7 +35,9 @@ public:
     GameObject BlueCollision;
 
     FVector Pos; // Global scene view
-    float _gizmoOffset = 5.0f;
+    float _gizmoOffset = 8.0f;
+    float AllAxisRadius = 4.0f; // Free move selection radius
+    float PickDistance;
     FVector _cursorOffset;
     FVector RedPos = {0, 0, -_gizmoOffset}; // Local model view
     FVector GreenPos = {-_gizmoOffset, 0, 0}; // Local model view
@@ -46,12 +45,6 @@ public:
     
     float HandleSize = 2.0f;
     
-    FVector HandleOffsets[4] = {
-        {0,   0,  0},  // Center Button
-        {0,  0,  -5},  // X-Axis (Red)
-        {0,  5,  0},  // Y-Axis (Green)
-        {-5,   0, 0}   // Z-Axis (Blue)
-    };
     FVector _ray;
     GameObject* _selected = nullptr;
     private:

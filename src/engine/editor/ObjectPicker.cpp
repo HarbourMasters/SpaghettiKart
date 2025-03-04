@@ -67,14 +67,22 @@ void ObjectPicker::DragHandle() {
 
     // Is the gizmo being dragged?
     if (eGizmo.Enabled) {
+        float t;
+        if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
+            eGizmo.SelectedHandle = Gizmo::GizmoHandle::All_Axis;
+            eGizmo._ray = ray.Direction;
+            FVector clickPosition = ray.Origin + ray.Direction * t;
+            eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
+            eGizmo.PickDistance = t;
+            return;
+        }
+
         for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
             float t;
             FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset);
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
-                //eGizmo.StartManipulation(Gizmo::GizmoHandle::X_Axis);
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
                 eGizmo._ray = ray.Direction;
-
                 FVector clickPosition = ray.Origin + ray.Direction * t;
                 eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
                 return; // Stop checking objects if we selected a Gizmo handle
@@ -85,9 +93,10 @@ void ObjectPicker::DragHandle() {
             float t;
             FVector pos = FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z);
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
-                //eGizmo.StartManipulation(Gizmo::GizmoHandle::Y_Axis);
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
                 eGizmo._ray = ray.Direction;
+                FVector clickPosition = ray.Origin + ray.Direction * t;
+                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
                 return; // Stop checking objects if we selected a Gizmo handle
             }
         }
@@ -98,6 +107,8 @@ void ObjectPicker::DragHandle() {
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Y_Axis;
                 eGizmo._ray = ray.Direction;
+                FVector clickPosition = ray.Origin + ray.Direction * t;
+                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
                 return; // Stop checking objects if we selected a Gizmo handle
             }
         }

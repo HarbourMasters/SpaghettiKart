@@ -42,66 +42,14 @@ void Gizmo::Load() {
 }
 
 void Gizmo::Tick() {
-    if (!Enabled) {
-        return;
-    }
-
-    switch(SelectedHandle) {
-        case GizmoHandle::X_Axis:
-    Gizmo::Translate();
-            break;
-        case GizmoHandle::Y_Axis:
-    Gizmo::Translate();
-            break;
-        case GizmoHandle::Z_Axis:
-    Gizmo::Translate();
-            break;
+    if (Enabled) {
+        Gizmo::Translate();
     }
 }
 
-std::pair<FVector, FVector> Gizmo::GetBoundingBox(GizmoHandle handle) {
-    FVector min = Pos + HandleOffsets[(int)handle] - FVector(HandleSize, HandleSize, HandleSize);
-    FVector max = Pos + HandleOffsets[(int)handle] + FVector(HandleSize, HandleSize, HandleSize);
-    return {min, max};
-}
-
-void Gizmo::StartManipulation(GizmoHandle handle) {
-    printf("HANDLE SELECTED %d\n", (s32)handle);
-    auto wnd = GameEngine::Instance->context->GetWindow();
-
-    if (wnd->GetMouseState(Ship::LUS_MOUSE_BTN_LEFT)) {
-        switch(handle) {
-            case GizmoHandle::None:
-                break;
-            case GizmoHandle::Center:
-                break;
-            case GizmoHandle::X_Axis:
-                break;
-            case GizmoHandle::Y_Axis:
-                break;
-            case GizmoHandle::Z_Axis:
-                break;
-        }
-    }
-}
-
+// Makes the gizmo visible
 void Gizmo::Enable(GameObject* object, Ray ray) {
     static float length = 180.0f; // Default value
-
-    // static AActor* lastSelected = nullptr;
-    // if (object != lastSelected) {
-    //     length = sqrt(
-    //         pow(object->Pos[0] - cameras[0].pos[0], 2) +
-    //         pow(object->Pos[1] - cameras[0].pos[1], 2) +
-    //         pow(object->Pos[2] - cameras[0].pos[2], 2)
-    //     );
-    //     lastSelected = object;
-    // }
-
-    //_selected->Pos[0] = cameras[0].pos[0] + ray.x * length;
-    //object->Pos[1] = cameras[0].pos[1] + ray.y * length;
-    //_selected->Pos[2] = cameras[0].pos[2] + ray.z * length;
-
 
     _selected = object;
     _ray = ray.Direction;
@@ -129,9 +77,14 @@ void Gizmo::Translate() {
         );
 
         switch(SelectedHandle) {
+            case GizmoHandle::All_Axis:
+                _selected->Pos->x = (cameras[0].pos[0] + _ray.x * PickDistance) + _cursorOffset.x;
+                _selected->Pos->y = (cameras[0].pos[1] + _ray.y * PickDistance) + _cursorOffset.y;
+                _selected->Pos->z = (cameras[0].pos[2] + _ray.z * PickDistance) + _cursorOffset.z;
+                break;
             case GizmoHandle::X_Axis:
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * length) + _cursorOffset.x;
-                break;
+            break;
             case GizmoHandle::Y_Axis:
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * length) + _cursorOffset.y;
                 break;

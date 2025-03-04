@@ -49,6 +49,7 @@ void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
 
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
+bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
 
 
 
