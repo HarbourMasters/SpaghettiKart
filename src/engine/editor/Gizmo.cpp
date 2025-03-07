@@ -21,6 +21,7 @@ extern "C" {
 #include "math_util_2.h"
 #include "camera.h"
 #include "courses/harbour/ship_model.h"
+#include "src/racing/collision.h"
 }
 
 Gizmo::Gizmo() {
@@ -91,6 +92,10 @@ void Gizmo::Translate() {
             case GizmoHandle::Z_Axis:
                 _selected->Pos->z = (cameras[0].pos[2] + _ray.z * length) + _cursorOffset.z;
                 break;
+        }
+
+        if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+            _selected->Pos->y = spawn_actor_on_surface(_selected->Pos->x, 2000.0f, _selected->Pos->z);
         }
 
         Pos = FVector(

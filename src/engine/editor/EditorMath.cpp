@@ -23,10 +23,12 @@ FVector ScreenRayTrace() {
     Camera* camera = &cameras[0];
 
     Ship::Coords mouse = wnd->GetMousePos();
+    mouse.x -= gfx_current_game_window_viewport.x;
+    mouse.y -= gfx_current_game_window_viewport.y;
 
     // Get screen dimensions
-    uint32_t width = wnd->GetWidth();
-    uint32_t height = wnd->GetHeight();
+    uint32_t width = OTRGetGameRenderWidth();
+    uint32_t height = OTRGetGameRenderHeight();
 
     // Convert mouse to NDS screen coordinates
     float x = (2.0f * mouse.x) / width - 1.0f;  // Normalized X: -1 to 1

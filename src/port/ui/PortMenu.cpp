@@ -360,6 +360,17 @@ void PortMenu::AddEnhancements() {
         .CVar("gMinHeight")
         .Options(FloatSliderOptions().Min(-50.0f).Max(50.0f).DefaultValue(0.0f)
                      .Tooltip("When Disable Wall Collision are enable what is the minimal height you can get."));
+
+    path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "HM64 Lab", 4);
+    AddWidget(path, "Enable HM64 Labs", WIDGET_CVAR_CHECKBOX)
+    .CVar("gEditorEnabled")
+    .Callback([](WidgetInfo& info) {
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->ToggleVisibility();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->ToggleVisibility();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->ToggleVisibility();
+    })
+    .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Edit the universe!"}}));
 }
 
 void PortMenu::AddDevTools() {
@@ -432,9 +443,13 @@ void PortMenu::InitElement() {
 
     disabledMap = {
         { DISABLE_FOR_FREE_CAM_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Free Cam is Enabled" } },
+          { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Freecam is Enabled" } },
         { DISABLE_FOR_FREE_CAM_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Free Cam is Disabled" } },
+          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Freecam is Disabled" } },
+        { DISABLE_FOR_EDITOR_ON,
+          { [](disabledInfo& info) -> bool { return CVarGetInteger("gEditorEnabled", 0); }, "Editor is Enabled" } },
+        { DISABLE_FOR_EDITOR_OFF,
+          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEditorEnabled", 0); }, "Editor is Disabled" } },
         { DISABLE_FOR_DEBUG_MODE_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
             "Debug Mode is Disabled" } },

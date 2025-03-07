@@ -4,6 +4,9 @@
 #include "GameInfoWindow.h"
 #include "MultiplayerWindow.h"
 #include "FreecamWindow.h"
+#include "Tools.h"
+#include "SceneExplorer.h"
+#include "ContentBrowser.h"
 
 #include <spdlog/spdlog.h>
 #include <imgui.h>
@@ -32,6 +35,9 @@ std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
 std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
+std::shared_ptr<Ship::GuiWindow> mToolsWindow;
+std::shared_ptr<Ship::GuiWindow> mSceneExplorerWindow;
+std::shared_ptr<Ship::GuiWindow> mContentBrowserWindow;
 
 void SetupGuiElements() {
     auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
@@ -73,6 +79,15 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
+    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", true, "Tools", ImVec2(100, 100), (ImGuiWindowFlags_NoTitleBar));
+    gui->AddGuiWindow(mToolsWindow);
+
+    mSceneExplorerWindow = std::make_shared<Editor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
+    gui->AddGuiWindow(mSceneExplorerWindow);
+
+    mContentBrowserWindow = std::make_shared<Editor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
+    gui->AddGuiWindow(mContentBrowserWindow);
+
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");
     gui->AddGuiWindow(mGameInfoWindow);
 }
@@ -82,6 +97,9 @@ void Destroy() {
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
     mInputEditorWindow = nullptr;
+    mToolsWindow = nullptr;
+    mSceneExplorerWindow = nullptr;
+    mContentBrowserWindow = nullptr;
 }
 
 std::string GetWindowButtonText(const char* text, bool menuOpen) {
