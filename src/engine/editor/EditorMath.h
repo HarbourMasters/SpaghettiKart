@@ -41,6 +41,7 @@ struct GameObject {
  * ray.y = camera->pos[1] + direction.y * length;
  * ray.z = camera->pos[2] + direction.z * length;
  */
+bool IsInGameScreen();
 FVector ScreenRayTrace();
 bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t);
 FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);

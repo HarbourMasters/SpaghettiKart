@@ -2,7 +2,7 @@
 
 #include <libultraship/libultraship.h>
 
-namespace Editor {
+namespace EditorNamespace {
 class ToolsWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

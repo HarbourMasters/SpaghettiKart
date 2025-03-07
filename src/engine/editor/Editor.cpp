@@ -103,3 +103,9 @@ void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType coll
 void Editor::ClearObjects() {
     eGameObjects.clear();
 }
+
+void Editor::SelectObjectFromSceneExplorer(GameObject* object) {
+    eObjectPicker._selected = object;
+    eObjectPicker.eGizmo.Enabled = true;
+    eObjectPicker.eGizmo.EnableNoCursor(object);
+}

@@ -11,7 +11,7 @@
 #include <common_structs.h>
 #include <defines.h>
 
-namespace Editor {
+namespace EditorNamespace {
 
     ToolsWindow::~ToolsWindow() {
         SPDLOG_TRACE("destruct editor window");

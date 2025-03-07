@@ -1,8 +1,10 @@
 #pragma once
 
 #include <libultraship/libultraship.h>
+#include "port/Game.h"
 
-namespace Editor {
+
+namespace EditorNamespace {
 class SceneExplorerWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

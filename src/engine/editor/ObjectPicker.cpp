@@ -40,17 +40,22 @@ void ObjectPicker::Tick() {
 void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
     Ray ray;
     ray.Origin = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
-    ray.Direction = ScreenRayTrace();
 
-    ObjectPicker::FindObject(ray, objects);
+    // This allows selection of objects in the scene explorer.
+    // Otherwise this would still run when selecting buttons in editor windows.
+    if (IsInGameScreen()) {
+        ray.Direction = ScreenRayTrace();
 
-    if (_selected != nullptr) {
-        eGizmo.Enable(_selected, ray);
-        eGizmo.Enabled = true;
-    } else {
-        //eGizmo.Disable();
-        eGizmo.Enabled = false;
-        eGizmo._selected = nullptr;
+        ObjectPicker::FindObject(ray, objects);
+
+        if (_selected != nullptr) {
+            eGizmo.Enable(_selected, ray);
+            eGizmo.Enabled = true;
+        } else {
+            //eGizmo.Disable();
+            eGizmo.Enabled = false;
+            eGizmo._selected = nullptr;
+        }
     }
 }
 

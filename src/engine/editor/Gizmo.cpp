@@ -50,10 +50,17 @@ void Gizmo::Tick() {
 
 // Makes the gizmo visible
 void Gizmo::Enable(GameObject* object, Ray ray) {
-    static float length = 180.0f; // Default value
-
     _selected = object;
     _ray = ray.Direction;
+    Pos = FVector(
+        object->Pos->x,
+        object->Pos->y,
+        object->Pos->z
+    );
+}
+
+void Gizmo::EnableNoCursor(GameObject* object) {
+    _selected = object;
     Pos = FVector(
         object->Pos->x,
         object->Pos->y,
@@ -70,7 +77,6 @@ void Gizmo::Translate() {
     }
 
     if (Enabled) {
-        //FVector ray = ScreenRayTrace();
         length = sqrt(
             pow(_selected->Pos->x - cameras[0].pos[0], 2) +
             pow(_selected->Pos->y - cameras[0].pos[1], 2) +

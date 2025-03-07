@@ -18,6 +18,20 @@ extern "C" {
 #include "camera.h"
 }
 
+bool IsInGameScreen() {
+    auto wnd = GameEngine::Instance->context->GetWindow();
+    Ship::Coords mouse = wnd->GetMousePos();
+
+    // Define viewport boundaries
+    int left = gfx_current_game_window_viewport.x;
+    int right = left + OTRGetGameRenderWidth();
+    int top = gfx_current_game_window_viewport.y;
+    int bottom = top + OTRGetGameRenderHeight();
+
+    // Check if the mouse is within the game render area
+    return (mouse.x >= left && mouse.x < right) && (mouse.y >= top && mouse.y < bottom);
+}
+
 FVector ScreenRayTrace() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Camera* camera = &cameras[0];
