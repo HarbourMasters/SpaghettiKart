@@ -82,21 +82,28 @@ void Gizmo::Translate() {
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * PickDistance) + _cursorOffset.x;
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * PickDistance) + _cursorOffset.y;
                 _selected->Pos->z = (cameras[0].pos[2] + _ray.z * PickDistance) + _cursorOffset.z;
+                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                }
+                printf("TEST %f\n", _selected->Pos->y);
                 break;
             case GizmoHandle::X_Axis:
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * length) + _cursorOffset.x;
+                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                }
             break;
             case GizmoHandle::Y_Axis:
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * length) + _cursorOffset.y;
                 break;
             case GizmoHandle::Z_Axis:
                 _selected->Pos->z = (cameras[0].pos[2] + _ray.z * length) + _cursorOffset.z;
+                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                }
                 break;
         }
 
-        if (CVarGetInteger("gEditorSnapToGround", false) == true) {
-            _selected->Pos->y = spawn_actor_on_surface(_selected->Pos->x, 2000.0f, _selected->Pos->z);
-        }
 
         Pos = FVector(
             _selected->Pos->x,
@@ -104,6 +111,17 @@ void Gizmo::Translate() {
             _selected->Pos->z
         );
     }
+}
+
+f32 Gizmo::SnapToSurface(FVector* pos) {
+    float y;
+    y = spawn_actor_on_surface(pos->x, 2000.0f, pos->z);
+
+    if (y == 3000.0f || y == -3000.0f) {
+        y = pos->y;
+    }
+
+    return y;
 }
 
 // void Gizmo::Rotate() {

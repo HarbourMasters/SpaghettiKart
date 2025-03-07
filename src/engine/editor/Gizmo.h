@@ -25,6 +25,7 @@ public:
     void Enable(GameObject* object, Ray ray);
     void Translate();
     void DrawHandles();
+    f32 SnapToSurface(FVector* pos);
 
 
     bool Enabled;

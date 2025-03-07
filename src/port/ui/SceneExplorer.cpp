@@ -22,6 +22,5 @@ namespace Editor {
         if (ImGui::Button("Click Me")) {
             // Handle button click (example)
         }
-        ImGui::End();
     }
 }
