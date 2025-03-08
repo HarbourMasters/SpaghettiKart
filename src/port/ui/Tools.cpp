@@ -11,6 +11,10 @@
 #include <common_structs.h>
 #include <defines.h>
 
+extern "C" {
+#include "code_800029B0.h"
+}
+
 namespace EditorNamespace {
 
     ToolsWindow::~ToolsWindow() {
@@ -24,6 +28,7 @@ namespace EditorNamespace {
     void ToolsWindow::DrawElement() {
         static bool toggleState = CVarGetInteger("gEditorSnapToGround", 0);
         static int selectedTool = 0; // 0: Move, 1: Rotate, 2: Scale
+        static int selectedPlayTool = 0; // 0: Play, 1: Paused
         
         ImVec4 defaultColor = ImGui::GetStyle().Colors[ImGuiCol_Button];
         // Function to check and highlight the selected button
@@ -64,5 +69,24 @@ namespace EditorNamespace {
                 gPlayerOne->type |= PLAYER_KART_AI;
             }
         }
+
+        ImGui::SameLine();
+
+        auto PlayButton = [&](const char* label, int id) {
+            bool isSelected = (selectedPlayTool == id);
+            ImGui::PushStyleColor(ImGuiCol_Button, isSelected ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
+            
+            if (ImGui::Button(label, ImVec2(125, 25))) {
+                selectedPlayTool = id; // Set the selected tool
+                gIsEditorPaused = (id == 1);
+            }
+    
+            ImGui::PopStyleColor();
+        };
+
+        // Draw buttons
+        PlayButton("Play", 0);
+        ImGui::SameLine();
+        PlayButton("Pause", 1);
     }
 }

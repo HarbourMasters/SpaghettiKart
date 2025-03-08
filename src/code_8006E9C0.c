@@ -379,7 +379,7 @@ void func_8006F824(s32 arg0) {
     D_80165828 = D_801657F8;
     D_80165832[0] = D_80165800[0];
     D_80165832[1] = D_80165800[1];
-    if ((arg0 != 0) && (gIsGamePaused == 0)) {
+    if ((arg0 != 0) && (gIsGamePaused == 0) && (gIsEditorPaused == false)) {
         play_sound2(SOUND_ACTION_PING);
     }
 }

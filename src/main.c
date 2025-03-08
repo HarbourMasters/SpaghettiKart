@@ -748,13 +748,22 @@ void display_debug_info(void) {
 }
 
 void process_game_tick(void) {
-    if (D_8015011E) {
-        gCourseTimer += COURSE_TIMER_ITER;
+
+    if (gIsEditorPaused == false) {
+        if (D_8015011E) {
+            gCourseTimer += COURSE_TIMER_ITER;
+        }
+        func_802909F0();
+        evaluate_collision_for_players_and_actors();
+        func_800382DC();
     }
-    func_802909F0();
-    evaluate_collision_for_players_and_actors();
-    func_800382DC();
+
+    // Editor requires this for camera movement.
     func_8001EE98(gPlayerOneCopy, camera1, 0);
+
+    if (gIsEditorPaused == true) {
+        return;
+    }
 
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
@@ -818,11 +827,13 @@ void race_logic_loop(void) {
         network_all_players_loaded();
     }
 
-    if (gIsGamePaused == 0) {
+    if (gIsGamePaused == false) {
         for (size_t i = 0; i < gTickLogic; i++) {
             process_game_tick();
         }
-        func_80022744();
+        if (gIsEditorPaused == false) {
+            func_80022744();
+        }
     }
     func_8005A070();
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);

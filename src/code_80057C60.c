@@ -1243,7 +1243,7 @@ void func_80059A88(s32 playerId) {
 void func_80059AC8(void) {
     s32 i;
 
-    if (gIsGamePaused == false) {
+    if ((gIsGamePaused == false) && (gIsEditorPaused == false)) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
         for (i = 0; i < gPlayerCount; i++) {
@@ -1409,7 +1409,7 @@ void func_8005A070(void) {
     gMatrixHudCount = 0;
     D_801655C0 = 0;
     func_80041D34();
-    if (gIsGamePaused == false) {
+    if (gIsGamePaused == false && (gIsEditorPaused == false)) {
         func_8005C728();
         if (gGamestate == ENDING) {
             // func_80086604();

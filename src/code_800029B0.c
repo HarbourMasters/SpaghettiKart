@@ -60,7 +60,8 @@ struct UnkStruct_800DC5EC* D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC* D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC* D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC* D_800DC5F8 = &D_8015F480[3];
-u16 gIsGamePaused = 0; // 1 if the game is paused and 0 if the game is not paused
+u16 gIsGamePaused = false; // true if the game is paused and false if the game is not paused
+bool gIsEditorPaused = false;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;

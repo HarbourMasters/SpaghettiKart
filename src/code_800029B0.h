@@ -61,6 +61,7 @@ extern struct UnkStruct_800DC5EC* D_800DC5F0;
 extern struct UnkStruct_800DC5EC* D_800DC5F4;
 extern struct UnkStruct_800DC5EC* D_800DC5F8;
 extern u16 gIsGamePaused;
+extern bool gIsEditorPaused;
 extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
 extern s16 gCreditsCourseId;
