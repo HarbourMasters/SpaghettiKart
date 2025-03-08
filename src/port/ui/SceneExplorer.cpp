@@ -26,7 +26,7 @@ namespace EditorNamespace {
         int id = 0; // id for now because we don't have unique names atm
         for (auto& object : gEditor.eGameObjects) {
             std::string label = fmt::format("Object {}", id++);
-            if (ImGui::Button(label.c_str())) {
+            if (ImGui::Button(object.Name)) {
                 gEditor.SelectObjectFromSceneExplorer(&object);
             }
         }

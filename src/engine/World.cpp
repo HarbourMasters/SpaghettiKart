@@ -128,11 +128,11 @@ struct Actor* World::AddBaseActor() {
     return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
 }
 
-void World::AddEditorObject(Actor* actor) {
+void World::AddEditorObject(Actor* actor, const char* name) {
     if (actor->model != NULL) {
-        gEditor.AddObject((FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     } else {
-        gEditor.AddObject((FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     }
 }
 
@@ -175,9 +175,9 @@ OObject* World::AddObject(OObject* object) {
         Object* cObj = &gObjectList[object->_objectIndex];
 
         if (cObj->model != NULL) {
-            gEditor.AddObject((FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject("", (FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         } else {
-            gEditor.AddObject((FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject("", (FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         }
     }
 

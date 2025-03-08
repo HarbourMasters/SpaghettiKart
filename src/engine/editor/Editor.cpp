@@ -91,12 +91,12 @@ void Editor::Draw() {
     eObjectPicker.Draw();
 }
 
-void Editor::AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
+void Editor::AddObject(const char* name, FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
     if (model != NULL) {
-        eGameObjects.push_back({pos, model, {}, collision, boundingBoxSize, despawnFlag, despawnValue});
+        eGameObjects.push_back({name, pos, model, {}, collision, boundingBoxSize, despawnFlag, despawnValue});
         GenerateCollisionMesh(eGameObjects.back(), model, scale);
     } else { // to bounding box or sphere collision
-        eGameObjects.push_back({pos, model, {}, CollisionType::BOUNDING_BOX, 22.0f, despawnFlag, despawnValue});
+        eGameObjects.push_back({name, pos, model, {}, CollisionType::BOUNDING_BOX, 22.0f, despawnFlag, despawnValue});
     }
 }
 
@@ -107,5 +107,5 @@ void Editor::ClearObjects() {
 void Editor::SelectObjectFromSceneExplorer(GameObject* object) {
     eObjectPicker._selected = object;
     eObjectPicker.eGizmo.Enabled = true;
-    eObjectPicker.eGizmo.EnableNoCursor(object);
+    eObjectPicker.eGizmo.SetGizmoNoCursor(object);
 }

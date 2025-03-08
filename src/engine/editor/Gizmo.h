@@ -22,8 +22,8 @@ public:
     void Draw();
     void Load();
 
-    void Enable(GameObject* object, Ray ray);
-    void EnableNoCursor(GameObject* object); // Used for scene explorer selection
+    void SetGizmo(GameObject* object, Ray ray);
+    void SetGizmoNoCursor(GameObject* object); // Used for scene explorer selection
     void Translate();
     void DrawHandles();
     f32 SnapToSurface(FVector* pos);

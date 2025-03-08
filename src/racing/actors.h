@@ -111,6 +111,7 @@ void render_actor_palm_tree(Camera*, Mat4, struct PalmTree*);
 void render_item_boxes(struct UnkStruct_800DC5EC*);
 void render_course_actors(struct UnkStruct_800DC5EC*);
 void update_course_actors(void);
+const char* get_actor_name(s32);
 
 // audio/external.c
 extern void func_800C98B8(Vec3f, Vec3f, u32);

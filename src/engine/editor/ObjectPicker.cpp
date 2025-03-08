@@ -49,7 +49,7 @@ void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
         ObjectPicker::FindObject(ray, objects);
 
         if (_selected != nullptr) {
-            eGizmo.Enable(_selected, ray);
+            eGizmo.SetGizmo(_selected, ray);
             eGizmo.Enabled = true;
         } else {
             //eGizmo.Disable();

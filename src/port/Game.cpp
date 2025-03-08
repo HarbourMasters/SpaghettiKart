@@ -673,8 +673,8 @@ struct Actor* CM_AddBaseActor() {
     return (struct Actor*) gWorldInstance.AddBaseActor();
 }
 
-void CM_AddEditorObject(struct Actor* actor) {
-    gWorldInstance.AddEditorObject(actor);
+void CM_AddEditorObject(struct Actor* actor, const char* name) {
+    gWorldInstance.AddEditorObject(actor, name);
 }
 
 size_t CM_GetActorSize() {

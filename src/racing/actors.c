@@ -1415,7 +1415,7 @@ s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType)
     gNumActors++;
     struct Actor* actor = CM_AddBaseActor();
     actor_init(actor, pos, rot, velocity, actorType);
-    CM_AddEditorObject(actor);
+    CM_AddEditorObject(actor, get_actor_name(actor->type));
     return (s16) CM_GetActorSize() - 1; // Return current index;
 }
 
@@ -2650,4 +2650,79 @@ void update_course_actors(void) {
     }
     evaluate_collision_for_destructible_actors();
     check_player_use_item();
+}
+
+const char* get_actor_name(s32 id) {
+    switch(id) {
+        case ACTOR_FALLING_ROCK:
+            return "Falling Rock";
+        case ACTOR_GREEN_SHELL:
+            return "Green Shell";
+        case ACTOR_RED_SHELL:
+            return "Red Shell";
+        case ACTOR_BLUE_SPINY_SHELL:
+            return "Blue Spiny Shell";
+        case ACTOR_KIWANO_FRUIT:
+            return "Kiwano Fruit";
+        case ACTOR_BANANA:
+            return "Banana";
+        case ACTOR_PADDLE_BOAT:
+            return "Paddle Boat";
+        case ACTOR_TRAIN_ENGINE:
+            return "Train Engine";
+        case ACTOR_TRAIN_TENDER:
+            return "Train Tender";
+        case ACTOR_TRAIN_PASSENGER_CAR:
+            return "Train Passenger Car";
+        case ACTOR_ITEM_BOX:
+            return "Item Box";
+        case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
+            return "Hot Air Balloon Item Box";
+        case ACTOR_FAKE_ITEM_BOX:
+            return "Fake Item Box";
+        case ACTOR_PIRANHA_PLANT:
+            return "Piranha Plant";
+        case ACTOR_BANANA_BUNCH:
+            return "Banana Bunch";
+        case ACTOR_TRIPLE_GREEN_SHELL:
+            return "Triple Green Shell";
+        case ACTOR_TRIPLE_RED_SHELL:
+            return "Triple Red Shell";
+        case ACTOR_MARIO_SIGN:
+            return "Mario Sign";
+        case ACTOR_WARIO_SIGN:
+            return "Wario Sign";
+        case ACTOR_RAILROAD_CROSSING:
+            return "Railroad Crossing";
+        case ACTOR_TREE_MARIO_RACEWAY:
+            return "Tree (Mario Raceway)";
+        case ACTOR_TREE_YOSHI_VALLEY:
+            return "Tree (Yoshi Valley)";
+        case ACTOR_TREE_ROYAL_RACEWAY:
+            return "Tree (Royal Raceway)";
+        case ACTOR_TREE_MOO_MOO_FARM:
+            return "Tree (Moo Moo Farm)";
+        case ACTOR_PALM_TREE:
+            return "Palm Tree";
+        case ACTOR_UNKNOWN_0x1A:
+            return "Unknown Plant (0x1A)";
+        case ACTOR_UNKNOWN_0x1B:
+            return "Unknown (0x1B)";
+        case ACTOR_TREE_BOWSERS_CASTLE:
+            return "Tree (Bowser's Castle)";
+        case ACTOR_TREE_FRAPPE_SNOWLAND:
+            return "Tree (Frappe Snowland)";
+        case ACTOR_CACTUS1_KALAMARI_DESERT:
+            return "Cactus 1 (Kalamari Desert)";
+        case ACTOR_CACTUS2_KALAMARI_DESERT:
+            return "Cactus 2 (Kalamari Desert)";
+        case ACTOR_CACTUS3_KALAMARI_DESERT:
+            return "Cactus 3 (Kalamari Desert)";
+        case ACTOR_BUSH_BOWSERS_CASTLE:
+            return "Bush (Bowser's Castle)";
+        case ACTOR_YOSHI_EGG:
+            return "Yoshi Egg";
+        default:
+            return "Obj";
+    }
 }

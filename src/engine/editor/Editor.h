@@ -19,7 +19,7 @@ public:
     void Draw();
     void MouseClick();
 	void Load();
-    void AddObject(FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    void AddObject(const char* name, FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
     void ClearObjects();
     void RemoveObject();
     void SelectObjectFromSceneExplorer(GameObject* object);

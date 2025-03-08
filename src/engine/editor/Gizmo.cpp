@@ -49,7 +49,7 @@ void Gizmo::Tick() {
 }
 
 // Makes the gizmo visible
-void Gizmo::Enable(GameObject* object, Ray ray) {
+void Gizmo::SetGizmo(GameObject* object, Ray ray) {
     _selected = object;
     _ray = ray.Direction;
     Pos = FVector(
@@ -59,7 +59,7 @@ void Gizmo::Enable(GameObject* object, Ray ray) {
     );
 }
 
-void Gizmo::EnableNoCursor(GameObject* object) {
+void Gizmo::SetGizmoNoCursor(GameObject* object) {
     _selected = object;
     Pos = FVector(
         object->Pos->x,

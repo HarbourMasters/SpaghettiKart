@@ -23,6 +23,7 @@ struct Triangle {
 };
 
 struct GameObject {
+    const char* Name;
     FVector* Pos;
     Gfx* Model;
     std::vector<Triangle> Triangles;
