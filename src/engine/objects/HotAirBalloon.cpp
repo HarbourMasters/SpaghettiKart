@@ -15,6 +15,7 @@ extern "C" {
 }
 
 OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
+    Name = "Hot Air Balloon";
     _pos = pos;
 
     D_80165898 = 0;

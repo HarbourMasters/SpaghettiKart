@@ -19,6 +19,7 @@ extern s8 gPlayerCount;
 size_t ATruck::_count = 0;
 
 ATruck::ATruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Name = "Truck";
     TrackWaypoint* temp_v0;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];

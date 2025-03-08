@@ -25,6 +25,7 @@ extern "C" {
 size_t ATrain::_count = 0;
 
 ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint32_t waypoint) {
+    Name = "Train";
     u16 waypointOffset;
     TrainCarStuff* ptr1;
     Path2D* pos;

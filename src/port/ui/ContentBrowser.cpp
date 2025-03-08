@@ -14,7 +14,7 @@
 namespace EditorNamespace {
 
     ContentBrowserWindow::~ContentBrowserWindow() {
-        SPDLOG_TRACE("destruct editor window");
+        SPDLOG_TRACE("destruct content browser window");
     }
 
     void ContentBrowserWindow::DrawElement() {

@@ -23,6 +23,7 @@ extern "C" {
 size_t OBoos::_count = 0;
 
 OBoos::OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active, const IPathSpan& rightBoundary) {
+    Name = "Boos";
     // Max five boos allowed due to limited splines
     // D_800E5D9C
     if (numBoos > 10) {

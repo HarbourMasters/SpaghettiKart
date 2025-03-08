@@ -15,6 +15,7 @@ extern f32 gKartGravityTable[];
 }
 
 ACloud::ACloud(Vec3f pos) {
+	Name = "Cloud";
 	Pos[0] = pos[0];
 	Pos[1] = pos[1];
 	Pos[2] = pos[2];

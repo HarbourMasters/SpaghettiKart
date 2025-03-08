@@ -661,7 +661,7 @@ void CM_CleanWorld(void) {
     for (auto& emitter : world->Emitters) {
         delete emitter;
     }
-
+    gEditor.ClearObjects();
     gWorldInstance.Actors.clear();
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();

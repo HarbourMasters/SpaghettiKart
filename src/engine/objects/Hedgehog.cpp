@@ -15,6 +15,7 @@ extern "C" {
 size_t OHedgehog::_count = 0;
 
 OHedgehog::OHedgehog(const FVector& pos, const FVector2D& patrolPoint, s16 unk) {
+    Name = "Hedgehog";
     _idx = _count;
     _pos = pos;
 

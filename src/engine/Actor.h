@@ -24,6 +24,7 @@ public:
     /* 0x24 */ Vec3f Velocity = {0, 0, 0};
     /* 0x30 */ Collision Unk30;
     uint8_t uuid[16];
+    const char* Name = "";
 
     Gfx* Model = NULL;
 

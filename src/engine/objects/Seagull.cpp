@@ -32,6 +32,7 @@ SplineData* D_800E633C[] = { &D_800E6034, &D_800E60F0, &D_800E61B4, &D_800E6280 
 size_t OSeagull::_count = 0;
 
 OSeagull::OSeagull(FVector pos) {
+    Name = "Seagull";
     _idx = _count;
     _pos.x = pos.x;
     _pos.y = pos.y;

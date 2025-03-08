@@ -10,6 +10,7 @@ extern "C" {
 }
 
 AStarship::AStarship(FVector pos) {
+    Name = "Starship";
     Spawn = pos;
 }
 

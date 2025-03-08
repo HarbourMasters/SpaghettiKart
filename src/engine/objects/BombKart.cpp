@@ -30,6 +30,7 @@ extern s8 gPlayerCount;
 size_t OBombKart::_count = 0;
 
 OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
+    Name = "Bomb Kart";
     _idx = _count;
     Vec3f _pos = {0, 0, 0};
 

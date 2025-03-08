@@ -47,6 +47,7 @@ s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
 size_t OThwomp::_count = 0;
 
 OThwomp::OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize) {
+    Name = "Thwomp";
     _idx = _count;
     _faceDirection = direction;
     _boundingBoxSize = boundingBoxSize;

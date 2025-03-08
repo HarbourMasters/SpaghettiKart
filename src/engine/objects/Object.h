@@ -11,6 +11,7 @@ class OObject {
 public:
     uint8_t uuid[16];
     Object o;
+    const char* Name = "";
     bool PendingDestroy = false;
     s32 _objectIndex = -1;
 

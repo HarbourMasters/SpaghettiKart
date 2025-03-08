@@ -21,6 +21,7 @@ extern "C" {
 }
 
 OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
+    Name = "Trophy";
     _trophy = trophy;
     _spawnPos = pos;
     _spawnPos.y += 16.0f; // Adjust the height so the trophy sits on the surface when positioned to 0,0,0

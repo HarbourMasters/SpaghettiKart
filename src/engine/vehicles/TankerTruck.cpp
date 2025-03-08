@@ -19,6 +19,7 @@ extern s8 gPlayerCount;
 size_t ATankerTruck::_count = 0;
 
 ATankerTruck::ATankerTruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+    Name = "Tanker Truck";
     TrackWaypoint* temp_v0;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];

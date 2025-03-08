@@ -10,6 +10,7 @@ extern "C" {
 }
 
 AWarioSign::AWarioSign(Vec3f pos) {
+    Name = "Wario Sign";
     Pos[0] = pos[0];
     Pos[1] = pos[1];
     Pos[2] = pos[2];

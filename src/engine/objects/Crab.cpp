@@ -28,6 +28,7 @@ extern "C" {
 size_t OCrab::_count = 0;
 
 OCrab::OCrab(const FVector2D& start, const FVector2D& end) {
+    Name = "Crab";
     _idx = _count;
     _start = start;
     _end = end;

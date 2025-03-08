@@ -17,6 +17,7 @@ extern s8 gPlayerCount;
 size_t ABoat::_count = 0;
 
 ABoat::ABoat(f32 speed, u32 waypoint) {
+    Name = "Paddle Steam Boat";
     Path2D* temp_a2;
     u16 waypointOffset;
     Index = _count;

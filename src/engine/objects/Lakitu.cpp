@@ -37,6 +37,7 @@ extern s8 gPlayerCount;
 }
 
 OLakitu::OLakitu(s32 playerId, LakituType type) {
+    Name = "Lakitu";
     _playerId = playerId;
 
     init_object(gIndexLakituList[playerId], (s32)type);

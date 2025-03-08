@@ -88,23 +88,22 @@ void Gizmo::Translate() {
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * PickDistance) + _cursorOffset.x;
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * PickDistance) + _cursorOffset.y;
                 _selected->Pos->z = (cameras[0].pos[2] + _ray.z * PickDistance) + _cursorOffset.z;
-                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
                     _selected->Pos->y = SnapToSurface(_selected->Pos);
                 }
-                printf("TEST %f\n", _selected->Pos->y);
                 break;
             case GizmoHandle::X_Axis:
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * length) + _cursorOffset.x;
-                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
                     _selected->Pos->y = SnapToSurface(_selected->Pos);
                 }
-            break;
+                break;
             case GizmoHandle::Y_Axis:
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * length) + _cursorOffset.y;
                 break;
             case GizmoHandle::Z_Axis:
                 _selected->Pos->z = (cameras[0].pos[2] + _ray.z * length) + _cursorOffset.z;
-                if (CVarGetInteger("gEditorSnapToGround", false) == true) {
+                if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
                     _selected->Pos->y = SnapToSurface(_selected->Pos);
                 }
                 break;

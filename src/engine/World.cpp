@@ -116,6 +116,11 @@ void World::PreviousCourse() {
 AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
 
+    if (actor->Model != NULL) {
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (Gfx*)LOAD_ASSET_RAW(actor->Model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
+    } else {
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
+    }
     return Actors.back();
 }
 
@@ -175,9 +180,9 @@ OObject* World::AddObject(OObject* object) {
         Object* cObj = &gObjectList[object->_objectIndex];
 
         if (cObj->model != NULL) {
-            gEditor.AddObject("", (FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         } else {
-            gEditor.AddObject("", (FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         }
     }
 

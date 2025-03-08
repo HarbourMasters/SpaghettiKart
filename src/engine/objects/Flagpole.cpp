@@ -16,6 +16,7 @@ extern "C" {
 size_t OFlagpole::_count = 0;
 
 OFlagpole::OFlagpole(const FVector& pos, s16 direction) {
+    Name = "Flagpole";
     _idx = _count;
     _pos = pos;
     _direction = direction;

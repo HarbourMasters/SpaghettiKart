@@ -10,6 +10,7 @@ extern "C" {
 }
 
 ASpaghettiShip::ASpaghettiShip(FVector pos) {
+    Name = "Spaghetti Ship";
     Spawn = pos;
     Spawn.y += 10;
 }

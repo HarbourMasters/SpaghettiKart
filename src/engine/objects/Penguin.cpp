@@ -35,6 +35,7 @@ extern s8 gPlayerCount;
 
 
 OPenguin::OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behaviour) {
+    Name = "Penguin";
     _type = type;
     _bhv = behaviour;
 

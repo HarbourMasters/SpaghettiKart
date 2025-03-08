@@ -13,6 +13,7 @@ Vtx gBowserStatueVtx[717];
 Gfx gBowserStatueGfx[162];
 
 ABowserStatue::ABowserStatue(FVector pos, ABowserStatue::Behaviour behaviour) {
+    Name = "Bowser Statue";
     Pos = pos;
     ABowserStatue::Behaviour _behaviour = behaviour;
 }

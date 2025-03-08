@@ -17,18 +17,24 @@
 namespace EditorNamespace {
 
     SceneExplorerWindow::~SceneExplorerWindow() {
-        SPDLOG_TRACE("destruct editor window");
+        SPDLOG_TRACE("destruct scene explorer window");
     }
 
     void SceneExplorerWindow::DrawElement() {
         ImGui::Text("Scene");
 
-        int id = 0; // id for now because we don't have unique names atm
+        size_t id = 0; // id for now because we don't have unique names atm
         for (auto& object : gEditor.eGameObjects) {
-            std::string label = fmt::format("Object {}", id++);
-            if (ImGui::Button(object.Name)) {
+            // Convert const char* to std::string before formatting
+            std::string objectName = object.Name ? object.Name : "Obj";
+
+            // Ensure unique label using index
+            std::string label = fmt::format("{}##{}", objectName, id);
+
+            if (ImGui::Button(label.c_str())) {
                 gEditor.SelectObjectFromSceneExplorer(&object);
             }
+            id += 1;
         }
     }
 }

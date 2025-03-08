@@ -26,7 +26,7 @@ extern Vec3s D_800E634C[];
 // };
 
 OPodium::OPodium(const FVector& pos) {
-
+    Name = "Podium";
     _pos = pos;
 
     find_unused_obj_index(&_podium1Index);

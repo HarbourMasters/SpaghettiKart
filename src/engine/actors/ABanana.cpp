@@ -11,6 +11,7 @@ void render_actor_banana(Camera*, float[4][4], struct BananaActor*);
 }
 
 ABanana::ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const float velocity[3]) {
+    Name = "Banana";
     // Initialize the BananaActor's position, rotation, and velocity
     std::copy(pos, pos + 3, Pos);
     //std::copy(rot, rot + 3, this->a.rot);

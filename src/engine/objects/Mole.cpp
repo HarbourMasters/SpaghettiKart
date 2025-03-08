@@ -25,6 +25,7 @@ extern "C" {
 size_t OMole::_count = 0;
 
 OMole::OMole(FVector pos, OMoleGroup* group) {
+    Name = "Mole";
     _idx = _count;
     _group = group;
 

@@ -12,6 +12,7 @@ extern "C" {
 }
 
 AShip::AShip(FVector pos, AShip::Skin skin) {
+    Name = "Ship";
     Spawn = pos;
     Spawn.y += 10;
 

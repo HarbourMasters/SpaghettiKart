@@ -17,6 +17,7 @@ static const char* sSnowmanHeadList[] = { d_course_frappe_snowland_snowman_head 
 size_t OSnowman::_count = 0;
 
 OSnowman::OSnowman(const FVector& pos) {
+    Name = "Snowman";
     _idx = _count;
     _pos = pos;
 

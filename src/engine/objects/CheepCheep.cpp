@@ -18,6 +18,7 @@ extern Lights1 D_800E45C0[];
 }
 
 OCheepCheep::OCheepCheep(const FVector& pos, CheepType type, IPathSpan span) {
+    Name = "Cheep Cheep";
     _type = type;
     _spawnPos = pos;
     _span = span;
