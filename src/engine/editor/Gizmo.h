@@ -3,7 +3,6 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "Collision.h"
-#include "engine/objects/Flagpole.h"
 
 class Gizmo {
 public:

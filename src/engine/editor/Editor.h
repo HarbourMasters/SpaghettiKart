@@ -2,7 +2,6 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
-#include "engine/objects/Flagpole.h"
 #include "ObjectPicker.h"
 
 class ObjectPicker;

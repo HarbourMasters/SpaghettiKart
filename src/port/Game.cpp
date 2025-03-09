@@ -393,7 +393,6 @@ void CM_TickObjects() {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.TickObjects();
     }
-gEditor.Tick();
 }
 
 // A couple objects such as lakitu are ticked inside of process_game_tick which support 60fps.
@@ -408,6 +407,13 @@ void CM_DrawObjects(s32 cameraId) {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.DrawObjects(cameraId);
     }
+}
+
+void CM_TickEditor() {
+    gEditor.Tick();
+}
+
+void CM_DrawEditor() {
     gEditor.Draw();
 }
 

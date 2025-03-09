@@ -836,6 +836,7 @@ void race_logic_loop(void) {
         }
     }
     func_8005A070();
+    CM_TickEditor();
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
     sNumVBlanks = 0;
     gNumScreens = 0;

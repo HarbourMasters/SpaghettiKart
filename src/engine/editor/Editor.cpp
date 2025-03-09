@@ -19,8 +19,6 @@ extern "C" {
 #include "main.h"
 #include "defines.h"
 #include "actors.h"
-#include "math_util.h"
-#include "math_util_2.h"
 #include "camera.h"
 }
 

@@ -70,6 +70,9 @@ void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);
 
+void CM_TickEditor();
+void CM_TickDraw();
+
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
 

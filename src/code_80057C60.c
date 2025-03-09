@@ -687,6 +687,7 @@ void render_object_for_player(s32 cameraId) {
     CM_DrawObjects(cameraId);
     CM_DrawParticles(cameraId);
     CM_RenderCourseObjects(cameraId);
+    CM_DrawEditor();
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:
