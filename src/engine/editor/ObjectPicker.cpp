@@ -23,6 +23,8 @@ extern "C" {
 #include "camera.h"
 }
 
+namespace EditorNamespace {
+
 ObjectPicker::ObjectPicker() {
 
 }
@@ -179,4 +181,5 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
        // printf("NO COLLISION\n");
         _selected = nullptr;
     }
+}
 }

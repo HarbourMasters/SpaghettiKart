@@ -6,6 +6,7 @@
 #include "FreecamWindow.h"
 #include "Tools.h"
 #include "SceneExplorer.h"
+#include "TrackProperties.h"
 #include "ContentBrowser.h"
 
 #include <spdlog/spdlog.h>
@@ -37,6 +38,7 @@ std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
 std::shared_ptr<Ship::GuiWindow> mToolsWindow;
 std::shared_ptr<Ship::GuiWindow> mSceneExplorerWindow;
+std::shared_ptr<Ship::GuiWindow> mTrackPropertiesWindow;
 std::shared_ptr<Ship::GuiWindow> mContentBrowserWindow;
 
 void SetupGuiElements() {
@@ -86,6 +88,9 @@ void SetupGuiElements() {
     mSceneExplorerWindow = std::make_shared<EditorNamespace::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
     gui->AddGuiWindow(mSceneExplorerWindow);
 
+    mTrackPropertiesWindow = std::make_shared<EditorNamespace::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
+    gui->AddGuiWindow(mTrackPropertiesWindow);
+
     mContentBrowserWindow =
         std::make_shared<EditorNamespace::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
     gui->AddGuiWindow(mContentBrowserWindow);
@@ -101,6 +106,7 @@ void Destroy() {
     mInputEditorWindow = nullptr;
     mToolsWindow = nullptr;
     mSceneExplorerWindow = nullptr;
+    mTrackPropertiesWindow = nullptr;
     mContentBrowserWindow = nullptr;
 }
 

@@ -24,6 +24,8 @@ extern "C" {
 #include "src/racing/collision.h"
 }
 
+namespace EditorNamespace {
+
 Gizmo::Gizmo() {
 }
 
@@ -109,6 +111,16 @@ void Gizmo::Translate() {
                 break;
         }
 
+        if (CVarGetInteger("gEditorBoundary", 0) == true) {
+            _selected->Pos->x = MAX(_selected->Pos->x, dimensions.MinX);
+            _selected->Pos->x = MIN(_selected->Pos->x, dimensions.MaxX);
+
+            _selected->Pos->y = MAX(_selected->Pos->y, dimensions.MinY);
+            _selected->Pos->y = MIN(_selected->Pos->y, dimensions.MaxY);
+
+            _selected->Pos->z = MAX(_selected->Pos->z, dimensions.MinZ);
+            _selected->Pos->z = MIN(_selected->Pos->z, dimensions.MaxZ);
+        }
 
         Pos = FVector(
             _selected->Pos->x,
@@ -194,4 +206,5 @@ void Gizmo::DrawHandles() {
     if (render_set_position(BlueZMtx, 0) != 0) {
         gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
     }
+}
 }

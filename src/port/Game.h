@@ -16,7 +16,7 @@ extern "C" {
 extern s32 gTrophyIndex;
 
 #ifdef __cplusplus
-extern Editor gEditor;
+extern EditorNamespace::Editor gEditor;
 #endif
 
 Properties* CM_GetProps();

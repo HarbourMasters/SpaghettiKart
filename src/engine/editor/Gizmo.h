@@ -4,6 +4,8 @@
 #include <libultra/gbi.h>
 #include "Collision.h"
 
+namespace EditorNamespace {
+
 class Gizmo {
 public:
 
@@ -27,6 +29,15 @@ public:
     void DrawHandles();
     f32 SnapToSurface(FVector* pos);
 
+    struct TrackDimensions {
+        s16 MinX = -10000;
+        s16 MaxX = 10000;
+        s16 MinY = -3000;
+        s16 MaxY = 3000;
+        s16 MinZ = -10000;
+        s16 MaxZ = 10000;
+    };
+    TrackDimensions dimensions;
 
     bool Enabled;
     GizmoHandle SelectedHandle;
@@ -542,3 +553,4 @@ Gfx handle_Cylinder_mesh[13] = {
 };
 
 };
+}

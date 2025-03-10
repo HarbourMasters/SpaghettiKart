@@ -5,6 +5,8 @@
 #include "Collision.h"
 #include "Gizmo.h"
 
+namespace EditorNamespace {
+
 class ObjectPicker {
     public:
         ObjectPicker();
@@ -25,3 +27,4 @@ class ObjectPicker {
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
 };
+}

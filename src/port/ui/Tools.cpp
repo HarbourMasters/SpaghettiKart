@@ -13,6 +13,7 @@
 
 extern "C" {
 #include "code_800029B0.h"
+#include "code_80057C60.h"
 }
 
 namespace EditorNamespace {
@@ -26,7 +27,8 @@ namespace EditorNamespace {
     }
 
     void ToolsWindow::DrawElement() {
-        static bool toggleState = CVarGetInteger("gEditorSnapToGround", 0);
+        static bool toggleGroundSnap = CVarGetInteger("gEditorSnapToGround", 0);
+        static bool toggleBoundary = CVarGetInteger("gEditorBoundary", 0);
         static int selectedTool = 0; // 0: Move, 1: Rotate, 2: Scale
         static int selectedPlayTool = 0; // 0: Play, 1: Paused
         
@@ -42,7 +44,7 @@ namespace EditorNamespace {
     
             ImGui::PopStyleColor();
         };
-    
+
         // Draw buttons
         ToolButton("Move", 0);
         ImGui::SameLine();
@@ -52,15 +54,28 @@ namespace EditorNamespace {
 
         ImGui::SameLine();
 
-        ImGui::PushStyleColor(ImGuiCol_Button, toggleState ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
-        if (ImGui::Button(toggleState ? "SNAP TO GROUND" : "SNAP TO GROUND", ImVec2(125, 25))) {
-            toggleState = !toggleState;
+        // Snap to ground
+        ImGui::PushStyleColor(ImGuiCol_Button, toggleGroundSnap ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
+        if (ImGui::Button(toggleGroundSnap ? "SNAP TO GROUND" : "SNAP TO GROUND", ImVec2(125, 25))) {
+            toggleGroundSnap = !toggleGroundSnap;
 
-            CVarSetInteger("gEditorSnapToGround", toggleState);
+            CVarSetInteger("gEditorSnapToGround", toggleGroundSnap);
         }
         ImGui::PopStyleColor();
 
         ImGui::SameLine();
+
+        // Boundary
+        ImGui::PushStyleColor(ImGuiCol_Button, toggleBoundary ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
+        if (ImGui::Button(toggleBoundary ? "Map Boundaries" : "Map Boundaries", ImVec2(125, 25))) {
+            toggleBoundary = !toggleBoundary;
+
+            CVarSetInteger("gEditorBoundary", toggleBoundary);
+        }
+        ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
 
         if (ImGui::Button("Player One AI/Human", ImVec2(160, 25))) {
             if (gPlayerOne->type & PLAYER_KART_AI) {
@@ -88,5 +103,11 @@ namespace EditorNamespace {
         PlayButton("Play", 0);
         ImGui::SameLine();
         PlayButton("Pause", 1);
+
+        ImGui::SameLine();
+
+        if (ImGui::Button("Toggle HUD", ImVec2(150, 25))) {
+            gIsHUDVisible = !gIsHUDVisible;
+        }
     }
 }

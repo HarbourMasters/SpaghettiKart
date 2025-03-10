@@ -102,7 +102,7 @@ ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
 
-Editor gEditor;
+EditorNamespace::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
@@ -417,6 +417,10 @@ void CM_TickEditor() {
 
 void CM_DrawEditor() {
     gEditor.Draw();
+}
+
+void CM_Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY) {
+    gEditor.SetLevelDimensions(minX, maxX, minZ, maxZ, minY, maxY);
 }
 
 void CM_TickParticles() {

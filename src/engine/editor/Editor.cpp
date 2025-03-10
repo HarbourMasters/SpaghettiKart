@@ -22,6 +22,8 @@ extern "C" {
 #include "camera.h"
 }
 
+namespace EditorNamespace {
+
 int gfx_create_framebuffer(uint32_t width, uint32_t height, uint32_t native_width, uint32_t native_height,
     uint8_t resize);
 
@@ -106,4 +108,15 @@ void Editor::SelectObjectFromSceneExplorer(GameObject* object) {
     eObjectPicker._selected = object;
     eObjectPicker.eGizmo.Enabled = true;
     eObjectPicker.eGizmo.SetGizmoNoCursor(object);
+}
+
+void Editor::SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY) {
+    eObjectPicker.eGizmo.dimensions.MinX = minX + -1000;
+    eObjectPicker.eGizmo.dimensions.MaxX = maxX + 1000;
+    eObjectPicker.eGizmo.dimensions.MinY = minY + -100;
+    eObjectPicker.eGizmo.dimensions.MaxY = maxY + 500;
+    eObjectPicker.eGizmo.dimensions.MinZ = minZ + -1000;
+    eObjectPicker.eGizmo.dimensions.MaxZ = maxZ + 1000;
+}
+
 }

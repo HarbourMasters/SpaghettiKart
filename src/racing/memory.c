@@ -1512,4 +1512,5 @@ void load_course(s32 courseId) {
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     CM_CleanWorld();
     LoadCourse();
+    CM_Editor_SetLevelDimensions(gCourseMinX, gCourseMaxX, gCourseMinZ, gCourseMaxZ, gCourseMinY, gCourseMaxY);
 }
