@@ -1320,7 +1320,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000230)));
 }
 
-void func_8029569C(void) {
+void render_credits(void) {
 
     CM_RenderCredits();
 
@@ -1398,7 +1398,7 @@ void render_course(struct UnkStruct_800DC5EC* arg0) {
     }
 
     if (creditsRenderMode) {
-        func_8029569C();
+        render_credits();
         return;
     }
 

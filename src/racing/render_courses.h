@@ -35,7 +35,7 @@ void render_skyscraper(struct UnkStruct_800DC5EC*);
 void render_double_deck(struct UnkStruct_800DC5EC*);
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC*);
 void render_big_donut(struct UnkStruct_800DC5EC*);
-void func_8029569C(void);
+void render_credits(void);
 void course_init(void);
 void render_course(struct UnkStruct_800DC5EC*);
 void func_80295BF8(s32);
