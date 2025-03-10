@@ -193,15 +193,15 @@ namespace EditorNamespace {
 
             // Edit the ambient RGB color
             ImGui::Text("Light %d - Ambient Color", i + 1);
-            ImGui::ColorEdit3(("Ambient Color " + std::to_string(i)).c_str(), (float*)&ambient); // Modify ambient color
+            ImGui::ColorEdit3(("Ambient Color " + std::to_string(i)).c_str(), ambient); // Modify ambient color
     
             // Edit the diffuse RGB color
             ImGui::Text("Light %d - Diffuse Color", i + 1);
-            ImGui::ColorEdit3(("Diffuse Color " + std::to_string(i)).c_str(), (float*)&diffuse); // Modify diffuse color
+            ImGui::ColorEdit3(("Diffuse Color " + std::to_string(i)).c_str(), diffuse); // Modify diffuse color
     
             // Edit the direction RGB color (this could be represented as a direction vector)
             ImGui::Text("Light %d - Direction", i + 1);
-            ImGui::ColorEdit3(("Direction Color " + std::to_string(i)).c_str(), (float*)&direction); // Modify direction vector color
+            ImGui::ColorEdit3(("Direction Color " + std::to_string(i)).c_str(), direction); // Modify direction vector color
 
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.col);
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.colc);

@@ -346,8 +346,8 @@ void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
     if (gWorldInstance.CurrentCourse->IsMod() == false) {
         if ((CVarGetInteger("gFreecam", 0) == true)) {
             // Render credits courses
-            gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+            //gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+            //gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
             render_credits();
             return;
         }

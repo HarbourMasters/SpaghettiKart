@@ -978,7 +978,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 playerDirection = arg0->playerDirection;
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1047,7 +1047,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad[13];
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1074,7 +1074,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1229,7 +1229,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1238,7 +1238,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1262,7 +1262,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1274,8 +1274,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1300,7 +1300,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1389,7 +1389,7 @@ void render_credits(void) {
 }
 
 void render_course(struct UnkStruct_800DC5EC* arg0) {
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
 
     // Freecam priority renders collision.
     if (CVarGetInteger("gRenderCollisionMesh", 0) == true) {
@@ -1572,7 +1572,7 @@ void course_init(void) {
     //         break;
     //     case COURSE_YOSHI_VALLEY: {
     //         Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
-    //         func_802B5D64(&lights4, -0x38F0, 0x1C70, 1);
+    //         set_track_light_direction(&lights4, -0x38F0, 0x1C70, 1);
     //         parse_course_displaylists(d_course_yoshi_valley_addr);
     //         func_80295C6C();
     //         D_8015F8E4 = gCourseMinY - 10.0f;

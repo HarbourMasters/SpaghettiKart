@@ -428,10 +428,10 @@ void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2) {
 }
 
 void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
-    func_802B5D64((Lights1*) 0x9000000, arg0, arg1, arg2);
+    set_track_light_direction((Lights1*) 0x9000000, arg0, arg1, arg2);
 }
 
-void func_802B5D64(Lights1* addr, s16 arg1, s16 arg2, s32 arg3) {
+void set_track_light_direction(Lights1* addr, s16 pitch, s16 yaw, s32 numLights) {
     UNUSED s32 pad;
     f32 sp48;
     f32 sp44;
@@ -441,16 +441,16 @@ void func_802B5D64(Lights1* addr, s16 arg1, s16 arg2, s32 arg3) {
     s32 var_v0;
     s8 sp2C[3];
     Lights1* var_s0;
-
+return;
     var_s0 = (Lights1*) addr;
-    sp48 = sins(arg2);
-    sp44 = coss(arg2);
-    sp40 = sins(arg1);
-    temp_f10 = coss(arg1);
+    sp48 = sins(yaw);
+    sp44 = coss(yaw);
+    sp40 = sins(pitch);
+    temp_f10 = coss(pitch);
     sp2C[0] = sp44 * sp40 * 120.0f;
     sp2C[1] = 120.0f * sp48;
     sp2C[2] = sp44 * temp_f10 * -120.0f;
-    for (var_v0 = 0; var_v0 < arg3; var_v0++, var_s0++) {
+    for (var_v0 = 0; var_v0 < numLights; var_v0++, var_s0++) {
         var_s0->l[0].l.dir[0] = sp2C[0];
         var_s0->l[0].l.dir[1] = sp2C[1];
         var_s0->l[0].l.dir[2] = sp2C[2];
@@ -1181,7 +1181,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
 }
 
 // No idea if arg1 is actually a Mat4 or not, but since this function is unused
-// its impossible to know with certainty either way, very close of func_802B5D64
+// its impossible to know with certainty either way, very close of set_track_light_direction
 UNUSED void func_802B8414(uintptr_t addr, Mat4 arg1, s16 arg2, s16 arg3, s32 arg4) {
     UNUSED s32 pad;
     Vec3f sp40;

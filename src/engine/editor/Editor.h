@@ -1,12 +1,16 @@
-#pragma once
+#ifndef __EDITOR_H__
+#define __EDITOR_H__
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+
+#ifdef __cplusplus
+
 #include "ObjectPicker.h"
-
-class ObjectPicker;
-
-class Editor {
+namespace EditorNamespace {
+    class ObjectPicker;
+    
+    class Editor {
 public:
     Editor();
 
@@ -22,6 +26,8 @@ public:
     void ClearObjects();
     void RemoveObject();
     void SelectObjectFromSceneExplorer(GameObject* object);
+    void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
+
 private:
     bool _draw = false;
     Vec3f _ray;
@@ -31,3 +37,9 @@ private:
     void Clear(MtxF* mf);
 
 };
+}
+#endif
+
+void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
+
+#endif // __EDITOR_H__

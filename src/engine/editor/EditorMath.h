@@ -7,6 +7,8 @@ extern "C" {
 #include "common_structs.h"
 }
 
+std::vector<Mtx> EditorMatrix;
+
 enum class CollisionType {
     VTX_INTERSECT,
     BOUNDING_BOX,
