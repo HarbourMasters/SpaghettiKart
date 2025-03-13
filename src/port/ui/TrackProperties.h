@@ -6,7 +6,7 @@ extern "C" {
 #include "sounds.h"
 }
 
-namespace EditorNamespace {
+namespace Editor {
 class TrackPropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

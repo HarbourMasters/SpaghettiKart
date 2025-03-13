@@ -20,18 +20,22 @@
 #include "Actor.h"
 #include "particles/ParticleEmitter.h"
 
+#include "editor/Editor.h"
+#include "editor/GameObject.h"
+
 extern "C" {
 #include "camera.h"
 #include "objects.h"
 };
 
-class OObject;
 class Cup; // <-- Forward declaration
+class OObject;
 class Course;
 class AVehicle;
 class OBombKart;
 class TrainCrossing;
 class OLakitu;
+class GameObject; // <-- Editor
 
 class World {
     typedef struct {

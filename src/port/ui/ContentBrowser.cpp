@@ -11,7 +11,7 @@
 #include <common_structs.h>
 #include <defines.h>
 
-namespace EditorNamespace {
+namespace Editor {
 
     ContentBrowserWindow::~ContentBrowserWindow() {
         SPDLOG_TRACE("destruct content browser window");

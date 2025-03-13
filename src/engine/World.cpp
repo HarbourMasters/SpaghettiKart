@@ -8,6 +8,8 @@
 #include "objects/Object.h"
 #include "port/Game.h"
 
+#include "editor/GameObject.h"
+
 extern "C" {
 #include "camera.h"
 #include "objects.h"
@@ -117,9 +119,9 @@ AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
 
     if (actor->Model != NULL) {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (Gfx*)LOAD_ASSET_RAW(actor->Model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, &actor->Rot, nullptr, (Gfx*)LOAD_ASSET_RAW(actor->Model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
     } else {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, &actor->Rot, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
     }
     return Actors.back();
 }
@@ -135,9 +137,9 @@ struct Actor* World::AddBaseActor() {
 
 void World::AddEditorObject(Actor* actor, const char* name) {
     if (actor->model != NULL) {
-        gEditor.AddObject(name, (FVector*) &actor->pos, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, &actor->rot, nullptr, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     } else {
-        gEditor.AddObject(name, (FVector*) &actor->pos, NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, &actor->rot, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
     }
 }
 
@@ -180,9 +182,9 @@ OObject* World::AddObject(OObject* object) {
         Object* cObj = &gObjectList[object->_objectIndex];
 
         if (cObj->model != NULL) {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (Vec3s*)&cObj->orientation, nullptr, (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         } else {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], NULL, 1.0f, CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (Vec3s*)&cObj->orientation, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         }
     }
 

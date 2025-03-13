@@ -4,6 +4,7 @@
 #include <libultra/types.h>
 #include "../World.h"
 
+#include "EditorMath.h"
 #include "Gizmo.h"
 #include "port/Engine.h"
 #include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
@@ -11,6 +12,7 @@
 
 #include "engine/actors/Ship.h"
 #include "port/Game.h"
+#include "Handle.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -24,10 +26,7 @@ extern "C" {
 #include "src/racing/collision.h"
 }
 
-namespace EditorNamespace {
-
-Gizmo::Gizmo() {
-}
+namespace Editor {
 
 void Gizmo::Load() {
     RedCollision.Pos = &Pos;
@@ -39,14 +38,25 @@ void Gizmo::Load() {
     BlueCollision.Pos = &Pos;
     BlueCollision.Model = handle_Cylinder_mesh;
 
-    GenerateCollisionMesh(RedCollision, RedCollision.Model, 0.05f);
-    GenerateCollisionMesh(GreenCollision, GreenCollision.Model, 0.05f);
-    GenerateCollisionMesh(BlueCollision, BlueCollision.Model, 0.05f);
+    GenerateCollisionMesh(&RedCollision, RedCollision.Model, 0.05f);
+    GenerateCollisionMesh(&GreenCollision, GreenCollision.Model, 0.05f);
+    GenerateCollisionMesh(&BlueCollision, BlueCollision.Model, 0.05f);
 }
 
 void Gizmo::Tick() {
     if (Enabled) {
-        Gizmo::Translate();
+        TranslationMode mode = static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0));
+        switch(mode) {
+            case TranslationMode::Move:
+                Gizmo::Translate();
+                break;
+            case TranslationMode::Rotate:
+                Gizmo::Rotate();
+                break;
+            case TranslationMode::Scale:
+                Gizmo::Scale();
+                break;
+        }
     }
 }
 
@@ -141,13 +151,50 @@ f32 Gizmo::SnapToSurface(FVector* pos) {
     return y;
 }
 
-// void Gizmo::Rotate() {
+void Gizmo::Rotate() {
+    float length = 180.0f;
+    float sensitivity = 0.2f;
 
-// }
+    if (_selected->Rot == nullptr) {
+        return;
+    }
 
-// void Gizmo::Scale() {
-    
-// }
+    length = sqrt(
+        pow(_selected->Pos->x - cameras[0].pos[0], 2) +
+        pow(_selected->Pos->y - cameras[0].pos[1], 2) +
+        pow(_selected->Pos->z - cameras[0].pos[2], 2)
+    );
+
+    FVector cameraPos = {
+        cameras[0].pos[0] + _ray.x * length,
+        cameras[0].pos[1] + _ray.y * length,
+        cameras[0].pos[2] + _ray.z * length,
+    };
+
+    float angle = CalculateAngle(_cursorOffset, cameraPos) * 100;
+
+   // printf("start %f %f %f end %f %f %f angle %f\n", _cursorOffset.x, _cursorOffset.y, _cursorOffset.z, cameraPos.x, cameraPos.y, cameraPos.z, angle);
+    // Depending on which axis or handle you want to rotate, apply rotation.
+    switch(SelectedHandle) {
+        case GizmoHandle::All_Axis:
+            (*_selected->Rot)[0] = static_cast<short>((s16)((*_selected->Rot)[0] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            (*_selected->Rot)[1] = static_cast<short>((s16)((*_selected->Rot)[1] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            break;
+        case GizmoHandle::X_Axis:
+            (*_selected->Rot)[0] = static_cast<short>((s16)((*_selected->Rot)[0] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            break;
+        case GizmoHandle::Y_Axis:
+            (*_selected->Rot)[1] = static_cast<short>((s16)((*_selected->Rot)[1] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            break;
+        case GizmoHandle::Z_Axis:
+            (*_selected->Rot)[2] = static_cast<short>((s16)((*_selected->Rot)[2] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            break;
+    }
+}
+
+void Gizmo::Scale() {
+
+}
 
 void Gizmo::Draw() {
     if (Enabled) {
@@ -161,10 +208,13 @@ void Gizmo::DrawHandles() {
     Vec3s rot = {0, 0, 0};
     mtxf_pos_rotation_xyz(mainMtx, &Pos.x, rot);
     //mtxf_scale(mainMtx, 0.05f);
-    if (render_set_position(mainMtx, 0) != 0) {
+
+
+    Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    //if (render_set_position(mainMtx, 0) != 0) {
         //gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);
         //gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    }
+    //}
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
@@ -175,9 +225,10 @@ void Gizmo::DrawHandles() {
     Vec3f pos1 = {Pos.x, Pos.y, Pos.z - _gizmoOffset};
     mtxf_pos_rotation_xyz(RedXMtx, pos1, rot1);
     mtxf_scale(RedXMtx, 0.05);
-    if (render_set_position(RedXMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    }
+    Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    //if (render_set_position(RedXMtx, 0) != 0) {
+    //}
 
     Vec3s rot2 = {0, 0x4000, 0};
 
@@ -189,9 +240,10 @@ void Gizmo::DrawHandles() {
     Vec3f pos2 = {Pos.x - _gizmoOffset, Pos.y, Pos.z};
     mtxf_pos_rotation_xyz(GreenYMtx, pos2, rot2);
     mtxf_scale(GreenYMtx, 0.05);
-    if (render_set_position(GreenYMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    }
+    Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    //if (render_set_position(GreenYMtx, 0) != 0) {
+    //}
 
     Vec3s rot3 = {0x4000, 0, 0};
 
@@ -203,8 +255,9 @@ void Gizmo::DrawHandles() {
     Vec3f pos3 = {Pos.x, Pos.y + _gizmoOffset, Pos.z};
     mtxf_pos_rotation_xyz(BlueZMtx, pos3, rot3);
     mtxf_scale(BlueZMtx, 0.05);
-    if (render_set_position(BlueZMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    }
+    Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    //if (render_set_position(BlueZMtx, 0) != 0) {
+    //}
 }
 }

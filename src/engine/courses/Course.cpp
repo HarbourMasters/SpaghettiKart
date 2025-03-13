@@ -3,6 +3,7 @@
 #include "Course.h"
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "main.h"

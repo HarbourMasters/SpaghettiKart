@@ -4,7 +4,7 @@
 #include "port/Game.h"
 
 
-namespace EditorNamespace {
+namespace Editor {
 class SceneExplorerWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

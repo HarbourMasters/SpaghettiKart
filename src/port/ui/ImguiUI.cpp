@@ -81,18 +81,18 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mToolsWindow = std::make_shared<EditorNamespace::ToolsWindow>("gEditorEnabled", true, "Tools", ImVec2(100, 100),
+    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", true, "Tools", ImVec2(100, 100),
                                                                   (ImGuiWindowFlags_NoTitleBar));
     gui->AddGuiWindow(mToolsWindow);
 
-    mSceneExplorerWindow = std::make_shared<EditorNamespace::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
+    mSceneExplorerWindow = std::make_shared<Editor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
     gui->AddGuiWindow(mSceneExplorerWindow);
 
-    mTrackPropertiesWindow = std::make_shared<EditorNamespace::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
+    mTrackPropertiesWindow = std::make_shared<Editor::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
     gui->AddGuiWindow(mTrackPropertiesWindow);
 
     mContentBrowserWindow =
-        std::make_shared<EditorNamespace::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
+        std::make_shared<Editor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
     gui->AddGuiWindow(mContentBrowserWindow);
 
     mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");

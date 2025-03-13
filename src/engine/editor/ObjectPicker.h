@@ -4,17 +4,15 @@
 #include <libultra/gbi.h>
 #include "Collision.h"
 #include "Gizmo.h"
+#include "GameObject.h"
 
-namespace EditorNamespace {
-
-class ObjectPicker {
+namespace Editor {
+    class ObjectPicker {
     public:
-        ObjectPicker();
-    
-        void SelectObject(std::vector<GameObject>& objects);
+        void SelectObject(std::vector<GameObject*> objects);
         void DragHandle();
         void Draw();
-        void FindObject(Ray ray, std::vector<GameObject>& objects);
+        void FindObject(Ray ray, std::vector<GameObject*> objects);
         void Load();
         void Tick();
         Gizmo eGizmo;
@@ -26,5 +24,5 @@ class ObjectPicker {
         s32 Inverse(MtxF* src, MtxF* dest);
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
-};
+    };
 }

@@ -16,7 +16,7 @@ extern "C" {
 extern s32 gTrophyIndex;
 
 #ifdef __cplusplus
-extern EditorNamespace::Editor gEditor;
+extern Editor::Editor gEditor;
 #endif
 
 Properties* CM_GetProps();
@@ -72,6 +72,7 @@ void CM_DrawObjects(s32 cameraId);
 
 void CM_TickEditor();
 void CM_TickDraw();
+void Editor_ClearMatrix();
 
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
@@ -144,6 +145,7 @@ struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);
 struct Actor* CM_AddBaseActor();
 void CM_AddEditorObject(struct Actor* actor, const char* name);
+void Editor_AddLight(s8* direction);
 size_t CM_GetActorSize();
 size_t CM_FindActorIndex(struct Actor* actor);
 void CM_ActorCollision(Player* player, struct Actor* actor);

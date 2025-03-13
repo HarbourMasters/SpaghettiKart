@@ -1,19 +1,17 @@
 #pragma once
 
 #include <libultraship.h>
+#include <libultra/gbi.h>
+#include <libultra/types.h>
 #include "../CoreMath.h"
+#include <vector>
+#include "GameObject.h"
 
 extern "C" {
 #include "common_structs.h"
 }
 
-std::vector<Mtx> EditorMatrix;
-
-enum class CollisionType {
-    VTX_INTERSECT,
-    BOUNDING_BOX,
-    BOUNDING_SPHERE
-};
+extern std::vector<Mtx> EditorMatrix;
 
 struct Ray {
     FVector Origin;
@@ -22,17 +20,6 @@ struct Ray {
 
 struct Triangle {
     FVector v0, v1, v2;
-};
-
-struct GameObject {
-    const char* Name;
-    FVector* Pos;
-    Gfx* Model;
-    std::vector<Triangle> Triangles;
-    CollisionType Collision;
-    float BoundingBoxSize;
-    int32_t* DespawnFlag;
-    int32_t DespawnValue;
 };
 
 /**
@@ -55,5 +42,6 @@ void Clear(MtxF* mf);
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
 
-
-
+void Editor_AddMatrix(Mat4 mtx, int32_t flags);
+float CalculateAngle(const FVector& start, const FVector& end);
+void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]);

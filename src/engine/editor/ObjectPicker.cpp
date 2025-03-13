@@ -23,21 +23,16 @@ extern "C" {
 #include "camera.h"
 }
 
-namespace EditorNamespace {
-
-ObjectPicker::ObjectPicker() {
-
-}
+namespace Editor {
 
 void ObjectPicker::Load() {
     eGizmo.Load();
 }
 
 void ObjectPicker::Tick() {
-    eGizmo.Tick();
 }
 
-void ObjectPicker::SelectObject(std::vector<GameObject>& objects) {
+void ObjectPicker::SelectObject(std::vector<GameObject*> objects) {
     Ray ray;
     ray.Origin = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
 
@@ -67,6 +62,7 @@ void ObjectPicker::DragHandle() {
     // Skip if a drag is already in progress
     if (eGizmo.SelectedHandle != Gizmo::GizmoHandle::None) {
         eGizmo._ray = ray.Direction;
+        eGizmo.Tick();
         return;
     }
 
@@ -126,35 +122,35 @@ void ObjectPicker::Draw() {
     }
 }
 
-void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
+void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
     bool found = false;
     for (auto& object : objects) {
-        float boundingBox = object.BoundingBoxSize;
+        float boundingBox = object->BoundingBoxSize;
         if (boundingBox == 0.0f) {
             boundingBox = 2.0f;
         }
 
-        switch(object.Collision) {
-            case CollisionType::VTX_INTERSECT:
-                for (const auto& tri : object.Triangles) {
+        switch(object->Collision) {
+            case GameObject::CollisionType::VTX_INTERSECT:
+                for (const auto& tri : object->Triangles) {
                     float t;
-                    if (IntersectRayTriangle(ray, tri, *object.Pos, t)) {
+                    if (IntersectRayTriangle(ray, tri, *object->Pos, t)) {
                         printf("\nSELECTED OBJECT\n\n");
-                        _selected = &object;
+                        _selected = object;
                         found = true;
                     }
                 }
                 break;
-            case CollisionType::BOUNDING_BOX: {
+            case GameObject::CollisionType::BOUNDING_BOX: {
                 float max = 2.0f;
                 float min = -2.0f;
-                Vec3f boxMin = { object.Pos->x + boundingBox * min, 
-                                 object.Pos->y + boundingBox * min,
-                                 object.Pos->z + boundingBox * min };
+                Vec3f boxMin = { object->Pos->x + boundingBox * min, 
+                                 object->Pos->y + boundingBox * min,
+                                 object->Pos->z + boundingBox * min };
 
-                Vec3f boxMax = { object.Pos->x + boundingBox * max, 
-                                 object.Pos->y + boundingBox * max, 
-                                 object.Pos->z + boundingBox * max };
+                Vec3f boxMax = { object->Pos->x + boundingBox * max, 
+                                 object->Pos->y + boundingBox * max, 
+                                 object->Pos->z + boundingBox * max };
                 float t;
                 if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
                     // if (actor == _selected) {
@@ -164,13 +160,13 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject>& objects) {
                     printf("FOUND BOUNDING BOX OBJECT\n");
                     found = true;
                     //foundActor = &actor;
-                    //type = object.Type;
-                    _selected = &object;
+                    //type = object->Type;
+                    _selected = object;
                     break;
                 }
                 break;
             }
-            case CollisionType::BOUNDING_SPHERE:
+            case GameObject::CollisionType::BOUNDING_SPHERE:
                 printf("Editor::ObjectPicker.cpp Bounding sphere collision type not yet supported\n");
                 break;
         }

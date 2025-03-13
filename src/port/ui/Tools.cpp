@@ -16,7 +16,7 @@ extern "C" {
 #include "code_80057C60.h"
 }
 
-namespace EditorNamespace {
+namespace Editor {
 
     ToolsWindow::~ToolsWindow() {
         SPDLOG_TRACE("destruct tools window");
@@ -38,25 +38,27 @@ namespace EditorNamespace {
             bool isSelected = (selectedTool == id);
             ImGui::PushStyleColor(ImGuiCol_Button, isSelected ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
             
-            if (ImGui::Button(label, ImVec2(125, 25))) {
+            if (ImGui::Button(label, ImVec2(50, 25))) {
                 selectedTool = id; // Set the selected tool
+                CVarSetInteger("eGizmoMode", id);
             }
     
             ImGui::PopStyleColor();
         };
 
         // Draw buttons
-        ToolButton("Move", 0);
+        ToolButton(ICON_FA_ARROWS, 0);
         ImGui::SameLine();
-        ToolButton("Rotate", 1);
+        ToolButton(ICON_FA_REPEAT, 1);
         ImGui::SameLine();
-        ToolButton("Scale", 2);
+        ToolButton(ICON_FA_EXPAND, 2);
 
         ImGui::SameLine();
 
         // Snap to ground
         ImGui::PushStyleColor(ImGuiCol_Button, toggleGroundSnap ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
-        if (ImGui::Button(toggleGroundSnap ? "SNAP TO GROUND" : "SNAP TO GROUND", ImVec2(125, 25))) {
+
+        if (ImGui::Button(ICON_FA_LINK, ImVec2(50, 25))) {
             toggleGroundSnap = !toggleGroundSnap;
 
             CVarSetInteger("gEditorSnapToGround", toggleGroundSnap);
@@ -76,38 +78,37 @@ namespace EditorNamespace {
 
         ImGui::SameLine();
 
-
-        if (ImGui::Button("Player One AI/Human", ImVec2(160, 25))) {
-            if (gPlayerOne->type & PLAYER_KART_AI) {
+        // Toggle player human/ai
+        bool playerToggle = (gPlayerOne->type & PLAYER_KART_AI);
+        ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
+        if (ImGui::Button(playerToggle ? ICON_FA_DESKTOP : ICON_FA_GAMEPAD, ImVec2(50, 25))) {
+            if (playerToggle) {
                 gPlayerOne->type &= ~PLAYER_KART_AI;
             } else {
                 gPlayerOne->type |= PLAYER_KART_AI;
             }
+
         }
+        ImGui::PopStyleColor();
 
         ImGui::SameLine();
 
-        auto PlayButton = [&](const char* label, int id) {
-            bool isSelected = (selectedPlayTool == id);
-            ImGui::PushStyleColor(ImGuiCol_Button, isSelected ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
-            
-            if (ImGui::Button(label, ImVec2(125, 25))) {
-                selectedPlayTool = id; // Set the selected tool
-                gIsEditorPaused = (id == 1);
-            }
-    
-            ImGui::PopStyleColor();
-        };
+        // Play/pause button
+        ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
+        if (ImGui::Button(gIsEditorPaused ? ICON_FA_PLAY : ICON_FA_PAUSE, ImVec2(50, 25))) {
 
-        // Draw buttons
-        PlayButton("Play", 0);
-        ImGui::SameLine();
-        PlayButton("Pause", 1);
+            gIsEditorPaused = !gIsEditorPaused;
+        }
+        ImGui::PopStyleColor();
 
         ImGui::SameLine();
 
+        // Toggle hud
+        ImGui::PushStyleColor(ImGuiCol_Button, gIsHUDVisible ? ImVec4(0.4f, 0.7f, 0.9f, 1.0f) : defaultColor);
         if (ImGui::Button("Toggle HUD", ImVec2(150, 25))) {
+
             gIsHUDVisible = !gIsHUDVisible;
         }
+        ImGui::PopStyleColor();
     }
 }

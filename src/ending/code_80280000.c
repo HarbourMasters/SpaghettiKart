@@ -46,6 +46,7 @@ void func_80280038(void) {
     Mat4 matrix;
 
     ClearMatrixPools();
+    Editor_ClearMatrix();
 
     gMatrixObjectCount = 0;
     gMatrixEffectCount = 0;

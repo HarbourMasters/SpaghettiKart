@@ -3,30 +3,32 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include "GameObject.h"
 
 #ifdef __cplusplus
 
 #include "ObjectPicker.h"
-namespace EditorNamespace {
+namespace Editor {
     class ObjectPicker;
     
     class Editor {
 public:
     Editor();
 
-
     ObjectPicker eObjectPicker;
-    std::vector<GameObject> eGameObjects;
+    std::vector<GameObject*> eGameObjects;
 
     void Tick();
     void Draw();
     void MouseClick();
 	void Load();
-    void AddObject(const char* name, FVector* pos, Gfx* model, float scale, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    void AddObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    void AddLight(const char* name, FVector* pos, s8* rot);
     void ClearObjects();
     void RemoveObject();
     void SelectObjectFromSceneExplorer(GameObject* object);
     void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
+    void ClearMatrixPool();
 
 private:
     bool _draw = false;

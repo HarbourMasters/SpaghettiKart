@@ -3,6 +3,8 @@
 #include <libultraship.h>
 #include "port/Game.h"
 #include "port/Engine.h"
+#include <libultra/types.h>
+#include "GameObject.h"
 
 #include <vector>
 #include <limits>
@@ -17,6 +19,8 @@ extern "C" {
 #include "math_util_2.h"
 #include "camera.h"
 }
+
+std::vector<Mtx> EditorMatrix;
 
 bool IsInGameScreen() {
     auto wnd = GameEngine::Instance->context->GetWindow();
@@ -278,26 +282,60 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
     return false; // Sphere is behind the ray origin
 }
 
+// bool FindClosestObject(const Ray& ray, const std::vector<GameObject*>& objects, GameObject* outObject, float& outDistance) {
+//     float closestDist = std::numeric_limits<float>::max();
+//     bool found = false;
 
-bool FindClosestObject(const Ray& ray, const std::vector<GameObject>& objects, GameObject& outObject, float& outDistance) {
-    float closestDist = std::numeric_limits<float>::max();
-    bool found = false;
+//     for (const auto& obj : objects) {
+//         for (const auto& tri : obj.Triangles) {
+//             float t;
+//             if (IntersectRayTriangle(ray, tri, *obj.Pos, t) && t < closestDist) {
+//                 closestDist = t;
+//                 outObject = obj;
+//                 found = true;
+//             }
+//         }
+//     }
 
-    for (const auto& obj : objects) {
-        for (const auto& tri : obj.Triangles) {
-            float t;
-            if (IntersectRayTriangle(ray, tri, *obj.Pos, t) && t < closestDist) {
-                closestDist = t;
-                outObject = obj;
-                found = true;
-            }
-        }
-    }
-
-    if (found) {
-        outDistance = closestDist;
-        return true;
-    }
+//     if (found) {
+//         outDistance = closestDist;
+//         return true;
+//     }
     
-    return false;
+//     return false;
+// }
+
+void Editor_AddMatrix(Mat4 mtx, int32_t flags) {
+    EditorMatrix.emplace_back();
+    guMtxF2L(mtx, &EditorMatrix.back());
+    gSPMatrix(gDisplayListHead++, &EditorMatrix.back(), flags);
+}
+
+float CalculateAngle(const FVector& start, const FVector& end) {
+    float dot = start.Dot(end);
+
+    float magStart = start.Magnitude();
+    float magEnd = end.Magnitude();
+
+    float cosAngle = dot / (magStart * magEnd);
+    cosAngle = std::min(1.0f, std::max(-1.0f, cosAngle));
+
+    return acos(cosAngle);
+}
+
+void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]) {
+    float yaw = rotator[1] * (M_PI / 32768.0f);  // Convert from s16 (0 to 32767) to radians
+    float pitch = rotator[0] * (M_PI / 32768.0f); 
+
+    // Compute unit direction vector
+    float x = cosf(yaw) * cosf(pitch);
+    float y = -sinf(pitch);
+    float z = -sinf(yaw) * cosf(pitch);
+
+    // Scale into -127 to 127 range (not 128 to avoid overflow)
+    direction[0] = static_cast<s8>(x * 127.0f);
+    direction[1] = static_cast<s8>(y * 127.0f);
+    direction[2] = static_cast<s8>(z * 127.0f);
+
+    printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
 }

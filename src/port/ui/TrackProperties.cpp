@@ -20,7 +20,7 @@ extern "C" {
 #include "render_courses.h"
 }
 
-namespace EditorNamespace {
+namespace Editor {
 
     TrackPropertiesWindow::~TrackPropertiesWindow() {
         SPDLOG_TRACE("destruct track properties window");

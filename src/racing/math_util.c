@@ -8,6 +8,7 @@
 #include "math.h"
 #include "memory.h"
 #include "engine/Matrix.h"
+#include "port/Game.h"
 
 #pragma intrinsic(sqrtf, fabs)
 
@@ -441,7 +442,7 @@ void set_track_light_direction(Lights1* addr, s16 pitch, s16 yaw, s32 numLights)
     s32 var_v0;
     s8 sp2C[3];
     Lights1* var_s0;
-return;
+
     var_s0 = (Lights1*) addr;
     sp48 = sins(yaw);
     sp44 = coss(yaw);

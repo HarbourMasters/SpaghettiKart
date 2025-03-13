@@ -102,7 +102,7 @@ ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
 
-EditorNamespace::Editor gEditor;
+Editor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
@@ -387,6 +387,7 @@ void CM_BeginPlay() {
             gWorldInstance.AddActor(new AFinishline(course->FinishlineSpawnPoint));
         }
 
+        gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
         course->BeginPlay();
     }
 }
@@ -687,6 +688,16 @@ struct Actor* CM_AddBaseActor() {
 
 void CM_AddEditorObject(struct Actor* actor, const char* name) {
     gWorldInstance.AddEditorObject(actor, name);
+}
+
+void Editor_AddLight(s8* direction) {
+    static size_t i = 0;
+    gEditor.AddLight(("Light "+std::to_string(i)).c_str(), nullptr, direction);
+    i += 1;
+}
+
+void Editor_ClearMatrix() {
+    gEditor.ClearMatrixPool();
 }
 
 size_t CM_GetActorSize() {

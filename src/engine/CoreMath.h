@@ -34,12 +34,17 @@ struct FVector {
         return x * other.x + y * other.y + z * other.z;
     }
 
+
     FVector Cross(const FVector& other) const {
         return FVector(
             y * other.z - z * other.y,
             z * other.x - x * other.z,
             x * other.y - y * other.x
         );
+    }
+
+    float Magnitude() const {
+        return std::sqrt(x * x + y * y + z * z);
     }
 
     FVector Normalize() const {
