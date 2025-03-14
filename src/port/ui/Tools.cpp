@@ -48,10 +48,25 @@ namespace Editor {
 
         // Draw buttons
         ToolButton(ICON_FA_ARROWS, 0);
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Translate");
+            ImGui::EndTooltip();
+        }
         ImGui::SameLine();
         ToolButton(ICON_FA_REPEAT, 1);
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Rotate");
+            ImGui::EndTooltip();
+        }
         ImGui::SameLine();
         ToolButton(ICON_FA_EXPAND, 2);
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Scale");
+            ImGui::EndTooltip();
+        }
 
         ImGui::SameLine();
 
@@ -64,6 +79,11 @@ namespace Editor {
             CVarSetInteger("gEditorSnapToGround", toggleGroundSnap);
         }
         ImGui::PopStyleColor();
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Snap object to surface");
+            ImGui::EndTooltip();
+        }
 
         ImGui::SameLine();
 
@@ -75,6 +95,12 @@ namespace Editor {
             CVarSetInteger("gEditorBoundary", toggleBoundary);
         }
         ImGui::PopStyleColor();
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Stops translated objects from leaving the track area.");
+            ImGui::Text("This helps prevent moving objects really far away off the level.");
+            ImGui::EndTooltip();
+        }
 
         ImGui::SameLine();
 
@@ -90,6 +116,11 @@ namespace Editor {
 
         }
         ImGui::PopStyleColor();
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Toggle player 1's AI or human player state.");
+            ImGui::EndTooltip();
+        }
 
         ImGui::SameLine();
 

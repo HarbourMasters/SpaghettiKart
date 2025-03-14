@@ -84,7 +84,7 @@ MarioRaceway::MarioRaceway() {
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
-    Props.SomePtr = D_800DCB34;
+    Props.AIDistance = gMarioRacewayAIDistances;
     Props.AISteeringSensitivity = 48;
 
     Props.NearPersp = 9.0f;
@@ -125,7 +125,7 @@ MarioRaceway::MarioRaceway() {
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
     Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
+    Props.MinimapFinishlineY = -2.0;
 
     Props.Skybox.TopRight = {0, 184, 248};
     Props.Skybox.BottomRight = {216, 232, 248};

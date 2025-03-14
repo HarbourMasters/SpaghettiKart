@@ -73,7 +73,6 @@ ChocoMountain::ChocoMountain() {
     Props.AIBehaviour = D_0D008F80;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.3f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 2.0f;
@@ -114,7 +113,7 @@ ChocoMountain::ChocoMountain() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
     Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
+    Props.MinimapFinishlineY = -16.0;
 
     Props.Skybox.TopRight = {255, 255, 255};
     Props.Skybox.BottomRight = {255, 255, 255};

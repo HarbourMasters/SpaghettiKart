@@ -2740,13 +2740,9 @@ void set_minimap_finishline_position(s32 arg0) {
     // minimap center pos -  minimap left edge  +  offset
     var_f2 = (center - (gMinimapWidth / 2)) + D_8018D2E0;
     var_f0 = (D_8018D2D8[arg0] - (gMinimapHeight / 2)) + D_8018D2E8;
-    if (GetCourse() == GetMarioRaceway()) {
-        var_f0 = var_f0 - 2.0;
-    } else if (GetCourse() == GetChocoMountain()) {
-        var_f0 = var_f0 - 16.0;
-    } else if (GetCourse() == GetKalimariDesert()) {
-        var_f0 = var_f0 + 4.0;
-    }
+
+    var_f2 += CM_GetProps()->MinimapFinishlineX;
+    var_f0 += CM_GetProps()->MinimapFinishlineY;
 
     //! @todo Get course minimap props from course.
     CM_MinimapFinishlinePosition();

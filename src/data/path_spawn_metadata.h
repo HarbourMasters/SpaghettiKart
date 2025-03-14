@@ -16,8 +16,8 @@ typedef struct {
 } _struct_gCoursePathSizes_0x10; // size 0x10
 
 extern TrackWaypoint nullPath;
-extern s16 D_800DCAF4[];
-extern s16 D_800DCB34[];
+extern s16 gAIDistances[];
+extern s16 gMarioRacewayAIDistances[];
 extern s32 D_800DDB20;
 extern s32 D_800DDB24;
 

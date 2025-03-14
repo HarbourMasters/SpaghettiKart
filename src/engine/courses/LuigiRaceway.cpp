@@ -97,7 +97,6 @@ LuigiRaceway::LuigiRaceway() {
     Props.AIBehaviour = D_0D0091E8;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.7f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 48;
 
     Props.NearPersp = 9.0f;

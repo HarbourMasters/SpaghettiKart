@@ -78,7 +78,6 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.AIBehaviour = D_0D009238;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.5f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 40;
 
     Props.NearPersp = 9.0f;

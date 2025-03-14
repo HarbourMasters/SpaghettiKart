@@ -74,7 +74,6 @@ WarioStadium::WarioStadium() {
     Props.AIBehaviour = D_0D009310;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.6f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 10.0f;

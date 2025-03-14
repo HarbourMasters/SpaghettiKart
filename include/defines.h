@@ -385,3 +385,11 @@ enum DIRECTION {
 #define FACING_Z_AXIS 0x2000
 
 #endif // DEFINES_H
+
+/**
+ * 
+ * Laps
+ * 
+ */
+#define MIN_LAPS 0
+#define MAX_LAPS 3

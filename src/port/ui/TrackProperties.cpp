@@ -18,6 +18,7 @@ extern "C" {
 #include "sounds.h"
 #include "external.h"
 #include "render_courses.h"
+#include "render_objects.h"
 }
 
 namespace Editor {
@@ -36,38 +37,57 @@ namespace Editor {
         ImGui::InputText("Name", nameBuffer, IM_ARRAYSIZE(nameBuffer));
         ImGui::InputText("Debug Name", debugNameBuffer, IM_ARRAYSIZE(debugNameBuffer));
         ImGui::InputText("Course Length", lengthBuffer, IM_ARRAYSIZE(lengthBuffer));
-        
-        ImGui::Separator();
-        
-        static float aiMaxSeparation = 50.0f;
-        static float aiMinSeparation = 0.3f;
-        static int aiSteeringSensitivity = 48;
-        
-        ImGui::InputFloat("AI Max Separation", &gWorldInstance.CurrentCourse->Props.AIMaximumSeparation);
-        ImGui::InputFloat("AI Min Separation", &gWorldInstance.CurrentCourse->Props.AIMinimumSeparation);
-        ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.CurrentCourse->Props.AISteeringSensitivity);
-        
-        ImGui::Separator();
+        ImGui::InputFloat("Minimap Finishline X Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineX);
+        ImGui::InputFloat("Minimap Finishline Y Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineY);
 
-        ImGui::InputInt("Minimap Finishline X Offset", (int*)&gWorldInstance.CurrentCourse->Props.MinimapFinishlineX);
-        ImGui::InputInt("Minimap Finishline Y Offset", (int*)&gWorldInstance.CurrentCourse->Props.MinimapFinishlineY);
-
-        ImGui::Separator();
-        
-        static float nearPersp = 9.0f;
-        static float farPersp = 4500.0f;
-        
-        ImGui::InputFloat("Near Perspective", &gWorldInstance.CurrentCourse->Props.NearPersp);
-        ImGui::InputFloat("Far Perspective", &gWorldInstance.CurrentCourse->Props.FarPersp);
-        
-        ImGui::Separator();
-        
-        static float d_0D009418[4] = { 4.1666665f, 5.5833334f, 6.1666665f, 6.75f };
-        for (int i = 0; i < 4; i++) {
-            ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &d_0D009418[i]);
+        if (ImGui::CollapsingHeader("Camera")) {
+            ImGui::InputFloat("Near Perspective", &gWorldInstance.CurrentCourse->Props.NearPersp);
+            ImGui::InputFloat("Far Perspective", &gWorldInstance.CurrentCourse->Props.FarPersp);
+            if (ImGui::IsItemHovered()) {
+                ImGui::BeginTooltip();
+                ImGui::Text("Controls the far clipping distance for perspective rendering.");
+                ImGui::Text("Disable culling enhancement needs to be off to see a difference.");
+                ImGui::EndTooltip();
+            }
         }
-        
-        ImGui::Separator();
+
+        if (ImGui::CollapsingHeader("Environment")) {
+            TrackPropertiesWindow::DrawLight();
+        }
+
+
+        if (ImGui::CollapsingHeader("AI")) {
+
+            ImGui::InputFloat("AI Max Separation", &gWorldInstance.CurrentCourse->Props.AIMaximumSeparation);
+            ImGui::InputFloat("AI Min Separation", &gWorldInstance.CurrentCourse->Props.AIMinimumSeparation);
+            ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.CurrentCourse->Props.AISteeringSensitivity);
+        }
+
+        if (ImGui::CollapsingHeader("Random Junk")) {
+            for (size_t i = 0; i < 4; i++) {
+                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009418[i]);
+            }
+
+            ImGui::Separator();
+
+
+            for (size_t i = 0; i < 4; i++) {
+                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009568[i]);
+            }
+
+            ImGui::Separator();
+
+
+            for (size_t i = 0; i < 4; i++) {
+                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D0096B8[i]);
+            }
+
+            ImGui::Separator();
+
+            for (size_t i = 0; i < 4; i++) {
+                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009808[i]);
+            }
+        }
 
         // Convert and pass to ImGui ColorEdit3
         float topRight[3], bottomRight[3], bottomLeft[3], topLeft[3];
@@ -83,15 +103,16 @@ namespace Editor {
         RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomLeft, floorBottomLeft);
         RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopLeft, floorTopLeft);
 
-        // Use these float arrays with ImGui::ColorEdit3
-        ImGui::ColorEdit3("Skybox Top Right", topRight);
-        ImGui::ColorEdit3("Skybox Bottom Right", bottomRight);
-        ImGui::ColorEdit3("Skybox Bottom Left", bottomLeft);
-        ImGui::ColorEdit3("Skybox Top Left", topLeft);
-        ImGui::ColorEdit3("Skybox Floor Top Right", floorTopRight);
-        ImGui::ColorEdit3("Skybox Floor Bottom Right", floorBottomRight);
-        ImGui::ColorEdit3("Skybox Floor Bottom Left", floorBottomLeft);
-        ImGui::ColorEdit3("Skybox Floor Top Left", floorTopLeft);
+        if (ImGui::CollapsingHeader("Skybox")) {
+            ImGui::ColorEdit3("Skybox Top Right", topRight);
+            ImGui::ColorEdit3("Skybox Bottom Right", bottomRight);
+            ImGui::ColorEdit3("Skybox Bottom Left", bottomLeft);
+            ImGui::ColorEdit3("Skybox Top Left", topLeft);
+            ImGui::ColorEdit3("Skybox Floor Top Right", floorTopRight);
+            ImGui::ColorEdit3("Skybox Floor Bottom Right", floorBottomRight);
+            ImGui::ColorEdit3("Skybox Floor Bottom Left", floorBottomLeft);
+            ImGui::ColorEdit3("Skybox Floor Top Left", floorTopLeft);
+        }
 
         // Convert the modified float values back to RGB8 (0-255)
         FloatToRGB8(topRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.TopRight);
@@ -102,14 +123,8 @@ namespace Editor {
         FloatToRGB8(floorBottomRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomRight);
         FloatToRGB8(floorBottomLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomLeft);
         FloatToRGB8(floorTopLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopLeft);
-    
-        ImGui::Separator();
-    
+
         TrackPropertiesWindow::DrawMusic();
-
-        ImGui::Separator();
-
-        TrackPropertiesWindow::DrawLight();
     }
 
     void TrackPropertiesWindow::DrawMusic() {

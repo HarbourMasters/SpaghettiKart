@@ -79,7 +79,6 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.AIBehaviour = D_0D009058;
     Props.AIMaximumSeparation = 40.0f;
     Props.AIMinimumSeparation = 0.4f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 2.0f;

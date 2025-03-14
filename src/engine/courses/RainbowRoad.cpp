@@ -57,7 +57,6 @@ RainbowRoad::RainbowRoad() {
     Props.AIBehaviour = D_0D0092C8;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.4f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 38;
 
     Props.NearPersp = 2.0f;

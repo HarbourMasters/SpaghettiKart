@@ -98,7 +98,6 @@ PodiumCeremony::PodiumCeremony() {
     Props.AIBehaviour = D_0D009188;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.4f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.PathSizes = {500, 500, 500, 500, 1, 0, 0, 0, 0, 0, 0};

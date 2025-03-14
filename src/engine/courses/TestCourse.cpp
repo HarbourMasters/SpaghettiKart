@@ -76,7 +76,6 @@ TestCourse::TestCourse() {
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
-    Props.SomePtr = D_800DCB34;
     Props.AISteeringSensitivity = 48;
 
     Props.NearPersp = 9.0f;

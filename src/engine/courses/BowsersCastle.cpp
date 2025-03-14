@@ -81,7 +81,6 @@ BowsersCastle::BowsersCastle() {
     Props.AIBehaviour = D_0D008FB8;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.2f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 2.0f;

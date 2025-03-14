@@ -65,7 +65,6 @@ KalimariDesert::KalimariDesert() {
     Props.AIBehaviour = D_0D009260;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 10.0f;
@@ -106,7 +105,7 @@ KalimariDesert::KalimariDesert() {
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gKalimariDesertClouds;
     Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
+    Props.MinimapFinishlineY = 4.0;
 
     Props.Skybox.TopRight = {195, 231, 255};
     Props.Skybox.BottomRight = {255, 192, 0};

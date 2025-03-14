@@ -337,5 +337,5 @@ void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]) {
     direction[1] = static_cast<s8>(y * 127.0f);
     direction[2] = static_cast<s8>(z * 127.0f);
 
-    printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
+    //printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
 }

@@ -80,7 +80,6 @@ DKJungle::DKJungle() {
     Props.AIBehaviour = D_0D0093C0;
     Props.AIMaximumSeparation = 40.0f;
     Props.AIMinimumSeparation = 0.1f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 9.0f;

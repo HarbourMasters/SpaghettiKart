@@ -69,7 +69,6 @@ YoshiValley::YoshiValley() {
     Props.AIBehaviour = D_0D0090B8;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.0f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 9.0f;

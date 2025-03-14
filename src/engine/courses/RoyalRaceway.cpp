@@ -94,7 +94,6 @@ RoyalRaceway::RoyalRaceway() {
     Props.AIBehaviour = D_0D009188;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.4f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 9.0f;

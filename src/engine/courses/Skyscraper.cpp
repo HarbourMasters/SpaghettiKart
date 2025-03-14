@@ -73,7 +73,6 @@ Skyscraper::Skyscraper() {
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 53;
 
     Props.NearPersp = 2.0f;

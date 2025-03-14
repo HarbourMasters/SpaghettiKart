@@ -52,7 +52,6 @@ BigDonut::BigDonut() {
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;
-    Props.SomePtr = D_800DCAF4;
     Props.AISteeringSensitivity = 40;
 
     Props.PathSizes = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
