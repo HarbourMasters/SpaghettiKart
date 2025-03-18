@@ -51,9 +51,9 @@ SherbetLand::SherbetLand() {
     Props.MinimapTexture = gTextureCourseOutlineSherbetLand;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "sherbet land";
-    Props.DebugName = "sherbet";
-    Props.CourseLength = "756m";
+    Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "756m", sizeof(Props.CourseLength));
 
     Props.LakituTowType = (s32)OLakitu::LakituTowType::ICE;
 

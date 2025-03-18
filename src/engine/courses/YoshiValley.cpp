@@ -63,9 +63,10 @@ YoshiValley::YoshiValley() {
     Props.MinimapTexture = gTextureCourseOutlineYoshiValley;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "yoshi valley";
-    Props.DebugName = "maze";
-    Props.CourseLength = "772m";
+    Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "772m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D0090B8;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.0f;

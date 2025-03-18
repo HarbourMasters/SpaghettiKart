@@ -10,7 +10,11 @@
  * 
  */
 
-
+/**
+ * 
+ * Applies pos, rot, and scale
+ *
+ */
 struct FVector {
     float x, y, z;
 
@@ -108,19 +112,25 @@ typedef struct IVector2D {
 #endif // __cplusplus
 } IVector2D;
 
-struct FRotation {
-    float pitch, yaw, roll;
+// IRot is an int16_t not a float.
+struct IRotator {
+    int16_t pitch, yaw, roll;
 
 #ifdef __cplusplus
-    FRotation& operator=(const FRotation& other) {
+    IRotator& operator=(const IRotator& other) {
         pitch = other.pitch;
         yaw = other.yaw;
         roll = other.roll;
         return *this;
     }
 
-    FRotation() : pitch(0), yaw(0), roll(0) {}
-    FRotation(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
+    // Convert to binary rotator 0 --> INT16_MAX
+    [[nodiscard]] IRotator ToBinary() const {
+        return IRotator(pitch * INT16_MAX / 180, yaw * INT16_MAX  / 180, roll * INT16_MAX  / 180);
+    }
+
+    IRotator() : pitch(0), yaw(0), roll(0) {}
+    IRotator(int16_t p, int16_t y, int16_t r) : pitch(p), yaw(y), roll(r) {}
 #endif // __cplusplus
 };
 

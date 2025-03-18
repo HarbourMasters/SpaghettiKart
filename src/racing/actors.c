@@ -1227,6 +1227,7 @@ void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
     CM_CleanWorld();
+    CM_LoadLevelProps();
 
     CM_BeginPlay();
     spawn_course_actors();
@@ -1387,7 +1388,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
     return -1;
 }
 
-// returns actor index if any slot avaible returns -1
+// returns actor index if any available actor type is -1
 s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     size_t index;
 

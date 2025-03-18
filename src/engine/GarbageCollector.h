@@ -8,4 +8,5 @@
 
 void RunGarbageCollector();
 void CleanActors();
+void CleanStaticMeshActors();
 void CleanObjects();

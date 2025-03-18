@@ -32,7 +32,7 @@ namespace Editor {
 
     void Editor::Load() {
         printf("Editor: Loading Editor...\n");
-        eObjectPicker.Load();;
+        eObjectPicker.Load();
         for (auto& object : eGameObjects) {
             GenerateCollisionMesh(object, object->Model, 1.0f);
             object->Load();
@@ -52,7 +52,7 @@ namespace Editor {
 
         eGameObjects.erase(
             std::remove_if(eGameObjects.begin(), eGameObjects.end(),
-                        [](const auto& object) { return (*object->DespawnFlag) == object->DespawnValue; printf("DELETED OBJ\n"); }),
+                        [](const auto& object) { return (*object->DespawnFlag) == object->DespawnValue; }),
             eGameObjects.end());
 
         if (isMouseDown && !wasMouseDown) {  
@@ -100,7 +100,9 @@ namespace Editor {
     }
 
     void Editor::AddObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
-        if (model != NULL) {
+        //printf("After AddObj: Pos(%f, %f, %f), Name: %s, Model: %s\n", 
+        // pos->x, pos->y, pos->z, name, model);
+        if (model != nullptr) {
             eGameObjects.push_back(new GameObject(name, pos, rot, scale, model, {}, collision, boundingBoxSize, despawnFlag, despawnValue));
             GenerateCollisionMesh(eGameObjects.back(), model, collScale);
         } else { // to bounding box or sphere collision
@@ -116,6 +118,17 @@ namespace Editor {
     void Editor::ClearObjects() {
         for (auto& obj : eGameObjects) {
             delete obj;
+        }
+        eGameObjects.clear();
+    }
+
+    void Editor::DeleteObject() {
+        GameObject* obj = eObjectPicker.eGizmo._selected;
+
+        if (obj) {
+            *obj->DespawnFlag = obj->DespawnValue;
+            obj = nullptr;
+            eObjectPicker._selected = nullptr;
         }
     }
 
@@ -136,5 +149,9 @@ namespace Editor {
         eObjectPicker.eGizmo.dimensions.MaxY = maxY + 500;
         eObjectPicker.eGizmo.dimensions.MinZ = minZ + -1000;
         eObjectPicker.eGizmo.dimensions.MaxZ = maxZ + 1000;
+    }
+    void Editor::NewTrack() {
+        auto course = gWorldInstance.CurrentCourse = new Course();
+        course->Props.New();
     }
 }

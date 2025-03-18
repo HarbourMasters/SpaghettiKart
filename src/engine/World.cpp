@@ -175,6 +175,31 @@ void World::TickActors() {
     }
 }
 
+StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision) {
+    StaticMeshActors.push_back(new StaticMeshActor(name, pos, rot, scale, model, collision));
+    auto actor = StaticMeshActors.back();
+    gEditor.AddObject(actor->Name.c_str(), &actor->Pos, (Vec3s*) &actor->Rot, &actor->Scale, (Gfx*) LOAD_ASSET_RAW(actor->Model.c_str()), 1.0f,
+                      Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) true);
+    return actor;
+}
+
+void World::DrawStaticMeshActors() {
+    for (const auto& actor: StaticMeshActors) {
+        actor->Draw();
+    }
+}
+
+void World::DeleteStaticMeshActors() {
+    for (auto it = StaticMeshActors.begin(); it != StaticMeshActors.end();) {
+        if ((*it)->bPendingDestroy) {
+            delete *it;  // Deallocate memory for the actor
+            it = StaticMeshActors.erase(it);  // Remove the pointer from the vector
+        } else {
+            ++it;  // Only increment the iterator if we didn't erase an element
+        }
+    }
+}
+
 OObject* World::AddObject(OObject* object) {
     Objects.push_back(object);
 
@@ -241,4 +266,16 @@ Object* World::GetObjectByIndex(size_t index) {
     //    return reinterpret_cast<Object*>(&this->Objects[index]->o);
     //}
     return nullptr; // Or handle the error as needed
+}
+
+void World::ClearWorld(void) {
+    World::DeleteStaticMeshActors();
+    CM_CleanWorld();
+
+    // for (size_t i = 0; i < ARRAY_COUNT(gCollisionMesh); i++) {
+
+    // }
+
+    // gCollisionMesh
+    // Paths
 }

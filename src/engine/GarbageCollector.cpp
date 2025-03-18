@@ -4,6 +4,7 @@
 void RunGarbageCollector() {
     //CleanActors();
     CleanObjects();
+    CleanStaticMeshActors();
 }
 
 void CleanActors() {
@@ -18,10 +19,23 @@ void CleanActors() {
     // }
 }
 
+void CleanStaticMeshActors() {
+    for (auto actor = gWorldInstance.StaticMeshActors.begin(); actor != gWorldInstance.StaticMeshActors.end();) {
+        StaticMeshActor* act = *actor; // Get a mutable copy
+        if (act->bPendingDestroy) {
+            delete act;
+            actor = gWorldInstance.StaticMeshActors.erase(actor); // Remove from container
+            continue;
+        } else {
+            actor++;
+        }
+    }
+}
+
 void CleanObjects() {
     for (auto object = gWorldInstance.Objects.begin(); object != gWorldInstance.Objects.end();) {
         OObject* obj = *object; // Get a mutable copy
-        if (obj->PendingDestroy) {
+        if (obj->bPendingDestroy) {
             delete obj;
             object = gWorldInstance.Objects.erase(object); // Remove from container
             continue;

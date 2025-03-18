@@ -74,9 +74,10 @@ DKJungle::DKJungle() {
     Props.MinimapTexture = gTextureCourseOutlineDksJungleParkway;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "d.k.'s jungle parkway";
-    Props.DebugName = "jungle";
-    Props.CourseLength = "893m";
+    Props.SetText(Props.Name, "d.k.'s jungle parkway", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "jungle", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "893m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D0093C0;
     Props.AIMaximumSeparation = 40.0f;
     Props.AIMinimumSeparation = 0.1f;

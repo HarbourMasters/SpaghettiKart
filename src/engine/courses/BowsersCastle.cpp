@@ -75,9 +75,11 @@ BowsersCastle::BowsersCastle() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:bowsers_castle";
-    Props.Name = "bowser's castle";
-    Props.DebugName = "castle";
-    Props.CourseLength = "777m";
+
+    Props.SetText(Props.Name, "bowser's castle", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "castle", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "777m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D008FB8;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.2f;

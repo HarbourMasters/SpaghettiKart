@@ -46,9 +46,10 @@ BigDonut::BigDonut() {
     Props.MinimapTexture = gTextureCourseOutlineBigDonut;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "big donut";
-    Props.DebugName = "doughnut";
-    Props.CourseLength = "";
+    Props.SetText(Props.Name, "big donut", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "doughnut", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;

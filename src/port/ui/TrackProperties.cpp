@@ -28,15 +28,15 @@ namespace Editor {
     }
 
     void TrackPropertiesWindow::DrawElement() {
-        static char idBuffer[128] = "mk:mario_raceway";
-        static char nameBuffer[128] = "Mario Raceway";
-        static char debugNameBuffer[128] = "m circuit";
-        static char lengthBuffer[128] = "567m";
+        static char idBuffer[256] = "mk:mario_raceway";
+        static char nameBuffer[256] = "Mario Raceway";
+        static char debugNameBuffer[256] = "m circuit";
+        static char lengthBuffer[256] = "567m";
 
         ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
-        ImGui::InputText("Name", nameBuffer, IM_ARRAYSIZE(nameBuffer));
-        ImGui::InputText("Debug Name", debugNameBuffer, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Course Length", lengthBuffer, IM_ARRAYSIZE(lengthBuffer));
+        ImGui::InputText("Name", gWorldInstance.CurrentCourse->Props.Name, IM_ARRAYSIZE(nameBuffer));
+        ImGui::InputText("Debug Name", gWorldInstance.CurrentCourse->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
+        ImGui::InputText("Course Length", gWorldInstance.CurrentCourse->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
         ImGui::InputFloat("Minimap Finishline X Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineX);
         ImGui::InputFloat("Minimap Finishline Y Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineY);
 
@@ -55,12 +55,17 @@ namespace Editor {
             TrackPropertiesWindow::DrawLight();
         }
 
-
         if (ImGui::CollapsingHeader("AI")) {
 
             ImGui::InputFloat("AI Max Separation", &gWorldInstance.CurrentCourse->Props.AIMaximumSeparation);
             ImGui::InputFloat("AI Min Separation", &gWorldInstance.CurrentCourse->Props.AIMinimumSeparation);
             ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.CurrentCourse->Props.AISteeringSensitivity);
+
+            ImGui::Separator();
+
+            for (size_t i = 0; i < 32; i++) {
+                ImGui::InputScalar(("Element " + std::to_string(i)).c_str(), ImGuiDataType_S16, &gWorldInstance.CurrentCourse->Props.AIDistance[i]);
+            }
         }
 
         if (ImGui::CollapsingHeader("Random Junk")) {
@@ -72,20 +77,20 @@ namespace Editor {
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009568[i]);
+                ImGui::InputFloat(fmt::format("D_0D009568[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009568[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D0096B8[i]);
+                ImGui::InputFloat(fmt::format("D_0D0096B8[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D0096B8[i]);
             }
 
             ImGui::Separator();
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009808[i]);
+                ImGui::InputFloat(fmt::format("D_0D009808[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009808[i]);
             }
         }
 

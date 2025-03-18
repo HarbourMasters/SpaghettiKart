@@ -47,6 +47,7 @@
 
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
+#include "engine/editor/SaveLevel.h"
 
 extern "C" {
 #include "main.h"
@@ -211,6 +212,9 @@ void HM_DrawIntro() {
     gMenuIntro.HM_DrawIntro();
 }
 
+void CM_LoadLevelProps() {
+    Editor::LoadLevel();
+}
 
 World* GetWorld(void) {
     return &gWorldInstance;
@@ -375,6 +379,11 @@ void CM_DrawActors(Camera* camera, struct Actor* actor) {
     if (a->IsMod()) {
         a->Draw(camera);
     }
+}
+
+void CM_DrawStaticMeshActors() {
+    printf("DRAW\n");
+    gWorldInstance.DrawStaticMeshActors();
 }
 
 void CM_BeginPlay() {
@@ -674,8 +683,14 @@ void CM_CleanWorld(void) {
     for (auto& emitter : world->Emitters) {
         delete emitter;
     }
+
+    for (auto& actor : world->StaticMeshActors) {
+        delete actor;
+    }
+
     gEditor.ClearObjects();
     gWorldInstance.Actors.clear();
+    gWorldInstance.StaticMeshActors.clear();
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();
     gWorldInstance.Lakitus.clear();

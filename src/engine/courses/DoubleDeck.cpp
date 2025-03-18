@@ -46,9 +46,11 @@ DoubleDeck::DoubleDeck() {
     Props.MinimapTexture = gTextureCourseOutlineDoubleDeck;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "double deck";
-    Props.DebugName = "deck";
-    Props.CourseLength = "";
+    Props.SetText(Props.Name, "double deck", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "deck", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+
+
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;

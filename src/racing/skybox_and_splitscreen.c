@@ -854,6 +854,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
         render_set_position(matrix, 0);
     }
     render_course_actors(screen);
+    CM_DrawStaticMeshActors();
     render_object(mode);
     switch (screenId) {
         case 0:

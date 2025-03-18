@@ -77,9 +77,9 @@ MarioRaceway::MarioRaceway() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:mario_raceway";
-    Props.Name = "Mario Raceway";
-    Props.DebugName = "m circuit";
-    Props.CourseLength = "567m";
+    Props.SetText(Props.Name, "mario raceway", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "m circuit", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "567m", sizeof(Props.CourseLength));
 
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

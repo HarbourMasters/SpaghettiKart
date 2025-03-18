@@ -10,6 +10,8 @@
 #include "spdlog/formatter.h"
 #include <common_structs.h>
 #include <defines.h>
+#include "port/Game.h"
+#include "engine/editor/SaveLevel.h"
 
 extern "C" {
 #include "code_800029B0.h"
@@ -30,8 +32,22 @@ namespace Editor {
         static bool toggleGroundSnap = CVarGetInteger("gEditorSnapToGround", 0);
         static bool toggleBoundary = CVarGetInteger("gEditorBoundary", 0);
         static int selectedTool = 0; // 0: Move, 1: Rotate, 2: Scale
-        static int selectedPlayTool = 0; // 0: Play, 1: Paused
-        
+
+        if (ImGui::Button(ICON_FA_FILE_TEXT_O, ImVec2(50, 25))) {
+            gEditor.NewTrack();
+            gWorldInstance.ClearWorld();
+            gIsEditorPaused = true;
+        }
+
+        ImGui::SameLine();
+
+        // Save button
+        if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
+            SaveLevel();
+        }
+
+        ImGui::SameLine();
+
         ImVec4 defaultColor = ImGui::GetStyle().Colors[ImGuiCol_Button];
         // Function to check and highlight the selected button
         auto ToolButton = [&](const char* label, int id) {
@@ -141,5 +157,12 @@ namespace Editor {
             gIsHUDVisible = !gIsHUDVisible;
         }
         ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        // Delete
+        if (ImGui::Button(ICON_FA_TRASH_O, ImVec2(50, 25))) {
+            gEditor.DeleteObject();
+        }
     }
 }

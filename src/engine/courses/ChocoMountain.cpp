@@ -67,9 +67,10 @@ ChocoMountain::ChocoMountain() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:choco_mountain";
-    Props.Name = "choco mountain";
-    Props.DebugName = "mountain";
-    Props.CourseLength = "687m";
+    Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "mountain", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "687m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D008F80;
     Props.AIMaximumSeparation = 35.0f;
     Props.AIMinimumSeparation = 0.3f;

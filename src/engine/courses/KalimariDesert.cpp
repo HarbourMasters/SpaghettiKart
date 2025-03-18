@@ -59,9 +59,10 @@ KalimariDesert::KalimariDesert() {
     Props.MinimapTexture = gTextureCourseOutlineKalimariDesert;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "kalimari desert";
-    Props.DebugName = "desert";
-    Props.CourseLength = "753m";
+    Props.SetText(Props.Name, "kalimari desert", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "desert", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "753m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009260;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;

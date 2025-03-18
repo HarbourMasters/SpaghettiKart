@@ -72,9 +72,10 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.MinimapTexture = gTextureCourseOutlineToadsTurnpike;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "toad's turnpike";
-    Props.DebugName = "highway";
-    Props.CourseLength = "1036m";
+    Props.SetText(Props.Name, "toad's turnpike", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "highway", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "1036m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009238;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.5f;

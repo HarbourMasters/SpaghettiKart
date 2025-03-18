@@ -21,14 +21,14 @@ extern "C" {
 /**
  * OBat
  * 
- * FRotation does not appear to do anything.
+ * IRotator does not appear to do anything.
  * Could not find where origin_pos was at.
  * So pos does not work either
  * 
  */
 class OBat : public OObject {
 public:
-    explicit OBat(const FVector& pos, const FRotation& rot);
+    explicit OBat(const FVector& pos, const IRotator& rot);
 
     ~OBat() {
         _count--;

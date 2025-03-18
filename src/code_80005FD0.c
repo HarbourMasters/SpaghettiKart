@@ -1287,7 +1287,6 @@ s32 func_800088D8(s32 playerId, s16 lapNum, s16 currRank) {
         if (var_t1 < 0 || var_t1 >= 8) {
             return false;
         }
-        printf("T1 %d\n", var_t1);
         if (arg1_times_8 < 24) {
             temp_a3 = &temp_a3[var_t1];
             interp = gLapCompletionPercentByPlayerId[playerId];

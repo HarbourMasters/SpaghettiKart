@@ -68,9 +68,10 @@ WarioStadium::WarioStadium() {
     Props.MinimapTexture = gTextureCourseOutlineWarioStadium;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "wario stadium";
-    Props.DebugName = "stadium";
-    Props.CourseLength = "1591m";
+    Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "1591m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009310;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.6f;

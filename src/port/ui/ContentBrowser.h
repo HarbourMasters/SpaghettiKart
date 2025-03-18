@@ -7,9 +7,12 @@ class ContentBrowserWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
     ~ContentBrowserWindow();
+
+    std::vector<std::string> Content;
 protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
+    void FindContent();
 };
 }

@@ -26,6 +26,8 @@ void HM_InitIntro(void);
 void HM_TickIntro(void);
 void HM_DrawIntro(void);
 
+void CM_LoadLevelProps();
+
 void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
 void CM_DrawBattleBombKarts(s32 cameraId);
 
@@ -65,6 +67,7 @@ bool CM_DoesFinishlineExist();
 void CM_InitClouds();
 
 void CM_DrawActors(Camera* camera, struct Actor* actor);
+void CM_DrawStaticMeshActors();
 
 void CM_TickObjects();
 void CM_TickObjects60fps();

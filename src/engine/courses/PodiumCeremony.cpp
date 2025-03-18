@@ -92,9 +92,10 @@ PodiumCeremony::PodiumCeremony() {
     Props.textures = podium_ceremony_textures;
     Props.MinimapDimensions = IVector2D(0, 0);
 
-    Props.Name = "royal raceway";
-    Props.DebugName = "p circuit";
-    Props.CourseLength = "1025m";
+    Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "1025m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009188;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.4f;

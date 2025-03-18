@@ -45,8 +45,6 @@ float gInterpolationStep = 0.0f;
 GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
-    std::vector<std::string> archiveFiles;
-
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.o2r");
     const std::string assets_path = Ship::Context::GetPathRelativeToAppDirectory("ship.o2r");
 

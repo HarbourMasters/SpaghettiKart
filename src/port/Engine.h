@@ -37,6 +37,7 @@ class GameEngine {
     std::vector<CtlEntry*> banksTable;
     std::vector<std::string> sequenceTable;
     std::vector<AudioSequenceData*> audioSequenceTable;
+    std::vector<std::string> archiveFiles;
 
     ImFont* fontStandard;
     ImFont* fontStandardLarger;

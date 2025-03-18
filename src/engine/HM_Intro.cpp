@@ -39,21 +39,21 @@ void HarbourMastersIntro::HM_InitIntro() {
     _cameraAcceleration = 1.0f;
 
     _pos = FVector(-1000, -205, -800); // -1000, -210, -800
-    _rot = FRotation(-5, 100, 0);
+    _rot = IRotator(-5, 100, 0);
     _scale = 0.7f;
     _trackScale = 2.0f;
 
     _ship2Pos = FVector(300, -210, -1960);
-    _ship2Rot = FRotation(0, 45, 0);
+    _ship2Rot = IRotator(0, 45, 0);
 
     _shipPos = FVector(20, -210, -1650);
-    _shipRot = FRotation(0, 45, 0);
+    _shipRot = IRotator(0, 45, 0);
 
     _posHM64 = FVector(0, -500, -1000);
-    _rotHM64 = FRotation(0, -90, -4); // -0x2100
+    _rotHM64 = IRotator(0, -90, -4); // -0x2100
 
     _hPos = FVector(-2000, 100, -4900);
-    _hRot = FRotation(0, 0, 0);
+    _hRot = IRotator(0, 0, 0);
 
     ground_f3d_material_013_lights = gdSPDefLights1(
 	0x7F, 0x30, 0x80,
@@ -94,7 +94,7 @@ void HarbourMastersIntro::HM_TickIntro() {
 }
 
 // @args amplitudes
-void HarbourMastersIntro::Bob(FVector& pos, FRotation& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
+void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
     float time = (float)gGlobalTimer;
 
     pos.y = -210 + bobAmp * sin(time * bobSpeed);
@@ -104,7 +104,7 @@ void HarbourMastersIntro::Bob(FVector& pos, FRotation& rot, f32 bobAmp, f32 bobS
     rot.roll = rollAmp * sin(time * rollSpeed);
 }
 
-void HarbourMastersIntro::SpagBob(FVector& pos, FRotation& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
+void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
     float time = (float)gGlobalTimer;
 
     pos.y = -205 + bobAmp * sin(time * bobSpeed);

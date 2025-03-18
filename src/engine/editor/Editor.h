@@ -10,7 +10,7 @@
 #include "ObjectPicker.h"
 namespace Editor {
     class ObjectPicker;
-    
+
     class Editor {
 public:
     Editor();
@@ -29,6 +29,8 @@ public:
     void SelectObjectFromSceneExplorer(GameObject* object);
     void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
     void ClearMatrixPool();
+    void DeleteObject();
+    void NewTrack();
 
 private:
     bool _draw = false;

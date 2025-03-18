@@ -48,10 +48,10 @@ BlockFort::BlockFort() {
     Props.MinimapTexture = gTextureCourseOutlineBlockFort;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
+    Props.SetText(Props.Name, "block fort", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "block", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
 
-    Props.Name = "block fort";
-    Props.DebugName = "block";
-    Props.CourseLength = "";
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.1f;

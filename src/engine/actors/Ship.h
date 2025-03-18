@@ -28,7 +28,7 @@ public:
 
     FVector Spawn;
     FVector Pos;
-    FRotation Rot = {0, 0, 0};
+    IRotator Rot = {0, 0, 0};
 private:
     Gfx* _skin;
 };

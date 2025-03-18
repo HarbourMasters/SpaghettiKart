@@ -67,9 +67,10 @@ Skyscraper::Skyscraper() {
     Props.MinimapTexture = gTextureCourseOutlineSkyscraper;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "skyscraper";
-    Props.DebugName = "skyscraper";
-    Props.CourseLength = "";
+    Props.SetText(Props.Name, "skyscraper", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "skyscraper", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;

@@ -71,6 +71,7 @@ void func_80280038(void) {
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
+    CM_DrawStaticMeshActors();
     render_object(PLAYER_ONE + SCREEN_MODE_1P);
     render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
     ceremony_transition_sliding_borders();

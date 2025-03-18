@@ -18,6 +18,6 @@ void OObject::Tick60fps() {}
 void OObject::Draw(s32 cameraId) { }
 void OObject::Expire() { }
 void OObject::Destroy() {
-    PendingDestroy = true;
+    bPendingDestroy = true;
 }
 void OObject::Reset() { }

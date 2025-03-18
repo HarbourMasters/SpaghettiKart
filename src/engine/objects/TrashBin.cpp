@@ -20,7 +20,7 @@ extern "C" {
 
 #define DEGREES_FLOAT_TO_SHORT(Degrees) ((s16)((Degrees) * (0x8000 / 180.0f)))
 
-OTrashBin::OTrashBin(const FVector& pos, const FRotation& rotation, f32 scale, OTrashBin::Behaviour bhv) {
+OTrashBin::OTrashBin(const FVector& pos, const IRotator& rotation, f32 scale, OTrashBin::Behaviour bhv) {
     Name = "Trashbin";
     _pos = pos;
     _rot = rotation;

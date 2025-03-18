@@ -24,7 +24,7 @@ public:
         STATIC, // The lid stays shut
         MUNCHING // The lid opens/closes in a scary munching manner
     };
-    explicit OTrashBin(const FVector& pos, const FRotation& rotation, f32 scale, OTrashBin::Behaviour bhv);
+    explicit OTrashBin(const FVector& pos, const IRotator& rotation, f32 scale, OTrashBin::Behaviour bhv);
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
@@ -38,7 +38,7 @@ private:
 
     Behaviour _bhv;
     FVector _pos;
-    FRotation _rot;
+    IRotator _rot;
     float _scale;
     size_t _idx;
     bool _drawBin = false;

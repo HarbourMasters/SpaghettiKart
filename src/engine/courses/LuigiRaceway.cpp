@@ -91,9 +91,10 @@ LuigiRaceway::LuigiRaceway() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:luigi_raceway";
-    Props.Name = "luigi raceway";
-    Props.DebugName = "l circuit";
-    Props.CourseLength = "717m";
+    Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "l circuit", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "717m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D0091E8;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.7f;

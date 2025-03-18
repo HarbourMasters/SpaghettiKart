@@ -1,6 +1,7 @@
 #include "Ship.h"
 
 #include <libultra/gbi.h>
+#include "CoreMath.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -47,12 +48,13 @@ void AShip::Tick() {
 void AShip::Draw(Camera *camera) {
     Mat4 shipMtx;
     Vec3f hullPos = {Pos.x, Pos.y, Pos.z};
-    Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
+    //Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_pos_rotation_xyz(shipMtx, hullPos, hullRot);
+    IRotator rot = Rot.ToBinary(); 
+    mtxf_pos_rotation_xyz(shipMtx, hullPos, *(Vec3s*) &Rot);
     mtxf_scale(shipMtx, 0.4);
     if (render_set_position(shipMtx, 0) != 0) {
         gSPDisplayList(gDisplayListHead++, _skin);

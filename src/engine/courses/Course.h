@@ -36,12 +36,12 @@ typedef struct SkyboxColours {
 
 typedef struct Properties {
     const char* Id;
-    const char* Name;
-    const char* DebugName;
-    const char* CourseLength;
+    char Name[128];
+    char DebugName[128];
+    char CourseLength[128];
     const char* AIBehaviour;
     const char* MinimapTexture;
-    s32 LakituTowType;
+    int32_t LakituTowType;
     IVector2D MinimapDimensions;
     float AIMaximumSeparation;
     float AIMinimumSeparation;
@@ -63,6 +63,141 @@ typedef struct Properties {
     SkyboxColours Skybox;
     const course_texture *textures;
     enum MusicSeq Sequence;
+    const char* TrackModel;
+
+#ifdef __cplusplus
+    nlohmann::json to_json() const {
+        nlohmann::json j;
+        j["Id"] = Id ? Id : "";
+        j["Name"] = Name ? Name : "";
+        j["DebugName"] = DebugName ? DebugName : "";
+        j["CourseLength"] = CourseLength ? CourseLength : "";
+        j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
+        j["MinimapTexture"] = MinimapTexture ? MinimapTexture : "";
+        j["LakituTowType"] = LakituTowType;
+        j["MinimapDimensions"] = {MinimapDimensions.X, MinimapDimensions.Z};
+        j["AIMaximumSeparation"] = AIMaximumSeparation;
+        j["AIMinimumSeparation"] = AIMinimumSeparation;
+        j["NearPersp"] = NearPersp;
+        j["FarPersp"] = FarPersp;
+
+        // AIDistance as a JSON array
+        j["AIDistance"] = std::vector<int16_t>(AIDistance, AIDistance + 32); // gAIDistances array size of 32
+
+        j["AISteeringSensitivity"] = AISteeringSensitivity;
+
+        // PathSizes - Assuming _struct_gCoursePathSizes_0x10 can be serialized similarly
+        // j["PathSizes"] = PathSizes; // Implement your serialization logic here
+
+        j["D_0D009418"] = { D_0D009418[0], D_0D009418[1], D_0D009418[2], D_0D009418[3] };
+        j["D_0D009568"] = { D_0D009568[0], D_0D009568[1], D_0D009568[2], D_0D009568[3] };
+        j["D_0D0096B8"] = { D_0D0096B8[0], D_0D0096B8[1], D_0D0096B8[2], D_0D0096B8[3] };
+        j["D_0D009808"] = { D_0D009808[0], D_0D009808[1], D_0D009808[2], D_0D009808[3] };
+
+        // Serialize arrays PathTable and PathTable2 (convert pointers into a JSON array if possible)
+        //j["PathTable"] = {{}};
+        //j["PathTable2"] = {{}};
+        // Populate PathTable and PathTable2
+
+        //j["Clouds"] = Clouds ? nlohmann::json{{"x", Clouds->x, "y", Clouds->y, "z", Clouds->z}} : nullptr;
+        //j["CloudList"] = CloudList ? nlohmann::json{{"x", CloudList->x, "y", CloudList->y, "z", CloudList->z}} : nullptr;
+        
+        j["MinimapFinishlineX"] = MinimapFinishlineX;
+        j["MinimapFinishlineY"] = MinimapFinishlineY;
+        // SkyboxColors - assuming SkyboxColors can be serialized similarly
+        // j["Skybox"] = Skybox; // Implement your serialization logic here
+        j["Sequence"] = static_cast<int>(Sequence);
+
+        return j;
+    }
+
+    // Function to load struct from JSON
+    void from_json(const nlohmann::json& j) {
+        Id = j.at("Id").get<std::string>().c_str();
+//        Name = j.at("Name").get<std::string>().c_str();
+        strncpy(Name, j.at("Name").get<std::string>().c_str(), sizeof(Name) - 1);
+        Name[sizeof(Name) - 1] = '\0'; // Ensure null termination
+
+//        DebugName = j.at("DebugName").get<std::string>().c_str();
+        strncpy(DebugName, j.at("DebugName").get<std::string>().c_str(), sizeof(DebugName) - 1);
+        DebugName[sizeof(DebugName) - 1] = '\0'; // Ensure null termination
+
+  //      CourseLength = j.at("CourseLength").get<std::string>().c_str();
+        strncpy(CourseLength, j.at("CourseLength").get<std::string>().c_str(), sizeof(CourseLength) - 1);
+        CourseLength[sizeof(CourseLength) - 1] = '\0'; // Ensure null termination
+
+        AIBehaviour = j.at("AIBehaviour").get<std::string>().c_str();
+        MinimapTexture = j.at("MinimapTexture").get<std::string>().c_str();
+        LakituTowType = j.at("LakituTowType").get<int>();
+        MinimapDimensions.X = j.at("MinimapDimensions")[0].get<float>();
+        MinimapDimensions.Z = j.at("MinimapDimensions")[1].get<float>();
+
+        AIMaximumSeparation = j.at("AIMaximumSeparation").get<float>();
+        AIMinimumSeparation = j.at("AIMinimumSeparation").get<float>();
+        NearPersp = j.at("NearPersp").get<float>();
+        FarPersp = j.at("FarPersp").get<float>();
+
+        const auto temp = j.at("AIDistance").get<std::vector<int16_t>>();
+
+        // Ensure the vector has 32 entries
+        if (temp.size() == 32) {
+            // Copy the data into the existing AIDistances array
+            std::copy(temp.begin(), temp.end(), AIDistance);
+        } else {
+            printf("Course::from_json() AIDistance array not size of 32\n");
+        }
+
+        AISteeringSensitivity = j.at("AISteeringSensitivity").get<uint32_t>();
+
+        // Deserialize PathSizes and other custom structs if needed
+
+        D_0D009418[0] = j.at("D_0D009418")[0].get<float>();
+        D_0D009418[1] = j.at("D_0D009418")[1].get<float>();
+        D_0D009418[2] = j.at("D_0D009418")[2].get<float>();
+        D_0D009418[3] = j.at("D_0D009418")[3].get<float>();
+
+        D_0D009568[0] = j.at("D_0D009568")[0].get<float>();
+        D_0D009568[1] = j.at("D_0D009568")[1].get<float>();
+        D_0D009568[2] = j.at("D_0D009568")[2].get<float>();
+        D_0D009568[3] = j.at("D_0D009568")[3].get<float>();
+
+        D_0D0096B8[0] = j.at("D_0D0096B8")[0].get<float>();
+        D_0D0096B8[1] = j.at("D_0D0096B8")[1].get<float>();
+        D_0D0096B8[2] = j.at("D_0D0096B8")[2].get<float>();
+        D_0D0096B8[3] = j.at("D_0D0096B8")[3].get<float>();
+
+        D_0D009808[0] = j.at("D_0D009808")[0].get<float>();
+        D_0D009808[1] = j.at("D_0D009808")[1].get<float>();
+        D_0D009808[2] = j.at("D_0D009808")[2].get<float>();
+        D_0D009808[3] = j.at("D_0D009808")[3].get<float>();
+        
+        // Deserialize arrays PathTable and PathTable2 similarly
+        
+        //Clouds = nullptr; // Deserialize if data is present
+        //CloudList = nullptr; // Deserialize if data is present
+
+        MinimapFinishlineX = j.at("MinimapFinishlineX").get<float>();
+        MinimapFinishlineY = j.at("MinimapFinishlineY").get<float>();
+        //textures = nullptr; // Deserialize textures if present
+        Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
+    }
+    void SetText(char* name, const char* title, size_t bufferSize) {
+        // Copy the title into the name buffer, ensuring it's null-terminated and within bounds
+        std::strncpy(name, title, bufferSize - 1);
+        name[bufferSize - 1] = '\0';  // Ensure the string is null-terminated
+    }
+
+    const char* GetName() {
+        return Name;
+    }
+
+    void New() {
+        SetText(Name, "", sizeof(Name));
+        SetText(DebugName, "", sizeof(DebugName));
+        SetText(CourseLength, "", sizeof(CourseLength));
+    }
+#endif
+
 } Properties;
 
 #ifdef __cplusplus

@@ -69,9 +69,10 @@ TestCourse::TestCourse() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:test_course";
-    Props.Name = "Test Course";
-    Props.DebugName = "test track";
-    Props.CourseLength = "100m";
+
+    Props.SetText(Props.Name, "Test Course", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
 
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
@@ -266,7 +267,7 @@ void TestCourse::BeginPlay() {
     // gWorldInstance.AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
     // gWorldInstance.AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
     //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
-    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), FRotation(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
+    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
     //gWorldInstance.AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
     //gWorldInstance.AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));

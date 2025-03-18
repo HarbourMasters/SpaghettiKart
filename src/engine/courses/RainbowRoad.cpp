@@ -51,9 +51,10 @@ RainbowRoad::RainbowRoad() {
     Props.MinimapTexture = gTextureCourseOutlineRainbowRoad;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "rainbow road";
-    Props.DebugName = "rainbow";
-    Props.CourseLength = "2000m";
+    Props.SetText(Props.Name, "rainbow road", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "rainbow", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "2000m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D0092C8;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.4f;

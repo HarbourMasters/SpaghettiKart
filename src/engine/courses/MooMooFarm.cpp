@@ -77,9 +77,10 @@ MooMooFarm::MooMooFarm() {
     Props.MinimapTexture = gTextureCourseOutlineMooMooFarm;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "moo moo farm";
-    Props.DebugName = "farm";
-    Props.CourseLength = "527m";
+    Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "527m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009210;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.5f;

@@ -65,9 +65,10 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:koopa_beach";
-    Props.Name = "koopa troopa beach";
-    Props.DebugName = "beach";
-    Props.CourseLength = "691m";
+    Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "beach", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "691m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009158;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.5f;

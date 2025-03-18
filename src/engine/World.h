@@ -18,6 +18,7 @@
 #include <memory>
 #include <unordered_map>
 #include "Actor.h"
+#include "StaticMeshActor.h"
 #include "particles/ParticleEmitter.h"
 
 #include "editor/Editor.h"
@@ -31,6 +32,7 @@ extern "C" {
 class Cup; // <-- Forward declaration
 class OObject;
 class Course;
+class StaticMeshActor;
 class AVehicle;
 class OBombKart;
 class TrainCrossing;
@@ -60,6 +62,10 @@ public:
     AActor* ConvertActorToAActor(Actor* actor);
     Actor* ConvertAActorToActor(AActor* actor);
 
+    void DrawStaticMeshActors();
+    StaticMeshActor* AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision);
+    void DeleteStaticMeshActors();
+
     OObject* AddObject(OObject* object);
 
     void TickObjects();
@@ -81,6 +87,7 @@ public:
     void SetCourseFromCup();
 
     World* GetWorld(void);
+    void ClearWorld(void);
 
 
     // These are only for browsing through the course list
@@ -98,6 +105,7 @@ public:
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;
 
+    std::vector<StaticMeshActor*> StaticMeshActors;
     std::vector<AActor*> Actors;
     std::vector<OObject*> Objects;
     std::vector<ParticleEmitter*> Emitters;

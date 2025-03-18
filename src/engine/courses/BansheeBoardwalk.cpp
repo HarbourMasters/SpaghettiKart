@@ -73,9 +73,11 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
     Props.Id = "mk:banshee_boardwalk";
-    Props.Name = "banshee boardwalk";
-    Props.DebugName = "ghost";
-    Props.CourseLength = "747m";
+
+    Props.SetText(Props.Name, "banshee boardwalk", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "ghost", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "747m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D009058;
     Props.AIMaximumSeparation = 40.0f;
     Props.AIMinimumSeparation = 0.4f;
@@ -162,13 +164,13 @@ void BansheeBoardwalk::BeginPlay() {
     }
 
     if (gIsMirrorMode) {
-        gWorldInstance.AddObject(new OTrashBin(FVector(1765.0f, 45.0f, 195.0f), FRotation(0, 180.0f, 0), 1.0f, bhv));
+        gWorldInstance.AddObject(new OTrashBin(FVector(1765.0f, 45.0f, 195.0f), IRotator(0, 180, 0), 1.0f, bhv));
     } else {
-        gWorldInstance.AddObject(new OTrashBin(FVector(-1765.0f, 45.0f, 70.0f), FRotation(0, 0, 0), 1.0f, bhv));
+        gWorldInstance.AddObject(new OTrashBin(FVector(-1765.0f, 45.0f, 70.0f), IRotator(0, 0, 0), 1.0f, bhv));
     }
 
     if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != TIME_TRIALS)) {
-        gWorldInstance.AddObject(new OBat(FVector(0,0,0), FRotation(0, 0, 90.0f)));
+        gWorldInstance.AddObject(new OBat(FVector(0,0,0), IRotator(0, 0, 90)));
         gWorldInstance.AddObject(new OBoos(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290)));
         gWorldInstance.AddObject(new OBoos(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630)));
     }

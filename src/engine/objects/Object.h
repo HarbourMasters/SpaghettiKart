@@ -12,7 +12,7 @@ public:
     uint8_t uuid[16];
     Object o;
     const char* Name = "";
-    bool PendingDestroy = false;
+    bool bPendingDestroy = false;
     s32 _objectIndex = -1;
 
     virtual ~OObject() = default;

@@ -19,6 +19,7 @@ extern "C" {
 #include "staff_ghosts.h"
 #include "code_800029B0.h"
 #include "render_courses.h"
+#include "collision.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
@@ -28,6 +29,7 @@ Course::Course() {
     // Props.CourseLength = "567m";
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
+    Props.TrackModel = NULL;
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
@@ -85,6 +87,11 @@ void Course::Load(Vtx* vtx, Gfx* gfx) {
 }
 
 void Course::Load() {
+
+    if (Props.TrackModel) {
+        generate_collision_mesh_with_defaults((Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
+        return;
+    }
 
     size_t vtxSize = (ResourceGetSizeByName(this->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);
     size_t texSegSize;
@@ -227,7 +234,11 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 }
 
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
+    if (Props.TrackModel) {
+        gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
+    }
 }
+
 void Course::RenderCredits() {
 }
 void Course::Collision() {

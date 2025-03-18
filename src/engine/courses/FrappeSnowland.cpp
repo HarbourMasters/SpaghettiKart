@@ -54,9 +54,10 @@ FrappeSnowland::FrappeSnowland() {
     Props.MinimapTexture = gTextureCourseOutlineFrappeSnowland;
     Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
 
-    Props.Name = "frappe snowland";
-    Props.DebugName = "snow";
-    Props.CourseLength = "734m";
+    Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
+    Props.SetText(Props.CourseLength, "734m", sizeof(Props.CourseLength));
+
     Props.AIBehaviour = D_0D0090F8;
     Props.AIMaximumSeparation = 50.0f;
     Props.AIMinimumSeparation = 0.3f;

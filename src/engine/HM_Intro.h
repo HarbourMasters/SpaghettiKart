@@ -24,8 +24,8 @@ public:
 private:
     void Setup();
     void Sync();
-    void Bob(FVector& pos, FRotation& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
-    void SpagBob(FVector& pos, FRotation& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
+    void Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
+    void SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
     void MoveCloserToCamera(float moveSpeed);
 
     struct HMCamera {
@@ -42,21 +42,21 @@ private:
     FVector _pos;
     f32 _scale;
     f32 _trackScale;
-    FRotation _rot;
+    IRotator _rot;
 
     FVector _shipPos;
-    FRotation _shipRot;
+    IRotator _shipRot;
 
     FVector _ship2Pos;
-    FRotation _ship2Rot;
+    IRotator _ship2Rot;
 
     s32 _water = 0;
 
     FVector _posHM64;
-    FRotation _rotHM64;
+    IRotator _rotHM64;
 
     FVector _hPos;
-    FRotation _hRot;
+    IRotator _hRot;
 };
 
 extern "C" {

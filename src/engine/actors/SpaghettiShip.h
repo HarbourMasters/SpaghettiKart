@@ -21,8 +21,8 @@ public:
 
     FVector Spawn;
     FVector Pos;
-    FRotation Rot = {0, 0, 0};
-    FRotation WheelRot = {0, 0, 0};
+    IRotator Rot = {0, 0, 0};
+    IRotator WheelRot = {0, 0, 0};
 private:
     f32 scale;
 };
