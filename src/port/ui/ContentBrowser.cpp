@@ -60,7 +60,7 @@ namespace Editor {
     }
 
     void ContentBrowserWindow::FindContent() {
-        std::list<std::string> myList = {"objects/*"};
+        std::list<std::string> myList = {"tracks/*", "actors/*", "objects/*"};
         std::list<std::string> myList2 = {""};
 
         Content.clear();
@@ -74,8 +74,11 @@ namespace Editor {
                 } else if (file.size() >= 6 && file.substr(file.size() - 6, 5) == "_tri_" && isdigit(file.back())) {
                     // ends with _tri_#
                     continue;
-                } else if (file.size() >= 6 && file.substr(file.size() - 6, 5) == "_vtx_" && isdigit(file.back())) {
-                    // ends with _vtx_#
+                } else if (file.find("_vtx_") != std::string::npos) {
+                    // Has _vtx_
+                    continue;
+                } else if (file.find('.') != std::string::npos) {
+                    // File has an extension
                     continue;
                 }
 
@@ -84,4 +87,3 @@ namespace Editor {
         }
     }
 }
-

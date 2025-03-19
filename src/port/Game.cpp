@@ -382,7 +382,6 @@ void CM_DrawActors(Camera* camera, struct Actor* actor) {
 }
 
 void CM_DrawStaticMeshActors() {
-    printf("DRAW\n");
     gWorldInstance.DrawStaticMeshActors();
 }
 
