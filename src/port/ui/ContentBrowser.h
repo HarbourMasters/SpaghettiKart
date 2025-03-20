@@ -13,6 +13,7 @@ protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
+    void AddStockContent();
     void FindContent();
 };
 }
