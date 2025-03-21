@@ -1659,7 +1659,9 @@ void func_8005A99C(void) {
             if (gPlayerCountSelection1 == 3) {
                 D_801657E8 = true;
             }
-            gIsHUDVisible = (s32) 1;
+            if (CVarGetInteger("gEditorEnabled", 0) == false) {
+                gIsHUDVisible = (s32) 1;
+            }
             D_8018D170 = (s32) 1;
             D_8018D190 = (s32) 1;
             D_8018D204 = 0;
