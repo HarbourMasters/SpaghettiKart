@@ -339,3 +339,24 @@ void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]) {
 
     //printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
 }
+
+FVector GetPositionAheadOfCamera(f32 dist) {
+    FVector pos = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+
+    f32 pitch = (cameras[0].rot[2] / 65535.0f) * 360.0f;
+    f32 yaw = (cameras[0].rot[1] / 65535.0f) * 360.0f;
+
+    // Convert degrees to radians
+    pitch = pitch * M_PI / 180.0f;
+    yaw = yaw * M_PI / 180.0f;
+
+    // Compute forward vector
+    FVector forward(
+        -sinf(yaw),  // X
+        -sinf(pitch), // Y
+        cosf(yaw)               // Z (vertical component)
+    );
+
+    // Move 1000 units forward from the camera position
+    return pos + (forward * dist);
+}

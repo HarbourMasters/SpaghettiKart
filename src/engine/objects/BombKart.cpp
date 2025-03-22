@@ -29,7 +29,7 @@ extern s8 gPlayerCount;
 
 size_t OBombKart::_count = 0;
 
-OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
+OBombKart::OBombKart(FVector pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
     Name = "Bomb Kart";
     _idx = _count;
     Vec3f _pos = {0, 0, 0};
@@ -42,10 +42,10 @@ OBombKart::OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex,
 
         // Set height to the default value of 2000.0f unless Pos[1] is higher.
         // This allows placing these on very high surfaces.
-        f32 height = (pos[1] > 2000.0f) ? pos[1] : 2000.0f;
-        _pos[0] = pos[0];
-        _pos[1] = spawn_actor_on_surface(pos[0], height, pos[2]);
-        _pos[2] = pos[2];
+        f32 height = (pos.y > 2000.0f) ? pos.y : 2000.0f;
+        _pos[0] = pos.x;
+        _pos[1] = spawn_actor_on_surface(pos.x, height, pos.z);
+        _pos[2] = pos.z;
     }
 
     WaypointIndex = waypointIndex;

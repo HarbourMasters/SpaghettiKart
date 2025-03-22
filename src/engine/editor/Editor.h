@@ -20,7 +20,6 @@ public:
 
     void Tick();
     void Draw();
-    void MouseClick();
 	void Load();
     void AddObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
     void AddLight(const char* name, FVector* pos, s8* rot);

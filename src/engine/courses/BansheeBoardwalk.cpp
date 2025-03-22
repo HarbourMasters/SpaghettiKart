@@ -5,7 +5,7 @@
 
 #include "BansheeBoardwalk.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/CheepCheep.h"
 #include "engine/objects/TrashBin.h"
@@ -176,7 +176,7 @@ void BansheeBoardwalk::BeginPlay() {
     }
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][110], 110, 3, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f));

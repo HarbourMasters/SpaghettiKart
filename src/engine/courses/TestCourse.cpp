@@ -6,7 +6,7 @@
 
 #include "TestCourse.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/actors/BowserStatue.h"
 #include "engine/actors/Ship.h"
 #include "engine/actors/SpaghettiShip.h"
@@ -16,8 +16,8 @@
 #include "assets/mario_raceway_data.h"
 #include "assets/bowsers_castle_data.h"
 #include "assets/bowsers_castle_displaylists.h"
-#include "engine/actors/ATree.h"
-#include "engine/actors/ACloud.h"
+#include "engine/actors/Tree.h"
+#include "engine/actors/Cloud.h"
 #include "engine/vehicles/Train.h"
 #include "engine/objects/Trophy.h"
 #include "engine/objects/CheepCheep.h"
@@ -285,7 +285,7 @@ void TestCourse::BeginPlay() {
     //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
     //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
 
-    Vec3f pos2 = {0, 0, 0};
+    FVector pos2 = { 0, 0, 0 };
 
     gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][25], 25, 4, 0.8333333f));
     gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][45], 45, 4, 0.8333333f));

@@ -7,8 +7,8 @@
 #include "World.h"
 #include "engine/objects/BombKart.h"
 #include "assets/wario_stadium_data.h"
-#include "engine/actors/AWarioSign.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/WarioSign.h"
+#include "engine/actors/Finishline.h"
 
 extern "C" {
 #include "main.h"
@@ -166,20 +166,20 @@ void WarioStadium::LoadTextures() {
 void WarioStadium::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
 
-    Vec3f pos = { -131.0f, 83.0f, 286.0f };
-    pos[0] *= gCourseDirection;
+    FVector pos = { -131.0f, 83.0f, 286.0f };
+    pos.x *= gCourseDirection;
     gWorldInstance.AddActor(new AWarioSign(pos));
 
-    Vec3f pos2 = { -2353.0f, 72.0f, -1608.0f };
-    pos2[0] *= gCourseDirection;
+    FVector pos2 = { -2353.0f, 72.0f, -1608.0f };
+    pos2.x *= gCourseDirection;
     gWorldInstance.AddActor(new AWarioSign(pos2));
 
-    Vec3f pos3 = { -2622.0f, 79.0f, 739.0f };
-    pos3[0] *= gCourseDirection;
+    FVector pos3 = { -2622.0f, 79.0f, 739.0f };
+    pos3.x *= gCourseDirection;
     gWorldInstance.AddActor(new AWarioSign(pos3));
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = { 0, 0, 0 };
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));

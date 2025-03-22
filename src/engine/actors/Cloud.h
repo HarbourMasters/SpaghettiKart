@@ -2,6 +2,7 @@
 
 #include <libultraship.h>
 #include "engine/Actor.h"
+#include "CoreMath.h"
 
 extern "C" {
 #include "macros.h"
@@ -15,7 +16,7 @@ public:
 
 
     // Constructor
-    ACloud(Vec3f pos);
+    ACloud(FVector pos);
 
     virtual ~ACloud() override = default;
 

@@ -7,7 +7,7 @@
 #include "World.h"
 #include "engine/objects/BombKart.h"
 #include "choco_mountain_data.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 
 extern "C" {
     #include "main.h"
@@ -168,7 +168,7 @@ void ChocoMountain::BeginPlay() {
     spawn_falling_rocks((struct ActorSpawnData*)LOAD_ASSET_RAW((const char*)d_course_choco_mountain_falling_rock_spawns));
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][165], 165, 1, 0.8333333f));

@@ -882,7 +882,7 @@ void func_8003BE30(void) {
 void func_8003C0F0(void) {
     s16 sp5E;
     s16 sp5C;
-    s16 sp5A;
+    s16 sp5A = 0;
     s32 temp;
     UNUSED s32 pad[4];
 

@@ -125,6 +125,7 @@ void freecam_loop(Camera* camera, Player* player, s8 index) {
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMouseDelta();
+    wnd->SetMouseCapture(false);
 
     f32 yawChange = 0.0f;
     f32 pitchChange = 0.0f;

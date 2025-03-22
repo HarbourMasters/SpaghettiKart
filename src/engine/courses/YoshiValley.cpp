@@ -6,7 +6,7 @@
 
 #include "YoshiValley.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Hedgehog.h"
 #include "engine/objects/Flagpole.h"
@@ -177,19 +177,19 @@ void YoshiValley::BeginPlay() {
         // the original data has values here.
 
         // Note that the Y height is calculated automatically to place the kart on the surface
-        Vec3f pos = {-1533, 0, -682};
+        FVector pos = { -1533, 0, -682 };
         gWorldInstance.AddObject(new OBombKart(pos, NULL, 0, 0, 0.8333333f));
-        Vec3f pos2 = {-1565, 0, -619};
+        FVector pos2 = { -1565, 0, -619 };
         gWorldInstance.AddObject(new OBombKart(pos2, NULL, 10, 0, 0.8333333f));
-        Vec3f pos3 = {-1529, 0, -579};
+        FVector pos3 = { -1529, 0, -579 };
         gWorldInstance.AddObject(new OBombKart(pos3, NULL, 20, 0, 0.8333333f));
-        Vec3f pos4 = {-1588, 0, -534};
+        FVector pos4 = { -1588, 0, -534 };
         gWorldInstance.AddObject(new OBombKart(pos4, NULL, 30, 0, 0.8333333f));
-        Vec3f pos5 = {-1598, 0, -207};
+        FVector pos5 = { -1598, 0, -207 };
         gWorldInstance.AddObject(new OBombKart(pos5, NULL, 40, 0, 0.8333333f));
-        Vec3f pos6 = {-1646, 0, -147};
+        FVector pos6 = { -1646, 0, -147 };
         gWorldInstance.AddObject(new OBombKart(pos6, NULL, 50, 0, 0.8333333f));
-        Vec3f pos7 = {-2532, 0, -445};
+        FVector pos7 = { -2532, 0, -445 };
         gWorldInstance.AddObject(new OBombKart(pos7, NULL, 60, 0, 0.8333333f));
     }
 }

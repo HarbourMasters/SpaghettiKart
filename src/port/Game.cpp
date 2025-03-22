@@ -28,7 +28,7 @@
 #include "engine/courses/BigDonut.h"
 #include "engine/courses/Harbour.h"
 #include "engine/courses/TestCourse.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 
 #include "engine/courses/PodiumCeremony.h"
 

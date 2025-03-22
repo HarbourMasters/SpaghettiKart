@@ -1,21 +1,17 @@
 #pragma once
 
 #include <libultraship/libultraship.h>
+#include "port/Game.h"
+
 
 namespace Editor {
-class ContentBrowserWindow : public Ship::GuiWindow {
+class PropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
-    ~ContentBrowserWindow();
-
-    std::vector<std::string> Content;
+    ~PropertiesWindow();
 protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
-    void AddActorContent();
-    void AddObjectContent();
-    void AddCustomContent();
-    void FindContent();
 };
 }

@@ -22,6 +22,7 @@
 #include <Fonts.h>
 #include "window/gui/resource/Font.h"
 #include "window/gui/resource/FontFactory.h"
+#include "SpaghettiGui.h"
 
 #include <Fast3D/gfx_pc.h>
 #include <Fast3D/gfx_rendering_api.h>
@@ -94,7 +95,10 @@ GameEngine::GameEngine() {
     this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
 
-    auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+    auto gui = std::make_shared<Ship::SpaghettiGui>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
+    auto wnd = std::make_shared<Fast::Fast3dWindow>(gui);
+
+    //auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     //auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     this->context->Init(archiveFiles, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);

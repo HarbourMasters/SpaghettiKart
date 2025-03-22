@@ -1,6 +1,6 @@
 #include <libultraship.h>
 
-#include "ABanana.h"
+#include "Banana.h"
 #include "engine/Actor.h"
 
 extern "C" {

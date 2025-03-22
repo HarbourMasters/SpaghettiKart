@@ -5,7 +5,7 @@
 
 #include "KalimariDesert.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "kalimari_desert_data.h"
 #include "engine/vehicles/Utils.h"
@@ -202,7 +202,7 @@ void KalimariDesert::BeginPlay() {
         }
 
         if (gModeSelection == VERSUS) {
-            Vec3f pos = {0, 0, 0};
+            FVector pos = { 0, 0, 0 };
 
             gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
             gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][138], 138, 1, 0.8333333f));

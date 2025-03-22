@@ -87,6 +87,14 @@ void PortMenu::AddSettings() {
     // General Settings
     AddSidebarEntry("Settings", "General", 3);
     WidgetPath path = { "Settings", "General", SECTION_COLUMN_1 };
+
+    static bool isFullscreen = false;
+    AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
+        .ValuePointer(&isFullscreen)
+        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetInstance()->GetWindow()->IsFullscreen(); })
+        .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
+        .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
+
     AddWidget(path, "Menu Theme", WIDGET_CVAR_COMBOBOX)
         .CVar("gSettings.Menu.Theme")
         .Options(ComboboxOptions()
@@ -175,7 +183,6 @@ void PortMenu::AddSettings() {
 
     // Graphics Settings
     static int32_t maxFps;
-    static bool isFullscreen = false;
     const char* tooltip = "";
     if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         maxFps = 360;
@@ -189,11 +196,8 @@ void PortMenu::AddSettings() {
     }
     path.sidebarName = "Graphics";
     AddSidebarEntry("Settings", "Graphics", 3);
-    AddWidget(path, "Toggle Fullscreen", WIDGET_CHECKBOX)
-        .ValuePointer(&isFullscreen)
-        .PreFunc([](WidgetInfo& info) { isFullscreen = Ship::Context::GetInstance()->GetWindow()->IsFullscreen(); })
-        .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
-        .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
+    AddWidget(path, "Renderer API (Needs reload)", WIDGET_VIDEO_BACKEND);
+
 #ifndef __APPLE__
     AddWidget(path, "Internal Resolution: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar(CVAR_INTERNAL_RESOLUTION)
@@ -276,7 +280,6 @@ void PortMenu::AddSettings() {
                      .Min(0)
                      .Max(360)
                      .DefaultValue(80));
-    AddWidget(path, "Renderer API (Needs reload)", WIDGET_VIDEO_BACKEND);
     AddWidget(path, "Enable Vsync", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_VSYNC_ENABLED)
         .PreFunc([](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_VSYNC).active; })

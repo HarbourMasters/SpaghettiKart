@@ -5,7 +5,7 @@
 
 #include "MarioRaceway.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
 
@@ -191,7 +191,7 @@ void MarioRaceway::BeginPlay() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        FVector pos = { 0, 0, 0 };
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][40], 40, 3, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 3, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][265], 265, 3, 0.8333333f));

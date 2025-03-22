@@ -6,7 +6,7 @@
 
 #include "KoopaTroopaBeach.h"
 #include "World.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Crab.h"
 #include "assets/koopa_troopa_beach_data.h"
@@ -172,7 +172,7 @@ void KoopaTroopaBeach::BeginPlay() {
     }
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][60], 60, 1, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][120], 120, 1, 0.8333333f));

@@ -38,7 +38,7 @@ public:
     f32 Diameter = 0.0f; // Waddle in a circle around the spawn point at this diameter.
     uint16_t MirrorModeAngleOffset;
 
-    explicit OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behaviour);
+    explicit OPenguin(FVector pos, u16 direction, PenguinType type, Behaviour behaviour);
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;

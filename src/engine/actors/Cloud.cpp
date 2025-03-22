@@ -1,6 +1,6 @@
 #include <libultraship.h>
 
-#include "ACloud.h"
+#include "Cloud.h"
 #include "engine/Actor.h"
 #include "World.h"
 
@@ -14,11 +14,11 @@ extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }
 
-ACloud::ACloud(Vec3f pos) {
+ACloud::ACloud(FVector pos) {
 	Name = "Cloud";
-	Pos[0] = pos[0];
-	Pos[1] = pos[1];
-	Pos[2] = pos[2];
+	Pos[0] = pos.x;
+	Pos[1] = pos.y;
+	Pos[2] = pos.z;
 	Rot[0] = 0;
 	Rot[1] = 0;
 	Rot[2] = 0;

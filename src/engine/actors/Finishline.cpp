@@ -2,7 +2,7 @@
 #include <libultra/gbi.h>
 #include "CoreMath.h"
 
-#include "AFinishline.h"
+#include "Finishline.h"
 #include "engine/Actor.h"
 #include "World.h"
 #include "assets/common_data.h"

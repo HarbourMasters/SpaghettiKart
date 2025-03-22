@@ -1,4 +1,4 @@
-#include "ATree.h"
+#include "Tree.h"
 
 #include <libultra/gbi.h>
 

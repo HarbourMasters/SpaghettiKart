@@ -34,7 +34,7 @@ extern s8 gPlayerCount;
 }
 
 
-OPenguin::OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behaviour) {
+OPenguin::OPenguin(FVector pos, u16 direction, PenguinType type, Behaviour behaviour) {
     Name = "Penguin";
     _type = type;
     _bhv = behaviour;
@@ -44,9 +44,9 @@ OPenguin::OPenguin(Vec3f pos, u16 direction, PenguinType type, Behaviour behavio
     init_object(_objectIndex, 0);
 
     Object *object = &gObjectList[_objectIndex];
-    object->origin_pos[0] = pos[0] * xOrientation;
-    object->origin_pos[1] = pos[1];
-    object->origin_pos[2] = pos[2];
+    object->origin_pos[0] = pos.x * xOrientation;
+    object->origin_pos[1] = pos.y;
+    object->origin_pos[2] = pos.z;
     object->unk_0C6 = direction;
 
     switch(type) {

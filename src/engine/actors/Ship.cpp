@@ -13,18 +13,20 @@ extern "C" {
 }
 
 AShip::AShip(FVector pos, AShip::Skin skin) {
-    Name = "Ship";
     Spawn = pos;
     Spawn.y += 10;
-
+    
     switch(skin) {
         case GHOSTSHIP:
+            Name = "Ghostship";
             _skin = ghostship_Plane_mesh;
             break;
         case SHIP2:
+            Name = "Ship_1";
             _skin = ship2_SoH_mesh;
             break;
         case SHIP3:
+            Name = "Ship_2";
             _skin = ship3_2Ship_mesh;
             break;
     }

@@ -189,7 +189,7 @@ void PodiumCeremony::BeginPlay() {
 
     OTrophy* trophy = reinterpret_cast<OTrophy*>(gWorldInstance.AddObject(new OTrophy(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY)));
 
-    Vec3f kart = {0, 0, 0};
+    FVector kart = { 0, 0, 0 };
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][3], 3, 5, 1.25f));
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][40], 40, 0, 1.0f));
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][60], 60, 0, 1.0f));

@@ -146,7 +146,7 @@ void Skyscraper::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_skyscraper_item_box_spawns));
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = {0, 0, 0};
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][20], 20, 0, 1.0f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][40], 40, 0, 1.0f));

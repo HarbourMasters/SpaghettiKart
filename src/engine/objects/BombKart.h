@@ -50,7 +50,7 @@ public:
     Collision _Collision;
 
     // Set waypoint to NULL if using a spawn position and not a waypoint.
-    explicit OBombKart(Vec3f pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
+    explicit OBombKart(FVector pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
 
     ~OBombKart() {
         _count--;

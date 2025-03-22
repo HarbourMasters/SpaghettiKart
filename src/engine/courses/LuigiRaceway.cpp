@@ -8,7 +8,7 @@
 #include "engine/objects/BombKart.h"
 #include "assets/luigi_raceway_data.h"
 #include "engine/objects/HotAirBalloon.h"
-#include "engine/actors/AFinishline.h"
+#include "engine/actors/Finishline.h"
 
 extern "C" {
 #include "main.h"
@@ -175,7 +175,7 @@ void LuigiRaceway::BeginPlay() {
     }
 
     if (gModeSelection == VERSUS) {
-        Vec3f pos = { 0, 0, 0 };
+        FVector pos = { 0, 0, 0 };
 
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 1, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f));
