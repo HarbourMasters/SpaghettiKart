@@ -11,7 +11,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include "port/Game.h"
-#include "engine/editor/SaveLevel.h"
+#include "engine/editor/SceneManager.h"
 
 extern "C" {
 #include "code_800029B0.h"

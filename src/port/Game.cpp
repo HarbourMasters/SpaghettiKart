@@ -47,7 +47,7 @@
 
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
-#include "engine/editor/SaveLevel.h"
+#include "engine/editor/SceneManager.h"
 
 extern "C" {
 #include "main.h"
@@ -212,8 +212,12 @@ void HM_DrawIntro() {
     gMenuIntro.HM_DrawIntro();
 }
 
-void CM_LoadLevelProps() {
-    Editor::LoadLevel();
+void CM_SpawnFromLevelProps() {
+    // Spawning actors needs to be delayed to the correct time.
+    // And loadlevel needs to happen asap
+
+    //Editor::LoadLevel(nullptr);
+   // Editor::SpawnFromLevelProps();
 }
 
 World* GetWorld(void) {

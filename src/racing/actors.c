@@ -1227,8 +1227,8 @@ void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
     CM_CleanWorld();
-    CM_LoadLevelProps();
 
+    CM_SpawnFromLevelProps();
     CM_BeginPlay();
     spawn_course_actors();
 }

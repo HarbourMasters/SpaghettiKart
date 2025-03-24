@@ -77,7 +77,7 @@ GameEngine::GameEngine() {
         if (std::filesystem::is_directory(patches_path)) {
             for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
                 auto ext = p.path().extension().string();
-                if (StringHelper::IEquals(ext, ".otr") || StringHelper::IEquals(ext, ".o2r")) {
+                if (StringHelper::IEquals(ext, ".zip") || StringHelper::IEquals(ext, ".o2r")) {
                     archiveFiles.push_back(p.path().generic_string());
                 }
             }

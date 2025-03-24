@@ -16,6 +16,8 @@
 #include "CoreMath.h"
 #include "World.h"
 #include "AllActors.h"
+#include "port/Game.h"
+#include "src/engine/editor/SceneManager.h"
 
 namespace Editor {
 
@@ -24,51 +26,36 @@ namespace Editor {
     }
 
     void ContentBrowserWindow::DrawElement() {
-        static bool refresh = true;
         static bool actorContent = false;
         static bool objectContent = false;
         static bool customContent = false;
+        static bool trackContent = false;
 
-        // List the available mods/o2r files
-        // for (size_t i = 0; i < GameEngine::Instance->archiveFiles.size(); i++) {
-        //     auto str = GameEngine::Instance->archiveFiles[i];
-        //     if (str.starts_with("./mods/")) {
-        //         ImGui::Text(GameEngine::Instance->archiveFiles[i].c_str());
-        //     }
-        // }
+
 
         if (ImGui::Button(ICON_FA_REFRESH)) {
-            refresh = true;
+            Refresh = true;
         }
 
         // Query content in o2r and add them to Content
-        if (refresh) {
-            refresh = false;
+        if (Refresh) {
+            Refresh = false;
+            Tracks.clear();
             Content.clear();
+            TrackAssetMap.clear();
+            TrackPath.clear();
+            FindTracks();
             FindContent();
             return;
         }
 
+        ContentBrowserWindow::FolderButton("Tracks", trackContent);
+        ContentBrowserWindow::FolderButton("Actors", actorContent);
+        ContentBrowserWindow::FolderButton("Objects", objectContent);
+        ContentBrowserWindow::FolderButton("Custom", customContent);
 
-        std::string actorText = fmt::format("{0} {1}", actorContent ? ICON_FA_FOLDER_OPEN_O : ICON_FA_FOLDER_O, "Actors");
-        if (ImGui::Button(actorText.c_str(), ImVec2(80, 32))) {
-            actorContent = !actorContent;
-            objectContent = false;
-            customContent = false;
-        }
-
-        std::string objectText = fmt::format("{0} {1}", objectContent ? ICON_FA_FOLDER_OPEN_O : ICON_FA_FOLDER_O, "Objects");
-        if (ImGui::Button(objectText.c_str(), ImVec2(80, 32))) {
-            objectContent = !objectContent;
-            actorContent = false;
-            customContent = false;
-        }
-
-        std::string customText = fmt::format("{0} {1}", customContent ? ICON_FA_FOLDER_OPEN_O : ICON_FA_FOLDER_O, "Custom");
-        if (ImGui::Button(customText.c_str(), ImVec2(80, 32))) {
-            customContent = !customContent;
-            actorContent = false;
-            objectContent = false;
+        if (trackContent) {
+            AddTrackContent();
         }
 
         if (actorContent) {
@@ -81,6 +68,13 @@ namespace Editor {
 
         if (customContent) {
             AddCustomContent();
+        }
+    }
+
+    void ContentBrowserWindow::FolderButton(const char* label, bool& contentFlag, const ImVec2& size) {
+        std::string buttonText = fmt::format("{0} {1}", contentFlag ? ICON_FA_FOLDER_OPEN_O : ICON_FA_FOLDER_O, label);
+        if (ImGui::Button(buttonText.c_str(), size)) {
+            contentFlag = !contentFlag;
         }
     }
 
@@ -124,6 +118,39 @@ namespace Editor {
         { "Snowman", [](const FVector& pos) { return new OSnowman(pos); } },
         { "Podium", [](const FVector& pos) { return new OPodium(pos); } },
     };
+
+    void ContentBrowserWindow::AddTrackContent() {
+        size_t i_track = 0;
+        for (const auto& track : Tracks) {
+            std::string label = fmt::format("{}##{}", track, i_track);
+            bool foundTrackFile = false;
+
+            for (auto& asset : TrackAssetMap[track]) {
+                if (asset.ends_with("track.json")) {
+                    foundTrackFile = true;
+                    if (ImGui::Button(label.c_str())) {
+
+                        SetCourseByClass(new Course());
+                        LoadLevel(asset);
+        
+                        gGamestateNext = RACING;
+                        break;
+                    }
+                }
+            }
+
+            if (!foundTrackFile) {
+                std::string label = fmt::format("{} {}", "ADD PATH AND MESH TO TRACK PROPS AND CLICK HERE TO INIT TRACK:", track);
+                if (ImGui::Button(label.c_str())) {
+                    SetSceneFile(TrackPath[track]);
+                    SaveLevel();
+                    Refresh = true;
+                }
+            }
+
+            i_track += 1;
+        }
+    }
 
     void ContentBrowserWindow::AddActorContent() {
         FVector pos = GetPositionAheadOfCamera(300.0f);
@@ -183,12 +210,47 @@ namespace Editor {
         }
     }
 
+    // Finds modded archives only. For discovering tracks
+    void ContentBrowserWindow::FindTracks() {
+
+        // ListFiles(whitelist, blacklist);
+        auto ptr2 = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"*/tracks/*"}, {""});
+        if (ptr2) {
+            auto files = *ptr2;
+            std::set<std::string> uniqueTracks;
+        
+            for (const auto& file : files) {
+                //printf("TRACK FILES: %s\n", file.c_str());
+        
+                // Find "tracks/"
+                size_t pos = file.find("tracks/");
+                if (pos == std::string::npos) continue; // Skip if not found
+        
+                // Extract track name
+                size_t start = pos + 7; // Move past "tracks/"
+                size_t end = file.find('/', start); // Find next '/'
+                std::string trackName = file.substr(start, end - start);
+        
+                TrackAssetMap[trackName].push_back(file);
+                
+                // Insert into set (ensuring uniqueness)
+                uniqueTracks.insert(trackName);
+
+                // Extract directory path (remove filename)
+                size_t lastSlash = file.find_last_of('/');
+                std::string directoryPath = (lastSlash != std::string::npos) ? file.substr(0, lastSlash) : file;
+
+                // Store in TrackPath
+                TrackPath[trackName] = directoryPath;
+            }
+            
+            // Move unique tracks into the vector
+            Tracks.assign(uniqueTracks.begin(), uniqueTracks.end());
+        }
+    }
+
     void ContentBrowserWindow::FindContent() {
-        std::list<std::string> myList = {"tracks/*", "actors/*", "objects/*"};
-        std::list<std::string> myList2 = {""};
-
-
-        auto ptr = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles(myList, myList2);
+        auto ptr = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"*tracks/*","actors/*", "objects/*"}, {""});
         if (ptr) {
             auto files = *ptr;
             for (const auto& file : files) {
