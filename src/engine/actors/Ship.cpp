@@ -35,6 +35,7 @@ AShip::AShip(FVector pos, AShip::Skin skin) {
             _skin = ship3_2Ship_mesh;
             break;
     }
+    Model = _skin;
 }
 
 void AShip::Tick() {
@@ -50,18 +51,6 @@ void AShip::Tick() {
 
     // // Rotate to face forward along the circle
     // Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
-}
-
-void AShip::Draw(Camera *camera) {
-    Mat4 shipMtx;
-
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-
-    ApplyMatrixTransformations(shipMtx, *(FVector*)Pos, *(IRotator*)Rot, Scale);
-    if (render_set_position(shipMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, _skin);
-    }
 }
 
 bool AShip::IsMod() { return true; }

@@ -16,10 +16,7 @@ public:
     virtual ~AStarship() = default;
 
     virtual void Tick() override;
-    virtual void Draw(Camera*) override;
     virtual bool IsMod() override;
 
     FVector Spawn;
-    FVector Pos;
-    IRotator Rot = {0, 0, 0};
 };

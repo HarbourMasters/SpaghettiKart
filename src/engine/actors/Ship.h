@@ -23,7 +23,6 @@ public:
     virtual ~AShip() = default;
 
     virtual void Tick() override;
-    virtual void Draw(Camera*) override;
     virtual bool IsMod() override;
 
     FVector Spawn;

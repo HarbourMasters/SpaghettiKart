@@ -54,6 +54,7 @@ public:
     GameObject BlueCollision;
 
     FVector Pos; // Global scene view
+    IRotator Rot = {0, 0, 0};
     float _gizmoOffset = 8.0f;
     float AllAxisRadius = 4.0f; // Free move selection radius
     float PickDistance;

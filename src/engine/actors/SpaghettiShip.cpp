@@ -1,6 +1,7 @@
 #include "SpaghettiShip.h"
 
 #include <libultra/gbi.h>
+#include "Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -11,8 +12,12 @@ extern "C" {
 
 ASpaghettiShip::ASpaghettiShip(FVector pos) {
     Name = "Spaghetti Ship";
+    Pos[0] = pos.x;
+    Pos[1] = pos.y;
+    Pos[2] = pos.z;
     Spawn = pos;
     Spawn.y += 10;
+    Scale = {0.4, 0.4, 0.4};
 }
 
 void ASpaghettiShip::Tick() {
@@ -23,12 +28,11 @@ void ASpaghettiShip::Tick() {
     angle += speed; // Increment the angle to move in a circle
 
     // Update the position based on a circular path
-    Pos.x = Spawn.x + radius * cosf(angle);
-    Pos.z = Spawn.z + radius * sinf(angle);
+    Pos[0] = Spawn.x + radius * cosf(angle);
+    Pos[2] = Spawn.z + radius * sinf(angle);
 
     // Rotate to face forward along the circle
-    Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
-
+    Rot[1] = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
 
     WheelRot.pitch += 500;
 }
@@ -37,29 +41,27 @@ void ASpaghettiShip::Draw(Camera *camera) {
     Mat4 shipMtx;
     Mat4 objectMtx;
     Mat4 resultMtx;
-    Vec3f hullPos = {Pos.x, Pos.y, Pos.z};
-    Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
+    Vec3f hullPos = {Pos[0], Pos[1], Pos[2]};
+    Vec3s hullRot = {Rot[0], Rot[1], Rot[2]};
     Vec3s rot = {WheelRot.pitch, WheelRot.yaw, WheelRot.roll};
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_pos_rotation_xyz(shipMtx, hullPos, *(Vec3s*)&Rot);
-    mtxf_scale(shipMtx, 0.4);
+    ApplyMatrixTransformations(shipMtx, *(FVector*)Pos, *(IRotator*)Rot, Scale);
     if (render_set_position(shipMtx, 0) != 0) {}
 
     // Render the ships hull
-    Vec3f hullPos2 = {0, 0, 0};
-    mtxf_translate(objectMtx, hullPos2);
+    ApplyMatrixTransformations(objectMtx, {0, 0, 0}, {0, 0, 0}, {1, 1, 1});
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
         gSPDisplayList(gDisplayListHead++, ship1_spag1_mesh);
     }
 
     // Front tyre
-    Vec3f pos = {0, 0, 110};
-    mtxf_rotate_x(shipMtx, WheelRot.pitch);
-    mtxf_translate(objectMtx, pos);
+    ApplyMatrixTransformations(objectMtx, FVector(0, 0, 110), IRotator(0, 0, 0), FVector(1, 1, 1));
+    mtxf_identity(shipMtx);
+    AddLocalRotation(shipMtx, WheelRot);
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
         gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);
@@ -67,9 +69,8 @@ void ASpaghettiShip::Draw(Camera *camera) {
     }
     
     // Back tyre
-    Vec3f pos2 = {0, 0, -165};
-    mtxf_rotate_x(shipMtx, WheelRot.pitch);
-    mtxf_translate(objectMtx, pos2);
+    AddLocalRotation(shipMtx, WheelRot);
+    ApplyMatrixTransformations(objectMtx, FVector(0, 0, -165), {0, 0, 0}, {1, 1, 1});
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
         gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);

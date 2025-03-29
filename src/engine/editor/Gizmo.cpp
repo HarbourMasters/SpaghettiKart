@@ -206,15 +206,8 @@ void Gizmo::DrawHandles() {
     Mat4 mainMtx;
     
     Vec3s rot = {0, 0, 0};
-    mtxf_pos_rotation_xyz(mainMtx, &Pos.x, rot);
-    //mtxf_scale(mainMtx, 0.05f);
-
-
+    ApplyMatrixTransformations(mainMtx, Pos, Rot, {1, 1, 1});
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    //if (render_set_position(mainMtx, 0) != 0) {
-        //gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);
-        //gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    //}
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
@@ -222,28 +215,20 @@ void Gizmo::DrawHandles() {
         
     Mat4 RedXMtx;
     Vec3s rot1 = {0, 0, 0};
-    Vec3f pos1 = {Pos.x, Pos.y, Pos.z - _gizmoOffset};
-    mtxf_pos_rotation_xyz(RedXMtx, pos1, rot1);
-    mtxf_scale(RedXMtx, 0.05);
+    FVector pos1 = {Pos.x, Pos.y, Pos.z - _gizmoOffset};
+    ApplyMatrixTransformations(RedXMtx, pos1, Rot, {0.05f, 0.05f, 0.05f});
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    //if (render_set_position(RedXMtx, 0) != 0) {
-    //}
-
-    Vec3s rot2 = {0, 0x4000, 0};
-
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0xFF, 0, 0x49, 0x49, 0x49);
 
     Mat4 GreenYMtx;
-    Vec3f pos2 = {Pos.x - _gizmoOffset, Pos.y, Pos.z};
-    mtxf_pos_rotation_xyz(GreenYMtx, pos2, rot2);
-    mtxf_scale(GreenYMtx, 0.05);
+    FVector pos2 = {Pos.x - _gizmoOffset, Pos.y, Pos.z};
+    ApplyMatrixTransformations(GreenYMtx, pos2, IRotator(0, 90, 0), {0.05f, 0.05f, 0.05f});
+
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    //if (render_set_position(GreenYMtx, 0) != 0) {
-    //}
 
     Vec3s rot3 = {0x4000, 0, 0};
 
@@ -252,12 +237,10 @@ void Gizmo::DrawHandles() {
         0, 0, 0xFF, 0x49, 0x49, 0x49);
 
     Mat4 BlueZMtx;
-    Vec3f pos3 = {Pos.x, Pos.y + _gizmoOffset, Pos.z};
-    mtxf_pos_rotation_xyz(BlueZMtx, pos3, rot3);
-    mtxf_scale(BlueZMtx, 0.05);
+    FVector pos3 = {Pos.x, Pos.y + _gizmoOffset, Pos.z};
+    ApplyMatrixTransformations(BlueZMtx, pos3, IRotator(90, 0, 0), {0.05f, 0.05f, 0.05f});
+
     Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-    //if (render_set_position(BlueZMtx, 0) != 0) {
-    //}
 }
 }

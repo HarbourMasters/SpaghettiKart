@@ -38,6 +38,8 @@ public:
     virtual void Draw(Camera*);
     virtual void Collision(Player* player, AActor* actor);
     virtual void VehicleCollision(s32 playerId, Player* player);
+    void SetLocation(FVector pos);
+    FVector GetLocation() const;
 
     virtual void Destroy();
     virtual bool IsMod();

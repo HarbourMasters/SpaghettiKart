@@ -20,8 +20,8 @@ public:
     virtual bool IsMod() override;
 
     FVector Spawn;
-    FVector Pos;
-    IRotator Rot = {0, 0, 0};
+    //FVector Pos;
+    //IRotator Rot = {0, 0, 0};
     IRotator WheelRot = {0, 0, 0};
 private:
     f32 scale;

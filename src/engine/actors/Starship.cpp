@@ -1,6 +1,7 @@
 #include "Starship.h"
 
 #include <libultra/gbi.h>
+#include "Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -12,6 +13,9 @@ extern "C" {
 AStarship::AStarship(FVector pos) {
     Name = "Starship";
     Spawn = pos;
+    SetLocation(pos);
+    Scale = FVector(1.5, 1.5, 1.5);
+    Model = starship_Cube_mesh;
 }
 
 void AStarship::Tick() {
@@ -22,29 +26,17 @@ void AStarship::Tick() {
     angle += speed;
 
     // Move relative to the initial position
-    Pos.x = Spawn.x + radius * cosf(angle);
-    Pos.z = Spawn.z + radius * sinf(angle);
+
+    FVector pos = GetLocation();
+    pos.x = Spawn.x + radius * cosf(angle);
+    pos.z = Spawn.z + radius * sinf(angle);
+    SetLocation(pos);
 
     // Keep y from changing (or adjust it if necessary)
-    Pos.y = Spawn.y;
+    //Pos.y = Spawn.y;
 
     // Rotate to face forward along the circle
-    Rot.yaw = angle * (180.0f / M_PI) + 90.0f;
-}
-
-void AStarship::Draw(Camera *camera) {
-    Mat4 shipMtx;
-    Vec3f hullPos = {Pos.x, Pos.y, Pos.z};
-    Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
-
-    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-
-    mtxf_pos_rotation_xyz(shipMtx, hullPos, hullRot);
-    mtxf_scale(shipMtx, 1.5);
-    if (render_set_position(shipMtx, 0) != 0) {
-        gSPDisplayList(gDisplayListHead++, starship_Cube_mesh);
-    }
+    Rot[1] = angle * (180.0f / M_PI) + 90.0f;
 }
 
 bool AStarship::IsMod() { return true; }
