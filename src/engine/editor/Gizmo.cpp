@@ -200,14 +200,14 @@ void Gizmo::Draw() {
 
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
-    
+
     ApplyMatrixTransformations(mainMtx, Pos, Rot, {1, 1, 1});
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0xFF, 0, 0, 0x49, 0x49, 0x49);
-        
+
     Mat4 RedXMtx;
     ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, {0.05f, 0.05f, 0.05f});
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
