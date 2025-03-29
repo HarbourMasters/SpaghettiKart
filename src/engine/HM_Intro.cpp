@@ -40,8 +40,7 @@ void HarbourMastersIntro::HM_InitIntro() {
 
     _pos = FVector(-1000, -205, -800); // -1000, -210, -800
     _rot = IRotator(-5, 100, 0);
-    _scale = 0.7f;
-    _trackScale = 2.0f;
+    _scale = {0.7f, 0.7f, 0.7f};
 
     _ship2Pos = FVector(300, -210, -1960);
     _ship2Rot = IRotator(0, 45, 0);
@@ -53,22 +52,14 @@ void HarbourMastersIntro::HM_InitIntro() {
     _rotHM64 = IRotator(0, -90, -4); // -0x2100
 
     _hPos = FVector(-2000, 100, -4900);
-    _hRot = IRotator(0, 0, 0);
+    _hRot = IRotator(0, -45.0f, 0);
+    _hScale = {2.0f, 2.0f, 2.0f};
 
     ground_f3d_material_013_lights = gdSPDefLights1(
 	0x7F, 0x30, 0x80,
 	0x60, 20, 10, 0x49, 0x49, 0x49
     );
 }
-
-const float BOB_AMPLITUDE = 1.1f;
-const float BOB_SPEED = 0.05f;
-
-const float TILT_AMPLITUDE = 1.5f;
-const float TILT_SPEED = 0.05f;
-
-const float ROLL_AMPLITUDE = 1.0f;
-const float ROLL_SPEED = 0.03f;
 
 void HarbourMastersIntro::HM_TickIntro() {
     _water += 1;
@@ -93,15 +84,14 @@ void HarbourMastersIntro::HM_TickIntro() {
     find_and_set_tile_size((uintptr_t) ((void*)mat_water_water2), _water, 0);;
 }
 
-// @args amplitudes
 void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
     float time = (float)gGlobalTimer;
 
     pos.y = -210 + bobAmp * sin(time * bobSpeed);
 
-    rot.pitch = tiltAmp * sin(time * tiltSpeed);
+    rot.pitch = (tiltAmp * sin(time * tiltSpeed)) * (UINT16_MAX / 360);
 
-    rot.roll = rollAmp * sin(time * rollSpeed);
+    rot.roll = (rollAmp * sin(time * rollSpeed)) * (UINT16_MAX / 360);
 }
 
 void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
@@ -109,54 +99,37 @@ void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 b
 
     pos.y = -205 + bobAmp * sin(time * bobSpeed);
 
-    rot.pitch = -5 + tiltAmp * sin(time * tiltSpeed);
+    rot.pitch = (-5 + tiltAmp * sin(time * tiltSpeed))  * (UINT16_MAX / 360);
 
-    rot.roll = rollAmp * sin(time * rollSpeed);
+    rot.roll = (rollAmp * sin(time * rollSpeed))  * (UINT16_MAX / 360);
 }
 
 void HarbourMastersIntro::HM_DrawIntro() {
-    const f32 conv = 8192.0f / 45.0f; // Convert to hex degrees
-    Mtx* mtx = &gGfxPool->mtxObject[0];
     HarbourMastersIntro::Setup();
 
-    Mat4 someMtx;
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    mtxf_identity(someMtx);
-    render_set_position(someMtx, 0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
 
-    Vec3f pos = {_pos.x, _pos.y, _pos.z};
-    Vec3s rot = {_rot.pitch * conv, _rot.yaw * conv, _rot.roll * conv};
-    Mat4 matrix;
-    mtxf_pos_rotation_xyz(matrix, pos, rot);
-    mtxf_scale(matrix, _scale);
-    render_set_position(matrix, 0);
+    Mat4 mtx_spaghettiShip;
+    ApplyMatrixTransformations(mtx_spaghettiShip, _pos, _rot, _scale);
+    render_set_position(mtx_spaghettiShip, 0);
     gSPDisplayList(gDisplayListHead++, ship1_spag1_mesh);
 
-    Mat4 matrix2;
-    Vec3s rot2 = {_ship2Rot.pitch * conv, _ship2Rot.yaw * conv, _ship2Rot.roll * conv};
-    Vec3f pos2 = {_ship2Pos.x, _ship2Pos.y, _ship2Pos.z};
-    mtxf_pos_rotation_xyz(matrix2, pos2, rot2);
-    mtxf_scale(matrix2, _scale);
-    render_set_position(matrix2, 0);
+    Mat4 mtx_ship2;
+    ApplyMatrixTransformations(mtx_ship2, _ship2Pos, _ship2Rot, _scale);
+    render_set_position(mtx_ship2, 0);
     gSPDisplayList(gDisplayListHead++, ship2_SoH_mesh);
 
-    Mat4 matrix3;
-    Vec3s rot3 = {_shipRot.pitch * conv, _shipRot.yaw * conv, _shipRot.roll * conv};
-    Vec3f pos3 = {_shipPos.x, _shipPos.y, _shipPos.z};
-    mtxf_pos_rotation_xyz(matrix3, pos3, rot3);
-    mtxf_scale(matrix3, _scale);
-    render_set_position(matrix3, 0);
+    Mat4 mtx_ship3;
+    ApplyMatrixTransformations(mtx_ship3, _shipPos, _shipRot, _scale);
+    render_set_position(mtx_ship3, 0);
     gSPDisplayList(gDisplayListHead++, ship3_2Ship_mesh);
 
-    Mat4 hMatrix;
-    Vec3f hPos = {_hPos.x, _hPos.y, _hPos.z};
-    Vec3s hRot = {_hRot.pitch * conv, -0x2100, _hRot.roll * conv};
-    mtxf_pos_rotation_xyz(hMatrix, hPos, hRot);
-    mtxf_scale(hMatrix, _trackScale);
-    render_set_position(hMatrix, 0);
+    Mat4 mtx_geo;
+    ApplyMatrixTransformations(mtx_geo, _hPos, _hRot, _hScale);
+    render_set_position(mtx_geo, 0);
 
     gSPDisplayList(gDisplayListHead++, ground_map_mesh);
     gSPDisplayList(gDisplayListHead++, powered_Text_mesh);

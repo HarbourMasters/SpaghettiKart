@@ -1,4 +1,4 @@
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "../CoreMath.h"
 #include <libultra/types.h>
@@ -99,7 +99,7 @@ namespace Editor {
         }
     }
 
-    void Editor::AddObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
+    GameObject* Editor::AddObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
         //printf("After AddObj: Pos(%f, %f, %f), Name: %s, Model: %s\n", 
         // pos->x, pos->y, pos->z, name, model);
         if (model != nullptr) {
@@ -109,6 +109,7 @@ namespace Editor {
             eGameObjects.push_back(new GameObject(name, pos, rot, scale, model, {}, GameObject::CollisionType::BOUNDING_BOX,
                                                 22.0f, despawnFlag, despawnValue));
         }
+        return eGameObjects.back();
     }
 
     void Editor::AddLight(const char* name, FVector* pos, s8* rot) {

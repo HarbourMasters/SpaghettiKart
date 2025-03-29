@@ -3,12 +3,14 @@
 #include "../type/AudioSample.h"
 #include "spdlog/spdlog.h"
 
-std::shared_ptr<Ship::IResource> SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource>
+SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                         std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    std::shared_ptr<AudioSample> bank = std::make_shared<AudioSample>(file->InitData);
+    std::shared_ptr<AudioSample> bank = std::make_shared<AudioSample>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     bank->loop.start = reader->ReadUInt32();

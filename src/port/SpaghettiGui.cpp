@@ -82,6 +82,9 @@ namespace Ship {
             ImGuiID bottomId = ImGui::DockBuilderSplitNode(dockId, ImGuiDir_Down, 0.25f, nullptr, nullptr);
             ImGui::DockBuilderSetNodeSize(bottomId, ImVec2(viewport->Size.x, viewport->Size.y * 0.1f));
 
+            ImGuiID bottomLeftId = ImGui::DockBuilderSplitNode(bottomId, ImGuiDir_Left, 0.25f, nullptr, nullptr);
+            ImGui::DockBuilderSetNodeSize(bottomId, ImVec2(viewport->Size.x, viewport->Size.y * 0.1f));
+
             ImGuiID rightId = ImGui::DockBuilderSplitNode(dockId, ImGuiDir_Right, 0.25f, nullptr, nullptr);
             ImGui::DockBuilderSetNodeSize(rightId, ImVec2(viewport->Size.x * 0.15f, viewport->Size.y));
 
@@ -91,10 +94,11 @@ namespace Ship {
 
             ImGuiID rightBottomId = ImGui::DockBuilderSplitNode(rightId, ImGuiDir_Down, 0.25f, nullptr, nullptr);
             ImGui::DockBuilderSetNodeSize(rightBottomId, ImVec2(viewport->Size.x, viewport->Size.y * 0.25));
-            
+
             ImGui::DockBuilderDockWindow("Properties", rightBottomId);
             ImGui::DockBuilderDockWindow("Tools", topId);
             ImGui::DockBuilderDockWindow("Content Browser", bottomId);
+            ImGui::DockBuilderDockWindow("File Explorer", bottomLeftId);
 
             ImGui::DockBuilderFinish(dockId);
         }

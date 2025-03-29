@@ -1,4 +1,4 @@
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "../CoreMath.h"
 #include <libultra/types.h>

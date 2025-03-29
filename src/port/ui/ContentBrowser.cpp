@@ -26,13 +26,6 @@ namespace Editor {
     }
 
     void ContentBrowserWindow::DrawElement() {
-        static bool actorContent = false;
-        static bool objectContent = false;
-        static bool customContent = false;
-        static bool trackContent = false;
-
-
-
         if (ImGui::Button(ICON_FA_REFRESH)) {
             Refresh = true;
         }
@@ -49,31 +42,40 @@ namespace Editor {
             return;
         }
 
-        ContentBrowserWindow::FolderButton("Tracks", trackContent);
-        ContentBrowserWindow::FolderButton("Actors", actorContent);
-        ContentBrowserWindow::FolderButton("Objects", objectContent);
-        ContentBrowserWindow::FolderButton("Custom", customContent);
+        ImGui::BeginChild("LeftPanel", ImVec2(120, 0), true, ImGuiWindowFlags_None);
 
-        if (trackContent) {
+        ContentBrowserWindow::FolderButton("Tracks", TrackContent);
+        ContentBrowserWindow::FolderButton("Actors", ActorContent);
+        ContentBrowserWindow::FolderButton("Objects", ObjectContent);
+        ContentBrowserWindow::FolderButton("Custom", CustomContent);
+        ImGui::EndChild();
+        ImGui::SameLine();
+        ImGui::BeginChild("RightPanel", ImVec2(0, 0), true, ImGuiWindowFlags_None);
+        if (TrackContent) {
             AddTrackContent();
         }
 
-        if (actorContent) {
+        if (ActorContent) {
             AddActorContent();
         }
 
-        if (objectContent) {
+        if (ObjectContent) {
             AddObjectContent();
         }
 
-        if (customContent) {
+        if (CustomContent) {
             AddCustomContent();
         }
+        ImGui::EndChild();
     }
 
     void ContentBrowserWindow::FolderButton(const char* label, bool& contentFlag, const ImVec2& size) {
         std::string buttonText = fmt::format("{0} {1}", contentFlag ? ICON_FA_FOLDER_OPEN_O : ICON_FA_FOLDER_O, label);
         if (ImGui::Button(buttonText.c_str(), size)) {
+            TrackContent = false;
+            ActorContent = false;
+            ObjectContent = false;
+            CustomContent = false;
             contentFlag = !contentFlag;
         }
     }
@@ -189,6 +191,8 @@ namespace Editor {
     }
 
     void ContentBrowserWindow::AddCustomContent() {
+        FVector pos = GetPositionAheadOfCamera(300.0f);
+
         size_t i_custom = 0;
         for (const auto& file : Content) {
             if ((i_custom != 0) && (i_custom % 10 == 0)) {
@@ -201,7 +205,7 @@ namespace Editor {
                 int coll;
                 //printf("ContentBrowser.cpp: name: %s\n", test.c_str());
                 std::string name = file.substr(file.find_last_of('/') + 1);
-                auto actor = gWorldInstance.AddStaticMeshActor(name, FVector(50, 100, 0), IRotator(0, 90, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
+                auto actor = gWorldInstance.AddStaticMeshActor(name, FVector(pos), IRotator(0, 0, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
                 // This is required because ptr gets cleaned up.
                 actor->Model = "__OTR__" + file;
 

@@ -40,9 +40,8 @@ private:
     f32 _cameraAcceleration;
 
     FVector _pos;
-    f32 _scale;
-    f32 _trackScale;
     IRotator _rot;
+    FVector _scale;
 
     FVector _shipPos;
     IRotator _shipRot;
@@ -57,6 +56,7 @@ private:
 
     FVector _hPos;
     IRotator _hRot;
+    FVector _hScale;
 };
 
 extern "C" {

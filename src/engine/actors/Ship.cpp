@@ -2,6 +2,7 @@
 
 #include <libultra/gbi.h>
 #include "CoreMath.h"
+#include "Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -15,6 +16,10 @@ extern "C" {
 AShip::AShip(FVector pos, AShip::Skin skin) {
     Spawn = pos;
     Spawn.y += 10;
+    Pos[0] = pos.x;
+    Pos[1] = pos.y;
+    Pos[2] = pos.z;
+    Scale = FVector(0.4, 0.4, 0.4);
     
     switch(skin) {
         case GHOSTSHIP:
@@ -49,15 +54,11 @@ void AShip::Tick() {
 
 void AShip::Draw(Camera *camera) {
     Mat4 shipMtx;
-    Vec3f hullPos = {Pos.x, Pos.y, Pos.z};
-    //Vec3s hullRot = {Rot.pitch, Rot.yaw, Rot.roll};
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    IRotator rot = Rot.ToBinary(); 
-    mtxf_pos_rotation_xyz(shipMtx, hullPos, *(Vec3s*) &Rot);
-    mtxf_scale(shipMtx, 0.4);
+    ApplyMatrixTransformations(shipMtx, *(FVector*)Pos, *(IRotator*)Rot, Scale);
     if (render_set_position(shipMtx, 0) != 0) {
         gSPDisplayList(gDisplayListHead++, _skin);
     }

@@ -17,6 +17,7 @@ extern s32 gTrophyIndex;
 
 #ifdef __cplusplus
 extern Editor::Editor gEditor;
+extern HarbourMastersIntro gMenuIntro;
 #endif
 
 Properties* CM_GetProps();

@@ -14,6 +14,11 @@ public:
     std::unordered_map<std::string, std::string> TrackPath;
 
     bool Refresh = true;
+
+    bool ActorContent = false;
+    bool ObjectContent = false;
+    bool CustomContent = false;
+    bool TrackContent = false;
 protected:
     void InitElement() override {};
     void DrawElement() override;

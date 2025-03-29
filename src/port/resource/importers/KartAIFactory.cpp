@@ -4,12 +4,14 @@
 #include "libultraship/libultra/gbi.h"
 
 namespace MK64 {
-std::shared_ptr<Ship::IResource> ResourceFactoryBinaryKartAIV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource>
+ResourceFactoryBinaryKartAIV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                            std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    auto ai = std::make_shared<KartAI>(file->InitData);
+    auto ai = std::make_shared<KartAI>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint32_t count = reader->ReadUInt32();

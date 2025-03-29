@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include <libultra/types.h>
 #include "../CoreMath.h"
@@ -22,7 +22,7 @@ public:
             BOUNDING_SPHERE
         };
 
-        GameObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+        GameObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
         GameObject(FVector* pos, Vec3s* rot);
         GameObject();
         virtual void Tick();
@@ -31,7 +31,7 @@ public:
 
         const char* Name;
         FVector* Pos;
-        Vec3s* Rot;
+        IRotator* Rot;
         FVector* Scale;
         Gfx* Model;
         std::vector<Triangle> Triangles;

@@ -13,6 +13,7 @@
 
 #include "engine/editor/Editor.h"
 #include "port/Game.h"
+#include "src/engine/World.h"
 
 namespace Editor {
 

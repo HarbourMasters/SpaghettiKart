@@ -1,9 +1,9 @@
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include "GameObject.h"
 
 namespace Editor {
 
-    GameObject::GameObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
+    GameObject::GameObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
         Name = name;
         Pos = pos;
         Rot = rot;

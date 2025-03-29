@@ -112,25 +112,69 @@ typedef struct IVector2D {
 #endif // __cplusplus
 } IVector2D;
 
-// IRot is an int16_t not a float.
+/**
+ * This struct immediately converts float pitch/yaw/roll in degrees to n64 int16_t binary angles 0-0xFFFF == 0-360 degrees
+ * ToDegrees() Receive an FRotator of float degrees back.
+ * Set() Set an n64 int16_t binary angles 0-0xFFFF
+ */
 struct IRotator {
-    int16_t pitch, yaw, roll;
+    uint16_t pitch, yaw, roll;
 
 #ifdef __cplusplus
     IRotator& operator=(const IRotator& other) {
         pitch = other.pitch;
-        yaw = other.yaw;
-        roll = other.roll;
+        yaw   = other.yaw;
+        roll  = other.roll;
+        return *this;
+    }
+
+    [[nodiscard]] IRotator Set(uint16_t p, uint16_t y, uint16_t r) {
+        pitch = p;
+        yaw = y;
+        roll = r;
+    }
+
+    IRotator() : pitch(0), yaw(0), roll(0) {}
+    IRotator(float p, float y, float r) {
+        pitch = p * (UINT16_MAX / 360);
+        yaw   = y * (UINT16_MAX / 360);
+        roll  = r * (UINT16_MAX / 360);
+    }
+#endif // __cplusplus
+};
+
+/**
+ * Use IRotator unless you want to do some math in degrees.
+ * Always use ToBinary() or Rotator when sending into matrices or apply translation functions
+ * Convert from IRotator to FRotator float degrees by doing FRotator(myIRotator);
+ */
+struct FRotator {
+    float pitch, yaw, roll;
+
+#ifdef __cplusplus
+    FRotator& operator=(const FRotator& other) {
+        pitch = other.pitch;
+        yaw   = other.yaw;
+        roll  = other.roll;
         return *this;
     }
 
     // Convert to binary rotator 0 --> INT16_MAX
     [[nodiscard]] IRotator ToBinary() const {
-        return IRotator(pitch * INT16_MAX / 180, yaw * INT16_MAX  / 180, roll * INT16_MAX  / 180);
+        return IRotator(
+            static_cast<uint16_t>(pitch * (UINT16_MAX / 360)),
+            static_cast<uint16_t>(yaw   * (UINT16_MAX / 360)),
+            static_cast<uint16_t>(roll  * (UINT16_MAX / 360))
+        );
     }
 
-    IRotator() : pitch(0), yaw(0), roll(0) {}
-    IRotator(int16_t p, int16_t y, int16_t r) : pitch(p), yaw(y), roll(r) {}
+    FRotator() : pitch(0), yaw(0), roll(0) {}
+    FRotator(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
+    FRotator(IRotator rot) {
+        pitch = static_cast<float>(rot.pitch * (360 / UINT16_MAX));
+        yaw   = static_cast<float>(rot.yaw   * (360 / UINT16_MAX));
+        roll  = static_cast<float>(rot.roll  * (360 / UINT16_MAX));
+    }
 #endif // __cplusplus
 };
 

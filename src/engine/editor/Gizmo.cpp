@@ -1,4 +1,4 @@
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "../CoreMath.h"
 #include <libultra/types.h>
@@ -173,21 +173,21 @@ void Gizmo::Rotate() {
 
     float angle = CalculateAngle(_cursorOffset, cameraPos) * 100;
 
-   // printf("start %f %f %f end %f %f %f angle %f\n", _cursorOffset.x, _cursorOffset.y, _cursorOffset.z, cameraPos.x, cameraPos.y, cameraPos.z, angle);
+    // printf("start %f %f %f end %f %f %f angle %f\n", _cursorOffset.x, _cursorOffset.y, _cursorOffset.z, cameraPos.x, cameraPos.y, cameraPos.z, angle);
     // Depending on which axis or handle you want to rotate, apply rotation.
     switch(SelectedHandle) {
         case GizmoHandle::All_Axis:
-            (*_selected->Rot)[0] = static_cast<short>((s16)((*_selected->Rot)[0] + angle) & 0xFFFF);  // Wrap to 0xFFFF
-            (*_selected->Rot)[1] = static_cast<short>((s16)((*_selected->Rot)[1] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            _selected->Rot->pitch = _selected->Rot->pitch + angle;
+            _selected->Rot->yaw = _selected->Rot->yaw + angle;
             break;
         case GizmoHandle::X_Axis:
-            (*_selected->Rot)[0] = static_cast<short>((s16)((*_selected->Rot)[0] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            _selected->Rot->pitch = _selected->Rot->pitch + angle;
             break;
         case GizmoHandle::Y_Axis:
-            (*_selected->Rot)[1] = static_cast<short>((s16)((*_selected->Rot)[1] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            _selected->Rot->yaw = _selected->Rot->yaw + angle;
             break;
         case GizmoHandle::Z_Axis:
-            (*_selected->Rot)[2] = static_cast<short>((s16)((*_selected->Rot)[2] + angle) & 0xFFFF);  // Wrap to 0xFFFF
+            _selected->Rot->roll = _selected->Rot->roll + angle;
             break;
     }
 }

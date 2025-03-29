@@ -256,7 +256,6 @@ void GameEngine::StartFrame() const {
         default:
             break;
     }
-    this->context->GetWindow()->StartFrame();
 }
 
 // void GameEngine::ProcessFrame(void (*run_one_game_iter)()) const {
@@ -265,13 +264,19 @@ void GameEngine::StartFrame() const {
 // }
 
 void GameEngine::RunCommands(Gfx* Commands) {
-    gfx_run(Commands, {});
-    gfx_end_frame();
+    auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     if (ShouldClearTextureCacheAtEndOfFrame) {
         gfx_texture_cache_clear();
         ShouldClearTextureCacheAtEndOfFrame = false;
     }
+
+    if (nullptr == wnd) {
+        return;
+    }
+
+    wnd->HandleEvents();
+    wnd->DrawAndRunGraphicsCommands(Commands, {});
 }
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {

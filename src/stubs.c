@@ -96,9 +96,6 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
     return PFS_NO_ERROR;
 }
 
-void osSetTime(OSTime time) {
-}
-
 s32 osPfsIsPlug(OSMesgQueue* queue, u8* pattern) {
 }
 

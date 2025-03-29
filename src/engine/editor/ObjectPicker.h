@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "Collision.h"
 #include "Gizmo.h"

@@ -1,7 +1,7 @@
 #ifndef __EDITOR_H__
 #define __EDITOR_H__
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "GameObject.h"
 
@@ -21,7 +21,7 @@ public:
     void Tick();
     void Draw();
 	void Load();
-    void AddObject(const char* name, FVector* pos, Vec3s* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    GameObject* AddObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
     void AddLight(const char* name, FVector* pos, s8* rot);
     void ClearObjects();
     void RemoveObject();

@@ -40,7 +40,7 @@ public:
     void from_json(const nlohmann::json& j) {
         Name = j.at("Name").get<std::string>();
         Pos = FVector(j.at("Position")[0].get<float>(), j.at("Position")[1].get<float>(), j.at("Position")[2].get<float>());
-        Rot = IRotator(j.at("Rotation")[0].get<float>(), j.at("Rotation")[1].get<float>(), j.at("Rotation")[2].get<float>());
+        Rot.Set(j.at("Rotation")[0].get<uint16_t>(), j.at("Rotation")[1].get<uint16_t>(), j.at("Rotation")[2].get<uint16_t>());
         Scale = FVector(j.at("Scale")[0].get<float>(), j.at("Scale")[1].get<float>(), j.at("Scale")[2].get<float>());
 
         // Deserialize the Model string

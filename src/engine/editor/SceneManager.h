@@ -1,4 +1,4 @@
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include "Course.h"
 
 namespace Editor {

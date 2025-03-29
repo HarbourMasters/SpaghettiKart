@@ -4,12 +4,14 @@
 #include "resourcebridge.h"
 #include "ResourceUtil.h"
 
-std::shared_ptr<Ship::IResource> SM64::AudioBankFactoryV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+std::shared_ptr<Ship::IResource>
+SM64::AudioBankFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                       std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    std::shared_ptr<AudioBank> bank = std::make_shared<AudioBank>(file->InitData);
+    std::shared_ptr<AudioBank> bank = std::make_shared<AudioBank>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint8_t bankId = reader->ReadUInt32();

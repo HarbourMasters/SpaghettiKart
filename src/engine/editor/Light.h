@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "Collision.h"
 #include "Gizmo.h"
@@ -18,8 +18,9 @@ public:
 
     static size_t NumLights;
     FVector LightPos = FVector(0, 100, 0);
+    IRotator LightRot = IRotator(0, 0, 0);
+	FVector LightScale = FVector(0.1, 0.1, 0.1);
     s8* Direction;
-    Vec3s LightRot = {0, 0, 0};
     s32 _despawnFlag = 0;
 
 u8 sun_sun_rgba32[16384] = {

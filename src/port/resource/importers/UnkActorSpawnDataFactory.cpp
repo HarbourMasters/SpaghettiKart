@@ -6,12 +6,13 @@
 
 namespace MK64 {
 std::shared_ptr<Ship::IResource>
-ResourceFactoryBinaryUnkActorSpawnDataV0::ReadResource(std::shared_ptr<Ship::File> file) {
-    if (!FileHasValidFormatAndReader(file)) {
+ResourceFactoryBinaryUnkActorSpawnDataV0::ReadResource(std::shared_ptr<Ship::File> file,
+                                                       std::shared_ptr<Ship::ResourceInitData> initData) {
+    if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
 
-    auto section = std::make_shared<UnkActorSpawn>(file->InitData);
+    auto section = std::make_shared<UnkActorSpawn>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     uint32_t count = reader->ReadUInt32();

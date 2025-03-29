@@ -1,6 +1,6 @@
 #include "EditorMath.h"
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include "port/Game.h"
 #include "port/Engine.h"
 #include <libultra/types.h>
@@ -323,9 +323,11 @@ float CalculateAngle(const FVector& start, const FVector& end) {
     return acos(cosAngle);
 }
 
-void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]) {
-    float yaw = rotator[1] * (M_PI / 32768.0f);  // Convert from s16 (0 to 32767) to radians
-    float pitch = rotator[0] * (M_PI / 32768.0f); 
+// Used for gSPLights1
+void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
+    // Subtract 0x4000 to lineup the rotator with the light direction
+    float yaw = (rot.yaw - 0x4000) * (M_PI / 32768.0f);  // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
+    float pitch = rot.pitch * (M_PI / 32768.0f); 
 
     // Compute unit direction vector
     float x = cosf(yaw) * cosf(pitch);

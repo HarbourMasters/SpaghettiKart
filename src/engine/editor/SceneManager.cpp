@@ -95,10 +95,10 @@ namespace Editor {
         gWorldInstance.StaticMeshActors.push_back(new StaticMeshActor("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
         auto actor = gWorldInstance.StaticMeshActors.back();
         actor->from_json(actorJson);
-        
-printf("After from_json: Pos(%f, %f, %f), Name: %s, Model: %s\n", 
-       actor->Pos.x, actor->Pos.y, actor->Pos.z, actor->Name.c_str(), actor->Model.c_str());
-        gEditor.AddObject(actor->Name.c_str(), &actor->Pos, (Vec3s*)&actor->Rot, &actor->Scale, (Gfx*) nullptr, 1.0f,
+
+        printf("After from_json: Pos(%f, %f, %f), Name: %s, Model: %s\n", 
+        actor->Pos.x, actor->Pos.y, actor->Pos.z, actor->Name.c_str(), actor->Model.c_str());
+        gEditor.AddObject(actor->Name.c_str(), &actor->Pos, &actor->Rot, &actor->Scale, (Gfx*) nullptr, 1.0f,
                         GameObject::CollisionType::BOUNDING_BOX, 20.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) 1);
     }
 

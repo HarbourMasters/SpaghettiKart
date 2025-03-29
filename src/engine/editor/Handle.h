@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 
 extern Gfx handle_Cylinder_mesh[];

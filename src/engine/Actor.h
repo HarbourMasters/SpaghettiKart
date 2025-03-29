@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
+#include "CoreMath.h"
 
 extern "C" {
 #include "macros.h"
@@ -25,6 +26,7 @@ public:
     /* 0x30 */ Collision Unk30;
     uint8_t uuid[16];
     const char* Name = "";
+    FVector Scale = {1, 1, 1};
 
     Gfx* Model = NULL;
 

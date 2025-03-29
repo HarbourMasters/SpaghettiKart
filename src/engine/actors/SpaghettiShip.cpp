@@ -44,9 +44,7 @@ void ASpaghettiShip::Draw(Camera *camera) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    // empty/null mtx as a base
-    IRotator iRot = Rot.ToBinary();
-    mtxf_pos_rotation_xyz(shipMtx, hullPos, *(Vec3s*)&iRot);
+    mtxf_pos_rotation_xyz(shipMtx, hullPos, *(Vec3s*)&Rot);
     mtxf_scale(shipMtx, 0.4);
     if (render_set_position(shipMtx, 0) != 0) {}
 

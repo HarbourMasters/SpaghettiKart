@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libultraship.h>
+#include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include <libultra/types.h>
 #include "../CoreMath.h"
@@ -44,5 +44,5 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
 
 void Editor_AddMatrix(Mat4 mtx, int32_t flags);
 float CalculateAngle(const FVector& start, const FVector& end);
-void SetDirectionFromRotator(s16 rotator[3], s8 direction[3]);
+void SetDirectionFromRotator(IRotator rot, s8 direction[3]);
 FVector GetPositionAheadOfCamera(f32 dist);
