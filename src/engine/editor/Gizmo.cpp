@@ -201,7 +201,6 @@ void Gizmo::Draw() {
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
     
-    Vec3s rot = {0, 0, 0};
     ApplyMatrixTransformations(mainMtx, Pos, Rot, {1, 1, 1});
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
@@ -210,9 +209,7 @@ void Gizmo::DrawHandles() {
         0xFF, 0, 0, 0x49, 0x49, 0x49);
         
     Mat4 RedXMtx;
-    Vec3s rot1 = {0, 0, 0};
-    FVector pos1 = {Pos.x, Pos.y, Pos.z - _gizmoOffset};
-    ApplyMatrixTransformations(RedXMtx, pos1, Rot, {0.05f, 0.05f, 0.05f});
+    ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, {0.05f, 0.05f, 0.05f});
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
     handle_f3dlite_material_lights = gdSPDefLights1(
@@ -220,21 +217,17 @@ void Gizmo::DrawHandles() {
         0, 0xFF, 0, 0x49, 0x49, 0x49);
 
     Mat4 GreenYMtx;
-    FVector pos2 = {Pos.x - _gizmoOffset, Pos.y, Pos.z};
-    ApplyMatrixTransformations(GreenYMtx, pos2, IRotator(0, 90, 0), {0.05f, 0.05f, 0.05f});
+    ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), IRotator(0, 90, 0), {0.05f, 0.05f, 0.05f});
 
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
-
-    Vec3s rot3 = {0x4000, 0, 0};
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0, 0xFF, 0x49, 0x49, 0x49);
 
     Mat4 BlueZMtx;
-    FVector pos3 = {Pos.x, Pos.y + _gizmoOffset, Pos.z};
-    ApplyMatrixTransformations(BlueZMtx, pos3, IRotator(90, 0, 0), {0.05f, 0.05f, 0.05f});
+    ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), IRotator(90, 0, 0), {0.05f, 0.05f, 0.05f});
 
     Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
