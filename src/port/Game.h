@@ -75,6 +75,8 @@ void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);
 
 void CM_TickEditor();
+void CM_DrawEditor();
+void CM_Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
 void CM_TickDraw();
 void Editor_ClearMatrix();
 
