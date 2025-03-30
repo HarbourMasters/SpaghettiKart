@@ -53,9 +53,12 @@ struct FVector {
 
     FVector Normalize() const {
         float len = std::sqrt(x * x + y * y + z * z);
-        return FVector(
-            x / len, y / len, z / len
-        );
+        if (len > 0.0001f) {
+            return FVector(
+                x / len, y / len, z / len
+            );
+        }
+        return FVector(0, 0, 0);
     }
 
     FVector() : x(0), y(0), z(0) {}
