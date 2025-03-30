@@ -55,14 +55,29 @@ size_t LightObject::NumLights = 0;
         SetDirectionFromRotator(*Rot, Direction);
     }
     void LightObject::Draw() {
-        Mat4 mtx;
+        Mat4 mtx_sun;
+        Editor_MatrixIdentity(mtx_sun);
+
+        // Calculate camera-to-object distance
+        FVector cameraDir = FVector(LightPos.x - cameras[0].pos[0], LightPos.y - cameras[0].pos[1], LightPos.z - cameras[0].pos[2]);
+        cameraDir = cameraDir.Normalize();
+
+        IRotator centerRot;
+        SetRotatorFromDirection(cameraDir, &centerRot);
 
         // Account for object not facing the correct direction when exported
+        centerRot.yaw += 0x4000;
+        ApplyMatrixTransformations(mtx_sun, LightPos, centerRot, LightScale);
+        Editor_AddMatrix(mtx_sun, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, sun_LightModel_mesh);
+
+        // Draw Arrow
+        Mat4 mtx_arrow;
         IRotator rot = LightRot;
         rot.yaw += 0x4000;
-        ApplyMatrixTransformations(mtx, LightPos, rot, LightScale);
-        Editor_AddMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, sun_LightModel_mesh);
+        FVector scale = LightScale;
+        ApplyMatrixTransformations(mtx_arrow, LightPos, rot, scale);
+        Editor_AddMatrix(mtx_arrow, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
     }
 }

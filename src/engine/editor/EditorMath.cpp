@@ -306,7 +306,7 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
 // }
 
 // Transform a matrix to a matrix identity
-void Editor_Matrixidentity(Mat4 mtx) {
+void Editor_MatrixIdentity(Mat4 mtx) {
     register s32 i;
     register s32 k;
 

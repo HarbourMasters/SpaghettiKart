@@ -253,7 +253,7 @@ void Gizmo::DrawHandles() {
 
     if (center) {
         Mat4 CenterMtx;
-        Editor_Matrixidentity(CenterMtx);
+        Editor_MatrixIdentity(CenterMtx);
 
         // Calculate camera-to-object distance
         FVector cameraDir = FVector(Pos.x - cameras[0].pos[0], Pos.y - cameras[0].pos[1], Pos.z - cameras[0].pos[2]);
