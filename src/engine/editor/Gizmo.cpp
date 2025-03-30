@@ -215,9 +215,11 @@ void Gizmo::Scale() {
             _selected->Scale->z = InitialScale.z + -diff.z;
             break;
         case GizmoHandle::All_Axis:
-            _selected->Scale->x = InitialScale.x + -diff.x;
-            _selected->Scale->y = InitialScale.y + diff.y;
-            _selected->Scale->z = InitialScale.z + -diff.z;
+            float uniformScale = (diff.x - diff.y - diff.z) / 3.0f;
+            uniformScale *= 1.8; // Increased sensitivity
+            _selected->Scale->x = uniformScale;
+            _selected->Scale->y = uniformScale;
+            _selected->Scale->z = uniformScale;
             break;
     }
 }
