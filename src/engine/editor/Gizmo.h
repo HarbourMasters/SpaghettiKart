@@ -47,6 +47,9 @@ public:
     TrackDimensions dimensions;
 
     bool Enabled;
+    bool ManipulationStart = true;
+    FVector InitialScale = {1, 1, 1};
+    IRotator InitialRotation = {0, 0, 0};
     GizmoHandle SelectedHandle;
 
     GameObject RedCollision;

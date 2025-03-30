@@ -77,6 +77,7 @@ namespace Editor {
         if (!isMouseDown && wasMouseDown) {  
             // Mouse just released (Released state)
             eObjectPicker.eGizmo.SelectedHandle = Gizmo::GizmoHandle::None;
+            eObjectPicker.eGizmo.ManipulationStart = true;
             if (!isDragging) {
                 eObjectPicker.SelectObject(eGameObjects);
             }

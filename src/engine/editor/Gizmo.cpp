@@ -149,48 +149,77 @@ f32 Gizmo::SnapToSurface(FVector* pos) {
 }
 
 void Gizmo::Rotate() {
-    float length = 180.0f;
-    float sensitivity = 0.2f;
+    FVector cam = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
 
-    if (_selected->Rot == nullptr) {
+    if (_selected == nullptr || _selected->Rot == nullptr) {
         return;
     }
 
-    length = sqrt(
-        pow(_selected->Pos->x - cameras[0].pos[0], 2) +
-        pow(_selected->Pos->y - cameras[0].pos[1], 2) +
-        pow(_selected->Pos->z - cameras[0].pos[2], 2)
-    );
+    // Store initial scale at the beginning of the drag
+    if (ManipulationStart) {
+        ManipulationStart = false;
+        InitialRotation = *_selected->Rot;  // Store initial rotation
+    }
 
-    FVector cameraPos = {
-        cameras[0].pos[0] + _ray.x * length,
-        cameras[0].pos[1] + _ray.y * length,
-        cameras[0].pos[2] + _ray.z * length,
-    };
+    // Initial click position
+    FVector clickPos = *_selected->Pos - _cursorOffset;
 
-    float angle = CalculateAngle(_cursorOffset, cameraPos) * 100;
+    // Calculate difference
+    FVector diff = (cam + _ray * PickDistance) - clickPos;
 
-    // printf("start %f %f %f end %f %f %f angle %f\n", _cursorOffset.x, _cursorOffset.y, _cursorOffset.z, cameraPos.x, cameraPos.y, cameraPos.z, angle);
-    // Depending on which axis or handle you want to rotate, apply rotation.
-    switch(SelectedHandle) {
-        case GizmoHandle::All_Axis:
-            _selected->Rot->pitch = _selected->Rot->pitch + angle;
-            _selected->Rot->yaw = _selected->Rot->yaw + angle;
-            break;
+    // Set rotation sensitivity
+    diff = diff * 100.0f;
+
+    switch (SelectedHandle) {
         case GizmoHandle::X_Axis:
-            _selected->Rot->pitch = _selected->Rot->pitch + angle;
+            _selected->Rot->pitch = (uint16_t)InitialRotation.pitch + diff.x;
             break;
         case GizmoHandle::Y_Axis:
-            _selected->Rot->yaw = _selected->Rot->yaw + angle;
+            _selected->Rot->yaw = (uint16_t)InitialRotation.yaw + diff.y;
             break;
         case GizmoHandle::Z_Axis:
-            _selected->Rot->roll = _selected->Rot->roll + angle;
+            _selected->Rot->roll = (uint16_t)InitialRotation.roll + diff.z;
             break;
     }
 }
 
 void Gizmo::Scale() {
+    FVector cam = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+    if (_selected == nullptr || _selected->Scale == nullptr) {
+        return;
+    }
 
+    // Store initial scale at the beginning of the drag
+    if (ManipulationStart) {
+        ManipulationStart = false;
+        InitialScale = *_selected->Scale;
+    }
+
+    // Initial click position
+    FVector clickPos = *_selected->Pos - _cursorOffset;
+
+    // Calculate difference
+    FVector diff = (cam + _ray * PickDistance) - clickPos;
+
+    // Lower scaling sensitivity
+    diff = diff * 0.01f;
+
+    switch (SelectedHandle) {
+        case GizmoHandle::X_Axis:
+            _selected->Scale->x = InitialScale.x + -diff.x;
+            break;
+        case GizmoHandle::Y_Axis:
+            _selected->Scale->y = InitialScale.y + diff.y;
+            break;
+        case GizmoHandle::Z_Axis:
+            _selected->Scale->z = InitialScale.z + -diff.z;
+            break;
+        case GizmoHandle::All_Axis:
+            _selected->Scale->x = InitialScale.x + -diff.x;
+            _selected->Scale->y = InitialScale.y + diff.y;
+            _selected->Scale->z = InitialScale.z + -diff.z;
+            break;
+    }
 }
 
 void Gizmo::Draw() {

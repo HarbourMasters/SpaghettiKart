@@ -21,6 +21,4 @@ public:
 
     FVector Spawn;
     IRotator WheelRot = {0, 0, 0};
-private:
-    f32 scale;
 };

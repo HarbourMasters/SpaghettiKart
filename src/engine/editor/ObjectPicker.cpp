@@ -86,6 +86,7 @@ void ObjectPicker::DragHandle() {
                 eGizmo._ray = ray.Direction;
                 FVector clickPosition = ray.Origin + ray.Direction * t;
                 eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
+                eGizmo.PickDistance = t;
                 return; // Stop checking objects if we selected a Gizmo handle
             }
         }
@@ -98,6 +99,7 @@ void ObjectPicker::DragHandle() {
                 eGizmo._ray = ray.Direction;
                 FVector clickPosition = ray.Origin + ray.Direction * t;
                 eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
+                eGizmo.PickDistance = t;
                 return; // Stop checking objects if we selected a Gizmo handle
             }
         }
@@ -110,6 +112,7 @@ void ObjectPicker::DragHandle() {
                 eGizmo._ray = ray.Direction;
                 FVector clickPosition = ray.Origin + ray.Direction * t;
                 eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
+                eGizmo.PickDistance = t;
                 return; // Stop checking objects if we selected a Gizmo handle
             }
         }
