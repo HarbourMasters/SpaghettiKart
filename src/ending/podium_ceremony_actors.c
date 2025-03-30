@@ -19,6 +19,7 @@
 #include "math_util.h"
 #include <string.h>
 
+#include "src/port/Game.h"
 #include "engine/Matrix.h"
 
 s32 fireworkConeColour[] = {

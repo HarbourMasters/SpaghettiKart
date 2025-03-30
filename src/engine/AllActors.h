@@ -31,7 +31,7 @@
 #include "objects/Seagull.h"
 #include "objects/Thwomp.h"
 #include "objects/Seagull.h"
-#include "objects/Trashbin.h"
+#include "objects/TrashBin.h"
 #include "objects/Trophy.h"
 #include "objects/Snowman.h"
 #include "objects/Podium.h"
