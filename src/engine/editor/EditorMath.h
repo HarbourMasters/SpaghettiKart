@@ -42,7 +42,9 @@ void Clear(MtxF* mf);
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
 
+void Editor_Matrixidentity(Mat4 mtx);
 void Editor_AddMatrix(Mat4 mtx, int32_t flags);
 float CalculateAngle(const FVector& start, const FVector& end);
 void SetDirectionFromRotator(IRotator rot, s8 direction[3]);
+void SetRotatorFromDirection(FVector direction, IRotator* rot);
 FVector GetPositionAheadOfCamera(f32 dist);

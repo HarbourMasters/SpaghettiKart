@@ -305,6 +305,18 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
 //     return false;
 // }
 
+// Transform a matrix to a matrix identity
+void Editor_Matrixidentity(Mat4 mtx) {
+    register s32 i;
+    register s32 k;
+
+    for (i = 0; i < 4; i++) {
+        for (k = 0; k < 4; k++) {
+            mtx[i][k] = (i == k) ? 1.0f : 0.0f;
+        }
+    }
+}
+
 void Editor_AddMatrix(Mat4 mtx, int32_t flags) {
     EditorMatrix.emplace_back();
     guMtxF2L(mtx, &EditorMatrix.back());
@@ -323,10 +335,8 @@ float CalculateAngle(const FVector& start, const FVector& end) {
     return acos(cosAngle);
 }
 
-// Used for gSPLights1
 void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
-    // Subtract 0x4000 to lineup the rotator with the light direction
-    float yaw = (rot.yaw - 0x4000) * (M_PI / 32768.0f);  // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
+    float yaw = (rot.yaw) * (M_PI / 32768.0f);  // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
     float pitch = rot.pitch * (M_PI / 32768.0f); 
 
     // Compute unit direction vector
@@ -340,6 +350,19 @@ void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
     direction[2] = static_cast<s8>(z * 127.0f);
 
     //printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
+}
+
+void SetRotatorFromDirection(FVector direction, IRotator* rot) {
+    // Compute pitch (inverse of -sinf(pitch))
+    float pitch = -asinf(direction.y);
+
+    // Compute yaw (inverse of cosf(yaw) * cosf(pitch))
+    float yaw = atan2f(-direction.z, direction.x);
+
+    // Convert back to N64 angles (0-0xFFFF range)
+    rot->pitch = (s16)(pitch * (32768.0f / M_PI));
+    rot->yaw = (s16)(yaw * (32768.0f / M_PI));
+    rot->roll = 0; // Assume no roll, since it's undefined from direction alone
 }
 
 FVector GetPositionAheadOfCamera(f32 dist) {

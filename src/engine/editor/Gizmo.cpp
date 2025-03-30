@@ -20,6 +20,7 @@ extern "C" {
 #include "actors.h"
 #include "camera.h"
 #include "src/racing/collision.h"
+#include "math_util.h"
 }
 
 namespace Editor {
@@ -201,8 +202,41 @@ void Gizmo::Draw() {
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
 
+    Gfx* handle = handle_Cylinder_mesh;
+    Gfx* center = (Gfx*)"__OTR__gizmo/gizmo_center_button";
+    switch(static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
+        case TranslationMode::Move:
+            handle = handle_Cylinder_mesh;
+            break;
+        case TranslationMode::Rotate:
+            handle = handle_Cylinder_mesh;
+            center = NULL;
+            break;
+        case TranslationMode::Scale:
+            handle = (Gfx*)"__OTR__gizmo/scale_handle";
+            break;
+    }
+
     ApplyMatrixTransformations(mainMtx, Pos, Rot, {1, 1, 1});
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    if (center) {
+        Mat4 CenterMtx;
+        Editor_Matrixidentity(CenterMtx);
+
+        // Calculate camera-to-object distance
+        FVector cameraDir = FVector(Pos.x - cameras[0].pos[0], Pos.y - cameras[0].pos[1], Pos.z - cameras[0].pos[2]);
+        cameraDir = cameraDir.Normalize();
+
+        IRotator centerRot;
+        SetRotatorFromDirection(cameraDir, &centerRot);
+        centerRot.pitch += 0x4000; // Align mesh to face camera since it was not exported facing the correct direction
+        centerRot.yaw += 0x4000;
+
+        ApplyMatrixTransformations(CenterMtx, Pos, centerRot, FVector(0.06f, 0.06f, 0.06f));
+        Editor_AddMatrix(CenterMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, center);
+    }
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
@@ -211,7 +245,7 @@ void Gizmo::DrawHandles() {
     Mat4 RedXMtx;
     ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, {0.05f, 0.05f, 0.05f});
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    gSPDisplayList(gDisplayListHead++, handle);
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0xFF, 0, 0x49, 0x49, 0x49);
@@ -220,7 +254,7 @@ void Gizmo::DrawHandles() {
     ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), IRotator(0, 90, 0), {0.05f, 0.05f, 0.05f});
 
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    gSPDisplayList(gDisplayListHead++, handle);
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
@@ -230,6 +264,6 @@ void Gizmo::DrawHandles() {
     ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), IRotator(90, 0, 0), {0.05f, 0.05f, 0.05f});
 
     Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+    gSPDisplayList(gDisplayListHead++, handle);
 }
 }

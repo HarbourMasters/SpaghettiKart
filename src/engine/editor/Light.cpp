@@ -57,7 +57,10 @@ size_t LightObject::NumLights = 0;
     void LightObject::Draw() {
         Mat4 mtx;
 
-        ApplyMatrixTransformations(mtx, LightPos, LightRot, LightScale);
+        // Account for object not facing the correct direction when exported
+        IRotator rot = LightRot;
+        rot.yaw += 0x4000;
+        ApplyMatrixTransformations(mtx, LightPos, rot, LightScale);
         Editor_AddMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, sun_LightModel_mesh);
         gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
