@@ -57,6 +57,9 @@ size_t LightObject::NumLights = 0;
     void LightObject::Draw() {
         Mat4 mtx_sun;
         Editor_MatrixIdentity(mtx_sun);
+        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+
 
         // Calculate camera-to-object distance
         FVector cameraDir = FVector(LightPos.x - cameras[0].pos[0], LightPos.y - cameras[0].pos[1], LightPos.z - cameras[0].pos[2]);
@@ -75,9 +78,8 @@ size_t LightObject::NumLights = 0;
         Mat4 mtx_arrow;
         IRotator rot = LightRot;
         rot.yaw += 0x4000;
-        FVector scale = LightScale;
-        ApplyMatrixTransformations(mtx_arrow, LightPos, rot, scale);
+        ApplyMatrixTransformations(mtx_arrow, LightPos, rot, LightScale);
         Editor_AddMatrix(mtx_arrow, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, handle_Cylinder_mesh);
+        gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__editor/light/sun_arrow");
     }
 }

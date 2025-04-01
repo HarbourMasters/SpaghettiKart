@@ -58,14 +58,11 @@ public:
 
     FVector Pos; // Global scene view
     IRotator Rot = {0, 0, 0};
-    float _gizmoOffset = 8.0f;
     float AllAxisRadius = 4.0f; // Free move selection radius
     float PickDistance;
     FVector _cursorOffset;
-    FVector RedPos = {0, 0, -_gizmoOffset}; // Local model view
-    FVector GreenPos = {-_gizmoOffset, 0, 0}; // Local model view
-    FVector BluePos = {0, _gizmoOffset, 0}; // Local model view
-    
+    float _gizmoOffset = 8.0f;
+
     float HandleSize = 2.0f;
     
     FVector _ray;

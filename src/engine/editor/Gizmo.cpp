@@ -233,18 +233,41 @@ void Gizmo::Draw() {
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
 
-    Gfx* handle = handle_Cylinder_mesh;
-    Gfx* center = (Gfx*)"__OTR__gizmo/gizmo_center_button";
+    Gfx* blueHandle = handle_Cylinder_mesh;
+    Gfx* greenHandle = handle_Cylinder_mesh;
+    Gfx* redHandle = handle_Cylinder_mesh;
+    Gfx* center = nullptr; (Gfx*)"__OTR__gizmo/gizmo_center_button";
+    IRotator blueRot;
+    IRotator greenRot;
+    IRotator redRot;
+    FVector scale = {0.05f, 0.05f, 0.05f};
+
     switch(static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
         case TranslationMode::Move:
-            handle = handle_Cylinder_mesh;
+            blueHandle = handle_Cylinder_mesh;
+            greenHandle = handle_Cylinder_mesh;
+            redHandle = handle_Cylinder_mesh;
+            _gizmoOffset = 8.0f;
+            greenRot = {0, 90, 0};
+            blueRot = {90, 0, 0};
+            scale = {0.05f, 0.05f, 0.05f};
             break;
         case TranslationMode::Rotate:
-            handle = handle_Cylinder_mesh;
-            center = NULL;
+            center = nullptr; // No All_Axis drag button for Rotation
+            blueHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
+            greenHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_green";
+            redHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_red";
+            _gizmoOffset = 0.0f;
+            scale = {0.2f, 0.2f, 0.2f};
             break;
         case TranslationMode::Scale:
-            handle = (Gfx*)"__OTR__gizmo/scale_handle";
+            blueHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_blue";
+            greenHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_green";
+            redHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_red";
+            _gizmoOffset = 8.0f;
+            greenRot = {0, 90, 0};
+            blueRot = {90, 0, 0};
+            scale = {0.05f, 0.05f, 0.05f};
             break;
     }
 
@@ -274,27 +297,25 @@ void Gizmo::DrawHandles() {
         0xFF, 0, 0, 0x49, 0x49, 0x49);
 
     Mat4 RedXMtx;
-    ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, {0.05f, 0.05f, 0.05f});
+    ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle);
+    gSPDisplayList(gDisplayListHead++, redHandle);
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0xFF, 0, 0x49, 0x49, 0x49);
 
     Mat4 GreenYMtx;
-    ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), IRotator(0, 90, 0), {0.05f, 0.05f, 0.05f});
-
+    ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle);
+    gSPDisplayList(gDisplayListHead++, greenHandle);
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0, 0xFF, 0x49, 0x49, 0x49);
 
     Mat4 BlueZMtx;
-    ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), IRotator(90, 0, 0), {0.05f, 0.05f, 0.05f});
-
+    ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
     Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, handle);
+    gSPDisplayList(gDisplayListHead++, blueHandle);
 }
 }
