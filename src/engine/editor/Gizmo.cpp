@@ -233,10 +233,10 @@ void Gizmo::Draw() {
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
 
-    Gfx* blueHandle = handle_Cylinder_mesh;
-    Gfx* greenHandle = handle_Cylinder_mesh;
-    Gfx* redHandle = handle_Cylinder_mesh;
-    Gfx* center = nullptr; (Gfx*)"__OTR__gizmo/gizmo_center_button";
+    const char* blueHandle;
+    const char* greenHandle;
+    const char* redHandle;
+    const char* center = nullptr;
     IRotator blueRot;
     IRotator greenRot;
     IRotator redRot;
@@ -244,9 +244,10 @@ void Gizmo::DrawHandles() {
 
     switch(static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
         case TranslationMode::Move:
-            blueHandle = handle_Cylinder_mesh;
-            greenHandle = handle_Cylinder_mesh;
-            redHandle = handle_Cylinder_mesh;
+            center = "__OTR__editor/gizmo/center_handle";
+            blueHandle = "__OTR__editor/gizmo/translate_handle_blue";
+            greenHandle = "__OTR__editor/gizmo/translate_handle_green";
+            redHandle = "__OTR__editor/gizmo/translate_handle_red";
             _gizmoOffset = 8.0f;
             greenRot = {0, 90, 0};
             blueRot = {90, 0, 0};
@@ -254,16 +255,17 @@ void Gizmo::DrawHandles() {
             break;
         case TranslationMode::Rotate:
             center = nullptr; // No All_Axis drag button for Rotation
-            blueHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
-            greenHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_green";
-            redHandle = (Gfx*)"__OTR__editor/gizmo/rot_handle_red";
+            blueHandle = "__OTR__editor/gizmo/rot_handle_blue";
+            greenHandle = "__OTR__editor/gizmo/rot_handle_green";
+            redHandle = "__OTR__editor/gizmo/rot_handle_red";
             _gizmoOffset = 0.0f;
             scale = {0.2f, 0.2f, 0.2f};
             break;
         case TranslationMode::Scale:
-            blueHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_blue";
-            greenHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_green";
-            redHandle = (Gfx*)"__OTR__editor/gizmo/scale_handle_red";
+            center = "__OTR__editor/gizmo/center_handle";
+            blueHandle = "__OTR__editor/gizmo/scale_handle_blue";
+            greenHandle = "__OTR__editor/gizmo/scale_handle_green";
+            redHandle = "__OTR__editor/gizmo/scale_handle_red";
             _gizmoOffset = 8.0f;
             greenRot = {0, 90, 0};
             blueRot = {90, 0, 0};
@@ -289,7 +291,7 @@ void Gizmo::DrawHandles() {
 
         ApplyMatrixTransformations(CenterMtx, Pos, centerRot, FVector(0.06f, 0.06f, 0.06f));
         Editor_AddMatrix(CenterMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, center);
+        gSPDisplayList(gDisplayListHead++, (Gfx*)center);
     }
 
     handle_f3dlite_material_lights = gdSPDefLights1(
@@ -299,7 +301,7 @@ void Gizmo::DrawHandles() {
     Mat4 RedXMtx;
     ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, redHandle);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)redHandle);
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
         0, 0xFF, 0, 0x49, 0x49, 0x49);
@@ -307,7 +309,7 @@ void Gizmo::DrawHandles() {
     Mat4 GreenYMtx;
     ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, greenHandle);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)greenHandle);
 
     handle_f3dlite_material_lights = gdSPDefLights1(
         0x7F, 0x7F, 0x7F,
@@ -316,6 +318,6 @@ void Gizmo::DrawHandles() {
     Mat4 BlueZMtx;
     ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
     Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, blueHandle);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)blueHandle);
 }
 }
