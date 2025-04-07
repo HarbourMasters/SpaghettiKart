@@ -143,6 +143,16 @@ struct IRotator {
         yaw   = y * (UINT16_MAX / 360);
         roll  = r * (UINT16_MAX / 360);
     }
+
+    // Convert to radians as FVector
+    [[nodiscard]] FVector ToRadians() const {
+        constexpr float scale = 2.0f * M_PI / 65536.0f;
+        return FVector(
+            pitch * scale,
+            yaw   * scale,
+            roll  * scale
+        );
+    }
 #endif // __cplusplus
 };
 

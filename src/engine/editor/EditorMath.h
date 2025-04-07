@@ -41,6 +41,7 @@ void Clear(MtxF* mf);
 
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
+FVector TransformPoint(const FVector& point, const FVector& pos, const IRotator& n64Rot, const FVector& scale);
 
 void Editor_MatrixIdentity(Mat4 mtx);
 void Editor_AddMatrix(Mat4 mtx, int32_t flags);

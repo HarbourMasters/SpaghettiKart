@@ -19,4 +19,5 @@
 
 namespace Editor {
     void GenerateCollisionMesh(GameObject* object, Gfx* model, float scale);
+    void DebugCollision(GameObject* obj, FVector pos, IRotator rot, FVector scale, const std::vector<Triangle>& triangles);
 }

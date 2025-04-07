@@ -133,9 +133,6 @@ s32 Inverse(MtxF* src, MtxF* dest) {
             // Reaching row = 4 means the column is either all 0 or a duplicate column.
             // Therefore src is a singular matrix (0 determinant).
 
-            // osSyncPrintf(VT_COL(YELLOW, BLACK));
-            // osSyncPrintf("Skin_Matrix_InverseMatrix():逆行列つくれません\n");
-            // osSyncPrintf(VT_RST);
             return 2;
         }
 
@@ -215,9 +212,9 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& ob
     const float EPSILON = 1e-6f;
 
     // Adjust the triangle vertices by the object's position
-    FVector v0 = tri.v0 + objectPos;
-    FVector v1 = tri.v1 + objectPos;
-    FVector v2 = tri.v2 + objectPos;
+    FVector v0 = TransformPoint(tri.v0);
+    FVector v1 = TransformPoint(tri.v1);
+    FVector v2 = TransformPoint(tri.v2);
 
     DebugPoss = v0;
 
@@ -244,6 +241,37 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& ob
 
     t = f * edge2.Dot(q);
     return t > EPSILON;
+}
+
+// Apply location, rotation, and scale transformations.
+FVector TransformPoint(const FVector& point, const FVector& pos, const IRotator& n64Rot, const FVector& scale) {
+    FVector rot = n64Rot.ToRadians();
+
+    // Apply scale
+    FVector scaled = FVector(point.x * scale.x, point.y * scale.y, point.z * scale.z);
+
+    // Apply rotation (ZXY order, typical in games)
+    float cz = cos(rot.z), sz = sin(rot.z);
+    float cx = cos(rot.x), sx = sin(rot.x);
+    float cy = cos(rot.y), sy = sin(rot.y);
+
+    // Rotate around Z axis
+    float x1 = scaled.x * cz - scaled.y * sz;
+    float y1 = scaled.x * sz + scaled.y * cz;
+    float z1 = scaled.z;
+
+    // Rotate around X axis
+    float y2 = y1 * cx - z1 * sx;
+    float z2 = y1 * sx + z1 * cx;
+    float x2 = x1;
+
+    // Rotate around Y axis
+    float x3 = x2 * cy + z2 * sy;
+    float y3 = y2;
+    float z3 = -x2 * sy + z2 * cy;
+
+    // Apply translation
+    return FVector(x3 + pos.x, y3 + pos.y, z3 + pos.z);
 }
 
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t) {

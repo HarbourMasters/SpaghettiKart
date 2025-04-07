@@ -56,9 +56,13 @@ public:
     GameObject GreenCollision;
     GameObject BlueCollision;
 
+    GameObject RedRotateCollision;
+    GameObject GreenRotateCollision;
+    GameObject BlueRotateCollision;
+
     FVector Pos; // Global scene view
     IRotator Rot = {0, 0, 0};
-    float AllAxisRadius = 4.0f; // Free move selection radius
+    float AllAxisRadius = 3.0f; // Free move selection radius
     float PickDistance;
     FVector _cursorOffset;
     float _gizmoOffset = 8.0f;

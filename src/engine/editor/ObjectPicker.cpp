@@ -69,18 +69,23 @@ void ObjectPicker::DragHandle() {
     // Is the gizmo being dragged?
     if (eGizmo.Enabled) {
         float t;
-        if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
-            eGizmo.SelectedHandle = Gizmo::GizmoHandle::All_Axis;
-            eGizmo._ray = ray.Direction;
-            FVector clickPosition = ray.Origin + ray.Direction * t;
-            eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
-            eGizmo.PickDistance = t;
-            return;
+
+        // No all_axis grab for rotate
+        if (static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0)) != Gizmo::TranslationMode::Rotate) {
+            if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
+                eGizmo.SelectedHandle = Gizmo::GizmoHandle::All_Axis;
+                eGizmo._ray = ray.Direction;
+                FVector clickPosition = ray.Origin + ray.Direction * t;
+                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
+                eGizmo.PickDistance = t;
+                return;
+            }
         }
 
         for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
             float t;
-            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset);
+            //FVector pos = TransformPoint(*tri, FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset), {0, 90, 0}, {1, 1, 1});
+
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
                 eGizmo._ray = ray.Direction;
@@ -93,7 +98,7 @@ void ObjectPicker::DragHandle() {
 
         for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
             float t;
-            FVector pos = FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z);
+            FVector pos = TransformPoint(FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z), {90, 0, 0}, {1, 1, 1});
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
                 eGizmo._ray = ray.Direction;
