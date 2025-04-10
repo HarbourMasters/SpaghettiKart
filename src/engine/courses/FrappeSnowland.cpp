@@ -112,6 +112,8 @@ FrappeSnowland::FrappeSnowland() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 99, 164};
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
+
+    Props.WaterLevel = -50.0f;
 }
 
 void FrappeSnowland::Load() {
@@ -119,7 +121,6 @@ void FrappeSnowland::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
-    D_8015F8E4 = -50.0f;
 }
 
 void FrappeSnowland::LoadTextures() {
@@ -245,8 +246,6 @@ void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
 void FrappeSnowland::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_frappe_snowland_dl_76A0));
 }
-
-void FrappeSnowland::Collision() {}
 
 void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {
     s16 waypoint = gNearestWaypointByPlayerId[playerId];

@@ -137,7 +137,7 @@ void TestCourse::Load() {
 
     parse_course_displaylists((TrackSectionsI*)test_course_addr);
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void TestCourse::LoadTextures() {
@@ -364,8 +364,6 @@ void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
 
 void TestCourse::RenderCredits() {
 }
-
-void TestCourse::Collision() {}
 
 void TestCourse::Destroy() { }
 

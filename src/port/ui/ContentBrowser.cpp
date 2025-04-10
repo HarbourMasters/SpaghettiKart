@@ -158,6 +158,13 @@ namespace Editor {
         FVector pos = GetPositionAheadOfCamera(300.0f);
 
         size_t i_actor = 0;
+        std::string volumeLabel = fmt::format("{}##{}", "Water Volume", i_actor);
+        if (ImGui::Button(volumeLabel.c_str())) {
+            auto* volume = gEditor.AddWaterVolume("Water Volume", nullptr);
+            volume->WaterPos = pos;
+            i_actor += 1;
+        }
+
         for (const auto& actor : ActorList) {
             if ((i_actor != 0) && (i_actor % 10 == 0)) {
             } else {
@@ -166,7 +173,7 @@ namespace Editor {
 
             std::string label = fmt::format("{}##{}", actor.first, i_actor);
             if (ImGui::Button(label.c_str())) {
-                gWorldInstance.AddActor(actor.second(pos));  // Pass pos to the lambda
+                gWorldInstance.AddActor(actor.second(pos));
             }
             i_actor += 1;
         }
@@ -184,7 +191,7 @@ namespace Editor {
 
             std::string label = fmt::format("{}##{}", object.first, i_object);
             if (ImGui::Button(label.c_str())) {
-                gWorldInstance.AddObject(object.second(pos));  // Pass pos to the lambda
+                gWorldInstance.AddObject(object.second(pos));
             }
             i_object += 1;
         }

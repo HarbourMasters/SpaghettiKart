@@ -146,6 +146,8 @@ RoyalRaceway::RoyalRaceway() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 224, 240};
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+
+    Props.WaterLevel = -60.0f;
 }
 
 void RoyalRaceway::Load() {
@@ -153,7 +155,6 @@ void RoyalRaceway::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
-    D_8015F8E4 = -60.0f;
 }
 
 void RoyalRaceway::LoadTextures() {
@@ -297,8 +298,6 @@ void RoyalRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
 void RoyalRaceway::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
 }
-
-void RoyalRaceway::Collision() {}
 
 void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
     s16 waypoint = gNearestWaypointByPlayerId[playerId];

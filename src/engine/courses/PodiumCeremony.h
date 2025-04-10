@@ -37,6 +37,5 @@ public:
     virtual void MinimapFinishlinePosition() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
-    virtual void Collision() override;
     virtual void Destroy() override;
 };

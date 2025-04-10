@@ -48,6 +48,7 @@
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/editor/Water.h"
 
 extern "C" {
 #include "main.h"
@@ -393,13 +394,16 @@ void CM_BeginPlay() {
     Course* course = gWorldInstance.CurrentCourse;
 
     if (course) {
-
         // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
         if ((gGamestate != CREDITS_SEQUENCE) && (gGamestate != BATTLE) && (course->bSpawnFinishline)) {
             gWorldInstance.AddActor(new AFinishline(course->FinishlineSpawnPoint));
         }
 
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
+        Editor::WaterVolumeObject* volume = gEditor.AddWaterVolume("Water", nullptr);
+        f32 waterLevel = gWorldInstance.CurrentCourse->Props.WaterLevel;
+        volume->WaterPos = FVector(0, waterLevel, 0);
+
         course->BeginPlay();
     }
 }
@@ -728,6 +732,11 @@ void CM_ActorCollision(Player* player, Actor* actor) {
     if (a->IsMod()) {
         a->Collision(player, a);
     }
+}
+
+f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
+    FVector fPos = {pos[0], pos[1], pos[2]};
+    return gWorldInstance.CurrentCourse->GetWaterLevel(fPos, collision);
 }
 
 void* GetMarioRaceway(void) {

@@ -156,7 +156,7 @@ void LuigiRaceway::Load() {
 
     parse_course_displaylists((TrackSectionsI*) LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void LuigiRaceway::LoadTextures() {
@@ -442,9 +442,6 @@ void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
 
 void LuigiRaceway::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_luigi_raceway_dl_FD40));
-}
-
-void LuigiRaceway::Collision() {
 }
 
 void LuigiRaceway::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,

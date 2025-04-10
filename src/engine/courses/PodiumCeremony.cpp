@@ -147,6 +147,8 @@ PodiumCeremony::PodiumCeremony() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 224, 240};
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
+
+    Props.WaterLevel = -60.0f;
 }
 
 void PodiumCeremony::Load() {
@@ -154,7 +156,6 @@ void PodiumCeremony::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
-    D_8015F8E4 = -60.0f;
 }
 
 void PodiumCeremony::LoadTextures() {
@@ -295,7 +296,5 @@ void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {
 void PodiumCeremony::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
 }
-
-void PodiumCeremony::Collision() {}
 
 void PodiumCeremony::Destroy() { }

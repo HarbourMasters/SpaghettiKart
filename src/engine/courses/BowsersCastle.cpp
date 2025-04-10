@@ -134,6 +134,9 @@ BowsersCastle::BowsersCastle() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_BOWSERS_CASTLE;
+
+    Props.WaterLevel = -50.0f;
+    WaterVolumes.push_back({20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f});
 }
 
 void BowsersCastle::Load() {
@@ -142,7 +145,6 @@ void BowsersCastle::Load() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
-    D_8015F8E4 = -50.0f;
 }
 
 void BowsersCastle::LoadTextures() {
@@ -320,8 +322,6 @@ void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
 void BowsersCastle::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_bowsers_castle_dl_9148));
 }
-
-void BowsersCastle::Collision() {}
 
 void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E6EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);

@@ -150,7 +150,7 @@ void ToadsTurnpike::Load() {
     D_802B87B4 = 1000;
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void ToadsTurnpike::LoadTextures() {
@@ -288,7 +288,5 @@ void ToadsTurnpike::Render(struct UnkStruct_800DC5EC* arg0) {
 void ToadsTurnpike::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_toads_turnpike_dl_23930));
 }
-
-void ToadsTurnpike::Collision() {}
 
 void ToadsTurnpike::Destroy() { }

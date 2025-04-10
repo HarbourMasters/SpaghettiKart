@@ -158,7 +158,7 @@ void MarioRaceway::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void MarioRaceway::LoadTextures() {
@@ -389,8 +389,6 @@ void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
 void MarioRaceway::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_mario_raceway_dl_9348));
 }
-
-void MarioRaceway::Collision() {}
 
 void MarioRaceway::CreditsSpawnActors() {
     dma_textures(gTextureTrees1, 0x35B, 0x800);

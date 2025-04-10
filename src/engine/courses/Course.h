@@ -34,6 +34,16 @@ typedef struct SkyboxColours {
     RGB8 FloorTopLeft;
 } SkyboxColours;
 
+// Extends infinitely in the Y direction
+// If a player is overtop of a water volume then it should use its height
+struct WaterVolume {
+    float Height; // Y coordinate of the Water level
+    float MinX;
+    float MaxX;
+    float MinZ;
+    float MaxZ;
+};
+
 typedef struct Properties {
     const char* Id;
     char Name[128];
@@ -63,6 +73,7 @@ typedef struct Properties {
     SkyboxColours Skybox;
     const course_texture *textures;
     enum MusicSeq Sequence;
+    float WaterLevel; // Used for effects, and Lakitu pick up height. Not necessarily the visual water model height.
     const char* TrackModel;
 
 #ifdef __cplusplus
@@ -209,6 +220,10 @@ class Course {
 public:
     Properties Props;
 
+    // This allows multiple water levels in a map.
+    // Ex. DK Jungle where there's a waterfall and you can drive above and below it.
+    std::vector<WaterVolume> WaterVolumes;
+
     const char* vtx = nullptr;
     const char* gfx = nullptr;
     size_t gfxSize = 0;
@@ -245,7 +260,7 @@ public:
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();
     virtual void Waypoints(Player* player, int8_t playerId);
-    virtual void Collision();
+    virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
     virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
     virtual void Destroy();

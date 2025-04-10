@@ -38,76 +38,8 @@ void func_802AAAAC(Collision* collision) {
     vec3f_set(collision->orientationVector, 0.0f, 1.0f, 0.0f);
 }
 
-f32 func_802AAB4C(Player* player) {
-    f32 playerX;
-    f32 playerZ;
-    s32 temp_v1;
-
-    playerX = player->pos[0];
-    playerZ = player->pos[2];
-    if (GetCourse() == GetBowsersCastle()) {
-        if (playerX > 1859.0f) {
-            return D_8015F8E4;
-        }
-        if (playerX < 1549.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ > -1102.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ < -1402.0f) {
-            return D_8015F8E4;
-        }
-        return 20.0f;
-    } else if (GetCourse() == GetKoopaTroopaBeach()) {
-        if (playerX > 239.0f) {
-            return D_8015F8E4;
-        }
-        if (playerX < 67.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ > 2405.0f) {
-            return D_8015F8E4;
-        }
-        if (playerZ < 2233.0f) {
-            return D_8015F8E4;
-        }
-        return 0.8f;
-    } else if (GetCourse() == GetSherbetLand()) {
-        if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == SNOW) {
-            return (f32) (gCourseMinY - 0xA);
-        }
-        return D_8015F8E4;
-    } else if (GetCourse() == GetDkJungle()) {
-        temp_v1 = get_track_section_id(player->collision.meshIndexZX) & 0xFF;
-        if (temp_v1 == 0xFF) {
-            if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == CAVE) {
-                return -475.0f;
-            }
-            if (playerX > -478.0f) {
-                return -33.9f;
-            }
-            if (playerX < -838.0f) {
-                return -475.0f;
-            }
-            if (playerZ > -436.0f) {
-                return -475.0f;
-            }
-            if (playerZ < -993.0f) {
-                return -33.9f;
-            }
-            if (playerZ < playerX) {
-                return -475.0f;
-            }
-            return -33.9f;
-        }
-        if (temp_v1 >= 0x14) {
-            return -475.0f;
-        }
-        return -33.9f;
-    } else {
-        return D_8015F8E4;
-    }
+f32 get_water_level(Player* player) {
+    return CM_GetWaterLevel(player->pos, &player->collision);
 }
 
 s32 check_collision_zx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {

@@ -142,7 +142,7 @@ void MooMooFarm::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void MooMooFarm::LoadTextures() {
@@ -444,8 +444,6 @@ void MooMooFarm::Render(struct UnkStruct_800DC5EC* arg0) {
 void MooMooFarm::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_moo_moo_farm_dl_14088));
 }
-
-void MooMooFarm::Collision() {}
 
 void MooMooFarm::CreditsSpawnActors() {
     dma_textures(gTextureTrees4Left, 0x3E8, 0x800);

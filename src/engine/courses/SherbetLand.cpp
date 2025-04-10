@@ -111,6 +111,8 @@ SherbetLand::SherbetLand() {
     Props.Skybox.FloorBottomLeft = {128, 184, 248};
     Props.Skybox.FloorTopLeft = {216, 232, 248};
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
+
+    Props.WaterLevel = -18.0f;
 }
 
 void SherbetLand::Load() {
@@ -118,11 +120,17 @@ void SherbetLand::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
-    D_8015F8E4 = -18.0f;
     // d_course_sherbet_land_packed_dl_1EB8
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 255, 255, 255);
+}
+
+f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
+    if ((get_surface_type(collision->meshIndexZX) & 0xFF) == SNOW) {
+        return (f32) (gCourseMinY - 0xA);
+    }
+    return Props.WaterLevel;
 }
 
 void SherbetLand::LoadTextures() {
@@ -256,8 +264,6 @@ void SherbetLand::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_sherbet_land_dl_9AE8));
 }
 
-void SherbetLand::Collision() {}
-
 void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     Mat4 matrix;
 
@@ -274,7 +280,7 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
     render_course_segments(sherbet_land_dls_2, screen);
 
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
-    if ((func_80290C20(screen->camera) == 1) && (func_802AAB4C(screen->player) < screen->player->pos[1])) {
+    if ((func_80290C20(screen->camera) == 1) && (get_water_level(screen->player) < screen->player->pos[1])) {
         gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);

@@ -101,6 +101,8 @@ BigDonut::BigDonut() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_BATTLE_ARENAS;
+
+    Props.WaterLevel = 100.0f;
 }
 
 void BigDonut::Load() {
@@ -117,7 +119,6 @@ void BigDonut::Load() {
     // d_course_big_donut_packed_dl_230
     generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07000230), 6);
     func_80295C6C();
-    D_8015F8E4 = 100.0f;
 }
 
 void BigDonut::LoadTextures() {
@@ -184,8 +185,6 @@ void BigDonut::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void BigDonut::RenderCredits() {}
-
-void BigDonut::Collision() {}
 
 void BigDonut::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = 0;

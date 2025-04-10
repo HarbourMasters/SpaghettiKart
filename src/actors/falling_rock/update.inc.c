@@ -76,7 +76,7 @@ void update_actor_falling_rocks(struct FallingRock* rock) {
         rock->respawnTimer -= 1;
         return;
     }
-    if (rock->pos[1] < D_8015F8E4) {
+    if (rock->pos[1] < CM_GetWaterLevel(rock->pos, NULL)) {
         func_8029CF0C(sRockSpawnData, rock);
     }
     rock->rot[0] += (s16) ((rock->velocity[2] * 5461.0f) / 20.0f);

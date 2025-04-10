@@ -123,6 +123,10 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {48, 152, 120};
     Props.Sequence = MusicSeq::MUSIC_SEQ_KOOPA_TROOPA_BEACH;
+
+    Props.WaterLevel = 0.0f;
+    gWaterVelocity = -0.1f;
+    WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
 }
 
 void KoopaTroopaBeach::Load() {
@@ -264,21 +268,20 @@ void KoopaTroopaBeach::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_koopa_troopa_beach_dl_18D68));
 }
 
-void KoopaTroopaBeach::Collision() {}
-
 void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
 void KoopaTroopaBeach::ScrollingTextures() {
     // clang-format off
-    if (D_8015F8E8 < 0.0f) {
-        if (D_8015F8E4 < -20.0f) { D_8015F8E8 *= -1.0f; }
+    // This flips the velocity from 0.1f to -0.1f
+    if (gWaterVelocity < 0.0f) {
+        if (Props.WaterLevel < -20.0f) { gWaterVelocity *= -1.0f; }
     } else {
-        if (D_8015F8E4 > 0.0f) { D_8015F8E8 *= -1.0f; }
+        if (Props.WaterLevel > 0.0f) { gWaterVelocity *= -1.0f; }
     }
     // clang-format on
-    D_8015F8E4 += D_8015F8E8;
+    Props.WaterLevel += gWaterVelocity;
 
     D_802B87BC += 9;
     if (D_802B87BC > 255) {
@@ -330,7 +333,7 @@ void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pat
             break;
     }
     vector[0] = 0.0f;
-    vector[1] = D_8015F8E4;
+    vector[1] = Props.WaterLevel;
     vector[2] = 0.0f;
     mtxf_translate(matrix, vector);
     render_set_position(matrix, 0);

@@ -130,7 +130,7 @@ void YoshiValley::Load() {
     set_track_light_direction(&lights4, -0x38F0, 0x1C70, 1);
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void YoshiValley::LoadTextures() {
@@ -236,8 +236,6 @@ void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
 void YoshiValley::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_yoshi_valley_dl_18020));
 }
-
-void YoshiValley::Collision() {}
 
 void YoshiValley::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];

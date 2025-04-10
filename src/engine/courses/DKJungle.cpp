@@ -14,6 +14,7 @@
 
 extern "C" {
     #include "main.h"
+    #include "common_structs.h"
     #include "camera.h"
     #include "course_offsets.h"
     #include "code_800029B0.h"
@@ -132,6 +133,8 @@ DKJungle::DKJungle() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {22, 145, 22};
     Props.Sequence = MusicSeq::MUSIC_SEQ_DK_JUNGLE;
+
+    Props.WaterLevel = -475.0f;
 }
 
 void DKJungle::Load() {
@@ -139,9 +142,39 @@ void DKJungle::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
     func_80295C6C();
-    D_8015F8E4 = -475.0f;
     // d_course_dks_jungle_parkway_packed_dl_3FA8
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 120, 255, 255, 255);
+}
+
+f32 DKJungle::GetWaterLevel(FVector pos, Collision* collision) {
+    int32_t temp_v1 = get_track_section_id(collision->meshIndexZX) & 0xFF;
+
+    if (temp_v1 == 0xFF) {
+        if ((get_surface_type(collision->meshIndexZX) & 0xFF) == CAVE) {
+            return -475.0f;
+        }
+        if (pos.x > -478.0f) {
+            return -33.9f;
+        }
+        if (pos.x < -838.0f) {
+            return -475.0f;
+        }
+        if (pos.z > -436.0f) {
+            return -475.0f;
+        }
+        if (pos.z < -993.0f) {
+            return -33.9f;
+        }
+        if (pos.z < pos.x) {
+            return -475.0f;
+        }
+
+        return -33.9f;
+    }
+    if (temp_v1 >= 0x14) {
+        return -475.0f;
+    }
+    return -33.9f;
 }
 
 void DKJungle::LoadTextures() {
@@ -285,8 +318,6 @@ void DKJungle::Render(struct UnkStruct_800DC5EC* arg0) {
 void DKJungle::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_dks_jungle_parkway_dl_13C30));
 }
-
-void DKJungle::Collision() {}
 
 void DKJungle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003F138(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);

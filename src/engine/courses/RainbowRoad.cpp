@@ -109,6 +109,8 @@ RainbowRoad::RainbowRoad() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_RAINBOW_ROAD;
+    
+    Props.WaterLevel = 0.0f;
 }
 
 void RainbowRoad::Load() {
@@ -117,7 +119,6 @@ void RainbowRoad::Load() {
     D_800DC5C8 = 1;
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
-    D_8015F8E4 = 0.0f;
     // d_course_rainbow_road_packed_dl_2068
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), -0x6A, 255, 255, 255);
     // d_course_rainbow_road_packed_dl_1E18
@@ -223,8 +224,6 @@ void RainbowRoad::Render(struct UnkStruct_800DC5EC* arg0) {
 void RainbowRoad::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_rainbow_road_dl_16220));
 }
-
-void RainbowRoad::Collision() {}
 
 void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];

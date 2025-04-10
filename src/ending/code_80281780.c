@@ -117,7 +117,7 @@ void setup_podium_ceremony(void) {
     set_segment_base_addr(6, (void*) decompress_segments((u8*) &_course_banshee_boardwalk_dl_mio0SegmentRomStart,
                                                          (u8*) &_course_yoshi_valley_dl_mio0SegmentRomStart));
 #endif
-    D_8015F8E4 = -2000.0f;
+    gWaterLevel = -2000.0f;
 
     gCourseMinX = -0x15A1;
     gCourseMinY = -0x15A1;

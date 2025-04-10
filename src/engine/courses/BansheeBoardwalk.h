@@ -38,7 +38,6 @@ public:
     virtual void MinimapFinishlinePosition() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
-    virtual void Collision() override;
     virtual void ScrollingTextures() override;
     virtual void Waypoints(Player*, int8_t) override;
     virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;

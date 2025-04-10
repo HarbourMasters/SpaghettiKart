@@ -1762,7 +1762,7 @@ void func_8002C17C(Player* player, s8 playerId) {
 }
 
 void func_8002C4F8(Player* player, s8 arg1) {
-    D_801652A0[arg1] = func_802AAB4C(player);
+    D_801652A0[arg1] = get_water_level(player);
     if (player->pos[1] <= D_801652A0[arg1]) {
         player->unk_0DE |= 0x0002;
     } else {

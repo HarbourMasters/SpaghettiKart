@@ -132,6 +132,8 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_BANSHEE_BOARDWALK;
+
+    Props.WaterLevel = -80.0f;
 }
 
 void BansheeBoardwalk::Load() {
@@ -144,7 +146,6 @@ void BansheeBoardwalk::Load() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 128, 0, 0, 0);
-    D_8015F8E4 = -80.0f;
 }
 
 void BansheeBoardwalk::LoadTextures() {
@@ -322,8 +323,6 @@ void BansheeBoardwalk::Render(struct UnkStruct_800DC5EC* arg0) {
 void BansheeBoardwalk::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_banshee_boardwalk_dl_B308));
 }
-
-void BansheeBoardwalk::Collision() {}
 
 void BansheeBoardwalk::ScrollingTextures() {
     D_802B87BC++;

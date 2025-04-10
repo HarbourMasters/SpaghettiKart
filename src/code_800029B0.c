@@ -144,8 +144,8 @@ Vec3f D_8015F8D0;
 s32 D_8015F8DC;
 
 s32 D_8015F8E0;
-f32 D_8015F8E4;
-f32 D_8015F8E8;
+f32 gWaterLevel;
+f32 gWaterVelocity;
 s16 gPlayerPositionLUT[8]; // Player index at each position
 u16 gNumPermanentActors;
 s32 code_800029B0_bss_pad2[44];
@@ -209,7 +209,11 @@ void setup_race(void) {
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
     }
-    func_802969F8();
+
+    // Cow related
+    D_8015F702 = 0;
+    D_8015F700 = 200;
+
     func_80005310();
     func_8003D080();
     init_hud();

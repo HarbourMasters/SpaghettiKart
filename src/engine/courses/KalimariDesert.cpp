@@ -124,7 +124,7 @@ void KalimariDesert::Load() {
 
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void KalimariDesert::LoadTextures() {
@@ -290,7 +290,5 @@ void KalimariDesert::Render(struct UnkStruct_800DC5EC* arg0) {
 void KalimariDesert::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_kalimari_desert_dl_22E00));
 }
-
-void KalimariDesert::Collision() {}
 
 void KalimariDesert::Destroy() { }

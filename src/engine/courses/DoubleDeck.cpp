@@ -112,7 +112,7 @@ void DoubleDeck::Load() {
 
     generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07000738), 1);
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void DoubleDeck::LoadTextures() {
@@ -167,8 +167,6 @@ void DoubleDeck::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void DoubleDeck::RenderCredits() {}
-
-void DoubleDeck::Collision() {}
 
 void DoubleDeck::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = 0;

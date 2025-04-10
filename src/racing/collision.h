@@ -8,7 +8,7 @@
 
 void nullify_displaylist(uintptr_t);
 void func_802AAAAC(Collision*);
-f32 func_802AAB4C(Player*);
+f32 get_water_level(Player*);
 s32 check_collision_zx(Collision*, f32, f32, f32, f32, u16);
 s32 check_collision_yx(Collision*, f32, f32, f32, f32, u16);
 s32 check_collision_zy(Collision*, f32, f32, f32, f32, u16);

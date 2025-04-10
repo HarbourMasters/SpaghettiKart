@@ -611,7 +611,7 @@ void Harbour::Load() {
 
     parse_course_displaylists((TrackSectionsI*)harbour_surfaces);
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void Harbour::LoadTextures() {
@@ -839,8 +839,6 @@ void Harbour::Render(struct UnkStruct_800DC5EC* arg0) {
 
 void Harbour::RenderCredits() {
 }
-
-void Harbour::Collision() {}
 
 void Harbour::Destroy() { }
 

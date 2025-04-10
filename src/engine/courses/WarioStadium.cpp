@@ -141,7 +141,7 @@ void WarioStadium::Load() {
 
     parse_course_displaylists((TrackSectionsI*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
-    D_8015F8E4 = gCourseMinY - 10.0f;
+    Props.WaterLevel = gCourseMinY - 10.0f;
     // d_course_wario_stadium_packed_dl_C50
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000C50), 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_BD8
@@ -363,9 +363,6 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
 
 void WarioStadium::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_wario_stadium_dl_CA78));
-}
-
-void WarioStadium::Collision() {
 }
 
 void WarioStadium::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,

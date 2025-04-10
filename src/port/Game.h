@@ -157,6 +157,8 @@ size_t CM_FindActorIndex(struct Actor* actor);
 void CM_ActorCollision(Player* player, struct Actor* actor);
 void CM_CleanWorld(void);
 
+f32 CM_GetWaterLevel(Vec3f pos, Collision* collision);
+
 void* GetMarioRaceway(void);
 
 void* GetLuigiRaceway(void);

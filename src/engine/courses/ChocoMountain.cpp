@@ -125,6 +125,8 @@ ChocoMountain::ChocoMountain() {
     Props.Skybox.FloorBottomLeft = {255, 255, 255};
     Props.Skybox.FloorTopLeft = {255, 255, 255};
     Props.Sequence = MusicSeq::MUSIC_SEQ_CHOCO_MOUNTAIN;
+
+    Props.WaterLevel = -80.0f;
 }
 
 void ChocoMountain::Load() {
@@ -157,7 +159,6 @@ void ChocoMountain::Load() {
     parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
     func_802B5CAC(0x238E, 0x31C7, D_8015F590);
     func_80295C6C();
-    D_8015F8E4 = -80.0f;
 }
 
 void ChocoMountain::LoadTextures() {
@@ -291,8 +292,6 @@ void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {
 void ChocoMountain::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_choco_mountain_dl_71B8));
 }
-
-void ChocoMountain::Collision() {}
 
 void ChocoMountain::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);

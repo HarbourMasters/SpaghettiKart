@@ -241,8 +241,26 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
 
 void Course::RenderCredits() {
 }
-void Course::Collision() {
+
+f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
+    float highestWater = -FLT_MAX;
+    bool found = false;
+
+    for (const auto& volume : gWorldInstance.CurrentCourse->WaterVolumes) {
+        if (pos.x >= volume.MinX && pos.x <= volume.MaxX &&
+            pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
+            // Choose the highest water volume the player is over
+            if (!found || volume.Height > highestWater) {
+                highestWater = volume.Height;
+                found = true;
+            }
+        }
+    }
+
+    // If player is not over-top of a water volume then return the courses default water level
+    return found ? highestWater : gWorldInstance.CurrentCourse->Props.WaterLevel;
 }
+
 void Course::ScrollingTextures() {
 }
 void Course::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,

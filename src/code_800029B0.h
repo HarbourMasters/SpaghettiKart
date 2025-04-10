@@ -138,8 +138,8 @@ extern Vec3f D_8015F8D0;
 extern s32 D_8015F8DC;
 
 extern s32 D_8015F8E0;
-extern f32 D_8015F8E4;
-extern f32 D_8015F8E8;
+extern f32 gWaterLevel;
+extern f32 gWaterVelocity;
 extern s16 gPlayerPositionLUT[]; // Player index at each position
 extern u16 gNumPermanentActors;
 

@@ -44,7 +44,6 @@ void func_80295D50(s16, s16);
 void func_80295D6C(void);
 void func_80295D88(void);
 void func_802966A0(void);
-void func_802969F8(void);
 
 extern s32 D_8015F59C;
 
