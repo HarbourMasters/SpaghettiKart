@@ -12,6 +12,7 @@ struct TrackWaypoint {
 };
 
 namespace MK64 {
+// Used for binary import from torch
 class TrackWaypoints : public Ship::Resource<TrackWaypoint> {
   public:
     using Resource::Resource;
@@ -23,4 +24,18 @@ class TrackWaypoints : public Ship::Resource<TrackWaypoint> {
 
     std::vector<TrackWaypoint> TrackWaypointList;
 };
+
+// Used for xml
+class Paths : public Ship::Resource<TrackWaypoint> {
+  public:
+    using Resource::Resource;
+
+    Paths();
+
+    TrackWaypoint* GetPointer() override;
+    size_t GetPointerSize() override;
+
+    std::vector<std::vector<TrackWaypoint>> PathList;
+};
+
 } // namespace MK64
