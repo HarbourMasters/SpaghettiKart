@@ -37,7 +37,7 @@ namespace Editor {
 
             bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(CurrentArchive, SceneFile, stringify);
             if (wrote) {
-                printf("Successfully wrote scene file!\n");
+                printf("Successfully wrote scene file!\n  Wrote: %s\n", SceneFile.c_str());
             } else {
                 printf("Failed to write scene file!\n");
             }
@@ -102,7 +102,8 @@ namespace Editor {
                         GameObject::CollisionType::BOUNDING_BOX, 20.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) 1);
     }
 
-    void SetSceneFile(std::string sceneFile) {
-        SceneFile = sceneFile;
+    void SetSceneFile(std::string archive, std::string sceneFile) {
+        CurrentArchive = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->GetArchiveFromFile(archive);
+        SceneFile = sceneFile+"/scene.json";
     }
 }

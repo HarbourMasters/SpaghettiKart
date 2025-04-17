@@ -79,6 +79,7 @@ Course::Course() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
 }
 
+// Load custom track from code
 void Course::Load(Vtx* vtx, Gfx* gfx) {
     gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
     gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
@@ -86,13 +87,18 @@ void Course::Load(Vtx* vtx, Gfx* gfx) {
     Course::Init();
 }
 
-void Course::Load() {
+// Load custom track from o2r
+void Course::Load(std::string dls) {
+    std::vector<TrackSectionsO2R> sections = LOAD_ASSET_RAW(dls);
 
-    if (Props.TrackModel) {
-        generate_collision_mesh_with_defaults((Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
-        return;
+    for (auto& section : sections) {
+        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(section.addr), section.surfaceType, section.sectionId);
     }
+    Course::Init();
+}
 
+// Load stock track
+void Course::Load() {
     size_t vtxSize = (ResourceGetSizeByName(this->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);
     size_t texSegSize;
 

@@ -97,7 +97,6 @@ public:
 
     Matrix Mtx;
 
-    // Holds all available courses
 
     Course* CurrentCourse;
     Cup* CurrentCup;
@@ -118,6 +117,7 @@ public:
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
 
+    // Holds all available courses
     std::vector<Course*> Courses;
     size_t CourseIndex = 0; // For browsing courses.
 private:

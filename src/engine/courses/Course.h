@@ -238,8 +238,9 @@ public:
 
     explicit Course();
 
-    virtual void Load(); // Decompress and load stock courses. Must be overridden for custom courses
-    virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom course
+    virtual void Load(); // Decompress and load stock courses
+    virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code
+    virtual void Load(std::string dls); // Load custom track from o2r
     virtual void LoadTextures();
 
     /**

@@ -128,7 +128,7 @@ namespace Editor {
             bool foundTrackFile = false;
 
             for (auto& asset : TrackAssetMap[track]) {
-                if (asset.ends_with("track.json")) {
+                if (asset.ends_with("scene.json")) {
                     foundTrackFile = true;
                     if (ImGui::Button(label.c_str())) {
 
@@ -144,7 +144,7 @@ namespace Editor {
             if (!foundTrackFile) {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track);
                 if (ImGui::Button(label.c_str())) {
-                    SetSceneFile(TrackPath[track]);
+                    SetSceneFile(TrackAssetMap[track][0], TrackPath[track]);
                     SaveLevel();
                     Refresh = true;
                 }
@@ -242,10 +242,13 @@ namespace Editor {
 
                 // Extract directory path (remove filename)
                 size_t lastSlash = file.find_last_of('/');
+                printf("file %s\n", file.c_str());
+
                 std::string directoryPath = (lastSlash != std::string::npos) ? file.substr(0, lastSlash) : file;
+                printf("dir %s\n", directoryPath.c_str());
 
                 // Store in TrackPath
-                TrackPath[trackName] = directoryPath;
+                TrackPath[trackName] = file;
             }
             
             // Move unique tracks into the vector
