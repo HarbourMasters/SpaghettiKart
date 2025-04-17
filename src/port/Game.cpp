@@ -48,7 +48,6 @@
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
-#include "engine/editor/Water.h"
 
 extern "C" {
 #include "main.h"
@@ -400,9 +399,6 @@ void CM_BeginPlay() {
         }
 
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
-        Editor::WaterVolumeObject* volume = gEditor.AddWaterVolume("Water", nullptr);
-        f32 waterLevel = gWorldInstance.CurrentCourse->Props.WaterLevel;
-        volume->WaterPos = FVector(0, waterLevel, 0);
 
         course->BeginPlay();
     }

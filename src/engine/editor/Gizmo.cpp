@@ -14,7 +14,7 @@
 
 #include "engine/actors/Ship.h"
 #include "port/Game.h"
-#include "Handle.h"
+#include "Handles.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -49,13 +49,13 @@ void Gizmo::Load() {
     BlueRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
 
     //GenerateCollisionMesh(&RedCollision, (Gfx*)(handle_Cylinder_mesh), 1);
-    GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 0.5f);
+    /*GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 0.5f);
     GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 0.5f);
     GenerateCollisionMesh(&BlueCollision, (Gfx*)LOAD_ASSET_RAW(BlueCollision.Model), 0.5f);
 
     GenerateCollisionMesh(&RedRotateCollision, (Gfx*)LOAD_ASSET_RAW(RedRotateCollision.Model), 0.15f);
     GenerateCollisionMesh(&GreenRotateCollision, (Gfx*)LOAD_ASSET_RAW(GreenRotateCollision.Model), 0.15f);
-    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 0.15f);
+    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 0.15f);*/
 }
 
 void Gizmo::Tick() {
@@ -317,26 +317,15 @@ void Gizmo::DrawHandles() {
         gSPDisplayList(gDisplayListHead++, (Gfx*)center);
     }
 
-    handle_f3dlite_material_lights = gdSPDefLights1(
-        0x7F, 0x7F, 0x7F,
-        0xFF, 0, 0, 0x49, 0x49, 0x49);
-
     Mat4 RedXMtx;
     ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
     Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)redHandle);
-    handle_f3dlite_material_lights = gdSPDefLights1(
-        0x7F, 0x7F, 0x7F,
-        0, 0xFF, 0, 0x49, 0x49, 0x49);
 
     Mat4 GreenYMtx;
     ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
     Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)greenHandle);
-
-    handle_f3dlite_material_lights = gdSPDefLights1(
-        0x7F, 0x7F, 0x7F,
-        0, 0, 0xFF, 0x49, 0x49, 0x49);
 
     Mat4 BlueZMtx;
     ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);

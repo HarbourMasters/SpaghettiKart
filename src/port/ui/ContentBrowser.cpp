@@ -142,7 +142,7 @@ namespace Editor {
             }
 
             if (!foundTrackFile) {
-                std::string label = fmt::format("{} {}", "ADD PATH AND MESH TO TRACK PROPS AND CLICK HERE TO INIT TRACK:", track);
+                std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track);
                 if (ImGui::Button(label.c_str())) {
                     SetSceneFile(TrackPath[track]);
                     SaveLevel();
@@ -158,13 +158,6 @@ namespace Editor {
         FVector pos = GetPositionAheadOfCamera(300.0f);
 
         size_t i_actor = 0;
-        std::string volumeLabel = fmt::format("{}##{}", "Water Volume", i_actor);
-        if (ImGui::Button(volumeLabel.c_str())) {
-            auto* volume = gEditor.AddWaterVolume("Water Volume", nullptr);
-            volume->WaterPos = pos;
-            i_actor += 1;
-        }
-
         for (const auto& actor : ActorList) {
             if ((i_actor != 0) && (i_actor % 10 == 0)) {
             } else {
@@ -241,7 +234,7 @@ namespace Editor {
                 size_t start = pos + 7; // Move past "tracks/"
                 size_t end = file.find('/', start); // Find next '/'
                 std::string trackName = file.substr(start, end - start);
-        
+
                 TrackAssetMap[trackName].push_back(file);
                 
                 // Insert into set (ensuring uniqueness)

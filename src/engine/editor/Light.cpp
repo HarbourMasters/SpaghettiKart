@@ -15,7 +15,6 @@
 #include "Gizmo.h"
 
 #include "EditorMath.h"
-#include "Handle.h"
 
 extern "C" {
 #include "common_structs.h"

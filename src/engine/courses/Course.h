@@ -36,6 +36,9 @@ typedef struct SkyboxColours {
 
 // Extends infinitely in the Y direction
 // If a player is overtop of a water volume then it should use its height
+// Recommend using the new water surface type. This is here to support the stock tracks.
+// Albeit, there's no reason you cannot use this so long as you input a square.
+// How to use: WaterVolumes.push_back({0, -100, 100, -100, 100});
 struct WaterVolume {
     float Height; // Y coordinate of the Water level
     float MinX;

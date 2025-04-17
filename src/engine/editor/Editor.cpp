@@ -7,7 +7,6 @@
 #include "Editor.h"
 #include "Collision.h"
 #include "Light.h"
-#include "Water.h"
 
 #include "port/Engine.h"
 #include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
@@ -116,11 +115,6 @@ namespace Editor {
 
     void Editor::AddLight(const char* name, FVector* pos, s8* rot) {
         eGameObjects.push_back(new LightObject(name, pos, rot));
-    }
-
-    WaterVolumeObject* Editor::AddWaterVolume(const char* name, FVector* pos) {
-        eGameObjects.push_back(new WaterVolumeObject(name, pos));
-        return reinterpret_cast<WaterVolumeObject*>(&eGameObjects.back());
     }
 
     void Editor::ClearObjects() {

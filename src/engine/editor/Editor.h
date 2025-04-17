@@ -4,7 +4,6 @@
 #include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 #include "GameObject.h"
-#include "Water.h"
 
 #ifdef __cplusplus
 
@@ -24,7 +23,6 @@ public:
 	void Load();
     GameObject* AddObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
     void AddLight(const char* name, FVector* pos, s8* rot);
-    WaterVolumeObject* AddWaterVolume(const char* name, FVector* pos);
     void ClearObjects();
     void RemoveObject();
     void SelectObjectFromSceneExplorer(GameObject* object);

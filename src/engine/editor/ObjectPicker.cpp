@@ -84,7 +84,7 @@ void ObjectPicker::DragHandle() {
 
         for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
             float t;
-            //FVector pos = TransformPoint(*tri, FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset), {0, 90, 0}, {1, 1, 1});
+            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset);
 
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
@@ -98,7 +98,7 @@ void ObjectPicker::DragHandle() {
 
         for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
             float t;
-            FVector pos = TransformPoint(FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z), {90, 0, 0}, {1, 1, 1});
+            FVector pos = (FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z));
             if (IntersectRayTriangle(ray, *tri, pos, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
                 eGizmo._ray = ray.Direction;

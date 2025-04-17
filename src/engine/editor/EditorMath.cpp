@@ -212,9 +212,9 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& ob
     const float EPSILON = 1e-6f;
 
     // Adjust the triangle vertices by the object's position
-    FVector v0 = TransformPoint(tri.v0);
-    FVector v1 = TransformPoint(tri.v1);
-    FVector v2 = TransformPoint(tri.v2);
+    FVector v0 = tri.v0;
+    FVector v1 = tri.v1;
+    FVector v2 = tri.v2;
 
     DebugPoss = v0;
 

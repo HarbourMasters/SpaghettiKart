@@ -39,6 +39,7 @@ namespace Editor {
         ImGui::InputText("Course Length", gWorldInstance.CurrentCourse->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
         ImGui::InputFloat("Minimap Finishline X Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineX);
         ImGui::InputFloat("Minimap Finishline Y Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineY);
+        ImGui::InputFloat("Water Level", &gWorldInstance.CurrentCourse->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
             ImGui::InputFloat("Near Perspective", &gWorldInstance.CurrentCourse->Props.NearPersp);
