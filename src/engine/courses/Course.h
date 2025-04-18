@@ -78,7 +78,6 @@ typedef struct Properties {
     const course_texture *textures;
     enum MusicSeq Sequence;
     float WaterLevel; // Used for effects, and Lakitu pick up height. Not necessarily the visual water model height.
-    const char* TrackSectionsPtr;
 
 #ifdef __cplusplus
     nlohmann::json to_json() const {
@@ -234,16 +233,17 @@ public:
     const course_texture* textures = nullptr;
     bool bSpawnFinishline = true;
     std::optional<FVector> FinishlineSpawnPoint;
+    std::string TrackSectionsPtr;
 
     virtual ~Course() = default;
 
     explicit Course();
 
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
-    virtual void Load(); // Decompress and load stock courses or from o2r but Props.TrackSectionsPtr must be set.
+    virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
     virtual void LoadTextures();
-    virtual void ParseCourseSections(std::vector<TrackSectionsO2R> sections);
+    virtual void ParseCourseSections(TrackSectionsO2R* sections, size_t size);
 
     /**
      * @brief BeginPlay This function is called once at the start of gameplay.

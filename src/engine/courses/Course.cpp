@@ -31,7 +31,6 @@ Course::Course() {
     // Props.CourseLength = "567m";
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
-    Props.TrackSectionsPtr = NULL;
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
@@ -91,7 +90,7 @@ void Course::Load(Vtx* vtx, Gfx* gfx) {
 
 void Course::LoadO2R(std::string trackPath) {
     if (!trackPath.empty()) {
-        Props.TrackSectionsPtr = (trackPath + "/data_track_sections").c_str();
+        TrackSectionsPtr = (trackPath + "/data_track_sections");
 
         std::string path_file = (trackPath + "/data_paths").c_str();
 
@@ -126,14 +125,16 @@ void Course::LoadO2R(std::string trackPath) {
 void Course::Load() {
 
     // Load from O2R
-    if (Props.TrackSectionsPtr != NULL || Props.TrackSectionsPtr[0] != '\0') {
+    if (!TrackSectionsPtr.empty()) {
 
-        auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(Props.TrackSectionsPtr));
+        //auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
 
-        if (res != nullptr) {
-            std::vector<TrackSectionsO2R> sections = res->TrackSectionsList;
+        TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
 
-            ParseCourseSections(sections);
+        if (sections != nullptr) {
+            Course::Init();
+            ParseCourseSections(sections, size);
         }
         return;
     }
@@ -184,24 +185,25 @@ void Course::Load() {
 }
 
 // C++ version of parse_course_displaylists()
-void Course::ParseCourseSections(std::vector<TrackSectionsO2R> sections) {
-    for (auto& section : sections) {
-        if (section.flags & 0x8000) {
+void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
+    for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
+        if (sections[i].flags & 0x8000) {
             D_8015F59C = 1;
         } else {
             D_8015F59C = 0;
         }
-        if (section.flags & 0x2000) {
+        if (sections[i].flags & 0x2000) {
             D_8015F5A0 = 1;
         } else {
             D_8015F5A0 = 0;
         }
-        if (section.flags & 0x4000) {
+        if (sections[i].flags & 0x4000) {
             D_8015F5A4 = 1;
         } else {
             D_8015F5A4 = 0;
         }
-        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(section.addr), section.surfaceType, section.sectionId);
+        printf("LOADING DL %s\n",  sections[i].addr.c_str());
+        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType, sections[i].sectionId);
     }
 }
 
@@ -302,7 +304,7 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 }
 
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
-    //if (Props.TrackSectionsPtr) {
+    //if (!TrackSectionsPtr.empty()) {
     //    gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
     //}
 }

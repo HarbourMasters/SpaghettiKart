@@ -12,7 +12,7 @@ typedef struct {
 } TrackSectionsI;
 
 typedef struct {
-    const char* addr;
+    std::string addr;
     uint8_t surfaceType;
     uint8_t sectionId;
     uint16_t flags;

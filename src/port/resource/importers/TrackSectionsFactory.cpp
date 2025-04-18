@@ -49,14 +49,19 @@ ResourceFactoryXMLTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> file
     std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement()->FirstChildElement();
 
     while (child != nullptr) {
-        TrackSectionsO2R data;
-        //                      Convert n64 addr to native addr
-        data.addr = child->Attribute("gfx_path");
-        data.surfaceType = child->IntAttribute("surface");
-        data.sectionId = child->IntAttribute("section");
-        data.flags = child->IntAttribute("flags");
+        std::string childName = child->Name();
 
-        section->TrackSectionsList.push_back(data);
+        if (childName == "Section") {
+            TrackSectionsO2R data;
+            //                      Convert n64 addr to native addr
+            data.addr = std::string(child->Attribute("gfx_path"));
+            data.surfaceType = child->IntAttribute("surface");
+            data.sectionId = child->IntAttribute("section");
+            data.flags = child->IntAttribute("flags");
+
+            section->TrackSectionsList.push_back(data);
+        }
+        child = child->NextSiblingElement();
     }
 
     return section;

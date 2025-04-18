@@ -21,6 +21,6 @@ TrackSectionsO2R* TrackSectionsO2RClass::GetPointer() {
 }
 
 size_t TrackSectionsO2RClass::GetPointerSize() {
-    return TrackSectionsList.size() *sizeof(TrackSectionsO2R);
+    return TrackSectionsList.size() * sizeof(TrackSectionsO2R);
 }
 } // namespace MK64
