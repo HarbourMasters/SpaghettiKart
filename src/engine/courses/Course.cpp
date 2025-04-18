@@ -98,16 +98,19 @@ void Course::LoadO2R(std::string trackPath) {
         auto res = std::dynamic_pointer_cast<MK64::Paths>(ResourceLoad(path_file.c_str()));
 
         if (res != nullptr) {
-            std::vector<std::vector<TrackWaypointData>> paths = res->PathList;
-            
+            auto& paths = res->PathList;
+
             size_t i = 0;
             for (auto& path : paths) {
-                if (i < 4) { // Paths 1-4
-                    Props.PathTable[i] = (TrackWaypoint*)&path[0];
-                } else if (i < 8) { // Paths 5-8
-                    Props.PathTable2[i - 4] = (TrackWaypoint*)&path[0];
-                } else { // Only 8 course paths are supported.
-                    break;
+                if (i == 0) {
+                    Props.PathTable[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable[1] = (TrackWaypoint*)path.data();
+                    Props.PathTable[2] = (TrackWaypoint*)path.data();
+                    Props.PathTable[3] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[1] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[2] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[3] = (TrackWaypoint*)path.data();
                 }
 
                 i += 1;

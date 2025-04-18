@@ -3635,7 +3635,13 @@ void func_800100F0(s32 pathIndex) {
         pathDest = D_80164550[pathIndex];
         bInvalidPath = 1;
         if (GetCourse() != GetPodiumCeremony()) {
-            var_v0 = process_path_data(pathDest, CM_GetProps()->PathTable2[pathIndex]);
+
+            TrackWaypoint* pathSrc = CM_GetProps()->PathTable2[pathIndex];
+            if (pathSrc == NULL) {
+                printf("code_80005FD0.c: Path %d in Course::PathTable2, was NULL.\n  Your track is missing a path\n", pathIndex);
+            }
+
+            var_v0 = process_path_data(pathDest, pathSrc);
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.

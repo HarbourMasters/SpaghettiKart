@@ -248,7 +248,7 @@ namespace Editor {
                 printf("dir %s\n", directoryPath.c_str());
 
                 // Store in TrackPath
-                TrackPath[trackName] = file;
+                TrackPath[trackName] = directoryPath;
             }
             
             // Move unique tracks into the vector
