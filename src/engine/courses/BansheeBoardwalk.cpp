@@ -35,6 +35,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "course_offsets.h"
+    #include "course.h"
     extern const char *banshee_boardwalk_dls[];
 }
 
@@ -143,7 +144,7 @@ void BansheeBoardwalk::Load() {
     D_801625EC = 0;
     D_801625F4 = 0;
     D_801625F0 = 0;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000878), 128, 0, 0, 0);
 }

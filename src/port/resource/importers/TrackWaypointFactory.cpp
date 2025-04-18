@@ -18,7 +18,7 @@ ResourceFactoryBinaryTrackWaypointsV0::ReadResource(std::shared_ptr<Ship::File> 
     section->TrackWaypointList.reserve(count);
 
     for (uint32_t i = 0; i < count; i++) {
-        TrackWaypoint data;
+        TrackWaypointData data;
         data.posX = reader->ReadInt16();
         data.posY = reader->ReadInt16();
         data.posZ = reader->ReadInt16();
@@ -45,12 +45,12 @@ ResourceFactoryXMLTrackWaypointsV0::ReadResource(std::shared_ptr<Ship::File> fil
 
     while (path != nullptr) {
 
-        std::vector<TrackWaypoint> waypointPath; // Temporary container for this path
+        std::vector<TrackWaypointData> waypointPath; // Temporary container for this path
 
         auto pointElem = path->FirstChildElement("Point");
 
         while (pointElem != nullptr) {
-            TrackWaypoint point;
+            TrackWaypointData point;
             point.posX = pointElem->IntAttribute("X");
             point.posY = pointElem->IntAttribute("Y");
             point.posZ = pointElem->IntAttribute("Z");

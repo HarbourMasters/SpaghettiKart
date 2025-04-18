@@ -32,6 +32,7 @@ extern "C" {
 #include "code_8003DC40.h"
 #include "memory.h"
 #include "skybox_and_splitscreen.h"
+#include "course.h"
 extern const char* wario_stadium_dls[];
 extern s16 currentScreenSection;
 }
@@ -139,7 +140,7 @@ WarioStadium::WarioStadium() {
 void WarioStadium::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
     // d_course_wario_stadium_packed_dl_C50

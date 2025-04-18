@@ -32,6 +32,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "code_80086E70.h"
+    #include "course.h"
     extern const char *moo_moo_farm_dls[];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
@@ -140,7 +141,7 @@ MooMooFarm::MooMooFarm() {
 void MooMooFarm::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

@@ -32,6 +32,7 @@ extern "C" {
     #include "collision.h"
     #include "code_8003DC40.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *koopa_troopa_beach_dls[];
     extern s8 gPlayerCount;
 }
@@ -132,7 +133,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
 void KoopaTroopaBeach::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), -0x6A, 255, 255, 255);
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), -0x6A, 255, 255, 255);

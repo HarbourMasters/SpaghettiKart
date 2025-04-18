@@ -31,6 +31,7 @@ extern "C" {
     #include "collision.h"
     #include "code_8003DC40.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *bowsers_castle_dls[];
 }
 
@@ -142,7 +143,7 @@ BowsersCastle::BowsersCastle() {
 void BowsersCastle::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
 }

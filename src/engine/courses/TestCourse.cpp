@@ -49,12 +49,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
-    typedef struct {
-        Gfx* addr;
-        u8 surfaceType;
-        u8 sectionId;
-        u16 flags;
-    } TrackSections;
+    #include "course.h"
     extern Gfx test_course_dls[];
     extern Vtx mario_Plane_001_mesh_vtx_1[];
     extern Gfx mario_Plane_001_mesh[];
@@ -135,7 +130,7 @@ void TestCourse::Load() {
 
     generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
-    parse_course_displaylists((TrackSectionsI*)test_course_addr);
+    parse_course_displaylists((TrackSections*)test_course_addr);
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

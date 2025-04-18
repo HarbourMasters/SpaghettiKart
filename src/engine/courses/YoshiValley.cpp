@@ -33,6 +33,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *d_course_yoshi_valley_dl_list[];
 }
 
@@ -128,7 +129,7 @@ void YoshiValley::Load() {
 
     Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
     set_track_light_direction(&lights4, -0x38F0, 0x1C70, 1);
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

@@ -35,6 +35,7 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "memory.h"
     #include "sounds.h"
+    #include "course.h"
     extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
     extern s16 currentScreenSection;
 }
@@ -140,7 +141,7 @@ DKJungle::DKJungle() {
 void DKJungle::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
     func_80295C6C();
     // d_course_dks_jungle_parkway_packed_dl_3FA8
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07003FA8), 120, 255, 255, 255);

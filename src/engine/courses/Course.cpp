@@ -4,6 +4,8 @@
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
 #include "port/Game.h"
+#include "port/resource/type/TrackWaypoint.h"
+#include "port/resource/type/TrackSections.h"
 
 extern "C" {
 #include "main.h"
@@ -29,7 +31,7 @@ Course::Course() {
     // Props.CourseLength = "567m";
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
-    Props.TrackModel = NULL;
+    Props.TrackSectionsPtr = NULL;
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;
@@ -87,18 +89,53 @@ void Course::Load(Vtx* vtx, Gfx* gfx) {
     Course::Init();
 }
 
-// Load custom track from o2r
-void Course::Load(std::string dls) {
-    std::vector<TrackSectionsO2R> sections = LOAD_ASSET_RAW(dls);
+void Course::LoadO2R(std::string trackPath) {
+    if (!trackPath.empty()) {
+        Props.TrackSectionsPtr = (trackPath + "/data_track_sections").c_str();
 
-    for (auto& section : sections) {
-        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(section.addr), section.surfaceType, section.sectionId);
+        std::string path_file = (trackPath + "/data_paths").c_str();
+
+        auto res = std::dynamic_pointer_cast<MK64::Paths>(ResourceLoad(path_file.c_str()));
+
+        if (res != nullptr) {
+            std::vector<std::vector<TrackWaypointData>> paths = res->PathList;
+            
+            size_t i = 0;
+            for (auto& path : paths) {
+                if (i < 4) { // Paths 1-4
+                    Props.PathTable[i] = (TrackWaypoint*)&path[0];
+                } else if (i < 8) { // Paths 5-8
+                    Props.PathTable2[i - 4] = (TrackWaypoint*)&path[0];
+                } else { // Only 8 course paths are supported.
+                    break;
+                }
+
+                i += 1;
+            }
+        }
+
+    } else {
+        printf("Course.cpp: LoadO2R: trackPath str is empty\n");
     }
-    Course::Init();
 }
 
 // Load stock track
 void Course::Load() {
+
+    // Load from O2R
+    if (Props.TrackSectionsPtr != NULL || Props.TrackSectionsPtr[0] != '\0') {
+
+        auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(Props.TrackSectionsPtr));
+
+        if (res != nullptr) {
+            std::vector<TrackSectionsO2R> sections = res->TrackSectionsList;
+
+            ParseCourseSections(sections);
+        }
+        return;
+    }
+
+    // Stock
     size_t vtxSize = (ResourceGetSizeByName(this->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);
     size_t texSegSize;
 
@@ -141,6 +178,28 @@ void Course::Load() {
     displaylist_unpack(reinterpret_cast<uintptr_t*>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
 
     Course::Init();
+}
+
+// C++ version of parse_course_displaylists()
+void Course::ParseCourseSections(std::vector<TrackSectionsO2R> sections) {
+    for (auto& section : sections) {
+        if (section.flags & 0x8000) {
+            D_8015F59C = 1;
+        } else {
+            D_8015F59C = 0;
+        }
+        if (section.flags & 0x2000) {
+            D_8015F5A0 = 1;
+        } else {
+            D_8015F5A0 = 0;
+        }
+        if (section.flags & 0x4000) {
+            D_8015F5A4 = 1;
+        } else {
+            D_8015F5A4 = 0;
+        }
+        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(section.addr), section.surfaceType, section.sectionId);
+    }
 }
 
 void Course::Init() {
@@ -240,9 +299,9 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 }
 
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
-    if (Props.TrackModel) {
-        gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
-    }
+    //if (Props.TrackSectionsPtr) {
+    //    gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
+    //}
 }
 
 void Course::RenderCredits() {

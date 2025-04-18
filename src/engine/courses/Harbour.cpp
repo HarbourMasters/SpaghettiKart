@@ -50,12 +50,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "courses/harbour/track.h"
-    typedef struct {
-        Gfx* addr;
-        u8 surfaceType;
-        u8 sectionId;
-        u16 flags;
-    } TrackSections;
+    #include "course.h"
 }
 
 TrackWaypoint harbour_path[] = {
@@ -609,7 +604,7 @@ void Harbour::Load() {
     generate_collision_mesh_with_defaults(bush_map_004_mesh);
     generate_collision_mesh_with_defaults(statue_map_005_mesh);
 
-    parse_course_displaylists((TrackSectionsI*)harbour_surfaces);
+    parse_course_displaylists((TrackSections*)harbour_surfaces);
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

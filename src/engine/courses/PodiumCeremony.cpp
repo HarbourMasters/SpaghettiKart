@@ -35,6 +35,7 @@ extern "C" {
     #include "memory.h"
     #include "courses/staff_ghost_data.h"
     #include "podium_ceremony_actors.h"
+    #include "course.h"
     extern const char *royal_raceway_dls[];
 }
 
@@ -154,7 +155,7 @@ PodiumCeremony::PodiumCeremony() {
 void PodiumCeremony::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
 }
 

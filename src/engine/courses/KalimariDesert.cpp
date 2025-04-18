@@ -32,6 +32,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *kalimari_desert_dls[];
 }
 
@@ -122,7 +123,7 @@ KalimariDesert::KalimariDesert() {
 void KalimariDesert::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

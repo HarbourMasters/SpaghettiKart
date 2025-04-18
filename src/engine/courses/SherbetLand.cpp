@@ -30,6 +30,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *sherbet_land_dls[];
     extern const char *sherbet_land_dls_2[];
 }
@@ -118,7 +119,7 @@ SherbetLand::SherbetLand() {
 void SherbetLand::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);

@@ -31,6 +31,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "courses/staff_ghost_data.h"
+    #include "course.h"
     extern const char *mario_raceway_dls[];
 }
 
@@ -156,7 +157,7 @@ void MarioRaceway::Load() {
         }
     }
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

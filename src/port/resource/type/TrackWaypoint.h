@@ -4,7 +4,7 @@
 #include <vector>
 #include <libultra/gbi.h>
 
-struct TrackWaypoint {
+struct TrackWaypointData {
     int16_t posX;
     int16_t posY;
     int16_t posZ;
@@ -13,29 +13,29 @@ struct TrackWaypoint {
 
 namespace MK64 {
 // Used for binary import from torch
-class TrackWaypoints : public Ship::Resource<TrackWaypoint> {
+class TrackWaypoints : public Ship::Resource<TrackWaypointData> {
   public:
     using Resource::Resource;
 
     TrackWaypoints();
 
-    TrackWaypoint* GetPointer() override;
+    TrackWaypointData* GetPointer() override;
     size_t GetPointerSize() override;
 
-    std::vector<TrackWaypoint> TrackWaypointList;
+    std::vector<TrackWaypointData> TrackWaypointList;
 };
 
 // Used for xml
-class Paths : public Ship::Resource<TrackWaypoint> {
+class Paths : public Ship::Resource<TrackWaypointData> {
   public:
     using Resource::Resource;
 
     Paths();
 
-    TrackWaypoint* GetPointer() override;
+    TrackWaypointData* GetPointer() override;
     size_t GetPointerSize() override;
 
-    std::vector<std::vector<TrackWaypoint>> PathList;
+    std::vector<std::vector<TrackWaypointData>> PathList;
 };
 
 } // namespace MK64

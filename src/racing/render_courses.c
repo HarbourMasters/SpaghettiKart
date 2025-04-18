@@ -1,4 +1,4 @@
-#include <libultraship.h>
+ #include <libultraship.h>
 #include <libultra/gbi.h>
 #include <macros.h>
 #include <mk64.h>
@@ -50,7 +50,7 @@ s32 func_80290C20(Camera* camera) {
     return 0;
 }
 
-void parse_course_displaylists(TrackSectionsI* asset) {
+void parse_course_displaylists(TrackSections* asset) {
     TrackSections* section = (TrackSections*) asset;
 
     while (section->addr != 0) {

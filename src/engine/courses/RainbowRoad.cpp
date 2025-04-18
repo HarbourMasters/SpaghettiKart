@@ -30,6 +30,7 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
+    #include "course.h"
     extern const char *rainbow_road_dls[];
 }
 
@@ -117,7 +118,7 @@ void RainbowRoad::Load() {
     Course::Load();
 
     D_800DC5C8 = 1;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
     // d_course_rainbow_road_packed_dl_2068
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), -0x6A, 255, 255, 255);

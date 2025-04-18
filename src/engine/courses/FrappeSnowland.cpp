@@ -34,6 +34,7 @@ extern "C" {
     #include "memory.h"
     #include "update_objects.h"
     #include "course_offsets.h"
+    #include "course.h"
     extern const char *d_course_frappe_snowland_dl_list[];
     extern s8 gPlayerCount;
 }
@@ -119,7 +120,7 @@ FrappeSnowland::FrappeSnowland() {
 void FrappeSnowland::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
 }
 

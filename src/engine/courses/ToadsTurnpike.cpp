@@ -36,6 +36,7 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "code_80086E70.h"
+    #include "course.h"
     extern const char *d_course_toads_turnpike_dl_list[];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
@@ -148,7 +149,7 @@ void ToadsTurnpike::Load() {
     D_801625F0 = 4;
     D_802B87B0 = 993;
     D_802B87B4 = 1000;
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }

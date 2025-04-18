@@ -31,6 +31,7 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "memory.h"
     #include "course_offsets.h"
+    #include "course.h"
     extern const char *choco_mountain_dls[];
 }
 
@@ -156,7 +157,7 @@ void ChocoMountain::Load() {
         nullify_displaylist((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070003C8)));
     }
 
-    parse_course_displaylists((TrackSectionsI*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
+    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
     func_802B5CAC(0x238E, 0x31C7, D_8015F590);
     func_80295C6C();
 }

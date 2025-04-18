@@ -3,17 +3,11 @@
 
 #include "code_800029B0.h"
 #include "../camera.h"
-
-typedef struct {
-    u32 addr;
-    u8 surfaceType;
-    u8 sectionId;
-    u16 flags;
-} TrackSectionsI;
+#include <course.h>
 
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32 func_80290C20(Camera*);
-void parse_course_displaylists(TrackSectionsI* asset);
+void parse_course_displaylists(TrackSections* asset);
 void render_course_segments(const char*[], struct UnkStruct_800DC5EC*);
 void func_80291198(void);
 void render_mario_raceway_pipe(void);

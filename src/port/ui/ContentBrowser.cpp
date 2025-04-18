@@ -131,10 +131,10 @@ namespace Editor {
                 if (asset.ends_with("scene.json")) {
                     foundTrackFile = true;
                     if (ImGui::Button(label.c_str())) {
-
-                        SetCourseByClass(new Course());
+                        gWorldInstance.Courses.push_back(new Course());
+                        SetCourseByClass(gWorldInstance.Courses.back());
                         LoadLevel(asset);
-        
+                        gWorldInstance.CurrentCourse->LoadO2R(TrackPath[track]);
                         gGamestateNext = RACING;
                         break;
                     }
