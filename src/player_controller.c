@@ -2361,7 +2361,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     func_8002C4F8(player, playerId);
 }
 
-void func_8002E4C4(Player* player) {
+void set_player_height(Player* player) {
     s32 player_index;
 
     player_index = get_player_index_for_player(player);

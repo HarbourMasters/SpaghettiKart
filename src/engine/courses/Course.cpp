@@ -22,6 +22,7 @@ extern "C" {
 #include "code_800029B0.h"
 #include "render_courses.h"
 #include "collision.h"
+#include "actors.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
@@ -103,13 +104,13 @@ void Course::LoadO2R(std::string trackPath) {
             for (auto& path : paths) {
                 if (i == 0) {
                     Props.PathTable[0] = (TrackWaypoint*)path.data();
-                    Props.PathTable[1] = (TrackWaypoint*)path.data();
-                    Props.PathTable[2] = (TrackWaypoint*)path.data();
-                    Props.PathTable[3] = (TrackWaypoint*)path.data();
+                    Props.PathTable[1] = NULL;
+                    Props.PathTable[2] = NULL;
+                    Props.PathTable[3] = NULL;
                     Props.PathTable2[0] = (TrackWaypoint*)path.data();
-                    Props.PathTable2[1] = (TrackWaypoint*)path.data();
-                    Props.PathTable2[2] = (TrackWaypoint*)path.data();
-                    Props.PathTable2[3] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[1] = NULL;
+                    Props.PathTable2[2] = NULL;
+                    Props.PathTable2[3] = NULL;
                 }
 
                 i += 1;
@@ -209,6 +210,29 @@ void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
     }
 }
 
+void Course::TestPath() {
+    // DEBUG ONLY TO VISUALIZE PATH
+    s16 x;
+    s16 y;
+    s16 z;
+    Vec3s rot = {0, 0, 0};
+    Vec3f vel = {0, 0, 0};
+
+    for (size_t i = 0; i < gWaypointCountByPathIndex[0]; i++) {
+        x = D_80164550[0][i].posX;
+        y = D_80164550[0][i].posY;
+        z = D_80164550[0][i].posZ;
+
+        if (((x & 0xFFFF) == 0x8000) && ((y & 0xFFFF) == 0x8000) && ((z & 0xFFFF) == 0x8000)) {
+            break;
+        }
+
+        f32 height = spawn_actor_on_surface(x, 2000.0f, z);
+        Vec3f itemPos = {x, height, z};
+        add_actor_to_empty_slot(itemPos, rot, vel, ACTOR_ITEM_BOX);
+    }
+}
+
 void Course::Init() {
     gNumActors = 0;
     gCourseMinX = 0;
@@ -233,6 +257,7 @@ void Course::LoadTextures() {
 }
 
 void Course::BeginPlay() {
+    TestPath();
 }
 
 void Course::InitClouds() {
@@ -307,6 +332,18 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
     if (!TrackSectionsPtr.empty()) {
+        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+       // set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+        gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+
+        if (func_80290C20(arg0->camera) == 1) {
+            gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+            // d_course_big_donut_packed_dl_DE8
+        }
+
         TrackSectionsO2R* sections = (TrackSectionsO2R*)LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
         for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {

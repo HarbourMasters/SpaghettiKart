@@ -251,6 +251,7 @@ public:
      * Actor spawning should go here.
      */
     virtual void BeginPlay();
+    virtual void TestPath();
     virtual void InitClouds();
     virtual void UpdateClouds(s32, Camera*);
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);

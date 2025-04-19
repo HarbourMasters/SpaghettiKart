@@ -1425,18 +1425,23 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
     numTriangles = gCollisionGrid[gridSection].numTriangles;
 
     if (sectionIndexX < 0) {
+        printf("collision.c: actor outside of -sectionX %d\n", sectionIndexX);
         return 3000.0f;
     }
     if (sectionIndexZ < 0) {
+        printf("collision.c: actor outside of -sectionZ %d\n", sectionIndexZ);
         return 3000.0f;
     }
     if (sectionIndexX >= GRID_SIZE) {
+        printf("collision.c: actor outside of sectionX %d\n", sectionIndexX);
         return 3000.0f;
     }
     if (sectionIndexZ >= GRID_SIZE) {
+        printf("collision.c: actor outside of sectionZ %d\n", sectionIndexZ);
         return 3000.0f;
     }
     if (numTriangles == 0) {
+        printf("collision.c: No collision triangles in track!\n  Something is wrong with the tracks geometry\n");
         return 3000.0f;
     }
 

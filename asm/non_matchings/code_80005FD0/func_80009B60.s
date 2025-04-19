@@ -374,7 +374,7 @@ glabel func_80009B60
 /* 00AC6C 8000A06C 94A30000 */   lhu   $v1, ($a1)
 /* 00AC70 8000A070 AFA5002C */  sw    $a1, 0x2c($sp)
 /* 00AC74 8000A074 AFA60028 */  sw    $a2, 0x28($sp)
-/* 00AC78 8000A078 0C00B931 */  jal   func_8002E4C4
+/* 00AC78 8000A078 0C00B931 */  jal   set_player_height
 /* 00AC7C 8000A07C AFA70020 */   sw    $a3, 0x20($sp)
 /* 00AC80 8000A080 8FA5002C */  lw    $a1, 0x2c($sp)
 /* 00AC84 8000A084 8FA60028 */  lw    $a2, 0x28($sp)

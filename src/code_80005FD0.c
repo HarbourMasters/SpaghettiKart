@@ -1721,7 +1721,7 @@ void func_80009B60(s32 playerId) {
                 // gNearestWaypointByPlayerId[playerId] might need to be saved to a temp
                 D_80164510[playerId] = D_80164550[D_80163448][gNearestWaypointByPlayerId[playerId]].posY + 4.3f;
                 if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == 0)) {
-                    func_8002E4C4(player);
+                    set_player_height(player);
                 }
                 if (D_801631E0[playerId] == 1) {
                     player->pos[1] = D_80164510[playerId];
