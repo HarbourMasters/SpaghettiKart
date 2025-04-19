@@ -126,7 +126,7 @@ void Course::Load() {
 
     // Load from O2R
     if (!TrackSectionsPtr.empty()) {
-
+        bIsMod = true;
         //auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
 
         TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
@@ -304,9 +304,13 @@ void Course::Waypoints(Player* player, int8_t playerId) {
 }
 
 void Course::Render(struct UnkStruct_800DC5EC* arg0) {
-    //if (!TrackSectionsPtr.empty()) {
-    //    gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(Props.TrackModel));
-    //}
+    if (!TrackSectionsPtr.empty()) {
+        TrackSectionsO2R* sections = (TrackSectionsO2R*)LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
+        for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
+            gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()));
+        }
+    }
 }
 
 void Course::RenderCredits() {
@@ -341,7 +345,7 @@ void Course::Destroy() {
 }
 
 bool Course::IsMod() {
-    return false;
+    return bIsMod;
 }
 
 Course* currentCourse = nullptr;

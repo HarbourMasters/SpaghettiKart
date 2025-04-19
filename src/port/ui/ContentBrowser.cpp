@@ -218,7 +218,7 @@ namespace Editor {
     void ContentBrowserWindow::FindTracks() {
 
         // ListFiles(whitelist, blacklist);
-        auto ptr2 = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"*/tracks/*"}, {""});
+        auto ptr2 = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"tracks/*/scene.json"}, {""});
         if (ptr2) {
             auto files = *ptr2;
             std::set<std::string> uniqueTracks;

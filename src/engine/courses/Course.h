@@ -234,6 +234,7 @@ public:
     bool bSpawnFinishline = true;
     std::optional<FVector> FinishlineSpawnPoint;
     std::string TrackSectionsPtr;
+    bool bIsMod = false;
 
     virtual ~Course() = default;
 

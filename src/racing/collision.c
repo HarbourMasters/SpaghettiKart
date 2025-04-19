@@ -1685,7 +1685,7 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
 void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 sectionId) {
     u32 vert1 = ((triangle & 0x00FF0000) >> 16) / 2;
     u32 vert2 = ((triangle & 0x0000FF00) >> 8) / 2;
-    u32 vert3 = (triangle & 0x000000FF) / 2;
+    u32 vert3 = (triangle  & 0x000000FF) / 2;
 
     Vtx* vtx1 = vtxBuffer[vert1];
     Vtx* vtx2 = vtxBuffer[vert2];
@@ -1948,8 +1948,9 @@ u32 numTimes = 0;
 /**
  * Generate via a recursive search and set for vertex data.
  */
+bool is_cull_box(const char* filePath);
 void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
-    s32 opcode;
+    int8_t opcode;
     uintptr_t lo;
     uintptr_t hi;
     s32 i;
@@ -1973,39 +1974,108 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
     for (i = 0; i < 0x1FFF; i++) {
         lo = gfx->words.w0;
         hi = gfx->words.w1;
-        opcode = GFX_GET_OPCODE(lo);
+        opcode = GFX_GET_OPCODE(lo) >> 24;
 
         //  printf("ptr 0x%llX\n", &addr);
         //  printf("op 0x%llX\n", opcode);
         //   printf("w0 0x%llX\n", lo);
         //   printf("w1 0x%llX\n", hi);
 
-        if (opcode == (G_DL << 24)) {
-            // G_DL's hi contains an addr to another DL.
-            generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
+        switch(opcode) {
+            case G_DL:
+                // G_DL's hi contains an addr to another DL.
+                generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
+                break;
+            case G_DL_OTR_FILEPATH:
+                generate_collision_mesh(ResourceGetDataByName((const char*)hi), surfaceType, sectionId);
+                break;
+            case G_VTX:
+                set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+                break;
+            case G_VTX_OTR_FILEPATH: {
+                const char* filePath = (const char*)hi;
+                // Fast64 outputs garbage data. Lets skip that...
+                if (is_cull_box(filePath)) {
+                    printf("Skipped cull box\n");
+                    gfx++;
+                    continue;
+                }
+                gfx++;
+                size_t count = gfx->words.w0;
+                size_t index = (gfx->words.w1 >> 16);
+                size_t vtxDataOff = gfx->words.w1 & 0xFFFF;
+                Vtx* vtx = ( (Vtx*)ResourceGetDataByName(filePath) ) + vtxDataOff;
 
-        } else if (opcode == (G_VTX << 24)) {
-            set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+                set_vtx_buffer(vtx, count, index);
+                break;
+            }
+            case G_TRI1:
+                D_8015F58C += 1;
+                set_vtx_from_triangle(hi, surfaceType, sectionId);
+                break;
+            case G_TRI1_OTR: {
+                uint32_t v1 = (lo & 0x0000FFFF) * 2;
+                uint32_t v2 = (hi >> 16) * 2;
+                uint32_t v3 = (hi & 0x0000FFFF) * 2;
 
-        } else if (opcode == (G_TRI1 << 24)) {
-            D_8015F58C += 1;
-            set_vtx_from_triangle(hi, surfaceType, sectionId);
+                // Repack into a format supported by f3dex
+                uint32_t repack = (v1 << 16) | (v2 << 8) | v3;
 
-        } else if (opcode == (G_TRI2 << 24)) {
-            D_8015F58C += 2;
-
-            set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
-
-        } else if (opcode == (G_QUAD << 24)) {
-            D_8015F58C += 2;
-            set_vtx_from_quadrangle(hi, surfaceType, sectionId);
-
-        } else if (opcode == (int32_t) (G_ENDDL << 24)) {
-            break;
+                D_8015F58C += 1;
+                set_vtx_from_triangle(repack, surfaceType, sectionId);
+                break;
+            }
+            case G_TRI2:
+                D_8015F58C += 2;
+                set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
+                break;
+            case G_QUAD:
+                D_8015F58C += 2;
+                set_vtx_from_quadrangle(hi, surfaceType, sectionId);
+                break;
+            case G_ENDDL:
+                return; // end of loop
         }
+
+
+        // if (opcode == (G_DL << 24)) {
+        //     // G_DL's hi contains an addr to another DL.
+        //     generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
+
+        // } else if (opcode == (G_VTX << 24)) {
+        //     set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+
+        // } else if (opcode == (G_TRI1 << 24)) {
+        //     D_8015F58C += 1;
+        //     set_vtx_from_triangle(hi, surfaceType, sectionId);
+
+        // } else if (opcode == (G_TRI2 << 24)) {
+        //     D_8015F58C += 2;
+
+        //     set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
+
+        // } else if (opcode == (G_QUAD << 24)) {
+        //     D_8015F58C += 2;
+        //     set_vtx_from_quadrangle(hi, surfaceType, sectionId);
+
+        // } else if (opcode == (int32_t) (G_ENDDL << 24)) {
+        //     break;
+        // }
 
         gfx++;
     }
+}
+
+bool is_cull_box(const char* filePath) {
+    const char* suffix = "cull";
+    size_t fileLen = strlen(filePath);
+    size_t suffixLen = strlen(suffix);
+
+    if (fileLen < suffixLen) {
+        return false;
+    }
+
+    return strcmp(filePath + fileLen - suffixLen, suffix) == 0;
 }
 
 /**
