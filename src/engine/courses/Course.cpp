@@ -135,6 +135,8 @@ void Course::Load() {
         if (sections != nullptr) {
             Course::Init();
             ParseCourseSections(sections, size);
+            func_80295C6C();
+            Props.WaterLevel = gCourseMinY - 10.0f;
         }
         return;
     }
