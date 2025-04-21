@@ -33,10 +33,9 @@ namespace Editor {
         // Query content in o2r and add them to Content
         if (Refresh) {
             Refresh = false;
+            RemoveCustomTracksFromTrackList();
             Tracks.clear();
             Content.clear();
-            TrackAssetMap.clear();
-            TrackPath.clear();
             FindTracks();
             FindContent();
             return;
@@ -123,34 +122,41 @@ namespace Editor {
 
     void ContentBrowserWindow::AddTrackContent() {
         size_t i_track = 0;
-        for (const auto& track : Tracks) {
-            std::string label = fmt::format("{}##{}", track, i_track);
-            bool foundTrackFile = false;
-
-            for (auto& asset : TrackAssetMap[track]) {
-                if (asset.ends_with("scene.json")) {
-                    foundTrackFile = true;
-                    if (ImGui::Button(label.c_str())) {
-                        gWorldInstance.Courses.push_back(new Course());
-                        SetCourseByClass(gWorldInstance.Courses.back());
-                        LoadLevel(asset);
-                        gWorldInstance.CurrentCourse->LoadO2R(TrackPath[track]);
-                        gGamestateNext = RACING;
-                        break;
-                    }
-                }
-            }
-
-            if (!foundTrackFile) {
-                std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track);
+        for (auto& track : Tracks) {
+            if (!track.SceneFile.empty()) { // has scene file
+                std::string label = fmt::format("{}##{}", track.Name, i_track);
                 if (ImGui::Button(label.c_str())) {
-                    SetSceneFile(TrackAssetMap[track][0], TrackPath[track]);
+                    SetCourseByClass(track.course);
+                    gGamestateNext = RACING;
+                    SetSceneFile(track.Archive, track.SceneFile);
+                    break;
+                }
+            } else { // no scene file
+                std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
+                if (ImGui::Button(label.c_str())) {
+                    track.SceneFile = track.Dir + "/scene.json";
+                    SetCourseByClass(track.course);
+                    SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;
                 }
             }
 
             i_track += 1;
+        }
+    }
+
+    void ContentBrowserWindow::RemoveCustomTracksFromTrackList() {
+        for (auto& track : Tracks) {
+            auto it = gWorldInstance.Courses.begin();
+            while (it != gWorldInstance.Courses.end()) {
+                if (track.course == *it) {
+                    delete *it;
+                    it = gWorldInstance.Courses.erase(it);
+                } else {
+                    ++it;
+                }
+            }
         }
     }
 
@@ -216,43 +222,41 @@ namespace Editor {
 
     // Finds modded archives only. For discovering tracks
     void ContentBrowserWindow::FindTracks() {
+        auto manager = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager();
 
-        // ListFiles(whitelist, blacklist);
-        auto ptr2 = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"tracks/*/scene.json"}, {""});
+        auto ptr2 = manager->ListDirectories("tracks/*");
         if (ptr2) {
-            auto files = *ptr2;
-            std::set<std::string> uniqueTracks;
-        
-            for (const auto& file : files) {
-                //printf("TRACK FILES: %s\n", file.c_str());
-        
-                // Find "tracks/"
-                size_t pos = file.find("tracks/");
-                if (pos == std::string::npos) continue; // Skip if not found
-        
-                // Extract track name
-                size_t start = pos + 7; // Move past "tracks/"
-                size_t end = file.find('/', start); // Find next '/'
-                std::string trackName = file.substr(start, end - start);
+            auto dirs = *ptr2;
 
-                TrackAssetMap[trackName].push_back(file);
-                
-                // Insert into set (ensuring uniqueness)
-                uniqueTracks.insert(trackName);
+            for (const std::string& dir : dirs) {
+                std::string name = dir.substr(dir.find_last_of('/') + 1);
+                std::string sceneFile = dir + "/scene.json";
+                if (manager->HasFile(sceneFile)) {
+                    auto archive = manager->GetArchiveFromFile(sceneFile);
+                    
+                    Course* course = new Course();
+                    course->LoadO2R(dir);
+                    gWorldInstance.Courses.push_back(course);
+                    LoadLevel(archive, course, sceneFile);
+                    Tracks.push_back({course, sceneFile, name, dir, archive});
+                } else {
+                    const std::string file = dir + "/data_track_sections";
+                    
+                    if (manager->HasFile(file)) {
 
-                // Extract directory path (remove filename)
-                size_t lastSlash = file.find_last_of('/');
-                printf("file %s\n", file.c_str());
+                        Course* course = new Course();
+                        course->Props.Id = (std::string("mods:") + name).c_str();
+                        course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
+                        course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
 
-                std::string directoryPath = (lastSlash != std::string::npos) ? file.substr(0, lastSlash) : file;
-                printf("dir %s\n", directoryPath.c_str());
+                        auto archive = manager->GetArchiveFromFile(file);
+                        Tracks.push_back({course, "", name, dir, archive});
+                    } else {
+                        printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
+                    }
 
-                // Store in TrackPath
-                TrackPath[trackName] = directoryPath;
+                }
             }
-            
-            // Move unique tracks into the vector
-            Tracks.assign(uniqueTracks.begin(), uniqueTracks.end());
         }
     }
 

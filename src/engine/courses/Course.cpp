@@ -29,9 +29,13 @@ extern StaffGhost* d_mario_raceway_staff_ghost;
 Course::Course() {
     // Props.Name = "Course Name";
     // Props.DebugName = "CName";
-    // Props.CourseLength = "567m";
+    Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
+    Props.Id = "";
+    Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
+    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

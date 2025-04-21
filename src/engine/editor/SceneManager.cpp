@@ -46,17 +46,14 @@ namespace Editor {
         }
     }
 
-    void LoadLevel(std::string sceneFile) {
-        printf("LOAD TRACK PROPS %s\n", sceneFile.c_str());
-
+    void LoadLevel(std::shared_ptr<Ship::Archive> archive, Course* course, std::string sceneFile) {
         nlohmann::json data;
 
-        CurrentArchive = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->GetArchiveFromFile(sceneFile);
         SceneFile = sceneFile;
 
-        if (CurrentArchive) {
+        if (archive) {
             auto initData = std::make_shared<Ship::ResourceInitData>();
-            initData->Parent = CurrentArchive;
+            initData->Parent = archive;
             initData->Format = RESOURCE_FORMAT_BINARY;
             initData->ByteOrder = Ship::Endianness::Little;
             initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
@@ -72,7 +69,7 @@ namespace Editor {
             // Load the Props (deserialize it)
             if (data.contains("Props")) {
                 auto& propsJson = data["Props"];
-                gWorldInstance.CurrentCourse->Props.from_json(propsJson);  // Assuming you have a `from_json` function
+                course->Props.from_json(propsJson);  // Assuming you have a `from_json` function
             } else {
                 std::cerr << "Props data not found in the JSON file!" << std::endl;
             }
@@ -102,8 +99,8 @@ namespace Editor {
                         GameObject::CollisionType::BOUNDING_BOX, 20.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) 1);
     }
 
-    void SetSceneFile(std::string archive, std::string sceneFile) {
-        CurrentArchive = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->GetArchiveFromFile(archive);
-        SceneFile = sceneFile+"/scene.json";
+    void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
+        CurrentArchive = archive;
+        SceneFile = sceneFile;
     }
 }

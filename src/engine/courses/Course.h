@@ -122,6 +122,8 @@ typedef struct Properties {
         // j["Skybox"] = Skybox; // Implement your serialization logic here
         j["Sequence"] = static_cast<int>(Sequence);
 
+        j["WaterLevel"] = static_cast<float>(WaterLevel);
+
         return j;
     }
 
@@ -194,6 +196,7 @@ typedef struct Properties {
         MinimapFinishlineY = j.at("MinimapFinishlineY").get<float>();
         //textures = nullptr; // Deserialize textures if present
         Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
+        WaterLevel = static_cast<float>(j.at("WaterLevel").get<float>());
     }
     void SetText(char* name, const char* title, size_t bufferSize) {
         // Copy the title into the name buffer, ensuring it's null-terminated and within bounds
