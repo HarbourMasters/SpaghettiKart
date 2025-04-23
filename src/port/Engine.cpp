@@ -272,26 +272,26 @@ void GameEngine::StartFrame() const {
 void GameEngine::RunCommands(Gfx* Commands) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
-    if (ShouldClearTextureCacheAtEndOfFrame) {
-        gfx_texture_cache_clear();
-        ShouldClearTextureCacheAtEndOfFrame = false;
-    }
-
     if (nullptr == wnd) {
         return;
     }
 
     wnd->HandleEvents();
     wnd->DrawAndRunGraphicsCommands(Commands, {});
+
+    if (ShouldClearTextureCacheAtEndOfFrame) {
+        gfx_texture_cache_clear();
+        ShouldClearTextureCacheAtEndOfFrame = false;
+    }
 }
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
-    RunCommands(commands);
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
     if (wnd != nullptr) {
         wnd->SetTargetFps(CVarGetInteger("gInterpolationFPS", 30));
         wnd->SetMaximumFrameLatency(1);
     }
+    RunCommands(commands);
 }
 
 // Audio
