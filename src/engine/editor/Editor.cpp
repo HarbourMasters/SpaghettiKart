@@ -152,10 +152,4 @@ namespace Editor {
         eObjectPicker.eGizmo.dimensions.MinZ = minZ + -1000;
         eObjectPicker.eGizmo.dimensions.MaxZ = maxZ + 1000;
     }
-
-    // This is more of a reset
-    void Editor::NewTrack() {
-        auto course = gWorldInstance.CurrentCourse = new Course();
-        course->Props.New();
-    }
 }

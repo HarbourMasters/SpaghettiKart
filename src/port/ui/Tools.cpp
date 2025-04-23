@@ -33,14 +33,6 @@ namespace Editor {
         static bool toggleBoundary = CVarGetInteger("gEditorBoundary", 0);
         static int selectedTool = 0; // 0: Move, 1: Rotate, 2: Scale
 
-        if (ImGui::Button(ICON_FA_FILE_TEXT_O, ImVec2(50, 25))) {
-            gEditor.NewTrack();
-            gWorldInstance.ClearWorld();
-            gIsEditorPaused = true;
-        }
-
-        ImGui::SameLine();
-
         // Save button
         if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
             SaveLevel();
