@@ -146,7 +146,7 @@ struct IRotator {
 
     // Convert to radians as FVector
     [[nodiscard]] FVector ToRadians() const {
-        constexpr float scale = 2.0f * M_PI / 65536.0f;
+        float scale = 2.0f * M_PI / 65536.0f;
         return FVector(
             pitch * scale,
             yaw   * scale,
