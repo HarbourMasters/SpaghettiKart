@@ -628,3 +628,11 @@ extern "C" uint32_t OTRGetGameRenderWidth() {
 extern "C" uint32_t OTRGetGameRenderHeight() {
     return gfx_current_dimensions.height;
 }
+
+extern "C" uint32_t OTRGetGameViewportWidth() {
+    return gfx_current_game_window_viewport.width;
+}
+
+extern "C" uint32_t OTRGetGameViewportHeight() {
+    return gfx_current_game_window_viewport.height;
+}

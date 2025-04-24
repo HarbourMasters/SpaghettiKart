@@ -60,6 +60,10 @@ public:
     GameObject GreenRotateCollision;
     GameObject BlueRotateCollision;
 
+    MtxF Mtx_RedX;
+    MtxF Mtx_GreenY;
+    MtxF Mtx_BlueZ;
+
     FVector Pos; // Global scene view
     IRotator Rot = {0, 0, 0};
     float AllAxisRadius = 3.0f; // Free move selection radius

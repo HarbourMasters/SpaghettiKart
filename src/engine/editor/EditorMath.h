@@ -39,9 +39,16 @@ s32 Inverse(MtxF* src, MtxF* dest);
 void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
 
-bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t);
+FVector TransformVecByMatrix(const FVector& vec, const float mtx[4][4]);
+FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]);
+Ray RayToLocalSpace(MtxF mtx, const Ray& ray);
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t); // Uses local space not global space.
+bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri, float& t);
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
-FVector TransformPoint(const FVector& point, const FVector& pos, const IRotator& n64Rot, const FVector& scale);
+/**
+ * optional used here so we can check for successful query and return the click position
+ */
+std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, Triangle& tri);
 
 void Editor_MatrixIdentity(Mat4 mtx);
 void Editor_AddMatrix(Mat4 mtx, int32_t flags);

@@ -19,10 +19,10 @@ namespace Editor {
         GameObject* _selected;
     private:
         bool _draw = false;
-        Vec3f _ray;
         GameObject* _lastSelected;
         s32 Inverse(MtxF* src, MtxF* dest);
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
+        bool Debug = false;
     };
 }

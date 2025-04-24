@@ -72,6 +72,8 @@ class GameEngine {
     int16_t OTRGetRectDimensionFromRightEdge(float v);
     uint32_t OTRGetGameRenderWidth();
     uint32_t OTRGetGameRenderHeight();
+    uint32_t OTRGetGameViewportWidth();
+    uint32_t OTRGetGameViewportHeight();
     uint32_t OTRCalculateCenterOfAreaFromRightEdge(int32_t center);
     uint32_t OTRCalculateCenterOfAreaFromLeftEdge(int32_t center);
   private:
@@ -101,6 +103,8 @@ int16_t OTRGetRectDimensionFromLeftEdge(float v);
 int16_t OTRGetRectDimensionFromRightEdge(float v);
 uint32_t OTRGetGameRenderWidth(void);
 uint32_t OTRGetGameRenderHeight(void);
+uint32_t OTRGetGameViewportWidth();
+uint32_t OTRGetGameViewportHeight();
 uint32_t OTRCalculateCenterOfAreaFromRightEdge(int32_t center);
 uint32_t OTRCalculateCenterOfAreaFromLeftEdge(int32_t center);
 #ifdef __cplusplus

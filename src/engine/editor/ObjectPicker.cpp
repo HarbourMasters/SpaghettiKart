@@ -68,10 +68,10 @@ void ObjectPicker::DragHandle() {
 
     // Is the gizmo being dragged?
     if (eGizmo.Enabled) {
-        float t;
 
         // No all_axis grab for rotate
         if (static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0)) != Gizmo::TranslationMode::Rotate) {
+            float t;
             if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::All_Axis;
                 eGizmo._ray = ray.Direction;
@@ -83,42 +83,35 @@ void ObjectPicker::DragHandle() {
         }
 
         for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
-            float t;
-            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y, eGizmo.Pos.z - eGizmo._gizmoOffset);
-
-            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_RedX, ray, *tri)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
                 eGizmo._ray = ray.Direction;
-                FVector clickPosition = ray.Origin + ray.Direction * t;
-                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
-                eGizmo.PickDistance = t;
-                return; // Stop checking objects if we selected a Gizmo handle
+                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
+                float distance = (*clickPos - ray.Origin).Magnitude();
+                eGizmo.PickDistance = distance;
+                return;
             }
         }
 
         for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
-            float t;
-            FVector pos = (FVector(eGizmo.Pos.x - eGizmo._gizmoOffset, eGizmo.Pos.y, eGizmo.Pos.z));
-            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_GreenY, ray, *tri)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
                 eGizmo._ray = ray.Direction;
-                FVector clickPosition = ray.Origin + ray.Direction * t;
-                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
-                eGizmo.PickDistance = t;
-                return; // Stop checking objects if we selected a Gizmo handle
+                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
+                float distance = (*clickPos - ray.Origin).Magnitude();
+                eGizmo.PickDistance = distance;
+                return;
             }
         }
 
         for (auto tri = eGizmo.BlueCollision.Triangles.begin(); tri < eGizmo.BlueCollision.Triangles.end(); tri++) {
-            float t;
-            FVector pos = FVector(eGizmo.Pos.x, eGizmo.Pos.y + eGizmo._gizmoOffset, eGizmo.Pos.z);
-            if (IntersectRayTriangle(ray, *tri, pos, t)) {
+            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_BlueZ, ray, *tri)) {
                 eGizmo.SelectedHandle = Gizmo::GizmoHandle::Y_Axis;
                 eGizmo._ray = ray.Direction;
-                FVector clickPosition = ray.Origin + ray.Direction * t;
-                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
-                eGizmo.PickDistance = t;
-                return; // Stop checking objects if we selected a Gizmo handle
+                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
+                float distance = (*clickPos - ray.Origin).Magnitude();
+                eGizmo.PickDistance = distance;
+                return;
             }
         }
     }
@@ -127,6 +120,21 @@ void ObjectPicker::DragHandle() {
 void ObjectPicker::Draw() {
     if (_selected != NULL) {
         eGizmo.Draw();
+    }
+
+    if (Debug) {
+        Mat4 CursorMtx;
+        IRotator rot = IRotator(0,0,0);
+        FVector scale = FVector(0.1, 0.1, 0.1);
+        FVector ray = ScreenRayTrace();
+
+        float x = (cameras[0].pos[0] + ray.x * 800);
+        float y = (cameras[0].pos[1] + ray.y * 800);
+        float z = (cameras[0].pos[2] + ray.z * 800);
+
+        ApplyMatrixTransformations((float(*)[4])&CursorMtx, FVector(x, y, z), rot, scale);
+        Editor_AddMatrix((float(*)[4])&CursorMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__tracks/sphere");
     }
 }
 
@@ -142,7 +150,8 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
             case GameObject::CollisionType::VTX_INTERSECT:
                 for (const auto& tri : object->Triangles) {
                     float t;
-                    if (IntersectRayTriangle(ray, tri, *object->Pos, t)) {
+                    //Ray localRay = RayToLocalSpace(eGizmo.Mtx_GreenY, ray);
+                    if (IntersectRayTriangleAndTransform(ray, *object->Pos, tri, t)) {
                         printf("\nSELECTED OBJECT\n\n");
                         _selected = object;
                         found = true;
@@ -165,7 +174,7 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
                     //     _selected = nullptr;
                     //     break;
                     // }
-                    printf("FOUND BOUNDING BOX OBJECT\n");
+                    printf("FOUND BOUNDING BOX OBJECT ray: %f %f %f obj %f %f %f\n", ray.Origin.x, ray.Origin.y, ray.Origin.z, object->Pos->x, object->Pos->y, object->Pos->z);
                     found = true;
                     //foundActor = &actor;
                     //type = object->Type;

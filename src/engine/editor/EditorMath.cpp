@@ -43,10 +43,9 @@ FVector ScreenRayTrace() {
     Ship::Coords mouse = wnd->GetMousePos();
     mouse.x -= gfx_current_game_window_viewport.x;
     mouse.y -= gfx_current_game_window_viewport.y;
-
     // Get screen dimensions
-    uint32_t width = OTRGetGameRenderWidth();
-    uint32_t height = OTRGetGameRenderHeight();
+    uint32_t width = OTRGetGameViewportWidth();
+    uint32_t height = OTRGetGameViewportHeight();
 
     // Convert mouse to NDS screen coordinates
     float x = (2.0f * mouse.x) / width - 1.0f;  // Normalized X: -1 to 1
@@ -76,6 +75,7 @@ FVector ScreenRayTrace() {
             return direction;
         }
     }
+    return FVector(0, 0, 0);
 }
 
 bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t) {
@@ -207,16 +207,41 @@ void Clear(MtxF* mf) {
     mf->yw = 0.0f;
     mf->zw = 0.0f;
 }
-FVector DebugPoss = {0, 0, 0};
-bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& objectPos, float& t) {
-    const float EPSILON = 1e-6f;
+
+FVector TransformVecByMatrix(const FVector& vec, const float mtx[4][4]) {
+    FVector result;
+    result.x = vec.x * mtx[0][0] + vec.y * mtx[1][0] + vec.z * mtx[2][0] + mtx[3][0];
+    result.y = vec.x * mtx[0][1] + vec.y * mtx[1][1] + vec.z * mtx[2][1] + mtx[3][1];
+    result.z = vec.x * mtx[0][2] + vec.y * mtx[1][2] + vec.z * mtx[2][2] + mtx[3][2];
+    return result;
+}
+
+FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]) {
+    FVector result;
+    result.x = dir.x * mtx[0][0] + dir.y * mtx[1][0] + dir.z * mtx[2][0];
+    result.y = dir.x * mtx[0][1] + dir.y * mtx[1][1] + dir.z * mtx[2][1];
+    result.z = dir.x * mtx[0][2] + dir.y * mtx[1][2] + dir.z * mtx[2][2];
+    return result;
+}
+
+Ray RayToLocalSpace(MtxF mtx, const Ray& ray) {
+    MtxF inverse;
+
+    if (Inverse(&mtx, &inverse) != 2) {
+        FVector localRayOrigin = TransformVecByMatrix(ray.Origin, (float(*)[4])&inverse);
+        FVector localRayDir = TransformVecDirection(ray.Direction, (float(*)[4])&inverse);
+        return Ray{localRayOrigin, localRayDir.Normalize()};
+    }
+    return Ray{}; // Fail. Return empty ray
+}
+
+bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t) {
+    constexpr float EPSILON = 1e-6f;
 
     // Adjust the triangle vertices by the object's position
     FVector v0 = tri.v0;
     FVector v1 = tri.v1;
     FVector v2 = tri.v2;
-
-    DebugPoss = v0;
 
     FVector edge1 = v1 - v0;
     FVector edge2 = v2 - v0;
@@ -243,35 +268,49 @@ bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, const FVector& ob
     return t > EPSILON;
 }
 
-// Apply location, rotation, and scale transformations.
-FVector TransformPoint(const FVector& point, const FVector& pos, const IRotator& n64Rot, const FVector& scale) {
-    FVector rot = n64Rot.ToRadians();
+bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri, float& t) {
+    constexpr float EPSILON = 1e-6f;
 
-    // Apply scale
-    FVector scaled = FVector(point.x * scale.x, point.y * scale.y, point.z * scale.z);
+    // Adjust the triangle vertices by the object's position
+    FVector v0 = tri.v0 + pos;
+    FVector v1 = tri.v1 + pos;
+    FVector v2 = tri.v2 + pos;
 
-    // Apply rotation (ZXY order, typical in games)
-    float cz = cos(rot.z), sz = sin(rot.z);
-    float cx = cos(rot.x), sx = sin(rot.x);
-    float cy = cos(rot.y), sy = sin(rot.y);
+    FVector edge1 = v1 - v0;
+    FVector edge2 = v2 - v0;
+    FVector h = ray.Direction.Cross(edge2);
+    float a = edge1.Dot(h);
 
-    // Rotate around Z axis
-    float x1 = scaled.x * cz - scaled.y * sz;
-    float y1 = scaled.x * sz + scaled.y * cz;
-    float z1 = scaled.z;
+    if (std::abs(a) < EPSILON)
+        return false; // Ray is parallel to triangle
 
-    // Rotate around X axis
-    float y2 = y1 * cx - z1 * sx;
-    float z2 = y1 * sx + z1 * cx;
-    float x2 = x1;
+    float f = 1.0f / a;
+    FVector s = ray.Origin - v0;
+    float u = f * s.Dot(h);
 
-    // Rotate around Y axis
-    float x3 = x2 * cy + z2 * sy;
-    float y3 = y2;
-    float z3 = -x2 * sy + z2 * cy;
+    if (u < 0.0f || u > 1.0f)
+        return false;
 
-    // Apply translation
-    return FVector(x3 + pos.x, y3 + pos.y, z3 + pos.z);
+    FVector q = s.Cross(edge1);
+    float v = f * ray.Direction.Dot(q);
+
+    if (v < 0.0f || u + v > 1.0f)
+        return false;
+
+    t = f * edge2.Dot(q);
+    return t > EPSILON;
+}
+
+std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, Triangle& tri) {
+    float t;
+    Ray localRay = RayToLocalSpace(mtx, ray);
+    if (IntersectRayTriangle(localRay, tri, t)) {
+        FVector localClickPosition = localRay.Origin + localRay.Direction * t;
+        FVector worldClickPosition = TransformVecByMatrix(localClickPosition, (float(*)[4])&mtx);
+
+        return worldClickPosition; // Stop checking objects if we selected a Gizmo handle
+    }
+    return std::nullopt;
 }
 
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t) {

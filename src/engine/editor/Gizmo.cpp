@@ -48,14 +48,14 @@ void Gizmo::Load() {
     BlueRotateCollision.Pos = &Pos;
     BlueRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
 
-    //GenerateCollisionMesh(&RedCollision, (Gfx*)(handle_Cylinder_mesh), 1);
-    /*GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 0.5f);
-    GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 0.5f);
-    GenerateCollisionMesh(&BlueCollision, (Gfx*)LOAD_ASSET_RAW(BlueCollision.Model), 0.5f);
+//    GenerateCollisionMesh(&RedCollision, (Gfx*)(handle_Cylinder_mesh), 1);
+    GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueCollision, (Gfx*)LOAD_ASSET_RAW(BlueCollision.Model), 1.0f);
 
-    GenerateCollisionMesh(&RedRotateCollision, (Gfx*)LOAD_ASSET_RAW(RedRotateCollision.Model), 0.15f);
-    GenerateCollisionMesh(&GreenRotateCollision, (Gfx*)LOAD_ASSET_RAW(GreenRotateCollision.Model), 0.15f);
-    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 0.15f);*/
+    GenerateCollisionMesh(&RedRotateCollision, (Gfx*)LOAD_ASSET_RAW(RedRotateCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenRotateCollision, (Gfx*)LOAD_ASSET_RAW(GreenRotateCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 1.0f);
 }
 
 void Gizmo::Tick() {
@@ -244,10 +244,10 @@ void Gizmo::Scale() {
 void Gizmo::Draw() {
     if (Enabled) {
         DrawHandles();
-        DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
-        DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
-        DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
-        DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
+        //DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
+        //DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
+        //DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
+        //DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
         //DebugCollision((uintptr_t)_selected, Pos, BlueRotateCollision.Triangles);
         //DebugCollision((uintptr_t)_selected, Pos, GreenRotateCollision.Triangles);
     }
@@ -255,6 +255,9 @@ void Gizmo::Draw() {
 
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
+    Editor_MatrixIdentity((float(*)[4])&Mtx_RedX);
+    Editor_MatrixIdentity((float(*)[4])&Mtx_GreenY);
+    Editor_MatrixIdentity((float(*)[4])&Mtx_BlueZ);
 
     const char* blueHandle;
     const char* greenHandle;
@@ -274,7 +277,7 @@ void Gizmo::DrawHandles() {
             _gizmoOffset = 8.0f;
             greenRot = {0, 90, 0};
             blueRot = {90, 0, 0};
-            scale = {1, 1, 1};
+            scale = {0.3, 0.3, 0.3};
             break;
         case TranslationMode::Rotate:
             center = nullptr; // No All_Axis drag button for Rotation
@@ -317,19 +320,16 @@ void Gizmo::DrawHandles() {
         gSPDisplayList(gDisplayListHead++, (Gfx*)center);
     }
 
-    Mat4 RedXMtx;
-    ApplyMatrixTransformations(RedXMtx, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
-    Editor_AddMatrix(RedXMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    ApplyMatrixTransformations((float(*)[4])&Mtx_RedX, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
+    Editor_AddMatrix((float(*)[4])&Mtx_RedX, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)redHandle);
 
-    Mat4 GreenYMtx;
-    ApplyMatrixTransformations(GreenYMtx, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
-    Editor_AddMatrix(GreenYMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    ApplyMatrixTransformations((float(*)[4])&Mtx_GreenY, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
+    Editor_AddMatrix((float(*)[4])&Mtx_GreenY, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)greenHandle);
 
-    Mat4 BlueZMtx;
-    ApplyMatrixTransformations(BlueZMtx, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
-    Editor_AddMatrix(BlueZMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    ApplyMatrixTransformations((float(*)[4])&Mtx_BlueZ, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
+    Editor_AddMatrix((float(*)[4])&Mtx_BlueZ, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*)blueHandle);
 }
 }
