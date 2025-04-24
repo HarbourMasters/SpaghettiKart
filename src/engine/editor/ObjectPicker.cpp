@@ -98,9 +98,24 @@ void ObjectPicker::DragHandle() {
         }
     };
 
-    tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedCollision.Triangles);
-    tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenCollision.Triangles);
-    tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueCollision.Triangles);
+    switch(static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
+        case Gizmo::TranslationMode::Move:
+            tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueCollision.Triangles);
+            break;
+        case Gizmo::TranslationMode::Rotate:
+            tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedRotateCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenRotateCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueRotateCollision.Triangles);
+            break;
+        case Gizmo::TranslationMode::Scale:
+            tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedScaleCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenScaleCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueScaleCollision.Triangles);
+            break;
+
+    }
 
     if (closestHandle != Gizmo::GizmoHandle::None && closestClickPos.has_value()) {
         eGizmo.SelectedHandle = closestHandle;

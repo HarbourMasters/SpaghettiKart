@@ -60,6 +60,10 @@ public:
     GameObject GreenRotateCollision;
     GameObject BlueRotateCollision;
 
+    GameObject RedScaleCollision;
+    GameObject GreenScaleCollision;
+    GameObject BlueScaleCollision;
+
     MtxF Mtx_RedX;
     MtxF Mtx_GreenY;
     MtxF Mtx_BlueZ;

@@ -38,7 +38,7 @@ void Gizmo::Load() {
     BlueCollision.Pos = &Pos;
     BlueCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_blue";
 
-    /* Rotate handle Collision */
+    /* Rotate handle collision */
     RedRotateCollision.Pos = &Pos;
     RedRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_red";
 
@@ -48,7 +48,16 @@ void Gizmo::Load() {
     BlueRotateCollision.Pos = &Pos;
     BlueRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
 
-//    GenerateCollisionMesh(&RedCollision, (Gfx*)(handle_Cylinder_mesh), 1);
+    /* Scale handle collision */
+    RedScaleCollision.Pos = &Pos;
+    RedScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_red";
+
+    GreenScaleCollision.Pos = &Pos;
+    GreenScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_green";
+
+    BlueScaleCollision.Pos = &Pos;
+    BlueScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_blue";
+
     GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 1.0f);
     GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 1.0f);
     GenerateCollisionMesh(&BlueCollision, (Gfx*)LOAD_ASSET_RAW(BlueCollision.Model), 1.0f);
@@ -56,6 +65,10 @@ void Gizmo::Load() {
     GenerateCollisionMesh(&RedRotateCollision, (Gfx*)LOAD_ASSET_RAW(RedRotateCollision.Model), 1.0f);
     GenerateCollisionMesh(&GreenRotateCollision, (Gfx*)LOAD_ASSET_RAW(GreenRotateCollision.Model), 1.0f);
     GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 1.0f);
+
+    GenerateCollisionMesh(&RedScaleCollision, (Gfx*)LOAD_ASSET_RAW(RedScaleCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenScaleCollision, (Gfx*)LOAD_ASSET_RAW(GreenScaleCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueScaleCollision, (Gfx*)LOAD_ASSET_RAW(BlueScaleCollision.Model), 1.0f);
 }
 
 void Gizmo::Tick() {
