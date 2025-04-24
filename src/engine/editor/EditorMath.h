@@ -43,12 +43,12 @@ FVector TransformVecByMatrix(const FVector& vec, const float mtx[4][4]);
 FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]);
 Ray RayToLocalSpace(MtxF mtx, const Ray& ray);
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t); // Uses local space not global space.
-bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri, float& t);
+bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri, float& t); // Uses global space because no access to mtx
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
 /**
  * optional used here so we can check for successful query and return the click position
  */
-std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, Triangle& tri);
+std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, const Triangle& tri);
 
 void Editor_MatrixIdentity(Mat4 mtx);
 void Editor_AddMatrix(Mat4 mtx, int32_t flags);

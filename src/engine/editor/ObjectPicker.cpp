@@ -67,53 +67,46 @@ void ObjectPicker::DragHandle() {
     }
 
     // Is the gizmo being dragged?
-    if (eGizmo.Enabled) {
+    if (!eGizmo.Enabled) { return; }
+    float closestDistance = FLT_MAX;
+    std::optional<FVector> closestClickPos;
+    Gizmo::GizmoHandle closestHandle = Gizmo::GizmoHandle::None;
 
-        // No all_axis grab for rotate
-        if (static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0)) != Gizmo::TranslationMode::Rotate) {
-            float t;
-            if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
-                eGizmo.SelectedHandle = Gizmo::GizmoHandle::All_Axis;
-                eGizmo._ray = ray.Direction;
-                FVector clickPosition = ray.Origin + ray.Direction * t;
-                eGizmo._cursorOffset = eGizmo.Pos - clickPosition;
-                eGizmo.PickDistance = t;
-                return;
+    // All axis grab. Not used in rotate mode rotate
+    if (static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0)) != Gizmo::TranslationMode::Rotate) {
+        float t;
+        if (IntersectRaySphere(ray, eGizmo.Pos, eGizmo.AllAxisRadius, t)) {
+            if (t < closestDistance) {
+                closestDistance = t;
+                closestClickPos = ray.Origin + ray.Direction * t;
+                closestHandle = Gizmo::GizmoHandle::All_Axis;
             }
         }
+    }
 
-        for (auto tri = eGizmo.RedCollision.Triangles.begin(); tri < eGizmo.RedCollision.Triangles.end(); tri++) {
-            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_RedX, ray, *tri)) {
-                eGizmo.SelectedHandle = Gizmo::GizmoHandle::Z_Axis;
-                eGizmo._ray = ray.Direction;
-                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
-                float distance = (*clickPos - ray.Origin).Magnitude();
-                eGizmo.PickDistance = distance;
-                return;
+    // Arrow handles
+    auto tryHandle = [&](Gizmo::GizmoHandle handle, MtxF mtx, const std::vector<Triangle>& tris) {
+        for (const auto& tri : tris) {
+            if (auto clickPos = QueryHandleIntersection(mtx, ray, tri)) {
+                float dist = (*clickPos - ray.Origin).Magnitude();
+                if (dist < closestDistance) {
+                    closestDistance = dist;
+                    closestClickPos = *clickPos;
+                    closestHandle = handle;
+                }
             }
         }
+    };
 
-        for (auto tri = eGizmo.GreenCollision.Triangles.begin(); tri < eGizmo.GreenCollision.Triangles.end(); tri++) {
-            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_GreenY, ray, *tri)) {
-                eGizmo.SelectedHandle = Gizmo::GizmoHandle::X_Axis;
-                eGizmo._ray = ray.Direction;
-                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
-                float distance = (*clickPos - ray.Origin).Magnitude();
-                eGizmo.PickDistance = distance;
-                return;
-            }
-        }
+    tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedCollision.Triangles);
+    tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenCollision.Triangles);
+    tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueCollision.Triangles);
 
-        for (auto tri = eGizmo.BlueCollision.Triangles.begin(); tri < eGizmo.BlueCollision.Triangles.end(); tri++) {
-            if (auto clickPos = QueryHandleIntersection(eGizmo.Mtx_BlueZ, ray, *tri)) {
-                eGizmo.SelectedHandle = Gizmo::GizmoHandle::Y_Axis;
-                eGizmo._ray = ray.Direction;
-                eGizmo._cursorOffset = eGizmo.Pos - *clickPos;
-                float distance = (*clickPos - ray.Origin).Magnitude();
-                eGizmo.PickDistance = distance;
-                return;
-            }
-        }
+    if (closestHandle != Gizmo::GizmoHandle::None && closestClickPos.has_value()) {
+        eGizmo.SelectedHandle = closestHandle;
+        eGizmo._ray = ray.Direction;
+        eGizmo._cursorOffset = eGizmo.Pos - *closestClickPos;
+        eGizmo.PickDistance = closestDistance;
     }
 }
 
@@ -140,6 +133,9 @@ void ObjectPicker::Draw() {
 
 void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
     bool found = false;
+    GameObject* closestObject = nullptr;
+    float closestDistance = FLT_MAX;
+
     for (auto& object : objects) {
         float boundingBox = object->BoundingBoxSize;
         if (boundingBox == 0.0f) {
@@ -150,11 +146,12 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
             case GameObject::CollisionType::VTX_INTERSECT:
                 for (const auto& tri : object->Triangles) {
                     float t;
-                    //Ray localRay = RayToLocalSpace(eGizmo.Mtx_GreenY, ray);
                     if (IntersectRayTriangleAndTransform(ray, *object->Pos, tri, t)) {
-                        printf("\nSELECTED OBJECT\n\n");
-                        _selected = object;
-                        found = true;
+                        if (t < closestDistance) {
+                            closestDistance = t;
+                            closestObject = object;
+                            printf("SELECTED OBJECT\n");
+                        }
                     }
                 }
                 break;
@@ -170,15 +167,11 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
                                  object->Pos->z + boundingBox * max };
                 float t;
                 if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
-                    // if (actor == _selected) {
-                    //     _selected = nullptr;
-                    //     break;
-                    // }
-                    printf("FOUND BOUNDING BOX OBJECT ray: %f %f %f obj %f %f %f\n", ray.Origin.x, ray.Origin.y, ray.Origin.z, object->Pos->x, object->Pos->y, object->Pos->z);
-                    found = true;
-                    //foundActor = &actor;
-                    //type = object->Type;
-                    _selected = object;
+                    if (t < closestDistance) {
+                        closestDistance = t;
+                        closestObject = object;
+                        printf("FOUND BOUNDING BOX OBJECT\n");
+                    }
                     break;
                 }
                 break;
@@ -188,7 +181,8 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
                 break;
         }
     }
-    if (found) {
+    if (closestObject != nullptr) {
+        _selected = closestObject;
        // printf("FOUND COLLISION %d\n", type);
     } else {
        // printf("NO COLLISION\n");

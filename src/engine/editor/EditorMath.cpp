@@ -301,7 +301,7 @@ bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangl
     return t > EPSILON;
 }
 
-std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, Triangle& tri) {
+std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, const Triangle& tri) {
     float t;
     Ray localRay = RayToLocalSpace(mtx, ray);
     if (IntersectRayTriangle(localRay, tri, t)) {
