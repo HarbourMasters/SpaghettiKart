@@ -108,7 +108,7 @@ namespace Editor {
             GenerateCollisionMesh(eGameObjects.back(), model, collScale);
         } else { // to bounding box or sphere collision
             eGameObjects.push_back(new GameObject(name, pos, rot, scale, model, {}, GameObject::CollisionType::BOUNDING_BOX,
-                                                22.0f, despawnFlag, despawnValue));
+                                                10.0f, despawnFlag, despawnValue));
         }
         return eGameObjects.back();
     }

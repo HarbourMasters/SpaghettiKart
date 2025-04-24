@@ -105,8 +105,8 @@ void ObjectPicker::DragHandle() {
             tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueCollision.Triangles);
             break;
         case Gizmo::TranslationMode::Rotate:
-            tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedRotateCollision.Triangles);
-            tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenRotateCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_RedX, eGizmo.RedRotateCollision.Triangles);
+            tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenRotateCollision.Triangles);
             tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueRotateCollision.Triangles);
             break;
         case Gizmo::TranslationMode::Scale:

@@ -31,79 +31,65 @@ namespace Editor {
         ImGui::Begin("Properties");
 
         if (selected->Pos) {
-            ImGui::Text("Position:");
-            ImGui::PushID("PositionX");
-            ImGui::DragFloat("X", &selected->Pos->x, 0.1f);
+            ImGui::Text("Location");
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Pos->x = 0.0f; }
-            ImGui::PopID();
 
-            ImGui::PushID("PositionY");
-            ImGui::DragFloat("Y", &selected->Pos->y, 0.1f);
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Pos->y = 0.0f; }
-            ImGui::PopID();
+            bool positionChanged = ImGui::DragFloat3("##Location", &selected->Pos->x, 0.1f);
 
-            ImGui::PushID("PositionZ");
-            ImGui::DragFloat("Z", &selected->Pos->z, 0.1f);
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Pos->z = 0.0f; }
-            ImGui::PopID();
+            if (ImGui::Button(ICON_FA_UNDO "##ResetPos")) {
+                selected->Pos->x = 0.0f;
+                selected->Pos->y = 0.0f;
+                selected->Pos->z = 0.0f;
+                positionChanged = true; // also counts as a change
+            }
+
+            if (positionChanged) {
+                gEditor.eObjectPicker.eGizmo.Pos = *selected->Pos;
+            }
         }
 
         if (selected->Rot) {
-            ImGui::Separator();
-            ImGui::Text("Rotation (IRotator):");
-
-            int pitch = selected->Rot->pitch;
-            ImGui::PushID("RotX");
-            if (ImGui::DragInt("Pitch (X)", &pitch, 1.0f, 0, 65535)) {
-                selected->Rot->pitch = static_cast<uint16_t>(pitch);
-            }
+            ImGui::Text("Rotation");
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Rot->pitch = 0; }
-            ImGui::PopID();
 
-            int yaw = selected->Rot->yaw;
-            ImGui::PushID("RotY");
-            if (ImGui::DragInt("Yaw (Y)", &yaw, 1.0f, 0, 65535)) {
-                selected->Rot->yaw = static_cast<uint16_t>(yaw);
-            }
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Rot->yaw = 0; }
-            ImGui::PopID();
+            // Convert to temporary int values (to prevent writing 32bit values to 16bit variables)
+            int rot[3] = {
+                selected->Rot->pitch,
+                selected->Rot->yaw,
+                selected->Rot->roll
+            };
 
-            int roll = selected->Rot->roll;
-            ImGui::PushID("RotZ");
-            if (ImGui::DragInt("Roll (Z)", &roll, 1.0f, 0, 65535)) {
-                selected->Rot->roll = static_cast<uint16_t>(roll);
+            if (ImGui::DragInt3("##Rotation", rot, 5.0f)) {
+                for (int i = 0; i < 3; i++) {
+                    // Wrap around 0–65535
+                    rot[i] = (rot[i] % 65536 + 65536) % 65536;
+                }
+
+                selected->Rot->pitch = static_cast<uint16_t>(rot[0]);
+                selected->Rot->yaw   = static_cast<uint16_t>(rot[1]);
+                selected->Rot->roll  = static_cast<uint16_t>(rot[2]);
             }
+
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Rot->roll = 0; }
-            ImGui::PopID();
+            if (ImGui::Button(ICON_FA_UNDO "##ResetRot")) {
+                selected->Rot->pitch = 0;
+                selected->Rot->yaw   = 0;
+                selected->Rot->roll  = 0;
+            }
         }
 
         if (selected->Scale) {
-            ImGui::Separator();
-            ImGui::Text("Scale:");
-
-            ImGui::PushID("ScaleX");
-            ImGui::DragFloat("X", &selected->Scale->x, 0.1f);
+            ImGui::Text("Scale   ");
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Scale->x = 1.0f; }
-            ImGui::PopID();
 
-            ImGui::PushID("ScaleY");
-            ImGui::DragFloat("Y", &selected->Scale->y, 0.1f);
+            ImGui::DragFloat3("##Scale", &selected->Scale->x, 0.1f);
             ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Scale->y = 1.0f; }
-            ImGui::PopID();
-
-            ImGui::PushID("ScaleZ");
-            ImGui::DragFloat("Z", &selected->Scale->z, 0.1f);
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->Scale->z = 1.0f; }
-            ImGui::PopID();
+            if (ImGui::Button(ICON_FA_UNDO "##ResetScale")) {
+                selected->Scale->x = 1.0f;
+                selected->Scale->y = 1.0f;
+                selected->Scale->z = 1.0f;
+            }
         }
 
         if (selected->Collision == GameObject::CollisionType::BOUNDING_BOX) {
