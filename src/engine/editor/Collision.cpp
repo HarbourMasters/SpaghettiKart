@@ -46,7 +46,7 @@ namespace Editor {
                     break;
                 }
                 case G_VTX_OTR_FILEPATH: {
-                    const const char* filePath = (const char*)hi;
+                    const char* filePath = (const char*)hi;
                     ptr++;
                     size_t vtxDataOff = ptr->words.w1 & 0xFFFF;
                     vtx = ( (Vtx*)ResourceGetDataByName(filePath) ) + vtxDataOff;
