@@ -97,8 +97,7 @@ namespace Ship {
 
             ImGui::DockBuilderDockWindow("Properties", rightBottomId);
             ImGui::DockBuilderDockWindow("Tools", topId);
-            ImGui::DockBuilderDockWindow("Content Browser", bottomId);
-            ImGui::DockBuilderDockWindow("File Explorer", bottomLeftId);
+            ImGui::DockBuilderDockWindow("Content Browser", bottomLeftId);
 
             ImGui::DockBuilderFinish(dockId);
         }

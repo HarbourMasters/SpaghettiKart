@@ -83,7 +83,7 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", true, "Tools", ImVec2(100, 100),
+    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", "Tools", ImVec2(100, 100),
                                                                   (ImGuiWindowFlags_NoTitleBar));
     gui->AddGuiWindow(mToolsWindow);
 
