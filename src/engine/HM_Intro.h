@@ -57,6 +57,11 @@ private:
     FVector _hPos;
     IRotator _hRot;
     FVector _hScale;
+
+    FVector lusPos;
+    IRotator lusRot;
+    FVector lusScale;
+    int32_t DespawnValue = 0;
 };
 
 extern "C" {

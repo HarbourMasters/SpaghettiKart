@@ -261,7 +261,7 @@ namespace Editor {
     }
 
     void ContentBrowserWindow::FindContent() {
-        auto ptr = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"*tracks/*","actors/*", "objects/*"}, {""});
+        auto ptr = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->ListFiles({"hmintro/*", "*tracks/*","actors/*", "objects/*"}, {""});
         if (ptr) {
             auto files = *ptr;
             for (const auto& file : files) {

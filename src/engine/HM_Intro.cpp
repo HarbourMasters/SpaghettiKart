@@ -55,10 +55,16 @@ void HarbourMastersIntro::HM_InitIntro() {
     _hRot = IRotator(0, -45.0f, 0);
     _hScale = {2.0f, 2.0f, 2.0f};
 
+    lusPos = FVector(0, -400, -614); // 12, 190, -1000
+    lusRot = IRotator(0, 0, 0);
+    lusScale = FVector(1, 1, 1);
+
     ground_f3d_material_013_lights = gdSPDefLights1(
 	0x7F, 0x30, 0x80,
 	0x60, 20, 10, 0x49, 0x49, 0x49
     );
+
+    gEditor.AddObject("lus", &lusPos, &lusRot, &lusScale, nullptr, 1, Editor::GameObject::CollisionType::BOUNDING_BOX, 10, &DespawnValue, -1);
 }
 
 void HarbourMastersIntro::HM_TickIntro() {
@@ -72,9 +78,13 @@ void HarbourMastersIntro::HM_TickIntro() {
     HarbourMastersIntro::Bob(_ship2Pos, _ship2Rot, 1.2f, 0.06f, 1.6f, -0.04f, 1.1f, -0.04f);
 
     _pos.x += 9;
-    _camera.Pos.x -= 1;
+    if (lusPos.y < -60) {
+        lusPos.y += 3;
+    }
+    //_camera.Pos.x -= 1;
 
-    if (_pos.x >= 880) {
+    // SWITCH TO NEXT MENU LOGO_INTRO_MENU
+    if (_pos.x >= 1100) {
         gMenuFadeType = 0;
         gMenuSelection = LOGO_INTRO_MENU;
         gFadeModeSelection = FADE_MODE_LOGO;
@@ -132,10 +142,15 @@ void HarbourMastersIntro::HM_DrawIntro() {
     render_set_position(mtx_geo, 0);
 
     gSPDisplayList(gDisplayListHead++, ground_map_mesh);
-    gSPDisplayList(gDisplayListHead++, powered_Text_mesh);
+    //gSPDisplayList(gDisplayListHead++, powered_Text_mesh); // Replaced by poweredbylus
     gSPDisplayList(gDisplayListHead++, castle_map_002_mesh);
     gSPDisplayList(gDisplayListHead++, road_map_001_mesh);
     gSPDisplayList(gDisplayListHead++, water_water1_mesh);
+
+    Mat4 lusMtx;
+    ApplyMatrixTransformations(lusMtx, lusPos, lusRot, lusScale);
+    render_set_position(lusMtx, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__hmintro/poweredbylus");
 
     HarbourMastersIntro::Sync();
 }
