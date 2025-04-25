@@ -29,6 +29,7 @@ public:
     void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);
     void ClearMatrixPool();
     void DeleteObject();
+    bool bEditorEnabled = false;
 
 private:
     bool _draw = false;

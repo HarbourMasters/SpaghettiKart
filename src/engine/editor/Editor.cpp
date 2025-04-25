@@ -41,6 +41,14 @@ namespace Editor {
     }
 
     void Editor::Tick() {
+
+        if (CVarGetInteger("gEditorEnabled", 0) == true) {
+            bEditorEnabled = true;
+        } else {
+            bEditorEnabled = false;
+            return;
+        }
+
         auto wnd = GameEngine::Instance->context->GetWindow();
 
         static bool wasMouseDown = false;
@@ -94,6 +102,9 @@ namespace Editor {
     }
 
     void Editor::Draw() {
+        if (!bEditorEnabled) {
+            return;
+        } 
         eObjectPicker.Draw();
         for (auto& object : eGameObjects) {
             object->Draw();
