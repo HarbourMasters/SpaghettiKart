@@ -6920,7 +6920,7 @@ void menu_item_data_course_selectable(MenuItem* arg0) {
     }
     sp78.column = 0x001F;
     sp78.row = (gCourseRecordsMenuSelection * 0xD) + 0x3A;
-    func_800A66A8(arg0, (Unk_D_800E70A0*) &sp78);
+    pause_menu_item_box_cursor(arg0, (Unk_D_800E70A0*) &sp78);
 }
 
 void func_800A1DE0(MenuItem* arg0) {
@@ -6956,7 +6956,7 @@ void func_800A1DE0(MenuItem* arg0) {
 
     sp58.column = 0x003B;
     sp58.row = (gCourseRecordsSubMenuSelection * 0xD) + 0x66;
-    func_800A66A8(arg0, &sp58);
+    pause_menu_item_box_cursor(arg0, &sp58);
 }
 
 void func_800A1F30(UNUSED MenuItem* unused) {
@@ -7211,7 +7211,7 @@ void func_800A1FB0(MenuItem* arg0) {
             spE0.row -= 8;
             break;
     }
-    func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
+    pause_menu_item_box_cursor(arg0, (Unk_D_800E70A0*) &spE0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/menu_items/func_800A1FB0.s")
@@ -7647,7 +7647,7 @@ void func_800A3E60(MenuItem* arg0) {
     }
     sp84.column = var_v0_5->column - arg0->column;
     sp84.row = var_v0_5->row + arg0->row;
-    func_800A66A8(arg0, &sp84);
+    pause_menu_item_box_cursor(arg0, &sp84);
 }
 
 void render_lap_time(s32 lapNumber, s32 column, s32 row) {
@@ -8060,7 +8060,7 @@ void func_800A54EC(void) {
     whyTheSequel = D_800F0B50[why];
     sp50.column = var_v1->column - 8;
     sp50.row = (var_v1->row + ((sp48->state - whyTheSequel) * 0xD)) - 8;
-    func_800A66A8(sp48, &sp50);
+    pause_menu_item_box_cursor(sp48, &sp50);
 }
 
 // Also used to render the replay text box in time trials replay mode
@@ -8217,7 +8217,7 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
         }
         sp98.column = var_v0_9->column;
         sp98.row = var_v0_9->row;
-        func_800A66A8(arg0, &sp98);
+        pause_menu_item_box_cursor(arg0, &sp98);
     }
 }
 
@@ -8261,7 +8261,7 @@ void func_800A6154(MenuItem* arg0) {
     if (arg0->state >= 0xB) {
         sp6C.column = 0x0084;
         sp6C.row = (arg0->state * 0x14) - 0x4E;
-        func_800A66A8(arg0, &sp6C);
+        pause_menu_item_box_cursor(arg0, &sp6C);
     }
     if (arg0->param2 > 0) {
         gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x0000013F, arg0->param2);
@@ -8317,11 +8317,11 @@ void func_800A638C(MenuItem* arg0) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
             print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
         }
-        func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
+        pause_menu_item_box_cursor(arg0, &D_800E7360[arg0->state - 10]);
     }
 }
 
-void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
+void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     Mtx* mtx;
     Mtx* mtx2;
     f32 tmp;
@@ -8359,9 +8359,7 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     guMtxCatL(mtx, mtx2, mtx);
     guTranslate(mtx2, arg1->column, arg1->row, 0.0f);
     guMtxCatL(mtx, mtx2, mtx);
-    // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-    //           (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
-    AddEffectMatrixFixed(G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);

@@ -538,7 +538,7 @@ void render_menu_item_end_course_option(MenuItem*);
 void func_800A6034(MenuItem*);
 void func_800A6154(MenuItem*);
 void func_800A638C(MenuItem*);
-void func_800A66A8(MenuItem*, Unk_D_800E70A0*);
+void pause_menu_item_box_cursor(MenuItem*, Unk_D_800E70A0*);
 void func_800A69C8(MenuItem*);
 void func_800A6BEC(MenuItem*);
 void func_800A6CC0(MenuItem*);

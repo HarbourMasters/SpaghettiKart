@@ -970,7 +970,7 @@ glabel L800A2CBC
 /* 0A38D0 800A2CD0 A7AB00E2 */  sh    $t3, 0xe2($sp)
 .L800A2CD4:
 /* 0A38D4 800A2CD4 8FA400E8 */  lw    $a0, 0xe8($sp)
-/* 0A38D8 800A2CD8 0C0299AA */  jal   func_800A66A8
+/* 0A38D8 800A2CD8 0C0299AA */  jal   pause_menu_item_box_cursor
 /* 0A38DC 800A2CDC 27A500E0 */   addiu $a1, $sp, 0xe0
 /* 0A38E0 800A2CE0 8FBF006C */  lw    $ra, 0x6c($sp)
 /* 0A38E4 800A2CE4 D7B40030 */  ldc1  $f20, 0x30($sp)
