@@ -240,21 +240,21 @@ void PortMenu::AddSettings() {
                 .DefaultValue(1));
 #endif
 
-    AddWidget(path, "Current FPS: %d", WIDGET_CVAR_SLIDER_INT)
-        .CVar("gInterpolationFPS")
-        .Callback([](WidgetInfo& info) {
-            int32_t defaultValue = std::static_pointer_cast<IntSliderOptions>(info.options)->defaultValue;
-            if (CVarGetInteger(info.cVar, defaultValue) == defaultValue) {
-                info.name = "Current FPS: Original (%d)";
-            } else {
-                info.name = "Current FPS: %d";
-            }
-        })
-        .PreFunc([](WidgetInfo& info) {
-            if (mPortMenu->disabledMap.at(DISABLE_FOR_MATCH_REFRESH_RATE_ON).active)
-                info.activeDisables.push_back(DISABLE_FOR_MATCH_REFRESH_RATE_ON);
-        })
-        .Options(IntSliderOptions().Tooltip(tooltip).Min(20).Max(maxFps).DefaultValue(20));
+    // AddWidget(path, "Current FPS: %d", WIDGET_CVAR_SLIDER_INT)
+    //     .CVar("gInterpolationFPS")
+    //     .Callback([](WidgetInfo& info) {
+    //         int32_t defaultValue = std::static_pointer_cast<IntSliderOptions>(info.options)->defaultValue;
+    //         if (CVarGetInteger(info.cVar, defaultValue) == defaultValue) {
+    //             info.name = "Current FPS: Original (%d)";
+    //         } else {
+    //             info.name = "Current FPS: %d";
+    //         }
+    //     })
+    //     .PreFunc([](WidgetInfo& info) {
+    //         if (mPortMenu->disabledMap.at(DISABLE_FOR_MATCH_REFRESH_RATE_ON).active)
+    //             info.activeDisables.push_back(DISABLE_FOR_MATCH_REFRESH_RATE_ON);
+    //     })
+    //     .Options(IntSliderOptions().Tooltip(tooltip).Min(20).Max(maxFps).DefaultValue(20));
     AddWidget(path, "Match Refresh Rate", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
             int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
@@ -399,14 +399,6 @@ void PortMenu::AddDevTools() {
         .Options(ButtonOptions().Tooltip(
             "Enables the Gfx Debugger window, allowing you to input commands. Type help for some examples"))
         .WindowName("GfxDebuggerWindow");
-
-    path = { "Developer", "Game Info", SECTION_COLUMN_1 };
-    AddSidebarEntry("Developer", "Game Info", 1);
-    AddWidget(path, "Popout Game Info", WIDGET_WINDOW_BUTTON)
-        .CVar("gGameInfoEnabled")
-        .Options(ButtonOptions().Tooltip(
-            "Shows the game info window, contains player and actor information"))
-        .WindowName("GameInfo");
 
     path = { "Developer", "Stats", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Stats", 1);

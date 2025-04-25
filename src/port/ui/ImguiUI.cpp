@@ -1,7 +1,6 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
-#include "GameInfoWindow.h"
 #include "MultiplayerWindow.h"
 #include "FreecamWindow.h"
 #include "Tools.h"
@@ -35,7 +34,6 @@ std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
-std::shared_ptr<Ship::GuiWindow> mGameInfoWindow;
 std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
 std::shared_ptr<Ship::GuiWindow> mToolsWindow;
 std::shared_ptr<Ship::GuiWindow> mSceneExplorerWindow;
@@ -55,11 +53,6 @@ void SetupGuiElements() {
     mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
     if (mMultiplayerWindow == nullptr) {
         SPDLOG_ERROR("Could not find multiplayer window");
-    }
-
-    mGameInfoWindow = gui->GetGuiWindow("GameInfo");
-    if (mGameInfoWindow == nullptr) {
-        SPDLOG_ERROR("Could not find game info window");
     }
 
     mStatsWindow = gui->GetGuiWindow("Stats");
@@ -99,13 +92,9 @@ void SetupGuiElements() {
     mContentBrowserWindow =
         std::make_shared<Editor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
     gui->AddGuiWindow(mContentBrowserWindow);
-
-    mGameInfoWindow = std::make_shared<GameInfo::GameInfoWindow>("gGameInfoEnabled", "Game Info");
-    gui->AddGuiWindow(mGameInfoWindow);
 }
 
 void Destroy() {
-    mGameInfoWindow = nullptr;
     mConsoleWindow = nullptr;
     mStatsWindow = nullptr;
     mInputEditorWindow = nullptr;

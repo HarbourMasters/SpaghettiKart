@@ -152,13 +152,13 @@ void DrawColumn2(WidgetInfo& info) {
 }
 
 void RegisterMultiplayerWidgets() {
-    mPortMenu->AddSidebarEntry("Enhancements", "Multiplayer", 2);
-    WidgetPath path = { "Enhancements", "Multiplayer", SECTION_COLUMN_1 };
-    mPortMenu->AddWidget(path, "Multi Custom 1", WIDGET_CUSTOM)
-        .CustomFunction(DrawColumn1);
-    path.column = SECTION_COLUMN_2;
-    mPortMenu->AddWidget(path, "Multi Custom 2", WIDGET_CUSTOM)
-        .CustomFunction(DrawColumn2);
+    // mPortMenu->AddSidebarEntry("Enhancements", "Multiplayer", 2);
+    // WidgetPath path = { "Enhancements", "Multiplayer", SECTION_COLUMN_1 };
+    // mPortMenu->AddWidget(path, "Multi Custom 1", WIDGET_CUSTOM)
+    //     .CustomFunction(DrawColumn1);
+    // path.column = SECTION_COLUMN_2;
+    // mPortMenu->AddWidget(path, "Multi Custom 2", WIDGET_CUSTOM)
+    //     .CustomFunction(DrawColumn2);
 }
 
 static RegisterMenuInitFunc initFunc(RegisterMultiplayerWidgets);
