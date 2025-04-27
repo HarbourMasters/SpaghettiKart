@@ -34,5 +34,6 @@ enum class ResourceType {
     SpawnData = 0x53444154,    // SDAT
     UnkSpawnData = 0x55534454, // USDT
     KartAI = 0x44424856,       // DBHV
+    Minimap = 0x4D4D4150,       // MMAP
 };
 }

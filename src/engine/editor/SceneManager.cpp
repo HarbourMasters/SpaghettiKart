@@ -9,7 +9,9 @@
 #include <nlohmann/json.hpp>
 #include "port/Engine.h"
 #include <libultraship/src/resource/type/Json.h>
+#include "port/resource/type/Minimap.h"
 #include <libultraship/src/resource/File.h>
+#include "port/resource/type/ResourceType.h"
 
 namespace Editor {
 
@@ -24,12 +26,26 @@ namespace Editor {
     
             data["Props"] = props.to_json();
 
-            nlohmann::json actors;
+            nlohmann::json staticMesh;
 
-            //   for (const auto& actor : gWorldInstance.StaticMeshActors) {
+            for (const auto& mesh : gWorldInstance.StaticMeshActors) {
+                staticMesh.push_back(mesh->to_json());
+            }
+            data["StaticMeshActors"] = staticMesh;
+
+            // nlohmann::json actors;
+
+            // for (const auto& actor : gWorldInstance.Actors) {
             //     actors.push_back(actor->to_json());
-            //     }
-            //     data["Actors"] = actors;
+            // }
+            // data["Actors"] = actors;
+
+            // nlohmann::json objects;
+
+            // for (const auto& object : gWorldInstance.Objects) {
+            //     objects.push_back(object->to_json());
+            // }
+            // data["Objects"] = objects;
 
             auto dat = data.dump();
             std::vector<uint8_t> stringify;
@@ -73,10 +89,10 @@ namespace Editor {
             } else {
                 std::cerr << "Props data not found in the JSON file!" << std::endl;
             }
-            
+
             // Load the Actors (deserialize them)
-            if (data.contains("Actors")) {
-                auto& actorsJson = data["Actors"];
+            if (data.contains("StaticMeshActors")) {
+                auto& actorsJson = data["StaticMeshActors"];
                 gWorldInstance.StaticMeshActors.clear();  // Clear existing actors, if any
                 
                 for (const auto& actorJson : actorsJson) {
@@ -87,7 +103,7 @@ namespace Editor {
             }
         }
     }
-        
+
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson) {
         gWorldInstance.StaticMeshActors.push_back(new StaticMeshActor("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
         auto actor = gWorldInstance.StaticMeshActors.back();
@@ -102,5 +118,30 @@ namespace Editor {
     void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
         CurrentArchive = archive;
         SceneFile = sceneFile;
+    }
+
+    void LoadMinimap(std::shared_ptr<Ship::Archive> archive, Course* course, std::string filePath) {
+        printf("LOADING MINIMAP %s\n", filePath.c_str());
+        if (archive) {
+            auto initData = std::make_shared<Ship::ResourceInitData>();
+            initData->Parent = archive;
+            initData->Format = RESOURCE_FORMAT_BINARY;
+            initData->ByteOrder = Ship::Endianness::Little;
+            initData->Type = static_cast<uint32_t>(MK64::ResourceType::Minimap);
+            initData->ResourceVersion = 0;
+
+            std::shared_ptr<MK64::Minimap> ptr = std::static_pointer_cast<MK64::Minimap>(
+                GameEngine::Instance->context->GetResourceManager()->LoadResource(filePath, true, initData));
+
+            if (ptr) {
+                MK64::MinimapTexture texture = ptr->Texture;
+                printf("LOADED MINIMAP!\n");
+                course->Props.MinimapTexture = (const char*)texture.Data;
+                course->Props.MinimapDimensions = IVector2D(texture.Width, texture.Height);
+            } else {
+                course->Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
+                course->Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(course->Props.MinimapTexture), ResourceGetTexHeightByName(course->Props.MinimapTexture));
+            }
+        }
     }
 }

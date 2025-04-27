@@ -231,6 +231,7 @@ namespace Editor {
             for (const std::string& dir : dirs) {
                 std::string name = dir.substr(dir.find_last_of('/') + 1);
                 std::string sceneFile = dir + "/scene.json";
+                std::string minimapFile = dir + "/minimap";
                 if (manager->HasFile(sceneFile)) {
                     auto archive = manager->GetArchiveFromFile(sceneFile);
                     
@@ -238,6 +239,7 @@ namespace Editor {
                     course->LoadO2R(dir);
                     gWorldInstance.Courses.push_back(course);
                     LoadLevel(archive, course, sceneFile);
+                    LoadMinimap(archive, course, minimapFile);
                     Tracks.push_back({course, sceneFile, name, dir, archive});
                 } else {
                     const std::string file = dir + "/data_track_sections";

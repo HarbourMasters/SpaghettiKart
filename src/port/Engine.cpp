@@ -18,6 +18,7 @@
 #include "resource/importers/ActorSpawnDataFactory.h"
 #include "resource/importers/UnkActorSpawnDataFactory.h"
 #include "resource/importers/ArrayFactory.h"
+#include "resource/importers/MinimapFactory.h"
 #include <Fast3D/Fast3dWindow.h>
 #include <Fonts.h>
 #include "window/gui/resource/Font.h"
@@ -170,6 +171,9 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryUnkActorSpawnDataV0>(),
                                     RESOURCE_FORMAT_BINARY, "UnkSpawnData",
                                     static_cast<uint32_t>(MK64::ResourceType::UnkSpawnData), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryMinimapV0>(),
+                                    RESOURCE_FORMAT_BINARY, "Minimap",
+                                    static_cast<uint32_t>(MK64::ResourceType::Minimap), 0);
 
     fontMono = CreateFontWithSize(16.0f, "fonts/Inconsolata-Regular.ttf");
     fontMonoLarger = CreateFontWithSize(20.0f, "fonts/Inconsolata-Regular.ttf");
