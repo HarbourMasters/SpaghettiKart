@@ -82,14 +82,12 @@ typedef struct Properties {
 #ifdef __cplusplus
     nlohmann::json to_json() const {
         nlohmann::json j;
-        j["Id"] = Id ? Id : "";
+       // j["Id"] = Id ? Id : "";
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
         j["CourseLength"] = CourseLength ? CourseLength : "";
         j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
-        j["MinimapTexture"] = MinimapTexture ? MinimapTexture : "";
         j["LakituTowType"] = LakituTowType;
-        j["MinimapDimensions"] = {MinimapDimensions.X, MinimapDimensions.Z};
         j["AIMaximumSeparation"] = AIMaximumSeparation;
         j["AIMinimumSeparation"] = AIMinimumSeparation;
         j["NearPersp"] = NearPersp;
@@ -129,7 +127,7 @@ typedef struct Properties {
 
     // Function to load struct from JSON
     void from_json(const nlohmann::json& j) {
-        Id = j.at("Id").get<std::string>().c_str();
+        //Id = j.at("Id").get<std::string>().c_str();
 //        Name = j.at("Name").get<std::string>().c_str();
         strncpy(Name, j.at("Name").get<std::string>().c_str(), sizeof(Name) - 1);
         Name[sizeof(Name) - 1] = '\0'; // Ensure null termination
@@ -143,10 +141,7 @@ typedef struct Properties {
         CourseLength[sizeof(CourseLength) - 1] = '\0'; // Ensure null termination
 
         AIBehaviour = j.at("AIBehaviour").get<std::string>().c_str();
-        MinimapTexture = j.at("MinimapTexture").get<std::string>().c_str();
         LakituTowType = j.at("LakituTowType").get<int>();
-        MinimapDimensions.X = j.at("MinimapDimensions")[0].get<float>();
-        MinimapDimensions.Z = j.at("MinimapDimensions")[1].get<float>();
 
         AIMaximumSeparation = j.at("AIMaximumSeparation").get<float>();
         AIMinimumSeparation = j.at("AIMinimumSeparation").get<float>();
@@ -196,7 +191,7 @@ typedef struct Properties {
         MinimapFinishlineY = j.at("MinimapFinishlineY").get<float>();
         //textures = nullptr; // Deserialize textures if present
         Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
-        WaterLevel = static_cast<float>(j.at("WaterLevel").get<float>());
+        WaterLevel = j.at("WaterLevel").get<float>();
     }
     void SetText(char* name, const char* title, size_t bufferSize) {
         // Copy the title into the name buffer, ensuring it's null-terminated and within bounds
