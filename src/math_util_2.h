@@ -47,7 +47,6 @@ s32 s16_step_down_towards(s16*, s16, s16);
 s32 u16_step_down_towards(u16*, s32, s32);
 s32 s16_step_towards(s16*, s16, s16);
 s32 f32_step_towards(f32*, f32, f32);
-void func_80041480(s16*, s16, s16, s16*);
 Vec3f* vec3f_set_xyz(Vec3f, f32, f32, f32);
 Vec3f* vec3f_normalize(Vec3f dest);
 Vec3f* vec3f_cross_product(Vec3f, Vec3f, Vec3f);

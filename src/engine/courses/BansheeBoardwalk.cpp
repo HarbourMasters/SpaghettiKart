@@ -70,8 +70,16 @@ BansheeBoardwalk::BansheeBoardwalk() {
     this->gfx = d_course_banshee_boardwalk_packed_dls;
     this->gfxSize = 3689;
     Props.textures = banshee_boardwalk_textures;
-    Props.MinimapTexture = gTextureCourseOutlineBansheeBoardwalk;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineBansheeBoardwalk;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 262;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 55;
+    Props.Minimap.PlayerY = 39;
+    Props.Minimap.PlayerScaleFactor = 0.016f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.Id = "mk:banshee_boardwalk";
 
@@ -121,8 +129,6 @@ BansheeBoardwalk::BansheeBoardwalk() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {0, 0, 0};
     Props.Skybox.BottomRight = {0, 0, 0};
@@ -190,15 +196,6 @@ void BansheeBoardwalk::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void BansheeBoardwalk::MinimapSettings() {
-    D_80165880 = dma_textures((const char*)gTextureGhosts, 0x4CC2, 0xD980);
-    D_8018D2A0 = 0.016f;
-    D_8018D2C0[0] = 0x0106;
-    D_8018D2E0 = 55;
-    D_8018D2E8 = 39;
-}
-
 void BansheeBoardwalk::InitCourseObjects() {
     size_t objectId = 0;
     if (gGamestate != CREDITS_SEQUENCE) {
@@ -254,12 +251,6 @@ void BansheeBoardwalk::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void BansheeBoardwalk::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void BansheeBoardwalk::Render(struct UnkStruct_800DC5EC* arg0) {

@@ -9,6 +9,7 @@
 #include "assets/luigi_raceway_data.h"
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/actors/Finishline.h"
+#include "engine/objects/GrandPrixBalloons.h"
 
 extern "C" {
 #include "main.h"
@@ -88,8 +89,16 @@ LuigiRaceway::LuigiRaceway() {
     this->gfx = d_course_luigi_raceway_packed_dls;
     this->gfxSize = 6377;
     Props.textures = luigi_raceway_textures;
-    Props.MinimapTexture = gTextureCourseOutlineLuigiRaceway;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineLuigiRaceway;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 271;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 45;
+    Props.Minimap.PlayerY = 60;
+    Props.Minimap.PlayerScaleFactor = 0.0155f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.Id = "mk:luigi_raceway";
     Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
@@ -136,10 +145,9 @@ LuigiRaceway::LuigiRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*)LOAD_ASSET_RAW(gTextureExhaust2);
     Props.Clouds = gLuigiRacewayClouds;
     Props.CloudList = gLuigiRacewayClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = { 128, 184, 248 };
     Props.Skybox.BottomRight = { 216, 232, 248 };
@@ -173,6 +181,7 @@ void LuigiRaceway::BeginPlay() {
         gWorldInstance.AddObject(new OHotAirBalloon(FVector(-1250.0f, 0.0f, 1110.0f)));
     } else { // Normal gameplay
         gWorldInstance.AddObject(new OHotAirBalloon(FVector(-176.0, 0.0f, -2323.0f)));
+        gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(-140, -44, -215)));
     }
 
     if (gModeSelection == VERSUS) {
@@ -188,36 +197,13 @@ void LuigiRaceway::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void LuigiRaceway::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t(*)[1024]>(dma_textures(gTextureExhaust2, 0x4F4U, 0xC00));
-    D_8018D2A0 = 0.0155f;
-    D_8018D2C0[0] = 271;
-    D_8018D2E0 = 45;
-    D_8018D2E8 = 60;
-    D_80165718 = -140;
-    D_80165720 = -44;
-    D_80165728 = -215;
-}
-
 void LuigiRaceway::InitCourseObjects() {
     size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
         }
-
-        for (i = 0; i < D_80165738; i++) {
-            find_unused_obj_index(&gObjectParticle3[i]);
-            init_object(gObjectParticle3[i], 0);
-        }
     }
-}
-
-void LuigiRaceway::UpdateCourseObjects() {
-}
-
-void LuigiRaceway::RenderCourseObjects(s32 cameraId) {
 }
 
 void LuigiRaceway::SomeSounds() {
@@ -251,13 +237,6 @@ void LuigiRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void LuigiRaceway::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY,
-                            (u8*) common_texture_minimap_finish_line);
 }
 
 void LuigiRaceway::SetStaffGhost() {
@@ -448,7 +427,4 @@ void LuigiRaceway::RenderCredits() {
 void LuigiRaceway::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
                                       f32* arg6, f32* arg7) {
     func_8003E9EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-}
-
-void LuigiRaceway::Destroy() {
 }

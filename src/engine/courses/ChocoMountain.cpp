@@ -64,8 +64,16 @@ ChocoMountain::ChocoMountain() {
     this->gfx = d_course_choco_mountain_packed_dls;
     this->gfxSize = 2910;
     Props.textures = choco_mountain_textures;
-    Props.MinimapTexture = gTextureCourseOutlineChocoMountain;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineChocoMountain;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 265;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 19;
+    Props.Minimap.PlayerY = 37;
+    Props.Minimap.PlayerScaleFactor = 0.022f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = -16.0;
 
     Props.Id = "mk:choco_mountain";
     Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
@@ -114,8 +122,6 @@ ChocoMountain::ChocoMountain() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = -16.0;
 
     Props.Skybox.TopRight = {255, 255, 255};
     Props.Skybox.BottomRight = {255, 255, 255};
@@ -182,14 +188,6 @@ void ChocoMountain::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void ChocoMountain::MinimapSettings() {
-    D_8018D2A0 = 0.022f;
-    D_8018D2C0[0] = 265;
-    D_8018D2E0 = 19;
-    D_8018D2E8 = 37;
-}
-
 void ChocoMountain::InitCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
@@ -235,12 +233,6 @@ void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void ChocoMountain::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {

@@ -70,8 +70,16 @@ ToadsTurnpike::ToadsTurnpike() {
     this->gfx = d_course_toads_turnpike_packed_dls;
     this->gfxSize = 3427;
     Props.textures = toads_turnpike_textures;
-    Props.MinimapTexture = gTextureCourseOutlineToadsTurnpike;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineToadsTurnpike;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 252;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 57;
+    Props.Minimap.PlayerY = 44;
+    Props.Minimap.PlayerScaleFactor = 0.013f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "toad's turnpike", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "highway", sizeof(Props.DebugName));
@@ -126,9 +134,6 @@ ToadsTurnpike::ToadsTurnpike() {
     finish.z = 16;
 
     this->FinishlineSpawnPoint = finish;
-
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {0, 2, 94};
     Props.Skybox.BottomRight = {209, 65, 23};
@@ -216,14 +221,6 @@ void ToadsTurnpike::UpdateClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
-// Likely sets minimap boundaries
-void ToadsTurnpike::MinimapSettings() {
-    D_8018D2A0 = 0.013f;
-    D_8018D2C0[0] = 252;
-    D_8018D2E0 = 57;
-    D_8018D2E8 = 44;
-}
-
 void ToadsTurnpike::SomeSounds() {}
 
 void ToadsTurnpike::WhatDoesThisDo(Player* player, int8_t playerId) {
@@ -252,12 +249,6 @@ void ToadsTurnpike::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void ToadsTurnpike::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void ToadsTurnpike::Render(struct UnkStruct_800DC5EC* arg0) {

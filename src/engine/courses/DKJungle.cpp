@@ -73,8 +73,16 @@ DKJungle::DKJungle() {
     this->gfx = d_course_dks_jungle_parkway_packed_dls;
     this->gfxSize = 4997;
     Props.textures = dks_jungle_parkway_textures;
-    Props.MinimapTexture = gTextureCourseOutlineDksJungleParkway;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineDksJungleParkway;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 255;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 29;
+    Props.Minimap.PlayerY = 47;
+    Props.Minimap.PlayerScaleFactor = 0.0155f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "d.k.'s jungle parkway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "jungle", sizeof(Props.DebugName));
@@ -122,8 +130,6 @@ DKJungle::DKJungle() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {255, 174, 0};
     Props.Skybox.BottomRight = {255, 229, 124};
@@ -211,14 +217,6 @@ void DKJungle::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void DKJungle::MinimapSettings() {
-    D_8018D2A0 = 0.0155f;
-    D_8018D2C0[0] = 255;
-    D_8018D2E0 = 29;
-    D_8018D2E8 = 47;
-}
-
 void DKJungle::InitCourseObjects() {
     for (size_t i = 0; i < NUM_TORCHES; i++) {
         init_smoke_particles(i);
@@ -285,12 +283,6 @@ void DKJungle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void DKJungle::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void DKJungle::Render(struct UnkStruct_800DC5EC* arg0) {

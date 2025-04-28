@@ -90,8 +90,6 @@ void CM_Waypoints(Player* player, int8_t playerId);
 void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
                            f32* arg7);
 
-void CM_MinimapSettings();
-
 void CM_InitCourseObjects();
 
 void CM_UpdateCourseObjects();
@@ -105,8 +103,6 @@ void CM_CreditsSpawnActors();
 void CM_WhatDoesThisDo(Player* player, int8_t playerId);
 
 void CM_WhatDoesThisDoAI(Player* player, int8_t playerId);
-
-void CM_MinimapFinishlinePosition();
 
 void CM_SetStaffGhost();
 

@@ -62,8 +62,16 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     this->gfx = d_course_koopa_troopa_beach_packed_dls;
     this->gfxSize = 5720;
     Props.textures = koopa_troopa_beach_textures;
-    Props.MinimapTexture = gTextureCourseOutlineKoopaTroopaBeach;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineKoopaTroopaBeach;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 268;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 40;
+    Props.Minimap.PlayerY = 21;
+    Props.Minimap.PlayerScaleFactor = 0.014f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.Id = "mk:koopa_beach";
     Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
@@ -110,10 +118,9 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust3);
     Props.Clouds = gKoopaTroopaBeachClouds;
     Props.CloudList = gKoopaTroopaBeachClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {48, 152, 120};
     Props.Skybox.BottomRight = {216, 232, 248};
@@ -189,15 +196,6 @@ void KoopaTroopaBeach::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void KoopaTroopaBeach::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust3, 0x3C8U, 0x1000));
-    D_8018D2A0 = 0.014f;
-    D_8018D2C0[0] = 268;
-    D_8018D2E0 = 40;
-    D_8018D2E8 = 21;
-}
-
 void KoopaTroopaBeach::InitCourseObjects() {
 }
 
@@ -232,12 +230,6 @@ void KoopaTroopaBeach::SomeSounds() {
 void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void KoopaTroopaBeach::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
-}
 
 void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);

@@ -31,12 +31,10 @@ class WarioStadium : public Course {
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32, Camera*) override;
-    virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void MinimapFinishlinePosition() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;
     virtual void SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,

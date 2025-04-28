@@ -61,8 +61,14 @@ YoshiValley::YoshiValley() {
     this->gfxSize = 4140;
     Props.textures = yoshi_valley_textures;
 
-    Props.MinimapTexture = gTextureCourseOutlineYoshiValley;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineYoshiValley;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.PlayerX = 61;
+    Props.Minimap.PlayerY = 38;
+    Props.Minimap.PlayerScaleFactor = 0.018f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
@@ -108,10 +114,9 @@ YoshiValley::YoshiValley() {
     Props.PathTable2[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
     Props.PathTable2[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust0);
     Props.Clouds = gYoshiValleyMooMooFarmClouds;
     Props.CloudList = gYoshiValleyMooMooFarmClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {113, 70, 255};
     Props.Skybox.BottomRight = {255, 184, 99};
@@ -195,14 +200,6 @@ void YoshiValley::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void YoshiValley::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust0, 0x479, 0xC00));
-    D_8018D2A0 = 0.018f;
-    D_8018D2E0 = 61;
-    D_8018D2E8 = 38;
-}
-
 void YoshiValley::InitCourseObjects() {
 }
 
@@ -218,12 +215,6 @@ void YoshiValley::SomeSounds() {
 void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void YoshiValley::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
-}
 
 void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);

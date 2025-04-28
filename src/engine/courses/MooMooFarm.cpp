@@ -75,8 +75,16 @@ MooMooFarm::MooMooFarm() {
     this->gfx = d_course_moo_moo_farm_packed_dls;
     this->gfxSize = 3304;
     Props.textures = moo_moo_farm_textures;
-    Props.MinimapTexture = gTextureCourseOutlineMooMooFarm;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineMooMooFarm;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 271;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 18;
+    Props.Minimap.PlayerY = 36;
+    Props.Minimap.PlayerScaleFactor = 0.0155f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
@@ -122,10 +130,9 @@ MooMooFarm::MooMooFarm() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust0);
     Props.Clouds = gYoshiValleyMooMooFarmClouds;
     Props.CloudList = gYoshiValleyMooMooFarmClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {0, 18, 255};
     Props.Skybox.BottomRight = {197, 211, 255};
@@ -324,15 +331,6 @@ void MooMooFarm::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void MooMooFarm::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust0, 0x479, 0xC00));
-    D_8018D2A0 = 0.0155f;
-    D_8018D2C0[0] = 271;
-    D_8018D2E0 = 18;
-    D_8018D2E8 = 36;
-}
-
 void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
         ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
@@ -361,12 +359,6 @@ void MooMooFarm::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void MooMooFarm::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void MooMooFarm::Render(struct UnkStruct_800DC5EC* arg0) {

@@ -49,8 +49,16 @@ RainbowRoad::RainbowRoad() {
     this->gfx = d_course_rainbow_road_packed_dls;
     this->gfxSize = 5670;
     Props.textures = rainbow_road_textures;
-    Props.MinimapTexture = gTextureCourseOutlineRainbowRoad;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineRainbowRoad;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 261;
+    Props.Minimap.Pos[0].Y = 166;
+    Props.Minimap.PlayerX = 39;
+    Props.Minimap.PlayerY = 55;
+    Props.Minimap.PlayerScaleFactor = 0.0103f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "rainbow road", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "rainbow", sizeof(Props.DebugName));
@@ -98,8 +106,6 @@ RainbowRoad::RainbowRoad() {
 
     Props.Clouds = gToadsTurnpikeRainbowRoadStars;
     Props.CloudList = gToadsTurnpikeRainbowRoadStars;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {0, 0, 0};
     Props.Skybox.BottomRight = {0, 0, 0};
@@ -169,15 +175,6 @@ void RainbowRoad::UpdateClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
-// Likely sets minimap boundaries
-void RainbowRoad::MinimapSettings() {
-    D_8018D2A0 = 0.0103f;
-    D_8018D2C0[0] = 261;
-    D_8018D2D8[0] = 166;
-    D_8018D2E0 = 39;
-    D_8018D2E8 = 55;
-}
-
 void RainbowRoad::InitCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         size_t i;
@@ -207,12 +204,6 @@ void RainbowRoad::SomeSounds() {
 void RainbowRoad::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void RainbowRoad::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void RainbowRoad::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
-}
 
 void RainbowRoad::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

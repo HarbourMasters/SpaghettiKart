@@ -49,8 +49,17 @@ SherbetLand::SherbetLand() {
     this->gfx = d_course_sherbet_land_packed_dls;
     this->gfxSize = 1803;
     Props.textures = sherbet_land_textures;
-    Props.MinimapTexture = gTextureCourseOutlineSherbetLand;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineSherbetLand;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 262;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 52;
+    Props.Minimap.PlayerY = 33;
+    Props.Minimap.PlayerScaleFactor = 0.015f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
+    Props.Minimap.Colour = {72, 100, 255};
 
     Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
@@ -98,10 +107,9 @@ SherbetLand::SherbetLand() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust1);
     Props.Clouds = gSherbetLandClouds;
     Props.CloudList = gSherbetLandClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {128, 184, 248};
     Props.Skybox.BottomRight = {216, 232, 248};
@@ -132,9 +140,6 @@ f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
         return (f32) (gCourseMinY - 0xA);
     }
     return Props.WaterLevel;
-}
-
-void SherbetLand::LoadTextures() {
 }
 
 void SherbetLand::BeginPlay() {
@@ -212,21 +217,6 @@ void SherbetLand::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void SherbetLand::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust1, 0x485, 0xC00));
-    D_8018D2A0 = 0.015f;
-    D_8018D2C0[0] = 262;
-    D_8018D2E0 = 52;
-    D_8018D2E8 = 33;
-    D_8018D300 = 72;
-    D_8018D308 = 100;
-    D_8018D310 = 255;
-}
-
-void SherbetLand::InitCourseObjects() {
-}
-
 void SherbetLand::UpdateCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         func_800842C8();
@@ -237,19 +227,6 @@ void SherbetLand::RenderCourseObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         func_80052E30(cameraId);
     }
-}
-
-void SherbetLand::SomeSounds() {
-}
-
-void SherbetLand::WhatDoesThisDo(Player* player, int8_t playerId) {}
-
-void SherbetLand::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void SherbetLand::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void SherbetLand::Render(struct UnkStruct_800DC5EC* arg0) {
@@ -297,5 +274,3 @@ void SherbetLand::CreditsSpawnActors() {
     // d_course_sherbet_land_packed_dl_2308
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
 }
-
-void SherbetLand::Destroy() { }

@@ -37,8 +37,6 @@ namespace Editor {
         ImGui::InputText("Name", gWorldInstance.CurrentCourse->Props.Name, IM_ARRAYSIZE(nameBuffer));
         ImGui::InputText("Debug Name", gWorldInstance.CurrentCourse->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
         ImGui::InputText("Course Length", gWorldInstance.CurrentCourse->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
-        ImGui::InputFloat("Minimap Finishline X Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineX);
-        ImGui::InputFloat("Minimap Finishline Y Offset", &gWorldInstance.CurrentCourse->Props.MinimapFinishlineY);
         ImGui::InputFloat("Water Level", &gWorldInstance.CurrentCourse->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
@@ -94,6 +92,42 @@ namespace Editor {
                 ImGui::InputFloat(fmt::format("D_0D009808[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009808[i]);
             }
         }
+
+        float minimapColour[3];
+        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Minimap.Colour, minimapColour);
+
+        if (ImGui::CollapsingHeader("Minimap")) {
+            ImGui::Text("Position");
+            ImGui::SameLine();
+
+
+            if (ImGui::DragInt2("##MinimapPosition", &gWorldInstance.CurrentCourse->Props.Minimap.Pos[0].X, 1.0f)) {
+            }
+            ImGui::Text("P2 Position");
+            ImGui::SameLine();
+            if (ImGui::DragInt2("##MinimapPosition2p", &gWorldInstance.CurrentCourse->Props.Minimap.Pos[1].X, 1.0f)) {
+            }
+
+            ImGui::Text("Player Markers");
+            ImGui::SameLine();
+            if (ImGui::DragInt2("##MinimapPlayers", &gWorldInstance.CurrentCourse->Props.Minimap.PlayerX, 1.0f)) {
+            }
+
+            ImGui::Text("Player Scale Factor");
+            ImGui::SameLine();
+            if (ImGui::DragFloat("##MinimapScaleFactor", &gWorldInstance.CurrentCourse->Props.Minimap.PlayerScaleFactor, 0.0001f)) {
+            }
+
+            ImGui::Text("Finishline");
+            ImGui::SameLine();
+            ImGui::DragFloat2("##MinimapFinishlineX", &gWorldInstance.CurrentCourse->Props.Minimap.FinishlineX, 1.0f);
+
+            ImGui::Text("Colour");
+            ImGui::SameLine();
+            ImGui::ColorEdit3("##MinimapColour", minimapColour, 1.0f);
+        }
+
+        FloatToRGB8(minimapColour, (u8*)&gWorldInstance.CurrentCourse->Props.Minimap.Colour);
 
         // Convert and pass to ImGui ColorEdit3
         float topRight[3], bottomRight[3], bottomLeft[3], topLeft[3];

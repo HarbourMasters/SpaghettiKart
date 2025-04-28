@@ -483,12 +483,6 @@ void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f
     }
 }
 
-void CM_MinimapSettings() {
-    if (gWorldInstance.CurrentCourse) {
-        gWorldInstance.CurrentCourse->MinimapSettings();
-    }
-}
-
 void CM_InitCourseObjects() {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.CurrentCourse->InitCourseObjects();
@@ -531,12 +525,6 @@ void CM_WhatDoesThisDo(Player* player, int8_t playerId) {
 void CM_WhatDoesThisDoAI(Player* player, int8_t playerId) {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.CurrentCourse->WhatDoesThisDoAI(player, playerId);
-    }
-}
-
-void CM_MinimapFinishlinePosition() {
-    if (gWorldInstance.CurrentCourse) {
-        gWorldInstance.CurrentCourse->MinimapFinishlinePosition();
     }
 }
 

@@ -118,6 +118,7 @@ namespace Editor {
         { "Trophy", [](const FVector& pos) { return new OTrophy(pos, OTrophy::TrophyType::GOLD_150, OTrophy::Behaviour::ROTATE2); } },
         { "Snowman", [](const FVector& pos) { return new OSnowman(pos); } },
         { "Podium", [](const FVector& pos) { return new OPodium(pos); } },
+        { "Balloons", [](const FVector& pos) { return new OGrandPrixBalloons(pos); } },
     };
 
     void ContentBrowserWindow::AddTrackContent() {

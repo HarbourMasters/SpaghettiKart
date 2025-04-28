@@ -163,11 +163,11 @@ void init_item_window(s32 objectIndex) {
 }
 
 void func_8006EEE8(s32 courseId) {
-    D_8018D240 = (uintptr_t) CM_GetProps()->MinimapTexture;
+    D_8018D240 = (uintptr_t) CM_GetProps()->Minimap.Texture;
     // This is incredibly dumb. MinimapDimensions ought to be something more like
     // `u16 MinimapDimensions[][2]` but that doesn't match for some insane reason
-    gMinimapWidth = CM_GetProps()->MinimapDimensions.X; // MinimapDimensions[courseId * 2];
-    gMinimapHeight = CM_GetProps()->MinimapDimensions.Z; // MinimapDimensions[courseId * 2 + 1];
+    gMinimapWidth = CM_GetProps()->Minimap.Width; // MinimapDimensions[courseId * 2];
+    gMinimapHeight = CM_GetProps()->Minimap.Height; // MinimapDimensions[courseId * 2 + 1];
 }
 
 void func_8006EF60(void) {
@@ -186,188 +186,42 @@ void func_8006EF60(void) {
 }
 
 void func_8006F008(void) {
-    D_801655C8 = 0;
     xOrientation = 1.0f;
     if (gIsMirrorMode != 0) {
         xOrientation = -1.0f;
     }
-    D_8018D2C0[0] = 257;
-    D_8018D2D8[0] = 170;
-    D_8018D300 = 255;
-    D_8018D308 = 255;
-    D_8018D310 = 255;
-    D_8018D318 = 255;
+
     if (GetCourse() != GetPodiumCeremony()) {
         func_8006EEE8((s32) gCurrentCourseId);
     }
-    CM_MinimapSettings();
 
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            // D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
-            // D_8018D2A0 = 0.022f;
-            // D_8018D2E0 = 6;
-            // D_8018D2E8 = 28;
-            // D_8018D2C0[0] = 260;
-            // D_8018D2D8[0] = 170;
-            // D_80165718 = 0;
-            // D_80165720 = 5;
-            // D_80165728 = -240;
-            break;
-            // case COURSE_CHOCO_MOUNTAIN:
-            //     D_8018D2A0 = 0.022f;
-            //     D_8018D2C0[0] = 265;
-            //     D_8018D2E0 = 19;
-            //     D_8018D2E8 = 37;
-            //     break;
-            // case COURSE_BOWSER_CASTLE:
-            //     D_8018D2C0[0] = 265;
-            //     D_8018D2A0 = 0.0174f;
-            //     D_8018D2E0 = 12;
-            //     D_8018D2E8 = 48;
-            //     break;
-            // case COURSE_BANSHEE_BOARDWALK:
-            //     D_80165880 = (void*) dma_textures(gTextureGhosts, 0x4CC2, 0xD980);
-            //     D_8018D2A0 = 0.016f;
-            //     D_8018D2C0[0] = 0x0106;
-            //     D_8018D2E0 = 55;
-            //     D_8018D2E8 = 39;
-            //     break;
-            // case COURSE_YOSHI_VALLEY:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
-            //     D_8018D2A0 = 0.018f;
-            //     D_8018D2E0 = 61;
-            //     D_8018D2E8 = 38;
-            //     break;
-            // case COURSE_FRAPPE_SNOWLAND:
-            //     D_8018D2C0[0] = 262;
-            //     D_8018D2A0 = 0.016f;
-            //     D_8018D2E0 = 36;
-            //     D_8018D2E8 = 40;
-            //     D_8018D300 = 72;
-            //     D_8018D308 = 100;
-            //     D_8018D310 = 255;
-            //     break;
-            // case COURSE_KOOPA_BEACH:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust3, 0x3C8U, 0x1000);
-            //     D_8018D2A0 = 0.014f;
-            //     D_8018D2C0[0] = 268;
-            //     D_8018D2E0 = 40;
-            //     D_8018D2E8 = 21;
-            //     break;
-            // case COURSE_ROYAL_RACEWAY:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust4, 0x3F8, 0x1000);
-            //     D_8018D2C0[0] = 262;
-            //     D_8018D2A0 = 0.014f;
-            //     D_8018D2E0 = 37;
-            //     D_8018D2E8 = 50;
-            //     D_80165718 = -64;
-            //     D_80165720 = 5;
-            //     D_80165728 = -330;
-            //     break;
-            // case COURSE_LUIGI_RACEWAY:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust2, 0x4F4U, 0xC00);
-            //     D_8018D2A0 = 0.0155f;
-            //     D_8018D2C0[0] = 271;
-            //     D_8018D2E0 = 45;
-            //     D_8018D2E8 = 60;
-            //     D_80165718 = -140;
-            //     D_80165720 = -44;
-            //     D_80165728 = -215;
-            //     break;
-            // case COURSE_MOO_MOO_FARM:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust0, 0x479, 0xC00);
-            //     D_8018D2A0 = 0.0155f;
-            //     D_8018D2C0[0] = 271;
-            //     D_8018D2E0 = 18;
-            //     D_8018D2E8 = 36;
-            //     break;
-            // case COURSE_TOADS_TURNPIKE:
-            //     D_8018D2A0 = 0.013f;
-            //     D_8018D2C0[0] = 252;
-            //     D_8018D2E0 = 57;
-            //     D_8018D2E8 = 44;
-            //     break;
-            // case COURSE_KALIMARI_DESERT:
-            //     D_8018D2C0[0] = 263;
-            //     D_8018D2D8[0] = 165;
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
-            //     D_8018D2A0 = 0.015f;
-            //     D_8018D2E0 = 55;
-            //     D_8018D2E8 = 27;
-            //     break;
-            // case COURSE_SHERBET_LAND:
-            //     D_8018D220 = (void*) dma_textures(gTextureExhaust1, 0x485, 0xC00);
-            //     D_8018D2A0 = 0.015f;
-            //     D_8018D2C0[0] = 262;
-            //     D_8018D2E0 = 52;
-            //     D_8018D2E8 = 33;
-            //     D_8018D300 = 72;
-            //     D_8018D308 = 100;
-            //     D_8018D310 = 255;
-            //     break;
-            // case COURSE_RAINBOW_ROAD:
-            //     D_8018D2A0 = 0.0103f;
-            //     D_8018D2C0[0] = 261;
-            //     D_8018D2D8[0] = 166;
-            //     D_8018D2E0 = 39;
-            //     D_8018D2E8 = 55;
-            //     break;
-            // case COURSE_WARIO_STADIUM:
-            //     D_8018D2A0 = 0.0155f;
-            //     D_8018D2C0[0] = 0x0106;
-            //     D_8018D2E0 = 53;
-            //     D_8018D2E8 = 35;
-            //     break;
-            // case COURSE_BLOCK_FORT:
-            //     D_8018D2A0 = 0.0335f;
-            //     D_8018D2E0 = 32;
-            //     D_8018D2E8 = 32;
-            //     break;
-            // case COURSE_SKYSCRAPER:
-            //     D_8018D2A0 = 0.0445f;
-            //     D_8018D2E0 = 32;
-            //     D_8018D2E8 = 32;
-            //     break;
-            // case COURSE_DOUBLE_DECK:
-            //     D_8018D2A0 = 0.0285f;
-            //     D_8018D2E0 = 32;
-            //     D_8018D2E8 = 32;
-            //     break;
-            // case COURSE_DK_JUNGLE:
-            //     D_8018D2A0 = 0.0155f;
-            //     D_8018D2C0[0] = 255;
-            //     D_8018D2E0 = 29;
-            //     D_8018D2E8 = 47;
-            //     break;
-            // case COURSE_BIG_DONUT:
-            //     D_8018D2A0 = 0.0257f;
-            //     D_8018D2E0 = 32;
-            //     D_8018D2E8 = 31;
-    }
+    // Flip the minimap player markers
     if (gIsMirrorMode != 0) {
-        D_8018D2E0 = gMinimapWidth - D_8018D2E0;
+        CM_GetProps()->Minimap.PlayerX = CM_GetProps()->Minimap.Width - CM_GetProps()->Minimap.PlayerX; // gMinimapPlayerX = gMinimapWidth - gMinimapPlayerX
     }
-    if (gPlayerCount == 4) {
-        D_8018D2C0[0] = 160;
-        D_8018D2D8[0] = 120;
-        return;
-    }
-    if (gPlayerCount == 3) {
-        D_8018D2C0[0] = 235;
-        D_8018D2D8[0] = 175;
-        return;
-    }
-    if (gPlayerCount == 2) {
-        if (GetCourse() != GetToadsTurnpike()) {
-            D_8018D2C0[1] = 265;
-            D_8018D2C0[0] = D_8018D2C0[1];
-        } else {
-            D_8018D2C0[1] = 255;
-            D_8018D2C0[0] = D_8018D2C0[1];
-        }
-        D_8018D2D8[0] = 65;
-        D_8018D2D8[1] = 180;
+
+    switch(gPlayerCount) {
+        case 2:
+            // Set X coord
+            if (GetCourse() != GetToadsTurnpike()) {
+                CM_GetProps()->Minimap.Pos[PLAYER_ONE].X = 265;
+                CM_GetProps()->Minimap.Pos[PLAYER_TWO].X = 265;
+            } else {
+                CM_GetProps()->Minimap.Pos[PLAYER_ONE].X = 255;
+                CM_GetProps()->Minimap.Pos[PLAYER_TWO].X = 255;
+            }
+            // Set Y coord
+            CM_GetProps()->Minimap.Pos[PLAYER_ONE].Y = 65;
+            CM_GetProps()->Minimap.Pos[PLAYER_TWO].Y = 180;
+            break;
+        case 3:
+            CM_GetProps()->Minimap.Pos[PLAYER_ONE].X = 235;
+            CM_GetProps()->Minimap.Pos[PLAYER_ONE].Y = 175;
+            break;
+        case 4:
+            CM_GetProps()->Minimap.Pos[PLAYER_ONE].X = 160;
+            CM_GetProps()->Minimap.Pos[PLAYER_ONE].Y = 120;
+            break;
     }
 }
 
@@ -411,8 +265,9 @@ void func_8006F8CC(void) {
                 D_801657F0 = 1;
                 D_80165800[0] = D_80165800[1] = 0;
             }
-            D_8018D2D8[0] = 0x0041;
-            D_8018D2D8[1] = 0x00B4;
+            
+            CM_GetProps()->Minimap.Pos[0].Y = 65;
+            CM_GetProps()->Minimap.Pos[1].Y = 180;
         }
         func_8006F824(0);
     } else {
@@ -639,7 +494,7 @@ void init_cloud_object(s32 objectIndex, s32 arg1, CloudData* arg2) {
     temp_v0->direction_angle[1] = arg2->rotY;
     temp_v0->unk_09E = arg2->posY;
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
-    temp_v0->activeTexture = (u8*) &D_8018D220[arg2->subType];
+    temp_v0->activeTexture = ((u8(*)[1024])CM_GetProps()->CloudTexture)[arg2->subType];
     func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
     temp_v0->primAlpha = 0x00FF;
 }
@@ -757,17 +612,18 @@ void func_8007055C(void) {
     func_8008C23C();
 }
 
+// GrandPrixBalloons related. Spawn location and some sort of bool check
 void func_80070714(void) {
     D_80165730 = 1;
-    if (gPlayerCount == ONE_PLAYERS_SELECTED) {
-        D_80165738 = 0x64;
-        D_80165740 = 0x3C;
-        D_80165748 = 0x1E;
-        return;
-    }
-    D_80165738 = 0x32;
-    D_80165740 = 0x1E;
-    D_80165748 = 0xA;
+    // if (gPlayerCount == ONE_PLAYERS_SELECTED) {
+    //     D_80165738 = 0x64;
+    //     D_80165740 = 0x3C;
+    //     D_80165748 = 0x1E;
+    // } else {
+    //     D_80165738 = 0x32;
+    //     D_80165740 = 0x1E;
+    //     D_80165748 = 0xA;
+    // }
 }
 
 void init_course_object(void) {

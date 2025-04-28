@@ -72,8 +72,16 @@ BowsersCastle::BowsersCastle() {
     this->gfx = d_course_bowsers_castle_packed_dls;
     this->gfxSize = 4900;
     Props.textures = bowsers_castle_textures;
-    Props.MinimapTexture = gTextureCourseOutlineBowsersCastle;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineBowsersCastle;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 265;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 12;
+    Props.Minimap.PlayerY = 48;
+    Props.Minimap.PlayerScaleFactor = 0.0174f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.Id = "mk:bowsers_castle";
 
@@ -123,8 +131,6 @@ BowsersCastle::BowsersCastle() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {48, 8, 120};
     Props.Skybox.BottomRight = {0, 0, 0};
@@ -152,6 +158,23 @@ void BowsersCastle::LoadTextures() {
     dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
 }
 
+// Required for the 2 thwomps that go far
+void BowsersCastle::SpawnStockThwomp() {
+    s32 objectId = indexObjectList1[0];
+    init_object(objectId, 0);
+    gObjectList[objectId].origin_pos[0] = 0x04b0 * xOrientation;
+    gObjectList[objectId].origin_pos[2] = 0xf5ba;
+    gObjectList[objectId].unk_0D5 = 3;
+    gObjectList[objectId].primAlpha = 0;
+
+    objectId = indexObjectList1[1];
+    init_object(objectId, 0);
+    gObjectList[objectId].origin_pos[0] = 0x04b0 * xOrientation;
+    gObjectList[objectId].origin_pos[2] = 0xf592;
+    gObjectList[objectId].unk_0D5 = 3;
+    gObjectList[objectId].primAlpha = 1;
+}
+
 void BowsersCastle::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
@@ -163,6 +186,7 @@ void BowsersCastle::BeginPlay() {
             gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, 1, 1));
             gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, 2, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, 2, 1));
+            BowsersCastle::SpawnStockThwomp();
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
             gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5bf, 0xC000, 1.0f, 4, 0));
@@ -174,6 +198,7 @@ void BowsersCastle::BeginPlay() {
         case CC_50:
             gWorldInstance.AddObject(new OThwomp(0x3B6, 0xF92A, 0xC000, 1.0f, 1, 0));
             gWorldInstance.AddObject(new OThwomp(0x0352, 0xf95c, 0xC000, 1.0f, 2, 0));
+            BowsersCastle::SpawnStockThwomp();
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
             gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5b0, 0xC000, 1.0f, 4, 0));
@@ -186,6 +211,7 @@ void BowsersCastle::BeginPlay() {
             gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, 1, 1));
             gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, 2, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, 2, 1));
+            BowsersCastle::SpawnStockThwomp();
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
             gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5c9, 0xC000, 1.0f, 4, 0));
@@ -208,14 +234,6 @@ void BowsersCastle::BeginPlay() {
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
     }
-}
-
-// Likely sets minimap boundaries
-void BowsersCastle::MinimapSettings() {
-    D_8018D2C0[0] = 265;
-    D_8018D2A0 = 0.0174f;
-    D_8018D2E0 = 12;
-    D_8018D2E8 = 48;
 }
 
 void BowsersCastle::InitCourseObjects() {
@@ -285,12 +303,6 @@ void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void BowsersCastle::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {

@@ -43,8 +43,16 @@ DoubleDeck::DoubleDeck() {
     this->gfx = d_course_double_deck_packed_dls;
     this->gfxSize = 699;
     Props.textures = double_deck_textures;
-    Props.MinimapTexture = gTextureCourseOutlineDoubleDeck;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineDoubleDeck;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 257;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 32;
+    Props.Minimap.PlayerY = 32;
+    Props.Minimap.PlayerScaleFactor = 0.0285f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "double deck", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "deck", sizeof(Props.DebugName));
@@ -93,8 +101,6 @@ DoubleDeck::DoubleDeck() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {113, 70, 255};
     Props.Skybox.BottomRight = {255, 184, 99};
@@ -134,13 +140,6 @@ void DoubleDeck::BeginPlay() {
     }
 }
 
-// Likely sets minimap boundaries
-void DoubleDeck::MinimapSettings() {
-    D_8018D2A0 = 0.0285f;
-    D_8018D2E0 = 32;
-    D_8018D2E8 = 32;
-}
-
 void DoubleDeck::InitCourseObjects() {}
 
 void DoubleDeck::SomeSounds() {}
@@ -148,12 +147,6 @@ void DoubleDeck::SomeSounds() {}
 void DoubleDeck::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void DoubleDeck::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void DoubleDeck::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
-}
 
 void DoubleDeck::Render(struct UnkStruct_800DC5EC* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);

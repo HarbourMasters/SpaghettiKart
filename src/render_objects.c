@@ -2695,21 +2695,28 @@ void func_8004EB38(s32 playerId) {
 }
 
 void func_8004ED40(s32 arg0) {
-    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308,
-                  D_8018D310, 0xFF, LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
+    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f,
+                  // RGBA
+                  CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
+                  LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20,
                   0x40, 0x20);
 }
 
-void func_8004EE54(s32 arg0) {
+// player is only 0 or 1
+void func_8004EE54(s32 playerId) {
     if (gIsMirrorMode != 0) {
-        func_8004D4E8(D_8018D2C0[arg0], D_8018D2D8[arg0], (u8*) D_8018D240, (s32) D_8018D300, (s32) D_8018D308,
-                      (s32) D_8018D310, 0x000000FF, (s32) gMinimapWidth, (s32) gMinimapHeight, (s32) gMinimapWidth,
-                      (s32) gMinimapHeight);
+        func_8004D4E8(CM_GetProps()->Minimap.Pos[playerId].X, CM_GetProps()->Minimap.Pos[playerId].Y, (u8*) D_8018D240,
+                      // RGBA
+                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
+                      CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
+                      CM_GetProps()->Minimap.Height);
     } else {
-        func_8004D37C(D_8018D2C0[arg0], D_8018D2D8[arg0], (u8*) D_8018D240, (s32) D_8018D300, (s32) D_8018D308,
-                      (s32) D_8018D310, 0x000000FF, (s32) gMinimapWidth, (s32) gMinimapHeight, (s32) gMinimapWidth,
-                      (s32) gMinimapHeight);
+        func_8004D37C(CM_GetProps()->Minimap.Pos[playerId].X, CM_GetProps()->Minimap.Pos[playerId].Y, (u8*) D_8018D240,
+                      // RGBA
+                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
+                      CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
+                      CM_GetProps()->Minimap.Height);
     }
 }
 
@@ -2717,13 +2724,13 @@ void func_8004EF9C(s32 arg0) {
     s16 temp_t0;
     s16 temp_v0;
 
-    temp_v0 = CM_GetProps()->MinimapDimensions.X;
-    temp_t0 = CM_GetProps()->MinimapDimensions.Z;
-    func_8004D37C(0x00000104, 0x0000003C, CM_GetProps()->MinimapTexture, 0x000000FF, 0x000000FF, 0x000000FF,
+    temp_v0 = CM_GetProps()->Minimap.Width;
+    temp_t0 = CM_GetProps()->Minimap.Height;
+    func_8004D37C(0x00000104, 0x0000003C, CM_GetProps()->Minimap.Texture, 0x000000FF, 0x000000FF, 0x000000FF,
                   0x000000FF, temp_v0, temp_t0, temp_v0, temp_t0);
 }
 
-void set_minimap_finishline_position(s32 arg0) {
+void set_minimap_finishline_position(s32 playerId) {
     f32 var_f0;
     f32 var_f2;
     s32 center = 0;
@@ -2734,18 +2741,16 @@ void set_minimap_finishline_position(s32 arg0) {
         center = ((OTRGetDimensionFromRightEdge(SCREEN_WIDTH) - SCREEN_WIDTH) / 2) +
                  ((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
     } else {
-        center = D_8018D2C0[arg0];
+        center = CM_GetProps()->Minimap.Pos[playerId].X;
     }
 
     // minimap center pos -  minimap left edge  +  offset
-    var_f2 = (center - (gMinimapWidth / 2)) + D_8018D2E0;
-    var_f0 = (D_8018D2D8[arg0] - (gMinimapHeight / 2)) + D_8018D2E8;
+    var_f2 = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX; // (center - (gMinimapWidth / 2)) + gMinimapPlayerX;
+    var_f0 = (CM_GetProps()->Minimap.Pos[playerId].Y - (CM_GetProps()->Minimap.Height / 2)) + CM_GetProps()->Minimap.PlayerY; // (gMinimapY[arg0] - (gMinimapHeight / 2)) + gMinimapPlayerY
 
-    var_f2 += CM_GetProps()->MinimapFinishlineX;
-    var_f0 += CM_GetProps()->MinimapFinishlineY;
+    var_f2 += CM_GetProps()->Minimap.FinishlineX;
+    var_f0 += CM_GetProps()->Minimap.FinishlineY;
 
-    //! @todo Get course minimap props from course.
-    CM_MinimapFinishlinePosition();
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
 }
 
@@ -2764,18 +2769,18 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     Player* player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
-        thing0 = player->pos[0] * D_8018D2A0;
-        thing1 = player->pos[2] * D_8018D2A0;
+        thing0 = player->pos[0] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
+        thing1 = player->pos[2] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
 
         if (gPlayerCount == 3) {
             center = ((OTRGetDimensionFromRightEdge(SCREEN_WIDTH) - SCREEN_WIDTH) / 2) +
                      ((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
         } else {
-            center = D_8018D2C0[arg0];
+            center = CM_GetProps()->Minimap.Pos[arg0].X;
         }
 
-        temp_a0 = (center - (gMinimapWidth / 2)) + D_8018D2E0 + (s16) (thing0);
-        temp_a1 = (D_8018D2D8[arg0] - (gMinimapHeight / 2)) + D_8018D2E8 + (s16) (thing1);
+        temp_a0 = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX + (s16) (thing0);
+        temp_a1 = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) + CM_GetProps()->Minimap.PlayerY + (s16) (thing1);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
 #if EXPLICIT_AND == 1
@@ -3677,54 +3682,6 @@ void func_80052E30(UNUSED s32 arg0) {
     if (gPlayerCount == 1) {
         for (var_s0 = 0; var_s0 < gPlayerCountSelection1; var_s0++) {
             func_80052D70(var_s0);
-        }
-    }
-}
-
-void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
-    Object* object;
-
-    Vtx* vtx = (Vtx*) LOAD_ASSET(common_vtx_hedgehog);
-
-    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
-        object = &gObjectList[objectIndex];
-        D_80183E80[2] = (s16) (object->unk_084[6] + 0x8000);
-        rsp_set_matrix_transformation(object->pos, (u16*) D_80183E80, object->sizeScaling);
-        set_color_render((s32) object->unk_084[0], (s32) object->unk_084[1], (s32) object->unk_084[2],
-                         (s32) object->unk_084[3], (s32) object->unk_084[4], (s32) object->unk_084[5],
-                         (s32) object->primAlpha);
-        gSPVertex(gDisplayListHead++, &vtx[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, common_rectangle_display);
-    }
-}
-
-void render_balloons_grand_prix(s32 arg0) {
-    s32 var_s1;
-    s32 objectIndex;
-
-    gSPDisplayList(gDisplayListHead++, D_0D007E98);
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
-    func_8004B614(0, 0, 0, 0, 0, 0, 0);
-    gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
-    gDPSetRenderMode(gDisplayListHead++,
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
-                         GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
-                     AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | FORCE_BL |
-                         GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
-    D_80183E80[0] = 0;
-    D_80183E80[1] = 0x8000;
-    rsp_load_texture(gTextureBalloon1, 64, 32);
-    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        objectIndex = gObjectParticle3[var_s1];
-        if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
-            func_80053D74(objectIndex, arg0, 0);
-        }
-    }
-    rsp_load_texture(gTextureBalloon2, 64, 32);
-    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        objectIndex = gObjectParticle3[var_s1];
-        if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
-            func_80053D74(objectIndex, arg0, 4);
         }
     }
 }

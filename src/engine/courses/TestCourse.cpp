@@ -28,6 +28,7 @@
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/objects/Crab.h"
 #include "engine/objects/Boos.h"
+#include "engine/objects/GrandPrixBalloons.h"
 
 extern "C" {
     #include "main.h"
@@ -60,8 +61,17 @@ extern "C" {
 TestCourse::TestCourse() {
     this->gfxSize = 100;
     this->textures = NULL;
-    Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 260;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 6;
+    Props.Minimap.PlayerY = 28;
+    Props.Minimap.PlayerScaleFactor = 0.022f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
+    Props.Minimap.Colour = {255, 255, 255};
 
     Props.Id = "mk:test_course";
 
@@ -109,10 +119,9 @@ TestCourse::TestCourse() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust5);
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {120, 140, 188};
     Props.Skybox.BottomRight = {216, 232, 248};
@@ -287,24 +296,8 @@ void TestCourse::BeginPlay() {
 
     gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 
+    gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(0, 0, 0)));
 }
-
-// Likely sets minimap boundaries
-void TestCourse::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust5, 0x443, 0x1000));
-    D_8018D2A0 = 0.022f;
-    D_8018D2E0 = 6;
-    D_8018D2E8 = 28;
-    D_8018D2C0[0] = 260;
-    D_8018D2D8[0] = 170;
-    D_80165718 = 0;
-    D_80165720 = 5;
-    D_80165728 = -240;
-}
-
-void TestCourse::InitCourseObjects() {}
-
-void TestCourse::SomeSounds() {}
 
 void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
@@ -336,12 +329,6 @@ void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-// Positions the finishline on the minimap
-void TestCourse::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
-}
-
 void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -356,11 +343,6 @@ void TestCourse::Render(struct UnkStruct_800DC5EC* arg0) {
     }
     gSPDisplayList(gDisplayListHead++, mario_Plane_001_mesh);
 }
-
-void TestCourse::RenderCredits() {
-}
-
-void TestCourse::Destroy() { }
 
 bool TestCourse::IsMod() {
     return true;

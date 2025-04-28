@@ -48,15 +48,27 @@ struct WaterVolume {
     float MaxZ;
 };
 
+typedef struct MinimapProps {
+    const char* Texture;
+    int16_t Width;
+    int16_t Height;
+    IVector2D Pos[2]; // Minimap position for players 1 and 2. 3/4 player mode is hard-coded to the center.
+    int32_t PlayerX; // The offset to place the player markers
+    int32_t PlayerY;
+    float PlayerScaleFactor; // Scale factor of the player markers
+    float FinishlineX; // The offset to place the finishline texture on the minimap
+    float FinishlineY;
+    RGB8 Colour; // Colour of the visible pixels (the track path)
+} MinimapProps;
+
 typedef struct Properties {
     const char* Id;
     char Name[128];
     char DebugName[128];
     char CourseLength[128];
-    const char* AIBehaviour;
-    const char* MinimapTexture;
     int32_t LakituTowType;
-    IVector2D MinimapDimensions;
+    MinimapProps Minimap;
+    const char* AIBehaviour;
     float AIMaximumSeparation;
     float AIMinimumSeparation;
     float NearPersp;
@@ -70,10 +82,9 @@ typedef struct Properties {
     Vec4f D_0D009808;
     TrackWaypoint* PathTable[4];
     TrackWaypoint* PathTable2[4];
+    uint8_t* CloudTexture;
     CloudData *Clouds;
     CloudData *CloudList;
-    float MinimapFinishlineX;
-    float MinimapFinishlineY;
     SkyboxColours Skybox;
     const course_texture *textures;
     enum MusicSeq Sequence;
@@ -114,8 +125,14 @@ typedef struct Properties {
         //j["Clouds"] = Clouds ? nlohmann::json{{"x", Clouds->x, "y", Clouds->y, "z", Clouds->z}} : nullptr;
         //j["CloudList"] = CloudList ? nlohmann::json{{"x", CloudList->x, "y", CloudList->y, "z", CloudList->z}} : nullptr;
         
-        j["MinimapFinishlineX"] = MinimapFinishlineX;
-        j["MinimapFinishlineY"] = MinimapFinishlineY;
+        j["MinimapPosition"] = {Minimap.Pos[0].X, Minimap.Pos[0].Y};
+        j["MinimapPosition2P"] = {Minimap.Pos[1].X, Minimap.Pos[1].Y};
+        j["MinimapPlayerX"] = Minimap.PlayerX;
+        j["MinimapPlayerY"] = Minimap.PlayerY;
+        j["MinimapPlayerScaleFactor"] = Minimap.PlayerScaleFactor;
+        j["MinimapFinishlineX"] = Minimap.FinishlineX;
+        j["MinimapFinishlineY"] = Minimap.FinishlineY;
+        j["MinimapColour"] = {static_cast<int>(Minimap.Colour.r), static_cast<int>(Minimap.Colour.g), static_cast<int>(Minimap.Colour.b)};
         // SkyboxColors - assuming SkyboxColors can be serialized similarly
         // j["Skybox"] = Skybox; // Implement your serialization logic here
         j["Sequence"] = static_cast<int>(Sequence);
@@ -186,9 +203,18 @@ typedef struct Properties {
         
         //Clouds = nullptr; // Deserialize if data is present
         //CloudList = nullptr; // Deserialize if data is present
-
-        MinimapFinishlineX = j.at("MinimapFinishlineX").get<float>();
-        MinimapFinishlineY = j.at("MinimapFinishlineY").get<float>();
+        Minimap.Pos[0].X = j.at("MinimapPosition")[0].get<int32_t>();
+        Minimap.Pos[0].Y = j.at("MinimapPosition")[1].get<int32_t>();
+        Minimap.Pos[1].X = j.at("MinimapPosition2P")[0].get<int32_t>();
+        Minimap.Pos[1].Y = j.at("MinimapPosition2P")[1].get<int32_t>();
+        Minimap.PlayerX = j.at("MinimapPlayerX").get<int32_t>();
+        Minimap.PlayerY = j.at("MinimapPlayerY").get<int32_t>();
+        Minimap.PlayerScaleFactor = j.at("MinimapPlayerScaleFactor").get<float>();
+        Minimap.FinishlineX = j.at("MinimapFinishlineX").get<float>();
+        Minimap.FinishlineY = j.at("MinimapFinishlineY").get<float>();
+        Minimap.Colour.r = j.at("MinimapColour")[0].get<uint8_t>();
+        Minimap.Colour.g = j.at("MinimapColour")[1].get<uint8_t>();
+        Minimap.Colour.b = j.at("MinimapColour")[2].get<uint8_t>();
         //textures = nullptr; // Deserialize textures if present
         Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
         WaterLevel = j.at("WaterLevel").get<float>();
@@ -253,7 +279,6 @@ public:
     virtual void InitClouds();
     virtual void UpdateClouds(s32, Camera*);
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);
-    virtual void MinimapSettings();
     virtual void InitCourseObjects();
     virtual void UpdateCourseObjects();
     virtual void RenderCourseObjects(s32 cameraId);
@@ -261,7 +286,6 @@ public:
     virtual void CreditsSpawnActors();
     virtual void WhatDoesThisDo(Player*, int8_t);
     virtual void WhatDoesThisDoAI(Player*, int8_t);
-    virtual void MinimapFinishlinePosition();
     virtual void SetStaffGhost();
     virtual void Render(struct UnkStruct_800DC5EC*);
     virtual void RenderCredits();

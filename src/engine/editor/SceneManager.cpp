@@ -47,15 +47,19 @@ namespace Editor {
             // }
             // data["Objects"] = objects;
 
-            auto dat = data.dump();
-            std::vector<uint8_t> stringify;
-            stringify.assign(dat.begin(), dat.end());
+            try {
+                auto dat = data.dump();
+                std::vector<uint8_t> stringify;
+                stringify.assign(dat.begin(), dat.end());
 
-            bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(CurrentArchive, SceneFile, stringify);
-            if (wrote) {
-                printf("Successfully wrote scene file!\n  Wrote: %s\n", SceneFile.c_str());
-            } else {
-                printf("Failed to write scene file!\n");
+                bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(CurrentArchive, SceneFile, stringify);
+                if (wrote) {
+                    printf("Successfully wrote scene file!\n  Wrote: %s\n", SceneFile.c_str());
+                } else {
+                    printf("Failed to write scene file!\n");
+                }
+            } catch (const nlohmann::json::exception& e) {
+                printf("SceneManager::SaveLevel():\n  JSON error during dump: %s\n", e.what());
             }
         } else {
             printf("Could not save scene file, SceneFile or CurrentArchive not set\n");
@@ -63,8 +67,6 @@ namespace Editor {
     }
 
     void LoadLevel(std::shared_ptr<Ship::Archive> archive, Course* course, std::string sceneFile) {
-        nlohmann::json data;
-
         SceneFile = sceneFile;
 
         if (archive) {
@@ -78,7 +80,7 @@ namespace Editor {
             nlohmann::json data = std::static_pointer_cast<Ship::Json>(
                 GameEngine::Instance->context->GetResourceManager()->LoadResource(sceneFile, true, initData))->Data;
 
-            if (data == nullptr) {
+            if (data.is_null() || data.empty()) {
                 return;
             }
             
@@ -134,13 +136,15 @@ namespace Editor {
                 GameEngine::Instance->context->GetResourceManager()->LoadResource(filePath, true, initData));
 
             if (ptr) {
-                MK64::MinimapTexture texture = ptr->Texture;
                 printf("LOADED MINIMAP!\n");
-                course->Props.MinimapTexture = (const char*)texture.Data;
-                course->Props.MinimapDimensions = IVector2D(texture.Width, texture.Height);
-            } else {
-                course->Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
-                course->Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(course->Props.MinimapTexture), ResourceGetTexHeightByName(course->Props.MinimapTexture));
+                MK64::MinimapTexture texture = ptr->Texture;
+                course->Props.Minimap.Texture = (const char*)texture.Data;
+                course->Props.Minimap.Width = texture.Width;
+                course->Props.Minimap.Height = texture.Height;
+            } else { // Fallback
+                course->Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+                course->Props.Minimap.Width = ResourceGetTexWidthByName(course->Props.Minimap.Texture);
+                course->Props.Minimap.Height = ResourceGetTexHeightByName(course->Props.Minimap.Texture);
             }
         }
     }

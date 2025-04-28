@@ -15,13 +15,13 @@ glabel func_8004F168
 /* 04FD9C 8004F19C 01CF1821 */  addu  $v1, $t6, $t7
 /* 04FDA0 8004F1A0 94780000 */  lhu   $t8, ($v1)
 /* 04FDA4 8004F1A4 00A03825 */  move  $a3, $a1
-/* 04FDA8 8004F1A8 3C018019 */  lui   $at, %hi(D_8018D2A0) # $at, 0x8019
+/* 04FDA8 8004F1A8 3C018019 */  lui   $at, %hi(gMinimapPlayerScale) # $at, 0x8019
 /* 04FDAC 8004F1AC 33198000 */  andi  $t9, $t8, 0x8000
 /* 04FDB0 8004F1B0 13200088 */  beqz  $t9, .L8004F3D4
 /* 04FDB4 8004F1B4 00044040 */   sll   $t0, $a0, 1
-/* 04FDB8 8004F1B8 C420D2A0 */  lwc1  $f0, %lo(D_8018D2A0)($at)
+/* 04FDB8 8004F1B8 C420D2A0 */  lwc1  $f0, %lo(gMinimapPlayerScale)($at)
 /* 04FDBC 8004F1BC C4640014 */  lwc1  $f4, 0x14($v1)
-/* 04FDC0 8004F1C0 3C098019 */  lui   $t1, %hi(D_8018D2C0) # 0x8019
+/* 04FDC0 8004F1C0 3C098019 */  lui   $t1, %hi(gMinimapX) # 0x8019
 /* 04FDC4 8004F1C4 C466001C */  lwc1  $f6, 0x1c($v1)
 /* 04FDC8 8004F1C8 46002082 */  mul.s $f2, $f4, $f0
 /* 04FDCC 8004F1CC 01284821 */  addu  $t1, $t1, $t0
@@ -29,11 +29,11 @@ glabel func_8004F168
 /* 04FDD4 8004F1D4 3C0C8019 */  lui   $t4, %hi(gMinimapWidth) # $t4, 0x8019
 /* 04FDD8 8004F1D8 858CD2B0 */  lh    $t4, %lo(gMinimapWidth)($t4)
 /* 04FDDC 8004F1DC 854AD2F0 */  lh    $t2, %lo(D_8018D2F0)($t2)
-/* 04FDE0 8004F1E0 8529D2C0 */  lh    $t1, %lo(D_8018D2C0)($t1) # -0x2d40($t1)
+/* 04FDE0 8004F1E0 8529D2C0 */  lh    $t1, %lo(gMinimapX)($t1) # -0x2d40($t1)
 /* 04FDE4 8004F1E4 4600120D */  trunc.w.s $f8, $f2
 /* 04FDE8 8004F1E8 46003302 */  mul.s $f12, $f6, $f0
-/* 04FDEC 8004F1EC 3C0F8019 */  lui   $t7, %hi(D_8018D2E0) # $t7, 0x8019
-/* 04FDF0 8004F1F0 85EFD2E0 */  lh    $t7, %lo(D_8018D2E0)($t7)
+/* 04FDEC 8004F1EC 3C0F8019 */  lui   $t7, %hi(gMinimapPlayerX) # $t7, 0x8019
+/* 04FDF0 8004F1F0 85EFD2E0 */  lh    $t7, %lo(gMinimapPlayerX)($t7)
 /* 04FDF4 8004F1F4 01001025 */  move  $v0, $t0
 /* 04FDF8 8004F1F8 012A5821 */  addu  $t3, $t1, $t2
 /* 04FDFC 8004F1FC 05810003 */  bgez  $t4, .L8004F20C
@@ -43,21 +43,21 @@ glabel func_8004F168
 .L8004F20C:
 /* 04FE0C 8004F20C 44084000 */  mfc1  $t0, $f8
 /* 04FE10 8004F210 016D7023 */  subu  $t6, $t3, $t5
-/* 04FE14 8004F214 3C0D8019 */  lui   $t5, %hi(D_8018D2D8) # 0x8019
+/* 04FE14 8004F214 3C0D8019 */  lui   $t5, %hi(gMinimapY) # 0x8019
 /* 04FE18 8004F218 01CFC021 */  addu  $t8, $t6, $t7
 /* 04FE1C 8004F21C 3C0E8019 */  lui   $t6, %hi(D_8018D2F8) # $t6, 0x8019
 /* 04FE20 8004F220 01A26821 */  addu  $t5, $t5, $v0
 /* 04FE24 8004F224 00084C00 */  sll   $t1, $t0, 0x10
-/* 04FE28 8004F228 85ADD2D8 */  lh    $t5, %lo(D_8018D2D8)($t5) # -0x2d28($t5)
+/* 04FE28 8004F228 85ADD2D8 */  lh    $t5, %lo(gMinimapY)($t5) # -0x2d28($t5)
 /* 04FE2C 8004F22C 85CED2F8 */  lh    $t6, %lo(D_8018D2F8)($t6)
 /* 04FE30 8004F230 3C198019 */  lui   $t9, %hi(gMinimapHeight) # $t9, 0x8019
 /* 04FE34 8004F234 4600628D */  trunc.w.s $f10, $f12
 /* 04FE38 8004F238 8739D2B8 */  lh    $t9, %lo(gMinimapHeight)($t9)
 /* 04FE3C 8004F23C 00095403 */  sra   $t2, $t1, 0x10
 /* 04FE40 8004F240 030A2021 */  addu  $a0, $t8, $t2
-/* 04FE44 8004F244 3C188019 */  lui   $t8, %hi(D_8018D2E8) # $t8, 0x8019
+/* 04FE44 8004F244 3C188019 */  lui   $t8, %hi(gMinimapPlayerY) # $t8, 0x8019
 /* 04FE48 8004F248 01AE7821 */  addu  $t7, $t5, $t6
-/* 04FE4C 8004F24C 8718D2E8 */  lh    $t8, %lo(D_8018D2E8)($t8)
+/* 04FE4C 8004F24C 8718D2E8 */  lh    $t8, %lo(gMinimapPlayerY)($t8)
 /* 04FE50 8004F250 440E5000 */  mfc1  $t6, $f10
 /* 04FE54 8004F254 00046400 */  sll   $t4, $a0, 0x10
 /* 04FE58 8004F258 000C5C03 */  sra   $t3, $t4, 0x10

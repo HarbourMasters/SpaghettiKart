@@ -66,8 +66,16 @@ WarioStadium::WarioStadium() {
     this->gfx = d_course_wario_stadium_packed_dls;
     this->gfxSize = 5272;
     Props.textures = wario_stadium_textures;
-    Props.MinimapTexture = gTextureCourseOutlineWarioStadium;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineWarioStadium;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 262;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 53;
+    Props.Minimap.PlayerY = 35;
+    Props.Minimap.PlayerScaleFactor = 0.0155f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
@@ -122,9 +130,6 @@ WarioStadium::WarioStadium() {
     finish.z = -9;
 
     this->FinishlineSpawnPoint = finish;
-
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = { 20, 30, 56 };
     Props.Skybox.BottomRight = { 40, 60, 110 };
@@ -200,14 +205,6 @@ void WarioStadium::UpdateClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
-// Likely sets minimap boundaries
-void WarioStadium::MinimapSettings() {
-    D_8018D2A0 = 0.0155f;
-    D_8018D2C0[0] = 0x0106;
-    D_8018D2E0 = 53;
-    D_8018D2E8 = 35;
-}
-
 void WarioStadium::InitCourseObjects() {
 }
 
@@ -226,13 +223,6 @@ void WarioStadium::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-}
-
-// Positions the finishline on the minimap
-void WarioStadium::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY,
-                            (u8*) common_texture_minimap_finish_line);
 }
 
 void WarioStadium::Jumbotron() {

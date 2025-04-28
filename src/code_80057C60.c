@@ -57,7 +57,6 @@ UNUSED s32 D_801655B8;
 s32 D_801655BC;
 s32 D_801655C0;
 s32 D_801655C4;
-s32 D_801655C8;
 s32 D_801655CC;
 UNUSED s32 D_801655D0[2];
 s32 D_801655D8;
@@ -94,13 +93,6 @@ UNUSED s32 D_801656F8[4];
 s16 D_80165708;
 UNUSED s32 D_8016570C;
 s16 D_80165710;
-UNUSED s32 D_80165714;
-s16 D_80165718;
-UNUSED s32 D_8016571C;
-s16 D_80165720;
-UNUSED s32 D_80165724;
-s16 D_80165728;
-UNUSED s32 D_8016572C;
 s16 D_80165730;
 UNUSED s32 D_80165734;
 //! Tracking a count of some object type, don't know what object type yet
@@ -186,7 +178,6 @@ s32 D_8016586C;
 UNUSED s32 D_80165870[2];
 s32 D_80165878;
 s32 D_8016587C;
-u8* D_80165880;
 UNUSED s32 D_80165884;
 s8 D_80165888;
 UNUSED s32 D_8016588C;
@@ -778,7 +769,7 @@ void render_object_for_player(s32 cameraId) {
     render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
-        render_balloons_grand_prix(cameraId);
+        //render_balloons_grand_prix(cameraId);
     }
     if (gModeSelection == BATTLE) {
         CM_DrawBattleBombKarts(cameraId);
@@ -1641,9 +1632,9 @@ void update_object(void) {
     //         update_ferries_smoke_particle();
     //         break;
     // }
-    if (D_80165730 != 0) {
-        func_80074EE8();
-    }
+    //if (D_80165730 != 0) {
+    //    func_80074EE8(); // Grand prix balloons
+    //}
     func_80076F2C();
     if ((s16) GetCourse() != GetFrappeSnowland()) {
         update_leaf();

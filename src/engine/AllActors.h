@@ -35,3 +35,5 @@
 #include "objects/Trophy.h"
 #include "objects/Snowman.h"
 #include "objects/Podium.h"
+#include "objects/GrandPrixBalloons.h"
+

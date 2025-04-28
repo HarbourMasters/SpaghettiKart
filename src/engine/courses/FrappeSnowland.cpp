@@ -52,8 +52,17 @@ FrappeSnowland::FrappeSnowland() {
     this->gfx = d_course_frappe_snowland_packed_dls;
     this->gfxSize = 4140;
     Props.textures = frappe_snowland_textures;
-    Props.MinimapTexture = gTextureCourseOutlineFrappeSnowland;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineFrappeSnowland;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 262;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 36;
+    Props.Minimap.PlayerY = 40;
+    Props.Minimap.PlayerScaleFactor = 0.016f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
+    Props.Minimap.Colour = {72, 100, 255};
 
     Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
@@ -101,8 +110,6 @@ FrappeSnowland::FrappeSnowland() {
 
     Props.Clouds = NULL; // not used for frappe
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {28, 11, 90};
     Props.Skybox.BottomRight = {0, 99, 164};
@@ -188,17 +195,6 @@ void FrappeSnowland::UpdateClouds(s32 sp1C, Camera* camera) {
     func_80078170(sp1C, camera);
 }
 
-// Likely sets minimap boundaries
-void FrappeSnowland::MinimapSettings() {
-    D_8018D2C0[0] = 262;
-    D_8018D2A0 = 0.016f;
-    D_8018D2E0 = 36;
-    D_8018D2E8 = 40;
-    D_8018D300 = 72;
-    D_8018D308 = 100;
-    D_8018D310 = 255;
-}
-
 void FrappeSnowland::InitCourseObjects() {
     size_t objectId;
     size_t i;
@@ -209,22 +205,6 @@ void FrappeSnowland::InitCourseObjects() {
 
 void FrappeSnowland::UpdateCourseObjects() {
     update_snowflakes();
-}
-
-void FrappeSnowland::RenderCourseObjects(s32 cameraId) {
-}
-
-void FrappeSnowland::SomeSounds() {
-}
-
-void FrappeSnowland::WhatDoesThisDo(Player* player, int8_t playerId) {}
-
-void FrappeSnowland::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void FrappeSnowland::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
@@ -260,7 +240,3 @@ void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {
         }
     }
 }
-
-void FrappeSnowland::ScrollingTextures() {}
-
-void FrappeSnowland::Destroy() {}

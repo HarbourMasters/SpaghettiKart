@@ -328,19 +328,6 @@ s32 f32_step_towards(f32* value, f32 target, f32 step) {
     return targetReached;
 }
 
-void func_80041480(s16* arg0, s16 arg1, s16 arg2, s16* arg3) {
-    *arg0 += *arg3;
-    if (*arg3 >= 0) {
-        if (*arg0 >= arg2) {
-            *arg0 = arg2;
-            *arg3 = -*arg3;
-        }
-    } else if (arg1 >= *arg0) {
-        *arg0 = arg1;
-        *arg3 = -*arg3;
-    }
-}
-
 Vec3f* vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;

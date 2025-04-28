@@ -43,8 +43,16 @@ BigDonut::BigDonut() {
     this->gfx = d_course_big_donut_packed_dls;
     this->gfxSize = 528;
     Props.textures = big_donut_textures;
-    Props.MinimapTexture = gTextureCourseOutlineBigDonut;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineBigDonut;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 257;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 32;
+    Props.Minimap.PlayerY = 31;
+    Props.Minimap.PlayerScaleFactor = 0.0257f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "big donut", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "doughnut", sizeof(Props.DebugName));
@@ -89,8 +97,6 @@ BigDonut::BigDonut() {
 
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {0, 0, 0};
     Props.Skybox.BottomRight = {0, 0, 0};
@@ -121,9 +127,6 @@ void BigDonut::Load() {
     func_80295C6C();
 }
 
-void BigDonut::LoadTextures() {
-}
-
 void BigDonut::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_big_donut_item_box_spawns));
 
@@ -138,27 +141,6 @@ void BigDonut::BeginPlay() {
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][120], 120, 0, 1.0f));
         gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 0, 1.0f));
     }
-}
-
-// Likely sets minimap boundaries
-void BigDonut::MinimapSettings() {
-    D_8018D2A0 = 0.0257f;
-    D_8018D2E0 = 32;
-    D_8018D2E8 = 31;
-}
-
-void BigDonut::InitCourseObjects() {}
-
-void BigDonut::SomeSounds() {}
-
-void BigDonut::WhatDoesThisDo(Player* player, int8_t playerId) {}
-
-void BigDonut::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
-
-// Positions the finishline on the minimap
-void BigDonut::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void BigDonut::Render(struct UnkStruct_800DC5EC* arg0) {

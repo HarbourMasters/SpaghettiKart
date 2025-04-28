@@ -33,8 +33,18 @@ Course::Course() {
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
     Props.Id = "";
-    Props.MinimapTexture = gTextureCourseOutlineMarioRaceway;
-    Props.MinimapDimensions = IVector2D(ResourceGetTexWidthByName(Props.MinimapTexture), ResourceGetTexHeightByName(Props.MinimapTexture));
+    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
+    Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
+    Props.Minimap.Pos[0].X = 257;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 0;
+    Props.Minimap.PlayerY = 0;
+    Props.Minimap.PlayerScaleFactor = 0.22f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
+    Props.Minimap.Colour = {255, 255, 255};
+    Props.WaterLevel = -10.0f;
 
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
@@ -80,8 +90,6 @@ Course::Course() {
 
     Props.Clouds = NULL;
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
 }
 
@@ -290,9 +298,6 @@ void Course::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f ar
     func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void Course::MinimapSettings() {
-}
-
 void Course::InitCourseObjects() {
 }
 
@@ -313,13 +318,6 @@ void Course::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void Course::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-}
-
-// Positions the finishline on the minimap
-void Course::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY,
-                            (u8*) common_texture_minimap_finish_line);
 }
 
 void Course::SetStaffGhost() {

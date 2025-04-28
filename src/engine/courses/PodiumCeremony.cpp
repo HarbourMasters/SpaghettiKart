@@ -12,6 +12,7 @@
 #include "engine/objects/Podium.h"
 #include "engine/objects/CheepCheep.h"
 #include "engine/particles/StarEmitter.h"
+#include "engine/objects/GrandPrixBalloons.h"
 
 extern "C" {
     #include "main.h"
@@ -91,7 +92,15 @@ PodiumCeremony::PodiumCeremony() {
     this->gfx = d_course_royal_raceway_packed_dls;
     this->gfxSize = 5670;
     Props.textures = podium_ceremony_textures;
-    Props.MinimapDimensions = IVector2D(0, 0);
+    Props.Minimap.Width = 0;
+    Props.Minimap.Height = 0;
+    Props.Minimap.Pos[0].X = 262;
+    Props.Minimap.Pos[0].Y = 170;
+    Props.Minimap.PlayerX = 37;
+    Props.Minimap.PlayerY = 50;
+    Props.Minimap.PlayerScaleFactor = 0.014f;
+    Props.Minimap.FinishlineX = 0;
+    Props.Minimap.FinishlineY = 0;
 
     Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
@@ -134,10 +143,9 @@ PodiumCeremony::PodiumCeremony() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust4);
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
-    Props.MinimapFinishlineX = 0;
-    Props.MinimapFinishlineY = 0;
 
     Props.Skybox.TopRight = {238, 144, 255};
     Props.Skybox.BottomRight = {255, 224, 240};
@@ -199,18 +207,10 @@ void PodiumCeremony::BeginPlay() {
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][100], 100, 0, 1.0f));
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][120], 120, 0, 1.0f));
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][140], 140, 0, 1.0f));
-}
 
-// Likely sets minimap boundaries
-void PodiumCeremony::MinimapSettings() {
-    D_8018D220 = reinterpret_cast<uint8_t (*)[1024]>(dma_textures(gTextureExhaust4, 0x3F8, 0x1000));
-    D_8018D2C0[0] = 262;
-    D_8018D2A0 = 0.014f;
-    D_8018D2E0 = 37;
-    D_8018D2E8 = 50;
-    D_80165718 = -64;
-    D_80165720 = 5;
-    D_80165728 = -330;
+    if (gGamestate != CREDITS_SEQUENCE) {
+        gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(-64, 5, -330)));
+    }
 }
 
 void PodiumCeremony::InitCourseObjects() {
@@ -218,10 +218,6 @@ void PodiumCeremony::InitCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
-        }
-        for (i = 0; i < D_80165738; i++) {
-            find_unused_obj_index(&gObjectParticle3[i]);
-            init_object(gObjectParticle3[i], 0);
         }
     }
 }
@@ -257,12 +253,6 @@ void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
             D_80165300[playerId] = 0;
         }
     }
-}
-
-// Positions the finishline on the minimap
-void PodiumCeremony::MinimapFinishlinePosition() {
-    //! todo: Place hard-coded values here.
-    draw_hud_2d_texture_8x8(this->Props.MinimapFinishlineX, this->Props.MinimapFinishlineY, (u8*) common_texture_minimap_finish_line);
 }
 
 void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {

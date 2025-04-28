@@ -17,29 +17,18 @@ extern "C" {
 
 class FrappeSnowland : public Course {
 public:
-    virtual ~FrappeSnowland() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~FrappeSnowland() = default;
 
-    // Constructor
     explicit FrappeSnowland();
 
-//    virtual void Load(const char* courseVtx, 
-//                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void LoadTextures() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32 sp1C, Camera* camera) override;
-    virtual void MinimapSettings() override;
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;
-    virtual void RenderCourseObjects(s32 cameraId) override;
-    virtual void SomeSounds() override;
-    virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
-    virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void MinimapFinishlinePosition() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    
-    virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
-    virtual void Destroy() override;
 };

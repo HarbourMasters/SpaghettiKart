@@ -99,17 +99,17 @@ struct FVector2D {
 
 // Sets integer X Z coordinates
 typedef struct IVector2D {
-    int32_t X, Z;
+    int32_t X, Y;
 
 #ifdef __cplusplus
-    IVector2D() : X(0), Z(0) {}  // Default constructor
+    IVector2D() : X(0), Y(0) {}  // Default constructor
 
-    IVector2D(int32_t x, int32_t z) : X(x), Z(z) {}  // Constructor to initialize with values
+    IVector2D(int32_t x, int32_t y) : X(x), Y(y) {}  // Constructor to initialize with values
 
 
     IVector2D& operator=(const IVector2D& other) {
         X = other.X;
-        Z = other.Z;
+        Y = other.Y;
         return *this;
     }
 #endif // __cplusplus
