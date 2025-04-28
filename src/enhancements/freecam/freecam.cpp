@@ -82,7 +82,7 @@ void freecam(Camera* camera, Player* player, s8 index) {
     }
 
     // Freecam mode is enabled
-    if (enabled) {
+    if (enabled && (player == gPlayerOne)) {
         freecam_loop(camera, player, index);
     } else {
         func_8001E45C(camera, player, index);
