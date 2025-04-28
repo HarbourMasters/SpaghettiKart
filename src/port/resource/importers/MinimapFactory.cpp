@@ -15,20 +15,38 @@ ResourceFactoryBinaryMinimapV0::ReadResource(std::shared_ptr<Ship::File> file,
     auto texture = std::make_shared<MK64::Minimap>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    texture->Texture.Size = file->Buffer->size();
-    texture->Texture.Width = 0;
-    texture->Texture.Height = 0;
-    texture->Texture.Channels = 4; // Always force 4 channels (RGBA)
-    texture->Texture.Data = stbi_load_from_memory(reinterpret_cast<const stbi_uc*>(file->Buffer->data()), texture->Texture.Size,
-                                               &texture->Texture.Width, &texture->Texture.Height, nullptr, 4);
+    int width = 0, height = 0;
+    stbi_uc* data = stbi_load_from_memory(reinterpret_cast<const stbi_uc*>(file->Buffer->data()), file->Buffer->size(), &width, &height, nullptr, 1);
 
-    if (nullptr == texture->Texture.Data) {
+    if (data == nullptr) {
         SPDLOG_ERROR("MinimapFactory.cpp: Error loading minimap texture {}", stbi_failure_reason());
         return nullptr;
     }
 
+    // Calculate new size for 4bpp (two pixels per byte)
+    size_t pixelCount = width * height;
+    size_t packedSize = (pixelCount + 1) / 2; // Round up if odd
 
-   // stbi_image_free(imageData);
+    uint8_t* packedData = new uint8_t[packedSize];
+
+    for (size_t i = 0; i < pixelCount; i += 2) {
+        uint8_t first = data[i] >> 4; // 8-bit -> 4-bit
+        uint8_t second = 0;
+        if (i + 1 < pixelCount) {
+            second = data[i + 1] >> 4;
+        }
+        packedData[i / 2] = (first << 4) | second;
+    }
+
+    // Done with original data
+    stbi_image_free(data);
+
+    // Store packed data
+    texture->Texture.Width = width;
+    texture->Texture.Height = height;
+    texture->Texture.Channels = 1;
+    texture->Texture.Size = packedSize;
+    texture->Texture.Data = packedData;
 
     return texture;
 }
