@@ -231,7 +231,7 @@ namespace Editor {
             for (const std::string& dir : dirs) {
                 std::string name = dir.substr(dir.find_last_of('/') + 1);
                 std::string sceneFile = dir + "/scene.json";
-                std::string minimapFile = dir + "/minimap";
+                std::string minimapFile = dir + "/minimap.png";
                 if (manager->HasFile(sceneFile)) {
                     auto archive = manager->GetArchiveFromFile(sceneFile);
                     
