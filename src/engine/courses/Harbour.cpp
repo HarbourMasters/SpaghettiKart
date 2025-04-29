@@ -756,7 +756,7 @@ void Harbour::BeginPlay() {
     // }
     //gWorldInstance.AddActor(new AShip(FVector(-1694, -111, 1451), AShip::Skin::GHOSTSHIP));
     //gWorldInstance.AddActor(new AShip(FVector(2811, -83, 966), AShip::Skin::SHIP2));                                                                                                                                                
-    //gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(16, -106, -34)));
+    //gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(16, -136, -34)));
 }
 
 void Harbour::WhatDoesThisDo(Player* player, int8_t playerId) {

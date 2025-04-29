@@ -83,7 +83,7 @@ namespace Editor {
             if (data.is_null() || data.empty()) {
                 return;
             }
-            
+
             // Load the Props (deserialize it)
             if (data.contains("Props")) {
                 auto& propsJson = data["Props"];

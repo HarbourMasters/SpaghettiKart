@@ -224,6 +224,7 @@ void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
 
 void Course::TestPath() {
     // DEBUG ONLY TO VISUALIZE PATH
+    return;
     s16 x;
     s16 y;
     s16 z;

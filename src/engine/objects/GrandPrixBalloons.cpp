@@ -19,18 +19,18 @@ size_t OGrandPrixBalloons::_count = 0;
 OGrandPrixBalloons::OGrandPrixBalloons(const FVector& pos) {
     Pos = pos;
 
-//    D_80165730 = 1;
+    _active = 1;
     if (gPlayerCount == 1) {
-        D_80165738 = 0x64;
-        D_80165740 = 0x3C;
-        D_80165748 = 0x1E;
+        _numBalloons = 0x64;
+        _numBalloons2 = 0x3C;
+        _numBalloons3 = 0x1E;
     } else {
-        D_80165738 = 0x32;
-        D_80165740 = 0x1E;
-        D_80165748 = 0xA;
+        _numBalloons = 0x32;
+        _numBalloons2 = 0x1E;
+        _numBalloons3 = 0xA;
     }
 
-    for (size_t i = 0; i < D_80165738; i++) {
+    for (size_t i = 0; i < _numBalloons; i++) {
         find_unused_obj_index(&gObjectParticle3[i]);
         init_object(gObjectParticle3[i], 0);
     }
@@ -42,11 +42,11 @@ void OGrandPrixBalloons::Tick() {
     s32 someCount;
     Object* object;
 
-    if (!D_80165730) {
+    if (!_active) {
         return;
     }
     someCount = 0;
-    for (someIndex = 0; someIndex < D_80165738; someIndex++) {
+    for (someIndex = 0; someIndex < _numBalloons; someIndex++) {
         objectIndex = gObjectParticle3[someIndex];
         if (objectIndex != DELETED_OBJECT_ID) {
             object = &gObjectList[objectIndex];
@@ -55,20 +55,21 @@ void OGrandPrixBalloons::Tick() {
                 OGrandPrixBalloons::func_80074D94(objectIndex);
                 if (object->state == 0) {
                     delete_object_wrapper(&gObjectParticle3[someIndex]);
+                    this->Destroy();
                 }
                 someCount += 1;
             }
         }
     }
     if (someCount == 0) {
-        D_80165730 = 0;
+        _active = 0;
     }
 }
 
 void OGrandPrixBalloons::Draw(s32 cameraId) {
     s32 var_s1;
     s32 objectIndex;
-    if (!D_80165730) {
+    if (!_active) {
         return;
     }
 
@@ -84,14 +85,14 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
     rsp_load_texture((uint8_t*)gTextureBalloon1, 64, 32);
-    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
+    for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
             OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 0);
         }
     }
     rsp_load_texture((uint8_t*)gTextureBalloon2, 64, 32);
-    for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
+    for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
             OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 4);
@@ -129,7 +130,7 @@ void OGrandPrixBalloons::func_80074924(s32 objectIndex) {
 
     if (GetCourse() == GetMarioRaceway()) {
         sp2C = random_int(0x00C8U);
-        sp28 = random_int(D_80165748);
+        sp28 = random_int(_numBalloons3);
         sp24 = random_int(0x0096U);
         sp20 = random_int(0x2000U);
         object->origin_pos[0] = (f32) ((((f64) Pos.x + 100.0) - (f64) sp2C) * (f64) xOrientation);
@@ -137,7 +138,7 @@ void OGrandPrixBalloons::func_80074924(s32 objectIndex) {
         object->origin_pos[2] = (f32) (((f64) Pos.z + 200.0) - (f64) sp24);
     } else if (GetCourse() == GetRoyalRaceway()) {
         sp2C = random_int(0x0168U);
-        sp28 = random_int(D_80165748);
+        sp28 = random_int(_numBalloons3);
         sp24 = random_int(0x00B4U);
         sp20 = random_int(0x2000U);
         object->origin_pos[0] = (f32) ((((f64) Pos.x + 180.0) - (f64) sp2C) * (f64) xOrientation);
@@ -145,10 +146,18 @@ void OGrandPrixBalloons::func_80074924(s32 objectIndex) {
         object->origin_pos[2] = (f32) (((f64) Pos.z + 200.0) - (f64) sp24);
     } else if (GetCourse() == GetLuigiRaceway()) {
         sp2C = random_int(0x012CU);
-        sp28 = random_int(D_80165748);
+        sp28 = random_int(_numBalloons3);
         sp24 = random_int(0x0096U);
         sp20 = random_int(0x2000U);
         object->origin_pos[0] = (f32) ((((f64) Pos.x + 150.0) - (f64) sp2C) * (f64) xOrientation);
+        object->origin_pos[1] = (f32) (Pos.y + sp28);
+        object->origin_pos[2] = (f32) (((f64) Pos.z + 200.0) - (f64) sp24);
+    } else { // any track
+        sp2C = random_int(0x00C8U);
+        sp28 = random_int(_numBalloons3);
+        sp24 = random_int(0x0096U);
+        sp20 = random_int(0x2000U);
+        object->origin_pos[0] = (f32) ((((f64) Pos.x + 100.0) - (f64) sp2C) * (f64) xOrientation);
         object->origin_pos[1] = (f32) (Pos.y + sp28);
         object->origin_pos[2] = (f32) (((f64) Pos.z + 200.0) - (f64) sp24);
     }
@@ -178,7 +187,7 @@ void OGrandPrixBalloons::func_80074924(s32 objectIndex) {
 
 void OGrandPrixBalloons::func_80074D94(s32 objectIndex) {
     if (gObjectList[objectIndex].unk_0AE == 1) {
-        if ((D_80165740 <= gObjectList[objectIndex].offset[1]) &&
+        if ((_numBalloons2 <= gObjectList[objectIndex].offset[1]) &&
             (s16_step_down_towards(&gObjectList[objectIndex].primAlpha, 0, 8) != 0)) {
             func_80086F60(objectIndex);
         }
