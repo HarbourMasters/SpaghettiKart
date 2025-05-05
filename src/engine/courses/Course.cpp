@@ -32,7 +32,7 @@ Course::Course() {
     Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
-    Props.Id = "";
+    Id = "";
     Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);

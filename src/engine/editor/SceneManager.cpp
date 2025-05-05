@@ -87,7 +87,12 @@ namespace Editor {
             // Load the Props (deserialize it)
             if (data.contains("Props")) {
                 auto& propsJson = data["Props"];
-                course->Props.from_json(propsJson);  // Assuming you have a `from_json` function
+                try {
+                    course->Props.from_json(propsJson);
+                } catch(const std::exception& e) {
+                    std::cerr << "SceneManager::LoadLevel() Error parsing track properties: " << e.what() << std::endl;
+                    std::cerr << "  Is your scene.json file out of date?" << std::endl;
+                }
             } else {
                 std::cerr << "Props data not found in the JSON file!" << std::endl;
             }

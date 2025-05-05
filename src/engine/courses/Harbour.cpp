@@ -528,7 +528,7 @@ Harbour::Harbour() {
     Props.Minimap.PlayerY = 28;
     Props.Minimap.PlayerScaleFactor = 0.022f;
 
-    Props.Id = "mk:harbour";
+    Id = "mk:harbour";
     Props.SetText(Props.Name, "Harbour", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "harbour", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "99m", sizeof(Props.CourseLength));

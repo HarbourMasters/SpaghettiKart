@@ -73,7 +73,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
 
-    Props.Id = "mk:koopa_beach";
+    Id = "mk:koopa_beach";
     Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "beach", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "691m", sizeof(Props.CourseLength));

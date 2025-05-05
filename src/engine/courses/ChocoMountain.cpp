@@ -75,7 +75,7 @@ ChocoMountain::ChocoMountain() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = -16.0;
 
-    Props.Id = "mk:choco_mountain";
+    Id = "mk:choco_mountain";
     Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "mountain", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "687m", sizeof(Props.CourseLength));

@@ -1,7 +1,7 @@
 #include "Cup.h"
 #include "courses/Course.h"
 
-Cup::Cup(const char* id, const char* name, std::vector<Course*> courses) {
+Cup::Cup(std::string id, const char* name, std::vector<Course*> courses) {
     Id = id;
     Name = name;
     Courses = courses;

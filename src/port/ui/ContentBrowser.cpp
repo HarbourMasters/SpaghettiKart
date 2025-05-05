@@ -248,7 +248,7 @@ namespace Editor {
                     if (manager->HasFile(file)) {
 
                         Course* course = new Course();
-                        course->Props.Id = (std::string("mods:") + name).c_str();
+                        course->Id = (std::string("mods:") + name).c_str();
                         course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
                         course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
 

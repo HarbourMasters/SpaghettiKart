@@ -81,7 +81,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
 
-    Props.Id = "mk:banshee_boardwalk";
+    Id = "mk:banshee_boardwalk";
 
     Props.SetText(Props.Name, "banshee boardwalk", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "ghost", sizeof(Props.DebugName));

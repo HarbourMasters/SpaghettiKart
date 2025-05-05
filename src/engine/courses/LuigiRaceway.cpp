@@ -100,7 +100,7 @@ LuigiRaceway::LuigiRaceway() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
 
-    Props.Id = "mk:luigi_raceway";
+    Id = "mk:luigi_raceway";
     Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "l circuit", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "717m", sizeof(Props.CourseLength));

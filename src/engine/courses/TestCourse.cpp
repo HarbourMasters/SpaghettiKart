@@ -73,7 +73,7 @@ TestCourse::TestCourse() {
     Props.Minimap.FinishlineY = 0;
     Props.Minimap.Colour = {255, 255, 255};
 
-    Props.Id = "mk:test_course";
+    Id = "mk:test_course";
 
     Props.SetText(Props.Name, "Test Course", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));

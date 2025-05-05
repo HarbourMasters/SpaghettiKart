@@ -83,7 +83,7 @@ BowsersCastle::BowsersCastle() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
 
-    Props.Id = "mk:bowsers_castle";
+    Id = "mk:bowsers_castle";
 
     Props.SetText(Props.Name, "bowser's castle", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "castle", sizeof(Props.DebugName));

@@ -62,7 +62,6 @@ typedef struct MinimapProps {
 } MinimapProps;
 
 typedef struct Properties {
-    const char* Id;
     char Name[128];
     char DebugName[128];
     char CourseLength[128];
@@ -245,6 +244,7 @@ class World; // <-- Forward declare
 class Course {
 
 public:
+    std::string Id;
     Properties Props;
 
     // This allows multiple water levels in a map.

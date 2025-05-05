@@ -87,7 +87,7 @@ MarioRaceway::MarioRaceway() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = -2.0;
 
-    Props.Id = "mk:mario_raceway";
+    Id = "mk:mario_raceway";
     Props.SetText(Props.Name, "mario raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "m circuit", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "567m", sizeof(Props.CourseLength));
