@@ -633,8 +633,8 @@ add_custom_target(
     GenerateO2R
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} pack port spaghetti.o2r o2r
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
+    COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
 )
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
