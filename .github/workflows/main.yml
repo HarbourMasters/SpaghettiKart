@@ -32,15 +32,15 @@ jobs:
           ${{ runner.os }}-o2r-build-
         path: |
           torch/cmake-build-release
-    - name: Generate spaghetti.o2r
+    - name: Generate ship.o2r
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
         make -C torch type=release -j3
-        torch/cmake-build-release/torch pack port spaghetti.o2r o2r
+        torch/cmake-build-release/torch pack assets ship.o2r o2r
     - uses: actions/upload-artifact@v4
       with:
-        name: spaghetti.o2r
-        path: spaghetti.o2r
+        name: ship.o2r
+        path: ship.o2r
         retention-days: 1
 
   build-windows:
@@ -54,16 +54,16 @@ jobs:
         run: |
           cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
           cmake --build ./build/x64 --config Release --parallel 10
-      - name: Download spaghetti.o2r
+      - name: Download ship.o2r
         uses: actions/download-artifact@v4
         with:
-          name: spaghetti.o2r
+          name: ship.o2r
           path: ./build/x64/Release
       - name: Create Package
         run: |
           mkdir spaghetti-release
           mv build/x64/Release/Spaghetti.exe spaghetti-release/
-          mv build/x64/Release/spaghetti.o2r spaghetti-release/
+          mv build/x64/Release/ship.o2r spaghetti-release/
           mv config.yml spaghetti-release/
           mv assets spaghetti-release/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-release/gamecontrollerdb.txt"
