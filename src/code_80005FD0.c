@@ -36,6 +36,7 @@
 #include <assets/kalimari_desert_data.h>
 #include <assets/frappe_snowland_data.h>
 #include <assets/dks_jungle_parkway_data.h>
+#include <stdio.h>
 
 #include "port/Game.h"
 #include "engine/courses/Course.h"

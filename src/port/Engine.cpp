@@ -48,7 +48,7 @@ GameEngine* GameEngine::Instance;
 
 GameEngine::GameEngine() {
     const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("spaghetti.o2r");
-    const std::string assets_path = Ship::Context::GetPathRelativeToAppDirectory("ship.o2r");
+    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("ship.o2r");
 
 #ifdef _WIN32
     AllocConsole();

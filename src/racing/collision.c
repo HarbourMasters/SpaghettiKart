@@ -11,6 +11,7 @@
 #include "code_800029B0.h"
 #include <defines.h>
 #include "port/Game.h"
+#include <stdio.h>
 
 #pragma intrinsic(sqrtf)
 
