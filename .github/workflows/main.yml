@@ -86,16 +86,16 @@ jobs:
         run: |
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
           cmake --build build-cmake --config Release -j3
-      - name: Download spaghetti.o2r
+      - name: Download ship.o2r
         uses: actions/download-artifact@v4
         with:
-          name: spaghetti.o2r
+          name: ship.o2r
           path: ./build-cmake
       - name: Create Package
         run: |
           mkdir spaghetti-release
           mv build-cmake/Spaghetti spaghetti-release/
-          mv build-cmake/spaghetti.o2r spaghetti-release/
+          mv build-cmake/ship.o2r spaghetti-release/
           mv config.yml spaghetti-release/
           mv assets spaghetti-release/
           wget -O spaghetti-release/gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
@@ -171,10 +171,10 @@ jobs:
           make
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
-      - name: Download spaghetti.o2r
+      - name: Download ship.o2r
         uses: actions/download-artifact@v4
         with:
-          name: spaghetti.o2r
+          name: ship.o2r
           path: ./build-cmake
       - name: Build
         run: |
