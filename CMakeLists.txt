@@ -91,7 +91,7 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING ON)
+set(USE_NETWORKING OFF)
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # TODO: Sorry i broke this
