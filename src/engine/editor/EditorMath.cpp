@@ -59,13 +59,13 @@ FVector ScreenRayTrace() {
     guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
-    if (Inverse((MtxF*)&perspMtx, (MtxF*)&inversePerspMtx) != 2) {
+    if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx) != 2) {
         FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*)&rayClip.x);
 
         Mat4 lookAtMtx;
         guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
         Mat4 inverseViewMtx;
-        if (Inverse((MtxF*)&lookAtMtx, (MtxF*)&inverseViewMtx[0][0]) != 2) {
+        if (InverseMatrix((float*)&lookAtMtx, (float*)&inverseViewMtx[0][0]) != 2) {
             rayEye.w = 0;
             FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*)&rayEye.x);
 
@@ -113,99 +113,72 @@ FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]) {
     return result;
 }
 
-s32 Inverse(MtxF* src, MtxF* dest) {
-    MtxF mfCopy;
-    s32 i;
-    s32 pad;
-    f32 temp2;
-    f32 temp1;
-    s32 thisCol;
-    s32 thisRow;
+// https://stackoverflow.com/questions/1148309/inverting-a-4x4-matrix
+static bool InverseMatrix(const float m[16], float invOut[16]) {
+    float inv[16], det;
+    int i;
 
-    Copy(src, &mfCopy);
-    Clear(dest);
-    for (thisCol = 0; thisCol < 4; thisCol++) {
-        thisRow = thisCol;
-        while ((thisRow < 4) && (fabsf(mfCopy.mf[thisCol][thisRow]) < 0.0005f)) {
-            thisRow++;
-        }
-        if (thisRow == 4) {
-            // Reaching row = 4 means the column is either all 0 or a duplicate column.
-            // Therefore src is a singular matrix (0 determinant).
+    inv[0] = m[5] * m[10] * m[15] - m[5] * m[11] * m[14] - m[9] * m[6] * m[15] + m[9] * m[7] * m[14] +
+             m[13] * m[6] * m[11] - m[13] * m[7] * m[10];
 
-            return 2;
-        }
+    inv[4] = -m[4] * m[10] * m[15] + m[4] * m[11] * m[14] + m[8] * m[6] * m[15] - m[8] * m[7] * m[14] -
+             m[12] * m[6] * m[11] + m[12] * m[7] * m[10];
 
-        if (thisRow != thisCol) {
-            // Diagonal element mf[thisCol][thisCol] is zero.
-            // Swap the rows thisCol and thisRow.
-            for (i = 0; i < 4; i++) {
-                temp1 = mfCopy.mf[i][thisRow];
-                mfCopy.mf[i][thisRow] = mfCopy.mf[i][thisCol];
-                mfCopy.mf[i][thisCol] = temp1;
+    inv[8] = m[4] * m[9] * m[15] - m[4] * m[11] * m[13] - m[8] * m[5] * m[15] + m[8] * m[7] * m[13] +
+             m[12] * m[5] * m[11] - m[12] * m[7] * m[9];
 
-                temp2 = dest->mf[i][thisRow];
-                dest->mf[i][thisRow] = dest->mf[i][thisCol];
-                dest->mf[i][thisCol] = temp2;
-            }
-        }
+    inv[12] = -m[4] * m[9] * m[14] + m[4] * m[10] * m[13] + m[8] * m[5] * m[14] - m[8] * m[6] * m[13] -
+              m[12] * m[5] * m[10] + m[12] * m[6] * m[9];
 
-        // Scale this whole row such that the diagonal element is 1.
-        temp1 = mfCopy.mf[thisCol][thisCol];
-        for (i = 0; i < 4; i++) {
-            mfCopy.mf[i][thisCol] /= temp1;
-            dest->mf[i][thisCol] /= temp1;
-        }
+    inv[1] = -m[1] * m[10] * m[15] + m[1] * m[11] * m[14] + m[9] * m[2] * m[15] - m[9] * m[3] * m[14] -
+             m[13] * m[2] * m[11] + m[13] * m[3] * m[10];
 
-        for (thisRow = 0; thisRow < 4; thisRow++) {
-            if (thisRow != thisCol) {
-                temp1 = mfCopy.mf[thisCol][thisRow];
-                for (i = 0; i < 4; i++) {
-                    mfCopy.mf[i][thisRow] -= mfCopy.mf[i][thisCol] * temp1;
-                    dest->mf[i][thisRow] -= dest->mf[i][thisCol] * temp1;
-                }
-            }
-        }
+    inv[5] = m[0] * m[10] * m[15] - m[0] * m[11] * m[14] - m[8] * m[2] * m[15] + m[8] * m[3] * m[14] +
+             m[12] * m[2] * m[11] - m[12] * m[3] * m[10];
+
+    inv[9] = -m[0] * m[9] * m[15] + m[0] * m[11] * m[13] + m[8] * m[1] * m[15] - m[8] * m[3] * m[13] -
+             m[12] * m[1] * m[11] + m[12] * m[3] * m[9];
+
+    inv[13] = m[0] * m[9] * m[14] - m[0] * m[10] * m[13] - m[8] * m[1] * m[14] + m[8] * m[2] * m[13] +
+              m[12] * m[1] * m[10] - m[12] * m[2] * m[9];
+
+    inv[2] = m[1] * m[6] * m[15] - m[1] * m[7] * m[14] - m[5] * m[2] * m[15] + m[5] * m[3] * m[14] +
+             m[13] * m[2] * m[7] - m[13] * m[3] * m[6];
+
+    inv[6] = -m[0] * m[6] * m[15] + m[0] * m[7] * m[14] + m[4] * m[2] * m[15] - m[4] * m[3] * m[14] -
+             m[12] * m[2] * m[7] + m[12] * m[3] * m[6];
+
+    inv[10] = m[0] * m[5] * m[15] - m[0] * m[7] * m[13] - m[4] * m[1] * m[15] + m[4] * m[3] * m[13] +
+              m[12] * m[1] * m[7] - m[12] * m[3] * m[5];
+
+    inv[14] = -m[0] * m[5] * m[14] + m[0] * m[6] * m[13] + m[4] * m[1] * m[14] - m[4] * m[2] * m[13] -
+              m[12] * m[1] * m[6] + m[12] * m[2] * m[5];
+
+    inv[3] = -m[1] * m[6] * m[11] + m[1] * m[7] * m[10] + m[5] * m[2] * m[11] - m[5] * m[3] * m[10] -
+             m[9] * m[2] * m[7] + m[9] * m[3] * m[6];
+
+    inv[7] = m[0] * m[6] * m[11] - m[0] * m[7] * m[10] - m[4] * m[2] * m[11] + m[4] * m[3] * m[10] +
+             m[8] * m[2] * m[7] - m[8] * m[3] * m[6];
+
+    inv[11] = -m[0] * m[5] * m[11] + m[0] * m[7] * m[9] + m[4] * m[1] * m[11] - m[4] * m[3] * m[9] -
+              m[8] * m[1] * m[7] + m[8] * m[3] * m[5];
+
+    inv[15] = m[0] * m[5] * m[10] - m[0] * m[6] * m[9] - m[4] * m[1] * m[10] + m[4] * m[2] * m[9] + m[8] * m[1] * m[6] -
+              m[8] * m[2] * m[5];
+
+    det = m[0] * inv[0] + m[1] * inv[4] + m[2] * inv[8] + m[3] * inv[12];
+
+    if (det == 0) {
+        return false;
     }
-    return 0;
-}
 
-void Copy(MtxF* src, MtxF* dest) {
-    dest->xx = src->xx;
-    dest->yx = src->yx;
-    dest->zx = src->zx;
-    dest->wx = src->wx;
-    dest->xy = src->xy;
-    dest->yy = src->yy;
-    dest->zy = src->zy;
-    dest->wy = src->wy;
-    dest->xz = src->xz;
-    dest->yz = src->yz;
-    dest->zz = src->zz;
-    dest->wz = src->wz;
-    dest->xw = src->xw;
-    dest->yw = src->yw;
-    dest->zw = src->zw;
-    dest->ww = src->ww;
-}
+    det = 1.0 / det;
 
-void Clear(MtxF* mf) {
-    mf->xx = 1.0f;
-    mf->yy = 1.0f;
-    mf->zz = 1.0f;
-    mf->ww = 1.0f;
-    mf->yx = 0.0f;
-    mf->zx = 0.0f;
-    mf->wx = 0.0f;
-    mf->xy = 0.0f;
-    mf->zy = 0.0f;
-    mf->wy = 0.0f;
-    mf->xz = 0.0f;
-    mf->yz = 0.0f;
-    mf->wz = 0.0f;
-    mf->xw = 0.0f;
-    mf->yw = 0.0f;
-    mf->zw = 0.0f;
+    for (i = 0; i < 16; i++) {
+        invOut[i] = inv[i] * det;
+    }
+
+    return true;
 }
 
 FVector TransformVecByMatrix(const FVector& vec, const float mtx[4][4]) {
@@ -227,7 +200,7 @@ FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]) {
 Ray RayToLocalSpace(MtxF mtx, const Ray& ray) {
     MtxF inverse;
 
-    if (Inverse(&mtx, &inverse) != 2) {
+    if (InverseMatrix((float*)&mtx, (float*)&inverse) != 2) {
         FVector localRayOrigin = TransformVecByMatrix(ray.Origin, (float(*)[4])&inverse);
         FVector localRayDir = TransformVecDirection(ray.Direction, (float(*)[4])&inverse);
         return Ray{localRayOrigin, localRayDir.Normalize()};

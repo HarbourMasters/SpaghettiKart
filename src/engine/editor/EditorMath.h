@@ -35,7 +35,7 @@ bool IsInGameScreen();
 FVector ScreenRayTrace();
 bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t);
 FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]);
-s32 Inverse(MtxF* src, MtxF* dest);
+static bool InverseMatrix(const float m[16], float invOut[16]);
 void Copy(MtxF* src, MtxF* dest);
 void Clear(MtxF* mf);
 
