@@ -62,10 +62,10 @@ jobs:
       - name: Create Package
         run: |
           mkdir spaghetti-release
-          mv build/x64/Release/Spaghetti.exe spaghetti-release/
+          mv build/x64/Release/Spaghettify.exe spaghetti-release/
           mv build/x64/Release/ship.o2r spaghetti-release/
           mv config.yml spaghetti-release/
-          mv assets spaghetti-release/
+          mv yamls spaghetti-release/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-release/gamecontrollerdb.txt"
       - name: Upload build
         uses: actions/upload-artifact@v4
@@ -94,10 +94,10 @@ jobs:
       - name: Create Package
         run: |
           mkdir spaghetti-release
-          mv build-cmake/Spaghetti spaghetti-release/
+          mv build-cmake/Spaghettify spaghetti-release/
           mv build-cmake/ship.o2r spaghetti-release/
           mv config.yml spaghetti-release/
-          mv assets spaghetti-release/
+          mv yamls spaghetti-release/
           wget -O spaghetti-release/gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
@@ -187,9 +187,9 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: Spaghetti-linux
+          name: Spaghettify-linux
           path: |
             spaghetti.appimage
             config.yml
-            assets
+            yamls
             gamecontrollerdb.txt
