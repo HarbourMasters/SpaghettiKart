@@ -186,7 +186,7 @@ float4 PSMain(PSInput input, float4 screenSpace : SV_Position) : SV_TARGET {
             float2 tc@{i} = input.uv@{i};
             @{s = o_clamp[i][0]}
             @{t = o_clamp[i][1]}
-            @if(s && t)
+            @if(s || t)
                 int2 texSize@{i};
                 g_texture@{i}.GetDimensions(texSize@{i}.x, texSize@{i}.y);
                 @if(s && t)
@@ -224,7 +224,7 @@ float4 PSMain(PSInput input, float4 screenSpace : SV_Position) : SV_TARGET {
                         @else
                             float4 blendVal@{i} = float4(0, 0, 0, 0);
                         @end
-                        texval@{i} = lerp(texVal@{i}, blendVal@{i}, g_textureMask@{i}.Sample(g_sampler@{i}, tc@{i}).a);
+                        texVal@{i} = lerp(texVal@{i}, blendVal@{i}, g_textureMask@{i}.Sample(g_sampler@{i}, tc@{i}).a);
                     @end
                 }
             @else
