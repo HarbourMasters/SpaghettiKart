@@ -23,24 +23,12 @@ extern "C" {
 #include "camera.h"
 }
 
-std::vector<Mtx> EditorMatrix;
-
-static std::weak_ptr<Fast::Interpreter> mInterpreter;
-
-std::shared_ptr<Fast::Interpreter> GetInterpreter() {
-    auto intP = mInterpreter.lock();
-    if (!intP) {
-        assert(false && "Lost reference to Fast::Interpreter");
-    }
-    return intP;
-}
-
 bool IsInGameScreen() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMousePos();
 
     // Define viewport boundaries
-    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
     int left = gfx_current_game_window_viewport.width;
     int right = left + OTRGetGameRenderWidth();
     int top = gfx_current_game_window_viewport.height;
@@ -55,7 +43,7 @@ FVector ScreenRayTrace() {
     Camera* camera = &cameras[0];
 
     Ship::Coords mouse = wnd->GetMousePos();
-    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
     mouse.x -= gfx_current_game_window_viewport.width;
     mouse.y -= gfx_current_game_window_viewport.height;
     // Get screen dimensions

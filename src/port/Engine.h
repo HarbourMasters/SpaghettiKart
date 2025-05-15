@@ -1,6 +1,5 @@
 #pragma once
 
-
 #define LOAD_ASSET(path) \
 (path == NULL ? NULL \
   : (GameEngine_OTRSigCheck((const char*) path) ? ResourceGetDataByName((const char*) path) : path))
@@ -46,6 +45,9 @@ class GameEngine {
     ImFont* fontMono;
     ImFont* fontMonoLarger;
     ImFont* fontMonoLargest;
+
+    static std::weak_ptr<Fast::Interpreter> mInterpreter;
+    static std::shared_ptr<Fast::Interpreter> GetInterpreter();
 
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
