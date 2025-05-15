@@ -23,6 +23,8 @@ extern "C" {
 #include "camera.h"
 }
 
+std::vector<Mtx> EditorMatrix;
+
 bool IsInGameScreen() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMousePos();
