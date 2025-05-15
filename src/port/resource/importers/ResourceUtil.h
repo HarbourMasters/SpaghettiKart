@@ -1,6 +1,7 @@
 #pragma once
 
 #include "resourcebridge.h"
+#include "libultraship/src/resource/ResourceManager.h"
 #include "Context.h"
 
 namespace SM64 {

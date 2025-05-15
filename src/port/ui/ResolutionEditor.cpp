@@ -3,7 +3,8 @@
 #include <libultraship/libultraship.h>
 
 #include "UIWidgets.h"
-#include <graphic/Fast3D/gfx_pc.h>
+#include <graphic/Fast3D/Fast3dWindow.h>
+#include <graphic/Fast3D/interpreter.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 
@@ -95,12 +96,14 @@ void RegisterResolutionWidgets() {
 
     // Resolution visualiser
     mPortMenu->AddWidget(path, "Viewport dimensions: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
-        info.name = fmt::format("Viewport dimensions: {} x {}", gfx_current_game_window_viewport.width,
-                                gfx_current_game_window_viewport.height);
+        auto captured_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
+        info.name = fmt::format("Viewport dimensions: {} x {}", captured_window_viewport.width,
+                                captured_window_viewport.height);
     });
     mPortMenu->AddWidget(path, "Internal resolution: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
+        auto captured_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
         info.name =
-            fmt::format("Internal resolution: {} x {}", gfx_current_dimensions.width, gfx_current_dimensions.height);
+            fmt::format("Internal resolution: {} x {}", captured_current_dimensions.width, captured_current_dimensions.height);
     });
 
     // UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
@@ -171,6 +174,8 @@ void RegisterResolutionWidgets() {
             }
         } else if (showHorizontalResField) { // Show calculated aspect ratio
             if (item_aspectRatio) {
+                auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
+                auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
                 ImGui::Dummy({ 0, 2 });
                 const float resolvedAspectRatio = (float)gfx_current_dimensions.width / gfx_current_dimensions.height;
                 ImGui::Text("Aspect ratio: %.2f:1", resolvedAspectRatio);
@@ -497,13 +502,15 @@ void UpdateResolutionVars() {
 
     short integerScale_maximumBounds = 1; // can change when window is resized
     // This is mostly just for UX purposes, as Fit Automatically logic is part of LUS.
+    auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
+    auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
     if (((float)gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
         ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
         // Scale to window height
-        integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_dimensions.height;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_game_window_viewport.height;
     } else {
         // Scale to window width
-        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_dimensions.width;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.width;
     }
     // Lower-clamping maximum bounds value to 1 is no-longer necessary as that's accounted for in LUS.
     // Letting it go below 1 in this Editor will even allow for checking if screen bounds are being exceeded.

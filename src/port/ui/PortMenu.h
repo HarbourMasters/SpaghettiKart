@@ -4,7 +4,8 @@
 #include <libultraship/libultraship.h>
 #include "UIWidgets.h"
 #include "Menu.h"
-#include "graphic/Fast3D/gfx_rendering_api.h"
+#include "Fast3D/backends/gfx_rendering_api.h"
+
 
 namespace GameUI {
 
@@ -26,9 +27,9 @@ static const std::unordered_map<int32_t, const char*> menuThemeOptions = {
 };
 
 static const std::unordered_map<int32_t, const char*> textureFilteringMap = {
-    { FILTER_THREE_POINT, "Three-Point" },
-    { FILTER_LINEAR, "Linear" },
-    { FILTER_NONE, "None" },
+    { Fast::FilteringMode::FILTER_THREE_POINT, "Three-Point" },
+    { Fast::FilteringMode::FILTER_LINEAR, "Linear" },
+    { Fast::FilteringMode::FILTER_NONE, "None" },
 };
 
 static const std::unordered_map<int32_t, const char*> motionBlurOptions = {

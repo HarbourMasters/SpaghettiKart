@@ -1,6 +1,5 @@
 #pragma once
 
-
 #define LOAD_ASSET(path) \
 (path == NULL ? NULL \
   : (GameEngine_OTRSigCheck((const char*) path) ? ResourceGetDataByName((const char*) path) : path))
@@ -9,7 +8,8 @@
   #ifdef __cplusplus
   #include <vector>
   #include <SDL2/SDL.h>
-#include <Fast3D/gfx_pc.h>
+#include <graphic/Fast3D/Fast3dWindow.h>
+#include <graphic/Fast3D/interpreter.h>
 #include "libultraship/src/Context.h"
 
 #ifndef IDYES
@@ -45,6 +45,9 @@ class GameEngine {
     ImFont* fontMono;
     ImFont* fontMonoLarger;
     ImFont* fontMonoLargest;
+
+    static std::weak_ptr<Fast::Interpreter> mInterpreter;
+    static std::shared_ptr<Fast::Interpreter> GetInterpreter();
 
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
