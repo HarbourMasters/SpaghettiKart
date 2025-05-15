@@ -105,15 +105,15 @@ void RegisterResolutionWidgets() {
 #endif
 
     // Resolution visualiser
-    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
-    auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
     mPortMenu->AddWidget(path, "Viewport dimensions: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
-        info.name = fmt::format("Viewport dimensions: {} x {}", gfx_current_game_window_viewport.width,
-                                gfx_current_game_window_viewport.height);
+        auto captured_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+        info.name = fmt::format("Viewport dimensions: {} x {}", captured_window_viewport.width,
+                                captured_window_viewport.height);
     });
     mPortMenu->AddWidget(path, "Internal resolution: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
+        auto captured_current_dimensions = GetInterpreter().get()->mCurDimensions;
         info.name =
-            fmt::format("Internal resolution: {} x {}", gfx_current_dimensions.width, gfx_current_dimensions.height);
+            fmt::format("Internal resolution: {} x {}", captured_current_dimensions.width, captured_current_dimensions.height);
     });
 
     // UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
@@ -184,6 +184,8 @@ void RegisterResolutionWidgets() {
             }
         } else if (showHorizontalResField) { // Show calculated aspect ratio
             if (item_aspectRatio) {
+                auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+                auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
                 ImGui::Dummy({ 0, 2 });
                 const float resolvedAspectRatio = (float)gfx_current_dimensions.width / gfx_current_dimensions.height;
                 ImGui::Text("Aspect ratio: %.2f:1", resolvedAspectRatio);
