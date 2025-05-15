@@ -403,7 +403,7 @@ if(USE_NETWORKING)
         target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net)
     else()
         find_package(SDL2_net REQUIRED)
-        target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net)
+        target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net-static)
     endif()
 endif()
 
