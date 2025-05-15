@@ -3,7 +3,8 @@
 #include <libultraship/libultraship.h>
 
 #include "UIWidgets.h"
-#include <graphic/Fast3D/gfx_pc.h>
+#include <graphic/Fast3D/Fast3dWindow.h>
+#include <graphic/Fast3D/interpreter.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 
@@ -85,6 +86,16 @@ static bool disabled_pixelCount;
 
 using namespace UIWidgets;
 
+static std::weak_ptr<Fast::Interpreter> mInterpreter;
+
+std::shared_ptr<Fast::Interpreter> GetInterpreter() {
+    auto intP = mInterpreter.lock();
+    if (!intP) {
+        assert(false && "Lost reference to Fast::Interpreter");
+    }
+    return intP;
+}
+
 void RegisterResolutionWidgets() {
     WidgetPath path = { "Settings", "Graphics", SECTION_COLUMN_2 };
 #ifdef __APPLE__
@@ -94,6 +105,8 @@ void RegisterResolutionWidgets() {
 #endif
 
     // Resolution visualiser
+    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
     mPortMenu->AddWidget(path, "Viewport dimensions: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
         info.name = fmt::format("Viewport dimensions: {} x {}", gfx_current_game_window_viewport.width,
                                 gfx_current_game_window_viewport.height);
@@ -497,13 +510,15 @@ void UpdateResolutionVars() {
 
     short integerScale_maximumBounds = 1; // can change when window is resized
     // This is mostly just for UX purposes, as Fit Automatically logic is part of LUS.
+    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    auto gfx_current_dimensions = GetInterpreter().get()->mCurDimensions;
     if (((float)gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
         ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
         // Scale to window height
-        integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_dimensions.height;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_game_window_viewport.height;
     } else {
         // Scale to window width
-        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_dimensions.width;
+        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.width;
     }
     // Lower-clamping maximum bounds value to 1 is no-longer necessary as that's accounted for in LUS.
     // Letting it go below 1 in this Editor will even allow for checking if screen bounds are being exceeded.

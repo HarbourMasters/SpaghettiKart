@@ -9,7 +9,8 @@
   #ifdef __cplusplus
   #include <vector>
   #include <SDL2/SDL.h>
-#include <Fast3D/gfx_pc.h>
+#include <graphic/Fast3D/Fast3dWindow.h>
+#include <graphic/Fast3D/interpreter.h>
 #include "libultraship/src/Context.h"
 
 #ifndef IDYES

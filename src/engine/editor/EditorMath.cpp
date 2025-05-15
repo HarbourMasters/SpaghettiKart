@@ -10,6 +10,9 @@
 #include <limits>
 #include <cmath>
 
+#include <graphic/Fast3D/Fast3dWindow.h>
+#include <graphic/Fast3D/interpreter.h>
+
 extern "C" {
 #include "common_structs.h"
 #include "main.h"
@@ -22,14 +25,25 @@ extern "C" {
 
 std::vector<Mtx> EditorMatrix;
 
+static std::weak_ptr<Fast::Interpreter> mInterpreter;
+
+std::shared_ptr<Fast::Interpreter> GetInterpreter() {
+    auto intP = mInterpreter.lock();
+    if (!intP) {
+        assert(false && "Lost reference to Fast::Interpreter");
+    }
+    return intP;
+}
+
 bool IsInGameScreen() {
     auto wnd = GameEngine::Instance->context->GetWindow();
     Ship::Coords mouse = wnd->GetMousePos();
 
     // Define viewport boundaries
-    int left = gfx_current_game_window_viewport.x;
+    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    int left = gfx_current_game_window_viewport.width;
     int right = left + OTRGetGameRenderWidth();
-    int top = gfx_current_game_window_viewport.y;
+    int top = gfx_current_game_window_viewport.height;
     int bottom = top + OTRGetGameRenderHeight();
 
     // Check if the mouse is within the game render area
@@ -41,8 +55,9 @@ FVector ScreenRayTrace() {
     Camera* camera = &cameras[0];
 
     Ship::Coords mouse = wnd->GetMousePos();
-    mouse.x -= gfx_current_game_window_viewport.x;
-    mouse.y -= gfx_current_game_window_viewport.y;
+    auto gfx_current_game_window_viewport = GetInterpreter().get()->mGameWindowViewport;
+    mouse.x -= gfx_current_game_window_viewport.width;
+    mouse.y -= gfx_current_game_window_viewport.height;
     // Get screen dimensions
     uint32_t width = OTRGetGameViewportWidth();
     uint32_t height = OTRGetGameViewportHeight();
