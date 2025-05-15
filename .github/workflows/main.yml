@@ -32,15 +32,15 @@ jobs:
           ${{ runner.os }}-o2r-build-
         path: |
           torch/cmake-build-release
-    - name: Generate ship.o2r
+    - name: Generate spaghetti.o2r
       run: |
         export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
         make -C torch type=release -j3
-        torch/cmake-build-release/torch pack assets ship.o2r o2r
+        torch/cmake-build-release/torch pack assets spaghetti.o2r o2r
     - uses: actions/upload-artifact@v4
       with:
-        name: ship.o2r
-        path: ship.o2r
+        name: spaghetti.o2r
+        path: spaghetti.o2r
         retention-days: 1
 
   build-windows:
@@ -54,16 +54,16 @@ jobs:
         run: |
           cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
           cmake --build ./build/x64 --config Release --parallel 10
-      - name: Download ship.o2r
+      - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
         with:
-          name: ship.o2r
+          name: spaghetti.o2r
           path: ./build/x64/Release
       - name: Create Package
         run: |
           mkdir spaghetti-release
           mv build/x64/Release/Spaghettify.exe spaghetti-release/
-          mv build/x64/Release/ship.o2r spaghetti-release/
+          mv build/x64/Release/spaghetti.o2r spaghetti-release/
           mv config.yml spaghetti-release/
           mv yamls spaghetti-release/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-release/gamecontrollerdb.txt"
@@ -86,16 +86,16 @@ jobs:
         run: |
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
           cmake --build build-cmake --config Release -j3
-      - name: Download ship.o2r
+      - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
         with:
-          name: ship.o2r
+          name: spaghetti.o2r
           path: ./build-cmake
       - name: Create Package
         run: |
           mkdir spaghetti-release
           mv build-cmake/Spaghettify spaghetti-release/
-          mv build-cmake/ship.o2r spaghetti-release/
+          mv build-cmake/spaghetti.o2r spaghetti-release/
           mv config.yml spaghetti-release/
           mv yamls spaghetti-release/
           wget -O spaghetti-release/gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
@@ -171,10 +171,10 @@ jobs:
           make
           sudo make install
           sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
-      - name: Download ship.o2r
+      - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
         with:
-          name: ship.o2r
+          name: spaghetti.o2r
           path: ./build-cmake
       - name: Build
         run: |

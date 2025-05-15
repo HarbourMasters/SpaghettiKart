@@ -15,7 +15,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment ve
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Spaghettify)
-set(PROJECT_TEAM "MegaMech")
+set(PROJECT_TEAM "Spaghetti")
 set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 0)
@@ -647,21 +647,21 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} header -o baserom.us.z64
     COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
+    COMMAND ${TORCH_EXECUTABLE} pack assets spaghetti.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/mk64.o2r" "${CMAKE_BINARY_DIR}/mk64.o2r"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
 )
 
 add_custom_target(
     GenerateO2R
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
+    COMMAND ${TORCH_EXECUTABLE} pack assets spaghetti.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
 )
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
-  install(FILES "${CMAKE_BINARY_DIR}/ship.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
+  install(FILES "${CMAKE_BINARY_DIR}/spaghetti.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
 endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
