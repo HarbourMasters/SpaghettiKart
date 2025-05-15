@@ -1,0 +1,10 @@
+<DisplayList Version="0">
+	<ClearGeometryMode G_LIGHTING="1" />
+	<LoadVertices Path="gizmo/gizmo_center_button_vtx_cull" VertexBufferIndex="0" VertexOffset="0" Count="8"/>
+	<SetGeometryMode G_LIGHTING="1" />
+	<CullDisplayList Start="0" End="7"/>
+	<CallDisplayList Path="gizmo/mat_gizmo_center_button_gizmo_center_button"/>
+	<CallDisplayList Path="gizmo/gizmo_center_button_tri_0"/>
+	<EndDisplayList/>
+</DisplayList>
+

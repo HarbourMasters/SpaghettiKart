@@ -624,18 +624,22 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} header -o baserom.us.z64
     COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} pack assets ship.o2r o2r
+    COMMAND ${TORCH_EXECUTABLE} pack assets spaghetti.o2r o2r
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/mk64.o2r" "${CMAKE_BINARY_DIR}/mk64.o2r"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/ship.o2r" "${CMAKE_BINARY_DIR}/ship.o2r"
 )
 
 add_custom_target(
     GenerateO2R
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND ${TORCH_EXECUTABLE} pack port spaghetti.o2r o2r
+    COMMAND ${TORCH_EXECUTABLE} pack assets spaghetti.o2r o2r
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"
 )
+
+if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+  install(FILES "${CMAKE_BINARY_DIR}/spaghetti.o2r" DESTINATION . COMPONENT ${PROJECT_NAME})
+endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
 add_custom_target(CreateOSXIcons
