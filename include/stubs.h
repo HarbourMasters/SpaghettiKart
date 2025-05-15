@@ -28,7 +28,6 @@ s32 osPfsDeleteFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, 
 s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in_bytes, u8* data_buffer);
 s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name, int file_size_in_bytes,
                       s32* file_no);
-void osSetTime(OSTime time);
 s32 osPfsIsPlug(OSMesgQueue* queue, u8* pattern);
 s32 osPfsInit(OSMesgQueue* queue, OSPfs* pfs, int channel);
 s32 osPfsNumFiles(OSPfs* pfs, s32* max_files, s32* files_used);
