@@ -50,10 +50,10 @@ void SetupGuiElements() {
     mPortMenu = std::make_shared<PortMenu>("gOpenMenu", "Port Menu");
     gui->SetMenu(mPortMenu);
 
-    mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
-    if (mMultiplayerWindow == nullptr) {
-        SPDLOG_ERROR("Could not find multiplayer window");
-    }
+    //mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
+    //if (mMultiplayerWindow == nullptr) {
+    //    SPDLOG_ERROR("Could not find multiplayer window");
+    //}
 
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {

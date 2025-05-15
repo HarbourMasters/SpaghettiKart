@@ -46,8 +46,7 @@ class GameEngine {
     ImFont* fontMonoLarger;
     ImFont* fontMonoLargest;
 
-    static std::weak_ptr<Fast::Interpreter> mInterpreter;
-    static std::shared_ptr<Fast::Interpreter> GetInterpreter();
+    static Fast::Interpreter* GameEngine::GetInterpreter();
 
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
@@ -82,6 +81,7 @@ class GameEngine {
   private:
     ImFont* CreateFontWithSize(float size, std::string fontPath = "");
 };
+
 #endif
 
 #ifdef __cplusplus

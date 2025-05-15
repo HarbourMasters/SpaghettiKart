@@ -30,6 +30,7 @@ namespace Editor {
     Editor::Editor() {
     }
 
+    std::vector<Mtx> EditorMatrix;
     void Editor::Load() {
         printf("Editor: Loading Editor...\n");
         eObjectPicker.Load();
