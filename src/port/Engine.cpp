@@ -49,14 +49,11 @@ float gInterpolationStep = 0.0f;
 #include "audio/GameAudio.h"
 }
 
-std::weak_ptr<Fast::Interpreter> GameEngine::mInterpreter;
-
-std::shared_ptr<Fast::Interpreter> GameEngine::GetInterpreter() {
-    auto intP = mInterpreter.lock();
-    if (!intP) {
-        assert(false && "Lost reference to Fast::Interpreter");
-    }
-    return intP;
+Fast::Interpreter* GetInterpreter() {
+    return static_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow())
+             ->GetInterpreterWeak()
+             .lock()
+             .get();
 }
 
 GameEngine* GameEngine::Instance;
@@ -543,7 +540,7 @@ extern "C" void GameEngine_UnloadSequence(const uint8_t seqId) {
 }
 
 extern "C" float GameEngine_GetAspectRatio() {
-    auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
+    auto gfx_current_dimensions = GetInterpreter()->mCurDimensions;
     return gfx_current_dimensions.aspect_ratio;
 }
 
@@ -617,8 +614,7 @@ extern "C" void Timer_SetValue(int32_t* address, int32_t value) {
 // }
 
 extern "C" float OTRGetAspectRatio() {
-    auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
-    return gfx_current_dimensions.aspect_ratio;
+    return GetInterpreter()->mCurDimensions.aspect_ratio;
 }
 
 extern "C" float OTRGetDimensionFromLeftEdge(float v) {
@@ -661,22 +657,18 @@ extern "C" uint32_t OTRCalculateCenterOfAreaFromLeftEdge(int32_t center) {
 
 // Gets the width of the current render target area
 extern "C" uint32_t OTRGetGameRenderWidth() {
-    auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
-    return gfx_current_dimensions.width;
+    return GetInterpreter()->mCurDimensions.width;
 }
 
 // Gets the height of the current render target area
 extern "C" uint32_t OTRGetGameRenderHeight() {
-    auto gfx_current_dimensions = GameEngine::GetInterpreter().get()->mCurDimensions;
-    return gfx_current_dimensions.height;
+    return GetInterpreter()->mCurDimensions.height;
 }
 
 extern "C" uint32_t OTRGetGameViewportWidth() {
-    auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
-    return gfx_current_game_window_viewport.width;
+    return GetInterpreter()->mGameWindowViewport.width;
 }
 
 extern "C" uint32_t OTRGetGameViewportHeight() {
-    auto gfx_current_game_window_viewport = GameEngine::GetInterpreter().get()->mGameWindowViewport;
-    return gfx_current_game_window_viewport.height;
+    return GetInterpreter()->mGameWindowViewport.height;
 }

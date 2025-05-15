@@ -25,6 +25,8 @@
 #define NUM_AUDIO_CHANNELS 2
 #define SAMPLES_PER_FRAME (SAMPLES_HIGH * NUM_AUDIO_CHANNELS * 2)
 
+Fast::Interpreter* GetInterpreter();
+
 struct CtlEntry;
 struct AudioBankSample;
 struct AudioSequenceData;
@@ -45,9 +47,6 @@ class GameEngine {
     ImFont* fontMono;
     ImFont* fontMonoLarger;
     ImFont* fontMonoLargest;
-
-    static std::weak_ptr<Fast::Interpreter> mInterpreter;
-    static std::shared_ptr<Fast::Interpreter> GetInterpreter();
 
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
@@ -82,6 +81,7 @@ class GameEngine {
   private:
     ImFont* CreateFontWithSize(float size, std::string fontPath = "");
 };
+
 #endif
 
 #ifdef __cplusplus
