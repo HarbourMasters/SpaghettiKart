@@ -57,7 +57,7 @@ xml/*
 .assets-local.txt
 
 # Torch
-include/assets/*
+# include/assets/*
 torch/*
 debug/*
 /debug/*
@@ -120,3 +120,9 @@ spaghettify.cfg.json
 
 # modding
 *.wasm
+
+cmake-build-*/
+.idea/
+.vs
+build*/
+.DS_Store

@@ -81,7 +81,7 @@ jobs:
         with:
           submodules: recursive
       - name: Install dependencies
-        run: brew install sdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
+        run: brew install sdl2 sdl2_net libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
       - name: Build
         run: |
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
@@ -115,7 +115,7 @@ jobs:
       - name: Update machine
         run: sudo apt update
       - name: Install dependencies
-        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libsdl2-net-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
@@ -192,4 +192,38 @@ jobs:
             spaghetti.appimage
             config.yml
             yamls
+            gamecontrollerdb.txt
+
+  build-switch:
+    needs: generate-port-o2r
+    runs-on: ubuntu-latest
+    container:
+      image: devkitpro/devkita64:20241023
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
+          sudo apt-get remove -y cmake
+          git -C libultraship remote add nx https://github.com/Net64DD/libultraship.git
+          git -C libultraship fetch nx
+          git -C libultraship checkout nx/main-nx
+          wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.sh -O /tmp/cmake.sh
+          sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
+          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake
+          cmake --build build-switch --config Release -j3
+          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          mv README.md readme.txt
+          mv build-switch/*.nro Spaghettify.nro
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Spaghettify-switch
+          path: |
+            Spaghettify.nro
+            config.yml
+            assets
             gamecontrollerdb.txt

@@ -10,6 +10,10 @@
 #include <tuple>
 #include "ResolutionEditor.h"
 
+#ifdef __SWITCH__
+#include <port/switch/SwitchImpl.h>
+#endif
+
 extern "C" {
     extern s32 gGamestateNext;
     extern s32 gMenuSelection;
@@ -378,10 +382,31 @@ void PortMenu::AddEnhancements() {
     .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Edit the universe!"}}));
 }
 
+#ifdef __SWITCH__
+static const std::unordered_map<int32_t, const char*> switchCPUProfiles = {
+    { Ship::SwitchProfiles::MAXIMUM, "Maximum Performance" },
+    { Ship::SwitchProfiles::HIGH, "High Performance" },
+    { Ship::SwitchProfiles::BOOST, "Boost Performance" },
+    { Ship::SwitchProfiles::STOCK, "Stock Performance" },
+    { Ship::SwitchProfiles::POWERSAVINGM1, "Powersaving Mode 1" },
+    { Ship::SwitchProfiles::POWERSAVINGM2, "Powersaving Mode 2" },
+    { Ship::SwitchProfiles::POWERSAVINGM3, "Powersaving Mode 3" }
+};
+#endif
+
 void PortMenu::AddDevTools() {
     AddMenuEntry("Developer", "gSettings.Menu.DevToolsSidebarSection");
     AddSidebarEntry("Developer", "General", 3);
     WidgetPath path = { "Developer", "General", SECTION_COLUMN_1 };
+#ifdef __SWITCH__
+    AddWidget(path, "Switch CPU Profile", WIDGET_CVAR_COMBOBOX)
+    .CVar("gSwitchPerfMode")
+    .Options(ComboboxOptions()
+        .Tooltip("Switches the CPU profile to a different one")
+        .ComboMap(switchCPUProfiles)
+        .DefaultIndex(Ship::SwitchProfiles::STOCK))
+        .Callback([](WidgetInfo& info) { Ship::Switch::ApplyOverclock(); });
+#endif
     AddWidget(path, "Popout Menu", WIDGET_CVAR_CHECKBOX)
         .CVar("gSettings.Menu.Popout")
         .Options(CheckboxOptions().Tooltip("Changes the menu display from overlay to windowed."));

@@ -30,6 +30,10 @@ extern "C" void gSPVertex(Gfx* pkt, uintptr_t v, int n, int v0) {
 }
 
 extern "C" void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr) {
+#ifdef __SWITCH__
+    // TODO: This kills performance on the Switch, we need to limit the amount of times we call this
+    return;
+#endif
     auto data = reinterpret_cast<char*>(texAddr);
 
     if (texAddr != 0 && GameEngine_OTRSigCheck(data)) {
