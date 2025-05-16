@@ -14,8 +14,7 @@ extern "C" {
  * @arg waypoint initial waypoint to spawn at.
  */
 class ATrain : public AActor {
-    public:
-
+  public:
     enum TenderStatus {
         NO_TENDER,
         HAS_TENDER,
@@ -54,6 +53,6 @@ class ATrain : public AActor {
     s32 AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity);
     void SyncComponents(TrainCarStuff* trainCar, s16 orientationY);
 
-private:
+  private:
     static size_t _count;
 };

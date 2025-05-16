@@ -5,15 +5,15 @@
 #include "GameObject.h"
 
 namespace Editor {
-    class Handles : public GameObject {
+class Handles : public GameObject {
 
-        Handles();
+    Handles();
 
-        virtual void Tick() override;
-        virtual void Draw() override;
-        virtual void Load() override;
+    virtual void Tick() override;
+    virtual void Draw() override;
+    virtual void Load() override;
 
-        FVector pos;
-        IRotator rot;
-    };
-}
+    FVector pos;
+    IRotator rot;
+};
+} // namespace Editor

@@ -2,5 +2,4 @@
 
 #include <libultraship/libultraship.h>
 
-namespace Freecam {
-} // namespace Freecam
+namespace Freecam {} // namespace Freecam

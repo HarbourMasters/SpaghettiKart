@@ -4,19 +4,19 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/frappe_snowland_vertices.h"
-    #include "assets/frappe_snowland_displaylists.h"
-    #include "assets/frappe_snowland_data.h"
-    #include "course_offsets.h"
-    #include "camera.h"
-    #include "data/some_data.h"
-    #include "objects.h"
-    #include "path_spawn_metadata.h"
-    extern const course_texture frappe_snowland_textures[];
+#include "assets/frappe_snowland_vertices.h"
+#include "assets/frappe_snowland_displaylists.h"
+#include "assets/frappe_snowland_data.h"
+#include "course_offsets.h"
+#include "camera.h"
+#include "data/some_data.h"
+#include "objects.h"
+#include "path_spawn_metadata.h"
+extern const course_texture frappe_snowland_textures[];
 }
 
 class FrappeSnowland : public Course {
-public:
+  public:
     virtual ~FrappeSnowland() = default;
 
     explicit FrappeSnowland();
@@ -29,6 +29,6 @@ public:
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
-    virtual void RenderCredits() override;    
+    virtual void RenderCredits() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
 };

@@ -214,7 +214,7 @@ class platform {
         template <typename T> class proc {
           public:
             proc(dll const& lib, std::string const& sym)
-                : m_proc(reinterpret_cast<T*>((void*)::GetProcAddress(lib.handle, sym.c_str()))) {
+                : m_proc(reinterpret_cast<T*>((void*) ::GetProcAddress(lib.handle, sym.c_str()))) {
             }
 
             operator bool() const {
@@ -400,16 +400,17 @@ namespace internal {
 
 #if _WIN32
 static inline std::wstring str2wstr(std::string const& str) {
-    int len = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), (int)str.size(), nullptr, 0);
+    int len = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), (int) str.size(), nullptr, 0);
     std::wstring ret(len, '\0');
-    MultiByteToWideChar(CP_UTF8, 0, str.c_str(), (int)str.size(), (LPWSTR)ret.data(), (int)ret.size());
+    MultiByteToWideChar(CP_UTF8, 0, str.c_str(), (int) str.size(), (LPWSTR) ret.data(), (int) ret.size());
     return ret;
 }
 
 static inline std::string wstr2str(std::wstring const& str) {
-    int len = WideCharToMultiByte(CP_UTF8, 0, str.c_str(), (int)str.size(), nullptr, 0, nullptr, nullptr);
+    int len = WideCharToMultiByte(CP_UTF8, 0, str.c_str(), (int) str.size(), nullptr, 0, nullptr, nullptr);
     std::string ret(len, '\0');
-    WideCharToMultiByte(CP_UTF8, 0, str.c_str(), (int)str.size(), (LPSTR)ret.data(), (int)ret.size(), nullptr, nullptr);
+    WideCharToMultiByte(CP_UTF8, 0, str.c_str(), (int) str.size(), (LPSTR) ret.data(), (int) ret.size(), nullptr,
+                        nullptr);
     return ret;
 }
 
@@ -534,10 +535,10 @@ inline void settings::rescan() {
 // Check whether a program is present using “which”.
 inline bool settings::check_program(std::string const& program) {
 #if _WIN32
-    (void)program;
+    (void) program;
     return false;
 #elif __EMSCRIPTEN__
-    (void)program;
+    (void) program;
     return false;
 #else
     int exit_code = -1;
@@ -636,7 +637,7 @@ inline bool internal::executor::kill() {
     if (m_future.valid()) {
         // Close all windows that weren’t open when we started the future
         auto previous_windows = m_windows;
-        EnumWindows(&enum_windows_callback, (LPARAM)this);
+        EnumWindows(&enum_windows_callback, (LPARAM) this);
         for (auto hwnd : m_windows)
             if (previous_windows.find(hwnd) == previous_windows.end()) {
                 SendMessage(hwnd, WM_CLOSE, 0, 0);
@@ -656,7 +657,7 @@ inline bool internal::executor::kill() {
 
 #if _WIN32
 inline BOOL CALLBACK internal::executor::enum_windows_callback(HWND hwnd, LPARAM lParam) {
-    auto that = (executor*)lParam;
+    auto that = (executor*) lParam;
 
     DWORD pid;
     auto tid = GetWindowThreadProcessId(hwnd, &pid);
@@ -673,7 +674,7 @@ inline void internal::executor::start_func(std::function<std::string(int*)> cons
     auto trampoline = [fun, this]() {
         // Save our thread id so that the caller can cancel us
         m_tid = GetCurrentThreadId();
-        EnumWindows(&enum_windows_callback, (LPARAM)this);
+        EnumWindows(&enum_windows_callback, (LPARAM) this);
         m_cond.notify_all();
         return fun(&m_exit_code);
     };
@@ -760,7 +761,7 @@ inline bool internal::executor::ready(int timeout /* = default_wait_timeout */) 
     }
 #elif __EMSCRIPTEN__ || __NX__
     // FIXME: do something
-    (void)timeout;
+    (void) timeout;
 #else
     char buf[BUFSIZ];
     ssize_t received = read(m_fd, buf, BUFSIZ); // Flawfinder: ignore
@@ -866,7 +867,7 @@ inline HANDLE internal::platform::new_style_context::create() {
         0,
         0,
         sys_dir.c_str(),
-        (LPCSTR)124,
+        (LPCSTR) 124,
         nullptr,
         0,
     };
@@ -892,11 +893,11 @@ inline std::vector<std::string> internal::dialog::desktop_helper() const {
 #if __APPLE__
     return { "osascript" };
 #else
-    return { flags(flag::has_zenity) ? "zenity"
+    return { flags(flag::has_zenity)       ? "zenity"
              : flags(flag::has_matedialog) ? "matedialog"
-             : flags(flag::has_qarma) ? "qarma"
-             : flags(flag::has_kdialog) ? "kdialog"
-                                        : "echo" };
+             : flags(flag::has_qarma)      ? "qarma"
+             : flags(flag::has_kdialog)    ? "kdialog"
+                                           : "echo" };
 #endif
 }
 
@@ -980,7 +981,7 @@ inline internal::file_dialog::file_dialog(type in_type, std::string const& title
     filter_list += '\0';
 
     m_async->start_func([this, in_type, title, default_path, filter_list, options](int* exit_code) -> std::string {
-        (void)exit_code;
+        (void) exit_code;
         m_wtitle = internal::str2wstr(title);
         m_wdefault_path = internal::str2wstr(default_path);
         auto wfilter_list = internal::str2wstr(filter_list);
@@ -1010,7 +1011,7 @@ inline internal::file_dialog::file_dialog(type in_type, std::string const& title
             memset(&bi, 0, sizeof(bi));
 
             bi.lpfn = &bffcallback;
-            bi.lParam = (LPARAM)this;
+            bi.lParam = (LPARAM) this;
 
             if (flags(flag::is_vista)) {
                 if (ole32.is_initialized())
@@ -1039,8 +1040,8 @@ inline internal::file_dialog::file_dialog(type in_type, std::string const& title
         ofn.lpstrFilter = wfilter_list.c_str();
 
         auto woutput = std::wstring(MAX_PATH * 256, L'\0');
-        ofn.lpstrFile = (LPWSTR)woutput.data();
-        ofn.nMaxFile = (DWORD)woutput.size();
+        ofn.lpstrFile = (LPWSTR) woutput.data();
+        ofn.nMaxFile = (DWORD) woutput.size();
         if (!m_wdefault_path.empty()) {
             // If a directory was provided, use it as the initial directory. If
             // a valid path was provided, use it as the initial file. Otherwise,
@@ -1052,8 +1053,8 @@ inline internal::file_dialog::file_dialog(type in_type, std::string const& title
                 // second argument is size of buffer, not length of string
                 StringCchCopyW(ofn.lpstrFile, MAX_PATH * 256 + 1, m_wdefault_path.c_str());
             else {
-                ofn.lpstrFileTitle = (LPWSTR)m_wdefault_path.data();
-                ofn.nMaxFileTitle = (DWORD)m_wdefault_path.size();
+                ofn.lpstrFileTitle = (LPWSTR) m_wdefault_path.data();
+                ofn.nMaxFileTitle = (DWORD) m_wdefault_path.size();
             }
         }
         ofn.lpstrTitle = m_wtitle.c_str();
@@ -1101,11 +1102,11 @@ inline internal::file_dialog::file_dialog(type in_type, std::string const& title
     });
 #elif __EMSCRIPTEN__
     // FIXME: do something
-    (void)in_type;
-    (void)title;
-    (void)default_path;
-    (void)filters;
-    (void)options;
+    (void) in_type;
+    (void) title;
+    (void) default_path;
+    (void) filters;
+    (void) options;
 #else
     auto command = desktop_helper();
 
@@ -1277,10 +1278,10 @@ inline std::vector<std::string> internal::file_dialog::vector_result() {
 #if _WIN32
 // Use a static function to pass as BFFCALLBACK for legacy folder select
 inline int CALLBACK internal::file_dialog::bffcallback(HWND hwnd, UINT uMsg, LPARAM, LPARAM pData) {
-    auto inst = (file_dialog*)pData;
+    auto inst = (file_dialog*) pData;
     switch (uMsg) {
         case BFFM_INITIALIZED:
-            SendMessage(hwnd, BFFM_SETSELECTIONW, TRUE, (LPARAM)inst->m_wdefault_path.c_str());
+            SendMessage(hwnd, BFFM_SETSELECTIONW, TRUE, (LPARAM) inst->m_wdefault_path.c_str());
             break;
     }
     return 0;
@@ -1409,12 +1410,12 @@ inline notify::notify(std::string const& title, std::string const& message, icon
     }
 
     ENUMRESNAMEPROC icon_enum_callback = [](HMODULE, LPCTSTR, LPTSTR lpName, LONG_PTR lParam) -> BOOL {
-        ((NOTIFYICONDATAW*)lParam)->hIcon = ::LoadIcon(GetModuleHandle(nullptr), lpName);
+        ((NOTIFYICONDATAW*) lParam)->hIcon = ::LoadIcon(GetModuleHandle(nullptr), lpName);
         return false;
     };
 
     nid->hIcon = ::LoadIcon(nullptr, IDI_APPLICATION);
-    ::EnumResourceNames(nullptr, RT_GROUP_ICON, icon_enum_callback, (LONG_PTR)nid.get());
+    ::EnumResourceNames(nullptr, RT_GROUP_ICON, icon_enum_callback, (LONG_PTR) nid.get());
 
     nid->uTimeout = 5000;
 
@@ -1425,8 +1426,8 @@ inline notify::notify(std::string const& title, std::string const& message, icon
     Shell_NotifyIconW(NIM_ADD, nid.get());
 #elif __EMSCRIPTEN__
     // FIXME: do something
-    (void)title;
-    (void)message;
+    (void) title;
+    (void) message;
 #else
     auto command = desktop_helper();
 

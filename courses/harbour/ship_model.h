@@ -51,11 +51,6 @@ extern Gfx mat_ship1_black[];
 extern Gfx mat_ship1_engine2[];
 extern Gfx ship1_spag1_mesh[];
 
-
-
-
-
-
 extern u8 wheels_metal1_i8[];
 extern u8 wheels_tire_i8[];
 extern Vtx wheels_Spaghetti_002_mesh_vtx_cull[8];

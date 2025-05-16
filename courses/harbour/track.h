@@ -127,7 +127,6 @@ extern Gfx mat_castle_fence[];
 extern Gfx mat_revert_castle_fence[];
 extern Gfx castle_map_002_mesh[];
 
-
 extern u8 statue_window_rgba16[];
 extern u8 statue_flowers1_rgba32[];
 extern u8 statue_marble1_ci8[];

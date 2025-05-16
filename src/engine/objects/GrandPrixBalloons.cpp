@@ -73,7 +73,7 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
         return;
     }
 
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007E98);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007E98);
     gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTOnomatopoeia);
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
@@ -84,14 +84,14 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
                          GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
-    rsp_load_texture((uint8_t*)gTextureBalloon1, 64, 32);
+    rsp_load_texture((uint8_t*) gTextureBalloon1, 64, 32);
     for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
             OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 0);
         }
     }
-    rsp_load_texture((uint8_t*)gTextureBalloon2, 64, 32);
+    rsp_load_texture((uint8_t*) gTextureBalloon2, 64, 32);
     for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
@@ -112,8 +112,8 @@ void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 ver
         set_color_render((s32) object->unk_084[0], (s32) object->unk_084[1], (s32) object->unk_084[2],
                          (s32) object->unk_084[3], (s32) object->unk_084[4], (s32) object->unk_084[5],
                          (s32) object->primAlpha);
-        gSPVertex(gDisplayListHead++, (uintptr_t)&vtx[vertexIndex], 4, 0);
-        gSPDisplayList(gDisplayListHead++, (Gfx*)common_rectangle_display);
+        gSPVertex(gDisplayListHead++, (uintptr_t) &vtx[vertexIndex], 4, 0);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
     }
 }
 
@@ -209,7 +209,8 @@ void OGrandPrixBalloons::func_80074E28(s32 objectIndex) {
         case 0:
             break;
         case 3:
-            OGrandPrixBalloons::func_80041480(&gObjectList[objectIndex].unk_084[6], -0x1000, 0x1000, &gObjectList[objectIndex].unk_084[7]);
+            OGrandPrixBalloons::func_80041480(&gObjectList[objectIndex].unk_084[6], -0x1000, 0x1000,
+                                              &gObjectList[objectIndex].unk_084[7]);
             if (gObjectList[objectIndex].unk_0AE == 0) {
                 func_80072428(objectIndex);
             }

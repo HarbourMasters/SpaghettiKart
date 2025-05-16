@@ -102,8 +102,8 @@ void RegisterResolutionWidgets() {
     });
     mPortMenu->AddWidget(path, "Internal resolution: {} x {}", WIDGET_TEXT).PreFunc([](WidgetInfo& info) {
         auto captured_current_dimensions = GetInterpreter()->mCurDimensions;
-        info.name =
-            fmt::format("Internal resolution: {} x {}", captured_current_dimensions.width, captured_current_dimensions.height);
+        info.name = fmt::format("Internal resolution: {} x {}", captured_current_dimensions.width,
+                                captured_current_dimensions.height);
     });
 
     // UIWidgets::PaddedSeparator(true, true, 3.0f, 3.0f);
@@ -177,7 +177,7 @@ void RegisterResolutionWidgets() {
                 auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
                 auto gfx_current_dimensions = GetInterpreter()->mCurDimensions;
                 ImGui::Dummy({ 0, 2 });
-                const float resolvedAspectRatio = (float)gfx_current_dimensions.width / gfx_current_dimensions.height;
+                const float resolvedAspectRatio = (float) gfx_current_dimensions.width / gfx_current_dimensions.height;
                 ImGui::Text("Aspect ratio: %.2f:1", resolvedAspectRatio);
             }
         }
@@ -314,7 +314,7 @@ void RegisterResolutionWidgets() {
     //    if (ImGui::CollapsingHeader("Additional Settings")) {
     //        UIWidgets::Spacer(0);
     //
-    //#if defined(__SWITCH__) || defined(__WIIU__)
+    // #if defined(__SWITCH__) || defined(__WIIU__)
     //        // Disable aspect correction, stretching the framebuffer to fill the viewport.
     //        // This option is only really needed on systems limited to 16:9 TV resolutions, such as consoles.
     //        // The associated cvar is still functional on PC platforms if you want to use it though.
@@ -326,7 +326,7 @@ void RegisterResolutionWidgets() {
     //                                                ".PixelPerfectMode", 0) ||
     //                                                    disabled_everything,
     //                                                "", UIWidgets::CheckboxGraphics::Cross, false);
-    //#else
+    // #else
     //        if (CVarGetInteger(CVAR_PREFIX_ADVANCED_RESOLUTION ".IgnoreAspectCorrection", 0)) {
     //            // This setting is intentionally not exposed on PC platforms,
     //            // but may be accidentally activated for varying reasons.
@@ -339,7 +339,7 @@ void RegisterResolutionWidgets() {
     //            }
     //            UIWidgets::Spacer(2);
     //        }
-    //#endif
+    // #endif
     //
     //        // A requested addition; an alternative way of displaying the resolution field.
     //        if (ImGui::Checkbox("Show a horizontal resolution field, instead of aspect ratio.",
@@ -504,8 +504,8 @@ void UpdateResolutionVars() {
     // This is mostly just for UX purposes, as Fit Automatically logic is part of LUS.
     auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
     auto gfx_current_dimensions = GetInterpreter()->mCurDimensions;
-    if (((float)gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
-        ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
+    if (((float) gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.height) >
+        ((float) gfx_current_dimensions.width / gfx_current_dimensions.height)) {
         // Scale to window height
         integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_game_window_viewport.height;
     } else {
@@ -546,4 +546,4 @@ bool IsDroppingFrames() {
 static RegisterMenuUpdateFunc updateFunc(UpdateResolutionVars, "Settings", "Graphics");
 static RegisterMenuInitFunc initFunc(RegisterResolutionWidgets);
 
-} // namespace BenGui
+} // namespace GameUI

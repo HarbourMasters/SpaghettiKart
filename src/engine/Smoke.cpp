@@ -69,7 +69,6 @@ void TrainSmokeTick() {
                 if (count != 0) {
                     boat->SmokeTimer = 100;
                 }
-
             }
         }
     }
@@ -80,22 +79,21 @@ void TrainSmokeDraw(s32 cameraId) {
 
     for (auto& actor : gWorldInstance.Actors) {
         if (auto train = dynamic_cast<ATrain*>(actor)) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
-            load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
+            load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
             D_80183E80[0] = 0;
             D_80183E80[2] = 0x8000;
 
-            if ((train->SomeFlags != 0) &&
-                (is_particle_on_screen(train->Locomotive.position, camera, 0x4000U) != 0)) {
+            if ((train->SomeFlags != 0) && (is_particle_on_screen(train->Locomotive.position, camera, 0x4000U) != 0)) {
                 for (size_t i = 0; i < 128; i++) {
                     render_object_train_smoke_particle(train->SmokeParticles[i], cameraId);
                 }
             }
         } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
 
-            load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);
+            load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
             D_80183E80[0] = 0;
             D_80183E80[2] = 0x8000;

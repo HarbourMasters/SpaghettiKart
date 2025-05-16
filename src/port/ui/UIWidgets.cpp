@@ -288,7 +288,7 @@ bool Checkbox(const char* _label, bool* value, const CheckboxOptions& options) {
 
 bool CVarCheckbox(const char* label, const char* cvarName, const CheckboxOptions& options) {
     bool dirty = false;
-    bool value = (bool)CVarGetInteger(cvarName, options.defaultValue);
+    bool value = (bool) CVarGetInteger(cvarName, options.defaultValue);
     if (Checkbox(label, &value, options)) {
         CVarSetInteger(cvarName, value);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
@@ -443,8 +443,8 @@ void ClampFloat(float* value, float min, float max, float step) {
     } else if (*value > max) {
         *value = max;
     } else {
-        int trunc = (int)std::round(*value * factor);
-        *value = (float)trunc / factor;
+        int trunc = (int) std::round(*value * factor);
+        *value = (float) trunc / factor;
     }
 }
 
@@ -525,11 +525,11 @@ bool CVarColorPicker(const char* label, const char* cvarName, Color_RGBA8 defaul
     ImVec4 colorVec = ImVec4(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a / 255.0f);
     bool changed = false;
     PushStyleCombobox(Colors::Gray);
-    if (ImGui::ColorEdit3(label, (float*)&colorVec, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoBorder)) {
-        color.r = (uint8_t)(colorVec.x * 255.0f);
-        color.g = (uint8_t)(colorVec.y * 255.0f);
-        color.b = (uint8_t)(colorVec.z * 255.0f);
-        color.a = (uint8_t)(colorVec.w * 255.0f);
+    if (ImGui::ColorEdit3(label, (float*) &colorVec, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoBorder)) {
+        color.r = (uint8_t) (colorVec.x * 255.0f);
+        color.g = (uint8_t) (colorVec.y * 255.0f);
+        color.b = (uint8_t) (colorVec.z * 255.0f);
+        color.a = (uint8_t) (colorVec.w * 255.0f);
         CVarSetColor(cvarName, color);
         Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
         changed = true;

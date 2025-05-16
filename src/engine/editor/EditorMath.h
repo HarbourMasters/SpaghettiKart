@@ -26,9 +26,9 @@ struct Triangle {
 
 /**
  * Projects 2D cursor into the game world
- * 
+ *
  * @return FVector ray direction
- * 
+ *
  * ray.x = camera->pos[0] + direction.x * length;
  * ray.y = camera->pos[1] + direction.y * length;
  * ray.z = camera->pos[2] + direction.z * length;
@@ -45,7 +45,8 @@ FVector TransformVecByMatrix(const FVector& vec, const float mtx[4][4]);
 FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]);
 Ray RayToLocalSpace(MtxF mtx, const Ray& ray);
 bool IntersectRayTriangle(const Ray& ray, const Triangle& tri, float& t); // Uses local space not global space.
-bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri, float& t); // Uses global space because no access to mtx
+bool IntersectRayTriangleAndTransform(const Ray& ray, FVector pos, const Triangle& tri,
+                                      float& t); // Uses global space because no access to mtx
 bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radius, float& t);
 /**
  * optional used here so we can check for successful query and return the click position

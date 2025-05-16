@@ -8,11 +8,12 @@ extern "C" {
 
 namespace Editor {
 class TrackPropertiesWindow : public Ship::GuiWindow {
-public:
+  public:
     using Ship::GuiWindow::GuiWindow;
 
     ~TrackPropertiesWindow();
-protected:
+
+  protected:
     void InitElement() override {};
     void DrawElement() override;
     void DrawMusic();
@@ -22,4 +23,4 @@ protected:
     void FloatToRGB8(const float* src, u8* dst);
     const char* MusicSeqToString(MusicSeq seq);
 };
-}
+} // namespace Editor

@@ -14,7 +14,7 @@ ResourceFactoryBinaryArrayV0::ReadResource(std::shared_ptr<Ship::File> file,
     auto array = std::make_shared<Array>(initData);
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
-    array->ArrayType = (ArrayResourceType)reader->ReadUInt32();
+    array->ArrayType = (ArrayResourceType) reader->ReadUInt32();
     array->ArrayCount = reader->ReadUInt32();
 
     for (uint32_t i = 0; i < array->ArrayCount; i++) {

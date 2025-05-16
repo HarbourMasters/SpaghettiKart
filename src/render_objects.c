@@ -1679,7 +1679,7 @@ void render_texture_rectangle_wide_left(s32 x, s32 y, s32 width, s32 height, s32
             if (gPlayerCount == 3) {
                 // Center item in area of screen
                 s32 center = (s32) ((OTRGetDimensionFromLeftEdge(SCREEN_WIDTH) - SCREEN_WIDTH) / 2) +
-                                ((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
+                             ((SCREEN_WIDTH / 4) + (SCREEN_WIDTH / 2));
                 s32 coordX = (s32) (center - (width / 2)) << 2;
                 s32 coordX2 = (s32) (center + (width / 2)) << 2;
                 gSPWideTextureRectangle(gDisplayListHead++, coordX, yl, coordX2, yh2, G_TX_RENDERTILE, arg4 << 5,
@@ -2682,23 +2682,25 @@ void func_8004EB38(s32 playerId) {
     }
     if ((u8) temp_s0->unk_7E != 0) {
         func_8004C9D8_wide((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, (u8*) common_texture_hud_lap,
-                      0x00000020, 8, 0x00000020, 8);
+                           0x00000020, 8, 0x00000020, 8);
         func_8004C9D8_wide(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080,
-                      (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+                           (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020,
+                           0x00000010);
     }
     if ((u8) temp_s0->unk_7F != 0) {
         func_8004C9D8_wide((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, (u8*) common_texture_hud_lap,
-                      0x00000020, 8, 0x00000020, 8);
+                           0x00000020, 8, 0x00000020, 8);
         func_8004C9D8_wide(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050,
-                      (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+                           (u8*) gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020,
+                           0x00000010);
     }
 }
 
 void func_8004ED40(s32 arg0) {
     func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f,
                   // RGBA
-                  CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
-                  LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
+                  CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
+                  0xFF, LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20,
                   0x40, 0x20);
 }
@@ -2708,14 +2710,14 @@ void func_8004EE54(s32 playerId) {
     if (gIsMirrorMode != 0) {
         func_8004D4E8(CM_GetProps()->Minimap.Pos[playerId].X, CM_GetProps()->Minimap.Pos[playerId].Y, (u8*) D_8018D240,
                       // RGBA
-                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
-                      CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
+                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
+                      0xFF, CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
                       CM_GetProps()->Minimap.Height);
     } else {
         func_8004D37C(CM_GetProps()->Minimap.Pos[playerId].X, CM_GetProps()->Minimap.Pos[playerId].Y, (u8*) D_8018D240,
                       // RGBA
-                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b, 0xFF,
-                      CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
+                      CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
+                      0xFF, CM_GetProps()->Minimap.Width, CM_GetProps()->Minimap.Height, CM_GetProps()->Minimap.Width,
                       CM_GetProps()->Minimap.Height);
     }
 }
@@ -2745,8 +2747,10 @@ void set_minimap_finishline_position(s32 playerId) {
     }
 
     // minimap center pos -  minimap left edge  +  offset
-    var_f2 = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX; // (center - (gMinimapWidth / 2)) + gMinimapPlayerX;
-    var_f0 = (CM_GetProps()->Minimap.Pos[playerId].Y - (CM_GetProps()->Minimap.Height / 2)) + CM_GetProps()->Minimap.PlayerY; // (gMinimapY[arg0] - (gMinimapHeight / 2)) + gMinimapPlayerY
+    var_f2 = (center - (CM_GetProps()->Minimap.Width / 2)) +
+             CM_GetProps()->Minimap.PlayerX; // (center - (gMinimapWidth / 2)) + gMinimapPlayerX;
+    var_f0 = (CM_GetProps()->Minimap.Pos[playerId].Y - (CM_GetProps()->Minimap.Height / 2)) +
+             CM_GetProps()->Minimap.PlayerY; // (gMinimapY[arg0] - (gMinimapHeight / 2)) + gMinimapPlayerY
 
     var_f2 += CM_GetProps()->Minimap.FinishlineX;
     var_f0 += CM_GetProps()->Minimap.FinishlineY;
@@ -2780,7 +2784,8 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
         }
 
         temp_a0 = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX + (s16) (thing0);
-        temp_a1 = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) + CM_GetProps()->Minimap.PlayerY + (s16) (thing1);
+        temp_a1 = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) +
+                  CM_GetProps()->Minimap.PlayerY + (s16) (thing1);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
 #if EXPLICIT_AND == 1
@@ -4040,13 +4045,12 @@ void func_800569F4(s32 playerIndex) {
     CM_DisplayBattleBombKart(playerIndex, 0);
 }
 
-
 void func_80056A40(s32 playerIndex, s32 arg1) {
     CM_DisplayBattleBombKart(playerIndex, arg1);
 }
 
 void func_80056A94(s32 playerIndex) {
-    //func_80072428(gIndexObjectBombKart[playerIndex]);
+    // func_80072428(gIndexObjectBombKart[playerIndex]);
     CM_DisplayBattleBombKart(playerIndex, 0);
 }
 

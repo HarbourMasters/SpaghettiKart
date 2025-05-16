@@ -43,7 +43,7 @@ Course::Course() {
     Props.Minimap.PlayerScaleFactor = 0.22f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
-    Props.Minimap.Colour = {255, 255, 255};
+    Props.Minimap.Colour = { 255, 255, 255 };
     Props.WaterLevel = -10.0f;
 
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
@@ -115,11 +115,11 @@ void Course::LoadO2R(std::string trackPath) {
             size_t i = 0;
             for (auto& path : paths) {
                 if (i == 0) {
-                    Props.PathTable[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable[0] = (TrackWaypoint*) path.data();
                     Props.PathTable[1] = NULL;
                     Props.PathTable[2] = NULL;
                     Props.PathTable[3] = NULL;
-                    Props.PathTable2[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[0] = (TrackWaypoint*) path.data();
                     Props.PathTable2[1] = NULL;
                     Props.PathTable2[2] = NULL;
                     Props.PathTable2[3] = NULL;
@@ -140,7 +140,7 @@ void Course::Load() {
     // Load from O2R
     if (!TrackSectionsPtr.empty()) {
         bIsMod = true;
-        //auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
+        // auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
 
         TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
@@ -217,8 +217,9 @@ void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
         } else {
             D_8015F5A4 = 0;
         }
-        printf("LOADING DL %s\n",  sections[i].addr.c_str());
-        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType, sections[i].sectionId);
+        printf("LOADING DL %s\n", sections[i].addr.c_str());
+        generate_collision_mesh((Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType,
+                                sections[i].sectionId);
     }
 }
 
@@ -228,8 +229,8 @@ void Course::TestPath() {
     s16 x;
     s16 y;
     s16 z;
-    Vec3s rot = {0, 0, 0};
-    Vec3f vel = {0, 0, 0};
+    Vec3s rot = { 0, 0, 0 };
+    Vec3f vel = { 0, 0, 0 };
 
     for (size_t i = 0; i < gWaypointCountByPathIndex[0]; i++) {
         x = D_80164550[0][i].posX;
@@ -241,7 +242,7 @@ void Course::TestPath() {
         }
 
         f32 height = spawn_actor_on_surface(x, 2000.0f, z);
-        Vec3f itemPos = {x, height, z};
+        Vec3f itemPos = { x, height, z };
         add_actor_to_empty_slot(itemPos, rot, vel, ACTOR_ITEM_BOX);
     }
 }
@@ -337,7 +338,7 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-       // set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+        // set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -347,10 +348,10 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
             // d_course_big_donut_packed_dl_DE8
         }
 
-        TrackSectionsO2R* sections = (TrackSectionsO2R*)LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
         for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()));
+            gSPDisplayList(gDisplayListHead++, (Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()));
         }
     }
 }
@@ -363,8 +364,7 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
     bool found = false;
 
     for (const auto& volume : gWorldInstance.CurrentCourse->WaterVolumes) {
-        if (pos.x >= volume.MinX && pos.x <= volume.MaxX &&
-            pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
+        if (pos.x >= volume.MinX && pos.x <= volume.MaxX && pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
             // Choose the highest water volume the player is over
             if (!found || volume.Height > highestWater) {
                 highestWater = volume.Height;

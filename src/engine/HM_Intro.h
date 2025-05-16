@@ -15,17 +15,20 @@ extern "C" {
 
 #ifdef __cplusplus
 class HarbourMastersIntro {
-public:
+  public:
     HarbourMastersIntro();
 
     void HM_InitIntro();
     void HM_TickIntro();
     void HM_DrawIntro();
-private:
+
+  private:
     void Setup();
     void Sync();
-    void Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
-    void SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);
+    void Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp,
+             f32 rollSpeed);
+    void SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp,
+                 f32 rollSpeed);
     void MoveCloserToCamera(float moveSpeed);
 
     struct HMCamera {

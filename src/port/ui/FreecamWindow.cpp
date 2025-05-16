@@ -40,7 +40,7 @@ namespace Freecam {
 static s32 sReadyUpBool = false;
 
 int32_t controllerType = 0;
-std::unordered_map<int32_t, const char*> controlType = {{ 0, "Mouse/Keyboard" }, { 1, "Controller" }};
+std::unordered_map<int32_t, const char*> controlType = { { 0, "Mouse/Keyboard" }, { 1, "Controller" } };
 
 uint32_t focusPlayer;
 
@@ -51,23 +51,29 @@ bool IsPlayerValid(const char* string) {
 void RegisterFreecamWidgets() {
     mPortMenu->AddSidebarEntry("Enhancements", "Freecam", 2);
     WidgetPath path = { "Enhancements", "Freecam", SECTION_COLUMN_1 };
-    //const float framerate = ImGui::GetIO().Framerate;
-    //const float deltatime = ImGui::GetIO().DeltaTime;
-    //ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
+    // const float framerate = ImGui::GetIO().Framerate;
+    // const float deltatime = ImGui::GetIO().DeltaTime;
+    // ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0, 0, 0, 0));
 
-    //mPortMenu->AddWidget(path, "Controller mode is not configured yet.", WIDGET_TEXT);
+    // mPortMenu->AddWidget(path, "Controller mode is not configured yet.", WIDGET_TEXT);
 
-    //static int current_item = 0;
+    // static int current_item = 0;
     mPortMenu->AddWidget(path, "Human Interface Device", WIDGET_COMBOBOX)
         .ValuePointer(&controllerType)
-        .Callback([](WidgetInfo& info) { bFreecamUseController = (uint32_t)*std::get<int32_t*>(info.valuePointer); })
+        .Callback([](WidgetInfo& info) { bFreecamUseController = (uint32_t) *std::get<int32_t*>(info.valuePointer); })
         .Options(UIWidgets::ComboboxOptions().ComboMap(controlType));
 
-    mPortMenu->AddWidget(path, "Keyboard: Move: W,A,S,D, Up: Space, Down: Shift\n  Faster: Ctrl, Look: Right-mouse button\n  Target Player Mode: F, Next: M, Previous: N", WIDGET_TEXT);
-    mPortMenu->AddWidget(path, "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: Left DPad\n  Driving Mode: L and R Buttons", WIDGET_TEXT);
+    mPortMenu->AddWidget(path,
+                         "Keyboard: Move: W,A,S,D, Up: Space, Down: Shift\n  Faster: Ctrl, Look: Right-mouse button\n  "
+                         "Target Player Mode: F, Next: M, Previous: N",
+                         WIDGET_TEXT);
+    mPortMenu->AddWidget(path,
+                         "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: "
+                         "Left DPad\n  Driving Mode: L and R Buttons",
+                         WIDGET_TEXT);
     mPortMenu->AddWidget(path, "Enable Freecam", WIDGET_CVAR_CHECKBOX)
         .CVar("gFreecam")
-        .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}));
+        .Options(UIWidgets::CheckboxOptions({ { .tooltip = "Allows you to fly around the course" } }));
 
     mPortMenu->AddWidget(path, "Camera Damping", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gDampValue)
@@ -86,8 +92,7 @@ void RegisterFreecamWidgets() {
         .Options(UIWidgets::FloatSliderOptions().Min(0.0f).Max(1.0f).Step(0.01f).Format("%.2f"));
 
     mPortMenu->AddWidget(path, "Target Player", WIDGET_TEXT);
-    mPortMenu->AddWidget(path, "None", WIDGET_BUTTON)
-        .Callback([](WidgetInfo& info) { fTargetPlayer = false; });
+    mPortMenu->AddWidget(path, "None", WIDGET_BUTTON).Callback([](WidgetInfo& info) { fTargetPlayer = false; });
 
     mPortMenu->AddWidget(path, "Player 1", WIDGET_BUTTON)
         .PreFunc([](WidgetInfo& info) {

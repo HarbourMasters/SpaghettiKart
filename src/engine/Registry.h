@@ -13,7 +13,7 @@
 //   public:
 //   Registry();
 //   void Add(std::string name, std::function<T*()>);
-  
+
 //   template <typename... Args>
 //   void AddArgs(std::string id);
 //   T* Get(std::string id);

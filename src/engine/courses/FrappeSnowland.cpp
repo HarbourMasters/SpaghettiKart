@@ -13,30 +13,30 @@
 #include "assets/boo_frames.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "update_objects.h"
-    #include "course_offsets.h"
-    #include "course.h"
-    extern const char *d_course_frappe_snowland_dl_list[];
-    extern s8 gPlayerCount;
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "update_objects.h"
+#include "course_offsets.h"
+#include "course.h"
+extern const char* d_course_frappe_snowland_dl_list[];
+extern s8 gPlayerCount;
 }
 
 const course_texture frappe_snowland_textures[] = {
@@ -62,7 +62,7 @@ FrappeSnowland::FrappeSnowland() {
     Props.Minimap.PlayerScaleFactor = 0.016f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
-    Props.Minimap.Colour = {72, 100, 255};
+    Props.Minimap.Colour = { 72, 100, 255 };
 
     Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
@@ -76,7 +76,7 @@ FrappeSnowland::FrappeSnowland() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {0x2EE, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x2EE, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -98,12 +98,12 @@ FrappeSnowland::FrappeSnowland() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_frappe_snowland_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_frappe_snowland_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_frappe_snowland_track_waypoints);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_frappe_snowland_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -111,14 +111,14 @@ FrappeSnowland::FrappeSnowland() {
     Props.Clouds = NULL; // not used for frappe
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {28, 11, 90};
-    Props.Skybox.BottomRight = {0, 99, 164};
-    Props.Skybox.BottomLeft = {0, 9, 164};
-    Props.Skybox.TopLeft = {28, 11, 90};
-    Props.Skybox.FloorTopRight = {0, 99, 164};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {0, 99, 164};
+    Props.Skybox.TopRight = { 28, 11, 90 };
+    Props.Skybox.BottomRight = { 0, 99, 164 };
+    Props.Skybox.BottomLeft = { 0, 9, 164 };
+    Props.Skybox.TopLeft = { 28, 11, 90 };
+    Props.Skybox.FloorTopRight = { 0, 99, 164 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 0, 99, 164 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -50.0f;
@@ -127,7 +127,7 @@ FrappeSnowland::FrappeSnowland() {
 void FrappeSnowland::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
 }
 
@@ -137,8 +137,8 @@ void FrappeSnowland::LoadTextures() {
 }
 
 void FrappeSnowland::BeginPlay() {
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
+    spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {
         gWorldInstance.AddObject(new OSnowman(FVector(697, 0, -1684)));
@@ -225,7 +225,7 @@ void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void FrappeSnowland::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_frappe_snowland_dl_76A0));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_frappe_snowland_dl_76A0));
 }
 
 void FrappeSnowland::Waypoints(Player* player, int8_t playerId) {

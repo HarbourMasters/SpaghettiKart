@@ -21,7 +21,8 @@ extern "C" {
 #include "mario_raceway_data.h"
 }
 
-World::World() {}
+World::World() {
+}
 
 Course* CurrentCourse;
 Cup* CurrentCup;
@@ -38,7 +39,8 @@ void World::SetCourseFromCup() {
     CurrentCourse = CurrentCup->GetCourse();
 }
 
-TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius) {
+TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius,
+                                  f32 exitRadius) {
     auto crossing = std::make_shared<TrainCrossing>(position, waypointMin, waypointMax, approachRadius, exitRadius);
     Crossings.push_back(crossing);
     return crossing.get();
@@ -119,11 +121,12 @@ AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
 
     if (actor->Model != NULL) {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*)&actor->Rot, &actor->Scale,
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*) &actor->Rot, &actor->Scale,
                           (Gfx*) LOAD_ASSET_RAW(actor->Model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT,
                           0.0f, (int32_t*) &actor->Type, 0);
     } else {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*)&actor->Rot, &actor->Scale, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
+        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*) &actor->Rot, &actor->Scale, nullptr, 1.0f,
+                          Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->Type, 0);
     }
     return Actors.back();
 }
@@ -139,9 +142,12 @@ struct Actor* World::AddBaseActor() {
 
 void World::AddEditorObject(Actor* actor, const char* name) {
     if (actor->model != NULL) {
-        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*)&actor->rot, nullptr, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*) &actor->rot, nullptr,
+                          (Gfx*) LOAD_ASSET_RAW(actor->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT,
+                          0.0f, (int32_t*) &actor->type, 0);
     } else {
-        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*)&actor->rot, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
+        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*) &actor->rot, nullptr, nullptr, 1.0f,
+                          Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->type, 0);
     }
 }
 
@@ -152,7 +158,7 @@ AActor* World::ConvertActorToAActor(Actor* actor) {
     // Move the ptr back so that it points at the vtable.
     // Which is the initial item in the class, or in other words
     // Point to the class.
-    return reinterpret_cast<AActor*>((char*)actor - sizeof(void*));
+    return reinterpret_cast<AActor*>((char*) actor - sizeof(void*));
 }
 
 /**
@@ -161,7 +167,7 @@ AActor* World::ConvertActorToAActor(Actor* actor) {
 Actor* World::ConvertAActorToActor(AActor* actor) {
     // Move the ptr forward past the vtable.
     // This allows C to access the class variables like a normal Actor* struct.
-    return reinterpret_cast<Actor*>((char*)actor + sizeof(void*));
+    return reinterpret_cast<Actor*>((char*) actor + sizeof(void*));
 }
 
 AActor* World::GetActor(size_t index) {
@@ -177,16 +183,18 @@ void World::TickActors() {
     }
 }
 
-StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision) {
+StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale,
+                                           std::string model, int32_t* collision) {
     StaticMeshActors.push_back(new StaticMeshActor(name, pos, rot, scale, model, collision));
     auto actor = StaticMeshActors.back();
-    auto gameObj = gEditor.AddObject(actor->Name.c_str(), &actor->Pos, &actor->Rot, &actor->Scale, (Gfx*) LOAD_ASSET_RAW(actor->Model.c_str()), 1.0f,
-                      Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) true);
+    auto gameObj = gEditor.AddObject(
+        actor->Name.c_str(), &actor->Pos, &actor->Rot, &actor->Scale, (Gfx*) LOAD_ASSET_RAW(actor->Model.c_str()), 1.0f,
+        Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) true);
     return actor;
 }
 
 void World::DrawStaticMeshActors() {
-    for (const auto& actor: StaticMeshActors) {
+    for (const auto& actor : StaticMeshActors) {
         actor->Draw();
     }
 }
@@ -194,10 +202,10 @@ void World::DrawStaticMeshActors() {
 void World::DeleteStaticMeshActors() {
     for (auto it = StaticMeshActors.begin(); it != StaticMeshActors.end();) {
         if ((*it)->bPendingDestroy) {
-            delete *it;  // Deallocate memory for the actor
-            it = StaticMeshActors.erase(it);  // Remove the pointer from the vector
+            delete *it;                      // Deallocate memory for the actor
+            it = StaticMeshActors.erase(it); // Remove the pointer from the vector
         } else {
-            ++it;  // Only increment the iterator if we didn't erase an element
+            ++it; // Only increment the iterator if we didn't erase an element
         }
     }
 }
@@ -209,9 +217,13 @@ OObject* World::AddObject(OObject* object) {
         Object* cObj = &gObjectList[object->_objectIndex];
 
         if (cObj->model != NULL) {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*)&cObj->orientation, nullptr, (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*) &cObj->orientation, nullptr,
+                              (Gfx*) LOAD_ASSET_RAW(cObj->model), 1.0f,
+                              Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
         } else {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*)&cObj->orientation, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
+            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*) &cObj->orientation, nullptr,
+                              nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f,
+                              &object->_objectIndex, -1);
         }
     }
 
@@ -228,7 +240,7 @@ void World::TickObjects() {
 // This is a fallback to support those objects. Probably don't use this.
 void World::TickObjects60fps() {
     for (const auto& object : Objects) {
-       object->Tick60fps();
+        object->Tick60fps();
     }
 }
 
@@ -239,19 +251,19 @@ ParticleEmitter* World::AddEmitter(ParticleEmitter* emitter) {
 
 void World::DrawObjects(s32 cameraId) {
     for (const auto& object : Objects) {
-       object->Draw(cameraId);
+        object->Draw(cameraId);
     }
 }
 
 void World::TickParticles() {
     for (const auto& emitter : Emitters) {
-       emitter->Tick();
+        emitter->Tick();
     }
 }
 
 void World::DrawParticles(s32 cameraId) {
     for (const auto& emitter : Emitters) {
-       emitter->Draw(cameraId);
+        emitter->Draw(cameraId);
     }
 }
 
@@ -263,8 +275,8 @@ void World::Reset() {
 }
 
 Object* World::GetObjectByIndex(size_t index) {
-    //if (index < this->Objects.size()) {
-        // Assuming GameActor::a is accessible, use reinterpret_cast if needed
+    // if (index < this->Objects.size()) {
+    //  Assuming GameActor::a is accessible, use reinterpret_cast if needed
     //    return reinterpret_cast<Object*>(&this->Objects[index]->o);
     //}
     return nullptr; // Or handle the error as needed

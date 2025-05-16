@@ -14,7 +14,7 @@ ABanana::ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const 
     Name = "Banana";
     // Initialize the BananaActor's position, rotation, and velocity
     std::copy(pos, pos + 3, Pos);
-    //std::copy(rot, rot + 3, this->a.rot);
+    // std::copy(rot, rot + 3, this->a.rot);
     std::copy(velocity, velocity + 3, Velocity);
 
     Type = 6; // ACTOR_BANANA
@@ -23,8 +23,8 @@ ABanana::ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const 
     State = HELD_BANANA;
 
     PlayerId = playerId;
-    
-    //this->a.unk_08 = 0.0f;
+
+    // this->a.unk_08 = 0.0f;
     Flags |= 0x4000 | 0x1000;
     BoundingBoxSize = 2.0f;
 
@@ -48,14 +48,16 @@ ABanana::ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const 
     Unk30.orientationVector[2] = 0.0f;
 }
 
-void ABanana::Tick() { 
-    update_actor_banana((BananaActor*)this);
+void ABanana::Tick() {
+    update_actor_banana((BananaActor*) this);
 }
 
-void ABanana::Draw(Camera *camera) {
-    render_actor_banana(camera, NULL, (BananaActor*)this);
+void ABanana::Draw(Camera* camera) {
+    render_actor_banana(camera, NULL, (BananaActor*) this);
 }
-void ABanana::Collision(Player* player, AActor*) { }
-void ABanana::Destroy() { }
+void ABanana::Collision(Player* player, AActor*) {
+}
+void ABanana::Destroy() {
+}
 
-//void ABanana::Held() {}
+// void ABanana::Held() {}

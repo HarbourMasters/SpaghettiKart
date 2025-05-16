@@ -5,7 +5,7 @@
 #include "tinyxml2.h"
 
 extern "C" {
-//#include "memory.h" // Removed to prevent C linkage errors likely related with #include common_structs.h
+// #include "memory.h" // Removed to prevent C linkage errors likely related with #include common_structs.h
 void* segmented_uintptr_t_to_virtual(uintptr_t);
 }
 
@@ -39,12 +39,12 @@ ResourceFactoryBinaryTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> f
 
 std::shared_ptr<Ship::IResource>
 ResourceFactoryXMLTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                                   std::shared_ptr<Ship::ResourceInitData> initData) {
+                                                std::shared_ptr<Ship::ResourceInitData> initData) {
 
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
-    
+
     auto section = std::make_shared<TrackSectionsO2RClass>(initData);
     auto child = std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement("TrackSections");
 

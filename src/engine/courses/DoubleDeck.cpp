@@ -9,27 +9,27 @@
 #include "assets/double_deck_data.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    extern const char *double_deck_dls[];
-    extern s16 currentScreenSection;
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+extern const char* double_deck_dls[];
+extern s16 currentScreenSection;
 }
 
 const course_texture double_deck_textures[] = {
@@ -58,7 +58,6 @@ DoubleDeck::DoubleDeck() {
     Props.SetText(Props.DebugName, "deck", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
 
-
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;
     Props.AIMinimumSeparation = 0.5f;
@@ -67,7 +66,7 @@ DoubleDeck::DoubleDeck() {
     Props.NearPersp = 2.0f;
     Props.FarPersp = 1500.0f;
 
-    Props.PathSizes = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -102,21 +101,21 @@ DoubleDeck::DoubleDeck() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {113, 70, 255};
-    Props.Skybox.BottomRight = {255, 184, 99};
-    Props.Skybox.BottomLeft = {255, 184, 99};
-    Props.Skybox.TopLeft = {113, 70, 255};
-    Props.Skybox.FloorTopRight = {255, 224, 240};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {255, 224, 240};
+    Props.Skybox.TopRight = { 113, 70, 255 };
+    Props.Skybox.BottomRight = { 255, 184, 99 };
+    Props.Skybox.BottomLeft = { 255, 184, 99 };
+    Props.Skybox.TopLeft = { 113, 70, 255 };
+    Props.Skybox.FloorTopRight = { 255, 224, 240 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 255, 224, 240 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_CHOCO_MOUNTAIN;
 }
 
 void DoubleDeck::Load() {
     Course::Load();
 
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x07000738), 1);
+    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07000738), 1);
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
@@ -125,7 +124,7 @@ void DoubleDeck::LoadTextures() {
 }
 
 void DoubleDeck::BeginPlay() {
-    spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_double_deck_item_box_spawns));
+    spawn_all_item_boxes((ActorSpawnData*) LOAD_ASSET_RAW(d_course_double_deck_item_box_spawns));
 
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
@@ -140,13 +139,17 @@ void DoubleDeck::BeginPlay() {
     }
 }
 
-void DoubleDeck::InitCourseObjects() {}
+void DoubleDeck::InitCourseObjects() {
+}
 
-void DoubleDeck::SomeSounds() {}
+void DoubleDeck::SomeSounds() {
+}
 
-void DoubleDeck::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void DoubleDeck::WhatDoesThisDo(Player* player, int8_t playerId) {
+}
 
-void DoubleDeck::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void DoubleDeck::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+}
 
 void DoubleDeck::Render(struct UnkStruct_800DC5EC* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
@@ -155,14 +158,16 @@ void DoubleDeck::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_double_deck_packed_dl_738
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07000738)));
+    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000738)));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void DoubleDeck::RenderCredits() {}
+void DoubleDeck::RenderCredits() {
+}
 
 void DoubleDeck::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = 0;
 }
 
-void DoubleDeck::Destroy() { }
+void DoubleDeck::Destroy() {
+}

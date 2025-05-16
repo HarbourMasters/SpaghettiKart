@@ -1582,10 +1582,11 @@ void ceremony_transition_sliding_borders(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPSetFillColor(gDisplayListHead++, (GPACK_RGBA5551(0, 0, 0, 1) << 16 | GPACK_RGBA5551(0, 0, 0, 1)));
 
-    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 0, OTRGetGameRenderWidth(), (s32)lry);
-    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), (s32)uly, OTRGetGameRenderWidth(), 239);
-    //gDPFillRectangle(gDisplayListHead++, 0, 0, 319, (s32) lry);
-    //gDPFillRectangle(gDisplayListHead++, 0, (s32) uly, 319, 239);
+    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 0, OTRGetGameRenderWidth(), (s32) lry);
+    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), (s32) uly, OTRGetGameRenderWidth(),
+                         239);
+    // gDPFillRectangle(gDisplayListHead++, 0, 0, 319, (s32) lry);
+    // gDPFillRectangle(gDisplayListHead++, 0, (s32) uly, 319, 239);
 
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
     adjust_f32_value_transition(&gSizeSlidingBorders, gOrderedSizeSlidingBorders, D_802856BC / D_802856B4);

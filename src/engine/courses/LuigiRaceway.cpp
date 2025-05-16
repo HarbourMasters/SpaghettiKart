@@ -145,7 +145,7 @@ LuigiRaceway::LuigiRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.CloudTexture = (u8*)LOAD_ASSET_RAW(gTextureExhaust2);
+    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust2);
     Props.Clouds = gLuigiRacewayClouds;
     Props.CloudList = gLuigiRacewayClouds;
 

@@ -12,29 +12,29 @@
 #include "assets/koopa_troopa_beach_data.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "code_8003DC40.h"
-    #include "memory.h"
-    #include "course.h"
-    extern const char *koopa_troopa_beach_dls[];
-    extern s8 gPlayerCount;
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "code_8003DC40.h"
+#include "memory.h"
+#include "course.h"
+extern const char* koopa_troopa_beach_dls[];
+extern s8 gPlayerCount;
 }
 
 const course_texture koopa_troopa_beach_textures[] = {
@@ -86,7 +86,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.NearPersp = 1.0f;
     Props.FarPersp = 5000.0f;
 
-    Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -108,13 +108,13 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints);
-    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints_2);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints);
+    Props.PathTable2[1] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints_2);
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
@@ -122,30 +122,30 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Clouds = gKoopaTroopaBeachClouds;
     Props.CloudList = gKoopaTroopaBeachClouds;
 
-    Props.Skybox.TopRight = {48, 152, 120};
-    Props.Skybox.BottomRight = {216, 232, 248};
-    Props.Skybox.BottomLeft = {216, 232, 248};
-    Props.Skybox.TopLeft = {48, 152, 120};
-    Props.Skybox.FloorTopRight = {48, 152, 120};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {48, 152, 120};
+    Props.Skybox.TopRight = { 48, 152, 120 };
+    Props.Skybox.BottomRight = { 216, 232, 248 };
+    Props.Skybox.BottomLeft = { 216, 232, 248 };
+    Props.Skybox.TopLeft = { 48, 152, 120 };
+    Props.Skybox.FloorTopRight = { 48, 152, 120 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 48, 152, 120 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_KOOPA_TROOPA_BEACH;
 
     Props.WaterLevel = 0.0f;
     gWaterVelocity = -0.1f;
-    WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
+    WaterVolumes.push_back({ 0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f });
 }
 
 void KoopaTroopaBeach::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07009E70), -0x6A, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x0700ADE0), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x0700A540), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07009E70), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000358), -0x6A, 255, 255, 255);
 }
 
 void KoopaTroopaBeach::LoadTextures() {
@@ -153,8 +153,8 @@ void KoopaTroopaBeach::LoadTextures() {
 
 void KoopaTroopaBeach::BeginPlay() {
     init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));
-    spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));
+    spawn_palm_trees((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 
     if (gGamestate != CREDITS_SEQUENCE) {
         gWorldInstance.AddObject(new OCrab(FVector2D(-1809, 625), FVector2D(-1666, 594)));
@@ -201,24 +201,24 @@ void KoopaTroopaBeach::InitCourseObjects() {
 
 void KoopaTroopaBeach::UpdateCourseObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
-        //update_crabs();
+        // update_crabs();
     }
     if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-        //update_seagulls();
+        // update_seagulls();
     }
 }
 
 void KoopaTroopaBeach::RenderCourseObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
-        //render_object_crabs(cameraId);
+        // render_object_crabs(cameraId);
     }
     if (gGamestate != CREDITS_SEQUENCE) {
 
         if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-            //render_object_seagulls(cameraId);
+            // render_object_seagulls(cameraId);
         }
     } else {
-        //render_object_seagulls(cameraId);
+        // render_object_seagulls(cameraId);
     }
 }
 
@@ -227,9 +227,11 @@ void KoopaTroopaBeach::SomeSounds() {
     func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
 }
 
-void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {
+}
 
-void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+}
 
 void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
@@ -247,7 +249,7 @@ void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009688)));
-    render_course_segments((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
+    render_course_segments((const char**) d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -258,10 +260,11 @@ void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void KoopaTroopaBeach::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_koopa_troopa_beach_dl_18D68));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_koopa_troopa_beach_dl_18D68));
 }
 
-void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+void KoopaTroopaBeach::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
+                                          f32* arg6, f32* arg7) {
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
@@ -286,9 +289,9 @@ void KoopaTroopaBeach::ScrollingTextures() {
     }
     // waterfall animation
     // d_course_koopa_troopa_beach_packed_dl_9D58
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009D58)), 0, D_802B87BC);
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009D58)), 0, D_802B87BC);
     // d_course_koopa_troopa_beach_packed_dl_9CD0
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009CD0)), 0, D_802B87C4);
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009CD0)), 0, D_802B87C4);
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
@@ -297,11 +300,12 @@ void KoopaTroopaBeach::ScrollingTextures() {
     }
     // Waterfall bubbling effect? (unused)
     // d_course_koopa_troopa_beach_packed_dl_2E8
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070002E8)), D_802B87C8, D_802B87CC);
-
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070002E8)), D_802B87C8,
+                           D_802B87CC);
 }
 
-void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                                 uint16_t playerDirection) {
     Mat4 matrix;
     Vec3f vector;
 
@@ -321,7 +325,7 @@ void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pat
         case 37:
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             // d_course_koopa_troopa_beach_packed_dl_9E70
-            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07009E70));
+            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x07009E70));
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             break;
     }
@@ -335,11 +339,12 @@ void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pat
     gDPSetBlendMask(gDisplayListHead++, 0xFF);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    render_course_segments((const char**)koopa_troopa_beach_dls2, screen);
+    render_course_segments((const char**) koopa_troopa_beach_dls2, screen);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
     gDPPipeSync(gDisplayListHead++);
 }
 
-void KoopaTroopaBeach::Destroy() {}
+void KoopaTroopaBeach::Destroy() {
+}

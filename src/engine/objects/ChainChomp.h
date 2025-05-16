@@ -21,9 +21,8 @@ extern "C" {
  * Animation crash for custom courses
  */
 class OChainChomp : public OObject {
-public:
+  public:
     explicit OChainChomp();
-
 
     ~OChainChomp() {
         _count--;
@@ -40,7 +39,7 @@ public:
     void func_80085878(s32 objectIndex, s32 arg1);
     void func_800859C8(s32 objectIndex, s32 arg1);
 
-private:
+  private:
     FVector _pos;
     static size_t _count;
     size_t _idx;

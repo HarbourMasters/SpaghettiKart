@@ -91,7 +91,7 @@ void freecam(Camera* camera, Player* player, s8 index) {
 
 void on_freecam(void) {
     gIsHUDVisible = false;
-   // gPlayerOne->type |= PLAYER_KART_AI;
+    // gPlayerOne->type |= PLAYER_KART_AI;
 }
 
 void off_freecam(void) {
@@ -132,29 +132,31 @@ void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
 
     if (bFreecamUseController) {
         // Controller controls
-            f32 stickX = ((f32)fController.rightRawStickX);
-            f32 stickY = ((f32)fController.rightRawStickY);
+        f32 stickX = ((f32) fController.rightRawStickX);
+        f32 stickY = ((f32) fController.rightRawStickY);
 
-            // Sensitivity multipliers
-            float controllerSensitivityX = 5.0f; // Adjust as needed
-            float controllerSensitivityY = 3.0f;
+        // Sensitivity multipliers
+        float controllerSensitivityX = 5.0f; // Adjust as needed
+        float controllerSensitivityY = 3.0f;
 
-            // Deadzone handling (ignore tiny stick movements)
-            const float deadzone = 0.1f;
-            if (fabs(stickX) < deadzone) stickX = 0.0f;
-            if (fabs(stickY) < deadzone) stickY = 0.0f;
+        // Deadzone handling (ignore tiny stick movements)
+        const float deadzone = 0.1f;
+        if (fabs(stickX) < deadzone)
+            stickX = 0.0f;
+        if (fabs(stickY) < deadzone)
+            stickY = 0.0f;
 
-            // Instead of adding, directly set rotation velocity (so holding gives a steady rotation)
-            freeCam.rotVelocity[1] += stickX * controllerSensitivityX;  // Yaw (left/right)
-            freeCam.rotVelocity[2] += stickY * controllerSensitivityY;  // Pitch (up/down)
-    } else { // Mouse controls
+        // Instead of adding, directly set rotation velocity (so holding gives a steady rotation)
+        freeCam.rotVelocity[1] += stickX * controllerSensitivityX; // Yaw (left/right)
+        freeCam.rotVelocity[2] += stickY * controllerSensitivityY; // Pitch (up/down)
+    } else {                                                       // Mouse controls
         // Calculate yaw (left/right) and pitch (up/down) changes
         if (wnd->GetMouseState(Ship::LUS_MOUSE_BTN_RIGHT)) {
             yawChange = mouse.x * MOUSE_SENSITIVITY_X;
             pitchChange = mouse.y * MOUSE_SENSITIVITY_Y;
         }
         // Update rotational velocity based on mouse movement
-        freeCam.rotVelocity[1] += yawChange * 65535.0f / (2 * M_PI);  // Yaw (left/right)
+        freeCam.rotVelocity[1] += yawChange * 65535.0f / (2 * M_PI);   // Yaw (left/right)
         freeCam.rotVelocity[2] += pitchChange * 65535.0f / (2 * M_PI); // Pitch (up/down)
     }
 }
@@ -249,7 +251,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
             Up = true;
         }
         if (fController.button & Z_TRIG) {
-           FastMove = true;
+            FastMove = true;
         }
     }
     // Keyboard and mouse DX
@@ -398,8 +400,8 @@ void freecam_render_setup(void) {
     func_80057FC4(0);
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect,
-                  CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp,
+                  CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, (&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxLookAt[0], camera1->pos[0], camera1->pos[1], camera1->pos[2], camera1->lookAt[0],

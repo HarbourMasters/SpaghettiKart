@@ -11,7 +11,6 @@
 #include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
 #include <window/Window.h>
 
-
 #include "engine/actors/Ship.h"
 #include "port/Game.h"
 #include "Handles.h"
@@ -30,51 +29,51 @@ namespace Editor {
 void Gizmo::Load() {
     /* Translate handle collision */
     RedCollision.Pos = &Pos;
-    RedCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_red";
+    RedCollision.Model = (Gfx*) "__OTR__editor/gizmo/translate_handle_red";
 
     GreenCollision.Pos = &Pos;
-    GreenCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_green";
+    GreenCollision.Model = (Gfx*) "__OTR__editor/gizmo/translate_handle_green";
 
     BlueCollision.Pos = &Pos;
-    BlueCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_blue";
+    BlueCollision.Model = (Gfx*) "__OTR__editor/gizmo/translate_handle_blue";
 
     /* Rotate handle collision */
     RedRotateCollision.Pos = &Pos;
-    RedRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_red";
+    RedRotateCollision.Model = (Gfx*) "__OTR__editor/gizmo/rot_handle_red";
 
     GreenRotateCollision.Pos = &Pos;
-    GreenRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_green";
+    GreenRotateCollision.Model = (Gfx*) "__OTR__editor/gizmo/rot_handle_green";
 
     BlueRotateCollision.Pos = &Pos;
-    BlueRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
+    BlueRotateCollision.Model = (Gfx*) "__OTR__editor/gizmo/rot_handle_blue";
 
     /* Scale handle collision */
     RedScaleCollision.Pos = &Pos;
-    RedScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_red";
+    RedScaleCollision.Model = (Gfx*) "__OTR__editor/gizmo/scale_handle_red";
 
     GreenScaleCollision.Pos = &Pos;
-    GreenScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_green";
+    GreenScaleCollision.Model = (Gfx*) "__OTR__editor/gizmo/scale_handle_green";
 
     BlueScaleCollision.Pos = &Pos;
-    BlueScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_blue";
+    BlueScaleCollision.Model = (Gfx*) "__OTR__editor/gizmo/scale_handle_blue";
 
-    GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 1.0f);
-    GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 1.0f);
-    GenerateCollisionMesh(&BlueCollision, (Gfx*)LOAD_ASSET_RAW(BlueCollision.Model), 1.0f);
+    GenerateCollisionMesh(&RedCollision, (Gfx*) LOAD_ASSET_RAW(RedCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenCollision, (Gfx*) LOAD_ASSET_RAW(GreenCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueCollision, (Gfx*) LOAD_ASSET_RAW(BlueCollision.Model), 1.0f);
 
-    GenerateCollisionMesh(&RedRotateCollision, (Gfx*)LOAD_ASSET_RAW(RedRotateCollision.Model), 1.0f);
-    GenerateCollisionMesh(&GreenRotateCollision, (Gfx*)LOAD_ASSET_RAW(GreenRotateCollision.Model), 1.0f);
-    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*)LOAD_ASSET_RAW(BlueRotateCollision.Model), 1.0f);
+    GenerateCollisionMesh(&RedRotateCollision, (Gfx*) LOAD_ASSET_RAW(RedRotateCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenRotateCollision, (Gfx*) LOAD_ASSET_RAW(GreenRotateCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueRotateCollision, (Gfx*) LOAD_ASSET_RAW(BlueRotateCollision.Model), 1.0f);
 
-    GenerateCollisionMesh(&RedScaleCollision, (Gfx*)LOAD_ASSET_RAW(RedScaleCollision.Model), 1.0f);
-    GenerateCollisionMesh(&GreenScaleCollision, (Gfx*)LOAD_ASSET_RAW(GreenScaleCollision.Model), 1.0f);
-    GenerateCollisionMesh(&BlueScaleCollision, (Gfx*)LOAD_ASSET_RAW(BlueScaleCollision.Model), 1.0f);
+    GenerateCollisionMesh(&RedScaleCollision, (Gfx*) LOAD_ASSET_RAW(RedScaleCollision.Model), 1.0f);
+    GenerateCollisionMesh(&GreenScaleCollision, (Gfx*) LOAD_ASSET_RAW(GreenScaleCollision.Model), 1.0f);
+    GenerateCollisionMesh(&BlueScaleCollision, (Gfx*) LOAD_ASSET_RAW(BlueScaleCollision.Model), 1.0f);
 }
 
 void Gizmo::Tick() {
     if (Enabled) {
         TranslationMode mode = static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0));
-        switch(mode) {
+        switch (mode) {
             case TranslationMode::Move:
                 Gizmo::Translate();
                 break;
@@ -92,20 +91,12 @@ void Gizmo::Tick() {
 void Gizmo::SetGizmo(GameObject* object, Ray ray) {
     _selected = object;
     _ray = ray.Direction;
-    Pos = FVector(
-        object->Pos->x,
-        object->Pos->y,
-        object->Pos->z
-    );
+    Pos = FVector(object->Pos->x, object->Pos->y, object->Pos->z);
 }
 
 void Gizmo::SetGizmoNoCursor(GameObject* object) {
     _selected = object;
-    Pos = FVector(
-        object->Pos->x,
-        object->Pos->y,
-        object->Pos->z
-    );
+    Pos = FVector(object->Pos->x, object->Pos->y, object->Pos->z);
 }
 
 void Gizmo::Translate() {
@@ -117,13 +108,10 @@ void Gizmo::Translate() {
     }
 
     if (Enabled) {
-        length = sqrt(
-            pow(_selected->Pos->x - cameras[0].pos[0], 2) +
-            pow(_selected->Pos->y - cameras[0].pos[1], 2) +
-            pow(_selected->Pos->z - cameras[0].pos[2], 2)
-        );
+        length = sqrt(pow(_selected->Pos->x - cameras[0].pos[0], 2) + pow(_selected->Pos->y - cameras[0].pos[1], 2) +
+                      pow(_selected->Pos->z - cameras[0].pos[2], 2));
 
-        switch(SelectedHandle) {
+        switch (SelectedHandle) {
             case GizmoHandle::All_Axis:
                 _selected->Pos->x = (cameras[0].pos[0] + _ray.x * PickDistance) + _cursorOffset.x;
                 _selected->Pos->y = (cameras[0].pos[1] + _ray.y * PickDistance) + _cursorOffset.y;
@@ -160,11 +148,7 @@ void Gizmo::Translate() {
             _selected->Pos->z = MIN(_selected->Pos->z, dimensions.MaxZ);
         }
 
-        Pos = FVector(
-            _selected->Pos->x,
-            _selected->Pos->y,
-            _selected->Pos->z
-        );
+        Pos = FVector(_selected->Pos->x, _selected->Pos->y, _selected->Pos->z);
     }
 }
 
@@ -189,7 +173,7 @@ void Gizmo::Rotate() {
     // Store initial scale at the beginning of the drag
     if (ManipulationStart) {
         ManipulationStart = false;
-        InitialRotation = *_selected->Rot;  // Store initial rotation
+        InitialRotation = *_selected->Rot; // Store initial rotation
     }
 
     // Initial click position
@@ -202,13 +186,13 @@ void Gizmo::Rotate() {
     diff = diff * 100.0f;
     switch (SelectedHandle) {
         case GizmoHandle::X_Axis:
-            _selected->Rot->pitch = (uint16_t)InitialRotation.pitch + diff.x;
+            _selected->Rot->pitch = (uint16_t) InitialRotation.pitch + diff.x;
             break;
         case GizmoHandle::Y_Axis:
-            _selected->Rot->yaw = (uint16_t)InitialRotation.yaw + diff.y;
+            _selected->Rot->yaw = (uint16_t) InitialRotation.yaw + diff.y;
             break;
         case GizmoHandle::Z_Axis:
-            _selected->Rot->roll = (uint16_t)InitialRotation.roll + diff.z;
+            _selected->Rot->roll = (uint16_t) InitialRotation.roll + diff.z;
             break;
     }
 }
@@ -257,20 +241,20 @@ void Gizmo::Scale() {
 void Gizmo::Draw() {
     if (Enabled) {
         DrawHandles();
-        //DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
-        //DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
-        //DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
-        //DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
-        //DebugCollision((uintptr_t)_selected, Pos, BlueRotateCollision.Triangles);
-        //DebugCollision((uintptr_t)_selected, Pos, GreenRotateCollision.Triangles);
+        // DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
+        // DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
+        // DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
+        // DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
+        // DebugCollision((uintptr_t)_selected, Pos, BlueRotateCollision.Triangles);
+        // DebugCollision((uintptr_t)_selected, Pos, GreenRotateCollision.Triangles);
     }
 }
 
 void Gizmo::DrawHandles() {
     Mat4 mainMtx;
-    Editor_MatrixIdentity((float(*)[4])&Mtx_RedX);
-    Editor_MatrixIdentity((float(*)[4])&Mtx_GreenY);
-    Editor_MatrixIdentity((float(*)[4])&Mtx_BlueZ);
+    Editor_MatrixIdentity((float(*)[4]) & Mtx_RedX);
+    Editor_MatrixIdentity((float(*)[4]) & Mtx_GreenY);
+    Editor_MatrixIdentity((float(*)[4]) & Mtx_BlueZ);
 
     const char* blueHandle;
     const char* greenHandle;
@@ -279,18 +263,18 @@ void Gizmo::DrawHandles() {
     IRotator blueRot;
     IRotator greenRot;
     IRotator redRot;
-    FVector scale = {0.05f, 0.05f, 0.05f};
+    FVector scale = { 0.05f, 0.05f, 0.05f };
 
-    switch(static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
+    switch (static_cast<TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
         case TranslationMode::Move:
             center = "__OTR__editor/gizmo/center_handle";
             blueHandle = "__OTR__editor/gizmo/translate_handle_blue";
             greenHandle = "__OTR__editor/gizmo/translate_handle_green";
             redHandle = "__OTR__editor/gizmo/translate_handle_red";
             _gizmoOffset = 8.0f;
-            greenRot = {0, 90, 0};
-            blueRot = {90, 0, 0};
-            scale = {0.3, 0.3, 0.3};
+            greenRot = { 0, 90, 0 };
+            blueRot = { 90, 0, 0 };
+            scale = { 0.3, 0.3, 0.3 };
             break;
         case TranslationMode::Rotate:
             center = nullptr; // No All_Axis drag button for Rotation
@@ -298,7 +282,7 @@ void Gizmo::DrawHandles() {
             greenHandle = "__OTR__editor/gizmo/rot_handle_green";
             redHandle = "__OTR__editor/gizmo/rot_handle_red";
             _gizmoOffset = 0.0f;
-            scale = {0.15f, 0.15f, 0.15f};
+            scale = { 0.15f, 0.15f, 0.15f };
             break;
         case TranslationMode::Scale:
             center = "__OTR__editor/gizmo/center_handle";
@@ -306,13 +290,13 @@ void Gizmo::DrawHandles() {
             greenHandle = "__OTR__editor/gizmo/scale_handle_green";
             redHandle = "__OTR__editor/gizmo/scale_handle_red";
             _gizmoOffset = 8.0f;
-            greenRot = {0, 90, 0};
-            blueRot = {90, 0, 0};
-            scale = {0.05f, 0.05f, 0.05f};
+            greenRot = { 0, 90, 0 };
+            blueRot = { 90, 0, 0 };
+            scale = { 0.05f, 0.05f, 0.05f };
             break;
     }
 
-    ApplyMatrixTransformations(mainMtx, Pos, Rot, {1, 1, 1});
+    ApplyMatrixTransformations(mainMtx, Pos, Rot, { 1, 1, 1 });
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     if (center) {
@@ -330,19 +314,20 @@ void Gizmo::DrawHandles() {
 
         ApplyMatrixTransformations(CenterMtx, Pos, centerRot, FVector(0.06f, 0.06f, 0.06f));
         Editor_AddMatrix(CenterMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, (Gfx*)center);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) center);
     }
 
-    ApplyMatrixTransformations((float(*)[4])&Mtx_RedX, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
-    Editor_AddMatrix((float(*)[4])&Mtx_RedX, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)redHandle);
+    ApplyMatrixTransformations((float(*)[4]) & Mtx_RedX, FVector(Pos.x, Pos.y, Pos.z - _gizmoOffset), Rot, scale);
+    Editor_AddMatrix((float(*)[4]) & Mtx_RedX, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) redHandle);
 
-    ApplyMatrixTransformations((float(*)[4])&Mtx_GreenY, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot, scale);
-    Editor_AddMatrix((float(*)[4])&Mtx_GreenY, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)greenHandle);
+    ApplyMatrixTransformations((float(*)[4]) & Mtx_GreenY, FVector(Pos.x - _gizmoOffset, Pos.y, Pos.z), greenRot,
+                               scale);
+    Editor_AddMatrix((float(*)[4]) & Mtx_GreenY, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) greenHandle);
 
-    ApplyMatrixTransformations((float(*)[4])&Mtx_BlueZ, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
-    Editor_AddMatrix((float(*)[4])&Mtx_BlueZ, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)blueHandle);
+    ApplyMatrixTransformations((float(*)[4]) & Mtx_BlueZ, FVector(Pos.x, Pos.y + _gizmoOffset, Pos.z), blueRot, scale);
+    Editor_AddMatrix((float(*)[4]) & Mtx_BlueZ, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) blueHandle);
 }
-}
+} // namespace Editor

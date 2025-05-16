@@ -53,10 +53,10 @@ typedef struct MinimapProps {
     int16_t Width;
     int16_t Height;
     IVector2D Pos[2]; // Minimap position for players 1 and 2. 3/4 player mode is hard-coded to the center.
-    int32_t PlayerX; // The offset to place the player markers
+    int32_t PlayerX;  // The offset to place the player markers
     int32_t PlayerY;
     float PlayerScaleFactor; // Scale factor of the player markers
-    float FinishlineX; // The offset to place the finishline texture on the minimap
+    float FinishlineX;       // The offset to place the finishline texture on the minimap
     float FinishlineY;
     RGB8 Colour; // Colour of the visible pixels (the track path)
 } MinimapProps;
@@ -82,17 +82,17 @@ typedef struct Properties {
     TrackWaypoint* PathTable[4];
     TrackWaypoint* PathTable2[4];
     uint8_t* CloudTexture;
-    CloudData *Clouds;
-    CloudData *CloudList;
+    CloudData* Clouds;
+    CloudData* CloudList;
     SkyboxColours Skybox;
-    const course_texture *textures;
+    const course_texture* textures;
     enum MusicSeq Sequence;
     float WaterLevel; // Used for effects, and Lakitu pick up height. Not necessarily the visual water model height.
 
 #ifdef __cplusplus
     nlohmann::json to_json() const {
         nlohmann::json j;
-       // j["Id"] = Id ? Id : "";
+        // j["Id"] = Id ? Id : "";
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
         j["CourseLength"] = CourseLength ? CourseLength : "";
@@ -117,21 +117,23 @@ typedef struct Properties {
         j["D_0D009808"] = { D_0D009808[0], D_0D009808[1], D_0D009808[2], D_0D009808[3] };
 
         // Serialize arrays PathTable and PathTable2 (convert pointers into a JSON array if possible)
-        //j["PathTable"] = {{}};
-        //j["PathTable2"] = {{}};
+        // j["PathTable"] = {{}};
+        // j["PathTable2"] = {{}};
         // Populate PathTable and PathTable2
 
-        //j["Clouds"] = Clouds ? nlohmann::json{{"x", Clouds->x, "y", Clouds->y, "z", Clouds->z}} : nullptr;
-        //j["CloudList"] = CloudList ? nlohmann::json{{"x", CloudList->x, "y", CloudList->y, "z", CloudList->z}} : nullptr;
-        
-        j["MinimapPosition"] = {Minimap.Pos[0].X, Minimap.Pos[0].Y};
-        j["MinimapPosition2P"] = {Minimap.Pos[1].X, Minimap.Pos[1].Y};
+        // j["Clouds"] = Clouds ? nlohmann::json{{"x", Clouds->x, "y", Clouds->y, "z", Clouds->z}} : nullptr;
+        // j["CloudList"] = CloudList ? nlohmann::json{{"x", CloudList->x, "y", CloudList->y, "z", CloudList->z}} :
+        // nullptr;
+
+        j["MinimapPosition"] = { Minimap.Pos[0].X, Minimap.Pos[0].Y };
+        j["MinimapPosition2P"] = { Minimap.Pos[1].X, Minimap.Pos[1].Y };
         j["MinimapPlayerX"] = Minimap.PlayerX;
         j["MinimapPlayerY"] = Minimap.PlayerY;
         j["MinimapPlayerScaleFactor"] = Minimap.PlayerScaleFactor;
         j["MinimapFinishlineX"] = Minimap.FinishlineX;
         j["MinimapFinishlineY"] = Minimap.FinishlineY;
-        j["MinimapColour"] = {static_cast<int>(Minimap.Colour.r), static_cast<int>(Minimap.Colour.g), static_cast<int>(Minimap.Colour.b)};
+        j["MinimapColour"] = { static_cast<int>(Minimap.Colour.r), static_cast<int>(Minimap.Colour.g),
+                               static_cast<int>(Minimap.Colour.b) };
         // SkyboxColors - assuming SkyboxColors can be serialized similarly
         // j["Skybox"] = Skybox; // Implement your serialization logic here
         j["Sequence"] = static_cast<int>(Sequence);
@@ -143,16 +145,16 @@ typedef struct Properties {
 
     // Function to load struct from JSON
     void from_json(const nlohmann::json& j) {
-        //Id = j.at("Id").get<std::string>().c_str();
-//        Name = j.at("Name").get<std::string>().c_str();
+        // Id = j.at("Id").get<std::string>().c_str();
+        //        Name = j.at("Name").get<std::string>().c_str();
         strncpy(Name, j.at("Name").get<std::string>().c_str(), sizeof(Name) - 1);
         Name[sizeof(Name) - 1] = '\0'; // Ensure null termination
 
-//        DebugName = j.at("DebugName").get<std::string>().c_str();
+        //        DebugName = j.at("DebugName").get<std::string>().c_str();
         strncpy(DebugName, j.at("DebugName").get<std::string>().c_str(), sizeof(DebugName) - 1);
         DebugName[sizeof(DebugName) - 1] = '\0'; // Ensure null termination
 
-  //      CourseLength = j.at("CourseLength").get<std::string>().c_str();
+        //      CourseLength = j.at("CourseLength").get<std::string>().c_str();
         strncpy(CourseLength, j.at("CourseLength").get<std::string>().c_str(), sizeof(CourseLength) - 1);
         CourseLength[sizeof(CourseLength) - 1] = '\0'; // Ensure null termination
 
@@ -197,11 +199,11 @@ typedef struct Properties {
         D_0D009808[1] = j.at("D_0D009808")[1].get<float>();
         D_0D009808[2] = j.at("D_0D009808")[2].get<float>();
         D_0D009808[3] = j.at("D_0D009808")[3].get<float>();
-        
+
         // Deserialize arrays PathTable and PathTable2 similarly
-        
-        //Clouds = nullptr; // Deserialize if data is present
-        //CloudList = nullptr; // Deserialize if data is present
+
+        // Clouds = nullptr; // Deserialize if data is present
+        // CloudList = nullptr; // Deserialize if data is present
         Minimap.Pos[0].X = j.at("MinimapPosition")[0].get<int32_t>();
         Minimap.Pos[0].Y = j.at("MinimapPosition")[1].get<int32_t>();
         Minimap.Pos[1].X = j.at("MinimapPosition2P")[0].get<int32_t>();
@@ -214,14 +216,14 @@ typedef struct Properties {
         Minimap.Colour.r = j.at("MinimapColour")[0].get<uint8_t>();
         Minimap.Colour.g = j.at("MinimapColour")[1].get<uint8_t>();
         Minimap.Colour.b = j.at("MinimapColour")[2].get<uint8_t>();
-        //textures = nullptr; // Deserialize textures if present
+        // textures = nullptr; // Deserialize textures if present
         Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
         WaterLevel = j.at("WaterLevel").get<float>();
     }
     void SetText(char* name, const char* title, size_t bufferSize) {
         // Copy the title into the name buffer, ensuring it's null-terminated and within bounds
         std::strncpy(name, title, bufferSize - 1);
-        name[bufferSize - 1] = '\0';  // Ensure the string is null-terminated
+        name[bufferSize - 1] = '\0'; // Ensure the string is null-terminated
     }
 
     const char* GetName() {
@@ -243,7 +245,7 @@ class World; // <-- Forward declare
 
 class Course {
 
-public:
+  public:
     std::string Id;
     Properties Props;
 
@@ -266,7 +268,9 @@ public:
 
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
     virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.
-    virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
+    virtual void Load(
+        Vtx* vtx,
+        Gfx* gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
     virtual void LoadTextures();
     virtual void ParseCourseSections(TrackSectionsO2R* sections, size_t size);
 
@@ -278,7 +282,8 @@ public:
     virtual void TestPath();
     virtual void InitClouds();
     virtual void UpdateClouds(s32, Camera*);
-    virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);
+    virtual void SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
+                                    f32* arg7);
     virtual void InitCourseObjects();
     virtual void UpdateCourseObjects();
     virtual void RenderCourseObjects(s32 cameraId);
@@ -292,10 +297,12 @@ public:
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                           uint16_t playerDirection);
     virtual void Destroy();
     virtual bool IsMod();
-private:
+
+  private:
     void Init();
 };
 

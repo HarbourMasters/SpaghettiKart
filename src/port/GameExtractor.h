@@ -6,12 +6,13 @@
 #include <cstdint>
 
 class GameExtractor {
-public:
+  public:
     static bool GenAssetFile();
     std::optional<std::string> ValidateChecksum() const;
     bool SelectGameFromUI();
     bool GenerateOTR() const;
-private:
+
+  private:
     fs::path mGamePath;
     std::vector<uint8_t> mGameData;
 };

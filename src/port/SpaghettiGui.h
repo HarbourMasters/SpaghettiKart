@@ -5,15 +5,17 @@
 #include "libultraship/src/window/Window.h"
 
 class Gui; // <-- forward declare
-//class Window;
+// class Window;
 
 namespace Ship {
-    class SpaghettiGui : public Gui {
-      public:
-        SpaghettiGui() : Gui() {}
-        SpaghettiGui(std::vector<std::shared_ptr<GuiWindow>> guiWindows) : Gui(guiWindows) {}
+class SpaghettiGui : public Gui {
+  public:
+    SpaghettiGui() : Gui() {
+    }
+    SpaghettiGui(std::vector<std::shared_ptr<GuiWindow>> guiWindows) : Gui(guiWindows) {
+    }
 
-      protected:
-        virtual void DrawMenu() override;
-    };
-}
+  protected:
+    virtual void DrawMenu() override;
+};
+} // namespace Ship

@@ -9,8 +9,7 @@ extern "C" {
 }
 
 class AMarioSign : public AActor {
-public:
-
+  public:
     virtual ~AMarioSign() = default;
     explicit AMarioSign(FVector pos);
 

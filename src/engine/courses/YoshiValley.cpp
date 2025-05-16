@@ -14,27 +14,27 @@
 #include "assets/boo_frames.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "course.h"
-    extern const char *d_course_yoshi_valley_dl_list[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "course.h"
+extern const char* d_course_yoshi_valley_dl_list[];
 }
 
 const course_texture yoshi_valley_textures[] = {
@@ -82,7 +82,7 @@ YoshiValley::YoshiValley() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {0x02B2, 0x02A8, 0x02B2, 0x0320, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x02B2, 0x02A8, 0x02B2, 0x0320, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -104,28 +104,28 @@ YoshiValley::YoshiValley() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints);
-    Props.PathTable[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_2);
-    Props.PathTable[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_3);
-    Props.PathTable[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_4);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints);
+    Props.PathTable[1] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_2);
+    Props.PathTable[2] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_3);
+    Props.PathTable[3] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_4);
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints);
-    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_2);
-    Props.PathTable2[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
-    Props.PathTable2[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints);
+    Props.PathTable2[1] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_2);
+    Props.PathTable2[2] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
+    Props.PathTable2[3] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
 
     Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust0);
     Props.Clouds = gYoshiValleyMooMooFarmClouds;
     Props.CloudList = gYoshiValleyMooMooFarmClouds;
 
-    Props.Skybox.TopRight = {113, 70, 255};
-    Props.Skybox.BottomRight = {255, 184, 99};
-    Props.Skybox.BottomLeft = {255, 184, 99};
-    Props.Skybox.TopLeft = {113, 70, 255};
-    Props.Skybox.FloorTopRight = {95, 40, 15};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {95, 40, 15};
+    Props.Skybox.TopRight = { 113, 70, 255 };
+    Props.Skybox.BottomRight = { 255, 184, 99 };
+    Props.Skybox.BottomLeft = { 255, 184, 99 };
+    Props.Skybox.TopLeft = { 113, 70, 255 };
+    Props.Skybox.FloorTopRight = { 95, 40, 15 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 95, 40, 15 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
 }
 
@@ -134,7 +134,7 @@ void YoshiValley::Load() {
 
     Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
     set_track_light_direction(&lights4, -0x38F0, 0x1C70, 1);
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
@@ -148,8 +148,8 @@ void YoshiValley::BeginPlay() {
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
 
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));
+    spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));
     vec3f_set(position, -2300.0f, 0.0f, 634.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
@@ -212,9 +212,11 @@ void YoshiValley::RenderCourseObjects(s32 cameraId) {
 void YoshiValley::SomeSounds() {
 }
 
-void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
+void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {
+}
 
-void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
+void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+}
 
 void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPPipeSync(gDisplayListHead++);
@@ -226,14 +228,15 @@ void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void YoshiValley::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_yoshi_valley_dl_18020));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_yoshi_valley_dl_18020));
 }
 
 void YoshiValley::Waypoints(Player* player, int8_t playerId) {
     player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void YoshiValley::ScrollingTextures() {}
+void YoshiValley::ScrollingTextures() {
+}
 
 void YoshiValley::CreditsSpawnActors() {
     Vec3f position;
@@ -245,4 +248,5 @@ void YoshiValley::CreditsSpawnActors() {
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 }
 
-void YoshiValley::Destroy() {}
+void YoshiValley::Destroy() {
+}

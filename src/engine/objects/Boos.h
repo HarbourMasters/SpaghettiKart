@@ -20,23 +20,24 @@ extern "C" {
 
 /**
  * OBoos
- * 
+ *
  * Args use path indices or path points. Recommended to use a span of 10
  * for each IPathSpan as that's how the original game did it. Ex. IPathSpan(10, 20)
- * 
+ *
  * Once boos are active, they do not deactivate until the player drives into leftBoundary
  * or rightBoundary. leftBoundary is really only used to deactivate the boos when the player is
  * driving in the reverse direction.
- * 
+ *
  * @arg numBoos to show, default 5, maximum 10 allowed due to limited splines
  * @arg leftBoundary When the player enters this area, deactivate the boos.
  * @arg active When the player enters this area, activate the boos.
  * @arg rightBoundary When the player enters this area, deactivate the boos.
- * 
+ *
  */
 class OBoos : public OObject {
-public:
-    explicit OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active, const IPathSpan& rightBoundary);
+  public:
+    explicit OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active,
+                   const IPathSpan& rightBoundary);
 
     ~OBoos() {
         _count--;
@@ -59,7 +60,7 @@ public:
     void BooExit(s32 someIndex);
     void func_8007C550(s32 objectIndex);
 
-private:
+  private:
     FVector _pos;
     static size_t _count;
     size_t _idx;

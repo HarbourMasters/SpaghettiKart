@@ -15,29 +15,29 @@
 #include "engine/objects/GrandPrixBalloons.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "courses/staff_ghost_data.h"
-    #include "podium_ceremony_actors.h"
-    #include "course.h"
-    extern const char *royal_raceway_dls[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "courses/staff_ghost_data.h"
+#include "podium_ceremony_actors.h"
+#include "course.h"
+extern const char* royal_raceway_dls[];
 }
 
 const course_texture podium_ceremony_textures[] = {
@@ -111,7 +111,7 @@ PodiumCeremony::PodiumCeremony() {
     Props.AIMinimumSeparation = 0.4f;
     Props.AISteeringSensitivity = 53;
 
-    Props.PathSizes = {500, 500, 500, 500, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 500, 500, 500, 500, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -133,10 +133,10 @@ PodiumCeremony::PodiumCeremony() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path);
-    Props.PathTable[1] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_2);
-    Props.PathTable[2] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_3);
-    Props.PathTable[3] = (TrackWaypoint*)LOAD_ASSET_RAW(podium_ceremony_path_4);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(podium_ceremony_path);
+    Props.PathTable[1] = (TrackWaypoint*) LOAD_ASSET_RAW(podium_ceremony_path_2);
+    Props.PathTable[2] = (TrackWaypoint*) LOAD_ASSET_RAW(podium_ceremony_path_3);
+    Props.PathTable[3] = (TrackWaypoint*) LOAD_ASSET_RAW(podium_ceremony_path_4);
 
     Props.PathTable2[0] = NULL;
     Props.PathTable2[1] = NULL;
@@ -147,14 +147,14 @@ PodiumCeremony::PodiumCeremony() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {238, 144, 255};
-    Props.Skybox.BottomRight = {255, 224, 240};
-    Props.Skybox.BottomLeft = {255, 224, 240};
-    Props.Skybox.TopLeft = {238, 144, 255};
-    Props.Skybox.FloorTopRight = {255, 224, 240};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {255, 224, 240};
+    Props.Skybox.TopRight = { 238, 144, 255 };
+    Props.Skybox.BottomRight = { 255, 224, 240 };
+    Props.Skybox.BottomLeft = { 255, 224, 240 };
+    Props.Skybox.TopLeft = { 238, 144, 255 };
+    Props.Skybox.FloorTopRight = { 255, 224, 240 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 255, 224, 240 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
 
     Props.WaterLevel = -60.0f;
@@ -163,7 +163,7 @@ PodiumCeremony::PodiumCeremony() {
 void PodiumCeremony::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
 }
 
@@ -171,17 +171,18 @@ void PodiumCeremony::LoadTextures() {
 }
 
 void PodiumCeremony::BeginPlay() {
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
-    spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
+    spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
+    spawn_piranha_plants((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
 
-    gWorldInstance.AddObject(new OCheepCheep(FVector((f32)-3202, (f32)19, (f32)-478), OCheepCheep::CheepType::PODIUM_CEREMONY, IPathSpan(0, 0)));
-    gWorldInstance.AddObject(new OPodium(FVector((f32)-3202, (f32)19, (f32)-478)));
-    
-    FVector pos = {0, 90.0f, 0};
+    gWorldInstance.AddObject(new OCheepCheep(FVector((f32) -3202, (f32) 19, (f32) -478),
+                                             OCheepCheep::CheepType::PODIUM_CEREMONY, IPathSpan(0, 0)));
+    gWorldInstance.AddObject(new OPodium(FVector((f32) -3202, (f32) 19, (f32) -478)));
+
+    FVector pos = { 0, 90.0f, 0 };
 
     OTrophy::TrophyType type = OTrophy::TrophyType::BRONZE;
-    switch(D_802874D8.unk1D) {
+    switch (D_802874D8.unk1D) {
         case 2: // Bronze
             type = gCCSelection == CC_150 ? OTrophy::TrophyType::BRONZE_150 : OTrophy::TrophyType::BRONZE;
             break;
@@ -197,7 +198,8 @@ void PodiumCeremony::BeginPlay() {
             break;
     }
 
-    OTrophy* trophy = reinterpret_cast<OTrophy*>(gWorldInstance.AddObject(new OTrophy(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY)));
+    OTrophy* trophy = reinterpret_cast<OTrophy*>(
+        gWorldInstance.AddObject(new OTrophy(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY)));
 
     FVector kart = { 0, 0, 0 };
     gWorldInstance.AddObject(new OBombKart(kart, &D_80164550[3][3], 3, 5, 1.25f));
@@ -226,8 +228,7 @@ void PodiumCeremony::SomeSounds() {
 }
 
 void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x41);
         }
@@ -241,8 +242,7 @@ void PodiumCeremony::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x41);
         }
@@ -285,7 +285,8 @@ void PodiumCeremony::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void PodiumCeremony::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_royal_raceway_dl_D8E8));
 }
 
-void PodiumCeremony::Destroy() { }
+void PodiumCeremony::Destroy() {
+}

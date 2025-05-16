@@ -1,4 +1,4 @@
- #include <libultraship.h>
+#include <libultraship.h>
 #include <libultra/gbi.h>
 #include <macros.h>
 #include <mk64.h>
@@ -1000,12 +1000,14 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     } else if (temp_s0 < 16) {
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     } else if (temp_s0 < 19) {
-        if (playerDirection != 2)
+        if (playerDirection != 2) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
+        }
 
     } else if (temp_s0 < 20) {
-        if (playerDirection == 0)
+        if (playerDirection == 0) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
+        }
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -1035,8 +1037,9 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     } else if (temp_s0 >= 22) {
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     } else if (temp_s0 >= 18) {
-        if ((playerDirection == 0) || (playerDirection == 3))
+        if ((playerDirection == 0) || (playerDirection == 3)) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
+        }
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);

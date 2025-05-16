@@ -12,8 +12,7 @@ extern "C" {
 }
 
 class ACar : public AActor {
-    public:
-
+  public:
     explicit ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
 
     ~ACar() {
@@ -45,6 +44,7 @@ class ACar : public AActor {
     virtual void Draw(Camera*) override;
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual bool IsMod() override;
-private:
+
+  private:
     static size_t _count;
 };

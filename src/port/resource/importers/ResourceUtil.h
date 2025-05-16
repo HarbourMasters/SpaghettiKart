@@ -20,4 +20,4 @@ template <typename T> T LoadChild(const char* path) {
     auto asset = Ship::Context::GetInstance()->GetResourceManager()->LoadResourceProcess(path);
     return asset ? static_cast<T>(asset->GetRawPointer()) : nullptr;
 }
-}
+} // namespace SM64

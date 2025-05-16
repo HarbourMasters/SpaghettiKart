@@ -18,7 +18,7 @@ extern "C" {
 }
 
 class OTrophy : public OObject {
-public:
+  public:
     enum TrophyType {
         BRONZE,
         SILVER,
@@ -31,7 +31,7 @@ public:
     enum Behaviour {
         PODIUM_CEREMONY,
         STATIONARY,
-        ROTATE, // A dual-axis opposing rotation
+        ROTATE,  // A dual-axis opposing rotation
         ROTATE2, // A single-axis rotation
         GO_FISH,
     };
@@ -45,13 +45,13 @@ public:
     void func_80086C14(s32 objectIndex);
     void func_80086C6C(s32 objectIndex);
 
-private:
+  private:
     StarEmitter* _emitter;
 
     TrophyType _trophy;
     FVector _spawnPos;
     Behaviour _bhv;
-    int8_t *_toggleVisibility;
+    int8_t* _toggleVisibility;
     Vec3f _oldPos;
     bool _isMod = false;
 };

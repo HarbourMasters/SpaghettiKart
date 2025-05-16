@@ -2645,7 +2645,7 @@ void update_course_actors(void) {
 }
 
 const char* get_actor_name(s32 id) {
-    switch(id) {
+    switch (id) {
         case ACTOR_FALLING_ROCK:
             return "Falling Rock";
         case ACTOR_GREEN_SHELL:

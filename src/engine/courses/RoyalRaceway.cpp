@@ -11,28 +11,28 @@
 #include "engine/objects/GrandPrixBalloons.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "courses/staff_ghost_data.h"
-    #include "course.h"
-    extern const char *royal_raceway_dls[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "courses/staff_ghost_data.h"
+#include "course.h"
+extern const char* royal_raceway_dls[];
 }
 
 const course_texture royal_raceway_textures[] = {
@@ -110,7 +110,7 @@ RoyalRaceway::RoyalRaceway() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {0x3E8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x3E8, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -132,12 +132,12 @@ RoyalRaceway::RoyalRaceway() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_royal_raceway_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_royal_raceway_track_waypoints);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_royal_raceway_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -146,14 +146,14 @@ RoyalRaceway::RoyalRaceway() {
     Props.Clouds = gRoyalRacewayClouds;
     Props.CloudList = gRoyalRacewayClouds;
 
-    Props.Skybox.TopRight = {238, 144, 255};
-    Props.Skybox.BottomRight = {255, 224, 240};
-    Props.Skybox.BottomLeft = {255, 224, 240};
-    Props.Skybox.TopLeft = {238, 144, 255};
-    Props.Skybox.FloorTopRight = {255, 224, 240};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {255, 224, 240};
+    Props.Skybox.TopRight = { 238, 144, 255 };
+    Props.Skybox.BottomRight = { 255, 224, 240 };
+    Props.Skybox.BottomLeft = { 255, 224, 240 };
+    Props.Skybox.TopLeft = { 238, 144, 255 };
+    Props.Skybox.FloorTopRight = { 255, 224, 240 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 255, 224, 240 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
 
     Props.WaterLevel = -60.0f;
@@ -162,7 +162,7 @@ RoyalRaceway::RoyalRaceway() {
 void RoyalRaceway::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
 }
 
@@ -181,9 +181,9 @@ void RoyalRaceway::LoadTextures() {
 }
 
 void RoyalRaceway::BeginPlay() {
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
-    spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
+    spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));
+    spawn_piranha_plants((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_royal_raceway_piranha_plant_spawn));
 
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
@@ -211,8 +211,7 @@ void RoyalRaceway::InitCourseObjects() {
 }
 
 void RoyalRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x41);
         }
@@ -226,8 +225,7 @@ void RoyalRaceway::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void RoyalRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x180) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1E1)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x41);
         }
@@ -283,7 +281,7 @@ void RoyalRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void RoyalRaceway::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_royal_raceway_dl_D8E8));
 }
 
 void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
@@ -304,7 +302,7 @@ void RoyalRaceway::ScrollingTextures() {
         D_802B87BC = 0xFF;
     }
     // d_course_royal_raceway_packed_dl_A6A8
-    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*)0x0700A6A8), 0, D_802B87BC);
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*) 0x0700A6A8), 0, D_802B87BC);
     // d_course_royal_raceway_packed_dl_A648
-    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*)0x0700A648), 0, D_802B87BC);
+    find_and_set_tile_size((uintptr_t) segmented_gfx_to_virtual((void*) 0x0700A648), 0, D_802B87BC);
 }

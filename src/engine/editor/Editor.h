@@ -9,10 +9,10 @@
 
 #include "ObjectPicker.h"
 namespace Editor {
-    class ObjectPicker;
+class ObjectPicker;
 
-    class Editor {
-public:
+class Editor {
+  public:
     Editor();
 
     ObjectPicker eObjectPicker;
@@ -20,8 +20,10 @@ public:
 
     void Tick();
     void Draw();
-	void Load();
-    GameObject* AddObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, float collScale, GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
+    void Load();
+    GameObject* AddObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, float collScale,
+                          GameObject::CollisionType collision, float boundingBoxSize, int32_t* despawnFlag,
+                          int32_t despawnValue);
     void AddLight(const char* name, FVector* pos, s8* rot);
     void ClearObjects();
     void RemoveObject();
@@ -31,7 +33,7 @@ public:
     void DeleteObject();
     bool bEditorEnabled = false;
 
-private:
+  private:
     bool _draw = false;
     Vec3f _ray;
 
@@ -39,7 +41,7 @@ private:
     void Copy(MtxF* src, MtxF* dest);
     void Clear(MtxF* mf);
 };
-}
+} // namespace Editor
 #endif
 
 void SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);

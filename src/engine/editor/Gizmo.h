@@ -8,21 +8,10 @@
 namespace Editor {
 
 class Gizmo {
-public:
+  public:
+    enum class GizmoHandle { None, All_Axis, X_Axis, Y_Axis, Z_Axis };
 
-    enum class GizmoHandle {
-        None,
-        All_Axis,
-        X_Axis,
-        Y_Axis,
-        Z_Axis
-    };
-
-    enum class TranslationMode {
-        Move,
-        Rotate,
-        Scale
-    };
+    enum class TranslationMode { Move, Rotate, Scale };
 
     void Tick();
     void Draw();
@@ -48,8 +37,8 @@ public:
 
     bool Enabled;
     bool ManipulationStart = true;
-    FVector InitialScale = {1, 1, 1};
-    IRotator InitialRotation = {0, 0, 0};
+    FVector InitialScale = { 1, 1, 1 };
+    IRotator InitialRotation = { 0, 0, 0 };
     GizmoHandle SelectedHandle;
 
     GameObject RedCollision;
@@ -69,17 +58,18 @@ public:
     MtxF Mtx_BlueZ;
 
     FVector Pos; // Global scene view
-    IRotator Rot = {0, 0, 0};
+    IRotator Rot = { 0, 0, 0 };
     float AllAxisRadius = 3.0f; // Free move selection radius
     float PickDistance;
     FVector _cursorOffset;
     float _gizmoOffset = 8.0f;
 
     float HandleSize = 2.0f;
-    
+
     FVector _ray;
     GameObject* _selected = nullptr;
-    private:
+
+  private:
     bool _draw = false;
 };
-}
+} // namespace Editor

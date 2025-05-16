@@ -18,7 +18,7 @@ extern "C" {
 }
 
 class OFlagpole : public OObject {
-public:
+  public:
     explicit OFlagpole(const FVector& pos, s16 direction);
 
     ~OFlagpole() {
@@ -37,7 +37,7 @@ public:
     void func_80083018(s32 objectIndex);
     void func_80083060(s32 objectIndex);
 
-private:
+  private:
     FVector _pos;
     s16 _direction;
     static size_t _count;

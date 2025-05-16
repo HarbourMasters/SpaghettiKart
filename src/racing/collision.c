@@ -1691,7 +1691,7 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
 void set_vtx_from_triangle(u32 triangle, s8 surfaceType, u16 sectionId) {
     u32 vert1 = ((triangle & 0x00FF0000) >> 16) / 2;
     u32 vert2 = ((triangle & 0x0000FF00) >> 8) / 2;
-    u32 vert3 = (triangle  & 0x000000FF) / 2;
+    u32 vert3 = (triangle & 0x000000FF) / 2;
 
     Vtx* vtx1 = vtxBuffer[vert1];
     Vtx* vtx2 = vtxBuffer[vert2];
@@ -1987,19 +1987,19 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
         //   printf("w0 0x%llX\n", lo);
         //   printf("w1 0x%llX\n", hi);
 
-        switch(opcode) {
+        switch (opcode) {
             case G_DL:
                 // G_DL's hi contains an addr to another DL.
                 generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
                 break;
             case G_DL_OTR_FILEPATH:
-                generate_collision_mesh(ResourceGetDataByName((const char*)hi), surfaceType, sectionId);
+                generate_collision_mesh(ResourceGetDataByName((const char*) hi), surfaceType, sectionId);
                 break;
             case G_VTX:
                 set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
                 break;
             case G_VTX_OTR_FILEPATH: {
-                const char* filePath = (const char*)hi;
+                const char* filePath = (const char*) hi;
                 // Fast64 outputs garbage data. Lets skip that...
                 if (is_cull_box(filePath)) {
                     printf("Skipped cull box\n");
@@ -2010,7 +2010,7 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 size_t count = gfx->words.w0;
                 size_t index = (gfx->words.w1 >> 16);
                 size_t vtxDataOff = gfx->words.w1 & 0xFFFF;
-                Vtx* vtx = ( (Vtx*)ResourceGetDataByName(filePath) ) + vtxDataOff;
+                Vtx* vtx = ((Vtx*) ResourceGetDataByName(filePath)) + vtxDataOff;
 
                 set_vtx_buffer(vtx, count, index);
                 break;
@@ -2042,7 +2042,6 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
             case G_ENDDL:
                 return; // end of loop
         }
-
 
         // if (opcode == (G_DL << 24)) {
         //     // G_DL's hi contains an addr to another DL.

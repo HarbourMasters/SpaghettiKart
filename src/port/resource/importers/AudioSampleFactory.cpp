@@ -20,7 +20,7 @@ SM64::AudioSampleFactoryV0::ReadResource(std::shared_ptr<Ship::File> file,
 
     uint32_t stateSize = reader->ReadUInt32();
     std::vector<int16_t> state;
-    if(stateSize > 0){
+    if (stateSize > 0) {
         bank->loop.state = new int16_t[stateSize];
         reader->Read((char*) bank->loop.state, stateSize * sizeof(int16_t));
     } else {
