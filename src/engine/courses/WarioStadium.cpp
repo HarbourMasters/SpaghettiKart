@@ -339,7 +339,7 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
             prevFrame = 0;
         }
         currentScreenSection++;
-        if (currentScreenSection > 5) {
+        if (currentScreenSection >= 6) {
             currentScreenSection = 0;
         }
 

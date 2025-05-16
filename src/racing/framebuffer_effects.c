@@ -35,30 +35,30 @@ void FB_CreateFramebuffers(void) {
  * sure f3dex2 is loaded before this function is called.
  */
 void FB_CopyToFramebuffer(Gfx** gfxP, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8* hasCopied) {
-    // Gfx* gfx = *gfxP;
+    Gfx* gfx = *gfxP;
 
-    // gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    // gDPSetOtherMode(gfx++,
-    //                 G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE |
-    //                     G_TD_CLAMP | G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
-    //                 G_AC_NONE | G_ZS_PRIM | G_RM_OPA_SURF | G_RM_OPA_SURF2);
+    gDPSetOtherMode(gfx++,
+                    G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE |
+                        G_TD_CLAMP | G_TP_NONE | G_CYC_1CYCLE | G_PM_NPRIMITIVE,
+                    G_AC_NONE | G_ZS_PRIM | G_RM_OPA_SURF | G_RM_OPA_SURF2);
 
-    // gSPClearGeometryMode(gfx++, G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
-    // gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gSPClearGeometryMode(gfx++, G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR);
+    gSPSetGeometryMode(gfx++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
 
-    // gDPSetBlendColor(gfx++, 255, 255, 255, 8);
-    // gDPSetPrimDepth(gfx++, 0xFFFF, 0xFFFF);
+    gDPSetBlendColor(gfx++, 255, 255, 255, 8);
+    gDPSetPrimDepth(gfx++, 0xFFFF, 0xFFFF);
 
-    // gDPSetEnvColor(gfx++, 255, 255, 255, 255);
-    // gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
-    //                   ENVIRONMENT);
+    gDPSetEnvColor(gfx++, 255, 255, 255, 255);
+    gDPSetCombineLERP(gfx++, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, ENVIRONMENT, 0, 0, 0, 0,
+                      ENVIRONMENT);
 
-    // gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    gDPSetScissor(gfx++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-    // gDPCopyFB(gfx++, fb_dest, fb_src, oncePerFrame, hasCopied);
+    gDPCopyFB(gfx++, fb_dest, fb_src, oncePerFrame, hasCopied);
 
-    // *gfxP = gfx;
+    *gfxP = gfx;
 }
 
 /**
