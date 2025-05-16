@@ -70,7 +70,7 @@ void FB_CopyToFramebuffer(Gfx** gfxP, s32 fb_src, s32 fb_dest, u8 oncePerFrame, 
 void FB_WriteFramebufferSliceToCPU(Gfx** gfxP, void* buffer, u8 byteSwap) {
     Gfx* gfx = *gfxP;
     FB_CopyToFramebuffer(&gfx, 0, gReusableFrameBuffer, false, NULL);
-    
+
     // Set the N64 resolution framebuffer as the draw target (320x240)
     gsSPSetFB(gfx++, gN64ResFrameBuffer);
     // Reset scissor for new framebuffer

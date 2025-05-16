@@ -216,8 +216,8 @@ void CM_SpawnFromLevelProps() {
     // Spawning actors needs to be delayed to the correct time.
     // And loadlevel needs to happen asap
 
-    //Editor::LoadLevel(nullptr);
-   // Editor::SpawnFromLevelProps();
+    // Editor::LoadLevel(nullptr);
+    // Editor::SpawnFromLevelProps();
 }
 
 World* GetWorld(void) {
@@ -354,8 +354,8 @@ void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
     if (gWorldInstance.CurrentCourse->IsMod() == false) {
         if ((CVarGetInteger("gFreecam", 0) == true)) {
             // Render credits courses
-            //gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            //gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+            // gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+            // gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
             render_credits();
             return;
         }
@@ -698,7 +698,7 @@ void CM_AddEditorObject(struct Actor* actor, const char* name) {
 
 void Editor_AddLight(s8* direction) {
     static size_t i = 0;
-    gEditor.AddLight(("Light "+std::to_string(i)).c_str(), nullptr, direction);
+    gEditor.AddLight(("Light " + std::to_string(i)).c_str(), nullptr, direction);
     i += 1;
 }
 
@@ -719,7 +719,7 @@ void CM_ActorCollision(Player* player, Actor* actor) {
 }
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
-    FVector fPos = {pos[0], pos[1], pos[2]};
+    FVector fPos = { pos[0], pos[1], pos[2] };
     return gWorldInstance.CurrentCourse->GetWaterLevel(fPos, collision);
 }
 

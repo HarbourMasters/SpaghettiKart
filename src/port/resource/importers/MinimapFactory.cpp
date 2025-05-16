@@ -7,7 +7,7 @@ namespace MK64 {
 
 std::shared_ptr<Ship::IResource>
 ResourceFactoryBinaryMinimapV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                         std::shared_ptr<Ship::ResourceInitData> initData) {
+                                             std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
@@ -16,7 +16,8 @@ ResourceFactoryBinaryMinimapV0::ReadResource(std::shared_ptr<Ship::File> file,
     auto reader = std::get<std::shared_ptr<Ship::BinaryReader>>(file->Reader);
 
     int width = 0, height = 0;
-    stbi_uc* data = stbi_load_from_memory(reinterpret_cast<const stbi_uc*>(file->Buffer->data()), file->Buffer->size(), &width, &height, nullptr, 1);
+    stbi_uc* data = stbi_load_from_memory(reinterpret_cast<const stbi_uc*>(file->Buffer->data()), file->Buffer->size(),
+                                          &width, &height, nullptr, 1);
 
     if (data == nullptr) {
         SPDLOG_ERROR("MinimapFactory.cpp: Error loading minimap texture {}", stbi_failure_reason());
@@ -51,4 +52,4 @@ ResourceFactoryBinaryMinimapV0::ReadResource(std::shared_ptr<Ship::File> file,
     return texture;
 }
 
-}
+} // namespace MK64

@@ -769,7 +769,7 @@ void render_object_for_player(s32 cameraId) {
     render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
-        //render_balloons_grand_prix(cameraId);
+        // render_balloons_grand_prix(cameraId);
     }
     if (gModeSelection == BATTLE) {
         CM_DrawBattleBombKarts(cameraId);
@@ -1632,7 +1632,7 @@ void update_object(void) {
     //         update_ferries_smoke_particle();
     //         break;
     // }
-    //if (D_80165730 != 0) {
+    // if (D_80165730 != 0) {
     //    func_80074EE8(); // Grand prix balloons
     //}
     func_80076F2C();

@@ -99,7 +99,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
     mtx[0][2] *= scale.z;
     mtx[1][2] *= scale.z;
     mtx[2][2] *= scale.z;
-    
+
     // Set the last row and column for the homogeneous coordinate system
     mtx[0][3] = 0.0f;
     mtx[1][3] = 0.0f;
@@ -119,79 +119,76 @@ void AddLocalRotation(Mat4 mat, IRotator rot) {
     mat[0][0] = (cos_yaw * cos_roll) + (sin_pitch * sin_yaw * sin_roll);
     mat[0][1] = (cos_pitch * sin_roll);
     mat[0][2] = (-sin_yaw * cos_roll) + (sin_pitch * cos_yaw * sin_roll);
-    
+
     mat[1][0] = (-cos_yaw * sin_roll) + (sin_pitch * sin_yaw * cos_roll);
     mat[1][1] = (cos_pitch * cos_roll);
     mat[1][2] = (sin_yaw * sin_roll) + (sin_pitch * cos_yaw * cos_roll);
-    
+
     mat[2][0] = (cos_pitch * sin_yaw);
     mat[2][1] = -sin_pitch;
     mat[2][2] = (cos_pitch * cos_yaw);
 }
 
-
 // API
 extern "C" {
 
-    void AddHudMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Hud, mtx, flags);
-    }
-
-    void AddObjectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Objects, mtx, flags);
-    }
-
-    void AddShadowMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Shadows, mtx, flags);
-    }
-
-    void AddKartMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Karts, mtx, flags);
-    }
-
-    void AddEffectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Effects, mtx, flags);
-    }
-
-    void AddEffectMatrixFixed(s32 flags) {
-        AddMatrixFixed(gWorldInstance.Mtx.Effects, flags);
-    }
-
-    void AddEffectMatrixOrtho(void) {
-        auto& stack = gWorldInstance.Mtx.Effects;
-        stack.emplace_back();
-
-        guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
-        
-        gSPMatrix(gDisplayListHead++, &stack.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    }
-
-    Mtx* GetEffectMatrix(void) {
-        return GetMatrix(gWorldInstance.Mtx.Effects);
-    }
-
-
-    /**
-     * Note that the game doesn't seem to clear all of these at the beginning of a new frame.
-     * We might need to adjust which ones we clear.
-     */
-    void ClearMatrixPools(void) {
-        gWorldInstance.Mtx.Hud.clear();
-        gWorldInstance.Mtx.Objects.clear();
-        gWorldInstance.Mtx.Shadows.clear();
-        gWorldInstance.Mtx.Karts.clear();
-        gWorldInstance.Mtx.Effects.clear();
-    }
-
-    void ClearHudMatrixPool(void) {
-        gWorldInstance.Mtx.Hud.clear();
-    }
-    void ClearEffectsMatrixPool(void) {
-        gWorldInstance.Mtx.Effects.clear();
-    }
-
-    void ClearObjectsMatrixPool(void) {
-        gWorldInstance.Mtx.Objects.clear();
-    }
+void AddHudMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gWorldInstance.Mtx.Hud, mtx, flags);
 }
 
+void AddObjectMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gWorldInstance.Mtx.Objects, mtx, flags);
+}
+
+void AddShadowMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gWorldInstance.Mtx.Shadows, mtx, flags);
+}
+
+void AddKartMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gWorldInstance.Mtx.Karts, mtx, flags);
+}
+
+void AddEffectMatrix(Mat4 mtx, s32 flags) {
+    AddMatrix(gWorldInstance.Mtx.Effects, mtx, flags);
+}
+
+void AddEffectMatrixFixed(s32 flags) {
+    AddMatrixFixed(gWorldInstance.Mtx.Effects, flags);
+}
+
+void AddEffectMatrixOrtho(void) {
+    auto& stack = gWorldInstance.Mtx.Effects;
+    stack.emplace_back();
+
+    guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
+
+    gSPMatrix(gDisplayListHead++, &stack.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+}
+
+Mtx* GetEffectMatrix(void) {
+    return GetMatrix(gWorldInstance.Mtx.Effects);
+}
+
+/**
+ * Note that the game doesn't seem to clear all of these at the beginning of a new frame.
+ * We might need to adjust which ones we clear.
+ */
+void ClearMatrixPools(void) {
+    gWorldInstance.Mtx.Hud.clear();
+    gWorldInstance.Mtx.Objects.clear();
+    gWorldInstance.Mtx.Shadows.clear();
+    gWorldInstance.Mtx.Karts.clear();
+    gWorldInstance.Mtx.Effects.clear();
+}
+
+void ClearHudMatrixPool(void) {
+    gWorldInstance.Mtx.Hud.clear();
+}
+void ClearEffectsMatrixPool(void) {
+    gWorldInstance.Mtx.Effects.clear();
+}
+
+void ClearObjectsMatrixPool(void) {
+    gWorldInstance.Mtx.Objects.clear();
+}
+}

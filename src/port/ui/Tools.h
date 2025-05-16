@@ -4,13 +4,14 @@
 
 namespace Editor {
 class ToolsWindow : public Ship::GuiWindow {
-public:
+  public:
     using Ship::GuiWindow::GuiWindow;
 
     ~ToolsWindow();
-protected:
+
+  protected:
     void InitElement() override;
     void DrawElement() override;
     void UpdateElement() override {};
 };
-}
+} // namespace Editor

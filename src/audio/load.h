@@ -11,7 +11,7 @@
 #define PRELOAD_BANKS 2
 #define PRELOAD_SEQUENCE 1
 
-#define IS_SEQUENCE_CHANNEL_VALID(ptr) ((uintptr_t) (ptr) != (uintptr_t) &gSequenceChannelNone)
+#define IS_SEQUENCE_CHANNEL_VALID(ptr) ((uintptr_t) (ptr) != (uintptr_t) & gSequenceChannelNone)
 
 struct SharedDma {
     /*0x0*/ u8* buffer;       // target, points to pre-allocated buffer

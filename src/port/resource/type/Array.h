@@ -3,7 +3,7 @@
 #include "resource/Resource.h"
 
 namespace Fast {
-    union F3DVtx;
+union F3DVtx;
 }
 
 namespace MK64 {

@@ -4,20 +4,17 @@
 #include "Handles.h"
 
 namespace Editor {
-    Handles::Handles() {
-        Pos = &pos;
-        Rot = &rot;
-    }
-
-    void Handles::Load() {
-
-    }
-
-    void Handles::Tick() {
-
-    }
-
-    void Handles::Draw() {
-
-    }
+Handles::Handles() {
+    Pos = &pos;
+    Rot = &rot;
 }
+
+void Handles::Load() {
+}
+
+void Handles::Tick() {
+}
+
+void Handles::Draw() {
+}
+} // namespace Editor

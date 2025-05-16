@@ -22,7 +22,7 @@ OBat::OBat(const FVector& pos, const IRotator& rot) {
     Name = "Bat";
     find_unused_obj_index(&_objectIndex);
 
-    init_texture_object(_objectIndex, (uint8_t*)d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
+    init_texture_object(_objectIndex, (uint8_t*) d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
                         (u16) 0x00000040);
     gObjectList[_objectIndex].orientation[0] = rot.pitch;
     gObjectList[_objectIndex].orientation[1] = rot.roll;
@@ -107,8 +107,8 @@ void OBat::Draw(s32 cameraId) {
 
     objectIndex = _objectIndex;
     temp_s7 = &camera1[cameraId];
-    OBat::func_80046F60((u8*)gObjectList[objectIndex].activeTLUT, (u8*)gObjectList[objectIndex].activeTexture, 0x00000020, 0x00000040,
-                  5);
+    OBat::func_80046F60((u8*) gObjectList[objectIndex].activeTLUT, (u8*) gObjectList[objectIndex].activeTexture,
+                        0x00000020, 0x00000040, 5);
     D_80183E80[0] = gObjectList[objectIndex].orientation[0];
     D_80183E80[2] = gObjectList[objectIndex].orientation[2];
     if ((D_8018CFB0 != 0) || (D_8018CFC8 != 0)) {
@@ -122,7 +122,7 @@ void OBat::Draw(s32 cameraId) {
                 D_80183E80[1] =
                     func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
                 func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
-                              (Vtx*)D_0D0062B0);
+                              (Vtx*) D_0D0062B0);
             }
         }
     }
@@ -137,7 +137,7 @@ void OBat::Draw(s32 cameraId) {
                 D_80183E80[1] =
                     func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
                 func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
-                              (Vtx*)D_0D0062B0);
+                              (Vtx*) D_0D0062B0);
             }
         }
     }
@@ -145,7 +145,7 @@ void OBat::Draw(s32 cameraId) {
 }
 
 void OBat::func_80046F60(u8* tlut, u8* arg1, s32 arg2, s32 arg3, s32 arg4) {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007D78);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     rsp_load_texture_mask(arg1, arg2, arg3, arg4);
 }

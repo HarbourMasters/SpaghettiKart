@@ -11,7 +11,7 @@ extern "C" {
 }
 
 class ASpaghettiShip : public AActor {
-public:
+  public:
     explicit ASpaghettiShip(FVector pos);
     virtual ~ASpaghettiShip() = default;
 
@@ -20,5 +20,5 @@ public:
     virtual bool IsMod() override;
 
     FVector Spawn;
-    IRotator WheelRot = {0, 0, 0};
+    IRotator WheelRot = { 0, 0, 0 };
 };

@@ -33,10 +33,12 @@ void AStarship::Tick() {
     SetLocation(pos);
 
     // Keep y from changing (or adjust it if necessary)
-    //Pos.y = Spawn.y;
+    // Pos.y = Spawn.y;
 
     // Rotate to face forward along the circle
     Rot[1] = angle * (180.0f / M_PI) + 90.0f;
 }
 
-bool AStarship::IsMod() { return true; }
+bool AStarship::IsMod() {
+    return true;
+}

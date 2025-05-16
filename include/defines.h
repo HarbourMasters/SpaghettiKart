@@ -48,7 +48,6 @@
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
-
 /**
  * @brief Jump to demo mode from the debug menu using L and A
  */
@@ -208,7 +207,6 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define RACE_UNK 6
 #define RACE_EXIT 7
 
-
 /**
  * @brief Options for gScreenModeSelection and gActiveScreenMode
  */
@@ -306,12 +304,7 @@ enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_MAX_SPEED
 };
 
-enum DIRECTION {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
-};
+enum DIRECTION { NORTH, EAST, SOUTH, WEST };
 
 /**
  * @brief Balloon status
@@ -371,7 +364,6 @@ enum DIRECTION {
 #define COLOR_LAVA GPACK_RGB888(0x34, 0x00, 0x00)
 #define COLOR_BLACK GPACK_RGB888(0, 0, 0)
 
-
 /**
  *
  * Collision mesh flags
@@ -387,9 +379,9 @@ enum DIRECTION {
 #endif // DEFINES_H
 
 /**
- * 
+ *
  * Laps
- * 
+ *
  */
 #define MIN_LAPS 0
 #define MAX_LAPS 3

@@ -12,8 +12,7 @@ extern "C" {
 }
 
 class ABus : public AActor {
-    public:
-
+  public:
     const char* Type;
     size_t Index;
     f32 Speed;
@@ -46,6 +45,6 @@ class ABus : public AActor {
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual bool IsMod() override;
 
-private:
+  private:
     static size_t _count;
 };

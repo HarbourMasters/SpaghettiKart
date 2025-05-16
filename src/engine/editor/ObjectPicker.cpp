@@ -47,7 +47,7 @@ void ObjectPicker::SelectObject(std::vector<GameObject*> objects) {
             eGizmo.SetGizmo(_selected, ray);
             eGizmo.Enabled = true;
         } else {
-            //eGizmo.Disable();
+            // eGizmo.Disable();
             eGizmo.Enabled = false;
             eGizmo._selected = nullptr;
         }
@@ -67,7 +67,9 @@ void ObjectPicker::DragHandle() {
     }
 
     // Is the gizmo being dragged?
-    if (!eGizmo.Enabled) { return; }
+    if (!eGizmo.Enabled) {
+        return;
+    }
     float closestDistance = FLT_MAX;
     std::optional<FVector> closestClickPos;
     Gizmo::GizmoHandle closestHandle = Gizmo::GizmoHandle::None;
@@ -98,7 +100,7 @@ void ObjectPicker::DragHandle() {
         }
     };
 
-    switch(static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
+    switch (static_cast<Gizmo::TranslationMode>(CVarGetInteger("eGizmoMode", 0))) {
         case Gizmo::TranslationMode::Move:
             tryHandle(Gizmo::GizmoHandle::Z_Axis, eGizmo.Mtx_RedX, eGizmo.RedCollision.Triangles);
             tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenCollision.Triangles);
@@ -114,7 +116,6 @@ void ObjectPicker::DragHandle() {
             tryHandle(Gizmo::GizmoHandle::X_Axis, eGizmo.Mtx_GreenY, eGizmo.GreenScaleCollision.Triangles);
             tryHandle(Gizmo::GizmoHandle::Y_Axis, eGizmo.Mtx_BlueZ, eGizmo.BlueScaleCollision.Triangles);
             break;
-
     }
 
     if (closestHandle != Gizmo::GizmoHandle::None && closestClickPos.has_value()) {
@@ -132,7 +133,7 @@ void ObjectPicker::Draw() {
 
     if (Debug) {
         Mat4 CursorMtx;
-        IRotator rot = IRotator(0,0,0);
+        IRotator rot = IRotator(0, 0, 0);
         FVector scale = FVector(0.1, 0.1, 0.1);
         FVector ray = ScreenRayTrace();
 
@@ -140,9 +141,9 @@ void ObjectPicker::Draw() {
         float y = (cameras[0].pos[1] + ray.y * 800);
         float z = (cameras[0].pos[2] + ray.z * 800);
 
-        ApplyMatrixTransformations((float(*)[4])&CursorMtx, FVector(x, y, z), rot, scale);
-        Editor_AddMatrix((float(*)[4])&CursorMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__tracks/sphere");
+        ApplyMatrixTransformations((float(*)[4]) & CursorMtx, FVector(x, y, z), rot, scale);
+        Editor_AddMatrix((float(*)[4]) & CursorMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) "__OTR__tracks/sphere");
     }
 }
 
@@ -157,7 +158,7 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
             boundingBox = 2.0f;
         }
 
-        switch(object->Collision) {
+        switch (object->Collision) {
             case GameObject::CollisionType::VTX_INTERSECT:
                 for (const auto& tri : object->Triangles) {
                     float t;
@@ -173,12 +174,10 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
             case GameObject::CollisionType::BOUNDING_BOX: {
                 float max = 2.0f;
                 float min = -2.0f;
-                Vec3f boxMin = { object->Pos->x + boundingBox * min, 
-                                 object->Pos->y + boundingBox * min,
+                Vec3f boxMin = { object->Pos->x + boundingBox * min, object->Pos->y + boundingBox * min,
                                  object->Pos->z + boundingBox * min };
 
-                Vec3f boxMax = { object->Pos->x + boundingBox * max, 
-                                 object->Pos->y + boundingBox * max, 
+                Vec3f boxMax = { object->Pos->x + boundingBox * max, object->Pos->y + boundingBox * max,
                                  object->Pos->z + boundingBox * max };
                 float t;
                 if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
@@ -198,10 +197,10 @@ void ObjectPicker::FindObject(Ray ray, std::vector<GameObject*> objects) {
     }
     if (closestObject != nullptr) {
         _selected = closestObject;
-       // printf("FOUND COLLISION %d\n", type);
+        // printf("FOUND COLLISION %d\n", type);
     } else {
-       // printf("NO COLLISION\n");
+        // printf("NO COLLISION\n");
         _selected = nullptr;
     }
 }
-}
+} // namespace Editor

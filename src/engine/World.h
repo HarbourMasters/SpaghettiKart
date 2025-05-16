@@ -48,7 +48,7 @@ class World {
         std::vector<Mtx> Effects;
     } Matrix;
 
-public:
+  public:
     explicit World();
 
     void AddCourse(Course* course);
@@ -63,7 +63,8 @@ public:
     Actor* ConvertAActorToActor(AActor* actor);
 
     void DrawStaticMeshActors();
-    StaticMeshActor* AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision);
+    StaticMeshActor* AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model,
+                                        int32_t* collision);
     void DeleteStaticMeshActors();
 
     OObject* AddObject(OObject* object);
@@ -71,7 +72,7 @@ public:
     void TickObjects();
     void TickObjects60fps();
     void DrawObjects(s32 cameraId);
-    Object *GetObjectByIndex(size_t);
+    Object* GetObjectByIndex(size_t);
 
     void TickParticles();
     void DrawParticles(s32 cameraId);
@@ -89,14 +90,12 @@ public:
     World* GetWorld(void);
     void ClearWorld(void);
 
-
     // These are only for browsing through the course list
     void SetCourse(const char*);
     void NextCourse(void);
     void PreviousCourse(void);
 
     Matrix Mtx;
-
 
     Course* CurrentCourse;
     Cup* CurrentCup;
@@ -120,8 +119,7 @@ public:
     // Holds all available courses
     std::vector<Course*> Courses;
     size_t CourseIndex = 0; // For browsing courses.
-private:
-
+  private:
 };
 
 extern World gWorldInstance;

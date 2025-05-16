@@ -20,7 +20,7 @@ extern "C" {
 class OMoleGroup;
 
 class OMole : public OObject {
-public:
+  public:
     explicit OMole(FVector pos, OMoleGroup* group);
 
     virtual void Tick() override;
@@ -41,7 +41,8 @@ public:
     void func_8008153C(s32 objectIndex);
 
     s32 _moleIndex;
-private:
+
+  private:
     static size_t _count;
     size_t _idx;
     OMoleGroup* _group;

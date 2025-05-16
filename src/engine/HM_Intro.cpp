@@ -40,7 +40,7 @@ void HarbourMastersIntro::HM_InitIntro() {
 
     _pos = FVector(-1000, -205, -800); // -1000, -210, -800
     _rot = IRotator(-5, 100, 0);
-    _scale = {0.7f, 0.7f, 0.7f};
+    _scale = { 0.7f, 0.7f, 0.7f };
 
     _ship2Pos = FVector(300, -210, -1960);
     _ship2Rot = IRotator(0, 45, 0);
@@ -53,18 +53,16 @@ void HarbourMastersIntro::HM_InitIntro() {
 
     _hPos = FVector(-2000, 100, -4900);
     _hRot = IRotator(0, -45.0f, 0);
-    _hScale = {2.0f, 2.0f, 2.0f};
+    _hScale = { 2.0f, 2.0f, 2.0f };
 
     lusPos = FVector(0, -400, -614); // 12, 190, -1000
     lusRot = IRotator(0, 0, 0);
     lusScale = FVector(1, 1, 1);
 
-    ground_f3d_material_013_lights = gdSPDefLights1(
-	0x7F, 0x30, 0x80,
-	0x60, 20, 10, 0x49, 0x49, 0x49
-    );
+    ground_f3d_material_013_lights = gdSPDefLights1(0x7F, 0x30, 0x80, 0x60, 20, 10, 0x49, 0x49, 0x49);
 
-    gEditor.AddObject("lus", &lusPos, &lusRot, &lusScale, nullptr, 1, Editor::GameObject::CollisionType::BOUNDING_BOX, 10, &DespawnValue, -1);
+    gEditor.AddObject("lus", &lusPos, &lusRot, &lusScale, nullptr, 1, Editor::GameObject::CollisionType::BOUNDING_BOX,
+                      10, &DespawnValue, -1);
 }
 
 void HarbourMastersIntro::HM_TickIntro() {
@@ -90,12 +88,14 @@ void HarbourMastersIntro::HM_TickIntro() {
         gFadeModeSelection = FADE_MODE_LOGO;
     }
 
-    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water1), 0, _water);
-    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water2), _water, 0);;
+    find_and_set_tile_size((uintptr_t) ((void*) mat_water_water1), 0, _water);
+    find_and_set_tile_size((uintptr_t) ((void*) mat_water_water2), _water, 0);
+    ;
 }
 
-void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
-    float time = (float)gGlobalTimer;
+void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed,
+                              f32 rollAmp, f32 rollSpeed) {
+    float time = (float) gGlobalTimer;
 
     pos.y = -210 + bobAmp * sin(time * bobSpeed);
 
@@ -104,14 +104,15 @@ void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSp
     rot.roll = (rollAmp * sin(time * rollSpeed)) * (UINT16_MAX / 360);
 }
 
-void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {
-    float time = (float)gGlobalTimer;
+void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed,
+                                  f32 rollAmp, f32 rollSpeed) {
+    float time = (float) gGlobalTimer;
 
     pos.y = -205 + bobAmp * sin(time * bobSpeed);
 
-    rot.pitch = (-5 + tiltAmp * sin(time * tiltSpeed))  * (UINT16_MAX / 360);
+    rot.pitch = (-5 + tiltAmp * sin(time * tiltSpeed)) * (UINT16_MAX / 360);
 
-    rot.roll = (rollAmp * sin(time * rollSpeed))  * (UINT16_MAX / 360);
+    rot.roll = (rollAmp * sin(time * rollSpeed)) * (UINT16_MAX / 360);
 }
 
 void HarbourMastersIntro::HM_DrawIntro() {
@@ -142,7 +143,7 @@ void HarbourMastersIntro::HM_DrawIntro() {
     render_set_position(mtx_geo, 0);
 
     gSPDisplayList(gDisplayListHead++, ground_map_mesh);
-    //gSPDisplayList(gDisplayListHead++, powered_Text_mesh); // Replaced by poweredbylus
+    // gSPDisplayList(gDisplayListHead++, powered_Text_mesh); // Replaced by poweredbylus
     gSPDisplayList(gDisplayListHead++, castle_map_002_mesh);
     gSPDisplayList(gDisplayListHead++, road_map_001_mesh);
     gSPDisplayList(gDisplayListHead++, water_water1_mesh);
@@ -150,7 +151,7 @@ void HarbourMastersIntro::HM_DrawIntro() {
     Mat4 lusMtx;
     ApplyMatrixTransformations(lusMtx, lusPos, lusRot, lusScale);
     render_set_position(lusMtx, 0);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__hmintro/poweredbylus");
+    gSPDisplayList(gDisplayListHead++, (Gfx*) "__OTR__hmintro/poweredbylus");
 
     HarbourMastersIntro::Sync();
 }
@@ -161,7 +162,8 @@ void HarbourMastersIntro::Setup() {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     guPerspective(&gGfxPool->mtxScreen, &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    guLookAt(&gGfxPool->mtxLookAt[0], _camera.Pos.x, _camera.Pos.y, _camera.Pos.z, _camera.LookAt.x, _camera.LookAt.y, _camera.LookAt.z, 0.0f, 1.0f, 0.0f);
+    guLookAt(&gGfxPool->mtxLookAt[0], _camera.Pos.x, _camera.Pos.y, _camera.Pos.z, _camera.LookAt.x, _camera.LookAt.y,
+             _camera.LookAt.z, 0.0f, 1.0f, 0.0f);
 
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);

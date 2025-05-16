@@ -33,7 +33,7 @@ ResourceFactoryBinaryTrackWaypointsV0::ReadResource(std::shared_ptr<Ship::File> 
 
 std::shared_ptr<Ship::IResource>
 ResourceFactoryXMLTrackWaypointsV0::ReadResource(std::shared_ptr<Ship::File> file,
-                                         std::shared_ptr<Ship::ResourceInitData> initData) {
+                                                 std::shared_ptr<Ship::ResourceInitData> initData) {
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }

@@ -11,7 +11,7 @@ extern "C" {
 }
 
 class AStarship : public AActor {
-public:
+  public:
     explicit AStarship(FVector pos);
     virtual ~AStarship() = default;
 

@@ -5,7 +5,7 @@
 
 namespace Editor {
 class ContentBrowserWindow : public Ship::GuiWindow {
-public:
+  public:
     using Ship::GuiWindow::GuiWindow;
     ~ContentBrowserWindow();
 
@@ -27,7 +27,8 @@ public:
     bool ObjectContent = false;
     bool CustomContent = false;
     bool TrackContent = false;
-protected:
+
+  protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
@@ -40,4 +41,4 @@ protected:
     void FindContent();
     void FolderButton(const char* label, bool& contentFlag, const ImVec2& size = ImVec2(80, 32));
 };
-}
+} // namespace Editor

@@ -20,7 +20,6 @@
 #define DMEM_ADDR_WET_LEFT_CH 0x840
 #define DMEM_ADDR_WET_RIGHT_CH 0x9C0
 
-
 /*
 Its not clear what values these macros should have. Neither version seem to
 line up for MK64. Maybe each game has unique values for these? I don't know

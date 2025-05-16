@@ -9,28 +9,28 @@
 #include "assets/block_fort_data.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "course_offsets.h"
-    extern const char *block_fort_dls[];
-    extern s16 currentScreenSection;
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "course_offsets.h"
+extern const char* block_fort_dls[];
+extern s16 currentScreenSection;
 }
 
 const course_texture block_fort_textures[] = {
@@ -68,7 +68,7 @@ BlockFort::BlockFort() {
     Props.NearPersp = 2.0f;
     Props.FarPersp = 2700.0f;
 
-    Props.PathSizes = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -103,27 +103,27 @@ BlockFort::BlockFort() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {128, 184, 248};
-    Props.Skybox.BottomRight = {216, 232, 248};
-    Props.Skybox.BottomLeft = {216, 232, 248};
-    Props.Skybox.TopLeft = {128, 184, 248};
-    Props.Skybox.FloorTopRight = {216, 232, 248};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {216, 232, 248};
+    Props.Skybox.TopRight = { 128, 184, 248 };
+    Props.Skybox.BottomRight = { 216, 232, 248 };
+    Props.Skybox.BottomLeft = { 216, 232, 248 };
+    Props.Skybox.TopLeft = { 128, 184, 248 };
+    Props.Skybox.FloorTopRight = { 216, 232, 248 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 216, 232, 248 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_CHOCO_MOUNTAIN;
 }
 
 void BlockFort::Load() {
     Course::Load();
 
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*)0x070015C0), 1);
+    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x070015C0), 1);
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
 void BlockFort::BeginPlay() {
-    spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_block_fort_item_box_spawns));
+    spawn_all_item_boxes((ActorSpawnData*) LOAD_ASSET_RAW(d_course_block_fort_item_box_spawns));
 
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
@@ -144,7 +144,7 @@ void BlockFort::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     // d_course_block_fort_packed_dl_15C0
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x070015C0)));
+    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x070015C0)));
 }
 
 void BlockFort::Waypoints(Player* player, int8_t playerId) {

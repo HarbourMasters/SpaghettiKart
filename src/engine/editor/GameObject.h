@@ -14,31 +14,28 @@ extern "C" {
 struct Triangle;
 
 namespace Editor {
-    class GameObject {
-public:
-        enum class CollisionType {
-            VTX_INTERSECT,
-            BOUNDING_BOX,
-            BOUNDING_SPHERE
-        };
+class GameObject {
+  public:
+    enum class CollisionType { VTX_INTERSECT, BOUNDING_BOX, BOUNDING_SPHERE };
 
-        GameObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue);
-        GameObject(FVector* pos, Vec3s* rot);
-        GameObject();
-        virtual void Tick();
-        virtual void Draw();
-        virtual void Load() {};
+    GameObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model,
+               std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag,
+               int32_t despawnValue);
+    GameObject(FVector* pos, Vec3s* rot);
+    GameObject();
+    virtual void Tick();
+    virtual void Draw();
+    virtual void Load() {};
 
-        const char* Name;
-        FVector* Pos;
-        IRotator* Rot;
-        FVector* Scale;
-        Gfx* Model;
-        std::vector<Triangle> Triangles;
-        CollisionType Collision;
-        float BoundingBoxSize;
-        int32_t* DespawnFlag;
-        int32_t DespawnValue;
-
-    };
-}
+    const char* Name;
+    FVector* Pos;
+    IRotator* Rot;
+    FVector* Scale;
+    Gfx* Model;
+    std::vector<Triangle> Triangles;
+    CollisionType Collision;
+    float BoundingBoxSize;
+    int32_t* DespawnFlag;
+    int32_t DespawnValue;
+};
+} // namespace Editor

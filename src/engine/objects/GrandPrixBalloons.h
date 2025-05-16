@@ -17,14 +17,11 @@ extern "C" {
 #include "some_data.h"
 }
 
-
-
 /**
  * Grand Prix Balloons OObject
  */
 class OGrandPrixBalloons : public OObject {
-public:
-
+  public:
     explicit OGrandPrixBalloons(const FVector& pos);
 
     ~OGrandPrixBalloons() {
@@ -44,7 +41,7 @@ public:
     void func_80074E28(s32 objectIndex);
     void func_80041480(s16* arg0, s16 arg1, s16 arg2, s16* arg3); // Some weird math function
 
-private:
+  private:
     static size_t _count;
     s32 _idx;
     FVector Pos;

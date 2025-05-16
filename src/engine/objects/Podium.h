@@ -16,14 +16,11 @@ extern "C" {
 #include "some_data.h"
 }
 
-
 class OPodium : public OObject {
-public:
-    enum Behaviour : uint16_t {
-    };
+  public:
+    enum Behaviour : uint16_t {};
 
-public:
-
+  public:
     explicit OPodium(const FVector& pos);
 
     virtual void Tick() override;
@@ -32,7 +29,7 @@ public:
     void func_80086424(s32 objectIndex);
     void func_80086528(s32 objectIndex, s32 arg1);
 
-private:
+  private:
     s32 _podium1Index;
     s32 _podium2Index;
     s32 _podium3Index;

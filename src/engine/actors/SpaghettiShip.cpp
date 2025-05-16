@@ -17,12 +17,12 @@ ASpaghettiShip::ASpaghettiShip(FVector pos) {
     Pos[2] = pos.z;
     Spawn = pos;
     Spawn.y += 10;
-    Scale = {0.4, 0.4, 0.4};
+    Scale = { 0.4, 0.4, 0.4 };
 }
 
 void ASpaghettiShip::Tick() {
     static float angle = 0.0f; // Keeps track of the ship's rotation around the circle
-    float radius = 150.0f;      // The radius of the circular path
+    float radius = 150.0f;     // The radius of the circular path
     float speed = 0.01f;       // Speed of rotation
 
     angle += speed; // Increment the angle to move in a circle
@@ -37,22 +37,22 @@ void ASpaghettiShip::Tick() {
     WheelRot.pitch += 500;
 }
 
-void ASpaghettiShip::Draw(Camera *camera) {
+void ASpaghettiShip::Draw(Camera* camera) {
     Mat4 shipMtx;
     Mat4 objectMtx;
     Mat4 resultMtx;
-    Vec3f hullPos = {Pos[0], Pos[1], Pos[2]};
-    Vec3s hullRot = {Rot[0], Rot[1], Rot[2]};
-    Vec3s rot = {WheelRot.pitch, WheelRot.yaw, WheelRot.roll};
+    Vec3f hullPos = { Pos[0], Pos[1], Pos[2] };
+    Vec3s hullRot = { Rot[0], Rot[1], Rot[2] };
+    Vec3s rot = { WheelRot.pitch, WheelRot.yaw, WheelRot.roll };
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    ApplyMatrixTransformations(shipMtx, *(FVector*)Pos, *(IRotator*)Rot, Scale);
+    ApplyMatrixTransformations(shipMtx, *(FVector*) Pos, *(IRotator*) Rot, Scale);
     if (render_set_position(shipMtx, 0) != 0) {}
 
     // Render the ships hull
-    ApplyMatrixTransformations(objectMtx, {0, 0, 0}, {0, 0, 0}, {1, 1, 1});
+    ApplyMatrixTransformations(objectMtx, { 0, 0, 0 }, { 0, 0, 0 }, { 1, 1, 1 });
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
         gSPDisplayList(gDisplayListHead++, ship1_spag1_mesh);
@@ -67,10 +67,10 @@ void ASpaghettiShip::Draw(Camera *camera) {
         gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);
         gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     }
-    
+
     // Back tyre
     AddLocalRotation(shipMtx, WheelRot);
-    ApplyMatrixTransformations(objectMtx, FVector(0, 0, -165), {0, 0, 0}, {1, 1, 1});
+    ApplyMatrixTransformations(objectMtx, FVector(0, 0, -165), { 0, 0, 0 }, { 1, 1, 1 });
     mtxf_multiplication(resultMtx, shipMtx, objectMtx);
     if (render_set_position(resultMtx, 3) != 0) {
         gSPDisplayList(gDisplayListHead++, wheels_Spaghetti_002_mesh);
@@ -78,4 +78,6 @@ void ASpaghettiShip::Draw(Camera *camera) {
     }
 }
 
-bool ASpaghettiShip::IsMod() { return true; }
+bool ASpaghettiShip::IsMod() {
+    return true;
+}

@@ -11,28 +11,28 @@
 #include "bowsers_castle_data.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "code_8003DC40.h"
-    #include "memory.h"
-    #include "course.h"
-    extern const char *bowsers_castle_dls[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "code_8003DC40.h"
+#include "memory.h"
+#include "course.h"
+extern const char* bowsers_castle_dls[];
 }
 
 const course_texture bowsers_castle_textures[] = {
@@ -97,7 +97,7 @@ BowsersCastle::BowsersCastle() {
     Props.NearPersp = 2.0f;
     Props.FarPersp = 2700.0f;
 
-    Props.PathSizes = {0x30C, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x30C, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -119,12 +119,12 @@ BowsersCastle::BowsersCastle() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_bowsers_castle_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_track_waypoints);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_bowsers_castle_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -132,24 +132,24 @@ BowsersCastle::BowsersCastle() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {48, 8, 120};
-    Props.Skybox.BottomRight = {0, 0, 0};
-    Props.Skybox.BottomLeft = {0, 0, 0};
-    Props.Skybox.TopLeft = {48, 8, 120};
-    Props.Skybox.FloorTopRight = {0, 0, 0};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {0, 0, 0};
+    Props.Skybox.TopRight = { 48, 8, 120 };
+    Props.Skybox.BottomRight = { 0, 0, 0 };
+    Props.Skybox.BottomLeft = { 0, 0, 0 };
+    Props.Skybox.TopLeft = { 48, 8, 120 };
+    Props.Skybox.FloorTopRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 0, 0, 0 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_BOWSERS_CASTLE;
 
     Props.WaterLevel = -50.0f;
-    WaterVolumes.push_back({20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f});
+    WaterVolumes.push_back({ 20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f });
 }
 
 void BowsersCastle::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
 }
@@ -176,8 +176,8 @@ void BowsersCastle::SpawnStockThwomp() {
 }
 
 void BowsersCastle::BeginPlay() {
-    spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
+    spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_bowsers_castle_tree_spawn));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_bowsers_castle_item_box_spawns));
 
     switch (gCCSelection) {
         case CC_100:
@@ -268,7 +268,7 @@ void BowsersCastle::UpdateCourseObjects() {
 }
 
 void BowsersCastle::RenderCourseObjects(s32 cameraId) {
-    //render_object_thwomps(cameraId);
+    // render_object_thwomps(cameraId);
     render_object_bowser_flame(cameraId);
 }
 
@@ -276,8 +276,7 @@ void BowsersCastle::SomeSounds() {
 }
 
 void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x41);
         }
@@ -291,8 +290,7 @@ void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) && ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x41);
         }
@@ -333,10 +331,11 @@ void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void BowsersCastle::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_bowsers_castle_dl_9148));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_bowsers_castle_dl_9148));
 }
 
-void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
+void BowsersCastle::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5,
+                                       f32* arg6, f32* arg7) {
     func_8003E6EC(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
@@ -354,7 +353,8 @@ void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                              uint16_t playerDirection) {
     if (gActiveScreenMode != SCREEN_MODE_1P) {
         return;
     }
@@ -372,11 +372,12 @@ void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCo
             return;
         }
     }
-    gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_bowsers_castle_dl_9228);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_bowsers_castle_dl_9228);
 }
 
 void BowsersCastle::CreditsSpawnActors() {
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001350), 0x32, 0, 0, 0);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07001350), 0x32, 0, 0, 0);
 }
 
-void BowsersCastle::Destroy() { }
+void BowsersCastle::Destroy() {
+}

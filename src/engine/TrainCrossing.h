@@ -11,12 +11,12 @@ extern "C" {
  * @arg Vec3f position of the crossing
  * @arg u32 waypointMin
  * @arg u32 waypointMax
- * 
+ *
  * Min/Max are used to determine the range for AI to stop for the crossing.
- * 
+ *
  */
 class TrainCrossing {
-public:
+  public:
     TrainCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
 
     Vec3f Position;

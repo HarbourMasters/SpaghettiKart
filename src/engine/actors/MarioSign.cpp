@@ -33,7 +33,7 @@ void AMarioSign::Tick() {
     }
 }
 
-void AMarioSign::Draw(Camera *camera) {
+void AMarioSign::Draw(Camera* camera) {
     Mat4 sp40;
     f32 unk;
 
@@ -50,7 +50,7 @@ void AMarioSign::Draw(Camera *camera) {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         mtxf_pos_rotation_xyz(sp40, Pos, Rot);
         if (render_set_position(sp40, 0) != 0) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_mario_raceway_dl_sign);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_dl_sign);
         }
     }
 }

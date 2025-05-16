@@ -5,13 +5,13 @@
 
 /**
  * @file CoreMath.h
- * 
+ *
  * Basic vector structs for manipulating 2D and 3D coordinates
- * 
+ *
  */
 
 /**
- * 
+ *
  * Applies pos, rot, and scale
  *
  */
@@ -38,13 +38,8 @@ struct FVector {
         return x * other.x + y * other.y + z * other.z;
     }
 
-
     FVector Cross(const FVector& other) const {
-        return FVector(
-            y * other.z - z * other.y,
-            z * other.x - x * other.z,
-            x * other.y - y * other.x
-        );
+        return FVector(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
     }
 
     float Magnitude() const {
@@ -54,15 +49,15 @@ struct FVector {
     FVector Normalize() const {
         float len = std::sqrt(x * x + y * y + z * z);
         if (len > 0.0001f) {
-            return FVector(
-                x / len, y / len, z / len
-            );
+            return FVector(x / len, y / len, z / len);
         }
         return FVector(0, 0, 0);
     }
 
-    FVector() : x(0), y(0), z(0) {}
-    FVector(float x, float y, float z) : x(x), y(y), z(z) {}
+    FVector() : x(0), y(0), z(0) {
+    }
+    FVector(float x, float y, float z) : x(x), y(y), z(z) {
+    }
 #endif // __cplusplus
 };
 
@@ -71,8 +66,10 @@ struct FVector4 {
 
 #ifdef __cplusplus
 
-    FVector4() : x(0), y(0), z(0), w(0) {}
-    FVector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+    FVector4() : x(0), y(0), z(0), w(0) {
+    }
+    FVector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {
+    }
 #endif // __cplusplus
 };
 
@@ -92,8 +89,10 @@ struct FVector2D {
         return *this;
     }
 
-    FVector2D() : x(0), z(0) {}
-    FVector2D(float x, float z) : x(x), z(z) {}
+    FVector2D() : x(0), z(0) {
+    }
+    FVector2D(float x, float z) : x(x), z(z) {
+    }
 #endif // __cplusplus
 };
 
@@ -102,10 +101,11 @@ typedef struct IVector2D {
     int32_t X, Y;
 
 #ifdef __cplusplus
-    IVector2D() : X(0), Y(0) {}  // Default constructor
+    IVector2D() : X(0), Y(0) {
+    } // Default constructor
 
-    IVector2D(int32_t x, int32_t y) : X(x), Y(y) {}  // Constructor to initialize with values
-
+    IVector2D(int32_t x, int32_t y) : X(x), Y(y) {
+    } // Constructor to initialize with values
 
     IVector2D& operator=(const IVector2D& other) {
         X = other.X;
@@ -116,9 +116,8 @@ typedef struct IVector2D {
 } IVector2D;
 
 /**
- * This struct immediately converts float pitch/yaw/roll in degrees to n64 int16_t binary angles 0-0xFFFF == 0-360 degrees
- * ToDegrees() Receive an FRotator of float degrees back.
- * Set() Set an n64 int16_t binary angles 0-0xFFFF
+ * This struct immediately converts float pitch/yaw/roll in degrees to n64 int16_t binary angles 0-0xFFFF == 0-360
+ * degrees ToDegrees() Receive an FRotator of float degrees back. Set() Set an n64 int16_t binary angles 0-0xFFFF
  */
 struct IRotator {
     uint16_t pitch, yaw, roll;
@@ -126,8 +125,8 @@ struct IRotator {
 #ifdef __cplusplus
     IRotator& operator=(const IRotator& other) {
         pitch = other.pitch;
-        yaw   = other.yaw;
-        roll  = other.roll;
+        yaw = other.yaw;
+        roll = other.roll;
         return *this;
     }
 
@@ -137,21 +136,18 @@ struct IRotator {
         roll = r;
     }
 
-    IRotator() : pitch(0), yaw(0), roll(0) {}
+    IRotator() : pitch(0), yaw(0), roll(0) {
+    }
     IRotator(float p, float y, float r) {
         pitch = p * (UINT16_MAX / 360);
-        yaw   = y * (UINT16_MAX / 360);
-        roll  = r * (UINT16_MAX / 360);
+        yaw = y * (UINT16_MAX / 360);
+        roll = r * (UINT16_MAX / 360);
     }
 
     // Convert to radians as FVector
     [[nodiscard]] FVector ToRadians() const {
         float scale = 2.0f * M_PI / 65536.0f;
-        return FVector(
-            pitch * scale,
-            yaw   * scale,
-            roll  * scale
-        );
+        return FVector(pitch * scale, yaw * scale, roll * scale);
     }
 #endif // __cplusplus
 };
@@ -167,26 +163,26 @@ struct FRotator {
 #ifdef __cplusplus
     FRotator& operator=(const FRotator& other) {
         pitch = other.pitch;
-        yaw   = other.yaw;
-        roll  = other.roll;
+        yaw = other.yaw;
+        roll = other.roll;
         return *this;
     }
 
     // Convert to binary rotator 0 --> INT16_MAX
     [[nodiscard]] IRotator ToBinary() const {
-        return IRotator(
-            static_cast<uint16_t>(pitch * (UINT16_MAX / 360)),
-            static_cast<uint16_t>(yaw   * (UINT16_MAX / 360)),
-            static_cast<uint16_t>(roll  * (UINT16_MAX / 360))
-        );
+        return IRotator(static_cast<uint16_t>(pitch * (UINT16_MAX / 360)),
+                        static_cast<uint16_t>(yaw * (UINT16_MAX / 360)),
+                        static_cast<uint16_t>(roll * (UINT16_MAX / 360)));
     }
 
-    FRotator() : pitch(0), yaw(0), roll(0) {}
-    FRotator(float p, float y, float r) : pitch(p), yaw(y), roll(r) {}
+    FRotator() : pitch(0), yaw(0), roll(0) {
+    }
+    FRotator(float p, float y, float r) : pitch(p), yaw(y), roll(r) {
+    }
     FRotator(IRotator rot) {
         pitch = static_cast<float>(rot.pitch * (360 / UINT16_MAX));
-        yaw   = static_cast<float>(rot.yaw   * (360 / UINT16_MAX));
-        roll  = static_cast<float>(rot.roll  * (360 / UINT16_MAX));
+        yaw = static_cast<float>(rot.yaw * (360 / UINT16_MAX));
+        roll = static_cast<float>(rot.roll * (360 / UINT16_MAX));
     }
 #endif // __cplusplus
 };
@@ -200,11 +196,12 @@ struct IPathSpan {
 
 #ifdef __cplusplus
     // Default Constructor
-    IPathSpan() : Start(0), End(0) {}
+    IPathSpan() : Start(0), End(0) {
+    }
 
     // Parameterized Constructor
-    IPathSpan(int InStart, int InEnd)
-        : Start(InStart), End(InEnd) {}
+    IPathSpan(int InStart, int InEnd) : Start(InStart), End(InEnd) {
+    }
 
     // Copy Assignment Operator
     IPathSpan& operator=(const IPathSpan& Other) {

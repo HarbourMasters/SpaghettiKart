@@ -19,7 +19,7 @@ ABowserStatue::ABowserStatue(FVector pos, ABowserStatue::Behaviour behaviour) {
 }
 
 void ABowserStatue::Tick() {
-    switch(_behaviour) {
+    switch (_behaviour) {
         case DEFAULT:
             break;
         case CRUSH:
@@ -27,7 +27,7 @@ void ABowserStatue::Tick() {
     }
 }
 
-void ABowserStatue::Draw(Camera *camera) {
+void ABowserStatue::Draw(Camera* camera) {
     Mat4 mtx;
     Vec3f pos;
     pos[0] = Pos.x + 76;
@@ -43,4 +43,6 @@ void ABowserStatue::Draw(Camera *camera) {
     }
 }
 
-bool ABowserStatue::IsMod() { return true; }
+bool ABowserStatue::IsMod() {
+    return true;
+}

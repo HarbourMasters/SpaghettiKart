@@ -10,14 +10,14 @@ extern "C" {
 
 OMoleGroup::OMoleGroup(std::vector<FVector> spawns) {
     for (auto& pos : spawns) {
-        pos.x * xOrientation;
+        pos.x* xOrientation;
         OMole* ptr = reinterpret_cast<OMole*>(gWorldInstance.AddObject(new OMole(pos, this)));
-        _moles.push_back({ptr, pos, false});
+        _moles.push_back({ ptr, pos, false });
     }
 }
 
 void OMoleGroup::Tick() {
-    for (auto &mole : _moles) {
+    for (auto& mole : _moles) {
         if (gObjectList[mole.Mole->_objectIndex].state == 0) {
             func_80081FF4(mole.Mole->_objectIndex);
         } else {

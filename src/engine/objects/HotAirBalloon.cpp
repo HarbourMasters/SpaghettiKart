@@ -22,7 +22,7 @@ OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
 
     // Spawn balloon on second lap.
     if (GetCourse() == GetLuigiRaceway()) {
-        _visible = (bool*)&D_80165898;
+        _visible = (bool*) &D_80165898;
     } else { // Spawn balloon on race start
         bool mod = true;
         _visible = &mod;
@@ -35,7 +35,7 @@ OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
 
 void OHotAirBalloon::Tick() {
     s32 objectIndex = _objectIndex;
-    
+
     if (*_visible) {
         if (gObjectList[objectIndex].state != 0) {
             OHotAirBalloon::func_80085768(objectIndex);
@@ -78,8 +78,8 @@ void OHotAirBalloon::func_80055CCC(s32 objectIndex, s32 cameraId) {
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
         if (is_obj_index_flag_status_inactive(objectIndex, 0x00100000) != 0) {
             func_80043328(gObjectList[objectIndex].pos, (u16*) gObjectList[objectIndex].direction_angle,
-                          gObjectList[objectIndex].sizeScaling, (Gfx*)d_course_luigi_raceway_dl_F960);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_luigi_raceway_dl_F650);
+                          gObjectList[objectIndex].sizeScaling, (Gfx*) d_course_luigi_raceway_dl_F960);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_luigi_raceway_dl_F650);
         } else {
             D_80183E80[0] = (s16) gObjectList[objectIndex].direction_angle[0];
             D_80183E80[1] =
@@ -87,8 +87,8 @@ void OHotAirBalloon::func_80055CCC(s32 objectIndex, s32 cameraId) {
                        0x8000);
             D_80183E80[2] = (u16) gObjectList[objectIndex].direction_angle[2];
             func_80043328(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling,
-                          (Gfx*)d_course_luigi_raceway_dl_FBE0);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_luigi_raceway_dl_FA20);
+                          (Gfx*) d_course_luigi_raceway_dl_FBE0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_luigi_raceway_dl_FA20);
             if (gPlayerCountSelection1 == 1) {
                 gObjectList[objectIndex].direction_angle[1] = 0;
             }
@@ -98,7 +98,7 @@ void OHotAirBalloon::func_80055CCC(s32 objectIndex, s32 cameraId) {
 
 void OHotAirBalloon::init_hot_air_balloon(s32 objectIndex) {
     gObjectList[objectIndex].sizeScaling = 1.0f;
-    gObjectList[objectIndex].model = (Gfx*)d_course_luigi_raceway_dl_F960;
+    gObjectList[objectIndex].model = (Gfx*) d_course_luigi_raceway_dl_F960;
     if (gGamestate != CREDITS_SEQUENCE) {
         set_obj_origin_pos(objectIndex, xOrientation * _pos.x, _pos.y, _pos.z);
         set_obj_origin_offset(objectIndex, 0.0f, 300.0f, 0.0f);

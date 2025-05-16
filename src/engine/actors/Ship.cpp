@@ -20,8 +20,8 @@ AShip::AShip(FVector pos, AShip::Skin skin) {
     Pos[1] = pos.y;
     Pos[2] = pos.z;
     Scale = FVector(0.4, 0.4, 0.4);
-    
-    switch(skin) {
+
+    switch (skin) {
         case GHOSTSHIP:
             Name = "Ghostship";
             _skin = ghostship_Plane_mesh;
@@ -53,4 +53,6 @@ void AShip::Tick() {
     // Rot.yaw = -static_cast<int16_t>(angle * (32768.0f / M_PI / 2.0f));
 }
 
-bool AShip::IsMod() { return true; }
+bool AShip::IsMod() {
+    return true;
+}

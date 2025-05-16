@@ -4,7 +4,6 @@
 #include <vector>
 #include "CoreMath.h"
 
-
 #include "port/Game.h"
 
 extern "C" {
@@ -66,8 +65,7 @@ void OCrab::Draw(s32 cameraId) {
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
         draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                            gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                           (uint8_t*)gObjectList[objectIndex].activeTexture, vtx, 64, 64,
-                           64, 32);
+                           (uint8_t*) gObjectList[objectIndex].activeTexture, vtx, 64, 64, 64, 32);
     }
 }
 
@@ -76,14 +74,18 @@ void OCrab::DrawModel(s32 cameraId) {
     s32 objectIndex = _objectIndex;
     func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        Camera *camera;
+        Camera* camera;
         s32 objectIndex;
 
         if (gObjectList[objectIndex].state >= 2) {
             camera = &camera1[cameraId];
             func_8004A6EC(objectIndex, 0.5f);
-            gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-            draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT, (u8*)gObjectList[objectIndex].activeTexture, (Vtx*)common_vtx_hedgehog, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+            gObjectList[objectIndex].orientation[1] =
+                func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
+                               gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
+                               (u8*) gObjectList[objectIndex].activeTexture, (Vtx*) common_vtx_hedgehog, 0x00000040,
+                               0x00000040, 0x00000040, 0x00000020);
         }
     }
 }

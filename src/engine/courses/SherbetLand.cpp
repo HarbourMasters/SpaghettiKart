@@ -11,28 +11,28 @@
 #include "engine/objects/Penguin.h"
 
 extern "C" {
-    #include "main.h"
-    #include "camera.h"
-    #include "course_offsets.h"
-    #include "code_800029B0.h"
-    #include "render_courses.h"
-    #include "code_8006E9C0.h"
-    #include "code_80057C60.h"
-    #include "defines.h"
-    #include "math_util.h"
-    #include "external.h"
-    #include "code_80005FD0.h"
-    #include "spawn_players.h"
-    #include "render_objects.h"
-    #include "assets/common_data.h"
-    #include "save.h"
-    #include "staff_ghosts.h"
-    #include "actors.h"
-    #include "collision.h"
-    #include "memory.h"
-    #include "course.h"
-    extern const char *sherbet_land_dls[];
-    extern const char *sherbet_land_dls_2[];
+#include "main.h"
+#include "camera.h"
+#include "course_offsets.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
+#include "code_8006E9C0.h"
+#include "code_80057C60.h"
+#include "defines.h"
+#include "math_util.h"
+#include "external.h"
+#include "code_80005FD0.h"
+#include "spawn_players.h"
+#include "render_objects.h"
+#include "assets/common_data.h"
+#include "save.h"
+#include "staff_ghosts.h"
+#include "actors.h"
+#include "collision.h"
+#include "memory.h"
+#include "course.h"
+extern const char* sherbet_land_dls[];
+extern const char* sherbet_land_dls_2[];
 }
 
 const course_texture sherbet_land_textures[] = {
@@ -59,13 +59,13 @@ SherbetLand::SherbetLand() {
     Props.Minimap.PlayerScaleFactor = 0.015f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
-    Props.Minimap.Colour = {72, 100, 255};
+    Props.Minimap.Colour = { 72, 100, 255 };
 
     Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "756m", sizeof(Props.CourseLength));
 
-    Props.LakituTowType = (s32)OLakitu::LakituTowType::ICE;
+    Props.LakituTowType = (s32) OLakitu::LakituTowType::ICE;
 
     Props.AIBehaviour = D_0D009280;
     Props.AIMaximumSeparation = 50.0f;
@@ -75,7 +75,7 @@ SherbetLand::SherbetLand() {
     Props.NearPersp = 9.0f;
     Props.FarPersp = 4500.0f;
 
-    Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
     Props.D_0D009418[0] = 4.1666665f;
     Props.D_0D009418[1] = 5.5833334f;
@@ -97,12 +97,12 @@ SherbetLand::SherbetLand() {
     Props.D_0D009808[2] = 5.75f;
     Props.D_0D009808[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_sherbet_land_unknown_waypoints);
+    Props.PathTable[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_sherbet_land_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_sherbet_land_track_waypoints);
+    Props.PathTable2[0] = (TrackWaypoint*) LOAD_ASSET_RAW(d_course_sherbet_land_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -111,14 +111,14 @@ SherbetLand::SherbetLand() {
     Props.Clouds = gSherbetLandClouds;
     Props.CloudList = gSherbetLandClouds;
 
-    Props.Skybox.TopRight = {128, 184, 248};
-    Props.Skybox.BottomRight = {216, 232, 248};
-    Props.Skybox.BottomLeft = {216, 232, 248};
-    Props.Skybox.TopLeft = {128, 184, 248};
-    Props.Skybox.FloorTopRight = {216, 232, 248};
-    Props.Skybox.FloorBottomRight = {128, 184, 248};
-    Props.Skybox.FloorBottomLeft = {128, 184, 248};
-    Props.Skybox.FloorTopLeft = {216, 232, 248};
+    Props.Skybox.TopRight = { 128, 184, 248 };
+    Props.Skybox.BottomRight = { 216, 232, 248 };
+    Props.Skybox.BottomLeft = { 216, 232, 248 };
+    Props.Skybox.TopLeft = { 128, 184, 248 };
+    Props.Skybox.FloorTopRight = { 216, 232, 248 };
+    Props.Skybox.FloorBottomRight = { 128, 184, 248 };
+    Props.Skybox.FloorBottomLeft = { 128, 184, 248 };
+    Props.Skybox.FloorTopLeft = { 216, 232, 248 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -18.0f;
@@ -127,12 +127,12 @@ SherbetLand::SherbetLand() {
 void SherbetLand::Load() {
     Course::Load();
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
+    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07001EB8), -0x4C, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07002308), -0x6A, 255, 255, 255);
 }
 
 f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
@@ -143,64 +143,77 @@ f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
 }
 
 void SherbetLand::BeginPlay() {
-    spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
+    spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_sherbet_land_item_box_spawns));
 
     // Multiplayer does not spawn the big penguin
-//  if (gPlayerCountSelection1 == 1) {
-        FVector pos = {-383.0f, 2.0f, -690.0f};
-        gWorldInstance.AddObject(new OPenguin(pos, 0, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT));
-//  }
+    //  if (gPlayerCountSelection1 == 1) {
+    FVector pos = { -383.0f, 2.0f, -690.0f };
+    gWorldInstance.AddObject(new OPenguin(pos, 0, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT));
+    //  }
 
     FVector pos2 = { -2960.0f, -80.0f, 1521.0f };
-    auto penguin = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos2, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
-    auto penguin2 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos2, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos2, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin2 = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos2, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
     penguin->Diameter = penguin2->Diameter = 100.0f;
 
     FVector pos3 = { -2490.0f, -80.0f, 1612.0f };
-    auto penguin3 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos3, 0x100, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
-    auto penguin4 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos3, 0x100, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin3 = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos3, 0x100, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin4 = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos3, 0x100, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
     penguin3->Diameter = penguin4->Diameter = 80.0f;
 
     FVector pos4 = { -2098.0f, -80.0f, 1624.0f };
-    auto penguin5 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos4, 0xFF00, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
-    auto penguin6 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos4, 0xFF00, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin5 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos4, 0xFF00, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin6 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos4, 0xFF00, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
     penguin5->Diameter = penguin6->Diameter = 80.0f;
 
-
     FVector pos5 = { -2080.0f, -80.0f, 1171.0f };
-    auto penguin7 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos5, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
-    auto penguin8 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos5, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin7 = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos5, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
+    auto penguin8 = reinterpret_cast<OPenguin*>(
+        gWorldInstance.AddObject(new OPenguin(pos5, 0x150, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE)));
     penguin7->Diameter = penguin8->Diameter = 80.0f;
-
 
     if (gGamestate == CREDITS_SEQUENCE) {
         FVector pos6 = { 380.0, 0.0f, -535.0f };
-        auto penguin9 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos6, 0x9000, OPenguin::PenguinType::CREDITS, OPenguin::Behaviour::SLIDE3)));
+        auto penguin9 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+            new OPenguin(pos6, 0x9000, OPenguin::PenguinType::CREDITS, OPenguin::Behaviour::SLIDE3)));
         penguin9->MirrorModeAngleOffset = -0x4000;
     } else {
         FVector pos6 = { 146.0f, 0.0f, -380.0f };
-        auto penguin9 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos6, 0x9000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE3)));
+        auto penguin9 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+            new OPenguin(pos6, 0x9000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE3)));
         penguin9->MirrorModeAngleOffset = -0x4000;
     }
 
     FVector pos7 = { 380.0f, 0.0f, -766.0f };
-    auto penguin10 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos7, 0x5000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE4)));
+    auto penguin10 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos7, 0x5000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE4)));
     penguin10->MirrorModeAngleOffset = 0x8000;
 
     FVector pos8 = { -2300.0f, 0.0f, -210.0f };
-    auto penguin11 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos8, 0xC000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
+    auto penguin11 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos8, 0xC000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
     penguin11->MirrorModeAngleOffset = 0x8000;
 
     FVector pos9 = { -2500.0f, 0.0f, -250.0f };
-    auto penguin12 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos9, 0x4000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
+    auto penguin12 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos9, 0x4000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
     penguin12->MirrorModeAngleOffset = 0x8000;
 
     FVector pos10 = { -535.0f, 0.0f, 875.0f };
-    auto penguin13 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos10, 0x8000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
+    auto penguin13 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos10, 0x8000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
     penguin13->MirrorModeAngleOffset = -0x4000;
 
     FVector pos11 = { -250.0f, 0.0f, 953.0f };
-    auto penguin14 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(pos11, 0x9000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
+    auto penguin14 = reinterpret_cast<OPenguin*>(gWorldInstance.AddObject(
+        new OPenguin(pos11, 0x9000, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6)));
     penguin14->MirrorModeAngleOffset = -0x4000;
 
     if (gGamestate != CREDITS_SEQUENCE) {
@@ -239,10 +252,11 @@ void SherbetLand::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void SherbetLand::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_sherbet_land_dl_9AE8));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_sherbet_land_dl_9AE8));
 }
 
-void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                            uint16_t playerDirection) {
     Mat4 matrix;
 
     gDPPipeSync(gDisplayListHead++);
@@ -263,14 +277,14 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_sherbet_land_packed_dl_2B48
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07002B48));
+        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x07002B48));
     }
     gDPPipeSync(gDisplayListHead++);
 }
 
 void SherbetLand::CreditsSpawnActors() {
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), -0x4C, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07001EB8), -0x4C, 0xFF, 0xFF, 0xFF);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07002308), -0x6A, 0xFF, 0xFF, 0xFF);
 }

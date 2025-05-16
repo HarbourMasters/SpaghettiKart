@@ -101,7 +101,7 @@ void StarEmitter::Draw(s32 cameraId) { // func_80054BE8
     Camera* camera;
 
     camera = &camera1[cameraId];
-    gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
     load_texture_block_ia8_nomirror(D_8018D488, 0x00000020, 0x00000020);
     func_8004B35C(0x000000FF, 0x000000FF, 0, 0x000000FF);
     D_80183E80[0] = 0;
@@ -121,8 +121,8 @@ void StarEmitter::func_80054AFC(s32 objectIndex, Vec3f arg1) {
                   (s32) gObjectList[objectIndex].unk_084[2], (s32) gObjectList[objectIndex].primAlpha);
     rsp_set_matrix_transformation(gObjectList[objectIndex].pos, (u16*) D_80183E80,
                                   gObjectList[objectIndex].sizeScaling);
-    gSPVertex(gDisplayListHead++, (uintptr_t)D_0D005AE0, 4, 0);
-    gSPDisplayList(gDisplayListHead++, (Gfx*)common_rectangle_display);
+    gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
 }
 
 void StarEmitter::func_80077428(s32 objectIndex) {

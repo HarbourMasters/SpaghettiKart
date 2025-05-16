@@ -55,24 +55,26 @@ FVector ScreenRayTrace() {
     // Convert mouse to NDS screen coordinates
     float x = (2.0f * mouse.x) / width - 1.0f;  // Normalized X: -1 to 1
     float y = 1.0f - (2.0f * mouse.y) / height; // Normalized Y: -1 to 1
-    float z = 1.0f; // z is typically 1.0 for the near plane
+    float z = 1.0f;                             // z is typically 1.0 for the near plane
 
-    FVector4 rayClip = {x, y, z, 1.0f};
+    FVector4 rayClip = { x, y, z, 1.0f };
 
     Mat4 perspMtx;
     u16 perspNorm;
-    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], OTRGetAspectRatio(), CM_GetProps()->NearPersp,
+                   CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
-    if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx) != 2) {
-        FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*)&rayClip.x);
+    if (InverseMatrix((float*) &perspMtx, (float*) &inversePerspMtx) != 2) {
+        FVector4 rayEye = MultiplyMatrixVector(inversePerspMtx, (float*) &rayClip.x);
 
         Mat4 lookAtMtx;
-        guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
+        guLookAtF(lookAtMtx, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1],
+                  camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
         Mat4 inverseViewMtx;
-        if (InverseMatrix((float*)&lookAtMtx, (float*)&inverseViewMtx[0][0]) != 2) {
+        if (InverseMatrix((float*) &lookAtMtx, (float*) &inverseViewMtx[0][0]) != 2) {
             rayEye.w = 0;
-            FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*)&rayEye.x);
+            FVector4 invRayWor = MultiplyMatrixVector(inverseViewMtx, (float*) &rayEye.x);
 
             FVector direction;
             direction = FVector(invRayWor.x, invRayWor.y, invRayWor.z);
@@ -91,12 +93,17 @@ bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f
             float t1 = (actorMin[i] - rayOrigin[i]) / rayDir[i];
             float t2 = (actorMax[i] - rayOrigin[i]) / rayDir[i];
 
-            if (t1 > t2) { float temp = t1; t1 = t2; t2 = temp; }
+            if (t1 > t2) {
+                float temp = t1;
+                t1 = t2;
+                t2 = temp;
+            }
 
             tmin = fmax(tmin, t1);
             tmax = fmin(tmax, t2);
 
-            if (tmax < tmin) return false; // No intersection
+            if (tmax < tmin)
+                return false; // No intersection
         } else if (rayOrigin[i] < actorMin[i] || rayOrigin[i] > actorMax[i]) {
             return false; // Ray is outside the slab
         }
@@ -112,7 +119,7 @@ FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]) {
     for (int i = 0; i < 4; i++) {
         resultPtr[i] = 0;
         for (int j = 0; j < 4; j++) {
-            resultPtr[i] += matrix[j][i] * vector[j];  // Swap [i][j] → [j][i] for column order
+            resultPtr[i] += matrix[j][i] * vector[j]; // Swap [i][j] → [j][i] for column order
         }
     }
     return result;
@@ -205,10 +212,10 @@ FVector TransformVecDirection(const FVector& dir, const float mtx[4][4]) {
 Ray RayToLocalSpace(MtxF mtx, const Ray& ray) {
     MtxF inverse;
 
-    if (InverseMatrix((float*)&mtx, (float*)&inverse) != 2) {
-        FVector localRayOrigin = TransformVecByMatrix(ray.Origin, (float(*)[4])&inverse);
-        FVector localRayDir = TransformVecDirection(ray.Direction, (float(*)[4])&inverse);
-        return Ray{localRayOrigin, localRayDir.Normalize()};
+    if (InverseMatrix((float*) &mtx, (float*) &inverse) != 2) {
+        FVector localRayOrigin = TransformVecByMatrix(ray.Origin, (float(*)[4]) & inverse);
+        FVector localRayDir = TransformVecDirection(ray.Direction, (float(*)[4]) & inverse);
+        return Ray{ localRayOrigin, localRayDir.Normalize() };
     }
     return Ray{}; // Fail. Return empty ray
 }
@@ -284,7 +291,7 @@ std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, const Triangle
     Ray localRay = RayToLocalSpace(mtx, ray);
     if (IntersectRayTriangle(localRay, tri, t)) {
         FVector localClickPosition = localRay.Origin + localRay.Direction * t;
-        FVector worldClickPosition = TransformVecByMatrix(localClickPosition, (float(*)[4])&mtx);
+        FVector worldClickPosition = TransformVecByMatrix(localClickPosition, (float(*)[4]) & mtx);
 
         return worldClickPosition; // Stop checking objects if we selected a Gizmo handle
     }
@@ -327,7 +334,8 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
     return false; // Sphere is behind the ray origin
 }
 
-// bool FindClosestObject(const Ray& ray, const std::vector<GameObject*>& objects, GameObject* outObject, float& outDistance) {
+// bool FindClosestObject(const Ray& ray, const std::vector<GameObject*>& objects, GameObject* outObject, float&
+// outDistance) {
 //     float closestDist = std::numeric_limits<float>::max();
 //     bool found = false;
 
@@ -346,7 +354,7 @@ bool IntersectRaySphere(const Ray& ray, const FVector& sphereCenter, float radiu
 //         outDistance = closestDist;
 //         return true;
 //     }
-    
+
 //     return false;
 // }
 
@@ -381,8 +389,8 @@ float CalculateAngle(const FVector& start, const FVector& end) {
 }
 
 void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
-    float yaw = (rot.yaw) * (M_PI / 32768.0f);  // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
-    float pitch = rot.pitch * (M_PI / 32768.0f); 
+    float yaw = (rot.yaw) * (M_PI / 32768.0f); // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
+    float pitch = rot.pitch * (M_PI / 32768.0f);
 
     // Compute unit direction vector
     float x = cosf(yaw) * cosf(pitch);
@@ -394,7 +402,8 @@ void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
     direction[1] = static_cast<s8>(y * 127.0f);
     direction[2] = static_cast<s8>(z * 127.0f);
 
-    //printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0], rotator[1], rotator[2]);
+    // printf("Light dir %d %d %d (from rot 0x%X 0x%X 0x%X)\n", direction[0], direction[1], direction[2], rotator[0],
+    // rotator[1], rotator[2]);
 }
 
 void SetRotatorFromDirection(FVector direction, IRotator* rot) {
@@ -405,8 +414,8 @@ void SetRotatorFromDirection(FVector direction, IRotator* rot) {
     float yaw = atan2f(-direction.z, direction.x);
 
     // Convert back to N64 angles (0-0xFFFF range)
-    rot->pitch = (s16)(pitch * (32768.0f / M_PI));
-    rot->yaw = (s16)(yaw * (32768.0f / M_PI));
+    rot->pitch = (s16) (pitch * (32768.0f / M_PI));
+    rot->yaw = (s16) (yaw * (32768.0f / M_PI));
     rot->roll = 0; // Assume no roll, since it's undefined from direction alone
 }
 
@@ -421,10 +430,9 @@ FVector GetPositionAheadOfCamera(f32 dist) {
     yaw = yaw * M_PI / 180.0f;
 
     // Compute forward vector
-    FVector forward(
-        -sinf(yaw),  // X
-        -sinf(pitch), // Y
-        cosf(yaw)               // Z (vertical component)
+    FVector forward(-sinf(yaw),   // X
+                    -sinf(pitch), // Y
+                    cosf(yaw)     // Z (vertical component)
     );
 
     // Move 1000 units forward from the camera position

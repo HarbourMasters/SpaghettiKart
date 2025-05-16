@@ -13,7 +13,6 @@ size_t TrackWaypoints::GetPointerSize() {
     return TrackWaypointList.size() * sizeof(TrackWaypointData);
 }
 
-
 Paths::Paths() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {
 }
 
