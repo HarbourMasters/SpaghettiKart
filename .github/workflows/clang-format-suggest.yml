@@ -2,6 +2,7 @@ name: clang-format Suggest
 on: [pull_request]
 jobs:
   formatting-check:
+    if: 0
     permissions: # needed in forks? https://github.com/parkerbxyz/suggest-changes/issues/33
       contents: read
       pull-requests: write

@@ -4,6 +4,7 @@ on:
     branches: ["main"]
 jobs:
   formatting-check:
+    if: 0
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4

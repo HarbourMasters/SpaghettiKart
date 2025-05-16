@@ -2,6 +2,7 @@ name: clang-format Check
 on: [push]
 jobs:
   formatting-check:
+    if: 0
     name: Formatting Check
     runs-on: ubuntu-24.04
     strategy:

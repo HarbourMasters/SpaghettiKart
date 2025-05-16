@@ -15,7 +15,7 @@ jobs:
         run: brew install sdl2 libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release
           cmake --build build-cmake -j
       - name: Create Package
         run: |
