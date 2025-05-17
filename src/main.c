@@ -686,7 +686,7 @@ void calculate_updaterate(void) {
         if (targetFPS < 60) {
             gTickLogic = 2;
         } else {
-            gTickLogic = 1;    // Perform logic update
+            gTickLogic = 2;    // Perform logic update
         }
     }
 
@@ -694,8 +694,8 @@ void calculate_updaterate(void) {
     visualsAccumulator += total;  // Increment for each frame
     if (visualsAccumulator >= visualsUpdateInterval) {  // Check if it's time to update visuals
         visualsAccumulator -= visualsUpdateInterval;
-        gTickVisuals = 1;    // Perform visual update
     }
+    gTickVisuals = 1;    // Perform visual update
 }
 
 void display_debug_info(void) {
