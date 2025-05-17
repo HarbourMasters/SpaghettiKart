@@ -2,6 +2,7 @@
 #include <actors.h>
 #include <defines.h>
 #include <main.h>
+#include "port/interpolation/FrameInterpolation.h"
 
 /**
  * @brief Renders the Yoshi egg actor.
