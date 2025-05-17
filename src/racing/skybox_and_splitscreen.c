@@ -21,6 +21,7 @@
 #include "engine/courses/Course.h"
 #include "port/Game.h"
 #include "math_util.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
