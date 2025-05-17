@@ -35,9 +35,9 @@ void FrameInterpolation_RecordActorPosRotMatrix(void);
 
 void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4 out, Vec3f pos, Vec3s orientation);
 
-//void FrameInterpolation_RecordMatrixPush(Matrix** mtx);
+void FrameInterpolation_RecordMatrixPush(Mat4* mtx);
 
-//void FrameInterpolation_RecordMatrixPop(Matrix** mtx);
+void FrameInterpolation_RecordMatrixPop(Mat4* mtx);
 
 //void FrameInterpolation_RecordMatrixMult(Matrix* matrix, MtxF* mf, u8 mode);
 

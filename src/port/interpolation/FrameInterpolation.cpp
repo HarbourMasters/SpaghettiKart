@@ -330,11 +330,11 @@ struct InterpolateCtx {
                             break;
 
                         case Op::MatrixPush:
-                            // Matrix_Push(&gInterpolationMatrix);
+                            Matrix_Push((Matrix**)&gInterpolationMatrix);
                             break;
 
                         case Op::MatrixPop:
-                            // Matrix_Pop(&gInterpolationMatrix);
+                            Matrix_Pop((Matrix**)&gInterpolationMatrix);
                             break;
 
                             // Unused on SF64
@@ -519,11 +519,11 @@ void FrameInterpolation_RecordActorPosRotMatrix(void) {
     next_is_actor_pos_rot_matrix = true;
 }
 
-void FrameInterpolation_RecordMatrixPush(Mat4** matrix) {
+void FrameInterpolation_RecordMatrixPush(Mat4* matrix) {
     if (!is_recording)
         return;
 
-    append(Op::MatrixPush).matrix_ptr = { matrix };
+    append(Op::MatrixPush).matrix_ptr = { (Mat4**)matrix };
 }
 
 void FrameInterpolation_RecordMarker(const char* file, int line) {
@@ -533,10 +533,10 @@ void FrameInterpolation_RecordMarker(const char* file, int line) {
     // append(Op::Marker).marker = { file, line };
 }
 
-void FrameInterpolation_RecordMatrixPop(Mat4** matrix) {
+void FrameInterpolation_RecordMatrixPop(Mat4* matrix) {
     if (!is_recording)
         return;
-    append(Op::MatrixPop).matrix_ptr = { matrix };
+    append(Op::MatrixPop).matrix_ptr = { (Mat4**)matrix };
 }
 
 void FrameInterpolation_RecordMatrixPut(MtxF* src) {

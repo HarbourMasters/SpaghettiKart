@@ -379,6 +379,7 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
             mtx_replacements.emplace_back();
         }
     }
+   // printf("mtxf size: %d\n", mtx_replacements.size());
 
     time -= fps;
 

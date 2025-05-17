@@ -10,9 +10,6 @@ extern "C" {
 }
 
 void AddMatrix(std::vector<Mtx>& stack, Mat4 mtx, s32 flags) {
-    // Reserve space if needed to avoid reallocation overhead
-    stack.reserve(1000);
-
     // Push a new matrix to the stack
     stack.emplace_back();
 
