@@ -268,6 +268,7 @@ FetchContent_MakeAvailable(dr_libs)
 #==============================================================================#
 
 set(EXCLUDE_MPQ_SUPPORT TRUE CACHE BOOL "")
+add_compile_definitions(EXCLUDE_MPQ_SUPPORT)
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
