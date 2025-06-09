@@ -7,6 +7,7 @@
 #include "port/Engine.h"
 #include "FrameInterpolation.h"
 #include "matrix.h"
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "math_util.h"
@@ -81,7 +82,8 @@ enum class Op {
     SkinMatrixMtxFToMtx,
     SetTransformMatrix,
     SetMatrixTransformation,
-    SetTranslateRotate
+    SetTranslateRotate,
+    SetTextMatrix
 };
 
 typedef pair<const void*, uintptr_t> label;
@@ -207,6 +209,14 @@ union Data {
         f32 arg3;
         s16 rot;
     } set_orientation_matrix_data;
+
+    struct {
+        Mat4* matrix;
+        f32 x;
+        f32 y;
+        f32 arg3;
+        f32 arg4;
+    } matrix_text;
 
     struct {
         label key;
@@ -533,6 +543,16 @@ struct InterpolateCtx {
                             mtxf_translate_rotate(*gInterpolationMatrix, tmp_vec3f, tmp_vec3s);
                             break;
                         }
+                        case Op::SetTextMatrix: {
+
+                            tmp_vec3f[0] = lerp(old_op.matrix_text.x, new_op.matrix_text.x);
+                            tmp_vec3f[1] = lerp(old_op.matrix_text.y, new_op.matrix_text.y);
+                            tmp_vec3f[2] = lerp(old_op.matrix_text.arg3, new_op.matrix_text.arg3);
+                            tmp_vec3f2[0] = lerp(old_op.matrix_text.arg4, new_op.matrix_text.arg4);
+
+                            SetTextMatrix(*gInterpolationMatrix, tmp_vec3f[0], tmp_vec3f[1], tmp_vec3f[2], tmp_vec3f2[0]);
+                            break;
+                        }
                     }
                 }
             }
@@ -603,6 +623,12 @@ void FrameInterpolation_DontInterpolateCamera(void) {
 
 int FrameInterpolation_GetCameraEpoch(void) {
     return (int) camera_epoch;
+}
+
+void FrameInterpolation_Record_SetTextMatrix(Mat4* matrix, f32 x, f32 y, f32 arg3, f32 arg4) {
+    if (!is_recording)
+        return;
+    append(Op::SetTextMatrix).matrix_text = {matrix, x, y, arg3, arg4};
 }
 
 void FrameInterpolation_RecordActorPosRotMatrix(void) {

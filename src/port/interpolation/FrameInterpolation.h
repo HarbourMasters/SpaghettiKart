@@ -18,7 +18,7 @@ extern "C" {
 
 #define TAG_ITEM_ADDR(x) ((u32) 0x10000000 | (u32)x)
 #define TAG_SMOKE_DUST(x) ((u32) 0x20000000 | (u32) (x))
-#define TAG_LETTER(x) ((u32)0x30000000 | (u32) (x))
+#define TAG_LETTER(x) ((u32)0x30000000 | (u32) (uintptr_t) (x))
 #define TAG_OBJECT(x) ((u32)0x40000000 | (u32) (uintptr_t) (x))
 
 void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate);
@@ -40,6 +40,8 @@ int FrameInterpolation_GetCameraEpoch(void);
 void FrameInterpolation_RecordActorPosRotMatrix(void);
 
 void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4 out, Vec3f pos, Vec3s orientation);
+
+void FrameInterpolation_Record_SetTextMatrix(Mat4* matrix, f32 x, f32 y, f32 arg3, f32 arg4);
 
 void FrameInterpolation_RecordMatrixPush(Mat4* matrix);
 

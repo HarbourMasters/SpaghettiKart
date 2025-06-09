@@ -35,8 +35,8 @@ void AddMatrixFixed(std::vector<Mtx>& stack, s32 flags) {
 }
 
 // Used in func_80095BD0
-Mtx* SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Mat4 mf;
+void SetTextMatrix(Mat4 mf, f32 x, f32 y, f32 arg3, f32 arg4) {
+    FrameInterpolation_Record_SetTextMatrix((Mat4*)&mf, x, y, arg3, arg4);
     mf[0][0] = arg3;
     mf[0][1] = 0.0f;
     mf[0][2] = 0.0f;
@@ -49,15 +49,25 @@ Mtx* SetTextMatrix(f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     mf[2][1] = 0.0f;
     mf[2][2] = 1.0f;
     mf[2][3] = 0.0f;
-    mf[3][0] = arg1;
-    mf[3][1] = arg2;
+    mf[3][0] = x;
+    mf[3][1] = y;
     mf[3][2] = 0.0f;
     mf[3][3] = 1.0f;
-    Mtx* mtx = GetMatrix(gWorldInstance.Mtx.Effects);
-    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mf, mtx);
-    guMtxF2L(mf, mtx);
+}
 
-    return mtx;
+// AddMatrix but with custom gfx ptr arg and flags are predefined
+Gfx* AddTextMatrix(Gfx* displayListHead, Mat4 mtx) {
+    // Push a new matrix to the stack
+    gWorldInstance.Mtx.Effects.emplace_back();
+
+    // Convert to a fixed-point matrix
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mtx, &gWorldInstance.Mtx.Effects.back());
+    guMtxF2L(mtx, &gWorldInstance.Mtx.Effects.back());
+
+    // Load the matrix
+    gSPMatrix(displayListHead++, &gWorldInstance.Mtx.Effects.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    return displayListHead;
 }
 
 void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector scale) {
