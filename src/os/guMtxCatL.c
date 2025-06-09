@@ -43,6 +43,7 @@ void guMtxCatL(Mtx* m, Mtx* n, Mtx* res) {
 
     guMtxCatF(mf, nf, resf);
 
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)resf, res);
     guMtxF2L(resf, res);
 }
 

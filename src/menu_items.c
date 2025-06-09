@@ -8344,6 +8344,7 @@ void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     static float x2, y2, z2;
     static float x1, y1, z1;
 
+    FrameInterpolation_RecordOpenChild("pause_menu_item_box", TAG_OBJECT(arg0));
     mtx = GetEffectMatrix();
     mtx2 = GetEffectMatrix();
     if (arg0->paramf > 1.5) {
@@ -8381,6 +8382,7 @@ void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     gDPNoOp(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPDisplayList(gDisplayListHead++, D_0D003090);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void func_800A69C8(UNUSED MenuItem* arg0) {
