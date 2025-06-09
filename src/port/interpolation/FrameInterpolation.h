@@ -39,7 +39,9 @@ int FrameInterpolation_GetCameraEpoch(void);
 
 void FrameInterpolation_RecordActorPosRotMatrix(void);
 
-void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4 out, Vec3f pos, Vec3s orientation);
+void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4* out, Vec3f pos, Vec3s orientation);
+
+void FrameInterpolation_RecordMatrixPosRotScaleXY(Mat4* matrix, s32 x, s32 y, u16 angle, f32 scale);
 
 void FrameInterpolation_Record_SetTextMatrix(Mat4* matrix, f32 x, f32 y, f32 arg3, f32 arg4);
 

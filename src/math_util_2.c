@@ -579,6 +579,7 @@ UNUSED void mtxf_rotate_z_scale_x_y(Mat4 dest, u16 angle, f32 scale) {
 void mtxf_translation_x_y_rotate_z_scale_x_y(Mat4 dest, s32 x, s32 y, u16 angle, f32 scale) {
     f32 sin_theta = sins(angle);
     f32 cos_theta = coss(angle) * scale;
+    FrameInterpolation_RecordMatrixPosRotScaleXY(dest, x, y, angle, scale);
 
     dest[2][0] = 0.0f;
     dest[0][0] = cos_theta;
