@@ -365,12 +365,14 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Enable Custom CC", WIDGET_CVAR_CHECKBOX).CVar("gEnableCustomCC");
     AddWidget(path, "Custom CC", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gCustomCC")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gEnableCustomCC", 0); })
         .Options(FloatSliderOptions().Min(0.0f).Max(1000.0f).DefaultValue(150.0f).Step(10.0f));
     AddWidget(path, "Disable Wall Collision", WIDGET_CVAR_CHECKBOX)
         .CVar("gNoWallColision")
         .Options(CheckboxOptions().Tooltip("Disable wall collision."));
     AddWidget(path, "Min Height", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gMinHeight")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoWallColision", 0); })
         .Options(FloatSliderOptions().Min(-50.0f).Max(50.0f).DefaultValue(0.0f).Tooltip(
             "When Disable Wall Collision are enable what is the minimal height you can get."));
 
