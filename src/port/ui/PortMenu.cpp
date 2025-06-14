@@ -339,9 +339,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "No multiplayer feature cuts", WIDGET_CVAR_CHECKBOX)
         .CVar("gMultiplayerNoFeatureCuts")
         .Options(CheckboxOptions().Tooltip("Allows full train and jumbotron in multiplayer, etc."));
-    AddWidget(path, "General Improvements", WIDGET_CVAR_CHECKBOX)
-        .CVar("gImprovements")
-        .Options(CheckboxOptions().Tooltip("General improvements to the game experience."));
+    AddWidget(path, "Widescreen portrait spacing", WIDGET_CVAR_CHECKBOX)
+        .CVar("gBetterResultPortraits")
+        .Options(CheckboxOptions().Tooltip("Spaces out the result portraits to looks better on widescreen resolutions"));
     AddWidget(path, "No Level of Detail (LOD)", WIDGET_CVAR_CHECKBOX)
         .CVar("gDisableLod")
         .Options(CheckboxOptions().Tooltip(
@@ -351,6 +351,7 @@ void PortMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip("Disable original culling of mk64"));
     AddWidget(path, "Far Frustrum", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gFarFrustrum")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoCulling", 0); })
         .Options(FloatSliderOptions()
                      .Min(0.0f)
                      .Max(10000.0f)
@@ -377,7 +378,7 @@ void PortMenu::AddEnhancements() {
     path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "HM64 Lab", 4);
     AddWidget(path,
-              "HM64 Labs is incomplete.",
+              "Work in progress.",
               WIDGET_TEXT);
     AddWidget(path, "Enable HM64 Labs", WIDGET_CVAR_CHECKBOX)
         .CVar("gEditorEnabled")
@@ -425,7 +426,7 @@ void PortMenu::AddDevTools() {
         .Options(CheckboxOptions().Tooltip("Enables Debug Mode."));
     AddWidget(path, "Modify Interpolation Target FPS", WIDGET_CVAR_CHECKBOX)
         .CVar("gModifyInterpolationTargetFPS")
-        .Options(CheckboxOptions().Tooltip("Enables Debug Mode."));
+        .Options(CheckboxOptions().Tooltip("For testing frame interpolation."));
     AddWidget(path, "Interpolation Target FPS", WIDGET_CVAR_SLIDER_INT)
         .CVar("gInterpolationTargetFPS")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gModifyInterpolationTargetFPS", 0); })
