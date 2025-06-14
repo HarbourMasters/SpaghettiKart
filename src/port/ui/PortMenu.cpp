@@ -376,6 +376,9 @@ void PortMenu::AddEnhancements() {
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "HM64 Lab", 4);
+    AddWidget(path,
+              "HM64 Labs is incomplete.",
+              WIDGET_TEXT);
     AddWidget(path, "Enable HM64 Labs", WIDGET_CVAR_CHECKBOX)
         .CVar("gEditorEnabled")
         .Callback([](WidgetInfo& info) {
