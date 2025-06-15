@@ -307,12 +307,21 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    if (func_80290C20(arg0->camera) == 1) {
+    // Invalidate Jumbotron textures so they update each frame
+    // This could be more efficient if we exposed the non-opcode based invalidation to be called
+    // inside copy_framebuffers_port
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x8800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x9800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xA800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xB800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xC800);
+    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xD800);
 
+    if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_wario_stadium_packed_dl_A0C8
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x0700A0C8));
+        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A0C8))));
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGBA, G_CC_MODULATERGBA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -321,12 +330,12 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
     render_course_segments(wario_stadium_dls, arg0);
 
     // d_course_wario_stadium_packed_dl_A228
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x0700A228));
+    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A228))));
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_wario_stadium_packed_dl_A88
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x07000A88));
+    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000A88))));
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
     D_800DC5DC = 88;
