@@ -45,6 +45,7 @@ f32 D_800E594C[][2] = {
 s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
 
 size_t OThwomp::_count = 0;
+size_t OThwomp::_rand = 0;
 
 OThwomp::OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize) {
     Name = "Thwomp";
@@ -88,6 +89,7 @@ void OThwomp::Tick60fps() { // func_80081210
     if (_idx == 0) {
         D_80165834[0] += 0x100;
         D_80165834[1] += 0x200;
+        _rand += 1;
     }
 
     if (gObjectList[_objectIndex].state != 0) {
@@ -131,26 +133,26 @@ void OThwomp::Tick60fps() { // func_80081210
     }
     OThwomp::func_8007542C(3);
 
-    if (func_80072320(_objectIndex, 0x00000020) == 0) {
-        return;
+    if (func_80072320(_objectIndex, 0x00000020)) {
+        func_800722CC(_objectIndex, 0x00000020);
+        OThwomp::AddParticles(_objectIndex);
     }
 
-    func_800722CC(_objectIndex, 0x00000020);
-    OThwomp::AddParticles(_objectIndex);
-
-    for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
-        objectIndex = gObjectParticle2[var_s4];
-        if (objectIndex == DELETED_OBJECT_ID) {
-            return;
+    if (_idx == 0) {
+        for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
+            objectIndex = gObjectParticle2[var_s4];
+            if (objectIndex == DELETED_OBJECT_ID) {
+                continue;
+            }
+            if (gObjectList[objectIndex].state == 0) {
+                continue;
+            }
+            OThwomp::func_800810F4(objectIndex);
+            if (gObjectList[objectIndex].state != 0) {
+                continue;
+            }
+            delete_object_wrapper(&gObjectParticle2[var_s4]);
         }
-        if (gObjectList[objectIndex].state == 0) {
-            return;
-        }
-        OThwomp::func_800810F4(objectIndex);
-        if (gObjectList[objectIndex].state != 0) {
-            return;
-        }
-        delete_object_wrapper(&gObjectParticle2[var_s4]);
     }
 }
 
@@ -361,14 +363,16 @@ void OThwomp::func_8007F8D8() {
 
 s32 OThwomp::func_8007F75C(s32 playerId) {
     s32 someIndex;
-    s32 temp_s7;
+    static s32 temp_s7 = 0; // Must be static to sync far travelling thwomp instances
     s32 var_s6;
     s32 waypoint;
 
     waypoint = gNearestWaypointByPlayerId[playerId];
     var_s6 = 0;
     if ((waypoint >= 0xAA) && (waypoint < 0xB5)) {
-        temp_s7 = random_int(0x0032U) + 0x32;
+        if (_idx == 0) {
+            temp_s7 = random_int(0x0032U) + 0x32;
+        }
         if (gObjectList[_objectIndex].unk_0D5 == 3) {
             var_s6 = 1;
             OThwomp::func_8007F660(_objectIndex, playerId, temp_s7);
@@ -928,9 +932,9 @@ void OThwomp::func_8007FA08(s32 objectIndex) {
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     if (gIsMirrorMode != 0) {
-        set_obj_orientation(objectIndex, 0U, 0xC000U, 0U);
+        set_obj_orientation(objectIndex, 0U, _faceDirection, 0U);
     } else {
-        set_obj_orientation(objectIndex, 0U, 0x4000U, 0U);
+        set_obj_orientation(objectIndex, 0U, -_faceDirection, 0U);
     }
     object->velocity[0] = 0.0f;
     object->direction_angle[1] = object->orientation[1];
@@ -970,7 +974,7 @@ void OThwomp::func_8007FB48(s32 objectIndex) {
             gObjectList[objectIndex].velocity[0] = player->unk_094 * xOrientation * 1.25;
             if (gObjectList[objectIndex].unk_048 >= gObjectList[objectIndex].unk_0B0) {
                 if (gObjectList[objectIndex].unk_0B0 == gObjectList[objectIndex].unk_048) {
-                    if (D_8018D400 & 1) {
+                    if (_rand & 1) { // D_8018D400 & 1
                         gObjectList[objectIndex].velocity[2] = 1.5f;
                     } else {
                         gObjectList[objectIndex].velocity[2] = -1.5f;
@@ -1169,9 +1173,9 @@ void OThwomp::func_800802C0(s32 objectIndex) {
     object->offset[1] = 10.0f;
     object->unk_01C[1] = 10.0f;
     if (gIsMirrorMode != 0) {
-        set_obj_orientation(objectIndex, 0U, 0x4000U, 0U);
+        set_obj_orientation(objectIndex, 0U, -_faceDirection, 0U);
     } else {
-        set_obj_orientation(objectIndex, 0U, 0xC000U, 0U);
+        set_obj_orientation(objectIndex, 0U, _faceDirection, 0U);
     }
     object->offset[0] = 0.0f;
     object->offset[2] = 0.0f;
@@ -1195,7 +1199,7 @@ void OThwomp::SlidingBehaviour(s32 objectIndex) { // func_800808CC
         OThwomp::func_8008085C(objectIndex);
         func_80073514(objectIndex);
         if (gGamestate != 9) {
-            if ((D_8018D40C == 0) && (gObjectList[objectIndex].state == 2)) {
+            if (((_rand & 0x3F) == 0) && (gObjectList[objectIndex].state == 2)) { // D_8018D40C == 0 &&
                 func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity,
                               SOUND_ARG_LOAD(0x19, 0x03, 0x60, 0x45));
             }

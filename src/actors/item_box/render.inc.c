@@ -82,18 +82,28 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
 
             gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            // if ((item_box->rot[1] < 0xAA1) && (item_box->rot[1] > 0)) {
-            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            // } else if ((item_box->rot[1] >= 0x6AA5) && (item_box->rot[1] < 0x754E)) {
-            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            // } else if ((item_box->rot[1] >= 0x38E1) && (item_box->rot[1] < 0x438A)) {
-            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            // } else if ((item_box->rot[1] >= 0xC711) && (item_box->rot[1] < 0xD1BA)) {
-            //     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            // } else {
+
+            /*
+             * In the original game, the question mark texture would become corrupted. Thus, this code
+             * makes it disappear to hide the issue. Since the texture no longer becomes corrupted, this
+             * fix can be removed.
+             */
+#ifdef TARGET_N64
+            if ((item_box->rot[1] < 0xAA1) && (item_box->rot[1] > 0)) {
+                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+            } else if ((item_box->rot[1] >= 0x6AA5) && (item_box->rot[1] < 0x754E)) {
+                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+            } else if ((item_box->rot[1] >= 0x38E1) && (item_box->rot[1] < 0x438A)) {
+                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+            } else if ((item_box->rot[1] >= 0xC711) && (item_box->rot[1] < 0xD1BA)) {
+                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+            } else {
+#endif
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
-            // }
+#ifdef TARGET_N64
+            }
+#endif
             gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
             gSPDisplayList(gDisplayListHead++, D_0D003090);
 

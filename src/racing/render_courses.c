@@ -246,7 +246,6 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
 
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-        //FrameInterpolation_RecordCloseChild();
 
     CM_DrawWater(arg0, pathCounter, cameraRot, playerDirection);
     FrameInterpolation_RecordCloseChild();

@@ -1,4 +1,5 @@
 #include "libultra_internal.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 void guScaleF(float mf[4][4], float x, float y, float z) {
     guMtxIdentF(mf);
@@ -11,5 +12,6 @@ void guScaleF(float mf[4][4], float x, float y, float z) {
 void guScale(Mtx* m, float x, float y, float z) {
     float mf[4][4];
     guScaleF(mf, x, y, z);
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*) mf, m);
     guMtxF2L(mf, m);
 }

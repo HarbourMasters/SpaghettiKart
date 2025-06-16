@@ -65,6 +65,13 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
 
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+
+        /*
+         * In the original game, the question mark texture would become corrupted. Thus, this code
+         * makes it disappear to hide the issue. Since the texture no longer becomes corrupted, this
+         * fix can be removed.
+         */
+#ifdef TARGET_N64
         if ((fakeItemBox->rot[1] < 0xAA1) && (fakeItemBox->rot[1] > 0)) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else if ((fakeItemBox->rot[1] >= 0x6AA5) && (fakeItemBox->rot[1] < 0x754E)) {
@@ -74,9 +81,12 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         } else if ((fakeItemBox->rot[1] >= 0xC711) && (fakeItemBox->rot[1] < 0xD1BA)) {
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         } else {
+#endif
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
+#ifdef TARGET_N64
         }
+#endif
         gSPDisplayList(gDisplayListHead++, D_0D003090);
     } else {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

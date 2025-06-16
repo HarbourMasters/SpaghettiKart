@@ -397,7 +397,7 @@ void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     D_800DC5E0 = 72;
 
     // Render only the first player camera onto the television billboard. Screen agnostic screens of other players).
-    if ((gActiveScreenMode == SCREEN_MODE_1P) && (sp22 >= 10) && (sp22 < 17)) {
+    if (gActiveScreenMode == SCREEN_MODE_1P) {
 
         prevFrame = (s16) sRenderedFramebuffer - 1;
 

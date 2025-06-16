@@ -1165,7 +1165,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
     temp = angleObject + temp_v0;
 
     if (is_visible_between_angle(plus_fov_angle, minus_fov_angle, temp) == 1) {
-        return 0;
+        return distance;
     }
 
     temp = angleObject - temp_v0;

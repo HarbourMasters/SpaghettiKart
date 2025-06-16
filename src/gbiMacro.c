@@ -3,6 +3,7 @@
 #include "main.h"
 #include <mk64.h>
 #include <assets/common_data.h>
+#include "src/port/interpolation/matrix.h"
 
 #include "math_util.h"
 
@@ -18,5 +19,5 @@ UNUSED void gfx_func_80040D00(void) {
     guOrtho(&gGfxPool->mtxScreen, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -1.0f, 1.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(gGfxPool), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    //gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gIdentityMatrix), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gIdentityMatrix), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 }

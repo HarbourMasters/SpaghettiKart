@@ -3,6 +3,7 @@
 #include "mk64.h"
 #include <assets/common_data.h>
 #include "port/Engine.h"
+#include "port/interpolation/matrix.h"
 #include "math_util.h"
 #include <stdio.h>
 
@@ -37,7 +38,7 @@ void FB_CreateFramebuffers(void) {
 void FB_CopyToFramebuffer(Gfx** gfxP, s32 fb_src, s32 fb_dest, u8 oncePerFrame, u8* hasCopied) {
     Gfx* gfx = *gfxP;
 
-   // gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     gDPSetOtherMode(gfx++,
                     G_AD_DISABLE | G_CD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_POINT | G_TT_NONE | G_TL_TILE |
@@ -110,7 +111,7 @@ void FB_WriteFramebufferSliceToCPU(Gfx** gfxP, void* buffer, u8 byteSwap) {
 void FB_DrawFromFramebuffer(Gfx** gfxP, s32 fb, u8 alpha) {
     Gfx* gfx = *gfxP;
 
-    //gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gfx++, &gIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     gDPSetEnvColor(gfx++, 255, 255, 255, alpha);
 

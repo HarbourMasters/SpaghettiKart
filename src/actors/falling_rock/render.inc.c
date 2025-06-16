@@ -43,11 +43,14 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
             sp98[2] = 0;
             sp8C[1] = height + 2.0f;
 
+            FrameInterpolation_RecordOpenChild("rock_shadow", (uintptr_t) rock);
             mtxf_pos_rotation_xyz(mtx, sp8C, sp98);
             if (render_set_position(mtx, 0) == 0) {
+                FrameInterpolation_RecordCloseChild();
                 return;
             }
             gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_6F88);
+            FrameInterpolation_RecordCloseChild();
         }
     }
 

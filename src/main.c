@@ -637,6 +637,12 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
+//! @deprecated
+// This function was made to tick the game logic at native 60 fps.
+// However, many game objects are not in that special tick loop and run at native 30fps.
+// Thus adding `if (gTickVisuals) { // stuff here }` would prevent double speed and allow ticking visuals once every 30 fps.
+// This does not however, create extra interpolated frames. Whereas a possible solution, it is not the best solution.
+// This function should be cleaned up and removed, since frame interpolation now exists.
 void calculate_updaterate(void) {
     static u32 prevtime = 0;
     static u32 remainder = 0;
@@ -695,6 +701,7 @@ void calculate_updaterate(void) {
     visualsAccumulator += total;  // Increment for each frame
     if (visualsAccumulator >= visualsUpdateInterval) {  // Check if it's time to update visuals
         visualsAccumulator -= visualsUpdateInterval;
+        // gTickVisuals <-- Goes here to use the native 60fps system
     }
     gTickVisuals = 1;    // Perform visual update
 }
@@ -759,13 +766,18 @@ void process_game_tick(void) {
         func_800382DC();
     }
 
+
+    // tick camera
     // This looks like it should be in the switch.
     // But it needs to be here for player 1 to work in all modes.
-    if (CVarGetInteger("gFreecam", 0) == true) {
-        freecam(gFreecamCamera, gPlayerOneCopy, 0);
-    } else {
-        func_8001EE98(gPlayerOneCopy, camera1, 0);
-    }
+    func_8001EE98(gPlayerOneCopy, camera1, 0);
+    // Required if freecam was to have a new camera
+    //if (CVarGetInteger("gFreecam", 0) == true) {
+    //    freecam(gFreecamCamera, gPlayerOneCopy, 0);
+    //} else {
+        
+        //func_8001EE98(gPlayerOneCopy, camera1, 0);
+    //}
 
     // Editor requires this so the camera keeps moving while the game is paused.
     if (gIsEditorPaused == true) {

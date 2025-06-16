@@ -5,6 +5,7 @@
 #include "World.h"
 #include "vehicles/Train.h"
 #include "vehicles/Boat.h"
+#include <port/interpolation/FrameInterpolation.h>
 
 extern "C" {
 #include "macros.h"
@@ -69,7 +70,6 @@ void TrainSmokeTick() {
                 if (count != 0) {
                     boat->SmokeTimer = 100;
                 }
-
             }
         }
     }
@@ -80,28 +80,31 @@ void TrainSmokeDraw(s32 cameraId) {
 
     for (auto& actor : gWorldInstance.Actors) {
         if (auto train = dynamic_cast<ATrain*>(actor)) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
-            load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
+            load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
             D_80183E80[0] = 0;
             D_80183E80[2] = 0x8000;
 
-            if ((train->SomeFlags != 0) &&
-                (is_particle_on_screen(train->Locomotive.position, camera, 0x4000U) != 0)) {
+            if ((train->SomeFlags != 0) && (is_particle_on_screen(train->Locomotive.position, camera, 0x4000U) != 0)) {
                 for (size_t i = 0; i < 128; i++) {
+                    FrameInterpolation_RecordOpenChild("TrainSmokeParticle", train->SmokeParticles[i]);
                     render_object_train_smoke_particle(train->SmokeParticles[i], cameraId);
+                    FrameInterpolation_RecordCloseChild();
                 }
             }
         } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D007AE0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
 
-            load_texture_block_i8_nomirror((uint8_t*)D_0D029458, 32, 32);
+            load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
             D_80183E80[0] = 0;
             D_80183E80[2] = 0x8000;
             if ((boat->SomeFlags != 0) && (is_particle_on_screen(boat->Position, camera, 0x4000U) != 0)) {
                 for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+                    FrameInterpolation_RecordOpenChild("BoatSmokeParticle", boat->SmokeParticles[i]);
                     render_object_paddle_boat_smoke_particle(boat->SmokeParticles[i], cameraId);
+                    FrameInterpolation_RecordCloseChild();
                 }
             }
         }

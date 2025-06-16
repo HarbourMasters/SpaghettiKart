@@ -112,6 +112,7 @@ public:
     void func_8007E63C(s32 objectIndex);
 private:
     static size_t _count;
+    static size_t _rand;
     s32 _idx;
     s16 _faceDirection;
     //! @todo Write this better. This effects the squish size and the bounding box size.

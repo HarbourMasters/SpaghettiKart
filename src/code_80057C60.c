@@ -2596,8 +2596,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 case 1:                                   /* switch 1 */
                     CM_ActivateSecondLapLakitu(playerId); // func_80079084(playerId);
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
-                    if ((IsLuigiRaceway()) && (D_80165898 == 0) &&
-                        (gModeSelection != (s32) TIME_TRIALS)) {
+                    if ((IsLuigiRaceway()) && (D_80165898 == 0) && (gModeSelection != (s32) TIME_TRIALS)) {
                         D_80165898 = 1;
                     }
                     break;
@@ -4974,10 +4973,8 @@ void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-s32 D_func_800652D4_counter = 0;
 void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
     Mat4 mtx;
-    FrameInterpolation_RecordOpenChild("some_thing", D_func_800652D4_counter++ << 8);
     mtxf_translate_rotate(mtx, arg0, arg1);
     mtxf_scale(mtx, arg2);
     // convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], mtx);
@@ -4985,7 +4982,6 @@ void func_800652D4(Vec3f arg0, Vec3s arg1, f32 arg2) {
     //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     AddEffectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    FrameInterpolation_RecordCloseChild();
 }
 
 void func_8006538C(Player* player, s8 arg1, s16 arg2, s8 arg3) {
@@ -5109,12 +5105,6 @@ void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
 
-        // // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("EEEEEEEEE", player->type << 8 | arg2 | var_s0 << 16);
-
-        // @port Skip interpolation
-        // FrameInterpolation_ShouldInterpolateFrame(false);
-
         func_800652D4(spB4, spAC, player->unk_258[10 + arg2].unk_00C * player->size);
         if (var_s0 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
@@ -5134,11 +5124,6 @@ void func_80065AB0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
         gMatrixEffectCount += 1;
-
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
-        // @port renable interpolation
-        // FrameInterpolation_ShouldInterpolateFrame(true);
     }
 }
 #else
@@ -5690,9 +5675,6 @@ void func_800691B8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         player->unk_258[30 + arg2].unk_03A += 0x1C71;
         sp54[2] = player->unk_258[30 + arg2].unk_03A;
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("func_800691B8", TAG_OBJECT(arg2));
-
         func_800652D4(sp5C, sp54, player->size * 0.5);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5704,9 +5686,6 @@ void func_800691B8(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         gMatrixEffectCount++;
-
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -5767,9 +5746,6 @@ void func_800696CC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3, f32 arg4) 
         sp54[1] = player->unk_048[arg3];
         sp54[2] = 0;
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("func_800696CC", TAG_OBJECT(arg2));
-
         func_800652D4(sp5C, sp54, player->size * arg4);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5781,9 +5757,6 @@ void func_800696CC(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3, f32 arg4) 
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         gMatrixEffectCount += 1;
-
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -5801,9 +5774,6 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         sp54[1] = player->unk_048[arg3];
         sp54[2] = player->unk_258[30 + arg2].unk_038;
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("func_80069938", TAG_OBJECT(arg2));
-
         func_800652D4(sp5C, sp54, player->unk_258[30 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008D58);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -5815,9 +5785,6 @@ void func_80069938(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         gSPVertex(gDisplayListHead++, D_800E87C0, 4, 0);
         gSPDisplayList(gDisplayListHead++, D_0D008DA0);
         gMatrixEffectCount += 1;
-
-        // @port Pop the transform id.
-        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -6618,8 +6585,7 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
     if ((player->unk_002 & (8 << (screenId * 4))) == (8 << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
             // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild(
-                "SmokeDust", TAG_SMOKE_DUST(((u32) player->unk_258[var_s2].unk_012 << 8) + (playerId << 16) + var_s2));
+            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2));
 
             switch (player->unk_258[var_s2].unk_012) {
                 case 1:
@@ -6641,6 +6607,8 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     }
                     break;
             }
+            FrameInterpolation_RecordCloseChild();
+            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2 + 30));
             switch (player->unk_258[var_s2 + 30].unk_012) {
                 case 1:
                 case 9:
@@ -6700,6 +6668,8 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                     }
                     break;
             }
+            FrameInterpolation_RecordCloseChild();
+            FrameInterpolation_RecordOpenChild("SmokeDust", TAG_SMOKE_DUST((playerId << 8) + var_s2 + 10));
             switch (player->unk_258[var_s2 + 10].unk_012) {
                 case 1:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
@@ -6764,48 +6734,50 @@ void func_8006DC54(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
+void func_8006DD3C(Player* player, s8 playerId, s8 arg2) {
     s16 temp_s0;
     s32 temp_v0;
 
     temp_v0 = 8 << (arg2 * 4);
-    if (temp_v0 == (arg0->unk_002 & temp_v0)) {
+    if (temp_v0 == (player->unk_002 & temp_v0)) {
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
-            temp_v0 = arg0->unk_258[temp_s0].unk_012;
+            temp_v0 = player->unk_258[temp_s0].unk_012;
             if (temp_v0 != 3) {
                 if (temp_v0 == 5) {
-                    func_8006A280(arg0, arg1, temp_s0, arg2);
+                    func_8006A280(player, playerId, temp_s0, arg2);
                 }
             } else if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                if (arg2 == arg1) {
-                    func_80066998(arg0, arg1, temp_s0, arg2);
+                if (arg2 == playerId) {
+                    func_80066998(player, playerId, temp_s0, arg2);
                 }
             } else {
-                func_80066998(arg0, arg1, temp_s0, arg2);
+                func_80066998(player, playerId, temp_s0, arg2);
             }
         }
 
-        if (((arg0->type & 0x4000) == 0x4000) && (arg2 == arg1)) {
-            switch (arg0->unk_258[20].unk_012) {
+        if (((player->type & 0x4000) == 0x4000) && (arg2 == playerId)) {
+            FrameInterpolation_RecordOpenChild("onomatopoeia", TAG_SMOKE_DUST((playerId << 8) + 20));
+            switch (player->unk_258[20].unk_012) {
                 case 2:
-                    func_80068310(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
+                    func_80068310(player, playerId, player->unk_258[20].unk_00C, arg2, 0);
                     break;
                 case 3:
-                    func_80067964(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
+                    func_80067964(player, playerId, player->unk_258[20].unk_00C, arg2, 0);
                     break;
                 case 4:
-                    func_80068724(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
+                    func_80068724(player, playerId, player->unk_258[20].unk_00C, arg2, 0);
                     break;
                 case 5:
-                    func_80068AA4(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
+                    func_80068AA4(player, playerId, player->unk_258[20].unk_00C, arg2, 0);
                     break;
                 case 6:
-                    func_80068DA0(arg0, arg1, arg0->unk_258[20].unk_00C, arg2, 0);
+                    func_80068DA0(player, playerId, player->unk_258[20].unk_00C, arg2, 0);
                     break;
             }
-            if (arg0->unk_258[21].unk_012 == 5) {
-                func_80067D3C(arg0, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
-                func_8006801C(arg0, arg2, D_8018D484, 1, 1.6f, 0xFF);
+            FrameInterpolation_RecordCloseChild();
+            if (player->unk_258[21].unk_012 == 5) {
+                func_80067D3C(player, arg2, D_8018D480, 1, 1.6f, 0xFFFFFF);
+                func_8006801C(player, arg2, D_8018D484, 1, 1.6f, 0xFF);
             }
         }
     }

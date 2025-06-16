@@ -1134,8 +1134,8 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
-                //freecam(camera, player, index); // Runs func_8001E45C when freecam is disabled
-                func_8001E45C(camera, player, index);
+                freecam(camera, player, index); // Runs func_8001E45C when freecam is disabled
+                //func_8001E45C(camera, player, index);
                 break;
             case 8:
                 func_8001E0C4(camera, player, index);

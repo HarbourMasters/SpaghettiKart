@@ -86,7 +86,9 @@ void freecam(Camera* camera, Player* player, s8 index) {
     if (enabled && (player == gPlayerOne)) {
         freecam_loop(camera, player, index);
     } else {
-        func_8001EE98(gPlayerOneCopy, camera, index);
+        func_8001E45C(camera, player, index);
+        // Required if freecam were to use its own camera instead of borrowing the player camera
+        //func_8001EE98(gPlayerOneCopy, camera, index);
     }
 }
 

@@ -96,7 +96,7 @@ void OLakitu::Draw(s32 cameraId) {
     s32 objectIndex;
     Object* object;
 
-    FrameInterpolation_RecordOpenChild("Lakitu",(u32) 3939848893);
+    FrameInterpolation_RecordOpenChild("Lakitu",(uintptr_t) this);
 
     objectIndex = gIndexLakituList[cameraId];
     camera = &camera1[cameraId];
