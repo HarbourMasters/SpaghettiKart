@@ -1836,6 +1836,9 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     s32 stringWidth = 0;
     s32 glyphIndex;
 
+    // @port Skip Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(false);  
+
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do {
@@ -1861,12 +1864,18 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         } while (*text != 0);
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 // Time trials
 void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
     s32 stringWidth = 0;
     s32 glyphIndex;
+
+    // @port Skip Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -1893,6 +1902,9 @@ void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 s
         } while (*text != 0);
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void print_text_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -1917,6 +1929,9 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     s32 stringWidth = 0;
     s32 glyphIndex;
     s32 sp60;
+
+    // @port Skip Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     while (*temp_string != 0) {
         glyphIndex = char_to_glyph_index(temp_string);
@@ -1977,6 +1992,9 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         }
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void print_text1_left(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -1999,6 +2017,9 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     MenuTexture* glyphTexture;
     s32 characterWidth;
     s32 glyphIndex;
+
+    // @port Skip Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2031,6 +2052,9 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     }
 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void func_800939C8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
