@@ -2778,6 +2778,9 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     s32 center = 0;
     Player* player = &gPlayerOne[playerId];
 
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
+
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
         thing1 = player->pos[2] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
@@ -2822,6 +2825,10 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
             }
         }
     }
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
+
 }
 #undef EXPLICIT_AND
 #else
