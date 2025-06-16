@@ -602,6 +602,10 @@ void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate) {
     is_recording = shouldInterpolate;
 }
 
+bool check_if_recording() {
+    return (is_recording && GameEngine::GetInterpolationFPS() != 30);
+}
+
 void FrameInterpolation_StartRecord(void) {
     previous_recording = move(current_recording);
     current_recording = {};
@@ -624,8 +628,9 @@ void FrameInterpolation_StopRecord(void) {
 }
 
 void FrameInterpolation_RecordOpenChild(const void* a, uintptr_t b) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     label key = { a, b };
     auto& m = current_path.back()->children[key];
     append(Op::OpenChild).open_child = { key, m.size() };
@@ -633,8 +638,9 @@ void FrameInterpolation_RecordOpenChild(const void* a, uintptr_t b) {
 }
 
 void FrameInterpolation_RecordCloseChild(void) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     // append(Op::CloseChild);
     if (has_inv_actor_mtx && current_path.size() == inv_actor_mtx_path_index) {
         has_inv_actor_mtx = false;
@@ -651,89 +657,103 @@ int FrameInterpolation_GetCameraEpoch(void) {
 }
 
 void FrameInterpolation_Record_SetTextMatrix(Mat4* matrix, f32 x, f32 y, f32 arg3, f32 arg4) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::SetTextMatrix).matrix_text = {matrix, x, y, arg3, arg4};
 }
 
 void FrameInterpolation_RecordActorPosRotMatrix(void) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     next_is_actor_pos_rot_matrix = true;
 }
 
 void FrameInterpolation_RecordMatrixPush(Mat4* matrix) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
 
     append(Op::MatrixPush).matrix_ptr = { (Mat4**) matrix };
 }
 
 void FrameInterpolation_RecordMarker(const char* file, int line) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
 
     append(Op::Marker).marker = { file, line };
 }
 
 void FrameInterpolation_RecordMatrixPop(Mat4* matrix) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixPop).matrix_ptr = { (Mat4**) matrix };
 }
 
 void FrameInterpolation_RecordMatrixPut(MtxF* src) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     //    append(Op::MatrixPut).matrix_put = { matrix, *src };
 }
 
 void FrameInterpolation_RecordMatrixMult(Mat4* matrix, MtxF* mf, u8 mode) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixMult).matrix_mult = { matrix, *mf, mode };
 }
 
 void FrameInterpolation_RecordMatrixTranslate(Mat4* matrix, Vec3f b) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
 
     append(Op::MatrixTranslate).matrix_translate = { matrix, *((Vec3fInterp*) &b) };
 }
 
 void FrameInterpolation_RecordMatrixScale(Mat4* matrix, f32 scale) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixScale).matrix_scale = { matrix, scale };
 }
 
 void FrameInterpolation_RecordMatrixMultVec3fNoTranslate(Mat4* matrix, Vec3f src, Vec3f dest) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     // append(Op::MatrixMultVec3fNoTranslate).matrix_vec_no_translate = { matrix, src, dest };
 }
 
 void FrameInterpolation_RecordSetTransformMatrix(Mat4* dest, Vec3f orientationVector, Vec3f positionVector, u16 rotationAngle,
                           f32 scaleFactor) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::SetTransformMatrix).set_transform_matrix_data = { dest, {orientationVector[0], orientationVector[1], orientationVector[2]}, { positionVector[0], positionVector[1], positionVector[2] }, rotationAngle, scaleFactor};
 }
 
 void FrameInterpolation_RecordTranslateRotate(Mat4* dest, Vec3f pos, Vec3s rotation) {
-    if (!is_recording) { return; }
+    if (!check_if_recording()) { return; }
 
     append(Op::SetTranslateRotate).set_translate_rotate_data = { dest, {pos[0], pos[1], pos[2]}, { rotation[0], rotation[1], rotation[2] }};
 }
 
 void FrameInterpolation_RecordSetMatrixTransformation(Mat4* dest, Vec3f location, Vec3su rotation, f32 scale) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::SetMatrixTransformation).set_matrix_transformation_data = { dest, {location[0], location[1], location[2]}, { rotation[0], rotation[1], rotation[2] }, scale};
 }
 
 void FrameInterpolation_RecordCalculateOrientationMatrix(Mat3* dest, f32 x, f32 y, f32 z, s16 rot) {
-    if (!is_recording) return;
+    if (!check_if_recording()) {
+        return;
+    }
 
   //  append(Op::SetMatrixTransformation).set_calculate_orientation_matrix_data = { dest, x, y, z, rot};
 }
@@ -741,38 +761,44 @@ void FrameInterpolation_RecordCalculateOrientationMatrix(Mat3* dest, f32 x, f32 
 // Make a template for deref
 
 void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4* out, Vec3f pos, Vec3s orientation) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixPosRotXYZ).matrix_pos_rot_xyz = { out, *((Vec3fInterp*) &pos), *((Vec3sInterp*) &orientation) };
 }
 
 void FrameInterpolation_RecordMatrixPosRotScaleXY(Mat4* matrix, s32 x, s32 y, u16 angle, f32 scale) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::SetMatrixPosRotScaleXY).matrix_pos_rot_scale_xy = { matrix, x, y, angle, scale };
 }
 
 void FrameInterpolation_RecordMatrixMultVec3f(Mat4* matrix, Vec3f src, Vec3f dest) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     // append(Op::MatrixMultVec3f).matrix_vec_translate = { matrix, src, dest };
 }
 
 void FrameInterpolation_RecordMatrixRotate1Coord(Mat4* matrix, u32 coord, s16 value) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixRotate1Coord).matrix_rotate_1_coord = { matrix, coord, value };
 }
 
 void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { *src, dest };
 }
 
 void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     auto& d = append(Op::MatrixToMtx).matrix_to_mtx = { dest };
     if (has_inv_actor_mtx) {
         d.has_adjusted = true;
@@ -783,14 +809,16 @@ void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {
 }
 
 void FrameInterpolation_RecordMatrixRotateAxis(f32 angle, Vec3f* axis, u8 mode) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     // append(Op::MatrixRotateAxis).matrix_rotate_axis = { angle, axis, mode };
 }
 
 void FrameInterpolation_RecordSkinMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     FrameInterpolation_RecordMatrixMtxFToMtx(src, dest);
 }
 

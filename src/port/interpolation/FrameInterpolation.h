@@ -23,6 +23,8 @@ extern "C" {
 
 void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate);
 
+bool check_if_recording();
+
 void FrameInterpolation_StartRecord(void);
 
 void FrameInterpolation_StopRecord(void);
