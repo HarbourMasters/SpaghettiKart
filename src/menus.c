@@ -2010,6 +2010,7 @@ void load_menu_states(s32 menuSelection) {
             } else {
                 if (GetCup() == GetBattleCup()) {
                     CM_SetCup(GetMushroomCup());
+                    CM_SetCupIndex(MUSHROOM_CUP);
                     // gCupSelection = MUSHROOM_CUP;
                 }
                 gSubMenuSelection = SUB_MENU_MAP_SELECT_CUP;

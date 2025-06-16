@@ -178,7 +178,6 @@ void FrappeSnowland::BeginPlay() {
 void FrappeSnowland::InitClouds() {
     s32 var_s0;
     s32 var_s4;
-
     if (gPlayerCount == 1) {
         var_s4 = 0x32;
     } else {
@@ -189,6 +188,7 @@ void FrappeSnowland::InitClouds() {
     }
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
+    D_8018D230 = 0; // This must be turned off or mayhem ensues
 }
 
 void FrappeSnowland::UpdateClouds(s32 sp1C, Camera* camera) {

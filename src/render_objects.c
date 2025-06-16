@@ -3527,7 +3527,11 @@ void func_80051ABC(s16 arg0, s32 arg1) {
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
+            FrameInterpolation_RecordOpenChild("stars_cloud", TAG_OBJECT(object));
+
             func_800519D4(objectIndex, object->unk_09C, arg0 - object->unk_09E);
+            FrameInterpolation_RecordCloseChild();
+
         }
     } else {
         func_8004B6C4(255, 255, 255);

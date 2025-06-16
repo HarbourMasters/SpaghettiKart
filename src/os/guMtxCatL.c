@@ -31,6 +31,7 @@
  */
 
 #include <libultraship.h>
+#include "port/interpolation/FrameInterpolation.h"
 
 // void guMtxXFMF(Mtx*, float, float, float, float*, float*, float*);
 void guMtxCatF(float mf[4][4], float nf[4][4], float res[4][4]);
@@ -43,6 +44,7 @@ void guMtxCatL(Mtx* m, Mtx* n, Mtx* res) {
 
     guMtxCatF(mf, nf, resf);
 
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)resf, res);
     guMtxF2L(resf, res);
 }
 

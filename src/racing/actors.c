@@ -2429,8 +2429,17 @@ void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
 
     struct Actor* actor;
     UNUSED Vec3f sp4C = { 0.0f, 5.0f, 10.0f };
-    f32 sp48 = sins(camera->rot[1] - 0x8000); // unk26;
-    f32 temp_f0 = coss(camera->rot[1] - 0x8000);
+
+    // Freecam rotY is reversed in the engine for whatever reason
+    f32 sp48 = 0;
+    f32 temp_f0 = 0;
+    if (CVarGetInteger("gFreecam", 0) == true) {
+        sp48 = sins(-camera->rot[1] - 0x8000);
+        temp_f0 = coss(-camera->rot[1] - 0x8000);
+    } else {
+        sp48 = sins(camera->rot[1] - 0x8000);
+        temp_f0 = coss(camera->rot[1] - 0x8000);
+    }
 
     sBillBoardMtx[0][0] = temp_f0;
     sBillBoardMtx[0][2] = -sp48;

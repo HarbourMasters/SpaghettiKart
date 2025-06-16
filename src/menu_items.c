@@ -47,6 +47,7 @@
 #include "engine/courses/Course.h"
 #include "engine/Matrix.h"
 #include "src/engine/HM_Intro.h"
+#include "src/port/interpolation/FrameInterpolation.h"
 
 const char* GetCupName(void);
 
@@ -2716,9 +2717,13 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
     if (gMatrixEffectCount < 0) {
         rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
     }
+    FrameInterpolation_RecordOpenChild("flashing_text", TAG_LETTER((uintptr_t)&arg1 << 8) + (arg4 + arg5));
+    Mat4 mf;
+    SetTextMatrix(mf, arg2, arg3, arg6, arg7);
     // func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], arg2, arg3, arg6, arg7);
-    Mtx* mtx = SetTextMatrix(arg2, arg3, arg6, arg7);
-    gSPMatrix(displayListHead++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    displayListHead = AddTextMatrix(displayListHead, mf);
+    //gSPMatrix(displayListHead++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMKLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
@@ -2735,28 +2740,32 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
             var_a1 = D_02007DF8;
             break;
     }
-
-    return func_800959F8(displayListHead, var_a1);
+    displayListHead = func_800959F8(displayListHead, var_a1);
+    FrameInterpolation_RecordCloseChild();
+    return displayListHead;
 }
 
+// Time trials text box
 Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6,
                               f32 arg7) {
     Vtx* var_a1;
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
-        goto func_80095BD0_label1;
+        rmonPrintf("func_80095BD0_wide_right: MAX effectcount(760) over!!!!(kawano)\n");
+        return displayListHead;
     }
     if (gMatrixEffectCount < 0) {
-        rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
+        rmonPrintf("func_80095BD0_wide_right: effectcount < 0 !!!!!!(kawano)\n");
     }
-    goto func_80095BD0_label2;
-func_80095BD0_label1:
-    rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
-    return displayListHead;
-func_80095BD0_label2:
-    func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
-    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    FrameInterpolation_RecordOpenChild("flashing_text_wide_right", TAG_LETTER((uintptr_t)&arg1 << 8) + (arg4 + arg5));
+    Mat4 mf;
+    SetTextMatrix(mf, OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
+    //func_80095AE0(&gGfxPool->mtxEffect[gMatrixEffectCount], OTRGetDimensionFromRightEdge(arg2), arg3, arg6, arg7);
+
+    displayListHead = AddTextMatrix(displayListHead, mf);
+    // gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+    //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMKLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
@@ -2774,7 +2783,9 @@ func_80095BD0_label2:
             break;
     }
 
-    return func_800959F8(displayListHead, var_a1);
+    displayListHead = func_800959F8(displayListHead, var_a1);
+    FrameInterpolation_RecordCloseChild();
+    return displayListHead;
 }
 
 // Player select menu character border
@@ -8333,6 +8344,7 @@ void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     static float x2, y2, z2;
     static float x1, y1, z1;
 
+    FrameInterpolation_RecordOpenChild("pause_menu_item_box", TAG_OBJECT(arg0));
     mtx = GetEffectMatrix();
     mtx2 = GetEffectMatrix();
     if (arg0->paramf > 1.5) {
@@ -8370,6 +8382,7 @@ void pause_menu_item_box_cursor(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     gDPNoOp(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPDisplayList(gDisplayListHead++, D_0D003090);
+    FrameInterpolation_RecordCloseChild();
 }
 
 void func_800A69C8(UNUSED MenuItem* arg0) {
