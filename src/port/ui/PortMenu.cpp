@@ -341,7 +341,7 @@ void PortMenu::AddEnhancements() {
         .Options(CheckboxOptions().Tooltip("Allows full train and jumbotron in multiplayer, etc."));
     AddWidget(path, "Widescreen portrait spacing", WIDGET_CVAR_CHECKBOX)
         .CVar("gBetterResultPortraits")
-        .Options(CheckboxOptions().Tooltip("Spaces out the result portraits to looks better on widescreen resolutions"));
+        .Options(CheckboxOptions().Tooltip("Alters result portrait spacing for better aesthetics on widescreen"));
     AddWidget(path, "No Level of Detail (LOD)", WIDGET_CVAR_CHECKBOX)
         .CVar("gDisableLod")
         .Options(CheckboxOptions().Tooltip(
