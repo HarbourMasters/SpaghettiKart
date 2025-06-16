@@ -18,7 +18,7 @@ If you're having any trouble after reading through this `README`, feel free ask 
 SpaghettiKart does not include any copyrighted assets.  You are required to provide a supported copy of the game.
 
 ### 1. Verify your ROM dump
-The supported ROM is the USA 1.1 Rev A version. You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US 1.0 ROM is SHA-1: 579C48E211AE952530FFC8738709F078D5DD215E.
+The supported ROM is the USA ROM. You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US ROM is SHA-1: 579C48E211AE952530FFC8738709F078D5DD215E.
 
 ### 2. Verify your ROM is in .z64 format
 Your ROM needs to be in .z64 format. If it's in .n64 format, use the following to convert it to a .z64: https://hack64.net/tools/swapper.php
@@ -28,18 +28,18 @@ Your ROM needs to be in .z64 format. If it's in .n64 format, use the following t
 ### 3. Generating the O2R from the ROM
 #### Windows
 * Extract every file from the zip into a folder of your choosing.
-* Run "Spaghettify.exe" and select your US 1.0 ROM.
+* Run "Spaghettify.exe" and select your US ROM.
 
 #### Linux
 * Extract every file from the zip into a folder of your choosing.
-* Run "spaghetti.appimage" and select your US 1.0 ROM. You may have to chmod +x the appimage via terminal.
+* Run "spaghetti.appimage" and select your US ROM. You may have to chmod +x the appimage via terminal.
 
 #### Nintendo Switch
 * Run one of the PC releases to generate an `mk64.o2r` file. After launching the game on PC, you will be able to find these files in the same directory as `Spaghettify.exe` or `spaghetti.appimage`.
 * Copy the files to your sd card
 
 ### 4. Play!
-* Launch `SpaghettiKart.exe`
+* Launch `Spaghettify.exe`
 Congratulations, you are now sailing with SpaghettiKart! Have fun!
 
 # Configuration
