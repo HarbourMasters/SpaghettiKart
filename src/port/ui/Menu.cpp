@@ -9,10 +9,10 @@
 #include <tuple>
 
 extern "C" {
-    extern s32 gGamestateNext;
-    extern s32 gMenuSelection;
-    #include "audio/external.h"
-    #include "defines.h"
+extern s32 gGamestateNext;
+extern s32 gMenuSelection;
+#include "audio/external.h"
+#include "defines.h"
 }
 std::vector<ImVec2> windowTypeSizes = { {} };
 
@@ -90,15 +90,15 @@ void Menu::RemoveSidebarSearch() {
 }
 
 void Menu::UpdateWindowBackendObjects() {
-    Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
+    int runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetRendererID();
     int32_t configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-    if (Ship::Context::GetInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
-        configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
+    if (Ship::Context::GetInstance()->GetWindow()->IsAvailableRenderer(configWindowBackendId)) {
+        configWindowBackend = configWindowBackendId;
     } else {
         configWindowBackend = runningWindowBackend;
     }
 
-    availableWindowBackends = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends();
+    availableWindowBackends = Ship::Context::GetInstance()->GetWindow()->GetAvailableRenderers();
     for (auto& backend : *availableWindowBackends) {
         availableWindowBackendsMap[backend] = windowBackendsMap.at(backend);
     }
@@ -181,8 +181,8 @@ uint32_t Menu::DrawSearchResults(std::string& menuSearchText) {
             for (int i = 0; i < sidebar.columnWidgets.size(); i++) {
                 auto& column = sidebar.columnWidgets.at(i);
                 for (auto& info : column) {
-                    if (info.type == WIDGET_SEARCH || info.type == WIDGET_SEPARATOR || info.type == WIDGET_SEPARATOR_TEXT ||
-                        info.isHidden) {
+                    if (info.type == WIDGET_SEARCH || info.type == WIDGET_SEPARATOR ||
+                        info.type == WIDGET_SEPARATOR_TEXT || info.isHidden) {
                         continue;
                     }
                     const char* tooltip = info.options->tooltip;
@@ -288,7 +288,7 @@ void Menu::MenuDrawItem(WidgetInfo& widget, uint32_t width, UIWidgets::Colors me
                 if (UIWidgets::Combobox("Renderer API (Needs reload)", &configWindowBackend, availableWindowBackendsMap,
                                         options)) {
                     Ship::Context::GetInstance()->GetConfig()->SetInt("Window.Backend.Id",
-                                                                      (int32_t)(configWindowBackend));
+                                                                      (int32_t) (configWindowBackend));
                     Ship::Context::GetInstance()->GetConfig()->SetString("Window.Backend.Name",
                                                                          windowBackendsMap.at(configWindowBackend));
                     Ship::Context::GetInstance()->GetConfig()->Save();

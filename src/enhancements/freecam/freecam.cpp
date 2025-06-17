@@ -174,13 +174,13 @@ bool FreecamKeyDown(int virtualKey) {
     static bool prevKeyState[256] = { false }; // Store previous key states
     bool isDownNow = false;
 
-    if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_SDL_OPENGL) {
+    if (true) { // (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_SDL_OPENGL) {
         // Use SDL to check key states
         const uint8_t* keystate = SDL_GetKeyboardState(NULL);
         isDownNow = keystate[virtualKey] != 0;
     }
 #ifdef _WIN32
-    else if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    else if (false) { // (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         // Use Windows GetKeyState for DirectX
         SHORT keyState = GetKeyState(virtualKey);
         isDownNow = (keyState & 0x8000) != 0;
@@ -256,7 +256,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     }
     // Keyboard and mouse DX
 #ifdef _WIN32
-    else if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    else if (false) { // (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         if (FreecamKeyDown('F')) {
             fTargetPlayer = !fTargetPlayer;
         }
@@ -291,7 +291,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         // Keyboard/mouse OpenGL/SDL
     }
 #endif
-    else if (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_SDL_OPENGL) {
+    else if (true) { // (wnd->GetWindowBackend() == Ship::WindowBackend::FAST3D_SDL_OPENGL) {
         const uint8_t* keystate = SDL_GetKeyboardState(NULL);
         if (FreecamKeyDown(SDL_SCANCODE_F)) {
             fTargetPlayer = !fTargetPlayer;

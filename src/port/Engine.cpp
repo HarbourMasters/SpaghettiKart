@@ -354,7 +354,7 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
 
 void GameEngine::ProcessGfxCommands(Gfx* commands) {
     std::vector<std::unordered_map<Mtx*, MtxF>> mtx_replacements;
-    int target_fps = GameEngine::Instance->GetInterpolationFPS();
+    int target_fps = ImGui::GetIO().Framerate; // GameEngine::Instance->GetInterpolationFPS();
     if (CVarGetInteger("gModifyInterpolationTargetFPS", 0)) {
         target_fps = CVarGetInteger("gInterpolationTargetFPS", 60);
     }
@@ -389,7 +389,8 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
 
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
     if (wnd != nullptr) {
-        wnd->SetTargetFps(GetInterpolationFPS());
+        // wnd->SetTargetFps(GetInterpolationFPS());
+        wnd->SetTargetFps(-1);
         wnd->SetMaximumFrameLatency(1);
     }
     RunCommands(commands, mtx_replacements);

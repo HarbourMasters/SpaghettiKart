@@ -35,6 +35,7 @@ OGrandPrixBalloons::OGrandPrixBalloons(const FVector& pos) {
         find_unused_obj_index(&gObjectParticle3[i]);
         init_object(gObjectParticle3[i], 0);
     }
+    //  printf("primAlfa %d\n", object->primAlpha);
 }
 
 void OGrandPrixBalloons::Tick() {

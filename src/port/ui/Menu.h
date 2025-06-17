@@ -19,7 +19,8 @@ class Menu : public GuiWindow {
 
     Menu(const std::string& cVar, const std::string& name, uint8_t searchSidebarIndex_ = 0,
          UIWidgets::Colors menuThemeIndex_ = UIWidgets::Colors::LightBlue);
-    virtual ~Menu() {}
+    virtual ~Menu() {
+    }
 
     void InitElement() override;
     void DrawElement() override;
@@ -43,9 +44,9 @@ class Menu : public GuiWindow {
     ImGuiTextFilter menuSearch;
     uint8_t searchSidebarIndex;
     UIWidgets::Colors defaultThemeIndex;
-    std::shared_ptr<std::vector<Ship::WindowBackend>> availableWindowBackends;
-    std::unordered_map<Ship::WindowBackend, const char*> availableWindowBackendsMap;
-    Ship::WindowBackend configWindowBackend;
+    std::shared_ptr<std::vector<int>> availableWindowBackends;
+    std::unordered_map<int, const char*> availableWindowBackendsMap;
+    int configWindowBackend;
 
     std::unordered_map<uint32_t, disabledInfo> disabledMap;
     std::vector<disabledInfo> disabledVector;
@@ -57,12 +58,12 @@ class Menu : public GuiWindow {
                                    "Searches all menus for the given text, including tooltips.")) } } }
     };
     virtual void ProcessReset() {
-      gGamestateNext = MAIN_MENU_FROM_QUIT;
-      if (CVarGetInteger("gEnableDebugMode", 0) == true) {
-          gMenuSelection = START_MENU;
-      } else {
-          gMenuSelection = LOGO_INTRO_MENU;
-      }
+        gGamestateNext = MAIN_MENU_FROM_QUIT;
+        if (CVarGetInteger("gEnableDebugMode", 0) == true) {
+            gMenuSelection = START_MENU;
+        } else {
+            gMenuSelection = LOGO_INTRO_MENU;
+        }
     }
 
   private:

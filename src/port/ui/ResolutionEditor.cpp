@@ -510,7 +510,11 @@ void UpdateResolutionVars() {
         integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_game_window_viewport.height;
     } else {
         // Scale to window width
-        integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.width;
+        if (gfx_current_game_window_viewport.width == 0) {
+            integerScale_maximumBounds = 1.0f;
+        } else {
+            integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.width;
+        }
     }
     // Lower-clamping maximum bounds value to 1 is no-longer necessary as that's accounted for in LUS.
     // Letting it go below 1 in this Editor will even allow for checking if screen bounds are being exceeded.
