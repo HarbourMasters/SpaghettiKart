@@ -8,6 +8,7 @@
 #include "FrameInterpolation.h"
 #include "matrix.h"
 #include "engine/Matrix.h"
+#include "src/engine/CoreMath.h"
 
 extern "C" {
 #include "math_util.h"
@@ -85,6 +86,7 @@ enum class Op {
     SetTranslateRotate,
     SetTextMatrix,
     SetMatrixPosRotScaleXY,
+    SetApplyMatrixTransformations,
 };
 
 typedef pair<const void*, uintptr_t> label;
@@ -107,6 +109,13 @@ union Data {
         MtxF mf;
         u8 mode;
     } matrix_mult;
+
+    struct {
+        Mat4* matrix;
+        FVector pos;
+        IRotator rot;
+        FVector scale;
+    } matrix_applytransformations;
 
     struct {
         Mat4* matrix;
@@ -578,6 +587,13 @@ struct InterpolateCtx {
                             mtxf_translation_x_y_rotate_z_scale_x_y(*gInterpolationMatrix, tmp32[0], tmp32[1], tmp_vec3s[0], tmp_vec3f[0]);
                             break;
                         }
+                        case Op::SetApplyMatrixTransformations: {
+                            lerp_vec3f(&tmp_vec3f, (Vec3f*)&old_op.matrix_applytransformations.pos, (Vec3f*)&new_op.matrix_applytransformations.pos);
+                            lerp_vec3s(&tmp_vec3s, (int16_t*)&old_op.matrix_applytransformations.rot, (int16_t*)&new_op.matrix_applytransformations.rot);
+                            lerp_vec3f(&tmp_vec3f2, (Vec3f*)&old_op.matrix_applytransformations.scale, (Vec3f*)&new_op.matrix_applytransformations.scale);
+
+                            ApplyMatrixTransformations(*gInterpolationMatrix, *(FVector*)&tmp_vec3f, *(IRotator*)&tmp_vec3s, *(FVector*)&tmp_vec3f2);
+                        }
                     }
                 }
             }
@@ -692,6 +708,12 @@ void FrameInterpolation_RecordMatrixMult(Mat4* matrix, MtxF* mf, u8 mode) {
     if (!is_recording)
         return;
     append(Op::MatrixMult).matrix_mult = { matrix, *mf, mode };
+}
+
+void FrameInterpolation_ApplyMatrixTransformations(Mat4* matrix, FVector pos, IRotator rot, FVector scale) {
+    if (!is_recording)
+        return;
+    append(Op::SetApplyMatrixTransformations).matrix_applytransformations = { matrix, pos, rot, scale };
 }
 
 void FrameInterpolation_RecordMatrixTranslate(Mat4* matrix, Vec3f b) {

@@ -7,11 +7,13 @@
 
 #ifdef __cplusplus
 
+#include "src/engine/CoreMath.h"
 #include <unordered_map>
 
 
 
 std::unordered_map<Mtx*, MtxF> FrameInterpolation_Interpolate(float step);
+void FrameInterpolation_ApplyMatrixTransformations(Mat4* matrix, FVector pos, IRotator rot, FVector scale);
 
 extern "C" {
 #endif
