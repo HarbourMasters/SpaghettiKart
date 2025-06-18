@@ -45,7 +45,7 @@ Course::Course() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
     Props.Minimap.Colour = {255, 255, 255};
-    Props.WaterLevel = -10.0f;
+    Props.WaterLevel = FLT_MAX;
 
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
@@ -150,7 +150,10 @@ void Course::Load() {
             Course::Init();
             ParseCourseSections(sections, size);
             func_80295C6C();
-            Props.WaterLevel = gCourseMinY - 10.0f;
+
+            if (Props.WaterLevel == FLT_MAX) {
+                Props.WaterLevel = gCourseMinY - 10.0f;
+            }
         } else {
             printf("Course.cpp: Custom track sections are invalid\n");
         }
