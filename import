@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# note, this quick hack only works with five arguments.
-# if you're trying to use six arguments, you need to add another `$6` etc.
-
-python3 tools/decomp-permuter/import.py $1 $2 $3 $4 $5
-
