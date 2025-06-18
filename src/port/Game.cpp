@@ -107,7 +107,7 @@ void CustomEngineInit() {
     Course* doubleDeck    = gWorldInstance.AddCourse(std::make_unique<DoubleDeck>());
     Course* dkJungle      = gWorldInstance.AddCourse(std::make_unique<DKJungle>());
     Course* bigDonut      = gWorldInstance.AddCourse(std::make_unique<BigDonut>());
-    Course* harbour       = gWorldInstance.AddCourse(std::make_unique<Harbour>());
+//    Course* harbour       = gWorldInstance.AddCourse(std::make_unique<Harbour>());
     Course* testCourse    = gWorldInstance.AddCourse(std::make_unique<TestCourse>());
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
