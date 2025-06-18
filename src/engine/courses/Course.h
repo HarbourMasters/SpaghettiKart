@@ -96,7 +96,7 @@ typedef struct Properties {
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
         j["CourseLength"] = CourseLength ? CourseLength : "";
-        j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
+        //j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
         j["LakituTowType"] = LakituTowType;
         j["AIMaximumSeparation"] = AIMaximumSeparation;
         j["AIMinimumSeparation"] = AIMinimumSeparation;
@@ -133,10 +133,22 @@ typedef struct Properties {
         j["MinimapFinishlineY"] = Minimap.FinishlineY;
         j["MinimapColour"] = {static_cast<int>(Minimap.Colour.r), static_cast<int>(Minimap.Colour.g), static_cast<int>(Minimap.Colour.b)};
         // SkyboxColors - assuming SkyboxColors can be serialized similarly
-        // j["Skybox"] = Skybox; // Implement your serialization logic here
+
+        #define TO_INT(value) static_cast<int>(value)
+        j["Skybox"] = {
+            TO_INT(Skybox.TopRight.r), TO_INT(Skybox.TopRight.g), TO_INT(Skybox.TopRight.b),
+            TO_INT(Skybox.BottomRight.r), TO_INT(Skybox.BottomRight.g), TO_INT(Skybox.BottomRight.b),
+            TO_INT(Skybox.BottomLeft.r), TO_INT(Skybox.BottomLeft.g), TO_INT(Skybox.BottomLeft.b),
+            TO_INT(Skybox.TopLeft.r), TO_INT(Skybox.TopLeft.g), TO_INT(Skybox.TopLeft.b),
+            TO_INT(Skybox.FloorTopRight.r), TO_INT(Skybox.FloorTopRight.g), TO_INT(Skybox.FloorTopRight.b),
+            TO_INT(Skybox.FloorBottomRight.r), TO_INT(Skybox.FloorBottomRight.g), TO_INT(Skybox.FloorBottomRight.b),
+            TO_INT(Skybox.FloorBottomLeft.r), TO_INT(Skybox.FloorBottomLeft.g), TO_INT(Skybox.FloorBottomLeft.b),
+            TO_INT(Skybox.FloorTopLeft.r), TO_INT(Skybox.FloorTopLeft.g), TO_INT(Skybox.FloorTopLeft.b)
+        };
         j["Sequence"] = static_cast<int>(Sequence);
 
         j["WaterLevel"] = static_cast<float>(WaterLevel);
+        #undef CAST_TO_INT
 
         return j;
     }
@@ -156,7 +168,7 @@ typedef struct Properties {
         strncpy(CourseLength, j.at("CourseLength").get<std::string>().c_str(), sizeof(CourseLength) - 1);
         CourseLength[sizeof(CourseLength) - 1] = '\0'; // Ensure null termination
 
-        AIBehaviour = j.at("AIBehaviour").get<std::string>().c_str();
+        //AIBehaviour = j.at("AIBehaviour").get<std::string>().c_str();
         LakituTowType = j.at("LakituTowType").get<int>();
 
         AIMaximumSeparation = j.at("AIMaximumSeparation").get<float>();
@@ -215,6 +227,39 @@ typedef struct Properties {
         Minimap.Colour.g = j.at("MinimapColour")[1].get<uint8_t>();
         Minimap.Colour.b = j.at("MinimapColour")[2].get<uint8_t>();
         //textures = nullptr; // Deserialize textures if present
+
+        Skybox.TopRight.r = j.at("Skybox")[0].get<uint8_t>();
+        Skybox.TopRight.g = j.at("Skybox")[1].get<uint8_t>();
+        Skybox.TopRight.b = j.at("Skybox")[2].get<uint8_t>();
+
+        Skybox.BottomRight.r = j.at("Skybox")[3].get<uint8_t>();
+        Skybox.BottomRight.g = j.at("Skybox")[4].get<uint8_t>();
+        Skybox.BottomRight.b = j.at("Skybox")[5].get<uint8_t>();
+
+        Skybox.BottomLeft.r = j.at("Skybox")[6].get<uint8_t>();
+        Skybox.BottomLeft.g = j.at("Skybox")[7].get<uint8_t>();
+        Skybox.BottomLeft.b = j.at("Skybox")[8].get<uint8_t>();
+        
+        Skybox.TopLeft.r = j.at("Skybox")[9].get<uint8_t>();
+        Skybox.TopLeft.g = j.at("Skybox")[10].get<uint8_t>();
+        Skybox.TopLeft.b = j.at("Skybox")[11].get<uint8_t>();
+
+        Skybox.FloorTopRight.r = j.at("Skybox")[12].get<uint8_t>();
+        Skybox.FloorTopRight.g = j.at("Skybox")[13].get<uint8_t>();
+        Skybox.FloorTopRight.b = j.at("Skybox")[14].get<uint8_t>();
+
+        Skybox.FloorBottomRight.r = j.at("Skybox")[15].get<uint8_t>();
+        Skybox.FloorBottomRight.g = j.at("Skybox")[16].get<uint8_t>();
+        Skybox.FloorBottomRight.b = j.at("Skybox")[17].get<uint8_t>();
+
+        Skybox.FloorBottomLeft.r = j.at("Skybox")[18].get<uint8_t>();
+        Skybox.FloorBottomLeft.g = j.at("Skybox")[19].get<uint8_t>();
+        Skybox.FloorBottomLeft.b = j.at("Skybox")[20].get<uint8_t>();
+
+        Skybox.FloorTopLeft.r = j.at("Skybox")[21].get<uint8_t>();
+        Skybox.FloorTopLeft.g = j.at("Skybox")[22].get<uint8_t>();
+        Skybox.FloorTopLeft.b = j.at("Skybox")[23].get<uint8_t>();
+
         Sequence = static_cast<MusicSeq>(j.at("Sequence").get<int>());
         WaterLevel = j.at("WaterLevel").get<float>();
     }

@@ -3,6 +3,7 @@
 #include "HM_Intro.h"
 
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "main.h"
@@ -64,7 +65,7 @@ void HarbourMastersIntro::HM_InitIntro() {
 	0x60, 20, 10, 0x49, 0x49, 0x49
     );
 
-    gEditor.AddObject("lus", &lusPos, &lusRot, &lusScale, nullptr, 1, Editor::GameObject::CollisionType::BOUNDING_BOX, 10, &DespawnValue, -1);
+    //gEditor.AddObject("lus", &lusPos, &lusRot, &lusScale, nullptr, 1, Editor::GameObject::CollisionType::BOUNDING_BOX, 10, &DespawnValue, -1);
 }
 
 void HarbourMastersIntro::HM_TickIntro() {
@@ -115,6 +116,7 @@ void HarbourMastersIntro::SpagBob(FVector& pos, IRotator& rot, f32 bobAmp, f32 b
 }
 
 void HarbourMastersIntro::HM_DrawIntro() {
+    FrameInterpolation_ShouldInterpolateFrame(false);
     HarbourMastersIntro::Setup();
 
     gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -122,21 +124,28 @@ void HarbourMastersIntro::HM_DrawIntro() {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
 
+    FrameInterpolation_RecordOpenChild("spag_ship", 0);
     Mat4 mtx_spaghettiShip;
     ApplyMatrixTransformations(mtx_spaghettiShip, _pos, _rot, _scale);
     render_set_position(mtx_spaghettiShip, 0);
     gSPDisplayList(gDisplayListHead++, ship1_spag1_mesh);
+    FrameInterpolation_RecordCloseChild();
 
+    FrameInterpolation_RecordOpenChild("ship2", 0);
     Mat4 mtx_ship2;
     ApplyMatrixTransformations(mtx_ship2, _ship2Pos, _ship2Rot, _scale);
     render_set_position(mtx_ship2, 0);
     gSPDisplayList(gDisplayListHead++, ship2_SoH_mesh);
+    FrameInterpolation_RecordCloseChild();
 
+    FrameInterpolation_RecordOpenChild("ship3", 0);
     Mat4 mtx_ship3;
     ApplyMatrixTransformations(mtx_ship3, _shipPos, _shipRot, _scale);
     render_set_position(mtx_ship3, 0);
     gSPDisplayList(gDisplayListHead++, ship3_2Ship_mesh);
+    FrameInterpolation_RecordCloseChild();
 
+    FrameInterpolation_RecordOpenChild("hm_geo", 0);
     Mat4 mtx_geo;
     ApplyMatrixTransformations(mtx_geo, _hPos, _hRot, _hScale);
     render_set_position(mtx_geo, 0);
@@ -146,13 +155,17 @@ void HarbourMastersIntro::HM_DrawIntro() {
     gSPDisplayList(gDisplayListHead++, castle_map_002_mesh);
     gSPDisplayList(gDisplayListHead++, road_map_001_mesh);
     gSPDisplayList(gDisplayListHead++, water_water1_mesh);
+    FrameInterpolation_RecordCloseChild();
 
+    FrameInterpolation_RecordOpenChild("hm_lus", 0);
     Mat4 lusMtx;
     ApplyMatrixTransformations(lusMtx, lusPos, lusRot, lusScale);
     render_set_position(lusMtx, 0);
     gSPDisplayList(gDisplayListHead++, (Gfx*)"__OTR__hmintro/poweredbylus");
+    FrameInterpolation_RecordCloseChild();
 
     HarbourMastersIntro::Sync();
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void HarbourMastersIntro::Setup() {
