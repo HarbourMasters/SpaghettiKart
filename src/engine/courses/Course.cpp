@@ -23,12 +23,13 @@ extern "C" {
 #include "render_courses.h"
 #include "collision.h"
 #include "actors.h"
+#include "math_util.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
 Course::Course() {
-    // Props.Name = "Course Name";
-    // Props.DebugName = "CName";
+    Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
@@ -134,7 +135,7 @@ void Course::LoadO2R(std::string trackPath) {
     }
 }
 
-// Load stock track
+// Load stock and o2r tracks
 void Course::Load() {
 
     // Load from O2R
@@ -150,6 +151,8 @@ void Course::Load() {
             ParseCourseSections(sections, size);
             func_80295C6C();
             Props.WaterLevel = gCourseMinY - 10.0f;
+        } else {
+            printf("Course.cpp: Custom track sections are invalid\n");
         }
         return;
     }
@@ -337,7 +340,7 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-       // set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+        set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 

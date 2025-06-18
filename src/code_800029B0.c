@@ -68,7 +68,8 @@ s32 gIsMirrorMode = 0;
 f32 vtxStretchY = 1.0f;
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
-    gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
+    //! @todo impl lighting in custom track origin value 115 instead of 209. Hack fix for lighting for now
+    gdSPDefLights1(209, 209, 209, 255, 255, 255, 0, 0, 120),
 };
 UNUSED s32 pad_800029B0 = 0x80000000;
 s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;

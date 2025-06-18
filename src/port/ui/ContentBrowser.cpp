@@ -127,7 +127,7 @@ namespace Editor {
             if (!track.SceneFile.empty()) { // has scene file
                 std::string label = fmt::format("{}##{}", track.Name, i_track);
                 if (ImGui::Button(label.c_str())) {
-                    SetCourseByClass(track.course);
+                    gWorldInstance.CurrentCourse = track.course;
                     gGamestateNext = RACING;
                     SetSceneFile(track.Archive, track.SceneFile);
                     break;
@@ -136,7 +136,7 @@ namespace Editor {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
                 if (ImGui::Button(label.c_str())) {
                     track.SceneFile = track.Dir + "/scene.json";
-                    SetCourseByClass(track.course);
+                    gWorldInstance.CurrentCourse = track.invalidTrack.get();
                     SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;
@@ -240,10 +240,10 @@ namespace Editor {
                     
                     auto course = std::make_unique<Course>();
                     course->LoadO2R(dir);
-                    gWorldInstance.Courses.push_back(std::move(course));
                     LoadLevel(archive, course.get(), sceneFile);
                     LoadMinimap(archive, course.get(), minimapFile);
-                    Tracks.push_back({course.get(), sceneFile, name, dir, archive});
+                    Tracks.push_back({nullptr, course.get(), sceneFile, name, dir, archive});
+                    gWorldInstance.Courses.push_back(std::move(course));
                 } else { // The track does not have a valid scene file
                     const std::string file = dir + "/data_track_sections";
                     
@@ -256,9 +256,8 @@ namespace Editor {
                         course->Id = (std::string("mods:") + name).c_str();
                         course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
                         course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
-
                         auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({course.get(), "", name, dir, archive});
+                        Tracks.push_back({std::move(course), nullptr, "", name, dir, archive});
                     } else {
                         printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
                     }
