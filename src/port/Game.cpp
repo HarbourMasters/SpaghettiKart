@@ -107,7 +107,7 @@ void CustomEngineInit() {
     Course* doubleDeck    = gWorldInstance.AddCourse(std::make_unique<DoubleDeck>());
     Course* dkJungle      = gWorldInstance.AddCourse(std::make_unique<DKJungle>());
     Course* bigDonut      = gWorldInstance.AddCourse(std::make_unique<BigDonut>());
-    Course* harbour       = gWorldInstance.AddCourse(std::make_unique<Harbour>());
+//    Course* harbour       = gWorldInstance.AddCourse(std::make_unique<Harbour>());
     Course* testCourse    = gWorldInstance.AddCourse(std::make_unique<TestCourse>());
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
@@ -141,7 +141,8 @@ void CustomEngineInit() {
     gWorldInstance.AddCup(gBattleCup);
 
     /* Set default course; mario raceway */
-    SelectMarioRaceway();
+    //SelectMarioRaceway(); // This results in a nullptr
+    gWorldInstance.CurrentCourse = mario;
     gWorldInstance.CurrentCup = gMushroomCup;
     gWorldInstance.CurrentCup->CursorPosition = 3;
     gWorldInstance.CupIndex = 0;
@@ -599,10 +600,6 @@ void SetCourseFromCup() {
 
 void* GetCourse(void) {
     return gWorldInstance.CurrentCourse;
-}
-
-void SetCourseByClass(void* course) {
-    gWorldInstance.CurrentCourse = (Course*) course;
 }
 
 struct Actor* CM_GetActor(size_t index) {

@@ -95,32 +95,32 @@ ToadsTurnpike::ToadsTurnpike() {
 
     Props.PathSizes = {1000, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_toads_turnpike_unknown_waypoints);
+    Props.PathTable[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_toads_turnpike_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_toads_turnpike_track_waypoints);
+    Props.PathTable2[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_toads_turnpike_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -181,34 +181,34 @@ void ToadsTurnpike::BeginPlay() {
         }
 
         for (size_t i = 0; i < _numTrucks; i++) {
-            waypoint = CalculateWaypointDistribution(i, _numTrucks, gWaypointCountByPathIndex[0], 0);
-            gWorldInstance.AddActor(new ATruck(a, b,  &D_80164550[0][0], waypoint));
+            waypoint = CalculateWaypointDistribution(i, _numTrucks, gPathCountByPathIndex[0], 0);
+            gWorldInstance.AddActor(new ATruck(a, b,  &gTrackPaths[0][0], waypoint));
         }
 
         for (size_t i = 0; i < _numBuses; i++) {
-            waypoint = CalculateWaypointDistribution(i, _numBuses, gWaypointCountByPathIndex[0], 75);
-            gWorldInstance.AddActor(new ABus(a, b, &D_80164550[0][0], waypoint));
+            waypoint = CalculateWaypointDistribution(i, _numBuses, gPathCountByPathIndex[0], 75);
+            gWorldInstance.AddActor(new ABus(a, b, &gTrackPaths[0][0], waypoint));
         }
 
         for (size_t i = 0; i < _numTankerTrucks; i++) {
-            waypoint = CalculateWaypointDistribution(i, _numTankerTrucks, gWaypointCountByPathIndex[0], 50);
-            gWorldInstance.AddActor(new ATankerTruck(a, b, &D_80164550[0][0], waypoint));
+            waypoint = CalculateWaypointDistribution(i, _numTankerTrucks, gPathCountByPathIndex[0], 50);
+            gWorldInstance.AddActor(new ATankerTruck(a, b, &gTrackPaths[0][0], waypoint));
         }
 
         for (size_t i = 0; i < _numCars; i++) {
-            waypoint = CalculateWaypointDistribution(i, _numCars, gWaypointCountByPathIndex[0], 25);
-            gWorldInstance.AddActor(new ACar(a, b, &D_80164550[0][0], waypoint));
+            waypoint = CalculateWaypointDistribution(i, _numCars, gPathCountByPathIndex[0], 25);
+            gWorldInstance.AddActor(new ACar(a, b, &gTrackPaths[0][0], waypoint));
         }
 
         if (gModeSelection == VERSUS) {
             FVector pos = { 0, 0, 0 };
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 1, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][50], 50, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][100], 100, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][150], 150, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][200], 200, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][250], 250, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
         }
     }
 }

@@ -200,7 +200,7 @@ void func_8007ABFC(s32, bool);
 void consume_item(s32);
 u8 gen_random_item(s16, s16);
 u8 gen_random_item_human(s16, s16);
-u8 kart_ai_gen_random_item(s32, s16);
+u8 cpu_gen_random_item(s32, s16);
 s16 func_8007AFB0(s32, s32);
 s32 func_8007B040(s32, s32);
 void func_8007B254(s32, s32);

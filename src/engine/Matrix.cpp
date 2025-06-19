@@ -74,6 +74,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
     f32 sine1, cosine1;
     f32 sine2, cosine2;
     f32 sine3, cosine3;
+    FrameInterpolation_ApplyMatrixTransformations((Mat4*)mtx, pos, rot, scale);
 
     // Compute the sine and cosine of the orientation (Euler angles)
     sine1 = sins(rot.pitch);

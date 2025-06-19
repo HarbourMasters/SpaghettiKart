@@ -1208,22 +1208,22 @@ d_course_koopa_troopa_beach_dl_AD40:
   offset: 0xAD40
 d_course_koopa_troopa_beach_unknown_waypoints:
   symbol: d_course_koopa_troopa_beach_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xADE0
   count: 62
 d_course_koopa_troopa_beach_unknown_waypoints1:
   symbol: d_course_koopa_troopa_beach_unknown_waypoints1
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xAFD0
   count: 59
 d_course_koopa_troopa_beach_track_waypoints:
   symbol: d_course_koopa_troopa_beach_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xB1A8
   count: 609
 d_course_koopa_troopa_beach_track_waypoints_2:
   symbol: d_course_koopa_troopa_beach_track_waypoints_2
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xC4B0
   count: 559
 d_course_koopa_troopa_beach_crab_tlut:
