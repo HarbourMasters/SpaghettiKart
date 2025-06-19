@@ -61,7 +61,7 @@ Congratulations, you are now sailing with SpaghettiKart! Have fun!
 Currently, there are three rendering APIs supported: DirectX11 (Windows), OpenGL (all platforms), and Metal (macOS). You can change which API to use in the `Settings` menu of the menubar, which requires a restart.  If you're having an issue with crashing, you can change the API in the `spaghettify.cfg.json` file by finding the line `"Backend":{`... and changing the `id` value to `3` and set the `Name` to `OpenGL`. `DirectX 11` with id `2` is the default on Windows. `Metal` with id `4` is the default on macOS.
 
 # Custom Assets
-Custom assets are packed in `.o2r` files. To use custom assets, place them in the `mods` folder.
+Custom assets are packed in `.o2r` or stored `.zip` files. To use custom assets, place them in the `mods` folder.
 
 If you're interested in creating and/or packing your own custom asset `.o2r` files, check out the following tools:
 * [**retro - O2R generator**](https://github.com/HarbourMasters64/retro)
