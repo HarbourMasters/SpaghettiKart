@@ -2778,6 +2778,9 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     s32 center = 0;
     Player* player = &gPlayerOne[playerId];
 
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
+
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
         thing1 = player->pos[2] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
@@ -2822,6 +2825,10 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
             }
         }
     }
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
+
 }
 #undef EXPLICIT_AND
 #else
@@ -2838,13 +2845,13 @@ void func_8004F3E4(s32 arg0) {
         case GRAND_PRIX:
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                if ((gPlayerOne + playerId)->type & PLAYER_KART_AI) {
+                if ((gPlayerOne + playerId)->type & PLAYER_CPU) {
                     func_8004F168(arg0, playerId, 8);
                 }
             }
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                if (((gPlayerOne + playerId)->type & PLAYER_KART_AI) != PLAYER_KART_AI) {
+                if (((gPlayerOne + playerId)->type & PLAYER_CPU) != PLAYER_CPU) {
                     func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
                 }
             }
@@ -3162,7 +3169,7 @@ void func_800507D8(u16 bombIndex, s32* arg1, s32* arg2) {
     s32 var_v1 = 0;
 
     if (temp_v0 != 0) {
-        var_v1 = (s32) (temp_v0 * 0x3A0) / (s32) D_80164430;
+        var_v1 = (s32) (temp_v0 * 0x3A0) / (s32) gSelectedPathCount;
     }
     if (var_v1 < 0x104) {
         *arg1 = var_v1;
@@ -3393,7 +3400,7 @@ void func_800514BC(void) {
         }
     }
     if (gModeSelection == 1) {
-        func_80050E34(0, D_80164408[0]);
+        func_80050E34(0, gGPCurrentRaceRankByPlayerIdDup[0]);
     } else if (gPlayerCountSelection1 == 1) {
         func_80050E34(0, gGPCurrentRaceRankByPlayerId[0]);
     }

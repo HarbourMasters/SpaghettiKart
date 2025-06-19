@@ -1,0 +1,17 @@
+<DisplayList Version="0">
+	<LoadVertices Path="tracks/harbour/moon_mesh_vtx_2" VertexBufferIndex="0" VertexOffset="0" Count="32"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="2" V11="3" V12="4" Flag1="0"/>
+	<Triangles2 V00="4" V01="5" V02="6" Flag0="0" V10="6" V11="7" V12="8" Flag1="0"/>
+	<Triangles2 V00="8" V01="9" V02="10" Flag0="0" V10="10" V11="11" V12="12" Flag1="0"/>
+	<Triangles2 V00="12" V01="13" V02="14" Flag0="0" V10="15" V11="16" V12="17" Flag1="0"/>
+	<Triangles2 V00="17" V01="18" V02="19" Flag0="0" V10="19" V11="20" V12="0" Flag1="0"/>
+	<Triangles2 V00="21" V01="22" V02="23" Flag0="0" V10="22" V11="24" V12="25" Flag1="0"/>
+	<Triangles2 V00="24" V01="26" V02="27" Flag0="0" V10="26" V11="28" V12="29" Flag1="0"/>
+	<Triangle1 V00="28" V01="30" V02="31"/>
+	<LoadVertices Path="tracks/harbour/moon_mesh_vtx_2" VertexBufferIndex="0" VertexOffset="32" Count="12"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="1" V11="3" V12="4" Flag1="0"/>
+	<Triangles2 V00="5" V01="6" V02="7" Flag0="0" V10="6" V11="8" V12="9" Flag1="0"/>
+	<Triangle1 V00="8" V01="10" V02="11"/>
+	<EndDisplayList/>
+</DisplayList>
+

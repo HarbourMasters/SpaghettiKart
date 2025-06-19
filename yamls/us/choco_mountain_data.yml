@@ -396,12 +396,12 @@ d_course_choco_mountain_dl_43C8:
   offset: 0x43c8
 d_course_choco_mountain_unknown_waypoints:
   symbol: d_course_choco_mountain_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x4480
   count: 110
 d_course_choco_mountain_track_waypoints:
   symbol: d_course_choco_mountain_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x47f0
   count: 606
 d_course_choco_mountain_light:

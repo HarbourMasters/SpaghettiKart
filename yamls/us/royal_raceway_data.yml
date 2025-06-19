@@ -674,12 +674,12 @@ d_course_royal_raceway_unknown_waypoints:
   symbol: d_course_royal_raceway_unknown_waypoints
   offset: 0xB5B8
   count: 78
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
 d_course_royal_raceway_track_waypoints:
   symbol: d_course_royal_raceway_track_waypoints
   offset: 0xB828
   count: 903
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
 d_course_royal_raceway_tree_model:
   symbol: d_course_royal_raceway_tree_model
   type: vtx

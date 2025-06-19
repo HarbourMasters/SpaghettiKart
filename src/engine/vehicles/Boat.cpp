@@ -27,7 +27,7 @@ ABoat::ABoat(f32 speed, u32 waypoint) {
     std::fill(SmokeParticles, SmokeParticles + 128, NULL_OBJECT_ID);
 
     waypointOffset = waypoint;
-    temp_a2 = &gVehicle2DWaypoint[waypointOffset];
+    temp_a2 = &gVehicle2DPathPoint[waypointOffset];
     Position[0] = temp_a2->x;
     Position[1] = D_80162EB2;
     Position[2] = temp_a2->z;
@@ -44,21 +44,17 @@ ABoat::ABoat(f32 speed, u32 waypoint) {
     if (IsActive == 1) {
         f32 origXPos = Position[0];
         f32 origZPos = Position[2];
-        RotY = update_vehicle_following_waypoint(
-            Position, (s16*) &WaypointIndex,
-            Speed);
+        RotY = update_vehicle_following_path(Position, (s16*) &WaypointIndex, Speed);
         Velocity[0] = Position[0] - origXPos;
         Velocity[2] = Position[2] - origZPos;
         vec3s_set(paddleWheelBoatRot, 0, RotY, 0);
-        ActorIndex = add_actor_to_empty_slot(Position, paddleWheelBoatRot,
-                                    Velocity, ACTOR_PADDLE_BOAT);
+        ActorIndex = add_actor_to_empty_slot(Position, paddleWheelBoatRot, Velocity, ACTOR_PADDLE_BOAT);
     }
 
     _count++;
 }
 
 void ABoat::Draw(Camera* camera) {
-
 }
 
 bool ABoat::IsMod() {
@@ -84,22 +80,20 @@ void ABoat::Tick() {
         temp_f26 = Position[0];
         temp_f28 = Position[1];
         temp_f30 = Position[2];
-        update_vehicle_following_waypoint(Position, (s16*) &WaypointIndex,
-                                            Speed);
-        SomeFlags = set_vehicle_render_distance_flags(Position, BOAT_SMOKE_RENDER_DISTANCE,
-                                                                    SomeFlags);
+        update_vehicle_following_path(Position, (s16*) &WaypointIndex, Speed);
+        SomeFlags = set_vehicle_render_distance_flags(Position, BOAT_SMOKE_RENDER_DISTANCE, SomeFlags);
         if ((((s16) AnotherSmokeTimer % 10) == 0) && (SomeFlags != 0)) {
             smokePos[0] = (f32) ((f64) Position[0] - 30.0);
             smokePos[1] = (f32) ((f64) Position[1] + 180.0);
             smokePos[2] = (f32) ((f64) Position[2] + 45.0);
             adjust_position_by_angle(smokePos, Position, RotY);
-            //spawn_ferry_smoke(Index, smokePos, 1.1f);
+            // spawn_ferry_smoke(Index, smokePos, 1.1f);
             AddSmoke(Index, smokePos, 1.1f);
             smokePos[0] = (f32) ((f64) Position[0] + 30.0);
             smokePos[1] = (f32) ((f64) Position[1] + 180.0);
             smokePos[2] = (f32) ((f64) Position[2] + 45.0);
             adjust_position_by_angle(smokePos, Position, RotY);
-            //spawn_ferry_smoke(Index, smokePos, 1.1f);
+            // spawn_ferry_smoke(Index, smokePos, 1.1f);
             AddSmoke(Index, smokePos, 1.1f);
         }
         if (random_int(100) == 0) {
@@ -112,11 +106,11 @@ void ABoat::Tick() {
         sp94[0] = temp_f26;
         sp94[1] = temp_f28;
         sp94[2] = temp_f30;
-        waypoint = &gVehicle2DWaypoint[(WaypointIndex + 5) % gVehicle2DWaypointLength];
+        waypoint = &gVehicle2DPathPoint[(WaypointIndex + 5) % gVehicle2DPathLength];
         sp88[0] = (f32) waypoint->x;
         sp88[1] = (f32) D_80162EB0;
         sp88[2] = (f32) waypoint->z;
-        temp_a1 = get_angle_between_waypoints(sp94, sp88);
+        temp_a1 = get_angle_between_path(sp94, sp88);
         temp = temp_a1 - RotY;
         var_v1 = temp;
         if (var_v1 < 0) {
@@ -182,9 +176,8 @@ void ABoat::VehicleCollision(s32 playerId, Player* player) {
             z_diff = playerZ - Position[2];
             if ((x_diff > -300.0) && (x_diff < 300.0)) {
                 if ((z_diff > -300.0) && (z_diff < 300.0)) {
-                    if ((func_80006018(Position[0], Position[2],
-                                        Velocity[0], Velocity[2], 200.0f,
-                                        60.0f, playerX, playerZ) == 1) &&
+                    if ((is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], 200.0f, 60.0f,
+                                                 playerX, playerZ) == 1) &&
                         (y_diff < 60.0)) {
                         player->soundEffects |= 0x80000;
                     }

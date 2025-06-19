@@ -69,7 +69,7 @@ namespace Editor {
     void LoadLevel(std::shared_ptr<Ship::Archive> archive, Course* course, std::string sceneFile) {
         SceneFile = sceneFile;
 
-        if (archive) {
+        if (archive && (course != nullptr)) {
             auto initData = std::make_shared<Ship::ResourceInitData>();
             initData->Parent = archive;
             initData->Format = RESOURCE_FORMAT_BINARY;

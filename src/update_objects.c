@@ -211,7 +211,7 @@ void func_80072120(s32* arg0, s32 arg1) {
 void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
-            ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_KART_AI)) == 0)) {
+            ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
             D_80162DF8 = 1;
         }
     }
@@ -2356,7 +2356,7 @@ void func_80078288(s32 objectIndex) {
             break;
         case 1:
             if (gGamestate != 9) {
-                sp3A = ((gPlayerOneCopy->unk_094 / 18) * 216) / 2;
+                sp3A = ((gPlayerOneCopy->speed / 18) * 216) / 2;
                 sp3E = (random_int(0x000FU) - sp3A) + 0x2D;
                 sp3C = random_int(0x012CU) + 0x1E;
                 temp_t6 = camera1->rot[1] + ((s32) (random_int(0x3000U) - 0x1800) / (s16) ((sp3A / 15) + 1));
@@ -3153,7 +3153,7 @@ u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
     return gen_random_item(rank, false);
 }
 
-u8 kart_ai_gen_random_item(UNUSED s32 arg0, s16 rank) {
+u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
     return gen_random_item(rank, true);
 }
 

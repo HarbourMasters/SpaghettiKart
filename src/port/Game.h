@@ -143,8 +143,6 @@ void* GetCourse(void);
 
 void SetCourseById(s32 course);
 
-void SetCourseByClass(void* course);
-
 struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);
 struct Actor* CM_AddBaseActor();

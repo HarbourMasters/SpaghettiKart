@@ -65,12 +65,12 @@ void OChainChomp::func_80055AB8(s32 objectIndex, s32 cameraId) {
             D_80183E80[1] =
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = 0x8000;
-            func_800468E0(D_80183E40, D_80183E80, 0.54f, (u8*)d_course_rainbow_road_sphere, (Vtx*)D_0D0062B0, 0x00000020,
-                          0x00000040, 0x00000020, 0x00000040, 5);
+            func_800468E0(D_80183E40, D_80183E80, 0.54f, (u8*) d_course_rainbow_road_sphere, (Vtx*) D_0D0062B0,
+                          0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         } else {
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle,
                                           gObjectList[objectIndex].sizeScaling);
-            gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077D0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0077D0);
             render_animated_model((Armature*) gObjectList[objectIndex].model,
                                   (Animation**) gObjectList[objectIndex].vertex, 0,
                                   (s16) gObjectList[objectIndex].textureListIndex);
@@ -79,7 +79,7 @@ void OChainChomp::func_80055AB8(s32 objectIndex, s32 cameraId) {
 }
 
 void OChainChomp::func_80085878(s32 objectIndex, s32 arg1) {
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     Object* object;
 
     object = &gObjectList[objectIndex];
@@ -91,14 +91,13 @@ void OChainChomp::func_80085878(s32 objectIndex, s32 arg1) {
     set_object_flag(objectIndex, 0x04000200);
     object->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     set_obj_origin_pos(objectIndex, 0.0f, -15.0f, 0.0f);
-    temp_v0 = &D_80164490[(u16) object->unk_084[8]];
+    temp_v0 = &gCurrentTrackPath[(u16) object->unk_084[8]];
     set_obj_origin_offset(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;
     object->type = get_animation_length(d_rainbow_road_unk3, 0);
     object_next_state(objectIndex);
 }
-
 
 void OChainChomp::func_800859C8(s32 objectIndex, s32 arg1) {
     Object* object;
@@ -119,8 +118,3 @@ void OChainChomp::func_800859C8(s32 objectIndex, s32 arg1) {
     }
     func_80074344(objectIndex, &object->surfaceHeight, -0.8f, 0.8f, 0.03f, 0, -1);
 }
-
-
-
-
-

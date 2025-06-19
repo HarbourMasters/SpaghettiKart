@@ -516,42 +516,42 @@ d_course_yoshi_valley_dl_D540:
   offset: 0xD540
 d_course_yoshi_valley_unknown_waypoints:
   symbol: d_course_yoshi_valley_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xD780
   count: 73
 d_course_yoshi_valley_unknown_waypoints_2:
   symbol: d_course_yoshi_valley_unknown_waypoints_2
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xD9C8
   count: 74
 d_course_yoshi_valley_unknown_waypoints_3:
   symbol: d_course_yoshi_valley_unknown_waypoints_3
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xDC18
   count: 82
 d_course_yoshi_valley_unknown_waypoints_4:
   symbol: d_course_yoshi_valley_unknown_waypoints_4
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xDEA8
   count: 85
 d_course_yoshi_valley_track_waypoints:
   symbol: d_course_yoshi_valley_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xE150
   count: 678
 d_course_yoshi_valley_track_waypoints_2:
   symbol: d_course_yoshi_valley_track_waypoints_2
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xF680
   count: 667
 d_course_yoshi_valley_track_waypoints_3:
   symbol: d_course_yoshi_valley_track_waypoints_3
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x10B58
   count: 679
 d_course_yoshi_valley_track_waypoints_4:
   symbol: d_course_yoshi_valley_track_waypoints_4
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x12090
   count: 793
 d_course_yoshi_valley_unknown_light1:

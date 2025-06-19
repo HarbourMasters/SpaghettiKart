@@ -412,17 +412,17 @@ d_course_kalimari_desert_dl_6940:
   otr_mode: index
 d_course_kalimari_desert_unknown_waypoints:
   symbol: d_course_kalimari_desert_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x6ac8
   count: 51
 d_course_kalimari_desert_track_unknown_waypoints:
   symbol: d_course_kalimari_desert_track_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x6c60
   count: 76
 d_course_kalimari_desert_track_waypoints:
   symbol: d_course_kalimari_desert_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x6ec0
   count: 664
 d_course_kalimari_desert_tree_tlut:

@@ -91,16 +91,16 @@ namespace Editor {
         { "Starship", [](const FVector& pos) { return new AStarship(pos); } },
         { "Train", [](const FVector& pos) { return new ATrain(ATrain::TenderStatus::HAS_TENDER, 4, 2.5f, 0); } },
         { "Boat", [](const FVector& pos) { return new ABoat((0.6666666f)/4, 0); } },
-        { "Bus", [](const FVector& pos) { return new ABus(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Car", [](const FVector& pos) { return new ACar(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Truck", [](const FVector& pos) { return new ATruck(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Tanker Truck", [](const FVector& pos) { return new ATankerTruck(2.0f, 2.5f, &D_80164550[0][0], 0); } },
+        { "Bus", [](const FVector& pos) { return new ABus(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Car", [](const FVector& pos) { return new ACar(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Truck", [](const FVector& pos) { return new ATruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Tanker Truck", [](const FVector& pos) { return new ATankerTruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
     };
 
     std::unordered_map<std::string, std::function<OObject*(const FVector&)>> ObjectList = {
         { "Bat", [](const FVector& pos) { return new OBat(pos, IRotator(0, 0, 0)); } },
-        { "Bomb Kart", [](const FVector& pos) { return new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f); } },
-        // { "Boos", [](const FVector& pos) { return new OBoos(pos, &D_80164550[0][0], 0, 0, 0.8333333f); } },
+        { "Bomb Kart", [](const FVector& pos) { return new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
+        // { "Boos", [](const FVector& pos) { return new OBoos(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
         { "CheepCheep", [](const FVector& pos) { return new OCheepCheep(pos, OCheepCheep::CheepType::RACE, IPathSpan(0, 10)); } },
         { "Crab", [](const FVector& pos) { return new OCrab(FVector2D(0, 10), FVector2D(20, 10)); } },
         { "ChainChomp", [](const FVector& pos) { return new OChainChomp(); } },
@@ -127,7 +127,7 @@ namespace Editor {
             if (!track.SceneFile.empty()) { // has scene file
                 std::string label = fmt::format("{}##{}", track.Name, i_track);
                 if (ImGui::Button(label.c_str())) {
-                    SetCourseByClass(track.course);
+                    gWorldInstance.CurrentCourse = track.course;
                     gGamestateNext = RACING;
                     SetSceneFile(track.Archive, track.SceneFile);
                     break;
@@ -136,7 +136,7 @@ namespace Editor {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
                 if (ImGui::Button(label.c_str())) {
                     track.SceneFile = track.Dir + "/scene.json";
-                    SetCourseByClass(track.course);
+                    gWorldInstance.CurrentCourse = track.invalidTrack.get();
                     SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;
@@ -240,10 +240,10 @@ namespace Editor {
                     
                     auto course = std::make_unique<Course>();
                     course->LoadO2R(dir);
-                    gWorldInstance.Courses.push_back(std::move(course));
                     LoadLevel(archive, course.get(), sceneFile);
                     LoadMinimap(archive, course.get(), minimapFile);
-                    Tracks.push_back({course.get(), sceneFile, name, dir, archive});
+                    Tracks.push_back({nullptr, course.get(), sceneFile, name, dir, archive});
+                    gWorldInstance.Courses.push_back(std::move(course));
                 } else { // The track does not have a valid scene file
                     const std::string file = dir + "/data_track_sections";
                     
@@ -256,9 +256,8 @@ namespace Editor {
                         course->Id = (std::string("mods:") + name).c_str();
                         course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
                         course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
-
                         auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({course.get(), "", name, dir, archive});
+                        Tracks.push_back({std::move(course), nullptr, "", name, dir, archive});
                     } else {
                         printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
                     }

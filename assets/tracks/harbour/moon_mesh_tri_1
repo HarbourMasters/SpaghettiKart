@@ -1,0 +1,30 @@
+<DisplayList Version="0">
+	<LoadVertices Path="tracks/harbour/moon_mesh_vtx_1" VertexBufferIndex="0" VertexOffset="0" Count="32"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="3" V11="4" V12="2" Flag1="0"/>
+	<Triangles2 V00="3" V01="5" V02="6" Flag0="0" V10="3" V11="7" V12="8" Flag1="0"/>
+	<Triangles2 V00="9" V01="10" V02="11" Flag0="0" V10="3" V11="12" V12="13" Flag1="0"/>
+	<Triangles2 V00="3" V01="14" V02="15" Flag0="0" V10="16" V11="10" V12="17" Flag1="0"/>
+	<Triangles2 V00="18" V01="19" V02="20" Flag0="0" V10="21" V11="7" V12="22" Flag1="0"/>
+	<Triangles2 V00="0" V01="23" V02="24" Flag0="0" V10="25" V11="26" V12="22" Flag1="0"/>
+	<Triangles2 V00="16" V01="27" V02="24" Flag0="0" V10="0" V11="28" V12="29" Flag1="0"/>
+	<Triangle1 V00="3" V01="30" V02="31"/>
+	<LoadVertices Path="tracks/harbour/moon_mesh_vtx_1" VertexBufferIndex="0" VertexOffset="32" Count="30"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="3" V11="4" V12="5" Flag1="0"/>
+	<Triangles2 V00="6" V01="4" V02="7" Flag0="0" V10="8" V11="1" V12="9" Flag1="0"/>
+	<Triangles2 V00="3" V01="10" V02="11" Flag0="0" V10="12" V11="13" V12="14" Flag1="0"/>
+	<Triangles2 V00="15" V01="13" V02="16" Flag0="0" V10="15" V11="17" V12="18" Flag1="0"/>
+	<Triangles2 V00="15" V01="19" V02="20" Flag0="0" V10="21" V11="22" V12="23" Flag1="0"/>
+	<Triangles2 V00="15" V01="24" V02="25" Flag0="0" V10="15" V11="26" V12="27" Flag1="0"/>
+	<Triangle1 V00="28" V01="29" V02="23"/>
+	<LoadVertices Path="tracks/harbour/moon_mesh_vtx_1" VertexBufferIndex="0" VertexOffset="62" Count="29"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="3" V11="4" V12="5" Flag1="0"/>
+	<Triangles2 V00="6" V01="7" V02="8" Flag0="0" V10="9" V11="4" V12="10" Flag1="0"/>
+	<Triangles2 V00="11" V01="7" V02="12" Flag0="0" V10="6" V11="13" V12="14" Flag1="0"/>
+	<Triangles2 V00="15" V01="16" V02="17" Flag0="0" V10="15" V11="18" V12="14" Flag1="0"/>
+	<Triangles2 V00="11" V01="19" V02="20" Flag0="0" V10="0" V11="7" V12="20" Flag1="0"/>
+	<Triangles2 V00="9" V01="1" V02="14" Flag0="0" V10="11" V11="21" V12="22" Flag1="0"/>
+	<Triangles2 V00="23" V01="24" V02="25" Flag0="0" V10="23" V11="25" V12="26" Flag1="0"/>
+	<Triangles2 V00="23" V01="26" V02="27" Flag0="0" V10="23" V11="27" V12="28" Flag1="0"/>
+	<EndDisplayList/>
+</DisplayList>
+

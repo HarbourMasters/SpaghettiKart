@@ -12,8 +12,7 @@ extern "C" {
 }
 
 class ATruck : public AActor {
-    public:
-
+  public:
     const char* Type;
     size_t Index;
     f32 Speed;
@@ -31,7 +30,7 @@ class ATruck : public AActor {
     f32 SomeArg4 = 12.5f;
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03);
 
-    explicit ATruck(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint);
+    explicit ATruck(f32 speedA, f32 speedB, TrackPathPoint* path, uint32_t waypoint);
 
     ~ATruck() {
         _count--;
@@ -46,6 +45,6 @@ class ATruck : public AActor {
     virtual void VehicleCollision(s32 playerId, Player* player) override;
     virtual bool IsMod() override;
 
-private:
+  private:
     static size_t _count;
 };

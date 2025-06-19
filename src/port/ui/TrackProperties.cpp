@@ -69,14 +69,14 @@ namespace Editor {
 
         if (ImGui::CollapsingHeader("Random Junk")) {
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009418[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009418[i]);
+                ImGui::InputFloat(fmt::format("CurveTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.CurveTargetSpeed[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009568[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009568[i]);
+                ImGui::InputFloat(fmt::format("NormalTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.NormalTargetSpeed[i]);
             }
 
             ImGui::Separator();
@@ -89,7 +89,7 @@ namespace Editor {
             ImGui::Separator();
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D009808[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D009808[i]);
+                ImGui::InputFloat(fmt::format("OffTrackTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.OffTrackTargetSpeed[i]);
             }
         }
 

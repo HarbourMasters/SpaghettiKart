@@ -18,11 +18,11 @@ extern s8 gPlayerCount;
 
 size_t ACar::_count = 0;
 
-ACar::ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
+ACar::ACar(f32 speedA, f32 speedB, TrackPathPoint* path, uint32_t waypoint) {
     Name = "Car";
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     u16 waypointOffset;
-    s32 numWaypoints = gWaypointCountByPathIndex[0];
+    s32 numWaypoints = gPathCountByPathIndex[0];
 
     Index = _count;
 
@@ -49,17 +49,14 @@ ACar::ACar(f32 speedA, f32 speedB, TrackWaypoint* path, uint32_t waypoint) {
     }
     Rotation[0] = 0;
     Rotation[2] = 0;
-    if (D_8016347A == 0) {
-        Rotation[1] = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed,
-                                            SomeMultiplierTheSequel, 0, 3);
+    if (gIsInExtra == 0) {
+        Rotation[1] = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0, 3);
     } else {
-        Rotation[1] =
-            func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
+        Rotation[1] = func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
     }
-    D_801631C8 = 10;
+    sVehicleSoundRenderCounter = 10;
 
-    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel,
-                              Speed);
+    spawn_vehicle_on_road(Position, Rotation, Velocity, WaypointIndex, SomeMultiplierTheSequel, Speed);
     ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_CAR);
 
     _count++;
@@ -100,12 +97,10 @@ void ACar::Tick() {
             SomeMultiplierTheSequel = temp_f0_2;
         }
     }
-    if (D_8016347A == 0) {
-        var_a1 = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed,
-                               SomeMultiplierTheSequel, 0, 3);
+    if (gIsInExtra == 0) {
+        var_a1 = func_8000D6D0(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0, 3);
     } else {
-        var_a1 = func_8000D940(Position, (s16*) &WaypointIndex, Speed,
-                               SomeMultiplierTheSequel, 0);
+        var_a1 = func_8000D940(Position, (s16*) &WaypointIndex, Speed, SomeMultiplierTheSequel, 0);
     }
     adjust_angle(&Rotation[1], var_a1, 100);
     temp_f0_3 = Position[0] - sp5C;
@@ -140,12 +135,13 @@ void ACar::Draw(Camera* camera) {
     s32 waypointCount;
     u16 temp_a1;
 
-    waypointCount = gWaypointCountByPathIndex[0];
-    if (!(gPlayers[camera->playerId].unk_094 < 1.6666666666666667)) {
+    waypointCount = gPathCountByPathIndex[0];
+    if (!(gPlayers[camera->playerId].speed < 1.6666666666666667)) {
         temp_a1 = WaypointIndex;
         for (var_v0 = 0; var_v0 < 0x18; var_v0 += 3) {
-            if (((sSomeNearestWaypoint + var_v0) % waypointCount) == temp_a1) {
-                D_801634F8[camera->playerId].unk4 = func_800145A8(SomeType, D_80163068[camera->playerId], temp_a1);
+            if (((sSomeNearestPathPoint + var_v0) % waypointCount) == temp_a1) {
+                gPlayerTrackPositionFactorInstruction[camera->playerId].target =
+                    player_track_position_factor_vehicle(SomeType, gTrackPositionFactor[camera->playerId], temp_a1);
                 return;
             }
         }
@@ -161,7 +157,7 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
     f32 spC0;
     f32 spBC;
 
-    if (((D_801631E0[playerId] != 1) || ((((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_KART_AI))) &&
+    if (((D_801631E0[playerId] != 1) || ((((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_CPU))) &&
         !(player->effects & 0x01000000)) {
 
         spC4 = player->pos[0];
@@ -176,18 +172,18 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
             if ((temp_f22 > -20.0) && (temp_f22 < 20.0)) {
 
                 if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
-                    if (func_80006018(Position[0], Position[2], Velocity[0],
-                                        Velocity[2], SomeArg3, SomeArg4, spC4, spBC) == (s32) 1) {
+                    if (is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], SomeArg3, SomeArg4,
+                                                spC4, spBC) == (s32) 1) {
                         player->soundEffects |= REVERSE_SOUND_EFFECT;
                     }
                 }
             }
         }
-        if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_KART_AI)) {
+        if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
             if (((temp_f12) > -300.0) && ((temp_f12) < 300.0) && ((temp_f22 > -20.0)) && (temp_f22 < 20.0) &&
                 (((temp_f14) > -300.0)) && ((temp_f14) < 300.0)) {
-                if ((D_801631C8 > 0) && (SomeFlags == 0)) {
-                    D_801631C8 -= 1;
+                if ((sVehicleSoundRenderCounter > 0) && (SomeFlags == 0)) {
+                    sVehicleSoundRenderCounter -= 1;
                     SomeFlags |= (RENDER_VEHICLE << playerId);
                     func_800C9D80(Position, Velocity, SoundBits);
                 }
@@ -195,7 +191,7 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
                 if (SomeFlags != 0) {
                     SomeFlags &= ~(RENDER_VEHICLE << playerId);
                     if (SomeFlags == 0) {
-                        D_801631C8 += 1;
+                        sVehicleSoundRenderCounter += 1;
                         func_800C9EF4(Position, SoundBits);
                     }
                 }
@@ -206,31 +202,31 @@ void ACar::VehicleCollision(s32 playerId, Player* player) {
                 if (!(SomeFlagsTheSequel & ((1 << playerId)))) {
 
                     s32 var_s1 = 0;
-                    u16 path = gWaypointCountByPathIndex[0];
+                    u16 path = gPathCountByPathIndex[0];
                     s32 t1;
                     s32 t2;
 
-                    switch (D_8016347A) {
+                    switch (gIsInExtra) {
                         case 0:
-                            t1 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 10, 0,
-                                                path);
-                            if ((D_80163270[playerId] == 0) && (t1 > 0) && (player->unk_094 < Speed)) {
+                            t1 = is_path_point_in_range(WaypointIndex, gNearestPathPointByPlayerId[playerId], 10, 0,
+                                                        path);
+                            if ((gIsPlayerWrongDirection[playerId] == 0) && (t1 > 0) && (player->speed < Speed)) {
                                 var_s1 = 1;
                             }
-                            if ((D_80163270[playerId] == 1) && (t1 > 0)) {
+                            if ((gIsPlayerWrongDirection[playerId] == 1) && (t1 > 0)) {
                                 var_s1 = 1;
                             }
                             break;
                         case 1:
-                            t2 = func_80007BF8(WaypointIndex, gNearestWaypointByPlayerId[playerId], 0, 10,
-                                                path);
+                            t2 = is_path_point_in_range(WaypointIndex, gNearestPathPointByPlayerId[playerId], 0, 10,
+                                                        path);
                             if (t2 > 0) {
                                 if (random_int(2) == 0) {
-                                    // temp_v1_2 = D_80163270[playerId];
-                                    if (D_80163270[playerId] == 0) {
+                                    // temp_v1_2 = gIsPlayerWrongDirection[playerId];
+                                    if (gIsPlayerWrongDirection[playerId] == 0) {
                                         var_s1 = 1;
                                     }
-                                    if ((D_80163270[playerId] == 1) && (player->unk_094 < Speed)) {
+                                    if ((gIsPlayerWrongDirection[playerId] == 1) && (player->speed < Speed)) {
                                         var_s1 = 1;
                                     }
                                 } else {

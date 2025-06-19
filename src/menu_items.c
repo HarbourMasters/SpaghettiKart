@@ -1836,6 +1836,14 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     s32 stringWidth = 0;
     s32 glyphIndex;
 
+    if (text == NULL) {
+        // @port if invalid text is loaded it will skip rendering it.
+        return;
+    }
+
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);  
+
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
         do {
@@ -1861,12 +1869,23 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         } while (*text != 0);
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 // Time trials
 void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
     s32 stringWidth = 0;
     s32 glyphIndex;
+
+    if (text == NULL) {
+        // @port if invalid text is loaded it will skip rendering it.
+        return;
+    }
+
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -1893,6 +1912,9 @@ void print_text0_wide_right(s32 column, s32 row, char* text, s32 tracking, f32 s
         } while (*text != 0);
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void print_text_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -1917,6 +1939,14 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     s32 stringWidth = 0;
     s32 glyphIndex;
     s32 sp60;
+
+    if (text == NULL) {
+        // @port if invalid text is loaded it will skip rendering it.
+        return;
+    }
+
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     while (*temp_string != 0) {
         glyphIndex = char_to_glyph_index(temp_string);
@@ -1977,6 +2007,9 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         }
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void print_text1_left(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -1999,6 +2032,14 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     MenuTexture* glyphTexture;
     s32 characterWidth;
     s32 glyphIndex;
+
+    if (text == NULL) {
+        // @port if invalid text is loaded it will skip rendering it.
+        return;
+    }
+
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
     if (*text != 0) {
@@ -2031,6 +2072,9 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     }
 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
 void func_800939C8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
@@ -7379,7 +7423,7 @@ void func_800A34A8(MenuItem* arg0) {
                     var_v1 = 0;
                 } else {
                     var_v1 = 0x0000000D;
-                    var_v0 = D_80164478[sp80[rank]];
+                    var_v0 = gGetPlayerByCharacterId[sp80[rank]];
                 }
                 if (var_v0 < gPlayerCount) {
                     var_a0 = (s32) gGlobalTimer % 3;
@@ -7406,7 +7450,7 @@ void func_800A34A8(MenuItem* arg0) {
                 if (arg0->state < 9) {
                     var_v0 = gGPCurrentRacePlayerIdByRank[rank];
                 } else {
-                    var_v0 = D_80164478[sp80[rank]];
+                    var_v0 = gGetPlayerByCharacterId[sp80[rank]];
                 }
                 if (var_v0 < gPlayerCount) {
                     var_a0 = (s32) gGlobalTimer % 3;
@@ -7447,7 +7491,8 @@ void func_800A3A10(s8* arg0) {
                 arg0[var_a1] = temp_a3;
                 arg0[var_a1 - 1] = temp_t1;
             } else if (gGPPointsByCharacterId[temp_t1] == gGPPointsByCharacterId[temp_a3]) {
-                if ((D_80164478[temp_t1] < gPlayerCount) && (D_80164478[temp_t1] < D_80164478[temp_a3])) {
+                if ((gGetPlayerByCharacterId[temp_t1] < gPlayerCount) &&
+                    (gGetPlayerByCharacterId[temp_t1] < gGetPlayerByCharacterId[temp_a3])) {
                     arg0[var_a1] = temp_a3;
                     arg0[var_a1 - 1] = temp_t1;
                 } else {
@@ -11079,7 +11124,7 @@ void func_800AC458(MenuItem* arg0) {
                 arg0->param1 = 0;
                 if (gCourseIndexInCup == 3) {
                     for (var_a1 = 0; var_a1 < 8; var_a1++) {
-                        if (D_80164478[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
+                        if (gGetPlayerByCharacterId[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
                             func_800B536C(var_a1);
                             break;
                         }

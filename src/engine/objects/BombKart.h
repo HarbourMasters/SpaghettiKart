@@ -18,12 +18,12 @@ extern "C" {
 
 /**
  * Used in VS mode
- * 
+ *
  * This differs from the other vehicle classes in that it does not get added to the standard actor list
  * So this is sort of its own thing. Draw call in different place too.
  */
 class OBombKart : public OObject {
-public:
+  public:
     enum States : uint16_t { // 0,1,3,5
         DISABLED,
         CCW,
@@ -39,7 +39,7 @@ public:
     Vec3f Pos;
     Vec3f WheelPos[4]; //! @todo Turn WheelPos into a struct
     f32 Unk_3C;
-    u16 SomeRot; // Some angle
+    u16 SomeRot;       // Some angle
     u16 WaypointIndex; // The waypoint the kart circles
     States State = States::DISABLED;
     u16 BounceTimer = 0;
@@ -50,7 +50,7 @@ public:
     Collision _Collision;
 
     // Set waypoint to NULL if using a spawn position and not a waypoint.
-    explicit OBombKart(FVector pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
+    explicit OBombKart(FVector pos, TrackPathPoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C);
 
     ~OBombKart() {
         _count--;
@@ -66,7 +66,8 @@ public:
     void SomeRender(Vec3f arg1);
     void LoadMtx();
     void Waypoint(s32 screenId);
-private:
+
+  private:
     static size_t _count;
     s32 _idx;
     Player* FindTarget();
@@ -74,6 +75,4 @@ private:
 
     Vec3f _spawnPos;
     Player* _target = NULL;
-
-
 };
