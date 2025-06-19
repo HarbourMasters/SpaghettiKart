@@ -69,14 +69,14 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8829f) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        decelerate_ai_player(player, 4.0f);
+        player_decelerate(player, 4.0f);
         player->unk_DAC = 0.5f;
         if ((player->effects & BOOST_EFFECT) != 0) {
             remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+    } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -95,8 +95,8 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if ((player->collision.orientationVector[1] <= 0.7318f) || (player->surfaceType == CLIFF)) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        if (((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) {
-            decelerate_ai_player(player, 5.0f);
+        if (((player->speed / 18.0f) * 216.0f) >= 8.0f) {
+            player_decelerate(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
         if ((player->effects & BOOST_EFFECT) != 0) {
@@ -104,7 +104,7 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+    } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x32);
     } else {
@@ -123,9 +123,9 @@ void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8829f) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        decelerate_ai_player(player, 4.0f);
+        player_decelerate(player, 4.0f);
         func_8003DC40(player);
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+    } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -144,10 +144,10 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        decelerate_ai_player(player, 4.0f);
+        player_decelerate(player, 4.0f);
         func_8003DC40(player);
     } else {
-        if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+        if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
             if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) ||
                 (player->tyres[BACK_RIGHT].surfaceType == ASPHALT) ||
                 (player->tyres[FRONT_RIGHT].surfaceType == ASPHALT) ||
@@ -178,9 +178,9 @@ void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        decelerate_ai_player(player, 4.0f);
+        player_decelerate(player, 4.0f);
         func_8003DC40(player);
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+    } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
         arg3[2] = (-(player->slopeAccel / 182) * 0x3C);
     } else {
@@ -202,10 +202,10 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0xC8);
         arg3[2] = (-(player->slopeAccel / 182) * 0xC8);
-        decelerate_ai_player(player, 4.0f);
+        player_decelerate(player, 4.0f);
         player->unk_DAC = 0.5f;
         arg3[0] = 0;
-    } else if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
+    } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0x78);
         arg3[0] = 0;
@@ -275,7 +275,7 @@ void func_8003F734(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg4 += arg1[0] * player->collision.surfaceDistance[0] * 1;
         *arg5 += arg1[1] * player->collision.surfaceDistance[0] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[0] * 1;
-        if ((player->slopeAccel < 0) && (((player->unk_094 / 18.0f) * 216.0f) < 10.0f)) {
+        if ((player->slopeAccel < 0) && (((player->speed / 18.0f) * 216.0f) < 10.0f)) {
             func_8002A5F4(arg1, *arg3, arg2, 2.5f, 0);
         } else {
             func_8002A5F4(arg1, *arg3, arg2, 0.5f, 0);
@@ -329,7 +329,7 @@ void func_8003FBAC(Player* player, Vec3f arg1, Vec3f arg2, f32* arg3, f32* arg4,
         *arg4 += arg1[0] * player->collision.surfaceDistance[1] * 1;
         *arg5 += arg1[1] * player->collision.surfaceDistance[1] * 0.1;
         *arg6 += arg1[2] * player->collision.surfaceDistance[1] * 1;
-        if ((player->slopeAccel < 0) && (((player->unk_094 / 18.0f) * 216.0f) < 10.0f)) {
+        if ((player->slopeAccel < 0) && (((player->speed / 18.0f) * 216.0f) < 10.0f)) {
             func_8002A5F4(arg1, *arg3, arg2, 1.5f, 0);
         } else {
             func_8002A5F4(arg1, *arg3, arg2, 0.5f, 0);

@@ -1,6 +1,6 @@
 #include <common_structs.h>
 
-Vec4f D_0D009418[] = {
+Vec4f CurveTargetSpeed[] = {
     // mario raceway
     {
         4.1666665f,
@@ -151,7 +151,7 @@ Vec4f D_0D009418[] = {
 
 };
 
-Vec4f D_0D009568[] = {
+Vec4f NormalTargetSpeed[] = {
     // mario raceway
     {
         3.75f,
@@ -453,7 +453,7 @@ Vec4f D_0D0096B8[] = {
 
 };
 
-Vec4f D_0D009808[] = {
+Vec4f OffTrackTargetSpeed[] = {
     // mario raceway
     {
         3.75f,

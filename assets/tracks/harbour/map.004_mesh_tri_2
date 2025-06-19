@@ -1,0 +1,8 @@
+<DisplayList Version="0">
+	<LoadVertices Path="tracks/harbour/map.004_mesh_vtx_2" VertexBufferIndex="0" VertexOffset="0" Count="8"/>
+	<Triangles2 V00="0" V01="1" V02="2" Flag0="0" V10="0" V11="3" V12="1" Flag1="0"/>
+	<Triangles2 V00="3" V01="4" V02="1" Flag0="0" V10="3" V11="5" V12="4" Flag1="0"/>
+	<Triangles2 V00="5" V01="6" V02="4" Flag0="0" V10="5" V11="7" V12="6" Flag1="0"/>
+	<EndDisplayList/>
+</DisplayList>
+

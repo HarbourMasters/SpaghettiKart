@@ -61,8 +61,8 @@ void update_actor_green_shell(struct ShellActor* shell) {
                     controller->buttonDepressed &= ~Z_TRIG;
                     if (controller->rawStickY < -0x2D) {
                         var_f2 = 8.0f;
-                        if (player->unk_094 > 8.0f) {
-                            var_f2 = player->unk_094 * 1.2f;
+                        if (player->speed > 8.0f) {
+                            var_f2 = player->speed * 1.2f;
                         }
                         somePosVel[0] = 0.0f;
                         somePosVel[1] = 0.0f;
@@ -113,8 +113,8 @@ void update_actor_green_shell(struct ShellActor* shell) {
             }
             if (shell->state == 2) {
                 var_f2 = 8.0f;
-                if (player->unk_094 > 8.0f) {
-                    var_f2 = player->unk_094 * 1.2f;
+                if (player->speed > 8.0f) {
+                    var_f2 = player->speed * 1.2f;
                 }
                 somePosVel[0] = 0.0f;
                 somePosVel[1] = 0.0f;

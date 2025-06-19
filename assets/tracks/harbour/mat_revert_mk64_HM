@@ -1,0 +1,8 @@
+<DisplayList Version="0">
+	<ClearGeometryMode G_FOG="1" G_TEXTURE_GEN="1" />
+	<SetGeometryMode G_CLIPPING="1" />
+	<PipeSync/>
+	<SetTextureLUT Mode="G_TT_NONE"/>
+	<EndDisplayList/>
+</DisplayList>
+

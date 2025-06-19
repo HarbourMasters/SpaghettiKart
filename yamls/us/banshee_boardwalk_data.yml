@@ -436,12 +436,12 @@ d_course_banshee_boardwalk_dl_4480:
   offset: 0x4480
 d_course_banshee_boardwalk_unknown_waypoints:
   symbol: d_course_banshee_boardwalk_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x4578
   count: 79
 d_course_banshee_boardwalk_track_waypoints:
   symbol: d_course_banshee_boardwalk_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x47F0
   count: 658
 d_course_banshee_boardwalk_boo_tlut:

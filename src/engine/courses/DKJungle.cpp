@@ -98,32 +98,32 @@ DKJungle::DKJungle() {
 
     Props.PathSizes = {0x370, 1, 1, 1, 0x1F4, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_unknown_waypoints);
+    Props.PathTable[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_track_waypoints);
+    Props.PathTable2[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -197,7 +197,7 @@ void DKJungle::BeginPlay() {
     func_80298D10();
     if (gGamestate != CREDITS_SEQUENCE) {
 
-        generate_ferry_waypoints();
+        generate_ferry_path();
 
         // The original game only ran vehicle logic every second frame.
         // Thus the speed gets divided by two to set speed to match properly
@@ -206,13 +206,13 @@ void DKJungle::BeginPlay() {
         if (gModeSelection == VERSUS) {
             FVector pos = { 0, 0, 0 };
 
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 1, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][190], 190, 1, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][250], 250, 3, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-            gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][50], 50, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][100], 100, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][150], 150, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][190], 190, 1, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][250], 250, 3, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
+            gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
         }
     }
 }
@@ -241,17 +241,17 @@ void DKJungle::SomeSounds() {
 }
 
 void DKJungle::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if ((((s16) gNearestWaypointByPlayerId[playerId] >= 0) &&
-            ((s16) gNearestWaypointByPlayerId[playerId] < 0x65)) ||
-        (((s16) gNearestWaypointByPlayerId[playerId] >= 0x14A) &&
-            ((s16) gNearestWaypointByPlayerId[playerId] < 0x21F))) {
+    if ((((s16) gNearestPathPointByPlayerId[playerId] >= 0) &&
+            ((s16) gNearestPathPointByPlayerId[playerId] < 0x65)) ||
+        (((s16) gNearestPathPointByPlayerId[playerId] >= 0x14A) &&
+            ((s16) gNearestPathPointByPlayerId[playerId] < 0x21F))) {
         if (D_80165300[playerId] != 2) {
             func_800C8F80(playerId, 0x0170802D);
         }
         D_80165300[playerId] = 2;
     } else {
-        if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
-            ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
+        if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x288) &&
+            ((s16) gNearestPathPointByPlayerId[playerId] < 0x305)) {
             if (D_80165300[playerId] != 1) {
                 func_800CA288(playerId, 0x55);
             }
@@ -271,8 +271,8 @@ void DKJungle::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void DKJungle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x288) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x305)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x288) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x305)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }
@@ -317,13 +317,13 @@ void DKJungle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f 
 }
 
 void DKJungle::Waypoints(Player* player, int8_t playerId) {
-    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    s16 waypoint = gNearestPathPointByPlayerId[playerId];
     if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
-        player->nearestWaypointId = 0xB9U;
+        player->nearestPathPointId = 0xB9U;
     } else {
-        player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-        if (player->nearestWaypointId < 0) {
-            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+        if (player->nearestPathPointId < 0) {
+            player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
         }
     }
 }

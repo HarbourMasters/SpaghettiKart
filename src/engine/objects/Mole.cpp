@@ -221,8 +221,8 @@ void OMole::func_80081D34(s32 objectIndex) {
                     player->soundEffects |= 2;
                 }
                 object->direction_angle[1] = camera->rot[1];
-                object->velocity[1] = (player->unk_094 / 2) + 3.0;
-                object->unk_034 = player->unk_094 + 1.0;
+                object->velocity[1] = (player->speed / 2) + 3.0;
+                object->unk_034 = player->speed + 1.0;
                 if (object->velocity[1] >= 5.0) {
                     object->velocity[1] = 5.0f;
                 }

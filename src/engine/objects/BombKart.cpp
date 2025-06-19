@@ -29,7 +29,7 @@ extern s8 gPlayerCount;
 
 size_t OBombKart::_count = 0;
 
-OBombKart::OBombKart(FVector pos, TrackWaypoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
+OBombKart::OBombKart(FVector pos, TrackPathPoint* waypoint, uint16_t waypointIndex, uint16_t state, f32 unk_3C) {
     Name = "Bomb Kart";
     _idx = _count;
     Vec3f _pos = {0, 0, 0};
@@ -81,7 +81,7 @@ OBombKart::OBombKart(FVector pos, TrackWaypoint* waypoint, uint16_t waypointInde
 void OBombKart::Tick() {
     f32 sp118;
     f32 var_f18;
-    TrackWaypoint* temp_v0_2;
+    TrackPathPoint* temp_v0_2;
     f32 temp_f0_3;
     f32 sp108;
     f32 temp_f14;
@@ -109,7 +109,7 @@ void OBombKart::Tick() {
     u16 temp_t6;
     u16 temp_t7;
     u16 circleTimer;
-    TrackWaypoint* temp_v0_4;
+    TrackPathPoint* temp_v0_4;
     Player* player;
 
     state = State;
@@ -168,7 +168,7 @@ void OBombKart::Tick() {
                 temp_t6 = (circleTimer * 0xFFFF) / 360;
                 sp118 = coss(temp_t6) * 25.0;
                 temp_f0_3 = sins(temp_t6) * 25.0;
-                temp_v0_2 = &D_80164550[0][waypoint];
+                temp_v0_2 = &gTrackPaths[0][waypoint];
                 newPos[0] = temp_v0_2->posX + sp118;
                 newPos[1] = CenterY + 3.5f;
                 newPos[2] = temp_v0_2->posZ + temp_f0_3;
@@ -188,7 +188,7 @@ void OBombKart::Tick() {
                 temp_t6 = (circleTimer * 0xFFFF) / 360;
                 sp118 = coss(temp_t6) * 25.0;
                 temp_f0_3 = sins(temp_t6) * 25.0;
-                temp_v0_2 = &D_80164550[0][waypoint];
+                temp_v0_2 = &gTrackPaths[0][waypoint];
                 newPos[0] = temp_v0_2->posX + sp118;
                 newPos[1] = CenterY + 3.5f;
                 newPos[2] = temp_v0_2->posZ + temp_f0_3;
@@ -209,19 +209,19 @@ void OBombKart::Tick() {
                 break;
 
             case States::PODIUM_CEREMONY:
-                if ((D_8016347C == 0) || (gNearestWaypointByPlayerId[3] < 5)) {
+                if ((D_8016347C == 0) || (gNearestPathPointByPlayerId[3] < 5)) {
                     break;
                 } else {
                     waypoint = func_8000D2B4(newPos[0], newPos[1], newPos[2], waypoint, 3);
-                    if ((waypoint < 0) || (gWaypointCountByPathIndex[3] < waypoint)) {
+                    if ((waypoint < 0) || (gPathCountByPathIndex[3] < waypoint)) {
                         waypoint = 0;
                     }
                     if (((s32) waypoint) < 0x1A) {
-                        temp_v0_2 = &D_80164550[3][(waypoint + 1) % gWaypointCountByPathIndex[3]];
+                        temp_v0_2 = &gTrackPaths[3][(waypoint + 1) % gPathCountByPathIndex[3]];
                         D_80162FB0[0] = temp_v0_2->posX;
                         D_80162FB0[1] = temp_v0_2->posY;
                         D_80162FB0[2] = temp_v0_2->posZ;
-                        temp_v0_4 = &D_80164550[3][(waypoint + 2) % gWaypointCountByPathIndex[3]];
+                        temp_v0_4 = &gTrackPaths[3][(waypoint + 2) % gPathCountByPathIndex[3]];
                         D_80162FC0[0] = temp_v0_4->posX;
                         D_80162FC0[1] = temp_v0_4->posY;
                         D_80162FC0[2] = temp_v0_4->posZ;
@@ -260,11 +260,11 @@ void OBombKart::Tick() {
                 }
                 break;
             case States::EXPLODE:
-                temp_v0_2 = &D_80164550[0][waypoint];
+                temp_v0_2 = &gTrackPaths[0][waypoint];
                 D_80162FB0[0] = temp_v0_2->posX;
                 D_80162FB0[1] = temp_v0_2->posY;
                 D_80162FB0[2] = temp_v0_2->posZ;
-                temp_v0_4 = &D_80164550[0][(waypoint + 1) % gWaypointCountByPathIndex[0]];
+                temp_v0_4 = &gTrackPaths[0][(waypoint + 1) % gPathCountByPathIndex[0]];
                 D_80162FC0[0] = temp_v0_4->posX;
                 D_80162FC0[1] = temp_v0_4->posY;
                 D_80162FC0[2] = temp_v0_4->posZ;
@@ -429,7 +429,7 @@ void OBombKart::Waypoint(s32 screenId) {
     s32 bombWaypoint;
     s32 waypointDiff;
 
-    playerWaypoint = gNearestWaypointByPlayerId[screenId];
+    playerWaypoint = gNearestPathPointByPlayerId[screenId];
     playerHUD[screenId].unk_74 = 0;
     if ((State == States::EXPLODE) || (State == States::DISABLED)) { return; };
     bombWaypoint = WaypointIndex;

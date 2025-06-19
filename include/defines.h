@@ -48,7 +48,6 @@
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
-
 /**
  * @brief Jump to demo mode from the debug menu using L and A
  */
@@ -77,13 +76,13 @@
 #define PLAYER_STAGING (1 << 9)           // 0x0200
 #define PLAYER_UNKNOWN (1 << 10)          // 0x0400 // unused ?
 #define PLAYER_CINEMATIC_MODE (1 << 11)   // 0x0800 // Also used to track eliminations in Battle mode.
-#define PLAYER_KART_AI (1 << 12)          // 0x1000
+#define PLAYER_CPU (1 << 12)              // 0x1000
 #define PLAYER_START_SEQUENCE (1 << 13)   // 0x2000
 #define PLAYER_HUMAN (1 << 14)            // 0x4000
 #define PLAYER_EXISTS (1 << 15)           // 0x8000
 
 // Compiles to -0x1000 in diff.py
-#define PLAYER_HUMAN_AND_KART_AI PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_KART_AI | PLAYER_START_SEQUENCE
+#define PLAYER_HUMAN_AND_CPU PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
 
 #define ZERO_PLAYERS_SELECTED 0
 #define ONE_PLAYERS_SELECTED 1
@@ -208,7 +207,6 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define RACE_UNK 6
 #define RACE_EXIT 7
 
-
 /**
  * @brief Options for gScreenModeSelection and gActiveScreenMode
  */
@@ -291,13 +289,13 @@ enum ITEMS {
     /* 0x0G */ ITEM_MAX,
 };
 
-enum KART_AI_BEHAVIOURS {
+enum CPU_BEHAVIOURS {
     BEHAVIOUR_NONE = 0,
     BEHAVIOUR_1,
     BEHAVIOUR_HOP,
-    BEHAVIOUR_3,
-    BEHAVIOUR_4,
-    BEHAVIOUR_5,
+    BEHAVIOUR_DRIVE_CENTER,
+    BEHAVIOUR_DRIVE_LEFT,
+    BEHAVIOUR_DRIVE_OUTER,
     BEHAVIOUR_NORMAL_SPEED,
     BEHAVIOUR_FAST_SPEED,
     BEHAVIOUR_SLOW_SPEED,
@@ -306,12 +304,9 @@ enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_MAX_SPEED
 };
 
-enum DIRECTION {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
-};
+enum DIRECTION { NORTH, EAST, SOUTH, WEST };
+
+enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 
 /**
  * @brief Balloon status
@@ -353,6 +348,7 @@ enum DIRECTION {
 #define STAR_EFFECT 0x200                  // being a star
 #define BOOST_EFFECT 0x2000                // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT 0x100000 // being boosted by a boost pad
+#define REVERSE_EFFECT 0x400000            // being in reverse of the course
 #define HIT_BY_ITEM_EFFECT 0x2000000       // being hit by an item
 #define HIT_EFFECT 0x4000000               // hitting an object
 #define LIGHTNING_EFFECT 0x40000000        // being hit by lightning
@@ -370,7 +366,6 @@ enum DIRECTION {
 #define COLOR_LIGHT GPACK_RGB888(0x1C, 0x00, 0x00)
 #define COLOR_LAVA GPACK_RGB888(0x34, 0x00, 0x00)
 #define COLOR_BLACK GPACK_RGB888(0, 0, 0)
-
 
 /**
  *

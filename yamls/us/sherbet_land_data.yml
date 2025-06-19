@@ -588,12 +588,12 @@ d_course_sherbet_land_dl_4B20:
   offset: 0x4B20
 d_course_sherbet_land_unknown_waypoints:
   symbol: d_course_sherbet_land_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x4BF8
   count: 62
 d_course_sherbet_land_track_waypoints:
   symbol: d_course_sherbet_land_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x4DE8
   count: 666
 d_course_sherbet_land_model1:

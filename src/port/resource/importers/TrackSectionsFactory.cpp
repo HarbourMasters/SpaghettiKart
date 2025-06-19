@@ -44,9 +44,10 @@ ResourceFactoryXMLTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> file
     if (!FileHasValidFormatAndReader(file, initData)) {
         return nullptr;
     }
-    
+
     auto section = std::make_shared<TrackSectionsO2RClass>(initData);
-    auto child = std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement("TrackSections");
+    auto child =
+        std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement()->FirstChildElement();
 
     while (child != nullptr) {
         std::string childName = std::string(child->Name());

@@ -340,12 +340,12 @@ d_course_toads_turnpike_dl_3AD8:
   offset: 0x3AD8
 d_course_toads_turnpike_unknown_waypoints:
   symbol: d_course_toads_turnpike_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x3B80
   count: 54
 d_course_toads_turnpike_track_waypoints:
   symbol: d_course_toads_turnpike_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x3D30
   count: 913
 d_course_toads_turnpike_unk_windshield1:

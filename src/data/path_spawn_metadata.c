@@ -12,7 +12,7 @@
 #include <assets/frappe_snowland_data.h>
 #include <assets/dks_jungle_parkway_data.h>
 
-TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
+TrackPathPoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 
 // I think the types for gAIDistances, gMarioRacewayAIDistances, and D_800DCBB4 are all
 // wrong in some way based on their usage in func_800088D8

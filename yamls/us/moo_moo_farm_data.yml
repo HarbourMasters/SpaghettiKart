@@ -501,12 +501,12 @@ d_course_moo_moo_farm_dl_EA18:
   otr_mode: index
 d_course_moo_moo_farm_unknown_waypoints:
   symbol: d_course_moo_moo_farm_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xec80
   count: 45
 d_course_moo_moo_farm_track_waypoints:
   symbol: d_course_moo_moo_farm_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0xede8
   count: 465
 d_course_moo_moo_farm_mole_tlut:
