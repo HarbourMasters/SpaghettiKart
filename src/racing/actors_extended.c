@@ -16,6 +16,7 @@
 #include "effects.h"
 #include "sounds.h"
 #include "port/Game.h"
+#include <cglm/cglm.h>
 
 void copy_collision(Collision* src, Collision* dest) {
     dest->unk30 = src->unk30;
@@ -28,9 +29,9 @@ void copy_collision(Collision* src, Collision* dest) {
     dest->surfaceDistance[1] = src->surfaceDistance[1];
     dest->surfaceDistance[2] = src->surfaceDistance[2];
 
-    vec3f_copy_return(dest->unk48, src->unk48);
-    vec3f_copy_return(dest->unk54, src->unk54);
-    vec3f_copy_return(dest->orientationVector, src->orientationVector);
+    glm_vec3_copy(src->unk48, dest->unk48);
+    glm_vec3_copy(src->unk54, dest->unk54);
+    glm_vec3_copy(src->orientationVector, dest->orientationVector);
 }
 
 void triple_shell_actor_collide_with_player(struct ShellActor* shell, s32 shellType) {
@@ -154,7 +155,6 @@ void func_802B0648(struct BananaBunchParent* banana_bunch) {
 
 // Drop a banana from a banana bunch and throw it forward?
 void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player* player) {
-    Vec3f velocity;
     struct BananaActor* banana;
     struct BananaActor* elderBanana;
     f32 var_f0;
@@ -193,7 +193,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player
         var_f0 = ((rawStickY - 30.0f) / 20.0f) + 1.5f;
         var_f12 = (player->unk_094 * 0.75f) + 4.5f + var_f0;
     }
-    vec3f_set(velocity, 0.0f, var_f0, var_f12);
+    Vec3f velocity = {0.0f, var_f0, var_f12};
     func_802B64C4(velocity, player->rotation[1] + player->unk_0C0);
     banana->velocity[0] = velocity[0];
     banana->velocity[1] = velocity[1];

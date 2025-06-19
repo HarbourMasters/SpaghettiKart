@@ -2,6 +2,7 @@
 #include <libultra/gbi.h>
 #include <main.h>
 #include <assets/kalimari_desert_data.h>
+#include <cglm/cglm.h>
 
 /**
  * @brief Renders the train engine actor.
@@ -63,7 +64,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     mtxf_rotate_x(mainMtx, actor->wheelRot);
-    vec3f_set(sp160, 17.0f, 6.0f, 32.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, 32.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -76,7 +77,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, actor->wheelRot);
-    vec3f_set(sp160, -17.0, 6.0f, 32.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, 32.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -89,7 +90,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x16C));
-    vec3f_set(sp160, 17.0f, 6.0f, 16.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, 16.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -102,7 +103,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x16C));
-    vec3f_set(sp160, -17.0f, 6.0f, 16.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, 16.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -115,7 +116,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x444));
-    vec3f_set(sp160, 17.0f, 12.0f, -12.0f);
+    glm_vec3_copy((vec3) {17.0f, 12.0f, -12.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -128,7 +129,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x444));
-    vec3f_set(sp160, -17.0f, 12.0f, -12.0f);
+    glm_vec3_copy((vec3) {-17.0f, 12.0f, -12.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -141,7 +142,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x2D8));
-    vec3f_set(sp160, 17.0f, 12.0f, -34.0f);
+    glm_vec3_copy((vec3) {17.0f, 12.0f, -34.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -154,7 +155,7 @@ void render_actor_train_engine(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(mainMtx, (s16) (actor->wheelRot + 0x2D8));
-    vec3f_set(sp160, -17.0f, 12.0f, -34.0f);
+    glm_vec3_copy((vec3) {-17.0f, 12.0f, -34.0f}, sp160);
     mtxf_translate(objectMtx, sp160);
     mtxf_multiplication(resultMtx, mainMtx, objectMtx);
 
@@ -213,7 +214,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
-    vec3f_set(sp160, 17.0f, 6.0f, 8.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, 8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -225,7 +226,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
-    vec3f_set(sp160, -17.0, 6.0f, 8.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, 8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -237,7 +238,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
-    vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, -8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -249,7 +250,7 @@ void render_actor_train_tender(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x444));
-    vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, -8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -311,7 +312,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22D28);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
-    vec3f_set(sp160, 17.0f, 6.0f, 28.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, 28.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -323,7 +324,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, actor->wheelRot);
-    vec3f_set(sp160, -17.0, 6.0f, 28.0f);
+    glm_vec3_copy((vec3) {-17.0, 6.0f, 28.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -335,7 +336,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
-    vec3f_set(sp160, 17.0f, 6.0f, 12.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, 12.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -347,7 +348,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x222));
-    vec3f_set(sp160, -17.0f, 6.0f, 12.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, 12.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -359,7 +360,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
-    vec3f_set(sp160, 17.0f, 6.0f, -8.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, -8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -371,7 +372,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x5B0));
-    vec3f_set(sp160, -17.0f, 6.0f, -8.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, -8.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -383,7 +384,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
-    vec3f_set(sp160, 17.0f, 6.0f, -24.0f);
+    glm_vec3_copy((vec3) {17.0f, 6.0f, -24.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 
@@ -395,7 +396,7 @@ void render_actor_train_passenger_car(Camera* camera, struct TrainCar* actor) {
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
     mtxf_rotate_x(sp120, (s16) (actor->wheelRot + 0x16C));
-    vec3f_set(sp160, -17.0f, 6.0f, -24.0f);
+    glm_vec3_copy((vec3) {-17.0f, 6.0f, -24.0f}, sp160);
     mtxf_translate(spE0, sp160);
     mtxf_multiplication(spA0, sp120, spE0);
 

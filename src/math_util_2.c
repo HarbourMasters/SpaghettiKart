@@ -16,6 +16,7 @@
 #include "port/Engine.h"
 #include "engine/Matrix.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include <cglm/cglm.h>
 
 #pragma intrinsic(sqrtf)
 
@@ -52,12 +53,6 @@ UNUSED s32 func_80040EA4(s32* arg0, s32 arg1) {
         phi_v1 = 1;
     }
     return phi_v1;
-}
-
-void vec3f_copy(Vec3f dest, Vec3f arg1) {
-    dest[0] = arg1[0];
-    dest[1] = arg1[1];
-    dest[2] = arg1[2];
 }
 
 s32 f32_step_up_towards(f32* value, f32 target, f32 step) {
@@ -330,31 +325,6 @@ s32 f32_step_towards(f32* value, f32 target, f32 step) {
         }
     }
     return targetReached;
-}
-
-Vec3f* vec3f_set_xyz(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
-    arg0[0] = arg1;
-    arg0[1] = arg2;
-    arg0[2] = arg3;
-    return (Vec3f*) &arg0;
-}
-
-Vec3f* vec3f_normalize(Vec3f dest) {
-    f32 invsqrt = 1.0f / sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
-
-    dest[0] = dest[0] * invsqrt;
-    dest[1] = dest[1] * invsqrt;
-    dest[2] = dest[2] * invsqrt;
-    return (Vec3f*) &dest;
-}
-
-Vec3f* vec3f_cross_product(Vec3f dest, Vec3f arg1, Vec3f arg2) {
-
-    dest[0] = (arg1[1] * arg2[2]) - (arg2[1] * arg1[2]);
-    dest[1] = (arg1[2] * arg2[0]) - (arg2[2] * arg1[0]);
-    dest[2] = (arg1[0] * arg2[1]) - (arg2[0] * arg1[1]);
-
-    return (Vec3f*) &dest;
 }
 
 UNUSED s32 is_within_distance_2d(f32 x1, f32 y1, f32 x2, f32 y2, f32 distance) {
@@ -943,17 +913,17 @@ UNUSED void mtxf_mult_third_column(Mat4 arg0, f32 arg1) {
 
 void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVector, u16 rotationAngle,
                           f32 scaleFactor) {
-    Vec3f sp44;
-    Vec3f sp38;
-    Vec3f sp2C;
-
+    Vec3f sp44 = {sins(rotationAngle), 0.0f, coss(rotationAngle)};
+    
     FrameInterpolation_RecordSetTransformMatrix(dest, orientationVector, positionVector, rotationAngle, scaleFactor);
-    vec3f_set_xyz(sp44, sins(rotationAngle), 0.0f, coss(rotationAngle));
-    vec3f_normalize(orientationVector);
-    vec3f_cross_product(sp38, orientationVector, sp44);
-    vec3f_normalize(sp38);
-    vec3f_cross_product(sp2C, sp38, orientationVector);
-    vec3f_normalize(sp2C);
+    glm_vec3_normalize(orientationVector);
+    Vec3f sp38;
+    glm_vec3_cross(orientationVector, sp44, sp38);
+    glm_vec3_normalize(sp38);
+    Vec3f sp2C;
+    glm_vec3_cross(sp38, orientationVector, sp2C);
+    glm_vec3_normalize(sp2C);
+
     dest[0][0] = sp38[0] * scaleFactor;
     dest[0][1] = sp38[1] * scaleFactor;
     dest[0][2] = sp38[2] * scaleFactor;
@@ -970,45 +940,6 @@ void set_transform_matrix(Mat4 dest, Vec3f orientationVector, Vec3f positionVect
     dest[1][3] = 0.0f;
     dest[2][3] = 0.0f;
     dest[3][3] = 1.0f;
-}
-
-// aplly to position a rotation and put in dest
-UNUSED void vec3f_rotate(Vec3f dest, Vec3f pos, Vec3s rot) {
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
-    f32 temp_f4;
-    f32 sp64;
-    f32 sp60;
-    f32 temp_f8;
-    f32 sp58;
-    f32 sp54;
-    f32 sine1;
-    f32 cosine1;
-    f32 sine2;
-    f32 cosine2;
-    f32 sine3;
-    f32 cosine3;
-
-    sine1 = sins(rot[0]);
-    cosine1 = coss(rot[0]);
-    sine2 = sins(rot[1]);
-    cosine2 = coss(rot[1]);
-    sine3 = sins(rot[2]);
-    cosine3 = coss(rot[2]);
-    // it's a matrix multiplication
-    sp74 = pos[0] * ((cosine2 * cosine3) + ((sine1 * sine2) * sine3));
-    temp_f4 = pos[1] * ((-cosine2 * sine3) + ((sine1 * sine2) * cosine3));
-    temp_f8 = pos[2] * (cosine1 * sine2);
-    sp70 = pos[0] * (cosine1 * sine3);
-    sp64 = pos[1] * (cosine1 * cosine3);
-    sp58 = pos[2] * -sine1;
-    sp6C = pos[0] * ((-sine2 * cosine3) + ((sine1 * cosine2) * sine3));
-    sp60 = pos[1] * ((sine2 * sine3) + ((sine1 * cosine2) * cosine3));
-    sp54 = pos[2] * (cosine1 * cosine2);
-    dest[0] = sp74 + temp_f4 + temp_f8;
-    dest[1] = sp70 + sp64 + sp58;
-    dest[2] = sp6C + sp60 + sp54;
 }
 
 // apply to position a rotation x y only and put in dest

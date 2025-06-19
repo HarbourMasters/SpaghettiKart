@@ -35,6 +35,7 @@ extern "C" {
 #include "course.h"
 extern const char* wario_stadium_dls[];
 extern s16 currentScreenSection;
+#include <cglm/cglm.h>
 }
 
 const course_texture wario_stadium_textures[] = {
@@ -209,13 +210,13 @@ void WarioStadium::InitCourseObjects() {
 }
 
 void WarioStadium::SomeSounds() {
-    vec3f_set(D_8015F748, 298.0f, 202.0f, -850.0f);
+    glm_vec3_copy((vec3) {298.0f, 202.0f, -850.0f}, D_8015F748);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-    vec3f_set(D_8015F758, -1600.0f, 202.0f, -2430.0f);
+    glm_vec3_copy((vec3) {-1600.0f, 202.0f, -2430.0f}, D_8015F758);
     func_800C9D80(D_8015F758, D_802B91C8, 0x5103700B);
-    vec3f_set(D_8015F768, -2708.0f, 202.0f, 1762.0f);
+    glm_vec3_copy((vec3) {-2708.0f, 202.0f, 1762.0f}, D_8015F768);
     func_800C9D80(D_8015F768, D_802B91C8, 0x5103700B);
-    vec3f_set(D_8015F778, -775.0f, 202.0f, 1930.0f);
+    glm_vec3_copy((vec3) {-775.0f, 202.0f, 1930.0f}, D_8015F778);
     func_800C9D80(D_8015F778, D_802B91C8, 0x5103700B);
 }
 
@@ -394,11 +395,11 @@ void WarioStadium::CreditsSpawnActors() {
     Vec3f velocity = { 0, 0, 0 };
     Vec3s rotation = { 0, 0, 0 };
 
-    vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    glm_vec3_copy((vec3) {-131.0f, 83.0f, 286.0f}, position);
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    glm_vec3_copy((vec3) {-2353.0f, 72.0f, -1608.0f}, position);
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    glm_vec3_copy((vec3) {-2622.0f, 79.0f, 739.0f}, position);
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
     // d_course_wario_stadium_packed_dl_C50
     find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000C50), 0x64, 0xFF, 0xFF, 0xFF);

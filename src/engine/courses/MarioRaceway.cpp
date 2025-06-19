@@ -34,6 +34,7 @@ extern "C" {
     #include "courses/staff_ghost_data.h"
     #include "course.h"
     extern const char *mario_raceway_dls[];
+    #include <cglm/cglm.h>
 }
 
 const course_texture mario_raceway_textures[] = {
@@ -193,10 +194,10 @@ void MarioRaceway::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_mario_raceway_tree_spawns));
     spawn_piranha_plants((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_mario_raceway_piranha_plant_spawns));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_mario_raceway_item_box_spawns));
-    vec3f_set(position, 150.0f, 40.0f, -1300.0f);
+    glm_vec3_copy((vec3) {150.0f, 40.0f, -1300.0f}, position);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-    vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
+    glm_vec3_copy((vec3) {2520.0f, 0.0f, 1240.0f}, position);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
 
@@ -225,7 +226,7 @@ void MarioRaceway::InitCourseObjects() {
 }
 
 void MarioRaceway::SomeSounds() {
-    vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
+    glm_vec3_copy((vec3) {-223.0f, 94.0f, -155.0f}, D_8015F748);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 

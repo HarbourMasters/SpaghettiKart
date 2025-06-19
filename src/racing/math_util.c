@@ -12,39 +12,12 @@
 #include "port/Game.h"
 #include <port/interpolation/FrameInterpolation.h>
 #include <port/interpolation/matrix.h>
+#include <cglm/cglm.h>
+#include "convert_angle.h"
 #pragma intrinsic(sqrtf, fabs)
 
 s32 D_802B91C0[2] = { 13, 13 };
 Vec3f D_802B91C8 = { 0.0f, 0.0f, 0.0f };
-
-// Mtx gIdentityMatrix = {
-//     toFixedPointMatrix(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0),
-// };
-
-// This functions looks similar to a segment of code from func_802A4A0C in skybox_and_splitscreen.c
-UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f32 arg3, UNUSED f32 arg4) {
-    Mat4 sp30;
-    f32 sp2C;
-    f32 sp28;
-    Vec3f sp1C;
-    vec3f_copy_return(sp1C, arg1);
-    sp28 = sp1C[0];
-    sp2C = sp1C[1];
-    // wut?
-    if (sp2C && sp2C) {};
-    sp2C = ((sp30[0][3] * sp28) + (sp30[1][3] * sp2C) + (sp30[2][3] * sp1C[2])) + sp30[3][3];
-    // double wut?
-    if (sp28 && sp28) {};
-    mtxf_translate_vec3f_mat4(sp1C, sp30);
-    if (0.0f >= sp2C) {
-        return 0;
-    } else {
-        return 1;
-    }
-}
-
-UNUSED void func_802B4FF0() {
-}
 
 /**
  * Inserts matrix into the rsp. Position, rotation and mode of where to render the next object and check number of
@@ -81,15 +54,15 @@ s32 render_set_position(Mat4 mtx, s32 arg1) {
     return 1;
 }
 
-f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
-    f32 sub_y;
-    f32 sub_z;
-    f32 sub_x;
+f32 calc_sq_xy_diff_plus_2_z_diff(vec3 v1, vec3 v0) {
+    vec3 sub;
+    // Calculate the difference v1 - v0
+    glm_vec3_sub(v1, v0, sub);
 
-    sub_x = arg1[0] - arg0[0];
-    sub_y = arg1[1] - arg0[1];
-    sub_z = arg1[2] - arg0[2];
-    return (sub_x * sub_x) + (sub_y * sub_y) + sub_z + sub_z;
+    f32 sub_x_sq = sub[0] * sub[0];
+    f32 sub_y_sq = sub[1] * sub[1];
+
+    return sub_x_sq + sub_y_sq + (2.0f * sub[2]);
 }
 
 s32 get_angle_between_two_vectors(Vec3f arg0, Vec3f arg1) {
@@ -99,22 +72,6 @@ s32 get_angle_between_two_vectors(Vec3f arg0, Vec3f arg1) {
     temp_v2 = arg1[2] - arg0[2];
 
     return atan2s(temp_v1, temp_v2);
-}
-
-// get_angle_between_two_vectors
-u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
-    f32 temp_v1;
-    f32 temp_v2;
-    temp_v1 = arg1[0] - arg0[0];
-    temp_v2 = arg1[2] - arg0[2];
-
-    return atan2s(temp_v1, temp_v2);
-}
-
-void vec3f_set(Vec3f arg0, f32 arg1, f32 arg2, f32 arg3) {
-    arg0[0] = arg1;
-    arg0[1] = arg2;
-    arg0[2] = arg3;
 }
 
 void vec3s_set(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -135,44 +92,10 @@ void vec3s_set(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
 #endif
 #endif
 
-void* vec3f_copy_return(Vec3f dest, Vec3f src) {
-    dest[0] = src[0];
-    dest[1] = src[1];
-    dest[2] = src[2];
-    //! @warning function returns address of local variable
-    return &dest;
-}
-
 void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
-}
-
-UNUSED void* vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
-    dest[0] = x;
-    dest[1] = y;
-    dest[2] = z;
-    return &dest;
-}
-
-// Copy mat1 to mat2
-void mtxf_copy(Mat4 mat1, Mat4 mat2) {
-    s32 row;
-    s32 column;
-
-    for (row = 0; row < 4; row++) {
-        for (column = 0; column < 4; column++) {
-            mat2[row][column] = mat1[row][column];
-        }
-    }
-}
-
-// mtxf_copy
-void mtxf_copy_n_element(s32* dest, s32* src, s32 n) {
-    while (n-- > 0) {
-        *dest++ = *src++;
-    }
 }
 
 // Transform a matrix to a matrix identity
@@ -214,13 +137,6 @@ void add_translate_mat4_vec3f(Mat4 mat, Mat4 dest, Vec3f pos) {
      * mat(2,0)        mat(2,1)        mat(2,2)        mat(2,3)
      * mat(3,0)+pos(0) mat(3,1)+pos(1) mat(3,2)+pos(2) mat(3,3)
      */
-}
-
-// Light version of add_translate_mat4_vec3f
-UNUSED void add_translate_mat4_vec3f_lite(Mat4 mat, Mat4 dest, Vec3f pos) {
-    dest[3][0] = mat[3][0] + pos[0];
-    dest[3][1] = mat[3][1] + pos[1];
-    dest[3][2] = mat[3][2] + pos[2];
 }
 
 // create a translation matrix
@@ -1061,11 +977,11 @@ void func_802B7F7C(Vec3f arg0, Vec3f arg1, Vec3s dest) {
 }
 
 f32 sins(u16 arg0) {
-    return gSineTable[arg0 >> 4];
+    return sinf(N64_ANGLE_TO_RADIANS(arg0));
 }
 
 f32 coss(u16 arg0) {
-    return gCosineTable[arg0 >> 4];
+    return cosf(N64_ANGLE_TO_RADIANS(arg0));
 }
 
 s32 is_visible_between_angle(u16 arg0, u16 arg1, u16 arg2) {

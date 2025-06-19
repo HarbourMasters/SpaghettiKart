@@ -25,6 +25,7 @@ extern SplineData D_800E6034;
 extern SplineData D_800E60F0;
 extern SplineData D_800E61B4;
 extern SplineData D_800E6280;
+#include <cglm/cglm.h>
 }
 
 SplineData* D_800E633C[] = { &D_800E6034, &D_800E60F0, &D_800E61B4, &D_800E6280 };
@@ -143,7 +144,7 @@ void OSeagull::func_8008275C(s32 objectIndex) {
             break;
         case 2:
             func_8008B78C(objectIndex);
-            vec3f_copy(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
+            glm_vec3_copy(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_01C);
             func_8000D940(gObjectList[objectIndex].origin_pos, (s16*) &gObjectList[objectIndex].unk_0C6,
                           gObjectList[objectIndex].unk_034, 0.0f, 0);
             gObjectList[objectIndex].offset[0] *= 2.0;

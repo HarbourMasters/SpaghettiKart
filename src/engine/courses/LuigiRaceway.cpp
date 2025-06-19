@@ -38,6 +38,8 @@ extern "C" {
 #include "course.h"
 extern const char* luigi_raceway_dls[];
 extern s16 currentScreenSection;
+
+#include <cglm/cglm.h>
 }
 
 const course_texture luigi_raceway_textures[] = {
@@ -207,7 +209,7 @@ void LuigiRaceway::InitCourseObjects() {
 }
 
 void LuigiRaceway::SomeSounds() {
-    vec3f_set(D_8015F748, 85.0f, 21.0f, -219.0f);
+    glm_vec3_copy((vec3) {85.0f, 21.0f, -219.0f}, D_8015F748);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 

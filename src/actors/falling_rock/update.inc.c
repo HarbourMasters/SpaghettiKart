@@ -19,7 +19,7 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
     rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
     rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
     rock->pos[2] = (f32) temp_v0[rock->unk_06].pos[2];
-    vec3f_set(rock->velocity, 0, 0, 0);
+    glm_vec3_zero(rock->velocity);
     vec3s_set(rock->rot, 0, 0, 0);
 }
 
@@ -50,7 +50,7 @@ void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1] + 10.0f;
         startingPos[2] = temp_s0->pos[2];
-        vec3f_set(startingVelocity, 0, 0, 0);
+        glm_vec3_zero(startingVelocity);
         vec3s_set(startingRot, 0, 0, 0);
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
         temp_v1 = (struct FallingRock*) GET_ACTOR(temp);

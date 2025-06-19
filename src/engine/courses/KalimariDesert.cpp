@@ -34,6 +34,7 @@ extern "C" {
     #include "memory.h"
     #include "course.h"
     extern const char *kalimari_desert_dls[];
+    #include <cglm/cglm.h>
 }
 
 const course_texture kalimari_desert_textures[] = {
@@ -159,12 +160,12 @@ void KalimariDesert::BeginPlay() {
         uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
         uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
 
-        vec3f_set(position, -1680.0f, 2.0f, 35.0f);
+        glm_vec3_copy((vec3) {-1680.0f, 2.0f, 35.0f}, position);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing2;
-        vec3f_set(position, -1600.0f, 2.0f, 35.0f);
+        glm_vec3_copy((vec3) {-1600.0f, 2.0f, 35.0f}, position);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
@@ -172,12 +173,12 @@ void KalimariDesert::BeginPlay() {
 
         // Original game forgot to put gCourseDirection to face the crossing the right direction in extra mode
         vec3s_set(rotation, 0, -0x2000 * gCourseDirection, 0);
-        vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
+        glm_vec3_copy((vec3) {-2459.0f, 2.0f, 2263.0f}, position);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing1;
-        vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
+        glm_vec3_copy((vec3) {-2467.0f, 2.0f, 2375.0f}, position);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));

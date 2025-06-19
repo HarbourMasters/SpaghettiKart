@@ -56,6 +56,7 @@ extern "C" {
     extern Gfx mario_Plane_001_mesh[];
     extern TrackWaypoint test_course_path[];
     extern TrackSections test_course_addr[];
+    #include <cglm/cglm.h>
 }
 
 TestCourse::TestCourse() {
@@ -251,7 +252,7 @@ void TestCourse::BeginPlay() {
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
-    vec3f_set(position, 50.0f, 2.0f, 50.0f);
+    glm_vec3_copy((vec3) {50.0f, 2.0f, 50.0f}, position);
 
     Vec3f crossingPos = {0, 2, 0};
     uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);

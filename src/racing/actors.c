@@ -35,6 +35,7 @@
 #include <assets/frappe_snowland_data.h>
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include <cglm/cglm.h>
 
 // Appears to be textures
 // or tluts
@@ -127,9 +128,9 @@ void cleanup_red_and_green_shells(struct ShellActor* shell) {
 
 // Sets introductory values for a new actor (ex. Banana).
 void actor_init(struct Actor* actor, Vec3f startingPos, Vec3s startingRot, Vec3f startingVelocity, s16 actorType) {
-    vec3f_copy_return(actor->pos, startingPos);
+    glm_vec3_copy(startingPos, actor->pos);
     vec3s_copy(actor->rot, startingRot);
-    vec3f_copy_return(actor->velocity, startingVelocity);
+    glm_vec3_copy(startingVelocity, actor->velocity);
     actor->type = actorType;
     actor->flags = -0x8000;
     actor->unk_04 = 0;
@@ -870,8 +871,7 @@ void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
     if (gGamestate == CREDITS_SEQUENCE) {
         return;
     }
-
-    vec3f_set(startingVelocity, 0, 0, 0);
+    glm_vec3_zero(startingVelocity);
     vec3s_set(startingRot, 0, 0, 0);
 
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
@@ -900,7 +900,7 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
     Vec3s startingRot;
     s32 temp;
 
-    vec3f_set(startingVelocity, 0, 0, 0);
+    glm_vec3_zero(startingVelocity);
     vec3s_set(startingRot, 0, 0, 0);
 
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
@@ -930,7 +930,7 @@ void spawn_foliage(struct ActorSpawnData* actor) {
     s16 actorType = 0;
     struct Actor* temp_s0;
     struct ActorSpawnData* var_s3 = actor;
-    vec3f_set(velocity, 0.0f, 0.0f, 0.0f);
+    glm_vec3_zero(velocity);
     rotation[0] = 0x4000;
     rotation[1] = 0;
     rotation[2] = 0;
@@ -1007,7 +1007,7 @@ void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
         return;
     }
 
-    vec3f_set(startingVelocity, 0, 0, 0);
+    glm_vec3_zero(startingVelocity);
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
@@ -1095,10 +1095,10 @@ void spawn_course_actors(void) {
     //         // spawn_foliage(d_course_mario_raceway_tree_spawns);
     //         // spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
     //         // spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
-    //         // vec3f_set(position, 150.0f, 40.0f, -1300.0f);
+    //         // glm_vec3_copy((vec3) {150.0f, 40.0f, -1300.0f}, position);
     //         // position[0] *= gCourseDirection;
     //         // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-    //         // vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
+    //         // glm_vec3_copy((vec3) {2520.0f, 0.0f, 1240.0f}, position);
     //         // position[0] *= gCourseDirection;
     //         // actor = GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN));
     //         // actor->flags |= 0x4000;
@@ -1117,7 +1117,7 @@ void spawn_course_actors(void) {
     //     case COURSE_YOSHI_VALLEY:
     //         spawn_foliage(d_course_yoshi_valley_tree_spawn);
     //         spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
-    //         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
+    //         glm_vec3_copy((vec3) {-2300.0f, 0.0f, 634.0f}, position);
     //         position[0] *= gCourseDirection;
     //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
     //         break;
@@ -1151,23 +1151,23 @@ void spawn_course_actors(void) {
     //     case COURSE_KALIMARI_DESERT:
     //         spawn_foliage(d_course_kalimari_desert_cactus_spawn);
     //         spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
-    //         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
+    //         glm_vec3_copy((vec3) {-1680.0f, 2.0f, 35.0f}, position);
     //         position[0] *= gCourseDirection;
     //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
     //                                                                                 ACTOR_RAILROAD_CROSSING)];
     //         rrxing->crossingId = 1;
-    //         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
+    //         glm_vec3_copy((vec3) {-1600.0f, 2.0f, 35.0f}, position);
     //         position[0] *= gCourseDirection;
     //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
     //                                                                                 ACTOR_RAILROAD_CROSSING)];
     //         rrxing->crossingId = 1;
     //         vec3s_set(rotation, 0, -0x2000, 0);
-    //         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
+    //         glm_vec3_copy((vec3) {-2459.0f, 2.0f, 2263.0f}, position);
     //         position[0] *= gCourseDirection;
     //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
     //                                                                                 ACTOR_RAILROAD_CROSSING)];
     //         rrxing->crossingId = 0;
-    //         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
+    //         glm_vec3_copy((vec3) {-2467.0f, 2.0f, 2375.0f}, position);
     //         position[0] *= gCourseDirection;
     //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
     //                                                                                 ACTOR_RAILROAD_CROSSING)];
@@ -1181,13 +1181,13 @@ void spawn_course_actors(void) {
     //         break;
     //     case COURSE_WARIO_STADIUM:
     //         spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
-    //         vec3f_set(position, -131.0f, 83.0f, 286.0f);
+    //         glm_vec3_copy((vec3) {-131.0f, 83.0f, 286.0f}, position);
     //         position[0] *= gCourseDirection;
     //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    //         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
+    //         glm_vec3_copy((vec3) {-2353.0f, 72.0f, -1608.0f}, position);
     //         position[0] *= gCourseDirection;
     //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    //         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
+    //         glm_vec3_copy((vec3) {-2622.0f, 79.0f, 739.0f}, position);
     //         position[0] *= gCourseDirection;
     //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
     //         break;
@@ -1439,7 +1439,7 @@ UNUSED s16 spawn_actor_at_pos(Vec3f pos, s16 actorType) {
     Vec3f vel;
     Vec3s rot;
 
-    vec3f_set(vel, 0.0f, 0.0f, 0.0f);
+    glm_vec3_zero(vel);
     vec3s_set(rot, 0, 0, 0);
     return add_actor_to_empty_slot(pos, rot, vel, actorType);
 }
@@ -2370,7 +2370,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
     }
 
     vec3s_set(rot, 0, 0, 0);
-    vec3f_set(velocity, 0, 0, 0);
+    glm_vec3_zero(velocity);
     pos[0] = x;
     pos[1] = y;
     pos[2] = z;

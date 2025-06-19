@@ -33,6 +33,7 @@ extern "C" {
     #include "course_offsets.h"
     #include "course.h"
     extern const char *choco_mountain_dls[];
+    #include <cglm/cglm.h>
 }
 
 const course_texture choco_mountain_textures[] = {
@@ -201,7 +202,7 @@ void ChocoMountain::InitCourseObjects() {
 }
 
 void ChocoMountain::SomeSounds() {
-    vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
+    glm_vec3_copy((vec3) {-223.0f, 94.0f, -155.0f}, D_8015F748);
     func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
 }
 

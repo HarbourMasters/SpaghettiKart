@@ -35,6 +35,7 @@ extern "C" {
     #include "memory.h"
     #include "course.h"
     extern const char *d_course_yoshi_valley_dl_list[];
+    #include <cglm/cglm.h>
 }
 
 const course_texture yoshi_valley_textures[] = {
@@ -144,13 +145,12 @@ void YoshiValley::LoadTextures() {
 }
 
 void YoshiValley::BeginPlay() {
-    Vec3f position;
+    Vec3f position = {-2300.0f, 0.0f, 634.0f};
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
     Vec3s rotation = { 0, 0, 0 };
 
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));
-    vec3f_set(position, -2300.0f, 0.0f, 634.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 
@@ -236,11 +236,10 @@ void YoshiValley::Waypoints(Player* player, int8_t playerId) {
 void YoshiValley::ScrollingTextures() {}
 
 void YoshiValley::CreditsSpawnActors() {
-    Vec3f position;
+    Vec3f position = {-2300.0f, 0.0f, 634.0f};
     Vec3f velocity = { 0, 0, 0 };
     Vec3s rotation = { 0, 0, 0 };
 
-    vec3f_set(position, -2300.0f, 0.0f, 634.0f);
     position[0] *= gCourseDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 }

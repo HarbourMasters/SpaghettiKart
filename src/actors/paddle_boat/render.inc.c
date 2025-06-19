@@ -7,6 +7,7 @@
 #include "courses/all_course_data.h"
 #include <assets/dks_jungle_parkway_data.h>
 #include <libultra/gbi.h>
+#include <cglm/cglm.h>
 
 /**
  * @brief Renders the paddle boat actor.
@@ -19,7 +20,6 @@
  */
 void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED Mat4 arg2, u16 pathCounter) {
     UNUSED s32 pad[3];
-    Vec3f sp120;
     Mat4 spE0;
     Mat4 spA0;
     Mat4 sp60;
@@ -51,7 +51,7 @@ void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED
         gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_railings_dl);
 
         mtxf_rotate_x(spE0, boat->wheelRot);
-        vec3f_set(sp120, 0, 16.0f, -255.0f);
+        Vec3f sp120 = {0.0f, 16.0f, -255.0f};
         mtxf_translate(spA0, sp120);
         mtxf_multiplication(sp60, spE0, spA0);
         if (render_set_position(sp60, 3) != 0) {

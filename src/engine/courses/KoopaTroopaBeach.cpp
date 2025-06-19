@@ -35,6 +35,7 @@ extern "C" {
     #include "course.h"
     extern const char *koopa_troopa_beach_dls[];
     extern s8 gPlayerCount;
+    #include <cglm/cglm.h>
 }
 
 const course_texture koopa_troopa_beach_textures[] = {
@@ -223,7 +224,7 @@ void KoopaTroopaBeach::RenderCourseObjects(s32 cameraId) {
 }
 
 void KoopaTroopaBeach::SomeSounds() {
-    vec3f_set(D_8015F738, 153.0f, 0.0f, 2319.0f);
+    glm_vec3_copy((vec3) {153.0f, 0.0f, 2319.0f}, D_8015F738);
     func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
 }
 

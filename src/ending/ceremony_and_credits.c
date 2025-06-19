@@ -24,6 +24,7 @@
 
 #include "port/Engine.h"
 #include "port/Game.h"
+#include <cglm/cglm.h>
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -49,60 +50,20 @@ s16 sCutsceneSplineSegment;
 s16 D_80287B1E;
 s8 D_80287B20;
 
-void vec3f_set_dupe(Vec3f dest, f32 arg1, f32 arg2, f32 arg3) {
-    dest[0] = arg1;
-    dest[1] = arg2;
-    dest[2] = arg3;
-}
-
 void vec3s_set_dupe(Vec3s dest, s16 arg1, s16 arg2, s16 arg3) {
     dest[0] = arg1;
     dest[1] = arg2;
     dest[2] = arg3;
 }
 
-void vec3f_clear(Vec3f arg0) {
-    arg0[0] = arg0[1] = arg0[2] = 0.0f;
-}
-
 void vec3s_clear(Vec3s arg0) {
     arg0[0] = arg0[1] = arg0[2] = 0;
-}
-
-void vec3f_copy_return_dupe(Vec3f dest, Vec3f src) {
-    dest[0] = src[0];
-    dest[1] = src[1];
-    dest[2] = src[2];
 }
 
 void vec3s_copy_dupe(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
-}
-
-void func_80282040(void) {
-}
-
-void func_80282048(void) {
-}
-
-UNUSED void rotate_y_vec3f(Vec3f dest, Vec3f src, s16 angle) {
-    Vec3f sp2C;
-
-    vec3f_copy_return_dupe(sp2C, src);
-    dest[0] = (sp2C[2] * sins(angle)) + (sp2C[0] * coss(angle));
-    dest[1] = sp2C[1];
-    dest[2] = (sp2C[2] * coss(angle)) - (sp2C[0] * sins(angle));
-}
-
-UNUSED void rotate_x_vec3f(Vec3f dest, Vec3f src, s16 angle) {
-    Vec3f sp2C;
-
-    vec3f_copy_return_dupe(sp2C, src);
-    dest[2] = (sp2C[2] * coss(angle)) - (sp2C[1] * sins(angle));
-    dest[1] = (sp2C[2] * sins(angle)) + (sp2C[1] * coss(angle));
-    dest[0] = sp2C[0];
 }
 
 /**
@@ -234,7 +195,7 @@ UNUSED void aborting_cinematic_function(Vec3f arg0, Vec3f arg1, Vec3f arg2, Vec3
     Vec3f sp30;
 
     // What's up with this? Why do we copy arg1 to an unused local variable?
-    vec3f_copy_return_dupe(sp3C, arg1);
+    glm_vec3_copy(arg1, sp3C);
     sp30[2] = -((arg2[2] * coss(arg3[0])) - (arg2[1] * sins(arg3[0])));
     sp30[1] = (arg2[2] * sins(arg3[0])) + (arg2[1] * coss(arg3[0]));
     sp30[0] = arg2[0];
@@ -427,8 +388,8 @@ void func_80282F44(s32 arg0, CinematicCamera* arg1, Camera* camera) {
     Vec3f pos;
     Vec3f lookat;
 
-    vec3f_set_dupe(pos, camera->pos[0], camera->pos[1], camera->pos[2]);
-    vec3f_set_dupe(lookat, camera->lookAt[0], camera->lookAt[1], camera->lookAt[2]);
+    glm_vec3_copy(camera->pos, pos);
+    glm_vec3_copy(camera->lookAt, lookat);
     if ((arg0 == 0) || (arg0 == 1)) {
         if ((arg1->unk48[0] != 0) || (arg1->unk48[1] != 0)) {
             calculate_distance_angle_y_and_angle_y_to_xz(pos, lookat, &distance, &angleCam[0], &angleCam[1]);
@@ -532,11 +493,11 @@ void init_cinematic_camera(void) {
     D_802876D8 = 0;
     camera->cutscene = 0;
     D_802856C4 = (s32) D_800DC5E4;
-    vec3f_clear(camera->lookAt);
-    vec3f_set_dupe(camera->pos, 0.0f, 0.0f, 500.0f);
-    vec3f_clear(camera->unk30);
-    vec3f_set_dupe(camera->unk24, 0.0f, 0.0f, 500.0f);
-    vec3f_set_dupe(camera->unk3C, 0.0f, 1.0f, 0.0f);
+    glm_vec3_zero(camera->lookAt);
+    glm_vec3_copy((vec3) {0.0f, 0.0f, 500.0f}, camera->pos);
+    glm_vec3_zero(camera->unk30);
+    glm_vec3_copy((vec3) {0.0f, 0.0f, 500.0f}, camera->unk24);
+    glm_vec3_copy((vec3) {0.0f, 1.0f, 0.0f}, camera->unk3C);
     camera->unk18 = 0.0f;
     vec3s_clear(camera->unk48);
     vec3s_clear(camera->unk4E);
@@ -559,7 +520,7 @@ void init_cinematic_camera(void) {
     }
 
     for (i = 0; i < 10; i++) {
-        vec3f_clear(D_80287750[i].unk0);
+        glm_vec3_zero(D_80287750[i].unk0);
         vec3s_clear(D_80287750[i].unkC);
     }
 
@@ -588,13 +549,13 @@ s32 func_80283648(Camera* camera) {
     CinematicCamera* cinematicCamera = &D_802876E0;
 
     cinematic_stub();
-    vec3f_copy_return_dupe(pos, camera->pos);
-    vec3f_copy_return_dupe(lookAt, camera->lookAt);
-    vec3f_copy_return_dupe(up, camera->up);
+    glm_vec3_copy(camera->pos, pos);
+    glm_vec3_copy(camera->lookAt, lookAt);
+    glm_vec3_copy(camera->up, up);
     cinematicCamera->cutscene = func_8028336C(cinematicCamera, camera);
     if (cinematicCamera->cutscene != 0) {
-        vec3f_copy_return_dupe(cinematicCamera->lookAt, camera->pos);
-        vec3f_copy_return_dupe(cinematicCamera->pos, camera->lookAt);
+        glm_vec3_copy(camera->pos, cinematicCamera->pos);
+        glm_vec3_copy(camera->lookAt, cinematicCamera->lookAt);
         play_cutscene(cinematicCamera);
         calculate_distance_angle_y_and_angle_y_to_xz(cinematicCamera->lookAt, cinematicCamera->pos, &distance,
                                                      &angleYToXZ, &angleY);
@@ -624,8 +585,8 @@ s32 func_80283648(Camera* camera) {
         camera->up[0] = sins(var_f2) * coss(angleY);
         camera->up[1] = coss(var_f2);
         camera->up[2] = -sins(var_f2) * sins(angleY);
-        vec3f_copy_return_dupe(camera->pos, cinematicCamera->lookAt);
-        vec3f_copy_return_dupe(camera->lookAt, cinematicCamera->pos);
+        glm_vec3_copy(cinematicCamera->lookAt, camera->lookAt);
+        glm_vec3_copy(cinematicCamera->pos, camera->pos);
         if ((gGamestate == CREDITS_SEQUENCE) && (gIsMirrorMode != 0)) {
             camera->pos[0] = -camera->pos[0];
             camera->lookAt[0] = -camera->lookAt[0];
@@ -634,9 +595,9 @@ s32 func_80283648(Camera* camera) {
     func_80282F44(0, cinematicCamera, camera);
     func_80282F44(1, cinematicCamera, camera);
     func_80283100(cinematicCamera, gCameraZoom);
-    vec3f_copy_return_dupe(cinematicCamera->unk30, camera->pos);
-    vec3f_copy_return_dupe(cinematicCamera->unk24, camera->lookAt);
-    vec3f_copy_return_dupe(cinematicCamera->unk3C, camera->up);
+    glm_vec3_copy(camera->pos, cinematicCamera->unk30);
+    glm_vec3_copy(camera->lookAt, cinematicCamera->unk24);
+    glm_vec3_copy(camera->up, cinematicCamera->unk3C);
     return D_802876D8;
 }
 
@@ -943,7 +904,7 @@ void func_80283EA0(CinematicCamera* camera) {
 }
 
 void copy_player_two_in_camera(CinematicCamera* camera) {
-    vec3f_copy_return_dupe(camera->pos, gPlayerTwo->pos);
+    glm_vec3_copy(gPlayerTwo->pos, camera->pos);
 }
 
 void lerp_player_two_in_camera(CinematicCamera* camera) {
@@ -959,7 +920,7 @@ void func_80283F6C(CinematicCamera* camera) {
 }
 
 void copy_player_three_in_camera(CinematicCamera* camera) {
-    vec3f_copy_return_dupe(camera->pos, gPlayerThree->pos);
+    glm_vec3_copy(gPlayerThree->pos, camera->pos);
 }
 
 void lerp_player_three_in_camera(CinematicCamera* camera) {
@@ -1006,7 +967,7 @@ void func_80284184(CinematicCamera* camera) {
 
 void func_802841E8(CinematicCamera* camera) {
     func_80282E58(camera, (struct struct_80282C40*) D_80285940, 0);
-    vec3f_set_dupe(camera->pos, -3202.0f, 90.0f, -478.0f);
+    glm_vec3_copy((vec3) {-3202.0f, 90.0f, -478.0f}, camera->pos);
 }
 
 void func_8028422C(CinematicCamera* camera) {

@@ -38,6 +38,7 @@ extern "C" {
     #include "course.h"
     extern const char *d_course_dks_jungle_parkway_unknown_dl_list[];
     extern s16 currentScreenSection;
+    #include <cglm/cglm.h>
 }
 
 const course_texture dks_jungle_parkway_textures[] = {
@@ -236,7 +237,7 @@ void DKJungle::RenderCourseObjects(s32 cameraId) {
 }
 
 void DKJungle::SomeSounds() {
-    vec3f_set(D_8015F738, -790.0f, -255.0f, -447.0f);
+    glm_vec3_copy((vec3) {-790.0f, -255.0f, -447.0f}, D_8015F738);
     func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
 }
 

@@ -2,6 +2,7 @@
 #include <code_800029B0.h>
 #include <defines.h>
 #include <main.h>
+#include <cglm/cglm.h>
 
 /**
  * @brief Update the banana actor
@@ -14,7 +15,6 @@ void update_actor_banana(struct BananaActor* banana) {
     struct BananaActor* elderBanana;
     struct Controller* controller;
     Vec3f someOtherVelocity;
-    Vec3f someVelocity;
     f32 temp_f0;
     UNUSED f32 var_f8;
     UNUSED f32 pad2;
@@ -71,7 +71,7 @@ void update_actor_banana(struct BananaActor* banana) {
                         } else {
                             temp_f0 = (player->unk_094 * 0.75f) + 3.5f + pad3;
                         }
-                        vec3f_set(someVelocity, 0, pad3, temp_f0);
+                        Vec3f someVelocity = {0, pad3, temp_f0};
                         func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                         banana->velocity[0] = someVelocity[0];
                         banana->velocity[1] = someVelocity[1];
@@ -118,9 +118,7 @@ void update_actor_banana(struct BananaActor* banana) {
             }
             break;
         case FIRST_BANANA_BUNCH_BANANA:
-            someVelocity[0] = 0.0f;
-            someVelocity[1] = 0.0f;
-            someVelocity[2] = -5.0f;
+            Vec3f someVelocity = {0, 0, -5.0f};
             func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
             unkX = player->pos[0] + someVelocity[0];
             unkY = player->pos[1] + someVelocity[1];

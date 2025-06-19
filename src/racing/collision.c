@@ -12,6 +12,7 @@
 #include <defines.h>
 #include "port/Game.h"
 #include <stdio.h>
+#include <cglm/cglm.h>
 
 #pragma intrinsic(sqrtf)
 
@@ -34,9 +35,9 @@ void func_802AAAAC(Collision* collision) {
     collision->surfaceDistance[0] = 0;
     collision->surfaceDistance[1] = 0;
     collision->surfaceDistance[2] = 0;
-    vec3f_set(collision->unk48, 0.0f, 0.0f, 1.0f);
-    vec3f_set(collision->unk54, 1.0f, 0.0f, 0.0f);
-    vec3f_set(collision->orientationVector, 0.0f, 1.0f, 0.0f);
+    glm_vec3_copy((vec3) {0.0f, 0.0f, 1.0f}, collision->unk48);
+    glm_vec3_copy((vec3) {1.0f, 0.0f, 0.0f}, collision->unk54);
+    glm_vec3_copy((vec3) {0.0f, 1.0f, 0.0f}, collision->orientationVector);
 }
 
 f32 get_water_level(Player* player) {

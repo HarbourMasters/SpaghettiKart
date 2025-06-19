@@ -12,6 +12,8 @@ extern "C" {
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "external.h"
+
+#include <cglm/cglm.h>
 }
 
 size_t OChainChomp::_count = 0;
@@ -33,7 +35,7 @@ void OChainChomp::Tick() {
     object = &gObjectList[objectIndex];
     if (object->state != 0) {
         OChainChomp::func_800859C8(objectIndex, _idx);
-        vec3f_copy(object->unk_01C, object->offset);
+        glm_vec3_copy(object->offset, object->unk_01C);
         // This should be spawn pos or follow path
         func_8000D940(object->offset, &object->unk_084[8], object->unk_034, object->surfaceHeight, 0);
         object->direction_angle[1] = get_angle_between_two_vectors(object->unk_01C, object->offset);

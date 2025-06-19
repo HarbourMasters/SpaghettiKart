@@ -255,6 +255,16 @@ file(DOWNLOAD "https://raw.githubusercontent.com/DLTcollab/sse2neon/refs/heads/m
 
 include_directories(${SSE2NEON_DIR})
 
+#==================== CGLM ===================
+FetchContent_Declare(
+    cglm
+    GIT_REPOSITORY https://github.com/recp/cglm.git
+    GIT_TAG v0.9.6
+)
+FetchContent_MakeAvailable(cglm)
+
+include_directories(${cglm_SOURCE_DIR}/include)
+
 #=================== DRLibs ===================
 FetchContent_Declare(
     dr_libs
