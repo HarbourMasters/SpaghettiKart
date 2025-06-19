@@ -444,12 +444,12 @@ d_course_wario_stadium_dl_5588:
   offset: 0x5588
 d_course_wario_stadium_unknown_waypoints:
   symbol: d_course_wario_stadium_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x56A0
   count: 77
 d_course_wario_stadium_track_waypoints:
   symbol: d_course_wario_stadium_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x5908
   count: 1401
 d_course_wario_stadium_sign_head_model1:

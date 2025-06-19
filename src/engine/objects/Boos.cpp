@@ -34,7 +34,6 @@ OBoos::OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& act
 
     _indices.resize(numBoos, 0);
 
-
     // Generate objects
     for (size_t i = 0; i < numBoos; i++) {
         find_unused_obj_index(&_indices[i]);
@@ -55,7 +54,7 @@ void OBoos::Tick() {
 
     OBoos::func_8007CA70();
     for (size_t i = 0; i < _numBoos; i++) {
-        objectIndex = _indices[i]; //indexObjectList3[i];
+        objectIndex = _indices[i]; // indexObjectList3[i];
         object = &gObjectList[objectIndex];
         if (object->state != 0) {
             func_8007C684(objectIndex);
@@ -83,7 +82,7 @@ void OBoos::Draw(s32 cameraId) {
     s32 objectIndex;
 
     for (size_t i = 0; i < _numBoos; i++) {
-        objectIndex = _indices[i]; //indexObjectList3[i];
+        objectIndex = _indices[i]; // indexObjectList3[i];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, cameraId, 0x4000U, 0x00000320);
             if (CVarGetInteger("gNoCulling", 0) == 1) {
@@ -111,7 +110,7 @@ void OBoos::func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     object = &gObjectList[objectIndex];
     object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
     func_800484BC(object->pos, object->orientation, object->sizeScaling, object->primAlpha, (u8*) object->activeTLUT,
-                  (u8*)object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
+                  (u8*) object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
     if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
         func_8004A630(&D_8018C830, object->pos, 0.4f);
     }
@@ -123,14 +122,14 @@ void OBoos::func_8007CA70(void) {
 
     if (_isActive == false) {
         _playerId = OBoos::func_8007C9F8();
-        point = &gNearestWaypointByPlayerId[_playerId];
+        point = &gNearestPathPointByPlayerId[_playerId];
         if ((*point > _active.Start) && (*point < _active.End)) {
             // First group entrance
             OBoos::BooStart(0, _playerId);
         }
     }
     if (_isActive == true) {
-        point = &gNearestWaypointByPlayerId[_playerId];
+        point = &gNearestPathPointByPlayerId[_playerId];
 
         if ((*point > _leftBoundary.Start) && (*point < _leftBoundary.End)) {
             // First group exit reverse direction
@@ -146,7 +145,7 @@ void OBoos::func_8007CA70(void) {
 void OBoos::func_8007C5B4(s32 objectIndex) {
     Object* object;
 
-    init_texture_object(objectIndex, (u8*)d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 48, 40);
+    init_texture_object(objectIndex, (u8*) d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 48, 40);
     object = &gObjectList[objectIndex];
     object->pos[0] = 0.0f;
     object->pos[1] = 0.0f;
@@ -269,7 +268,7 @@ void OBoos::BooStart(s32 group, s32 playerId) {
 void OBoos::BooExit(s32 group) {
     s32 objectIndex;
     for (size_t i = 0; i < _numBoos; i++) {
-        objectIndex = _indices[i]; //indexObjectList3[group + temp_a0];
+        objectIndex = _indices[i]; // indexObjectList3[group + temp_a0];
         gObjectList[objectIndex].unk_0DC += 1;
     }
 

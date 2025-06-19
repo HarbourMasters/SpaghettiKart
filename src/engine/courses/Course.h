@@ -75,17 +75,17 @@ typedef struct Properties {
     int16_t* AIDistance;
     uint32_t AISteeringSensitivity;
     _struct_gCoursePathSizes_0x10 PathSizes;
-    Vec4f D_0D009418;
-    Vec4f D_0D009568;
+    Vec4f CurveTargetSpeed;
+    Vec4f NormalTargetSpeed;
     Vec4f D_0D0096B8;
-    Vec4f D_0D009808;
-    TrackWaypoint* PathTable[4];
-    TrackWaypoint* PathTable2[4];
+    Vec4f OffTrackTargetSpeed;
+    TrackPathPoint* PathTable[4];
+    TrackPathPoint* PathTable2[4];
     uint8_t* CloudTexture;
     CloudData *Clouds;
     CloudData *CloudList;
     SkyboxColours Skybox;
-    const course_texture *textures;
+    const course_texture* textures;
     enum MusicSeq Sequence;
     float WaterLevel; // Used for effects, and Lakitu pick up height. Not necessarily the visual water model height.
 
@@ -111,10 +111,10 @@ typedef struct Properties {
         // PathSizes - Assuming _struct_gCoursePathSizes_0x10 can be serialized similarly
         // j["PathSizes"] = PathSizes; // Implement your serialization logic here
 
-        j["D_0D009418"] = { D_0D009418[0], D_0D009418[1], D_0D009418[2], D_0D009418[3] };
-        j["D_0D009568"] = { D_0D009568[0], D_0D009568[1], D_0D009568[2], D_0D009568[3] };
+        j["CurveTargetSpeed"] = { CurveTargetSpeed[0], CurveTargetSpeed[1], CurveTargetSpeed[2], CurveTargetSpeed[3] };
+        j["NormalTargetSpeed"] = { NormalTargetSpeed[0], NormalTargetSpeed[1], NormalTargetSpeed[2], NormalTargetSpeed[3] };
         j["D_0D0096B8"] = { D_0D0096B8[0], D_0D0096B8[1], D_0D0096B8[2], D_0D0096B8[3] };
-        j["D_0D009808"] = { D_0D009808[0], D_0D009808[1], D_0D009808[2], D_0D009808[3] };
+        j["OffTrackTargetSpeed"] = { OffTrackTargetSpeed[0], OffTrackTargetSpeed[1], OffTrackTargetSpeed[2], OffTrackTargetSpeed[3] };
 
         // Serialize arrays PathTable and PathTable2 (convert pointers into a JSON array if possible)
         //j["PathTable"] = {{}};
@@ -190,25 +190,25 @@ typedef struct Properties {
 
         // Deserialize PathSizes and other custom structs if needed
 
-        D_0D009418[0] = j.at("D_0D009418")[0].get<float>();
-        D_0D009418[1] = j.at("D_0D009418")[1].get<float>();
-        D_0D009418[2] = j.at("D_0D009418")[2].get<float>();
-        D_0D009418[3] = j.at("D_0D009418")[3].get<float>();
+        CurveTargetSpeed[0] = j.at("CurveTargetSpeed")[0].get<float>();
+        CurveTargetSpeed[1] = j.at("CurveTargetSpeed")[1].get<float>();
+        CurveTargetSpeed[2] = j.at("CurveTargetSpeed")[2].get<float>();
+        CurveTargetSpeed[3] = j.at("CurveTargetSpeed")[3].get<float>();
 
-        D_0D009568[0] = j.at("D_0D009568")[0].get<float>();
-        D_0D009568[1] = j.at("D_0D009568")[1].get<float>();
-        D_0D009568[2] = j.at("D_0D009568")[2].get<float>();
-        D_0D009568[3] = j.at("D_0D009568")[3].get<float>();
+        NormalTargetSpeed[0] = j.at("NormalTargetSpeed")[0].get<float>();
+        NormalTargetSpeed[1] = j.at("NormalTargetSpeed")[1].get<float>();
+        NormalTargetSpeed[2] = j.at("NormalTargetSpeed")[2].get<float>();
+        NormalTargetSpeed[3] = j.at("NormalTargetSpeed")[3].get<float>();
 
         D_0D0096B8[0] = j.at("D_0D0096B8")[0].get<float>();
         D_0D0096B8[1] = j.at("D_0D0096B8")[1].get<float>();
         D_0D0096B8[2] = j.at("D_0D0096B8")[2].get<float>();
         D_0D0096B8[3] = j.at("D_0D0096B8")[3].get<float>();
 
-        D_0D009808[0] = j.at("D_0D009808")[0].get<float>();
-        D_0D009808[1] = j.at("D_0D009808")[1].get<float>();
-        D_0D009808[2] = j.at("D_0D009808")[2].get<float>();
-        D_0D009808[3] = j.at("D_0D009808")[3].get<float>();
+        OffTrackTargetSpeed[0] = j.at("OffTrackTargetSpeed")[0].get<float>();
+        OffTrackTargetSpeed[1] = j.at("OffTrackTargetSpeed")[1].get<float>();
+        OffTrackTargetSpeed[2] = j.at("OffTrackTargetSpeed")[2].get<float>();
+        OffTrackTargetSpeed[3] = j.at("OffTrackTargetSpeed")[3].get<float>();
         
         // Deserialize arrays PathTable and PathTable2 similarly
         
@@ -337,10 +337,12 @@ public:
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                           uint16_t playerDirection);
     virtual void Destroy();
     virtual bool IsMod();
-private:
+
+  private:
     void Init();
 };
 

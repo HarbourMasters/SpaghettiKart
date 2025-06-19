@@ -1871,7 +1871,7 @@ void func_800C6108(u8 playerId) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if (D_800E9EC4) {} // ?
     }
-    if (player->unk_094 > 4.75f) {
+    if (player->speed > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
             D_800E9DE4[playerId] += 0.005f;
         }
@@ -1930,7 +1930,7 @@ D_800E9F7C[playerId].unk_38 = (D_800E9F7C[playerId].unk_0C / 1.5f) + 0.4f;
 void func_800C64A0(u8 playerId) {
     switch (D_800E9E74[playerId]) {
         case 3:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         case 1:
         case 13:
@@ -1953,7 +1953,7 @@ void func_800C64A0(u8 playerId) {
         case 29:
         case 30:
         case 31:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         default:
             D_800E9EF4[playerId] = 1.0f;
@@ -1981,7 +1981,7 @@ void func_800C64A0(u8 playerId) {
 void func_800C6758(u8 playerId) {
     switch (D_800E9E74[playerId]) { /* irregular */
         case 3:
-            D_800E9F14[playerId] = (gPlayers[playerId].unk_094 / 9.0f) + 0.6f;
+            D_800E9F14[playerId] = (gPlayers[playerId].speed / 9.0f) + 0.6f;
             break;
         case 2:
         case 13:
@@ -2337,7 +2337,7 @@ void func_800C70A8(u8 playerId) {
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
-        if (((gPlayers[playerId].unk_094 < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
+        if (((gPlayers[playerId].speed < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
             (D_800E9E74[playerId] != 0x0000001C)) {
             D_800E9E74[playerId] = 0;
         }

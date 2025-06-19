@@ -19,7 +19,7 @@ extern "C" {
 #include "math_util_2.h"
 #include "render_objects.h"
 #include "assets/common_data.h"
-  //  #include "common_structs.h"
+//  #include "common_structs.h"
 }
 
 size_t ATrain::_count = 0;
@@ -48,16 +48,16 @@ ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint
     for (size_t i = 0; i < PassengerCars.size(); i++) {
         waypointOffset += 4;
         ptr1 = &PassengerCars[i];
-        pos = &gVehicle2DWaypoint[waypointOffset];
-        set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+        pos = &gVehicle2DPathPoint[waypointOffset];
+        set_vehicle_pos_path_point(ptr1, pos, waypointOffset);
     }
     // Smaller offset for the tender
     waypointOffset += 3;
-    pos = &gVehicle2DWaypoint[waypointOffset];
-    set_vehicle_pos_waypoint(&this->Tender, pos, waypointOffset);
+    pos = &gVehicle2DPathPoint[waypointOffset];
+    set_vehicle_pos_path_point(&this->Tender, pos, waypointOffset);
     waypointOffset += 4;
-    pos = &gVehicle2DWaypoint[waypointOffset];
-    set_vehicle_pos_waypoint(&Locomotive, pos, waypointOffset);
+    pos = &gVehicle2DPathPoint[waypointOffset];
+    set_vehicle_pos_path_point(&Locomotive, pos, waypointOffset);
 
     // Only use locomotive unless overwritten below.
     NumCars = LOCOMOTIVE_ONLY;
@@ -88,25 +88,24 @@ ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint
     tempLocomotive = &Locomotive;
     origXPos = tempLocomotive->position[0];
     origZPos = tempLocomotive->position[2];
-    trainCarYRot = update_vehicle_following_waypoint(
-        tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, Speed);
+    trainCarYRot =
+        update_vehicle_following_path(tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, Speed);
     tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
     tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-    tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot,
-                                                            tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
+    tempLocomotive->actorIndex =
+        add_actor_to_empty_slot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
     tempTender = &Tender;
     if (tempTender->isActive == 1) {
         origXPos = tempTender->position[0];
         origZPos = tempTender->position[2];
-        trainCarYRot = update_vehicle_following_waypoint(
-            tempTender->position, (s16*) &tempTender->waypointIndex, Speed);
+        trainCarYRot = update_vehicle_following_path(tempTender->position, (s16*) &tempTender->waypointIndex, Speed);
         tempTender->velocity[0] = tempTender->position[0] - origXPos;
         tempTender->velocity[2] = tempTender->position[2] - origZPos;
         vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-        tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot,
-                                                            tempTender->velocity, ACTOR_TRAIN_TENDER);
+        tempTender->actorIndex =
+            add_actor_to_empty_slot(tempTender->position, trainCarRot, tempTender->velocity, ACTOR_TRAIN_TENDER);
     }
 
     for (size_t i = 0; i < PassengerCars.size(); i++) {
@@ -114,15 +113,13 @@ ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint
         if (tempPassengerCar->isActive == 1) {
             origXPos = tempPassengerCar->position[0];
             origZPos = tempPassengerCar->position[2];
-            trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
-                                                                (s16*) &tempPassengerCar->waypointIndex,
-                                                                Speed);
+            trainCarYRot = update_vehicle_following_path(tempPassengerCar->position,
+                                                         (s16*) &tempPassengerCar->waypointIndex, Speed);
             tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
             tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-            tempPassengerCar->actorIndex =
-                add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity,
-                                        ACTOR_TRAIN_PASSENGER_CAR);
+            tempPassengerCar->actorIndex = add_actor_to_empty_slot(
+                tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity, ACTOR_TRAIN_PASSENGER_CAR);
         }
     }
 
@@ -166,8 +163,7 @@ void ATrain::Tick() {
     temp_f20 = Locomotive.position[0];
     temp_f22 = Locomotive.position[2];
 
-    orientationYUpdate = update_vehicle_following_waypoint(
-        Locomotive.position, (s16*) &Locomotive.waypointIndex, Speed);
+    orientationYUpdate = update_vehicle_following_path(Locomotive.position, (s16*) &Locomotive.waypointIndex, Speed);
 
     Locomotive.velocity[0] = Locomotive.position[0] - temp_f20;
     Locomotive.velocity[2] = Locomotive.position[2] - temp_f22;
@@ -175,24 +171,20 @@ void ATrain::Tick() {
     sync_train_components(&Locomotive, orientationYUpdate);
 
     if ((oldWaypointIndex != Locomotive.waypointIndex) &&
-        ((Locomotive.waypointIndex == 0x00BE) ||
-            (Locomotive.waypointIndex == 0x0140))) { // play crossing bell sound
-        func_800C98B8(Locomotive.position, Locomotive.velocity,
-                        SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0E));
+        ((Locomotive.waypointIndex == 0x00BE) || (Locomotive.waypointIndex == 0x0140))) { // play crossing bell sound
+        func_800C98B8(Locomotive.position, Locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0E));
     } else if (random_int(100) == 0) { // play train whistle sound
-        func_800C98B8(Locomotive.position, Locomotive.velocity,
-                        SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
+        func_800C98B8(Locomotive.position, Locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
     }
 
-    SomeFlags = set_vehicle_render_distance_flags(
-        Locomotive.position, TRAIN_SMOKE_RENDER_DISTANCE, SomeFlags);
+    SomeFlags = set_vehicle_render_distance_flags(Locomotive.position, TRAIN_SMOKE_RENDER_DISTANCE, SomeFlags);
     // Renders locomotive smoke on all screens if any player is within range.
     if ((((s16) AnotherSmokeTimer % 5) == 0) && (SomeFlags != 0)) {
         smokePos[0] = Locomotive.position[0];
         smokePos[1] = (f32) ((f64) Locomotive.position[1] + 65.0);
         smokePos[2] = (f32) ((f64) Locomotive.position[2] + 25.0);
         adjust_position_by_angle(smokePos, Locomotive.position, orientationYUpdate);
-        //spawn_train_smoke(Index, smokePos, 1.1f);
+        // spawn_train_smoke(Index, smokePos, 1.1f);
         AddSmoke(Index, smokePos, 1.1f);
     }
 
@@ -201,8 +193,7 @@ void ATrain::Tick() {
     if (car->isActive == 1) {
         temp_f20 = car->position[0];
         temp_f22 = car->position[2];
-        orientationYUpdate =
-            update_vehicle_following_waypoint(car->position, (s16*) &car->waypointIndex, Speed);
+        orientationYUpdate = update_vehicle_following_path(car->position, (s16*) &car->waypointIndex, Speed);
         car->velocity[0] = car->position[0] - temp_f20;
         car->velocity[2] = car->position[2] - temp_f22;
         sync_train_components(car, orientationYUpdate);
@@ -214,8 +205,7 @@ void ATrain::Tick() {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
 
-            orientationYUpdate =
-                update_vehicle_following_waypoint(car->position, (s16*) &car->waypointIndex, Speed);
+            orientationYUpdate = update_vehicle_following_path(car->position, (s16*) &car->waypointIndex, Speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             sync_train_components(car, orientationYUpdate);
@@ -240,14 +230,14 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
             z_dist = playerPosZ - trainCar->position[2];
             if ((x_dist > -100.0) && (x_dist < 100.0)) {
                 if ((z_dist > -100.0) && (z_dist < 100.0)) {
-                    if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
-                                        trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
+                    if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
+                                                trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                         player->soundEffects |= REVERSE_SOUND_EFFECT;
                     }
                     trainCar = &Tender;
                     if (trainCar->isActive == 1) {
-                        if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
-                                            trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
+                        if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
+                                                    trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                             player->soundEffects |= REVERSE_SOUND_EFFECT;
                         }
                     }
@@ -261,8 +251,9 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
                 if (trainCar->isActive == 1) {
                     if ((x_dist > -100.0) && (x_dist < 100.0)) {
                         if ((z_dist > -100.0) && (z_dist < 100.0)) {
-                            if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
-                                                trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
+                            if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
+                                                        trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
+                                                        playerPosX, playerPosZ) == 1) {
                                 player->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
@@ -272,7 +263,6 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
         }
     }
 }
-
 
 void ATrain::Draw(Camera* camera) {
 }

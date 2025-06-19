@@ -54,7 +54,7 @@ extern "C" {
     extern Gfx test_course_dls[];
     extern Vtx mario_Plane_001_mesh_vtx_1[];
     extern Gfx mario_Plane_001_mesh[];
-    extern TrackWaypoint test_course_path[];
+    extern TrackPathPoint test_course_path[];
     extern TrackSections test_course_addr[];
 }
 
@@ -89,25 +89,25 @@ TestCourse::TestCourse() {
 
     Props.PathSizes = {51, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
     Props.PathTable[0] = test_course_path;
     Props.PathTable[1] = NULL;
@@ -282,8 +282,8 @@ void TestCourse::BeginPlay() {
 
 //    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
 
-    gVehicle2DWaypoint = test_course_path2D;
-    gVehicle2DWaypointLength = 53;
+    gVehicle2DPathPoint = test_course_path2D;
+    gVehicle2DPathLength = 53;
     D_80162EB0 = spawn_actor_on_surface(test_course_path2D[0].x, 2000.0f, test_course_path2D[0].z);
 
     //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
@@ -291,8 +291,8 @@ void TestCourse::BeginPlay() {
 
     FVector pos2 = { 0, 0, 0 };
 
-    gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][25], 25, 4, 0.8333333f));
-    gWorldInstance.AddObject(new OBombKart(pos2, &D_80164550[0][45], 45, 4, 0.8333333f));
+    gWorldInstance.AddObject(new OBombKart(pos2, &gTrackPaths[0][25], 25, 4, 0.8333333f));
+    gWorldInstance.AddObject(new OBombKart(pos2, &gTrackPaths[0][45], 45, 4, 0.8333333f));
 
     gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 
@@ -300,8 +300,8 @@ void TestCourse::BeginPlay() {
 }
 
 void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
         }
@@ -315,8 +315,8 @@ void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }

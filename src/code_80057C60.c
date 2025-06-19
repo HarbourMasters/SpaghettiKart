@@ -1318,7 +1318,7 @@ void func_80059D00(void) {
                     }
                     func_80078C70(0);
                     if (playerHUD[PLAYER_ONE].raceCompleteBool == 0) {
-                        func_8005C360((gPlayerOneCopy->unk_094 / 18.0f) * 216.0f);
+                        func_8005C360((gPlayerOneCopy->speed / 18.0f) * 216.0f);
                     }
                     func_8005D0FC(PLAYER_ONE);
                 } else {
@@ -2724,7 +2724,7 @@ void func_8005D1F4(s32 cameraId) {
     // s32 waypointDiff;
 
     // if (gModeSelection == 2) {
-    //     playerWaypoint = gNearestWaypointByPlayerId[cameraId];
+    //     playerWaypoint = gNearestPathPointByPlayerId[cameraId];
     //     playerHUD[cameraId].unk_74 = 0;
     //     for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
     //         if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
@@ -2930,7 +2930,7 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case DIRT:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -2954,7 +2954,7 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     }
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -2982,7 +2982,7 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case GRASS:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 3, 1.0f);
@@ -2991,7 +2991,7 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
                     player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 3, 1.0f);
@@ -3005,14 +3005,14 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case SAND_OFFROAD:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3023,14 +3023,14 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case SAND:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3041,14 +3041,14 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case WET_SAND:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3059,14 +3059,14 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case DIRT_OFFROAD:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3079,14 +3079,14 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case SNOW_OFFROAD:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3099,9 +3099,9 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
         case BRIDGE:
             if ((arg1 == 0) &&
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if (((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) &&
+                if (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                      ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14))))) ||
-                    ((player->unk_22C - player->unk_094) >= 0.04)) {
+                    ((player->previousSpeed - player->speed) >= 0.04)) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                                   (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3109,9 +3109,9 @@ void func_8005DAF4(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
             } else if ((player->unk_258[10 + arg2].unk_01E > 0) &&
-                       (((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) &&
+                       (((((player->speed / 18.0f) * 216.0f) >= 30.0f) &&
                          (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14))) ||
-                        ((player->unk_22C - player->unk_094) >= 0.04))) {
+                        ((player->previousSpeed - player->speed) >= 0.04))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType,
                               (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
@@ -3156,12 +3156,12 @@ void func_8005EA94(Player* player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) 
     if (1) {}
     if (var_t0 == 0) {
         if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+            if (((player->speed / 18.0f) * 216.0f) >= 10.0f) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 9, 0.8f);
                 func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00AF);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
             func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, var_t0, var_t1);
             func_8005D7D8(&player->unk_258[10 + arg1], 9, 0.8f);
             func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00AF);
@@ -3649,7 +3649,7 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         func_8005D800(&player->unk_258[arg1], 0x00FFFFFF, 0x00CF);
     }
     func_80062B18(&sp50, &sp4C, &sp48, 0.0f, sp4C,
-                  ((-player->unk_258[arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 10.0f) + -4.0f,
+                  ((-player->unk_258[arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 10.0f) + -4.0f,
                   -player->unk_258[arg1].unk_020, -player->unk_206 * 2);
     player->unk_258[arg1].unk_000[0] = player->pos[0] + sp50;
     player->unk_258[arg1].unk_000[2] = player->pos[2] + sp48;
@@ -4421,34 +4421,34 @@ void func_800635D4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->unk_258[10 + arg1].unk_010 == 1) {
         if ((player->effects & LIGHTNING_EFFECT)) {
             func_80062B18(&sp44, &sp40, &sp3C, -2.0f, 0.0f,
-                          (-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16,
+                          (-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16,
                           -player->unk_258[10 + arg1].unk_020, 2 * -player->unk_206);
             player->unk_258[10 + arg1].unk_000[0] = player->tyres[BACK_LEFT].pos[0] + sp44;
             player->unk_258[10 + arg1].unk_000[2] = player->tyres[BACK_LEFT].pos[2] + sp3C;
         } else {
             player->unk_258[10 + arg1].unk_000[2] =
                 player->tyres[BACK_LEFT].pos[2] +
-                ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) *
+                ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16) *
                     coss(player->unk_258[10 + arg1].unk_020);
             player->unk_258[10 + arg1].unk_000[0] =
                 player->tyres[BACK_LEFT].pos[0] +
-                ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) *
+                ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16) *
                     sins(player->unk_258[10 + arg1].unk_020);
         }
     } else if ((player->effects & LIGHTNING_EFFECT)) {
         func_80062B18(&sp44, &sp40, &sp3C, 2.0f, 0.0f,
-                      (-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16,
+                      (-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16,
                       -player->unk_258[10 + arg1].unk_020, 2 * -player->unk_206);
         player->unk_258[10 + arg1].unk_000[0] = player->tyres[BACK_RIGHT].pos[0] + sp44;
         player->unk_258[10 + arg1].unk_000[2] = player->tyres[BACK_RIGHT].pos[2] + sp3C;
     } else {
         player->unk_258[10 + arg1].unk_000[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16) *
                 coss(player->unk_258[10 + arg1].unk_020);
         player->unk_258[10 + arg1].unk_000[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 16) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 16) *
                 sins(player->unk_258[10 + arg1].unk_020);
     }
 
@@ -4559,20 +4559,20 @@ void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     if (player->unk_258[10 + arg1].unk_010 == 1) {
         player->unk_258[10 + arg1].unk_000[2] =
             player->tyres[BACK_LEFT].pos[2] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 coss(player->unk_258[10 + arg1].unk_020);
         player->unk_258[10 + arg1].unk_000[0] =
             player->tyres[BACK_LEFT].pos[0] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 sins(player->unk_258[10 + arg1].unk_020);
     } else {
         player->unk_258[10 + arg1].unk_000[2] =
             player->tyres[BACK_RIGHT].pos[2] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 coss(player->unk_258[10 + arg1].unk_020);
         player->unk_258[10 + arg1].unk_000[0] =
             player->tyres[BACK_RIGHT].pos[0] +
-            ((-player->unk_258[10 + arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 20.0f) *
+            ((-player->unk_258[10 + arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 20.0f) *
                 sins(player->unk_258[10 + arg1].unk_020);
     }
 
@@ -4603,11 +4603,11 @@ void func_80063FBC(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 
     if (player->unk_258[10 + arg1].unk_010 == 1) {
         func_80062B18(&sp3C, &sp34, &sp38, 3.0f, 0.0f,
-                      -5.5 - (player->unk_258[10 + arg1].unk_01E * (((player->unk_094 / 18.0f) * 216.0f) / 15.0f)),
+                      -5.5 - (player->unk_258[10 + arg1].unk_01E * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
                       -player->unk_258[10 + arg1].unk_020, 0);
     } else {
         func_80062B18(&sp3C, &sp34, &sp38, -3.0f, 0.0f,
-                      -5.5 - (player->unk_258[10 + arg1].unk_01E * (((player->unk_094 / 18.0f) * 216.0f) / 15.0f)),
+                      -5.5 - (player->unk_258[10 + arg1].unk_01E * (((player->speed / 18.0f) * 216.0f) / 15.0f)),
                       -player->unk_258[10 + arg1].unk_020, 0);
     }
     player->unk_258[10 + arg1].unk_000[0] = player->pos[0] + sp3C;
@@ -4632,7 +4632,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40,
-                  -4.0f + ((-player->unk_258[arg1].unk_01E * (player->unk_094 / 18.0f) * 216.0f) / 10.0f),
+                  -4.0f + ((-player->unk_258[arg1].unk_01E * (player->speed / 18.0f) * 216.0f) / 10.0f),
                   -player->unk_258[arg1].unk_020, 2 * -player->unk_206);
     player->unk_258[arg1].unk_000[0] = player->pos[0] + sp44;
     player->unk_258[arg1].unk_000[2] = player->pos[2] + sp3C;
@@ -5937,9 +5937,9 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
 
-    sp6C = (-(player->unk_094 / 18.0f) * 216.0f) / 10.0f;
+    sp6C = (-(player->speed / 18.0f) * 216.0f) / 10.0f;
     if ((gPlayerBalloonStatus[arg3][arg4] & 2) != 2) {
-        D_8018D650[arg3][arg4] += -0.003 + (-player->unk_094 * 0.0006);
+        D_8018D650[arg3][arg4] += -0.003 + (-player->speed * 0.0006);
         if (D_8018D650[arg3][arg4] >= 0.05) {
             D_8018D650[arg3][arg4] = 0.05f;
         }
@@ -5960,12 +5960,12 @@ void func_8006A7C0(Player* player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
             D_8018D710[arg3][arg4] = 0.0f;
         }
         D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
-        move_s16_towards(&D_8018D890[arg3][arg4], player->unk_094 * 182.0f, 0.1f);
+        move_s16_towards(&D_8018D890[arg3][arg4], player->speed * 182.0f, 0.1f);
     }
     if (D_8018D830[arg3][arg4] == 1) {
-        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] - player->unk_094;
+        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] - player->speed;
     } else {
-        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] + player->unk_094;
+        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] + player->speed;
     }
     if (D_8018D770[arg3][arg4] >= 0xB) {
         D_8018D770[arg3][arg4] = 0x000B;
@@ -6446,7 +6446,7 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if (((player->unk_046 & 0x20) == 0x20) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+        if (((player->unk_046 & 0x20) == 0x20) && (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             func_80061D4C(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;

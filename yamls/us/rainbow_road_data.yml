@@ -228,12 +228,12 @@ d_course_rainbow_road_dl_1948:
   offset: 0x1948
 d_course_rainbow_road_unknown_waypoints:
   symbol: d_course_rainbow_road_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x19D0
   count: 101
 d_course_rainbow_road_track_waypoints:
   symbol: d_course_rainbow_road_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x1CF8
   count: 1761
 gTLUTRainbowRoadNeonMushroom1:

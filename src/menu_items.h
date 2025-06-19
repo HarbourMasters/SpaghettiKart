@@ -455,7 +455,8 @@ Gfx* func_8009B9D0(Gfx*, MenuTexture*);
 Gfx* render_menu_textures(Gfx*, MenuTexture*, s32, s32);
 Gfx* func_8009BC9C(Gfx*, MenuTexture*, s32, s32, s32, s32);
 Gfx* print_letter(Gfx*, MenuTexture*, f32, f32, s32, f32, f32);
-Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY);
+Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX,
+                             f32 scaleY);
 Gfx* func_8009C204(Gfx*, MenuTexture*, s32, s32, s32);
 Gfx* func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx* func_8009C708(Gfx*, struct_8018DEE0_entry*, s32, s32, s32, s32);
@@ -661,7 +662,7 @@ void rmonPrintf(const char*, ...);
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
-extern s16 D_80164478[];
+extern s16 gGetPlayerByCharacterId[];
 
 /**
  * Old name: sMenuTextureBuffer

@@ -4,7 +4,7 @@
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
 #include "port/Game.h"
-#include "port/resource/type/TrackWaypoint.h"
+#include "port/resource/type/TrackPathPointData.h"
 #include "port/resource/type/TrackSections.h"
 
 extern "C" {
@@ -59,25 +59,25 @@ Course::Course() {
 
     Props.PathSizes = { 600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
     Props.PathTable[0] = NULL;
     Props.PathTable[1] = NULL;
@@ -116,11 +116,11 @@ void Course::LoadO2R(std::string trackPath) {
             size_t i = 0;
             for (auto& path : paths) {
                 if (i == 0) {
-                    Props.PathTable[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable[0] = (TrackPathPoint*)path.data();
                     Props.PathTable[1] = NULL;
                     Props.PathTable[2] = NULL;
                     Props.PathTable[3] = NULL;
-                    Props.PathTable2[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[0] = (TrackPathPoint*)path.data();
                     Props.PathTable2[1] = NULL;
                     Props.PathTable2[2] = NULL;
                     Props.PathTable2[3] = NULL;
@@ -237,10 +237,10 @@ void Course::TestPath() {
     Vec3s rot = {0, 0, 0};
     Vec3f vel = {0, 0, 0};
 
-    for (size_t i = 0; i < gWaypointCountByPathIndex[0]; i++) {
-        x = D_80164550[0][i].posX;
-        y = D_80164550[0][i].posY;
-        z = D_80164550[0][i].posZ;
+    for (size_t i = 0; i < gPathCountByPathIndex[0]; i++) {
+        x = gTrackPaths[0][i].posX;
+        y = gTrackPaths[0][i].posY;
+        z = gTrackPaths[0][i].posZ;
 
         if (((x & 0xFFFF) == 0x8000) && ((y & 0xFFFF) == 0x8000) && ((z & 0xFFFF) == 0x8000)) {
             break;
@@ -333,9 +333,9 @@ void Course::SetStaffGhost() {
 }
 
 void Course::Waypoints(Player* player, int8_t playerId) {
-    player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-    if (player->nearestWaypointId < 0) {
-        player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+    if (player->nearestPathPointId < 0) {
+        player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
     }
 }
 

@@ -231,15 +231,15 @@ void setup_race(void) {
 
     // Set finishline position. This is now done in files in src/engine/courses/*
     // if (gModeSelection != BATTLE) {
-    //     D_8015F8D0[1] = (f32) (D_80164490->posY - 15);
-    //     D_8015F8D0[2] = D_80164490->posZ;
+    //     D_8015F8D0[1] = (f32) (gCurrentTrackPath->posY - 15);
+    //     D_8015F8D0[2] = gCurrentTrackPath->posZ;
 
     //     if (IsToadsTurnpike()) {
     //         D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 138.0f : D_80164490->posX - 138.0f;
     //     } else if (IsWarioStadium()) {
     //         D_8015F8D0[0] = (gIsMirrorMode != 0) ? D_80164490->posX + 12.0f : D_80164490->posX - 12.0f;
     //     } else {
-    //         D_8015F8D0[0] = D_80164490->posX;
+    //         D_8015F8D0[0] = gCurrentTrackPath->posX;
     //     }
     // }
     if (!gDemoMode) {

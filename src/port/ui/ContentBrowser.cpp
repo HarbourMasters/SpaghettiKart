@@ -91,16 +91,16 @@ namespace Editor {
         { "Starship", [](const FVector& pos) { return new AStarship(pos); } },
         { "Train", [](const FVector& pos) { return new ATrain(ATrain::TenderStatus::HAS_TENDER, 4, 2.5f, 0); } },
         { "Boat", [](const FVector& pos) { return new ABoat((0.6666666f)/4, 0); } },
-        { "Bus", [](const FVector& pos) { return new ABus(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Car", [](const FVector& pos) { return new ACar(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Truck", [](const FVector& pos) { return new ATruck(2.0f, 2.5f, &D_80164550[0][0], 0); } },
-        { "Tanker Truck", [](const FVector& pos) { return new ATankerTruck(2.0f, 2.5f, &D_80164550[0][0], 0); } },
+        { "Bus", [](const FVector& pos) { return new ABus(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Car", [](const FVector& pos) { return new ACar(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Truck", [](const FVector& pos) { return new ATruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
+        { "Tanker Truck", [](const FVector& pos) { return new ATankerTruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
     };
 
     std::unordered_map<std::string, std::function<OObject*(const FVector&)>> ObjectList = {
         { "Bat", [](const FVector& pos) { return new OBat(pos, IRotator(0, 0, 0)); } },
-        { "Bomb Kart", [](const FVector& pos) { return new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f); } },
-        // { "Boos", [](const FVector& pos) { return new OBoos(pos, &D_80164550[0][0], 0, 0, 0.8333333f); } },
+        { "Bomb Kart", [](const FVector& pos) { return new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
+        // { "Boos", [](const FVector& pos) { return new OBoos(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
         { "CheepCheep", [](const FVector& pos) { return new OCheepCheep(pos, OCheepCheep::CheepType::RACE, IPathSpan(0, 10)); } },
         { "Crab", [](const FVector& pos) { return new OCrab(FVector2D(0, 10), FVector2D(20, 10)); } },
         { "ChainChomp", [](const FVector& pos) { return new OChainChomp(); } },

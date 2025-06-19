@@ -132,14 +132,14 @@ void func_8028E298(void) {
         }
         temp_a2 = gPathIndexByPlayerId[i];
 
-        temp_v0 = ((2 - gPlayers[i].lapCount) * gWaypointCountByPathIndex[temp_a2]);
-        temp_v0 += gWaypointCountByPathIndex[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
+        temp_v0 = ((2 - gPlayers[i].lapCount) * gPathCountByPathIndex[temp_a2]);
+        temp_v0 += gPathCountByPathIndex[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
         temp_v0 /= 15.0f;
 
         gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;
     }
     D_8016348C = 1;
-    func_800070F4();
+    update_player_rankings();
 }
 
 void set_next_course(void) {
@@ -427,7 +427,7 @@ void func_8028EC98(s32 arg0) {
 
     enum MusicSeq sequence = CM_GetProps()->Sequence;
 
-    if(sequence != MUSIC_SEQ_UNKNOWN){
+    if (sequence != MUSIC_SEQ_UNKNOWN) {
         play_sequence(sequence);
     }
 }
@@ -490,7 +490,7 @@ void func_8028EF28(void) {
                     func_8028EEF0(i);
 
                     currentPosition = gPlayers[i].currentRank;
-                    gPlayers[i].type |= PLAYER_KART_AI;
+                    gPlayers[i].type |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
                         D_80150120 = 1;
@@ -527,7 +527,7 @@ void func_8028EF28(void) {
                                 gRaceState = RACE_FINISHED;
                                 i = gPlayerPositionLUT[1];
                                 gPlayers[i].soundEffects |= 0x200000;
-                                gPlayers[i].type |= PLAYER_KART_AI;
+                                gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
                             case 3:
@@ -545,7 +545,7 @@ void func_8028EF28(void) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
                                     gPlayers[i].soundEffects |= 0x200000;
-                                    gPlayers[i].type |= PLAYER_KART_AI;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
                                 break;
@@ -560,7 +560,7 @@ void func_8028EF28(void) {
                                     gRaceState = RACE_FINISHED;
                                     i = gPlayerPositionLUT[3];
                                     gPlayers[i].soundEffects |= 0x200000;
-                                    gPlayers[i].type |= PLAYER_KART_AI;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
                                 break;
@@ -586,7 +586,7 @@ void func_8028EF28(void) {
     }
     if ((D_802BA048 != 0) && (D_802BA048 != 100)) {
         D_802BA048 = 100;
-        func_800074D4();
+        set_places_end_course_with_time();
     }
 }
 
@@ -617,7 +617,7 @@ void func_8028F474(void) {
         case RACE_FINISHED:
         case RACE_EXIT:
             for (i = 0; i < NUM_PLAYERS; i++) {
-                func_80009B60(i);
+                update_player(i);
             }
         case RACE_SETUP:
         case RACE_STAGING:
@@ -752,7 +752,7 @@ void func_8028F970(void) {
         if (!(player->type & PLAYER_HUMAN)) {
             continue;
         }
-        if (player->type & PLAYER_KART_AI) {
+        if (player->type & PLAYER_CPU) {
             continue;
         }
 

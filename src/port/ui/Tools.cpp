@@ -113,13 +113,13 @@ namespace Editor {
         ImGui::SameLine();
 
         // Toggle player human/ai
-        bool playerToggle = (gPlayerOne->type & PLAYER_KART_AI);
+        bool playerToggle = (gPlayerOne->type & PLAYER_CPU);
         ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
         if (ImGui::Button(playerToggle ? ICON_FA_DESKTOP : ICON_FA_GAMEPAD, ImVec2(50, 25))) {
             if (playerToggle) {
-                gPlayerOne->type &= ~PLAYER_KART_AI;
+                gPlayerOne->type &= ~PLAYER_CPU;
             } else {
-                gPlayerOne->type |= PLAYER_KART_AI;
+                gPlayerOne->type |= PLAYER_CPU;
             }
 
         }

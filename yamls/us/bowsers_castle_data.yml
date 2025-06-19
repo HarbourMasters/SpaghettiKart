@@ -448,12 +448,12 @@ d_course_bowsers_castle_dl_4EA8:
   offset: 0x4EA8
 d_course_bowsers_castle_unknown_waypoints:
   symbol: d_course_bowsers_castle_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x4F90
   count: 72
 d_course_bowsers_castle_track_waypoints:
   symbol: d_course_bowsers_castle_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x51D0
   count: 685
 d_course_bowsers_castle_thwomp_side:

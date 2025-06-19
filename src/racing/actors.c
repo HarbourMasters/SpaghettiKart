@@ -1631,7 +1631,7 @@ bool collision_yoshi_egg(Player* player, struct YoshiValleyEgg* egg) {
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
         } else {
             apply_hit_sound_effect(player, player - gPlayerOne);
-            if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_KART_AI) == 0)) {
+            if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
                 D_80162DF8 = 1;
             }
         }
@@ -1708,7 +1708,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
     actorPos[2] = actor->pos[2];
     if (((IsMarioRaceway()) || (IsYoshiValley()) ||
          (IsRoyalRaceway()) || (IsLuigiRaceway())) &&
-        (player->unk_094 > 1.0f)) {
+        (player->speed > 1.0f)) {
         spawn_leaf(actorPos, 0);
     }
     if (xz_dist < 0.1f) {
@@ -2173,7 +2173,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
-                    if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_KART_AI)) {
+                    if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                         D_80162DF8 = 1;
                     }
                     if (player->effects & STAR_EFFECT) {
