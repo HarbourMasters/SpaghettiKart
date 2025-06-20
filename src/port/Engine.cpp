@@ -4,7 +4,6 @@
 #include "GameExtractor.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
-#include "libultraship/src/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h"
 #include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
@@ -114,8 +113,7 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
-
+        auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
         // KeyboardKeyToButtonMappings
         std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
             { BTN_A, { Ship::KbScancode::LUS_KB_SHIFT} },
@@ -124,10 +122,6 @@ GameEngine::GameEngine() {
             { BTN_R, { Ship::KbScancode::LUS_KB_SPACE} },
             { BTN_Z, { Ship::KbScancode::LUS_KB_Z} },
             { BTN_START, { Ship::KbScancode::LUS_KB_ENTER} },
-            { BTN_STICKUP, { Ship::KbScancode::LUS_KB_ARROWKEY_UP} },
-            { BTN_STICKDOWN, { Ship::KbScancode::LUS_KB_ARROWKEY_DOWN} },
-            { BTN_STICKLEFT, { Ship::KbScancode::LUS_KB_ARROWKEY_LEFT} },
-            { BTN_STICKRIGHT, { Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT} },
             { BTN_CUP, { Ship::KbScancode::LUS_KB_T} },
             { BTN_CDOWN, { Ship::KbScancode::LUS_KB_G} },
             { BTN_CLEFT, { Ship::KbScancode::LUS_KB_F} },
@@ -135,10 +129,17 @@ GameEngine::GameEngine() {
             { BTN_DUP, { Ship::KbScancode::LUS_KB_NUMPAD8} },
             { BTN_DDOWN, { Ship::KbScancode::LUS_KB_NUMPAD2} },
             { BTN_DLEFT, { Ship::KbScancode::LUS_KB_NUMPAD4} },
-            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_NUMPAD6} },
+            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_NUMPAD6} }
         },
         // KeyboardKeyToAxisDirectionMappings - use built-in LUS defaults
-        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>(),
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>{
+            { Ship::StickIndex::LEFT_STICK, {
+                { Ship::Direction::UP, Ship::KbScancode::LUS_KB_ARROWKEY_UP},
+                { Ship::Direction::DOWN, Ship::KbScancode::LUS_KB_ARROWKEY_DOWN},
+                { Ship::Direction::LEFT, Ship::KbScancode::LUS_KB_ARROWKEY_LEFT},
+                { Ship::Direction::RIGHT, Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT}
+            }}
+        },
         // SDLButtonToButtonMappings
         std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<SDL_GameControllerButton>>{
             { BTN_A, { SDL_CONTROLLER_BUTTON_A } },
