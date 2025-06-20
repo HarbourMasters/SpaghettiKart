@@ -4,6 +4,7 @@
 #include "GameExtractor.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
+#include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/AudioBankFactory.h"
@@ -112,7 +113,60 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    auto controlDeck = std::make_shared<LUS::ControlDeck>();
+        auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
+        // KeyboardKeyToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
+            { BTN_A, { Ship::KbScancode::LUS_KB_SHIFT} },
+            { BTN_B, { Ship::KbScancode::LUS_KB_CONTROL} },
+            { BTN_L, { Ship::KbScancode::LUS_KB_Q} },
+            { BTN_R, { Ship::KbScancode::LUS_KB_SPACE} },
+            { BTN_Z, { Ship::KbScancode::LUS_KB_Z} },
+            { BTN_START, { Ship::KbScancode::LUS_KB_ENTER} },
+            { BTN_CUP, { Ship::KbScancode::LUS_KB_T} },
+            { BTN_CDOWN, { Ship::KbScancode::LUS_KB_G} },
+            { BTN_CLEFT, { Ship::KbScancode::LUS_KB_F} },
+            { BTN_CRIGHT, { Ship::KbScancode::LUS_KB_H} },
+            { BTN_DUP, { Ship::KbScancode::LUS_KB_NUMPAD8} },
+            { BTN_DDOWN, { Ship::KbScancode::LUS_KB_NUMPAD2} },
+            { BTN_DLEFT, { Ship::KbScancode::LUS_KB_NUMPAD4} },
+            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_NUMPAD6} }
+        },
+        // KeyboardKeyToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>{
+            { Ship::StickIndex::LEFT_STICK, {
+                { Ship::Direction::UP, Ship::KbScancode::LUS_KB_ARROWKEY_UP},
+                { Ship::Direction::DOWN, Ship::KbScancode::LUS_KB_ARROWKEY_DOWN},
+                { Ship::Direction::LEFT, Ship::KbScancode::LUS_KB_ARROWKEY_LEFT},
+                { Ship::Direction::RIGHT, Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT}
+            }}
+        },
+        // SDLButtonToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<SDL_GameControllerButton>>{
+            { BTN_A, { SDL_CONTROLLER_BUTTON_A } },
+            { BTN_B, { SDL_CONTROLLER_BUTTON_X } },
+            { BTN_START, { SDL_CONTROLLER_BUTTON_START } },
+            { BTN_CLEFT, { SDL_CONTROLLER_BUTTON_Y } },
+            { BTN_CDOWN, { SDL_CONTROLLER_BUTTON_B } },
+            { BTN_DUP, { SDL_CONTROLLER_BUTTON_DPAD_UP } },
+            { BTN_DDOWN, { SDL_CONTROLLER_BUTTON_DPAD_DOWN } },
+            { BTN_DLEFT, { SDL_CONTROLLER_BUTTON_DPAD_LEFT } },
+            { BTN_DRIGHT, { SDL_CONTROLLER_BUTTON_DPAD_RIGHT } },
+            { BTN_R, { SDL_CONTROLLER_BUTTON_RIGHTSHOULDER } },
+            { BTN_L, { SDL_CONTROLLER_BUTTON_LEFTSHOULDER } }
+        },
+        // SDLButtonToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, SDL_GameControllerButton>>>(),
+        // SDLAxisDirectionToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::vector<std::pair<SDL_GameControllerAxis, int32_t>>>{
+            { BTN_R, { { SDL_CONTROLLER_AXIS_TRIGGERRIGHT, 1 } } },
+            { BTN_Z, { { SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1 } } },
+            { BTN_CUP, { { SDL_CONTROLLER_AXIS_RIGHTY, -1 } } },
+            { BTN_CRIGHT, { { SDL_CONTROLLER_AXIS_RIGHTX, 1 } } }
+        },
+        // SDLAxisDirectionToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, std::pair<SDL_GameControllerAxis, int32_t>>>>()
+    );
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings);
 
     this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
