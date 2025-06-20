@@ -4,6 +4,8 @@
 #include "GameExtractor.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
+#include "libultraship/src/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h"
+#include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/AudioBankFactory.h"
@@ -11,10 +13,10 @@
 #include "resource/importers/AudioSequenceFactory.h"
 #include "resource/importers/Vec3fFactory.h"
 #include "resource/importers/Vec3sFactory.h"
-#include "resource/importers/CPUFactory.h"
+#include "resource/importers/KartAIFactory.h"
 #include "resource/importers/CourseVtxFactory.h"
 #include "resource/importers/TrackSectionsFactory.h"
-#include "resource/importers/TrackPathPointFactory.h"
+#include "resource/importers/TrackWaypointFactory.h"
 #include "resource/importers/ActorSpawnDataFactory.h"
 #include "resource/importers/UnkActorSpawnDataFactory.h"
 #include "resource/importers/ArrayFactory.h"
@@ -112,7 +114,58 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    auto controlDeck = std::make_shared<LUS::ControlDeck>();
+    auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
+
+        // KeyboardKeyToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
+            { BTN_A, { Ship::KbScancode::LUS_KB_SHIFT} },
+            { BTN_B, { Ship::KbScancode::LUS_KB_CONTROL} },
+            { BTN_L, { Ship::KbScancode::LUS_KB_Q} },
+            { BTN_R, { Ship::KbScancode::LUS_KB_SPACE} },
+            { BTN_Z, { Ship::KbScancode::LUS_KB_Z} },
+            { BTN_START, { Ship::KbScancode::LUS_KB_ENTER} },
+            { BTN_STICKUP, { Ship::KbScancode::LUS_KB_ARROWKEY_UP} },
+            { BTN_STICKDOWN, { Ship::KbScancode::LUS_KB_ARROWKEY_DOWN} },
+            { BTN_STICKLEFT, { Ship::KbScancode::LUS_KB_ARROWKEY_LEFT} },
+            { BTN_STICKRIGHT, { Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT} },
+            { BTN_CUP, { Ship::KbScancode::LUS_KB_T} },
+            { BTN_CDOWN, { Ship::KbScancode::LUS_KB_G} },
+            { BTN_CLEFT, { Ship::KbScancode::LUS_KB_F} },
+            { BTN_CRIGHT, { Ship::KbScancode::LUS_KB_H} },
+            { BTN_DUP, { Ship::KbScancode::LUS_KB_NUMPAD8} },
+            { BTN_DDOWN, { Ship::KbScancode::LUS_KB_NUMPAD2} },
+            { BTN_DLEFT, { Ship::KbScancode::LUS_KB_NUMPAD4} },
+            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_NUMPAD6} },
+        },
+        // KeyboardKeyToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>(),
+        // SDLButtonToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<SDL_GameControllerButton>>{
+            { BTN_A, { SDL_CONTROLLER_BUTTON_A } },
+            { BTN_B, { SDL_CONTROLLER_BUTTON_X } },
+            { BTN_START, { SDL_CONTROLLER_BUTTON_START } },
+            { BTN_CLEFT, { SDL_CONTROLLER_BUTTON_Y } },
+            { BTN_CDOWN, { SDL_CONTROLLER_BUTTON_B } },
+            { BTN_DUP, { SDL_CONTROLLER_BUTTON_DPAD_UP } },
+            { BTN_DDOWN, { SDL_CONTROLLER_BUTTON_DPAD_DOWN } },
+            { BTN_DLEFT, { SDL_CONTROLLER_BUTTON_DPAD_LEFT } },
+            { BTN_DRIGHT, { SDL_CONTROLLER_BUTTON_DPAD_RIGHT } },
+            { BTN_R, { SDL_CONTROLLER_BUTTON_RIGHTSHOULDER } },
+            { BTN_L, { SDL_CONTROLLER_BUTTON_LEFTSHOULDER } }
+        },
+        // SDLButtonToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, SDL_GameControllerButton>>>(),
+        // SDLAxisDirectionToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::vector<std::pair<SDL_GameControllerAxis, int32_t>>>{
+            { BTN_R, { { SDL_CONTROLLER_AXIS_TRIGGERRIGHT, 1 } } },
+            { BTN_Z, { { SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1 } } },
+            { BTN_CUP, { { SDL_CONTROLLER_AXIS_RIGHTY, -1 } } },
+            { BTN_CRIGHT, { { SDL_CONTROLLER_AXIS_RIGHTX, 1 } } }
+        },
+        // SDLAxisDirectionToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, std::pair<SDL_GameControllerAxis, int32_t>>>>()
+    );
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings);
 
     this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
@@ -172,22 +225,20 @@ GameEngine::GameEngine() {
                                     "Lights1", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY,
                                     "Array", static_cast<uint32_t>(MK64::ResourceType::MK_Array), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCPUV0>(), RESOURCE_FORMAT_BINARY, "CPU",
-                                    static_cast<uint32_t>(MK64::ResourceType::CPU), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryKartAIV0>(), RESOURCE_FORMAT_BINARY,
+                                    "KartAI", static_cast<uint32_t>(MK64::ResourceType::KartAI), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCourseVtxV0>(), RESOURCE_FORMAT_BINARY,
                                     "CourseVtx", static_cast<uint32_t>(MK64::ResourceType::CourseVertex), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(),
                                     RESOURCE_FORMAT_BINARY, "TrackSections",
                                     static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackSectionsV0>(),
-                                    RESOURCE_FORMAT_XML, "TrackSections",
-                                    static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackPathPointsV0>(),
-                                    RESOURCE_FORMAT_BINARY, "Paths",
-                                    static_cast<uint32_t>(MK64::ResourceType::Paths), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackPathPointsV0>(),
-                                    RESOURCE_FORMAT_XML, "Paths",
-                                    static_cast<uint32_t>(MK64::ResourceType::Paths), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackSectionsV0>(), RESOURCE_FORMAT_XML,
+                                    "TrackSections", static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackWaypointsV0>(),
+                                    RESOURCE_FORMAT_BINARY, "Waypoints",
+                                    static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackWaypointsV0>(), RESOURCE_FORMAT_XML,
+                                    "Paths", static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(),
                                     RESOURCE_FORMAT_BINARY, "SpawnData",
                                     static_cast<uint32_t>(MK64::ResourceType::SpawnData), 0);
