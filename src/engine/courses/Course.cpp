@@ -209,17 +209,17 @@ void Course::Load() {
 void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
     for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
         if (sections[i].flags & 0x8000) {
-            D_8015F59C = 1;
+            D_8015F59C = 1; // single-sided wall
         } else {
             D_8015F59C = 0;
         }
         if (sections[i].flags & 0x2000) {
-            D_8015F5A0 = 1;
+            D_8015F5A0 = 1; // surface
         } else {
             D_8015F5A0 = 0;
         }
         if (sections[i].flags & 0x4000) {
-            D_8015F5A4 = 1;
+            D_8015F5A4 = 1; // double-sided wall
         } else {
             D_8015F5A4 = 0;
         }
