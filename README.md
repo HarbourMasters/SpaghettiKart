@@ -1,5 +1,5 @@
-![Spaghetti Kart](https://github.com/user-attachments/assets/4006f5a3-aa15-48cc-8b7c-7a4119c21865#gh-dark-mode-only)
 ![Spaghetti Kart](https://github.com/user-attachments/assets/4006f5a3-aa15-48cc-8b7c-7a4119c21865#gh-light-mode-only)
+![Spaghetti Kart](https://github.com/user-attachments/assets/4006f5a3-aa15-48cc-8b7c-7a4119c21865#gh-dark-mode-only)
 
 ## Discord
 
