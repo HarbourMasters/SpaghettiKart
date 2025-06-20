@@ -1,7 +1,5 @@
-[comment]: <> (Todo: Make Light Mode Image)
-[comment]: <> (Todo: Make Dark Mode Image)
-
-![Image](https://github.com/user-attachments/assets/4019ea30-ee83-4992-b58f-5c2d4c6978e3)
+![Spaghetti Kart](https://github.com/user-attachments/assets/4006f5a3-aa15-48cc-8b7c-7a4119c21865#gh-dark-mode-only)
+![Spaghetti Kart](https://github.com/user-attachments/assets/4006f5a3-aa15-48cc-8b7c-7a4119c21865#gh-light-mode-only)
 
 ## Discord
 
