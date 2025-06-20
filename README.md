@@ -1,7 +1,7 @@
 [comment]: <> (Todo: Make Light Mode Image)
 [comment]: <> (Todo: Make Dark Mode Image)
 
-# SpaghettiKart
+![Image](https://github.com/user-attachments/assets/4019ea30-ee83-4992-b58f-5c2d4c6978e3)
 
 ## Discord
 
