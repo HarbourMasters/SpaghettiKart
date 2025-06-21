@@ -46,7 +46,6 @@ Congratulations, you are now sailing with SpaghettiKart! Have fun!
 ### Other shortcuts
 | Keys | Action |
 | - | - |
-| F1 | Toggle menubar |
 | F11 | Fullscreen |
 | Tab | Toggle Alternate assets |
 | Ctrl+R | Reset |
