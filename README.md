@@ -41,7 +41,7 @@ Congratulations, you are now sailing with SpaghettiKart! Have fun!
 ### Default keyboard configuration
 | N64 | A | B | Z | Start | Analog stick | C buttons | D-Pad |
 | - | - | - | - | - | - | - | - |
-| Keyboard | X | C | Z | Space | WASD | Arrow keys | TFGH |
+| Keyboard | Shift | Ctrl | Z | Enter | Arrow keys | TGFH (↑ ↓ ← →) | Num 8 2 4 6 |
 
 ### Other shortcuts
 | Keys | Action |
@@ -50,6 +50,7 @@ Congratulations, you are now sailing with SpaghettiKart! Have fun!
 | F11 | Fullscreen |
 | Tab | Toggle Alternate assets |
 | Ctrl+R | Reset |
+| Esc | Settings |
 
 ### Graphics Backends
 Currently, there are three rendering APIs supported: DirectX11 (Windows), OpenGL (all platforms), and Metal (macOS). You can change which API to use in the `Settings` menu of the menubar, which requires a restart.  If you're having an issue with crashing, you can change the API in the `spaghettify.cfg.json` file by finding the line `"Backend":{`... and changing the `id` value to `3` and set the `Name` to `OpenGL`. `DirectX 11` with id `2` is the default on Windows. `Metal` with id `4` is the default on macOS.
