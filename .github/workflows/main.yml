@@ -268,8 +268,8 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build-cmake --config Release -j3
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DUSE_NETWORKING=OFF
+          cmake --build build-cmake --config Release -j3 -DUSE_NETWORKING=OFF
           (cd build-cmake && cpack -G External)
           wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
           mv README.md readme.txt
