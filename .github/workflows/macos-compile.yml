@@ -24,6 +24,6 @@ jobs:
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-            name: spaghetti-mac-x64
+            name: spaghetti-mac-universal
             path: spaghetti-release
             retention-days: 1
