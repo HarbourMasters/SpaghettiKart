@@ -239,11 +239,11 @@ jobs:
       - name: Install latest SDL_net
         run: |
           export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
-          if [ ! -d "deps/SDL2_net-2.2.0" ]; then
+          if [ ! -d "SDL2_net-2.2.0" ]; then
             wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.2.0.tar.gz
-            tar -xzf SDL2_net-2.2.0.tar.gz -C deps
+            tar -xzf SDL2_net-2.2.0.tar.gz
           fi
-          cd deps/SDL2_net-2.2.0
+          cd SDL2_net-2.2.0
           ./configure
           make -j 10
           sudo make install
