@@ -42,7 +42,7 @@ ResourceFactoryXMLTrackPathPointsV0::ReadResource(std::shared_ptr<Ship::File> fi
 
     auto root = std::get<std::shared_ptr<tinyxml2::XMLDocument>>(file->Reader)->FirstChildElement();
 
-    auto path = root->FirstChildElement("TrackPathPoint");
+    auto path = root->FirstChildElement("TrackWaypoint");
 
     while (path != nullptr) {
 
