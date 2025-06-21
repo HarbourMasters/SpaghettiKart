@@ -209,17 +209,17 @@ jobs:
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.14
         with:
-          key: linux-ccache-${{ github.ref }}-${{ github.sha }}
+          key: linux-old-ccache-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            linux-ccache-${{ github.ref }}
-            linux-ccache-
+            linux-old-ccache-${{ github.ref }}
+            linux-old-ccache-
       - name: Cache build folders
         uses: actions/cache@v4
         with:
-          key: linux-build-${{ github.ref }}-${{ github.sha }}
+          key: linux-old-build-${{ github.ref }}-${{ github.sha }}
           restore-keys: |
-            linux-build-${{ github.ref }}
-            linux-build-
+            linux-build-old-${{ github.ref }}
+            linux-build-old-
           path: |
             SDL2-2.30.3
             tinyxml2-10.0.0
