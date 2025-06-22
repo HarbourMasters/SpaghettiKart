@@ -12,7 +12,7 @@ void sequence_channel_process_sound(struct SequenceChannel* seqChannel, s32 reca
     s32 i;
 
     if (seqChannel->changes.as_bitfields.volume || recalculateVolume) {
-        channelVolume = (seqChannel->volume * (seqChannel->volumeScale * seqChannel->seqPlayer->fadeVolume)) * seqChannel->seqPlayer->gameVolume;
+        channelVolume = (seqChannel->volume * (seqChannel->volumeScale * seqChannel->seqPlayer->fadeVolume)) * seqChannel->seqPlayer->appliedFadeVolume;
         if (seqChannel->seqPlayer->muted && (seqChannel->muteBehavior & MUTE_BEHAVIOR_SOFTEN) != 0) {
             channelVolume = seqChannel->seqPlayer->muteVolumeScale * channelVolume;
         }
