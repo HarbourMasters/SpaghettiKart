@@ -18,13 +18,13 @@
 *Can I make a PR to allow users to invert the freecam camera controls?*  
 > Also no, but if you insist...
 
-*Can I add more players in a race?*
+*Can I have more than eight players in a race?*
 > No. Significant changes would have to be made to support this.
 
-*Can I add more playable racer characters?*
+*Can I have more than eight characters to choose from?*
 > No. This is something we'd like to have, but changes to the menu and other systems would need to be made first.
 
-*Can I replace the existing racers?*
+*Can I replace the existing characters with new ones?*
 > Yes.
 
 *Is there any support for HD texture replacement?*
