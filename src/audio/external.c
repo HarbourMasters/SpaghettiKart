@@ -3550,7 +3550,7 @@ void func_800CB14C() {
 }
 
 void audio_set_player_volume(u8 player, f32 volume) {
-    gSequencePlayers[player].gameVolume = volume;
+    gSequencePlayers[player].appliedFadeVolume = volume;
     gSequencePlayers[player].recalculateVolume = 1;
 }
 
