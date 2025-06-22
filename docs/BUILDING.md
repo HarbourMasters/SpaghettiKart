@@ -205,9 +205,6 @@ cpack
 cmake --build build-cmake --target clean
 ```
 
-# Compatible Roms
-See [`supportedHashes.json`](supportedHashes.json)
-
 ## Getting CI to work on your fork
 
 The CI works via [Github Actions](https://github.com/features/actions) where we mostly make use of machines hosted by Github; except for the very first step of the CI process called "Extract assets". This steps extracts assets from the game file and generates an "assets" folder in `mm/`.
