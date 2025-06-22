@@ -16,6 +16,7 @@ Note that this doc is a work-in-progress and has been hastily written to provide
   * The track/pavement should be a separate mesh from the rest of the scene.
 
 ## Export
+* FAST64 MUST BE SET TO F3DEX MODE (The others *should* work but they don't)
 * Select the empty and click the SpaghettiKart and Harbour Masters profiles
 
 * Name: Track name here
