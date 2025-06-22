@@ -1,5 +1,8 @@
 # faq
 
+*What do I do if my game crashes on launch*
+> Try launching again. If it persists delete spaghettify.cfg.json, if that doesn't work, then also delete imgui.ini
+
 *Why doesn't freecam rotatation work with controller?*  
 > Add Additional "Right" Stick to Controls in the settings menu.
 
