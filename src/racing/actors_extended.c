@@ -680,7 +680,7 @@ s32 use_red_shell_item(Player* player) {
 
 // Interestingly blue shells start their life as a red shell,
 // and then just change the type from red to blue shell
-void use_blue_shell_item(Player* player) {
+s32 use_blue_shell_item(Player* player) {
     GET_ACTOR(use_red_shell_item(player))->type = ACTOR_BLUE_SPINY_SHELL;
 }
 
