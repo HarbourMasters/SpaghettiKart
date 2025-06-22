@@ -1,8 +1,7 @@
 # faq
 
 *Why doesn't freecam rotatation work with controller?*  
-
-> Add Additional "Right" Stick to Controls in the settings menu
+> Add Additional "Right" Stick to Controls in the settings menu.
 
 *Can I customize the freecam button layout?*  
 > No.
@@ -19,8 +18,14 @@
 *Can I make a PR to allow users to invert the freecam camera controls?*  
 > Also no, but if you insist...
 
-*Is it possible to add more characters?*
-> Not currently. Support for this will be investigated when more infrastructure to support it is in place.
+*Can I add more players in a race?*
+> No. Significant changes would have to be made to support this.
+
+*Can I add more playable racer characters?*
+> No. This is something we'd like to have, but changes to the menu and other systems would need to be made first.
+
+*Can I replace the existing racers?*
+> Yes.
 
 *Is there any support for HD texture replacement?*
 > Yes, albeit currently limited. [There is work in progress to expand on this functionality](https://github.com/HarbourMasters/SpaghettiKart/pull/147). Work is underway to port existing texture replacement projects.
