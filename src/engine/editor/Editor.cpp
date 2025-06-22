@@ -147,11 +147,11 @@ namespace Editor {
     }
 
     void Editor::DeleteObject() {
-        GameObject* obj = eObjectPicker.eGizmo._selected;
+        Gizmo* gizmo = &eObjectPicker.eGizmo;
 
-        if (obj) {
-            *obj->DespawnFlag = obj->DespawnValue;
-            obj = nullptr;
+        if (gizmo->_selected && gizmo->_selected->DespawnFlag) {
+            *gizmo->_selected->DespawnFlag = gizmo->_selected->DespawnValue;
+            gizmo->_selected = nullptr;
             eObjectPicker._selected = nullptr;
         }
     }
