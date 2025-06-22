@@ -23,7 +23,7 @@ s32 use_triple_shell_item(Player*, s16);
 s32 init_triple_shell(TripleShellParent*, Player*, s16, u16);
 s32 use_green_shell_item(Player*);
 s32 use_red_shell_item(Player*);
-void use_blue_shell_item(Player*);
+s32 use_blue_shell_item(Player*);
 void update_actor_banana(struct BananaActor*);
 void func_802B2914(struct BananaBunchParent*, Player*, s16);
 s32 use_fake_itembox_item(Player*);
