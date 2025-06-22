@@ -23,7 +23,7 @@
 > Not currently. Support for this will be investigated when more infrastructure to support it is in place.
 
 *Is there any support for HD texture replacement?*
-> Yes, albeit currently limited. Work is underway to port existing texture replacement projects.
+> Yes, albeit currently limited. [There is work in progress to expand on this functionality](https://github.com/HarbourMasters/SpaghettiKart/pull/147). Work is underway to port existing texture replacement projects.
 
 *Is there any online play support?*
 > Not currently. Planned to be implemented as more supporting systems are improved.
