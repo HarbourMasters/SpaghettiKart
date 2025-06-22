@@ -7022,9 +7022,9 @@ void cpu_decisions_branch_item(UNUSED s32 playerId, s16* branch, s32 itemId) {
             case ITEM_BANANA_BUNCH:
                 value = CPU_STRATEGY_ITEM_BANANA_BUNCH;
                 break;
-            // case ITEM_BLUE_SPINY_SHELL:
-            //     value = CPU_STRATEGY_ITEM_BLUE_SPINY_SHELL;
-            //     break;
+            case ITEM_BLUE_SPINY_SHELL:
+                value = CPU_STRATEGY_ITEM_BLUE_SPINY_SHELL;
+                break;
             case ITEM_GREEN_SHELL:
                 value = CPU_STRATEGY_ITEM_GREEN_SHELL;
                 break;
@@ -7551,6 +7551,46 @@ void cpu_use_item_strategy(s32 playerId) {
                         temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                         temp_s0->timer = 0;
                     }
+                }
+                break;
+            case CPU_STRATEGY_ITEM_BLUE_SPINY_SHELL:
+                if (((s32) gNumActors) < 0x50) {
+                    temp_s0->actorIndex = use_blue_shell_item(player);
+                    if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
+                        temp_s0->branch = CPU_STRATEGY_HOLD_BLUE_SPINY_SHELL;
+                        temp_s0->timer = 0;
+                        temp_s0->numItemUse += 1;
+                        temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0xA;
+                    } else {
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    }
+                } else {
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                }
+                break;
+            case CPU_STRATEGY_HOLD_BLUE_SPINY_SHELL:
+                shell = (struct ShellActor*) GET_ACTOR(temp_s0->actorIndex);
+                if ((((!(shell->flags & 0x8000)) || (shell->type != ACTOR_BLUE_SPINY_SHELL)) ||
+                     (shell->state != HELD_SHELL)) ||
+                    (playerId != shell->playerId)) {
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                    temp_s0->branch = CPU_STRATEGY_THROW_BLUE_SPINY_SHELL;
+                }
+                break;
+            case CPU_STRATEGY_THROW_BLUE_SPINY_SHELL:
+                clear_expired_strategies(temp_s0);
+                shell = (struct ShellActor*) GET_ACTOR(temp_s0->actorIndex);
+                if ((((!(shell->flags & 0x8000)) || (shell->type != ACTOR_BLUE_SPINY_SHELL)) ||
+                     (shell->state != HELD_SHELL)) ||
+                    (playerId != shell->playerId)) {
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                } else {
+                    shell->state = RELEASED_SHELL;
+                    temp_s0->timer = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
