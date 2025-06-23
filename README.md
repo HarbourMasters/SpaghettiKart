@@ -2,8 +2,7 @@
 ![Spaghetti Kart](docs/spaghettigithubnight.png#gh-dark-mode-only)
 
 ## Help!
-This project is looking for a C or C++ coder interested in making a couple scrollable menus that can have lots of items in it. A system for rendering custom menus already exists.
-Currently, custom content does not have a method for being displayed to users.
+This project is looking for a C or C++ coder interested in making a couple scrollable menus that can have lots of items in it. As a method to display custom content does not exist. A tick/render system for custom menus already exists. So just someone willing to build out the menu.
 
 ## Discord
 
