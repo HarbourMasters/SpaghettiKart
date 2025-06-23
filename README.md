@@ -1,6 +1,10 @@
 ![Spaghetti Kart](docs/spaghettigithublight.png#gh-light-mode-only)
 ![Spaghetti Kart](docs/spaghettigithubnight.png#gh-dark-mode-only)
 
+## Help!
+This project is looking for a C or C++ coder interested in making a couple scrollable menus that can have lots of items in it. A system for rendering custom menus already exists.
+Currently, custom content does not have a method for being displayed to users.
+
 ## Discord
 
 Official Discord: https://discord.com/invite/shipofharkinian
