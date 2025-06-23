@@ -1,5 +1,11 @@
 # faq
 
+*Will you port X rom hack to the port*
+> This is up to the devs of the hack. Many have mentioned a willingness to do so.
+
+*HD Textures?*
+> Is in the works
+
 *What do I do if my game crashes on launch*
 > Try launching again. If it persists delete spaghettify.cfg.json, if that doesn't work, then also delete imgui.ini
 
