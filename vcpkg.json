@@ -1,0 +1,23 @@
+{
+  "name": "spaghettikart",
+  "version": "1.0.0",
+  "description": "A Mario Kart 64 port",
+  "homepage": "https://github.com/HarbourMasters/SpaghettiKart",
+  "dependencies": [
+    "zlib",
+    "bzip2",
+    "libzip",
+    "libpng",
+    "sdl2",
+    "sdl2-net",
+    "glew",
+    "glfw3",
+    "nlohmann-json",
+    "tinyxml2",
+    "spdlog",
+    "libogg",
+    "libvorbis"
+  ],
+  "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a",
+  "overrides": []
+}

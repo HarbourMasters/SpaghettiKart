@@ -393,7 +393,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     find_package(Vorbis CONFIG REQUIRED)
     link_libraries(Vorbis::vorbisfile)
 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
         "Ogg::ogg"
         "Vorbis::vorbis"
         "Vorbis::vorbisenc"
@@ -416,7 +415,6 @@ else()
     find_package(Ogg REQUIRED)
     find_package(Vorbis REQUIRED)
  	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
         "Ogg::ogg"
         "Vorbis::vorbis"
         "Vorbis::vorbisenc"
@@ -435,7 +433,7 @@ if(USE_NETWORKING)
         target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net)
     elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         find_package(SDL2_net REQUIRED)
-        target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net) 
+        target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:SDL2_net::SDL2_net>,SDL2_net::SDL2_net,SDL2_net::SDL2_net-static>) 
     else()
         find_package(SDL2_net REQUIRED)
         target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net-static)
