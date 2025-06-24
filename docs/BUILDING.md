@@ -22,7 +22,7 @@ It is recommended that you install Python and Git standalone, the install proces
 
 _Note: Be sure to either clone with the ``--recursive`` flag or do ``git submodule update --init`` after cloning to pull in the libultraship submodule!_
 
-2. After setup and initial build, use the built-in OTR extraction to make your spaghetti.o2r file.
+2. After setup and initial build, use the built-in OTR extraction to make your mk64.o2r file.
 
 _Note: Instructions assume using powershell_
 ```powershell
@@ -33,7 +33,7 @@ cd spaghetti
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 & 'C:\Program Files\CMake\bin\cmake' -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64
 
-# Generate spaghetti.o2r
+# Generate mk64.o2r
 & 'C:\Program Files\CMake\bin\cmake.exe' --build .\build\x64 --target ExtractAssets
 
 # Compile project
@@ -130,7 +130,7 @@ git submodule update --init
 # Add `-DPython3_EXECUTABLE=$(which python3)` if you are using non-standard Python installations such as PyEnv
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate spaghetti.o2r
+# Generate mk64.o2r
 cmake --build build-cmake --target ExtractAssets
 
 # Compile the project
@@ -177,7 +177,7 @@ git submodule update --init
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate spaghetti.o2r
+# Generate mk64.o2r
 cmake --build build-cmake --target ExtractAssets
 
 # Compile the project
