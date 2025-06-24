@@ -296,6 +296,31 @@ jobs:
             yamls
             gamecontrollerdb.txt
 
+  build-linux-docker:
+    needs: generate-port-o2r
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build docker image
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: docker build . -t spaghetti
+      - name: Build AppImage
+        run: docker run --rm -v ${PWD}:/project spaghetti ./build.sh
+      - name: Prepare Artifact
+        run: |
+            wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+            mv README.md readme.txt
+            cp build-cmake/*.appimage spaghetti.appimage
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Spaghettify-linux-docker
+          path: |
+            spaghetti.appimage
+            config.yml
+            yamls
+            gamecontrollerdb.txt
+
   build-switch:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
