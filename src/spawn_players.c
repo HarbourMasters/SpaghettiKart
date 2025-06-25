@@ -479,11 +479,11 @@ void func_80039AE4(void) {
 void func_80039DA4(void) {
     s32 i;
 
-    s32 sp2C[] = {
+    static const s32 sp2C[] = {
         7, 6, 5, 4, 3, 2, 1, 0,
     };
 
-    s32 spC[] = {
+    static const s32 spC[] = {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
