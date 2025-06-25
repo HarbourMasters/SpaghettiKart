@@ -827,7 +827,7 @@ void race_logic_loop(void) {
     if (sNumVBlanks >= 6) {
         sNumVBlanks = 5;
     }
-    if (sNumVBlanks < 0) {
+    else if (sNumVBlanks < 0) {
         sNumVBlanks = 1;
     }
 
