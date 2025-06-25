@@ -342,17 +342,8 @@ void func_8001CA10(Camera* camera) {
 }
 
 void func_8001CA24(Player* player, f32 arg1) {
-    Camera* camera = &cameras[0];
+    Camera* camera = &cameras[player - gPlayerOne];
 
-    if (player == gPlayerTwo) {
-        camera += 1;
-    }
-    if (player == gPlayerThree) {
-        camera += 2;
-    }
-    if (player == gPlayerFour) {
-        camera += 3;
-    }
     camera->unk_94.unk_8 = 0;
     camera->unk_94.unk_0 = arg1;
 }
