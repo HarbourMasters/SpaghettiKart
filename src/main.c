@@ -88,11 +88,6 @@ Player* gPlayerSix = &gPlayers[5];
 Player* gPlayerSeven = &gPlayers[6];
 Player* gPlayerEight = &gPlayers[7];
 
-Player* gPlayerOneCopy = &gPlayers[0];
-Player* gPlayerTwoCopy = &gPlayers[1];
-UNUSED Player* gPlayerThreeCopy = &gPlayers[2];
-UNUSED Player* gPlayerFourCopy = &gPlayers[3];
-
 UNUSED s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
 struct GfxPool* gGfxPool;
@@ -770,13 +765,13 @@ void process_game_tick(void) {
     // tick camera
     // This looks like it should be in the switch.
     // But it needs to be here for player 1 to work in all modes.
-    func_8001EE98(gPlayerOneCopy, camera1, 0);
+    func_8001EE98(gPlayerOne, camera1, 0);
     // Required if freecam was to have a new camera
     //if (CVarGetInteger("gFreecam", 0) == true) {
-    //    freecam(gFreecamCamera, gPlayerOneCopy, 0);
+    //    freecam(gFreecamCamera, gPlayerOne, 0);
     //} else {
         
-        //func_8001EE98(gPlayerOneCopy, camera1, 0);
+        //func_8001EE98(gPlayerOne, camera1, 0);
     //}
 
     // Editor requires this so the camera keeps moving while the game is paused.
@@ -791,7 +786,7 @@ void process_game_tick(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             func_80029060();
-            func_8001EE98(gPlayerTwoCopy, camera2, 1);
+            func_8001EE98(gPlayerTwo, camera2, 1);
             func_80029150();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:

@@ -7,7 +7,7 @@
 #include "collision.h"
 
 void func_800914A0(void) {
-    D_80152308 = gPlayerOneCopy->unk_006 + 7;
+    D_80152308 = gPlayerOne->unk_006 + 7;
     if ((s32) D_8015F6F8 < D_80152308) {
         D_80152308 -= D_8015F6F8;
     }
@@ -21,7 +21,7 @@ UNUSED void func_800914E0(void) {
     struct ActorSpawnData* tempData;
 
     s16 temp3 = (s16) D_80152308;
-    s16 temp2 = (s16) gPlayerOneCopy->unk_006;
+    s16 temp2 = (s16) gPlayerOne->unk_006;
     s16 temp;
     f32 sp38;
     f32 sp34;
@@ -46,10 +46,10 @@ UNUSED void func_800914E0(void) {
     camera->pos[0] = (f32) (tempData->pos[0] + 10);
     camera->pos[1] = (f32) (tempData->pos[1] + 7);
     camera->pos[2] = (f32) (tempData->pos[2] - 20);
-    camera->lookAt[0] = gPlayerOneCopy->pos[0];
+    camera->lookAt[0] = gPlayerOne->pos[0];
 
-    camera->lookAt[1] = gPlayerOneCopy->pos[1];
-    camera->lookAt[2] = gPlayerOneCopy->pos[2];
+    camera->lookAt[1] = gPlayerOne->pos[1];
+    camera->lookAt[2] = gPlayerOne->pos[2];
     check_bounding_collision(&camera->collision, 20.0f, camera->pos[0], camera->pos[1], camera->pos[2]);
     sp38 = camera->lookAt[0] - camera->pos[0];
     sp34 = camera->lookAt[1] - camera->pos[1];

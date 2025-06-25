@@ -1196,15 +1196,15 @@ void func_80290B14(void) {
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8001EE98(gPlayerOneCopy, camera1, 0);
+            func_8001EE98(gPlayerOne, camera1, 0);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_8001EE98(gPlayerOneCopy, camera1, 0);
-            func_8001EE98(gPlayerTwoCopy, camera2, 1);
+            func_8001EE98(gPlayerOne, camera1, 0);
+            func_8001EE98(gPlayerTwo, camera2, 1);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_8001EE98(gPlayerOneCopy, camera1, 0);
+            func_8001EE98(gPlayerOne, camera1, 0);
             func_8001EE98(gPlayerTwo, camera2, 1);
             func_8001EE98(gPlayerThree, camera3, 2);
             func_8001EE98(gPlayerFour, camera4, 3);
