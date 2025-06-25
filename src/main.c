@@ -651,7 +651,7 @@ void calculate_updaterate(void) {
     // Get target FPS from configuration variable
     s32 targetFPS = 30;
 
-    if (targetFPS < 60) {
+    if (targetFPS < 30) {
         targetFPS = 30;
     }
 
