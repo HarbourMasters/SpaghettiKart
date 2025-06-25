@@ -234,7 +234,7 @@ void PortMenu::AddSettings() {
                 .IsPercentage()
                 .Format("")
                 .Min(0.5f)
-                .Max(2.0f));
+                .Max(4.0f));
 #endif
 #ifndef __WIIU__
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)
