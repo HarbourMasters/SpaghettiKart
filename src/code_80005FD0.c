@@ -7091,7 +7091,7 @@ void cpu_use_item_strategy(s32 playerId) {
                     if (((gNumPathPointsTraversed[playerId] + (playerId * 0x14) + 0x64) % 0x8 == 0) &&
                         (temp_s0->timer >= 0x200)) {
                         cpu_decisions_branch_item(playerId, &temp_s0->branch,
-                                                  gen_random_item_human((s16) gLapCountByPlayerId[playerId],
+                                                  hard_cpu_gen_random_item((s16) gLapCountByPlayerId[playerId],
                                                                         gGPCurrentRaceRankByPlayerId[playerId]));
                     }
                 }

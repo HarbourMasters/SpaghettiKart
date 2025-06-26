@@ -2796,7 +2796,7 @@ ItemProbabilities grandPrixHumanProbabilityTable[] = {
       .superMushroom = 10 },
 };
 
-ItemProbabilities grandPrixAIProbabilityTable[] = {
+ItemProbabilities grandPrixCPUProbabilityTable[] = {
     { .banana = 60,
       .bananaBunch = 0,
       .greenShell = 25,
@@ -2917,6 +2917,129 @@ ItemProbabilities grandPrixAIProbabilityTable[] = {
       .doubleMushroom = 0,
       .tripleMushroom = 0,
       .superMushroom = 0 },
+};
+
+ItemProbabilities grandPrixHardCPUProbabilityTable[] = {
+    { .banana = 30,
+      .bananaBunch = 5,
+      .greenShell = 30,
+      .tripleGreenShell = 5,
+      .redShell = 5,
+      .tripleRedShell = 0,
+      .blueSpinyShell = 0,
+      .thunderbolt = 0,
+      .fakeItemBox = 10,
+      .star = 0,
+      .boo = 5,
+      .mushroom = 10,
+      .doubleMushroom = 0,
+      .tripleMushroom = 0,
+      .superMushroom = 0 },
+    { .banana = 5,
+      .bananaBunch = 5,
+      .greenShell = 5,
+      .tripleGreenShell = 10,
+      .redShell = 15,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 0,
+      .thunderbolt = 0,
+      .fakeItemBox = 5,
+      .star = 5,
+      .boo = 5,
+      .mushroom = 5,
+      .doubleMushroom = 0,
+      .tripleMushroom = 15,
+      .superMushroom = 5 },
+    { .banana = 3,
+      .bananaBunch = 2,
+      .greenShell = 0,
+      .tripleGreenShell = 10,
+      .redShell = 20,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 0,
+      .thunderbolt = 0,
+      .fakeItemBox = 0,
+      .star = 10,
+      .boo = 0,
+      .mushroom = 5,
+      .doubleMushroom = 0,
+      .tripleMushroom = 20,
+      .superMushroom = 10 },
+    { .banana = 5,
+      .bananaBunch = 0,
+      .greenShell = 5,
+      .tripleGreenShell = 5,
+      .redShell = 15,
+      .tripleRedShell = 10,
+      .blueSpinyShell = 0,
+      .thunderbolt = 0,
+      .fakeItemBox = 5,
+      .star = 15,
+      .boo = 5,
+      .mushroom = 5,
+      .doubleMushroom = 0,
+      .tripleMushroom = 20,
+      .superMushroom = 10 },
+    { .banana = 0,
+      .bananaBunch = 0,
+      .greenShell = 0,
+      .tripleGreenShell = 0,
+      .redShell = 10,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 5,
+      .thunderbolt = 0,
+      .fakeItemBox = 5,
+      .star = 15,
+      .boo = 0,
+      .mushroom = 5,
+      .doubleMushroom = 5,
+      .tripleMushroom = 25,
+      .superMushroom = 10 },
+    { .banana = 0,
+      .bananaBunch = 0,
+      .greenShell = 0,
+      .tripleGreenShell = 0,
+      .redShell = 5,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 10,
+      .thunderbolt = 0,
+      .fakeItemBox = 0,
+      .star = 20,
+      .boo = 0,
+      .mushroom = 5,
+      .doubleMushroom = 5,
+      .tripleMushroom = 25,
+      .superMushroom = 10 },
+    { .banana = 0,
+      .bananaBunch = 0,
+      .greenShell = 5,
+      .tripleGreenShell = 0,
+      .redShell = 5,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 10,
+      .thunderbolt = 0,
+      .fakeItemBox = 0,
+      .star = 30,
+      .boo = 0,
+      .mushroom = 5,
+      .doubleMushroom = 5,
+      .tripleMushroom = 10,
+      .superMushroom = 10 },
+    { .banana = 0,
+      .bananaBunch = 0,
+      .greenShell = 0,
+      .tripleGreenShell = 5,
+      .redShell = 5,
+      .tripleRedShell = 20,
+      .blueSpinyShell = 15,
+      .thunderbolt = 10,
+      .fakeItemBox = 0,
+      .star = 30,
+      .boo = 0,
+      .mushroom = 0,
+      .doubleMushroom = 0,
+      .tripleMushroom = 5,
+      .superMushroom = 10 },
 };
 
 ItemProbabilities versus2PlayerProbabilityTable[] = {
@@ -3097,6 +3220,32 @@ void getProbabilityArray(const ItemProbabilities* probStruct, u8* probArray) {
     probArray[14] = probStruct->superMushroom;
 }
 
+// Output a warning if a probability table does not add up to 100
+void verify_probability_table(char* str, const ItemProbabilities* probs, int16_t rank) {
+#ifndef _DEBUG
+    return;
+#endif
+    u8 itemProbabilities[ITEM_MAX - 1];
+
+    getProbabilityArray(probs, itemProbabilities);
+    size_t count = 0;
+    for (size_t i = 0; i < ITEM_MAX - 1; i++) {
+        //printf("prob %d ", itemProbabilities[i]);
+        count += itemProbabilities[i];
+    }
+    //printf("\n");
+
+    if (count != 100) {
+        printf("update_objects.c::verify_probability_table\n  %s table for rank %d is imba %d/100\n", str, rank, count);
+    }
+}
+
+enum RandomItemOption {
+    HUMAN_TABLE,
+    CPU_TABLE,
+    HARD_CPU_TABLE,
+};
+
 /**
  * New random item system uses chance based on percent
  * Likely functionally equivallent to the old system but easier to modify
@@ -3111,27 +3260,40 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            if (isCpu == false) {
-                distributionTable = &grandPrixHumanProbabilityTable[rank];
-            } else {
-                distributionTable = &grandPrixAIProbabilityTable[rank];
+            switch(option) {
+                case HUMAN_TABLE:
+                    distributionTable = &grandPrixHumanProbabilityTable[rank];
+                    verify_probability_table("Human", distributionTable, rank);
+                    break;
+                case CPU_TABLE:
+                    distributionTable = &grandPrixEasyCPUProbabilityTable[rank];
+                    verify_probability_table("CPU", distributionTable, rank);
+                    break;
+                case HARD_CPU_TABLE:
+                    distributionTable = &grandPrixNormalCPUProbabilityTable[rank];
+                    verify_probability_table("Hard CPU", distributionTable, rank);
+                    break;
             }
             break;
         case VERSUS:
             switch (gPlayerCountSelection1) {
                 case TWO_PLAYERS_SELECTED:
                     distributionTable = &versus2PlayerProbabilityTable[rank];
+                    verify_probability_table("Versus 2P", distributionTable, rank);
                     break;
                 case THREE_PLAYERS_SELECTED:
                     distributionTable = &versus3PlayerProbabilityTable[rank];
+                    verify_probability_table("Versus 3P", distributionTable, rank);
                     break;
                 case FOUR_PLAYERS_SELECTED:
                     distributionTable = &versus4PlayerProbabilityTable[rank];
+                    verify_probability_table("Versus 4P", distributionTable, rank);
                     break;
             }
             break;
         case BATTLE:
             distributionTable = &battleProbabilityCurve[0];
+            verify_probability_table("Battle", distributionTable, rank);
             break;
     }
 
@@ -3150,11 +3312,19 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
 }
 
 u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
-    return gen_random_item(rank, false);
+    if (CVarGetInteger("gHarderCPU", 0) == true) {
+        return gen_random_item(rank, HARD_CPU_TABLE);
+    } else {
+        return gen_random_item(rank, HUMAN_TABLE);
+    }
 }
 
 u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    return gen_random_item(rank, true);
+    return gen_random_item(rank, CPU_TABLE);
+}
+
+u8 hard_cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
+    return gen_random_item(rank, HARD_CPU_TABLE);
 }
 
 s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
