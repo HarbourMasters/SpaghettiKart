@@ -802,14 +802,11 @@ MenuTexture* D_800E7DC4[] = {
     D_020051A0,
 };
 
-// Unused?
+// trophy textures
 MkAnimation* D_800E7E14[] = {
     D_020020BC,
     D_020020CC,
     D_020020DC,
-};
-
-MkAnimation* D_800E7E20[] = {
     D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
 };
 
@@ -5800,7 +5797,7 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->param1 = (s32) GetCupIndex();
             var_ra->param2 = func_800B54C0(GetCupIndex(), gCCSelection);
             var_ra->D_8018DEE0_index = animate_character_select_menu(
-                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->param2]));
+                segmented_to_virtual_dupe_2(D_800E7E14[((gCCSelection / 2) * 4) - var_ra->param2 + 3]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
@@ -10770,7 +10767,7 @@ void func_800AB9B0(MenuItem* arg0) {
         arg0->param1 = GetCupIndex();
         arg0->param2 = func_800B54C0((s32) GetCupIndex(), gCCSelection);
         func_8009A594(arg0->D_8018DEE0_index, 0,
-                      segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - arg0->param2]));
+                      segmented_to_virtual_dupe_2(D_800E7E14[((gCCSelection / 2) * 4) - arg0->param2 + 3]));
         arg0->column = (s32) D_800E7268->column;
         arg0->row = D_800E7268->row;
     }
