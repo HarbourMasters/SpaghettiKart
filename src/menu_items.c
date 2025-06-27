@@ -48,6 +48,7 @@
 #include "engine/Matrix.h"
 #include "src/engine/HM_Intro.h"
 #include "src/port/interpolation/FrameInterpolation.h"
+#include "heap.h"
 
 const char* GetCupName(void);
 
@@ -3736,112 +3737,98 @@ void func_80099E60(MenuTexture* arg0, s32 arg1, s32 arg2) {
     var_v1->unk6 = arg2;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/rUXbD
-// Some fakematch nonsense, may or may not be necessary
-// Issue is with instruction ordering near the first `osPiStartDma` call
 void func_80099EC4(void) {
-    s8 var_s4;
-    s32 var_s0;
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
+    s8 texEnd;
+    s32 size;
+    UNUSED s32 pad[2];
     OSIoMesg sp68;
     OSMesg sp64;
-    s32 huh;
-    u8* test;
-    MenuTexture* temp_s2;
+    s32 texSize;
+    MenuTexture* texAddr;
     struct_8018E0E8_entry* var_s1;
 
-    var_s4 = 0;
+    texEnd = 0;
     var_s1 = D_8018E0E8;
-    temp_s2 = var_s1->mk64Texture;
+    texAddr = var_s1->mk64Texture;
 
-    if (temp_s2 == NULL)
+    if (texAddr == NULL)
         return;
 
-    huh = temp_s2->size;
-    if (huh != 0) {
-        var_s0 = huh;
+    texSize = texAddr->size;
+    if (texSize != 0) {
+        size = texSize;
     } else {
-        var_s0 = 0x1400;
+        size = 0x1400;
     }
-    if (var_s0 % 8) {
-        var_s0 = ((var_s0 / 8) * 8) + 8;
+    if (size % 8) {
+        size = ((size / 8) * 8) + 8;
     }
 #ifdef TARGET_N64
-    test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
-    osPiStartDma(&sp68, 0, 0, (uintptr_t) test, gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+    osInvalDCache((void*) gMenuCompressedBuffer, var_s0);
+    osPiStartDma(&sp68, 0, 0, (u32) _textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData),
+                gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
 #endif
-    if ((var_s0 && var_s0) && var_s0) {}
-    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-    // gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+    if ((size && size) && size) {}
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->mk64Texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
-            temp_s2 = (var_s1 + 1)->mk64Texture;
-            huh = (var_s1 + 1)->mk64Texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
+            texAddr = (var_s1 + 1)->mk64Texture;
+            texSize = (var_s1 + 1)->mk64Texture->size;
+            if (texSize != 0) {
+                size = texSize;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
 #ifdef TARGET_N64
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer + 0x500, var_s0);
+            osPiStartDma(&sp68, 0, 0, (u32) _textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData),
+                         gMenuCompressedBuffer + 0x500, size, &gDmaMesgQueue);
 #endif
         }
 #ifdef TARGET_N64
-        mio0decode(gMenuCompressedBuffer,
+        mio0decode((u8*) gMenuCompressedBuffer,
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-#else
-        memcpy(D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array,
-               temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
 #endif
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (texEnd != 0)
             break;
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
         if ((var_s1 + 1)->mk64Texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
-            temp_s2 = (var_s1 + 1)->mk64Texture;
-            huh = (var_s1 + 1)->mk64Texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
+            texAddr = (var_s1 + 1)->mk64Texture;
+            texSize = (var_s1 + 1)->mk64Texture->size;
+            if (texSize != 0) {
+                size = texSize;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
 #ifdef TARGET_N64
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer, size);
+            osPiStartDma(&sp68, 0, 0, (u32) _textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData),
+                         gMenuCompressedBuffer, size, &gDmaMesgQueue);
 #endif
         }
 #ifdef TARGET_N64
-        mio0decode(gMenuCompressedBuffer + 0x1400,
+        mio0decode((u8*) (gMenuCompressedBuffer + 0x500),
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
-#else
-        memcpy(D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array,
-               temp_s2->textureData, temp_s2->width * temp_s2->height * 2);
 #endif
         var_s1->mk64Texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (texEnd != 0)
             break;
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80099EC4.s")
-#endif
 
 void func_8009A238(MenuTexture* arg0, s32 arg1) {
     s32 var_a3;
@@ -4630,7 +4617,7 @@ Gfx* func_8009C708(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
         if (arg5 >= 0) {
             arg0 =
                 func_80097E58(arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3,
-                              D_802BFB80.arraySize4[arg1->unk14][arg4 / 2][(arg4 % 2) + 2].pixel_index_array,
+                              var_s1->textureData,
                               var_s1->width, var_s1->height, (u32) arg5);
         }
         var_s1++;
