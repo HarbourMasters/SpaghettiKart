@@ -2650,7 +2650,7 @@ Gfx* draw_flash_select_case_fast(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx
 
 Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     s32 index;
-
+    gSPClearGeometryMode(displayListHead++, G_ZBUFFER);
     if ((s32) gTextColor < TEXT_BLUE_GREEN_RED_CYCLE_1) {
         index = gTextColor;
     } else {
@@ -2670,7 +2670,7 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
         gSPDisplayList(displayListHead++, D_800E850C[index]);
     }
 #endif
-
+    gSPSetGeometryMode(displayListHead++, G_ZBUFFER);
     return displayListHead;
 }
 
