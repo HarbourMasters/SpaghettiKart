@@ -2702,7 +2702,9 @@ void func_8004EB38(s32 playerId) {
     }
 }
 
+// render the speedometer for the player
 void func_8004ED40(s32 arg0) {
+    gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
     func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f,
                   // RGBA
                   CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
@@ -2732,9 +2734,9 @@ void func_8004EF9C(s32 arg0) {
     s16 temp_t0;
     s16 temp_v0;
 
-    temp_v0 = CM_GetProps()->Minimap.Width;
-    temp_t0 = CM_GetProps()->Minimap.Height;
-    func_8004D37C(0x00000104, 0x0000003C, CM_GetProps()->Minimap.Texture, 0x000000FF, 0x000000FF, 0x000000FF,
+    temp_v0 = CM_GetPropsCourseId(arg0)->Minimap.Width;
+    temp_t0 = CM_GetPropsCourseId(arg0)->Minimap.Height;
+    func_8004D37C(0x00000104, 0x0000003C, CM_GetPropsCourseId(arg0)->Minimap.Texture, 0x000000FF, 0x000000FF, 0x000000FF,
                   0x000000FF, temp_v0, temp_t0, temp_v0, temp_t0);
 }
 

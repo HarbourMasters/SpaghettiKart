@@ -17,6 +17,15 @@ std::unordered_map<std::string, std::string> mGameList = {
 
 bool GameExtractor::SelectGameFromUI() {
 #if !defined(__IOS__) && !defined(__ANDROID__) && !defined(__SWITCH__)
+    if (!pfd::settings::available()) {
+        SPDLOG_ERROR(
+            "portable-file-dialogs is not available on this system. Check "
+            "https://github.com/samhocevar/portable-file-dialogs for runtime "
+            "requirements."
+        );
+        return false;
+    }
+
     auto selection = pfd::open_file("Select a file", ".", { "N64 Roms", "*.z64" }).result();
 
     if (selection.empty()) {

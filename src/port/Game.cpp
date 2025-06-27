@@ -654,6 +654,11 @@ void CM_CleanWorld(void) {
         delete actor;
     }
 
+    for (int i = 0; i < NUM_PLAYERS; i++) {
+        gWorldInstance.playerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        gWorldInstance.playerBombKart[i]._primAlpha = 0;
+    }
+
     gEditor.ClearObjects();
     gWorldInstance.Actors.clear();
     gWorldInstance.StaticMeshActors.clear();

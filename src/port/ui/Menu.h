@@ -9,6 +9,7 @@ extern "C" {
 #include "defines.h"
 #include "main.h"
 #include "menus.h"
+#include "code_800029B0.h"
 }
 
 namespace Ship {
@@ -58,6 +59,7 @@ class Menu : public GuiWindow {
     };
     virtual void ProcessReset() {
       gGamestateNext = MAIN_MENU_FROM_QUIT;
+      gIsGamePaused = 0;
       if (CVarGetInteger("gEnableDebugMode", 0) == true) {
           gMenuSelection = START_MENU;
       } else {

@@ -1022,6 +1022,7 @@ void func_800591B4(void) {
     if ((gHUDDisable == 0) && (D_800DC5B8 != 0)) {
         func_80057C60();
         gSPDisplayList(gDisplayListHead++, D_0D0076F8);
+        gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
 
         if (gIsHUDVisible != 0) {
             if (D_801657D8 == 0) {
