@@ -3,6 +3,7 @@
 #include <defines.h>
 #include <decode.h>
 #include <mk64.h>
+#include <stdio.h>
 
 #include "update_objects.h"
 #include "main.h"
@@ -3250,7 +3251,7 @@ enum RandomItemOption {
  * New random item system uses chance based on percent
  * Likely functionally equivallent to the old system but easier to modify
  */
-u8 gen_random_item(s16 rank, s16 isCpu) {
+u8 gen_random_item(s16 rank, s16 option) {
 #define PERCENTAGE_BASE 100
     u16 rand = random_int(PERCENTAGE_BASE);
 #undef PERCENTAGE_BASE
@@ -3266,11 +3267,11 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
                     verify_probability_table("Human", distributionTable, rank);
                     break;
                 case CPU_TABLE:
-                    distributionTable = &grandPrixEasyCPUProbabilityTable[rank];
+                    distributionTable = &grandPrixCPUProbabilityTable[rank];
                     verify_probability_table("CPU", distributionTable, rank);
                     break;
                 case HARD_CPU_TABLE:
-                    distributionTable = &grandPrixNormalCPUProbabilityTable[rank];
+                    distributionTable = &grandPrixHardCPUProbabilityTable[rank];
                     verify_probability_table("Hard CPU", distributionTable, rank);
                     break;
             }
