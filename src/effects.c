@@ -1425,20 +1425,20 @@ void apply_boo_effect(Player* player, s8 playerIndex) {
   s32 time_elapsed;
   time_elapsed = ((s32) gCourseTimer) - gPlayerBooEffectStartTime[playerIndex];
   if (time_elapsed < BOO_EFFECT_DURATION) {
-      player->alpha -= 2;
+      player->alpha -= ALPHA_CHANGE_SMALL;
 
       if (player->alpha <= ALPHA_BOO_EFFECT) {
           player->alpha = ALPHA_BOO_EFFECT;
       }
       // Player becomes invisible to other players
-      gPlayerOtherScreensAlpha[playerIndex] -= 2;
+      gPlayerOtherScreensAlpha[playerIndex] -= ALPHA_CHANGE_SMALL;
       if (gPlayerOtherScreensAlpha[playerIndex] <= 0) {
           gPlayerOtherScreensAlpha[playerIndex] = 0;
       }
   } else {
       // Player returns to normal visibility
-      player->alpha += 4;
-      if (player->alpha >= 0xF0) {
+      player->alpha += ALPHA_CHANGE_MEDIUM;
+      if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
           player->alpha = ALPHA_MAX;
           gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
           player->effects &= ~0x80000000;
@@ -1485,8 +1485,8 @@ void apply_boo_sound_effect(Player* player, s8 playerIndex) {
 }
 
 void func_8008FB30(Player* player, s8 playerIndex) {
-    player->alpha += 8;
-    if (player->alpha >= 0xF0) {
+    player->alpha += ALPHA_CHANGE_LARGE;
+    if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
         player->alpha = ALPHA_MAX;
         gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
@@ -1518,9 +1518,9 @@ void func_8008FC1C(Player* player) {
 }
 
 void func_8008FC64(Player* player, s8 playerIndex) {
-    player->alpha -= 4;
-    if (player->alpha < 5) {
-        player->alpha = 0;
+    player->alpha -= ALPHA_CHANGE_MEDIUM;
+    if (player->alpha <= ALPHA_CHANGE_MEDIUM) {
+        player->alpha = ALPHA_MIN;
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
@@ -1530,8 +1530,8 @@ void func_8008FC64(Player* player, s8 playerIndex) {
 }
 
 void func_8008FCDC(Player* player, s8 arg1) {
-    player->alpha += 2;
-    if (player->alpha >= 0xF0) {
+    player->alpha += ALPHA_CHANGE_SMALL;
+    if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
         player->alpha = ALPHA_MAX;
         player->soundEffects &= ~0x08000000;
     }
@@ -1844,7 +1844,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                     if ((D_801652A0[playerId] + 40.0f) <= player->pos[1]) {
                         player->unk_222 = 1;
                         player->unk_0CA |= 4;
-                        player->alpha = 0x00FF;
+                        player->alpha = ALPHA_MAX;
                     }
                 }
             } else if ((player->unk_0CA & 2) == 2) {
@@ -1853,7 +1853,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 if ((player->unk_074 + 40.0f) <= player->pos[1]) {
                     player->unk_222 = 1;
                     player->unk_0CA |= 4;
-                    player->alpha = 0x00FF;
+                    player->alpha = ALPHA_MAX;
                 }
             }
             if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
@@ -1866,17 +1866,17 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             }
             if ((player->unk_0CA & 1) == 1) {
                 move_f32_towards(&player->pos[1], D_801652A0[playerId] + 40.0f, 0.02f);
-                player->alpha -= 8;
-                if (player->alpha < 9) {
-                    player->alpha = 0;
+                player->alpha -= ALPHA_CHANGE_LARGE;
+                if (player->alpha <= ALPHA_CHANGE_LARGE) {
+                    player->alpha = ALPHA_MIN;
                     player->unk_222 = 2;
                     player->unk_0CA &= ~0x0001;
                 }
             } else {
                 move_f32_towards(&player->pos[1], player->oldPos[1] + 40.0f, 0.02f);
-                player->alpha -= 8;
-                if (player->alpha < 9) {
-                    player->alpha = 0;
+                player->alpha -= ALPHA_CHANGE_LARGE;
+                if (player->alpha <= ALPHA_CHANGE_LARGE) {
+                    player->alpha = ALPHA_MIN;
                     player->unk_222 = 2;
                 }
             }
@@ -1902,9 +1902,9 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             player->pos[2] = sp44[2];
             player->pos[2] = player->pos[2] + coss((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
             player->pos[0] = player->pos[0] + sins((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
-            player->alpha += 8;
-            if (player->alpha >= 0xF0) {
-                player->alpha = 0x00FF;
+            player->alpha += ALPHA_CHANGE_LARGE;
+            if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+                player->alpha = ALPHA_MAX;
                 player->unk_222 = 4;
                 player->unk_0CA &= ~0x0004;
                 player->unk_0C8 = 0;

@@ -367,6 +367,10 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  #define ALPHA_MIN 0x0
  #define ALPHA_BOO_EFFECT 0x60
 
+#define ALPHA_CHANGE_LARGE 8
+#define ALPHA_CHANGE_MEDIUM 4
+#define ALPHA_CHANGE_SMALL 2
+
 /**
  * @brief shell state
  *
