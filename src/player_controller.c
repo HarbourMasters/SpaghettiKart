@@ -634,7 +634,7 @@ UNUSED void func_80028F5C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNU
 void func_80028F70(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);
@@ -647,7 +647,7 @@ void func_80028F70(void) {
 void func_80029060(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);
@@ -663,7 +663,7 @@ void func_80029150(void) {
 void func_80029158(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);

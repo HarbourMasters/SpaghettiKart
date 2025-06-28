@@ -135,9 +135,6 @@ extern Player* gPlayerSix;
 extern Player* gPlayerSeven;
 extern Player* gPlayerEight;
 
-extern Player* gPlayerOneCopy;
-extern Player* gPlayerTwoCopy;
-
 extern struct GfxPool gGfxPools[];
 extern struct GfxPool* gGfxPool;
 

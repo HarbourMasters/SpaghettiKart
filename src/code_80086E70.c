@@ -1915,8 +1915,8 @@ void object_origin_pos_randomize_around_xyz(s32 objectIndex, s16 x, s16 y, s16 z
 }
 
 void object_origin_pos_around_player_one(s32 objectIndex, s16 dist, u16 angle) {
-    gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(angle) * dist);
-    gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(angle) * dist);
+    gObjectList[objectIndex].origin_pos[0] = gPlayerOne->pos[0] + (sins(angle) * dist);
+    gObjectList[objectIndex].origin_pos[2] = gPlayerOne->pos[2] + (coss(angle) * dist);
 }
 
 UNUSED void func_8008BEA4(s32 objectIndex, u16 arg1, u16 arg2) {
