@@ -43,7 +43,7 @@ cd spaghetti
 # Now you can run the executable in .\build\x64 or run in Visual Studio
 ```
 
-### Developing Starship
+### Developing SpaghettiKart
 With the cmake build system you have two options for working on the project:
 
 #### Visual Studio
@@ -160,7 +160,7 @@ cmake --build build-cmake --target clean
 ```
 
 ## macOS
-Requires Xcode (or xcode-tools) && `sdl2, libpng, glew, ninja, cmake, nlohmann-json, libzip, vorbis-tools` (can be installed via homebrew, macports, etc)
+Requires Xcode (or xcode-tools) && `sdl2, libpng, glew, ninja, cmake, nlohmann-json, libzip, vorbis-tools, sdl2_net, tinyxml2` (can be installed via homebrew, macports, etc)
 
 **Important: For maximum performance make sure you have ninja build tools installed!**
 
