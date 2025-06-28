@@ -49,6 +49,10 @@
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
 
+#ifdef _WIN32
+#include <locale.h>
+#endif
+
 extern "C" {
 #include "main.h"
 #include "audio/load.h"
@@ -793,6 +797,10 @@ extern "C"
 #endif
     int
     main(int argc, char* argv[]) {
+#endif
+#ifdef _WIN32
+    // Allow non-ascii characters for Windows
+    setlocale(LC_ALL, ".UTF8");
 #endif
     // load_wasm();
     GameEngine::Create();
