@@ -361,7 +361,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  #define BOO_EFFECT_DURATION 0x7
 
  /**
-  * @brief alpha relates values
+  * @brief alpha related values
   */
  #define ALPHA_MAX 0xFF
  #define ALPHA_MIN 0x0
