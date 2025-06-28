@@ -1422,41 +1422,41 @@ void func_8008F86C(Player* player, s8 arg1) {
 }
 
 void apply_boo_effect(Player* player, s8 playerIndex) {
-  s32 time_elapsed;
-  time_elapsed = ((s32) gCourseTimer) - gPlayerBooEffectStartTime[playerIndex];
-  if (time_elapsed < BOO_EFFECT_DURATION) {
-      player->alpha -= ALPHA_CHANGE_SMALL;
+    s32 time_elapsed;
+    time_elapsed = ((s32) gCourseTimer) - gPlayerBooEffectStartTime[playerIndex];
+    if (time_elapsed < BOO_EFFECT_DURATION) {
+        player->alpha -= ALPHA_CHANGE_SMALL;
 
-      if (player->alpha <= ALPHA_BOO_EFFECT) {
-          player->alpha = ALPHA_BOO_EFFECT;
-      }
-      // Player becomes invisible to other players
-      gPlayerOtherScreensAlpha[playerIndex] -= ALPHA_CHANGE_SMALL;
-      if (gPlayerOtherScreensAlpha[playerIndex] <= 0) {
-          gPlayerOtherScreensAlpha[playerIndex] = 0;
-      }
-  } else {
-      // Player returns to normal visibility
-      player->alpha += ALPHA_CHANGE_MEDIUM;
-      if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
-          player->alpha = ALPHA_MAX;
-          gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
-          player->effects &= ~0x80000000;
-          if ((player->type & 0x4000) != 0) {
-              func_800CB064(playerIndex);
-          }
-      }
+        if (player->alpha <= ALPHA_BOO_EFFECT) {
+            player->alpha = ALPHA_BOO_EFFECT;
+        }
+        // Player becomes invisible to other players
+        gPlayerOtherScreensAlpha[playerIndex] -= ALPHA_CHANGE_SMALL;
+        if (gPlayerOtherScreensAlpha[playerIndex] <= 0) {
+            gPlayerOtherScreensAlpha[playerIndex] = 0;
+        }
+    } else {
+        // Player returns to normal visibility
+        player->alpha += ALPHA_CHANGE_MEDIUM;
+        if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+            player->alpha = ALPHA_MAX;
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
+                func_800CB064(playerIndex);
+            }
+        }
 
-      gPlayerOtherScreensAlpha[playerIndex] += 8;
-      if (gPlayerOtherScreensAlpha[playerIndex] >= 0xF0) {
-          gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
-          player->alpha = ALPHA_MAX;
-          player->effects &= ~0x80000000;
-          if ((player->type & 0x4000) != 0) {
-              func_800CB064(playerIndex);
-          }
-      }
-  }
+        gPlayerOtherScreensAlpha[playerIndex] += 8;
+        if (gPlayerOtherScreensAlpha[playerIndex] >= 0xF0) {
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->alpha = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
+                func_800CB064(playerIndex);
+            }
+        }
+    }
 }
 
 void apply_boo_sound_effect(Player* player, s8 playerIndex) {
