@@ -1692,7 +1692,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
             func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                           gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
-                          (s32) player->unk_0C6);
+                          (s32) player->alpha);
             gDPSetRenderMode(gDisplayListHead++,
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
@@ -1707,7 +1707,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
             gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
             func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                           gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
-                          D_8018D970[playerId]);
+                          gPlayerOtherScreensAlpha[playerId]);
             gDPSetRenderMode(gDisplayListHead++,
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA),
@@ -1724,7 +1724,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                       gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
-                      (s32) player->unk_0C6);
+                      (s32) player->alpha);
         gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     } else {
@@ -1736,7 +1736,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 arg3) {
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                       gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
-                      (s32) player->unk_0C6);
+                      (s32) player->alpha);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     }
 
@@ -1915,7 +1915,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 a
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
     func_8004B614(gPlayerRedEffect[playerId], gPlayerGreenEffect[playerId], gPlayerBlueEffect[playerId],
                   gPlayerCyanEffect[playerId], gPlayerMagentaEffect[playerId], gPlayerYellowEffect[playerId],
-                  (s16) player->unk_0C6 / 2);
+                  (s16) player->alpha / 2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
     gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0,
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,

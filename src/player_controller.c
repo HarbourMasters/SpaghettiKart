@@ -3704,10 +3704,10 @@ void func_800337CC(Player* player, f32 arg1, s32 arg2) {
     player->unk_098 = (D_80165280[arg2] * D_80165280[arg2]) / 25.0f;
 }
 
-void func_80033850(Player* arg0, f32 arg1) {
-    arg0->unk_090 += arg1;
-    if (arg0->unk_090 >= 0.0f) {
-        arg0->unk_090 = 0.0f;
+void func_80033850(Player* player, f32 arg1) {
+    player->unk_090 += arg1;
+    if (player->unk_090 >= 0.0f) {
+        player->unk_090 = 0.0f;
     }
 }
 
@@ -4181,11 +4181,11 @@ void apply_cpu_turn(Player* player, s16 arg1) {
     }
 }
 
-void func_80036C5C(Player* arg0) {
-    if (((arg0->speed / 18.0f) * 216.0f) > 20.0f) {
-        arg0->unk_204 = 0;
-        arg0->effects |= 0x10;
-        arg0->unk_0B6 |= 0x800;
+void func_80036C5C(Player* player) {
+    if (((player->speed / 18.0f) * 216.0f) > 20.0f) {
+        player->unk_204 = 0;
+        player->effects |= 0x10;
+        player->unk_0B6 |= 0x800;
     }
 }
 

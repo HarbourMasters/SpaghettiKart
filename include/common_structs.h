@@ -314,7 +314,7 @@ typedef struct {
     /* 0x00C0 */ s16 unk_0C0;
     /* 0x00C2 */ s16 unk_0C2;
     /* 0x00C4 */ s16 slopeAccel;
-    /* 0x00C6 */ s16 unk_0C6;
+    /* 0x00C6 */ s16 alpha;
     /* 0x00C8 */ s16 unk_0C8;
     /* 0x00CA */ s16 unk_0CA;
     /* 0x00CC */ Vec4s unk_0CC;

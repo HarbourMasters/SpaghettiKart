@@ -6471,52 +6471,52 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
+void func_8006CEC0(Player* player, s16 arg1, s8 arg2, s8 arg3) {
     UNUSED u16 temp_v0_3;
     s32 sp20 = arg1;
     if (--sp20 < 0) {
         sp20 = 9;
     }
-    if (arg0->unk_258[arg1].unk_01C == 1) {
-        switch (arg0->unk_258[arg1].unk_012) {
+    if (player->unk_258[arg1].unk_01C == 1) {
+        switch (player->unk_258[arg1].unk_012) {
             case 1:
-                func_80062C74(arg0, arg1, arg2, arg3);
+                func_80062C74(player, arg1, arg2, arg3);
                 break;
             case 3:
-                func_80064184(arg0, arg1, arg2, arg3);
+                func_80064184(player, arg1, arg2, arg3);
                 break;
             case 5:
-                func_800630C0(arg0, arg1, arg2, arg3);
+                func_800630C0(player, arg1, arg2, arg3);
                 break;
             case 6:
-                func_800631A8(arg0, arg1, arg2, arg3);
+                func_800631A8(player, arg1, arg2, arg3);
                 break;
             case 7:
-                func_80063268(arg0, arg1, arg2, arg3);
+                func_80063268(player, arg1, arg2, arg3);
                 break;
         }
     } else {
-        if ((arg0->unk_044 & 0x200) && (arg0->type & 0x4000)) {
-            func_80061224(arg0, arg1, sp20, arg2, arg3);
+        if ((player->unk_044 & 0x200) && (player->type & 0x4000)) {
+            func_80061224(player, arg1, sp20, arg2, arg3);
             return;
-        } else if (((arg0->effects & 0x40000000) == 0x40000000) && (arg0->unk_0B0 < 0x32)) {
-            func_80061094(arg0, arg1, sp20, arg2, arg3);
+        } else if (((player->effects & 0x40000000) == 0x40000000) && (player->unk_0B0 < 0x32)) {
+            func_80061094(player, arg1, sp20, arg2, arg3);
             return;
-        } else if ((arg0->type & 0x4000) == 0x4000) {
-            if ((arg0->unk_0DE & 8) == 8) {
-                func_80060F50(arg0, arg1, sp20, arg2, arg3);
+        } else if ((player->type & 0x4000) == 0x4000) {
+            if ((player->unk_0DE & 8) == 8) {
+                func_80060F50(player, arg1, sp20, arg2, arg3);
                 return;
-            } else if ((arg0->unk_0DE & 2) || (arg0->unk_0DE & 1)) {
-                func_80060B14(arg0, arg1, sp20, arg2, arg3);
+            } else if ((player->unk_0DE & 2) || (player->unk_0DE & 1)) {
+                func_80060B14(player, arg1, sp20, arg2, arg3);
                 return;
             }
         }
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                if (((arg0->effects & 0x04000000) != 0x04000000) && ((arg0->effects & 0x400) != 0x400) &&
-                    ((arg0->effects & 0x01000000) != 0x01000000)) {
-                    if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
-                        func_80060504(arg0, arg1, sp20, arg2, arg3);
+                if (((player->effects & 0x04000000) != 0x04000000) && ((player->effects & 0x400) != 0x400) &&
+                    ((player->effects & 0x01000000) != 0x01000000)) {
+                    if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 0x10) != 0x10) && !(player->unk_0CA & 0x100)) {
+                        func_80060504(player, arg1, sp20, arg2, arg3);
                     }
                 }
                 break;
@@ -6525,10 +6525,10 @@ void func_8006CEC0(Player* arg0, s16 arg1, s8 arg2, s8 arg3) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                if (((arg0->type & 0x4000) != 0) && ((arg0->effects & 0x04000000) != 0x04000000) &&
-                    ((arg0->effects & 0x400) != 0x400) && ((arg0->effects & 0x01000000) != 0x01000000)) {
-                    if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100)) {
-                        func_80060504(arg0, arg1, sp20, arg2, arg3);
+                if (((player->type & 0x4000) != 0) && ((player->effects & 0x04000000) != 0x04000000) &&
+                    ((player->effects & 0x400) != 0x400) && ((player->effects & 0x01000000) != 0x01000000)) {
+                    if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 0x10) != 0x10) && !(player->unk_0CA & 0x100)) {
+                        func_80060504(player, arg1, sp20, arg2, arg3);
                     }
                 }
                 break;

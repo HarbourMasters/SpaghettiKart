@@ -355,6 +355,19 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define BOO_EFFECT 0x80000000              // being a boo
 
 /**
+ * @brief durations of effects
+ */
+ #define STAR_EFFECT_DURATION 0xA
+ #define BOO_EFFECT_DURATION 0x7
+
+ /**
+  * @brief alpha relates values
+  */
+ #define ALPHA_MAX 0xFF
+ #define ALPHA_MIN 0x0
+ #define ALPHA_BOO_EFFECT 0x60
+
+/**
  * @brief shell state
  *
  */
@@ -382,9 +395,9 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #endif // DEFINES_H
 
 /**
- * 
+ *
  * Laps
- * 
+ *
  */
 #define MIN_LAPS 0
 #define MAX_LAPS 3
