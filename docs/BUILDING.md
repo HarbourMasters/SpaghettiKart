@@ -140,7 +140,7 @@ cmake --build build-cmake
 # Now you can run the executable in ./build-cmake/Spaghettify
 # To develop the project open the repository in VSCode (or your preferred editor)
 
-# If you find your computer freezes up due to running out of memory, add "-j4" (for four cores) or whatever number you wish.
+# System wide freezes may be due to your computer running low on memory, add "-j4" to the end of the build command to restrict the compiler to four cores.
 # Lower numbers means slower compilation but lower memory usage.
 ```
 
