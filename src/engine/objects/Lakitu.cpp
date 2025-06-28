@@ -393,7 +393,7 @@ void OLakitu::func_80079860(s32 playerId) {
 void OLakitu::func_8007993C(s32 objectIndex, Player* player) {
     if (player->unk_0CA & 4) {
         func_800722A4(objectIndex, 2);
-        gObjectList[objectIndex].primAlpha = player->unk_0C6;
+        gObjectList[objectIndex].primAlpha = player->alpha;
         return;
     }
     func_800722CC(objectIndex, 2);
@@ -784,7 +784,7 @@ void OLakitu::func_8007A778(s32 objectIndex) {
     Player* player = &gPlayers[_playerId];
     Camera* camera = &cameras[_playerId];
     u16 rot = 0x8000 - camera->rot[1];
-    
+
     gObjectList[objectIndex].pos[0] =
         (player->pos[0] +
          (coss(rot) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0]))) -

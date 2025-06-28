@@ -410,18 +410,18 @@ void func_80297760(struct Actor* arg0, Vec3f arg1) {
     arg1[1] = calculate_surface_height(arg1[0], arg1[1], arg1[2], arg0->unk30.meshIndexZX);
 }
 
-void func_802977B0(Player* arg0) {
-    arg0->tyres[FRONT_RIGHT].unk_14 |= 2;
-    arg0->tyres[FRONT_LEFT].unk_14 |= 2;
-    arg0->tyres[BACK_RIGHT].unk_14 |= 2;
-    arg0->tyres[BACK_LEFT].unk_14 |= 2;
+void func_802977B0(Player* player) {
+    player->tyres[FRONT_RIGHT].unk_14 |= 2;
+    player->tyres[FRONT_LEFT].unk_14 |= 2;
+    player->tyres[BACK_RIGHT].unk_14 |= 2;
+    player->tyres[BACK_LEFT].unk_14 |= 2;
 }
 
-void func_802977E4(Player* arg0) {
-    arg0->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
+void func_802977E4(Player* player) {
+    player->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Generate the red shell tlut by invert green the green one
@@ -1740,29 +1740,29 @@ bool collision_tree(Player* player, struct Actor* actor) {
     return true;
 }
 
-bool query_collision_player_vs_actor_item(Player* arg0, struct Actor* arg1) {
+bool query_collision_player_vs_actor_item(Player* player, struct Actor* arg1) {
     f32 temp_f0;
     f32 dist;
     f32 yDist;
     f32 zDist;
     f32 xDist;
 
-    temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
-    xDist = arg1->pos[0] - arg0->pos[0];
+    temp_f0 = player->boundingBoxSize + arg1->boundingBoxSize;
+    xDist = arg1->pos[0] - player->pos[0];
     if (temp_f0 < xDist) {
         return NO_COLLISION;
     }
     if (xDist < -temp_f0) {
         return NO_COLLISION;
     }
-    yDist = arg1->pos[1] - arg0->pos[1];
+    yDist = arg1->pos[1] - player->pos[1];
     if (temp_f0 < yDist) {
         return NO_COLLISION;
     }
     if (yDist < -temp_f0) {
         return NO_COLLISION;
     }
-    zDist = arg1->pos[2] - arg0->pos[2];
+    zDist = arg1->pos[2] - player->pos[2];
     if (temp_f0 < zDist) {
         return NO_COLLISION;
     }
