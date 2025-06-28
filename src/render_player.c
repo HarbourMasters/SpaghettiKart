@@ -58,7 +58,7 @@ u16 gPlayerYellowEffect[8];
 UNUSED u16 gPlayerWhiteEffect[8];
 s32 D_80164B80[296];
 s16 D_80165020[40];
-Vec3f D_80165070[8];
+Vec3f gPlayerLastVelocity[8];
 s16 gLastAnimFrameSelector[4][8];
 s16 gLastAnimGroupSelector[4][8];
 s16 D_80165150[4][8];
