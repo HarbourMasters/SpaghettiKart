@@ -811,6 +811,8 @@ extern "C"
 
     if (CVarGetInteger("gEnableDebugMode", 0) == true) {
         gMenuSelection = START_MENU;
+    } else if (CVarGetInteger("gHarbourIntroSkip", 0) == true) {
+        gMenuSelection = LOGO_INTRO_MENU;
     }
 
     thread5_game_loop();
