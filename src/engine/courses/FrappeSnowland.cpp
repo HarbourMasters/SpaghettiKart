@@ -52,7 +52,7 @@ FrappeSnowland::FrappeSnowland() {
     this->gfx = d_course_frappe_snowland_packed_dls;
     this->gfxSize = 4140;
     Props.textures = frappe_snowland_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineFrappeSnowland;
+    Props.Minimap.Texture = minimap_frappe_snowland;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -63,6 +63,7 @@ FrappeSnowland::FrappeSnowland() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
     Props.Minimap.Colour = {72, 100, 255};
+    resize_minimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
@@ -122,6 +123,9 @@ FrappeSnowland::FrappeSnowland() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -50.0f;
+    for (int i = 0; i < 68; i++) {
+        fix_texture_segment((Gfx*) d_course_frappe_snowland_dl_list[i], Props.textures);
+    }
 }
 
 void FrappeSnowland::Load() {

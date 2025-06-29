@@ -61,7 +61,7 @@ extern "C" {
 TestCourse::TestCourse() {
     this->gfxSize = 100;
     this->textures = NULL;
-    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 260;
@@ -72,6 +72,7 @@ TestCourse::TestCourse() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
     Props.Minimap.Colour = {255, 255, 255};
+    resize_minimap(&Props.Minimap);
 
     Id = "mk:test_course";
 

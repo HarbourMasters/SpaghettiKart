@@ -76,7 +76,7 @@ MarioRaceway::MarioRaceway() {
     this->gfxSize = 3367;
 
     Props.textures = mario_raceway_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 260;
@@ -86,6 +86,7 @@ MarioRaceway::MarioRaceway() {
     Props.Minimap.PlayerScaleFactor = 0.022f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = -2.0;
+    resize_minimap(&Props.Minimap);
 
     Id = "mk:mario_raceway";
     Props.SetText(Props.Name, "mario raceway", sizeof(Props.Name));
@@ -146,6 +147,9 @@ MarioRaceway::MarioRaceway() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    for (int i = 0; i < 68; i++) {
+        fix_texture_segment((Gfx*) mario_raceway_dls[i], Props.textures);
+    }
 }
 
 void MarioRaceway::Load() {

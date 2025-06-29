@@ -6,7 +6,11 @@
 
 static const ALIGN_ASSET(2) char d_course_rainbow_road_dl_0[] = "__OTR__rainbow_road_data/d_course_rainbow_road_dl_0";
 
+static const ALIGN_ASSET(2) char rainbow_road_data_seg6_gfx_0[] = "__OTR__rainbow_road_data/rainbow_road_data_seg6_gfx_0";
+
 static const ALIGN_ASSET(2) char d_course_rainbow_road_dl_80[] = "__OTR__rainbow_road_data/d_course_rainbow_road_dl_80";
+
+static const ALIGN_ASSET(2) char rainbow_road_data_seg6_gfx_80[] = "__OTR__rainbow_road_data/rainbow_road_data_seg6_gfx_80";
 
 static const ALIGN_ASSET(2) char d_course_rainbow_road_dl_D8[] = "__OTR__rainbow_road_data/d_course_rainbow_road_dl_D8";
 
@@ -217,6 +221,8 @@ static const char* d_course_rainbow_road_static_textures[] = {
 };
 
 static const ALIGN_ASSET(2) char d_course_rainbow_road_light1[] = "__OTR__rainbow_road_data/d_course_rainbow_road_light1";
+
+static const ALIGN_ASSET(2) char rainbow_road_data_seg6_lights_12010[] = "__OTR__rainbow_road_data/rainbow_road_data_seg6_lights_12010";
 
 static const ALIGN_ASSET(2) char d_course_rainbow_road_sphere[] = "__OTR__rainbow_road_data/d_course_rainbow_road_sphere";
 

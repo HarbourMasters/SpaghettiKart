@@ -435,6 +435,9 @@ s8 get_surface_type(u16 index) {
 }
 
 s16 get_track_section_id(u16 index) {
+    if (index >= gCollisionMeshCount) {
+        return 0xFF;
+    }
     CollisionTriangle* triangle = &gCollisionMesh[index];
     return triangle->flags & 0xFF;
 }

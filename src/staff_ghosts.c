@@ -123,6 +123,7 @@ void set_staff_ghost(void) {
     CM_SetStaffGhost();
 }
 
+// do nothing
 s32 func_800051C4(void) {
     s32 phi_v0;
 

@@ -176,13 +176,25 @@ static const ALIGN_ASSET(2) char d_course_mario_sign_right[] = "__OTR__mario_rac
 
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_9068[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_9068";
 
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_9068[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_9068";
+
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_90B0[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_90B0";
+
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_90B0[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_90B0";
+
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_90C0[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_90C0";
 
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_90C0[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_90C0";
 
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_9190[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_9190";
+
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_9190[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_9190";
 
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_9250[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_9250";
+
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_9250[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_9250";
+
+static const ALIGN_ASSET(2) char mario_raceway_data_seg6_gfx_9310[] = "__OTR__mario_raceway_data/mario_raceway_data_seg6_gfx_9310";
 
 static const ALIGN_ASSET(2) char d_course_mario_raceway_dl_9310[] = "__OTR__mario_raceway_data/d_course_mario_raceway_dl_9310";
 

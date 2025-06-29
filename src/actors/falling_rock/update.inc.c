@@ -16,9 +16,9 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
     temp_v0 += rock->unk_06;
 #endif
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
-    rock->pos[0] = (f32) temp_v0[rock->unk_06].pos[0] * gCourseDirection;
-    rock->pos[1] = (f32) temp_v0[rock->unk_06].pos[1] + 10.0f;
-    rock->pos[2] = (f32) temp_v0[rock->unk_06].pos[2];
+    rock->pos[0] = (f32) temp_v0->pos[0] * gCourseDirection;
+    rock->pos[1] = (f32) temp_v0->pos[1] + 10.0f;
+    rock->pos[2] = (f32) temp_v0->pos[2];
     vec3f_set(rock->velocity, 0, 0, 0);
     vec3s_set(rock->rot, 0, 0, 0);
 }

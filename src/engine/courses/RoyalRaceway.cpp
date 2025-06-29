@@ -87,7 +87,7 @@ RoyalRaceway::RoyalRaceway() {
     this->gfx = d_course_royal_raceway_packed_dls;
     this->gfxSize = 5670;
     Props.textures = royal_raceway_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineRoyalRaceway;
+    Props.Minimap.Texture = minimap_royal_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -97,6 +97,7 @@ RoyalRaceway::RoyalRaceway() {
     Props.Minimap.PlayerScaleFactor = 0.014f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    resize_minimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
@@ -157,6 +158,9 @@ RoyalRaceway::RoyalRaceway() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
 
     Props.WaterLevel = -60.0f;
+    for (int i = 0; i < 132; i++) {
+        fix_texture_segment((Gfx*) royal_raceway_dls[i], Props.textures);
+    }
 }
 
 void RoyalRaceway::Load() {

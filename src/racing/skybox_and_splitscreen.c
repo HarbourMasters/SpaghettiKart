@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <libultra/gbi.h>
 #include <mk64.h>
+#include <stdio.h>
 
 #include "skybox_and_splitscreen.h"
 #include "code_800029B0.h"
@@ -382,6 +383,7 @@ void func_802A450C(Vtx* skybox) {
     skybox[3].v.cn[1] = prop->TopLeft.g;
     skybox[3].v.cn[2] = prop->TopLeft.b;
 
+    // Floor
     skybox[4].v.cn[0] = prop->FloorTopRight.r;
     skybox[4].v.cn[1] = prop->FloorTopRight.g;
     skybox[4].v.cn[2] = prop->FloorTopRight.b;
@@ -422,18 +424,15 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
 }
 
 void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
-    //! @todo Confirm if this crash still happens and fix if so
-    s32 id = arg1 - D_8015F480;
-    arg1->camera = &cameras[id]; // bad fix of bowser castle crash where camera get an invalid value
     Camera* camera = arg1->camera;
     s16 temp_t5;
     f32 temp_f0;
     UNUSED s32 pad[2];
     UNUSED u16 pad2;
     u16 sp128;
-    Mat4 matrix1;
-    Mat4 matrix2;
-    Mat4 matrix3;
+    Mat4 matrix1 = { 0 };
+    Mat4 matrix2 = { 0 };
+    Mat4 matrix3 = { 0 };
     Vec3f sp5C;
     f32 sp58;
 
@@ -443,6 +442,7 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     vtx[1].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
     vtx[2].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
     vtx[3].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
+
     vtx[4].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
     vtx[5].v.ob[0] = OTRGetRectDimensionFromRightEdge(SCREEN_WIDTH);
     vtx[6].v.ob[0] = OTRGetRectDimensionFromLeftEdge(0);
@@ -468,7 +468,7 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     sp5C[0] *= 160.0f;
     sp5C[1] *= 120.0f;
 
-    temp_t5 = 120 - (s16) sp5C[1];
+    temp_t5 = 120 - (s32) sp5C[1];
     arg1->cameraHeight = temp_t5;
     vtx[1].v.ob[1] = temp_t5;
     vtx[2].v.ob[1] = temp_t5;

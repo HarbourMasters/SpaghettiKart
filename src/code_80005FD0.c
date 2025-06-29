@@ -1687,7 +1687,7 @@ void update_player(s32 playerId) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
             set_current_path(gPlayerPathIndex);
-            // if (GetCourse() == GetKalimariDesert()) {
+            // if (IsKalimariDesert()) {
             CM_VehicleCollision(playerId, player);
             // handle_trains_interactions(playerId, player);
             if (playerId == 0) {
@@ -1811,7 +1811,7 @@ void update_player(s32 playerId) {
                     return;
                 }
                 if ((D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1)) {
-                    player->effects |= 0x10;
+                    player->effects |= DRIFTING_EFFECT;
                 }
                 if (D_801630E8[playerId] != 0) {
                     sPlayerAngle[playerId] = -get_angle_between_two_vectors(&player->oldPos[0], player->pos);
@@ -2079,7 +2079,7 @@ void func_8000B140(s32 playerId) {
     Player* player;
 
     player = &gPlayers[playerId];
-    if (!(player->effects & 0x10) && (D_801630E8[playerId] != 1) && (D_801630E8[playerId] != -1) &&
+    if (!(player->effects & DRIFTING_EFFECT) && (D_801630E8[playerId] != 1) && (D_801630E8[playerId] != -1) &&
         !(gTrackPositionFactor[playerId] < -1.0f) && !(gTrackPositionFactor[playerId] > 1.0f) &&
         (player->characterId != 5) && (player->characterId != 7) && (player->characterId != 4) &&
         !(player->effects & STAR_EFFECT)) {
@@ -4339,7 +4339,7 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
                     if ((gTrackPositionFactor[arg0] > -0.8) && (gTrackPositionFactor[arg0] < 0.5)) {
                         kart_hop(player);
-                        player->effects |= 0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[arg0] = 1;
                         break;
                     }
@@ -4351,7 +4351,7 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 < 0xA) && (D_80162FF8[arg0] == 0)) {
                     if ((gTrackPositionFactor[arg0] > -0.5) && (gTrackPositionFactor[arg0] < 0.8)) {
                         kart_hop(player);
-                        player->effects |= 0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[arg0] = -1;
                         break;
                     }

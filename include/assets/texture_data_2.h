@@ -149,7 +149,7 @@ static const ALIGN_ASSET(2) char gTexture7EEB18[] = "__OTR__texture_data_2/textu
 
 static const ALIGN_ASSET(2) char gTextureTinyFontMinus[] = "__OTR__texture_data_2/tiny_font_minus";
 
-static const ALIGN_ASSET(2) char gTextureTinyFontComma[] = "__OTR__texture_data_2/tiny_font_comma";
+static const ALIGN_ASSET(2) char gTextureTinyFontComma[] = "__OTR__texture_data_2/tiny_font_dot";
 
 static const ALIGN_ASSET(2) char gTextureTinyFontForwardSlash[] = "__OTR__texture_data_2/tiny_font_forward_slash";
 
@@ -327,95 +327,95 @@ static const ALIGN_ASSET(2) char gTexture7F1038[] = "__OTR__texture_data_2/textu
 
 static const ALIGN_ASSET(2) char gTexture7F109C[] = "__OTR__texture_data_2/texture_7F109C";
 
-static const ALIGN_ASSET(2) char gTexture7F1124[] = "__OTR__texture_data_2/7F1124";
+static const ALIGN_ASSET(2) char font_four_dote[] = "__OTR__texture_data_2/font_four_dote";
 
-static const ALIGN_ASSET(2) char gTexture7F11F4[] = "__OTR__texture_data_2/7F11F4";
+static const ALIGN_ASSET(2) char font_cc[] = "__OTR__texture_data_2/font_cc";
 
-static const ALIGN_ASSET(2) char gTexture7F12C4[] = "__OTR__texture_data_2/7F12C4";
+static const ALIGN_ASSET(2) char font_double_quote[] = "__OTR__texture_data_2/font_double_quote";
 
-static const ALIGN_ASSET(2) char gTexture7F1394[] = "__OTR__texture_data_2/7F1394";
+static const ALIGN_ASSET(2) char font_exclamation_mark[] = "__OTR__texture_data_2/font_exclamation_mark";
 
-static const ALIGN_ASSET(2) char gTexture7F1464[] = "__OTR__texture_data_2/7F1464";
+static const ALIGN_ASSET(2) char font_minus[] = "__OTR__texture_data_2/font_minus";
 
-static const ALIGN_ASSET(2) char gTexture7F1534[] = "__OTR__texture_data_2/7F1534";
+static const ALIGN_ASSET(2) char font_dot[] = "__OTR__texture_data_2/7F1534";
 
-static const ALIGN_ASSET(2) char gTexture7F1604[] = "__OTR__texture_data_2/7F1604";
+static const ALIGN_ASSET(2) char font_plus[] = "__OTR__texture_data_2/font_plus";
 
-static const ALIGN_ASSET(2) char gTexture7F16D4[] = "__OTR__texture_data_2/7F16D4";
+static const ALIGN_ASSET(2) char font_interogation_mark[] = "__OTR__texture_data_2/7F16D4";
 
-static const ALIGN_ASSET(2) char gTexture7F17A4[] = "__OTR__texture_data_2/7F17A4";
+static const ALIGN_ASSET(2) char font_simple_quote[] = "__OTR__texture_data_2/7F17A4";
 
-static const ALIGN_ASSET(2) char gTexture7F1874[] = "__OTR__texture_data_2/7F1874";
+static const ALIGN_ASSET(2) char font_number_zero[] = "__OTR__texture_data_2/font_number_zero";
 
-static const ALIGN_ASSET(2) char gTexture7F1944[] = "__OTR__texture_data_2/7F1944";
+static const ALIGN_ASSET(2) char font_number_one[] = "__OTR__texture_data_2/font_number_one";
 
-static const ALIGN_ASSET(2) char gTexture7F1A14[] = "__OTR__texture_data_2/7F1A14";
+static const ALIGN_ASSET(2) char font_number_two[] = "__OTR__texture_data_2/font_number_two";
 
-static const ALIGN_ASSET(2) char gTexture7F1AE4[] = "__OTR__texture_data_2/7F1AE4";
+static const ALIGN_ASSET(2) char font_number_three[] = "__OTR__texture_data_2/font_number_three";
 
-static const ALIGN_ASSET(2) char gTexture7F1BB4[] = "__OTR__texture_data_2/7F1BB4";
+static const ALIGN_ASSET(2) char font_number_four[] = "__OTR__texture_data_2/font_number_four";
 
-static const ALIGN_ASSET(2) char gTexture7F1C84[] = "__OTR__texture_data_2/7F1C84";
+static const ALIGN_ASSET(2) char font_number_five[] = "__OTR__texture_data_2/font_number_five";
 
-static const ALIGN_ASSET(2) char gTexture7F1D54[] = "__OTR__texture_data_2/7F1D54";
+static const ALIGN_ASSET(2) char font_number_six[] = "__OTR__texture_data_2/font_number_six";
 
-static const ALIGN_ASSET(2) char gTexture7F1E24[] = "__OTR__texture_data_2/7F1E24";
+static const ALIGN_ASSET(2) char font_number_seven[] = "__OTR__texture_data_2/font_number_seven";
 
-static const ALIGN_ASSET(2) char gTexture7F1EF4[] = "__OTR__texture_data_2/7F1EF4";
+static const ALIGN_ASSET(2) char font_number_eight[] = "__OTR__texture_data_2/font_number_eight";
 
-static const ALIGN_ASSET(2) char gTexture7F1FC4[] = "__OTR__texture_data_2/7F1FC4";
+static const ALIGN_ASSET(2) char font_number_nine[] = "__OTR__texture_data_2/font_number_nine";
 
-static const ALIGN_ASSET(2) char gTexture7F2094[] = "__OTR__texture_data_2/7F2094";
+static const ALIGN_ASSET(2) char font_letter_A[] = "__OTR__texture_data_2/font_letter_A";
 
-static const ALIGN_ASSET(2) char gTexture7F2164[] = "__OTR__texture_data_2/7F2164";
+static const ALIGN_ASSET(2) char font_letter_B[] = "__OTR__texture_data_2/font_letter_B";
 
-static const ALIGN_ASSET(2) char gTexture7F2234[] = "__OTR__texture_data_2/7F2234";
+static const ALIGN_ASSET(2) char font_letter_C[] = "__OTR__texture_data_2/font_letter_C";
 
-static const ALIGN_ASSET(2) char gTexture7F2304[] = "__OTR__texture_data_2/7F2304";
+static const ALIGN_ASSET(2) char font_letter_D[] = "__OTR__texture_data_2/font_letter_D";
 
-static const ALIGN_ASSET(2) char gTexture7F23D4[] = "__OTR__texture_data_2/7F23D4";
+static const ALIGN_ASSET(2) char font_letter_E[] = "__OTR__texture_data_2/font_letter_E";
 
-static const ALIGN_ASSET(2) char gTexture7F24A4[] = "__OTR__texture_data_2/7F24A4";
+static const ALIGN_ASSET(2) char font_letter_F[] = "__OTR__texture_data_2/font_letter_F";
 
-static const ALIGN_ASSET(2) char gTexture7F2574[] = "__OTR__texture_data_2/7F2574";
+static const ALIGN_ASSET(2) char font_letter_G[] = "__OTR__texture_data_2/font_letter_G";
 
-static const ALIGN_ASSET(2) char gTexture7F2644[] = "__OTR__texture_data_2/7F2644";
+static const ALIGN_ASSET(2) char font_letter_H[] = "__OTR__texture_data_2/font_letter_H";
 
-static const ALIGN_ASSET(2) char gTexture7F2714[] = "__OTR__texture_data_2/7F2714";
+static const ALIGN_ASSET(2) char font_letter_I[] = "__OTR__texture_data_2/font_letter_I";
 
-static const ALIGN_ASSET(2) char gTexture7F27E4[] = "__OTR__texture_data_2/7F27E4";
+static const ALIGN_ASSET(2) char font_letter_J[] = "__OTR__texture_data_2/font_letter_J";
 
-static const ALIGN_ASSET(2) char gTexture7F28B4[] = "__OTR__texture_data_2/7F28B4";
+static const ALIGN_ASSET(2) char font_letter_K[] = "__OTR__texture_data_2/font_letter_K";
 
-static const ALIGN_ASSET(2) char gTexture7F2984[] = "__OTR__texture_data_2/7F2984";
+static const ALIGN_ASSET(2) char font_letter_L[] = "__OTR__texture_data_2/font_letter_L";
 
-static const ALIGN_ASSET(2) char gTexture7F2A54[] = "__OTR__texture_data_2/7F2A54";
+static const ALIGN_ASSET(2) char font_letter_M[] = "__OTR__texture_data_2/font_letter_M";
 
-static const ALIGN_ASSET(2) char gTexture7F2B24[] = "__OTR__texture_data_2/7F2B24";
+static const ALIGN_ASSET(2) char font_letter_N[] = "__OTR__texture_data_2/font_letter_N";
 
-static const ALIGN_ASSET(2) char gTexture7F2BF4[] = "__OTR__texture_data_2/7F2BF4";
+static const ALIGN_ASSET(2) char font_letter_O[] = "__OTR__texture_data_2/font_letter_O";
 
-static const ALIGN_ASSET(2) char gTexture7F2CC4[] = "__OTR__texture_data_2/7F2CC4";
+static const ALIGN_ASSET(2) char font_letter_P[] = "__OTR__texture_data_2/font_letter_P";
 
-static const ALIGN_ASSET(2) char gTexture7F2D94[] = "__OTR__texture_data_2/7F2D94";
+static const ALIGN_ASSET(2) char font_letter_Q[] = "__OTR__texture_data_2/font_letter_Q";
 
-static const ALIGN_ASSET(2) char gTexture7F2E64[] = "__OTR__texture_data_2/7F2E64";
+static const ALIGN_ASSET(2) char font_letter_R[] = "__OTR__texture_data_2/font_letter_R";
 
-static const ALIGN_ASSET(2) char gTexture7F2F34[] = "__OTR__texture_data_2/7F2F34";
+static const ALIGN_ASSET(2) char font_letter_S[] = "__OTR__texture_data_2/font_letter_S";
 
-static const ALIGN_ASSET(2) char gTexture7F3004[] = "__OTR__texture_data_2/7F3004";
+static const ALIGN_ASSET(2) char font_letter_T[] = "__OTR__texture_data_2/font_letter_T";
 
-static const ALIGN_ASSET(2) char gTexture7F30D4[] = "__OTR__texture_data_2/7F30D4";
+static const ALIGN_ASSET(2) char font_letter_U[] = "__OTR__texture_data_2/font_letter_U";
 
-static const ALIGN_ASSET(2) char gTexture7F31A4[] = "__OTR__texture_data_2/7F31A4";
+static const ALIGN_ASSET(2) char font_letter_V[] = "__OTR__texture_data_2/font_letter_V";
 
-static const ALIGN_ASSET(2) char gTexture7F3274[] = "__OTR__texture_data_2/7F3274";
+static const ALIGN_ASSET(2) char font_letter_W[] = "__OTR__texture_data_2/font_letter_W";
 
-static const ALIGN_ASSET(2) char gTexture7F3344[] = "__OTR__texture_data_2/7F3344";
+static const ALIGN_ASSET(2) char font_letter_X[] = "__OTR__texture_data_2/font_letter_X";
 
-static const ALIGN_ASSET(2) char gTexture7F3414[] = "__OTR__texture_data_2/7F3414";
+static const ALIGN_ASSET(2) char font_letter_Y[] = "__OTR__texture_data_2/font_letter_Y";
 
-static const ALIGN_ASSET(2) char gTexture7F34E4[] = "__OTR__texture_data_2/7F34E4";
+static const ALIGN_ASSET(2) char font_letter_Z[] = "__OTR__texture_data_2/font_letter_Z";
 
 static const ALIGN_ASSET(2) char gTexture7F35B4[] = "__OTR__texture_data_2/7F35B4";
 
@@ -787,7 +787,7 @@ static const ALIGN_ASSET(2) char gTexture7F9F44[] = "__OTR__texture_data_2/7F9F4
 
 static const ALIGN_ASSET(2) char gTexture7F9FC4[] = "__OTR__texture_data_2/7F9FC4";
 
-static const ALIGN_ASSET(2) char gTexture7FA044[] = "__OTR__texture_data_2/7FA044";
+static const ALIGN_ASSET(2) char font_apostrophe[] = "__OTR__texture_data_2/font_apostrophe";
 
 static const ALIGN_ASSET(2) char gTexture7FA0C4[] = "__OTR__texture_data_2/7FA0C4";
 
@@ -795,5 +795,5 @@ static const ALIGN_ASSET(2) char gTexture7FA194[] = "__OTR__texture_data_2/7FA19
 
 static const ALIGN_ASSET(2) char gTexture7FA264[] = "__OTR__texture_data_2/7FA264";
 
-static const ALIGN_ASSET(2) char gTexture7FA334[] = "__OTR__texture_data_2/7FA334";
+static const ALIGN_ASSET(2) char font_comma[] = "__OTR__texture_data_2/7FA334";
 

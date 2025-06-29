@@ -57,7 +57,7 @@ KalimariDesert::KalimariDesert() {
     this->gfx = d_course_kalimari_desert_packed_dls;
     this->gfxSize = 5328;
     Props.textures = kalimari_desert_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineKalimariDesert;
+    Props.Minimap.Texture = minimap_kalimari_desert;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 263;
@@ -67,6 +67,7 @@ KalimariDesert::KalimariDesert() {
     Props.Minimap.PlayerScaleFactor = 0.015f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 4.0;
+    resize_minimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "kalimari desert", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "desert", sizeof(Props.DebugName));
@@ -125,6 +126,9 @@ KalimariDesert::KalimariDesert() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 192, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_KALIMARI_DESERT;
+    for (int i = 0; i < 80; i++) {
+        fix_texture_segment((Gfx*) kalimari_desert_dls[i], Props.textures);
+    }
 }
 
 void KalimariDesert::Load() {

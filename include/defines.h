@@ -344,15 +344,40 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief effect of player's
  * for effects
  */
-#define BOOST_RAMP_WOOD_EFFECT 0x4         // being boosted by a ramp
-#define STAR_EFFECT 0x200                  // being a star
-#define BOOST_EFFECT 0x2000                // being boosted by trigger a mushroom
-#define BOOST_RAMP_ASPHALT_EFFECT 0x100000 // being boosted by a boost pad
-#define REVERSE_EFFECT 0x400000            // being in reverse of the course
-#define HIT_BY_ITEM_EFFECT 0x2000000       // being hit by an item
-#define HIT_EFFECT 0x4000000               // hitting an object
-#define LIGHTNING_EFFECT 0x40000000        // being hit by lightning
-#define BOO_EFFECT 0x80000000              // being a boo
+#define UNKNOWN_EFFECT_0x1 0x1               //
+#define BOOST_RAMP_WOOD_EFFECT 0x4           // being boosted by a ramp
+#define DRIFTING_EFFECT 0x10                 // drifting
+#define UNKNOWN_EFFECT_0x40 0x40             //
+#define UNKNOWN_EFFECT_0x80 0x80             //
+#define UNKNOWN_EFFECT_0xC 0xC               //
+#define UNKNOWN_EFFECT_0x10 0x10             //
+#define UNKNOWN_EFFECT_0x100 0x100           //
+#define UNKNOWN_EFFECT_0x1000 0x1000         //
+#define STAR_EFFECT 0x200                    // being a star
+#define BOOST_EFFECT 0x2000                  // being boosted by trigger a mushroom
+#define UNKNOWN_EFFECT_0x10000 0x10000       //
+#define BOOST_RAMP_ASPHALT_EFFECT 0x100000   // being boosted by a boost pad
+#define UNKNOWN_EFFECT_0x200000 0x200000     //
+#define REVERSE_EFFECT 0x400000              // being in reverse of the course
+#define UNKNOWN_EFFECT_0x1000000 0x1000000   //
+#define HIT_BY_ITEM_EFFECT 0x2000000         // being hit by an item
+#define HIT_EFFECT 0x4000000                 // hitting an object
+#define UNKNOWN_EFFECT_0x10000000 0x10000000 //
+#define LIGHTNING_EFFECT 0x40000000          // being hit by lightning
+#define BOO_EFFECT 0x80000000                // being a boo
+
+/**
+ * @brief durations of effects
+ */
+#define STAR_EFFECT_DURATION 0xA
+#define BOO_EFFECT_DURATION 0x7
+
+/**
+ * @brief alpha relates values
+ */
+#define ALPHA_MAX 0xFF
+#define ALPHA_MIN 0x0
+#define ALPHA_BOO_EFFECT 0x60
 
 /**
  * @brief shell state

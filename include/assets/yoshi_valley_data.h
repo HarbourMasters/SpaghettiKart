@@ -6,7 +6,11 @@
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_dl_0[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_dl_0";
 
+static const ALIGN_ASSET(2) char yoshi_valley_data_seg6_gfx_0[] = "__OTR__yoshi_valley_data/yoshi_valley_data_seg6_gfx_0";
+
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_dl_20[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_dl_20";
+
+static const ALIGN_ASSET(2) char yoshi_valley_data_seg6_gfx_20[] = "__OTR__yoshi_valley_data/yoshi_valley_data_seg6_gfx_20";
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_dl_40[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_dl_40";
 
@@ -282,7 +286,11 @@ static const ALIGN_ASSET(2) char d_course_yoshi_valley_yoshi_flag[] = "__OTR__yo
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_unknown_light4[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_unknown_light4";
 
+static const ALIGN_ASSET(2) char yoshi_valley_data_seg6_lights_141A0[] = "__OTR__yoshi_valley_data/yoshi_valley_data_seg6_lights_141A0";
+
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_unknown_light5[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_unknown_light5";
+
+static const ALIGN_ASSET(2) char yoshi_valley_data_seg6_lights_141B8[] = "__OTR__yoshi_valley_data/yoshi_valley_data_seg6_lights_141B8";
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_flag_pole_model1[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_flag_pole_model1";
 
@@ -329,6 +337,8 @@ static const ALIGN_ASSET(2) char d_course_yoshi_valley_egg_model3[] = "__OTR__yo
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_egg_model4[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_egg_model4";
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_egg_model5[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_egg_model5";
+
+static const ALIGN_ASSET(2) char yoshi_valley_data_seg6_lights_16558[] = "__OTR__yoshi_valley_data/yoshi_valley_data_seg6_lights_16558";
 
 static const ALIGN_ASSET(2) char d_course_yoshi_valley_lights4[] = "__OTR__yoshi_valley_data/d_course_yoshi_valley_lights4";
 

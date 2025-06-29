@@ -72,7 +72,7 @@ BowsersCastle::BowsersCastle() {
     this->gfx = d_course_bowsers_castle_packed_dls;
     this->gfxSize = 4900;
     Props.textures = bowsers_castle_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineBowsersCastle;
+    Props.Minimap.Texture = minimap_bowsers_castle;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 265;
@@ -82,6 +82,7 @@ BowsersCastle::BowsersCastle() {
     Props.Minimap.PlayerScaleFactor = 0.0174f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    resize_minimap(&Props.Minimap);
 
     Id = "mk:bowsers_castle";
 
@@ -144,6 +145,9 @@ BowsersCastle::BowsersCastle() {
 
     Props.WaterLevel = -50.0f;
     WaterVolumes.push_back({20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f});
+    for (int i = 0; i < 108; i++) {
+        fix_texture_segment((Gfx*) bowsers_castle_dls[i], Props.textures);
+    }
 }
 
 void BowsersCastle::Load() {

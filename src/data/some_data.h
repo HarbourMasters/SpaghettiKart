@@ -11,14 +11,14 @@
 extern "C" {
 #endif
 
-extern Vtx D_800E49C0[];
-extern Vtx D_800E4AC0[];
-extern Vtx D_800E4BC0[];
-extern Vtx D_800E4CC0[];
-extern Vtx D_800E4DC0[];
-extern Vtx D_800E4EC0[];
-extern Vtx D_800E4FD0[];
-extern Vtx D_800E50D0[];
+extern Vtx gPlayerOneVtx[];
+extern Vtx gPlayerTwoVtx[];
+extern Vtx gPlayerThreeVtx[];
+extern Vtx gPlayerFourVtx[];
+extern Vtx gPlayerFiveVtx[];
+extern Vtx gPlayerSixVtx[];
+extern Vtx gPlayerSevenVtx[];
+extern Vtx gPlayerEightVtx[];
 extern Vtx D_800E51D0[];
 extern Vtx D_800E5210[];
 extern Vtx gBalloonVertexPlane1[];

@@ -75,7 +75,7 @@ MooMooFarm::MooMooFarm() {
     this->gfx = d_course_moo_moo_farm_packed_dls;
     this->gfxSize = 3304;
     Props.textures = moo_moo_farm_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineMooMooFarm;
+    Props.Minimap.Texture = minimap_moo_moo_farm;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 271;
@@ -85,6 +85,7 @@ MooMooFarm::MooMooFarm() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    resize_minimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
@@ -143,6 +144,9 @@ MooMooFarm::MooMooFarm() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 184, 99};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    for (int i = 0; i < 92; i++) {
+        fix_texture_segment((Gfx*) moo_moo_farm_dls[i], Props.textures);
+    }
 }
 
 void MooMooFarm::Load() {

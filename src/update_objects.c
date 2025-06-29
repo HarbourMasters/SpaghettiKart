@@ -173,21 +173,17 @@ s32 add_unused_obj_index(s32* listIdx, s32* nextFree, s32 size) {
      * If you replace this with ```for(var_v1 = 0; var_v1 < size; var_v1++)```
      * The diff gets massive.
      */
-    if (size > 0) {
-    loop_3:
+    for (count = 0; count != size; count++) {
         if (*id == NULL_OBJECT_ID) {
             objectIndex = find_unused_obj_index(id);
             *nextFree += 1;
+            break;
         } else {
             *nextFree += 1;
             if (*nextFree >= size) {
                 *nextFree = 0;
             }
-            count += 1;
             id = &listIdx[*nextFree];
-            if (count != size) { // check if don't check all element of the list
-                goto loop_3;
-            }
         }
     }
     if (count == size) {
@@ -3204,21 +3200,22 @@ ItemProbabilities battleProbabilityCurve[] = { { .banana = 10,
                                                  .superMushroom = 0 } };
 
 void getProbabilityArray(const ItemProbabilities* probStruct, u8* probArray) {
-    probArray[0] = probStruct->banana;
-    probArray[1] = probStruct->bananaBunch;
-    probArray[2] = probStruct->greenShell;
-    probArray[3] = probStruct->tripleGreenShell;
-    probArray[4] = probStruct->redShell;
-    probArray[5] = probStruct->tripleRedShell;
-    probArray[6] = probStruct->blueSpinyShell;
-    probArray[7] = probStruct->thunderbolt;
-    probArray[8] = probStruct->fakeItemBox;
-    probArray[9] = probStruct->star;
-    probArray[10] = probStruct->boo;
-    probArray[11] = probStruct->mushroom;
-    probArray[12] = probStruct->doubleMushroom;
-    probArray[13] = probStruct->tripleMushroom;
-    probArray[14] = probStruct->superMushroom;
+    probArray[0] = 0;
+    probArray[ITEM_BANANA] = probStruct->banana;
+    probArray[ITEM_BANANA_BUNCH] = probStruct->bananaBunch;
+    probArray[ITEM_GREEN_SHELL] = probStruct->greenShell;
+    probArray[ITEM_TRIPLE_GREEN_SHELL] = probStruct->tripleGreenShell;
+    probArray[ITEM_RED_SHELL] = probStruct->redShell;
+    probArray[ITEM_TRIPLE_RED_SHELL] = probStruct->tripleRedShell;
+    probArray[ITEM_BLUE_SPINY_SHELL] = probStruct->blueSpinyShell;
+    probArray[ITEM_THUNDERBOLT] = probStruct->thunderbolt;
+    probArray[ITEM_FAKE_ITEM_BOX] = probStruct->fakeItemBox;
+    probArray[ITEM_STAR] = probStruct->star;
+    probArray[ITEM_BOO] = probStruct->boo;
+    probArray[ITEM_MUSHROOM] = probStruct->mushroom;
+    probArray[ITEM_DOUBLE_MUSHROOM] = probStruct->doubleMushroom;
+    probArray[ITEM_TRIPLE_MUSHROOM] = probStruct->tripleMushroom;
+    probArray[ITEM_SUPER_MUSHROOM] = probStruct->superMushroom;
 }
 
 // Output a warning if a probability table does not add up to 100
@@ -3298,17 +3295,16 @@ u8 gen_random_item(s16 rank, s16 option) {
             break;
     }
 
-    u8 itemProbabilities[ITEM_MAX - 1];
+    u8 itemProbabilities[ITEM_MAX];
     getProbabilityArray(distributionTable, itemProbabilities);
 
-    for (int i = 0; i < ITEM_MAX - 1; i++) {
+    for (int i = 0; i < ITEM_MAX; i++) {
         cumulativeProbability += itemProbabilities[i];
         if (rand < cumulativeProbability) {
-            randomItem = i + 1; // + 1 to account for the ITEM_NONE spot
+            randomItem = i; // + 1 to account for the ITEM_NONE spot
             break;
         }
     }
-
     return randomItem;
 }
 

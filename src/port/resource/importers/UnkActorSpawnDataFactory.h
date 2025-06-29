@@ -2,6 +2,7 @@
 
 #include "Resource.h"
 #include "ResourceFactoryBinary.h"
+#include "File.h"
 
 namespace MK64 {
 class ResourceFactoryBinaryUnkActorSpawnDataV0 : public Ship::ResourceFactoryBinary {

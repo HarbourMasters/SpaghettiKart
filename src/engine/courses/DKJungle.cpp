@@ -73,7 +73,7 @@ DKJungle::DKJungle() {
     this->gfx = d_course_dks_jungle_parkway_packed_dls;
     this->gfxSize = 4997;
     Props.textures = dks_jungle_parkway_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineDksJungleParkway;
+    Props.Minimap.Texture = minimap_dks_jungle_parkway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 255;
@@ -83,6 +83,7 @@ DKJungle::DKJungle() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    resize_minimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "d.k.'s jungle parkway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "jungle", sizeof(Props.DebugName));
@@ -142,6 +143,9 @@ DKJungle::DKJungle() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_DK_JUNGLE;
 
     Props.WaterLevel = -475.0f;
+    for (int i = 0; i < 104; i++) {
+        fix_texture_segment((Gfx*) d_course_dks_jungle_parkway_unknown_dl_list[i], Props.textures);
+    }
 }
 
 void DKJungle::Load() {
