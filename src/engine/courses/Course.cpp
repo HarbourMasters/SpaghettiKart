@@ -116,6 +116,7 @@ void Course::LoadO2R(std::string trackPath) {
             size_t i = 0;
             for (auto& path : paths) {
                 if (i == 0) {
+                    Props.PathSizes.unk0 = path.size();
                     Props.PathTable[0] = (TrackPathPoint*)path.data();
                     Props.PathTable[1] = NULL;
                     Props.PathTable[2] = NULL;
