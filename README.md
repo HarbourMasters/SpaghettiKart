@@ -43,7 +43,7 @@ Congratulations, you are now sailing with SpaghettiKart! Have fun!
 # Configuration
 
 ### Default controls configuration
-| N64 | A | B | L | R | Z | Start | Analog stick | C buttons | D-Pad |
+| N64 | A | B | L | R | Z | Start | Analogue stick | C buttons | D-Pad |
 | - | - | - | - | - | - | - | - | - | - |
 | Keyboard | Shift | Ctrl | Q | Space | Z | Enter | Arrow keys | TGFH (↑ ↓ ← →) | Num 8 2 4 6 |
 | SDL Gamepad | A | X | LB | RB | LT | Start | L-Stick | R-Stick Up, B, Y, R-Stick Right (↑ ↓ ← →) | D-Pad |
