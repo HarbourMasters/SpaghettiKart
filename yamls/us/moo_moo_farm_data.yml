@@ -525,6 +525,7 @@ gTextureMole1:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole2:
   symbol: gTextureMole2
   type: texture
@@ -533,6 +534,7 @@ gTextureMole2:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole3:
   symbol: gTextureMole3
   type: texture
@@ -541,6 +543,7 @@ gTextureMole3:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole4:
   symbol: gTextureMole4
   type: texture
@@ -549,6 +552,7 @@ gTextureMole4:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole5:
   symbol: gTextureMole5
   type: texture
@@ -557,6 +561,7 @@ gTextureMole5:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole6:
   symbol: gTextureMole6
   type: texture
@@ -565,6 +570,7 @@ gTextureMole6:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 gTextureMole7:
   symbol: gTextureMole7
   type: texture
@@ -573,6 +579,7 @@ gTextureMole7:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
 d_course_moo_moo_farm_mole_dirt:
   symbol: d_course_moo_moo_farm_mole_dirt
   type: texture

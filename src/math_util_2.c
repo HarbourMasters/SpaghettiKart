@@ -904,7 +904,7 @@ s32 mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     transformMatrix[3][3] = 1.0f;
 
     // Search all recorded objects for the one we're drawing
-    for (int i = 0; i < OBJECT_LIST_SIZE; i++) {
+    for (size_t i = 0; i < OBJECT_LIST_SIZE; i++) {
         if (objectIndex == prevObject2[i].objectIndex) {
             // Coincidence!
             // Skip drawing the object this frame if it warped to the other side of the screen

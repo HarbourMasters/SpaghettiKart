@@ -308,6 +308,7 @@ d_course_frappe_snowland_snowman_head:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snowman_tlut
 d_course_frappe_snowland_snowman_body:
   symbol: d_course_frappe_snowland_snowman_body
   type: texture
@@ -316,6 +317,7 @@ d_course_frappe_snowland_snowman_body:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snowman_tlut
 d_course_frappe_snowland_snow_tlut:
   symbol: d_course_frappe_snowland_snow_tlut
   type: texture
@@ -332,6 +334,7 @@ d_course_frappe_snowland_snow:
   height: 32
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snow_tlut
 d_course_frappe_snowland_tree_tlut:
   symbol: d_course_frappe_snowland_tree_tlut
   type: texture

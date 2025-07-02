@@ -180,7 +180,7 @@ namespace Editor {
         const char* currentItem = MusicSeqToString(gWorldInstance.CurrentCourse->Props.Sequence); // Get the current selected value's string
     
         if (ImGui::BeginCombo("Music Sequence", currentItem)) {
-            for (int i = 0; i < IM_ARRAYSIZE(items); ++i) {
+            for (size_t i = 0; i < IM_ARRAYSIZE(items); ++i) {
                 bool isSelected = (currentItem == items[i]);
                 if (ImGui::Selectable(items[i], isSelected)) {
                     // Update the sequence when an option is selected
@@ -239,7 +239,7 @@ namespace Editor {
         // Convert and pass to ImGui ColorEdit3
         
         
-        for (int i = 0; i < 2; ++i) {
+        for (size_t i = 0; i < 2; ++i) {
             float ambient[3], diffuse[3], direction[3];
 
             RGB8ToFloat((u8*)&D_800DC610[i].a.l.col, ambient);
@@ -269,13 +269,13 @@ namespace Editor {
 
     // Convert s16 color values to float (normalized to [0, 1] range)
     void TrackPropertiesWindow::RGB8ToFloat(const u8* src, float* dst) {
-        for (int i = 0; i < 3; ++i) {
+        for (size_t i = 0; i < 3; ++i) {
             dst[i] = src[i] / 255.0f;  // Normalize to the range [0.0f, 1.0f]
         }
     }
 
     void TrackPropertiesWindow::FloatToRGB8(const float* src, u8* dst) {
-        for (int i = 0; i < 3; ++i) {
+        for (size_t i = 0; i < 3; ++i) {
             dst[i] = static_cast<u8>(src[i] * 255.0f);  // Scale to [0, 255] range
         }
     }

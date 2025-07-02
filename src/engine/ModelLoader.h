@@ -37,7 +37,7 @@ class ModelLoader {
 
 public:
     struct LoadModelList {
-        Course* course;
+        std::shared_ptr<Course> course;
 
         Gfx* gfxBuffer; // buffer for output gfx
         size_t gfxBufferSize;
@@ -55,7 +55,7 @@ private:
 
     };
 
-    void Extract(Course* course);
+    void Extract(std::shared_ptr<Course> course);
     void UpdateVtx(LoadModelList list);
 
     std::vector<LoadModelList> _deferredList;

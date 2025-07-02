@@ -620,7 +620,7 @@ d_course_luigi_raceway_track_waypoints:
   offset: 0xA6D0
   count: 632
   type: mk64:TRACK_PATH
-  d_course_luigi_raceway_basket_model_lod2:
+d_course_luigi_raceway_basket_model_lod2:
   symbol: d_course_luigi_raceway_basket_model_lod2
   type: vtx
   offset: 0xBA90

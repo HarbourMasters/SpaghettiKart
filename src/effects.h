@@ -125,7 +125,7 @@ void func_800CB064(u8);
 
 extern s32 D_8018D900[];
 extern s16 D_8018D920[];
-extern s32 D_8018D930[];
+extern s32 gPlayerStarEffectStartTime[];
 extern s32 gPlayerBooEffectStartTime[];
 extern s32 gPlayerOtherScreensAlpha[];
 extern s32 D_8018D990[];

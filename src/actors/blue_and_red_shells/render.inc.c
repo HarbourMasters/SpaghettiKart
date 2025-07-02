@@ -10,6 +10,7 @@
  */
 void render_actor_red_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     gDPLoadTLUT_pal256(gDisplayListHead++, &gTLUTRedShell); // set texture
+    // Set up color combiner for channel swapping
     render_actor_shell(camera, matrix, shell);
 }
 

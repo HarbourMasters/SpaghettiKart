@@ -75,7 +75,7 @@ MooMooFarm::MooMooFarm() {
     this->gfx = d_course_moo_moo_farm_packed_dls;
     this->gfxSize = 3304;
     Props.textures = moo_moo_farm_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineMooMooFarm;
+    Props.Minimap.Texture = minimap_moo_moo_farm;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 271;
@@ -85,6 +85,7 @@ MooMooFarm::MooMooFarm() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
@@ -143,6 +144,9 @@ MooMooFarm::MooMooFarm() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 184, 99};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    for (size_t i = 0; i < 92; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) moo_moo_farm_dls[i], Props.textures);
+    }
 }
 
 void MooMooFarm::Load() {
@@ -154,18 +158,18 @@ void MooMooFarm::Load() {
 }
 
 void MooMooFarm::LoadTextures() {
-    dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
-    dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
-    dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U); // 0x03009000
+    dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U); // 0x03009800
+    dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U); // 0x0300A000
+    dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U); // 0x0300A800
+    dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U); // 0x0300B000
+    dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U); // 0x0300B800
+    dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U); // 0x0300C000
+    dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U); // 0x0300C800
+    dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U); // 0x0300D000
+    dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U); // 0x0300D800
+    dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U); // 0x0300E000
+    dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U); // 0x0300E800
 }
 
 // These are full arrays that are not used in the original game

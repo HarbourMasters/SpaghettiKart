@@ -62,7 +62,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     this->gfx = d_course_koopa_troopa_beach_packed_dls;
     this->gfxSize = 5720;
     Props.textures = koopa_troopa_beach_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineKoopaTroopaBeach;
+    Props.Minimap.Texture = minimap_koopa_troopa_beach;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 268;
@@ -72,6 +72,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Minimap.PlayerScaleFactor = 0.014f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:koopa_beach";
     Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
@@ -135,6 +136,12 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.WaterLevel = 0.0f;
     gWaterVelocity = -0.1f;
     WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
+    for (size_t i = 0; i < 148; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_koopa_troopa_beach_dl_list1[i], Props.textures);
+    }
+    for (size_t i = 0; i < 148; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) koopa_troopa_beach_dls2[i], Props.textures);
+    }
 }
 
 void KoopaTroopaBeach::Load() {

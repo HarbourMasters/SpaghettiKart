@@ -53,9 +53,15 @@ static const ALIGN_ASSET(2) char D_0D001828[] = "__OTR__common_data/D_0D001828";
 
 static const ALIGN_ASSET(2) char D_0D001840[] = "__OTR__common_data/D_0D001840";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_1840[] = "__OTR__common_data/common_data_seg13_gfx_1840";
+
 static const ALIGN_ASSET(2) char common_model_finish_post[] = "__OTR__common_data/common_model_finish_post";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_1AB8[] = "__OTR__common_data/common_data_seg13_gfx_1AB8";
+
 static const ALIGN_ASSET(2) char D_0D001B68[] = "__OTR__common_data/D_0D001B68";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_1B68[] = "__OTR__common_data/common_data_seg13_gfx_1B68";
 
 static const ALIGN_ASSET(2) char D_0D001B90[] = "__OTR__common_data/D_0D001B90";
 
@@ -79,6 +85,8 @@ static const ALIGN_ASSET(2) char itemBoxQuestionMarkModel[] = "__OTR__common_dat
 
 static const ALIGN_ASSET(2) char D_0D003090[] = "__OTR__common_data/D_0D003090";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_3090[] = "__OTR__common_data/common_data_seg13_gfx_3090";
+
 static const ALIGN_ASSET(2) char D_0D0030F8[] = "__OTR__common_data/D_0D0030F8";
 
 static const ALIGN_ASSET(2) char D_0D003128[] = "__OTR__common_data/D_0D003128";
@@ -94,6 +102,8 @@ static const ALIGN_ASSET(2) char D_0D0031E8[] = "__OTR__common_data/D_0D0031E8";
 static const ALIGN_ASSET(2) char D_0D003218[] = "__OTR__common_data/D_0D003218";
 
 static const ALIGN_ASSET(2) char D_0D003248[] = "__OTR__common_data/D_0D003248";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_3278[] = "__OTR__common_data/common_data_seg13_gfx_3278";
 
 static const ALIGN_ASSET(2) char D_0D003278[] = "__OTR__common_data/D_0D003278";
 
@@ -124,6 +134,8 @@ static const ALIGN_ASSET(2) char common_data_seg13_vtx_5278[] = "__OTR__common_d
 static const ALIGN_ASSET(2) char D_0D0052B8[] = "__OTR__common_data/D_0D0052B8";
 
 static const ALIGN_ASSET(2) char D_0D005308[] = "__OTR__common_data/D_0D005308";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_5308[] = "__OTR__common_data/common_data_seg13_gfx_5308";
 
 static const ALIGN_ASSET(2) char D_0D005338[] = "__OTR__common_data/D_0D005338";
 
@@ -201,13 +213,19 @@ static const ALIGN_ASSET(2) char D_0D006930[] = "__OTR__common_data/D_0D006930";
 
 static const ALIGN_ASSET(2) char common_rectangle_display[] = "__OTR__common_data/common_rectangle_display";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_6940[] = "__OTR__common_data/common_data_seg13_gfx_6940";
+
 static const ALIGN_ASSET(2) char D_0D006950[] = "__OTR__common_data/D_0D006950";
 
 static const ALIGN_ASSET(2) char D_0D006968[] = "__OTR__common_data/D_0D006968";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_6980[] = "__OTR__common_data/common_data_seg13_gfx_6980";
+
 static const ALIGN_ASSET(2) char D_0D006980[] = "__OTR__common_data/D_0D006980";
 
 static const ALIGN_ASSET(2) char D_0D006998[] = "__OTR__common_data/D_0D006998";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_69B0[] = "__OTR__common_data/common_data_seg13_gfx_69B0";
 
 static const ALIGN_ASSET(2) char D_0D0069B0[] = "__OTR__common_data/D_0D0069B0";
 
@@ -218,6 +236,8 @@ static const ALIGN_ASSET(2) char D_0D0069E0[] = "__OTR__common_data/D_0D0069E0";
 static const ALIGN_ASSET(2) char D_0D0069F8[] = "__OTR__common_data/D_0D0069F8";
 
 static const ALIGN_ASSET(2) char D_0D006A10[] = "__OTR__common_data/D_0D006A10";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_6A10[] = "__OTR__common_data/common_data_seg13_gfx_6A10";
 
 static const ALIGN_ASSET(2) char D_0D006A28[] = "__OTR__common_data/D_0D006A28";
 
@@ -232,6 +252,8 @@ static const ALIGN_ASSET(2) char common_tlut_debug_font[] = "__OTR__common_data/
 static const ALIGN_ASSET(2) char common_texture_debug_font[] = "__OTR__common_data/common_texture_debug_font";
 
 static const ALIGN_ASSET(2) char D_0D0076F8[] = "__OTR__common_data/D_0D0076F8";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7780[] = "__OTR__common_data/common_data_seg13_gfx_7780";
 
 static const ALIGN_ASSET(2) char D_0D007780[] = "__OTR__common_data/D_0D007780";
 
@@ -253,6 +275,8 @@ static const ALIGN_ASSET(2) char D_0D0078D0[] = "__OTR__common_data/D_0D0078D0";
 
 static const ALIGN_ASSET(2) char D_0D0078F8[] = "__OTR__common_data/D_0D0078F8";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_78F8[] = "__OTR__common_data/common_data_seg13_gfx_78F8";
+
 static const ALIGN_ASSET(2) char D_0D007928[] = "__OTR__common_data/D_0D007928";
 
 static const ALIGN_ASSET(2) char D_0D007948[] = "__OTR__common_data/D_0D007948";
@@ -268,6 +292,8 @@ static const ALIGN_ASSET(2) char D_0D0079C8[] = "__OTR__common_data/D_0D0079C8";
 static const ALIGN_ASSET(2) char D_0D0079E8[] = "__OTR__common_data/D_0D0079E8";
 
 static const ALIGN_ASSET(2) char D_0D007A08[] = "__OTR__common_data/D_0D007A08";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7A08[] = "__OTR__common_data/common_data_seg13_gfx_7A08";
 
 static const ALIGN_ASSET(2) char D_0D007A40[] = "__OTR__common_data/D_0D007A40";
 
@@ -288,6 +314,8 @@ static const ALIGN_ASSET(2) char D_0D007B20[] = "__OTR__common_data/D_0D007B20";
 static const ALIGN_ASSET(2) char D_0D007B98[] = "__OTR__common_data/D_0D007B98";
 
 static const ALIGN_ASSET(2) char D_0D007C10[] = "__OTR__common_data/D_0D007C10";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7C88[] = "__OTR__common_data/common_data_seg13_gfx_7C88";
 
 static const ALIGN_ASSET(2) char D_0D007C88[] = "__OTR__common_data/D_0D007C88";
 
@@ -327,6 +355,10 @@ static const ALIGN_ASSET(2) char D_0D007EB8[] = "__OTR__common_data/D_0D007EB8";
 
 static const ALIGN_ASSET(2) char D_0D007ED8[] = "__OTR__common_data/D_0D007ED8";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7ED8[] = "__OTR__common_data/common_data_seg13_gfx_7ED8";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7EF8[] = "__OTR__common_data/common_data_seg13_gfx_7EF8";
+
 static const ALIGN_ASSET(2) char D_0D007EF8[] = "__OTR__common_data/D_0D007EF8";
 
 static const ALIGN_ASSET(2) char D_0D007F18[] = "__OTR__common_data/D_0D007F18";
@@ -341,11 +373,15 @@ static const ALIGN_ASSET(2) char D_0D007F98[] = "__OTR__common_data/D_0D007F98";
 
 static const ALIGN_ASSET(2) char D_0D007FB8[] = "__OTR__common_data/D_0D007FB8";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_7FB8[] = "__OTR__common_data/common_data_seg13_gfx_7FB8";
+
 static const ALIGN_ASSET(2) char D_0D007FE0[] = "__OTR__common_data/D_0D007FE0";
 
 static const ALIGN_ASSET(2) char D_0D008000[] = "__OTR__common_data/D_0D008000";
 
 static const ALIGN_ASSET(2) char D_0D008020[] = "__OTR__common_data/D_0D008020";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_8020[] = "__OTR__common_data/common_data_seg13_gfx_8020";
 
 static const ALIGN_ASSET(2) char D_0D008040[] = "__OTR__common_data/D_0D008040";
 
@@ -369,6 +405,8 @@ static const ALIGN_ASSET(2) char D_0D008C38[] = "__OTR__common_data/D_0D008C38";
 
 static const ALIGN_ASSET(2) char common_square_plain_render[] = "__OTR__common_data/common_square_plain_render";
 
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_8C78[] = "__OTR__common_data/common_data_seg13_gfx_8C78";
+
 static const ALIGN_ASSET(2) char D_0D008C90[] = "__OTR__common_data/D_0D008C90";
 
 static const ALIGN_ASSET(2) char common_setting_render_character[] = "__OTR__common_data/common_setting_render_character";
@@ -378,6 +416,8 @@ static const ALIGN_ASSET(2) char D_0D008D10[] = "__OTR__common_data/D_0D008D10";
 static const ALIGN_ASSET(2) char D_0D008D58[] = "__OTR__common_data/D_0D008D58";
 
 static const ALIGN_ASSET(2) char D_0D008DA0[] = "__OTR__common_data/D_0D008DA0";
+
+static const ALIGN_ASSET(2) char common_data_seg13_gfx_8DA0[] = "__OTR__common_data/common_data_seg13_gfx_8DA0";
 
 static const ALIGN_ASSET(2) char D_0D008DB8[] = "__OTR__common_data/D_0D008DB8";
 
@@ -806,5 +846,21 @@ static const char* common_texture_minimap_kart_character[] = {
 	common_texture_minimap_kart_bowser,
 };
 
+static const ALIGN_ASSET(2) char common_texture_minimap_bowser[] = "__OTR__common_data/common_texture_minimap_bowser";
+
 static const ALIGN_ASSET(2) char common_texture_minimap_progress_dot[] = "__OTR__common_data/common_texture_minimap_progress_dot";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_mario[] = "__OTR__common_data/common_texture_minimap_mario";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_luigi[] = "__OTR__common_data/common_texture_minimap_luigi";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_yoshi[] = "__OTR__common_data/common_texture_minimap_yoshi";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_toad[] = "__OTR__common_data/common_texture_minimap_toad";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_dk[] = "__OTR__common_data/common_texture_minimap_dk";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_wario[] = "__OTR__common_data/common_texture_minimap_wario";
+
+static const ALIGN_ASSET(2) char common_texture_minimap_peach[] = "__OTR__common_data/common_texture_minimap_peach";
 

@@ -69,7 +69,7 @@ void assign_player_slots(const char* data) {
     testa = 1;
     int offset = 0;
     printf("Assign Player Slots\n");
-    for (int i = 0; i < NETWORK_MAX_PLAYERS; ++i) {
+    for (size_t i = 0; i < NETWORK_MAX_PLAYERS; ++i) {
         // Read username
 
         int usernameLength = *(int*) (data + offset);

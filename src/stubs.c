@@ -124,7 +124,7 @@ s32 osPfsFreeBlocks(OSPfs* pfs, s32* bytes_not_used) {
 s32 osPfsFindFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, u8* ext_name, s32* file_no) {
     char filename[1024];
     sprintf(filename, "channel_%d_%hu_%hd_%s.sav", pfs->channel, company_code, game_code, game_name);
-    for (int i = 0; i < 16; i++) {
+    for (size_t i = 0; i < 16; i++) {
         if (openFile[i].state.game_code == game_code && openFile[i].state.company_code == company_code &&
             strcmp(openFile[i].state.game_name, game_name) == 0 && strcmp(openFile[i].state.ext_name, ext_name) == 0) {
             *file_no = i;

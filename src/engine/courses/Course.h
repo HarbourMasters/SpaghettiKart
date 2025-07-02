@@ -61,6 +61,8 @@ typedef struct MinimapProps {
     RGB8 Colour; // Colour of the visible pixels (the track path)
 } MinimapProps;
 
+void ResizeMinimap(MinimapProps* minimap);
+
 typedef struct Properties {
     char Name[128];
     char DebugName[128];

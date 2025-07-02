@@ -48,6 +48,7 @@ float gInterpolationStep = 0.0f;
 #include <BlobFactory.h>
 #include <VertexFactory.h>
 #include <LightFactory.h>
+// #include <PngFactory.h>
 #include "audio/internal.h"
 #include "audio/GameAudio.h"
 }
@@ -60,6 +61,19 @@ Fast::Interpreter* GetInterpreter() {
 }
 
 GameEngine* GameEngine::Instance;
+
+bool CreateDirectoryRecursive(std::string const& dirName, std::error_code& err) {
+    err.clear();
+    if (!std::filesystem::create_directories(dirName, err)) {
+        if (std::filesystem::exists(dirName)) {
+            // The folder already exists:
+            err.clear();
+            return true;
+        }
+        return false;
+    }
+    return true;
+}
 
 GameEngine::GameEngine() {
 
@@ -95,7 +109,6 @@ GameEngine::GameEngine() {
     if (std::filesystem::exists(assets_path)) {
         archiveFiles.push_back(assets_path);
     }
-
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
         !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
@@ -477,8 +490,8 @@ void GameEngine::HandleAudioThread() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-        s16 audio_buffer[SAMPLES_PER_FRAME];
-        for (int i = 0; i < NUM_AUDIO_CHANNELS; i++) {
+        s16 audio_buffer[SAMPLES_PER_FRAME] = { 0 };
+        for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
 
@@ -683,6 +696,17 @@ static const char* sOtrSignature = "__OTR__";
 
 extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return strncmp(data, sOtrSignature, strlen(sOtrSignature)) == 0;
+}
+
+extern "C" int32_t GameEngine_ResourceGetTexTypeByName(const char* name) {
+    const auto res = std::static_pointer_cast<Fast::Texture>(ResourceLoad(name));
+
+    if (res != nullptr) {
+        return (int16_t) res->Type;
+    }
+
+    SPDLOG_ERROR("Given texture path is a non-existent resource");
+    return -1;
 }
 
 // struct TimedEntry {

@@ -89,7 +89,7 @@ LuigiRaceway::LuigiRaceway() {
     this->gfx = d_course_luigi_raceway_packed_dls;
     this->gfxSize = 6377;
     Props.textures = luigi_raceway_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineLuigiRaceway;
+    Props.Minimap.Texture = minimap_luigi_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 271;
@@ -99,6 +99,7 @@ LuigiRaceway::LuigiRaceway() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:luigi_raceway";
     Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
@@ -158,6 +159,9 @@ LuigiRaceway::LuigiRaceway() {
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 216, 232, 248 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    for (size_t i = 0; i < 120; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) luigi_raceway_dls[i], Props.textures);
+    }
 }
 
 void LuigiRaceway::Load() {
@@ -169,8 +173,8 @@ void LuigiRaceway::Load() {
 }
 
 void LuigiRaceway::LoadTextures() {
-    dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U);
-    dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U); // 0x03009000
+    dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U); // 0x03009800
 }
 
 void LuigiRaceway::BeginPlay() {

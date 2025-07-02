@@ -45,7 +45,7 @@ BlockFort::BlockFort() {
     this->gfx = d_course_block_fort_packed_dls;
     this->gfxSize = 699;
     Props.textures = block_fort_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineBlockFort;
+    Props.Minimap.Texture = minimap_block_fort;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 257;
@@ -55,6 +55,7 @@ BlockFort::BlockFort() {
     Props.Minimap.PlayerScaleFactor = 0.0335f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "block fort", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "block", sizeof(Props.DebugName));

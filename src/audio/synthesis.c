@@ -470,11 +470,12 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                 if (loopInfo_2 != 0) {
                     temp_t6 = ((synthesisState->samplePosInt - s3) + 16) / 16; // diff from sm64 sh
                     if (audioBookSample->loaded == 0x81) {                     // sm64 has audioBookSample->medium
-                        var_a0_2 = (temp_t6 * 9) + sampleAddr;
+                        var_a0_2 = &sampleAddr[temp_t6 * 9];
                     } else {
                         var_a0_2 = (temp_t6 * 9) + sampleAddr;
                         // var_a0_2 =
-                        //     dma_sample_data((uintptr_t) (temp_t6 * 9) + sampleAddr, ALIGN(((loopInfo_2 * 9) + 16), 4),
+                        //     dma_sample_data((uintptr_t) (temp_t6 * 9) + sampleAddr, ALIGN(((loopInfo_2 * 9) + 16),
+                        //     4),
                         //                     flags, &synthesisState->sampleDmaIndex);
                         //                                                                        unsure   flags?
                     }
@@ -576,7 +577,7 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                                             resampledTempLen + DMEM_ADDR_RESAMPLED);
                             break;
                     }
-                    //break;
+                    // break;
             }
             if (noteSubEu->finished != false) {
                 break;

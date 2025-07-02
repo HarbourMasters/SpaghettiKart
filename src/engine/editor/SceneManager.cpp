@@ -147,7 +147,7 @@ namespace Editor {
                 course->Props.Minimap.Width = texture.Width;
                 course->Props.Minimap.Height = texture.Height;
             } else { // Fallback
-                course->Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+                course->Props.Minimap.Texture = minimap_mario_raceway;
                 course->Props.Minimap.Width = ResourceGetTexWidthByName(course->Props.Minimap.Texture);
                 course->Props.Minimap.Height = ResourceGetTexHeightByName(course->Props.Minimap.Texture);
             }

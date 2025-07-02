@@ -550,6 +550,7 @@ gTextureBat1:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
 gTextureBat2:
   symbol: gTextureBat2
   type: texture
@@ -558,6 +559,7 @@ gTextureBat2:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
 gTextureBat3:
   symbol: gTextureBat3
   type: texture
@@ -566,6 +568,7 @@ gTextureBat3:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
 gTextureBat4:
   symbol: gTextureBat4
   type: texture
@@ -574,6 +577,7 @@ gTextureBat4:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
 d_course_banshee_boardwalk_texture:
   symbol: d_course_banshee_boardwalk_texture
   type: texture

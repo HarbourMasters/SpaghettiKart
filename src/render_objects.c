@@ -936,7 +936,11 @@ void func_800484BC(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8* tlut, u8* te
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007E18);
     set_transparency(arg3);
-    draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
+    gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+    rsp_load_texture(texture, arg9, arg8);
+    gSPVertex(gDisplayListHead++, arg6, 4, 0);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void func_80048540(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8* tlut, u8* texture, Vtx* arg6, s32 arg7, s32 arg8,
@@ -2068,16 +2072,16 @@ void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 
     gDPLoadTextureTile(gDisplayListHead++, texture, G_IM_FMT_RGBA, G_IM_SIZ_32b, width, height, 0, 0, width - 1,
                        height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
                        G_TX_NOLOD, G_TX_NOLOD);
-    gSPWideTextureRectangle(gDisplayListHead++, currX * 4, currY * 4, ((x + width) << 2), ((y + height) << 2),
-                            G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
+    gSPWideTextureRectangle(gDisplayListHead++, currX * 4, currY * 4, ((x + (width / 2)) << 2),
+                            ((y + (height / 2)) << 2), G_TX_RENDERTILE, 0, 0, 1 << 10, 1 << 10);
 
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
 void render_game_logo(s16 x, s16 y) {
-    render_texture_tile_rgba32_block(x, y, LOAD_ASSET(gTextureLogoMarioKart64),
-                                     ResourceGetTexWidthByName(gTextureLogoMarioKart64),
-                                     ResourceGetTexHeightByName(gTextureLogoMarioKart64));
+    int32_t height = 128;
+    int32_t width = ResourceGetTexWidthByName(logo_mario_kart_64) * height / ResourceGetTexHeightByName(logo_mario_kart_64);
+    render_texture_tile_rgba32_block(x, y, logo_mario_kart_64, width, height);
 }
 
 UNUSED void func_8004C91C(s32 arg0, s32 arg1, u8* texture, s32 arg3, s32 arg4, s32 arg5) {
@@ -2253,42 +2257,34 @@ void func_8004D210(s32 arg0, s32 arg1, u8* texture, s32 arg3, s32 arg4, s32 arg5
     }
 }
 
-void func_8004D37C(s32 arg0, s32 arg1, u8* texture, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8,
-                   UNUSED s32 arg9, s32 height) {
+void func_8004D37C(s32 x, s32 y, u8* texture, s32 red, s32 green, s32 blue, s32 alpha, s32 width, s32 height,
+                   UNUSED s32 width2, s32 height2) {
     s32 var_s3;
     u8* img;
     s32 i;
 
-    var_s3 = arg1 - (arg8 / 2);
     img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
-    func_8004B414(arg3, arg4, arg5, arg6);
+    func_8004B414(red, green, blue, alpha);
 
-    for (i = 0; i < arg8 / height; i++) {
-        func_80044F34(img, width, height);
-        func_8004B97C_wide(arg0 - (width / 2), var_s3, width, height, 1);
-        img += (width * height) / 2;
-        var_s3 += height;
-    }
+    func_80044F34(img, width, height);
+    func_8004B97C_wide(x - (width / 2), y - (height / 2), width, height, 1);
 }
 
-void func_8004D4E8(s32 arg0, s32 arg1, u8* texture, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 width, s32 arg8,
-                   UNUSED s32 arg9, s32 height) {
+void func_8004D4E8(s32 arg0, s32 arg1, u8* texture, s32 red, s32 green, s32 blue, s32 alpha, s32 width, s32 height,
+                   UNUSED s32 width2, s32 height2) {
     s32 var_s3;
     u8* img;
     s32 i;
 
-    var_s3 = arg1 - (arg8 / 2);
+    var_s3 = arg1 - (height / 2);
     img = texture;
     gSPDisplayList(gDisplayListHead++, D_0D007FE0);
-    func_8004B414(arg3, arg4, arg5, arg6);
-
-    for (i = 0; i < arg8 / height; i++) {
-        func_800450C8(img, width, height);
-        func_8004BA08(arg0 - (width / 2), var_s3, width, height, 1);
-        img += (width * height) / 2;
-        var_s3 += height;
-    }
+    func_8004B414(red, green, blue, alpha);
+    func_800450C8(img, width, height2);
+    func_8004BA08(arg0 - (width / 2), var_s3, width, height2, 1);
+    img += (width * height2) / 2;
+    var_s3 += height2;
 }
 
 void func_8004D654(s32 arg0, s32 arg1, u8* texture, f32 arg3, s32 arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 width,
@@ -2766,17 +2762,22 @@ void set_minimap_finishline_position(s32 playerId) {
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
 }
 
+char* common_texture_minimap_progress[] = {
+    common_texture_minimap_mario, common_texture_minimap_luigi,  common_texture_minimap_yoshi,
+    common_texture_minimap_toad,  common_texture_minimap_dk,     common_texture_minimap_wario,
+    common_texture_minimap_peach, common_texture_minimap_bowser,
+};
+
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/FxA1w
 /**
  * characterId of 8 appears to be a type of null check or control flow alteration.
  */
-#define EXPLICIT_AND 1
-void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
+void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     f32 thing0;
     f32 thing1;
-    s16 temp_a0;
-    s16 temp_a1;
+    s16 x;
+    s16 y;
     s32 center = 0;
     Player* player = &gPlayerOne[playerId];
 
@@ -2794,36 +2795,24 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
             center = CM_GetProps()->Minimap.Pos[arg0].X;
         }
 
-        temp_a0 = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX + (s16) (thing0);
-        temp_a1 = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) +
+        x = (center - (CM_GetProps()->Minimap.Width / 2)) + CM_GetProps()->Minimap.PlayerX + (s16) (thing0);
+        y = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) +
                   CM_GetProps()->Minimap.PlayerY + (s16) (thing1);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
-#if EXPLICIT_AND == 1
-                func_80046424(temp_a0, temp_a1, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
+                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
-#else
-                func_80046424(temp_a0, temp_a1, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
             } else {
-#if EXPLICIT_AND == 1
-                func_800463B0(temp_a0, temp_a1, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
+                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
-#else
-                func_800463B0(temp_a0, temp_a1, player->rotation[1] + 0x8000, 1.0f,
-                              (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
-                              8, 8, 8, 8);
-#endif
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
-                func_8004C450(temp_a0, temp_a1, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress[player->characterId]);
             } else {
-                draw_hud_2d_texture_wide(temp_a0, temp_a1, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture_wide(x, y, 8, 8, (u8*) common_texture_minimap_progress[player->characterId]);
             }
         }
     }
@@ -2832,9 +2821,8 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     FrameInterpolation_ShouldInterpolateFrame(true);
 
 }
-#undef EXPLICIT_AND
 #else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_8004F168.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/draw_minimap_character.s")
 #endif
 
 // WTF is up with the gPlayerOne access in this function?
@@ -2848,34 +2836,34 @@ void func_8004F3E4(s32 arg0) {
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
                 if ((gPlayerOne + playerId)->type & PLAYER_CPU) {
-                    func_8004F168(arg0, playerId, 8);
+                    draw_minimap_character(arg0, playerId, 8);
                 }
             }
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
                 if (((gPlayerOne + playerId)->type & PLAYER_CPU) != PLAYER_CPU) {
-                    func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
+                    draw_minimap_character(arg0, playerId, (gPlayerOne + playerId)->characterId);
                 }
             }
             break;
         case TIME_TRIALS:
             for (idx = 0; idx < 8; idx++) {
                 if (((gPlayerOne + idx)->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
-                    func_8004F168(arg0, idx, 8);
+                    draw_minimap_character(arg0, idx, 8);
                 }
             }
-            func_8004F168(arg0, 0, gPlayerOne->characterId);
+            draw_minimap_character(arg0, 0, gPlayerOne->characterId);
             break;
         case VERSUS:
             for (idx = gPlayerCountSelection1 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
+                draw_minimap_character(arg0, playerId, (gPlayerOne + playerId)->characterId);
             }
             break;
         case BATTLE:
             for (idx = 0; idx < gPlayerCountSelection1; idx++) {
                 if (!((gPlayerOne + idx)->type & PLAYER_UNKNOWN_0x40)) {
-                    func_8004F168(arg0, idx, (gPlayerOne + idx)->characterId);
+                    draw_minimap_character(arg0, idx, (gPlayerOne + idx)->characterId);
                 }
             }
             break;
@@ -3472,7 +3460,7 @@ struct ObjectInterpData prevObject[OBJECT_LIST_SIZE] = { 0 };
 void func_800518F8(s32 objectIndex, s16 x, s16 y) {
 
     // Search all recorded objects for the one we're drawing
-    for (int i = 0; i < OBJECT_LIST_SIZE; i++) {
+    for (size_t i = 0; i < OBJECT_LIST_SIZE; i++) {
         if (objectIndex == prevObject[i].objectIndex) {
             // Coincidence!
             // Skip drawing the object this frame if it warped to the other side of the screen

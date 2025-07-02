@@ -66,7 +66,7 @@ WarioStadium::WarioStadium() {
     this->gfx = d_course_wario_stadium_packed_dls;
     this->gfxSize = 5272;
     Props.textures = wario_stadium_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineWarioStadium;
+    Props.Minimap.Texture = minimap_wario_stadium;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -76,6 +76,7 @@ WarioStadium::WarioStadium() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
@@ -140,6 +141,9 @@ WarioStadium::WarioStadium() {
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 0, 0, 0 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    for (size_t i = 0; i < 108; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) wario_stadium_dls[i], Props.textures);
+    }
 }
 
 void WarioStadium::Load() {

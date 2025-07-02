@@ -4,12 +4,12 @@
   no_compression: true
   header:
     code:
-    - '#include <assets/texture_data_2.h>'
-    - '#include <macros.h>'
-    - '#include <defines.h>'
+      - "#include <assets/texture_data_2.h>"
+      - "#include <macros.h>"
+      - "#include <defines.h>"
     header:
-    - '#include <libultraship.h>'
-    - '#include <align_asset_macro.h>'
+      - "#include <libultraship.h>"
+      - "#include <align_asset_macro.h>"
 small_letter_0:
   symbol: gTextureSmallFont0
   type: texture
@@ -667,7 +667,7 @@ tiny_font_minus:
   offset: 0xC5118
   mio0: true
   format: ia16
-tiny_font_comma:
+tiny_font_dot:
   symbol: gTextureTinyFontComma
   type: texture
   ctype: u16
@@ -1468,40 +1468,40 @@ texture_7F109C:
   offset: 0xC766C
   mio0: true
   format: ia16
-7F1124:
-  symbol: gTexture7F1124
+font_four_dote:
+  symbol: font_four_dote
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC76F4
   format: i4
-7F11F4:
-  symbol: gTexture7F11F4
+font_cc:
+  symbol: font_cc
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC77C4
   format: i4
-7F12C4:
-  symbol: gTexture7F12C4
+font_double_quote:
+  symbol: font_double_quote
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7894
   format: i4
-7F1394:
-  symbol: gTexture7F1394
+font_exclamation_mark:
+  symbol: font_exclamation_mark
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7964
   format: i4
-7F1464:
-  symbol: gTexture7F1464
+font_minus:
+  symbol: font_minus
   type: texture
   ctype: u16
   width: 26
@@ -1509,15 +1509,15 @@ texture_7F109C:
   offset: 0xC7A34
   format: i4
 7F1534:
-  symbol: gTexture7F1534
+  symbol: font_dot
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7B04
   format: i4
-7F1604:
-  symbol: gTexture7F1604
+font_plus:
+  symbol: font_plus
   type: texture
   ctype: u16
   width: 26
@@ -1525,7 +1525,7 @@ texture_7F109C:
   offset: 0xC7BD4
   format: i4
 7F16D4:
-  symbol: gTexture7F16D4
+  symbol: font_interogation_mark
   type: texture
   ctype: u16
   width: 26
@@ -1533,295 +1533,295 @@ texture_7F109C:
   offset: 0xC7CA4
   format: i4
 7F17A4:
-  symbol: gTexture7F17A4
+  symbol: font_simple_quote
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7D74
   format: i4
-7F1874:
-  symbol: gTexture7F1874
+font_number_zero:
+  symbol: font_number_zero
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7E44
   format: i4
-7F1944:
-  symbol: gTexture7F1944
+font_number_one:
+  symbol: font_number_one
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7F14
   format: i4
-7F1A14:
-  symbol: gTexture7F1A14
+font_number_two:
+  symbol: font_number_two
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC7FE4
   format: i4
-7F1AE4:
-  symbol: gTexture7F1AE4
+font_number_three:
+  symbol: font_number_three
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC80B4
   format: i4
-7F1BB4:
-  symbol: gTexture7F1BB4
+font_number_four:
+  symbol: font_number_four
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8184
   format: i4
-7F1C84:
-  symbol: gTexture7F1C84
+font_number_five:
+  symbol: font_number_five
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8254
   format: i4
-7F1D54:
-  symbol: gTexture7F1D54
+font_number_six:
+  symbol: font_number_six
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8324
   format: i4
-7F1E24:
-  symbol: gTexture7F1E24
+font_number_seven:
+  symbol: font_number_seven
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC83F4
   format: i4
-7F1EF4:
-  symbol: gTexture7F1EF4
+font_number_eight:
+  symbol: font_number_eight
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC84C4
   format: i4
-7F1FC4:
-  symbol: gTexture7F1FC4
+font_number_nine:
+  symbol: font_number_nine
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8594
   format: i4
-7F2094:
-  symbol: gTexture7F2094
+font_letter_A:
+  symbol: font_letter_A
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8664
   format: i4
-7F2164:
-  symbol: gTexture7F2164
+font_letter_B:
+  symbol: font_letter_B
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8734
   format: i4
-7F2234:
-  symbol: gTexture7F2234
+font_letter_C:
+  symbol: font_letter_C
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8804
   format: i4
-7F2304:
-  symbol: gTexture7F2304
+font_letter_D:
+  symbol: font_letter_D
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC88D4
   format: i4
-7F23D4:
-  symbol: gTexture7F23D4
+font_letter_E:
+  symbol: font_letter_E
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC89A4
   format: i4
-7F24A4:
-  symbol: gTexture7F24A4
+font_letter_F:
+  symbol: font_letter_F
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8A74
   format: i4
-7F2574:
-  symbol: gTexture7F2574
+font_letter_G:
+  symbol: font_letter_G
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8B44
   format: i4
-7F2644:
-  symbol: gTexture7F2644
+font_letter_H:
+  symbol: font_letter_H
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8C14
   format: i4
-7F2714:
-  symbol: gTexture7F2714
+font_letter_I:
+  symbol: font_letter_I
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8CE4
   format: i4
-7F27E4:
-  symbol: gTexture7F27E4
+font_letter_J:
+  symbol: font_letter_J
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8DB4
   format: i4
-7F28B4:
-  symbol: gTexture7F28B4
+font_letter_K:
+  symbol: font_letter_K
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8E84
   format: i4
-7F2984:
-  symbol: gTexture7F2984
+font_letter_L:
+  symbol: font_letter_L
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC8F54
   format: i4
-7F2A54:
-  symbol: gTexture7F2A54
+font_letter_M:
+  symbol: font_letter_M
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9024
   format: i4
-7F2B24:
-  symbol: gTexture7F2B24
+font_letter_N:
+  symbol: font_letter_N
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC90F4
   format: i4
-7F2BF4:
-  symbol: gTexture7F2BF4
+font_letter_O:
+  symbol: font_letter_O
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC91C4
   format: i4
-7F2CC4:
-  symbol: gTexture7F2CC4
+font_letter_P:
+  symbol: font_letter_P
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9294
   format: i4
-7F2D94:
-  symbol: gTexture7F2D94
+font_letter_Q:
+  symbol: font_letter_Q
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9364
   format: i4
-7F2E64:
-  symbol: gTexture7F2E64
+font_letter_R:
+  symbol: font_letter_R
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9434
   format: i4
-7F2F34:
-  symbol: gTexture7F2F34
+font_letter_S:
+  symbol: font_letter_S
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9504
   format: i4
-7F3004:
-  symbol: gTexture7F3004
+font_letter_T:
+  symbol: font_letter_T
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC95D4
   format: i4
-7F30D4:
-  symbol: gTexture7F30D4
+font_letter_U:
+  symbol: font_letter_U
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC96A4
   format: i4
-7F31A4:
-  symbol: gTexture7F31A4
+font_letter_V:
+  symbol: font_letter_V
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9774
   format: i4
-7F3274:
-  symbol: gTexture7F3274
+font_letter_W:
+  symbol: font_letter_W
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9844
   format: i4
-7F3344:
-  symbol: gTexture7F3344
+font_letter_X:
+  symbol: font_letter_X
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC9914
   format: i4
-7F3414:
-  symbol: gTexture7F3414
+font_letter_Y:
+  symbol: font_letter_Y
   type: texture
   ctype: u16
   width: 26
   height: 16
   offset: 0xC99E4
   format: i4
-7F34E4:
-  symbol: gTexture7F34E4
+font_letter_Z:
+  symbol: font_letter_Z
   type: texture
   ctype: u16
   width: 26
@@ -3308,8 +3308,8 @@ texture_7F109C:
   height: 16
   offset: 0xD0594
   format: i4
-7FA044:
-  symbol: gTexture7FA044
+font_apostrophe:
+  symbol: font_apostrophe
   type: texture
   ctype: u16
   width: 16
@@ -3341,7 +3341,7 @@ texture_7F109C:
   offset: 0xD0834
   format: i4
 7FA334:
-  symbol: gTexture7FA334
+  symbol: font_comma
   type: texture
   ctype: u16
   width: 16
