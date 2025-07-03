@@ -2349,13 +2349,13 @@ void func_80078288(s32 objectIndex) {
             break;
         case 1:
             if (gGamestate != 9) {
-                sp3A = ((gPlayerOneCopy->speed / 18) * 216) / 2;
+                sp3A = ((gPlayerOne->speed / 18) * 216) / 2;
                 sp3E = (random_int(0x000FU) - sp3A) + 0x2D;
                 sp3C = random_int(0x012CU) + 0x1E;
                 temp_t6 = camera1->rot[1] + ((s32) (random_int(0x3000U) - 0x1800) / (s16) ((sp3A / 15) + 1));
-                gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(temp_t6) * sp3C);
-                gObjectList[objectIndex].origin_pos[1] = sp3E + gPlayerOneCopy->unk_074;
-                gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(temp_t6) * sp3C);
+                gObjectList[objectIndex].origin_pos[0] = gPlayerOne->pos[0] + (sins(temp_t6) * sp3C);
+                gObjectList[objectIndex].origin_pos[1] = sp3E + gPlayerOne->unk_074;
+                gObjectList[objectIndex].origin_pos[2] = gPlayerOne->pos[2] + (coss(temp_t6) * sp3C);
                 gObjectList[objectIndex].unk_0C4 = random_int(0x0400U) + 0x100;
                 gObjectList[objectIndex].unk_01C[0] = (f32) (((f32) random_int(0x0064U) * 0.03) + 2.0);
                 gObjectList[objectIndex].velocity[1] = (f32) (-0.3 - (f64) (f32) (random_int(0x0032U) * 0.01));
