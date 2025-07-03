@@ -72,7 +72,7 @@ BowsersCastle::BowsersCastle() {
     this->gfx = d_course_bowsers_castle_packed_dls;
     this->gfxSize = 4900;
     Props.textures = bowsers_castle_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineBowsersCastle;
+    Props.Minimap.Texture = minimap_bowsers_castle;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 265;
@@ -82,6 +82,7 @@ BowsersCastle::BowsersCastle() {
     Props.Minimap.PlayerScaleFactor = 0.0174f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:bowsers_castle";
 
@@ -97,34 +98,34 @@ BowsersCastle::BowsersCastle() {
     Props.NearPersp = 2.0f;
     Props.FarPersp = 2700.0f;
 
-    Props.PathSizes = {0x30C, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+    Props.PathSizes = { 0x30C, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_unknown_waypoints);
+    Props.PathTable[0] = (TrackPathPoint*) LOAD_ASSET_RAW(d_course_bowsers_castle_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_bowsers_castle_track_waypoints);
+    Props.PathTable2[0] = (TrackPathPoint*) LOAD_ASSET_RAW(d_course_bowsers_castle_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -132,18 +133,21 @@ BowsersCastle::BowsersCastle() {
     Props.Clouds = NULL; // no clouds
     Props.CloudList = NULL;
 
-    Props.Skybox.TopRight = {48, 8, 120};
-    Props.Skybox.BottomRight = {0, 0, 0};
-    Props.Skybox.BottomLeft = {0, 0, 0};
-    Props.Skybox.TopLeft = {48, 8, 120};
-    Props.Skybox.FloorTopRight = {0, 0, 0};
-    Props.Skybox.FloorBottomRight = {0, 0, 0};
-    Props.Skybox.FloorBottomLeft = {0, 0, 0};
-    Props.Skybox.FloorTopLeft = {0, 0, 0};
+    Props.Skybox.TopRight = { 48, 8, 120 };
+    Props.Skybox.BottomRight = { 0, 0, 0 };
+    Props.Skybox.BottomLeft = { 0, 0, 0 };
+    Props.Skybox.TopLeft = { 48, 8, 120 };
+    Props.Skybox.FloorTopRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomRight = { 0, 0, 0 };
+    Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
+    Props.Skybox.FloorTopLeft = { 0, 0, 0 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_BOWSERS_CASTLE;
 
     Props.WaterLevel = -50.0f;
     WaterVolumes.push_back({20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f});
+    for (size_t i = 0; i < 108; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) bowsers_castle_dls[i], Props.textures);
+    }
 }
 
 void BowsersCastle::Load() {
@@ -155,7 +159,7 @@ void BowsersCastle::Load() {
 }
 
 void BowsersCastle::LoadTextures() {
-    dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
+    dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U); // 0x03009000
 }
 
 // Required for the 2 thwomps that go far
@@ -226,13 +230,13 @@ void BowsersCastle::BeginPlay() {
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
 
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][150], 150, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][260], 260, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][435], 435, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][150], 150, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][200], 200, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][260], 260, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][435], 435, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
     }
 }
 
@@ -268,7 +272,7 @@ void BowsersCastle::UpdateCourseObjects() {
 }
 
 void BowsersCastle::RenderCourseObjects(s32 cameraId) {
-    //render_object_thwomps(cameraId);
+    // render_object_thwomps(cameraId);
     render_object_bowser_flame(cameraId);
 }
 
@@ -276,8 +280,8 @@ void BowsersCastle::SomeSounds() {
 }
 
 void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x29) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x41);
         }
@@ -291,8 +295,8 @@ void BowsersCastle::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x29) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1D2)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x29) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1D2)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x41);
         }
@@ -333,7 +337,7 @@ void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
 }
 
 void BowsersCastle::RenderCredits() {
-    gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_bowsers_castle_dl_9148));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_bowsers_castle_dl_9148));
 }
 
 void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
@@ -341,20 +345,21 @@ void BowsersCastle::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, V
 }
 
 void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
-    s16 waypoint = gNearestWaypointByPlayerId[playerId];
+    s16 waypoint = gNearestPathPointByPlayerId[playerId];
     if ((waypoint >= 0x235) && (waypoint < 0x247)) {
-        player->nearestWaypointId = 0x214;
+        player->nearestPathPointId = 0x214;
     } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
-        player->nearestWaypointId = 0x25B;
+        player->nearestPathPointId = 0x25B;
     } else {
-        player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-        if (player->nearestWaypointId < 0) {
-            player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+        player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+        if (player->nearestPathPointId < 0) {
+            player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
         }
     }
 }
 
-void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+                              uint16_t playerDirection) {
     if (gActiveScreenMode != SCREEN_MODE_1P) {
         return;
     }
@@ -372,11 +377,12 @@ void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCo
             return;
         }
     }
-    gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_bowsers_castle_dl_9228);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_bowsers_castle_dl_9228);
 }
 
 void BowsersCastle::CreditsSpawnActors() {
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001350), 0x32, 0, 0, 0);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07001350), 0x32, 0, 0, 0);
 }
 
-void BowsersCastle::Destroy() { }
+void BowsersCastle::Destroy() {
+}

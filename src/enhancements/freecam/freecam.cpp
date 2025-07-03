@@ -94,12 +94,12 @@ void freecam(Camera* camera, Player* player, s8 index) {
 
 void on_freecam(void) {
     gIsHUDVisible = false;
-   // gPlayerOne->type |= PLAYER_KART_AI;
+   // gPlayerOne->type |= PLAYER_CPU;
 }
 
 void off_freecam(void) {
     gIsHUDVisible = true;
-    gPlayerOne->type &= ~PLAYER_KART_AI;
+    gPlayerOne->type &= ~PLAYER_CPU;
 }
 
 void freecam_loop(Camera* camera, Player* player, s8 index) {

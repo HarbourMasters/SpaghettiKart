@@ -54,7 +54,7 @@ public:
     explicit World();
     ~World();
 
-    Course* AddCourse(std::unique_ptr<Course> course);
+    std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
 
     AActor* AddActor(AActor* actor);
     struct Actor* AddBaseActor();
@@ -100,7 +100,7 @@ public:
     void SetCourseByType() {
         for (const auto& course : Courses) {
             if (dynamic_cast<T*>(course.get())) {
-                CurrentCourse = course.get();
+                CurrentCourse = course;
                 return;
             }
         }
@@ -112,7 +112,7 @@ public:
     Matrix Mtx;
 
 
-    Course* CurrentCourse;
+    std::shared_ptr<Course> CurrentCourse;
     Cup* CurrentCup;
 
     std::vector<Cup*> Cups;
@@ -132,7 +132,7 @@ public:
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
 
     // Holds all available courses
-    std::vector<std::unique_ptr<Course>> Courses;
+    std::vector<std::shared_ptr<Course>> Courses;
     size_t CourseIndex = 0; // For browsing courses.
 private:
 

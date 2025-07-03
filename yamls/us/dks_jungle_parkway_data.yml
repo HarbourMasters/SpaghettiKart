@@ -432,17 +432,17 @@ d_course_dks_jungle_parkway_dl_7108:
   offset: 0x7108
 d_course_dks_jungle_parkway_unknown_waypoints:
   symbol: d_course_dks_jungle_parkway_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x71F0
   count: 102
 d_course_dks_jungle_parkway_unknown_waypoints2:
   symbol: d_course_dks_jungle_parkway_unknown_waypoints2
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x7520
   count: 32
 d_course_dks_jungle_parkway_track_waypoints:
   symbol: d_course_dks_jungle_parkway_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x7620
   count: 787
 d_course_dks_jungle_parkway_paddle_boat_model1:

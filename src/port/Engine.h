@@ -112,6 +112,7 @@ uint32_t OTRGetGameViewportWidth();
 uint32_t OTRGetGameViewportHeight();
 uint32_t OTRCalculateCenterOfAreaFromRightEdge(int32_t center);
 uint32_t OTRCalculateCenterOfAreaFromLeftEdge(int32_t center);
+int32_t GameEngine_ResourceGetTexTypeByName(const char* name);
 #ifdef __cplusplus
 }
 #endif

@@ -64,7 +64,7 @@ Skyscraper::Skyscraper() {
     this->gfx = d_course_skyscraper_packed_dls;
     this->gfxSize = 548;
     Props.textures = skyscraper_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineSkyscraper;
+    Props.Minimap.Texture = minimap_skyscraper;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 257;
@@ -74,6 +74,7 @@ Skyscraper::Skyscraper() {
     Props.Minimap.PlayerScaleFactor = 0.0445f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "skyscraper", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "skyscraper", sizeof(Props.DebugName));
@@ -89,25 +90,25 @@ Skyscraper::Skyscraper() {
 
     Props.PathSizes = {1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
     Props.PathTable[0] = NULL;
     Props.PathTable[1] = NULL;
@@ -154,13 +155,13 @@ void Skyscraper::BeginPlay() {
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
 
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][20], 20, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][40], 40, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][60], 60, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][80], 80, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][100], 100, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][120], 120, 0, 1.0f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][20], 20, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][40], 40, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][60], 60, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][80], 80, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][100], 100, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][120], 120, 0, 1.0f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][140], 140, 0, 1.0f));
     }
 }
 
@@ -198,7 +199,7 @@ void Skyscraper::Render(struct UnkStruct_800DC5EC* arg0) {
 void Skyscraper::RenderCredits() {}
 
 void Skyscraper::Waypoints(Player* player, int8_t playerId) {
-    player->nearestWaypointId = 0;
+    player->nearestPathPointId = 0;
 }
 
 void Skyscraper::Destroy() { }

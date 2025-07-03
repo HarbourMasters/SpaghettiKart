@@ -25,7 +25,7 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
-Camera cameras[5];
+Camera cameras[8]; // This size should be 5 but there is an overflow somewhere in Bowser's Castle, so we allocate 8 cameras to avoid it.
 Camera* camera1 = &cameras[0];
 Camera* camera2 = &cameras[1];
 Camera* camera3 = &cameras[2];
@@ -369,9 +369,9 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     f32 temp_f18;
     f32 temp_f16;
     UNUSED s32 pad;
-    TrackWaypoint* temp_s2;
+    TrackPathPoint* temp_s2;
 
-    temp_s2 = &D_80164550[0][gWaypointCountByPathIndex[0] - 10];
+    temp_s2 = &gTrackPaths[0][gPathCountByPathIndex[0] - 10];
     sp68[0] = camera->unk_30[0];
     sp68[1] = camera->unk_30[1];
     sp68[2] = camera->unk_30[2];
@@ -523,7 +523,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -542,7 +542,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -743,7 +743,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] += (x - camera->lookAt[0]) * D_80164A78[index];
     arg2[2] += ((z - camera->lookAt[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
         arg2[1] += ((y - camera->lookAt[1]) * 0.02);
     } else {
         arg2[1] += ((y - camera->lookAt[1]) * 0.5);
@@ -762,7 +762,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     *arg3 = camera->pos[0] + ((x - camera->pos[0]) * D_80164A78[index]);
     *arg5 = camera->pos[2] + ((z - camera->pos[2]) * D_80164A78[index]);
 
-    if ((((player->unk_094 / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
+    if ((((player->speed / 18) * 216) <= 5.0f) && ((player->effects & 2) == 2)) {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.01));
     } else {
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
@@ -852,7 +852,7 @@ void func_8001E45C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;
@@ -974,7 +974,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
     UNUSED s16 pad6;
     s16 temp;
 
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         var_a3 = 100;
         if (player->unk_078 == 0) {
             camera->unk_B0 = 0;

@@ -1,0 +1,62 @@
+<DisplayList Version="0">
+	<ClearGeometryMode G_LIGHTING="1" />
+	<LoadVertices Path="tracks/harbour/map_mesh_vtx_cull" VertexBufferIndex="0" VertexOffset="0" Count="8"/>
+	<SetGeometryMode G_LIGHTING="1" />
+	<CullDisplayList Start="0" End="7"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_dock"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_0"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_dock"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_roof1"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_1"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_roof1"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_door1"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_2"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_door1"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_ground"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_3"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_ground"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_sand"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_4"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_sand"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_black"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_5"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_black"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3dlite_material_001"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_6"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3dlite_material_001"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_path"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_7"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_path"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_005"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_8"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_005"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_006"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_9"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_006"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_012"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_10"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_012"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_013"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_11"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_013"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_HM"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_12"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_HM"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64__64"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_13"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64__64"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_parking"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_14"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_parking"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_sign"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_15"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_sign"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_001"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_16"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_001"/>
+	<CallDisplayList Path="tracks/harbour/mat_mk64_f3d_material_014"/>
+	<CallDisplayList Path="tracks/harbour/map_mesh_tri_17"/>
+	<CallDisplayList Path="tracks/harbour/mat_revert_mk64_f3d_material_014"/>
+	<EndDisplayList/>
+</DisplayList>
+

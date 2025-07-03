@@ -82,10 +82,14 @@ jobs:
         with:
           submodules: recursive
       - name: Install dependencies
-        run: brew install sdl2 sdl2_net libpng glew ninja cmake libzip nlohmann-json tinyxml2 spdlog vorbis-tools
+        run: brew install ninja cmake
+      - name: Install vcpkg
+        uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
           cmake --build build-cmake --config Release -j3
       - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
@@ -99,7 +103,7 @@ jobs:
           mv build-cmake/spaghetti.o2r spaghetti-release/
           mv config.yml spaghetti-release/
           mv yamls spaghetti-release/
-          wget -O spaghetti-release/gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          wget -O spaghetti-release/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -182,7 +186,108 @@ jobs:
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
           cmake --build build-cmake --config Release -j3
           (cd build-cmake && cpack -G External)
-          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          mv README.md readme.txt
+          mv build-cmake/*.appimage spaghetti.appimage
+      # - name: Upload build
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: Spaghettify-linux
+      #     path: |
+      #       spaghetti.appimage
+      #       config.yml
+      #       yamls
+      #       gamecontrollerdb.txt
+
+  build-linux-old:
+    needs: generate-port-o2r
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Update machine
+        run: sudo apt update
+      - name: Install dependencies
+        run: sudo apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libsdl2-net-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.14
+        with:
+          key: linux-old-ccache-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            linux-old-ccache-${{ github.ref }}
+            linux-old-ccache-
+      - name: Cache build folders
+        uses: actions/cache@v4
+        with:
+          key: linux-old-build-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            linux-build-old-${{ github.ref }}
+            linux-build-old-
+          path: |
+            SDL2-2.30.3
+            tinyxml2-10.0.0
+            libzip-1.10.1
+      - name: Install latest SDL
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          if [ ! -d "SDL2-2.30.3" ]; then
+            wget https://www.libsdl.org/release/SDL2-2.30.3.tar.gz
+            tar -xzf SDL2-2.30.3.tar.gz
+          fi
+          cd SDL2-2.30.3
+          ./configure --enable-hidapi-libusb
+          make -j 10
+          sudo make install
+          sudo cp -av /usr/local/lib/libSDL* /lib/x86_64-linux-gnu/
+      - name: Install latest SDL_net
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          if [ ! -d "SDL2_net-2.2.0" ]; then
+            wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.2.0.tar.gz
+            tar -xzf SDL2_net-2.2.0.tar.gz
+          fi
+          cd SDL2_net-2.2.0
+          ./configure
+          make -j 10
+          sudo make install
+          sudo cp -av /usr/local/lib/libSDL* /lib/x86_64-linux-gnu/
+      - name: Install latest tinyxml2
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          wget https://github.com/leethomason/tinyxml2/archive/refs/tags/10.0.0.tar.gz
+          tar -xzf 10.0.0.tar.gz
+          cd tinyxml2-10.0.0
+          mkdir -p build
+          cd build
+          cmake ..
+          make
+          sudo make install
+      - name: Install libzip without crypto
+        run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
+          if [ ! -d "libzip-1.10.1" ]; then
+            wget https://github.com/nih-at/libzip/releases/download/v1.10.1/libzip-1.10.1.tar.gz
+            tar -xzf libzip-1.10.1.tar.gz
+          fi
+          cd libzip-1.10.1
+          mkdir -p build
+          cd build
+          cmake .. -DENABLE_COMMONCRYPTO=OFF -DENABLE_GNUTLS=OFF -DENABLE_MBEDTLS=OFF -DENABLE_OPENSSL=OFF
+          make
+          sudo make install
+          sudo cp -av /usr/local/lib/libzip* /lib/x86_64-linux-gnu/
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build-cmake
+      - name: Build
+        run: |
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-cmake --config Release -j3
+          (cd build-cmake && cpack -G External)
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage spaghetti.appimage
       - name: Upload build
@@ -216,7 +321,7 @@ jobs:
           sudo sh /tmp/cmake.sh --prefix=/usr/local/ --exclude-subdir
           cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake
           cmake --build build-switch --config Release -j3
-          wget -O gamecontrollerdb.txt https://github.com/mdqinc/SDL_GameControllerDB/blob/master/gamecontrollerdb.txt
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-switch/*.nro Spaghettify.nro
       - name: Upload build

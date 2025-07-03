@@ -10,7 +10,8 @@ public:
     ~ContentBrowserWindow();
 
     struct Tracks {
-        Course* course;
+        std::shared_ptr<Course> invalidTrack; // If not nullptr, user needs to create a scene file for this track.
+        std::shared_ptr<Course> course; // A valid custom track. Used to reset the Courses array on a file system refresh.
         std::string SceneFile;
         std::string Name;
         std::string Dir; // Directory

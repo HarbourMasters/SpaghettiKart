@@ -462,7 +462,6 @@ void DrawEnhancementsMenu() {
     if (UIWidgets::BeginMenu("Enhancements")) {
 
         if (UIWidgets::BeginMenu("Gameplay")) {
-
             ImGui::EndMenu();
         }
 

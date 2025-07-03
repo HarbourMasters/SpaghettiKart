@@ -328,9 +328,9 @@ static const ALIGN_ASSET(2) char gTextureCupSilver[] = "__OTR__player_selection/
 
 static const ALIGN_ASSET(2) char gTextureCupBronze[] = "__OTR__player_selection/cup_bronze";
 
-static const ALIGN_ASSET(2) char gTexturePushStartButton[] = "__OTR__player_selection/push_start_button";
+static const ALIGN_ASSET(2) char push_start_button[] = "__OTR__player_selection/push_start_button";
 
-static const ALIGN_ASSET(2) char gTextureCopyright1996[] = "__OTR__player_selection/copyright_1996";
+static const ALIGN_ASSET(2) char copyright_1996[] = "__OTR__player_selection/copyright_1996";
 
 static const ALIGN_ASSET(2) char gTextureP1BorderBlue[] = "__OTR__player_selection/p1_border_blue";
 
@@ -340,7 +340,7 @@ static const ALIGN_ASSET(2) char gTextureP3BorderOrange[] = "__OTR__player_selec
 
 static const ALIGN_ASSET(2) char gTextureP4BorderGreen[] = "__OTR__player_selection/p4_border_green";
 
-static const ALIGN_ASSET(2) char gTextureSmallGreenTriangle[] = "__OTR__player_selection/small_green_triangle";
+static const ALIGN_ASSET(2) char texture_small_green_triangle[] = "__OTR__player_selection/texture_small_green_triangle";
 
 static const ALIGN_ASSET(2) char gTexture7E56E4[] = "__OTR__player_selection/texture_7E56E4";
 

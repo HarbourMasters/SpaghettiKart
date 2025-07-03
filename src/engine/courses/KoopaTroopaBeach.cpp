@@ -62,7 +62,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     this->gfx = d_course_koopa_troopa_beach_packed_dls;
     this->gfxSize = 5720;
     Props.textures = koopa_troopa_beach_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineKoopaTroopaBeach;
+    Props.Minimap.Texture = minimap_koopa_troopa_beach;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 268;
@@ -72,6 +72,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.Minimap.PlayerScaleFactor = 0.014f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:koopa_beach";
     Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
@@ -88,33 +89,33 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
 
     Props.PathSizes = {0x2BC, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_unknown_waypoints);
+    Props.PathTable[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints);
-    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints_2);
+    Props.PathTable2[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints);
+    Props.PathTable2[1] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_track_waypoints_2);
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
@@ -135,6 +136,12 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.WaterLevel = 0.0f;
     gWaterVelocity = -0.1f;
     WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
+    for (size_t i = 0; i < 148; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_koopa_troopa_beach_dl_list1[i], Props.textures);
+    }
+    for (size_t i = 0; i < 148; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) koopa_troopa_beach_dls2[i], Props.textures);
+    }
 }
 
 void KoopaTroopaBeach::Load() {
@@ -186,13 +193,13 @@ void KoopaTroopaBeach::BeginPlay() {
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
 
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][60], 60, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][120], 120, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][200], 200, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][280], 280, 1, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][435], 435, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][60], 60, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][120], 120, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][200], 200, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][280], 280, 1, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][435], 435, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
     }
 }
 

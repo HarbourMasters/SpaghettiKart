@@ -663,206 +663,240 @@ void func_800C29B4(u8 arg0, u16 arg1) {
     D_801930D0[arg0].unk_248 = 0xFFFF;
 }
 
-#ifdef NON_MATCHING
-/**
- * https://decomp.me/scratch/TS7EW
- * The last big thing is the for loop in `case 10`. For some reason the 0 used for loop initialization is saved to 2
- *variables? I speculate that this is functionally equivalent although its hard to tell with all the register allocation
- *differences `arg0` is almost certainly `soundbits`, so all the `why*` variables are probably the results of macros
- *pulling out the different parts of the full sound specification.
- **/
-void func_800C2A2C(u32 arg0) {
-    u16 var_a3;
-    u16 var_a0;
-    s32 var_a2;
-    u8 var_a1;
-    u8 var_t0;
-    u8 var_v1;
-    struct_D_801930D0_entry* temp_v0_3;
-    u8 test;
-    u8 why;
-    u16 why2;
-    u8 why3;
-    u8 why4;
-    u8 why5;
-    u8 temp_a1;
+void func_800C2A2C(u32 cmd) {
+    f32 freqScaleTarget;
+    u16 channelMaskDisable;
+    u16 val;
+    u16 fadeTimer;
+    u8 priority;
+    u8 ioPort;
+    u8 i;
+    u8 duration;
+    u8 channelIndex;
+    u8 found;
+    u8 seqId;
+    u8 subArgs;
+    u8 op;
+    u8 seqPlayerIndex;
 
-    test = arg0 & 0xFF;
-    why = (arg0 & 0xFF00) >> 8;
-    why2 = (arg0 & 0xFF0000) >> 0xD;
-    why3 = (arg0 & 0xFF0000) >> 0xF;
-    why4 = (arg0 & 0xFF0000) >> 0x10;
-    why5 = (arg0 & 0xF00) >> 8;
-    temp_a1 = (arg0 & 0x0F000000) >> 0x18;
-    switch ((arg0 >> 0x1C) & 0xFF) {
+    op = cmd >> 28;
+    seqPlayerIndex = (cmd & 0xF000000) >> 24;
+
+    switch (op) {
         case 0:
-            func_800C284C(temp_a1, arg0 & 0xFF, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             break;
+
         case 1:
-            func_800C29B4(temp_a1, why2);
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            func_800C29B4(seqPlayerIndex, fadeTimer);
             break;
+
         case 2:
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    if (var_v1 == 0) {
-                        func_800C284C(temp_a1, test, why, why2);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+            priority = subArgs;
+
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    if (i == 0) {
+                        func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
                     }
                     return;
                 }
             }
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (why >= D_80192CA8[temp_a1][var_v1].thing1) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                if (priority >= D_80192CA8[seqPlayerIndex][i].thing1) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if ((var_t0 != D_80192CC6[temp_a1]) || (var_t0 == 0)) {
-                if (D_80192CC6[temp_a1] < 5) {
-                    D_80192CC6[temp_a1]++;
+
+            if ((found != D_80192CC6[seqPlayerIndex]) || (found == 0)) {
+                if (D_80192CC6[seqPlayerIndex] < 5) {
+                    D_80192CC6[seqPlayerIndex]++;
                 }
-                for (var_v1 = D_80192CC6[temp_a1] - 1; var_v1 != var_t0; var_v1--) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 - 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 - 1].thing0;
+                for (i = D_80192CC6[seqPlayerIndex] - 1; i != found; i--) {
+                    D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i - 1].thing1;
+                    D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i - 1].thing0;
                 }
-                D_80192CA8[temp_a1][var_t0].thing1 = why;
-                D_80192CA8[temp_a1][var_t0].thing0 = test;
+
+                D_80192CA8[seqPlayerIndex][found].thing1 = subArgs;
+                D_80192CA8[seqPlayerIndex][found].thing0 = seqId;
             }
-            if (var_t0 == 0) {
-                func_800C284C(temp_a1, test, why, why2);
+            if (found == 0) {
+                func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             }
             break;
+
         case 3:
-            var_t0 = D_80192CC6[temp_a1];
-            for (var_v1 = 0; var_v1 < D_80192CC6[temp_a1]; var_v1++) {
-                if (test == D_80192CA8[temp_a1][var_v1].thing0) {
-                    var_t0 = var_v1;
-                    var_v1 = D_80192CC6[temp_a1];
+            fadeTimer = (cmd & 0xFF0000) >> 13;
+
+            found = D_80192CC6[seqPlayerIndex];
+            for (i = 0; i < D_80192CC6[seqPlayerIndex]; i++) {
+                seqId = cmd & 0xFF;
+                if (D_80192CA8[seqPlayerIndex][i].thing0 == seqId) {
+                    found = i;
+                    i = D_80192CC6[seqPlayerIndex];
                 }
             }
-            if (var_t0 != D_80192CC6[temp_a1]) {
-                for (var_v1 = var_t0; var_v1 < D_80192CC6[temp_a1] - 1; var_v1++) {
-                    D_80192CA8[temp_a1][var_v1].thing1 = D_80192CA8[temp_a1][var_v1 + 1].thing1;
-                    D_80192CA8[temp_a1][var_v1].thing0 = D_80192CA8[temp_a1][var_v1 + 1].thing0;
+
+            if (found != D_80192CC6[seqPlayerIndex]) {
+                for (i = found; i < (D_80192CC6[seqPlayerIndex] - 1); i++) {
+                    D_80192CA8[seqPlayerIndex][i].thing1 = D_80192CA8[seqPlayerIndex][i + 1].thing1;
+                    D_80192CA8[seqPlayerIndex][i].thing0 = D_80192CA8[seqPlayerIndex][i + 1].thing0;
                 }
-                D_80192CC6[temp_a1]--;
+
+                D_80192CC6[seqPlayerIndex]--;
             }
-            if (var_t0 == 0) {
-                func_800C29B4(temp_a1, why2);
-                if (D_80192CC6[temp_a1] != 0) {
-                    func_800C284C(temp_a1, D_80192CA8[temp_a1][0].thing0, D_80192CA8[temp_a1][0].thing1, why2);
+            if (found == 0) {
+                func_800C29B4(seqPlayerIndex, fadeTimer);
+                if (D_80192CC6[seqPlayerIndex] != 0) {
+                    func_800C284C(seqPlayerIndex, D_80192CA8[seqPlayerIndex][0].thing0,
+                                  D_80192CA8[seqPlayerIndex][0].thing1, fadeTimer);
                 }
             }
             break;
+
         case 4:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFF;
+
+            if (duration == 0) {
+                duration++;
             }
 
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            temp_v0_3->unk_004 = (arg0 & 0xFF) / 127.0f;
-            if (temp_v0_3->unk_000 != temp_v0_3->unk_004) {
-                temp_v0_3->unk_008 = (temp_v0_3->unk_000 - temp_v0_3->unk_004) / var_a1;
-                temp_v0_3->unk_00C = var_a1;
+            D_801930D0[seqPlayerIndex].unk_004 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_000 != D_801930D0[seqPlayerIndex].unk_004) {
+                D_801930D0[seqPlayerIndex].unk_008 =
+                    (D_801930D0[seqPlayerIndex].unk_000 - D_801930D0[seqPlayerIndex].unk_004) / duration;
+                D_801930D0[seqPlayerIndex].unk_00C = duration;
             }
             break;
+
         case 5:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
+            duration = (cmd & 0xFF0000) >> 15;
+            val = cmd & 0xFFFF;
+
+            if (duration == 0) {
+                duration++;
+            }
+            freqScaleTarget = (f32) val / 1000.0f;
+            for (i = 0; i < 0x10; i++) {
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_14 = freqScaleTarget;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_1C = duration;
+                D_801930D0[seqPlayerIndex].unk_044[i].unk_18 =
+                    (D_801930D0[seqPlayerIndex].unk_044[i].unk_10 - freqScaleTarget) / duration;
             }
 
-            temp_v0_3 = &D_801930D0[var_a1 & 0xFF];
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                temp_v0_3->unk_044[var_v1].unk_14 = ((arg0 & 0xFFFF) / 1000.0f);
-                temp_v0_3->unk_044[var_v1].unk_18 =
-                    (temp_v0_3->unk_044[var_v1].unk_10 - temp_v0_3->unk_044[var_v1].unk_14) / var_a1;
-                temp_v0_3->unk_044[var_v1].unk_1C = var_a1;
-            }
-            D_801930D0[var_a1].unk_244 = 0xFFFF;
+            D_801930D0[seqPlayerIndex].unk_244 = 0xFFFF;
             break;
+
         case 6:
-            var_a1 = why3;
-            if (var_a1 == 0) {
-                var_a1++;
-            }
-            var_v1 = ((arg0 & 0xF00) >> 8) & 0xFF;
+            duration = (cmd & 0xFF0000) >> 15;
+            channelIndex = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
 
-            D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04 = test / 127.0f;
-            if (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 != D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) {
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_08 = (D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_00 -
-                                                                    D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_04) /
-                                                                   var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_044[var_v1].unk_0C = var_a1;
-                D_801930D0[var_a1 & 0xFF].unk_244 |= 1 << var_v1;
+            if (duration == 0) {
+                duration++;
+            }
+
+            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04 = val / 127.0f;
+            if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 !=
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) {
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_08 =
+                    (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 -
+                     D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04) /
+                    duration;
+                D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C = duration;
+                D_801930D0[seqPlayerIndex].unk_244 |= 1 << channelIndex;
             }
             break;
+
         case 7:
-            func_800CBBE8(0x46000000 | (temp_a1 & 0xFF) << 0x10 | (why4 & 0xFF) << 8, (u64) arg0);
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            func_800CBBE8((0x46000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | ((ioPort & 0xFF) << 8), val);
             break;
+
         case 8:
-            if (!(D_801930D0[temp_a1].unk_24A & (1 << why5))) {
-                func_800CBBE8(0x06000000 | ((temp_a1 & 0xFF) << 0x10) | (why5 & 0xFF) << 8 | (why4 & 0xFF), (u64) arg0);
+            channelIndex = (cmd & 0xF00) >> 8;
+            ioPort = (cmd & 0xFF0000) >> 16;
+            val = cmd & 0xFF;
+            if (!(D_801930D0[seqPlayerIndex].unk_24A & (1 << channelIndex))) {
+                func_800CBBE8(((0x06000000 | ((seqPlayerIndex & 0xFF) << 0x10)) | (((u32) channelIndex & 0xFF) << 8)) |
+                                  (ioPort & 0xFF),
+                              val);
             }
             break;
+
         case 9:
-            D_801930D0[temp_a1].unk_24A = arg0;
+            D_801930D0[seqPlayerIndex].unk_24A = cmd & 0xFFFF;
             break;
+
         case 10:
-            var_a0 = 1;
-            var_a3 = arg0 & 0xFFFF;
-            for (var_v1 = 0; var_v1 < 0x10; var_v1++) {
-                if (var_a3 & var_a0) {
-                    var_a2 = 1;
-                } else {
-                    var_a2 = 0;
-                }
-                func_800CBBE8(((temp_a1 & 0xFF) << 0x10) | 0x08000000 | ((var_v1 & 0xFF) << 8), var_a2);
-                var_a0 *= 2;
+            val = 1;
+            channelMaskDisable = cmd & 0xFFFF;
+            for (i = 0; i < 0x10; i++) {
+                func_800CBBE8(0x08000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) i & 0xFF) << 8),
+                              (channelMaskDisable & val) ? 1 : 0);
+                val <<= 1;
             }
+
             break;
+
         case 11:
-            D_801930D0[temp_a1].unk_014 = arg0;
+            D_801930D0[seqPlayerIndex].unk_014 = cmd;
             break;
+
         case 12:
-            temp_v0_3 = &D_801930D0[temp_a1 & 0xFF];
-            if ((((arg0 & 0xF00000) >> 0x14) & 0xFF) != 0xF) {
-                var_t0 = temp_v0_3->unk_041++;
-                if (var_t0 < 5) {
-                    temp_v0_3->unk_02C[var_t0] = arg0;
-                    temp_v0_3->unk_040 = 2;
+            subArgs = (cmd & 0xF00000) >> 20;
+            if (subArgs != 0xF) {
+                found = D_801930D0[seqPlayerIndex].unk_041++;
+                if (found < 5) {
+                    D_801930D0[seqPlayerIndex].unk_02C[found] = cmd;
+                    D_801930D0[seqPlayerIndex].unk_040 = 2;
                 }
             } else {
-                temp_v0_3->unk_041 = 0;
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
             }
             break;
+
         case 14:
-            switch (why5) { /* switch 1; irregular */
-                case 0:     /* switch 1 */
-                    func_800CBBB8(0xF0000000U, D_800EA1F0[arg0 & 0xFF]);
+            subArgs = (cmd & 0xF00) >> 8;
+            val = cmd & 0xFF;
+            switch (subArgs) {
+                case 0:
+                    func_800CBBB8(0xF0000000, D_800EA1F0[val]);
                     break;
-                case 1: /* switch 1 */
-                    D_800EA1EC = arg0 & 1;
+
+                case 1:
+                    D_800EA1EC = val & 1;
                     break;
             }
+
             break;
+
         case 15:
-            D_800EA1C0 = (arg0 & 0xFF00) >> 8;
-            /*
-            audio_reset_session_eu((void*) test);
-            */
-            D_800EA1F4[0] = test;
-            func_800CBBE8(0x46020000U, why);
+            seqId = cmd & 0xFF;
+            subArgs = (cmd & 0xFF00) >> 8;
+            D_800EA1C0 = subArgs;
+            //audio_reset_session_eu((void*) seqId);
+            D_800EA1F4[0] = seqId;
+            func_800CBBE8(0x46020000, subArgs);
             func_800C5C40();
             break;
+
         default:
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C2A2C.s")
-#endif
 
 void func_800C3448(u32 arg0) {
     D_80192CD0[D_800EA1E4] = arg0;
@@ -936,184 +970,202 @@ void func_800C36C4(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_801930D0[arg0].unk_012 = 1;
 }
 
-#ifdef NON_MATCHING
-// generated by m2c commit 1c7b040b356d06b5171add65d8ee527a500b156e on Apr-01-2024
 void func_800C3724(void) {
-    u8 var_s5;
-    f32 var_f0;
-    u16 temp_a3_2;
-    s32 temp_lo;
-    s32 temp_s1;
-    s32 temp_t9_2;
-    u16 var_a2;
-    u8 var_s2;
-    u8 var_t0;
-    u32 temp_t5_3;
-    u8 temp_a1_3;
-    s32 var_a1;
-    struct_D_801930D0_entry* temp_s0;
-    struct_D_801930D0_entry* temp_s2;
-    struct_D_801930D0_entry* temp_s4_2;
+    u8 seqPlayerIndex;
+    f32 volume;
+    u8 tempoOp;
+    u16 tempoTarget;
+    u8 channelIndex;
+    u8 j;
+    u32 tempoCmd;
+    u16 tempoPrev;
+    u8 tempoTimer;
+    u8 setupOp;
+    u8 targetSeqPlayerIndex;
+    u8 setupVal1;
+    u8 setupVal2;
+    u16 seqId;
 
-    for (var_s5 = 0; var_s5 < 3; var_s5++) {
-        if (D_801930D0[var_s5].unk_012 != 0) {
-            var_f0 = 1.0f;
-            for (var_s2 = 0; var_s2 < 3; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                var_f0 *= temp_s4_2->unk_00E[var_s2] / 127.0f;
+    for (seqPlayerIndex = 0; seqPlayerIndex < 3; seqPlayerIndex++) {
+        if (D_801930D0[seqPlayerIndex].unk_012) {
+            volume = 1.0f;
+            for (j = 0; j < 3; j++) {
+                volume *= D_801930D0[seqPlayerIndex].unk_00E[j] / 127.0f;
             }
-            func_800C3448((D_801930D0[var_s5].unk_011 << 0x10) | 0x40000000 | ((var_s5 & 0xFF) << 0x18) |
-                          ((u32) (var_f0 * 127.0f) & 0xFF));
-            D_801930D0[var_s5].unk_012 = 0;
+
+            func_800C3448(0x40000000 | (((u8) seqPlayerIndex) << 0x18) |
+                          (((u8) D_801930D0[seqPlayerIndex].unk_011) << 0x10) | ((u16) (u8) (volume * 127.0f)));
+
+            D_801930D0[seqPlayerIndex].unk_012 = 0;
         }
-        if (D_801930D0[var_s5].unk_00C != 0) {
-            D_801930D0[var_s5].unk_00C--;
-            if (D_801930D0[var_s5].unk_00C) {
-                D_801930D0[var_s5].unk_000 -= D_801930D0[var_s5].unk_008;
+        if (D_801930D0[seqPlayerIndex].unk_00C != 0) {
+            D_801930D0[seqPlayerIndex].unk_00C--;
+            if (D_801930D0[seqPlayerIndex].unk_00C) {
+                D_801930D0[seqPlayerIndex].unk_000 -= D_801930D0[seqPlayerIndex].unk_008;
             } else {
-                D_801930D0[var_s5].unk_000 = D_801930D0[var_s5].unk_004;
+                D_801930D0[seqPlayerIndex].unk_000 = D_801930D0[seqPlayerIndex].unk_004;
             }
-            func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x41000000, D_801930D0[var_s5].unk_000);
+            func_800CBB88(0x41000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10), D_801930D0[seqPlayerIndex].unk_000);
         }
-        if (D_801930D0[var_s5].unk_014 != 0) {
-            var_t0 = (u32) (D_801930D0[var_s5].unk_014 & 0xFF0000) >> 0xF;
-            var_a1 = D_801930D0[var_s5].unk_014 & 0xFFF;
-            var_a2 = var_a1;
-            if (var_t0 == 0) {
-                var_t0++;
+        if (D_801930D0[seqPlayerIndex].unk_014 != 0) {
+            tempoCmd = D_801930D0[seqPlayerIndex].unk_014;
+            tempoTimer = (tempoCmd & 0xFF0000) >> 0xF;
+            tempoTarget = tempoCmd & 0xFFF;
+            if (tempoTimer == 0) {
+                tempoTimer++;
             }
-            if (gSequencePlayers[var_s5 & 0xFF].enabled != 0) {
-                temp_lo = (s32) gSequencePlayers[var_s5 & 0xFF].tempo / TATUMS_PER_BEAT;
-                temp_a3_2 = temp_lo;
-                temp_t9_2 = ((D_801930D0[var_s5].unk_014 & 0xF000) >> 0xC) & 0xFF;
-                switch (temp_t9_2) { /* switch 1; irregular */
+            if (gSequencePlayers[seqPlayerIndex].enabled != 0) {
+                tempoPrev = gSequencePlayers[seqPlayerIndex].tempo / 48;
+                tempoOp = (tempoCmd & 0xF000) >> 0xC;
+                switch (tempoOp) {
                     case 1:
-                        var_a2 += temp_a3_2;
+                        tempoTarget += tempoPrev;
                         break;
-                    case 2: /* switch 1 */
-                        if (var_a1 < temp_a3_2) {
-                            var_a2 = (temp_a3_2 - var_a1);
+
+                    case 2:
+                        if (tempoTarget < tempoPrev) {
+                            tempoTarget = tempoPrev - tempoTarget;
                         }
                         break;
-                    case 3: /* switch 1 */
-                        var_a2 = (u32) (temp_a3_2 * ((f32) (var_a1 & 0xFFFF) / 100.0f));
+
+                    case 3:
+                        tempoTarget = tempoPrev * (tempoTarget / 100.0f);
                         break;
-                    case 4: /* switch 1 */
-                        if (D_801930D0[var_s5].unk_018 != 0) {
-                            var_a2 = D_801930D0[var_s5].unk_018;
-                        } else {
-                            var_a2 = temp_a3_2;
-                        }
+
+                    case 4:
+                        tempoTarget =
+                            (D_801930D0[seqPlayerIndex].unk_018 != 0) ? D_801930D0[seqPlayerIndex].unk_018 : tempoPrev;
+                        break;
+                    default:
                         break;
                 }
-                if (var_a2 >= 0x12D) {
-                    var_a2 = 0x12C;
+
+                if (tempoTarget > 300) {
+                    tempoTarget = 300;
                 }
-                if (D_801930D0[var_s5].unk_018 == 0) {
-                    D_801930D0[var_s5].unk_018 = temp_a3_2;
+                if (D_801930D0[seqPlayerIndex].unk_018 == 0) {
+                    D_801930D0[seqPlayerIndex].unk_018 = tempoPrev;
                 }
-                D_801930D0[var_s5].unk_020 = var_a2;
-                D_801930D0[var_s5].unk_01C = temp_lo;
-                D_801930D0[var_s5].unk_024 = (D_801930D0[var_s5].unk_01C - D_801930D0[var_s5].unk_020) / var_t0;
-                D_801930D0[var_s5].unk_028 = (u16) var_t0;
+                D_801930D0[seqPlayerIndex].unk_020 = tempoTarget;
+                D_801930D0[seqPlayerIndex].unk_01C = gSequencePlayers[seqPlayerIndex].tempo / 48;
+                D_801930D0[seqPlayerIndex].unk_024 =
+                    (D_801930D0[seqPlayerIndex].unk_01C - D_801930D0[seqPlayerIndex].unk_020) / tempoTimer;
+                D_801930D0[seqPlayerIndex].unk_028 = tempoTimer;
             }
-            D_801930D0[var_s5].unk_014 = 0;
+            D_801930D0[seqPlayerIndex].unk_014 = 0;
         }
-        if (D_801930D0[var_s5].unk_028 != 0) {
-            D_801930D0[var_s5].unk_028--;
-            if (D_801930D0[var_s5].unk_028) {
-                D_801930D0[var_s5].unk_01C -= D_801930D0[var_s5].unk_024;
+        if (D_801930D0[seqPlayerIndex].unk_028 != 0) {
+            D_801930D0[seqPlayerIndex].unk_028--;
+            if (D_801930D0[seqPlayerIndex].unk_028) {
+                D_801930D0[seqPlayerIndex].unk_01C -= D_801930D0[seqPlayerIndex].unk_024;
             } else {
-                D_801930D0[var_s5].unk_01C = D_801930D0[var_s5].unk_020;
+                D_801930D0[seqPlayerIndex].unk_01C = D_801930D0[seqPlayerIndex].unk_020;
             }
-            func_800CBBB8(((var_s5 & 0xFF) << 0x10) | 0x47000000, (u32) (s32) D_801930D0[var_s5].unk_01C);
+            func_800CBBB8(0x47000000 | (((u32) seqPlayerIndex & 0xFF) << 0x10),
+                          (s32) D_801930D0[seqPlayerIndex].unk_01C);
         }
-        if (D_801930D0[var_s5].unk_246 != 0) {
-            for (var_s2 = 0; var_s2 < 0x10; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                if (temp_s4_2->unk_044[var_s2].unk_0C != 0) {
-                    temp_s4_2->unk_044[var_s2].unk_0C--;
-                    if (temp_s4_2->unk_044[var_s2].unk_0C) {
-                        temp_s4_2->unk_044[var_s2].unk_00 -= temp_s4_2->unk_044[var_s2].unk_08;
+
+        if (D_801930D0[seqPlayerIndex].unk_246 != 0) {
+            for (channelIndex = 0; channelIndex < 0x10; channelIndex++) {
+                if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C != 0) {
+                    D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C--;
+                    if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_0C) {
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 -=
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_08;
                     } else {
-                        temp_s4_2->unk_044[var_s2].unk_00 = temp_s4_2->unk_044[var_s2].unk_04;
-                        temp_s4_2->unk_246 ^= 1 << var_s2;
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00 =
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_04;
+                        D_801930D0[seqPlayerIndex].unk_246 ^= 1 << channelIndex;
                     }
-                    func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x01000000 | ((var_s2 & 0xFF) << 8),
-                                  temp_s4_2->unk_044[var_s2].unk_00);
+                    func_800CBB88(0x01000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) channelIndex & 0xFF) << 8),
+                                  D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_00);
                 }
             }
         }
-        if (D_801930D0[var_s5].unk_244 != 0) {
-            for (var_s2 = 0; var_s2 < 0x10; var_s2++) {
-                temp_s4_2 = &D_801930D0[var_s5];
-                if (temp_s4_2->unk_044[var_s2].unk_1C != 0) {
-                    temp_s4_2->unk_044[var_s2].unk_1C--;
-                    if (temp_s4_2->unk_044[var_s2].unk_1C) {
-                        temp_s4_2->unk_044[var_s2].unk_10 -= temp_s4_2->unk_044[var_s2].unk_18;
+        if (D_801930D0[seqPlayerIndex].unk_244 != 0) {
+            for (channelIndex = 0; channelIndex < 0x10; channelIndex++) {
+                if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C != 0) {
+                    D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C--;
+                    if (D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_1C) {
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10 -=
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_18;
                     } else {
-                        temp_s4_2->unk_044[var_s2].unk_10 = temp_s4_2->unk_044[var_s2].unk_14;
-                        temp_s4_2->unk_244 ^= 1 << var_s2;
+                        D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10 =
+                            D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_14;
+                        D_801930D0[seqPlayerIndex].unk_244 ^= 1 << channelIndex;
                     }
-                    func_800CBB88(((var_s5 & 0xFF) << 0x10) | 0x04000000 | ((var_s2 & 0xFF) << 8),
-                                  temp_s4_2->unk_044[var_s2].unk_10);
+                    func_800CBB88(0x04000000 | ((seqPlayerIndex & 0xFF) << 0x10) | (((u32) channelIndex & 0xFF) << 8),
+                                  D_801930D0[seqPlayerIndex].unk_044[channelIndex].unk_10);
                 }
             }
         }
-        if (D_801930D0[var_s5].unk_041 != 0) {
-            if (D_801930D0[var_s5].unk_040 != 0) {
-                D_801930D0[var_s5].unk_040--;
-            } else {
-                if (gSequencePlayers[var_s5].enabled == 0) {
-                    for (var_s2 = 0; var_s2 < D_801930D0[var_s5].unk_041; var_s2++) {
-                        temp_s4_2 = &D_801930D0[var_s5];
-                        var_a1 = temp_s4_2->unk_02C[var_s2] & 0xFF;
-                        temp_t5_3 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xF00000) >> 0x14) & 0xFF;
-                        temp_s1 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xF0000) >> 0x10) & 0xFF;
-                        temp_a1_3 = ((u32) (temp_s4_2->unk_02C[var_s2] & 0xFF00) >> 8) & 0xFF;
-                        switch (temp_t5_3) {
-                            case 0:
-                                D_801930D0[temp_s1].unk_012 = 1;
-                                D_801930D0[temp_s1].unk_00E[1] = 0x7F;
-                                break;
-                            case 1:
-                                func_800C3448(temp_s4_2->unk_248 | 0x30000000 | (var_s5 << 0x18));
-                                break;
-                            case 2:
-                                func_800C3448(D_801930D0[temp_s1].unk_248 | (temp_s1 << 0x18) | 0x10000);
-                                D_801930D0[temp_s1].unk_012 = 1;
-                                D_801930D0[temp_s1].unk_00E[1] = 0x7F;
-                                break;
-                            case 3:
-                                func_800C3448((temp_s1 << 0x18) | 0xB0003000 | (temp_a1_3 << 0x10) | var_a1);
-                                break;
-                            case 4:
-                                func_800C3448((temp_s1 << 0x18) | 0xB0004000 | (var_a1 << 0x10));
-                                break;
-                            case 5:
-                                func_800C3448((D_801930D0[temp_s1].unk_042 << 0x10) | (temp_s1 << 0x18) |
-                                              (temp_s4_2->unk_02C[var_s2] & 0xFFFF));
-                                func_800C36C4(temp_s1 & 0xFF, 1U, 0x7FU, 0U);
-                                D_801930D0[temp_s1].unk_042 = 0;
-                                break;
-                            case 6:
-                                temp_s4_2->unk_042 = temp_a1_3;
-                                break;
-                        }
-                    }
-                    D_801930D0[var_s5].unk_041 = 0;
+        if (D_801930D0[seqPlayerIndex].unk_041) {
+#ifdef VERSION_EU
+            if (func_800C357C_eu(-0x10000000, -0x10000000) == 0) {
+                D_801930D0[seqPlayerIndex].unk_041 = 0;
+                return;
+            }
+#endif
+            if (D_801930D0[seqPlayerIndex].unk_040 != 0) {
+                D_801930D0[seqPlayerIndex].unk_040--;
+                continue;
+            }
+
+            if (gSequencePlayers[seqPlayerIndex].enabled != 0) {
+                continue;
+            }
+
+            for (j = 0; j < D_801930D0[seqPlayerIndex].unk_041; j++) {
+                setupOp = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xF00000) >> 0x14;
+                targetSeqPlayerIndex = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xF0000) >> 0x10;
+                setupVal2 = (D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFF00) >> 8;
+                setupVal1 = D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFF;
+                switch (setupOp) {
+                    case 0:
+                        D_801930D0[targetSeqPlayerIndex].unk_012 = 1;
+                        D_801930D0[targetSeqPlayerIndex].unk_00E[1] = 0x7F;
+                        break;
+
+                    case 1:
+                        func_800C3448(0x30000000 | ((u8) seqPlayerIndex) << 0x18 |
+                                      (D_801930D0[seqPlayerIndex].unk_248));
+                        break;
+
+                    case 2:
+                        func_800C3448((((u8) targetSeqPlayerIndex) << 0x18) | 0x10000 |
+                                      (u16) (D_801930D0[targetSeqPlayerIndex].unk_248));
+                        D_801930D0[targetSeqPlayerIndex].unk_012 = 1;
+                        D_801930D0[targetSeqPlayerIndex].unk_00E[1] = 0x7F;
+                        break;
+
+                    case 3:
+                        func_800C3448(0xB0003000 | (((u8) targetSeqPlayerIndex) << 0x18) | (((u8) setupVal2) << 0x10) |
+                                      (u16) setupVal1);
+                        break;
+
+                    case 4:
+                        func_800C3448(0xB0004000 | (((u8) targetSeqPlayerIndex) << 0x18) | (((u8) setupVal1) << 0x10));
+                        break;
+
+                    case 5:
+                        seqId = D_801930D0[seqPlayerIndex].unk_02C[j] & 0xFFFF;
+                        func_800C3448((((u8) targetSeqPlayerIndex) << 0x18) |
+                                      (((u8) D_801930D0[targetSeqPlayerIndex].unk_042) << 0x10) | ((u16) seqId));
+
+                        func_800C36C4(targetSeqPlayerIndex, 1, 0x7F, 0);
+                        D_801930D0[targetSeqPlayerIndex].unk_042 = 0;
+                        break;
+
+                    case 6:
+                        D_801930D0[seqPlayerIndex].unk_042 = setupVal2;
+                        break;
                 }
             }
+
+            D_801930D0[seqPlayerIndex].unk_041 = 0;
         }
     }
 }
-#else
-#ifdef VERSION_EU
-GLOBAL_ASM("asm/eu_nonmatchings/func_800C3724.s")
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C3724.s")
-#endif
-#endif
 
 void func_800C3F70(void) {
     u8 var_v0;
@@ -1871,7 +1923,7 @@ void func_800C6108(u8 playerId) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if (D_800E9EC4) {} // ?
     }
-    if (player->unk_094 > 4.75f) {
+    if (player->speed > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
             D_800E9DE4[playerId] += 0.005f;
         }
@@ -1883,7 +1935,7 @@ void func_800C6108(u8 playerId) {
     } else {
         D_800E9E54[playerId] = (f32) -player->unk_0C0;
     }
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId];
     } else {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId] - (D_800E9E54[playerId] / 12000.0f);
@@ -1930,7 +1982,7 @@ D_800E9F7C[playerId].unk_38 = (D_800E9F7C[playerId].unk_0C / 1.5f) + 0.4f;
 void func_800C64A0(u8 playerId) {
     switch (D_800E9E74[playerId]) {
         case 3:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         case 1:
         case 13:
@@ -1953,7 +2005,7 @@ void func_800C64A0(u8 playerId) {
         case 29:
         case 30:
         case 31:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         default:
             D_800E9EF4[playerId] = 1.0f;
@@ -1981,7 +2033,7 @@ void func_800C64A0(u8 playerId) {
 void func_800C6758(u8 playerId) {
     switch (D_800E9E74[playerId]) { /* irregular */
         case 3:
-            D_800E9F14[playerId] = (gPlayers[playerId].unk_094 / 9.0f) + 0.6f;
+            D_800E9F14[playerId] = (gPlayers[playerId].speed / 9.0f) + 0.6f;
             break;
         case 2:
         case 13:
@@ -2153,7 +2205,7 @@ void func_800C683C(u8 cameraId) {
 void func_800C70A8(u8 playerId) {
     if (D_800EA0EC[playerId] == 0) {
         D_800E9E74[playerId] = 0;
-        if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & 0x10) == 0x10)) {
+        if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & DRIFTING_EFFECT) == DRIFTING_EFFECT)) {
             D_800E9E74[playerId] = 1;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {
                 case DIRT: /* switch 1 */
@@ -2185,7 +2237,7 @@ void func_800C70A8(u8 playerId) {
                     break;
             }
         }
-        if ((gPlayers[playerId].effects & 0x10) == 0x10) {
+        if ((gPlayers[playerId].effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) {
             D_800E9E74[playerId] = 2;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) { /* switch 2 */
                 case DIRT:                                                   /* switch 2 */
@@ -2337,7 +2389,7 @@ void func_800C70A8(u8 playerId) {
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
-        if (((gPlayers[playerId].unk_094 < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
+        if (((gPlayers[playerId].speed < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
             (D_800E9E74[playerId] != 0x0000001C)) {
             D_800E9E74[playerId] = 0;
         }
@@ -3550,7 +3602,7 @@ void func_800CB14C() {
 }
 
 void audio_set_player_volume(u8 player, f32 volume) {
-    gSequencePlayers[player].gameVolume = volume;
+    gSequencePlayers[player].fadeVolume = volume;
     gSequencePlayers[player].recalculateVolume = 1;
 }
 

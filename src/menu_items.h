@@ -445,8 +445,6 @@ MenuTexture* func_8009A944(struct_8018DEE0_entry*, s32);
 void func_8009A9FC(s32, s32, u32, s32);
 void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
-void convert_img_to_greyscale(s32, u32);
-void adjust_img_colour(s32, s32, s32, s32, s32);
 u16* func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MenuTexture*);
@@ -455,15 +453,16 @@ Gfx* func_8009B9D0(Gfx*, MenuTexture*);
 Gfx* render_menu_textures(Gfx*, MenuTexture*, s32, s32);
 Gfx* func_8009BC9C(Gfx*, MenuTexture*, s32, s32, s32, s32);
 Gfx* print_letter(Gfx*, MenuTexture*, f32, f32, s32, f32, f32);
-Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY);
+Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX,
+                             f32 scaleY);
 Gfx* func_8009C204(Gfx*, MenuTexture*, s32, s32, s32);
 Gfx* func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx* func_8009C708(Gfx*, struct_8018DEE0_entry*, s32, s32, s32, s32);
 void func_8009C918(void);
 void func_8009CA2C(void);
 void func_8009CA6C(s32);
-void func_8009CBE4(s32, s32, s32);
-void func_8009CDDC(s32, s32);
+void draw_fade_in(s32, s32, s32);
+void draw_black_fade_in(s32, s32);
 void func_8009CDFC(s32, s32);
 void func_8009CE1C(void);
 void func_8009CE64(s32);
@@ -661,7 +660,7 @@ void rmonPrintf(const char*, ...);
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
-extern s16 D_80164478[];
+extern s16 gGetPlayerByCharacterId[];
 
 /**
  * Old name: sMenuTextureBuffer
@@ -688,9 +687,9 @@ extern Gfx* sGfxPtr;
 extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
-extern s8 D_8018E7AC[];
-extern u32 D_8018E7B8[];
-extern u32 D_8018E7D0[];
+extern s8 gTransitionType[];
+extern u32 gTransitionDuration[];
+extern u32 gCurrentTransitionTime[];
 extern struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
 extern struct UnkStruct_8018E7E8 D_8018E810[D_8018E810_SIZE];
 extern s8 gTextColor;
@@ -732,7 +731,7 @@ extern Unk_D_800E70A0 D_800E7458[];
 extern Unk_D_800E70A0 D_800E7480[];
 extern RGBA16 D_800E74A8[];
 extern RGBA16 D_800E74D0[];
-extern RGBA16 D_800E74E8[];
+extern RGBA16 gBackgroundColor[];
 extern const s16 gGlyphDisplayWidth[];
 extern char* gCupNames[];
 extern const s8 D_800EFD64[];

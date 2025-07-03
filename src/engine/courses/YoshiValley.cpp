@@ -61,7 +61,7 @@ YoshiValley::YoshiValley() {
     this->gfxSize = 4140;
     Props.textures = yoshi_valley_textures;
 
-    Props.Minimap.Texture = gTextureCourseOutlineYoshiValley;
+    Props.Minimap.Texture = minimap_yoshi_valley;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.PlayerX = 61;
@@ -69,6 +69,7 @@ YoshiValley::YoshiValley() {
     Props.Minimap.PlayerScaleFactor = 0.018f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
@@ -84,35 +85,35 @@ YoshiValley::YoshiValley() {
 
     Props.PathSizes = {0x02B2, 0x02A8, 0x02B2, 0x0320, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints);
-    Props.PathTable[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_2);
-    Props.PathTable[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_3);
-    Props.PathTable[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_4);
+    Props.PathTable[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints);
+    Props.PathTable[1] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_2);
+    Props.PathTable[2] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_3);
+    Props.PathTable[3] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_unknown_waypoints_4);
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints);
-    Props.PathTable2[1] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_2);
-    Props.PathTable2[2] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
-    Props.PathTable2[3] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
+    Props.PathTable2[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints);
+    Props.PathTable2[1] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_2);
+    Props.PathTable2[2] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_3);
+    Props.PathTable2[3] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_yoshi_valley_track_waypoints_4);
 
     Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust0);
     Props.Clouds = gYoshiValleyMooMooFarmClouds;
@@ -127,6 +128,9 @@ YoshiValley::YoshiValley() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {95, 40, 15};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    for (size_t i = 0; i < 124; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_yoshi_valley_dl_list[i], Props.textures);
+    }
 }
 
 void YoshiValley::Load() {
@@ -140,7 +144,7 @@ void YoshiValley::Load() {
 }
 
 void YoshiValley::LoadTextures() {
-    dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U); // 0x03009000
 }
 
 void YoshiValley::BeginPlay() {
@@ -230,7 +234,7 @@ void YoshiValley::RenderCredits() {
 }
 
 void YoshiValley::Waypoints(Player* player, int8_t playerId) {
-    player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+    player->nearestPathPointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
 void YoshiValley::ScrollingTextures() {}

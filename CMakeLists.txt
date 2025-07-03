@@ -4,12 +4,31 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(Spaghettify VERSION 0.1.0 LANGUAGES C CXX ASM)
 include(FetchContent)
 
+set(NATO_PHONETIC_ALPHABET
+  "Alfa" "Bravo" "Charlie" "Delta" "Echo" "Foxtrot" "Golf" "Hotel"
+  "India" "Juliett" "Kilo" "Lima" "Mike" "November" "Oscar" "Papa"
+  "Quebec" "Romeo" "Sierra" "Tango" "Uniform" "Victor" "Whiskey"
+  "Xray" "Yankee" "Zulu"
+)
+
+# Get the patch version number from the project version
+math(EXPR PATCH_INDEX "${PROJECT_VERSION_PATCH}")
+
+# Use the patch number to select the correct word
+list(GET NATO_PHONETIC_ALPHABET ${PATCH_INDEX} PROJECT_PATCH_WORD)
+
+set(PROJECT_BUILD_NAME "Alfredo ${PROJECT_PATCH_WORD}" CACHE STRING "" FORCE)
+set(PROJECT_TEAM "github.com/harbourmasters" CACHE STRING "" FORCE)
+
 if(APPLE)
   enable_language(OBJCXX)
 endif()
 
 # Set the minimum version of CMake and the deployment target for macOS
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
+
+# Set CMake to build as Universal Binary for macOS
+set(CMAKE_OSX_ARCHITECTURES=arm64;x86_64)
 
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
@@ -115,6 +134,10 @@ if (UNIX AND NOT APPLE)
 find_package(OpenGL REQUIRED)
 endif()
 
+if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/properties.h.in ${CMAKE_CURRENT_SOURCE_DIR}/properties.h @ONLY)
+endif()
+
 # Include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
@@ -188,6 +211,7 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/enhancements/freecam/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
+    "Resource.rc"
 )
 
 list(APPEND ALL_FILES ${ALL_FILES_ROOT})
@@ -263,6 +287,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(dr_libs)
 
+#=================== STB ===================
+include_directories(${STB_DIR})
+
 #==============================================================================#
 # Libultraship Integration                                                     #
 #==============================================================================#
@@ -321,6 +348,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
             "NDEBUG"
         ">"
         "INCLUDE_GAME_PRINTF;"
+        "NOMINMAX"
         "UNICODE;"
         "_UNICODE;"
         "_CRT_SECURE_NO_WARNINGS;"
@@ -365,7 +393,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
     find_package(Vorbis CONFIG REQUIRED)
     link_libraries(Vorbis::vorbisfile)
 	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net-static>"
         "Ogg::ogg"
         "Vorbis::vorbis"
         "Vorbis::vorbisenc"
@@ -388,7 +415,6 @@ else()
     find_package(Ogg REQUIRED)
     find_package(Vorbis REQUIRED)
  	set(ADDITIONAL_LIBRARY_DEPENDENCIES
-        "$<$<BOOL:${USE_NETWORKING}>:SDL2_net::SDL2_net>"
         "Ogg::ogg"
         "Vorbis::vorbis"
         "Vorbis::vorbisenc"
@@ -407,7 +433,7 @@ if(USE_NETWORKING)
         target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net)
     elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         find_package(SDL2_net REQUIRED)
-        target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net) 
+        target_link_libraries(${PROJECT_NAME} PRIVATE $<IF:$<TARGET_EXISTS:SDL2_net::SDL2_net>,SDL2_net::SDL2_net,SDL2_net::SDL2_net-static>) 
     else()
         find_package(SDL2_net REQUIRED)
         target_link_libraries(${PROJECT_NAME} PRIVATE SDL2_net::SDL2_net-static)

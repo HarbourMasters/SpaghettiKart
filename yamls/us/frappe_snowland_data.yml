@@ -284,12 +284,12 @@ d_course_frappe_snowland_dl_33E0:
   offset: 0x33E0
 d_course_frappe_snowland_unknown_waypoints:
   symbol: d_course_frappe_snowland_unknown_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x34A0
   count: 73
 d_course_frappe_snowland_track_waypoints:
   symbol: d_course_frappe_snowland_track_waypoints
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
   offset: 0x36E8
   count: 647
 d_course_frappe_snowland_snowman_tlut:
@@ -308,6 +308,7 @@ d_course_frappe_snowland_snowman_head:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snowman_tlut
 d_course_frappe_snowland_snowman_body:
   symbol: d_course_frappe_snowland_snowman_body
   type: texture
@@ -316,6 +317,7 @@ d_course_frappe_snowland_snowman_body:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snowman_tlut
 d_course_frappe_snowland_snow_tlut:
   symbol: d_course_frappe_snowland_snow_tlut
   type: texture
@@ -332,6 +334,7 @@ d_course_frappe_snowland_snow:
   height: 32
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_frappe_snowland_snow_tlut
 d_course_frappe_snowland_tree_tlut:
   symbol: d_course_frappe_snowland_tree_tlut
   type: texture

@@ -19,7 +19,7 @@
 #include "courses/all_course_offsets.h"
 #include "defines.h"
 
-#include <course_offsets.h>
+#include "course_offsets.h"
 
 #include "engine/courses/Course.h"
 
@@ -30,7 +30,7 @@
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;
 
-static u8 sMemoryPool[0xFFFFF]; // Stock memory pool size: 0xAB630
+static u8 sMemoryPool[0xFFFFFFF]; // Stock memory pool size: 0xAB630
 uintptr_t sPoolEnd = sMemoryPool + sizeof(sMemoryPool);
 
 uintptr_t sPoolFreeSpace;
@@ -152,6 +152,73 @@ Gfx* segmented_gfx_to_virtual(const void* addr) {
     // printf("seg_gfx_to_virt: 0x%llX to 0x%llX\n", addr, (gSegmentTable[segment] + offset));
 
     return (Gfx*) ((gSegmentTable[segment] + offset));
+}
+
+static uintptr_t get_texture2(size_t offset, const course_texture* textures) {
+    if (!(offset & 0x5000000)) {
+        return NULL;
+    }
+    size_t totalOffset = 0x5000000;
+
+    while (textures->addr) {
+        if (totalOffset == offset) {
+            return (uintptr_t) (textures->addr);
+        }
+        totalOffset += textures->data_size;
+        textures++;
+    }
+
+    printf("memory.c: get_texture()\n  TEXTURE NOT FOUND DURING DISPLAYLIST EXTRACT\n");
+    printf("  offset: 0x%X\n", offset);
+    return NULL;
+}
+
+// Finds texture calls and replaces hard-coded addresses with direct pointers to the o2r texture.
+void replace_segmented_textures_with_o2r_textures(Gfx* gfx, const course_texture* textures) {
+    char* name = NULL;
+    if (GameEngine_OTRSigCheck((char*) gfx)) {
+        name = (char*) gfx;
+        gfx = (Gfx*) LOAD_ASSET_RAW(gfx);
+    }
+    Gfx* iterator = gfx;
+    int i = 0;
+    u8 opcode;
+    while ((opcode = (iterator->words.w0 >> 24)) != (u8) G_ENDDL) {
+        if (opcode == G_DL) {
+            uintptr_t addr = iterator->words.w1;
+            if (!(addr & 0x400000000)) { // avoid segment address
+                replace_segmented_textures_with_o2r_textures((Gfx*) addr, textures);
+            }
+        } else if (opcode == G_DL_OTR_FILEPATH) {
+            char* fileName = (char*) iterator->words.w1;
+            Gfx* gfx2 = (Gfx*) ResourceGetDataByName((const char*) fileName);
+            if (((iterator->words.w0 >> (16)) & ((1U << 1) - 1)) == 0 && gfx2 != NULL) {
+                replace_segmented_textures_with_o2r_textures(gfx2, textures);
+            }
+        } else if (opcode == G_DL_OTR_HASH) {
+            if (((iterator->words.w0 >> (16)) & ((1U << 1) - 1)) == 0) {
+                iterator++;
+                Gfx* gfx2 = (Gfx*) ResourceGetDataByCrc(((uint64_t) iterator->words.w0 << 32) + iterator->words.w1);
+                if (gfx2 != NULL) {
+                    replace_segmented_textures_with_o2r_textures(gfx2, textures);
+                }
+            }
+        } else if (opcode == G_SETTIMG) {
+            // If this is a texture command, we need to fix the texture segment pointer
+            uintptr_t tex = iterator->words.w1 & (~1);
+            uintptr_t addr = get_texture2(tex, textures);
+            if (addr != NULL) {
+                iterator->words.w1 = addr;
+            }
+        }
+
+        if (opcode == G_MARKER || opcode == G_MTX_OTR || opcode == G_VTX_OTR_FILEPATH || opcode == G_VTX_OTR_HASH) {
+            iterator++;
+        }
+        // Move to the next command in the display list
+        iterator++;
+        i++;
+    }
 }
 
 void move_segment_table_to_dmem(void) {
@@ -489,7 +556,6 @@ u8* dma_textures(const char* texture, size_t arg1, size_t arg2) {
 #ifdef TARGET_N64
     temp_v0 = (u8*) gNextFreeMemoryAddress;
 #else
-    u8* tex = (u8*) LOAD_ASSET(texture);
 
     temp_v0 = (u8*) allocate_memory(arg2);
 #endif
@@ -504,7 +570,7 @@ u8* dma_textures(const char* texture, size_t arg1, size_t arg2) {
     mio0decode((u8*) temp_a0, temp_v0);
     gNextFreeMemoryAddress += arg2;
 #else
-    memcpy(temp_v0, tex, arg2);
+    strncpy(temp_v0, texture, arg2);
     // strcpy(temp_v0, texture);
 #endif
     return temp_v0;

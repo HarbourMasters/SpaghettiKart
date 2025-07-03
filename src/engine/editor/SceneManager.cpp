@@ -69,7 +69,7 @@ namespace Editor {
     void LoadLevel(std::shared_ptr<Ship::Archive> archive, Course* course, std::string sceneFile) {
         SceneFile = sceneFile;
 
-        if (archive) {
+        if (archive && (course != nullptr)) {
             auto initData = std::make_shared<Ship::ResourceInitData>();
             initData->Parent = archive;
             initData->Format = RESOURCE_FORMAT_BINARY;
@@ -147,7 +147,7 @@ namespace Editor {
                 course->Props.Minimap.Width = texture.Width;
                 course->Props.Minimap.Height = texture.Height;
             } else { // Fallback
-                course->Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+                course->Props.Minimap.Texture = minimap_mario_raceway;
                 course->Props.Minimap.Width = ResourceGetTexWidthByName(course->Props.Minimap.Texture);
                 course->Props.Minimap.Height = ResourceGetTexHeightByName(course->Props.Minimap.Texture);
             }

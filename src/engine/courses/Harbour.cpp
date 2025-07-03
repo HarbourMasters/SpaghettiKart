@@ -54,7 +54,7 @@ extern "C" {
     #include "course.h"
 }
 
-TrackWaypoint harbour_path[] = {
+TrackPathPoint harbour_path[] = {
     {16,-121,-34,0},
     {27,-121,-60,0},
     {31,-121,-83,0},
@@ -519,7 +519,7 @@ TrackWaypoint harbour_path[] = {
 Harbour::Harbour() {
     this->gfxSize = 100;
     this->textures = NULL;
-    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 260;
@@ -527,6 +527,7 @@ Harbour::Harbour() {
     Props.Minimap.PlayerX = 6;
     Props.Minimap.PlayerY = 28;
     Props.Minimap.PlayerScaleFactor = 0.022f;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:harbour";
     Props.SetText(Props.Name, "Harbour", sizeof(Props.Name));
@@ -543,25 +544,25 @@ Harbour::Harbour() {
 
     Props.PathSizes = {459, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
     Props.PathTable[0] = harbour_path;
     Props.PathTable[1] = NULL;
@@ -618,16 +619,16 @@ void Harbour::Load() {
 }
 
 void Harbour::LoadTextures() {
-    dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
-    D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
-    dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U); // 0x03009000
+    D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U); // 0x03009800
+    dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U); // 0x0300A000
+    dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U); // 0x0300A800
+    dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U); // 0x0300B000
+    dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U); // 0x0300B800
+    dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U); // 0x0300C000
+    dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U); // 0x0300C800
+    dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U); // 0x0300D000
+    dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U); // 0x0300D800
 }
 
 Path2D harbour_path2D[] = {
@@ -741,8 +742,8 @@ void Harbour::BeginPlay() {
 
 //    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
 
-   // gVehicle2DWaypoint = harbour_path2D;
-    //gVehicle2DWaypointLength = 53;
+   // gVehicle2DPathPoint = harbour_path2D;
+    //gVehicle2DPathLength = 53;
     // D_80162EB0 = spawn_actor_on_surface(harbour_path2D[0].x, 2000.0f, harbour_path2D[0].z);
 
 
@@ -760,8 +761,8 @@ void Harbour::BeginPlay() {
 }
 
 void Harbour::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
         }
@@ -775,8 +776,8 @@ void Harbour::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void Harbour::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }

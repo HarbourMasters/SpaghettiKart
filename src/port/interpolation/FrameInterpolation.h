@@ -7,11 +7,13 @@
 
 #ifdef __cplusplus
 
+#include "src/engine/CoreMath.h"
 #include <unordered_map>
 
 
 
 std::unordered_map<Mtx*, MtxF> FrameInterpolation_Interpolate(float step);
+void FrameInterpolation_ApplyMatrixTransformations(Mat4* matrix, FVector pos, IRotator rot, FVector scale);
 
 extern "C" {
 #endif
@@ -22,6 +24,8 @@ extern "C" {
 #define TAG_OBJECT(x) ((u32)0x40000000 | (u32) (uintptr_t) (x))
 
 void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate);
+
+bool check_if_recording();
 
 void FrameInterpolation_StartRecord(void);
 

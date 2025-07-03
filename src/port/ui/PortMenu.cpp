@@ -358,15 +358,17 @@ void PortMenu::AddEnhancements() {
                      .DefaultValue(10000.0f)
                      .Tooltip("Say how Far the Frustrum are when 'Disable Culling' are enable")
                      .Step(10.0f));
-
-    path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", "Cheats", 3);
-    AddWidget(path, "Moon Jump", WIDGET_CVAR_CHECKBOX).CVar("gEnableMoonJump");
     AddWidget(path, "Enable Custom CC", WIDGET_CVAR_CHECKBOX).CVar("gEnableCustomCC");
     AddWidget(path, "Custom CC", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gCustomCC")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gEnableCustomCC", 0); })
         .Options(FloatSliderOptions().Min(0.0f).Max(1000.0f).DefaultValue(150.0f).Step(10.0f));
+
+    AddWidget(path, "Harder CPU", WIDGET_CVAR_CHECKBOX).CVar("gHarderCPU");
+
+    path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Cheats", 3);
+    AddWidget(path, "Moon Jump", WIDGET_CVAR_CHECKBOX).CVar("gEnableMoonJump");
     AddWidget(path, "Disable Wall Collision", WIDGET_CVAR_CHECKBOX)
         .CVar("gNoWallColision")
         .Options(CheckboxOptions().Tooltip("Disable wall collision."));

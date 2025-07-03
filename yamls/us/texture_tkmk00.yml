@@ -4,14 +4,14 @@
   no_compression: true
   header:
     code:
-    - '#include <assets/texture_tkmk00.h>'
-    - '#include <macros.h>'
-    - '#include <defines.h>'
+      - "#include <assets/texture_tkmk00.h>"
+      - "#include <macros.h>"
+      - "#include <defines.h>"
     header:
-    - '#include <libultraship.h>'
-    - '#include <align_asset_macro.h>'
-gTexturePlayerSelect:
-  symbol: gTexturePlayerSelect
+      - "#include <libultraship.h>"
+      - "#include <align_asset_macro.h>"
+texture_player_select:
+  symbol: texture_player_select
   type: texture
   ctype: u16
   width: 220
@@ -20,8 +20,8 @@ gTexturePlayerSelect:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureOption:
-  symbol: gTextureOption
+texture_option:
+  symbol: texture_option
   type: texture
   ctype: u16
   width: 130
@@ -30,8 +30,8 @@ gTextureOption:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameDK:
-  symbol: gTextureNameDK
+texture_name_dk:
+  symbol: texture_name_dk
   type: texture
   ctype: u16
   width: 64
@@ -40,8 +40,8 @@ gTextureNameDK:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameToad:
-  symbol: gTextureNameToad
+texture_name_toad:
+  symbol: texture_name_toad
   type: texture
   ctype: u16
   width: 64
@@ -50,8 +50,8 @@ gTextureNameToad:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameBowser:
-  symbol: gTextureNameBowser
+texture_name_bowser:
+  symbol: texture_name_bowser
   type: texture
   ctype: u16
   width: 64
@@ -60,8 +60,8 @@ gTextureNameBowser:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameLuigi:
-  symbol: gTextureNameLuigi
+texture_name_luigi:
+  symbol: texture_name_luigi
   type: texture
   ctype: u16
   width: 64
@@ -70,8 +70,8 @@ gTextureNameLuigi:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameMario:
-  symbol: gTextureNameMario
+texture_name_mario:
+  symbol: texture_name_mario
   type: texture
   ctype: u16
   width: 64
@@ -80,8 +80,8 @@ gTextureNameMario:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNamePeach:
-  symbol: gTextureNamePeach
+texture_name_peach:
+  symbol: texture_name_peach
   type: texture
   ctype: u16
   width: 64
@@ -90,8 +90,8 @@ gTextureNamePeach:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameWario:
-  symbol: gTextureNameWario
+texture_name_wario:
+  symbol: texture_name_wario
   type: texture
   ctype: u16
   width: 64
@@ -100,8 +100,8 @@ gTextureNameWario:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureNameYoshi:
-  symbol: gTextureNameYoshi
+texture_name_yoshi:
+  symbol: texture_name_yoshi
   type: texture
   ctype: u16
   width: 64
@@ -360,8 +360,8 @@ gTextureMenuSpecialCup:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureGameSelect:
-  symbol: gTextureGameSelect
+texture_game_select:
+  symbol: texture_game_select
   type: texture
   ctype: u16
   width: 200
@@ -370,8 +370,8 @@ gTextureGameSelect:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureMenu1PGame:
-  symbol: gTextureMenu1PGame
+texture_menu_1p_game:
+  symbol: texture_menu_1p_game
   type: texture
   ctype: u16
   width: 64
@@ -380,8 +380,8 @@ gTextureMenu1PGame:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu2PGame:
-  symbol: gTextureMenu2PGame
+texture_menu_2p_game:
+  symbol: texture_menu_2p_game
   type: texture
   ctype: u16
   width: 64
@@ -390,8 +390,8 @@ gTextureMenu2PGame:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu3PGame:
-  symbol: gTextureMenu3PGame
+texture_menu_3p_game:
+  symbol: texture_menu_3p_game
   type: texture
   ctype: u16
   width: 64
@@ -400,8 +400,8 @@ gTextureMenu3PGame:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu4PGame:
-  symbol: gTextureMenu4PGame
+texture_menu_4p_game:
+  symbol: texture_menu_4p_game
   type: texture
   ctype: u16
   width: 64
@@ -410,8 +410,8 @@ gTextureMenu4PGame:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuModeBattle:
-  symbol: gTextureMenuModeBattle
+texture_mode_battle:
+  symbol: texture_mode_battle
   type: texture
   ctype: u16
   width: 64
@@ -420,8 +420,8 @@ gTextureMenuModeBattle:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuModeTimeTrials:
-  symbol: gTextureMenuModeTimeTrials
+texture_mode_time_trials:
+  symbol: texture_mode_time_trials
   type: texture
   ctype: u16
   width: 64
@@ -430,8 +430,8 @@ gTextureMenuModeTimeTrials:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuModeMarioGP:
-  symbol: gTextureMenuModeMarioGP
+texture_mode_mario_gp:
+  symbol: texture_mode_mario_gp
   type: texture
   ctype: u16
   width: 64
@@ -440,8 +440,8 @@ gTextureMenuModeMarioGP:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuModeVS:
-  symbol: gTextureMenuModeVS
+texture_mode_vs:
+  symbol: texture_mode_vs
   type: texture
   ctype: u16
   width: 64
@@ -450,8 +450,8 @@ gTextureMenuModeVS:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuLOption:
-  symbol: gTextureMenuLOption
+texture_l_option:
+  symbol: texture_l_option
   type: texture
   ctype: u16
   width: 58
@@ -460,8 +460,8 @@ gTextureMenuLOption:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuRData:
-  symbol: gTextureMenuRData
+texture_r_data:
+  symbol: texture_r_data
   type: texture
   ctype: u16
   width: 58
@@ -470,8 +470,8 @@ gTextureMenuRData:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu50cc:
-  symbol: gTextureMenu50cc
+texture_50cc:
+  symbol: texture_50cc
   type: texture
   ctype: u16
   width: 64
@@ -480,8 +480,8 @@ gTextureMenu50cc:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu100cc:
-  symbol: gTextureMenu100cc
+texture_100cc:
+  symbol: texture_100cc
   type: texture
   ctype: u16
   width: 64
@@ -490,8 +490,8 @@ gTextureMenu100cc:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenu150cc:
-  symbol: gTextureMenu150cc
+texture_150cc:
+  symbol: texture_150cc
   type: texture
   ctype: u16
   width: 64
@@ -500,8 +500,8 @@ gTextureMenu150cc:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuExtra:
-  symbol: gTextureMenuExtra
+texture_extra:
+  symbol: texture_extra
   type: texture
   ctype: u16
   width: 64
@@ -530,8 +530,8 @@ gTextureMenuWithItem:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuBegin:
-  symbol: gTextureMenuBegin
+texture_begin:
+  symbol: texture_begin
   type: texture
   ctype: u16
   width: 64
@@ -540,8 +540,8 @@ gTextureMenuBegin:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuGhost:
-  symbol: gTextureMenuGhost
+texture_menu_ghost:
+  symbol: texture_menu_ghost
   type: texture
   ctype: u16
   width: 64
@@ -550,8 +550,8 @@ gTextureMenuGhost:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuData:
-  symbol: gTextureMenuData
+texture_data:
+  symbol: texture_data
   type: texture
   ctype: u16
   width: 64
@@ -560,8 +560,8 @@ gTextureMenuData:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureMenuOK:
-  symbol: gTextureMenuOK
+texture_ok:
+  symbol: texture_ok
   type: texture
   ctype: u16
   width: 31
@@ -570,8 +570,8 @@ gTextureMenuOK:
   tkmk00: true
   alpha: 0xBE
   format: rgba16
-gTextureBackgroundBlueSky:
-  symbol: gTextureBackgroundBlueSky
+background_blue_sky:
+  symbol: background_blue_sky
   type: texture
   ctype: u16
   width: 320
@@ -580,8 +580,8 @@ gTextureBackgroundBlueSky:
   tkmk00: true
   alpha: 0x1
   format: rgba16
-gTextureBackgroundSunset:
-  symbol: gTextureBackgroundSunset
+background_sunset:
+  symbol: background_sunset
   type: texture
   ctype: u16
   width: 320

@@ -86,7 +86,7 @@ FVector ScreenRayTrace() {
 bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f actorMax, float* t) {
     float tmin = -FLT_MAX, tmax = FLT_MAX;
 
-    for (int i = 0; i < 3; i++) {
+    for (size_t i = 0; i < 3; i++) {
         if (fabs(rayDir[i]) > 1e-6f) { // Avoid division by zero
             float t1 = (actorMin[i] - rayOrigin[i]) / rayDir[i];
             float t2 = (actorMax[i] - rayOrigin[i]) / rayDir[i];
@@ -109,9 +109,9 @@ bool QueryCollisionRayActor(Vec3f rayOrigin, Vec3f rayDir, Vec3f actorMin, Vec3f
 FVector4 MultiplyMatrixVector(float matrix[4][4], float vector[4]) {
     FVector4 result;
     float* resultPtr = &result.x;
-    for (int i = 0; i < 4; i++) {
+    for (size_t i = 0; i < 4; i++) {
         resultPtr[i] = 0;
-        for (int j = 0; j < 4; j++) {
+        for (size_t j = 0; j < 4; j++) {
             resultPtr[i] += matrix[j][i] * vector[j];  // Swap [i][j] → [j][i] for column order
         }
     }

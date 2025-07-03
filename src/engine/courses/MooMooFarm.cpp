@@ -75,7 +75,7 @@ MooMooFarm::MooMooFarm() {
     this->gfx = d_course_moo_moo_farm_packed_dls;
     this->gfxSize = 3304;
     Props.textures = moo_moo_farm_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineMooMooFarm;
+    Props.Minimap.Texture = minimap_moo_moo_farm;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 271;
@@ -85,6 +85,7 @@ MooMooFarm::MooMooFarm() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
@@ -100,32 +101,32 @@ MooMooFarm::MooMooFarm() {
 
     Props.PathSizes = {0x230, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0};
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_unknown_waypoints);
+    Props.PathTable[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_unknown_waypoints);
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = (TrackWaypoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_track_waypoints);
+    Props.PathTable2[0] = (TrackPathPoint*)LOAD_ASSET_RAW(d_course_moo_moo_farm_track_waypoints);
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -143,6 +144,9 @@ MooMooFarm::MooMooFarm() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 184, 99};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    for (size_t i = 0; i < 92; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) moo_moo_farm_dls[i], Props.textures);
+    }
 }
 
 void MooMooFarm::Load() {
@@ -154,18 +158,18 @@ void MooMooFarm::Load() {
 }
 
 void MooMooFarm::LoadTextures() {
-    dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
-    dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
-    dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U);
-    dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
+    dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U); // 0x03009000
+    dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U); // 0x03009800
+    dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U); // 0x0300A000
+    dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U); // 0x0300A800
+    dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U); // 0x0300B000
+    dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U); // 0x0300B800
+    dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U); // 0x0300C000
+    dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U); // 0x0300C800
+    dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U); // 0x0300D000
+    dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U); // 0x0300D800
+    dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U); // 0x0300E000
+    dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U); // 0x0300E800
 }
 
 // These are full arrays that are not used in the original game
@@ -321,19 +325,19 @@ void MooMooFarm::BeginPlay() {
     if (gModeSelection == VERSUS) {
         FVector pos = { 0, 0, 0 };
 
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][50], 50, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][140], 140, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][225], 225, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][316], 316, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][434], 434, 3, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
-        gWorldInstance.AddObject(new OBombKart(pos, &D_80164550[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][50], 50, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][140], 140, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][225], 225, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][316], 316, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][434], 434, 3, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
+        gWorldInstance.AddObject(new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f));
     }
 }
 
 void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {
             func_800CA288(playerId, 0x55);
         }
@@ -347,8 +351,8 @@ void MooMooFarm::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
 void MooMooFarm::WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x145) &&
-        ((s16) gNearestWaypointByPlayerId[playerId] < 0x18B)) {
+    if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x145) &&
+        ((s16) gNearestPathPointByPlayerId[playerId] < 0x18B)) {
         if (D_80165300[playerId] != 1) {
             func_800CA2E4(playerId, 0x55);
         }

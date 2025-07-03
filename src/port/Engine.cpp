@@ -4,6 +4,7 @@
 #include "GameExtractor.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
+#include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/AudioBankFactory.h"
@@ -11,14 +12,15 @@
 #include "resource/importers/AudioSequenceFactory.h"
 #include "resource/importers/Vec3fFactory.h"
 #include "resource/importers/Vec3sFactory.h"
-#include "resource/importers/KartAIFactory.h"
+#include "resource/importers/CPUFactory.h"
 #include "resource/importers/CourseVtxFactory.h"
 #include "resource/importers/TrackSectionsFactory.h"
-#include "resource/importers/TrackWaypointFactory.h"
+#include "resource/importers/TrackPathPointFactory.h"
 #include "resource/importers/ActorSpawnDataFactory.h"
 #include "resource/importers/UnkActorSpawnDataFactory.h"
 #include "resource/importers/ArrayFactory.h"
 #include "resource/importers/MinimapFactory.h"
+#include "resource/importers/BetterTextureFactory.h"
 #include <Fonts.h>
 #include "window/gui/resource/Font.h"
 #include "window/gui/resource/FontFactory.h"
@@ -46,6 +48,7 @@ float gInterpolationStep = 0.0f;
 #include <BlobFactory.h>
 #include <VertexFactory.h>
 #include <LightFactory.h>
+// #include <PngFactory.h>
 #include "audio/internal.h"
 #include "audio/GameAudio.h"
 }
@@ -58,6 +61,19 @@ Fast::Interpreter* GetInterpreter() {
 }
 
 GameEngine* GameEngine::Instance;
+
+bool CreateDirectoryRecursive(std::string const& dirName, std::error_code& err) {
+    err.clear();
+    if (!std::filesystem::create_directories(dirName, err)) {
+        if (std::filesystem::exists(dirName)) {
+            // The folder already exists:
+            err.clear();
+            return true;
+        }
+        return false;
+    }
+    return true;
+}
 
 GameEngine::GameEngine() {
 
@@ -93,7 +109,6 @@ GameEngine::GameEngine() {
     if (std::filesystem::exists(assets_path)) {
         archiveFiles.push_back(assets_path);
     }
-
     if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
         !patches_path.empty() && std::filesystem::exists(patches_path)) {
         if (std::filesystem::is_directory(patches_path)) {
@@ -112,7 +127,60 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-    auto controlDeck = std::make_shared<LUS::ControlDeck>();
+        auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
+        // KeyboardKeyToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
+            { BTN_A, { Ship::KbScancode::LUS_KB_SHIFT} },
+            { BTN_B, { Ship::KbScancode::LUS_KB_CONTROL} },
+            { BTN_L, { Ship::KbScancode::LUS_KB_Q} },
+            { BTN_R, { Ship::KbScancode::LUS_KB_SPACE} },
+            { BTN_Z, { Ship::KbScancode::LUS_KB_Z} },
+            { BTN_START, { Ship::KbScancode::LUS_KB_ENTER} },
+            { BTN_CUP, { Ship::KbScancode::LUS_KB_T} },
+            { BTN_CDOWN, { Ship::KbScancode::LUS_KB_G} },
+            { BTN_CLEFT, { Ship::KbScancode::LUS_KB_F} },
+            { BTN_CRIGHT, { Ship::KbScancode::LUS_KB_H} },
+            { BTN_DUP, { Ship::KbScancode::LUS_KB_NUMPAD8} },
+            { BTN_DDOWN, { Ship::KbScancode::LUS_KB_NUMPAD2} },
+            { BTN_DLEFT, { Ship::KbScancode::LUS_KB_NUMPAD4} },
+            { BTN_DRIGHT, { Ship::KbScancode::LUS_KB_NUMPAD6} }
+        },
+        // KeyboardKeyToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, Ship::KbScancode>>>{
+            { Ship::StickIndex::LEFT_STICK, {
+                { Ship::Direction::UP, Ship::KbScancode::LUS_KB_ARROWKEY_UP},
+                { Ship::Direction::DOWN, Ship::KbScancode::LUS_KB_ARROWKEY_DOWN},
+                { Ship::Direction::LEFT, Ship::KbScancode::LUS_KB_ARROWKEY_LEFT},
+                { Ship::Direction::RIGHT, Ship::KbScancode::LUS_KB_ARROWKEY_RIGHT}
+            }}
+        },
+        // SDLButtonToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<SDL_GameControllerButton>>{
+            { BTN_A, { SDL_CONTROLLER_BUTTON_A } },
+            { BTN_B, { SDL_CONTROLLER_BUTTON_X } },
+            { BTN_START, { SDL_CONTROLLER_BUTTON_START } },
+            { BTN_CLEFT, { SDL_CONTROLLER_BUTTON_Y } },
+            { BTN_CDOWN, { SDL_CONTROLLER_BUTTON_B } },
+            { BTN_DUP, { SDL_CONTROLLER_BUTTON_DPAD_UP } },
+            { BTN_DDOWN, { SDL_CONTROLLER_BUTTON_DPAD_DOWN } },
+            { BTN_DLEFT, { SDL_CONTROLLER_BUTTON_DPAD_LEFT } },
+            { BTN_DRIGHT, { SDL_CONTROLLER_BUTTON_DPAD_RIGHT } },
+            { BTN_R, { SDL_CONTROLLER_BUTTON_RIGHTSHOULDER } },
+            { BTN_L, { SDL_CONTROLLER_BUTTON_LEFTSHOULDER } }
+        },
+        // SDLButtonToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, SDL_GameControllerButton>>>(),
+        // SDLAxisDirectionToButtonMappings
+        std::unordered_map<CONTROLLERBUTTONS_T, std::vector<std::pair<SDL_GameControllerAxis, int32_t>>>{
+            { BTN_R, { { SDL_CONTROLLER_AXIS_TRIGGERRIGHT, 1 } } },
+            { BTN_Z, { { SDL_CONTROLLER_AXIS_TRIGGERLEFT, 1 } } },
+            { BTN_CUP, { { SDL_CONTROLLER_AXIS_RIGHTY, -1 } } },
+            { BTN_CRIGHT, { { SDL_CONTROLLER_AXIS_RIGHTX, 1 } } }
+        },
+        // SDLAxisDirectionToAxisDirectionMappings - use built-in LUS defaults
+        std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, std::pair<SDL_GameControllerAxis, int32_t>>>>()
+    );
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings);
 
     this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
@@ -148,11 +216,14 @@ GameEngine::GameEngine() {
     loader->RegisterResourceFactory(std::make_shared<SF64::ResourceFactoryBinaryGenericArrayV0>(),
                                     RESOURCE_FORMAT_BINARY, "GenericArray",
                                     static_cast<uint32_t>(SF64::ResourceType::GenericArray), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
+    // loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
+    //                                 "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
+    // loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
+    //                                 "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTextureV0>(), RESOURCE_FORMAT_BINARY,
                                     "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 0);
-    loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTextureV1>(), RESOURCE_FORMAT_BINARY,
                                     "Texture", static_cast<uint32_t>(Fast::ResourceType::Texture), 1);
-
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryBinaryVertexV0>(), RESOURCE_FORMAT_BINARY,
                                     "Vertex", static_cast<uint32_t>(Fast::ResourceType::Vertex), 0);
     loader->RegisterResourceFactory(std::make_shared<Fast::ResourceFactoryXMLVertexV0>(), RESOURCE_FORMAT_XML, "Vertex",
@@ -172,20 +243,22 @@ GameEngine::GameEngine() {
                                     "Lights1", static_cast<uint32_t>(Fast::ResourceType::Light), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryArrayV0>(), RESOURCE_FORMAT_BINARY,
                                     "Array", static_cast<uint32_t>(MK64::ResourceType::MK_Array), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryKartAIV0>(), RESOURCE_FORMAT_BINARY,
-                                    "KartAI", static_cast<uint32_t>(MK64::ResourceType::KartAI), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCPUV0>(), RESOURCE_FORMAT_BINARY, "CPU",
+                                    static_cast<uint32_t>(MK64::ResourceType::CPU), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryCourseVtxV0>(), RESOURCE_FORMAT_BINARY,
                                     "CourseVtx", static_cast<uint32_t>(MK64::ResourceType::CourseVertex), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackSectionsV0>(),
                                     RESOURCE_FORMAT_BINARY, "TrackSections",
                                     static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackSectionsV0>(), RESOURCE_FORMAT_XML,
-                                    "TrackSections", static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackWaypointsV0>(),
-                                    RESOURCE_FORMAT_BINARY, "Waypoints",
-                                    static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
-    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackWaypointsV0>(), RESOURCE_FORMAT_XML,
-                                    "Paths", static_cast<uint32_t>(MK64::ResourceType::Waypoints), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackSectionsV0>(),
+                                    RESOURCE_FORMAT_XML, "TrackSections",
+                                    static_cast<uint32_t>(MK64::ResourceType::TrackSection), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryTrackPathPointsV0>(),
+                                    RESOURCE_FORMAT_BINARY, "Paths",
+                                    static_cast<uint32_t>(MK64::ResourceType::Paths), 0);
+    loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryXMLTrackPathPointsV0>(),
+                                    RESOURCE_FORMAT_XML, "Paths",
+                                    static_cast<uint32_t>(MK64::ResourceType::Paths), 0);
     loader->RegisterResourceFactory(std::make_shared<MK64::ResourceFactoryBinaryActorSpawnDataV0>(),
                                     RESOURCE_FORMAT_BINARY, "SpawnData",
                                     static_cast<uint32_t>(MK64::ResourceType::SpawnData), 0);
@@ -418,8 +491,8 @@ void GameEngine::HandleAudioThread() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-        s16 audio_buffer[SAMPLES_PER_FRAME];
-        for (int i = 0; i < NUM_AUDIO_CHANNELS; i++) {
+        s16 audio_buffer[SAMPLES_PER_FRAME] = { 0 };
+        for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
             create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
 
@@ -624,6 +697,17 @@ static const char* sOtrSignature = "__OTR__";
 
 extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return strncmp(data, sOtrSignature, strlen(sOtrSignature)) == 0;
+}
+
+extern "C" int32_t GameEngine_ResourceGetTexTypeByName(const char* name) {
+    const auto res = std::static_pointer_cast<Fast::Texture>(ResourceLoad(name));
+
+    if (res != nullptr) {
+        return (int16_t) res->Type;
+    }
+
+    SPDLOG_ERROR("Given texture path is a non-existent resource");
+    return -1;
 }
 
 // struct TimedEntry {

@@ -359,12 +359,12 @@ d_course_mario_raceway_unknown_waypoints:
   symbol: d_course_mario_raceway_unknown_waypoints
   offset: 0x5568
   count: 73
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
 d_course_mario_raceway_track_waypoints:
   symbol: d_course_mario_raceway_track_waypoints
   offset: 0x57B0
   count: 500
-  type: mk64:TRACK_WAYPOINTS
+  type: mk64:TRACK_PATH
 d_course_mario_raceway_piranha_plant_tlut:
   symbol: d_course_mario_raceway_piranha_plant_tlut
   type: texture

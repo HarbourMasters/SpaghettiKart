@@ -1015,7 +1015,8 @@ s32 func_800B6A68(void) {
 }
 
 void func_8800B6AF8(void) {
-    if (check_for_controller_pak(CONTROLLER_1) && osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, 0) == 0 &&
+    if (check_for_controller_pak(CONTROLLER_1) &&
+        osPfsInit(&gSIEventMesgQueue, &gControllerPak1FileHandle, CONTROLLER_1) == 0 &&
         osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName, (u8*) gExtCode,
                       &gControllerPak1FileNote) &&
         osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles) ==

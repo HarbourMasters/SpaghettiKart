@@ -573,37 +573,53 @@ static const ALIGN_ASSET(2) char gTexture68DEC0[] = "__OTR__other_textures/textu
 
 static const ALIGN_ASSET(2) char gTexture68E2D0[] = "__OTR__other_textures/texture_68E2D0";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell0[] = "__OTR__other_textures/gTextureGreenShell0";
+static const ALIGN_ASSET(2) char texture_red_shell_0[] = "__OTR__other_textures/texture_red_shell_0";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell1[] = "__OTR__other_textures/gTextureGreenShell1";
+static const ALIGN_ASSET(2) char texture_green_shell_0[] = "__OTR__other_textures/texture_green_shell_0";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell2[] = "__OTR__other_textures/gTextureGreenShell2";
+static const ALIGN_ASSET(2) char texture_green_shell_1[] = "__OTR__other_textures/texture_green_shell_1";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell3[] = "__OTR__other_textures/gTextureGreenShell3";
+static const ALIGN_ASSET(2) char texture_red_shell_1[] = "__OTR__other_textures/texture_red_shell_1";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell4[] = "__OTR__other_textures/gTextureGreenShell4";
+static const ALIGN_ASSET(2) char texture_green_shell_2[] = "__OTR__other_textures/texture_green_shell_2";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell5[] = "__OTR__other_textures/gTextureGreenShell5";
+static const ALIGN_ASSET(2) char texture_red_shell_2[] = "__OTR__other_textures/texture_red_shell_2";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell6[] = "__OTR__other_textures/gTextureGreenShell6";
+static const ALIGN_ASSET(2) char texture_green_shell_3[] = "__OTR__other_textures/texture_green_shell_3";
 
-static const ALIGN_ASSET(2) char gTextureGreenShell7[] = "__OTR__other_textures/gTextureGreenShell7";
+static const ALIGN_ASSET(2) char texture_red_shell_3[] = "__OTR__other_textures/texture_red_shell_3";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell0[] = "__OTR__other_textures/gTextureBlueShell0";
+static const ALIGN_ASSET(2) char texture_red_shell_4[] = "__OTR__other_textures/texture_red_shell_4";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell1[] = "__OTR__other_textures/gTextureBlueShell1";
+static const ALIGN_ASSET(2) char texture_green_shell_4[] = "__OTR__other_textures/texture_green_shell_4";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell2[] = "__OTR__other_textures/gTextureBlueShell2";
+static const ALIGN_ASSET(2) char texture_green_shell_5[] = "__OTR__other_textures/texture_green_shell_5";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell3[] = "__OTR__other_textures/gTextureBlueShell3";
+static const ALIGN_ASSET(2) char texture_red_shell_5[] = "__OTR__other_textures/texture_red_shell_5";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell4[] = "__OTR__other_textures/gTextureBlueShell4";
+static const ALIGN_ASSET(2) char texture_green_shell_6[] = "__OTR__other_textures/texture_green_shell_6";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell5[] = "__OTR__other_textures/gTextureBlueShell5";
+static const ALIGN_ASSET(2) char texture_red_shell_6[] = "__OTR__other_textures/texture_red_shell_6";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell6[] = "__OTR__other_textures/gTextureBlueShell6";
+static const ALIGN_ASSET(2) char texture_green_shell_7[] = "__OTR__other_textures/texture_green_shell_7";
 
-static const ALIGN_ASSET(2) char gTextureBlueShell7[] = "__OTR__other_textures/gTextureBlueShell7";
+static const ALIGN_ASSET(2) char texture_red_shell_7[] = "__OTR__other_textures/texture_red_shell_7";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_0[] = "__OTR__other_textures/texture_blue_shell_0";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_1[] = "__OTR__other_textures/texture_blue_shell_1";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_2[] = "__OTR__other_textures/texture_blue_shell_2";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_3[] = "__OTR__other_textures/texture_blue_shell_3";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_4[] = "__OTR__other_textures/texture_blue_shell_4";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_5[] = "__OTR__other_textures/texture_blue_shell_5";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_6[] = "__OTR__other_textures/texture_blue_shell_6";
+
+static const ALIGN_ASSET(2) char texture_blue_shell_7[] = "__OTR__other_textures/texture_blue_shell_7";
 
 static const ALIGN_ASSET(2) char gTextureQuestionMarkYellow[] = "__OTR__other_textures/question_mark_yellow";
 
@@ -709,11 +725,11 @@ static const ALIGN_ASSET(2) char gTexture69B03C[] = "__OTR__other_textures/textu
 
 static const ALIGN_ASSET(2) char gTexture69B140[] = "__OTR__other_textures/texture_69B140";
 
-static const ALIGN_ASSET(2) char gTexture69B378[] = "__OTR__other_textures/texture_69B378";
+static const ALIGN_ASSET(2) char gGrassParticle[] = "__OTR__other_textures/gGrassParticle";
 
-static const ALIGN_ASSET(2) char gTexture69B960[] = "__OTR__other_textures/texture_69B960";
+static const ALIGN_ASSET(2) char gTextureMusicNote[] = "__OTR__other_textures/texture_69B960";
 
-static const ALIGN_ASSET(2) char gTexture69BA28[] = "__OTR__other_textures/texture_69BA28";
+static const ALIGN_ASSET(2) char gTextureSpeechBubble[] = "__OTR__other_textures/texture_69BA28";
 
 static const ALIGN_ASSET(2) char gTextureBoingExclamation[] = "__OTR__other_textures/boing_exclamation";
 
@@ -725,9 +741,9 @@ static const ALIGN_ASSET(2) char gTexture69C090[] = "__OTR__other_textures/textu
 
 static const ALIGN_ASSET(2) char gTexture69C1E8[] = "__OTR__other_textures/texture_69C1E8";
 
-static const ALIGN_ASSET(2) char gTexture69C354[] = "__OTR__other_textures/texture_69C354";
+static const ALIGN_ASSET(2) char gTextureSmokePuff[] = "__OTR__other_textures/texture_69C354";
 
-static const ALIGN_ASSET(2) char gTexture69C4E4[] = "__OTR__other_textures/texture_69C4E4";
+static const ALIGN_ASSET(2) char gGroundDust[] = "__OTR__other_textures/gGroundDust";
 
 static const ALIGN_ASSET(2) char gTexture69C80C[] = "__OTR__other_textures/texture_69C80C";
 
@@ -1027,45 +1043,45 @@ static const ALIGN_ASSET(2) char gTextureExhaust4[] = "__OTR__other_textures/exh
 
 static const ALIGN_ASSET(2) char gTextureExhaust5[] = "__OTR__other_textures/exhaust_5";
 
-static const ALIGN_ASSET(2) char gTextureLogoMarioKart64[] = "__OTR__other_textures/logo_mario_kart_64";
+static const ALIGN_ASSET(2) char logo_mario_kart_64[] = "__OTR__other_textures/logo_mario_kart_64";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineMarioRaceway[] = "__OTR__other_textures/gTextureCourseOutlineMarioRaceway";
+static const ALIGN_ASSET(2) char minimap_mario_raceway[] = "__OTR__other_textures/minimap_mario_raceway";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineChocoMountain[] = "__OTR__other_textures/gTextureCourseOutlineChocoMountain";
+static const ALIGN_ASSET(2) char minimap_choco_mountain[] = "__OTR__other_textures/minimap_choco_mountain";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineBowsersCastle[] = "__OTR__other_textures/gTextureCourseOutlineBowsersCastle";
+static const ALIGN_ASSET(2) char minimap_bowsers_castle[] = "__OTR__other_textures/minimap_bowsers_castle";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineBansheeBoardwalk[] = "__OTR__other_textures/gTextureCourseOutlineBansheeBoardwalk";
+static const ALIGN_ASSET(2) char minimap_banshee_boardwalk[] = "__OTR__other_textures/minimap_banshee_boardwalk";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineYoshiValley[] = "__OTR__other_textures/gTextureCourseOutlineYoshiValley";
+static const ALIGN_ASSET(2) char minimap_yoshi_valley[] = "__OTR__other_textures/minimap_yoshi_valley";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineFrappeSnowland[] = "__OTR__other_textures/gTextureCourseOutlineFrappeSnowland";
+static const ALIGN_ASSET(2) char minimap_frappe_snowland[] = "__OTR__other_textures/minimap_frappe_snowland";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineKoopaTroopaBeach[] = "__OTR__other_textures/gTextureCourseOutlineKoopaTroopaBeach";
+static const ALIGN_ASSET(2) char minimap_koopa_troopa_beach[] = "__OTR__other_textures/minimap_koopa_troopa_beach";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineRoyalRaceway[] = "__OTR__other_textures/gTextureCourseOutlineRoyalRaceway";
+static const ALIGN_ASSET(2) char minimap_royal_raceway[] = "__OTR__other_textures/minimap_royal_raceway";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineLuigiRaceway[] = "__OTR__other_textures/gTextureCourseOutlineLuigiRaceway";
+static const ALIGN_ASSET(2) char minimap_luigi_raceway[] = "__OTR__other_textures/minimap_luigi_raceway";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineMooMooFarm[] = "__OTR__other_textures/gTextureCourseOutlineMooMooFarm";
+static const ALIGN_ASSET(2) char minimap_moo_moo_farm[] = "__OTR__other_textures/minimap_moo_moo_farm";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineToadsTurnpike[] = "__OTR__other_textures/gTextureCourseOutlineToadsTurnpike";
+static const ALIGN_ASSET(2) char minimap_toads_turnpike[] = "__OTR__other_textures/minimap_toads_turnpike";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineKalimariDesert[] = "__OTR__other_textures/gTextureCourseOutlineKalimariDesert";
+static const ALIGN_ASSET(2) char minimap_kalimari_desert[] = "__OTR__other_textures/minimap_kalimari_desert";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineSherbetLand[] = "__OTR__other_textures/gTextureCourseOutlineSherbetLand";
+static const ALIGN_ASSET(2) char minimap_sherbet_land[] = "__OTR__other_textures/minimap_sherbet_land";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineRainbowRoad[] = "__OTR__other_textures/gTextureCourseOutlineRainbowRoad";
+static const ALIGN_ASSET(2) char minimap_rainbow_road[] = "__OTR__other_textures/minimap_rainbow_road";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineWarioStadium[] = "__OTR__other_textures/gTextureCourseOutlineWarioStadium";
+static const ALIGN_ASSET(2) char minimap_wario_stadium[] = "__OTR__other_textures/minimap_wario_stadium";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineBlockFort[] = "__OTR__other_textures/gTextureCourseOutlineBlockFort";
+static const ALIGN_ASSET(2) char minimap_block_fort[] = "__OTR__other_textures/minimap_block_fort";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineSkyscraper[] = "__OTR__other_textures/gTextureCourseOutlineSkyscraper";
+static const ALIGN_ASSET(2) char minimap_skyscraper[] = "__OTR__other_textures/minimap_skyscraper";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineDoubleDeck[] = "__OTR__other_textures/gTextureCourseOutlineDoubleDeck";
+static const ALIGN_ASSET(2) char minimap_double_deck[] = "__OTR__other_textures/minimap_double_deck";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineDksJungleParkway[] = "__OTR__other_textures/gTextureCourseOutlineDksJungleParkway";
+static const ALIGN_ASSET(2) char minimap_dks_jungle_parkway[] = "__OTR__other_textures/minimap_dks_jungle_parkway";
 
-static const ALIGN_ASSET(2) char gTextureCourseOutlineBigDonut[] = "__OTR__other_textures/gTextureCourseOutlineBigDonut";
+static const ALIGN_ASSET(2) char minimap_big_donut[] = "__OTR__other_textures/minimap_big_donut";
 

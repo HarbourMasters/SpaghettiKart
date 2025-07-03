@@ -200,6 +200,8 @@ static const ALIGN_ASSET(2) char d_course_choco_mountain_unknown_waypoints[] = "
 
 static const ALIGN_ASSET(2) char d_course_choco_mountain_track_waypoints[] = "__OTR__choco_mountain_data/d_course_choco_mountain_track_waypoints";
 
+static const ALIGN_ASSET(2) char choco_mountain_data_seg6_lights_5AE0[] = "__OTR__choco_mountain_data/choco_mountain_data_seg6_lights_5AE0";
+
 static const ALIGN_ASSET(2) char d_course_choco_mountain_light[] = "__OTR__choco_mountain_data/d_course_choco_mountain_light";
 
 static const ALIGN_ASSET(2) char d_course_choco_mountain_6005AF8[] = "__OTR__choco_mountain_data/d_course_choco_mountain_6005AF8";

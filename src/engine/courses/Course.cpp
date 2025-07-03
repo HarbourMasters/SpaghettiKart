@@ -4,7 +4,7 @@
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
 #include "port/Game.h"
-#include "port/resource/type/TrackWaypoint.h"
+#include "port/resource/type/TrackPathPointData.h"
 #include "port/resource/type/TrackSections.h"
 
 extern "C" {
@@ -23,17 +23,28 @@ extern "C" {
 #include "render_courses.h"
 #include "collision.h"
 #include "actors.h"
+#include "math_util.h"
 extern StaffGhost* d_mario_raceway_staff_ghost;
 }
 
+void ResizeMinimap(MinimapProps* minimap) {
+    if (minimap->Height < minimap->Width) {
+        minimap->Width = (minimap->Width * 64) / minimap->Height;
+        minimap->Height = 64;
+    } else {
+        minimap->Height = (minimap->Height * 64) / minimap->Width;
+        minimap->Width = 64;
+    }
+}
+
 Course::Course() {
-    // Props.Name = "Course Name";
-    // Props.DebugName = "CName";
+    Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
+    Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
     Id = "";
-    Props.Minimap.Texture = gTextureCourseOutlineMarioRaceway;
+    Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 257;
@@ -43,8 +54,9 @@ Course::Course() {
     Props.Minimap.PlayerScaleFactor = 0.22f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
-    Props.Minimap.Colour = {255, 255, 255};
-    Props.WaterLevel = -10.0f;
+    Props.Minimap.Colour = { 255, 255, 255 };
+
+    Props.WaterLevel = FLT_MAX;
 
     Props.LakituTowType = (s32) OLakitu::LakituTowType::NORMAL;
     Props.AIBehaviour = D_0D008F28;
@@ -58,25 +70,25 @@ Course::Course() {
 
     Props.PathSizes = { 600, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 };
 
-    Props.D_0D009418[0] = 4.1666665f;
-    Props.D_0D009418[1] = 5.5833334f;
-    Props.D_0D009418[2] = 6.1666665f;
-    Props.D_0D009418[3] = 6.75f;
+    Props.CurveTargetSpeed[0] = 4.1666665f;
+    Props.CurveTargetSpeed[1] = 5.5833334f;
+    Props.CurveTargetSpeed[2] = 6.1666665f;
+    Props.CurveTargetSpeed[3] = 6.75f;
 
-    Props.D_0D009568[0] = 3.75f;
-    Props.D_0D009568[1] = 5.1666665f;
-    Props.D_0D009568[2] = 5.75f;
-    Props.D_0D009568[3] = 6.3333334f;
+    Props.NormalTargetSpeed[0] = 3.75f;
+    Props.NormalTargetSpeed[1] = 5.1666665f;
+    Props.NormalTargetSpeed[2] = 5.75f;
+    Props.NormalTargetSpeed[3] = 6.3333334f;
 
     Props.D_0D0096B8[0] = 3.3333332f;
     Props.D_0D0096B8[1] = 3.9166667f;
     Props.D_0D0096B8[2] = 4.5f;
     Props.D_0D0096B8[3] = 5.0833334f;
 
-    Props.D_0D009808[0] = 3.75f;
-    Props.D_0D009808[1] = 5.1666665f;
-    Props.D_0D009808[2] = 5.75f;
-    Props.D_0D009808[3] = 6.3333334f;
+    Props.OffTrackTargetSpeed[0] = 3.75f;
+    Props.OffTrackTargetSpeed[1] = 5.1666665f;
+    Props.OffTrackTargetSpeed[2] = 5.75f;
+    Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
     Props.PathTable[0] = NULL;
     Props.PathTable[1] = NULL;
@@ -115,11 +127,12 @@ void Course::LoadO2R(std::string trackPath) {
             size_t i = 0;
             for (auto& path : paths) {
                 if (i == 0) {
-                    Props.PathTable[0] = (TrackWaypoint*)path.data();
+                    Props.PathSizes.unk0 = path.size();
+                    Props.PathTable[0] = (TrackPathPoint*) path.data();
                     Props.PathTable[1] = NULL;
                     Props.PathTable[2] = NULL;
                     Props.PathTable[3] = NULL;
-                    Props.PathTable2[0] = (TrackWaypoint*)path.data();
+                    Props.PathTable2[0] = (TrackPathPoint*) path.data();
                     Props.PathTable2[1] = NULL;
                     Props.PathTable2[2] = NULL;
                     Props.PathTable2[3] = NULL;
@@ -134,13 +147,13 @@ void Course::LoadO2R(std::string trackPath) {
     }
 }
 
-// Load stock track
+// Load stock and o2r tracks
 void Course::Load() {
 
     // Load from O2R
     if (!TrackSectionsPtr.empty()) {
         bIsMod = true;
-        //auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
+        // auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
 
         TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
@@ -149,7 +162,12 @@ void Course::Load() {
             Course::Init();
             ParseCourseSections(sections, size);
             func_80295C6C();
-            Props.WaterLevel = gCourseMinY - 10.0f;
+
+            if (Props.WaterLevel == FLT_MAX) {
+                Props.WaterLevel = gCourseMinY - 10.0f;
+            }
+        } else {
+            printf("Course.cpp: Custom track sections are invalid\n");
         }
         return;
     }
@@ -203,22 +221,23 @@ void Course::Load() {
 void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
     for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
         if (sections[i].flags & 0x8000) {
-            D_8015F59C = 1;
+            D_8015F59C = 1; // single-sided wall
         } else {
             D_8015F59C = 0;
         }
         if (sections[i].flags & 0x2000) {
-            D_8015F5A0 = 1;
+            D_8015F5A0 = 1; // surface
         } else {
             D_8015F5A0 = 0;
         }
         if (sections[i].flags & 0x4000) {
-            D_8015F5A4 = 1;
+            D_8015F5A4 = 1; // double-sided wall
         } else {
             D_8015F5A4 = 0;
         }
-        printf("LOADING DL %s\n",  sections[i].addr.c_str());
-        generate_collision_mesh((Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType, sections[i].sectionId);
+        printf("LOADING DL %s\n", sections[i].addr.c_str());
+        generate_collision_mesh((Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType,
+                                sections[i].sectionId);
     }
 }
 
@@ -228,20 +247,20 @@ void Course::TestPath() {
     s16 x;
     s16 y;
     s16 z;
-    Vec3s rot = {0, 0, 0};
-    Vec3f vel = {0, 0, 0};
+    Vec3s rot = { 0, 0, 0 };
+    Vec3f vel = { 0, 0, 0 };
 
-    for (size_t i = 0; i < gWaypointCountByPathIndex[0]; i++) {
-        x = D_80164550[0][i].posX;
-        y = D_80164550[0][i].posY;
-        z = D_80164550[0][i].posZ;
+    for (size_t i = 0; i < gPathCountByPathIndex[0]; i++) {
+        x = gTrackPaths[0][i].posX;
+        y = gTrackPaths[0][i].posY;
+        z = gTrackPaths[0][i].posZ;
 
         if (((x & 0xFFFF) == 0x8000) && ((y & 0xFFFF) == 0x8000) && ((z & 0xFFFF) == 0x8000)) {
             break;
         }
 
         f32 height = spawn_actor_on_surface(x, 2000.0f, z);
-        Vec3f itemPos = {x, height, z};
+        Vec3f itemPos = { x, height, z };
         add_actor_to_empty_slot(itemPos, rot, vel, ACTOR_ITEM_BOX);
     }
 }
@@ -327,9 +346,9 @@ void Course::SetStaffGhost() {
 }
 
 void Course::Waypoints(Player* player, int8_t playerId) {
-    player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-    if (player->nearestWaypointId < 0) {
-        player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+    player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+    if (player->nearestPathPointId < 0) {
+        player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
     }
 }
 
@@ -337,7 +356,7 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-       // set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+        set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -347,10 +366,10 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
             // d_course_big_donut_packed_dl_DE8
         }
 
-        TrackSectionsO2R* sections = (TrackSectionsO2R*)LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
         for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*)LOAD_ASSET_RAW(sections[i].addr.c_str()));
+            gSPDisplayList(gDisplayListHead++, (Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()));
         }
     }
 }
@@ -363,8 +382,7 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
     bool found = false;
 
     for (const auto& volume : gWorldInstance.CurrentCourse->WaterVolumes) {
-        if (pos.x >= volume.MinX && pos.x <= volume.MaxX &&
-            pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
+        if (pos.x >= volume.MinX && pos.x <= volume.MaxX && pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
             // Choose the highest water volume the player is over
             if (!found || volume.Height > highestWater) {
                 highestWater = volume.Height;
