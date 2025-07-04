@@ -69,7 +69,7 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8829f) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        player_decelerate(player, 4.0f);
+        player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
         if ((player->effects & BOOST_EFFECT) != 0) {
             remove_boost_effect(player);
@@ -96,7 +96,7 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         if (((player->speed / 18.0f) * 216.0f) >= 8.0f) {
-            player_decelerate(player, 5.0f);
+            player_decelerate_alternative(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
         if ((player->effects & BOOST_EFFECT) != 0) {
@@ -123,7 +123,7 @@ void func_8003E6EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8829f) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        player_decelerate(player, 4.0f);
+        player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
@@ -144,7 +144,7 @@ void func_8003E9EC(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        player_decelerate(player, 4.0f);
+        player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else {
         if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
@@ -178,7 +178,7 @@ void func_8003EE2C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0x78);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
-        player_decelerate(player, 4.0f);
+        player_decelerate_alternative(player, 4.0f);
         func_8003DC40(player);
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
@@ -202,7 +202,7 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0xC8);
         arg3[2] = (-(player->slopeAccel / 182) * 0xC8);
-        player_decelerate(player, 4.0f);
+        player_decelerate_alternative(player, 4.0f);
         player->unk_DAC = 0.5f;
         arg3[0] = 0;
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {

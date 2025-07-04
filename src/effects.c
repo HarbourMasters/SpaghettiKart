@@ -221,7 +221,7 @@ void func_8008C528(Player* player, s8 arg1) {
 
 void func_8008C62C(Player* player, s8 arg1) {
 
-    player_decelerate(player, 5.0f);
+    player_decelerate_alternative(player, 5.0f);
     player->unk_0A8 += (s16) 0xA0;
     player->unk_042 += (s16) 0x71C;
     if (player->unk_0A8 >= 0x2000) {
@@ -255,8 +255,8 @@ void func_8008C6D0(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void func_8008C73C(Player* player, s8 arg1) {
-    clean_effect(player, arg1);
+void func_8008C73C(Player* player, s8 playerIndex) {
+    clean_effect(player, playerIndex);
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
         player->effects &= ~0x10;
 
@@ -270,22 +270,22 @@ void func_8008C73C(Player* player, s8 arg1) {
         // clang-format off
         player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
         // clang-format on
-        D_80165190[0][arg1] = 1;
-        D_80165190[1][arg1] = 1;
-        D_80165190[2][arg1] = 1;
-        D_80165190[3][arg1] = 1;
-        D_80165280[arg1] = player->currentSpeed;
-        gTimerBoostTripleACombo[arg1] = 0;
-        gIsPlayerTripleAButtonCombo[arg1] = false;
-        gCountASwitch[arg1] = 0;
-        gFrameSinceLastACombo[arg1] = 0;
-        D_8018D920[arg1] = 0;
+        D_80165190[0][playerIndex] = 1;
+        D_80165190[1][playerIndex] = 1;
+        D_80165190[2][playerIndex] = 1;
+        D_80165190[3][playerIndex] = 1;
+        gPlayerCurrentSpeed[playerIndex] = player->currentSpeed;
+        gTimerBoostTripleACombo[playerIndex] = 0;
+        gIsPlayerTripleAButtonCombo[playerIndex] = false;
+        gCountASwitch[playerIndex] = 0;
+        gFrameSinceLastACombo[playerIndex] = 0;
+        D_8018D920[playerIndex] = 0;
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
             ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
+            func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008003);
         } else {
-            play_cpu_sound_effect(arg1, player);
+            play_cpu_sound_effect(playerIndex, player);
         }
     }
 }
@@ -323,15 +323,15 @@ void func_8008C9EC(Player* player, s8 arg1) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     if ((player->unk_046 & 0x40) == 0x40) {
-        player_decelerate(player, 100.0f);
+        player_decelerate_alternative(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            player_decelerate(player, 1.0f);
+            player_decelerate_alternative(player, 1.0f);
         } else {
-            player_decelerate(player, 4.0f);
+            player_decelerate_alternative(player, 4.0f);
         }
         if (!(player->type & PLAYER_HUMAN)) {
-            player_decelerate(player, 30.0f);
+            player_decelerate_alternative(player, 30.0f);
         }
     }
     if ((player->effects & 0x80) == 0x80) {
@@ -893,7 +893,7 @@ void apply_lightning_effect(Player* player, s8 arg1) {
                 D_80165190[3][arg1] = 1;
             }
         }
-        player_decelerate(player, 1.0f);
+        player_decelerate_alternative(player, 1.0f);
     } else {
         player->unk_0B0 += 1;
         player->unk_08C = (f32) ((f64) player->unk_08C * 0.6);

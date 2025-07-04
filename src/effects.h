@@ -141,7 +141,7 @@ extern f32 D_800E3790[];
 extern f32 D_800E37D0[];
 extern f32 D_800E37F0[];
 extern s16 D_80165190[4][8];
-extern f32 D_80165280[];
+extern f32 gPlayerCurrentSpeed[];
 extern s32 gFrameSinceLastACombo[];
 
 #endif

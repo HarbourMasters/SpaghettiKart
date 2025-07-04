@@ -756,7 +756,7 @@ void process_game_tick(void) {
         }
         func_802909F0();
         evaluate_collision_for_players_and_actors();
-        func_800382DC();
+        handle_a_press_for_all_players_during_race();
     }
 
 
@@ -768,7 +768,7 @@ void process_game_tick(void) {
     //if (CVarGetInteger("gFreecam", 0) == true) {
     //    freecam(gFreecamCamera, gPlayerOneCopy, 0);
     //} else {
-        
+
         //func_8001EE98(gPlayerOneCopy, camera1, 0);
     //}
 
