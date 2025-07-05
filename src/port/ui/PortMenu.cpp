@@ -99,6 +99,10 @@ void PortMenu::AddSettings() {
         .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
 
+    AddWidget(path, "Use regular intro.", WIDGET_CVAR_CHECKBOX)
+        .CVar("gHarbourIntroSkip")
+        .Options(CheckboxOptions().Tooltip("Skips ports Harbour intro on startup."));
+
     AddWidget(path, "Menu Theme", WIDGET_CVAR_COMBOBOX)
         .CVar("gSettings.Menu.Theme")
         .Options(ComboboxOptions()
