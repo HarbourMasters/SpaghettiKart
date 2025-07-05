@@ -188,7 +188,7 @@ void PortMenu::AddSettings() {
     // Graphics Settings
     static int32_t maxFps;
     const char* tooltip = "";
-    if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
+    if (false) { // (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
         maxFps = 360;
         tooltip = "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is "
                   "purely visual and does not impact game logic, execution of glitches etc.\n\nA higher target "
@@ -243,6 +243,20 @@ void PortMenu::AddSettings() {
                 .Max(8)
                 .DefaultValue(1));
 #endif
+
+    AddWidget(path, "Anisotropic Filtering (AF): %d", WIDGET_CVAR_SLIDER_INT)
+        .CVar(CVAR_ANISOTROPIC_FILTERING)
+        .Callback([](WidgetInfo& info) {
+            Ship::Context::GetInstance()->GetWindow()->SetAnisotropicFilteringLevel(CVarGetInteger(CVAR_ANISOTROPIC_FILTERING, 1));
+        })
+        .Options(
+            IntSliderOptions()
+                .Tooltip("Activates Anisotropic Filtering (AF) from 1x up to 16x, to improve the quality of "
+                         "textures at oblique viewing angles.\n"
+                         "Higher sample count will result in sharper textures at angles, but may reduce performance.")
+                .Min(1)
+                .Max(16)
+                .DefaultValue(1));
 
     AddWidget(path, "Current FPS: %d", WIDGET_CVAR_SLIDER_INT)
         .CVar("gInterpolationFPS")
@@ -517,14 +531,16 @@ void PortMenu::InitElement() {
             "Multi-viewports not supported" } },
         { DISABLE_FOR_NOT_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+                return true;
+            //    return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() !=
+            //           Ship::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Available Only on DirectX" } },
         { DISABLE_FOR_DIRECTX,
           { [](disabledInfo& info) -> bool {
-               return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
-                      Ship::WindowBackend::FAST3D_DXGI_DX11;
+                return false;
+            //    return Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() ==
+            //           Ship::WindowBackend::FAST3D_DXGI_DX11;
            },
             "Not Available on DirectX" } },
         { DISABLE_FOR_MATCH_REFRESH_RATE_ON,

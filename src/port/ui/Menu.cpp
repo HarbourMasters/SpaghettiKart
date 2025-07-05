@@ -90,15 +90,15 @@ void Menu::RemoveSidebarSearch() {
 }
 
 void Menu::UpdateWindowBackendObjects() {
-    Ship::WindowBackend runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetWindowBackend();
+    auto runningWindowBackend = Ship::Context::GetInstance()->GetWindow()->GetRendererID();
     int32_t configWindowBackendId = Ship::Context::GetInstance()->GetConfig()->GetInt("Window.Backend.Id", -1);
-    if (Ship::Context::GetInstance()->GetWindow()->IsAvailableWindowBackend(configWindowBackendId)) {
-        configWindowBackend = static_cast<Ship::WindowBackend>(configWindowBackendId);
+    if (Ship::Context::GetInstance()->GetWindow()->IsAvailableRenderer(configWindowBackendId)) {
+        configWindowBackend = configWindowBackendId;
     } else {
         configWindowBackend = runningWindowBackend;
     }
 
-    availableWindowBackends = Ship::Context::GetInstance()->GetWindow()->GetAvailableWindowBackends();
+    availableWindowBackends = Ship::Context::GetInstance()->GetWindow()->GetAvailableRenderers();
     for (auto& backend : *availableWindowBackends) {
         availableWindowBackendsMap[backend] = windowBackendsMap.at(backend);
     }
