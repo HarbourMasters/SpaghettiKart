@@ -47,14 +47,14 @@ UNUSED s32 D_80165348[29];
 Player* D_801653C0[8];
 
 bool gPlayerIsThrottleActive[8];
-s32 D_80165400[8];
+s32 gPlayerAButtonComboActiveThisFrame[8];
 s32 gFrameSinceLastACombo[8];
 s32 gCountASwitch[8];
 bool gIsPlayerTripleAButtonCombo[8];
 s32 gTimerBoostTripleACombo[8];
 
 bool gPlayerIsBrakeActive[8];
-s32 D_801654C0[8];
+s32 gPlayerBButtonComboActiveThisFrame[8];
 s32 gFrameSinceLastBCombo[8];
 s32 gCountBChangement[8];
 bool gIsPlayerTripleBButtonCombo[8];
@@ -306,9 +306,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     gPlayerCurrentSpeed[playerIndex] = 0.0f;
     gPlayerWaterLevel[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
-    D_80165400[playerIndex] = 0;
+    gPlayerAButtonComboActiveThisFrame[playerIndex] = 0;
     gPlayerIsBrakeActive[playerIndex] = 0;
-    D_801654C0[playerIndex] = 0;
+    gPlayerBButtonComboActiveThisFrame[playerIndex] = 0;
     D_80165340 = 0;
 
     player->tyres[FRONT_LEFT].surfaceType = 0;
