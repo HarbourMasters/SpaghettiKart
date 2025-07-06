@@ -791,15 +791,15 @@ void func_8028F970(void) {
     }
 
     if (gEnableDebugMode) {
-        if (gModeSelection == BATTLE) {
-            // do stuff?
-        } else {
+        if (gModeSelection != BATTLE) { // Skip laps
             if (gControllerOne->buttonPressed & U_JPAD) {
                 gLapCountByPlayerId[0] = 2;
+                play_sound2(SOUND_MENU_OPTION);
             }
             if (gControllerOne->buttonPressed & R_JPAD) {
                 gLapCountByPlayerId[0] = 2;
                 gLapCountByPlayerId[1] = 2;
+                play_sound2(SOUND_MENU_OPTION);
             }
             if (gControllerOne->buttonPressed & D_JPAD) {
                 gLapCountByPlayerId[0] = 2;
@@ -810,6 +810,7 @@ void func_8028F970(void) {
                 gLapCountByPlayerId[5] = 2;
                 gLapCountByPlayerId[6] = 2;
                 gLapCountByPlayerId[7] = 2;
+                play_sound2(SOUND_MENU_OPTION);
             }
         }
     }
