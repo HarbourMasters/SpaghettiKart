@@ -955,14 +955,14 @@ UNUSED bool func_80088F94(s32 objectIndex, Player* player, f32 arg2) {
 }
 
 void func_80088FF0(Player* player) {
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
     player->velocity[0] = 0.0f;
     player->velocity[2] = 0.0f;
 }
 
 UNUSED void func_8008900C(Player* player) {
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
 }
 

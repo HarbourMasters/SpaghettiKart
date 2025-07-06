@@ -33,7 +33,7 @@ f32 D_80165230[8];
 UNUSED f32 D_80165250[8];
 s16 D_80165270[8];
 f32 D_80165280[8];
-f32 D_801652A0[8];
+f32 gPlayerWaterLevel[8];
 s32 D_801652C0[8];
 s32 D_801652E0[8];
 s16 D_80165300[8];
@@ -81,7 +81,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     s8 idx;
 
     player->type = PLAYER_INACTIVE;
-    player->unk_08C = 0;
+    player->kartPropulsionStrength = 0;
     player->characterId = characterId;
     player->unk_0B6 = 0;
     player->kartFriction = gKartFrictionTable[player->characterId];
@@ -160,13 +160,13 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_07A = 0;
     player->unk_006 = 0;
     player->lapCount = -1;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->unk_090 = 0.0f;
     player->speed = 0.0f;
     player->unk_074 = 0.0f;
     player->type = playerType;
     player->unk_0CA = 0;
-    player->unk_0DE = 0;
+    player->waterInteractionFlags = WATER_NO_INTERACTION;
     player->unk_10C = 0;
     player->unk_0E2 = 0;
     player->unk_0E8 = 0.0f;
@@ -208,7 +208,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0C8 = 0;
     player->unk_0CA = 0;
     player->boostTimer = 0;
-    player->unk_0DE = 0;
+    player->waterInteractionFlags = WATER_NO_INTERACTION;
     player->unk_0E0 = 0;
     player->unk_0E2 = 0;
     player->unk_10C = 0;
@@ -242,7 +242,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DB4.unk14 = 0.0f;
     player->unk_084 = 0.0f;
     player->unk_088 = 0.0f;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->unk_090 = 0.0f;
     player->speed = 0.0f;
     player->unk_098 = 0.0f;
@@ -304,7 +304,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     gPlayerLastVelocity[playerIndex][1] = 0.0f;
     gPlayerLastVelocity[playerIndex][2] = 0.0f;
     D_80165280[playerIndex] = 0.0f;
-    D_801652A0[playerIndex] = 0.0f;
+    gPlayerWaterLevel[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
     D_80165400[playerIndex] = 0;
     gPlayerIsBrakeActive[playerIndex] = 0;

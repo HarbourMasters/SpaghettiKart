@@ -294,7 +294,7 @@ typedef struct {
     /* 0x0080 */ f32 boostPower;
     /* 0x0084 */ f32 unk_084;
     /* 0x0088 */ f32 unk_088;
-    /* 0x008C */ f32 unk_08C;
+    /* 0x008C */ f32 kartPropulsionStrength;
     /* 0x0090 */ f32 unk_090;
     /* 0x0094 */ f32 speed;
     /* 0x0098 */ f32 unk_098;
@@ -320,7 +320,7 @@ typedef struct {
     /* 0x00CC */ Vec4s unk_0CC;
     /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;
-    /* 0x00DE */ u16 unk_0DE;
+    /* 0x00DE */ u16 waterInteractionFlags;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;

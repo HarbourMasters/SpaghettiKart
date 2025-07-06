@@ -548,8 +548,8 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
-        *arg4 = D_801652A0[index];
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+        *arg4 = gPlayerWaterLevel[index];
     }
 }
 
@@ -571,7 +571,7 @@ void func_8001D53C(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     } else {
         move_f32_towards(&camera->unk_A0, 0.0f, 0.06f);
     }
-    thing = D_801652A0[arg7];
+    thing = gPlayerWaterLevel[arg7];
     sp68[0] = camera->unk_30[0];
     sp68[1] = camera->unk_30[1];
     sp68[2] = camera->unk_30[2];
@@ -768,8 +768,8 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
-        *arg4 = D_801652A0[index];
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+        *arg4 = gPlayerWaterLevel[index];
     }
 }
 

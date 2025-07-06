@@ -409,6 +409,18 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define COLOR_LAVA GPACK_RGB888(0x34, 0x00, 0x00)
 #define COLOR_BLACK GPACK_RGB888(0, 0, 0)
 
+
+/**
+ * @brief player water interaction flags (player->unk_0DE)
+ *
+ */
+
+#define WATER_NO_INTERACTION 0x0000             // No water interaction
+#define WATER_IS_FULLY_SUBMERGED 0x0001         // Kart is completely underwater
+#define WATER_IS_PARTIALLY_SUBMERGED 0x0002     // Kart is partially in the water
+#define WATER_IN_DEEP_LIQUID_STATE 0x0004       // Persistent flag for being in a deep liquid state?
+#define WATER_JUST_ENTERED_DEEP_LIQUID 0x0008   // Momentary flag for the instant of entering deep liquid
+
 /**
  *
  * Collision mesh flags
