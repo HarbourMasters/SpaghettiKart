@@ -3135,7 +3135,7 @@ void update_player_kart_hop(Player* player) {
         player->hopFrameCounter += 1;
 
         // Vertical displacement under constant acceleration: Δy = v₀t + (1/2)at²
-        player->hopVerticalOffset = (player->hopFrameCounter * hopInitialUpwardVelocity) - (0.5 * var_f2 * (player->hopFrameCounter * player->hopFrameCounter));
+        player->hopVerticalOffset = (player->hopFrameCounter * hopInitialUpwardVelocity) - (0.5 * hopDownwardAcceleration * (player->hopFrameCounter * player->hopFrameCounter));
 
         if ((player->hopFrameCounter != 0) && (player->hopVerticalOffset < 0.0f)) {
             player->hopFrameCounter = 0;
