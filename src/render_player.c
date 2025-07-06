@@ -1154,7 +1154,7 @@ void func_80022A98(Player* player, s8 arg1) {
         } else {
             func_80022DB4(player, arg1);
         }
-        func_80030A34(player);
+        update_player_kart_hop(player);
     }
 }
 
@@ -1627,13 +1627,13 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
         if (((s32) player->effects & HIT_EFFECT) == HIT_EFFECT) {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[screenId],
                           player->unk_050[screenId]);
-            sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
+            sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->hopVerticalOffset;
             sp154[0] = player->pos[0] + sp148;
             sp154[2] = player->pos[2] + sp140;
         } else {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 1.5f, 0.0f, -player->unk_048[screenId],
                           player->unk_050[screenId]);
-            sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108 + (sp144 - 2.0);
+            sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->hopVerticalOffset + (sp144 - 2.0);
             sp154[0] = player->pos[0] + sp148;
             sp154[2] = player->pos[2] + sp140;
         }
@@ -1799,7 +1799,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     Vec3s sp94;
 
     sp9C[0] = player->pos[0] + (sins(-player->rotation[1]) * -1.5);
-    sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->unk_108) + 0.1;
+    sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->hopVerticalOffset) + 0.1;
     sp9C[2] = player->pos[2] + (coss(-player->rotation[1]) * -1.5);
     sp94[0] = -0x00B6;
     sp94[1] = player->unk_048[screenId];

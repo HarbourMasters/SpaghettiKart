@@ -60,7 +60,7 @@ void render_player_ice_reflection(Player*, s8, s8, s8);
 void render_player(Player*, s8, s8);
 void func_80026A48(Player*, s8);
 void update_wheel_palette(Player*, s8, s8, s8);
-void func_80030A34(Player*);
+void update_player_kart_hop(Player*);
 void func_8002701C(void);
 void func_80027024(s32, s32, s32);
 

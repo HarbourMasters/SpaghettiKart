@@ -3092,51 +3092,56 @@ f32 func_80030150(Player* player, s8 arg1) {
     return (1.0f - player->unk_104) * var_f2;
 }
 
-void func_80030A34(Player* player) {
-    f32 var_f0;
-    f32 var_f2;
+void update_player_kart_hop(Player* player) {
+    f32 hopInitialUpwardVelocity;
+    f32 hopDownwardAcceleration;
 
     if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 8) != 8)) {
         if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
             switch (player->surfaceType) { /* irregular */
                 case ASPHALT:
                     if (random_int(0x000AU) != 8) {
-                        var_f0 = 0.35f;
-                        var_f2 = 0.55f;
+                        hopInitialUpwardVelocity = 0.35f;
+                        hopDownwardAcceleration = 0.55f;
                     } else {
-                        player->unk_07A = 0;
-                        player->unk_108 = 0.0f;
-                        var_f0 = 0.0f;
-                        var_f2 = 0.0f;
+                        player->hopFrameCounter = 0;
+                        player->hopVerticalOffset = 0.0f;
+                        hopInitialUpwardVelocity = 0.0f;
+                        hopDownwardAcceleration = 0.0f;
                     }
                     break;
                 case TRAIN_TRACK:
                 case ROPE_BRIDGE:
-                    var_f0 = 0.94f;
-                    var_f2 = 0.85f;
+                    hopInitialUpwardVelocity = 0.94f;
+                    hopDownwardAcceleration = 0.85f;
                     break;
                 default:
                     if (1) {}
-                    var_f0 = 0.46f;
-                    var_f2 = 0.48f;
+                    hopInitialUpwardVelocity = 0.46f;
+                    hopDownwardAcceleration = 0.48f;
                     break;
             }
         } else if (random_int(0x000AU) != 8) {
-            var_f0 = 0.3f;
-            var_f2 = 0.54f;
+            hopInitialUpwardVelocity = 0.3f;
+            hopDownwardAcceleration = 0.54f;
         } else {
-            player->unk_07A = 0;
-            player->unk_108 = 0.0f;
-            var_f0 = 0.0f;
-            var_f2 = 0.0f;
+            player->hopFrameCounter = 0;
+            player->hopVerticalOffset = 0.0f;
+            hopInitialUpwardVelocity = 0.0f;
+            hopDownwardAcceleration = 0.0f;
         }
-        player->unk_07A += 1;
-        player->unk_108 = (player->unk_07A * var_f0) - (0.5 * var_f2 * (player->unk_07A * player->unk_07A));
-        if ((player->unk_07A != 0) && (player->unk_108 < 0.0f)) {
-            player->unk_07A = 0;
+
+        // Increase the hop frame counter
+        player->hopFrameCounter += 1;
+
+        // Vertical displacement under constant acceleration: Δy = v₀t + (1/2)at²
+        player->hopVerticalOffset = (player->hopFrameCounter * hopInitialUpwardVelocity) - (0.5 * var_f2 * (player->hopFrameCounter * player->hopFrameCounter));
+
+        if ((player->hopFrameCounter != 0) && (player->hopVerticalOffset < 0.0f)) {
+            player->hopFrameCounter = 0;
         }
-        if (player->unk_108 <= 0.0f) {
-            player->unk_108 = 0.0f;
+        if (player->hopVerticalOffset <= 0.0f) {
+            player->hopVerticalOffset = 0.0f;
         }
     }
 }

@@ -70,7 +70,7 @@ void func_8002FCA8(Player*, s8);
 void func_8002FE84(Player*, f32);
 
 f32 func_80030150(Player*, s8);
-void func_80030A34(Player*);
+void update_player_kart_hop(Player*);
 void detect_triple_a_combo_a_released(Player*);
 void detect_triple_a_combo_a_pressed(Player*);
 void player_accelerate_alternative(Player*);

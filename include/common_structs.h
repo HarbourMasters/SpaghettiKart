@@ -289,7 +289,7 @@ typedef struct {
     /* 0x0070 */ f32 boundingBoxSize;
     /* 0x0074 */ f32 unk_074;
     /* 0x0078 */ s16 unk_078;
-    /* 0x007A */ s16 unk_07A;
+    /* 0x007A */ s16 hopFrameCounter;
     /* 0x007C */ s32 unk_07C;
     /* 0x0080 */ f32 boostPower;
     /* 0x0084 */ f32 unk_084;
@@ -333,7 +333,7 @@ typedef struct {
     /* 0x00FC */ f32 kartFriction;
     /* 0x0100 */ f32 kartGravity;
     /* 0x0104 */ f32 unk_104;
-    /* 0x0108 */ f32 unk_108;
+    /* 0x0108 */ f32 hopVerticalOffset;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
     /* 0x0110 */ Collision collision;

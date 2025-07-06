@@ -157,7 +157,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->effects = 0;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
-    player->unk_07A = 0;
+    player->hopFrameCounter = 0;
     player->unk_006 = 0;
     player->lapCount = -1;
     player->kartPropulsionStrength = 0.0f;
@@ -256,7 +256,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->unk_104 = 0.0f;
-    player->unk_108 = 0.0f;
+    player->hopVerticalOffset = 0.0f;
     player->unk_1F8 = 0.0f;
     player->unk_1FC = 0.0f;
     player->unk_208 = 0.0f;
