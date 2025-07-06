@@ -878,7 +878,7 @@ void use_thunder_item(Player* player) {
     }
 }
 
-// Handles item use?
+// Handles item use
 void player_use_item(Player* player) {
     s32 playerId = player - gPlayerOne;
 

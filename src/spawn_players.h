@@ -28,8 +28,16 @@ void func_8003DB5C(void);
 extern f32 D_80165210[];
 extern f32 D_80165230[];
 extern s16 D_80165270[];
+<<<<<<< HEAD
 extern f32 D_80165280[];
 extern f32 gPlayerWaterLevel[];
+||||||| 67090b39
+extern f32 D_80165280[];
+extern f32 D_801652A0[];
+=======
+extern f32 gPlayerCurrentSpeed[];
+extern f32 D_801652A0[];
+>>>>>>> main
 extern s32 D_801652C0[];
 extern s32 D_801652E0[];
 extern s16 D_80165300[];

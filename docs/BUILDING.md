@@ -79,8 +79,15 @@ C:\Program Files\CMake\bin\cmake.exe --build build-cmake --target clean
 ```
 
 ## Linux
-### Install dependencies
-#### Debian/Ubuntu
+### Clone the repo and enter the directory
+```sh
+git clone https://github.com/HarbourMasters/SpaghettiKart.git
+cd SpaghettiKart
+```
+
+### Manual
+#### Install dependencies
+##### Debian/Ubuntu
 ```sh
 # using gcc
 apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
@@ -88,7 +95,7 @@ apt-get install gcc g++ git cmake ninja-build lsb-release libsdl2-dev libpng-dev
 # or using clang
 apt-get install clang git cmake ninja-build lsb-release libsdl2-dev libpng-dev libsdl2-net-dev libzip-dev zipcmp zipmerge ziptool nlohmann-json3-dev libtinyxml2-dev libspdlog-dev libboost-dev libopengl-dev libogg-dev libvorbis-dev
 ```
-#### Arch
+##### Arch
 ```sh
 # using gcc
 pacman -S gcc git cmake ninja lsb-release sdl2 libpng libzip nlohmann-json tinyxml2 spdlog sdl2_net boost libogg libvorbis
@@ -96,7 +103,7 @@ pacman -S gcc git cmake ninja lsb-release sdl2 libpng libzip nlohmann-json tinyx
 # or using clang
 pacman -S clang git cmake ninja lsb-release sdl2 libpng libzip nlohmann-json tinyxml2 spdlog sdl2_net boost libogg libvorbis
 ```
-#### Fedora
+##### Fedora
 ```sh
 # using gcc
 dnf install gcc gcc-c++ git cmake ninja-build lsb_release SDL2-devel SDL2_net-devel libpng-devel libzip-devel libzip-tools nlohmann-json-devel tinyxml2-devel spdlog-devel boost-devel libogg-devel libvorbis-devel
@@ -104,7 +111,7 @@ dnf install gcc gcc-c++ git cmake ninja-build lsb_release SDL2-devel SDL2_net-de
 # or using clang
 dnf install clang git cmake ninja-build lsb_release SDL2-devel SDL2_net-devel libpng-devel libzip-devel libzip-tools nlohmann-json-devel tinyxml2-devel spdlog-devel boost-devel libogg-devel libvorbis-devel
 ```
-#### openSUSE
+##### openSUSE
 ```sh
 # using gcc
 zypper in gcc gcc-c++ git cmake ninja SDL2-devel libpng16-devel libzip-devel libzip-tools nlohmann_json-devel tinyxml2-devel spdlog-devel libogg-devel libvorbis-devel
@@ -113,15 +120,11 @@ zypper in gcc gcc-c++ git cmake ninja SDL2-devel libpng16-devel libzip-devel lib
 zypper in clang libstdc++-devel git cmake ninja SDL2-devel libpng16-devel libzip-devel libzip-tools nlohmann_json-devel tinyxml2-devel spdlog-devel libogg-devel libvorbis-devel
 ```
 
-### Build
+#### Build
 
 _Note: If you're using Visual Studio Code, the [CMake Tools plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools) makes it very easy to just press run and debug._
 
-```bash
-# Clone the repo and enter the directory
-git clone https://github.com/HarbourMasters/SpaghettiKart.git
-cd SpaghettiKart
-
+```sh
 # Clone the submodules
 git submodule update --init
 
@@ -143,9 +146,25 @@ cmake --build build-cmake
 # System wide freezes may be due to low memory, add "-j4" to the end of the build command to use four cores.
 ```
 
+### Docker
+#### Create the docker container
+```sh
+docker build . -t spaghetti
+```
+
+#### Configure the project
+```sh
+docker run --rm -v ${PWD}:/project spaghetti cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+```
+
+#### Compile the project
+```sh
+docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config Release -j$(nproc)
+```
+
 ### Generate a distributable
 After compiling the project you can generate a distributable by running of the following:
-```bash
+```sh
 # Go to build folder
 cd build-cmake
 # Generate

@@ -349,6 +349,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Disable Culling", WIDGET_CVAR_CHECKBOX)
         .CVar("gNoCulling")
         .Options(CheckboxOptions().Tooltip("Disable original culling of mk64"));
+    AddWidget(path, "Disable Rubberbanding", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDisableRubberbanding")
+        .Options(CheckboxOptions().Tooltip("Disable rubberbanding in the game."));
     AddWidget(path, "Far Frustrum", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gFarFrustrum")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoCulling", 0); })

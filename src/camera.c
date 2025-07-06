@@ -1126,10 +1126,10 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
     }
     if (gIsGamePaused == 0) {
         switch (D_80152300[cameraIndex]) {
-            case 3:
+            case 3: // end of race
                 func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
                 break;
-            case 1:
+            case 1: // player camera
                 if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
                     func_8001E8E8(camera, player, index);
                     break;
@@ -1137,7 +1137,7 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 freecam(camera, player, index); // Runs func_8001E45C when freecam is disabled
                 //func_8001E45C(camera, player, index);
                 break;
-            case 8:
+            case 8: // Transition start
                 func_8001E0C4(camera, player, index);
                 func_8001F87C(cameraIndex);
                 break;
