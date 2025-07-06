@@ -54,7 +54,7 @@ OThwomp::OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 prim
     _faceDirection = direction;
     _boundingBoxSize = boundingBoxSize;
     State = (States)behaviour;
-    
+
     find_unused_obj_index(&_objectIndex);
 
     s32 objectId = _objectIndex;
@@ -650,11 +650,11 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                     player->unk_040 = (s16) objectIndex;
                     player->unk_046 |= 2;
                     player->soundEffects |= 0x100;
-                    func_80088FF0(player);
+                    reset_player_speed_and_velocity(player);
                 }
             }
         } else {
-            func_80088FF0(player);
+            reset_player_speed_and_velocity(player);
         }
     }
 }
