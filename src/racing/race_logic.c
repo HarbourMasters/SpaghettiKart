@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <stdio.h>
 #include <macros.h>
 #include <mk64.h>
 #include <common_structs.h>
