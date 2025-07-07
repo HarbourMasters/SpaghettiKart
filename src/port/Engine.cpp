@@ -199,6 +199,8 @@ GameEngine::GameEngine() {
     Ship::Context::GetInstance()->GetLogger()->set_pattern("[%H:%M:%S.%e] [%s:%#] [%l] %v");
 #endif
 
+    SPDLOG_INFO("Spaghetti kart v" SPAGHETTI_VERSION);
+
     wnd->SetRendererUCode(ucode_f3dex);
     this->context->InitGfxDebugger();
 
