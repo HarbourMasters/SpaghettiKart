@@ -5,6 +5,7 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include <stdio.h>
 #include <mk64.h>
 #include <align_asset_macro.h>
 #include <macros.h>
@@ -2703,7 +2704,10 @@ void render_digital_speedometer(s32 playerIdx) {
     f32 speed = (gPlayers[playerIdx].speed / 18.0f) * 216.0f;
     set_text_color(TEXT_YELLOW);
 
-    sprintf(str, "%.2f", speed);
+    size_t len = (size_t) snprintf(str, sizeof(str), "%.2f", speed);
+    if (len >= sizeof(str)) {
+         printf("[render_objects.c] [render_digital_speedometer] str buffer too small, characters were discarded!\n");
+    }
 
     text_draw_wide(270, 224, str, 0, 0.5f, 0.5f);
 }
