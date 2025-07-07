@@ -3961,7 +3961,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             sp2CC = 8;
         }
     }
-    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) == 1) {
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) == WATER_IS_FULLY_SUBMERGED) {
         sp2C8 *= 1.5;
         sp2CC *= 1.5;
     } else {
