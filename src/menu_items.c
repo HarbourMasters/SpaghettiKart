@@ -6267,6 +6267,25 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
 GLOBAL_ASM("asm/non_matchings/menu_items/add_menu_item.s")
 #endif
 
+static void draw_debug(void) {
+    if (CVarGetInteger("gEnableDebugMode", 0) != 0) {
+        set_text_color(TEXT_RED);
+        print_text1_right(0x138, 0xEA, "DEBUG", 0, 0.5f, 0.5f);
+    }
+}
+
+static void draw_version(void) {
+    static const char *spaghetty_version = "V" SPAGHETTI_VERSION;
+    s32 column = 0x138;
+
+    if (CVarGetInteger("gEnableDebugMode", 0) != 0) {
+        column -= (s32) ((f32) (get_string_width("DEBUG") + 5 )) * 0.5f;
+    }
+
+    set_text_color(TEXT_GREEN);
+    print_text1_right(column, 0xEA, spaghetty_version, 0, 0.5f, 0.5f);
+}
+
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/MatRp
 // Biggest diff left is in the case 0x12 though 0x19 handling. Not really sure what's going on there
@@ -6409,6 +6428,8 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_UI_GAME_SELECT:
                 gDisplayListHead =
                     render_menu_textures(gDisplayListHead, seg2_game_select_texture, arg0->column, arg0->row);
+                    draw_version();
+                    draw_debug();
                 break;
             case MENU_ITEM_UI_1P_GAME:
             case MENU_ITEM_UI_2P_GAME:
