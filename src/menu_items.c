@@ -2285,12 +2285,65 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     FrameInterpolation_ShouldInterpolateFrame(true);
 }
 
+void print_text2_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    MenuTexture* glyphTexture;
+    s32 characterWidth;
+    s32 glyphIndex;
+
+    if (text == NULL) {
+        // @port if invalid text is loaded it will skip rendering it.
+        return;
+    }
+
+    // @port Skip Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(false);
+
+    gSPDisplayList(gDisplayListHead++, D_020077A8);
+    if (*text != 0) {
+        do {
+            glyphIndex = char_to_glyph_index(text);
+            if (glyphIndex >= 0) {
+                glyphTexture = (MenuTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]);
+                load_menu_img(glyphTexture);
+                gDisplayListHead =
+                    print_letter_wide_right(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
+                                 arg6, scaleX, scaleY);
+                if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
+                    characterWidth = 0x20;
+                } else {
+                    characterWidth = 0xC;
+                }
+                column = column + (s32) ((characterWidth + tracking) * scaleX);
+            } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
+                column = column + (s32) ((tracking + 7) * scaleX);
+            } else {
+                gSPDisplayList(gDisplayListHead++, D_020077D8);
+                return;
+            }
+            if (glyphIndex >= 0x30) {
+                text += 2;
+            } else {
+                text += 1;
+            }
+        } while (*text != 0);
+    }
+
+    gSPDisplayList(gDisplayListHead++, D_020077D8);
+
+    // @port Resume Interpolation, if interpolated later remove this tag
+    FrameInterpolation_ShouldInterpolateFrame(true);
+}
+
 void func_800939C8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text2(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
 void text_draw(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text2(column, row, text, tracking, scaleX, scaleY, 2);
+}
+
+void text_draw_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text2_wide(column, row, text, tracking, scaleX, scaleY, 2);
 }
 
 void func_80093A30(s32 arg0) {

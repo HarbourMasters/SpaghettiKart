@@ -230,27 +230,6 @@ void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 }
 
 void WarioStadium::Jumbotron() {
-    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x7800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x177B0), 32, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gSP2Triangles(gDisplayListHead++, 4, 5, 6, 0, 4, 6, 7, 0);
-    gSP2Triangles(gDisplayListHead++, 8, 9, 10, 0, 8, 10, 11, 0);
-    gSP2Triangles(gDisplayListHead++, 12, 13, 14, 0, 12, 14, 15, 0);
-    gSP2Triangles(gDisplayListHead++, 16, 17, 18, 0, 16, 18, 19, 0);
-    gSP2Triangles(gDisplayListHead++, 20, 21, 22, 0, 20, 22, 23, 0);
-    gSP2Triangles(gDisplayListHead++, 24, 25, 26, 0, 24, 26, 27, 0);
-    gSP2Triangles(gDisplayListHead++, 28, 29, 30, 0, 28, 30, 31, 0);
-    gDPTileSync(gDisplayListHead++);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0,
                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);

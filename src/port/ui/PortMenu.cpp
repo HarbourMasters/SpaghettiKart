@@ -367,6 +367,10 @@ void PortMenu::AddEnhancements() {
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gEnableCustomCC", 0); })
         .Options(FloatSliderOptions().Min(0.0f).Max(1000.0f).DefaultValue(150.0f).Step(10.0f));
 
+    AddWidget(path, "Enable Digital Speedometer", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnableDigitalSpeedometer")
+        .Options(CheckboxOptions().Tooltip("Welcome to the modern era"));
+
     AddWidget(path, "Harder CPU", WIDGET_CVAR_CHECKBOX).CVar("gHarderCPU");
 
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };

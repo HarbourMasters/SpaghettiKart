@@ -74,6 +74,13 @@ void freecam(Camera* camera, Player* player, s8 index) {
     static bool enabled = false; // Tracks previous activation state
     bool freecamEnabled = CVarGetInteger("gFreecam", 0);
 
+    // Freecam can only activate in single player mode
+    if (gActiveScreenMode != SCREEN_MODE_1P) {
+        enabled = false;
+        freecamEnabled = false;
+        CVarSetInteger("gFreecam", false);
+    }
+    
     if (freecamEnabled && !enabled) {
         enabled = true; // Mark that freecam was activated
         on_freecam();

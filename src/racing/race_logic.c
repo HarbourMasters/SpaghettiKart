@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <stdio.h>
 #include <macros.h>
 #include <mk64.h>
 #include <common_structs.h>
@@ -791,25 +792,24 @@ void func_8028F970(void) {
     }
 
     if (gEnableDebugMode) {
-        if (gModeSelection == BATTLE) {
-            // do stuff?
-        } else {
+        if (gModeSelection != BATTLE) { // Skip laps
             if (gControllerOne->buttonPressed & U_JPAD) {
                 gLapCountByPlayerId[0] = 2;
+                play_sound2(SOUND_MENU_OPTION);
+                printf("[race_logic.c] [func_8028F970] Skipped laps for player 1\n");
             }
             if (gControllerOne->buttonPressed & R_JPAD) {
                 gLapCountByPlayerId[0] = 2;
                 gLapCountByPlayerId[1] = 2;
+                play_sound2(SOUND_MENU_OPTION);
+                printf("[race_logic.c] [func_8028F970] Skipped laps for players 1 & 2\n");
             }
             if (gControllerOne->buttonPressed & D_JPAD) {
-                gLapCountByPlayerId[0] = 2;
-                gLapCountByPlayerId[1] = 2;
-                gLapCountByPlayerId[2] = 2;
-                gLapCountByPlayerId[3] = 2;
-                gLapCountByPlayerId[4] = 2;
-                gLapCountByPlayerId[5] = 2;
-                gLapCountByPlayerId[6] = 2;
-                gLapCountByPlayerId[7] = 2;
+                for (size_t i = 0; i < NUM_PLAYERS; i++) {
+                    gLapCountByPlayerId[i] = 2;
+                }
+                play_sound2(SOUND_MENU_OPTION);
+                printf("[race_logic.c] [func_8028F970] Skipped laps for all players\n");
             }
         }
     }

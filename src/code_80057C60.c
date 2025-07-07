@@ -951,7 +951,10 @@ void func_80058F78(void) {
                 draw_simplified_lap_count(PLAYER_ONE);
                 func_8004EB38(0);
                 if (D_801657E6 != false) {
-                    func_8004ED40(0);
+                    if (CVarGetInteger("gEnableDigitalSpeedometer", false) == true) {
+                        render_digital_speedometer(PLAYER_ONE);
+                    }
+                    render_speedometer(PLAYER_ONE);
                 }
             }
         }

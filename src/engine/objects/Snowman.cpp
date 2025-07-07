@@ -129,17 +129,26 @@ void OSnowman::DrawHead(s32 cameraId) {
                 func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
             if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
-                draw_2d_texture_at(gObjectList[objectIndex].pos, (u16*) D_80183E80,
-                                   gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                                   (u8*) gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex,
-                                   0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                rsp_set_matrix_transformation(gObjectList[objectIndex].pos, D_80183E80,
+                                          gObjectList[objectIndex].sizeScaling);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gObjectList[objectIndex].activeTLUT);
+            rsp_load_texture((u8*) gObjectList[objectIndex].activeTexture, 64, 64);
+            gSPVertex(gDisplayListHead++, (uintptr_t) gObjectList[objectIndex].vertex, 4, 0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+            gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
             }
             objectIndex = _headIndex;
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
-            draw_2d_texture_at(gObjectList[objectIndex].pos, (u16*) D_80183E80, gObjectList[objectIndex].sizeScaling,
-                               (u8*) gObjectList[objectIndex].activeTLUT, (u8*) gObjectList[objectIndex].activeTexture,
-                               gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, D_80183E80,
+                                          gObjectList[objectIndex].sizeScaling);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gObjectList[objectIndex].activeTLUT);
+            rsp_load_texture((u8*) gObjectList[objectIndex].activeTexture, 64, 64);
+            gSPVertex(gDisplayListHead++, (uintptr_t) gObjectList[objectIndex].vertex, 4, 0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+            gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 
             // @port Pop the transform id.
             FrameInterpolation_RecordCloseChild();
@@ -229,13 +238,27 @@ void OSnowman::func_80083BE4(s32 objectIndex) {
     object_calculate_new_pos_offset(objectIndex);
 }
 
+Vtx common_vtx_snowman[] = {
+    {{{   -32,    -31,    -12}, 0, {     0,      0}, {255, 255, 255, 255}}},
+    {{{    31,    -31,    -12}, 0, {  4032,      0}, {255, 255, 255, 255}}},
+    {{{    31,     31,    -12}, 0, {  4032,   3968}, {255, 255, 255, 255}}},
+    {{{   -32,     31,    -12}, 0, {     0,   3968}, {255, 255, 255, 255}}},
+    {{{   -32,    -31,      0}, 0, {  4032,      0}, {255, 255, 255, 255}}},
+    {{{    31,    -31,      0}, 0, {     0,      0}, {255, 255, 255, 255}}},
+    {{{    31,      0,      0}, 0, {     0,   1984}, {255, 255, 255, 255}}},
+    {{{   -32,      0,      0}, 0, {  4032,   1984}, {255, 255, 255, 255}}},
+    {{{   -32,      0,      0}, 0, {  4032,      0}, {255, 255, 255, 255}}},
+    {{{    31,      0,      0}, 0, {     0,      0}, {255, 255, 255, 255}}},
+    {{{    31,     31,      0}, 0, {     0,   1984}, {255, 255, 255, 255}}},
+    {{{   -32,     31,      0}, 0, {  4032,   1984}, {255, 255, 255, 255}}},
+};
+
 void OSnowman::func_80083868(s32 objectIndex) {
     Object* object;
-    Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(D_0D0061B0);
     init_texture_object(objectIndex, (u8*) d_course_frappe_snowland_snowman_tlut, (const char**) sSnowmanHeadList,
                         0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
-    object->vertex = vtx;
+    object->vertex = common_vtx_snowman;
     object->sizeScaling = 0.1f;
     object->textureListIndex = 0;
     object_next_state(objectIndex);
@@ -302,11 +325,17 @@ void OSnowman::func_80083A94(s32 objectIndex) {
 
 static const char* sSnowmanBodyList[] = { d_course_frappe_snowland_snowman_body };
 
+Vtx common_vtx_snowman2[] = {
+    { { { -32, -31, 0 }, 0, { 0, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, -31, 0 }, 0, { 4032, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, 31, 0 }, 0, { 4032, 3968 }, { 255, 255, 255, 255 } } },
+    { { { -32, 31, 0 }, 0, { 0, 3968 }, { 255, 255, 255, 255 } } },
+};
+
 void OSnowman::func_80083B0C(s32 objectIndex) {
-    Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
     init_texture_object(objectIndex, (u8*) d_course_frappe_snowland_snowman_tlut, (const char**) sSnowmanBodyList,
                         0x40U, (u16) 0x00000040);
-    gObjectList[objectIndex].vertex = vtx;
+    gObjectList[objectIndex].vertex = common_vtx_snowman2;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].textureListIndex = 0;
     object_next_state(objectIndex);

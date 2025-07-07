@@ -5,6 +5,7 @@
 
 #include <libultraship.h>
 #include <libultra/gbi.h>
+#include <stdio.h>
 #include <mk64.h>
 #include <align_asset_macro.h>
 #include <macros.h>
@@ -2698,13 +2699,27 @@ void func_8004EB38(s32 playerId) {
     }
 }
 
+void render_digital_speedometer(s32 playerIdx) {
+    char str[16];
+    f32 speed = (gPlayers[playerIdx].speed / 18.0f) * 216.0f;
+    set_text_color(TEXT_YELLOW);
+
+    size_t len = (size_t) snprintf(str, sizeof(str), "%.2f", speed);
+    if (len >= sizeof(str)) {
+         printf("[render_objects.c] [render_digital_speedometer] str buffer too small, characters were discarded!\n");
+    }
+
+    text_draw_wide(270, 224, str, 0, 0.5f, 0.5f);
+}
+
 // render the speedometer for the player
-void func_8004ED40(s32 arg0) {
+void render_speedometer(s32 playerIdx) {
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
-    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f,
+    func_8004A2F4(playerHUD[playerIdx].speedometerX, playerHUD[playerIdx].speedometerY, 0U, 1.0f,
                   // RGBA
                   CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
                   0xFF, LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
+    // x, y, needle rot
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20,
                   0x40, 0x20);
 }

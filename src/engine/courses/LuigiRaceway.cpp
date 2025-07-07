@@ -257,42 +257,6 @@ void LuigiRaceway::SetStaffGhost() {
 }
 
 void LuigiRaceway::Jumbotron() {
-    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x5800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xB710), 3, 0);
-    gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xB800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xB740), 32, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gSP2Triangles(gDisplayListHead++, 4, 5, 6, 0, 4, 6, 7, 0);
-    gSP2Triangles(gDisplayListHead++, 8, 9, 10, 0, 9, 11, 12, 0);
-    gSP2Triangles(gDisplayListHead++, 9, 12, 10, 0, 13, 14, 15, 0);
-    gSP2Triangles(gDisplayListHead++, 13, 15, 16, 0, 17, 18, 19, 0);
-    gSP2Triangles(gDisplayListHead++, 17, 19, 20, 0, 11, 21, 12, 0);
-    gSP2Triangles(gDisplayListHead++, 10, 22, 23, 0, 10, 23, 24, 0);
-    gSP2Triangles(gDisplayListHead++, 25, 22, 26, 0, 25, 26, 27, 0);
-    gSP2Triangles(gDisplayListHead++, 28, 23, 29, 0, 28, 29, 30, 0);
-    gSP1Triangle(gDisplayListHead++, 27, 26, 31, 0);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xB940), 14, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 3, 4, 5, 0);
-    gSP2Triangles(gDisplayListHead++, 3, 5, 6, 0, 1, 7, 8, 0);
-    gSP2Triangles(gDisplayListHead++, 1, 8, 9, 0, 10, 11, 12, 0);
-    gSP1Triangle(gDisplayListHead++, 10, 12, 13, 0);
-    gDPTileSync(gDisplayListHead++);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0,
                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
@@ -345,17 +309,6 @@ void LuigiRaceway::Jumbotron() {
     gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBB60), 4, 0);
     gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
     gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xB000);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBBA0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
 }
 
 void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
