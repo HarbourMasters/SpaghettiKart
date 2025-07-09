@@ -100,6 +100,7 @@ void func_80281530(void);
 void func_80281538(void);
 void func_80281540(void);
 void podium_ceremony_loop(void);
+void clear_podium_actors(void);
 
 extern struct_D_802874D8 D_802874D8;
 extern CeremonyActor* sPodiumActorList;

@@ -435,6 +435,11 @@ s8 get_surface_type(u16 index) {
 }
 
 s16 get_track_section_id(u16 index) {
+    if (index >= gCollisionMeshCount) {
+        // printf("[collision.c] [get_track_section_id] Warning: Trying to access a collision triangle index %d\n
+        //  Which is overflows gCollisionMesh, as its total size is %d\n", index, gCollisionMeshCount);
+        return 0xFF;
+    }
     CollisionTriangle* triangle = &gCollisionMesh[index];
     return triangle->flags & 0xFF;
 }

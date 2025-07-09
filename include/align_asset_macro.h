@@ -1,6 +1,6 @@
 #pragma once
 
-bool GameEngine_OTRSigCheck(char* imgData);
+bool GameEngine_OTRSigCheck(const char* imgData);
 
 #if defined(_WIN32)
 #define ALIGN_ASSET(x) __declspec(align(x))

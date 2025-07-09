@@ -132,6 +132,10 @@ CeremonyActor* new_actor(ActorInitParams* arg0) {
     return actor;
 }
 
+void clear_podium_actors() {
+    memset(&sPodiumActorList, 0, sizeof(CeremonyActor));
+}
+
 u16 random_u16_credits(void) {
     u16 temp1, temp2;
 

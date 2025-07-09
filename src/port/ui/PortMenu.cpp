@@ -349,6 +349,9 @@ void PortMenu::AddEnhancements() {
     AddWidget(path, "Disable Culling", WIDGET_CVAR_CHECKBOX)
         .CVar("gNoCulling")
         .Options(CheckboxOptions().Tooltip("Disable original culling of mk64"));
+    AddWidget(path, "Disable Rubberbanding", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDisableRubberbanding")
+        .Options(CheckboxOptions().Tooltip("Disable rubberbanding in the game."));
     AddWidget(path, "Far Frustrum", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gFarFrustrum")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoCulling", 0); })
@@ -363,6 +366,10 @@ void PortMenu::AddEnhancements() {
         .CVar("gCustomCC")
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gEnableCustomCC", 0); })
         .Options(FloatSliderOptions().Min(0.0f).Max(1000.0f).DefaultValue(150.0f).Step(10.0f));
+
+    AddWidget(path, "Enable Digital Speedometer", WIDGET_CVAR_CHECKBOX)
+        .CVar("gEnableDigitalSpeedometer")
+        .Options(CheckboxOptions().Tooltip("Welcome to the modern era"));
 
     AddWidget(path, "Harder CPU", WIDGET_CVAR_CHECKBOX).CVar("gHarderCPU");
 

@@ -21,9 +21,9 @@
 
 s32 D_8018D900[8];
 s16 D_8018D920[8];
-s32 D_8018D930[8];
-s32 D_8018D950[8];
-s32 D_8018D970[8];
+s32 gPlayerStarEffectStartTime[8];
+s32 gPlayerBooEffectStartTime[8];
+s32 gPlayerOtherScreensAlpha[8];
 s32 D_8018D990[8];
 
 UNUSED void func_unnamed(void) {
@@ -221,7 +221,7 @@ void func_8008C528(Player* player, s8 arg1) {
 
 void func_8008C62C(Player* player, s8 arg1) {
 
-    player_decelerate(player, 5.0f);
+    player_decelerate_alternative(player, 5.0f);
     player->unk_0A8 += (s16) 0xA0;
     player->unk_042 += (s16) 0x71C;
     if (player->unk_0A8 >= 0x2000) {
@@ -231,7 +231,7 @@ void func_8008C62C(Player* player, s8 arg1) {
             player->unk_0A8 = 0x2000;
             func_8008C6D0(player, arg1);
             if (gModeSelection == BATTLE) {
-                func_8006B8B4(player, arg1);
+                pop_player_balloon(player, arg1);
             }
         }
     }
@@ -255,8 +255,8 @@ void func_8008C6D0(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void func_8008C73C(Player* player, s8 arg1) {
-    clean_effect(player, arg1);
+void func_8008C73C(Player* player, s8 playerIndex) {
+    clean_effect(player, playerIndex);
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
         player->effects &= ~0x10;
 
@@ -270,22 +270,22 @@ void func_8008C73C(Player* player, s8 arg1) {
         // clang-format off
         player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
         // clang-format on
-        D_80165190[0][arg1] = 1;
-        D_80165190[1][arg1] = 1;
-        D_80165190[2][arg1] = 1;
-        D_80165190[3][arg1] = 1;
-        D_80165280[arg1] = player->currentSpeed;
-        gTimerBoostTripleACombo[arg1] = 0;
-        gIsPlayerTripleAButtonCombo[arg1] = false;
-        gCountASwitch[arg1] = 0;
-        gFrameSinceLastACombo[arg1] = 0;
-        D_8018D920[arg1] = 0;
+        D_80165190[0][playerIndex] = 1;
+        D_80165190[1][playerIndex] = 1;
+        D_80165190[2][playerIndex] = 1;
+        D_80165190[3][playerIndex] = 1;
+        gPlayerCurrentSpeed[playerIndex] = player->currentSpeed;
+        gTimerBoostTripleACombo[playerIndex] = 0;
+        gIsPlayerTripleAButtonCombo[playerIndex] = false;
+        gCountASwitch[playerIndex] = 0;
+        gFrameSinceLastACombo[playerIndex] = 0;
+        D_8018D920[playerIndex] = 0;
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
             ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
+            func_800C90F4(playerIndex, (player->characterId * 0x10) + 0x29008003);
         } else {
-            play_cpu_sound_effect(arg1, player);
+            play_cpu_sound_effect(playerIndex, player);
         }
     }
 }
@@ -323,15 +323,15 @@ void func_8008C9EC(Player* player, s8 arg1) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     if ((player->unk_046 & 0x40) == 0x40) {
-        player_decelerate(player, 100.0f);
+        player_decelerate_alternative(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            player_decelerate(player, 1.0f);
+            player_decelerate_alternative(player, 1.0f);
         } else {
-            player_decelerate(player, 4.0f);
+            player_decelerate_alternative(player, 4.0f);
         }
         if (!(player->type & PLAYER_HUMAN)) {
-            player_decelerate(player, 30.0f);
+            player_decelerate_alternative(player, 30.0f);
         }
     }
     if ((player->effects & 0x80) == 0x80) {
@@ -342,7 +342,7 @@ void func_8008C9EC(Player* player, s8 arg1) {
             player->unk_0B2--;
             if (player->unk_0B2 <= 0) {
                 if (gModeSelection == BATTLE) {
-                    func_8006B8B4(player, arg1);
+                    pop_player_balloon(player, arg1);
                 }
                 func_8008C8C4(player, arg1);
             }
@@ -356,7 +356,7 @@ void func_8008C9EC(Player* player, s8 arg1) {
             if (player->unk_0B2 <= 0) {
                 func_8008C8C4(player, arg1);
                 if (gModeSelection == BATTLE) {
-                    func_8006B8B4(player, arg1);
+                    pop_player_balloon(player, arg1);
                 }
             }
         }
@@ -836,7 +836,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
     player->unk_08C *= 0.6;
     player->unk_0B0 = 0;
     player->size = 1.0f;
-    D_8018D930[arg1] = gCourseTimer;
+    gPlayerStarEffectStartTime[arg1] = gCourseTimer;
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
@@ -857,7 +857,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
         play_cpu_sound_effect(arg1, player);
     }
     if (gModeSelection == BATTLE) {
-        func_8006B8B4(player, arg1);
+        pop_player_balloon(player, arg1);
     }
 }
 
@@ -893,7 +893,7 @@ void apply_lightning_effect(Player* player, s8 arg1) {
                 D_80165190[3][arg1] = 1;
             }
         }
-        player_decelerate(player, 1.0f);
+        player_decelerate_alternative(player, 1.0f);
     } else {
         player->unk_0B0 += 1;
         player->unk_08C = (f32) ((f64) player->unk_08C * 0.6);
@@ -963,7 +963,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
             player->currentSpeed += 100.0f;
         }
         if (gModeSelection == BATTLE) {
-            func_8006B8B4(player, arg1);
+            pop_player_balloon(player, arg1);
         }
     } else {
         player->unk_0A8 += 0x80;
@@ -980,7 +980,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
                 player->unk_042 = 0;
 
                 if (gModeSelection == BATTLE) {
-                    func_8006B8B4(player, arg1);
+                    pop_player_balloon(player, arg1);
                 }
                 if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
@@ -1074,7 +1074,7 @@ void apply_hit_by_item_effect(Player* player, s8 arg1) {
         }
 
         if (gModeSelection == BATTLE) {
-            func_8006B8B4(player, arg1);
+            pop_player_balloon(player, arg1);
         }
     } else {
         player->unk_0A8 = (s16) (player->unk_0A8 + 0x90);
@@ -1094,7 +1094,7 @@ void apply_hit_by_item_effect(Player* player, s8 arg1) {
                 }
 
                 if (gModeSelection == BATTLE) {
-                    func_8006B8B4(player, arg1);
+                    pop_player_balloon(player, arg1);
                 }
             }
         }
@@ -1347,7 +1347,7 @@ void func_8008F494(Player* player, s8 arg1) {
 void func_8008F5A4(Player* player, s8 arg1) {
 
     if ((player->unk_044 & 0x8000) != 0) {
-        func_8006B8B4(player, arg1);
+        pop_player_balloon(player, arg1);
         player->unk_044 &= ~0x8000;
     }
 
@@ -1369,7 +1369,7 @@ void func_8008F5A4(Player* player, s8 arg1) {
 }
 
 void apply_star_effect(Player* player, s8 arg1) {
-    if (((s32) gCourseTimer - D_8018D930[arg1]) >= 9) {
+    if (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) >= 9) {
         D_8018D900[arg1] = 1;
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -1384,7 +1384,7 @@ void apply_star_effect(Player* player, s8 arg1) {
         }
     }
 
-    if (((s32) gCourseTimer - D_8018D930[arg1]) >= 0xA) {
+    if (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) >= 0xA) {
         player->effects &= ~STAR_EFFECT;
     }
 }
@@ -1395,7 +1395,7 @@ void apply_star_sound_effect(Player* player, s8 arg1) {
 
     player->effects |= STAR_EFFECT;
     player->soundEffects &= ~STAR_SOUND_EFFECT;
-    D_8018D930[arg1] = gCourseTimer;
+    gPlayerStarEffectStartTime[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
 
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -1421,86 +1421,88 @@ void func_8008F86C(Player* player, s8 arg1) {
     func_800CAACC(arg1);
 }
 
-void apply_boo_effect(Player* arg0, s8 arg1) {
-    s32 tmp;
-    tmp = ((s32) gCourseTimer) - D_8018D950[arg1];
-    if (tmp < 7) {
-        arg0->unk_0C6 -= 2;
+void apply_boo_effect(Player* player, s8 playerIndex) {
+    s32 time_elapsed;
+    time_elapsed = ((s32) gCourseTimer) - gPlayerBooEffectStartTime[playerIndex];
+    if (time_elapsed < BOO_EFFECT_DURATION) {
+        player->alpha -= ALPHA_CHANGE_SMALL;
 
-        if (arg0->unk_0C6 < 0x61) {
-            arg0->unk_0C6 = 0x60;
+        if (player->alpha <= ALPHA_BOO_EFFECT) {
+            player->alpha = ALPHA_BOO_EFFECT;
         }
-        D_8018D970[arg1] -= 2;
-        if (D_8018D970[arg1] <= 0) {
-            D_8018D970[arg1] = 0;
+        // Player becomes invisible to other players
+        gPlayerOtherScreensAlpha[playerIndex] -= ALPHA_CHANGE_SMALL;
+        if (gPlayerOtherScreensAlpha[playerIndex] <= 0) {
+            gPlayerOtherScreensAlpha[playerIndex] = 0;
         }
     } else {
-        arg0->unk_0C6 += 4;
-        if (arg0->unk_0C6 >= 0xF0) {
-            arg0->unk_0C6 = 0xFF;
-            D_8018D970[arg1] = 0xFF;
-            arg0->effects &= ~0x80000000;
-            if ((arg0->type & 0x4000) != 0) {
-                func_800CB064(arg1);
+        // Player returns to normal visibility
+        player->alpha += ALPHA_CHANGE_MEDIUM;
+        if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+            player->alpha = ALPHA_MAX;
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
+                func_800CB064(playerIndex);
             }
         }
 
-        D_8018D970[arg1] += 8;
-        if (D_8018D970[arg1] >= 0xF0) {
-            D_8018D970[arg1] = 0xFF;
-            arg0->unk_0C6 = 0xFF;
-            arg0->effects &= ~0x80000000;
-            if ((arg0->type & 0x4000) != 0) {
-                func_800CB064(arg1);
+        gPlayerOtherScreensAlpha[playerIndex] += 8;
+        if (gPlayerOtherScreensAlpha[playerIndex] >= 0xF0) {
+            gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+            player->alpha = ALPHA_MAX;
+            player->effects &= ~0x80000000;
+            if ((player->type & 0x4000) != 0) {
+                func_800CB064(playerIndex);
             }
         }
     }
 }
 
-void apply_boo_sound_effect(Player* player, s8 arg1) {
+void apply_boo_sound_effect(Player* player, s8 playerIndex) {
     s16 temp_v1;
 
     if ((player->type & PLAYER_HUMAN) != 0) {
         player->unk_044 |= 0x200;
 
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
-            player->unk_258[temp_v1].unk_01C = 0;
-            player->unk_258[temp_v1].unk_01E = 0;
-            player->unk_258[temp_v1].unk_012 = 0;
+            player->particlePool0[temp_v1].isAlive = 0;
+            player->particlePool0[temp_v1].unk_01E = 0;
+            player->particlePool0[temp_v1].type = 0;
         }
     }
 
-    clean_effect(player, arg1);
+    clean_effect(player, playerIndex);
 
     player->effects |= BOO_EFFECT;
     player->soundEffects &= ~BOO_SOUND_EFFECT;
-    D_8018D950[arg1] = gCourseTimer;
-    D_8018D970[arg1] = 0xFF;
+    gPlayerBooEffectStartTime[playerIndex] = gCourseTimer;
+    gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
     if ((player->type & PLAYER_HUMAN) != 0) {
-        func_800CAFC0(arg1);
+        func_800CAFC0(playerIndex);
     }
 }
 
-void func_8008FB30(Player* arg0, s8 arg1) {
-    arg0->unk_0C6 += 8;
-    if (arg0->unk_0C6 >= 0xF0) {
-        arg0->unk_0C6 = 0xFF;
-        D_8018D970[arg1] = 0xFF;
+void func_8008FB30(Player* player, s8 playerIndex) {
+    player->alpha += ALPHA_CHANGE_LARGE;
+    if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+        player->alpha = ALPHA_MAX;
+        gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
-        arg0->effects &= ~0x80000000;
-        if ((arg0->type & 0x4000) != 0) {
-            func_800CB064(arg1);
+        player->effects &= ~0x80000000;
+        if ((player->type & 0x4000) != 0) {
+            func_800CB064(playerIndex);
         }
     }
 
-    D_8018D970[arg1] += 0x10;
-    if (D_8018D970[arg1] >= 0xE0) {
-        D_8018D970[arg1] = 0xFF;
-        arg0->unk_0C6 = 0xFF;
-        arg0->effects &= ~0x80000000;
-        if ((arg0->type & 0x4000) != 0) {
-            func_800CB064(arg1);
+    gPlayerOtherScreensAlpha[playerIndex] += 0x10;
+    if (gPlayerOtherScreensAlpha[playerIndex] >= 0xE0) {
+        gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
+        player->alpha = ALPHA_MAX;
+        player->effects &= ~0x80000000;
+        if ((player->type & 0x4000) != 0) {
+            func_800CB064(playerIndex);
         }
     }
 }
@@ -1515,25 +1517,25 @@ void func_8008FC1C(Player* player) {
     }
 }
 
-void func_8008FC64(Player* player, s8 arg1) {
-    player->unk_0C6 -= 4;
-    if (player->unk_0C6 < 5) {
-        player->unk_0C6 = 0;
+void func_8008FC64(Player* player, s8 playerIndex) {
+    player->alpha -= ALPHA_CHANGE_MEDIUM;
+    if (player->alpha <= ALPHA_CHANGE_MEDIUM) {
+        player->alpha = ALPHA_MIN;
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
-        func_8008FDA8(player, arg1);
-        func_800569F4(arg1);
+        func_8008FDA8(player, playerIndex);
+        func_800569F4(playerIndex);
     }
 }
 
 void func_8008FCDC(Player* player, s8 arg1) {
-    player->unk_0C6 += 2;
-    if (player->unk_0C6 >= 0xF0) {
-        player->unk_0C6 = 0xFF;
+    player->alpha += ALPHA_CHANGE_SMALL;
+    if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+        player->alpha = ALPHA_MAX;
         player->soundEffects &= ~0x08000000;
     }
-    func_80056A40(arg1, (u32) player->unk_0C6);
+    func_80056A40(arg1, (u32) player->alpha);
 }
 
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
@@ -1543,9 +1545,9 @@ void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->unk_258[temp_v0].unk_01C = 0;
-        player->unk_258[temp_v0].unk_01E = 0;
-        player->unk_258[temp_v0].unk_012 = 0;
+        player->particlePool0[temp_v0].isAlive = 0;
+        player->particlePool0[temp_v0].unk_01E = 0;
+        player->particlePool0[temp_v0].type = 0;
     }
 }
 
@@ -1553,9 +1555,9 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
     player->unk_044 |= 0x200;
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
-        player->unk_258[temp_v0].unk_01C = 0;
-        player->unk_258[temp_v0].unk_01E = 0;
-        player->unk_258[temp_v0].unk_012 = 0;
+        player->particlePool0[temp_v0].isAlive = 0;
+        player->particlePool0[temp_v0].unk_01E = 0;
+        player->particlePool0[temp_v0].type = 0;
     }
 }
 
@@ -1842,7 +1844,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                     if ((D_801652A0[playerId] + 40.0f) <= player->pos[1]) {
                         player->unk_222 = 1;
                         player->unk_0CA |= 4;
-                        player->unk_0C6 = 0x00FF;
+                        player->alpha = ALPHA_MAX;
                     }
                 }
             } else if ((player->unk_0CA & 2) == 2) {
@@ -1851,7 +1853,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 if ((player->unk_074 + 40.0f) <= player->pos[1]) {
                     player->unk_222 = 1;
                     player->unk_0CA |= 4;
-                    player->unk_0C6 = 0x00FF;
+                    player->alpha = ALPHA_MAX;
                 }
             }
             if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
@@ -1864,17 +1866,17 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             }
             if ((player->unk_0CA & 1) == 1) {
                 move_f32_towards(&player->pos[1], D_801652A0[playerId] + 40.0f, 0.02f);
-                player->unk_0C6 -= 8;
-                if (player->unk_0C6 < 9) {
-                    player->unk_0C6 = 0;
+                player->alpha -= ALPHA_CHANGE_LARGE;
+                if (player->alpha <= ALPHA_CHANGE_LARGE) {
+                    player->alpha = ALPHA_MIN;
                     player->unk_222 = 2;
                     player->unk_0CA &= ~0x0001;
                 }
             } else {
                 move_f32_towards(&player->pos[1], player->oldPos[1] + 40.0f, 0.02f);
-                player->unk_0C6 -= 8;
-                if (player->unk_0C6 < 9) {
-                    player->unk_0C6 = 0;
+                player->alpha -= ALPHA_CHANGE_LARGE;
+                if (player->alpha <= ALPHA_CHANGE_LARGE) {
+                    player->alpha = ALPHA_MIN;
                     player->unk_222 = 2;
                 }
             }
@@ -1900,9 +1902,9 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             player->pos[2] = sp44[2];
             player->pos[2] = player->pos[2] + coss((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
             player->pos[0] = player->pos[0] + sins((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
-            player->unk_0C6 += 8;
-            if (player->unk_0C6 >= 0xF0) {
-                player->unk_0C6 = 0x00FF;
+            player->alpha += ALPHA_CHANGE_LARGE;
+            if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
+                player->alpha = ALPHA_MAX;
                 player->unk_222 = 4;
                 player->unk_0CA &= ~0x0004;
                 player->unk_0C8 = 0;
@@ -1928,7 +1930,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
                     }
                     if (gModeSelection == BATTLE) {
-                        func_8006B8B4(player, playerId);
+                        pop_player_balloon(player, playerId);
                     }
                     player->unk_0CA &= ~0x0002;
                     player->unk_0DE &= ~0x0004;
@@ -2015,30 +2017,30 @@ void func_800911B4(Player* player, s8 arg1) {
     player->unk_078 = 0;
     D_8018D920[arg1] = 0;
 
-    player->unk_258[31].unk_012 = 0;
-    player->unk_258[31].unk_01E = 0;
-    player->unk_258[31].unk_01C = 0;
-    player->unk_258[30].unk_012 = 0;
-    player->unk_258[30].unk_01E = 0;
-    player->unk_258[30].unk_01C = 0;
+    player->particlePool3[1].type = 0;
+    player->particlePool3[1].unk_01E = 0;
+    player->particlePool3[1].isAlive = 0;
+    player->particlePool3[0].type = 0;
+    player->particlePool3[0].unk_01E = 0;
+    player->particlePool3[0].isAlive = 0;
 
     // clang-format off
     temp_v0 = 2; do {
         // clang-format on
-        player->unk_258[31 + temp_v0].unk_01C = 0;
-        player->unk_258[31 + temp_v0].unk_01E = 0;
-        player->unk_258[31 + temp_v0].unk_012 = 0;
-        player->unk_258[32 + temp_v0].unk_01C = 0;
-        player->unk_258[32 + temp_v0].unk_01E = 0;
-        player->unk_258[32 + temp_v0].unk_012 = 0;
-        player->unk_258[33 + temp_v0].unk_01C = 0;
-        player->unk_258[33 + temp_v0].unk_01E = 0;
-        player->unk_258[33 + temp_v0].unk_012 = 0;
+        player->particlePool3[1 + temp_v0].isAlive = 0;
+        player->particlePool3[1 + temp_v0].unk_01E = 0;
+        player->particlePool3[1 + temp_v0].type = 0;
+        player->particlePool3[2 + temp_v0].isAlive = 0;
+        player->particlePool3[2 + temp_v0].unk_01E = 0;
+        player->particlePool3[2 + temp_v0].type = 0;
+        player->particlePool3[3 + temp_v0].isAlive = 0;
+        player->particlePool3[3 + temp_v0].unk_01E = 0;
+        player->particlePool3[3 + temp_v0].type = 0;
 
         temp_v0 += 4;
-        player->unk_258[26 + temp_v0].unk_01C = 0;
-        player->unk_258[26 + temp_v0].unk_01E = 0;
-        player->unk_258[26 + temp_v0].unk_012 = 0;
+        player->particlePool2[6 + temp_v0].isAlive = 0;
+        player->particlePool2[6 + temp_v0].unk_01E = 0;
+        player->particlePool2[6 + temp_v0].type = 0;
     } while (temp_v0 < 10);
 }
 

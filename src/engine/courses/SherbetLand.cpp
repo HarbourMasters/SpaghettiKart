@@ -49,7 +49,7 @@ SherbetLand::SherbetLand() {
     this->gfx = d_course_sherbet_land_packed_dls;
     this->gfxSize = 1803;
     Props.textures = sherbet_land_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineSherbetLand;
+    Props.Minimap.Texture = minimap_sherbet_land;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -60,6 +60,7 @@ SherbetLand::SherbetLand() {
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
     Props.Minimap.Colour = {72, 100, 255};
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
@@ -122,6 +123,12 @@ SherbetLand::SherbetLand() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -18.0f;
+    for (size_t i = 0; i < 72; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) sherbet_land_dls[i], Props.textures);
+    }
+    for (size_t i = 0; i < 72; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) sherbet_land_dls_2[i], Props.textures);
+    }
 }
 
 void SherbetLand::Load() {

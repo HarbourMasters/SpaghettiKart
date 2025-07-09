@@ -3,25 +3,25 @@
 #include <libultraship.h>
 #include <align_asset_macro.h>
 
-static const ALIGN_ASSET(2) char gTexturePlayerSelect[] = "__OTR__texture_tkmk00/gTexturePlayerSelect";
+static const ALIGN_ASSET(2) char texture_player_select[] = "__OTR__texture_tkmk00/texture_player_select";
 
-static const ALIGN_ASSET(2) char gTextureOption[] = "__OTR__texture_tkmk00/gTextureOption";
+static const ALIGN_ASSET(2) char texture_option[] = "__OTR__texture_tkmk00/texture_option";
 
-static const ALIGN_ASSET(2) char gTextureNameDK[] = "__OTR__texture_tkmk00/gTextureNameDK";
+static const ALIGN_ASSET(2) char texture_name_dk[] = "__OTR__texture_tkmk00/texture_name_dk";
 
-static const ALIGN_ASSET(2) char gTextureNameToad[] = "__OTR__texture_tkmk00/gTextureNameToad";
+static const ALIGN_ASSET(2) char texture_name_toad[] = "__OTR__texture_tkmk00/texture_name_toad";
 
-static const ALIGN_ASSET(2) char gTextureNameBowser[] = "__OTR__texture_tkmk00/gTextureNameBowser";
+static const ALIGN_ASSET(2) char texture_name_bowser[] = "__OTR__texture_tkmk00/texture_name_bowser";
 
-static const ALIGN_ASSET(2) char gTextureNameLuigi[] = "__OTR__texture_tkmk00/gTextureNameLuigi";
+static const ALIGN_ASSET(2) char texture_name_luigi[] = "__OTR__texture_tkmk00/texture_name_luigi";
 
-static const ALIGN_ASSET(2) char gTextureNameMario[] = "__OTR__texture_tkmk00/gTextureNameMario";
+static const ALIGN_ASSET(2) char texture_name_mario[] = "__OTR__texture_tkmk00/texture_name_mario";
 
-static const ALIGN_ASSET(2) char gTextureNamePeach[] = "__OTR__texture_tkmk00/gTextureNamePeach";
+static const ALIGN_ASSET(2) char texture_name_peach[] = "__OTR__texture_tkmk00/texture_name_peach";
 
-static const ALIGN_ASSET(2) char gTextureNameWario[] = "__OTR__texture_tkmk00/gTextureNameWario";
+static const ALIGN_ASSET(2) char texture_name_wario[] = "__OTR__texture_tkmk00/texture_name_wario";
 
-static const ALIGN_ASSET(2) char gTextureNameYoshi[] = "__OTR__texture_tkmk00/gTextureNameYoshi";
+static const ALIGN_ASSET(2) char texture_name_yoshi[] = "__OTR__texture_tkmk00/texture_name_yoshi";
 
 static const ALIGN_ASSET(2) char gTextureTitleMarioRaceway[] = "__OTR__texture_tkmk00/gTextureTitleMarioRaceway";
 
@@ -73,51 +73,51 @@ static const ALIGN_ASSET(2) char gTextureMenuStarCup[] = "__OTR__texture_tkmk00/
 
 static const ALIGN_ASSET(2) char gTextureMenuSpecialCup[] = "__OTR__texture_tkmk00/gTextureMenuSpecialCup";
 
-static const ALIGN_ASSET(2) char gTextureGameSelect[] = "__OTR__texture_tkmk00/gTextureGameSelect";
+static const ALIGN_ASSET(2) char texture_game_select[] = "__OTR__texture_tkmk00/texture_game_select";
 
-static const ALIGN_ASSET(2) char gTextureMenu1PGame[] = "__OTR__texture_tkmk00/gTextureMenu1PGame";
+static const ALIGN_ASSET(2) char texture_menu_1p_game[] = "__OTR__texture_tkmk00/texture_menu_1p_game";
 
-static const ALIGN_ASSET(2) char gTextureMenu2PGame[] = "__OTR__texture_tkmk00/gTextureMenu2PGame";
+static const ALIGN_ASSET(2) char texture_menu_2p_game[] = "__OTR__texture_tkmk00/texture_menu_2p_game";
 
-static const ALIGN_ASSET(2) char gTextureMenu3PGame[] = "__OTR__texture_tkmk00/gTextureMenu3PGame";
+static const ALIGN_ASSET(2) char texture_menu_3p_game[] = "__OTR__texture_tkmk00/texture_menu_3p_game";
 
-static const ALIGN_ASSET(2) char gTextureMenu4PGame[] = "__OTR__texture_tkmk00/gTextureMenu4PGame";
+static const ALIGN_ASSET(2) char texture_menu_4p_game[] = "__OTR__texture_tkmk00/texture_menu_4p_game";
 
-static const ALIGN_ASSET(2) char gTextureMenuModeBattle[] = "__OTR__texture_tkmk00/gTextureMenuModeBattle";
+static const ALIGN_ASSET(2) char texture_mode_battle[] = "__OTR__texture_tkmk00/texture_mode_battle";
 
-static const ALIGN_ASSET(2) char gTextureMenuModeTimeTrials[] = "__OTR__texture_tkmk00/gTextureMenuModeTimeTrials";
+static const ALIGN_ASSET(2) char texture_mode_time_trials[] = "__OTR__texture_tkmk00/texture_mode_time_trials";
 
-static const ALIGN_ASSET(2) char gTextureMenuModeMarioGP[] = "__OTR__texture_tkmk00/gTextureMenuModeMarioGP";
+static const ALIGN_ASSET(2) char texture_mode_mario_gp[] = "__OTR__texture_tkmk00/texture_mode_mario_gp";
 
-static const ALIGN_ASSET(2) char gTextureMenuModeVS[] = "__OTR__texture_tkmk00/gTextureMenuModeVS";
+static const ALIGN_ASSET(2) char texture_mode_vs[] = "__OTR__texture_tkmk00/texture_mode_vs";
 
-static const ALIGN_ASSET(2) char gTextureMenuLOption[] = "__OTR__texture_tkmk00/gTextureMenuLOption";
+static const ALIGN_ASSET(2) char texture_l_option[] = "__OTR__texture_tkmk00/texture_l_option";
 
-static const ALIGN_ASSET(2) char gTextureMenuRData[] = "__OTR__texture_tkmk00/gTextureMenuRData";
+static const ALIGN_ASSET(2) char texture_r_data[] = "__OTR__texture_tkmk00/texture_r_data";
 
-static const ALIGN_ASSET(2) char gTextureMenu50cc[] = "__OTR__texture_tkmk00/gTextureMenu50cc";
+static const ALIGN_ASSET(2) char texture_50cc[] = "__OTR__texture_tkmk00/texture_50cc";
 
-static const ALIGN_ASSET(2) char gTextureMenu100cc[] = "__OTR__texture_tkmk00/gTextureMenu100cc";
+static const ALIGN_ASSET(2) char texture_100cc[] = "__OTR__texture_tkmk00/texture_100cc";
 
-static const ALIGN_ASSET(2) char gTextureMenu150cc[] = "__OTR__texture_tkmk00/gTextureMenu150cc";
+static const ALIGN_ASSET(2) char texture_150cc[] = "__OTR__texture_tkmk00/texture_150cc";
 
-static const ALIGN_ASSET(2) char gTextureMenuExtra[] = "__OTR__texture_tkmk00/gTextureMenuExtra";
+static const ALIGN_ASSET(2) char texture_extra[] = "__OTR__texture_tkmk00/texture_extra";
 
 static const ALIGN_ASSET(2) char gTextureMenuWithoutItem[] = "__OTR__texture_tkmk00/gTextureMenuWithoutItem";
 
 static const ALIGN_ASSET(2) char gTextureMenuWithItem[] = "__OTR__texture_tkmk00/gTextureMenuWithItem";
 
-static const ALIGN_ASSET(2) char gTextureMenuBegin[] = "__OTR__texture_tkmk00/gTextureMenuBegin";
+static const ALIGN_ASSET(2) char texture_begin[] = "__OTR__texture_tkmk00/texture_begin";
 
-static const ALIGN_ASSET(2) char gTextureMenuGhost[] = "__OTR__texture_tkmk00/gTextureMenuGhost";
+static const ALIGN_ASSET(2) char texture_menu_ghost[] = "__OTR__texture_tkmk00/texture_menu_ghost";
 
-static const ALIGN_ASSET(2) char gTextureMenuData[] = "__OTR__texture_tkmk00/gTextureMenuData";
+static const ALIGN_ASSET(2) char texture_data[] = "__OTR__texture_tkmk00/texture_data";
 
-static const ALIGN_ASSET(2) char gTextureMenuOK[] = "__OTR__texture_tkmk00/gTextureMenuOK";
+static const ALIGN_ASSET(2) char texture_ok[] = "__OTR__texture_tkmk00/texture_ok";
 
-static const ALIGN_ASSET(2) char gTextureBackgroundBlueSky[] = "__OTR__texture_tkmk00/gTextureBackgroundBlueSky";
+static const ALIGN_ASSET(2) char background_blue_sky[] = "__OTR__texture_tkmk00/background_blue_sky";
 
-static const ALIGN_ASSET(2) char gTextureBackgroundSunset[] = "__OTR__texture_tkmk00/gTextureBackgroundSunset";
+static const ALIGN_ASSET(2) char background_sunset[] = "__OTR__texture_tkmk00/background_sunset";
 
 static const ALIGN_ASSET(2) char gTextureGreenGoldStripe[] = "__OTR__texture_tkmk00/gTextureGreenGoldStripe";
 

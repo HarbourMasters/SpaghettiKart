@@ -47,10 +47,6 @@ static const ALIGN_ASSET(2) char D_800E8C00[] = "__OTR__data_800E8700/D_800E8C00
 
 static const ALIGN_ASSET(2) char D_800E8C40[] = "__OTR__data_800E8700/D_800E8C40";
 
-static const ALIGN_ASSET(2) char data_800E8700_vtx_800E8C40[] = "__OTR__data_800E8700/data_800E8700_vtx_800E8C40";
-
-static const ALIGN_ASSET(2) char data_800E8700_vtx_800E8CC0[] = "__OTR__data_800E8700/data_800E8700_vtx_800E8CC0";
-
 static const ALIGN_ASSET(2) char D_800E8CC0[] = "__OTR__data_800E8700/D_800E8CC0";
 
 static const ALIGN_ASSET(2) char D_800E8D40[] = "__OTR__data_800E8700/D_800E8D40";

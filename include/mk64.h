@@ -142,39 +142,6 @@ void gSPInvalidateTexCache(Gfx* pkt, uintptr_t texAddr);
 #define TEXTURE_LOAD_FIX 2
 #define TEXTURE_SIZE_FIX 1
 
-// Dumb hack to fix load tile size on higher than native resolutions
-#define gMKLoadTextureTile(pkt, timg, fmt, siz, width, height, uls, ult, lrs, lrt, pal, cms, cmt, masks, maskt,        \
-                           shifts, shiftt)                                                                             \
-    _DW({                                                                                                              \
-        gDPSetTextureImage(pkt, fmt, siz, width, timg);                                                                \
-        gDPSetTile(pkt, fmt, siz, (((((lrs) - (uls) + 1) * siz##_TILE_BYTES) + 7) >> 3), 0, G_TX_LOADTILE, 0, cmt,     \
-                   maskt, shiftt, cms, masks, shifts);                                                                 \
-        gDPLoadSync(pkt);                                                                                              \
-        gDPLoadTile(pkt, G_TX_LOADTILE, (uls) << G_TEXTURE_IMAGE_FRAC, (ult) << G_TEXTURE_IMAGE_FRAC,                  \
-                    (lrs) << G_TEXTURE_IMAGE_FRAC, (lrt + TEXTURE_LOAD_FIX) << G_TEXTURE_IMAGE_FRAC);                  \
-        gDPPipeSync(pkt);                                                                                              \
-        gDPSetTile(pkt, fmt, siz, (((((lrs) - (uls) + 1) * siz##_LINE_BYTES) + 7) >> 3), 0, G_TX_RENDERTILE, pal, cmt, \
-                   maskt, shiftt, cms, masks, shifts);                                                                 \
-        gDPSetTileSize(pkt, G_TX_RENDERTILE, (uls) << G_TEXTURE_IMAGE_FRAC, (ult) << G_TEXTURE_IMAGE_FRAC,             \
-                       (lrs) << G_TEXTURE_IMAGE_FRAC, (lrt - TEXTURE_SIZE_FIX) << G_TEXTURE_IMAGE_FRAC);               \
-    })
-
-#define gMKLoadTextureTile_4b(pkt, timg, fmt, width, height, uls, ult, lrs, lrt, pal, cms, cmt, masks, maskt, shifts, \
-                              shiftt)                                                                                 \
-    _DW({                                                                                                             \
-        gDPSetTextureImage(pkt, fmt, G_IM_SIZ_8b, ((width) >> 1), timg);                                              \
-        gDPSetTile(pkt, fmt, G_IM_SIZ_8b, (((((lrs) - (uls) + 1) >> 1) + 7) >> 3), 0, G_TX_LOADTILE, 0, cmt, maskt,   \
-                   shiftt, cms, masks, shifts);                                                                       \
-        gDPLoadSync(pkt);                                                                                             \
-        gDPLoadTile(pkt, G_TX_LOADTILE, (uls) << (G_TEXTURE_IMAGE_FRAC - 1), (ult) << (G_TEXTURE_IMAGE_FRAC),         \
-                    (lrs) << (G_TEXTURE_IMAGE_FRAC - 1), (lrt + TEXTURE_LOAD_FIX) << (G_TEXTURE_IMAGE_FRAC));         \
-        gDPPipeSync(pkt);                                                                                             \
-        gDPSetTile(pkt, fmt, G_IM_SIZ_4b, (((((lrs) - (uls) + 1) >> 1) + 7) >> 3), 0, G_TX_RENDERTILE, pal, cmt,      \
-                   maskt, shiftt, cms, masks, shifts);                                                                \
-        gDPSetTileSize(pkt, G_TX_RENDERTILE, (uls) << G_TEXTURE_IMAGE_FRAC, (ult) << G_TEXTURE_IMAGE_FRAC,            \
-                       (lrs) << G_TEXTURE_IMAGE_FRAC, (lrt - TEXTURE_SIZE_FIX) << G_TEXTURE_IMAGE_FRAC);              \
-    })
-
 #ifdef __cplusplus
 }
 #endif

@@ -81,7 +81,7 @@ void func_80004EF0(void) {
     }
 
     // Manual memcpy required for byte swap
-    for (int i = 0; i < size; i += 4) {
+    for (size_t i = 0; i < size; i += 4) {
         dest[i] = ghost[i + 3];
         dest[i + 1] = ghost[i + 2];
         dest[i + 2] = ghost[i + 1];
@@ -123,6 +123,7 @@ void set_staff_ghost(void) {
     CM_SetStaffGhost();
 }
 
+// Always returns true because mio0encode is stubbed.
 s32 func_800051C4(void) {
     s32 phi_v0;
 

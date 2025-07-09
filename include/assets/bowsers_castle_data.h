@@ -257,9 +257,13 @@ static const ALIGN_ASSET(2) char d_course_bowsers_castle_thwomp_model3[] = "__OT
 
 static const ALIGN_ASSET(2) char d_course_bowsers_castle_thwomp_model4[] = "__OTR__bowsers_castle_data/d_course_bowsers_castle_thwomp_model4";
 
+static const ALIGN_ASSET(2) char bowsers_castle_data_seg6_gfx_8F38[] = "__OTR__bowsers_castle_data/bowsers_castle_data_seg6_gfx_8F38";
+
 static const ALIGN_ASSET(2) char d_course_bowsers_castle_dl_8F38[] = "__OTR__bowsers_castle_data/d_course_bowsers_castle_dl_8F38";
 
 static const ALIGN_ASSET(2) char d_course_bowsers_castle_dl_9078[] = "__OTR__bowsers_castle_data/d_course_bowsers_castle_dl_9078";
+
+static const ALIGN_ASSET(2) char bowsers_castle_data_seg6_gfx_9078[] = "__OTR__bowsers_castle_data/bowsers_castle_data_seg6_gfx_9078";
 
 static const ALIGN_ASSET(2) char d_course_bowsers_castle_dl_thwomp[] = "__OTR__bowsers_castle_data/d_course_bowsers_castle_dl_thwomp";
 

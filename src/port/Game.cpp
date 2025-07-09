@@ -49,6 +49,10 @@
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
 
+#ifdef _WIN32
+#include <locale.h>
+#endif
+
 extern "C" {
 #include "main.h"
 #include "audio/load.h"
@@ -69,7 +73,7 @@ extern "C" void Timer_Update();
 // Create the world instance
 World gWorldInstance;
 
-std::unique_ptr<PodiumCeremony> gPodiumCeremony;
+std::shared_ptr<PodiumCeremony> gPodiumCeremony;
 
 Cup* gMushroomCup;
 Cup* gFlowerCup;
@@ -87,28 +91,28 @@ s32 gTrophyIndex = NULL;
 
 void CustomEngineInit() {
     /* Add all courses to the global course list */
-    Course* mario         = gWorldInstance.AddCourse(std::make_unique<MarioRaceway>());
-    Course* choco         = gWorldInstance.AddCourse(std::make_unique<ChocoMountain>());
-    Course* bowser        = gWorldInstance.AddCourse(std::make_unique<BowsersCastle>());
-    Course* banshee       = gWorldInstance.AddCourse(std::make_unique<BansheeBoardwalk>());
-    Course* yoshi         = gWorldInstance.AddCourse(std::make_unique<YoshiValley>());
-    Course* frappe        = gWorldInstance.AddCourse(std::make_unique<FrappeSnowland>());
-    Course* koopa         = gWorldInstance.AddCourse(std::make_unique<KoopaTroopaBeach>());
-    Course* royal         = gWorldInstance.AddCourse(std::make_unique<RoyalRaceway>());
-    Course* luigi         = gWorldInstance.AddCourse(std::make_unique<LuigiRaceway>());
-    Course* mooMoo        = gWorldInstance.AddCourse(std::make_unique<MooMooFarm>());
-    Course* toads         = gWorldInstance.AddCourse(std::make_unique<ToadsTurnpike>());
-    Course* kalimari      = gWorldInstance.AddCourse(std::make_unique<KalimariDesert>());
-    Course* sherbet       = gWorldInstance.AddCourse(std::make_unique<SherbetLand>());
-    Course* rainbow       = gWorldInstance.AddCourse(std::make_unique<RainbowRoad>());
-    Course* wario         = gWorldInstance.AddCourse(std::make_unique<WarioStadium>());
-    Course* block         = gWorldInstance.AddCourse(std::make_unique<BlockFort>());
-    Course* skyscraper    = gWorldInstance.AddCourse(std::make_unique<Skyscraper>());
-    Course* doubleDeck    = gWorldInstance.AddCourse(std::make_unique<DoubleDeck>());
-    Course* dkJungle      = gWorldInstance.AddCourse(std::make_unique<DKJungle>());
-    Course* bigDonut      = gWorldInstance.AddCourse(std::make_unique<BigDonut>());
-//    Course* harbour       = gWorldInstance.AddCourse(std::make_unique<Harbour>());
-    Course* testCourse    = gWorldInstance.AddCourse(std::make_unique<TestCourse>());
+    std::shared_ptr<Course> mario         = gWorldInstance.AddCourse(std::make_shared<MarioRaceway>());
+    std::shared_ptr<Course> choco         = gWorldInstance.AddCourse(std::make_shared<ChocoMountain>());
+    std::shared_ptr<Course> bowser        = gWorldInstance.AddCourse(std::make_shared<BowsersCastle>());
+    std::shared_ptr<Course> banshee       = gWorldInstance.AddCourse(std::make_shared<BansheeBoardwalk>());
+    std::shared_ptr<Course> yoshi         = gWorldInstance.AddCourse(std::make_shared<YoshiValley>());
+    std::shared_ptr<Course> frappe        = gWorldInstance.AddCourse(std::make_shared<FrappeSnowland>());
+    std::shared_ptr<Course> koopa         = gWorldInstance.AddCourse(std::make_shared<KoopaTroopaBeach>());
+    std::shared_ptr<Course> royal         = gWorldInstance.AddCourse(std::make_shared<RoyalRaceway>());
+    std::shared_ptr<Course> luigi         = gWorldInstance.AddCourse(std::make_shared<LuigiRaceway>());
+    std::shared_ptr<Course> mooMoo        = gWorldInstance.AddCourse(std::make_shared<MooMooFarm>());
+    std::shared_ptr<Course> toads         = gWorldInstance.AddCourse(std::make_shared<ToadsTurnpike>());
+    std::shared_ptr<Course> kalimari      = gWorldInstance.AddCourse(std::make_shared<KalimariDesert>());
+    std::shared_ptr<Course> sherbet       = gWorldInstance.AddCourse(std::make_shared<SherbetLand>());
+    std::shared_ptr<Course> rainbow       = gWorldInstance.AddCourse(std::make_shared<RainbowRoad>());
+    std::shared_ptr<Course> wario         = gWorldInstance.AddCourse(std::make_shared<WarioStadium>());
+    std::shared_ptr<Course> block         = gWorldInstance.AddCourse(std::make_shared<BlockFort>());
+    std::shared_ptr<Course> skyscraper    = gWorldInstance.AddCourse(std::make_shared<Skyscraper>());
+    std::shared_ptr<Course> doubleDeck    = gWorldInstance.AddCourse(std::make_shared<DoubleDeck>());
+    std::shared_ptr<Course> dkJungle      = gWorldInstance.AddCourse(std::make_shared<DKJungle>());
+    std::shared_ptr<Course> bigDonut      = gWorldInstance.AddCourse(std::make_shared<BigDonut>());
+//    std::shared_ptr<Course> harbour       = gWorldInstance.AddCourse(std::make_shared<Harbour>());
+    std::shared_ptr<Course> testCourse    = gWorldInstance.AddCourse(std::make_shared<TestCourse>());
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
@@ -253,7 +257,7 @@ void SetCourseById(s32 course) {
         return;
     }
     gWorldInstance.CourseIndex = course;
-    gWorldInstance.CurrentCourse = gWorldInstance.Courses[gWorldInstance.CourseIndex].get();
+    gWorldInstance.CurrentCourse = gWorldInstance.Courses[gWorldInstance.CourseIndex];
 }
 
 void CM_VehicleCollision(s32 playerId, Player* player) {
@@ -368,7 +372,7 @@ void CM_DrawStaticMeshActors() {
 }
 
 void CM_BeginPlay() {
-    Course* course = gWorldInstance.CurrentCourse;
+    auto course = gWorldInstance.CurrentCourse;
 
     if (course) {
         // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
@@ -599,7 +603,7 @@ void SetCourseFromCup() {
 }
 
 void* GetCourse(void) {
-    return gWorldInstance.CurrentCourse;
+    return gWorldInstance.CurrentCourse.get();
 }
 
 struct Actor* CM_GetActor(size_t index) {
@@ -654,6 +658,11 @@ void CM_CleanWorld(void) {
         delete actor;
     }
 
+    for (size_t i = 0; i < ARRAY_COUNT(gWorldInstance.playerBombKart); i++) {
+        gWorldInstance.playerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        gWorldInstance.playerBombKart[i]._primAlpha = 0;
+    }
+
     gEditor.ClearObjects();
     gWorldInstance.Actors.clear();
     gWorldInstance.StaticMeshActors.clear();
@@ -699,27 +708,27 @@ f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
 }
 
 // clang-format off
-bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsBlockFort()        { return dynamic_cast<BlockFort*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.CurrentCourse) != nullptr; }
-bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.CurrentCourse) != nullptr; }
+bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsBlockFort()        { return dynamic_cast<BlockFort*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
+bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.CurrentCourse.get()) != nullptr; }
 
 void SelectMarioRaceway()       { gWorldInstance.SetCourseByType<MarioRaceway>(); }
 void SelectLuigiRaceway()       { gWorldInstance.SetCourseByType<LuigiRaceway>(); }
@@ -741,7 +750,7 @@ void SelectSkyscraper()         { gWorldInstance.SetCourseByType<Skyscraper>(); 
 void SelectDoubleDeck()         { gWorldInstance.SetCourseByType<DoubleDeck>(); }
 void SelectDkJungle()           { gWorldInstance.SetCourseByType<DKJungle>(); }
 void SelectBigDonut()           { gWorldInstance.SetCourseByType<BigDonut>(); }
-void SelectPodiumCeremony()     { gWorldInstance.CurrentCourse = gPodiumCeremony.get(); }
+void SelectPodiumCeremony()     { gWorldInstance.CurrentCourse = gPodiumCeremony; }
 // clang-format on
 
 void* GetMushroomCup(void) {
@@ -788,6 +797,10 @@ extern "C"
 #endif
     int
     main(int argc, char* argv[]) {
+#endif
+#ifdef _WIN32
+    // Allow non-ascii characters for Windows
+    setlocale(LC_ALL, ".UTF8");
 #endif
     // load_wasm();
     GameEngine::Create();

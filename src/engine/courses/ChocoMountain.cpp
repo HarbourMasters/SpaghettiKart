@@ -64,7 +64,7 @@ ChocoMountain::ChocoMountain() {
     this->gfx = d_course_choco_mountain_packed_dls;
     this->gfxSize = 2910;
     Props.textures = choco_mountain_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineChocoMountain;
+    Props.Minimap.Texture = minimap_choco_mountain;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 265;
@@ -74,6 +74,7 @@ ChocoMountain::ChocoMountain() {
     Props.Minimap.PlayerScaleFactor = 0.022f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = -16.0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:choco_mountain";
     Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
@@ -134,6 +135,9 @@ ChocoMountain::ChocoMountain() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_CHOCO_MOUNTAIN;
 
     Props.WaterLevel = -80.0f;
+    for (size_t i = 0; i < 96; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) choco_mountain_dls[i], Props.textures);
+    }
 }
 
 void ChocoMountain::Load() {

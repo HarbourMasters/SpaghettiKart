@@ -209,7 +209,6 @@ extern s32 D_80283FF4;
 extern f32 D_802856B0;
 extern f32 D_802856B4;
 extern f32 gOrderedSizeSlidingBorders;
-extern f32 D_802856BC;
 extern f32 gSizeSlidingBorders;
 extern s32 D_802856C4;
 extern s32 D_802856C8[]; // padding?

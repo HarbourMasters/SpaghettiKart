@@ -384,7 +384,7 @@ void OMole::func_80054F04(s32 cameraId) {
     Camera* camera = &camera1[cameraId];
 
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
-    load_texture_block_rgba16_mirror((u8*) LOAD_ASSET_RAW(d_course_moo_moo_farm_mole_dirt), 0x00000010, 0x00000010);
+    load_texture_block_rgba16_mirror((u8*) d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
 
     if (_idx == 0) {
         for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {

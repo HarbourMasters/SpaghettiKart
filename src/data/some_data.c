@@ -3,157 +3,159 @@
 #include <assets/other_textures.h>
 #include "some_data.h"
 
-Vtx D_800E49C0[] = {
+// Values below are altered so that the whole kart texture may be rendered as one texture instead of two half.
+
+Vtx gPlayerOneVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E4AC0[] = {
+Vtx gPlayerTwoVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E4BC0[] = {
+Vtx gPlayerThreeVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E4CC0[] = {
+Vtx gPlayerFourVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E4DC0[] = {
+Vtx gPlayerFiveVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E4EC0[] = {
+Vtx gPlayerSixVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0x60 } } },
 };
 
-Vtx D_800E4FD0[] = {
+Vtx gPlayerSevenVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
-Vtx D_800E50D0[] = {
+Vtx gPlayerEightVtx[] = {
     { { { 9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 18, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
     { { { -9, 18, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 9, -6 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { 9, 0, -6 }, 0, { 0, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 0, -6 }, 0, { 4032, 1792 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
-    { { { -9, 9, -6 }, 0, { 4032, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 9, -6 }, 0, { 0, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { 9, 0, -6 }, 0, { 0, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 0, -6 }, 0, { 4032, 3776 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
+    { { { -9, 9, -6 }, 0, { 4032, 1984 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },
 };
 
 Vtx D_800E51D0[] = {
@@ -192,13 +194,11 @@ Vtx gBalloonVertexPlane2[] = {
 // };
 
 u8* gCourseOutlineTextures[] = {
-    gTextureCourseOutlineMarioRaceway,     gTextureCourseOutlineChocoMountain, gTextureCourseOutlineBowsersCastle,
-    gTextureCourseOutlineBansheeBoardwalk, gTextureCourseOutlineYoshiValley,   gTextureCourseOutlineFrappeSnowland,
-    gTextureCourseOutlineKoopaTroopaBeach, gTextureCourseOutlineRoyalRaceway,  gTextureCourseOutlineLuigiRaceway,
-    gTextureCourseOutlineMooMooFarm,       gTextureCourseOutlineToadsTurnpike, gTextureCourseOutlineKalimariDesert,
-    gTextureCourseOutlineSherbetLand,      gTextureCourseOutlineRainbowRoad,   gTextureCourseOutlineWarioStadium,
-    gTextureCourseOutlineBlockFort,        gTextureCourseOutlineSkyscraper,    gTextureCourseOutlineDoubleDeck,
-    gTextureCourseOutlineDksJungleParkway, gTextureCourseOutlineBigDonut,
+    minimap_mario_raceway, minimap_choco_mountain,  minimap_bowsers_castle,     minimap_banshee_boardwalk,
+    minimap_yoshi_valley,  minimap_frappe_snowland, minimap_koopa_troopa_beach, minimap_royal_raceway,
+    minimap_luigi_raceway, minimap_moo_moo_farm,    minimap_toads_turnpike,     minimap_kalimari_desert,
+    minimap_sherbet_land,  minimap_rainbow_road,    minimap_wario_stadium,      minimap_block_fort,
+    minimap_skyscraper,    minimap_double_deck,     minimap_dks_jungle_parkway, minimap_big_donut,
 };
 
 s16 D_800E5520[] = {
@@ -522,7 +522,8 @@ SplineData D_800E5D78 = {
 
 // Note the use of the plain SplineData type here. Since these are pointers, we don't care
 // about their internal array size
-SplineData* D_800E5D9C[] = { &D_800E5988, &D_800E5A44, &D_800E5B08, &D_800E5BD4, &D_800E5C90, &boo6, &boo7, &boo8, &boo9, &boo10 };
+SplineData* D_800E5D9C[] = { &D_800E5988, &D_800E5A44, &D_800E5B08, &D_800E5BD4, &D_800E5C90,
+                             &boo6,       &boo7,       &boo8,       &boo9,       &boo10 };
 
 // Unused
 SplineData* D_800E5DB0 = &D_800E5988;

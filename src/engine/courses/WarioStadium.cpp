@@ -66,7 +66,7 @@ WarioStadium::WarioStadium() {
     this->gfx = d_course_wario_stadium_packed_dls;
     this->gfxSize = 5272;
     Props.textures = wario_stadium_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineWarioStadium;
+    Props.Minimap.Texture = minimap_wario_stadium;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -76,6 +76,7 @@ WarioStadium::WarioStadium() {
     Props.Minimap.PlayerScaleFactor = 0.0155f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
@@ -140,6 +141,9 @@ WarioStadium::WarioStadium() {
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 0, 0, 0 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    for (size_t i = 0; i < 108; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) wario_stadium_dls[i], Props.textures);
+    }
 }
 
 void WarioStadium::Load() {
@@ -226,27 +230,6 @@ void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 }
 
 void WarioStadium::Jumbotron() {
-    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x7800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x177B0), 32, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gSP2Triangles(gDisplayListHead++, 4, 5, 6, 0, 4, 6, 7, 0);
-    gSP2Triangles(gDisplayListHead++, 8, 9, 10, 0, 8, 10, 11, 0);
-    gSP2Triangles(gDisplayListHead++, 12, 13, 14, 0, 12, 14, 15, 0);
-    gSP2Triangles(gDisplayListHead++, 16, 17, 18, 0, 16, 18, 19, 0);
-    gSP2Triangles(gDisplayListHead++, 20, 21, 22, 0, 20, 22, 23, 0);
-    gSP2Triangles(gDisplayListHead++, 24, 25, 26, 0, 24, 26, 27, 0);
-    gSP2Triangles(gDisplayListHead++, 28, 29, 30, 0, 28, 30, 31, 0);
-    gDPTileSync(gDisplayListHead++);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0,
                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
     gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);

@@ -61,7 +61,7 @@ namespace Editor {
             };
 
             if (ImGui::DragInt3("##Rotation", rot, 5.0f)) {
-                for (int i = 0; i < 3; i++) {
+                for (size_t i = 0; i < 3; i++) {
                     // Wrap around 0–65535
                     rot[i] = (rot[i] % 65536 + 65536) % 65536;
                 }

@@ -18,7 +18,7 @@ void ModelLoader::Load() {
     _hasRan = true;
 
     // Set to track processed courses
-    std::unordered_set<Course*> processedCourses;
+    std::unordered_set<std::shared_ptr<Course>> processedCourses;
 
     for (auto& list : _deferredList) {
         // Check if the course has already been processed
@@ -34,8 +34,8 @@ void ModelLoader::Load() {
     }
 }
 
-void ModelLoader::Extract(Course* course) {
-    Course* saveCourse = gWorldInstance.CurrentCourse;
+void ModelLoader::Extract(std::shared_ptr<Course> course) {
+    std::shared_ptr<Course> saveCourse = gWorldInstance.CurrentCourse;
     gWorldInstance.CurrentCourse = course; // Quick hack so that `get_texture` will find the right textures.
 
     size_t vtxSize = (ResourceGetSizeByName(course->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);

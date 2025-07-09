@@ -300,6 +300,28 @@ jobs:
             yamls
             gamecontrollerdb.txt
 
+  build-linux-docker:
+    needs: generate-port-o2r
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Docker caching
+        uses: ScribeMD/docker-cache@0.5.0
+        id: cache
+        continue-on-error: true
+        with:
+          key: sk-docker-cache-${{ hashFiles('Dockerfile') }}
+      - name: Build docker image
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: docker build . -t spaghetti
+      - name: Confiure
+        run: docker run --rm -v ${PWD}:/project spaghetti cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+      - name: Build spaghetti
+        run: docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config Release -j$(nproc)
+
   build-switch:
     needs: generate-port-o2r
     runs-on: ubuntu-latest

@@ -61,7 +61,7 @@ YoshiValley::YoshiValley() {
     this->gfxSize = 4140;
     Props.textures = yoshi_valley_textures;
 
-    Props.Minimap.Texture = gTextureCourseOutlineYoshiValley;
+    Props.Minimap.Texture = minimap_yoshi_valley;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.PlayerX = 61;
@@ -69,6 +69,7 @@ YoshiValley::YoshiValley() {
     Props.Minimap.PlayerScaleFactor = 0.018f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
@@ -127,6 +128,9 @@ YoshiValley::YoshiValley() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {95, 40, 15};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    for (size_t i = 0; i < 124; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_yoshi_valley_dl_list[i], Props.textures);
+    }
 }
 
 void YoshiValley::Load() {
@@ -140,7 +144,7 @@ void YoshiValley::Load() {
 }
 
 void YoshiValley::LoadTextures() {
-    dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
+    dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U); // 0x03009000
 }
 
 void YoshiValley::BeginPlay() {

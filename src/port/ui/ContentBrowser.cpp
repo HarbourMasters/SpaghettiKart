@@ -136,7 +136,7 @@ namespace Editor {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
                 if (ImGui::Button(label.c_str())) {
                     track.SceneFile = track.Dir + "/scene.json";
-                    gWorldInstance.CurrentCourse = track.invalidTrack.get();
+                    gWorldInstance.CurrentCourse = track.invalidTrack;
                     SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;
@@ -153,7 +153,7 @@ namespace Editor {
         for (auto& track : Tracks) {
             auto it = gWorldInstance.Courses.begin();
             while (it != gWorldInstance.Courses.end()) {
-                if (track.course == it->get()) {
+                if (track.course.get() == it->get()) {
                     it = gWorldInstance.Courses.erase(it);
                 } else {
                     ++it;
@@ -238,11 +238,11 @@ namespace Editor {
                 if (manager->HasFile(sceneFile)) {
                     auto archive = manager->GetArchiveFromFile(sceneFile);
                     
-                    auto course = std::make_unique<Course>();
+                    auto course = std::make_shared<Course>();
                     course->LoadO2R(dir);
                     LoadLevel(archive, course.get(), sceneFile);
                     LoadMinimap(archive, course.get(), minimapFile);
-                    Tracks.push_back({nullptr, course.get(), sceneFile, name, dir, archive});
+                    Tracks.push_back({nullptr, course, sceneFile, name, dir, archive});
                     gWorldInstance.Courses.push_back(std::move(course));
                 } else { // The track does not have a valid scene file
                     const std::string file = dir + "/data_track_sections";
@@ -252,12 +252,12 @@ namespace Editor {
                     // So lets add it as an uninitialized track.
                     if (manager->HasFile(file)) {
 
-                        auto course = std::make_unique<Course>();
+                        auto course = std::make_shared<Course>();
                         course->Id = (std::string("mods:") + name).c_str();
                         course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
                         course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
                         auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({std::move(course), nullptr, "", name, dir, archive});
+                        Tracks.push_back({course, nullptr, "", name, dir, archive});
                     } else {
                         printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
                     }

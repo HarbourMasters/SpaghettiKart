@@ -480,6 +480,7 @@ gTextureThwompFace1:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 gTextureThwompFace2:
   symbol: gTextureThwompFace2
   type: texture
@@ -488,6 +489,7 @@ gTextureThwompFace2:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 gTextureThwompFace3:
   symbol: gTextureThwompFace3
   type: texture
@@ -496,6 +498,7 @@ gTextureThwompFace3:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 gTextureThwompFace4:
   symbol: gTextureThwompFace4
   type: texture
@@ -504,6 +507,7 @@ gTextureThwompFace4:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 gTextureThwompFace5:
   symbol: gTextureThwompFace5
   type: texture
@@ -512,6 +516,7 @@ gTextureThwompFace5:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 gTextureThwompFace6:
   symbol: gTextureThwompFace6
   type: texture
@@ -520,6 +525,7 @@ gTextureThwompFace6:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_bowsers_castle_thwomp_tlut
 d_course_bowsers_castle_thwomp_model1:
   symbol: d_course_bowsers_castle_thwomp_model1
   type: vtx

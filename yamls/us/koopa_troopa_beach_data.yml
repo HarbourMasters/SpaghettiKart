@@ -1242,6 +1242,7 @@ gTextureCrab1:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab2:
   symbol: gTextureCrab2
   type: texture
@@ -1250,6 +1251,7 @@ gTextureCrab2:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab3:
   symbol: gTextureCrab3
   type: texture
@@ -1258,6 +1260,7 @@ gTextureCrab3:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab4:
   symbol: gTextureCrab4
   type: texture
@@ -1266,6 +1269,7 @@ gTextureCrab4:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab5:
   symbol: gTextureCrab5
   type: texture
@@ -1274,6 +1278,7 @@ gTextureCrab5:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab6:
   symbol: gTextureCrab6
   type: texture
@@ -1282,6 +1287,7 @@ gTextureCrab6:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 gTextureCrab7:
   symbol: gTextureCrab7
   type: texture
@@ -1290,6 +1296,7 @@ gTextureCrab7:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
 d_course_koopa_troopa_beach_light1:
   symbol: d_course_koopa_troopa_beach_light1
   type: lights

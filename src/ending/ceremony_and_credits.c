@@ -28,7 +28,7 @@
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
 f32 gOrderedSizeSlidingBorders = 52.0f;
-f32 D_802856BC = 52.0f;
+static const f32 D_802856BC = 52.0f;
 f32 gSizeSlidingBorders = 0.0f;
 s32 D_802856C4 = 0;
 

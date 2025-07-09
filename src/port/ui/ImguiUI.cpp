@@ -28,7 +28,7 @@ extern s32 gMenuSelection;
 }
 
 namespace GameUI {
-std::shared_ptr<GameMenuBar> mGameMenuBar;
+// std::shared_ptr<GameMenuBar> mGameMenuBar;
 std::shared_ptr<PortMenu> mPortMenu;
 std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
@@ -44,8 +44,8 @@ std::shared_ptr<Ship::GuiWindow> mContentBrowserWindow;
 void SetupGuiElements() {
     auto gui = Ship::Context::GetInstance()->GetWindow()->GetGui();
 
-    mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
-    gui->SetMenuBar(mGameMenuBar);
+    // mGameMenuBar = std::make_shared<GameMenuBar>("gOpenMenuBar", CVarGetInteger("gOpenMenuBar", 0));
+    // gui->SetMenuBar(mGameMenuBar);
 
     mPortMenu = std::make_shared<PortMenu>("gOpenMenu", "Port Menu");
     gui->SetMenu(mPortMenu);

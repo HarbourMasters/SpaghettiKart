@@ -69,7 +69,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
     this->gfx = d_course_banshee_boardwalk_packed_dls;
     this->gfxSize = 3689;
     Props.textures = banshee_boardwalk_textures;
-    Props.Minimap.Texture = gTextureCourseOutlineBansheeBoardwalk;
+    Props.Minimap.Texture = minimap_banshee_boardwalk;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
     Props.Minimap.Pos[0].X = 262;
@@ -79,6 +79,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.Minimap.PlayerScaleFactor = 0.016f;
     Props.Minimap.FinishlineX = 0;
     Props.Minimap.FinishlineY = 0;
+    ResizeMinimap(&Props.Minimap);
 
     Id = "mk:banshee_boardwalk";
 
@@ -140,6 +141,9 @@ BansheeBoardwalk::BansheeBoardwalk() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_BANSHEE_BOARDWALK;
 
     Props.WaterLevel = -80.0f;
+    for (size_t i = 0; i < 100; i++) {
+        replace_segmented_textures_with_o2r_textures((Gfx*) banshee_boardwalk_dls[i], Props.textures);
+    }
 }
 
 void BansheeBoardwalk::Load() {

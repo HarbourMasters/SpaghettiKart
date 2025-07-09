@@ -24,6 +24,9 @@
 #include <string.h>
 #include "port/Game.h"
 
+// For init podium ceremony
+#include "ceremony_and_credits.h"
+
 #define bcopy memcpy
 
 u8 defaultCharacterIds[] = { 1, 2, 3, 4, 5, 6, 7, 0 };
@@ -91,6 +94,8 @@ void func_802818BC(void) {
 
 void setup_podium_ceremony(void) {
     Camera* camera = &cameras[0];
+
+    clear_podium_actors();
 
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     SelectPodiumCeremony();

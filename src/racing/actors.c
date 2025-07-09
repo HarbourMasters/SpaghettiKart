@@ -38,8 +38,18 @@
 
 // Appears to be textures
 // or tluts
-u8* D_802BA050;
-u8* D_802BA054;
+char* texture_green_shell[] = {
+    texture_green_shell_0, texture_green_shell_1, texture_green_shell_2, texture_green_shell_3,
+    texture_green_shell_4, texture_green_shell_5, texture_green_shell_6, texture_green_shell_7,
+};
+char* gTextureBlueshell[] = {
+    texture_blue_shell_0, texture_blue_shell_1, texture_blue_shell_2, texture_blue_shell_3,
+    texture_blue_shell_4, texture_blue_shell_5, texture_blue_shell_6, texture_blue_shell_7,
+};
+char* texture_red_shell[] = {
+    texture_red_shell_0, texture_red_shell_1, texture_red_shell_2, texture_red_shell_3,
+    texture_red_shell_4, texture_red_shell_5, texture_red_shell_6, texture_red_shell_7,
+};
 u8* D_802BA058;
 
 struct Actor* gActorHotAirBalloonItemBox;
@@ -410,18 +420,18 @@ void func_80297760(struct Actor* arg0, Vec3f arg1) {
     arg1[1] = calculate_surface_height(arg1[0], arg1[1], arg1[2], arg0->unk30.meshIndexZX);
 }
 
-void func_802977B0(Player* arg0) {
-    arg0->tyres[FRONT_RIGHT].unk_14 |= 2;
-    arg0->tyres[FRONT_LEFT].unk_14 |= 2;
-    arg0->tyres[BACK_RIGHT].unk_14 |= 2;
-    arg0->tyres[BACK_LEFT].unk_14 |= 2;
+void func_802977B0(Player* player) {
+    player->tyres[FRONT_RIGHT].unk_14 |= 2;
+    player->tyres[FRONT_LEFT].unk_14 |= 2;
+    player->tyres[BACK_RIGHT].unk_14 |= 2;
+    player->tyres[BACK_LEFT].unk_14 |= 2;
 }
 
-void func_802977E4(Player* arg0) {
-    arg0->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
-    arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
+void func_802977E4(Player* player) {
+    player->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    player->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Generate the red shell tlut by invert green the green one
@@ -716,15 +726,9 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
 #include "actors/kiwano_fruit/render.inc.c"
 
 void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
-    UNUSED s16 pad;
-    u16 temp_t8;
-    UNUSED s32 pad2;
-    s16 sp58[15] = // D_802B87E8;
-        { 0x0000, 0x0400, 0x0800, 0x0c00, 0x1000, 0x1400, 0x1800, 0x1c00,
-          0x1c00, 0x1800, 0x1400, 0x1000, 0x0c00, 0x0800, 0x0400 };
-    //! @todo Is this making the shell spin?
-    // Is it doing this by modifying a an address?
-    uintptr_t phi_t3;
+    u16 index;
+    char* phi_t3;
+    bool reverseShell = false;
 
     // @port: Tag the transform.
     FrameInterpolation_RecordOpenChild("Shell", TAG_ITEM_ADDR(shell));
@@ -744,13 +748,24 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     if (temp_f0 < 40000.0f) {
         func_802979F8((struct Actor*) shell, 3.4f);
     }
-    if (shell->type == ACTOR_BLUE_SPINY_SHELL) {
-        phi_t3 = (uintptr_t) D_802BA054;
-    } else {
-        phi_t3 = (uintptr_t) D_802BA050;
+
+    index = (u16) shell->rotVelocity / 4369; // Give a number between 0-15
+    if (index >= 8) {
+        reverseShell = true;
+        index = 15 - index;
     }
-    temp_t8 = (u16) shell->rotVelocity / 4369; // Give a number between 0-15
-    phi_t3 += sp58[temp_t8];                   // Select sprite
+
+    switch (shell->type) {
+        case ACTOR_GREEN_SHELL:
+            phi_t3 = texture_green_shell[index];
+            break;
+        case ACTOR_RED_SHELL:
+            phi_t3 = texture_red_shell[index];
+            break;
+        case ACTOR_BLUE_SPINY_SHELL:
+            phi_t3 = gTextureBlueshell[index];
+            break;
+    }
 
     matrix[3][0] = shell->pos[0];
     matrix[3][1] = (shell->pos[1] - shell->boundingBoxSize) + 1.0f;
@@ -765,7 +780,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
 
-    if (temp_t8 < 8) { // Reverse shell ?
+    if (reverseShell) { // Reverse shell ?
         gSPDisplayList(gDisplayListHead++, D_0D005338);
     } else {
         gSPDisplayList(gDisplayListHead++, D_0D005368);
@@ -1219,32 +1234,17 @@ void spawn_course_actors(void) {
  */
 void init_actors_and_load_textures(void) {
     set_segment_base_addr_x64(3, (void*) gNextFreeMemoryAddress);
-    D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
-    dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
-    dma_textures(gTextureGreenShell2, 0x00000259U, 0x00000400U);
-    dma_textures(gTextureGreenShell3, 0x00000256U, 0x00000400U);
-    dma_textures(gTextureGreenShell4, 0x00000246U, 0x00000400U);
-    dma_textures(gTextureGreenShell5, 0x0000025EU, 0x00000400U);
-    dma_textures(gTextureGreenShell6, 0x0000025CU, 0x00000400U);
-    dma_textures(gTextureGreenShell7, 0x00000254U, 0x00000400U);
-    D_802BA054 = dma_textures(gTextureBlueShell0, 0x0000022AU, 0x00000400U);
-    dma_textures(gTextureBlueShell1, 0x00000237U, 0x00000400U);
-    dma_textures(gTextureBlueShell2, 0x0000023EU, 0x00000400U);
-    dma_textures(gTextureBlueShell3, 0x00000243U, 0x00000400U);
-    dma_textures(gTextureBlueShell4, 0x00000255U, 0x00000400U);
-    dma_textures(gTextureBlueShell5, 0x00000259U, 0x00000400U);
-    dma_textures(gTextureBlueShell6, 0x00000239U, 0x00000400U);
-    dma_textures(gTextureBlueShell7, 0x00000236U, 0x00000400U);
-    dma_textures(gTextureFinishLineBanner1, 0x0000028EU, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner2, 0x000002FBU, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner3, 0x00000302U, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner4, 0x000003B4U, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner5, 0x0000031EU, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner6, 0x0000036EU, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner7, 0x0000029CU, 0x00000800U);
-    dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
-    dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
-    dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
+    allocate_memory(0x400 * 16);
+    dma_textures(gTextureFinishLineBanner1, 0x0000028EU, 0x00000800U); // 0x03004000
+    dma_textures(gTextureFinishLineBanner2, 0x000002FBU, 0x00000800U); // 0x03004800
+    dma_textures(gTextureFinishLineBanner3, 0x00000302U, 0x00000800U); // 0x03005000
+    dma_textures(gTextureFinishLineBanner4, 0x000003B4U, 0x00000800U); // 0x03005800
+    dma_textures(gTextureFinishLineBanner5, 0x0000031EU, 0x00000800U); // 0x03006000
+    dma_textures(gTextureFinishLineBanner6, 0x0000036EU, 0x00000800U); // 0x03006800
+    dma_textures(gTextureFinishLineBanner7, 0x0000029CU, 0x00000800U); // 0x03007000
+    dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U); // 0x03007800
+    dma_textures(gTexture671A88, 0x00000400U, 0x00000800U); // 0x03008000
+    dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U); // 0x03008800
 
     CM_LoadTextures();
 
@@ -1740,29 +1740,29 @@ bool collision_tree(Player* player, struct Actor* actor) {
     return true;
 }
 
-bool query_collision_player_vs_actor_item(Player* arg0, struct Actor* arg1) {
+bool query_collision_player_vs_actor_item(Player* player, struct Actor* arg1) {
     f32 temp_f0;
     f32 dist;
     f32 yDist;
     f32 zDist;
     f32 xDist;
 
-    temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
-    xDist = arg1->pos[0] - arg0->pos[0];
+    temp_f0 = player->boundingBoxSize + arg1->boundingBoxSize;
+    xDist = arg1->pos[0] - player->pos[0];
     if (temp_f0 < xDist) {
         return NO_COLLISION;
     }
     if (xDist < -temp_f0) {
         return NO_COLLISION;
     }
-    yDist = arg1->pos[1] - arg0->pos[1];
+    yDist = arg1->pos[1] - player->pos[1];
     if (temp_f0 < yDist) {
         return NO_COLLISION;
     }
     if (yDist < -temp_f0) {
         return NO_COLLISION;
     }
-    zDist = arg1->pos[2] - arg0->pos[2];
+    zDist = arg1->pos[2] - player->pos[2];
     if (temp_f0 < zDist) {
         return NO_COLLISION;
     }

@@ -4,7 +4,6 @@
 #include <vector>
 #include "CoreMath.h"
 
-
 #include "port/Game.h"
 
 extern "C" {
@@ -55,19 +54,29 @@ void OCrab::Tick(void) {
     }
 }
 
+Vtx common_vtx_crab[] = {
+    { { { -32, -31, 0 }, 0, { 0, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, -31, 0 }, 0, { 4032, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, 31, 0 }, 0, { 4032, 3968 }, { 255, 255, 255, 255 } } },
+    { { { -32, 31, 0 }, 0, { 0, 3968 }, { 255, 255, 255, 255 } } },
+};
+
 void OCrab::Draw(s32 cameraId) {
     Camera* camera;
     s32 objectIndex = _objectIndex;
     if (gObjectList[objectIndex].state >= 2) {
-        Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         gObjectList[objectIndex].orientation[1] =
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
-                           gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                           (uint8_t*)gObjectList[objectIndex].activeTexture, vtx, 64, 64,
-                           64, 32);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
+                                      gObjectList[objectIndex].sizeScaling);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
+        gDPLoadTLUT_pal256(gDisplayListHead++, gObjectList[objectIndex].activeTLUT);
+        rsp_load_texture((u8*) gObjectList[objectIndex].activeTexture, 64, 64);
+        gSPVertex(gDisplayListHead++, (uintptr_t) common_vtx_crab, 4, 0);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+        gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     }
 }
 
@@ -76,14 +85,22 @@ void OCrab::DrawModel(s32 cameraId) {
     s32 objectIndex = _objectIndex;
     func_8008A364(objectIndex, cameraId, 0x2AABU, 800);
     if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
-        Camera *camera;
+        Camera* camera;
         s32 objectIndex;
 
         if (gObjectList[objectIndex].state >= 2) {
             camera = &camera1[cameraId];
             func_8004A6EC(objectIndex, 0.5f);
-            gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-            draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT, (u8*)gObjectList[objectIndex].activeTexture, (Vtx*)common_vtx_hedgehog, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+            gObjectList[objectIndex].orientation[1] =
+                func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
+                                          gObjectList[objectIndex].sizeScaling);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
+            gDPLoadTLUT_pal256(gDisplayListHead++, gObjectList[objectIndex].activeTLUT);
+            rsp_load_texture((u8*) gObjectList[objectIndex].activeTexture, 64, 64);
+            gSPVertex(gDisplayListHead++, (uintptr_t) common_vtx_crab, 4, 0);
+            gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+            gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
         }
     }
 }

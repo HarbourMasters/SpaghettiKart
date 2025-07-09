@@ -1,7 +1,7 @@
 #include "Cup.h"
 #include "courses/Course.h"
 
-Cup::Cup(std::string id, const char* name, std::vector<Course*> courses) {
+Cup::Cup(std::string id, const char* name, std::vector<std::shared_ptr<Course>> courses) {
     Id = id;
     Name = name;
     Courses = courses;
@@ -30,7 +30,7 @@ void Cup::SetCourse(size_t position) {
     CursorPosition = position;
 }
 
-Course* Cup::GetCourse() {
+std::shared_ptr<Course> Cup::GetCourse() {
     return Courses[CursorPosition];
 }
 
