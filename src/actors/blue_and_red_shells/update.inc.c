@@ -264,23 +264,26 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 shell->pos[1] = pad7;
             }
 
+            //! @bug commented out code results in cpus controlling player1 items and other glitches
+            // According to other code, this whole chunk should not be ran by CPUs
             if ((player->type & PLAYER_HUMAN) != 0) {
                 if (gDemoMode) {
                     controller = gControllerOne;
                 } else {
                     controller = &gControllers[shell->playerId];
                 }
-            } else {
-                controller = gControllerOne;
-            }
-
-            if ((controller->buttonDepressed & Z_TRIG) != 0) {
-                controller->buttonDepressed &= ~Z_TRIG;
-                shell->state = RELEASED_SHELL;
-                if (player->unk_0C0 > 0) {
-                    shell->rotAngle = 0x78E3;
-                } else {
-                    shell->rotAngle = -0x78E4;
+            // } else {
+            //     controller = gControllerOne;
+            // }
+    
+                if ((controller->buttonDepressed & Z_TRIG) != 0) {
+                    controller->buttonDepressed &= ~Z_TRIG;
+                    shell->state = RELEASED_SHELL;
+                    if (player->unk_0C0 > 0) {
+                        shell->rotAngle = 0x78E3;
+                    } else {
+                        shell->rotAngle = -0x78E4;
+                    }
                 }
             }
             break;
@@ -290,9 +293,12 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 shell->rotAngle -= 0x71C;
                 if (shell->rotAngle < 0) {
                     shell->state = MOVING_SHELL;
-                    func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
-                    func_800C90F4(shell->playerId,
-                                  (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    // Added condition so that CPUs do not make sound on item-use
+                    if ((gPlayers[shell->playerId].type & PLAYER_HUMAN) != 0) {
+                        func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                        func_800C90F4(shell->playerId,
+                                      (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    }
                     if (pad13 == ACTOR_RED_SHELL) {
                         add_red_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                     } else {
@@ -304,9 +310,12 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                 shell->rotAngle += 0x71C;
                 if (shell->rotAngle > 0) {
                     shell->state = MOVING_SHELL;
-                    func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
-                    func_800C90F4(shell->playerId,
-                                  (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    // Added condition so that CPUs do not make sound on item-use
+                    if ((gPlayers[shell->playerId].type & PLAYER_HUMAN) != 0) {
+                        func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                        func_800C90F4(shell->playerId,
+                                      (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    }
                     if (pad13 == ACTOR_RED_SHELL) {
                         add_red_shell_in_unexpired_actor_list(CM_FindActorIndex(shell));
                     } else {
