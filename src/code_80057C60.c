@@ -1322,7 +1322,7 @@ void func_80059D00(void) {
                     }
                     func_80078C70(0);
                     if (playerHUD[PLAYER_ONE].raceCompleteBool == 0) {
-                        func_8005C360((gPlayerOneCopy->speed / 18.0f) * 216.0f);
+                        func_8005C360((gPlayerOne->speed / 18.0f) * 216.0f);
                     }
                     func_8005D0FC(PLAYER_ONE);
                 } else {

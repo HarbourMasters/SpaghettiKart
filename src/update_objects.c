@@ -205,7 +205,7 @@ void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
             ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
-            D_80162DF8 = 1;
+            gPostTimeTrialReplayCannotSave = 1;
         }
     }
 }
@@ -756,7 +756,10 @@ void update_neon_texture(s32 objectIndex) {
     // I have no idea why this typecast works
     gObjectList[objectIndex].activeTLUT =
         (u8*) ((u32*) gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].textureListIndex * 128));
-    gObjectList[objectIndex].activeTexture = gObjectList[objectIndex].textureList;
+    int idx = gObjectList[objectIndex].textureListIndex;
+    char* texture = gObjectList[objectIndex].textureList[idx];
+    gObjectList[objectIndex].activeTexture =
+        gObjectList[objectIndex].textureList[gObjectList[objectIndex].textureListIndex];
 }
 
 void func_80073514(s32 objectIndex) {
@@ -2349,13 +2352,13 @@ void func_80078288(s32 objectIndex) {
             break;
         case 1:
             if (gGamestate != 9) {
-                sp3A = ((gPlayerOneCopy->speed / 18) * 216) / 2;
+                sp3A = ((gPlayerOne->speed / 18) * 216) / 2;
                 sp3E = (random_int(0x000FU) - sp3A) + 0x2D;
                 sp3C = random_int(0x012CU) + 0x1E;
                 temp_t6 = camera1->rot[1] + ((s32) (random_int(0x3000U) - 0x1800) / (s16) ((sp3A / 15) + 1));
-                gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(temp_t6) * sp3C);
-                gObjectList[objectIndex].origin_pos[1] = sp3E + gPlayerOneCopy->unk_074;
-                gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(temp_t6) * sp3C);
+                gObjectList[objectIndex].origin_pos[0] = gPlayerOne->pos[0] + (sins(temp_t6) * sp3C);
+                gObjectList[objectIndex].origin_pos[1] = sp3E + gPlayerOne->unk_074;
+                gObjectList[objectIndex].origin_pos[2] = gPlayerOne->pos[2] + (coss(temp_t6) * sp3C);
                 gObjectList[objectIndex].unk_0C4 = random_int(0x0400U) + 0x100;
                 gObjectList[objectIndex].unk_01C[0] = (f32) (((f32) random_int(0x0064U) * 0.03) + 2.0);
                 gObjectList[objectIndex].velocity[1] = (f32) (-0.3 - (f64) (f32) (random_int(0x0032U) * 0.01));
@@ -3259,10 +3262,10 @@ void verify_probability_table(char* str, const ItemProbabilities* probs, int16_t
     getProbabilityArray(probs, itemProbabilities);
     size_t count = 0;
     for (size_t i = 0; i < ITEM_MAX; i++) {
-        //printf("prob %d ", itemProbabilities[i]);
+        // printf("prob %d ", itemProbabilities[i]);
         count += itemProbabilities[i];
     }
-    //printf("\n");
+    // printf("\n");
 
     if (count != 100) {
         printf("update_objects.c::verify_probability_table\n  %s table for rank %d is imba %d/100\n", str, rank, count);
@@ -3289,7 +3292,7 @@ u8 gen_random_item(s16 rank, s16 option) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            switch(option) {
+            switch (option) {
                 case HUMAN_TABLE:
                     distributionTable = &grandPrixHumanProbabilityTable[rank];
                     verify_probability_table("Human", distributionTable, rank);
@@ -4099,14 +4102,16 @@ void func_80085BB4(s32 objectIndex) {
     object_next_state(objectIndex);
 }
 
-const char* sNeonMushroomList[] = { d_course_rainbow_road_neon_mushroom };
+const char* sNeonMushroomList[] = { d_course_rainbow_road_neon_mushroom1, d_course_rainbow_road_neon_mushroom2,
+                                    d_course_rainbow_road_neon_mushroom3, d_course_rainbow_road_neon_mushroom4,
+                                    d_course_rainbow_road_neon_mushroom5 };
 
 void init_obj_neon_mushroom(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -1431.0, 827.0f, -2957.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_mushroom_tlut_list,
                                              ARRAY_COUNT(d_course_rainbow_road_neon_mushroom_tlut_list)),
-                        d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
+                        sNeonMushroomList, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -4142,14 +4147,16 @@ void func_80085CA0(s32 objectIndex) {
     }
 }
 
-const char* sNeonList[] = { d_course_rainbow_road_neon_mario };
+const char* sNeonMarioList[] = { d_course_rainbow_road_neon_mario1, d_course_rainbow_road_neon_mario2,
+                            d_course_rainbow_road_neon_mario3, d_course_rainbow_road_neon_mario4,
+                            d_course_rainbow_road_neon_mario5 };
 
 void func_80085DB8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * 799.0, 1193.0f, -5891.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_mario_tlut_list,
                                              ARRAY_COUNT(d_course_rainbow_road_neon_mario_tlut_list)),
-                        d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
+                        sNeonMarioList, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -4176,14 +4183,16 @@ void func_80085E38(s32 objectIndex) {
     }
 }
 
-const char* sNeonBooList[] = { d_course_rainbow_road_neon_boo };
+const char* sNeonBooList[] = { d_course_rainbow_road_neon_boo1, d_course_rainbow_road_neon_boo2,
+                               d_course_rainbow_road_neon_boo3, d_course_rainbow_road_neon_boo4,
+                               d_course_rainbow_road_neon_boo5 };
 
 void func_80085EF8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -2013.0, 555.0f, 0.0f);
     init_texture_object(objectIndex,
                         load_lakitu_tlut_x64(d_course_rainbow_road_neon_boo_tlut_list,
                                              ARRAY_COUNT(d_course_rainbow_road_neon_boo_tlut_list)),
-                        d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
+                        sNeonBooList, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -4229,7 +4238,7 @@ void func_80085F74(s32 objectIndex) {
 void func_80086074(s32 objectIndex, s32 arg1) {
     set_obj_origin_pos(objectIndex, D_800E6734[arg1][0] * xOrientation, D_800E6734[arg1][1], D_800E6734[arg1][2]);
     init_texture_object(objectIndex, d_course_rainbow_road_static_tluts[arg1],
-                        d_course_rainbow_road_static_textures[arg1], 64, 64);
+                        &d_course_rainbow_road_static_textures[arg1], 64, 64);
     func_80085BB4(objectIndex);
 }
 #else

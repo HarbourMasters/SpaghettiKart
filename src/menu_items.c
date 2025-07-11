@@ -22,7 +22,7 @@
 #include "memory.h"
 #include "audio/external.h"
 #include "render_objects.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include <assets/common_data.h>
 #include "textures.h"
 #include "math_util.h"
@@ -805,10 +805,7 @@ MenuTexture* D_800E7DC4[] = {
 
 // trophy textures
 MkAnimation* D_800E7E14[] = {
-    D_020020BC,
-    D_020020CC,
-    D_020020DC,
-    D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
+    D_020020BC, D_020020CC, D_020020DC, D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
 };
 
 MkAnimation* D_800E7E34[] = {
@@ -2306,8 +2303,8 @@ void print_text2_wide(s32 column, s32 row, char* text, s32 tracking, f32 scaleX,
                 glyphTexture = (MenuTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]);
                 load_menu_img(glyphTexture);
                 gDisplayListHead =
-                    print_letter_wide_right(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
-                                 arg6, scaleX, scaleY);
+                    print_letter_wide_right(gDisplayListHead, glyphTexture,
+                                            column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, scaleX, scaleY);
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
@@ -3029,8 +3026,9 @@ Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4,
 
     displayListHead = AddTextMatrix(displayListHead, mf);
     // gSPMatrix(displayListHead++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5+2, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5 + 2, 0,
+                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                          G_TX_NOLOD);
     switch (arg4) {
         default:
             var_a1 = D_02007CD8;
@@ -3071,8 +3069,9 @@ Gfx* func_80095BD0_wide_right(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3
     displayListHead = AddTextMatrix(displayListHead, mf);
     // gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
     //           G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4-1, arg5-1, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4 - 1, arg5 - 1, 0,
+                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
+                          G_TX_NOLOD);
     switch (arg4) {
         default:
             var_a1 = D_02007CD8;
@@ -3109,8 +3108,8 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
                    s32 srcX, s32 srcY, s32 srcHeight, s32 srcWidth, s32 screenX, s32 screenY, u8* textureData,
                    u32 texWidth, u32 texHeight) {
     gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, texWidth, texHeight, srcX, srcY,
-                       srcX + texWidth-1, srcY + texHeight-1, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 0, 0,
-                       G_TX_NOLOD, G_TX_NOLOD);
+                       srcX + texWidth - 1, srcY + texHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                       G_TX_NOMIRROR | G_TX_WRAP, 0, 0, G_TX_NOLOD, G_TX_NOLOD);
     f32 percentScaleX = 1.0f / ((f32) texScaleS / 1024.0f);
     f32 percentScaleY = 1.0f / ((f32) texScaleT / 1024.0f);
     gSPWideTextureRectangle(displayListHead++, screenX << 2, screenY << 2,
@@ -3305,8 +3304,8 @@ Gfx* func_80097A14(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
 }
 
 Gfx* func_80097AE4(Gfx* displayListHead, s8 textureFormat, s32 destX, s32 destY, u8* textureData, s32 sourceWidth) {
-    gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, 64, 64, 0, 0, sourceWidth - 1, 32-1, 0,
-                       G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, 64, 64, 0, 0, sourceWidth - 1,
+                       32 - 1, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
     gSPWideTextureRectangle(displayListHead++, destX << 2, destY << 2, (destX + sourceWidth) << 2, (destY + 64) << 2, 0,
                             0, 0, 1024, 1024);
     return displayListHead;
@@ -3320,8 +3319,8 @@ Gfx* func_80097E58(Gfx* displayListHead, s8 textureFormat, u32 uls, u32 ult, u32
     }
     f32 percent = (f32) (32 - width) / 32.0f;
     gDPLoadTextureTile(displayListHead++, textureData, textureFormat, G_IM_SIZ_16b, textureWidth, textureHeight, uls,
-                       ult, textureWidth - 1, textureHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD,
-                       G_TX_NOLOD);
+                       ult, textureWidth - 1, textureHeight - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                       G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
     screenX += (s32) ((f32) (textureWidth / 2) * (1.0f - percent));
     gSPWideTextureRectangle(displayListHead++, (screenX) << 2, screenY << 2,
                             (screenX + (s32) ((f32) textureWidth * percent)) << 2, (screenY + textureHeight) << 2, 0, 0,
@@ -3339,10 +3338,10 @@ Gfx* func_80098558(Gfx* displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4,
     for (var_v0 = arg2; var_v0 < arg4; var_v0 += 0x20) {
         for (var_a3 = arg1; var_a3 < arg3; var_a3 += 0x20) {
             gDPLoadTextureTile(displayListHead++, sMenuTextureList, G_IM_FMT_RGBA, G_IM_SIZ_16b, arg8, 0, var_a3,
-                               var_v0, var_a3 + 32-1, var_v0 + 32-1, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                               var_v0, var_a3 + 32 - 1, var_v0 + 32 - 1, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-            gSPTextureRectangle(displayListHead++, arg5 << 2, arg6 << 2, (arg5 + 32) << 2, (arg6 + 32) << 2, 0, 0,
-                                0, 1024, 1024);
+            gSPTextureRectangle(displayListHead++, arg5 << 2, arg6 << 2, (arg5 + 32) << 2, (arg6 + 32) << 2, 0, 0, 0,
+                                1024, 1024);
             arg5 += 0x20;
         }
         arg5 = arg5Copy;
@@ -4025,7 +4024,7 @@ void func_80099EC4(void) {
 #ifdef TARGET_N64
     osInvalDCache((void*) gMenuCompressedBuffer, var_s0);
     osPiStartDma(&sp68, 0, 0, (u32) _textures_0aSegmentRomStart + SEGMENT_OFFSET(temp_s2->textureData),
-                gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+                 gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
 #endif
     if ((size && size) && size) {}
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
@@ -4672,13 +4671,13 @@ Gfx* print_letter(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32 arg3, s32 
                 switch (mode) {
                     case 1:
                         gSPDisplayList(arg0++, D_020077F8);
-                        arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
-                                             var_s0->height, scaleX, scaleY);
+                        arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3,
+                                             var_s0->width, var_s0->height, scaleX, scaleY);
                         break;
                     case 2:
                         gSPDisplayList(arg0++, D_02007818);
-                        arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
-                                             var_s0->height, scaleX, scaleY);
+                        arg0 = func_80095BD0(arg0, var_s0->textureData, var_s0->dX + arg2, var_s0->dY + arg3,
+                                             var_s0->width, var_s0->height, scaleX, scaleY);
                         break;
                 }
             }
@@ -4868,10 +4867,8 @@ Gfx* func_8009C708(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
                 break;
         }
         if (arg5 >= 0) {
-            arg0 =
-                func_80097E58(arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3,
-                              var_s1->textureData,
-                              var_s1->width, var_s1->height, (u32) arg5);
+            arg0 = func_80097E58(arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2,
+                                 var_s1->dY + arg3, var_s1->textureData, var_s1->width, var_s1->height, (u32) arg5);
         }
         var_s1++;
     }
@@ -6032,9 +6029,8 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_TYPE_05A:
         case MENU_ITEM_TYPE_05B:
         case COURSE_SELECT_BATTLE_NAMES:
-            load_menu_img_comp_type(
-                gMenuTexturesTrackSelection[type - COURSE_SELECT_MAP_SELECT],
-                LOAD_MENU_IMG_TKMK00_ONCE);
+            load_menu_img_comp_type(gMenuTexturesTrackSelection[type - COURSE_SELECT_MAP_SELECT],
+                                    LOAD_MENU_IMG_TKMK00_ONCE);
             break;
         case MENU_ITEM_TYPE_05F:
         case MENU_ITEM_TYPE_060:
@@ -6077,7 +6073,8 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_TYPE_079:
         case MENU_ITEM_TYPE_07A:
         case MENU_ITEM_TYPE_07B:
-            load_menu_img_comp_type(segmented_to_virtual_dupe(D_800E82F4[type - MENU_ITEM_TYPE_078]), LOAD_MENU_IMG_TKMK00_ONCE);
+            load_menu_img_comp_type(segmented_to_virtual_dupe(D_800E82F4[type - MENU_ITEM_TYPE_078]),
+                                    LOAD_MENU_IMG_TKMK00_ONCE);
             break;
         case MENU_ITEM_TYPE_08C:
             load_menu_img_comp_type(segmented_to_virtual_dupe(seg2_data_texture), LOAD_MENU_IMG_TKMK00_ONCE);
@@ -6150,9 +6147,9 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_TYPE_0BB:
             var_ra->param1 = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
             var_ra->param2 = func_800B5218();
-            if (D_80162DD4 != 1) {
+            if (bPlayerGhostDisabled != 1) {
                 if (func_800051C4() >= 0x3C01) {
-                    D_80162DD4 = 1;
+                    bPlayerGhostDisabled = 1;
                 }
             }
             if ((var_ra->param1 == 0) || (var_ra->param2 != 0)) {
@@ -7080,14 +7077,12 @@ void func_800A143C(MenuItem* arg0, s32 arg1) {
         case 2:
         case 3:
             gDisplayListHead =
-                render_menu_textures(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1],
-                                     arg0->column, arg0->row);
+                render_menu_textures(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1], arg0->column, arg0->row);
             break;
         case 1:
         case 4:
-            gDisplayListHead =
-                func_8009BC9C(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1],
-                              arg0->column, arg0->row, 2, arg0->param1);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, gMenuTexturesTrackSelection[arg1 + 1], arg0->column,
+                                             arg0->row, 2, arg0->param1);
             break;
     }
 }
@@ -7872,12 +7867,12 @@ void func_800A3E60(MenuItem* arg0) {
                 text_rainbow_effect(arg0->state - 5, var_s1, 1);
                 switch (var_s1) {
                     case 4:
-                        if (D_80162DF8 == 1) {
+                        if (gPostTimeTrialReplayCannotSave == 1) {
                             var_v1 = 1;
                         }
                         break;
                     case 5:
-                        if (D_80162DD4 != 0) {
+                        if (bPlayerGhostDisabled != 0) {
                             var_v1 = 2;
                         }
                         break;
@@ -7918,8 +7913,12 @@ void func_800A3E60(MenuItem* arg0) {
                 if (D_8018EE10[var_s1].ghostDataSaved == 0) {
                     print_text_mode_1(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f, 0.45f);
                 } else {
-                    print_text_mode_1(0xBB - arg0->column, 0xAA + (0x1E * var_s1), CM_GetProps()->Name, 0, 0.45f,
-                                      0.45f);
+                    print_text_mode_1(
+                        0xBB - arg0->column, 0xAA + (0x1E * var_s1),
+                        CM_GetPropsCourseId(
+                            gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                            ->Name,
+                        0, 0.45f, 0.45f);
                 }
             }
             break;
@@ -8204,16 +8203,14 @@ void render_pause_menu_versus(MenuItem* arg0) {
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             // Left side players
-            if ((temp_v0->player == gPlayerOne) ||
-                (temp_v0->player == gPlayerThree)) {
+            if ((temp_v0->player == gPlayerOne) || (temp_v0->player == gPlayerThree)) {
                 leftEdge = OTRGetDimensionFromLeftEdge(0);
                 gDisplayListHead =
                     draw_box_wide_pause_background(gDisplayListHead, leftEdge - temp_t3, temp_t0 - temp_t4,
                                                    temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 140);
 
                 // Right side players
-            } else if ((temp_v0->player == gPlayerTwo) ||
-                       (temp_v0->player == gPlayerFour)) {
+            } else if ((temp_v0->player == gPlayerTwo) || (temp_v0->player == gPlayerFour)) {
                 rightEdge = OTRGetDimensionFromRightEdge(SCREEN_WIDTH);
                 gDisplayListHead =
                     draw_box_wide_pause_background(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4,
@@ -8493,8 +8490,12 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
                     if (D_8018EE10[var_s1].ghostDataSaved == 0) {
                         print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
                     } else {
-                        print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), CM_GetProps()->Name, 0, 0.75f,
-                                          0.75f);
+                        print_text_mode_1(
+                            0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
+                            CM_GetPropsCourseId(
+                                gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                                ->Name,
+                            0, 0.75f, 0.75f);
                     }
                 }
                 break;
@@ -10446,8 +10447,7 @@ void func_800AA69C(MenuItem* arg0) {
         case 2:
             if ((gCharacterGridIsSelected[temp_v0] == 0) && (var_a0 != 0)) {
                 arg0->subState = 3;
-                func_8009A594(arg0->D_8018DEE0_index, 0,
-                              gCharacterDeselectAnimation[temp_a0]);
+                func_8009A594(arg0->D_8018DEE0_index, 0, gCharacterDeselectAnimation[temp_a0]);
             }
             break;
         case 3:
@@ -11735,7 +11735,7 @@ void func_800AD2E8(MenuItem* arg0) {
                 arg0->param2 = 0;
                 arg0->column = 0;
                 arg0->state = gTimeTrialsResultCursorSelection;
-                if ((arg0->state == 9) && (D_80162DF8 == 1)) {
+                if ((arg0->state == 9) && (gPostTimeTrialReplayCannotSave == 1)) {
                     arg0->state--;
                 }
                 D_800DC5EC->screenStartX = 0x00F0;
@@ -11752,7 +11752,7 @@ void func_800AD2E8(MenuItem* arg0) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->state >= 6) {
                         arg0->state--;
-                        if ((D_80162DF8 == 1) && (arg0->state == 9)) {
+                        if ((gPostTimeTrialReplayCannotSave == 1) && (arg0->state == 9)) {
                             arg0->state--;
                         }
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -11765,10 +11765,10 @@ void func_800AD2E8(MenuItem* arg0) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                     if (arg0->state < 0xA) {
                         arg0->state++;
-                        if ((D_80162DF8 == 1) && (arg0->state == 9)) {
+                        if ((gPostTimeTrialReplayCannotSave == 1) && (arg0->state == 9)) {
                             arg0->state++;
                         }
-                        if ((arg0->state == 0x0000000A) && (D_80162DD4 != 0)) {
+                        if ((arg0->state == 0x0000000A) && (bPlayerGhostDisabled != 0)) {
                             arg0->state -= 2;
                         } else {
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -12494,7 +12494,7 @@ void func_800AEF14(MenuItem* arg0) {
 void func_800AEF74(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
-            if (D_80162DF8 == 1) {
+            if (gPostTimeTrialReplayCannotSave == 1) {
                 arg0->state = 1;
                 arg0->param1 = 0;
             } else if (playerHUD[PLAYER_ONE].raceCompleteBool == (s8) 1) {

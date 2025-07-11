@@ -1632,7 +1632,7 @@ bool collision_yoshi_egg(Player* player, struct YoshiValleyEgg* egg) {
         } else {
             apply_hit_sound_effect(player, player - gPlayerOne);
             if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
-                D_80162DF8 = 1;
+                gPostTimeTrialReplayCannotSave = 1;
             }
         }
     } else {
@@ -2174,7 +2174,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                     if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
-                        D_80162DF8 = 1;
+                        gPostTimeTrialReplayCannotSave = 1;
                     }
                     if (player->effects & STAR_EFFECT) {
                         actor->velocity[1] = 10.0f;

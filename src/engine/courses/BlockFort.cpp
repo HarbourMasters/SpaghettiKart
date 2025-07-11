@@ -24,7 +24,7 @@ extern "C" {
 #include "render_objects.h"
 #include "assets/common_data.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "actors.h"
 #include "collision.h"
 #include "memory.h"

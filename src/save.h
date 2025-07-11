@@ -98,7 +98,7 @@ extern s8 sControllerPak2State; // Current state of the Controller Pak 2
 extern const u8 D_800F2E60[];
 extern const u8 gGameName[];
 extern const u8 gExtCode[];
-extern u16 D_80162DD6;
+extern u16 bCourseGhostDisabled;
 extern s32 D_80162DE0;
 extern s32 D_80162DFC;
 extern OSPfs gControllerPak1FileHandle;

@@ -27,7 +27,7 @@ extern "C" {
 #include "render_objects.h"
 #include "assets/common_data.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "actors.h"
 #include "collision.h"
 #include "code_8003DC40.h"
@@ -246,10 +246,10 @@ void LuigiRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 void LuigiRaceway::SetStaffGhost() {
     u32 temp_v0 = func_800B4E24(0) & 0xfffff;
     if (temp_v0 <= 11200) {
-        D_80162DD6 = 0;
+        bCourseGhostDisabled = 0;
         D_80162DF4 = 0;
     } else {
-        D_80162DD6 = 1;
+        bCourseGhostDisabled = 1;
         D_80162DF4 = 1;
     }
     D_80162DC4 = d_luigi_raceway_staff_ghost;

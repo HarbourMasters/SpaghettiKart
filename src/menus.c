@@ -15,7 +15,7 @@
 #include "menu_items.h"
 #include "code_800AF9B0.h"
 #include "save.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "save_data.h"
 #include <sounds.h>
 #include "spawn_players.h"
@@ -1864,7 +1864,7 @@ void load_menu_states(s32 menuSelection) {
     gDebugGotoScene = DEBUG_GOTO_RACING;
     gGhostPlayerInit = 0;
     D_8016556E = 0;
-    D_80162DD4 = 1;
+    bPlayerGhostDisabled = 1;
     D_80162DD8 = 1;
     D_80162E00 = 0;
     D_80162DC8 = 1;
