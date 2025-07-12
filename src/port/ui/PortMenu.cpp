@@ -432,6 +432,9 @@ void PortMenu::AddDevTools() {
         .Options(CheckboxOptions().Tooltip("Changes the menu display from overlay to windowed."));
     AddWidget(path, "Debug Mode", WIDGET_CVAR_CHECKBOX)
         .CVar("gEnableDebugMode")
+        .Callback([](WidgetInfo& info) {
+            SPDLOG_INFO(CVarGetInteger("gEnableDebugMode", 0) == 0 ? "Debug Mode deactivated" : "Debug Mode activated");
+        })
         .Options(CheckboxOptions().Tooltip("Enables Debug Mode."));
     AddWidget(path, "Modify Interpolation Target FPS", WIDGET_CVAR_CHECKBOX)
         .CVar("gModifyInterpolationTargetFPS")
