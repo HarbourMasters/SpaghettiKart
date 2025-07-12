@@ -1,6 +1,10 @@
 # Custom Tracks
-Note that this doc is a work-in-progress and has been hastily written to provide a very basic guide to get people started. It is not all encompassing and may be missing important information.
-  A better manual will be drafted in the future.
+This guide is
+* Hastily written
+* Made for advanced users
+* A work-in-progress
+
+This guide is not all encompassing and may be missing important information. A better manual will be drafted in the future.
 
 ## Dependencies
 * Blender v4.3 (older should work fine too).
@@ -15,7 +19,21 @@ Note that this doc is a work-in-progress and has been hastily written to provide
   * Stuff like buildings or walls should be separate meshes to not mess with the collision generator.
   * The track/pavement should be a separate mesh from the rest of the scene.
 
+## Materials
+* Youtube tutorials discuss how materials work.
+* Fast64 often defaults to a CI8 palette texture, always change `Format` to `RGBA-16 bit` or `RGBA-32 bit`
+The Colour Index (CI8) format can cause issues if not used correctly. It's easy to confuse this as directly below this box it says `RGBA 16-bit`
+Example of incorrect texture format:
+<img width="677" height="777" alt="image" src="https://github.com/user-attachments/assets/518bd16e-3d16-43f9-9767-fc73ea2ab5f8" />
+
+Example of correct texture format
+<img width="627" height="205" alt="image" src="https://github.com/user-attachments/assets/2cce483b-7fcb-435b-924e-3443e2976e95" />
+
 ## Export
+* Check `Ignore Textures Restrictions` failing to do so may result in errors
+<img width="318" height="315" alt="image" src="https://github.com/user-attachments/assets/60f084d3-aef4-429c-889f-2e2d74473e1a" />
+
+
 * FAST64 MUST BE SET TO F3DEX MODE (The others *should* work but they don't)
 * Select the empty and click the SpaghettiKart and Harbour Masters profiles
 
