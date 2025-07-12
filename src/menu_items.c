@@ -6275,7 +6275,6 @@ static void draw_debug(void) {
 }
 
 static void draw_version(void) {
-    static const char *spaghetty_version = "V" SPAGHETTI_VERSION;
     s32 column = 0x138;
 
     if (CVarGetInteger("gEnableDebugMode", 0) != 0) {
@@ -6283,7 +6282,7 @@ static void draw_version(void) {
     }
 
     set_text_color(TEXT_GREEN);
-    print_text1_right(column, 0xEA, spaghetty_version, 0, 0.5f, 0.5f);
+    print_text1_right(column, 0xEA, SPAGHETTI_VERSION, 0, 0.5f, 0.5f);
 }
 
 #ifdef NON_MATCHING
