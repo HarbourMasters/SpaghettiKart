@@ -97,6 +97,8 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
 }
 
 s32 osPfsIsPlug(OSMesgQueue* queue, u8* pattern) {
+    *pattern = 1;
+    return 1;
 }
 
 s32 osPfsInit(OSMesgQueue* queue, OSPfs* pfs, int channel) {

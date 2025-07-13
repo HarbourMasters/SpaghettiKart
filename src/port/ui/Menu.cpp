@@ -764,6 +764,8 @@ void Menu::DrawElement() {
             // for (auto& entryName : sidebar->at(sectionIndex).sidebarOrder) {
             for (auto& entry : sidebar->at(sectionIndex).columnWidgets.at(i)) {
                 MenuDrawItem(entry, 90 / sidebar->at(sectionIndex).columnCount, menuThemeIndex);
+                ImGui::Spacing();
+                ImGui::Spacing();
             }
             //}
             if (useColumns) {

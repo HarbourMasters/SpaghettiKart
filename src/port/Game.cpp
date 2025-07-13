@@ -809,6 +809,22 @@ extern "C"
 
     CustomEngineInit();
 
+    switch(CVarGetInteger("gSkipIntro", 0)) {
+        case 0:
+            gMenuSelection = HARBOUR_MASTERS_MENU;
+            break;
+        case 1:
+            gMenuSelection = LOGO_INTRO_MENU;
+            break;
+        case 2:
+            gMenuSelection = START_MENU;
+            break;
+        case 3:
+            gMenuSelection = MAIN_MENU;
+            break;
+    }
+
+    // Debug mode override gSkipIntro
     if (CVarGetInteger("gEnableDebugMode", 0) == true) {
         gMenuSelection = START_MENU;
     }

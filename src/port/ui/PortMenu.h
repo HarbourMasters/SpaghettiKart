@@ -26,6 +26,13 @@ static const std::unordered_map<int32_t, const char*> menuThemeOptions = {
     { UIWidgets::Colors::DarkGray, "Dark Gray" },
 };
 
+static const std::unordered_map<int32_t, const char*> introBehaviourOptions = {
+    { 0, "Both" },
+    { 1, "Authentic" },
+    { 2, "Start Menu" },
+    { 3, "Main Menu" },
+};
+
 static const std::unordered_map<int32_t, const char*> textureFilteringMap = {
     { Fast::FilteringMode::FILTER_THREE_POINT, "Three-Point" },
     { Fast::FilteringMode::FILTER_LINEAR, "Linear" },

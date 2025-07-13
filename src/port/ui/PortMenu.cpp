@@ -99,6 +99,12 @@ void PortMenu::AddSettings() {
         .Callback([](WidgetInfo& info) { Ship::Context::GetInstance()->GetWindow()->ToggleFullscreen(); })
         .Options(CheckboxOptions().Tooltip("Toggles Fullscreen On/Off."));
 
+    AddWidget(path, "Startup Behaviour", WIDGET_CVAR_COMBOBOX)
+        .CVar("gSkipIntro")
+        .Options(ComboboxOptions()
+            .ComboMap(introBehaviourOptions)
+            .Tooltip("Select which scene or menu the game launch to."));
+
     AddWidget(path, "Menu Theme", WIDGET_CVAR_COMBOBOX)
         .CVar("gSettings.Menu.Theme")
         .Options(ComboboxOptions()
