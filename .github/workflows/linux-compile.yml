@@ -10,6 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Update machine
         run: sudo apt update
