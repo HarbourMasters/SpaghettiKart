@@ -6526,8 +6526,10 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_UI_GAME_SELECT:
                 gDisplayListHead =
                     render_menu_textures(gDisplayListHead, seg2_game_select_texture, arg0->column, arg0->row);
+                if (CVarGetInteger("gShowSpaghettiVersion", true)) {
                     draw_version();
                     draw_debug();
+                }
                 break;
             case MENU_ITEM_UI_1P_GAME:
             case MENU_ITEM_UI_2P_GAME:
