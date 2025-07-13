@@ -76,7 +76,7 @@ bool has_collided_with_player_1d(s32, Player*, f32);
 bool has_collided_with_player_and_within_height(s32, Player*, f32);
 f32 func_80088F54(s32, Player*);
 UNUSED bool func_80088F94(s32, Player*, f32);
-void func_80088FF0(Player*);
+void reset_player_speed_and_velocity(Player*);
 void func_8008900C(Player*);
 void func_80089020(s32, f32*);
 void func_800892E0(s32);

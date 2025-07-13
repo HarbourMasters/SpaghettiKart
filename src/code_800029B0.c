@@ -17,7 +17,7 @@
 #include "skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"
 #include "spawn_players.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "render_courses.h"
 #include "main.h"
 #include "courses/all_course_data.h"

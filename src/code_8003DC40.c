@@ -74,7 +74,7 @@ void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         if ((player->effects & BOOST_EFFECT) != 0) {
             remove_boost_effect(player);
             player->currentSpeed /= 2;
-            player->unk_08C /= 2;
+            player->kartPropulsionStrength /= 2;
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);
@@ -102,7 +102,7 @@ void func_8003E37C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         if ((player->effects & BOOST_EFFECT) != 0) {
             remove_boost_effect(player);
             player->currentSpeed /= 2;
-            player->unk_08C /= 2;
+            player->kartPropulsionStrength /= 2;
         }
     } else if ((((player->speed / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
         arg3[0] = ((player->unk_206 / 182) * 0x32);

@@ -1322,7 +1322,7 @@ void func_80059D00(void) {
                     }
                     func_80078C70(0);
                     if (playerHUD[PLAYER_ONE].raceCompleteBool == 0) {
-                        func_8005C360((gPlayerOneCopy->speed / 18.0f) * 216.0f);
+                        func_8005C360((gPlayerOne->speed / 18.0f) * 216.0f);
                     }
                     func_8005D0FC(PLAYER_ONE);
                 } else {
@@ -3122,7 +3122,7 @@ void func_8005EA94(Player* player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) 
     surfaceType = 0x000000FF;
     temp_v0 = random_int(test);
     if ((temp_v0 == 0) || (temp_v0 == 8)) {
-        if ((D_801652A0[arg3] - player->tyres[BACK_LEFT].baseHeight) >= 3.5) {
+        if ((gPlayerWaterLevel[arg3] - player->tyres[BACK_LEFT].baseHeight) >= 3.5) {
             x = player->tyres[BACK_LEFT].pos[0];
             y = player->tyres[BACK_LEFT].baseHeight + 2.0f;
             z = player->tyres[BACK_LEFT].pos[2];
@@ -3131,7 +3131,7 @@ void func_8005EA94(Player* player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) 
         }
     }
     if ((temp_v0 == 2) || (temp_v0 == 6)) {
-        if ((D_801652A0[arg3] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) {
+        if ((gPlayerWaterLevel[arg3] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) {
             x = player->tyres[BACK_RIGHT].pos[0];
             y = player->tyres[BACK_RIGHT].baseHeight + 2.0f;
             z = player->tyres[BACK_RIGHT].pos[2];
@@ -3606,14 +3606,14 @@ void func_800608E0(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
     f32 sp4C;
     f32 sp48;
 
-    var_f0 = 8.0f - (D_801652A0[arg3] - player->pos[1]);
+    var_f0 = 8.0f - (gPlayerWaterLevel[arg3] - player->pos[1]);
     if ((f64) var_f0 <= 0.0) {
         var_f0 = 0.0f;
     }
-    sp4C = (D_801652A0[arg3] - player->pos[1]) - 3.0f;
-    if ((player->unk_0DE & 1) && (!IsKoopaTroopaBeach())) {
+    sp4C = (gPlayerWaterLevel[arg3] - player->pos[1]) - 3.0f;
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) && (!IsKoopaTroopaBeach())) {
         var_f0 = 2.5f;
-        sp4C = (f32) ((f64) (D_801652A0[arg3] - player->pos[1]) + 0.1);
+        sp4C = (f32) ((f64) (gPlayerWaterLevel[arg3] - player->pos[1]) + 0.1);
     }
     set_particle_position_and_rotation(player, &player->particlePool0[arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     init_particle_player(&player->particlePool0[arg1], 3, var_f0);
@@ -3697,8 +3697,8 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8
         player->pos[2] + (coss(player->particlePool0[arg1].unk_020) * -5.8);
     player->particlePool0[arg1].pos[0] =
         player->pos[0] + (sins(player->particlePool0[arg1].unk_020) * -5.8);
-    player->particlePool0[arg1].pos[1] = D_801652A0[arg3];
-    player->unk_0DE &= ~0x0008;
+    player->particlePool0[arg1].pos[1] = gPlayerWaterLevel[arg3];
+    player->waterInteractionFlags &= ~WATER_JUST_ENTERED_DEEP_LIQUID;
 }
 
 void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
@@ -4278,13 +4278,13 @@ void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     if ((player->unk_0CA & 1) == 1) {
         player->particlePool1[arg1].pos[1] += (temp_f0 + 0.3);
         if ((player->particlePool1[arg1].unk_01E == 0x10) ||
-            ((D_801652A0[arg2] - player->particlePool1[arg1].pos[1]) < 3.0f)) {
+            ((gPlayerWaterLevel[arg2] - player->particlePool1[arg1].pos[1]) < 3.0f)) {
             player->particlePool1[arg1].isAlive = 0;
             player->particlePool1[arg1].unk_01E = 0;
             player->particlePool1[arg1].type = 0;
         }
     } else if ((player->particlePool1[arg1].unk_01E == 0xA) ||
-               ((D_801652A0[arg2] - player->particlePool1[arg1].pos[1]) < 3.0f)) {
+               ((gPlayerWaterLevel[arg2] - player->particlePool1[arg1].pos[1]) < 3.0f)) {
         player->particlePool1[arg1].isAlive = 0;
         player->particlePool1[arg1].unk_01E = 0;
         player->particlePool1[arg1].type = 0;
@@ -4295,7 +4295,7 @@ void set_oob_splash_particle_position(Player* player, s16 arg1, s8 arg2, UNUSED 
     ++player->particlePool0[arg1].unk_01E;
     player->particlePool0[arg1].pos[2] = player->pos[2] + coss(player->particlePool0[arg1].unk_020) * -5.8;
     player->particlePool0[arg1].pos[0] = player->pos[0] + sins(player->particlePool0[arg1].unk_020) * -5.8;
-    player->particlePool0[arg1].pos[1] = D_801652A0[arg2];
+    player->particlePool0[arg1].pos[1] = gPlayerWaterLevel[arg2];
     if (player->particlePool0[arg1].unk_01E == 15) {
         player->particlePool0[arg1].isAlive = 0;
         player->particlePool0[arg1].unk_01E = 0;
@@ -4614,9 +4614,9 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 sp40;
     f32 sp3C;
 
-    sp40 = D_801652A0[arg2] - player->pos[1] - 3.0f;
-    if (((player->unk_0DE & 1) != 0) && (!IsKoopaTroopaBeach())) {
-        sp40 = D_801652A0[arg2] - player->pos[1] + 0.1;
+    sp40 = gPlayerWaterLevel[arg2] - player->pos[1] - 3.0f;
+    if (((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) && (!IsKoopaTroopaBeach())) {
+        sp40 = gPlayerWaterLevel[arg2] - player->pos[1] + 0.1;
     }
 
     func_80062B18(&sp44, &sp40, &sp3C, 0.0f, sp40,
@@ -4627,7 +4627,7 @@ void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     player->particlePool0[arg1].pos[1] = player->pos[1] + sp40;
     ++player->particlePool0[arg1].unk_01E;
     if ((player->particlePool0[arg1].unk_01E == 12) ||
-        (D_801652A0[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
+        (gPlayerWaterLevel[arg2] <= (player->pos[1] - player->boundingBoxSize))) {
         player->particlePool0[arg1].isAlive = 0;
         player->particlePool0[arg1].unk_01E = 0;
         player->particlePool0[arg1].type = 0;
@@ -6342,14 +6342,14 @@ void func_8006C6AC(Player* player, s16 particleIndex, s8 arg2, s8 arg3) {
                 break;
         }
     } else {
-        if (player->unk_0DE & 1) {
+        if (player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) {
             func_80060BCC(player, particleIndex, sp28, arg2_copy, arg3);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
             if (((player->effects & DRIFTING_EFFECT) == DRIFTING_EFFECT) &&
                 ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 check_drift_particles_setup_valid(player, particleIndex, sp28, arg2_copy, arg3);
-            } else if (((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) ||
-                       ((f64) (D_801652A0[arg2_copy] - player->tyres[BACK_LEFT].baseHeight) >= 3.5)) {
+            } else if (((f64) (gPlayerWaterLevel[arg2_copy] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5) ||
+                       ((f64) (gPlayerWaterLevel[arg2_copy] - player->tyres[BACK_LEFT].baseHeight) >= 3.5)) {
                 func_8005EA94(player, particleIndex, sp28, arg2_copy, arg3);
             } else if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
                 func_8005F90C(player, particleIndex, sp28, arg2_copy, arg3);
@@ -6498,10 +6498,10 @@ void func_8006CEC0(Player* player, s16 arg1, s8 arg2, s8 arg3) {
             func_80061094(player, arg1, sp20, arg2, arg3);
             return;
         } else if ((player->type & 0x4000) == 0x4000) {
-            if ((player->unk_0DE & 8) == 8) {
+            if ((player->waterInteractionFlags & WATER_JUST_ENTERED_DEEP_LIQUID) == WATER_JUST_ENTERED_DEEP_LIQUID) {
                 func_80060F50(player, arg1, sp20, arg2, arg3);
                 return;
-            } else if ((player->unk_0DE & 2) || (player->unk_0DE & 1)) {
+            } else if ((player->waterInteractionFlags & WATER_IS_PARTIALLY_SUBMERGED) || (player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED)) {
                 func_80060B14(player, arg1, sp20, arg2, arg3);
                 return;
             }

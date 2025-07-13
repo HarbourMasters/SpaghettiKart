@@ -28,6 +28,7 @@
 #include "effects.h"
 #include <assets/boo_frames.h>
 #include "port/Game.h"
+#include "port/Engine.h"
 
 #include "engine/courses/Course.h"
 
@@ -167,7 +168,7 @@ void get_minimap_properties() {
     // This is incredibly dumb. MinimapDimensions ought to be something more like
     // `u16 MinimapDimensions[][2]` but that doesn't match for some insane reason
 
-    gMinimapWidth = CM_GetProps()->Minimap.Width;  // MinimapDimensions[courseId * 2];
+    gMinimapWidth = CM_GetProps()->Minimap.Width;   // MinimapDimensions[courseId * 2];
     gMinimapHeight = CM_GetProps()->Minimap.Height; // MinimapDimensions[courseId * 2 + 1];
 }
 
@@ -198,10 +199,12 @@ void func_8006F008(void) {
 
     // Flip the minimap player markers
     if (gIsMirrorMode != 0) {
-        CM_GetProps()->Minimap.PlayerX = CM_GetProps()->Minimap.Width - CM_GetProps()->Minimap.PlayerX; // gMinimapPlayerX = gMinimapWidth - gMinimapPlayerX
+        CM_GetProps()->Minimap.PlayerX =
+            CM_GetProps()->Minimap.Width -
+            CM_GetProps()->Minimap.PlayerX; // gMinimapPlayerX = gMinimapWidth - gMinimapPlayerX
     }
 
-    switch(gPlayerCount) {
+    switch (gPlayerCount) {
         case 2:
             // Set X coord
             if (!IsToadsTurnpike()) {
@@ -266,7 +269,7 @@ void func_8006F8CC(void) {
                 D_801657F0 = 1;
                 D_80165800[0] = D_80165800[1] = 0;
             }
-            
+
             CM_GetProps()->Minimap.Pos[0].Y = 65;
             CM_GetProps()->Minimap.Pos[1].Y = 180;
         }
@@ -485,6 +488,31 @@ void init_object_list_index(void) {
     // }
 }
 
+Vtx cloudvtx[4][4] = { {
+                           { { { -32, -16, 0 }, 0, { 0, 0 }, { 255, 255, 255, 255 } } },
+                           { { { 31, -16, 0 }, 0, { 4032, 0 }, { 255, 255, 255, 255 } } },
+                           { { { 31, 15, 0 }, 0, { 4032, 496 }, { 255, 255, 255, 255 } } },
+                           { { { -32, 15, 0 }, 0, { 0, 496 }, { 255, 255, 255, 255 } } },
+                       },
+                       {
+                           { { { -32, -16, 0 }, 0, { 0, 512 }, { 255, 255, 255, 255 } } },
+                           { { { 31, -16, 0 }, 0, { 4032, 512 }, { 255, 255, 255, 255 } } },
+                           { { { 31, 15, 0 }, 0, { 4032, 1008 }, { 255, 255, 255, 255 } } },
+                           { { { -32, 15, 0 }, 0, { 0, 1008 }, { 255, 255, 255, 255 } } },
+                       },
+                       {
+                           { { { -32, -16, 0 }, 0, { 0, 1024 }, { 255, 255, 255, 255 } } },
+                           { { { 31, -16, 0 }, 0, { 4032, 1024 }, { 255, 255, 255, 255 } } },
+                           { { { 31, 15, 0 }, 0, { 4032, 1520 }, { 255, 255, 255, 255 } } },
+                           { { { -32, 15, 0 }, 0, { 0, 1520 }, { 255, 255, 255, 255 } } },
+                       },
+                       {
+                           { { { -32, -16, 0 }, 0, { 0, 1536 }, { 255, 255, 255, 255 } } },
+                           { { { 31, -16, 0 }, 0, { 4032, 1536 }, { 255, 255, 255, 255 } } },
+                           { { { 31, 15, 0 }, 0, { 4032, 2032 }, { 255, 255, 255, 255 } } },
+                           { { { -32, 15, 0 }, 0, { 0, 2032 }, { 255, 255, 255, 255 } } },
+                       } };
+
 void init_cloud_object(s32 objectIndex, s32 arg1, CloudData* arg2) {
     ItemWindowObjects* temp_v0;
 
@@ -495,8 +523,14 @@ void init_cloud_object(s32 objectIndex, s32 arg1, CloudData* arg2) {
     temp_v0->direction_angle[1] = arg2->rotY;
     temp_v0->unk_09E = arg2->posY;
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
-    temp_v0->activeTexture = ((u8(*)[1024])CM_GetProps()->CloudTexture)[arg2->subType];
-    func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
+    if (GameEngine_ResourceGetTexTypeByName(CM_GetProps()->CloudTexture) != 1) {
+        int width = ResourceGetTexWidthByName(CM_GetProps()->CloudTexture);
+        temp_v0->activeTexture = LOAD_ASSET_RAW(CM_GetProps()->CloudTexture) + (arg2->subType * width * width * 1);
+        func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
+    } else {
+        temp_v0->activeTexture = CM_GetProps()->CloudTexture;
+        func_80073404(objectIndex, 0x40U, 0x20U, cloudvtx[arg2->subType]);
+    }
     temp_v0->primAlpha = 0x00FF;
 }
 

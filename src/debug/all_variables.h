@@ -46,7 +46,7 @@
 #include <render_courses.h>
 #include <skybox_and_splitscreen.h>
 #include <spawn_players.h>
-#include <staff_ghosts.h>
+#include <replays.h>
 #include <textures.h>
 
 #include <actor_types.h>

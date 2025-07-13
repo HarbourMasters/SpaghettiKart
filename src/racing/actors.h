@@ -130,7 +130,7 @@ extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
 
-extern s32 D_80162DF8;
+extern s32 gPostTimeTrialReplayCannotSave;
 
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];

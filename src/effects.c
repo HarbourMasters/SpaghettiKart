@@ -724,7 +724,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0A8 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
     // clang-format off
     if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
@@ -833,7 +833,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
     player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
     player->effects |= 0x40020000;
     player->effects &= ~0x10;
-    player->unk_08C *= 0.6;
+    player->kartPropulsionStrength *= 0.6;
     player->unk_0B0 = 0;
     player->size = 1.0f;
     gPlayerStarEffectStartTime[arg1] = gCourseTimer;
@@ -896,7 +896,7 @@ void apply_lightning_effect(Player* player, s8 arg1) {
         player_decelerate_alternative(player, 1.0f);
     } else {
         player->unk_0B0 += 1;
-        player->unk_08C = (f32) ((f64) player->unk_08C * 0.6);
+        player->kartPropulsionStrength = (f32) ((f64) player->kartPropulsionStrength * 0.6);
         if ((player->unk_0B0 == 1) && (player->type & PLAYER_HUMAN)) {
             func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
         }
@@ -938,7 +938,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
     player->unk_07C = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += 0xAAA;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
     player->velocity[0] = 0.0f;
     player->velocity[2] = 0.0f;
@@ -1051,7 +1051,7 @@ void apply_hit_by_item_effect(Player* player, s8 arg1) {
     player->unk_07C = 0;
     player->unk_0C2 = 0xF;
     player->unk_042 += 0xAAA;
-    player->unk_08C /= 2;
+    player->kartPropulsionStrength /= 2;
     player->currentSpeed = 0.0f;
     player->effects &= ~0xC0;
 
@@ -1183,7 +1183,7 @@ void apply_boost_ramp_asphalt_effect(Player* player) {
         if (player->unk_0C2 >= 0x33) {
             temp_f0 = 0.7;
             player->currentSpeed = (player->currentSpeed * temp_f0);
-            player->unk_08C = (player->unk_08C * temp_f0);
+            player->kartPropulsionStrength = (player->kartPropulsionStrength * temp_f0);
         }
     }
 }
@@ -1226,7 +1226,7 @@ void apply_boost_ramp_wood_effect(Player* player) {
         player->effects &= ~BOOST_RAMP_WOOD_EFFECT;
         player->boostPower = 0.0f;
         player->currentSpeed /= 2;
-        player->unk_08C /= 2;
+        player->kartPropulsionStrength /= 2;
     }
 }
 
@@ -1255,7 +1255,7 @@ void func_8008F104(Player* player, s8 arg1) {
 void func_8008F1B8(Player* player, s8 arg1) {
     s16 temp;
 
-    player->unk_08C = (player->unk_210 * 0.05);
+    player->kartPropulsionStrength = (player->unk_210 * 0.05);
     if (player->unk_0B2 < 0) {
         if ((player->unk_044 & 0x80) == 0x80) {
             player->rotation[1] += 182;
@@ -1310,7 +1310,7 @@ void func_8008F3F4(Player* player, UNUSED s8 arg1) {
     player->unk_042 += 0x71C;
     player->unk_07C = 0;
     player->currentSpeed = 0.0f;
-    player->unk_08C /= 2;
+    player->kartPropulsionStrength /= 2;
     if (player->unk_0A8 >= 0x2000) {
         player->unk_0A8 = 0;
         --player->unk_236;
@@ -1339,7 +1339,7 @@ void func_8008F494(Player* player, s8 arg1) {
     player->unk_042 = 0;
 
     if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
-        ((player->unk_0CA & 2) == 0) && ((player->unk_0DE & 1) == 0) && ((player->unk_0DE & 2) == 0)) {
+        ((player->unk_0CA & 2) == 0) && ((player->waterInteractionFlags & 1) == 0) && ((player->waterInteractionFlags & 2) == 0)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008004);
     }
 }
@@ -1577,7 +1577,7 @@ void func_8008FE84(Player* player, UNUSED s8 arg1) {
     if ((player->effects & 8) != 8) {
         player->effects &= ~0x10000000;
         player->currentSpeed /= 2;
-        player->unk_08C /= 2;
+        player->kartPropulsionStrength /= 2;
     }
 }
 
@@ -1762,7 +1762,7 @@ void func_80090778(Player* player) {
     player->unk_0CA |= 8;
     player->effects &= ~0x10;
     player->unk_222 = 0;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
 
     clean_effect(player, playerIndex);
     func_8008F86C(player, playerIndex);
@@ -1789,7 +1789,7 @@ void func_80090868(Player* player) {
     player->unk_078 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     playerIndex = get_player_index_for_player(player);
 
     if ((player->unk_0CA & 2) != 2) {
@@ -1800,7 +1800,7 @@ void func_80090868(Player* player) {
         player->unk_222 = 0;
         player->unk_0CA |= 2;
         player->unk_0C8 = 0;
-        if ((player->unk_0DE & 1) == 1) {
+        if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) == WATER_IS_FULLY_SUBMERGED) {
             if ((IsBowsersCastle()) || (IsBigDonut())) {
                 player->unk_0CA |= 0x1000;
             } else {
@@ -1828,7 +1828,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     player->unk_078 = 0;
     player->unk_07C = 0;
     player->unk_0C0 = 0;
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     clean_effect(player, playerId);
     switch (player->unk_222) {
         case 0:
@@ -1839,9 +1839,9 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         player->unk_0C8 = 0x003C;
                     }
                 } else {
-                    move_f32_towards(&player->pos[1], D_801652A0[playerId] + 100.0f, 0.012f);
+                    move_f32_towards(&player->pos[1], gPlayerWaterLevel[playerId] + 100.0f, 0.012f);
                     move_s16_towards(&player->unk_0CC[arg2], 0, 0.2f);
-                    if ((D_801652A0[playerId] + 40.0f) <= player->pos[1]) {
+                    if ((gPlayerWaterLevel[playerId] + 40.0f) <= player->pos[1]) {
                         player->unk_222 = 1;
                         player->unk_0CA |= 4;
                         player->alpha = ALPHA_MAX;
@@ -1865,7 +1865,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 func_8009E088(playerId, 0xA);
             }
             if ((player->unk_0CA & 1) == 1) {
-                move_f32_towards(&player->pos[1], D_801652A0[playerId] + 40.0f, 0.02f);
+                move_f32_towards(&player->pos[1], gPlayerWaterLevel[playerId] + 40.0f, 0.02f);
                 player->alpha -= ALPHA_CHANGE_LARGE;
                 if (player->alpha <= ALPHA_CHANGE_LARGE) {
                     player->alpha = ALPHA_MIN;
@@ -1933,7 +1933,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                         pop_player_balloon(player, playerId);
                     }
                     player->unk_0CA &= ~0x0002;
-                    player->unk_0DE &= ~0x0004;
+                    player->waterInteractionFlags &= ~WATER_IN_DEEP_LIQUID_STATE;
                     if ((player->unk_0CA & 0x80) != 0x80) {
                         player->unk_0CA &= ~0x0008;
                         if ((player->topSpeed * 0.9) <= player->currentSpeed) {
@@ -2076,7 +2076,7 @@ void func_80091298(Player* player, s8 arg1) {
                 player->unk_0D4[0] = 0;
                 player->type |= PLAYER_START_SEQUENCE;
                 player->speed = 0.0f;
-                player->unk_08C = 0.0f;
+                player->kartPropulsionStrength = 0.0f;
                 player->currentSpeed = 0.0f;
                 if (arg1 == 0) {
                     D_801658BC = 1;

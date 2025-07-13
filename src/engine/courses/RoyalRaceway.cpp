@@ -26,7 +26,7 @@ extern "C" {
     #include "render_objects.h"
     #include "assets/common_data.h"
     #include "save.h"
-    #include "staff_ghosts.h"
+    #include "replays.h"
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
@@ -143,7 +143,7 @@ RoyalRaceway::RoyalRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust4);
+    Props.CloudTexture = (u8*) gTextureExhaust4;
     Props.Clouds = gRoyalRacewayClouds;
     Props.CloudList = gRoyalRacewayClouds;
 
@@ -247,10 +247,10 @@ void RoyalRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 void RoyalRaceway::SetStaffGhost() {
     u32 temp_v0 = func_800B4E24(0) & 0xfffff;
     if (temp_v0 <= 16000) {
-        D_80162DD6 = 0;
+        bCourseGhostDisabled = 0;
         D_80162DF4 = 0;
     } else {
-        D_80162DD6 = 1;
+        bCourseGhostDisabled = 1;
         D_80162DF4 = 1;
     }
     D_80162DC4 = d_royal_raceway_staff_ghost;

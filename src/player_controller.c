@@ -686,7 +686,7 @@ UNUSED void func_80028F5C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNU
 void func_80028F70(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);
@@ -699,7 +699,7 @@ void func_80028F70(void) {
 void func_80029060(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);
@@ -715,7 +715,7 @@ void func_80029150(void) {
 void func_80029158(void) {
     ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOneCopy, camera1, 0, 0);
+    func_80028E70(gPlayerOne, camera1, 0, 0);
     func_80028E70(gPlayerTwo, camera1, 1, 0);
     func_80028E70(gPlayerThree, camera1, 2, 0);
     func_80028E70(gPlayerFour, camera1, 3, 0);
@@ -1265,7 +1265,7 @@ void func_8002AAC0(Player* player) {
 
 void func_8002AB70(Player* player) {
     UNUSED s32 pad[2];
-    if (((player->effects & 8) != 8) && (player->unk_08C > 0.0f)) {
+    if (((player->effects & 8) != 8) && (player->kartPropulsionStrength > 0.0f)) {
         if (((player->slopeAccel / 182) < -1) && ((player->slopeAccel / 182) >= -0x14) &&
             (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
@@ -1582,7 +1582,7 @@ void func_8002B9CC(Player* player, s8 arg1, UNUSED s32 arg2) {
         temp_f2 = 0;
         temp_f14 = D_8018CE10[arg1].unk_04[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 6.5) {
-            player->unk_08C /= 4;
+            player->kartPropulsionStrength /= 4;
             player->currentSpeed /= 4;
             if (!(player->effects & 0x80) && !(player->effects & 0x40)) {
                 func_8008C73C(player, arg1);
@@ -1593,7 +1593,7 @@ void func_8002B9CC(Player* player, s8 arg1, UNUSED s32 arg2) {
         temp_f2 = gPlayerLastVelocity[arg1][1] - player->velocity[1];
         temp_f14 = gPlayerLastVelocity[arg1][2] - player->velocity[2];
         if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) >= 4.2) {
-            player->unk_08C /= 4;
+            player->kartPropulsionStrength /= 4;
             player->currentSpeed /= 4;
             if (!(player->effects & 0x80) && !(player->effects & 0x40)) {
                 func_8008C73C(player, arg1);
@@ -1811,39 +1811,46 @@ void func_8002C17C(Player* player, s8 playerId) {
     }
 }
 
-void func_8002C4F8(Player* player, s8 arg1) {
-    D_801652A0[arg1] = get_water_level(player);
-    if (player->pos[1] <= D_801652A0[arg1]) {
-        player->unk_0DE |= 0x0002;
+void update_player_environment_and_hazard_state(Player* player, s8 playerIndex) {
+    gPlayerWaterLevel[playerIndex] = get_water_level(player);
+    if (player->pos[1] <= gPlayerWaterLevel[playerIndex]) { // Player is in water, at least partially
+        player->waterInteractionFlags |= WATER_IS_PARTIALLY_SUBMERGED;
     } else {
-        player->unk_0DE &= ~0x0002;
+        player->waterInteractionFlags &= ~WATER_IS_PARTIALLY_SUBMERGED;
     }
-    if (player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) {
-        player->unk_0DE |= 1;
-        player->unk_0DE &= ~0x0002;
+    if (player->boundingBoxSize < (gPlayerWaterLevel[playerIndex] - player->pos[1])) {
+        // Player is fully submerged in water
+        player->waterInteractionFlags |= WATER_IS_FULLY_SUBMERGED;
+        player->waterInteractionFlags &= ~WATER_IS_PARTIALLY_SUBMERGED;
     } else {
-        player->unk_0DE &= ~0x0001;
+        // Player is not fully submerged in water, clear the flag
+        player->waterInteractionFlags &= ~WATER_IS_FULLY_SUBMERGED;
     }
-    if (player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) {
-        if ((player->unk_0DE & 4) != 4) {
-            player->unk_0DE |= 8;
-            player->unk_0DE |= 4;
+    if (player->boundingBoxSize < (gPlayerWaterLevel[playerIndex] - player->pos[1])) {
+        // We confirm again that the player if fully submerged
+        if ((player->waterInteractionFlags & WATER_IN_DEEP_LIQUID_STATE) != WATER_IN_DEEP_LIQUID_STATE) {
+            // Set flag - it will be cleared shortly after
+            player->waterInteractionFlags |= WATER_JUST_ENTERED_DEEP_LIQUID;
+            // This flag persists longer
+            player->waterInteractionFlags |= WATER_IN_DEEP_LIQUID_STATE;
             if ((!IsKoopaTroopaBeach()) && (!IsSkyscraper()) &&
                 (!IsRainbowRoad()) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 if ((IsBowsersCastle()) || (IsBigDonut())) {
-                    func_800C9060((u8) arg1, 0x1900801CU);
+                    func_800C9060((u8) playerIndex, 0x1900801CU);
                 } else {
-                    func_800C9060((u8) arg1, 0x19008008U);
+                    func_800C9060((u8) playerIndex, 0x19008008U);
                 }
             }
         }
     }
     if ((IsKoopaTroopaBeach()) || (IsSkyscraper()) ||
         (IsRainbowRoad())) {
-        player->unk_0DE &= ~0x000C;
+          // Different handling for these tracks, we just use the first two (0x0001 and 0x0002)
+          player->waterInteractionFlags &= ~(WATER_IN_DEEP_LIQUID_STATE | WATER_JUST_ENTERED_DEEP_LIQUID);
     }
-    if ((player->boundingBoxSize < (D_801652A0[arg1] - player->pos[1])) &&
+    if ((player->boundingBoxSize < (gPlayerWaterLevel[playerIndex] - player->pos[1])) &&
         (player->collision.surfaceDistance[2] >= 600.0f)) {
+        // We are fully submerged in water and far away from the surface (out of bounds?)
         player->unk_0CA |= 1;
     }
     if (player->collision.surfaceDistance[2] >= 600.0f) {
@@ -1861,7 +1868,7 @@ void func_8002C4F8(Player* player, s8 arg1) {
         func_80090778(player);
         func_80090868(player);
     }
-    func_8002C17C(player, arg1);
+    func_8002C17C(player, playerIndex);
 }
 
 void func_8002C7E4(Player* player, s8 arg1, s8 arg2) {
@@ -1960,7 +1967,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
     }
     if (player->effects & BOOST_EFFECT) {
         remove_boost_effect(player);
-        player->unk_08C /= 2;
+        player->kartPropulsionStrength /= 2;
     }
 }
 
@@ -2073,7 +2080,7 @@ void func_8002D028(Player* player, s8 arg1) {
         if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
             player->type &= ~0x0200;
         }
-        player->unk_08C = 0;
+        player->kartPropulsionStrength = 0;
         player->speed = 0;
         player->unk_104 = 0;
         player->tyreSpeed = 0;
@@ -2084,7 +2091,7 @@ void func_8002D028(Player* player, s8 arg1) {
         player->unk_0C0 = 0;
         player->unk_078 = 0;
     } else {
-        player->unk_08C = 1200;
+        player->kartPropulsionStrength = 1200;
     }
 }
 
@@ -2173,7 +2180,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     } else {
         player->unk_044 &= 0xFFF7;
     }
-    if (((player->unk_08C <= 0.0f) && ((temp_v0_3 = player->effects, (temp_v0_3 & 1) == 1))) &&
+    if (((player->kartPropulsionStrength <= 0.0f) && ((temp_v0_3 = player->effects, (temp_v0_3 & 1) == 1))) &&
         ((temp_v0_3 & 0x20) != 0x20)) {
         sp178[2] = temp_f2_2 * 4500.0f;
     } else {
@@ -2362,7 +2369,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     player->previousSpeed = player->speed;
     player->speed = sqrtf(temp2);
 
-    if ((player->unk_08C <= 0.0f) && (player->speed <= 0.08) && (D_8018CE10[playerId].unk_04[0] == 0.0f) &&
+    if ((player->kartPropulsionStrength <= 0.0f) && (player->speed <= 0.08) && (D_8018CE10[playerId].unk_04[0] == 0.0f) &&
         (D_8018CE10[playerId].unk_04[2] == 0.0f)) {
         newVelocity[0] = newVelocity[0] + (-1 * newVelocity[0]);
         newVelocity[2] = newVelocity[2] + (-1 * newVelocity[2]);
@@ -2406,7 +2413,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if (player->collision.surfaceDistance[2] >= 500.0f) {
         player->unk_078 = (s16) (((s16) player->unk_078) / 2);
     }
-    func_8002C4F8(player, playerId);
+    update_player_environment_and_hazard_state(player, playerId);
 }
 
 void set_player_height(Player* player) {
@@ -2644,8 +2651,8 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     temp = (sp54[0] * sp54[0]) + (sp54[2] * sp54[2]);
     player->previousSpeed = player->speed;
     player->speed = sqrtf(temp);
-    if ((((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->speed < 0.13)) ||
-        (((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->speed < 0.20) &&
+    if ((((player->effects & 0x400) != 0x400) && (player->kartPropulsionStrength <= 0) && (player->speed < 0.13)) ||
+        (((player->effects & 0x400) != 0x400) && (player->kartPropulsionStrength <= 0) && (player->speed < 0.20) &&
          ((player->effects & 1) == 1))) {
         sp54[0] = sp54[0] + (-1 * sp54[0]);
         sp54[2] = sp54[2] + (-1 * sp54[2]);
@@ -2668,7 +2675,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
             player->speed = gKartTopSpeedTable[player->characterId];
         }
     }
-    func_8002C4F8(player, playerId);
+    update_player_environment_and_hazard_state(player, playerId);
 }
 
 void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 screenId, s8 playerId) {
@@ -2824,8 +2831,8 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     sqrt = (sp68[0] * sp68[0]) + (sp68[1] * sp68[1]) + (sp68[2] * sp68[2]);
     player->previousSpeed = player->speed;
     player->speed = sqrtf(sqrt);
-    if (((player->unk_08C <= 0.0f) && ((f64) player->speed < 0.13)) ||
-        ((player->unk_08C <= 0.0f) && ((f64) player->speed < 0.2) && ((player->effects & 1) == 1))) {
+    if (((player->kartPropulsionStrength <= 0.0f) && ((f64) player->speed < 0.13)) ||
+        ((player->kartPropulsionStrength <= 0.0f) && ((f64) player->speed < 0.2) && ((player->effects & 1) == 1))) {
         sp68[0] = sp68[0] + (sp68[0] * -1.0f);
         sp68[2] = sp68[2] + (sp68[2] * -1.0f);
     } else {
@@ -3015,19 +3022,19 @@ f32 func_80030150(Player* player, s8 arg1) {
                 var_f0 += -0.25;
             }
         }
-        if ((player->unk_0DE & 1) == 1) {
+        if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) == WATER_IS_FULLY_SUBMERGED) {
             var_f0 += 0.3;
         } else {
-            if ((player->unk_0DE & 2) == 2) {
+            if ((player->waterInteractionFlags & WATER_IS_PARTIALLY_SUBMERGED) == WATER_IS_PARTIALLY_SUBMERGED) {
                 var_f0 += 0.15;
             }
-            if (((D_801652A0[arg1] - player->tyres[BACK_LEFT].baseHeight) >= 3.5) ||
-                ((D_801652A0[arg1] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5)) {
+            if (((gPlayerWaterLevel[arg1] - player->tyres[BACK_LEFT].baseHeight) >= 3.5) ||
+                ((gPlayerWaterLevel[arg1] - player->tyres[BACK_RIGHT].baseHeight) >= 3.5)) {
                 var_f0 += 0.05;
             }
         }
         if ((player->effects & 8) != 0) {
-            move_f32_towards(&player->unk_0A0, player->unk_08C * 0.04, 0.15f);
+            move_f32_towards(&player->unk_0A0, player->kartPropulsionStrength * 0.04, 0.15f);
         } else {
             move_f32_towards(&player->unk_0A0, 0.0f, 0.1f);
         }
@@ -3061,7 +3068,7 @@ f32 func_80030150(Player* player, s8 arg1) {
         }
     }
     move_f32_towards(&player->unk_104, var_f0, gKartTurnSpeedReductionTable1[player->characterId] + 0.05);
-    var_f2 = (player->unk_08C + player->unk_0E8 + player->boostPower + player->unk_0E4) - player->unk_0A0;
+    var_f2 = (player->kartPropulsionStrength + player->unk_0E8 + player->boostPower + player->unk_0E4) - player->unk_0A0;
     if (var_f2 < 0.0f) {
         var_f2 = 0.0f;
     }
@@ -3078,58 +3085,63 @@ f32 func_80030150(Player* player, s8 arg1) {
     if (((player->effects & BOOST_EFFECT) == (BOOST_EFFECT & 0xFFFFFFFF)) ||
         ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) ||
         ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT)) {
-        func_8002FE84(player, player->boostPower + player->unk_08C);
-        return player->boostPower + player->unk_08C;
+        func_8002FE84(player, player->boostPower + player->kartPropulsionStrength);
+        return player->boostPower + player->kartPropulsionStrength;
     }
     func_8002FE84(player, var_f2);
     return (1.0f - player->unk_104) * var_f2;
 }
 
-void func_80030A34(Player* player) {
-    f32 var_f0;
-    f32 var_f2;
+void update_player_kart_hop(Player* player) {
+    f32 hopInitialUpwardVelocity;
+    f32 hopDownwardAcceleration;
 
     if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 8) != 8)) {
         if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
             switch (player->surfaceType) { /* irregular */
                 case ASPHALT:
                     if (random_int(0x000AU) != 8) {
-                        var_f0 = 0.35f;
-                        var_f2 = 0.55f;
+                        hopInitialUpwardVelocity = 0.35f;
+                        hopDownwardAcceleration = 0.55f;
                     } else {
-                        player->unk_07A = 0;
-                        player->unk_108 = 0.0f;
-                        var_f0 = 0.0f;
-                        var_f2 = 0.0f;
+                        player->hopFrameCounter = 0;
+                        player->hopVerticalOffset = 0.0f;
+                        hopInitialUpwardVelocity = 0.0f;
+                        hopDownwardAcceleration = 0.0f;
                     }
                     break;
                 case TRAIN_TRACK:
                 case ROPE_BRIDGE:
-                    var_f0 = 0.94f;
-                    var_f2 = 0.85f;
+                    hopInitialUpwardVelocity = 0.94f;
+                    hopDownwardAcceleration = 0.85f;
                     break;
                 default:
                     if (1) {}
-                    var_f0 = 0.46f;
-                    var_f2 = 0.48f;
+                    hopInitialUpwardVelocity = 0.46f;
+                    hopDownwardAcceleration = 0.48f;
                     break;
             }
         } else if (random_int(0x000AU) != 8) {
-            var_f0 = 0.3f;
-            var_f2 = 0.54f;
+            hopInitialUpwardVelocity = 0.3f;
+            hopDownwardAcceleration = 0.54f;
         } else {
-            player->unk_07A = 0;
-            player->unk_108 = 0.0f;
-            var_f0 = 0.0f;
-            var_f2 = 0.0f;
+            player->hopFrameCounter = 0;
+            player->hopVerticalOffset = 0.0f;
+            hopInitialUpwardVelocity = 0.0f;
+            hopDownwardAcceleration = 0.0f;
         }
-        player->unk_07A += 1;
-        player->unk_108 = (player->unk_07A * var_f0) - (0.5 * var_f2 * (player->unk_07A * player->unk_07A));
-        if ((player->unk_07A != 0) && (player->unk_108 < 0.0f)) {
-            player->unk_07A = 0;
+
+        // Increase the hop frame counter
+        player->hopFrameCounter += 1;
+
+        // Vertical displacement under constant acceleration: Δy = v₀t + (1/2)at²
+        player->hopVerticalOffset = (player->hopFrameCounter * hopInitialUpwardVelocity) - (0.5 * hopDownwardAcceleration * (player->hopFrameCounter * player->hopFrameCounter));
+
+        if ((player->hopFrameCounter != 0) && (player->hopVerticalOffset < 0.0f)) {
+            player->hopFrameCounter = 0;
         }
-        if (player->unk_108 <= 0.0f) {
-            player->unk_108 = 0.0f;
+        if (player->hopVerticalOffset <= 0.0f) {
+            player->hopVerticalOffset = 0.0f;
         }
     }
 }
@@ -3167,7 +3179,7 @@ void detect_triple_a_combo_a_released(Player* player) {
                 gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
-            D_80165400[playerIndex] = 0;
+            gPlayerAButtonComboActiveThisFrame[playerIndex] = 0;
         }
         gPlayerIsThrottleActive[playerIndex] = false;
         gFrameSinceLastACombo[playerIndex]++;
@@ -3175,10 +3187,10 @@ void detect_triple_a_combo_a_released(Player* player) {
             gFrameSinceLastACombo[playerIndex] = 9;
         }
         if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
-            if (D_80165400[playerIndex] == 0) {
+            if (gPlayerAButtonComboActiveThisFrame[playerIndex] == 0) {
                 gCountASwitch[playerIndex] += 1;
             }
-            D_80165400[playerIndex] = 1;
+            gPlayerAButtonComboActiveThisFrame[playerIndex] = 1;
         }
         if (gCountASwitch[playerIndex] == 5) {
             gIsPlayerTripleAButtonCombo[playerIndex] = true;
@@ -3227,7 +3239,7 @@ void detect_triple_a_combo_a_pressed(Player* player) {
                 gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
-            D_80165400[playerIndex] = 0;
+            gPlayerAButtonComboActiveThisFrame[playerIndex] = 0;
         }
         gPlayerIsThrottleActive[playerIndex] = true;
         gFrameSinceLastACombo[playerIndex]++;
@@ -3235,10 +3247,10 @@ void detect_triple_a_combo_a_pressed(Player* player) {
             gFrameSinceLastACombo[playerIndex] = 9;
         }
         if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
-            if (D_80165400[playerIndex] == 0) {
+            if (gPlayerAButtonComboActiveThisFrame[playerIndex] == 0) {
                 gCountASwitch[playerIndex] += 1;
             }
-            D_80165400[playerIndex] = 1;
+            gPlayerAButtonComboActiveThisFrame[playerIndex] = 1;
         }
         if (gCountASwitch[playerIndex] == 5) {
             gIsPlayerTripleAButtonCombo[playerIndex] = true;
@@ -3358,7 +3370,7 @@ void player_accelerate_alternative(Player* player) {
         player->currentSpeed = player->topSpeed;
     }
     if (!((player->effects & 8)) || ((player->effects & LIGHTNING_EFFECT))) {
-        player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
+        player->kartPropulsionStrength = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 |= 0x20;
     if ((player->soundEffects * 8) < 0) {
@@ -3376,13 +3388,13 @@ void player_decelerate_alternative(Player* player, f32 speed) {
         player->currentSpeed = 0.0f;
     }
     if (player->speed < 0.2) {
-        player->unk_08C = 0.0f;
+        player->kartPropulsionStrength = 0.0f;
     }
     if (player->topSpeed <= player->currentSpeed) {
         player->currentSpeed = player->topSpeed;
     }
     if ((player->effects & 8) != 8) {
-        player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
+        player->kartPropulsionStrength = (player->currentSpeed * player->currentSpeed) / 25.0f;
     }
     player->unk_044 &= 0xFFDF;
     if ((player->soundEffects * 8) < 0) {
@@ -3425,7 +3437,7 @@ void detect_triple_b_combo_b_released(Player* player) {
                 gCountBChangement[playerIndex] = 0;
             }
             gFrameSinceLastBCombo[playerIndex] = 0;
-            D_801654C0[playerIndex] = 0;
+            gPlayerBButtonComboActiveThisFrame[playerIndex] = 0;
         }
         gPlayerIsBrakeActive[playerIndex] = false;
         gFrameSinceLastBCombo[playerIndex]++;
@@ -3433,10 +3445,10 @@ void detect_triple_b_combo_b_released(Player* player) {
             gFrameSinceLastBCombo[playerIndex] = 9;
         }
         if ((gFrameSinceLastBCombo[playerIndex] >= 2) && (gFrameSinceLastBCombo[playerIndex] < 9)) {
-            if (D_801654C0[playerIndex] == 0) {
+            if (gPlayerBButtonComboActiveThisFrame[playerIndex] == 0) {
                 gCountBChangement[playerIndex]++;
             }
-            D_801654C0[playerIndex] = 1;
+            gPlayerBButtonComboActiveThisFrame[playerIndex] = 1;
         }
         if (gCountBChangement[playerIndex] == 5) {
             gIsPlayerTripleBButtonCombo[playerIndex] = true;
@@ -3486,7 +3498,7 @@ void detect_triple_b_combo_b_pressed(Player* player) {
                 gCountBChangement[playerIndex] = 0;
             }
             gFrameSinceLastBCombo[playerIndex] = 0;
-            D_801654C0[playerIndex] = 0;
+            gPlayerBButtonComboActiveThisFrame[playerIndex] = 0;
         }
         gPlayerIsBrakeActive[playerIndex] = true;
         gFrameSinceLastBCombo[playerIndex]++;
@@ -3494,10 +3506,10 @@ void detect_triple_b_combo_b_pressed(Player* player) {
             gFrameSinceLastBCombo[playerIndex] = 9;
         }
         if ((gFrameSinceLastBCombo[playerIndex] >= 2) && (gFrameSinceLastBCombo[playerIndex] < 9)) {
-            if (D_801654C0[playerIndex] == 0) {
+            if (gPlayerBButtonComboActiveThisFrame[playerIndex] == 0) {
                 gCountBChangement[playerIndex]++;
             }
-            D_801654C0[playerIndex] = 1;
+            gPlayerBButtonComboActiveThisFrame[playerIndex] = 1;
         }
         if (gCountBChangement[playerIndex] == 5) {
             gIsPlayerTripleBButtonCombo[playerIndex] = true;
@@ -3645,7 +3657,7 @@ void player_decelerate_during_start_sequence(Player* player, f32 speedReduction)
         player->currentSpeed = 0.0f;
     }
     if (player->speed < 0.2) {
-        player->unk_08C = 0.0f;
+        player->kartPropulsionStrength = 0.0f;
     }
     if (player->topSpeed <= player->currentSpeed) {
         player->currentSpeed = player->topSpeed;
@@ -3949,16 +3961,16 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             sp2CC = 8;
         }
     }
-    if ((player->unk_0DE & 1) == 1) {
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) == WATER_IS_FULLY_SUBMERGED) {
         sp2C8 *= 1.5;
         sp2CC *= 1.5;
     } else {
-        if ((player->unk_0DE & 2) == 2) {
+        if ((player->waterInteractionFlags & WATER_IS_PARTIALLY_SUBMERGED) == WATER_IS_PARTIALLY_SUBMERGED) {
             sp2C8 *= 1.2;
             sp2CC *= 1.2;
         }
-        if ((((f64) (D_801652A0[arg2] - player->tyres[BACK_LEFT].baseHeight)) >= 3.5) ||
-            (((f64) (D_801652A0[arg2] - player->tyres[BACK_RIGHT].baseHeight)) >= 3.5)) {
+        if ((((f64) (gPlayerWaterLevel[arg2] - player->tyres[BACK_LEFT].baseHeight)) >= 3.5) ||
+            (((f64) (gPlayerWaterLevel[arg2] - player->tyres[BACK_RIGHT].baseHeight)) >= 3.5)) {
             sp2C8 *= 1.05;
             sp2CC *= 1.05;
         }
@@ -4597,7 +4609,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
                 player->unk_044 |= 1;
-                player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
+                player->kartPropulsionStrength = (player->currentSpeed * player->currentSpeed) / 25.0f;
                 player->unk_20C = 0.0f;
             }
             if ((func_800388B0(controller) >= -0x1D) || (!(controller->button & B_BUTTON))) {
@@ -4833,7 +4845,7 @@ void func_80038BE4(Player* player, s16 arg1) {
         player->currentSpeed = 250.0f;
     }
     player->unk_044 |= 0x20;
-    player->unk_08C = (player->currentSpeed * player->currentSpeed) / 25.0f;
+    player->kartPropulsionStrength = (player->currentSpeed * player->currentSpeed) / 25.0f;
 }
 
 void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) {
@@ -4879,7 +4891,7 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     mtxf_translate_vec3f_mat3(sp108, player->orientationMatrix);
     spA4 += sp108[0];
     sp9C += sp108[2];
-    sp114[2] = player->unk_08C;
+    sp114[2] = player->kartPropulsionStrength;
     mtxf_translate_vec3f_mat3(sp114, player->orientationMatrix);
 
     sp88[0] = player->velocity[0];
@@ -4985,5 +4997,5 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     if (player->collision.surfaceDistance[2] >= 500.0f) {
         player->unk_078 /= 2;
     }
-    func_8002C4F8(player, playerId);
+    update_player_environment_and_hazard_state(player, playerId);
 }

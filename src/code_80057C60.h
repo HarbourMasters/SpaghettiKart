@@ -266,7 +266,7 @@ extern u8** D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
 
-extern f32 D_801652A0[];
+extern f32 gPlayerWaterLevel[];
 
 extern s32 D_80165590;
 extern s32 D_80165594;

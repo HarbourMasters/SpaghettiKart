@@ -342,17 +342,8 @@ void func_8001CA10(Camera* camera) {
 }
 
 void func_8001CA24(Player* player, f32 arg1) {
-    Camera* camera = &cameras[0];
+    Camera* camera = &cameras[player - gPlayerOne];
 
-    if (player == gPlayerTwo) {
-        camera += 1;
-    }
-    if (player == gPlayerThree) {
-        camera += 2;
-    }
-    if (player == gPlayerFour) {
-        camera += 3;
-    }
     camera->unk_94.unk_8 = 0;
     camera->unk_94.unk_0 = arg1;
 }
@@ -548,8 +539,8 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
-        *arg4 = D_801652A0[index];
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+        *arg4 = gPlayerWaterLevel[index];
     }
 }
 
@@ -571,7 +562,7 @@ void func_8001D53C(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     } else {
         move_f32_towards(&camera->unk_A0, 0.0f, 0.06f);
     }
-    thing = D_801652A0[arg7];
+    thing = gPlayerWaterLevel[arg7];
     sp68[0] = camera->unk_30[0];
     sp68[1] = camera->unk_30[1];
     sp68[2] = camera->unk_30[2];
@@ -768,8 +759,8 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->unk_0DE & 1) != 0) {
-        *arg4 = D_801652A0[index];
+    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+        *arg4 = gPlayerWaterLevel[index];
     }
 }
 
@@ -1049,20 +1040,8 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
 }
 
 void func_8001EE98(Player* player, Camera* camera, s8 index) {
-    s32 cameraIndex;
+    s32 cameraIndex = camera1 - camera;
 
-    if (camera == camera1) {
-        cameraIndex = 0;
-    }
-    if (camera == camera2) {
-        cameraIndex = 1;
-    }
-    if (camera == camera3) {
-        cameraIndex = 2;
-    }
-    if (camera == camera4) {
-        cameraIndex = 3;
-    }
     switch (gModeSelection) {
         case GRAND_PRIX:
             // clang-format off
@@ -1155,9 +1134,9 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
 void func_8001F394(Player* player, f32* arg1) {
     f32 var_f0;
     UNUSED s32 pad;
-    s32 playerIndex;
+    s32 playerIndex = player - gPlayerOne;
     UNUSED s32 pad2;
-    Camera* camera = &cameras[0];
+    Camera* camera = &cameras[playerIndex];
 
     if (player == gPlayerOne) {
         playerIndex = 0;
@@ -1278,7 +1257,6 @@ void func_8001F394(Player* player, f32* arg1) {
             break;
     }
     *arg1 = var_f0;
-    camera += playerIndex; // In 500 words or less, please explain why?
     camera->unk_B4 = var_f0;
 }
 

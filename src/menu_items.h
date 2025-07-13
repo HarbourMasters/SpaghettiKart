@@ -459,6 +459,7 @@ Gfx* print_letter_wide_right(Gfx* arg0, MenuTexture* glyphTexture, f32 arg2, f32
                              f32 scaleY);
 Gfx* func_8009C204(Gfx*, MenuTexture*, s32, s32, s32);
 Gfx* func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
+Gfx* func_8009C434_alt(Gfx*, struct_8018DEE0_entry*, s32, s32);
 Gfx* func_8009C708(Gfx*, struct_8018DEE0_entry*, s32, s32, s32, s32);
 void func_8009C918(void);
 void func_8009CA2C(void);

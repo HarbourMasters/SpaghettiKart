@@ -58,7 +58,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit* fruit) {
                     player->velocity[2] -= temp_f14 * 0.7f;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
                     if (gModeSelection != GRAND_PRIX) {
-                        D_80162DF8 = 1;
+                        gPostTimeTrialReplayCannotSave = 1;
                     }
                 }
             }

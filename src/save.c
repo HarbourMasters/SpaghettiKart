@@ -8,7 +8,7 @@
 #include "menu_items.h"
 #include "menus.h"
 #include "save_data.h"
-#include "staff_ghosts.h"
+#include "replays.h"
 #include "code_80057C60.h"
 #include "port/Game.h"
 #include "buffers.h"
@@ -249,8 +249,8 @@ u32 func_800B4DF4(u8* arr) {
 
 // Get a time trial record, infer course index
 s32 func_800B4E24(s32 recordIndex) {
-    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(((GetCupIndex() * 4) + gCourseIndexInCup) / 4)]
-                             .courseRecords[(((GetCupIndex() * 4) + gCourseIndexInCup) % 4)]
+    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[GetCupIndex()]
+                             .courseRecords[GetCupCursorPosition()]
                              .records[recordIndex]);
 }
 
@@ -263,8 +263,8 @@ u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
 
 // Get Best Lap record of the inferred course index
 s32 func_800B4F2C(void) {
-    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(((GetCupIndex() * 4) + gCourseIndexInCup) / 4)]
-                             .courseRecords[(((GetCupIndex() * 4) + gCourseIndexInCup) % 4)]
+    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[GetCupIndex()]
+                             .courseRecords[GetCupCursorPosition()]
                              .records[TIME_TRIAL_1LAP_RECORD]);
 }
 
@@ -282,7 +282,7 @@ s32 func_800B5020(u32 time, s32 charId) {
     s32 j;
     CourseTimeTrialRecords* tt;
 
-    course = GetCupIndex() * 4 + gCourseIndexInCup;
+    course = GetCupIndex() * 4 + GetCupCursorPosition();
     tt = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
 
     i = 0;
@@ -329,7 +329,7 @@ s32 func_800B5218(void) {
     s32 checkLapIndex;
     s32 character;
     s32 lapBitmask;
-    recordIndex = (GetCupIndex() * 4) + gCourseIndexInCup;
+    recordIndex = (GetCupIndex() * 4) + GetCupCursorPosition();
     recordPointer =
         &gSaveData.allCourseTimeTrialRecords.cupRecords[recordIndex / 4].courseRecords[recordIndex % 4].records[0][0];
     lapBitmask = 1;
@@ -782,7 +782,7 @@ s32 func_800B6178(s32 arg0) {
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == 4) {
-                temp_s3->courseIndex = (GetCupIndex() * 4) + gCourseIndexInCup;
+                temp_s3->courseIndex = (GetCupIndex() * 4) + GetCupCursorPosition();
             }
             temp_s3->unk_00 = D_80162DFC;
             temp_s3->characterId = (u8) D_80162DE0;
@@ -827,11 +827,11 @@ s32 func_800B63F0(s32 arg0) {
     s32 phi_s3;
 
     func_800051C4();
-    D_80162DD6 = 1;
+    bCourseGhostDisabled = 1;
     func_80005AE8(gPlayerThree);
 
     phi_s3 = 0;
-    if (((GetCupIndex() * 4) + gCourseIndexInCup) != D_8018EE10[arg0].courseIndex) {
+    if (((GetCupIndex() * 4) + GetCupCursorPosition()) != D_8018EE10[arg0].courseIndex) {
         phi_s3 = 2;
     } else if (D_80162DFC != D_8018EE10[arg0].unk_00) {
         phi_s3 = 3;
@@ -866,16 +866,16 @@ s32 func_800B64EC(s32 arg0) {
         return -1;
     }
 
-    sReplayGhostDecompressed = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
+    sPlayerGhostReplay = (u32*) &D_802BFB80.arraySize8[0][D_80162DC8][3];
     temp_v0 =
         osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ,
-                           (arg0 * (sizeof(u8) * 0x1000)) + 0x100, sizeof(u8) * 0x1000, (u8*) sReplayGhostDecompressed);
+                           (arg0 * (sizeof(u8) * 0x1000)) + 0x100, sizeof(u8) * 0x1000, (u8*) sPlayerGhostReplay);
     if (temp_v0 == 0) {
         // clang-format off
         phi_s1 = (u8 *) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
             // clang-format on
 
-            if (phi_s1[7] != func_800B60E8(temp_s0, (u8*) sReplayGhostDecompressed)) {
+            if (phi_s1[7] != func_800B60E8(temp_s0, (u8*) sPlayerGhostReplay)) {
                 D_8018EE10[arg0].ghostDataSaved = 0;
                 return -2;
             }
@@ -883,7 +883,7 @@ s32 func_800B64EC(s32 arg0) {
             ++phi_s1;
             if ((++temp_s0) == 0x3C) {
                 func_8000522C();
-                D_80162DD4 = 0;
+                bPlayerGhostDisabled = 0;
                 D_80162DE0 = (s32) D_8018EE10[arg0].characterId;
                 D_80162DFC = D_8018EE10[arg0].unk_00;
                 break;

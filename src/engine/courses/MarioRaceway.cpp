@@ -26,7 +26,7 @@ extern "C" {
     #include "render_objects.h"
     #include "assets/common_data.h"
     #include "save.h"
-    #include "staff_ghosts.h"
+    #include "replays.h"
     #include "actors.h"
     #include "mario_raceway_data.h"
     #include "collision.h"
@@ -134,7 +134,7 @@ MarioRaceway::MarioRaceway() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.CloudTexture = (uint8_t*) LOAD_ASSET_RAW(gTextureExhaust5);
+    Props.CloudTexture = (uint8_t*) gTextureExhaust5;
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gLuigiRacewayClouds;
 
@@ -266,10 +266,10 @@ void MarioRaceway::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 void MarioRaceway::SetStaffGhost() {
     u32 temp_v0 = func_800B4E24(0) & 0xfffff;
     if (temp_v0 <= 9000) {
-        D_80162DD6 = 0;
+        bCourseGhostDisabled = 0;
         D_80162DF4 = 0;
     } else {
-        D_80162DD6 = 1;
+        bCourseGhostDisabled = 1;
         D_80162DF4 = 1;
     }
     D_80162DC4 = d_mario_raceway_staff_ghost;

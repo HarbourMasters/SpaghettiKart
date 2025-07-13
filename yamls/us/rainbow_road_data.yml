@@ -412,30 +412,141 @@ gTLUTRainbowRoadNeonToad:
   height: 16
   format: rgba16
   ctype: u16
-d_course_rainbow_road_neon_mushroom:
-  symbol: d_course_rainbow_road_neon_mushroom
+d_course_rainbow_road_neon_mushroom1:
+  symbol: d_course_rainbow_road_neon_mushroom1
   type: texture
   offset: 0x8000
   width: 64
   height: 64
   format: ci8
   ctype: u8
-d_course_rainbow_road_neon_mario:
-  symbol: d_course_rainbow_road_neon_mario
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom1
+d_course_rainbow_road_neon_mushroom2:
+  symbol: d_course_rainbow_road_neon_mushroom2
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom2
+d_course_rainbow_road_neon_mushroom3:
+  symbol: d_course_rainbow_road_neon_mushroom3
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom3
+d_course_rainbow_road_neon_mushroom4:
+  symbol: d_course_rainbow_road_neon_mushroom4
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom4
+d_course_rainbow_road_neon_mushroom5:
+  symbol: d_course_rainbow_road_neon_mushroom5
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom5
+d_course_rainbow_road_neon_mario1:
+  symbol: d_course_rainbow_road_neon_mario1
   type: texture
   offset: 0x9000
   width: 64
   height: 64
   format: ci8
   ctype: u8
-d_course_rainbow_road_neon_boo:
-  symbol: d_course_rainbow_road_neon_boo
+  tlut_symbol: gTLUTRainbowRoadNeonMario1
+d_course_rainbow_road_neon_mario2:
+  symbol: d_course_rainbow_road_neon_mario2
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario2
+d_course_rainbow_road_neon_mario3:
+  symbol: d_course_rainbow_road_neon_mario3
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario3
+d_course_rainbow_road_neon_mario4:
+  symbol: d_course_rainbow_road_neon_mario4
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario4
+d_course_rainbow_road_neon_mario5:
+  symbol: d_course_rainbow_road_neon_mario5
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario5
+d_course_rainbow_road_neon_boo1:
+  symbol: d_course_rainbow_road_neon_boo1
   type: texture
   offset: 0xA000
   width: 64
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo1
+d_course_rainbow_road_neon_boo2:
+  symbol: d_course_rainbow_road_neon_boo2
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo2
+d_course_rainbow_road_neon_boo3:
+  symbol: d_course_rainbow_road_neon_boo3
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo3
+d_course_rainbow_road_neon_boo4:
+  symbol: d_course_rainbow_road_neon_boo4
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo4
+d_course_rainbow_road_neon_boo5:
+  symbol: d_course_rainbow_road_neon_boo5
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo5
 gTextureRainbowRoadNeonPeach:
   symbol: gTextureRainbowRoadNeonPeach
   type: texture
@@ -444,6 +555,7 @@ gTextureRainbowRoadNeonPeach:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonPeach
 gTextureRainbowRoadNeonLuigi:
   symbol: gTextureRainbowRoadNeonLuigi
   type: texture
@@ -452,6 +564,7 @@ gTextureRainbowRoadNeonLuigi:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonLuigi
 gTextureRainbowRoadNeonDonkeyKong:
   symbol: gTextureRainbowRoadNeonDonkeyKong
   type: texture
@@ -460,6 +573,7 @@ gTextureRainbowRoadNeonDonkeyKong:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonDonkeyKong
 gTextureRainbowRoadNeonYoshi:
   symbol: gTextureRainbowRoadNeonYoshi
   type: texture
@@ -468,6 +582,7 @@ gTextureRainbowRoadNeonYoshi:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonYoshi
 gTextureRainbowRoadNeonBowser:
   symbol: gTextureRainbowRoadNeonBowser
   type: texture
@@ -476,6 +591,7 @@ gTextureRainbowRoadNeonBowser:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBowser
 gTextureRainbowRoadNeonWario:
   symbol: gTextureRainbowRoadNeonWario
   type: texture
@@ -484,6 +600,7 @@ gTextureRainbowRoadNeonWario:
   height: 64
   format: ci8
   ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonWario
 gTextureRainbowRoadNeonToad:
   symbol: gTextureRainbowRoadNeonToad
   type: texture
@@ -492,7 +609,7 @@ gTextureRainbowRoadNeonToad:
   height: 64
   format: ci8
   ctype: u8
-
+  tlut_symbol: gTLUTRainbowRoadNeonToad
 d_course_rainbow_road_light1:
   symbol: d_course_rainbow_road_light1
   type: lights

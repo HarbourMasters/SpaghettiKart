@@ -363,7 +363,7 @@ extern u16* gHudLapTextures[];
 extern u16* gPortraitTLUTs[];
 extern u8* gPortraitTextures[];
 
-extern s32 D_80162DF8;
+extern s32 gPostTimeTrialReplayCannotSave;
 extern s16 D_8016347C;
 extern s32 D_80165594;
 extern s32 D_80165598;

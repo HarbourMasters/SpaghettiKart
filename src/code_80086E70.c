@@ -954,15 +954,15 @@ UNUSED bool func_80088F94(s32 objectIndex, Player* player, f32 arg2) {
     return var_v1;
 }
 
-void func_80088FF0(Player* player) {
-    player->unk_08C = 0.0f;
+void reset_player_speed_and_velocity(Player* player) {
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
     player->velocity[0] = 0.0f;
     player->velocity[2] = 0.0f;
 }
 
 UNUSED void func_8008900C(Player* player) {
-    player->unk_08C = 0.0f;
+    player->kartPropulsionStrength = 0.0f;
     player->currentSpeed = 0.0f;
 }
 
@@ -1915,8 +1915,8 @@ void object_origin_pos_randomize_around_xyz(s32 objectIndex, s16 x, s16 y, s16 z
 }
 
 void object_origin_pos_around_player_one(s32 objectIndex, s16 dist, u16 angle) {
-    gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(angle) * dist);
-    gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(angle) * dist);
+    gObjectList[objectIndex].origin_pos[0] = gPlayerOne->pos[0] + (sins(angle) * dist);
+    gObjectList[objectIndex].origin_pos[2] = gPlayerOne->pos[2] + (coss(angle) * dist);
 }
 
 UNUSED void func_8008BEA4(s32 objectIndex, u16 arg1, u16 arg2) {

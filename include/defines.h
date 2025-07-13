@@ -48,6 +48,27 @@
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
+#define ALL_BUTTONS                                                                                                   \
+    (A_BUTTON | B_BUTTON | L_TRIG | R_TRIG | Z_TRIG | START_BUTTON | U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | \
+     L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
+
+/**
+ * Replay controller buttons
+ * Used for time trial replays (including staff and player ghosts)
+ * Each entry is converted to a u32 value
+ * This allows access to the button struct member
+ */
+#define REPLAY_A_BUTTON (1 << 31) // 0x80000000
+#define REPLAY_B_BUTTON (1 << 30) // 0x40000000
+#define REPLAY_Z_TRIG (1 << 29)   // 0x20000000
+#define REPLAY_R_TRIG (1 << 28)   // 0x10000000
+
+#define REPLAY_FRAME_COUNTER 0xFF0000
+#define REPLAY_CLEAR_FRAME_COUNTER (0xFFFFFFFF & ~REPLAY_FRAME_COUNTER)
+#define REPLAY_STICK_Y 0xFF00
+#define REPLAY_STICK_X 0xFF
+#define REPLAY_FRAME_INCREMENT 0x10000
+
 /**
  * @brief Jump to demo mode from the debug menu using L and A
  */
@@ -350,7 +371,6 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x40 0x40             //
 #define UNKNOWN_EFFECT_0x80 0x80             //
 #define UNKNOWN_EFFECT_0xC 0xC               //
-#define UNKNOWN_EFFECT_0x10 0x10             //
 #define UNKNOWN_EFFECT_0x100 0x100           //
 #define UNKNOWN_EFFECT_0x1000 0x1000         //
 #define STAR_EFFECT 0x200                    // being a star
@@ -382,15 +402,15 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 /**
  * @brief durations of effects
  */
- #define STAR_EFFECT_DURATION 0xA
- #define BOO_EFFECT_DURATION 0x7
+#define STAR_EFFECT_DURATION 0xA
+#define BOO_EFFECT_DURATION 0x7
 
- /**
-  * @brief alpha related values
-  */
- #define ALPHA_MAX 0xFF
- #define ALPHA_MIN 0x0
- #define ALPHA_BOO_EFFECT 0x60
+/**
+ * @brief alpha related values
+ */
+#define ALPHA_MAX 0xFF
+#define ALPHA_MIN 0x0
+#define ALPHA_BOO_EFFECT 0x60
 
 #define ALPHA_CHANGE_LARGE 8
 #define ALPHA_CHANGE_MEDIUM 4
@@ -408,6 +428,18 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define COLOR_LIGHT GPACK_RGB888(0x1C, 0x00, 0x00)
 #define COLOR_LAVA GPACK_RGB888(0x34, 0x00, 0x00)
 #define COLOR_BLACK GPACK_RGB888(0, 0, 0)
+
+
+/**
+ * @brief player water interaction flags (player->unk_0DE)
+ *
+ */
+
+#define WATER_NO_INTERACTION 0x0000             // No water interaction
+#define WATER_IS_FULLY_SUBMERGED 0x0001         // Kart is completely underwater
+#define WATER_IS_PARTIALLY_SUBMERGED 0x0002     // Kart is partially in the water
+#define WATER_IN_DEEP_LIQUID_STATE 0x0004       // Persistent flag for being in a deep liquid state?
+#define WATER_JUST_ENTERED_DEEP_LIQUID 0x0008   // Momentary flag for the instant of entering deep liquid
 
 /**
  *

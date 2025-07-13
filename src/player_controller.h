@@ -55,7 +55,7 @@ void func_8002BF4C(Player*, s8);
 
 void func_8002C11C(Player*);
 void func_8002C17C(Player*, s8);
-void func_8002C4F8(Player*, s8);
+void update_player_environment_and_hazard_state(Player*, s8);
 void func_8002C7E4(Player*, s8, s8);
 void func_8002C954(Player*, s8, Vec3f);
 void apply_effect(Player*, s8, s8);
@@ -70,7 +70,7 @@ void func_8002FCA8(Player*, s8);
 void func_8002FE84(Player*, f32);
 
 f32 func_80030150(Player*, s8);
-void func_80030A34(Player*);
+void update_player_kart_hop(Player*);
 void detect_triple_a_combo_a_released(Player*);
 void detect_triple_a_combo_a_pressed(Player*);
 void player_accelerate_alternative(Player*);

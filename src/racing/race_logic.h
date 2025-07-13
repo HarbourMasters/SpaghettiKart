@@ -39,6 +39,6 @@ void func_80290B14(void);
 
 extern f32 gLapCompletionPercentByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8 (position for each player)
-extern u16 D_80162DD6;
+extern u16 bCourseGhostDisabled;
 
 #endif

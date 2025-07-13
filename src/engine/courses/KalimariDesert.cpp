@@ -28,7 +28,7 @@ extern "C" {
     #include "render_objects.h"
     #include "assets/common_data.h"
     #include "save.h"
-    #include "staff_ghosts.h"
+    #include "replays.h"
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
@@ -113,7 +113,7 @@ KalimariDesert::KalimariDesert() {
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
 
-    Props.CloudTexture = (u8*) LOAD_ASSET_RAW(gTextureExhaust5);
+    Props.CloudTexture = (u8*) gTextureExhaust5;
     Props.Clouds = gKalimariDesertClouds;
     Props.CloudList = gKalimariDesertClouds;
 

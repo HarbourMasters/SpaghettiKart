@@ -82,7 +82,7 @@ void render_limb_or_add_mtx(Armature* arg0, s16* arg1, AnimationLimbVector arg2,
         for (i = 0; i < 3; i++) {
             pos[i] = sOriginalPosAnimation[i] + arg0->pos[i];
         }
-        isNotTheFirst += 1;
+        isNotTheFirst = 1;
     } else {
         for (i = 0; i < 3; i++) {
             pos[i] = arg0->pos[i];
