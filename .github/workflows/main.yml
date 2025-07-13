@@ -50,6 +50,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Build
         run: |
@@ -80,6 +82,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Install dependencies
         run: brew install ninja cmake
@@ -116,6 +120,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Update machine
         run: sudo apt update
@@ -205,6 +211,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Update machine
         run: sudo apt update
@@ -306,8 +314,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
       - name: Docker caching
         uses: ScribeMD/docker-cache@0.5.0
         id: cache
@@ -330,6 +339,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+          fetch-tags: true
           submodules: recursive
       - name: Install dependencies
         run: |
