@@ -259,10 +259,17 @@ static const std::unordered_map<Ship::AudioBackend, const char*> audioBackendsMa
     { Ship::AudioBackend::SDL, "SDL" },
 };
 
-static const std::unordered_map<Ship::WindowBackend, const char*> windowBackendsMap = {
-    { Ship::WindowBackend::FAST3D_DXGI_DX11, "DirectX" },
-    { Ship::WindowBackend::FAST3D_SDL_OPENGL, "OpenGL" },
-    { Ship::WindowBackend::FAST3D_SDL_METAL, "Metal" },
+static const std::unordered_map<int, const char*> windowBackendsMap = {
+    { LLGL::RendererID::OpenGL, "OpenGL" },
+    { LLGL::RendererID::OpenGLES, "OpenGL ES" },
+    { LLGL::RendererID::WebGL, "WebGL" },
+    { LLGL::RendererID::WebGPU, "WebGPU" },
+    { LLGL::RendererID::Direct3D9, "Direct3D 9" },
+    { LLGL::RendererID::Direct3D10, "Direct3D 10" },
+    { LLGL::RendererID::Direct3D11, "Direct3D 11" },
+    { LLGL::RendererID::Direct3D12, "Direct3D 12" },
+    { LLGL::RendererID::Vulkan, "Vulkan" },
+    { LLGL::RendererID::Metal, "Metal" },
 };
 
 struct MenuInit {
