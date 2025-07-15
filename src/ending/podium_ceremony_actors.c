@@ -132,10 +132,6 @@ CeremonyActor* new_actor(ActorInitParams* arg0) {
     return actor;
 }
 
-void clear_podium_actors() {
-    memset(&sPodiumActorList, 0, sizeof(CeremonyActor));
-}
-
 u16 random_u16_credits(void) {
     u16 temp1, temp2;
 
@@ -308,8 +304,14 @@ void unused_80280FA0(UNUSED CeremonyActor* actor) {
 void unused_80280FA8(UNUSED CeremonyActor* actor) {
 }
 
+/* 
+ * Original game only cleared D_802874D8.actorTimer.
+ * However, the whole struct needs to be cleared otherwise, the 
+ * podium racers do not reset to their starting positions
+ * and some of the camera scenes or positions get mixed up.
+ */
 void balloons_and_fireworks_init(void) {
-    D_802874D8.actorTimer = 0;
+    memset(&D_802874D8, 0, sizeof(struct_D_802874D8)); // podium fix
     sPodiumActorList = (CeremonyActor*) get_next_available_memory_addr(sizeof(CeremonyActor) * 200);
     bzero(sPodiumActorList, (sizeof(CeremonyActor) * 200));
     new_actor(&initDummy);
