@@ -188,7 +188,14 @@ void main() {
     @end
 
     @if(o_grayscale)
-        float intensity = (texel.r + texel.g + texel.b) / 3.0;
+        float p = float(0x19);
+        float r = texel.r*float(0x55);
+        float g = texel.g*float(0x4B);
+        float b = texel.b*float(0x5F);
+        float intensity = (r+g+b) / 256.0;
+        intensity *= 255.0/256.0;
+        intensity = pow(intensity, (p * 1.5 / 256.0) + 0.25);
+        intensity *= 31.0/32.0;
         vec3 new_texel = vGrayscaleColor.rgb * intensity;
         texel.rgb = mix(texel.rgb, new_texel, vGrayscaleColor.a);
     @end

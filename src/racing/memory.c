@@ -155,7 +155,7 @@ Gfx* segmented_gfx_to_virtual(const void* addr) {
 }
 
 static uintptr_t get_texture2(size_t offset, const course_texture* textures) {
-    if (!(offset & 0x5000000)) {
+    if (!((offset >= 0x5000000) && (offset < 0x6000000))) {
         return NULL;
     }
     size_t totalOffset = 0x5000000;

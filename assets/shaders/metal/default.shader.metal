@@ -260,7 +260,14 @@ fragment float4 fragmentShader(ProjectedVertex in [[stage_in]], constant FrameUn
     @end
 
     @if(o_grayscale)
-        float intensity = (texel.x + texel.y + texel.z) / 3.0;
+        float p = float(0x19);
+        float r = texel.r*float(0x55);
+        float g = texel.g*float(0x4B);
+        float b = texel.b*float(0x5F);
+        float intensity = (r+g+b) / 256.0;
+        intensity *= 255.0/256.0;
+        intensity = pow(intensity, (p * 1.5 / 256.0) + 0.25);
+        intensity *= 31.0/32.0;
         float3 new_texel = in.grayscale.xyz * intensity;
         texel.xyz = mix(texel.xyz, new_texel, in.grayscale.w);
     @end
