@@ -95,8 +95,6 @@ void func_802818BC(void) {
 void setup_podium_ceremony(void) {
     Camera* camera = &cameras[0];
 
-    clear_podium_actors();
-
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     SelectPodiumCeremony();
     D_800DC5B4 = (u16) 1;
