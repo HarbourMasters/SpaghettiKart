@@ -1040,7 +1040,7 @@ void func_8001EA0C(Camera* camera, Player* player, s8 arg2) {
 }
 
 void func_8001EE98(Player* player, Camera* camera, s8 index) {
-    s32 cameraIndex = camera1 - camera;
+    s32 cameraIndex = camera->cameraId;
 
     switch (gModeSelection) {
         case GRAND_PRIX:
