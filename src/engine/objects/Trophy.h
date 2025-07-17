@@ -51,6 +51,7 @@ private:
     TrophyType _trophy;
     FVector _spawnPos;
     Behaviour _bhv;
+    int8_t _toggle;
     int8_t *_toggleVisibility;
     Vec3f _oldPos;
     bool _isMod = false;
