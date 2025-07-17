@@ -37,8 +37,8 @@ OTrophy::OTrophy(const FVector& pos, TrophyType trophy, Behaviour bhv) {
     if (bhv == OTrophy::Behaviour::PODIUM_CEREMONY) {
         _toggleVisibility = &D_801658CE;
     } else {
-        int8_t toggle = 1;
-        _toggleVisibility = &toggle;
+        _toggle = 1;
+        _toggleVisibility = &_toggle;
         _isMod = true;
     }
 
@@ -203,6 +203,11 @@ void OTrophy::Tick() { // func_80086D80
             
                 gObjectList[objectIndex].direction_angle[0] += 0x400;
                 gObjectList[objectIndex].direction_angle[1] -= 0x200;
+
+                // Emit particles when player is moving quickly
+                if (((player->speed / 18.0f) * 216.0f) >= 60.0f) {
+                    OTrophy::func_80086C6C(objectIndex);
+                }
             }
             break;
     }
@@ -238,7 +243,7 @@ void OTrophy::Draw(s32 cameraId) {
         switch (_bhv) {
             case GO_FISH:
                 size_t numTrophies = 0;
-                func_80057A50(40, 0, (char*) "Trophies Collected: ", (s16) numTrophies);
+                func_80057A50(40, 22, (char*) "Trophies Collected: ", (s16) numTrophies);
                 break;
         }
     }
