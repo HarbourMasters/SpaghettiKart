@@ -270,7 +270,7 @@ void TestCourse::BeginPlay() {
     // gWorldInstance.AddActor(new OSeagull(2, pos));
     // gWorldInstance.AddActor(new OSeagull(3, pos));
     // gWorldInstance.AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
-    // gWorldInstance.AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
+    gWorldInstance.AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
     //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
     //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
@@ -295,9 +295,9 @@ void TestCourse::BeginPlay() {
     gWorldInstance.AddObject(new OBombKart(pos2, &gTrackPaths[0][25], 25, 4, 0.8333333f));
     gWorldInstance.AddObject(new OBombKart(pos2, &gTrackPaths[0][45], 45, 4, 0.8333333f));
 
-    gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
+   // gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 
-    gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(0, 0, 0)));
+//    gWorldInstance.AddObject(new OGrandPrixBalloons(FVector(0, 0, 0)));
 }
 
 void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
