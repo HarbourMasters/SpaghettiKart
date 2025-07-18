@@ -1026,7 +1026,7 @@ u16 random_u16(void) {
 u16 random_int(u16 arg0) {
     if (CVarGetInteger("gModernPRNG", false) == false)
     {
-        return arg0 * (((f32) random_u16()) / (f32)UINT16_MAX);
+        return arg0 * (((f32) random_u16()) / (f32) UINT16_MAX);
     }
 
     return (rand() % (arg0 + 1));
