@@ -12,6 +12,7 @@
 #include "port/Game.h"
 #include <port/interpolation/FrameInterpolation.h>
 #include <port/interpolation/matrix.h>
+#include <stdlib.h>
 #pragma intrinsic(sqrtf, fabs)
 
 s32 D_802B91C0[2] = { 13, 13 };
@@ -990,35 +991,45 @@ UNUSED s16 func_802B7D28(f32 arg0) {
 }
 
 u16 random_u16(void) {
-    u16 temp1, temp2;
+    if (CVarGetInteger("gModernPRNG", false) == false)
+    {
+        u16 temp1, temp2;
 
-    if (gRandomSeed16 == 22026) {
-        gRandomSeed16 = 0;
-    }
-
-    temp1 = (gRandomSeed16 & 0x00FF) << 8;
-    temp1 = temp1 ^ gRandomSeed16;
-
-    gRandomSeed16 = ((temp1 & 0x00FF) << 8) + ((temp1 & 0xFF00) >> 8);
-
-    temp1 = ((temp1 & 0x00FF) << 1) ^ gRandomSeed16;
-    temp2 = (temp1 >> 1) ^ 0xFF80;
-
-    if ((temp1 & 1) == 0) {
-        if (temp2 == 43605) {
+        if (gRandomSeed16 == 22026) {
             gRandomSeed16 = 0;
-        } else {
-            gRandomSeed16 = temp2 ^ 0x1FF4;
         }
-    } else {
-        gRandomSeed16 = temp2 ^ 0x8180;
+
+        temp1 = (gRandomSeed16 & 0x00FF) << 8;
+        temp1 = temp1 ^ gRandomSeed16;
+
+        gRandomSeed16 = ((temp1 & 0x00FF) << 8) + ((temp1 & 0xFF00) >> 8);
+
+        temp1 = ((temp1 & 0x00FF) << 1) ^ gRandomSeed16;
+        temp2 = (temp1 >> 1) ^ 0xFF80;
+
+        if ((temp1 & 1) == 0) {
+            if (temp2 == 43605) {
+                gRandomSeed16 = 0;
+            } else {
+                gRandomSeed16 = temp2 ^ 0x1FF4;
+            }
+        } else {
+            gRandomSeed16 = temp2 ^ 0x8180;
+        }
+
+        return gRandomSeed16;
     }
 
-    return gRandomSeed16;
+    return (rand() % (UINT16_MAX + 1));
 }
 
 u16 random_int(u16 arg0) {
-    return arg0 * (((f32) random_u16()) / 65535.0);
+    if (CVarGetInteger("gModernPRNG", false) == false)
+    {
+        return arg0 * (((f32) random_u16()) / 65535.0);
+    }
+
+    return (rand() % (arg0 + 1));
 }
 
 s16 func_802B7F34(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
