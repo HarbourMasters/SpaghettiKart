@@ -132,6 +132,10 @@ CeremonyActor* new_actor(ActorInitParams* arg0) {
     return actor;
 }
 
+void clear_D_802874D8_actors() {
+    memset(&D_802874D8, 0, sizeof(struct_D_802874D8));
+}
+
 u16 random_u16_credits(void) {
     u16 temp1, temp2;
 
