@@ -54,12 +54,6 @@ UNUSED s32 func_80040EA4(s32* arg0, s32 arg1) {
     return phi_v1;
 }
 
-void vec3f_copy(Vec3f dest, Vec3f arg1) {
-    dest[0] = arg1[0];
-    dest[1] = arg1[1];
-    dest[2] = arg1[2];
-}
-
 s32 f32_step_up_towards(f32* value, f32 target, f32 step) {
     s32 targetReached = 0;
 

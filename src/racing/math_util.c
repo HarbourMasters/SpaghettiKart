@@ -27,7 +27,7 @@ UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f3
     f32 sp2C;
     f32 sp28;
     Vec3f sp1C;
-    vec3f_copy_return(sp1C, arg1);
+    vec3f_copy(sp1C, arg1);
     sp28 = sp1C[0];
     sp2C = sp1C[1];
     // wut?
@@ -123,37 +123,16 @@ void vec3s_set(Vec3s arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0[2] = arg3;
 }
 
-// These functions have bogus return values.
-// Disable the compiler warning.
-#pragma GCC diagnostic push
-
-#ifdef __GNUC__
-#if defined(__clang__)
-#pragma GCC diagnostic ignored "-Wreturn-stack-address"
-#else
-#pragma GCC diagnostic ignored "-Wreturn-local-addr"
-#endif
-#endif
-
-void* vec3f_copy_return(Vec3f dest, Vec3f src) {
+void vec3f_copy(Vec3f dest, Vec3f src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
-    //! @warning function returns address of local variable
-    return &dest;
 }
 
 void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[0] = src[0];
     dest[1] = src[1];
     dest[2] = src[2];
-}
-
-UNUSED void* vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
-    dest[0] = x;
-    dest[1] = y;
-    dest[2] = z;
-    return &dest;
 }
 
 // Copy mat1 to mat2
