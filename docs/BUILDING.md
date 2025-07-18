@@ -206,7 +206,7 @@ cmake --build build-cmake --target ExtractAssets
 cmake --build build-cmake
 
 # Now you can run the executable file:
-./build-cmake/mm/spaghetti-macos
+./build/Spaghettify
 # To develop the project open the repository in VSCode (or your preferred editor)
 ```
 
