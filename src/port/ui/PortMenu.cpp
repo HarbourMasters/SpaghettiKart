@@ -410,6 +410,12 @@ void PortMenu::AddEnhancements() {
         })
         .Options(UIWidgets::CheckboxOptions({ { .tooltip = "Edit the universe!" } }));
 #endif
+
+    path = { "Enhancements", "Bugfixes", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Bugfixes", 3);
+    AddWidget(path, "Deterministic Spawn", WIDGET_CVAR_CHECKBOX)
+        .CVar("gBugfixDeterministicSpawn")
+        .Options(CheckboxOptions().Tooltip("This fixes players always spawning at the same position when starting a new cup").DefaultValue(true));
 }
 
 #ifdef __SWITCH__

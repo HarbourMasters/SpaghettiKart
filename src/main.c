@@ -550,6 +550,10 @@ void init_segment_racing(void) {
     dma_copy((u8*) SEG_RACING, (u8*) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
     osInvalICache((void*) SEG_RACING, SEG_RACING_SIZE);
     osInvalDCache((void*) SEG_RACING, SEG_RACING_SIZE);
+#else
+    if (CVarGetInteger("gBugfixDeterministicSpawn", true) == false) {
+        gRandomSeed16 = 0;
+    }
 #endif
 }
 
@@ -1222,7 +1226,7 @@ void update_gamestate(void) {
              * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
              * In laymens terms, random_u16() outputs the same value every time.
              */
-            // init_segment_racing();
+            init_segment_racing();
             setup_race();
             break;
         case ENDING:
@@ -1232,7 +1236,7 @@ void update_gamestate(void) {
             break;
         case CREDITS_SEQUENCE:
             gCurrentlyLoadedCourseId = COURSE_NULL;
-            // init_segment_racing();
+            init_segment_racing();
             init_segment_ending_sequences();
             load_credits();
             break;
