@@ -415,7 +415,7 @@ void PortMenu::AddEnhancements() {
     AddSidebarEntry("Enhancements", "Bugfixes", 3);
     AddWidget(path, "Deterministic Spawn", WIDGET_CVAR_CHECKBOX)
         .CVar("gBugfixDeterministicSpawn")
-        .Options(CheckboxOptions().Tooltip("This fixes players always spawning at the same position when starting a new cup").DefaultValue(true));
+        .Options(CheckboxOptions().Tooltip("This fixes players always spawning at the same position when starting a new cup").DefaultValue(false));
 }
 
 #ifdef __SWITCH__
