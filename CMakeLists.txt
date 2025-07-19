@@ -431,7 +431,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
         "Vorbis::vorbisfile"
     )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
-#/  find_package(SDL2) 
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
         -lglad
         SDL2::SDL2
