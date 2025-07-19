@@ -326,6 +326,10 @@ include_directories(${STB_DIR})
 set(EXCLUDE_MPQ_SUPPORT TRUE CACHE BOOL "")
 add_compile_definitions(EXCLUDE_MPQ_SUPPORT)
 
+if(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
+    find_package(SDL2)
+endif()
+
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -427,8 +431,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
         "Vorbis::vorbisfile"
     )
 elseif(CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
-    message("BLARG")
-    find_package(SDL2)
+#/  find_package(SDL2) 
     set(ADDITIONAL_LIBRARY_DEPENDENCIES
         -lglad
         SDL2::SDL2
