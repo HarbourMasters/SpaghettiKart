@@ -186,35 +186,35 @@ void BowsersCastle::BeginPlay() {
     switch (gCCSelection) {
         case CC_100:
         case CC_EXTRA:
-            gWorldInstance.AddObject(new OThwomp(0x0320, 0xf92a, 0xC000, 1.0f, 1, 0));
-            gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, 1, 1));
-            gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, 2, 0));
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, 2, 1));
+            gWorldInstance.AddObject(new OThwomp(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0));
+            gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1));
+            gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1));
             BowsersCastle::SpawnStockThwomp();
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
-            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5bf, 0xC000, 1.0f, 4, 0));
-            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf597, 0xC000, 1.0f, 4, 1));
-            gWorldInstance.AddObject(new OThwomp(0x0596, 0xf92f, 0xC000, 1.5f, 6, 0));
-            gWorldInstance.AddObject(new OThwomp(0x082a, 0xf9f2, 0x4000, 1.0f, 5, 0));
-            gWorldInstance.AddObject(new OThwomp(0x073a, 0xf9f2, 0x4000, 1.0f, 5, 1));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1));
+            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5bf, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0));
+            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf597, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 1));
+            gWorldInstance.AddObject(new OThwomp(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0));
+            gWorldInstance.AddObject(new OThwomp(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 0));
+            gWorldInstance.AddObject(new OThwomp(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1));
             break;
         case CC_50:
-            gWorldInstance.AddObject(new OThwomp(0x3B6, 0xF92A, 0xC000, 1.0f, 1, 0));
-            gWorldInstance.AddObject(new OThwomp(0x0352, 0xf95c, 0xC000, 1.0f, 2, 0));
+            gWorldInstance.AddObject(new OThwomp(0x3B6, 0xF92A, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0));
+            gWorldInstance.AddObject(new OThwomp(0x0352, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0));
             BowsersCastle::SpawnStockThwomp();
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
-            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5b0, 0xC000, 1.0f, 4, 0));
-            gWorldInstance.AddObject(new OThwomp(0x0596, 0xf92f, 0xC000, 1.5f, 6, 0));
-            gWorldInstance.AddObject(new OThwomp(0x082a, 0xf9f2, 0x4000, 1.0f, 5, 0));
-            gWorldInstance.AddObject(new OThwomp(0x073a, 0xf9f2, 0x4000, 1.0f, 5, 1));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1));
+            gWorldInstance.AddObject(new OThwomp(0x091a, 0xf5b0, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0));
+            gWorldInstance.AddObject(new OThwomp(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0));
+            gWorldInstance.AddObject(new OThwomp(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE , 0));
+            gWorldInstance.AddObject(new OThwomp(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1));
             break;
         case CC_150:
-            gWorldInstance.AddObject(new OThwomp(0x0320, 0xf92a, 0xC000, 1.0f, 1, 0));
-            gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, 1, 1));
-            gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, 2, 0));
-            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, 2, 1));
+            gWorldInstance.AddObject(new OThwomp(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0));
+            gWorldInstance.AddObject(new OThwomp(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1));
+            gWorldInstance.AddObject(new OThwomp(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0));
+            gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1));
             BowsersCastle::SpawnStockThwomp();
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf5ba, 0xC000, 1.0f, 3, 0));
             gWorldInstance.AddObject(new OThwomp(0x04b0, 0xf592, 0xC000, 1.0f, 3, 1));
