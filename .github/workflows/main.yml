@@ -307,6 +307,7 @@ jobs:
             config.yml
             yamls
             gamecontrollerdb.txt
+
   build-linux-docker:
     needs: generate-port-o2r
     runs-on: ubuntu-22.04
