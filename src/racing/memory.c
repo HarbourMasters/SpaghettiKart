@@ -612,19 +612,19 @@ void func_802A86A8(CourseVtx* data, Vtx* vtx, size_t arg1) {
     // s32 to uintptr_t comparison required for matching.
     for (i = 0; i < arg1; i++) {
         if (gIsMirrorMode) {
-            vtx->v.ob[0] = -courseVtx->ob[0];
+            vtx->v.ob[0] = -(courseVtx->ob[0] * gVtxStretch[0]);
         } else {
-            vtx->v.ob[0] = courseVtx->ob[0];
+            vtx->v.ob[0] = courseVtx->ob[0] * gVtxStretch[0];
         }
 
-        vtx->v.ob[1] = (courseVtx->ob[1] * vtxStretchY);
+        vtx->v.ob[1] = (courseVtx->ob[1] * gVtxStretch[1]);
         temp_a0 = courseVtx->ca[0];
         temp_a3 = courseVtx->ca[1];
 
         flags = temp_a0 & 3;
         flags |= (temp_a3 << 2) & 0xC;
 
-        vtx->v.ob[2] = courseVtx->ob[2];
+        vtx->v.ob[2] = courseVtx->ob[2] * gVtxStretch[2];
         vtx->v.tc[0] = courseVtx->tc[0];
         vtx->v.tc[1] = courseVtx->tc[1];
         vtx->v.cn[0] = (temp_a0 & 0xFC);

@@ -48,6 +48,7 @@
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/Rulesets.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -84,6 +85,7 @@ Cup* gBattleCup;
 ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
+Rulesets gRulesets;
 
 Editor::Editor gEditor;
 
@@ -236,6 +238,7 @@ const char* GetCupName(void) {
 
 void LoadCourse() {
     if (gWorldInstance.CurrentCourse) {
+        gRulesets.PreLoad();
         gWorldInstance.CurrentCourse->Load();
     }
 }
@@ -379,6 +382,7 @@ void CM_BeginPlay() {
     auto course = gWorldInstance.CurrentCourse;
 
     if (course) {
+        gRulesets.PreInit();
         // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
         if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != BATTLE)) {
             if (course->bSpawnFinishline) {
@@ -388,6 +392,7 @@ void CM_BeginPlay() {
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
 
         course->BeginPlay();
+        gRulesets.PostInit();
     }
 }
 

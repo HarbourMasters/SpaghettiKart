@@ -65,7 +65,7 @@ bool gIsEditorPaused = false;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;
-f32 vtxStretchY = 1.0f;
+Vec3f gVtxStretch = {1.0f, 1.0f, 1.0f};
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     //! @todo impl lighting in custom track origin value 115 instead of 209. Hack fix for lighting for now

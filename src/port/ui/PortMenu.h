@@ -65,6 +65,7 @@ class PortMenu : public Ship::Menu {
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
     void AddSettings();
     void AddEnhancements();
+      void AddRulesets();
     void AddDevTools();
 };
 } // namespace BenGui

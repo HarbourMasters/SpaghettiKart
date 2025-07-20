@@ -10,6 +10,10 @@
 #include <tuple>
 #include "ResolutionEditor.h"
 
+#include "courses/Course.h"
+#include "courses/KalimariDesert.h"
+#include "courses/ToadsTurnpike.h"
+
 #ifdef __SWITCH__
 #include <port/switch/SwitchImpl.h>
 #endif
@@ -383,6 +387,8 @@ void PortMenu::AddEnhancements() {
         .CVar("gShowSpaghettiVersion")
         .Options(CheckboxOptions().Tooltip("Show the Spaghetti Kart version on the Mario Kart menu").DefaultValue(true));
 
+    AddRulesets();
+
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "Cheats", 3);
     AddWidget(path, "Moon Jump", WIDGET_CVAR_CHECKBOX).CVar("gEnableMoonJump");
@@ -423,6 +429,67 @@ static const std::unordered_map<int32_t, const char*> switchCPUProfiles = {
     { Ship::SwitchProfiles::POWERSAVINGM3, "Powersaving Mode 3" }
 };
 #endif
+
+void PortMenu::AddRulesets() {
+    WidgetPath path = { "Enhancements", "Rulesets", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Rulesets", 3);
+
+    // Requires more testing
+    // AddWidget(path, "Number of Laps", WIDGET_CVAR_SLIDER_INT)
+    //     .CVar("gNumLaps")
+    //     .Options(UIWidgets::IntSliderOptions().Min().Max(20).Step(1).DefaultValue(3));
+
+    AddWidget(path, "No Itemboxes", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDisableItemboxes")
+        .Options(CheckboxOptions().Tooltip(
+            "Prevents Itemboxes from spawning"));
+    AddWidget(path, "All Thwomps are Marty", WIDGET_CVAR_CHECKBOX)
+        .CVar("gAllThwompsAreMarty")
+        .Options(CheckboxOptions().Tooltip(
+            "All Thwomps are Marty"));
+    AddWidget(path, "All Bomb Karts in Chase Mode", WIDGET_CVAR_CHECKBOX)
+        .CVar("gAllBombKartsChase")
+        .Options(CheckboxOptions().Tooltip(
+            "These karts will chase you!!!"));
+    AddWidget(path, "Get the trophies!", WIDGET_CVAR_CHECKBOX)
+        .CVar("gGoFish")
+        .Options(CheckboxOptions().Tooltip(
+            "Collect as many trophies as you can. Racer with the most trophies wins!"));
+    AddWidget(path, "Track X Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[0])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+    AddWidget(path, "Track Y Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[1])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+    AddWidget(path, "Track Z Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[2])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+
+
+    AddWidget(path, "Trains", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTrains")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(19).Step(1).DefaultValue(2));
+    AddWidget(path, "Carriages", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumCarriages")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(74).Step(1).DefaultValue(5));
+    AddWidget(path, "Train has a tender", WIDGET_CVAR_CHECKBOX)
+        .CVar("gHasTender")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(1)
+        .Tooltip("This option is only valid if there are no carriages on the train"));
+
+    AddWidget(path, "Trucks", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTrucks")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Buses", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumBuses")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Tanker Trucks", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTankerTrucks")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Cars", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumCars")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+}
 
 void PortMenu::AddDevTools() {
     AddMenuEntry("Developer", "gSettings.Menu.DevToolsSidebarSection");

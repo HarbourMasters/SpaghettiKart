@@ -66,6 +66,7 @@ extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
 extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
+extern Vec3f gVtxStretch;
 
 extern CollisionTriangle* gCollisionMesh;
 extern u16* gCollisionIndices;
