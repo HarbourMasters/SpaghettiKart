@@ -551,7 +551,15 @@ void Menu::DrawElement() {
             headerWidth += style.ItemSpacing.x;
         }
     }
-    ImVec2 menuSize = { std::fminf(1280, windowWidth), std::fminf(800, windowHeight) };
+    ImVec2 menuSize;
+    if (windowWidth < 1280 && windowHeight < 800) {
+        menuSize = { windowWidth, windowHeight };
+    } else {
+        menuSize = { 0.9f * windowWidth, 0.9f * windowHeight };
+        ImGuiIO& io = ImGui::GetIO();
+        uiScale = windowHeight / 1080.0f;
+        io.FontGlobalScale = uiScale;
+    }
     pos += window->WorkRect.GetSize() / 2 - menuSize / 2;
     ImGui::SetNextWindowPos(pos);
     ImGui::BeginChild("Menu Block", menuSize,
@@ -671,7 +679,7 @@ void Menu::DrawElement() {
     float sectionHeight = menuSize.y - headerHeight - 4 - style.ItemSpacing.y * 2;
     float columnHeight = sectionHeight - style.ItemSpacing.y * 4;
     ImGui::SetNextWindowPos(pos + style.ItemSpacing * 2);
-    float sidebarWidth = 200 - style.ItemSpacing.x;
+    float sidebarWidth = 200 * uiScale - style.ItemSpacing.x;
 
     const char* sidebarCvar = menuEntries.at(headerIndex).sidebarCvar;
 

@@ -93,6 +93,7 @@ class Menu : public GuiWindow {
     bool popped;
     ImVec2 poppedSize;
     ImVec2 poppedPos;
+    float uiScale = 1.0f;
     float windowHeight;
     float windowWidth;
 };
