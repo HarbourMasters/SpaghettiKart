@@ -551,15 +551,21 @@ void Menu::DrawElement() {
             headerWidth += style.ItemSpacing.x;
         }
     }
-    ImVec2 menuSize;
-    if (windowWidth < 1280 && windowHeight < 800) {
-        menuSize = { windowWidth, windowHeight };
-    } else {
+
+    ImVec2 menuSize = { std::fminf(1280, windowWidth), std::fminf(800, windowHeight) };
+    UIWidgets::MenuExtent menuExtent = static_cast<UIWidgets::MenuExtent>(
+        CVarGetInteger("gSettings.Menu.Extent", UIWidgets::MenuExtent::Condensed)
+    );
+
+    if (menuExtent == UIWidgets::MenuExtent::Stretched) {
         menuSize = { 0.9f * windowWidth, 0.9f * windowHeight };
-        ImGuiIO& io = ImGui::GetIO();
-        uiScale = windowHeight / 1080.0f;
-        io.FontGlobalScale = uiScale;
+        uiScale = CVarGetFloat("gSettings.Menu.Scale", 1.0f);
+    } else {
+        uiScale = 1.0f; // Scaling doesn't play nice with condensed menu
     }
+    ImGuiIO& io = ImGui::GetIO();
+    io.FontGlobalScale = uiScale;
+
     pos += window->WorkRect.GetSize() / 2 - menuSize / 2;
     ImGui::SetNextWindowPos(pos);
     ImGui::BeginChild("Menu Block", menuSize,

@@ -115,6 +115,25 @@ void PortMenu::AddSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
+
+    AddWidget(path, "Menu Extent", WIDGET_CVAR_COMBOBOX)
+        .CVar("gSettings.Menu.Extent")
+        .Options(ComboboxOptions()
+                     .Tooltip("Changes the extent of the onscreen menu")
+                     .ComboMap(menuExtentOptions)
+                     .DefaultIndex(MenuExtent::Condensed));
+
+    AddWidget(path, "Menu Scale: %.0fx", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar("gSettings.Menu.Scale")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gSettings.Menu.Extent", 0); })
+        .Options(FloatSliderOptions()
+                     .Tooltip("Adjust the scale for the menu.")
+                     .Min(1.0f)
+                     .Max(2.0f)
+                     .DefaultValue(1.0f)
+                     .Format("%.1f")
+                     .Step(0.1f));
+
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)

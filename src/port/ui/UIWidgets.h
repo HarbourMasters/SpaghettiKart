@@ -104,6 +104,11 @@ namespace UIWidgets {
         Right,
     };
 
+    enum MenuExtent {
+        Condensed,
+        Stretched
+    };
+
     struct WidgetOptions{
         const char* tooltip = "";
         bool disabled = false;
