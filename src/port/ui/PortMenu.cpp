@@ -115,6 +115,10 @@ void PortMenu::AddSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
+    AddWidget(path, "Controller pak screen", WIDGET_CVAR_CHECKBOX)
+        .CVar("gControllerPakScreen")
+        .Options(CheckboxOptions().Tooltip(
+            "Enables the Controller Pak screen when starting the game."));
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)
