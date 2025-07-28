@@ -11,15 +11,15 @@
 | Frappe Snowland       | `frappe_snowland`           |
 | Kalimari Desert       | `kalimari_desert`           |
 | Koopa Troopa Beach    | `koopa_troopa_beach`        |
-| Luigi Raceway         | `raceways_wario_stadium`    |
-| Mario Raceway         | `raceways_wario_stadium`    |
-| Moo Moo Farm          | `moo_moo_farm_yoshi_valley` |
+| Luigi Raceway         | `luigi_raceway`             |
+| Mario Raceway         | `mario_raceway`             |
+| Moo Moo Farm          | `moo_moo_farm`              |
 | N64 Rainbow Road      | `rainbow_road`              |
-| N64 Wario Stadium     | `raceways_wario_stadium`    |
-| Royal Raceway         | `raceways_wario_stadium`    |
+| N64 Wario Stadium     | `wario_stadium`             |
+| Royal Raceway         | `royal_raceway`             |
 | Sherbet Land (N64)    | `frappe_snowland`           |
 | Toad's Turnpike       | `toads_turnpike`            |
-| Yoshi Valley          | `moo_moo_farm_yoshi_valley` |
+| Yoshi Valley          | `yoshi_valley`              |
 
 ## Battle Courses
 
@@ -27,8 +27,8 @@
 | Battle Course Name | Audio Filename |
 | ------------------ | --------------- |
 | Big Donut          | `battle_arenas` |
-| Block Fort         | `choco_mountain` |
-| Double Deck        | `choco_mountain` |
+| Block Fort         | `block_fort` |
+| Double Deck        | `double_deck` |
 | Skyscraper         | `battle_arenas` |
 
 ## General
