@@ -143,7 +143,7 @@ MooMooFarm::MooMooFarm() {
     Props.Skybox.FloorBottomRight = {0, 0, 0};
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 184, 99};
-    Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM;
     for (size_t i = 0; i < 92; i++) {
         replace_segmented_textures_with_o2r_textures((Gfx*) moo_moo_farm_dls[i], Props.textures);
     }

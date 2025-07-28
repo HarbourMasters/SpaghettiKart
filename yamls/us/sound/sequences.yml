@@ -22,7 +22,7 @@ main_menu:
   banks:
     - sound/banks/bank_2
 
-raceways_wario_stadium:
+wario_stadium:
   type: NAUDIO:V0:SEQUENCE
   id: 3
   size: 0x1A10
@@ -30,13 +30,45 @@ raceways_wario_stadium:
   banks:
     - sound/banks/bank_3
 
-moo_moo_farm_yoshi_valley: 
+luigi_raceway:
+  type: NAUDIO:V0:SEQUENCE
+  id: 30
+  size: 0x1A10
+  offset: 0xBCB120
+  banks:
+    - sound/banks/bank_30
+
+mario_raceway:
+  type: NAUDIO:V0:SEQUENCE
+  id: 31
+  size: 0x1A10
+  offset: 0xBCB120
+  banks:
+    - sound/banks/bank_31
+
+royal_raceway:
+  type: NAUDIO:V0:SEQUENCE
+  id: 32
+  size: 0x1A10
+  offset: 0xBCB120
+  banks:
+    - sound/banks/bank_32
+
+moo_moo_farm: 
   type: NAUDIO:V0:SEQUENCE
   id: 4
   size: 0x1CA0
   offset: 0xBCCB30
   banks:
     - sound/banks/bank_4
+
+yoshi_valley: 
+  type: NAUDIO:V0:SEQUENCE
+  id: 33
+  size: 0x1CA0
+  offset: 0xBCCB30
+  banks:
+    - sound/banks/bank_33
 
 choco_mountain:
   type: NAUDIO:V0:SEQUENCE
@@ -45,6 +77,22 @@ choco_mountain:
   offset: 0xBCE7D0
   banks:
     - sound/banks/bank_5
+
+block_fort:
+  type: NAUDIO:V0:SEQUENCE
+  id: 34
+  size: 0x1F70
+  offset: 0xBCE7D0
+  banks:
+    - sound/banks/bank_34
+
+double_deck:
+  type: NAUDIO:V0:SEQUENCE
+  id: 35
+  size: 0x1F70
+  offset: 0xBCE7D0
+  banks:
+    - sound/banks/bank_35
 
 koopa_troopa_beach:
   type: NAUDIO:V0:SEQUENCE

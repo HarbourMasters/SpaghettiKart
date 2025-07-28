@@ -19,13 +19,37 @@ bank_3:
   type: NAUDIO:V0:BANK
   id: 3
 
+bank_30:
+  type: NAUDIO:V0:BANK
+  id: 30
+
+bank_31:
+  type: NAUDIO:V0:BANK
+  id: 31
+
+bank_32:
+  type: NAUDIO:V0:BANK
+  id: 32
+
 bank_4:
   type: NAUDIO:V0:BANK
   id: 4
 
+bank_33:
+  type: NAUDIO:V0:BANK
+  id: 33
+
 bank_5:
   type: NAUDIO:V0:BANK
   id: 5
+
+bank_34:
+  type: NAUDIO:V0:BANK
+  id: 34
+
+bank_35:
+  type: NAUDIO:V0:BANK
+  id: 35
 
 bank_6:
   type: NAUDIO:V0:BANK

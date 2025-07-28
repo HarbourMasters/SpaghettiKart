@@ -122,17 +122,53 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif()
 
 ################################################################################
+# Compiler specific configuration types
+################################################################################
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU|Clang|AppleClang")
+    set(COMMON_FLAGS "-Wall -Wextra -Wno-error \
+            -Wno-return-type \
+            -Wno-unused-parameter \
+            -Wno-unused-function \
+            -Wno-unused-variable \
+            -Wno-missing-field-initializers \
+            -Wno-parentheses \
+            -Wno-narrowing \
+            -Wno-missing-braces \
+            -ffast-math \
+            -flto=auto \
+            -pipe"
+    )
+
+    set(COMMON_C_FLAGS "${COMMON_FLAGS} -Wno-int-conversion -Werror-implicit-function-declaration -Wno-incompatible-pointer-types")
+    set(COMMON_CXX_FLAGS "${COMMON_FLAGS} -Wno-c++11-narrowing -Wno-deprecated-enum-enum-conversion -fpermissive -fomit-frame-pointer")
+elseif (MSVC)
+    set(COMMON_FLAGS "/fp:fast")
+    set(COMMON_C_FLAGS "${COMMON_FLAGS}")
+    set(COMMON_CXX_FLAGS "${COMMON_FLAGS}")
+else()
+    set(COMMON_C_FLAGS "")
+    set(COMMON_CXX_FLAGS "")
+endif()
+
+# fix LTO breaks debug information on Apple/Ninja https://gitlab.kitware.com/cmake/cmake/-/issues/25202
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "AppleClang" AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+    add_link_options("-fno-lto")
+    add_compile_options("-fno-lto")
+endif()
+
+################################################################################
 # Global configuration types
 ################################################################################
-if (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
-set(CMAKE_C_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG "-g -ffast-math -DDEBUG")
-set(CMAKE_C_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3 -ffast-math -DNDEBUG")
+if (MSVC)
+    set(CMAKE_C_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_DEBUG "/Od /Zi /DNDEBUG ${COMMON_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_RELEASE "/O2 /DNDEBUG ${COMMON_CXX_FLAGS}")
 else()
-set(CMAKE_C_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(CMAKE_OBJCXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+    set(CMAKE_C_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_CXX_FLAGS}")
 endif()
 
 # Set game compilation version
@@ -583,26 +619,6 @@ endif()
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     if (CMAKE_SYSTEM_NAME STREQUAL "Darwin" OR CMAKE_SYSTEM_NAME STREQUAL "iOS")
         target_compile_options(${PROJECT_NAME} PRIVATE
-            -Wall -Wextra -Wno-error
-            -Wno-return-type
-            -Wno-unused-parameter
-            -Wno-unused-function
-            -Wno-unused-variable
-            -Wno-missing-field-initializers
-            -Wno-parentheses
-            -Wno-narrowing
-            -Wno-missing-braces
-            -Wno-int-conversion
-            $<$<COMPILE_LANGUAGE:C>:
-                -Werror-implicit-function-declaration
-                -Wno-incompatible-pointer-types
-                -fpermissive
-            >
-            $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
-            $<$<COMPILE_LANGUAGE:CXX>:
-                -Wno-c++11-narrowing
-                -Wno-deprecated-enum-enum-conversion
-            >
             -pthread
         )
 
@@ -611,76 +627,20 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
         )
     elseif (CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
       target_compile_options(${PROJECT_NAME} PRIVATE
-          -Wall -Wextra -Wno-error
-          -Wno-return-type
-          -Wno-unused-parameter
-          -Wno-unused-function
-          -Wno-unused-variable
-          -Wno-missing-field-initializers
-          -Wno-parentheses
-          -Wno-narrowing
-          -Wno-missing-braces
-          -Wno-int-conversion
-          $<$<COMPILE_LANGUAGE:C>:
-              -Werror-implicit-function-declaration
-              -Wno-incompatible-pointer-types
-              -fpermissive
-          >
-          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
-          $<$<COMPILE_LANGUAGE:CXX>:
-              -Wno-c++11-narrowing
-              -Wno-deprecated-enum-enum-conversion
-          >
           -pthread
       )
 
       target_link_options(${PROJECT_NAME} PRIVATE
           -pthread
       )
-  elseif (CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
-      target_compile_options(${PROJECT_NAME} PRIVATE
-          -O2
-
-          # disable some warnings to not clutter output
-          -Wno-multichar
-          -Wno-return-type
-          -Wno-narrowing
-          -Wno-switch-outside-range
-          $<$<COMPILE_LANGUAGE:C>:
-              -Werror-implicit-function-declaration
-              -Wno-incompatible-pointer-types
-              -Wno-discarded-array-qualifiers
-              -Wno-discarded-qualifiers
-              -Wno-int-conversion
-              -Wno-builtin-declaration-mismatch
-              -Wno-switch-unreachable
-              -Wno-stringop-overflow
-          >
-      )
-  else()
+  elseif (NOT CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
       if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
-        set(CPU_OPTION -msse2 -mfpmath=sse)
+          set(CPU_OPTION -msse2 -mfpmath=sse)
       endif()
 
       target_compile_options(${PROJECT_NAME} PRIVATE
-          -Wall -Wextra -Wno-error
-          -Wno-unused-parameter
-          -Wno-unused-function
-          -Wno-unused-variable
-          -Wno-missing-field-initializers
-          -Wno-parentheses
-          -Wno-narrowing
-          -Wno-missing-braces
-          -Wno-int-conversion
-          $<$<COMPILE_LANGUAGE:C>:
-              -Werror-implicit-function-declaration
-              -Wno-incompatible-pointer-types
-              -fpermissive
-          >
-          $<$<COMPILE_LANGUAGE:CXX>:-fpermissive>
-          $<$<COMPILE_LANGUAGE:CXX>:-Wno-deprecated-enum-enum-conversion>
           -pthread
-    ${CPU_OPTION}
+          ${CPU_OPTION}
       )
 
       target_link_options(${PROJECT_NAME} PRIVATE
