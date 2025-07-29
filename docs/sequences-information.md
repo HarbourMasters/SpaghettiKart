@@ -55,3 +55,4 @@
 | Award Ceremony 4th–8th      | `award_ceremony_4th_8th` |
 | Staff Roll                  | `staff_roll`             |
 
+Refer to Custom Audio on how to use this information.
