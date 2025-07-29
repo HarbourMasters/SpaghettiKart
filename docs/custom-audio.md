@@ -1,5 +1,5 @@
 # Custom Audio
-To replace a sequences you should only create a zip file with sequences to replace at the same path as mk64.o2r. Only wav, mp3, ogg and flac are supported. For define the loop you need to create a json with the same name but end with .json.
+Replacing music tracks (sequences) requires a zip file that contains audio tracks in the same path/naming as in the original mk64.o2r. Only wav, mp3, ogg and flac are supported. To define the loop you need to create a json with the same name but end with .json.
 the json look like this:
 ```json
 {
@@ -9,7 +9,7 @@ the json look like this:
     }
 }
 ```
-The json file are optional. The unit of `start` and `end` is in pcm frames. You can use a tool like Audacity to find the correct values (it's call samples in Audacity). All properties avaible are:
+The json file are optional. The unit of `start` and `end` is in pcm frames. You can use a tool like Audacity to find the correct values (it's call samples in Audacity). All properties available are:
 ```json
 {
     "name": "Name",
@@ -33,7 +33,5 @@ audio_pack.zip
 ```
 
 ## Future plans
-* Make name more meaningful and uniform. (example: change `winning_results`). You can suggest name or make a PR to help rename them/organise them.
 * Support samples.
 * Create a tool to convert sequences and samples.
-* Modify the way music is handled that way each track gets its own sequence. There is a current issue where `moo_moo_farm_yoshi_valley` share the same sequence file. Block Fort and Double Deck both share a song with `choco_mountain`.
