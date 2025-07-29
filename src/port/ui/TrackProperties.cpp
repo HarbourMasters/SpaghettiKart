@@ -202,7 +202,7 @@ namespace Editor {
     // Enum to string conversion
     const char* TrackPropertiesWindow::MusicSeqToString(MusicSeq seq) {
         switch (seq) {
-            case MUSIC_SEQ_SOUND_PLAYER: return "Sound Player (Don't use)";
+            case MUSIC_SEQ_SOUND_PLAYER: return "Sound FX Player (Don't use)";
             case MUSIC_SEQ_TITLE_SCREEN: return "Title Screen";
             case MUSIC_SEQ_MAIN_MENU: return "Main Menu";
             case MUSIC_SEQ_WARIO_STADIUM: return "Wario Stadium";
