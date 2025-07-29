@@ -228,7 +228,6 @@ struct SequencePlayer {
     /*0x130, 0x13C*/ u8* bankDmaCurrMemAddr;
     /*0x138, 0x140*/ uintptr_t bankDmaCurrDevAddr;
     /*0x13C, 0x144*/ size_t bankDmaRemaining;
-    f32 gameVolume;
 }; // size = 0x140, 0x148 on EU, 0x14C on SH
 
 struct AdsrSettings {

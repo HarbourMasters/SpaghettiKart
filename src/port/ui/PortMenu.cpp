@@ -172,8 +172,6 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Main Music Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gMainMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the background music volume.")
                      .ShowButtons(false)
@@ -181,17 +179,13 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gSFXMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the sound effects volume.")
                      .ShowButtons(false)
                      .Format("")
                      .IsPercentage());
-    AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
+    AddWidget(path, "Environment Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gEnvironmentVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the environment volume.")
                      .ShowButtons(false)

@@ -2023,10 +2023,12 @@ void draw_hud_2d_texture(s32 x, s32 y, u32 width, u32 height, u8* texture) {
 void draw_hud_2d_texture_wide(s32 x, s32 y, u32 width, u32 height, u8* texture) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_POINT);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror(texture, width, height);
     func_8004B97C_wide(x - (width >> 1), y - (height >> 1), width, height, 0);
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
 void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8* texture) {

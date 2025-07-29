@@ -36,7 +36,7 @@ luigi_raceway:
   size: 0x1A10
   offset: 0xBCB120
   banks:
-    - sound/banks/bank_30
+    - sound/banks/bank_3
 
 mario_raceway:
   type: NAUDIO:V0:SEQUENCE
@@ -44,7 +44,7 @@ mario_raceway:
   size: 0x1A10
   offset: 0xBCB120
   banks:
-    - sound/banks/bank_31
+    - sound/banks/bank_3
 
 royal_raceway:
   type: NAUDIO:V0:SEQUENCE
@@ -52,7 +52,7 @@ royal_raceway:
   size: 0x1A10
   offset: 0xBCB120
   banks:
-    - sound/banks/bank_32
+    - sound/banks/bank_3
 
 moo_moo_farm: 
   type: NAUDIO:V0:SEQUENCE
@@ -68,7 +68,7 @@ yoshi_valley:
   size: 0x1CA0
   offset: 0xBCCB30
   banks:
-    - sound/banks/bank_33
+    - sound/banks/bank_4
 
 choco_mountain:
   type: NAUDIO:V0:SEQUENCE
@@ -84,7 +84,7 @@ block_fort:
   size: 0x1F70
   offset: 0xBCE7D0
   banks:
-    - sound/banks/bank_34
+    - sound/banks/bank_5
 
 double_deck:
   type: NAUDIO:V0:SEQUENCE
@@ -92,7 +92,7 @@ double_deck:
   size: 0x1F70
   offset: 0xBCE7D0
   banks:
-    - sound/banks/bank_35
+    - sound/banks/bank_5
 
 koopa_troopa_beach:
   type: NAUDIO:V0:SEQUENCE
