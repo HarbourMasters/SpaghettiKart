@@ -762,11 +762,11 @@ void Menu::DrawElement() {
                                   ImGuiWindowFlags_NoTitleBar);
             }
             // for (auto& entryName : sidebar->at(sectionIndex).sidebarOrder) {
+            style.ItemSpacing.y = 12;
             for (auto& entry : sidebar->at(sectionIndex).columnWidgets.at(i)) {
                 MenuDrawItem(entry, 90 / sidebar->at(sectionIndex).columnCount, menuThemeIndex);
-                ImGui::Spacing();
-                ImGui::Spacing();
             }
+            style.ItemSpacing.y = 4; // original height
             //}
             if (useColumns) {
                 ImGui::EndChild();
