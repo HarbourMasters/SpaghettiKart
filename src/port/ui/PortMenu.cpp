@@ -415,7 +415,7 @@ void PortMenu::AddEnhancements() {
     AddSidebarEntry("Enhancements", "Bugfixes", 3);
     AddWidget(path, "Don't reset random seed", WIDGET_CVAR_CHECKBOX)
         .CVar("gBugfixRNGReset")
-        .Options(CheckboxOptions().Tooltip("The section handling of MK8 zeroes the random seed before races. Enable this to never zero the seed.").DefaultValue(false));
+        .Options(CheckboxOptions().Tooltip("The section handling of MK8 zeroes the random seed before races. Enable this to never zero the seed.").DefaultValue(true));
 }
 
 #ifdef __SWITCH__
