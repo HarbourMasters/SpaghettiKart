@@ -551,7 +551,7 @@ void init_segment_racing(void) {
     osInvalICache((void*) SEG_RACING, SEG_RACING_SIZE);
     osInvalDCache((void*) SEG_RACING, SEG_RACING_SIZE);
 #else
-    if (CVarGetInteger("gBugfixDeterministicSpawn", false) == false) {
+    if (CVarGetInteger("gBugfixRNGReset", false) == false) {
         gRandomSeed16 = 0;
     }
 #endif
