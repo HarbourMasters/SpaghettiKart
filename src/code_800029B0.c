@@ -163,16 +163,22 @@ s32 D_801625F4;
 uintptr_t D_801625F8;
 f32 D_801625FC;
 
+void update_music_volume(s32 target){
+    float volume = (float) target / 127.0f;
+    CVarSetFloat("gMainMusicVolume", volume);
+    audio_set_player_volume(SEQ_PLAYER_LEVEL, volume);
+}
+
 void func_800029B0(void) {
     switch (D_800DC5A8) {
         case 0:
-            func_800C8F44(127);
+            update_music_volume(127);
             break;
         case 1:
-            func_800C8F44(75);
+            update_music_volume(75);
             break;
         case 2:
-            func_800C8F44(0);
+            update_music_volume(0);
             break;
     }
 }

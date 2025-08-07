@@ -115,7 +115,6 @@ void PortMenu::AddSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
-
     AddWidget(path, "Menu Extent", WIDGET_CVAR_COMBOBOX)
         .CVar("gSettings.Menu.Extent")
         .Options(ComboboxOptions()
@@ -133,7 +132,10 @@ void PortMenu::AddSettings() {
                      .DefaultValue(1.0f)
                      .Format("%.1f")
                      .Step(0.1f));
-
+    AddWidget(path, "Controller pak screen", WIDGET_CVAR_CHECKBOX)
+        .CVar("gControllerPakScreen")
+        .Options(CheckboxOptions().Tooltip(
+            "Enables the Controller Pak screen when starting the game."));
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)
@@ -187,8 +189,6 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Main Music Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gMainMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the background music volume.")
                      .ShowButtons(false)
@@ -196,17 +196,13 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gSFXMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the sound effects volume.")
                      .ShowButtons(false)
                      .Format("")
                      .IsPercentage());
-    AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
+    AddWidget(path, "Environment Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gEnvironmentVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the environment volume.")
                      .ShowButtons(false)
@@ -255,7 +251,7 @@ void PortMenu::AddSettings() {
                 .IsPercentage()
                 .Format("")
                 .Min(0.5f)
-                .Max(2.0f));
+                .Max(4.0f));
 #endif
 #ifndef __WIIU__
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)

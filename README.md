@@ -77,7 +77,7 @@ If you want to manually compile SpaghettiKart, please consult the [building inst
 If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
 
 * [Windows](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-windows.zip?status=completed)
-* [Linux](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/Spaghettify-linux.zip?status=completed)
+* [Linux](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-linux-x64.zip?status=completed)
 * [macOS](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-mac-x64.zip?status=completed)
 * [Switch](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/Spaghettify-switch.zip?status=completed)
 

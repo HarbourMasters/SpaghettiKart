@@ -140,7 +140,7 @@ WarioStadium::WarioStadium() {
     Props.Skybox.FloorBottomRight = { 0, 0, 0 };
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 0, 0, 0 };
-    Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    Props.Sequence = MusicSeq::MUSIC_SEQ_WARIO_STADIUM;
     for (size_t i = 0; i < 108; i++) {
         replace_segmented_textures_with_o2r_textures((Gfx*) wario_stadium_dls[i], Props.textures);
     }

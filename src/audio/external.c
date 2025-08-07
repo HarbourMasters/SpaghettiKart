@@ -3630,8 +3630,7 @@ void func_800CB14C() {
 }
 
 void audio_set_player_volume(u8 player, f32 volume) {
-    gSequencePlayers[player].fadeVolume = volume;
-    gSequencePlayers[player].recalculateVolume = 1;
+    func_800C36C4(player, 0, volume * 127, 1);
 }
 
 // run audio?

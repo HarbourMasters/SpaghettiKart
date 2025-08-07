@@ -169,12 +169,13 @@ namespace Editor {
 
     void TrackPropertiesWindow::DrawMusic() {
         const char* items[] = {
-            "None", "Title Screen", "Main Menu", "Raceways Wario Stadium", "Moo Moo Farm / Yoshi Valley",
+            "None", "Title Screen", "Main Menu", "Wario Stadium", "Moo Moo Farm",
             "Choco Mountain", "Koopa Troopa Beach", "Banshee Boardwalk", "Frappe Snowland", "Bowser's Castle",
             "Kalimari Desert", "Start Grid GP/VS", "Final Lap Fanfare", "Finish 1st Place", "Finish 2nd-4th Place",
             "Finish 5th-8th Place", "16", "Star Jingle", "Rainbow Road", "DK Jungle", "Game Over", "Toad's Turnpike",
             "Start Grid Time Attack", "VS Battle Results", "Losing Results", "Battle Arenas", "Award Ceremony Buildup",
-            "Award Ceremony 1st-3rd", "Staff Roll", "Award Ceremony 4th-8th"
+            "Award Ceremony 1st-3rd", "Staff Roll", "Award Ceremony 4th-8th", "Luigi Raceway", "Mario Raceway",
+            "Royal Raceway", "Yoshi Valley", "Block Fort", "Double Deck"
         };
 
         const char* currentItem = MusicSeqToString(gWorldInstance.CurrentCourse->Props.Sequence); // Get the current selected value's string
@@ -201,11 +202,11 @@ namespace Editor {
     // Enum to string conversion
     const char* TrackPropertiesWindow::MusicSeqToString(MusicSeq seq) {
         switch (seq) {
-            case MUSIC_SEQ_00: return "None";
+            case MUSIC_SEQ_SOUND_PLAYER: return "Sound FX Player (Don't use)";
             case MUSIC_SEQ_TITLE_SCREEN: return "Title Screen";
             case MUSIC_SEQ_MAIN_MENU: return "Main Menu";
-            case MUSIC_SEQ_RACEWAYS_WARIO_STADIUM: return "Raceways Wario Stadium";
-            case MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY: return "Moo Moo Farm / Yoshi Valley";
+            case MUSIC_SEQ_WARIO_STADIUM: return "Wario Stadium";
+            case MUSIC_SEQ_MOO_MOO_FARM: return "Moo Moo Farm";
             case MUSIC_SEQ_CHOCO_MOUNTAIN: return "Choco Mountain";
             case MUSIC_SEQ_KOOPA_TROOPA_BEACH: return "Koopa Troopa Beach";
             case MUSIC_SEQ_BANSHEE_BOARDWALK: return "Banshee Boardwalk";
@@ -217,7 +218,7 @@ namespace Editor {
             case MUSIC_SEQ_FINISH_1ST_PLACE: return "Finish 1st Place";
             case MUSIC_SEQ_FINISH_2ND_4TH_PLACE: return "Finish 2nd-4th Place";
             case MUSIC_SEQ_FINISH_5TH_8TH_PLACE: return "Finish 5th-8th Place";
-            case MUSIC_SEQ_16: return "16";
+            case MUSIC_SEQ_WINNING_RESULTS: return "Winning Results";
             case MUSIC_SEQ_STAR_JINGLE: return "Star Jingle";
             case MUSIC_SEQ_RAINBOW_ROAD: return "Rainbow Road";
             case MUSIC_SEQ_DK_JUNGLE: return "DK Jungle";
@@ -231,6 +232,12 @@ namespace Editor {
             case MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD: return "Award Ceremony 1st-3rd";
             case MUSIC_SEQ_STAFF_ROLL: return "Staff Roll";
             case MUSIC_SEQ_AWARD_CEREMONY_4TH_8TH: return "Award Ceremony 4th-8th";
+            case MUSIC_SEQ_LUIGI_RACEWAY: return "Luigi Raceway";
+            case MUSIC_SEQ_MARIO_RACEWAY: return "Mario Raceway";
+            case MUSIC_SEQ_ROYAL_RACEWAY: return "Royal Raceway";
+            case MUSIC_SEQ_YOSHI_VALLEY: return "Yoshi Valley";
+            case MUSIC_SEQ_BLOCK_FORT: return "Block Fort";
+            case MUSIC_SEQ_DOUBLE_DECK: return "Double Deck";
             default: return "None";
         }
     }

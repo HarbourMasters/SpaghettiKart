@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: macOS-latest
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,15 +24,15 @@ jobs:
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
-          cmake --build build-cmake -j
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build-cmake -j --config ${{ matrix.config }}
       - name: Create Package
         run: |
-          mkdir spaghetti-release
-          mv build-cmake/Spaghettify spaghetti-release/
+          mkdir spaghetti-${{ matrix.config }}
+          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-            name: spaghetti-mac-universal
-            path: spaghetti-release
+            name: spaghetti-mac-universal-${{ matrix.config }}
+            path: spaghetti-${{ matrix.config }}
             retention-days: 1

@@ -47,6 +47,9 @@ jobs:
   build-windows:
     needs: generate-port-o2r
     runs-on: windows-2022
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,30 +58,34 @@ jobs:
           submodules: recursive
       - name: Build
         run: |
-          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=Release
-          cmake --build ./build/x64 --config Release --parallel 10
+          cmake -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64 -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          cmake --build ./build/x64 --config ${{ matrix.config }} --parallel 10
       - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
         with:
           name: spaghetti.o2r
-          path: ./build/x64/Release
+          path: ./build/x64/${{ matrix.config }}
       - name: Create Package
         run: |
-          mkdir spaghetti-release
-          mv build/x64/Release/Spaghettify.exe spaghetti-release/
-          mv build/x64/Release/spaghetti.o2r spaghetti-release/
-          mv config.yml spaghetti-release/
-          mv yamls spaghetti-release/
-          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-release/gamecontrollerdb.txt"
+          mkdir spaghetti-${{ matrix.config }}
+          mv build/x64/${{ matrix.config }}/Spaghettify.exe spaghetti-${{ matrix.config }}/
+          mv build/x64/${{ matrix.config }}/spaghetti.o2r spaghetti-${{ matrix.config }}/
+          mv config.yml spaghetti-${{ matrix.config }}/
+          mv yamls spaghetti-${{ matrix.config }}/
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
       - name: Upload build
+        if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
           name: spaghetti-windows
-          path: spaghetti-release
+          path: spaghetti-${{ matrix.config }}
 
   build-macos:
     needs: generate-port-o2r
     runs-on: macOS-latest
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -93,8 +100,8 @@ jobs:
           vcpkgDirectory: '${{ github.workspace }}/vcpkg'
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
-          cmake --build build-cmake --config Release -j3
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build-cmake --config ${{ matrix.config }} -j3
       - name: Download spaghetti.o2r
         uses: actions/download-artifact@v4
         with:
@@ -102,21 +109,25 @@ jobs:
           path: ./build-cmake
       - name: Create Package
         run: |
-          mkdir spaghetti-release
-          mv build-cmake/Spaghettify spaghetti-release/
-          mv build-cmake/spaghetti.o2r spaghetti-release/
-          mv config.yml spaghetti-release/
-          mv yamls spaghetti-release/
-          wget -O spaghetti-release/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          mkdir spaghetti-${{ matrix.config }}
+          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
+          mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
+          mv config.yml spaghetti-${{ matrix.config }}/
+          mv yamls spaghetti-${{ matrix.config }}/
+          wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
+        if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
             name: spaghetti-mac-x64
-            path: spaghetti-release
+            path: spaghetti-${{ matrix.config }}
 
   build-linux:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -189,25 +200,19 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build-cmake --config Release -j3
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          cmake --build build-cmake --config ${{ matrix.config }} -j3
           (cd build-cmake && cpack -G External)
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage spaghetti.appimage
-      # - name: Upload build
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Spaghettify-linux
-      #     path: |
-      #       spaghetti.appimage
-      #       config.yml
-      #       yamls
-      #       gamecontrollerdb.txt
 
   build-linux-old:
     needs: generate-port-o2r
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -292,16 +297,17 @@ jobs:
           path: ./build-cmake
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build-cmake --config Release -j3
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          cmake --build build-cmake --config ${{ matrix.config }} -j3
           (cd build-cmake && cpack -G External)
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-cmake/*.appimage spaghetti.appimage
       - name: Upload build
+        if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
-          name: Spaghettify-linux
+          name: spaghetti-linux-x64
           path: |
             spaghetti.appimage
             config.yml
@@ -311,6 +317,9 @@ jobs:
   build-linux-docker:
     needs: generate-port-o2r
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -327,13 +336,16 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: docker build . -t spaghetti
       - name: Confiure
-        run: docker run --rm -v ${PWD}:/project spaghetti cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
+        run: docker run --rm -v ${PWD}:/project spaghetti cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
       - name: Build spaghetti
-        run: docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config Release -j$(nproc)
+        run: docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config ${{ matrix.config }} -j$(nproc)
 
   build-switch:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config: [Release, Debug]
     container:
       image: devkitpro/devkita64:20241023
     steps:
@@ -361,12 +373,13 @@ jobs:
           make
           sudo make install
           cd ../..
-          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake
-          cmake --build build-switch --config Release -j3
+          cmake -H. -Bbuild-switch -GNinja -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/Switch.cmake -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          cmake --build build-switch --config ${{ matrix.config }} -j3
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv README.md readme.txt
           mv build-switch/*.nro Spaghettify.nro
       - name: Upload build
+        if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
           name: Spaghettify-switch

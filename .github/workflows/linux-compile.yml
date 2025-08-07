@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config: [Release, Debug]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,15 +42,15 @@ jobs:
           sudo make install
       - name: Build
         run: |
-          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=Release
-          cmake --build build-cmake -j
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          cmake --build build-cmake -j --config ${{ matrix.config }}
       - name: Create Package
         run: |
-          mkdir spaghetti-release
-          mv build-cmake/Spaghettify spaghetti-release/
+          mkdir spaghetti-${{ matrix.config }}
+          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
       - name: Publish packaged artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: spaghetti-linux-x64
-          path: spaghetti-release
+          name: spaghetti-linux-x64-${{ matrix.config }}
+          path: spaghetti-${{ matrix.config }}
           retention-days: 1

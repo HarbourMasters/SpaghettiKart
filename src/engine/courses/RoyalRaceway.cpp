@@ -155,7 +155,7 @@ RoyalRaceway::RoyalRaceway() {
     Props.Skybox.FloorBottomRight = {0, 0, 0};
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 224, 240};
-    Props.Sequence = MusicSeq::MUSIC_SEQ_RACEWAYS_WARIO_STADIUM;
+    Props.Sequence = MusicSeq::MUSIC_SEQ_ROYAL_RACEWAY;
 
     Props.WaterLevel = -60.0f;
     for (size_t i = 0; i < 132; i++) {
