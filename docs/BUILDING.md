@@ -33,8 +33,10 @@ cd spaghetti
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 & 'C:\Program Files\CMake\bin\cmake' -S . -B "build/x64" -G "Visual Studio 17 2022" -T v143 -A x64
 
-# Generate mk64.o2r
+# Generate mk64.o2r and spaghetti.o2r
 & 'C:\Program Files\CMake\bin\cmake.exe' --build .\build\x64 --target ExtractAssets
+# or if you want to generate the spaghetti.o2r file only
+& 'C:\Program Files\CMake\bin\cmake.exe' --build .\build\x64 --target GenerateO2R
 
 # Compile project
 # Add `--config Release` if you're packaging
@@ -133,8 +135,10 @@ git submodule update --init
 # Add `-DPython3_EXECUTABLE=$(which python3)` if you are using non-standard Python installations such as PyEnv
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate mk64.o2r
+# Generate mk64.o2r and spaghetti.o2r
 cmake --build build-cmake --target ExtractAssets
+# or if you want to generate the spaghetti.o2r file only
+cmake --build build-cmake --target GenerateO2R
 
 # Compile the project
 # Add `--config Release` if you're packaging
@@ -198,8 +202,10 @@ git submodule update --init
 # Add `-DCMAKE_BUILD_TYPE:STRING=Release` if you're packaging
 cmake -H. -Bbuild-cmake -GNinja
 
-# Generate mk64.o2r
+# Generate mk64.o2r and spaghetti.o2r
 cmake --build build-cmake --target ExtractAssets
+# or if you want to generate the spaghetti.o2r file only
+cmake --build build-cmake --target GenerateO2R
 
 # Compile the project
 # Add `--config Release` if you're packaging

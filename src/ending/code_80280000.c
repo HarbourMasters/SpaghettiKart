@@ -57,13 +57,13 @@ void func_80280038(void) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspective(GetPerspMatrix(0), &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+    guLookAt(GetLookAtMatrix(0), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
              camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     SetCourseById(gCreditsCourseId);

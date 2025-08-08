@@ -253,6 +253,11 @@ void OBombKart::Tick() {
                 }
                 break;
             case States::CHASE:
+                // Prevents chasing during race staging
+                if (gRaceState != RACE_IN_PROGRESS)  {
+                    return;
+                }
+
                 if (!_target) {
                     _target = OBombKart::FindTarget();
                 } else {

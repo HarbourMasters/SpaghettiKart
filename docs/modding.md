@@ -10,8 +10,9 @@ Modding are really early stages so a lot of features are not implemented yet. We
 * Custom Characters
     * Custom characters can only replace existing characters for now. We plan to allow to add new characters in the future.
     * [link](custom-characters.md)
-* Custom Music
-    * Custom music are not supported yet. We plan to add support for custom music in the future.
+* Custom Audio
+    * Only custom sequences are supported, not custom samples (like voices or sound effects).
+    * [link](custom-audio.md)
 * Scripting
     * Add logic to the game are not possible yet but we plan to add support for scripting in the future. We will use [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly) with [component model](https://component-model.bytecodealliance.org/) this will allow you to choose your language (Rust, C, C++, Python, JS, etc.) and compile it to WebAssembly.
 * 3D Models For Characters

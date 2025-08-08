@@ -365,6 +365,7 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
 
 void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
+    instance->gHMAS = new HMAS();
     instance->AudioInit();
     GameUI::SetupGuiElements();
 #if defined(__SWITCH__) || defined(__WIIU__)
@@ -392,8 +393,11 @@ void GameEngine::StartFrame() const {
     switch (dwScancode) {
         case KbScancode::LUS_KB_TAB: {
             // Toggle HD Assets
-            CVarSetInteger("gAltAssets", !CVarGetInteger("gAltAssets", 0));
-            ShouldClearTextureCacheAtEndOfFrame = true;
+            CVarSetInteger("gEnhancements.Mods.AlternateAssets", !CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0));
+            break;
+        }
+        case KbScancode::LUS_KB_P: {
+
             break;
         }
         default:
@@ -480,7 +484,6 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
 }
 
 // Audio
-
 void GameEngine::HandleAudioThread() {
     while (audio.running) {
         {
@@ -498,12 +501,23 @@ void GameEngine::HandleAudioThread() {
         int samples_left = AudioPlayerBuffered();
         u32 num_audio_samples = samples_left < AudioPlayerGetDesiredBuffered() ? SAMPLES_HIGH : SAMPLES_LOW;
 
-        s16 audio_buffer[SAMPLES_PER_FRAME] = { 0 };
+        s16 nas_buffer[SAMPLES_PER_FRAME] = { 0 };
+        f32 hmas_buffer[SAMPLES_PER_FRAME] = { 0 };
+        s16 mix_buffer[SAMPLES_PER_FRAME] = { 0 };
+
         for (size_t i = 0; i < NUM_AUDIO_CHANNELS; i++) {
-            create_next_audio_buffer(audio_buffer + i * (num_audio_samples * 2), num_audio_samples);
+            create_next_audio_buffer(nas_buffer + i * (num_audio_samples * 2), num_audio_samples);
         }
 
-        AudioPlayerPlayFrame((u8*) audio_buffer, 2 * num_audio_samples * 4);
+        GameEngine::Instance->gHMAS->CreateBuffer((u8*)hmas_buffer, 4 * num_audio_samples * sizeof(float));
+
+        float master_vol = CVarGetFloat("gGameMasterVolume", 1.0f);
+
+        for (size_t i = 0; i < SAMPLES_PER_FRAME; i++) {
+            mix_buffer[i] = nas_buffer[i] + ((int16_t)(hmas_buffer[i] * 32767.0f) * master_vol);
+        }
+
+        AudioPlayerPlayFrame((u8*) mix_buffer, 2 * num_audio_samples * 4);
 
         audio.processing = false;
         audio.cv_from_thread.notify_one();
@@ -546,6 +560,9 @@ void GameEngine::AudioInit() {
     }
 
     for (auto& sequence : *sequences_files) {
+        if (sequence.find('.') != std::string::npos) {
+            continue;
+        }
         auto path = "__OTR__" + sequence;
         auto seq = static_cast<AudioSequenceData*>(ResourceGetDataByName(path.c_str()));
         Instance->sequenceTable[seq->id] = path;

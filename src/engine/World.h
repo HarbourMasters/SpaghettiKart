@@ -40,15 +40,20 @@ class OLakitu;
 class GameObject; // <-- Editor
 
 class World {
-    typedef struct {
-        std::vector<Mtx> Hud;
-        std::vector<Mtx> Objects;
-        std::vector<Mtx> Shadows;
-        std::vector<Mtx> Karts;
-        std::vector<Mtx> Effects;
-        std::vector<Mtx> Persp;
-        std::vector<Mtx> LookAt;
-    } Matrix;
+typedef struct Matrix {
+    Mtx Screen2D; // Orthogonal projection for UI, skybox, and such
+    Mtx Ortho;
+    std::array<Mtx,4> Persp;
+    std::array<Mtx,4> LookAt;
+    std::array<Mtx, 8 * 4> Karts; // Eight players * four screens
+    std::array<Mtx, 8 * 4> Shadows; // Eight players * four screens
+    std::deque<Mtx> Hud;
+    std::deque<Mtx> Objects;
+
+    Matrix()
+        : Hud(200), Objects(1000)
+    {}
+};
 
 public:
     explicit World();

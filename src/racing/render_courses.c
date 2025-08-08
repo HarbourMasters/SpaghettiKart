@@ -22,6 +22,7 @@
 #include "courses/all_course_packed.h"
 #include "courses/all_course_offsets.h"
 #include "port/Game.h"
+#include "engine/Matrix.h"
 #include "engine/courses/Course.h"
 
 #include "enhancements/collision_viewer.h"
@@ -215,29 +216,34 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
     pathCounter = (u16) arg0->pathCounter;
     cameraRot = (u16) arg0->camera->rot[1];
     playerDirection = arg0->playerDirection;
+
+    // This pushes the camera matrices to the top of the stack.
+    // It does not appear to really do anything.
+    // Perhaps they thought it was necessary to set the camera back to projection mode since rainbow road uses model mode.
+    // But that issue should be cleared up in render_screens() already.
     switch (playerId) {
         case PLAYER_ONE:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[PLAYER_ONE]),
+            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_ONE),
                       G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[PLAYER_ONE]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_ONE),
                       G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case PLAYER_TWO:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[PLAYER_TWO]),
+            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_TWO),
                       G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[PLAYER_TWO]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_TWO),
                       G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case PLAYER_THREE:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[PLAYER_THREE]),
+            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_THREE),
                       G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[PLAYER_THREE]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_THREE),
                       G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
         case PLAYER_FOUR:
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[PLAYER_FOUR]),
+            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_FOUR),
                       G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[PLAYER_FOUR]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_FOUR),
                       G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             break;
     }

@@ -9,6 +9,11 @@
 
 namespace GameUI {
 
+static const std::unordered_map<int32_t, const char*> menuExtentOptions = {
+    { UIWidgets::MenuExtent::Condensed, "Condensed" },
+    { UIWidgets::MenuExtent::Stretched, "Stretched" },
+};
+
 static const std::unordered_map<int32_t, const char*> menuThemeOptions = {
     { UIWidgets::Colors::Red, "Red" },
     { UIWidgets::Colors::DarkRed, "Dark Red" },
@@ -65,6 +70,7 @@ class PortMenu : public Ship::Menu {
     WidgetInfo& AddWidget(WidgetPath& pathInfo, std::string widgetName, WidgetType widgetType);
     void AddSettings();
     void AddEnhancements();
+      void AddRulesets();
     void AddDevTools();
 };
 } // namespace BenGui

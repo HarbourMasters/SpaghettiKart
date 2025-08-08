@@ -66,12 +66,14 @@ s8 gCharacterSelections[4] = { MARIO, LUIGI, YOSHI, TOAD };
 
 // The current row selected in the mode column for each player indexed
 // 0-1 1p / 0-2 2p´/ 0-1 3p / 0-1 4p
-s8 gGameModeMenuColumn[4] = { 0, 0, 0, 0 };
+s8 gGameModeMenuColumn[NUM_ROWS_GAME_MODE_MENU] = { 0, 0, 0, 0 };
 
 // For Grand Prix and Versus, this will be the CC mode selected. For Time Trials, it will
 // be whether 'Begin' or 'Data' is selected. Not used for Battle.
 // indexed as [column][row]
-s8 gGameModeSubMenuColumn[4][3] = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+s8 gGameModeSubMenuColumn[NUM_COLUMN_GAME_MODE_SUB_MENU][NUM_ROWS_GAME_MODE_SUB_MENU] = { 
+    { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }
+};
 
 s8 gNextDemoId = 0;
 s8 gControllerPakSelectedTableRow = 0; // 0-4 index, value of the current visible row select

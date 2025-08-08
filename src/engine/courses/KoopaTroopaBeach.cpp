@@ -149,10 +149,10 @@ void KoopaTroopaBeach::Load() {
 
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), 106, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), 106, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07009E70), 106, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), 106, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), 150, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), 150, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07009E70), 150, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), 150, 255, 255, 255);
 }
 
 void KoopaTroopaBeach::LoadTextures() {

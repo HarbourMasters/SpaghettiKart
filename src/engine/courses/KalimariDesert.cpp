@@ -192,6 +192,10 @@ void KalimariDesert::BeginPlay() {
 
         s32 centerWaypoint = 160;
 
+        _numTrains = CVarGetInteger("gNumTrains", 2);
+        _numCarriages = CVarGetInteger("gNumCarriages", 5);
+        _tender = (ATrain::TenderStatus)CVarGetInteger("gHasTender", 1);
+
         // Spawn two trains
         for (size_t i = 0; i < _numTrains; ++i) {
             uint32_t waypoint = CalculateWaypointDistribution(i, _numTrains, gVehicle2DPathLength, centerWaypoint);

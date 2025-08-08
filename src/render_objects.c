@@ -1296,11 +1296,14 @@ void func_8004A258(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8* texture, Vtx* arg
 }
 
 void func_8004A2F4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, u8* texture,
-                   Vtx* arg9, s32 argA, s32 argB, s32 argC, s32 argD) {
+                   Vtx* vtx, s32 argA, s32 argB, s32 width, s32 height) {
     func_80042330(arg0, arg1, arg2, arg3);
     gSPDisplayList(gDisplayListHead++, D_0D007A40);
     func_8004B414(red, green, blue, alpha);
-    func_80049970(texture, arg9, argA, argB, argC, argD);
+    func_80044DA0(texture, argA, argB);
+    gSPVertex(gDisplayListHead++, vtx, 4, 0);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
 }
 
 void func_8004A384(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 red, s32 green, s32 blue, s32 alpha, u8* texture,
@@ -2020,10 +2023,12 @@ void draw_hud_2d_texture(s32 x, s32 y, u32 width, u32 height, u8* texture) {
 void draw_hud_2d_texture_wide(s32 x, s32 y, u32 width, u32 height, u8* texture) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_POINT);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror(texture, width, height);
     func_8004B97C_wide(x - (width >> 1), y - (height >> 1), width, height, 0);
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
+    gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
 void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8* texture) {
@@ -2713,13 +2718,20 @@ void render_digital_speedometer(s32 playerIdx) {
     text_draw_wide(270, 224, str, 0, 0.5f, 0.5f);
 }
 
+Vtx speedometer_vtx[] = {
+    { { { -32, -47, 0 }, 0, { 0, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, -47, 0 }, 0, { 4032, 0 }, { 255, 255, 255, 255 } } },
+    { { { 31, 47, 0 }, 0, { 4032, 6016 }, { 255, 255, 255, 255 } } },
+    { { { -32, 47, 0 }, 0, { 0, 6016 }, { 255, 255, 255, 255 } } },
+};
+
 // render the speedometer for the player
 void render_speedometer(s32 playerIdx) {
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
     func_8004A2F4(playerHUD[playerIdx].speedometerX, playerHUD[playerIdx].speedometerY, 0U, 1.0f,
                   // RGBA
                   CM_GetProps()->Minimap.Colour.r, CM_GetProps()->Minimap.Colour.g, CM_GetProps()->Minimap.Colour.b,
-                  0xFF, LOAD_ASSET(common_texture_speedometer), LOAD_ASSET(D_0D0064B0), 64, 96, 64, 48);
+                  0xFF, common_texture_speedometer, speedometer_vtx, 64, 96, 64, 48);
     // x, y, needle rot
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20,
                   0x40, 0x20);
@@ -3472,7 +3484,7 @@ struct ObjectInterpData {
 
 struct ObjectInterpData prevObject[OBJECT_LIST_SIZE] = { 0 };
 
-void func_800518F8(s32 objectIndex, s16 x, s16 y) {
+void render_clouds(s32 objectIndex, s16 x, s16 y) {
 
     // Search all recorded objects for the one we're drawing
     for (size_t i = 0; i < OBJECT_LIST_SIZE; i++) {
@@ -3491,7 +3503,7 @@ void func_800518F8(s32 objectIndex, s16 x, s16 y) {
     if (gObjectList[objectIndex].status & 0x10) {
 
         // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("func_800518F8", (uintptr_t) &gObjectList[objectIndex]);
+        FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS(objectIndex));
 
         if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
             D_8018D228 = gObjectList[objectIndex].unk_0D5;
@@ -3550,13 +3562,7 @@ void func_80051ABC(s16 arg0, s32 arg1) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("func_80051ABC", TAG_OBJECT(object));
-
-            func_800518F8(objectIndex, object->unk_09C, arg0 - object->unk_09E);
-
-            // @port Pop the transform id.
-            FrameInterpolation_RecordCloseChild();
+            render_clouds(objectIndex, object->unk_09C, arg0 - object->unk_09E);
         }
     }
 }
@@ -3598,7 +3604,7 @@ void func_80051C60(s16 arg0, s32 arg1) {
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
-            func_800518F8(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
+            render_clouds(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
         }
     }
 }
@@ -4103,8 +4109,16 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     func_8004B310(arg2);
-    draw_rectangle_texture_overlap((u8*) common_tlut_bomb, common_texture_bomb[residue], D_0D005AE0, 0x00000020,
-                                   0x00000020, 0x00000020, 0x00000020);
+
+    int heigh = 32;
+    int width = 32;
+
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_bomb);
+    rsp_load_texture((u8*) common_texture_bomb[residue], width, heigh);
+    gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+
     temp_s0 = D_8018D400;
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     func_8004B414(0, 0, 0, arg2);
@@ -4208,8 +4222,15 @@ void func_80056BF0(s32 bombIndex) {
     D_80183E40[0] = sp40.bombPos[0];
     D_80183E40[1] = sp40.bombPos[1] + 1.0;
     D_80183E40[2] = sp40.bombPos[2];
-    draw_2d_texture_at(D_80183E40, D_80183E80, 0.25f, (u8*) common_tlut_bomb, bombFrame, D_0D005AE0, 0x20, 0x20, 0x20,
-                       0x20);
+
+    rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.25f);
+    gSPDisplayList(gDisplayListHead++, D_0D007D78);
+    gDPLoadTLUT_pal256(gDisplayListHead++, (u8*) common_tlut_bomb);
+    rsp_load_texture(bombFrame, 0x20, 0x20);
+    gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
+    gSPDisplayList(gDisplayListHead++, common_rectangle_display);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+
     temp_s0 = D_8018D400;
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     func_8004B414(0, 0, 0, 0xFF);

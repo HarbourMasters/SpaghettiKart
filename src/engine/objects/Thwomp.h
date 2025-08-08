@@ -31,7 +31,7 @@ extern "C" {
  * @arg boundingBoxSize optional. The size of the bounding box for the thwomp. Default value is 12
  */
 class OThwomp : public OObject {
-private:
+public:
     enum States : uint16_t {
         DISABLED,
         STATIONARY,
@@ -42,7 +42,6 @@ private:
         JAILED // Has no collision
     };
 
-public:
     States State = States::DISABLED;
 
     explicit OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize = 7);

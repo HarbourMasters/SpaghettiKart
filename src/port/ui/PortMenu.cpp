@@ -10,6 +10,10 @@
 #include <tuple>
 #include "ResolutionEditor.h"
 
+#include "courses/Course.h"
+#include "courses/KalimariDesert.h"
+#include "courses/ToadsTurnpike.h"
+
 #ifdef __SWITCH__
 #include <port/switch/SwitchImpl.h>
 #endif
@@ -111,6 +115,27 @@ void PortMenu::AddSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
+    AddWidget(path, "Menu Extent", WIDGET_CVAR_COMBOBOX)
+        .CVar("gSettings.Menu.Extent")
+        .Options(ComboboxOptions()
+                     .Tooltip("Changes the extent of the onscreen menu")
+                     .ComboMap(menuExtentOptions)
+                     .DefaultIndex(MenuExtent::Condensed));
+
+    AddWidget(path, "Menu Scale: %.0fx", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar("gSettings.Menu.Scale")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gSettings.Menu.Extent", 0); })
+        .Options(FloatSliderOptions()
+                     .Tooltip("Adjust the scale for the menu.")
+                     .Min(1.0f)
+                     .Max(2.0f)
+                     .DefaultValue(1.0f)
+                     .Format("%.1f")
+                     .Step(0.1f));
+    AddWidget(path, "Controller pak screen", WIDGET_CVAR_CHECKBOX)
+        .CVar("gControllerPakScreen")
+        .Options(CheckboxOptions().Tooltip(
+            "Enables the Controller Pak screen when starting the game."));
 #if not defined(__SWITCH__) and not defined(__WIIU__)
     AddWidget(path, "Menu Controller Navigation", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_IMGUI_CONTROLLER_NAV)
@@ -164,8 +189,6 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Main Music Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gMainMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_LEVEL, CVarGetFloat("gMainMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the background music volume.")
                      .ShowButtons(false)
@@ -173,17 +196,13 @@ void PortMenu::AddSettings() {
                      .IsPercentage());
     AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gSFXMusicVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_SFX, CVarGetFloat("gSFXMusicVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the sound effects volume.")
                      .ShowButtons(false)
                      .Format("")
                      .IsPercentage());
-    AddWidget(path, "Sound Effects Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
+    AddWidget(path, "Environment Volume: %.0f%%", WIDGET_CVAR_SLIDER_FLOAT)
         .CVar("gEnvironmentVolume")
-        .Callback(
-            [](WidgetInfo& info) { audio_set_player_volume(SEQ_PLAYER_ENV, CVarGetFloat("gEnvironmentVolume", 1.0f)); })
         .Options(FloatSliderOptions()
                      .Tooltip("Adjust the environment volume.")
                      .ShowButtons(false)
@@ -232,7 +251,7 @@ void PortMenu::AddSettings() {
                 .IsPercentage()
                 .Format("")
                 .Min(0.5f)
-                .Max(2.0f));
+                .Max(4.0f));
 #endif
 #ifndef __WIIU__
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)
@@ -385,6 +404,8 @@ void PortMenu::AddEnhancements() {
 
     AddWidget(path, "Use modern PRNG", WIDGET_CVAR_CHECKBOX).CVar("gModernPRNG");
 
+    AddRulesets();
+
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "Cheats", 3);
     AddWidget(path, "Moon Jump", WIDGET_CVAR_CHECKBOX).CVar("gEnableMoonJump");
@@ -425,6 +446,67 @@ static const std::unordered_map<int32_t, const char*> switchCPUProfiles = {
     { Ship::SwitchProfiles::POWERSAVINGM3, "Powersaving Mode 3" }
 };
 #endif
+
+void PortMenu::AddRulesets() {
+    WidgetPath path = { "Enhancements", "Rulesets", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Rulesets", 3);
+
+    // Requires more testing
+    // AddWidget(path, "Number of Laps", WIDGET_CVAR_SLIDER_INT)
+    //     .CVar("gNumLaps")
+    //     .Options(UIWidgets::IntSliderOptions().Min().Max(20).Step(1).DefaultValue(3));
+
+    AddWidget(path, "No Itemboxes", WIDGET_CVAR_CHECKBOX)
+        .CVar("gDisableItemboxes")
+        .Options(CheckboxOptions().Tooltip(
+            "Prevents Itemboxes from spawning"));
+    AddWidget(path, "All Thwomps are Marty", WIDGET_CVAR_CHECKBOX)
+        .CVar("gAllThwompsAreMarty")
+        .Options(CheckboxOptions().Tooltip(
+            "All Thwomps are Marty"));
+    AddWidget(path, "All Bomb Karts in Chase Mode", WIDGET_CVAR_CHECKBOX)
+        .CVar("gAllBombKartsChase")
+        .Options(CheckboxOptions().Tooltip(
+            "These karts will chase you!!!"));
+    AddWidget(path, "Get the trophies!", WIDGET_CVAR_CHECKBOX)
+        .CVar("gGoFish")
+        .Options(CheckboxOptions().Tooltip(
+            "Collect as many trophies as you can. Racer with the most trophies wins!"));
+    AddWidget(path, "Track X Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[0])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+    AddWidget(path, "Track Y Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[1])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+    AddWidget(path, "Track Z Stretch", WIDGET_SLIDER_FLOAT)
+        .ValuePointer(&gVtxStretch[2])
+        .Options(UIWidgets::FloatSliderOptions().Min(0.1f).Max(10.0f).Step(0.1f).Format("%.2f"));
+
+
+    AddWidget(path, "Trains", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTrains")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(19).Step(1).DefaultValue(2));
+    AddWidget(path, "Carriages", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumCarriages")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(74).Step(1).DefaultValue(5));
+    AddWidget(path, "Train has a tender", WIDGET_CVAR_CHECKBOX)
+        .CVar("gHasTender")
+        .Options(UIWidgets::CheckboxOptions().DefaultValue(1)
+        .Tooltip("This option is only valid if there are no carriages on the train"));
+
+    AddWidget(path, "Trucks", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTrucks")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Buses", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumBuses")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Tanker Trucks", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumTankerTrucks")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+    AddWidget(path, "Cars", WIDGET_CVAR_SLIDER_INT)
+        .CVar("gNumCars")
+        .Options(UIWidgets::IntSliderOptions().Min(0).Max(50).Step(1).DefaultValue(7));
+}
 
 void PortMenu::AddDevTools() {
     AddMenuEntry("Developer", "gSettings.Menu.DevToolsSidebarSection");

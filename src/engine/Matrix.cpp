@@ -9,7 +9,7 @@ extern "C" {
 #include "math_util_2.h"
 }
 
-void AddMatrix(std::vector<Mtx>& stack, Mat4 mtx, s32 flags) {
+void AddMatrix(std::deque<Mtx>& stack, Mat4 mtx, s32 flags) {
     // Push a new matrix to the stack
     stack.emplace_back();
 
@@ -21,15 +21,16 @@ void AddMatrix(std::vector<Mtx>& stack, Mat4 mtx, s32 flags) {
     gSPMatrix(gDisplayListHead++, &stack.back(), flags);
 }
 
-Mtx* GetMatrix(std::vector<Mtx>& stack) {
+Mtx* GetMatrix(std::deque<Mtx>& stack) {
     stack.emplace_back();
     return &stack.back();
 }
 
 /**
- * Use GetMatrix() first
+ * Push a fixed point matrix to the stack
+ * Use GetMatrix() before calling this
  */
-void AddMatrixFixed(std::vector<Mtx>& stack, s32 flags) {
+void AddMatrixFixed(std::deque<Mtx>& stack, s32 flags) {
     // Load the matrix
     gSPMatrix(gDisplayListHead++, &stack.back(), flags);
 }
@@ -58,14 +59,14 @@ void SetTextMatrix(Mat4 mf, f32 x, f32 y, f32 arg3, f32 arg4) {
 // AddMatrix but with custom gfx ptr arg and flags are predefined
 Gfx* AddTextMatrix(Gfx* displayListHead, Mat4 mtx) {
     // Push a new matrix to the stack
-    gWorldInstance.Mtx.Effects.emplace_back();
+    gWorldInstance.Mtx.Objects.emplace_back();
 
     // Convert to a fixed-point matrix
-    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mtx, &gWorldInstance.Mtx.Effects.back());
-    guMtxF2L(mtx, &gWorldInstance.Mtx.Effects.back());
+    FrameInterpolation_RecordMatrixMtxFToMtx((MtxF*)mtx, &gWorldInstance.Mtx.Objects.back());
+    guMtxF2L(mtx, &gWorldInstance.Mtx.Objects.back());
 
     // Load the matrix
-    gSPMatrix(displayListHead++, &gWorldInstance.Mtx.Effects.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(displayListHead++, &gWorldInstance.Mtx.Objects.back(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     return displayListHead;
 }
@@ -145,39 +146,43 @@ void AddLocalRotation(Mat4 mat, IRotator rot) {
 extern "C" {
 
     void AddHudMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Hud, mtx, flags);
+        AddMatrix(gWorldInstance.Mtx.Objects, mtx, flags);
     }
 
-    void AddPerspMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Persp, mtx, flags);
+    Mtx* GetScreenMatrix(void) {
+        return &gWorldInstance.Mtx.Screen2D;
     }
 
-    void AddLookAtMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.LookAt, mtx, flags);
+    Mtx* GetOrthoMatrix(void) {
+        return &gWorldInstance.Mtx.Ortho;
+    }
+
+    Mtx* GetPerspMatrix(size_t cameraId) {
+        return &gWorldInstance.Mtx.Persp[cameraId];
+    }
+
+    Mtx* GetLookAtMatrix(size_t cameraId) {
+        return &gWorldInstance.Mtx.LookAt[cameraId];
     }
 
     void AddObjectMatrix(Mat4 mtx, s32 flags) {
         AddMatrix(gWorldInstance.Mtx.Objects, mtx, flags);
     }
 
-    void AddShadowMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Shadows, mtx, flags);
+    Mtx* GetShadowMatrix(size_t playerId) {
+        return &gWorldInstance.Mtx.Shadows[playerId];
     }
 
-    void AddKartMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Karts, mtx, flags);
+    Mtx* GetKartMatrix(size_t playerId) {
+        return &gWorldInstance.Mtx.Karts[playerId];
     }
 
     void AddEffectMatrix(Mat4 mtx, s32 flags) {
-        AddMatrix(gWorldInstance.Mtx.Effects, mtx, flags);
-    }
-
-    void AddEffectMatrixFixed(s32 flags) {
-        AddMatrixFixed(gWorldInstance.Mtx.Effects, flags);
+        AddMatrix(gWorldInstance.Mtx.Objects, mtx, flags);
     }
 
     void AddEffectMatrixOrtho(void) {
-        auto& stack = gWorldInstance.Mtx.Effects;
+        auto& stack = gWorldInstance.Mtx.Objects;
         stack.emplace_back();
 
         guOrtho(&stack.back(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
@@ -186,7 +191,7 @@ extern "C" {
     }
 
     Mtx* GetEffectMatrix(void) {
-        return GetMatrix(gWorldInstance.Mtx.Effects);
+        return GetMatrix(gWorldInstance.Mtx.Objects);
     }
 
 
@@ -195,18 +200,10 @@ extern "C" {
      * We might need to adjust which ones we clear.
      */
     void ClearMatrixPools(void) {
-        gWorldInstance.Mtx.Hud.clear();
         gWorldInstance.Mtx.Objects.clear();
-        gWorldInstance.Mtx.Shadows.clear();
-        gWorldInstance.Mtx.Karts.clear();
-        gWorldInstance.Mtx.Effects.clear();
-    }
-
-    void ClearHudMatrixPool(void) {
-        gWorldInstance.Mtx.Hud.clear();
-    }
-    void ClearEffectsMatrixPool(void) {
-        gWorldInstance.Mtx.Effects.clear();
+       // gWorldInstance.Mtx.Shadows.clear();
+        //gWorldInstance.Mtx.Karts.clear();
+       // gWorldInstance.Mtx.Effects.clear();
     }
 
     void ClearObjectsMatrixPool(void) {

@@ -19,6 +19,7 @@
 #include "main.h"
 #include "menus.h"
 #include "port/Engine.h"
+#include "engine/Matrix.h"
 #include "engine/courses/Course.h"
 #include "port/Game.h"
 #include "math_util.h"
@@ -758,7 +759,6 @@ void func_802A5760(void) {
 
 // Setup the cameras perspective and lookAt (movement/rotation)
 void setup_camera(Camera* camera, s32 playerId, s32 cameraId, struct UnkStruct_800DC5EC* screen) {
-    Mat4 matrix;
     u16 perspNorm;
 
     // This allows freecam to create a new separate camera
@@ -767,20 +767,23 @@ void setup_camera(Camera* camera, s32 playerId, s32 cameraId, struct UnkStruct_8
     //     return;
     // }
 
-    // Setup perspective (camera movement)
+    // Tag the camera for the interpolation engine
     FrameInterpolation_RecordOpenChild("camera",
-                                       (FrameInterpolation_GetCameraEpoch() | (((playerId | cameraId) << 8))));
-    guPerspective(&gGfxPool->mtxPersp[cameraId], &perspNorm, gCameraZoom[cameraId], gScreenAspect,
+                                       (FrameInterpolation_GetCameraEpoch() | (playerId | (cameraId << 8))));
+
+    // Calculate camera perspective (camera movement/location)
+    guPerspective(GetPerspMatrix(cameraId), &perspNorm, gCameraZoom[cameraId], gScreenAspect,
                   CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[cameraId]),
+    gSPMatrix(gDisplayListHead++, GetPerspMatrix(cameraId),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    // Setup lookAt (camera rotation)
-    guLookAt(&gGfxPool->mtxLookAt[cameraId], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+    // Calculate the camera lookAt (camera rotation)
+    guLookAt(GetLookAtMatrix(cameraId), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
              camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[cameraId]),
+    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(cameraId),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+
     FrameInterpolation_RecordCloseChild();
 }
 
@@ -870,13 +873,16 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     setup_camera(camera, playerId, cameraId, screen);
 
     // Create a matrix for the track and game objects
-    FrameInterpolation_RecordOpenChild("track", (playerId | cameraId) << 8);
+    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | playerId)));
     Mat4 trackMatrix;
     mtxf_identity(trackMatrix);
     render_set_position(trackMatrix, 0);
 
-    // Draw course and game objects
+    // Draw track geography
     render_course(screen);
+    FrameInterpolation_RecordCloseChild();
+
+    // Draw dynamic game objects
     render_course_actors(screen);
     CM_DrawStaticMeshActors();
     render_object(mode);
@@ -895,9 +901,9 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
             render_players_on_screen_four();
             break;
     }
-    func_8029122C(screen, playerId);
+    func_8029122C(screen, playerId); // Track water related
 
-    switch (playerId) {
+    switch (playerId) { // Render player particles or some effect
         case 0:
             func_80021B0C();
             break;
@@ -914,11 +920,11 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
 
     render_item_boxes(screen);
     render_player_snow_effect(mode);
-    func_80058BF4();
+    func_80058BF4(); // Setup texture modes
     if (D_800DC5B8 != 0) {
-        func_80058C20(mode);
+        func_80058C20(mode); // Setup hud matrix
     }
-    func_80093A5C(mode);
+    func_80093A5C(mode); // Perhaps pause render?
     if (D_800DC5B8 != 0) {
         render_hud(mode);
     }
@@ -927,7 +933,6 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     if (mode != RENDER_SCREEN_MODE_1P_PLAYER_ONE) {
         gNumScreens += 1;
     }
-    FrameInterpolation_RecordCloseChild();
 }
 
 void func_802A74BC(void) {

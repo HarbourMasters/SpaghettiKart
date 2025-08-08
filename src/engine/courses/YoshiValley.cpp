@@ -127,7 +127,7 @@ YoshiValley::YoshiValley() {
     Props.Skybox.FloorBottomRight = {0, 0, 0};
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {95, 40, 15};
-    Props.Sequence = MusicSeq::MUSIC_SEQ_MOO_MOO_FARM_YOSHI_VALLEY;
+    Props.Sequence = MusicSeq::MUSIC_SEQ_YOSHI_VALLEY;
     for (size_t i = 0; i < 124; i++) {
         replace_segmented_textures_with_o2r_textures((Gfx*) d_course_yoshi_valley_dl_list[i], Props.textures);
     }

@@ -4,6 +4,7 @@
 #include <libultraship/libultraship.h>
 #include "UIWidgets.h"
 #include "MenuTypes.h"
+#include "../port/Game.h"
 
 extern "C" {
 #include "defines.h"
@@ -60,6 +61,9 @@ class Menu : public GuiWindow {
     virtual void ProcessReset() {
       gGamestateNext = MAIN_MENU_FROM_QUIT;
       gIsGamePaused = 0;
+      SetMarioRaceway();
+      memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
+      memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
 
       switch(CVarGetInteger("gSkipIntro", 0)) {
           case 0:
@@ -89,6 +93,7 @@ class Menu : public GuiWindow {
     bool popped;
     ImVec2 poppedSize;
     ImVec2 poppedPos;
+    float uiScale = 1.0f;
     float windowHeight;
     float windowWidth;
 };

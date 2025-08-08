@@ -15,6 +15,7 @@
 #include "menu_items.h"
 #include <stdbool.h>
 #include "port/Game.h"
+#include "port/audio/HMAS.h"
 
 s8 D_8018EF10;
 UnkStruct8018EF18 D_8018EF18[16];
@@ -2887,8 +2888,15 @@ void play_sound2(s32 soundBits) {
 }
 
 void play_sequence(u16 arg0) {
-    func_800C3448(arg0 | 0x10000);
-    gCurrentMusicSeq = arg0;
+
+    HMAS_Stop(HMAS_MUSIC); // Stop the current music sequence
+
+    if(HMAS_IsIDRegistered(arg0)) {
+        HMAS_Play(HMAS_MUSIC, arg0, true);
+    } else {
+        func_800C3448(arg0 | 0x10000);
+        gCurrentMusicSeq = arg0;
+    }
 }
 
 void func_800C8EF8(u16 arg0) {
@@ -3201,6 +3209,10 @@ void func_800C9EF4(Vec3f arg0, u32 soundBits) {
 }
 
 void func_800C9F90(u8 arg0) {
+    if(HMAS_IsPlaying(HMAS_MUSIC)) {
+        HMAS_SetVolume(HMAS_MUSIC, arg0 == 1 ? 0.15f : 0.9f);
+    }
+
     if ((arg0) != 0) {
         play_sound2(SOUND_ACTION_GO_BACK_2);
         func_800CBBB8(0xF1000000, 0);
@@ -3248,6 +3260,13 @@ void func_800CA0E4(void) {
 void func_800CA118(u8 arg0) {
     D_800EA0EC[arg0] = 1;
     D_800E9EA4[arg0] = 1;
+
+    // Audio: Stop the music when the race is over
+    if(HMAS_IsPlaying(HMAS_MUSIC)){
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
+    }
+
     switch (D_800EA1C0) { /* irregular */
         case 0:
             D_800EA0F0 = 1;
@@ -3340,6 +3359,13 @@ void func_800CA49C(u8 arg0) {
             func_800C3448(0xC130017D);
         }
         D_8018FC08 = D_8018FC08 + 1;
+
+        // Audio: Speed up the music on the last lap
+        if(HMAS_IsPlaying(HMAS_MUSIC)){
+            HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_PITCH, HMAS_INSTANT, 1,   1.2f);
+            HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_PAUSE, HMAS_INSTANT, 110, 0.0f);
+            HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_PAUSE, HMAS_INSTANT, 1,   1.0f);
+        }
     }
 }
 
@@ -3399,7 +3425,9 @@ void func_800CA730(u8 arg0) {
                             }
                         } else {
                             func_800C3448(0x110100FFU);
-                            play_sequence(gCurrentMusicSeq);
+                            if(!HMAS_IsPlaying(HMAS_MUSIC)){
+                                play_sequence(gCurrentMusicSeq);
+                            }
                         }
                     }
                     D_800EA164 = 0;
@@ -3602,8 +3630,7 @@ void func_800CB14C() {
 }
 
 void audio_set_player_volume(u8 player, f32 volume) {
-    gSequencePlayers[player].fadeVolume = volume;
-    gSequencePlayers[player].recalculateVolume = 1;
+    func_800C36C4(player, 0, volume * 127, 1);
 }
 
 // run audio?

@@ -41,8 +41,6 @@ struct AllocOnlyPool {
 
 #define ALIGN4(val) (((val) + 0x3) & ~0x3)
 
-extern f32 vtxStretchY;
-
 u8* load_lakitu_tlut_x64(const char** textureList, size_t length);
 void* get_next_available_memory_addr(uintptr_t);
 uintptr_t set_segment_base_addr(s32, void*);

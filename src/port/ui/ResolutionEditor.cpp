@@ -508,7 +508,7 @@ void UpdateResolutionVars() {
         ((float)gfx_current_dimensions.width / gfx_current_dimensions.height)) {
         // Scale to window height
         integerScale_maximumBounds = gfx_current_game_window_viewport.height / gfx_current_game_window_viewport.height;
-    } else {
+    } else if (gfx_current_game_window_viewport.width) {
         // Scale to window width
         integerScale_maximumBounds = gfx_current_game_window_viewport.width / gfx_current_game_window_viewport.width;
     }

@@ -318,7 +318,7 @@ void func_80050E34(s32, s32);
 void func_800514BC(void);
 void render_object_leaf_particle(s32);
 void render_object_snowflakes_particles(void);
-void func_800518F8(s32, s16, s16);
+void render_clouds(s32, s16, s16);
 void func_800519D4(s32, s16, s16);
 void func_80051ABC(s16, s32);
 void func_80051C60(s16, s32);

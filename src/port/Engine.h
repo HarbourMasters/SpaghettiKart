@@ -1,5 +1,7 @@
 #pragma once
 
+#include "port/audio/HMAS.h"
+
 #define LOAD_ASSET(path) \
 (path == NULL ? NULL \
   : (GameEngine_OTRSigCheck((const char*) path) ? ResourceGetDataByName((const char*) path) : path))
@@ -48,6 +50,8 @@ class GameEngine {
     ImFont* fontMonoLarger;
     ImFont* fontMonoLargest;
 
+    HMAS* gHMAS;
+
     std::unordered_map<std::string, uint8_t> bankMapTable;
     GameEngine();
     static bool GenAssetFile();
@@ -58,6 +62,8 @@ class GameEngine {
     static void StartAudioFrame();
     static void EndAudioFrame();
     static void AudioExit();
+
+
 
     static uint32_t GetInterpolationFPS();
     static uint32_t GetInterpolationFrameCount();

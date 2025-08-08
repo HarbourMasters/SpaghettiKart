@@ -137,9 +137,9 @@ void SherbetLand::Load() {
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 76, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 180, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 106, 255, 255, 255);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 150, 255, 255, 255);
 }
 
 f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
@@ -277,7 +277,7 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
 
 void SherbetLand::CreditsSpawnActors() {
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 76, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 180, 0xFF, 0xFF, 0xFF);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 106, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 150, 0xFF, 0xFF, 0xFF);
 }

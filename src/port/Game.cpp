@@ -48,6 +48,7 @@
 #include "engine/editor/Editor.h"
 #include "engine/editor/EditorMath.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/Rulesets.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -84,6 +85,7 @@ Cup* gBattleCup;
 ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
+Rulesets gRulesets;
 
 Editor::Editor gEditor;
 
@@ -144,12 +146,8 @@ void CustomEngineInit() {
     gWorldInstance.AddCup(gSpecialCup);
     gWorldInstance.AddCup(gBattleCup);
 
-    /* Set default course; mario raceway */
     //SelectMarioRaceway(); // This results in a nullptr
-    gWorldInstance.CurrentCourse = mario;
-    gWorldInstance.CurrentCup = gMushroomCup;
-    gWorldInstance.CurrentCup->CursorPosition = 3;
-    gWorldInstance.CupIndex = 0;
+    SetMarioRaceway();
 
     // ModelLoader::LoadModelList bowserStatueList = {
     //     .course = gBowsersCastle,
@@ -198,6 +196,14 @@ void CM_SpawnFromLevelProps() {
    // Editor::SpawnFromLevelProps();
 }
 
+// Set default course; mario raceway
+void SetMarioRaceway(void) {
+    SetCourseById(0);
+    gWorldInstance.CurrentCup = gMushroomCup;
+    gWorldInstance.CurrentCup->CursorPosition = 3;
+    gWorldInstance.CupIndex = 0;
+}
+
 World* GetWorld(void) {
     return &gWorldInstance;
 }
@@ -232,6 +238,7 @@ const char* GetCupName(void) {
 
 void LoadCourse() {
     if (gWorldInstance.CurrentCourse) {
+        gRulesets.PreLoad();
         gWorldInstance.CurrentCourse->Load();
     }
 }
@@ -375,6 +382,7 @@ void CM_BeginPlay() {
     auto course = gWorldInstance.CurrentCourse;
 
     if (course) {
+        gRulesets.PreInit();
         // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
         if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != BATTLE)) {
             if (course->bSpawnFinishline) {
@@ -384,6 +392,7 @@ void CM_BeginPlay() {
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
 
         course->BeginPlay();
+        gRulesets.PostInit();
     }
 }
 

@@ -190,6 +190,10 @@ enum ControllerPakScrollDirectionTypes {
     CONTROLLER_PAK_SCROLL_DIR_UP
 };
 
+#define NUM_ROWS_GAME_MODE_MENU 4
+#define NUM_COLUMN_GAME_MODE_SUB_MENU 4
+#define NUM_ROWS_GAME_MODE_SUB_MENU 3
+
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char*, ...);
 
@@ -254,7 +258,7 @@ extern s32 gFadeModeSelection;
 extern s8 gCharacterSelections[];
 
 extern s8 gGameModeMenuColumn[];
-extern s8 gGameModeSubMenuColumn[4][3];
+extern s8 gGameModeSubMenuColumn[NUM_COLUMN_GAME_MODE_SUB_MENU][NUM_ROWS_GAME_MODE_SUB_MENU];
 extern s8 gNextDemoId;
 extern s8 gControllerPakSelectedTableRow;
 extern s8 gControllerPakVisibleTableRows[];

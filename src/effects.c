@@ -1368,6 +1368,8 @@ void func_8008F5A4(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
+#include "port/audio/HMAS.h"
+
 void apply_star_effect(Player* player, s8 arg1) {
     if (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) >= 9) {
         D_8018D900[arg1] = 1;
@@ -1386,6 +1388,9 @@ void apply_star_effect(Player* player, s8 arg1) {
 
     if (((s32) gCourseTimer - gPlayerStarEffectStartTime[arg1]) >= 0xA) {
         player->effects &= ~STAR_EFFECT;
+        if(HMAS_IsPlaying(HMAS_MUSIC)){
+            HMAS_SetVolume(HMAS_MUSIC, 0.9f);
+        }
     }
 }
 
@@ -1401,6 +1406,9 @@ void apply_star_sound_effect(Player* player, s8 arg1) {
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         if (D_8018D900[arg1] == 1) {
+            if(HMAS_IsPlaying(HMAS_MUSIC)){
+                HMAS_SetVolume(HMAS_MUSIC, 0.1f);
+            }
             func_800CA59C(arg1);
             D_8018D900[arg1] = 2;
         }

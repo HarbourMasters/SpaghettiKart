@@ -176,6 +176,11 @@ void ToadsTurnpike::BeginPlay() {
         a /= 2; // Normally vehicle logic is only ran every 2 frames. This slows the vehicles down to match.
         b /= 2;
 
+        _numTrucks = CVarGetInteger("gNumTrucks", 7);
+        _numBuses = CVarGetInteger("gNumBuses", 7);
+        _numTankerTrucks = CVarGetInteger("gNumTankerTrucks", 7);
+        _numCars = CVarGetInteger("gNumCars", 7);
+
         // Other game modes spawn seven of each vehicle
         if (gModeSelection == TIME_TRIALS) {
             _numTrucks = 8;

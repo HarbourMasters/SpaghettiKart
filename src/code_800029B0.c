@@ -65,7 +65,7 @@ bool gIsEditorPaused = false;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;
-f32 vtxStretchY = 1.0f;
+Vec3f gVtxStretch = {1.0f, 1.0f, 1.0f};
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     //! @todo impl lighting in custom track origin value 115 instead of 209. Hack fix for lighting for now
@@ -163,16 +163,22 @@ s32 D_801625F4;
 uintptr_t D_801625F8;
 f32 D_801625FC;
 
+void update_music_volume(s32 target){
+    float volume = (float) target / 127.0f;
+    CVarSetFloat("gMainMusicVolume", volume);
+    audio_set_player_volume(SEQ_PLAYER_LEVEL, volume);
+}
+
 void func_800029B0(void) {
     switch (D_800DC5A8) {
         case 0:
-            func_800C8F44(127);
+            update_music_volume(127);
             break;
         case 1:
-            func_800C8F44(75);
+            update_music_volume(75);
             break;
         case 2:
-            func_800C8F44(0);
+            update_music_volume(0);
             break;
     }
 }
