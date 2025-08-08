@@ -32,6 +32,9 @@
 // #include <Fast3D/gfx_rendering_api.h>
 #include <SDL2/SDL.h>
 
+#include <stdlib.h>
+#include <time.h>
+
 #include <utility>
 
 #ifdef __SWITCH__
@@ -120,6 +123,8 @@ GameEngine::GameEngine() {
             }
         }
     }
+
+    srand(time(NULL));
 
     this->context = Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
 

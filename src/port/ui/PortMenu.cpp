@@ -402,6 +402,8 @@ void PortMenu::AddEnhancements() {
         .CVar("gShowSpaghettiVersion")
         .Options(CheckboxOptions().Tooltip("Show the Spaghetti Kart version on the Mario Kart menu").DefaultValue(true));
 
+    AddWidget(path, "Use modern PRNG", WIDGET_CVAR_CHECKBOX).CVar("gModernPRNG");
+
     AddRulesets();
 
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };

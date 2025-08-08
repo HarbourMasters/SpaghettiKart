@@ -28,9 +28,9 @@ void copy_collision(Collision* src, Collision* dest) {
     dest->surfaceDistance[1] = src->surfaceDistance[1];
     dest->surfaceDistance[2] = src->surfaceDistance[2];
 
-    vec3f_copy_return(dest->unk48, src->unk48);
-    vec3f_copy_return(dest->unk54, src->unk54);
-    vec3f_copy_return(dest->orientationVector, src->orientationVector);
+    vec3f_copy(dest->unk48, src->unk48);
+    vec3f_copy(dest->unk54, src->unk54);
+    vec3f_copy(dest->orientationVector, src->orientationVector);
 }
 
 void triple_shell_actor_collide_with_player(struct ShellActor* shell, s32 shellType) {
