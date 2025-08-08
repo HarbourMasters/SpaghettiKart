@@ -139,6 +139,7 @@ void clear_D_802874D8_actors() {
 
 u16 random_u16_credits(void) {
     if (CVarGetInteger("gModernPRNG", false) == false)
+    {
         u16 temp1, temp2;
 
         if (sRandomSeed16 == 22026) {
