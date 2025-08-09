@@ -12,6 +12,12 @@ set(NATO_PHONETIC_ALPHABET
 )
 
 execute_process(
+  COMMAND git config --global --add safe.directory ${CMAKE_SOURCE_DIR}
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_QUIET
+)
+
+execute_process(
   COMMAND git describe --tags
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   OUTPUT_VARIABLE PROJECT_VERSION

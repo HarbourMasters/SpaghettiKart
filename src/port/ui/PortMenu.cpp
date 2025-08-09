@@ -115,6 +115,23 @@ void PortMenu::AddSettings() {
                      .Tooltip("Changes the Theme of the Menu Widgets.")
                      .ComboMap(menuThemeOptions)
                      .DefaultIndex(Colors::LightBlue));
+    AddWidget(path, "Menu Extent", WIDGET_CVAR_COMBOBOX)
+        .CVar("gSettings.Menu.Extent")
+        .Options(ComboboxOptions()
+                     .Tooltip("Changes the extent of the onscreen menu")
+                     .ComboMap(menuExtentOptions)
+                     .DefaultIndex(MenuExtent::Condensed));
+
+    AddWidget(path, "Menu Scale: %.0fx", WIDGET_CVAR_SLIDER_FLOAT)
+        .CVar("gSettings.Menu.Scale")
+        .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gSettings.Menu.Extent", 0); })
+        .Options(FloatSliderOptions()
+                     .Tooltip("Adjust the scale for the menu.")
+                     .Min(1.0f)
+                     .Max(2.0f)
+                     .DefaultValue(1.0f)
+                     .Format("%.1f")
+                     .Step(0.1f));
     AddWidget(path, "Controller pak screen", WIDGET_CVAR_CHECKBOX)
         .CVar("gControllerPakScreen")
         .Options(CheckboxOptions().Tooltip(
@@ -234,7 +251,7 @@ void PortMenu::AddSettings() {
                 .IsPercentage()
                 .Format("")
                 .Min(0.5f)
-                .Max(2.0f));
+                .Max(4.0f));
 #endif
 #ifndef __WIIU__
     AddWidget(path, "Anti-aliasing (MSAA): %d", WIDGET_CVAR_SLIDER_INT)

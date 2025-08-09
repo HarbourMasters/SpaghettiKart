@@ -221,9 +221,9 @@ void OTrophy::Draw(s32 cameraId) {
     if (*_toggleVisibility == true) {
         object = &gObjectList[listIndex];
         if (object->state >= 2) {
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
+            gSPMatrix(gDisplayListHead++, GetPerspMatrix(0),
                     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0),
                     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             mtxf_set_matrix_transformation(someMatrix1, object->pos, object->direction_angle, object->sizeScaling);
             //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
@@ -234,7 +234,7 @@ void OTrophy::Draw(s32 cameraId) {
 
             gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
             gSPDisplayList(gDisplayListHead++, object->model);
-            gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
+            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0),
                     G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
             mtxf_identity(someMatrix2);
             render_set_position(someMatrix2, 0);

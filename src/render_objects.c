@@ -3484,7 +3484,7 @@ struct ObjectInterpData {
 
 struct ObjectInterpData prevObject[OBJECT_LIST_SIZE] = { 0 };
 
-void func_800518F8(s32 objectIndex, s16 x, s16 y) {
+void render_clouds(s32 objectIndex, s16 x, s16 y) {
 
     // Search all recorded objects for the one we're drawing
     for (size_t i = 0; i < OBJECT_LIST_SIZE; i++) {
@@ -3503,7 +3503,7 @@ void func_800518F8(s32 objectIndex, s16 x, s16 y) {
     if (gObjectList[objectIndex].status & 0x10) {
 
         // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("func_800518F8", (uintptr_t) &gObjectList[objectIndex]);
+        FrameInterpolation_RecordOpenChild("render_clouds", TAG_CLOUDS(objectIndex));
 
         if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
             D_8018D228 = gObjectList[objectIndex].unk_0D5;
@@ -3562,13 +3562,7 @@ void func_80051ABC(s16 arg0, s32 arg1) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
 
-            // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("func_80051ABC", TAG_OBJECT(object));
-
-            func_800518F8(objectIndex, object->unk_09C, arg0 - object->unk_09E);
-
-            // @port Pop the transform id.
-            FrameInterpolation_RecordCloseChild();
+            render_clouds(objectIndex, object->unk_09C, arg0 - object->unk_09E);
         }
     }
 }
@@ -3610,7 +3604,7 @@ void func_80051C60(s16 arg0, s32 arg1) {
         for (var_s0 = 0; var_s0 < D_8018D1F0; var_s0++) {
             objectIndex = D_8018CC80[arg1 + var_s0];
             object = &gObjectList[objectIndex];
-            func_800518F8(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
+            render_clouds(objectIndex, object->unk_09C, (var_s5 - object->unk_09E) / 2);
         }
     }
 }

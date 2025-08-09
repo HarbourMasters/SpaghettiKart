@@ -2438,7 +2438,7 @@ void func_80093C98(s32 arg0) {
         func_8009CA6C(4);
         D_80165754 = gMatrixEffectCount;
         gMatrixEffectCount = 0;
-        ClearEffectsMatrixPool();
+        // ClearEffectsMatrixPool();
     }
 }
 
@@ -2491,7 +2491,7 @@ void func_80093F10(void) {
     func_8009CA2C();
     gSPDisplayList(gDisplayListHead++, D_02007F48);
     gMatrixEffectCount = 0;
-    ClearEffectsMatrixPool();
+    // ClearEffectsMatrixPool();
 }
 
 void func_800940EC(s32 arg0) {
@@ -2521,8 +2521,8 @@ void func_800942D0(void) {
     s32 i;
     s32 alpha;
 
-    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, &gGfxPool->mtxLookAt[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     guRotate(mtx, gIntroModelRotX, 1.0f, 0.0f, 0.0f);
     guRotate(mtx + 1, gIntroModelRotY, 0.0f, 1.0f, 0.0f);
     guScale(mtx + 2, 1.0f, 1.0f, gIntroModelScale);
@@ -2560,9 +2560,9 @@ void func_80094660(struct GfxPool* arg0, UNUSED s32 arg1) {
 
     move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    guPerspective(&arg0->mtxScreen, &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
+    guPerspective(GetPerspMatrix(0), &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    guLookAt(&arg0->mtxLookAt[0], 0.0f, 0.0f, (f32) gIntroModelZEye, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    guLookAt(GetLookAtMatrix(0), 0.0f, 0.0f, (f32) gIntroModelZEye, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     func_800942D0();
     gDPPipeSync(gDisplayListHead++);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_NONE);
@@ -2573,16 +2573,16 @@ void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
 
     move_segment_table_to_dmem();
-    guPerspective(&arg0->mtxPersp[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
+    guPerspective(GetPerspMatrix(0), &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    guLookAt(&arg0->mtxLookAt[1], 0.0f, 0.0f, (f32) gIntroModelZEye, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    guLookAt(GetLookAtMatrix(1), 0.0f, 0.0f, (f32) gIntroModelZEye, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     guRotate(&arg0->mtxObject[0], gIntroModelRotX, 1.0f, 0, 0);
     guRotate(&arg0->mtxObject[1], gIntroModelRotY, 0, 1.0f, 0);
     guRotate(&arg0->mtxObject[2], gIntroModelRotZ, 0, 0, 1.0f);
     guScale(&arg0->mtxObject[3], gIntroModelScale, gIntroModelScale, gIntroModelScale);
     guTranslate(&arg0->mtxObject[4], gIntroModelPosX, gIntroModelPosY, gIntroModelPosZ);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxPersp[0], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, &arg0->mtxLookAt[1], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(1), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPMatrix(gDisplayListHead++, &arg0->mtxObject[0], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gDisplayListHead++, &arg0->mtxObject[1], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPMatrix(gDisplayListHead++, &arg0->mtxObject[2], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -2594,14 +2594,13 @@ void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
 }
 
 void func_80094A64(struct GfxPool* pool) {
-    ClearHudMatrixPool();
-    ClearEffectsMatrixPool();
+    ClearObjectsMatrixPool();
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
-    gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guOrtho(GetScreenMatrix(), 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
+    gSPMatrix(gDisplayListHead++, GetScreenMatrix(), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
     setup_menus();
     func_80092290(4, D_8018E850, D_8018E858);
