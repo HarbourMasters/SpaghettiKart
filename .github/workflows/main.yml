@@ -80,7 +80,7 @@ jobs:
           name: spaghetti-windows
           path: spaghetti-${{ matrix.config }}
 
-  build-macos:
+  build-macos-arm64:
     needs: generate-port-o2r
     runs-on: macOS-latest
     strategy:
@@ -119,7 +119,49 @@ jobs:
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
-            name: spaghetti-mac-x64
+            name: spaghetti-mac-arm64
+            path: spaghetti-${{ matrix.config }}
+  
+  build-macos-intel:
+    needs: generate-port-o2r
+    runs-on: macOS-13
+    strategy:
+      matrix:
+        config: [Release, Debug]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+      - name: Install dependencies
+        run: brew install ninja cmake
+      - name: Install vcpkg
+        uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+      - name: Build
+        run: |
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build-cmake --config ${{ matrix.config }} -j3
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build-cmake
+      - name: Create Package
+        run: |
+          mkdir spaghetti-${{ matrix.config }}
+          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
+          mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
+          mv config.yml spaghetti-${{ matrix.config }}/
+          mv yamls spaghetti-${{ matrix.config }}/
+          wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+      - name: Publish packaged artifacts
+        if: matrix.config == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+            name: spaghetti-mac-intel-x64
             path: spaghetti-${{ matrix.config }}
 
   build-linux:
