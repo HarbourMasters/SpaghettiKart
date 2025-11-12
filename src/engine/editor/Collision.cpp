@@ -158,6 +158,9 @@ namespace Editor {
                 case G_ENDDL:
                     run = false;
                     break;
+                case G_MARKER:
+                    ptr++;
+                    break;
             }
 
             ptr++;
