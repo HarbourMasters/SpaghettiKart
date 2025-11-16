@@ -480,7 +480,7 @@ void func_80005AE8(Player* ply) {
 
 void func_80005B18(void) {
     if (gModeSelection == TIME_TRIALS) {
-        if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave != 1)) {
+        if ((gLapCountByPlayerId[0] == MAX_LAPS) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave != 1)) {
             if (bPlayerGhostDisabled == 1) {
                 D_80162DD0 = D_80162DCC;
                 func_800052A4();
@@ -492,7 +492,7 @@ void func_80005B18(void) {
                 D_80162DFC = playerHUD[PLAYER_ONE].someTimer;
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
-            } else if (gLapCountByPlayerId[1] != 3) {
+            } else if (gLapCountByPlayerId[1] != MAX_LAPS) {
                 D_80162DD0 = D_80162DCC;
                 func_800052A4();
                 D_80162DDC = 1;
@@ -514,7 +514,7 @@ void func_80005B18(void) {
                 func_80005AE8(gPlayerThree);
             }
         } else {
-            if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave == 1)) {
+            if ((gLapCountByPlayerId[0] == MAX_LAPS) && (D_80162DDC == 0) && (gPostTimeTrialReplayCannotSave == 1)) {
                 sReplayGhostBuffer = D_802BFB80.arraySize8[0][D_80162DC8][3].pixel_index_array;
                 sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
@@ -528,10 +528,10 @@ void func_80005B18(void) {
                     sUnusedReplayCounter = 100;
                 }
                 if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
-                    if ((bPlayerGhostDisabled == 0) && (gLapCountByPlayerId[1] != 3)) {
+                    if ((bPlayerGhostDisabled == 0) && (gLapCountByPlayerId[1] != MAX_LAPS)) {
                         process_player_ghost_replay();
                     }
-                    if ((bCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != 3)) {
+                    if ((bCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != MAX_LAPS)) {
                         process_course_ghost_replay();
                     }
                     if (!(gPlayerOne->type & PLAYER_CINEMATIC_MODE)) {
@@ -545,10 +545,10 @@ void func_80005B18(void) {
 
 void func_80005E6C(void) {
     if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
-        if ((D_80162DD8 == 0) && (gLapCountByPlayerId[1] != 3)) {
+        if ((D_80162DD8 == 0) && (gLapCountByPlayerId[1] != MAX_LAPS)) {
             process_player_ghost_replay(); // 3
         }
-        if ((bCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != 3)) {
+        if ((bCourseGhostDisabled == 0) && (gLapCountByPlayerId[2] != MAX_LAPS)) {
             process_course_ghost_replay(); // 2
         }
         if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {

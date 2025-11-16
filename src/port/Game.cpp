@@ -560,7 +560,7 @@ void CM_ActivateFinalLapLakitu(s32 playerId) {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
-    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::FINAL_LAP);
+    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::BHV_FINAL_LAP);
 }
 
 void CM_ActivateReverseLakitu(s32 playerId) {

@@ -21,12 +21,12 @@ extern "C" {
  */
 class OLakitu : public OObject {
 public:
-    enum LakituType : uint32_t {
+    class enum LakituType : uint32_t {
         STARTER = 1,
         FINISH, // Checkered flag
         TOW, // Picks up an out of bounds player
         SECOND_LAP,
-        FINAL_LAP,
+        BHV_FINAL_LAP,
         REVERSE,
         TOW_ICE_CUBE, // Picks up an out of bounds player in sherbet land as an ice-cube
     };

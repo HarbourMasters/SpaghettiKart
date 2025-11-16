@@ -1079,7 +1079,7 @@ void func_80059358(void) {
 void render_hud_2p_horizontal_player_two_horizontal_player_one(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_ONE);
-        if (playerHUD[PLAYER_ONE].lapCount != 3) {
+        if (playerHUD[PLAYER_ONE].lapCount != MAX_LAPS) {
             draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY,
                                      (u8*) common_texture_hud_lap); // draw the lap word
             draw_lap_count(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4,
@@ -1095,7 +1095,7 @@ void func_800593F0(void) {
 void render_hud_2p_horizontal_player_two(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_TWO);
-        if (playerHUD[PLAYER_TWO].lapCount != 3) {
+        if (playerHUD[PLAYER_TWO].lapCount != MAX_LAPS) {
             draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY,
                                      (u8*) common_texture_hud_lap);
             draw_lap_count(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4,
@@ -1485,7 +1485,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             gObjectList[objectIndex].primAlpha = 0x00FF;
         }
-        if (lapCount >= 3) {
+        if (lapCount >= MAX_LAPS) {
             gObjectList[objectIndex].direction_angle[2] = 0;
             gObjectList[objectIndex].direction_angle[1] = 0;
             gObjectList[objectIndex].direction_angle[0] = 0;
@@ -2584,7 +2584,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
             }
             playerHUD[playerId].someTimer1 = playerHUD[playerId].lapDurations[*huh];
             playerHUD[playerId].blinkTimer = 0x003C;
-            if (lapCount == 3) {
+            if (lapCount == MAX_LAPS) {
                 playerHUD[playerId].someTimer = playerHUD[playerId].lapCompletionTimes[*huh];
             }
             if (gModeSelection == (s32) 1) {
@@ -2597,7 +2597,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                     D_80165658[lapCount - 1] = 1;
                     D_801657E3 = 1;
                 }
-                if ((lapCount == 3) && ((u32) playerHUD[playerId].someTimer < (u32) D_80165648)) {
+                if ((lapCount == MAX_LAPS) && ((u32) playerHUD[playerId].someTimer < (u32) D_80165648)) {
                     D_801657E5 = 1;
                 }
             }
@@ -2607,21 +2607,20 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
             }
             *huhthedeuce += 1;
             if (1) {}
-            switch (*huhthedeuce) { /* switch 1; irregular */
-                case 0:             /* switch 1 */
-                    break;
-                case 1:                                   /* switch 1 */
-                    CM_ActivateSecondLapLakitu(playerId); // func_80079084(playerId);
-                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
-                    if ((IsLuigiRaceway()) && (D_80165898 == 0) && (gModeSelection != (s32) TIME_TRIALS)) {
-                        D_80165898 = 1;
-                    }
-                    break;
-                case 2:                                  /* switch 1 */
-                    CM_ActivateFinalLapLakitu(playerId); // func_800790B4(playerId);
-                    break;
-                case 3: /* switch 1 */
-                    if ((D_8018D114 == 0) || (D_8018D114 == 1)) {
+
+            // Activate lakitu:second_lap if completed lap one and there's more than two total laps.
+            if ((*huhthedeuce == 1) && (MAX_LAPS > 2)) {
+                CM_ActivateSecondLapLakitu(playerId); // func_80079084(playerId);
+                func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
+                if ((IsLuigiRaceway()) && (D_80165898 == 0) && (gModeSelection != (s32) TIME_TRIALS)) {
+                    D_80165898 = 1;
+                }
+            // Activate lakitu:final_lap if completed the second last lap and there's more than one total laps.
+            } else if ((*huhthedeuce == FINAL_LAP) && (MAX_LAPS > 1)) {
+                CM_ActivateFinalLapLakitu(playerId); // func_800790B4(playerId);
+            // Activate lakitu:finished_race on completion of all laps.
+            } else if (*huhthedeuce == MAX_LAPS) {
+                if ((D_8018D114 == 0) || (D_8018D114 == 1)) {
                         gHUDModes = 0;
                         D_801657E6 = 0;
                         D_801657F0 = 0;
@@ -2649,8 +2648,52 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                             D_8018D1CC = 0x00000064;
                         }
                     }
-                    break;
             }
+
+            // switch (*huhthedeuce) { /* switch 1; irregular */
+            //     case 0:             /* switch 1 */
+            //         break;
+            //     case 1:                                   /* switch 1 */
+            //         CM_ActivateSecondLapLakitu(playerId); // func_80079084(playerId);
+            //         func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
+            //         if ((IsLuigiRaceway()) && (D_80165898 == 0) && (gModeSelection != (s32) TIME_TRIALS)) {
+            //             D_80165898 = 1;
+            //         }
+            //         break;
+            //     case 2:                                  /* switch 1 */
+            //         CM_ActivateFinalLapLakitu(playerId); // func_800790B4(playerId);
+            //         break;
+            //     case 3: /* switch 1 */
+            //         if ((D_8018D114 == 0) || (D_8018D114 == 1)) {
+            //             gHUDModes = 0;
+            //             D_801657E6 = 0;
+            //             D_801657F0 = 0;
+            //             D_801657E8 = 1;
+            //             D_80165800[0] = 1;
+            //             D_80165800[1] = 1;
+            //             D_8018D204 = (s32) 1;
+            //         }
+            //         playerHUD[playerId].raceCompleteBool = 1;
+            //         if (D_8018D114 == 2) {
+            //             D_80165800[playerId] = 0;
+            //         }
+            //         if (IsYoshiValley()) {
+            //             playerHUD[playerId].unk_81 = 1;
+            //         }
+            //         playerHUD[playerId].lap1CompletionTimeX = 0x0140;
+            //         playerHUD[playerId].lap2CompletionTimeX = 0x01E0;
+            //         playerHUD[playerId].lap3CompletionTimeX = 0x0280;
+            //         playerHUD[playerId].totalTimeX = 0x0320;
+            //         D_8016587C = (s32) 1;
+            //         if (D_8018D20C == 0) {
+            //             CM_ActivateFinishLakitu(playerId); // func_80079054(playerId);
+            //             D_8018D20C = 1;
+            //             if (gPlayerCount == (s8) 1) {
+            //                 D_8018D1CC = 0x00000064;
+            //             }
+            //         }
+            //         break;
+            // }
         }
     } else {
         f32_step_towards(&playerHUD[playerId].rankScaling, 1.0f, 0.125f);

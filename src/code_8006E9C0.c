@@ -432,7 +432,7 @@ void func_8006FA94(void) {
     gHUDDisable = D_8018D214;
     D_801657AE = gHUDDisable;
     D_8018D20C = 0;
-    D_8018D320 = 3;
+    D_8018D320 = MAX_LAPS;
     D_8018D2AC = 0;
     D_8018D2BC = 0;
     D_8018D2B4 = D_8018D2BC;

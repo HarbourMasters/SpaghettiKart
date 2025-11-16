@@ -2635,13 +2635,13 @@ void func_8004E800(s32 playerId) {
     // @port: Tag the transform.
     FrameInterpolation_RecordOpenChild("Player place HUD", playerId);
     if (playerHUD[playerId].unk_81 != 0) {
-        if (playerHUD[playerId].lapCount != 3) {
+        if (playerHUD[playerId].lapCount != MAX_LAPS) { // Not the final lap
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF,
                           common_texture_hud_place[D_8018CF98[playerId]], D_0D0068F0, 0x00000080, 0x00000040,
                           0x00000080, 0x00000040);
-        } else {
+        } else { // final lap
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF,
@@ -2655,14 +2655,14 @@ void func_8004E800(s32 playerId) {
 
 void func_8004E998(s32 playerId) {
     if (playerHUD[playerId].unk_81 != 0) {
-        if (playerHUD[playerId].lapCount != 3) {
+        if (playerHUD[playerId].lapCount != MAX_LAPS) { // Not the final lap
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF,
                           D_800E5618[gGPCurrentRaceRankByPlayerId[playerId]], 0, 0x000000FF,
                           D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]], D_0D006030, 0x00000040, 0x00000040,
                           0x00000040, 0x00000040);
-        } else {
+        } else { // The final lap
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
                           playerHUD[playerId].rankScaling, 0x000000FF, D_800E5618[D_80165598], 0, 0x000000FF,
@@ -3036,8 +3036,8 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
-    if ((IsYoshiValley()) && (arg3 < 3) && (arg8 == 0)) {
+void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 lapCount, s16 characterId, s32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+    if ((IsYoshiValley()) && (lapCount < MAX_LAPS) && (arg8 == 0)) {
         func_80042330((s32) arg0, (s32) arg1, 0U, 1.0f);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, D_8018D3E0);
@@ -3045,7 +3045,7 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 
         rsp_load_texture(common_texture_portrait_question_mark, 0x00000020, 0x00000020);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
-        func_80042330_portrait(arg0, arg1, 0U, 1.0f, arg3);
+        func_80042330_portrait(arg0, arg1, 0U, 1.0f, lapCount);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         func_8004B35C(0x000000FF, 0x000000FF, 0x000000FF, arg5);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
@@ -3056,7 +3056,7 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
         if (arg6 != 0) {
-            func_80042330_portrait(arg0, arg1, 0U, 1.0f, arg3);
+            func_80042330_portrait(arg0, arg1, 0U, 1.0f, lapCount);
             gSPDisplayList(gDisplayListHead++, D_0D007A60);
             func_8004B35C(D_8018D3E4, D_8018D3E8, D_8018D3EC, 0x000000FF);
             func_80044924(common_texture_character_portrait_border, 0x20, 0x20);
@@ -3068,9 +3068,9 @@ void func_8004FDB4(f32 arg0, f32 arg1, s16 arg2, s16 arg3, s16 characterId, s32 
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_hud_type_C_rank_font);
         rsp_load_texture(common_texture_hud_type_C_rank_font[arg2], 0x00000010, 0x00000010);
         if (arg7 != 0) {
-            func_80042330_portrait((s32) (arg0 + 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f, arg3);
+            func_80042330_portrait((s32) (arg0 + 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f, lapCount);
         } else {
-            func_80042330_portrait((s32) (arg0 - 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f, arg3);
+            func_80042330_portrait((s32) (arg0 - 9.0f), (s32) (arg1 + 7.0f), 0U, 1.0f, lapCount);
         }
         gSPDisplayList(gDisplayListHead++, D_0D006980);
     }
@@ -3139,11 +3139,11 @@ void func_80050320(void) {
 s32 func_80050644(u16 arg0, s32* arg1, s32* arg2) {
     s32 var_v0 = 0;
     s32 thing = 0;
-    s32 test = gLapCountByPlayerId[arg0];
+    s32 lapCount = gLapCountByPlayerId[arg0];
 
-    if (test < 3) {
+    if (lapCount < MAX_LAPS) {
         if (gPlayerCountSelection1 == 1) {
-            if (test >= 0) {
+            if (lapCount >= 0) {
                 thing = (s32) (gLapCompletionPercentByPlayerId[arg0] * 928);
             }
             if (thing < 0x104) {
@@ -3164,7 +3164,7 @@ s32 func_80050644(u16 arg0, s32* arg1, s32* arg2) {
                 var_v0 = 4;
             }
         } else {
-            if (test >= 0) {
+            if (lapCount >= 0) {
                 thing = (s32) (gLapCompletionPercentByPlayerId[arg0] * 260);
             }
             *arg1 = thing;
@@ -3207,7 +3207,7 @@ void func_800508C0(void) {
     s32 sp54;
     s32 sp50;
     s32 sp4C;
-    s32 temp_v1;
+    s32 lapCount;
     s16 var_s0;
     UNUSED s16 stackPadding;
     u16 var_s0_2;
@@ -3220,32 +3220,30 @@ void func_800508C0(void) {
         var_s0 = gGPCurrentRacePlayerIdByRank[0];
     }
     sp4C = func_80050644(var_s0, &sp54, &sp50);
-    temp_v1 = gLapCountByPlayerId[var_s0];
-    if (temp_v1 > 0) {
-        if (temp_v1 == 1) {
+    lapCount = gLapCountByPlayerId[var_s0];
+    if (lapCount > 0) {
+        if ((lapCount == 1) && (MAX_LAPS > 2)) {
             var_s0_2 = 0;
             var_s1 = 0;
             var_s2 = 0x000000FF;
+        } else if ((lapCount == FINAL_LAP) && (MAX_LAPS > 1)) {
+            var_s0_2 = 0x00FF;
+            var_s1 = 0x000000FF;
+            var_s2 = 0;
         } else {
-            if (temp_v1 == 2) {
-                var_s0_2 = 0x00FF;
-                var_s1 = 0x000000FF;
-                var_s2 = 0;
-            } else {
-                var_s0_2 = 0x00FF;
-                var_s1 = 0;
-                var_s2 = 0;
-            }
+            var_s0_2 = 0x00FF;
+            var_s1 = 0;
+            var_s2 = 0;
         }
         func_8004C024(0x0020, 0x0012, 0x0104, var_s0_2, var_s1, var_s2, 0x000000FF);
         func_8004C148(0x0124, 0x0012, 0x00CC, var_s0_2, var_s1, var_s2, 0x000000FF);
         func_8004C024(0x0020, 0x00DE, 0x0104, var_s0_2, var_s1, var_s2, 0x000000FF);
         func_8004C148(0x0020, 0x0012, 0x00CC, var_s0_2, var_s1, var_s2, 0x000000FF);
     }
-    if ((temp_v1 < 0) || (temp_v1 >= 3)) {
+    if ((lapCount < 0) || (lapCount >= MAX_LAPS)) {
         return;
     }
-    switch (temp_v1) {
+    switch (lapCount) {
         case 0:
             var_s0_2 = 0;
             var_s1 = 0;
@@ -3344,7 +3342,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         spB8 = 0;
     }
 
-    if ((IsYoshiValley()) && (lapCount < 3)) {
+    if ((IsYoshiValley()) && (lapCount < MAX_LAPS)) {
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_portrait_bomb_kart_and_question_mark);
         rsp_load_texture(common_texture_portrait_question_mark, 0x00000020, 0x00000020);
