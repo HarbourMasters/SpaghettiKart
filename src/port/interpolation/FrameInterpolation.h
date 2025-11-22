@@ -26,6 +26,8 @@ extern "C" {
 #define TAG_THWOMP(x) ((u32)0x60000000 | ((u32)(x) & 0x0FFFFFFF))
 //                          Mask the bits so that the 7 can't get overridden
 #define TAG_TRACK(x) ((u32)0x70000000 | ((u32)(x) & 0x0FFFFFFF))
+#define TAG_MINIMAP_DOTS(x) ((u32)0x80000000 | ((u32)(x) & 0x0FFFFFFF))
+#define TAG_PORTRAITS(x) ((u32)0x90000000 | ((u32)(x) & 0x0FFFFFFF))
 
 void FrameInterpolation_ShouldInterpolateFrame(bool shouldInterpolate);
 
