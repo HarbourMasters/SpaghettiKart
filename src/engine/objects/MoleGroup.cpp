@@ -53,8 +53,8 @@ void OMoleGroup::func_80081FF4(s32 objectIndex) {
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_04C = random_int(30) + 5;
 
-    s16 mole = random_int(_moles.size() - 1);
-    for (size_t i = 0; i < _moles.size() - 1; i++) {
+    s16 mole = random_int(_moles.size());
+    for (size_t i = 0; i < _moles.size(); i++) {
         if (_moles[mole].Active == true) {
             mole++;
             if (mole == _moles.size()) {
