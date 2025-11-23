@@ -885,7 +885,7 @@ void func_8028FCBC(void) {
             func_80002DAC();
             gRaceState = RACE_SETUP;
             D_80150118 = 3.0f;
-            creditsRenderMode = 0;
+            // creditsRenderMode = 0; This is now set in GameCamera class
             D_802BA032 = 0;
             D_8015011E = 0;
             gCourseTimer = 0.0f;

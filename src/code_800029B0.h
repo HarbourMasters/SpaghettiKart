@@ -9,6 +9,7 @@
 struct UnkStruct_800DC5EC {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
     /* 0x04 */ Camera* camera;                 // Player camera ptr
+    /*      */ Camera* pendingCamera;
     /* 0x08 */ Player* player;                 // Player ptr 800F6990
     /* 0x0C */ s32* unkC;                      // unk struct?
     /* 0x10 */ Vp viewport;
@@ -24,7 +25,7 @@ struct UnkStruct_800DC5EC {
     /* 0x38 */ s16 pathCounter;
     /* 0x3A */ s16 unk42;
     /* 0x3C */ s32 pad2;
-}; // size = 0x40
+}; // size = 0x44
 
 /* Function Prototypes */
 

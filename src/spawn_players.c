@@ -868,16 +868,22 @@ void func_8003BE30(void) {
 }
 
 void func_8003C0F0(void) {
-    s16 sp5E;
-    s16 sp5C;
-    s16 sp5A = 0;
-    s32 temp;
-    UNUSED s32 pad[4];
-
     if (gModeSelection == BATTLE) {
         func_8000EEDC();
     } else if (!IsPodiumCeremony()) {
         init_course_path_point();
+    }
+    //spawn_players();
+    D_8015F480[0].camera = &cameras[2];
+}
+
+void spawn_players(void) {
+    s16 sp5E;
+    s16 sp5C;
+    s16 sp5A = 0;
+    s32 temp;
+
+    if ((!IsPodiumCeremony()) && (gModeSelection != BATTLE)) {
         sp5E = (f32) gTrackPaths[0][0].x;
         sp5C = (f32) gTrackPaths[0][0].z;
         sp5A = (f32) gTrackPaths[0][0].y;
@@ -1279,7 +1285,9 @@ void func_8003D080(void) {
     }
 
     // Init freecam
-    freecam_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 4);
+    //freecam_init(&cameras[CAMERA_FREECAM], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, CAMERA_FREECAM);
+    CM_AddCamera(&cameras[1], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
+    CM_AddCamera(&cameras[2], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 2);
 
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:

@@ -67,7 +67,21 @@ void RegisterFreecamWidgets() {
     mPortMenu->AddWidget(path, "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: Left DPad\n  Driving Mode: L and R Buttons", WIDGET_TEXT);
     mPortMenu->AddWidget(path, "Enable Freecam", WIDGET_CVAR_CHECKBOX)
         .CVar("gFreecam")
-        .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}));
+        .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}))
+        .Callback([](WidgetInfo& info) {
+            if (nullptr == gWorldInstance.Cameras[1]) {
+                return;
+            }
+            bool state = (bool) CVarGetInteger("gFreecam", false);
+            if (state) {
+                D_800DC5EC->pendingCamera = gWorldInstance.Cameras[1]->Get();
+            gWorldInstance.Cameras[1]->SetActive(state);
+            } else {
+                D_800DC5EC->pendingCamera = gWorldInstance.Cameras[0]->Get();
+                gWorldInstance.Cameras[1]->SetActive(state);
+            }
+            //gWorldInstance.Cameras[0]->SetActive(!state);
+        });
 
     mPortMenu->AddWidget(path, "Camera Damping", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gDampValue)

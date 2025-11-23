@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
+
 #include "CoreMath.h"
 #include "engine/courses/Course.h"
 #include "objects/Object.h"
@@ -9,6 +10,7 @@
 #include "TrainCrossing.h"
 #include <memory>
 #include <unordered_map>
+#include "GameCamera.h"
 #include "Actor.h"
 #include "StaticMeshActor.h"
 #include "particles/ParticleEmitter.h"
@@ -23,6 +25,7 @@ extern "C" {
 
 class Cup; // <-- Forward declaration
 class OObject;
+class GameCamera;
 class Course;
 class StaticMeshActor;
 class OBombKart;
@@ -51,6 +54,9 @@ public:
     ~World();
 
     std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
+
+    void TickCameras();
+    GameCamera* AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4);
 
     AActor* AddActor(AActor* actor);
     struct Actor* AddBaseActor();
@@ -112,6 +118,8 @@ public:
 
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;
+
+    std::vector<GameCamera*> Cameras;
 
     std::vector<StaticMeshActor*> StaticMeshActors;
     std::vector<AActor*> Actors;

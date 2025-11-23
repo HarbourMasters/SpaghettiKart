@@ -75,6 +75,10 @@ void CM_InitClouds();
 void CM_DrawActors(Camera* camera);
 void CM_DrawStaticMeshActors();
 
+Camera* CM_GetCameras();
+void CM_SetupCamera(Camera* camera);
+void CM_TickCameras();
+void CM_AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId);
 void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);

@@ -208,7 +208,6 @@ extern s32 gGamestate;
 extern s32 gRaceState;
 
 extern u16 D_800DC514;
-extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
 extern s32 gGamestateNext;

@@ -19,7 +19,12 @@ extern "C" {
 #include "menus.h"
 #include "common_data.h"
 #include "mario_raceway_data.h"
+#include "code_800029B0.h"
 }
+
+#include "engine/GameCamera.h"
+#include "engine/FreeCamera.h"
+#include "engine/TourCamera.h"
 
 World::World() {}
 World::~World() {
@@ -124,6 +129,44 @@ void World::PreviousCourse() {
     gWorldInstance.CurrentCourse = Courses[CourseIndex];
 }
 
+void World::TickCameras() {
+
+    for (size_t i = 0; i < 4; i++) {
+        struct UnkStruct_800DC5EC* screen = &D_8015F480[i];
+        if (NULL == screen->pendingCamera) { break; }
+        if (screen->pendingCamera != screen->camera) {
+            screen->camera = screen->pendingCamera;
+        }
+    }
+
+    for (GameCamera* camera : Cameras) {
+        if (camera->IsActive()) {
+            camera->Tick();
+        }
+    }
+}
+
+GameCamera* World::AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4) {
+    switch(Cameras.size()) {
+        case 0:
+        printf("Created game camera\n");
+            Cameras.push_back(new GameCamera(camera, 0.0f, 0.0f, 0.0f, 0, 0));
+            break;
+        case 1:
+        printf("Created free camera\n");
+
+            Cameras.push_back(new FreeCamera(camera, 0.0f, 0.0f, 0.0f, 0, 1));
+            break;
+        case 2:
+        printf("Created tour camera\n");
+
+            Cameras.push_back(new TourCamera(camera, 0.0f, 0.0f, 0.0f, 0, 2));
+            break;
+    }
+    D_8015F480[0].camera = &cameras[2];
+    return Cameras.back();
+}
+
 AActor* World::AddActor(AActor* actor) {
     Actors.push_back(actor);
     actor->BeginPlay();
@@ -183,7 +226,7 @@ StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotat
 }
 
 void World::DrawStaticMeshActors() {
-    for (const auto& actor: StaticMeshActors) {
+    for (const auto& actor : StaticMeshActors) {
         actor->Draw();
     }
 }

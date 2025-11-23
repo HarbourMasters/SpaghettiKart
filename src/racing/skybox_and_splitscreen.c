@@ -757,36 +757,6 @@ void func_802A5760(void) {
     }
 }
 
-// Setup the cameras perspective and lookAt (movement/rotation)
-void setup_camera(Camera* camera, s32 playerId, s32 cameraId, struct UnkStruct_800DC5EC* screen) {
-    u16 perspNorm;
-
-    // This allows freecam to create a new separate camera
-    if (CVarGetInteger("gFreecam", 0) == true) {
-        freecam_render_setup(gFreecamCamera);
-        return;
-    }
-
-    // Tag the camera for the interpolation engine
-    FrameInterpolation_RecordOpenChild("camera",
-                                       (FrameInterpolation_GetCameraEpoch() | (playerId | (cameraId << 8))));
-
-    // Calculate camera perspective (camera movement/location)
-    guPerspective(GetPerspMatrix(cameraId), &perspNorm, gCameraZoom[cameraId], gScreenAspect,
-                  CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
-    gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(cameraId),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-
-    // Calculate the camera lookAt (camera rotation)
-    guLookAt(GetLookAtMatrix(cameraId), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
-             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(cameraId),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-
-    FrameInterpolation_RecordCloseChild();
-}
-
 void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     Mat4 matrix;
 
@@ -850,15 +820,22 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     }
 
     struct UnkStruct_800DC5EC* screen = &D_8015F480[screenId];
-    Camera* camera;
+    Camera* camera = screen->camera;
+    cameraId = camera->cameraId;
+    // CM_GetCamera(cameraId);
+
+    if (NULL == camera) {
+        printf("NO CAMERA SELECTED\n");
+        return;
+    }
 
     // Required for freecam to have its own camera
-    if (CVarGetInteger("gFreecam", 0) == true) {
-       camera = &cameras[CAMERA_FREECAM];
-       cameraId = CAMERA_FREECAM;
-    } else {
-        camera = &cameras[cameraId];
-    }
+    // if (CVarGetInteger("gFreecam", 0) == true) {
+    //    camera = &cameras[CAMERA_FREECAM];
+    //    cameraId = CAMERA_FREECAM;
+    // } else {
+    //     camera = &cameras[cameraId];
+    // }
     
     if (screenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
@@ -870,7 +847,9 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     // Setup camera perspective and lookAt
-    setup_camera(camera, playerId, cameraId, screen);
+    if (camera) {
+        CM_SetupCamera(camera);
+    }
 
     // Create a matrix for the track and game objects
     FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | playerId)));
@@ -884,24 +863,12 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
 
     // Draw dynamic game objects
     render_course_actors(screen);
-    CM_DrawActors(D_800DC5EC->camera);
+    CM_DrawActors(screen->camera); // good change?
     CM_DrawStaticMeshActors();
-    render_object(mode);
+    render_object(screen);
 
-    switch (screenId) {
-        case 0:
-            render_players_on_screen_one();
-            break;
-        case 1:
-            render_players_on_screen_two();
-            break;
-        case 2:
-            render_players_on_screen_three();
-            break;
-        case 3:
-            render_players_on_screen_four();
-            break;
-    }
+    render_players(camera, screenId);
+
     func_8029122C(screen, playerId); // Track water related
 
     switch (playerId) { // Render player particles or some effect
@@ -920,7 +887,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     };
 
     render_item_boxes(screen);
-    render_player_snow_effect(mode);
+    render_player_snow_effect(camera);
     func_80058BF4(); // Setup texture modes
     if (D_800DC5B8 != 0) {
         func_80058C20(mode); // Setup hud matrix
@@ -949,11 +916,8 @@ void set_screen(void) {
 
     for (i = 0; i < 4; i++) {
         wrapper->controllers = controller;
-        if ((CVarGetInteger("gFreecam", 0) == true) && (i == PLAYER_ONE)) {
-            wrapper->camera = gFreecamCamera;
-        } else {
-            wrapper->camera = camera;
-        }
+
+        wrapper->camera = &cameras[2];
         wrapper->player = player;
         wrapper->unkC = unk;
 

@@ -25,7 +25,7 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
-Camera cameras[8]; // This size should be 5 but there is an overflow somewhere in Bowser's Castle, so we allocate 8 cameras to avoid it.
+Camera cameras[16]; // This size should be 5 but there is an overflow somewhere in Bowser's Castle, so we allocate 8 cameras to avoid it.
 Camera* camera1 = &cameras[0];
 Camera* camera2 = &cameras[1];
 Camera* camera3 = &cameras[2];
@@ -59,10 +59,13 @@ extern s16 D_80164678[];
 void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player* player = gPlayerOne;
     Camera* camera = &cameras[cameraId];
+    printf("Added camera %d\n", cameraId);
+    CM_AddCamera(&cameras[cameraId], posX, posY, posZ, rot, arg4, cameraId);
 
     camera->cameraId = cameraId;
 
     D_80152300[cameraId] = arg4;
+    camera->mode = arg4;
     switch (arg4) {
         case 0:
         case 1:
@@ -196,12 +199,11 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
 }
 
 // Many arrays are hard-coded to 4. Skip those.
-void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
+void freecam_init(Camera* camera, f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player* player = gPlayerOne;
-    Camera* camera = &cameras[cameraId];
 
     camera->cameraId = cameraId;
-
+    camera->mode = arg4;
     //D_80152300[cameraId] = arg4;
     switch (arg4) {
         case 0:
@@ -221,7 +223,7 @@ void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 ca
             camera->up[0] = 0.0f;
             camera->up[1] = 1.0f;
             camera->up[2] = 0.0f;
-            camera->playerId = (s16) 0;
+            camera->playerId = (s16) cameraId;
             camera->unk_B0 = 0;
             camera->unk_A0 = 0.0f;
 

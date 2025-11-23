@@ -173,7 +173,6 @@ s32 gGamestate = 0xFFFF;
 // gRaceState is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 s32 gRaceState = RACE_INIT;
 u16 D_800DC514 = 0;
-u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
 u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
@@ -689,10 +688,11 @@ void process_game_tick(void) {
     // tick camera
     // This looks like it should be in the switch below.
     // But it needs to be here for player 1 to work in all modes.
+    CM_TickCameras();
     if (CVarGetInteger("gFreecam", 0) == true) {
-        freecam(gFreecamCamera, gPlayerOne, 0);
+        //freecam(gFreecamCamera, gPlayerOne, 0);
     } else {
-        func_8001EE98(gPlayerOne, camera1, 0);
+       // func_8001EE98(gPlayerOne, camera1, 0);
     }
 
     // Editor requires this so the camera keeps moving while the game is paused.
@@ -702,7 +702,7 @@ void process_game_tick(void) {
 
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_80028F70();
+            func_80028F70(); // Player controller
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:

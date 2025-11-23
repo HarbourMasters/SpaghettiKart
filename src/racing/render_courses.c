@@ -115,7 +115,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     }
     arg1->playerDirection = direction;
 
-    if (D_80152300[camera - camera1] == 1) {
+    if (camera->mode == 1) {
         sp1E = get_track_section_id(camera->collision.meshIndexZX);
         temp_v0_3 = get_track_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
@@ -203,9 +203,9 @@ void render_mario_raceway_pipe(void) {
     }
 }
 
-void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
+void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
     UNUSED s32 pad;
-    Player* player = arg0->player;
+    Player* player = screen->player;
     Mat4 matrix;
     Vec3f vector;
     u16 pathCounter;
@@ -213,51 +213,26 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
     s16 playerDirection;
 
     init_rdp();
-    pathCounter = (u16) arg0->pathCounter;
-    cameraRot = (u16) arg0->camera->rot[1];
-    playerDirection = arg0->playerDirection;
+    pathCounter = (u16) screen->pathCounter;
+    cameraRot = (u16) screen->camera->rot[1];
+    playerDirection = screen->playerDirection;
 
     // This pushes the camera matrices to the top of the stack.
     // It does not appear to really do anything.
     // Perhaps they thought it was necessary to set the camera back to projection mode since rainbow road uses model mode.
     // But that issue should be cleared up in render_screens() already.
-    switch (playerId) {
-        case PLAYER_ONE:
-            size_t playerIdx = PLAYER_ONE; 
-            if (CVarGetInteger("gFreecam", 0) == true) {
-                playerIdx = CAMERA_FREECAM;
-            }
-            gSPMatrix(gDisplayListHead++, GetPerspMatrix(playerIdx),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(playerIdx),
-                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-            break;
-        case PLAYER_TWO:
-            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_TWO),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_TWO),
-                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-            break;
-        case PLAYER_THREE:
-            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_THREE),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_THREE),
-                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-            break;
-        case PLAYER_FOUR:
-            gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_FOUR),
-                      G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_FOUR),
-                      G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-            break;
-    }
+    
+    gSPMatrix(gDisplayListHead++, screen->camera->perspectiveMatrix,
+                G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, screen->camera->lookAtMatrix,
+                G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    FrameInterpolation_RecordOpenChild("track_water", playerId);
+    FrameInterpolation_RecordOpenChild("track_water", screen->camera->cameraId);
 
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
 
-    CM_DrawWater(arg0, pathCounter, cameraRot, playerDirection);
+    CM_DrawWater(screen, pathCounter, cameraRot, playerDirection);
     FrameInterpolation_RecordCloseChild();
     // switch (gCurrentCourseId) {
     //     case COURSE_BOWSER_CASTLE:
@@ -1336,89 +1311,32 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) segmented_gfx_to_virtual(0x07000230)));
 }
 
-void render_credits(void) {
-
-    CM_RenderCredits();
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //         //gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
-    //         break;
-    //     case COURSE_CHOCO_MOUNTAIN:
-    //         gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_71B8);
-    //         break;
-    //     case COURSE_BOWSER_CASTLE:
-    //         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148);
-    //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
-    //         gSPDisplayList(gDisplayListHead++, d_course_banshee_boardwalk_dl_B308);
-    //         break;
-    //     case COURSE_YOSHI_VALLEY:
-    //         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_18020);
-    //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
-    //         gSPDisplayList(gDisplayListHead++, d_course_frappe_snowland_dl_76A0);
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         gSPDisplayList(gDisplayListHead++, d_course_koopa_troopa_beach_dl_18D68);
-    //         break;
-    //     case COURSE_ROYAL_RACEWAY:
-    //         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_D8E8);
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FD40);
-    //         break;
-    //     case COURSE_MOO_MOO_FARM:
-    //         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14088);
-    //         break;
-    //     case COURSE_TOADS_TURNPIKE:
-    //         gSPDisplayList(gDisplayListHead++, d_course_toads_turnpike_dl_23930);
-    //         break;
-    //     case COURSE_KALIMARI_DESERT:
-    //         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_22E00);
-    //         break;
-    //     case COURSE_SHERBET_LAND:
-    //         gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_9AE8);
-    //         break;
-    //     case COURSE_RAINBOW_ROAD:
-    //         gSPDisplayList(gDisplayListHead++, d_course_rainbow_road_dl_16220);
-    //         break;
-    //     case COURSE_WARIO_STADIUM:
-    //         gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_CA78);
-    //         break;
-    //     case COURSE_BLOCK_FORT:
-    //         gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
-    //         break;
-    //     case COURSE_SKYSCRAPER:
-    //         gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
-    //         break;
-    //     case COURSE_DOUBLE_DECK:
-    //         gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_dl_13C30);
-    //         break;
-    //     case COURSE_BIG_DONUT:
-    //         gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
-    //         break;
-    // }
-}
-
-void render_course(struct UnkStruct_800DC5EC* arg0) {
+void render_course(struct UnkStruct_800DC5EC* screen) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
 
     // Freecam priority renders collision.
-    if (CVarGetInteger("gRenderCollisionMesh", 0) == true) {
-        render_collision();
-        return;
+    // if (CVarGetInteger("gRenderCollisionMesh", 0) == true) {
+    //     render_collision();
+    //     return;
+    // }
+
+    // if (creditsRenderMode) {
+    //     CM_RenderCredits();
+    //     return;
+    // }
+
+    switch(screen->camera->renderMode) {
+        case RENDER_FULL_SCENE:
+            CM_RenderCredits();
+            break;
+        case RENDER_TRACK_SECTIONS:
+            CM_RenderCourse(screen);
+            break;
+        case RENDER_COLLISION_MESH:
+            render_collision();
+            break;
     }
 
-    if (creditsRenderMode) {
-        render_credits();
-        return;
-    }
-
-    CM_RenderCourse(arg0);
 
     // switch (gCurrentCourseId) {
     //     case COURSE_MARIO_RACEWAY:

@@ -52,6 +52,8 @@
 #include "engine/Registry.h"
 #include "RegisteredActors.h"
 
+#include "TourCamera.h"
+
 #ifdef _WIN32
 #include <locale.h>
 #endif
@@ -341,19 +343,18 @@ void CM_LoadTextures() {
     }
 }
 
-void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0) {
-    if (gWorldInstance.CurrentCourse->IsMod() == false) {
-        if ((CVarGetInteger("gFreecam", 0) == true)) {
-            // Render credits courses
-            //gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            //gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-            render_credits();
-            return;
-        }
-    }
-
+void CM_RenderCourse(struct UnkStruct_800DC5EC* screen) {
+    // if (gWorldInstance.CurrentCourse->IsMod() == false) {
+    //     if ((CVarGetInteger("gFreecam", 0) == true)) {
+    //         // Render credits courses
+    //         //gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    //         //gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+    //         render_credits();
+    //         return;
+    //     }
+    // }
     if (gWorldInstance.CurrentCourse) {
-        gWorldInstance.CurrentCourse->Render(arg0);
+        gWorldInstance.CurrentCourse->Render(screen);
     }
 }
 
@@ -383,7 +384,17 @@ void CM_DrawStaticMeshActors() {
 }
 
 void CM_BeginPlay() {
+    static bool tour = true;
     auto course = gWorldInstance.CurrentCourse;
+
+    if (tour) {
+      //  gWorldInstance.Cameras[2]->SetActive(true);
+       // D_800DC5EC->camera = gWorldInstance.Cameras[2]->Get();
+        if (reinterpret_cast<TourCamera*>(gWorldInstance.Cameras[2])->IsTourComplete()) {
+            tour = false;
+            D_800DC5EC->pendingCamera = &cameras[2];
+        }
+    }
 
     if (course) {
         Editor::LoadLevel(course.get(), course->SceneFilePtr);
@@ -405,6 +416,26 @@ void CM_BeginPlay() {
         course->BeginPlay();
         gRulesets.PostInit();
     }
+}
+
+Camera* CM_GetCameras() {
+    return nullptr;//    gWorldInstance.Cameras;
+}
+
+void CM_SetupCamera(Camera* camera) {
+    for (GameCamera* gameCamera : gWorldInstance.Cameras) {
+        if (camera == gameCamera->Get()) {
+            gameCamera->Setup();
+        }
+    }
+}
+
+void CM_TickCameras() {
+    gWorldInstance.TickCameras();
+}
+
+void CM_AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
+    gWorldInstance.AddCamera(camera, posX, posY, posZ, arg4);
 }
 
 void CM_TickObjects() {
@@ -704,8 +735,10 @@ void CM_ActorBeginPlay(struct Actor* actor) {
 void CM_ActorGenerateCollision(struct Actor* actor) {
     AActor* act = gWorldInstance.ConvertActorToAActor(actor);
 
-    if (act->Triangles.size() == 0) {
-        Editor::GenerateCollisionMesh(act, (Gfx*)LOAD_ASSET_RAW(act->Model), 1.0f);
+    if ((nullptr != act->Model) && (act->Model[0] != '\0')) {
+        if (act->Triangles.size() == 0) {
+            Editor::GenerateCollisionMesh(act, (Gfx*)LOAD_ASSET_RAW(act->Model), 1.0f);
+        }
     }
 }
 

@@ -142,7 +142,7 @@ namespace Editor {
             if (gIsEditorPaused) {
                 SaveLevel();
             }
-            
+
             gEditor.ResetGizmo();
             gIsEditorPaused = !gIsEditorPaused;
             gIsInQuitToMenuTransition = 1;

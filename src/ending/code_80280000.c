@@ -57,13 +57,13 @@ void func_80280038(void) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(GetPerspMatrix(0), &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspective(camera->perspectiveMatrix , &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0),
+    gSPMatrix(gDisplayListHead++, camera->perspectiveMatrix,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(GetLookAtMatrix(0), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+    guLookAt(camera->lookAtMatrix, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
              camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0),
+    gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
     SetCourseById(gCreditsCourseId);
@@ -137,7 +137,7 @@ void load_credits(void) {
     gCurrentCourseId = gCreditsCourseId;
     SetCourseById(gCreditsCourseId);
     D_800DC5B4 = 1;
-    creditsRenderMode = 1;
+    camera->renderMode = RENDER_FULL_SCENE;
     func_802A4D18();
     set_screen();
     camera->unk_B4 = 60.0f;
