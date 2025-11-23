@@ -16,7 +16,7 @@ public:
         bool Active;
     };
 
-    explicit OMoleGroup(std::vector<FVector> moles);
+    explicit OMoleGroup(std::vector<FVector>& moles);
 
     virtual void Tick() override;
 
@@ -24,4 +24,7 @@ public:
 
 
     std::vector<MoleEntry> _moles;
+private:
+    static size_t _count;
+    size_t _idx;
 };

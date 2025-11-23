@@ -8,12 +8,17 @@ extern "C" {
 #include "math_util_2.h"
 }
 
-OMoleGroup::OMoleGroup(std::vector<FVector> spawns) {
+size_t OMoleGroup::_count = 0;
+
+OMoleGroup::OMoleGroup(std::vector<FVector>& spawns) {
+    _idx = _count;
     for (auto& pos : spawns) {
         pos.x * xOrientation;
         OMole* ptr = reinterpret_cast<OMole*>(gWorldInstance.AddObject(new OMole(pos, this)));
         _moles.push_back({ptr, pos, false});
     }
+
+    _count += 1;
 }
 
 void OMoleGroup::Tick() {
@@ -22,6 +27,24 @@ void OMoleGroup::Tick() {
             func_80081FF4(mole.Mole->_objectIndex);
         } else {
             mole.Mole->func_800821AC(mole.Mole->_objectIndex, 1);
+        }
+    }
+
+    /**
+     * This ticks the mole dirt particles. It must be ran *after* MoleGroup is done ticking. Otherwise, the dirt particle directions will not randomize
+     * The best solution would be for particles to be its own class. But that takes effort
+     * Instead, we wait until the last MoleGroup has ticked, then we tick the particles one time.
+     * 
+     * Warning: Calling this more than one time per frame, will result in doubling the speed
+     */ 
+    if (_idx == _count - 1) {
+        for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
+            s32 objectIndex = gObjectParticle2[i];
+            if (gObjectList[objectIndex].state != 0) {
+                if (nullptr != _moles[0].Mole) {
+                    _moles[0].Mole->func_80081790(objectIndex);
+                }
+            }
         }
     }
 }
