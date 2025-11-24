@@ -221,7 +221,6 @@ void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
     // It does not appear to really do anything.
     // Perhaps they thought it was necessary to set the camera back to projection mode since rainbow road uses model mode.
     // But that issue should be cleared up in render_screens() already.
-    
     gSPMatrix(gDisplayListHead++, screen->camera->perspectiveMatrix,
                 G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, screen->camera->lookAtMatrix,

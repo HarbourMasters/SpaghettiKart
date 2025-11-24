@@ -11,6 +11,7 @@
 #include <memory>
 #include <unordered_map>
 #include "GameCamera.h"
+#include "RaceManager.h"
 #include "Actor.h"
 #include "StaticMeshActor.h"
 #include "particles/ParticleEmitter.h"
@@ -52,6 +53,9 @@ typedef struct Matrix {
 public:
     explicit World();
     ~World();
+
+    RaceManager& GetRaceManager() { return *RaceManagerInstance; }
+    void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
     std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
 
@@ -138,7 +142,7 @@ public:
     std::vector<std::shared_ptr<Course>> Courses;
     size_t CourseIndex = 0; // For browsing courses.
 private:
-
+    std::unique_ptr<RaceManager> RaceManagerInstance;
 };
 
 extern World gWorldInstance;

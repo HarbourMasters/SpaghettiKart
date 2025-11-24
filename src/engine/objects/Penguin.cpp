@@ -48,7 +48,10 @@ OPenguin::OPenguin(const SpawnParams& params) : OObject(params) {
     object->origin_pos[2] = pos.z;
     object->unk_0C6 = params.Rotation.value_or(IRotator(0, 0, 0)).yaw;
 
-    switch(static_cast<PenguinType>(Type)) {
+    Type = static_cast<PenguinType>(params.Type.value_or(0));
+    SpawnBhv = static_cast<OPenguin::Behaviour>(params.Behaviour.value_or(0));
+
+    switch(Type) {
         case PenguinType::CHICK:
             object->surfaceHeight = 5.0f;
             object->sizeScaling = 0.04f;

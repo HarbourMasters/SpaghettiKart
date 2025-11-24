@@ -60,7 +60,7 @@ if (NOT LINUXDEPLOY_EXECUTABLE)
   message(STATUS "Downloading linuxdeploy")
   set(LINUXDEPLOY_EXECUTABLE ${CPACK_PACKAGE_DIRECTORY}/linuxdeploy/linuxdeploy)
   file(DOWNLOAD 
-      https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20240109-1/linuxdeploy-x86_64.AppImage
+      https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
       ${LINUXDEPLOY_EXECUTABLE}
       INACTIVITY_TIMEOUT 10
       LOG ${CPACK_PACKAGE_DIRECTORY}/linuxdeploy/download.log
@@ -69,6 +69,8 @@ if (NOT LINUXDEPLOY_EXECUTABLE)
 endif()
 
 execute_process(
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CPACK_PACKAGE_DIRECTORY}/config.yml" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/config.yml"
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CPACK_PACKAGE_DIRECTORY}/yamls/" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/yamls/"
   COMMAND
     ${CMAKE_COMMAND} -E env
       OUTPUT=${CPACK_PACKAGE_FILE_NAME}.appimage

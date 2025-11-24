@@ -34,6 +34,14 @@ World::~World() {
 std::shared_ptr<Course> CurrentCourse;
 Cup* CurrentCup;
 
+World::World() {
+    RaceManagerInstance = std::make_unique<RaceManager>(*this);
+}
+
+World::~World() {
+    ClearWorld();
+}
+
 std::shared_ptr<Course> World::AddCourse(std::shared_ptr<Course> course) {
     gWorldInstance.Courses.push_back(course);
     return course;
@@ -295,13 +303,7 @@ Object* World::GetObjectByIndex(size_t index) {
     return nullptr; // Or handle the error as needed
 }
 
+// Deletes all objects from the world
 void World::ClearWorld(void) {
     CM_CleanWorld();
-
-    // for (size_t i = 0; i < ARRAY_COUNT(gCollisionMesh); i++) {
-
-    // }
-
-    // gCollisionMesh
-    // Paths
 }

@@ -2655,6 +2655,7 @@ void func_8004E800(s32 playerId) {
 
 void func_8004E998(s32 playerId) {
     if (playerHUD[playerId].unk_81 != 0) {
+        FrameInterpolation_RecordOpenChild("Player place HUD2", playerId);
         if (playerHUD[playerId].lapCount != 3) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX,
                           playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
@@ -2669,6 +2670,7 @@ void func_8004E998(s32 playerId) {
                           D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]], D_0D006030, 0x00000040, 0x00000040,
                           0x00000040, 0x00000040);
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -2809,9 +2811,6 @@ void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     s32 center = 0;
     Player* player = &gPlayerOne[playerId];
 
-    // @port Skip Interpolation, if interpolated later remove this tag
-    FrameInterpolation_ShouldInterpolateFrame(false);
-
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
         thing1 = player->pos[2] * CM_GetProps()->Minimap.PlayerScaleFactor; // gMinimapPlayerScale;
@@ -2827,6 +2826,7 @@ void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
         y = (CM_GetProps()->Minimap.Pos[arg0].Y - (CM_GetProps()->Minimap.Height / 2)) +
             CM_GetProps()->Minimap.PlayerY + (s16) (thing1);
         if (characterId != 8) {
+            FrameInterpolation_RecordOpenChild("minimap_dots", TAG_MINIMAP_DOTS( ((arg0 & 0x1) << 6) | ((playerId & 0x7) << 3) | (characterId & 0x7) ));
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
                 func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
@@ -2836,17 +2836,17 @@ void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
             }
+            FrameInterpolation_RecordCloseChild();
         } else {
+            FrameInterpolation_RecordOpenChild("minimap_dots2", TAG_MINIMAP_DOTS( ((arg0 & 0x1) << 6) | ((playerId & 0x7) << 3) | (characterId & 0x7) ));
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
                 func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress[player->characterId]);
             } else {
                 draw_hud_2d_texture_wide(x, y, 8, 8, (u8*) common_texture_minimap_progress[player->characterId]);
             }
+            FrameInterpolation_RecordCloseChild();
         }
     }
-
-    // @port Resume Interpolation, if interpolated later remove this tag
-    FrameInterpolation_ShouldInterpolateFrame(true);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/render_objects/draw_minimap_character.s")
@@ -3308,25 +3308,18 @@ void func_80050C68(void) {
     }
 }
 
-#ifdef NON_MATCHING
-
-// Something about the handling of the `player` variable is weird.
-// All commands are present and correct, 2 of them are out of position
-// https://decomp.me/scratch/PvJ5D
 void func_80050E34(s32 playerId, s32 arg1) {
     s32 objectIndex;
     s32 spD0;
     s32 spCC;
-    UNUSED s32 stackPadding;
     s32 spC4;
     s32 lapCount;
     s32 characterId;
     s32 spB8;
-    s32 temp_v0_2;
+    s32 result;
     Object* object;
-    Player* player;
+    Player *player = &gPlayerOne[playerId];
 
-    player = &gPlayerOne[playerId];
     lapCount = gLapCountByPlayerId[playerId];
     characterId = player->characterId;
     objectIndex = D_8018CE10[playerId].objectIndex;
@@ -3337,13 +3330,14 @@ void func_80050E34(s32 playerId, s32 arg1) {
         spC4 = 0x00000078;
     }
 
-    temp_v0_2 = func_80050644(playerId, &spD0, &spCC);
-    if ((temp_v0_2 == 2) || (temp_v0_2 == 3)) {
+    result = func_80050644(playerId, &spD0, &spCC);
+    if ((result == 2) || (result == 3)) {
         spB8 = 1;
     } else {
         spB8 = 0;
     }
 
+    FrameInterpolation_RecordOpenChild("progress_portraits", TAG_PORTRAITS( ((playerId & 0x7) << 8) |  ((characterId & 0x7) << 5) | (objectIndex & 0x1F) ));
     if ((IsYoshiValley()) && (lapCount < 3)) {
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_portrait_bomb_kart_and_question_mark);
@@ -3390,10 +3384,8 @@ void func_80050E34(s32 playerId, s32 arg1) {
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
     }
+    FrameInterpolation_RecordCloseChild();
 }
-#else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_80050E34.s")
-#endif
 
 void func_800514BC(void) {
     s32 temp_a0;

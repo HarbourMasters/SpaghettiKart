@@ -52,7 +52,7 @@
 #include "engine/Registry.h"
 #include "RegisteredActors.h"
 
-#include "TourCamera.h"
+#include "engine/TourCamera.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -92,7 +92,6 @@ Cup* gBattleCup;
 ModelLoader gModelLoader;
 
 HarbourMastersIntro gMenuIntro;
-Rulesets gRulesets;
 
 Editor::Editor gEditor;
 
@@ -196,14 +195,6 @@ void HM_DrawIntro() {
     gMenuIntro.HM_DrawIntro();
 }
 
-void CM_SpawnFromLevelProps() {
-    // Spawning actors needs to be delayed to the correct time.
-    // And loadlevel needs to happen asap
-
-    //Editor::LoadLevel(nullptr);
-   // Editor::SpawnFromLevelProps();
-}
-
 // Set default course; mario raceway
 void SetMarioRaceway(void) {
     SetCourseById(0);
@@ -241,10 +232,7 @@ const char* GetCupName(void) {
 }
 
 void LoadCourse() {
-    if (gWorldInstance.CurrentCourse) {
-        gRulesets.PreLoad();
-        gWorldInstance.CurrentCourse->Load();
-    }
+    gWorldInstance.GetRaceManager().Load();
 }
 
 size_t GetCourseIndex() {
@@ -416,6 +404,9 @@ void CM_BeginPlay() {
         course->BeginPlay();
         gRulesets.PostInit();
     }
+    gWorldInstance.GetRaceManager().PreInit();
+    gWorldInstance.GetRaceManager().BeginPlay();
+    gWorldInstance.GetRaceManager().PostInit();
 }
 
 Camera* CM_GetCameras() {
@@ -480,16 +471,6 @@ void CM_DrawParticles(s32 cameraId) {
     if (gWorldInstance.CurrentCourse) {
         gWorldInstance.DrawParticles(cameraId);
     }
-}
-
-// Helps prevents users from forgetting to add a finishline to their course
-bool CM_DoesFinishlineExist() {
-    for (AActor* actor : gWorldInstance.Actors) {
-        if (dynamic_cast<AFinishline*>(actor)) {
-            return true;
-        }
-    }
-    return false;
 }
 
 void CM_InitClouds() {

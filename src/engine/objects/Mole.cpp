@@ -51,15 +51,12 @@ OMole::OMole(FVector pos, OMoleGroup* group) {
     _count++;
 }
 
+/**
+ * Moles are ticked from OMoleGroup
+ * OMoleTick is func_800821AC
+ * Dirt particle tick is func_80081790
+ */
 void OMole::Tick() {
-    if (_idx == 0) {
-        for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
-            s32 objectIndex = gObjectParticle2[i];
-            if (gObjectList[objectIndex].state != 0) {
-                OMole::func_80081790(objectIndex);
-            }
-        }
-    }
 }
 
 void OMole::Draw(s32 cameraId) {
@@ -184,9 +181,9 @@ void OMole::func_8008153C(s32 objectIndex) {
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
             gObjectList[loopObjectIndex].tlutList = mole;
             gObjectList[loopObjectIndex].sizeScaling = 0.15f;
-            gObjectList[loopObjectIndex].velocity[1] = random_int(0x000AU);
+            gObjectList[loopObjectIndex].velocity[1] = random_int(10);
             gObjectList[loopObjectIndex].velocity[1] = (gObjectList[loopObjectIndex].velocity[1] * 0.1) + 4.8;
-            gObjectList[loopObjectIndex].unk_034 = random_int(5U);
+            gObjectList[loopObjectIndex].unk_034 = random_int(5);
             gObjectList[loopObjectIndex].unk_034 = (gObjectList[loopObjectIndex].unk_034 * 0.01) + 0.8;
             gObjectList[loopObjectIndex].orientation[1] = (0x10000 / sp70) * var_s1;
             gObjectList[loopObjectIndex].origin_pos[0] = gObjectList[objectIndex].origin_pos[0];

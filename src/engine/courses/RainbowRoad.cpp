@@ -149,10 +149,6 @@ void RainbowRoad::BeginPlay() {
         gWorldInstance.AddObject(new OChainChomp());
         gWorldInstance.AddObject(new OChainChomp());
         gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
     }
 
     if (gModeSelection == VERSUS) {

@@ -1318,7 +1318,6 @@ void init_actors_and_load_textures(void) {
     destroy_all_actors();
     CM_CleanWorld();
 
-    CM_SpawnFromLevelProps();
     CM_BeginPlay();
     spawn_course_actors();
 }

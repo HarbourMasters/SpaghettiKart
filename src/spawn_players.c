@@ -874,7 +874,6 @@ void func_8003C0F0(void) {
         init_course_path_point();
     }
     //spawn_players();
-    D_8015F480[0].camera = &cameras[2];
 }
 
 void spawn_players(void) {
@@ -1285,7 +1284,6 @@ void func_8003D080(void) {
     }
 
     // Init freecam
-    //freecam_init(&cameras[CAMERA_FREECAM], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, CAMERA_FREECAM);
     CM_AddCamera(&cameras[1], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
     CM_AddCamera(&cameras[2], player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 2);
 

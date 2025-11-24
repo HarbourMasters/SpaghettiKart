@@ -30,8 +30,6 @@ void HM_InitIntro(void);
 void HM_TickIntro(void);
 void HM_DrawIntro(void);
 
-void CM_SpawnFromLevelProps();
-
 void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha);
 void CM_DrawBattleBombKarts(s32 cameraId);
 
@@ -67,8 +65,6 @@ void CM_ActivateFinishLakitu(s32 playerId);
 void CM_ActivateSecondLapLakitu(s32 playerId);
 void CM_ActivateFinalLapLakitu(s32 playerId);
 void CM_ActivateReverseLakitu(s32 playerId);
-
-bool CM_DoesFinishlineExist();
 
 void CM_InitClouds();
 

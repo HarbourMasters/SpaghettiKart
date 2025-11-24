@@ -1,6 +1,9 @@
 #include "GarbageCollector.h"
 #include "World.h"
 
+/**
+ * Removes objects if they are marked for deletion
+ */
 void RunGarbageCollector() {
     CleanActors();
     CleanObjects();

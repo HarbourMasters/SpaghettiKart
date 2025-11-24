@@ -149,6 +149,7 @@ namespace Editor {
             gQuitToMenuTransitionCounter = 5;
             gGotoMode = RACING;
         }
+
         ImGui::PopStyleColor();
 
         ImGui::SameLine();

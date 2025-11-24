@@ -829,14 +829,6 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
         return;
     }
 
-    // Required for freecam to have its own camera
-    // if (CVarGetInteger("gFreecam", 0) == true) {
-    //    camera = &cameras[CAMERA_FREECAM];
-    //    cameraId = CAMERA_FREECAM;
-    // } else {
-    //     camera = &cameras[cameraId];
-    // }
-    
     if (screenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     }
@@ -863,7 +855,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
 
     // Draw dynamic game objects
     render_course_actors(screen);
-    CM_DrawActors(screen->camera); // good change?
+    CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
     render_object(screen);
 
@@ -916,8 +908,7 @@ void set_screen(void) {
 
     for (i = 0; i < 4; i++) {
         wrapper->controllers = controller;
-
-        wrapper->camera = &cameras[2];
+        wrapper->camera = &cameras[0];
         wrapper->player = player;
         wrapper->unkC = unk;
 

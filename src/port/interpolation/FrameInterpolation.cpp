@@ -686,13 +686,13 @@ void FrameInterpolation_RecordActorPosRotMatrix(void) {
     next_is_actor_pos_rot_matrix = true;
 }
 
-void FrameInterpolation_RecordMatrixPush(Mat4* matrix) {
-    if (!check_if_recording()) {
-        return;
-    }
-
-    append(Op::MatrixPush).matrix_ptr = { (Mat4**) matrix };
-}
+//void FrameInterpolation_RecordMatrixPush(Mat4* matrix) {
+//    if (!check_if_recording()) {
+//        return;
+//    }
+//
+//    append(Op::MatrixPush).matrix_ptr = { (Mat4**) matrix };
+//}
 
 void FrameInterpolation_RecordMarker(const char* file, int line) {
     if (!check_if_recording()) {
@@ -702,12 +702,12 @@ void FrameInterpolation_RecordMarker(const char* file, int line) {
     append(Op::Marker).marker = { file, line };
 }
 
-void FrameInterpolation_RecordMatrixPop(Mat4* matrix) {
-    if (!check_if_recording()) {
-        return;
-    }
-    append(Op::MatrixPop).matrix_ptr = { (Mat4**) matrix };
-}
+//void FrameInterpolation_RecordMatrixPop(Mat4* matrix) {
+//    if (!check_if_recording()) {
+//        return;
+//    }
+//    append(Op::MatrixPop).matrix_ptr = { (Mat4**) matrix };
+//}
 
 void FrameInterpolation_RecordMatrixPut(MtxF* src) {
     if (!check_if_recording()) {

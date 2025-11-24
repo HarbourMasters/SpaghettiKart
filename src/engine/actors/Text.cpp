@@ -77,7 +77,11 @@ AText::AText(const SpawnParams& params) : AActor(params) {
  * But these need to be checked thoroughly before white-listing.
  */
 std::string AText::ValidateString(const std::string_view& s) {
-    if (s.empty()) { return "Blank Text"; }
+    if (CVarGetInteger("gIsEditorEnabled", false) == true) {
+        if (s.empty()) { return "Blank Text"; }
+    } else {
+        if (s.empty()) { return ""; }
+    }
 
     Text.clear();
 
@@ -98,6 +102,11 @@ std::string AText::ValidateString(const std::string_view& s) {
         return "Invalid";
     }
     return Text;
+}
+
+void AText::SetText(std::string text) {
+    AText::ValidateString(text);
+    Refresh();
 }
 
 /*
@@ -353,7 +362,9 @@ void AText::DrawText3D(Camera* camera) { // Based on func_80095BD0
 
     FrameInterpolation_RecordOpenChild("actor_text", TAG_LETTER(this));
     gSPDisplayList(gDisplayListHead++, (Gfx*)D_020077A8);
-        switch (1) {
+
+    for (CharacterList& tex : TextureList) {
+        switch (tex.mode) {
             case 1:
                 gSPDisplayList(gDisplayListHead++, (Gfx*)D_020077F8);
                 break;
@@ -362,7 +373,6 @@ void AText::DrawText3D(Camera* camera) { // Based on func_80095BD0
                 break;
         }
 
-    for (CharacterList& tex : TextureList) {
         //printf("tex texture %p width %d height %d mode %d col %f\n", tex.Texture, tex.width, tex.height, tex.mode, tex.column);
         gDPLoadTextureTile_4b(gDisplayListHead++, (Gfx*)tex.Texture, G_IM_FMT_I, tex.width, 0, 0, 0, tex.width, tex.height + 2, 0,
                             G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,

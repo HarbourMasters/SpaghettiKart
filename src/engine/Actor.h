@@ -70,4 +70,3 @@ public:
     void SetScale(FVector scale);
     virtual void DrawEditorProperties() { DrawDefaultEditorProperties(); };
 };
-

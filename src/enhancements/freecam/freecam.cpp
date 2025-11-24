@@ -408,3 +408,4 @@ void freecam_update_controller(void) {
 
     // Note that D Pad as stick code has been removed. So if it's needed, it needs to be put back in.
 }
+

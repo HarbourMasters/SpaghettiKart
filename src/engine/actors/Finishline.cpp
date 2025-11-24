@@ -74,6 +74,7 @@ void AFinishline::Draw(Camera *camera) {
 
     maxObjectsReached = render_set_position(mtx, 0) == 0;
     if (maxObjectsReached) {
+        FrameInterpolation_RecordCloseChild();
         return;
     }
 

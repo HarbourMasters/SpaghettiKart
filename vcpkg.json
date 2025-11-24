@@ -18,12 +18,5 @@
     "libogg",
     "libvorbis"
   ],
-  "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a",
-  "overrides": [
-    {
-      "name": "nlohmann-json",
-      "version-string": "3.12.0",
-      "port-version": 1
-    }
-  ]
+  "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a"
 }

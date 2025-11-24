@@ -20,8 +20,8 @@ OChainChomp::OChainChomp() {
     Name = "Chain Chomp";
     ResourceName = "mk:chain_chomp";
     _idx = _count;
-    init_object(indexObjectList2[_count], 0);
-    _objectIndex = indexObjectList2[_count];
+    init_object(indexObjectList2[_idx], 0);
+    _objectIndex = indexObjectList2[_idx];
 
     _count++;
 }

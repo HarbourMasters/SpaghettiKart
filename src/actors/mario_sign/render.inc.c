@@ -25,7 +25,7 @@ void render_actor_mario_sign(Camera* arg0, UNUSED Mat4 arg1, struct Actor* arg2)
     }
     if (!(unk < 0.0f)) {
 
-    FrameInterpolation_RecordMatrixPush(mtx);
+        FrameInterpolation_RecordOpenChild("mario_sign", TAG_OBJECT(arg2));
 
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -33,7 +33,6 @@ void render_actor_mario_sign(Camera* arg0, UNUSED Mat4 arg1, struct Actor* arg2)
         if (render_set_position(mtx, 0) != 0) {
             gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_sign);
         }
-    FrameInterpolation_RecordMatrixPop(mtx);
-
+        FrameInterpolation_RecordCloseChild();
     }
 }

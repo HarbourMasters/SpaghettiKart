@@ -22,6 +22,9 @@ class OMoleGroup;
 class OMole : public OObject {
 public:
     explicit OMole(FVector pos, OMoleGroup* group);
+    ~OMole() {
+        _count--;
+    }
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;

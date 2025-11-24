@@ -172,47 +172,6 @@ void MooMooFarm::LoadTextures() {
     dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U); // 0x0300E800
 }
 
-// These are full arrays that are not used in the original game
-static std::vector<FVector> sMoleSpawns1 = {
-    { FVector(771, 20, -2022) },
-    { FVector(807, 15, -2063) },
-    { FVector(847, 18, -2040) },
-    { FVector(913, 14, -2054) },
-    { FVector(939, 21, -1997) },
-    { FVector(941, 17, -2024) },
-    { FVector(994, 17, -1994) },
-    { FVector(863, 22, -2010) },
-};
-
-static std::vector<FVector> sMoleSpawns2 = {
-    { FVector(1500, 2, 1140) },
-    { FVector(1510, 15, 1050) },
-    { FVector(1609, 21, 935) },
-    { FVector(1289, 3, 1269) },
-    { FVector(1468, 22, 1046) },
-    { FVector(1380, 12, 1154) },
-    { FVector(1297, 19, 1170) },
-    { FVector(1589, 11, 1004) },
-    { FVector(1414, 3, 1185) },
-    { FVector(1405, 4, 1254) },
-    { FVector(1463, 8, 1118) },
-};
-
-static std::vector<FVector> sMoleSpawns3 = {
-    { FVector(701, 2, 1279) },
-    { FVector(811, 8, 1278) },
-    { FVector(791, 16, 1229) },
-    { FVector(876, 15, 1266) },
-    { FVector(984, 23, 1248) },
-    { FVector(891, 20, 1242) },
-    { FVector(920, 15, 1304) },
-    { FVector(823, 6, 1327) },
-    { FVector(717, 8, 1239) },
-    { FVector(695, 19, 1176) },
-    { FVector(628, 8, 1191) },
-    { FVector(724, 4, 1339) },
-};
-
 void MooMooFarm::BeginPlay() {
     if (gPlayerCountSelection1 != 4) {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
@@ -224,102 +183,79 @@ void MooMooFarm::BeginPlay() {
     }
 
     if (gGamestate != CREDITS_SEQUENCE) {
+        std::vector<FVector> moleSpawns1 = {
+            { FVector(771, 20, -2022) },
+            { FVector(807, 15, -2063) },
+            { FVector(847, 18, -2040) },
+            { FVector(913, 14, -2054) },
+            { FVector(939, 21, -1997) },
+            { FVector(941, 17, -2024) },
+            { FVector(994, 17, -1994) },
+            { FVector(863, 22, -2010) },
+        };
+
+        std::vector<FVector> moleSpawns2 = {
+            { FVector(1500, 2,  1140) },
+            { FVector(1510, 15, 1050) },
+            { FVector(1609, 21,  935) },
+            { FVector(1289, 3,  1269) },
+            { FVector(1468, 22, 1046) },
+            { FVector(1380, 12, 1154) },
+            { FVector(1297, 19, 1170) },
+            { FVector(1589, 11, 1004) },
+            { FVector(1414, 3,  1185) },
+            { FVector(1405, 4,  1254) },
+            { FVector(1463, 8,  1118) },
+        };
+
+        std::vector<FVector> moleSpawns3 = {
+            { FVector(701, 2,  1279) },
+            { FVector(811, 8,  1278) },
+            { FVector(791, 16, 1229) },
+            { FVector(876, 15, 1266) },
+            { FVector(984, 23, 1248) },
+            { FVector(891, 20, 1242) },
+            { FVector(920, 15, 1304) },
+            { FVector(823, 6,  1327) },
+            { FVector(717, 8,  1239) },
+            { FVector(695, 19, 1176) },
+            { FVector(628, 8,  1191) },
+            { FVector(724, 4,  1339) },
+        };
+
+        // How many moles can appear per tick?
+        size_t tick1, tick2, tick3;
         switch(gCCSelection) {
-            case CC_50: {
-                std::vector<FVector> moleSpawns1_50 = { { FVector(771, 20, -2022) },
-                                                        { FVector(807, 15, -2063) },
-                                                        { FVector(847, 18, -2040) },
-                                                        { FVector(913, 14, -2054) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_50));
-
-                std::vector<FVector> moleSpawns2_50 = { { FVector(1500, 2, 1140) },  { FVector(1510, 15, 1050) },
-                                                        { FVector(1609, 21, 935) },  { FVector(1289, 3, 1269) },
-                                                        { FVector(1468, 22, 1046) }, { FVector(1380, 12, 1154) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_50));
-
-                std::vector<FVector> moleSpawns3_50 = { { FVector(701, 2, 1279) },  { FVector(811, 8, 1278) },
-                                                        { FVector(791, 16, 1229) }, { FVector(876, 15, 1266) },
-                                                        { FVector(984, 23, 1248) }, { FVector(891, 20, 1242) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_50));
+            case CC_50:
+                tick1 = 4;
+                tick2 = 6;
+                tick3 = 6;
                 break;
-            }
-            case CC_100: {
-                std::vector<FVector> moleSpawns1_100 = { { FVector(771, 20, -2022) },
-                                                         { FVector(807, 15, -2063) },
-                                                         { FVector(847, 18, -2040) },
-                                                         { FVector(913, 14, -2054) },
-                                                         { FVector(939, 21, -1997) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_100));
-
-                std::vector<FVector> moleSpawns2_100 = { { FVector(1500, 2, 1140) },  { FVector(1510, 15, 1050) },
-                                                         { FVector(1609, 21, 935) },  { FVector(1289, 3, 1269) },
-                                                         { FVector(1468, 22, 1046) }, { FVector(1380, 12, 1154) },
-                                                         { FVector(1297, 19, 1170) }, { FVector(1589, 11, 1004) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_100));
-
-                std::vector<FVector> moleSpawns3_100 = { { FVector(701, 2, 1279) },  { FVector(811, 8, 1278) },
-                                                         { FVector(791, 16, 1229) }, { FVector(876, 15, 1266) },
-                                                         { FVector(984, 23, 1248) }, { FVector(891, 20, 1242) },
-                                                         { FVector(920, 15, 1304) }, { FVector(823, 6, 1327) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_100));
+            case CC_100:
+                tick1 = 5;
+                tick2 = 8;
+                tick3 = 8;
                 break;
-            }
-            case CC_150: {
-                std::vector<FVector> moleSpawns1_150 = { { FVector(771, 20, -2022) },
-                                                         { FVector(807, 15, -2063) },
-                                                         { FVector(847, 18, -2040) },
-                                                         { FVector(913, 14, -2054) },
-                                                         { FVector(939, 21, -1997) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_150));
-
-                std::vector<FVector> moleSpawns2_150 = { { FVector(1500, 2, 1140) },  { FVector(1510, 15, 1050) },
-                                                         { FVector(1609, 21, 935) },  { FVector(1289, 3, 1269) },
-                                                         { FVector(1468, 22, 1046) }, { FVector(1380, 12, 1154) },
-                                                         { FVector(1297, 19, 1170) }, { FVector(1589, 11, 1004) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_150));
-
-                std::vector<FVector> moleSpawns3_150 = { { FVector(701, 2, 1279) },  { FVector(811, 8, 1278) },
-                                                         { FVector(791, 16, 1229) }, { FVector(876, 15, 1266) },
-                                                         { FVector(984, 23, 1248) }, { FVector(891, 20, 1242) },
-                                                         { FVector(920, 15, 1304) }, { FVector(823, 6, 1327) },
-                                                         { FVector(717, 8, 1239) },  { FVector(695, 19, 1176) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_150));
+            case CC_150:
+                tick1 = 5;
+                tick2 = 8;
+                tick3 = 10;
                 break;
-            }
-            case CC_EXTRA: {
-                std::vector<FVector> moleSpawns1_extra = { { FVector(771, 20, -2022) },
-                                                           { FVector(807, 15, -2063) },
-                                                           { FVector(847, 18, -2040) },
-                                                           { FVector(913, 14, -2054) },
-                                                           { FVector(939, 21, -1997) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns1_extra));
-
-                std::vector<FVector> moleSpawns2_extra = { { FVector(1500, 2, 1140) },  { FVector(1510, 15, 1050) },
-                                                           { FVector(1609, 21, 935) },  { FVector(1289, 3, 1269) },
-                                                           { FVector(1468, 22, 1046) }, { FVector(1380, 12, 1154) },
-                                                           { FVector(1297, 19, 1170) }, { FVector(1589, 11, 1004) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns2_extra));
-
-                std::vector<FVector> moleSpawns3_extra = { { FVector(701, 2, 1279) },  { FVector(811, 8, 1278) },
-                                                           { FVector(791, 16, 1229) }, { FVector(876, 15, 1266) },
-                                                           { FVector(984, 23, 1248) }, { FVector(891, 20, 1242) },
-                                                           { FVector(920, 15, 1304) }, { FVector(823, 6, 1327) } };
-
-                gWorldInstance.AddObject(new OMoleGroup(moleSpawns3_extra));
+            case CC_EXTRA:
+                tick1 = 5;
+                tick2 = 8;
+                tick3 = 8;
                 break;
-            }
+            default:
+                tick1 = 4;
+                tick2 = 6;
+                tick3 = 6;
+                break;
         }
+
+        gWorldInstance.AddObject(new OMoleGroup(moleSpawns1, tick1));
+        gWorldInstance.AddObject(new OMoleGroup(moleSpawns2, tick2));
+        gWorldInstance.AddObject(new OMoleGroup(moleSpawns3, tick3));
     }
 
     if (gModeSelection == VERSUS) {

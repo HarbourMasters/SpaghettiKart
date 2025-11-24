@@ -510,45 +510,6 @@ void render_object(struct UnkStruct_800DC5EC* screen) {
 
 
     render_object_for_player(screen->camera->cameraId);
-
-    // switch (mode) {
-    //     case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-    //         render_object_p1();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-    //         render_object_p1();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-    //         render_object_p2();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-    //         render_object_p1();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-    //         render_object_p2();
-    //         break;
-    //     case 5:
-    //         render_object_p1();
-    //         break;
-    //     case 6:
-    //         render_object_p2();
-    //         break;
-    //     case 7:
-    //         render_object_p3();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-    //         render_object_p1();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-    //         render_object_p2();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-    //         render_object_p3();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-    //         render_object_p4();
-    //         break;
-    // }
 }
 
 void render_player_snow_effect(Camera* camera) {
@@ -573,36 +534,6 @@ void render_player_snow_effect(Camera* camera) {
     if (gGamestate != ENDING) {
         render_snowing_effect(camera->cameraId);
     }
-
-    // switch (arg0) {
-    //     case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-    //         render_player_snow_effect_one();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-    //         render_player_snow_effect_one();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-    //         render_player_snow_effect_two();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-    //         render_player_snow_effect_one();
-    //         break;
-    //     case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-    //         render_player_snow_effect_two();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-    //         render_player_snow_effect_one();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-    //         render_player_snow_effect_two();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-    //         render_player_snow_effect_three();
-    //         break;
-    //     case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-    //         render_player_snow_effect_four();
-    //         break;
-    // }
 }
 
 void render_object_for_player(s32 cameraId) {
@@ -610,91 +541,6 @@ void render_object_for_player(s32 cameraId) {
     CM_DrawParticles(cameraId);
     CM_RenderCourseObjects(cameraId);
     CM_DrawEditor();
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //         break;
-    //     case COURSE_CHOCO_MOUNTAIN:
-    //         break;
-    //     case COURSE_BOWSER_CASTLE:
-    //         render_object_thwomps(cameraId);
-    //         render_object_bowser_flame(cameraId);
-    //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_trash_bin(cameraId);
-    //             render_object_bat(cameraId);
-    //             func_8005217C(cameraId);
-    //             render_object_boos(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_YOSHI_VALLEY:
-    //         func_80055228(cameraId);
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_hedgehogs(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_snowmans(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_crabs(cameraId);
-    //         }
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-
-    //             if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-    //                 render_object_seagulls(cameraId);
-    //             }
-    //         } else {
-    //             render_object_seagulls(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_ROYAL_RACEWAY:
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         if (D_80165898 != 0) {
-    //             render_object_hot_air_balloon(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_MOO_MOO_FARM:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_moles(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_TOADS_TURNPIKE:
-    //         break;
-    //     case COURSE_KALIMARI_DESERT:
-    //         render_object_trains_smoke_particles(cameraId);
-    //         break;
-    //     case COURSE_SHERBET_LAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             func_80052E30(cameraId);
-    //         }
-    //         render_object_train_penguins(cameraId);
-    //         break;
-    //     case COURSE_RAINBOW_ROAD:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_neon(cameraId);
-    //             render_object_chain_chomps(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_WARIO_STADIUM:
-    //         break;
-    //     case COURSE_BLOCK_FORT:
-    //         break;
-    //     case COURSE_SKYSCRAPER:
-    //         break;
-    //     case COURSE_DOUBLE_DECK:
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_paddle_boat_smoke_particles(cameraId);
-    //         }
-    //         break;
-    // }
 
     render_object_smoke_particles(cameraId);
     render_object_leaf_particle(cameraId);
