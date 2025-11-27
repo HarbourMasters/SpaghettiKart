@@ -873,7 +873,10 @@ void func_8003C0F0(void) {
     } else if (!IsPodiumCeremony()) {
         init_course_path_point();
     }
-    spawn_players();
+
+    if (CVarGetInteger("gTourEnabled", false) == false) {
+        spawn_players();
+    }
 }
 
 void spawn_players(void) {
@@ -1228,7 +1231,12 @@ void spawn_players_and_cameras(void) {
     // Add freecam, tourcam, and lookbehind cameras
     Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
     CM_AddFreeCamera(spawn, player->rotation[1], 1);
-    CM_AddTourCamera(spawn, player->rotation[1], 1);
+    
+    if (CVarGetInteger("gTourEnabled", false) == true) {
+        Camera* camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
+        CM_AttachCamera(camera, PLAYER_ONE);
+        D_8015F480[PLAYER_ONE].camera = camera;
+    }
 }
 
 void spawn_single_player_camera(u32 mode) {

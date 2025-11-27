@@ -19,6 +19,16 @@ TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     ProjMode = ProjectionMode::PERSPECTIVE;
     freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
 
+    // if (nullptr == gWorldInstance.CurrentCourse) {
+    // return; bActive = false;
+    // }
+
+    // if (nullptr == gWorldInstance.CurrentCourse.Tour) {
+    //     bActive = false;
+    //     bTourComplete = true;
+    //     return;
+    // }
+
     Type = TOUR_TYPE::SEQUENTIAL;
     ShotIndex = 0;
     KeyFrameIndex = 0;
@@ -47,6 +57,7 @@ void TourCamera::NextShot() {
 }
 
 void TourCamera::Stop() {
+    printf("End of Track Tour\n");
     D_8015F480[0].camera = &cameras[0];
     spawn_players();
     bActive = false;
@@ -55,33 +66,16 @@ void TourCamera::Stop() {
 
 void TourCamera::Tick() {
     if (!bActive) { return; }
-    if (nullptr == _camera) {
+    if (
+          (nullptr == _camera) ||
+          (bTourComplete) ||
+          (ShotIndex >= Cuts.size())
+       ) {
         TourCamera::Stop();
         return;
     }
 
     f32 extraArg; // Calculates camera up. Likely for preventing some camera flip related issues
-
-    if (bTourComplete) { 
-        TourCamera::Stop();
-        return;
-    }
-
-    // End the cutscene early if something has gone wrong
-    if (nullptr == gWorldInstance.CurrentCourse) {
-        TourCamera::Stop();
-        return;
-    }
-
-    // if (nullptr == gWorldInstance->CurrentCourse.Tour) {
-    //     TourCamera::Stop();
-    //     return;
-    // }
-
-    if (ShotIndex >= Cuts.size()) {
-        TourCamera::Stop();
-        return;
-    }
 
     if (bShotComplete) {
         switch(Type) {

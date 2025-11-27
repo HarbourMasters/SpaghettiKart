@@ -17,8 +17,8 @@ extern "C" {
 
 FreeCamera::FreeCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     _camera->renderMode = RENDER_FULL_SCENE;
-    freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
     ProjMode = ProjectionMode::PERSPECTIVE;
+    freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
     bActive = false;
 }
 

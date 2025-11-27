@@ -447,8 +447,12 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         return nullptr;
     }
+
+    
     gWorldInstance.Cameras.push_back(new TourCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
-    return gWorldInstance.Cameras.back()->Get();
+    TourCamera* tour = static_cast<TourCamera*>(gWorldInstance.Cameras.back());
+    tour->SetActive(true);
+    return tour->Get();
 }
 
 Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode) {
