@@ -6671,6 +6671,10 @@ void look_behind_toggle(s32 cameraIdx) {
     Camera* camera = &cameras[cameraIdx];
     struct UnkStruct_800DC5EC* screenCtx = NULL;
 
+    if (CVarGetInteger("gLookBehind", false) == false) {
+        return;
+    }
+
     if (cameras[cameraIdx].playerId < 0 || cameras[cameraIdx].playerId >= 4) {
         return;
     }

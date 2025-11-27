@@ -403,6 +403,10 @@ void PortMenu::AddEnhancements() {
         .CVar("gShowSpaghettiVersion")
         .Options(CheckboxOptions().Tooltip("Show the Spaghetti Kart version on the Mario Kart menu").DefaultValue(true));
 
+    AddWidget(path, "Enable Look Behind Camera", WIDGET_CVAR_CHECKBOX)
+        .CVar("gLookBehind")
+        .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
+
     AddRulesets();
 
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
