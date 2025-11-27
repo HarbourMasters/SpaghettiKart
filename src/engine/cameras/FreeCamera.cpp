@@ -15,10 +15,11 @@ extern "C" {
 #include "defines.h"
 }
 
-FreeCamera::FreeCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s32 cameraId) : GameCamera(camera) {
-    camera->renderMode = RENDER_FULL_SCENE;
-    _camera = camera;
-    freecam_init(camera, posX, posY, posZ, 0, arg4, cameraId);
+FreeCamera::FreeCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
+    _camera->renderMode = RENDER_FULL_SCENE;
+    freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+    ProjMode = ProjectionMode::PERSPECTIVE;
+    bActive = false;
 }
 
 void FreeCamera::SetActive(bool state) {

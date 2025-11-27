@@ -4,13 +4,13 @@
 
 #include "CoreMath.h"
 #include "engine/courses/Course.h"
+#include "engine/cameras/GameCamera.h"
 #include "objects/Object.h"
 #include "Cup.h"
 #include "PlayerBombKart.h"
 #include "TrainCrossing.h"
 #include <memory>
 #include <unordered_map>
-#include "GameCamera.h"
 #include "RaceManager.h"
 #include "Actor.h"
 #include "StaticMeshActor.h"
@@ -60,7 +60,6 @@ public:
     std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
 
     void TickCameras();
-    GameCamera* AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4);
 
     AActor* AddActor(AActor* actor);
     struct Actor* AddBaseActor();

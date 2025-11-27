@@ -8,8 +8,10 @@
 
 struct UnkStruct_800DC5EC {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
-    /* 0x04 */ Camera* camera;                 // Player camera ptr
-    /*      */ Camera* pendingCamera;
+    /* 0x04 */ Camera* camera;                 // The active camera
+               Camera* raceCamera;
+               Camera* lookBehindCamera;       // The lookBehind camera
+    /*      */ Camera* pendingCamera;          // The camera to switch too next frame
     /* 0x08 */ Player* player;                 // Player ptr 800F6990
     /* 0x0C */ s32* unkC;                      // unk struct?
     /* 0x10 */ Vp viewport;

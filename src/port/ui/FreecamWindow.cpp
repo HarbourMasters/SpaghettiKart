@@ -10,6 +10,7 @@
 #include "spdlog/formatter.h"
 #include <common_structs.h>
 #include <defines.h>
+#include "engine/cameras/FreeCamera.h"
 #include "enhancements/freecam/freecam_engine.h"
 #include "enhancements/freecam/freecam.h"
 
@@ -69,18 +70,20 @@ void RegisterFreecamWidgets() {
         .CVar("gFreecam")
         .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}))
         .Callback([](WidgetInfo& info) {
-            if (nullptr == gWorldInstance.Cameras[1]) {
-                return;
-            }
             bool state = (bool) CVarGetInteger("gFreecam", false);
-            if (state) {
-                D_800DC5EC->pendingCamera = gWorldInstance.Cameras[1]->Get();
-            gWorldInstance.Cameras[1]->SetActive(state);
-            } else {
-                D_800DC5EC->pendingCamera = gWorldInstance.Cameras[0]->Get();
-                gWorldInstance.Cameras[1]->SetActive(state);
+            for (auto* cam : gWorldInstance.Cameras) {
+                if (FreeCamera* camera = dynamic_cast<FreeCamera*>(cam)) {
+                    if (state) {
+                        D_800DC5EC->pendingCamera = cam->Get();
+                        cam->SetActive(true);
+                    } else {
+                        if (nullptr != D_800DC5EC->raceCamera) {
+                            D_800DC5EC->pendingCamera = D_800DC5EC->raceCamera;
+                            cam->SetActive(false);
+                        }
+                    }
+                }
             }
-            //gWorldInstance.Cameras[0]->SetActive(!state);
         });
 
     mPortMenu->AddWidget(path, "Camera Damping", WIDGET_SLIDER_FLOAT)

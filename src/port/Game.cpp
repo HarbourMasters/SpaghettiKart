@@ -52,7 +52,10 @@
 #include "engine/Registry.h"
 #include "RegisteredActors.h"
 
-#include "engine/TourCamera.h"
+#include "engine/cameras/GameCamera.h"
+#include "engine/cameras/FreeCamera.h"
+#include "engine/cameras/TourCamera.h"
+#include "engine/cameras/LookBehindCamera.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -372,7 +375,7 @@ void CM_DrawStaticMeshActors() {
 }
 
 void CM_BeginPlay() {
-    static bool tour = true;
+    static bool tour = false;
     auto course = gWorldInstance.CurrentCourse;
 
     if (tour) {
@@ -380,37 +383,33 @@ void CM_BeginPlay() {
        // D_800DC5EC->camera = gWorldInstance.Cameras[2]->Get();
         if (reinterpret_cast<TourCamera*>(gWorldInstance.Cameras[2])->IsTourComplete()) {
             tour = false;
-            D_800DC5EC->pendingCamera = &cameras[2];
+            D_800DC5EC->pendingCamera = &cameras[0];
         }
     }
 
-    if (course) {
-        Editor::LoadLevel(course.get(), course->SceneFilePtr);
-
-        gRulesets.PreInit();
-        // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
-        if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != BATTLE)) {
-            if (course->bSpawnFinishline) {
-                if (course->FinishlineSpawnPoint.has_value()) {
-                    AFinishline::Spawn(course->FinishlineSpawnPoint.value(), IRotator(0, 0, 0));
-                } else {
-                    AFinishline::Spawn();
-                }
-            
-            }
-        }
-        gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
-
-        course->BeginPlay();
-        gRulesets.PostInit();
+    if (gWorldInstance.CurrentCourse) {
+        // This line should likely be moved.
+        // It's here so PreInit is after the scene file has been loaded
+        // It used to be at the start of BeginPlay
+        Editor::LoadLevel(gWorldInstance.CurrentCourse.get(), gWorldInstance.CurrentCourse->SceneFilePtr);
     }
+
     gWorldInstance.GetRaceManager().PreInit();
     gWorldInstance.GetRaceManager().BeginPlay();
     gWorldInstance.GetRaceManager().PostInit();
 }
 
-Camera* CM_GetCameras() {
-    return nullptr;//    gWorldInstance.Cameras;
+Camera* CM_GetPlayerCamera(s32 playerIndex) {
+    for (GameCamera* cam : gWorldInstance.Cameras) {
+        // Make sure this is a player camera and not a different type of camera
+        if (typeid(*cam) == typeid(GameCamera)) {
+            Camera* camera = cam->Get();
+            if (camera->playerId == playerIndex) {
+                return camera;
+            }
+        }
+    }
+    return nullptr;
 }
 
 void CM_SetupCamera(Camera* camera) {
@@ -425,8 +424,44 @@ void CM_TickCameras() {
     gWorldInstance.TickCameras();
 }
 
-void CM_AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
-    gWorldInstance.AddCamera(camera, posX, posY, posZ, arg4);
+Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode) {
+    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+        printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
+        return nullptr;
+    }
+    gWorldInstance.Cameras.push_back(new GameCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return gWorldInstance.Cameras.back()->Get();
+}
+
+Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode) {
+    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+        printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
+        return nullptr;
+    }
+    gWorldInstance.Cameras.push_back(new FreeCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return gWorldInstance.Cameras.back()->Get();
+}
+
+Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
+    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+        printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
+        return nullptr;
+    }
+    gWorldInstance.Cameras.push_back(new TourCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return gWorldInstance.Cameras.back()->Get();
+}
+
+Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode) {
+    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+        printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
+        return nullptr;
+    }
+    gWorldInstance.Cameras.push_back(new LookBehindCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return gWorldInstance.Cameras.back()->Get();
+}
+
+void CM_AttachCamera(Camera* camera, s32 playerIdx) {
+    camera->playerId = playerIdx;
 }
 
 void CM_TickObjects() {
@@ -703,6 +738,14 @@ void CM_CleanWorld(void) {
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();
     gWorldInstance.Lakitus.clear();
+}
+
+void CM_CleanCameras(void) {
+    for (auto& camera : gWorldInstance.Cameras) {
+        delete camera;
+    }
+
+    gWorldInstance.Cameras.clear();
 }
 
 struct Actor* CM_AddBaseActor() {

@@ -22,14 +22,10 @@ extern "C" {
 #include "code_800029B0.h"
 }
 
-#include "engine/GameCamera.h"
-#include "engine/FreeCamera.h"
-#include "engine/TourCamera.h"
-
-World::World() {}
-World::~World() {
-    CM_CleanWorld();
-}
+#include "engine/cameras/GameCamera.h"
+#include "engine/cameras/FreeCamera.h"
+#include "engine/cameras/TourCamera.h"
+#include "engine/cameras/LookBehindCamera.h"
 
 std::shared_ptr<Course> CurrentCourse;
 Cup* CurrentCup;
@@ -144,6 +140,7 @@ void World::TickCameras() {
         if (NULL == screen->pendingCamera) { break; }
         if (screen->pendingCamera != screen->camera) {
             screen->camera = screen->pendingCamera;
+            screen->pendingCamera = nullptr;
         }
     }
 
@@ -152,27 +149,6 @@ void World::TickCameras() {
             camera->Tick();
         }
     }
-}
-
-GameCamera* World::AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4) {
-    switch(Cameras.size()) {
-        case 0:
-        printf("Created game camera\n");
-            Cameras.push_back(new GameCamera(camera, 0.0f, 0.0f, 0.0f, 0, 0));
-            break;
-        case 1:
-        printf("Created free camera\n");
-
-            Cameras.push_back(new FreeCamera(camera, 0.0f, 0.0f, 0.0f, 0, 1));
-            break;
-        case 2:
-        printf("Created tour camera\n");
-
-            Cameras.push_back(new TourCamera(camera, 0.0f, 0.0f, 0.0f, 0, 2));
-            break;
-    }
-    D_8015F480[0].camera = &cameras[2];
-    return Cameras.back();
 }
 
 AActor* World::AddActor(AActor* actor) {

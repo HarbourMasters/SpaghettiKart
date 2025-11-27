@@ -71,10 +71,14 @@ void CM_InitClouds();
 void CM_DrawActors(Camera* camera);
 void CM_DrawStaticMeshActors();
 
-Camera* CM_GetCameras();
+Camera* CM_GetPlayerCamera(s32 playerIndex);
 void CM_SetupCamera(Camera* camera);
 void CM_TickCameras();
-void CM_AddCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId);
+Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode);
+Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode);
+Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode);
+Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode);
+void CM_AttachCamera(Camera* camera, s32 playerIdx);
 void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);
@@ -158,6 +162,7 @@ void Editor_AddLight(s8* direction);
 size_t CM_GetActorSize();
 size_t CM_FindActorIndex(struct Actor* actor);
 void CM_ActorCollision(Player* player, struct Actor* actor);
+void CM_CleanCameras(void);
 void CM_CleanWorld(void);
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision);

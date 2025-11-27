@@ -41,23 +41,6 @@ public:
         return static_cast<AFinishline*>(gWorldInstance.AddActor(new AFinishline(params)));
     }
 
-    // This is simply a helper function to keep Spawning code clean
-    static inline AFinishline* Spawn(FVector pos, IRotator rot) {
-        SpawnParams params = {
-            .Name = "mk:finishline",
-            .Location = pos,
-            .Rotation = rot,
-        };
-        return static_cast<AFinishline*>(gWorldInstance.AddActor(new AFinishline(params)));
-    }
-
-    static inline AFinishline* Spawn() {
-        SpawnParams params = {
-            .Name = "mk:finishline",
-        };
-        return static_cast<AFinishline*>(gWorldInstance.AddActor(new AFinishline(params)));
-    }
-
     // Virtual functions to be overridden by derived classes
     virtual void Tick() override;
     virtual void Draw(Camera*) override;

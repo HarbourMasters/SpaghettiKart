@@ -186,7 +186,6 @@ extern Mat4 sBillBoardMtx;
 
 extern s32 padding[];
 
-extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;

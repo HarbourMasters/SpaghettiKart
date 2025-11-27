@@ -163,7 +163,9 @@ void setup_podium_ceremony(void) {
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
-    func_8003D080();
+    CM_CleanCameras();
+    spawn_players_and_cameras();
+    load_kart_textures();
     init_hud();
     func_8001C05C();
     balloons_and_fireworks_init();

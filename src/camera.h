@@ -17,6 +17,8 @@
 #define BAD_RETURN(cmd) cmd
 #endif
 
+#define NUM_CAMERAS 16
+
 typedef enum RenderMode {
     RENDER_TRACK_SECTIONS,
     RENDER_FULL_SCENE,
@@ -69,8 +71,8 @@ typedef struct {
 
 } Camera; /* size = 0xBC */
 
-void camera_init(f32, f32, f32, s16, u32, s32);
-void freecam_init(Camera* camera, f32 posX, f32 posY, f32 posZ, s16 rot, u32 arg4, s32 cameraId);
+void camera_init(Vec3f pos, s16 rot, u32, s32);
+void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId);
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
 void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32, s32);

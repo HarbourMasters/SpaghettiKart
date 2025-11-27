@@ -98,7 +98,7 @@ void OLakitu::Draw(s32 cameraId) {
 
     FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
 
-    objectIndex = gIndexLakituList[cameraId];
+    objectIndex = gIndexLakituList[cameras[cameraId].playerId];
     camera = &camera1[cameraId];
     if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
         object = &gObjectList[objectIndex];

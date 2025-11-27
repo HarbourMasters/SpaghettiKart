@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
+#include "CoreMath.h"
 
 extern "C" {
 #include "camera.h"
@@ -8,8 +9,11 @@ extern "C" {
 
 class GameCamera {
 public:
-    GameCamera(Camera* camera);
-    GameCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s32 cameraId);
+    GameCamera();
+    GameCamera(FVector spawn, s16 rot, u32 mode);
+    ~GameCamera() {
+        _count--;
+    }
 
     enum class ProjectionMode {
         PERSPECTIVE,
@@ -34,4 +38,5 @@ protected:
     Mtx LookAtMatrix;
     bool bActive;
     Camera* _camera;
+    static size_t _count;
 };

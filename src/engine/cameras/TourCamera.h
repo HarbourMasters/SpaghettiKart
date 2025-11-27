@@ -49,7 +49,7 @@ public:
         std::vector<KeyFrame> Frames;
     };
 
-    TourCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s32 cameraId);
+    TourCamera(FVector pos, s16 rot, u32 mode);
 
     virtual void Tick() override;
     virtual void Setup() override;

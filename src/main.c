@@ -123,7 +123,7 @@ s32 D_80150120;
 s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 gCameraZoom[4]; // look like to be the fov of each character
+f32 gCameraZoom[NUM_CAMERAS]; // Field-of-view for each camera
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -147,7 +147,6 @@ Mat4 sBillBoardMtx; // Faces 2D actors at the camera
 
 s32 padding[2048];
 
-u16 D_80152300[4];
 u16 D_80152308;
 
 UNUSED OSThread paddingThread;
@@ -689,6 +688,7 @@ void process_game_tick(void) {
     // This looks like it should be in the switch below.
     // But it needs to be here for player 1 to work in all modes.
     CM_TickCameras();
+//    func_8001EE98(gPlayerOne, camera1, 1);
     if (CVarGetInteger("gFreecam", 0) == true) {
         //freecam(gFreecamCamera, gPlayerOne, 0);
     } else {
@@ -707,16 +707,16 @@ void process_game_tick(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             func_80029060();
-            func_8001EE98(gPlayerTwo, camera2, 1);
+            //func_8001EE98(gPlayerTwo, camera2, 1);
             func_80029150();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             func_80029158();
-            func_8001EE98(gPlayerTwo, camera2, 1);
+            //func_8001EE98(gPlayerTwo, camera2, 1);
             func_800291E8();
-            func_8001EE98(gPlayerThree, camera3, 2);
+            //func_8001EE98(gPlayerThree, camera3, 2);
             func_800291F0();
-            func_8001EE98(gPlayerFour, camera4, 3);
+            //func_8001EE98(gPlayerFour, camera4, 3);
             func_800291F8();
             break;
     }

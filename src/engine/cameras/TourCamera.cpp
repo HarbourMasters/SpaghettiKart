@@ -13,11 +13,11 @@ extern "C" {
 #include "common_structs.h"
 #include "spawn_players.h"
 }
-#include "freecam_cutscene.h"
 
-TourCamera::TourCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s32 cameraId) : GameCamera(camera) {
-    camera->renderMode = RENDER_FULL_SCENE;
-    freecam_init(camera, posX, posY, posZ, 0, arg4, cameraId);
+TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
+    _camera->renderMode = RENDER_FULL_SCENE;
+    ProjMode = ProjectionMode::PERSPECTIVE;
+    freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
 
     Type = TOUR_TYPE::SEQUENTIAL;
     ShotIndex = 0;
@@ -25,6 +25,7 @@ TourCamera::TourCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s
     KeyFrameProgress = 0;
     bShotComplete = false;
     bTourComplete = false;
+    bActive = false;
 }
 
 void TourCamera::Reset() {

@@ -25,7 +25,6 @@ extern "C" {
 #include "freecam.h"
 }
 
-#include "freecam_cutscene.h"
 #include "engine/courses/Course.h"
 
 typedef struct {

@@ -223,7 +223,9 @@ void setup_race(void) {
     D_8015F700 = 200;
 
     func_80005310();
-    func_8003D080();
+    CM_CleanCameras();
+    spawn_players_and_cameras();
+    load_kart_textures();
     init_hud();
     gRaceState = RACE_INIT;
     gNumSpawnedShells = 0;
@@ -299,7 +301,9 @@ void setup_editor(void) {
     D_8015F700 = 200;
 
     func_80005310();
-    func_8003D080();
+    CM_CleanCameras();
+    spawn_players_and_cameras();
+    load_kart_textures();
     init_hud();
     gRaceState = RACE_INIT;
     gNumSpawnedShells = 0;

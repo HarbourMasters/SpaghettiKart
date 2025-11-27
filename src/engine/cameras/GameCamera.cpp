@@ -11,19 +11,27 @@ extern "C" {
 #include "camera.h"
 }
 
-GameCamera::GameCamera(Camera* camera) {
-    _camera = camera;
+size_t GameCamera::_count = 0;
+
+GameCamera::GameCamera() {
+    _camera = &cameras[_count];
+    _camera->cameraId = _count;
     _camera->perspectiveMatrix = &PerspectiveMatrix;
     _camera->lookAtMatrix = &LookAtMatrix;
+
+    _count += 1;
 }
-GameCamera::GameCamera(Camera* camera, f32 posX, f32 posY, f32 posZ, u32 arg4, s32 cameraId) {
-    _camera = camera;
-    camera->renderMode = RENDER_TRACK_SECTIONS;
-    camera->perspectiveMatrix = &PerspectiveMatrix;
-    camera->lookAtMatrix = &LookAtMatrix;
-    bActive = true;
+GameCamera::GameCamera(FVector pos, s16 rot, u32 mode) {
+    _camera = &cameras[_count];
+    _camera->cameraId = _count;
+    _camera->perspectiveMatrix = &PerspectiveMatrix;
+    _camera->lookAtMatrix = &LookAtMatrix;
+    _camera->renderMode = RENDER_TRACK_SECTIONS;
     ProjMode = ProjectionMode::PERSPECTIVE;
-    //camera_init(posX, posY, posZ, 0, arg4, cameraId);
+    bActive = true;
+    camera_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+
+    _count += 1;
 }
 
 void GameCamera::Tick() {
@@ -33,7 +41,7 @@ void GameCamera::Tick() {
         return;
     }
 
-    func_8001EE98(gPlayerOne, _camera, 0);
+    func_8001EE98(&gPlayers[_camera->playerId], _camera, _camera->cameraId);
 }
 
 void GameCamera::SetActive(bool state) {

@@ -23,7 +23,10 @@ void func_8003BE30(void);
 void func_8003C0F0(void);
 void func_8003CD78(void);
 void func_8003CD98(Player*, Camera*, s8, s8);
-void func_8003D080(void);
+void spawn_players_and_cameras(void);
+void spawn_single_player_camera(u32 mode);
+void spawn_multiplayer_cameras(u32 mode);
+void load_kart_textures(void);
 void func_8003DB5C(void);
 
 extern f32 D_80165210[];

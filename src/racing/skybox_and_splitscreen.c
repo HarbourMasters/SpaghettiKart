@@ -585,7 +585,7 @@ void func_802A5004(void) {
     init_rdp();
     func_802A3730(D_800DC5F0);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
@@ -603,7 +603,7 @@ void func_802A50EC(void) {
     init_rdp();
     func_802A3730(D_800DC5EC);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     func_802A39E0(D_800DC5EC);
@@ -621,7 +621,7 @@ void func_802A51D4(void) {
     func_802A39E0(D_800DC5EC);
     func_802A3730(D_800DC5EC);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
@@ -638,7 +638,7 @@ void func_802A52BC(void) {
     func_802A39E0(D_800DC5F0);
     func_802A3730(D_800DC5F0);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
@@ -655,7 +655,7 @@ void func_802A53A4(void) {
     init_rdp();
     func_802A3730(D_800DC5EC);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     init_z_buffer();
@@ -676,7 +676,7 @@ void func_802A54A8(void) {
     func_802A39E0(D_800DC5EC);
     func_802A3730(D_800DC5EC);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
@@ -693,7 +693,7 @@ void func_802A5590(void) {
     func_802A39E0(D_800DC5F0);
     func_802A3730(D_800DC5F0);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
@@ -710,7 +710,7 @@ void func_802A5678(void) {
     func_802A39E0(D_800DC5F4);
     func_802A3730(D_800DC5F4);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
@@ -725,7 +725,7 @@ void func_802A5760(void) {
 
     init_rdp();
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (gPlayerCountSelection1 == 3) {
@@ -844,7 +844,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     }
 
     // Create a matrix for the track and game objects
-    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | playerId)));
+    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | (playerId << 2))));
     Mat4 trackMatrix;
     mtxf_identity(trackMatrix);
     render_set_position(trackMatrix, 0);
@@ -908,7 +908,7 @@ void set_screen(void) {
 
     for (i = 0; i < 4; i++) {
         wrapper->controllers = controller;
-        wrapper->camera = &cameras[0];
+//        wrapper->camera = &cameras[i]; // Done in spawn_players now
         wrapper->player = player;
         wrapper->unkC = unk;
 
