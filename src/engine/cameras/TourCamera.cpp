@@ -4,6 +4,7 @@
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
 #include "engine/World.h"
+#include "port/audio/HMAS.h"
 
 extern "C" {
 #include "main.h"
@@ -12,6 +13,7 @@ extern "C" {
 #include "ceremony_and_credits.h"
 #include "common_structs.h"
 #include "spawn_players.h"
+#include "math_util.h"
 }
 
 TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
@@ -58,10 +60,18 @@ void TourCamera::NextShot() {
 
 void TourCamera::Stop() {
     printf("End of Track Tour\n");
-    D_8015F480[0].camera = &cameras[0];
-    spawn_players();
+    D_8015F480[0].pendingCamera = &cameras[0];
+    // spawn_players();
     bActive = false;
     bTourComplete = true;
+
+    CVarSetInteger("gTourEnabled", false);
+    gIsInQuitToMenuTransition = 1;
+    gQuitToMenuTransitionCounter = 5;
+    gGotoMode = RACING;
+    if(HMAS_IsPlaying(HMAS_MUSIC)) {
+        HMAS_Stop(HMAS_MUSIC);
+    }
 }
 
 void TourCamera::Tick() {
@@ -99,6 +109,9 @@ void TourCamera::Tick() {
     //printf("cam %f %f %f prog %f idx %d\n", camera->pos[0], camera->pos[1], camera->pos[2], Progress, KeyFrameIndex);
 
     bShotComplete = done;
+
+    // This is required for actors billboarding to work.
+    _camera->rot[1] = atan2s(_camera->lookAt[0] - _camera->pos[0], _camera->lookAt[2] - _camera->pos[2]);
 }
 
 bool TourCamera::MoveCameraAlongSpline(f32* arg1, std::vector<KeyFrame>& keyFrame) {
