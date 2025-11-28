@@ -387,7 +387,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     container:
-      image: devkitpro/devkita64:20241023
+      image: devkitpro/devkita64:20251117
     steps:
       - uses: actions/checkout@v4
         with:
