@@ -699,27 +699,8 @@ void process_game_tick(void) {
     if (gIsEditorPaused == true) {
         return;
     }
-
-    switch(gActiveScreenMode) {
-        case SCREEN_MODE_1P:
-            func_80028F70(); // Player controller
-            break;
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_80029060();
-            //func_8001EE98(gPlayerTwo, camera2, 1);
-            func_80029150();
-            break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_80029158();
-            //func_8001EE98(gPlayerTwo, camera2, 1);
-            func_800291E8();
-            //func_8001EE98(gPlayerThree, camera3, 2);
-            func_800291F0();
-            //func_8001EE98(gPlayerFour, camera4, 3);
-            func_800291F8();
-            break;
-    }
+    
+    func_80028F70(); // Player controller
 
     func_8028F474();
     func_80059AC8();
