@@ -72,6 +72,3 @@ void RaceManager::PostInit() {
         OTrophy::Spawn(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
     }
 }
-
-void RaceManager::Clean() {
-}

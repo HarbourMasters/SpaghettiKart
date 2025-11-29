@@ -129,7 +129,7 @@ void func_80281D00(void) {
     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070004D0));
     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000840));
 
-    render_players(&cameras[0], 0, PLAYER_ONE);
+    render_players(&cameras[0], PLAYER_ONE);
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
     render_object(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
