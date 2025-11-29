@@ -19,6 +19,7 @@
 #include "engine/objects/Object.h"
 #include "engine/objects/Thwomp.h"
 #include "engine/objects/Snowman.h"
+#include "engine/cameras/TourCamera.h"
 #include <iostream>
 
 extern "C" {
@@ -52,6 +53,20 @@ namespace Editor {
             SaveActors(actors);
 
             data["Actors"] = actors;
+
+            if (gWorldInstance.CurrentCourse->TourShots.size() != 0) {
+                nlohmann::json tours;
+
+                tours["Enabled"] = gWorldInstance.CurrentCourse->bTourEnabled;
+
+                // Camera shots
+                nlohmann::json shots = nlohmann::json::array();
+                for (const auto& shot : gWorldInstance.CurrentCourse->TourShots) {
+                    shots.push_back(ToJson(shot));
+                }
+
+                data["Tour"] = tours;
+            }
 
             try {
                 auto dat = data.dump(2);
@@ -132,6 +147,26 @@ namespace Editor {
                 }
             } else {
                 SPDLOG_INFO("[SceneManager::LoadLevel] [scene.json] This track contains no StaticMeshActors!");
+            }
+
+            if (data.contains("Tour") && data["Tour"].is_object()) {
+                const auto& tours = data["Tour"];
+
+                // Enable flag
+                if (tours.contains("Enabled")) {
+                    gWorldInstance.CurrentCourse->bTourEnabled = tours["Enabled"].get<bool>();
+                } else {
+                    gWorldInstance.CurrentCourse->bTourEnabled = false;
+                }
+
+                // Camera shots
+                if (tours.contains("Shots") && tours["Shots"].is_array()) {
+                    gWorldInstance.CurrentCourse->TourShots.clear();
+
+                    for (const auto& shotJson : tours["Shots"]) {
+                        gWorldInstance.CurrentCourse->TourShots.push_back(FromJsonCameraShot(shotJson));
+                    }
+                }
             }
         }
     }

@@ -874,7 +874,8 @@ void func_8003C0F0(void) {
         init_course_path_point();
     }
 
-    if ((CVarGetInteger("gTourEnabled", false) == false) && (gModeSelection == GRAND_PRIX)) {
+    // The tour delays player spawning until the end of the tour
+    if ((CM_IsTourEnabled() == false) || (gIsEditorPaused == true)) {
         spawn_players();
     }
 }
@@ -1232,10 +1233,12 @@ void spawn_players_and_cameras(void) {
     Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
     CM_AddFreeCamera(spawn, player->rotation[1], 1);
     
-    if ((CVarGetInteger("gTourEnabled", false) == true) && (gModeSelection == GRAND_PRIX)) {
+    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
         Camera* camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
-        CM_AttachCamera(camera, PLAYER_ONE);
-        D_8015F480[PLAYER_ONE].camera = camera;
+        if (NULL != camera) {
+            CM_AttachCamera(camera, PLAYER_ONE);
+            D_8015F480[PLAYER_ONE].camera = camera;
+        }
     }
 }
 

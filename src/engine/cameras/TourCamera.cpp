@@ -21,16 +21,6 @@ TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     ProjMode = ProjectionMode::PERSPECTIVE;
     freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
 
-    // if (nullptr == gWorldInstance.CurrentCourse) {
-    // return; bActive = false;
-    // }
-
-    // if (nullptr == gWorldInstance.CurrentCourse.Tour) {
-    //     bActive = false;
-    //     bTourComplete = true;
-    //     return;
-    // }
-
     Type = TOUR_TYPE::SEQUENTIAL;
     ShotIndex = 0;
     KeyFrameIndex = 0;
@@ -50,22 +40,21 @@ void TourCamera::Reset() {
 void TourCamera::NextShot() {
     TourCamera::Reset();
     bShotComplete = false;
-    _camera->pos[0] = Cuts[ShotIndex].Pos.x;
-    _camera->pos[1] = Cuts[ShotIndex].Pos.y;
-    _camera->pos[2] = Cuts[ShotIndex].Pos.z;
-    _camera->lookAt[0] = Cuts[ShotIndex].LookAt.x;
-    _camera->lookAt[1] = Cuts[ShotIndex].LookAt.y;
-    _camera->lookAt[2] = Cuts[ShotIndex].LookAt.z;
+    _camera->pos[0] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.x;
+    _camera->pos[1] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.y;
+    _camera->pos[2] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.z;
+    _camera->lookAt[0] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.x;
+    _camera->lookAt[1] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.y;
+    _camera->lookAt[2] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.z;
 }
 
 void TourCamera::Stop() {
     printf("End of Track Tour\n");
     D_8015F480[0].pendingCamera = &cameras[0];
-    // spawn_players();
+    spawn_players();
     bActive = false;
     bTourComplete = true;
 
-    CVarSetInteger("gTourEnabled", false);
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING;
@@ -79,7 +68,7 @@ void TourCamera::Tick() {
     if (
           (nullptr == _camera) ||
           (bTourComplete) ||
-          (ShotIndex >= Cuts.size())
+          (ShotIndex >= gWorldInstance.CurrentCourse->TourShots.size())
        ) {
         TourCamera::Stop();
         return;
@@ -99,7 +88,7 @@ void TourCamera::Tick() {
         }
     }
 
-    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, Cuts[ShotIndex].Frames);
+    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, gWorldInstance.CurrentCourse->TourShots[ShotIndex].Frames);
 
     // Advance to the next camera shot
     if (done) {

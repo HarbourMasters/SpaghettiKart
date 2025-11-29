@@ -9,6 +9,7 @@
 #include <optional>
 #include <nlohmann/json.hpp>
 #include "engine/objects/Lakitu.h"
+#include "engine/cameras/TourCamera.h"
 #include "port/resource/type/TrackSections.h"
 extern "C" {
 #endif
@@ -316,6 +317,10 @@ public:
 
     bool bIsMod = false;
     std::vector<SpawnParams> SpawnList;
+
+    bool bTourEnabled = false;
+    std::vector<TourCamera::CameraShot> TourShots;
+
 
     virtual ~Course() = default;
 

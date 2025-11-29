@@ -13,6 +13,8 @@
 
 #include "port/Game.h"
 
+#include "engine/cameras/TourCamera.h"
+
 extern "C" {
 #include "code_800029B0.h"
 #include "sounds.h"
@@ -32,6 +34,10 @@ namespace Editor {
         static char nameBuffer[256] = "Mario Raceway";
         static char debugNameBuffer[256] = "m circuit";
         static char lengthBuffer[256] = "567m";
+
+        if (nullptr == gWorldInstance.CurrentCourse) {
+            return;
+        }
 
         ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
         ImGui::InputText("Name", gWorldInstance.CurrentCourse->Props.Name, IM_ARRAYSIZE(nameBuffer));
@@ -165,6 +171,7 @@ namespace Editor {
         FloatToRGB8(floorTopLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopLeft);
 
         TrackPropertiesWindow::DrawMusic();
+        TrackPropertiesWindow::DrawTourCamera();
     }
 
     void TrackPropertiesWindow::DrawMusic() {
@@ -285,6 +292,130 @@ namespace Editor {
         for (size_t i = 0; i < 3; ++i) {
             dst[i] = static_cast<u8>(src[i] * 255.0f);  // Scale to [0, 255] range
         }
+    }
+
+    int32_t TrackPropertiesWindow::SelectedShot = -1;
+    int32_t TrackPropertiesWindow::SelectedKeyframe = -1;
+
+    void TrackPropertiesWindow::DrawTourCamera() {
+
+        std::shared_ptr<Course> track = gWorldInstance.CurrentCourse;
+        if (nullptr == track) {
+            return;
+        }
+
+        Camera* camera = D_800DC5EC->camera;
+        if (nullptr == camera) {
+            return;
+        }
+
+
+        FVector camPos = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
+        FVector camLookAt = FVector(camera->lookAt[0], camera->lookAt[1], camera->lookAt[2]);
+
+        // Enable / disable
+        ImGui::Checkbox("Enable Tour Camera", &track->bTourEnabled);
+
+        if (!track->bTourEnabled) {
+            return;
+        }
+
+        ImGui::SeparatorText("Tour Camera Controls");
+
+        // Button to add a new empty shot
+        if (ImGui::Button("Add CameraShot")) {
+            TourCamera::CameraShot shot;
+            shot.Pos = camPos;       // start where the camera currently is
+            shot.LookAt = camLookAt; // or however your camera exposes these
+            track->TourShots.push_back(shot);
+        }
+
+        ImGui::Spacing();
+
+        // ============================
+        //   Display Camera Shots
+        // ============================
+        for (int32_t i = 0; i < track->TourShots.size(); i++)
+        {
+            TourCamera::CameraShot& shot = track->TourShots[i];
+            ImGui::PushID(i);
+
+            bool open = ImGui::CollapsingHeader(
+                ("CameraShot " + std::to_string(i)).c_str(),
+                ImGuiTreeNodeFlags_DefaultOpen
+            );
+
+            // Select the shot
+            if (ImGui::Selectable("Select Shot", SelectedShot == i)) {
+                SelectedShot = i;
+            }
+
+            // Delete shot
+            ImGui::SameLine();
+            if (ImGui::Button("Delete Shot")) {
+                track->TourShots.erase(track->TourShots.begin() + i);
+                if (SelectedShot == i) SelectedShot = -1;
+                ImGui::PopID();
+                break;
+            }
+
+            if (open) {
+                ImGui::Indent();
+
+                // Start pos / lookAt editing
+                ImGui::InputFloat3("Start Pos", &shot.Pos.x);
+                ImGui::InputFloat3("Start LookAt", &shot.LookAt.x);
+
+                ImGui::Spacing();
+
+                // Record keyframe from current camera
+                if (ImGui::Button("Record KeyFrame From Camera")) {
+                    TourCamera::KeyFrame kf;
+                    kf.Pos = camPos;
+                    kf.LookAt = camLookAt;
+                    kf.Duration = 60.0f;
+                    shot.Frames.push_back(kf);
+                }
+
+                ImGui::SeparatorText("KeyFrames");
+
+                // ============================
+                //   KeyFrame List
+                // ============================
+                for (int32_t k = 0; k < shot.Frames.size(); k++)
+                {
+                    TourCamera::KeyFrame& kf = shot.Frames[k];
+                    ImGui::PushID(k);
+
+                    bool kOpen = ImGui::TreeNode(("KeyFrame " + std::to_string(k)).c_str());
+
+                    // Select keyframe
+                    if (ImGui::Selectable("Select KeyFrame", SelectedKeyframe == k))
+                        SelectedKeyframe = k;
+
+                    ImGui::SameLine();
+                    if (ImGui::Button("Delete")) {
+                        shot.Frames.erase(shot.Frames.begin() + k);
+                        if (SelectedKeyframe == k) SelectedKeyframe = -1;
+                        ImGui::PopID();
+                        break;
+                    }
+
+                    if (kOpen) {
+                        ImGui::InputFloat3("Position", &kf.Pos.x);
+                        ImGui::InputFloat3("LookAt", &kf.LookAt.x);
+                        ImGui::DragFloat("Duration", &kf.Duration, 1.0f, 1.0f, 5000.0f);
+                        ImGui::TreePop();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::Unindent();
+            }
+
+            ImGui::PopID();
+        }
+
     }
 
 }

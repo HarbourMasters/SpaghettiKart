@@ -21,5 +21,8 @@ protected:
     void RGB8ToFloat(const u8* src, float* dst);
     void FloatToRGB8(const float* src, u8* dst);
     const char* MusicSeqToString(MusicSeq seq);
+    void DrawTourCamera();
+      static int32_t SelectedShot;
+      static int32_t SelectedKeyframe;
 };
 }

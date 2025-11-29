@@ -69,6 +69,7 @@ extern "C" {
 #include "render_courses.h"
 #include "menus.h"
 #include "update_objects.h"
+#include "spawn_players.h"
 // #include "engine/wasm.h"
 }
 
@@ -445,14 +446,40 @@ Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode) {
 Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
+        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+            spawn_players();
+        }
         return nullptr;
     }
 
-    
+    if (nullptr == gWorldInstance.CurrentCourse) {
+        // This is to prevent soft locking the game
+        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+            spawn_players();
+        }
+        return nullptr;
+    }
+
+    if (gWorldInstance.CurrentCourse->TourShots.size() == 0) {
+        // This is to prevent soft locking the game
+        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+            spawn_players();
+        }
+        return nullptr;
+    }
+
     gWorldInstance.Cameras.push_back(new TourCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
     TourCamera* tour = static_cast<TourCamera*>(gWorldInstance.Cameras.back());
     tour->SetActive(true);
     return tour->Get();
+}
+
+bool CM_IsTourEnabled() {
+    if (nullptr != gWorldInstance.CurrentCourse) {
+        return gWorldInstance.CurrentCourse->bTourEnabled;
+    } else {
+        return false;
+    }
 }
 
 Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode) {
