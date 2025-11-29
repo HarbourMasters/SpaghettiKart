@@ -876,11 +876,11 @@ void func_8003C0F0(void) {
 
     // The tour delays player spawning until the end of the tour
     if ((CM_IsTourEnabled() == false) || (gIsEditorPaused == true)) {
-        spawn_players();
+        spawn_and_set_player_spawns();
     }
 }
 
-void spawn_players(void) {
+void spawn_and_set_player_spawns(void) {
     s16 sp5E;
     s16 sp5C;
     s16 sp5A = 0;

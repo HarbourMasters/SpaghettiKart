@@ -9,7 +9,7 @@
 void spawn_player(Player*, s8, f32, f32, f32, f32, u16, s16);
 void func_80039AE4(void);
 void func_80039DA4(void);
-void spawn_players(void);
+void spawn_and_set_player_spawns(void);
 void spawn_players_gp_one_player(f32*, f32*, f32);
 void spawn_players_versus_one_player(f32*, f32*, f32);
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32);
