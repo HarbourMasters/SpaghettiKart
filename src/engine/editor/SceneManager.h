@@ -12,8 +12,17 @@ namespace Editor {
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson);
     void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
     void LoadMinimap(Course* course, std::string filePath);
+    void SetDefaultMinimap(Course* course);
 
     void SaveActors(nlohmann::json& actorList);
+    void SaveStaticMeshActors(nlohmann::json& actorList);
+    void SaveTour(nlohmann::json& tour);
+
+    void LoadProps(Course* course, nlohmann::json& data);
+    void LoadActors(Course* course, nlohmann::json& data);
+    void LoadStaticMeshActors(Course* course, nlohmann::json& data);
+    void LoadTour(Course* course, nlohmann::json& data);
+
     void SpawnActors(std::vector<std::pair<std::string, SpawnParams>> spawnList);
 
     extern std::shared_ptr<Ship::Archive> CurrentArchive; // This is used to retrieve and write the scene data file
