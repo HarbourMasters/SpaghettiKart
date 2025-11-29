@@ -95,7 +95,7 @@ public:
     void SetCourseFromCup();
 
     World* GetWorld(void);
-    void ClearWorld(void);
+    void CleanWorld(void);
 
 
     // These are only for browsing through the course list

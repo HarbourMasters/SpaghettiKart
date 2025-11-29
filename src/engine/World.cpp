@@ -35,7 +35,7 @@ World::World() {
 }
 
 World::~World() {
-    ClearWorld();
+    CleanWorld();
 }
 
 std::shared_ptr<Course> World::AddCourse(std::shared_ptr<Course> course) {
@@ -280,6 +280,35 @@ Object* World::GetObjectByIndex(size_t index) {
 }
 
 // Deletes all objects from the world
-void World::ClearWorld(void) {
-    CM_CleanWorld();
+void World::CleanWorld(void) {
+    printf("[Game.cpp] Clean World\n");
+    World* world = &gWorldInstance;
+    for (auto& actor : world->Actors) {
+        delete actor;
+    }
+
+    gWorldInstance.Reset(); // Reset OObjects
+    for (auto& object : world->Objects) {
+        delete object;
+    }
+
+    for (auto& emitter : world->Emitters) {
+        delete emitter;
+    }
+
+    for (auto& actor : world->StaticMeshActors) {
+        delete actor;
+    }
+
+    for (size_t i = 0; i < ARRAY_COUNT(gWorldInstance.playerBombKart); i++) {
+        gWorldInstance.playerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        gWorldInstance.playerBombKart[i]._primAlpha = 0;
+    }
+
+    gEditor.ClearObjects();
+    gWorldInstance.Actors.clear();
+    gWorldInstance.StaticMeshActors.clear();
+    gWorldInstance.Objects.clear();
+    gWorldInstance.Emitters.clear();
+    gWorldInstance.Lakitus.clear();
 }

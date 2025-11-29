@@ -739,36 +739,7 @@ void CM_DeleteActor(size_t index) {
  * Clean up actors and other game objects.
  */
 void CM_CleanWorld(void) {
-    printf("[Game.cpp] Clean World\n");
-    World* world = &gWorldInstance;
-    for (auto& actor : world->Actors) {
-        delete actor;
-    }
-
-    gWorldInstance.Reset(); // Reset OObjects
-    for (auto& object : world->Objects) {
-        delete object;
-    }
-
-    for (auto& emitter : world->Emitters) {
-        delete emitter;
-    }
-
-    for (auto& actor : world->StaticMeshActors) {
-        delete actor;
-    }
-
-    for (size_t i = 0; i < ARRAY_COUNT(gWorldInstance.playerBombKart); i++) {
-        gWorldInstance.playerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
-        gWorldInstance.playerBombKart[i]._primAlpha = 0;
-    }
-
-    gEditor.ClearObjects();
-    gWorldInstance.Actors.clear();
-    gWorldInstance.StaticMeshActors.clear();
-    gWorldInstance.Objects.clear();
-    gWorldInstance.Emitters.clear();
-    gWorldInstance.Lakitus.clear();
+    gWorldInstance.CleanWorld();
 }
 
 void CM_CleanCameras(void) {
