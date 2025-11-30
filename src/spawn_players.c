@@ -1184,6 +1184,7 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 void spawn_players_and_cameras(void) {
     UNUSED s32 pad;
     Player* player = &gPlayers[0];
+    Camera* camera;
 
     // Load textures for balloons and kart shadows
     func_8005D290();
@@ -1231,14 +1232,22 @@ void spawn_players_and_cameras(void) {
 
     // Add freecam, tourcam, and lookbehind cameras
     Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
-    CM_AddFreeCamera(spawn, player->rotation[1], 1);
-    
+
     if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
-        Camera* camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
+        camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
         if (NULL != camera) {
             CM_AttachCamera(camera, PLAYER_ONE);
             D_8015F480[PLAYER_ONE].camera = camera;
+            CM_CameraSetActive(0, false);
         }
+    }
+
+    camera = CM_AddFreeCamera(spawn, player->rotation[1], 1);
+    D_8015F480[PLAYER_ONE].freeCamera = camera;
+
+    if (CVarGetInteger("gFreecam", false) == true) {
+        CM_SetFreeCamera(true);
+        D_8015F480[PLAYER_ONE].camera = camera;
     }
 }
 

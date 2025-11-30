@@ -11,6 +11,7 @@ struct UnkStruct_800DC5EC {
     /* 0x04 */ Camera* camera;                 // The active camera
     /*      */ Camera* raceCamera;
     /*      */ Camera* lookBehindCamera;       // The lookBehind camera
+               Camera* freeCamera;
     /*      */ Camera* pendingCamera;          // The camera to switch too next frame
     /* 0x08 */ Player* player;                 // Player ptr 800F6990
     /* 0x0C */ s32* unkC;                      // unk struct?

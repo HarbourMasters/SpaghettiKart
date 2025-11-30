@@ -134,8 +134,6 @@ void freecam_loop(Camera* camera) {
     //if (0) {
         //Tour_Tick(camera);
     //} else {
-    printf("cam pos %f %f %f\n", camera->pos[0], camera->pos[1], camera->pos[2]);
-
     freecam_tick(camera, freeCam.forwardVector);
     //}
 }
@@ -385,7 +383,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     if (Down) {
         totalMove[1] -= moveSpeed; // Move down
     }
-    printf("down %d\n", Down);
+
     freeCam.velocity[0] += totalMove[0];
     freeCam.velocity[1] += totalMove[1];
     freeCam.velocity[2] += totalMove[2];

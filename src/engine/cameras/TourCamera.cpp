@@ -51,10 +51,11 @@ void TourCamera::NextShot() {
 void TourCamera::Stop() {
     printf("End of Track Tour\n");
     D_8015F480[0].pendingCamera = &cameras[0];
-    spawn_players();
+    spawn_and_set_player_spawns();
     bActive = false;
     bTourComplete = true;
 
+    CM_CameraSetActive(0, true);
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING;

@@ -80,6 +80,8 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode);
 bool CM_IsTourEnabled();
 Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode);
 void CM_AttachCamera(Camera* camera, s32 playerIdx);
+void CM_SetFreeCamera(bool state);
+void CM_CameraSetActive(size_t idx, bool state);
 void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);

@@ -447,7 +447,7 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         if (gWorldInstance.CurrentCourse->bTourEnabled) {
-            spawn_players();
+            spawn_and_set_player_spawns();
         }
         return nullptr;
     }
@@ -455,7 +455,7 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (nullptr == gWorldInstance.CurrentCourse) {
         // This is to prevent soft locking the game
         if (gWorldInstance.CurrentCourse->bTourEnabled) {
-            spawn_players();
+            spawn_and_set_player_spawns();
         }
         return nullptr;
     }
@@ -463,7 +463,7 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.CurrentCourse->TourShots.size() == 0) {
         // This is to prevent soft locking the game
         if (gWorldInstance.CurrentCourse->bTourEnabled) {
-            spawn_players();
+            spawn_and_set_player_spawns();
         }
         return nullptr;
     }
@@ -493,6 +493,28 @@ Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode) {
 
 void CM_AttachCamera(Camera* camera, s32 playerIdx) {
     camera->playerId = playerIdx;
+}
+
+void CM_CameraSetActive(size_t idx, bool state) {
+    if (idx < gWorldInstance.Cameras.size()) {
+        gWorldInstance.Cameras[idx]->SetActive(state);
+    }
+}
+
+void CM_SetFreeCamera(bool state) {
+    for (auto* cam : gWorldInstance.Cameras) {
+        if (cam->Get() == D_800DC5EC->freeCamera) {
+            if (state) {
+                D_800DC5EC->pendingCamera = D_800DC5EC->freeCamera;
+                cam->SetActive(true);
+            } else {
+                if (nullptr != D_800DC5EC->raceCamera) {
+                    D_800DC5EC->pendingCamera = D_800DC5EC->raceCamera;
+                    cam->SetActive(false);
+                }
+            }
+        }
+    }
 }
 
 void CM_TickObjects() {
