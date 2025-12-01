@@ -14,7 +14,6 @@ extern "C" {
 }
 
 AMarioSign::AMarioSign(const SpawnParams& params) : AActor(params) {
-    Type = ACTOR_MARIO_SIGN;
     Name = "Mario Sign";
     ResourceName = "mk:mario_sign";
     Model = d_course_mario_raceway_dl_sign;

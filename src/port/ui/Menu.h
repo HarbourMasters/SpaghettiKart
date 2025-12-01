@@ -4,7 +4,8 @@
 #include <libultraship/libultraship.h>
 #include "UIWidgets.h"
 #include "MenuTypes.h"
-#include "../port/Game.h"
+#include "src/port/Game.h"
+#include "src/port/audio/HMAS.h"
 
 extern "C" {
 #include "defines.h"
@@ -64,6 +65,12 @@ class Menu : public GuiWindow {
       SetMarioRaceway();
       memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
       memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
+
+
+      if(HMAS_IsPlaying(HMAS_MUSIC)){
+          HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
+          HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
+      }
 
       switch(CVarGetInteger("gSkipIntro", 0)) {
           case 0:
