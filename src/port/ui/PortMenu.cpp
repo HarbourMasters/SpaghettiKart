@@ -432,6 +432,12 @@ void PortMenu::AddEnhancements() {
         })
         .Options(UIWidgets::CheckboxOptions({ { .tooltip = "Edit the universe!" } }));
 #endif
+
+    path = { "Enhancements", "Bugfixes", SECTION_COLUMN_1 };
+    AddSidebarEntry("Enhancements", "Bugfixes", 3);
+    AddWidget(path, "Don't reset random seed", WIDGET_CVAR_CHECKBOX)
+        .CVar("gBugfixRNGReset")
+        .Options(CheckboxOptions().Tooltip("The section handling of MK8 zeroes the random seed before races. Enable this to never zero the seed.").DefaultValue(true));
 }
 
 #ifdef __SWITCH__

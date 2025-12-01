@@ -137,35 +137,39 @@ void clear_D_802874D8_actors() {
 }
 
 u16 random_u16_credits(void) {
-    u16 temp1, temp2;
+    if (CVarGetInteger("gBugfixRNGReset", true) == false) {
+        u16 temp1, temp2;
 
-    if (sRandomSeed16 == 22026) {
-        sRandomSeed16 = 0;
-    }
-
-    temp1 = (sRandomSeed16 & 0x00FF) << 8;
-    temp1 = temp1 ^ sRandomSeed16;
-
-    sRandomSeed16 = ((temp1 & 0x00FF) << 8) + ((temp1 & 0xFF00) >> 8);
-
-    temp1 = ((temp1 & 0x00FF) << 1) ^ sRandomSeed16;
-    temp2 = (temp1 >> 1) ^ 0xFF80;
-
-    if ((temp1 & 1) == 0) {
-        if (temp2 == 43605) {
+        if (sRandomSeed16 == 22026) {
             sRandomSeed16 = 0;
-        } else {
-            sRandomSeed16 = temp2 ^ 0x1FF4;
         }
-    } else {
-        sRandomSeed16 = temp2 ^ 0x8180;
+
+        temp1 = (sRandomSeed16 & 0x00FF) << 8;
+        temp1 = temp1 ^ sRandomSeed16;
+
+        sRandomSeed16 = ((temp1 & 0x00FF) << 8) + ((temp1 & 0xFF00) >> 8);
+
+        temp1 = ((temp1 & 0x00FF) << 1) ^ sRandomSeed16;
+        temp2 = (temp1 >> 1) ^ 0xFF80;
+
+        if ((temp1 & 1) == 0) {
+            if (temp2 == 43605) {
+                sRandomSeed16 = 0;
+            } else {
+                sRandomSeed16 = temp2 ^ 0x1FF4;
+            }
+        } else {
+            sRandomSeed16 = temp2 ^ 0x8180;
+        }
+
+        return sRandomSeed16;
     }
 
-    return sRandomSeed16;
+    return random_u16();
 }
 
 f32 random_float_between_0_and_1(void) {
-    return random_u16_credits() / 65536.0f;
+    return random_u16_credits() / (f32) UINT16_MAX;
 }
 
 f32 random_who_knows(f32 arg0) {
@@ -309,6 +313,7 @@ void unused_80280FA8(UNUSED CeremonyActor* actor) {
 }
 
 void balloons_and_fireworks_init(void) {
+    sRandomSeed16 = 0;
     D_802874D8.actorTimer = 0;
     sPodiumActorList = (CeremonyActor*) get_next_available_memory_addr(sizeof(CeremonyActor) * 200);
     bzero(sPodiumActorList, (sizeof(CeremonyActor) * 200));
