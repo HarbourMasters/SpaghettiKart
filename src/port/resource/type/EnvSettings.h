@@ -3,7 +3,7 @@
 #include "Limb.h"
 
 #include <cstdint>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 namespace SF64 {
 

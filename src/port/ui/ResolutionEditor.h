@@ -2,8 +2,8 @@
 #define RESOLUTIONEDITOR_H
 
 #include <libultraship/libultraship.h>
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 
 namespace GameUI {
 bool IsDroppingFrames();

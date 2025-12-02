@@ -9,8 +9,8 @@
 #include "Light.h"
 
 #include "port/Engine.h"
-#include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
-#include <window/Window.h>
+#include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
+#include <ship/window/Window.h>
 
 #include "engine/actors/Ship.h"
 #include "port/Game.h"

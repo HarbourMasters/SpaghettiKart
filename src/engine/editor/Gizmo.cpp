@@ -8,8 +8,8 @@
 #include "Gizmo.h"
 #include "Collision.h"
 #include "port/Engine.h"
-#include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
-#include <window/Window.h>
+#include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
+#include <ship/window/Window.h>
 #include "engine/Matrix.h"
 #include "engine/Actor.h"
 #include "engine/objects/Object.h"

@@ -9,9 +9,9 @@
 #include <optional> // Must be before json.hpp
 #include <nlohmann/json.hpp>
 #include "port/Engine.h"
-#include <libultraship/src/resource/type/Json.h>
+#include <ship/resource/type/Json.h>
 #include "port/resource/type/Minimap.h"
-#include <libultraship/src/resource/File.h>
+#include <ship/resource/File.h>
 #include "port/resource/type/ResourceType.h"
 
 #include "engine/vehicles/Train.h"

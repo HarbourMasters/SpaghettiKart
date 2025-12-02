@@ -1,10 +1,10 @@
 #include "Engine.h"
 
-#include "StringHelper.h"
+#include "ship/utils/StringHelper.h"
 #include "GameExtractor.h"
 #include "ui/ImguiUI.h"
-#include "libultraship/src/Context.h"
-#include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
+#include "ship/Context.h"
+#include "ship/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/AudioBankFactory.h"
@@ -21,14 +21,15 @@
 #include "resource/importers/ArrayFactory.h"
 #include "resource/importers/MinimapFactory.h"
 #include "resource/importers/BetterTextureFactory.h"
-#include <Fonts.h>
-#include "window/gui/resource/Font.h"
-#include "window/gui/resource/FontFactory.h"
+#include <ship/window/gui/Fonts.h>
+#include "ship/window/gui/resource/Font.h"
+#include "ship/window/gui/resource/FontFactory.h"
+#include "libultraship/controller/controldeck/ControlDeck.h"
 #include "SpaghettiGui.h"
 
 #include "port/interpolation/FrameInterpolation.h"
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 // #include <Fast3D/gfx_rendering_api.h>
 #include <SDL2/SDL.h>
 
@@ -42,12 +43,12 @@ extern "C" {
 bool prevAltAssets = false;
 float gInterpolationStep = 0.0f;
 #include <macros.h>
-#include <DisplayListFactory.h>
-#include <TextureFactory.h>
-#include <MatrixFactory.h>
-#include <BlobFactory.h>
-#include <VertexFactory.h>
-#include <LightFactory.h>
+#include <fast/resource/factory/DisplayListFactory.h>
+#include <fast/resource/factory/TextureFactory.h>
+#include <fast/resource/factory/MatrixFactory.h>
+#include <ship/resource/factory/BlobFactory.h>
+#include <fast/resource/factory/VertexFactory.h>
+#include <fast/resource/factory/LightFactory.h>
 // #include <PngFactory.h>
 #include "audio/internal.h"
 #include "audio/GameAudio.h"

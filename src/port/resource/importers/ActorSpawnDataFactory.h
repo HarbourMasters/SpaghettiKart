@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Resource.h"
-#include "ResourceFactoryBinary.h"
+#include "ship/resource/Resource.h"
+#include "ship/resource/ResourceFactoryBinary.h"
 
 namespace MK64 {
 class ResourceFactoryBinaryActorSpawnDataV0 : public Ship::ResourceFactoryBinary {

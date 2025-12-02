@@ -1,7 +1,7 @@
 #include "ArrayFactory.h"
 #include "../type/Array.h"
 #include "spdlog/spdlog.h"
-#include "graphic/Fast3D/lus_gbi.h"
+#include "fast/lus_gbi.h"
 
 namespace MK64 {
 std::shared_ptr<Ship::IResource>

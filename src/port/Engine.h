@@ -10,9 +10,9 @@
   #ifdef __cplusplus
   #include <vector>
   #include <SDL2/SDL.h>
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
-#include "libultraship/src/Context.h"
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
+#include "ship/Context.h"
 
 #ifndef IDYES
 #define IDYES 6

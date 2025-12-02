@@ -1,5 +1,5 @@
 #include <libultraship.h>
-#include <graphic/Fast3D/Fast3dWindow.h>
+#include <fast/Fast3dWindow.h>
 
 extern "C" {
 

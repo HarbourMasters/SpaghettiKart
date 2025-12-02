@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 namespace SF64 {
 class Script : public Ship::Resource<uint16_t*> {

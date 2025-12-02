@@ -1,10 +1,10 @@
 #include "BetterTextureFactory.h"
-#include "resource/type/Texture.h"
+#include "fast/resource/type/Texture.h"
 #include "spdlog/spdlog.h"
 #include <stb_image.h>
-#include <Context.h>
-#include "resource/archive/ArchiveManager.h"
-#include "resource/ResourceManager.h"
+#include <ship/Context.h>
+#include "ship/resource/archive/ArchiveManager.h"
+#include "ship/resource/ResourceManager.h"
 
 namespace MK64 {
 

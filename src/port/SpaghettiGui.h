@@ -1,8 +1,8 @@
 #pragma once
 
 #include <libultraship.h>
-#include "libultraship/src/window/gui/Gui.h"
-#include "libultraship/src/window/Window.h"
+#include "ship/window/gui/Gui.h"
+#include "ship/window/Window.h"
 
 class Gui; // <-- forward declare
 //class Window;

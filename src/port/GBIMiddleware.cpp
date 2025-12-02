@@ -1,7 +1,8 @@
 #include <libultraship.h>
 
 #include "Engine.h"
-#include "DisplayList.h"
+#include "fast/resource/type/DisplayList.h"
+#include "fast/resource/ResourceType.h"
 #include "resource/type/ResourceType.h"
 #include "resource/type/Array.h"
 extern "C" {

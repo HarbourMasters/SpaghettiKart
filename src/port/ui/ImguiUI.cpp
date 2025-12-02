@@ -12,11 +12,11 @@
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include <graphic/Fast3D/Fast3dWindow.h>
+#include <fast/Fast3dWindow.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 

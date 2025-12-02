@@ -12,7 +12,7 @@ struct AudioSequenceData {
 };
 
 #ifdef __cplusplus
-#include "resource/Resource.h"
+#include "ship/resource/Resource.h"
 namespace SM64 {
 
 class AudioSequence : public Ship::Resource<AudioSequenceData> {
