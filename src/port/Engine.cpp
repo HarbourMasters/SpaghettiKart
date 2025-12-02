@@ -6,6 +6,7 @@
 #include "ship/Context.h"
 #include "ship/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
 #include "resource/type/ResourceType.h"
+#include "fast/resource/ResourceType.h"
 #include "resource/importers/GenericArrayFactory.h"
 #include "resource/importers/AudioBankFactory.h"
 #include "resource/importers/AudioSampleFactory.h"
@@ -128,7 +129,7 @@ GameEngine::GameEngine() {
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
                                            // ShipDeviceIndexMappingManager::UpdateControllerNamesFromConfig()
 
-        auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
+    auto defaultMappings = std::make_shared<Ship::ControllerDefaultMappings>(
         // KeyboardKeyToButtonMappings
         std::unordered_map<CONTROLLERBUTTONS_T, std::unordered_set<Ship::KbScancode>>{
             { BTN_A, { Ship::KbScancode::LUS_KB_SHIFT} },
@@ -181,7 +182,24 @@ GameEngine::GameEngine() {
         // SDLAxisDirectionToAxisDirectionMappings - use built-in LUS defaults
         std::unordered_map<Ship::StickIndex, std::vector<std::pair<Ship::Direction, std::pair<SDL_GameControllerAxis, int32_t>>>>()
     );
-    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings);
+
+    auto buttonNames = std::unordered_map<CONTROLLERBUTTONS_T, std::string>({
+                      { BTN_A, "A" },
+                      { BTN_B, "B" },
+                      { BTN_L, "L" },
+                      { BTN_R, "R" },
+                      { BTN_Z, "Z" },
+                      { BTN_START, "Start" },
+                      { BTN_CLEFT, "CLeft" },
+                      { BTN_CRIGHT, "CRight" },
+                      { BTN_CUP, "CUp" },
+                      { BTN_CDOWN, "CDown" },
+                      { BTN_DLEFT, "DLeft" },
+                      { BTN_DRIGHT, "DRight" },
+                      { BTN_DUP, "DUp" },
+                      { BTN_DDOWN, "DDown" },
+                  });
+    auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings, buttonNames);
 
     this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
