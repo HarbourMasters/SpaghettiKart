@@ -87,6 +87,9 @@ class Menu : public GuiWindow {
               break;
       }
 
+      // Reset credits
+      D_800DC5E4 = 0;
+
       // Debug mode override gSkipIntro
       if (CVarGetInteger("gEnableDebugMode", 0) == true) {
           gMenuSelection = START_MENU;

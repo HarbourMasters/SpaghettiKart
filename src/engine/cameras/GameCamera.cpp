@@ -21,15 +21,26 @@ GameCamera::GameCamera() {
 
     _count += 1;
 }
+
 GameCamera::GameCamera(FVector pos, s16 rot, u32 mode) {
     _camera = &cameras[_count];
     _camera->cameraId = _count;
     _camera->perspectiveMatrix = &PerspectiveMatrix;
     _camera->lookAtMatrix = &LookAtMatrix;
-    _camera->renderMode = RENDER_TRACK_SECTIONS;
+    switch(gGamestate) {
+        case RACING:
+            _camera->renderMode = RENDER_TRACK_SECTIONS;
+            break;
+        case ENDING:
+        case CREDITS_SEQUENCE:
+            _camera->renderMode = RENDER_FULL_SCENE;
+            break;
+    }
     ProjMode = ProjectionMode::PERSPECTIVE;
     bActive = true;
-    camera_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+    if (gGamestate != CREDITS_SEQUENCE) {
+        camera_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+    }
 
     _count += 1;
 }

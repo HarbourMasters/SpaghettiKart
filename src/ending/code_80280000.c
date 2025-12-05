@@ -39,9 +39,8 @@ void func_80280000(void) {
     func_8005A070();
 }
 
-void func_80280038(void) {
+void func_80280038(Camera* camera) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
     UNUSED s32 pad;
     Mat4 matrix;
 
@@ -71,10 +70,10 @@ void func_80280038(void) {
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    CM_DrawActors(D_800DC5EC->camera);
+    CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
-    render_object(PLAYER_ONE + SCREEN_MODE_1P);
-    render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
+    render_object(D_800DC5EC);
+    render_player_snow_effect(camera);
     ceremony_transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -93,7 +92,7 @@ void func_80280268(s32 courseId) {
 }
 
 void credits_loop(void) {
-    Camera* camera = &cameras[0];
+    Camera* camera = D_800DC5EC->camera;
 
     f32 temp_f12;
     f32 temp;
@@ -121,7 +120,7 @@ void credits_loop(void) {
             D_800DC5E4++;
         } else {
             func_80280000();
-            func_80280038();
+            func_80280038(camera);
 #if DVDL
             display_dvdl();
 #endif
@@ -132,20 +131,29 @@ void credits_loop(void) {
 }
 
 void load_credits(void) {
-    Camera* camera = &cameras[0];
+    CM_CleanCameras();
+    Vec3f spawn = {0.0f, 0.0f, 0.0f};
+    Camera* camera = CM_AddCamera(spawn, 0, 0);
+    if (NULL == camera) {
+        return;
+    }
+
+    CM_AttachCamera(camera, PLAYER_ONE);
+    D_800DC5EC->camera = camera;
+    camera->renderMode = RENDER_FULL_SCENE;
+    camera->unk_B4 = 60.0f;
+    gCameraZoom[0] = 60.0f;
+
 
     gCurrentCourseId = gCreditsCourseId;
     SetCourseById(gCreditsCourseId);
     D_800DC5B4 = 1;
-    camera->renderMode = RENDER_FULL_SCENE;
     func_802A4D18();
     set_screen();
-    camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
+    D_800DC5EC->screenStartX = SCREEN_WIDTH / 2;
+    D_800DC5EC->screenStartY = SCREEN_HEIGHT / 2;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;

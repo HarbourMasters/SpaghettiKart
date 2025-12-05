@@ -54,7 +54,7 @@ extern Gfx D_80284F70[];
 extern Gfx D_80284EE0[];
 
 void func_80281D00(void) {
-    Camera* camera = &cameras[0];
+    Camera* camera = D_800DC5EC->camera;
     UNUSED s32 pad[3];
     u16 perspNorm;
     Mat4 matrix;
@@ -129,10 +129,10 @@ void func_80281D00(void) {
     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x070004D0));
     gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(0x07000840));
 
-    render_players(&cameras[0], PLAYER_ONE);
+    render_players(camera, PLAYER_ONE);
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
-    render_object(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
+    render_object(D_800DC5EC);
     func_80021B0C();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     func_80093F10();
