@@ -92,6 +92,8 @@ void func_80280268(s32 courseId) {
 }
 
 void credits_loop(void) {
+    Editor_ClearMatrix();
+    CM_TickEditor();
     Camera* camera = D_800DC5EC->camera;
 
     f32 temp_f12;

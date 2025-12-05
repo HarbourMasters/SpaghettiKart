@@ -464,6 +464,7 @@ void func_80281540(void) {
 void podium_ceremony_loop(void) {
     ClearMatrixPools();
     Editor_ClearMatrix();
+    CM_TickEditor();
     gMatrixObjectCount = 0;
     D_802874FC = 0;
     update_camera_podium_ceremony();
