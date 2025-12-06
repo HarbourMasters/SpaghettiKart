@@ -41,6 +41,7 @@ s32 D_80164A08[4];
 s32 D_80164A18[NUM_CAMERAS];
 s32 D_80164A28;
 s32 D_80164A2C;
+static s32 sStagingTimer[NUM_CAMERAS];
 f32 D_80164A30;
 f32 D_80164A38[NUM_CAMERAS];
 f32 D_80164A48[NUM_CAMERAS];
@@ -50,7 +51,6 @@ s8 D_80164A89;
 // UNUSED s8 D_80164A8C[3];
 f32 D_80164A90[NUM_CAMERAS];
 f32 D_80164AA0[NUM_CAMERAS];
-static u32 sStagingTimer[NUM_CAMERAS];
 
 void camera_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
     Camera* camera = &cameras[cameraId];
@@ -162,27 +162,27 @@ void camera_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
 
             if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 80.0f;
+                    gCameraFOV[cameraId] = 80.0f;
                 } else {
-                    gCameraZoom[cameraId] = 40.0f;
+                    gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 1) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 2) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
                 D_80164A38[cameraId] = 20.0f;
                 D_80164A48[cameraId] = 1.5f;
                 D_80164A78[cameraId] = 1.0f;
@@ -304,27 +304,27 @@ void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
 
            // if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                  //  gCameraZoom[cameraId] = 80.0f;
+                  //  gCameraFOV[cameraId] = 80.0f;
                 } else {
-                   // gCameraZoom[cameraId] = 40.0f;
+                   // gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraZoom[0];
+                camera->unk_B4 = gCameraFOV[0];
            // }
             // if (D_80164678[cameraId] == 1) {
             //     if (D_80164A28 == 1) {
-            //         gCameraZoom[cameraId] = 100.0f;
+            //         gCameraFOV[cameraId] = 100.0f;
             //     } else {
-            //         gCameraZoom[cameraId] = 60.0f;
+            //         gCameraFOV[cameraId] = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraZoom[cameraId];
+            //     camera->unk_B4 = gCameraFOV[cameraId];
             // // }
             // if (D_80164678[cameraId] == 2) {
             //     if (D_80164A28 == 1) {
-            //         gCameraZoom[cameraId] = 100.0f;
+            //         gCameraFOV[cameraId] = 100.0f;
             //     } else {
-            //         gCameraZoom[cameraId] = 60.0f;
+            //         gCameraFOV[cameraId] = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraZoom[cameraId];
+            //     camera->unk_B4 = gCameraFOV[cameraId];
             //     D_80164A38[cameraId] = 20.0f;
             //     D_80164A48[cameraId] = 1.5f;
             //     D_80164A78[cameraId] = 1.0f;

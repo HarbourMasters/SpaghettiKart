@@ -56,7 +56,7 @@ void func_80280038(Camera* camera) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(camera->perspectiveMatrix , &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspective(camera->perspectiveMatrix , &perspNorm, gCameraFOV[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, camera->perspectiveMatrix,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -144,7 +144,7 @@ void load_credits(void) {
     D_800DC5EC->camera = camera;
     camera->renderMode = RENDER_FULL_SCENE;
     camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
+    gCameraFOV[0] = 60.0f;
 
 
     gCurrentCourseId = gCreditsCourseId;

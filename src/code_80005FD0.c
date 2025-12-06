@@ -200,7 +200,7 @@ s32 D_80164628[NUM_CAMERAS];
 f32 D_80164638[NUM_CAMERAS];
 f32 D_80164648[NUM_CAMERAS];
 f32 D_80164658[NUM_CAMERAS];
-s16 gNearestPathPointByCameraId[4];
+s16 gNearestPathPointByCameraId[NUM_CAMERAS];
 s16 D_80164670[NUM_CAMERAS];
 s16 D_80164678[NUM_CAMERAS];
 s16 D_80164680[NUM_CAMERAS];
@@ -3411,7 +3411,7 @@ void generate_player_smoke(void) {
 
 void func_8000F0E0(void) {
     s32 i;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = 0;
         D_80164678[i] = 0;
     }
@@ -5399,7 +5399,7 @@ void func_80014DE4(s32 cameraIndex) {
         D_80164678[cameraIndex] = 0;
     }
 
-    for (cameraId = 0; cameraId < 4; cameraId++) {
+    for (cameraId = 0; cameraId < NUM_CAMERAS; cameraId++) {
         gNearestPathPointByCameraId[cameraId] = 0;
     }
 }
@@ -6725,7 +6725,7 @@ void func_80019DF4(void) {
     s32 playerId = gGPCurrentRacePlayerIdByRank[0];
     // clang-format off
     // Has to be on a single line to match. Because IDO hates you :)
-    for (i = 0; i < 4; i++) { D_80164670[i] = D_80164678[i]; }
+    for (i = 0; i < NUM_CAMERAS; i++) { D_80164670[i] = D_80164678[i]; }
     // clang-format on
     camera1->playerId = playerId;
     D_80164678[0] = 1;
@@ -6746,7 +6746,7 @@ void func_80019E58(void) {
 void func_80019ED0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = D_80164678[i];
     }
 
@@ -6754,7 +6754,7 @@ void func_80019ED0(void) {
 
     camera1->playerId = (s16) gPlayerWinningIndex;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164680[i] = 0;
         func_80015314(gPlayerWinningIndex, 0, i);
         D_80164678[i] = 1;

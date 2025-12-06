@@ -47,7 +47,7 @@ void AWarioSign::Tick() {
 void AWarioSign::Draw(Camera *camera) {
     Mat4 sp38;
     f32 unk =
-        is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 16000000.0f);
+        is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 16000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         unk = MAX(unk, 0.0f);

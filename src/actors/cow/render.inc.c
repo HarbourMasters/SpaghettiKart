@@ -13,7 +13,7 @@
  * @param arg2
  */
 void render_actor_cow(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraFOV[camera - camera1],
                                   4000000.0f) < 0 &&
         CVarGetInteger("gNoCulling", 0) == 0) {
         return;

@@ -165,7 +165,7 @@ void setup_podium_ceremony(void) {
     spawn_players_and_cameras();
     D_800DC5EC->camera->renderMode = RENDER_FULL_SCENE;
     D_800DC5EC->camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
+    gCameraFOV[0] = 60.0f;
     load_kart_textures();
     init_hud();
     func_8001C05C();

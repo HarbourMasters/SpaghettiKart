@@ -547,7 +547,7 @@ void init_cinematic_camera(void) {
     camera->unk68 = 0.0f;
     camera->unk6C = 0;
     camera->unk6E = 0;
-    camera->unk20 = gCameraZoom[0];
+    camera->unk20 = gCameraFOV[0];
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
@@ -633,7 +633,7 @@ s32 func_80283648(Camera* camera) {
     }
     func_80282F44(0, cinematicCamera, camera);
     func_80282F44(1, cinematicCamera, camera);
-    func_80283100(cinematicCamera, gCameraZoom);
+    func_80283100(cinematicCamera, gCameraFOV);
     vec3f_copy_return_dupe(cinematicCamera->unk30, camera->pos);
     vec3f_copy_return_dupe(cinematicCamera->unk24, camera->lookAt);
     vec3f_copy_return_dupe(cinematicCamera->unk3C, camera->up);

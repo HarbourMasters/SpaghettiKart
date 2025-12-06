@@ -38,7 +38,7 @@ void ATree::Draw(Camera* camera) {
         return;
     }
 
-    dist = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    dist = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraFOV[camera - camera1],
                                         DrawDistance);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {

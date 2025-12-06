@@ -87,7 +87,7 @@ void GameCamera::SetViewProjection() {
                                        (FrameInterpolation_GetCameraEpoch() | ((_camera->cameraId << 8))));
 
     // Calculate camera perspective (camera movement/location)
-    guPerspective(&PerspectiveMatrix, &perspNorm, gCameraZoom[_camera->cameraId], gScreenAspect,
+    guPerspective(&PerspectiveMatrix, &perspNorm, gCameraFOV[_camera->cameraId], gScreenAspect,
                   CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, &PerspectiveMatrix,
