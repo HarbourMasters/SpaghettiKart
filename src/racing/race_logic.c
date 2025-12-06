@@ -875,11 +875,11 @@ void func_8028FCBC(void) {
         case RACE_INIT:
             if (!gDemoMode) {
                 if (gModeSelection == GRAND_PRIX) {
-                    func_800C8EF8(MUSIC_SEQ_START_GRID_GP_VS);
+                    play_sequence2(MUSIC_SEQ_START_GRID_GP_VS);
                     play_sound2(SOUND_ACTION_REV_ENGINE);
                     play_sound2(SOUND_ACTION_REV_ENGINE_2);
                 } else {
-                    func_800C8EF8(MUSIC_SEQ_START_GRID_TIME_ATTACK);
+                    play_sequence2(MUSIC_SEQ_START_GRID_TIME_ATTACK);
                 }
             }
             func_80002DAC();

@@ -724,12 +724,12 @@ void func_80283BA4(UNUSED CinematicCamera* camera) {
 }
 
 void func_80283BF0(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(MUSIC_SEQ_AWARD_CEREMONY_BUILDUP);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_BUILDUP);
 }
 
 //
 void func_80283C14(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD);
 }
 
 void wrap_func_800CB134(UNUSED CinematicCamera* camera) {
@@ -742,7 +742,7 @@ void wrap_func_800CB14C(UNUSED CinematicCamera* camera) {
 
 void func_80283C78(UNUSED CinematicCamera* arg0) {
     if (D_800DC5E4 == 0) {
-        func_800C8EF8(MUSIC_SEQ_STAFF_ROLL);
+        play_sequence2(MUSIC_SEQ_STAFF_ROLL);
     }
 }
 
