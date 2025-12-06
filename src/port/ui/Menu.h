@@ -12,6 +12,7 @@ extern "C" {
 #include "main.h"
 #include "menus.h"
 #include "code_800029B0.h"
+#include "external.h"
 }
 
 namespace Ship {
@@ -70,6 +71,11 @@ class Menu : public GuiWindow {
       if(HMAS_IsPlaying(HMAS_MUSIC)){
           HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
           HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
+      }
+
+      // Fade out music
+      for (size_t soundId = 0; soundId < MUSIC_SEQ_MAX; soundId++) {
+          func_800C3448(0x11100000 | soundId);
       }
 
       switch(CVarGetInteger("gSkipIntro", 0)) {

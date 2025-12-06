@@ -194,7 +194,7 @@ namespace Editor {
                     // Update the sequence when an option is selected
                     gWorldInstance.CurrentCourse->Props.Sequence = static_cast<MusicSeq>(i);
                     play_sequence(gWorldInstance.CurrentCourse->Props.Sequence); // Call play_sequence with the updated sequence
-        
+
                     // Update currentItem after selection is made
                     currentItem = items[i];
                 }
@@ -231,7 +231,7 @@ namespace Editor {
             case MUSIC_SEQ_DK_JUNGLE: return "DK Jungle";
             case MUSIC_SEQ_GAME_OVER: return "Game Over";
             case MUSIC_SEQ_TOADS_TURNPIKE: return "Toad's Turnpike";
-            case MUSIC_SEQ_START_GIRD_TIME_ATTACK: return "Start Grid Time Attack";
+            case MUSIC_SEQ_START_GRID_TIME_ATTACK: return "Start Grid Time Attack";
             case MUSIC_SEQ_VS_BATTLE_RESULTS: return "VS Battle Results";
             case MUSIC_SEQ_LOSING_RESULTS: return "Losing Results";
             case MUSIC_SEQ_BATTLE_ARENAS: return "Battle Arenas";
