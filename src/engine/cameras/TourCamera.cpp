@@ -165,7 +165,7 @@ bool TourCamera::IsTourComplete() {
     return bTourComplete;
 }
 
-void TourCamera::Setup() {
+void TourCamera::SetViewProjection() {
     u16 perspNorm;
     Mat4 matrix;
 

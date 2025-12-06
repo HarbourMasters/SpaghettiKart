@@ -839,9 +839,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     // Setup camera perspective and lookAt
-    if (camera) {
-        CM_SetupCamera(camera);
-    }
+    CM_SetViewProjection(camera);
 
     // Create a matrix for the track and game objects
     FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | (playerId << 2))));

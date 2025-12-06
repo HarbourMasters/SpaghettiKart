@@ -72,7 +72,7 @@ void CM_DrawActors(Camera* camera);
 void CM_DrawStaticMeshActors();
 
 Camera* CM_GetPlayerCamera(s32 playerIndex);
-void CM_SetupCamera(Camera* camera);
+void CM_SetViewProjection(Camera* camera);
 void CM_TickCameras();
 Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode);
 Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode);

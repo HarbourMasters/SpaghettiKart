@@ -53,7 +53,7 @@ void FreeCamera::Tick() {
     freecam_loop(_camera);
 }
 
-void FreeCamera::Setup() {
+void FreeCamera::SetViewProjection() {
     u16 perspNorm;
     Mat4 matrix;
 

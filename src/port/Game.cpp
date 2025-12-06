@@ -413,10 +413,10 @@ Camera* CM_GetPlayerCamera(s32 playerIndex) {
     return nullptr;
 }
 
-void CM_SetupCamera(Camera* camera) {
+void CM_SetViewProjection(Camera* camera) {
     for (GameCamera* gameCamera : gWorldInstance.Cameras) {
         if (camera == gameCamera->Get()) {
-            gameCamera->Setup();
+            gameCamera->SetViewProjection();
         }
     }
 }

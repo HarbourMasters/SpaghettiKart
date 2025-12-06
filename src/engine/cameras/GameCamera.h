@@ -23,7 +23,7 @@ public:
     ProjectionMode ProjMode;
 
     virtual void Tick();
-    virtual void Setup();
+    virtual void SetViewProjection();
     virtual void SetActive(bool state);
 
     void SetProjectionMode(GameCamera::ProjectionMode mode);

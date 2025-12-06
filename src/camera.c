@@ -1270,10 +1270,10 @@ void func_8001F87C(s32 cameraId) {
                 if ((gPlayerOne[i].type & 0x200) || (gPlayerOne[i].type & 0x80)) {
                     break;
                 }
-                if (i == 7) {
+                if (i == PLAYER_EIGHT) {
                     sStagingTimer[cameraId] += 1;
                 }
-                if ((i == 7) && (sStagingTimer[cameraId] == 60)) {
+                if ((i == PLAYER_EIGHT) && (sStagingTimer[cameraId] == 60)) {
                     D_80164A28 = 2;
                     cameras[cameraId].mode = 1;
                     cameras[cameraId].rot[1] = gPlayerOne[i].rotation[1];

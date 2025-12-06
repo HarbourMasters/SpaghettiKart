@@ -79,7 +79,7 @@ Mtx* GameCamera::GetLookAtMatrix() {
     return &LookAtMatrix;
 }
 
-void GameCamera::Setup() {
+void GameCamera::SetViewProjection() {
     u16 perspNorm;
 
     // Tag the camera for the interpolation engine
