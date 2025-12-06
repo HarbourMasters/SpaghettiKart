@@ -305,7 +305,7 @@ void func_800CA2E4(u8, s8);
 void func_800CA30C(u8);
 void func_800CA330(u8);
 void func_800CA388(u8);
-void func_800CA414(u16, u16);
+void play_sequences(u16, u16);
 void func_800CA49C(u8);
 void func_800CA59C(u8);
 void func_800CA984(u8);
