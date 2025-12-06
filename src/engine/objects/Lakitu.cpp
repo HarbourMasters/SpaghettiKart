@@ -98,6 +98,13 @@ void OLakitu::Draw(s32 cameraId) {
 
     FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
 
+    //! @warning This usage may be problematic
+    if (cameras[cameraId].playerId >= 4) {
+        printf("[Lakitu.cpp] Preventing out of bounds access in gIndexLakituList\n", cameras[cameraId].playerId);
+        throw std::runtime_error("Good bye!");
+        return;
+    }
+
     objectIndex = gIndexLakituList[cameras[cameraId].playerId];
     camera = &camera1[cameraId];
     if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
