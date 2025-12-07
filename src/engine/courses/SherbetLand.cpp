@@ -10,7 +10,7 @@
 #include "assets/models/tracks/sherbet_land/sherbet_land_data.h"
 #include "assets/other/tracks/sherbet_land/sherbet_land_data.h"
 #include "engine/objects/Penguin.h"
-#include "resourcebridge.h"
+#include "libultraship/bridge/resourcebridge.h"
 
 extern "C" {
     #include "main.h"

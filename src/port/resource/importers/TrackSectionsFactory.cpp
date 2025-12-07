@@ -2,7 +2,7 @@
 #include "../type/TrackSections.h"
 #include "spdlog/spdlog.h"
 #include "libultraship/libultra/gbi.h"
-#include "StrHash64.h"
+#include "ship/utils/StrHash64.h"
 #include "tinyxml2.h"
 
 namespace MK64 {

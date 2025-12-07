@@ -13,7 +13,7 @@
 #include <defines.h>
 #include "port/Engine.h"
 #include "port/Game.h"
-#include "resourcebridge.h"
+#include "libultraship/bridge/resourcebridge.h"
 #include <stdio.h>
 #include "RaceManager.h"
 

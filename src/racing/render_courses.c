@@ -18,7 +18,7 @@
 #include "memory.h"
 #include "code_80281780.h"
 #include "collision.h"
-#include "resourcebridge.h"
+#include "libultraship/bridge/resourcebridge.h"
 #include "skybox_and_splitscreen.h"
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
