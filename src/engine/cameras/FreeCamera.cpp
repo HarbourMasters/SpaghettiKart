@@ -34,21 +34,11 @@ void FreeCamera::SetActive(bool state) {
     }
 }
 
-void FreeCamera::Deactivate() {
-    gIsHUDVisible = true;
-    gPlayerOne->type &= ~PLAYER_CPU;
-    CVarSetInteger("gFreecam", false);
-}
-
 void FreeCamera::Tick() {
     if (!bActive) { return; }
     if (nullptr == _camera) {
         bActive = false;
         return;
-    }
-
-    if (gActiveScreenMode != SCREEN_MODE_1P) {
-        //FreeCamera::Deactivate();
     }
 
     freecam_loop(_camera);

@@ -42,6 +42,8 @@
 *.swp
 .vscode/*
 
+vcpkg_installed/*
+
 # General project-specific ignores
 __pycache__/*
 doxygen/doxygen/*

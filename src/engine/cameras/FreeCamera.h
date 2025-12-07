@@ -15,5 +15,4 @@ public:
     virtual void Tick() override;
     virtual void SetViewProjection() override;
     virtual void SetActive(bool state) override;
-    void Deactivate();
 };
