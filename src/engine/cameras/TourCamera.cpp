@@ -1,5 +1,6 @@
 #include <libultraship/libultraship.h>
 #include "TourCamera.h"
+#include "port/Engine.h"
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/Matrix.h"
@@ -30,6 +31,7 @@ TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     bTourComplete = false;
     bActive = false;
     bActivateAudio = true;
+    Alpha = 0;
 }
 
 void TourCamera::Reset() {
@@ -75,7 +77,10 @@ void TourCamera::Tick() {
           (bTourComplete) ||
           (ShotIndex >= gWorldInstance.CurrentCourse->TourShots.size())
        ) {
-        TourCamera::Stop();
+        Alpha += 5;
+        if (Alpha == 255) {
+            TourCamera::Stop();
+        }
         return;
     }
 
@@ -203,5 +208,14 @@ void TourCamera::SetViewProjection() {
     gSPMatrix(gDisplayListHead++, &LookAtMatrix, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     FrameInterpolation_RecordCloseChild();
 
+    gDPPipeSync(gDisplayListHead++);
+}
+
+void TourCamera::Draw() {
+    gDPPipeSync(gDisplayListHead++);
+    gDPSetRenderMode(gDisplayListHead++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetPrimColor(gDisplayListHead++, 0, 0, 0, 0, 0, Alpha);
+    gDPSetCombineMode(gDisplayListHead++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 0, OTRGetGameRenderWidth(), 239);
     gDPPipeSync(gDisplayListHead++);
 }

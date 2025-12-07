@@ -33,6 +33,7 @@ public:
     bool bShotComplete; // Is the current shot complete?
     bool bTourComplete; // Is the whole camera sequence complete?
     bool bActivateAudio;
+    uint8_t Alpha;
 
     // A single camera keyframe.
     // The camera is smoothly translated between keyframes using
@@ -59,4 +60,5 @@ public:
     void Stop();
     bool IsTourComplete();
     bool MoveCameraAlongSpline(f32* arg1, std::vector<KeyFrame>& keyFrame);
+    void Draw();
 };

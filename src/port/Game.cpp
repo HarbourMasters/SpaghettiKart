@@ -387,6 +387,14 @@ void CM_DrawActors(Camera* camera) {
             actor->Draw(camera);
         }
     }
+
+    for (auto* camera : gWorldInstance.Cameras) {
+        if (auto* tourCam = dynamic_cast<TourCamera*>(camera)) {
+            if (tourCam->IsActive()) {
+                tourCam->Draw();
+            }
+        }
+    }
 }
 
 void CM_DrawStaticMeshActors() {
