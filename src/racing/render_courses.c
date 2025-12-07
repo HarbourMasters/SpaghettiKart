@@ -25,7 +25,7 @@
 #include "courses/all_course_offsets.h"
 #include "port/Game.h"
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 #include "enhancements/collision_viewer.h"
 

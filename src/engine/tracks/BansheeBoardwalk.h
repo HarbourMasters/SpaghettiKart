@@ -1,35 +1,34 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "Track.h"
 
 extern "C" {
-    #include "assets/models/tracks/rainbow_road/rainbow_road_vertices.h"
-    #include "assets/models/tracks/rainbow_road/rainbow_road_displaylists.h"
-    #include "assets/models/tracks/rainbow_road/rainbow_road_data.h"
+    #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_vertices.h"
+    #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists.h"
+    #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
     #include "code_800029B0.h"
-    extern const course_texture rainbow_road_textures[];
+    extern const course_texture banshee_boardwalk_textures[];
 }
 
-class RainbowRoad : public Course {
+class BansheeBoardwalk : public Course {
 public:
-    virtual ~RainbowRoad() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~BansheeBoardwalk() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit RainbowRoad();
+    explicit BansheeBoardwalk();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
-    virtual void InitClouds() override;
-    virtual void UpdateClouds(s32, Camera*) override;
+    //virtual void InitClouds() override;
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;
     virtual void RenderCourseObjects(s32 cameraId) override;
@@ -38,7 +37,8 @@ public:
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void Render(ScreenContext*) override;
     virtual void RenderCredits() override;    
-    virtual void Waypoints(Player* player, int8_t playerId) override;
+    virtual void ScrollingTextures() override;
+    virtual void Waypoints(Player*, int8_t) override;
     virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;

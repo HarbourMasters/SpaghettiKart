@@ -3,7 +3,7 @@
 #include <libultraship.h>
 
 #include "CoreMath.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/cameras/GameCamera.h"
 #include "objects/Object.h"
 #include "Cup.h"

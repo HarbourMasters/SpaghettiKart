@@ -15,7 +15,7 @@
 
 #include "course_offsets.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 #include <stdio.h>
 

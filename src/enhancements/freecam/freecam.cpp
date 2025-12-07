@@ -25,7 +25,7 @@ extern "C" {
 #include "freecam.h"
 }
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 typedef struct {
     Vec3f pos;

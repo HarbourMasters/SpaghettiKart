@@ -44,7 +44,7 @@
 #include "port/Engine.h"
 #include "port/Game.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
 #include "src/engine/HM_Intro.h"
 #include "src/port/interpolation/FrameInterpolation.h"

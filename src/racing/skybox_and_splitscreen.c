@@ -20,7 +20,7 @@
 #include "menus.h"
 #include "port/Engine.h"
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "port/Game.h"
 #include "math_util.h"
 #include "src/enhancements/freecam/freecam.h"

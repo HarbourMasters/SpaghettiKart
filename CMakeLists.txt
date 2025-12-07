@@ -220,7 +220,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
     ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/courses
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tracks
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/particles
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
@@ -269,8 +269,8 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/networking/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
-    "src/engine/courses/*.c"
-    "src/engine/courses/*.h"
+    "src/engine/tracks/*.c"
+    "src/engine/tracks/*.h"
     "src/engine/objects/*.cpp"
     "src/engine/objects/*.h"
     "src/engine/particles/*.cpp"

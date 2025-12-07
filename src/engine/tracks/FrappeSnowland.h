@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "Track.h"
 
 extern "C" {
     #include "assets/models/tracks/frappe_snowland/frappe_snowland_vertices.h"

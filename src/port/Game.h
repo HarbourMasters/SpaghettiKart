@@ -2,7 +2,7 @@
 #define _GAME_H
 
 #include <libultraship.h>
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/HM_Intro.h"
 
 #ifdef __cplusplus

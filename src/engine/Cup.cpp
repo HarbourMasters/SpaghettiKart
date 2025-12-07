@@ -1,5 +1,5 @@
 #include "Cup.h"
-#include "courses/Course.h"
+#include "tracks/Track.h"
 
 Cup::Cup(std::string id, const char* name, std::vector<std::shared_ptr<Course>> courses) {
     Id = id;

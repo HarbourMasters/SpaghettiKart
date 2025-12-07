@@ -3,7 +3,7 @@
 // Base Cup class
 #include <vector>
 #include <memory>
-#include "courses/Course.h"
+#include "tracks/Track.h"
 
 class Course; // <-- Forward declare
 

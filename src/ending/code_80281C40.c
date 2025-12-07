@@ -17,7 +17,7 @@
 #include "memory.h"
 
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "port/Game.h"
 
 struct UnkStruct80287560 {

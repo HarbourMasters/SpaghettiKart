@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship/libultraship.h>
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "AllActors.h"
 
 namespace Editor {

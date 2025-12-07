@@ -10,9 +10,9 @@
 #include <tuple>
 #include "ResolutionEditor.h"
 
-#include "courses/Course.h"
-#include "courses/KalimariDesert.h"
-#include "courses/ToadsTurnpike.h"
+#include "engine/tracks/Track.h"
+#include "engine/tracks/KalimariDesert.h"
+#include "engine/tracks/ToadsTurnpike.h"
 
 #ifdef __SWITCH__
 #include <port/switch/SwitchImpl.h>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "Track.h"
 
 extern "C" {
 #include "assets/models/tracks/wario_stadium/wario_stadium_vertices.h"

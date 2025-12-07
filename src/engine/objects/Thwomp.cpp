@@ -2,7 +2,7 @@
 #include <libultra/gbi.h>
 #include "Thwomp.h"
 #include <vector>
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/World.h"
 
 #include "port/Game.h"

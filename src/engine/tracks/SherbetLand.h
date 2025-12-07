@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "Track.h"
 
 extern "C" {
     #include "assets/models/tracks/sherbet_land/sherbet_land_vertices.h"

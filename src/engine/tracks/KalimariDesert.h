@@ -1,27 +1,29 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "CoreMath.h"
+#include "Track.h"
+#include "engine/vehicles/Train.h"
 
 extern "C" {
-    #include "assets/models/tracks/choco_mountain/choco_mountain_vertices.h"
-    #include "assets/models/tracks/choco_mountain/choco_mountain_displaylists.h"
-    #include "assets/models/tracks/choco_mountain/choco_mountain_data.h"
+    #include "assets/models/tracks/kalimari_desert/kalimari_desert_vertices.h"
+    #include "assets/models/tracks/kalimari_desert/kalimari_desert_displaylists.h"
+    #include "assets/models/tracks/kalimari_desert/kalimari_desert_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
     #include "code_800029B0.h"
-    extern const course_texture choco_mountain_textures[];
+    extern const course_texture kalimari_desert_textures[];
 }
 
-class ChocoMountain : public Course {
+class KalimariDesert : public Course {
 public:
-    virtual ~ChocoMountain() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~KalimariDesert() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit ChocoMountain();
+    explicit KalimariDesert();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
@@ -33,7 +35,11 @@ public:
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
-    virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) override;
+    virtual void RenderCredits() override;
     virtual void Destroy() override;
+
+private:
+    size_t _numTrains = 2;
+    size_t _numCarriages = 5;
+    ATrain::TenderStatus _tender = ATrain::TenderStatus::HAS_TENDER;
 };

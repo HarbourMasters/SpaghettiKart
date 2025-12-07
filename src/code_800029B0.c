@@ -244,7 +244,7 @@ void setup_race(void) {
     func_80091FA4();
     init_actors_and_load_textures();
 
-    // Set finishline position. This is now done in files in src/engine/courses/*
+    // Set finishline position. This is now done in files in src/engine/tracks/*
     // if (gModeSelection != BATTLE) {
     //     D_8015F8D0[1] = (f32) (gCurrentTrackPath->posY - 15);
     //     D_8015F8D0[2] = gCurrentTrackPath->posZ;

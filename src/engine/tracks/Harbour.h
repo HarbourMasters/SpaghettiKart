@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include "Course.h"
+#include "Track.h"
 
 extern "C" {
     #include "assets/models/tracks/mario_raceway/mario_raceway_vertices.h"
@@ -12,28 +12,23 @@ extern "C" {
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    #include "code_800029B0.h"
+    extern const course_texture test_course_textures[];
 }
 
-class MarioRaceway : public Course {
+class Harbour : public Course {
 public:
-    virtual ~MarioRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
+    virtual ~Harbour() = default;  // Virtual destructor for proper cleanup in derived classes
 
     // Constructor
-    explicit MarioRaceway();
+    explicit Harbour();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
-    virtual void InitCourseObjects() override;
-    virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void SetStaffGhost() override;
     virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
-    virtual void CreditsSpawnActors() override;
-    virtual void Destroy() override;
+    virtual bool IsMod() override;
 };

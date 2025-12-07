@@ -6,7 +6,7 @@
 #include "BowsersCastle.h"
 #include "align_asset_macro.h"
 #include "engine/World.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Thwomp.h"

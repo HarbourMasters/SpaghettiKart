@@ -4,7 +4,7 @@
 #include "Train.h"
 #include <vector>
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/vehicles/Utils.h"
 #include "engine/World.h"
 #include "port/Game.h"
