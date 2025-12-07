@@ -1307,42 +1307,30 @@ void spawn_multiplayer_cameras(u32 mode) {
 
 }
 
+/**
+ * Loads 8 players per screen in 1p/2p mode
+ * Loads 4 players per screen in 3p/4p mode
+ */
 void load_kart_textures(void) {
-    switch (gActiveScreenMode) {
+    size_t screens = 0;
+    switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            for (size_t i = 0; i < 8; i++) {
-                func_8003CD98(&gPlayers[i], camera1, i, 0);
-            }
+            screens = 1;
             break;
-
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            for (size_t i = 0; i < 8; i++) {
-                func_8003CD98(&gPlayers[i], camera1, i, 0);
-            }
-
-            for (size_t i = 0; i < 8; i++) {
-                func_8003CD98(&gPlayers[i], camera2, i, 1);
-            }
+            screens = 2;
             break;
-
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            for (size_t i = 0; i < 4; i++) {
-                func_8003CD98(&gPlayers[i], camera1, i, 0);
-            }
-
-            for (size_t i = 0; i < 4; i++) {
-                func_8003CD98(&gPlayers[i], camera2, i, 1);
-            }
-
-            for (size_t i = 0; i < 4; i++) {
-                func_8003CD98(&gPlayers[i], camera3, i, 2);
-            }
-
-            for (size_t i = 0; i < 4; i++) {
-                func_8003CD98(&gPlayers[i], camera4, i, 3);
-            }
+            screens = 4;
             break;
+    }
+
+    static const size_t playerCounts[4] = { 8, 8, 4, 4 };
+    for (size_t i = 0; i < screens; i++) {
+        for (size_t ply = 0; ply < playerCounts[i]; ply++) {
+            func_8003CD98(&gPlayers[ply], D_8015F480[i].camera, ply, i);
+        }
     }
 }
 
