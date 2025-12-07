@@ -108,7 +108,7 @@ void TourCamera::Tick() {
         }
     }
 
-    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, gWorldInstance.CurrentCourse->TourShots[ShotIndex].Frames);
+    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].Frames);
 
     // Advance to the next camera shot
     if (done) {
