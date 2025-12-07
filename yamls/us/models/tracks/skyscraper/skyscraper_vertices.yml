@@ -1,0 +1,304 @@
+:config:
+  segments:
+    - [0x0F, 0x953890]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_skyscraper_vertex_0x04000000:
+  symbol: d_course_skyscraper_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x0
+
+d_course_skyscraper_vertex_0x04000200:
+  symbol: d_course_skyscraper_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c0
+
+d_course_skyscraper_vertex_0x04000400:
+  symbol: d_course_skyscraper_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_skyscraper_vertex_0x04000600:
+  symbol: d_course_skyscraper_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x540
+
+d_course_skyscraper_vertex_0x04000800:
+  symbol: d_course_skyscraper_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x700
+
+d_course_skyscraper_vertex_0x04000A00:
+  symbol: d_course_skyscraper_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8c0
+
+d_course_skyscraper_vertex_0x04000C00:
+  symbol: d_course_skyscraper_vertex_0x04000C00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa80
+
+d_course_skyscraper_vertex_0x04000D00:
+  symbol: d_course_skyscraper_vertex_0x04000D00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb60
+
+d_course_skyscraper_vertex_0x04000F00:
+  symbol: d_course_skyscraper_vertex_0x04000F00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd20
+
+d_course_skyscraper_vertex_0x04001100:
+  symbol: d_course_skyscraper_vertex_0x04001100
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xee0
+
+d_course_skyscraper_vertex_0x040012F0:
+  symbol: d_course_skyscraper_vertex_0x040012F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1092
+
+d_course_skyscraper_vertex_0x040014E0:
+  symbol: d_course_skyscraper_vertex_0x040014E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1244
+
+d_course_skyscraper_vertex_0x04001520:
+  symbol: d_course_skyscraper_vertex_0x04001520
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x127c
+
+d_course_skyscraper_vertex_0x04001560:
+  symbol: d_course_skyscraper_vertex_0x04001560
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12b4
+
+d_course_skyscraper_vertex_0x040015A0:
+  symbol: d_course_skyscraper_vertex_0x040015A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12ec
+
+d_course_skyscraper_vertex_0x040015E0:
+  symbol: d_course_skyscraper_vertex_0x040015E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1324
+
+d_course_skyscraper_vertex_0x040017E0:
+  symbol: d_course_skyscraper_vertex_0x040017E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x14e4
+
+d_course_skyscraper_vertex_0x04001960:
+  symbol: d_course_skyscraper_vertex_0x04001960
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1634
+
+d_course_skyscraper_vertex_0x04001B40:
+  symbol: d_course_skyscraper_vertex_0x04001B40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17d8
+
+d_course_skyscraper_vertex_0x04001D40:
+  symbol: d_course_skyscraper_vertex_0x04001D40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1998
+
+d_course_skyscraper_vertex_0x04001E80:
+  symbol: d_course_skyscraper_vertex_0x04001E80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1ab0
+
+d_course_skyscraper_vertex_0x04002080:
+  symbol: d_course_skyscraper_vertex_0x04002080
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c70
+
+d_course_skyscraper_vertex_0x04002280:
+  symbol: d_course_skyscraper_vertex_0x04002280
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1e30
+
+d_course_skyscraper_vertex_0x04002480:
+  symbol: d_course_skyscraper_vertex_0x04002480
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1ff0
+
+d_course_skyscraper_vertex_0x04002680:
+  symbol: d_course_skyscraper_vertex_0x04002680
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x21b0
+
+d_course_skyscraper_vertex_0x04002880:
+  symbol: d_course_skyscraper_vertex_0x04002880
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x2370
+
+d_course_skyscraper_vertex_0x04002960:
+  symbol: d_course_skyscraper_vertex_0x04002960
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2434
+
+d_course_skyscraper_vertex_0x04002B60:
+  symbol: d_course_skyscraper_vertex_0x04002B60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x25f4
+
+d_course_skyscraper_vertex_0x04002D60:
+  symbol: d_course_skyscraper_vertex_0x04002D60
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x27b4
+
+d_course_skyscraper_vertex_0x04002F40:
+  symbol: d_course_skyscraper_vertex_0x04002F40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2958
+
+d_course_skyscraper_vertex_0x04003140:
+  symbol: d_course_skyscraper_vertex_0x04003140
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2b18
+
+d_course_skyscraper_vertex_0x04003340:
+  symbol: d_course_skyscraper_vertex_0x04003340
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2cd8
+
+d_course_skyscraper_vertex_0x04003520:
+  symbol: d_course_skyscraper_vertex_0x04003520
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x2e7c
+
+d_course_skyscraper_vertex_0x04003680:
+  symbol: d_course_skyscraper_vertex_0x04003680
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2fb0
+
+d_course_skyscraper_vertex_0x04003880:
+  symbol: d_course_skyscraper_vertex_0x04003880
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3170
+
+d_course_skyscraper_vertex_0x040038E0:
+  symbol: d_course_skyscraper_vertex_0x040038E0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x31c4
+
+d_course_skyscraper_vertex_0x040039A0:
+  symbol: d_course_skyscraper_vertex_0x040039A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x326c
+
+d_course_skyscraper_vertex_0x04003A20:
+  symbol: d_course_skyscraper_vertex_0x04003A20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x32dc
+
+d_course_skyscraper_vertex_0x04003AA0:
+  symbol: d_course_skyscraper_vertex_0x04003AA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x334c
+
+d_course_skyscraper_vertex_0x04003B20:
+  symbol: d_course_skyscraper_vertex_0x04003B20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x33bc
+
+d_course_skyscraper_vertex_0x04003C20:
+  symbol: d_course_skyscraper_vertex_0x04003C20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x349c
+
+d_course_skyscraper_vertex_0x04003D20:
+  symbol: d_course_skyscraper_vertex_0x04003D20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x357c
+
+d_course_skyscraper_vertex_0x04003DE0:
+  symbol: d_course_skyscraper_vertex_0x04003DE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3624
+
+d_course_skyscraper_vertex_0x04003F20:
+  symbol: d_course_skyscraper_vertex_0x04003F20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x373c
+
+d_course_skyscraper_vertex_0x04003FE0:
+  symbol: d_course_skyscraper_vertex_0x04003FE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x37e4
+
+d_course_skyscraper_vertex_0x04004060:
+  symbol: d_course_skyscraper_vertex_0x04004060
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3854
+
+d_course_skyscraper_vertex_0x040040A0:
+  symbol: d_course_skyscraper_vertex_0x040040A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x388c
+
+d_course_skyscraper_vertex_0x040040E0:
+  symbol: d_course_skyscraper_vertex_0x040040E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x38c4
+
+d_course_skyscraper_vertex_0x040042E0:
+  symbol: d_course_skyscraper_vertex_0x040042E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3a84
+

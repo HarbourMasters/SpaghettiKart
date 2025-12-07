@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include <assets/mario_raceway_data.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 #include "port/interpolation/FrameInterpolation.h"
 
 /**

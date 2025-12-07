@@ -8,7 +8,8 @@
 #include "engine/actors/Finishline.h"
 #include "engine/objects/ChainChomp.h"
 #include "engine/objects/BombKart.h"
-#include "assets/rainbow_road_data.h"
+#include "assets/models/tracks/rainbow_road/rainbow_road_data.h"
+#include "assets/other/tracks/rainbow_road/rainbow_road_data.h"
 
 extern "C" {
     #include "main.h"
@@ -24,31 +25,17 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
     #include "course.h"
-    extern const char *rainbow_road_dls[];
+    extern const char *rainbow_road_dls[48];
 }
 
-const course_texture rainbow_road_textures[] = {
-    { gTextureStarOutline, 0x037A, 0x0800, 0x0 },
-    { gTexture67A1B8, 0x01B7, 0x0800, 0x0 },
-    { gTextureCheckerboardBlackWhite, 0x0107, 0x0800, 0x0 },
-    { gTexture662A34, 0x0106, 0x0800, 0x0 },
-    { gTextureRainbow, 0x025D, 0x1000, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
-
 RainbowRoad::RainbowRoad() {
-    this->vtx = d_course_rainbow_road_vertex;
-    this->gfx = d_course_rainbow_road_packed_dls;
-    this->gfxSize = 5670;
-    Props.textures = rainbow_road_textures;
     Props.Minimap.Texture = minimap_rainbow_road;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -123,23 +110,28 @@ RainbowRoad::RainbowRoad() {
 
 void RainbowRoad::Load() {
     Course::Load();
-
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(rainbow_road_dls); i++) {
+            InvertTriangleWindingByName(rainbow_road_dls[i]);
+        }
+    }
     D_800DC5C8 = 1;
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
     // d_course_rainbow_road_packed_dl_2068
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, 150, 255, 255, 255);
     // d_course_rainbow_road_packed_dl_1E18
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001E18), 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, 150, 255, 255, 255);
     // d_course_rainbow_road_packed_dl_1318
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001318), 255, 255, 255, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, 255, 255, 255, 0);
     if (gGamestate != CREDITS_SEQUENCE) {
         // d_course_rainbow_road_packed_dl_1FB8
-        find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001FB8), 150, 255, 255, 255);
+        find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1FB8, 150, 255, 255, 255);
     }
 }
 
-void RainbowRoad::LoadTextures() {
+void RainbowRoad::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void RainbowRoad::BeginPlay() {
@@ -217,11 +209,8 @@ void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
 }
 
 void RainbowRoad::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
-    Mat4 matrix;
 
     gDPPipeSync(gDisplayListHead++);
-    mtxf_identity(matrix);
-    render_set_position(matrix, 0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     render_course_segments(rainbow_road_dls, screen);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -231,11 +220,11 @@ void RainbowRoad::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
 
 void RainbowRoad::CreditsSpawnActors() {
     // d_course_rainbow_road_packed_dl_2068
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002068), 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, 150, 0xFF, 0xFF, 0xFF);
     // d_course_rainbow_road_packed_dl_1E18
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001E18), 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1E18, 150, 0xFF, 0xFF, 0xFF);
     // d_course_rainbow_road_packed_dl_1318
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001318), 255, 0xFF, 0xFF, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_1318, 255, 0xFF, 0xFF, 0);
 }
 
 void RainbowRoad::Destroy() {}

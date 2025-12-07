@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include <assets/common_data.h>
+#include <assets/textures/common_data.h>
 
 /**
  * @brief Renders the green shell actor.

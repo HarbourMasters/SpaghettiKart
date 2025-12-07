@@ -1,7 +1,7 @@
 #include <libultra/types.h>
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "course_offsets.h"
-#include <assets/toads_turnpike_data.h>
+#include <assets/models/tracks/toads_turnpike/toads_turnpike_data.h>
 
 Gfx* d_course_toads_turnpike_dl_list[] = {
     d_course_toads_turnpike_dl_80,   d_course_toads_turnpike_dl_1F8,  d_course_toads_turnpike_dl_158,

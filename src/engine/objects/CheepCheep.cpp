@@ -1,8 +1,8 @@
 #include "CheepCheep.h"
 #include "port/Game.h"
 
-#include "assets/banshee_boardwalk_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "assets/models/common_data.h"
 
 
 extern "C" {

@@ -11,7 +11,7 @@ extern "C" {
 #include "math_util.h"
 #include "actor_types.h"
 #include "actors.h"
-#include "other_textures.h"
+#include "assets/textures/other_textures.h"
 extern f32 gKartHopInitialVelocityTable[];
 extern f32 gKartGravityTable[];
 }

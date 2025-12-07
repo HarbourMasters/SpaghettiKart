@@ -42,7 +42,7 @@ namespace Editor {
         /**
          * Save track properties, static mesh actors, actors, and tour camera
          */
-        data["Props"] = gWorldInstance.CurrentCourse->Props.to_json();
+        data["Props"] = gWorldInstance.GetCurrentCourse()->Props.to_json();
 
         nlohmann::json staticMesh;
         SaveStaticMeshActors(staticMesh);

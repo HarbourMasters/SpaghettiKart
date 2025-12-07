@@ -7,7 +7,7 @@
 #include "../camera.h"
 #include "main.h"
 #include "memory.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "render_player.h"
 #include "render_objects.h"
 #include "podium_ceremony_actors.h"

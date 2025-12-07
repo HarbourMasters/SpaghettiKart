@@ -1,0 +1,127 @@
+:config:
+  segments:
+    - [0x06, 0x842E40]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_koopa_troopa_beach_crab_frames:
+      range: [0xD828, 0x13828]
+      mode: APPEND
+d_course_koopa_troopa_beach_crab_tlut:
+  symbol: d_course_koopa_troopa_beach_crab_tlut
+  type: texture
+  offset: 0xD628
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTextureCrab1:
+  symbol: gTextureCrab1
+  type: texture
+  offset: 0xD828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab2:
+  symbol: gTextureCrab2
+  type: texture
+  offset: 0x0E828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab3:
+  symbol: gTextureCrab3
+  type: texture
+  offset: 0x0F828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab4:
+  symbol: gTextureCrab4
+  type: texture
+  offset: 0x10828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab5:
+  symbol: gTextureCrab5
+  type: texture
+  offset: 0x11828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab6:
+  symbol: gTextureCrab6
+  type: texture
+  offset: 0x12828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+gTextureCrab7:
+  symbol: gTextureCrab7
+  type: texture
+  offset: 0x13828
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_koopa_troopa_beach_crab_tlut
+d_course_koopa_troopa_beach_bird_wing:
+  symbol: d_course_koopa_troopa_beach_bird_wing
+  type: texture
+  offset: 0x14C00
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_koopa_troopa_beach_bird_eye:
+  symbol: d_course_koopa_troopa_beach_bird_eye
+  type: texture
+  offset: 0x15400
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_koopa_troopa_beach_bird_beak:
+  symbol: d_course_koopa_troopa_beach_bird_beak
+  type: texture
+  offset: 0x15C00
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_koopa_troopa_beach_palm_frond:
+  symbol: d_course_koopa_troopa_beach_palm_frond
+  type: texture
+  offset: 0x16D20
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_koopa_troopa_beach_palm_trunk:
+  symbol: d_course_koopa_troopa_beach_palm_trunk
+  type: texture
+  offset: 0x17D20
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

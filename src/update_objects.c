@@ -19,7 +19,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>
@@ -30,16 +30,19 @@
 #include "menu_items.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
-#include <assets/ceremony_data.h>
+#include <assets/models/ceremony_data.h>
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "data/some_data.h"
 #include "memory.h"
 #include "courses/all_course_offsets.h"
 #include "courses/all_course_data.h"
-#include <assets/boo_frames.h>
+#include <assets/textures/boo_frames.h>
 #include "port/Game.h"
+#include <assets/textures/tracks/banshee_boardwalk/banshee_boardwalk_data.h>
+#include <assets/textures/tracks/sherbet_land/sherbet_land_data.h>
+#include <assets/textures/tracks/rainbow_road/rainbow_road_data.h>
 
 float OTRGetAspectRatio(void);
 
@@ -1720,11 +1723,9 @@ void func_800762DC(Vec3f arg0, f32 arg1) {
 void func_8007634C(s32 objectIndex) {
     Object* object;
 
-    u8* asset = LOAD_ASSET(common_texture_particle_smoke);
-
     object = &gObjectList[objectIndex];
-    object->activeTexture = asset[0];
-    object->textureList = asset[0];
+    object->activeTexture = common_texture_particle_smoke;
+    object->textureList = common_texture_particle_smoke;
     object->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -1888,11 +1889,10 @@ void func_80076884(s32 arg0) {
 
 void func_80076958(s32 objectIndex) {
     Object* object;
-    u8* tex = (u8*) LOAD_ASSET(common_texture_particle_smoke);
 
     object = &gObjectList[objectIndex];
-    object->activeTexture = tex[0];
-    object->textureList = tex[0];
+    object->activeTexture = common_texture_particle_smoke;
+    object->textureList = common_texture_particle_smoke;
     object->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2228,13 +2228,12 @@ void func_80077D5C(s32 arg0) {
 }
 
 void func_80077E20(s32 objectIndex) {
-    u8* tex = (u8*) LOAD_ASSET(D_0D0293D8);
     Vtx* vtx = (Vtx*) LOAD_ASSET(common_vtx_rectangle);
     Object* object;
 
     object = &gObjectList[objectIndex];
-    object->activeTexture = tex;
-    object->textureList = tex;
+    object->activeTexture = D_0D0293D8;
+    object->textureList = D_0D0293D8;
     //! @bug frappe snowland There's something up with the handling of common_vtx_rectangle and the loading of 0x10
     //! right here
     // root function: func_80078C70

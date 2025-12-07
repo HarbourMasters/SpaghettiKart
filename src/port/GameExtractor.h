@@ -10,6 +10,7 @@ public:
     static bool GenAssetFile();
     std::optional<std::string> ValidateChecksum() const;
     bool SelectGameFromUI();
+    void GetRoms(std::vector<std::string>& roms);
     bool GenerateOTR() const;
 private:
     fs::path mGamePath;

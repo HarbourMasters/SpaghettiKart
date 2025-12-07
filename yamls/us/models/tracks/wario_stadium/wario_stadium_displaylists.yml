@@ -1,0 +1,1712 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x94E28C
+  no_compression: true
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_67F15C"]
+    - [0x05000800, "textures/other_textures/texture_67F450"]
+    - [0x05001000, "textures/other_textures/sign_wario_face"]
+    - [0x05002000, "textures/other_textures/texture_670AC8"]
+    - [0x05003000, "textures/other_textures/checkerboard_black_white"]
+    - [0x05003800, "textures/other_textures/texture_64C11C"]
+    - [0x05004000, "textures/other_textures/texture_64C7B4"]
+    - [0x05004800, "textures/other_textures/texture_668228"]
+    - [0x05005000, "textures/other_textures/texture_668358"]
+    - [0x05005800, "textures/other_textures/texture_66AEB8"]
+    - [0x05006000, "textures/other_textures/texture_677A40"]
+    - [0x05006800, "textures/other_textures/texture_67E428"]
+    - [0x05007800, "textures/other_textures/texture_643A34"]
+    - [0x05008000, "textures/other_textures/texture_66EBF0"]
+    - [0x05008800, "textures/other_textures/texture_68272C"]
+    - [0x05009800, "textures/other_textures/texture_682928"]
+    - [0x0500A800, "textures/other_textures/texture_682B24"]
+    - [0x0500B800, "textures/other_textures/texture_682D20"]
+    - [0x0500C800, "textures/other_textures/texture_682F1C"]
+    - [0x0500D800, "textures/other_textures/texture_683118"]
+    # Segment 7
+    - [0x7000000, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_0"]
+    - [0x7000060, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_60"]
+    - [0x70000C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_C0"]
+    - [0x7000120, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_120"]
+    - [0x7000180, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_180"]
+    - [0x70001E0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1E0"]
+    - [0x7000240, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_240"]
+    - [0x70002A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2A0"]
+    - [0x7000300, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_300"]
+    - [0x7000360, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_360"]
+    - [0x70003B0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3B0"]
+    - [0x70003C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3C0"]
+    - [0x7000428, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_428"]
+    - [0x7000500, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_500"]
+    - [0x70005D8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5D8"]
+    - [0x7000638, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_638"]
+    - [0x70006F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6F8"]
+    - [0x70007C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7C0"]
+    - [0x7000880, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_880"]
+    - [0x70008F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8F0"]
+    - [0x7000960, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_960"]
+    - [0x7000A20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A20"]
+    - [0x7000A88, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A88"]
+    - [0x7000AE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_AE8"]
+    - [0x7000B60, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_B60"]
+    - [0x7000BD8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_BD8"]
+    - [0x7000C50, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_C50"]
+    - [0x7000CC8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_CC8"]
+    - [0x7000D50, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_D50"]
+    - [0x7000DD0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_DD0"]
+    - [0x7000E48, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_E48"]
+    - [0x7000EC0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_EC0"]
+    - [0x7000F08, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_F08"]
+    - [0x7000F20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_F20"]
+    - [0x7000F38, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_F38"]
+    - [0x7000FA8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_FA8"]
+    - [0x7001018, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1018"]
+    - [0x7001088, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1088"]
+    - [0x7001100, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1100"]
+    - [0x7001180, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1180"]
+    - [0x70011E0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_11E0"]
+    - [0x7001290, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1290"]
+    - [0x7001348, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1348"]
+    - [0x70013D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_13D0"]
+    - [0x7001458, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1458"]
+    - [0x70014C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_14C8"]
+    - [0x7001540, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1540"]
+    - [0x70015C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_15C8"]
+    - [0x7001640, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1640"]
+    - [0x70016B0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_16B0"]
+    - [0x7001710, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1710"]
+    - [0x7001778, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1778"]
+    - [0x70017F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_17F0"]
+    - [0x7001860, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1860"]
+    - [0x70018D8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_18D8"]
+    - [0x7001948, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1948"]
+    - [0x70019D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_19D0"]
+    - [0x7001A50, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1A50"]
+    - [0x7001B10, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1B10"]
+    - [0x7001B70, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1B70"]
+    - [0x7001BD0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1BD0"]
+    - [0x7001C40, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1C40"]
+    - [0x7001D20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1D20"]
+    - [0x7001DE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1DE8"]
+    - [0x7001EA0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1EA0"]
+    - [0x7001F28, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1F28"]
+    - [0x7001FC8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_1FC8"]
+    - [0x70020A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_20A0"]
+    - [0x7002108, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2108"]
+    - [0x70021D8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_21D8"]
+    - [0x7002238, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2238"]
+    - [0x7002298, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2298"]
+    - [0x7002318, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2318"]
+    - [0x7002390, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2390"]
+    - [0x7002400, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2400"]
+    - [0x70024D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_24D0"]
+    - [0x7002598, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2598"]
+    - [0x7002658, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2658"]
+    - [0x70026C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_26C8"]
+    - [0x7002780, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2780"]
+    - [0x7002848, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2848"]
+    - [0x7002908, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2908"]
+    - [0x70029B8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_29B8"]
+    - [0x7002A28, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2A28"]
+    - [0x7002AB0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2AB0"]
+    - [0x7002BB0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2BB0"]
+    - [0x7002C18, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2C18"]
+    - [0x7002C80, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2C80"]
+    - [0x7002CE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2CE8"]
+    - [0x7002DB0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2DB0"]
+    - [0x7002E90, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2E90"]
+    - [0x7002F08, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2F08"]
+    - [0x7002F78, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2F78"]
+    - [0x7002FE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_2FE8"]
+    - [0x7003070, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3070"]
+    - [0x70030E8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_30E8"]
+    - [0x7003160, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3160"]
+    - [0x70031F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_31F0"]
+    - [0x7003260, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3260"]
+    - [0x70032D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_32D0"]
+    - [0x7003350, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3350"]
+    - [0x70033C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_33C0"]
+    - [0x7003438, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3438"]
+    - [0x70034A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_34A0"]
+    - [0x7003518, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3518"]
+    - [0x7003598, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3598"]
+    - [0x70035F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_35F8"]
+    - [0x7003660, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3660"]
+    - [0x70036D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_36D0"]
+    - [0x7003758, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3758"]
+    - [0x70037E0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_37E0"]
+    - [0x7003848, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3848"]
+    - [0x70038F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_38F8"]
+    - [0x7003960, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3960"]
+    - [0x70039D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_39D0"]
+    - [0x7003A30, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3A30"]
+    - [0x7003AA8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3AA8"]
+    - [0x7003B08, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3B08"]
+    - [0x7003B68, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3B68"]
+    - [0x7003BD0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3BD0"]
+    - [0x7003C40, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3C40"]
+    - [0x7003CA8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3CA8"]
+    - [0x7003D10, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3D10"]
+    - [0x7003D80, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3D80"]
+    - [0x7003DE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3DE8"]
+    - [0x7003E50, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3E50"]
+    - [0x7003EC0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3EC0"]
+    - [0x7003F70, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_3F70"]
+    - [0x7004038, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4038"]
+    - [0x7004098, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4098"]
+    - [0x7004168, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4168"]
+    - [0x7004218, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4218"]
+    - [0x70042C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_42C8"]
+    - [0x7004378, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4378"]
+    - [0x7004438, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4438"]
+    - [0x70044E8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_44E8"]
+    - [0x7004598, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4598"]
+    - [0x7004658, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4658"]
+    - [0x70046B8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_46B8"]
+    - [0x7004768, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4768"]
+    - [0x70047D8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_47D8"]
+    - [0x7004808, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4808"]
+    - [0x7004930, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4930"]
+    - [0x7004AA0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4AA0"]
+    - [0x7004BA8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4BA8"]
+    - [0x7004D68, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4D68"]
+    - [0x7004EB8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4EB8"]
+    - [0x7004FB8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_4FB8"]
+    - [0x70050A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_50A0"]
+    - [0x7005208, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5208"]
+    - [0x70052F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_52F8"]
+    - [0x70053D0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_53D0"]
+    - [0x7005508, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5508"]
+    - [0x7005590, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5590"]
+    - [0x7005670, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5670"]
+    - [0x70056E0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_56E0"]
+    - [0x7005768, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5768"]
+    - [0x70057F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_57F8"]
+    - [0x7005888, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5888"]
+    - [0x7005938, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5938"]
+    - [0x70059C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_59C0"]
+    - [0x7005A38, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5A38"]
+    - [0x7005AA8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5AA8"]
+    - [0x7005B38, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5B38"]
+    - [0x7005BB8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5BB8"]
+    - [0x7005C30, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5C30"]
+    - [0x7005CB0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5CB0"]
+    - [0x7005D20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5D20"]
+    - [0x7005D90, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5D90"]
+    - [0x7005E00, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5E00"]
+    - [0x7005E88, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5E88"]
+    - [0x7005F08, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5F08"]
+    - [0x7005FC8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_5FC8"]
+    - [0x7006068, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6068"]
+    - [0x7006108, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6108"]
+    - [0x7006198, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6198"]
+    - [0x70062C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_62C8"]
+    - [0x7006390, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6390"]
+    - [0x7006418, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6418"]
+    - [0x70064E8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_64E8"]
+    - [0x70065A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_65A0"]
+    - [0x7006658, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6658"]
+    - [0x7006700, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6700"]
+    - [0x70067B8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_67B8"]
+    - [0x7006878, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6878"]
+    - [0x70068F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_68F0"]
+    - [0x7006950, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6950"]
+    - [0x7006A10, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6A10"]
+    - [0x7006AE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6AE8"]
+    - [0x7006BE0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6BE0"]
+    - [0x7006C80, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6C80"]
+    - [0x7006D20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6D20"]
+    - [0x7006DD8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6DD8"]
+    - [0x7006EC8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6EC8"]
+    - [0x7006FC0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_6FC0"]
+    - [0x7007090, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7090"]
+    - [0x7007220, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7220"]
+    - [0x7007338, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7338"]
+    - [0x70073F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_73F0"]
+    - [0x7007530, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7530"]
+    - [0x70075A8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_75A8"]
+    - [0x7007630, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7630"]
+    - [0x70076E0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_76E0"]
+    - [0x70077A8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_77A8"]
+    - [0x7007838, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7838"]
+    - [0x7007960, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7960"]
+    - [0x7007A40, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7A40"]
+    - [0x7007B20, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7B20"]
+    - [0x7007BE0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7BE0"]
+    - [0x7007D00, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7D00"]
+    - [0x7007DF8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7DF8"]
+    - [0x7007ED0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7ED0"]
+    - [0x7007FB0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_7FB0"]
+    - [0x7008030, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8030"]
+    - [0x70080E8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_80E8"]
+    - [0x7008240, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8240"]
+    - [0x70082F8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_82F8"]
+    - [0x70083A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_83A0"]
+    - [0x7008438, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8438"]
+    - [0x7008510, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8510"]
+    - [0x70085F0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_85F0"]
+    - [0x7008678, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8678"]
+    - [0x7008708, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8708"]
+    - [0x7008798, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8798"]
+    - [0x70088A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_88A0"]
+    - [0x7008A68, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8A68"]
+    - [0x7008C28, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8C28"]
+    - [0x7008D28, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8D28"]
+    - [0x7008DE8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8DE8"]
+    - [0x7008EF0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8EF0"]
+    - [0x7008FC8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_8FC8"]
+    - [0x7009090, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9090"]
+    - [0x7009120, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9120"]
+    - [0x70091E8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_91E8"]
+    - [0x7009328, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9328"]
+    - [0x70093B0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_93B0"]
+    - [0x7009430, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9430"]
+    - [0x7009590, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9590"]
+    - [0x7009668, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9668"]
+    - [0x7009760, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9760"]
+    - [0x7009820, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9820"]
+    - [0x70098A0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_98A0"]
+    - [0x7009998, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9998"]
+    - [0x7009AD8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9AD8"]
+    - [0x7009C80, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9C80"]
+    - [0x7009D00, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9D00"]
+    - [0x7009D78, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9D78"]
+    - [0x7009E00, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9E00"]
+    - [0x7009EE0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9EE0"]
+    - [0x7009F18, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9F18"]
+    - [0x7009F28, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_9F28"]
+    - [0x700A0C8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A0C8"]
+    - [0x700A0D8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A0D8"]
+    - [0x700A148, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A148"]
+    - [0x700A1B8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A1B8"]
+    - [0x700A228, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A228"]
+    - [0x700A248, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A248"]
+    - [0x700A448, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A448"]
+    - [0x700A458, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A458"]
+    - [0x700A4A8, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A4A8"]
+    - [0x700A4C0, "models/tracks/wario_stadium/wario_stadium_displaylists/d_course_wario_stadium_packed_dl_A4C0"]
+    # Segment 4
+    - [0x4000000, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000000"]
+    - [0x4000040, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000040"]
+    - [0x4000080, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000080"]
+    - [0x40000c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040000C0"]
+    - [0x4000100, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000100"]
+    - [0x4000140, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000140"]
+    - [0x4000180, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000180"]
+    - [0x40001c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040001C0"]
+    - [0x4000200, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000200"]
+    - [0x4000240, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000240"]
+    - [0x4000290, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000290"]
+    - [0x4000410, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000410"]
+    - [0x4000450, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000450"]
+    - [0x40005d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040005D0"]
+    - [0x4000610, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000610"]
+    - [0x4000650, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000650"]
+    - [0x4000710, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000710"]
+    - [0x4000750, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000750"]
+    - [0x4000810, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000810"]
+    - [0x4000860, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000860"]
+    - [0x4000920, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000920"]
+    - [0x4000960, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000960"]
+    - [0x4000a20, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000A20"]
+    - [0x4000ae0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000AE0"]
+    - [0x4000ba0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000BA0"]
+    - [0x4000be0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000BE0"]
+    - [0x4000c30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000C30"]
+    - [0x4000d30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000D30"]
+    - [0x4000e30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000E30"]
+    - [0x4000f00, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000F00"]
+    - [0x4000fd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04000FD0"]
+    - [0x40010e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040010E0"]
+    - [0x40011d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040011D0"]
+    - [0x40012d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040012D0"]
+    - [0x40013d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040013D0"]
+    - [0x4001490, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001490"]
+    - [0x4001550, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001550"]
+    - [0x4001610, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001610"]
+    - [0x4001710, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001710"]
+    - [0x4001820, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001820"]
+    - [0x4001860, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001860"]
+    - [0x4001a60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001A60"]
+    - [0x4001a90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001A90"]
+    - [0x4001b10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001B10"]
+    - [0x4001b50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001B50"]
+    - [0x4001c50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001C50"]
+    - [0x4001db0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001DB0"]
+    - [0x4001e70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001E70"]
+    - [0x4001f40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04001F40"]
+    - [0x40020c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040020C0"]
+    - [0x40021e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040021E0"]
+    - [0x40022a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040022A0"]
+    - [0x40022e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040022E0"]
+    - [0x4002360, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002360"]
+    - [0x4002450, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002450"]
+    - [0x4002530, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002530"]
+    - [0x4002630, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002630"]
+    - [0x40026f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040026F0"]
+    - [0x40027d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040027D0"]
+    - [0x4002910, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002910"]
+    - [0x4002ad0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002AD0"]
+    - [0x4002b10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002B10"]
+    - [0x4002b50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002B50"]
+    - [0x4002c10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002C10"]
+    - [0x4002cd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002CD0"]
+    - [0x4002e10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002E10"]
+    - [0x4002e90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002E90"]
+    - [0x4002f90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04002F90"]
+    - [0x4003110, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003110"]
+    - [0x40032d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040032D0"]
+    - [0x40033d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040033D0"]
+    - [0x4003530, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003530"]
+    - [0x40035b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040035B0"]
+    - [0x4003790, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003790"]
+    - [0x40038f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040038F0"]
+    - [0x4003930, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003930"]
+    - [0x4003970, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003970"]
+    - [0x4003ab0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003AB0"]
+    - [0x4003b90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003B90"]
+    - [0x4003c50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003C50"]
+    - [0x4003d10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003D10"]
+    - [0x4003e90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003E90"]
+    - [0x4003fd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04003FD0"]
+    - [0x4004090, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004090"]
+    - [0x4004150, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004150"]
+    - [0x4004250, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004250"]
+    - [0x4004330, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004330"]
+    - [0x40043b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040043B0"]
+    - [0x40044b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040044B0"]
+    - [0x40044f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040044F0"]
+    - [0x40046b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040046B0"]
+    - [0x40047b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040047B0"]
+    - [0x4004860, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004860"]
+    - [0x40048a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040048A0"]
+    - [0x40049a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040049A0"]
+    - [0x4004a60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004A60"]
+    - [0x4004b60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004B60"]
+    - [0x4004ca0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004CA0"]
+    - [0x4004ea0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004EA0"]
+    - [0x4004ed0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004ED0"]
+    - [0x4004f50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004F50"]
+    - [0x4004fd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04004FD0"]
+    - [0x4005050, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005050"]
+    - [0x4005110, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005110"]
+    - [0x4005220, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005220"]
+    - [0x40052b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040052B0"]
+    - [0x4005320, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005320"]
+    - [0x40053a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040053A0"]
+    - [0x4005470, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005470"]
+    - [0x4005520, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005520"]
+    - [0x40055b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040055B0"]
+    - [0x4005680, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005680"]
+    - [0x4005700, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005700"]
+    - [0x4005770, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005770"]
+    - [0x4005810, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005810"]
+    - [0x4005890, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005890"]
+    - [0x4005910, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005910"]
+    - [0x4005970, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005970"]
+    - [0x40059f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040059F0"]
+    - [0x4005aa0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005AA0"]
+    - [0x4005ae0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005AE0"]
+    - [0x4005b30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005B30"]
+    - [0x4005ba0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005BA0"]
+    - [0x4005c60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005C60"]
+    - [0x4005d30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005D30"]
+    - [0x4005d80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005D80"]
+    - [0x4005dd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005DD0"]
+    - [0x4005e90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005E90"]
+    - [0x4005ed0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005ED0"]
+    - [0x4005fd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04005FD0"]
+    - [0x4006010, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006010"]
+    - [0x4006050, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006050"]
+    - [0x40060a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040060A0"]
+    - [0x4006160, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006160"]
+    - [0x40061d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040061D0"]
+    - [0x4006250, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006250"]
+    - [0x4006310, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006310"]
+    - [0x4006380, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006380"]
+    - [0x40063d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040063D0"]
+    - [0x4006410, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006410"]
+    - [0x4006450, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006450"]
+    - [0x4006500, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006500"]
+    - [0x4006540, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006540"]
+    - [0x4006580, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006580"]
+    - [0x4006670, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006670"]
+    - [0x40066b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040066B0"]
+    - [0x40066f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040066F0"]
+    - [0x4006730, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006730"]
+    - [0x4006770, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006770"]
+    - [0x40067b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040067B0"]
+    - [0x40067f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040067F0"]
+    - [0x4006830, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006830"]
+    - [0x40068f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040068F0"]
+    - [0x4006930, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006930"]
+    - [0x4006970, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006970"]
+    - [0x40069b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040069B0"]
+    - [0x40069f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040069F0"]
+    - [0x4006a30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006A30"]
+    - [0x4006af0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006AF0"]
+    - [0x4006b30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006B30"]
+    - [0x4006b70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006B70"]
+    - [0x4006bb0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006BB0"]
+    - [0x4006bf0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006BF0"]
+    - [0x4006d70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006D70"]
+    - [0x4006dc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006DC0"]
+    - [0x4006fc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04006FC0"]
+    - [0x4007180, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007180"]
+    - [0x40071c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040071C0"]
+    - [0x40073c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040073C0"]
+    - [0x4007490, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007490"]
+    - [0x4007680, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007680"]
+    - [0x4007880, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007880"]
+    - [0x40079d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040079D0"]
+    - [0x4007a10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007A10"]
+    - [0x4007c00, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007C00"]
+    - [0x4007c80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007C80"]
+    - [0x4007cd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007CD0"]
+    - [0x4007e40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007E40"]
+    - [0x4007e90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007E90"]
+    - [0x4007f90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007F90"]
+    - [0x4007fd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04007FD0"]
+    - [0x40081d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040081D0"]
+    - [0x4008380, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008380"]
+    - [0x40083c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040083C0"]
+    - [0x4008440, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008440"]
+    - [0x4008580, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008580"]
+    - [0x4008600, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008600"]
+    - [0x40086c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040086C0"]
+    - [0x40088b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040088B0"]
+    - [0x4008990, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008990"]
+    - [0x40089d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040089D0"]
+    - [0x4008a90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008A90"]
+    - [0x4008b90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008B90"]
+    - [0x4008be0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008BE0"]
+    - [0x4008cb0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008CB0"]
+    - [0x4008e50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008E50"]
+    - [0x4008f50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04008F50"]
+    - [0x4009130, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009130"]
+    - [0x4009170, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009170"]
+    - [0x4009250, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009250"]
+    - [0x40092e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040092E0"]
+    - [0x4009350, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009350"]
+    - [0x4009510, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009510"]
+    - [0x40095e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040095E0"]
+    - [0x4009670, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009670"]
+    - [0x40097b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040097B0"]
+    - [0x4009820, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009820"]
+    - [0x4009890, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009890"]
+    - [0x4009a20, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009A20"]
+    - [0x4009ba0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009BA0"]
+    - [0x4009da0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009DA0"]
+    - [0x4009f20, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04009F20"]
+    - [0x400a110, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A110"]
+    - [0x400a1a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A1A0"]
+    - [0x400a3a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A3A0"]
+    - [0x400a3d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A3D0"]
+    - [0x400a5c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A5C0"]
+    - [0x400a7b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A7B0"]
+    - [0x400a990, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400A990"]
+    - [0x400ab90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400AB90"]
+    - [0x400aca0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400ACA0"]
+    - [0x400ae90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400AE90"]
+    - [0x400afc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400AFC0"]
+    - [0x400b170, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400B170"]
+    - [0x400b370, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400B370"]
+    - [0x400b520, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400B520"]
+    - [0x400b700, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400B700"]
+    - [0x400b830, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400B830"]
+    - [0x400ba30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400BA30"]
+    - [0x400bb50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400BB50"]
+    - [0x400bd30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400BD30"]
+    - [0x400bda0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400BDA0"]
+    - [0x400bf80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400BF80"]
+    - [0x400c0f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C0F0"]
+    - [0x400c2f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C2F0"]
+    - [0x400c4b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C4B0"]
+    - [0x400c5f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C5F0"]
+    - [0x400c620, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C620"]
+    - [0x400c800, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C800"]
+    - [0x400c990, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400C990"]
+    - [0x400cb80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400CB80"]
+    - [0x400cd80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400CD80"]
+    - [0x400ce10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400CE10"]
+    - [0x400d010, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D010"]
+    - [0x400d210, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D210"]
+    - [0x400d350, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D350"]
+    - [0x400d550, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D550"]
+    - [0x400d590, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D590"]
+    - [0x400d790, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D790"]
+    - [0x400d7d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D7D0"]
+    - [0x400d890, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400D890"]
+    - [0x400da70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400DA70"]
+    - [0x400dab0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400DAB0"]
+    - [0x400dbb0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400DBB0"]
+    - [0x400ddb0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400DDB0"]
+    - [0x400dfb0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400DFB0"]
+    - [0x400e0f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E0F0"]
+    - [0x400e2e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E2E0"]
+    - [0x400e4d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E4D0"]
+    - [0x400e6d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E6D0"]
+    - [0x400e7c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E7C0"]
+    - [0x400e940, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400E940"]
+    - [0x400eb40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400EB40"]
+    - [0x400ebc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400EBC0"]
+    - [0x400edc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400EDC0"]
+    - [0x400ef40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400EF40"]
+    - [0x400f120, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F120"]
+    - [0x400f2c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F2C0"]
+    - [0x400f390, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F390"]
+    - [0x400f4d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F4D0"]
+    - [0x400f6b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F6B0"]
+    - [0x400f730, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F730"]
+    - [0x400f930, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400F930"]
+    - [0x400fa50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400FA50"]
+    - [0x400fc10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400FC10"]
+    - [0x400fe10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x0400FE10"]
+    - [0x4010010, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010010"]
+    - [0x40100d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040100D0"]
+    - [0x40102d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040102D0"]
+    - [0x4010390, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010390"]
+    - [0x4010450, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010450"]
+    - [0x40105d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040105D0"]
+    - [0x40107c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040107C0"]
+    - [0x40107f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040107F0"]
+    - [0x4010870, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010870"]
+    - [0x4010a70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010A70"]
+    - [0x4010b40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010B40"]
+    - [0x4010b80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010B80"]
+    - [0x4010d80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010D80"]
+    - [0x4010e80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010E80"]
+    - [0x4010fe0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04010FE0"]
+    - [0x40110b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040110B0"]
+    - [0x40110f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040110F0"]
+    - [0x40112f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040112F0"]
+    - [0x4011330, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011330"]
+    - [0x4011470, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011470"]
+    - [0x4011670, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011670"]
+    - [0x4011800, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011800"]
+    - [0x40119e0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040119E0"]
+    - [0x4011b70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011B70"]
+    - [0x4011d70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011D70"]
+    - [0x4011f30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04011F30"]
+    - [0x40120b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040120B0"]
+    - [0x4012170, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012170"]
+    - [0x4012310, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012310"]
+    - [0x4012470, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012470"]
+    - [0x40125f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040125F0"]
+    - [0x4012790, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012790"]
+    - [0x4012990, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012990"]
+    - [0x4012b30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012B30"]
+    - [0x4012d30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012D30"]
+    - [0x4012f30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04012F30"]
+    - [0x4013120, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013120"]
+    - [0x4013320, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013320"]
+    - [0x4013520, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013520"]
+    - [0x40135c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040135C0"]
+    - [0x40137a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040137A0"]
+    - [0x40139a0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040139A0"]
+    - [0x4013a60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013A60"]
+    - [0x4013aa0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013AA0"]
+    - [0x4013ca0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013CA0"]
+    - [0x4013e40, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04013E40"]
+    - [0x4014040, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014040"]
+    - [0x4014140, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014140"]
+    - [0x4014340, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014340"]
+    - [0x40143c0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040143C0"]
+    - [0x4014580, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014580"]
+    - [0x4014770, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014770"]
+    - [0x4014860, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014860"]
+    - [0x4014a60, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014A60"]
+    - [0x4014c50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014C50"]
+    - [0x4014cd0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014CD0"]
+    - [0x4014e30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014E30"]
+    - [0x4014f10, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04014F10"]
+    - [0x4015100, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015100"]
+    - [0x4015300, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015300"]
+    - [0x40154f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040154F0"]
+    - [0x40155b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040155B0"]
+    - [0x40157b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040157B0"]
+    - [0x40158d0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040158D0"]
+    - [0x4015ad0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015AD0"]
+    - [0x4015b80, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015B80"]
+    - [0x4015cc0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015CC0"]
+    - [0x4015ea0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015EA0"]
+    - [0x4015fa0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04015FA0"]
+    - [0x4016190, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016190"]
+    - [0x4016390, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016390"]
+    - [0x4016470, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016470"]
+    - [0x4016650, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016650"]
+    - [0x4016830, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016830"]
+    - [0x4016a30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016A30"]
+    - [0x4016ab0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016AB0"]
+    - [0x4016b90, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016B90"]
+    - [0x4016c50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016C50"]
+    - [0x4016db0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016DB0"]
+    - [0x4016e50, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04016E50"]
+    - [0x4017050, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017050"]
+    - [0x4017250, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017250"]
+    - [0x4017450, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017450"]
+    - [0x4017570, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017570"]
+    - [0x4017630, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017630"]
+    - [0x40176f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040176F0"]
+    - [0x40177b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040177B0"]
+    - [0x40179b0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040179B0"]
+    - [0x40179f0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x040179F0"]
+    - [0x4017a30, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017A30"]
+    - [0x4017a70, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017A70"]
+    - [0x4017ab0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017AB0"]
+    - [0x4017af0, "models/tracks/wario_stadium/wario_stadium_vertices/d_course_wario_stadium_vertex_0x04017AF0"]
+  segments:
+    - [0x0F, 0x94E28C]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_wario_stadium_packed_dl_0:
+  symbol: d_course_wario_stadium_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_wario_stadium_packed_dl_60:
+  symbol: d_course_wario_stadium_packed_dl_60
+  type: MK64:PACKED_GFX
+  offset: 0x11
+d_course_wario_stadium_packed_dl_C0:
+  symbol: d_course_wario_stadium_packed_dl_C0
+  type: MK64:PACKED_GFX
+  offset: 0x22
+d_course_wario_stadium_packed_dl_120:
+  symbol: d_course_wario_stadium_packed_dl_120
+  type: MK64:PACKED_GFX
+  offset: 0x33
+d_course_wario_stadium_packed_dl_180:
+  symbol: d_course_wario_stadium_packed_dl_180
+  type: MK64:PACKED_GFX
+  offset: 0x44
+d_course_wario_stadium_packed_dl_1E0:
+  symbol: d_course_wario_stadium_packed_dl_1E0
+  type: MK64:PACKED_GFX
+  offset: 0x55
+d_course_wario_stadium_packed_dl_240:
+  symbol: d_course_wario_stadium_packed_dl_240
+  type: MK64:PACKED_GFX
+  offset: 0x66
+d_course_wario_stadium_packed_dl_2A0:
+  symbol: d_course_wario_stadium_packed_dl_2A0
+  type: MK64:PACKED_GFX
+  offset: 0x77
+d_course_wario_stadium_packed_dl_300:
+  symbol: d_course_wario_stadium_packed_dl_300
+  type: MK64:PACKED_GFX
+  offset: 0x88
+d_course_wario_stadium_packed_dl_360:
+  symbol: d_course_wario_stadium_packed_dl_360
+  type: MK64:PACKED_GFX
+  offset: 0x99
+d_course_wario_stadium_packed_dl_3B0:
+  symbol: d_course_wario_stadium_packed_dl_3B0
+  type: MK64:PACKED_GFX
+  offset: 0xB5
+d_course_wario_stadium_packed_dl_3C0:
+  symbol: d_course_wario_stadium_packed_dl_3C0
+  type: MK64:PACKED_GFX
+  offset: 0xB9
+d_course_wario_stadium_packed_dl_428:
+  symbol: d_course_wario_stadium_packed_dl_428
+  type: MK64:PACKED_GFX
+  offset: 0xCD
+d_course_wario_stadium_packed_dl_500:
+  symbol: d_course_wario_stadium_packed_dl_500
+  type: MK64:PACKED_GFX
+  offset: 0x106
+d_course_wario_stadium_packed_dl_5D8:
+  symbol: d_course_wario_stadium_packed_dl_5D8
+  type: MK64:PACKED_GFX
+  offset: 0x13F
+d_course_wario_stadium_packed_dl_638:
+  symbol: d_course_wario_stadium_packed_dl_638
+  type: MK64:PACKED_GFX
+  offset: 0x150
+d_course_wario_stadium_packed_dl_6F8:
+  symbol: d_course_wario_stadium_packed_dl_6F8
+  type: MK64:PACKED_GFX
+  offset: 0x17A
+d_course_wario_stadium_packed_dl_7C0:
+  symbol: d_course_wario_stadium_packed_dl_7C0
+  type: MK64:PACKED_GFX
+  offset: 0x1A7
+d_course_wario_stadium_packed_dl_880:
+  symbol: d_course_wario_stadium_packed_dl_880
+  type: MK64:PACKED_GFX
+  offset: 0x1D1
+d_course_wario_stadium_packed_dl_8F0:
+  symbol: d_course_wario_stadium_packed_dl_8F0
+  type: MK64:PACKED_GFX
+  offset: 0x1EC
+d_course_wario_stadium_packed_dl_960:
+  symbol: d_course_wario_stadium_packed_dl_960
+  type: MK64:PACKED_GFX
+  offset: 0x207
+d_course_wario_stadium_packed_dl_A20:
+  symbol: d_course_wario_stadium_packed_dl_A20
+  type: MK64:PACKED_GFX
+  offset: 0x231
+d_course_wario_stadium_packed_dl_A88:
+  symbol: d_course_wario_stadium_packed_dl_A88
+  type: MK64:PACKED_GFX
+  offset: 0x245
+d_course_wario_stadium_packed_dl_AE8:
+  symbol: d_course_wario_stadium_packed_dl_AE8
+  type: MK64:PACKED_GFX
+  offset: 0x267
+d_course_wario_stadium_packed_dl_B60:
+  symbol: d_course_wario_stadium_packed_dl_B60
+  type: MK64:PACKED_GFX
+  offset: 0x287
+d_course_wario_stadium_packed_dl_BD8:
+  symbol: d_course_wario_stadium_packed_dl_BD8
+  type: MK64:PACKED_GFX
+  offset: 0x2A7
+d_course_wario_stadium_packed_dl_C50:
+  symbol: d_course_wario_stadium_packed_dl_C50
+  type: MK64:PACKED_GFX
+  offset: 0x2C5
+d_course_wario_stadium_packed_dl_CC8:
+  symbol: d_course_wario_stadium_packed_dl_CC8
+  type: MK64:PACKED_GFX
+  offset: 0x2E3
+d_course_wario_stadium_packed_dl_D50:
+  symbol: d_course_wario_stadium_packed_dl_D50
+  type: MK64:PACKED_GFX
+  offset: 0x30B
+d_course_wario_stadium_packed_dl_DD0:
+  symbol: d_course_wario_stadium_packed_dl_DD0
+  type: MK64:PACKED_GFX
+  offset: 0x32E
+d_course_wario_stadium_packed_dl_E48:
+  symbol: d_course_wario_stadium_packed_dl_E48
+  type: MK64:PACKED_GFX
+  offset: 0x34E
+d_course_wario_stadium_packed_dl_EC0:
+  symbol: d_course_wario_stadium_packed_dl_EC0
+  type: MK64:PACKED_GFX
+  offset: 0x36E
+d_course_wario_stadium_packed_dl_F08:
+  symbol: d_course_wario_stadium_packed_dl_F08
+  type: MK64:PACKED_GFX
+  offset: 0x387
+d_course_wario_stadium_packed_dl_F20:
+  symbol: d_course_wario_stadium_packed_dl_F20
+  type: MK64:PACKED_GFX
+  offset: 0x38E
+d_course_wario_stadium_packed_dl_F38:
+  symbol: d_course_wario_stadium_packed_dl_F38
+  type: MK64:PACKED_GFX
+  offset: 0x395
+d_course_wario_stadium_packed_dl_FA8:
+  symbol: d_course_wario_stadium_packed_dl_FA8
+  type: MK64:PACKED_GFX
+  offset: 0x3B0
+d_course_wario_stadium_packed_dl_1018:
+  symbol: d_course_wario_stadium_packed_dl_1018
+  type: MK64:PACKED_GFX
+  offset: 0x3CB
+d_course_wario_stadium_packed_dl_1088:
+  symbol: d_course_wario_stadium_packed_dl_1088
+  type: MK64:PACKED_GFX
+  offset: 0x3E6
+d_course_wario_stadium_packed_dl_1100:
+  symbol: d_course_wario_stadium_packed_dl_1100
+  type: MK64:PACKED_GFX
+  offset: 0x406
+d_course_wario_stadium_packed_dl_1180:
+  symbol: d_course_wario_stadium_packed_dl_1180
+  type: MK64:PACKED_GFX
+  offset: 0x429
+d_course_wario_stadium_packed_dl_11E0:
+  symbol: d_course_wario_stadium_packed_dl_11E0
+  type: MK64:PACKED_GFX
+  offset: 0x43A
+d_course_wario_stadium_packed_dl_1290:
+  symbol: d_course_wario_stadium_packed_dl_1290
+  type: MK64:PACKED_GFX
+  offset: 0x479
+d_course_wario_stadium_packed_dl_1348:
+  symbol: d_course_wario_stadium_packed_dl_1348
+  type: MK64:PACKED_GFX
+  offset: 0x49E
+d_course_wario_stadium_packed_dl_13D0:
+  symbol: d_course_wario_stadium_packed_dl_13D0
+  type: MK64:PACKED_GFX
+  offset: 0x4C8
+d_course_wario_stadium_packed_dl_1458:
+  symbol: d_course_wario_stadium_packed_dl_1458
+  type: MK64:PACKED_GFX
+  offset: 0x4F2
+d_course_wario_stadium_packed_dl_14C8:
+  symbol: d_course_wario_stadium_packed_dl_14C8
+  type: MK64:PACKED_GFX
+  offset: 0x50D
+d_course_wario_stadium_packed_dl_1540:
+  symbol: d_course_wario_stadium_packed_dl_1540
+  type: MK64:PACKED_GFX
+  offset: 0x52B
+d_course_wario_stadium_packed_dl_15C8:
+  symbol: d_course_wario_stadium_packed_dl_15C8
+  type: MK64:PACKED_GFX
+  offset: 0x553
+d_course_wario_stadium_packed_dl_1640:
+  symbol: d_course_wario_stadium_packed_dl_1640
+  type: MK64:PACKED_GFX
+  offset: 0x573
+d_course_wario_stadium_packed_dl_16B0:
+  symbol: d_course_wario_stadium_packed_dl_16B0
+  type: MK64:PACKED_GFX
+  offset: 0x58E
+d_course_wario_stadium_packed_dl_1710:
+  symbol: d_course_wario_stadium_packed_dl_1710
+  type: MK64:PACKED_GFX
+  offset: 0x59F
+d_course_wario_stadium_packed_dl_1778:
+  symbol: d_course_wario_stadium_packed_dl_1778
+  type: MK64:PACKED_GFX
+  offset: 0x5B5
+d_course_wario_stadium_packed_dl_17F0:
+  symbol: d_course_wario_stadium_packed_dl_17F0
+  type: MK64:PACKED_GFX
+  offset: 0x5D3
+d_course_wario_stadium_packed_dl_1860:
+  symbol: d_course_wario_stadium_packed_dl_1860
+  type: MK64:PACKED_GFX
+  offset: 0x5EE
+d_course_wario_stadium_packed_dl_18D8:
+  symbol: d_course_wario_stadium_packed_dl_18D8
+  type: MK64:PACKED_GFX
+  offset: 0x60E
+d_course_wario_stadium_packed_dl_1948:
+  symbol: d_course_wario_stadium_packed_dl_1948
+  type: MK64:PACKED_GFX
+  offset: 0x629
+d_course_wario_stadium_packed_dl_19D0:
+  symbol: d_course_wario_stadium_packed_dl_19D0
+  type: MK64:PACKED_GFX
+  offset: 0x653
+d_course_wario_stadium_packed_dl_1A50:
+  symbol: d_course_wario_stadium_packed_dl_1A50
+  type: MK64:PACKED_GFX
+  offset: 0x678
+d_course_wario_stadium_packed_dl_1B10:
+  symbol: d_course_wario_stadium_packed_dl_1B10
+  type: MK64:PACKED_GFX
+  offset: 0x6C5
+d_course_wario_stadium_packed_dl_1B70:
+  symbol: d_course_wario_stadium_packed_dl_1B70
+  type: MK64:PACKED_GFX
+  offset: 0x6D6
+d_course_wario_stadium_packed_dl_1BD0:
+  symbol: d_course_wario_stadium_packed_dl_1BD0
+  type: MK64:PACKED_GFX
+  offset: 0x6E7
+d_course_wario_stadium_packed_dl_1C40:
+  symbol: d_course_wario_stadium_packed_dl_1C40
+  type: MK64:PACKED_GFX
+  offset: 0x702
+d_course_wario_stadium_packed_dl_1D20:
+  symbol: d_course_wario_stadium_packed_dl_1D20
+  type: MK64:PACKED_GFX
+  offset: 0x754
+d_course_wario_stadium_packed_dl_1DE8:
+  symbol: d_course_wario_stadium_packed_dl_1DE8
+  type: MK64:PACKED_GFX
+  offset: 0x78F
+d_course_wario_stadium_packed_dl_1EA0:
+  symbol: d_course_wario_stadium_packed_dl_1EA0
+  type: MK64:PACKED_GFX
+  offset: 0x7C0
+d_course_wario_stadium_packed_dl_1F28:
+  symbol: d_course_wario_stadium_packed_dl_1F28
+  type: MK64:PACKED_GFX
+  offset: 0x7EA
+d_course_wario_stadium_packed_dl_1FC8:
+  symbol: d_course_wario_stadium_packed_dl_1FC8
+  type: MK64:PACKED_GFX
+  offset: 0x823
+d_course_wario_stadium_packed_dl_20A0:
+  symbol: d_course_wario_stadium_packed_dl_20A0
+  type: MK64:PACKED_GFX
+  offset: 0x868
+d_course_wario_stadium_packed_dl_2108:
+  symbol: d_course_wario_stadium_packed_dl_2108
+  type: MK64:PACKED_GFX
+  offset: 0x87E
+d_course_wario_stadium_packed_dl_21D8:
+  symbol: d_course_wario_stadium_packed_dl_21D8
+  type: MK64:PACKED_GFX
+  offset: 0x8D3
+d_course_wario_stadium_packed_dl_2238:
+  symbol: d_course_wario_stadium_packed_dl_2238
+  type: MK64:PACKED_GFX
+  offset: 0x8E4
+d_course_wario_stadium_packed_dl_2298:
+  symbol: d_course_wario_stadium_packed_dl_2298
+  type: MK64:PACKED_GFX
+  offset: 0x8F5
+d_course_wario_stadium_packed_dl_2318:
+  symbol: d_course_wario_stadium_packed_dl_2318
+  type: MK64:PACKED_GFX
+  offset: 0x91A
+d_course_wario_stadium_packed_dl_2390:
+  symbol: d_course_wario_stadium_packed_dl_2390
+  type: MK64:PACKED_GFX
+  offset: 0x93A
+d_course_wario_stadium_packed_dl_2400:
+  symbol: d_course_wario_stadium_packed_dl_2400
+  type: MK64:PACKED_GFX
+  offset: 0x955
+d_course_wario_stadium_packed_dl_24D0:
+  symbol: d_course_wario_stadium_packed_dl_24D0
+  type: MK64:PACKED_GFX
+  offset: 0x995
+d_course_wario_stadium_packed_dl_2598:
+  symbol: d_course_wario_stadium_packed_dl_2598
+  type: MK64:PACKED_GFX
+  offset: 0x9D0
+d_course_wario_stadium_packed_dl_2658:
+  symbol: d_course_wario_stadium_packed_dl_2658
+  type: MK64:PACKED_GFX
+  offset: 0xA06
+d_course_wario_stadium_packed_dl_26C8:
+  symbol: d_course_wario_stadium_packed_dl_26C8
+  type: MK64:PACKED_GFX
+  offset: 0xA21
+d_course_wario_stadium_packed_dl_2780:
+  symbol: d_course_wario_stadium_packed_dl_2780
+  type: MK64:PACKED_GFX
+  offset: 0xA52
+d_course_wario_stadium_packed_dl_2848:
+  symbol: d_course_wario_stadium_packed_dl_2848
+  type: MK64:PACKED_GFX
+  offset: 0xA8D
+d_course_wario_stadium_packed_dl_2908:
+  symbol: d_course_wario_stadium_packed_dl_2908
+  type: MK64:PACKED_GFX
+  offset: 0xAC1
+d_course_wario_stadium_packed_dl_29B8:
+  symbol: d_course_wario_stadium_packed_dl_29B8
+  type: MK64:PACKED_GFX
+  offset: 0xAED
+d_course_wario_stadium_packed_dl_2A28:
+  symbol: d_course_wario_stadium_packed_dl_2A28
+  type: MK64:PACKED_GFX
+  offset: 0xB08
+d_course_wario_stadium_packed_dl_2AB0:
+  symbol: d_course_wario_stadium_packed_dl_2AB0
+  type: MK64:PACKED_GFX
+  offset: 0xB32
+d_course_wario_stadium_packed_dl_2BB0:
+  symbol: d_course_wario_stadium_packed_dl_2BB0
+  type: MK64:PACKED_GFX
+  offset: 0xB8C
+d_course_wario_stadium_packed_dl_2C18:
+  symbol: d_course_wario_stadium_packed_dl_2C18
+  type: MK64:PACKED_GFX
+  offset: 0xBA2
+d_course_wario_stadium_packed_dl_2C80:
+  symbol: d_course_wario_stadium_packed_dl_2C80
+  type: MK64:PACKED_GFX
+  offset: 0xBB8
+d_course_wario_stadium_packed_dl_2CE8:
+  symbol: d_course_wario_stadium_packed_dl_2CE8
+  type: MK64:PACKED_GFX
+  offset: 0xBCE
+d_course_wario_stadium_packed_dl_2DB0:
+  symbol: d_course_wario_stadium_packed_dl_2DB0
+  type: MK64:PACKED_GFX
+  offset: 0xC07
+d_course_wario_stadium_packed_dl_2E90:
+  symbol: d_course_wario_stadium_packed_dl_2E90
+  type: MK64:PACKED_GFX
+  offset: 0xC59
+d_course_wario_stadium_packed_dl_2F08:
+  symbol: d_course_wario_stadium_packed_dl_2F08
+  type: MK64:PACKED_GFX
+  offset: 0xC77
+d_course_wario_stadium_packed_dl_2F78:
+  symbol: d_course_wario_stadium_packed_dl_2F78
+  type: MK64:PACKED_GFX
+  offset: 0xC90
+d_course_wario_stadium_packed_dl_2FE8:
+  symbol: d_course_wario_stadium_packed_dl_2FE8
+  type: MK64:PACKED_GFX
+  offset: 0xCAB
+d_course_wario_stadium_packed_dl_3070:
+  symbol: d_course_wario_stadium_packed_dl_3070
+  type: MK64:PACKED_GFX
+  offset: 0xCD5
+d_course_wario_stadium_packed_dl_30E8:
+  symbol: d_course_wario_stadium_packed_dl_30E8
+  type: MK64:PACKED_GFX
+  offset: 0xCF3
+d_course_wario_stadium_packed_dl_3160:
+  symbol: d_course_wario_stadium_packed_dl_3160
+  type: MK64:PACKED_GFX
+  offset: 0xD13
+d_course_wario_stadium_packed_dl_31F0:
+  symbol: d_course_wario_stadium_packed_dl_31F0
+  type: MK64:PACKED_GFX
+  offset: 0xD42
+d_course_wario_stadium_packed_dl_3260:
+  symbol: d_course_wario_stadium_packed_dl_3260
+  type: MK64:PACKED_GFX
+  offset: 0xD5D
+d_course_wario_stadium_packed_dl_32D0:
+  symbol: d_course_wario_stadium_packed_dl_32D0
+  type: MK64:PACKED_GFX
+  offset: 0xD76
+d_course_wario_stadium_packed_dl_3350:
+  symbol: d_course_wario_stadium_packed_dl_3350
+  type: MK64:PACKED_GFX
+  offset: 0xD99
+d_course_wario_stadium_packed_dl_33C0:
+  symbol: d_course_wario_stadium_packed_dl_33C0
+  type: MK64:PACKED_GFX
+  offset: 0xDB4
+d_course_wario_stadium_packed_dl_3438:
+  symbol: d_course_wario_stadium_packed_dl_3438
+  type: MK64:PACKED_GFX
+  offset: 0xDD2
+d_course_wario_stadium_packed_dl_34A0:
+  symbol: d_course_wario_stadium_packed_dl_34A0
+  type: MK64:PACKED_GFX
+  offset: 0xDE8
+d_course_wario_stadium_packed_dl_3518:
+  symbol: d_course_wario_stadium_packed_dl_3518
+  type: MK64:PACKED_GFX
+  offset: 0xE06
+d_course_wario_stadium_packed_dl_3598:
+  symbol: d_course_wario_stadium_packed_dl_3598
+  type: MK64:PACKED_GFX
+  offset: 0xE29
+d_course_wario_stadium_packed_dl_35F8:
+  symbol: d_course_wario_stadium_packed_dl_35F8
+  type: MK64:PACKED_GFX
+  offset: 0xE3A
+d_course_wario_stadium_packed_dl_3660:
+  symbol: d_course_wario_stadium_packed_dl_3660
+  type: MK64:PACKED_GFX
+  offset: 0xE4E
+d_course_wario_stadium_packed_dl_36D0:
+  symbol: d_course_wario_stadium_packed_dl_36D0
+  type: MK64:PACKED_GFX
+  offset: 0xE69
+d_course_wario_stadium_packed_dl_3758:
+  symbol: d_course_wario_stadium_packed_dl_3758
+  type: MK64:PACKED_GFX
+  offset: 0xE91
+d_course_wario_stadium_packed_dl_37E0:
+  symbol: d_course_wario_stadium_packed_dl_37E0
+  type: MK64:PACKED_GFX
+  offset: 0xEB9
+d_course_wario_stadium_packed_dl_3848:
+  symbol: d_course_wario_stadium_packed_dl_3848
+  type: MK64:PACKED_GFX
+  offset: 0xECD
+d_course_wario_stadium_packed_dl_38F8:
+  symbol: d_course_wario_stadium_packed_dl_38F8
+  type: MK64:PACKED_GFX
+  offset: 0xF0D
+d_course_wario_stadium_packed_dl_3960:
+  symbol: d_course_wario_stadium_packed_dl_3960
+  type: MK64:PACKED_GFX
+  offset: 0xF21
+d_course_wario_stadium_packed_dl_39D0:
+  symbol: d_course_wario_stadium_packed_dl_39D0
+  type: MK64:PACKED_GFX
+  offset: 0xF3C
+d_course_wario_stadium_packed_dl_3A30:
+  symbol: d_course_wario_stadium_packed_dl_3A30
+  type: MK64:PACKED_GFX
+  offset: 0xF4D
+d_course_wario_stadium_packed_dl_3AA8:
+  symbol: d_course_wario_stadium_packed_dl_3AA8
+  type: MK64:PACKED_GFX
+  offset: 0xF6D
+d_course_wario_stadium_packed_dl_3B08:
+  symbol: d_course_wario_stadium_packed_dl_3B08
+  type: MK64:PACKED_GFX
+  offset: 0xF7E
+d_course_wario_stadium_packed_dl_3B68:
+  symbol: d_course_wario_stadium_packed_dl_3B68
+  type: MK64:PACKED_GFX
+  offset: 0xF8F
+d_course_wario_stadium_packed_dl_3BD0:
+  symbol: d_course_wario_stadium_packed_dl_3BD0
+  type: MK64:PACKED_GFX
+  offset: 0xFA3
+d_course_wario_stadium_packed_dl_3C40:
+  symbol: d_course_wario_stadium_packed_dl_3C40
+  type: MK64:PACKED_GFX
+  offset: 0xFBE
+d_course_wario_stadium_packed_dl_3CA8:
+  symbol: d_course_wario_stadium_packed_dl_3CA8
+  type: MK64:PACKED_GFX
+  offset: 0xFD4
+d_course_wario_stadium_packed_dl_3D10:
+  symbol: d_course_wario_stadium_packed_dl_3D10
+  type: MK64:PACKED_GFX
+  offset: 0xFEA
+d_course_wario_stadium_packed_dl_3D80:
+  symbol: d_course_wario_stadium_packed_dl_3D80
+  type: MK64:PACKED_GFX
+  offset: 0x1005
+d_course_wario_stadium_packed_dl_3DE8:
+  symbol: d_course_wario_stadium_packed_dl_3DE8
+  type: MK64:PACKED_GFX
+  offset: 0x101B
+d_course_wario_stadium_packed_dl_3E50:
+  symbol: d_course_wario_stadium_packed_dl_3E50
+  type: MK64:PACKED_GFX
+  offset: 0x102F
+d_course_wario_stadium_packed_dl_3EC0:
+  symbol: d_course_wario_stadium_packed_dl_3EC0
+  type: MK64:PACKED_GFX
+  offset: 0x1057
+d_course_wario_stadium_packed_dl_3F70:
+  symbol: d_course_wario_stadium_packed_dl_3F70
+  type: MK64:PACKED_GFX
+  offset: 0x1077
+d_course_wario_stadium_packed_dl_4038:
+  symbol: d_course_wario_stadium_packed_dl_4038
+  type: MK64:PACKED_GFX
+  offset: 0x10A4
+d_course_wario_stadium_packed_dl_4098:
+  symbol: d_course_wario_stadium_packed_dl_4098
+  type: MK64:PACKED_GFX
+  offset: 0x10B5
+d_course_wario_stadium_packed_dl_4168:
+  symbol: d_course_wario_stadium_packed_dl_4168
+  type: MK64:PACKED_GFX
+  offset: 0x10E7
+d_course_wario_stadium_packed_dl_4218:
+  symbol: d_course_wario_stadium_packed_dl_4218
+  type: MK64:PACKED_GFX
+  offset: 0x1107
+d_course_wario_stadium_packed_dl_42C8:
+  symbol: d_course_wario_stadium_packed_dl_42C8
+  type: MK64:PACKED_GFX
+  offset: 0x1127
+d_course_wario_stadium_packed_dl_4378:
+  symbol: d_course_wario_stadium_packed_dl_4378
+  type: MK64:PACKED_GFX
+  offset: 0x1147
+d_course_wario_stadium_packed_dl_4438:
+  symbol: d_course_wario_stadium_packed_dl_4438
+  type: MK64:PACKED_GFX
+  offset: 0x1171
+d_course_wario_stadium_packed_dl_44E8:
+  symbol: d_course_wario_stadium_packed_dl_44E8
+  type: MK64:PACKED_GFX
+  offset: 0x1191
+d_course_wario_stadium_packed_dl_4598:
+  symbol: d_course_wario_stadium_packed_dl_4598
+  type: MK64:PACKED_GFX
+  offset: 0x11B1
+d_course_wario_stadium_packed_dl_4658:
+  symbol: d_course_wario_stadium_packed_dl_4658
+  type: MK64:PACKED_GFX
+  offset: 0x11DB
+d_course_wario_stadium_packed_dl_46B8:
+  symbol: d_course_wario_stadium_packed_dl_46B8
+  type: MK64:PACKED_GFX
+  offset: 0x11EC
+d_course_wario_stadium_packed_dl_4768:
+  symbol: d_course_wario_stadium_packed_dl_4768
+  type: MK64:PACKED_GFX
+  offset: 0x120C
+d_course_wario_stadium_packed_dl_47D8:
+  symbol: d_course_wario_stadium_packed_dl_47D8
+  type: MK64:PACKED_GFX
+  offset: 0x1234
+d_course_wario_stadium_packed_dl_4808:
+  symbol: d_course_wario_stadium_packed_dl_4808
+  type: MK64:PACKED_GFX
+  offset: 0x1244
+d_course_wario_stadium_packed_dl_4930:
+  symbol: d_course_wario_stadium_packed_dl_4930
+  type: MK64:PACKED_GFX
+  offset: 0x12AD
+d_course_wario_stadium_packed_dl_4AA0:
+  symbol: d_course_wario_stadium_packed_dl_4AA0
+  type: MK64:PACKED_GFX
+  offset: 0x1341
+d_course_wario_stadium_packed_dl_4BA8:
+  symbol: d_course_wario_stadium_packed_dl_4BA8
+  type: MK64:PACKED_GFX
+  offset: 0x13B9
+d_course_wario_stadium_packed_dl_4D68:
+  symbol: d_course_wario_stadium_packed_dl_4D68
+  type: MK64:PACKED_GFX
+  offset: 0x147D
+d_course_wario_stadium_packed_dl_4EB8:
+  symbol: d_course_wario_stadium_packed_dl_4EB8
+  type: MK64:PACKED_GFX
+  offset: 0x14FD
+d_course_wario_stadium_packed_dl_4FB8:
+  symbol: d_course_wario_stadium_packed_dl_4FB8
+  type: MK64:PACKED_GFX
+  offset: 0x154D
+d_course_wario_stadium_packed_dl_50A0:
+  symbol: d_course_wario_stadium_packed_dl_50A0
+  type: MK64:PACKED_GFX
+  offset: 0x1590
+d_course_wario_stadium_packed_dl_5208:
+  symbol: d_course_wario_stadium_packed_dl_5208
+  type: MK64:PACKED_GFX
+  offset: 0x161F
+d_course_wario_stadium_packed_dl_52F8:
+  symbol: d_course_wario_stadium_packed_dl_52F8
+  type: MK64:PACKED_GFX
+  offset: 0x1667
+d_course_wario_stadium_packed_dl_53D0:
+  symbol: d_course_wario_stadium_packed_dl_53D0
+  type: MK64:PACKED_GFX
+  offset: 0x169E
+d_course_wario_stadium_packed_dl_5508:
+  symbol: d_course_wario_stadium_packed_dl_5508
+  type: MK64:PACKED_GFX
+  offset: 0x170F
+d_course_wario_stadium_packed_dl_5590:
+  symbol: d_course_wario_stadium_packed_dl_5590
+  type: MK64:PACKED_GFX
+  offset: 0x1739
+d_course_wario_stadium_packed_dl_5670:
+  symbol: d_course_wario_stadium_packed_dl_5670
+  type: MK64:PACKED_GFX
+  offset: 0x1775
+d_course_wario_stadium_packed_dl_56E0:
+  symbol: d_course_wario_stadium_packed_dl_56E0
+  type: MK64:PACKED_GFX
+  offset: 0x179D
+d_course_wario_stadium_packed_dl_5768:
+  symbol: d_course_wario_stadium_packed_dl_5768
+  type: MK64:PACKED_GFX
+  offset: 0x17C5
+d_course_wario_stadium_packed_dl_57F8:
+  symbol: d_course_wario_stadium_packed_dl_57F8
+  type: MK64:PACKED_GFX
+  offset: 0x17F4
+d_course_wario_stadium_packed_dl_5888:
+  symbol: d_course_wario_stadium_packed_dl_5888
+  type: MK64:PACKED_GFX
+  offset: 0x1823
+d_course_wario_stadium_packed_dl_5938:
+  symbol: d_course_wario_stadium_packed_dl_5938
+  type: MK64:PACKED_GFX
+  offset: 0x1864
+d_course_wario_stadium_packed_dl_59C0:
+  symbol: d_course_wario_stadium_packed_dl_59C0
+  type: MK64:PACKED_GFX
+  offset: 0x188E
+d_course_wario_stadium_packed_dl_5A38:
+  symbol: d_course_wario_stadium_packed_dl_5A38
+  type: MK64:PACKED_GFX
+  offset: 0x18AC
+d_course_wario_stadium_packed_dl_5AA8:
+  symbol: d_course_wario_stadium_packed_dl_5AA8
+  type: MK64:PACKED_GFX
+  offset: 0x18C5
+d_course_wario_stadium_packed_dl_5B38:
+  symbol: d_course_wario_stadium_packed_dl_5B38
+  type: MK64:PACKED_GFX
+  offset: 0x18F4
+d_course_wario_stadium_packed_dl_5BB8:
+  symbol: d_course_wario_stadium_packed_dl_5BB8
+  type: MK64:PACKED_GFX
+  offset: 0x1917
+d_course_wario_stadium_packed_dl_5C30:
+  symbol: d_course_wario_stadium_packed_dl_5C30
+  type: MK64:PACKED_GFX
+  offset: 0x1935
+d_course_wario_stadium_packed_dl_5CB0:
+  symbol: d_course_wario_stadium_packed_dl_5CB0
+  type: MK64:PACKED_GFX
+  offset: 0x195A
+d_course_wario_stadium_packed_dl_5D20:
+  symbol: d_course_wario_stadium_packed_dl_5D20
+  type: MK64:PACKED_GFX
+  offset: 0x1973
+d_course_wario_stadium_packed_dl_5D90:
+  symbol: d_course_wario_stadium_packed_dl_5D90
+  type: MK64:PACKED_GFX
+  offset: 0x198C
+d_course_wario_stadium_packed_dl_5E00:
+  symbol: d_course_wario_stadium_packed_dl_5E00
+  type: MK64:PACKED_GFX
+  offset: 0x19B4
+d_course_wario_stadium_packed_dl_5E88:
+  symbol: d_course_wario_stadium_packed_dl_5E88
+  type: MK64:PACKED_GFX
+  offset: 0x19DC
+d_course_wario_stadium_packed_dl_5F08:
+  symbol: d_course_wario_stadium_packed_dl_5F08
+  type: MK64:PACKED_GFX
+  offset: 0x1A01
+d_course_wario_stadium_packed_dl_5FC8:
+  symbol: d_course_wario_stadium_packed_dl_5FC8
+  type: MK64:PACKED_GFX
+  offset: 0x1A4C
+d_course_wario_stadium_packed_dl_6068:
+  symbol: d_course_wario_stadium_packed_dl_6068
+  type: MK64:PACKED_GFX
+  offset: 0x1A7F
+d_course_wario_stadium_packed_dl_6108:
+  symbol: d_course_wario_stadium_packed_dl_6108
+  type: MK64:PACKED_GFX
+  offset: 0x1AB4
+d_course_wario_stadium_packed_dl_6198:
+  symbol: d_course_wario_stadium_packed_dl_6198
+  type: MK64:PACKED_GFX
+  offset: 0x1AE3
+d_course_wario_stadium_packed_dl_62C8:
+  symbol: d_course_wario_stadium_packed_dl_62C8
+  type: MK64:PACKED_GFX
+  offset: 0x1B6C
+d_course_wario_stadium_packed_dl_6390:
+  symbol: d_course_wario_stadium_packed_dl_6390
+  type: MK64:PACKED_GFX
+  offset: 0x1BB8
+d_course_wario_stadium_packed_dl_6418:
+  symbol: d_course_wario_stadium_packed_dl_6418
+  type: MK64:PACKED_GFX
+  offset: 0x1BE0
+d_course_wario_stadium_packed_dl_64E8:
+  symbol: d_course_wario_stadium_packed_dl_64E8
+  type: MK64:PACKED_GFX
+  offset: 0x1C33
+d_course_wario_stadium_packed_dl_65A0:
+  symbol: d_course_wario_stadium_packed_dl_65A0
+  type: MK64:PACKED_GFX
+  offset: 0x1C77
+d_course_wario_stadium_packed_dl_6658:
+  symbol: d_course_wario_stadium_packed_dl_6658
+  type: MK64:PACKED_GFX
+  offset: 0x1CB9
+d_course_wario_stadium_packed_dl_6700:
+  symbol: d_course_wario_stadium_packed_dl_6700
+  type: MK64:PACKED_GFX
+  offset: 0x1CF3
+d_course_wario_stadium_packed_dl_67B8:
+  symbol: d_course_wario_stadium_packed_dl_67B8
+  type: MK64:PACKED_GFX
+  offset: 0x1D37
+d_course_wario_stadium_packed_dl_6878:
+  symbol: d_course_wario_stadium_packed_dl_6878
+  type: MK64:PACKED_GFX
+  offset: 0x1D82
+d_course_wario_stadium_packed_dl_68F0:
+  symbol: d_course_wario_stadium_packed_dl_68F0
+  type: MK64:PACKED_GFX
+  offset: 0x1DA2
+d_course_wario_stadium_packed_dl_6950:
+  symbol: d_course_wario_stadium_packed_dl_6950
+  type: MK64:PACKED_GFX
+  offset: 0x1DB1
+d_course_wario_stadium_packed_dl_6A10:
+  symbol: d_course_wario_stadium_packed_dl_6A10
+  type: MK64:PACKED_GFX
+  offset: 0x1DFC
+d_course_wario_stadium_packed_dl_6AE8:
+  symbol: d_course_wario_stadium_packed_dl_6AE8
+  type: MK64:PACKED_GFX
+  offset: 0x1E52
+d_course_wario_stadium_packed_dl_6BE0:
+  symbol: d_course_wario_stadium_packed_dl_6BE0
+  type: MK64:PACKED_GFX
+  offset: 0x1EBC
+d_course_wario_stadium_packed_dl_6C80:
+  symbol: d_course_wario_stadium_packed_dl_6C80
+  type: MK64:PACKED_GFX
+  offset: 0x1EF3
+d_course_wario_stadium_packed_dl_6D20:
+  symbol: d_course_wario_stadium_packed_dl_6D20
+  type: MK64:PACKED_GFX
+  offset: 0x1F2A
+d_course_wario_stadium_packed_dl_6DD8:
+  symbol: d_course_wario_stadium_packed_dl_6DD8
+  type: MK64:PACKED_GFX
+  offset: 0x1F6D
+d_course_wario_stadium_packed_dl_6EC8:
+  symbol: d_course_wario_stadium_packed_dl_6EC8
+  type: MK64:PACKED_GFX
+  offset: 0x1FBF
+d_course_wario_stadium_packed_dl_6FC0:
+  symbol: d_course_wario_stadium_packed_dl_6FC0
+  type: MK64:PACKED_GFX
+  offset: 0x2018
+d_course_wario_stadium_packed_dl_7090:
+  symbol: d_course_wario_stadium_packed_dl_7090
+  type: MK64:PACKED_GFX
+  offset: 0x206D
+d_course_wario_stadium_packed_dl_7220:
+  symbol: d_course_wario_stadium_packed_dl_7220
+  type: MK64:PACKED_GFX
+  offset: 0x2130
+d_course_wario_stadium_packed_dl_7338:
+  symbol: d_course_wario_stadium_packed_dl_7338
+  type: MK64:PACKED_GFX
+  offset: 0x219B
+d_course_wario_stadium_packed_dl_73F0:
+  symbol: d_course_wario_stadium_packed_dl_73F0
+  type: MK64:PACKED_GFX
+  offset: 0x21E3
+d_course_wario_stadium_packed_dl_7530:
+  symbol: d_course_wario_stadium_packed_dl_7530
+  type: MK64:PACKED_GFX
+  offset: 0x2267
+d_course_wario_stadium_packed_dl_75A8:
+  symbol: d_course_wario_stadium_packed_dl_75A8
+  type: MK64:PACKED_GFX
+  offset: 0x2285
+d_course_wario_stadium_packed_dl_7630:
+  symbol: d_course_wario_stadium_packed_dl_7630
+  type: MK64:PACKED_GFX
+  offset: 0x22AF
+d_course_wario_stadium_packed_dl_76E0:
+  symbol: d_course_wario_stadium_packed_dl_76E0
+  type: MK64:PACKED_GFX
+  offset: 0x22F0
+d_course_wario_stadium_packed_dl_77A8:
+  symbol: d_course_wario_stadium_packed_dl_77A8
+  type: MK64:PACKED_GFX
+  offset: 0x2340
+d_course_wario_stadium_packed_dl_7838:
+  symbol: d_course_wario_stadium_packed_dl_7838
+  type: MK64:PACKED_GFX
+  offset: 0x236F
+d_course_wario_stadium_packed_dl_7960:
+  symbol: d_course_wario_stadium_packed_dl_7960
+  type: MK64:PACKED_GFX
+  offset: 0x23E4
+d_course_wario_stadium_packed_dl_7A40:
+  symbol: d_course_wario_stadium_packed_dl_7A40
+  type: MK64:PACKED_GFX
+  offset: 0x242E
+d_course_wario_stadium_packed_dl_7B20:
+  symbol: d_course_wario_stadium_packed_dl_7B20
+  type: MK64:PACKED_GFX
+  offset: 0x2478
+d_course_wario_stadium_packed_dl_7BE0:
+  symbol: d_course_wario_stadium_packed_dl_7BE0
+  type: MK64:PACKED_GFX
+  offset: 0x24BF
+d_course_wario_stadium_packed_dl_7D00:
+  symbol: d_course_wario_stadium_packed_dl_7D00
+  type: MK64:PACKED_GFX
+  offset: 0x252D
+d_course_wario_stadium_packed_dl_7DF8:
+  symbol: d_course_wario_stadium_packed_dl_7DF8
+  type: MK64:PACKED_GFX
+  offset: 0x2584
+d_course_wario_stadium_packed_dl_7ED0:
+  symbol: d_course_wario_stadium_packed_dl_7ED0
+  type: MK64:PACKED_GFX
+  offset: 0x25C7
+d_course_wario_stadium_packed_dl_7FB0:
+  symbol: d_course_wario_stadium_packed_dl_7FB0
+  type: MK64:PACKED_GFX
+  offset: 0x260F
+d_course_wario_stadium_packed_dl_8030:
+  symbol: d_course_wario_stadium_packed_dl_8030
+  type: MK64:PACKED_GFX
+  offset: 0x2634
+d_course_wario_stadium_packed_dl_80E8:
+  symbol: d_course_wario_stadium_packed_dl_80E8
+  type: MK64:PACKED_GFX
+  offset: 0x267C
+d_course_wario_stadium_packed_dl_8240:
+  symbol: d_course_wario_stadium_packed_dl_8240
+  type: MK64:PACKED_GFX
+  offset: 0x270B
+d_course_wario_stadium_packed_dl_82F8:
+  symbol: d_course_wario_stadium_packed_dl_82F8
+  type: MK64:PACKED_GFX
+  offset: 0x2753
+d_course_wario_stadium_packed_dl_83A0:
+  symbol: d_course_wario_stadium_packed_dl_83A0
+  type: MK64:PACKED_GFX
+  offset: 0x2791
+d_course_wario_stadium_packed_dl_8438:
+  symbol: d_course_wario_stadium_packed_dl_8438
+  type: MK64:PACKED_GFX
+  offset: 0x27C5
+d_course_wario_stadium_packed_dl_8510:
+  symbol: d_course_wario_stadium_packed_dl_8510
+  type: MK64:PACKED_GFX
+  offset: 0x280A
+d_course_wario_stadium_packed_dl_85F0:
+  symbol: d_course_wario_stadium_packed_dl_85F0
+  type: MK64:PACKED_GFX
+  offset: 0x285C
+d_course_wario_stadium_packed_dl_8678:
+  symbol: d_course_wario_stadium_packed_dl_8678
+  type: MK64:PACKED_GFX
+  offset: 0x2886
+d_course_wario_stadium_packed_dl_8708:
+  symbol: d_course_wario_stadium_packed_dl_8708
+  type: MK64:PACKED_GFX
+  offset: 0x28B5
+d_course_wario_stadium_packed_dl_8798:
+  symbol: d_course_wario_stadium_packed_dl_8798
+  type: MK64:PACKED_GFX
+  offset: 0x28E4
+d_course_wario_stadium_packed_dl_88A0:
+  symbol: d_course_wario_stadium_packed_dl_88A0
+  type: MK64:PACKED_GFX
+  offset: 0x295C
+d_course_wario_stadium_packed_dl_8A68:
+  symbol: d_course_wario_stadium_packed_dl_8A68
+  type: MK64:PACKED_GFX
+  offset: 0x2A48
+d_course_wario_stadium_packed_dl_8C28:
+  symbol: d_course_wario_stadium_packed_dl_8C28
+  type: MK64:PACKED_GFX
+  offset: 0x2B31
+d_course_wario_stadium_packed_dl_8D28:
+  symbol: d_course_wario_stadium_packed_dl_8D28
+  type: MK64:PACKED_GFX
+  offset: 0x2BA4
+d_course_wario_stadium_packed_dl_8DE8:
+  symbol: d_course_wario_stadium_packed_dl_8DE8
+  type: MK64:PACKED_GFX
+  offset: 0x2BCE
+d_course_wario_stadium_packed_dl_8EF0:
+  symbol: d_course_wario_stadium_packed_dl_8EF0
+  type: MK64:PACKED_GFX
+  offset: 0x2C46
+d_course_wario_stadium_packed_dl_8FC8:
+  symbol: d_course_wario_stadium_packed_dl_8FC8
+  type: MK64:PACKED_GFX
+  offset: 0x2CA0
+d_course_wario_stadium_packed_dl_9090:
+  symbol: d_course_wario_stadium_packed_dl_9090
+  type: MK64:PACKED_GFX
+  offset: 0x2CF0
+d_course_wario_stadium_packed_dl_9120:
+  symbol: d_course_wario_stadium_packed_dl_9120
+  type: MK64:PACKED_GFX
+  offset: 0x2D1F
+d_course_wario_stadium_packed_dl_91E8:
+  symbol: d_course_wario_stadium_packed_dl_91E8
+  type: MK64:PACKED_GFX
+  offset: 0x2D6B
+d_course_wario_stadium_packed_dl_9328:
+  symbol: d_course_wario_stadium_packed_dl_9328
+  type: MK64:PACKED_GFX
+  offset: 0x2E02
+d_course_wario_stadium_packed_dl_93B0:
+  symbol: d_course_wario_stadium_packed_dl_93B0
+  type: MK64:PACKED_GFX
+  offset: 0x2E2C
+d_course_wario_stadium_packed_dl_9430:
+  symbol: d_course_wario_stadium_packed_dl_9430
+  type: MK64:PACKED_GFX
+  offset: 0x2E51
+d_course_wario_stadium_packed_dl_9590:
+  symbol: d_course_wario_stadium_packed_dl_9590
+  type: MK64:PACKED_GFX
+  offset: 0x2EFE
+d_course_wario_stadium_packed_dl_9668:
+  symbol: d_course_wario_stadium_packed_dl_9668
+  type: MK64:PACKED_GFX
+  offset: 0x2F56
+d_course_wario_stadium_packed_dl_9760:
+  symbol: d_course_wario_stadium_packed_dl_9760
+  type: MK64:PACKED_GFX
+  offset: 0x2FC4
+d_course_wario_stadium_packed_dl_9820:
+  symbol: d_course_wario_stadium_packed_dl_9820
+  type: MK64:PACKED_GFX
+  offset: 0x300D
+d_course_wario_stadium_packed_dl_98A0:
+  symbol: d_course_wario_stadium_packed_dl_98A0
+  type: MK64:PACKED_GFX
+  offset: 0x3032
+d_course_wario_stadium_packed_dl_9998:
+  symbol: d_course_wario_stadium_packed_dl_9998
+  type: MK64:PACKED_GFX
+  offset: 0x30A0
+d_course_wario_stadium_packed_dl_9AD8:
+  symbol: d_course_wario_stadium_packed_dl_9AD8
+  type: MK64:PACKED_GFX
+  offset: 0x3135
+d_course_wario_stadium_packed_dl_9C80:
+  symbol: d_course_wario_stadium_packed_dl_9C80
+  type: MK64:PACKED_GFX
+  offset: 0x320D
+d_course_wario_stadium_packed_dl_9D00:
+  symbol: d_course_wario_stadium_packed_dl_9D00
+  type: MK64:PACKED_GFX
+  offset: 0x3232
+d_course_wario_stadium_packed_dl_9D78:
+  symbol: d_course_wario_stadium_packed_dl_9D78
+  type: MK64:PACKED_GFX
+  offset: 0x3252
+d_course_wario_stadium_packed_dl_9E00:
+  symbol: d_course_wario_stadium_packed_dl_9E00
+  type: MK64:PACKED_GFX
+  offset: 0x327C
+d_course_wario_stadium_packed_dl_9EE0:
+  symbol: d_course_wario_stadium_packed_dl_9EE0
+  type: MK64:PACKED_GFX
+  offset: 0x32CE
+d_course_wario_stadium_packed_dl_9F18:
+  symbol: d_course_wario_stadium_packed_dl_9F18
+  type: MK64:PACKED_GFX
+  offset: 0x32E7
+d_course_wario_stadium_packed_dl_9F28:
+  symbol: d_course_wario_stadium_packed_dl_9F28
+  type: MK64:PACKED_GFX
+  offset: 0x32EB
+d_course_wario_stadium_packed_dl_A0C8:
+  symbol: d_course_wario_stadium_packed_dl_A0C8
+  type: MK64:PACKED_GFX
+  offset: 0x33DF
+d_course_wario_stadium_packed_dl_A0D8:
+  symbol: d_course_wario_stadium_packed_dl_A0D8
+  type: MK64:PACKED_GFX
+  offset: 0x33E3
+d_course_wario_stadium_packed_dl_A148:
+  symbol: d_course_wario_stadium_packed_dl_A148
+  type: MK64:PACKED_GFX
+  offset: 0x33FE
+d_course_wario_stadium_packed_dl_A1B8:
+  symbol: d_course_wario_stadium_packed_dl_A1B8
+  type: MK64:PACKED_GFX
+  offset: 0x3419
+d_course_wario_stadium_packed_dl_A228:
+  symbol: d_course_wario_stadium_packed_dl_A228
+  type: MK64:PACKED_GFX
+  offset: 0x3434
+d_course_wario_stadium_packed_dl_A248:
+  symbol: d_course_wario_stadium_packed_dl_A248
+  type: MK64:PACKED_GFX
+  offset: 0x343E
+d_course_wario_stadium_packed_dl_A448:
+  symbol: d_course_wario_stadium_packed_dl_A448
+  type: MK64:PACKED_GFX
+  offset: 0x34BD
+d_course_wario_stadium_packed_dl_A458:
+  symbol: d_course_wario_stadium_packed_dl_A458
+  type: MK64:PACKED_GFX
+  offset: 0x34C1
+d_course_wario_stadium_packed_dl_A4A8:
+  symbol: d_course_wario_stadium_packed_dl_A4A8
+  type: MK64:PACKED_GFX
+  offset: 0x34DD
+d_course_wario_stadium_packed_dl_A4C0:
+  symbol: d_course_wario_stadium_packed_dl_A4C0
+  type: MK64:PACKED_GFX
+  offset: 0x34E4

@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/royal_raceway_vertices.h"
-    #include "assets/royal_raceway_displaylists.h"
-    #include "assets/royal_raceway_data.h"
+    #include "assets/models/tracks/royal_raceway/royal_raceway_vertices.h"
+    #include "assets/models/tracks/royal_raceway/royal_raceway_displaylists.h"
+    #include "assets/models/tracks/royal_raceway/royal_raceway_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -25,7 +25,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitCourseObjects() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;

@@ -19,7 +19,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "render_player.h"
 #include "animation.h"
 #include "code_80005FD0.h"
@@ -36,11 +36,11 @@
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"
-#include <assets/some_data.h>
-#include <assets/luigi_raceway_data.h>
-#include <assets/moo_moo_farm_data.h>
-#include <assets/bowsers_castle_data.h>
-#include <assets/frappe_snowland_data.h>
+#include <assets/textures/some_data.h>
+#include <assets/models/tracks/luigi_raceway/luigi_raceway_data.h>
+#include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
+#include <assets/models/tracks/bowsers_castle/bowsers_castle_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
 #include "port/Game.h"
 #include "port/Engine.h"
 
@@ -48,6 +48,7 @@
 #include "engine/Matrix.h"
 
 #include "port/interpolation/FrameInterpolation.h"
+#include "assets/textures/tracks/sherbet_land/sherbet_land_data.h"
 
 Lights1 D_800E45C0[] = {
     gdSPDefLights1(100, 0, 0, 100, 0, 0, 0, -120, 0),

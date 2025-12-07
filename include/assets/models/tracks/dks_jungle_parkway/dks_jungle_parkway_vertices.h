@@ -1,0 +1,770 @@
+#pragma once
+
+#include <libultraship.h>
+#include <libultra/gbi.h>
+#include <align_asset_macro.h>
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000000[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000000";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000100[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000100";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000180[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000180";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000200[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000200";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000240[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000240";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040002C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040002C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000340[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000340";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000440[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000440";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000500[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000500";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000540[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000540";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000580[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000580";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040005C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040005C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000600[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000600";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040006C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040006C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000740[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000740";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000780[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000780";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040007C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040007C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000800[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000800";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000840[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000840";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040008C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040008C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000980[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000980";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000A00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000A00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000A40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000A40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000AC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000AC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000B00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000B00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000BC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000BC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000C40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000C40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000C80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000C80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000CC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000CC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000D40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000D40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000E00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000E00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000E80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000E80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000F00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000F00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04000FC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000FC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001040[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001040";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040010C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040010C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001140[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001140";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040011C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040011C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001240[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001240";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040012C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040012C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001340[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001340";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040013C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040013C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001440[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001440";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040014C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040014C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001540[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001540";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040015C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040015C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001640[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001640";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001780[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001780";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001840[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001840";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001900[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001900";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040019C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040019C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001A80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001A80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001BC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001BC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001C00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001C40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001C80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001CC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001CC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001D80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001D80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001E40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001E40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001F00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001F00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04001FC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001FC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002040[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002040";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002080[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002080";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002100[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002100";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002140[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002140";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002180[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002180";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002200[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002200";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002280[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002280";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040022C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040022C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002300[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002300";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002340[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002340";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002380[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002380";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002400[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002400";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002540[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002540";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002640[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002640";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002780[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002780";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040028C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040028C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002900[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002900";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002A40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002A40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002B00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002B00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002B80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002B80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002C40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002C40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002CC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002CC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002E00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002E00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002EC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002EC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002F00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002F40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04002F80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003000[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003000";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040030C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040030C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003100[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003100";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003180[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003180";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040031C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040031C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003240[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003240";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003280[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003280";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040032C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040032C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003340[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003340";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003380[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003380";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003400[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003400";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003480[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003480";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003500[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003500";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003580[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003580";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040036C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040036C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003780[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003780";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003800[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003800";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003840[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003840";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003900[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003900";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003980[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003980";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003AC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003AC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003B40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003B40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003B80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003B80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003BC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003BC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003C00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003C00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003C40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003C40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003CC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003CC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003D00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003D40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003D80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003DC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003DC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003E30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003E30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003E70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003E70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003EB0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003EB0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003EF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003EF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003F30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003F30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003F70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003F70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04003FB0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003FB0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040040B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040040B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040040F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040040F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004130[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004130";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004170[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004170";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040041B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040041B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040041F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040041F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040042B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040042B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004330[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004330";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004370[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004370";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040043B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040043B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004430[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004430";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004470[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004470";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004530[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004530";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004570[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004570";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040045B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040045B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040045F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040045F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004630[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004630";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004690[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004690";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004710[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004710";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004750[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004750";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040047D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040047D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004850[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004850";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040048D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040048D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004910[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004910";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004950[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004950";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004990[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004990";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040049D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040049D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004A50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004A50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004AD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004AD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004B10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004B50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004B90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004BD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004BD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004C50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004C50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004C90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004C90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004D10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004D50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004D90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004F10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004F10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04004F90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004F90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005050[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005050";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005110[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005110";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005290[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005290";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005390[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005390";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005450[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005450";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005490[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005490";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005590[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005590";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005690[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005690";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005750[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005750";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005890[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005890";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005910[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005910";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040059D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040059D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005AD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005AD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005B50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005B50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005D50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005D50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04005F50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005F50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006150[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006150";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006350[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006350";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006550[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006550";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006750[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006750";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006950[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006950";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006A50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006A50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006BD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006BD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006CF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006CF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04006E90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006E90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007060[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007060";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040071F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040071F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007270[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007270";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040072E0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040072E0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007390[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007390";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007430[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007430";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007620[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007620";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007820[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007820";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007A10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007A10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007BD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007BD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007DC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007DC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04007E90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007E90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008090[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008090";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008290[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008290";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008490[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008490";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008610[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008610";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008810[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008810";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008A10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008A10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008BF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008BF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008D20[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008D20";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008F00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008F00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04008FC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008FC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040091A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040091A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009320[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009320";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009500[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009500";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009560[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009560";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009710[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009710";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040098F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040098F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009A10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009A10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009C10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009C10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009DA0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009DA0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009ED0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009ED0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04009FC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009FC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A100[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A100";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A1C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A1C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A370[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A370";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A450[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A450";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A5B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A5B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A6F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A6F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A7F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A7F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A8D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A8D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400A990[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A990";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AB30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AB30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AD10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AD10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AD80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AD80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AEC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AEC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AF70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AF70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400AFF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AFF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B070[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B070";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B230[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B230";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B350[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B350";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B450[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B450";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B4D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B4D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B570[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B570";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B5F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B5F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B670[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B670";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B6B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B6B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B7F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B7F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400B9A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B9A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400BA90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BA90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400BC90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BC90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400BD60[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BD60";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400BE80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BE80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400BF60[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BF60";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C020[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C020";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C100[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C100";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C1C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C1C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C290[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C290";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C2F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C2F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C490[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C490";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C5A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C5A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C7A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C7A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400C890[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C890";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CA00[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CA00";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CAF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CAF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CB60[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CB60";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CBF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CBF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CC90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CC90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CD80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CD80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CE20[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CE20";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CE90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CE90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400CF50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CF50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D010[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D010";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D0D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D0D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D2C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D2C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D440[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D440";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D510[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D510";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D590[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D590";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D5D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D5D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D690[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D690";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D6D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D6D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D770[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D770";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D7F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D7F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400D9E0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D9E0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400DA80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DA80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400DB80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DB80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400DD70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DD70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400DE30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DE30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400DFC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DFC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E060[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E060";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E250[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E250";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E280[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E280";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E470[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E470";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E580[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E580";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E600[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E600";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E740[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E740";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400E940[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E940";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400EB40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EB40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400ED40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400ED40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400EDD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EDD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400EFD0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EFD0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400F1D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F1D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400F3B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F3B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400F5A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F5A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400F7A0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F7A0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400F8F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F8F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400FAE0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FAE0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400FCE0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FCE0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400FEC0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FEC0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x0400FF30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FF30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010050[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010050";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010250[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010250";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010450[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010450";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040105F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040105F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040107D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040107D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040109D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040109D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010A10[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010A10";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010B80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010B80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010D80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010D80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04010F80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010F80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011000[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011000";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011200[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011200";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011300[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011300";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011480[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011480";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011680[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011680";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011860[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011860";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011A40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011A40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011C40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011C40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011DE0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011DE0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04011FE0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011FE0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012160[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012160";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012340[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012340";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012540[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012540";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040126C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040126C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012840[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012840";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040128C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040128C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012A40[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012A40";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012BA0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012BA0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012DA0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012DA0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04012F80[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012F80";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013180[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013180";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040132C0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040132C0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013390[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013390";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013590[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013590";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013790[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013790";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013910[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013910";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013AF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013AF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013CF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013CF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04013EF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013EF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040140F0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040140F0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040142D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040142D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040143D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040143D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040145B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040145B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040147B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040147B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040148B0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040148B0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014970[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014970";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014B70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014B70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014C70[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014C70";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014D30[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014D30";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014ED0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014ED0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04014F90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014F90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015050[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015050";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015090[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015090";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040150D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040150D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040151D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040151D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040152D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040152D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040153D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040153D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040154D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040154D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015590[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015590";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015650[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015650";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015790[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015790";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040158D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040158D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015950[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015950";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x040159D0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040159D0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015A90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015A90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015B50[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015B50";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015B90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015B90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015D90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015D90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015EF0[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015EF0";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04015F90[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015F90";
+
+static const ALIGN_ASSET(2) char d_course_dks_jungle_parkway_vertex_0x04016170[] = "__OTR__models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04016170";
+

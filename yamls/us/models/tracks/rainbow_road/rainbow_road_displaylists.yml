@@ -1,0 +1,318 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x9426BC
+  no_compression: true
+  segments:
+    - [0x0F, 0x9426BC]
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/star_outline"]
+    - [0x05000800, "textures/other_textures/texture_67A1B8"]
+    - [0x05001000, "textures/other_textures/checkerboard_black_white"]
+    - [0x05001800, "textures/other_textures/texture_662A34"]
+    - [0x05002000, "textures/other_textures/rainbow"]
+    # Segment 7
+    - [0x7000000, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_0"]
+    - [0x7000308, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_308"]
+    - [0x7000498, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_498"]
+    - [0x70005C8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_5C8"]
+    - [0x7000730, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_730"]
+    - [0x7000918, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_918"]
+    - [0x7000A48, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_A48"]
+    - [0x7000B90, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_B90"]
+    - [0x7000D88, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_D88"]
+    - [0x7000EA8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_EA8"]
+    - [0x7000FF0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_FF0"]
+    - [0x7001168, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1168"]
+    - [0x7001318, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1318"]
+    - [0x7001380, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1380"]
+    - [0x7001390, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1390"]
+    - [0x70013A0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_13A0"]
+    - [0x7001528, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1528"]
+    - [0x70015F8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_15F8"]
+    - [0x7001698, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1698"]
+    - [0x7001758, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1758"]
+    - [0x7001850, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1850"]
+    - [0x7001978, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1978"]
+    - [0x7001A20, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1A20"]
+    - [0x7001B28, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1B28"]
+    - [0x7001BC0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1BC0"]
+    - [0x7001C70, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1C70"]
+    - [0x7001D30, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1D30"]
+    - [0x7001E18, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1E18"]
+    - [0x7001E80, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1E80"]
+    - [0x7001FB8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1FB8"]
+    - [0x7001FC8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1FC8"]
+    - [0x7002068, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2068"]
+    - [0x7002078, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2078"]
+    - [0x70020C0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20C0"]
+    - [0x70020D0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20D0"]
+    - [0x70020F8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20F8"]
+    - [0x7002108, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2108"]
+    # Segment 4
+    - [0x4000000, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000000"]
+    - [0x4000200, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000200"]
+    - [0x4000400, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000600"]
+    - [0x4000800, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000800"]
+    - [0x4000a00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000A00"]
+    - [0x4000c00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000C00"]
+    - [0x4000e00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04000E00"]
+    - [0x4001000, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001000"]
+    - [0x4001200, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001200"]
+    - [0x4001400, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001400"]
+    - [0x4001500, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001500"]
+    - [0x4001700, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001700"]
+    - [0x4001900, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001900"]
+    - [0x4001b00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001B00"]
+    - [0x4001d00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001D00"]
+    - [0x4001f00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001F00"]
+    - [0x4001f80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04001F80"]
+    - [0x4002180, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002180"]
+    - [0x4002380, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002380"]
+    - [0x4002580, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002580"]
+    - [0x4002780, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002780"]
+    - [0x4002980, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002980"]
+    - [0x4002b80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002B80"]
+    - [0x4002d80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002D80"]
+    - [0x4002f80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04002F80"]
+    - [0x4003100, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003100"]
+    - [0x4003300, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003300"]
+    - [0x4003500, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003500"]
+    - [0x4003700, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003700"]
+    - [0x4003900, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003900"]
+    - [0x4003b00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003B00"]
+    - [0x4003d00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003D00"]
+    - [0x4003dc0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003DC0"]
+    - [0x4003fc0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04003FC0"]
+    - [0x40041c0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040041C0"]
+    - [0x40043a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040043A0"]
+    - [0x40045a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040045A0"]
+    - [0x40047a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040047A0"]
+    - [0x40049a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040049A0"]
+    - [0x4004ba0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04004BA0"]
+    - [0x4004da0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04004DA0"]
+    - [0x4004e20, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04004E20"]
+    - [0x4005020, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005020"]
+    - [0x4005220, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005220"]
+    - [0x4005420, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005420"]
+    - [0x4005620, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005620"]
+    - [0x4005820, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005820"]
+    - [0x4005a20, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005A20"]
+    - [0x4005ba0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005BA0"]
+    - [0x4005da0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005DA0"]
+    - [0x4005fa0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04005FA0"]
+    - [0x40061a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040061A0"]
+    - [0x4006320, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006320"]
+    - [0x4006520, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006520"]
+    - [0x4006720, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006720"]
+    - [0x4006920, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006920"]
+    - [0x4006b20, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006B20"]
+    - [0x4006ba0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006BA0"]
+    - [0x4006da0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006DA0"]
+    - [0x4006fa0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04006FA0"]
+    - [0x40071a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040071A0"]
+    - [0x40073a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040073A0"]
+    - [0x40075a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040075A0"]
+    - [0x40077a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040077A0"]
+    - [0x40079a0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x040079A0"]
+    - [0x4007b80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04007B80"]
+    - [0x4007d80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04007D80"]
+    - [0x4007f80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04007F80"]
+    - [0x4008100, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008100"]
+    - [0x4008300, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008300"]
+    - [0x4008500, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008500"]
+    - [0x4008700, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008700"]
+    - [0x4008900, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008900"]
+    - [0x4008a80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008A80"]
+    - [0x4008c80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008C80"]
+    - [0x4008e80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008E80"]
+    - [0x4008f00, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04008F00"]
+    - [0x4009100, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009100"]
+    - [0x4009300, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009300"]
+    - [0x4009500, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009500"]
+    - [0x4009700, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009700"]
+    - [0x4009740, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009740"]
+    - [0x4009920, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009920"]
+    - [0x4009b20, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009B20"]
+    - [0x4009b80, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009B80"]
+    - [0x4009bc0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009BC0"]
+    - [0x4009da0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009DA0"]
+    - [0x4009ee0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x04009EE0"]
+    - [0x400a0e0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A0E0"]
+    - [0x400a260, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A260"]
+    - [0x400a460, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A460"]
+    - [0x400a640, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A640"]
+    - [0x400a820, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A820"]
+    - [0x400a8c0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400A8C0"]
+    - [0x400aaa0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400AAA0"]
+    - [0x400ac60, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400AC60"]
+    - [0x400ae60, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400AE60"]
+    - [0x400b040, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B040"]
+    - [0x400b080, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B080"]
+    - [0x400b280, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B280"]
+    - [0x400b440, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B440"]
+    - [0x400b640, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B640"]
+    - [0x400b840, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B840"]
+    - [0x400b930, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400B930"]
+    - [0x400bb10, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400BB10"]
+    - [0x400bc50, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400BC50"]
+    - [0x400bcf0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400BCF0"]
+    - [0x400bef0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400BEF0"]
+    - [0x400c0f0, "models/tracks/rainbow_road/rainbow_road_vertices/d_course_rainbow_road_vertex_0x0400C0F0"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_rainbow_road_packed_dl_0:
+  symbol: d_course_rainbow_road_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_rainbow_road_packed_dl_308:
+  symbol: d_course_rainbow_road_packed_dl_308
+  type: MK64:PACKED_GFX
+  offset: 0x1C7
+d_course_rainbow_road_packed_dl_498:
+  symbol: d_course_rainbow_road_packed_dl_498
+  type: MK64:PACKED_GFX
+  offset: 0x2AD
+d_course_rainbow_road_packed_dl_5C8:
+  symbol: d_course_rainbow_road_packed_dl_5C8
+  type: MK64:PACKED_GFX
+  offset: 0x35B
+d_course_rainbow_road_packed_dl_730:
+  symbol: d_course_rainbow_road_packed_dl_730
+  type: MK64:PACKED_GFX
+  offset: 0x42A
+d_course_rainbow_road_packed_dl_918:
+  symbol: d_course_rainbow_road_packed_dl_918
+  type: MK64:PACKED_GFX
+  offset: 0x545
+d_course_rainbow_road_packed_dl_A48:
+  symbol: d_course_rainbow_road_packed_dl_A48
+  type: MK64:PACKED_GFX
+  offset: 0x5F3
+d_course_rainbow_road_packed_dl_B90:
+  symbol: d_course_rainbow_road_packed_dl_B90
+  type: MK64:PACKED_GFX
+  offset: 0x6AE
+d_course_rainbow_road_packed_dl_D88:
+  symbol: d_course_rainbow_road_packed_dl_D88
+  type: MK64:PACKED_GFX
+  offset: 0x7D3
+d_course_rainbow_road_packed_dl_EA8:
+  symbol: d_course_rainbow_road_packed_dl_EA8
+  type: MK64:PACKED_GFX
+  offset: 0x877
+d_course_rainbow_road_packed_dl_FF0:
+  symbol: d_course_rainbow_road_packed_dl_FF0
+  type: MK64:PACKED_GFX
+  offset: 0x932
+d_course_rainbow_road_packed_dl_1168:
+  symbol: d_course_rainbow_road_packed_dl_1168
+  type: MK64:PACKED_GFX
+  offset: 0xA0B
+d_course_rainbow_road_packed_dl_1318:
+  symbol: d_course_rainbow_road_packed_dl_1318
+  type: MK64:PACKED_GFX
+  offset: 0xB05
+d_course_rainbow_road_packed_dl_1380:
+  symbol: d_course_rainbow_road_packed_dl_1380
+  type: MK64:PACKED_GFX
+  offset: 0xB2A
+d_course_rainbow_road_packed_dl_1390:
+  symbol: d_course_rainbow_road_packed_dl_1390
+  type: MK64:PACKED_GFX
+  offset: 0xB2E
+d_course_rainbow_road_packed_dl_13A0:
+  symbol: d_course_rainbow_road_packed_dl_13A0
+  type: MK64:PACKED_GFX
+  offset: 0xB32
+d_course_rainbow_road_packed_dl_1528:
+  symbol: d_course_rainbow_road_packed_dl_1528
+  type: MK64:PACKED_GFX
+  offset: 0xC15
+d_course_rainbow_road_packed_dl_15F8:
+  symbol: d_course_rainbow_road_packed_dl_15F8
+  type: MK64:PACKED_GFX
+  offset: 0xC89
+d_course_rainbow_road_packed_dl_1698:
+  symbol: d_course_rainbow_road_packed_dl_1698
+  type: MK64:PACKED_GFX
+  offset: 0xCE1
+d_course_rainbow_road_packed_dl_1758:
+  symbol: d_course_rainbow_road_packed_dl_1758
+  type: MK64:PACKED_GFX
+  offset: 0xD4B
+d_course_rainbow_road_packed_dl_1850:
+  symbol: d_course_rainbow_road_packed_dl_1850
+  type: MK64:PACKED_GFX
+  offset: 0xDD8
+d_course_rainbow_road_packed_dl_1978:
+  symbol: d_course_rainbow_road_packed_dl_1978
+  type: MK64:PACKED_GFX
+  offset: 0xE41
+d_course_rainbow_road_packed_dl_1A20:
+  symbol: d_course_rainbow_road_packed_dl_1A20
+  type: MK64:PACKED_GFX
+  offset: 0xE9E
+d_course_rainbow_road_packed_dl_1B28:
+  symbol: d_course_rainbow_road_packed_dl_1B28
+  type: MK64:PACKED_GFX
+  offset: 0xF33
+d_course_rainbow_road_packed_dl_1BC0:
+  symbol: d_course_rainbow_road_packed_dl_1BC0
+  type: MK64:PACKED_GFX
+  offset: 0xF86
+d_course_rainbow_road_packed_dl_1C70:
+  symbol: d_course_rainbow_road_packed_dl_1C70
+  type: MK64:PACKED_GFX
+  offset: 0xFE6
+d_course_rainbow_road_packed_dl_1D30:
+  symbol: d_course_rainbow_road_packed_dl_1D30
+  type: MK64:PACKED_GFX
+  offset: 0x1052
+d_course_rainbow_road_packed_dl_1E18:
+  symbol: d_course_rainbow_road_packed_dl_1E18
+  type: MK64:PACKED_GFX
+  offset: 0x10D1
+d_course_rainbow_road_packed_dl_1E80:
+  symbol: d_course_rainbow_road_packed_dl_1E80
+  type: MK64:PACKED_GFX
+  offset: 0x10F6
+d_course_rainbow_road_packed_dl_1FB8:
+  symbol: d_course_rainbow_road_packed_dl_1FB8
+  type: MK64:PACKED_GFX
+  offset: 0x1169
+d_course_rainbow_road_packed_dl_1FC8:
+  symbol: d_course_rainbow_road_packed_dl_1FC8
+  type: MK64:PACKED_GFX
+  offset: 0x116D
+d_course_rainbow_road_packed_dl_2068:
+  symbol: d_course_rainbow_road_packed_dl_2068
+  type: MK64:PACKED_GFX
+  offset: 0x11C5
+d_course_rainbow_road_packed_dl_2078:
+  symbol: d_course_rainbow_road_packed_dl_2078
+  type: MK64:PACKED_GFX
+  offset: 0x11C9
+d_course_rainbow_road_packed_dl_20C0:
+  symbol: d_course_rainbow_road_packed_dl_20C0
+  type: MK64:PACKED_GFX
+  offset: 0x11EC
+d_course_rainbow_road_packed_dl_20D0:
+  symbol: d_course_rainbow_road_packed_dl_20D0
+  type: MK64:PACKED_GFX
+  offset: 0x11F0
+d_course_rainbow_road_packed_dl_20F8:
+  symbol: d_course_rainbow_road_packed_dl_20F8
+  type: MK64:PACKED_GFX
+  offset: 0x11FD
+d_course_rainbow_road_packed_dl_2108:
+  symbol: d_course_rainbow_road_packed_dl_2108
+  type: MK64:PACKED_GFX
+  offset: 0x1201

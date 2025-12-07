@@ -1,0 +1,92 @@
+:config:
+  segments:
+    - [0x06, 0x831DC0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_banshee_boardwalk_bat:
+      range: [0x7DB8, 0x95B8]
+      mode: APPEND
+d_course_banshee_boardwalk_boo_tlut:
+  symbol: d_course_banshee_boardwalk_boo_tlut
+  type: texture
+  offset: 0x5C80
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u8
+d_course_banshee_boardwalk_fish_eyes:
+  symbol: d_course_banshee_boardwalk_fish_eyes
+  type: texture
+  offset: 0x6E50
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u8
+d_course_banshee_boardwalk_bat_tlut:
+  symbol: d_course_banshee_boardwalk_bat_tlut
+  type: texture
+  offset: 0x7BB8
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u8
+gTextureBat1:
+  symbol: gTextureBat1
+  type: texture
+  offset: 0x7DB8
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
+gTextureBat2:
+  symbol: gTextureBat2
+  type: texture
+  offset: 0x85B8
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
+gTextureBat3:
+  symbol: gTextureBat3
+  type: texture
+  offset: 0x8DB8
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
+gTextureBat4:
+  symbol: gTextureBat4
+  type: texture
+  offset: 0x95B8
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_banshee_boardwalk_bat_tlut
+d_course_banshee_boardwalk_texture:
+  symbol: d_course_banshee_boardwalk_texture
+  type: texture
+  offset: 0xA050
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u8
+d_course_banshee_boardwalk_texture2:
+  symbol: d_course_banshee_boardwalk_texture2
+  type: texture
+  offset: 0xAA78
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u8

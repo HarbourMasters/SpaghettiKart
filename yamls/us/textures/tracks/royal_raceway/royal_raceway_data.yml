@@ -1,0 +1,20 @@
+:config:
+  segments:
+    - [0x06, 0x84ABD0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_royal_raceway_piranha_plant_tlut:
+  symbol: d_course_royal_raceway_piranha_plant_tlut
+  type: texture
+  offset: 0xD610
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16

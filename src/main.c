@@ -132,7 +132,6 @@ f32 D_80150150;
 UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
-uintptr_t gSegmentTable[16];
 Gfx* gDisplayListHead;
 
 struct SPTask* gGfxSPTask;
@@ -450,7 +449,6 @@ void exec_display_list(struct SPTask* spTask) {
  * Set default RCP (Reality Co-Processor) settings.
  */
 void init_rcp(void) {
-    move_segment_table_to_dmem();
     init_rdp();
     set_viewport();
     select_framebuffer();
@@ -484,7 +482,6 @@ void* clear_framebuffer(s32 color) {
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
-    set_segment_base_addr_x64(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
     init_rcp();
@@ -497,7 +494,6 @@ void rendering_init(void) {
 
 void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer & 1];
-    set_segment_base_addr_x64(1, gGfxPool);
     gDisplayListHead = gGfxPool->gfxPool;
     gGfxSPTask = &gGfxPool->spTask;
 }
@@ -750,7 +746,6 @@ void race_logic_loop(void) {
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
     sNumVBlanks = 0;
     gNumScreens = 0;
-    move_segment_table_to_dmem();
     init_rdp();
     if (D_800DC5B0 != 0) {
         select_framebuffer();

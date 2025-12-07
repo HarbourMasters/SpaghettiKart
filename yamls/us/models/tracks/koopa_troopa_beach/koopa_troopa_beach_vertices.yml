@@ -1,0 +1,3075 @@
+:config:
+  segments:
+    - [0x0F, 0x8D8E50]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_koopa_troopa_beach_vertex_0x04000000:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x0
+
+d_course_koopa_troopa_beach_vertex_0x04000040:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38
+
+d_course_koopa_troopa_beach_vertex_0x04000080:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x70
+
+d_course_koopa_troopa_beach_vertex_0x040000C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040000C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa8
+
+d_course_koopa_troopa_beach_vertex_0x04000100:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe0
+
+d_course_koopa_troopa_beach_vertex_0x04000140:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000140
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x118
+
+d_course_koopa_troopa_beach_vertex_0x04000180:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x150
+
+d_course_koopa_troopa_beach_vertex_0x040001C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040001C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x188
+
+d_course_koopa_troopa_beach_vertex_0x04000200:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1c0
+
+d_course_koopa_troopa_beach_vertex_0x040002C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040002C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x268
+
+d_course_koopa_troopa_beach_vertex_0x040004C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040004C0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x428
+
+d_course_koopa_troopa_beach_vertex_0x04000610:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000610
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x54e
+
+d_course_koopa_troopa_beach_vertex_0x04000800:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x700
+
+d_course_koopa_troopa_beach_vertex_0x04000A00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8c0
+
+d_course_koopa_troopa_beach_vertex_0x04000A60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000A60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x914
+
+d_course_koopa_troopa_beach_vertex_0x04000C50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000C50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xac6
+
+d_course_koopa_troopa_beach_vertex_0x04000E50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000E50
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xc86
+
+d_course_koopa_troopa_beach_vertex_0x04000FF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04000FF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdf2
+
+d_course_koopa_troopa_beach_vertex_0x040011F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040011F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xfb2
+
+d_course_koopa_troopa_beach_vertex_0x040013E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040013E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1164
+
+d_course_koopa_troopa_beach_vertex_0x040015C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040015C0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1308
+
+d_course_koopa_troopa_beach_vertex_0x040016B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040016B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13da
+
+d_course_koopa_troopa_beach_vertex_0x04001890:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001890
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x157e
+
+d_course_koopa_troopa_beach_vertex_0x04001A80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001A80
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x1730
+
+d_course_koopa_troopa_beach_vertex_0x04001AF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001AF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1792
+
+d_course_koopa_troopa_beach_vertex_0x04001CF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001CF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1952
+
+d_course_koopa_troopa_beach_vertex_0x04001ED0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001ED0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1af6
+
+d_course_koopa_troopa_beach_vertex_0x04001F00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04001F00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1b20
+
+d_course_koopa_troopa_beach_vertex_0x04002100:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002100
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1ce0
+
+d_course_koopa_troopa_beach_vertex_0x040022F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040022F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1e92
+
+d_course_koopa_troopa_beach_vertex_0x04002350:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002350
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1ee6
+
+d_course_koopa_troopa_beach_vertex_0x04002540:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002540
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2098
+
+d_course_koopa_troopa_beach_vertex_0x04002740:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002740
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x2258
+
+d_course_koopa_troopa_beach_vertex_0x040027E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040027E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x22e4
+
+d_course_koopa_troopa_beach_vertex_0x040029E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040029E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x24a4
+
+d_course_koopa_troopa_beach_vertex_0x04002BE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002BE0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x2664
+
+d_course_koopa_troopa_beach_vertex_0x04002D80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002D80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x27d0
+
+d_course_koopa_troopa_beach_vertex_0x04002F60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04002F60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2974
+
+d_course_koopa_troopa_beach_vertex_0x04003160:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003160
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x2b34
+
+d_course_koopa_troopa_beach_vertex_0x04003270:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003270
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x2c22
+
+d_course_koopa_troopa_beach_vertex_0x04003460:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003460
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x2dd4
+
+d_course_koopa_troopa_beach_vertex_0x04003580:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003580
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2ed0
+
+d_course_koopa_troopa_beach_vertex_0x04003760:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003760
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x3074
+
+d_course_koopa_troopa_beach_vertex_0x04003880:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003880
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3170
+
+d_course_koopa_troopa_beach_vertex_0x040038E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040038E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x31c4
+
+d_course_koopa_troopa_beach_vertex_0x04003AD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003AD0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3376
+
+d_course_koopa_troopa_beach_vertex_0x04003CB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003CB0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x351a
+
+d_course_koopa_troopa_beach_vertex_0x04003D20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003D20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x357c
+
+d_course_koopa_troopa_beach_vertex_0x04003F00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04003F00
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x3720
+
+d_course_koopa_troopa_beach_vertex_0x040040F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040040F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x38d2
+
+d_course_koopa_troopa_beach_vertex_0x04004150:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004150
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3926
+
+d_course_koopa_troopa_beach_vertex_0x04004350:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004350
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x3ae6
+
+d_course_koopa_troopa_beach_vertex_0x040044A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040044A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3c0c
+
+d_course_koopa_troopa_beach_vertex_0x04004680:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004680
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3db0
+
+d_course_koopa_troopa_beach_vertex_0x04004880:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004880
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3f70
+
+d_course_koopa_troopa_beach_vertex_0x04004940:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004940
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x4018
+
+d_course_koopa_troopa_beach_vertex_0x04004A80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004A80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4130
+
+d_course_koopa_troopa_beach_vertex_0x04004C70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004C70
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x42e2
+
+d_course_koopa_troopa_beach_vertex_0x04004E10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04004E10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x444e
+
+d_course_koopa_troopa_beach_vertex_0x04005010:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04005010
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x460e
+
+d_course_koopa_troopa_beach_vertex_0x040051F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040051F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x47b2
+
+d_course_koopa_troopa_beach_vertex_0x040053E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040053E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4964
+
+d_course_koopa_troopa_beach_vertex_0x040055D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040055D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4b16
+
+d_course_koopa_troopa_beach_vertex_0x040057D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040057D0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x4cd6
+
+d_course_koopa_troopa_beach_vertex_0x040059A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040059A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4e6c
+
+d_course_koopa_troopa_beach_vertex_0x04005BA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04005BA0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x502c
+
+d_course_koopa_troopa_beach_vertex_0x04005D00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04005D00
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x5160
+
+d_course_koopa_troopa_beach_vertex_0x04005EF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04005EF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5312
+
+d_course_koopa_troopa_beach_vertex_0x040060F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040060F0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x54d2
+
+d_course_koopa_troopa_beach_vertex_0x04006120:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006120
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x54fc
+
+d_course_koopa_troopa_beach_vertex_0x040062C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040062C0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x5668
+
+d_course_koopa_troopa_beach_vertex_0x04006490:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006490
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x57fe
+
+d_course_koopa_troopa_beach_vertex_0x04006670:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006670
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x59a2
+
+d_course_koopa_troopa_beach_vertex_0x04006860:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006860
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5b54
+
+d_course_koopa_troopa_beach_vertex_0x040068A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040068A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5b8c
+
+d_course_koopa_troopa_beach_vertex_0x04006A80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006A80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5d30
+
+d_course_koopa_troopa_beach_vertex_0x04006C80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006C80
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x5ef0
+
+d_course_koopa_troopa_beach_vertex_0x04006DB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006DB0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5ffa
+
+d_course_koopa_troopa_beach_vertex_0x04006F90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04006F90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x619e
+
+d_course_koopa_troopa_beach_vertex_0x04007180:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007180
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6350
+
+d_course_koopa_troopa_beach_vertex_0x04007360:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007360
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x64f4
+
+d_course_koopa_troopa_beach_vertex_0x04007560:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007560
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x66b4
+
+d_course_koopa_troopa_beach_vertex_0x04007750:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007750
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6866
+
+d_course_koopa_troopa_beach_vertex_0x04007940:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007940
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6a18
+
+d_course_koopa_troopa_beach_vertex_0x040079C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040079C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6a88
+
+d_course_koopa_troopa_beach_vertex_0x04007BA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007BA0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x6c2c
+
+d_course_koopa_troopa_beach_vertex_0x04007D60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007D60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6db4
+
+d_course_koopa_troopa_beach_vertex_0x04007F60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04007F60
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x6f74
+
+d_course_koopa_troopa_beach_vertex_0x04008050:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008050
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7046
+
+d_course_koopa_troopa_beach_vertex_0x04008230:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008230
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x71ea
+
+d_course_koopa_troopa_beach_vertex_0x04008430:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008430
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x73aa
+
+d_course_koopa_troopa_beach_vertex_0x04008500:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7460
+
+d_course_koopa_troopa_beach_vertex_0x04008700:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7620
+
+d_course_koopa_troopa_beach_vertex_0x04008900:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008900
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x77e0
+
+d_course_koopa_troopa_beach_vertex_0x040089E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040089E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x78a4
+
+d_course_koopa_troopa_beach_vertex_0x04008BE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008BE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7a64
+
+d_course_koopa_troopa_beach_vertex_0x04008DE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008DE0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x7c24
+
+d_course_koopa_troopa_beach_vertex_0x04008ED0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04008ED0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7cf6
+
+d_course_koopa_troopa_beach_vertex_0x040090D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040090D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7eb6
+
+d_course_koopa_troopa_beach_vertex_0x040092D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040092D0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x8076
+
+d_course_koopa_troopa_beach_vertex_0x04009300:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009300
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x80a0
+
+d_course_koopa_troopa_beach_vertex_0x04009360:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009360
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x80f4
+
+d_course_koopa_troopa_beach_vertex_0x040093F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040093F0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x8172
+
+d_course_koopa_troopa_beach_vertex_0x040094E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040094E0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x8244
+
+d_course_koopa_troopa_beach_vertex_0x040095B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040095B0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x82fa
+
+d_course_koopa_troopa_beach_vertex_0x04009710:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009710
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x842e
+
+d_course_koopa_troopa_beach_vertex_0x04009860:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009860
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x8554
+
+d_course_koopa_troopa_beach_vertex_0x040098E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040098E0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x85c4
+
+d_course_koopa_troopa_beach_vertex_0x040099C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040099C0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x8688
+
+d_course_koopa_troopa_beach_vertex_0x04009B10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009B10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x87ae
+
+d_course_koopa_troopa_beach_vertex_0x04009BD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009BD0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x8856
+
+d_course_koopa_troopa_beach_vertex_0x04009CB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009CB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x891a
+
+d_course_koopa_troopa_beach_vertex_0x04009D10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009D10
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x896e
+
+d_course_koopa_troopa_beach_vertex_0x04009E20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009E20
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8a5c
+
+d_course_koopa_troopa_beach_vertex_0x04009E80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009E80
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x8ab0
+
+d_course_koopa_troopa_beach_vertex_0x04009F10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009F10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8b2e
+
+d_course_koopa_troopa_beach_vertex_0x04009FD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04009FD0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x8bd6
+
+d_course_koopa_troopa_beach_vertex_0x0400A0E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A0E0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8cc4
+
+d_course_koopa_troopa_beach_vertex_0x0400A1A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A1A0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x8d6c
+
+d_course_koopa_troopa_beach_vertex_0x0400A270:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A270
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x8e22
+
+d_course_koopa_troopa_beach_vertex_0x0400A380:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A380
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8f10
+
+d_course_koopa_troopa_beach_vertex_0x0400A560:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A560
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x90b4
+
+d_course_koopa_troopa_beach_vertex_0x0400A670:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A670
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x91a2
+
+d_course_koopa_troopa_beach_vertex_0x0400A720:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A720
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x923c
+
+d_course_koopa_troopa_beach_vertex_0x0400A870:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A870
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x9362
+
+d_course_koopa_troopa_beach_vertex_0x0400A8A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A8A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x938c
+
+d_course_koopa_troopa_beach_vertex_0x0400A900:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A900
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x93e0
+
+d_course_koopa_troopa_beach_vertex_0x0400A960:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400A960
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x9434
+
+d_course_koopa_troopa_beach_vertex_0x0400AA90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AA90
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x953e
+
+d_course_koopa_troopa_beach_vertex_0x0400AB20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AB20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x95bc
+
+d_course_koopa_troopa_beach_vertex_0x0400AC20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AC20
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x969c
+
+d_course_koopa_troopa_beach_vertex_0x0400ADB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400ADB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x97fa
+
+d_course_koopa_troopa_beach_vertex_0x0400AE30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AE30
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x986a
+
+d_course_koopa_troopa_beach_vertex_0x0400AE90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AE90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x98be
+
+d_course_koopa_troopa_beach_vertex_0x0400AF50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400AF50
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x9966
+
+d_course_koopa_troopa_beach_vertex_0x0400B070:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B070
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x9a62
+
+d_course_koopa_troopa_beach_vertex_0x0400B1C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B1C0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x9b88
+
+d_course_koopa_troopa_beach_vertex_0x0400B300:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B300
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x9ca0
+
+d_course_koopa_troopa_beach_vertex_0x0400B400:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B400
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x9d80
+
+d_course_koopa_troopa_beach_vertex_0x0400B580:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B580
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x9ed0
+
+d_course_koopa_troopa_beach_vertex_0x0400B680:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B680
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x9fb0
+
+d_course_koopa_troopa_beach_vertex_0x0400B7B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B7B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa0ba
+
+d_course_koopa_troopa_beach_vertex_0x0400B8B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400B8B0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xa19a
+
+d_course_koopa_troopa_beach_vertex_0x0400BA20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BA20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa2dc
+
+d_course_koopa_troopa_beach_vertex_0x0400BB20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BB20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xa3bc
+
+d_course_koopa_troopa_beach_vertex_0x0400BC60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BC60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa4d4
+
+d_course_koopa_troopa_beach_vertex_0x0400BD60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BD60
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xa5b4
+
+d_course_koopa_troopa_beach_vertex_0x0400BDF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BDF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa632
+
+d_course_koopa_troopa_beach_vertex_0x0400BE70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BE70
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xa6a2
+
+d_course_koopa_troopa_beach_vertex_0x0400BF20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BF20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa73c
+
+d_course_koopa_troopa_beach_vertex_0x0400BFA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400BFA0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xa7ac
+
+d_course_koopa_troopa_beach_vertex_0x0400C120:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C120
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xa8fc
+
+d_course_koopa_troopa_beach_vertex_0x0400C290:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C290
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xaa3e
+
+d_course_koopa_troopa_beach_vertex_0x0400C3B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C3B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xab3a
+
+d_course_koopa_troopa_beach_vertex_0x0400C430:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C430
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xabaa
+
+d_course_koopa_troopa_beach_vertex_0x0400C530:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C530
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xac8a
+
+d_course_koopa_troopa_beach_vertex_0x0400C6A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C6A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xadcc
+
+d_course_koopa_troopa_beach_vertex_0x0400C7A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C7A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xaeac
+
+d_course_koopa_troopa_beach_vertex_0x0400C920:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400C920
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xaffc
+
+d_course_koopa_troopa_beach_vertex_0x0400CB00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400CB00
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb1a0
+
+d_course_koopa_troopa_beach_vertex_0x0400CC80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400CC80
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xb2f0
+
+d_course_koopa_troopa_beach_vertex_0x0400CD70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400CD70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xb3c2
+
+d_course_koopa_troopa_beach_vertex_0x0400CDF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400CDF0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xb432
+
+d_course_koopa_troopa_beach_vertex_0x0400CF40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400CF40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb558
+
+d_course_koopa_troopa_beach_vertex_0x0400D040:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D040
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xb638
+
+d_course_koopa_troopa_beach_vertex_0x0400D1E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D1E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb7a4
+
+d_course_koopa_troopa_beach_vertex_0x0400D360:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D360
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xb8f4
+
+d_course_koopa_troopa_beach_vertex_0x0400D520:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D520
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xba7c
+
+d_course_koopa_troopa_beach_vertex_0x0400D660:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D660
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbb94
+
+d_course_koopa_troopa_beach_vertex_0x0400D760:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D760
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xbc74
+
+d_course_koopa_troopa_beach_vertex_0x0400D8A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D8A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbd8c
+
+d_course_koopa_troopa_beach_vertex_0x0400D9A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400D9A0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xbe6c
+
+d_course_koopa_troopa_beach_vertex_0x0400DAF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400DAF0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbf92
+
+d_course_koopa_troopa_beach_vertex_0x0400DBF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400DBF0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xc072
+
+d_course_koopa_troopa_beach_vertex_0x0400DD60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400DD60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc1b4
+
+d_course_koopa_troopa_beach_vertex_0x0400DE60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400DE60
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xc294
+
+d_course_koopa_troopa_beach_vertex_0x0400DFB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400DFB0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc3ba
+
+d_course_koopa_troopa_beach_vertex_0x0400E0B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E0B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xc49a
+
+d_course_koopa_troopa_beach_vertex_0x0400E1F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E1F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc5b2
+
+d_course_koopa_troopa_beach_vertex_0x0400E270:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E270
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc622
+
+d_course_koopa_troopa_beach_vertex_0x0400E450:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E450
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc7c6
+
+d_course_koopa_troopa_beach_vertex_0x0400E650:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E650
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc986
+
+d_course_koopa_troopa_beach_vertex_0x0400E840:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E840
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xcb38
+
+d_course_koopa_troopa_beach_vertex_0x0400E8A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E8A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcb8c
+
+d_course_koopa_troopa_beach_vertex_0x0400E9E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400E9E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xcca4
+
+d_course_koopa_troopa_beach_vertex_0x0400EAE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400EAE0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xcd84
+
+d_course_koopa_troopa_beach_vertex_0x0400EBD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400EBD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xce56
+
+d_course_koopa_troopa_beach_vertex_0x0400EC50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400EC50
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xcec6
+
+d_course_koopa_troopa_beach_vertex_0x0400ED60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400ED60
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xcfb4
+
+d_course_koopa_troopa_beach_vertex_0x0400EF10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400EF10
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xd12e
+
+d_course_koopa_troopa_beach_vertex_0x0400EF60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400EF60
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xd174
+
+d_course_koopa_troopa_beach_vertex_0x0400F070:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F070
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xd262
+
+d_course_koopa_troopa_beach_vertex_0x0400F1A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F1A0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xd36c
+
+d_course_koopa_troopa_beach_vertex_0x0400F2D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F2D0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xd476
+
+d_course_koopa_troopa_beach_vertex_0x0400F480:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F480
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd5f0
+
+d_course_koopa_troopa_beach_vertex_0x0400F500:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F500
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xd660
+
+d_course_koopa_troopa_beach_vertex_0x0400F630:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F630
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xd76a
+
+d_course_koopa_troopa_beach_vertex_0x0400F720:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F720
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xd83c
+
+d_course_koopa_troopa_beach_vertex_0x0400F8D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400F8D0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xd9b6
+
+d_course_koopa_troopa_beach_vertex_0x0400FA50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FA50
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xdb06
+
+d_course_koopa_troopa_beach_vertex_0x0400FB00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FB00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdba0
+
+d_course_koopa_troopa_beach_vertex_0x0400FB80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FB80
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xdc10
+
+d_course_koopa_troopa_beach_vertex_0x0400FC30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FC30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdcaa
+
+d_course_koopa_troopa_beach_vertex_0x0400FCB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FCB0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xdd1a
+
+d_course_koopa_troopa_beach_vertex_0x0400FD70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FD70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xddc2
+
+d_course_koopa_troopa_beach_vertex_0x0400FDF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FDF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xde32
+
+d_course_koopa_troopa_beach_vertex_0x0400FEB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FEB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdeda
+
+d_course_koopa_troopa_beach_vertex_0x0400FF30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FF30
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xdf4a
+
+d_course_koopa_troopa_beach_vertex_0x0400FFD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0400FFD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xdfd6
+
+d_course_koopa_troopa_beach_vertex_0x04010010:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010010
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe00e
+
+d_course_koopa_troopa_beach_vertex_0x04010050:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010050
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe046
+
+d_course_koopa_troopa_beach_vertex_0x04010090:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010090
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe07e
+
+d_course_koopa_troopa_beach_vertex_0x040100F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040100F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe0d2
+
+d_course_koopa_troopa_beach_vertex_0x04010130:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010130
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xe10a
+
+d_course_koopa_troopa_beach_vertex_0x04010260:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010260
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe214
+
+d_course_koopa_troopa_beach_vertex_0x04010320:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010320
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe2bc
+
+d_course_koopa_troopa_beach_vertex_0x04010380:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010380
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe310
+
+d_course_koopa_troopa_beach_vertex_0x040103C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040103C0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xe348
+
+d_course_koopa_troopa_beach_vertex_0x040103F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040103F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe372
+
+d_course_koopa_troopa_beach_vertex_0x04010450:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010450
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe3c6
+
+d_course_koopa_troopa_beach_vertex_0x04010490:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010490
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe3fe
+
+d_course_koopa_troopa_beach_vertex_0x040104F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040104F0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xe452
+
+d_course_koopa_troopa_beach_vertex_0x040105E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040105E0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe524
+
+d_course_koopa_troopa_beach_vertex_0x040106A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040106A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe5cc
+
+d_course_koopa_troopa_beach_vertex_0x04010700:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010700
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe620
+
+d_course_koopa_troopa_beach_vertex_0x04010740:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010740
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe658
+
+d_course_koopa_troopa_beach_vertex_0x040107A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040107A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe6ac
+
+d_course_koopa_troopa_beach_vertex_0x040107E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040107E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xe6e4
+
+d_course_koopa_troopa_beach_vertex_0x040108D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040108D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe7b6
+
+d_course_koopa_troopa_beach_vertex_0x04010990:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010990
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xe85e
+
+d_course_koopa_troopa_beach_vertex_0x04010AC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010AC0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xe968
+
+d_course_koopa_troopa_beach_vertex_0x04010B70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010B70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xea02
+
+d_course_koopa_troopa_beach_vertex_0x04010BF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010BF0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xea72
+
+d_course_koopa_troopa_beach_vertex_0x04010CC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010CC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xeb28
+
+d_course_koopa_troopa_beach_vertex_0x04010D40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010D40
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xeb98
+
+d_course_koopa_troopa_beach_vertex_0x04010DE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010DE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xec24
+
+d_course_koopa_troopa_beach_vertex_0x04010E20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010E20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xec5c
+
+d_course_koopa_troopa_beach_vertex_0x04010F20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010F20
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xed3c
+
+d_course_koopa_troopa_beach_vertex_0x04010FD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04010FD0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xedd6
+
+d_course_koopa_troopa_beach_vertex_0x04011080:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011080
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xee70
+
+d_course_koopa_troopa_beach_vertex_0x04011100:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011100
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xeee0
+
+d_course_koopa_troopa_beach_vertex_0x04011190:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011190
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xef5e
+
+d_course_koopa_troopa_beach_vertex_0x040111D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040111D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xef96
+
+d_course_koopa_troopa_beach_vertex_0x040113C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040113C0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xf148
+
+d_course_koopa_troopa_beach_vertex_0x040114E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040114E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xf244
+
+d_course_koopa_troopa_beach_vertex_0x04011540:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011540
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xf298
+
+d_course_koopa_troopa_beach_vertex_0x04011580:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011580
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xf2d0
+
+d_course_koopa_troopa_beach_vertex_0x040115E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040115E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xf324
+
+d_course_koopa_troopa_beach_vertex_0x04011620:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011620
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xf35c
+
+d_course_koopa_troopa_beach_vertex_0x040116B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040116B0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xf3da
+
+d_course_koopa_troopa_beach_vertex_0x04011790:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011790
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xf49e
+
+d_course_koopa_troopa_beach_vertex_0x040117F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040117F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xf4f2
+
+d_course_koopa_troopa_beach_vertex_0x04011850:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011850
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xf546
+
+d_course_koopa_troopa_beach_vertex_0x040118F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040118F0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xf5d2
+
+d_course_koopa_troopa_beach_vertex_0x040119D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040119D0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xf696
+
+d_course_koopa_troopa_beach_vertex_0x04011B00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011B00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xf7a0
+
+d_course_koopa_troopa_beach_vertex_0x04011B40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011B40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf7d8
+
+d_course_koopa_troopa_beach_vertex_0x04011C40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011C40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf8b8
+
+d_course_koopa_troopa_beach_vertex_0x04011CC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011CC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf928
+
+d_course_koopa_troopa_beach_vertex_0x04011DC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011DC0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xfa08
+
+d_course_koopa_troopa_beach_vertex_0x04011E70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011E70
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xfaa2
+
+d_course_koopa_troopa_beach_vertex_0x04011F80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04011F80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xfb90
+
+d_course_koopa_troopa_beach_vertex_0x04012000:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012000
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xfc00
+
+d_course_koopa_troopa_beach_vertex_0x040120B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040120B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xfc9a
+
+d_course_koopa_troopa_beach_vertex_0x040122A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040122A0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xfe4c
+
+d_course_koopa_troopa_beach_vertex_0x040123C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040123C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xff48
+
+d_course_koopa_troopa_beach_vertex_0x04012400:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012400
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xff80
+
+d_course_koopa_troopa_beach_vertex_0x04012460:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012460
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xffd4
+
+d_course_koopa_troopa_beach_vertex_0x040125E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040125E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10124
+
+d_course_koopa_troopa_beach_vertex_0x04012640:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012640
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x10178
+
+d_course_koopa_troopa_beach_vertex_0x04012690:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012690
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x101be
+
+d_course_koopa_troopa_beach_vertex_0x04012750:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012750
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10266
+
+d_course_koopa_troopa_beach_vertex_0x040127D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040127D0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x102d6
+
+d_course_koopa_troopa_beach_vertex_0x04012830:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012830
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1032a
+
+d_course_koopa_troopa_beach_vertex_0x04012890:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012890
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1037e
+
+d_course_koopa_troopa_beach_vertex_0x04012950:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012950
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x10426
+
+d_course_koopa_troopa_beach_vertex_0x04012AE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012AE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10584
+
+d_course_koopa_troopa_beach_vertex_0x04012CE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012CE0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x10744
+
+d_course_koopa_troopa_beach_vertex_0x04012E90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04012E90
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x108be
+
+d_course_koopa_troopa_beach_vertex_0x04013040:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013040
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10a38
+
+d_course_koopa_troopa_beach_vertex_0x040131C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040131C0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x10b88
+
+d_course_koopa_troopa_beach_vertex_0x040132B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040132B0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x10c5a
+
+d_course_koopa_troopa_beach_vertex_0x04013340:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013340
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x10cd8
+
+d_course_koopa_troopa_beach_vertex_0x04013480:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013480
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10df0
+
+d_course_koopa_troopa_beach_vertex_0x04013580:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013580
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x10ed0
+
+d_course_koopa_troopa_beach_vertex_0x040135D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040135D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10f16
+
+d_course_koopa_troopa_beach_vertex_0x040137D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040137D0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x110d6
+
+d_course_koopa_troopa_beach_vertex_0x04013860:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013860
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x11154
+
+d_course_koopa_troopa_beach_vertex_0x04013A10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013A10
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x112ce
+
+d_course_koopa_troopa_beach_vertex_0x04013A90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013A90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1133e
+
+d_course_koopa_troopa_beach_vertex_0x04013B50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013B50
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x113e6
+
+d_course_koopa_troopa_beach_vertex_0x04013C50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013C50
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x114c6
+
+d_course_koopa_troopa_beach_vertex_0x04013D70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013D70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x115c2
+
+d_course_koopa_troopa_beach_vertex_0x04013F70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04013F70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11782
+
+d_course_koopa_troopa_beach_vertex_0x04014150:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014150
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11926
+
+d_course_koopa_troopa_beach_vertex_0x04014340:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014340
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11ad8
+
+d_course_koopa_troopa_beach_vertex_0x04014530:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014530
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x11c8a
+
+d_course_koopa_troopa_beach_vertex_0x04014560:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014560
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11cb4
+
+d_course_koopa_troopa_beach_vertex_0x04014760:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014760
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11e74
+
+d_course_koopa_troopa_beach_vertex_0x04014940:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014940
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12018
+
+d_course_koopa_troopa_beach_vertex_0x040149C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040149C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12088
+
+d_course_koopa_troopa_beach_vertex_0x04014BC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014BC0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12248
+
+d_course_koopa_troopa_beach_vertex_0x04014BF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014BF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x12272
+
+d_course_koopa_troopa_beach_vertex_0x04014DD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014DD0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x12416
+
+d_course_koopa_troopa_beach_vertex_0x04014FB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04014FB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x125ba
+
+d_course_koopa_troopa_beach_vertex_0x040151A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040151A0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1276c
+
+d_course_koopa_troopa_beach_vertex_0x04015230:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015230
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x127ea
+
+d_course_koopa_troopa_beach_vertex_0x04015430:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015430
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x129aa
+
+d_course_koopa_troopa_beach_vertex_0x04015620:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015620
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12b5c
+
+d_course_koopa_troopa_beach_vertex_0x04015650:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015650
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x12b86
+
+d_course_koopa_troopa_beach_vertex_0x04015830:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015830
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12d2a
+
+d_course_koopa_troopa_beach_vertex_0x04015860:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015860
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12d54
+
+d_course_koopa_troopa_beach_vertex_0x04015890:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015890
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x12d7e
+
+d_course_koopa_troopa_beach_vertex_0x04015A70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015A70
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x12f22
+
+d_course_koopa_troopa_beach_vertex_0x04015B60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015B60
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12ff4
+
+d_course_koopa_troopa_beach_vertex_0x04015B90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015B90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1301e
+
+d_course_koopa_troopa_beach_vertex_0x04015D80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015D80
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x131d0
+
+d_course_koopa_troopa_beach_vertex_0x04015E50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04015E50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13286
+
+d_course_koopa_troopa_beach_vertex_0x04016030:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016030
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1342a
+
+d_course_koopa_troopa_beach_vertex_0x04016210:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016210
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x135ce
+
+d_course_koopa_troopa_beach_vertex_0x040163F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040163F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13772
+
+d_course_koopa_troopa_beach_vertex_0x040165D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040165D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13916
+
+d_course_koopa_troopa_beach_vertex_0x040167B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040167B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13aba
+
+d_course_koopa_troopa_beach_vertex_0x04016990:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016990
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x13c5e
+
+d_course_koopa_troopa_beach_vertex_0x040169C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040169C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13c88
+
+d_course_koopa_troopa_beach_vertex_0x04016BA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016BA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x13e2c
+
+d_course_koopa_troopa_beach_vertex_0x04016D90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016D90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13fde
+
+d_course_koopa_troopa_beach_vertex_0x04016F70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04016F70
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x14182
+
+d_course_koopa_troopa_beach_vertex_0x04017120:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017120
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x142fc
+
+d_course_koopa_troopa_beach_vertex_0x04017300:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017300
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x144a0
+
+d_course_koopa_troopa_beach_vertex_0x040173C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040173C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x14548
+
+d_course_koopa_troopa_beach_vertex_0x040175A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040175A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x146ec
+
+d_course_koopa_troopa_beach_vertex_0x04017660:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017660
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x14794
+
+d_course_koopa_troopa_beach_vertex_0x04017840:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017840
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x14938
+
+d_course_koopa_troopa_beach_vertex_0x040178A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040178A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1498c
+
+d_course_koopa_troopa_beach_vertex_0x04017A80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017A80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x14b30
+
+d_course_koopa_troopa_beach_vertex_0x04017C70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017C70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14ce2
+
+d_course_koopa_troopa_beach_vertex_0x04017E70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04017E70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x14ea2
+
+d_course_koopa_troopa_beach_vertex_0x04018050:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018050
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x15046
+
+d_course_koopa_troopa_beach_vertex_0x040180E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040180E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x150c4
+
+d_course_koopa_troopa_beach_vertex_0x040182C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040182C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x15268
+
+d_course_koopa_troopa_beach_vertex_0x040184A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040184A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1540c
+
+d_course_koopa_troopa_beach_vertex_0x04018680:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018680
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x155b0
+
+d_course_koopa_troopa_beach_vertex_0x040187F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040187F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x156f2
+
+d_course_koopa_troopa_beach_vertex_0x040189F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040189F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x158b2
+
+d_course_koopa_troopa_beach_vertex_0x04018BD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018BD0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x15a56
+
+d_course_koopa_troopa_beach_vertex_0x04018CE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018CE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x15b44
+
+d_course_koopa_troopa_beach_vertex_0x04018EC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018EC0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x15ce8
+
+d_course_koopa_troopa_beach_vertex_0x04018F50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04018F50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x15d66
+
+d_course_koopa_troopa_beach_vertex_0x04019130:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019130
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x15f0a
+
+d_course_koopa_troopa_beach_vertex_0x04019280:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019280
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16030
+
+d_course_koopa_troopa_beach_vertex_0x04019480:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019480
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x161f0
+
+d_course_koopa_troopa_beach_vertex_0x04019570:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019570
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x162c2
+
+d_course_koopa_troopa_beach_vertex_0x04019750:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019750
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x16466
+
+d_course_koopa_troopa_beach_vertex_0x04019900:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019900
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x165e0
+
+d_course_koopa_troopa_beach_vertex_0x04019940:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019940
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x16618
+
+d_course_koopa_troopa_beach_vertex_0x04019A00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019A00
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x166c0
+
+d_course_koopa_troopa_beach_vertex_0x04019A60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019A60
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x16714
+
+d_course_koopa_troopa_beach_vertex_0x04019C40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019C40
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x168b8
+
+d_course_koopa_troopa_beach_vertex_0x04019CA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019CA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1690c
+
+d_course_koopa_troopa_beach_vertex_0x04019EA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019EA0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x16acc
+
+d_course_koopa_troopa_beach_vertex_0x04019F30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04019F30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x16b4a
+
+d_course_koopa_troopa_beach_vertex_0x0401A110:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A110
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x16cee
+
+d_course_koopa_troopa_beach_vertex_0x0401A140:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A140
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16d18
+
+d_course_koopa_troopa_beach_vertex_0x0401A340:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A340
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x16ed8
+
+d_course_koopa_troopa_beach_vertex_0x0401A460:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A460
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x16fd4
+
+d_course_koopa_troopa_beach_vertex_0x0401A520:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A520
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1707c
+
+d_course_koopa_troopa_beach_vertex_0x0401A720:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A720
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1723c
+
+d_course_koopa_troopa_beach_vertex_0x0401A900:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401A900
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x173e0
+
+d_course_koopa_troopa_beach_vertex_0x0401AAE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401AAE0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x17584
+
+d_course_koopa_troopa_beach_vertex_0x0401AB70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401AB70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17602
+
+d_course_koopa_troopa_beach_vertex_0x0401AD70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401AD70
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x177c2
+
+d_course_koopa_troopa_beach_vertex_0x0401AF60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401AF60
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x17974
+
+d_course_koopa_troopa_beach_vertex_0x0401B140:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401B140
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x17b18
+
+d_course_koopa_troopa_beach_vertex_0x0401B330:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401B330
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x17cca
+
+d_course_koopa_troopa_beach_vertex_0x0401B520:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401B520
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x17e7c
+
+d_course_koopa_troopa_beach_vertex_0x0401B640:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401B640
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x17f78
+
+d_course_koopa_troopa_beach_vertex_0x0401B820:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401B820
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1811c
+
+d_course_koopa_troopa_beach_vertex_0x0401BA00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401BA00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x182c0
+
+d_course_koopa_troopa_beach_vertex_0x0401BBE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401BBE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x18464
+
+d_course_koopa_troopa_beach_vertex_0x0401BDC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401BDC0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x18608
+
+d_course_koopa_troopa_beach_vertex_0x0401BF30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401BF30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1874a
+
+d_course_koopa_troopa_beach_vertex_0x0401C130:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C130
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1890a
+
+d_course_koopa_troopa_beach_vertex_0x0401C1F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C1F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x189b2
+
+d_course_koopa_troopa_beach_vertex_0x0401C3D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C3D0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x18b56
+
+d_course_koopa_troopa_beach_vertex_0x0401C400:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C400
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x18b80
+
+d_course_koopa_troopa_beach_vertex_0x0401C550:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C550
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x18ca6
+
+d_course_koopa_troopa_beach_vertex_0x0401C6A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C6A0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x18dcc
+
+d_course_koopa_troopa_beach_vertex_0x0401C790:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C790
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x18e9e
+
+d_course_koopa_troopa_beach_vertex_0x0401C810:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C810
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x18f0e
+
+d_course_koopa_troopa_beach_vertex_0x0401C8B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C8B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x18f9a
+
+d_course_koopa_troopa_beach_vertex_0x0401C8F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C8F0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x18fd2
+
+d_course_koopa_troopa_beach_vertex_0x0401C990:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C990
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1905e
+
+d_course_koopa_troopa_beach_vertex_0x0401C9D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401C9D0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x19096
+
+d_course_koopa_troopa_beach_vertex_0x0401CA70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CA70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x19122
+
+d_course_koopa_troopa_beach_vertex_0x0401CAB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CAB0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1915a
+
+d_course_koopa_troopa_beach_vertex_0x0401CB50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CB50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x191e6
+
+d_course_koopa_troopa_beach_vertex_0x0401CB90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CB90
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1921e
+
+d_course_koopa_troopa_beach_vertex_0x0401CC30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CC30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x192aa
+
+d_course_koopa_troopa_beach_vertex_0x0401CC70:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CC70
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x192e2
+
+d_course_koopa_troopa_beach_vertex_0x0401CD10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CD10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1936e
+
+d_course_koopa_troopa_beach_vertex_0x0401CD50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CD50
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x193a6
+
+d_course_koopa_troopa_beach_vertex_0x0401CDF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CDF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x19432
+
+d_course_koopa_troopa_beach_vertex_0x0401CE30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CE30
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1946a
+
+d_course_koopa_troopa_beach_vertex_0x0401CED0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CED0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x194f6
+
+d_course_koopa_troopa_beach_vertex_0x0401CF10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401CF10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1952e
+
+d_course_koopa_troopa_beach_vertex_0x0401D110:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D110
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x196ee
+
+d_course_koopa_troopa_beach_vertex_0x0401D190:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D190
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1975e
+
+d_course_koopa_troopa_beach_vertex_0x0401D370:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D370
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x19902
+
+d_course_koopa_troopa_beach_vertex_0x0401D3A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D3A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1992c
+
+d_course_koopa_troopa_beach_vertex_0x0401D5A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D5A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x19aec
+
+d_course_koopa_troopa_beach_vertex_0x0401D620:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D620
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x19b5c
+
+d_course_koopa_troopa_beach_vertex_0x0401D800:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D800
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x19d00
+
+d_course_koopa_troopa_beach_vertex_0x0401D830:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401D830
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x19d2a
+
+d_course_koopa_troopa_beach_vertex_0x0401DA10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401DA10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x19ece
+
+d_course_koopa_troopa_beach_vertex_0x0401DBF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401DBF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a072
+
+d_course_koopa_troopa_beach_vertex_0x0401DDD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401DDD0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1a216
+
+d_course_koopa_troopa_beach_vertex_0x0401DEF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401DEF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a312
+
+d_course_koopa_troopa_beach_vertex_0x0401E0D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E0D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a4b6
+
+d_course_koopa_troopa_beach_vertex_0x0401E2B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E2B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a65a
+
+d_course_koopa_troopa_beach_vertex_0x0401E490:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E490
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1a7fe
+
+d_course_koopa_troopa_beach_vertex_0x0401E4C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E4C0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1a828
+
+d_course_koopa_troopa_beach_vertex_0x0401E560:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E560
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1a8b4
+
+d_course_koopa_troopa_beach_vertex_0x0401E760:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E760
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x1aa74
+
+d_course_koopa_troopa_beach_vertex_0x0401E930:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401E930
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1ac0a
+
+d_course_koopa_troopa_beach_vertex_0x0401EA60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401EA60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1ad14
+
+d_course_koopa_troopa_beach_vertex_0x0401EC60:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401EC60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1aed4
+
+d_course_koopa_troopa_beach_vertex_0x0401ED20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401ED20
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x1af7c
+
+d_course_koopa_troopa_beach_vertex_0x0401EE90:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401EE90
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x1b0be
+
+d_course_koopa_troopa_beach_vertex_0x0401EFE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401EFE0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x1b1e4
+
+d_course_koopa_troopa_beach_vertex_0x0401F150:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F150
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1b326
+
+d_course_koopa_troopa_beach_vertex_0x0401F290:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F290
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1b43e
+
+d_course_koopa_troopa_beach_vertex_0x0401F3D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F3D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1b556
+
+d_course_koopa_troopa_beach_vertex_0x0401F450:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F450
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1b5c6
+
+d_course_koopa_troopa_beach_vertex_0x0401F510:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F510
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x1b66e
+
+d_course_koopa_troopa_beach_vertex_0x0401F620:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F620
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1b75c
+
+d_course_koopa_troopa_beach_vertex_0x0401F810:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F810
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1b90e
+
+d_course_koopa_troopa_beach_vertex_0x0401F890:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F890
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x1b97e
+
+d_course_koopa_troopa_beach_vertex_0x0401F9A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401F9A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x1ba6c
+
+d_course_koopa_troopa_beach_vertex_0x0401FB20:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401FB20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1bbbc
+
+d_course_koopa_troopa_beach_vertex_0x0401FD00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401FD00
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1bd60
+
+d_course_koopa_troopa_beach_vertex_0x0401FDE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401FDE0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1be24
+
+d_course_koopa_troopa_beach_vertex_0x0401FF10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x0401FF10
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1bf2e
+
+d_course_koopa_troopa_beach_vertex_0x040200B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040200B0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1c09a
+
+d_course_koopa_troopa_beach_vertex_0x04020250:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020250
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1c206
+
+d_course_koopa_troopa_beach_vertex_0x04020370:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020370
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x1c302
+
+d_course_koopa_troopa_beach_vertex_0x040204F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040204F0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x1c452
+
+d_course_koopa_troopa_beach_vertex_0x04020640:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020640
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1c578
+
+d_course_koopa_troopa_beach_vertex_0x04020780:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020780
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x1c690
+
+d_course_koopa_troopa_beach_vertex_0x040208E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040208E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1c7c4
+
+d_course_koopa_troopa_beach_vertex_0x04020A00:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020A00
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1c8c0
+
+d_course_koopa_troopa_beach_vertex_0x04020B40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020B40
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1c9d8
+
+d_course_koopa_troopa_beach_vertex_0x04020CE0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020CE0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x1cb44
+
+d_course_koopa_troopa_beach_vertex_0x04020E50:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020E50
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x1cc86
+
+d_course_koopa_troopa_beach_vertex_0x04020FA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04020FA0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1cdac
+
+d_course_koopa_troopa_beach_vertex_0x040210D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040210D0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x1ceb6
+
+d_course_koopa_troopa_beach_vertex_0x040211E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040211E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1cfa4
+
+d_course_koopa_troopa_beach_vertex_0x04021300:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021300
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x1d0a0
+
+d_course_koopa_troopa_beach_vertex_0x04021470:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021470
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1d1e2
+
+d_course_koopa_troopa_beach_vertex_0x040215A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040215A0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1d2ec
+
+d_course_koopa_troopa_beach_vertex_0x04021630:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021630
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1d36a
+
+d_course_koopa_troopa_beach_vertex_0x040216C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040216C0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x1d3e8
+
+d_course_koopa_troopa_beach_vertex_0x04021770:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021770
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1d482
+
+d_course_koopa_troopa_beach_vertex_0x04021800:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021800
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x1d500
+
+d_course_koopa_troopa_beach_vertex_0x040218B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040218B0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x1d59a
+
+d_course_koopa_troopa_beach_vertex_0x040219C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040219C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1d688
+
+d_course_koopa_troopa_beach_vertex_0x04021A80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021A80
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1d730
+
+d_course_koopa_troopa_beach_vertex_0x04021BB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021BB0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1d83a
+
+d_course_koopa_troopa_beach_vertex_0x04021C40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021C40
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1d8b8
+
+d_course_koopa_troopa_beach_vertex_0x04021CA0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021CA0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1d90c
+
+d_course_koopa_troopa_beach_vertex_0x04021D80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021D80
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1d9d0
+
+d_course_koopa_troopa_beach_vertex_0x04021E10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021E10
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1da4e
+
+d_course_koopa_troopa_beach_vertex_0x04021EF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021EF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1db12
+
+d_course_koopa_troopa_beach_vertex_0x04021FB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04021FB0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1dbba
+
+d_course_koopa_troopa_beach_vertex_0x040220A0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040220A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1dc8c
+
+d_course_koopa_troopa_beach_vertex_0x04022100:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022100
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1dce0
+
+d_course_koopa_troopa_beach_vertex_0x04022190:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022190
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1dd5e
+
+d_course_koopa_troopa_beach_vertex_0x04022250:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022250
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1de06
+
+d_course_koopa_troopa_beach_vertex_0x04022450:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022450
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1dfc6
+
+d_course_koopa_troopa_beach_vertex_0x04022510:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022510
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1e06e
+
+d_course_koopa_troopa_beach_vertex_0x04022700:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022700
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1e220
+
+d_course_koopa_troopa_beach_vertex_0x040227C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040227C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1e2c8
+
+d_course_koopa_troopa_beach_vertex_0x040229C0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040229C0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1e488
+
+d_course_koopa_troopa_beach_vertex_0x040229F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040229F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1e4b2
+
+d_course_koopa_troopa_beach_vertex_0x04022BD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022BD0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1e656
+
+d_course_koopa_troopa_beach_vertex_0x04022CC0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022CC0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1e728
+
+d_course_koopa_troopa_beach_vertex_0x04022EB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022EB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1e8da
+
+d_course_koopa_troopa_beach_vertex_0x04022F10:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04022F10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1e92e
+
+d_course_koopa_troopa_beach_vertex_0x040230F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040230F0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1ead2
+
+d_course_koopa_troopa_beach_vertex_0x040231F0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040231F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1ebb2
+
+d_course_koopa_troopa_beach_vertex_0x040233D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040233D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1ed56
+
+d_course_koopa_troopa_beach_vertex_0x040234B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040234B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1ee1a
+
+d_course_koopa_troopa_beach_vertex_0x040236B0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040236B0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1efda
+
+d_course_koopa_troopa_beach_vertex_0x040237E0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040237E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1f0e4
+
+d_course_koopa_troopa_beach_vertex_0x040239D0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x040239D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1f296
+
+d_course_koopa_troopa_beach_vertex_0x04023AB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023AB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1f35a
+
+d_course_koopa_troopa_beach_vertex_0x04023B30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023B30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1f3ca
+
+d_course_koopa_troopa_beach_vertex_0x04023BF0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023BF0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1f472
+
+d_course_koopa_troopa_beach_vertex_0x04023C80:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023C80
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x1f4f0
+
+d_course_koopa_troopa_beach_vertex_0x04023D30:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023D30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1f58a
+
+d_course_koopa_troopa_beach_vertex_0x04023DB0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023DB0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x1f5fa
+
+d_course_koopa_troopa_beach_vertex_0x04023F40:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023F40
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1f758
+
+d_course_koopa_troopa_beach_vertex_0x04023FD0:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04023FD0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1f7d6
+
+d_course_koopa_troopa_beach_vertex_0x04024090:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024090
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1f87e
+
+d_course_koopa_troopa_beach_vertex_0x04024170:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024170
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1f942
+
+d_course_koopa_troopa_beach_vertex_0x04024230:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024230
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1f9ea
+
+d_course_koopa_troopa_beach_vertex_0x04024360:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024360
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1faf4
+
+d_course_koopa_troopa_beach_vertex_0x04024540:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024540
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1fc98
+
+d_course_koopa_troopa_beach_vertex_0x04024720:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024720
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1fe3c
+
+d_course_koopa_troopa_beach_vertex_0x04024780:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024780
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1fe90
+
+d_course_koopa_troopa_beach_vertex_0x04024970:
+  symbol: d_course_koopa_troopa_beach_vertex_0x04024970
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x20042

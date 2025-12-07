@@ -1,0 +1,155 @@
+:config:
+  segments:
+    - [0x0B, 0x821D10]
+  external_files:
+    - "yamls/us/textures/ceremony_data.yml"
+  header:
+    code:
+    - '#include <assets/ceremony_data.h>'
+    header:
+    - '#include <libultraship.h>'
+    - '#include <common_structs.h>'
+    - '#include <waypoints.h>'
+    - '#include <align_asset_macro.h>'
+silver_trophy_dl:
+  symbol: silver_trophy_dl
+  type: gfx
+  offset: 0xFE0
+silver_trophy_dl2:
+  symbol: silver_trophy_dl2
+  type: gfx
+  offset: 0x10B8
+silver_trophy_dl3:
+  symbol: silver_trophy_dl3
+  type: gfx
+  offset: 0x1188
+silver_trophy_dl4:
+  symbol: silver_trophy_dl4
+  type: gfx
+  offset: 0x1260
+silver_trophy_dl5:
+  symbol: silver_trophy_dl5
+  type: gfx
+  offset: 0x1418
+silver_trophy_dl6:
+  symbol: silver_trophy_dl6
+  type: gfx
+  offset: 0x14D0
+some_vtx:
+  symbol: unused_trophy_base_with_handle
+  type: vtx
+  offset: 0x18C0 # 2200
+  count: 211 # 274
+some_vtx2:
+  symbol: unused_trophy_base2
+  type: vtx
+  offset: 0x2F30
+  count: 63
+gold_trophy_dl:
+  symbol: gold_trophy_dl
+  type: gfx
+  offset: 0x5E70
+gold_trophy_dl2:
+  symbol: gold_trophy_dl2
+  type: gfx
+  offset: 0x5F20
+gold_trophy_dl3:
+  symbol: gold_trophy_dl3
+  type: gfx
+  offset: 0x5FD0
+gold_trophy_dl4:
+  symbol: gold_trophy_dl4
+  type: gfx
+  offset: 0x6218
+gold_trophy_dl5:
+  symbol: gold_trophy_dl5
+  type: gfx
+  offset: 0x62C8
+gold_trophy_dl6:
+  symbol: gold_trophy_dl6
+  type: gfx
+  offset: 0x6518
+gold_trophy_dl7:
+  symbol: gold_trophy_dl7
+  type: gfx
+  offset: 0x6720
+gold_trophy_dl8:
+  symbol: gold_trophy_dl8
+  type: gfx
+  offset: 0x6880
+gold_trophy_dl9:
+  symbol: gold_trophy_dl9
+  type: gfx
+  offset: 0x6948
+gold_trophy_dl10:
+  symbol: gold_trophy_dl10
+  type: gfx
+  offset: 0x69D8
+gold_trophy_dl11:
+  symbol: gold_trophy_dl11
+  type: gfx
+  offset: 0x6A28
+gold_trophy_dl12:
+  symbol: gold_trophy_dl12
+  type: gfx
+  offset: 0x6A78
+gold_trophy_dl13:
+  symbol: gold_trophy_dl13
+  type: gfx
+  offset: 0x6AC8
+gold_trophy_dl14:
+  symbol: gold_trophy_dl14
+  type: gfx
+  offset: 0x6B18
+gold_trophy_dl15:
+  symbol: gold_trophy_dl15
+  type: gfx
+  offset: 0x6B68
+podium_dl:
+  symbol: podium_dl
+  type: gfx
+  offset: 0x7510
+podium_dl2:
+  symbol: podium_dl2
+  type: gfx
+  offset: 0x75E0
+podium_dl3:
+  symbol: podium_dl3
+  type: gfx
+  offset: 0x75F0
+podium_dl4:
+  symbol: podium_dl4
+  type: gfx
+  offset: 0x7600
+podium2_dl:
+  symbol: podium2_dl
+  type: gfx
+  offset: 0x7F60
+podium2_dl2:
+  symbol: podium2_dl2
+  type: gfx
+  offset: 0x8030
+podium2_dl3:
+  symbol: podium2_dl3
+  type: gfx
+  offset: 0x8040
+podium2_dl4:
+  symbol: podium2_dl4
+  type: gfx
+  offset: 0x8050
+podium3_dl:
+  symbol: podium3_dl
+  type: gfx
+  offset: 0x89B0
+podium3_dl2:
+  symbol: podium3_dl2
+  type: gfx
+  offset: 0x8A80
+podium3_dl3:
+  symbol: podium3_dl3
+  type: gfx
+  offset: 0x8A90
+podium3_dl4:
+  symbol: podium3_dl4
+  type: gfx
+  offset: 0x8AA0

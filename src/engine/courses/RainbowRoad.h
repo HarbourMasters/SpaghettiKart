@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/rainbow_road_vertices.h"
-    #include "assets/rainbow_road_displaylists.h"
-    #include "assets/rainbow_road_data.h"
+    #include "assets/models/tracks/rainbow_road/rainbow_road_vertices.h"
+    #include "assets/models/tracks/rainbow_road/rainbow_road_displaylists.h"
+    #include "assets/models/tracks/rainbow_road/rainbow_road_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -25,7 +25,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32, Camera*) override;

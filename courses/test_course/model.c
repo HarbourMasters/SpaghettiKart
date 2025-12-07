@@ -1,6 +1,6 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
-#include "assets/other_textures.h"
+#include "assets/textures/other_textures.h"
 
 Lights1 mario_f3dlite_material_009_lights = gdSPDefLights1(
 	0x0, 0x0, 0x0,

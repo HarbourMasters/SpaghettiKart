@@ -273,8 +273,8 @@ fragment float4 fragmentShader(ProjectedVertex in [[stage_in]], constant FrameUn
     @end
 
     @if(o_alpha && o_noise)
-        float2 coords = in.position.xy * frameUniforms.noiseScale;
-        texel.w *= round(saturate(random(float3(floor(coords), float(frameUniforms.frameCount))) + texel.w - 0.5));
+        float2 coords = screenSpace.xy * noise_scale;
+        texel.w *= round(saturate(random(float3(floor(coords), noise_frame)) + texel.w - 0.5));
     @end
 
     @if(o_alpha)

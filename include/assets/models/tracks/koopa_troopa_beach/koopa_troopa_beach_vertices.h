@@ -1,0 +1,1028 @@
+#pragma once
+
+#include <libultraship.h>
+#include <libultra/gbi.h>
+#include <align_asset_macro.h>
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000000[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000000";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000040[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000040";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000080[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000080";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040000C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040000C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000100[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000100";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000140[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000140";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000180[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000180";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040001C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040001C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000200[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000200";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040002C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040002C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040004C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040004C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000610[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000610";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000800[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000800";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000A00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000A00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000A60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000A60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000C50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000C50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000E50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000E50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04000FF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000FF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040011F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040011F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040013E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040013E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040015C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040015C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040016B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040016B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001890[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001890";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001A80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001A80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001AF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001AF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001CF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001CF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001ED0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001ED0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04001F00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001F00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002100[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002100";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040022F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040022F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002350[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002350";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002540[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002540";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002740[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002740";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040027E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040027E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040029E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040029E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002BE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002BE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002D80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002D80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04002F60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002F60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003160[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003160";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003270[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003270";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003460[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003460";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003580[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003580";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003760[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003760";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003880[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003880";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040038E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040038E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003AD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003AD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003CB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003CB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003D20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003D20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04003F00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003F00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040040F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040040F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004150[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004150";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004350[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004350";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040044A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040044A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004680[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004680";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004880[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004880";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004940[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004940";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004A80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004A80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004C70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004C70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04004E10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004E10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04005010[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005010";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040051F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040051F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040053E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040053E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040055D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040055D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040057D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040057D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040059A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040059A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04005BA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005BA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04005D00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005D00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04005EF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005EF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040060F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040060F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006120[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006120";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040062C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040062C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006490[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006490";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006670[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006670";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006860[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006860";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040068A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040068A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006A80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006A80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006C80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006C80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006DB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006DB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04006F90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006F90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007180[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007180";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007360[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007360";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007560[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007560";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007750[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007750";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007940[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007940";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040079C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040079C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007BA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007BA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007D60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007D60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04007F60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007F60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008050[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008050";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008230[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008230";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008430[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008430";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008500[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008500";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008700[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008700";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008900[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008900";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040089E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040089E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008BE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008BE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008DE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008DE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04008ED0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008ED0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040090D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040090D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040092D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040092D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009300[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009300";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009360[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009360";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040093F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040093F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040094E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040094E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040095B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040095B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009710[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009710";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009860[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009860";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040098E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040098E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040099C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040099C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009B10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009B10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009BD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009BD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009CB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009CB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009D10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009D10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009E20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009E20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009E80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009E80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009F10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009F10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04009FD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009FD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A0E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A0E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A1A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A1A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A270[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A270";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A380[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A380";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A560[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A560";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A670[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A670";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A720[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A720";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A870[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A870";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A8A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A8A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A900[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A900";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400A960[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A960";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AA90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AA90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AB20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AB20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AC20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AC20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400ADB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400ADB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AE30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AE30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AE90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AE90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400AF50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AF50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B070[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B070";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B1C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B1C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B300[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B300";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B400[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B400";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B580[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B580";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B680[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B680";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B7B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B7B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400B8B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B8B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BA20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BA20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BB20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BB20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BC60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BC60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BD60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BD60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BDF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BDF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BE70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BE70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BF20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BF20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400BFA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BFA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C120[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C120";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C290[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C290";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C3B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C3B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C430[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C430";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C530[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C530";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C6A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C6A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C7A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C7A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400C920[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C920";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400CB00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CB00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400CC80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CC80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400CD70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CD70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400CDF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CDF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400CF40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CF40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D040[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D040";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D1E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D1E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D360[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D360";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D520[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D520";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D660[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D660";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D760[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D760";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D8A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D8A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400D9A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D9A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400DAF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DAF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400DBF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DBF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400DD60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DD60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400DE60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DE60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400DFB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DFB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E0B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E0B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E1F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E1F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E270[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E270";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E450[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E450";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E650[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E650";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E840[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E840";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E8A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E8A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400E9E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E9E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400EAE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EAE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400EBD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EBD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400EC50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EC50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400ED60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400ED60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400EF10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EF10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400EF60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EF60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F070[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F070";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F1A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F1A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F2D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F2D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F480[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F480";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F500[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F500";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F630[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F630";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F720[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F720";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400F8D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F8D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FA50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FA50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FB00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FB00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FB80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FB80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FC30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FC30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FCB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FCB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FD70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FD70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FDF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FDF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FEB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FEB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FF30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FF30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0400FFD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FFD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010010[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010010";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010050[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010050";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010090[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010090";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040100F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040100F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010130[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010130";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010260[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010260";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010320[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010320";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010380[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010380";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040103C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040103C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040103F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040103F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010450[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010450";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010490[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010490";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040104F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040104F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040105E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040105E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040106A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040106A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010700[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010700";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010740[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010740";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040107A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040107A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040107E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040107E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040108D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040108D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010990[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010990";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010AC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010AC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010B70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010B70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010BF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010BF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010CC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010CC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010D40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010D40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010DE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010DE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010E20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010E20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010F20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010F20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04010FD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010FD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011080[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011080";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011100[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011100";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011190[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011190";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040111D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040111D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040113C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040113C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040114E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040114E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011540[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011540";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011580[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011580";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040115E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040115E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011620[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011620";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040116B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040116B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011790[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011790";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040117F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040117F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011850[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011850";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040118F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040118F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040119D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040119D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011B00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011B00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011B40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011B40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011C40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011C40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011CC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011CC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011DC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011DC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011E70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011E70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04011F80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011F80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012000[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012000";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040120B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040120B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040122A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040122A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040123C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040123C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012400[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012400";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012460[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012460";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040125E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040125E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012640[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012640";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012690[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012690";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012750[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012750";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040127D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040127D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012830[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012830";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012890[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012890";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012950[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012950";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012AE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012AE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012CE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012CE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04012E90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012E90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013040[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013040";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040131C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040131C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040132B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040132B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013340[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013340";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013480[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013480";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013580[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013580";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040135D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040135D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040137D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040137D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013860[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013860";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013A10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013A10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013A90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013A90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013B50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013B50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013C50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013C50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013D70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013D70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04013F70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013F70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014150[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014150";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014340[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014340";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014530[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014530";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014560[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014560";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014760[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014760";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014940[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014940";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040149C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040149C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014BC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014BC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014BF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014BF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014DD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014DD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04014FB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014FB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040151A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040151A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015230[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015230";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015430[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015430";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015620[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015620";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015650[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015650";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015830[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015830";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015860[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015860";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015890[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015890";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015A70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015A70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015B60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015B60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015B90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015B90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015D80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015D80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04015E50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015E50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016030[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016030";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016210[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016210";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040163F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040163F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040165D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040165D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040167B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040167B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016990[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016990";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040169C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040169C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016BA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016BA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016D90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016D90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04016F70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016F70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017120[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017120";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017300[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017300";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040173C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040173C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040175A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040175A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017660[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017660";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017840[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017840";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040178A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040178A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017A80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017A80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017C70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017C70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04017E70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017E70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018050[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018050";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040180E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040180E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040182C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040182C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040184A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040184A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018680[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018680";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040187F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040187F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040189F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040189F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018BD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018BD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018CE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018CE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018EC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018EC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04018F50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018F50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019130[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019130";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019280[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019280";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019480[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019480";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019570[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019570";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019750[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019750";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019900[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019900";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019940[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019940";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019A00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019A00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019A60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019A60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019C40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019C40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019CA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019CA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019EA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019EA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04019F30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019F30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A110[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A110";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A140[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A140";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A340[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A340";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A460[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A460";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A520[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A520";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A720[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A720";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401A900[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A900";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401AAE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AAE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401AB70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AB70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401AD70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AD70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401AF60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AF60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401B140[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B140";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401B330[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B330";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401B520[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B520";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401B640[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B640";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401B820[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B820";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401BA00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BA00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401BBE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BBE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401BDC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BDC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401BF30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BF30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C130[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C130";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C1F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C1F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C3D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C3D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C400[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C400";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C550[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C550";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C6A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C6A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C790[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C790";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C810[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C810";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C8B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C8B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C8F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C8F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C990[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C990";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401C9D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C9D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CA70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CA70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CAB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CAB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CB50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CB50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CB90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CB90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CC30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CC30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CC70[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CC70";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CD10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CD10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CD50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CD50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CDF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CDF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CE30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CE30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CED0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CED0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401CF10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CF10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D110[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D110";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D190[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D190";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D370[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D370";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D3A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D3A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D5A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D5A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D620[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D620";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D800[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D800";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401D830[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D830";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401DA10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DA10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401DBF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DBF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401DDD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DDD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401DEF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DEF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E0D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E0D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E2B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E2B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E490[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E490";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E4C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E4C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E560[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E560";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E760[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E760";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401E930[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E930";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401EA60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EA60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401EC60[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EC60";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401ED20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401ED20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401EE90[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EE90";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401EFE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EFE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F150[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F150";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F290[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F290";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F3D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F3D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F450[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F450";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F510[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F510";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F620[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F620";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F810[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F810";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F890[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F890";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401F9A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F9A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401FB20[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FB20";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401FD00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FD00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401FDE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FDE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x0401FF10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FF10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040200B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040200B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020250[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020250";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020370[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020370";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040204F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040204F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020640[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020640";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020780[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020780";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040208E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040208E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020A00[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020A00";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020B40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020B40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020CE0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020CE0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020E50[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020E50";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04020FA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020FA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040210D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040210D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040211E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040211E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021300[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021300";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021470[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021470";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040215A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040215A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021630[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021630";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040216C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040216C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021770[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021770";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021800[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021800";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040218B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040218B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040219C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040219C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021A80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021A80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021BB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021BB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021C40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021C40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021CA0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021CA0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021D80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021D80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021E10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021E10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021EF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021EF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04021FB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021FB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040220A0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040220A0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022100[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022100";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022190[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022190";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022250[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022250";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022450[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022450";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022510[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022510";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022700[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022700";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040227C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040227C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040229C0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040229C0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040229F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040229F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022BD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022BD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022CC0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022CC0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022EB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022EB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04022F10[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022F10";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040230F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040230F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040231F0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040231F0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040233D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040233D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040234B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040234B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040236B0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040236B0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040237E0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040237E0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x040239D0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040239D0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023AB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023AB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023B30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023B30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023BF0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023BF0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023C80[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023C80";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023D30[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023D30";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023DB0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023DB0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023F40[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023F40";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04023FD0[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023FD0";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024090[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024090";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024170[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024170";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024230[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024230";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024360[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024360";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024540[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024540";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024720[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024720";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024780[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024780";
+
+static const ALIGN_ASSET(2) char d_course_koopa_troopa_beach_vertex_0x04024970[] = "__OTR__models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024970";
+

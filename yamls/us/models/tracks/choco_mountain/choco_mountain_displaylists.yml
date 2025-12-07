@@ -1,0 +1,925 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x8A55C4
+  no_compression: true
+  segments:
+    - [0x0E, 0x8A55C4]
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_64619C"]
+    - [0x05000800, "textures/other_textures/texture_64647C"]
+    - [0x05001800, "textures/other_textures/texture_647F4C"]
+    - [0x05002800, "textures/other_textures/texture_64FBF4"]
+    - [0x05003000, "textures/other_textures/texture_653DB0"]
+    - [0x05003800, "textures/other_textures/texture_652B54"]
+    - [0x05004000, "textures/other_textures/texture_65315C"]
+    - [0x05004800, "textures/other_textures/texture_6684F8"]
+    - [0x05005000, "textures/other_textures/sign_luigis_0"]
+    - [0x05006000, "textures/other_textures/sign_luigis_1"]
+    - [0x05007000, "textures/other_textures/sign_nintendo_red_0"]
+    - [0x05008000, "textures/other_textures/sign_nintendo_red_1"]
+    - [0x05009000, "textures/other_textures/texture_6774D8"]
+    - [0x05009800, "textures/other_textures/sign_falling_rocks"]
+    - [0x0500A000, "textures/other_textures/sign_backside"]
+    - [0x0500A800, "textures/other_textures/texture_679C04"]
+    - [0x0500B000, "textures/other_textures/texture_67B864"]
+    - [0x0500B800, "textures/other_textures/texture_67DC20"]
+    - [0x0500C000, "textures/other_textures/sign_yoshi"]
+    - [0x0500D000, "textures/other_textures/checkerboard_blue_gray"]
+    # Segment 7
+    - [0x7000000, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_0"]
+    - [0x7000098, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_98"]
+    - [0x7000178, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_178"]
+    - [0x7000280, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_280"]
+    - [0x7000340, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_340"]
+    - [0x70003C8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3C8"]
+    - [0x7000448, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_448"]
+    - [0x7000480, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_480"]
+    - [0x7000508, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_508"]
+    - [0x7000570, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_570"]
+    - [0x70005D8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5D8"]
+    - [0x70005F8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5F8"]
+    - [0x7000718, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_718"]
+    - [0x7000728, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_728"]
+    - [0x7000748, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_748"]
+    - [0x7000758, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_758"]
+    - [0x7000828, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_828"]
+    - [0x7000838, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_838"]
+    - [0x70008E0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_8E0"]
+    - [0x70008F0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_8F0"]
+    - [0x70009B0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_9B0"]
+    - [0x7000A60, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_A60"]
+    - [0x7000AF8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_AF8"]
+    - [0x7000B88, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_B88"]
+    - [0x7000C18, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_C18"]
+    - [0x7000CA0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_CA0"]
+    - [0x7000D38, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_D38"]
+    - [0x7000DD0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_DD0"]
+    - [0x7000EB8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_EB8"]
+    - [0x7000F68, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_F68"]
+    - [0x7001018, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1018"]
+    - [0x7001100, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1100"]
+    - [0x7001200, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1200"]
+    - [0x70012A0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_12A0"]
+    - [0x7001338, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1338"]
+    - [0x70013E8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_13E8"]
+    - [0x7001488, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1488"]
+    - [0x7001538, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1538"]
+    - [0x70015D0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_15D0"]
+    - [0x7001670, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1670"]
+    - [0x7001740, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1740"]
+    - [0x70017E0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_17E0"]
+    - [0x70018E8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_18E8"]
+    - [0x7001988, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1988"]
+    - [0x7001A48, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1A48"]
+    - [0x7001AC8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1AC8"]
+    - [0x7001BE0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1BE0"]
+    - [0x7001C98, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1C98"]
+    - [0x7001DB8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1DB8"]
+    - [0x7001E90, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1E90"]
+    - [0x7001FE8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_1FE8"]
+    - [0x70020F8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_20F8"]
+    - [0x70021D8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_21D8"]
+    - [0x7002278, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2278"]
+    - [0x7002380, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2380"]
+    - [0x7002458, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2458"]
+    - [0x7002530, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2530"]
+    - [0x7002600, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2600"]
+    - [0x70026C0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_26C0"]
+    - [0x7002760, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2760"]
+    - [0x70027F0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_27F0"]
+    - [0x70028B0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_28B0"]
+    - [0x70029E8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_29E8"]
+    - [0x7002AE8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2AE8"]
+    - [0x7002BD0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2BD0"]
+    - [0x7002CA8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2CA8"]
+    - [0x7002D68, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2D68"]
+    - [0x7002E38, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2E38"]
+    - [0x7002EE8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2EE8"]
+    - [0x7002FE8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_2FE8"]
+    - [0x70030A8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_30A8"]
+    - [0x7003188, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3188"]
+    - [0x7003200, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3200"]
+    - [0x70032F0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_32F0"]
+    - [0x7003390, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3390"]
+    - [0x7003410, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3410"]
+    - [0x70034E0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_34E0"]
+    - [0x70035B0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_35B0"]
+    - [0x7003670, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3670"]
+    - [0x7003708, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3708"]
+    - [0x70037B0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_37B0"]
+    - [0x70038B8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_38B8"]
+    - [0x7003998, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3998"]
+    - [0x7003A80, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3A80"]
+    - [0x7003B98, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3B98"]
+    - [0x7003CF0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3CF0"]
+    - [0x7003DD8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3DD8"]
+    - [0x7003EE8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3EE8"]
+    - [0x7003FB8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_3FB8"]
+    - [0x7004148, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4148"]
+    - [0x7004608, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4608"]
+    - [0x7004618, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4618"]
+    - [0x7004690, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4690"]
+    - [0x70046F0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_46F0"]
+    - [0x7004790, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4790"]
+    - [0x7004840, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4840"]
+    - [0x70048E8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_48E8"]
+    - [0x7004970, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4970"]
+    - [0x70049F0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_49F0"]
+    - [0x7004AB0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4AB0"]
+    - [0x7004B58, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4B58"]
+    - [0x7004C08, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4C08"]
+    - [0x7004CC8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4CC8"]
+    - [0x7004D90, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4D90"]
+    - [0x7004E40, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4E40"]
+    - [0x7004EB0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4EB0"]
+    - [0x7004F30, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4F30"]
+    - [0x7004FC0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_4FC0"]
+    - [0x7005070, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5070"]
+    - [0x7005148, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5148"]
+    - [0x70051D8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_51D8"]
+    - [0x7005258, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5258"]
+    - [0x70052C8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_52C8"]
+    - [0x7005338, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5338"]
+    - [0x70053D8, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_53D8"]
+    - [0x7005490, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5490"]
+    - [0x7005558, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5558"]
+    - [0x7005688, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5688"]
+    - [0x7005778, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5778"]
+    - [0x7005868, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5868"]
+    - [0x7005888, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5888"]
+    - [0x7005910, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5910"]
+    - [0x70059A0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_59A0"]
+    - [0x7005A00, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5A00"]
+    - [0x7005A70, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5A70"]
+    - [0x7005A98, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5A98"]
+    - [0x7005AE0, "models/tracks/choco_mountain/choco_mountain_displaylists/d_course_choco_mountain_packed_dl_5AE0"]
+  # Segment 4
+    - [0x4000000, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000000"]
+    - [0x4000200, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000200"]
+    - [0x4000400, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000600"]
+    - [0x4000800, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000800"]
+    - [0x4000a00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000A00"]
+    - [0x4000b00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000B00"]
+    - [0x4000d00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000D00"]
+    - [0x4000e00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000E00"]
+    - [0x4000f80, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04000F80"]
+    - [0x40010c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040010C0"]
+    - [0x4001240, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001240"]
+    - [0x40012c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040012C0"]
+    - [0x4001340, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001340"]
+    - [0x40013c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040013C0"]
+    - [0x4001480, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001480"]
+    - [0x4001500, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001500"]
+    - [0x40016a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040016A0"]
+    - [0x4001860, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001860"]
+    - [0x40019a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040019A0"]
+    - [0x4001a60, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001A60"]
+    - [0x4001b40, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001B40"]
+    - [0x4001b90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001B90"]
+    - [0x4001d80, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001D80"]
+    - [0x4001de0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001DE0"]
+    - [0x4001fc0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04001FC0"]
+    - [0x4002020, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002020"]
+    - [0x40020f0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040020F0"]
+    - [0x40021b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040021B0"]
+    - [0x40022d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040022D0"]
+    - [0x40023b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040023B0"]
+    - [0x40025a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040025A0"]
+    - [0x4002630, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002630"]
+    - [0x40026f0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040026F0"]
+    - [0x40028e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040028E0"]
+    - [0x4002a30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002A30"]
+    - [0x4002c30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002C30"]
+    - [0x4002d70, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002D70"]
+    - [0x4002f60, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04002F60"]
+    - [0x4003020, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003020"]
+    - [0x4003110, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003110"]
+    - [0x40032f0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040032F0"]
+    - [0x4003380, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003380"]
+    - [0x40034b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040034B0"]
+    - [0x4003690, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003690"]
+    - [0x4003780, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003780"]
+    - [0x4003970, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003970"]
+    - [0x40039d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040039D0"]
+    - [0x4003bd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003BD0"]
+    - [0x4003d20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003D20"]
+    - [0x4003f20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003F20"]
+    - [0x4003fb0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04003FB0"]
+    - [0x40041a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040041A0"]
+    - [0x40042e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040042E0"]
+    - [0x40044e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040044E0"]
+    - [0x4004540, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004540"]
+    - [0x4004720, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004720"]
+    - [0x4004920, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004920"]
+    - [0x40049e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040049E0"]
+    - [0x4004bc0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004BC0"]
+    - [0x4004cb0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004CB0"]
+    - [0x4004eb0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004EB0"]
+    - [0x4004f70, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04004F70"]
+    - [0x4005150, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005150"]
+    - [0x4005240, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005240"]
+    - [0x4005350, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005350"]
+    - [0x40053d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040053D0"]
+    - [0x40055b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040055B0"]
+    - [0x40057a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040057A0"]
+    - [0x4005980, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005980"]
+    - [0x4005b70, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005B70"]
+    - [0x4005cc0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005CC0"]
+    - [0x4005eb0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04005EB0"]
+    - [0x4006070, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006070"]
+    - [0x4006270, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006270"]
+    - [0x4006470, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006470"]
+    - [0x4006660, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006660"]
+    - [0x40067c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040067C0"]
+    - [0x40069b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040069B0"]
+    - [0x4006b90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006B90"]
+    - [0x4006c30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006C30"]
+    - [0x4006e30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04006E30"]
+    - [0x4007010, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007010"]
+    - [0x4007210, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007210"]
+    - [0x4007410, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007410"]
+    - [0x4007550, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007550"]
+    - [0x4007740, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007740"]
+    - [0x4007930, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007930"]
+    - [0x4007b30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007B30"]
+    - [0x4007bf0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007BF0"]
+    - [0x4007dd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007DD0"]
+    - [0x4007ef0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04007EF0"]
+    - [0x40080f0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040080F0"]
+    - [0x40081a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040081A0"]
+    - [0x4008380, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008380"]
+    - [0x4008560, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008560"]
+    - [0x4008750, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008750"]
+    - [0x4008840, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008840"]
+    - [0x4008a30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008A30"]
+    - [0x4008af0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008AF0"]
+    - [0x4008b30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008B30"]
+    - [0x4008d20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008D20"]
+    - [0x4008f10, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008F10"]
+    - [0x4008fd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04008FD0"]
+    - [0x40091a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040091A0"]
+    - [0x40092d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040092D0"]
+    - [0x40094b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040094B0"]
+    - [0x4009690, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04009690"]
+    - [0x40096c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040096C0"]
+    - [0x40098a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040098A0"]
+    - [0x40099c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040099C0"]
+    - [0x4009ba0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04009BA0"]
+    - [0x4009c00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04009C00"]
+    - [0x4009de0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04009DE0"]
+    - [0x4009fc0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04009FC0"]
+    - [0x400a020, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A020"]
+    - [0x400a220, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A220"]
+    - [0x400a400, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A400"]
+    - [0x400a540, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A540"]
+    - [0x400a630, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A630"]
+    - [0x400a820, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400A820"]
+    - [0x400aa00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400AA00"]
+    - [0x400abe0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400ABE0"]
+    - [0x400ac60, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400AC60"]
+    - [0x400ae50, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400AE50"]
+    - [0x400b050, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B050"]
+    - [0x400b1a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B1A0"]
+    - [0x400b390, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B390"]
+    - [0x400b590, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B590"]
+    - [0x400b650, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B650"]
+    - [0x400b830, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400B830"]
+    - [0x400ba30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400BA30"]
+    - [0x400bc20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400BC20"]
+    - [0x400be00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400BE00"]
+    - [0x400be30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400BE30"]
+    - [0x400c030, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C030"]
+    - [0x400c1b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C1B0"]
+    - [0x400c3a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C3A0"]
+    - [0x400c580, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C580"]
+    - [0x400c5b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C5B0"]
+    - [0x400c5e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C5E0"]
+    - [0x400c7d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C7D0"]
+    - [0x400c9c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400C9C0"]
+    - [0x400cbb0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400CBB0"]
+    - [0x400cda0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400CDA0"]
+    - [0x400ce90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400CE90"]
+    - [0x400cfd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400CFD0"]
+    - [0x400d1d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D1D0"]
+    - [0x400d3d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D3D0"]
+    - [0x400d580, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D580"]
+    - [0x400d780, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D780"]
+    - [0x400d810, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D810"]
+    - [0x400d9e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400D9E0"]
+    - [0x400dbd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400DBD0"]
+    - [0x400ddc0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400DDC0"]
+    - [0x400de20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400DE20"]
+    - [0x400e010, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E010"]
+    - [0x400e0d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E0D0"]
+    - [0x400e2d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E2D0"]
+    - [0x400e300, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E300"]
+    - [0x400e4e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E4E0"]
+    - [0x400e510, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E510"]
+    - [0x400e6f0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E6F0"]
+    - [0x400e840, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400E840"]
+    - [0x400ea40, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400EA40"]
+    - [0x400ec40, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400EC40"]
+    - [0x400ee20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400EE20"]
+    - [0x400ee50, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400EE50"]
+    - [0x400f040, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F040"]
+    - [0x400f220, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F220"]
+    - [0x400f310, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F310"]
+    - [0x400f460, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F460"]
+    - [0x400f650, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F650"]
+    - [0x400f840, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F840"]
+    - [0x400f980, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400F980"]
+    - [0x400fb10, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400FB10"]
+    - [0x400fd10, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400FD10"]
+    - [0x400ff00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400FF00"]
+    - [0x400ff90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x0400FF90"]
+    - [0x4010180, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010180"]
+    - [0x40101e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040101E0"]
+    - [0x40103c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040103C0"]
+    - [0x4010400, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010400"]
+    - [0x40105e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040105E0"]
+    - [0x40106d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040106D0"]
+    - [0x40108b0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040108B0"]
+    - [0x4010910, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010910"]
+    - [0x4010ad0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010AD0"]
+    - [0x4010cd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010CD0"]
+    - [0x4010ed0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04010ED0"]
+    - [0x40110d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040110D0"]
+    - [0x40112d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040112D0"]
+    - [0x40114d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040114D0"]
+    - [0x40116c0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040116C0"]
+    - [0x40118a0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040118A0"]
+    - [0x4011aa0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04011AA0"]
+    - [0x4011ca0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04011CA0"]
+    - [0x4011dd0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04011DD0"]
+    - [0x4011f30, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04011F30"]
+    - [0x4011f90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04011F90"]
+    - [0x4012140, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012140"]
+    - [0x4012320, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012320"]
+    - [0x4012520, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012520"]
+    - [0x4012660, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012660"]
+    - [0x4012800, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012800"]
+    - [0x4012920, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012920"]
+    - [0x4012960, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012960"]
+    - [0x4012b40, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012B40"]
+    - [0x4012ca0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012CA0"]
+    - [0x4012e80, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04012E80"]
+    - [0x4013060, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013060"]
+    - [0x4013240, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013240"]
+    - [0x4013420, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013420"]
+    - [0x4013480, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013480"]
+    - [0x4013660, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013660"]
+    - [0x4013860, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013860"]
+    - [0x4013890, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013890"]
+    - [0x4013a90, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013A90"]
+    - [0x4013ad0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013AD0"]
+    - [0x4013bf0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013BF0"]
+    - [0x4013d40, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013D40"]
+    - [0x4013f00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04013F00"]
+    - [0x4014100, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014100"]
+    - [0x4014180, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014180"]
+    - [0x4014380, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014380"]
+    - [0x4014560, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014560"]
+    - [0x4014620, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014620"]
+    - [0x4014800, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014800"]
+    - [0x4014860, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014860"]
+    - [0x40149e0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040149E0"]
+    - [0x4014b00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014B00"]
+    - [0x4014c20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014C20"]
+    - [0x4014e00, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014E00"]
+    - [0x4014f20, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04014F20"]
+    - [0x4015120, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015120"]
+    - [0x40152d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040152D0"]
+    - [0x4015450, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015450"]
+    - [0x4015510, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015510"]
+    - [0x40155d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040155D0"]
+    - [0x4015650, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015650"]
+    - [0x4015690, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015690"]
+    - [0x40156d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040156D0"]
+    - [0x4015750, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015750"]
+    - [0x4015790, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015790"]
+    - [0x40157d0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x040157D0"]
+    - [0x4015910, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015910"]
+    - [0x4015a80, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015A80"]
+    - [0x4015ac0, "models/tracks/choco_mountain/choco_mountain_vertices/d_course_choco_mountain_vertex_0x04015AC0"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_choco_mountain_packed_dl_0:
+  symbol: d_course_choco_mountain_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_choco_mountain_packed_dl_98:
+  symbol: d_course_choco_mountain_packed_dl_98
+  type: MK64:PACKED_GFX
+  offset: 0x34
+d_course_choco_mountain_packed_dl_178:
+  symbol: d_course_choco_mountain_packed_dl_178
+  type: MK64:PACKED_GFX
+  offset: 0x93
+d_course_choco_mountain_packed_dl_280:
+  symbol: d_course_choco_mountain_packed_dl_280
+  type: MK64:PACKED_GFX
+  offset: 0x109
+d_course_choco_mountain_packed_dl_340:
+  symbol: d_course_choco_mountain_packed_dl_340
+  type: MK64:PACKED_GFX
+  offset: 0x154
+d_course_choco_mountain_packed_dl_3C8:
+  symbol: d_course_choco_mountain_packed_dl_3C8
+  type: MK64:PACKED_GFX
+  offset: 0x17E
+d_course_choco_mountain_packed_dl_448:
+  symbol: d_course_choco_mountain_packed_dl_448
+  type: MK64:PACKED_GFX
+  offset: 0x1A3
+d_course_choco_mountain_packed_dl_480:
+  symbol: d_course_choco_mountain_packed_dl_480
+  type: MK64:PACKED_GFX
+  offset: 0x1B6
+d_course_choco_mountain_packed_dl_508:
+  symbol: d_course_choco_mountain_packed_dl_508
+  type: MK64:PACKED_GFX
+  offset: 0x1E0
+d_course_choco_mountain_packed_dl_570:
+  symbol: d_course_choco_mountain_packed_dl_570
+  type: MK64:PACKED_GFX
+  offset: 0x1F6
+d_course_choco_mountain_packed_dl_5D8:
+  symbol: d_course_choco_mountain_packed_dl_5D8
+  type: MK64:PACKED_GFX
+  offset: 0x20C
+d_course_choco_mountain_packed_dl_5F8:
+  symbol: d_course_choco_mountain_packed_dl_5F8
+  type: MK64:PACKED_GFX
+  offset: 0x216
+d_course_choco_mountain_packed_dl_718:
+  symbol: d_course_choco_mountain_packed_dl_718
+  type: MK64:PACKED_GFX
+  offset: 0x265
+d_course_choco_mountain_packed_dl_728:
+  symbol: d_course_choco_mountain_packed_dl_728
+  type: MK64:PACKED_GFX
+  offset: 0x269
+d_course_choco_mountain_packed_dl_748:
+  symbol: d_course_choco_mountain_packed_dl_748
+  type: MK64:PACKED_GFX
+  offset: 0x273
+d_course_choco_mountain_packed_dl_758:
+  symbol: d_course_choco_mountain_packed_dl_758
+  type: MK64:PACKED_GFX
+  offset: 0x277
+d_course_choco_mountain_packed_dl_828:
+  symbol: d_course_choco_mountain_packed_dl_828
+  type: MK64:PACKED_GFX
+  offset: 0x2CE
+d_course_choco_mountain_packed_dl_838:
+  symbol: d_course_choco_mountain_packed_dl_838
+  type: MK64:PACKED_GFX
+  offset: 0x2D2
+d_course_choco_mountain_packed_dl_8E0:
+  symbol: d_course_choco_mountain_packed_dl_8E0
+  type: MK64:PACKED_GFX
+  offset: 0x310
+d_course_choco_mountain_packed_dl_8F0:
+  symbol: d_course_choco_mountain_packed_dl_8F0
+  type: MK64:PACKED_GFX
+  offset: 0x314
+d_course_choco_mountain_packed_dl_9B0:
+  symbol: d_course_choco_mountain_packed_dl_9B0
+  type: MK64:PACKED_GFX
+  offset: 0x348
+d_course_choco_mountain_packed_dl_A60:
+  symbol: d_course_choco_mountain_packed_dl_A60
+  type: MK64:PACKED_GFX
+  offset: 0x370
+d_course_choco_mountain_packed_dl_AF8:
+  symbol: d_course_choco_mountain_packed_dl_AF8
+  type: MK64:PACKED_GFX
+  offset: 0x3A0
+d_course_choco_mountain_packed_dl_B88:
+  symbol: d_course_choco_mountain_packed_dl_B88
+  type: MK64:PACKED_GFX
+  offset: 0x3CD
+d_course_choco_mountain_packed_dl_C18:
+  symbol: d_course_choco_mountain_packed_dl_C18
+  type: MK64:PACKED_GFX
+  offset: 0x3FA
+d_course_choco_mountain_packed_dl_CA0:
+  symbol: d_course_choco_mountain_packed_dl_CA0
+  type: MK64:PACKED_GFX
+  offset: 0x424
+d_course_choco_mountain_packed_dl_D38:
+  symbol: d_course_choco_mountain_packed_dl_D38
+  type: MK64:PACKED_GFX
+  offset: 0x458
+d_course_choco_mountain_packed_dl_DD0:
+  symbol: d_course_choco_mountain_packed_dl_DD0
+  type: MK64:PACKED_GFX
+  offset: 0x48A
+d_course_choco_mountain_packed_dl_EB8:
+  symbol: d_course_choco_mountain_packed_dl_EB8
+  type: MK64:PACKED_GFX
+  offset: 0x4D1
+d_course_choco_mountain_packed_dl_F68:
+  symbol: d_course_choco_mountain_packed_dl_F68
+  type: MK64:PACKED_GFX
+  offset: 0x50E
+d_course_choco_mountain_packed_dl_1018:
+  symbol: d_course_choco_mountain_packed_dl_1018
+  type: MK64:PACKED_GFX
+  offset: 0x54B
+d_course_choco_mountain_packed_dl_1100:
+  symbol: d_course_choco_mountain_packed_dl_1100
+  type: MK64:PACKED_GFX
+  offset: 0x596
+d_course_choco_mountain_packed_dl_1200:
+  symbol: d_course_choco_mountain_packed_dl_1200
+  type: MK64:PACKED_GFX
+  offset: 0x5EE
+d_course_choco_mountain_packed_dl_12A0:
+  symbol: d_course_choco_mountain_packed_dl_12A0
+  type: MK64:PACKED_GFX
+  offset: 0x623
+d_course_choco_mountain_packed_dl_1338:
+  symbol: d_course_choco_mountain_packed_dl_1338
+  type: MK64:PACKED_GFX
+  offset: 0x653
+d_course_choco_mountain_packed_dl_13E8:
+  symbol: d_course_choco_mountain_packed_dl_13E8
+  type: MK64:PACKED_GFX
+  offset: 0x690
+d_course_choco_mountain_packed_dl_1488:
+  symbol: d_course_choco_mountain_packed_dl_1488
+  type: MK64:PACKED_GFX
+  offset: 0x6C3
+d_course_choco_mountain_packed_dl_1538:
+  symbol: d_course_choco_mountain_packed_dl_1538
+  type: MK64:PACKED_GFX
+  offset: 0x700
+d_course_choco_mountain_packed_dl_15D0:
+  symbol: d_course_choco_mountain_packed_dl_15D0
+  type: MK64:PACKED_GFX
+  offset: 0x732
+d_course_choco_mountain_packed_dl_1670:
+  symbol: d_course_choco_mountain_packed_dl_1670
+  type: MK64:PACKED_GFX
+  offset: 0x76C
+d_course_choco_mountain_packed_dl_1740:
+  symbol: d_course_choco_mountain_packed_dl_1740
+  type: MK64:PACKED_GFX
+  offset: 0x7BD
+d_course_choco_mountain_packed_dl_17E0:
+  symbol: d_course_choco_mountain_packed_dl_17E0
+  type: MK64:PACKED_GFX
+  offset: 0x7F2
+d_course_choco_mountain_packed_dl_18E8:
+  symbol: d_course_choco_mountain_packed_dl_18E8
+  type: MK64:PACKED_GFX
+  offset: 0x868
+d_course_choco_mountain_packed_dl_1988:
+  symbol: d_course_choco_mountain_packed_dl_1988
+  type: MK64:PACKED_GFX
+  offset: 0x89D
+d_course_choco_mountain_packed_dl_1A48:
+  symbol: d_course_choco_mountain_packed_dl_1A48
+  type: MK64:PACKED_GFX
+  offset: 0x8D1
+d_course_choco_mountain_packed_dl_1AC8:
+  symbol: d_course_choco_mountain_packed_dl_1AC8
+  type: MK64:PACKED_GFX
+  offset: 0x8F6
+d_course_choco_mountain_packed_dl_1BE0:
+  symbol: d_course_choco_mountain_packed_dl_1BE0
+  type: MK64:PACKED_GFX
+  offset: 0x96E
+d_course_choco_mountain_packed_dl_1C98:
+  symbol: d_course_choco_mountain_packed_dl_1C98
+  type: MK64:PACKED_GFX
+  offset: 0x9B4
+d_course_choco_mountain_packed_dl_1DB8:
+  symbol: d_course_choco_mountain_packed_dl_1DB8
+  type: MK64:PACKED_GFX
+  offset: 0xA31
+d_course_choco_mountain_packed_dl_1E90:
+  symbol: d_course_choco_mountain_packed_dl_1E90
+  type: MK64:PACKED_GFX
+  offset: 0xA85
+d_course_choco_mountain_packed_dl_1FE8:
+  symbol: d_course_choco_mountain_packed_dl_1FE8
+  type: MK64:PACKED_GFX
+  offset: 0xB21
+d_course_choco_mountain_packed_dl_20F8:
+  symbol: d_course_choco_mountain_packed_dl_20F8
+  type: MK64:PACKED_GFX
+  offset: 0xB94
+d_course_choco_mountain_packed_dl_21D8:
+  symbol: d_course_choco_mountain_packed_dl_21D8
+  type: MK64:PACKED_GFX
+  offset: 0xBDC
+d_course_choco_mountain_packed_dl_2278:
+  symbol: d_course_choco_mountain_packed_dl_2278
+  type: MK64:PACKED_GFX
+  offset: 0xC11
+d_course_choco_mountain_packed_dl_2380:
+  symbol: d_course_choco_mountain_packed_dl_2380
+  type: MK64:PACKED_GFX
+  offset: 0xC81
+d_course_choco_mountain_packed_dl_2458:
+  symbol: d_course_choco_mountain_packed_dl_2458
+  type: MK64:PACKED_GFX
+  offset: 0xCC2
+d_course_choco_mountain_packed_dl_2530:
+  symbol: d_course_choco_mountain_packed_dl_2530
+  type: MK64:PACKED_GFX
+  offset: 0xD16
+d_course_choco_mountain_packed_dl_2600:
+  symbol: d_course_choco_mountain_packed_dl_2600
+  type: MK64:PACKED_GFX
+  offset: 0xD54
+d_course_choco_mountain_packed_dl_26C0:
+  symbol: d_course_choco_mountain_packed_dl_26C0
+  type: MK64:PACKED_GFX
+  offset: 0xD9B
+d_course_choco_mountain_packed_dl_2760:
+  symbol: d_course_choco_mountain_packed_dl_2760
+  type: MK64:PACKED_GFX
+  offset: 0xDD2
+d_course_choco_mountain_packed_dl_27F0:
+  symbol: d_course_choco_mountain_packed_dl_27F0
+  type: MK64:PACKED_GFX
+  offset: 0xDFF
+d_course_choco_mountain_packed_dl_28B0:
+  symbol: d_course_choco_mountain_packed_dl_28B0
+  type: MK64:PACKED_GFX
+  offset: 0xE48
+d_course_choco_mountain_packed_dl_29E8:
+  symbol: d_course_choco_mountain_packed_dl_29E8
+  type: MK64:PACKED_GFX
+  offset: 0xEBF
+d_course_choco_mountain_packed_dl_2AE8:
+  symbol: d_course_choco_mountain_packed_dl_2AE8
+  type: MK64:PACKED_GFX
+  offset: 0xF2A
+d_course_choco_mountain_packed_dl_2BD0:
+  symbol: d_course_choco_mountain_packed_dl_2BD0
+  type: MK64:PACKED_GFX
+  offset: 0xF88
+d_course_choco_mountain_packed_dl_2CA8:
+  symbol: d_course_choco_mountain_packed_dl_2CA8
+  type: MK64:PACKED_GFX
+  offset: 0xFDC
+d_course_choco_mountain_packed_dl_2D68:
+  symbol: d_course_choco_mountain_packed_dl_2D68
+  type: MK64:PACKED_GFX
+  offset: 0x1023
+d_course_choco_mountain_packed_dl_2E38:
+  symbol: d_course_choco_mountain_packed_dl_2E38
+  type: MK64:PACKED_GFX
+  offset: 0x1070
+d_course_choco_mountain_packed_dl_2EE8:
+  symbol: d_course_choco_mountain_packed_dl_2EE8
+  type: MK64:PACKED_GFX
+  offset: 0x10B1
+d_course_choco_mountain_packed_dl_2FE8:
+  symbol: d_course_choco_mountain_packed_dl_2FE8
+  type: MK64:PACKED_GFX
+  offset: 0x1105
+d_course_choco_mountain_packed_dl_30A8:
+  symbol: d_course_choco_mountain_packed_dl_30A8
+  type: MK64:PACKED_GFX
+  offset: 0x114C
+d_course_choco_mountain_packed_dl_3188:
+  symbol: d_course_choco_mountain_packed_dl_3188
+  type: MK64:PACKED_GFX
+  offset: 0x11A5
+d_course_choco_mountain_packed_dl_3200:
+  symbol: d_course_choco_mountain_packed_dl_3200
+  type: MK64:PACKED_GFX
+  offset: 0x11C3
+d_course_choco_mountain_packed_dl_32F0:
+  symbol: d_course_choco_mountain_packed_dl_32F0
+  type: MK64:PACKED_GFX
+  offset: 0x1226
+d_course_choco_mountain_packed_dl_3390:
+  symbol: d_course_choco_mountain_packed_dl_3390
+  type: MK64:PACKED_GFX
+  offset: 0x1259
+d_course_choco_mountain_packed_dl_3410:
+  symbol: d_course_choco_mountain_packed_dl_3410
+  type: MK64:PACKED_GFX
+  offset: 0x127E
+d_course_choco_mountain_packed_dl_34E0:
+  symbol: d_course_choco_mountain_packed_dl_34E0
+  type: MK64:PACKED_GFX
+  offset: 0x12CD
+d_course_choco_mountain_packed_dl_35B0:
+  symbol: d_course_choco_mountain_packed_dl_35B0
+  type: MK64:PACKED_GFX
+  offset: 0x130B
+d_course_choco_mountain_packed_dl_3670:
+  symbol: d_course_choco_mountain_packed_dl_3670
+  type: MK64:PACKED_GFX
+  offset: 0x133D
+d_course_choco_mountain_packed_dl_3708:
+  symbol: d_course_choco_mountain_packed_dl_3708
+  type: MK64:PACKED_GFX
+  offset: 0x136B
+d_course_choco_mountain_packed_dl_37B0:
+  symbol: d_course_choco_mountain_packed_dl_37B0
+  type: MK64:PACKED_GFX
+  offset: 0x13A5
+d_course_choco_mountain_packed_dl_38B8:
+  symbol: d_course_choco_mountain_packed_dl_38B8
+  type: MK64:PACKED_GFX
+  offset: 0x1411
+d_course_choco_mountain_packed_dl_3998:
+  symbol: d_course_choco_mountain_packed_dl_3998
+  type: MK64:PACKED_GFX
+  offset: 0x1468
+d_course_choco_mountain_packed_dl_3A80:
+  symbol: d_course_choco_mountain_packed_dl_3A80
+  type: MK64:PACKED_GFX
+  offset: 0x14B5
+d_course_choco_mountain_packed_dl_3B98:
+  symbol: d_course_choco_mountain_packed_dl_3B98
+  type: MK64:PACKED_GFX
+  offset: 0x151C
+d_course_choco_mountain_packed_dl_3CF0:
+  symbol: d_course_choco_mountain_packed_dl_3CF0
+  type: MK64:PACKED_GFX
+  offset: 0x15A5
+d_course_choco_mountain_packed_dl_3DD8:
+  symbol: d_course_choco_mountain_packed_dl_3DD8
+  type: MK64:PACKED_GFX
+  offset: 0x15F2
+d_course_choco_mountain_packed_dl_3EE8:
+  symbol: d_course_choco_mountain_packed_dl_3EE8
+  type: MK64:PACKED_GFX
+  offset: 0x1656
+d_course_choco_mountain_packed_dl_3FB8:
+  symbol: d_course_choco_mountain_packed_dl_3FB8
+  type: MK64:PACKED_GFX
+  offset: 0x1696
+d_course_choco_mountain_packed_dl_4148:
+  symbol: d_course_choco_mountain_packed_dl_4148
+  type: MK64:PACKED_GFX
+  offset: 0x172A
+d_course_choco_mountain_packed_dl_4608:
+  symbol: d_course_choco_mountain_packed_dl_4608
+  type: MK64:PACKED_GFX
+  offset: 0x19FA
+d_course_choco_mountain_packed_dl_4618:
+  symbol: d_course_choco_mountain_packed_dl_4618
+  type: MK64:PACKED_GFX
+  offset: 0x19FE
+d_course_choco_mountain_packed_dl_4690:
+  symbol: d_course_choco_mountain_packed_dl_4690
+  type: MK64:PACKED_GFX
+  offset: 0x1A1E
+d_course_choco_mountain_packed_dl_46F0:
+  symbol: d_course_choco_mountain_packed_dl_46F0
+  type: MK64:PACKED_GFX
+  offset: 0x1A2F
+d_course_choco_mountain_packed_dl_4790:
+  symbol: d_course_choco_mountain_packed_dl_4790
+  type: MK64:PACKED_GFX
+  offset: 0x1A68
+d_course_choco_mountain_packed_dl_4840:
+  symbol: d_course_choco_mountain_packed_dl_4840
+  type: MK64:PACKED_GFX
+  offset: 0x1AAB
+d_course_choco_mountain_packed_dl_48E8:
+  symbol: d_course_choco_mountain_packed_dl_48E8
+  type: MK64:PACKED_GFX
+  offset: 0x1AE9
+d_course_choco_mountain_packed_dl_4970:
+  symbol: d_course_choco_mountain_packed_dl_4970
+  type: MK64:PACKED_GFX
+  offset: 0x1B13
+d_course_choco_mountain_packed_dl_49F0:
+  symbol: d_course_choco_mountain_packed_dl_49F0
+  type: MK64:PACKED_GFX
+  offset: 0x1B38
+d_course_choco_mountain_packed_dl_4AB0:
+  symbol: d_course_choco_mountain_packed_dl_4AB0
+  type: MK64:PACKED_GFX
+  offset: 0x1B62
+d_course_choco_mountain_packed_dl_4B58:
+  symbol: d_course_choco_mountain_packed_dl_4B58
+  type: MK64:PACKED_GFX
+  offset: 0x1B9E
+d_course_choco_mountain_packed_dl_4C08:
+  symbol: d_course_choco_mountain_packed_dl_4C08
+  type: MK64:PACKED_GFX
+  offset: 0x1BDF
+d_course_choco_mountain_packed_dl_4CC8:
+  symbol: d_course_choco_mountain_packed_dl_4CC8
+  type: MK64:PACKED_GFX
+  offset: 0x1C28
+d_course_choco_mountain_packed_dl_4D90:
+  symbol: d_course_choco_mountain_packed_dl_4D90
+  type: MK64:PACKED_GFX
+  offset: 0x1C72
+d_course_choco_mountain_packed_dl_4E40:
+  symbol: d_course_choco_mountain_packed_dl_4E40
+  type: MK64:PACKED_GFX
+  offset: 0x1CB3
+d_course_choco_mountain_packed_dl_4EB0:
+  symbol: d_course_choco_mountain_packed_dl_4EB0
+  type: MK64:PACKED_GFX
+  offset: 0x1CCE
+d_course_choco_mountain_packed_dl_4F30:
+  symbol: d_course_choco_mountain_packed_dl_4F30
+  type: MK64:PACKED_GFX
+  offset: 0x1CF3
+d_course_choco_mountain_packed_dl_4FC0:
+  symbol: d_course_choco_mountain_packed_dl_4FC0
+  type: MK64:PACKED_GFX
+  offset: 0x1D22
+d_course_choco_mountain_packed_dl_5070:
+  symbol: d_course_choco_mountain_packed_dl_5070
+  type: MK64:PACKED_GFX
+  offset: 0x1D63
+d_course_choco_mountain_packed_dl_5148:
+  symbol: d_course_choco_mountain_packed_dl_5148
+  type: MK64:PACKED_GFX
+  offset: 0x1DBB
+d_course_choco_mountain_packed_dl_51D8:
+  symbol: d_course_choco_mountain_packed_dl_51D8
+  type: MK64:PACKED_GFX
+  offset: 0x1DE8
+d_course_choco_mountain_packed_dl_5258:
+  symbol: d_course_choco_mountain_packed_dl_5258
+  type: MK64:PACKED_GFX
+  offset: 0x1E0D
+d_course_choco_mountain_packed_dl_52C8:
+  symbol: d_course_choco_mountain_packed_dl_52C8
+  type: MK64:PACKED_GFX
+  offset: 0x1E28
+d_course_choco_mountain_packed_dl_5338:
+  symbol: d_course_choco_mountain_packed_dl_5338
+  type: MK64:PACKED_GFX
+  offset: 0x1E43
+d_course_choco_mountain_packed_dl_53D8:
+  symbol: d_course_choco_mountain_packed_dl_53D8
+  type: MK64:PACKED_GFX
+  offset: 0x1E7A
+d_course_choco_mountain_packed_dl_5490:
+  symbol: d_course_choco_mountain_packed_dl_5490
+  type: MK64:PACKED_GFX
+  offset: 0x1EBC
+d_course_choco_mountain_packed_dl_5558:
+  symbol: d_course_choco_mountain_packed_dl_5558
+  type: MK64:PACKED_GFX
+  offset: 0x1F05
+d_course_choco_mountain_packed_dl_5688:
+  symbol: d_course_choco_mountain_packed_dl_5688
+  type: MK64:PACKED_GFX
+  offset: 0x1F5E
+d_course_choco_mountain_packed_dl_5778:
+  symbol: d_course_choco_mountain_packed_dl_5778
+  type: MK64:PACKED_GFX
+  offset: 0x1F8F
+d_course_choco_mountain_packed_dl_5868:
+  symbol: d_course_choco_mountain_packed_dl_5868
+  type: MK64:PACKED_GFX
+  offset: 0x1FC0
+d_course_choco_mountain_packed_dl_5888:
+  symbol: d_course_choco_mountain_packed_dl_5888
+  type: MK64:PACKED_GFX
+  offset: 0x1FCA
+d_course_choco_mountain_packed_dl_5910:
+  symbol: d_course_choco_mountain_packed_dl_5910
+  type: MK64:PACKED_GFX
+  offset: 0x1FF4
+d_course_choco_mountain_packed_dl_59A0:
+  symbol: d_course_choco_mountain_packed_dl_59A0
+  type: MK64:PACKED_GFX
+  offset: 0x2021
+d_course_choco_mountain_packed_dl_5A00:
+  symbol: d_course_choco_mountain_packed_dl_5A00
+  type: MK64:PACKED_GFX
+  offset: 0x2032
+d_course_choco_mountain_packed_dl_5A70:
+  symbol: d_course_choco_mountain_packed_dl_5A70
+  type: MK64:PACKED_GFX
+  offset: 0x204D
+d_course_choco_mountain_packed_dl_5A98:
+  symbol: d_course_choco_mountain_packed_dl_5A98
+  type: MK64:PACKED_GFX
+  offset: 0x205A
+d_course_choco_mountain_packed_dl_5AE0:
+  symbol: d_course_choco_mountain_packed_dl_5AE0
+  type: MK64:PACKED_GFX
+  offset: 0x2073
+d_course_choco_mountain_packed_dl_5AF0:
+  symbol: d_course_choco_mountain_packed_dl_5AF0
+  type: MK64:PACKED_GFX
+  offset: 0x2077

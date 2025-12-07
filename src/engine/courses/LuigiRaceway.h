@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-#include "assets/luigi_raceway_vertices.h"
-#include "assets/luigi_raceway_displaylists.h"
-#include "assets/luigi_raceway_data.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_vertices.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_displaylists.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_data.h"
 #include "course_offsets.h"
 #include "camera.h"
 #include "data/some_data.h"
@@ -16,7 +16,7 @@ extern const course_texture luigi_raceway_textures[];
 }
 
 class LuigiRaceway : public Course {
-    void Jumbotron();
+    void CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source);
 
   public:
     virtual ~LuigiRaceway() = default; // Virtual destructor for proper cleanup in derived classes
@@ -27,7 +27,7 @@ class LuigiRaceway : public Course {
     //    virtual void Load(const char* courseVtx,
     //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitCourseObjects() override;
     virtual void SomeSounds() override;

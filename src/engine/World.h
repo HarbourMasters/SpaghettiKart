@@ -11,6 +11,7 @@
 #include "TrainCrossing.h"
 #include <memory>
 #include <unordered_map>
+#include <utility>
 #include "RaceManager.h"
 #include "Actor.h"
 #include "StaticMeshActor.h"
@@ -18,6 +19,7 @@
 
 #include "editor/Editor.h"
 #include "editor/GameObject.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "camera.h"
@@ -49,6 +51,9 @@ typedef struct Matrix {
         : Hud(200), Objects(1000)
     {}
 };
+private:
+    std::shared_ptr<Course> CurrentCourse;
+    Cup* CurrentCup;
 
 public:
     explicit World();
@@ -86,7 +91,10 @@ public:
     void Reset(void); // Sets OObjects or AActors static member variables back to default values
 
     void AddCup(Cup*);
-    void SetCup(Cup* cup);
+    void SetCurrentCup(Cup* cup);
+    Cup* GetCurrentCup() {
+        return CurrentCup;
+    }
     void SetCupIndex(size_t index);
     const char* GetCupName();
     u32 GetCupIndex();
@@ -97,6 +105,12 @@ public:
     World* GetWorld(void);
     void CleanWorld(void);
 
+    // getter/setter for current course
+    std::shared_ptr<Course> GetCurrentCourse() {
+        return CurrentCourse;
+    }
+
+    void SetCurrentCourse(std::shared_ptr<Course> course);
 
     // These are only for browsing through the course list
     void SetCourse(const char*);
@@ -104,7 +118,7 @@ public:
     void SetCourseByType() {
         for (const auto& course : Courses) {
             if (dynamic_cast<T*>(course.get())) {
-                CurrentCourse = course;
+                SetCurrentCourse(course);
                 return;
             }
         }
@@ -114,10 +128,6 @@ public:
     void PreviousCourse(void);
 
     Matrix Mtx;
-
-
-    std::shared_ptr<Course> CurrentCourse;
-    Cup* CurrentCup;
 
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;

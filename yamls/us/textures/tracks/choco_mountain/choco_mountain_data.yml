@@ -1,0 +1,28 @@
+:config:
+  segments:
+    - [0x06, 0x82B620]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_choco_mountain_wall_texture:
+  symbol: d_course_choco_mountain_wall_texture
+  type: texture
+  offset: 0x5b38
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_choco_mountain_rock_texture:
+  symbol: d_course_choco_mountain_rock_texture
+  type: texture
+  offset: 0x6338
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

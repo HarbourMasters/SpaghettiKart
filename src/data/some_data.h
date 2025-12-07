@@ -4,7 +4,7 @@
 
 #include <libultra/gbi.h>
 #include "spline.h"
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "objects.h"
 
 #ifdef __cplusplus

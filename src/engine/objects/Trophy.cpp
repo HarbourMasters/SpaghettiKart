@@ -1,6 +1,6 @@
 #include "Trophy.h"
-#include "assets/common_data.h"
-#include "assets/data_segment2.h"
+#include "assets/models/common_data.h"
+#include "assets/models/data_segment2.h"
 #include "port/Game.h"
 
 extern "C" {
@@ -8,7 +8,7 @@ extern "C" {
 #include "defines.h"
 #include "update_objects.h"
 #include "code_80057C60.h"
-#include "assets/ceremony_data.h"
+#include "assets/models/ceremony_data.h"
 #include "podium_ceremony_actors.h"
 #include "engine/particles/StarEmitter.h"
 #include "math_util.h"

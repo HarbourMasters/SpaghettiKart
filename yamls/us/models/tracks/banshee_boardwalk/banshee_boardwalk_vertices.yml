@@ -1,0 +1,1551 @@
+:config:
+  segments:
+    - [0x0F, 0x8B9630]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_banshee_boardwalk_vertex_0x04000000:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x0
+
+d_course_banshee_boardwalk_vertex_0x04000040:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38
+
+d_course_banshee_boardwalk_vertex_0x04000080:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x70
+
+d_course_banshee_boardwalk_vertex_0x040000C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040000C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa8
+
+d_course_banshee_boardwalk_vertex_0x04000100:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe0
+
+d_course_banshee_boardwalk_vertex_0x04000140:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000140
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x118
+
+d_course_banshee_boardwalk_vertex_0x04000180:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x150
+
+d_course_banshee_boardwalk_vertex_0x040001C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040001C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x188
+
+d_course_banshee_boardwalk_vertex_0x04000200:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c0
+
+d_course_banshee_boardwalk_vertex_0x04000240:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000240
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1f8
+
+d_course_banshee_boardwalk_vertex_0x04000280:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000280
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x230
+
+d_course_banshee_boardwalk_vertex_0x040002C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040002C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x268
+
+d_course_banshee_boardwalk_vertex_0x04000300:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000300
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2a0
+
+d_course_banshee_boardwalk_vertex_0x04000340:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000340
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2d8
+
+d_course_banshee_boardwalk_vertex_0x04000380:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000380
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x310
+
+d_course_banshee_boardwalk_vertex_0x040003C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040003C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x348
+
+d_course_banshee_boardwalk_vertex_0x04000400:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x380
+
+d_course_banshee_boardwalk_vertex_0x04000440:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000440
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3b8
+
+d_course_banshee_boardwalk_vertex_0x04000480:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000480
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3f0
+
+d_course_banshee_boardwalk_vertex_0x040004C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040004C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x428
+
+d_course_banshee_boardwalk_vertex_0x04000500:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000500
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x460
+
+d_course_banshee_boardwalk_vertex_0x04000540:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000540
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x498
+
+d_course_banshee_boardwalk_vertex_0x04000580:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000580
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4d0
+
+d_course_banshee_boardwalk_vertex_0x040005C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040005C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x508
+
+d_course_banshee_boardwalk_vertex_0x04000600:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x540
+
+d_course_banshee_boardwalk_vertex_0x04000740:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000740
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x658
+
+d_course_banshee_boardwalk_vertex_0x040008C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040008C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x7a8
+
+d_course_banshee_boardwalk_vertex_0x04000A80:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000A80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x930
+
+d_course_banshee_boardwalk_vertex_0x04000C80:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000C80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xaf0
+
+d_course_banshee_boardwalk_vertex_0x04000E80:
+  symbol: d_course_banshee_boardwalk_vertex_0x04000E80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xcb0
+
+d_course_banshee_boardwalk_vertex_0x04001000:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe00
+
+d_course_banshee_boardwalk_vertex_0x04001200:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001200
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xfc0
+
+d_course_banshee_boardwalk_vertex_0x040012C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040012C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1068
+
+d_course_banshee_boardwalk_vertex_0x040014C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040014C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1228
+
+d_course_banshee_boardwalk_vertex_0x040016B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040016B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x13da
+
+d_course_banshee_boardwalk_vertex_0x04001710:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001710
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x142e
+
+d_course_banshee_boardwalk_vertex_0x04001910:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001910
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x15ee
+
+d_course_banshee_boardwalk_vertex_0x04001950:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001950
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1626
+
+d_course_banshee_boardwalk_vertex_0x04001B50:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001B50
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x17e6
+
+d_course_banshee_boardwalk_vertex_0x04001CD0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001CD0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1936
+
+d_course_banshee_boardwalk_vertex_0x04001E10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001E10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a4e
+
+d_course_banshee_boardwalk_vertex_0x04001FF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04001FF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1bf2
+
+d_course_banshee_boardwalk_vertex_0x040021D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040021D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1d96
+
+d_course_banshee_boardwalk_vertex_0x040023B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040023B0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x1f3a
+
+d_course_banshee_boardwalk_vertex_0x04002510:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002510
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x206e
+
+d_course_banshee_boardwalk_vertex_0x04002690:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002690
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x21be
+
+d_course_banshee_boardwalk_vertex_0x04002890:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002890
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x237e
+
+d_course_banshee_boardwalk_vertex_0x04002930:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002930
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x240a
+
+d_course_banshee_boardwalk_vertex_0x04002B10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002B10
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x25ae
+
+d_course_banshee_boardwalk_vertex_0x04002BB0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002BB0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x263a
+
+d_course_banshee_boardwalk_vertex_0x04002D30:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002D30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x278a
+
+d_course_banshee_boardwalk_vertex_0x04002F30:
+  symbol: d_course_banshee_boardwalk_vertex_0x04002F30
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x294a
+
+d_course_banshee_boardwalk_vertex_0x04003030:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003030
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2a2a
+
+d_course_banshee_boardwalk_vertex_0x04003230:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003230
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2bea
+
+d_course_banshee_boardwalk_vertex_0x04003270:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003270
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2c22
+
+d_course_banshee_boardwalk_vertex_0x04003470:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003470
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2de2
+
+d_course_banshee_boardwalk_vertex_0x04003670:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003670
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x2fa2
+
+d_course_banshee_boardwalk_vertex_0x040037D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040037D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x30d6
+
+d_course_banshee_boardwalk_vertex_0x040039D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040039D0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x3296
+
+d_course_banshee_boardwalk_vertex_0x04003B20:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003B20
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x33bc
+
+d_course_banshee_boardwalk_vertex_0x04003CA0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003CA0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x350c
+
+d_course_banshee_boardwalk_vertex_0x04003E40:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003E40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3678
+
+d_course_banshee_boardwalk_vertex_0x04003F40:
+  symbol: d_course_banshee_boardwalk_vertex_0x04003F40
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x3758
+
+d_course_banshee_boardwalk_vertex_0x04004010:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004010
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x380e
+
+d_course_banshee_boardwalk_vertex_0x04004150:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004150
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3926
+
+d_course_banshee_boardwalk_vertex_0x04004290:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004290
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x3a3e
+
+d_course_banshee_boardwalk_vertex_0x04004430:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004430
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3baa
+
+d_course_banshee_boardwalk_vertex_0x04004610:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004610
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x3d4e
+
+d_course_banshee_boardwalk_vertex_0x040046A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040046A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3dcc
+
+d_course_banshee_boardwalk_vertex_0x040048A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040048A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3f8c
+
+d_course_banshee_boardwalk_vertex_0x04004960:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004960
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4034
+
+d_course_banshee_boardwalk_vertex_0x04004B50:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004B50
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x41e6
+
+d_course_banshee_boardwalk_vertex_0x04004D00:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004D00
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4360
+
+d_course_banshee_boardwalk_vertex_0x04004EF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04004EF0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x4512
+
+d_course_banshee_boardwalk_vertex_0x04005040:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005040
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4638
+
+d_course_banshee_boardwalk_vertex_0x04005220:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005220
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x47dc
+
+d_course_banshee_boardwalk_vertex_0x04005310:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005310
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x48ae
+
+d_course_banshee_boardwalk_vertex_0x040054F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040054F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4a52
+
+d_course_banshee_boardwalk_vertex_0x040056F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040056F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4c12
+
+d_course_banshee_boardwalk_vertex_0x04005770:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005770
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4c82
+
+d_course_banshee_boardwalk_vertex_0x04005950:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005950
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x4e26
+
+d_course_banshee_boardwalk_vertex_0x04005AF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005AF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4f92
+
+d_course_banshee_boardwalk_vertex_0x04005BB0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005BB0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x503a
+
+d_course_banshee_boardwalk_vertex_0x04005CF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005CF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5152
+
+d_course_banshee_boardwalk_vertex_0x04005D70:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005D70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x51c2
+
+d_course_banshee_boardwalk_vertex_0x04005DF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005DF0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5232
+
+d_course_banshee_boardwalk_vertex_0x04005EF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04005EF0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5312
+
+d_course_banshee_boardwalk_vertex_0x04006070:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006070
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5462
+
+d_course_banshee_boardwalk_vertex_0x04006170:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006170
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x5542
+
+d_course_banshee_boardwalk_vertex_0x04006330:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006330
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x56ca
+
+d_course_banshee_boardwalk_vertex_0x04006430:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006430
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x57aa
+
+d_course_banshee_boardwalk_vertex_0x040065B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040065B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x58fa
+
+d_course_banshee_boardwalk_vertex_0x040066B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040066B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x59da
+
+d_course_banshee_boardwalk_vertex_0x04006830:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006830
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5b2a
+
+d_course_banshee_boardwalk_vertex_0x040068B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040068B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5b9a
+
+d_course_banshee_boardwalk_vertex_0x04006A30:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006A30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5cea
+
+d_course_banshee_boardwalk_vertex_0x04006A70:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006A70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5d22
+
+d_course_banshee_boardwalk_vertex_0x04006B30:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006B30
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x5dca
+
+d_course_banshee_boardwalk_vertex_0x04006C70:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006C70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5ee2
+
+d_course_banshee_boardwalk_vertex_0x04006D30:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006D30
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5f8a
+
+d_course_banshee_boardwalk_vertex_0x04006EB0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006EB0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x60da
+
+d_course_banshee_boardwalk_vertex_0x04006FF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04006FF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x61f2
+
+d_course_banshee_boardwalk_vertex_0x040071F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040071F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x63b2
+
+d_course_banshee_boardwalk_vertex_0x04007230:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007230
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x63ea
+
+d_course_banshee_boardwalk_vertex_0x040072B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040072B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x645a
+
+d_course_banshee_boardwalk_vertex_0x04007330:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007330
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x64ca
+
+d_course_banshee_boardwalk_vertex_0x040074B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040074B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x661a
+
+d_course_banshee_boardwalk_vertex_0x04007690:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007690
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x67be
+
+d_course_banshee_boardwalk_vertex_0x040076F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040076F0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x6812
+
+d_course_banshee_boardwalk_vertex_0x04007850:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007850
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6946
+
+d_course_banshee_boardwalk_vertex_0x04007A50:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007A50
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x6b06
+
+d_course_banshee_boardwalk_vertex_0x04007B90:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007B90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6c1e
+
+d_course_banshee_boardwalk_vertex_0x04007D90:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007D90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6dde
+
+d_course_banshee_boardwalk_vertex_0x04007E90:
+  symbol: d_course_banshee_boardwalk_vertex_0x04007E90
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x6ebe
+
+d_course_banshee_boardwalk_vertex_0x04008050:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008050
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7046
+
+d_course_banshee_boardwalk_vertex_0x04008110:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008110
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x70ee
+
+d_course_banshee_boardwalk_vertex_0x04008250:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008250
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x7206
+
+d_course_banshee_boardwalk_vertex_0x04008440:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008440
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x73b8
+
+d_course_banshee_boardwalk_vertex_0x04008620:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008620
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x755c
+
+d_course_banshee_boardwalk_vertex_0x04008780:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008780
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7690
+
+d_course_banshee_boardwalk_vertex_0x04008840:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008840
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x7738
+
+d_course_banshee_boardwalk_vertex_0x04008980:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008980
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7850
+
+d_course_banshee_boardwalk_vertex_0x04008A00:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008A00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x78c0
+
+d_course_banshee_boardwalk_vertex_0x04008B00:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008B00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x79a0
+
+d_course_banshee_boardwalk_vertex_0x04008C00:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008C00
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x7a80
+
+d_course_banshee_boardwalk_vertex_0x04008D60:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008D60
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x7bb4
+
+d_course_banshee_boardwalk_vertex_0x04008E40:
+  symbol: d_course_banshee_boardwalk_vertex_0x04008E40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7c78
+
+d_course_banshee_boardwalk_vertex_0x04009040:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009040
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x7e38
+
+d_course_banshee_boardwalk_vertex_0x04009190:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009190
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x7f5e
+
+d_course_banshee_boardwalk_vertex_0x04009270:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009270
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x8022
+
+d_course_banshee_boardwalk_vertex_0x04009360:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009360
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x80f4
+
+d_course_banshee_boardwalk_vertex_0x040093D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040093D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8156
+
+d_course_banshee_boardwalk_vertex_0x040095D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x040095D0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x8316
+
+d_course_banshee_boardwalk_vertex_0x04009760:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009760
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8474
+
+d_course_banshee_boardwalk_vertex_0x04009960:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009960
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8634
+
+d_course_banshee_boardwalk_vertex_0x04009B60:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009B60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x87f4
+
+d_course_banshee_boardwalk_vertex_0x04009D60:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009D60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x89b4
+
+d_course_banshee_boardwalk_vertex_0x04009DA0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009DA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x89ec
+
+d_course_banshee_boardwalk_vertex_0x04009F90:
+  symbol: d_course_banshee_boardwalk_vertex_0x04009F90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8b9e
+
+d_course_banshee_boardwalk_vertex_0x0400A180:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A180
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x8d50
+
+d_course_banshee_boardwalk_vertex_0x0400A330:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A330
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8eca
+
+d_course_banshee_boardwalk_vertex_0x0400A510:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A510
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x906e
+
+d_course_banshee_boardwalk_vertex_0x0400A590:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A590
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x90de
+
+d_course_banshee_boardwalk_vertex_0x0400A6C0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A6C0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x91e8
+
+d_course_banshee_boardwalk_vertex_0x0400A7A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A7A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x92ac
+
+d_course_banshee_boardwalk_vertex_0x0400A8A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A8A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x938c
+
+d_course_banshee_boardwalk_vertex_0x0400A9A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400A9A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x946c
+
+d_course_banshee_boardwalk_vertex_0x0400AAA0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400AAA0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x954c
+
+d_course_banshee_boardwalk_vertex_0x0400AC40:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400AC40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x96b8
+
+d_course_banshee_boardwalk_vertex_0x0400ACC0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400ACC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9728
+
+d_course_banshee_boardwalk_vertex_0x0400AD00:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400AD00
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x9760
+
+d_course_banshee_boardwalk_vertex_0x0400AE50:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400AE50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9886
+
+d_course_banshee_boardwalk_vertex_0x0400B050:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B050
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9a46
+
+d_course_banshee_boardwalk_vertex_0x0400B090:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9a7e
+
+d_course_banshee_boardwalk_vertex_0x0400B290:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B290
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9c3e
+
+d_course_banshee_boardwalk_vertex_0x0400B2D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B2D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9c76
+
+d_course_banshee_boardwalk_vertex_0x0400B4D0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B4D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9e36
+
+d_course_banshee_boardwalk_vertex_0x0400B510:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B510
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9e6e
+
+d_course_banshee_boardwalk_vertex_0x0400B710:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B710
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa02e
+
+d_course_banshee_boardwalk_vertex_0x0400B750:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B750
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa066
+
+d_course_banshee_boardwalk_vertex_0x0400B950:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B950
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa226
+
+d_course_banshee_boardwalk_vertex_0x0400B990:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400B990
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa25e
+
+d_course_banshee_boardwalk_vertex_0x0400BB70:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400BB70
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa402
+
+d_course_banshee_boardwalk_vertex_0x0400BBD0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400BBD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa456
+
+d_course_banshee_boardwalk_vertex_0x0400BDD0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400BDD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa616
+
+d_course_banshee_boardwalk_vertex_0x0400BE10:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400BE10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa64e
+
+d_course_banshee_boardwalk_vertex_0x0400C010:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C010
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xa80e
+
+d_course_banshee_boardwalk_vertex_0x0400C130:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C130
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa90a
+
+d_course_banshee_boardwalk_vertex_0x0400C330:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C330
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaaca
+
+d_course_banshee_boardwalk_vertex_0x0400C370:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C370
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xab02
+
+d_course_banshee_boardwalk_vertex_0x0400C570:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C570
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xacc2
+
+d_course_banshee_boardwalk_vertex_0x0400C5B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C5B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xacfa
+
+d_course_banshee_boardwalk_vertex_0x0400C7B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C7B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaeba
+
+d_course_banshee_boardwalk_vertex_0x0400C7F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C7F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xaef2
+
+d_course_banshee_boardwalk_vertex_0x0400C9F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400C9F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb0b2
+
+d_course_banshee_boardwalk_vertex_0x0400CA30:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400CA30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb0ea
+
+d_course_banshee_boardwalk_vertex_0x0400CC30:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400CC30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb2aa
+
+d_course_banshee_boardwalk_vertex_0x0400CC70:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400CC70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb2e2
+
+d_course_banshee_boardwalk_vertex_0x0400CE70:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400CE70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb4a2
+
+d_course_banshee_boardwalk_vertex_0x0400D070:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D070
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb662
+
+d_course_banshee_boardwalk_vertex_0x0400D0B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D0B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb69a
+
+d_course_banshee_boardwalk_vertex_0x0400D2B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D2B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb85a
+
+d_course_banshee_boardwalk_vertex_0x0400D2F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D2F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb892
+
+d_course_banshee_boardwalk_vertex_0x0400D4F0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D4F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xba52
+
+d_course_banshee_boardwalk_vertex_0x0400D530:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D530
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xba8a
+
+d_course_banshee_boardwalk_vertex_0x0400D730:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D730
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbc4a
+
+d_course_banshee_boardwalk_vertex_0x0400D770:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D770
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbc82
+
+d_course_banshee_boardwalk_vertex_0x0400D960:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D960
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xbe34
+
+d_course_banshee_boardwalk_vertex_0x0400D9B0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400D9B0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xbe7a
+
+d_course_banshee_boardwalk_vertex_0x0400DB60:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400DB60
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xbff4
+
+d_course_banshee_boardwalk_vertex_0x0400DCF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400DCF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc152
+
+d_course_banshee_boardwalk_vertex_0x0400DEF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400DEF0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xc312
+
+d_course_banshee_boardwalk_vertex_0x0400E030:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E030
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xc42a
+
+d_course_banshee_boardwalk_vertex_0x0400E110:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E110
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xc4ee
+
+d_course_banshee_boardwalk_vertex_0x0400E200:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc5c0
+
+d_course_banshee_boardwalk_vertex_0x0400E400:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E400
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc780
+
+d_course_banshee_boardwalk_vertex_0x0400E5E0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E5E0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xc924
+
+d_course_banshee_boardwalk_vertex_0x0400E720:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E720
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xca3c
+
+d_course_banshee_boardwalk_vertex_0x0400E860:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E860
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcb54
+
+d_course_banshee_boardwalk_vertex_0x0400E9A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400E9A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcc6c
+
+d_course_banshee_boardwalk_vertex_0x0400EAE0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400EAE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcd84
+
+d_course_banshee_boardwalk_vertex_0x0400EC20:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400EC20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xce9c
+
+d_course_banshee_boardwalk_vertex_0x0400ED60:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400ED60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xcfb4
+
+d_course_banshee_boardwalk_vertex_0x0400EF50:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400EF50
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xd166
+
+d_course_banshee_boardwalk_vertex_0x0400EFE0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400EFE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd1e4
+
+d_course_banshee_boardwalk_vertex_0x0400F120:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F120
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd2fc
+
+d_course_banshee_boardwalk_vertex_0x0400F260:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F260
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd414
+
+d_course_banshee_boardwalk_vertex_0x0400F3A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F3A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd52c
+
+d_course_banshee_boardwalk_vertex_0x0400F4E0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F4E0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd644
+
+d_course_banshee_boardwalk_vertex_0x0400F620:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F620
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd75c
+
+d_course_banshee_boardwalk_vertex_0x0400F760:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F760
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd874
+
+d_course_banshee_boardwalk_vertex_0x0400F8A0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F8A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd98c
+
+d_course_banshee_boardwalk_vertex_0x0400F9E0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400F9E0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xdaa4
+
+d_course_banshee_boardwalk_vertex_0x0400FB20:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FB20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xdbbc
+
+d_course_banshee_boardwalk_vertex_0x0400FC60:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FC60
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xdcd4
+
+d_course_banshee_boardwalk_vertex_0x0400FCF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FCF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdd52
+
+d_course_banshee_boardwalk_vertex_0x0400FD70:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FD70
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xddc2
+
+d_course_banshee_boardwalk_vertex_0x0400FE80:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FE80
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xdeb0
+
+d_course_banshee_boardwalk_vertex_0x0400FF70:
+  symbol: d_course_banshee_boardwalk_vertex_0x0400FF70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xdf82
+
+d_course_banshee_boardwalk_vertex_0x04010030:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010030
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xe02a
+
+d_course_banshee_boardwalk_vertex_0x04010110:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010110
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xe0ee
+
+d_course_banshee_boardwalk_vertex_0x04010200:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe1c0
+
+d_course_banshee_boardwalk_vertex_0x04010400:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe380
+
+d_course_banshee_boardwalk_vertex_0x04010600:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe540
+
+d_course_banshee_boardwalk_vertex_0x04010800:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe700
+
+d_course_banshee_boardwalk_vertex_0x04010A00:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010A00
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe8c0
+
+d_course_banshee_boardwalk_vertex_0x04010BF0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010BF0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xea72
+
+d_course_banshee_boardwalk_vertex_0x04010CD0:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010CD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xeb36
+
+d_course_banshee_boardwalk_vertex_0x04010D10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010D10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeb6e
+
+d_course_banshee_boardwalk_vertex_0x04010F10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04010F10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xed2e
+
+d_course_banshee_boardwalk_vertex_0x04011110:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011110
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeeee
+
+d_course_banshee_boardwalk_vertex_0x04011310:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011310
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf0ae
+
+d_course_banshee_boardwalk_vertex_0x04011510:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011510
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf26e
+
+d_course_banshee_boardwalk_vertex_0x04011710:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011710
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf42e
+
+d_course_banshee_boardwalk_vertex_0x04011810:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011810
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf50e
+
+d_course_banshee_boardwalk_vertex_0x04011A10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011A10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf6ce
+
+d_course_banshee_boardwalk_vertex_0x04011C10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011C10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf88e
+
+d_course_banshee_boardwalk_vertex_0x04011E10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04011E10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfa4e
+
+d_course_banshee_boardwalk_vertex_0x04012010:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012010
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xfc0e
+
+d_course_banshee_boardwalk_vertex_0x04012110:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012110
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfcee
+
+d_course_banshee_boardwalk_vertex_0x04012310:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012310
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xfeae
+
+d_course_banshee_boardwalk_vertex_0x04012410:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012410
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xff8e
+
+d_course_banshee_boardwalk_vertex_0x04012510:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012510
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1006e
+
+d_course_banshee_boardwalk_vertex_0x04012610:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012610
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1014e
+
+d_course_banshee_boardwalk_vertex_0x04012710:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012710
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1022e
+
+d_course_banshee_boardwalk_vertex_0x04012810:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012810
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1030e
+
+d_course_banshee_boardwalk_vertex_0x04012A10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012A10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x104ce
+
+d_course_banshee_boardwalk_vertex_0x04012B10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012B10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x105ae
+
+d_course_banshee_boardwalk_vertex_0x04012C10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012C10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1068e
+
+d_course_banshee_boardwalk_vertex_0x04012D10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012D10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1076e
+
+d_course_banshee_boardwalk_vertex_0x04012E10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012E10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1084e
+
+d_course_banshee_boardwalk_vertex_0x04012F10:
+  symbol: d_course_banshee_boardwalk_vertex_0x04012F10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1092e
+
+d_course_banshee_boardwalk_vertex_0x04013010:
+  symbol: d_course_banshee_boardwalk_vertex_0x04013010
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10a0e
+
+d_course_banshee_boardwalk_vertex_0x04013110:
+  symbol: d_course_banshee_boardwalk_vertex_0x04013110
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10aee
+
+d_course_banshee_boardwalk_vertex_0x04013210:
+  symbol: d_course_banshee_boardwalk_vertex_0x04013210
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10bce
+
+d_course_banshee_boardwalk_vertex_0x04013310:
+  symbol: d_course_banshee_boardwalk_vertex_0x04013310
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10cae
+
+d_course_banshee_boardwalk_vertex_0x04013410:
+  symbol: d_course_banshee_boardwalk_vertex_0x04013410
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x10d8e

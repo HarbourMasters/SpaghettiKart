@@ -1,10 +1,11 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
+#include <assets/textures/common_data.h>
 #include "courses/all_course_data.h"
-#include <assets/kalimari_desert_data.h>
-#include <assets/bowsers_castle_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/models/tracks/bowsers_castle/bowsers_castle_data.h>
 
 /**
  * @brief Renders the tree actor in Mario rawceay.

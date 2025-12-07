@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include "assets/kalimari_desert_data.h"
+#include "assets/models/tracks/kalimari_desert/kalimari_desert_data.h"
 
 /**
  * @brief Renders the railroad crossing actor.

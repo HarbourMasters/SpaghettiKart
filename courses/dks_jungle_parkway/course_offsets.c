@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/dks_jungle_parkway_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 
 const Gfx* d_course_dks_jungle_parkway_unknown_dl_list[] = {
     d_course_dks_jungle_parkway_dl_20,   d_course_dks_jungle_parkway_dl_210,  d_course_dks_jungle_parkway_dl_180,

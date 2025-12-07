@@ -6,7 +6,7 @@
 #include <PR/gbi.h>
 #endif
 #include "course_offsets.h"
-#include <assets/banshee_boardwalk_data.h>
+#include <assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h>
 #include <libultra/gbi.h>
 
 const Gfx* banshee_boardwalk_dls[] = {

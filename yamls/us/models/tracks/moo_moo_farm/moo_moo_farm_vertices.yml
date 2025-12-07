@@ -1,0 +1,2283 @@
+:config:
+  segments:
+    - [0x0F, 0x90B3E0]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_moo_moo_farm_vertex_0x04000000:
+  symbol: d_course_moo_moo_farm_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x0
+
+d_course_moo_moo_farm_vertex_0x04000080:
+  symbol: d_course_moo_moo_farm_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x70
+
+d_course_moo_moo_farm_vertex_0x04000140:
+  symbol: d_course_moo_moo_farm_vertex_0x04000140
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x118
+
+d_course_moo_moo_farm_vertex_0x04000200:
+  symbol: d_course_moo_moo_farm_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1c0
+
+d_course_moo_moo_farm_vertex_0x04000300:
+  symbol: d_course_moo_moo_farm_vertex_0x04000300
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2a0
+
+d_course_moo_moo_farm_vertex_0x04000400:
+  symbol: d_course_moo_moo_farm_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x380
+
+d_course_moo_moo_farm_vertex_0x04000500:
+  symbol: d_course_moo_moo_farm_vertex_0x04000500
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x460
+
+d_course_moo_moo_farm_vertex_0x04000640:
+  symbol: d_course_moo_moo_farm_vertex_0x04000640
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x578
+
+d_course_moo_moo_farm_vertex_0x04000700:
+  symbol: d_course_moo_moo_farm_vertex_0x04000700
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x620
+
+d_course_moo_moo_farm_vertex_0x04000840:
+  symbol: d_course_moo_moo_farm_vertex_0x04000840
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x738
+
+d_course_moo_moo_farm_vertex_0x04000980:
+  symbol: d_course_moo_moo_farm_vertex_0x04000980
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x850
+
+d_course_moo_moo_farm_vertex_0x04000A80:
+  symbol: d_course_moo_moo_farm_vertex_0x04000A80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x930
+
+d_course_moo_moo_farm_vertex_0x04000B80:
+  symbol: d_course_moo_moo_farm_vertex_0x04000B80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa10
+
+d_course_moo_moo_farm_vertex_0x04000BC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04000BC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa48
+
+d_course_moo_moo_farm_vertex_0x04000CC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04000CC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb28
+
+d_course_moo_moo_farm_vertex_0x04000D80:
+  symbol: d_course_moo_moo_farm_vertex_0x04000D80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbd0
+
+d_course_moo_moo_farm_vertex_0x04000E80:
+  symbol: d_course_moo_moo_farm_vertex_0x04000E80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xcb0
+
+d_course_moo_moo_farm_vertex_0x04000F80:
+  symbol: d_course_moo_moo_farm_vertex_0x04000F80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd90
+
+d_course_moo_moo_farm_vertex_0x040010C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040010C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xea8
+
+d_course_moo_moo_farm_vertex_0x040011C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040011C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xf88
+
+d_course_moo_moo_farm_vertex_0x04001280:
+  symbol: d_course_moo_moo_farm_vertex_0x04001280
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1030
+
+d_course_moo_moo_farm_vertex_0x04001380:
+  symbol: d_course_moo_moo_farm_vertex_0x04001380
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1110
+
+d_course_moo_moo_farm_vertex_0x04001480:
+  symbol: d_course_moo_moo_farm_vertex_0x04001480
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11f0
+
+d_course_moo_moo_farm_vertex_0x04001540:
+  symbol: d_course_moo_moo_farm_vertex_0x04001540
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1298
+
+d_course_moo_moo_farm_vertex_0x04001640:
+  symbol: d_course_moo_moo_farm_vertex_0x04001640
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1378
+
+d_course_moo_moo_farm_vertex_0x04001740:
+  symbol: d_course_moo_moo_farm_vertex_0x04001740
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1458
+
+d_course_moo_moo_farm_vertex_0x04001840:
+  symbol: d_course_moo_moo_farm_vertex_0x04001840
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1538
+
+d_course_moo_moo_farm_vertex_0x04001940:
+  symbol: d_course_moo_moo_farm_vertex_0x04001940
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1618
+
+d_course_moo_moo_farm_vertex_0x04001A40:
+  symbol: d_course_moo_moo_farm_vertex_0x04001A40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x16f8
+
+d_course_moo_moo_farm_vertex_0x04001B40:
+  symbol: d_course_moo_moo_farm_vertex_0x04001B40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x17d8
+
+d_course_moo_moo_farm_vertex_0x04001C80:
+  symbol: d_course_moo_moo_farm_vertex_0x04001C80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x18f0
+
+d_course_moo_moo_farm_vertex_0x04001D40:
+  symbol: d_course_moo_moo_farm_vertex_0x04001D40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1998
+
+d_course_moo_moo_farm_vertex_0x04001E80:
+  symbol: d_course_moo_moo_farm_vertex_0x04001E80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1ab0
+
+d_course_moo_moo_farm_vertex_0x04001FC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04001FC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1bc8
+
+d_course_moo_moo_farm_vertex_0x040020C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040020C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1ca8
+
+d_course_moo_moo_farm_vertex_0x040021C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040021C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1d88
+
+d_course_moo_moo_farm_vertex_0x04002280:
+  symbol: d_course_moo_moo_farm_vertex_0x04002280
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1e30
+
+d_course_moo_moo_farm_vertex_0x04002300:
+  symbol: d_course_moo_moo_farm_vertex_0x04002300
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1ea0
+
+d_course_moo_moo_farm_vertex_0x04002400:
+  symbol: d_course_moo_moo_farm_vertex_0x04002400
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1f80
+
+d_course_moo_moo_farm_vertex_0x04002500:
+  symbol: d_course_moo_moo_farm_vertex_0x04002500
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2060
+
+d_course_moo_moo_farm_vertex_0x04002600:
+  symbol: d_course_moo_moo_farm_vertex_0x04002600
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2140
+
+d_course_moo_moo_farm_vertex_0x04002700:
+  symbol: d_course_moo_moo_farm_vertex_0x04002700
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2220
+
+d_course_moo_moo_farm_vertex_0x04002800:
+  symbol: d_course_moo_moo_farm_vertex_0x04002800
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2300
+
+d_course_moo_moo_farm_vertex_0x040028C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040028C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x23a8
+
+d_course_moo_moo_farm_vertex_0x040029C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040029C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2488
+
+d_course_moo_moo_farm_vertex_0x04002AC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04002AC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2568
+
+d_course_moo_moo_farm_vertex_0x04002B80:
+  symbol: d_course_moo_moo_farm_vertex_0x04002B80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2610
+
+d_course_moo_moo_farm_vertex_0x04002D80:
+  symbol: d_course_moo_moo_farm_vertex_0x04002D80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x27d0
+
+d_course_moo_moo_farm_vertex_0x04002F00:
+  symbol: d_course_moo_moo_farm_vertex_0x04002F00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2920
+
+d_course_moo_moo_farm_vertex_0x040030E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040030E0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x2ac4
+
+d_course_moo_moo_farm_vertex_0x040031C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040031C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2b88
+
+d_course_moo_moo_farm_vertex_0x04003240:
+  symbol: d_course_moo_moo_farm_vertex_0x04003240
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2bf8
+
+d_course_moo_moo_farm_vertex_0x04003280:
+  symbol: d_course_moo_moo_farm_vertex_0x04003280
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2c30
+
+d_course_moo_moo_farm_vertex_0x040032C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040032C0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x2c68
+
+d_course_moo_moo_farm_vertex_0x04003330:
+  symbol: d_course_moo_moo_farm_vertex_0x04003330
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2cca
+
+d_course_moo_moo_farm_vertex_0x040033B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040033B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2d3a
+
+d_course_moo_moo_farm_vertex_0x04003430:
+  symbol: d_course_moo_moo_farm_vertex_0x04003430
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2daa
+
+d_course_moo_moo_farm_vertex_0x040034B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040034B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2e1a
+
+d_course_moo_moo_farm_vertex_0x04003530:
+  symbol: d_course_moo_moo_farm_vertex_0x04003530
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2e8a
+
+d_course_moo_moo_farm_vertex_0x04003570:
+  symbol: d_course_moo_moo_farm_vertex_0x04003570
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2ec2
+
+d_course_moo_moo_farm_vertex_0x040035B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040035B0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x2efa
+
+d_course_moo_moo_farm_vertex_0x04003620:
+  symbol: d_course_moo_moo_farm_vertex_0x04003620
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2f5c
+
+d_course_moo_moo_farm_vertex_0x040036A0:
+  symbol: d_course_moo_moo_farm_vertex_0x040036A0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x2fcc
+
+d_course_moo_moo_farm_vertex_0x04003860:
+  symbol: d_course_moo_moo_farm_vertex_0x04003860
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x3154
+
+d_course_moo_moo_farm_vertex_0x04003A30:
+  symbol: d_course_moo_moo_farm_vertex_0x04003A30
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x32ea
+
+d_course_moo_moo_farm_vertex_0x04003BF0:
+  symbol: d_course_moo_moo_farm_vertex_0x04003BF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3472
+
+d_course_moo_moo_farm_vertex_0x04003DD0:
+  symbol: d_course_moo_moo_farm_vertex_0x04003DD0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x3616
+
+d_course_moo_moo_farm_vertex_0x04003F90:
+  symbol: d_course_moo_moo_farm_vertex_0x04003F90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x379e
+
+d_course_moo_moo_farm_vertex_0x04004190:
+  symbol: d_course_moo_moo_farm_vertex_0x04004190
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x395e
+
+d_course_moo_moo_farm_vertex_0x040042D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040042D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3a76
+
+d_course_moo_moo_farm_vertex_0x040044D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040044D0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x3c36
+
+d_course_moo_moo_farm_vertex_0x040045F0:
+  symbol: d_course_moo_moo_farm_vertex_0x040045F0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x3d32
+
+d_course_moo_moo_farm_vertex_0x04004790:
+  symbol: d_course_moo_moo_farm_vertex_0x04004790
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3e9e
+
+d_course_moo_moo_farm_vertex_0x04004990:
+  symbol: d_course_moo_moo_farm_vertex_0x04004990
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x405e
+
+d_course_moo_moo_farm_vertex_0x040049C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040049C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4088
+
+d_course_moo_moo_farm_vertex_0x04004BA0:
+  symbol: d_course_moo_moo_farm_vertex_0x04004BA0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x422c
+
+d_course_moo_moo_farm_vertex_0x04004BF0:
+  symbol: d_course_moo_moo_farm_vertex_0x04004BF0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x4272
+
+d_course_moo_moo_farm_vertex_0x04004DC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04004DC0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x4408
+
+d_course_moo_moo_farm_vertex_0x04004F80:
+  symbol: d_course_moo_moo_farm_vertex_0x04004F80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4590
+
+d_course_moo_moo_farm_vertex_0x04005180:
+  symbol: d_course_moo_moo_farm_vertex_0x04005180
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4750
+
+d_course_moo_moo_farm_vertex_0x04005240:
+  symbol: d_course_moo_moo_farm_vertex_0x04005240
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x47f8
+
+d_course_moo_moo_farm_vertex_0x04005440:
+  symbol: d_course_moo_moo_farm_vertex_0x04005440
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x49b8
+
+d_course_moo_moo_farm_vertex_0x040054D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040054D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4a36
+
+d_course_moo_moo_farm_vertex_0x040056D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040056D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x4bf6
+
+d_course_moo_moo_farm_vertex_0x040057B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040057B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4cba
+
+d_course_moo_moo_farm_vertex_0x04005990:
+  symbol: d_course_moo_moo_farm_vertex_0x04005990
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x4e5e
+
+d_course_moo_moo_farm_vertex_0x04005A80:
+  symbol: d_course_moo_moo_farm_vertex_0x04005A80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4f30
+
+d_course_moo_moo_farm_vertex_0x04005C70:
+  symbol: d_course_moo_moo_farm_vertex_0x04005C70
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x50e2
+
+d_course_moo_moo_farm_vertex_0x04005E10:
+  symbol: d_course_moo_moo_farm_vertex_0x04005E10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x524e
+
+d_course_moo_moo_farm_vertex_0x04005FF0:
+  symbol: d_course_moo_moo_farm_vertex_0x04005FF0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x53f2
+
+d_course_moo_moo_farm_vertex_0x040060D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040060D0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x54b6
+
+d_course_moo_moo_farm_vertex_0x04006200:
+  symbol: d_course_moo_moo_farm_vertex_0x04006200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x55c0
+
+d_course_moo_moo_farm_vertex_0x04006400:
+  symbol: d_course_moo_moo_farm_vertex_0x04006400
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x5780
+
+d_course_moo_moo_farm_vertex_0x04006430:
+  symbol: d_course_moo_moo_farm_vertex_0x04006430
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x57aa
+
+d_course_moo_moo_farm_vertex_0x04006540:
+  symbol: d_course_moo_moo_farm_vertex_0x04006540
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5898
+
+d_course_moo_moo_farm_vertex_0x04006720:
+  symbol: d_course_moo_moo_farm_vertex_0x04006720
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x5a3c
+
+d_course_moo_moo_farm_vertex_0x04006780:
+  symbol: d_course_moo_moo_farm_vertex_0x04006780
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5a90
+
+d_course_moo_moo_farm_vertex_0x04006980:
+  symbol: d_course_moo_moo_farm_vertex_0x04006980
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5c50
+
+d_course_moo_moo_farm_vertex_0x04006A10:
+  symbol: d_course_moo_moo_farm_vertex_0x04006A10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5cce
+
+d_course_moo_moo_farm_vertex_0x04006BF0:
+  symbol: d_course_moo_moo_farm_vertex_0x04006BF0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x5e72
+
+d_course_moo_moo_farm_vertex_0x04006CE0:
+  symbol: d_course_moo_moo_farm_vertex_0x04006CE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5f44
+
+d_course_moo_moo_farm_vertex_0x04006EC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04006EC0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x60e8
+
+d_course_moo_moo_farm_vertex_0x04006FE0:
+  symbol: d_course_moo_moo_farm_vertex_0x04006FE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x61e4
+
+d_course_moo_moo_farm_vertex_0x040071C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040071C0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x6388
+
+d_course_moo_moo_farm_vertex_0x040072B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040072B0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x645a
+
+d_course_moo_moo_farm_vertex_0x04007420:
+  symbol: d_course_moo_moo_farm_vertex_0x04007420
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x659c
+
+d_course_moo_moo_farm_vertex_0x04007520:
+  symbol: d_course_moo_moo_farm_vertex_0x04007520
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x667c
+
+d_course_moo_moo_farm_vertex_0x04007720:
+  symbol: d_course_moo_moo_farm_vertex_0x04007720
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x683c
+
+d_course_moo_moo_farm_vertex_0x04007800:
+  symbol: d_course_moo_moo_farm_vertex_0x04007800
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6900
+
+d_course_moo_moo_farm_vertex_0x040079E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040079E0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x6aa4
+
+d_course_moo_moo_farm_vertex_0x04007B30:
+  symbol: d_course_moo_moo_farm_vertex_0x04007B30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6bca
+
+d_course_moo_moo_farm_vertex_0x04007D30:
+  symbol: d_course_moo_moo_farm_vertex_0x04007D30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6d8a
+
+d_course_moo_moo_farm_vertex_0x04007F10:
+  symbol: d_course_moo_moo_farm_vertex_0x04007F10
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x6f2e
+
+d_course_moo_moo_farm_vertex_0x04008090:
+  symbol: d_course_moo_moo_farm_vertex_0x04008090
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x707e
+
+d_course_moo_moo_farm_vertex_0x04008280:
+  symbol: d_course_moo_moo_farm_vertex_0x04008280
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x7230
+
+d_course_moo_moo_farm_vertex_0x040082E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040082E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7284
+
+d_course_moo_moo_farm_vertex_0x040084E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040084E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x7444
+
+d_course_moo_moo_farm_vertex_0x04008600:
+  symbol: d_course_moo_moo_farm_vertex_0x04008600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7540
+
+d_course_moo_moo_farm_vertex_0x04008800:
+  symbol: d_course_moo_moo_farm_vertex_0x04008800
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x7700
+
+d_course_moo_moo_farm_vertex_0x040088B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040088B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x779a
+
+d_course_moo_moo_farm_vertex_0x04008AB0:
+  symbol: d_course_moo_moo_farm_vertex_0x04008AB0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x795a
+
+d_course_moo_moo_farm_vertex_0x04008C20:
+  symbol: d_course_moo_moo_farm_vertex_0x04008C20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x7a9c
+
+d_course_moo_moo_farm_vertex_0x04008E10:
+  symbol: d_course_moo_moo_farm_vertex_0x04008E10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7c4e
+
+d_course_moo_moo_farm_vertex_0x04008FF0:
+  symbol: d_course_moo_moo_farm_vertex_0x04008FF0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x7df2
+
+d_course_moo_moo_farm_vertex_0x04009050:
+  symbol: d_course_moo_moo_farm_vertex_0x04009050
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7e46
+
+d_course_moo_moo_farm_vertex_0x04009250:
+  symbol: d_course_moo_moo_farm_vertex_0x04009250
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x8006
+
+d_course_moo_moo_farm_vertex_0x04009400:
+  symbol: d_course_moo_moo_farm_vertex_0x04009400
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8180
+
+d_course_moo_moo_farm_vertex_0x040095E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040095E0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x8324
+
+d_course_moo_moo_farm_vertex_0x04009610:
+  symbol: d_course_moo_moo_farm_vertex_0x04009610
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x834e
+
+d_course_moo_moo_farm_vertex_0x04009740:
+  symbol: d_course_moo_moo_farm_vertex_0x04009740
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x8458
+
+d_course_moo_moo_farm_vertex_0x040098C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040098C0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x85a8
+
+d_course_moo_moo_farm_vertex_0x04009A50:
+  symbol: d_course_moo_moo_farm_vertex_0x04009A50
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8706
+
+d_course_moo_moo_farm_vertex_0x04009B70:
+  symbol: d_course_moo_moo_farm_vertex_0x04009B70
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8802
+
+d_course_moo_moo_farm_vertex_0x04009C90:
+  symbol: d_course_moo_moo_farm_vertex_0x04009C90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x88fe
+
+d_course_moo_moo_farm_vertex_0x04009E70:
+  symbol: d_course_moo_moo_farm_vertex_0x04009E70
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x8aa2
+
+d_course_moo_moo_farm_vertex_0x0400A040:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A040
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x8c38
+
+d_course_moo_moo_farm_vertex_0x0400A190:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A190
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8d5e
+
+d_course_moo_moo_farm_vertex_0x0400A370:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A370
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x8f02
+
+d_course_moo_moo_farm_vertex_0x0400A4E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A4E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9044
+
+d_course_moo_moo_farm_vertex_0x0400A6E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A6E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9204
+
+d_course_moo_moo_farm_vertex_0x0400A8C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400A8C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x93a8
+
+d_course_moo_moo_farm_vertex_0x0400AAA0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400AAA0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x954c
+
+d_course_moo_moo_farm_vertex_0x0400AC20:
+  symbol: d_course_moo_moo_farm_vertex_0x0400AC20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x969c
+
+d_course_moo_moo_farm_vertex_0x0400AE00:
+  symbol: d_course_moo_moo_farm_vertex_0x0400AE00
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x9840
+
+d_course_moo_moo_farm_vertex_0x0400AFB0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400AFB0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x99ba
+
+d_course_moo_moo_farm_vertex_0x0400B190:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B190
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9b5e
+
+d_course_moo_moo_farm_vertex_0x0400B390:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B390
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x9d1e
+
+d_course_moo_moo_farm_vertex_0x0400B3F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B3F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9d72
+
+d_course_moo_moo_farm_vertex_0x0400B5F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B5F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9f32
+
+d_course_moo_moo_farm_vertex_0x0400B7D0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B7D0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xa0d6
+
+d_course_moo_moo_farm_vertex_0x0400B800:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B800
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa100
+
+d_course_moo_moo_farm_vertex_0x0400B9F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400B9F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa2b2
+
+d_course_moo_moo_farm_vertex_0x0400BBD0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400BBD0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xa456
+
+d_course_moo_moo_farm_vertex_0x0400BC00:
+  symbol: d_course_moo_moo_farm_vertex_0x0400BC00
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xa480
+
+d_course_moo_moo_farm_vertex_0x0400BD60:
+  symbol: d_course_moo_moo_farm_vertex_0x0400BD60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa5b4
+
+d_course_moo_moo_farm_vertex_0x0400BF50:
+  symbol: d_course_moo_moo_farm_vertex_0x0400BF50
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xa766
+
+d_course_moo_moo_farm_vertex_0x0400C120:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C120
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xa8fc
+
+d_course_moo_moo_farm_vertex_0x0400C2C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C2C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xaa68
+
+d_course_moo_moo_farm_vertex_0x0400C440:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C440
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xabb8
+
+d_course_moo_moo_farm_vertex_0x0400C560:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C560
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xacb4
+
+d_course_moo_moo_farm_vertex_0x0400C740:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C740
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xae58
+
+d_course_moo_moo_farm_vertex_0x0400C8C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C8C0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xafa8
+
+d_course_moo_moo_farm_vertex_0x0400C9F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400C9F0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xb0b2
+
+d_course_moo_moo_farm_vertex_0x0400CB50:
+  symbol: d_course_moo_moo_farm_vertex_0x0400CB50
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb1e6
+
+d_course_moo_moo_farm_vertex_0x0400CCD0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400CCD0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb336
+
+d_course_moo_moo_farm_vertex_0x0400CEC0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400CEC0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xb4e8
+
+d_course_moo_moo_farm_vertex_0x0400CEF0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400CEF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb512
+
+d_course_moo_moo_farm_vertex_0x0400D0F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D0F0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xb6d2
+
+d_course_moo_moo_farm_vertex_0x0400D2B0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D2B0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xb85a
+
+d_course_moo_moo_farm_vertex_0x0400D480:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D480
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xb9f0
+
+d_course_moo_moo_farm_vertex_0x0400D660:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D660
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xbb94
+
+d_course_moo_moo_farm_vertex_0x0400D6C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D6C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xbbe8
+
+d_course_moo_moo_farm_vertex_0x0400D8C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D8C0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xbda8
+
+d_course_moo_moo_farm_vertex_0x0400D950:
+  symbol: d_course_moo_moo_farm_vertex_0x0400D950
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbe26
+
+d_course_moo_moo_farm_vertex_0x0400DB40:
+  symbol: d_course_moo_moo_farm_vertex_0x0400DB40
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xbfd8
+
+d_course_moo_moo_farm_vertex_0x0400DC30:
+  symbol: d_course_moo_moo_farm_vertex_0x0400DC30
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xc0aa
+
+d_course_moo_moo_farm_vertex_0x0400DD80:
+  symbol: d_course_moo_moo_farm_vertex_0x0400DD80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc1d0
+
+d_course_moo_moo_farm_vertex_0x0400DF70:
+  symbol: d_course_moo_moo_farm_vertex_0x0400DF70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc382
+
+d_course_moo_moo_farm_vertex_0x0400DFF0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400DFF0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc3f2
+
+d_course_moo_moo_farm_vertex_0x0400E1E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E1E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc5a4
+
+d_course_moo_moo_farm_vertex_0x0400E240:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E240
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc5f8
+
+d_course_moo_moo_farm_vertex_0x0400E440:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E440
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xc7b8
+
+d_course_moo_moo_farm_vertex_0x0400E530:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E530
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc88a
+
+d_course_moo_moo_farm_vertex_0x0400E730:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E730
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xca4a
+
+d_course_moo_moo_farm_vertex_0x0400E790:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E790
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xca9e
+
+d_course_moo_moo_farm_vertex_0x0400E970:
+  symbol: d_course_moo_moo_farm_vertex_0x0400E970
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcc42
+
+d_course_moo_moo_farm_vertex_0x0400EAB0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400EAB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xcd5a
+
+d_course_moo_moo_farm_vertex_0x0400ECA0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400ECA0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xcf0c
+
+d_course_moo_moo_farm_vertex_0x0400ED00:
+  symbol: d_course_moo_moo_farm_vertex_0x0400ED00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xcf60
+
+d_course_moo_moo_farm_vertex_0x0400EEE0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400EEE0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xd104
+
+d_course_moo_moo_farm_vertex_0x0400EF90:
+  symbol: d_course_moo_moo_farm_vertex_0x0400EF90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd19e
+
+d_course_moo_moo_farm_vertex_0x0400F190:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F190
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd35e
+
+d_course_moo_moo_farm_vertex_0x0400F250:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F250
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd406
+
+d_course_moo_moo_farm_vertex_0x0400F440:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F440
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xd5b8
+
+d_course_moo_moo_farm_vertex_0x0400F5C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F5C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd708
+
+d_course_moo_moo_farm_vertex_0x0400F7A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F7A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd8ac
+
+d_course_moo_moo_farm_vertex_0x0400F990:
+  symbol: d_course_moo_moo_farm_vertex_0x0400F990
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xda5e
+
+d_course_moo_moo_farm_vertex_0x0400FAE0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400FAE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdb84
+
+d_course_moo_moo_farm_vertex_0x0400FCE0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400FCE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xdd44
+
+d_course_moo_moo_farm_vertex_0x0400FEC0:
+  symbol: d_course_moo_moo_farm_vertex_0x0400FEC0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xdee8
+
+d_course_moo_moo_farm_vertex_0x040100B0:
+  symbol: d_course_moo_moo_farm_vertex_0x040100B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe09a
+
+d_course_moo_moo_farm_vertex_0x04010170:
+  symbol: d_course_moo_moo_farm_vertex_0x04010170
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xe142
+
+d_course_moo_moo_farm_vertex_0x040102D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040102D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe276
+
+d_course_moo_moo_farm_vertex_0x040104C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040104C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xe428
+
+d_course_moo_moo_farm_vertex_0x04010680:
+  symbol: d_course_moo_moo_farm_vertex_0x04010680
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe5b0
+
+d_course_moo_moo_farm_vertex_0x04010880:
+  symbol: d_course_moo_moo_farm_vertex_0x04010880
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe770
+
+d_course_moo_moo_farm_vertex_0x04010A70:
+  symbol: d_course_moo_moo_farm_vertex_0x04010A70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xe922
+
+d_course_moo_moo_farm_vertex_0x04010C50:
+  symbol: d_course_moo_moo_farm_vertex_0x04010C50
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xeac6
+
+d_course_moo_moo_farm_vertex_0x04010CE0:
+  symbol: d_course_moo_moo_farm_vertex_0x04010CE0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xeb44
+
+d_course_moo_moo_farm_vertex_0x04010E40:
+  symbol: d_course_moo_moo_farm_vertex_0x04010E40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xec78
+
+d_course_moo_moo_farm_vertex_0x04011040:
+  symbol: d_course_moo_moo_farm_vertex_0x04011040
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xee38
+
+d_course_moo_moo_farm_vertex_0x04011240:
+  symbol: d_course_moo_moo_farm_vertex_0x04011240
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xeff8
+
+d_course_moo_moo_farm_vertex_0x04011270:
+  symbol: d_course_moo_moo_farm_vertex_0x04011270
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xf022
+
+d_course_moo_moo_farm_vertex_0x040113E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040113E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xf164
+
+d_course_moo_moo_farm_vertex_0x040115D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040115D0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xf316
+
+d_course_moo_moo_farm_vertex_0x04011720:
+  symbol: d_course_moo_moo_farm_vertex_0x04011720
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xf43c
+
+d_course_moo_moo_farm_vertex_0x040118E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040118E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xf5c4
+
+d_course_moo_moo_farm_vertex_0x04011A00:
+  symbol: d_course_moo_moo_farm_vertex_0x04011A00
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xf6c0
+
+d_course_moo_moo_farm_vertex_0x04011BD0:
+  symbol: d_course_moo_moo_farm_vertex_0x04011BD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf856
+
+d_course_moo_moo_farm_vertex_0x04011DD0:
+  symbol: d_course_moo_moo_farm_vertex_0x04011DD0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xfa16
+
+d_course_moo_moo_farm_vertex_0x04011E70:
+  symbol: d_course_moo_moo_farm_vertex_0x04011E70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfaa2
+
+d_course_moo_moo_farm_vertex_0x04012070:
+  symbol: d_course_moo_moo_farm_vertex_0x04012070
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfc62
+
+d_course_moo_moo_farm_vertex_0x04012270:
+  symbol: d_course_moo_moo_farm_vertex_0x04012270
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xfe22
+
+d_course_moo_moo_farm_vertex_0x04012320:
+  symbol: d_course_moo_moo_farm_vertex_0x04012320
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfebc
+
+d_course_moo_moo_farm_vertex_0x04012520:
+  symbol: d_course_moo_moo_farm_vertex_0x04012520
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1007c
+
+d_course_moo_moo_farm_vertex_0x04012710:
+  symbol: d_course_moo_moo_farm_vertex_0x04012710
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1022e
+
+d_course_moo_moo_farm_vertex_0x04012800:
+  symbol: d_course_moo_moo_farm_vertex_0x04012800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10300
+
+d_course_moo_moo_farm_vertex_0x04012A00:
+  symbol: d_course_moo_moo_farm_vertex_0x04012A00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x104c0
+
+d_course_moo_moo_farm_vertex_0x04012C00:
+  symbol: d_course_moo_moo_farm_vertex_0x04012C00
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x10680
+
+d_course_moo_moo_farm_vertex_0x04012CD0:
+  symbol: d_course_moo_moo_farm_vertex_0x04012CD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10736
+
+d_course_moo_moo_farm_vertex_0x04012ED0:
+  symbol: d_course_moo_moo_farm_vertex_0x04012ED0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x108f6
+
+d_course_moo_moo_farm_vertex_0x040130D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040130D0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x10ab6
+
+d_course_moo_moo_farm_vertex_0x040131C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040131C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10b88
+
+d_course_moo_moo_farm_vertex_0x040133C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040133C0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x10d48
+
+d_course_moo_moo_farm_vertex_0x040133F0:
+  symbol: d_course_moo_moo_farm_vertex_0x040133F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x10d72
+
+d_course_moo_moo_farm_vertex_0x040135E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040135E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x10f24
+
+d_course_moo_moo_farm_vertex_0x040136D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040136D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10ff6
+
+d_course_moo_moo_farm_vertex_0x040138D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040138D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x111b6
+
+d_course_moo_moo_farm_vertex_0x04013AD0:
+  symbol: d_course_moo_moo_farm_vertex_0x04013AD0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x11376
+
+d_course_moo_moo_farm_vertex_0x04013BA0:
+  symbol: d_course_moo_moo_farm_vertex_0x04013BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1142c
+
+d_course_moo_moo_farm_vertex_0x04013DA0:
+  symbol: d_course_moo_moo_farm_vertex_0x04013DA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x115ec
+
+d_course_moo_moo_farm_vertex_0x04013E20:
+  symbol: d_course_moo_moo_farm_vertex_0x04013E20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1165c
+
+d_course_moo_moo_farm_vertex_0x04013EA0:
+  symbol: d_course_moo_moo_farm_vertex_0x04013EA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x116cc
+
+d_course_moo_moo_farm_vertex_0x04014090:
+  symbol: d_course_moo_moo_farm_vertex_0x04014090
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1187e
+
+d_course_moo_moo_farm_vertex_0x040140C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040140C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x118a8
+
+d_course_moo_moo_farm_vertex_0x04014240:
+  symbol: d_course_moo_moo_farm_vertex_0x04014240
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x119f8
+
+d_course_moo_moo_farm_vertex_0x04014430:
+  symbol: d_course_moo_moo_farm_vertex_0x04014430
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x11baa
+
+d_course_moo_moo_farm_vertex_0x040145D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040145D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11d16
+
+d_course_moo_moo_farm_vertex_0x040147D0:
+  symbol: d_course_moo_moo_farm_vertex_0x040147D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11ed6
+
+d_course_moo_moo_farm_vertex_0x04014850:
+  symbol: d_course_moo_moo_farm_vertex_0x04014850
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11f46
+
+d_course_moo_moo_farm_vertex_0x04014A40:
+  symbol: d_course_moo_moo_farm_vertex_0x04014A40
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x120f8
+
+d_course_moo_moo_farm_vertex_0x04014BB0:
+  symbol: d_course_moo_moo_farm_vertex_0x04014BB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1223a
+
+d_course_moo_moo_farm_vertex_0x04014DB0:
+  symbol: d_course_moo_moo_farm_vertex_0x04014DB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x123fa
+
+d_course_moo_moo_farm_vertex_0x04014E30:
+  symbol: d_course_moo_moo_farm_vertex_0x04014E30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1246a
+
+d_course_moo_moo_farm_vertex_0x04015020:
+  symbol: d_course_moo_moo_farm_vertex_0x04015020
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1261c
+
+d_course_moo_moo_farm_vertex_0x04015110:
+  symbol: d_course_moo_moo_farm_vertex_0x04015110
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x126ee
+
+d_course_moo_moo_farm_vertex_0x04015310:
+  symbol: d_course_moo_moo_farm_vertex_0x04015310
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x128ae
+
+d_course_moo_moo_farm_vertex_0x04015510:
+  symbol: d_course_moo_moo_farm_vertex_0x04015510
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x12a6e
+
+d_course_moo_moo_farm_vertex_0x040155F0:
+  symbol: d_course_moo_moo_farm_vertex_0x040155F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12b32
+
+d_course_moo_moo_farm_vertex_0x040157F0:
+  symbol: d_course_moo_moo_farm_vertex_0x040157F0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12cf2
+
+d_course_moo_moo_farm_vertex_0x04015820:
+  symbol: d_course_moo_moo_farm_vertex_0x04015820
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12d1c
+
+d_course_moo_moo_farm_vertex_0x04015860:
+  symbol: d_course_moo_moo_farm_vertex_0x04015860
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12d54
+
+d_course_moo_moo_farm_vertex_0x040158A0:
+  symbol: d_course_moo_moo_farm_vertex_0x040158A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x12d8c
+
+d_course_moo_moo_farm_vertex_0x04015A90:
+  symbol: d_course_moo_moo_farm_vertex_0x04015A90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x12f3e
+
+d_course_moo_moo_farm_vertex_0x04015C70:
+  symbol: d_course_moo_moo_farm_vertex_0x04015C70
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x130e2
+
+d_course_moo_moo_farm_vertex_0x04015D00:
+  symbol: d_course_moo_moo_farm_vertex_0x04015D00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13160
+
+d_course_moo_moo_farm_vertex_0x04015F00:
+  symbol: d_course_moo_moo_farm_vertex_0x04015F00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13320
+
+d_course_moo_moo_farm_vertex_0x040160E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040160E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x134c4
+
+d_course_moo_moo_farm_vertex_0x040162E0:
+  symbol: d_course_moo_moo_farm_vertex_0x040162E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x13684
+
+d_course_moo_moo_farm_vertex_0x04016340:
+  symbol: d_course_moo_moo_farm_vertex_0x04016340
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x136d8
+
+d_course_moo_moo_farm_vertex_0x04016540:
+  symbol: d_course_moo_moo_farm_vertex_0x04016540
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13898
+
+d_course_moo_moo_farm_vertex_0x04016720:
+  symbol: d_course_moo_moo_farm_vertex_0x04016720
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x13a3c
+
+d_course_moo_moo_farm_vertex_0x04016890:
+  symbol: d_course_moo_moo_farm_vertex_0x04016890
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13b7e
+
+d_course_moo_moo_farm_vertex_0x04016A90:
+  symbol: d_course_moo_moo_farm_vertex_0x04016A90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13d3e
+
+d_course_moo_moo_farm_vertex_0x04016C90:
+  symbol: d_course_moo_moo_farm_vertex_0x04016C90
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x13efe
+
+d_course_moo_moo_farm_vertex_0x04016D60:
+  symbol: d_course_moo_moo_farm_vertex_0x04016D60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13fb4
+
+d_course_moo_moo_farm_vertex_0x04016F60:
+  symbol: d_course_moo_moo_farm_vertex_0x04016F60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14174
+
+d_course_moo_moo_farm_vertex_0x04017160:
+  symbol: d_course_moo_moo_farm_vertex_0x04017160
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x14334
+
+d_course_moo_moo_farm_vertex_0x04017350:
+  symbol: d_course_moo_moo_farm_vertex_0x04017350
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x144e6
+
+d_course_moo_moo_farm_vertex_0x04017390:
+  symbol: d_course_moo_moo_farm_vertex_0x04017390
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1451e
+
+d_course_moo_moo_farm_vertex_0x04017590:
+  symbol: d_course_moo_moo_farm_vertex_0x04017590
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x146de
+
+d_course_moo_moo_farm_vertex_0x04017610:
+  symbol: d_course_moo_moo_farm_vertex_0x04017610
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1474e
+
+d_course_moo_moo_farm_vertex_0x04017810:
+  symbol: d_course_moo_moo_farm_vertex_0x04017810
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1490e
+
+d_course_moo_moo_farm_vertex_0x04017A00:
+  symbol: d_course_moo_moo_farm_vertex_0x04017A00
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x14ac0
+
+d_course_moo_moo_farm_vertex_0x04017A30:
+  symbol: d_course_moo_moo_farm_vertex_0x04017A30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14aea
+
+d_course_moo_moo_farm_vertex_0x04017C30:
+  symbol: d_course_moo_moo_farm_vertex_0x04017C30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14caa
+
+d_course_moo_moo_farm_vertex_0x04017C70:
+  symbol: d_course_moo_moo_farm_vertex_0x04017C70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14ce2
+
+d_course_moo_moo_farm_vertex_0x04017E70:
+  symbol: d_course_moo_moo_farm_vertex_0x04017E70
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x14ea2
+
+d_course_moo_moo_farm_vertex_0x04017F60:
+  symbol: d_course_moo_moo_farm_vertex_0x04017F60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14f74
+
+d_course_moo_moo_farm_vertex_0x04018160:
+  symbol: d_course_moo_moo_farm_vertex_0x04018160
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15134
+
+d_course_moo_moo_farm_vertex_0x04018360:
+  symbol: d_course_moo_moo_farm_vertex_0x04018360
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x152f4
+
+d_course_moo_moo_farm_vertex_0x04018450:
+  symbol: d_course_moo_moo_farm_vertex_0x04018450
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x153c6
+
+d_course_moo_moo_farm_vertex_0x04018630:
+  symbol: d_course_moo_moo_farm_vertex_0x04018630
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1556a
+
+d_course_moo_moo_farm_vertex_0x04018670:
+  symbol: d_course_moo_moo_farm_vertex_0x04018670
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x155a2
+
+d_course_moo_moo_farm_vertex_0x04018870:
+  symbol: d_course_moo_moo_farm_vertex_0x04018870
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x15762
+
+d_course_moo_moo_farm_vertex_0x04018950:
+  symbol: d_course_moo_moo_farm_vertex_0x04018950
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15826
+
+d_course_moo_moo_farm_vertex_0x04018B50:
+  symbol: d_course_moo_moo_farm_vertex_0x04018B50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x159e6
+
+d_course_moo_moo_farm_vertex_0x04018B90:
+  symbol: d_course_moo_moo_farm_vertex_0x04018B90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x15a1e
+
+d_course_moo_moo_farm_vertex_0x04018D70:
+  symbol: d_course_moo_moo_farm_vertex_0x04018D70
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x15bc2
+
+d_course_moo_moo_farm_vertex_0x04018E60:
+  symbol: d_course_moo_moo_farm_vertex_0x04018E60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15c94
+
+d_course_moo_moo_farm_vertex_0x04019060:
+  symbol: d_course_moo_moo_farm_vertex_0x04019060
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x15e54
+
+d_course_moo_moo_farm_vertex_0x04019250:
+  symbol: d_course_moo_moo_farm_vertex_0x04019250
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16006
+
+d_course_moo_moo_farm_vertex_0x04019450:
+  symbol: d_course_moo_moo_farm_vertex_0x04019450
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x161c6
+
+d_course_moo_moo_farm_vertex_0x04019480:
+  symbol: d_course_moo_moo_farm_vertex_0x04019480
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x161f0
+
+d_course_moo_moo_farm_vertex_0x04019680:
+  symbol: d_course_moo_moo_farm_vertex_0x04019680
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x163b0
+
+d_course_moo_moo_farm_vertex_0x04019700:
+  symbol: d_course_moo_moo_farm_vertex_0x04019700
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x16420
+
+d_course_moo_moo_farm_vertex_0x040197C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040197C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x164c8
+
+d_course_moo_moo_farm_vertex_0x04019840:
+  symbol: d_course_moo_moo_farm_vertex_0x04019840
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x16538
+
+d_course_moo_moo_farm_vertex_0x040198C0:
+  symbol: d_course_moo_moo_farm_vertex_0x040198C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x165a8
+
+d_course_moo_moo_farm_vertex_0x04019AC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04019AC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16768
+
+d_course_moo_moo_farm_vertex_0x04019CC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04019CC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16928
+
+d_course_moo_moo_farm_vertex_0x04019EC0:
+  symbol: d_course_moo_moo_farm_vertex_0x04019EC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x16ae8
+
+d_course_moo_moo_farm_vertex_0x04019F40:
+  symbol: d_course_moo_moo_farm_vertex_0x04019F40
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x16b58
+
+d_course_moo_moo_farm_vertex_0x0401A100:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A100
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x16ce0
+
+d_course_moo_moo_farm_vertex_0x0401A2C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A2C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16e68
+
+d_course_moo_moo_farm_vertex_0x0401A4C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A4C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x17028
+
+d_course_moo_moo_farm_vertex_0x0401A640:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A640
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x17178
+
+d_course_moo_moo_farm_vertex_0x0401A740:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A740
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x17258
+
+d_course_moo_moo_farm_vertex_0x0401A8A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A8A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1738c
+
+d_course_moo_moo_farm_vertex_0x0401A920:
+  symbol: d_course_moo_moo_farm_vertex_0x0401A920
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x173fc
+
+d_course_moo_moo_farm_vertex_0x0401AA20:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AA20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x174dc
+
+d_course_moo_moo_farm_vertex_0x0401AA60:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AA60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x17514
+
+d_course_moo_moo_farm_vertex_0x0401AAA0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AAA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1754c
+
+d_course_moo_moo_farm_vertex_0x0401AAE0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AAE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x17584
+
+d_course_moo_moo_farm_vertex_0x0401AB20:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AB20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x175bc
+
+d_course_moo_moo_farm_vertex_0x0401AC20:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AC20
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x1769c
+
+d_course_moo_moo_farm_vertex_0x0401ADF0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401ADF0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x17832
+
+d_course_moo_moo_farm_vertex_0x0401AEF0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401AEF0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x17912
+
+d_course_moo_moo_farm_vertex_0x0401B070:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B070
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x17a62
+
+d_course_moo_moo_farm_vertex_0x0401B1A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B1A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17b6c
+
+d_course_moo_moo_farm_vertex_0x0401B3A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B3A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x17d2c
+
+d_course_moo_moo_farm_vertex_0x0401B4E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B4E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x17e44
+
+d_course_moo_moo_farm_vertex_0x0401B660:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B660
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x17f94
+
+d_course_moo_moo_farm_vertex_0x0401B7A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B7A0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x180ac
+
+d_course_moo_moo_farm_vertex_0x0401B940:
+  symbol: d_course_moo_moo_farm_vertex_0x0401B940
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x18218
+
+d_course_moo_moo_farm_vertex_0x0401BA80:
+  symbol: d_course_moo_moo_farm_vertex_0x0401BA80
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x18330
+
+d_course_moo_moo_farm_vertex_0x0401BC20:
+  symbol: d_course_moo_moo_farm_vertex_0x0401BC20
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x1849c
+
+d_course_moo_moo_farm_vertex_0x0401BD90:
+  symbol: d_course_moo_moo_farm_vertex_0x0401BD90
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x185de
+
+d_course_moo_moo_farm_vertex_0x0401BEA0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401BEA0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x186cc
+
+d_course_moo_moo_farm_vertex_0x0401BFB0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401BFB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x187ba
+
+d_course_moo_moo_farm_vertex_0x0401C030:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C030
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1882a
+
+d_course_moo_moo_farm_vertex_0x0401C0B0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C0B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1889a
+
+d_course_moo_moo_farm_vertex_0x0401C1F0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C1F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x189b2
+
+d_course_moo_moo_farm_vertex_0x0401C2B0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C2B0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x18a5a
+
+d_course_moo_moo_farm_vertex_0x0401C440:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C440
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x18bb8
+
+d_course_moo_moo_farm_vertex_0x0401C550:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C550
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x18ca6
+
+d_course_moo_moo_farm_vertex_0x0401C6C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C6C0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x18de8
+
+d_course_moo_moo_farm_vertex_0x0401C7D0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C7D0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x18ed6
+
+d_course_moo_moo_farm_vertex_0x0401C930:
+  symbol: d_course_moo_moo_farm_vertex_0x0401C930
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1900a
+
+d_course_moo_moo_farm_vertex_0x0401CA30:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CA30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x190ea
+
+d_course_moo_moo_farm_vertex_0x0401CC10:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CC10
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1928e
+
+d_course_moo_moo_farm_vertex_0x0401CC70:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CC70
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x192e2
+
+d_course_moo_moo_farm_vertex_0x0401CE00:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CE00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x19440
+
+d_course_moo_moo_farm_vertex_0x0401CE40:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CE40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x19478
+
+d_course_moo_moo_farm_vertex_0x0401CE80:
+  symbol: d_course_moo_moo_farm_vertex_0x0401CE80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x194b0
+
+d_course_moo_moo_farm_vertex_0x0401D060:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D060
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x19654
+
+d_course_moo_moo_farm_vertex_0x0401D1C0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D1C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x19788
+
+d_course_moo_moo_farm_vertex_0x0401D3A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D3A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1992c
+
+d_course_moo_moo_farm_vertex_0x0401D5A0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D5A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x19aec
+
+d_course_moo_moo_farm_vertex_0x0401D600:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D600
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x19b40
+
+d_course_moo_moo_farm_vertex_0x0401D740:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D740
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x19c58
+
+d_course_moo_moo_farm_vertex_0x0401D8E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401D8E0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x19dc4
+
+d_course_moo_moo_farm_vertex_0x0401DA20:
+  symbol: d_course_moo_moo_farm_vertex_0x0401DA20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x19edc
+
+d_course_moo_moo_farm_vertex_0x0401DC00:
+  symbol: d_course_moo_moo_farm_vertex_0x0401DC00
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1a080
+
+d_course_moo_moo_farm_vertex_0x0401DC30:
+  symbol: d_course_moo_moo_farm_vertex_0x0401DC30
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x1a0aa
+
+d_course_moo_moo_farm_vertex_0x0401DDC0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401DDC0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x1a208
+
+d_course_moo_moo_farm_vertex_0x0401DF10:
+  symbol: d_course_moo_moo_farm_vertex_0x0401DF10
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x1a32e
+
+d_course_moo_moo_farm_vertex_0x0401E040:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E040
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a438
+
+d_course_moo_moo_farm_vertex_0x0401E220:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E220
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1a5dc
+
+d_course_moo_moo_farm_vertex_0x0401E340:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E340
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x1a6d8
+
+d_course_moo_moo_farm_vertex_0x0401E510:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E510
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x1a86e
+
+d_course_moo_moo_farm_vertex_0x0401E6D0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E6D0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x1a9f6
+
+d_course_moo_moo_farm_vertex_0x0401E880:
+  symbol: d_course_moo_moo_farm_vertex_0x0401E880
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1ab70
+
+d_course_moo_moo_farm_vertex_0x0401EA70:
+  symbol: d_course_moo_moo_farm_vertex_0x0401EA70
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1ad22
+
+d_course_moo_moo_farm_vertex_0x0401EAA0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401EAA0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1ad4c
+
+d_course_moo_moo_farm_vertex_0x0401EC40:
+  symbol: d_course_moo_moo_farm_vertex_0x0401EC40
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x1aeb8
+
+d_course_moo_moo_farm_vertex_0x0401EE10:
+  symbol: d_course_moo_moo_farm_vertex_0x0401EE10
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x1b04e
+
+d_course_moo_moo_farm_vertex_0x0401EF90:
+  symbol: d_course_moo_moo_farm_vertex_0x0401EF90
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x1b19e
+
+d_course_moo_moo_farm_vertex_0x0401F0E0:
+  symbol: d_course_moo_moo_farm_vertex_0x0401F0E0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x1b2c4

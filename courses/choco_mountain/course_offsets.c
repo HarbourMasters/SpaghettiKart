@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/choco_mountain_data.h>
+#include <assets/models/tracks/choco_mountain/choco_mountain_data.h>
 
 const Gfx* choco_mountain_dls[] = {
     d_course_choco_mountain_dl_0,    d_course_choco_mountain_dl_150,  d_course_choco_mountain_dl_B0,

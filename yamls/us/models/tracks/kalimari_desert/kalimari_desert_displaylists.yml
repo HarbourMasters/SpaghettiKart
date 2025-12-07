@@ -1,0 +1,1955 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x934004
+  no_compression: true
+  segments:
+    - [0x0F, 0x934004]
+  manual_segments:
+  # Segment 3
+    - [0x03009000, "textures/other_textures/gTextureCactus1Left"]
+    - [0x03009800, "textures/other_textures/gTextureCactus1Right"]
+    - [0x0300A000, "textures/other_textures/gTextureCactus2Left"]
+    - [0x0300A800, "textures/other_textures/gTextureCactus2Right"]
+    - [0x0300B000, "textures/other_textures/gTextureCactus3"]
+  # Segment 5
+    - [0x05000000, "textures/other_textures/texture_6684F8"]
+    - [0x05000800, "textures/other_textures/sign_luigis_0"]
+    - [0x05001800, "textures/other_textures/sign_luigis_1"]
+    - [0x05002800, "textures/other_textures/sign_mario_star_0"]
+    - [0x05003800, "textures/other_textures/sign_mario_star_1"]
+    - [0x05004800, "textures/other_textures/sign_nintendo_red_0"]
+    - [0x05005800, "textures/other_textures/sign_nintendo_red_1"]
+    - [0x05006800, "textures/other_textures/texture_67490C"]
+    - [0x05007000, "textures/other_textures/sign_yoshi"]
+    - [0x05008000, "textures/other_textures/checkerboard_blue_gray"]
+    - [0x05009000, "textures/other_textures/texture_646CA8"]
+    - [0x0500A000, "textures/other_textures/texture_6473E4"]
+    - [0x0500B000, "textures/other_textures/texture_647994"]
+    - [0x0500C000, "textures/other_textures/texture_668920"]
+    - [0x0500C800, "textures/other_textures/railroad_track"]
+    - [0x0500D800, "textures/other_textures/railroad_crossing_track"]
+    - [0x0500E800, "textures/other_textures/texture_67291C"]
+    - [0x0500F000, "textures/other_textures/fence_barbed_wire"]
+    - [0x05010000, "textures/other_textures/texture_67D304"]
+    - [0x05011000, "textures/other_textures/texture_67E010"]
+    - [0x05011800, "textures/other_textures/texture_67EEAC"]
+    - [0x05012000, "textures/other_textures/sign_shell_shot_0"]
+    - [0x05013000, "textures/other_textures/sign_shell_shot_1"]
+    - [0x05014000, "textures/other_textures/sign_koopa_air_0"]
+    - [0x05015000, "textures/other_textures/sign_koopa_air_1"]
+  # Segment 7
+    - [0x7000000, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_0"]
+    - [0x7000068, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_68"]
+    - [0x70000D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_D0"]
+    - [0x7000138, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_138"]
+    - [0x70001A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1A0"]
+    - [0x7000208, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_208"]
+    - [0x7000270, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_270"]
+    - [0x70002A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2A8"]
+    - [0x7000358, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_358"]
+    - [0x70003E0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3E0"]
+    - [0x7000458, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_458"]
+    - [0x7000538, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_538"]
+    - [0x70005F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5F8"]
+    - [0x70006A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6A0"]
+    - [0x7000760, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_760"]
+    - [0x7000840, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_840"]
+    - [0x7000900, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_900"]
+    - [0x7000998, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_998"]
+    - [0x70009F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9F0"]
+    - [0x7000A08, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A08"]
+    - [0x7000A18, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A18"]
+    - [0x7000A90, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A90"]
+    - [0x7000AF8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_AF8"]
+    - [0x7000B58, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_B58"]
+    - [0x7000BC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_BC8"]
+    - [0x7000C30, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_C30"]
+    - [0x7000C98, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_C98"]
+    - [0x7000CF8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_CF8"]
+    - [0x7000D60, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_D60"]
+    - [0x7000DC0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_DC0"]
+    - [0x7000E20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_E20"]
+    - [0x7000E80, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_E80"]
+    - [0x7000EE8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_EE8"]
+    - [0x7000F48, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_F48"]
+    - [0x7000FB8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_FB8"]
+    - [0x7001028, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1028"]
+    - [0x7001098, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1098"]
+    - [0x7001110, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1110"]
+    - [0x7001178, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1178"]
+    - [0x70011E0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_11E0"]
+    - [0x7001248, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1248"]
+    - [0x70012F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_12F0"]
+    - [0x70013D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_13D0"]
+    - [0x70014A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_14A0"]
+    - [0x7001580, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1580"]
+    - [0x7001650, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1650"]
+    - [0x7001678, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1678"]
+    - [0x7001710, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1710"]
+    - [0x7001898, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1898"]
+    - [0x70019B8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_19B8"]
+    - [0x7001A78, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1A78"]
+    - [0x7001B18, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1B18"]
+    - [0x7001B48, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1B48"]
+    - [0x7001BE0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1BE0"]
+    - [0x7001C78, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1C78"]
+    - [0x7001D10, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1D10"]
+    - [0x7001DA8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1DA8"]
+    - [0x7001E40, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1E40"]
+    - [0x7001ED8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1ED8"]
+    - [0x7001F10, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1F10"]
+    - [0x7001F78, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_1F78"]
+    - [0x7002000, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2000"]
+    - [0x7002068, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2068"]
+    - [0x70020D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_20D0"]
+    - [0x7002130, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2130"]
+    - [0x7002198, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2198"]
+    - [0x70021F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_21F8"]
+    - [0x7002260, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2260"]
+    - [0x70022D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_22D0"]
+    - [0x7002338, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2338"]
+    - [0x70023C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_23C0"]
+    - [0x7002430, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2430"]
+    - [0x70024B0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_24B0"]
+    - [0x7002528, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2528"]
+    - [0x7002598, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2598"]
+    - [0x7002620, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2620"]
+    - [0x7002698, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2698"]
+    - [0x7002710, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2710"]
+    - [0x7002778, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2778"]
+    - [0x7002808, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2808"]
+    - [0x7002878, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2878"]
+    - [0x70028E8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_28E8"]
+    - [0x7002960, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2960"]
+    - [0x70029F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_29F0"]
+    - [0x7002AB8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2AB8"]
+    - [0x7002B20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2B20"]
+    - [0x7002B80, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2B80"]
+    - [0x7002BE0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2BE0"]
+    - [0x7002C48, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2C48"]
+    - [0x7002CB8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2CB8"]
+    - [0x7002D20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2D20"]
+    - [0x7002D90, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2D90"]
+    - [0x7002DF8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2DF8"]
+    - [0x7002E60, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2E60"]
+    - [0x7002EC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2EC8"]
+    - [0x7002F30, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2F30"]
+    - [0x7002FB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_2FB0"]
+    - [0x7003018, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3018"]
+    - [0x7003080, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3080"]
+    - [0x70030E8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_30E8"]
+    - [0x7003158, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3158"]
+    - [0x70031C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_31C0"]
+    - [0x7003228, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3228"]
+    - [0x7003298, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3298"]
+    - [0x7003300, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3300"]
+    - [0x7003368, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3368"]
+    - [0x70033D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_33D8"]
+    - [0x7003440, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3440"]
+    - [0x70034A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_34A8"]
+    - [0x7003508, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3508"]
+    - [0x7003568, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3568"]
+    - [0x70035D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_35D8"]
+    - [0x7003640, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3640"]
+    - [0x70036A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_36A0"]
+    - [0x7003710, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3710"]
+    - [0x7003780, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3780"]
+    - [0x70037F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_37F0"]
+    - [0x7003858, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3858"]
+    - [0x70038C8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_38C8"]
+    - [0x7003930, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3930"]
+    - [0x70039A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_39A8"]
+    - [0x7003A10, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3A10"]
+    - [0x7003A80, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3A80"]
+    - [0x7003AE8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3AE8"]
+    - [0x7003B48, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3B48"]
+    - [0x7003BC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3BC8"]
+    - [0x7003C30, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3C30"]
+    - [0x7003C98, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3C98"]
+    - [0x7003D00, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3D00"]
+    - [0x7003D68, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3D68"]
+    - [0x7003DC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3DC8"]
+    - [0x7003E30, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3E30"]
+    - [0x7003E90, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_3E90"]
+    - [0x7004018, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4018"]
+    - [0x70040D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_40D0"]
+    - [0x7004130, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4130"]
+    - [0x70041E8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_41E8"]
+    - [0x7004260, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4260"]
+    - [0x7004350, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4350"]
+    - [0x7004438, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4438"]
+    - [0x70044F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_44F0"]
+    - [0x70045D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_45D8"]
+    - [0x70046C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_46C0"]
+    - [0x70047A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_47A8"]
+    - [0x7004878, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4878"]
+    - [0x7004948, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4948"]
+    - [0x70049B0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_49B0"]
+    - [0x7004A10, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4A10"]
+    - [0x7004AA8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4AA8"]
+    - [0x7004B08, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4B08"]
+    - [0x7004B78, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4B78"]
+    - [0x7004BD8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4BD8"]
+    - [0x7004C40, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4C40"]
+    - [0x7004CB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4CB0"]
+    - [0x7004D20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4D20"]
+    - [0x7004D90, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4D90"]
+    - [0x7004DF8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4DF8"]
+    - [0x7004E60, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4E60"]
+    - [0x7004EC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4EC8"]
+    - [0x7004F40, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4F40"]
+    - [0x7004FB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_4FB0"]
+    - [0x7005020, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5020"]
+    - [0x7005090, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5090"]
+    - [0x7005100, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5100"]
+    - [0x7005170, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5170"]
+    - [0x70051D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_51D0"]
+    - [0x7005238, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5238"]
+    - [0x70052E0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_52E0"]
+    - [0x7005360, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5360"]
+    - [0x70053D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_53D0"]
+    - [0x7005450, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5450"]
+    - [0x70054C8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_54C8"]
+    - [0x7005580, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5580"]
+    - [0x70055F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_55F0"]
+    - [0x70056A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_56A0"]
+    - [0x7005728, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5728"]
+    - [0x70057D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_57D0"]
+    - [0x7005878, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5878"]
+    - [0x7005948, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5948"]
+    - [0x70059F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_59F0"]
+    - [0x7005A60, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5A60"]
+    - [0x7005B00, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5B00"]
+    - [0x7005B88, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5B88"]
+    - [0x7005C20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5C20"]
+    - [0x7005C90, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5C90"]
+    - [0x7005D30, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5D30"]
+    - [0x7005DB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5DB0"]
+    - [0x7005E38, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5E38"]
+    - [0x7005EB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5EB0"]
+    - [0x7005F28, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5F28"]
+    - [0x7005FB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_5FB0"]
+    - [0x7006050, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6050"]
+    - [0x70060C8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_60C8"]
+    - [0x7006130, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6130"]
+    - [0x70061D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_61D8"]
+    - [0x7006290, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6290"]
+    - [0x7006310, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6310"]
+    - [0x70063C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_63C0"]
+    - [0x7006490, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6490"]
+    - [0x7006530, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6530"]
+    - [0x70065F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_65F0"]
+    - [0x70066C8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_66C8"]
+    - [0x7006780, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6780"]
+    - [0x7006820, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6820"]
+    - [0x70068E0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_68E0"]
+    - [0x7006958, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6958"]
+    - [0x70069F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_69F8"]
+    - [0x7006A78, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6A78"]
+    - [0x7006B28, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6B28"]
+    - [0x7006BC0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6BC0"]
+    - [0x7006C70, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6C70"]
+    - [0x7006CF0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6CF0"]
+    - [0x7006DA0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6DA0"]
+    - [0x7006E38, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6E38"]
+    - [0x7006EE8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6EE8"]
+    - [0x7006F70, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_6F70"]
+    - [0x70070F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_70F8"]
+    - [0x70071C8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_71C8"]
+    - [0x70071D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_71D8"]
+    - [0x70072B8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_72B8"]
+    - [0x70073A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_73A8"]
+    - [0x70074A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_74A8"]
+    - [0x7007598, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7598"]
+    - [0x70075C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_75C0"]
+    - [0x70076C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_76C0"]
+    - [0x7007728, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7728"]
+    - [0x70077F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_77F8"]
+    - [0x7007890, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7890"]
+    - [0x70079F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_79F8"]
+    - [0x7007BC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7BC8"]
+    - [0x7007CC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7CC8"]
+    - [0x7007E18, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7E18"]
+    - [0x7007F80, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_7F80"]
+    - [0x70080B8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_80B8"]
+    - [0x70081A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_81A0"]
+    - [0x7008330, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8330"]
+    - [0x7008398, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8398"]
+    - [0x7008418, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8418"]
+    - [0x7008490, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8490"]
+    - [0x7008508, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8508"]
+    - [0x70085A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_85A0"]
+    - [0x7008610, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8610"]
+    - [0x7008690, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8690"]
+    - [0x7008728, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8728"]
+    - [0x7008798, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8798"]
+    - [0x7008808, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8808"]
+    - [0x7008888, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8888"]
+    - [0x7008920, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8920"]
+    - [0x7008990, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8990"]
+    - [0x7008A40, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8A40"]
+    - [0x7008AC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8AC8"]
+    - [0x7008B60, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8B60"]
+    - [0x7008C08, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8C08"]
+    - [0x7008C98, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8C98"]
+    - [0x7008D20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8D20"]
+    - [0x7008D98, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8D98"]
+    - [0x7008E20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8E20"]
+    - [0x7008EC8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8EC8"]
+    - [0x7008F50, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8F50"]
+    - [0x7008FF8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_8FF8"]
+    - [0x7009068, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9068"]
+    - [0x70090D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_90D8"]
+    - [0x7009138, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9138"]
+    - [0x70091A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_91A8"]
+    - [0x7009210, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9210"]
+    - [0x7009280, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9280"]
+    - [0x70092F8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_92F8"]
+    - [0x7009368, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9368"]
+    - [0x70093F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_93F0"]
+    - [0x7009480, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9480"]
+    - [0x7009510, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9510"]
+    - [0x7009598, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9598"]
+    - [0x7009630, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9630"]
+    - [0x70096A8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_96A8"]
+    - [0x7009740, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9740"]
+    - [0x70097B8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_97B8"]
+    - [0x7009820, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9820"]
+    - [0x70098E0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_98E0"]
+    - [0x7009958, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9958"]
+    - [0x70099D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_99D8"]
+    - [0x7009A68, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9A68"]
+    - [0x7009B10, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9B10"]
+    - [0x7009BD8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9BD8"]
+    - [0x7009C50, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9C50"]
+    - [0x7009CC0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9CC0"]
+    - [0x7009D48, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9D48"]
+    - [0x7009DC0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9DC0"]
+    - [0x7009E38, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9E38"]
+    - [0x7009EB0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9EB0"]
+    - [0x7009F20, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9F20"]
+    - [0x7009F88, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9F88"]
+    - [0x7009FE8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_9FE8"]
+    - [0x700A050, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A050"]
+    - [0x700A0C0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A0C0"]
+    - [0x700A138, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A138"]
+    - [0x700A1A0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A1A0"]
+    - [0x700A228, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A228"]
+    - [0x700A2D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A2D0"]
+    - [0x700A350, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A350"]
+    - [0x700A3D8, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A3D8"]
+    - [0x700A458, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A458"]
+    - [0x700A4D0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A4D0"]
+    - [0x700A548, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A548"]
+    - [0x700A5F0, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A5F0"]
+    - [0x700A670, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A670"]
+    - [0x700A680, "models/tracks/kalimari_desert/kalimari_desert_displaylists/d_course_kalimari_desert_packed_dl_A680"]
+  # Segment 4
+    - [0x4000000, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000000"]
+    - [0x4000080, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000080"]
+    - [0x4000100, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000100"]
+    - [0x4000180, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000180"]
+    - [0x4000200, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000200"]
+    - [0x4000280, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000280"]
+    - [0x4000300, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000300"]
+    - [0x4000500, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000500"]
+    - [0x4000580, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000580"]
+    - [0x4000700, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000700"]
+    - [0x4000800, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000800"]
+    - [0x40009e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040009E0"]
+    - [0x4000b00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000B00"]
+    - [0x4000ce0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000CE0"]
+    - [0x4000d40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000D40"]
+    - [0x4000f40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04000F40"]
+    - [0x4001120, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001120"]
+    - [0x4001180, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001180"]
+    - [0x4001360, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001360"]
+    - [0x4001480, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001480"]
+    - [0x4001660, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001660"]
+    - [0x40016c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040016C0"]
+    - [0x4001880, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001880"]
+    - [0x40018c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040018C0"]
+    - [0x4001920, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001920"]
+    - [0x40019b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040019B0"]
+    - [0x4001a10, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001A10"]
+    - [0x4001b00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001B00"]
+    - [0x4001b90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001B90"]
+    - [0x4001c00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001C00"]
+    - [0x4001c60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001C60"]
+    - [0x4001cf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001CF0"]
+    - [0x4001d50, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001D50"]
+    - [0x4001db0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001DB0"]
+    - [0x4001e10, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001E10"]
+    - [0x4001eb0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001EB0"]
+    - [0x4001ee0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001EE0"]
+    - [0x4001fc0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04001FC0"]
+    - [0x40020c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040020C0"]
+    - [0x40021e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040021E0"]
+    - [0x4002340, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002340"]
+    - [0x40023f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040023F0"]
+    - [0x4002470, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002470"]
+    - [0x4002500, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002500"]
+    - [0x4002630, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002630"]
+    - [0x4002790, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002790"]
+    - [0x4002890, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002890"]
+    - [0x4002990, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002990"]
+    - [0x4002a70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002A70"]
+    - [0x4002b70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002B70"]
+    - [0x4002c30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002C30"]
+    - [0x4002cf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002CF0"]
+    - [0x4002eb0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04002EB0"]
+    - [0x4003090, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003090"]
+    - [0x4003290, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003290"]
+    - [0x4003460, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003460"]
+    - [0x4003660, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003660"]
+    - [0x4003830, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003830"]
+    - [0x4003a30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003A30"]
+    - [0x4003ab0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003AB0"]
+    - [0x4003c70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003C70"]
+    - [0x4003cb0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003CB0"]
+    - [0x4003cf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003CF0"]
+    - [0x4003d30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003D30"]
+    - [0x4003d70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003D70"]
+    - [0x4003db0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003DB0"]
+    - [0x4003df0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003DF0"]
+    - [0x4003e30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003E30"]
+    - [0x4003e70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003E70"]
+    - [0x4003eb0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003EB0"]
+    - [0x4003ef0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003EF0"]
+    - [0x4003f30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003F30"]
+    - [0x4003f70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003F70"]
+    - [0x4003ff0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04003FF0"]
+    - [0x4004170, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004170"]
+    - [0x40041f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040041F0"]
+    - [0x4004270, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004270"]
+    - [0x40042b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040042B0"]
+    - [0x4004330, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004330"]
+    - [0x4004370, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004370"]
+    - [0x40043f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040043F0"]
+    - [0x40044b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040044B0"]
+    - [0x4004530, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004530"]
+    - [0x40046b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040046B0"]
+    - [0x4004770, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004770"]
+    - [0x40048b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040048B0"]
+    - [0x40049b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040049B0"]
+    - [0x4004a70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004A70"]
+    - [0x4004be0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004BE0"]
+    - [0x4004ce0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004CE0"]
+    - [0x4004e20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004E20"]
+    - [0x4004ea0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04004EA0"]
+    - [0x4005060, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005060"]
+    - [0x4005120, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005120"]
+    - [0x40051e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040051E0"]
+    - [0x40052d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040052D0"]
+    - [0x4005490, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005490"]
+    - [0x4005550, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005550"]
+    - [0x40055b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040055B0"]
+    - [0x4005610, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005610"]
+    - [0x4005690, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005690"]
+    - [0x4005760, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005760"]
+    - [0x40057e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040057E0"]
+    - [0x40058c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040058C0"]
+    - [0x4005970, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005970"]
+    - [0x4005a00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005A00"]
+    - [0x4005a90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005A90"]
+    - [0x4005b50, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005B50"]
+    - [0x4005cf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005CF0"]
+    - [0x4005d70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005D70"]
+    - [0x4005e20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005E20"]
+    - [0x4005ea0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005EA0"]
+    - [0x4005f80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04005F80"]
+    - [0x4006010, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006010"]
+    - [0x40060d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040060D0"]
+    - [0x40061b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040061B0"]
+    - [0x4006240, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006240"]
+    - [0x40062d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040062D0"]
+    - [0x40063b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040063B0"]
+    - [0x4006430, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006430"]
+    - [0x40064d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040064D0"]
+    - [0x4006520, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006520"]
+    - [0x4006570, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006570"]
+    - [0x4006680, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006680"]
+    - [0x4006740, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006740"]
+    - [0x40067a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040067A0"]
+    - [0x4006880, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006880"]
+    - [0x4006990, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006990"]
+    - [0x4006a70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006A70"]
+    - [0x4006b30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006B30"]
+    - [0x4006c40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006C40"]
+    - [0x4006d00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006D00"]
+    - [0x4006e30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006E30"]
+    - [0x4006ef0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006EF0"]
+    - [0x4006fd0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04006FD0"]
+    - [0x4007070, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007070"]
+    - [0x40070c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040070C0"]
+    - [0x4007260, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007260"]
+    - [0x40072d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040072D0"]
+    - [0x4007390, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007390"]
+    - [0x4007440, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007440"]
+    - [0x40074f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040074F0"]
+    - [0x4007550, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007550"]
+    - [0x40075e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040075E0"]
+    - [0x4007640, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007640"]
+    - [0x4007680, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007680"]
+    - [0x4007700, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007700"]
+    - [0x4007740, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007740"]
+    - [0x4007780, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007780"]
+    - [0x4007800, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007800"]
+    - [0x40078a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040078A0"]
+    - [0x4007960, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007960"]
+    - [0x4007a60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007A60"]
+    - [0x4007b60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007B60"]
+    - [0x4007c60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007C60"]
+    - [0x4007ca0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007CA0"]
+    - [0x4007d20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007D20"]
+    - [0x4007de0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007DE0"]
+    - [0x4007ee0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007EE0"]
+    - [0x4007fa0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04007FA0"]
+    - [0x40080a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040080A0"]
+    - [0x4008160, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008160"]
+    - [0x4008270, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008270"]
+    - [0x40082f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040082F0"]
+    - [0x40083b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040083B0"]
+    - [0x4008470, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008470"]
+    - [0x4008510, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008510"]
+    - [0x4008550, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008550"]
+    - [0x4008590, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008590"]
+    - [0x40085d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040085D0"]
+    - [0x4008630, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008630"]
+    - [0x4008710, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008710"]
+    - [0x4008750, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008750"]
+    - [0x40087f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040087F0"]
+    - [0x4008910, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008910"]
+    - [0x40089e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040089E0"]
+    - [0x4008ab0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008AB0"]
+    - [0x4008b30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008B30"]
+    - [0x4008bf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008BF0"]
+    - [0x4008c80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008C80"]
+    - [0x4008da0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008DA0"]
+    - [0x4008e70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008E70"]
+    - [0x4008f50, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04008F50"]
+    - [0x4009010, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009010"]
+    - [0x4009100, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009100"]
+    - [0x40091c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040091C0"]
+    - [0x4009200, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009200"]
+    - [0x40092a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040092A0"]
+    - [0x4009420, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009420"]
+    - [0x40094f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040094F0"]
+    - [0x40096c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040096C0"]
+    - [0x4009820, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009820"]
+    - [0x4009a20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009A20"]
+    - [0x4009bc0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009BC0"]
+    - [0x4009c80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009C80"]
+    - [0x4009e80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009E80"]
+    - [0x4009f40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04009F40"]
+    - [0x400a140, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A140"]
+    - [0x400a330, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A330"]
+    - [0x400a450, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A450"]
+    - [0x400a640, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A640"]
+    - [0x400a6b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A6B0"]
+    - [0x400a890, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400A890"]
+    - [0x400aa70, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400AA70"]
+    - [0x400aaf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400AAF0"]
+    - [0x400acf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400ACF0"]
+    - [0x400ade0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400ADE0"]
+    - [0x400aee0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400AEE0"]
+    - [0x400b0d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B0D0"]
+    - [0x400b190, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B190"]
+    - [0x400b370, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B370"]
+    - [0x400b550, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B550"]
+    - [0x400b5b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B5B0"]
+    - [0x400b6c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B6C0"]
+    - [0x400b8b0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B8B0"]
+    - [0x400b940, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400B940"]
+    - [0x400bae0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400BAE0"]
+    - [0x400bce0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400BCE0"]
+    - [0x400be20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400BE20"]
+    - [0x400bf60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400BF60"]
+    - [0x400c150, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C150"]
+    - [0x400c340, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C340"]
+    - [0x400c400, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C400"]
+    - [0x400c520, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C520"]
+    - [0x400c5a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C5A0"]
+    - [0x400c780, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C780"]
+    - [0x400c860, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400C860"]
+    - [0x400ca40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400CA40"]
+    - [0x400cbe0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400CBE0"]
+    - [0x400cda0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400CDA0"]
+    - [0x400cf90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400CF90"]
+    - [0x400d100, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D100"]
+    - [0x400d2e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D2E0"]
+    - [0x400d4d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D4D0"]
+    - [0x400d590, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D590"]
+    - [0x400d790, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D790"]
+    - [0x400d840, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400D840"]
+    - [0x400da40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400DA40"]
+    - [0x400dc30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400DC30"]
+    - [0x400de10, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400DE10"]
+    - [0x400e000, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E000"]
+    - [0x400e060, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E060"]
+    - [0x400e260, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E260"]
+    - [0x400e430, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E430"]
+    - [0x400e610, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E610"]
+    - [0x400e690, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E690"]
+    - [0x400e880, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400E880"]
+    - [0x400ea80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400EA80"]
+    - [0x400ebe0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400EBE0"]
+    - [0x400edd0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400EDD0"]
+    - [0x400ee60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400EE60"]
+    - [0x400f000, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F000"]
+    - [0x400f200, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F200"]
+    - [0x400f330, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F330"]
+    - [0x400f510, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F510"]
+    - [0x400f5a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F5A0"]
+    - [0x400f780, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F780"]
+    - [0x400f8a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400F8A0"]
+    - [0x400fa30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400FA30"]
+    - [0x400fc20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400FC20"]
+    - [0x400fd90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400FD90"]
+    - [0x400ff80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400FF80"]
+    - [0x400ffe0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x0400FFE0"]
+    - [0x40101e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040101E0"]
+    - [0x4010310, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010310"]
+    - [0x4010500, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010500"]
+    - [0x4010700, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010700"]
+    - [0x4010780, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010780"]
+    - [0x40108e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040108E0"]
+    - [0x40109e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040109E0"]
+    - [0x4010b20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010B20"]
+    - [0x4010c60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010C60"]
+    - [0x4010de0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010DE0"]
+    - [0x4010f60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04010F60"]
+    - [0x40110a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040110A0"]
+    - [0x40111e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040111E0"]
+    - [0x40112e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040112E0"]
+    - [0x40114e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040114E0"]
+    - [0x4011560, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04011560"]
+    - [0x40115e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040115E0"]
+    - [0x40116e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040116E0"]
+    - [0x4011860, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04011860"]
+    - [0x40119e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040119E0"]
+    - [0x4011be0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04011BE0"]
+    - [0x4011de0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04011DE0"]
+    - [0x4011fe0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04011FE0"]
+    - [0x40121e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040121E0"]
+    - [0x40123e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040123E0"]
+    - [0x4012440, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012440"]
+    - [0x4012540, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012540"]
+    - [0x4012740, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012740"]
+    - [0x40128c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040128C0"]
+    - [0x4012ac0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012AC0"]
+    - [0x4012b80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012B80"]
+    - [0x4012d00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012D00"]
+    - [0x4012f00, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04012F00"]
+    - [0x4013100, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013100"]
+    - [0x4013280, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013280"]
+    - [0x4013480, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013480"]
+    - [0x4013520, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013520"]
+    - [0x40135e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040135E0"]
+    - [0x4013760, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013760"]
+    - [0x40138a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040138A0"]
+    - [0x4013aa0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013AA0"]
+    - [0x4013b20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013B20"]
+    - [0x4013b80, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013B80"]
+    - [0x4013cc0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013CC0"]
+    - [0x4013dc0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013DC0"]
+    - [0x4013ec0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04013EC0"]
+    - [0x40140c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040140C0"]
+    - [0x4014180, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014180"]
+    - [0x40142c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040142C0"]
+    - [0x4014300, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014300"]
+    - [0x4014340, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014340"]
+    - [0x4014400, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014400"]
+    - [0x40144c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040144C0"]
+    - [0x4014600, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014600"]
+    - [0x4014800, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014800"]
+    - [0x40148c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040148C0"]
+    - [0x4014ac0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014AC0"]
+    - [0x4014b40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014B40"]
+    - [0x4014cc0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014CC0"]
+    - [0x4014ec0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04014EC0"]
+    - [0x40150c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040150C0"]
+    - [0x4015100, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015100"]
+    - [0x40152c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040152C0"]
+    - [0x4015440, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015440"]
+    - [0x4015540, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015540"]
+    - [0x40156c0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040156C0"]
+    - [0x4015820, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015820"]
+    - [0x4015a20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015A20"]
+    - [0x4015a60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015A60"]
+    - [0x4015b20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015B20"]
+    - [0x4015be0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015BE0"]
+    - [0x4015c20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015C20"]
+    - [0x4015ce0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015CE0"]
+    - [0x4015d60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015D60"]
+    - [0x4015e20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015E20"]
+    - [0x4015f20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015F20"]
+    - [0x4015fe0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04015FE0"]
+    - [0x4016160, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016160"]
+    - [0x40162d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040162D0"]
+    - [0x4016490, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016490"]
+    - [0x4016610, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016610"]
+    - [0x4016810, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016810"]
+    - [0x4016910, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016910"]
+    - [0x4016b10, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016B10"]
+    - [0x4016c10, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016C10"]
+    - [0x4016c90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016C90"]
+    - [0x4016e90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016E90"]
+    - [0x4016f90, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04016F90"]
+    - [0x4017090, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017090"]
+    - [0x40171d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040171D0"]
+    - [0x4017360, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017360"]
+    - [0x4017560, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017560"]
+    - [0x40175a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040175A0"]
+    - [0x4017720, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017720"]
+    - [0x40177f0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040177F0"]
+    - [0x40179e0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040179E0"]
+    - [0x4017b60, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017B60"]
+    - [0x4017ce0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017CE0"]
+    - [0x4017e30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017E30"]
+    - [0x4017f20, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017F20"]
+    - [0x4017fb0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04017FB0"]
+    - [0x4018010, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018010"]
+    - [0x40180d0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040180D0"]
+    - [0x40181a0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x040181A0"]
+    - [0x4018280, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018280"]
+    - [0x4018310, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018310"]
+    - [0x4018500, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018500"]
+    - [0x4018700, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018700"]
+    - [0x4018790, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018790"]
+    - [0x4018950, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018950"]
+    - [0x4018b40, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018B40"]
+    - [0x4018cf0, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018CF0"]
+    - [0x4018e30, "models/tracks/kalimari_desert/kalimari_desert_vertices/d_course_kalimari_desert_vertex_0x04018E30"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_kalimari_desert_packed_dl_0:
+  symbol: d_course_kalimari_desert_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_kalimari_desert_packed_dl_68:
+  symbol: d_course_kalimari_desert_packed_dl_68
+  type: MK64:PACKED_GFX
+  offset: 0x16
+d_course_kalimari_desert_packed_dl_D0:
+  symbol: d_course_kalimari_desert_packed_dl_D0
+  type: MK64:PACKED_GFX
+  offset: 0x2C
+d_course_kalimari_desert_packed_dl_138:
+  symbol: d_course_kalimari_desert_packed_dl_138
+  type: MK64:PACKED_GFX
+  offset: 0x42
+d_course_kalimari_desert_packed_dl_1A0:
+  symbol: d_course_kalimari_desert_packed_dl_1A0
+  type: MK64:PACKED_GFX
+  offset: 0x58
+d_course_kalimari_desert_packed_dl_208:
+  symbol: d_course_kalimari_desert_packed_dl_208
+  type: MK64:PACKED_GFX
+  offset: 0x6E
+d_course_kalimari_desert_packed_dl_270:
+  symbol: d_course_kalimari_desert_packed_dl_270
+  type: MK64:PACKED_GFX
+  offset: 0x84
+d_course_kalimari_desert_packed_dl_2A8:
+  symbol: d_course_kalimari_desert_packed_dl_2A8
+  type: MK64:PACKED_GFX
+  offset: 0x97
+d_course_kalimari_desert_packed_dl_358:
+  symbol: d_course_kalimari_desert_packed_dl_358
+  type: MK64:PACKED_GFX
+  offset: 0xD8
+d_course_kalimari_desert_packed_dl_3E0:
+  symbol: d_course_kalimari_desert_packed_dl_3E0
+  type: MK64:PACKED_GFX
+  offset: 0x102
+d_course_kalimari_desert_packed_dl_458:
+  symbol: d_course_kalimari_desert_packed_dl_458
+  type: MK64:PACKED_GFX
+  offset: 0x122
+d_course_kalimari_desert_packed_dl_538:
+  symbol: d_course_kalimari_desert_packed_dl_538
+  type: MK64:PACKED_GFX
+  offset: 0x181
+d_course_kalimari_desert_packed_dl_5F8:
+  symbol: d_course_kalimari_desert_packed_dl_5F8
+  type: MK64:PACKED_GFX
+  offset: 0x1CC
+d_course_kalimari_desert_packed_dl_6A0:
+  symbol: d_course_kalimari_desert_packed_dl_6A0
+  type: MK64:PACKED_GFX
+  offset: 0x20A
+d_course_kalimari_desert_packed_dl_760:
+  symbol: d_course_kalimari_desert_packed_dl_760
+  type: MK64:PACKED_GFX
+  offset: 0x255
+d_course_kalimari_desert_packed_dl_840:
+  symbol: d_course_kalimari_desert_packed_dl_840
+  type: MK64:PACKED_GFX
+  offset: 0x2B4
+d_course_kalimari_desert_packed_dl_900:
+  symbol: d_course_kalimari_desert_packed_dl_900
+  type: MK64:PACKED_GFX
+  offset: 0x2FF
+d_course_kalimari_desert_packed_dl_998:
+  symbol: d_course_kalimari_desert_packed_dl_998
+  type: MK64:PACKED_GFX
+  offset: 0x333
+d_course_kalimari_desert_packed_dl_9F0:
+  symbol: d_course_kalimari_desert_packed_dl_9F0
+  type: MK64:PACKED_GFX
+  offset: 0x352
+d_course_kalimari_desert_packed_dl_A08:
+  symbol: d_course_kalimari_desert_packed_dl_A08
+  type: MK64:PACKED_GFX
+  offset: 0x359
+d_course_kalimari_desert_packed_dl_A18:
+  symbol: d_course_kalimari_desert_packed_dl_A18
+  type: MK64:PACKED_GFX
+  offset: 0x35D
+d_course_kalimari_desert_packed_dl_A90:
+  symbol: d_course_kalimari_desert_packed_dl_A90
+  type: MK64:PACKED_GFX
+  offset: 0x377
+d_course_kalimari_desert_packed_dl_AF8:
+  symbol: d_course_kalimari_desert_packed_dl_AF8
+  type: MK64:PACKED_GFX
+  offset: 0x38B
+d_course_kalimari_desert_packed_dl_B58:
+  symbol: d_course_kalimari_desert_packed_dl_B58
+  type: MK64:PACKED_GFX
+  offset: 0x39C
+d_course_kalimari_desert_packed_dl_BC8:
+  symbol: d_course_kalimari_desert_packed_dl_BC8
+  type: MK64:PACKED_GFX
+  offset: 0x3B5
+d_course_kalimari_desert_packed_dl_C30:
+  symbol: d_course_kalimari_desert_packed_dl_C30
+  type: MK64:PACKED_GFX
+  offset: 0x3C9
+d_course_kalimari_desert_packed_dl_C98:
+  symbol: d_course_kalimari_desert_packed_dl_C98
+  type: MK64:PACKED_GFX
+  offset: 0x3DD
+d_course_kalimari_desert_packed_dl_CF8:
+  symbol: d_course_kalimari_desert_packed_dl_CF8
+  type: MK64:PACKED_GFX
+  offset: 0x3EE
+d_course_kalimari_desert_packed_dl_D60:
+  symbol: d_course_kalimari_desert_packed_dl_D60
+  type: MK64:PACKED_GFX
+  offset: 0x402
+d_course_kalimari_desert_packed_dl_DC0:
+  symbol: d_course_kalimari_desert_packed_dl_DC0
+  type: MK64:PACKED_GFX
+  offset: 0x413
+d_course_kalimari_desert_packed_dl_E20:
+  symbol: d_course_kalimari_desert_packed_dl_E20
+  type: MK64:PACKED_GFX
+  offset: 0x424
+d_course_kalimari_desert_packed_dl_E80:
+  symbol: d_course_kalimari_desert_packed_dl_E80
+  type: MK64:PACKED_GFX
+  offset: 0x435
+d_course_kalimari_desert_packed_dl_EE8:
+  symbol: d_course_kalimari_desert_packed_dl_EE8
+  type: MK64:PACKED_GFX
+  offset: 0x44B
+d_course_kalimari_desert_packed_dl_F48:
+  symbol: d_course_kalimari_desert_packed_dl_F48
+  type: MK64:PACKED_GFX
+  offset: 0x45A
+d_course_kalimari_desert_packed_dl_FB8:
+  symbol: d_course_kalimari_desert_packed_dl_FB8
+  type: MK64:PACKED_GFX
+  offset: 0x473
+d_course_kalimari_desert_packed_dl_1028:
+  symbol: d_course_kalimari_desert_packed_dl_1028
+  type: MK64:PACKED_GFX
+  offset: 0x48E
+d_course_kalimari_desert_packed_dl_1098:
+  symbol: d_course_kalimari_desert_packed_dl_1098
+  type: MK64:PACKED_GFX
+  offset: 0x4A9
+d_course_kalimari_desert_packed_dl_1110:
+  symbol: d_course_kalimari_desert_packed_dl_1110
+  type: MK64:PACKED_GFX
+  offset: 0x4C9
+d_course_kalimari_desert_packed_dl_1178:
+  symbol: d_course_kalimari_desert_packed_dl_1178
+  type: MK64:PACKED_GFX
+  offset: 0x4DF
+d_course_kalimari_desert_packed_dl_11E0:
+  symbol: d_course_kalimari_desert_packed_dl_11E0
+  type: MK64:PACKED_GFX
+  offset: 0x4F3
+d_course_kalimari_desert_packed_dl_1248:
+  symbol: d_course_kalimari_desert_packed_dl_1248
+  type: MK64:PACKED_GFX
+  offset: 0x507
+d_course_kalimari_desert_packed_dl_12F0:
+  symbol: d_course_kalimari_desert_packed_dl_12F0
+  type: MK64:PACKED_GFX
+  offset: 0x544
+d_course_kalimari_desert_packed_dl_13D0:
+  symbol: d_course_kalimari_desert_packed_dl_13D0
+  type: MK64:PACKED_GFX
+  offset: 0x580
+d_course_kalimari_desert_packed_dl_14A0:
+  symbol: d_course_kalimari_desert_packed_dl_14A0
+  type: MK64:PACKED_GFX
+  offset: 0x5B4
+d_course_kalimari_desert_packed_dl_1580:
+  symbol: d_course_kalimari_desert_packed_dl_1580
+  type: MK64:PACKED_GFX
+  offset: 0x5F2
+d_course_kalimari_desert_packed_dl_1650:
+  symbol: d_course_kalimari_desert_packed_dl_1650
+  type: MK64:PACKED_GFX
+  offset: 0x626
+d_course_kalimari_desert_packed_dl_1678:
+  symbol: d_course_kalimari_desert_packed_dl_1678
+  type: MK64:PACKED_GFX
+  offset: 0x633
+d_course_kalimari_desert_packed_dl_1710:
+  symbol: d_course_kalimari_desert_packed_dl_1710
+  type: MK64:PACKED_GFX
+  offset: 0x667
+d_course_kalimari_desert_packed_dl_1898:
+  symbol: d_course_kalimari_desert_packed_dl_1898
+  type: MK64:PACKED_GFX
+  offset: 0x72D
+d_course_kalimari_desert_packed_dl_19B8:
+  symbol: d_course_kalimari_desert_packed_dl_19B8
+  type: MK64:PACKED_GFX
+  offset: 0x7B4
+d_course_kalimari_desert_packed_dl_1A78:
+  symbol: d_course_kalimari_desert_packed_dl_1A78
+  type: MK64:PACKED_GFX
+  offset: 0x7FF
+d_course_kalimari_desert_packed_dl_1B18:
+  symbol: d_course_kalimari_desert_packed_dl_1B18
+  type: MK64:PACKED_GFX
+  offset: 0x838
+d_course_kalimari_desert_packed_dl_1B48:
+  symbol: d_course_kalimari_desert_packed_dl_1B48
+  type: MK64:PACKED_GFX
+  offset: 0x848
+d_course_kalimari_desert_packed_dl_1BE0:
+  symbol: d_course_kalimari_desert_packed_dl_1BE0
+  type: MK64:PACKED_GFX
+  offset: 0x865
+d_course_kalimari_desert_packed_dl_1C78:
+  symbol: d_course_kalimari_desert_packed_dl_1C78
+  type: MK64:PACKED_GFX
+  offset: 0x882
+d_course_kalimari_desert_packed_dl_1D10:
+  symbol: d_course_kalimari_desert_packed_dl_1D10
+  type: MK64:PACKED_GFX
+  offset: 0x89F
+d_course_kalimari_desert_packed_dl_1DA8:
+  symbol: d_course_kalimari_desert_packed_dl_1DA8
+  type: MK64:PACKED_GFX
+  offset: 0x8BC
+d_course_kalimari_desert_packed_dl_1E40:
+  symbol: d_course_kalimari_desert_packed_dl_1E40
+  type: MK64:PACKED_GFX
+  offset: 0x8D9
+d_course_kalimari_desert_packed_dl_1ED8:
+  symbol: d_course_kalimari_desert_packed_dl_1ED8
+  type: MK64:PACKED_GFX
+  offset: 0x8F6
+d_course_kalimari_desert_packed_dl_1F10:
+  symbol: d_course_kalimari_desert_packed_dl_1F10
+  type: MK64:PACKED_GFX
+  offset: 0x909
+d_course_kalimari_desert_packed_dl_1F78:
+  symbol: d_course_kalimari_desert_packed_dl_1F78
+  type: MK64:PACKED_GFX
+  offset: 0x91F
+d_course_kalimari_desert_packed_dl_2000:
+  symbol: d_course_kalimari_desert_packed_dl_2000
+  type: MK64:PACKED_GFX
+  offset: 0x949
+d_course_kalimari_desert_packed_dl_2068:
+  symbol: d_course_kalimari_desert_packed_dl_2068
+  type: MK64:PACKED_GFX
+  offset: 0x95F
+d_course_kalimari_desert_packed_dl_20D0:
+  symbol: d_course_kalimari_desert_packed_dl_20D0
+  type: MK64:PACKED_GFX
+  offset: 0x975
+d_course_kalimari_desert_packed_dl_2130:
+  symbol: d_course_kalimari_desert_packed_dl_2130
+  type: MK64:PACKED_GFX
+  offset: 0x986
+d_course_kalimari_desert_packed_dl_2198:
+  symbol: d_course_kalimari_desert_packed_dl_2198
+  type: MK64:PACKED_GFX
+  offset: 0x99C
+d_course_kalimari_desert_packed_dl_21F8:
+  symbol: d_course_kalimari_desert_packed_dl_21F8
+  type: MK64:PACKED_GFX
+  offset: 0x9AD
+d_course_kalimari_desert_packed_dl_2260:
+  symbol: d_course_kalimari_desert_packed_dl_2260
+  type: MK64:PACKED_GFX
+  offset: 0x9C3
+d_course_kalimari_desert_packed_dl_22D0:
+  symbol: d_course_kalimari_desert_packed_dl_22D0
+  type: MK64:PACKED_GFX
+  offset: 0x9DE
+d_course_kalimari_desert_packed_dl_2338:
+  symbol: d_course_kalimari_desert_packed_dl_2338
+  type: MK64:PACKED_GFX
+  offset: 0x9F4
+d_course_kalimari_desert_packed_dl_23C0:
+  symbol: d_course_kalimari_desert_packed_dl_23C0
+  type: MK64:PACKED_GFX
+  offset: 0xA1E
+d_course_kalimari_desert_packed_dl_2430:
+  symbol: d_course_kalimari_desert_packed_dl_2430
+  type: MK64:PACKED_GFX
+  offset: 0xA39
+d_course_kalimari_desert_packed_dl_24B0:
+  symbol: d_course_kalimari_desert_packed_dl_24B0
+  type: MK64:PACKED_GFX
+  offset: 0xA5E
+d_course_kalimari_desert_packed_dl_2528:
+  symbol: d_course_kalimari_desert_packed_dl_2528
+  type: MK64:PACKED_GFX
+  offset: 0xA7E
+d_course_kalimari_desert_packed_dl_2598:
+  symbol: d_course_kalimari_desert_packed_dl_2598
+  type: MK64:PACKED_GFX
+  offset: 0xA99
+d_course_kalimari_desert_packed_dl_2620:
+  symbol: d_course_kalimari_desert_packed_dl_2620
+  type: MK64:PACKED_GFX
+  offset: 0xAC1
+d_course_kalimari_desert_packed_dl_2698:
+  symbol: d_course_kalimari_desert_packed_dl_2698
+  type: MK64:PACKED_GFX
+  offset: 0xAE1
+d_course_kalimari_desert_packed_dl_2710:
+  symbol: d_course_kalimari_desert_packed_dl_2710
+  type: MK64:PACKED_GFX
+  offset: 0xB01
+d_course_kalimari_desert_packed_dl_2778:
+  symbol: d_course_kalimari_desert_packed_dl_2778
+  type: MK64:PACKED_GFX
+  offset: 0xB17
+d_course_kalimari_desert_packed_dl_2808:
+  symbol: d_course_kalimari_desert_packed_dl_2808
+  type: MK64:PACKED_GFX
+  offset: 0xB46
+d_course_kalimari_desert_packed_dl_2878:
+  symbol: d_course_kalimari_desert_packed_dl_2878
+  type: MK64:PACKED_GFX
+  offset: 0xB61
+d_course_kalimari_desert_packed_dl_28E8:
+  symbol: d_course_kalimari_desert_packed_dl_28E8
+  type: MK64:PACKED_GFX
+  offset: 0xB7C
+d_course_kalimari_desert_packed_dl_2960:
+  symbol: d_course_kalimari_desert_packed_dl_2960
+  type: MK64:PACKED_GFX
+  offset: 0xB9A
+d_course_kalimari_desert_packed_dl_29F0:
+  symbol: d_course_kalimari_desert_packed_dl_29F0
+  type: MK64:PACKED_GFX
+  offset: 0xBC9
+d_course_kalimari_desert_packed_dl_2AB8:
+  symbol: d_course_kalimari_desert_packed_dl_2AB8
+  type: MK64:PACKED_GFX
+  offset: 0xC12
+d_course_kalimari_desert_packed_dl_2B20:
+  symbol: d_course_kalimari_desert_packed_dl_2B20
+  type: MK64:PACKED_GFX
+  offset: 0xC28
+d_course_kalimari_desert_packed_dl_2B80:
+  symbol: d_course_kalimari_desert_packed_dl_2B80
+  type: MK64:PACKED_GFX
+  offset: 0xC39
+d_course_kalimari_desert_packed_dl_2BE0:
+  symbol: d_course_kalimari_desert_packed_dl_2BE0
+  type: MK64:PACKED_GFX
+  offset: 0xC4A
+d_course_kalimari_desert_packed_dl_2C48:
+  symbol: d_course_kalimari_desert_packed_dl_2C48
+  type: MK64:PACKED_GFX
+  offset: 0xC5E
+d_course_kalimari_desert_packed_dl_2CB8:
+  symbol: d_course_kalimari_desert_packed_dl_2CB8
+  type: MK64:PACKED_GFX
+  offset: 0xC77
+d_course_kalimari_desert_packed_dl_2D20:
+  symbol: d_course_kalimari_desert_packed_dl_2D20
+  type: MK64:PACKED_GFX
+  offset: 0xC8B
+d_course_kalimari_desert_packed_dl_2D90:
+  symbol: d_course_kalimari_desert_packed_dl_2D90
+  type: MK64:PACKED_GFX
+  offset: 0xCA4
+d_course_kalimari_desert_packed_dl_2DF8:
+  symbol: d_course_kalimari_desert_packed_dl_2DF8
+  type: MK64:PACKED_GFX
+  offset: 0xCBA
+d_course_kalimari_desert_packed_dl_2E60:
+  symbol: d_course_kalimari_desert_packed_dl_2E60
+  type: MK64:PACKED_GFX
+  offset: 0xCCE
+d_course_kalimari_desert_packed_dl_2EC8:
+  symbol: d_course_kalimari_desert_packed_dl_2EC8
+  type: MK64:PACKED_GFX
+  offset: 0xCE2
+d_course_kalimari_desert_packed_dl_2F30:
+  symbol: d_course_kalimari_desert_packed_dl_2F30
+  type: MK64:PACKED_GFX
+  offset: 0xCF8
+d_course_kalimari_desert_packed_dl_2FB0:
+  symbol: d_course_kalimari_desert_packed_dl_2FB0
+  type: MK64:PACKED_GFX
+  offset: 0xD1B
+d_course_kalimari_desert_packed_dl_3018:
+  symbol: d_course_kalimari_desert_packed_dl_3018
+  type: MK64:PACKED_GFX
+  offset: 0xD2F
+d_course_kalimari_desert_packed_dl_3080:
+  symbol: d_course_kalimari_desert_packed_dl_3080
+  type: MK64:PACKED_GFX
+  offset: 0xD45
+d_course_kalimari_desert_packed_dl_30E8:
+  symbol: d_course_kalimari_desert_packed_dl_30E8
+  type: MK64:PACKED_GFX
+  offset: 0xD59
+d_course_kalimari_desert_packed_dl_3158:
+  symbol: d_course_kalimari_desert_packed_dl_3158
+  type: MK64:PACKED_GFX
+  offset: 0xD72
+d_course_kalimari_desert_packed_dl_31C0:
+  symbol: d_course_kalimari_desert_packed_dl_31C0
+  type: MK64:PACKED_GFX
+  offset: 0xD86
+d_course_kalimari_desert_packed_dl_3228:
+  symbol: d_course_kalimari_desert_packed_dl_3228
+  type: MK64:PACKED_GFX
+  offset: 0xD9C
+d_course_kalimari_desert_packed_dl_3298:
+  symbol: d_course_kalimari_desert_packed_dl_3298
+  type: MK64:PACKED_GFX
+  offset: 0xDB7
+d_course_kalimari_desert_packed_dl_3300:
+  symbol: d_course_kalimari_desert_packed_dl_3300
+  type: MK64:PACKED_GFX
+  offset: 0xDCB
+d_course_kalimari_desert_packed_dl_3368:
+  symbol: d_course_kalimari_desert_packed_dl_3368
+  type: MK64:PACKED_GFX
+  offset: 0xDDF
+d_course_kalimari_desert_packed_dl_33D8:
+  symbol: d_course_kalimari_desert_packed_dl_33D8
+  type: MK64:PACKED_GFX
+  offset: 0xDF8
+d_course_kalimari_desert_packed_dl_3440:
+  symbol: d_course_kalimari_desert_packed_dl_3440
+  type: MK64:PACKED_GFX
+  offset: 0xE0C
+d_course_kalimari_desert_packed_dl_34A8:
+  symbol: d_course_kalimari_desert_packed_dl_34A8
+  type: MK64:PACKED_GFX
+  offset: 0xE22
+d_course_kalimari_desert_packed_dl_3508:
+  symbol: d_course_kalimari_desert_packed_dl_3508
+  type: MK64:PACKED_GFX
+  offset: 0xE33
+d_course_kalimari_desert_packed_dl_3568:
+  symbol: d_course_kalimari_desert_packed_dl_3568
+  type: MK64:PACKED_GFX
+  offset: 0xE44
+d_course_kalimari_desert_packed_dl_35D8:
+  symbol: d_course_kalimari_desert_packed_dl_35D8
+  type: MK64:PACKED_GFX
+  offset: 0xE5F
+d_course_kalimari_desert_packed_dl_3640:
+  symbol: d_course_kalimari_desert_packed_dl_3640
+  type: MK64:PACKED_GFX
+  offset: 0xE75
+d_course_kalimari_desert_packed_dl_36A0:
+  symbol: d_course_kalimari_desert_packed_dl_36A0
+  type: MK64:PACKED_GFX
+  offset: 0xE86
+d_course_kalimari_desert_packed_dl_3710:
+  symbol: d_course_kalimari_desert_packed_dl_3710
+  type: MK64:PACKED_GFX
+  offset: 0xE9F
+d_course_kalimari_desert_packed_dl_3780:
+  symbol: d_course_kalimari_desert_packed_dl_3780
+  type: MK64:PACKED_GFX
+  offset: 0xEBA
+d_course_kalimari_desert_packed_dl_37F0:
+  symbol: d_course_kalimari_desert_packed_dl_37F0
+  type: MK64:PACKED_GFX
+  offset: 0xED3
+d_course_kalimari_desert_packed_dl_3858:
+  symbol: d_course_kalimari_desert_packed_dl_3858
+  type: MK64:PACKED_GFX
+  offset: 0xEE9
+d_course_kalimari_desert_packed_dl_38C8:
+  symbol: d_course_kalimari_desert_packed_dl_38C8
+  type: MK64:PACKED_GFX
+  offset: 0xF04
+d_course_kalimari_desert_packed_dl_3930:
+  symbol: d_course_kalimari_desert_packed_dl_3930
+  type: MK64:PACKED_GFX
+  offset: 0xF1A
+d_course_kalimari_desert_packed_dl_39A8:
+  symbol: d_course_kalimari_desert_packed_dl_39A8
+  type: MK64:PACKED_GFX
+  offset: 0xF38
+d_course_kalimari_desert_packed_dl_3A10:
+  symbol: d_course_kalimari_desert_packed_dl_3A10
+  type: MK64:PACKED_GFX
+  offset: 0xF4E
+d_course_kalimari_desert_packed_dl_3A80:
+  symbol: d_course_kalimari_desert_packed_dl_3A80
+  type: MK64:PACKED_GFX
+  offset: 0xF67
+d_course_kalimari_desert_packed_dl_3AE8:
+  symbol: d_course_kalimari_desert_packed_dl_3AE8
+  type: MK64:PACKED_GFX
+  offset: 0xF7D
+d_course_kalimari_desert_packed_dl_3B48:
+  symbol: d_course_kalimari_desert_packed_dl_3B48
+  type: MK64:PACKED_GFX
+  offset: 0xF8E
+d_course_kalimari_desert_packed_dl_3BC8:
+  symbol: d_course_kalimari_desert_packed_dl_3BC8
+  type: MK64:PACKED_GFX
+  offset: 0xFB1
+d_course_kalimari_desert_packed_dl_3C30:
+  symbol: d_course_kalimari_desert_packed_dl_3C30
+  type: MK64:PACKED_GFX
+  offset: 0xFC5
+d_course_kalimari_desert_packed_dl_3C98:
+  symbol: d_course_kalimari_desert_packed_dl_3C98
+  type: MK64:PACKED_GFX
+  offset: 0xFDB
+d_course_kalimari_desert_packed_dl_3D00:
+  symbol: d_course_kalimari_desert_packed_dl_3D00
+  type: MK64:PACKED_GFX
+  offset: 0xFF1
+d_course_kalimari_desert_packed_dl_3D68:
+  symbol: d_course_kalimari_desert_packed_dl_3D68
+  type: MK64:PACKED_GFX
+  offset: 0x1007
+d_course_kalimari_desert_packed_dl_3DC8:
+  symbol: d_course_kalimari_desert_packed_dl_3DC8
+  type: MK64:PACKED_GFX
+  offset: 0x1018
+d_course_kalimari_desert_packed_dl_3E30:
+  symbol: d_course_kalimari_desert_packed_dl_3E30
+  type: MK64:PACKED_GFX
+  offset: 0x102C
+d_course_kalimari_desert_packed_dl_3E90:
+  symbol: d_course_kalimari_desert_packed_dl_3E90
+  type: MK64:PACKED_GFX
+  offset: 0x103D
+d_course_kalimari_desert_packed_dl_4018:
+  symbol: d_course_kalimari_desert_packed_dl_4018
+  type: MK64:PACKED_GFX
+  offset: 0x10CE
+d_course_kalimari_desert_packed_dl_40D0:
+  symbol: d_course_kalimari_desert_packed_dl_40D0
+  type: MK64:PACKED_GFX
+  offset: 0x10F3
+d_course_kalimari_desert_packed_dl_4130:
+  symbol: d_course_kalimari_desert_packed_dl_4130
+  type: MK64:PACKED_GFX
+  offset: 0x1104
+d_course_kalimari_desert_packed_dl_41E8:
+  symbol: d_course_kalimari_desert_packed_dl_41E8
+  type: MK64:PACKED_GFX
+  offset: 0x1129
+d_course_kalimari_desert_packed_dl_4260:
+  symbol: d_course_kalimari_desert_packed_dl_4260
+  type: MK64:PACKED_GFX
+  offset: 0x1149
+d_course_kalimari_desert_packed_dl_4350:
+  symbol: d_course_kalimari_desert_packed_dl_4350
+  type: MK64:PACKED_GFX
+  offset: 0x118D
+d_course_kalimari_desert_packed_dl_4438:
+  symbol: d_course_kalimari_desert_packed_dl_4438
+  type: MK64:PACKED_GFX
+  offset: 0x11D0
+d_course_kalimari_desert_packed_dl_44F0:
+  symbol: d_course_kalimari_desert_packed_dl_44F0
+  type: MK64:PACKED_GFX
+  offset: 0x11F5
+d_course_kalimari_desert_packed_dl_45D8:
+  symbol: d_course_kalimari_desert_packed_dl_45D8
+  type: MK64:PACKED_GFX
+  offset: 0x1238
+d_course_kalimari_desert_packed_dl_46C0:
+  symbol: d_course_kalimari_desert_packed_dl_46C0
+  type: MK64:PACKED_GFX
+  offset: 0x127B
+d_course_kalimari_desert_packed_dl_47A8:
+  symbol: d_course_kalimari_desert_packed_dl_47A8
+  type: MK64:PACKED_GFX
+  offset: 0x12BE
+d_course_kalimari_desert_packed_dl_4878:
+  symbol: d_course_kalimari_desert_packed_dl_4878
+  type: MK64:PACKED_GFX
+  offset: 0x12F2
+d_course_kalimari_desert_packed_dl_4948:
+  symbol: d_course_kalimari_desert_packed_dl_4948
+  type: MK64:PACKED_GFX
+  offset: 0x1326
+d_course_kalimari_desert_packed_dl_49B0:
+  symbol: d_course_kalimari_desert_packed_dl_49B0
+  type: MK64:PACKED_GFX
+  offset: 0x134B
+d_course_kalimari_desert_packed_dl_4A10:
+  symbol: d_course_kalimari_desert_packed_dl_4A10
+  type: MK64:PACKED_GFX
+  offset: 0x135C
+d_course_kalimari_desert_packed_dl_4AA8:
+  symbol: d_course_kalimari_desert_packed_dl_4AA8
+  type: MK64:PACKED_GFX
+  offset: 0x1379
+d_course_kalimari_desert_packed_dl_4B08:
+  symbol: d_course_kalimari_desert_packed_dl_4B08
+  type: MK64:PACKED_GFX
+  offset: 0x138A
+d_course_kalimari_desert_packed_dl_4B78:
+  symbol: d_course_kalimari_desert_packed_dl_4B78
+  type: MK64:PACKED_GFX
+  offset: 0x13A5
+d_course_kalimari_desert_packed_dl_4BD8:
+  symbol: d_course_kalimari_desert_packed_dl_4BD8
+  type: MK64:PACKED_GFX
+  offset: 0x13B6
+d_course_kalimari_desert_packed_dl_4C40:
+  symbol: d_course_kalimari_desert_packed_dl_4C40
+  type: MK64:PACKED_GFX
+  offset: 0x13CC
+d_course_kalimari_desert_packed_dl_4CB0:
+  symbol: d_course_kalimari_desert_packed_dl_4CB0
+  type: MK64:PACKED_GFX
+  offset: 0x13E7
+d_course_kalimari_desert_packed_dl_4D20:
+  symbol: d_course_kalimari_desert_packed_dl_4D20
+  type: MK64:PACKED_GFX
+  offset: 0x1400
+d_course_kalimari_desert_packed_dl_4D90:
+  symbol: d_course_kalimari_desert_packed_dl_4D90
+  type: MK64:PACKED_GFX
+  offset: 0x1419
+d_course_kalimari_desert_packed_dl_4DF8:
+  symbol: d_course_kalimari_desert_packed_dl_4DF8
+  type: MK64:PACKED_GFX
+  offset: 0x142F
+d_course_kalimari_desert_packed_dl_4E60:
+  symbol: d_course_kalimari_desert_packed_dl_4E60
+  type: MK64:PACKED_GFX
+  offset: 0x1445
+d_course_kalimari_desert_packed_dl_4EC8:
+  symbol: d_course_kalimari_desert_packed_dl_4EC8
+  type: MK64:PACKED_GFX
+  offset: 0x1459
+d_course_kalimari_desert_packed_dl_4F40:
+  symbol: d_course_kalimari_desert_packed_dl_4F40
+  type: MK64:PACKED_GFX
+  offset: 0x1479
+d_course_kalimari_desert_packed_dl_4FB0:
+  symbol: d_course_kalimari_desert_packed_dl_4FB0
+  type: MK64:PACKED_GFX
+  offset: 0x1492
+d_course_kalimari_desert_packed_dl_5020:
+  symbol: d_course_kalimari_desert_packed_dl_5020
+  type: MK64:PACKED_GFX
+  offset: 0x14AD
+d_course_kalimari_desert_packed_dl_5090:
+  symbol: d_course_kalimari_desert_packed_dl_5090
+  type: MK64:PACKED_GFX
+  offset: 0x14C8
+d_course_kalimari_desert_packed_dl_5100:
+  symbol: d_course_kalimari_desert_packed_dl_5100
+  type: MK64:PACKED_GFX
+  offset: 0x14E1
+d_course_kalimari_desert_packed_dl_5170:
+  symbol: d_course_kalimari_desert_packed_dl_5170
+  type: MK64:PACKED_GFX
+  offset: 0x14FC
+d_course_kalimari_desert_packed_dl_51D0:
+  symbol: d_course_kalimari_desert_packed_dl_51D0
+  type: MK64:PACKED_GFX
+  offset: 0x150D
+d_course_kalimari_desert_packed_dl_5238:
+  symbol: d_course_kalimari_desert_packed_dl_5238
+  type: MK64:PACKED_GFX
+  offset: 0x1523
+d_course_kalimari_desert_packed_dl_52E0:
+  symbol: d_course_kalimari_desert_packed_dl_52E0
+  type: MK64:PACKED_GFX
+  offset: 0x1560
+d_course_kalimari_desert_packed_dl_5360:
+  symbol: d_course_kalimari_desert_packed_dl_5360
+  type: MK64:PACKED_GFX
+  offset: 0x1583
+d_course_kalimari_desert_packed_dl_53D0:
+  symbol: d_course_kalimari_desert_packed_dl_53D0
+  type: MK64:PACKED_GFX
+  offset: 0x159C
+d_course_kalimari_desert_packed_dl_5450:
+  symbol: d_course_kalimari_desert_packed_dl_5450
+  type: MK64:PACKED_GFX
+  offset: 0x15C1
+d_course_kalimari_desert_packed_dl_54C8:
+  symbol: d_course_kalimari_desert_packed_dl_54C8
+  type: MK64:PACKED_GFX
+  offset: 0x15E1
+d_course_kalimari_desert_packed_dl_5580:
+  symbol: d_course_kalimari_desert_packed_dl_5580
+  type: MK64:PACKED_GFX
+  offset: 0x1627
+d_course_kalimari_desert_packed_dl_55F0:
+  symbol: d_course_kalimari_desert_packed_dl_55F0
+  type: MK64:PACKED_GFX
+  offset: 0x1640
+d_course_kalimari_desert_packed_dl_56A0:
+  symbol: d_course_kalimari_desert_packed_dl_56A0
+  type: MK64:PACKED_GFX
+  offset: 0x167F
+d_course_kalimari_desert_packed_dl_5728:
+  symbol: d_course_kalimari_desert_packed_dl_5728
+  type: MK64:PACKED_GFX
+  offset: 0x16A7
+d_course_kalimari_desert_packed_dl_57D0:
+  symbol: d_course_kalimari_desert_packed_dl_57D0
+  type: MK64:PACKED_GFX
+  offset: 0x16E1
+d_course_kalimari_desert_packed_dl_5878:
+  symbol: d_course_kalimari_desert_packed_dl_5878
+  type: MK64:PACKED_GFX
+  offset: 0x1719
+d_course_kalimari_desert_packed_dl_5948:
+  symbol: d_course_kalimari_desert_packed_dl_5948
+  type: MK64:PACKED_GFX
+  offset: 0x176A
+d_course_kalimari_desert_packed_dl_59F0:
+  symbol: d_course_kalimari_desert_packed_dl_59F0
+  type: MK64:PACKED_GFX
+  offset: 0x17A4
+d_course_kalimari_desert_packed_dl_5A60:
+  symbol: d_course_kalimari_desert_packed_dl_5A60
+  type: MK64:PACKED_GFX
+  offset: 0x17BF
+d_course_kalimari_desert_packed_dl_5B00:
+  symbol: d_course_kalimari_desert_packed_dl_5B00
+  type: MK64:PACKED_GFX
+  offset: 0x17F4
+d_course_kalimari_desert_packed_dl_5B88:
+  symbol: d_course_kalimari_desert_packed_dl_5B88
+  type: MK64:PACKED_GFX
+  offset: 0x181C
+d_course_kalimari_desert_packed_dl_5C20:
+  symbol: d_course_kalimari_desert_packed_dl_5C20
+  type: MK64:PACKED_GFX
+  offset: 0x184C
+d_course_kalimari_desert_packed_dl_5C90:
+  symbol: d_course_kalimari_desert_packed_dl_5C90
+  type: MK64:PACKED_GFX
+  offset: 0x1867
+d_course_kalimari_desert_packed_dl_5D30:
+  symbol: d_course_kalimari_desert_packed_dl_5D30
+  type: MK64:PACKED_GFX
+  offset: 0x189A
+d_course_kalimari_desert_packed_dl_5DB0:
+  symbol: d_course_kalimari_desert_packed_dl_5DB0
+  type: MK64:PACKED_GFX
+  offset: 0x18BD
+d_course_kalimari_desert_packed_dl_5E38:
+  symbol: d_course_kalimari_desert_packed_dl_5E38
+  type: MK64:PACKED_GFX
+  offset: 0x18E5
+d_course_kalimari_desert_packed_dl_5EB0:
+  symbol: d_course_kalimari_desert_packed_dl_5EB0
+  type: MK64:PACKED_GFX
+  offset: 0x1903
+d_course_kalimari_desert_packed_dl_5F28:
+  symbol: d_course_kalimari_desert_packed_dl_5F28
+  type: MK64:PACKED_GFX
+  offset: 0x1923
+d_course_kalimari_desert_packed_dl_5FB0:
+  symbol: d_course_kalimari_desert_packed_dl_5FB0
+  type: MK64:PACKED_GFX
+  offset: 0x194B
+d_course_kalimari_desert_packed_dl_6050:
+  symbol: d_course_kalimari_desert_packed_dl_6050
+  type: MK64:PACKED_GFX
+  offset: 0x1982
+d_course_kalimari_desert_packed_dl_60C8:
+  symbol: d_course_kalimari_desert_packed_dl_60C8
+  type: MK64:PACKED_GFX
+  offset: 0x19A0
+d_course_kalimari_desert_packed_dl_6130:
+  symbol: d_course_kalimari_desert_packed_dl_6130
+  type: MK64:PACKED_GFX
+  offset: 0x19B4
+d_course_kalimari_desert_packed_dl_61D8:
+  symbol: d_course_kalimari_desert_packed_dl_61D8
+  type: MK64:PACKED_GFX
+  offset: 0x19EC
+d_course_kalimari_desert_packed_dl_6290:
+  symbol: d_course_kalimari_desert_packed_dl_6290
+  type: MK64:PACKED_GFX
+  offset: 0x1A30
+d_course_kalimari_desert_packed_dl_6310:
+  symbol: d_course_kalimari_desert_packed_dl_6310
+  type: MK64:PACKED_GFX
+  offset: 0x1A55
+d_course_kalimari_desert_packed_dl_63C0:
+  symbol: d_course_kalimari_desert_packed_dl_63C0
+  type: MK64:PACKED_GFX
+  offset: 0x1A94
+d_course_kalimari_desert_packed_dl_6490:
+  symbol: d_course_kalimari_desert_packed_dl_6490
+  type: MK64:PACKED_GFX
+  offset: 0x1AE5
+d_course_kalimari_desert_packed_dl_6530:
+  symbol: d_course_kalimari_desert_packed_dl_6530
+  type: MK64:PACKED_GFX
+  offset: 0x1B1C
+d_course_kalimari_desert_packed_dl_65F0:
+  symbol: d_course_kalimari_desert_packed_dl_65F0
+  type: MK64:PACKED_GFX
+  offset: 0x1B65
+d_course_kalimari_desert_packed_dl_66C8:
+  symbol: d_course_kalimari_desert_packed_dl_66C8
+  type: MK64:PACKED_GFX
+  offset: 0x1BB9
+d_course_kalimari_desert_packed_dl_6780:
+  symbol: d_course_kalimari_desert_packed_dl_6780
+  type: MK64:PACKED_GFX
+  offset: 0x1BFD
+d_course_kalimari_desert_packed_dl_6820:
+  symbol: d_course_kalimari_desert_packed_dl_6820
+  type: MK64:PACKED_GFX
+  offset: 0x1C30
+d_course_kalimari_desert_packed_dl_68E0:
+  symbol: d_course_kalimari_desert_packed_dl_68E0
+  type: MK64:PACKED_GFX
+  offset: 0x1C77
+d_course_kalimari_desert_packed_dl_6958:
+  symbol: d_course_kalimari_desert_packed_dl_6958
+  type: MK64:PACKED_GFX
+  offset: 0x1C97
+d_course_kalimari_desert_packed_dl_69F8:
+  symbol: d_course_kalimari_desert_packed_dl_69F8
+  type: MK64:PACKED_GFX
+  offset: 0x1CCC
+d_course_kalimari_desert_packed_dl_6A78:
+  symbol: d_course_kalimari_desert_packed_dl_6A78
+  type: MK64:PACKED_GFX
+  offset: 0x1CEF
+d_course_kalimari_desert_packed_dl_6B28:
+  symbol: d_course_kalimari_desert_packed_dl_6B28
+  type: MK64:PACKED_GFX
+  offset: 0x1D2E
+d_course_kalimari_desert_packed_dl_6BC0:
+  symbol: d_course_kalimari_desert_packed_dl_6BC0
+  type: MK64:PACKED_GFX
+  offset: 0x1D5E
+d_course_kalimari_desert_packed_dl_6C70:
+  symbol: d_course_kalimari_desert_packed_dl_6C70
+  type: MK64:PACKED_GFX
+  offset: 0x1D9B
+d_course_kalimari_desert_packed_dl_6CF0:
+  symbol: d_course_kalimari_desert_packed_dl_6CF0
+  type: MK64:PACKED_GFX
+  offset: 0x1DBE
+d_course_kalimari_desert_packed_dl_6DA0:
+  symbol: d_course_kalimari_desert_packed_dl_6DA0
+  type: MK64:PACKED_GFX
+  offset: 0x1DFD
+d_course_kalimari_desert_packed_dl_6E38:
+  symbol: d_course_kalimari_desert_packed_dl_6E38
+  type: MK64:PACKED_GFX
+  offset: 0x1E2D
+d_course_kalimari_desert_packed_dl_6EE8:
+  symbol: d_course_kalimari_desert_packed_dl_6EE8
+  type: MK64:PACKED_GFX
+  offset: 0x1E6A
+d_course_kalimari_desert_packed_dl_6F70:
+  symbol: d_course_kalimari_desert_packed_dl_6F70
+  type: MK64:PACKED_GFX
+  offset: 0x1E92
+d_course_kalimari_desert_packed_dl_70F8:
+  symbol: d_course_kalimari_desert_packed_dl_70F8
+  type: MK64:PACKED_GFX
+  offset: 0x1F23
+d_course_kalimari_desert_packed_dl_71C8:
+  symbol: d_course_kalimari_desert_packed_dl_71C8
+  type: MK64:PACKED_GFX
+  offset: 0x1F99
+d_course_kalimari_desert_packed_dl_71D8:
+  symbol: d_course_kalimari_desert_packed_dl_71D8
+  type: MK64:PACKED_GFX
+  offset: 0x1F9D
+d_course_kalimari_desert_packed_dl_72B8:
+  symbol: d_course_kalimari_desert_packed_dl_72B8
+  type: MK64:PACKED_GFX
+  offset: 0x1FDB
+d_course_kalimari_desert_packed_dl_73A8:
+  symbol: d_course_kalimari_desert_packed_dl_73A8
+  type: MK64:PACKED_GFX
+  offset: 0x2023
+d_course_kalimari_desert_packed_dl_74A8:
+  symbol: d_course_kalimari_desert_packed_dl_74A8
+  type: MK64:PACKED_GFX
+  offset: 0x2075
+d_course_kalimari_desert_packed_dl_7598:
+  symbol: d_course_kalimari_desert_packed_dl_7598
+  type: MK64:PACKED_GFX
+  offset: 0x20BD
+d_course_kalimari_desert_packed_dl_75C0:
+  symbol: d_course_kalimari_desert_packed_dl_75C0
+  type: MK64:PACKED_GFX
+  offset: 0x20CA
+d_course_kalimari_desert_packed_dl_76C0:
+  symbol: d_course_kalimari_desert_packed_dl_76C0
+  type: MK64:PACKED_GFX
+  offset: 0x211C
+d_course_kalimari_desert_packed_dl_7728:
+  symbol: d_course_kalimari_desert_packed_dl_7728
+  type: MK64:PACKED_GFX
+  offset: 0x2132
+d_course_kalimari_desert_packed_dl_77F8:
+  symbol: d_course_kalimari_desert_packed_dl_77F8
+  type: MK64:PACKED_GFX
+  offset: 0x2166
+d_course_kalimari_desert_packed_dl_7890:
+  symbol: d_course_kalimari_desert_packed_dl_7890
+  type: MK64:PACKED_GFX
+  offset: 0x219A
+d_course_kalimari_desert_packed_dl_79F8:
+  symbol: d_course_kalimari_desert_packed_dl_79F8
+  type: MK64:PACKED_GFX
+  offset: 0x222B
+d_course_kalimari_desert_packed_dl_7BC8:
+  symbol: d_course_kalimari_desert_packed_dl_7BC8
+  type: MK64:PACKED_GFX
+  offset: 0x22DA
+d_course_kalimari_desert_packed_dl_7CC8:
+  symbol: d_course_kalimari_desert_packed_dl_7CC8
+  type: MK64:PACKED_GFX
+  offset: 0x232C
+d_course_kalimari_desert_packed_dl_7E18:
+  symbol: d_course_kalimari_desert_packed_dl_7E18
+  type: MK64:PACKED_GFX
+  offset: 0x23AE
+d_course_kalimari_desert_packed_dl_7F80:
+  symbol: d_course_kalimari_desert_packed_dl_7F80
+  type: MK64:PACKED_GFX
+  offset: 0x243F
+d_course_kalimari_desert_packed_dl_80B8:
+  symbol: d_course_kalimari_desert_packed_dl_80B8
+  type: MK64:PACKED_GFX
+  offset: 0x24B2
+d_course_kalimari_desert_packed_dl_81A0:
+  symbol: d_course_kalimari_desert_packed_dl_81A0
+  type: MK64:PACKED_GFX
+  offset: 0x24F5
+d_course_kalimari_desert_packed_dl_8330:
+  symbol: d_course_kalimari_desert_packed_dl_8330
+  type: MK64:PACKED_GFX
+  offset: 0x257C
+d_course_kalimari_desert_packed_dl_8398:
+  symbol: d_course_kalimari_desert_packed_dl_8398
+  type: MK64:PACKED_GFX
+  offset: 0x25A1
+d_course_kalimari_desert_packed_dl_8418:
+  symbol: d_course_kalimari_desert_packed_dl_8418
+  type: MK64:PACKED_GFX
+  offset: 0x25C6
+d_course_kalimari_desert_packed_dl_8490:
+  symbol: d_course_kalimari_desert_packed_dl_8490
+  type: MK64:PACKED_GFX
+  offset: 0x25E6
+d_course_kalimari_desert_packed_dl_8508:
+  symbol: d_course_kalimari_desert_packed_dl_8508
+  type: MK64:PACKED_GFX
+  offset: 0x2606
+d_course_kalimari_desert_packed_dl_85A0:
+  symbol: d_course_kalimari_desert_packed_dl_85A0
+  type: MK64:PACKED_GFX
+  offset: 0x263A
+d_course_kalimari_desert_packed_dl_8610:
+  symbol: d_course_kalimari_desert_packed_dl_8610
+  type: MK64:PACKED_GFX
+  offset: 0x2655
+d_course_kalimari_desert_packed_dl_8690:
+  symbol: d_course_kalimari_desert_packed_dl_8690
+  type: MK64:PACKED_GFX
+  offset: 0x267A
+d_course_kalimari_desert_packed_dl_8728:
+  symbol: d_course_kalimari_desert_packed_dl_8728
+  type: MK64:PACKED_GFX
+  offset: 0x2697
+d_course_kalimari_desert_packed_dl_8798:
+  symbol: d_course_kalimari_desert_packed_dl_8798
+  type: MK64:PACKED_GFX
+  offset: 0x26B2
+d_course_kalimari_desert_packed_dl_8808:
+  symbol: d_course_kalimari_desert_packed_dl_8808
+  type: MK64:PACKED_GFX
+  offset: 0x26CD
+d_course_kalimari_desert_packed_dl_8888:
+  symbol: d_course_kalimari_desert_packed_dl_8888
+  type: MK64:PACKED_GFX
+  offset: 0x26F2
+d_course_kalimari_desert_packed_dl_8920:
+  symbol: d_course_kalimari_desert_packed_dl_8920
+  type: MK64:PACKED_GFX
+  offset: 0x2726
+d_course_kalimari_desert_packed_dl_8990:
+  symbol: d_course_kalimari_desert_packed_dl_8990
+  type: MK64:PACKED_GFX
+  offset: 0x2741
+d_course_kalimari_desert_packed_dl_8A40:
+  symbol: d_course_kalimari_desert_packed_dl_8A40
+  type: MK64:PACKED_GFX
+  offset: 0x2782
+d_course_kalimari_desert_packed_dl_8AC8:
+  symbol: d_course_kalimari_desert_packed_dl_8AC8
+  type: MK64:PACKED_GFX
+  offset: 0x27AC
+d_course_kalimari_desert_packed_dl_8B60:
+  symbol: d_course_kalimari_desert_packed_dl_8B60
+  type: MK64:PACKED_GFX
+  offset: 0x27E0
+d_course_kalimari_desert_packed_dl_8C08:
+  symbol: d_course_kalimari_desert_packed_dl_8C08
+  type: MK64:PACKED_GFX
+  offset: 0x281C
+d_course_kalimari_desert_packed_dl_8C98:
+  symbol: d_course_kalimari_desert_packed_dl_8C98
+  type: MK64:PACKED_GFX
+  offset: 0x284B
+d_course_kalimari_desert_packed_dl_8D20:
+  symbol: d_course_kalimari_desert_packed_dl_8D20
+  type: MK64:PACKED_GFX
+  offset: 0x2875
+d_course_kalimari_desert_packed_dl_8D98:
+  symbol: d_course_kalimari_desert_packed_dl_8D98
+  type: MK64:PACKED_GFX
+  offset: 0x2895
+d_course_kalimari_desert_packed_dl_8E20:
+  symbol: d_course_kalimari_desert_packed_dl_8E20
+  type: MK64:PACKED_GFX
+  offset: 0x28BF
+d_course_kalimari_desert_packed_dl_8EC8:
+  symbol: d_course_kalimari_desert_packed_dl_8EC8
+  type: MK64:PACKED_GFX
+  offset: 0x28FC
+d_course_kalimari_desert_packed_dl_8F50:
+  symbol: d_course_kalimari_desert_packed_dl_8F50
+  type: MK64:PACKED_GFX
+  offset: 0x2926
+d_course_kalimari_desert_packed_dl_8FF8:
+  symbol: d_course_kalimari_desert_packed_dl_8FF8
+  type: MK64:PACKED_GFX
+  offset: 0x2962
+d_course_kalimari_desert_packed_dl_9068:
+  symbol: d_course_kalimari_desert_packed_dl_9068
+  type: MK64:PACKED_GFX
+  offset: 0x297D
+d_course_kalimari_desert_packed_dl_90D8:
+  symbol: d_course_kalimari_desert_packed_dl_90D8
+  type: MK64:PACKED_GFX
+  offset: 0x2998
+d_course_kalimari_desert_packed_dl_9138:
+  symbol: d_course_kalimari_desert_packed_dl_9138
+  type: MK64:PACKED_GFX
+  offset: 0x29A9
+d_course_kalimari_desert_packed_dl_91A8:
+  symbol: d_course_kalimari_desert_packed_dl_91A8
+  type: MK64:PACKED_GFX
+  offset: 0x29C4
+d_course_kalimari_desert_packed_dl_9210:
+  symbol: d_course_kalimari_desert_packed_dl_9210
+  type: MK64:PACKED_GFX
+  offset: 0x29DA
+d_course_kalimari_desert_packed_dl_9280:
+  symbol: d_course_kalimari_desert_packed_dl_9280
+  type: MK64:PACKED_GFX
+  offset: 0x29F5
+d_course_kalimari_desert_packed_dl_92F8:
+  symbol: d_course_kalimari_desert_packed_dl_92F8
+  type: MK64:PACKED_GFX
+  offset: 0x2A15
+d_course_kalimari_desert_packed_dl_9368:
+  symbol: d_course_kalimari_desert_packed_dl_9368
+  type: MK64:PACKED_GFX
+  offset: 0x2A30
+d_course_kalimari_desert_packed_dl_93F0:
+  symbol: d_course_kalimari_desert_packed_dl_93F0
+  type: MK64:PACKED_GFX
+  offset: 0x2A5A
+d_course_kalimari_desert_packed_dl_9480:
+  symbol: d_course_kalimari_desert_packed_dl_9480
+  type: MK64:PACKED_GFX
+  offset: 0x2A87
+d_course_kalimari_desert_packed_dl_9510:
+  symbol: d_course_kalimari_desert_packed_dl_9510
+  type: MK64:PACKED_GFX
+  offset: 0x2AB6
+d_course_kalimari_desert_packed_dl_9598:
+  symbol: d_course_kalimari_desert_packed_dl_9598
+  type: MK64:PACKED_GFX
+  offset: 0x2AE0
+d_course_kalimari_desert_packed_dl_9630:
+  symbol: d_course_kalimari_desert_packed_dl_9630
+  type: MK64:PACKED_GFX
+  offset: 0x2B14
+d_course_kalimari_desert_packed_dl_96A8:
+  symbol: d_course_kalimari_desert_packed_dl_96A8
+  type: MK64:PACKED_GFX
+  offset: 0x2B34
+d_course_kalimari_desert_packed_dl_9740:
+  symbol: d_course_kalimari_desert_packed_dl_9740
+  type: MK64:PACKED_GFX
+  offset: 0x2B68
+d_course_kalimari_desert_packed_dl_97B8:
+  symbol: d_course_kalimari_desert_packed_dl_97B8
+  type: MK64:PACKED_GFX
+  offset: 0x2B88
+d_course_kalimari_desert_packed_dl_9820:
+  symbol: d_course_kalimari_desert_packed_dl_9820
+  type: MK64:PACKED_GFX
+  offset: 0x2B9E
+d_course_kalimari_desert_packed_dl_98E0:
+  symbol: d_course_kalimari_desert_packed_dl_98E0
+  type: MK64:PACKED_GFX
+  offset: 0x2BE9
+d_course_kalimari_desert_packed_dl_9958:
+  symbol: d_course_kalimari_desert_packed_dl_9958
+  type: MK64:PACKED_GFX
+  offset: 0x2C09
+d_course_kalimari_desert_packed_dl_99D8:
+  symbol: d_course_kalimari_desert_packed_dl_99D8
+  type: MK64:PACKED_GFX
+  offset: 0x2C2E
+d_course_kalimari_desert_packed_dl_9A68:
+  symbol: d_course_kalimari_desert_packed_dl_9A68
+  type: MK64:PACKED_GFX
+  offset: 0x2C5B
+d_course_kalimari_desert_packed_dl_9B10:
+  symbol: d_course_kalimari_desert_packed_dl_9B10
+  type: MK64:PACKED_GFX
+  offset: 0x2C97
+d_course_kalimari_desert_packed_dl_9BD8:
+  symbol: d_course_kalimari_desert_packed_dl_9BD8
+  type: MK64:PACKED_GFX
+  offset: 0x2CE0
+d_course_kalimari_desert_packed_dl_9C50:
+  symbol: d_course_kalimari_desert_packed_dl_9C50
+  type: MK64:PACKED_GFX
+  offset: 0x2D00
+d_course_kalimari_desert_packed_dl_9CC0:
+  symbol: d_course_kalimari_desert_packed_dl_9CC0
+  type: MK64:PACKED_GFX
+  offset: 0x2D19
+d_course_kalimari_desert_packed_dl_9D48:
+  symbol: d_course_kalimari_desert_packed_dl_9D48
+  type: MK64:PACKED_GFX
+  offset: 0x2D43
+d_course_kalimari_desert_packed_dl_9DC0:
+  symbol: d_course_kalimari_desert_packed_dl_9DC0
+  type: MK64:PACKED_GFX
+  offset: 0x2D63
+d_course_kalimari_desert_packed_dl_9E38:
+  symbol: d_course_kalimari_desert_packed_dl_9E38
+  type: MK64:PACKED_GFX
+  offset: 0x2D83
+d_course_kalimari_desert_packed_dl_9EB0:
+  symbol: d_course_kalimari_desert_packed_dl_9EB0
+  type: MK64:PACKED_GFX
+  offset: 0x2DA3
+d_course_kalimari_desert_packed_dl_9F20:
+  symbol: d_course_kalimari_desert_packed_dl_9F20
+  type: MK64:PACKED_GFX
+  offset: 0x2DBC
+d_course_kalimari_desert_packed_dl_9F88:
+  symbol: d_course_kalimari_desert_packed_dl_9F88
+  type: MK64:PACKED_GFX
+  offset: 0x2DD0
+d_course_kalimari_desert_packed_dl_9FE8:
+  symbol: d_course_kalimari_desert_packed_dl_9FE8
+  type: MK64:PACKED_GFX
+  offset: 0x2DE1
+d_course_kalimari_desert_packed_dl_A050:
+  symbol: d_course_kalimari_desert_packed_dl_A050
+  type: MK64:PACKED_GFX
+  offset: 0x2DF7
+d_course_kalimari_desert_packed_dl_A0C0:
+  symbol: d_course_kalimari_desert_packed_dl_A0C0
+  type: MK64:PACKED_GFX
+  offset: 0x2E10
+d_course_kalimari_desert_packed_dl_A138:
+  symbol: d_course_kalimari_desert_packed_dl_A138
+  type: MK64:PACKED_GFX
+  offset: 0x2E2E
+d_course_kalimari_desert_packed_dl_A1A0:
+  symbol: d_course_kalimari_desert_packed_dl_A1A0
+  type: MK64:PACKED_GFX
+  offset: 0x2E44
+d_course_kalimari_desert_packed_dl_A228:
+  symbol: d_course_kalimari_desert_packed_dl_A228
+  type: MK64:PACKED_GFX
+  offset: 0x2E6C
+d_course_kalimari_desert_packed_dl_A2D0:
+  symbol: d_course_kalimari_desert_packed_dl_A2D0
+  type: MK64:PACKED_GFX
+  offset: 0x2EA6
+d_course_kalimari_desert_packed_dl_A350:
+  symbol: d_course_kalimari_desert_packed_dl_A350
+  type: MK64:PACKED_GFX
+  offset: 0x2ECB
+d_course_kalimari_desert_packed_dl_A3D8:
+  symbol: d_course_kalimari_desert_packed_dl_A3D8
+  type: MK64:PACKED_GFX
+  offset: 0x2EF5
+d_course_kalimari_desert_packed_dl_A458:
+  symbol: d_course_kalimari_desert_packed_dl_A458
+  type: MK64:PACKED_GFX
+  offset: 0x2F18
+d_course_kalimari_desert_packed_dl_A4D0:
+  symbol: d_course_kalimari_desert_packed_dl_A4D0
+  type: MK64:PACKED_GFX
+  offset: 0x2F36
+d_course_kalimari_desert_packed_dl_A548:
+  symbol: d_course_kalimari_desert_packed_dl_A548
+  type: MK64:PACKED_GFX
+  offset: 0x2F56
+d_course_kalimari_desert_packed_dl_A5F0:
+  symbol: d_course_kalimari_desert_packed_dl_A5F0
+  type: MK64:PACKED_GFX
+  offset: 0x2F93
+d_course_kalimari_desert_packed_dl_A670:
+  symbol: d_course_kalimari_desert_packed_dl_A670
+  type: MK64:PACKED_GFX
+  offset: 0x2FC1
+d_course_kalimari_desert_packed_dl_A680:
+  symbol: d_course_kalimari_desert_packed_dl_A680
+  type: MK64:PACKED_GFX
+  offset: 0x2FC5

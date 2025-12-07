@@ -1,0 +1,36 @@
+:config:
+  segments:
+    - [0x06, 0x86ECF0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_sherbet_land_ice:
+  symbol: d_course_sherbet_land_ice
+  type: texture
+  offset: 0x68E8
+  width: 32
+  height: 32
+  format: ia16
+  ctype: u8
+d_course_sherbet_land_penguin_beak:
+  symbol: d_course_sherbet_land_penguin_beak
+  type: texture
+  offset: 0x72E8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_sherbet_land_penguin_eye:
+  symbol: d_course_sherbet_land_penguin_eye
+  type: texture
+  offset: 0x7AE8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

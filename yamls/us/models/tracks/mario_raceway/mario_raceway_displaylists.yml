@@ -1,0 +1,1213 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x899104
+  no_compression: true
+  manual_segments:
+  # Segment 3
+    - [0x03009000, "textures/other_textures/gTextureTrees1"]
+    - [0x03009800, "textures/other_textures/gTexturePiranhaPlant1"]
+    - [0x0300A000, "textures/other_textures/gTexturePiranhaPlant2"]
+    - [0x0300A800, "textures/other_textures/gTexturePiranhaPlant3"]
+    - [0x0300B000, "textures/other_textures/gTexturePiranhaPlant4"]
+    - [0x0300B800, "textures/other_textures/gTexturePiranhaPlant5"]
+    - [0x0300C000, "textures/other_textures/gTexturePiranhaPlant6"]
+    - [0x0300C800, "textures/other_textures/gTexturePiranhaPlant7"]
+    - [0x0300D000, "textures/other_textures/gTexturePiranhaPlant8"]
+    - [0x0300D800, "textures/other_textures/gTexturePiranhaPlant9"]
+  # Segment 5
+    - [0x05000000, "textures/other_textures/checkerboard_yellow_pink"]
+    - [0x05000800, "textures/other_textures/texture_64619C"]
+    - [0x05001000, "textures/other_textures/grass_1"]
+    - [0x05001800, "textures/other_textures/texture_64BB60"]
+    - [0x05002000, "textures/other_textures/grass_7"]
+    - [0x05002800, "textures/other_textures/grass_5"]
+    - [0x05003000, "textures/other_textures/flag_red"]
+    - [0x05003800, "textures/other_textures/texture_663F90"]
+    - [0x05004000, "textures/other_textures/texture_6642A4"]
+    - [0x05004800, "textures/other_textures/texture_6640B4"]
+    - [0x05005000, "textures/other_textures/grass_10"]
+    - [0x05005800, "textures/other_textures/texture_6684F8"]
+    - [0x05006000, "textures/other_textures/sign_luigis_0"]
+    - [0x05007000, "textures/other_textures/sign_luigis_1"]
+    - [0x05008000, "textures/other_textures/sign_mario_star_0"]
+    - [0x05009000, "textures/other_textures/sign_mario_star_1"]
+    - [0x0500A000, "textures/other_textures/texture_66C8F4"]
+    - [0x0500A800, "textures/other_textures/sign_nintendo_red_0"]
+    - [0x0500B800, "textures/other_textures/sign_nintendo_red_1"]
+    - [0x0500C800, "textures/other_textures/texture_670AC8"]
+    - [0x0500D800, "textures/other_textures/texture_674354"]
+    - [0x0500E000, "textures/other_textures/road_0"]
+    - [0x0500F000, "textures/other_textures/road_finish_0"]
+    - [0x05010000, "textures/other_textures/texture_67B9B0"]
+    - [0x05010800, "textures/other_textures/sign_yoshi"]
+    - [0x05011800, "textures/other_textures/checkerboard_blue_gray"]
+    - [0x05012800, "textures/other_textures/sign_shell_shot_0"]
+    - [0x05013800, "textures/other_textures/sign_shell_shot_1"]
+    - [0x05014800, "textures/other_textures/sign_koopa_air_0"]
+    - [0x05015800, "textures/other_textures/sign_koopa_air_1"]
+  # Segment 7
+    - [0x7000000, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_0"]
+    - [0x7000070, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_70"]
+    - [0x70000E0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_E0"]
+    - [0x70000F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_F8"]
+    - [0x7000160, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_160"]
+    - [0x7000170, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_170"]
+    - [0x70001D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1D8"]
+    - [0x7000240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_240"]
+    - [0x7000258, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_258"]
+    - [0x70002C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2C0"]
+    - [0x7000328, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_328"]
+    - [0x70003D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3D8"]
+    - [0x7000450, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_450"]
+    - [0x7000478, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_478"]
+    - [0x70004A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4A0"]
+    - [0x70004B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4B0"]
+    - [0x7000588, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_588"]
+    - [0x70008E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_8E8"]
+    - [0x7000900, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_900"]
+    - [0x7000A08, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_A08"]
+    - [0x7000B10, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_B10"]
+    - [0x7000C18, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_C18"]
+    - [0x7000D20, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_D20"]
+    - [0x7000E28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_E28"]
+    - [0x7000F30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_F30"]
+    - [0x7001038, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1038"]
+    - [0x7001140, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1140"]
+    - [0x7001188, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1188"]
+    - [0x7001348, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1348"]
+    - [0x70013C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_13C0"]
+    - [0x7001438, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1438"]
+    - [0x70014A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_14A0"]
+    - [0x70014C8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_14C8"]
+    - [0x7001500, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1500"]
+    - [0x7001550, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1550"]
+    - [0x7001600, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1600"]
+    - [0x7001668, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1668"]
+    - [0x70016D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_16D8"]
+    - [0x7001770, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1770"]
+    - [0x70017D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_17D8"]
+    - [0x7001850, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1850"]
+    - [0x7001890, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1890"]
+    - [0x70018B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_18B8"]
+    - [0x70018E0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_18E0"]
+    - [0x7001950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1950"]
+    - [0x7001988, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1988"]
+    - [0x7001A08, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1A08"]
+    - [0x7001A80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1A80"]
+    - [0x7001AF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1AF8"]
+    - [0x7001B28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1B28"]
+    - [0x7001BB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1BB8"]
+    - [0x7001C48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1C48"]
+    - [0x7001CF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1CF8"]
+    - [0x7001DA8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1DA8"]
+    - [0x7001E30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1E30"]
+    - [0x7001EA8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1EA8"]
+    - [0x7001F30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1F30"]
+    - [0x7001FB0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1FB0"]
+    - [0x7002038, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2038"]
+    - [0x70020B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_20B0"]
+    - [0x7002138, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2138"]
+    - [0x70021C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_21C0"]
+    - [0x7002248, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2248"]
+    - [0x70022B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_22B8"]
+    - [0x7002340, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2340"]
+    - [0x70023B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_23B8"]
+    - [0x7002420, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2420"]
+    - [0x7002498, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2498"]
+    - [0x7002510, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2510"]
+    - [0x7002588, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2588"]
+    - [0x7002600, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2600"]
+    - [0x7002680, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2680"]
+    - [0x70026F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_26F8"]
+    - [0x7002760, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2760"]
+    - [0x70027E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_27E8"]
+    - [0x7002870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2870"]
+    - [0x70028F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_28F8"]
+    - [0x70029B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_29B0"]
+    - [0x7002A28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2A28"]
+    - [0x7002B10, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2B10"]
+    - [0x7002B98, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2B98"]
+    - [0x7002D68, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2D68"]
+    - [0x7002D80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2D80"]
+    - [0x7003050, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3050"]
+    - [0x7003060, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3060"]
+    - [0x7003150, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3150"]
+    - [0x7003240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3240"]
+    - [0x7003258, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3258"]
+    - [0x70032F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_32F0"]
+    - [0x7003388, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3388"]
+    - [0x7003460, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3460"]
+    - [0x7003508, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3508"]
+    - [0x7003530, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3530"]
+    - [0x70035A8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_35A8"]
+    - [0x7003630, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3630"]
+    - [0x70036B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_36B0"]
+    - [0x7003728, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3728"]
+    - [0x7003798, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3798"]
+    - [0x7003818, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3818"]
+    - [0x70038B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_38B8"]
+    - [0x7003950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3950"]
+    - [0x70039E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_39E8"]
+    - [0x7003AB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3AB8"]
+    - [0x7003BB0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3BB0"]
+    - [0x7003C28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3C28"]
+    - [0x7003CD8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3CD8"]
+    - [0x7003D50, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3D50"]
+    - [0x7003E00, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3E00"]
+    - [0x7003E78, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3E78"]
+    - [0x7003EF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3EF8"]
+    - [0x7003F80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3F80"]
+    - [0x7004028, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4028"]
+    - [0x70040D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_40D8"]
+    - [0x7004188, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4188"]
+    - [0x7004210, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4210"]
+    - [0x7004290, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4290"]
+    - [0x7004348, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4348"]
+    - [0x70043C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_43C0"]
+    - [0x7004458, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4458"]
+    - [0x70044C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_44C0"]
+    - [0x7004540, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4540"]
+    - [0x70045B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_45B0"]
+    - [0x70046A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_46A0"]
+    - [0x7004780, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4780"]
+    - [0x7004870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4870"]
+    - [0x7004950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4950"]
+    - [0x70049E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_49E8"]
+    - [0x7004A68, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4A68"]
+    - [0x7004AD8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4AD8"]
+    - [0x7004B50, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4B50"]
+    - [0x7004BB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4BB8"]
+    - [0x7004C28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4C28"]
+    - [0x7004CB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4CB8"]
+    - [0x7004D48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4D48"]
+    - [0x7004E20, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4E20"]
+    - [0x7004EE8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4EE8"]
+    - [0x7004F90, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4F90"]
+    - [0x70050E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_50E8"]
+    - [0x7005218, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5218"]
+    - [0x70052B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_52B8"]
+    - [0x7005368, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5368"]
+    - [0x7005408, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5408"]
+    - [0x70054B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_54B0"]
+    - [0x7005550, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5550"]
+    - [0x7005608, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5608"]
+    - [0x70056F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_56F0"]
+    - [0x7005768, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5768"]
+    - [0x7005870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5870"]
+    - [0x7005970, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5970"]
+    - [0x7005A48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5A48"]
+    - [0x7005AE0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5AE0"]
+    - [0x7005BC8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5BC8"]
+    - [0x7005C80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5C80"]
+    - [0x7005CE8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5CE8"]
+    - [0x7005D70, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5D70"]
+    - [0x7005DF0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5DF0"]
+    - [0x7005E58, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5E58"]
+    - [0x7005ED0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5ED0"]
+    - [0x7005F88, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5F88"]
+    - [0x7006068, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6068"]
+    - [0x70060F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_60F0"]
+    - [0x7006198, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6198"]
+    - [0x7006240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6240"]
+    - [0x70062A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_62A0"]
+    - [0x7006308, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6308"]
+    - [0x70063B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_63B0"]
+    - [0x7006490, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6490"]
+    - [0x7006528, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6528"]
+    - [0x7006598, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6598"]
+    - [0x7006710, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6710"]
+    - [0x70068B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_68B0"]
+    - [0x70068C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_68C0"]
+    - [0x7006928, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6928"]
+    - [0x7006938, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6938"]
+  # Segment 4
+    - [0x4000000, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000000"]
+    - [0x40000c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040000C0"]
+    - [0x4000180, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000180"]
+    - [0x4000200, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000200"]
+    - [0x4000280, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000280"]
+    - [0x4000300, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000300"]
+    - [0x4000380, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000380"]
+    - [0x4000400, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000600"]
+    - [0x4000680, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000680"]
+    - [0x4000780, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000780"]
+    - [0x4000980, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000980"]
+    - [0x4000b20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000B20"]
+    - [0x4000d20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000D20"]
+    - [0x4000f20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04000F20"]
+    - [0x4001110, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001110"]
+    - [0x4001310, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001310"]
+    - [0x4001510, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001510"]
+    - [0x4001700, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001700"]
+    - [0x4001900, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001900"]
+    - [0x4001b00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001B00"]
+    - [0x4001d00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001D00"]
+    - [0x4001f00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04001F00"]
+    - [0x40020c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040020C0"]
+    - [0x4002120, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002120"]
+    - [0x40021f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040021F0"]
+    - [0x4002230, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002230"]
+    - [0x4002290, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002290"]
+    - [0x4002360, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002360"]
+    - [0x40023a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040023A0"]
+    - [0x4002400, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002400"]
+    - [0x40024d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040024D0"]
+    - [0x4002510, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002510"]
+    - [0x4002570, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002570"]
+    - [0x4002660, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002660"]
+    - [0x40026a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040026A0"]
+    - [0x4002700, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002700"]
+    - [0x40027f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040027F0"]
+    - [0x4002830, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002830"]
+    - [0x4002890, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002890"]
+    - [0x4002980, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002980"]
+    - [0x40029c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040029C0"]
+    - [0x4002a20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002A20"]
+    - [0x4002af0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002AF0"]
+    - [0x4002b30, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002B30"]
+    - [0x4002b90, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002B90"]
+    - [0x4002c60, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002C60"]
+    - [0x4002ca0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002CA0"]
+    - [0x4002db0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002DB0"]
+    - [0x4002ed0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002ED0"]
+    - [0x4002f90, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04002F90"]
+    - [0x4003050, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003050"]
+    - [0x4003130, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003130"]
+    - [0x40032b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040032B0"]
+    - [0x4003310, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003310"]
+    - [0x4003410, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003410"]
+    - [0x40035c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040035C0"]
+    - [0x40037c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040037C0"]
+    - [0x40039c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040039C0"]
+    - [0x4003a00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003A00"]
+    - [0x4003be0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003BE0"]
+    - [0x4003c20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003C20"]
+    - [0x4003e20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003E20"]
+    - [0x4003ea0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04003EA0"]
+    - [0x40040a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040040A0"]
+    - [0x4004250, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004250"]
+    - [0x4004450, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004450"]
+    - [0x4004490, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004490"]
+    - [0x4004510, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004510"]
+    - [0x4004550, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004550"]
+    - [0x4004690, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004690"]
+    - [0x4004700, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004700"]
+    - [0x4004780, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004780"]
+    - [0x4004980, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004980"]
+    - [0x4004a00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004A00"]
+    - [0x4004b00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004B00"]
+    - [0x4004d00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004D00"]
+    - [0x4004e00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04004E00"]
+    - [0x4005000, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005000"]
+    - [0x40050c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040050C0"]
+    - [0x40052b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040052B0"]
+    - [0x4005370, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005370"]
+    - [0x4005430, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005430"]
+    - [0x40055d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040055D0"]
+    - [0x40057d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040057D0"]
+    - [0x4005840, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005840"]
+    - [0x4005a40, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005A40"]
+    - [0x4005ac0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005AC0"]
+    - [0x4005c40, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005C40"]
+    - [0x4005d40, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005D40"]
+    - [0x4005e80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005E80"]
+    - [0x4005fa0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04005FA0"]
+    - [0x4006120, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006120"]
+    - [0x4006220, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006220"]
+    - [0x40063a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040063A0"]
+    - [0x4006520, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006520"]
+    - [0x40066a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040066A0"]
+    - [0x4006760, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006760"]
+    - [0x40068e0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040068E0"]
+    - [0x40069e0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040069E0"]
+    - [0x4006a60, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006A60"]
+    - [0x4006b20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006B20"]
+    - [0x4006c00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006C00"]
+    - [0x4006ce0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006CE0"]
+    - [0x4006da0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006DA0"]
+    - [0x4006ec0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006EC0"]
+    - [0x4006f80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04006F80"]
+    - [0x4007000, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007000"]
+    - [0x4007160, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007160"]
+    - [0x40072c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040072C0"]
+    - [0x4007440, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007440"]
+    - [0x4007640, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007640"]
+    - [0x40076b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040076B0"]
+    - [0x40077b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040077B0"]
+    - [0x4007930, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007930"]
+    - [0x4007b10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007B10"]
+    - [0x4007d10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007D10"]
+    - [0x4007f10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04007F10"]
+    - [0x4008100, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008100"]
+    - [0x40082e0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040082E0"]
+    - [0x4008360, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008360"]
+    - [0x4008560, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008560"]
+    - [0x4008750, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008750"]
+    - [0x4008950, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008950"]
+    - [0x4008b50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008B50"]
+    - [0x4008ce0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008CE0"]
+    - [0x4008d30, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008D30"]
+    - [0x4008db0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008DB0"]
+    - [0x4008df0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008DF0"]
+    - [0x4008e30, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008E30"]
+    - [0x4008e70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008E70"]
+    - [0x4008eb0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008EB0"]
+    - [0x4008f30, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008F30"]
+    - [0x4008f70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008F70"]
+    - [0x4008fb0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008FB0"]
+    - [0x4008ff0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04008FF0"]
+    - [0x4009030, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009030"]
+    - [0x4009170, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009170"]
+    - [0x40092b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040092B0"]
+    - [0x4009330, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009330"]
+    - [0x40093b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040093B0"]
+    - [0x4009500, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009500"]
+    - [0x40096e0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040096E0"]
+    - [0x4009890, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009890"]
+    - [0x4009a00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009A00"]
+    - [0x4009af0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009AF0"]
+    - [0x4009c80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009C80"]
+    - [0x4009e60, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009E60"]
+    - [0x4009f50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04009F50"]
+    - [0x400a130, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A130"]
+    - [0x400a1f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A1F0"]
+    - [0x400a3f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A3F0"]
+    - [0x400a450, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A450"]
+    - [0x400a650, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A650"]
+    - [0x400a850, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A850"]
+    - [0x400a8b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400A8B0"]
+    - [0x400aa90, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400AA90"]
+    - [0x400ac70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400AC70"]
+    - [0x400ae50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400AE50"]
+    - [0x400aee0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400AEE0"]
+    - [0x400b020, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B020"]
+    - [0x400b200, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B200"]
+    - [0x400b380, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B380"]
+    - [0x400b4c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B4C0"]
+    - [0x400b6b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B6B0"]
+    - [0x400b830, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B830"]
+    - [0x400b970, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400B970"]
+    - [0x400bb10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400BB10"]
+    - [0x400bd10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400BD10"]
+    - [0x400bf00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400BF00"]
+    - [0x400bff0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400BFF0"]
+    - [0x400c1d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400C1D0"]
+    - [0x400c340, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400C340"]
+    - [0x400c540, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400C540"]
+    - [0x400c6c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400C6C0"]
+    - [0x400c890, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400C890"]
+    - [0x400ca60, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400CA60"]
+    - [0x400cc50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400CC50"]
+    - [0x400ce20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400CE20"]
+    - [0x400cfa0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400CFA0"]
+    - [0x400d1a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D1A0"]
+    - [0x400d200, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D200"]
+    - [0x400d2c0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D2C0"]
+    - [0x400d440, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D440"]
+    - [0x400d520, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D520"]
+    - [0x400d710, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D710"]
+    - [0x400d900, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D900"]
+    - [0x400d9f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400D9F0"]
+    - [0x400dbe0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400DBE0"]
+    - [0x400ddd0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400DDD0"]
+    - [0x400df70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400DF70"]
+    - [0x400e150, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E150"]
+    - [0x400e350, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E350"]
+    - [0x400e420, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E420"]
+    - [0x400e600, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E600"]
+    - [0x400e630, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E630"]
+    - [0x400e7d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E7D0"]
+    - [0x400e8a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400E8A0"]
+    - [0x400ea20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EA20"]
+    - [0x400eae0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EAE0"]
+    - [0x400ebd0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EBD0"]
+    - [0x400edb0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EDB0"]
+    - [0x400ee10, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EE10"]
+    - [0x400eff0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400EFF0"]
+    - [0x400f050, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F050"]
+    - [0x400f230, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F230"]
+    - [0x400f430, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F430"]
+    - [0x400f510, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F510"]
+    - [0x400f6f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F6F0"]
+    - [0x400f870, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400F870"]
+    - [0x400fa70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400FA70"]
+    - [0x400fb40, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400FB40"]
+    - [0x400fd20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400FD20"]
+    - [0x400ff20, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x0400FF20"]
+    - [0x4010110, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04010110"]
+    - [0x4010300, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04010300"]
+    - [0x40103f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040103F0"]
+    - [0x40105e0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040105E0"]
+    - [0x40107d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040107D0"]
+    - [0x40109d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040109D0"]
+    - [0x4010bd0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04010BD0"]
+    - [0x4010dd0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04010DD0"]
+    - [0x4010e80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04010E80"]
+    - [0x4011060, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011060"]
+    - [0x4011200, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011200"]
+    - [0x4011400, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011400"]
+    - [0x40114b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040114B0"]
+    - [0x40116b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040116B0"]
+    - [0x4011790, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011790"]
+    - [0x4011970, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011970"]
+    - [0x40119a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040119A0"]
+    - [0x4011ba0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011BA0"]
+    - [0x4011d50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011D50"]
+    - [0x4011f30, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04011F30"]
+    - [0x4012130, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012130"]
+    - [0x4012270, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012270"]
+    - [0x4012390, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012390"]
+    - [0x4012590, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012590"]
+    - [0x4012790, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012790"]
+    - [0x4012980, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012980"]
+    - [0x40129b0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040129B0"]
+    - [0x4012b90, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012B90"]
+    - [0x4012d80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012D80"]
+    - [0x4012f80, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012F80"]
+    - [0x4012fb0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04012FB0"]
+    - [0x40131a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040131A0"]
+    - [0x4013390, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013390"]
+    - [0x4013450, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013450"]
+    - [0x4013640, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013640"]
+    - [0x4013670, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013670"]
+    - [0x4013860, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013860"]
+    - [0x4013a40, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013A40"]
+    - [0x4013bc0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013BC0"]
+    - [0x4013db0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013DB0"]
+    - [0x4013f50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013F50"]
+    - [0x4013fe0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04013FE0"]
+    - [0x40141d0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040141D0"]
+    - [0x4014300, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014300"]
+    - [0x4014350, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014350"]
+    - [0x4014400, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014400"]
+    - [0x40145f0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040145F0"]
+    - [0x4014770, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014770"]
+    - [0x4014970, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014970"]
+    - [0x4014b70, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014B70"]
+    - [0x4014c50, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014C50"]
+    - [0x4014da0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014DA0"]
+    - [0x4014fa0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04014FA0"]
+    - [0x4015060, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015060"]
+    - [0x4015260, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015260"]
+    - [0x4015370, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015370"]
+    - [0x40153a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040153A0"]
+    - [0x4015420, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015420"]
+    - [0x4015620, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015620"]
+    - [0x4015700, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015700"]
+    - [0x4015900, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015900"]
+    - [0x4015b00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015B00"]
+    - [0x4015bf0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015BF0"]
+    - [0x4015dd0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015DD0"]
+    - [0x4015e00, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015E00"]
+    - [0x4015eb0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04015EB0"]
+    - [0x40160a0, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x040160A0"]
+    - [0x4016290, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04016290"]
+    - [0x4016490, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04016490"]
+    - [0x4016690, "models/tracks/mario_raceway/mario_raceway_vertices/d_course_mario_raceway_vertex_0x04016690"]
+  segments:
+    - [0x0F, 0x899104]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_mario_raceway_packed_dl_0:
+  symbol: d_course_mario_raceway_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_mario_raceway_packed_dl_70:
+  symbol: d_course_mario_raceway_packed_dl_70
+  type: MK64:PACKED_GFX
+  offset: 0x1B
+d_course_mario_raceway_packed_dl_E0:
+  symbol: d_course_mario_raceway_packed_dl_E0
+  type: MK64:PACKED_GFX
+  offset: 0x36
+d_course_mario_raceway_packed_dl_F8:
+  symbol: d_course_mario_raceway_packed_dl_F8
+  type: MK64:PACKED_GFX
+  offset: 0x3D
+d_course_mario_raceway_packed_dl_160:
+  symbol: d_course_mario_raceway_packed_dl_160
+  type: MK64:PACKED_GFX
+  offset: 0x53
+d_course_mario_raceway_packed_dl_170:
+  symbol: d_course_mario_raceway_packed_dl_170
+  type: MK64:PACKED_GFX
+  offset: 0x57
+d_course_mario_raceway_packed_dl_1D8:
+  symbol: d_course_mario_raceway_packed_dl_1D8
+  type: MK64:PACKED_GFX
+  offset: 0x6D
+d_course_mario_raceway_packed_dl_240:
+  symbol: d_course_mario_raceway_packed_dl_240
+  type: MK64:PACKED_GFX
+  offset: 0x83
+d_course_mario_raceway_packed_dl_258:
+  symbol: d_course_mario_raceway_packed_dl_258
+  type: MK64:PACKED_GFX
+  offset: 0x8A
+d_course_mario_raceway_packed_dl_2C0:
+  symbol: d_course_mario_raceway_packed_dl_2C0
+  type: MK64:PACKED_GFX
+  offset: 0xA0
+d_course_mario_raceway_packed_dl_328:
+  symbol: d_course_mario_raceway_packed_dl_328
+  type: MK64:PACKED_GFX
+  offset: 0xB6
+d_course_mario_raceway_packed_dl_3D8:
+  symbol: d_course_mario_raceway_packed_dl_3D8
+  type: MK64:PACKED_GFX
+  offset: 0xF7
+d_course_mario_raceway_packed_dl_450:
+  symbol: d_course_mario_raceway_packed_dl_450
+  type: MK64:PACKED_GFX
+  offset: 0x117
+d_course_mario_raceway_packed_dl_478:
+  symbol: d_course_mario_raceway_packed_dl_478
+  type: MK64:PACKED_GFX
+  offset: 0x124
+d_course_mario_raceway_packed_dl_4A0:
+  symbol: d_course_mario_raceway_packed_dl_4A0
+  type: MK64:PACKED_GFX
+  offset: 0x131
+d_course_mario_raceway_packed_dl_4B0:
+  symbol: d_course_mario_raceway_packed_dl_4B0
+  type: MK64:PACKED_GFX
+  offset: 0x135
+d_course_mario_raceway_packed_dl_588:
+  symbol: d_course_mario_raceway_packed_dl_588
+  type: MK64:PACKED_GFX
+  offset: 0x18F
+d_course_mario_raceway_packed_dl_8E8:
+  symbol: d_course_mario_raceway_packed_dl_8E8
+  type: MK64:PACKED_GFX
+  offset: 0x368
+d_course_mario_raceway_packed_dl_900:
+  symbol: d_course_mario_raceway_packed_dl_900
+  type: MK64:PACKED_GFX
+  offset: 0x36F
+d_course_mario_raceway_packed_dl_A08:
+  symbol: d_course_mario_raceway_packed_dl_A08
+  type: MK64:PACKED_GFX
+  offset: 0x3AD
+d_course_mario_raceway_packed_dl_B10:
+  symbol: d_course_mario_raceway_packed_dl_B10
+  type: MK64:PACKED_GFX
+  offset: 0x3EB
+d_course_mario_raceway_packed_dl_C18:
+  symbol: d_course_mario_raceway_packed_dl_C18
+  type: MK64:PACKED_GFX
+  offset: 0x429
+d_course_mario_raceway_packed_dl_D20:
+  symbol: d_course_mario_raceway_packed_dl_D20
+  type: MK64:PACKED_GFX
+  offset: 0x467
+d_course_mario_raceway_packed_dl_E28:
+  symbol: d_course_mario_raceway_packed_dl_E28
+  type: MK64:PACKED_GFX
+  offset: 0x4A5
+d_course_mario_raceway_packed_dl_F30:
+  symbol: d_course_mario_raceway_packed_dl_F30
+  type: MK64:PACKED_GFX
+  offset: 0x4E3
+d_course_mario_raceway_packed_dl_1038:
+  symbol: d_course_mario_raceway_packed_dl_1038
+  type: MK64:PACKED_GFX
+  offset: 0x521
+d_course_mario_raceway_packed_dl_1140:
+  symbol: d_course_mario_raceway_packed_dl_1140
+  type: MK64:PACKED_GFX
+  offset: 0x55F
+d_course_mario_raceway_packed_dl_1188:
+  symbol: d_course_mario_raceway_packed_dl_1188
+  type: MK64:PACKED_GFX
+  offset: 0x578
+d_course_mario_raceway_packed_dl_1348:
+  symbol: d_course_mario_raceway_packed_dl_1348
+  type: MK64:PACKED_GFX
+  offset: 0x606
+d_course_mario_raceway_packed_dl_13C0:
+  symbol: d_course_mario_raceway_packed_dl_13C0
+  type: MK64:PACKED_GFX
+  offset: 0x626
+d_course_mario_raceway_packed_dl_1438:
+  symbol: d_course_mario_raceway_packed_dl_1438
+  type: MK64:PACKED_GFX
+  offset: 0x667
+d_course_mario_raceway_packed_dl_14A0:
+  symbol: d_course_mario_raceway_packed_dl_14A0
+  type: MK64:PACKED_GFX
+  offset: 0x67D
+d_course_mario_raceway_packed_dl_14C8:
+  symbol: d_course_mario_raceway_packed_dl_14C8
+  type: MK64:PACKED_GFX
+  offset: 0x68A
+d_course_mario_raceway_packed_dl_1500:
+  symbol: d_course_mario_raceway_packed_dl_1500
+  type: MK64:PACKED_GFX
+  offset: 0x6A3
+d_course_mario_raceway_packed_dl_1550:
+  symbol: d_course_mario_raceway_packed_dl_1550
+  type: MK64:PACKED_GFX
+  offset: 0x6CB
+d_course_mario_raceway_packed_dl_1600:
+  symbol: d_course_mario_raceway_packed_dl_1600
+  type: MK64:PACKED_GFX
+  offset: 0x72B
+d_course_mario_raceway_packed_dl_1668:
+  symbol: d_course_mario_raceway_packed_dl_1668
+  type: MK64:PACKED_GFX
+  offset: 0x760
+d_course_mario_raceway_packed_dl_16D8:
+  symbol: d_course_mario_raceway_packed_dl_16D8
+  type: MK64:PACKED_GFX
+  offset: 0x79A
+d_course_mario_raceway_packed_dl_1770:
+  symbol: d_course_mario_raceway_packed_dl_1770
+  type: MK64:PACKED_GFX
+  offset: 0x7ED
+d_course_mario_raceway_packed_dl_17D8:
+  symbol: d_course_mario_raceway_packed_dl_17D8
+  type: MK64:PACKED_GFX
+  offset: 0x822
+d_course_mario_raceway_packed_dl_1850:
+  symbol: d_course_mario_raceway_packed_dl_1850
+  type: MK64:PACKED_GFX
+  offset: 0x840
+d_course_mario_raceway_packed_dl_1890:
+  symbol: d_course_mario_raceway_packed_dl_1890
+  type: MK64:PACKED_GFX
+  offset: 0x85E
+d_course_mario_raceway_packed_dl_18B8:
+  symbol: d_course_mario_raceway_packed_dl_18B8
+  type: MK64:PACKED_GFX
+  offset: 0x86D
+d_course_mario_raceway_packed_dl_18E0:
+  symbol: d_course_mario_raceway_packed_dl_18E0
+  type: MK64:PACKED_GFX
+  offset: 0x87C
+d_course_mario_raceway_packed_dl_1950:
+  symbol: d_course_mario_raceway_packed_dl_1950
+  type: MK64:PACKED_GFX
+  offset: 0x8B6
+d_course_mario_raceway_packed_dl_1988:
+  symbol: d_course_mario_raceway_packed_dl_1988
+  type: MK64:PACKED_GFX
+  offset: 0x8CF
+d_course_mario_raceway_packed_dl_1A08:
+  symbol: d_course_mario_raceway_packed_dl_1A08
+  type: MK64:PACKED_GFX
+  offset: 0x913
+d_course_mario_raceway_packed_dl_1A80:
+  symbol: d_course_mario_raceway_packed_dl_1A80
+  type: MK64:PACKED_GFX
+  offset: 0x952
+d_course_mario_raceway_packed_dl_1AF8:
+  symbol: d_course_mario_raceway_packed_dl_1AF8
+  type: MK64:PACKED_GFX
+  offset: 0x991
+d_course_mario_raceway_packed_dl_1B28:
+  symbol: d_course_mario_raceway_packed_dl_1B28
+  type: MK64:PACKED_GFX
+  offset: 0x9A5
+d_course_mario_raceway_packed_dl_1BB8:
+  symbol: d_course_mario_raceway_packed_dl_1BB8
+  type: MK64:PACKED_GFX
+  offset: 0x9D9
+d_course_mario_raceway_packed_dl_1C48:
+  symbol: d_course_mario_raceway_packed_dl_1C48
+  type: MK64:PACKED_GFX
+  offset: 0xA06
+d_course_mario_raceway_packed_dl_1CF8:
+  symbol: d_course_mario_raceway_packed_dl_1CF8
+  type: MK64:PACKED_GFX
+  offset: 0xA45
+d_course_mario_raceway_packed_dl_1DA8:
+  symbol: d_course_mario_raceway_packed_dl_1DA8
+  type: MK64:PACKED_GFX
+  offset: 0xA86
+d_course_mario_raceway_packed_dl_1E30:
+  symbol: d_course_mario_raceway_packed_dl_1E30
+  type: MK64:PACKED_GFX
+  offset: 0xAB0
+d_course_mario_raceway_packed_dl_1EA8:
+  symbol: d_course_mario_raceway_packed_dl_1EA8
+  type: MK64:PACKED_GFX
+  offset: 0xAD0
+d_course_mario_raceway_packed_dl_1F30:
+  symbol: d_course_mario_raceway_packed_dl_1F30
+  type: MK64:PACKED_GFX
+  offset: 0xAFA
+d_course_mario_raceway_packed_dl_1FB0:
+  symbol: d_course_mario_raceway_packed_dl_1FB0
+  type: MK64:PACKED_GFX
+  offset: 0xB1F
+d_course_mario_raceway_packed_dl_2038:
+  symbol: d_course_mario_raceway_packed_dl_2038
+  type: MK64:PACKED_GFX
+  offset: 0xB49
+d_course_mario_raceway_packed_dl_20B0:
+  symbol: d_course_mario_raceway_packed_dl_20B0
+  type: MK64:PACKED_GFX
+  offset: 0xB69
+d_course_mario_raceway_packed_dl_2138:
+  symbol: d_course_mario_raceway_packed_dl_2138
+  type: MK64:PACKED_GFX
+  offset: 0xB93
+d_course_mario_raceway_packed_dl_21C0:
+  symbol: d_course_mario_raceway_packed_dl_21C0
+  type: MK64:PACKED_GFX
+  offset: 0xBBD
+d_course_mario_raceway_packed_dl_2248:
+  symbol: d_course_mario_raceway_packed_dl_2248
+  type: MK64:PACKED_GFX
+  offset: 0xBE7
+d_course_mario_raceway_packed_dl_22B8:
+  symbol: d_course_mario_raceway_packed_dl_22B8
+  type: MK64:PACKED_GFX
+  offset: 0xC02
+d_course_mario_raceway_packed_dl_2340:
+  symbol: d_course_mario_raceway_packed_dl_2340
+  type: MK64:PACKED_GFX
+  offset: 0xC2C
+d_course_mario_raceway_packed_dl_23B8:
+  symbol: d_course_mario_raceway_packed_dl_23B8
+  type: MK64:PACKED_GFX
+  offset: 0xC4C
+d_course_mario_raceway_packed_dl_2420:
+  symbol: d_course_mario_raceway_packed_dl_2420
+  type: MK64:PACKED_GFX
+  offset: 0xC62
+d_course_mario_raceway_packed_dl_2498:
+  symbol: d_course_mario_raceway_packed_dl_2498
+  type: MK64:PACKED_GFX
+  offset: 0xC82
+d_course_mario_raceway_packed_dl_2510:
+  symbol: d_course_mario_raceway_packed_dl_2510
+  type: MK64:PACKED_GFX
+  offset: 0xCA2
+d_course_mario_raceway_packed_dl_2588:
+  symbol: d_course_mario_raceway_packed_dl_2588
+  type: MK64:PACKED_GFX
+  offset: 0xCC2
+d_course_mario_raceway_packed_dl_2600:
+  symbol: d_course_mario_raceway_packed_dl_2600
+  type: MK64:PACKED_GFX
+  offset: 0xCE2
+d_course_mario_raceway_packed_dl_2680:
+  symbol: d_course_mario_raceway_packed_dl_2680
+  type: MK64:PACKED_GFX
+  offset: 0xD07
+d_course_mario_raceway_packed_dl_26F8:
+  symbol: d_course_mario_raceway_packed_dl_26F8
+  type: MK64:PACKED_GFX
+  offset: 0xD27
+d_course_mario_raceway_packed_dl_2760:
+  symbol: d_course_mario_raceway_packed_dl_2760
+  type: MK64:PACKED_GFX
+  offset: 0xD3D
+d_course_mario_raceway_packed_dl_27E8:
+  symbol: d_course_mario_raceway_packed_dl_27E8
+  type: MK64:PACKED_GFX
+  offset: 0xD67
+d_course_mario_raceway_packed_dl_2870:
+  symbol: d_course_mario_raceway_packed_dl_2870
+  type: MK64:PACKED_GFX
+  offset: 0xD91
+d_course_mario_raceway_packed_dl_28F8:
+  symbol: d_course_mario_raceway_packed_dl_28F8
+  type: MK64:PACKED_GFX
+  offset: 0xDBB
+d_course_mario_raceway_packed_dl_29B0:
+  symbol: d_course_mario_raceway_packed_dl_29B0
+  type: MK64:PACKED_GFX
+  offset: 0xDFF
+d_course_mario_raceway_packed_dl_2A28:
+  symbol: d_course_mario_raceway_packed_dl_2A28
+  type: MK64:PACKED_GFX
+  offset: 0xE1F
+d_course_mario_raceway_packed_dl_2B10:
+  symbol: d_course_mario_raceway_packed_dl_2B10
+  type: MK64:PACKED_GFX
+  offset: 0xE74
+d_course_mario_raceway_packed_dl_2B98:
+  symbol: d_course_mario_raceway_packed_dl_2B98
+  type: MK64:PACKED_GFX
+  offset: 0xE9E
+d_course_mario_raceway_packed_dl_2D68:
+  symbol: d_course_mario_raceway_packed_dl_2D68
+  type: MK64:PACKED_GFX
+  offset: 0xF8B
+d_course_mario_raceway_packed_dl_2D80:
+  symbol: d_course_mario_raceway_packed_dl_2D80
+  type: MK64:PACKED_GFX
+  offset: 0xF92
+d_course_mario_raceway_packed_dl_3050:
+  symbol: d_course_mario_raceway_packed_dl_3050
+  type: MK64:PACKED_GFX
+  offset: 0x1115
+d_course_mario_raceway_packed_dl_3060:
+  symbol: d_course_mario_raceway_packed_dl_3060
+  type: MK64:PACKED_GFX
+  offset: 0x1119
+d_course_mario_raceway_packed_dl_3150:
+  symbol: d_course_mario_raceway_packed_dl_3150
+  type: MK64:PACKED_GFX
+  offset: 0x114A
+d_course_mario_raceway_packed_dl_3240:
+  symbol: d_course_mario_raceway_packed_dl_3240
+  type: MK64:PACKED_GFX
+  offset: 0x117B
+d_course_mario_raceway_packed_dl_3258:
+  symbol: d_course_mario_raceway_packed_dl_3258
+  type: MK64:PACKED_GFX
+  offset: 0x1182
+d_course_mario_raceway_packed_dl_32F0:
+  symbol: d_course_mario_raceway_packed_dl_32F0
+  type: MK64:PACKED_GFX
+  offset: 0x119F
+d_course_mario_raceway_packed_dl_3388:
+  symbol: d_course_mario_raceway_packed_dl_3388
+  type: MK64:PACKED_GFX
+  offset: 0x11BC
+d_course_mario_raceway_packed_dl_3460:
+  symbol: d_course_mario_raceway_packed_dl_3460
+  type: MK64:PACKED_GFX
+  offset: 0x1201
+d_course_mario_raceway_packed_dl_3508:
+  symbol: d_course_mario_raceway_packed_dl_3508
+  type: MK64:PACKED_GFX
+  offset: 0x1228
+d_course_mario_raceway_packed_dl_3530:
+  symbol: d_course_mario_raceway_packed_dl_3530
+  type: MK64:PACKED_GFX
+  offset: 0x1235
+d_course_mario_raceway_packed_dl_35A8:
+  symbol: d_course_mario_raceway_packed_dl_35A8
+  type: MK64:PACKED_GFX
+  offset: 0x1253
+d_course_mario_raceway_packed_dl_3630:
+  symbol: d_course_mario_raceway_packed_dl_3630
+  type: MK64:PACKED_GFX
+  offset: 0x127B
+d_course_mario_raceway_packed_dl_36B0:
+  symbol: d_course_mario_raceway_packed_dl_36B0
+  type: MK64:PACKED_GFX
+  offset: 0x12A0
+d_course_mario_raceway_packed_dl_3728:
+  symbol: d_course_mario_raceway_packed_dl_3728
+  type: MK64:PACKED_GFX
+  offset: 0x12C0
+d_course_mario_raceway_packed_dl_3798:
+  symbol: d_course_mario_raceway_packed_dl_3798
+  type: MK64:PACKED_GFX
+  offset: 0x12D9
+d_course_mario_raceway_packed_dl_3818:
+  symbol: d_course_mario_raceway_packed_dl_3818
+  type: MK64:PACKED_GFX
+  offset: 0x12FC
+d_course_mario_raceway_packed_dl_38B8:
+  symbol: d_course_mario_raceway_packed_dl_38B8
+  type: MK64:PACKED_GFX
+  offset: 0x1331
+d_course_mario_raceway_packed_dl_3950:
+  symbol: d_course_mario_raceway_packed_dl_3950
+  type: MK64:PACKED_GFX
+  offset: 0x1363
+d_course_mario_raceway_packed_dl_39E8:
+  symbol: d_course_mario_raceway_packed_dl_39E8
+  type: MK64:PACKED_GFX
+  offset: 0x1395
+d_course_mario_raceway_packed_dl_3AB8:
+  symbol: d_course_mario_raceway_packed_dl_3AB8
+  type: MK64:PACKED_GFX
+  offset: 0x13E4
+d_course_mario_raceway_packed_dl_3BB0:
+  symbol: d_course_mario_raceway_packed_dl_3BB0
+  type: MK64:PACKED_GFX
+  offset: 0x144C
+d_course_mario_raceway_packed_dl_3C28:
+  symbol: d_course_mario_raceway_packed_dl_3C28
+  type: MK64:PACKED_GFX
+  offset: 0x146A
+d_course_mario_raceway_packed_dl_3CD8:
+  symbol: d_course_mario_raceway_packed_dl_3CD8
+  type: MK64:PACKED_GFX
+  offset: 0x14A9
+d_course_mario_raceway_packed_dl_3D50:
+  symbol: d_course_mario_raceway_packed_dl_3D50
+  type: MK64:PACKED_GFX
+  offset: 0x14C9
+d_course_mario_raceway_packed_dl_3E00:
+  symbol: d_course_mario_raceway_packed_dl_3E00
+  type: MK64:PACKED_GFX
+  offset: 0x1508
+d_course_mario_raceway_packed_dl_3E78:
+  symbol: d_course_mario_raceway_packed_dl_3E78
+  type: MK64:PACKED_GFX
+  offset: 0x1526
+d_course_mario_raceway_packed_dl_3EF8:
+  symbol: d_course_mario_raceway_packed_dl_3EF8
+  type: MK64:PACKED_GFX
+  offset: 0x1549
+d_course_mario_raceway_packed_dl_3F80:
+  symbol: d_course_mario_raceway_packed_dl_3F80
+  type: MK64:PACKED_GFX
+  offset: 0x1571
+d_course_mario_raceway_packed_dl_4028:
+  symbol: d_course_mario_raceway_packed_dl_4028
+  type: MK64:PACKED_GFX
+  offset: 0x15A9
+d_course_mario_raceway_packed_dl_40D8:
+  symbol: d_course_mario_raceway_packed_dl_40D8
+  type: MK64:PACKED_GFX
+  offset: 0x15E8
+d_course_mario_raceway_packed_dl_4188:
+  symbol: d_course_mario_raceway_packed_dl_4188
+  type: MK64:PACKED_GFX
+  offset: 0x1627
+d_course_mario_raceway_packed_dl_4210:
+  symbol: d_course_mario_raceway_packed_dl_4210
+  type: MK64:PACKED_GFX
+  offset: 0x164F
+d_course_mario_raceway_packed_dl_4290:
+  symbol: d_course_mario_raceway_packed_dl_4290
+  type: MK64:PACKED_GFX
+  offset: 0x1674
+d_course_mario_raceway_packed_dl_4348:
+  symbol: d_course_mario_raceway_packed_dl_4348
+  type: MK64:PACKED_GFX
+  offset: 0x16B8
+d_course_mario_raceway_packed_dl_43C0:
+  symbol: d_course_mario_raceway_packed_dl_43C0
+  type: MK64:PACKED_GFX
+  offset: 0x16D8
+d_course_mario_raceway_packed_dl_4458:
+  symbol: d_course_mario_raceway_packed_dl_4458
+  type: MK64:PACKED_GFX
+  offset: 0x1708
+d_course_mario_raceway_packed_dl_44C0:
+  symbol: d_course_mario_raceway_packed_dl_44C0
+  type: MK64:PACKED_GFX
+  offset: 0x171E
+d_course_mario_raceway_packed_dl_4540:
+  symbol: d_course_mario_raceway_packed_dl_4540
+  type: MK64:PACKED_GFX
+  offset: 0x1741
+d_course_mario_raceway_packed_dl_45B0:
+  symbol: d_course_mario_raceway_packed_dl_45B0
+  type: MK64:PACKED_GFX
+  offset: 0x175C
+d_course_mario_raceway_packed_dl_46A0:
+  symbol: d_course_mario_raceway_packed_dl_46A0
+  type: MK64:PACKED_GFX
+  offset: 0x17B4
+d_course_mario_raceway_packed_dl_4780:
+  symbol: d_course_mario_raceway_packed_dl_4780
+  type: MK64:PACKED_GFX
+  offset: 0x180D
+d_course_mario_raceway_packed_dl_4870:
+  symbol: d_course_mario_raceway_packed_dl_4870
+  type: MK64:PACKED_GFX
+  offset: 0x1870
+d_course_mario_raceway_packed_dl_4950:
+  symbol: d_course_mario_raceway_packed_dl_4950
+  type: MK64:PACKED_GFX
+  offset: 0x18CB
+d_course_mario_raceway_packed_dl_49E8:
+  symbol: d_course_mario_raceway_packed_dl_49E8
+  type: MK64:PACKED_GFX
+  offset: 0x18F9
+d_course_mario_raceway_packed_dl_4A68:
+  symbol: d_course_mario_raceway_packed_dl_4A68
+  type: MK64:PACKED_GFX
+  offset: 0x191E
+d_course_mario_raceway_packed_dl_4AD8:
+  symbol: d_course_mario_raceway_packed_dl_4AD8
+  type: MK64:PACKED_GFX
+  offset: 0x1937
+d_course_mario_raceway_packed_dl_4B50:
+  symbol: d_course_mario_raceway_packed_dl_4B50
+  type: MK64:PACKED_GFX
+  offset: 0x1957
+d_course_mario_raceway_packed_dl_4BB8:
+  symbol: d_course_mario_raceway_packed_dl_4BB8
+  type: MK64:PACKED_GFX
+  offset: 0x196D
+d_course_mario_raceway_packed_dl_4C28:
+  symbol: d_course_mario_raceway_packed_dl_4C28
+  type: MK64:PACKED_GFX
+  offset: 0x1986
+d_course_mario_raceway_packed_dl_4CB8:
+  symbol: d_course_mario_raceway_packed_dl_4CB8
+  type: MK64:PACKED_GFX
+  offset: 0x19B3
+d_course_mario_raceway_packed_dl_4D48:
+  symbol: d_course_mario_raceway_packed_dl_4D48
+  type: MK64:PACKED_GFX
+  offset: 0x19E0
+d_course_mario_raceway_packed_dl_4E20:
+  symbol: d_course_mario_raceway_packed_dl_4E20
+  type: MK64:PACKED_GFX
+  offset: 0x1A34
+d_course_mario_raceway_packed_dl_4EE8:
+  symbol: d_course_mario_raceway_packed_dl_4EE8
+  type: MK64:PACKED_GFX
+  offset: 0x1A84
+d_course_mario_raceway_packed_dl_4F90:
+  symbol: d_course_mario_raceway_packed_dl_4F90
+  type: MK64:PACKED_GFX
+  offset: 0x1ABE
+d_course_mario_raceway_packed_dl_50E8:
+  symbol: d_course_mario_raceway_packed_dl_50E8
+  type: MK64:PACKED_GFX
+  offset: 0x1B5C
+d_course_mario_raceway_packed_dl_5218:
+  symbol: d_course_mario_raceway_packed_dl_5218
+  type: MK64:PACKED_GFX
+  offset: 0x1BE1
+d_course_mario_raceway_packed_dl_52B8:
+  symbol: d_course_mario_raceway_packed_dl_52B8
+  type: MK64:PACKED_GFX
+  offset: 0x1C18
+d_course_mario_raceway_packed_dl_5368:
+  symbol: d_course_mario_raceway_packed_dl_5368
+  type: MK64:PACKED_GFX
+  offset: 0x1C57
+d_course_mario_raceway_packed_dl_5408:
+  symbol: d_course_mario_raceway_packed_dl_5408
+  type: MK64:PACKED_GFX
+  offset: 0x1C8C
+d_course_mario_raceway_packed_dl_54B0:
+  symbol: d_course_mario_raceway_packed_dl_54B0
+  type: MK64:PACKED_GFX
+  offset: 0x1CC4
+d_course_mario_raceway_packed_dl_5550:
+  symbol: d_course_mario_raceway_packed_dl_5550
+  type: MK64:PACKED_GFX
+  offset: 0x1CF9
+d_course_mario_raceway_packed_dl_5608:
+  symbol: d_course_mario_raceway_packed_dl_5608
+  type: MK64:PACKED_GFX
+  offset: 0x1D3D
+d_course_mario_raceway_packed_dl_56F0:
+  symbol: d_course_mario_raceway_packed_dl_56F0
+  type: MK64:PACKED_GFX
+  offset: 0x1D99
+d_course_mario_raceway_packed_dl_5768:
+  symbol: d_course_mario_raceway_packed_dl_5768
+  type: MK64:PACKED_GFX
+  offset: 0x1DB9
+d_course_mario_raceway_packed_dl_5870:
+  symbol: d_course_mario_raceway_packed_dl_5870
+  type: MK64:PACKED_GFX
+  offset: 0x1E25
+d_course_mario_raceway_packed_dl_5970:
+  symbol: d_course_mario_raceway_packed_dl_5970
+  type: MK64:PACKED_GFX
+  offset: 0x1E8E
+d_course_mario_raceway_packed_dl_5A48:
+  symbol: d_course_mario_raceway_packed_dl_5A48
+  type: MK64:PACKED_GFX
+  offset: 0x1EE4
+d_course_mario_raceway_packed_dl_5AE0:
+  symbol: d_course_mario_raceway_packed_dl_5AE0
+  type: MK64:PACKED_GFX
+  offset: 0x1F12
+d_course_mario_raceway_packed_dl_5BC8:
+  symbol: d_course_mario_raceway_packed_dl_5BC8
+  type: MK64:PACKED_GFX
+  offset: 0x1F70
+d_course_mario_raceway_packed_dl_5C80:
+  symbol: d_course_mario_raceway_packed_dl_5C80
+  type: MK64:PACKED_GFX
+  offset: 0x1FB2
+d_course_mario_raceway_packed_dl_5CE8:
+  symbol: d_course_mario_raceway_packed_dl_5CE8
+  type: MK64:PACKED_GFX
+  offset: 0x1FC6
+d_course_mario_raceway_packed_dl_5D70:
+  symbol: d_course_mario_raceway_packed_dl_5D70
+  type: MK64:PACKED_GFX
+  offset: 0x1FEE
+d_course_mario_raceway_packed_dl_5DF0:
+  symbol: d_course_mario_raceway_packed_dl_5DF0
+  type: MK64:PACKED_GFX
+  offset: 0x2011
+d_course_mario_raceway_packed_dl_5E58:
+  symbol: d_course_mario_raceway_packed_dl_5E58
+  type: MK64:PACKED_GFX
+  offset: 0x2025
+d_course_mario_raceway_packed_dl_5ED0:
+  symbol: d_course_mario_raceway_packed_dl_5ED0
+  type: MK64:PACKED_GFX
+  offset: 0x2043
+d_course_mario_raceway_packed_dl_5F88:
+  symbol: d_course_mario_raceway_packed_dl_5F88
+  type: MK64:PACKED_GFX
+  offset: 0x2085
+d_course_mario_raceway_packed_dl_6068:
+  symbol: d_course_mario_raceway_packed_dl_6068
+  type: MK64:PACKED_GFX
+  offset: 0x20DC
+d_course_mario_raceway_packed_dl_60F0:
+  symbol: d_course_mario_raceway_packed_dl_60F0
+  type: MK64:PACKED_GFX
+  offset: 0x2106
+d_course_mario_raceway_packed_dl_6198:
+  symbol: d_course_mario_raceway_packed_dl_6198
+  type: MK64:PACKED_GFX
+  offset: 0x2140
+d_course_mario_raceway_packed_dl_6240:
+  symbol: d_course_mario_raceway_packed_dl_6240
+  type: MK64:PACKED_GFX
+  offset: 0x217C
+d_course_mario_raceway_packed_dl_62A0:
+  symbol: d_course_mario_raceway_packed_dl_62A0
+  type: MK64:PACKED_GFX
+  offset: 0x218B
+d_course_mario_raceway_packed_dl_6308:
+  symbol: d_course_mario_raceway_packed_dl_6308
+  type: MK64:PACKED_GFX
+  offset: 0x21A1
+d_course_mario_raceway_packed_dl_63B0:
+  symbol: d_course_mario_raceway_packed_dl_63B0
+  type: MK64:PACKED_GFX
+  offset: 0x21D9
+d_course_mario_raceway_packed_dl_6490:
+  symbol: d_course_mario_raceway_packed_dl_6490
+  type: MK64:PACKED_GFX
+  offset: 0x2230
+d_course_mario_raceway_packed_dl_6528:
+  symbol: d_course_mario_raceway_packed_dl_6528
+  type: MK64:PACKED_GFX
+  offset: 0x225E
+d_course_mario_raceway_packed_dl_6598:
+  symbol: d_course_mario_raceway_packed_dl_6598
+  type: MK64:PACKED_GFX
+  offset: 0x2277
+d_course_mario_raceway_packed_dl_6710:
+  symbol: d_course_mario_raceway_packed_dl_6710
+  type: MK64:PACKED_GFX
+  offset: 0x2302
+d_course_mario_raceway_packed_dl_68B0:
+  symbol: d_course_mario_raceway_packed_dl_68B0
+  type: MK64:PACKED_GFX
+  offset: 0x23CF
+d_course_mario_raceway_packed_dl_68C0:
+  symbol: d_course_mario_raceway_packed_dl_68C0
+  type: MK64:PACKED_GFX
+  offset: 0x23D3
+d_course_mario_raceway_packed_dl_6928:
+  symbol: d_course_mario_raceway_packed_dl_6928
+  type: MK64:PACKED_GFX
+  offset: 0x23F8
+d_course_mario_raceway_packed_dl_6938:
+  symbol: d_course_mario_raceway_packed_dl_6938
+  type: MK64:PACKED_GFX
+  offset: 0x23FC

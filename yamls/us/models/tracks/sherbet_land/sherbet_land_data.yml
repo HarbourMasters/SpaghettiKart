@@ -1,0 +1,976 @@
+:config:
+  segments:
+    - [0x06, 0x86ECF0]
+    - [0x07, 0x800000]
+  external_files:
+    - "yamls/us/textures/tracks/sherbet_land/sherbet_land_data.yml"
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_643B3C"]
+    - [0x05000800, "textures/other_textures/texture_66D024"]
+    - [0x05001000, "textures/other_textures/texture_678118"]
+    - [0x05001800, "textures/other_textures/sign_wood_red_arrow"]
+    - [0x05002800, "textures/other_textures/texture_678CC8"]
+    - [0x05003000, "textures/other_textures/texture_67842C"]
+    - [0x05003800, "textures/other_textures/texture_67893C"]
+    - [0x05004000, "textures/other_textures/texture_651984"]
+    - [0x05004800, "textures/other_textures/texture_651428"]
+    - [0x05005000, "textures/other_textures/texture_662924"]
+    # Segment 7
+    - [0x7000000, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_0"]
+    - [0x70000C0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_C0"]
+    - [0x7000180, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_180"]
+    - [0x7000240, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_240"]
+    - [0x7000300, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_300"]
+    - [0x7000328, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_328"]
+    - [0x7000338, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_338"]
+    - [0x7000348, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_348"]
+    - [0x7000470, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_470"]
+    - [0x70005D0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_5D0"]
+    - [0x7000730, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_730"]
+    - [0x7000858, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_858"]
+    - [0x70009A0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_9A0"]
+    - [0x7000B00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_B00"]
+    - [0x7000C30, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_C30"]
+    - [0x7000D48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_D48"]
+    - [0x7000D90, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_D90"]
+    - [0x7000E00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_E00"]
+    - [0x7000EA0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_EA0"]
+    - [0x7000EB8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_EB8"]
+    - [0x7000F48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_F48"]
+    - [0x7000FD0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_FD0"]
+    - [0x7001050, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1050"]
+    - [0x70010C8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_10C8"]
+    - [0x7001148, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1148"]
+    - [0x70011B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_11B8"]
+    - [0x7001220, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1220"]
+    - [0x70012C8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_12C8"]
+    - [0x7001370, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1370"]
+    - [0x70013E8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_13E8"]
+    - [0x7001450, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1450"]
+    - [0x70014B0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_14B0"]
+    - [0x7001520, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1520"]
+    - [0x7001598, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1598"]
+    - [0x7001640, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1640"]
+    - [0x70016B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_16B8"]
+    - [0x7001720, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1720"]
+    - [0x7001798, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1798"]
+    - [0x7001800, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1800"]
+    - [0x7001870, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1870"]
+    - [0x70018E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_18E0"]
+    - [0x7001940, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1940"]
+    - [0x7001998, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1998"]
+    - [0x7001A18, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1A18"]
+    - [0x7001A98, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1A98"]
+    - [0x7001B20, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1B20"]
+    - [0x7001BE0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1BE0"]
+    - [0x7001C50, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1C50"]
+    - [0x7001CD8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1CD8"]
+    - [0x7001D48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1D48"]
+    - [0x7001DC0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1DC0"]
+    - [0x7001E40, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1E40"]
+    - [0x7001EB8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1EB8"]
+    - [0x7001F10, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1F10"]
+    - [0x7001F78, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1F78"]
+    - [0x7001FF0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1FF0"]
+    - [0x7002068, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2068"]
+    - [0x70020D0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_20D0"]
+    - [0x7002138, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2138"]
+    - [0x70021B0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_21B0"]
+    - [0x7002220, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2220"]
+    - [0x7002290, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2290"]
+    - [0x7002308, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2308"]
+    - [0x7002358, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2358"]
+    - [0x7002450, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2450"]
+    - [0x7002548, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2548"]
+    - [0x7002640, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2640"]
+    - [0x7002738, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2738"]
+    - [0x7002760, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2760"]
+    - [0x7002798, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2798"]
+    - [0x70027A8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_27A8"]
+    - [0x7002B48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2B48"]
+    - [0x7002B58, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2B58"]
+    - [0x7002BC8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2BC8"]
+    - [0x7002C68, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2C68"]
+    - [0x7002C80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2C80"]
+    - [0x7002CF0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2CF0"]
+    - [0x7002D80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2D80"]
+    - [0x7002E08, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2E08"]
+    - [0x7002E88, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2E88"]
+    - [0x7002F00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2F00"]
+    - [0x7002F80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2F80"]
+    - [0x7002FE8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2FE8"]
+    - [0x7003058, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3058"]
+    - [0x70030C0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_30C0"]
+    - [0x7003170, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3170"]
+    - [0x7003218, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3218"]
+    - [0x7003290, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3290"]
+    - [0x70032F8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_32F8"]
+    - [0x7003368, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3368"]
+    - [0x70033E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_33E0"]
+    - [0x7003488, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3488"]
+    - [0x7003500, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3500"]
+    - [0x7003568, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3568"]
+    - [0x70035E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_35E0"]
+    - [0x7003648, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3648"]
+    - [0x70036B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_36B8"]
+    - [0x7003728, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3728"]
+    - [0x7003788, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3788"]
+    - [0x70037E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_37E0"]
+    - [0x7003848, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3848"]
+    - [0x7003858, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3858"]
+  # Segment 4
+    - [0x4000000, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000000"]
+    - [0x4000040, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000040"]
+    - [0x4000080, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000080"]
+    - [0x40000c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040000C0"]
+    - [0x4000100, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000100"]
+    - [0x4000140, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000140"]
+    - [0x4000180, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000180"]
+    - [0x40001c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040001C0"]
+    - [0x4000200, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000200"]
+    - [0x4000400, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000600"]
+    - [0x4000800, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000800"]
+    - [0x40008b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040008B0"]
+    - [0x4000ab0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000AB0"]
+    - [0x4000cb0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000CB0"]
+    - [0x4000ea0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04000EA0"]
+    - [0x40010a0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040010A0"]
+    - [0x40011d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040011D0"]
+    - [0x40013b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040013B0"]
+    - [0x4001590, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001590"]
+    - [0x4001780, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001780"]
+    - [0x4001970, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001970"]
+    - [0x4001b20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001B20"]
+    - [0x4001d20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001D20"]
+    - [0x4001f20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04001F20"]
+    - [0x40020b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040020B0"]
+    - [0x40020f0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040020F0"]
+    - [0x40022e0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040022E0"]
+    - [0x40024c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040024C0"]
+    - [0x40026a0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040026A0"]
+    - [0x4002890, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04002890"]
+    - [0x40028f0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040028F0"]
+    - [0x4002ad0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04002AD0"]
+    - [0x4002cc0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04002CC0"]
+    - [0x4002ec0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04002EC0"]
+    - [0x40030c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040030C0"]
+    - [0x4003230, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003230"]
+    - [0x4003410, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003410"]
+    - [0x4003600, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003600"]
+    - [0x4003800, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003800"]
+    - [0x40039d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040039D0"]
+    - [0x4003bc0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003BC0"]
+    - [0x4003da0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003DA0"]
+    - [0x4003e80, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003E80"]
+    - [0x4003ec0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003EC0"]
+    - [0x4003fc0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04003FC0"]
+    - [0x40041c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040041C0"]
+    - [0x4004230, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004230"]
+    - [0x40043f0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040043F0"]
+    - [0x4004570, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004570"]
+    - [0x4004750, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004750"]
+    - [0x40048b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040048B0"]
+    - [0x4004a60, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004A60"]
+    - [0x4004b80, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004B80"]
+    - [0x4004c40, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004C40"]
+    - [0x4004e40, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004E40"]
+    - [0x4004f30, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04004F30"]
+    - [0x4005120, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005120"]
+    - [0x40051b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040051B0"]
+    - [0x4005330, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005330"]
+    - [0x40053f0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040053F0"]
+    - [0x40054b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040054B0"]
+    - [0x40055b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040055B0"]
+    - [0x40057b0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040057B0"]
+    - [0x40057f0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040057F0"]
+    - [0x40058c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040058C0"]
+    - [0x4005940, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005940"]
+    - [0x4005a40, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005A40"]
+    - [0x4005ac0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005AC0"]
+    - [0x4005b80, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005B80"]
+    - [0x4005c40, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005C40"]
+    - [0x4005c80, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005C80"]
+    - [0x4005d30, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005D30"]
+    - [0x4005de0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005DE0"]
+    - [0x4005ee0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005EE0"]
+    - [0x4005f80, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005F80"]
+    - [0x4005fc0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04005FC0"]
+    - [0x4006040, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006040"]
+    - [0x4006110, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006110"]
+    - [0x4006180, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006180"]
+    - [0x4006220, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006220"]
+    - [0x40062d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040062D0"]
+    - [0x4006370, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006370"]
+    - [0x40063c0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040063C0"]
+    - [0x4006450, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006450"]
+    - [0x40064e0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040064E0"]
+    - [0x4006540, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006540"]
+    - [0x4006590, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006590"]
+    - [0x4006620, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006620"]
+    - [0x4006690, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006690"]
+    - [0x4006700, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006700"]
+    - [0x4006790, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006790"]
+    - [0x4006990, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006990"]
+    - [0x4006b90, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006B90"]
+    - [0x4006c10, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006C10"]
+    - [0x4006e10, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04006E10"]
+    - [0x4007010, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007010"]
+    - [0x4007090, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007090"]
+    - [0x4007290, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007290"]
+    - [0x4007490, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007490"]
+    - [0x4007510, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007510"]
+    - [0x4007710, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007710"]
+    - [0x4007910, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007910"]
+    - [0x4007990, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007990"]
+    - [0x4007a20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007A20"]
+    - [0x4007c20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007C20"]
+    - [0x4007e20, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04007E20"]
+    - [0x4008020, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008020"]
+    - [0x4008220, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008220"]
+    - [0x4008420, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008420"]
+    - [0x4008620, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008620"]
+    - [0x4008800, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008800"]
+    - [0x4008870, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008870"]
+    - [0x4008970, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008970"]
+    - [0x4008b50, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008B50"]
+    - [0x4008bc0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008BC0"]
+    - [0x4008ce0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008CE0"]
+    - [0x4008ea0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04008EA0"]
+    - [0x4009020, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009020"]
+    - [0x4009200, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009200"]
+    - [0x4009360, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009360"]
+    - [0x4009510, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009510"]
+    - [0x40095d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040095D0"]
+    - [0x40096d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x040096D0"]
+    - [0x4009790, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009790"]
+    - [0x4009980, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009980"]
+    - [0x4009aa0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009AA0"]
+    - [0x4009c90, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009C90"]
+    - [0x4009d50, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009D50"]
+    - [0x4009ed0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009ED0"]
+    - [0x4009f90, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x04009F90"]
+    - [0x400a090, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A090"]
+    - [0x400a290, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A290"]
+    - [0x400a2d0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A2D0"]
+    - [0x400a3a0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A3A0"]
+    - [0x400a420, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A420"]
+    - [0x400a520, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A520"]
+    - [0x400a5a0, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A5A0"]
+    - [0x400a660, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A660"]
+    - [0x400a720, "models/tracks/sherbet_land/sherbet_land_vertices/d_course_sherbet_land_vertex_0x0400A720"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_sherbet_land_dl_0:
+  symbol: d_course_sherbet_land_dl_0
+  type: gfx
+  offset: 0x0
+d_course_sherbet_land_dl_C0:
+  symbol: d_course_sherbet_land_dl_C0
+  type: gfx
+  offset: 0xC0
+d_course_sherbet_land_dl_158:
+  symbol: d_course_sherbet_land_dl_158
+  type: gfx
+  offset: 0x158
+d_course_sherbet_land_dl_1A8:
+  symbol: d_course_sherbet_land_dl_1A8
+  type: gfx
+  offset: 0x1A8
+d_course_sherbet_land_dl_280:
+  symbol: d_course_sherbet_land_dl_280
+  type: gfx
+  offset: 0x280
+d_course_sherbet_land_dl_310:
+  symbol: d_course_sherbet_land_dl_310
+  type: gfx
+  offset: 0x310
+d_course_sherbet_land_dl_3B8:
+  symbol: d_course_sherbet_land_dl_3B8
+  type: gfx
+  offset: 0x3B8
+d_course_sherbet_land_dl_400:
+  symbol: d_course_sherbet_land_dl_400
+  type: gfx
+  offset: 0x400
+d_course_sherbet_land_dl_4E8:
+  symbol: d_course_sherbet_land_dl_4E8
+  type: gfx
+  offset: 0x4E8
+d_course_sherbet_land_dl_560:
+  symbol: d_course_sherbet_land_dl_560
+  type: gfx
+  offset: 0x560
+d_course_sherbet_land_dl_638:
+  symbol: d_course_sherbet_land_dl_638
+  type: gfx
+  offset: 0x638
+d_course_sherbet_land_dl_6A0:
+  symbol: d_course_sherbet_land_dl_6A0
+  type: gfx
+  offset: 0x6A0
+d_course_sherbet_land_dl_768:
+  symbol: d_course_sherbet_land_dl_768
+  type: gfx
+  offset: 0x768
+d_course_sherbet_land_dl_7A0:
+  symbol: d_course_sherbet_land_dl_7A0
+  type: gfx
+  offset: 0x7A0
+d_course_sherbet_land_dl_880:
+  symbol: d_course_sherbet_land_dl_880
+  type: gfx
+  offset: 0x880
+d_course_sherbet_land_dl_8E8:
+  symbol: d_course_sherbet_land_dl_8E8
+  type: gfx
+  offset: 0x8E8
+d_course_sherbet_land_dl_9A0:
+  symbol: d_course_sherbet_land_dl_9A0
+  type: gfx
+  offset: 0x9A0
+d_course_sherbet_land_dl_A28:
+  symbol: d_course_sherbet_land_dl_A28
+  type: gfx
+  offset: 0xA28
+d_course_sherbet_land_dl_B08:
+  symbol: d_course_sherbet_land_dl_B08
+  type: gfx
+  offset: 0xB08
+d_course_sherbet_land_dl_BC0:
+  symbol: d_course_sherbet_land_dl_BC0
+  type: gfx
+  offset: 0xBC0
+d_course_sherbet_land_dl_C88:
+  symbol: d_course_sherbet_land_dl_C88
+  type: gfx
+  offset: 0xC88
+d_course_sherbet_land_dl_D10:
+  symbol: d_course_sherbet_land_dl_D10
+  type: gfx
+  offset: 0xD10
+d_course_sherbet_land_dl_DF0:
+  symbol: d_course_sherbet_land_dl_DF0
+  type: gfx
+  offset: 0xDF0
+d_course_sherbet_land_dl_EC8:
+  symbol: d_course_sherbet_land_dl_EC8
+  type: gfx
+  offset: 0xEC8
+d_course_sherbet_land_dl_F68:
+  symbol: d_course_sherbet_land_dl_F68
+  type: gfx
+  offset: 0xF68
+d_course_sherbet_land_dl_1028:
+  symbol: d_course_sherbet_land_dl_1028
+  type: gfx
+  offset: 0x1028
+d_course_sherbet_land_dl_10D8:
+  symbol: d_course_sherbet_land_dl_10D8
+  type: gfx
+  offset: 0x10D8
+d_course_sherbet_land_dl_11C8:
+  symbol: d_course_sherbet_land_dl_11C8
+  type: gfx
+  offset: 0x11C8
+d_course_sherbet_land_dl_1238:
+  symbol: d_course_sherbet_land_dl_1238
+  type: gfx
+  offset: 0x1238
+d_course_sherbet_land_dl_12F0:
+  symbol: d_course_sherbet_land_dl_12F0
+  type: gfx
+  offset: 0x12F0
+d_course_sherbet_land_dl_1368:
+  symbol: d_course_sherbet_land_dl_1368
+  type: gfx
+  offset: 0x1368
+d_course_sherbet_land_dl_1440:
+  symbol: d_course_sherbet_land_dl_1440
+  type: gfx
+  offset: 0x1440
+d_course_sherbet_land_dl_1480:
+  symbol: d_course_sherbet_land_dl_1480
+  type: gfx
+  offset: 0x1480
+d_course_sherbet_land_dl_14C0:
+  symbol: d_course_sherbet_land_dl_14C0
+  type: gfx
+  offset: 0x14C0
+d_course_sherbet_land_dl_1508:
+  symbol: d_course_sherbet_land_dl_1508
+  type: gfx
+  offset: 0x1508
+d_course_sherbet_land_dl_1570:
+  symbol: d_course_sherbet_land_dl_1570
+  type: gfx
+  offset: 0x1570
+d_course_sherbet_land_dl_1598:
+  symbol: d_course_sherbet_land_dl_1598
+  type: gfx
+  offset: 0x1598
+d_course_sherbet_land_dl_15F0:
+  symbol: d_course_sherbet_land_dl_15F0
+  type: gfx
+  offset: 0x15F0
+d_course_sherbet_land_dl_1638:
+  symbol: d_course_sherbet_land_dl_1638
+  type: gfx
+  offset: 0x1638
+d_course_sherbet_land_dl_1698:
+  symbol: d_course_sherbet_land_dl_1698
+  type: gfx
+  offset: 0x1698
+d_course_sherbet_land_dl_16C0:
+  symbol: d_course_sherbet_land_dl_16C0
+  type: gfx
+  offset: 0x16C0
+d_course_sherbet_land_dl_1730:
+  symbol: d_course_sherbet_land_dl_1730
+  type: gfx
+  offset: 0x1730
+d_course_sherbet_land_dl_1778:
+  symbol: d_course_sherbet_land_dl_1778
+  type: gfx
+  offset: 0x1778
+d_course_sherbet_land_dl_17D8:
+  symbol: d_course_sherbet_land_dl_17D8
+  type: gfx
+  offset: 0x17D8
+d_course_sherbet_land_dl_1828:
+  symbol: d_course_sherbet_land_dl_1828
+  type: gfx
+  offset: 0x1828
+d_course_sherbet_land_dl_18A0:
+  symbol: d_course_sherbet_land_dl_18A0
+  type: gfx
+  offset: 0x18A0
+d_course_sherbet_land_dl_18E8:
+  symbol: d_course_sherbet_land_dl_18E8
+  type: gfx
+  offset: 0x18E8
+d_course_sherbet_land_dl_1920:
+  symbol: d_course_sherbet_land_dl_1920
+  type: gfx
+  offset: 0x1920
+d_course_sherbet_land_dl_19A0:
+  symbol: d_course_sherbet_land_dl_19A0
+  type: gfx
+  offset: 0x19A0
+d_course_sherbet_land_dl_19F0:
+  symbol: d_course_sherbet_land_dl_19F0
+  type: gfx
+  offset: 0x19F0
+d_course_sherbet_land_dl_1A58:
+  symbol: d_course_sherbet_land_dl_1A58
+  type: gfx
+  offset: 0x1A58
+d_course_sherbet_land_dl_1A90:
+  symbol: d_course_sherbet_land_dl_1A90
+  type: gfx
+  offset: 0x1A90
+d_course_sherbet_land_dl_1AF8:
+  symbol: d_course_sherbet_land_dl_1AF8
+  type: gfx
+  offset: 0x1AF8
+d_course_sherbet_land_dl_1B50:
+  symbol: d_course_sherbet_land_dl_1B50
+  type: gfx
+  offset: 0x1B50
+d_course_sherbet_land_dl_1BA8:
+  symbol: d_course_sherbet_land_dl_1BA8
+  type: gfx
+  offset: 0x1BA8
+d_course_sherbet_land_dl_1C20:
+  symbol: d_course_sherbet_land_dl_1C20
+  type: gfx
+  offset: 0x1C20
+d_course_sherbet_land_dl_1C48:
+  symbol: d_course_sherbet_land_dl_1C48
+  type: gfx
+  offset: 0x1C48
+d_course_sherbet_land_dl_1D08:
+  symbol: d_course_sherbet_land_dl_1D08
+  type: gfx
+  offset: 0x1D08
+d_course_sherbet_land_dl_1D60:
+  symbol: d_course_sherbet_land_dl_1D60
+  type: gfx
+  offset: 0x1D60
+d_course_sherbet_land_dl_1E10:
+  symbol: d_course_sherbet_land_dl_1E10
+  type: gfx
+  offset: 0x1E10
+d_course_sherbet_land_dl_1E88:
+  symbol: d_course_sherbet_land_dl_1E88
+  type: gfx
+  offset: 0x1E88
+d_course_sherbet_land_dl_1F70:
+  symbol: d_course_sherbet_land_dl_1F70
+  type: gfx
+  offset: 0x1F70
+d_course_sherbet_land_dl_2010:
+  symbol: d_course_sherbet_land_dl_2010
+  type: gfx
+  offset: 0x2010
+d_course_sherbet_land_dl_20D0:
+  symbol: d_course_sherbet_land_dl_20D0
+  type: gfx
+  offset: 0x20D0
+d_course_sherbet_land_dl_2190:
+  symbol: d_course_sherbet_land_dl_2190
+  type: gfx
+  offset: 0x2190
+d_course_sherbet_land_dl_2288:
+  symbol: d_course_sherbet_land_dl_2288
+  type: gfx
+  offset: 0x2288
+d_course_sherbet_land_dl_22F8:
+  symbol: d_course_sherbet_land_dl_22F8
+  type: gfx
+  offset: 0x22F8
+d_course_sherbet_land_dl_2370:
+  symbol: d_course_sherbet_land_dl_2370
+  type: gfx
+  offset: 0x2370
+d_course_sherbet_land_dl_2438:
+  symbol: d_course_sherbet_land_dl_2438
+  type: gfx
+  offset: 0x2438
+d_course_sherbet_land_dl_2530:
+  symbol: d_course_sherbet_land_dl_2530
+  type: gfx
+  offset: 0x2530
+d_course_sherbet_land_dl_25A0:
+  symbol: d_course_sherbet_land_dl_25A0
+  type: gfx
+  offset: 0x25A0
+d_course_sherbet_land_dl_25F8:
+  symbol: d_course_sherbet_land_dl_25F8
+  type: gfx
+  offset: 0x25F8
+d_course_sherbet_land_dl_26D0:
+  symbol: d_course_sherbet_land_dl_26D0
+  type: gfx
+  offset: 0x26D0
+d_course_sherbet_land_dl_27F0:
+  symbol: d_course_sherbet_land_dl_27F0
+  type: gfx
+  offset: 0x27F0
+d_course_sherbet_land_dl_28A0:
+  symbol: d_course_sherbet_land_dl_28A0
+  type: gfx
+  offset: 0x28A0
+d_course_sherbet_land_dl_2918:
+  symbol: d_course_sherbet_land_dl_2918
+  type: gfx
+  offset: 0x2918
+d_course_sherbet_land_dl_2A38:
+  symbol: d_course_sherbet_land_dl_2A38
+  type: gfx
+  offset: 0x2A38
+d_course_sherbet_land_dl_2B08:
+  symbol: d_course_sherbet_land_dl_2B08
+  type: gfx
+  offset: 0x2B08
+d_course_sherbet_land_dl_2BE0:
+  symbol: d_course_sherbet_land_dl_2BE0
+  type: gfx
+  offset: 0x2BE0
+d_course_sherbet_land_dl_2C58:
+  symbol: d_course_sherbet_land_dl_2C58
+  type: gfx
+  offset: 0x2C58
+d_course_sherbet_land_dl_2D78:
+  symbol: d_course_sherbet_land_dl_2D78
+  type: gfx
+  offset: 0x2D78
+d_course_sherbet_land_dl_2E28:
+  symbol: d_course_sherbet_land_dl_2E28
+  type: gfx
+  offset: 0x2E28
+d_course_sherbet_land_dl_2F48:
+  symbol: d_course_sherbet_land_dl_2F48
+  type: gfx
+  offset: 0x2F48
+d_course_sherbet_land_dl_2FE8:
+  symbol: d_course_sherbet_land_dl_2FE8
+  type: gfx
+  offset: 0x2FE8
+d_course_sherbet_land_dl_30E0:
+  symbol: d_course_sherbet_land_dl_30E0
+  type: gfx
+  offset: 0x30E0
+d_course_sherbet_land_dl_3150:
+  symbol: d_course_sherbet_land_dl_3150
+  type: gfx
+  offset: 0x3150
+d_course_sherbet_land_dl_3260:
+  symbol: d_course_sherbet_land_dl_3260
+  type: gfx
+  offset: 0x3260
+d_course_sherbet_land_dl_3320:
+  symbol: d_course_sherbet_land_dl_3320
+  type: gfx
+  offset: 0x3320
+d_course_sherbet_land_dl_33E0:
+  symbol: d_course_sherbet_land_dl_33E0
+  type: gfx
+  offset: 0x33E0
+d_course_sherbet_land_dl_3490:
+  symbol: d_course_sherbet_land_dl_3490
+  type: gfx
+  offset: 0x3490
+d_course_sherbet_land_dl_35A8:
+  symbol: d_course_sherbet_land_dl_35A8
+  type: gfx
+  offset: 0x35A8
+d_course_sherbet_land_dl_36A8:
+  symbol: d_course_sherbet_land_dl_36A8
+  type: gfx
+  offset: 0x36A8
+d_course_sherbet_land_dl_3770:
+  symbol: d_course_sherbet_land_dl_3770
+  type: gfx
+  offset: 0x3770
+d_course_sherbet_land_dl_3840:
+  symbol: d_course_sherbet_land_dl_3840
+  type: gfx
+  offset: 0x3840
+d_course_sherbet_land_dl_3940:
+  symbol: d_course_sherbet_land_dl_3940
+  type: gfx
+  offset: 0x3940
+d_course_sherbet_land_dl_3A50:
+  symbol: d_course_sherbet_land_dl_3A50
+  type: gfx
+  offset: 0x3A50
+d_course_sherbet_land_dl_3AE0:
+  symbol: d_course_sherbet_land_dl_3AE0
+  type: gfx
+  offset: 0x3AE0
+d_course_sherbet_land_dl_3BA8:
+  symbol: d_course_sherbet_land_dl_3BA8
+  type: gfx
+  offset: 0x3BA8
+d_course_sherbet_land_dl_3C48:
+  symbol: d_course_sherbet_land_dl_3C48
+  type: gfx
+  offset: 0x3C48
+d_course_sherbet_land_dl_3D40:
+  symbol: d_course_sherbet_land_dl_3D40
+  type: gfx
+  offset: 0x3D40
+d_course_sherbet_land_dl_3D98:
+  symbol: d_course_sherbet_land_dl_3D98
+  type: gfx
+  offset: 0x3D98
+d_course_sherbet_land_dl_3E58:
+  symbol: d_course_sherbet_land_dl_3E58
+  type: gfx
+  offset: 0x3E58
+d_course_sherbet_land_dl_3EB8:
+  symbol: d_course_sherbet_land_dl_3EB8
+  type: gfx
+  offset: 0x3EB8
+d_course_sherbet_land_dl_3FA0:
+  symbol: d_course_sherbet_land_dl_3FA0
+  type: gfx
+  offset: 0x3FA0
+d_course_sherbet_land_dl_3FC0:
+  symbol: d_course_sherbet_land_dl_3FC0
+  type: gfx
+  offset: 0x3FC0
+d_course_sherbet_land_dl_3FD8:
+  symbol: d_course_sherbet_land_dl_3FD8
+  type: gfx
+  offset: 0x3FD8
+d_course_sherbet_land_dl_3FE8:
+  symbol: d_course_sherbet_land_dl_3FE8
+  type: gfx
+  offset: 0x3FE8
+d_course_sherbet_land_dl_4000:
+  symbol: d_course_sherbet_land_dl_4000
+  type: gfx
+  offset: 0x4000
+d_course_sherbet_land_dl_4010:
+  symbol: d_course_sherbet_land_dl_4010
+  type: gfx
+  offset: 0x4010
+d_course_sherbet_land_dl_4018:
+  symbol: d_course_sherbet_land_dl_4018
+  type: gfx
+  offset: 0x4018
+d_course_sherbet_land_dl_4020:
+  symbol: d_course_sherbet_land_dl_4020
+  type: gfx
+  offset: 0x4020
+d_course_sherbet_land_dl_4028:
+  symbol: d_course_sherbet_land_dl_4028
+  type: gfx
+  offset: 0x4028
+d_course_sherbet_land_dl_4030:
+  symbol: d_course_sherbet_land_dl_4030
+  type: gfx
+  offset: 0x4030
+d_course_sherbet_land_dl_4038:
+  symbol: d_course_sherbet_land_dl_4038
+  type: gfx
+  offset: 0x4038
+d_course_sherbet_land_dl_4040:
+  symbol: d_course_sherbet_land_dl_4040
+  type: gfx
+  offset: 0x4040
+d_course_sherbet_land_dl_4048:
+  symbol: d_course_sherbet_land_dl_4048
+  type: gfx
+  offset: 0x4048
+d_course_sherbet_land_dl_4050:
+  symbol: d_course_sherbet_land_dl_4050
+  type: gfx
+  offset: 0x4050
+d_course_sherbet_land_dl_4058:
+  symbol: d_course_sherbet_land_dl_4058
+  type: gfx
+  offset: 0x4058
+d_course_sherbet_land_dl_4060:
+  symbol: d_course_sherbet_land_dl_4060
+  type: gfx
+  offset: 0x4060
+d_course_sherbet_land_dl_4068:
+  symbol: d_course_sherbet_land_dl_4068
+  type: gfx
+  offset: 0x4068
+d_course_sherbet_land_dl_4070:
+  symbol: d_course_sherbet_land_dl_4070
+  type: gfx
+  offset: 0x4070
+d_course_sherbet_land_dl_4078:
+  symbol: d_course_sherbet_land_dl_4078
+  type: gfx
+  offset: 0x4078
+d_course_sherbet_land_dl_4080:
+  symbol: d_course_sherbet_land_dl_4080
+  type: gfx
+  offset: 0x4080
+d_course_sherbet_land_dl_4088:
+  symbol: d_course_sherbet_land_dl_4088
+  type: gfx
+  offset: 0x4088
+d_course_sherbet_land_dl_4090:
+  symbol: d_course_sherbet_land_dl_4090
+  type: gfx
+  offset: 0x4090
+d_course_sherbet_land_dl_4098:
+  symbol: d_course_sherbet_land_dl_4098
+  type: gfx
+  offset: 0x4098
+d_course_sherbet_land_dl_40A0:
+  symbol: d_course_sherbet_land_dl_40A0
+  type: gfx
+  offset: 0x40A0
+d_course_sherbet_land_dl_40A8:
+  symbol: d_course_sherbet_land_dl_40A8
+  type: gfx
+  offset: 0x40A8
+d_course_sherbet_land_dl_40B0:
+  symbol: d_course_sherbet_land_dl_40B0
+  type: gfx
+  offset: 0x40B0
+d_course_sherbet_land_dl_4180:
+  symbol: d_course_sherbet_land_dl_4180
+  type: gfx
+  offset: 0x4180
+d_course_sherbet_land_dl_41B8:
+  symbol: d_course_sherbet_land_dl_41B8
+  type: gfx
+  offset: 0x41B8
+d_course_sherbet_land_dl_4280:
+  symbol: d_course_sherbet_land_dl_4280
+  type: gfx
+  offset: 0x4280
+d_course_sherbet_land_dl_42E0:
+  symbol: d_course_sherbet_land_dl_42E0
+  type: gfx
+  offset: 0x42E0
+d_course_sherbet_land_dl_43C8:
+  symbol: d_course_sherbet_land_dl_43C8
+  type: gfx
+  offset: 0x43C8
+d_course_sherbet_land_dl_4470:
+  symbol: d_course_sherbet_land_dl_4470
+  type: gfx
+  offset: 0x4470
+d_course_sherbet_land_dl_4570:
+  symbol: d_course_sherbet_land_dl_4570
+  type: gfx
+  offset: 0x4570
+d_course_sherbet_land_dl_4618:
+  symbol: d_course_sherbet_land_dl_4618
+  type: gfx
+  offset: 0x4618
+d_course_sherbet_land_dl_4710:
+  symbol: d_course_sherbet_land_dl_4710
+  type: gfx
+  offset: 0x4710
+d_course_sherbet_land_dl_4798:
+  symbol: d_course_sherbet_land_dl_4798
+  type: gfx
+  offset: 0x4798
+d_course_sherbet_land_dl_4868:
+  symbol: d_course_sherbet_land_dl_4868
+  type: gfx
+  offset: 0x4868
+d_course_sherbet_land_dl_4930:
+  symbol: d_course_sherbet_land_dl_4930
+  type: gfx
+  offset: 0x4930
+d_course_sherbet_land_dl_4A20:
+  symbol: d_course_sherbet_land_dl_4A20
+  type: gfx
+  offset: 0x4A20
+d_course_sherbet_land_dl_4A98:
+  symbol: d_course_sherbet_land_dl_4A98
+  type: gfx
+  offset: 0x4A98
+d_course_sherbet_land_dl_4B20:
+  symbol: d_course_sherbet_land_dl_4B20
+  type: gfx
+  offset: 0x4B20
+d_course_sherbet_land_model1:
+  symbol: d_course_sherbet_land_model1
+  type: vtx
+  offset: 0x62B8
+  count: 30
+d_course_sherbet_land_model2:
+  symbol: d_course_sherbet_land_model2
+  type: vtx
+  offset: 0x6498
+  count: 30
+d_course_sherbet_land_model3:
+  symbol: d_course_sherbet_land_model3
+  type: vtx
+  offset: 0x6678
+  count: 30
+d_course_sherbet_land_model4:
+  symbol: d_course_sherbet_land_model4
+  type: vtx
+  offset: 0x6858
+  count: 9
+d_course_sherbet_land_dl_70E8:
+  symbol: d_course_sherbet_land_dl_70E8
+  type: gfx
+  offset: 0x70E8
+d_course_sherbet_land_dl_7208:
+  symbol: d_course_sherbet_land_dl_7208
+  type: gfx
+  offset: 0x7208
+d_course_sherbet_land_dl_ice_block:
+  symbol: d_course_sherbet_land_dl_ice_block
+  type: gfx
+  offset: 0x7218
+d_course_sherbet_land_dl_7228:
+  symbol: d_course_sherbet_land_dl_7228
+  type: gfx
+  offset: 0x7228
+d_course_sherbet_land_penguin_eyes_model:
+  symbol: d_course_sherbet_land_penguin_eyes_model
+  type: vtx
+  offset: 0x82E8
+  count: 8
+d_course_sherbet_land_dl_8368:
+  symbol: d_course_sherbet_land_dl_8368
+  type: gfx
+  offset: 0x8368
+d_course_sherbet_land_penguin_nose_model:
+  symbol: d_course_sherbet_land_penguin_nose_model
+  type: vtx
+  offset: 0x8398
+  count: 4
+d_course_sherbet_land_dl_83D8:
+  symbol: d_course_sherbet_land_dl_83D8
+  type: gfx
+  offset: 0x83D8
+d_course_sherbet_land_penguin_head_model1:
+  symbol: d_course_sherbet_land_penguin_head_model1
+  type: vtx
+  offset: 0x8400
+  count: 24
+d_course_sherbet_land_penguin_head_model2:
+  symbol: d_course_sherbet_land_penguin_head_model2
+  type: vtx
+  offset: 0x8580
+  count: 3
+d_course_sherbet_land_dl_85B0:
+  symbol: d_course_sherbet_land_dl_85B0
+  type: gfx
+  offset: 0x85B0
+d_course_sherbet_land_penguin_arms_model:
+  symbol: d_course_sherbet_land_penguin_arms_model
+  type: vtx
+  offset: 0x8690
+  count: 10
+d_course_sherbet_land_dl_8730:
+  symbol: d_course_sherbet_land_dl_8730
+  type: gfx
+  offset: 0x8730
+d_course_sherbet_land_penguin_unknown_model:
+  symbol: d_course_sherbet_land_penguin_unknown_model
+  type: vtx
+  offset: 0x8768
+  count: 10
+d_course_sherbet_land_dl_8808:
+  symbol: d_course_sherbet_land_dl_8808
+  type: gfx
+  offset: 0x8808
+d_course_sherbet_land_dl_8810:
+  symbol: d_course_sherbet_land_dl_8810
+  type: gfx
+  offset: 0x8810
+d_course_sherbet_land_penguin_right_foot_model:
+  symbol: d_course_sherbet_land_penguin_right_foot_model
+  type: vtx
+  offset: 0x8840
+  count: 15
+d_course_sherbet_land_dl_8930:
+  symbol: d_course_sherbet_land_dl_8930
+  type: gfx
+  offset: 0x8930
+d_course_sherbet_land_penguin_left_foot_model:
+  symbol: d_course_sherbet_land_penguin_left_foot_model
+  type: vtx
+  offset: 0x8988
+  count: 15
+d_course_sherbet_land_dl_8A78:
+  symbol: d_course_sherbet_land_dl_8A78
+  type: gfx
+  offset: 0x8A78
+d_course_sherbet_land_penguin_body_model1:
+  symbol: d_course_sherbet_land_penguin_body_model1
+  type: vtx
+  offset: 0x8AD0
+  count: 20
+d_course_sherbet_land_penguin_body_model2:
+  symbol: d_course_sherbet_land_penguin_body_model2
+  type: vtx
+  offset: 0x8C10
+  count: 15
+d_course_sherbet_land_dl_8D00:
+  symbol: d_course_sherbet_land_dl_8D00
+  type: gfx
+  offset: 0x8D00
+d_course_sherbet_land_dl_8E00:
+  symbol: d_course_sherbet_land_dl_8E00
+  type: gfx
+  offset: 0x8E00
+d_course_sherbet_land_dl_9AE8:
+  symbol: d_course_sherbet_land_dl_9AE8
+  type: gfx
+  offset: 0x9AE8

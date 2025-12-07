@@ -24,7 +24,7 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "collision.h"
-#include "assets/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ceremony_and_credits.h"
 #include "objects.h"
 #include "update_objects.h"
@@ -34,6 +34,7 @@ extern "C" {
 #include "race_logic.h"
 #include "effects.h"
 #include "memory.h"
+#include <assets/models/common_data.h>
 extern s8 gPlayerCount;
 }
 

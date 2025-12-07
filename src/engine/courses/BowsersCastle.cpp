@@ -4,12 +4,14 @@
 #include <memory>
 
 #include "BowsersCastle.h"
+#include "align_asset_macro.h"
 #include "engine/World.h"
 #include "engine/courses/Course.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Thwomp.h"
-#include "bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
+#include "assets/other/tracks/bowsers_castle/bowsers_castle_data.h"
 
 extern "C" {
     #include "main.h"
@@ -25,7 +27,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -33,46 +35,10 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "memory.h"
     #include "course.h"
-    extern const char *bowsers_castle_dls[];
+    extern const char *bowsers_castle_dls[108];
 }
 
-const course_texture bowsers_castle_textures[] = {
-    { gTexture64313C, 0x01B8, 0x0800, 0x0 },
-    { gTexture6528DC, 0x0278, 0x0800, 0x0 },
-    { gTexture66ED38, 0x010E, 0x0800, 0x0 },
-    { gTexture676C6C, 0x0110, 0x0800, 0x0 },
-    { gTexture676EA8, 0x0108, 0x0800, 0x0 },
-    { gTexture679D34, 0x0106, 0x0800, 0x0 },
-    { gTextureGrass6, 0x023B, 0x0800, 0x0 },
-    { gTexture6522E0, 0x05FC, 0x0800, 0x0 },
-    { gTexture651F40, 0x039F, 0x0800, 0x0 },
-    { gTextureRoofTile, 0x0129, 0x0800, 0x0 },
-    { gTextureSignBowser0, 0x07D0, 0x1000, 0x0 },
-    { gTextureSignBowser1, 0x064D, 0x1000, 0x0 },
-    { gTexture66ABA4, 0x0312, 0x0800, 0x0 },
-    { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
-    { gTexture6733CC, 0x020E, 0x0800, 0x0 },
-    { gTexture673118, 0x02B1, 0x0800, 0x0 },
-    { gTexture673FF8, 0x035B, 0x0800, 0x0 },
-    { gTexture674B28, 0x0230, 0x0800, 0x0 },
-    { gTextureSignGreenArrow, 0x025B, 0x1000, 0x0 },
-    { gTexture68D834, 0x010A, 0x0800, 0x0 },
-    { gTexture676D7C, 0x012C, 0x0800, 0x0 },
-    { gTexture67ADF0, 0x0595, 0x0800, 0x0 },
-    { gTexture67EFEC, 0x016F, 0x0800, 0x0 },
-    { gTexture653DB0, 0x06AE, 0x0800, 0x0 },
-    { gTexture66CA98, 0x02C9, 0x0800, 0x0 },
-    { gTexture673990, 0x02D8, 0x0800, 0x0 },
-    { gTexture67A370, 0x05AA, 0x0800, 0x0 },
-    { gTexture67A91C, 0x04D1, 0x0800, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 BowsersCastle::BowsersCastle() {
-    this->vtx = d_course_bowsers_castle_vertex;
-    this->gfx = d_course_bowsers_castle_packed_dls;
-    this->gfxSize = 4900;
-    Props.textures = bowsers_castle_textures;
     Props.Minimap.Texture = minimap_bowsers_castle;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -146,21 +112,28 @@ BowsersCastle::BowsersCastle() {
 
     Props.WaterLevel = -50.0f;
     WaterVolumes.push_back({20.0f, 1549.0f, 1859.0f, -1402.0f, -1102.0f});
-    for (size_t i = 0; i < 108; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) bowsers_castle_dls[i], Props.textures);
-    }
 }
 
 void BowsersCastle::Load() {
     Course::Load();
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(bowsers_castle_dls); i++) {
+            InvertTriangleWindingByName(bowsers_castle_dls[i]);
+        }
+        InvertTriangleWindingByName(d_course_bowsers_castle_packed_dl_6A80);
+
+        InvertTriangleWindingByName(d_course_bowsers_castle_packed_dl_248);
+
+        InvertTriangleWindingByName(d_course_bowsers_castle_dl_9228);
+    }
 
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07001350)), 0x32, 0, 0, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
 }
 
-void BowsersCastle::LoadTextures() {
-    dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U); // 0x03009000
+void BowsersCastle::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void BowsersCastle::BeginPlay() {
@@ -297,7 +270,7 @@ void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_bowsers_castle_packed_dl_6A80
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07006A80)));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_bowsers_castle_packed_dl_6A80);
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -312,7 +285,7 @@ void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_bowsers_castle_packed_dl_248
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000248)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_bowsers_castle_packed_dl_248);
 }
 
 void BowsersCastle::RenderCredits() {
@@ -360,7 +333,7 @@ void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCo
 }
 
 void BowsersCastle::CreditsSpawnActors() {
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07001350), 0x32, 0, 0, 0);
+    find_vtx_and_set_colours((Gfx*) d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
 }
 
 void BowsersCastle::Destroy() {

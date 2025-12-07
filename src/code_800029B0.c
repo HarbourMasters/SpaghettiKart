@@ -23,9 +23,9 @@
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
 #include "menus.h"
-#include <assets/other_textures.h>
-#include <assets/mario_raceway_data.h>
-#include <assets/moo_moo_farm_data.h>
+#include <assets/textures/other_textures.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
+#include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
 #include "port/Game.h"
 
 extern s32 D_802BA038;
@@ -65,6 +65,12 @@ bool gIsEditorPaused = true;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;
+void set_mirror_mode(s32 mirror) {
+    if (gIsMirrorMode != mirror) {
+        UnLoadCourse();
+    }
+    gIsMirrorMode = mirror;
+}
 Vec3f gVtxStretch = {1.0f, 1.0f, 1.0f};
 Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
@@ -192,7 +198,7 @@ void setup_race(void) {
 
     gPlayerCountSelection1 = gPlayerCount;
     if (gGamestate != RACING) {
-        gIsMirrorMode = 0;
+        set_mirror_mode(0);
     }
     if (gIsMirrorMode) {
         gCourseDirection = -1.0f;
@@ -275,7 +281,7 @@ void setup_editor(void) {
 
     gPlayerCountSelection1 = 1;
     if (gGamestate != RACING) {
-        gIsMirrorMode = 0;
+        set_mirror_mode(0);
     }
 
     gActiveScreenMode = gScreenModeSelection;
@@ -378,11 +384,10 @@ void credits_spawn_actors(void) {
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
     gNumActors = 0;
-    gIsMirrorMode = 0;
+    set_mirror_mode(0);
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr_x64(3, (void*) gNextFreeMemoryAddress);
 
     // Stupid hack to sync segment 3 memory allocations with hard-coded address in data.
     gNextFreeMemoryAddress += 0x9000;

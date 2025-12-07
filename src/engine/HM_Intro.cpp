@@ -168,7 +168,6 @@ void HarbourMastersIntro::HM_DrawIntro() {
 void HarbourMastersIntro::Setup() {
     u16 perspNorm;
 
-    move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
     // Setup camera perspective

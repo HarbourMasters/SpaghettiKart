@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/moo_moo_farm_data.h>
+#include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
 
 const Gfx* moo_moo_farm_dls[] = {
     d_course_moo_moo_farm_dl_88,   d_course_moo_moo_farm_dl_598,  d_course_moo_moo_farm_dl_338,

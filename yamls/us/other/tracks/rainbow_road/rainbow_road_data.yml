@@ -1,0 +1,75 @@
+:config:
+  segments:
+    - [0x06, 0x872A00]
+    - [0x07, 0x800000]
+  manual_segments:
+    # Segment 7
+    - [0x7000000, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_0"]
+    - [0x7000308, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_308"]
+    - [0x7000498, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_498"]
+    - [0x70005C8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_5C8"]
+    - [0x7000730, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_730"]
+    - [0x7000918, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_918"]
+    - [0x7000A48, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_A48"]
+    - [0x7000B90, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_B90"]
+    - [0x7000D88, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_D88"]
+    - [0x7000EA8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_EA8"]
+    - [0x7000FF0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_FF0"]
+    - [0x7001168, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1168"]
+    - [0x7001318, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1318"]
+    - [0x7001380, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1380"]
+    - [0x7001390, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1390"]
+    - [0x70013A0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_13A0"]
+    - [0x7001528, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1528"]
+    - [0x70015F8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_15F8"]
+    - [0x7001698, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1698"]
+    - [0x7001758, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1758"]
+    - [0x7001850, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1850"]
+    - [0x7001978, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1978"]
+    - [0x7001A20, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1A20"]
+    - [0x7001B28, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1B28"]
+    - [0x7001BC0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1BC0"]
+    - [0x7001C70, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1C70"]
+    - [0x7001D30, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1D30"]
+    - [0x7001E18, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1E18"]
+    - [0x7001E80, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1E80"]
+    - [0x7001FB8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1FB8"]
+    - [0x7001FC8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_1FC8"]
+    - [0x7002068, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2068"]
+    - [0x7002078, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2078"]
+    - [0x70020C0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20C0"]
+    - [0x70020D0, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20D0"]
+    - [0x70020F8, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_20F8"]
+    - [0x7002108, "models/tracks/rainbow_road/rainbow_road_displaylists/d_course_rainbow_road_packed_dl_2108"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_rainbow_road_unknown_waypoints:
+  symbol: d_course_rainbow_road_unknown_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x19D0
+  count: 101
+d_course_rainbow_road_track_waypoints:
+  symbol: d_course_rainbow_road_track_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x1CF8
+  count: 1761
+d_course_rainbow_road_light1:
+  symbol: d_course_rainbow_road_light1
+  type: lights
+  offset: 0x12010
+d_course_rainbow_road_item_box_spawns:
+  symbol: d_course_rainbow_road_item_box_spawns
+  type: mk64:spawn_data
+  offset: 0x16338
+  count: 33
+d_course_rainbow_road_addr:
+  symbol: d_course_rainbow_road_addr
+  type: mk64:track_sections
+  offset: 0x16440
+  count: 15

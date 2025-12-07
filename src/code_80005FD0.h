@@ -4,7 +4,7 @@
 #include "vehicles.h"
 #include "camera.h"
 #include "waypoints.h"
-#include <assets/common_data.h>
+#include <assets/textures/common_data.h>
 
 struct unexpiredActors {
     /* 0x00 */ s32 unk0;

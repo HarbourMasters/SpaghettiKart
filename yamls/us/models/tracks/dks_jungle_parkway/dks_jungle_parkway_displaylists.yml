@@ -1,0 +1,1443 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x960ACC
+  no_compression: true
+  segments:
+    - [0x0E, 0x960ACC]
+  manual_segments:
+    # Segment 3
+    - [0x03009000, "textures/other_textures/gTextureDksJungleParkwayKiwanoFruit1"]
+    - [0x03009800, "textures/other_textures/gTextureDksJungleParkwayKiwanoFruit2"]
+    - [0x0300A000, "textures/other_textures/gTextureDksJungleParkwayKiwanoFruit3"]
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_648508"]
+    - [0x05001000, "textures/other_textures/texture_6684F8"]
+    - [0x05001800, "textures/other_textures/wood_bridge_slats"]
+    - [0x05002800, "textures/other_textures/texture_654460"]
+    - [0x05003800, "textures/other_textures/texture_654F74"]
+    - [0x05004800, "textures/other_textures/texture_655998"]
+    - [0x05005000, "textures/other_textures/texture_655F38"]
+    - [0x05006000, "textures/other_textures/texture_656AF4"]
+    - [0x05007000, "textures/other_textures/texture_6575C8"]
+    - [0x05008000, "textures/other_textures/texture_658370"]
+    - [0x05009000, "textures/other_textures/texture_65912C"]
+    - [0x0500A000, "textures/other_textures/texture_659EE8"]
+    - [0x0500B000, "textures/other_textures/texture_65ADE0"]
+    - [0x0500C000, "textures/other_textures/texture_65BB3C"]
+    - [0x0500D000, "textures/other_textures/texture_65C8DC"]
+    - [0x0500E000, "textures/other_textures/texture_65D5D4"]
+    - [0x0500F000, "textures/other_textures/texture_65E2EC"]
+    - [0x0500F800, "textures/other_textures/texture_65EAEC"]
+    - [0x05010000, "textures/other_textures/texture_65E59C"]
+    - [0x05011000, "textures/other_textures/texture_65EE38"]
+    - [0x05012000, "textures/other_textures/texture_65FB18"]
+    - [0x05012800, "textures/other_textures/sign_pink_arrow"]
+    - [0x05013000, "textures/other_textures/waves_0"]
+    - [0x05013800, "textures/other_textures/texture_683844"]
+    # Segment 7
+    - [0x7000000, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_0"]
+    - [0x7000200, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_200"]
+    - [0x7000398, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_398"]
+    - [0x7000520, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_520"]
+    - [0x70006C8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6C8"]
+    - [0x70007E0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7E0"]
+    - [0x7000918, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_918"]
+    - [0x7000A40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_A40"]
+    - [0x7000B68, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_B68"]
+    - [0x7000C90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_C90"]
+    - [0x7000EC8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_EC8"]
+    - [0x7000FD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_FD0"]
+    - [0x7001118, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1118"]
+    - [0x70012A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_12A8"]
+    - [0x7001430, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1430"]
+    - [0x70015B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_15B0"]
+    - [0x70017D0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_17D0"]
+    - [0x7001970, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1970"]
+    - [0x7001B38, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1B38"]
+    - [0x7001C98, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1C98"]
+    - [0x7001EB8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_1EB8"]
+    - [0x7002040, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2040"]
+    - [0x70020A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_20A0"]
+    - [0x7002100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2100"]
+    - [0x7002160, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2160"]
+    - [0x70021C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_21C0"]
+    - [0x7002378, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2378"]
+    - [0x70023F0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_23F0"]
+    - [0x7002450, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2450"]
+    - [0x70024B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_24B0"]
+    - [0x7002510, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2510"]
+    - [0x7002570, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2570"]
+    - [0x7002788, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2788"]
+    - [0x7002890, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2890"]
+    - [0x70029F0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_29F0"]
+    - [0x7002B78, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2B78"]
+    - [0x7002D00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2D00"]
+    - [0x7002D60, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2D60"]
+    - [0x7002DC8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2DC8"]
+    - [0x7002E28, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2E28"]
+    - [0x7002E88, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2E88"]
+    - [0x7002FD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_2FD0"]
+    - [0x7003058, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3058"]
+    - [0x70030C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_30C0"]
+    - [0x7003130, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3130"]
+    - [0x70031A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_31A0"]
+    - [0x7003228, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3228"]
+    - [0x70032A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_32A0"]
+    - [0x70032D8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_32D8"]
+    - [0x7003348, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3348"]
+    - [0x70033A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_33A8"]
+    - [0x7003420, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3420"]
+    - [0x7003498, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3498"]
+    - [0x7003508, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3508"]
+    - [0x7003588, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3588"]
+    - [0x70035F0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_35F0"]
+    - [0x7003660, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3660"]
+    - [0x70036A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_36A8"]
+    - [0x7003748, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3748"]
+    - [0x7003758, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3758"]
+    - [0x70037C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_37C0"]
+    - [0x7003A30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3A30"]
+    - [0x7003A48, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3A48"]
+    - [0x7003AD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3AD0"]
+    - [0x7003AE0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3AE0"]
+    - [0x7003B18, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3B18"]
+    - [0x7003B28, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3B28"]
+    - [0x7003BA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3BA8"]
+    - [0x7003C50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3C50"]
+    - [0x7003D08, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3D08"]
+    - [0x7003DA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3DA8"]
+    - [0x7003DD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3DD0"]
+    - [0x7003E40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3E40"]
+    - [0x7003EB0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3EB0"]
+    - [0x7003F30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3F30"]
+    - [0x7003FA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3FA8"]
+    - [0x7003FD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_3FD0"]
+    - [0x7004230, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4230"]
+    - [0x7004300, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4300"]
+    - [0x7004548, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4548"]
+    - [0x7004760, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4760"]
+    - [0x7004788, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4788"]
+    - [0x7004858, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4858"]
+    - [0x7004948, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4948"]
+    - [0x7004A08, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4A08"]
+    - [0x7004AB0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4AB0"]
+    - [0x7004B90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4B90"]
+    - [0x7004CA0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4CA0"]
+    - [0x7004D30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4D30"]
+    - [0x7004DB8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4DB8"]
+    - [0x7004EB8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4EB8"]
+    - [0x7004FE8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_4FE8"]
+    - [0x70050A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_50A8"]
+    - [0x70051C8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_51C8"]
+    - [0x70052C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_52C0"]
+    - [0x7005420, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5420"]
+    - [0x70054D8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_54D8"]
+    - [0x7005558, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5558"]
+    - [0x70055D8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_55D8"]
+    - [0x7005648, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5648"]
+    - [0x70056B8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_56B8"]
+    - [0x7005768, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5768"]
+    - [0x7005800, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5800"]
+    - [0x7005890, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5890"]
+    - [0x70058F8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_58F8"]
+    - [0x7005970, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5970"]
+    - [0x70059E0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_59E0"]
+    - [0x7005A50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5A50"]
+    - [0x7005AB0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5AB0"]
+    - [0x7005B50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5B50"]
+    - [0x7005BE0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5BE0"]
+    - [0x7005C68, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5C68"]
+    - [0x7005D68, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5D68"]
+    - [0x7005DF0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5DF0"]
+    - [0x7005E70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5E70"]
+    - [0x7005EF0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5EF0"]
+    - [0x7005F80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_5F80"]
+    - [0x7006008, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6008"]
+    - [0x7006098, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6098"]
+    - [0x7006100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6100"]
+    - [0x70061B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_61B0"]
+    - [0x7006240, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6240"]
+    - [0x7006368, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6368"]
+    - [0x7006430, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6430"]
+    - [0x70064C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_64C0"]
+    - [0x7006530, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6530"]
+    - [0x70065A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_65A8"]
+    - [0x7006620, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6620"]
+    - [0x70066B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_66B0"]
+    - [0x7006728, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6728"]
+    - [0x7006798, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6798"]
+    - [0x7006818, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6818"]
+    - [0x7006930, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6930"]
+    - [0x70069A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_69A0"]
+    - [0x7006A10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6A10"]
+    - [0x7006AA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6AA8"]
+    - [0x7006B48, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6B48"]
+    - [0x7006BD0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6BD0"]
+    - [0x7006C38, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6C38"]
+    - [0x7006C98, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6C98"]
+    - [0x7006D08, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6D08"]
+    - [0x7006D68, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6D68"]
+    - [0x7006DD8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6DD8"]
+    - [0x7006E40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6E40"]
+    - [0x7006F10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6F10"]
+    - [0x7006F98, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_6F98"]
+    - [0x7007048, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7048"]
+    - [0x70070C0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_70C0"]
+    - [0x7007170, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7170"]
+    - [0x70071E8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_71E8"]
+    - [0x70072A8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_72A8"]
+    - [0x7007390, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7390"]
+    - [0x7007400, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7400"]
+    - [0x7007488, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7488"]
+    - [0x7007538, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7538"]
+    - [0x70076A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_76A0"]
+    - [0x70077E8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_77E8"]
+    - [0x7007920, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7920"]
+    - [0x7007A88, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7A88"]
+    - [0x7007B10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7B10"]
+    - [0x7007C78, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7C78"]
+    - [0x7007DA0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7DA0"]
+    - [0x7007E50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7E50"]
+    - [0x7007F58, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7F58"]
+    - [0x7007FC8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_7FC8"]
+    - [0x70080A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_80A0"]
+    - [0x7008140, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8140"]
+    - [0x7008358, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8358"]
+    - [0x7008458, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8458"]
+    - [0x70085A0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_85A0"]
+    - [0x7008648, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8648"]
+    - [0x70086B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_86B0"]
+    - [0x7008760, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8760"]
+    - [0x7008800, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8800"]
+    - [0x70089B0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_89B0"]
+    - [0x7008A40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8A40"]
+    - [0x7008BA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8BA8"]
+    - [0x7008C60, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8C60"]
+    - [0x7008E78, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8E78"]
+    - [0x7008F30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_8F30"]
+    - [0x7009000, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9000"]
+    - [0x7009128, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9128"]
+    - [0x7009250, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9250"]
+    - [0x7009268, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9268"]
+    - [0x70092D8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_92D8"]
+    - [0x70092E8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_92E8"]
+    - [0x7009390, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9390"]
+    - [0x7009418, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9418"]
+    - [0x70094D0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_94D0"]
+    - [0x7009588, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9588"]
+    - [0x7009630, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9630"]
+    - [0x70096F8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_96F8"]
+    - [0x7009790, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9790"]
+    - [0x7009838, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9838"]
+    - [0x7009880, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9880"]
+    - [0x70098E0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_98E0"]
+    - [0x70098F0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_98F0"]
+    - [0x7009988, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9988"]
+    - [0x7009A20, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9A20"]
+    - [0x7009A38, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9A38"]
+    - [0x7009B98, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9B98"]
+    - [0x7009BA8, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9BA8"]
+    - [0x7009C18, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_displaylists/d_course_dks_jungle_parkway_packed_dl_9C18"]
+    # Segment 4
+    - [0x4000000, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000000"]
+    - [0x4000100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000100"]
+    - [0x4000180, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000180"]
+    - [0x4000200, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000200"]
+    - [0x4000240, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000240"]
+    - [0x40002c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040002C0"]
+    - [0x4000340, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000340"]
+    - [0x4000440, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000440"]
+    - [0x4000500, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000500"]
+    - [0x4000540, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000540"]
+    - [0x4000580, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000580"]
+    - [0x40005c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040005C0"]
+    - [0x4000600, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000600"]
+    - [0x40006c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040006C0"]
+    - [0x4000740, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000740"]
+    - [0x4000780, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000780"]
+    - [0x40007c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040007C0"]
+    - [0x4000800, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000800"]
+    - [0x4000840, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000840"]
+    - [0x40008c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040008C0"]
+    - [0x4000980, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000980"]
+    - [0x4000a00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000A00"]
+    - [0x4000a40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000A40"]
+    - [0x4000ac0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000AC0"]
+    - [0x4000b00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000B00"]
+    - [0x4000bc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000BC0"]
+    - [0x4000c40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000C40"]
+    - [0x4000c80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000C80"]
+    - [0x4000cc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000CC0"]
+    - [0x4000d40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000D40"]
+    - [0x4000e00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000E00"]
+    - [0x4000e80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000E80"]
+    - [0x4000f00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000F00"]
+    - [0x4000fc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04000FC0"]
+    - [0x4001040, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001040"]
+    - [0x40010c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040010C0"]
+    - [0x4001140, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001140"]
+    - [0x40011c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040011C0"]
+    - [0x4001240, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001240"]
+    - [0x40012c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040012C0"]
+    - [0x4001340, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001340"]
+    - [0x40013c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040013C0"]
+    - [0x4001440, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001440"]
+    - [0x40014c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040014C0"]
+    - [0x4001540, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001540"]
+    - [0x40015c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040015C0"]
+    - [0x4001640, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001640"]
+    - [0x4001780, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001780"]
+    - [0x4001840, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001840"]
+    - [0x4001900, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001900"]
+    - [0x40019c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040019C0"]
+    - [0x4001a80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001A80"]
+    - [0x4001bc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001BC0"]
+    - [0x4001c00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C00"]
+    - [0x4001c40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C40"]
+    - [0x4001c80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001C80"]
+    - [0x4001cc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001CC0"]
+    - [0x4001d80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001D80"]
+    - [0x4001e40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001E40"]
+    - [0x4001f00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001F00"]
+    - [0x4001fc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04001FC0"]
+    - [0x4002040, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002040"]
+    - [0x4002080, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002080"]
+    - [0x4002100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002100"]
+    - [0x4002140, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002140"]
+    - [0x4002180, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002180"]
+    - [0x4002200, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002200"]
+    - [0x4002280, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002280"]
+    - [0x40022c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040022C0"]
+    - [0x4002300, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002300"]
+    - [0x4002340, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002340"]
+    - [0x4002380, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002380"]
+    - [0x4002400, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002400"]
+    - [0x4002540, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002540"]
+    - [0x4002640, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002640"]
+    - [0x4002780, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002780"]
+    - [0x40028c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040028C0"]
+    - [0x4002900, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002900"]
+    - [0x4002a40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002A40"]
+    - [0x4002b00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002B00"]
+    - [0x4002b80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002B80"]
+    - [0x4002c40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002C40"]
+    - [0x4002cc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002CC0"]
+    - [0x4002e00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002E00"]
+    - [0x4002ec0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002EC0"]
+    - [0x4002f00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F00"]
+    - [0x4002f40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F40"]
+    - [0x4002f80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04002F80"]
+    - [0x4003000, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003000"]
+    - [0x40030c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040030C0"]
+    - [0x4003100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003100"]
+    - [0x4003180, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003180"]
+    - [0x40031c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040031C0"]
+    - [0x4003240, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003240"]
+    - [0x4003280, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003280"]
+    - [0x40032c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040032C0"]
+    - [0x4003340, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003340"]
+    - [0x4003380, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003380"]
+    - [0x4003400, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003400"]
+    - [0x4003480, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003480"]
+    - [0x4003500, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003500"]
+    - [0x4003580, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003580"]
+    - [0x40036c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040036C0"]
+    - [0x4003780, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003780"]
+    - [0x4003800, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003800"]
+    - [0x4003840, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003840"]
+    - [0x4003900, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003900"]
+    - [0x4003980, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003980"]
+    - [0x4003ac0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003AC0"]
+    - [0x4003b40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003B40"]
+    - [0x4003b80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003B80"]
+    - [0x4003bc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003BC0"]
+    - [0x4003c00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003C00"]
+    - [0x4003c40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003C40"]
+    - [0x4003cc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003CC0"]
+    - [0x4003d00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D00"]
+    - [0x4003d40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D40"]
+    - [0x4003d80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003D80"]
+    - [0x4003dc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003DC0"]
+    - [0x4003e30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003E30"]
+    - [0x4003e70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003E70"]
+    - [0x4003eb0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003EB0"]
+    - [0x4003ef0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003EF0"]
+    - [0x4003f30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003F30"]
+    - [0x4003f70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003F70"]
+    - [0x4003fb0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04003FB0"]
+    - [0x40040b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040040B0"]
+    - [0x40040f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040040F0"]
+    - [0x4004130, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004130"]
+    - [0x4004170, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004170"]
+    - [0x40041b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040041B0"]
+    - [0x40041f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040041F0"]
+    - [0x40042b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040042B0"]
+    - [0x4004330, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004330"]
+    - [0x4004370, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004370"]
+    - [0x40043b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040043B0"]
+    - [0x4004430, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004430"]
+    - [0x4004470, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004470"]
+    - [0x4004530, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004530"]
+    - [0x4004570, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004570"]
+    - [0x40045b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040045B0"]
+    - [0x40045f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040045F0"]
+    - [0x4004630, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004630"]
+    - [0x4004690, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004690"]
+    - [0x4004710, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004710"]
+    - [0x4004750, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004750"]
+    - [0x40047d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040047D0"]
+    - [0x4004850, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004850"]
+    - [0x40048d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040048D0"]
+    - [0x4004910, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004910"]
+    - [0x4004950, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004950"]
+    - [0x4004990, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004990"]
+    - [0x40049d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040049D0"]
+    - [0x4004a50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004A50"]
+    - [0x4004ad0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004AD0"]
+    - [0x4004b10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B10"]
+    - [0x4004b50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B50"]
+    - [0x4004b90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004B90"]
+    - [0x4004bd0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004BD0"]
+    - [0x4004c50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004C50"]
+    - [0x4004c90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004C90"]
+    - [0x4004d10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D10"]
+    - [0x4004d50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D50"]
+    - [0x4004d90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004D90"]
+    - [0x4004f10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004F10"]
+    - [0x4004f90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04004F90"]
+    - [0x4005050, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005050"]
+    - [0x4005110, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005110"]
+    - [0x4005290, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005290"]
+    - [0x4005390, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005390"]
+    - [0x4005450, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005450"]
+    - [0x4005490, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005490"]
+    - [0x4005590, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005590"]
+    - [0x4005690, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005690"]
+    - [0x4005750, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005750"]
+    - [0x4005890, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005890"]
+    - [0x4005910, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005910"]
+    - [0x40059d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040059D0"]
+    - [0x4005ad0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005AD0"]
+    - [0x4005b50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005B50"]
+    - [0x4005d50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005D50"]
+    - [0x4005f50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04005F50"]
+    - [0x4006150, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006150"]
+    - [0x4006350, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006350"]
+    - [0x4006550, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006550"]
+    - [0x4006750, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006750"]
+    - [0x4006950, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006950"]
+    - [0x4006a50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006A50"]
+    - [0x4006bd0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006BD0"]
+    - [0x4006cf0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006CF0"]
+    - [0x4006e90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04006E90"]
+    - [0x4007060, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007060"]
+    - [0x40071f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040071F0"]
+    - [0x4007270, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007270"]
+    - [0x40072e0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040072E0"]
+    - [0x4007390, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007390"]
+    - [0x4007430, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007430"]
+    - [0x4007620, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007620"]
+    - [0x4007820, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007820"]
+    - [0x4007a10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007A10"]
+    - [0x4007bd0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007BD0"]
+    - [0x4007dc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007DC0"]
+    - [0x4007e90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04007E90"]
+    - [0x4008090, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008090"]
+    - [0x4008290, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008290"]
+    - [0x4008490, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008490"]
+    - [0x4008610, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008610"]
+    - [0x4008810, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008810"]
+    - [0x4008a10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008A10"]
+    - [0x4008bf0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008BF0"]
+    - [0x4008d20, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008D20"]
+    - [0x4008f00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008F00"]
+    - [0x4008fc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04008FC0"]
+    - [0x40091a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040091A0"]
+    - [0x4009320, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009320"]
+    - [0x4009500, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009500"]
+    - [0x4009560, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009560"]
+    - [0x4009710, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009710"]
+    - [0x40098f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040098F0"]
+    - [0x4009a10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009A10"]
+    - [0x4009c10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009C10"]
+    - [0x4009da0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009DA0"]
+    - [0x4009ed0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009ED0"]
+    - [0x4009fc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04009FC0"]
+    - [0x400a100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A100"]
+    - [0x400a1c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A1C0"]
+    - [0x400a370, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A370"]
+    - [0x400a450, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A450"]
+    - [0x400a5b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A5B0"]
+    - [0x400a6f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A6F0"]
+    - [0x400a7f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A7F0"]
+    - [0x400a8d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A8D0"]
+    - [0x400a990, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400A990"]
+    - [0x400ab30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AB30"]
+    - [0x400ad10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AD10"]
+    - [0x400ad80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AD80"]
+    - [0x400aec0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AEC0"]
+    - [0x400af70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AF70"]
+    - [0x400aff0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400AFF0"]
+    - [0x400b070, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B070"]
+    - [0x400b230, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B230"]
+    - [0x400b350, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B350"]
+    - [0x400b450, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B450"]
+    - [0x400b4d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B4D0"]
+    - [0x400b570, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B570"]
+    - [0x400b5f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B5F0"]
+    - [0x400b670, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B670"]
+    - [0x400b6b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B6B0"]
+    - [0x400b7f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B7F0"]
+    - [0x400b9a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400B9A0"]
+    - [0x400ba90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BA90"]
+    - [0x400bc90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BC90"]
+    - [0x400bd60, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BD60"]
+    - [0x400be80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BE80"]
+    - [0x400bf60, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400BF60"]
+    - [0x400c020, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C020"]
+    - [0x400c100, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C100"]
+    - [0x400c1c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C1C0"]
+    - [0x400c290, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C290"]
+    - [0x400c2f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C2F0"]
+    - [0x400c490, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C490"]
+    - [0x400c5a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C5A0"]
+    - [0x400c7a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C7A0"]
+    - [0x400c890, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400C890"]
+    - [0x400ca00, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CA00"]
+    - [0x400caf0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CAF0"]
+    - [0x400cb60, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CB60"]
+    - [0x400cbf0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CBF0"]
+    - [0x400cc90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CC90"]
+    - [0x400cd80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CD80"]
+    - [0x400ce20, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CE20"]
+    - [0x400ce90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CE90"]
+    - [0x400cf50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400CF50"]
+    - [0x400d010, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D010"]
+    - [0x400d0d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D0D0"]
+    - [0x400d2c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D2C0"]
+    - [0x400d440, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D440"]
+    - [0x400d510, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D510"]
+    - [0x400d590, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D590"]
+    - [0x400d5d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D5D0"]
+    - [0x400d690, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D690"]
+    - [0x400d6d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D6D0"]
+    - [0x400d770, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D770"]
+    - [0x400d7f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D7F0"]
+    - [0x400d9e0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400D9E0"]
+    - [0x400da80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DA80"]
+    - [0x400db80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DB80"]
+    - [0x400dd70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DD70"]
+    - [0x400de30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DE30"]
+    - [0x400dfc0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400DFC0"]
+    - [0x400e060, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E060"]
+    - [0x400e250, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E250"]
+    - [0x400e280, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E280"]
+    - [0x400e470, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E470"]
+    - [0x400e580, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E580"]
+    - [0x400e600, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E600"]
+    - [0x400e740, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E740"]
+    - [0x400e940, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400E940"]
+    - [0x400eb40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EB40"]
+    - [0x400ed40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400ED40"]
+    - [0x400edd0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EDD0"]
+    - [0x400efd0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400EFD0"]
+    - [0x400f1d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F1D0"]
+    - [0x400f3b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F3B0"]
+    - [0x400f5a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F5A0"]
+    - [0x400f7a0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F7A0"]
+    - [0x400f8f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400F8F0"]
+    - [0x400fae0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FAE0"]
+    - [0x400fce0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FCE0"]
+    - [0x400fec0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FEC0"]
+    - [0x400ff30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x0400FF30"]
+    - [0x4010050, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010050"]
+    - [0x4010250, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010250"]
+    - [0x4010450, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010450"]
+    - [0x40105f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040105F0"]
+    - [0x40107d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040107D0"]
+    - [0x40109d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040109D0"]
+    - [0x4010a10, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010A10"]
+    - [0x4010b80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010B80"]
+    - [0x4010d80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010D80"]
+    - [0x4010f80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04010F80"]
+    - [0x4011000, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011000"]
+    - [0x4011200, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011200"]
+    - [0x4011300, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011300"]
+    - [0x4011480, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011480"]
+    - [0x4011680, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011680"]
+    - [0x4011860, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011860"]
+    - [0x4011a40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011A40"]
+    - [0x4011c40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011C40"]
+    - [0x4011de0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011DE0"]
+    - [0x4011fe0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04011FE0"]
+    - [0x4012160, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012160"]
+    - [0x4012340, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012340"]
+    - [0x4012540, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012540"]
+    - [0x40126c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040126C0"]
+    - [0x4012840, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012840"]
+    - [0x40128c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040128C0"]
+    - [0x4012a40, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012A40"]
+    - [0x4012ba0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012BA0"]
+    - [0x4012da0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012DA0"]
+    - [0x4012f80, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04012F80"]
+    - [0x4013180, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013180"]
+    - [0x40132c0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040132C0"]
+    - [0x4013390, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013390"]
+    - [0x4013590, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013590"]
+    - [0x4013790, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013790"]
+    - [0x4013910, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013910"]
+    - [0x4013af0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013AF0"]
+    - [0x4013cf0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013CF0"]
+    - [0x4013ef0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04013EF0"]
+    - [0x40140f0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040140F0"]
+    - [0x40142d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040142D0"]
+    - [0x40143d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040143D0"]
+    - [0x40145b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040145B0"]
+    - [0x40147b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040147B0"]
+    - [0x40148b0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040148B0"]
+    - [0x4014970, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014970"]
+    - [0x4014b70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014B70"]
+    - [0x4014c70, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014C70"]
+    - [0x4014d30, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014D30"]
+    - [0x4014ed0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014ED0"]
+    - [0x4014f90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04014F90"]
+    - [0x4015050, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015050"]
+    - [0x4015090, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015090"]
+    - [0x40150d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040150D0"]
+    - [0x40151d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040151D0"]
+    - [0x40152d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040152D0"]
+    - [0x40153d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040153D0"]
+    - [0x40154d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040154D0"]
+    - [0x4015590, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015590"]
+    - [0x4015650, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015650"]
+    - [0x4015790, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015790"]
+    - [0x40158d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040158D0"]
+    - [0x4015950, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015950"]
+    - [0x40159d0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x040159D0"]
+    - [0x4015a90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015A90"]
+    - [0x4015b50, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015B50"]
+    - [0x4015b90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015B90"]
+    - [0x4015d90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015D90"]
+    - [0x4015ef0, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015EF0"]
+    - [0x4015f90, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04015F90"]
+    - [0x4016170, "models/tracks/dks_jungle_parkway/dks_jungle_parkway_vertices/d_course_dks_jungle_parkway_vertex_0x04016170"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_dks_jungle_parkway_packed_dl_0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_dks_jungle_parkway_packed_dl_200:
+  symbol: d_course_dks_jungle_parkway_packed_dl_200
+  type: MK64:PACKED_GFX
+  offset: 0x8B
+d_course_dks_jungle_parkway_packed_dl_398:
+  symbol: d_course_dks_jungle_parkway_packed_dl_398
+  type: MK64:PACKED_GFX
+  offset: 0xEC
+d_course_dks_jungle_parkway_packed_dl_520:
+  symbol: d_course_dks_jungle_parkway_packed_dl_520
+  type: MK64:PACKED_GFX
+  offset: 0x143
+d_course_dks_jungle_parkway_packed_dl_6C8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6C8
+  type: MK64:PACKED_GFX
+  offset: 0x1AE
+d_course_dks_jungle_parkway_packed_dl_7E0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7E0
+  type: MK64:PACKED_GFX
+  offset: 0x1ED
+d_course_dks_jungle_parkway_packed_dl_918:
+  symbol: d_course_dks_jungle_parkway_packed_dl_918
+  type: MK64:PACKED_GFX
+  offset: 0x240
+d_course_dks_jungle_parkway_packed_dl_A40:
+  symbol: d_course_dks_jungle_parkway_packed_dl_A40
+  type: MK64:PACKED_GFX
+  offset: 0x289
+d_course_dks_jungle_parkway_packed_dl_B68:
+  symbol: d_course_dks_jungle_parkway_packed_dl_B68
+  type: MK64:PACKED_GFX
+  offset: 0x2D2
+d_course_dks_jungle_parkway_packed_dl_C90:
+  symbol: d_course_dks_jungle_parkway_packed_dl_C90
+  type: MK64:PACKED_GFX
+  offset: 0x31B
+d_course_dks_jungle_parkway_packed_dl_EC8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_EC8
+  type: MK64:PACKED_GFX
+  offset: 0x3C9
+d_course_dks_jungle_parkway_packed_dl_FD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_FD0
+  type: MK64:PACKED_GFX
+  offset: 0x3FE
+d_course_dks_jungle_parkway_packed_dl_1118:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1118
+  type: MK64:PACKED_GFX
+  offset: 0x45B
+d_course_dks_jungle_parkway_packed_dl_12A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_12A8
+  type: MK64:PACKED_GFX
+  offset: 0x4B7
+d_course_dks_jungle_parkway_packed_dl_1430:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1430
+  type: MK64:PACKED_GFX
+  offset: 0x50E
+d_course_dks_jungle_parkway_packed_dl_15B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_15B0
+  type: MK64:PACKED_GFX
+  offset: 0x58E
+d_course_dks_jungle_parkway_packed_dl_17D0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_17D0
+  type: MK64:PACKED_GFX
+  offset: 0x62D
+d_course_dks_jungle_parkway_packed_dl_1970:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1970
+  type: MK64:PACKED_GFX
+  offset: 0x693
+d_course_dks_jungle_parkway_packed_dl_1B38:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1B38
+  type: MK64:PACKED_GFX
+  offset: 0x6FB
+d_course_dks_jungle_parkway_packed_dl_1C98:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1C98
+  type: MK64:PACKED_GFX
+  offset: 0x750
+d_course_dks_jungle_parkway_packed_dl_1EB8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_1EB8
+  type: MK64:PACKED_GFX
+  offset: 0x7EF
+d_course_dks_jungle_parkway_packed_dl_2040:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2040
+  type: MK64:PACKED_GFX
+  offset: 0x846
+d_course_dks_jungle_parkway_packed_dl_20A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_20A0
+  type: MK64:PACKED_GFX
+  offset: 0x857
+d_course_dks_jungle_parkway_packed_dl_2100:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2100
+  type: MK64:PACKED_GFX
+  offset: 0x868
+d_course_dks_jungle_parkway_packed_dl_2160:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2160
+  type: MK64:PACKED_GFX
+  offset: 0x879
+d_course_dks_jungle_parkway_packed_dl_21C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_21C0
+  type: MK64:PACKED_GFX
+  offset: 0x88A
+d_course_dks_jungle_parkway_packed_dl_2378:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2378
+  type: MK64:PACKED_GFX
+  offset: 0x8E8
+d_course_dks_jungle_parkway_packed_dl_23F0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_23F0
+  type: MK64:PACKED_GFX
+  offset: 0x908
+d_course_dks_jungle_parkway_packed_dl_2450:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2450
+  type: MK64:PACKED_GFX
+  offset: 0x919
+d_course_dks_jungle_parkway_packed_dl_24B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_24B0
+  type: MK64:PACKED_GFX
+  offset: 0x92A
+d_course_dks_jungle_parkway_packed_dl_2510:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2510
+  type: MK64:PACKED_GFX
+  offset: 0x93B
+d_course_dks_jungle_parkway_packed_dl_2570:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2570
+  type: MK64:PACKED_GFX
+  offset: 0x94C
+d_course_dks_jungle_parkway_packed_dl_2788:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2788
+  type: MK64:PACKED_GFX
+  offset: 0x9CF
+d_course_dks_jungle_parkway_packed_dl_2890:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2890
+  type: MK64:PACKED_GFX
+  offset: 0xA04
+d_course_dks_jungle_parkway_packed_dl_29F0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_29F0
+  type: MK64:PACKED_GFX
+  offset: 0xA59
+d_course_dks_jungle_parkway_packed_dl_2B78:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2B78
+  type: MK64:PACKED_GFX
+  offset: 0xAB0
+d_course_dks_jungle_parkway_packed_dl_2D00:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2D00
+  type: MK64:PACKED_GFX
+  offset: 0xB07
+d_course_dks_jungle_parkway_packed_dl_2D60:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2D60
+  type: MK64:PACKED_GFX
+  offset: 0xB18
+d_course_dks_jungle_parkway_packed_dl_2DC8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2DC8
+  type: MK64:PACKED_GFX
+  offset: 0xB2E
+d_course_dks_jungle_parkway_packed_dl_2E28:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2E28
+  type: MK64:PACKED_GFX
+  offset: 0xB3F
+d_course_dks_jungle_parkway_packed_dl_2E88:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2E88
+  type: MK64:PACKED_GFX
+  offset: 0xB50
+d_course_dks_jungle_parkway_packed_dl_2FD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_2FD0
+  type: MK64:PACKED_GFX
+  offset: 0xBC9
+d_course_dks_jungle_parkway_packed_dl_3058:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3058
+  type: MK64:PACKED_GFX
+  offset: 0xBF3
+d_course_dks_jungle_parkway_packed_dl_30C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_30C0
+  type: MK64:PACKED_GFX
+  offset: 0xC09
+d_course_dks_jungle_parkway_packed_dl_3130:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3130
+  type: MK64:PACKED_GFX
+  offset: 0xC24
+d_course_dks_jungle_parkway_packed_dl_31A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_31A0
+  type: MK64:PACKED_GFX
+  offset: 0xC3F
+d_course_dks_jungle_parkway_packed_dl_3228:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3228
+  type: MK64:PACKED_GFX
+  offset: 0xC69
+d_course_dks_jungle_parkway_packed_dl_32A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_32A0
+  type: MK64:PACKED_GFX
+  offset: 0xC89
+d_course_dks_jungle_parkway_packed_dl_32D8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_32D8
+  type: MK64:PACKED_GFX
+  offset: 0xC9C
+d_course_dks_jungle_parkway_packed_dl_3348:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3348
+  type: MK64:PACKED_GFX
+  offset: 0xCB7
+d_course_dks_jungle_parkway_packed_dl_33A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_33A8
+  type: MK64:PACKED_GFX
+  offset: 0xCC8
+d_course_dks_jungle_parkway_packed_dl_3420:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3420
+  type: MK64:PACKED_GFX
+  offset: 0xCE8
+d_course_dks_jungle_parkway_packed_dl_3498:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3498
+  type: MK64:PACKED_GFX
+  offset: 0xD08
+d_course_dks_jungle_parkway_packed_dl_3508:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3508
+  type: MK64:PACKED_GFX
+  offset: 0xD23
+d_course_dks_jungle_parkway_packed_dl_3588:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3588
+  type: MK64:PACKED_GFX
+  offset: 0xD48
+d_course_dks_jungle_parkway_packed_dl_35F0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_35F0
+  type: MK64:PACKED_GFX
+  offset: 0xD5E
+d_course_dks_jungle_parkway_packed_dl_3660:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3660
+  type: MK64:PACKED_GFX
+  offset: 0xD79
+d_course_dks_jungle_parkway_packed_dl_36A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_36A8
+  type: MK64:PACKED_GFX
+  offset: 0xD92
+d_course_dks_jungle_parkway_packed_dl_3748:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3748
+  type: MK64:PACKED_GFX
+  offset: 0xDCB
+d_course_dks_jungle_parkway_packed_dl_3758:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3758
+  type: MK64:PACKED_GFX
+  offset: 0xDCF
+d_course_dks_jungle_parkway_packed_dl_37C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_37C0
+  type: MK64:PACKED_GFX
+  offset: 0xDE5
+d_course_dks_jungle_parkway_packed_dl_3A30:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3A30
+  type: MK64:PACKED_GFX
+  offset: 0xF32
+d_course_dks_jungle_parkway_packed_dl_3A48:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3A48
+  type: MK64:PACKED_GFX
+  offset: 0xF39
+d_course_dks_jungle_parkway_packed_dl_3AD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3AD0
+  type: MK64:PACKED_GFX
+  offset: 0xF63
+d_course_dks_jungle_parkway_packed_dl_3AE0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3AE0
+  type: MK64:PACKED_GFX
+  offset: 0xF67
+d_course_dks_jungle_parkway_packed_dl_3B18:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3B18
+  type: MK64:PACKED_GFX
+  offset: 0xF7A
+d_course_dks_jungle_parkway_packed_dl_3B28:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3B28
+  type: MK64:PACKED_GFX
+  offset: 0xF7E
+d_course_dks_jungle_parkway_packed_dl_3BA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3BA8
+  type: MK64:PACKED_GFX
+  offset: 0xFA3
+d_course_dks_jungle_parkway_packed_dl_3C50:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3C50
+  type: MK64:PACKED_GFX
+  offset: 0xFE1
+d_course_dks_jungle_parkway_packed_dl_3D08:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3D08
+  type: MK64:PACKED_GFX
+  offset: 0x1027
+d_course_dks_jungle_parkway_packed_dl_3DA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3DA8
+  type: MK64:PACKED_GFX
+  offset: 0x105E
+d_course_dks_jungle_parkway_packed_dl_3DD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3DD0
+  type: MK64:PACKED_GFX
+  offset: 0x106B
+d_course_dks_jungle_parkway_packed_dl_3E40:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3E40
+  type: MK64:PACKED_GFX
+  offset: 0x1086
+d_course_dks_jungle_parkway_packed_dl_3EB0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3EB0
+  type: MK64:PACKED_GFX
+  offset: 0x109F
+d_course_dks_jungle_parkway_packed_dl_3F30:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3F30
+  type: MK64:PACKED_GFX
+  offset: 0x10C2
+d_course_dks_jungle_parkway_packed_dl_3FA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3FA8
+  type: MK64:PACKED_GFX
+  offset: 0x10E2
+d_course_dks_jungle_parkway_packed_dl_3FD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_3FD0
+  type: MK64:PACKED_GFX
+  offset: 0x10EF
+d_course_dks_jungle_parkway_packed_dl_4230:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4230
+  type: MK64:PACKED_GFX
+  offset: 0x1234
+d_course_dks_jungle_parkway_packed_dl_4300:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4300
+  type: MK64:PACKED_GFX
+  offset: 0x1285
+d_course_dks_jungle_parkway_packed_dl_4548:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4548
+  type: MK64:PACKED_GFX
+  offset: 0x13BF
+d_course_dks_jungle_parkway_packed_dl_4760:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4760
+  type: MK64:PACKED_GFX
+  offset: 0x14D7
+d_course_dks_jungle_parkway_packed_dl_4788:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4788
+  type: MK64:PACKED_GFX
+  offset: 0x14E4
+d_course_dks_jungle_parkway_packed_dl_4858:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4858
+  type: MK64:PACKED_GFX
+  offset: 0x1539
+d_course_dks_jungle_parkway_packed_dl_4948:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4948
+  type: MK64:PACKED_GFX
+  offset: 0x15A2
+d_course_dks_jungle_parkway_packed_dl_4A08:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4A08
+  type: MK64:PACKED_GFX
+  offset: 0x15ED
+d_course_dks_jungle_parkway_packed_dl_4AB0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4AB0
+  type: MK64:PACKED_GFX
+  offset: 0x162B
+d_course_dks_jungle_parkway_packed_dl_4B90:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4B90
+  type: MK64:PACKED_GFX
+  offset: 0x168A
+d_course_dks_jungle_parkway_packed_dl_4CA0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4CA0
+  type: MK64:PACKED_GFX
+  offset: 0x1707
+d_course_dks_jungle_parkway_packed_dl_4D30:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4D30
+  type: MK64:PACKED_GFX
+  offset: 0x1734
+d_course_dks_jungle_parkway_packed_dl_4DB8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4DB8
+  type: MK64:PACKED_GFX
+  offset: 0x175E
+d_course_dks_jungle_parkway_packed_dl_4EB8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4EB8
+  type: MK64:PACKED_GFX
+  offset: 0x17B0
+d_course_dks_jungle_parkway_packed_dl_4FE8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_4FE8
+  type: MK64:PACKED_GFX
+  offset: 0x181E
+d_course_dks_jungle_parkway_packed_dl_50A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_50A8
+  type: MK64:PACKED_GFX
+  offset: 0x1869
+d_course_dks_jungle_parkway_packed_dl_51C8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_51C8
+  type: MK64:PACKED_GFX
+  offset: 0x18CF
+d_course_dks_jungle_parkway_packed_dl_52C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_52C0
+  type: MK64:PACKED_GFX
+  offset: 0x191A
+d_course_dks_jungle_parkway_packed_dl_5420:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5420
+  type: MK64:PACKED_GFX
+  offset: 0x19A2
+d_course_dks_jungle_parkway_packed_dl_54D8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_54D8
+  type: MK64:PACKED_GFX
+  offset: 0x19EA
+d_course_dks_jungle_parkway_packed_dl_5558:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5558
+  type: MK64:PACKED_GFX
+  offset: 0x1A18
+d_course_dks_jungle_parkway_packed_dl_55D8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_55D8
+  type: MK64:PACKED_GFX
+  offset: 0x1A3B
+d_course_dks_jungle_parkway_packed_dl_5648:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5648
+  type: MK64:PACKED_GFX
+  offset: 0x1A56
+d_course_dks_jungle_parkway_packed_dl_56B8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_56B8
+  type: MK64:PACKED_GFX
+  offset: 0x1A71
+d_course_dks_jungle_parkway_packed_dl_5768:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5768
+  type: MK64:PACKED_GFX
+  offset: 0x1AB4
+d_course_dks_jungle_parkway_packed_dl_5800:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5800
+  type: MK64:PACKED_GFX
+  offset: 0x1AE8
+d_course_dks_jungle_parkway_packed_dl_5890:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5890
+  type: MK64:PACKED_GFX
+  offset: 0x1B17
+d_course_dks_jungle_parkway_packed_dl_58F8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_58F8
+  type: MK64:PACKED_GFX
+  offset: 0x1B2D
+d_course_dks_jungle_parkway_packed_dl_5970:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5970
+  type: MK64:PACKED_GFX
+  offset: 0x1B4D
+d_course_dks_jungle_parkway_packed_dl_59E0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_59E0
+  type: MK64:PACKED_GFX
+  offset: 0x1B68
+d_course_dks_jungle_parkway_packed_dl_5A50:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5A50
+  type: MK64:PACKED_GFX
+  offset: 0x1B83
+d_course_dks_jungle_parkway_packed_dl_5AB0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5AB0
+  type: MK64:PACKED_GFX
+  offset: 0x1B94
+d_course_dks_jungle_parkway_packed_dl_5B50:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5B50
+  type: MK64:PACKED_GFX
+  offset: 0x1BCB
+d_course_dks_jungle_parkway_packed_dl_5BE0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5BE0
+  type: MK64:PACKED_GFX
+  offset: 0x1BFA
+d_course_dks_jungle_parkway_packed_dl_5C68:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5C68
+  type: MK64:PACKED_GFX
+  offset: 0x1C22
+d_course_dks_jungle_parkway_packed_dl_5D68:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5D68
+  type: MK64:PACKED_GFX
+  offset: 0x1C95
+d_course_dks_jungle_parkway_packed_dl_5DF0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5DF0
+  type: MK64:PACKED_GFX
+  offset: 0x1CBF
+d_course_dks_jungle_parkway_packed_dl_5E70:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5E70
+  type: MK64:PACKED_GFX
+  offset: 0x1CE4
+d_course_dks_jungle_parkway_packed_dl_5EF0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5EF0
+  type: MK64:PACKED_GFX
+  offset: 0x1D09
+d_course_dks_jungle_parkway_packed_dl_5F80:
+  symbol: d_course_dks_jungle_parkway_packed_dl_5F80
+  type: MK64:PACKED_GFX
+  offset: 0x1D36
+d_course_dks_jungle_parkway_packed_dl_6008:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6008
+  type: MK64:PACKED_GFX
+  offset: 0x1D5E
+d_course_dks_jungle_parkway_packed_dl_6098:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6098
+  type: MK64:PACKED_GFX
+  offset: 0x1D8D
+d_course_dks_jungle_parkway_packed_dl_6100:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6100
+  type: MK64:PACKED_GFX
+  offset: 0x1DA3
+d_course_dks_jungle_parkway_packed_dl_61B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_61B0
+  type: MK64:PACKED_GFX
+  offset: 0x1DE6
+d_course_dks_jungle_parkway_packed_dl_6240:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6240
+  type: MK64:PACKED_GFX
+  offset: 0x1E13
+d_course_dks_jungle_parkway_packed_dl_6368:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6368
+  type: MK64:PACKED_GFX
+  offset: 0x1E9D
+d_course_dks_jungle_parkway_packed_dl_6430:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6430
+  type: MK64:PACKED_GFX
+  offset: 0x1EED
+d_course_dks_jungle_parkway_packed_dl_64C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_64C0
+  type: MK64:PACKED_GFX
+  offset: 0x1F1A
+d_course_dks_jungle_parkway_packed_dl_6530:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6530
+  type: MK64:PACKED_GFX
+  offset: 0x1F33
+d_course_dks_jungle_parkway_packed_dl_65A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_65A8
+  type: MK64:PACKED_GFX
+  offset: 0x1F51
+d_course_dks_jungle_parkway_packed_dl_6620:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6620
+  type: MK64:PACKED_GFX
+  offset: 0x1F71
+d_course_dks_jungle_parkway_packed_dl_66B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_66B0
+  type: MK64:PACKED_GFX
+  offset: 0x1F9E
+d_course_dks_jungle_parkway_packed_dl_6728:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6728
+  type: MK64:PACKED_GFX
+  offset: 0x1FBE
+d_course_dks_jungle_parkway_packed_dl_6798:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6798
+  type: MK64:PACKED_GFX
+  offset: 0x1FD7
+d_course_dks_jungle_parkway_packed_dl_6818:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6818
+  type: MK64:PACKED_GFX
+  offset: 0x1FFC
+d_course_dks_jungle_parkway_packed_dl_6930:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6930
+  type: MK64:PACKED_GFX
+  offset: 0x2063
+d_course_dks_jungle_parkway_packed_dl_69A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_69A0
+  type: MK64:PACKED_GFX
+  offset: 0x207E
+d_course_dks_jungle_parkway_packed_dl_6A10:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6A10
+  type: MK64:PACKED_GFX
+  offset: 0x2099
+d_course_dks_jungle_parkway_packed_dl_6AA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6AA8
+  type: MK64:PACKED_GFX
+  offset: 0x20CD
+d_course_dks_jungle_parkway_packed_dl_6B48:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6B48
+  type: MK64:PACKED_GFX
+  offset: 0x2106
+d_course_dks_jungle_parkway_packed_dl_6BD0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6BD0
+  type: MK64:PACKED_GFX
+  offset: 0x212E
+d_course_dks_jungle_parkway_packed_dl_6C38:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6C38
+  type: MK64:PACKED_GFX
+  offset: 0x2144
+d_course_dks_jungle_parkway_packed_dl_6C98:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6C98
+  type: MK64:PACKED_GFX
+  offset: 0x2155
+d_course_dks_jungle_parkway_packed_dl_6D08:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6D08
+  type: MK64:PACKED_GFX
+  offset: 0x2170
+d_course_dks_jungle_parkway_packed_dl_6D68:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6D68
+  type: MK64:PACKED_GFX
+  offset: 0x2181
+d_course_dks_jungle_parkway_packed_dl_6DD8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6DD8
+  type: MK64:PACKED_GFX
+  offset: 0x219C
+d_course_dks_jungle_parkway_packed_dl_6E40:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6E40
+  type: MK64:PACKED_GFX
+  offset: 0x21B2
+d_course_dks_jungle_parkway_packed_dl_6F10:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6F10
+  type: MK64:PACKED_GFX
+  offset: 0x2205
+d_course_dks_jungle_parkway_packed_dl_6F98:
+  symbol: d_course_dks_jungle_parkway_packed_dl_6F98
+  type: MK64:PACKED_GFX
+  offset: 0x222F
+d_course_dks_jungle_parkway_packed_dl_7048:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7048
+  type: MK64:PACKED_GFX
+  offset: 0x2270
+d_course_dks_jungle_parkway_packed_dl_70C0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_70C0
+  type: MK64:PACKED_GFX
+  offset: 0x2290
+d_course_dks_jungle_parkway_packed_dl_7170:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7170
+  type: MK64:PACKED_GFX
+  offset: 0x22D1
+d_course_dks_jungle_parkway_packed_dl_71E8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_71E8
+  type: MK64:PACKED_GFX
+  offset: 0x22F1
+d_course_dks_jungle_parkway_packed_dl_72A8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_72A8
+  type: MK64:PACKED_GFX
+  offset: 0x2338
+d_course_dks_jungle_parkway_packed_dl_7390:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7390
+  type: MK64:PACKED_GFX
+  offset: 0x239A
+d_course_dks_jungle_parkway_packed_dl_7400:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7400
+  type: MK64:PACKED_GFX
+  offset: 0x23B5
+d_course_dks_jungle_parkway_packed_dl_7488:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7488
+  type: MK64:PACKED_GFX
+  offset: 0x23DF
+d_course_dks_jungle_parkway_packed_dl_7538:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7538
+  type: MK64:PACKED_GFX
+  offset: 0x241F
+d_course_dks_jungle_parkway_packed_dl_76A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_76A0
+  type: MK64:PACKED_GFX
+  offset: 0x24CD
+d_course_dks_jungle_parkway_packed_dl_77E8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_77E8
+  type: MK64:PACKED_GFX
+  offset: 0x256B
+d_course_dks_jungle_parkway_packed_dl_7920:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7920
+  type: MK64:PACKED_GFX
+  offset: 0x25FB
+d_course_dks_jungle_parkway_packed_dl_7A88:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7A88
+  type: MK64:PACKED_GFX
+  offset: 0x26A7
+d_course_dks_jungle_parkway_packed_dl_7B10:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7B10
+  type: MK64:PACKED_GFX
+  offset: 0x26D1
+d_course_dks_jungle_parkway_packed_dl_7C78:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7C78
+  type: MK64:PACKED_GFX
+  offset: 0x2783
+d_course_dks_jungle_parkway_packed_dl_7DA0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7DA0
+  type: MK64:PACKED_GFX
+  offset: 0x280D
+d_course_dks_jungle_parkway_packed_dl_7E50:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7E50
+  type: MK64:PACKED_GFX
+  offset: 0x284E
+d_course_dks_jungle_parkway_packed_dl_7F58:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7F58
+  type: MK64:PACKED_GFX
+  offset: 0x28C6
+d_course_dks_jungle_parkway_packed_dl_7FC8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_7FC8
+  type: MK64:PACKED_GFX
+  offset: 0x28E1
+d_course_dks_jungle_parkway_packed_dl_80A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_80A0
+  type: MK64:PACKED_GFX
+  offset: 0x293B
+d_course_dks_jungle_parkway_packed_dl_8140:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8140
+  type: MK64:PACKED_GFX
+  offset: 0x2974
+d_course_dks_jungle_parkway_packed_dl_8358:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8358
+  type: MK64:PACKED_GFX
+  offset: 0x2A90
+d_course_dks_jungle_parkway_packed_dl_8458:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8458
+  type: MK64:PACKED_GFX
+  offset: 0x2B03
+d_course_dks_jungle_parkway_packed_dl_85A0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_85A0
+  type: MK64:PACKED_GFX
+  offset: 0x2B9F
+d_course_dks_jungle_parkway_packed_dl_8648:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8648
+  type: MK64:PACKED_GFX
+  offset: 0x2BDD
+d_course_dks_jungle_parkway_packed_dl_86B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_86B0
+  type: MK64:PACKED_GFX
+  offset: 0x2BF3
+d_course_dks_jungle_parkway_packed_dl_8760:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8760
+  type: MK64:PACKED_GFX
+  offset: 0x2C36
+d_course_dks_jungle_parkway_packed_dl_8800:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8800
+  type: MK64:PACKED_GFX
+  offset: 0x2C6F
+d_course_dks_jungle_parkway_packed_dl_89B0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_89B0
+  type: MK64:PACKED_GFX
+  offset: 0x2D4C
+d_course_dks_jungle_parkway_packed_dl_8A40:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8A40
+  type: MK64:PACKED_GFX
+  offset: 0x2D7B
+d_course_dks_jungle_parkway_packed_dl_8BA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8BA8
+  type: MK64:PACKED_GFX
+  offset: 0x2E2D
+d_course_dks_jungle_parkway_packed_dl_8C60:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8C60
+  type: MK64:PACKED_GFX
+  offset: 0x2E75
+d_course_dks_jungle_parkway_packed_dl_8E78:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8E78
+  type: MK64:PACKED_GFX
+  offset: 0x2F91
+d_course_dks_jungle_parkway_packed_dl_8F30:
+  symbol: d_course_dks_jungle_parkway_packed_dl_8F30
+  type: MK64:PACKED_GFX
+  offset: 0x2FD9
+d_course_dks_jungle_parkway_packed_dl_9000:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9000
+  type: MK64:PACKED_GFX
+  offset: 0x3025
+d_course_dks_jungle_parkway_packed_dl_9128:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9128
+  type: MK64:PACKED_GFX
+  offset: 0x308E
+d_course_dks_jungle_parkway_packed_dl_9250:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9250
+  type: MK64:PACKED_GFX
+  offset: 0x30F7
+d_course_dks_jungle_parkway_packed_dl_9268:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9268
+  type: MK64:PACKED_GFX
+  offset: 0x30FE
+d_course_dks_jungle_parkway_packed_dl_92D8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_92D8
+  type: MK64:PACKED_GFX
+  offset: 0x313A
+d_course_dks_jungle_parkway_packed_dl_92E8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_92E8
+  type: MK64:PACKED_GFX
+  offset: 0x313E
+d_course_dks_jungle_parkway_packed_dl_9390:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9390
+  type: MK64:PACKED_GFX
+  offset: 0x316E
+d_course_dks_jungle_parkway_packed_dl_9418:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9418
+  type: MK64:PACKED_GFX
+  offset: 0x318A
+d_course_dks_jungle_parkway_packed_dl_94D0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_94D0
+  type: MK64:PACKED_GFX
+  offset: 0x31C4
+d_course_dks_jungle_parkway_packed_dl_9588:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9588
+  type: MK64:PACKED_GFX
+  offset: 0x31FE
+d_course_dks_jungle_parkway_packed_dl_9630:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9630
+  type: MK64:PACKED_GFX
+  offset: 0x322E
+d_course_dks_jungle_parkway_packed_dl_96F8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_96F8
+  type: MK64:PACKED_GFX
+  offset: 0x3272
+d_course_dks_jungle_parkway_packed_dl_9790:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9790
+  type: MK64:PACKED_GFX
+  offset: 0x3298
+d_course_dks_jungle_parkway_packed_dl_9838:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9838
+  type: MK64:PACKED_GFX
+  offset: 0x32C8
+d_course_dks_jungle_parkway_packed_dl_9880:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9880
+  type: MK64:PACKED_GFX
+  offset: 0x32E1
+d_course_dks_jungle_parkway_packed_dl_98E0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_98E0
+  type: MK64:PACKED_GFX
+  offset: 0x32F2
+d_course_dks_jungle_parkway_packed_dl_98F0:
+  symbol: d_course_dks_jungle_parkway_packed_dl_98F0
+  type: MK64:PACKED_GFX
+  offset: 0x32F6
+d_course_dks_jungle_parkway_packed_dl_9988:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9988
+  type: MK64:PACKED_GFX
+  offset: 0x332A
+d_course_dks_jungle_parkway_packed_dl_9A20:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9A20
+  type: MK64:PACKED_GFX
+  offset: 0x335C
+d_course_dks_jungle_parkway_packed_dl_9A38:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9A38
+  type: MK64:PACKED_GFX
+  offset: 0x3363
+d_course_dks_jungle_parkway_packed_dl_9B98:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9B98
+  type: MK64:PACKED_GFX
+  offset: 0x33ED
+d_course_dks_jungle_parkway_packed_dl_9BA8:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9BA8
+  type: MK64:PACKED_GFX
+  offset: 0x33F1
+d_course_dks_jungle_parkway_packed_dl_9C18:
+  symbol: d_course_dks_jungle_parkway_packed_dl_9C18
+  type: MK64:PACKED_GFX
+  offset: 0x3419

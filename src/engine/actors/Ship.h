@@ -8,7 +8,7 @@
 
 extern "C" {
 #include "common_structs.h"
-#include "assets/other_textures.h"
+#include "assets/textures/other_textures.h"
 }
 
 class AShip : public AActor {

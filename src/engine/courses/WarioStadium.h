@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-#include "assets/wario_stadium_vertices.h"
-#include "assets/wario_stadium_displaylists.h"
-#include "assets/wario_stadium_data.h"
+#include "assets/models/tracks/wario_stadium/wario_stadium_vertices.h"
+#include "assets/models/tracks/wario_stadium/wario_stadium_displaylists.h"
+#include "assets/models/tracks/wario_stadium/wario_stadium_data.h"
 #include "course_offsets.h"
 #include "camera.h"
 #include "data/some_data.h"
@@ -16,7 +16,7 @@ extern const course_texture wario_stadium_textures[];
 }
 
 class WarioStadium : public Course {
-    void Jumbotron();
+    void CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source);
 
   public:
     virtual ~WarioStadium() = default; // Virtual destructor for proper cleanup in derived classes
@@ -27,7 +27,7 @@ class WarioStadium : public Course {
     //    virtual void Load(const char* courseVtx,
     //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32, Camera*) override;

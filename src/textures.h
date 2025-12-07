@@ -3,7 +3,7 @@
 
 #ifndef TARGET_N64
 #include <libultraship.h>
-#include <assets/texture_tkmk00.h>
+#include <assets/textures/texture_tkmk00.h>
 #else
 #include <PR/ultratypes.h>
 #endif

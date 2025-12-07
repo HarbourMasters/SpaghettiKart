@@ -23,7 +23,7 @@ extern "C" {
 #include "code_80057C60.h"
 #include "math_util_2.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 //  #include "common_structs.h"
 }
 

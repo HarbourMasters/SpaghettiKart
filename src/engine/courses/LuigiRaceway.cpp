@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include <vector>
@@ -5,8 +6,10 @@
 
 #include "LuigiRaceway.h"
 #include "World.h"
+#include "align_asset_macro.h"
 #include "engine/objects/BombKart.h"
-#include "assets/luigi_raceway_data.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_data.h"
+#include "assets/other/tracks/luigi_raceway/luigi_raceway_data.h"
 #include "engine/objects/HotAirBalloon.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/GrandPrixBalloons.h"
@@ -25,7 +28,7 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "save.h"
 #include "replays.h"
 #include "actors.h"
@@ -36,59 +39,11 @@ extern "C" {
 #include "framebuffer_effects.h"
 #include "skybox_and_splitscreen.h"
 #include "course.h"
-extern const char* luigi_raceway_dls[];
+extern const char* luigi_raceway_dls[120];
 extern s16 currentScreenSection;
 }
 
-const course_texture luigi_raceway_textures[] = {
-    { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
-    { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },
-    { gTextureCheckerboardYellowBlue, 0x013A, 0x0800, 0x0 },
-    { gTexture64619C, 0x0124, 0x0800, 0x0 },
-    { gTextureCheckerboardBlueGreen, 0x0139, 0x0800, 0x0 },
-    { gTextureGrass3, 0x0372, 0x0800, 0x0 },
-    { gTextureFlagRed, 0x019E, 0x0800, 0x0 },
-    { gTexture65100C, 0x0120, 0x0800, 0x0 },
-    { gTexture65112C, 0x0150, 0x0800, 0x0 },
-    { gTexture653608, 0x07A7, 0x0800, 0x0 },
-    { gTextureGrass11, 0x01F8, 0x0800, 0x0 },
-    { gTextureSignLuigiFace0, 0x05C9, 0x1000, 0x0 },
-    { gTextureSignLuigiFace1, 0x065F, 0x1000, 0x0 },
-    { gTexture66C7A8, 0x0149, 0x0800, 0x0 },
-    { gTexture670AC8, 0x0FBF, 0x1000, 0x0 },
-    { gTexture671A88, 0x012D, 0x0800, 0x0 },
-    { gTexture6735DC, 0x03B1, 0x0800, 0x0 },
-    { gTexture673C68, 0x038D, 0x0800, 0x0 },
-    { gTexture6747C4, 0x0145, 0x0800, 0x0 },
-    { gTextureRoad1, 0x02D2, 0x1000, 0x0 },
-    { gTextureRoad2, 0x02AE, 0x1000, 0x0 },
-    { gTextureRoadFinish1, 0x026B, 0x1000, 0x0 },
-    { gTexture67BBD8, 0x0310, 0x0800, 0x0 },
-    { gTexture68272C, 0x01F9, 0x1000, 0x0 },
-    { gTexture682928, 0x01F9, 0x1000, 0x0 },
-    { gTexture682B24, 0x01F9, 0x1000, 0x0 },
-    { gTexture682D20, 0x01F9, 0x1000, 0x0 },
-    { gTexture682F1C, 0x01F9, 0x1000, 0x0 },
-    { gTexture683118, 0x01F9, 0x1000, 0x0 },
-    { gTextureSignBlue64, 0x0567, 0x1000, 0x0 },
-    { gTextureSignKoopaAir0, 0x0360, 0x1000, 0x0 },
-    { gTextureSignKoopaAir1, 0x0304, 0x1000, 0x0 },
-    { gTextureSignLuigis0, 0x0287, 0x1000, 0x0 },
-    { gTextureSignLuigis1, 0x02AF, 0x1000, 0x0 },
-    { gTextureSignMarioStar0, 0x02D2, 0x1000, 0x0 },
-    { gTextureSignMarioStar1, 0x02B1, 0x1000, 0x0 },
-    { gTextureSignNintendoRed0, 0x02A6, 0x1000, 0x0 },
-    { gTextureSignNintendoRed1, 0x02F7, 0x1000, 0x0 },
-    { gTextureSignYoshi, 0x04DF, 0x1000, 0x0 },
-    { gTextureCheckerboardBlueGray, 0x04A1, 0x1000, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 LuigiRaceway::LuigiRaceway() {
-    this->vtx = d_course_luigi_raceway_vertex;
-    this->gfx = d_course_luigi_raceway_packed_dls;
-    this->gfxSize = 6377;
-    Props.textures = luigi_raceway_textures;
     Props.Minimap.Texture = minimap_luigi_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -159,22 +114,25 @@ LuigiRaceway::LuigiRaceway() {
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 216, 232, 248 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_LUIGI_RACEWAY;
-    for (size_t i = 0; i < 120; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) luigi_raceway_dls[i], Props.textures);
-    }
 }
 
 void LuigiRaceway::Load() {
     Course::Load();
-
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(luigi_raceway_dls); i++) {
+            InvertTriangleWindingByName(luigi_raceway_dls[i]);
+        }
+        InvertTriangleWindingByName(d_course_luigi_raceway_packed_dl_9EC0);
+        InvertTriangleWindingByName(d_course_luigi_raceway_packed_dl_E0);
+        InvertTriangleWindingByName(d_course_luigi_raceway_packed_dl_68);
+    }
     parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void LuigiRaceway::LoadTextures() {
-    dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U); // 0x03009000
-    dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U); // 0x03009800
+void LuigiRaceway::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void LuigiRaceway::BeginPlay() {
@@ -254,59 +212,41 @@ void LuigiRaceway::SetStaffGhost() {
     D_80162DE4 = 1;
 }
 
-void LuigiRaceway::Jumbotron() {
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xF800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBA20), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x10800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBA60), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x11800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBAA0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x12800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBAE0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x13800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBB20), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x14800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0xBB60), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPTileSync(gDisplayListHead++);
+void LuigiRaceway::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source) {
+    // Add CVar if we want to expose a user toggle for only updating 1/6 of the jumbotron per frame
+    bool updateWholeJumbo = true;
+
+    if (portionToDraw == -1 || updateWholeJumbo) {
+        copy_framebuffer(ulx, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture68272C));
+        copy_framebuffer(ulx + 64, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682928));
+        copy_framebuffer(ulx, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682B24));
+        copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682D20));
+        copy_framebuffer(ulx, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682F1C));
+        copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture683118));
+    } else {
+        switch (portionToDraw) {
+            case 0:
+                copy_framebuffer(ulx, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture68272C));
+                break;
+            case 1:
+                copy_framebuffer(ulx + 64, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682928));
+                break;
+            case 2:
+                copy_framebuffer(ulx, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682B24));
+                break;
+            case 3:
+                copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682D20));
+                break;
+            case 4:
+                copy_framebuffer(ulx, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682F1C));
+                break;
+            case 5:
+                copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture683118));
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
@@ -321,32 +261,31 @@ void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     // Invalidate Jumbotron textures so they update each frame
     // This could be more efficient if we exposed the non-opcode based invalidation to be called
     // inside copy_framebuffers_port
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xF800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x10800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x11800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x12800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x13800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x14800);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture68272C);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682928);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682B24);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682D20);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682F1C);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture683118);
 
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_luigi_raceway_packed_dl_9EC0
-        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009EC0))));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_luigi_raceway_packed_dl_9EC0);
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    LuigiRaceway::Jumbotron();
     render_course_segments(luigi_raceway_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_luigi_raceway_packed_dl_E0
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070000E0))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_luigi_raceway_packed_dl_E0);
     // d_course_luigi_raceway_packed_dl_68
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000068))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_luigi_raceway_packed_dl_68);
 
     D_800DC5DC = 88;
     D_800DC5E0 = 72;
@@ -370,8 +309,8 @@ void LuigiRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
          * The jumbo television screen used to be split into six sections to fit into the n64's texture size
          * restrictions It isn't split into six sections anymore
          */
-        copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, currentScreenSection, (u16*) gPortFramebuffers[prevFrame],
-                               (u16*) (gSegmentTable[5] + 0xF800));
+        CopyJumbotron(D_800DC5DC, D_800DC5E0, currentScreenSection,
+                                            (u16*) gPortFramebuffers[prevFrame]);
     }
 }
 

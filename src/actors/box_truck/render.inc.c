@@ -2,7 +2,8 @@
 #include <libultra/gbi.h>
 #include <main.h>
 #include <defines.h>
-#include <assets/toads_turnpike_offsets.h>
+#include <assets/models/tracks/toads_turnpike/toads_turnpike_offsets.h>
+#include <assets/models/tracks/toads_turnpike/toads_turnpike_data.h>
 
 /**
  * @brief Renders the box truck actor.

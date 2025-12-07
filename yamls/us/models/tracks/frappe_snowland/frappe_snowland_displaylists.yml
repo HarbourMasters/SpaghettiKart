@@ -1,0 +1,978 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x8D6624
+  no_compression: true
+  segments:
+    - [0x0E, 0x8D6624]
+  manual_segments:
+    # Segment 3
+    - [0x03009000, "textures/other_textures/gTextureFrappeSnowlandTreeLeft"]
+    - [0x03009800, "textures/other_textures/gTextureFrappeSnowlandTreeRight"]
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_6684F8"]
+    - [0x05000800, "textures/other_textures/texture_66CA98"]
+    - [0x05001000, "textures/other_textures/texture_66EBF0"]
+    - [0x05001800, "textures/other_textures/texture_675434"]
+    - [0x05002000, "textures/other_textures/texture_677F04"]
+    - [0x05002800, "textures/other_textures/texture_678118"]
+    - [0x05003000, "textures/other_textures/texture_679258"]
+    - [0x05004000, "textures/other_textures/texture_67973C"]
+    # Segment 7
+    - [0x7000000, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_0"]
+    - [0x7000088, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_88"]
+    - [0x7000098, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_98"]
+    - [0x70000A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_A8"]
+    - [0x70000B8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B8"]
+    - [0x70001A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1A0"]
+    - [0x7000250, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_250"]
+    - [0x7000370, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_370"]
+    - [0x7000520, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_520"]
+    - [0x7000548, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_548"]
+    - [0x7000808, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_808"]
+    - [0x7000818, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_818"]
+    - [0x7000878, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_878"]
+    - [0x70008E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_8E0"]
+    - [0x7000960, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_960"]
+    - [0x70009D8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_9D8"]
+    - [0x7000A48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_A48"]
+    - [0x7000AB0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_AB0"]
+    - [0x7000B30, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B30"]
+    - [0x7000B70, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B70"]
+    - [0x7000BF0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_BF0"]
+    - [0x7000CC0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_CC0"]
+    - [0x7000D28, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_D28"]
+    - [0x7000DA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_DA0"]
+    - [0x7000E18, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_E18"]
+    - [0x7000E98, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_E98"]
+    - [0x7000F08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_F08"]
+    - [0x7000FA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_FA0"]
+    - [0x7001018, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1018"]
+    - [0x7001080, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1080"]
+    - [0x70010E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_10E0"]
+    - [0x7001150, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1150"]
+    - [0x70011B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_11B0"]
+    - [0x7001218, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1218"]
+    - [0x7001288, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1288"]
+    - [0x70012E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_12E8"]
+    - [0x7001360, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1360"]
+    - [0x70013F0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_13F0"]
+    - [0x7001458, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1458"]
+    - [0x70014C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_14C8"]
+    - [0x7001538, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1538"]
+    - [0x70015B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_15B0"]
+    - [0x7001628, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1628"]
+    - [0x7001698, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1698"]
+    - [0x7001708, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1708"]
+    - [0x7001748, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1748"]
+    - [0x7001860, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1860"]
+    - [0x7001910, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1910"]
+    - [0x7001A08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1A08"]
+    - [0x7001B20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1B20"]
+    - [0x7001BE8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1BE8"]
+    - [0x7001C98, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1C98"]
+    - [0x7001D60, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1D60"]
+    - [0x7001E40, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1E40"]
+    - [0x7001F10, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1F10"]
+    - [0x7002018, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2018"]
+    - [0x70020C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_20C8"]
+    - [0x7002160, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2160"]
+    - [0x7002210, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2210"]
+    - [0x70022C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_22C8"]
+    - [0x7002350, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2350"]
+    - [0x7002418, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2418"]
+    - [0x70024A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_24A0"]
+    - [0x7002548, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2548"]
+    - [0x70025D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_25D0"]
+    - [0x7002670, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2670"]
+    - [0x70026A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_26A8"]
+    - [0x7002710, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2710"]
+    - [0x70027A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_27A8"]
+    - [0x7002840, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2840"]
+    - [0x70028D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_28D0"]
+    - [0x7002960, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2960"]
+    - [0x70029E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_29E8"]
+    - [0x7002A90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2A90"]
+    - [0x7002AD0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2AD0"]
+    - [0x7002B38, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2B38"]
+    - [0x7002B48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2B48"]
+    - [0x7003118, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3118"]
+    - [0x7003128, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3128"]
+    - [0x7003358, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3358"]
+    - [0x70035A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_35A8"]
+    - [0x7003758, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3758"]
+    - [0x7003B20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3B20"]
+    - [0x7003B48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3B48"]
+    - [0x7003BD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3BD8"]
+    - [0x7003CD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3CD8"]
+    - [0x7003D58, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3D58"]
+    - [0x7003DD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3DD8"]
+    - [0x7003E68, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3E68"]
+    - [0x7003EF8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3EF8"]
+    - [0x7003F80, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3F80"]
+    - [0x7004020, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4020"]
+    - [0x70040B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_40B0"]
+    - [0x7004120, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4120"]
+    - [0x7004188, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4188"]
+    - [0x7004208, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4208"]
+    - [0x7004288, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4288"]
+    - [0x7004300, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4300"]
+    - [0x7004378, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4378"]
+    - [0x70043E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_43E8"]
+    - [0x7004490, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4490"]
+    - [0x7004520, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4520"]
+    - [0x7004590, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4590"]
+    - [0x7004608, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4608"]
+    - [0x7004680, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4680"]
+    - [0x7004700, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4700"]
+    - [0x7004778, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4778"]
+    - [0x70047F8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_47F8"]
+    - [0x7004880, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4880"]
+    - [0x70048C0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_48C0"]
+    - [0x70049E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_49E0"]
+    - [0x7004BA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4BA0"]
+    - [0x7004D18, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4D18"]
+    - [0x7004E40, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4E40"]
+    - [0x7004F00, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4F00"]
+    - [0x7004FF8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4FF8"]
+    - [0x70050D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_50D0"]
+    - [0x70051C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_51C8"]
+    - [0x7005330, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5330"]
+    - [0x70054A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_54A0"]
+    - [0x70055D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_55D0"]
+    - [0x7005740, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5740"]
+    - [0x70058C0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_58C0"]
+    - [0x7005988, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5988"]
+    - [0x7005A20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5A20"]
+    - [0x7005AC0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5AC0"]
+    - [0x7005B58, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5B58"]
+    - [0x7005BE0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5BE0"]
+    - [0x7005C70, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5C70"]
+    - [0x7005D90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5D90"]
+    - [0x7005E08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5E08"]
+    - [0x7005EA8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5EA8"]
+    - [0x7005F90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5F90"]
+    - [0x7006088, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6088"]
+    - [0x70061A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_61A0"]
+    - [0x7006268, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6268"]
+    - [0x70062F8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_62F8"]
+    - [0x70063D8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_63D8"]
+    - [0x70065E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_65E0"]
+    - [0x70065F0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_65F0"]
+    - [0x7006638, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6638"]
+    - [0x7006650, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6650"]
+  # Segment 4
+    - [0x4000000, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000000"]
+    - [0x4000040, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000040"]
+    - [0x4000240, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000240"]
+    - [0x4000430, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000430"]
+    - [0x4000570, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000570"]
+    - [0x4000770, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000770"]
+    - [0x40008e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040008E0"]
+    - [0x4000ae0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000AE0"]
+    - [0x4000cc0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000CC0"]
+    - [0x4000eb0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000EB0"]
+    - [0x4000fd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04000FD0"]
+    - [0x40011c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040011C0"]
+    - [0x40013c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040013C0"]
+    - [0x40015c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040015C0"]
+    - [0x40017c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040017C0"]
+    - [0x40019a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040019A0"]
+    - [0x4001b90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04001B90"]
+    - [0x4001c50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04001C50"]
+    - [0x4001e40, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04001E40"]
+    - [0x4002020, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002020"]
+    - [0x4002200, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002200"]
+    - [0x40023e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040023E0"]
+    - [0x40025c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040025C0"]
+    - [0x40027a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040027A0"]
+    - [0x4002990, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002990"]
+    - [0x4002b90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002B90"]
+    - [0x4002d80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002D80"]
+    - [0x4002f80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04002F80"]
+    - [0x4003170, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003170"]
+    - [0x4003230, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003230"]
+    - [0x4003260, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003260"]
+    - [0x40032d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040032D0"]
+    - [0x4003430, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003430"]
+    - [0x4003530, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003530"]
+    - [0x4003610, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003610"]
+    - [0x4003690, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003690"]
+    - [0x40037d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040037D0"]
+    - [0x4003900, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003900"]
+    - [0x4003940, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003940"]
+    - [0x4003a50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003A50"]
+    - [0x4003ad0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003AD0"]
+    - [0x4003bd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003BD0"]
+    - [0x4003cd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003CD0"]
+    - [0x4003e00, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003E00"]
+    - [0x4003ec0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003EC0"]
+    - [0x4003f00, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003F00"]
+    - [0x4003f40, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04003F40"]
+    - [0x4004040, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004040"]
+    - [0x40040c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040040C0"]
+    - [0x4004100, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004100"]
+    - [0x40041c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040041C0"]
+    - [0x4004200, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004200"]
+    - [0x4004280, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004280"]
+    - [0x4004340, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004340"]
+    - [0x4004380, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004380"]
+    - [0x4004460, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004460"]
+    - [0x40044c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040044C0"]
+    - [0x4004540, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004540"]
+    - [0x40045c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040045C0"]
+    - [0x4004670, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004670"]
+    - [0x4004720, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004720"]
+    - [0x4004790, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004790"]
+    - [0x4004810, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004810"]
+    - [0x4004a10, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004A10"]
+    - [0x4004aa0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004AA0"]
+    - [0x4004bf0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004BF0"]
+    - [0x4004df0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004DF0"]
+    - [0x4004e20, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04004E20"]
+    - [0x4005020, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005020"]
+    - [0x4005110, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005110"]
+    - [0x40052d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040052D0"]
+    - [0x4005450, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005450"]
+    - [0x40055f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040055F0"]
+    - [0x40057e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040057E0"]
+    - [0x4005990, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005990"]
+    - [0x4005b90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005B90"]
+    - [0x4005c10, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005C10"]
+    - [0x4005d20, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005D20"]
+    - [0x4005e10, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005E10"]
+    - [0x4005f60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04005F60"]
+    - [0x40060c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040060C0"]
+    - [0x4006180, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006180"]
+    - [0x4006360, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006360"]
+    - [0x4006420, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006420"]
+    - [0x4006520, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006520"]
+    - [0x40065f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040065F0"]
+    - [0x4006640, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006640"]
+    - [0x4006750, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006750"]
+    - [0x4006890, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006890"]
+    - [0x40069a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040069A0"]
+    - [0x4006ad0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006AD0"]
+    - [0x4006bd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006BD0"]
+    - [0x4006d60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006D60"]
+    - [0x4006da0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006DA0"]
+    - [0x4006f80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04006F80"]
+    - [0x4007160, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007160"]
+    - [0x4007350, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007350"]
+    - [0x4007530, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007530"]
+    - [0x4007720, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007720"]
+    - [0x4007900, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007900"]
+    - [0x4007ae0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007AE0"]
+    - [0x4007ce0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007CE0"]
+    - [0x4007ec0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04007EC0"]
+    - [0x40080a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040080A0"]
+    - [0x4008280, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008280"]
+    - [0x4008480, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008480"]
+    - [0x4008680, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008680"]
+    - [0x4008860, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008860"]
+    - [0x4008a60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008A60"]
+    - [0x4008c60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008C60"]
+    - [0x4008e60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04008E60"]
+    - [0x4009040, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009040"]
+    - [0x4009230, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009230"]
+    - [0x4009410, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009410"]
+    - [0x40095f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040095F0"]
+    - [0x40097d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040097D0"]
+    - [0x40099b0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040099B0"]
+    - [0x4009bb0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009BB0"]
+    - [0x4009d90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009D90"]
+    - [0x4009f80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04009F80"]
+    - [0x400a0e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400A0E0"]
+    - [0x400a2d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400A2D0"]
+    - [0x400a4c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400A4C0"]
+    - [0x400a6c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400A6C0"]
+    - [0x400a8a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400A8A0"]
+    - [0x400aa90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400AA90"]
+    - [0x400ac80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400AC80"]
+    - [0x400ae80, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400AE80"]
+    - [0x400b000, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B000"]
+    - [0x400b200, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B200"]
+    - [0x400b400, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B400"]
+    - [0x400b600, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B600"]
+    - [0x400b800, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B800"]
+    - [0x400b9f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400B9F0"]
+    - [0x400bbf0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400BBF0"]
+    - [0x400bdd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400BDD0"]
+    - [0x400bfc0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400BFC0"]
+    - [0x400c1a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C1A0"]
+    - [0x400c3a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C3A0"]
+    - [0x400c590, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C590"]
+    - [0x400c780, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C780"]
+    - [0x400c960, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C960"]
+    - [0x400c9f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400C9F0"]
+    - [0x400cbf0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400CBF0"]
+    - [0x400cdf0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400CDF0"]
+    - [0x400cfe0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400CFE0"]
+    - [0x400d1d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400D1D0"]
+    - [0x400d3d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400D3D0"]
+    - [0x400d5d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400D5D0"]
+    - [0x400d7d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400D7D0"]
+    - [0x400d9d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400D9D0"]
+    - [0x400dbb0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400DBB0"]
+    - [0x400ddb0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400DDB0"]
+    - [0x400df90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400DF90"]
+    - [0x400e180, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E180"]
+    - [0x400e380, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E380"]
+    - [0x400e4e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E4E0"]
+    - [0x400e6a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E6A0"]
+    - [0x400e6e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E6E0"]
+    - [0x400e8e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E8E0"]
+    - [0x400e960, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400E960"]
+    - [0x400eaa0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400EAA0"]
+    - [0x400ebe0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400EBE0"]
+    - [0x400eda0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400EDA0"]
+    - [0x400ef60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400EF60"]
+    - [0x400f0e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F0E0"]
+    - [0x400f120, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F120"]
+    - [0x400f1a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F1A0"]
+    - [0x400f360, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F360"]
+    - [0x400f420, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F420"]
+    - [0x400f4a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F4A0"]
+    - [0x400f5e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F5E0"]
+    - [0x400f720, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F720"]
+    - [0x400f820, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F820"]
+    - [0x400f920, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F920"]
+    - [0x400f9e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400F9E0"]
+    - [0x400fbe0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FBE0"]
+    - [0x400fc20, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FC20"]
+    - [0x400fcd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FCD0"]
+    - [0x400fdd0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FDD0"]
+    - [0x400feb0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FEB0"]
+    - [0x400fff0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x0400FFF0"]
+    - [0x40100f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040100F0"]
+    - [0x4010230, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010230"]
+    - [0x40103a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040103A0"]
+    - [0x40105a0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040105A0"]
+    - [0x4010770, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010770"]
+    - [0x4010970, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010970"]
+    - [0x4010b70, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010B70"]
+    - [0x4010d10, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010D10"]
+    - [0x4010f00, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04010F00"]
+    - [0x40110e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040110E0"]
+    - [0x40112e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040112E0"]
+    - [0x40114e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040114E0"]
+    - [0x40116d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040116D0"]
+    - [0x4011850, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011850"]
+    - [0x4011a50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011A50"]
+    - [0x4011b60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011B60"]
+    - [0x4011d50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011D50"]
+    - [0x4011dc0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011DC0"]
+    - [0x4011fc0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04011FC0"]
+    - [0x40120c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040120C0"]
+    - [0x40122b0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040122B0"]
+    - [0x40124b0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040124B0"]
+    - [0x40125d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040125D0"]
+    - [0x40127d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040127D0"]
+    - [0x40129b0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040129B0"]
+    - [0x4012a50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04012A50"]
+    - [0x4012c50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04012C50"]
+    - [0x4012e50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04012E50"]
+    - [0x4012e90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04012E90"]
+    - [0x4013070, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013070"]
+    - [0x4013270, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013270"]
+    - [0x40132e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040132E0"]
+    - [0x40134d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040134D0"]
+    - [0x40136d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040136D0"]
+    - [0x40137e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040137E0"]
+    - [0x4013980, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013980"]
+    - [0x4013ae0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013AE0"]
+    - [0x4013c70, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013C70"]
+    - [0x4013dc0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013DC0"]
+    - [0x4013f20, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04013F20"]
+    - [0x4014070, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014070"]
+    - [0x4014270, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014270"]
+    - [0x40143d0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040143D0"]
+    - [0x4014490, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014490"]
+    - [0x40145e0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040145E0"]
+    - [0x40147c0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040147C0"]
+    - [0x4014850, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014850"]
+    - [0x4014a50, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014A50"]
+    - [0x4014b70, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014B70"]
+    - [0x4014d60, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014D60"]
+    - [0x4014e90, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04014E90"]
+    - [0x4015070, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04015070"]
+    - [0x40150f0, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x040150F0"]
+    - [0x4015210, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04015210"]
+    - [0x4015410, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04015410"]
+    - [0x4015610, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04015610"]
+    - [0x4015810, "models/tracks/frappe_snowland/frappe_snowland_vertices/d_course_frappe_snowland_vertex_0x04015810"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_frappe_snowland_packed_dl_0:
+  symbol: d_course_frappe_snowland_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_frappe_snowland_packed_dl_88:
+  symbol: d_course_frappe_snowland_packed_dl_88
+  type: MK64:PACKED_GFX
+  offset: 0x16
+d_course_frappe_snowland_packed_dl_98:
+  symbol: d_course_frappe_snowland_packed_dl_98
+  type: MK64:PACKED_GFX
+  offset: 0x1A
+d_course_frappe_snowland_packed_dl_A8:
+  symbol: d_course_frappe_snowland_packed_dl_A8
+  type: MK64:PACKED_GFX
+  offset: 0x1E
+d_course_frappe_snowland_packed_dl_B8:
+  symbol: d_course_frappe_snowland_packed_dl_B8
+  type: MK64:PACKED_GFX
+  offset: 0x22
+d_course_frappe_snowland_packed_dl_1A0:
+  symbol: d_course_frappe_snowland_packed_dl_1A0
+  type: MK64:PACKED_GFX
+  offset: 0x7E
+d_course_frappe_snowland_packed_dl_250:
+  symbol: d_course_frappe_snowland_packed_dl_250
+  type: MK64:PACKED_GFX
+  offset: 0xBD
+d_course_frappe_snowland_packed_dl_370:
+  symbol: d_course_frappe_snowland_packed_dl_370
+  type: MK64:PACKED_GFX
+  offset: 0x138
+d_course_frappe_snowland_packed_dl_520:
+  symbol: d_course_frappe_snowland_packed_dl_520
+  type: MK64:PACKED_GFX
+  offset: 0x207
+d_course_frappe_snowland_packed_dl_548:
+  symbol: d_course_frappe_snowland_packed_dl_548
+  type: MK64:PACKED_GFX
+  offset: 0x214
+d_course_frappe_snowland_packed_dl_808:
+  symbol: d_course_frappe_snowland_packed_dl_808
+  type: MK64:PACKED_GFX
+  offset: 0x37D
+d_course_frappe_snowland_packed_dl_818:
+  symbol: d_course_frappe_snowland_packed_dl_818
+  type: MK64:PACKED_GFX
+  offset: 0x381
+d_course_frappe_snowland_packed_dl_878:
+  symbol: d_course_frappe_snowland_packed_dl_878
+  type: MK64:PACKED_GFX
+  offset: 0x390
+d_course_frappe_snowland_packed_dl_8E0:
+  symbol: d_course_frappe_snowland_packed_dl_8E0
+  type: MK64:PACKED_GFX
+  offset: 0x3A4
+d_course_frappe_snowland_packed_dl_960:
+  symbol: d_course_frappe_snowland_packed_dl_960
+  type: MK64:PACKED_GFX
+  offset: 0x3C9
+d_course_frappe_snowland_packed_dl_9D8:
+  symbol: d_course_frappe_snowland_packed_dl_9D8
+  type: MK64:PACKED_GFX
+  offset: 0x3E9
+d_course_frappe_snowland_packed_dl_A48:
+  symbol: d_course_frappe_snowland_packed_dl_A48
+  type: MK64:PACKED_GFX
+  offset: 0x404
+d_course_frappe_snowland_packed_dl_AB0:
+  symbol: d_course_frappe_snowland_packed_dl_AB0
+  type: MK64:PACKED_GFX
+  offset: 0x41A
+d_course_frappe_snowland_packed_dl_B30:
+  symbol: d_course_frappe_snowland_packed_dl_B30
+  type: MK64:PACKED_GFX
+  offset: 0x43F
+d_course_frappe_snowland_packed_dl_B70:
+  symbol: d_course_frappe_snowland_packed_dl_B70
+  type: MK64:PACKED_GFX
+  offset: 0x455
+d_course_frappe_snowland_packed_dl_BF0:
+  symbol: d_course_frappe_snowland_packed_dl_BF0
+  type: MK64:PACKED_GFX
+  offset: 0x478
+d_course_frappe_snowland_packed_dl_CC0:
+  symbol: d_course_frappe_snowland_packed_dl_CC0
+  type: MK64:PACKED_GFX
+  offset: 0x4AA
+d_course_frappe_snowland_packed_dl_D28:
+  symbol: d_course_frappe_snowland_packed_dl_D28
+  type: MK64:PACKED_GFX
+  offset: 0x4C0
+d_course_frappe_snowland_packed_dl_DA0:
+  symbol: d_course_frappe_snowland_packed_dl_DA0
+  type: MK64:PACKED_GFX
+  offset: 0x4E0
+d_course_frappe_snowland_packed_dl_E18:
+  symbol: d_course_frappe_snowland_packed_dl_E18
+  type: MK64:PACKED_GFX
+  offset: 0x500
+d_course_frappe_snowland_packed_dl_E98:
+  symbol: d_course_frappe_snowland_packed_dl_E98
+  type: MK64:PACKED_GFX
+  offset: 0x523
+d_course_frappe_snowland_packed_dl_F08:
+  symbol: d_course_frappe_snowland_packed_dl_F08
+  type: MK64:PACKED_GFX
+  offset: 0x53E
+d_course_frappe_snowland_packed_dl_FA0:
+  symbol: d_course_frappe_snowland_packed_dl_FA0
+  type: MK64:PACKED_GFX
+  offset: 0x55B
+d_course_frappe_snowland_packed_dl_1018:
+  symbol: d_course_frappe_snowland_packed_dl_1018
+  type: MK64:PACKED_GFX
+  offset: 0x57B
+d_course_frappe_snowland_packed_dl_1080:
+  symbol: d_course_frappe_snowland_packed_dl_1080
+  type: MK64:PACKED_GFX
+  offset: 0x591
+d_course_frappe_snowland_packed_dl_10E0:
+  symbol: d_course_frappe_snowland_packed_dl_10E0
+  type: MK64:PACKED_GFX
+  offset: 0x5A2
+d_course_frappe_snowland_packed_dl_1150:
+  symbol: d_course_frappe_snowland_packed_dl_1150
+  type: MK64:PACKED_GFX
+  offset: 0x5BD
+d_course_frappe_snowland_packed_dl_11B0:
+  symbol: d_course_frappe_snowland_packed_dl_11B0
+  type: MK64:PACKED_GFX
+  offset: 0x5CE
+d_course_frappe_snowland_packed_dl_1218:
+  symbol: d_course_frappe_snowland_packed_dl_1218
+  type: MK64:PACKED_GFX
+  offset: 0x5E4
+d_course_frappe_snowland_packed_dl_1288:
+  symbol: d_course_frappe_snowland_packed_dl_1288
+  type: MK64:PACKED_GFX
+  offset: 0x5FF
+d_course_frappe_snowland_packed_dl_12E8:
+  symbol: d_course_frappe_snowland_packed_dl_12E8
+  type: MK64:PACKED_GFX
+  offset: 0x610
+d_course_frappe_snowland_packed_dl_1360:
+  symbol: d_course_frappe_snowland_packed_dl_1360
+  type: MK64:PACKED_GFX
+  offset: 0x630
+d_course_frappe_snowland_packed_dl_13F0:
+  symbol: d_course_frappe_snowland_packed_dl_13F0
+  type: MK64:PACKED_GFX
+  offset: 0x664
+d_course_frappe_snowland_packed_dl_1458:
+  symbol: d_course_frappe_snowland_packed_dl_1458
+  type: MK64:PACKED_GFX
+  offset: 0x67A
+d_course_frappe_snowland_packed_dl_14C8:
+  symbol: d_course_frappe_snowland_packed_dl_14C8
+  type: MK64:PACKED_GFX
+  offset: 0x695
+d_course_frappe_snowland_packed_dl_1538:
+  symbol: d_course_frappe_snowland_packed_dl_1538
+  type: MK64:PACKED_GFX
+  offset: 0x6B0
+d_course_frappe_snowland_packed_dl_15B0:
+  symbol: d_course_frappe_snowland_packed_dl_15B0
+  type: MK64:PACKED_GFX
+  offset: 0x6CE
+d_course_frappe_snowland_packed_dl_1628:
+  symbol: d_course_frappe_snowland_packed_dl_1628
+  type: MK64:PACKED_GFX
+  offset: 0x6EC
+d_course_frappe_snowland_packed_dl_1698:
+  symbol: d_course_frappe_snowland_packed_dl_1698
+  type: MK64:PACKED_GFX
+  offset: 0x705
+d_course_frappe_snowland_packed_dl_1708:
+  symbol: d_course_frappe_snowland_packed_dl_1708
+  type: MK64:PACKED_GFX
+  offset: 0x720
+d_course_frappe_snowland_packed_dl_1748:
+  symbol: d_course_frappe_snowland_packed_dl_1748
+  type: MK64:PACKED_GFX
+  offset: 0x736
+d_course_frappe_snowland_packed_dl_1860:
+  symbol: d_course_frappe_snowland_packed_dl_1860
+  type: MK64:PACKED_GFX
+  offset: 0x7B6
+d_course_frappe_snowland_packed_dl_1910:
+  symbol: d_course_frappe_snowland_packed_dl_1910
+  type: MK64:PACKED_GFX
+  offset: 0x7F9
+d_course_frappe_snowland_packed_dl_1A08:
+  symbol: d_course_frappe_snowland_packed_dl_1A08
+  type: MK64:PACKED_GFX
+  offset: 0x863
+d_course_frappe_snowland_packed_dl_1B20:
+  symbol: d_course_frappe_snowland_packed_dl_1B20
+  type: MK64:PACKED_GFX
+  offset: 0x8E3
+d_course_frappe_snowland_packed_dl_1BE8:
+  symbol: d_course_frappe_snowland_packed_dl_1BE8
+  type: MK64:PACKED_GFX
+  offset: 0x935
+d_course_frappe_snowland_packed_dl_1C98:
+  symbol: d_course_frappe_snowland_packed_dl_1C98
+  type: MK64:PACKED_GFX
+  offset: 0x978
+d_course_frappe_snowland_packed_dl_1D60:
+  symbol: d_course_frappe_snowland_packed_dl_1D60
+  type: MK64:PACKED_GFX
+  offset: 0x9CA
+d_course_frappe_snowland_packed_dl_1E40:
+  symbol: d_course_frappe_snowland_packed_dl_1E40
+  type: MK64:PACKED_GFX
+  offset: 0xA29
+d_course_frappe_snowland_packed_dl_1F10:
+  symbol: d_course_frappe_snowland_packed_dl_1F10
+  type: MK64:PACKED_GFX
+  offset: 0xA80
+d_course_frappe_snowland_packed_dl_2018:
+  symbol: d_course_frappe_snowland_packed_dl_2018
+  type: MK64:PACKED_GFX
+  offset: 0xAF4
+d_course_frappe_snowland_packed_dl_20C8:
+  symbol: d_course_frappe_snowland_packed_dl_20C8
+  type: MK64:PACKED_GFX
+  offset: 0xB35
+d_course_frappe_snowland_packed_dl_2160:
+  symbol: d_course_frappe_snowland_packed_dl_2160
+  type: MK64:PACKED_GFX
+  offset: 0xB69
+d_course_frappe_snowland_packed_dl_2210:
+  symbol: d_course_frappe_snowland_packed_dl_2210
+  type: MK64:PACKED_GFX
+  offset: 0xBAA
+d_course_frappe_snowland_packed_dl_22C8:
+  symbol: d_course_frappe_snowland_packed_dl_22C8
+  type: MK64:PACKED_GFX
+  offset: 0xBF0
+d_course_frappe_snowland_packed_dl_2350:
+  symbol: d_course_frappe_snowland_packed_dl_2350
+  type: MK64:PACKED_GFX
+  offset: 0xC18
+d_course_frappe_snowland_packed_dl_2418:
+  symbol: d_course_frappe_snowland_packed_dl_2418
+  type: MK64:PACKED_GFX
+  offset: 0xC68
+d_course_frappe_snowland_packed_dl_24A0:
+  symbol: d_course_frappe_snowland_packed_dl_24A0
+  type: MK64:PACKED_GFX
+  offset: 0xC92
+d_course_frappe_snowland_packed_dl_2548:
+  symbol: d_course_frappe_snowland_packed_dl_2548
+  type: MK64:PACKED_GFX
+  offset: 0xCCE
+d_course_frappe_snowland_packed_dl_25D0:
+  symbol: d_course_frappe_snowland_packed_dl_25D0
+  type: MK64:PACKED_GFX
+  offset: 0xCF6
+d_course_frappe_snowland_packed_dl_2670:
+  symbol: d_course_frappe_snowland_packed_dl_2670
+  type: MK64:PACKED_GFX
+  offset: 0xD30
+d_course_frappe_snowland_packed_dl_26A8:
+  symbol: d_course_frappe_snowland_packed_dl_26A8
+  type: MK64:PACKED_GFX
+  offset: 0xD43
+d_course_frappe_snowland_packed_dl_2710:
+  symbol: d_course_frappe_snowland_packed_dl_2710
+  type: MK64:PACKED_GFX
+  offset: 0xD57
+d_course_frappe_snowland_packed_dl_27A8:
+  symbol: d_course_frappe_snowland_packed_dl_27A8
+  type: MK64:PACKED_GFX
+  offset: 0xD89
+d_course_frappe_snowland_packed_dl_2840:
+  symbol: d_course_frappe_snowland_packed_dl_2840
+  type: MK64:PACKED_GFX
+  offset: 0xDBD
+d_course_frappe_snowland_packed_dl_28D0:
+  symbol: d_course_frappe_snowland_packed_dl_28D0
+  type: MK64:PACKED_GFX
+  offset: 0xDEA
+d_course_frappe_snowland_packed_dl_2960:
+  symbol: d_course_frappe_snowland_packed_dl_2960
+  type: MK64:PACKED_GFX
+  offset: 0xE17
+d_course_frappe_snowland_packed_dl_29E8:
+  symbol: d_course_frappe_snowland_packed_dl_29E8
+  type: MK64:PACKED_GFX
+  offset: 0xE41
+d_course_frappe_snowland_packed_dl_2A90:
+  symbol: d_course_frappe_snowland_packed_dl_2A90
+  type: MK64:PACKED_GFX
+  offset: 0xE7D
+d_course_frappe_snowland_packed_dl_2AD0:
+  symbol: d_course_frappe_snowland_packed_dl_2AD0
+  type: MK64:PACKED_GFX
+  offset: 0xE93
+d_course_frappe_snowland_packed_dl_2B38:
+  symbol: d_course_frappe_snowland_packed_dl_2B38
+  type: MK64:PACKED_GFX
+  offset: 0xEA5
+d_course_frappe_snowland_packed_dl_2B48:
+  symbol: d_course_frappe_snowland_packed_dl_2B48
+  type: MK64:PACKED_GFX
+  offset: 0xEA9
+d_course_frappe_snowland_packed_dl_3118:
+  symbol: d_course_frappe_snowland_packed_dl_3118
+  type: MK64:PACKED_GFX
+  offset: 0x11D0
+d_course_frappe_snowland_packed_dl_3128:
+  symbol: d_course_frappe_snowland_packed_dl_3128
+  type: MK64:PACKED_GFX
+  offset: 0x11D4
+d_course_frappe_snowland_packed_dl_3358:
+  symbol: d_course_frappe_snowland_packed_dl_3358
+  type: MK64:PACKED_GFX
+  offset: 0x12F1
+d_course_frappe_snowland_packed_dl_35A8:
+  symbol: d_course_frappe_snowland_packed_dl_35A8
+  type: MK64:PACKED_GFX
+  offset: 0x1422
+d_course_frappe_snowland_packed_dl_3758:
+  symbol: d_course_frappe_snowland_packed_dl_3758
+  type: MK64:PACKED_GFX
+  offset: 0x14F3
+d_course_frappe_snowland_packed_dl_3B20:
+  symbol: d_course_frappe_snowland_packed_dl_3B20
+  type: MK64:PACKED_GFX
+  offset: 0x1709
+d_course_frappe_snowland_packed_dl_3B48:
+  symbol: d_course_frappe_snowland_packed_dl_3B48
+  type: MK64:PACKED_GFX
+  offset: 0x1716
+d_course_frappe_snowland_packed_dl_3BD8:
+  symbol: d_course_frappe_snowland_packed_dl_3BD8
+  type: MK64:PACKED_GFX
+  offset: 0x1745
+d_course_frappe_snowland_packed_dl_3CD8:
+  symbol: d_course_frappe_snowland_packed_dl_3CD8
+  type: MK64:PACKED_GFX
+  offset: 0x1795
+d_course_frappe_snowland_packed_dl_3D58:
+  symbol: d_course_frappe_snowland_packed_dl_3D58
+  type: MK64:PACKED_GFX
+  offset: 0x17BA
+d_course_frappe_snowland_packed_dl_3DD8:
+  symbol: d_course_frappe_snowland_packed_dl_3DD8
+  type: MK64:PACKED_GFX
+  offset: 0x17DF
+d_course_frappe_snowland_packed_dl_3E68:
+  symbol: d_course_frappe_snowland_packed_dl_3E68
+  type: MK64:PACKED_GFX
+  offset: 0x180E
+d_course_frappe_snowland_packed_dl_3EF8:
+  symbol: d_course_frappe_snowland_packed_dl_3EF8
+  type: MK64:PACKED_GFX
+  offset: 0x183D
+d_course_frappe_snowland_packed_dl_3F80:
+  symbol: d_course_frappe_snowland_packed_dl_3F80
+  type: MK64:PACKED_GFX
+  offset: 0x1867
+d_course_frappe_snowland_packed_dl_4020:
+  symbol: d_course_frappe_snowland_packed_dl_4020
+  type: MK64:PACKED_GFX
+  offset: 0x1889
+d_course_frappe_snowland_packed_dl_40B0:
+  symbol: d_course_frappe_snowland_packed_dl_40B0
+  type: MK64:PACKED_GFX
+  offset: 0x18B8
+d_course_frappe_snowland_packed_dl_4120:
+  symbol: d_course_frappe_snowland_packed_dl_4120
+  type: MK64:PACKED_GFX
+  offset: 0x18D3
+d_course_frappe_snowland_packed_dl_4188:
+  symbol: d_course_frappe_snowland_packed_dl_4188
+  type: MK64:PACKED_GFX
+  offset: 0x18E9
+d_course_frappe_snowland_packed_dl_4208:
+  symbol: d_course_frappe_snowland_packed_dl_4208
+  type: MK64:PACKED_GFX
+  offset: 0x190E
+d_course_frappe_snowland_packed_dl_4288:
+  symbol: d_course_frappe_snowland_packed_dl_4288
+  type: MK64:PACKED_GFX
+  offset: 0x1933
+d_course_frappe_snowland_packed_dl_4300:
+  symbol: d_course_frappe_snowland_packed_dl_4300
+  type: MK64:PACKED_GFX
+  offset: 0x1953
+d_course_frappe_snowland_packed_dl_4378:
+  symbol: d_course_frappe_snowland_packed_dl_4378
+  type: MK64:PACKED_GFX
+  offset: 0x1973
+d_course_frappe_snowland_packed_dl_43E8:
+  symbol: d_course_frappe_snowland_packed_dl_43E8
+  type: MK64:PACKED_GFX
+  offset: 0x198E
+d_course_frappe_snowland_packed_dl_4490:
+  symbol: d_course_frappe_snowland_packed_dl_4490
+  type: MK64:PACKED_GFX
+  offset: 0x19CA
+d_course_frappe_snowland_packed_dl_4520:
+  symbol: d_course_frappe_snowland_packed_dl_4520
+  type: MK64:PACKED_GFX
+  offset: 0x19FE
+d_course_frappe_snowland_packed_dl_4590:
+  symbol: d_course_frappe_snowland_packed_dl_4590
+  type: MK64:PACKED_GFX
+  offset: 0x1A17
+d_course_frappe_snowland_packed_dl_4608:
+  symbol: d_course_frappe_snowland_packed_dl_4608
+  type: MK64:PACKED_GFX
+  offset: 0x1A37
+d_course_frappe_snowland_packed_dl_4680:
+  symbol: d_course_frappe_snowland_packed_dl_4680
+  type: MK64:PACKED_GFX
+  offset: 0x1A57
+d_course_frappe_snowland_packed_dl_4700:
+  symbol: d_course_frappe_snowland_packed_dl_4700
+  type: MK64:PACKED_GFX
+  offset: 0x1A7C
+d_course_frappe_snowland_packed_dl_4778:
+  symbol: d_course_frappe_snowland_packed_dl_4778
+  type: MK64:PACKED_GFX
+  offset: 0x1A9C
+d_course_frappe_snowland_packed_dl_47F8:
+  symbol: d_course_frappe_snowland_packed_dl_47F8
+  type: MK64:PACKED_GFX
+  offset: 0x1AC1
+d_course_frappe_snowland_packed_dl_4880:
+  symbol: d_course_frappe_snowland_packed_dl_4880
+  type: MK64:PACKED_GFX
+  offset: 0x1AE9
+d_course_frappe_snowland_packed_dl_48C0:
+  symbol: d_course_frappe_snowland_packed_dl_48C0
+  type: MK64:PACKED_GFX
+  offset: 0x1AFF
+d_course_frappe_snowland_packed_dl_49E0:
+  symbol: d_course_frappe_snowland_packed_dl_49E0
+  type: MK64:PACKED_GFX
+  offset: 0x1B84
+d_course_frappe_snowland_packed_dl_4BA0:
+  symbol: d_course_frappe_snowland_packed_dl_4BA0
+  type: MK64:PACKED_GFX
+  offset: 0x1C69
+d_course_frappe_snowland_packed_dl_4D18:
+  symbol: d_course_frappe_snowland_packed_dl_4D18
+  type: MK64:PACKED_GFX
+  offset: 0x1D21
+d_course_frappe_snowland_packed_dl_4E40:
+  symbol: d_course_frappe_snowland_packed_dl_4E40
+  type: MK64:PACKED_GFX
+  offset: 0x1DAB
+d_course_frappe_snowland_packed_dl_4F00:
+  symbol: d_course_frappe_snowland_packed_dl_4F00
+  type: MK64:PACKED_GFX
+  offset: 0x1DF8
+d_course_frappe_snowland_packed_dl_4FF8:
+  symbol: d_course_frappe_snowland_packed_dl_4FF8
+  type: MK64:PACKED_GFX
+  offset: 0x1E64
+d_course_frappe_snowland_packed_dl_50D0:
+  symbol: d_course_frappe_snowland_packed_dl_50D0
+  type: MK64:PACKED_GFX
+  offset: 0x1EBC
+d_course_frappe_snowland_packed_dl_51C8:
+  symbol: d_course_frappe_snowland_packed_dl_51C8
+  type: MK64:PACKED_GFX
+  offset: 0x1F26
+d_course_frappe_snowland_packed_dl_5330:
+  symbol: d_course_frappe_snowland_packed_dl_5330
+  type: MK64:PACKED_GFX
+  offset: 0x1FD6
+d_course_frappe_snowland_packed_dl_54A0:
+  symbol: d_course_frappe_snowland_packed_dl_54A0
+  type: MK64:PACKED_GFX
+  offset: 0x208B
+d_course_frappe_snowland_packed_dl_55D0:
+  symbol: d_course_frappe_snowland_packed_dl_55D0
+  type: MK64:PACKED_GFX
+  offset: 0x2118
+d_course_frappe_snowland_packed_dl_5740:
+  symbol: d_course_frappe_snowland_packed_dl_5740
+  type: MK64:PACKED_GFX
+  offset: 0x21C9
+d_course_frappe_snowland_packed_dl_58C0:
+  symbol: d_course_frappe_snowland_packed_dl_58C0
+  type: MK64:PACKED_GFX
+  offset: 0x2286
+d_course_frappe_snowland_packed_dl_5988:
+  symbol: d_course_frappe_snowland_packed_dl_5988
+  type: MK64:PACKED_GFX
+  offset: 0x22D6
+d_course_frappe_snowland_packed_dl_5A20:
+  symbol: d_course_frappe_snowland_packed_dl_5A20
+  type: MK64:PACKED_GFX
+  offset: 0x230A
+d_course_frappe_snowland_packed_dl_5AC0:
+  symbol: d_course_frappe_snowland_packed_dl_5AC0
+  type: MK64:PACKED_GFX
+  offset: 0x2343
+d_course_frappe_snowland_packed_dl_5B58:
+  symbol: d_course_frappe_snowland_packed_dl_5B58
+  type: MK64:PACKED_GFX
+  offset: 0x2375
+d_course_frappe_snowland_packed_dl_5BE0:
+  symbol: d_course_frappe_snowland_packed_dl_5BE0
+  type: MK64:PACKED_GFX
+  offset: 0x239F
+d_course_frappe_snowland_packed_dl_5C70:
+  symbol: d_course_frappe_snowland_packed_dl_5C70
+  type: MK64:PACKED_GFX
+  offset: 0x23CE
+d_course_frappe_snowland_packed_dl_5D90:
+  symbol: d_course_frappe_snowland_packed_dl_5D90
+  type: MK64:PACKED_GFX
+  offset: 0x2453
+d_course_frappe_snowland_packed_dl_5E08:
+  symbol: d_course_frappe_snowland_packed_dl_5E08
+  type: MK64:PACKED_GFX
+  offset: 0x2473
+d_course_frappe_snowland_packed_dl_5EA8:
+  symbol: d_course_frappe_snowland_packed_dl_5EA8
+  type: MK64:PACKED_GFX
+  offset: 0x24AC
+d_course_frappe_snowland_packed_dl_5F90:
+  symbol: d_course_frappe_snowland_packed_dl_5F90
+  type: MK64:PACKED_GFX
+  offset: 0x250E
+d_course_frappe_snowland_packed_dl_6088:
+  symbol: d_course_frappe_snowland_packed_dl_6088
+  type: MK64:PACKED_GFX
+  offset: 0x257A
+d_course_frappe_snowland_packed_dl_61A0:
+  symbol: d_course_frappe_snowland_packed_dl_61A0
+  type: MK64:PACKED_GFX
+  offset: 0x25FA
+d_course_frappe_snowland_packed_dl_6268:
+  symbol: d_course_frappe_snowland_packed_dl_6268
+  type: MK64:PACKED_GFX
+  offset: 0x264A
+d_course_frappe_snowland_packed_dl_62F8:
+  symbol: d_course_frappe_snowland_packed_dl_62F8
+  type: MK64:PACKED_GFX
+  offset: 0x2677
+d_course_frappe_snowland_packed_dl_63D8:
+  symbol: d_course_frappe_snowland_packed_dl_63D8
+  type: MK64:PACKED_GFX
+  offset: 0x26C9
+d_course_frappe_snowland_packed_dl_65E0:
+  symbol: d_course_frappe_snowland_packed_dl_65E0
+  type: MK64:PACKED_GFX
+  offset: 0x27FC
+d_course_frappe_snowland_packed_dl_65F0:
+  symbol: d_course_frappe_snowland_packed_dl_65F0
+  type: MK64:PACKED_GFX
+  offset: 0x2800
+d_course_frappe_snowland_packed_dl_6638:
+  symbol: d_course_frappe_snowland_packed_dl_6638
+  type: MK64:PACKED_GFX
+  offset: 0x2819
+d_course_frappe_snowland_packed_dl_6650:
+  symbol: d_course_frappe_snowland_packed_dl_6650
+  type: MK64:PACKED_GFX
+  offset: 0x2820

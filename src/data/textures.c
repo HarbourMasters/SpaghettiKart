@@ -4,9 +4,9 @@
  * start in ram 0x801978D0
  * look like link to menu_items
  */
-#include <assets/texture_tkmk00.h>
-#include <assets/texture_data_2.h>
-#include <assets/player_selection.h>
+#include <assets/textures/texture_tkmk00.h>
+#include <assets/textures/texture_data_2.h>
+#include <assets/textures/player_selection.h>
 #include "textures.h"
 
 /**

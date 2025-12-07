@@ -174,7 +174,6 @@ extern f32 D_8015014C;
 extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[];
-extern uintptr_t gSegmentTable[];
 extern Gfx* gDisplayListHead;
 extern struct SPTask* gGfxSPTask;
 extern s32 D_801502A0;

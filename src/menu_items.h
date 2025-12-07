@@ -421,8 +421,6 @@ Gfx* draw_box_wide(Gfx*, s32, s32, s32, s32, u32, u32, u32, u32);
 Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void clear_menu_textures(void);
 void load_menu_img(MenuTexture*);
-void* segmented_to_virtual_dupe(const void*);
-void* segmented_to_virtual_dupe_2(const void*);
 void load_menu_img_mio0_forced(MenuTexture*);
 void load_menu_img_comp_type(MenuTexture*, s32);
 void func_80099958(MenuTexture*, s32, s32);

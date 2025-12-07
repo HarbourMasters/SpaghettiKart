@@ -24,6 +24,7 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "math_util_2.h"
 #include "collision.h"
+#include <assets/models/common_data.h>
 extern s8 gPlayerCount;
 }
 

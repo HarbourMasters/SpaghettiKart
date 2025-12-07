@@ -6,7 +6,8 @@
 #include "BigDonut.h"
 #include "World.h"
 #include "engine/objects/BombKart.h"
-#include "assets/big_donut_data.h"
+#include "assets/models/tracks/big_donut/big_donut_data.h"
+#include "assets/other/tracks/big_donut/big_donut_data.h"
 
 extern "C" {
 #include "main.h"
@@ -22,27 +23,16 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "save.h"
 #include "replays.h"
 #include "actors.h"
 #include "collision.h"
 #include "memory.h"
-extern const char* big_donut_dls[];
 extern s16 currentScreenSection;
 }
 
-const course_texture big_donut_textures[] = {
-    { gTexture66ABA4, 0x0312, 0x0800, 0x0 }, { gTexture6747C4, 0x0145, 0x0800, 0x0 },
-    { gTexture67490C, 0x021C, 0x0800, 0x0 }, { gTexture64BA50, 0x0110, 0x0800, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 BigDonut::BigDonut() {
-    this->vtx = d_course_big_donut_vertex;
-    this->gfx = d_course_big_donut_packed_dls;
-    this->gfxSize = 528;
-    Props.textures = big_donut_textures;
     Props.Minimap.Texture = minimap_big_donut;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -114,18 +104,28 @@ BigDonut::BigDonut() {
 
 void BigDonut::Load() {
     Course::Load();
+    if (gIsMirrorMode != 0) {
+        InvertTriangleWindingByName(d_course_big_donut_packed_dl_DE8);
+        InvertTriangleWindingByName(d_course_big_donut_packed_dl_450);
+        InvertTriangleWindingByName(d_course_big_donut_packed_dl_AC0);
+        InvertTriangleWindingByName(d_course_big_donut_packed_dl_D20);
+        InvertTriangleWindingByName(d_course_big_donut_packed_dl_230);
+    }
 
     // d_course_big_donut_packed_dl_1018
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07001018), 6);
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_1018, 6);
     // d_course_big_donut_packed_dl_450
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07000450), 6);
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_450, 6);
     // d_course_big_donut_packed_dl_AC0
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07000AC0), 6);
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_AC0, 6);
     // d_course_big_donut_packed_dl_B58
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07000B58), 6);
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_B58, 6);
     // d_course_big_donut_packed_dl_230
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x07000230), 6);
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_230, 6);
     func_80295C6C();
+}
+
+void BigDonut::UnLoad() {
 }
 
 void BigDonut::BeginPlay() {
@@ -153,16 +153,16 @@ void BigDonut::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_big_donut_packed_dl_DE8
-        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000DE8)));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_DE8);
     }
     // d_course_big_donut_packed_dl_450
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000450)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_450);
     // d_course_big_donut_packed_dl_AC0
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000AC0)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_AC0);
     // d_course_big_donut_packed_dl_D20
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000D20)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_D20);
     // d_course_big_donut_packed_dl_230
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x07000230)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_230);
 }
 
 void BigDonut::RenderCredits() {

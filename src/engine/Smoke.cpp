@@ -13,7 +13,8 @@ extern "C" {
 #include "code_80057C60.h"
 #include "update_objects.h"
 #include "math_util_2.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
+#include "assets/textures/common_data.h"
 }
 
 //! @todo: This should be an Object class one day

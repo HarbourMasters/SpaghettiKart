@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/bowsers_castle_data.h>
+#include <assets/models/tracks/bowsers_castle/bowsers_castle_data.h>
 
 const Gfx* bowsers_castle_dls[] = {
     d_course_bowsers_castle_dl_0,    d_course_bowsers_castle_dl_230,  d_course_bowsers_castle_dl_110,

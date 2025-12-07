@@ -1,7 +1,7 @@
 #include "WarioSign.h"
 
 #include <libultra/gbi.h>
-#include <assets/wario_stadium_data.h>
+#include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
 
 extern "C" {
 #include "common_structs.h"

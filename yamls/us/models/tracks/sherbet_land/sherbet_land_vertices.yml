@@ -1,0 +1,849 @@
+:config:
+  segments:
+    - [0x0F, 0x936FD0]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_sherbet_land_vertex_0x04000000:
+  symbol: d_course_sherbet_land_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x0
+
+d_course_sherbet_land_vertex_0x04000040:
+  symbol: d_course_sherbet_land_vertex_0x04000040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38
+
+d_course_sherbet_land_vertex_0x04000080:
+  symbol: d_course_sherbet_land_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x70
+
+d_course_sherbet_land_vertex_0x040000C0:
+  symbol: d_course_sherbet_land_vertex_0x040000C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa8
+
+d_course_sherbet_land_vertex_0x04000100:
+  symbol: d_course_sherbet_land_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe0
+
+d_course_sherbet_land_vertex_0x04000140:
+  symbol: d_course_sherbet_land_vertex_0x04000140
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x118
+
+d_course_sherbet_land_vertex_0x04000180:
+  symbol: d_course_sherbet_land_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x150
+
+d_course_sherbet_land_vertex_0x040001C0:
+  symbol: d_course_sherbet_land_vertex_0x040001C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x188
+
+d_course_sherbet_land_vertex_0x04000200:
+  symbol: d_course_sherbet_land_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c0
+
+d_course_sherbet_land_vertex_0x04000400:
+  symbol: d_course_sherbet_land_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_sherbet_land_vertex_0x04000600:
+  symbol: d_course_sherbet_land_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x540
+
+d_course_sherbet_land_vertex_0x04000800:
+  symbol: d_course_sherbet_land_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x700
+
+d_course_sherbet_land_vertex_0x040008B0:
+  symbol: d_course_sherbet_land_vertex_0x040008B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x79a
+
+d_course_sherbet_land_vertex_0x04000AB0:
+  symbol: d_course_sherbet_land_vertex_0x04000AB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x95a
+
+d_course_sherbet_land_vertex_0x04000CB0:
+  symbol: d_course_sherbet_land_vertex_0x04000CB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb1a
+
+d_course_sherbet_land_vertex_0x04000EA0:
+  symbol: d_course_sherbet_land_vertex_0x04000EA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xccc
+
+d_course_sherbet_land_vertex_0x040010A0:
+  symbol: d_course_sherbet_land_vertex_0x040010A0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xe8c
+
+d_course_sherbet_land_vertex_0x040011D0:
+  symbol: d_course_sherbet_land_vertex_0x040011D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf96
+
+d_course_sherbet_land_vertex_0x040013B0:
+  symbol: d_course_sherbet_land_vertex_0x040013B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x113a
+
+d_course_sherbet_land_vertex_0x04001590:
+  symbol: d_course_sherbet_land_vertex_0x04001590
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x12de
+
+d_course_sherbet_land_vertex_0x04001780:
+  symbol: d_course_sherbet_land_vertex_0x04001780
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1490
+
+d_course_sherbet_land_vertex_0x04001970:
+  symbol: d_course_sherbet_land_vertex_0x04001970
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x1642
+
+d_course_sherbet_land_vertex_0x04001B20:
+  symbol: d_course_sherbet_land_vertex_0x04001B20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17bc
+
+d_course_sherbet_land_vertex_0x04001D20:
+  symbol: d_course_sherbet_land_vertex_0x04001D20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x197c
+
+d_course_sherbet_land_vertex_0x04001F20:
+  symbol: d_course_sherbet_land_vertex_0x04001F20
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x1b3c
+
+d_course_sherbet_land_vertex_0x040020B0:
+  symbol: d_course_sherbet_land_vertex_0x040020B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c9a
+
+d_course_sherbet_land_vertex_0x040020F0:
+  symbol: d_course_sherbet_land_vertex_0x040020F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1cd2
+
+d_course_sherbet_land_vertex_0x040022E0:
+  symbol: d_course_sherbet_land_vertex_0x040022E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1e84
+
+d_course_sherbet_land_vertex_0x040024C0:
+  symbol: d_course_sherbet_land_vertex_0x040024C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2028
+
+d_course_sherbet_land_vertex_0x040026A0:
+  symbol: d_course_sherbet_land_vertex_0x040026A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x21cc
+
+d_course_sherbet_land_vertex_0x04002890:
+  symbol: d_course_sherbet_land_vertex_0x04002890
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x237e
+
+d_course_sherbet_land_vertex_0x040028F0:
+  symbol: d_course_sherbet_land_vertex_0x040028F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x23d2
+
+d_course_sherbet_land_vertex_0x04002AD0:
+  symbol: d_course_sherbet_land_vertex_0x04002AD0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x2576
+
+d_course_sherbet_land_vertex_0x04002CC0:
+  symbol: d_course_sherbet_land_vertex_0x04002CC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2728
+
+d_course_sherbet_land_vertex_0x04002EC0:
+  symbol: d_course_sherbet_land_vertex_0x04002EC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x28e8
+
+d_course_sherbet_land_vertex_0x040030C0:
+  symbol: d_course_sherbet_land_vertex_0x040030C0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x2aa8
+
+d_course_sherbet_land_vertex_0x04003230:
+  symbol: d_course_sherbet_land_vertex_0x04003230
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2bea
+
+d_course_sherbet_land_vertex_0x04003410:
+  symbol: d_course_sherbet_land_vertex_0x04003410
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x2d8e
+
+d_course_sherbet_land_vertex_0x04003600:
+  symbol: d_course_sherbet_land_vertex_0x04003600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2f40
+
+d_course_sherbet_land_vertex_0x04003800:
+  symbol: d_course_sherbet_land_vertex_0x04003800
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x3100
+
+d_course_sherbet_land_vertex_0x040039D0:
+  symbol: d_course_sherbet_land_vertex_0x040039D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x3296
+
+d_course_sherbet_land_vertex_0x04003BC0:
+  symbol: d_course_sherbet_land_vertex_0x04003BC0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3448
+
+d_course_sherbet_land_vertex_0x04003DA0:
+  symbol: d_course_sherbet_land_vertex_0x04003DA0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x35ec
+
+d_course_sherbet_land_vertex_0x04003E80:
+  symbol: d_course_sherbet_land_vertex_0x04003E80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x36b0
+
+d_course_sherbet_land_vertex_0x04003EC0:
+  symbol: d_course_sherbet_land_vertex_0x04003EC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x36e8
+
+d_course_sherbet_land_vertex_0x04003FC0:
+  symbol: d_course_sherbet_land_vertex_0x04003FC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x37c8
+
+d_course_sherbet_land_vertex_0x040041C0:
+  symbol: d_course_sherbet_land_vertex_0x040041C0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x3988
+
+d_course_sherbet_land_vertex_0x04004230:
+  symbol: d_course_sherbet_land_vertex_0x04004230
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x39ea
+
+d_course_sherbet_land_vertex_0x040043F0:
+  symbol: d_course_sherbet_land_vertex_0x040043F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3b72
+
+d_course_sherbet_land_vertex_0x04004570:
+  symbol: d_course_sherbet_land_vertex_0x04004570
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3cc2
+
+d_course_sherbet_land_vertex_0x04004750:
+  symbol: d_course_sherbet_land_vertex_0x04004750
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x3e66
+
+d_course_sherbet_land_vertex_0x040048B0:
+  symbol: d_course_sherbet_land_vertex_0x040048B0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x3f9a
+
+d_course_sherbet_land_vertex_0x04004A60:
+  symbol: d_course_sherbet_land_vertex_0x04004A60
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x4114
+
+d_course_sherbet_land_vertex_0x04004B80:
+  symbol: d_course_sherbet_land_vertex_0x04004B80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4210
+
+d_course_sherbet_land_vertex_0x04004C40:
+  symbol: d_course_sherbet_land_vertex_0x04004C40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x42b8
+
+d_course_sherbet_land_vertex_0x04004E40:
+  symbol: d_course_sherbet_land_vertex_0x04004E40
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x4478
+
+d_course_sherbet_land_vertex_0x04004F30:
+  symbol: d_course_sherbet_land_vertex_0x04004F30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x454a
+
+d_course_sherbet_land_vertex_0x04005120:
+  symbol: d_course_sherbet_land_vertex_0x04005120
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x46fc
+
+d_course_sherbet_land_vertex_0x040051B0:
+  symbol: d_course_sherbet_land_vertex_0x040051B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x477a
+
+d_course_sherbet_land_vertex_0x04005330:
+  symbol: d_course_sherbet_land_vertex_0x04005330
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x48ca
+
+d_course_sherbet_land_vertex_0x040053F0:
+  symbol: d_course_sherbet_land_vertex_0x040053F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4972
+
+d_course_sherbet_land_vertex_0x040054B0:
+  symbol: d_course_sherbet_land_vertex_0x040054B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4a1a
+
+d_course_sherbet_land_vertex_0x040055B0:
+  symbol: d_course_sherbet_land_vertex_0x040055B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4afa
+
+d_course_sherbet_land_vertex_0x040057B0:
+  symbol: d_course_sherbet_land_vertex_0x040057B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4cba
+
+d_course_sherbet_land_vertex_0x040057F0:
+  symbol: d_course_sherbet_land_vertex_0x040057F0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x4cf2
+
+d_course_sherbet_land_vertex_0x040058C0:
+  symbol: d_course_sherbet_land_vertex_0x040058C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4da8
+
+d_course_sherbet_land_vertex_0x04005940:
+  symbol: d_course_sherbet_land_vertex_0x04005940
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4e18
+
+d_course_sherbet_land_vertex_0x04005A40:
+  symbol: d_course_sherbet_land_vertex_0x04005A40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4ef8
+
+d_course_sherbet_land_vertex_0x04005AC0:
+  symbol: d_course_sherbet_land_vertex_0x04005AC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4f68
+
+d_course_sherbet_land_vertex_0x04005B80:
+  symbol: d_course_sherbet_land_vertex_0x04005B80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5010
+
+d_course_sherbet_land_vertex_0x04005C40:
+  symbol: d_course_sherbet_land_vertex_0x04005C40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x50b8
+
+d_course_sherbet_land_vertex_0x04005C80:
+  symbol: d_course_sherbet_land_vertex_0x04005C80
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x50f0
+
+d_course_sherbet_land_vertex_0x04005D30:
+  symbol: d_course_sherbet_land_vertex_0x04005D30
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x518a
+
+d_course_sherbet_land_vertex_0x04005DE0:
+  symbol: d_course_sherbet_land_vertex_0x04005DE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5224
+
+d_course_sherbet_land_vertex_0x04005EE0:
+  symbol: d_course_sherbet_land_vertex_0x04005EE0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x5304
+
+d_course_sherbet_land_vertex_0x04005F80:
+  symbol: d_course_sherbet_land_vertex_0x04005F80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5390
+
+d_course_sherbet_land_vertex_0x04005FC0:
+  symbol: d_course_sherbet_land_vertex_0x04005FC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x53c8
+
+d_course_sherbet_land_vertex_0x04006040:
+  symbol: d_course_sherbet_land_vertex_0x04006040
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x5438
+
+d_course_sherbet_land_vertex_0x04006110:
+  symbol: d_course_sherbet_land_vertex_0x04006110
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x54ee
+
+d_course_sherbet_land_vertex_0x04006180:
+  symbol: d_course_sherbet_land_vertex_0x04006180
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x5550
+
+d_course_sherbet_land_vertex_0x04006220:
+  symbol: d_course_sherbet_land_vertex_0x04006220
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x55dc
+
+d_course_sherbet_land_vertex_0x040062D0:
+  symbol: d_course_sherbet_land_vertex_0x040062D0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x5676
+
+d_course_sherbet_land_vertex_0x04006370:
+  symbol: d_course_sherbet_land_vertex_0x04006370
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5702
+
+d_course_sherbet_land_vertex_0x040063C0:
+  symbol: d_course_sherbet_land_vertex_0x040063C0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5748
+
+d_course_sherbet_land_vertex_0x04006450:
+  symbol: d_course_sherbet_land_vertex_0x04006450
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x57c6
+
+d_course_sherbet_land_vertex_0x040064E0:
+  symbol: d_course_sherbet_land_vertex_0x040064E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x5844
+
+d_course_sherbet_land_vertex_0x04006540:
+  symbol: d_course_sherbet_land_vertex_0x04006540
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5898
+
+d_course_sherbet_land_vertex_0x04006590:
+  symbol: d_course_sherbet_land_vertex_0x04006590
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x58de
+
+d_course_sherbet_land_vertex_0x04006620:
+  symbol: d_course_sherbet_land_vertex_0x04006620
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x595c
+
+d_course_sherbet_land_vertex_0x04006690:
+  symbol: d_course_sherbet_land_vertex_0x04006690
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x59be
+
+d_course_sherbet_land_vertex_0x04006700:
+  symbol: d_course_sherbet_land_vertex_0x04006700
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5a20
+
+d_course_sherbet_land_vertex_0x04006790:
+  symbol: d_course_sherbet_land_vertex_0x04006790
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5a9e
+
+d_course_sherbet_land_vertex_0x04006990:
+  symbol: d_course_sherbet_land_vertex_0x04006990
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5c5e
+
+d_course_sherbet_land_vertex_0x04006B90:
+  symbol: d_course_sherbet_land_vertex_0x04006B90
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5e1e
+
+d_course_sherbet_land_vertex_0x04006C10:
+  symbol: d_course_sherbet_land_vertex_0x04006C10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5e8e
+
+d_course_sherbet_land_vertex_0x04006E10:
+  symbol: d_course_sherbet_land_vertex_0x04006E10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x604e
+
+d_course_sherbet_land_vertex_0x04007010:
+  symbol: d_course_sherbet_land_vertex_0x04007010
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x620e
+
+d_course_sherbet_land_vertex_0x04007090:
+  symbol: d_course_sherbet_land_vertex_0x04007090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x627e
+
+d_course_sherbet_land_vertex_0x04007290:
+  symbol: d_course_sherbet_land_vertex_0x04007290
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x643e
+
+d_course_sherbet_land_vertex_0x04007490:
+  symbol: d_course_sherbet_land_vertex_0x04007490
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x65fe
+
+d_course_sherbet_land_vertex_0x04007510:
+  symbol: d_course_sherbet_land_vertex_0x04007510
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x666e
+
+d_course_sherbet_land_vertex_0x04007710:
+  symbol: d_course_sherbet_land_vertex_0x04007710
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x682e
+
+d_course_sherbet_land_vertex_0x04007910:
+  symbol: d_course_sherbet_land_vertex_0x04007910
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x69ee
+
+d_course_sherbet_land_vertex_0x04007990:
+  symbol: d_course_sherbet_land_vertex_0x04007990
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x6a5e
+
+d_course_sherbet_land_vertex_0x04007A20:
+  symbol: d_course_sherbet_land_vertex_0x04007A20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6adc
+
+d_course_sherbet_land_vertex_0x04007C20:
+  symbol: d_course_sherbet_land_vertex_0x04007C20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6c9c
+
+d_course_sherbet_land_vertex_0x04007E20:
+  symbol: d_course_sherbet_land_vertex_0x04007E20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6e5c
+
+d_course_sherbet_land_vertex_0x04008020:
+  symbol: d_course_sherbet_land_vertex_0x04008020
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x701c
+
+d_course_sherbet_land_vertex_0x04008220:
+  symbol: d_course_sherbet_land_vertex_0x04008220
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x71dc
+
+d_course_sherbet_land_vertex_0x04008420:
+  symbol: d_course_sherbet_land_vertex_0x04008420
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x739c
+
+d_course_sherbet_land_vertex_0x04008620:
+  symbol: d_course_sherbet_land_vertex_0x04008620
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x755c
+
+d_course_sherbet_land_vertex_0x04008800:
+  symbol: d_course_sherbet_land_vertex_0x04008800
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x7700
+
+d_course_sherbet_land_vertex_0x04008870:
+  symbol: d_course_sherbet_land_vertex_0x04008870
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x7762
+
+d_course_sherbet_land_vertex_0x04008970:
+  symbol: d_course_sherbet_land_vertex_0x04008970
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7842
+
+d_course_sherbet_land_vertex_0x04008B50:
+  symbol: d_course_sherbet_land_vertex_0x04008B50
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x79e6
+
+d_course_sherbet_land_vertex_0x04008BC0:
+  symbol: d_course_sherbet_land_vertex_0x04008BC0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x7a48
+
+d_course_sherbet_land_vertex_0x04008CE0:
+  symbol: d_course_sherbet_land_vertex_0x04008CE0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x7b44
+
+d_course_sherbet_land_vertex_0x04008EA0:
+  symbol: d_course_sherbet_land_vertex_0x04008EA0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x7ccc
+
+d_course_sherbet_land_vertex_0x04009020:
+  symbol: d_course_sherbet_land_vertex_0x04009020
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7e1c
+
+d_course_sherbet_land_vertex_0x04009200:
+  symbol: d_course_sherbet_land_vertex_0x04009200
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x7fc0
+
+d_course_sherbet_land_vertex_0x04009360:
+  symbol: d_course_sherbet_land_vertex_0x04009360
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x80f4
+
+d_course_sherbet_land_vertex_0x04009510:
+  symbol: d_course_sherbet_land_vertex_0x04009510
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x826e
+
+d_course_sherbet_land_vertex_0x040095D0:
+  symbol: d_course_sherbet_land_vertex_0x040095D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x8316
+
+d_course_sherbet_land_vertex_0x040096D0:
+  symbol: d_course_sherbet_land_vertex_0x040096D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x83f6
+
+d_course_sherbet_land_vertex_0x04009790:
+  symbol: d_course_sherbet_land_vertex_0x04009790
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x849e
+
+d_course_sherbet_land_vertex_0x04009980:
+  symbol: d_course_sherbet_land_vertex_0x04009980
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8650
+
+d_course_sherbet_land_vertex_0x04009AA0:
+  symbol: d_course_sherbet_land_vertex_0x04009AA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x874c
+
+d_course_sherbet_land_vertex_0x04009C90:
+  symbol: d_course_sherbet_land_vertex_0x04009C90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x88fe
+
+d_course_sherbet_land_vertex_0x04009D50:
+  symbol: d_course_sherbet_land_vertex_0x04009D50
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x89a6
+
+d_course_sherbet_land_vertex_0x04009ED0:
+  symbol: d_course_sherbet_land_vertex_0x04009ED0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8af6
+
+d_course_sherbet_land_vertex_0x04009F90:
+  symbol: d_course_sherbet_land_vertex_0x04009F90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x8b9e
+
+d_course_sherbet_land_vertex_0x0400A090:
+  symbol: d_course_sherbet_land_vertex_0x0400A090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8c7e
+
+d_course_sherbet_land_vertex_0x0400A290:
+  symbol: d_course_sherbet_land_vertex_0x0400A290
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x8e3e
+
+d_course_sherbet_land_vertex_0x0400A2D0:
+  symbol: d_course_sherbet_land_vertex_0x0400A2D0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x8e76
+
+d_course_sherbet_land_vertex_0x0400A3A0:
+  symbol: d_course_sherbet_land_vertex_0x0400A3A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x8f2c
+
+d_course_sherbet_land_vertex_0x0400A420:
+  symbol: d_course_sherbet_land_vertex_0x0400A420
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x8f9c
+
+d_course_sherbet_land_vertex_0x0400A520:
+  symbol: d_course_sherbet_land_vertex_0x0400A520
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x907c
+
+d_course_sherbet_land_vertex_0x0400A5A0:
+  symbol: d_course_sherbet_land_vertex_0x0400A5A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x90ec
+
+d_course_sherbet_land_vertex_0x0400A660:
+  symbol: d_course_sherbet_land_vertex_0x0400A660
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x9194
+
+d_course_sherbet_land_vertex_0x0400A720:
+  symbol: d_course_sherbet_land_vertex_0x0400A720
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x923c

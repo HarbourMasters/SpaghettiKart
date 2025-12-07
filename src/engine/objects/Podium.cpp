@@ -1,5 +1,5 @@
 #include "Podium.h"
-#include "assets/ceremony_data.h"
+#include "assets/models/ceremony_data.h"
 
 extern "C" {
 #include "main.h"
@@ -10,7 +10,7 @@ extern "C" {
 #include "podium_ceremony_actors.h"
 #include "math_util.h"
 #include "math_util_2.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "some_data.h"
 #include "code_80091440.h"
 #include "code_80086E70.h"

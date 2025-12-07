@@ -1,0 +1,103 @@
+:config:
+  segments:
+    - [0x06, 0x852E20]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_moo_moo_farm_mole_frames:
+      range: [0xFE70, 0x13670]
+      mode: APPEND
+d_course_moo_moo_farm_mole_tlut:
+  symbol: d_course_moo_moo_farm_mole_tlut
+  type: texture
+  offset: 0xfc70
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTextureMole1:
+  symbol: gTextureMole1
+  type: texture
+  offset: 0xfe70
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole2:
+  symbol: gTextureMole2
+  type: texture
+  offset: 0x10670
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole3:
+  symbol: gTextureMole3
+  type: texture
+  offset: 0x10E70
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole4:
+  symbol: gTextureMole4
+  type: texture
+  offset: 0x11670
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole5:
+  symbol: gTextureMole5
+  type: texture
+  offset: 0x11E70
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole6:
+  symbol: gTextureMole6
+  type: texture
+  offset: 0x12670
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+gTextureMole7:
+  symbol: gTextureMole7
+  type: texture
+  offset: 0x12E70
+  width: 32
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: d_course_moo_moo_farm_mole_tlut
+d_course_moo_moo_farm_mole_dirt:
+  symbol: d_course_moo_moo_farm_mole_dirt
+  type: texture
+  offset: 0x13670
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+d_course_moo_moo_farm_cow_tlut:
+  symbol: d_course_moo_moo_farm_cow_tlut
+  type: texture
+  offset: 0x13870
+  width: 12
+  height: 17
+  format: rgba16
+  ctype: u16

@@ -1,8 +1,9 @@
 #include "GrandPrixBalloons.h"
 
 #include "port/Game.h"
-#include "assets/other_textures.h"
-#include "assets/common_data.h"
+#include "assets/textures/other_textures.h"
+#include "assets/textures/some_data.h"
+#include "assets/models/common_data.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {

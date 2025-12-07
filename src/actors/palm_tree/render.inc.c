@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include <assets/koopa_troopa_beach_data.h>
+#include <assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h>
 
 /**
  * @brief Renders the palm tree actor.

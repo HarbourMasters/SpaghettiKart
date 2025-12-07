@@ -1,0 +1,44 @@
+:config:
+  segments:
+    - [0x06, 0x84E8E0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_luigi_raceway_sign_left:
+  symbol: d_course_luigi_raceway_sign_left
+  type: texture
+  offset: 0xC588
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_luigi_raceway_sign_right:
+  symbol: d_course_luigi_raceway_sign_right
+  type: texture
+  offset: 0xD588
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_luigi_raceway_balloon_basket:
+  symbol: d_course_luigi_raceway_balloon_basket
+  type: texture
+  offset: 0xE588
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_luigi_raceway_balloon_rope:
+  symbol: d_course_luigi_raceway_balloon_rope
+  type: texture
+  offset: 0xED88
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

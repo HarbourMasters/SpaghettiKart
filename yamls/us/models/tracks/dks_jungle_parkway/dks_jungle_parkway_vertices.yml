@@ -1,0 +1,2301 @@
+:config:
+  segments:
+    - [0x0F, 0x956670]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_dks_jungle_parkway_vertex_0x04000000:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x0
+
+d_course_dks_jungle_parkway_vertex_0x04000100:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe0
+
+d_course_dks_jungle_parkway_vertex_0x04000180:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x150
+
+d_course_dks_jungle_parkway_vertex_0x04000200:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c0
+
+d_course_dks_jungle_parkway_vertex_0x04000240:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000240
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1f8
+
+d_course_dks_jungle_parkway_vertex_0x040002C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040002C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x268
+
+d_course_dks_jungle_parkway_vertex_0x04000340:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000340
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2d8
+
+d_course_dks_jungle_parkway_vertex_0x04000440:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000440
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3b8
+
+d_course_dks_jungle_parkway_vertex_0x04000500:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000500
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x460
+
+d_course_dks_jungle_parkway_vertex_0x04000540:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000540
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x498
+
+d_course_dks_jungle_parkway_vertex_0x04000580:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000580
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4d0
+
+d_course_dks_jungle_parkway_vertex_0x040005C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040005C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x508
+
+d_course_dks_jungle_parkway_vertex_0x04000600:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x540
+
+d_course_dks_jungle_parkway_vertex_0x040006C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040006C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5e8
+
+d_course_dks_jungle_parkway_vertex_0x04000740:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000740
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x658
+
+d_course_dks_jungle_parkway_vertex_0x04000780:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000780
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x690
+
+d_course_dks_jungle_parkway_vertex_0x040007C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040007C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6c8
+
+d_course_dks_jungle_parkway_vertex_0x04000800:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x700
+
+d_course_dks_jungle_parkway_vertex_0x04000840:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000840
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x738
+
+d_course_dks_jungle_parkway_vertex_0x040008C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040008C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7a8
+
+d_course_dks_jungle_parkway_vertex_0x04000980:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000980
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x850
+
+d_course_dks_jungle_parkway_vertex_0x04000A00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x8c0
+
+d_course_dks_jungle_parkway_vertex_0x04000A40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000A40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x8f8
+
+d_course_dks_jungle_parkway_vertex_0x04000AC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000AC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x968
+
+d_course_dks_jungle_parkway_vertex_0x04000B00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000B00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x9a0
+
+d_course_dks_jungle_parkway_vertex_0x04000BC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000BC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa48
+
+d_course_dks_jungle_parkway_vertex_0x04000C40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000C40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xab8
+
+d_course_dks_jungle_parkway_vertex_0x04000C80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000C80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaf0
+
+d_course_dks_jungle_parkway_vertex_0x04000CC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000CC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xb28
+
+d_course_dks_jungle_parkway_vertex_0x04000D40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000D40
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb98
+
+d_course_dks_jungle_parkway_vertex_0x04000E00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000E00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc40
+
+d_course_dks_jungle_parkway_vertex_0x04000E80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000E80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcb0
+
+d_course_dks_jungle_parkway_vertex_0x04000F00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000F00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd20
+
+d_course_dks_jungle_parkway_vertex_0x04000FC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04000FC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdc8
+
+d_course_dks_jungle_parkway_vertex_0x04001040:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001040
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe38
+
+d_course_dks_jungle_parkway_vertex_0x040010C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040010C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xea8
+
+d_course_dks_jungle_parkway_vertex_0x04001140:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001140
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf18
+
+d_course_dks_jungle_parkway_vertex_0x040011C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040011C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf88
+
+d_course_dks_jungle_parkway_vertex_0x04001240:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001240
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xff8
+
+d_course_dks_jungle_parkway_vertex_0x040012C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040012C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1068
+
+d_course_dks_jungle_parkway_vertex_0x04001340:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001340
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10d8
+
+d_course_dks_jungle_parkway_vertex_0x040013C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040013C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1148
+
+d_course_dks_jungle_parkway_vertex_0x04001440:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001440
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11b8
+
+d_course_dks_jungle_parkway_vertex_0x040014C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040014C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1228
+
+d_course_dks_jungle_parkway_vertex_0x04001540:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001540
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1298
+
+d_course_dks_jungle_parkway_vertex_0x040015C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040015C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1308
+
+d_course_dks_jungle_parkway_vertex_0x04001640:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001640
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1378
+
+d_course_dks_jungle_parkway_vertex_0x04001780:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001780
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1490
+
+d_course_dks_jungle_parkway_vertex_0x04001840:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001840
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1538
+
+d_course_dks_jungle_parkway_vertex_0x04001900:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001900
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x15e0
+
+d_course_dks_jungle_parkway_vertex_0x040019C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040019C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1688
+
+d_course_dks_jungle_parkway_vertex_0x04001A80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001A80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1730
+
+d_course_dks_jungle_parkway_vertex_0x04001BC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001BC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1848
+
+d_course_dks_jungle_parkway_vertex_0x04001C00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001C00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1880
+
+d_course_dks_jungle_parkway_vertex_0x04001C40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001C40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x18b8
+
+d_course_dks_jungle_parkway_vertex_0x04001C80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001C80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x18f0
+
+d_course_dks_jungle_parkway_vertex_0x04001CC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001CC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1928
+
+d_course_dks_jungle_parkway_vertex_0x04001D80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001D80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x19d0
+
+d_course_dks_jungle_parkway_vertex_0x04001E40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001E40
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1a78
+
+d_course_dks_jungle_parkway_vertex_0x04001F00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001F00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1b20
+
+d_course_dks_jungle_parkway_vertex_0x04001FC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04001FC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1bc8
+
+d_course_dks_jungle_parkway_vertex_0x04002040:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c38
+
+d_course_dks_jungle_parkway_vertex_0x04002080:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002080
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1c70
+
+d_course_dks_jungle_parkway_vertex_0x04002100:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002100
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1ce0
+
+d_course_dks_jungle_parkway_vertex_0x04002140:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002140
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1d18
+
+d_course_dks_jungle_parkway_vertex_0x04002180:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002180
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1d50
+
+d_course_dks_jungle_parkway_vertex_0x04002200:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002200
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1dc0
+
+d_course_dks_jungle_parkway_vertex_0x04002280:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002280
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1e30
+
+d_course_dks_jungle_parkway_vertex_0x040022C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040022C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1e68
+
+d_course_dks_jungle_parkway_vertex_0x04002300:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002300
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1ea0
+
+d_course_dks_jungle_parkway_vertex_0x04002340:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002340
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1ed8
+
+d_course_dks_jungle_parkway_vertex_0x04002380:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002380
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1f10
+
+d_course_dks_jungle_parkway_vertex_0x04002400:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002400
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1f80
+
+d_course_dks_jungle_parkway_vertex_0x04002540:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002540
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2098
+
+d_course_dks_jungle_parkway_vertex_0x04002640:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002640
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2178
+
+d_course_dks_jungle_parkway_vertex_0x04002780:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002780
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2290
+
+d_course_dks_jungle_parkway_vertex_0x040028C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040028C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x23a8
+
+d_course_dks_jungle_parkway_vertex_0x04002900:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002900
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x23e0
+
+d_course_dks_jungle_parkway_vertex_0x04002A40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002A40
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x24f8
+
+d_course_dks_jungle_parkway_vertex_0x04002B00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002B00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x25a0
+
+d_course_dks_jungle_parkway_vertex_0x04002B80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002B80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2610
+
+d_course_dks_jungle_parkway_vertex_0x04002C40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002C40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x26b8
+
+d_course_dks_jungle_parkway_vertex_0x04002CC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002CC0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2728
+
+d_course_dks_jungle_parkway_vertex_0x04002E00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002E00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2840
+
+d_course_dks_jungle_parkway_vertex_0x04002EC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002EC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x28e8
+
+d_course_dks_jungle_parkway_vertex_0x04002F00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002F00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2920
+
+d_course_dks_jungle_parkway_vertex_0x04002F40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002F40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2958
+
+d_course_dks_jungle_parkway_vertex_0x04002F80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04002F80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2990
+
+d_course_dks_jungle_parkway_vertex_0x04003000:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003000
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2a00
+
+d_course_dks_jungle_parkway_vertex_0x040030C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040030C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2aa8
+
+d_course_dks_jungle_parkway_vertex_0x04003100:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003100
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2ae0
+
+d_course_dks_jungle_parkway_vertex_0x04003180:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2b50
+
+d_course_dks_jungle_parkway_vertex_0x040031C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040031C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2b88
+
+d_course_dks_jungle_parkway_vertex_0x04003240:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003240
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2bf8
+
+d_course_dks_jungle_parkway_vertex_0x04003280:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003280
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2c30
+
+d_course_dks_jungle_parkway_vertex_0x040032C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040032C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2c68
+
+d_course_dks_jungle_parkway_vertex_0x04003340:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003340
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2cd8
+
+d_course_dks_jungle_parkway_vertex_0x04003380:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003380
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2d10
+
+d_course_dks_jungle_parkway_vertex_0x04003400:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003400
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2d80
+
+d_course_dks_jungle_parkway_vertex_0x04003480:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003480
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2df0
+
+d_course_dks_jungle_parkway_vertex_0x04003500:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003500
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2e60
+
+d_course_dks_jungle_parkway_vertex_0x04003580:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003580
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2ed0
+
+d_course_dks_jungle_parkway_vertex_0x040036C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040036C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2fe8
+
+d_course_dks_jungle_parkway_vertex_0x04003780:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003780
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3090
+
+d_course_dks_jungle_parkway_vertex_0x04003800:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003800
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3100
+
+d_course_dks_jungle_parkway_vertex_0x04003840:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003840
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3138
+
+d_course_dks_jungle_parkway_vertex_0x04003900:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003900
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x31e0
+
+d_course_dks_jungle_parkway_vertex_0x04003980:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003980
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3250
+
+d_course_dks_jungle_parkway_vertex_0x04003AC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003AC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3368
+
+d_course_dks_jungle_parkway_vertex_0x04003B40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003B40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x33d8
+
+d_course_dks_jungle_parkway_vertex_0x04003B80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003B80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3410
+
+d_course_dks_jungle_parkway_vertex_0x04003BC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003BC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3448
+
+d_course_dks_jungle_parkway_vertex_0x04003C00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003C00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3480
+
+d_course_dks_jungle_parkway_vertex_0x04003C40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003C40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x34b8
+
+d_course_dks_jungle_parkway_vertex_0x04003CC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003CC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3528
+
+d_course_dks_jungle_parkway_vertex_0x04003D00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003D00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3560
+
+d_course_dks_jungle_parkway_vertex_0x04003D40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003D40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3598
+
+d_course_dks_jungle_parkway_vertex_0x04003D80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003D80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x35d0
+
+d_course_dks_jungle_parkway_vertex_0x04003DC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003DC0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x3608
+
+d_course_dks_jungle_parkway_vertex_0x04003E30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003E30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x366a
+
+d_course_dks_jungle_parkway_vertex_0x04003E70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003E70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x36a2
+
+d_course_dks_jungle_parkway_vertex_0x04003EB0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003EB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x36da
+
+d_course_dks_jungle_parkway_vertex_0x04003EF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003EF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3712
+
+d_course_dks_jungle_parkway_vertex_0x04003F30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003F30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x374a
+
+d_course_dks_jungle_parkway_vertex_0x04003F70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003F70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3782
+
+d_course_dks_jungle_parkway_vertex_0x04003FB0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04003FB0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x37ba
+
+d_course_dks_jungle_parkway_vertex_0x040040B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040040B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x389a
+
+d_course_dks_jungle_parkway_vertex_0x040040F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040040F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38d2
+
+d_course_dks_jungle_parkway_vertex_0x04004130:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004130
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x390a
+
+d_course_dks_jungle_parkway_vertex_0x04004170:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004170
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3942
+
+d_course_dks_jungle_parkway_vertex_0x040041B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040041B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x397a
+
+d_course_dks_jungle_parkway_vertex_0x040041F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040041F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x39b2
+
+d_course_dks_jungle_parkway_vertex_0x040042B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040042B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3a5a
+
+d_course_dks_jungle_parkway_vertex_0x04004330:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004330
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3aca
+
+d_course_dks_jungle_parkway_vertex_0x04004370:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004370
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3b02
+
+d_course_dks_jungle_parkway_vertex_0x040043B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040043B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3b3a
+
+d_course_dks_jungle_parkway_vertex_0x04004430:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004430
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3baa
+
+d_course_dks_jungle_parkway_vertex_0x04004470:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004470
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3be2
+
+d_course_dks_jungle_parkway_vertex_0x04004530:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004530
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3c8a
+
+d_course_dks_jungle_parkway_vertex_0x04004570:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004570
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3cc2
+
+d_course_dks_jungle_parkway_vertex_0x040045B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040045B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3cfa
+
+d_course_dks_jungle_parkway_vertex_0x040045F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040045F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3d32
+
+d_course_dks_jungle_parkway_vertex_0x04004630:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004630
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3d6a
+
+d_course_dks_jungle_parkway_vertex_0x04004690:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004690
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3dbe
+
+d_course_dks_jungle_parkway_vertex_0x04004710:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004710
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3e2e
+
+d_course_dks_jungle_parkway_vertex_0x04004750:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004750
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3e66
+
+d_course_dks_jungle_parkway_vertex_0x040047D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040047D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3ed6
+
+d_course_dks_jungle_parkway_vertex_0x04004850:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004850
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3f46
+
+d_course_dks_jungle_parkway_vertex_0x040048D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040048D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3fb6
+
+d_course_dks_jungle_parkway_vertex_0x04004910:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004910
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3fee
+
+d_course_dks_jungle_parkway_vertex_0x04004950:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004950
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4026
+
+d_course_dks_jungle_parkway_vertex_0x04004990:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004990
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x405e
+
+d_course_dks_jungle_parkway_vertex_0x040049D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040049D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4096
+
+d_course_dks_jungle_parkway_vertex_0x04004A50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004A50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4106
+
+d_course_dks_jungle_parkway_vertex_0x04004AD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004AD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4176
+
+d_course_dks_jungle_parkway_vertex_0x04004B10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004B10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x41ae
+
+d_course_dks_jungle_parkway_vertex_0x04004B50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004B50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x41e6
+
+d_course_dks_jungle_parkway_vertex_0x04004B90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004B90
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x421e
+
+d_course_dks_jungle_parkway_vertex_0x04004BD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004BD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4256
+
+d_course_dks_jungle_parkway_vertex_0x04004C50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004C50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x42c6
+
+d_course_dks_jungle_parkway_vertex_0x04004C90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004C90
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x42fe
+
+d_course_dks_jungle_parkway_vertex_0x04004D10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004D10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x436e
+
+d_course_dks_jungle_parkway_vertex_0x04004D50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004D50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x43a6
+
+d_course_dks_jungle_parkway_vertex_0x04004D90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004D90
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x43de
+
+d_course_dks_jungle_parkway_vertex_0x04004F10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004F10
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x452e
+
+d_course_dks_jungle_parkway_vertex_0x04004F90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04004F90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x459e
+
+d_course_dks_jungle_parkway_vertex_0x04005050:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005050
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4646
+
+d_course_dks_jungle_parkway_vertex_0x04005110:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005110
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x46ee
+
+d_course_dks_jungle_parkway_vertex_0x04005290:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005290
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x483e
+
+d_course_dks_jungle_parkway_vertex_0x04005390:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005390
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x491e
+
+d_course_dks_jungle_parkway_vertex_0x04005450:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005450
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x49c6
+
+d_course_dks_jungle_parkway_vertex_0x04005490:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005490
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x49fe
+
+d_course_dks_jungle_parkway_vertex_0x04005590:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005590
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4ade
+
+d_course_dks_jungle_parkway_vertex_0x04005690:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005690
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4bbe
+
+d_course_dks_jungle_parkway_vertex_0x04005750:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005750
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x4c66
+
+d_course_dks_jungle_parkway_vertex_0x04005890:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005890
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4d7e
+
+d_course_dks_jungle_parkway_vertex_0x04005910:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005910
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4dee
+
+d_course_dks_jungle_parkway_vertex_0x040059D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040059D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4e96
+
+d_course_dks_jungle_parkway_vertex_0x04005AD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005AD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4f76
+
+d_course_dks_jungle_parkway_vertex_0x04005B50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005B50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4fe6
+
+d_course_dks_jungle_parkway_vertex_0x04005D50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005D50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x51a6
+
+d_course_dks_jungle_parkway_vertex_0x04005F50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04005F50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5366
+
+d_course_dks_jungle_parkway_vertex_0x04006150:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006150
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5526
+
+d_course_dks_jungle_parkway_vertex_0x04006350:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006350
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x56e6
+
+d_course_dks_jungle_parkway_vertex_0x04006550:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006550
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x58a6
+
+d_course_dks_jungle_parkway_vertex_0x04006750:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006750
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5a66
+
+d_course_dks_jungle_parkway_vertex_0x04006950:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006950
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5c26
+
+d_course_dks_jungle_parkway_vertex_0x04006A50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006A50
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5d06
+
+d_course_dks_jungle_parkway_vertex_0x04006BD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006BD0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x5e56
+
+d_course_dks_jungle_parkway_vertex_0x04006CF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006CF0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x5f52
+
+d_course_dks_jungle_parkway_vertex_0x04006E90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04006E90
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x60be
+
+d_course_dks_jungle_parkway_vertex_0x04007060:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007060
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x6254
+
+d_course_dks_jungle_parkway_vertex_0x040071F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040071F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x63b2
+
+d_course_dks_jungle_parkway_vertex_0x04007270:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007270
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x6422
+
+d_course_dks_jungle_parkway_vertex_0x040072E0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040072E0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x6484
+
+d_course_dks_jungle_parkway_vertex_0x04007390:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007390
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x651e
+
+d_course_dks_jungle_parkway_vertex_0x04007430:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007430
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x65aa
+
+d_course_dks_jungle_parkway_vertex_0x04007620:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007620
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x675c
+
+d_course_dks_jungle_parkway_vertex_0x04007820:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007820
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x691c
+
+d_course_dks_jungle_parkway_vertex_0x04007A10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007A10
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x6ace
+
+d_course_dks_jungle_parkway_vertex_0x04007BD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007BD0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6c56
+
+d_course_dks_jungle_parkway_vertex_0x04007DC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007DC0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x6e08
+
+d_course_dks_jungle_parkway_vertex_0x04007E90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04007E90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6ebe
+
+d_course_dks_jungle_parkway_vertex_0x04008090:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x707e
+
+d_course_dks_jungle_parkway_vertex_0x04008290:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008290
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x723e
+
+d_course_dks_jungle_parkway_vertex_0x04008490:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008490
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x73fe
+
+d_course_dks_jungle_parkway_vertex_0x04008610:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008610
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x754e
+
+d_course_dks_jungle_parkway_vertex_0x04008810:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008810
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x770e
+
+d_course_dks_jungle_parkway_vertex_0x04008A10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008A10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x78ce
+
+d_course_dks_jungle_parkway_vertex_0x04008BF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008BF0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x7a72
+
+d_course_dks_jungle_parkway_vertex_0x04008D20:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008D20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7b7c
+
+d_course_dks_jungle_parkway_vertex_0x04008F00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008F00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7d20
+
+d_course_dks_jungle_parkway_vertex_0x04008FC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04008FC0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7dc8
+
+d_course_dks_jungle_parkway_vertex_0x040091A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040091A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x7f6c
+
+d_course_dks_jungle_parkway_vertex_0x04009320:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009320
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x80bc
+
+d_course_dks_jungle_parkway_vertex_0x04009500:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009500
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8260
+
+d_course_dks_jungle_parkway_vertex_0x04009560:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009560
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x82b4
+
+d_course_dks_jungle_parkway_vertex_0x04009710:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009710
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x842e
+
+d_course_dks_jungle_parkway_vertex_0x040098F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040098F0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x85d2
+
+d_course_dks_jungle_parkway_vertex_0x04009A10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009A10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x86ce
+
+d_course_dks_jungle_parkway_vertex_0x04009C10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009C10
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x888e
+
+d_course_dks_jungle_parkway_vertex_0x04009DA0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009DA0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x89ec
+
+d_course_dks_jungle_parkway_vertex_0x04009ED0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009ED0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x8af6
+
+d_course_dks_jungle_parkway_vertex_0x04009FC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04009FC0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x8bc8
+
+d_course_dks_jungle_parkway_vertex_0x0400A100:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A100
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8ce0
+
+d_course_dks_jungle_parkway_vertex_0x0400A1C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A1C0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x8d88
+
+d_course_dks_jungle_parkway_vertex_0x0400A370:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A370
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x8f02
+
+d_course_dks_jungle_parkway_vertex_0x0400A450:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A450
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x8fc6
+
+d_course_dks_jungle_parkway_vertex_0x0400A5B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A5B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x90fa
+
+d_course_dks_jungle_parkway_vertex_0x0400A6F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A6F0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x9212
+
+d_course_dks_jungle_parkway_vertex_0x0400A7F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A7F0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x92f2
+
+d_course_dks_jungle_parkway_vertex_0x0400A8D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A8D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x93b6
+
+d_course_dks_jungle_parkway_vertex_0x0400A990:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400A990
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x945e
+
+d_course_dks_jungle_parkway_vertex_0x0400AB30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AB30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x95ca
+
+d_course_dks_jungle_parkway_vertex_0x0400AD10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AD10
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x976e
+
+d_course_dks_jungle_parkway_vertex_0x0400AD80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AD80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x97d0
+
+d_course_dks_jungle_parkway_vertex_0x0400AEC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AEC0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x98e8
+
+d_course_dks_jungle_parkway_vertex_0x0400AF70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AF70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9982
+
+d_course_dks_jungle_parkway_vertex_0x0400AFF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400AFF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x99f2
+
+d_course_dks_jungle_parkway_vertex_0x0400B070:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B070
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x9a62
+
+d_course_dks_jungle_parkway_vertex_0x0400B230:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B230
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x9bea
+
+d_course_dks_jungle_parkway_vertex_0x0400B350:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B350
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x9ce6
+
+d_course_dks_jungle_parkway_vertex_0x0400B450:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B450
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9dc6
+
+d_course_dks_jungle_parkway_vertex_0x0400B4D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B4D0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x9e36
+
+d_course_dks_jungle_parkway_vertex_0x0400B570:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B570
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9ec2
+
+d_course_dks_jungle_parkway_vertex_0x0400B5F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B5F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9f32
+
+d_course_dks_jungle_parkway_vertex_0x0400B670:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B670
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9fa2
+
+d_course_dks_jungle_parkway_vertex_0x0400B6B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B6B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x9fda
+
+d_course_dks_jungle_parkway_vertex_0x0400B7F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B7F0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xa0f2
+
+d_course_dks_jungle_parkway_vertex_0x0400B9A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400B9A0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xa26c
+
+d_course_dks_jungle_parkway_vertex_0x0400BA90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400BA90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa33e
+
+d_course_dks_jungle_parkway_vertex_0x0400BC90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400BC90
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xa4fe
+
+d_course_dks_jungle_parkway_vertex_0x0400BD60:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400BD60
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xa5b4
+
+d_course_dks_jungle_parkway_vertex_0x0400BE80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400BE80
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xa6b0
+
+d_course_dks_jungle_parkway_vertex_0x0400BF60:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400BF60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xa774
+
+d_course_dks_jungle_parkway_vertex_0x0400C020:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C020
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xa81c
+
+d_course_dks_jungle_parkway_vertex_0x0400C100:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C100
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xa8e0
+
+d_course_dks_jungle_parkway_vertex_0x0400C1C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C1C0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xa988
+
+d_course_dks_jungle_parkway_vertex_0x0400C290:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C290
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xaa3e
+
+d_course_dks_jungle_parkway_vertex_0x0400C2F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C2F0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xaa92
+
+d_course_dks_jungle_parkway_vertex_0x0400C490:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C490
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xabfe
+
+d_course_dks_jungle_parkway_vertex_0x0400C5A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C5A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xacec
+
+d_course_dks_jungle_parkway_vertex_0x0400C7A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C7A0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xaeac
+
+d_course_dks_jungle_parkway_vertex_0x0400C890:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400C890
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xaf7e
+
+d_course_dks_jungle_parkway_vertex_0x0400CA00:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CA00
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xb0c0
+
+d_course_dks_jungle_parkway_vertex_0x0400CAF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CAF0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xb192
+
+d_course_dks_jungle_parkway_vertex_0x0400CB60:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CB60
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xb1f4
+
+d_course_dks_jungle_parkway_vertex_0x0400CBF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CBF0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xb272
+
+d_course_dks_jungle_parkway_vertex_0x0400CC90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CC90
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xb2fe
+
+d_course_dks_jungle_parkway_vertex_0x0400CD80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CD80
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xb3d0
+
+d_course_dks_jungle_parkway_vertex_0x0400CE20:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CE20
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xb45c
+
+d_course_dks_jungle_parkway_vertex_0x0400CE90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CE90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb4be
+
+d_course_dks_jungle_parkway_vertex_0x0400CF50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400CF50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb566
+
+d_course_dks_jungle_parkway_vertex_0x0400D010:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D010
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb60e
+
+d_course_dks_jungle_parkway_vertex_0x0400D0D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D0D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb6b6
+
+d_course_dks_jungle_parkway_vertex_0x0400D2C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D2C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb868
+
+d_course_dks_jungle_parkway_vertex_0x0400D440:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D440
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xb9b8
+
+d_course_dks_jungle_parkway_vertex_0x0400D510:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D510
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xba6e
+
+d_course_dks_jungle_parkway_vertex_0x0400D590:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D590
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbade
+
+d_course_dks_jungle_parkway_vertex_0x0400D5D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D5D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xbb16
+
+d_course_dks_jungle_parkway_vertex_0x0400D690:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D690
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbbbe
+
+d_course_dks_jungle_parkway_vertex_0x0400D6D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D6D0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xbbf6
+
+d_course_dks_jungle_parkway_vertex_0x0400D770:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D770
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xbc82
+
+d_course_dks_jungle_parkway_vertex_0x0400D7F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D7F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbcf2
+
+d_course_dks_jungle_parkway_vertex_0x0400D9E0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400D9E0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xbea4
+
+d_course_dks_jungle_parkway_vertex_0x0400DA80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400DA80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbf30
+
+d_course_dks_jungle_parkway_vertex_0x0400DB80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400DB80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc010
+
+d_course_dks_jungle_parkway_vertex_0x0400DD70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400DD70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xc1c2
+
+d_course_dks_jungle_parkway_vertex_0x0400DE30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400DE30
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xc26a
+
+d_course_dks_jungle_parkway_vertex_0x0400DFC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400DFC0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xc3c8
+
+d_course_dks_jungle_parkway_vertex_0x0400E060:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E060
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc454
+
+d_course_dks_jungle_parkway_vertex_0x0400E250:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E250
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xc606
+
+d_course_dks_jungle_parkway_vertex_0x0400E280:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E280
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc630
+
+d_course_dks_jungle_parkway_vertex_0x0400E470:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E470
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xc7e2
+
+d_course_dks_jungle_parkway_vertex_0x0400E580:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E580
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc8d0
+
+d_course_dks_jungle_parkway_vertex_0x0400E600:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E600
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xc940
+
+d_course_dks_jungle_parkway_vertex_0x0400E740:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E740
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xca58
+
+d_course_dks_jungle_parkway_vertex_0x0400E940:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400E940
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcc18
+
+d_course_dks_jungle_parkway_vertex_0x0400EB40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400EB40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcdd8
+
+d_course_dks_jungle_parkway_vertex_0x0400ED40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400ED40
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xcf98
+
+d_course_dks_jungle_parkway_vertex_0x0400EDD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400EDD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd016
+
+d_course_dks_jungle_parkway_vertex_0x0400EFD0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400EFD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd1d6
+
+d_course_dks_jungle_parkway_vertex_0x0400F1D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400F1D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd396
+
+d_course_dks_jungle_parkway_vertex_0x0400F3B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400F3B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd53a
+
+d_course_dks_jungle_parkway_vertex_0x0400F5A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400F5A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd6ec
+
+d_course_dks_jungle_parkway_vertex_0x0400F7A0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400F7A0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xd8ac
+
+d_course_dks_jungle_parkway_vertex_0x0400F8F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400F8F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd9d2
+
+d_course_dks_jungle_parkway_vertex_0x0400FAE0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400FAE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdb84
+
+d_course_dks_jungle_parkway_vertex_0x0400FCE0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400FCE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xdd44
+
+d_course_dks_jungle_parkway_vertex_0x0400FEC0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400FEC0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xdee8
+
+d_course_dks_jungle_parkway_vertex_0x0400FF30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x0400FF30
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xdf4a
+
+d_course_dks_jungle_parkway_vertex_0x04010050:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010050
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe046
+
+d_course_dks_jungle_parkway_vertex_0x04010250:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010250
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe206
+
+d_course_dks_jungle_parkway_vertex_0x04010450:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010450
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xe3c6
+
+d_course_dks_jungle_parkway_vertex_0x040105F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040105F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xe532
+
+d_course_dks_jungle_parkway_vertex_0x040107D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040107D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe6d6
+
+d_course_dks_jungle_parkway_vertex_0x040109D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040109D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe896
+
+d_course_dks_jungle_parkway_vertex_0x04010A10:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010A10
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xe8ce
+
+d_course_dks_jungle_parkway_vertex_0x04010B80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010B80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xea10
+
+d_course_dks_jungle_parkway_vertex_0x04010D80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010D80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xebd0
+
+d_course_dks_jungle_parkway_vertex_0x04010F80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04010F80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xed90
+
+d_course_dks_jungle_parkway_vertex_0x04011000:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xee00
+
+d_course_dks_jungle_parkway_vertex_0x04011200:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011200
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xefc0
+
+d_course_dks_jungle_parkway_vertex_0x04011300:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011300
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xf0a0
+
+d_course_dks_jungle_parkway_vertex_0x04011480:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011480
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf1f0
+
+d_course_dks_jungle_parkway_vertex_0x04011680:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011680
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf3b0
+
+d_course_dks_jungle_parkway_vertex_0x04011860:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011860
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf554
+
+d_course_dks_jungle_parkway_vertex_0x04011A40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011A40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf6f8
+
+d_course_dks_jungle_parkway_vertex_0x04011C40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011C40
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xf8b8
+
+d_course_dks_jungle_parkway_vertex_0x04011DE0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011DE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfa24
+
+d_course_dks_jungle_parkway_vertex_0x04011FE0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04011FE0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xfbe4
+
+d_course_dks_jungle_parkway_vertex_0x04012160:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012160
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xfd34
+
+d_course_dks_jungle_parkway_vertex_0x04012340:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012340
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfed8
+
+d_course_dks_jungle_parkway_vertex_0x04012540:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012540
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10098
+
+d_course_dks_jungle_parkway_vertex_0x040126C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040126C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x101e8
+
+d_course_dks_jungle_parkway_vertex_0x04012840:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012840
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10338
+
+d_course_dks_jungle_parkway_vertex_0x040128C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040128C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x103a8
+
+d_course_dks_jungle_parkway_vertex_0x04012A40:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012A40
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x104f8
+
+d_course_dks_jungle_parkway_vertex_0x04012BA0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1062c
+
+d_course_dks_jungle_parkway_vertex_0x04012DA0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012DA0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x107ec
+
+d_course_dks_jungle_parkway_vertex_0x04012F80:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04012F80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10990
+
+d_course_dks_jungle_parkway_vertex_0x04013180:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013180
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x10b50
+
+d_course_dks_jungle_parkway_vertex_0x040132C0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040132C0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x10c68
+
+d_course_dks_jungle_parkway_vertex_0x04013390:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013390
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10d1e
+
+d_course_dks_jungle_parkway_vertex_0x04013590:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013590
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10ede
+
+d_course_dks_jungle_parkway_vertex_0x04013790:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013790
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x1109e
+
+d_course_dks_jungle_parkway_vertex_0x04013910:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013910
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x111ee
+
+d_course_dks_jungle_parkway_vertex_0x04013AF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013AF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11392
+
+d_course_dks_jungle_parkway_vertex_0x04013CF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013CF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11552
+
+d_course_dks_jungle_parkway_vertex_0x04013EF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04013EF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11712
+
+d_course_dks_jungle_parkway_vertex_0x040140F0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040140F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x118d2
+
+d_course_dks_jungle_parkway_vertex_0x040142D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040142D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11a76
+
+d_course_dks_jungle_parkway_vertex_0x040143D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040143D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11b56
+
+d_course_dks_jungle_parkway_vertex_0x040145B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040145B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11cfa
+
+d_course_dks_jungle_parkway_vertex_0x040147B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040147B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11eba
+
+d_course_dks_jungle_parkway_vertex_0x040148B0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040148B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11f9a
+
+d_course_dks_jungle_parkway_vertex_0x04014970:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014970
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12042
+
+d_course_dks_jungle_parkway_vertex_0x04014B70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014B70
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x12202
+
+d_course_dks_jungle_parkway_vertex_0x04014C70:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014C70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x122e2
+
+d_course_dks_jungle_parkway_vertex_0x04014D30:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014D30
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1238a
+
+d_course_dks_jungle_parkway_vertex_0x04014ED0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014ED0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x124f6
+
+d_course_dks_jungle_parkway_vertex_0x04014F90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04014F90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1259e
+
+d_course_dks_jungle_parkway_vertex_0x04015050:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015050
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12646
+
+d_course_dks_jungle_parkway_vertex_0x04015090:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015090
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1267e
+
+d_course_dks_jungle_parkway_vertex_0x040150D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040150D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x126b6
+
+d_course_dks_jungle_parkway_vertex_0x040151D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040151D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x12796
+
+d_course_dks_jungle_parkway_vertex_0x040152D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040152D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x12876
+
+d_course_dks_jungle_parkway_vertex_0x040153D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040153D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x12956
+
+d_course_dks_jungle_parkway_vertex_0x040154D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040154D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12a36
+
+d_course_dks_jungle_parkway_vertex_0x04015590:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015590
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12ade
+
+d_course_dks_jungle_parkway_vertex_0x04015650:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015650
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x12b86
+
+d_course_dks_jungle_parkway_vertex_0x04015790:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015790
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x12c9e
+
+d_course_dks_jungle_parkway_vertex_0x040158D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040158D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12db6
+
+d_course_dks_jungle_parkway_vertex_0x04015950:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015950
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12e26
+
+d_course_dks_jungle_parkway_vertex_0x040159D0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x040159D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12e96
+
+d_course_dks_jungle_parkway_vertex_0x04015A90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015A90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12f3e
+
+d_course_dks_jungle_parkway_vertex_0x04015B50:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015B50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12fe6
+
+d_course_dks_jungle_parkway_vertex_0x04015B90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015B90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1301e
+
+d_course_dks_jungle_parkway_vertex_0x04015D90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015D90
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x131de
+
+d_course_dks_jungle_parkway_vertex_0x04015EF0:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015EF0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x13312
+
+d_course_dks_jungle_parkway_vertex_0x04015F90:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04015F90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1339e
+
+d_course_dks_jungle_parkway_vertex_0x04016170:
+  symbol: d_course_dks_jungle_parkway_vertex_0x04016170
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x13542

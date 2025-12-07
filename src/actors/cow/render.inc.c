@@ -2,7 +2,7 @@
 #include <actors.h>
 #include <main.h>
 #include <libultra/gbi.h>
-#include <assets/moo_moo_farm_data.h>
+#include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
 
 /**
  * @brief Renders the cow actor.

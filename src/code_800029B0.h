@@ -69,6 +69,7 @@ extern u16 gIsGamePaused;
 extern bool gIsEditorPaused;
 extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
+extern void set_mirror_mode(s32 mirror);
 extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
 extern Vec3f gVtxStretch;

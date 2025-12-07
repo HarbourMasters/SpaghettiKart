@@ -2,6 +2,7 @@
 
 #include "StringHelper.h"
 #include "GameExtractor.h"
+#include "mods/ModManager.h"
 #include "ui/ImguiUI.h"
 #include "libultraship/src/Context.h"
 #include "libultraship/src/controller/controldevice/controller/mapping/ControllerDefaultMappings.h"
@@ -79,11 +80,6 @@ GameEngine::GameEngine() {
     // Initialize context properties early to recognize paths properly for non-portable builds
     this->context = Ship::Context::CreateUninitializedInstance("Spaghetti Kart", "spaghettify", "spaghettify.cfg.json");
 
-    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
-    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("spaghetti.o2r");
-
-    std::vector<std::string> archiveFiles;
-
 #ifdef __SWITCH__
     Ship::Switch::Init(Ship::PreInitPhase);
     Ship::Switch::Init(Ship::PostInitPhase);
@@ -92,36 +88,6 @@ GameEngine::GameEngine() {
 #ifdef _WIN32
     AllocConsole();
 #endif
-
-    if (std::filesystem::exists(main_path)) {
-        archiveFiles.push_back(main_path);
-    } else {
-        if (ShowYesNoBox("No O2R Files", "No O2R files found. Generate one now?") == IDYES) {
-            if (!GenAssetFile()) {
-                ShowMessage("Error", "An error occured, no O2R file was generated.\n\nExiting...");
-                exit(1);
-            } else {
-                archiveFiles.push_back(main_path);
-            }
-        } else {
-            exit(1);
-        }
-    }
-
-    if (std::filesystem::exists(assets_path)) {
-        archiveFiles.push_back(assets_path);
-    }
-    if (const std::string patches_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
-        !patches_path.empty() && std::filesystem::exists(patches_path)) {
-        if (std::filesystem::is_directory(patches_path)) {
-            for (const auto& p : std::filesystem::recursive_directory_iterator(patches_path)) {
-                auto ext = p.path().extension().string();
-                if (StringHelper::IEquals(ext, ".zip") || StringHelper::IEquals(ext, ".o2r")) {
-                    archiveFiles.push_back(p.path().generic_string());
-                }
-            }
-        }
-    }
 
     this->context->InitConfiguration();    // without this line InitConsoleVariables fails at Config::Reload()
     this->context->InitConsoleVariables(); // without this line the controldeck constructor failes in
@@ -182,7 +148,7 @@ GameEngine::GameEngine() {
     );
     auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings);
 
-    this->context->InitResourceManager(archiveFiles, {}, 3); // without this line InitWindow fails in Gui::Init()
+    this->context->InitResourceManager({}, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
 
     auto gui = std::make_shared<Ship::SpaghettiGui>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
@@ -191,7 +157,7 @@ GameEngine::GameEngine() {
     // auto wnd = std::make_shared<Fast::Fast3dWindow>(std::vector<std::shared_ptr<Ship::GuiWindow>>({}));
     // auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
-    this->context->Init(archiveFiles, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
+    this->context->Init({}, {}, 3, { 26800, 512, 1100 }, wnd, controlDeck);
 
 #ifndef __SWITCH__
     Ship::Context::GetInstance()->GetLogger()->set_level(
@@ -360,6 +326,7 @@ int GameEngine::ShowYesNoBox(const char* title, const char* box) {
 
 void GameEngine::Create() {
     const auto instance = Instance = new GameEngine();
+    InitModsSystem();
     instance->gHMAS = new HMAS();
     instance->AudioInit();
     GameUI::SetupGuiElements();
@@ -373,6 +340,7 @@ void GameEngine::Destroy() {
 #ifdef __SWITCH__
     Ship::Switch::Exit();
 #endif
+    UnloadMods();
     GameUI::Destroy();
     delete GameEngine::Instance;
     GameEngine::Instance = nullptr;
@@ -712,7 +680,7 @@ extern "C" uint32_t GameEngine_GetGameVersion() {
     return 0x00000001;
 }
 
-static const char* sOtrSignature = "__OTR__";
+static const char* const sOtrSignature = "__OTR__";
 
 extern "C" bool GameEngine_OTRSigCheck(const char* data) {
     return strncmp(data, sOtrSignature, strlen(sOtrSignature)) == 0;
@@ -725,7 +693,7 @@ extern "C" int32_t GameEngine_ResourceGetTexTypeByName(const char* name) {
         return (int16_t) res->Type;
     }
 
-    SPDLOG_ERROR("Given texture path is a non-existent resource");
+    SPDLOG_ERROR("Given texture path {} is a non-existent resource", name);
     return -1;
 }
 

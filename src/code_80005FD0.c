@@ -23,7 +23,7 @@
 #include "code_80057C60.h"
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include <common_structs.h>
 #include "main.h"
 #include "menus.h"
@@ -33,9 +33,11 @@
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/path_spawn_metadata.h"
-#include <assets/kalimari_desert_data.h>
-#include <assets/frappe_snowland_data.h>
-#include <assets/dks_jungle_parkway_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/other/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
+#include <assets/other/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 #include <stdio.h>
 
 #include "port/Game.h"
