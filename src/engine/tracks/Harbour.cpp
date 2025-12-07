@@ -596,7 +596,7 @@ TrackSections harbour_surfaces[] = {
 };
 
 void Harbour::Load() {
-    Course::Load(road_map_001_mesh_vtx_0, NULL);
+    Track::Load(road_map_001_mesh_vtx_0, NULL);
 
     if (gIsMirrorMode != 0) {
         InvertTriangleWinding(ground_map_mesh);

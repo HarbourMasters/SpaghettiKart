@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture bowsers_castle_textures[];
 }
 
-class BowsersCastle : public Course {
+class BowsersCastle : public Track {
 public:
     virtual ~BowsersCastle() = default;  // Virtual destructor for proper cleanup in derived classes
 

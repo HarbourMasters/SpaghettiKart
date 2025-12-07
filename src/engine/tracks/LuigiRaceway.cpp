@@ -117,7 +117,7 @@ LuigiRaceway::LuigiRaceway() {
 }
 
 void LuigiRaceway::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(luigi_raceway_dls); i++) {
             InvertTriangleWindingByName(luigi_raceway_dls[i]);

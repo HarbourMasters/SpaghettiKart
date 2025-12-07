@@ -118,7 +118,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
 }
 
 void KoopaTroopaBeach::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(d_course_koopa_troopa_beach_dl_list1); i++) {
             InvertTriangleWindingByName(d_course_koopa_troopa_beach_dl_list1[i]);

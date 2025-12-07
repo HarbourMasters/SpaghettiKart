@@ -19,7 +19,7 @@ extern "C" {
     extern const course_texture koopa_troopa_beach_textures[];
 }
 
-class KoopaTroopaBeach : public Course {
+class KoopaTroopaBeach : public Track {
 public:
     virtual ~KoopaTroopaBeach() = default;  // Virtual destructor for proper cleanup in derived classes
 

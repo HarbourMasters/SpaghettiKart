@@ -106,7 +106,7 @@ Skyscraper::Skyscraper() {
 }
 
 void Skyscraper::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         InvertTriangleWindingByName(d_course_skyscraper_packed_dl_FE8);
         InvertTriangleWindingByName(d_course_skyscraper_packed_dl_C60);

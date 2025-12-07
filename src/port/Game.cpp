@@ -94,32 +94,32 @@ s32 gTrophyIndex = NULL;
 
 void CustomEngineInit() {
     /* Add all courses to the global course list */
-    std::shared_ptr<Course> mario         = gWorldInstance.AddCourse(std::make_shared<MarioRaceway>());
-    std::shared_ptr<Course> choco         = gWorldInstance.AddCourse(std::make_shared<ChocoMountain>());
-    std::shared_ptr<Course> bowser        = gWorldInstance.AddCourse(std::make_shared<BowsersCastle>());
-    std::shared_ptr<Course> banshee       = gWorldInstance.AddCourse(std::make_shared<BansheeBoardwalk>());
-    std::shared_ptr<Course> yoshi         = gWorldInstance.AddCourse(std::make_shared<YoshiValley>());
-    std::shared_ptr<Course> frappe        = gWorldInstance.AddCourse(std::make_shared<FrappeSnowland>());
-    std::shared_ptr<Course> koopa         = gWorldInstance.AddCourse(std::make_shared<KoopaTroopaBeach>());
-    std::shared_ptr<Course> royal         = gWorldInstance.AddCourse(std::make_shared<RoyalRaceway>());
-    std::shared_ptr<Course> luigi         = gWorldInstance.AddCourse(std::make_shared<LuigiRaceway>());
-    std::shared_ptr<Course> mooMoo        = gWorldInstance.AddCourse(std::make_shared<MooMooFarm>());
-    std::shared_ptr<Course> toads         = gWorldInstance.AddCourse(std::make_shared<ToadsTurnpike>());
-    std::shared_ptr<Course> kalimari      = gWorldInstance.AddCourse(std::make_shared<KalimariDesert>());
-    std::shared_ptr<Course> sherbet       = gWorldInstance.AddCourse(std::make_shared<SherbetLand>());
-    std::shared_ptr<Course> rainbow       = gWorldInstance.AddCourse(std::make_shared<RainbowRoad>());
-    std::shared_ptr<Course> wario         = gWorldInstance.AddCourse(std::make_shared<WarioStadium>());
-    std::shared_ptr<Course> block         = gWorldInstance.AddCourse(std::make_shared<BlockFort>());
-    std::shared_ptr<Course> skyscraper    = gWorldInstance.AddCourse(std::make_shared<Skyscraper>());
-    std::shared_ptr<Course> doubleDeck    = gWorldInstance.AddCourse(std::make_shared<DoubleDeck>());
-    std::shared_ptr<Course> dkJungle      = gWorldInstance.AddCourse(std::make_shared<DKJungle>());
-    std::shared_ptr<Course> bigDonut      = gWorldInstance.AddCourse(std::make_shared<BigDonut>());
-//    std::shared_ptr<Course> harbour       = gWorldInstance.AddCourse(std::make_shared<Harbour>());
-    std::shared_ptr<Course> testCourse    = gWorldInstance.AddCourse(std::make_shared<TestCourse>());
+    std::shared_ptr<Track> mario         = gWorldInstance.AddCourse(std::make_shared<MarioRaceway>());
+    std::shared_ptr<Track> choco         = gWorldInstance.AddCourse(std::make_shared<ChocoMountain>());
+    std::shared_ptr<Track> bowser        = gWorldInstance.AddCourse(std::make_shared<BowsersCastle>());
+    std::shared_ptr<Track> banshee       = gWorldInstance.AddCourse(std::make_shared<BansheeBoardwalk>());
+    std::shared_ptr<Track> yoshi         = gWorldInstance.AddCourse(std::make_shared<YoshiValley>());
+    std::shared_ptr<Track> frappe        = gWorldInstance.AddCourse(std::make_shared<FrappeSnowland>());
+    std::shared_ptr<Track> koopa         = gWorldInstance.AddCourse(std::make_shared<KoopaTroopaBeach>());
+    std::shared_ptr<Track> royal         = gWorldInstance.AddCourse(std::make_shared<RoyalRaceway>());
+    std::shared_ptr<Track> luigi         = gWorldInstance.AddCourse(std::make_shared<LuigiRaceway>());
+    std::shared_ptr<Track> mooMoo        = gWorldInstance.AddCourse(std::make_shared<MooMooFarm>());
+    std::shared_ptr<Track> toads         = gWorldInstance.AddCourse(std::make_shared<ToadsTurnpike>());
+    std::shared_ptr<Track> kalimari      = gWorldInstance.AddCourse(std::make_shared<KalimariDesert>());
+    std::shared_ptr<Track> sherbet       = gWorldInstance.AddCourse(std::make_shared<SherbetLand>());
+    std::shared_ptr<Track> rainbow       = gWorldInstance.AddCourse(std::make_shared<RainbowRoad>());
+    std::shared_ptr<Track> wario         = gWorldInstance.AddCourse(std::make_shared<WarioStadium>());
+    std::shared_ptr<Track> block         = gWorldInstance.AddCourse(std::make_shared<BlockFort>());
+    std::shared_ptr<Track> skyscraper    = gWorldInstance.AddCourse(std::make_shared<Skyscraper>());
+    std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddCourse(std::make_shared<DoubleDeck>());
+    std::shared_ptr<Track> dkJungle      = gWorldInstance.AddCourse(std::make_shared<DKJungle>());
+    std::shared_ptr<Track> bigDonut      = gWorldInstance.AddCourse(std::make_shared<BigDonut>());
+//    std::shared_ptr<Track> harbour       = gWorldInstance.AddCourse(std::make_shared<Harbour>());
+    std::shared_ptr<Track> testCourse    = gWorldInstance.AddCourse(std::make_shared<TestCourse>());
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
-    // Construct cups with vectors of Course* (non-owning references)
+    // Construct cups with vectors of Track* (non-owning references)
     gMushroomCup = new Cup("mk:mushroom_cup", "Mushroom Cup", {
         luigi, mooMoo, koopa, kalimari
     });

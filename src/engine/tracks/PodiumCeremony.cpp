@@ -112,7 +112,7 @@ PodiumCeremony::PodiumCeremony() {
 }
 
 void PodiumCeremony::Load() {
-    Course::Load();
+    Track::Load();
 
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();

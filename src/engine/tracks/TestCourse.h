@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture test_course_textures[];
 }
 
-class TestCourse : public Course {
+class TestCourse : public Track {
 public:
     virtual ~TestCourse() = default;  // Virtual destructor for proper cleanup in derived classes
 

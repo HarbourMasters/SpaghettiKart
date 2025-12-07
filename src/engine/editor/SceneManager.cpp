@@ -85,7 +85,7 @@ namespace Editor {
     }
 
     /** Do not use gWorldInstance.CurrentCourse during loading! The current track is not guaranteed! **/
-    void LoadLevel(Course* course, std::string sceneFile) {
+    void LoadLevel(Track* course, std::string sceneFile) {
         SceneFile = sceneFile;
         if ((nullptr == course) || (nullptr == course->RootArchive)) {
             SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, course or rootarchive were null");
@@ -138,7 +138,7 @@ namespace Editor {
     }
 
     // Called from ContentBrowser.cpp
-    void LoadMinimap(Course* course, std::string filePath) {
+    void LoadMinimap(Track* course, std::string filePath) {
         SPDLOG_INFO("  Loading {} minimap...", filePath);
         if (nullptr == course->RootArchive) {
             SPDLOG_INFO("[SceneManager] [LoadMinimap] Root archive is nullptr");
@@ -172,7 +172,7 @@ namespace Editor {
     }
 
     // Sets the default minimap if none has been set
-    void SetDefaultMinimap(Course* course) {
+    void SetDefaultMinimap(Track* course) {
         course->Props.Minimap.Texture = minimap_mario_raceway;
         course->Props.Minimap.Width = ResourceGetTexWidthByName(course->Props.Minimap.Texture);
         course->Props.Minimap.Height = ResourceGetTexHeightByName(course->Props.Minimap.Texture);
@@ -262,7 +262,7 @@ namespace Editor {
         }
     }
 
-    void LoadProps(Course* course, nlohmann::json& data) {
+    void LoadProps(Track* course, nlohmann::json& data) {
         if (!data.contains("Props") || !data["Props"].is_object()) {
             SPDLOG_INFO("Track is missing props data. Is the scene.json file corrupt?");
             return;
@@ -276,7 +276,7 @@ namespace Editor {
         }
     }
 
-    void LoadActors(Course* course, nlohmann::json& data) {
+    void LoadActors(Track* course, nlohmann::json& data) {
         if (!data.contains("Actors") || !data["Actors"].is_object()) {
             SPDLOG_INFO("  This track contains no actors");
             return;
@@ -293,7 +293,7 @@ namespace Editor {
         }
     }
 
-    void LoadStaticMeshActors(Course* course, nlohmann::json& data) {
+    void LoadStaticMeshActors(Track* course, nlohmann::json& data) {
         if (!data.contains("StaticMeshActors") || !data["StaticMeshActors"].is_object()) {
             SPDLOG_INFO("  This track contains no StaticMeshActors!");
             return;
@@ -306,7 +306,7 @@ namespace Editor {
         }
     }
 
-    void LoadTour(Course* course, nlohmann::json& data) {
+    void LoadTour(Track* course, nlohmann::json& data) {
         if (!data.contains("Tour") || !data["Tour"].is_object()) {
             SPDLOG_INFO(" This track does not contain a camera tour");
             return;

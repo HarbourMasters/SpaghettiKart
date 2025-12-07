@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture toads_turnpike_textures[];
 }
 
-class ToadsTurnpike : public Course {
+class ToadsTurnpike : public Track {
 public:
     virtual ~ToadsTurnpike() = default;  // Virtual destructor for proper cleanup in derived classes
 

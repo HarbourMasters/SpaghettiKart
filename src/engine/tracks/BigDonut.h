@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture big_donut_textures[];
 }
 
-class BigDonut : public Course {
+class BigDonut : public Track {
 public:
     virtual ~BigDonut() = default;
 

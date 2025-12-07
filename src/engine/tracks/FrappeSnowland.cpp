@@ -115,7 +115,7 @@ FrappeSnowland::FrappeSnowland() {
 }
 
 void FrappeSnowland::Load() {
-    Course::Load();
+    Track::Load();
 
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(d_course_frappe_snowland_dl_list); i++) {

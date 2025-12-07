@@ -118,7 +118,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
 }
 
 void BansheeBoardwalk::Load() {
-    Course::Load();
+    Track::Load();
 
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(banshee_boardwalk_dls); i++) {

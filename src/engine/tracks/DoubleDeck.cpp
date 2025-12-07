@@ -106,7 +106,7 @@ DoubleDeck::DoubleDeck() {
 }
 
 void DoubleDeck::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         InvertTriangleWindingByName(d_course_double_deck_packed_dl_738);
     }

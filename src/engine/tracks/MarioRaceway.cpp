@@ -113,7 +113,7 @@ MarioRaceway::MarioRaceway() {
 }
 
 void MarioRaceway::Load() {
-    Course::Load();
+    Track::Load();
 
     // Invert winding in mirror mode before generating collision meshes
     if (gIsMirrorMode != 0) {

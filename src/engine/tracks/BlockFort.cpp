@@ -106,7 +106,7 @@ BlockFort::BlockFort() {
 }
 
 void BlockFort::Load() {
-    Course::Load();
+    Track::Load();
 
     if (gIsMirrorMode != 0) {
         InvertTriangleWindingByName(d_course_block_fort_packed_dl_15C0);

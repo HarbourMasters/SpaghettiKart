@@ -16,7 +16,7 @@ extern "C" {
 extern const course_texture wario_stadium_textures[];
 }
 
-class WarioStadium : public Course {
+class WarioStadium : public Track {
     void CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source);
 
   public:

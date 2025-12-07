@@ -15,7 +15,7 @@ extern "C" {
     #include "code_800029B0.h"
 }
 
-class MarioRaceway : public Course {
+class MarioRaceway : public Track {
 public:
     virtual ~MarioRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
 

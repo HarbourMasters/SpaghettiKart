@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture frappe_snowland_textures[];
 }
 
-class FrappeSnowland : public Course {
+class FrappeSnowland : public Track {
 public:
     virtual ~FrappeSnowland() = default;
 

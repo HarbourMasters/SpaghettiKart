@@ -75,7 +75,7 @@ TestCourse::TestCourse() {
 
     Id = "mk:test_course";
 
-    Props.SetText(Props.Name, "Test Course", sizeof(Props.Name));
+    Props.SetText(Props.Name, "Test Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
 
@@ -135,7 +135,7 @@ TestCourse::TestCourse() {
 }
 
 void TestCourse::Load() {
-    Course::Load(mario_Plane_001_mesh_vtx_1, NULL);
+    Track::Load(mario_Plane_001_mesh_vtx_1, NULL);
 
     if (gIsMirrorMode != 0) {
         InvertTriangleWinding(mario_Plane_001_mesh);

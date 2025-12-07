@@ -7,7 +7,7 @@
 
 #ifdef __cplusplus
 #include "engine/editor/Editor.h"
-class Course;
+class Track;
 struct Properties;
 class World;
 extern "C" {

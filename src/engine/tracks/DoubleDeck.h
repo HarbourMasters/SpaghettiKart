@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture double_deck_textures[];
 }
 
-class DoubleDeck : public Course {
+class DoubleDeck : public Track {
 public:
     virtual ~DoubleDeck() = default;  // Virtual destructor for proper cleanup in derived classes
 

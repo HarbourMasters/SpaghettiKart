@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture dks_jungle_parkway_textures[];
 }
 
-class DKJungle : public Course {
+class DKJungle : public Track {
 public:
     virtual ~DKJungle() = default;  // Virtual destructor for proper cleanup in derived classes
 

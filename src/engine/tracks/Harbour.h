@@ -15,7 +15,7 @@ extern "C" {
     extern const course_texture test_course_textures[];
 }
 
-class Harbour : public Course {
+class Harbour : public Track {
 public:
     virtual ~Harbour() = default;  // Virtual destructor for proper cleanup in derived classes
 

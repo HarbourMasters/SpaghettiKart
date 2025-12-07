@@ -29,7 +29,7 @@ extern "C" {
 class Cup; // <-- Forward declaration
 class OObject;
 class GameCamera;
-class Course;
+class Track;
 class StaticMeshActor;
 class OBombKart;
 class TrainCrossing;
@@ -52,7 +52,7 @@ typedef struct Matrix {
     {}
 };
 private:
-    std::shared_ptr<Course> CurrentCourse;
+    std::shared_ptr<Track> CurrentCourse;
     Cup* CurrentCup;
 
 public:
@@ -62,7 +62,7 @@ public:
     RaceManager& GetRaceManager() { return *RaceManagerInstance; }
     void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
-    std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
+    std::shared_ptr<Track> AddCourse(std::shared_ptr<Track> course);
 
     void TickCameras();
 
@@ -106,11 +106,11 @@ public:
     void CleanWorld(void);
 
     // getter/setter for current course
-    std::shared_ptr<Course> GetCurrentCourse() {
+    std::shared_ptr<Track> GetCurrentCourse() {
         return CurrentCourse;
     }
 
-    void SetCurrentCourse(std::shared_ptr<Course> course);
+    void SetCurrentCourse(std::shared_ptr<Track> course);
 
     // These are only for browsing through the course list
     void SetCourse(const char*);
@@ -148,7 +148,7 @@ public:
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
 
     // Holds all available courses
-    std::vector<std::shared_ptr<Course>> Courses;
+    std::vector<std::shared_ptr<Track>> Courses;
     size_t CourseIndex = 0; // For browsing courses.
 private:
     std::unique_ptr<RaceManager> RaceManagerInstance;

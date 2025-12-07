@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture yoshi_valley_textures[];
 }
 
-class YoshiValley : public Course {
+class YoshiValley : public Track {
 public:
     virtual ~YoshiValley() = default;  // Virtual destructor for proper cleanup in derived classes
 

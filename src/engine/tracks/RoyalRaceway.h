@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture royal_raceway_textures[];
 }
 
-class RoyalRaceway : public Course {
+class RoyalRaceway : public Track {
 public:
     virtual ~RoyalRaceway() = default;  // Virtual destructor for proper cleanup in derived classes
 

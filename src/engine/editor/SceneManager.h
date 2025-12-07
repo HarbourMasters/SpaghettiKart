@@ -8,20 +8,20 @@
 
 namespace Editor {
     void SaveLevel();
-    void LoadLevel(Course* course, std::string sceneFile);
+    void LoadLevel(Track* course, std::string sceneFile);
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson);
     void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
-    void LoadMinimap(Course* course, std::string filePath);
-    void SetDefaultMinimap(Course* course);
+    void LoadMinimap(Track* course, std::string filePath);
+    void SetDefaultMinimap(Track* course);
 
     void SaveActors(nlohmann::json& actorList);
     void SaveStaticMeshActors(nlohmann::json& actorList);
     void SaveTour(nlohmann::json& tour);
 
-    void LoadProps(Course* course, nlohmann::json& data);
-    void LoadActors(Course* course, nlohmann::json& data);
-    void LoadStaticMeshActors(Course* course, nlohmann::json& data);
-    void LoadTour(Course* course, nlohmann::json& data);
+    void LoadProps(Track* course, nlohmann::json& data);
+    void LoadActors(Track* course, nlohmann::json& data);
+    void LoadStaticMeshActors(Track* course, nlohmann::json& data);
+    void LoadTour(Track* course, nlohmann::json& data);
 
     void SpawnActors(std::vector<std::pair<std::string, SpawnParams>> spawnList);
 

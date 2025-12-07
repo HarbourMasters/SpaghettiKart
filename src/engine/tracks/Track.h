@@ -195,7 +195,7 @@ typedef struct Properties {
             // Copy the data into the existing AIDistances array
             std::copy(temp.begin(), temp.end(), AIDistance);
         } else {
-            printf("Course::from_json() AIDistance array not size of 32\n");
+            printf("[Track.h] [from_json()] AIDistance array not size of 32\n");
         }
 
         AISteeringSensitivity = j.at("AISteeringSensitivity").get<uint32_t>();
@@ -299,7 +299,7 @@ typedef struct Properties {
 
 class World; // <-- Forward declare
 
-class Course {
+class Track {
 
 public:
     std::string Id;
@@ -324,9 +324,9 @@ public:
     std::vector<TourCamera::CameraShot> TourShots;
 
 
-    virtual ~Course() = default;
+    virtual ~Track() = default;
 
-    explicit Course();
+    explicit Track();
 
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
     virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.

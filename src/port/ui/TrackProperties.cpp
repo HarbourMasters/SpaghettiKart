@@ -42,7 +42,7 @@ namespace Editor {
         ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
         ImGui::InputText("Name", gWorldInstance.GetCurrentCourse()->Props.Name, IM_ARRAYSIZE(nameBuffer));
         ImGui::InputText("Debug Name", gWorldInstance.GetCurrentCourse()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Course Length", gWorldInstance.GetCurrentCourse()->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
+        ImGui::InputText("Track Length", gWorldInstance.GetCurrentCourse()->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
         ImGui::InputFloat("Water Level", &gWorldInstance.GetCurrentCourse()->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
@@ -299,7 +299,7 @@ namespace Editor {
 
     void TrackPropertiesWindow::DrawTourCamera() {
 
-        std::shared_ptr<Course> track = gWorldInstance.GetCurrentCourse();
+        std::shared_ptr<Track> track = gWorldInstance.GetCurrentCourse();
         if (nullptr == track) {
             return;
         }

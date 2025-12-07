@@ -27,7 +27,7 @@ extern "C" {
 #include "engine/cameras/TourCamera.h"
 #include "engine/cameras/LookBehindCamera.h"
 
-std::shared_ptr<Course> CurrentCourse;
+std::shared_ptr<Track> CurrentCourse;
 Cup* CurrentCup;
 
 World::World() {
@@ -38,7 +38,7 @@ World::~World() {
     CleanWorld();
 }
 
-std::shared_ptr<Course> World::AddCourse(std::shared_ptr<Course> course) {
+std::shared_ptr<Track> World::AddCourse(std::shared_ptr<Track> course) {
     gWorldInstance.Courses.push_back(course);
     return course;
 }
@@ -47,7 +47,7 @@ void World::AddCup(Cup* cup) {
     Cups.push_back(cup);
 }
 
-void World::SetCurrentCourse(std::shared_ptr<Course> course) {
+void World::SetCurrentCourse(std::shared_ptr<Track> course) {
     if (CurrentCourse) {
         UnLoadCourse();
     }
@@ -122,7 +122,7 @@ void World::SetCourse(const char* name) {
             break;
         }
     }
-    std::runtime_error("SetCourse() Course name not found in Courses list");
+    std::runtime_error("[World] [SetCourse()] Track name not found in Track list");
 }
 
 void World::NextCourse() {

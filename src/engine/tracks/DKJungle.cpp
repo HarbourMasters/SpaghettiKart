@@ -115,7 +115,7 @@ DKJungle::DKJungle() {
 }
 
 void DKJungle::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(d_course_dks_jungle_parkway_unknown_dl_list); i++) {
             InvertTriangleWindingByName(d_course_dks_jungle_parkway_unknown_dl_list[i]);

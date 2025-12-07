@@ -112,7 +112,7 @@ MooMooFarm::MooMooFarm() {
 }
 
 void MooMooFarm::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         for (size_t i = 0; i < ARRAY_COUNT(moo_moo_farm_dls); i++) {
             InvertTriangleWindingByName(moo_moo_farm_dls[i]);

@@ -18,7 +18,7 @@ extern "C" {
     extern const course_texture kalimari_desert_textures[];
 }
 
-class KalimariDesert : public Course {
+class KalimariDesert : public Track {
 public:
     virtual ~KalimariDesert() = default;  // Virtual destructor for proper cleanup in derived classes
 

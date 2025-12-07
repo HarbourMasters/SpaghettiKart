@@ -401,7 +401,7 @@ namespace Editor {
                 if (manager->HasFile(sceneFile)) {
                     auto archive = manager->GetArchiveFromFile(sceneFile);
                     
-                    auto course = std::make_shared<Course>();
+                    auto course = std::make_shared<Track>();
                     course->RootArchive = archive;
                     course->LoadO2R(dir);
                     LoadLevel(course.get(), sceneFile);
@@ -416,7 +416,7 @@ namespace Editor {
                     // So lets add it as an uninitialized track.
                     if (manager->HasFile(file)) {
 
-                        auto course = std::make_shared<Course>();
+                        auto course = std::make_shared<Track>();
                         course->Id = (std::string("mods:") + name).c_str();
                         course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
                         course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));

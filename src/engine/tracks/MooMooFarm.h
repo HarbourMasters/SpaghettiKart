@@ -19,7 +19,7 @@ extern "C" {
 
 class OMole;
 
-class MooMooFarm : public Course {
+class MooMooFarm : public Track {
 public:
     virtual ~MooMooFarm() = default;  // Virtual destructor for proper cleanup in derived classes
 

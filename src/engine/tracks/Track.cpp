@@ -243,7 +243,7 @@ bool IsTriangleWindingInverted() {
 }
 
 
-Course::Course() {
+Track::Track() {
     Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
     Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
@@ -313,14 +313,14 @@ Course::Course() {
 }
 
 // Load custom track from code
-void Course::Load(Vtx* vtx, Gfx* gfx) {
-    Course::Init();
+void Track::Load(Vtx* vtx, Gfx* gfx) {
+    Track::Init();
 }
 
-void Course::UnLoad() {
+void Track::UnLoad() {
 }
 
-void Course::LoadO2R(std::string trackPath) {
+void Track::LoadO2R(std::string trackPath) {
     if (!trackPath.empty()) {
         SceneFilePtr = (trackPath + "/scene.json");
         TrackSectionsPtr = (trackPath + "/data_track_sections");
@@ -336,7 +336,7 @@ void Course::LoadO2R(std::string trackPath) {
             u16* ptr = &Props.PathSizes.unk0;
             for (auto& path : paths) {
                 if (i >= ARRAY_COUNT(Props.PathTable2)) {
-                    printf("[Course.cpp] The game can only import 5 paths. Found more than 5. Skipping the rest\n");
+                    printf("[Track.cpp] The game can only import 5 paths. Found more than 5. Skipping the rest\n");
                     break; // Only 5 paths allowed. 4 track, 1 vehicle
                 }
                 ptr[i] = path.size();
@@ -348,12 +348,12 @@ void Course::LoadO2R(std::string trackPath) {
         gVehiclePathSize = Props.PathSizes.unk0; // This is likely incorrect.
 
     } else {
-        printf("Course.cpp: LoadO2R: trackPath str is empty\n");
+        printf("Track.cpp: LoadO2R: trackPath str is empty\n");
     }
 }
 
 // Load stock and o2r tracks
-void Course::Load() {
+void Track::Load() {
     // Re-load scenefile in-case changes were made in the editor
       if (!SceneFilePtr.empty()) {
         Editor::LoadLevel(this, SceneFilePtr);
@@ -368,7 +368,7 @@ void Course::Load() {
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
 
         if (sections != nullptr) {
-            Course::Init();
+            Track::Init();
             ParseCourseSections(sections, size);
             func_80295C6C();
 
@@ -376,16 +376,16 @@ void Course::Load() {
                 Props.WaterLevel = gCourseMinY - 10.0f;
             }
         } else {
-            printf("Course.cpp: Custom track sections are invalid\n");
+            printf("Track.cpp: Custom track sections are invalid\n");
         }
         return;
     }
 
-    Course::Init();
+    Track::Init();
 }
 
 // C++ version of parse_course_displaylists()
-void Course::ParseCourseSections(TrackSections* sections, size_t size) {
+void Track::ParseCourseSections(TrackSections* sections, size_t size) {
     printf("\n[Track] Generating Collision Meshes...\n");
     for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
         if (sections[i].flags & 0x8000) {
@@ -411,7 +411,7 @@ void Course::ParseCourseSections(TrackSections* sections, size_t size) {
     printf("[Track] Collision Mesh Generation Complete!\n\n");
 }
 
-void Course::TestPath() {
+void Track::TestPath() {
     // DEBUG ONLY TO VISUALIZE PATH
     return;
     s16 x;
@@ -435,7 +435,7 @@ void Course::TestPath() {
     }
 }
 
-void Course::Init() {
+void Track::Init() {
     gNumActors = 0;
     gCourseMinX = 0;
     gCourseMinY = 0;
@@ -455,14 +455,14 @@ void Course::Init() {
     D_800DC5C8 = 0;
 }
 
-void Course::BeginPlay() {
+void Track::BeginPlay() {
     printf("[Track] BeginPlay\n");
     TestPath();
     this->SpawnActors();
 }
 
 // Spawns actors from SpawnParams set by the scene file in SceneManager.cpp
-void Course::SpawnActors() {
+void Track::SpawnActors() {
     for (const auto& actor : SpawnList) {
         auto it = gActorRegistry.find(actor.Name);
         if (it != gActorRegistry.end() && it->second.spawnFunc) {
@@ -473,13 +473,13 @@ void Course::SpawnActors() {
     }
 }
 
-void Course::InitClouds() {
+void Track::InitClouds() {
     if (this->Props.Clouds) {
         init_clouds(this->Props.Clouds);
     }
 }
 
-void Course::UpdateClouds(s32 arg0, Camera* camera) {
+void Track::UpdateClouds(s32 arg0, Camera* camera) {
     s32 cloudIndex;
     s32 objectIndex;
     CloudData* cloud;
@@ -494,46 +494,46 @@ void Course::UpdateClouds(s32 arg0, Camera* camera) {
 }
 
 // Adjusts player speed on steep hills
-void Course::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
+void Track::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
                                 f32* arg7) {
     func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void Course::InitCourseObjects() {
+void Track::InitCourseObjects() {
 }
 
-void Course::UpdateCourseObjects() {
+void Track::UpdateCourseObjects() {
 }
 
-void Course::RenderCourseObjects(s32 cameraId) {
+void Track::RenderCourseObjects(s32 cameraId) {
 }
 
 // Implemented for the first cup of each course plus Koopa Beach
-void Course::SomeSounds() {
+void Track::SomeSounds() {
 }
 
-void Course::CreditsSpawnActors() {
+void Track::CreditsSpawnActors() {
 }
 
-void Course::WhatDoesThisDo(Player* player, int8_t playerId) {
+void Track::WhatDoesThisDo(Player* player, int8_t playerId) {
 }
 
-void Course::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void Track::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 }
 
-void Course::SetStaffGhost() {
+void Track::SetStaffGhost() {
     bCourseGhostDisabled = 1;
     D_80162DF4 = 1;
 }
 
-void Course::Waypoints(Player* player, int8_t playerId) {
+void Track::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
     if (player->nearestPathPointId < 0) {
         player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
     }
 }
 
-void Course::Render(ScreenContext* arg0) {
+void Track::Render(ScreenContext* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -555,10 +555,10 @@ void Course::Render(ScreenContext* arg0) {
     }
 }
 
-void Course::RenderCredits() {
+void Track::RenderCredits() {
 }
 
-f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
+f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 
@@ -576,17 +576,17 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
     return found ? highestWater : gWorldInstance.GetCurrentCourse()->Props.WaterLevel;
 }
 
-void Course::ScrollingTextures() {
+void Track::ScrollingTextures() {
 }
-void Course::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void Track::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                        uint16_t playerDirection) {
 }
 
-void Course::Destroy() {
+void Track::Destroy() {
 }
 
-bool Course::IsMod() {
+bool Track::IsMod() {
     return bIsMod;
 }
 
-Course* currentCourse = nullptr;
+Track* currentCourse = nullptr;

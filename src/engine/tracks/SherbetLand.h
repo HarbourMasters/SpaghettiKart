@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture sherbet_land_textures[];
 }
 
-class SherbetLand : public Course {
+class SherbetLand : public Track {
 public:
     virtual ~SherbetLand() = default;  // Virtual destructor for proper cleanup in derived classes
 

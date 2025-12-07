@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture choco_mountain_textures[];
 }
 
-class ChocoMountain : public Course {
+class ChocoMountain : public Track {
 public:
     virtual ~ChocoMountain() = default;  // Virtual destructor for proper cleanup in derived classes
 

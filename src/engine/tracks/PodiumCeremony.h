@@ -17,7 +17,7 @@ extern "C" {
     extern const course_texture royal_raceway_textures[];
 }
 
-class PodiumCeremony : public Course {
+class PodiumCeremony : public Track {
 public:
     virtual ~PodiumCeremony() = default;  // Virtual destructor for proper cleanup in derived classes
 

@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture banshee_boardwalk_textures[];
 }
 
-class BansheeBoardwalk : public Course {
+class BansheeBoardwalk : public Track {
 public:
     virtual ~BansheeBoardwalk() = default;  // Virtual destructor for proper cleanup in derived classes
 

@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture rainbow_road_textures[];
 }
 
-class RainbowRoad : public Course {
+class RainbowRoad : public Track {
 public:
     virtual ~RainbowRoad() = default;  // Virtual destructor for proper cleanup in derived classes
 

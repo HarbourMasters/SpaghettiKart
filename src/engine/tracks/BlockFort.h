@@ -16,7 +16,7 @@ extern "C" {
     extern const course_texture block_fort_textures[];
 }
 
-class BlockFort : public Course {
+class BlockFort : public Track {
 public:
     virtual ~BlockFort() = default;  // Virtual destructor for proper cleanup in derived classes
 

@@ -3718,7 +3718,7 @@ void load_track_path(s32 pathIndex) {
         bInvalidPath = 1;
 
         if (IsPodiumCeremony()) { // Only podium ceremony
-            // Course path included in course_data which has already been loaded into memory.
+            // Track path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
             path = CM_GetProps()->PathTable2[pathIndex];
             ptr = path;
@@ -3743,7 +3743,7 @@ void load_track_path(s32 pathIndex) {
         } else { // ALL TRACKS
             TrackPathPoint* pathSrc = CM_GetProps()->PathTable2[pathIndex];
             if (pathSrc == NULL) {
-                printf("code_80005FD0.c: Path %d in Course::PathTable2, was NULL.\n  Your track is missing a path\n",
+                printf("code_80005FD0.c: Path %d in Track::PathTable2, was NULL.\n  Your track is missing a path\n",
                        pathIndex);
             }
 

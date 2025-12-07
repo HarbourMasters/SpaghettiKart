@@ -15,7 +15,7 @@ extern "C" {
 extern const course_texture luigi_raceway_textures[];
 }
 
-class LuigiRaceway : public Course {
+class LuigiRaceway : public Track {
     void CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source);
 
   public:

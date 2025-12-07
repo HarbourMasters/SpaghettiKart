@@ -103,7 +103,7 @@ BigDonut::BigDonut() {
 }
 
 void BigDonut::Load() {
-    Course::Load();
+    Track::Load();
     if (gIsMirrorMode != 0) {
         InvertTriangleWindingByName(d_course_big_donut_packed_dl_DE8);
         InvertTriangleWindingByName(d_course_big_donut_packed_dl_450);

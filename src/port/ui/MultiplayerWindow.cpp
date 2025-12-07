@@ -93,7 +93,7 @@ void DrawColumn2(WidgetInfo& info) {
 
     ImGui::Spacing();
     ImGui::Spacing();
-    ImGui::Text("Course Vote:");
+    ImGui::Text("Track Vote:");
 
     for (size_t i = 0; i < NUM_CUPS - 1; i++) {
         if (ImGui::Button(gCupNames[i])) {
