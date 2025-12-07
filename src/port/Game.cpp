@@ -450,23 +450,23 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
         // This is to prevent soft locking the game
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
-        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (nullptr == gWorldInstance.CurrentCourse) {
+    if (nullptr == gWorldInstance.GetCurrentCourse()) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (gWorldInstance.CurrentCourse->TourShots.size() == 0) {
+    if (gWorldInstance.GetCurrentCourse()->TourShots.size() == 0) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.CurrentCourse->bTourEnabled) {
+        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
@@ -479,8 +479,8 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
 }
 
 bool CM_IsTourEnabled() {
-    if (nullptr != gWorldInstance.CurrentCourse) {
-        if ((gWorldInstance.CurrentCourse->bTourEnabled) && (gTourComplete == false)) {
+    if (nullptr != gWorldInstance.GetCurrentCourse()) {
+        if ((gWorldInstance.GetCurrentCourse()->bTourEnabled) && (gTourComplete == false)) {
             return true;
         } else {
             return false;
