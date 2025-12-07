@@ -45,12 +45,12 @@ void TourCamera::Reset() {
 void TourCamera::NextShot() {
     TourCamera::Reset();
     bShotComplete = false;
-    _camera->pos[0] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.x;
-    _camera->pos[1] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.y;
-    _camera->pos[2] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].Pos.z;
-    _camera->lookAt[0] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.x;
-    _camera->lookAt[1] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.y;
-    _camera->lookAt[2] = gWorldInstance.CurrentCourse->TourShots[ShotIndex].LookAt.z;
+    _camera->pos[0] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].Pos.x;
+    _camera->pos[1] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].Pos.y;
+    _camera->pos[2] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].Pos.z;
+    _camera->lookAt[0] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].LookAt.x;
+    _camera->lookAt[1] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].LookAt.y;
+    _camera->lookAt[2] = gWorldInstance.GetCurrentCourse()->TourShots[ShotIndex].LookAt.z;
 }
 
 void TourCamera::Stop() {
@@ -76,7 +76,7 @@ void TourCamera::Tick() {
     if (
           (nullptr == _camera) ||
           (bTourComplete) ||
-          (ShotIndex >= gWorldInstance.CurrentCourse->TourShots.size())
+          (ShotIndex >= gWorldInstance.GetCurrentCourse()->TourShots.size())
        ) {
         Alpha += 5;
         if (Alpha == 255) {
