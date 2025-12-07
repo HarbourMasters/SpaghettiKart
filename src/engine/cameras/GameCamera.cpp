@@ -39,7 +39,8 @@ GameCamera::GameCamera(FVector pos, s16 rot, u32 mode) {
     ProjMode = ProjectionMode::PERSPECTIVE;
     bActive = true;
     if (gGamestate != CREDITS_SEQUENCE) {
-        camera_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+        Vec3f spawn = {pos.x, pos.y, pos.z};
+        camera_init(spawn, rot, mode, _camera->cameraId);
     }
 
     _count += 1;

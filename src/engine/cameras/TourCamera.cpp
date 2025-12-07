@@ -21,7 +21,8 @@ extern "C" {
 TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     _camera->renderMode = RENDER_FULL_SCENE;
     ProjMode = ProjectionMode::PERSPECTIVE;
-    freecam_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+    Vec3f spawn = {pos.x, pos.y, pos.z};
+    freecam_init(spawn, rot, mode, _camera->cameraId);
 
     Type = TOUR_TYPE::SEQUENTIAL;
     ShotIndex = 0;

@@ -21,7 +21,8 @@ LookBehindCamera::LookBehindCamera(FVector pos, s16 rot, u32 mode) : GameCamera(
     bActive = true;
 
     // Look behind
-    camera_init(Vec3f{pos.x, pos.y, pos.z}, rot, mode, _camera->cameraId);
+    Vec3f spawn = {pos.x, pos.y, pos.z};
+    camera_init(spawn, rot, mode, _camera->cameraId);
 
     // Flip camera to look backwards
     _camera->unk_30[2] = -_camera->unk_30[2];
