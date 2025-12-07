@@ -54,7 +54,7 @@ namespace Editor {
         data["Actors"] = actors;
 
 
-        if (gWorldInstance.CurrentCourse->TourShots.size() != 0) {
+        if (gWorldInstance.GetCurrentCourse()->TourShots.size() != 0) {
             nlohmann::json tour;
             SaveTour(tour);
             data["Tour"] = tour;
@@ -253,11 +253,11 @@ namespace Editor {
     }
 
     void SaveTour(nlohmann::json& tour) {
-        tour["Enabled"] = gWorldInstance.CurrentCourse->bTourEnabled;
+        tour["Enabled"] = gWorldInstance.GetCurrentCourse()->bTourEnabled;
 
         // Camera shots
         tour["Shots"] = nlohmann::json::array();
-        for (const auto& shot : gWorldInstance.CurrentCourse->TourShots) {
+        for (const auto& shot : gWorldInstance.GetCurrentCourse()->TourShots) {
             tour["Shots"].push_back(ToJson(shot));
         }
     }
