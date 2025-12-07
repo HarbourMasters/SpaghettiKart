@@ -6671,7 +6671,7 @@ void look_behind_toggle(s32 cameraIdx) {
     static bool lookBehindActive[NUM_CAMERAS] = {0};
     bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
     Camera* camera = &cameras[cameraIdx];
-    struct UnkStruct_800DC5EC* screenCtx = NULL;
+    struct ScreenContext* screenCtx = NULL;
 
     if (CVarGetInteger("gLookBehind", false) == false) {
         return;
@@ -6682,7 +6682,7 @@ void look_behind_toggle(s32 cameraIdx) {
     }
 
     // Get the screen context
-    screenCtx = &D_8015F480[cameras[cameraIdx].playerId];
+    screenCtx = &gScreenContexts[cameras[cameraIdx].playerId];
 
     if (gRaceState == RACE_IN_PROGRESS) {
         // Flip the camera

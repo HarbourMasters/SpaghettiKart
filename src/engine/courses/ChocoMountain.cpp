@@ -226,7 +226,7 @@ void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void ChocoMountain::Render(struct UnkStruct_800DC5EC* arg0) {
+void ChocoMountain::Render(struct ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 

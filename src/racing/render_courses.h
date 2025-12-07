@@ -5,13 +5,13 @@
 #include "../camera.h"
 #include <course.h>
 
-void func_8029122C(struct UnkStruct_800DC5EC*, s32);
+void func_8029122C(struct ScreenContext*, s32);
 s32 func_80290C20(Camera*);
 void parse_course_displaylists(TrackSections* asset);
-void render_course_segments(const char*[], struct UnkStruct_800DC5EC*);
+void render_course_segments(const char*[], struct ScreenContext*);
 void func_80291198(void);
 void course_init(void);
-void render_course(struct UnkStruct_800DC5EC*);
+void render_course(struct ScreenContext*);
 void func_80295BF8(s32);
 void func_80295C6C(void);
 void func_80295D50(s16, s16);

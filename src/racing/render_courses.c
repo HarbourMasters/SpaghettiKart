@@ -89,7 +89,7 @@ void parse_course_displaylists(TrackSections* asset) {
 
 extern u32 isFlycam;
 
-void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1) {
+void render_course_segments(const char* addr[], struct ScreenContext* arg1) {
     Player* player = arg1->player;
     Camera* camera = arg1->camera;
     s16 direction;
@@ -200,7 +200,7 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_1140); //
 }
 
-void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
+void func_8029122C(struct ScreenContext* screen, s32 playerId) {
     UNUSED s32 pad;
     Player* player = screen->player;
     Mat4 matrix;
@@ -237,7 +237,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
     FrameInterpolation_RecordCloseChild();
 }
 
-void render_course(struct UnkStruct_800DC5EC* screen) {
+void render_course(struct ScreenContext* screen) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     CM_RenderCourse(screen);
 }

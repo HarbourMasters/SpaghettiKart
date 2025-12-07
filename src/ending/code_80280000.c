@@ -68,11 +68,11 @@ void func_80280038(Camera* camera) {
     SetCourseById(gCreditsCourseId);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    render_course(D_800DC5EC);
-    render_course_actors(D_800DC5EC);
+    render_course(gScreenOneCtx);
+    render_course_actors(gScreenOneCtx);
     CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
-    render_object(D_800DC5EC);
+    render_object(gScreenOneCtx);
     render_player_snow_effect(camera);
     ceremony_transition_sliding_borders();
     func_80281C40();
@@ -94,7 +94,7 @@ void func_80280268(s32 courseId) {
 void credits_loop(void) {
     Editor_ClearMatrix();
     CM_TickEditor();
-    Camera* camera = D_800DC5EC->camera;
+    Camera* camera = gScreenOneCtx->camera;
 
     f32 temp_f12;
     f32 temp;
@@ -141,7 +141,7 @@ void load_credits(void) {
     }
 
     CM_AttachCamera(camera, PLAYER_ONE);
-    D_800DC5EC->camera = camera;
+    gScreenOneCtx->camera = camera;
     camera->renderMode = RENDER_FULL_SCENE;
     camera->unk_B4 = 60.0f;
     gCameraFOV[0] = 60.0f;
@@ -152,10 +152,10 @@ void load_credits(void) {
     D_800DC5B4 = 1;
     func_802A4D18();
     set_screen();
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = SCREEN_WIDTH / 2;
-    D_800DC5EC->screenStartY = SCREEN_HEIGHT / 2;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = SCREEN_WIDTH / 2;
+    gScreenOneCtx->screenStartY = SCREEN_HEIGHT / 2;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
@@ -190,7 +190,7 @@ void load_credits(void) {
     init_hud();
     func_80093E60();
     func_80092688();
-    if (D_800DC5EC) {}
+    if (gScreenOneCtx) {}
     D_801625F8 = ((uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

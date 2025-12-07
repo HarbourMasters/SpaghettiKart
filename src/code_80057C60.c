@@ -411,31 +411,31 @@ void func_80057C60(void) {
 void func_80057CE4(void) {
     switch (D_8018D21C) {
         case 0:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 1:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 2:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 3:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 4:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 8:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 9:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 10:
-            func_802A3730(D_800DC5F4);
+            func_802A3730(gScreenThreeCtx);
             break;
         case 11:
-            func_802A3730(D_800DC5F8);
+            func_802A3730(gScreenFourCtx);
             break;
     }
 }
@@ -489,7 +489,7 @@ void func_80057FC4(u32 arg0) {
     }
 }
 
-void render_object(struct UnkStruct_800DC5EC* screen) {
+void render_object(struct ScreenContext* screen) {
     UNUSED Gfx* temp_v1;
 
     if (gHUDDisable != 0) {

@@ -237,7 +237,7 @@ void WarioStadium::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* sourc
     }
 }
 
-void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
+void WarioStadium::Render(struct ScreenContext* arg0) {
     s16 prevFrame;
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -305,7 +305,7 @@ void WarioStadium::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Ve
     func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+void WarioStadium::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                              uint16_t playerDirection) {
 
     gDPPipeSync(gDisplayListHead++);

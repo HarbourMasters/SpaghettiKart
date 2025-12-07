@@ -3603,13 +3603,13 @@ void func_80051C60(s16 arg0, s32 arg1) {
 }
 
 void func_80051EBC(void) {
-    func_80051ABC(240 - D_800DC5EC->cameraHeight, 0); // 28
+    func_80051ABC(240 - gScreenOneCtx->cameraHeight, 0); // 28
 }
 
 void func_80051EF8(void) {
     s16 temp_a0;
 
-    temp_a0 = 0xF0 - D_800DC5EC->cameraHeight;
+    temp_a0 = 0xF0 - gScreenOneCtx->cameraHeight;
     if (IsKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
     } else if (IsMooMooFarm()) {
@@ -3625,7 +3625,7 @@ void func_80051EF8(void) {
 void func_80051F9C(void) {
     s16 temp_a0;
 
-    temp_a0 = 0xF0 - D_800DC5F0->cameraHeight;
+    temp_a0 = 0xF0 - gScreenTwoCtx->cameraHeight;
     if (IsKoopaTroopaBeach()) {
         temp_a0 = temp_a0 - 0x30;
     } else if (IsMooMooFarm()) {
@@ -3639,11 +3639,11 @@ void func_80051F9C(void) {
 }
 
 void func_80052044(void) {
-    func_80051C60(240 - D_800DC5EC->cameraHeight, 0);
+    func_80051C60(240 - gScreenOneCtx->cameraHeight, 0);
 }
 
 void func_80052080(void) {
-    func_80051C60(240 - D_800DC5F0->cameraHeight, D_8018D1F0);
+    func_80051C60(240 - gScreenTwoCtx->cameraHeight, D_8018D1F0);
 }
 
 void func_800520C0(s32 arg0) {

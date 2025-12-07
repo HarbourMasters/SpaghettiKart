@@ -193,7 +193,7 @@ void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void YoshiValley::Render(struct UnkStruct_800DC5EC* arg0) {
+void YoshiValley::Render(struct ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);

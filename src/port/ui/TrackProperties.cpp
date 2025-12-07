@@ -304,7 +304,7 @@ namespace Editor {
             return;
         }
 
-        Camera* camera = D_800DC5EC->camera;
+        Camera* camera = gScreenOneCtx->camera;
         if (nullptr == camera) {
             return;
         }

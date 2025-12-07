@@ -317,7 +317,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
  * Custom tracks only use the Render() method, and they only render the full scene.
  * They do not use RenderCredits() and they do not use track sections.
  */
-void CM_RenderCourse(struct UnkStruct_800DC5EC* screen) {
+void CM_RenderCourse(struct ScreenContext* screen) {
     if (nullptr == gWorldInstance.GetCurrentCourse()) {
         return;
     }
@@ -384,10 +384,10 @@ void CM_BeginPlay() {
 
     if (tour) {
       //  gWorldInstance.Cameras[2]->SetActive(true);
-       // D_800DC5EC->camera = gWorldInstance.Cameras[2]->Get();
+       // gScreenOneCtx->camera = gWorldInstance.Cameras[2]->Get();
         if (reinterpret_cast<TourCamera*>(gWorldInstance.Cameras[2])->IsTourComplete()) {
             tour = false;
-            D_800DC5EC->pendingCamera = &cameras[0];
+            gScreenOneCtx->pendingCamera = &cameras[0];
         }
     }
 
@@ -511,14 +511,14 @@ void CM_CameraSetActive(size_t idx, bool state) {
 
 void CM_SetFreeCamera(bool state) {
     for (auto* cam : gWorldInstance.Cameras) {
-        if (cam->Get() == D_800DC5EC->freeCamera) {
+        if (cam->Get() == gScreenOneCtx->freeCamera) {
             if (state) {
-                D_800DC5EC->pendingCamera = D_800DC5EC->freeCamera;
+                gScreenOneCtx->pendingCamera = gScreenOneCtx->freeCamera;
                 cam->SetActive(true);
             } else {
-                if (nullptr != D_800DC5EC->raceCamera) {
+                if (nullptr != gScreenOneCtx->raceCamera) {
                     if (gGamestate == RACING) {
-                        D_800DC5EC->pendingCamera = D_800DC5EC->raceCamera;
+                        gScreenOneCtx->pendingCamera = gScreenOneCtx->raceCamera;
                         cam->SetActive(false);
                     } else {
                         cam->SetActive(false);
@@ -674,7 +674,7 @@ void CM_ScrollingTextures() {
     }
 }
 
-void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
     if (gWorldInstance.GetCurrentCourse()) {
         gWorldInstance.GetCurrentCourse()->DrawWater(screen, pathCounter, cameraRot, playerDirection);

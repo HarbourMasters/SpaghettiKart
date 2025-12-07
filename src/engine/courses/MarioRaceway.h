@@ -31,7 +31,7 @@ public:
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void SetStaffGhost() override;
-    virtual void Render(struct UnkStruct_800DC5EC*) override;
+    virtual void Render(struct ScreenContext*) override;
     virtual void RenderCredits() override;    
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;

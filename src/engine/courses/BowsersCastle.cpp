@@ -261,7 +261,7 @@ void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::Render(struct UnkStruct_800DC5EC* arg0) {
+void BowsersCastle::Render(struct ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -310,7 +310,7 @@ void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+void BowsersCastle::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                               uint16_t playerDirection) {
     if (gActiveScreenMode != SCREEN_MODE_1P) {
         return;

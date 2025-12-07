@@ -634,7 +634,7 @@ void display_debug_info(void) {
             D_800DC514 = false;
         }
         rotY = camera1->rot[1];
-        gDebugPathCount = D_800DC5EC->pathCounter;
+        gDebugPathCount = gScreenOneCtx->pathCounter;
 
         if (rotY < 0x2000) {
             func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);

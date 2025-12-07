@@ -30,7 +30,7 @@ void assign_player_control_types(void) {
 
             // Set player to the camera
             // cameras[0].playerId = clients[i].slot;
-            // D_800DC5EC->player = &gPlayers[clients[i].slot];
+            // gScreenOneCtx->player = &gPlayers[clients[i].slot];
             // printf("PLAYER SLOT %d, INDEX %d\n", clients[i].slot, clients[i].character);
             gPlayers[playerIndex].nControlFlags =
                 PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE; // Requires server replication to move.

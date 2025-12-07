@@ -344,7 +344,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         if (fRankIndex > 0) {
             fRankIndex--;
             camera->playerId = fRankIndex;
-            D_800DC5EC->player = &gPlayers[fRankIndex];
+            gScreenOneCtx->player = &gPlayers[fRankIndex];
         }
     }
 
@@ -353,7 +353,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
         if (fRankIndex < 7) {
             fRankIndex++;
             camera->playerId = fRankIndex;
-            D_800DC5EC->player = &gPlayers[fRankIndex];
+            gScreenOneCtx->player = &gPlayers[fRankIndex];
         }
     }
 

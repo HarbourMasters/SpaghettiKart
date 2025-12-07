@@ -200,7 +200,7 @@ void RoyalRaceway::SetStaffGhost() {
     D_80162DE4 = 6;
 }
 
-void RoyalRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
+void RoyalRaceway::Render(struct ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

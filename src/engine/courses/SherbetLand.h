@@ -30,8 +30,8 @@ public:
     virtual void BeginPlay() override;
     virtual void UpdateCourseObjects() override;
     virtual void RenderCourseObjects(s32 cameraId) override;
-    virtual void Render(struct UnkStruct_800DC5EC*) override;
+    virtual void Render(struct ScreenContext*) override;
     virtual void RenderCredits() override;    
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
+    virtual void DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
 };

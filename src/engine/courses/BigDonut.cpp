@@ -142,7 +142,7 @@ void BigDonut::BeginPlay() {
     }
 }
 
-void BigDonut::Render(struct UnkStruct_800DC5EC* arg0) {
+void BigDonut::Render(struct ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);

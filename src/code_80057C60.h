@@ -38,7 +38,7 @@ void func_80057CE4(void);
 void func_80057DD0(void);
 void func_80057FC4(u32);
 
-void render_object(struct UnkStruct_800DC5EC* screen);
+void render_object(struct ScreenContext* screen);
 void render_player_snow_effect(Camera* camera);
 void render_object_for_player(s32);
 void render_snowing_effect(s32);

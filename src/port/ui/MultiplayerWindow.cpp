@@ -19,7 +19,7 @@ extern char* gCupNames[];
 extern char* D_800E76A8[];
 extern Network gNetwork;
 extern Camera cameras[];
-extern UnkStruct_800DC5EC* D_800DC5EC;
+extern ScreenContext* gScreenOneCtx;
 }
 
 namespace GameUI {

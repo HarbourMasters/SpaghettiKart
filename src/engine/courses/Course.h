@@ -351,13 +351,13 @@ public:
     virtual void WhatDoesThisDo(Player*, int8_t);
     virtual void WhatDoesThisDoAI(Player*, int8_t);
     virtual void SetStaffGhost();
-    virtual void Render(struct UnkStruct_800DC5EC*);
+    virtual void Render(struct ScreenContext*);
     virtual void RenderCredits();
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
     // Draw transparent models (water, signs, arrows, etc.) 
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+    virtual void DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                            uint16_t playerDirection);
     virtual void Destroy();
     virtual bool IsMod();

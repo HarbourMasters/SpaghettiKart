@@ -262,7 +262,7 @@ void DKJungle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void DKJungle::Render(struct UnkStruct_800DC5EC* arg0) {
+void DKJungle::Render(struct ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     set_track_light_direction(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
@@ -329,7 +329,7 @@ void DKJungle::ScrollingTextures() {
     evaluate_collision_players_palm_trees();
 }
 
-void DKJungle::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void DKJungle::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

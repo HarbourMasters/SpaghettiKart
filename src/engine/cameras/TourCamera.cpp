@@ -58,7 +58,7 @@ void TourCamera::Stop() {
     gTourComplete = true;
     CM_ResetAudio();
 
-    D_8015F480[0].pendingCamera = &cameras[0];
+    gScreenContexts[0].pendingCamera = &cameras[0];
     bActive = false;
     bTourComplete = true;
 

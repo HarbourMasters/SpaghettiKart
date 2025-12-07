@@ -105,10 +105,10 @@ void setup_podium_ceremony(void) {
     D_80287554 = 0;
     func_802A4D18();
     set_screen();
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = SCREEN_WIDTH / 2;
-    D_800DC5EC->screenStartY = SCREEN_HEIGHT / 2;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = SCREEN_WIDTH / 2;
+    gScreenOneCtx->screenStartY = SCREEN_HEIGHT / 2;
     gScreenModeSelection = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     gActiveScreenMode = SCREEN_MODE_1P;
@@ -156,8 +156,8 @@ void setup_podium_ceremony(void) {
     func_802818BC();
     CM_CleanCameras();
     spawn_players_and_cameras();
-    D_800DC5EC->camera->renderMode = RENDER_FULL_SCENE;
-    D_800DC5EC->camera->unk_B4 = 60.0f;
+    gScreenOneCtx->camera->renderMode = RENDER_FULL_SCENE;
+    gScreenOneCtx->camera->unk_B4 = 60.0f;
     gCameraFOV[0] = 60.0f;
     load_kart_textures();
     init_hud();

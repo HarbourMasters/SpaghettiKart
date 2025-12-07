@@ -55,7 +55,7 @@ void CM_SetCup(void*);
 
 void CM_SetCupIndex(size_t index);
 
-void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0);
+void CM_RenderCourse(struct ScreenContext* arg0);
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -125,7 +125,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CM_BeginPlay();
 
-void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection);
 
 void CM_AICrossingBehaviour(s32 playerId);

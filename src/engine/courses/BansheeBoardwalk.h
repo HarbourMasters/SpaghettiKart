@@ -34,11 +34,11 @@ public:
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void Render(struct UnkStruct_800DC5EC*) override;
+    virtual void Render(struct ScreenContext*) override;
     virtual void RenderCredits() override;    
     virtual void ScrollingTextures() override;
     virtual void Waypoints(Player*, int8_t) override;
-    virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
+    virtual void DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

@@ -24,7 +24,7 @@ public:
     virtual void Load() override;
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
-    virtual void Render(struct UnkStruct_800DC5EC*) override;
+    virtual void Render(struct ScreenContext*) override;
     virtual void RenderCredits() override;    
     virtual void Waypoints(Player* player, int8_t playerId) override;
     virtual void Destroy() override;

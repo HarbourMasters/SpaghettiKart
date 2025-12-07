@@ -260,7 +260,7 @@ void MooMooFarm::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void MooMooFarm::Render(struct UnkStruct_800DC5EC* arg0) {
+void MooMooFarm::Render(struct ScreenContext* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
 
