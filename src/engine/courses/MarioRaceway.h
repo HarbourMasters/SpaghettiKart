@@ -12,6 +12,7 @@ extern "C" {
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
+    #include "code_800029B0.h"
 }
 
 class MarioRaceway : public Course {

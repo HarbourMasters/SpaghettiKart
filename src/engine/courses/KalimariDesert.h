@@ -14,6 +14,7 @@ extern "C" {
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
+    #include "code_800029B0.h"
     extern const course_texture kalimari_desert_textures[];
 }
 

@@ -14,6 +14,7 @@ extern "C" {
 #endif
 #include "camera.h"
 #include "actor_types.h"
+#include "code_800029B0.h"
 
 extern s32 gTrophyIndex;
 

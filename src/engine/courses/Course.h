@@ -23,6 +23,7 @@ extern "C" {
 #include "waypoints.h"
 #include "sounds.h"
 #include "common_structs.h"
+#include "code_800029B0.h"
 
 #ifdef __cplusplus
 }

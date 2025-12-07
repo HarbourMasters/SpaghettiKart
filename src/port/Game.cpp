@@ -62,6 +62,7 @@ extern "C" {
 #include "update_objects.h"
 #include "spawn_players.h"
 #include "src/enhancements/collision_viewer.h"
+#include "code_800029B0.h"
 // #include "engine/wasm.h"
 }
 
