@@ -1,0 +1,247 @@
+:config:
+  segments:
+    - [0x0F, 0x712DC0]
+  header:
+    code:
+    - '#include <assets/textures/other_textures.h>'
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+    header:
+    - '#include <libultraship.h>'
+    - '#include <align_asset_macro.h>'
+  tables:
+    gTextureGhosts:
+      range: [0x0, 0xD200]
+      mode: APPEND
+gTextureBoo01:
+  symbol: gTextureBoo01
+  offset: 0x0
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo02:
+  symbol: gTextureBoo02
+  offset: 0x780
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo03:
+  symbol: gTextureBoo03
+  offset: 0xF00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo04:
+  symbol: gTextureBoo04
+  offset: 0x1680
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo05:
+  symbol: gTextureBoo05
+  offset: 0x1E00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo06:
+  symbol: gTextureBoo06
+  offset: 0x2580
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo07:
+  symbol: gTextureBoo07
+  offset: 0x2D00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo08:
+  symbol: gTextureBoo08
+  offset: 0x3480
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo09:
+  symbol: gTextureBoo09
+  offset: 0x3C00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo10:
+  symbol: gTextureBoo10
+  offset: 0x4380
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo11:
+  symbol: gTextureBoo11
+  offset: 0x4B00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo12:
+  symbol: gTextureBoo12
+  offset: 0x5280
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo13:
+  symbol: gTextureBoo13
+  offset: 0x5A00
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo14:
+  symbol: gTextureBoo14
+  offset: 0x6180
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo15:
+  symbol: gTextureBoo15
+  offset: 0x6900
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo16:
+  symbol: gTextureBoo16
+  offset: 0x7080
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo17:
+  symbol: gTextureBoo17
+  offset: 0x7800
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo18:
+  symbol: gTextureBoo18
+  offset: 0x7F80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo19:
+  symbol: gTextureBoo19
+  offset: 0x8700
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo20:
+  symbol: gTextureBoo20
+  offset: 0x8E80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo21:
+  symbol: gTextureBoo21
+  offset: 0x9600
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo22:
+  symbol: gTextureBoo22
+  offset: 0x9D80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo23:
+  symbol: gTextureBoo23
+  offset: 0xA500
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo24:
+  symbol: gTextureBoo24
+  offset: 0xAC80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo25:
+  symbol: gTextureBoo25
+  offset: 0xB400
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo26:
+  symbol: gTextureBoo26
+  offset: 0xBB80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo27:
+  symbol: gTextureBoo27
+  offset: 0xC300
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo28:
+  symbol: gTextureBoo28
+  offset: 0xCA80
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8
+gTextureBoo29:
+  symbol: gTextureBoo29
+  offset: 0xD200
+  width: 48
+  height: 40
+  type: texture
+  tlut: d_course_banshee_boardwalk_boo_tlut
+  format: ci8

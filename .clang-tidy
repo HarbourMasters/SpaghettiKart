@@ -1,4 +1,24 @@
-Checks: '-*,readability-braces-around-statements,readability-inconsistent-declaration-parameter-name'
+Checks: '
+  -*,
+  readability-*,
+  performance-*,
+  bugprone-*,
+  cppcoreguidelines-*,
+  llvm-include-order,
+
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-convert-member-functions-to-static,
+  -readability-uppercase-literal-suffix,
+  
+  -bugprone-narrowing-conversions,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-signed-char-misuse,
+
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-avoid-non-const-global-variables,
+  '
 WarningsAsErrors: ''
 HeaderFilterRegex: '(src|include)\/.*\.h$'
 FormatStyle: 'file'

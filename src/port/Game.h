@@ -42,6 +42,7 @@ u32 GetCupIndex(void);
 const char* GetCupName(void);
 
 void LoadCourse();
+void UnLoadCourse();
 
 size_t GetCourseIndex();
 
@@ -54,11 +55,7 @@ void CM_SetCup(void*);
 
 void CM_SetCupIndex(size_t index);
 
-void CM_LoadTextures();
-
 void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0);
-
-void CM_RenderCredits();
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -71,6 +68,18 @@ void CM_InitClouds();
 void CM_DrawActors(Camera* camera);
 void CM_DrawStaticMeshActors();
 
+Camera* CM_GetPlayerCamera(s32 playerIndex);
+void CM_SetViewProjection(Camera* camera);
+void CM_TickCameras();
+Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode);
+Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode);
+Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode);
+bool CM_IsTourEnabled();
+Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode);
+void CM_AttachCamera(Camera* camera, s32 playerIdx);
+void CM_SetFreeCamera(bool state);
+void CM_CameraSetActive(size_t idx, bool state);
+void CM_ActivateTourCamera(Camera* camera);
 void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);
@@ -154,6 +163,7 @@ void Editor_AddLight(s8* direction);
 size_t CM_GetActorSize();
 size_t CM_FindActorIndex(struct Actor* actor);
 void CM_ActorCollision(Player* player, struct Actor* actor);
+void CM_CleanCameras(void);
 void CM_CleanWorld(void);
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision);
@@ -215,6 +225,7 @@ void* GetBattleCup(void);
 void* GetCup();
 
 void CM_RunGarbageCollector(void);
+void CM_ResetAudio(void);
 
 #ifdef __cplusplus
 }

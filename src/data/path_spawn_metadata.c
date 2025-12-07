@@ -1,16 +1,16 @@
 #include "data/path_spawn_metadata.h"
 #include "courses/all_course_data.h"
-#include <assets/ceremony_data.h>
-#include <assets/mario_raceway_data.h>
-#include <assets/luigi_raceway_data.h>
-#include <assets/royal_raceway_data.h>
-#include <assets/kalimari_desert_data.h>
-#include <assets/moo_moo_farm_data.h>
-#include <assets/choco_mountain_data.h>
-#include <assets/wario_stadium_data.h>
-#include <assets/bowsers_castle_data.h>
-#include <assets/frappe_snowland_data.h>
-#include <assets/dks_jungle_parkway_data.h>
+#include <assets/models/ceremony_data.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
+#include <assets/models/tracks/luigi_raceway/luigi_raceway_data.h>
+#include <assets/models/tracks/royal_raceway/royal_raceway_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
+#include <assets/models/tracks/choco_mountain/choco_mountain_data.h>
+#include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
+#include <assets/models/tracks/bowsers_castle/bowsers_castle_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 
 TrackPathPoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 

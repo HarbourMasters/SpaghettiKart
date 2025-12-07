@@ -67,6 +67,8 @@ u32 bFreecamUseController = false;
  * Camera mode 2: Enter freecam at previous freecam spot
  *
  */
+
+// This function is no longer used because FreeCamera.cpp
 void freecam(Camera* camera, Player* player, s8 index) {
     f32 dirX;
     f32 dirY;
@@ -81,7 +83,7 @@ void freecam(Camera* camera, Player* player, s8 index) {
         freecamEnabled = false;
         CVarSetInteger("gFreecam", false);
     }
-    
+
     if (freecamEnabled && !enabled) {
         enabled = true; // Mark that freecam was activated
         on_freecam();
@@ -92,11 +94,11 @@ void freecam(Camera* camera, Player* player, s8 index) {
 
     // Freecam mode is enabled
     if (enabled && (player == gPlayerOne)) {
-        freecam_loop(camera, player, index);
+        freecam_loop(camera);
     } else {
-        func_8001E45C(camera, player, index);
+        // func_8001E45C(camera, player, index);
         // Required if freecam were to use its own camera instead of borrowing the player camera
-        //func_8001EE98(gPlayerOne, camera, index);
+        // func_8001EE98(gPlayerOne, camera, index);
     }
 }
 
@@ -110,7 +112,7 @@ void off_freecam(void) {
     gPlayerOne->type &= ~PLAYER_CPU;
 }
 
-void freecam_loop(Camera* camera, Player* player, s8 index) {
+void freecam_loop(Camera* camera) {
     if ((fController.buttonPressed & L_TRIG) && (fController.buttonPressed & R_TRIG)) {
         // Toggle freecam
         CVarSetInteger("gFreecam", !CVarGetInteger("gFreecam", 0));
@@ -129,7 +131,11 @@ void freecam_loop(Camera* camera, Player* player, s8 index) {
     freecam_keyboard_manager(camera, freeCam.forwardVector);
 
     // Apply final position, velocity, and lookAt
+    //if (0) {
+        //Tour_Tick(camera);
+    //} else {
     freecam_tick(camera, freeCam.forwardVector);
+    //}
 }
 
 void freecam_mouse_manager(Camera* camera, Vec3f forwardVector) {
@@ -377,6 +383,7 @@ void freecam_keyboard_manager(Camera* camera, Vec3f forwardVector) {
     if (Down) {
         totalMove[1] -= moveSpeed; // Move down
     }
+
     freeCam.velocity[0] += totalMove[0];
     freeCam.velocity[1] += totalMove[1];
     freeCam.velocity[2] += totalMove[2];
@@ -399,31 +406,3 @@ void freecam_update_controller(void) {
     // Note that D Pad as stick code has been removed. So if it's needed, it needs to be put back in.
 }
 
-void freecam_render_setup(Camera* camera) {
-    u16 perspNorm;
-    Mat4 matrix;
-
-    Mat4 persp;
-    Mat4 lookAt;
-
-    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
-    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_CULL_BOTH | G_CULL_FRONT);
-
-    // Perspective (camera movement)
-    FrameInterpolation_RecordOpenChild("freecam_persp", FrameInterpolation_GetCameraEpoch());
-    guPerspective(GetPerspMatrix(4), &perspNorm, gCameraZoom[0], gScreenAspect,
-                  CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
-    gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(4), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    FrameInterpolation_RecordCloseChild();
-
-    // LookAt (camera rotation)
-    FrameInterpolation_RecordOpenChild("freecam_lookAt", FrameInterpolation_GetCameraEpoch());
-    guLookAt(GetLookAtMatrix(4), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
-             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(4), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    FrameInterpolation_RecordCloseChild();
-
-    gDPPipeSync(gDisplayListHead++);
-
-}

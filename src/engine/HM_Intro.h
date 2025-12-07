@@ -33,6 +33,8 @@ private:
         FVector LookAt;
     };
 
+    Mtx PerspectiveMatrix;
+    Mtx LookAtMatrix;
     HMCamera _camera;
 
     f32 _cameraSpeed;

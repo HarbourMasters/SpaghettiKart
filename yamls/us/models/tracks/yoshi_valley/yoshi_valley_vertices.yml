@@ -1,0 +1,1587 @@
+:config:
+  segments:
+    - [0x0F, 0x8C2510]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_yoshi_valley_vertex_0x04000000:
+  symbol: d_course_yoshi_valley_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x0
+
+d_course_yoshi_valley_vertex_0x04000200:
+  symbol: d_course_yoshi_valley_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c0
+
+d_course_yoshi_valley_vertex_0x04000240:
+  symbol: d_course_yoshi_valley_vertex_0x04000240
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1f8
+
+d_course_yoshi_valley_vertex_0x04000380:
+  symbol: d_course_yoshi_valley_vertex_0x04000380
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x310
+
+d_course_yoshi_valley_vertex_0x040004C0:
+  symbol: d_course_yoshi_valley_vertex_0x040004C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x428
+
+d_course_yoshi_valley_vertex_0x040006C0:
+  symbol: d_course_yoshi_valley_vertex_0x040006C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5e8
+
+d_course_yoshi_valley_vertex_0x040008C0:
+  symbol: d_course_yoshi_valley_vertex_0x040008C0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x7a8
+
+d_course_yoshi_valley_vertex_0x04000A00:
+  symbol: d_course_yoshi_valley_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x8c0
+
+d_course_yoshi_valley_vertex_0x04000B40:
+  symbol: d_course_yoshi_valley_vertex_0x04000B40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x9d8
+
+d_course_yoshi_valley_vertex_0x04000C80:
+  symbol: d_course_yoshi_valley_vertex_0x04000C80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xaf0
+
+d_course_yoshi_valley_vertex_0x04000E00:
+  symbol: d_course_yoshi_valley_vertex_0x04000E00
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xc40
+
+d_course_yoshi_valley_vertex_0x04000FC0:
+  symbol: d_course_yoshi_valley_vertex_0x04000FC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xdc8
+
+d_course_yoshi_valley_vertex_0x040010C0:
+  symbol: d_course_yoshi_valley_vertex_0x040010C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xea8
+
+d_course_yoshi_valley_vertex_0x04001280:
+  symbol: d_course_yoshi_valley_vertex_0x04001280
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1030
+
+d_course_yoshi_valley_vertex_0x04001380:
+  symbol: d_course_yoshi_valley_vertex_0x04001380
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1110
+
+d_course_yoshi_valley_vertex_0x04001580:
+  symbol: d_course_yoshi_valley_vertex_0x04001580
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12d0
+
+d_course_yoshi_valley_vertex_0x040015C0:
+  symbol: d_course_yoshi_valley_vertex_0x040015C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x1308
+
+d_course_yoshi_valley_vertex_0x04001780:
+  symbol: d_course_yoshi_valley_vertex_0x04001780
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1490
+
+d_course_yoshi_valley_vertex_0x040018C0:
+  symbol: d_course_yoshi_valley_vertex_0x040018C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15a8
+
+d_course_yoshi_valley_vertex_0x04001AC0:
+  symbol: d_course_yoshi_valley_vertex_0x04001AC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1768
+
+d_course_yoshi_valley_vertex_0x04001B40:
+  symbol: d_course_yoshi_valley_vertex_0x04001B40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x17d8
+
+d_course_yoshi_valley_vertex_0x04001C40:
+  symbol: d_course_yoshi_valley_vertex_0x04001C40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x18b8
+
+d_course_yoshi_valley_vertex_0x04001D80:
+  symbol: d_course_yoshi_valley_vertex_0x04001D80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x19d0
+
+d_course_yoshi_valley_vertex_0x04001F80:
+  symbol: d_course_yoshi_valley_vertex_0x04001F80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1b90
+
+d_course_yoshi_valley_vertex_0x04002000:
+  symbol: d_course_yoshi_valley_vertex_0x04002000
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x1c00
+
+d_course_yoshi_valley_vertex_0x04002160:
+  symbol: d_course_yoshi_valley_vertex_0x04002160
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1d34
+
+d_course_yoshi_valley_vertex_0x04002360:
+  symbol: d_course_yoshi_valley_vertex_0x04002360
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1ef4
+
+d_course_yoshi_valley_vertex_0x04002420:
+  symbol: d_course_yoshi_valley_vertex_0x04002420
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1f9c
+
+d_course_yoshi_valley_vertex_0x04002620:
+  symbol: d_course_yoshi_valley_vertex_0x04002620
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x215c
+
+d_course_yoshi_valley_vertex_0x040027E0:
+  symbol: d_course_yoshi_valley_vertex_0x040027E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x22e4
+
+d_course_yoshi_valley_vertex_0x04002820:
+  symbol: d_course_yoshi_valley_vertex_0x04002820
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x231c
+
+d_course_yoshi_valley_vertex_0x04002860:
+  symbol: d_course_yoshi_valley_vertex_0x04002860
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2354
+
+d_course_yoshi_valley_vertex_0x040028A0:
+  symbol: d_course_yoshi_valley_vertex_0x040028A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x238c
+
+d_course_yoshi_valley_vertex_0x040028E0:
+  symbol: d_course_yoshi_valley_vertex_0x040028E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x23c4
+
+d_course_yoshi_valley_vertex_0x04002920:
+  symbol: d_course_yoshi_valley_vertex_0x04002920
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x23fc
+
+d_course_yoshi_valley_vertex_0x04002960:
+  symbol: d_course_yoshi_valley_vertex_0x04002960
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2434
+
+d_course_yoshi_valley_vertex_0x040029A0:
+  symbol: d_course_yoshi_valley_vertex_0x040029A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x246c
+
+d_course_yoshi_valley_vertex_0x040029E0:
+  symbol: d_course_yoshi_valley_vertex_0x040029E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x24a4
+
+d_course_yoshi_valley_vertex_0x04002B60:
+  symbol: d_course_yoshi_valley_vertex_0x04002B60
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x25f4
+
+d_course_yoshi_valley_vertex_0x04002BE0:
+  symbol: d_course_yoshi_valley_vertex_0x04002BE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2664
+
+d_course_yoshi_valley_vertex_0x04002C60:
+  symbol: d_course_yoshi_valley_vertex_0x04002C60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x26d4
+
+d_course_yoshi_valley_vertex_0x04002D20:
+  symbol: d_course_yoshi_valley_vertex_0x04002D20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x277c
+
+d_course_yoshi_valley_vertex_0x04002DE0:
+  symbol: d_course_yoshi_valley_vertex_0x04002DE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2824
+
+d_course_yoshi_valley_vertex_0x04002E60:
+  symbol: d_course_yoshi_valley_vertex_0x04002E60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2894
+
+d_course_yoshi_valley_vertex_0x04002F20:
+  symbol: d_course_yoshi_valley_vertex_0x04002F20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x293c
+
+d_course_yoshi_valley_vertex_0x04003060:
+  symbol: d_course_yoshi_valley_vertex_0x04003060
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2a54
+
+d_course_yoshi_valley_vertex_0x04003260:
+  symbol: d_course_yoshi_valley_vertex_0x04003260
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2c14
+
+d_course_yoshi_valley_vertex_0x04003460:
+  symbol: d_course_yoshi_valley_vertex_0x04003460
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x2dd4
+
+d_course_yoshi_valley_vertex_0x04003580:
+  symbol: d_course_yoshi_valley_vertex_0x04003580
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2ed0
+
+d_course_yoshi_valley_vertex_0x04003780:
+  symbol: d_course_yoshi_valley_vertex_0x04003780
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3090
+
+d_course_yoshi_valley_vertex_0x04003980:
+  symbol: d_course_yoshi_valley_vertex_0x04003980
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x3250
+
+d_course_yoshi_valley_vertex_0x04003A10:
+  symbol: d_course_yoshi_valley_vertex_0x04003A10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x32ce
+
+d_course_yoshi_valley_vertex_0x04003AD0:
+  symbol: d_course_yoshi_valley_vertex_0x04003AD0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x3376
+
+d_course_yoshi_valley_vertex_0x04003BF0:
+  symbol: d_course_yoshi_valley_vertex_0x04003BF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3472
+
+d_course_yoshi_valley_vertex_0x04003C70:
+  symbol: d_course_yoshi_valley_vertex_0x04003C70
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x34e2
+
+d_course_yoshi_valley_vertex_0x04003E30:
+  symbol: d_course_yoshi_valley_vertex_0x04003E30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x366a
+
+d_course_yoshi_valley_vertex_0x04003EB0:
+  symbol: d_course_yoshi_valley_vertex_0x04003EB0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x36da
+
+d_course_yoshi_valley_vertex_0x04003FC0:
+  symbol: d_course_yoshi_valley_vertex_0x04003FC0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x37c8
+
+d_course_yoshi_valley_vertex_0x04004130:
+  symbol: d_course_yoshi_valley_vertex_0x04004130
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x390a
+
+d_course_yoshi_valley_vertex_0x040041C0:
+  symbol: d_course_yoshi_valley_vertex_0x040041C0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3988
+
+d_course_yoshi_valley_vertex_0x04004300:
+  symbol: d_course_yoshi_valley_vertex_0x04004300
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3aa0
+
+d_course_yoshi_valley_vertex_0x04004380:
+  symbol: d_course_yoshi_valley_vertex_0x04004380
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x3b10
+
+d_course_yoshi_valley_vertex_0x04004550:
+  symbol: d_course_yoshi_valley_vertex_0x04004550
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3ca6
+
+d_course_yoshi_valley_vertex_0x040045B0:
+  symbol: d_course_yoshi_valley_vertex_0x040045B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3cfa
+
+d_course_yoshi_valley_vertex_0x04004610:
+  symbol: d_course_yoshi_valley_vertex_0x04004610
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3d4e
+
+d_course_yoshi_valley_vertex_0x04004670:
+  symbol: d_course_yoshi_valley_vertex_0x04004670
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3da2
+
+d_course_yoshi_valley_vertex_0x040046B0:
+  symbol: d_course_yoshi_valley_vertex_0x040046B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3dda
+
+d_course_yoshi_valley_vertex_0x04004730:
+  symbol: d_course_yoshi_valley_vertex_0x04004730
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x3e4a
+
+d_course_yoshi_valley_vertex_0x04004840:
+  symbol: d_course_yoshi_valley_vertex_0x04004840
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3f38
+
+d_course_yoshi_valley_vertex_0x04004940:
+  symbol: d_course_yoshi_valley_vertex_0x04004940
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4018
+
+d_course_yoshi_valley_vertex_0x04004A00:
+  symbol: d_course_yoshi_valley_vertex_0x04004A00
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x40c0
+
+d_course_yoshi_valley_vertex_0x04004A70:
+  symbol: d_course_yoshi_valley_vertex_0x04004A70
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x4122
+
+d_course_yoshi_valley_vertex_0x04004B10:
+  symbol: d_course_yoshi_valley_vertex_0x04004B10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x41ae
+
+d_course_yoshi_valley_vertex_0x04004BD0:
+  symbol: d_course_yoshi_valley_vertex_0x04004BD0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x4256
+
+d_course_yoshi_valley_vertex_0x04004C80:
+  symbol: d_course_yoshi_valley_vertex_0x04004C80
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x42f0
+
+d_course_yoshi_valley_vertex_0x04004E30:
+  symbol: d_course_yoshi_valley_vertex_0x04004E30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x446a
+
+d_course_yoshi_valley_vertex_0x04004EB0:
+  symbol: d_course_yoshi_valley_vertex_0x04004EB0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x44da
+
+d_course_yoshi_valley_vertex_0x04004F50:
+  symbol: d_course_yoshi_valley_vertex_0x04004F50
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x4566
+
+d_course_yoshi_valley_vertex_0x04005070:
+  symbol: d_course_yoshi_valley_vertex_0x04005070
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x4662
+
+d_course_yoshi_valley_vertex_0x040051C0:
+  symbol: d_course_yoshi_valley_vertex_0x040051C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4788
+
+d_course_yoshi_valley_vertex_0x04005280:
+  symbol: d_course_yoshi_valley_vertex_0x04005280
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x4830
+
+d_course_yoshi_valley_vertex_0x04005370:
+  symbol: d_course_yoshi_valley_vertex_0x04005370
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x4902
+
+d_course_yoshi_valley_vertex_0x040054B0:
+  symbol: d_course_yoshi_valley_vertex_0x040054B0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x4a1a
+
+d_course_yoshi_valley_vertex_0x04005550:
+  symbol: d_course_yoshi_valley_vertex_0x04005550
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x4aa6
+
+d_course_yoshi_valley_vertex_0x040056E0:
+  symbol: d_course_yoshi_valley_vertex_0x040056E0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x4c04
+
+d_course_yoshi_valley_vertex_0x04005840:
+  symbol: d_course_yoshi_valley_vertex_0x04005840
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x4d38
+
+d_course_yoshi_valley_vertex_0x040058E0:
+  symbol: d_course_yoshi_valley_vertex_0x040058E0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x4dc4
+
+d_course_yoshi_valley_vertex_0x040059F0:
+  symbol: d_course_yoshi_valley_vertex_0x040059F0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x4eb2
+
+d_course_yoshi_valley_vertex_0x04005A80:
+  symbol: d_course_yoshi_valley_vertex_0x04005A80
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x4f30
+
+d_course_yoshi_valley_vertex_0x04005BA0:
+  symbol: d_course_yoshi_valley_vertex_0x04005BA0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x502c
+
+d_course_yoshi_valley_vertex_0x04005C90:
+  symbol: d_course_yoshi_valley_vertex_0x04005C90
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x50fe
+
+d_course_yoshi_valley_vertex_0x04005DC0:
+  symbol: d_course_yoshi_valley_vertex_0x04005DC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5208
+
+d_course_yoshi_valley_vertex_0x04005E80:
+  symbol: d_course_yoshi_valley_vertex_0x04005E80
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x52b0
+
+d_course_yoshi_valley_vertex_0x04005F60:
+  symbol: d_course_yoshi_valley_vertex_0x04005F60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5374
+
+d_course_yoshi_valley_vertex_0x04006020:
+  symbol: d_course_yoshi_valley_vertex_0x04006020
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x541c
+
+d_course_yoshi_valley_vertex_0x040060E0:
+  symbol: d_course_yoshi_valley_vertex_0x040060E0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x54c4
+
+d_course_yoshi_valley_vertex_0x04006230:
+  symbol: d_course_yoshi_valley_vertex_0x04006230
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x55ea
+
+d_course_yoshi_valley_vertex_0x040062E0:
+  symbol: d_course_yoshi_valley_vertex_0x040062E0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5684
+
+d_course_yoshi_valley_vertex_0x04006370:
+  symbol: d_course_yoshi_valley_vertex_0x04006370
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5702
+
+d_course_yoshi_valley_vertex_0x040063F0:
+  symbol: d_course_yoshi_valley_vertex_0x040063F0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x5772
+
+d_course_yoshi_valley_vertex_0x04006510:
+  symbol: d_course_yoshi_valley_vertex_0x04006510
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x586e
+
+d_course_yoshi_valley_vertex_0x04006620:
+  symbol: d_course_yoshi_valley_vertex_0x04006620
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x595c
+
+d_course_yoshi_valley_vertex_0x040066E0:
+  symbol: d_course_yoshi_valley_vertex_0x040066E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5a04
+
+d_course_yoshi_valley_vertex_0x04006760:
+  symbol: d_course_yoshi_valley_vertex_0x04006760
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x5a74
+
+d_course_yoshi_valley_vertex_0x04006870:
+  symbol: d_course_yoshi_valley_vertex_0x04006870
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5b62
+
+d_course_yoshi_valley_vertex_0x040068B0:
+  symbol: d_course_yoshi_valley_vertex_0x040068B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5b9a
+
+d_course_yoshi_valley_vertex_0x040068F0:
+  symbol: d_course_yoshi_valley_vertex_0x040068F0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5bd2
+
+d_course_yoshi_valley_vertex_0x040069D0:
+  symbol: d_course_yoshi_valley_vertex_0x040069D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5c96
+
+d_course_yoshi_valley_vertex_0x04006A10:
+  symbol: d_course_yoshi_valley_vertex_0x04006A10
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5cce
+
+d_course_yoshi_valley_vertex_0x04006AA0:
+  symbol: d_course_yoshi_valley_vertex_0x04006AA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5d4c
+
+d_course_yoshi_valley_vertex_0x04006B20:
+  symbol: d_course_yoshi_valley_vertex_0x04006B20
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5dbc
+
+d_course_yoshi_valley_vertex_0x04006C00:
+  symbol: d_course_yoshi_valley_vertex_0x04006C00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5e80
+
+d_course_yoshi_valley_vertex_0x04006C40:
+  symbol: d_course_yoshi_valley_vertex_0x04006C40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5eb8
+
+d_course_yoshi_valley_vertex_0x04006CC0:
+  symbol: d_course_yoshi_valley_vertex_0x04006CC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5f28
+
+d_course_yoshi_valley_vertex_0x04006D40:
+  symbol: d_course_yoshi_valley_vertex_0x04006D40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5f98
+
+d_course_yoshi_valley_vertex_0x04006E40:
+  symbol: d_course_yoshi_valley_vertex_0x04006E40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6078
+
+d_course_yoshi_valley_vertex_0x04006EC0:
+  symbol: d_course_yoshi_valley_vertex_0x04006EC0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x60e8
+
+d_course_yoshi_valley_vertex_0x04006F50:
+  symbol: d_course_yoshi_valley_vertex_0x04006F50
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x6166
+
+d_course_yoshi_valley_vertex_0x040070F0:
+  symbol: d_course_yoshi_valley_vertex_0x040070F0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x62d2
+
+d_course_yoshi_valley_vertex_0x040071E0:
+  symbol: d_course_yoshi_valley_vertex_0x040071E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x63a4
+
+d_course_yoshi_valley_vertex_0x040072D0:
+  symbol: d_course_yoshi_valley_vertex_0x040072D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6476
+
+d_course_yoshi_valley_vertex_0x04007350:
+  symbol: d_course_yoshi_valley_vertex_0x04007350
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x64e6
+
+d_course_yoshi_valley_vertex_0x04007490:
+  symbol: d_course_yoshi_valley_vertex_0x04007490
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x65fe
+
+d_course_yoshi_valley_vertex_0x04007570:
+  symbol: d_course_yoshi_valley_vertex_0x04007570
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x66c2
+
+d_course_yoshi_valley_vertex_0x040075F0:
+  symbol: d_course_yoshi_valley_vertex_0x040075F0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x6732
+
+d_course_yoshi_valley_vertex_0x04007660:
+  symbol: d_course_yoshi_valley_vertex_0x04007660
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6794
+
+d_course_yoshi_valley_vertex_0x040076A0:
+  symbol: d_course_yoshi_valley_vertex_0x040076A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x67cc
+
+d_course_yoshi_valley_vertex_0x04007880:
+  symbol: d_course_yoshi_valley_vertex_0x04007880
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6970
+
+d_course_yoshi_valley_vertex_0x04007940:
+  symbol: d_course_yoshi_valley_vertex_0x04007940
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6a18
+
+d_course_yoshi_valley_vertex_0x04007980:
+  symbol: d_course_yoshi_valley_vertex_0x04007980
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x6a50
+
+d_course_yoshi_valley_vertex_0x04007B50:
+  symbol: d_course_yoshi_valley_vertex_0x04007B50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6be6
+
+d_course_yoshi_valley_vertex_0x04007BD0:
+  symbol: d_course_yoshi_valley_vertex_0x04007BD0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6c56
+
+d_course_yoshi_valley_vertex_0x04007DC0:
+  symbol: d_course_yoshi_valley_vertex_0x04007DC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6e08
+
+d_course_yoshi_valley_vertex_0x04007E80:
+  symbol: d_course_yoshi_valley_vertex_0x04007E80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6eb0
+
+d_course_yoshi_valley_vertex_0x04008060:
+  symbol: d_course_yoshi_valley_vertex_0x04008060
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x7054
+
+d_course_yoshi_valley_vertex_0x04008200:
+  symbol: d_course_yoshi_valley_vertex_0x04008200
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x71c0
+
+d_course_yoshi_valley_vertex_0x040083E0:
+  symbol: d_course_yoshi_valley_vertex_0x040083E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7364
+
+d_course_yoshi_valley_vertex_0x040085C0:
+  symbol: d_course_yoshi_valley_vertex_0x040085C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7508
+
+d_course_yoshi_valley_vertex_0x040087C0:
+  symbol: d_course_yoshi_valley_vertex_0x040087C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x76c8
+
+d_course_yoshi_valley_vertex_0x04008880:
+  symbol: d_course_yoshi_valley_vertex_0x04008880
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x7770
+
+d_course_yoshi_valley_vertex_0x04008A10:
+  symbol: d_course_yoshi_valley_vertex_0x04008A10
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x78ce
+
+d_course_yoshi_valley_vertex_0x04008AB0:
+  symbol: d_course_yoshi_valley_vertex_0x04008AB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x795a
+
+d_course_yoshi_valley_vertex_0x04008AF0:
+  symbol: d_course_yoshi_valley_vertex_0x04008AF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7992
+
+d_course_yoshi_valley_vertex_0x04008B70:
+  symbol: d_course_yoshi_valley_vertex_0x04008B70
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x7a02
+
+d_course_yoshi_valley_vertex_0x04008CB0:
+  symbol: d_course_yoshi_valley_vertex_0x04008CB0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7b1a
+
+d_course_yoshi_valley_vertex_0x04008D70:
+  symbol: d_course_yoshi_valley_vertex_0x04008D70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7bc2
+
+d_course_yoshi_valley_vertex_0x04008DF0:
+  symbol: d_course_yoshi_valley_vertex_0x04008DF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7c32
+
+d_course_yoshi_valley_vertex_0x04008E30:
+  symbol: d_course_yoshi_valley_vertex_0x04008E30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7c6a
+
+d_course_yoshi_valley_vertex_0x04009010:
+  symbol: d_course_yoshi_valley_vertex_0x04009010
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7e0e
+
+d_course_yoshi_valley_vertex_0x04009090:
+  symbol: d_course_yoshi_valley_vertex_0x04009090
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x7e7e
+
+d_course_yoshi_valley_vertex_0x04009280:
+  symbol: d_course_yoshi_valley_vertex_0x04009280
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8030
+
+d_course_yoshi_valley_vertex_0x040092E0:
+  symbol: d_course_yoshi_valley_vertex_0x040092E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8084
+
+d_course_yoshi_valley_vertex_0x040094C0:
+  symbol: d_course_yoshi_valley_vertex_0x040094C0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x8228
+
+d_course_yoshi_valley_vertex_0x04009630:
+  symbol: d_course_yoshi_valley_vertex_0x04009630
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x836a
+
+d_course_yoshi_valley_vertex_0x04009830:
+  symbol: d_course_yoshi_valley_vertex_0x04009830
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x852a
+
+d_course_yoshi_valley_vertex_0x040098D0:
+  symbol: d_course_yoshi_valley_vertex_0x040098D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x85b6
+
+d_course_yoshi_valley_vertex_0x04009910:
+  symbol: d_course_yoshi_valley_vertex_0x04009910
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x85ee
+
+d_course_yoshi_valley_vertex_0x04009B10:
+  symbol: d_course_yoshi_valley_vertex_0x04009B10
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x87ae
+
+d_course_yoshi_valley_vertex_0x04009B60:
+  symbol: d_course_yoshi_valley_vertex_0x04009B60
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x87f4
+
+d_course_yoshi_valley_vertex_0x04009CE0:
+  symbol: d_course_yoshi_valley_vertex_0x04009CE0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x8944
+
+d_course_yoshi_valley_vertex_0x04009EB0:
+  symbol: d_course_yoshi_valley_vertex_0x04009EB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x8ada
+
+d_course_yoshi_valley_vertex_0x04009EF0:
+  symbol: d_course_yoshi_valley_vertex_0x04009EF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8b12
+
+d_course_yoshi_valley_vertex_0x0400A0F0:
+  symbol: d_course_yoshi_valley_vertex_0x0400A0F0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x8cd2
+
+d_course_yoshi_valley_vertex_0x0400A250:
+  symbol: d_course_yoshi_valley_vertex_0x0400A250
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8e06
+
+d_course_yoshi_valley_vertex_0x0400A430:
+  symbol: d_course_yoshi_valley_vertex_0x0400A430
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8faa
+
+d_course_yoshi_valley_vertex_0x0400A490:
+  symbol: d_course_yoshi_valley_vertex_0x0400A490
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8ffe
+
+d_course_yoshi_valley_vertex_0x0400A5B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400A5B0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x90fa
+
+d_course_yoshi_valley_vertex_0x0400A6D0:
+  symbol: d_course_yoshi_valley_vertex_0x0400A6D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x91f6
+
+d_course_yoshi_valley_vertex_0x0400A790:
+  symbol: d_course_yoshi_valley_vertex_0x0400A790
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x929e
+
+d_course_yoshi_valley_vertex_0x0400A8B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400A8B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x939a
+
+d_course_yoshi_valley_vertex_0x0400A9F0:
+  symbol: d_course_yoshi_valley_vertex_0x0400A9F0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x94b2
+
+d_course_yoshi_valley_vertex_0x0400ABD0:
+  symbol: d_course_yoshi_valley_vertex_0x0400ABD0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9656
+
+d_course_yoshi_valley_vertex_0x0400ADB0:
+  symbol: d_course_yoshi_valley_vertex_0x0400ADB0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x97fa
+
+d_course_yoshi_valley_vertex_0x0400AF90:
+  symbol: d_course_yoshi_valley_vertex_0x0400AF90
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x999e
+
+d_course_yoshi_valley_vertex_0x0400B0B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B0B0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x9a9a
+
+d_course_yoshi_valley_vertex_0x0400B1E0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B1E0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x9ba4
+
+d_course_yoshi_valley_vertex_0x0400B280:
+  symbol: d_course_yoshi_valley_vertex_0x0400B280
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x9c30
+
+d_course_yoshi_valley_vertex_0x0400B2E0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B2E0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x9c84
+
+d_course_yoshi_valley_vertex_0x0400B390:
+  symbol: d_course_yoshi_valley_vertex_0x0400B390
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x9d1e
+
+d_course_yoshi_valley_vertex_0x0400B400:
+  symbol: d_course_yoshi_valley_vertex_0x0400B400
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x9d80
+
+d_course_yoshi_valley_vertex_0x0400B490:
+  symbol: d_course_yoshi_valley_vertex_0x0400B490
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x9dfe
+
+d_course_yoshi_valley_vertex_0x0400B530:
+  symbol: d_course_yoshi_valley_vertex_0x0400B530
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x9e8a
+
+d_course_yoshi_valley_vertex_0x0400B5D0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B5D0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x9f16
+
+d_course_yoshi_valley_vertex_0x0400B660:
+  symbol: d_course_yoshi_valley_vertex_0x0400B660
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9f94
+
+d_course_yoshi_valley_vertex_0x0400B6E0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B6E0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xa004
+
+d_course_yoshi_valley_vertex_0x0400B7B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B7B0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xa0ba
+
+d_course_yoshi_valley_vertex_0x0400B820:
+  symbol: d_course_yoshi_valley_vertex_0x0400B820
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xa11c
+
+d_course_yoshi_valley_vertex_0x0400B8C0:
+  symbol: d_course_yoshi_valley_vertex_0x0400B8C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa1a8
+
+d_course_yoshi_valley_vertex_0x0400B940:
+  symbol: d_course_yoshi_valley_vertex_0x0400B940
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xa218
+
+d_course_yoshi_valley_vertex_0x0400B990:
+  symbol: d_course_yoshi_valley_vertex_0x0400B990
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa25e
+
+d_course_yoshi_valley_vertex_0x0400BA10:
+  symbol: d_course_yoshi_valley_vertex_0x0400BA10
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa2ce
+
+d_course_yoshi_valley_vertex_0x0400BA70:
+  symbol: d_course_yoshi_valley_vertex_0x0400BA70
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xa322
+
+d_course_yoshi_valley_vertex_0x0400BB20:
+  symbol: d_course_yoshi_valley_vertex_0x0400BB20
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xa3bc
+
+d_course_yoshi_valley_vertex_0x0400BC50:
+  symbol: d_course_yoshi_valley_vertex_0x0400BC50
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xa4c6
+
+d_course_yoshi_valley_vertex_0x0400BCF0:
+  symbol: d_course_yoshi_valley_vertex_0x0400BCF0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa552
+
+d_course_yoshi_valley_vertex_0x0400BD50:
+  symbol: d_course_yoshi_valley_vertex_0x0400BD50
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xa5a6
+
+d_course_yoshi_valley_vertex_0x0400BDF0:
+  symbol: d_course_yoshi_valley_vertex_0x0400BDF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xa632
+
+d_course_yoshi_valley_vertex_0x0400BEB0:
+  symbol: d_course_yoshi_valley_vertex_0x0400BEB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa6da
+
+d_course_yoshi_valley_vertex_0x0400BF10:
+  symbol: d_course_yoshi_valley_vertex_0x0400BF10
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xa72e
+
+d_course_yoshi_valley_vertex_0x0400BFF0:
+  symbol: d_course_yoshi_valley_vertex_0x0400BFF0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xa7f2
+
+d_course_yoshi_valley_vertex_0x0400C090:
+  symbol: d_course_yoshi_valley_vertex_0x0400C090
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xa87e
+
+d_course_yoshi_valley_vertex_0x0400C110:
+  symbol: d_course_yoshi_valley_vertex_0x0400C110
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa8ee
+
+d_course_yoshi_valley_vertex_0x0400C170:
+  symbol: d_course_yoshi_valley_vertex_0x0400C170
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xa942
+
+d_course_yoshi_valley_vertex_0x0400C220:
+  symbol: d_course_yoshi_valley_vertex_0x0400C220
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xa9dc
+
+d_course_yoshi_valley_vertex_0x0400C280:
+  symbol: d_course_yoshi_valley_vertex_0x0400C280
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xaa30
+
+d_course_yoshi_valley_vertex_0x0400C2E0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C2E0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xaa84
+
+d_course_yoshi_valley_vertex_0x0400C3B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C3B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xab3a
+
+d_course_yoshi_valley_vertex_0x0400C410:
+  symbol: d_course_yoshi_valley_vertex_0x0400C410
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xab8e
+
+d_course_yoshi_valley_vertex_0x0400C470:
+  symbol: d_course_yoshi_valley_vertex_0x0400C470
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xabe2
+
+d_course_yoshi_valley_vertex_0x0400C4D0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C4D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xac36
+
+d_course_yoshi_valley_vertex_0x0400C510:
+  symbol: d_course_yoshi_valley_vertex_0x0400C510
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xac6e
+
+d_course_yoshi_valley_vertex_0x0400C5A0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C5A0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xacec
+
+d_course_yoshi_valley_vertex_0x0400C650:
+  symbol: d_course_yoshi_valley_vertex_0x0400C650
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xad86
+
+d_course_yoshi_valley_vertex_0x0400C6E0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C6E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xae04
+
+d_course_yoshi_valley_vertex_0x0400C760:
+  symbol: d_course_yoshi_valley_vertex_0x0400C760
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xae74
+
+d_course_yoshi_valley_vertex_0x0400C800:
+  symbol: d_course_yoshi_valley_vertex_0x0400C800
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xaf00
+
+d_course_yoshi_valley_vertex_0x0400C8A0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C8A0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xaf8c
+
+d_course_yoshi_valley_vertex_0x0400C9C0:
+  symbol: d_course_yoshi_valley_vertex_0x0400C9C0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xb088
+
+d_course_yoshi_valley_vertex_0x0400CA30:
+  symbol: d_course_yoshi_valley_vertex_0x0400CA30
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xb0ea
+
+d_course_yoshi_valley_vertex_0x0400CAC0:
+  symbol: d_course_yoshi_valley_vertex_0x0400CAC0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xb168
+
+d_course_yoshi_valley_vertex_0x0400CBE0:
+  symbol: d_course_yoshi_valley_vertex_0x0400CBE0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xb264
+
+d_course_yoshi_valley_vertex_0x0400CD00:
+  symbol: d_course_yoshi_valley_vertex_0x0400CD00
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xb360
+
+d_course_yoshi_valley_vertex_0x0400CD60:
+  symbol: d_course_yoshi_valley_vertex_0x0400CD60
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xb3b4
+
+d_course_yoshi_valley_vertex_0x0400CEF0:
+  symbol: d_course_yoshi_valley_vertex_0x0400CEF0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xb512
+
+d_course_yoshi_valley_vertex_0x0400CF80:
+  symbol: d_course_yoshi_valley_vertex_0x0400CF80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb590
+
+d_course_yoshi_valley_vertex_0x0400D080:
+  symbol: d_course_yoshi_valley_vertex_0x0400D080
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xb670
+
+d_course_yoshi_valley_vertex_0x0400D100:
+  symbol: d_course_yoshi_valley_vertex_0x0400D100
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xb6e0
+
+d_course_yoshi_valley_vertex_0x0400D180:
+  symbol: d_course_yoshi_valley_vertex_0x0400D180
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xb750
+
+d_course_yoshi_valley_vertex_0x0400D250:
+  symbol: d_course_yoshi_valley_vertex_0x0400D250
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xb806
+
+d_course_yoshi_valley_vertex_0x0400D330:
+  symbol: d_course_yoshi_valley_vertex_0x0400D330
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xb8ca
+
+d_course_yoshi_valley_vertex_0x0400D3D0:
+  symbol: d_course_yoshi_valley_vertex_0x0400D3D0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xb956
+
+d_course_yoshi_valley_vertex_0x0400D430:
+  symbol: d_course_yoshi_valley_vertex_0x0400D430
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xb9aa
+
+d_course_yoshi_valley_vertex_0x0400D510:
+  symbol: d_course_yoshi_valley_vertex_0x0400D510
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xba6e
+
+d_course_yoshi_valley_vertex_0x0400D600:
+  symbol: d_course_yoshi_valley_vertex_0x0400D600
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xbb40
+
+d_course_yoshi_valley_vertex_0x0400D6B0:
+  symbol: d_course_yoshi_valley_vertex_0x0400D6B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xbbda
+
+d_course_yoshi_valley_vertex_0x0400D730:
+  symbol: d_course_yoshi_valley_vertex_0x0400D730
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xbc4a
+
+d_course_yoshi_valley_vertex_0x0400D800:
+  symbol: d_course_yoshi_valley_vertex_0x0400D800
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xbd00
+
+d_course_yoshi_valley_vertex_0x0400D870:
+  symbol: d_course_yoshi_valley_vertex_0x0400D870
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbd62
+
+d_course_yoshi_valley_vertex_0x0400D970:
+  symbol: d_course_yoshi_valley_vertex_0x0400D970
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xbe42
+
+d_course_yoshi_valley_vertex_0x0400DAD0:
+  symbol: d_course_yoshi_valley_vertex_0x0400DAD0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbf76
+
+d_course_yoshi_valley_vertex_0x0400DBD0:
+  symbol: d_course_yoshi_valley_vertex_0x0400DBD0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xc056
+
+d_course_yoshi_valley_vertex_0x0400DC40:
+  symbol: d_course_yoshi_valley_vertex_0x0400DC40
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xc0b8
+
+d_course_yoshi_valley_vertex_0x0400DC90:
+  symbol: d_course_yoshi_valley_vertex_0x0400DC90
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xc0fe
+
+d_course_yoshi_valley_vertex_0x0400DD20:
+  symbol: d_course_yoshi_valley_vertex_0x0400DD20
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xc17c
+
+d_course_yoshi_valley_vertex_0x0400DE00:
+  symbol: d_course_yoshi_valley_vertex_0x0400DE00
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc240
+
+d_course_yoshi_valley_vertex_0x0400DE60:
+  symbol: d_course_yoshi_valley_vertex_0x0400DE60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc294
+
+d_course_yoshi_valley_vertex_0x0400DF60:
+  symbol: d_course_yoshi_valley_vertex_0x0400DF60
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xc374
+
+d_course_yoshi_valley_vertex_0x0400DFF0:
+  symbol: d_course_yoshi_valley_vertex_0x0400DFF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc3f2
+
+d_course_yoshi_valley_vertex_0x0400E070:
+  symbol: d_course_yoshi_valley_vertex_0x0400E070
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc462
+
+d_course_yoshi_valley_vertex_0x0400E0F0:
+  symbol: d_course_yoshi_valley_vertex_0x0400E0F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc4d2
+
+d_course_yoshi_valley_vertex_0x0400E150:
+  symbol: d_course_yoshi_valley_vertex_0x0400E150
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xc526
+
+d_course_yoshi_valley_vertex_0x0400E1C0:
+  symbol: d_course_yoshi_valley_vertex_0x0400E1C0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xc588
+
+d_course_yoshi_valley_vertex_0x0400E230:
+  symbol: d_course_yoshi_valley_vertex_0x0400E230
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xc5ea
+
+d_course_yoshi_valley_vertex_0x0400E300:
+  symbol: d_course_yoshi_valley_vertex_0x0400E300
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xc6a0
+
+d_course_yoshi_valley_vertex_0x0400E3F0:
+  symbol: d_course_yoshi_valley_vertex_0x0400E3F0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xc772
+
+d_course_yoshi_valley_vertex_0x0400E460:
+  symbol: d_course_yoshi_valley_vertex_0x0400E460
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xc7d4
+
+d_course_yoshi_valley_vertex_0x0400E500:
+  symbol: d_course_yoshi_valley_vertex_0x0400E500
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc860
+
+d_course_yoshi_valley_vertex_0x0400E580:
+  symbol: d_course_yoshi_valley_vertex_0x0400E580
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xc8d0
+
+d_course_yoshi_valley_vertex_0x0400E610:
+  symbol: d_course_yoshi_valley_vertex_0x0400E610
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xc94e
+
+d_course_yoshi_valley_vertex_0x0400E660:
+  symbol: d_course_yoshi_valley_vertex_0x0400E660
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc994
+
+d_course_yoshi_valley_vertex_0x0400E6C0:
+  symbol: d_course_yoshi_valley_vertex_0x0400E6C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc9e8
+
+d_course_yoshi_valley_vertex_0x0400E720:
+  symbol: d_course_yoshi_valley_vertex_0x0400E720
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xca3c
+
+d_course_yoshi_valley_vertex_0x0400E7A0:
+  symbol: d_course_yoshi_valley_vertex_0x0400E7A0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xcaac

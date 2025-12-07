@@ -2,7 +2,8 @@
 
 #include <libultra/gbi.h>
 #include "CoreMath.h"
-#include <assets/choco_mountain_data.h>
+#include <assets/textures/tracks/choco_mountain/choco_mountain_data.h>
+#include <assets/models/tracks/choco_mountain/choco_mountain_data.h>
 #include "port/interpolation/FrameInterpolation.h"
 #include "port/Game.h"
 
@@ -156,7 +157,7 @@ void AFallingRock::Draw(Camera* camera) {
         return;
     }
 
-    height = is_within_render_distance(camera->pos, Pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
+    height = is_within_render_distance(camera->pos, Pos, camera->rot[1], 400.0f, gCameraFOV[camera - camera1],
                                        4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {

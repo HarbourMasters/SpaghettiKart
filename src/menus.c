@@ -1255,20 +1255,20 @@ void setup_game_mode_selected(void) {
         case GRAND_PRIX:
             gCCSelection = subMenuMode;
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = (subMenuMode == CC_EXTRA) ? 1 : 0;
+            set_mirror_mode((subMenuMode == CC_EXTRA) ? 1 : 0);
             break;
         case VERSUS:
             gCCSelection = subMenuMode;
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = (subMenuMode == CC_EXTRA) ? 1 : 0;
+            set_mirror_mode((subMenuMode == CC_EXTRA) ? 1 : 0);
             break;
         case BATTLE:
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             break;
         case TIME_TRIALS:
             gCCSelection = CC_100;
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             gPlaceItemBoxes = 0;
 
             if ((subMenuMode && subMenuMode) && subMenuMode) {}
@@ -1895,7 +1895,7 @@ void load_menu_states(s32 menuSelection) {
         }
         case 0:
         case START_MENU: {
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             CM_SetCup(GetMushroomCup());
             gCupSelection = MUSHROOM_CUP;
@@ -1916,7 +1916,7 @@ void load_menu_states(s32 menuSelection) {
         case 1:
         case MAIN_MENU: {
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             gCourseMapInit = 0;
             func_800B5F30();
             func_8000F0E0();

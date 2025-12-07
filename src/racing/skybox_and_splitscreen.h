@@ -55,7 +55,6 @@ void render_player_four_3p_4p_screen(void);
 void render_screens(s32 mode, s32 cameraId, s32 playerId);
 void func_802A74BC(void);
 void copy_framebuffer(s32, s32, s32, s32, u16*, u16*);
-void copy_jumbotron_fb_port(s32 ulx, s32 uly, s16 portionToDraw, u16* source, u16* target);
 void func_802A7728(void);
 void func_802A7940(void);
 

@@ -107,8 +107,6 @@ void DrawColumn2(WidgetInfo& info) {
 
     if (ImGui::Button("test", ImVec2(-1, 0))) {
         // Add disconnect logic here
-        cameras[0].playerId = 2;
-        D_800DC5EC->player = &gPlayers[2];
     }
 
     for (size_t i = 0; i < NETWORK_MAX_PLAYERS; i++) {

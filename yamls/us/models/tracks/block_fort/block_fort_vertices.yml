@@ -1,0 +1,315 @@
+:config:
+  segments:
+    - [0x0F, 0x951780]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_block_fort_vertex_0x04000000:
+  symbol: d_course_block_fort_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x0
+
+d_course_block_fort_vertex_0x04000030:
+  symbol: d_course_block_fort_vertex_0x04000030
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2a
+
+d_course_block_fort_vertex_0x04000170:
+  symbol: d_course_block_fort_vertex_0x04000170
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x142
+
+d_course_block_fort_vertex_0x04000270:
+  symbol: d_course_block_fort_vertex_0x04000270
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x222
+
+d_course_block_fort_vertex_0x04000370:
+  symbol: d_course_block_fort_vertex_0x04000370
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x302
+
+d_course_block_fort_vertex_0x04000470:
+  symbol: d_course_block_fort_vertex_0x04000470
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3e2
+
+d_course_block_fort_vertex_0x04000670:
+  symbol: d_course_block_fort_vertex_0x04000670
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5a2
+
+d_course_block_fort_vertex_0x040006F0:
+  symbol: d_course_block_fort_vertex_0x040006F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x612
+
+d_course_block_fort_vertex_0x040008F0:
+  symbol: d_course_block_fort_vertex_0x040008F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7d2
+
+d_course_block_fort_vertex_0x04000930:
+  symbol: d_course_block_fort_vertex_0x04000930
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x80a
+
+d_course_block_fort_vertex_0x04000AB0:
+  symbol: d_course_block_fort_vertex_0x04000AB0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x95a
+
+d_course_block_fort_vertex_0x04000C30:
+  symbol: d_course_block_fort_vertex_0x04000C30
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xaaa
+
+d_course_block_fort_vertex_0x04000D70:
+  symbol: d_course_block_fort_vertex_0x04000D70
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xbc2
+
+d_course_block_fort_vertex_0x04000E90:
+  symbol: d_course_block_fort_vertex_0x04000E90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcbe
+
+d_course_block_fort_vertex_0x04001090:
+  symbol: d_course_block_fort_vertex_0x04001090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe7e
+
+d_course_block_fort_vertex_0x04001290:
+  symbol: d_course_block_fort_vertex_0x04001290
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x103e
+
+d_course_block_fort_vertex_0x04001390:
+  symbol: d_course_block_fort_vertex_0x04001390
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x111e
+
+d_course_block_fort_vertex_0x04001490:
+  symbol: d_course_block_fort_vertex_0x04001490
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11fe
+
+d_course_block_fort_vertex_0x04001590:
+  symbol: d_course_block_fort_vertex_0x04001590
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x12de
+
+d_course_block_fort_vertex_0x04001690:
+  symbol: d_course_block_fort_vertex_0x04001690
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x13be
+
+d_course_block_fort_vertex_0x04001750:
+  symbol: d_course_block_fort_vertex_0x04001750
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1466
+
+d_course_block_fort_vertex_0x04001950:
+  symbol: d_course_block_fort_vertex_0x04001950
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1626
+
+d_course_block_fort_vertex_0x04001B50:
+  symbol: d_course_block_fort_vertex_0x04001B50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17e6
+
+d_course_block_fort_vertex_0x04001D50:
+  symbol: d_course_block_fort_vertex_0x04001D50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x19a6
+
+d_course_block_fort_vertex_0x04001F50:
+  symbol: d_course_block_fort_vertex_0x04001F50
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1b66
+
+d_course_block_fort_vertex_0x04002020:
+  symbol: d_course_block_fort_vertex_0x04002020
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x1c1c
+
+d_course_block_fort_vertex_0x040020D0:
+  symbol: d_course_block_fort_vertex_0x040020D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1cb6
+
+d_course_block_fort_vertex_0x04002190:
+  symbol: d_course_block_fort_vertex_0x04002190
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1d5e
+
+d_course_block_fort_vertex_0x04002390:
+  symbol: d_course_block_fort_vertex_0x04002390
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1f1e
+
+d_course_block_fort_vertex_0x04002590:
+  symbol: d_course_block_fort_vertex_0x04002590
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x20de
+
+d_course_block_fort_vertex_0x04002790:
+  symbol: d_course_block_fort_vertex_0x04002790
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x229e
+
+d_course_block_fort_vertex_0x04002970:
+  symbol: d_course_block_fort_vertex_0x04002970
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x2442
+
+d_course_block_fort_vertex_0x04002AA0:
+  symbol: d_course_block_fort_vertex_0x04002AA0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x254c
+
+d_course_block_fort_vertex_0x04002B50:
+  symbol: d_course_block_fort_vertex_0x04002B50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x25e6
+
+d_course_block_fort_vertex_0x04002C10:
+  symbol: d_course_block_fort_vertex_0x04002C10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x268e
+
+d_course_block_fort_vertex_0x04002DF0:
+  symbol: d_course_block_fort_vertex_0x04002DF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2832
+
+d_course_block_fort_vertex_0x04002FF0:
+  symbol: d_course_block_fort_vertex_0x04002FF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x29f2
+
+d_course_block_fort_vertex_0x040031D0:
+  symbol: d_course_block_fort_vertex_0x040031D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2b96
+
+d_course_block_fort_vertex_0x04003210:
+  symbol: d_course_block_fort_vertex_0x04003210
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2bce
+
+d_course_block_fort_vertex_0x04003410:
+  symbol: d_course_block_fort_vertex_0x04003410
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x2d8e
+
+d_course_block_fort_vertex_0x040034E0:
+  symbol: d_course_block_fort_vertex_0x040034E0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x2e44
+
+d_course_block_fort_vertex_0x04003590:
+  symbol: d_course_block_fort_vertex_0x04003590
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2ede
+
+d_course_block_fort_vertex_0x04003650:
+  symbol: d_course_block_fort_vertex_0x04003650
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2f86
+
+d_course_block_fort_vertex_0x04003850:
+  symbol: d_course_block_fort_vertex_0x04003850
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3146
+
+d_course_block_fort_vertex_0x04003A50:
+  symbol: d_course_block_fort_vertex_0x04003A50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3306
+
+d_course_block_fort_vertex_0x04003C30:
+  symbol: d_course_block_fort_vertex_0x04003C30
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x34aa
+
+d_course_block_fort_vertex_0x04003D30:
+  symbol: d_course_block_fort_vertex_0x04003D30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x358a
+
+d_course_block_fort_vertex_0x04003F30:
+  symbol: d_course_block_fort_vertex_0x04003F30
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x374a
+
+d_course_block_fort_vertex_0x040040A0:
+  symbol: d_course_block_fort_vertex_0x040040A0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x388c
+
+d_course_block_fort_vertex_0x040041B0:
+  symbol: d_course_block_fort_vertex_0x040041B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x397a
+
+d_course_block_fort_vertex_0x040043A0:
+  symbol: d_course_block_fort_vertex_0x040043A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3b2c

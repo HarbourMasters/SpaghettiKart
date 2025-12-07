@@ -1,0 +1,442 @@
+:config:
+  segments:
+    - [0x06, 0x872A00]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_rainbow_road_neon_boo_tlut_list:
+      range: [0x6800, 0x7000]
+      mode: APPEND
+    d_course_rainbow_road_neon_mushroom_tlut_list:
+      range: [0x5400, 0x5C00]
+      mode: APPEND
+    d_course_rainbow_road_neon_mario_tlut_list:
+      range: [0x5E00, 0x6600]
+      mode: APPEND
+    d_course_rainbow_road_static_tluts:
+      range: [0x7200, 0x7E00]
+      mode: APPEND
+    d_course_rainbow_road_static_textures:
+      range: [0xB000, 0x11000]
+      mode: APPEND
+gTLUTRainbowRoadNeonMushroom1:
+  symbol: gTLUTRainbowRoadNeonMushroom1
+  type: texture
+  offset: 0x5400
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMushroom2:
+  symbol: gTLUTRainbowRoadNeonMushroom2
+  type: texture
+  offset: 0x5600
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMushroom3:
+  symbol: gTLUTRainbowRoadNeonMushroom3
+  type: texture
+  offset: 0x5800
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMushroom4:
+  symbol: gTLUTRainbowRoadNeonMushroom4
+  type: texture
+  offset: 0x5A00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMushroom5:
+  symbol: gTLUTRainbowRoadNeonMushroom5
+  type: texture
+  offset: 0x5C00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMario1:
+  symbol: gTLUTRainbowRoadNeonMario1
+  type: texture
+  offset: 0x5E00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMario2:
+  symbol: gTLUTRainbowRoadNeonMario2
+  type: texture
+  offset: 0x6000
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMario3:
+  symbol: gTLUTRainbowRoadNeonMario3
+  type: texture
+  offset: 0x6200
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMario4:
+  symbol: gTLUTRainbowRoadNeonMario4
+  type: texture
+  offset: 0x6400
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonMario5:
+  symbol: gTLUTRainbowRoadNeonMario5
+  type: texture
+  offset: 0x6600
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBoo1:
+  symbol: gTLUTRainbowRoadNeonBoo1
+  type: texture
+  offset: 0x6800
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBoo2:
+  symbol: gTLUTRainbowRoadNeonBoo2
+  type: texture
+  offset: 0x6A00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBoo3:
+  symbol: gTLUTRainbowRoadNeonBoo3
+  type: texture
+  offset: 0x6C00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBoo4:
+  symbol: gTLUTRainbowRoadNeonBoo4
+  type: texture
+  offset: 0x6E00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBoo5:
+  symbol: gTLUTRainbowRoadNeonBoo5
+  type: texture
+  offset: 0x7000
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonPeach:
+  symbol: gTLUTRainbowRoadNeonPeach
+  type: texture
+  offset: 0x7200
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonLuigi:
+  symbol: gTLUTRainbowRoadNeonLuigi
+  type: texture
+  offset: 0x7400
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonDonkeyKong:
+  symbol: gTLUTRainbowRoadNeonDonkeyKong
+  type: texture
+  offset: 0x7600
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonYoshi:
+  symbol: gTLUTRainbowRoadNeonYoshi
+  type: texture
+  offset: 0x7800
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonBowser:
+  symbol: gTLUTRainbowRoadNeonBowser
+  type: texture
+  offset: 0x7A00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonWario:
+  symbol: gTLUTRainbowRoadNeonWario
+  type: texture
+  offset: 0x7C00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+gTLUTRainbowRoadNeonToad:
+  symbol: gTLUTRainbowRoadNeonToad
+  type: texture
+  offset: 0x7E00
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+d_course_rainbow_road_neon_mushroom1:
+  symbol: d_course_rainbow_road_neon_mushroom1
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom1
+d_course_rainbow_road_neon_mushroom2:
+  symbol: d_course_rainbow_road_neon_mushroom2
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom2
+d_course_rainbow_road_neon_mushroom3:
+  symbol: d_course_rainbow_road_neon_mushroom3
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom3
+d_course_rainbow_road_neon_mushroom4:
+  symbol: d_course_rainbow_road_neon_mushroom4
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom4
+d_course_rainbow_road_neon_mushroom5:
+  symbol: d_course_rainbow_road_neon_mushroom5
+  type: texture
+  offset: 0x8000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMushroom5
+d_course_rainbow_road_neon_mario1:
+  symbol: d_course_rainbow_road_neon_mario1
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario1
+d_course_rainbow_road_neon_mario2:
+  symbol: d_course_rainbow_road_neon_mario2
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario2
+d_course_rainbow_road_neon_mario3:
+  symbol: d_course_rainbow_road_neon_mario3
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario3
+d_course_rainbow_road_neon_mario4:
+  symbol: d_course_rainbow_road_neon_mario4
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario4
+d_course_rainbow_road_neon_mario5:
+  symbol: d_course_rainbow_road_neon_mario5
+  type: texture
+  offset: 0x9000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonMario5
+d_course_rainbow_road_neon_boo1:
+  symbol: d_course_rainbow_road_neon_boo1
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo1
+d_course_rainbow_road_neon_boo2:
+  symbol: d_course_rainbow_road_neon_boo2
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo2
+d_course_rainbow_road_neon_boo3:
+  symbol: d_course_rainbow_road_neon_boo3
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo3
+d_course_rainbow_road_neon_boo4:
+  symbol: d_course_rainbow_road_neon_boo4
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo4
+d_course_rainbow_road_neon_boo5:
+  symbol: d_course_rainbow_road_neon_boo5
+  type: texture
+  offset: 0xA000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBoo5
+gTextureRainbowRoadNeonPeach:
+  symbol: gTextureRainbowRoadNeonPeach
+  type: texture
+  offset: 0xB000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonPeach
+gTextureRainbowRoadNeonLuigi:
+  symbol: gTextureRainbowRoadNeonLuigi
+  type: texture
+  offset: 0xC000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonLuigi
+gTextureRainbowRoadNeonDonkeyKong:
+  symbol: gTextureRainbowRoadNeonDonkeyKong
+  type: texture
+  offset: 0xD000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonDonkeyKong
+gTextureRainbowRoadNeonYoshi:
+  symbol: gTextureRainbowRoadNeonYoshi
+  type: texture
+  offset: 0xE000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonYoshi
+gTextureRainbowRoadNeonBowser:
+  symbol: gTextureRainbowRoadNeonBowser
+  type: texture
+  offset: 0xF000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonBowser
+gTextureRainbowRoadNeonWario:
+  symbol: gTextureRainbowRoadNeonWario
+  type: texture
+  offset: 0x10000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonWario
+gTextureRainbowRoadNeonToad:
+  symbol: gTextureRainbowRoadNeonToad
+  type: texture
+  offset: 0x11000
+  width: 64
+  height: 64
+  format: ci8
+  ctype: u8
+  tlut_symbol: gTLUTRainbowRoadNeonToad
+d_course_rainbow_road_sphere:
+  symbol: d_course_rainbow_road_sphere
+  type: texture
+  offset: 0x12028
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_rainbow_road_reflection_map_metal:
+  symbol: d_course_rainbow_road_reflection_map_metal
+  type: texture
+  offset: 0x13028
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_rainbow_road_reflection_map_gold:
+  symbol: d_course_rainbow_road_reflection_map_gold
+  type: texture
+  offset: 0x13828
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_rainbow_road_chain_chomp_tongue:
+  symbol: d_course_rainbow_road_chain_chomp_tongue
+  type: texture
+  offset: 0x14028
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_rainbow_road_chain_chomp_eye:
+  symbol: d_course_rainbow_road_chain_chomp_eye
+  type: texture
+  offset: 0x14828
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

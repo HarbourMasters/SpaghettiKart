@@ -1,0 +1,17 @@
+:config:
+  segments:
+    - [0x06, 0x8858A0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_double_deck_item_box_spawns:
+  symbol: d_course_double_deck_item_box_spawns
+  type: mk64:spawn_data
+  count: 43
+  offset: 0x28

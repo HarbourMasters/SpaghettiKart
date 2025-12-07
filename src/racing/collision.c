@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include <libultraship.h>
 #include <macros.h>
 #include <libultra/gbi.h>
@@ -10,8 +11,11 @@
 #include "math_util.h"
 #include "code_800029B0.h"
 #include <defines.h>
+#include "port/Engine.h"
 #include "port/Game.h"
+#include "resourcebridge.h"
 #include <stdio.h>
+#include "RaceManager.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -1535,6 +1539,8 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
     s16 maxY;
     s16 minZ;
 
+    add_triangle_to_collision_mesh(vtx1, vtx2, vtx3, &vtx1, &vtx2, &vtx3);
+
     triangle->vtx1 = vtx1;
     triangle->vtx2 = vtx2;
     triangle->vtx3 = vtx3;
@@ -1961,6 +1967,9 @@ u32 numTimes = 0;
  */
 bool is_cull_box(const char* filePath);
 void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
+    if (GameEngine_OTRSigCheck((char*)addr)) {
+        addr = LOAD_ASSET(addr);
+    }
     int8_t opcode;
     uintptr_t lo;
     uintptr_t hi;
@@ -1974,8 +1983,6 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
     Gfx* gfx = (Gfx*) addr;
     D_8015F6FA = 0;
     D_8015F6FC = 0;
-
-    // u8 *orig = segmented_gfx_to_virtual(0x07000000);
 
     // printf("\n\nORIG:\n");
     // for (size_t i = 0; i < 100; i++) {
@@ -1997,12 +2004,21 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 // G_DL's hi contains an addr to another DL.
                 generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
                 break;
+            case G_DL_OTR_HASH:
+                gfx++;
+                uint64_t hash = gfx->words.w0 << 32 | gfx->words.w1;
+                // printf("name of dl hash: 0x%llX\n", hash);
+                // printf("name of dl: %s\n", ResourceGetNameByCrc(hash));
+                generate_collision_mesh(ResourceGetDataByCrc(hash), surfaceType, sectionId);
+                break;
             case G_DL_OTR_FILEPATH:
                 generate_collision_mesh(ResourceGetDataByName((const char*)hi), surfaceType, sectionId);
                 break;
-            case G_VTX:
-                set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
+            case G_VTX:{
+                uintptr_t ptr = hi;
+                set_vtx_buffer((uintptr_t) ptr, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
                 break;
+            }
             case G_VTX_OTR_FILEPATH: {
                 const char* filePath = (const char*)hi;
                 // Fast64 outputs garbage data. Lets skip that...
@@ -2019,6 +2035,18 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 set_vtx_buffer(vtx, count, index);
                 break;
             }
+            case G_VTX_OTR_HASH:
+                gfx++;
+                hash = gfx->words.w0 << 32 | gfx->words.w1;
+                // printf("name of vtx hash: 0x%lX\n", hash);
+                // printf("name of vtx: %s\n", ResourceGetNameByCrc(hash));
+                int numVerts = (lo >> 12) & ((1<<8)-1);
+                int bufferIndex = ((lo >> 1) & ((1<<7)-1));
+                bufferIndex = numVerts - bufferIndex; 
+                // printf("numVerts: %d\n", numVerts);
+                // printf("bufferIndex: %d\n", bufferIndex);
+                set_vtx_buffer((uintptr_t) ResourceGetDataByCrc(hash), numVerts, bufferIndex);
+                break;
             case G_TRI1:
                 D_8015F58C += 1;
                 set_vtx_from_triangle(hi, surfaceType, sectionId);
@@ -2045,6 +2073,12 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 break;
             case G_ENDDL:
                 return; // end of loop
+            case G_MARKER:
+            case G_MTX_OTR:
+            case G_SETTIMG_OTR_HASH:
+                gfx++;
+                i++;
+                break;
         }
 
 
@@ -2093,6 +2127,9 @@ bool is_cull_box(const char* filePath) {
  */
 void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
     Gfx* gfx = (Gfx*) addr;
+    if (GameEngine_OTRSigCheck(gfx)) {
+        gfx = (Gfx*) ResourceGetDataByName(gfx);
+    }
     u32 opcode;
 
     uls = (uls << 12) & 0xFFF000;
@@ -2132,7 +2169,10 @@ void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 al
  * Recursive search for vertices and set their colour values.
  */
 void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 blue) {
-    Gfx* gfx = (Gfx*) displayList;
+    if (GameEngine_OTRSigCheck(displayList)) {
+        displayList = (Gfx*) ResourceGetDataByName(displayList);
+    }
+    Gfx* gfx = displayList;
     uintptr_t lo;
     uintptr_t hi;
     s32 opcode;
@@ -2145,9 +2185,39 @@ void find_vtx_and_set_colours(Gfx* displayList, s8 alpha, u8 red, u8 green, u8 b
             break;
         } else if (opcode == (G_DL << 24)) {
             find_vtx_and_set_colours((Gfx*) hi, alpha, red, green, blue);
+        } else if (opcode == (G_DL_OTR_HASH << 24)) {
+            gfx++;
+            uint64_t hash = gfx->words.w0 << 32 | gfx->words.w1;
+            find_vtx_and_set_colours(ResourceGetDataByCrc(hash), alpha, red, green, blue);
+        } else if (opcode == (G_DL_OTR_FILEPATH << 24)) {
+            find_vtx_and_set_colours(ResourceGetDataByName((const char*)hi), alpha, red, green, blue);
         } else if (opcode == (G_VTX << 24)) {
             // G_VTX contains an addr hi
             set_vertex_colours(hi, (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1, alpha, red, green, blue);
+        } else if (opcode == (G_VTX_OTR_FILEPATH << 24)) {
+            const char* filePath = (const char*)hi;
+            // Fast64 outputs garbage data. Lets skip that...
+            if (is_cull_box(filePath)) {
+                gfx++;
+                continue;
+            }
+            gfx++;
+            size_t count = gfx->words.w0;
+            size_t index = (gfx->words.w1 >> 16);
+            size_t vtxDataOff = gfx->words.w1 & 0xFFFF;
+            Vtx* vtx = ( (Vtx*)ResourceGetDataByName(filePath) ) + vtxDataOff;
+
+            set_vertex_colours((uintptr_t)vtx, count, index, alpha, red, green, blue);
+        } else if (opcode == (G_VTX_OTR_HASH << 24)) {
+            gfx++;
+            uint64_t hash = gfx->words.w0 << 32 | gfx->words.w1;
+            int numVerts = (lo >> 12) & ((1<<8)-1);
+            int bufferIndex = ((lo >> 1) & ((1<<7)-1));
+            bufferIndex = numVerts - bufferIndex; 
+            set_vertex_colours((uintptr_t) ResourceGetDataByCrc(hash), numVerts, bufferIndex, alpha, red, green, blue);
+        }
+        if (opcode == G_MARKER || opcode == G_MTX_OTR || opcode == G_SETTIMG_OTR_HASH) {
+            gfx++;
         }
         gfx++;
     }

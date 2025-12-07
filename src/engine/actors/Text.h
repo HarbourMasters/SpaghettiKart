@@ -119,7 +119,6 @@ public:
     void FollowPlayer();
 
     void SetText(std::string text);
-
     std::string ValidateString(const std::string_view& text);
     void Refresh();
     void Print3D(char* text, s32 tracking, s32 mode);

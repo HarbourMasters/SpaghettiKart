@@ -1,0 +1,1144 @@
+:config:
+  segments:
+    - [0x06, 0x82DF40]
+    - [0x07, 0x800000]
+  external_files:
+    - "yamls/us/textures/tracks/bowsers_castle/bowsers_castle_data.yml"
+  manual_segments:
+    - [0x03009000, "textures/other_textures/shrub"]
+  # Segment 5
+    - [0x05000000, "textures/other_textures/texture_64313C"]
+    - [0x05000800, "textures/other_textures/texture_6528DC"]
+    - [0x05001000, "textures/other_textures/texture_66ED38"]
+    - [0x05001800, "textures/other_textures/texture_676C6C"]
+    - [0x05002000, "textures/other_textures/texture_676EA8"]
+    - [0x05002800, "textures/other_textures/texture_679D34"]
+    - [0x05003000, "textures/other_textures/grass_6"]
+    - [0x05003800, "textures/other_textures/texture_6522E0"]
+    - [0x05004000, "textures/other_textures/texture_651F40"]
+    - [0x05004800, "textures/other_textures/roof_tile"]
+    - [0x05005000, "textures/other_textures/sign_bowser_0"]
+    - [0x05006000, "textures/other_textures/sign_bowser_1"]
+    - [0x05007000, "textures/other_textures/texture_66ABA4"]
+    - [0x05007800, "textures/other_textures/texture_66EBF0"]
+    - [0x05008000, "textures/other_textures/texture_6733CC"]
+    - [0x05008800, "textures/other_textures/texture_673118"]
+    - [0x05009000, "textures/other_textures/texture_673FF8"]
+    - [0x05009800, "textures/other_textures/texture_674B28"]
+    - [0x0500A000, "textures/other_textures/sign_green_arrow"]
+    - [0x0500B000, "textures/other_textures/texture_68D834"]
+    - [0x0500B800, "textures/other_textures/texture_676D7C"]
+    - [0x0500C000, "textures/other_textures/texture_67ADF0"]
+    - [0x0500C800, "textures/other_textures/texture_67EFEC"]
+    - [0x0500D000, "textures/other_textures/texture_653DB0"]
+    - [0x0500D800, "textures/other_textures/texture_66CA98"]
+    - [0x0500E000, "textures/other_textures/texture_673990"]
+    - [0x0500E800, "textures/other_textures/texture_67A370"]
+    - [0x0500F000, "textures/other_textures/texture_67A91C"]
+  # Segment 4
+    - [0x4000000, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000000"]
+    - [0x4000040, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000040"]
+    - [0x4000080, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000080"]
+    - [0x40000c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040000C0"]
+    - [0x4000140, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000140"]
+    - [0x4000180, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000180"]
+    - [0x40001c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040001C0"]
+    - [0x40003c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040003C0"]
+    - [0x4000420, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000420"]
+    - [0x4000480, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000480"]
+    - [0x4000680, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000680"]
+    - [0x4000860, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000860"]
+    - [0x4000920, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000920"]
+    - [0x4000b00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000B00"]
+    - [0x4000d00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000D00"]
+    - [0x4000f00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04000F00"]
+    - [0x4001100, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001100"]
+    - [0x40012e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040012E0"]
+    - [0x40014c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040014C0"]
+    - [0x4001630, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001630"]
+    - [0x4001820, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001820"]
+    - [0x4001a00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001A00"]
+    - [0x4001be0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001BE0"]
+    - [0x4001de0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001DE0"]
+    - [0x4001ee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04001EE0"]
+    - [0x4002050, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002050"]
+    - [0x4002150, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002150"]
+    - [0x4002250, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002250"]
+    - [0x40022f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040022F0"]
+    - [0x40024f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040024F0"]
+    - [0x4002670, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002670"]
+    - [0x4002760, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002760"]
+    - [0x4002960, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002960"]
+    - [0x4002b50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002B50"]
+    - [0x4002ce0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002CE0"]
+    - [0x4002ec0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04002EC0"]
+    - [0x4003000, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04003000"]
+    - [0x4003200, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04003200"]
+    - [0x40033e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040033E0"]
+    - [0x40035d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040035D0"]
+    - [0x40037c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040037C0"]
+    - [0x40039c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040039C0"]
+    - [0x4003bc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04003BC0"]
+    - [0x4003dc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04003DC0"]
+    - [0x4003fc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04003FC0"]
+    - [0x40041c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040041C0"]
+    - [0x40043c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040043C0"]
+    - [0x4004410, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004410"]
+    - [0x4004600, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004600"]
+    - [0x4004800, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004800"]
+    - [0x40049f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040049F0"]
+    - [0x4004a30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004A30"]
+    - [0x4004a80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004A80"]
+    - [0x4004ac0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004AC0"]
+    - [0x4004b10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004B10"]
+    - [0x4004b60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004B60"]
+    - [0x4004ba0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004BA0"]
+    - [0x4004bf0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004BF0"]
+    - [0x4004c40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004C40"]
+    - [0x4004c80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004C80"]
+    - [0x4004cd0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004CD0"]
+    - [0x4004d20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004D20"]
+    - [0x4004d60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004D60"]
+    - [0x4004db0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004DB0"]
+    - [0x4004e00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004E00"]
+    - [0x4004e40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004E40"]
+    - [0x4004e90, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004E90"]
+    - [0x4004ee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004EE0"]
+    - [0x4004f20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004F20"]
+    - [0x4004f70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004F70"]
+    - [0x4004fc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04004FC0"]
+    - [0x4005000, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005000"]
+    - [0x4005050, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005050"]
+    - [0x40050a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040050A0"]
+    - [0x40050e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040050E0"]
+    - [0x4005130, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005130"]
+    - [0x4005180, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005180"]
+    - [0x40051c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040051C0"]
+    - [0x4005210, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005210"]
+    - [0x4005260, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005260"]
+    - [0x40052a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040052A0"]
+    - [0x40052f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040052F0"]
+    - [0x4005340, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005340"]
+    - [0x4005380, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005380"]
+    - [0x40053d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040053D0"]
+    - [0x4005420, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005420"]
+    - [0x4005460, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005460"]
+    - [0x40054b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040054B0"]
+    - [0x40056b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040056B0"]
+    - [0x40058b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040058B0"]
+    - [0x4005970, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005970"]
+    - [0x4005b70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005B70"]
+    - [0x4005d50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005D50"]
+    - [0x4005e80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005E80"]
+    - [0x4005fd0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04005FD0"]
+    - [0x4006010, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006010"]
+    - [0x4006200, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006200"]
+    - [0x40062b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040062B0"]
+    - [0x4006370, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006370"]
+    - [0x4006520, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006520"]
+    - [0x40065d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040065D0"]
+    - [0x4006650, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006650"]
+    - [0x4006750, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006750"]
+    - [0x40067b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040067B0"]
+    - [0x4006920, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006920"]
+    - [0x4006a10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006A10"]
+    - [0x4006b70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006B70"]
+    - [0x4006d40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006D40"]
+    - [0x4006e60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006E60"]
+    - [0x4006f20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04006F20"]
+    - [0x4007060, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007060"]
+    - [0x4007180, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007180"]
+    - [0x40071b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040071B0"]
+    - [0x4007270, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007270"]
+    - [0x4007410, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007410"]
+    - [0x4007490, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007490"]
+    - [0x4007690, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007690"]
+    - [0x4007890, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007890"]
+    - [0x4007960, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007960"]
+    - [0x4007b40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007B40"]
+    - [0x4007d20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007D20"]
+    - [0x4007f00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04007F00"]
+    - [0x40080e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040080E0"]
+    - [0x40082c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040082C0"]
+    - [0x40084a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040084A0"]
+    - [0x40086a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040086A0"]
+    - [0x4008880, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04008880"]
+    - [0x4008a60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04008A60"]
+    - [0x4008c40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04008C40"]
+    - [0x4008e20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04008E20"]
+    - [0x4009000, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009000"]
+    - [0x40091e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040091E0"]
+    - [0x40093c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040093C0"]
+    - [0x40095a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040095A0"]
+    - [0x4009780, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009780"]
+    - [0x4009960, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009960"]
+    - [0x4009b50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009B50"]
+    - [0x4009d30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009D30"]
+    - [0x4009f10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04009F10"]
+    - [0x400a0f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A0F0"]
+    - [0x400a2d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A2D0"]
+    - [0x400a300, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A300"]
+    - [0x400a4e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A4E0"]
+    - [0x400a630, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A630"]
+    - [0x400a790, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A790"]
+    - [0x400a8d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400A8D0"]
+    - [0x400aad0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400AAD0"]
+    - [0x400acd0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400ACD0"]
+    - [0x400aeb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400AEB0"]
+    - [0x400af30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400AF30"]
+    - [0x400b130, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B130"]
+    - [0x400b230, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B230"]
+    - [0x400b370, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B370"]
+    - [0x400b570, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B570"]
+    - [0x400b770, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B770"]
+    - [0x400b970, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400B970"]
+    - [0x400bb10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400BB10"]
+    - [0x400bd10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400BD10"]
+    - [0x400bea0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400BEA0"]
+    - [0x400c0a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C0A0"]
+    - [0x400c2a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C2A0"]
+    - [0x400c360, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C360"]
+    - [0x400c560, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C560"]
+    - [0x400c750, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C750"]
+    - [0x400c940, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400C940"]
+    - [0x400cb40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400CB40"]
+    - [0x400cbf0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400CBF0"]
+    - [0x400ccf0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400CCF0"]
+    - [0x400cdb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400CDB0"]
+    - [0x400cfb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400CFB0"]
+    - [0x400d100, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D100"]
+    - [0x400d300, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D300"]
+    - [0x400d500, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D500"]
+    - [0x400d6c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D6C0"]
+    - [0x400d8a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D8A0"]
+    - [0x400d900, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400D900"]
+    - [0x400db00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400DB00"]
+    - [0x400dd00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400DD00"]
+    - [0x400df00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400DF00"]
+    - [0x400e0e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E0E0"]
+    - [0x400e2d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E2D0"]
+    - [0x400e3a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E3A0"]
+    - [0x400e590, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E590"]
+    - [0x400e690, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E690"]
+    - [0x400e890, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E890"]
+    - [0x400e8c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400E8C0"]
+    - [0x400eac0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400EAC0"]
+    - [0x400ecc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400ECC0"]
+    - [0x400eec0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400EEC0"]
+    - [0x400ef00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400EF00"]
+    - [0x400f0e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F0E0"]
+    - [0x400f260, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F260"]
+    - [0x400f360, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F360"]
+    - [0x400f4a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F4A0"]
+    - [0x400f6a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F6A0"]
+    - [0x400f760, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F760"]
+    - [0x400f940, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400F940"]
+    - [0x400fb20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400FB20"]
+    - [0x400fd20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400FD20"]
+    - [0x400ff00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0400FF00"]
+    - [0x40100e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040100E0"]
+    - [0x40102c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040102C0"]
+    - [0x40104a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040104A0"]
+    - [0x4010500, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04010500"]
+    - [0x4010700, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04010700"]
+    - [0x40108e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040108E0"]
+    - [0x4010ac0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04010AC0"]
+    - [0x4010ca0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04010CA0"]
+    - [0x4010ea0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04010EA0"]
+    - [0x4011080, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011080"]
+    - [0x4011260, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011260"]
+    - [0x4011460, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011460"]
+    - [0x4011660, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011660"]
+    - [0x4011860, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011860"]
+    - [0x4011a50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011A50"]
+    - [0x4011c30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011C30"]
+    - [0x4011e30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011E30"]
+    - [0x4011e60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04011E60"]
+    - [0x4012060, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012060"]
+    - [0x4012240, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012240"]
+    - [0x4012420, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012420"]
+    - [0x4012600, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012600"]
+    - [0x4012800, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012800"]
+    - [0x40129e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040129E0"]
+    - [0x4012bc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012BC0"]
+    - [0x4012db0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012DB0"]
+    - [0x4012fb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04012FB0"]
+    - [0x4013190, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013190"]
+    - [0x4013380, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013380"]
+    - [0x4013570, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013570"]
+    - [0x4013770, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013770"]
+    - [0x40137d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040137D0"]
+    - [0x40139b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040139B0"]
+    - [0x4013b90, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013B90"]
+    - [0x4013d90, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013D90"]
+    - [0x4013f70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04013F70"]
+    - [0x4014150, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014150"]
+    - [0x4014330, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014330"]
+    - [0x4014510, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014510"]
+    - [0x4014710, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014710"]
+    - [0x40148f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040148F0"]
+    - [0x4014af0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014AF0"]
+    - [0x4014cd0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014CD0"]
+    - [0x4014eb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04014EB0"]
+    - [0x40150b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040150B0"]
+    - [0x4015110, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04015110"]
+    - [0x40152f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040152F0"]
+    - [0x40154d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040154D0"]
+    - [0x40156b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040156B0"]
+    - [0x4015890, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04015890"]
+    - [0x4015a80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04015A80"]
+    - [0x4015c60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04015C60"]
+    - [0x4015e40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04015E40"]
+    - [0x4016040, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016040"]
+    - [0x4016220, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016220"]
+    - [0x4016420, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016420"]
+    - [0x4016610, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016610"]
+    - [0x4016800, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016800"]
+    - [0x40169e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040169E0"]
+    - [0x4016aa0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016AA0"]
+    - [0x4016c20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016C20"]
+    - [0x4016de0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016DE0"]
+    - [0x4016ee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016EE0"]
+    - [0x4016f60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016F60"]
+    - [0x4016fe0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04016FE0"]
+    - [0x4017060, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017060"]
+    - [0x40170a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040170A0"]
+    - [0x40171c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040171C0"]
+    - [0x4017310, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017310"]
+    - [0x4017480, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017480"]
+    - [0x4017580, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017580"]
+    - [0x4017710, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017710"]
+    - [0x40177d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040177D0"]
+    - [0x4017810, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017810"]
+    - [0x4017880, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017880"]
+    - [0x4017a80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017A80"]
+    - [0x4017ab0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017AB0"]
+    - [0x4017b70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017B70"]
+    - [0x4017d50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017D50"]
+    - [0x4017ee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017EE0"]
+    - [0x4017f20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017F20"]
+    - [0x4017f60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017F60"]
+    - [0x4017fe0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04017FE0"]
+    - [0x4018120, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018120"]
+    - [0x4018310, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018310"]
+    - [0x4018370, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018370"]
+    - [0x40183f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040183F0"]
+    - [0x40184f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040184F0"]
+    - [0x40185b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040185B0"]
+    - [0x40187b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040187B0"]
+    - [0x4018870, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018870"]
+    - [0x4018a60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018A60"]
+    - [0x4018c60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018C60"]
+    - [0x4018e60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04018E60"]
+    - [0x4019050, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019050"]
+    - [0x4019250, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019250"]
+    - [0x40192c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040192C0"]
+    - [0x40194a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040194A0"]
+    - [0x40196a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040196A0"]
+    - [0x4019820, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019820"]
+    - [0x4019970, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019970"]
+    - [0x4019a70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019A70"]
+    - [0x4019b70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019B70"]
+    - [0x4019cb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019CB0"]
+    - [0x4019ea0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019EA0"]
+    - [0x4019ee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04019EE0"]
+    - [0x401a0c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A0C0"]
+    - [0x401a100, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A100"]
+    - [0x401a140, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A140"]
+    - [0x401a190, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A190"]
+    - [0x401a360, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A360"]
+    - [0x401a3b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A3B0"]
+    - [0x401a580, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A580"]
+    - [0x401a5d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A5D0"]
+    - [0x401a7a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A7A0"]
+    - [0x401a850, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A850"]
+    - [0x401a950, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401A950"]
+    - [0x401ab50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401AB50"]
+    - [0x401ad50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401AD50"]
+    - [0x401af50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401AF50"]
+    - [0x401b150, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B150"]
+    - [0x401b330, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B330"]
+    - [0x401b510, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B510"]
+    - [0x401b710, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B710"]
+    - [0x401b7d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B7D0"]
+    - [0x401b860, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B860"]
+    - [0x401b9a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401B9A0"]
+    - [0x401bb20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401BB20"]
+    - [0x401bbe0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401BBE0"]
+    - [0x401bde0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401BDE0"]
+    - [0x401bfe0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401BFE0"]
+    - [0x401c0e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C0E0"]
+    - [0x401c2e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C2E0"]
+    - [0x401c460, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C460"]
+    - [0x401c640, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C640"]
+    - [0x401c720, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C720"]
+    - [0x401c900, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401C900"]
+    - [0x401ca80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401CA80"]
+    - [0x401cc00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401CC00"]
+    - [0x401ce00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401CE00"]
+    - [0x401ce80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401CE80"]
+    - [0x401d060, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D060"]
+    - [0x401d160, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D160"]
+    - [0x401d1a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D1A0"]
+    - [0x401d3a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D3A0"]
+    - [0x401d580, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D580"]
+    - [0x401d6a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D6A0"]
+    - [0x401d8a0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401D8A0"]
+    - [0x401da40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DA40"]
+    - [0x401dc40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DC40"]
+    - [0x401dd10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DD10"]
+    - [0x401ddc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DDC0"]
+    - [0x401de40, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DE40"]
+    - [0x401dec0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DEC0"]
+    - [0x401dfc0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401DFC0"]
+    - [0x401e080, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E080"]
+    - [0x401e110, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E110"]
+    - [0x401e290, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E290"]
+    - [0x401e350, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E350"]
+    - [0x401e3d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E3D0"]
+    - [0x401e410, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E410"]
+    - [0x401e4d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E4D0"]
+    - [0x401e550, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E550"]
+    - [0x401e630, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E630"]
+    - [0x401e770, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E770"]
+    - [0x401e870, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E870"]
+    - [0x401e8f0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E8F0"]
+    - [0x401e9b0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401E9B0"]
+    - [0x401eab0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EAB0"]
+    - [0x401ebb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EBB0"]
+    - [0x401ec70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EC70"]
+    - [0x401ed20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401ED20"]
+    - [0x401eda0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EDA0"]
+    - [0x401ee00, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EE00"]
+    - [0x401ee80, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EE80"]
+    - [0x401eee0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EEE0"]
+    - [0x401ef60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EF60"]
+    - [0x401efa0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EFA0"]
+    - [0x401efe0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401EFE0"]
+    - [0x401f060, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F060"]
+    - [0x401f0e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F0E0"]
+    - [0x401f2e0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F2E0"]
+    - [0x401f4c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F4C0"]
+    - [0x401f6c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F6C0"]
+    - [0x401f8c0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401F8C0"]
+    - [0x401fac0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401FAC0"]
+    - [0x401fca0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401FCA0"]
+    - [0x401fe90, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x0401FE90"]
+    - [0x4020090, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020090"]
+    - [0x4020290, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020290"]
+    - [0x4020390, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020390"]
+    - [0x4020580, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020580"]
+    - [0x4020770, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020770"]
+    - [0x4020970, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020970"]
+    - [0x4020b60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020B60"]
+    - [0x4020d60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020D60"]
+    - [0x4020f60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04020F60"]
+    - [0x4021160, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021160"]
+    - [0x4021350, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021350"]
+    - [0x4021550, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021550"]
+    - [0x4021750, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021750"]
+    - [0x4021950, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021950"]
+    - [0x4021b50, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021B50"]
+    - [0x4021c10, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021C10"]
+    - [0x4021d70, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021D70"]
+    - [0x4021ed0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04021ED0"]
+    - [0x4022080, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022080"]
+    - [0x4022220, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022220"]
+    - [0x4022400, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022400"]
+    - [0x4022460, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022460"]
+    - [0x4022660, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022660"]
+    - [0x4022760, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022760"]
+    - [0x4022960, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022960"]
+    - [0x4022b60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022B60"]
+    - [0x4022d60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022D60"]
+    - [0x4022f60, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04022F60"]
+    - [0x4023160, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023160"]
+    - [0x4023350, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023350"]
+    - [0x4023450, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023450"]
+    - [0x4023610, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023610"]
+    - [0x4023710, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023710"]
+    - [0x40238d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040238D0"]
+    - [0x40239d0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x040239D0"]
+    - [0x4023bb0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023BB0"]
+    - [0x4023da0, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023DA0"]
+    - [0x4023f90, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04023F90"]
+    - [0x4024180, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024180"]
+    - [0x4024370, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024370"]
+    - [0x4024560, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024560"]
+    - [0x4024750, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024750"]
+    - [0x4024930, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024930"]
+    - [0x4024b30, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024B30"]
+    - [0x4024d20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024D20"]
+    - [0x4024f20, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04024F20"]
+    - [0x4025070, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04025070"]
+    - [0x4025250, "models/tracks/bowsers_castle/bowsers_castle_vertices/d_course_bowsers_castle_vertex_0x04025250"]
+ # Segment 7
+    - [0x7000000, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_0"]
+    - [0x7000060, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_60"]
+    - [0x70000C0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_C0"]
+    - [0x7000120, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_120"]
+    - [0x7000188, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_188"]
+    - [0x70001E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1E8"]
+    - [0x7000248, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_248"]
+    - [0x7000280, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_280"]
+    - [0x7000328, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_328"]
+    - [0x7000338, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_338"]
+    - [0x70003B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3B0"]
+    - [0x70003C0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3C0"]
+    - [0x7000428, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_428"]
+    - [0x7000438, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_438"]
+    - [0x7000460, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_460"]
+    - [0x7000470, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_470"]
+    - [0x7000A10, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_A10"]
+    - [0x7000A20, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_A20"]
+    - [0x7000B80, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_B80"]
+    - [0x7000D38, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_D38"]
+    - [0x70011F8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_11F8"]
+    - [0x7001218, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1218"]
+    - [0x7001350, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1350"]
+    - [0x7001360, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1360"]
+    - [0x7001448, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1448"]
+    - [0x7001530, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1530"]
+    - [0x7001618, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1618"]
+    - [0x7001700, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1700"]
+    - [0x70017E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_17E8"]
+    - [0x70018D0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_18D0"]
+    - [0x70019B8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_19B8"]
+    - [0x7001AA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1AA0"]
+    - [0x7001B88, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1B88"]
+    - [0x7001C70, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1C70"]
+    - [0x7001D58, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1D58"]
+    - [0x7001E40, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1E40"]
+    - [0x7001EA8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1EA8"]
+    - [0x7001FA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_1FA0"]
+    - [0x7002098, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2098"]
+    - [0x70020B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_20B0"]
+    - [0x7002128, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2128"]
+    - [0x7002188, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2188"]
+    - [0x7002228, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2228"]
+    - [0x7002290, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2290"]
+    - [0x7002310, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2310"]
+    - [0x7002378, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2378"]
+    - [0x70023E0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_23E0"]
+    - [0x7002450, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2450"]
+    - [0x70024B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_24B0"]
+    - [0x7002528, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2528"]
+    - [0x7002598, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2598"]
+    - [0x7002610, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2610"]
+    - [0x7002698, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2698"]
+    - [0x7002708, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2708"]
+    - [0x7002770, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2770"]
+    - [0x70027E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_27E8"]
+    - [0x7002858, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2858"]
+    - [0x70028B8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_28B8"]
+    - [0x7002920, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2920"]
+    - [0x70029A0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_29A0"]
+    - [0x7002A48, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2A48"]
+    - [0x7002BA8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2BA8"]
+    - [0x7002BB8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_2BB8"]
+    - [0x70030C8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_30C8"]
+    - [0x70032F0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_32F0"]
+    - [0x7003308, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3308"]
+    - [0x7003568, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3568"]
+    - [0x7003578, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3578"]
+    - [0x7003920, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3920"]
+    - [0x7003930, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3930"]
+    - [0x7003C70, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3C70"]
+    - [0x7003C80, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_3C80"]
+    - [0x7004198, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_4198"]
+    - [0x70041A8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_41A8"]
+    - [0x7004598, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_4598"]
+    - [0x70048A8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_48A8"]
+    - [0x7004BB0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_4BB0"]
+    - [0x7004EB8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_4EB8"]
+    - [0x70051B8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_51B8"]
+    - [0x70051E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_51E8"]
+    - [0x7005270, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5270"]
+    - [0x7005300, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5300"]
+    - [0x7005378, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5378"]
+    - [0x70053E0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_53E0"]
+    - [0x7005448, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5448"]
+    - [0x70054E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_54E8"]
+    - [0x7005560, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5560"]
+    - [0x70055E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_55E8"]
+    - [0x7005678, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5678"]
+    - [0x70056F0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_56F0"]
+    - [0x7005778, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5778"]
+    - [0x70057E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_57E8"]
+    - [0x7005850, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5850"]
+    - [0x7005A78, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5A78"]
+    - [0x7005BB0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5BB0"]
+    - [0x7005BC8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5BC8"]
+    - [0x7005D88, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5D88"]
+    - [0x7005D98, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_5D98"]
+    - [0x7006200, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6200"]
+    - [0x70063B8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_63B8"]
+    - [0x70063D0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_63D0"]
+    - [0x70064A8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_64A8"]
+    - [0x7006580, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6580"]
+    - [0x7006658, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6658"]
+    - [0x7006678, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6678"]
+    - [0x70066E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_66E8"]
+    - [0x7006760, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6760"]
+    - [0x7006778, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6778"]
+    - [0x7006A80, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6A80"]
+    - [0x7006A90, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6A90"]
+    - [0x7006BC0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6BC0"]
+    - [0x7006CA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6CA0"]
+    - [0x7006CB8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6CB8"]
+    - [0x7006D78, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6D78"]
+    - [0x7006E48, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6E48"]
+    - [0x7006F08, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6F08"]
+    - [0x7006FA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_6FA0"]
+    - [0x7007038, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7038"]
+    - [0x70070D0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_70D0"]
+    - [0x7007180, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7180"]
+    - [0x7007288, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7288"]
+    - [0x7007340, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7340"]
+    - [0x7007418, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7418"]
+    - [0x7007520, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7520"]
+    - [0x70075E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_75E8"]
+    - [0x7007650, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7650"]
+    - [0x70076C0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_76C0"]
+    - [0x7007730, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7730"]
+    - [0x70077A0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_77A0"]
+    - [0x7007820, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7820"]
+    - [0x7007898, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7898"]
+    - [0x7007908, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7908"]
+    - [0x7007998, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7998"]
+    - [0x7007A10, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7A10"]
+    - [0x7007A78, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7A78"]
+    - [0x7007AD8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7AD8"]
+    - [0x7007B50, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7B50"]
+    - [0x7007BB8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7BB8"]
+    - [0x7007C30, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7C30"]
+    - [0x7007CC0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7CC0"]
+    - [0x7007D48, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7D48"]
+    - [0x7007DB8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7DB8"]
+    - [0x7007E28, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7E28"]
+    - [0x7007EA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7EA0"]
+    - [0x7007F20, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7F20"]
+    - [0x7007F98, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_7F98"]
+    - [0x7008008, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8008"]
+    - [0x7008078, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8078"]
+    - [0x70080E0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_80E0"]
+    - [0x7008148, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8148"]
+    - [0x70081B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_81B0"]
+    - [0x7008218, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8218"]
+    - [0x7008278, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8278"]
+    - [0x70082D8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_82D8"]
+    - [0x7008348, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8348"]
+    - [0x70083B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_83B0"]
+    - [0x70084A8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_84A8"]
+    - [0x70087E8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_87E8"]
+    - [0x7008BE0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8BE0"]
+    - [0x7008C78, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8C78"]
+    - [0x7008D10, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8D10"]
+    - [0x7008DA8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8DA8"]
+    - [0x7008E40, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8E40"]
+    - [0x7008E78, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8E78"]
+    - [0x7008FA0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_8FA0"]
+    - [0x7009278, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9278"]
+    - [0x7009290, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9290"]
+    - [0x7009328, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9328"]
+    - [0x70093A0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_93A0"]
+    - [0x7009438, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9438"]
+    - [0x70094B0, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_94B0"]
+    - [0x70094D8, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_94D8"]
+    - [0x7009820, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9820"]
+    - [0x7009830, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9830"]
+    - [0x7009910, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9910"]
+    - [0x7009920, "models/tracks/bowsers_castle/bowsers_castle_displaylists/d_course_bowsers_castle_packed_dl_9920"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_bowsers_castle_thwomp_faces:
+      range: [0x7138, 0x8538]
+      mode: APPEND
+d_course_bowsers_castle_dl_0:
+  symbol: d_course_bowsers_castle_dl_0
+  type: gfx
+  offset: 0x0
+d_course_bowsers_castle_dl_110:
+  symbol: d_course_bowsers_castle_dl_110
+  type: gfx
+  offset: 0x110
+d_course_bowsers_castle_dl_230:
+  symbol: d_course_bowsers_castle_dl_230
+  type: gfx
+  offset: 0x230
+d_course_bowsers_castle_dl_398:
+  symbol: d_course_bowsers_castle_dl_398
+  type: gfx
+  offset: 0x398
+d_course_bowsers_castle_dl_428:
+  symbol: d_course_bowsers_castle_dl_428
+  type: gfx
+  offset: 0x428
+d_course_bowsers_castle_dl_4F0:
+  symbol: d_course_bowsers_castle_dl_4F0
+  type: gfx
+  offset: 0x4F0
+d_course_bowsers_castle_dl_640:
+  symbol: d_course_bowsers_castle_dl_640
+  type: gfx
+  offset: 0x640
+d_course_bowsers_castle_dl_7A0:
+  symbol: d_course_bowsers_castle_dl_7A0
+  type: gfx
+  offset: 0x7A0
+d_course_bowsers_castle_dl_860:
+  symbol: d_course_bowsers_castle_dl_860
+  type: gfx
+  offset: 0x860
+d_course_bowsers_castle_dl_8E8:
+  symbol: d_course_bowsers_castle_dl_8E8
+  type: gfx
+  offset: 0x8E8
+d_course_bowsers_castle_dl_9F8:
+  symbol: d_course_bowsers_castle_dl_9F8
+  type: gfx
+  offset: 0x9F8
+d_course_bowsers_castle_dl_AE0:
+  symbol: d_course_bowsers_castle_dl_AE0
+  type: gfx
+  offset: 0xAE0
+d_course_bowsers_castle_dl_B88:
+  symbol: d_course_bowsers_castle_dl_B88
+  type: gfx
+  offset: 0xB88
+d_course_bowsers_castle_dl_C08:
+  symbol: d_course_bowsers_castle_dl_C08
+  type: gfx
+  offset: 0xC08
+d_course_bowsers_castle_dl_D20:
+  symbol: d_course_bowsers_castle_dl_D20
+  type: gfx
+  offset: 0xD20
+d_course_bowsers_castle_dl_E00:
+  symbol: d_course_bowsers_castle_dl_E00
+  type: gfx
+  offset: 0xE00
+d_course_bowsers_castle_dl_EA8:
+  symbol: d_course_bowsers_castle_dl_EA8
+  type: gfx
+  offset: 0xEA8
+d_course_bowsers_castle_dl_F08:
+  symbol: d_course_bowsers_castle_dl_F08
+  type: gfx
+  offset: 0xF08
+d_course_bowsers_castle_dl_1040:
+  symbol: d_course_bowsers_castle_dl_1040
+  type: gfx
+  offset: 0x1040
+d_course_bowsers_castle_dl_1138:
+  symbol: d_course_bowsers_castle_dl_1138
+  type: gfx
+  offset: 0x1138
+d_course_bowsers_castle_dl_11F0:
+  symbol: d_course_bowsers_castle_dl_11F0
+  type: gfx
+  offset: 0x11F0
+d_course_bowsers_castle_dl_1248:
+  symbol: d_course_bowsers_castle_dl_1248
+  type: gfx
+  offset: 0x1248
+d_course_bowsers_castle_dl_1290:
+  symbol: d_course_bowsers_castle_dl_1290
+  type: gfx
+  offset: 0x1290
+d_course_bowsers_castle_dl_12D0:
+  symbol: d_course_bowsers_castle_dl_12D0
+  type: gfx
+  offset: 0x12D0
+d_course_bowsers_castle_dl_1330:
+  symbol: d_course_bowsers_castle_dl_1330
+  type: gfx
+  offset: 0x1330
+d_course_bowsers_castle_dl_1350:
+  symbol: d_course_bowsers_castle_dl_1350
+  type: gfx
+  offset: 0x1350
+d_course_bowsers_castle_dl_1370:
+  symbol: d_course_bowsers_castle_dl_1370
+  type: gfx
+  offset: 0x1370
+d_course_bowsers_castle_dl_13A0:
+  symbol: d_course_bowsers_castle_dl_13A0
+  type: gfx
+  offset: 0x13A0
+d_course_bowsers_castle_dl_13C0:
+  symbol: d_course_bowsers_castle_dl_13C0
+  type: gfx
+  offset: 0x13C0
+d_course_bowsers_castle_dl_13E0:
+  symbol: d_course_bowsers_castle_dl_13E0
+  type: gfx
+  offset: 0x13E0
+d_course_bowsers_castle_dl_1448:
+  symbol: d_course_bowsers_castle_dl_1448
+  type: gfx
+  offset: 0x1448
+d_course_bowsers_castle_dl_1488:
+  symbol: d_course_bowsers_castle_dl_1488
+  type: gfx
+  offset: 0x1488
+d_course_bowsers_castle_dl_14B0:
+  symbol: d_course_bowsers_castle_dl_14B0
+  type: gfx
+  offset: 0x14B0
+d_course_bowsers_castle_dl_1520:
+  symbol: d_course_bowsers_castle_dl_1520
+  type: gfx
+  offset: 0x1520
+d_course_bowsers_castle_dl_1590:
+  symbol: d_course_bowsers_castle_dl_1590
+  type: gfx
+  offset: 0x1590
+d_course_bowsers_castle_dl_1608:
+  symbol: d_course_bowsers_castle_dl_1608
+  type: gfx
+  offset: 0x1608
+d_course_bowsers_castle_dl_1690:
+  symbol: d_course_bowsers_castle_dl_1690
+  type: gfx
+  offset: 0x1690
+d_course_bowsers_castle_dl_1710:
+  symbol: d_course_bowsers_castle_dl_1710
+  type: gfx
+  offset: 0x1710
+d_course_bowsers_castle_dl_1788:
+  symbol: d_course_bowsers_castle_dl_1788
+  type: gfx
+  offset: 0x1788
+d_course_bowsers_castle_dl_17D0:
+  symbol: d_course_bowsers_castle_dl_17D0
+  type: gfx
+  offset: 0x17D0
+d_course_bowsers_castle_dl_1818:
+  symbol: d_course_bowsers_castle_dl_1818
+  type: gfx
+  offset: 0x1818
+d_course_bowsers_castle_dl_1860:
+  symbol: d_course_bowsers_castle_dl_1860
+  type: gfx
+  offset: 0x1860
+d_course_bowsers_castle_dl_18C0:
+  symbol: d_course_bowsers_castle_dl_18C0
+  type: gfx
+  offset: 0x18C0
+d_course_bowsers_castle_dl_1928:
+  symbol: d_course_bowsers_castle_dl_1928
+  type: gfx
+  offset: 0x1928
+d_course_bowsers_castle_dl_1960:
+  symbol: d_course_bowsers_castle_dl_1960
+  type: gfx
+  offset: 0x1960
+d_course_bowsers_castle_dl_19A8:
+  symbol: d_course_bowsers_castle_dl_19A8
+  type: gfx
+  offset: 0x19A8
+d_course_bowsers_castle_dl_19F8:
+  symbol: d_course_bowsers_castle_dl_19F8
+  type: gfx
+  offset: 0x19F8
+d_course_bowsers_castle_dl_1A40:
+  symbol: d_course_bowsers_castle_dl_1A40
+  type: gfx
+  offset: 0x1A40
+d_course_bowsers_castle_dl_1A90:
+  symbol: d_course_bowsers_castle_dl_1A90
+  type: gfx
+  offset: 0x1A90
+d_course_bowsers_castle_dl_1AD8:
+  symbol: d_course_bowsers_castle_dl_1AD8
+  type: gfx
+  offset: 0x1AD8
+d_course_bowsers_castle_dl_1B10:
+  symbol: d_course_bowsers_castle_dl_1B10
+  type: gfx
+  offset: 0x1B10
+d_course_bowsers_castle_dl_1B58:
+  symbol: d_course_bowsers_castle_dl_1B58
+  type: gfx
+  offset: 0x1B58
+d_course_bowsers_castle_dl_1BB0:
+  symbol: d_course_bowsers_castle_dl_1BB0
+  type: gfx
+  offset: 0x1BB0
+d_course_bowsers_castle_dl_1C10:
+  symbol: d_course_bowsers_castle_dl_1C10
+  type: gfx
+  offset: 0x1C10
+d_course_bowsers_castle_dl_1C38:
+  symbol: d_course_bowsers_castle_dl_1C38
+  type: gfx
+  offset: 0x1C38
+d_course_bowsers_castle_dl_1C60:
+  symbol: d_course_bowsers_castle_dl_1C60
+  type: gfx
+  offset: 0x1C60
+d_course_bowsers_castle_dl_1C98:
+  symbol: d_course_bowsers_castle_dl_1C98
+  type: gfx
+  offset: 0x1C98
+d_course_bowsers_castle_dl_1CD0:
+  symbol: d_course_bowsers_castle_dl_1CD0
+  type: gfx
+  offset: 0x1CD0
+d_course_bowsers_castle_dl_1DF8:
+  symbol: d_course_bowsers_castle_dl_1DF8
+  type: gfx
+  offset: 0x1DF8
+d_course_bowsers_castle_dl_1EB0:
+  symbol: d_course_bowsers_castle_dl_1EB0
+  type: gfx
+  offset: 0x1EB0
+d_course_bowsers_castle_dl_1FA0:
+  symbol: d_course_bowsers_castle_dl_1FA0
+  type: gfx
+  offset: 0x1FA0
+d_course_bowsers_castle_dl_2008:
+  symbol: d_course_bowsers_castle_dl_2008
+  type: gfx
+  offset: 0x2008
+d_course_bowsers_castle_dl_2130:
+  symbol: d_course_bowsers_castle_dl_2130
+  type: gfx
+  offset: 0x2130
+d_course_bowsers_castle_dl_21F0:
+  symbol: d_course_bowsers_castle_dl_21F0
+  type: gfx
+  offset: 0x21F0
+d_course_bowsers_castle_dl_22E8:
+  symbol: d_course_bowsers_castle_dl_22E8
+  type: gfx
+  offset: 0x22E8
+d_course_bowsers_castle_dl_2398:
+  symbol: d_course_bowsers_castle_dl_2398
+  type: gfx
+  offset: 0x2398
+d_course_bowsers_castle_dl_24B8:
+  symbol: d_course_bowsers_castle_dl_24B8
+  type: gfx
+  offset: 0x24B8
+d_course_bowsers_castle_dl_2578:
+  symbol: d_course_bowsers_castle_dl_2578
+  type: gfx
+  offset: 0x2578
+d_course_bowsers_castle_dl_2688:
+  symbol: d_course_bowsers_castle_dl_2688
+  type: gfx
+  offset: 0x2688
+d_course_bowsers_castle_dl_2760:
+  symbol: d_course_bowsers_castle_dl_2760
+  type: gfx
+  offset: 0x2760
+d_course_bowsers_castle_dl_2880:
+  symbol: d_course_bowsers_castle_dl_2880
+  type: gfx
+  offset: 0x2880
+d_course_bowsers_castle_dl_2958:
+  symbol: d_course_bowsers_castle_dl_2958
+  type: gfx
+  offset: 0x2958
+d_course_bowsers_castle_dl_2A60:
+  symbol: d_course_bowsers_castle_dl_2A60
+  type: gfx
+  offset: 0x2A60
+d_course_bowsers_castle_dl_2B80:
+  symbol: d_course_bowsers_castle_dl_2B80
+  type: gfx
+  offset: 0x2B80
+d_course_bowsers_castle_dl_2C48:
+  symbol: d_course_bowsers_castle_dl_2C48
+  type: gfx
+  offset: 0x2C48
+d_course_bowsers_castle_dl_2D08:
+  symbol: d_course_bowsers_castle_dl_2D08
+  type: gfx
+  offset: 0x2D08
+d_course_bowsers_castle_dl_2DF8:
+  symbol: d_course_bowsers_castle_dl_2DF8
+  type: gfx
+  offset: 0x2DF8
+d_course_bowsers_castle_dl_2F30:
+  symbol: d_course_bowsers_castle_dl_2F30
+  type: gfx
+  offset: 0x2F30
+d_course_bowsers_castle_dl_2FB0:
+  symbol: d_course_bowsers_castle_dl_2FB0
+  type: gfx
+  offset: 0x2FB0
+d_course_bowsers_castle_dl_3050:
+  symbol: d_course_bowsers_castle_dl_3050
+  type: gfx
+  offset: 0x3050
+d_course_bowsers_castle_dl_3158:
+  symbol: d_course_bowsers_castle_dl_3158
+  type: gfx
+  offset: 0x3158
+d_course_bowsers_castle_dl_3230:
+  symbol: d_course_bowsers_castle_dl_3230
+  type: gfx
+  offset: 0x3230
+d_course_bowsers_castle_dl_32C0:
+  symbol: d_course_bowsers_castle_dl_32C0
+  type: gfx
+  offset: 0x32C0
+d_course_bowsers_castle_dl_3338:
+  symbol: d_course_bowsers_castle_dl_3338
+  type: gfx
+  offset: 0x3338
+d_course_bowsers_castle_dl_3480:
+  symbol: d_course_bowsers_castle_dl_3480
+  type: gfx
+  offset: 0x3480
+d_course_bowsers_castle_dl_3508:
+  symbol: d_course_bowsers_castle_dl_3508
+  type: gfx
+  offset: 0x3508
+d_course_bowsers_castle_dl_35D0:
+  symbol: d_course_bowsers_castle_dl_35D0
+  type: gfx
+  offset: 0x35D0
+d_course_bowsers_castle_dl_3678:
+  symbol: d_course_bowsers_castle_dl_3678
+  type: gfx
+  offset: 0x3678
+d_course_bowsers_castle_dl_37D8:
+  symbol: d_course_bowsers_castle_dl_37D8
+  type: gfx
+  offset: 0x37D8
+d_course_bowsers_castle_dl_38F8:
+  symbol: d_course_bowsers_castle_dl_38F8
+  type: gfx
+  offset: 0x38F8
+d_course_bowsers_castle_dl_39E0:
+  symbol: d_course_bowsers_castle_dl_39E0
+  type: gfx
+  offset: 0x39E0
+d_course_bowsers_castle_dl_3B00:
+  symbol: d_course_bowsers_castle_dl_3B00
+  type: gfx
+  offset: 0x3B00
+d_course_bowsers_castle_dl_3C08:
+  symbol: d_course_bowsers_castle_dl_3C08
+  type: gfx
+  offset: 0x3C08
+d_course_bowsers_castle_dl_3D78:
+  symbol: d_course_bowsers_castle_dl_3D78
+  type: gfx
+  offset: 0x3D78
+d_course_bowsers_castle_dl_3EA8:
+  symbol: d_course_bowsers_castle_dl_3EA8
+  type: gfx
+  offset: 0x3EA8
+d_course_bowsers_castle_dl_3FF0:
+  symbol: d_course_bowsers_castle_dl_3FF0
+  type: gfx
+  offset: 0x3FF0
+d_course_bowsers_castle_dl_40F0:
+  symbol: d_course_bowsers_castle_dl_40F0
+  type: gfx
+  offset: 0x40F0
+d_course_bowsers_castle_dl_4278:
+  symbol: d_course_bowsers_castle_dl_4278
+  type: gfx
+  offset: 0x4278
+d_course_bowsers_castle_dl_4358:
+  symbol: d_course_bowsers_castle_dl_4358
+  type: gfx
+  offset: 0x4358
+d_course_bowsers_castle_dl_4488:
+  symbol: d_course_bowsers_castle_dl_4488
+  type: gfx
+  offset: 0x4488
+d_course_bowsers_castle_dl_45D8:
+  symbol: d_course_bowsers_castle_dl_45D8
+  type: gfx
+  offset: 0x45D8
+d_course_bowsers_castle_dl_4748:
+  symbol: d_course_bowsers_castle_dl_4748
+  type: gfx
+  offset: 0x4748
+d_course_bowsers_castle_dl_4820:
+  symbol: d_course_bowsers_castle_dl_4820
+  type: gfx
+  offset: 0x4820
+d_course_bowsers_castle_dl_4998:
+  symbol: d_course_bowsers_castle_dl_4998
+  type: gfx
+  offset: 0x4998
+d_course_bowsers_castle_dl_4A98:
+  symbol: d_course_bowsers_castle_dl_4A98
+  type: gfx
+  offset: 0x4A98
+d_course_bowsers_castle_dl_4C00:
+  symbol: d_course_bowsers_castle_dl_4C00
+  type: gfx
+  offset: 0x4C00
+d_course_bowsers_castle_dl_4CE8:
+  symbol: d_course_bowsers_castle_dl_4CE8
+  type: gfx
+  offset: 0x4CE8
+d_course_bowsers_castle_dl_4EA8:
+  symbol: d_course_bowsers_castle_dl_4EA8
+  type: gfx
+  offset: 0x4EA8
+d_course_bowsers_castle_thwomp_model1:
+  symbol: d_course_bowsers_castle_thwomp_model1
+  type: vtx
+  offset: 0x8938
+  count: 4
+d_course_bowsers_castle_thwomp_model2:
+  symbol: d_course_bowsers_castle_thwomp_model2
+  type: vtx
+  offset: 0x8978
+  count: 32
+d_course_bowsers_castle_thwomp_model3:
+  symbol: d_course_bowsers_castle_thwomp_model3
+  type: vtx
+  offset: 0x8B78
+  count: 32
+d_course_bowsers_castle_thwomp_model4:
+  symbol: d_course_bowsers_castle_thwomp_model4
+  type: vtx
+  offset: 0x8D78
+  count: 28
+d_course_bowsers_castle_dl_8F38:
+  symbol: d_course_bowsers_castle_dl_8F38
+  type: gfx
+  offset: 0x8F38
+d_course_bowsers_castle_dl_9078:
+  symbol: d_course_bowsers_castle_dl_9078
+  type: gfx
+  offset: 0x9078
+d_course_bowsers_castle_dl_thwomp:
+  symbol: d_course_bowsers_castle_dl_thwomp
+  type: gfx
+  offset: 0x9088
+d_course_bowsers_castle_unknown_model:
+  symbol: d_course_bowsers_castle_unknown_model
+  type: vtx
+  offset: 0x9098
+  count: 3
+d_course_bowsers_castle_dl_bush:
+  symbol: d_course_bowsers_castle_dl_bush
+  type: gfx
+  offset: 0x90C8
+d_course_bowsers_castle_dl_9148:
+  symbol: d_course_bowsers_castle_dl_9148
+  type: gfx
+  offset: 0x9148
+d_course_bowsers_castle_dl_9228:
+  symbol: d_course_bowsers_castle_dl_9228
+  type: gfx
+  offset: 0x9228

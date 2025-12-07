@@ -1,0 +1,763 @@
+:config:
+  segments:
+    - [0x06, 0x831DC0]
+    - [0x07, 0x800000]
+  manual_segments:
+    # segment 5
+    - [0x05000000, "textures/other_textures/texture_6447C4"]
+    - [0x05000800, "textures/other_textures/texture_676FB0"]
+    - [0x05001000, "textures/other_textures/texture_643B3C"]
+    - [0x05001800, "textures/other_textures/texture_64BB60"]
+    - [0x05002000, "textures/other_textures/texture_64BCCC"]
+    - [0x05002800, "textures/other_textures/texture_64FBF4"]
+    - [0x05003000, "textures/other_textures/texture_651B20"]
+    - [0x05003800, "textures/other_textures/texture_66262C"]
+    - [0x05004000, "textures/other_textures/texture_668728"]
+    - [0x05004800, "textures/other_textures/texture_66A3DC"]
+    - [0x05005000, "textures/other_textures/texture_66CA98"]
+    - [0x05005800, "textures/other_textures/texture_66CD64"]
+    - [0x05006000, "textures/other_textures/texture_66D698"]
+    - [0x05006800, "textures/other_textures/texture_66E608"]
+    - [0x05007000, "textures/other_textures/texture_67B388"]
+    - [0x05007800, "textures/other_textures/sign_welcome_0"]
+    - [0x05008800, "textures/other_textures/sign_welcome_1"]
+    - [0x05009800, "textures/other_textures/sign_wooden_back_0"]
+    - [0x0500A800, "textures/other_textures/sign_wooden_back_1"]
+    - [0x0500B800, "textures/other_textures/sign_wood_red_arrow"]
+    - [0x0500C800, "textures/other_textures/texture_68D940"]
+    - [0x0500D000, "textures/other_textures/texture_685AC0"]
+    # segment 7
+    - [0x7000000, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_0"]
+    - [0x7000060, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_60"]
+    - [0x7000070, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_70"]
+    - [0x7000120, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_120"]
+    - [0x70001D0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1D0"]
+    - [0x7000280, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_280"]
+    - [0x7000330, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_330"]
+    - [0x70003E0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3E0"]
+    - [0x7000490, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_490"]
+    - [0x7000540, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_540"]
+    - [0x7000580, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_580"]
+    - [0x7000688, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_688"]
+    - [0x7000698, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_698"]
+    - [0x70006F8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6F8"]
+    - [0x7000758, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_758"]
+    - [0x70007B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7B8"]
+    - [0x7000818, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_818"]
+    - [0x7000878, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_878"]
+    - [0x70008A8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_8A8"]
+    - [0x7000930, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_930"]
+    - [0x70009B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_9B8"]
+    - [0x7000A50, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_A50"]
+    - [0x7000AE8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_AE8"]
+    - [0x7000BC8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_BC8"]
+    - [0x7000C98, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_C98"]
+    - [0x7000D30, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_D30"]
+    - [0x7000DF0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_DF0"]
+    - [0x7000EA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_EA0"]
+    - [0x7000F80, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_F80"]
+    - [0x7001008, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1008"]
+    - [0x7001108, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1108"]
+    - [0x70011D8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_11D8"]
+    - [0x7001260, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1260"]
+    - [0x7001320, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1320"]
+    - [0x70013E0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_13E0"]
+    - [0x7001478, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1478"]
+    - [0x7001560, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1560"]
+    - [0x7001610, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1610"]
+    - [0x7001748, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1748"]
+    - [0x70017F0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_17F0"]
+    - [0x7001820, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1820"]
+    - [0x7001830, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1830"]
+    - [0x70018E0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_18E0"]
+    - [0x7001968, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1968"]
+    - [0x7001A00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1A00"]
+    - [0x7001A98, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1A98"]
+    - [0x7001AC0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1AC0"]
+    - [0x7001B58, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1B58"]
+    - [0x7001BE0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1BE0"]
+    - [0x7001BF8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1BF8"]
+    - [0x7001C78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1C78"]
+    - [0x7001CF8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1CF8"]
+    - [0x7001D10, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1D10"]
+    - [0x7001DA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1DA0"]
+    - [0x7001DB0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1DB0"]
+    - [0x7001E50, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1E50"]
+    - [0x7001EF0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1EF0"]
+    - [0x7001FA8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_1FA8"]
+    - [0x7002058, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2058"]
+    - [0x7002100, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2100"]
+    - [0x70021D8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_21D8"]
+    - [0x7002288, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2288"]
+    - [0x70022C8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_22C8"]
+    - [0x7002398, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2398"]
+    - [0x7002440, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2440"]
+    - [0x7002520, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2520"]
+    - [0x7002608, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2608"]
+    - [0x70026E8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_26E8"]
+    - [0x70027D0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_27D0"]
+    - [0x70028D0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_28D0"]
+    - [0x70029A0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_29A0"]
+    - [0x7002A70, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2A70"]
+    - [0x7002B78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2B78"]
+    - [0x7002C20, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2C20"]
+    - [0x7002D40, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2D40"]
+    - [0x7002E40, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2E40"]
+    - [0x7002F38, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_2F38"]
+    - [0x7003020, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3020"]
+    - [0x70030F0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_30F0"]
+    - [0x7003240, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3240"]
+    - [0x7003310, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3310"]
+    - [0x70033C8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_33C8"]
+    - [0x70034A0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_34A0"]
+    - [0x7003588, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3588"]
+    - [0x7003638, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3638"]
+    - [0x70036C8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_36C8"]
+    - [0x7003740, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3740"]
+    - [0x70037C0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_37C0"]
+    - [0x7003830, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3830"]
+    - [0x7003930, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3930"]
+    - [0x7003AA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3AA0"]
+    - [0x7003BA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3BA0"]
+    - [0x7003C40, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3C40"]
+    - [0x7003D08, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3D08"]
+    - [0x7003D90, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3D90"]
+    - [0x7003E10, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3E10"]
+    - [0x7003E88, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3E88"]
+    - [0x7003F00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3F00"]
+    - [0x7003F78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_3F78"]
+    - [0x7004008, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4008"]
+    - [0x7004070, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4070"]
+    - [0x70040D0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_40D0"]
+    - [0x7004160, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4160"]
+    - [0x70041F8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_41F8"]
+    - [0x70042A8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_42A8"]
+    - [0x7004358, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4358"]
+    - [0x7004408, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4408"]
+    - [0x70044B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_44B8"]
+    - [0x7004568, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4568"]
+    - [0x7004618, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4618"]
+    - [0x70046C8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_46C8"]
+    - [0x7004798, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4798"]
+    - [0x7004848, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4848"]
+    - [0x70048F8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_48F8"]
+    - [0x70049A8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_49A8"]
+    - [0x7004A58, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4A58"]
+    - [0x7004B08, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4B08"]
+    - [0x7004BA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4BA0"]
+    - [0x7004C50, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4C50"]
+    - [0x7004D00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4D00"]
+    - [0x7004DB0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4DB0"]
+    - [0x7004E60, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4E60"]
+    - [0x7004EF8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4EF8"]
+    - [0x7004FD0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_4FD0"]
+    - [0x7005078, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5078"]
+    - [0x7005120, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5120"]
+    - [0x70051E0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_51E0"]
+    - [0x7005278, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5278"]
+    - [0x70052F8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_52F8"]
+    - [0x7005378, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5378"]
+    - [0x70053B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_53B8"]
+    - [0x7005498, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5498"]
+    - [0x70054A8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_54A8"]
+    - [0x7005520, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5520"]
+    - [0x7005598, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5598"]
+    - [0x7005610, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5610"]
+    - [0x7005688, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5688"]
+    - [0x7005700, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5700"]
+    - [0x7005778, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5778"]
+    - [0x7005820, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5820"]
+    - [0x7005898, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5898"]
+    - [0x7005910, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5910"]
+    - [0x7005988, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5988"]
+    - [0x7005A00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5A00"]
+    - [0x7005A78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5A78"]
+    - [0x7005AF0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5AF0"]
+    - [0x7005B68, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5B68"]
+    - [0x7005BE0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5BE0"]
+    - [0x7005C58, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5C58"]
+    - [0x7005CD0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5CD0"]
+    - [0x7005D60, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5D60"]
+    - [0x7005DC8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5DC8"]
+    - [0x7005E30, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5E30"]
+    - [0x7005EA0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5EA0"]
+    - [0x7005F10, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5F10"]
+    - [0x7005F78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5F78"]
+    - [0x7005FE8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_5FE8"]
+    - [0x7006058, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6058"]
+    - [0x7006098, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6098"]
+    - [0x7006310, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6310"]
+    - [0x7006320, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6320"]
+    - [0x70063B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_63B8"]
+    - [0x7006450, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6450"]
+    - [0x70064E8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_64E8"]
+    - [0x7006580, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6580"]
+    - [0x7006640, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6640"]
+    - [0x70066D8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_66D8"]
+    - [0x7006770, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6770"]
+    - [0x7006808, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6808"]
+    - [0x70068A0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_68A0"]
+    - [0x7006918, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6918"]
+    - [0x70069B0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_69B0"]
+    - [0x7006A10, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6A10"]
+    - [0x7006A88, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6A88"]
+    - [0x7006B00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6B00"]
+    - [0x7006B78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6B78"]
+    - [0x7006BF0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6BF0"]
+    - [0x7006C68, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6C68"]
+    - [0x7006D00, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6D00"]
+    - [0x7006D78, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6D78"]
+    - [0x7006DF0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6DF0"]
+    - [0x7006E68, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6E68"]
+    - [0x7006EE0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6EE0"]
+    - [0x7006F58, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6F58"]
+    - [0x7006FD0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_6FD0"]
+    - [0x7007048, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7048"]
+    - [0x70070C0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_70C0"]
+    - [0x7007138, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7138"]
+    - [0x70071B0, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_71B0"]
+    - [0x7007228, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7228"]
+    - [0x70072B8, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_72B8"]
+    - [0x7007338, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7338"]
+    - [0x7007348, "models/tracks/banshee_boardwalk/banshee_boardwalk_displaylists/d_course_banshee_boardwalk_packed_dl_7348"]
+  external_files:
+    - "yamls/us/textures/tracks/banshee_boardwalk/banshee_boardwalk_data.yml"
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_banshee_boardwalk_bat:
+      range: [0x7DB8, 0x95B8]
+      mode: APPEND
+d_course_banshee_boardwalk_dl_0:
+  symbol: d_course_banshee_boardwalk_dl_0
+  type: gfx
+  offset: 0x0
+d_course_banshee_boardwalk_dl_8:
+  symbol: d_course_banshee_boardwalk_dl_8
+  type: gfx
+  offset: 0x8
+d_course_banshee_boardwalk_dl_38:
+  symbol: d_course_banshee_boardwalk_dl_38
+  type: gfx
+  offset: 0x38
+d_course_banshee_boardwalk_dl_40:
+  symbol: d_course_banshee_boardwalk_dl_40
+  type: gfx
+  offset: 0x40
+d_course_banshee_boardwalk_dl_68:
+  symbol: d_course_banshee_boardwalk_dl_68
+  type: gfx
+  offset: 0x68
+d_course_banshee_boardwalk_dl_A0:
+  symbol: d_course_banshee_boardwalk_dl_A0
+  type: gfx
+  offset: 0xA0
+d_course_banshee_boardwalk_dl_160:
+  symbol: d_course_banshee_boardwalk_dl_160
+  type: gfx
+  offset: 0x160
+d_course_banshee_boardwalk_dl_210:
+  symbol: d_course_banshee_boardwalk_dl_210
+  type: gfx
+  offset: 0x210
+d_course_banshee_boardwalk_dl_270:
+  symbol: d_course_banshee_boardwalk_dl_270
+  type: gfx
+  offset: 0x270
+d_course_banshee_boardwalk_dl_358:
+  symbol: d_course_banshee_boardwalk_dl_358
+  type: gfx
+  offset: 0x358
+d_course_banshee_boardwalk_dl_408:
+  symbol: d_course_banshee_boardwalk_dl_408
+  type: gfx
+  offset: 0x408
+d_course_banshee_boardwalk_dl_4F0:
+  symbol: d_course_banshee_boardwalk_dl_4F0
+  type: gfx
+  offset: 0x4F0
+d_course_banshee_boardwalk_dl_540:
+  symbol: d_course_banshee_boardwalk_dl_540
+  type: gfx
+  offset: 0x540
+d_course_banshee_boardwalk_dl_620:
+  symbol: d_course_banshee_boardwalk_dl_620
+  type: gfx
+  offset: 0x620
+d_course_banshee_boardwalk_dl_6D0:
+  symbol: d_course_banshee_boardwalk_dl_6D0
+  type: gfx
+  offset: 0x6D0
+d_course_banshee_boardwalk_dl_7C0:
+  symbol: d_course_banshee_boardwalk_dl_7C0
+  type: gfx
+  offset: 0x7C0
+d_course_banshee_boardwalk_dl_870:
+  symbol: d_course_banshee_boardwalk_dl_870
+  type: gfx
+  offset: 0x870
+d_course_banshee_boardwalk_dl_940:
+  symbol: d_course_banshee_boardwalk_dl_940
+  type: gfx
+  offset: 0x940
+d_course_banshee_boardwalk_dl_9E0:
+  symbol: d_course_banshee_boardwalk_dl_9E0
+  type: gfx
+  offset: 0x9E0
+d_course_banshee_boardwalk_dl_AD0:
+  symbol: d_course_banshee_boardwalk_dl_AD0
+  type: gfx
+  offset: 0xAD0
+d_course_banshee_boardwalk_dl_B80:
+  symbol: d_course_banshee_boardwalk_dl_B80
+  type: gfx
+  offset: 0xB80
+d_course_banshee_boardwalk_dl_C30:
+  symbol: d_course_banshee_boardwalk_dl_C30
+  type: gfx
+  offset: 0xC30
+d_course_banshee_boardwalk_dl_CD0:
+  symbol: d_course_banshee_boardwalk_dl_CD0
+  type: gfx
+  offset: 0xCD0
+d_course_banshee_boardwalk_dl_D80:
+  symbol: d_course_banshee_boardwalk_dl_D80
+  type: gfx
+  offset: 0xD80
+d_course_banshee_boardwalk_dl_E10:
+  symbol: d_course_banshee_boardwalk_dl_E10
+  type: gfx
+  offset: 0xE10
+d_course_banshee_boardwalk_dl_EE0:
+  symbol: d_course_banshee_boardwalk_dl_EE0
+  type: gfx
+  offset: 0xEE0
+d_course_banshee_boardwalk_dl_F50:
+  symbol: d_course_banshee_boardwalk_dl_F50
+  type: gfx
+  offset: 0xF50
+d_course_banshee_boardwalk_dl_1000:
+  symbol: d_course_banshee_boardwalk_dl_1000
+  type: gfx
+  offset: 0x1000
+d_course_banshee_boardwalk_dl_1070:
+  symbol: d_course_banshee_boardwalk_dl_1070
+  type: gfx
+  offset: 0x1070
+d_course_banshee_boardwalk_dl_1160:
+  symbol: d_course_banshee_boardwalk_dl_1160
+  type: gfx
+  offset: 0x1160
+d_course_banshee_boardwalk_dl_11C8:
+  symbol: d_course_banshee_boardwalk_dl_11C8
+  type: gfx
+  offset: 0x11C8
+d_course_banshee_boardwalk_dl_12A8:
+  symbol: d_course_banshee_boardwalk_dl_12A8
+  type: gfx
+  offset: 0x12A8
+d_course_banshee_boardwalk_dl_12E8:
+  symbol: d_course_banshee_boardwalk_dl_12E8
+  type: gfx
+  offset: 0x12E8
+d_course_banshee_boardwalk_dl_13F0:
+  symbol: d_course_banshee_boardwalk_dl_13F0
+  type: gfx
+  offset: 0x13F0
+d_course_banshee_boardwalk_dl_1448:
+  symbol: d_course_banshee_boardwalk_dl_1448
+  type: gfx
+  offset: 0x1448
+d_course_banshee_boardwalk_dl_1520:
+  symbol: d_course_banshee_boardwalk_dl_1520
+  type: gfx
+  offset: 0x1520
+d_course_banshee_boardwalk_dl_1580:
+  symbol: d_course_banshee_boardwalk_dl_1580
+  type: gfx
+  offset: 0x1580
+d_course_banshee_boardwalk_dl_1678:
+  symbol: d_course_banshee_boardwalk_dl_1678
+  type: gfx
+  offset: 0x1678
+d_course_banshee_boardwalk_dl_16B8:
+  symbol: d_course_banshee_boardwalk_dl_16B8
+  type: gfx
+  offset: 0x16B8
+d_course_banshee_boardwalk_dl_17A0:
+  symbol: d_course_banshee_boardwalk_dl_17A0
+  type: gfx
+  offset: 0x17A0
+d_course_banshee_boardwalk_dl_1820:
+  symbol: d_course_banshee_boardwalk_dl_1820
+  type: gfx
+  offset: 0x1820
+d_course_banshee_boardwalk_dl_18D8:
+  symbol: d_course_banshee_boardwalk_dl_18D8
+  type: gfx
+  offset: 0x18D8
+d_course_banshee_boardwalk_dl_1940:
+  symbol: d_course_banshee_boardwalk_dl_1940
+  type: gfx
+  offset: 0x1940
+d_course_banshee_boardwalk_dl_1A30:
+  symbol: d_course_banshee_boardwalk_dl_1A30
+  type: gfx
+  offset: 0x1A30
+d_course_banshee_boardwalk_dl_1B00:
+  symbol: d_course_banshee_boardwalk_dl_1B00
+  type: gfx
+  offset: 0x1B00
+d_course_banshee_boardwalk_dl_1BA0:
+  symbol: d_course_banshee_boardwalk_dl_1BA0
+  type: gfx
+  offset: 0x1BA0
+d_course_banshee_boardwalk_dl_1C20:
+  symbol: d_course_banshee_boardwalk_dl_1C20
+  type: gfx
+  offset: 0x1C20
+d_course_banshee_boardwalk_dl_1CC8:
+  symbol: d_course_banshee_boardwalk_dl_1CC8
+  type: gfx
+  offset: 0x1CC8
+d_course_banshee_boardwalk_dl_1D90:
+  symbol: d_course_banshee_boardwalk_dl_1D90
+  type: gfx
+  offset: 0x1D90
+d_course_banshee_boardwalk_dl_1E28:
+  symbol: d_course_banshee_boardwalk_dl_1E28
+  type: gfx
+  offset: 0x1E28
+d_course_banshee_boardwalk_dl_1EA0:
+  symbol: d_course_banshee_boardwalk_dl_1EA0
+  type: gfx
+  offset: 0x1EA0
+d_course_banshee_boardwalk_dl_1F40:
+  symbol: d_course_banshee_boardwalk_dl_1F40
+  type: gfx
+  offset: 0x1F40
+d_course_banshee_boardwalk_dl_2028:
+  symbol: d_course_banshee_boardwalk_dl_2028
+  type: gfx
+  offset: 0x2028
+d_course_banshee_boardwalk_dl_20A0:
+  symbol: d_course_banshee_boardwalk_dl_20A0
+  type: gfx
+  offset: 0x20A0
+d_course_banshee_boardwalk_dl_2138:
+  symbol: d_course_banshee_boardwalk_dl_2138
+  type: gfx
+  offset: 0x2138
+d_course_banshee_boardwalk_dl_21C8:
+  symbol: d_course_banshee_boardwalk_dl_21C8
+  type: gfx
+  offset: 0x21C8
+d_course_banshee_boardwalk_dl_22D8:
+  symbol: d_course_banshee_boardwalk_dl_22D8
+  type: gfx
+  offset: 0x22D8
+d_course_banshee_boardwalk_dl_2340:
+  symbol: d_course_banshee_boardwalk_dl_2340
+  type: gfx
+  offset: 0x2340
+d_course_banshee_boardwalk_dl_2448:
+  symbol: d_course_banshee_boardwalk_dl_2448
+  type: gfx
+  offset: 0x2448
+d_course_banshee_boardwalk_dl_24E8:
+  symbol: d_course_banshee_boardwalk_dl_24E8
+  type: gfx
+  offset: 0x24E8
+d_course_banshee_boardwalk_dl_2610:
+  symbol: d_course_banshee_boardwalk_dl_2610
+  type: gfx
+  offset: 0x2610
+d_course_banshee_boardwalk_dl_2650:
+  symbol: d_course_banshee_boardwalk_dl_2650
+  type: gfx
+  offset: 0x2650
+d_course_banshee_boardwalk_dl_2718:
+  symbol: d_course_banshee_boardwalk_dl_2718
+  type: gfx
+  offset: 0x2718
+d_course_banshee_boardwalk_dl_2790:
+  symbol: d_course_banshee_boardwalk_dl_2790
+  type: gfx
+  offset: 0x2790
+d_course_banshee_boardwalk_dl_2868:
+  symbol: d_course_banshee_boardwalk_dl_2868
+  type: gfx
+  offset: 0x2868
+d_course_banshee_boardwalk_dl_28A8:
+  symbol: d_course_banshee_boardwalk_dl_28A8
+  type: gfx
+  offset: 0x28A8
+d_course_banshee_boardwalk_dl_2980:
+  symbol: d_course_banshee_boardwalk_dl_2980
+  type: gfx
+  offset: 0x2980
+d_course_banshee_boardwalk_dl_2A18:
+  symbol: d_course_banshee_boardwalk_dl_2A18
+  type: gfx
+  offset: 0x2A18
+d_course_banshee_boardwalk_dl_2AE0:
+  symbol: d_course_banshee_boardwalk_dl_2AE0
+  type: gfx
+  offset: 0x2AE0
+d_course_banshee_boardwalk_dl_2B88:
+  symbol: d_course_banshee_boardwalk_dl_2B88
+  type: gfx
+  offset: 0x2B88
+d_course_banshee_boardwalk_dl_2C30:
+  symbol: d_course_banshee_boardwalk_dl_2C30
+  type: gfx
+  offset: 0x2C30
+d_course_banshee_boardwalk_dl_2CE0:
+  symbol: d_course_banshee_boardwalk_dl_2CE0
+  type: gfx
+  offset: 0x2CE0
+d_course_banshee_boardwalk_dl_2DB0:
+  symbol: d_course_banshee_boardwalk_dl_2DB0
+  type: gfx
+  offset: 0x2DB0
+d_course_banshee_boardwalk_dl_2E20:
+  symbol: d_course_banshee_boardwalk_dl_2E20
+  type: gfx
+  offset: 0x2E20
+d_course_banshee_boardwalk_dl_2EE0:
+  symbol: d_course_banshee_boardwalk_dl_2EE0
+  type: gfx
+  offset: 0x2EE0
+d_course_banshee_boardwalk_dl_2FA0:
+  symbol: d_course_banshee_boardwalk_dl_2FA0
+  type: gfx
+  offset: 0x2FA0
+d_course_banshee_boardwalk_dl_3050:
+  symbol: d_course_banshee_boardwalk_dl_3050
+  type: gfx
+  offset: 0x3050
+d_course_banshee_boardwalk_dl_3100:
+  symbol: d_course_banshee_boardwalk_dl_3100
+  type: gfx
+  offset: 0x3100
+d_course_banshee_boardwalk_dl_3200:
+  symbol: d_course_banshee_boardwalk_dl_3200
+  type: gfx
+  offset: 0x3200
+d_course_banshee_boardwalk_dl_32B0:
+  symbol: d_course_banshee_boardwalk_dl_32B0
+  type: gfx
+  offset: 0x32B0
+d_course_banshee_boardwalk_dl_3390:
+  symbol: d_course_banshee_boardwalk_dl_3390
+  type: gfx
+  offset: 0x3390
+d_course_banshee_boardwalk_dl_3468:
+  symbol: d_course_banshee_boardwalk_dl_3468
+  type: gfx
+  offset: 0x3468
+d_course_banshee_boardwalk_dl_35A0:
+  symbol: d_course_banshee_boardwalk_dl_35A0
+  type: gfx
+  offset: 0x35A0
+d_course_banshee_boardwalk_dl_3660:
+  symbol: d_course_banshee_boardwalk_dl_3660
+  type: gfx
+  offset: 0x3660
+d_course_banshee_boardwalk_dl_3710:
+  symbol: d_course_banshee_boardwalk_dl_3710
+  type: gfx
+  offset: 0x3710
+d_course_banshee_boardwalk_dl_37F0:
+  symbol: d_course_banshee_boardwalk_dl_37F0
+  type: gfx
+  offset: 0x37F0
+d_course_banshee_boardwalk_dl_3920:
+  symbol: d_course_banshee_boardwalk_dl_3920
+  type: gfx
+  offset: 0x3920
+d_course_banshee_boardwalk_dl_3980:
+  symbol: d_course_banshee_boardwalk_dl_3980
+  type: gfx
+  offset: 0x3980
+d_course_banshee_boardwalk_dl_3A20:
+  symbol: d_course_banshee_boardwalk_dl_3A20
+  type: gfx
+  offset: 0x3A20
+d_course_banshee_boardwalk_dl_3AF8:
+  symbol: d_course_banshee_boardwalk_dl_3AF8
+  type: gfx
+  offset: 0x3AF8
+d_course_banshee_boardwalk_dl_3C00:
+  symbol: d_course_banshee_boardwalk_dl_3C00
+  type: gfx
+  offset: 0x3C00
+d_course_banshee_boardwalk_dl_3C40:
+  symbol: d_course_banshee_boardwalk_dl_3C40
+  type: gfx
+  offset: 0x3C40
+d_course_banshee_boardwalk_dl_3CD0:
+  symbol: d_course_banshee_boardwalk_dl_3CD0
+  type: gfx
+  offset: 0x3CD0
+d_course_banshee_boardwalk_dl_3D98:
+  symbol: d_course_banshee_boardwalk_dl_3D98
+  type: gfx
+  offset: 0x3D98
+d_course_banshee_boardwalk_dl_3EB0:
+  symbol: d_course_banshee_boardwalk_dl_3EB0
+  type: gfx
+  offset: 0x3EB0
+d_course_banshee_boardwalk_dl_3EF0:
+  symbol: d_course_banshee_boardwalk_dl_3EF0
+  type: gfx
+  offset: 0x3EF0
+d_course_banshee_boardwalk_dl_3F60:
+  symbol: d_course_banshee_boardwalk_dl_3F60
+  type: gfx
+  offset: 0x3F60
+d_course_banshee_boardwalk_dl_4038:
+  symbol: d_course_banshee_boardwalk_dl_4038
+  type: gfx
+  offset: 0x4038
+d_course_banshee_boardwalk_dl_4118:
+  symbol: d_course_banshee_boardwalk_dl_4118
+  type: gfx
+  offset: 0x4118
+d_course_banshee_boardwalk_dl_4188:
+  symbol: d_course_banshee_boardwalk_dl_4188
+  type: gfx
+  offset: 0x4188
+d_course_banshee_boardwalk_dl_41F0:
+  symbol: d_course_banshee_boardwalk_dl_41F0
+  type: gfx
+  offset: 0x41F0
+d_course_banshee_boardwalk_dl_42D0:
+  symbol: d_course_banshee_boardwalk_dl_42D0
+  type: gfx
+  offset: 0x42D0
+d_course_banshee_boardwalk_dl_43A8:
+  symbol: d_course_banshee_boardwalk_dl_43A8
+  type: gfx
+  offset: 0x43A8
+d_course_banshee_boardwalk_dl_4428:
+  symbol: d_course_banshee_boardwalk_dl_4428
+  type: gfx
+  offset: 0x4428
+d_course_banshee_boardwalk_dl_4480:
+  symbol: d_course_banshee_boardwalk_dl_4480
+  type: gfx
+  offset: 0x4480
+d_course_banshee_boardwalk_cheep_cheep1:
+  symbol: d_course_banshee_boardwalk_cheep_cheep1
+  type: vtx
+  offset: 0x5E80
+  count: 32
+d_course_banshee_boardwalk_cheep_cheep2:
+  symbol: d_course_banshee_boardwalk_cheep_cheep2
+  type: vtx
+  offset: 0x6080
+  count: 32
+d_course_banshee_boardwalk_cheep_cheep3:
+  symbol: d_course_banshee_boardwalk_cheep_cheep3
+  type: vtx
+  offset: 0x6280
+  count: 32
+d_course_banshee_boardwalk_cheep_cheep4:
+  symbol: d_course_banshee_boardwalk_cheep_cheep4
+  type: vtx
+  offset: 0x6480
+  count: 32
+d_course_banshee_boardwalk_cheep_cheep5:
+  symbol: d_course_banshee_boardwalk_cheep_cheep5
+  type: vtx
+  offset: 0x6680
+  count: 30
+d_course_banshee_boardwalk_cheep_cheep6:
+  symbol: d_course_banshee_boardwalk_cheep_cheep6
+  type: vtx
+  offset: 0x6860
+  count: 16
+d_course_banshee_boardwalk_cheep_cheep7:
+  symbol: d_course_banshee_boardwalk_cheep_cheep7
+  type: vtx
+  offset: 0x6960
+  count: 32
+d_course_banshee_boardwalk_cheep_cheep8:
+  symbol: d_course_banshee_boardwalk_cheep_cheep8
+  type: vtx
+  offset: 0x6B60
+  count: 31
+d_course_banshee_boardwalk_cheep_cheep9:
+  symbol: d_course_banshee_boardwalk_cheep_cheep9
+  type: vtx
+  offset: 0x6D50
+  count: 10
+d_course_banshee_boardwalk_cheep_cheep10:
+  symbol: d_course_banshee_boardwalk_cheep_cheep10
+  type: vtx
+  offset: 0x6DF0
+  count: 6
+d_course_banshee_boardwalk_dl_7650:
+  symbol: d_course_banshee_boardwalk_dl_7650
+  type: gfx
+  offset: 0x7650
+d_course_banshee_boardwalk_dl_78C0:
+  symbol: d_course_banshee_boardwalk_dl_78C0
+  type: gfx
+  offset: 0x78C0
+d_course_banshee_boardwalk_dl_7978:
+  symbol: d_course_banshee_boardwalk_dl_7978
+  type: gfx
+  offset: 0x7978
+d_course_banshee_boardwalk_dl_7B38:
+  symbol: d_course_banshee_boardwalk_dl_7B38
+  type: gfx
+  offset: 0x7B38
+d_course_banshee_boardwalk_dl_7B78:
+  symbol: d_course_banshee_boardwalk_dl_7B78
+  type: gfx
+  offset: 0x7B78
+d_course_banshee_boardwalk_dl_cheep_cheep:
+  symbol: d_course_banshee_boardwalk_dl_cheep_cheep
+  type: gfx
+  offset: 0x7BA8
+d_course_banshee_boardwalk_dl_A850:
+  symbol: d_course_banshee_boardwalk_dl_A850
+  type: gfx
+  offset: 0xA850
+d_course_banshee_boardwalk_dl_A900:
+  symbol: d_course_banshee_boardwalk_dl_A900
+  type: gfx
+  offset: 0xA900
+d_course_banshee_boardwalk_dl_A9B0:
+  symbol: d_course_banshee_boardwalk_dl_A9B0
+  type: gfx
+  offset: 0xA9B0
+d_course_banshee_boardwalk_dl_A9C8:
+  symbol: d_course_banshee_boardwalk_dl_A9C8
+  type: gfx
+  offset: 0xA9C8
+d_course_banshee_boardwalk_dl_trash_bin:
+  symbol: d_course_banshee_boardwalk_dl_trash_bin
+  type: gfx
+  offset: 0xA9D8
+d_course_banshee_boardwalk_model_unk:
+  symbol: d_course_banshee_boardwalk_model_unk
+  type: vtx
+  offset: 0xA9E8
+  count: 9
+d_course_banshee_boardwalk_dl_B278:
+  symbol: d_course_banshee_boardwalk_dl_B278
+  type: gfx
+  offset: 0xB278
+d_course_banshee_boardwalk_dl_B308:
+  symbol: d_course_banshee_boardwalk_dl_B308
+  type: gfx
+  offset: 0xB308

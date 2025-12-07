@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/sherbet_land_data.h>
+#include <assets/models/tracks/sherbet_land/sherbet_land_data.h>
 #include "animation.h"
 
 const Gfx* sherbet_land_dls[] = {

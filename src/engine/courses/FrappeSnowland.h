@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/frappe_snowland_vertices.h"
-    #include "assets/frappe_snowland_displaylists.h"
-    #include "assets/frappe_snowland_data.h"
+    #include "assets/models/tracks/frappe_snowland/frappe_snowland_vertices.h"
+    #include "assets/models/tracks/frappe_snowland/frappe_snowland_displaylists.h"
+    #include "assets/models/tracks/frappe_snowland/frappe_snowland_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -22,7 +22,7 @@ public:
     explicit FrappeSnowland();
 
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32 sp1C, Camera* camera) override;

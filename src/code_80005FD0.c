@@ -23,7 +23,7 @@
 #include "code_80057C60.h"
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include <common_structs.h>
 #include "main.h"
 #include "menus.h"
@@ -33,9 +33,11 @@
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/path_spawn_metadata.h"
-#include <assets/kalimari_desert_data.h>
-#include <assets/frappe_snowland_data.h>
-#include <assets/dks_jungle_parkway_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/other/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
+#include <assets/other/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 #include <stdio.h>
 
 #include "port/Game.h"
@@ -190,21 +192,21 @@ s16* gPathExpectedRotation[4];
 s16* gTrackConsecutiveCurveCounts[4];
 u16 gPathIndexByPlayerId[12]; // D_801645B0
 u16 gPathCountByPathIndex[4]; // D_801645C8
-s32 D_801645D0[4];
+s32 D_801645D0[NUM_CAMERAS];
 s16* gCurrentTrackConsecutiveCurveCountsPath;
-s32 D_801645E8[4];
-f32 D_801645F8[4];
-s32 D_80164608[4];
-f32 D_80164618[4];
-s32 D_80164628[4];
-f32 D_80164638[4];
-f32 D_80164648[4];
-f32 D_80164658[4];
-s16 gNearestPathPointByCameraId[4];
-s16 D_80164670[4];
-s16 D_80164678[4];
-s16 D_80164680[4];
-f32 D_80164688[4];
+s32 D_801645E8[NUM_CAMERAS];
+f32 D_801645F8[NUM_CAMERAS];
+s32 D_80164608[NUM_CAMERAS];
+f32 D_80164618[NUM_CAMERAS];
+s32 D_80164628[NUM_CAMERAS];
+f32 D_80164638[NUM_CAMERAS];
+f32 D_80164648[NUM_CAMERAS];
+f32 D_80164658[NUM_CAMERAS];
+s16 gNearestPathPointByCameraId[NUM_CAMERAS];
+s16 D_80164670[NUM_CAMERAS];
+s16 D_80164678[NUM_CAMERAS];
+s16 D_80164680[NUM_CAMERAS];
+f32 D_80164688[NUM_CAMERAS];
 f32 D_80164698;
 f32 D_8016469C;
 f32 D_801646A0;
@@ -217,10 +219,10 @@ s32 D_801646B4;
 s32 D_801646B8;
 s32 D_801646BC;
 // end padding
-s16 D_801646C0[4];
+s16 D_801646C0[NUM_CAMERAS];
 u32 D_801646C8;
 u16 D_801646CC;
-UnkStruct_46D0 D_801646D0[4];
+UnkStruct_46D0 D_801646D0[NUM_CAMERAS];
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
@@ -3411,7 +3413,7 @@ void generate_player_smoke(void) {
 
 void func_8000F0E0(void) {
     s32 i;
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = 0;
         D_80164678[i] = 0;
     }
@@ -5399,7 +5401,7 @@ void func_80014DE4(s32 cameraIndex) {
         D_80164678[cameraIndex] = 0;
     }
 
-    for (cameraId = 0; cameraId < 4; cameraId++) {
+    for (cameraId = 0; cameraId < NUM_CAMERAS; cameraId++) {
         gNearestPathPointByCameraId[cameraId] = 0;
     }
 }
@@ -6665,6 +6667,40 @@ void func_80019C50(s32 arg0) {
     }
 }
 
+void look_behind_toggle(s32 cameraIdx) {
+    static bool lookBehindActive[NUM_CAMERAS] = {0};
+    bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
+    Camera* camera = &cameras[cameraIdx];
+    struct UnkStruct_800DC5EC* screenCtx = NULL;
+
+    if (CVarGetInteger("gLookBehind", false) == false) {
+        return;
+    }
+
+    if (cameras[cameraIdx].playerId < 0 || cameras[cameraIdx].playerId >= 4) {
+        return;
+    }
+
+    // Get the screen context
+    screenCtx = &D_8015F480[cameras[cameraIdx].playerId];
+
+    if (gRaceState == RACE_IN_PROGRESS) {
+        // Flip the camera
+        if (pressed && !lookBehindActive[cameraIdx]) {
+            screenCtx->pendingCamera = screenCtx->lookBehindCamera;
+            lookBehindActive[cameraIdx] = true;
+        // Unflip the camera
+        } else if (!pressed && lookBehindActive[cameraIdx]) {
+            screenCtx->pendingCamera = screenCtx->raceCamera;
+            lookBehindActive[cameraIdx] = false;
+        }
+    } else if (lookBehindActive[cameraIdx]) {
+        // Restore the original camera
+        screenCtx->pendingCamera = screenCtx->raceCamera;
+        lookBehindActive[cameraIdx] = false;
+    }
+}
+
 void func_80019D2C(Camera* camera, Player* player, s32 arg2) {
     s32 playerId;
     s32 nearestWaypoint;
@@ -6691,7 +6727,7 @@ void func_80019DF4(void) {
     s32 playerId = gGPCurrentRacePlayerIdByRank[0];
     // clang-format off
     // Has to be on a single line to match. Because IDO hates you :)
-    for (i = 0; i < 4; i++) { D_80164670[i] = D_80164678[i]; }
+    for (i = 0; i < NUM_CAMERAS; i++) { D_80164670[i] = D_80164678[i]; }
     // clang-format on
     camera1->playerId = playerId;
     D_80164678[0] = 1;
@@ -6712,7 +6748,7 @@ void func_80019E58(void) {
 void func_80019ED0(void) {
     s32 i;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164670[i] = D_80164678[i];
     }
 
@@ -6720,7 +6756,7 @@ void func_80019ED0(void) {
 
     camera1->playerId = (s16) gPlayerWinningIndex;
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < NUM_CAMERAS; i++) {
         D_80164680[i] = 0;
         func_80015314(gPlayerWinningIndex, 0, i);
         D_80164678[i] = 1;
@@ -6756,6 +6792,7 @@ void func_80019FB4(s32 cameraId) {
 void func_8001A0A4(UNUSED u16* arg0, UNUSED Camera* arg1, UNUSED Player* arg2, UNUSED s8 arg3, s32 arg4) {
     func_80019FB4(arg4);
     func_80019C50(arg4);
+    look_behind_toggle(arg4);
 }
 
 void func_8001A0DC(u16* arg0, Camera* arg1, Player* arg2, s8 arg3, s32 arg4) {
@@ -6960,6 +6997,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
             break;
     }
     func_80019C50(cameraIndex);
+    look_behind_toggle(cameraIndex);
     switch (D_80164680[cameraIndex]) {
         case 0:
             func_80015390(camera, player, index);

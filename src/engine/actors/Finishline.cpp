@@ -5,7 +5,7 @@
 #include "Finishline.h"
 #include "engine/Actor.h"
 #include "World.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "src/port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
 

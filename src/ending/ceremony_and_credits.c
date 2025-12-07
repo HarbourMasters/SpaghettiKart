@@ -547,7 +547,7 @@ void init_cinematic_camera(void) {
     camera->unk68 = 0.0f;
     camera->unk6C = 0;
     camera->unk6E = 0;
-    camera->unk20 = gCameraZoom[0];
+    camera->unk20 = gCameraFOV[0];
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
@@ -633,7 +633,7 @@ s32 func_80283648(Camera* camera) {
     }
     func_80282F44(0, cinematicCamera, camera);
     func_80282F44(1, cinematicCamera, camera);
-    func_80283100(cinematicCamera, gCameraZoom);
+    func_80283100(cinematicCamera, gCameraFOV);
     vec3f_copy_return_dupe(cinematicCamera->unk30, camera->pos);
     vec3f_copy_return_dupe(cinematicCamera->unk24, camera->lookAt);
     vec3f_copy_return_dupe(cinematicCamera->unk3C, camera->up);
@@ -724,12 +724,12 @@ void func_80283BA4(UNUSED CinematicCamera* camera) {
 }
 
 void func_80283BF0(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1A);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_BUILDUP);
 }
 
 //
 void func_80283C14(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1B);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD);
 }
 
 void wrap_func_800CB134(UNUSED CinematicCamera* camera) {
@@ -742,7 +742,7 @@ void wrap_func_800CB14C(UNUSED CinematicCamera* camera) {
 
 void func_80283C78(UNUSED CinematicCamera* arg0) {
     if (D_800DC5E4 == 0) {
-        func_800C8EF8(0x1C);
+        play_sequence2(MUSIC_SEQ_STAFF_ROLL);
     }
 }
 

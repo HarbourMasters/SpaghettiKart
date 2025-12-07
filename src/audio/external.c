@@ -626,38 +626,33 @@ void func_800C2474(void) {
     D_8018EFD8[var_v0].next = 0xFF;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/B9kUf
-// No idea what's up with this function. `arg1_copy` is a huge improvement but feels very silly
-// Presumably there's some macro being used to do all the or'ing (creating soundbits), that might
-// matter for match purposes
 void func_800C284C(u8 arg0, u8 arg1, u8 arg2, u16 arg3) {
     u8 var_v1;
-    u8* arg1_copy = &arg1;
+    UNUSED s32 pad;
 
-    if ((D_800EA1EC == 0) || (arg0 == 2)) {
-        if (1) {}
-        func_800CBBB8(0x82000000 | (arg0 << 0x10) | (*arg1_copy << 8), arg3);
-        D_801930D0[arg0].unk_248 = *arg1_copy | (arg2 << 8);
-        if (D_801930D0[arg0].unk_000 != 1.0f) {
-            func_800CBB88(0x41000000 | (arg0 << 0x10), D_801930D0[arg0].unk_000);
-        }
-        D_801930D0[arg0].unk_028 = 0;
-        D_801930D0[arg0].unk_018 = 0;
-        D_801930D0[arg0].unk_014 = 0;
-        for (var_v1 = 0; var_v1 < 16; var_v1++) {
-            D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
-            D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
-            D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
-        }
-        D_801930D0[arg0].unk_244 = 0;
-        D_801930D0[arg0].unk_246 = 0;
+    if ((D_800EA1EC != 0) && (arg0 != 2)) {
+        return;
     }
+
+    func_800CBBB8(0x82000000 | (((u32) arg0 & 0xFF) << 0x10) | (((u32) arg1 & 0xFF) << 8), arg3);
+    D_801930D0[arg0].unk_248 = arg1 | (arg2 << 8);
+    if (D_801930D0[arg0].unk_000 != 1.0f) {
+        func_800CBB88(0x41000000 | (((u32) arg0 & 0xFF) << 0x10), D_801930D0[arg0].unk_000);
+    }
+    D_801930D0[arg0].unk_028 = 0;
+    D_801930D0[arg0].unk_018 = 0;
+    D_801930D0[arg0].unk_014 = 0;
+
+    for (var_v1 = 0; var_v1 < 16; var_v1++) {
+        D_801930D0[arg0].unk_044[var_v1].unk_00 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_0C = 0;
+        D_801930D0[arg0].unk_044[var_v1].unk_10 = 1.0f;
+        D_801930D0[arg0].unk_044[var_v1].unk_1C = 0;
+    }
+
+    D_801930D0[arg0].unk_244 = 0;
+    D_801930D0[arg0].unk_246 = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/audio/external/func_800C284C.s")
-#endif
 
 void func_800C29B4(u8 arg0, u16 arg1) {
     func_800CBBB8(((arg0 & 0xFF) << 0x10) | 0x83000000, arg1);
@@ -2432,15 +2427,15 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0010U);
+                            play_sequences(MUSIC_SEQ_FINISH_1ST_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                         } else if (gPlayers[playerId].currentRank < 4) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000EU, 0x0010U);
+                            play_sequences(MUSIC_SEQ_FINISH_2ND_4TH_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                         } else {
                             func_800C3448(-0x3E9F9C00);
-                            func_800CA414(0x000FU, 0x0018U);
+                            play_sequences(MUSIC_SEQ_FINISH_5TH_8TH_PLACE, MUSIC_SEQ_LOSING_RESULTS);
                         }
                     } else {
                         D_800EA0EC[playerId] = 2;
@@ -2451,7 +2446,7 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0010U);
+                            play_sequences(MUSIC_SEQ_FINISH_1ST_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                         } else if (gPlayers[playerId].currentRank < 4) {
                             if (D_800EA104 == 0) {
                                 func_800C3448(0x100100FF);
@@ -2460,12 +2455,12 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000EU, 0x0010U);
+                            play_sequences(MUSIC_SEQ_FINISH_2ND_4TH_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                         } else if (D_800EA104 == 0) {
                             func_800C3448(0x100100FF);
                             func_800C3448(0x110100FF);
                             func_800C3448(-0x3E9F9C00);
-                            func_800CA414(0x000FU, 0x0018U);
+                            play_sequences(MUSIC_SEQ_FINISH_5TH_8TH_PLACE, MUSIC_SEQ_LOSING_RESULTS);
                         }
                         if ((D_800EA104 != 0) || (D_800EA0EC[playerId] != 1)) {
                             func_800C5278(5U);
@@ -2481,9 +2476,9 @@ void func_800C76C0(u8 playerId) {
                     D_800EA0EC[playerId] = 2;
                     func_800C9060(playerId, 0x1900F103U);
                     if (D_801657E5 == 1) {
-                        func_800CA414(0x000DU, 0x0010U);
+                        play_sequences(MUSIC_SEQ_FINISH_1ST_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                     } else if (D_8018ED90 == 1) {
-                        func_800CA414(0x000EU, 0x0010U);
+                        play_sequences(MUSIC_SEQ_FINISH_2ND_4TH_PLACE, MUSIC_SEQ_WINNING_RESULTS);
                     } else {
                         func_800C3448(0x01640010);
                     }
@@ -2498,16 +2493,16 @@ void func_800C76C0(u8 playerId) {
                             func_800C97C4(playerId);
                             D_800EA0F0 = 2;
                             func_800C9A88(playerId);
-                            func_800CA414(0x000DU, 0x0017U);
+                            play_sequences(MUSIC_SEQ_FINISH_1ST_PLACE, MUSIC_SEQ_VS_BATTLE_RESULTS);
                             break;
                         case 2: /* switch 1 */
                             if ((D_800EA104 == 0) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C3448(0x100100FF);
                                 func_800C3448(0x110100FF);
 #ifdef VERSION_EU
-                                func_800C8EF8(0x000DU);
+                                play_sequence2(MUSIC_SEQ_FINISH_1ST_PLACE);
 #else
-                                func_800CA414(0x000DU, 0x0017U);
+                                play_sequences(MUSIC_SEQ_FINISH_1ST_PLACE, MUSIC_SEQ_VS_BATTLE_RESULTS);
 #endif
                                 D_800EA104 = 1;
                             } else if ((D_800EA104 == 1) && (D_800EA0EC[playerId] == 1)) {
@@ -2516,7 +2511,7 @@ void func_800C76C0(u8 playerId) {
                                 if (func_800C3508(1) != 0x000D) {
 #endif
                                     D_800EA104 = 0;
-                                    func_800CA414(0x000EU, 0x0017U);
+                                    play_sequences(MUSIC_SEQ_FINISH_2ND_4TH_PLACE, MUSIC_SEQ_VS_BATTLE_RESULTS);
                                 }
                                 D_800EA104 = 2;
                             }
@@ -2525,12 +2520,12 @@ void func_800C76C0(u8 playerId) {
                             if ((D_800EA104 == 0) && (D_800EA0EC[playerId] == 1)) {
                                 func_800C3448(0x100100FF);
                                 func_800C3448(0x110100FF);
-                                func_800C8EF8(0x000DU);
+                                play_sequence2(MUSIC_SEQ_FINISH_1ST_PLACE);
                                 D_800EA104 = 1;
                             } else if ((D_800EA104 == 1) && (D_800EA0EC[playerId] == 1)) {
                                 if (func_800C3508(1) != 0x000D) {
                                     D_800EA104 = 0;
-                                    func_800C8EF8(0x000EU);
+                                    play_sequence2(MUSIC_SEQ_FINISH_2ND_4TH_PLACE);
                                 }
                                 D_800EA104 = 2;
                             } else if ((D_800EA104 == 2) && (D_800EA0EC[playerId] == 1)) {
@@ -2539,7 +2534,7 @@ void func_800C76C0(u8 playerId) {
                                 if (func_800C3508(1) != 0x000E) {
 #endif
                                     D_800EA104 = 0;
-                                    func_800CA414(0x000EU, 0x0017U);
+                                    play_sequences(MUSIC_SEQ_FINISH_2ND_4TH_PLACE, MUSIC_SEQ_VS_BATTLE_RESULTS);
                                 }
                                 D_800EA104 = 3;
                             }
@@ -2553,7 +2548,7 @@ void func_800C76C0(u8 playerId) {
                             func_800C3448(0x110100FF);
                             func_800C5278(5U);
                             func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));
-                            func_800C8EF8(0x0017U);
+                            play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
                             D_800EA0EC[playerId] = 2;
                             func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                         SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2562,7 +2557,7 @@ void func_800C76C0(u8 playerId) {
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1)) {
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
-                                func_800C8EF8(0x0017U);
+                                play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
                                 D_800EA0EC[playerId] = 2;
                                 func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                             SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2573,7 +2568,7 @@ void func_800C76C0(u8 playerId) {
                                 (D_800EA0EC[3] == 1)) {
                                 func_800C5278(5U);
                                 func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
-                                func_800C8EF8(0x0017U);
+                                play_sequence2(MUSIC_SEQ_VS_BATTLE_RESULTS);
                                 D_800EA0EC[playerId] = 2;
                                 func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) +
                                                             SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -2899,8 +2894,8 @@ void play_sequence(u16 arg0) {
     }
 }
 
-void func_800C8EF8(u16 arg0) {
-    func_800C3448(arg0 | 0x1010000);
+void play_sequence2(u16 arg0) {
+    func_800C3448(arg0 | 0x01010000);
     D_800EA160 = arg0;
 }
 
@@ -3332,7 +3327,7 @@ void func_800CA388(u8 arg0) {
     fade_channel_volume_scale(5, 0, arg0);
 }
 
-void func_800CA414(u16 arg0, u16 arg1) {
+void play_sequences(u16 arg0, u16 arg1) {
     if (D_800EA104 == 0) {
         func_800C3448(func_800C3508(0) | 0x30000000);
         func_800C35E8(0);
@@ -3349,12 +3344,12 @@ void func_800CA49C(u8 arg0) {
         } else if (D_800EA164 != 0) {
             func_800C3448(0x100100FF); // 0x19000000
             func_800C3448(0x110100FF);
-            func_800C8EF8(0xC);
+            play_sequence2(MUSIC_SEQ_FINAL_LAP_FANFARE);
             func_800C3448(0xC1510011);
         } else {
             func_800C3448(0x100100FF); // 0x19000000
             func_800C3448(0x110100FF);
-            func_800C8EF8(0xC);
+            play_sequence2(MUSIC_SEQ_FINAL_LAP_FANFARE);
             func_800C3448(gCurrentMusicSeq | 0xC1500000);
             func_800C3448(0xC130017D);
         }
@@ -3385,11 +3380,11 @@ void func_800CA59C(u8 playerId) {
                     func_800C3448(0xC1F00000);
                     func_800C3448(0xC1510011);
                 } else {
-                    func_800C8EF8(0x0011U);
+                    play_sequence2(MUSIC_SEQ_STAR_JINGLE);
                 }
             } else {
                 if (1) {} // ?
-                func_800C8EF8(0x0011U);
+                play_sequence2(MUSIC_SEQ_STAR_JINGLE);
             }
         }
         D_800EA10C[playerId] = 1;
@@ -3600,7 +3595,7 @@ void func_800CB14C() {
         if (D_800EA174 == 0x012C) {
             play_sequence(MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD);
             func_800C3448(0x4000007F);
-            func_800C8EF8(0x001DU);
+            play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_4TH_8TH);
             func_800C3448(0x41000000);
         }
         if (D_800EA174 == 0x0230) {

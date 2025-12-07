@@ -11,8 +11,8 @@
 #include "collision_viewer.h"
 #include "math_util.h"
 
-#include "assets/other_textures.h"
-#include "assets/common_data.h"
+#include "assets/textures/other_textures.h"
+#include "assets/models/common_data.h"
 
 //! @todo decide to use colours or textures and fix displaylists because they are buggy
 

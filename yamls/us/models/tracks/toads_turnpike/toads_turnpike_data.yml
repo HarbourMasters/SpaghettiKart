@@ -1,0 +1,1953 @@
+:config:
+  segments:
+    - [0x06, 0x857E80]
+    - [0x07, 0x800000]
+  external_files:
+    - "yamls/us/textures/tracks/toads_turnpike/toads_turnpike_data.yml"
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_645134"]
+    - [0x05000800, "textures/other_textures/texture_64FE68"]
+    - [0x05001800, "textures/other_textures/texture_6607C0"]
+    - [0x05002000, "textures/other_textures/texture_6608C8"]
+    - [0x05002800, "textures/other_textures/grass_11"]
+    - [0x05003000, "textures/other_textures/sign_nintendo_red_0"]
+    - [0x05004000, "textures/other_textures/sign_nintendo_red_1"]
+    - [0x05005000, "textures/other_textures/texture_671A88"]
+    - [0x05005800, "textures/other_textures/road_2"]
+    - [0x05006800, "textures/other_textures/road_3"]
+    - [0x05007800, "textures/other_textures/road_4"]
+    - [0x05008800, "textures/other_textures/road_finish_0"]
+    - [0x05009800, "textures/other_textures/sign_toad_yellow"]
+    - [0x0500A800, "textures/other_textures/sign_toad_green"]
+    - [0x0500B800, "textures/other_textures/sign_merging_lanes"]
+    - [0x0500C000, "textures/other_textures/texture_65127C"]
+    - [0x0500C800, "textures/other_textures/road_5"]
+    - [0x0500D800, "textures/other_textures/sign_toad_red"]
+    - [0x0500E800, "textures/other_textures/texture_668228"]
+    # Segment 7
+    - [0x7000000, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_0"]
+    - [0x7000068, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_68"]
+    - [0x70000D8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_D8"]
+    - [0x7000140, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_140"]
+    - [0x7000160, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_160"]
+    - [0x7000218, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_218"]
+    - [0x7000300, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_300"]
+    - [0x70003E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3E8"]
+    - [0x70004C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4C0"]
+    - [0x7000540, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_540"]
+    - [0x7000618, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_618"]
+    - [0x70006E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6E8"]
+    - [0x7000768, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_768"]
+    - [0x70007E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_7E8"]
+    - [0x70008C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_8C0"]
+    - [0x7000940, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_940"]
+    - [0x7000A28, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_A28"]
+    - [0x7000AA8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_AA8"]
+    - [0x7000B48, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_B48"]
+    - [0x7000C30, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_C30"]
+    - [0x7000D08, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_D08"]
+    - [0x7000D88, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_D88"]
+    - [0x7000E08, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_E08"]
+    - [0x7000EC0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_EC0"]
+    - [0x7000FA8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_FA8"]
+    - [0x7001050, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1050"]
+    - [0x7001068, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1068"]
+    - [0x7001078, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1078"]
+    - [0x70011B8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_11B8"]
+    - [0x70013B0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_13B0"]
+    - [0x70015E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_15E8"]
+    - [0x7001780, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1780"]
+    - [0x70018C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_18C0"]
+    - [0x7001A58, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1A58"]
+    - [0x7001BB8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1BB8"]
+    - [0x7001CB8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1CB8"]
+    - [0x7001E30, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1E30"]
+    - [0x7001F70, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_1F70"]
+    - [0x7002050, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2050"]
+    - [0x70021E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_21E8"]
+    - [0x7002328, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2328"]
+    - [0x70024C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_24C0"]
+    - [0x7002600, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2600"]
+    - [0x7002798, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2798"]
+    - [0x70028D8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_28D8"]
+    - [0x70029B8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_29B8"]
+    - [0x7002AF8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2AF8"]
+    - [0x7002D98, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2D98"]
+    - [0x7002E40, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2E40"]
+    - [0x7002EE0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2EE0"]
+    - [0x7002FA0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_2FA0"]
+    - [0x7003060, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3060"]
+    - [0x7003118, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3118"]
+    - [0x70031E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_31E8"]
+    - [0x70032A0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_32A0"]
+    - [0x70033A8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_33A8"]
+    - [0x7003478, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3478"]
+    - [0x7003548, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3548"]
+    - [0x7003638, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3638"]
+    - [0x70036C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_36C0"]
+    - [0x7003780, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3780"]
+    - [0x7003850, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3850"]
+    - [0x70038E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_38E8"]
+    - [0x70039A8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_39A8"]
+    - [0x7003AD0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3AD0"]
+    - [0x7003B58, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3B58"]
+    - [0x7003C28, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3C28"]
+    - [0x7003D00, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3D00"]
+    - [0x7003DE8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3DE8"]
+    - [0x7003E90, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3E90"]
+    - [0x7003F80, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_3F80"]
+    - [0x70040A8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_40A8"]
+    - [0x70041D0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_41D0"]
+    - [0x70042E8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_42E8"]
+    - [0x70043A8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_43A8"]
+    - [0x70044C0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_44C0"]
+    - [0x70045B8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_45B8"]
+    - [0x7004678, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4678"]
+    - [0x7004738, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4738"]
+    - [0x7004850, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4850"]
+    - [0x7004910, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4910"]
+    - [0x7004A40, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4A40"]
+    - [0x7004B00, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4B00"]
+    - [0x7004BE0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4BE0"]
+    - [0x7004D10, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4D10"]
+    - [0x7004E30, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4E30"]
+    - [0x7004EF0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4EF0"]
+    - [0x7004FB0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_4FB0"]
+    - [0x70050A0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_50A0"]
+    - [0x70051C8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_51C8"]
+    - [0x7005270, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5270"]
+    - [0x7005360, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5360"]
+    - [0x7005480, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5480"]
+    - [0x70055A0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_55A0"]
+    - [0x70056B0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_56B0"]
+    - [0x7005770, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5770"]
+    - [0x7005880, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5880"]
+    - [0x7005958, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5958"]
+    - [0x7005AE8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5AE8"]
+    - [0x7005C80, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5C80"]
+    - [0x7005D90, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5D90"]
+    - [0x7005E50, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5E50"]
+    - [0x7005F78, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_5F78"]
+    - [0x7006030, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6030"]
+    - [0x7006110, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6110"]
+    - [0x7006230, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6230"]
+    - [0x7006348, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6348"]
+    - [0x7006408, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6408"]
+    - [0x70064C8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_64C8"]
+    - [0x70065B8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_65B8"]
+    - [0x70066E0, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_66E0"]
+    - [0x7006788, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6788"]
+    - [0x7006848, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6848"]
+    - [0x7006908, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6908"]
+    - [0x7006AB8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6AB8"]
+    - [0x7006AD8, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6AD8"]
+    - [0x7006B08, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6B08"]
+    - [0x7006B18, "models/tracks/toads_turnpike/toads_turnpike_displaylists/d_course_toads_turnpike_packed_dl_6B18"]
+    # Segment 4
+    - [0x4000000, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000000"]
+    - [0x4000080, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000080"]
+    - [0x4000140, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000140"]
+    - [0x40001c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040001C0"]
+    - [0x40003c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040003C0"]
+    - [0x40005c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040005C0"]
+    - [0x4000640, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000640"]
+    - [0x4000840, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000840"]
+    - [0x4000a40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000A40"]
+    - [0x4000c40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000C40"]
+    - [0x4000e40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04000E40"]
+    - [0x4001040, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001040"]
+    - [0x4001240, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001240"]
+    - [0x4001440, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001440"]
+    - [0x4001640, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001640"]
+    - [0x40017c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040017C0"]
+    - [0x40019c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040019C0"]
+    - [0x4001ac0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001AC0"]
+    - [0x4001cc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001CC0"]
+    - [0x4001ec0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04001EC0"]
+    - [0x4002040, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002040"]
+    - [0x4002220, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002220"]
+    - [0x4002400, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002400"]
+    - [0x40024e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040024E0"]
+    - [0x40026e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040026E0"]
+    - [0x40027e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040027E0"]
+    - [0x40029c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040029C0"]
+    - [0x4002ac0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002AC0"]
+    - [0x4002cc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002CC0"]
+    - [0x4002ec0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04002EC0"]
+    - [0x4003040, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003040"]
+    - [0x4003240, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003240"]
+    - [0x4003340, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003340"]
+    - [0x4003540, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003540"]
+    - [0x4003740, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003740"]
+    - [0x4003940, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003940"]
+    - [0x4003b40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003B40"]
+    - [0x4003c40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003C40"]
+    - [0x4003e40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04003E40"]
+    - [0x4004040, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004040"]
+    - [0x4004240, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004240"]
+    - [0x4004440, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004440"]
+    - [0x4004640, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004640"]
+    - [0x4004840, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004840"]
+    - [0x4004a40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004A40"]
+    - [0x4004bc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004BC0"]
+    - [0x4004dc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004DC0"]
+    - [0x4004ec0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04004EC0"]
+    - [0x40050c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040050C0"]
+    - [0x40051c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040051C0"]
+    - [0x40053c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040053C0"]
+    - [0x40055c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040055C0"]
+    - [0x4005640, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04005640"]
+    - [0x4005840, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04005840"]
+    - [0x4005a40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04005A40"]
+    - [0x4005c40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04005C40"]
+    - [0x4005e20, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04005E20"]
+    - [0x4006000, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006000"]
+    - [0x40060a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040060A0"]
+    - [0x40062a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040062A0"]
+    - [0x4006480, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006480"]
+    - [0x4006660, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006660"]
+    - [0x40066c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040066C0"]
+    - [0x40067b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040067B0"]
+    - [0x4006830, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006830"]
+    - [0x4006a10, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006A10"]
+    - [0x4006bf0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006BF0"]
+    - [0x4006dd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006DD0"]
+    - [0x4006f00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006F00"]
+    - [0x4006f80, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04006F80"]
+    - [0x4007000, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007000"]
+    - [0x40071e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040071E0"]
+    - [0x40073e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040073E0"]
+    - [0x40075c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040075C0"]
+    - [0x40076b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040076B0"]
+    - [0x4007890, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007890"]
+    - [0x4007a70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007A70"]
+    - [0x4007b10, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007B10"]
+    - [0x4007cf0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007CF0"]
+    - [0x4007ef0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04007EF0"]
+    - [0x40080d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040080D0"]
+    - [0x40081c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040081C0"]
+    - [0x40083c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040083C0"]
+    - [0x40085a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040085A0"]
+    - [0x4008600, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008600"]
+    - [0x40086a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040086A0"]
+    - [0x40088a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040088A0"]
+    - [0x4008920, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008920"]
+    - [0x4008970, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008970"]
+    - [0x4008b70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008B70"]
+    - [0x4008d70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008D70"]
+    - [0x4008e30, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008E30"]
+    - [0x4008ed0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04008ED0"]
+    - [0x40090b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040090B0"]
+    - [0x4009290, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009290"]
+    - [0x4009330, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009330"]
+    - [0x4009510, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009510"]
+    - [0x4009560, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009560"]
+    - [0x4009740, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009740"]
+    - [0x4009940, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009940"]
+    - [0x4009b20, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009B20"]
+    - [0x4009c10, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009C10"]
+    - [0x4009df0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009DF0"]
+    - [0x4009fd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04009FD0"]
+    - [0x400a070, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A070"]
+    - [0x400a0f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A0F0"]
+    - [0x400a2d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A2D0"]
+    - [0x400a4b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A4B0"]
+    - [0x400a550, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A550"]
+    - [0x400a730, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A730"]
+    - [0x400a910, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A910"]
+    - [0x400a9b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400A9B0"]
+    - [0x400ab90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400AB90"]
+    - [0x400ad90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400AD90"]
+    - [0x400af70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400AF70"]
+    - [0x400b060, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B060"]
+    - [0x400b240, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B240"]
+    - [0x400b420, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B420"]
+    - [0x400b4c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B4C0"]
+    - [0x400b6a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B6A0"]
+    - [0x400b6f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B6F0"]
+    - [0x400b8d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400B8D0"]
+    - [0x400bab0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BAB0"]
+    - [0x400bb50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BB50"]
+    - [0x400bb90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BB90"]
+    - [0x400bbd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BBD0"]
+    - [0x400bdb0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BDB0"]
+    - [0x400bf90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400BF90"]
+    - [0x400c170, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C170"]
+    - [0x400c1b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C1B0"]
+    - [0x400c2a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C2A0"]
+    - [0x400c2e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C2E0"]
+    - [0x400c4c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C4C0"]
+    - [0x400c6a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C6A0"]
+    - [0x400c700, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C700"]
+    - [0x400c8e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C8E0"]
+    - [0x400c940, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400C940"]
+    - [0x400cb40, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CB40"]
+    - [0x400cb80, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CB80"]
+    - [0x400cc00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CC00"]
+    - [0x400cd80, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CD80"]
+    - [0x400cf80, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CF80"]
+    - [0x400cfc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400CFC0"]
+    - [0x400d1c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D1C0"]
+    - [0x400d200, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D200"]
+    - [0x400d280, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D280"]
+    - [0x400d300, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D300"]
+    - [0x400d490, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D490"]
+    - [0x400d500, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D500"]
+    - [0x400d680, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D680"]
+    - [0x400d6b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D6B0"]
+    - [0x400d890, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D890"]
+    - [0x400d8d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400D8D0"]
+    - [0x400da50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400DA50"]
+    - [0x400dc50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400DC50"]
+    - [0x400dcd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400DCD0"]
+    - [0x400dd60, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400DD60"]
+    - [0x400dee0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400DEE0"]
+    - [0x400e040, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E040"]
+    - [0x400e240, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E240"]
+    - [0x400e2a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E2A0"]
+    - [0x400e330, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E330"]
+    - [0x400e370, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E370"]
+    - [0x400e540, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E540"]
+    - [0x400e6c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E6C0"]
+    - [0x400e750, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E750"]
+    - [0x400e8d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E8D0"]
+    - [0x400e900, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400E900"]
+    - [0x400eae0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400EAE0"]
+    - [0x400ebe0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400EBE0"]
+    - [0x400ed60, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400ED60"]
+    - [0x400ef60, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400EF60"]
+    - [0x400f120, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F120"]
+    - [0x400f300, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F300"]
+    - [0x400f500, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F500"]
+    - [0x400f5a0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F5A0"]
+    - [0x400f780, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F780"]
+    - [0x400f960, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400F960"]
+    - [0x400fa20, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400FA20"]
+    - [0x400fc20, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400FC20"]
+    - [0x400fe00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400FE00"]
+    - [0x400fe60, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x0400FE60"]
+    - [0x4010060, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010060"]
+    - [0x4010160, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010160"]
+    - [0x4010340, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010340"]
+    - [0x4010540, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010540"]
+    - [0x40105c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040105C0"]
+    - [0x40107c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040107C0"]
+    - [0x40109c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040109C0"]
+    - [0x4010a00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010A00"]
+    - [0x4010c00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010C00"]
+    - [0x4010d00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010D00"]
+    - [0x4010f00, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04010F00"]
+    - [0x4011000, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011000"]
+    - [0x4011200, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011200"]
+    - [0x4011400, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011400"]
+    - [0x4011480, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011480"]
+    - [0x4011680, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011680"]
+    - [0x4011780, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011780"]
+    - [0x4011980, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011980"]
+    - [0x4011b80, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011B80"]
+    - [0x4011c70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011C70"]
+    - [0x4011e70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011E70"]
+    - [0x4011f70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04011F70"]
+    - [0x4012150, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04012150"]
+    - [0x40122f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040122F0"]
+    - [0x40124e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040124E0"]
+    - [0x40126e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040126E0"]
+    - [0x40127d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040127D0"]
+    - [0x40129c0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040129C0"]
+    - [0x4012bb0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04012BB0"]
+    - [0x4012c50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04012C50"]
+    - [0x4012e50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04012E50"]
+    - [0x4012f50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04012F50"]
+    - [0x4013150, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013150"]
+    - [0x4013250, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013250"]
+    - [0x4013430, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013430"]
+    - [0x4013610, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013610"]
+    - [0x40137f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040137F0"]
+    - [0x40139d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040139D0"]
+    - [0x4013a90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013A90"]
+    - [0x4013c70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013C70"]
+    - [0x4013d90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013D90"]
+    - [0x4013f90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04013F90"]
+    - [0x4014110, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014110"]
+    - [0x40142f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040142F0"]
+    - [0x4014490, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014490"]
+    - [0x4014670, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014670"]
+    - [0x40147f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040147F0"]
+    - [0x40149f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040149F0"]
+    - [0x4014af0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014AF0"]
+    - [0x4014cd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014CD0"]
+    - [0x4014e50, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04014E50"]
+    - [0x4015050, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015050"]
+    - [0x4015110, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015110"]
+    - [0x40152d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040152D0"]
+    - [0x40153b0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040153B0"]
+    - [0x4015490, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015490"]
+    - [0x4015670, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015670"]
+    - [0x4015710, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015710"]
+    - [0x40157f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040157F0"]
+    - [0x40158d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040158D0"]
+    - [0x4015ad0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015AD0"]
+    - [0x4015c90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015C90"]
+    - [0x4015e90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015E90"]
+    - [0x4015f90, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04015F90"]
+    - [0x4016190, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016190"]
+    - [0x4016390, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016390"]
+    - [0x4016410, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016410"]
+    - [0x40165f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040165F0"]
+    - [0x40167f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040167F0"]
+    - [0x4016870, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016870"]
+    - [0x4016a70, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016A70"]
+    - [0x4016bd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016BD0"]
+    - [0x4016dd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016DD0"]
+    - [0x4016fd0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04016FD0"]
+    - [0x4017010, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017010"]
+    - [0x4017210, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017210"]
+    - [0x4017310, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017310"]
+    - [0x4017510, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017510"]
+    - [0x40175d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040175D0"]
+    - [0x40177d0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040177D0"]
+    - [0x4017950, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017950"]
+    - [0x4017b30, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017B30"]
+    - [0x4017d30, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017D30"]
+    - [0x4017df0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017DF0"]
+    - [0x4017ff0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04017FF0"]
+    - [0x40180f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040180F0"]
+    - [0x40182f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040182F0"]
+    - [0x40183f0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040183F0"]
+    - [0x40185e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040185E0"]
+    - [0x40187e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040187E0"]
+    - [0x40189e0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x040189E0"]
+    - [0x4018bc0, "models/tracks/toads_turnpike/toads_turnpike_vertices/d_course_toads_turnpike_vertex_0x04018BC0"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_toads_turnpike_dl_0:
+  symbol: d_course_toads_turnpike_dl_0
+  type: gfx
+  offset: 0x0
+d_course_toads_turnpike_dl_60:
+  symbol: d_course_toads_turnpike_dl_60
+  type: gfx
+  offset: 0x60
+d_course_toads_turnpike_dl_80:
+  symbol: d_course_toads_turnpike_dl_80
+  type: gfx
+  offset: 0x80
+d_course_toads_turnpike_dl_158:
+  symbol: d_course_toads_turnpike_dl_158
+  type: gfx
+  offset: 0x158
+d_course_toads_turnpike_dl_1F8:
+  symbol: d_course_toads_turnpike_dl_1F8
+  type: gfx
+  offset: 0x1F8
+d_course_toads_turnpike_dl_2D0:
+  symbol: d_course_toads_turnpike_dl_2D0
+  type: gfx
+  offset: 0x2D0
+d_course_toads_turnpike_dl_380:
+  symbol: d_course_toads_turnpike_dl_380
+  type: gfx
+  offset: 0x380
+d_course_toads_turnpike_dl_438:
+  symbol: d_course_toads_turnpike_dl_438
+  type: gfx
+  offset: 0x438
+d_course_toads_turnpike_dl_4E8:
+  symbol: d_course_toads_turnpike_dl_4E8
+  type: gfx
+  offset: 0x4E8
+d_course_toads_turnpike_dl_5B8:
+  symbol: d_course_toads_turnpike_dl_5B8
+  type: gfx
+  offset: 0x5B8
+d_course_toads_turnpike_dl_668:
+  symbol: d_course_toads_turnpike_dl_668
+  type: gfx
+  offset: 0x668
+d_course_toads_turnpike_dl_718:
+  symbol: d_course_toads_turnpike_dl_718
+  type: gfx
+  offset: 0x718
+d_course_toads_turnpike_dl_7D8:
+  symbol: d_course_toads_turnpike_dl_7D8
+  type: gfx
+  offset: 0x7D8
+d_course_toads_turnpike_dl_878:
+  symbol: d_course_toads_turnpike_dl_878
+  type: gfx
+  offset: 0x878
+d_course_toads_turnpike_dl_948:
+  symbol: d_course_toads_turnpike_dl_948
+  type: gfx
+  offset: 0x948
+d_course_toads_turnpike_dl_9F0:
+  symbol: d_course_toads_turnpike_dl_9F0
+  type: gfx
+  offset: 0x9F0
+d_course_toads_turnpike_dl_AC8:
+  symbol: d_course_toads_turnpike_dl_AC8
+  type: gfx
+  offset: 0xAC8
+d_course_toads_turnpike_dl_B88:
+  symbol: d_course_toads_turnpike_dl_B88
+  type: gfx
+  offset: 0xB88
+d_course_toads_turnpike_dl_C70:
+  symbol: d_course_toads_turnpike_dl_C70
+  type: gfx
+  offset: 0xC70
+d_course_toads_turnpike_dl_D00:
+  symbol: d_course_toads_turnpike_dl_D00
+  type: gfx
+  offset: 0xD00
+d_course_toads_turnpike_dl_DD0:
+  symbol: d_course_toads_turnpike_dl_DD0
+  type: gfx
+  offset: 0xDD0
+d_course_toads_turnpike_dl_E70:
+  symbol: d_course_toads_turnpike_dl_E70
+  type: gfx
+  offset: 0xE70
+d_course_toads_turnpike_dl_F18:
+  symbol: d_course_toads_turnpike_dl_F18
+  type: gfx
+  offset: 0xF18
+d_course_toads_turnpike_dl_FA8:
+  symbol: d_course_toads_turnpike_dl_FA8
+  type: gfx
+  offset: 0xFA8
+d_course_toads_turnpike_dl_1070:
+  symbol: d_course_toads_turnpike_dl_1070
+  type: gfx
+  offset: 0x1070
+d_course_toads_turnpike_dl_1118:
+  symbol: d_course_toads_turnpike_dl_1118
+  type: gfx
+  offset: 0x1118
+d_course_toads_turnpike_dl_11C0:
+  symbol: d_course_toads_turnpike_dl_11C0
+  type: gfx
+  offset: 0x11C0
+d_course_toads_turnpike_dl_1250:
+  symbol: d_course_toads_turnpike_dl_1250
+  type: gfx
+  offset: 0x1250
+d_course_toads_turnpike_dl_1310:
+  symbol: d_course_toads_turnpike_dl_1310
+  type: gfx
+  offset: 0x1310
+d_course_toads_turnpike_dl_13E0:
+  symbol: d_course_toads_turnpike_dl_13E0
+  type: gfx
+  offset: 0x13E0
+d_course_toads_turnpike_dl_1468:
+  symbol: d_course_toads_turnpike_dl_1468
+  type: gfx
+  offset: 0x1468
+d_course_toads_turnpike_dl_1510:
+  symbol: d_course_toads_turnpike_dl_1510
+  type: gfx
+  offset: 0x1510
+d_course_toads_turnpike_dl_15A8:
+  symbol: d_course_toads_turnpike_dl_15A8
+  type: gfx
+  offset: 0x15A8
+d_course_toads_turnpike_dl_1678:
+  symbol: d_course_toads_turnpike_dl_1678
+  type: gfx
+  offset: 0x1678
+d_course_toads_turnpike_dl_1708:
+  symbol: d_course_toads_turnpike_dl_1708
+  type: gfx
+  offset: 0x1708
+d_course_toads_turnpike_dl_17F8:
+  symbol: d_course_toads_turnpike_dl_17F8
+  type: gfx
+  offset: 0x17F8
+d_course_toads_turnpike_dl_18C0:
+  symbol: d_course_toads_turnpike_dl_18C0
+  type: gfx
+  offset: 0x18C0
+d_course_toads_turnpike_dl_19C0:
+  symbol: d_course_toads_turnpike_dl_19C0
+  type: gfx
+  offset: 0x19C0
+d_course_toads_turnpike_dl_1A60:
+  symbol: d_course_toads_turnpike_dl_1A60
+  type: gfx
+  offset: 0x1A60
+d_course_toads_turnpike_dl_1B50:
+  symbol: d_course_toads_turnpike_dl_1B50
+  type: gfx
+  offset: 0x1B50
+d_course_toads_turnpike_dl_1C10:
+  symbol: d_course_toads_turnpike_dl_1C10
+  type: gfx
+  offset: 0x1C10
+d_course_toads_turnpike_dl_1D18:
+  symbol: d_course_toads_turnpike_dl_1D18
+  type: gfx
+  offset: 0x1D18
+d_course_toads_turnpike_dl_1DC0:
+  symbol: d_course_toads_turnpike_dl_1DC0
+  type: gfx
+  offset: 0x1DC0
+d_course_toads_turnpike_dl_1E80:
+  symbol: d_course_toads_turnpike_dl_1E80
+  type: gfx
+  offset: 0x1E80
+d_course_toads_turnpike_dl_1F40:
+  symbol: d_course_toads_turnpike_dl_1F40
+  type: gfx
+  offset: 0x1F40
+d_course_toads_turnpike_dl_2030:
+  symbol: d_course_toads_turnpike_dl_2030
+  type: gfx
+  offset: 0x2030
+d_course_toads_turnpike_dl_20F8:
+  symbol: d_course_toads_turnpike_dl_20F8
+  type: gfx
+  offset: 0x20F8
+d_course_toads_turnpike_dl_21C8:
+  symbol: d_course_toads_turnpike_dl_21C8
+  type: gfx
+  offset: 0x21C8
+d_course_toads_turnpike_dl_22A8:
+  symbol: d_course_toads_turnpike_dl_22A8
+  type: gfx
+  offset: 0x22A8
+d_course_toads_turnpike_dl_2358:
+  symbol: d_course_toads_turnpike_dl_2358
+  type: gfx
+  offset: 0x2358
+d_course_toads_turnpike_dl_2440:
+  symbol: d_course_toads_turnpike_dl_2440
+  type: gfx
+  offset: 0x2440
+d_course_toads_turnpike_dl_2530:
+  symbol: d_course_toads_turnpike_dl_2530
+  type: gfx
+  offset: 0x2530
+d_course_toads_turnpike_dl_2628:
+  symbol: d_course_toads_turnpike_dl_2628
+  type: gfx
+  offset: 0x2628
+d_course_toads_turnpike_dl_26D8:
+  symbol: d_course_toads_turnpike_dl_26D8
+  type: gfx
+  offset: 0x26D8
+d_course_toads_turnpike_dl_27D0:
+  symbol: d_course_toads_turnpike_dl_27D0
+  type: gfx
+  offset: 0x27D0
+d_course_toads_turnpike_dl_2898:
+  symbol: d_course_toads_turnpike_dl_2898
+  type: gfx
+  offset: 0x2898
+d_course_toads_turnpike_dl_2960:
+  symbol: d_course_toads_turnpike_dl_2960
+  type: gfx
+  offset: 0x2960
+d_course_toads_turnpike_dl_2A00:
+  symbol: d_course_toads_turnpike_dl_2A00
+  type: gfx
+  offset: 0x2A00
+d_course_toads_turnpike_dl_2AF0:
+  symbol: d_course_toads_turnpike_dl_2AF0
+  type: gfx
+  offset: 0x2AF0
+d_course_toads_turnpike_dl_2B88:
+  symbol: d_course_toads_turnpike_dl_2B88
+  type: gfx
+  offset: 0x2B88
+d_course_toads_turnpike_dl_2C38:
+  symbol: d_course_toads_turnpike_dl_2C38
+  type: gfx
+  offset: 0x2C38
+d_course_toads_turnpike_dl_2CC0:
+  symbol: d_course_toads_turnpike_dl_2CC0
+  type: gfx
+  offset: 0x2CC0
+d_course_toads_turnpike_dl_2DB8:
+  symbol: d_course_toads_turnpike_dl_2DB8
+  type: gfx
+  offset: 0x2DB8
+d_course_toads_turnpike_dl_2E50:
+  symbol: d_course_toads_turnpike_dl_2E50
+  type: gfx
+  offset: 0x2E50
+d_course_toads_turnpike_dl_2EF0:
+  symbol: d_course_toads_turnpike_dl_2EF0
+  type: gfx
+  offset: 0x2EF0
+d_course_toads_turnpike_dl_2F78:
+  symbol: d_course_toads_turnpike_dl_2F78
+  type: gfx
+  offset: 0x2F78
+d_course_toads_turnpike_dl_3030:
+  symbol: d_course_toads_turnpike_dl_3030
+  type: gfx
+  offset: 0x3030
+d_course_toads_turnpike_dl_30F8:
+  symbol: d_course_toads_turnpike_dl_30F8
+  type: gfx
+  offset: 0x30F8
+d_course_toads_turnpike_dl_3190:
+  symbol: d_course_toads_turnpike_dl_3190
+  type: gfx
+  offset: 0x3190
+d_course_toads_turnpike_dl_3228:
+  symbol: d_course_toads_turnpike_dl_3228
+  type: gfx
+  offset: 0x3228
+d_course_toads_turnpike_dl_32F0:
+  symbol: d_course_toads_turnpike_dl_32F0
+  type: gfx
+  offset: 0x32F0
+d_course_toads_turnpike_dl_33A0:
+  symbol: d_course_toads_turnpike_dl_33A0
+  type: gfx
+  offset: 0x33A0
+d_course_toads_turnpike_dl_3438:
+  symbol: d_course_toads_turnpike_dl_3438
+  type: gfx
+  offset: 0x3438
+d_course_toads_turnpike_dl_34D0:
+  symbol: d_course_toads_turnpike_dl_34D0
+  type: gfx
+  offset: 0x34D0
+d_course_toads_turnpike_dl_3570:
+  symbol: d_course_toads_turnpike_dl_3570
+  type: gfx
+  offset: 0x3570
+d_course_toads_turnpike_dl_3618:
+  symbol: d_course_toads_turnpike_dl_3618
+  type: gfx
+  offset: 0x3618
+d_course_toads_turnpike_dl_36A8:
+  symbol: d_course_toads_turnpike_dl_36A8
+  type: gfx
+  offset: 0x36A8
+d_course_toads_turnpike_dl_3758:
+  symbol: d_course_toads_turnpike_dl_3758
+  type: gfx
+  offset: 0x3758
+d_course_toads_turnpike_dl_37F0:
+  symbol: d_course_toads_turnpike_dl_37F0
+  type: gfx
+  offset: 0x37F0
+d_course_toads_turnpike_dl_3910:
+  symbol: d_course_toads_turnpike_dl_3910
+  type: gfx
+  offset: 0x3910
+d_course_toads_turnpike_dl_39C8:
+  symbol: d_course_toads_turnpike_dl_39C8
+  type: gfx
+  offset: 0x39C8
+d_course_toads_turnpike_dl_3AD8:
+  symbol: d_course_toads_turnpike_dl_3AD8
+  type: gfx
+  offset: 0x3AD8
+d_course_toads_turnpike_truck_model_lod0:
+  symbol: d_course_toads_turnpike_truck_model_lod0
+  type: vtx
+  offset: 0x181B8
+  count: 8
+d_course_toads_turnpike_truck_unknown_model1:
+  symbol: d_course_toads_turnpike_truck_unknown_model1
+  type: vtx
+  offset: 0x18238
+  count: 8
+d_course_toads_turnpike_truck_unknown_model2:
+  symbol: d_course_toads_turnpike_truck_unknown_model2
+  type: vtx
+  offset: 0x182B8
+  count: 12
+d_course_toads_turnpike_truck_unknown_model3:
+  symbol: d_course_toads_turnpike_truck_unknown_model3
+  type: vtx
+  offset: 0x18378
+  count: 12
+d_course_toads_turnpike_truck_unknown_model4:
+  symbol: d_course_toads_turnpike_truck_unknown_model4
+  type: vtx
+  offset: 0x18438
+  count: 28
+d_course_toads_turnpike_truck_unknown_model5:
+  symbol: d_course_toads_turnpike_truck_unknown_model5
+  type: vtx
+  offset: 0x185F8
+  count: 10
+d_course_toads_turnpike_truck_unknown_model6:
+  symbol: d_course_toads_turnpike_truck_unknown_model6
+  type: vtx
+  offset: 0x18698
+  count: 31
+d_course_toads_turnpike_truck_unknown_model7:
+  symbol: d_course_toads_turnpike_truck_unknown_model7
+  type: vtx
+  offset: 0x18888
+  count: 10
+d_course_toads_turnpike_truck_unknown_model8:
+  symbol: d_course_toads_turnpike_truck_unknown_model8
+  type: vtx
+  offset: 0x18928
+  count: 14
+d_course_toads_turnpike_truck_unknown_model9:
+  symbol: d_course_toads_turnpike_truck_unknown_model9
+  type: vtx
+  offset: 0x18A08
+  count: 4
+d_course_toads_turnpike_truck_unknown_model10:
+  symbol: d_course_toads_turnpike_truck_unknown_model10
+  type: vtx
+  offset: 0x18A48
+  count: 8
+d_course_toads_turnpike_truck_unknown_model11:
+  symbol: d_course_toads_turnpike_truck_unknown_model11
+  type: vtx
+  offset: 0x18AC8
+  count: 20
+d_course_toads_turnpike_truck_unknown_model12:
+  symbol: d_course_toads_turnpike_truck_unknown_model12
+  type: vtx
+  offset: 0x18C08
+  count: 15
+d_course_toads_turnpike_truck_unknown_model13:
+  symbol: d_course_toads_turnpike_truck_unknown_model13
+  type: vtx
+  offset: 0x18CF8
+  count: 12
+d_course_toads_turnpike_dl_18DB8:
+  symbol: d_course_toads_turnpike_dl_18DB8
+  type: gfx
+  offset: 0x18DB8
+d_course_toads_turnpike_dl_18E38:
+  symbol: d_course_toads_turnpike_dl_18E38
+  type: gfx
+  offset: 0x18E38
+d_course_toads_turnpike_dl_18EB8:
+  symbol: d_course_toads_turnpike_dl_18EB8
+  type: gfx
+  offset: 0x18EB8
+d_course_toads_turnpike_dl_18F58:
+  symbol: d_course_toads_turnpike_dl_18F58
+  type: gfx
+  offset: 0x18F58
+d_course_toads_turnpike_dl_18FF8:
+  symbol: d_course_toads_turnpike_dl_18FF8
+  type: gfx
+  offset: 0x18FF8
+d_course_toads_turnpike_dl_19020:
+  symbol: d_course_toads_turnpike_dl_19020
+  type: gfx
+  offset: 0x19020
+d_course_toads_turnpike_dl_19030:
+  symbol: d_course_toads_turnpike_dl_19030
+  type: gfx
+  offset: 0x19030
+d_course_toads_turnpike_dl_190E8:
+  symbol: d_course_toads_turnpike_dl_190E8
+  type: gfx
+  offset: 0x190E8
+d_course_toads_turnpike_dl_19168:
+  symbol: d_course_toads_turnpike_dl_19168
+  type: gfx
+  offset: 0x19168
+d_course_toads_turnpike_dl_192B0:
+  symbol: d_course_toads_turnpike_dl_192B0
+  type: gfx
+  offset: 0x192B0
+d_course_toads_turnpike_dl_19390:
+  symbol: d_course_toads_turnpike_dl_19390
+  type: gfx
+  offset: 0x19390
+d_course_toads_turnpike_dl_19450:
+  symbol: d_course_toads_turnpike_dl_19450
+  type: gfx
+  offset: 0x19450
+d_course_toads_turnpike_dl_194E0:
+  symbol: d_course_toads_turnpike_dl_194E0
+  type: gfx
+  offset: 0x194E0
+d_course_toads_turnpike_dl_19518:
+  symbol: d_course_toads_turnpike_dl_19518
+  type: gfx
+  offset: 0x19518
+d_course_toads_turnpike_truck_model_lod1:
+  symbol: d_course_toads_turnpike_truck_model_lod1
+  type: vtx
+  offset: 0x19528
+  count: 16
+d_course_toads_turnpike_truck_unknown_model14:
+  symbol: d_course_toads_turnpike_truck_unknown_model14
+  type: vtx
+  offset: 0x19628
+  count: 16
+d_course_toads_turnpike_truck_unknown_model15:
+  symbol: d_course_toads_turnpike_truck_unknown_model15
+  type: vtx
+  offset: 0x19728
+  count: 20
+d_course_toads_turnpike_truck_unknown_model16:
+  symbol: d_course_toads_turnpike_truck_unknown_model16
+  type: vtx
+  offset: 0x19868
+  count: 12
+d_course_toads_turnpike_truck_unknown_model17:
+  symbol: d_course_toads_turnpike_truck_unknown_model17
+  type: vtx
+  offset: 0x19928
+  count: 12
+d_course_toads_turnpike_truck_unknown_model18:
+  symbol: d_course_toads_turnpike_truck_unknown_model18
+  type: vtx
+  offset: 0x199E8
+  count: 27
+d_course_toads_turnpike_truck_unknown_model19:
+  symbol: d_course_toads_turnpike_truck_unknown_model19
+  type: vtx
+  offset: 0x19B98
+  count: 18
+d_course_toads_turnpike_truck_unknown_model20:
+  symbol: d_course_toads_turnpike_truck_unknown_model20
+  type: vtx
+  offset: 0x19CB8
+  count: 4
+d_course_toads_turnpike_dl_19CF8:
+  symbol: d_course_toads_turnpike_dl_19CF8
+  type: gfx
+  offset: 0x19CF8
+d_course_toads_turnpike_dl_19D68:
+  symbol: d_course_toads_turnpike_dl_19D68
+  type: gfx
+  offset: 0x19D68
+d_course_toads_turnpike_dl_19DD8:
+  symbol: d_course_toads_turnpike_dl_19DD8
+  type: gfx
+  offset: 0x19DD8
+d_course_toads_turnpike_dl_19DF0:
+  symbol: d_course_toads_turnpike_dl_19DF0
+  type: gfx
+  offset: 0x19DF0
+d_course_toads_turnpike_dl_19E00:
+  symbol: d_course_toads_turnpike_dl_19E00
+  type: gfx
+  offset: 0x19E00
+d_course_toads_turnpike_dl_19E38:
+  symbol: d_course_toads_turnpike_dl_19E38
+  type: gfx
+  offset: 0x19E38
+d_course_toads_turnpike_dl_19EA0:
+  symbol: d_course_toads_turnpike_dl_19EA0
+  type: gfx
+  offset: 0x19EA0
+d_course_toads_turnpike_dl_19F08:
+  symbol: d_course_toads_turnpike_dl_19F08
+  type: gfx
+  offset: 0x19F08
+d_course_toads_turnpike_dl_1A040:
+  symbol: d_course_toads_turnpike_dl_1A040
+  type: gfx
+  offset: 0x1A040
+d_course_toads_turnpike_dl_1A068:
+  symbol: d_course_toads_turnpike_dl_1A068
+  type: gfx
+  offset: 0x1A068
+d_course_toads_turnpike_truck_model_lod2:
+  symbol: d_course_toads_turnpike_truck_model_lod2
+  type: vtx
+  offset: 0x1A078
+  count: 16
+d_course_toads_turnpike_truck_unknown_model21:
+  symbol: d_course_toads_turnpike_truck_unknown_model21
+  type: vtx
+  offset: 0x1A178
+  count: 4
+d_course_toads_turnpike_truck_unknown_model22:
+  symbol: d_course_toads_turnpike_truck_unknown_model22
+  type: vtx
+  offset: 0x1A1B8
+  count: 12
+d_course_toads_turnpike_truck_unknown_model23:
+  symbol: d_course_toads_turnpike_truck_unknown_model23
+  type: vtx
+  offset: 0x1A278
+  count: 20
+d_course_toads_turnpike_truck_unknown_model24:
+  symbol: d_course_toads_turnpike_truck_unknown_model24
+  type: vtx
+  offset: 0x1A3B8
+  count: 16
+d_course_toads_turnpike_dl_1A4B8:
+  symbol: d_course_toads_turnpike_dl_1A4B8
+  type: gfx
+  offset: 0x1A4B8
+d_course_toads_turnpike_dl_1A528:
+  symbol: d_course_toads_turnpike_dl_1A528
+  type: gfx
+  offset: 0x1A528
+d_course_toads_turnpike_dl_1A5E0:
+  symbol: d_course_toads_turnpike_dl_1A5E0
+  type: gfx
+  offset: 0x1A5E0
+d_course_toads_turnpike_dl_1A5F8:
+  symbol: d_course_toads_turnpike_dl_1A5F8
+  type: gfx
+  offset: 0x1A5F8
+d_course_toads_turnpike_dl_1A608:
+  symbol: d_course_toads_turnpike_dl_1A608
+  type: gfx
+  offset: 0x1A608
+d_course_toads_turnpike_dl_1A640:
+  symbol: d_course_toads_turnpike_dl_1A640
+  type: gfx
+  offset: 0x1A640
+d_course_toads_turnpike_dl_1A6B0:
+  symbol: d_course_toads_turnpike_dl_1A6B0
+  type: gfx
+  offset: 0x1A6B0
+d_course_toads_turnpike_dl_1A6C8:
+  symbol: d_course_toads_turnpike_dl_1A6C8
+  type: gfx
+  offset: 0x1A6C8
+d_course_toads_turnpike_bus_model_lod0:
+  symbol: d_course_toads_turnpike_bus_model_lod0
+  type: vtx
+  offset: 0x1A6D8
+  count: 16
+d_course_toads_turnpike_bus_unknown_model1:
+  symbol: d_course_toads_turnpike_bus_unknown_model1
+  type: vtx
+  offset: 0x1A7D8
+  count: 8
+d_course_toads_turnpike_bus_unknown_model2:
+  symbol: d_course_toads_turnpike_bus_unknown_model2
+  type: vtx
+  offset: 0x1A858
+  count: 8
+d_course_toads_turnpike_bus_unknown_model3:
+  symbol: d_course_toads_turnpike_bus_unknown_model3
+  type: vtx
+  offset: 0x1A8D8
+  count: 8
+d_course_toads_turnpike_bus_unknown_model4:
+  symbol: d_course_toads_turnpike_bus_unknown_model4
+  type: vtx
+  offset: 0x1A958
+  count: 10
+d_course_toads_turnpike_bus_unknown_model5:
+  symbol: d_course_toads_turnpike_bus_unknown_model5
+  type: vtx
+  offset: 0x1A9F8
+  count: 6
+d_course_toads_turnpike_bus_unknown_model6:
+  symbol: d_course_toads_turnpike_bus_unknown_model6
+  type: vtx
+  offset: 0x1AA58
+  count: 4
+d_course_toads_turnpike_bus_unknown_model7:
+  symbol: d_course_toads_turnpike_bus_unknown_model7
+  type: vtx
+  offset: 0x1AA98
+  count: 20
+d_course_toads_turnpike_bus_unknown_model8:
+  symbol: d_course_toads_turnpike_bus_unknown_model8
+  type: vtx
+  offset: 0x1ABD8
+  count: 21
+d_course_toads_turnpike_bus_unknown_model9:
+  symbol: d_course_toads_turnpike_bus_unknown_model9
+  type: vtx
+  offset: 0x1AD28
+  count: 8
+d_course_toads_turnpike_bus_unknown_model10:
+  symbol: d_course_toads_turnpike_bus_unknown_model10
+  type: vtx
+  offset: 0x1ADA8
+  count: 32
+d_course_toads_turnpike_bus_unknown_model11:
+  symbol: d_course_toads_turnpike_bus_unknown_model11
+  type: vtx
+  offset: 0x1AFA8
+  count: 32
+d_course_toads_turnpike_bus_unknown_model12:
+  symbol: d_course_toads_turnpike_bus_unknown_model12
+  type: vtx
+  offset: 0x1B1A8
+  count: 10
+d_course_toads_turnpike_bus_unknown_model13:
+  symbol: d_course_toads_turnpike_bus_unknown_model13
+  type: vtx
+  offset: 0x1B248
+  count: 8
+d_course_toads_turnpike_bus_unknown_model14:
+  symbol: d_course_toads_turnpike_bus_unknown_model14
+  type: vtx
+  offset: 0x1B2C8
+  count: 24
+d_course_toads_turnpike_bus_unknown_model15:
+  symbol: d_course_toads_turnpike_bus_unknown_model15
+  type: vtx
+  offset: 0x1B448
+  count: 24
+d_course_toads_turnpike_dl_1B5C8:
+  symbol: d_course_toads_turnpike_dl_1B5C8
+  type: gfx
+  offset: 0x1B5C8
+d_course_toads_turnpike_dl_1B658:
+  symbol: d_course_toads_turnpike_dl_1B658
+  type: gfx
+  offset: 0x1B658
+d_course_toads_turnpike_dl_1B6D8:
+  symbol: d_course_toads_turnpike_dl_1B6D8
+  type: gfx
+  offset: 0x1B6D8
+d_course_toads_turnpike_dl_1B758:
+  symbol: d_course_toads_turnpike_dl_1B758
+  type: gfx
+  offset: 0x1B758
+d_course_toads_turnpike_dl_1B778:
+  symbol: d_course_toads_turnpike_dl_1B778
+  type: gfx
+  offset: 0x1B778
+d_course_toads_turnpike_dl_1B788:
+  symbol: d_course_toads_turnpike_dl_1B788
+  type: gfx
+  offset: 0x1B788
+d_course_toads_turnpike_dl_1B810:
+  symbol: d_course_toads_turnpike_dl_1B810
+  type: gfx
+  offset: 0x1B810
+d_course_toads_turnpike_dl_1B8A0:
+  symbol: d_course_toads_turnpike_dl_1B8A0
+  type: gfx
+  offset: 0x1B8A0
+d_course_toads_turnpike_dl_1BC78:
+  symbol: d_course_toads_turnpike_dl_1BC78
+  type: gfx
+  offset: 0x1BC78
+d_course_toads_turnpike_dl_1BD48:
+  symbol: d_course_toads_turnpike_dl_1BD48
+  type: gfx
+  offset: 0x1BD48
+d_course_toads_turnpike_dl_1BE18:
+  symbol: d_course_toads_turnpike_dl_1BE18
+  type: gfx
+  offset: 0x1BE18
+d_course_toads_turnpike_dl_1BE48:
+  symbol: d_course_toads_turnpike_dl_1BE48
+  type: gfx
+  offset: 0x1BE48
+d_course_toads_turnpike_bus_model_lod1:
+  symbol: d_course_toads_turnpike_bus_model_lod1
+  type: vtx
+  offset: 0x1BE58
+  count: 8
+d_course_toads_turnpike_bus_unknown_model16:
+  symbol: d_course_toads_turnpike_bus_unknown_model16
+  type: vtx
+  offset: 0x1BED8
+  count: 8
+d_course_toads_turnpike_bus_unknown_model17:
+  symbol: d_course_toads_turnpike_bus_unknown_model17
+  type: vtx
+  offset: 0x1BF58
+  count: 8
+d_course_toads_turnpike_bus_unknown_model18:
+  symbol: d_course_toads_turnpike_bus_unknown_model18
+  type: vtx
+  offset: 0x1BFD8
+  count: 8
+d_course_toads_turnpike_bus_unknown_model19:
+  symbol: d_course_toads_turnpike_bus_unknown_model19
+  type: vtx
+  offset: 0x1C058
+  count: 4
+d_course_toads_turnpike_bus_unknown_model20:
+  symbol: d_course_toads_turnpike_bus_unknown_model20
+  type: vtx
+  offset: 0x1C098
+  count: 4
+d_course_toads_turnpike_bus_unknown_model21:
+  symbol: d_course_toads_turnpike_bus_unknown_model21
+  type: vtx
+  offset: 0x1C0D8
+  count: 4
+d_course_toads_turnpike_bus_unknown_model22:
+  symbol: d_course_toads_turnpike_bus_unknown_model22
+  type: vtx
+  offset: 0x1C118
+  count: 6
+d_course_toads_turnpike_bus_unknown_model23:
+  symbol: d_course_toads_turnpike_bus_unknown_model23
+  type: vtx
+  offset: 0x1C178
+  count: 32
+d_course_toads_turnpike_bus_unknown_model24:
+  symbol: d_course_toads_turnpike_bus_unknown_model24
+  type: vtx
+  offset: 0x1C378
+  count: 31
+d_course_toads_turnpike_bus_unknown_model25:
+  symbol: d_course_toads_turnpike_bus_unknown_model25
+  type: vtx
+  offset: 0x1C568
+  count: 12
+d_course_toads_turnpike_dl_1C628:
+  symbol: d_course_toads_turnpike_dl_1C628
+  type: gfx
+  offset: 0x1C628
+d_course_toads_turnpike_dl_1C688:
+  symbol: d_course_toads_turnpike_dl_1C688
+  type: gfx
+  offset: 0x1C688
+d_course_toads_turnpike_dl_1C6E8:
+  symbol: d_course_toads_turnpike_dl_1C6E8
+  type: gfx
+  offset: 0x1C6E8
+d_course_toads_turnpike_dl_1C700:
+  symbol: d_course_toads_turnpike_dl_1C700
+  type: gfx
+  offset: 0x1C700
+d_course_toads_turnpike_dl_1C710:
+  symbol: d_course_toads_turnpike_dl_1C710
+  type: gfx
+  offset: 0x1C710
+d_course_toads_turnpike_dl_1C770:
+  symbol: d_course_toads_turnpike_dl_1C770
+  type: gfx
+  offset: 0x1C770
+d_course_toads_turnpike_dl_1C7D0:
+  symbol: d_course_toads_turnpike_dl_1C7D0
+  type: gfx
+  offset: 0x1C7D0
+d_course_toads_turnpike_dl_1CA88:
+  symbol: d_course_toads_turnpike_dl_1CA88
+  type: gfx
+  offset: 0x1CA88
+d_course_toads_turnpike_dl_1CAA8:
+  symbol: d_course_toads_turnpike_dl_1CAA8
+  type: gfx
+  offset: 0x1CAA8
+d_course_toads_turnpike_bus_model_lod2:
+  symbol: d_course_toads_turnpike_bus_model_lod2
+  type: vtx
+  offset: 0x1CAB8
+  count: 8
+d_course_toads_turnpike_bus_unknown_model26:
+  symbol: d_course_toads_turnpike_bus_unknown_model26
+  type: vtx
+  offset: 0x1CB38
+  count: 8
+d_course_toads_turnpike_bus_unknown_model27:
+  symbol: d_course_toads_turnpike_bus_unknown_model27
+  type: vtx
+  offset: 0x1CBB8
+  count: 4
+d_course_toads_turnpike_bus_unknown_model28:
+  symbol: d_course_toads_turnpike_bus_unknown_model28
+  type: vtx
+  offset: 0x1CBF8
+  count: 4
+d_course_toads_turnpike_bus_unknown_model29:
+  symbol: d_course_toads_turnpike_bus_unknown_model29
+  type: vtx
+  offset: 0x1CC38
+  count: 4
+d_course_toads_turnpike_bus_unknown_model30:
+  symbol: d_course_toads_turnpike_bus_unknown_model30
+  type: vtx
+  offset: 0x1CC78
+  count: 8
+d_course_toads_turnpike_bus_unknown_model31:
+  symbol: d_course_toads_turnpike_bus_unknown_model31
+  type: vtx
+  offset: 0x1CCF8
+  count: 10
+d_course_toads_turnpike_dl_1CD98:
+  symbol: d_course_toads_turnpike_dl_1CD98
+  type: gfx
+  offset: 0x1CD98
+d_course_toads_turnpike_dl_1CDF8:
+  symbol: d_course_toads_turnpike_dl_1CDF8
+  type: gfx
+  offset: 0x1CDF8
+d_course_toads_turnpike_dl_1CE58:
+  symbol: d_course_toads_turnpike_dl_1CE58
+  type: gfx
+  offset: 0x1CE58
+d_course_toads_turnpike_dl_1CE70:
+  symbol: d_course_toads_turnpike_dl_1CE70
+  type: gfx
+  offset: 0x1CE70
+d_course_toads_turnpike_dl_1CE80:
+  symbol: d_course_toads_turnpike_dl_1CE80
+  type: gfx
+  offset: 0x1CE80
+d_course_toads_turnpike_dl_1D008:
+  symbol: d_course_toads_turnpike_dl_1D008
+  type: gfx
+  offset: 0x1D008
+d_course_toads_turnpike_dl_1D018:
+  symbol: d_course_toads_turnpike_dl_1D018
+  type: gfx
+  offset: 0x1D018
+d_course_toads_turnpike_tanker_truck_model_lod0:
+  symbol: d_course_toads_turnpike_tanker_truck_model_lod0
+  type: vtx
+  offset: 0x1D028
+  count: 16
+d_course_toads_turnpike_tanker_truck_unknown_model1:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model1
+  type: vtx
+  offset: 0x1D128
+  count: 16
+d_course_toads_turnpike_tanker_truck_unknown_model2:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model2
+  type: vtx
+  offset: 0x1D228
+  count: 16
+d_course_toads_turnpike_tanker_truck_unknown_model3:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model3
+  type: vtx
+  offset: 0x1D328
+  count: 20
+d_course_toads_turnpike_tanker_truck_unknown_model4:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model4
+  type: vtx
+  offset: 0x1D468
+  count: 20
+d_course_toads_turnpike_tanker_truck_unknown_model5:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model5
+  type: vtx
+  offset: 0x1D5A8
+  count: 32
+d_course_toads_turnpike_tanker_truck_unknown_model6:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model6
+  type: vtx
+  offset: 0x1D7A8
+  count: 24
+d_course_toads_turnpike_tanker_truck_unknown_model7:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model7
+  type: vtx
+  offset: 0x1D928
+  count: 18
+d_course_toads_turnpike_tanker_truck_unknown_model8:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model8
+  type: vtx
+  offset: 0x1DA48
+  count: 12
+d_course_toads_turnpike_tanker_truck_unknown_model9:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model9
+  type: vtx
+  offset: 0x1DB08
+  count: 32
+d_course_toads_turnpike_tanker_truck_unknown_model10:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model10
+  type: vtx
+  offset: 0x1DD08
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model11:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model11
+  type: vtx
+  offset: 0x1DD48
+  count: 12
+d_course_toads_turnpike_tanker_truck_unknown_model12:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model12
+  type: vtx
+  offset: 0x1DE08
+  count: 24
+d_course_toads_turnpike_tanker_truck_unknown_model13:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model13
+  type: vtx
+  offset: 0x1DF88
+  count: 24
+d_course_toads_turnpike_tanker_truck_unknown_model14:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model14
+  type: vtx
+  offset: 0x1E108
+  count: 24
+d_course_toads_turnpike_dl_1E288:
+  symbol: d_course_toads_turnpike_dl_1E288
+  type: gfx
+  offset: 0x1E288
+d_course_toads_turnpike_dl_1E318:
+  symbol: d_course_toads_turnpike_dl_1E318
+  type: gfx
+  offset: 0x1E318
+d_course_toads_turnpike_dl_1E3A8:
+  symbol: d_course_toads_turnpike_dl_1E3A8
+  type: gfx
+  offset: 0x1E3A8
+d_course_toads_turnpike_dl_1E438:
+  symbol: d_course_toads_turnpike_dl_1E438
+  type: gfx
+  offset: 0x1E438
+d_course_toads_turnpike_dl_1E458:
+  symbol: d_course_toads_turnpike_dl_1E458
+  type: gfx
+  offset: 0x1E458
+d_course_toads_turnpike_dl_1E468:
+  symbol: d_course_toads_turnpike_dl_1E468
+  type: gfx
+  offset: 0x1E468
+d_course_toads_turnpike_dl_1E508:
+  symbol: d_course_toads_turnpike_dl_1E508
+  type: gfx
+  offset: 0x1E508
+d_course_toads_turnpike_dl_1E810:
+  symbol: d_course_toads_turnpike_dl_1E810
+  type: gfx
+  offset: 0x1E810
+d_course_toads_turnpike_dl_1E8A0:
+  symbol: d_course_toads_turnpike_dl_1E8A0
+  type: gfx
+  offset: 0x1E8A0
+d_course_toads_turnpike_dl_1E970:
+  symbol: d_course_toads_turnpike_dl_1E970
+  type: gfx
+  offset: 0x1E970
+d_course_toads_turnpike_dl_1EA40:
+  symbol: d_course_toads_turnpike_dl_1EA40
+  type: gfx
+  offset: 0x1EA40
+d_course_toads_turnpike_dl_1EB10:
+  symbol: d_course_toads_turnpike_dl_1EB10
+  type: gfx
+  offset: 0x1EB10
+d_course_toads_turnpike_dl_1EB48:
+  symbol: d_course_toads_turnpike_dl_1EB48
+  type: gfx
+  offset: 0x1EB48
+d_course_toads_turnpike_tanker_truck_model_lod1:
+  symbol: d_course_toads_turnpike_tanker_truck_model_lod1
+  type: vtx
+  offset: 0x1EB58
+  count: 8
+d_course_toads_turnpike_tanker_truck_unknown_model15:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model15
+  type: vtx
+  offset: 0x1EBD8
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model16:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model16
+  type: vtx
+  offset: 0x1EC18
+  count: 8
+d_course_toads_turnpike_tanker_truck_unknown_model17:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model17
+  type: vtx
+  offset: 0x1EC98
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model18:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model18
+  type: vtx
+  offset: 0x1ECD8
+  count: 16
+d_course_toads_turnpike_tanker_truck_unknown_model19:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model19
+  type: vtx
+  offset: 0x1EDD8
+  count: 32
+d_course_toads_turnpike_tanker_truck_unknown_model20:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model20
+  type: vtx
+  offset: 0x1EFD8
+  count: 24
+d_course_toads_turnpike_tanker_truck_unknown_model21:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model21
+  type: vtx
+  offset: 0x1F158
+  count: 18
+d_course_toads_turnpike_tanker_truck_unknown_model22:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model22
+  type: vtx
+  offset: 0x1F278
+  count: 12
+d_course_toads_turnpike_tanker_truck_unknown_model23:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model23
+  type: vtx
+  offset: 0x1F338
+  count: 30
+d_course_toads_turnpike_tanker_truck_unknown_model24:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model24
+  type: vtx
+  offset: 0x1F518
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model25:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model25
+  type: vtx
+  offset: 0x1F558
+  count: 8
+d_course_toads_turnpike_tanker_truck_unknown_model26:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model26
+  type: vtx
+  offset: 0x1F5D8
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model27:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model27
+  type: vtx
+  offset: 0x1F618
+  count: 8
+d_course_toads_turnpike_tanker_truck_unknown_model28:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model28
+  type: vtx
+  offset: 0x1F698
+  count: 4
+d_course_toads_turnpike_tanker_truck_unknown_model29:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model29
+  type: vtx
+  offset: 0x1F6D8
+  count: 12
+d_course_toads_turnpike_tanker_truck_unknown_model30:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model30
+  type: vtx
+  offset: 0x1F798
+  count: 4
+d_course_toads_turnpike_dl_1F7D8:
+  symbol: d_course_toads_turnpike_dl_1F7D8
+  type: gfx
+  offset: 0x1F7D8
+d_course_toads_turnpike_dl_1F850:
+  symbol: d_course_toads_turnpike_dl_1F850
+  type: gfx
+  offset: 0x1F850
+d_course_toads_turnpike_dl_1F8C0:
+  symbol: d_course_toads_turnpike_dl_1F8C0
+  type: gfx
+  offset: 0x1F8C0
+d_course_toads_turnpike_dl_1F938:
+  symbol: d_course_toads_turnpike_dl_1F938
+  type: gfx
+  offset: 0x1F938
+d_course_toads_turnpike_dl_1F9A8:
+  symbol: d_course_toads_turnpike_dl_1F9A8
+  type: gfx
+  offset: 0x1F9A8
+d_course_toads_turnpike_dl_1F9D0:
+  symbol: d_course_toads_turnpike_dl_1F9D0
+  type: gfx
+  offset: 0x1F9D0
+d_course_toads_turnpike_dl_1F9E0:
+  symbol: d_course_toads_turnpike_dl_1F9E0
+  type: gfx
+  offset: 0x1F9E0
+d_course_toads_turnpike_dl_1FCD8:
+  symbol: d_course_toads_turnpike_dl_1FCD8
+  type: gfx
+  offset: 0x1FCD8
+d_course_toads_turnpike_dl_1FD58:
+  symbol: d_course_toads_turnpike_dl_1FD58
+  type: gfx
+  offset: 0x1FD58
+d_course_toads_turnpike_dl_1FDD0:
+  symbol: d_course_toads_turnpike_dl_1FDD0
+  type: gfx
+  offset: 0x1FDD0
+d_course_toads_turnpike_dl_1FE50:
+  symbol: d_course_toads_turnpike_dl_1FE50
+  type: gfx
+  offset: 0x1FE50
+d_course_toads_turnpike_dl_1FEC8:
+  symbol: d_course_toads_turnpike_dl_1FEC8
+  type: gfx
+  offset: 0x1FEC8
+d_course_toads_turnpike_dl_1FF50:
+  symbol: d_course_toads_turnpike_dl_1FF50
+  type: gfx
+  offset: 0x1FF50
+d_course_toads_turnpike_dl_1FFC8:
+  symbol: d_course_toads_turnpike_dl_1FFC8
+  type: gfx
+  offset: 0x1FFC8
+d_course_toads_turnpike_dl_20008:
+  symbol: d_course_toads_turnpike_dl_20008
+  type: gfx
+  offset: 0x20008
+d_course_toads_turnpike_tanker_truck_model_lod2:
+  symbol: d_course_toads_turnpike_tanker_truck_model_lod2
+  type: vtx
+  offset: 0x20018
+  count: 14
+d_course_toads_turnpike_tanker_truck_unknown_model31:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model31
+  type: vtx
+  offset: 0x200F8
+  count: 12
+d_course_toads_turnpike_tanker_truck_unknown_model32:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model32
+  type: vtx
+  offset: 0x201B8
+  count: 21
+d_course_toads_turnpike_tanker_truck_unknown_model33:
+  symbol: d_course_toads_turnpike_tanker_truck_unknown_model33
+  type: vtx
+  offset: 0x20308
+  count: 4
+d_course_toads_turnpike_dl_20348:
+  symbol: d_course_toads_turnpike_dl_20348
+  type: gfx
+  offset: 0x20348
+d_course_toads_turnpike_dl_20450:
+  symbol: d_course_toads_turnpike_dl_20450
+  type: gfx
+  offset: 0x20450
+d_course_toads_turnpike_dl_204F8:
+  symbol: d_course_toads_turnpike_dl_204F8
+  type: gfx
+  offset: 0x204F8
+d_course_toads_turnpike_dl_20510:
+  symbol: d_course_toads_turnpike_dl_20510
+  type: gfx
+  offset: 0x20510
+d_course_toads_turnpike_dl_20520:
+  symbol: d_course_toads_turnpike_dl_20520
+  type: gfx
+  offset: 0x20520
+d_course_toads_turnpike_dl_20598:
+  symbol: d_course_toads_turnpike_dl_20598
+  type: gfx
+  offset: 0x20598
+d_course_toads_turnpike_dl_205A8:
+  symbol: d_course_toads_turnpike_dl_205A8
+  type: gfx
+  offset: 0x205A8
+d_course_toads_turnpike_car_model_lod0:
+  symbol: d_course_toads_turnpike_car_model_lod0
+  type: vtx
+  offset: 0x205B8
+  count: 16
+d_course_toads_turnpike_car_unknown_model1:
+  symbol: d_course_toads_turnpike_car_unknown_model1
+  type: vtx
+  offset: 0x206B8
+  count: 16
+d_course_toads_turnpike_car_unknown_model2:
+  symbol: d_course_toads_turnpike_car_unknown_model2
+  type: vtx
+  offset: 0x207B8
+  count: 10
+d_course_toads_turnpike_car_unknown_model3:
+  symbol: d_course_toads_turnpike_car_unknown_model3
+  type: vtx
+  offset: 0x20858
+  count: 10
+d_course_toads_turnpike_car_unknown_model4:
+  symbol: d_course_toads_turnpike_car_unknown_model4
+  type: vtx
+  offset: 0x208F8
+  count: 24
+d_course_toads_turnpike_car_unknown_model5:
+  symbol: d_course_toads_turnpike_car_unknown_model5
+  type: vtx
+  offset: 0x20A78
+  count: 8
+d_course_toads_turnpike_car_unknown_model6:
+  symbol: d_course_toads_turnpike_car_unknown_model6
+  type: vtx
+  offset: 0x20AF8
+  count: 4
+d_course_toads_turnpike_car_unknown_model7:
+  symbol: d_course_toads_turnpike_car_unknown_model7
+  type: vtx
+  offset: 0x20B38
+  count: 32
+d_course_toads_turnpike_car_unknown_model8:
+  symbol: d_course_toads_turnpike_car_unknown_model8
+  type: vtx
+  offset: 0x20D38
+  count: 32
+d_course_toads_turnpike_car_unknown_model9:
+  symbol: d_course_toads_turnpike_car_unknown_model9
+  type: vtx
+  offset: 0x20F38
+  count: 32
+d_course_toads_turnpike_car_unknown_model10:
+  symbol: d_course_toads_turnpike_car_unknown_model10
+  type: vtx
+  offset: 0x21138
+  count: 23
+d_course_toads_turnpike_car_unknown_model11:
+  symbol: d_course_toads_turnpike_car_unknown_model11
+  type: vtx
+  offset: 0x212A8
+  count: 10
+d_course_toads_turnpike_car_unknown_model12:
+  symbol: d_course_toads_turnpike_car_unknown_model12
+  type: vtx
+  offset: 0x21348
+  count: 12
+d_course_toads_turnpike_car_unknown_model13:
+  symbol: d_course_toads_turnpike_car_unknown_model13
+  type: vtx
+  offset: 0x21408
+  count: 12
+d_course_toads_turnpike_car_unknown_model14:
+  symbol: d_course_toads_turnpike_car_unknown_model14
+  type: vtx
+  offset: 0x214C8
+  count: 12
+d_course_toads_turnpike_car_unknown_model15:
+  symbol: d_course_toads_turnpike_car_unknown_model15
+  type: vtx
+  offset: 0x21588
+  count: 12
+d_course_toads_turnpike_dl_21648:
+  symbol: d_course_toads_turnpike_dl_21648
+  type: gfx
+  offset: 0x21648
+d_course_toads_turnpike_dl_216D8:
+  symbol: d_course_toads_turnpike_dl_216D8
+  type: gfx
+  offset: 0x216D8
+d_course_toads_turnpike_dl_21768:
+  symbol: d_course_toads_turnpike_dl_21768
+  type: gfx
+  offset: 0x21768
+d_course_toads_turnpike_dl_21780:
+  symbol: d_course_toads_turnpike_dl_21780
+  type: gfx
+  offset: 0x21780
+d_course_toads_turnpike_dl_21790:
+  symbol: d_course_toads_turnpike_dl_21790
+  type: gfx
+  offset: 0x21790
+d_course_toads_turnpike_dl_21820:
+  symbol: d_course_toads_turnpike_dl_21820
+  type: gfx
+  offset: 0x21820
+d_course_toads_turnpike_dl_218B0:
+  symbol: d_course_toads_turnpike_dl_218B0
+  type: gfx
+  offset: 0x218B0
+d_course_toads_turnpike_dl_21950:
+  symbol: d_course_toads_turnpike_dl_21950
+  type: gfx
+  offset: 0x21950
+d_course_toads_turnpike_dl_21A28:
+  symbol: d_course_toads_turnpike_dl_21A28
+  type: gfx
+  offset: 0x21A28
+d_course_toads_turnpike_dl_21C78:
+  symbol: d_course_toads_turnpike_dl_21C78
+  type: gfx
+  offset: 0x21C78
+d_course_toads_turnpike_dl_21CD0:
+  symbol: d_course_toads_turnpike_dl_21CD0
+  type: gfx
+  offset: 0x21CD0
+d_course_toads_turnpike_dl_21D28:
+  symbol: d_course_toads_turnpike_dl_21D28
+  type: gfx
+  offset: 0x21D28
+d_course_toads_turnpike_dl_21D80:
+  symbol: d_course_toads_turnpike_dl_21D80
+  type: gfx
+  offset: 0x21D80
+d_course_toads_turnpike_dl_21DD8:
+  symbol: d_course_toads_turnpike_dl_21DD8
+  type: gfx
+  offset: 0x21DD8
+d_course_toads_turnpike_dl_21E28:
+  symbol: d_course_toads_turnpike_dl_21E28
+  type: gfx
+  offset: 0x21E28
+d_course_toads_turnpike_car_model_lod1:
+  symbol: d_course_toads_turnpike_car_model_lod1
+  type: vtx
+  offset: 0x21E38
+  count: 16
+d_course_toads_turnpike_car_unknown_model16:
+  symbol: d_course_toads_turnpike_car_unknown_model16
+  type: vtx
+  offset: 0x21F38
+  count: 16
+d_course_toads_turnpike_car_unknown_model17:
+  symbol: d_course_toads_turnpike_car_unknown_model17
+  type: vtx
+  offset: 0x22038
+  count: 16
+d_course_toads_turnpike_car_unknown_model18:
+  symbol: d_course_toads_turnpike_car_unknown_model18
+  type: vtx
+  offset: 0x22138
+  count: 8
+d_course_toads_turnpike_car_unknown_model19:
+  symbol: d_course_toads_turnpike_car_unknown_model19
+  type: vtx
+  offset: 0x221B8
+  count: 8
+d_course_toads_turnpike_car_unknown_model20:
+  symbol: d_course_toads_turnpike_car_unknown_model20
+  type: vtx
+  offset: 0x22238
+  count: 24
+d_course_toads_turnpike_car_unknown_model21:
+  symbol: d_course_toads_turnpike_car_unknown_model21
+  type: vtx
+  offset: 0x223B8
+  count: 8
+d_course_toads_turnpike_car_unknown_model22:
+  symbol: d_course_toads_turnpike_car_unknown_model22
+  type: vtx
+  offset: 0x22438
+  count: 4
+d_course_toads_turnpike_car_unknown_model23:
+  symbol: d_course_toads_turnpike_car_unknown_model23
+  type: vtx
+  offset: 0x22478
+  count: 31
+d_course_toads_turnpike_car_unknown_model24:
+  symbol: d_course_toads_turnpike_car_unknown_model24
+  type: vtx
+  offset: 0x22668
+  count: 32
+d_course_toads_turnpike_car_unknown_model25:
+  symbol: d_course_toads_turnpike_car_unknown_model25
+  type: vtx
+  offset: 0x22868
+  count: 22
+d_course_toads_turnpike_car_unknown_model26:
+  symbol: d_course_toads_turnpike_car_unknown_model26
+  type: vtx
+  offset: 0x229C8
+  count: 10
+d_course_toads_turnpike_dl_22A68:
+  symbol: d_course_toads_turnpike_dl_22A68
+  type: gfx
+  offset: 0x22A68
+d_course_toads_turnpike_dl_22AF8:
+  symbol: d_course_toads_turnpike_dl_22AF8
+  type: gfx
+  offset: 0x22AF8
+d_course_toads_turnpike_dl_22B88:
+  symbol: d_course_toads_turnpike_dl_22B88
+  type: gfx
+  offset: 0x22B88
+d_course_toads_turnpike_dl_22BA0:
+  symbol: d_course_toads_turnpike_dl_22BA0
+  type: gfx
+  offset: 0x22BA0
+d_course_toads_turnpike_dl_22BB0:
+  symbol: d_course_toads_turnpike_dl_22BB0
+  type: gfx
+  offset: 0x22BB0
+d_course_toads_turnpike_dl_22C50:
+  symbol: d_course_toads_turnpike_dl_22C50
+  type: gfx
+  offset: 0x22C50
+d_course_toads_turnpike_dl_22C88:
+  symbol: d_course_toads_turnpike_dl_22C88
+  type: gfx
+  offset: 0x22C88
+d_course_toads_turnpike_dl_22CC0:
+  symbol: d_course_toads_turnpike_dl_22CC0
+  type: gfx
+  offset: 0x22CC0
+d_course_toads_turnpike_dl_22D60:
+  symbol: d_course_toads_turnpike_dl_22D60
+  type: gfx
+  offset: 0x22D60
+d_course_toads_turnpike_dl_22E38:
+  symbol: d_course_toads_turnpike_dl_22E38
+  type: gfx
+  offset: 0x22E38
+d_course_toads_turnpike_dl_23040:
+  symbol: d_course_toads_turnpike_dl_23040
+  type: gfx
+  offset: 0x23040
+d_course_toads_turnpike_dl_23078:
+  symbol: d_course_toads_turnpike_dl_23078
+  type: gfx
+  offset: 0x23078
+d_course_toads_turnpike_car_model_lod2:
+  symbol: d_course_toads_turnpike_car_model_lod2
+  type: vtx
+  offset: 0x23088
+  count: 8
+d_course_toads_turnpike_car_unknown_model27:
+  symbol: d_course_toads_turnpike_car_unknown_model27
+  type: vtx
+  offset: 0x23108
+  count: 8
+d_course_toads_turnpike_car_unknown_model28:
+  symbol: d_course_toads_turnpike_car_unknown_model28
+  type: vtx
+  offset: 0x23188
+  count: 4
+d_course_toads_turnpike_car_unknown_model29:
+  symbol: d_course_toads_turnpike_car_unknown_model29
+  type: vtx
+  offset: 0x231C8
+  count: 16
+d_course_toads_turnpike_car_unknown_model30:
+  symbol: d_course_toads_turnpike_car_unknown_model30
+  type: vtx
+  offset: 0x232C8
+  count: 8
+d_course_toads_turnpike_car_unknown_model31:
+  symbol: d_course_toads_turnpike_car_unknown_model31
+  type: vtx
+  offset: 0x23348
+  count: 27
+d_course_toads_turnpike_car_unknown_model32:
+  symbol: d_course_toads_turnpike_car_unknown_model32
+  type: vtx
+  offset: 0x234F8
+  count: 4
+d_course_toads_turnpike_dl_23538:
+  symbol: d_course_toads_turnpike_dl_23538
+  type: gfx
+  offset: 0x23538
+d_course_toads_turnpike_dl_23600:
+  symbol: d_course_toads_turnpike_dl_23600
+  type: gfx
+  offset: 0x23600
+d_course_toads_turnpike_dl_23678:
+  symbol: d_course_toads_turnpike_dl_23678
+  type: gfx
+  offset: 0x23678
+d_course_toads_turnpike_dl_237D8:
+  symbol: d_course_toads_turnpike_dl_237D8
+  type: gfx
+  offset: 0x237D8
+d_course_toads_turnpike_dl_237F8:
+  symbol: d_course_toads_turnpike_dl_237F8
+  type: gfx
+  offset: 0x237F8
+d_course_toads_turnpike_dl_23808:
+  symbol: d_course_toads_turnpike_dl_23808
+  type: gfx
+  offset: 0x23808
+d_course_toads_turnpike_dl_23838:
+  symbol: d_course_toads_turnpike_dl_23838
+  type: gfx
+  offset: 0x23838
+d_course_toads_turnpike_dl_23848:
+  symbol: d_course_toads_turnpike_dl_23848
+  type: gfx
+  offset: 0x23848
+d_course_toads_turnpike_dl_23858:
+  symbol: d_course_toads_turnpike_dl_23858
+  type: gfx
+  offset: 0x23858
+d_course_toads_turnpike_dl_238A0:
+  symbol: d_course_toads_turnpike_dl_238A0
+  type: gfx
+  offset: 0x238A0
+d_course_toads_turnpike_dl_238E8:
+  symbol: d_course_toads_turnpike_dl_238E8
+  type: gfx
+  offset: 0x238E8
+d_course_toads_turnpike_dl_23930:
+  symbol: d_course_toads_turnpike_dl_23930
+  type: gfx
+  offset: 0x23930

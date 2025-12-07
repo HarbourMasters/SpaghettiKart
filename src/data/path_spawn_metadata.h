@@ -3,7 +3,7 @@
 
 #include "waypoints.h"
 #include <common_structs.h>
-#include <assets/common_data.h>
+#include <assets/other/common_data.h>
 #include "include/bomb_kart.h"
 
 typedef struct {

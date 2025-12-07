@@ -17,9 +17,15 @@ extern "C" {
 #include "defines.h"
 #include "audio/external.h"
 #include "menus.h"
-#include "common_data.h"
-#include "mario_raceway_data.h"
+#include "code_800029B0.h"
+#include "assets/models/common_data.h"
+#include "assets/models/tracks/mario_raceway/mario_raceway_data.h"
 }
+
+#include "engine/cameras/GameCamera.h"
+#include "engine/cameras/FreeCamera.h"
+#include "engine/cameras/TourCamera.h"
+#include "engine/cameras/LookBehindCamera.h"
 
 std::shared_ptr<Course> CurrentCourse;
 Cup* CurrentCup;
@@ -29,7 +35,7 @@ World::World() {
 }
 
 World::~World() {
-    ClearWorld();
+    CleanWorld();
 }
 
 std::shared_ptr<Course> World::AddCourse(std::shared_ptr<Course> course) {
@@ -41,8 +47,18 @@ void World::AddCup(Cup* cup) {
     Cups.push_back(cup);
 }
 
+void World::SetCurrentCourse(std::shared_ptr<Course> course) {
+    if (CurrentCourse) {
+        UnLoadCourse();
+    }
+    if (CurrentCourse == course) {
+        return;
+    }
+    CurrentCourse = std::move(course);
+}
+
 void World::SetCourseFromCup() {
-    CurrentCourse = CurrentCup->GetCourse();
+    SetCurrentCourse(CurrentCup->GetCourse());
 }
 
 TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius,
@@ -91,7 +107,7 @@ void World::SetCupIndex(size_t index) {
     CupIndex = index;
 }
 
-void World::SetCup(Cup* cup) {
+void World::SetCurrentCup(Cup* cup) {
     if (cup) {
         CurrentCup = cup;
         CurrentCup->CursorPosition = 0;
@@ -102,7 +118,7 @@ void World::SetCourse(const char* name) {
     //! @todo Use content dictionary instead
     for (size_t i = 0; i < Courses.size(); i++) {
         if (strcmp(Courses[i]->Props.Name, name) == 0) {
-            CurrentCourse = Courses[i];
+            SetCurrentCourse(Courses[i]);
             break;
         }
     }
@@ -115,7 +131,7 @@ void World::NextCourse() {
     } else {
         CourseIndex = 0;
     }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex];
+    gWorldInstance.SetCurrentCourse(Courses[CourseIndex]);
 }
 
 void World::PreviousCourse() {
@@ -124,7 +140,25 @@ void World::PreviousCourse() {
     } else {
         CourseIndex = Courses.size() - 1;
     }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex];
+    gWorldInstance.SetCurrentCourse(Courses[CourseIndex]);
+}
+
+void World::TickCameras() {
+
+    for (size_t i = 0; i < 4; i++) {
+        struct UnkStruct_800DC5EC* screen = &D_8015F480[i];
+        if (NULL == screen->pendingCamera) { continue; }
+        if (screen->pendingCamera != screen->camera) {
+            screen->camera = screen->pendingCamera;
+            screen->pendingCamera = nullptr;
+        }
+    }
+
+    for (GameCamera* camera : Cameras) {
+        if (camera->IsActive()) {
+            camera->Tick();
+        }
+    }
 }
 
 AActor* World::AddActor(AActor* actor) {
@@ -186,7 +220,7 @@ StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotat
 }
 
 void World::DrawStaticMeshActors() {
-    for (const auto& actor: StaticMeshActors) {
+    for (const auto& actor : StaticMeshActors) {
         actor->Draw();
     }
 }
@@ -256,7 +290,7 @@ Object* World::GetObjectByIndex(size_t index) {
 }
 
 // Deletes all objects from the world
-void World::ClearWorld(void) {
+void World::CleanWorld(void) {
     printf("[Game.cpp] Clean World\n");
     World* world = &gWorldInstance;
     for (auto& actor : world->Actors) {
@@ -287,7 +321,4 @@ void World::ClearWorld(void) {
     gWorldInstance.Objects.clear();
     gWorldInstance.Emitters.clear();
     gWorldInstance.Lakitus.clear();
-
-    gWorldInstance.GetRaceManager().Clean();
-
 }

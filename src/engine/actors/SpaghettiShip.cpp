@@ -52,7 +52,7 @@ void ASpaghettiShip::Draw(Camera *camera) {
     Mat4 resultMtx;
     Vec3f hullPos = {Pos[0], Pos[1], Pos[2]};
     Vec3s hullRot = {Rot[0], Rot[1], Rot[2]};
-    Vec3s rot = {WheelRot.pitch, WheelRot.yaw, WheelRot.roll};
+    Vec3s rot = {(s16) WheelRot.pitch, (s16) WheelRot.yaw, (s16) WheelRot.roll};
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

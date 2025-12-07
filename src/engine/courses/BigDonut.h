@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/big_donut_vertices.h"
-    #include "assets/big_donut_displaylists.h"
-    #include "assets/big_donut_data.h"
+    #include "assets/models/tracks/big_donut/big_donut_vertices.h"
+    #include "assets/models/tracks/big_donut/big_donut_displaylists.h"
+    #include "assets/models/tracks/big_donut/big_donut_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -22,6 +22,7 @@ public:
     explicit BigDonut();
 
     virtual void Load() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void Render(struct UnkStruct_800DC5EC*) override;
     virtual void RenderCredits() override;    

@@ -8,6 +8,7 @@ extern "C" {
 #include <common_structs.h>
 #include "objects.h"
 #include "camera.h"
+#include "code_800029B0.h"
 
 // code_80057C60
 
@@ -37,16 +38,8 @@ void func_80057CE4(void);
 void func_80057DD0(void);
 void func_80057FC4(u32);
 
-void render_object(u32);
-void render_object_p1(void);
-void render_object_p2(void);
-void render_object_p3(void);
-void render_object_p4(void);
-void render_player_snow_effect(u32);
-void render_player_snow_effect_one(void);
-void render_player_snow_effect_two(void);
-void render_player_snow_effect_three(void);
-void render_player_snow_effect_four(void);
+void render_object(struct UnkStruct_800DC5EC* screen);
+void render_player_snow_effect(Camera* camera);
 void render_object_for_player(s32);
 void render_snowing_effect(s32);
 void func_80058BF4(void);
@@ -249,10 +242,7 @@ void func_8006DD3C(Player*, s8, s8);
 
 void func_8006E058(void);
 void func_8006E420(Player*, s8, s8);
-void render_kart_particle_on_screen_one(Player*, s8, s8);
-void render_kart_particle_on_screen_two(Player*, s8, s8);
-void render_kart_particle_on_screen_three(Player*, s8, s8);
-void render_kart_particle_on_screen_four(Player*, s8, s8);
+void render_kart_particles(Player* player, s8 playerId, s8 screenId);
 void func_8006E7CC(Player*, s8, s8);
 void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);

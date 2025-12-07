@@ -4,8 +4,9 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/frappe_snowland_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/textures/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/models/common_data.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"

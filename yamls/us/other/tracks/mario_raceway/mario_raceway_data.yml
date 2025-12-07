@@ -1,0 +1,218 @@
+:config:
+  segments:
+    - [0x06, 0x8284D0]
+    - [0x07, 0x800000]
+  manual_segments:
+  # Segment 7
+    - [0x7000000, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_0"]
+    - [0x7000070, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_70"]
+    - [0x70000E0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_E0"]
+    - [0x70000F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_F8"]
+    - [0x7000160, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_160"]
+    - [0x7000170, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_170"]
+    - [0x70001D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1D8"]
+    - [0x7000240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_240"]
+    - [0x7000258, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_258"]
+    - [0x70002C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2C0"]
+    - [0x7000328, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_328"]
+    - [0x70003D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3D8"]
+    - [0x7000450, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_450"]
+    - [0x7000478, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_478"]
+    - [0x70004A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4A0"]
+    - [0x70004B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4B0"]
+    - [0x7000588, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_588"]
+    - [0x70008E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_8E8"]
+    - [0x7000900, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_900"]
+    - [0x7000A08, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_A08"]
+    - [0x7000B10, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_B10"]
+    - [0x7000C18, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_C18"]
+    - [0x7000D20, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_D20"]
+    - [0x7000E28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_E28"]
+    - [0x7000F30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_F30"]
+    - [0x7001038, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1038"]
+    - [0x7001140, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1140"]
+    - [0x7001188, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1188"]
+    - [0x7001348, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1348"]
+    - [0x70013C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_13C0"]
+    - [0x7001438, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1438"]
+    - [0x70014A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_14A0"]
+    - [0x70014C8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_14C8"]
+    - [0x7001500, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1500"]
+    - [0x7001550, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1550"]
+    - [0x7001600, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1600"]
+    - [0x7001668, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1668"]
+    - [0x70016D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_16D8"]
+    - [0x7001770, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1770"]
+    - [0x70017D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_17D8"]
+    - [0x7001850, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1850"]
+    - [0x7001890, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1890"]
+    - [0x70018B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_18B8"]
+    - [0x70018E0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_18E0"]
+    - [0x7001950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1950"]
+    - [0x7001988, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1988"]
+    - [0x7001A08, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1A08"]
+    - [0x7001A80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1A80"]
+    - [0x7001AF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1AF8"]
+    - [0x7001B28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1B28"]
+    - [0x7001BB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1BB8"]
+    - [0x7001C48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1C48"]
+    - [0x7001CF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1CF8"]
+    - [0x7001DA8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1DA8"]
+    - [0x7001E30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1E30"]
+    - [0x7001EA8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1EA8"]
+    - [0x7001F30, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1F30"]
+    - [0x7001FB0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_1FB0"]
+    - [0x7002038, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2038"]
+    - [0x70020B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_20B0"]
+    - [0x7002138, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2138"]
+    - [0x70021C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_21C0"]
+    - [0x7002248, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2248"]
+    - [0x70022B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_22B8"]
+    - [0x7002340, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2340"]
+    - [0x70023B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_23B8"]
+    - [0x7002420, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2420"]
+    - [0x7002498, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2498"]
+    - [0x7002510, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2510"]
+    - [0x7002588, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2588"]
+    - [0x7002600, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2600"]
+    - [0x7002680, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2680"]
+    - [0x70026F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_26F8"]
+    - [0x7002760, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2760"]
+    - [0x70027E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_27E8"]
+    - [0x7002870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2870"]
+    - [0x70028F8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_28F8"]
+    - [0x70029B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_29B0"]
+    - [0x7002A28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2A28"]
+    - [0x7002B10, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2B10"]
+    - [0x7002B98, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2B98"]
+    - [0x7002D68, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2D68"]
+    - [0x7002D80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_2D80"]
+    - [0x7003050, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3050"]
+    - [0x7003060, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3060"]
+    - [0x7003150, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3150"]
+    - [0x7003240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3240"]
+    - [0x7003258, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3258"]
+    - [0x70032F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_32F0"]
+    - [0x7003388, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3388"]
+    - [0x7003460, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3460"]
+    - [0x7003508, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3508"]
+    - [0x7003530, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3530"]
+    - [0x70035A8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_35A8"]
+    - [0x7003630, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3630"]
+    - [0x70036B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_36B0"]
+    - [0x7003728, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3728"]
+    - [0x7003798, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3798"]
+    - [0x7003818, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3818"]
+    - [0x70038B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_38B8"]
+    - [0x7003950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3950"]
+    - [0x70039E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_39E8"]
+    - [0x7003AB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3AB8"]
+    - [0x7003BB0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3BB0"]
+    - [0x7003C28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3C28"]
+    - [0x7003CD8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3CD8"]
+    - [0x7003D50, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3D50"]
+    - [0x7003E00, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3E00"]
+    - [0x7003E78, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3E78"]
+    - [0x7003EF8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3EF8"]
+    - [0x7003F80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_3F80"]
+    - [0x7004028, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4028"]
+    - [0x70040D8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_40D8"]
+    - [0x7004188, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4188"]
+    - [0x7004210, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4210"]
+    - [0x7004290, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4290"]
+    - [0x7004348, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4348"]
+    - [0x70043C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_43C0"]
+    - [0x7004458, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4458"]
+    - [0x70044C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_44C0"]
+    - [0x7004540, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4540"]
+    - [0x70045B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_45B0"]
+    - [0x70046A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_46A0"]
+    - [0x7004780, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4780"]
+    - [0x7004870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4870"]
+    - [0x7004950, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4950"]
+    - [0x70049E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_49E8"]
+    - [0x7004A68, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4A68"]
+    - [0x7004AD8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4AD8"]
+    - [0x7004B50, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4B50"]
+    - [0x7004BB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4BB8"]
+    - [0x7004C28, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4C28"]
+    - [0x7004CB8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4CB8"]
+    - [0x7004D48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4D48"]
+    - [0x7004E20, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4E20"]
+    - [0x7004EE8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4EE8"]
+    - [0x7004F90, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_4F90"]
+    - [0x70050E8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_50E8"]
+    - [0x7005218, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5218"]
+    - [0x70052B8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_52B8"]
+    - [0x7005368, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5368"]
+    - [0x7005408, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5408"]
+    - [0x70054B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_54B0"]
+    - [0x7005550, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5550"]
+    - [0x7005608, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5608"]
+    - [0x70056F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_56F0"]
+    - [0x7005768, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5768"]
+    - [0x7005870, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5870"]
+    - [0x7005970, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5970"]
+    - [0x7005A48, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5A48"]
+    - [0x7005AE0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5AE0"]
+    - [0x7005BC8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5BC8"]
+    - [0x7005C80, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5C80"]
+    - [0x7005CE8, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5CE8"]
+    - [0x7005D70, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5D70"]
+    - [0x7005DF0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5DF0"]
+    - [0x7005E58, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5E58"]
+    - [0x7005ED0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5ED0"]
+    - [0x7005F88, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_5F88"]
+    - [0x7006068, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6068"]
+    - [0x70060F0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_60F0"]
+    - [0x7006198, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6198"]
+    - [0x7006240, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6240"]
+    - [0x70062A0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_62A0"]
+    - [0x7006308, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6308"]
+    - [0x70063B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_63B0"]
+    - [0x7006490, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6490"]
+    - [0x7006528, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6528"]
+    - [0x7006598, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6598"]
+    - [0x7006710, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6710"]
+    - [0x70068B0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_68B0"]
+    - [0x70068C0, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_68C0"]
+    - [0x7006928, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6928"]
+    - [0x7006938, "models/tracks/mario_raceway/mario_raceway_displaylists/d_course_mario_raceway_packed_dl_6938"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_mario_raceway_unknown_waypoints:
+  symbol: d_course_mario_raceway_unknown_waypoints
+  offset: 0x5568
+  count: 73
+  type: mk64:TRACK_PATH
+d_course_mario_raceway_track_waypoints:
+  symbol: d_course_mario_raceway_track_waypoints
+  offset: 0x57B0
+  count: 500
+  type: mk64:TRACK_PATH
+d_course_mario_raceway_item_box_spawns:
+  symbol: d_course_mario_raceway_item_box_spawns
+  type: mk64:spawn_data
+  count: 16
+  offset: 0x9498
+d_course_mario_raceway_piranha_plant_spawns:
+  symbol: d_course_mario_raceway_piranha_plant_spawns
+  type: mk64:spawn_data
+  count: 11
+  offset: 0x9518
+d_course_mario_raceway_tree_spawns:
+  symbol: d_course_mario_raceway_tree_spawns
+  type: mk64:spawn_data
+  count: 28
+  offset: 0x9570
+d_course_mario_raceway_addr:
+  symbol: d_course_mario_raceway_addr
+  type: mk64:track_sections
+  offset: 0x9650
+  count: 53

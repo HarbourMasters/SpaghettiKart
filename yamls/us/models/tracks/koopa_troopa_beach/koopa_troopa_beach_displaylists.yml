@@ -1,0 +1,2090 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x8E8BC8
+  no_compression: true
+  manual_segments:
+    # Segment 5
+    - [0x05000000, "textures/other_textures/texture_643B3C"]
+    - [0x05000800, "textures/other_textures/texture_66A3DC"]
+    - [0x05001000, "textures/other_textures/sign_wood_red_arrow"]
+    - [0x05002000, "textures/other_textures/texture_66DD38"]
+    - [0x05003000, "textures/other_textures/texture_643430"]
+    - [0x05003800, "textures/other_textures/texture_660D8C"]
+    - [0x05004000, "textures/other_textures/texture_6609D0"]
+    - [0x05005000, "textures/other_textures/grass_12"]
+    - [0x05005800, "textures/other_textures/texture_66CA98"]
+    - [0x05006000, "textures/other_textures/texture_66EBF0"]
+    - [0x05006800, "textures/other_textures/texture_67BEE8"]
+    - [0x05007000, "textures/other_textures/sand_finish"]
+    - [0x05007800, "textures/other_textures/wheel_steam_engine"]
+    - [0x05008000, "textures/other_textures/texture_669570"]
+    - [0x05009000, "textures/other_textures/waves_1"]
+    - [0x05009800, "textures/other_textures/waves_2"]
+  # Segment 7
+    - [0x7000000, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_0"]
+    - [0x70000B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B0"]
+    - [0x7000160, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_160"]
+    - [0x7000210, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_210"]
+    - [0x70002C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2C0"]
+    - [0x70002E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2E8"]
+    - [0x7000358, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_358"]
+    - [0x7000368, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_368"]
+    - [0x7000380, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_380"]
+    - [0x7000390, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_390"]
+    - [0x7000440, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_440"]
+    - [0x7000518, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_518"]
+    - [0x7000610, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_610"]
+    - [0x70006D8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6D8"]
+    - [0x7000778, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_778"]
+    - [0x7000858, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_858"]
+    - [0x7000928, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_928"]
+    - [0x7000A00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A00"]
+    - [0x7000AE0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AE0"]
+    - [0x7000BD8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_BD8"]
+    - [0x7000CC0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_CC0"]
+    - [0x7000D70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_D70"]
+    - [0x7000E60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_E60"]
+    - [0x7000F38, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_F38"]
+    - [0x7001000, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1000"]
+    - [0x70010B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_10B0"]
+    - [0x7001190, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1190"]
+    - [0x7001210, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1210"]
+    - [0x70012D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_12D0"]
+    - [0x70013D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_13D0"]
+    - [0x70014D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_14D0"]
+    - [0x7001590, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1590"]
+    - [0x7001668, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1668"]
+    - [0x70016F0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_16F0"]
+    - [0x7001778, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1778"]
+    - [0x7001850, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1850"]
+    - [0x7001940, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1940"]
+    - [0x7001A40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1A40"]
+    - [0x7001B58, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1B58"]
+    - [0x7001C18, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1C18"]
+    - [0x7001CC0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1CC0"]
+    - [0x7001DA8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1DA8"]
+    - [0x7001E90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1E90"]
+    - [0x7001F78, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_1F78"]
+    - [0x7002058, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2058"]
+    - [0x7002178, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2178"]
+    - [0x70021D8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_21D8"]
+    - [0x7002240, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2240"]
+    - [0x70022B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_22B0"]
+    - [0x7002320, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2320"]
+    - [0x7002398, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2398"]
+    - [0x7002410, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2410"]
+    - [0x7002478, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2478"]
+    - [0x70024E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_24E8"]
+    - [0x7002560, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2560"]
+    - [0x70025C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_25C8"]
+    - [0x7002638, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2638"]
+    - [0x7002698, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2698"]
+    - [0x7002748, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2748"]
+    - [0x70027B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_27B0"]
+    - [0x7002818, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2818"]
+    - [0x7002888, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2888"]
+    - [0x70028F0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_28F0"]
+    - [0x7002960, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2960"]
+    - [0x70029D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_29D0"]
+    - [0x7002A58, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2A58"]
+    - [0x7002AC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2AC8"]
+    - [0x7002B30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2B30"]
+    - [0x7002BA8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2BA8"]
+    - [0x7002C08, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2C08"]
+    - [0x7002C68, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2C68"]
+    - [0x7002CC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2CC8"]
+    - [0x7002D40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2D40"]
+    - [0x7002DA8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2DA8"]
+    - [0x7002E18, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2E18"]
+    - [0x7002E98, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2E98"]
+    - [0x7002F00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2F00"]
+    - [0x7002F60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2F60"]
+    - [0x7002FC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_2FC8"]
+    - [0x7003038, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3038"]
+    - [0x70030B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_30B0"]
+    - [0x70031D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_31D0"]
+    - [0x70032B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_32B0"]
+    - [0x7003390, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3390"]
+    - [0x7003470, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3470"]
+    - [0x7003550, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3550"]
+    - [0x7003630, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3630"]
+    - [0x70036F0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_36F0"]
+    - [0x70037B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_37B0"]
+    - [0x70038B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_38B0"]
+    - [0x7003978, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3978"]
+    - [0x70039E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_39E8"]
+    - [0x7003AC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3AC8"]
+    - [0x7003B40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3B40"]
+    - [0x7003C38, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3C38"]
+    - [0x7003D00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3D00"]
+    - [0x7003DE0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3DE0"]
+    - [0x7003ED8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3ED8"]
+    - [0x7003F60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_3F60"]
+    - [0x7004040, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4040"]
+    - [0x7004120, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4120"]
+    - [0x7004200, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4200"]
+    - [0x70042E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_42E0"]
+    - [0x70043C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_43C0"]
+    - [0x7004490, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4490"]
+    - [0x70045C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_45C8"]
+    - [0x70046A8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_46A8"]
+    - [0x7004770, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4770"]
+    - [0x70047E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_47E0"]
+    - [0x70048B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_48B0"]
+    - [0x7004920, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4920"]
+    - [0x7004A08, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4A08"]
+    - [0x7004AF0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4AF0"]
+    - [0x7004BD0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4BD0"]
+    - [0x7004CC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4CC8"]
+    - [0x7004DD8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4DD8"]
+    - [0x7004EA0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4EA0"]
+    - [0x7004F68, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_4F68"]
+    - [0x7005028, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5028"]
+    - [0x70050E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_50E8"]
+    - [0x70051A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_51A0"]
+    - [0x7005250, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5250"]
+    - [0x7005300, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5300"]
+    - [0x70053D8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_53D8"]
+    - [0x7005488, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5488"]
+    - [0x70054E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_54E8"]
+    - [0x7005598, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5598"]
+    - [0x70055F8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_55F8"]
+    - [0x70056C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_56C8"]
+    - [0x7005778, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5778"]
+    - [0x7005828, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5828"]
+    - [0x70058F8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_58F8"]
+    - [0x7005970, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5970"]
+    - [0x7005A38, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5A38"]
+    - [0x7005B00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5B00"]
+    - [0x7005BB8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5BB8"]
+    - [0x7005C88, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5C88"]
+    - [0x7005D50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5D50"]
+    - [0x7005E08, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5E08"]
+    - [0x7005EB0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5EB0"]
+    - [0x7005F60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_5F60"]
+    - [0x7006010, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6010"]
+    - [0x7006078, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6078"]
+    - [0x7006140, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6140"]
+    - [0x70061A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_61A0"]
+    - [0x7006268, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6268"]
+    - [0x7006330, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6330"]
+    - [0x70063F8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_63F8"]
+    - [0x70064C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_64C8"]
+    - [0x70065D8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_65D8"]
+    - [0x7006648, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6648"]
+    - [0x70066B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_66B0"]
+    - [0x7006718, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6718"]
+    - [0x70067A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_67A0"]
+    - [0x7006810, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6810"]
+    - [0x70068C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_68C0"]
+    - [0x7006938, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6938"]
+    - [0x7006998, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6998"]
+    - [0x70069F8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_69F8"]
+    - [0x7006A68, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6A68"]
+    - [0x7006AD0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6AD0"]
+    - [0x7006B30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6B30"]
+    - [0x7006BE8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6BE8"]
+    - [0x7006D70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6D70"]
+    - [0x7006DE8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6DE8"]
+    - [0x7006EB8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6EB8"]
+    - [0x7006F30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6F30"]
+    - [0x7006FA0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_6FA0"]
+    - [0x7007000, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7000"]
+    - [0x70070A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_70A0"]
+    - [0x7007120, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7120"]
+    - [0x7007188, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7188"]
+    - [0x70071F0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_71F0"]
+    - [0x7007260, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7260"]
+    - [0x70072D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_72D0"]
+    - [0x7007358, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7358"]
+    - [0x7007430, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7430"]
+    - [0x7007538, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7538"]
+    - [0x7007608, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7608"]
+    - [0x70076A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_76A0"]
+    - [0x70076C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_76C0"]
+    - [0x7007740, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7740"]
+    - [0x7007810, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7810"]
+    - [0x70078E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_78E0"]
+    - [0x7007970, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7970"]
+    - [0x7007A98, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7A98"]
+    - [0x7007DB0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7DB0"]
+    - [0x7007E48, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7E48"]
+    - [0x7007EE0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7EE0"]
+    - [0x7007F70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_7F70"]
+    - [0x7008028, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8028"]
+    - [0x70080F8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_80F8"]
+    - [0x7008200, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8200"]
+    - [0x70082D8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_82D8"]
+    - [0x7008360, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8360"]
+    - [0x7008468, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8468"]
+    - [0x7008510, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8510"]
+    - [0x70085C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_85C0"]
+    - [0x70086B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_86B0"]
+    - [0x7008740, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8740"]
+    - [0x70087E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_87E0"]
+    - [0x7008870, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8870"]
+    - [0x7008918, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8918"]
+    - [0x7008980, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8980"]
+    - [0x7008A90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8A90"]
+    - [0x7008C18, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8C18"]
+    - [0x7008D08, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8D08"]
+    - [0x7008DB0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8DB0"]
+    - [0x7008E50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8E50"]
+    - [0x7008EE0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8EE0"]
+    - [0x7008F58, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8F58"]
+    - [0x7008FD0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_8FD0"]
+    - [0x7009080, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9080"]
+    - [0x7009188, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9188"]
+    - [0x7009228, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9228"]
+    - [0x70092C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_92C8"]
+    - [0x7009368, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9368"]
+    - [0x7009408, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9408"]
+    - [0x70094A8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_94A8"]
+    - [0x7009548, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9548"]
+    - [0x70095E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_95E8"]
+    - [0x7009688, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9688"]
+    - [0x70096D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_96D0"]
+    - [0x7009800, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9800"]
+    - [0x7009930, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9930"]
+    - [0x7009A30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9A30"]
+    - [0x7009B20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9B20"]
+    - [0x7009B48, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9B48"]
+    - [0x7009B78, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9B78"]
+    - [0x7009B88, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9B88"]
+    - [0x7009CC0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9CC0"]
+    - [0x7009CD0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9CD0"]
+    - [0x7009D58, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9D58"]
+    - [0x7009E70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9E70"]
+    - [0x7009E88, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9E88"]
+    - [0x7009EC0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9EC0"]
+    - [0x7009EF8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9EF8"]
+    - [0x7009F30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9F30"]
+    - [0x7009F68, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9F68"]
+    - [0x7009FA0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9FA0"]
+    - [0x7009FC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9FC8"]
+    - [0x7009FF0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_9FF0"]
+    - [0x700A020, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A020"]
+    - [0x700A080, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A080"]
+    - [0x700A0B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A0B0"]
+    - [0x700A0E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A0E8"]
+    - [0x700A128, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A128"]
+    - [0x700A158, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A158"]
+    - [0x700A190, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A190"]
+    - [0x700A1D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A1D0"]
+    - [0x700A210, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A210"]
+    - [0x700A240, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A240"]
+    - [0x700A278, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A278"]
+    - [0x700A2B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A2B0"]
+    - [0x700A2E8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A2E8"]
+    - [0x700A320, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A320"]
+    - [0x700A350, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A350"]
+    - [0x700A388, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A388"]
+    - [0x700A3C8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A3C8"]
+    - [0x700A400, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A400"]
+    - [0x700A438, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A438"]
+    - [0x700A470, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A470"]
+    - [0x700A4A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A4A0"]
+    - [0x700A4D0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A4D0"]
+    - [0x700A508, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A508"]
+    - [0x700A540, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A540"]
+    - [0x700A640, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A640"]
+    - [0x700A668, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A668"]
+    - [0x700A690, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A690"]
+    - [0x700A6B8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A6B8"]
+    - [0x700A6E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A6E0"]
+    - [0x700A708, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A708"]
+    - [0x700A738, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A738"]
+    - [0x700A760, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A760"]
+    - [0x700A798, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A798"]
+    - [0x700A7C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A7C0"]
+    - [0x700A7E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A7E0"]
+    - [0x700A810, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A810"]
+    - [0x700A838, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A838"]
+    - [0x700A868, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A868"]
+    - [0x700A890, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A890"]
+    - [0x700A8C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A8C0"]
+    - [0x700A8E0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A8E0"]
+    - [0x700A908, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A908"]
+    - [0x700A930, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A930"]
+    - [0x700A990, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A990"]
+    - [0x700A9F0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_A9F0"]
+    - [0x700AA48, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AA48"]
+    - [0x700AAB0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AAB0"]
+    - [0x700AB08, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AB08"]
+    - [0x700AB68, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AB68"]
+    - [0x700ABD0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_ABD0"]
+    - [0x700AC40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AC40"]
+    - [0x700ACB0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_ACB0"]
+    - [0x700ACD8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_ACD8"]
+    - [0x700AD00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AD00"]
+    - [0x700AD28, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AD28"]
+    - [0x700AD50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AD50"]
+    - [0x700AD78, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AD78"]
+    - [0x700ADB8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_ADB8"]
+    - [0x700ADE0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_ADE0"]
+    - [0x700AEF8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AEF8"]
+    - [0x700AFC8, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_AFC8"]
+    - [0x700B0A0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B0A0"]
+    - [0x700B168, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B168"]
+    - [0x700B208, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B208"]
+    - [0x700B230, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B230"]
+    - [0x700B2B0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B2B0"]
+    - [0x700B2C0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists/d_course_koopa_troopa_beach_packed_dl_B2C0"]
+  # Segment 4
+    - [0x4000000, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000000"]
+    - [0x4000040, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000040"]
+    - [0x4000080, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000080"]
+    - [0x40000c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040000C0"]
+    - [0x4000100, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000100"]
+    - [0x4000140, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000140"]
+    - [0x4000180, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000180"]
+    - [0x40001c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040001C0"]
+    - [0x4000200, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000200"]
+    - [0x40002c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040002C0"]
+    - [0x40004c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040004C0"]
+    - [0x4000610, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000610"]
+    - [0x4000800, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000800"]
+    - [0x4000a00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000A00"]
+    - [0x4000a60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000A60"]
+    - [0x4000c50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000C50"]
+    - [0x4000e50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000E50"]
+    - [0x4000ff0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04000FF0"]
+    - [0x40011f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040011F0"]
+    - [0x40013e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040013E0"]
+    - [0x40015c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040015C0"]
+    - [0x40016b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040016B0"]
+    - [0x4001890, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001890"]
+    - [0x4001a80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001A80"]
+    - [0x4001af0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001AF0"]
+    - [0x4001cf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001CF0"]
+    - [0x4001ed0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001ED0"]
+    - [0x4001f00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04001F00"]
+    - [0x4002100, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002100"]
+    - [0x40022f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040022F0"]
+    - [0x4002350, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002350"]
+    - [0x4002540, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002540"]
+    - [0x4002740, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002740"]
+    - [0x40027e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040027E0"]
+    - [0x40029e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040029E0"]
+    - [0x4002be0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002BE0"]
+    - [0x4002d80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002D80"]
+    - [0x4002f60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04002F60"]
+    - [0x4003160, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003160"]
+    - [0x4003270, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003270"]
+    - [0x4003460, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003460"]
+    - [0x4003580, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003580"]
+    - [0x4003760, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003760"]
+    - [0x4003880, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003880"]
+    - [0x40038e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040038E0"]
+    - [0x4003ad0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003AD0"]
+    - [0x4003cb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003CB0"]
+    - [0x4003d20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003D20"]
+    - [0x4003f00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04003F00"]
+    - [0x40040f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040040F0"]
+    - [0x4004150, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004150"]
+    - [0x4004350, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004350"]
+    - [0x40044a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040044A0"]
+    - [0x4004680, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004680"]
+    - [0x4004880, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004880"]
+    - [0x4004940, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004940"]
+    - [0x4004a80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004A80"]
+    - [0x4004c70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004C70"]
+    - [0x4004e10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04004E10"]
+    - [0x4005010, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005010"]
+    - [0x40051f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040051F0"]
+    - [0x40053e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040053E0"]
+    - [0x40055d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040055D0"]
+    - [0x40057d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040057D0"]
+    - [0x40059a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040059A0"]
+    - [0x4005ba0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005BA0"]
+    - [0x4005d00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005D00"]
+    - [0x4005ef0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04005EF0"]
+    - [0x40060f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040060F0"]
+    - [0x4006120, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006120"]
+    - [0x40062c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040062C0"]
+    - [0x4006490, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006490"]
+    - [0x4006670, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006670"]
+    - [0x4006860, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006860"]
+    - [0x40068a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040068A0"]
+    - [0x4006a80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006A80"]
+    - [0x4006c80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006C80"]
+    - [0x4006db0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006DB0"]
+    - [0x4006f90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04006F90"]
+    - [0x4007180, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007180"]
+    - [0x4007360, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007360"]
+    - [0x4007560, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007560"]
+    - [0x4007750, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007750"]
+    - [0x4007940, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007940"]
+    - [0x40079c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040079C0"]
+    - [0x4007ba0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007BA0"]
+    - [0x4007d60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007D60"]
+    - [0x4007f60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04007F60"]
+    - [0x4008050, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008050"]
+    - [0x4008230, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008230"]
+    - [0x4008430, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008430"]
+    - [0x4008500, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008500"]
+    - [0x4008700, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008700"]
+    - [0x4008900, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008900"]
+    - [0x40089e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040089E0"]
+    - [0x4008be0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008BE0"]
+    - [0x4008de0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008DE0"]
+    - [0x4008ed0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04008ED0"]
+    - [0x40090d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040090D0"]
+    - [0x40092d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040092D0"]
+    - [0x4009300, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009300"]
+    - [0x4009360, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009360"]
+    - [0x40093f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040093F0"]
+    - [0x40094e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040094E0"]
+    - [0x40095b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040095B0"]
+    - [0x4009710, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009710"]
+    - [0x4009860, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009860"]
+    - [0x40098e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040098E0"]
+    - [0x40099c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040099C0"]
+    - [0x4009b10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009B10"]
+    - [0x4009bd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009BD0"]
+    - [0x4009cb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009CB0"]
+    - [0x4009d10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009D10"]
+    - [0x4009e20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009E20"]
+    - [0x4009e80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009E80"]
+    - [0x4009f10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009F10"]
+    - [0x4009fd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04009FD0"]
+    - [0x400a0e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A0E0"]
+    - [0x400a1a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A1A0"]
+    - [0x400a270, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A270"]
+    - [0x400a380, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A380"]
+    - [0x400a560, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A560"]
+    - [0x400a670, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A670"]
+    - [0x400a720, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A720"]
+    - [0x400a870, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A870"]
+    - [0x400a8a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A8A0"]
+    - [0x400a900, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A900"]
+    - [0x400a960, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400A960"]
+    - [0x400aa90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AA90"]
+    - [0x400ab20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AB20"]
+    - [0x400ac20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AC20"]
+    - [0x400adb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400ADB0"]
+    - [0x400ae30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AE30"]
+    - [0x400ae90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AE90"]
+    - [0x400af50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400AF50"]
+    - [0x400b070, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B070"]
+    - [0x400b1c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B1C0"]
+    - [0x400b300, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B300"]
+    - [0x400b400, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B400"]
+    - [0x400b580, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B580"]
+    - [0x400b680, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B680"]
+    - [0x400b7b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B7B0"]
+    - [0x400b8b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400B8B0"]
+    - [0x400ba20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BA20"]
+    - [0x400bb20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BB20"]
+    - [0x400bc60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BC60"]
+    - [0x400bd60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BD60"]
+    - [0x400bdf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BDF0"]
+    - [0x400be70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BE70"]
+    - [0x400bf20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BF20"]
+    - [0x400bfa0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400BFA0"]
+    - [0x400c120, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C120"]
+    - [0x400c290, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C290"]
+    - [0x400c3b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C3B0"]
+    - [0x400c430, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C430"]
+    - [0x400c530, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C530"]
+    - [0x400c6a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C6A0"]
+    - [0x400c7a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C7A0"]
+    - [0x400c920, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400C920"]
+    - [0x400cb00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CB00"]
+    - [0x400cc80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CC80"]
+    - [0x400cd70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CD70"]
+    - [0x400cdf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CDF0"]
+    - [0x400cf40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400CF40"]
+    - [0x400d040, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D040"]
+    - [0x400d1e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D1E0"]
+    - [0x400d360, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D360"]
+    - [0x400d520, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D520"]
+    - [0x400d660, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D660"]
+    - [0x400d760, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D760"]
+    - [0x400d8a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D8A0"]
+    - [0x400d9a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400D9A0"]
+    - [0x400daf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DAF0"]
+    - [0x400dbf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DBF0"]
+    - [0x400dd60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DD60"]
+    - [0x400de60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DE60"]
+    - [0x400dfb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400DFB0"]
+    - [0x400e0b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E0B0"]
+    - [0x400e1f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E1F0"]
+    - [0x400e270, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E270"]
+    - [0x400e450, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E450"]
+    - [0x400e650, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E650"]
+    - [0x400e840, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E840"]
+    - [0x400e8a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E8A0"]
+    - [0x400e9e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400E9E0"]
+    - [0x400eae0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EAE0"]
+    - [0x400ebd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EBD0"]
+    - [0x400ec50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EC50"]
+    - [0x400ed60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400ED60"]
+    - [0x400ef10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EF10"]
+    - [0x400ef60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400EF60"]
+    - [0x400f070, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F070"]
+    - [0x400f1a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F1A0"]
+    - [0x400f2d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F2D0"]
+    - [0x400f480, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F480"]
+    - [0x400f500, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F500"]
+    - [0x400f630, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F630"]
+    - [0x400f720, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F720"]
+    - [0x400f8d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400F8D0"]
+    - [0x400fa50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FA50"]
+    - [0x400fb00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FB00"]
+    - [0x400fb80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FB80"]
+    - [0x400fc30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FC30"]
+    - [0x400fcb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FCB0"]
+    - [0x400fd70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FD70"]
+    - [0x400fdf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FDF0"]
+    - [0x400feb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FEB0"]
+    - [0x400ff30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FF30"]
+    - [0x400ffd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0400FFD0"]
+    - [0x4010010, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010010"]
+    - [0x4010050, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010050"]
+    - [0x4010090, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010090"]
+    - [0x40100f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040100F0"]
+    - [0x4010130, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010130"]
+    - [0x4010260, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010260"]
+    - [0x4010320, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010320"]
+    - [0x4010380, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010380"]
+    - [0x40103c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040103C0"]
+    - [0x40103f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040103F0"]
+    - [0x4010450, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010450"]
+    - [0x4010490, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010490"]
+    - [0x40104f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040104F0"]
+    - [0x40105e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040105E0"]
+    - [0x40106a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040106A0"]
+    - [0x4010700, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010700"]
+    - [0x4010740, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010740"]
+    - [0x40107a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040107A0"]
+    - [0x40107e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040107E0"]
+    - [0x40108d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040108D0"]
+    - [0x4010990, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010990"]
+    - [0x4010ac0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010AC0"]
+    - [0x4010b70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010B70"]
+    - [0x4010bf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010BF0"]
+    - [0x4010cc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010CC0"]
+    - [0x4010d40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010D40"]
+    - [0x4010de0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010DE0"]
+    - [0x4010e20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010E20"]
+    - [0x4010f20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010F20"]
+    - [0x4010fd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04010FD0"]
+    - [0x4011080, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011080"]
+    - [0x4011100, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011100"]
+    - [0x4011190, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011190"]
+    - [0x40111d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040111D0"]
+    - [0x40113c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040113C0"]
+    - [0x40114e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040114E0"]
+    - [0x4011540, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011540"]
+    - [0x4011580, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011580"]
+    - [0x40115e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040115E0"]
+    - [0x4011620, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011620"]
+    - [0x40116b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040116B0"]
+    - [0x4011790, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011790"]
+    - [0x40117f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040117F0"]
+    - [0x4011850, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011850"]
+    - [0x40118f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040118F0"]
+    - [0x40119d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040119D0"]
+    - [0x4011b00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011B00"]
+    - [0x4011b40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011B40"]
+    - [0x4011c40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011C40"]
+    - [0x4011cc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011CC0"]
+    - [0x4011dc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011DC0"]
+    - [0x4011e70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011E70"]
+    - [0x4011f80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04011F80"]
+    - [0x4012000, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012000"]
+    - [0x40120b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040120B0"]
+    - [0x40122a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040122A0"]
+    - [0x40123c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040123C0"]
+    - [0x4012400, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012400"]
+    - [0x4012460, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012460"]
+    - [0x40125e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040125E0"]
+    - [0x4012640, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012640"]
+    - [0x4012690, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012690"]
+    - [0x4012750, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012750"]
+    - [0x40127d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040127D0"]
+    - [0x4012830, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012830"]
+    - [0x4012890, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012890"]
+    - [0x4012950, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012950"]
+    - [0x4012ae0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012AE0"]
+    - [0x4012ce0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012CE0"]
+    - [0x4012e90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04012E90"]
+    - [0x4013040, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013040"]
+    - [0x40131c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040131C0"]
+    - [0x40132b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040132B0"]
+    - [0x4013340, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013340"]
+    - [0x4013480, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013480"]
+    - [0x4013580, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013580"]
+    - [0x40135d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040135D0"]
+    - [0x40137d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040137D0"]
+    - [0x4013860, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013860"]
+    - [0x4013a10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013A10"]
+    - [0x4013a90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013A90"]
+    - [0x4013b50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013B50"]
+    - [0x4013c50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013C50"]
+    - [0x4013d70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013D70"]
+    - [0x4013f70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04013F70"]
+    - [0x4014150, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014150"]
+    - [0x4014340, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014340"]
+    - [0x4014530, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014530"]
+    - [0x4014560, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014560"]
+    - [0x4014760, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014760"]
+    - [0x4014940, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014940"]
+    - [0x40149c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040149C0"]
+    - [0x4014bc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014BC0"]
+    - [0x4014bf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014BF0"]
+    - [0x4014dd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014DD0"]
+    - [0x4014fb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04014FB0"]
+    - [0x40151a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040151A0"]
+    - [0x4015230, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015230"]
+    - [0x4015430, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015430"]
+    - [0x4015620, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015620"]
+    - [0x4015650, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015650"]
+    - [0x4015830, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015830"]
+    - [0x4015860, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015860"]
+    - [0x4015890, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015890"]
+    - [0x4015a70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015A70"]
+    - [0x4015b60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015B60"]
+    - [0x4015b90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015B90"]
+    - [0x4015d80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015D80"]
+    - [0x4015e50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04015E50"]
+    - [0x4016030, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016030"]
+    - [0x4016210, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016210"]
+    - [0x40163f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040163F0"]
+    - [0x40165d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040165D0"]
+    - [0x40167b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040167B0"]
+    - [0x4016990, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016990"]
+    - [0x40169c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040169C0"]
+    - [0x4016ba0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016BA0"]
+    - [0x4016d90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016D90"]
+    - [0x4016f70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04016F70"]
+    - [0x4017120, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017120"]
+    - [0x4017300, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017300"]
+    - [0x40173c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040173C0"]
+    - [0x40175a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040175A0"]
+    - [0x4017660, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017660"]
+    - [0x4017840, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017840"]
+    - [0x40178a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040178A0"]
+    - [0x4017a80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017A80"]
+    - [0x4017c70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017C70"]
+    - [0x4017e70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04017E70"]
+    - [0x4018050, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018050"]
+    - [0x40180e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040180E0"]
+    - [0x40182c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040182C0"]
+    - [0x40184a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040184A0"]
+    - [0x4018680, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018680"]
+    - [0x40187f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040187F0"]
+    - [0x40189f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040189F0"]
+    - [0x4018bd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018BD0"]
+    - [0x4018ce0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018CE0"]
+    - [0x4018ec0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018EC0"]
+    - [0x4018f50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04018F50"]
+    - [0x4019130, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019130"]
+    - [0x4019280, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019280"]
+    - [0x4019480, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019480"]
+    - [0x4019570, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019570"]
+    - [0x4019750, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019750"]
+    - [0x4019900, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019900"]
+    - [0x4019940, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019940"]
+    - [0x4019a00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019A00"]
+    - [0x4019a60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019A60"]
+    - [0x4019c40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019C40"]
+    - [0x4019ca0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019CA0"]
+    - [0x4019ea0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019EA0"]
+    - [0x4019f30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04019F30"]
+    - [0x401a110, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A110"]
+    - [0x401a140, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A140"]
+    - [0x401a340, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A340"]
+    - [0x401a460, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A460"]
+    - [0x401a520, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A520"]
+    - [0x401a720, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A720"]
+    - [0x401a900, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401A900"]
+    - [0x401aae0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AAE0"]
+    - [0x401ab70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AB70"]
+    - [0x401ad70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AD70"]
+    - [0x401af60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401AF60"]
+    - [0x401b140, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B140"]
+    - [0x401b330, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B330"]
+    - [0x401b520, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B520"]
+    - [0x401b640, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B640"]
+    - [0x401b820, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401B820"]
+    - [0x401ba00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BA00"]
+    - [0x401bbe0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BBE0"]
+    - [0x401bdc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BDC0"]
+    - [0x401bf30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401BF30"]
+    - [0x401c130, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C130"]
+    - [0x401c1f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C1F0"]
+    - [0x401c3d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C3D0"]
+    - [0x401c400, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C400"]
+    - [0x401c550, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C550"]
+    - [0x401c6a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C6A0"]
+    - [0x401c790, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C790"]
+    - [0x401c810, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C810"]
+    - [0x401c8b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C8B0"]
+    - [0x401c8f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C8F0"]
+    - [0x401c990, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C990"]
+    - [0x401c9d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401C9D0"]
+    - [0x401ca70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CA70"]
+    - [0x401cab0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CAB0"]
+    - [0x401cb50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CB50"]
+    - [0x401cb90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CB90"]
+    - [0x401cc30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CC30"]
+    - [0x401cc70, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CC70"]
+    - [0x401cd10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CD10"]
+    - [0x401cd50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CD50"]
+    - [0x401cdf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CDF0"]
+    - [0x401ce30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CE30"]
+    - [0x401ced0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CED0"]
+    - [0x401cf10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401CF10"]
+    - [0x401d110, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D110"]
+    - [0x401d190, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D190"]
+    - [0x401d370, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D370"]
+    - [0x401d3a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D3A0"]
+    - [0x401d5a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D5A0"]
+    - [0x401d620, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D620"]
+    - [0x401d800, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D800"]
+    - [0x401d830, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401D830"]
+    - [0x401da10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DA10"]
+    - [0x401dbf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DBF0"]
+    - [0x401ddd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DDD0"]
+    - [0x401def0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401DEF0"]
+    - [0x401e0d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E0D0"]
+    - [0x401e2b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E2B0"]
+    - [0x401e490, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E490"]
+    - [0x401e4c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E4C0"]
+    - [0x401e560, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E560"]
+    - [0x401e760, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E760"]
+    - [0x401e930, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401E930"]
+    - [0x401ea60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EA60"]
+    - [0x401ec60, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EC60"]
+    - [0x401ed20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401ED20"]
+    - [0x401ee90, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EE90"]
+    - [0x401efe0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401EFE0"]
+    - [0x401f150, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F150"]
+    - [0x401f290, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F290"]
+    - [0x401f3d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F3D0"]
+    - [0x401f450, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F450"]
+    - [0x401f510, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F510"]
+    - [0x401f620, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F620"]
+    - [0x401f810, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F810"]
+    - [0x401f890, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F890"]
+    - [0x401f9a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401F9A0"]
+    - [0x401fb20, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FB20"]
+    - [0x401fd00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FD00"]
+    - [0x401fde0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FDE0"]
+    - [0x401ff10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x0401FF10"]
+    - [0x40200b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040200B0"]
+    - [0x4020250, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020250"]
+    - [0x4020370, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020370"]
+    - [0x40204f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040204F0"]
+    - [0x4020640, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020640"]
+    - [0x4020780, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020780"]
+    - [0x40208e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040208E0"]
+    - [0x4020a00, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020A00"]
+    - [0x4020b40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020B40"]
+    - [0x4020ce0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020CE0"]
+    - [0x4020e50, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020E50"]
+    - [0x4020fa0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04020FA0"]
+    - [0x40210d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040210D0"]
+    - [0x40211e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040211E0"]
+    - [0x4021300, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021300"]
+    - [0x4021470, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021470"]
+    - [0x40215a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040215A0"]
+    - [0x4021630, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021630"]
+    - [0x40216c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040216C0"]
+    - [0x4021770, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021770"]
+    - [0x4021800, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021800"]
+    - [0x40218b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040218B0"]
+    - [0x40219c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040219C0"]
+    - [0x4021a80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021A80"]
+    - [0x4021bb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021BB0"]
+    - [0x4021c40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021C40"]
+    - [0x4021ca0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021CA0"]
+    - [0x4021d80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021D80"]
+    - [0x4021e10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021E10"]
+    - [0x4021ef0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021EF0"]
+    - [0x4021fb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04021FB0"]
+    - [0x40220a0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040220A0"]
+    - [0x4022100, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022100"]
+    - [0x4022190, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022190"]
+    - [0x4022250, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022250"]
+    - [0x4022450, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022450"]
+    - [0x4022510, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022510"]
+    - [0x4022700, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022700"]
+    - [0x40227c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040227C0"]
+    - [0x40229c0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040229C0"]
+    - [0x40229f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040229F0"]
+    - [0x4022bd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022BD0"]
+    - [0x4022cc0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022CC0"]
+    - [0x4022eb0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022EB0"]
+    - [0x4022f10, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04022F10"]
+    - [0x40230f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040230F0"]
+    - [0x40231f0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040231F0"]
+    - [0x40233d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040233D0"]
+    - [0x40234b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040234B0"]
+    - [0x40236b0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040236B0"]
+    - [0x40237e0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040237E0"]
+    - [0x40239d0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x040239D0"]
+    - [0x4023ab0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023AB0"]
+    - [0x4023b30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023B30"]
+    - [0x4023bf0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023BF0"]
+    - [0x4023c80, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023C80"]
+    - [0x4023d30, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023D30"]
+    - [0x4023db0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023DB0"]
+    - [0x4023f40, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023F40"]
+    - [0x4023fd0, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04023FD0"]
+    - [0x4024090, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024090"]
+    - [0x4024170, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024170"]
+    - [0x4024230, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024230"]
+    - [0x4024360, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024360"]
+    - [0x4024540, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024540"]
+    - [0x4024720, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024720"]
+    - [0x4024780, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024780"]
+    - [0x4024970, "models/tracks/koopa_troopa_beach/koopa_troopa_beach_vertices/d_course_koopa_troopa_beach_vertex_0x04024970"]
+  segments:
+    - [0x0F, 0x8E8BC8]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_koopa_troopa_beach_packed_dl_0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_koopa_troopa_beach_packed_dl_B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B0
+  type: MK64:PACKED_GFX
+  offset: 0x20
+d_course_koopa_troopa_beach_packed_dl_160:
+  symbol: d_course_koopa_troopa_beach_packed_dl_160
+  type: MK64:PACKED_GFX
+  offset: 0x40
+d_course_koopa_troopa_beach_packed_dl_210:
+  symbol: d_course_koopa_troopa_beach_packed_dl_210
+  type: MK64:PACKED_GFX
+  offset: 0x60
+d_course_koopa_troopa_beach_packed_dl_2C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2C0
+  type: MK64:PACKED_GFX
+  offset: 0x80
+d_course_koopa_troopa_beach_packed_dl_2E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2E8
+  type: MK64:PACKED_GFX
+  offset: 0x8D
+d_course_koopa_troopa_beach_packed_dl_358:
+  symbol: d_course_koopa_troopa_beach_packed_dl_358
+  type: MK64:PACKED_GFX
+  offset: 0xA8
+d_course_koopa_troopa_beach_packed_dl_368:
+  symbol: d_course_koopa_troopa_beach_packed_dl_368
+  type: MK64:PACKED_GFX
+  offset: 0xAC
+d_course_koopa_troopa_beach_packed_dl_380:
+  symbol: d_course_koopa_troopa_beach_packed_dl_380
+  type: MK64:PACKED_GFX
+  offset: 0xB3
+d_course_koopa_troopa_beach_packed_dl_390:
+  symbol: d_course_koopa_troopa_beach_packed_dl_390
+  type: MK64:PACKED_GFX
+  offset: 0xB7
+d_course_koopa_troopa_beach_packed_dl_440:
+  symbol: d_course_koopa_troopa_beach_packed_dl_440
+  type: MK64:PACKED_GFX
+  offset: 0xF6
+d_course_koopa_troopa_beach_packed_dl_518:
+  symbol: d_course_koopa_troopa_beach_packed_dl_518
+  type: MK64:PACKED_GFX
+  offset: 0x14C
+d_course_koopa_troopa_beach_packed_dl_610:
+  symbol: d_course_koopa_troopa_beach_packed_dl_610
+  type: MK64:PACKED_GFX
+  offset: 0x1B4
+d_course_koopa_troopa_beach_packed_dl_6D8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6D8
+  type: MK64:PACKED_GFX
+  offset: 0x202
+d_course_koopa_troopa_beach_packed_dl_778:
+  symbol: d_course_koopa_troopa_beach_packed_dl_778
+  type: MK64:PACKED_GFX
+  offset: 0x237
+d_course_koopa_troopa_beach_packed_dl_858:
+  symbol: d_course_koopa_troopa_beach_packed_dl_858
+  type: MK64:PACKED_GFX
+  offset: 0x28E
+d_course_koopa_troopa_beach_packed_dl_928:
+  symbol: d_course_koopa_troopa_beach_packed_dl_928
+  type: MK64:PACKED_GFX
+  offset: 0x2DD
+d_course_koopa_troopa_beach_packed_dl_A00:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A00
+  type: MK64:PACKED_GFX
+  offset: 0x331
+d_course_koopa_troopa_beach_packed_dl_AE0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AE0
+  type: MK64:PACKED_GFX
+  offset: 0x38C
+d_course_koopa_troopa_beach_packed_dl_BD8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_BD8
+  type: MK64:PACKED_GFX
+  offset: 0x3F6
+d_course_koopa_troopa_beach_packed_dl_CC0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_CC0
+  type: MK64:PACKED_GFX
+  offset: 0x456
+d_course_koopa_troopa_beach_packed_dl_D70:
+  symbol: d_course_koopa_troopa_beach_packed_dl_D70
+  type: MK64:PACKED_GFX
+  offset: 0x497
+d_course_koopa_troopa_beach_packed_dl_E60:
+  symbol: d_course_koopa_troopa_beach_packed_dl_E60
+  type: MK64:PACKED_GFX
+  offset: 0x4E9
+d_course_koopa_troopa_beach_packed_dl_F38:
+  symbol: d_course_koopa_troopa_beach_packed_dl_F38
+  type: MK64:PACKED_GFX
+  offset: 0x53D
+d_course_koopa_troopa_beach_packed_dl_1000:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1000
+  type: MK64:PACKED_GFX
+  offset: 0x589
+d_course_koopa_troopa_beach_packed_dl_10B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_10B0
+  type: MK64:PACKED_GFX
+  offset: 0x5C6
+d_course_koopa_troopa_beach_packed_dl_1190:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1190
+  type: MK64:PACKED_GFX
+  offset: 0x621
+d_course_koopa_troopa_beach_packed_dl_1210:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1210
+  type: MK64:PACKED_GFX
+  offset: 0x646
+d_course_koopa_troopa_beach_packed_dl_12D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_12D0
+  type: MK64:PACKED_GFX
+  offset: 0x68F
+d_course_koopa_troopa_beach_packed_dl_13D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_13D0
+  type: MK64:PACKED_GFX
+  offset: 0x6FC
+d_course_koopa_troopa_beach_packed_dl_14D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_14D0
+  type: MK64:PACKED_GFX
+  offset: 0x769
+d_course_koopa_troopa_beach_packed_dl_1590:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1590
+  type: MK64:PACKED_GFX
+  offset: 0x7B0
+d_course_koopa_troopa_beach_packed_dl_1668:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1668
+  type: MK64:PACKED_GFX
+  offset: 0x806
+d_course_koopa_troopa_beach_packed_dl_16F0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_16F0
+  type: MK64:PACKED_GFX
+  offset: 0x82E
+d_course_koopa_troopa_beach_packed_dl_1778:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1778
+  type: MK64:PACKED_GFX
+  offset: 0x856
+d_course_koopa_troopa_beach_packed_dl_1850:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1850
+  type: MK64:PACKED_GFX
+  offset: 0x8AC
+d_course_koopa_troopa_beach_packed_dl_1940:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1940
+  type: MK64:PACKED_GFX
+  offset: 0x911
+d_course_koopa_troopa_beach_packed_dl_1A40:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1A40
+  type: MK64:PACKED_GFX
+  offset: 0x97E
+d_course_koopa_troopa_beach_packed_dl_1B58:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1B58
+  type: MK64:PACKED_GFX
+  offset: 0x9FA
+d_course_koopa_troopa_beach_packed_dl_1C18:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1C18
+  type: MK64:PACKED_GFX
+  offset: 0xA43
+d_course_koopa_troopa_beach_packed_dl_1CC0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1CC0
+  type: MK64:PACKED_GFX
+  offset: 0xA7D
+d_course_koopa_troopa_beach_packed_dl_1DA8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1DA8
+  type: MK64:PACKED_GFX
+  offset: 0xADB
+d_course_koopa_troopa_beach_packed_dl_1E90:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1E90
+  type: MK64:PACKED_GFX
+  offset: 0xB39
+d_course_koopa_troopa_beach_packed_dl_1F78:
+  symbol: d_course_koopa_troopa_beach_packed_dl_1F78
+  type: MK64:PACKED_GFX
+  offset: 0xB97
+d_course_koopa_troopa_beach_packed_dl_2058:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2058
+  type: MK64:PACKED_GFX
+  offset: 0xBEE
+d_course_koopa_troopa_beach_packed_dl_2178:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2178
+  type: MK64:PACKED_GFX
+  offset: 0xC58
+d_course_koopa_troopa_beach_packed_dl_21D8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_21D8
+  type: MK64:PACKED_GFX
+  offset: 0xC69
+d_course_koopa_troopa_beach_packed_dl_2240:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2240
+  type: MK64:PACKED_GFX
+  offset: 0xC7D
+d_course_koopa_troopa_beach_packed_dl_22B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_22B0
+  type: MK64:PACKED_GFX
+  offset: 0xC96
+d_course_koopa_troopa_beach_packed_dl_2320:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2320
+  type: MK64:PACKED_GFX
+  offset: 0xCAF
+d_course_koopa_troopa_beach_packed_dl_2398:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2398
+  type: MK64:PACKED_GFX
+  offset: 0xCCF
+d_course_koopa_troopa_beach_packed_dl_2410:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2410
+  type: MK64:PACKED_GFX
+  offset: 0xCED
+d_course_koopa_troopa_beach_packed_dl_2478:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2478
+  type: MK64:PACKED_GFX
+  offset: 0xD01
+d_course_koopa_troopa_beach_packed_dl_24E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_24E8
+  type: MK64:PACKED_GFX
+  offset: 0xD1A
+d_course_koopa_troopa_beach_packed_dl_2560:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2560
+  type: MK64:PACKED_GFX
+  offset: 0xD38
+d_course_koopa_troopa_beach_packed_dl_25C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_25C8
+  type: MK64:PACKED_GFX
+  offset: 0xD4E
+d_course_koopa_troopa_beach_packed_dl_2638:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2638
+  type: MK64:PACKED_GFX
+  offset: 0xD67
+d_course_koopa_troopa_beach_packed_dl_2698:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2698
+  type: MK64:PACKED_GFX
+  offset: 0xD78
+d_course_koopa_troopa_beach_packed_dl_2748:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2748
+  type: MK64:PACKED_GFX
+  offset: 0xDA4
+d_course_koopa_troopa_beach_packed_dl_27B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_27B0
+  type: MK64:PACKED_GFX
+  offset: 0xDB8
+d_course_koopa_troopa_beach_packed_dl_2818:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2818
+  type: MK64:PACKED_GFX
+  offset: 0xDCE
+d_course_koopa_troopa_beach_packed_dl_2888:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2888
+  type: MK64:PACKED_GFX
+  offset: 0xDE9
+d_course_koopa_troopa_beach_packed_dl_28F0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_28F0
+  type: MK64:PACKED_GFX
+  offset: 0xDFF
+d_course_koopa_troopa_beach_packed_dl_2960:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2960
+  type: MK64:PACKED_GFX
+  offset: 0xE18
+d_course_koopa_troopa_beach_packed_dl_29D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_29D0
+  type: MK64:PACKED_GFX
+  offset: 0xE33
+d_course_koopa_troopa_beach_packed_dl_2A58:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2A58
+  type: MK64:PACKED_GFX
+  offset: 0xE5B
+d_course_koopa_troopa_beach_packed_dl_2AC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2AC8
+  type: MK64:PACKED_GFX
+  offset: 0xE76
+d_course_koopa_troopa_beach_packed_dl_2B30:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2B30
+  type: MK64:PACKED_GFX
+  offset: 0xE8C
+d_course_koopa_troopa_beach_packed_dl_2BA8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2BA8
+  type: MK64:PACKED_GFX
+  offset: 0xEAA
+d_course_koopa_troopa_beach_packed_dl_2C08:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2C08
+  type: MK64:PACKED_GFX
+  offset: 0xEB9
+d_course_koopa_troopa_beach_packed_dl_2C68:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2C68
+  type: MK64:PACKED_GFX
+  offset: 0xECA
+d_course_koopa_troopa_beach_packed_dl_2CC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2CC8
+  type: MK64:PACKED_GFX
+  offset: 0xEDB
+d_course_koopa_troopa_beach_packed_dl_2D40:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2D40
+  type: MK64:PACKED_GFX
+  offset: 0xEF9
+d_course_koopa_troopa_beach_packed_dl_2DA8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2DA8
+  type: MK64:PACKED_GFX
+  offset: 0xF0D
+d_course_koopa_troopa_beach_packed_dl_2E18:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2E18
+  type: MK64:PACKED_GFX
+  offset: 0xF28
+d_course_koopa_troopa_beach_packed_dl_2E98:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2E98
+  type: MK64:PACKED_GFX
+  offset: 0xF4B
+d_course_koopa_troopa_beach_packed_dl_2F00:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2F00
+  type: MK64:PACKED_GFX
+  offset: 0xF5F
+d_course_koopa_troopa_beach_packed_dl_2F60:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2F60
+  type: MK64:PACKED_GFX
+  offset: 0xF70
+d_course_koopa_troopa_beach_packed_dl_2FC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_2FC8
+  type: MK64:PACKED_GFX
+  offset: 0xF86
+d_course_koopa_troopa_beach_packed_dl_3038:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3038
+  type: MK64:PACKED_GFX
+  offset: 0xFA1
+d_course_koopa_troopa_beach_packed_dl_30B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_30B0
+  type: MK64:PACKED_GFX
+  offset: 0xFBF
+d_course_koopa_troopa_beach_packed_dl_31D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_31D0
+  type: MK64:PACKED_GFX
+  offset: 0x1029
+d_course_koopa_troopa_beach_packed_dl_32B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_32B0
+  type: MK64:PACKED_GFX
+  offset: 0x1065
+d_course_koopa_troopa_beach_packed_dl_3390:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3390
+  type: MK64:PACKED_GFX
+  offset: 0x10A3
+d_course_koopa_troopa_beach_packed_dl_3470:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3470
+  type: MK64:PACKED_GFX
+  offset: 0x10DF
+d_course_koopa_troopa_beach_packed_dl_3550:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3550
+  type: MK64:PACKED_GFX
+  offset: 0x111D
+d_course_koopa_troopa_beach_packed_dl_3630:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3630
+  type: MK64:PACKED_GFX
+  offset: 0x1159
+d_course_koopa_troopa_beach_packed_dl_36F0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_36F0
+  type: MK64:PACKED_GFX
+  offset: 0x1181
+d_course_koopa_troopa_beach_packed_dl_37B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_37B0
+  type: MK64:PACKED_GFX
+  offset: 0x11AB
+d_course_koopa_troopa_beach_packed_dl_38B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_38B0
+  type: MK64:PACKED_GFX
+  offset: 0x11FB
+d_course_koopa_troopa_beach_packed_dl_3978:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3978
+  type: MK64:PACKED_GFX
+  offset: 0x122A
+d_course_koopa_troopa_beach_packed_dl_39E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_39E8
+  type: MK64:PACKED_GFX
+  offset: 0x1245
+d_course_koopa_troopa_beach_packed_dl_3AC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3AC8
+  type: MK64:PACKED_GFX
+  offset: 0x1283
+d_course_koopa_troopa_beach_packed_dl_3B40:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3B40
+  type: MK64:PACKED_GFX
+  offset: 0x12A3
+d_course_koopa_troopa_beach_packed_dl_3C38:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3C38
+  type: MK64:PACKED_GFX
+  offset: 0x12F0
+d_course_koopa_troopa_beach_packed_dl_3D00:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3D00
+  type: MK64:PACKED_GFX
+  offset: 0x131D
+d_course_koopa_troopa_beach_packed_dl_3DE0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3DE0
+  type: MK64:PACKED_GFX
+  offset: 0x1359
+d_course_koopa_troopa_beach_packed_dl_3ED8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3ED8
+  type: MK64:PACKED_GFX
+  offset: 0x13A4
+d_course_koopa_troopa_beach_packed_dl_3F60:
+  symbol: d_course_koopa_troopa_beach_packed_dl_3F60
+  type: MK64:PACKED_GFX
+  offset: 0x13CC
+d_course_koopa_troopa_beach_packed_dl_4040:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4040
+  type: MK64:PACKED_GFX
+  offset: 0x1408
+d_course_koopa_troopa_beach_packed_dl_4120:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4120
+  type: MK64:PACKED_GFX
+  offset: 0x1444
+d_course_koopa_troopa_beach_packed_dl_4200:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4200
+  type: MK64:PACKED_GFX
+  offset: 0x1480
+d_course_koopa_troopa_beach_packed_dl_42E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_42E0
+  type: MK64:PACKED_GFX
+  offset: 0x14BE
+d_course_koopa_troopa_beach_packed_dl_43C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_43C0
+  type: MK64:PACKED_GFX
+  offset: 0x14FA
+d_course_koopa_troopa_beach_packed_dl_4490:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4490
+  type: MK64:PACKED_GFX
+  offset: 0x152C
+d_course_koopa_troopa_beach_packed_dl_45C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_45C8
+  type: MK64:PACKED_GFX
+  offset: 0x15BA
+d_course_koopa_troopa_beach_packed_dl_46A8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_46A8
+  type: MK64:PACKED_GFX
+  offset: 0x15F6
+d_course_koopa_troopa_beach_packed_dl_4770:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4770
+  type: MK64:PACKED_GFX
+  offset: 0x1623
+d_course_koopa_troopa_beach_packed_dl_47E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_47E0
+  type: MK64:PACKED_GFX
+  offset: 0x163E
+d_course_koopa_troopa_beach_packed_dl_48B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_48B0
+  type: MK64:PACKED_GFX
+  offset: 0x1672
+d_course_koopa_troopa_beach_packed_dl_4920:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4920
+  type: MK64:PACKED_GFX
+  offset: 0x168D
+d_course_koopa_troopa_beach_packed_dl_4A08:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4A08
+  type: MK64:PACKED_GFX
+  offset: 0x16CC
+d_course_koopa_troopa_beach_packed_dl_4AF0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4AF0
+  type: MK64:PACKED_GFX
+  offset: 0x170D
+d_course_koopa_troopa_beach_packed_dl_4BD0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4BD0
+  type: MK64:PACKED_GFX
+  offset: 0x1749
+d_course_koopa_troopa_beach_packed_dl_4CC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4CC8
+  type: MK64:PACKED_GFX
+  offset: 0x1796
+d_course_koopa_troopa_beach_packed_dl_4DD8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4DD8
+  type: MK64:PACKED_GFX
+  offset: 0x17FA
+d_course_koopa_troopa_beach_packed_dl_4EA0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4EA0
+  type: MK64:PACKED_GFX
+  offset: 0x1827
+d_course_koopa_troopa_beach_packed_dl_4F68:
+  symbol: d_course_koopa_troopa_beach_packed_dl_4F68
+  type: MK64:PACKED_GFX
+  offset: 0x1854
+d_course_koopa_troopa_beach_packed_dl_5028:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5028
+  type: MK64:PACKED_GFX
+  offset: 0x187E
+d_course_koopa_troopa_beach_packed_dl_50E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_50E8
+  type: MK64:PACKED_GFX
+  offset: 0x18A8
+d_course_koopa_troopa_beach_packed_dl_51A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_51A0
+  type: MK64:PACKED_GFX
+  offset: 0x18CD
+d_course_koopa_troopa_beach_packed_dl_5250:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5250
+  type: MK64:PACKED_GFX
+  offset: 0x18ED
+d_course_koopa_troopa_beach_packed_dl_5300:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5300
+  type: MK64:PACKED_GFX
+  offset: 0x190D
+d_course_koopa_troopa_beach_packed_dl_53D8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_53D8
+  type: MK64:PACKED_GFX
+  offset: 0x1944
+d_course_koopa_troopa_beach_packed_dl_5488:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5488
+  type: MK64:PACKED_GFX
+  offset: 0x1964
+d_course_koopa_troopa_beach_packed_dl_54E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_54E8
+  type: MK64:PACKED_GFX
+  offset: 0x1973
+d_course_koopa_troopa_beach_packed_dl_5598:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5598
+  type: MK64:PACKED_GFX
+  offset: 0x1993
+d_course_koopa_troopa_beach_packed_dl_55F8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_55F8
+  type: MK64:PACKED_GFX
+  offset: 0x19A4
+d_course_koopa_troopa_beach_packed_dl_56C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_56C8
+  type: MK64:PACKED_GFX
+  offset: 0x19D6
+d_course_koopa_troopa_beach_packed_dl_5778:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5778
+  type: MK64:PACKED_GFX
+  offset: 0x19F6
+d_course_koopa_troopa_beach_packed_dl_5828:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5828
+  type: MK64:PACKED_GFX
+  offset: 0x1A16
+d_course_koopa_troopa_beach_packed_dl_58F8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_58F8
+  type: MK64:PACKED_GFX
+  offset: 0x1A48
+d_course_koopa_troopa_beach_packed_dl_5970:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5970
+  type: MK64:PACKED_GFX
+  offset: 0x1A66
+d_course_koopa_troopa_beach_packed_dl_5A38:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5A38
+  type: MK64:PACKED_GFX
+  offset: 0x1A93
+d_course_koopa_troopa_beach_packed_dl_5B00:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5B00
+  type: MK64:PACKED_GFX
+  offset: 0x1AC0
+d_course_koopa_troopa_beach_packed_dl_5BB8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5BB8
+  type: MK64:PACKED_GFX
+  offset: 0x1AE5
+d_course_koopa_troopa_beach_packed_dl_5C88:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5C88
+  type: MK64:PACKED_GFX
+  offset: 0x1B19
+d_course_koopa_troopa_beach_packed_dl_5D50:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5D50
+  type: MK64:PACKED_GFX
+  offset: 0x1B46
+d_course_koopa_troopa_beach_packed_dl_5E08:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5E08
+  type: MK64:PACKED_GFX
+  offset: 0x1B69
+d_course_koopa_troopa_beach_packed_dl_5EB0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5EB0
+  type: MK64:PACKED_GFX
+  offset: 0x1BA5
+d_course_koopa_troopa_beach_packed_dl_5F60:
+  symbol: d_course_koopa_troopa_beach_packed_dl_5F60
+  type: MK64:PACKED_GFX
+  offset: 0x1BC5
+d_course_koopa_troopa_beach_packed_dl_6010:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6010
+  type: MK64:PACKED_GFX
+  offset: 0x1BE5
+d_course_koopa_troopa_beach_packed_dl_6078:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6078
+  type: MK64:PACKED_GFX
+  offset: 0x1BF9
+d_course_koopa_troopa_beach_packed_dl_6140:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6140
+  type: MK64:PACKED_GFX
+  offset: 0x1C26
+d_course_koopa_troopa_beach_packed_dl_61A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_61A0
+  type: MK64:PACKED_GFX
+  offset: 0x1C37
+d_course_koopa_troopa_beach_packed_dl_6268:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6268
+  type: MK64:PACKED_GFX
+  offset: 0x1C64
+d_course_koopa_troopa_beach_packed_dl_6330:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6330
+  type: MK64:PACKED_GFX
+  offset: 0x1C91
+d_course_koopa_troopa_beach_packed_dl_63F8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_63F8
+  type: MK64:PACKED_GFX
+  offset: 0x1CC0
+d_course_koopa_troopa_beach_packed_dl_64C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_64C8
+  type: MK64:PACKED_GFX
+  offset: 0x1CF4
+d_course_koopa_troopa_beach_packed_dl_65D8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_65D8
+  type: MK64:PACKED_GFX
+  offset: 0x1D58
+d_course_koopa_troopa_beach_packed_dl_6648:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6648
+  type: MK64:PACKED_GFX
+  offset: 0x1D73
+d_course_koopa_troopa_beach_packed_dl_66B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_66B0
+  type: MK64:PACKED_GFX
+  offset: 0x1D87
+d_course_koopa_troopa_beach_packed_dl_6718:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6718
+  type: MK64:PACKED_GFX
+  offset: 0x1D9D
+d_course_koopa_troopa_beach_packed_dl_67A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_67A0
+  type: MK64:PACKED_GFX
+  offset: 0x1DC7
+d_course_koopa_troopa_beach_packed_dl_6810:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6810
+  type: MK64:PACKED_GFX
+  offset: 0x1DE2
+d_course_koopa_troopa_beach_packed_dl_68C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_68C0
+  type: MK64:PACKED_GFX
+  offset: 0x1E02
+d_course_koopa_troopa_beach_packed_dl_6938:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6938
+  type: MK64:PACKED_GFX
+  offset: 0x1E22
+d_course_koopa_troopa_beach_packed_dl_6998:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6998
+  type: MK64:PACKED_GFX
+  offset: 0x1E33
+d_course_koopa_troopa_beach_packed_dl_69F8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_69F8
+  type: MK64:PACKED_GFX
+  offset: 0x1E44
+d_course_koopa_troopa_beach_packed_dl_6A68:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6A68
+  type: MK64:PACKED_GFX
+  offset: 0x1E5D
+d_course_koopa_troopa_beach_packed_dl_6AD0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6AD0
+  type: MK64:PACKED_GFX
+  offset: 0x1E71
+d_course_koopa_troopa_beach_packed_dl_6B30:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6B30
+  type: MK64:PACKED_GFX
+  offset: 0x1E82
+d_course_koopa_troopa_beach_packed_dl_6BE8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6BE8
+  type: MK64:PACKED_GFX
+  offset: 0x1EA7
+d_course_koopa_troopa_beach_packed_dl_6D70:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6D70
+  type: MK64:PACKED_GFX
+  offset: 0x1F2D
+d_course_koopa_troopa_beach_packed_dl_6DE8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6DE8
+  type: MK64:PACKED_GFX
+  offset: 0x1F4D
+d_course_koopa_troopa_beach_packed_dl_6EB8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6EB8
+  type: MK64:PACKED_GFX
+  offset: 0x1F7D
+d_course_koopa_troopa_beach_packed_dl_6F30:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6F30
+  type: MK64:PACKED_GFX
+  offset: 0x1F9B
+d_course_koopa_troopa_beach_packed_dl_6FA0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_6FA0
+  type: MK64:PACKED_GFX
+  offset: 0x1FB6
+d_course_koopa_troopa_beach_packed_dl_7000:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7000
+  type: MK64:PACKED_GFX
+  offset: 0x1FC7
+d_course_koopa_troopa_beach_packed_dl_70A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_70A0
+  type: MK64:PACKED_GFX
+  offset: 0x1FFA
+d_course_koopa_troopa_beach_packed_dl_7120:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7120
+  type: MK64:PACKED_GFX
+  offset: 0x201F
+d_course_koopa_troopa_beach_packed_dl_7188:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7188
+  type: MK64:PACKED_GFX
+  offset: 0x2033
+d_course_koopa_troopa_beach_packed_dl_71F0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_71F0
+  type: MK64:PACKED_GFX
+  offset: 0x2049
+d_course_koopa_troopa_beach_packed_dl_7260:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7260
+  type: MK64:PACKED_GFX
+  offset: 0x2064
+d_course_koopa_troopa_beach_packed_dl_72D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_72D0
+  type: MK64:PACKED_GFX
+  offset: 0x207F
+d_course_koopa_troopa_beach_packed_dl_7358:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7358
+  type: MK64:PACKED_GFX
+  offset: 0x20A7
+d_course_koopa_troopa_beach_packed_dl_7430:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7430
+  type: MK64:PACKED_GFX
+  offset: 0x20F6
+d_course_koopa_troopa_beach_packed_dl_7538:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7538
+  type: MK64:PACKED_GFX
+  offset: 0x2166
+d_course_koopa_troopa_beach_packed_dl_7608:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7608
+  type: MK64:PACKED_GFX
+  offset: 0x21B5
+d_course_koopa_troopa_beach_packed_dl_76A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_76A0
+  type: MK64:PACKED_GFX
+  offset: 0x21E3
+d_course_koopa_troopa_beach_packed_dl_76C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_76C0
+  type: MK64:PACKED_GFX
+  offset: 0x21ED
+d_course_koopa_troopa_beach_packed_dl_7740:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7740
+  type: MK64:PACKED_GFX
+  offset: 0x2212
+d_course_koopa_troopa_beach_packed_dl_7810:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7810
+  type: MK64:PACKED_GFX
+  offset: 0x2261
+d_course_koopa_troopa_beach_packed_dl_78E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_78E0
+  type: MK64:PACKED_GFX
+  offset: 0x22AE
+d_course_koopa_troopa_beach_packed_dl_7970:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7970
+  type: MK64:PACKED_GFX
+  offset: 0x22D9
+d_course_koopa_troopa_beach_packed_dl_7A98:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7A98
+  type: MK64:PACKED_GFX
+  offset: 0x2325
+d_course_koopa_troopa_beach_packed_dl_7DB0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7DB0
+  type: MK64:PACKED_GFX
+  offset: 0x2491
+d_course_koopa_troopa_beach_packed_dl_7E48:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7E48
+  type: MK64:PACKED_GFX
+  offset: 0x24C3
+d_course_koopa_troopa_beach_packed_dl_7EE0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7EE0
+  type: MK64:PACKED_GFX
+  offset: 0x24F5
+d_course_koopa_troopa_beach_packed_dl_7F70:
+  symbol: d_course_koopa_troopa_beach_packed_dl_7F70
+  type: MK64:PACKED_GFX
+  offset: 0x2522
+d_course_koopa_troopa_beach_packed_dl_8028:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8028
+  type: MK64:PACKED_GFX
+  offset: 0x2566
+d_course_koopa_troopa_beach_packed_dl_80F8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_80F8
+  type: MK64:PACKED_GFX
+  offset: 0x25B5
+d_course_koopa_troopa_beach_packed_dl_8200:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8200
+  type: MK64:PACKED_GFX
+  offset: 0x2629
+d_course_koopa_troopa_beach_packed_dl_82D8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_82D8
+  type: MK64:PACKED_GFX
+  offset: 0x267F
+d_course_koopa_troopa_beach_packed_dl_8360:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8360
+  type: MK64:PACKED_GFX
+  offset: 0x26A7
+d_course_koopa_troopa_beach_packed_dl_8468:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8468
+  type: MK64:PACKED_GFX
+  offset: 0x26F8
+d_course_koopa_troopa_beach_packed_dl_8510:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8510
+  type: MK64:PACKED_GFX
+  offset: 0x2730
+d_course_koopa_troopa_beach_packed_dl_85C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_85C0
+  type: MK64:PACKED_GFX
+  offset: 0x276F
+d_course_koopa_troopa_beach_packed_dl_86B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_86B0
+  type: MK64:PACKED_GFX
+  offset: 0x27A0
+d_course_koopa_troopa_beach_packed_dl_8740:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8740
+  type: MK64:PACKED_GFX
+  offset: 0x27CD
+d_course_koopa_troopa_beach_packed_dl_87E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_87E0
+  type: MK64:PACKED_GFX
+  offset: 0x2800
+d_course_koopa_troopa_beach_packed_dl_8870:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8870
+  type: MK64:PACKED_GFX
+  offset: 0x282B
+d_course_koopa_troopa_beach_packed_dl_8918:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8918
+  type: MK64:PACKED_GFX
+  offset: 0x2867
+d_course_koopa_troopa_beach_packed_dl_8980:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8980
+  type: MK64:PACKED_GFX
+  offset: 0x287D
+d_course_koopa_troopa_beach_packed_dl_8A90:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8A90
+  type: MK64:PACKED_GFX
+  offset: 0x28EE
+d_course_koopa_troopa_beach_packed_dl_8C18:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8C18
+  type: MK64:PACKED_GFX
+  offset: 0x29A8
+d_course_koopa_troopa_beach_packed_dl_8D08:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8D08
+  type: MK64:PACKED_GFX
+  offset: 0x2A0B
+d_course_koopa_troopa_beach_packed_dl_8DB0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8DB0
+  type: MK64:PACKED_GFX
+  offset: 0x2A47
+d_course_koopa_troopa_beach_packed_dl_8E50:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8E50
+  type: MK64:PACKED_GFX
+  offset: 0x2A7C
+d_course_koopa_troopa_beach_packed_dl_8EE0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8EE0
+  type: MK64:PACKED_GFX
+  offset: 0x2AA7
+d_course_koopa_troopa_beach_packed_dl_8F58:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8F58
+  type: MK64:PACKED_GFX
+  offset: 0x2AC5
+d_course_koopa_troopa_beach_packed_dl_8FD0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_8FD0
+  type: MK64:PACKED_GFX
+  offset: 0x2AE3
+d_course_koopa_troopa_beach_packed_dl_9080:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9080
+  type: MK64:PACKED_GFX
+  offset: 0x2B0B
+d_course_koopa_troopa_beach_packed_dl_9188:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9188
+  type: MK64:PACKED_GFX
+  offset: 0x2B6C
+d_course_koopa_troopa_beach_packed_dl_9228:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9228
+  type: MK64:PACKED_GFX
+  offset: 0x2B8E
+d_course_koopa_troopa_beach_packed_dl_92C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_92C8
+  type: MK64:PACKED_GFX
+  offset: 0x2BB0
+d_course_koopa_troopa_beach_packed_dl_9368:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9368
+  type: MK64:PACKED_GFX
+  offset: 0x2BD2
+d_course_koopa_troopa_beach_packed_dl_9408:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9408
+  type: MK64:PACKED_GFX
+  offset: 0x2BF4
+d_course_koopa_troopa_beach_packed_dl_94A8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_94A8
+  type: MK64:PACKED_GFX
+  offset: 0x2C16
+d_course_koopa_troopa_beach_packed_dl_9548:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9548
+  type: MK64:PACKED_GFX
+  offset: 0x2C38
+d_course_koopa_troopa_beach_packed_dl_95E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_95E8
+  type: MK64:PACKED_GFX
+  offset: 0x2C5A
+d_course_koopa_troopa_beach_packed_dl_9688:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9688
+  type: MK64:PACKED_GFX
+  offset: 0x2C7C
+d_course_koopa_troopa_beach_packed_dl_96D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_96D0
+  type: MK64:PACKED_GFX
+  offset: 0x2C95
+d_course_koopa_troopa_beach_packed_dl_9800:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9800
+  type: MK64:PACKED_GFX
+  offset: 0x2CFF
+d_course_koopa_troopa_beach_packed_dl_9930:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9930
+  type: MK64:PACKED_GFX
+  offset: 0x2D69
+d_course_koopa_troopa_beach_packed_dl_9A30:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9A30
+  type: MK64:PACKED_GFX
+  offset: 0x2DD8
+d_course_koopa_troopa_beach_packed_dl_9B20:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9B20
+  type: MK64:PACKED_GFX
+  offset: 0x2E3B
+d_course_koopa_troopa_beach_packed_dl_9B48:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9B48
+  type: MK64:PACKED_GFX
+  offset: 0x2E48
+d_course_koopa_troopa_beach_packed_dl_9B78:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9B78
+  type: MK64:PACKED_GFX
+  offset: 0x2E5C
+d_course_koopa_troopa_beach_packed_dl_9B88:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9B88
+  type: MK64:PACKED_GFX
+  offset: 0x2E60
+d_course_koopa_troopa_beach_packed_dl_9CC0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9CC0
+  type: MK64:PACKED_GFX
+  offset: 0x2F15
+d_course_koopa_troopa_beach_packed_dl_9CD0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9CD0
+  type: MK64:PACKED_GFX
+  offset: 0x2F19
+d_course_koopa_troopa_beach_packed_dl_9D58:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9D58
+  type: MK64:PACKED_GFX
+  offset: 0x2F41
+d_course_koopa_troopa_beach_packed_dl_9E70:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9E70
+  type: MK64:PACKED_GFX
+  offset: 0x2FC3
+d_course_koopa_troopa_beach_packed_dl_9E88:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9E88
+  type: MK64:PACKED_GFX
+  offset: 0x2FCA
+d_course_koopa_troopa_beach_packed_dl_9EC0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9EC0
+  type: MK64:PACKED_GFX
+  offset: 0x2FE3
+d_course_koopa_troopa_beach_packed_dl_9EF8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9EF8
+  type: MK64:PACKED_GFX
+  offset: 0x2FFA
+d_course_koopa_troopa_beach_packed_dl_9F30:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9F30
+  type: MK64:PACKED_GFX
+  offset: 0x3013
+d_course_koopa_troopa_beach_packed_dl_9F68:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9F68
+  type: MK64:PACKED_GFX
+  offset: 0x302A
+d_course_koopa_troopa_beach_packed_dl_9FA0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9FA0
+  type: MK64:PACKED_GFX
+  offset: 0x3041
+d_course_koopa_troopa_beach_packed_dl_9FC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9FC8
+  type: MK64:PACKED_GFX
+  offset: 0x304E
+d_course_koopa_troopa_beach_packed_dl_9FF0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_9FF0
+  type: MK64:PACKED_GFX
+  offset: 0x305D
+d_course_koopa_troopa_beach_packed_dl_A020:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A020
+  type: MK64:PACKED_GFX
+  offset: 0x3071
+d_course_koopa_troopa_beach_packed_dl_A080:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A080
+  type: MK64:PACKED_GFX
+  offset: 0x309D
+d_course_koopa_troopa_beach_packed_dl_A0B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A0B0
+  type: MK64:PACKED_GFX
+  offset: 0x30B1
+d_course_koopa_troopa_beach_packed_dl_A0E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A0E8
+  type: MK64:PACKED_GFX
+  offset: 0x30CA
+d_course_koopa_troopa_beach_packed_dl_A128:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A128
+  type: MK64:PACKED_GFX
+  offset: 0x30E8
+d_course_koopa_troopa_beach_packed_dl_A158:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A158
+  type: MK64:PACKED_GFX
+  offset: 0x30FA
+d_course_koopa_troopa_beach_packed_dl_A190:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A190
+  type: MK64:PACKED_GFX
+  offset: 0x3111
+d_course_koopa_troopa_beach_packed_dl_A1D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A1D0
+  type: MK64:PACKED_GFX
+  offset: 0x312D
+d_course_koopa_troopa_beach_packed_dl_A210:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A210
+  type: MK64:PACKED_GFX
+  offset: 0x3149
+d_course_koopa_troopa_beach_packed_dl_A240:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A240
+  type: MK64:PACKED_GFX
+  offset: 0x315D
+d_course_koopa_troopa_beach_packed_dl_A278:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A278
+  type: MK64:PACKED_GFX
+  offset: 0x3176
+d_course_koopa_troopa_beach_packed_dl_A2B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A2B0
+  type: MK64:PACKED_GFX
+  offset: 0x318D
+d_course_koopa_troopa_beach_packed_dl_A2E8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A2E8
+  type: MK64:PACKED_GFX
+  offset: 0x31A4
+d_course_koopa_troopa_beach_packed_dl_A320:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A320
+  type: MK64:PACKED_GFX
+  offset: 0x31BD
+d_course_koopa_troopa_beach_packed_dl_A350:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A350
+  type: MK64:PACKED_GFX
+  offset: 0x31D1
+d_course_koopa_troopa_beach_packed_dl_A388:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A388
+  type: MK64:PACKED_GFX
+  offset: 0x31E8
+d_course_koopa_troopa_beach_packed_dl_A3C8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A3C8
+  type: MK64:PACKED_GFX
+  offset: 0x3204
+d_course_koopa_troopa_beach_packed_dl_A400:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A400
+  type: MK64:PACKED_GFX
+  offset: 0x321D
+d_course_koopa_troopa_beach_packed_dl_A438:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A438
+  type: MK64:PACKED_GFX
+  offset: 0x3234
+d_course_koopa_troopa_beach_packed_dl_A470:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A470
+  type: MK64:PACKED_GFX
+  offset: 0x324B
+d_course_koopa_troopa_beach_packed_dl_A4A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A4A0
+  type: MK64:PACKED_GFX
+  offset: 0x325F
+d_course_koopa_troopa_beach_packed_dl_A4D0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A4D0
+  type: MK64:PACKED_GFX
+  offset: 0x3273
+d_course_koopa_troopa_beach_packed_dl_A508:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A508
+  type: MK64:PACKED_GFX
+  offset: 0x328C
+d_course_koopa_troopa_beach_packed_dl_A540:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A540
+  type: MK64:PACKED_GFX
+  offset: 0x32A3
+d_course_koopa_troopa_beach_packed_dl_A640:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A640
+  type: MK64:PACKED_GFX
+  offset: 0x3301
+d_course_koopa_troopa_beach_packed_dl_A668:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A668
+  type: MK64:PACKED_GFX
+  offset: 0x330E
+d_course_koopa_troopa_beach_packed_dl_A690:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A690
+  type: MK64:PACKED_GFX
+  offset: 0x331B
+d_course_koopa_troopa_beach_packed_dl_A6B8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A6B8
+  type: MK64:PACKED_GFX
+  offset: 0x332A
+d_course_koopa_troopa_beach_packed_dl_A6E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A6E0
+  type: MK64:PACKED_GFX
+  offset: 0x3337
+d_course_koopa_troopa_beach_packed_dl_A708:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A708
+  type: MK64:PACKED_GFX
+  offset: 0x3346
+d_course_koopa_troopa_beach_packed_dl_A738:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A738
+  type: MK64:PACKED_GFX
+  offset: 0x335A
+d_course_koopa_troopa_beach_packed_dl_A760:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A760
+  type: MK64:PACKED_GFX
+  offset: 0x3369
+d_course_koopa_troopa_beach_packed_dl_A798:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A798
+  type: MK64:PACKED_GFX
+  offset: 0x3380
+d_course_koopa_troopa_beach_packed_dl_A7C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A7C0
+  type: MK64:PACKED_GFX
+  offset: 0x338D
+d_course_koopa_troopa_beach_packed_dl_A7E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A7E0
+  type: MK64:PACKED_GFX
+  offset: 0x3397
+d_course_koopa_troopa_beach_packed_dl_A810:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A810
+  type: MK64:PACKED_GFX
+  offset: 0x33A9
+d_course_koopa_troopa_beach_packed_dl_A838:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A838
+  type: MK64:PACKED_GFX
+  offset: 0x33B6
+d_course_koopa_troopa_beach_packed_dl_A868:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A868
+  type: MK64:PACKED_GFX
+  offset: 0x33C8
+d_course_koopa_troopa_beach_packed_dl_A890:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A890
+  type: MK64:PACKED_GFX
+  offset: 0x33D7
+d_course_koopa_troopa_beach_packed_dl_A8C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A8C0
+  type: MK64:PACKED_GFX
+  offset: 0x33E9
+d_course_koopa_troopa_beach_packed_dl_A8E0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A8E0
+  type: MK64:PACKED_GFX
+  offset: 0x33F3
+d_course_koopa_troopa_beach_packed_dl_A908:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A908
+  type: MK64:PACKED_GFX
+  offset: 0x3400
+d_course_koopa_troopa_beach_packed_dl_A930:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A930
+  type: MK64:PACKED_GFX
+  offset: 0x340F
+d_course_koopa_troopa_beach_packed_dl_A990:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A990
+  type: MK64:PACKED_GFX
+  offset: 0x343F
+d_course_koopa_troopa_beach_packed_dl_A9F0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_A9F0
+  type: MK64:PACKED_GFX
+  offset: 0x346D
+d_course_koopa_troopa_beach_packed_dl_AA48:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AA48
+  type: MK64:PACKED_GFX
+  offset: 0x3496
+d_course_koopa_troopa_beach_packed_dl_AAB0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AAB0
+  type: MK64:PACKED_GFX
+  offset: 0x34C7
+d_course_koopa_troopa_beach_packed_dl_AB08:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AB08
+  type: MK64:PACKED_GFX
+  offset: 0x34F0
+d_course_koopa_troopa_beach_packed_dl_AB68:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AB68
+  type: MK64:PACKED_GFX
+  offset: 0x3520
+d_course_koopa_troopa_beach_packed_dl_ABD0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_ABD0
+  type: MK64:PACKED_GFX
+  offset: 0x3551
+d_course_koopa_troopa_beach_packed_dl_AC40:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AC40
+  type: MK64:PACKED_GFX
+  offset: 0x3587
+d_course_koopa_troopa_beach_packed_dl_ACB0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_ACB0
+  type: MK64:PACKED_GFX
+  offset: 0x35BD
+d_course_koopa_troopa_beach_packed_dl_ACD8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_ACD8
+  type: MK64:PACKED_GFX
+  offset: 0x35CA
+d_course_koopa_troopa_beach_packed_dl_AD00:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AD00
+  type: MK64:PACKED_GFX
+  offset: 0x35D9
+d_course_koopa_troopa_beach_packed_dl_AD28:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AD28
+  type: MK64:PACKED_GFX
+  offset: 0x35E6
+d_course_koopa_troopa_beach_packed_dl_AD50:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AD50
+  type: MK64:PACKED_GFX
+  offset: 0x35F5
+d_course_koopa_troopa_beach_packed_dl_AD78:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AD78
+  type: MK64:PACKED_GFX
+  offset: 0x3602
+d_course_koopa_troopa_beach_packed_dl_ADB8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_ADB8
+  type: MK64:PACKED_GFX
+  offset: 0x361E
+d_course_koopa_troopa_beach_packed_dl_ADE0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_ADE0
+  type: MK64:PACKED_GFX
+  offset: 0x362B
+d_course_koopa_troopa_beach_packed_dl_AEF8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AEF8
+  type: MK64:PACKED_GFX
+  offset: 0x3692
+d_course_koopa_troopa_beach_packed_dl_AFC8:
+  symbol: d_course_koopa_troopa_beach_packed_dl_AFC8
+  type: MK64:PACKED_GFX
+  offset: 0x36C4
+d_course_koopa_troopa_beach_packed_dl_B0A0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B0A0
+  type: MK64:PACKED_GFX
+  offset: 0x36FB
+d_course_koopa_troopa_beach_packed_dl_B168:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B168
+  type: MK64:PACKED_GFX
+  offset: 0x3747
+d_course_koopa_troopa_beach_packed_dl_B208:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B208
+  type: MK64:PACKED_GFX
+  offset: 0x377A
+d_course_koopa_troopa_beach_packed_dl_B230:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B230
+  type: MK64:PACKED_GFX
+  offset: 0x3787
+d_course_koopa_troopa_beach_packed_dl_B2B0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B2B0
+  type: MK64:PACKED_GFX
+  offset: 0x37B5
+d_course_koopa_troopa_beach_packed_dl_B2C0:
+  symbol: d_course_koopa_troopa_beach_packed_dl_B2C0
+  type: MK64:PACKED_GFX
+  offset: 0x37B9

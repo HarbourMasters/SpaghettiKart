@@ -25,18 +25,18 @@
 #include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
-#include <assets/data_800E8700.h>
+#include <assets/models/data_800E8700.h>
 #include "skybox_and_splitscreen.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
 #include "menus.h"
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "spawn_players.h"
 #include "sounds.h"
 #include "data/some_data.h"
-#include <assets/some_data.h>
+#include <assets/textures/some_data.h>
 #include "port/Game.h"
 #include "engine/Matrix.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -489,7 +489,7 @@ void func_80057FC4(u32 arg0) {
     }
 }
 
-void render_object(u32 arg0) {
+void render_object(struct UnkStruct_800DC5EC* screen) {
     UNUSED Gfx* temp_v1;
 
     if (gHUDDisable != 0) {
@@ -502,106 +502,17 @@ void render_object(u32 arg0) {
         return;
     }
 
-    switch (arg0) {
-        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-            render_object_p1();
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-            render_object_p1();
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-            render_object_p2();
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-            render_object_p1();
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            render_object_p2();
-            break;
-        case 5:
-            render_object_p1();
-            break;
-        case 6:
-            render_object_p2();
-            break;
-        case 7:
-            render_object_p3();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-            render_object_p1();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-            render_object_p2();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-            render_object_p3();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-            render_object_p4();
-            break;
-    }
-}
-
-void render_object_p1(void) {
-    size_t playerIdx = PLAYER_ONE;
-
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-
-    if (CVarGetInteger("gFreecam", 0) == true) {
-        playerIdx = CAMERA_FREECAM;
-    }
-
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(playerIdx),
-            G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(playerIdx),
-            G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-
-    // if (gGamestate == ENDING) {
-    //     //func_80055F48(PLAYER_ONE);
-    //     //func_80056160(PLAYER_ONE);
-    //     //func_8005217C(PLAYER_ONE);
-    //     //func_80054BE8(PLAYER_ONE);
-    //     return;
-    // }
-    render_object_for_player(PLAYER_ONE);
-}
-
-void render_object_p2(void) {
-
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_TWO),
+    gSPMatrix(gDisplayListHead++, screen->camera->perspectiveMatrix,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_TWO),
+    gSPMatrix(gDisplayListHead++, screen->camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    // render_bomb_karts_wrap(PLAYER_TWO);
-    render_object_for_player(PLAYER_TWO);
+
+
+    render_object_for_player(screen->camera->cameraId);
 }
 
-void render_object_p3(void) {
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_THREE),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_THREE),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    // render_bomb_karts_wrap(PLAYER_THREE);
-    render_object_for_player(PLAYER_THREE);
-}
-
-void render_object_p4(void) {
-
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_FOUR),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_FOUR),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    // render_bomb_karts_wrap(PLAYER_FOUR);
-    if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
-        // render_lakitu(PLAYER_FOUR);
-    }
-    render_object_for_player(PLAYER_FOUR);
-}
-
-void render_player_snow_effect(u32 arg0) {
+void render_player_snow_effect(Camera* camera) {
     UNUSED Gfx* temp_v1;
 
     if (gHUDDisable != 0) {
@@ -613,79 +524,16 @@ void render_player_snow_effect(u32 arg0) {
     if (D_8018D22C != 0) {
         return;
     }
-    switch (arg0) {
-        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-            render_player_snow_effect_one();
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-            render_player_snow_effect_one();
-            break;
-        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-            render_player_snow_effect_two();
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-            render_player_snow_effect_one();
-            break;
-        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            render_player_snow_effect_two();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-            render_player_snow_effect_one();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-            render_player_snow_effect_two();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-            render_player_snow_effect_three();
-            break;
-        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-            render_player_snow_effect_four();
-            break;
-    }
-}
 
-void render_player_snow_effect_one(void) {
-    size_t playerIdx = PLAYER_ONE;
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
-    if (CVarGetInteger("gFreecam", 0) == true) {
-        playerIdx = CAMERA_FREECAM;
-    }
-
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(playerIdx),
+    gSPMatrix(gDisplayListHead++, camera->perspectiveMatrix,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(playerIdx),
+    gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     if (gGamestate != ENDING) {
-        render_snowing_effect(PLAYER_ONE);
+        render_snowing_effect(camera->cameraId);
     }
-}
-
-void render_player_snow_effect_two(void) {
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_TWO),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_TWO),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowing_effect(PLAYER_TWO);
-}
-
-void render_player_snow_effect_three(void) {
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_THREE),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_THREE),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowing_effect(PLAYER_THREE);
-}
-
-void render_player_snow_effect_four(void) {
-    gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(PLAYER_FOUR),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(PLAYER_FOUR),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowing_effect(PLAYER_FOUR);
 }
 
 void render_object_for_player(s32 cameraId) {
@@ -693,91 +541,6 @@ void render_object_for_player(s32 cameraId) {
     CM_DrawParticles(cameraId);
     CM_RenderCourseObjects(cameraId);
     CM_DrawEditor();
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //         break;
-    //     case COURSE_CHOCO_MOUNTAIN:
-    //         break;
-    //     case COURSE_BOWSER_CASTLE:
-    //         render_object_thwomps(cameraId);
-    //         render_object_bowser_flame(cameraId);
-    //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_trash_bin(cameraId);
-    //             render_object_bat(cameraId);
-    //             func_8005217C(cameraId);
-    //             render_object_boos(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_YOSHI_VALLEY:
-    //         func_80055228(cameraId);
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_hedgehogs(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_snowmans(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_crabs(cameraId);
-    //         }
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-
-    //             if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-    //                 render_object_seagulls(cameraId);
-    //             }
-    //         } else {
-    //             render_object_seagulls(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_ROYAL_RACEWAY:
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         if (D_80165898 != 0) {
-    //             render_object_hot_air_balloon(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_MOO_MOO_FARM:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_moles(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_TOADS_TURNPIKE:
-    //         break;
-    //     case COURSE_KALIMARI_DESERT:
-    //         render_object_trains_smoke_particles(cameraId);
-    //         break;
-    //     case COURSE_SHERBET_LAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             func_80052E30(cameraId);
-    //         }
-    //         render_object_train_penguins(cameraId);
-    //         break;
-    //     case COURSE_RAINBOW_ROAD:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_neon(cameraId);
-    //             render_object_chain_chomps(cameraId);
-    //         }
-    //         break;
-    //     case COURSE_WARIO_STADIUM:
-    //         break;
-    //     case COURSE_BLOCK_FORT:
-    //         break;
-    //     case COURSE_SKYSCRAPER:
-    //         break;
-    //     case COURSE_DOUBLE_DECK:
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             render_object_paddle_boat_smoke_particles(cameraId);
-    //         }
-    //         break;
-    // }
 
     render_object_smoke_particles(cameraId);
     render_object_leaf_particle(cameraId);
@@ -6908,7 +6671,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenId) {
+void render_kart_particles(Player* player, s8 playerId, s8 screenId) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (playerId == screenId) {
@@ -6918,45 +6681,6 @@ void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenId
             func_8006D474(player, playerId, screenId);
         }
         func_8006DC54(player, playerId, screenId);
-    }
-}
-
-void render_kart_particle_on_screen_two(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
-            }
-        } else {
-            func_8006D474(player, arg1, arg2);
-        }
-        func_8006DC54(player, arg1, arg2);
-    }
-}
-
-void render_kart_particle_on_screen_three(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
-            }
-        } else {
-            func_8006D474(player, arg1, arg2);
-        }
-        func_8006DC54(player, arg1, arg2);
-    }
-}
-
-void render_kart_particle_on_screen_four(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
-            }
-        } else {
-            func_8006D474(player, arg1, arg2);
-        }
-        func_8006DC54(player, arg1, arg2);
     }
 }
 

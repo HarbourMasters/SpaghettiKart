@@ -14,19 +14,19 @@
 #include "objects.h"
 #include "bomb_kart.h"
 #include "save.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include <sounds.h>
 #include <decode.h>
 #include "audio/external.h"
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "menus.h"
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "render_objects.h"
 #include "menu_items.h"
 #include "src/data/some_data.h"
 #include "effects.h"
-#include <assets/boo_frames.h>
+#include <assets/textures/boo_frames.h>
 #include "port/Game.h"
 #include "port/Engine.h"
 

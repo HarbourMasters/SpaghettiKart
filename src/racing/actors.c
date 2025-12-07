@@ -24,17 +24,20 @@
 #include "effects.h"
 #include "collision.h"
 #include "audio/external.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "courses/all_course_data.h"
 #include "main.h"
-#include <assets/other_textures.h>
-#include <assets/mario_raceway_data.h>
-#include <assets/luigi_raceway_data.h>
-#include <assets/dks_jungle_parkway_data.h>
-#include <assets/wario_stadium_data.h>
-#include <assets/frappe_snowland_data.h>
+#include <assets/textures/other_textures.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
+#include <assets/models/tracks/luigi_raceway/luigi_raceway_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
+#include <assets/other/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
+#include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+
+#include <assets/other/tracks/moo_moo_farm/moo_moo_farm_data.h>
 
 // Appears to be textures
 // or tluts
@@ -531,7 +534,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
         sp88[0] = var_s1->pos[0] * gCourseDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
-        temp_f0 = is_within_render_distance(camera->pos, sp88, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
+        temp_f0 = is_within_render_distance(camera->pos, sp88, camera->rot[1], 0.0f, gCameraFOV[camera - camera1],
                                             4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
@@ -674,7 +677,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], var_f22) <
+        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, gCameraFOV[camera - camera1], var_f22) <
                 0.0f &&
             CVarGetInteger("gNoCulling", 0) == 0) {
             var_s1++;
@@ -740,7 +743,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     FrameInterpolation_RecordOpenChild("Shell", TAG_ITEM_ADDR(shell));
 
     f32 temp_f0 =
-        is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
+        is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 490000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = CLAMP(temp_f0, 0.0f, 40000.0f);
     }
@@ -820,7 +823,7 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraFOV[camera - camera1],
                                   4000000.0f) < 0 &&
         CVarGetInteger("gNoCulling", 0) == 0) {
         return;
@@ -1299,21 +1302,6 @@ void spawn_course_actors(void) {
  *
  */
 void init_actors_and_load_textures(void) {
-    set_segment_base_addr_x64(3, (void*) gNextFreeMemoryAddress);
-    allocate_memory(0x400 * 16);
-    dma_textures(gTextureFinishLineBanner1, 0x0000028EU, 0x00000800U); // 0x03004000
-    dma_textures(gTextureFinishLineBanner2, 0x000002FBU, 0x00000800U); // 0x03004800
-    dma_textures(gTextureFinishLineBanner3, 0x00000302U, 0x00000800U); // 0x03005000
-    dma_textures(gTextureFinishLineBanner4, 0x000003B4U, 0x00000800U); // 0x03005800
-    dma_textures(gTextureFinishLineBanner5, 0x0000031EU, 0x00000800U); // 0x03006000
-    dma_textures(gTextureFinishLineBanner6, 0x0000036EU, 0x00000800U); // 0x03006800
-    dma_textures(gTextureFinishLineBanner7, 0x0000029CU, 0x00000800U); // 0x03007000
-    dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U); // 0x03007800
-    dma_textures(gTexture671A88, 0x00000400U, 0x00000800U); // 0x03008000
-    dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U); // 0x03008800
-
-    CM_LoadTextures();
-
     init_red_shell_texture();
     destroy_all_actors();
     CM_CleanWorld();

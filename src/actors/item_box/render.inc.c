@@ -30,7 +30,7 @@ void render_actor_item_box(Camera* camera, struct ItemBox* item_box) {
     // @port: Tag the transform.
     FrameInterpolation_RecordOpenChild("ItemBox", TAG_ITEM_ADDR(item_box));
 
-    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1],
+    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraFOV[camera - camera1],
                                         4000000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = CLAMP(temp_f0, 0.0f, 600000.0f);

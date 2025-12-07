@@ -1,14 +1,17 @@
 #pragma once
 
 #include <libultraship.h>
+
 #include "CoreMath.h"
 #include "engine/courses/Course.h"
+#include "engine/cameras/GameCamera.h"
 #include "objects/Object.h"
 #include "Cup.h"
 #include "PlayerBombKart.h"
 #include "TrainCrossing.h"
 #include <memory>
 #include <unordered_map>
+#include <utility>
 #include "RaceManager.h"
 #include "Actor.h"
 #include "StaticMeshActor.h"
@@ -16,6 +19,7 @@
 
 #include "editor/Editor.h"
 #include "editor/GameObject.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "camera.h"
@@ -24,6 +28,7 @@ extern "C" {
 
 class Cup; // <-- Forward declaration
 class OObject;
+class GameCamera;
 class Course;
 class StaticMeshActor;
 class OBombKart;
@@ -46,6 +51,9 @@ typedef struct Matrix {
         : Hud(200), Objects(1000)
     {}
 };
+private:
+    std::shared_ptr<Course> CurrentCourse;
+    Cup* CurrentCup;
 
 public:
     explicit World();
@@ -55,6 +63,8 @@ public:
     void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
     std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
+
+    void TickCameras();
 
     AActor* AddActor(AActor* actor);
     struct Actor* AddBaseActor();
@@ -81,7 +91,10 @@ public:
     void Reset(void); // Sets OObjects or AActors static member variables back to default values
 
     void AddCup(Cup*);
-    void SetCup(Cup* cup);
+    void SetCurrentCup(Cup* cup);
+    Cup* GetCurrentCup() {
+        return CurrentCup;
+    }
     void SetCupIndex(size_t index);
     const char* GetCupName();
     u32 GetCupIndex();
@@ -90,8 +103,14 @@ public:
     void SetCourseFromCup();
 
     World* GetWorld(void);
-    void ClearWorld(void);
+    void CleanWorld(void);
 
+    // getter/setter for current course
+    std::shared_ptr<Course> GetCurrentCourse() {
+        return CurrentCourse;
+    }
+
+    void SetCurrentCourse(std::shared_ptr<Course> course);
 
     // These are only for browsing through the course list
     void SetCourse(const char*);
@@ -99,7 +118,7 @@ public:
     void SetCourseByType() {
         for (const auto& course : Courses) {
             if (dynamic_cast<T*>(course.get())) {
-                CurrentCourse = course;
+                SetCurrentCourse(course);
                 return;
             }
         }
@@ -110,12 +129,10 @@ public:
 
     Matrix Mtx;
 
-
-    std::shared_ptr<Course> CurrentCourse;
-    Cup* CurrentCup;
-
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;
+
+    std::vector<GameCamera*> Cameras;
 
     std::vector<StaticMeshActor*> StaticMeshActors;
     std::vector<AActor*> Actors;

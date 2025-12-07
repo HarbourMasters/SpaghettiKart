@@ -1,0 +1,122 @@
+:config:
+  segments:
+    - [0x0D, 0x132B50]
+  header:
+    code:
+      - "#include <macros.h>"
+      - "#include <defines.h>"
+      - "#include <assets/common_data.h>"
+    header:
+      - "#include <libultra/gbi.h>"
+      - "#include <libultraship.h>"
+      - "#include <common_structs.h>"
+      - "#include <align_asset_macro.h>"
+  tables:
+    common_texture_hud_place:
+      range: [0xD258, 0x14258]
+      mode: APPEND
+    D_0D015258:
+      range: [0x15258, 0x16A58]
+      mode: APPEND
+    common_texture_player_emblem:
+      range: [0x17458, 0x18C58]
+      mode: APPEND
+    common_texture_hud_type_C_rank_font:
+      range: [0x19658, 0x19D58]
+      mode: APPEND
+    common_texture_hud_type_C_rank_tiny_font:
+      range: [0x1A058, 0x1A298]
+      mode: APPEND
+    common_tlut_lakitu_countdown:
+      range: [0x24ED8, 0x252D8]
+      mode: APPEND
+    common_texture_bomb:
+      range: [0x29858, 0x2A458]
+      mode: APPEND
+    common_texture_particle_spark:
+      range: [0x2AC58, 0x2B858]
+      mode: APPEND
+    common_texture_particle_smoke:
+      range: [0x2BC58, 0x2C858]
+      mode: APPEND
+    common_texture_minimap_kart_character:
+      range: [0x2CCD8, 0x2D058]
+      mode: APPEND
+D_0D008E98:
+  symbol: D_0D008E98
+  type: mtx
+  offset: 0x8E98
+  count: 1
+D_0D008ED8: # These 4 vtx may be an mtx like the one before here. It's difficult to say though as there are no references in the code-base.
+  symbol: D_0D008ED8
+  type: mtx
+  offset: 0x8ED8
+  count: 1
+D_0D008F18:
+  symbol: D_0D008F18
+  type: mk64:driving_behaviour
+  offset: 0x8F18
+D_0D008F28:
+  symbol: D_0D008F28
+  type: mk64:driving_behaviour
+  offset: 0x8F28
+D_0D008F80:
+  symbol: D_0D008F80
+  type: mk64:driving_behaviour
+  offset: 0x8F80
+D_0D008FB8:
+  symbol: D_0D008FB8
+  type: mk64:driving_behaviour
+  offset: 0x8FB8
+D_0D009058:
+  symbol: D_0D009058
+  type: mk64:driving_behaviour
+  offset: 0x9058
+D_0D0090B8:
+  symbol: D_0D0090B8
+  type: mk64:driving_behaviour
+  offset: 0x90B8
+D_0D0090F8:
+  symbol: D_0D0090F8
+  type: mk64:driving_behaviour
+  offset: 0x90F8
+D_0D009158:
+  symbol: D_0D009158
+  type: mk64:driving_behaviour
+  offset: 0x9158
+D_0D009188:
+  symbol: D_0D009188
+  type: mk64:driving_behaviour
+  offset: 0x9188
+D_0D0091E8:
+  symbol: D_0D0091E8
+  type: mk64:driving_behaviour
+  offset: 0x91E8
+D_0D009210:
+  symbol: D_0D009210
+  type: mk64:driving_behaviour
+  offset: 0x9210
+D_0D009238:
+  symbol: D_0D009238
+  type: mk64:driving_behaviour
+  offset: 0x9238
+D_0D009260:
+  symbol: D_0D009260
+  type: mk64:driving_behaviour
+  offset: 0x9260
+D_0D009280:
+  symbol: D_0D009280
+  type: mk64:driving_behaviour
+  offset: 0x9280
+D_0D0092C8:
+  symbol: D_0D0092C8
+  type: mk64:driving_behaviour
+  offset: 0x92C8
+D_0D009310:
+  symbol: D_0D009310
+  type: mk64:driving_behaviour
+  offset: 0x9310
+D_0D0093C0:
+  symbol: D_0D0093C0
+  type: mk64:driving_behaviour
+  offset: 0x93C0

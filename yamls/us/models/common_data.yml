@@ -1,0 +1,816 @@
+:config:
+  segments:
+    - [0x0D, 0x132B50]
+  external_files:
+    - "yamls/us/textures/common_data.yml"
+  manual_segments:
+    - [0x03004000, "textures/other_textures/gTextureFinishLineBanner1"]
+    - [0x03004800, "textures/other_textures/gTextureFinishLineBanner2"]
+    - [0x03005000, "textures/other_textures/gTextureFinishLineBanner3"]
+    - [0x03005800, "textures/other_textures/gTextureFinishLineBanner4"]
+    - [0x03006000, "textures/other_textures/gTextureFinishLineBanner5"]
+    - [0x03006800, "textures/other_textures/gTextureFinishLineBanner6"]
+    - [0x03007000, "textures/other_textures/gTextureFinishLineBanner7"]
+    - [0x03007800, "textures/other_textures/gTextureFinishLineBanner8"]
+    - [0x03008000, "textures/other_textures/texture_671A88"]
+    - [0x03008800, "textures/other_textures/texture_6774D8"]
+  header:
+    code:
+      - "#include <macros.h>"
+      - "#include <defines.h>"
+      - "#include <assets/common_data.h>"
+    header:
+      - "#include <libultra/gbi.h>"
+      - "#include <libultraship.h>"
+      - "#include <common_structs.h>"
+      - "#include <align_asset_macro.h>"
+  tables:
+    common_texture_hud_place:
+      range: [0xD258, 0x14258]
+      mode: APPEND
+    D_0D015258:
+      range: [0x15258, 0x16A58]
+      mode: APPEND
+    common_texture_player_emblem:
+      range: [0x17458, 0x18C58]
+      mode: APPEND
+    common_texture_hud_type_C_rank_font:
+      range: [0x19658, 0x19D58]
+      mode: APPEND
+    common_texture_hud_type_C_rank_tiny_font:
+      range: [0x1A058, 0x1A298]
+      mode: APPEND
+    common_tlut_lakitu_countdown:
+      range: [0x24ED8, 0x252D8]
+      mode: APPEND
+    common_texture_bomb:
+      range: [0x29858, 0x2A458]
+      mode: APPEND
+    common_texture_particle_spark:
+      range: [0x2AC58, 0x2B858]
+      mode: APPEND
+    common_texture_particle_smoke:
+      range: [0x2BC58, 0x2C858]
+      mode: APPEND
+    common_texture_minimap_kart_character:
+      range: [0x2CCD8, 0x2D058]
+      mode: APPEND
+D_0D001200:
+  symbol: D_0D001200
+  type: vtx
+  offset: 0x1200
+  count: 1
+D_0D001210:
+  symbol: D_0D001210
+  type: vtx
+  offset: 0x1210
+  count: 3
+D_0D001240:
+  symbol: D_0D001240
+  type: vtx
+  offset: 0x1240
+  count: 3
+D_0D001270:
+  symbol: D_0D001270
+  type: vtx
+  offset: 0x1270
+  count: 3
+D_0D0012A0:
+  symbol: D_0D0012A0
+  type: vtx
+  offset: 0x12A0
+  count: 3
+D_0D0012D0:
+  symbol: D_0D0012D0
+  type: vtx
+  offset: 0x12D0
+  count: 3
+D_0D001300:
+  symbol: D_0D001300
+  type: vtx
+  offset: 0x1300
+  count: 3
+D_0D001330:
+  symbol: D_0D001330
+  type: vtx
+  offset: 0x1330
+  count: 3
+D_0D001360:
+  symbol: D_0D001360
+  type: vtx
+  offset: 0x1360
+  count: 3
+common_vtx_finish_line_banner:
+  symbol: common_vtx_finish_line_banner
+  type: vtx
+  offset: 0x1390
+  count: 32
+common_vtx_finish_post:
+  symbol: common_vtx_finish_post
+  type: vtx
+  offset: 0x1590
+  count: 24
+D_0D001710:
+  symbol: D_0D001710
+  type: vtx
+  offset: 0x1710
+  count: 4
+D_0D001750:
+  symbol: D_0D001750
+  type: gfx
+  offset: 0x1750
+D_0D001780:
+  symbol: D_0D001780
+  type: gfx
+  offset: 0x1780
+D_0D001798:
+  symbol: D_0D001798
+  type: gfx
+  offset: 0x1798
+D_0D0017B0:
+  symbol: D_0D0017B0
+  type: gfx
+  offset: 0x17B0
+D_0D0017C8:
+  symbol: D_0D0017C8
+  type: gfx
+  offset: 0x17C8
+D_0D0017E0:
+  symbol: D_0D0017E0
+  type: gfx
+  offset: 0x17E0
+D_0D0017F8:
+  symbol: D_0D0017F8
+  type: gfx
+  offset: 0x17F8
+D_0D001810:
+  symbol: D_0D001810
+  type: gfx
+  offset: 0x1810
+D_0D001828:
+  symbol: D_0D001828
+  type: gfx
+  offset: 0x1828
+D_0D001840:
+  symbol: D_0D001840
+  type: gfx
+  offset: 0x1840
+common_model_finish_post:
+  symbol: common_model_finish_post
+  type: gfx
+  offset: 0x1AB8
+D_0D001B68:
+  symbol: D_0D001B68
+  type: gfx
+  offset: 0x1B68
+D_0D001B90:
+  symbol: D_0D001B90
+  type: gfx
+  offset: 0x1B90
+D_0D001BD8:
+  symbol: D_0D001BD8
+  type: gfx
+  offset: 0x1BD8
+D_0D001C20:
+  symbol: D_0D001C20
+  type: gfx
+  offset: 0x1C20
+D_0D001C88:
+  symbol: D_0D001C88
+  type: gfx
+  offset: 0x1C88
+
+common_vtx_itembox:
+  symbol: common_vtx_itembox
+  type: VTX
+  offset: 0x0D001CE8
+  count: 32
+D_0D002EE8:
+  symbol: D_0D002EE8
+  type: gfx
+  offset: 0x2EE8
+common_fake_item_box_question_mark_vertices:
+  symbol: common_fake_item_box_question_mark_vertices
+  type: vtx
+  offset: 0x2F40
+  count: 4
+common_model_fake_itembox:
+  symbol: common_model_fake_itembox
+  type: gfx
+  offset: 0x2F80
+itemBoxQuestionMarkModel:
+  symbol: itemBoxQuestionMarkModel
+  type: gfx
+  offset: 0x3008
+
+D_0D003090:
+  symbol: D_0D003090
+  type: gfx
+  offset: 0x0D003090
+D_0D0030F8:
+  symbol: D_0D0030F8
+  type: gfx
+  offset: 0x30F8
+D_0D003128:
+  symbol: D_0D003128
+  type: gfx
+  offset: 0x3128
+D_0D003158:
+  symbol: D_0D003158
+  type: gfx
+  offset: 0x3158
+D_0D003188:
+  symbol: D_0D003188
+  type: gfx
+  offset: 0x3188
+D_0D0031B8:
+  symbol: D_0D0031B8
+  type: gfx
+  offset: 0x31B8
+D_0D0031E8:
+  symbol: D_0D0031E8
+  type: gfx
+  offset: 0x31E8
+D_0D003218:
+  symbol: D_0D003218
+  type: gfx
+  offset: 0x3218
+D_0D003248:
+  symbol: D_0D003248
+  type: gfx
+  offset: 0x3248
+D_0D003278:
+  symbol: D_0D003278
+  type: gfx
+  offset: 0x3278
+D_0D003288:
+  symbol: D_0D003288
+  type: gfx
+  offset: 0x3288
+common_vtx_banana:
+  symbol: common_vtx_banana
+  type: vtx
+  count: 5
+  offset: 0x3298
+common_vtx_flat_banana:
+  symbol: common_vtx_flat_banana
+  type: vtx
+  count: 6
+  offset: 0x32E8
+common_model_banana:
+  symbol: common_model_banana
+  type: gfx
+  offset: 0x4B48
+common_model_flat_banana:
+  symbol: common_model_flat_banana
+  type: gfx
+  offset: 0x4BD8
+D_0D0052B8:
+  symbol: D_0D0052B8
+  type: gfx
+  offset: 0x52B8
+D_0D005308:
+  symbol: D_0D005308
+  type: gfx
+  offset: 0x5308
+D_0D005338:
+  symbol: D_0D005338
+  type: gfx
+  offset: 0x5338
+D_0D005368:
+  symbol: D_0D005368
+  type: gfx
+  offset: 0x5368
+D_toads_turnpike_0D005398:
+  symbol: D_toads_turnpike_0D005398
+  type: gfx
+  offset: 0x5398
+D_toads_turnpike_0D0053B0:
+  symbol: D_toads_turnpike_0D0053B0
+  type: gfx
+  offset: 0x53B0
+D_toads_turnpike_0D0053C8:
+  symbol: D_toads_turnpike_0D0053C8
+  type: gfx
+  offset: 0x53C8
+D_toads_turnpike_0D0053F0:
+  symbol: D_toads_turnpike_0D0053F0
+  type: gfx
+  offset: 0x53F0
+D_toads_turnpike_0D005418:
+  symbol: D_toads_turnpike_0D005418
+  type: gfx
+  offset: 0x5418
+D_0D005430:
+  symbol: D_0D005430
+  type: vtx
+  offset: 0x5430
+  count: 4
+common_vtx_player_minimap_icon:
+  symbol: common_vtx_player_minimap_icon
+  type: vtx
+  offset: 0x5470
+  count: 4
+D_0D0054B0:
+  symbol: D_0D0054B0
+  type: vtx
+  offset: 0x54B0
+  count: 44
+common_vtx_rectangle:
+  symbol: common_vtx_rectangle
+  type: vtx
+  offset: 0x5770
+  count: 4
+D_0D0057B0:
+  symbol: D_0D0057B0
+  type: vtx
+  offset: 0x57B0
+  count: 4
+D_0D0057F0:
+  symbol: D_0D0057F0
+  type: vtx
+  offset: 0x57F0
+  count: 15
+D_0D005920:
+  symbol: D_0D005920
+  type: vtx
+  offset: 0x5920
+  count: 24
+D_0D005AA0:
+  symbol: D_0D005AA0
+  type: vtx
+  offset: 0x5AA0
+  count: 4
+D_0D005AE0:
+  symbol: D_0D005AE0
+  type: vtx
+  offset: 0x5AE0
+  count: 4
+D_0D005B20:
+  symbol: D_0D005B20
+  type: vtx
+  offset: 0x5B20
+  count: 4
+D_0D005B60:
+  symbol: D_0D005B60
+  type: vtx
+  offset: 0x5B60
+  count: 4
+D_0D005BA0:
+  symbol: D_0D005BA0
+  type: vtx
+  offset: 0x5BA0
+  count: 3
+D_0D005BD0:
+  symbol: D_0D005BD0
+  type: vtx
+  offset: 0x5BD0
+  count: 3
+D_0D005C00:
+  symbol: D_0D005C00
+  type: vtx
+  offset: 0x5C00
+  count: 3
+D_0D005C30:
+  symbol: D_0D005C30
+  type: vtx
+  offset: 0x5C30
+  count: 37
+D_0D005E80:
+  symbol: D_0D005E80
+  type: vtx
+  offset: 0x5E80
+  count: 3
+common_vtx_lakitu:
+  symbol: common_vtx_lakitu
+  type: vtx
+  offset: 0x5EB0
+  count: 8
+D_0D005F30:
+  symbol: D_0D005F30
+  type: vtx
+  offset: 0x5F30
+  count: 8
+D_0D005FB0:
+  symbol: D_0D005FB0
+  type: vtx
+  offset: 0x5FB0
+  count: 4
+D_0D005FF0:
+  symbol: D_0D005FF0
+  type: vtx
+  offset: 0x5FF0
+  count: 4
+D_0D006030:
+  symbol: D_0D006030
+  type: vtx
+  offset: 0x6030
+  count: 8
+common_vtx_hedgehog:
+  symbol: common_vtx_hedgehog
+  type: vtx
+  offset: 0x60B0
+  count: 8
+D_0D006130:
+  symbol: D_0D006130
+  type: vtx
+  offset: 0x6130
+  count: 8
+D_0D0061B0:
+  symbol: D_0D0061B0
+  type: vtx
+  offset: 0x61B0
+  count: 16
+D_0D0062B0:
+  symbol: D_0D0062B0
+  type: vtx
+  offset: 0x62B0
+  count: 32
+D_0D0064B0:
+  symbol: D_0D0064B0
+  type: vtx
+  offset: 0x64B0
+  count: 40
+common_vtx_also_lakitu:
+  symbol: common_vtx_also_lakitu
+  type: vtx
+  offset: 0x6730
+  count: 28
+D_0D0068F0:
+  symbol: D_0D0068F0
+  type: vtx
+  offset: 0x68F0
+  count: 4
+D_0D006930:
+  symbol: D_0D006930
+  type: gfx
+  offset: 0x6930
+common_rectangle_display:
+  symbol: common_rectangle_display
+  type: gfx
+  offset: 0x6940
+D_0D006950:
+  symbol: D_0D006950
+  type: gfx
+  offset: 0x6950
+D_0D006968:
+  symbol: D_0D006968
+  type: gfx
+  offset: 0x6968
+D_0D006980:
+  symbol: D_0D006980
+  type: gfx
+  offset: 0x6980
+D_0D006998:
+  symbol: D_0D006998
+  type: gfx
+  offset: 0x6998
+D_0D0069B0:
+  symbol: D_0D0069B0
+  type: gfx
+  offset: 0x69B0
+D_0D0069C8:
+  symbol: D_0D0069C8
+  type: gfx
+  offset: 0x69C8
+D_0D0069E0:
+  symbol: D_0D0069E0
+  type: gfx
+  offset: 0x69E0
+D_0D0069F8:
+  symbol: D_0D0069F8
+  type: gfx
+  offset: 0x69F8
+D_0D006A10:
+  symbol: D_0D006A10
+  type: gfx
+  offset: 0x6A10
+D_0D006A28:
+  symbol: D_0D006A28
+  type: gfx
+  offset: 0x6A28
+D_0D006A40:
+  symbol: D_0D006A40
+  type: gfx
+  offset: 0x6A40
+D_0D0076F8:
+  symbol: D_0D0076F8
+  type: gfx
+  offset: 0x76F8
+D_0D007780:
+  symbol: D_0D007780
+  type: gfx
+  offset: 0x7780
+D_0D0077A0:
+  symbol: D_0D0077A0
+  type: gfx
+  offset: 0x77A0
+D_0D0077D0:
+  symbol: D_0D0077D0
+  type: gfx
+  offset: 0x77D0
+D_0D0077F8:
+  symbol: D_0D0077F8
+  type: gfx
+  offset: 0x77F8
+D_0D007828:
+  symbol: D_0D007828
+  type: gfx
+  offset: 0x7828
+D_0D007850:
+  symbol: D_0D007850
+  type: gfx
+  offset: 0x7850
+D_0D007878:
+  symbol: D_0D007878
+  type: gfx
+  offset: 0x7878
+D_0D0078A0:
+  symbol: D_0D0078A0
+  type: gfx
+  offset: 0x78A0
+D_0D0078D0:
+  symbol: D_0D0078D0
+  type: gfx
+  offset: 0x78D0
+D_0D0078F8:
+  symbol: D_0D0078F8
+  type: gfx
+  offset: 0x78F8
+D_0D007928:
+  symbol: D_0D007928
+  type: gfx
+  offset: 0x7928
+D_0D007948:
+  symbol: D_0D007948
+  type: gfx
+  offset: 0x7948
+D_0D007968:
+  symbol: D_0D007968
+  type: gfx
+  offset: 0x7968
+D_0D007988:
+  symbol: D_0D007988
+  type: gfx
+  offset: 0x7988
+D_0D0079A8:
+  symbol: D_0D0079A8
+  type: gfx
+  offset: 0x79A8
+D_0D0079C8:
+  symbol: D_0D0079C8
+  type: gfx
+  offset: 0x79C8
+D_0D0079E8:
+  symbol: D_0D0079E8
+  type: gfx
+  offset: 0x79E8
+D_0D007A08:
+  symbol: D_0D007A08
+  type: gfx
+  offset: 0x7A08
+D_0D007A40:
+  symbol: D_0D007A40
+  type: gfx
+  offset: 0x7A40
+D_0D007A60:
+  symbol: D_0D007A60
+  type: gfx
+  offset: 0x7A60
+D_0D007A80:
+  symbol: D_0D007A80
+  type: gfx
+  offset: 0x7A80
+D_0D007AA0:
+  symbol: D_0D007AA0
+  type: gfx
+  offset: 0x7AA0
+D_0D007AC0:
+  symbol: D_0D007AC0
+  type: gfx
+  offset: 0x7AC0
+D_0D007AE0:
+  symbol: D_0D007AE0
+  type: gfx
+  offset: 0x7AE0
+D_0D007B00:
+  symbol: D_0D007B00
+  type: gfx
+  offset: 0x7B00
+D_0D007B20:
+  symbol: D_0D007B20
+  type: gfx
+  offset: 0x7B20
+D_0D007B98:
+  symbol: D_0D007B98
+  type: gfx
+  offset: 0x7B98
+D_0D007C10:
+  symbol: D_0D007C10
+  type: gfx
+  offset: 0x7C10
+D_0D007C88:
+  symbol: D_0D007C88
+  type: gfx
+  offset: 0x7C88
+D_0D007CB8:
+  symbol: D_0D007CB8
+  type: gfx
+  offset: 0x7CB8
+D_0D007CD8:
+  symbol: D_0D007CD8
+  type: gfx
+  offset: 0x7CD8
+D_0D007CF8:
+  symbol: D_0D007CF8
+  type: gfx
+  offset: 0x7CF8
+D_0D007D18:
+  symbol: D_0D007D18
+  type: gfx
+  offset: 0x7D18
+D_0D007D38:
+  symbol: D_0D007D38
+  type: gfx
+  offset: 0x7D38
+D_0D007D58:
+  symbol: D_0D007D58
+  type: gfx
+  offset: 0x7D58
+D_0D007D78:
+  symbol: D_0D007D78
+  type: gfx
+  offset: 0x7D78
+D_0D007D98:
+  symbol: D_0D007D98
+  type: gfx
+  offset: 0x7D98
+D_0D007DB8:
+  symbol: D_0D007DB8
+  type: gfx
+  offset: 0x7DB8
+D_0D007DD8:
+  symbol: D_0D007DD8
+  type: gfx
+  offset: 0x7DD8
+D_0D007DF8:
+  symbol: D_0D007DF8
+  type: gfx
+  offset: 0x7DF8
+D_0D007E18:
+  symbol: D_0D007E18
+  type: gfx
+  offset: 0x7E18
+D_0D007E38:
+  symbol: D_0D007E38
+  type: gfx
+  offset: 0x7E38
+D_0D007E58:
+  symbol: D_0D007E58
+  type: gfx
+  offset: 0x7E58
+D_0D007E78:
+  symbol: D_0D007E78
+  type: gfx
+  offset: 0x7E78
+D_0D007E98:
+  symbol: D_0D007E98
+  type: gfx
+  offset: 0x7E98
+D_0D007EB8:
+  symbol: D_0D007EB8
+  type: gfx
+  offset: 0x7EB8
+D_0D007ED8:
+  symbol: D_0D007ED8
+  type: gfx
+  offset: 0x7ED8
+D_0D007EF8:
+  symbol: D_0D007EF8
+  type: gfx
+  offset: 0x7EF8
+D_0D007F18:
+  symbol: D_0D007F18
+  type: gfx
+  offset: 0x7F18
+D_0D007F38:
+  symbol: D_0D007F38
+  type: gfx
+  offset: 0x7F38
+D_0D007F58:
+  symbol: D_0D007F58
+  type: gfx
+  offset: 0x7F58
+D_0D007F78:
+  symbol: D_0D007F78
+  type: gfx
+  offset: 0x7F78
+D_0D007F98:
+  symbol: D_0D007F98
+  type: gfx
+  offset: 0x7F98
+D_0D007FB8:
+  symbol: D_0D007FB8
+  type: gfx
+  offset: 0x7FB8
+D_0D007FE0:
+  symbol: D_0D007FE0
+  type: gfx
+  offset: 0x7FE0
+D_0D008000:
+  symbol: D_0D008000
+  type: gfx
+  offset: 0x8000
+D_0D008020:
+  symbol: D_0D008020
+  type: gfx
+  offset: 0x8020
+D_0D008040:
+  symbol: D_0D008040
+  type: gfx
+  offset: 0x8040
+D_0D008060:
+  symbol: D_0D008060
+  type: gfx
+  offset: 0x8060
+D_0D008080:
+  symbol: D_0D008080
+  type: gfx
+  offset: 0x8080
+D_0D008108:
+  symbol: D_0D008108
+  type: gfx
+  offset: 0x8108
+D_0D008120:
+  symbol: D_0D008120
+  type: gfx
+  offset: 0x8120
+D_0D008138:
+  symbol: D_0D008138
+  type: gfx
+  offset: 0x8138
+D_0D008B78:
+  symbol: D_0D008B78
+  type: vtx
+  offset: 0x8B78
+  count: 4
+D_0D008BB8:
+  symbol: D_0D008BB8
+  type: vtx
+  offset: 0x8BB8
+  count: 4
+D_0D008BF8:
+  symbol: D_0D008BF8
+  type: vtx
+  offset: 0x8BF8
+  count: 4
+D_0D008C38:
+  symbol: D_0D008C38
+  type: vtx
+  offset: 0x8C38
+  count: 4
+
+common_square_plain_render:
+  symbol: common_square_plain_render
+  type: gfx
+  offset: 0x8C78
+D_0D008C90:
+  symbol: D_0D008C90
+  type: gfx
+  offset: 0x8C90
+common_setting_render_character:
+  symbol: common_setting_render_character
+  type: gfx
+  offset: 0x8CD8
+D_0D008D10:
+  symbol: D_0D008D10
+  type: gfx
+  offset: 0x8D10
+D_0D008D58:
+  symbol: D_0D008D58
+  type: gfx
+  offset: 0x8D58
+D_0D008DA0:
+  symbol: D_0D008DA0
+  type: gfx
+  offset: 0x8DA0
+D_0D008DB8:
+  symbol: D_0D008DB8
+  type: gfx
+  offset: 0x8DB8
+D_0D008DF8:
+  symbol: D_0D008DF8
+  type: gfx
+  offset: 0x8DF8
+D_0D008E20:
+  symbol: D_0D008E20
+  type: gfx
+  offset: 0x8E20
+D_0D008E48:
+  symbol: D_0D008E48
+  type: gfx
+  offset: 0x8E48
+D_0D008E70:
+  symbol: D_0D008E70
+  type: gfx
+  offset: 0x8E70

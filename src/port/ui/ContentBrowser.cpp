@@ -274,7 +274,7 @@ namespace Editor {
             if (!track.SceneFile.empty()) { // has scene file
                 std::string label = fmt::format("{}##{}", track.Name, i_track);
                 if (ImGui::Button(label.c_str())) {
-                    gWorldInstance.CurrentCourse = track.course;
+                    gWorldInstance.SetCurrentCourse(track.course);
                     gGamestateNext = RACING;
                     SetSceneFile(track.Archive, track.SceneFile);
                     break;
@@ -283,7 +283,7 @@ namespace Editor {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
                 if (ImGui::Button(label.c_str())) {
                     track.SceneFile = track.Dir + "/scene.json";
-                    gWorldInstance.CurrentCourse = track.invalidTrack;
+                    gWorldInstance.SetCurrentCourse(track.invalidTrack);
                     SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;

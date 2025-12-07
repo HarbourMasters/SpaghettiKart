@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/toads_turnpike_vertices.h"
-    #include "assets/toads_turnpike_displaylists.h"
-    #include "assets/toads_turnpike_data.h"
+    #include "assets/models/tracks/toads_turnpike/toads_turnpike_vertices.h"
+    #include "assets/models/tracks/toads_turnpike/toads_turnpike_displaylists.h"
+    #include "assets/models/tracks/toads_turnpike/toads_turnpike_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -25,7 +25,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void UpdateClouds(s32, Camera*) override;

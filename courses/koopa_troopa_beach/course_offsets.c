@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/koopa_troopa_beach_data.h>
+#include <assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h>
 #include "animation.h"
 
 Gfx* d_course_koopa_troopa_beach_dl_list1[] = {

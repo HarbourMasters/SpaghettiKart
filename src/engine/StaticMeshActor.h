@@ -14,7 +14,7 @@ public:
     IRotator Rot;
     FVector Scale;
     std::string Model;
-    int32_t* Collision;
+    int32_t* CollisionMesh;
     bool bPendingDestroy = false;
     StaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision);
 
@@ -29,8 +29,8 @@ public:
         j["Model"] = Model;
 
         // If Collision is not null, serialize it
-        if (Collision != nullptr) {
-            j["Collision"] = *Collision;  // Serialize the value that Collision points to
+        if (CollisionMesh != nullptr) {
+            j["Collision"] = *CollisionMesh;  // Serialize the value that Collision points to
         } else {
             j["Collision"] = nullptr;  // Handle the case where Collision is nullptr
         }
@@ -53,7 +53,7 @@ public:
         //    Collision = new int32_t(j.at("Collision").get<int32_t>());
         //} else {
             // If Collision is not present or is null, set it to nullptr
-            Collision = nullptr;
+            CollisionMesh = nullptr;
         //}
     }
 

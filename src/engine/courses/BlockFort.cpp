@@ -5,8 +5,10 @@
 
 #include "BlockFort.h"
 #include "World.h"
+#include "align_asset_macro.h"
 #include "engine/objects/BombKart.h"
-#include "assets/block_fort_data.h"
+#include "assets/models/tracks/block_fort/block_fort_data.h"
+#include "assets/other/tracks/block_fort/block_fort_data.h"
 
 extern "C" {
 #include "main.h"
@@ -22,29 +24,17 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "save.h"
 #include "replays.h"
 #include "actors.h"
 #include "collision.h"
 #include "memory.h"
 #include "course_offsets.h"
-extern const char* block_fort_dls[];
 extern s16 currentScreenSection;
 }
 
-const course_texture block_fort_textures[] = {
-    { gTexture64286C, 0x010A, 0x0800, 0x0 },          { gTextureGrayCheckerboard, 0x010C, 0x0800, 0x0 },
-    { gTextureGrayCobblestone, 0x010C, 0x0800, 0x0 }, { gTexture64275C, 0x0110, 0x0800, 0x0 },
-    { gTexture642978, 0x010D, 0x0800, 0x0 },          { gTexture6747C4, 0x0145, 0x0800, 0x0 },
-    { gTexture6442D4, 0x0138, 0x0800, 0x0 },          { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 BlockFort::BlockFort() {
-    this->vtx = d_course_block_fort_vertex;
-    this->gfx = d_course_block_fort_packed_dls;
-    this->gfxSize = 699;
-    Props.textures = block_fort_textures;
     Props.Minimap.Texture = minimap_block_fort;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -118,9 +108,15 @@ BlockFort::BlockFort() {
 void BlockFort::Load() {
     Course::Load();
 
-    generate_collision_mesh_with_default_section_id((Gfx*) segmented_gfx_to_virtual((void*) 0x070015C0), 1);
+    if (gIsMirrorMode != 0) {
+        InvertTriangleWindingByName(d_course_block_fort_packed_dl_15C0);
+    }
+    generate_collision_mesh_with_default_section_id((Gfx*) d_course_block_fort_packed_dl_15C0, 1);
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
+}
+
+void BlockFort::UnLoad() {
 }
 
 void BlockFort::BeginPlay() {
@@ -143,7 +139,7 @@ void BlockFort::Render(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     // d_course_block_fort_packed_dl_15C0
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*) 0x070015C0)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_block_fort_packed_dl_15C0);
 }
 
 void BlockFort::Waypoints(Player* player, int8_t playerId) {

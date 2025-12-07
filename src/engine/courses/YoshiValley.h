@@ -4,9 +4,9 @@
 #include "Course.h"
 
 extern "C" {
-    #include "assets/yoshi_valley_vertices.h"
-    #include "assets/yoshi_valley_displaylists.h"
-    #include "assets/yoshi_valley_data.h"
+    #include "assets/models/tracks/yoshi_valley/yoshi_valley_vertices.h"
+    #include "assets/models/tracks/yoshi_valley/yoshi_valley_displaylists.h"
+    #include "assets/models/tracks/yoshi_valley/yoshi_valley_data.h"
     #include "course_offsets.h"
     #include "camera.h"
     #include "data/some_data.h"
@@ -25,7 +25,7 @@ public:
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void LoadTextures() override;
+    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;

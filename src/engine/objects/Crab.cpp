@@ -21,7 +21,9 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "some_data.h"
 #include "ceremony_and_credits.h"
-#include "assets/koopa_troopa_beach_data.h"
+#include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
+#include "assets/textures/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
+#include "assets/models/common_data.h"
 }
 
 size_t OCrab::_count = 0;

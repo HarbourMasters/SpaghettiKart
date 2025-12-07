@@ -25,58 +25,20 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
-    #include "mario_raceway_data.h"
+    #include "assets/models/tracks/mario_raceway/mario_raceway_data.h"
+    #include "assets/other/tracks/mario_raceway/mario_raceway_data.h"
     #include "collision.h"
     #include "memory.h"
     #include "courses/staff_ghost_data.h"
     #include "course.h"
-    extern const char *mario_raceway_dls[];
+    extern const char *mario_raceway_dls[68];
 }
 
-const course_texture mario_raceway_textures[] = {
-    { gTextureCheckerboardYellowPink, 0x0149, 0x0800, 0x0 },
-    { gTexture64619C, 0x0124, 0x0800, 0x0 },
-    { gTextureGrass1, 0x0125, 0x0800, 0x0 },
-    { gTexture64BB60, 0x0169, 0x0800, 0x0 },
-    { gTextureGrass7, 0x05DE, 0x0800, 0x0 },
-    { gTextureGrass5, 0x023F, 0x0800, 0x0 },
-    { gTextureFlagRed, 0x019E, 0x0800, 0x0 },
-    { gTexture663F90, 0x0122, 0x0800, 0x0 },
-    { gTexture6642A4, 0x0162, 0x0800, 0x0 },
-    { gTexture6640B4, 0x01EF, 0x0800, 0x0 },
-    { gTextureGrass10, 0x01F8, 0x0800, 0x0 },
-    { gTexture6684F8, 0x010D, 0x0800, 0x0 },
-    { gTextureSignLuigis0, 0x0287, 0x1000, 0x0 },
-    { gTextureSignLuigis1, 0x02AF, 0x1000, 0x0 },
-    { gTextureSignMarioStar0, 0x02D2, 0x1000, 0x0 },
-    { gTextureSignMarioStar1, 0x02B1, 0x1000, 0x0 },
-    { gTexture66C8F4, 0x01A1, 0x0800, 0x0 },
-    { gTextureSignNintendoRed0, 0x02A6, 0x1000, 0x0 },
-    { gTextureSignNintendoRed1, 0x02F7, 0x1000, 0x0 },
-    { gTexture670AC8, 0x0FBF, 0x1000, 0x0 },
-    { gTexture674354, 0x046F, 0x0800, 0x0 },
-    { gTextureRoad0, 0x0300, 0x1000, 0x0 },
-    { gTextureRoadFinish0, 0x0338, 0x1000, 0x0 },
-    { gTexture67B9B0, 0x0225, 0x0800, 0x0 },
-    { gTextureSignYoshi, 0x04DF, 0x1000, 0x0 },
-    { gTextureCheckerboardBlueGray, 0x04A1, 0x1000, 0x0 },
-    { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
-    { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },
-    { gTextureSignKoopaAir0, 0x0360, 0x1000, 0x0 },
-    { gTextureSignKoopaAir1, 0x0304, 0x1000, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 MarioRaceway::MarioRaceway() {
-    this->vtx = d_course_mario_raceway_vertex;
-    this->gfx = d_course_mario_raceway_packed_dls;
-    this->gfxSize = 3367;
-
-    Props.textures = mario_raceway_textures;
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -148,26 +110,43 @@ MarioRaceway::MarioRaceway() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {0, 0, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_MARIO_RACEWAY;
-    for (size_t i = 0; i < 68; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) mario_raceway_dls[i], Props.textures);
-    }
 }
 
 void MarioRaceway::Load() {
     Course::Load();
 
-    generate_collision_mesh_with_defaults(segmented_gfx_to_virtual((void*)0x07001140));
+    // Invert winding in mirror mode before generating collision meshes
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(mario_raceway_dls); i++) {
+            InvertTriangleWindingByName(mario_raceway_dls[i]);
+        }
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_1140);
+
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_3508);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_3240);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_14A0);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_450);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_240);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_E0);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_160);
+
+        // pipe collision mesh
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_8E8);
+        InvertTriangleWindingByName(d_course_mario_raceway_packed_dl_2D68);
+    }
+
+    generate_collision_mesh_with_defaults((Gfx*) d_course_mario_raceway_packed_dl_1140);
     
     // Generate pipe collision mesh
     if (gScreenModeSelection == SCREEN_MODE_1P) {
         // d_course_mario_raceway_packed_dl_8E8
-        generate_collision_mesh_with_defaults(segmented_gfx_to_virtual((void*)0x070008E8));
+        generate_collision_mesh_with_defaults((Gfx*) d_course_mario_raceway_packed_dl_8E8);
     } else {
         if (CVarGetInteger("gDisableLod", 1) == true) {
-            generate_collision_mesh_with_defaults(segmented_gfx_to_virtual((void*)0x070008E8));
+            generate_collision_mesh_with_defaults((Gfx*) d_course_mario_raceway_packed_dl_8E8);
         } else {
             // d_course_mario_raceway_packed_dl_2D68
-            generate_collision_mesh_with_defaults(segmented_gfx_to_virtual((void*)0x07002D68));
+            generate_collision_mesh_with_defaults((Gfx*) d_course_mario_raceway_packed_dl_2D68);
         }
     }
 
@@ -176,8 +155,8 @@ void MarioRaceway::Load() {
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void MarioRaceway::LoadTextures() {
-    dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U); // 0x03009000
+void MarioRaceway::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void MarioRaceway::BeginPlay() {
@@ -264,6 +243,20 @@ void MarioRaceway::SetStaffGhost() {
     D_80162DE4 = 0;
 }
 
+void render_mario_raceway_pipe(void) {
+    if (gScreenModeSelection == SCREEN_MODE_1P) {
+        // d_course_mario_raceway_packed_dl_8E8
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_8E8);
+    } else {
+        if (CVarGetInteger("gDisableLod", 1) == true) {
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_8E8);
+            return;
+        }
+        // d_course_mario_raceway_packed_dl_2D68
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_2D68);
+    }
+}
+
 void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     u16 sp22 = arg0->pathCounter;
     u16 temp_t0 = arg0->playerDirection;
@@ -274,7 +267,7 @@ void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_mario_raceway_packed_dl_3050
-        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07003050))));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_3050);
     }
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -355,18 +348,18 @@ void MarioRaceway::Render(struct UnkStruct_800DC5EC* arg0) {
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07003508))));
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07003240))));
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070014A0))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_3508);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_3240);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_14A0);
     render_course_segments(mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000450))));
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000240))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_450);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_240);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070000E0))));
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000160))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_E0);
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_160);
 }
 
 void MarioRaceway::RenderCredits() {
@@ -374,7 +367,6 @@ void MarioRaceway::RenderCredits() {
 }
 
 void MarioRaceway::CreditsSpawnActors() {
-    dma_textures(gTextureTrees1, 0x35B, 0x800);
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_mario_raceway_tree_spawns));
 }
 

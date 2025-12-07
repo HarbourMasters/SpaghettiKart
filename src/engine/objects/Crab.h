@@ -41,6 +41,7 @@ public:
     }
 
     explicit OCrab(const SpawnParams& params);
+
     ~OCrab() {
         _count--;
     }

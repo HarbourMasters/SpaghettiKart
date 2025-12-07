@@ -6,7 +6,8 @@
 #include "WarioStadium.h"
 #include "World.h"
 #include "engine/objects/BombKart.h"
-#include "assets/wario_stadium_data.h"
+#include "assets/models/tracks/wario_stadium/wario_stadium_data.h"
+#include "assets/other/tracks/wario_stadium/wario_stadium_data.h"
 #include "engine/actors/WarioSign.h"
 #include "engine/actors/Finishline.h"
 
@@ -24,7 +25,7 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "save.h"
 #include "replays.h"
 #include "actors.h"
@@ -33,39 +34,11 @@ extern "C" {
 #include "memory.h"
 #include "skybox_and_splitscreen.h"
 #include "course.h"
-extern const char* wario_stadium_dls[];
+extern const char* wario_stadium_dls[108];
 extern s16 currentScreenSection;
 }
 
-const course_texture wario_stadium_textures[] = {
-    { gTexture67F15C, 0x02F1, 0x0800, 0x0 },
-    { gTexture67F450, 0x0194, 0x0800, 0x0 },
-    { gTextureSignWarioFace, 0x0825, 0x1000, 0x0 },
-    { gTexture670AC8, 0x0FBF, 0x1000, 0x0 },
-    { gTextureCheckerboardBlackWhite, 0x0107, 0x0800, 0x0 },
-    { gTexture64C11C, 0x0695, 0x0800, 0x0 },
-    { gTexture64C7B4, 0x046C, 0x0800, 0x0 },
-    { gTexture668228, 0x0130, 0x0800, 0x0 },
-    { gTexture668358, 0x01A0, 0x0800, 0x0 },
-    { gTexture66AEB8, 0x0201, 0x0800, 0x0 },
-    { gTexture677A40, 0x0275, 0x0800, 0x0 },
-    { gTexture67E428, 0x0A81, 0x1000, 0x0 },
-    { gTexture643A34, 0x0106, 0x0800, 0x0 },
-    { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
-    { gTexture68272C, 0x01F9, 0x1000, 0x0 },
-    { gTexture682928, 0x01F9, 0x1000, 0x0 },
-    { gTexture682B24, 0x01F9, 0x1000, 0x0 },
-    { gTexture682D20, 0x01F9, 0x1000, 0x0 },
-    { gTexture682F1C, 0x01F9, 0x1000, 0x0 },
-    { gTexture683118, 0x01F9, 0x1000, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 WarioStadium::WarioStadium() {
-    this->vtx = d_course_wario_stadium_vertex;
-    this->gfx = d_course_wario_stadium_packed_dls;
-    this->gfxSize = 5272;
-    Props.textures = wario_stadium_textures;
     Props.Minimap.Texture = minimap_wario_stadium;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -141,36 +114,44 @@ WarioStadium::WarioStadium() {
     Props.Skybox.FloorBottomLeft = { 0, 0, 0 };
     Props.Skybox.FloorTopLeft = { 0, 0, 0 };
     Props.Sequence = MusicSeq::MUSIC_SEQ_WARIO_STADIUM;
-    for (size_t i = 0; i < 108; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) wario_stadium_dls[i], Props.textures);
-    }
 }
 
 void WarioStadium::Load() {
     Course::Load();
 
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(wario_stadium_dls); i++) {
+            InvertTriangleWindingByName(wario_stadium_dls[i]);
+        }
+        InvertTriangleWindingByName(d_course_wario_stadium_packed_dl_A0C8);
+        InvertTriangleWindingByName(d_course_wario_stadium_packed_dl_A228);
+        InvertTriangleWindingByName(d_course_wario_stadium_packed_dl_A88);
+        InvertTriangleWindingByName(d_course_wario_stadium_packed_dl_EC0);
+    }
+
     parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
     // d_course_wario_stadium_packed_dl_C50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000C50), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_C50, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_BD8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000BD8), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_BD8, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_B60
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000B60), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_B60, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_AE8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000AE8), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_AE8, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_CC8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000CC8), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_CC8, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_D50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000D50), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_D50, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_DD0
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000DD0), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_DD0, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_E48
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000E48), 100, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_E48, 100, 255, 255, 255);
 }
 
-void WarioStadium::LoadTextures() {
+void WarioStadium::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void WarioStadium::BeginPlay() {
@@ -219,58 +200,41 @@ void WarioStadium::WhatDoesThisDo(Player* player, int8_t playerId) {
 void WarioStadium::WhatDoesThisDoAI(Player* player, int8_t playerId) {
 }
 
-void WarioStadium::Jumbotron() {
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0,
-               G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
-    gDPSetTileSize(gDisplayListHead++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x8800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x179B0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0x9800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x179F0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xA800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x17A30), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xB800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x17A70), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xC800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x17AB0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gSegmentTable[5] + 0xD800);
-    gDPTileSync(gDisplayListHead++);
-    gDPSetTile(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP,
-               G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 2047, 128);
-    gSPVertex(gDisplayListHead++, (uintptr_t) segment_vtx_to_virtual(0x17AF0), 4, 0);
-    gSP2Triangles(gDisplayListHead++, 0, 1, 2, 0, 0, 2, 3, 0);
+void WarioStadium::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source) {
+    // Add CVar if we want to expose a user toggle for only updating 1/6 of the jumbotron per frame
+    u8 updateWholeJumbo = true;
+
+    if (portionToDraw == -1 || updateWholeJumbo) {
+        copy_framebuffer(ulx, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture68272C));
+        copy_framebuffer(ulx + 64, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682928));
+        copy_framebuffer(ulx, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682B24));
+        copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682D20));
+        copy_framebuffer(ulx, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682F1C));
+        copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture683118));
+    } else {
+        switch (portionToDraw) {
+            case 0:
+                copy_framebuffer(ulx, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture68272C));
+                break;
+            case 1:
+                copy_framebuffer(ulx + 64, uly, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682928));
+                break;
+            case 2:
+                copy_framebuffer(ulx, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682B24));
+                break;
+            case 3:
+                copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682D20));
+                break;
+            case 4:
+                copy_framebuffer(ulx, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture682F1C));
+                break;
+            case 5:
+                copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, (u16*) LOAD_ASSET_RAW(gTexture683118));
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
@@ -283,32 +247,31 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
     // Invalidate Jumbotron textures so they update each frame
     // This could be more efficient if we exposed the non-opcode based invalidation to be called
     // inside copy_framebuffers_port
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x8800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0x9800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xA800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xB800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xC800);
-    gSPInvalidateTexCache(gDisplayListHead++, gSegmentTable[5] + 0xD800);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture68272C);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682928);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682B24);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682D20);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture682F1C);
+    gSPInvalidateTexCache(gDisplayListHead++, (uintptr_t) gTexture683118);
 
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_wario_stadium_packed_dl_A0C8
-        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A0C8))));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_packed_dl_A0C8);
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGBA, G_CC_MODULATERGBA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    WarioStadium::Jumbotron();
     render_course_segments(wario_stadium_dls, arg0);
 
     // d_course_wario_stadium_packed_dl_A228
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x0700A228))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_packed_dl_A228);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     // d_course_wario_stadium_packed_dl_A88
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07000A88))));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_packed_dl_A88);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 
     D_800DC5DC = 88;
@@ -329,8 +292,7 @@ void WarioStadium::Render(struct UnkStruct_800DC5EC* arg0) {
          * The jumbo television screen used to be split into six sections to fit into the n64's texture size
          * restrictions It isn't split into six sections anymore
          */
-        copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, currentScreenSection, (u16*) gPortFramebuffers[prevFrame],
-                               (u16*) (gSegmentTable[5] + 0x8800));
+        CopyJumbotron(D_800DC5DC, D_800DC5E0, currentScreenSection, (u16*) gPortFramebuffers[prevFrame]);
     }
 }
 
@@ -345,7 +307,6 @@ void WarioStadium::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Ve
 
 void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
                              uint16_t playerDirection) {
-    Mat4 matrix;
 
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -356,15 +317,12 @@ void WarioStadium::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCou
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
 
-    mtxf_identity(matrix);
-    render_set_position(matrix, 0);
-
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     // d_course_wario_stadium_packed_dl_EC0
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*) 0x07000EC0));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_packed_dl_EC0);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -383,21 +341,21 @@ void WarioStadium::CreditsSpawnActors() {
     vec3f_set(position, -2622.0f, 79.0f, 739.0f);
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
     // d_course_wario_stadium_packed_dl_C50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000C50), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_C50, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_BD8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000BD8), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_BD8, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_B60
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000B60), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_B60, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_AE8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000AE8), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_AE8, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_CC8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000CC8), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_CC8, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_D50
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000D50), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_D50, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_DD0
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000DD0), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_DD0, 0x64, 0xFF, 0xFF, 0xFF);
     // d_course_wario_stadium_packed_dl_E48
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*) 0x07000E48), 0x64, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_E48, 0x64, 0xFF, 0xFF, 0xFF);
 }
 
 void WarioStadium::Destroy() {

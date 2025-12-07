@@ -123,7 +123,7 @@ s32 D_80150120;
 s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 gCameraZoom[4]; // look like to be the fov of each character
+f32 gCameraFOV[NUM_CAMERAS]; // Field-of-view for each camera
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -132,7 +132,6 @@ f32 D_80150150;
 UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
-uintptr_t gSegmentTable[16];
 Gfx* gDisplayListHead;
 
 struct SPTask* gGfxSPTask;
@@ -147,7 +146,6 @@ Mat4 sBillBoardMtx; // Faces 2D actors at the camera
 
 s32 padding[2048];
 
-u16 D_80152300[4];
 u16 D_80152308;
 
 UNUSED OSThread paddingThread;
@@ -173,7 +171,6 @@ s32 gGamestate = 0xFFFF;
 // gRaceState is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 s32 gRaceState = RACE_INIT;
 u16 D_800DC514 = 0;
-u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
 u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
@@ -182,6 +179,7 @@ s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = SCREEN_MODE_1P;
 UNUSED s32 D_800DC534 = 0;
 s32 gPlayerCountSelection1 = 2;
+bool gTourComplete = false;
 
 s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
@@ -451,7 +449,6 @@ void exec_display_list(struct SPTask* spTask) {
  * Set default RCP (Reality Co-Processor) settings.
  */
 void init_rcp(void) {
-    move_segment_table_to_dmem();
     init_rdp();
     set_viewport();
     select_framebuffer();
@@ -485,7 +482,6 @@ void* clear_framebuffer(s32 color) {
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
-    set_segment_base_addr_x64(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
     init_rcp();
@@ -498,7 +494,6 @@ void rendering_init(void) {
 
 void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer & 1];
-    set_segment_base_addr_x64(1, gGfxPool);
     gDisplayListHead = gGfxPool->gfxPool;
     gGfxSPTask = &gGfxPool->spTask;
 }
@@ -685,48 +680,23 @@ void process_game_tick(void) {
         handle_a_press_for_all_players_during_race();
     }
 
-
-    // tick camera
-    // This looks like it should be in the switch below.
-    // But it needs to be here for player 1 to work in all modes.
-    if (CVarGetInteger("gFreecam", 0) == true) {
-        freecam(gFreecamCamera, gPlayerOne, 0);
-    } else {
-        func_8001EE98(gPlayerOne, camera1, 0);
-    }
+    CM_TickCameras();
 
     // Editor requires this so the camera keeps moving while the game is paused.
     if (gIsEditorPaused == true) {
         return;
     }
-
-    switch(gActiveScreenMode) {
-        case SCREEN_MODE_1P:
-            func_80028F70();
-            break;
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_80029060();
-            func_8001EE98(gPlayerTwo, camera2, 1);
-            func_80029150();
-            break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_80029158();
-            func_8001EE98(gPlayerTwo, camera2, 1);
-            func_800291E8();
-            func_8001EE98(gPlayerThree, camera3, 2);
-            func_800291F0();
-            func_8001EE98(gPlayerFour, camera4, 3);
-            func_800291F8();
-            break;
-    }
+    
+    func_80028F70(); // Player controller
 
     func_8028F474();
     func_80059AC8();
     update_course_actors();
     CM_TickActors();
     func_802966A0();
-    func_8028FCBC();
+    if (CM_IsTourEnabled() == false) {
+        func_8028FCBC();
+    }
 }
 
 void race_logic_loop(void) {
@@ -776,7 +746,6 @@ void race_logic_loop(void) {
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
     sNumVBlanks = 0;
     gNumScreens = 0;
-    move_segment_table_to_dmem();
     init_rdp();
     if (D_800DC5B0 != 0) {
         select_framebuffer();

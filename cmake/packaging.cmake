@@ -71,6 +71,7 @@ endif()
 execute_process(
   COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CPACK_PACKAGE_DIRECTORY}/config.yml" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/config.yml"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CPACK_PACKAGE_DIRECTORY}/yamls/" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/yamls/"
+	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CPACK_PACKAGE_DIRECTORY}/meta/" "${CPACK_TEMPORARY_DIRECTORY}/usr/bin/meta/"
   COMMAND
     ${CMAKE_COMMAND} -E env
       OUTPUT=${CPACK_PACKAGE_FILE_NAME}.appimage

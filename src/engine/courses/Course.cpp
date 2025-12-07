@@ -1,4 +1,7 @@
 #include <libultraship.h>
+#include <unordered_set>
+#include <string>
+#include <cstring>
 
 #include "Course.h"
 #include "MarioRaceway.h"
@@ -8,6 +11,8 @@
 #include "port/resource/type/TrackSections.h"
 #include "engine/editor/SceneManager.h"
 #include "Registry.h"
+#include "resourcebridge.h"
+#include "align_asset_macro.h"
 
 extern "C" {
 #include "main.h"
@@ -17,7 +22,7 @@ extern "C" {
 #include "some_data.h"
 #include "code_8006E9C0.h"
 #include "code_8003DC40.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 #include "render_objects.h"
 #include "save.h"
 #include "replays.h"
@@ -39,6 +44,204 @@ void ResizeMinimap(MinimapProps* minimap) {
         minimap->Width = 64;
     }
 }
+
+static std::unordered_set<std::string> gModifiedGfxSet;
+
+static void SwapTriangleVertices(Gfx* cmd) {
+    int8_t opcode = cmd->words.w0 >> 24;
+    
+    if (opcode == G_TRI1) {
+        uint32_t w1 = cmd->words.w1;
+        uint8_t v0 = (w1 >> 16) & 0xFF;
+        uint8_t v1 = (w1 >> 8) & 0xFF;
+        uint8_t v2 = w1 & 0xFF;
+        
+        cmd->words.w1 = (v0 << 16) | (v2 << 8) | v1;
+    }
+    else if (opcode == G_TRI1_OTR) {
+        uint32_t w0 = cmd->words.w0;
+        uint32_t w1 = cmd->words.w1;
+        uint16_t v0 = w0 & 0xFFFF;
+        uint16_t v1 = (w1 >> 16) & 0xFFFF;
+        uint16_t v2 = w1 & 0xFFFF;
+        
+        cmd->words.w0 = (opcode << 24) | v0;
+        cmd->words.w1 = (v2 << 16) | v1;
+    }
+    else if (opcode == G_TRI2 || opcode == G_QUAD) {
+        uint32_t w0 = cmd->words.w0;
+        uint8_t v0_a = (w0 >> 16) & 0xFF;
+        uint8_t v1_a = (w0 >> 8) & 0xFF;
+        uint8_t v2_a = w0 & 0xFF;
+        
+        uint32_t w1 = cmd->words.w1;
+        uint8_t v0_b = (w1 >> 16) & 0xFF;
+        uint8_t v1_b = (w1 >> 8) & 0xFF;
+        uint8_t v2_b = w1 & 0xFF;
+        
+        cmd->words.w0 = (opcode << 24) | (v0_a << 16) | (v2_a << 8) | v1_a;
+        cmd->words.w1 = (v0_b << 16) | (v2_b << 8) | v1_b;
+    }
+}
+
+static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool shouldSwap) {
+    if (gfx == nullptr) {
+        return;
+    }
+    
+    if (GameEngine_OTRSigCheck((char*)gfx)) {
+        gfx = (Gfx*)LOAD_ASSET(gfx);
+    }
+    
+    if (gfxName != nullptr) {
+        std::string nameStr(gfxName);
+        if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
+            return;
+        }
+        gModifiedGfxSet.insert(nameStr);
+    }
+    
+    Gfx* cmd = gfx;
+    
+    for (int i = 0; i < 0x1FFF; i++) {
+        int8_t opcode = cmd->words.w0 >> 24;
+        
+        switch (opcode) {
+            case G_TRI1:
+            case G_TRI1_OTR:
+            case G_TRI2:
+            case G_QUAD:
+                if (shouldSwap) {
+                    SwapTriangleVertices(cmd);
+                }
+                break;
+            case G_DL: {
+                Gfx* subDL = (Gfx*)(uintptr_t)cmd->words.w1;
+                InvertTriangleWindingInternal(subDL, nullptr, shouldSwap);
+                break;
+            }
+            case G_DL_OTR_HASH: {
+                cmd++;
+                i++;
+                uint64_t hash = ((uint64_t)cmd->words.w0 << 32) | cmd->words.w1;
+                const char* name = ResourceGetNameByCrc(hash);
+                if (name != nullptr) {
+                    bool subShouldSwap = (strstr(name, "packed") != nullptr);
+                    Gfx* subDL = (Gfx*)ResourceGetDataByCrc(hash);
+                    InvertTriangleWindingInternal(subDL, name, subShouldSwap);
+                }
+                break;
+            }
+            case G_DL_OTR_FILEPATH: {
+                const char* name = (const char*)(uintptr_t)cmd->words.w1;
+                if (name != nullptr) {
+                    bool subShouldSwap = (strstr(name, "packed") != nullptr);
+                    Gfx* subDL = (Gfx*)ResourceGetDataByName(name);
+                    InvertTriangleWindingInternal(subDL, name, subShouldSwap);
+                }
+                break;
+            }
+            case G_VTX_OTR_FILEPATH:
+            case G_VTX_OTR_HASH:
+                cmd++;
+                i++;
+                break;
+            case G_MARKER: {
+                cmd++;
+                i++;
+                uint64_t hash = ((uint64_t)cmd->words.w0 << 32) | cmd->words.w1;
+                const char* name = ResourceGetNameByCrc(hash);
+                if (name != nullptr && gfxName == nullptr) {
+                    std::string nameStr(name);
+                    if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
+                        return;
+                    }
+                    gModifiedGfxSet.insert(nameStr);
+                    shouldSwap = (strstr(name, "packed") != nullptr);
+                }
+                break;
+            }
+            case G_MTX_OTR:
+            case G_SETTIMG_OTR_HASH:
+                cmd++;
+                i++;
+                break;
+            case G_ENDDL:
+                return;
+            default:
+                break;
+        }
+        
+        cmd++;
+    }
+}
+
+void InvertTriangleWinding(Gfx* gfx) {
+    InvertTriangleWindingInternal(gfx, nullptr, false);
+}
+
+void InvertTriangleWindingByName(const char* name) {
+    if (name == nullptr) {
+        return;
+    }
+    Gfx* gfx = (Gfx*)ResourceGetDataByName(name);
+    bool shouldSwap = (strstr(name, "packed") != nullptr);
+    InvertTriangleWindingInternal(gfx, name, shouldSwap);
+}
+
+void RestoreTriangleWinding() {
+    for (const std::string& name : gModifiedGfxSet) {
+        if (strstr(name.c_str(), "packed") == nullptr) {
+            continue;
+        }
+        
+        Gfx* gfx = (Gfx*)ResourceGetDataByName(name.c_str());
+        if (gfx == nullptr) {
+            continue;
+        }
+        
+        Gfx* cmd = gfx;
+        
+        for (int i = 0; i < 0x1FFF; i++) {
+            int8_t opcode = cmd->words.w0 >> 24;
+            
+            switch (opcode) {
+                case G_TRI1:
+                case G_TRI1_OTR:
+                case G_TRI2:
+                case G_QUAD:
+                    SwapTriangleVertices(cmd);
+                    break;
+                    
+                case G_DL_OTR_HASH:
+                case G_VTX_OTR_FILEPATH:
+                case G_VTX_OTR_HASH:
+                case G_MARKER:
+                case G_MTX_OTR:
+                case G_SETTIMG_OTR_HASH:
+                    cmd++;
+                    i++;
+                    break;
+                
+                case G_ENDDL:
+                    goto next_gfx;
+                    
+                default:
+                    break;
+            }
+            
+            cmd++;
+        }
+        next_gfx:;
+    }
+    
+    gModifiedGfxSet.clear();
+}
+
+bool IsTriangleWindingInverted() {
+    return !gModifiedGfxSet.empty();
+}
+
 
 Course::Course() {
     Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
@@ -111,10 +314,10 @@ Course::Course() {
 
 // Load custom track from code
 void Course::Load(Vtx* vtx, Gfx* gfx) {
-    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
-    gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
-
     Course::Init();
+}
+
+void Course::UnLoad() {
 }
 
 void Course::LoadO2R(std::string trackPath) {
@@ -161,7 +364,7 @@ void Course::Load() {
         bIsMod = true;
         // auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
 
-        TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
 
         if (sections != nullptr) {
@@ -178,55 +381,13 @@ void Course::Load() {
         return;
     }
 
-    // Stock
-    size_t vtxSize = (ResourceGetSizeByName(this->vtx) / sizeof(CourseVtx)) * sizeof(Vtx);
-    size_t texSegSize;
-
-    // Convert course vtx to vtx
-    Vtx* vtx = reinterpret_cast<Vtx*>(allocate_memory(vtxSize));
-    gSegmentTable[4] = reinterpret_cast<uintptr_t>(&vtx[0]);
-    func_802A86A8(reinterpret_cast<CourseVtx*>(LOAD_ASSET_RAW(this->vtx)), vtx, vtxSize / sizeof(Vtx));
-
-    // Load and allocate memory for course textures
-    const course_texture* asset = this->Props.textures;
-    u8* freeMemory = NULL;
-    u8* texture = NULL;
-    size_t size = 0;
-    texSegSize = 0;
-    while (asset->addr) {
-        size = ResourceGetTexSizeByName(asset->addr);
-        freeMemory = (u8*) allocate_memory(size);
-
-        texture = (u8*) (asset->addr);
-        if (texture) {
-            if (asset == &this->Props.textures[0]) {
-                gSegmentTable[5] = reinterpret_cast<uintptr_t>(&freeMemory[0]);
-            }
-            strcpy(reinterpret_cast<char*>(freeMemory), asset->addr);
-            // memcpy(freeMemory, texture, size);
-            texSegSize += size;
-            // printf("Texture Addr: 0x%llX, size 0x%X\n", &freeMemory[0], size);
-        }
-        asset++;
-    }
-
-    // Extract packed DLs
-    u8* packed = reinterpret_cast<u8*>(LOAD_ASSET_RAW(this->gfx));
-    Gfx* gfx = (Gfx*) allocate_memory(sizeof(Gfx) * this->gfxSize); // Size of unpacked DLs
-    if (gfx == NULL) {
-        printf("Failed to allocate course displaylist memory\n");
-    }
-
-    gSegmentTable[7] = reinterpret_cast<uintptr_t>(&gfx[0]);
-    displaylist_unpack(reinterpret_cast<uintptr_t*>(gfx), reinterpret_cast<uintptr_t>(packed), 0);
-
     Course::Init();
 }
 
 // C++ version of parse_course_displaylists()
-void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
+void Course::ParseCourseSections(TrackSections* sections, size_t size) {
     printf("\n[Track] Generating Collision Meshes...\n");
-    for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
+    for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
         if (sections[i].flags & 0x8000) {
             D_8015F59C = 1; // single-sided wall
         } else {
@@ -242,8 +403,9 @@ void Course::ParseCourseSections(TrackSectionsO2R* sections, size_t size) {
         } else {
             D_8015F5A4 = 0;
         }
-        printf("  %s\n", sections[i].addr.c_str());
-        generate_collision_mesh((Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()), sections[i].surfaceType,
+        const char* name = ResourceGetNameByCrc(sections[i].crc);
+        printf("  %s\n", name);
+        generate_collision_mesh((Gfx*) ResourceGetDataByCrc(sections[i].crc), sections[i].surfaceType,
                                 sections[i].sectionId);
     }
     printf("[Track] Collision Mesh Generation Complete!\n\n");
@@ -268,7 +430,7 @@ void Course::TestPath() {
         }
 
         f32 height = spawn_actor_on_surface(x, 2000.0f, z);
-        Vec3f itemPos = { x, height, z };
+        Vec3f itemPos = { (f32) x, height, (f32) z };
         add_actor_to_empty_slot(itemPos, rot, vel, ACTOR_ITEM_BOX);
     }
 }
@@ -291,9 +453,6 @@ void Course::Init() {
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-}
-
-void Course::LoadTextures() {
 }
 
 void Course::BeginPlay() {
@@ -388,10 +547,10 @@ void Course::Render(struct UnkStruct_800DC5EC* arg0) {
             // d_course_big_donut_packed_dl_DE8
         }
 
-        TrackSectionsO2R* sections = (TrackSectionsO2R*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
+        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
         size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
-        for (size_t i = 0; i < (size / sizeof(TrackSectionsO2R)); i++) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*) LOAD_ASSET_RAW(sections[i].addr.c_str()));
+        for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
+            gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(sections[i].crc));
         }
     }
 }
@@ -403,7 +562,7 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 
-    for (const auto& volume : gWorldInstance.CurrentCourse->WaterVolumes) {
+    for (const auto& volume : gWorldInstance.GetCurrentCourse()->WaterVolumes) {
         if (pos.x >= volume.MinX && pos.x <= volume.MaxX && pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
             // Choose the highest water volume the player is over
             if (!found || volume.Height > highestWater) {
@@ -414,7 +573,7 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
     }
 
     // If player is not over-top of a water volume then return the courses default water level
-    return found ? highestWater : gWorldInstance.CurrentCourse->Props.WaterLevel;
+    return found ? highestWater : gWorldInstance.GetCurrentCourse()->Props.WaterLevel;
 }
 
 void Course::ScrollingTextures() {

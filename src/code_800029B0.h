@@ -8,7 +8,11 @@
 
 struct UnkStruct_800DC5EC {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
-    /* 0x04 */ Camera* camera;                 // Player camera ptr
+    /* 0x04 */ Camera* camera;                 // The active camera
+    /*      */ Camera* raceCamera;
+    /*      */ Camera* lookBehindCamera;       // The lookBehind camera
+               Camera* freeCamera;
+    /*      */ Camera* pendingCamera;          // The camera to switch too next frame
     /* 0x08 */ Player* player;                 // Player ptr 800F6990
     /* 0x0C */ s32* unkC;                      // unk struct?
     /* 0x10 */ Vp viewport;
@@ -24,7 +28,7 @@ struct UnkStruct_800DC5EC {
     /* 0x38 */ s16 pathCounter;
     /* 0x3A */ s16 unk42;
     /* 0x3C */ s32 pad2;
-}; // size = 0x40
+};
 
 /* Function Prototypes */
 
@@ -65,6 +69,7 @@ extern u16 gIsGamePaused;
 extern bool gIsEditorPaused;
 extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
+extern void set_mirror_mode(s32 mirror);
 extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
 extern Vec3f gVtxStretch;

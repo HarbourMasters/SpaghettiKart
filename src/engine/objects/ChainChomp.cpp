@@ -4,8 +4,10 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/rainbow_road_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/rainbow_road/rainbow_road_data.h"
+#include "assets/textures/tracks/rainbow_road/rainbow_road_data.h"
+#include "assets/other/tracks/rainbow_road/rainbow_road_data.h"
+#include "assets/models/common_data.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"

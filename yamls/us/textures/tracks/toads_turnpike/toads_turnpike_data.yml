@@ -1,0 +1,284 @@
+:config:
+  segments:
+    - [0x06, 0x857E80]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_toads_turnpike_unk_windshield1:
+  symbol: d_course_toads_turnpike_unk_windshield1
+  type: texture
+  offset: 0x59B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_unk_windshield2:
+  symbol: d_course_toads_turnpike_unk_windshield2
+  type: texture
+  offset: 0x61B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck_box1:
+  symbol: d_course_toads_turnpike_truck_box1
+  type: texture
+  offset: 0x69B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck1_headlights:
+  symbol: d_course_toads_turnpike_truck1_headlights
+  type: texture
+  offset: 0x71B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck1_tyre:
+  symbol: d_course_toads_turnpike_truck1_tyre
+  type: texture
+  offset: 0x79B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck1_cab:
+  symbol: d_course_toads_turnpike_truck1_cab
+  type: texture
+  offset: 0x81B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck1_cab_side:
+  symbol: d_course_toads_turnpike_truck1_cab_side
+  type: texture
+  offset: 0x89B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_back_lod0:
+  symbol: d_course_toads_turnpike_bus_back_lod0
+  type: texture
+  offset: 0x91B8
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_side:
+  symbol: d_course_toads_turnpike_bus_side
+  type: texture
+  offset: 0xA1B8
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_door_lod0:
+  symbol: d_course_toads_turnpike_bus_door_lod0
+  type: texture
+  offset: 0xB1B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_window:
+  symbol: d_course_toads_turnpike_bus_window
+  type: texture
+  offset: 0xB9B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_front_lod0:
+  symbol: d_course_toads_turnpike_bus_front_lod0
+  type: texture
+  offset: 0xC1B8
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_black:
+  symbol: d_course_toads_turnpike_black
+  type: texture
+  offset: 0xD1B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_driver_window:
+  symbol: d_course_toads_turnpike_bus_driver_window
+  type: texture
+  offset: 0xD9B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_door_lod1:
+  symbol: d_course_toads_turnpike_bus_door_lod1
+  type: texture
+  offset: 0xE1B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_side_lod1:
+  symbol: d_course_toads_turnpike_bus_side_lod1
+  type: texture
+  offset: 0xE9B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_front_lod1:
+  symbol: d_course_toads_turnpike_bus_front_lod1
+  type: texture
+  offset: 0xF1B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_bus_back_lod1:
+  symbol: d_course_toads_turnpike_bus_back_lod1
+  type: texture
+  offset: 0xF9B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_stripe:
+  symbol: d_course_toads_turnpike_tanker_truck_stripe
+  type: texture
+  offset: 0x101B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_windshield:
+  symbol: d_course_toads_turnpike_tanker_truck_windshield
+  type: texture
+  offset: 0x109B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_front:
+  symbol: d_course_toads_turnpike_tanker_truck_front
+  type: texture
+  offset: 0x111B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_headlights:
+  symbol: d_course_toads_turnpike_tanker_truck_headlights
+  type: texture
+  offset: 0x119B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_bumper:
+  symbol: d_course_toads_turnpike_tanker_truck_bumper
+  type: texture
+  offset: 0x121B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_side_back_lod1:
+  symbol: d_course_toads_turnpike_tanker_truck_side_back_lod1
+  type: texture
+  offset: 0x129B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_back_lod1:
+  symbol: d_course_toads_turnpike_tanker_truck_back_lod1
+  type: texture
+  offset: 0x131B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_side_front_lod1:
+  symbol: d_course_toads_turnpike_tanker_truck_side_front_lod1
+  type: texture
+  offset: 0x139B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_tanker_truck_front_lod1:
+  symbol: d_course_toads_turnpike_tanker_truck_front_lod1
+  type: texture
+  offset: 0x141B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck_box2:
+  symbol: d_course_toads_turnpike_truck_box2
+  type: texture
+  offset: 0x149B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_truck_box3:
+  symbol: d_course_toads_turnpike_truck_box3
+  type: texture
+  offset: 0x151B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_car_headlights:
+  symbol: d_course_toads_turnpike_car_headlights
+  type: texture
+  offset: 0x159B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_car_taillights:
+  symbol: d_course_toads_turnpike_car_taillights
+  type: texture
+  offset: 0x161B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_car_front_lod1:
+  symbol: d_course_toads_turnpike_car_front_lod1
+  type: texture
+  offset: 0x169B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_car_back_lod1:
+  symbol: d_course_toads_turnpike_car_back_lod1
+  type: texture
+  offset: 0x171B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_toads_turnpike_car_side_lod1:
+  symbol: d_course_toads_turnpike_car_side_lod1
+  type: texture
+  offset: 0x179B8
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16

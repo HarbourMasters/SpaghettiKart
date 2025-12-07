@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/kalimari_desert_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
 
 const Gfx* kalimari_desert_dls[] = {
     d_course_kalimari_desert_dl_0,    d_course_kalimari_desert_dl_258,  d_course_kalimari_desert_dl_100,

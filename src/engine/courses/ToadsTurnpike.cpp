@@ -6,7 +6,8 @@
 #include "ToadsTurnpike.h"
 #include "World.h"
 #include "engine/objects/BombKart.h"
-#include "assets/toads_turnpike_data.h"
+#include "assets/models/tracks/toads_turnpike/toads_turnpike_data.h"
+#include "assets/other/tracks/toads_turnpike/toads_turnpike_data.h"
 #include "engine/actors/Finishline.h"
 #include "engine/vehicles/Bus.h"
 #include "engine/vehicles/Car.h"
@@ -29,7 +30,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -37,39 +38,12 @@ extern "C" {
     #include "memory.h"
     #include "code_80086E70.h"
     #include "course.h"
-    extern const char *d_course_toads_turnpike_dl_list[];
+    extern const char *d_course_toads_turnpike_dl_list[81];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
 }
 
-const course_texture toads_turnpike_textures[] = {
-    { gTexture645134, 0x052C, 0x0800, 0x0 },
-    { gTexture64FE68, 0x0258, 0x1000, 0x0 },
-    { gTexture6607C0, 0x0105, 0x0800, 0x0 },
-    { gTexture6608C8, 0x0106, 0x0800, 0x0 },
-    { gTextureGrass11, 0x01F8, 0x0800, 0x0 },
-    { gTextureSignNintendoRed0, 0x02A6, 0x1000, 0x0 },
-    { gTextureSignNintendoRed1, 0x02F7, 0x1000, 0x0 },
-    { gTexture671A88, 0x012D, 0x0800, 0x0 },
-    { gTextureRoad2, 0x02AE, 0x1000, 0x0 },
-    { gTextureRoad3, 0x0286, 0x1000, 0x0 },
-    { gTextureRoad4, 0x0282, 0x1000, 0x0 },
-    { gTextureRoadFinish0, 0x0338, 0x1000, 0x0 },
-    { gTextureSignToadYellow, 0x0723, 0x1000, 0x0 },
-    { gTextureSignToadGreen, 0x071F, 0x1000, 0x0 },
-    { gTextureSignMergingLanes, 0x0118, 0x0800, 0x0 },
-    { gTexture65127C, 0x01AB, 0x0800, 0x0 },
-    { gTextureRoad5, 0x02B9, 0x1000, 0x0 },
-    { gTextureSignToadRed, 0x0610, 0x1000, 0x0 },
-    { gTexture668228, 0x0130, 0x0800, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 ToadsTurnpike::ToadsTurnpike() {
-    this->vtx = d_course_toads_turnpike_vertex;
-    this->gfx = d_course_toads_turnpike_packed_dls;
-    this->gfxSize = 3427;
-    Props.textures = toads_turnpike_textures;
     Props.Minimap.Texture = minimap_toads_turnpike;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -145,13 +119,19 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {209, 65, 23};
     Props.Sequence = MusicSeq::MUSIC_SEQ_TOADS_TURNPIKE;
-    for (size_t i = 0; i < 80; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_toads_turnpike_dl_list[i], Props.textures);
-    }
 }
 
 void ToadsTurnpike::Load() {
     Course::Load();
+
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(d_course_toads_turnpike_dl_list); i++) {
+            InvertTriangleWindingByName(d_course_toads_turnpike_dl_list[i]);
+        }
+        InvertTriangleWindingByName(d_course_toads_turnpike_packed_dl_0);
+        InvertTriangleWindingByName(d_course_toads_turnpike_packed_dl_68);
+        InvertTriangleWindingByName(d_course_toads_turnpike_packed_dl_D8);
+    }
 
     D_801625EC = 43;
     D_801625F4 = 13;
@@ -163,7 +143,8 @@ void ToadsTurnpike::Load() {
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void ToadsTurnpike::LoadTextures() {
+void ToadsTurnpike::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void ToadsTurnpike::BeginPlay() {
@@ -276,11 +257,11 @@ void ToadsTurnpike::Render(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
     // d_course_toads_turnpike_packed_dl_0
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07000000));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_toads_turnpike_packed_dl_0);
     // d_course_toads_turnpike_packed_dl_68
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07000068));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_toads_turnpike_packed_dl_68);
     // d_course_toads_turnpike_packed_dl_D8
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x070000D8));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_toads_turnpike_packed_dl_D8);
     gSPClearGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }

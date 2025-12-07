@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/mario_raceway_data.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 
 #ifndef TARGET_N64
 const char* mario_raceway_dls[] = {

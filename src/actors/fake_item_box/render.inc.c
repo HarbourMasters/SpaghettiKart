@@ -28,7 +28,7 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
     // @port: Tag the transform.
     FrameInterpolation_RecordOpenChild("Fake Item Box", TAG_ITEM_ADDR(fakeItemBox));
 
-    if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1],
+    if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraFOV[camera - camera1],
                                   1000000.0f) < 0 &&
         CVarGetInteger("gNoCulling", 0) == 0) {
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);

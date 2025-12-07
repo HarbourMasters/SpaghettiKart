@@ -1,0 +1,333 @@
+:config:
+  segments:
+    - [0x06, 0x835BA0]
+    - [0x07, 0x800000]
+  manual_segments:
+    # Segment 7
+    - [0x7000000, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_0"]
+    - [0x70000A8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_A8"]
+    - [0x7000128, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_128"]
+    - [0x70001A8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1A8"]
+    - [0x7000240, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_240"]
+    - [0x7000308, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_308"]
+    - [0x7000388, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_388"]
+    - [0x7000408, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_408"]
+    - [0x7000490, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_490"]
+    - [0x7000520, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_520"]
+    - [0x7000598, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_598"]
+    - [0x7000628, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_628"]
+    - [0x70006A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6A0"]
+    - [0x7000748, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_748"]
+    - [0x70007D8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7D8"]
+    - [0x7000858, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_858"]
+    - [0x7000908, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_908"]
+    - [0x7000980, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_980"]
+    - [0x7000A00, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_A00"]
+    - [0x7000AB0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_AB0"]
+    - [0x7000B40, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_B40"]
+    - [0x7000BF8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_BF8"]
+    - [0x7000C90, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_C90"]
+    - [0x7000D20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_D20"]
+    - [0x7000DE0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_DE0"]
+    - [0x7000E90, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_E90"]
+    - [0x7000F40, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_F40"]
+    - [0x7000FF0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_FF0"]
+    - [0x70010A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_10A0"]
+    - [0x70010C8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_10C8"]
+    - [0x7001150, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1150"]
+    - [0x70011B8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_11B8"]
+    - [0x7001220, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1220"]
+    - [0x7001290, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1290"]
+    - [0x7001300, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1300"]
+    - [0x7001368, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1368"]
+    - [0x70013D8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_13D8"]
+    - [0x7001418, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1418"]
+    - [0x7001580, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1580"]
+    - [0x70016E8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_16E8"]
+    - [0x7001700, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1700"]
+    - [0x7001728, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1728"]
+    - [0x7001738, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1738"]
+    - [0x70017B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_17B0"]
+    - [0x7001830, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1830"]
+    - [0x70018C8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_18C8"]
+    - [0x7001938, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1938"]
+    - [0x70019F8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_19F8"]
+    - [0x7001A68, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1A68"]
+    - [0x7001AF0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1AF0"]
+    - [0x7001BA0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1BA0"]
+    - [0x7001C18, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1C18"]
+    - [0x7001CB0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1CB0"]
+    - [0x7001D20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1D20"]
+    - [0x7001DE8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1DE8"]
+    - [0x7001E50, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1E50"]
+    - [0x7001EB8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1EB8"]
+    - [0x7001F20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1F20"]
+    - [0x7001F80, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1F80"]
+    - [0x7001FF0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_1FF0"]
+    - [0x7002078, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2078"]
+    - [0x7002108, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2108"]
+    - [0x7002188, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2188"]
+    - [0x70021F8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_21F8"]
+    - [0x7002270, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2270"]
+    - [0x70022F0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_22F0"]
+    - [0x7002370, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2370"]
+    - [0x7002428, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2428"]
+    - [0x7002498, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2498"]
+    - [0x7002510, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2510"]
+    - [0x70025A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_25A0"]
+    - [0x7002648, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2648"]
+    - [0x70026C8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_26C8"]
+    - [0x7002758, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2758"]
+    - [0x70027F0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_27F0"]
+    - [0x7002868, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2868"]
+    - [0x70028F8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_28F8"]
+    - [0x7002988, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2988"]
+    - [0x7002A00, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2A00"]
+    - [0x7002A90, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2A90"]
+    - [0x7002B08, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2B08"]
+    - [0x7002BA0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2BA0"]
+    - [0x7002C30, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2C30"]
+    - [0x7002CD0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2CD0"]
+    - [0x7002D50, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2D50"]
+    - [0x7002DD0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2DD0"]
+    - [0x7002E58, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2E58"]
+    - [0x7002EE0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2EE0"]
+    - [0x7002F90, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_2F90"]
+    - [0x7003010, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3010"]
+    - [0x7003190, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3190"]
+    - [0x7003200, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3200"]
+    - [0x7003268, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3268"]
+    - [0x70032E8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_32E8"]
+    - [0x7003368, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3368"]
+    - [0x70033D8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_33D8"]
+    - [0x7003498, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3498"]
+    - [0x7003580, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3580"]
+    - [0x7003630, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3630"]
+    - [0x7003698, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3698"]
+    - [0x7003710, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3710"]
+    - [0x70037B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_37B0"]
+    - [0x7003818, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3818"]
+    - [0x7003890, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3890"]
+    - [0x7003900, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3900"]
+    - [0x7003970, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3970"]
+    - [0x7003A00, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3A00"]
+    - [0x7003A80, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3A80"]
+    - [0x7003B00, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3B00"]
+    - [0x7003B78, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3B78"]
+    - [0x7003BF8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3BF8"]
+    - [0x7003C70, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3C70"]
+    - [0x7003CD8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3CD8"]
+    - [0x7003D48, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3D48"]
+    - [0x7003E08, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3E08"]
+    - [0x7003F10, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3F10"]
+    - [0x7003FF0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_3FF0"]
+    - [0x7004108, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4108"]
+    - [0x70041B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_41B0"]
+    - [0x7004258, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4258"]
+    - [0x7004358, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4358"]
+    - [0x7004428, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4428"]
+    - [0x70044C8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_44C8"]
+    - [0x7004588, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4588"]
+    - [0x70045F0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_45F0"]
+    - [0x7004670, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4670"]
+    - [0x70046E0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_46E0"]
+    - [0x7004810, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4810"]
+    - [0x7004918, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4918"]
+    - [0x70049C0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_49C0"]
+    - [0x7004A58, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4A58"]
+    - [0x7004B20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4B20"]
+    - [0x7004C18, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4C18"]
+    - [0x7004CB0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4CB0"]
+    - [0x7004D68, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4D68"]
+    - [0x7004E88, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4E88"]
+    - [0x7004F48, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4F48"]
+    - [0x7004FD0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_4FD0"]
+    - [0x7005058, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5058"]
+    - [0x70050E0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_50E0"]
+    - [0x7005158, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5158"]
+    - [0x70051D8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_51D8"]
+    - [0x70052D8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_52D8"]
+    - [0x70053C0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_53C0"]
+    - [0x70054B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_54B0"]
+    - [0x7005548, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5548"]
+    - [0x70055C0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_55C0"]
+    - [0x7005628, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5628"]
+    - [0x70056A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_56A0"]
+    - [0x7005710, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5710"]
+    - [0x7005788, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5788"]
+    - [0x7005800, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5800"]
+    - [0x7005880, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5880"]
+    - [0x70058F8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_58F8"]
+    - [0x7005970, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5970"]
+    - [0x70059F0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_59F0"]
+    - [0x7005A60, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5A60"]
+    - [0x7005AD8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5AD8"]
+    - [0x7005B48, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5B48"]
+    - [0x7005BB0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5BB0"]
+    - [0x7005C18, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5C18"]
+    - [0x7005C80, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5C80"]
+    - [0x7005D00, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5D00"]
+    - [0x7005D90, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5D90"]
+    - [0x7005DF8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5DF8"]
+    - [0x7005E60, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5E60"]
+    - [0x7005F10, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5F10"]
+    - [0x7005F88, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_5F88"]
+    - [0x7006008, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6008"]
+    - [0x7006070, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6070"]
+    - [0x7006100, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6100"]
+    - [0x7006178, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6178"]
+    - [0x70061E8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_61E8"]
+    - [0x7006250, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6250"]
+    - [0x70062D0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_62D0"]
+    - [0x7006338, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6338"]
+    - [0x70063A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_63A0"]
+    - [0x7006428, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6428"]
+    - [0x7006490, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6490"]
+    - [0x70064F8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_64F8"]
+    - [0x7006560, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6560"]
+    - [0x70065C0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_65C0"]
+    - [0x7006638, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6638"]
+    - [0x70066B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_66B0"]
+    - [0x7006728, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6728"]
+    - [0x7006798, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6798"]
+    - [0x7006810, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6810"]
+    - [0x7006888, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6888"]
+    - [0x7006920, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6920"]
+    - [0x7006990, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6990"]
+    - [0x7006A08, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6A08"]
+    - [0x7006A98, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6A98"]
+    - [0x7006B30, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6B30"]
+    - [0x7006B98, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6B98"]
+    - [0x7006C40, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6C40"]
+    - [0x7006CB8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6CB8"]
+    - [0x7006D40, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6D40"]
+    - [0x7006DB0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6DB0"]
+    - [0x7006E20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6E20"]
+    - [0x7006EA0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6EA0"]
+    - [0x7006F30, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6F30"]
+    - [0x7006FA8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_6FA8"]
+    - [0x7007010, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7010"]
+    - [0x7007090, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7090"]
+    - [0x7007120, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7120"]
+    - [0x70071A0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_71A0"]
+    - [0x7007210, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7210"]
+    - [0x7007290, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7290"]
+    - [0x7007300, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7300"]
+    - [0x7007458, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7458"]
+    - [0x70074D0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_74D0"]
+    - [0x7007558, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7558"]
+    - [0x70075D0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_75D0"]
+    - [0x70075F0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_75F0"]
+    - [0x7007660, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7660"]
+    - [0x70076C8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_76C8"]
+    - [0x7007740, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7740"]
+    - [0x70077C0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_77C0"]
+    - [0x7007828, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7828"]
+    - [0x70078B0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_78B0"]
+    - [0x7007928, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7928"]
+    - [0x7007998, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7998"]
+    - [0x7007A08, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7A08"]
+    - [0x7007A70, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7A70"]
+    - [0x7007AE0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7AE0"]
+    - [0x7007B50, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7B50"]
+    - [0x7007BD0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7BD0"]
+    - [0x7007C50, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7C50"]
+    - [0x7007CC0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7CC0"]
+    - [0x7007D38, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7D38"]
+    - [0x7007DA8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7DA8"]
+    - [0x7007E20, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7E20"]
+    - [0x7007E88, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7E88"]
+    - [0x7007EF0, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7EF0"]
+    - [0x7007F58, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7F58"]
+    - [0x7007FC8, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_7FC8"]
+    - [0x7008050, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_8050"]
+    - [0x7008110, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_8110"]
+    - [0x7008150, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_8150"]
+    - [0x7008160, "models/tracks/yoshi_valley/yoshi_valley_displaylists/d_course_yoshi_valley_packed_dl_8160"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_yoshi_valley_unknown_waypoints:
+  symbol: d_course_yoshi_valley_unknown_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0xD780
+  count: 73
+d_course_yoshi_valley_unknown_waypoints_2:
+  symbol: d_course_yoshi_valley_unknown_waypoints_2
+  type: mk64:TRACK_PATH
+  offset: 0xD9C8
+  count: 74
+d_course_yoshi_valley_unknown_waypoints_3:
+  symbol: d_course_yoshi_valley_unknown_waypoints_3
+  type: mk64:TRACK_PATH
+  offset: 0xDC18
+  count: 82
+d_course_yoshi_valley_unknown_waypoints_4:
+  symbol: d_course_yoshi_valley_unknown_waypoints_4
+  type: mk64:TRACK_PATH
+  offset: 0xDEA8
+  count: 85
+d_course_yoshi_valley_track_waypoints:
+  symbol: d_course_yoshi_valley_track_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0xE150
+  count: 678
+d_course_yoshi_valley_track_waypoints_2:
+  symbol: d_course_yoshi_valley_track_waypoints_2
+  type: mk64:TRACK_PATH
+  offset: 0xF680
+  count: 667
+d_course_yoshi_valley_track_waypoints_3:
+  symbol: d_course_yoshi_valley_track_waypoints_3
+  type: mk64:TRACK_PATH
+  offset: 0x10B58
+  count: 679
+d_course_yoshi_valley_track_waypoints_4:
+  symbol: d_course_yoshi_valley_track_waypoints_4
+  type: mk64:TRACK_PATH
+  offset: 0x12090
+  count: 793
+d_course_yoshi_valley_unknown_light1:
+  symbol: d_course_yoshi_valley_unknown_light1
+  type: lights
+  offset: 0x13958
+d_course_yoshi_valley_unknown_light2:
+  symbol: d_course_yoshi_valley_unknown_light2
+  type: lights
+  offset: 0x13970
+d_course_yoshi_valley_unknown_light3:
+  symbol: d_course_yoshi_valley_unknown_light3
+  type: lights
+  offset: 0x13988
+d_course_yoshi_valley_unknown_light4:
+  symbol: d_course_yoshi_valley_unknown_light4
+  type: lights
+  offset: 0x141A0
+d_course_yoshi_valley_unknown_light5:
+  symbol: d_course_yoshi_valley_unknown_light5
+  type: lights
+  offset: 0x141B8
+d_course_yoshi_valley_lights4:
+  symbol: d_course_yoshi_valley_lights4
+  type: lights
+  offset: 0x16558
+d_course_yoshi_valley_tree_spawn:
+  symbol: d_course_yoshi_valley_tree_spawn
+  type: mk64:spawn_data
+  offset: 0x180A0
+  count: 14
+d_course_yoshi_valley_item_box_spawns:
+  symbol: d_course_yoshi_valley_item_box_spawns
+  type: mk64:spawn_data
+  offset: 0x18110
+  count: 38
+d_course_yoshi_valley_addr:
+  symbol: d_course_yoshi_valley_addr
+  type: mk64:track_sections
+  offset: 0x18240
+  count: 54

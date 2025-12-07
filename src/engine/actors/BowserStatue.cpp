@@ -6,7 +6,7 @@ extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
 #include "main.h"
-#include "assets/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 }
 
 Vtx gBowserStatueVtx[717];

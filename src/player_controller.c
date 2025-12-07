@@ -680,54 +680,22 @@ void func_80028E70(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     }
 }
 
-UNUSED void func_80028F5C(UNUSED s32 arg0, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
-}
-
 void func_80028F70(void) {
     // ClearEffectsMatrixPool();
     gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOne, camera1, 0, 0);
-    func_80028E70(gPlayerTwo, camera1, 1, 0);
-    func_80028E70(gPlayerThree, camera1, 2, 0);
-    func_80028E70(gPlayerFour, camera1, 3, 0);
-    func_80028E70(gPlayerFive, camera1, 4, 0);
-    func_80028E70(gPlayerSix, camera1, 5, 0);
-    func_80028E70(gPlayerSeven, camera1, 6, 0);
-    func_80028E70(gPlayerEight, camera1, 7, 0);
-}
 
-void func_80029060(void) {
-    // ClearEffectsMatrixPool();
-    gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOne, camera1, 0, 0);
-    func_80028E70(gPlayerTwo, camera1, 1, 0);
-    func_80028E70(gPlayerThree, camera1, 2, 0);
-    func_80028E70(gPlayerFour, camera1, 3, 0);
-    func_80028E70(gPlayerFive, camera1, 4, 0);
-    func_80028E70(gPlayerSix, camera1, 5, 0);
-    func_80028E70(gPlayerSeven, camera1, 6, 0);
-    func_80028E70(gPlayerEight, camera1, 7, 0);
-}
-
-void func_80029150(void) {
-}
-
-void func_80029158(void) {
-    // ClearEffectsMatrixPool();
-    gMatrixEffectCount = 0;
-    func_80028E70(gPlayerOne, camera1, 0, 0);
-    func_80028E70(gPlayerTwo, camera1, 1, 0);
-    func_80028E70(gPlayerThree, camera1, 2, 0);
-    func_80028E70(gPlayerFour, camera1, 3, 0);
-}
-
-void func_800291E8(void) {
-}
-
-void func_800291F0(void) {
-}
-
-void func_800291F8(void) {
+    switch(gActiveScreenMode) {
+        default:
+            for (size_t i = 0; i < NUM_PLAYERS; i++) {
+                func_80028E70(&gPlayers[i], camera1, i, 0);
+            }
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            for (size_t i = 0; i < 4; i++) {
+                func_80028E70(&gPlayers[i], camera1, i, 0);
+            }
+            break;
+    }
 }
 
 void func_80029200(Player* player, s8 screenId) {

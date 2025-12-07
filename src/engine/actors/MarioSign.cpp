@@ -1,7 +1,7 @@
 #include "MarioSign.h"
 
 #include <libultra/gbi.h>
-#include <assets/mario_raceway_data.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 #include "CoreMath.h"
 
 extern "C" {
@@ -14,7 +14,6 @@ extern "C" {
 }
 
 AMarioSign::AMarioSign(const SpawnParams& params) : AActor(params) {
-    Type = ACTOR_MARIO_SIGN;
     Name = "Mario Sign";
     ResourceName = "mk:mario_sign";
     Model = d_course_mario_raceway_dl_sign;
@@ -68,7 +67,7 @@ void AMarioSign::Draw(Camera *camera) {
         return;
     }
 
-    unk = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 16000000.0f);
+    unk = is_within_render_distance(camera->pos, Pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 16000000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         unk = MAX(unk, 0.0f);
     }

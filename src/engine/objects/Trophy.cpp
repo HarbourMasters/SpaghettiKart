@@ -1,6 +1,6 @@
 #include "Trophy.h"
-#include "assets/common_data.h"
-#include "assets/data_segment2.h"
+#include "assets/models/common_data.h"
+#include "assets/models/data_segment2.h"
 #include "port/Game.h"
 
 extern "C" {
@@ -8,7 +8,7 @@ extern "C" {
 #include "defines.h"
 #include "update_objects.h"
 #include "code_80057C60.h"
-#include "assets/ceremony_data.h"
+#include "assets/models/ceremony_data.h"
 #include "podium_ceremony_actors.h"
 #include "engine/particles/StarEmitter.h"
 #include "math_util.h"
@@ -231,14 +231,10 @@ void OTrophy::Draw(s32 cameraId) {
     if (*_toggleVisibility == true) {
         object = &gObjectList[listIndex];
         if (object->state >= 2) {
-            // Prevents a perspective glitch
-            if (CVarGetInteger("gFreecam", 0) == true) {
-                cameraId = CAMERA_FREECAM;
-            }
-
-            gSPMatrix(gDisplayListHead++, GetPerspMatrix(cameraId),
+            gSPMatrix(gDisplayListHead++, cameras[cameraId].perspectiveMatrix,
                     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(cameraId),
+            gSPMatrix(gDisplayListHead++, cameras[cameraId].lookAtMatrix,
+
                     G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             mtxf_set_matrix_transformation(someMatrix1, object->pos, object->direction_angle, object->sizeScaling);
             //convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
@@ -249,8 +245,10 @@ void OTrophy::Draw(s32 cameraId) {
 
             gSPDisplayList(gDisplayListHead++, (Gfx*)D_0D0077A0);
             gSPDisplayList(gDisplayListHead++, object->model);
-            gSPMatrix(gDisplayListHead++, GetLookAtMatrix(cameraId),
+
+            gSPMatrix(gDisplayListHead++, cameras[cameraId].lookAtMatrix,
                     G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+
             mtxf_identity(someMatrix2);
             render_set_position(someMatrix2, 0);
         }

@@ -72,6 +72,7 @@ jobs:
           mv build/x64/${{ matrix.config }}/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
       - name: Upload build
         if: matrix.config == 'Release'
@@ -114,6 +115,7 @@ jobs:
           mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
           wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
@@ -156,6 +158,7 @@ jobs:
           mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
           wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'

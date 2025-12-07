@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <stdio.h>
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
@@ -25,7 +26,7 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
-Camera cameras[8]; // This size should be 5 but there is an overflow somewhere in Bowser's Castle, so we allocate 8 cameras to avoid it.
+Camera cameras[NUM_CAMERAS]; // This size should be 5 but there is an overflow somewhere in Bowser's Castle, so we allocate 8 cameras to avoid it.
 Camera* camera1 = &cameras[0];
 Camera* camera2 = &cameras[1];
 Camera* camera3 = &cameras[2];
@@ -34,36 +35,34 @@ Camera* gFreecamCamera = &cameras[4];
 
 UNUSED s32 D_801649D0[2];
 
-f32 D_801649D8[4];
-f32 D_801649E8[4];
-f32 D_801649F8[4];
+f32 D_801649D8[NUM_CAMERAS];
+f32 D_801649E8[NUM_CAMERAS];
+f32 D_801649F8[NUM_CAMERAS];
 s32 D_80164A08[4];
-s32 D_80164A18[4];
+s32 D_80164A18[NUM_CAMERAS];
 s32 D_80164A28;
 s32 D_80164A2C;
+static s32 sStagingTimer[NUM_CAMERAS];
 f32 D_80164A30;
-UNUSED f32 D_80164A34;
-f32 D_80164A38[4];
-f32 D_80164A48[4];
-UNUSED s32 D_80164A58[8];
-f32 D_80164A78[4];
+f32 D_80164A38[NUM_CAMERAS];
+f32 D_80164A48[NUM_CAMERAS];
+f32 D_80164A78[NUM_CAMERAS];
 s8 D_80164A88;
 s8 D_80164A89;
 // UNUSED s8 D_80164A8C[3];
-f32 D_80164A90[4];
-f32 D_80164AA0[4];
+f32 D_80164A90[NUM_CAMERAS];
+f32 D_80164AA0[NUM_CAMERAS];
 
-extern f32 D_80164498[];
-extern s16 D_80164678[];
-
-void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
-    Player* player = gPlayerOne;
+void camera_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
     Camera* camera = &cameras[cameraId];
 
-    camera->cameraId = cameraId;
+    if (cameraId >= NUM_CAMERAS) {
+        return;
+    }
 
-    D_80152300[cameraId] = arg4;
-    switch (arg4) {
+    camera->mode = mode;
+    sStagingTimer[cameraId] = 0;
+    switch (mode) {
         case 0:
         case 1:
         case 3:
@@ -71,17 +70,17 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
         case 9:
         case 10:
             D_80164A89 = 0;
-            camera->pos[0] = posX;
-            camera->pos[1] = posY;
-            camera->pos[2] = posZ;
+            camera->pos[0] = pos[0];
+            camera->pos[1] = pos[1];
+            camera->pos[2] = pos[2];
             camera->someBitFlags = 0;
             camera->lookAt[0] = 0.0f;
             camera->lookAt[2] = 150.0f;
-            camera->lookAt[1] = posY - 3.0;
+            camera->lookAt[1] = pos[1] - 3.0;
             camera->up[0] = 0.0f;
             camera->up[1] = 1.0f;
             camera->up[2] = 0.0f;
-            camera->playerId = (s16) cameraId;
+
             camera->unk_B0 = 0;
             camera->unk_A0 = 0.0f;
 
@@ -97,14 +96,13 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
             D_80164AA0[cameraId] = 0.0f;
             D_80164A78[cameraId] = D_800DDB30[gActiveScreenMode];
             D_80164A18[cameraId] = 0;
-            D_80164A08[cameraId] = 0;
-            D_80164498[cameraId] = 0.0f;
+            //D_80164A08[cameraId] = 0; // Now reset in spawn_players_and_cameras
+            //D_80164498[cameraId] = 0.0f;
             camera->unk_94.unk_8 = 0;
             camera->unk_94.unk_0 = 0.0f;
 
-            player += cameraId;
-            camera->unk_2C = player->rotation[1];
-            camera->unk_AC = player->rotation[1];
+            camera->unk_2C = rot;
+            camera->unk_AC = rot;
             switch (gActiveScreenMode) {
                 case SCREEN_MODE_1P:
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -165,45 +163,48 @@ void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cam
 
             if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 80.0f;
+                    gCameraFOV[cameraId] = 80.0f;
                 } else {
-                    gCameraZoom[cameraId] = 40.0f;
+                    gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 1) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
             }
             if (D_80164678[cameraId] == 2) {
                 if (D_80164A28 == 1) {
-                    gCameraZoom[cameraId] = 100.0f;
+                    gCameraFOV[cameraId] = 100.0f;
                 } else {
-                    gCameraZoom[cameraId] = 60.0f;
+                    gCameraFOV[cameraId] = 60.0f;
                 }
-                camera->unk_B4 = gCameraZoom[cameraId];
+                camera->unk_B4 = gCameraFOV[cameraId];
                 D_80164A38[cameraId] = 20.0f;
                 D_80164A48[cameraId] = 1.5f;
                 D_80164A78[cameraId] = 1.0f;
             }
             break;
     }
+
     func_802B7F7C(camera->pos, camera->lookAt, camera->rot);
 }
 
 // Many arrays are hard-coded to 4. Skip those.
-void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
-    Player* player = gPlayerOne;
+void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
     Camera* camera = &cameras[cameraId];
 
-    camera->cameraId = cameraId;
+    if (cameraId >= NUM_CAMERAS) {
+        return;
+    }
 
-    //D_80152300[cameraId] = arg4;
-    switch (arg4) {
+    camera->mode = mode;
+    sStagingTimer[cameraId] = 0;
+    switch (mode) {
         case 0:
         case 1:
         case 3:
@@ -211,17 +212,17 @@ void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 ca
         case 9:
         case 10:
             D_80164A89 = 0;
-            camera->pos[0] = posX;
-            camera->pos[1] = posY;
-            camera->pos[2] = posZ;
+            camera->pos[0] = pos[0];
+            camera->pos[1] = pos[1];
+            camera->pos[2] = pos[2];
             camera->someBitFlags = 0;
             camera->lookAt[0] = 0.0f;
             camera->lookAt[2] = 150.0f;
-            camera->lookAt[1] = posY - 3.0;
+            camera->lookAt[1] = pos[1] - 3.0;
             camera->up[0] = 0.0f;
             camera->up[1] = 1.0f;
             camera->up[2] = 0.0f;
-            camera->playerId = (s16) 0;
+            //camera->playerId = (s16) cameraId;
             camera->unk_B0 = 0;
             camera->unk_A0 = 0.0f;
 
@@ -242,9 +243,8 @@ void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 ca
             camera->unk_94.unk_8 = 0;
             camera->unk_94.unk_0 = 0.0f;
 
-            player += cameraId;
-            camera->unk_2C = player->rotation[1];
-            camera->unk_AC = player->rotation[1];
+            camera->unk_2C = rot;
+            camera->unk_AC = rot;
             switch (gActiveScreenMode) {
                 case SCREEN_MODE_1P:
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -305,27 +305,27 @@ void freecam_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 ca
 
            // if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                  //  gCameraZoom[cameraId] = 80.0f;
+                  //  gCameraFOV[cameraId] = 80.0f;
                 } else {
-                   // gCameraZoom[cameraId] = 40.0f;
+                   // gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraZoom[0];
+                camera->unk_B4 = gCameraFOV[0];
            // }
             // if (D_80164678[cameraId] == 1) {
             //     if (D_80164A28 == 1) {
-            //         gCameraZoom[cameraId] = 100.0f;
+            //         gCameraFOV[cameraId] = 100.0f;
             //     } else {
-            //         gCameraZoom[cameraId] = 60.0f;
+            //         gCameraFOV[cameraId] = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraZoom[cameraId];
+            //     camera->unk_B4 = gCameraFOV[cameraId];
             // // }
             // if (D_80164678[cameraId] == 2) {
             //     if (D_80164A28 == 1) {
-            //         gCameraZoom[cameraId] = 100.0f;
+            //         gCameraFOV[cameraId] = 100.0f;
             //     } else {
-            //         gCameraZoom[cameraId] = 60.0f;
+            //         gCameraFOV[cameraId] = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraZoom[cameraId];
+            //     camera->unk_B4 = gCameraFOV[cameraId];
             //     D_80164A38[cameraId] = 20.0f;
             //     D_80164A48[cameraId] = 1.5f;
             //     D_80164A78[cameraId] = 1.0f;
@@ -342,7 +342,12 @@ void func_8001CA10(Camera* camera) {
 }
 
 void func_8001CA24(Player* player, f32 arg1) {
-    Camera* camera = &cameras[player - gPlayerOne];
+    Camera* camera = CM_GetPlayerCamera(player - gPlayerOne);
+
+    if (NULL == camera) {
+        printf("[camera.c][func_8001CA24] Could not find a camera using GetPlayerCamera()\n");
+        return;
+    }
 
     camera->unk_94.unk_8 = 0;
     camera->unk_94.unk_0 = arg1;
@@ -1045,13 +1050,13 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
     switch (gModeSelection) {
         case GRAND_PRIX:
             // clang-format off
-            if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { D_80152300[cameraIndex] = 3;
+            if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { camera->mode = 3;
             //             -->                 -->        Scroll right        -->      bit more     -->     ^ Required for matching
                 // clang-format on
             } else if (gIsGamePaused == 1) {
-                func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A0A4(&camera->mode, camera, player, index, cameraIndex);
             } else {
-                func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A0DC(&camera->mode, camera, player, index, cameraIndex);
             }
             break;
         case BATTLE:
@@ -1060,53 +1065,47 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                     func_80019ED0();
                 }
                 D_80164A88 = 1;
-                D_80152300[0] = 3;
-                D_80152300[1] = 3;
-                D_80152300[2] = 3;
-                D_80152300[3] = 3;
+                camera->mode = 3;
             } else {
                 D_80164A88 = 0;
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&camera->mode, camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&camera->mode, camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 9;
+                camera->mode = 9;
             }
             break;
         case TIME_TRIALS:
             if (((gPlayerOne->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) {
-                D_80152300[0] = 3;
-                D_80152300[1] = 3;
-                D_80152300[2] = 3;
-                D_80152300[3] = 3;
+                camera->mode = 3;
             } else {
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&camera->mode, camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&camera->mode, camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 1;
+                camera->mode = 1;
             }
             break;
         case VERSUS:
             if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1) ||
                 (D_8015F894 == 2)) {
-                D_80152300[cameraIndex] = 3;
+                camera->mode = 3;
             } else {
                 if (gIsGamePaused == 1) {
-                    func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0A4(&camera->mode, camera, player, index, cameraIndex);
                 } else {
-                    func_8001A0DC(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                    func_8001A0DC(&camera->mode, camera, player, index, cameraIndex);
                 }
-                D_80152300[cameraIndex] = 1;
+                camera->mode = 1;
             }
             break;
     }
     if (gIsGamePaused == 0) {
-        switch (D_80152300[cameraIndex]) {
+        switch (camera->mode) {
             case 3: // end of race
-                func_8001A588(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
+                func_8001A588(&camera->mode, camera, player, index, cameraIndex);
                 break;
             case 1: // player camera
                 if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
@@ -1135,7 +1134,13 @@ void func_8001F394(Player* player, f32* arg1) {
     UNUSED s32 pad;
     s32 playerIndex = player - gPlayerOne;
     UNUSED s32 pad2;
-    Camera* camera = &cameras[playerIndex];
+
+    Camera* camera = CM_GetPlayerCamera(player - gPlayerOne);
+
+    if (NULL == camera) {
+        printf("[camera.c][func_8001F394] Could not find a camera using GetPlayerCamera()\n");
+        return;
+    }
 
     if (player == gPlayerOne) {
         playerIndex = 0;
@@ -1260,25 +1265,20 @@ void func_8001F394(Player* player, f32* arg1) {
 }
 
 void func_8001F87C(s32 cameraId) {
-    s32 playerIndex;
-    // Why?
-    s32 id = cameraId;
-
-    if (gPlayerOne) {}
     if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == GRAND_PRIX) {
-            for (playerIndex = 0; playerIndex < NUM_PLAYERS; playerIndex++) {
-                if ((gPlayerOne[playerIndex].type & 0x200) || (gPlayerOne[playerIndex].type & 0x80)) {
+            for (size_t i = 0; i < NUM_PLAYERS; i++) {
+                if ((gPlayerOne[i].type & 0x200) || (gPlayerOne[i].type & 0x80)) {
                     break;
                 }
-                if (playerIndex == 7) {
-                    D_80164A2C += 1;
+                if (i == PLAYER_EIGHT) {
+                    sStagingTimer[cameraId] += 1;
                 }
-                if ((playerIndex == 7) && (D_80164A2C == 0x0000003C)) {
+                if ((i == PLAYER_EIGHT) && (sStagingTimer[cameraId] == 60)) {
                     D_80164A28 = 2;
-                    D_80152300[id] = 1;
-                    cameras[id].rot[1] = gPlayerOne[playerIndex].rotation[1];
-                    cameras[id].unk_2C = gPlayerOne[playerIndex].rotation[1];
+                    cameras[cameraId].mode = 1;
+                    cameras[cameraId].rot[1] = gPlayerOne[i].rotation[1];
+                    cameras[cameraId].unk_2C = gPlayerOne[i].rotation[1];
                 }
             }
         }

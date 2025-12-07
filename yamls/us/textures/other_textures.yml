@@ -1,0 +1,4971 @@
+:config:
+  segments:
+    - [0x0F, 0x641F70]
+  no_compression: true
+  header:
+    code:
+    - '#include <assets/textures/other_textures.h>'
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+    header:
+    - '#include <libultraship.h>'
+    - '#include <align_asset_macro.h>'
+sign_shell_shot_0:
+  symbol: gTextureSignShellShot0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  mio0: true
+  offset: 0x0
+  format: rgba16
+sign_shell_shot_1:
+  symbol: gTextureSignShellShot1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x38C
+  mio0: true
+  format: rgba16
+gray_checkerboard:
+  symbol: gTextureGrayCheckerboard
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x5D4
+  mio0: true
+  format: rgba16
+gray_cobblestone:
+  symbol: gTextureGrayCobblestone
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x6E0
+  mio0: true
+  format: rgba16
+texture_64275C:
+  symbol: gTexture64275C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x7EC
+  mio0: true
+  format: rgba16
+texture_64286C:
+  symbol: gTexture64286C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x8FC
+  mio0: true
+  format: rgba16
+texture_642978:
+  symbol: gTexture642978
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xA08
+  mio0: true
+  format: rgba16
+sign_blue_64:
+  symbol: gTextureSignBlue64
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xB18
+  mio0: true
+  format: rgba16
+checkerboard_yellow_pink:
+  symbol: gTextureCheckerboardYellowPink
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1080
+  mio0: true
+  format: rgba16
+texture_64313C:
+  symbol: gTexture64313C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x11CC
+  mio0: true
+  format: rgba16
+checkerbord_yellow_blue:
+  symbol: gTextureCheckerboardYellowBlue
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1384
+  mio0: true
+  format: rgba16
+texture_643430:
+  symbol: gTexture643430
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x14C0
+  mio0: true
+  format: ia16
+texture_643A34:
+  symbol: gTexture643A34
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1AC4
+  mio0: true
+  format: rgba16
+texture_643B3C:
+  symbol: gTexture643B3C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1BCC
+  mio0: true
+  format: rgba16
+texture_6442D4:
+  symbol: gTexture6442D4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2364
+  mio0: true
+  format: rgba16
+texture_64440C:
+  symbol: gTexture64440C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x249C
+  mio0: true
+  format: rgba16
+texture_6446AC:
+  symbol: gTexture6446AC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x273C
+  mio0: true
+  format: rgba16
+texture_6447C4:
+  symbol: gTexture6447C4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2854
+  mio0: true
+  format: rgba16
+checkerboard_black_white:
+  symbol: gTextureCheckerboardBlackWhite
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x295C
+  mio0: true
+  format: rgba16
+texture_6449D4:
+  symbol: gTexture6449D4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2A64
+  mio0: true
+  format: rgba16
+texture_645134:
+  symbol: gTexture645134
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x31C4
+  mio0: true
+  format: rgba16
+texture_645660:
+  symbol: gTexture645660
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x36F0
+  mio0: true
+  format: rgba16
+texture_6457D8:
+  symbol: gTexture6457D8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3868
+  mio0: true
+  format: rgba16
+checkerboard_blue_green:
+  symbol: gTextureCheckerboardBlueGreen
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x39C8
+  mio0: true
+  format: rgba16
+number_yellow_blue_1:
+  symbol: gTextureNumberYellowBlue1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3B04
+  mio0: true
+  format: rgba16
+number_yellow_blue_2:
+  symbol: gTextureNumberYellowBlue2
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3CB4
+  mio0: true
+  format: rgba16
+number_yellow_blue_3:
+  symbol: gTextureNumberYellowBlue3
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3E7C
+  mio0: true
+  format: rgba16
+number_yellow_blue_4:
+  symbol: gTextureNumberYellowBlue4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4048
+  mio0: true
+  format: rgba16
+texture_64619C:
+  symbol: gTexture64619C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x422C
+  mio0: true
+  format: rgba16
+texture_6462C0:
+  symbol: gTexture6462C0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4350
+  mio0: true
+  format: rgba16
+texture_64647C:
+  symbol: gTexture64647C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x450C
+  mio0: true
+  format: rgba16
+texture_646CA8:
+  symbol: gTexture646CA8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4D38
+  mio0: true
+  format: rgba16
+texture_6473E4:
+  symbol: gTexture6473E4
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x5474
+  mio0: true
+  format: rgba16
+texture_647994:
+  symbol: gTexture647994
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x5A24
+  mio0: true
+  format: rgba16
+texture_647F4C:
+  symbol: gTexture647F4C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x5FDC
+  mio0: true
+  format: rgba16
+texture_648508:
+  symbol: gTexture648508
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x6598
+  mio0: true
+  format: rgba16
+grass_1:
+  symbol: gTextureGrass1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x6798
+  mio0: true
+  format: rgba16
+wood_door_0:
+  symbol: gTextureWoodDoor0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x68C0
+  mio0: true
+  format: rgba16
+wood_door_1:
+  symbol: gTextureWoodDoor1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x6B54
+  mio0: true
+  format: rgba16
+grass_2:
+  symbol: gTextureGrass2
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x7458
+  mio0: true
+  format: rgba16
+gTextureMooMooFarmSignLeft:
+  symbol: gTextureMooMooFarmSignLeft
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x7870
+  mio0: true
+  format: rgba16
+gTextureMooMooFarmSignRight:
+  symbol: gTextureMooMooFarmSignRight
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x82D8
+  mio0: true
+  format: rgba16
+texture_64ACAC:
+  symbol: gTexture64ACAC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x8D3C
+  mio0: true
+  format: rgba16
+texture_64AF50:
+  symbol: gTexture64AF50
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x8FE0
+  mio0: true
+  format: rgba16
+texture_64B090:
+  symbol: gTexture64B090
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9120
+  mio0: true
+  format: rgba16
+texture_64B3F8:
+  symbol: gTexture64B3F8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9488
+  mio0: true
+  format: rgba16
+texture_64B54C:
+  symbol: gTexture64B54C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x95DC
+  mio0: true
+  format: rgba16
+texture_64B8D8:
+  symbol: gTexture64B8D8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9968
+  mio0: true
+  format: rgba16
+texture_64BA50:
+  symbol: gTexture64BA50
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9AE0
+  mio0: true
+  format: rgba16
+texture_64BB60:
+  symbol: gTexture64BB60
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9BF0
+  mio0: true
+  format: rgba16
+texture_64BCCC:
+  symbol: gTexture64BCCC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x9D5C
+  mio0: true
+  format: rgba16
+texture_64C11C:
+  symbol: gTexture64C11C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xA1AC
+  mio0: true
+  format: rgba16
+texture_64C7B4:
+  symbol: gTexture64C7B4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xA844
+  mio0: true
+  format: rgba16
+texture_64CC20:
+  symbol: gTexture64CC20
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xACB0
+  mio0: true
+  format: rgba16
+sign_merging_lanes:
+  symbol: gTextureSignMergingLanes
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xBB74
+  mio0: true
+  format: rgba16
+grass_3:
+  symbol: gTextureGrass3
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xBC8C
+  mio0: true
+  format: rgba16
+grass_4:
+  symbol: gTextureGrass4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xC000
+  mio0: true
+  format: rgba16
+grass_5:
+  symbol: gTextureGrass5
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xC5C4
+  mio0: true
+  format: rgba16
+grass_6:
+  symbol: gTextureGrass6
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xC804
+  mio0: true
+  format: rgba16
+sign_nintendo_0:
+  symbol: gTextureSignNintendo0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xCA40
+  mio0: true
+  format: rgba16
+sign_nintendo_1:
+  symbol: gTextureSignNintendo1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xCF84
+  mio0: true
+  format: rgba16
+grass_7:
+  symbol: gTextureGrass7
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xD498
+  mio0: true
+  format: rgba16
+texture_64F9E8:
+  symbol: gTexture64F9E8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xDA78
+  mio0: true
+  format: rgba16
+texture_64FBF4:
+  symbol: gTexture64FBF4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xDC84
+  mio0: true
+  format: rgba16
+texture_64FE68:
+  symbol: gTexture64FE68
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xDEF8
+  mio0: true
+  format: rgba16
+wood_bridge_slats:
+  symbol: gTextureWoodBridgeSlats
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0xE150
+  mio0: true
+  format: rgba16
+flag_red:
+  symbol: gTextureFlagRed
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xEEFC
+  mio0: true
+  format: rgba16
+texture_65100C:
+  symbol: gTexture65100C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xF09C
+  mio0: true
+  format: rgba16
+texture_65112C:
+  symbol: gTexture65112C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xF1BC
+  mio0: true
+  format: rgba16
+texture_65127C:
+  symbol: gTexture65127C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xF30C
+  mio0: true
+  format: rgba16
+texture_651428:
+  symbol: gTexture651428
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xF4B8
+  mio0: true
+  format: rgba16
+texture_651984:
+  symbol: gTexture651984
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xFA14
+  mio0: true
+  format: rgba16
+texture_651B20:
+  symbol: gTexture651B20
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xFBB0
+  mio0: true
+  format: rgba16
+texture_651F40:
+  symbol: gTexture651F40
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0xFFD0
+  mio0: true
+  format: rgba16
+texture_6522E0:
+  symbol: gTexture6522E0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x10370
+  mio0: true
+  format: rgba16
+texture_6528DC:
+  symbol: gTexture6528DC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1096C
+  mio0: true
+  format: rgba16
+texture_652B54:
+  symbol: gTexture652B54
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x10BE4
+  mio0: true
+  format: rgba16
+texture_65315C:
+  symbol: gTexture65315C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x111EC
+  mio0: true
+  format: rgba16
+texture_653608:
+  symbol: gTexture653608
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x11698
+  mio0: true
+  format: rgba16
+texture_653DB0:
+  symbol: gTexture653DB0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x11E40
+  mio0: true
+  format: rgba16
+texture_654460:
+  symbol: gTexture654460
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x124F0
+  mio0: true
+  format: rgba16
+texture_654F74:
+  symbol: gTexture654F74
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x13004
+  mio0: true
+  format: rgba16
+texture_655998:
+  symbol: gTexture655998
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x13A28
+  mio0: true
+  format: rgba16
+texture_655F38:
+  symbol: gTexture655F38
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x13FC8
+  mio0: true
+  format: rgba16
+texture_656AF4:
+  symbol: gTexture656AF4
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x14B84
+  mio0: true
+  format: rgba16
+texture_6575C8:
+  symbol: gTexture6575C8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x15658
+  mio0: true
+  format: rgba16
+texture_658370:
+  symbol: gTexture658370
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x16400
+  mio0: true
+  format: rgba16
+texture_65912C:
+  symbol: gTexture65912C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x171BC
+  mio0: true
+  format: rgba16
+texture_659EE8:
+  symbol: gTexture659EE8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x17F78
+  mio0: true
+  format: rgba16
+texture_65ADE0:
+  symbol: gTexture65ADE0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x18E70
+  mio0: true
+  format: rgba16
+texture_65BB3C:
+  symbol: gTexture65BB3C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x19BCC
+  mio0: true
+  format: rgba16
+texture_65C8DC:
+  symbol: gTexture65C8DC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x1A96C
+  mio0: true
+  format: rgba16
+texture_65D5D4:
+  symbol: gTexture65D5D4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x1B664
+  mio0: true
+  format: rgba16
+texture_65E2EC:
+  symbol: gTexture65E2EC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1C37C
+  mio0: true
+  format: rgba16
+texture_65E59C:
+  symbol: gTexture65E59C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x1C62C
+  mio0: true
+  format: rgba16
+texture_65EAEC:
+  symbol: gTexture65EAEC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1CB7C
+  mio0: true
+  format: rgba16
+texture_65EE38:
+  symbol: gTexture65EE38
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x1CEC8
+  mio0: true
+  format: rgba16
+texture_65FB18:
+  symbol: gTexture65FB18
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1DBA8
+  mio0: true
+  format: rgba16
+sign_pink_arrow:
+  symbol: gTextureSignPinkArrow
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1DF98
+  mio0: true
+  format: rgba16
+crown_jewel_blue:
+  symbol: gTextureCrownJewelBlue
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1E130
+  mio0: true
+  format: rgba16
+crown:
+  symbol: gTextureCrown
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1E434
+  mio0: true
+  format: rgba16
+crown_jewel_pink:
+  symbol: gTextureCrownJewelPink
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1E53C
+  mio0: true
+  format: rgba16
+texture_6607C0:
+  symbol: gTexture6607C0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1E850
+  mio0: true
+  format: rgba16
+texture_6608C8:
+  symbol: gTexture6608C8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1E958
+  mio0: true
+  format: rgba16
+texture_6609D0:
+  symbol: gTexture6609D0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x1EA60
+  mio0: true
+  format: rgba16
+texture_660D8C:
+  symbol: gTexture660D8C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1EE1C
+  mio0: true
+  format: rgba16
+roof_tile:
+  symbol: gTextureRoofTile
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1EF44
+  mio0: true
+  format: rgba16
+castle_bricks:
+  symbol: gTextureCastleBricks
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x1F070
+  mio0: true
+  format: rgba16
+castle_bridge:
+  symbol: gTextureCastleBridge
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1FBA4
+  mio0: true
+  format: rgba16
+grass_8:
+  symbol: gTextureGrass8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x1FFCC
+  mio0: true
+  format: rgba16
+grass_9:
+  symbol: gTextureGrass9
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x20298
+  mio0: true
+  format: rgba16
+texture_66262C:
+  symbol: gTexture66262C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x206BC
+  mio0: true
+  format: rgba16
+texture_662924:
+  symbol: gTexture662924
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x209B4
+  mio0: true
+  format: rgba16
+texture_662A34:
+  symbol: gTexture662A34
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x20AC4
+  mio0: true
+  format: rgba16
+sign_toad_yellow:
+  symbol: gTextureSignToadYellow
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x20BCC
+  mio0: true
+  format: rgba16
+sign_toad_green:
+  symbol: gTextureSignToadGreen
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x212F0
+  mio0: true
+  format: rgba16
+sign_toad_red:
+  symbol: gTextureSignToadRed
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x21A10
+  mio0: true
+  format: rgba16
+texture_663F90:
+  symbol: gTexture663F90
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x22020
+  mio0: true
+  format: rgba16
+texture_6640B4:
+  symbol: gTexture6640B4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x22144
+  mio0: true
+  format: rgba16
+texture_6642A4:
+  symbol: gTexture6642A4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x22334
+  mio0: true
+  format: rgba16
+texture_664408:
+  symbol: gTexture664408
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x22498
+  mio0: true
+  format: rgba16
+texture_6646B8:
+  symbol: gTexture6646B8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x22748
+  mio0: true
+  format: rgba16
+sign_koopa_air_0:
+  symbol: gTextureSignKoopaAir0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x229E0
+  mio0: true
+  format: rgba16
+sign_koopa_air_1:
+  symbol: gTextureSignKoopaAir1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x22D40
+  mio0: true
+  format: rgba16
+bricks_red:
+  symbol: gTextureBricksRed
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x23044
+  mio0: true
+  format: rgba16
+texture_665C0C:
+  symbol: gTexture665C0C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x23C9C
+  mio0: true
+  format: rgba16
+texture_6661AC:
+  symbol: gTexture6661AC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2423C
+  mio0: true
+  format: rgba16
+texture_6663A4:
+  symbol: gTexture6663A4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x24434
+  mio0: true
+  format: rgba16
+sign_bowser_0:
+  symbol: gTextureSignBowser0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x24A2C
+  mio0: true
+  format: rgba16
+sign_bowser_1:
+  symbol: gTextureSignBowser1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x251FC
+  mio0: true
+  format: rgba16
+grass_10:
+  symbol: gTextureGrass10
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2584C
+  mio0: true
+  format: rgba16
+grass_11:
+  symbol: gTextureGrass11
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x25A44
+  mio0: true
+  format: rgba16
+texture_667BAC:
+  symbol: gTexture667BAC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x25C3C
+  mio0: true
+  format: rgba16
+texture_668228:
+  symbol: gTexture668228
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x262B8
+  mio0: true
+  format: rgba16
+texture_668358:
+  symbol: gTexture668358
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x263E8
+  mio0: true
+  format: rgba16
+texture_6684F8:
+  symbol: gTexture6684F8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x26588
+  mio0: true
+  format: rgba16
+texture_668608:
+  symbol: gTexture668608
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x26698
+  mio0: true
+  format: rgba16
+texture_668728:
+  symbol: gTexture668728
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x267B8
+  mio0: true
+  format: rgba16
+texture_668920:
+  symbol: gTexture668920
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x269B0
+  mio0: true
+  format: rgba16
+grass_12:
+  symbol: gTextureGrass12
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x26D8C
+  mio0: true
+  format: rgba16
+texture_669570:
+  symbol: gTexture669570
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x27600
+  mio0: true
+  format: rgba16
+texture_66A3DC:
+  symbol: gTexture66A3DC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2846C
+  mio0: true
+  format: rgba16
+texture_66ABA4:
+  symbol: gTexture66ABA4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x28C34
+  mio0: true
+  format: rgba16
+texture_66AEB8:
+  symbol: gTexture66AEB8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x28F48
+  mio0: true
+  format: ia16
+sign_luigi_face_0:
+  symbol: gTextureSignLuigiFace0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x2914C
+  mio0: true
+  format: rgba16
+sign_luigi_face_1:
+  symbol: gTextureSignLuigiFace1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x29718
+  mio0: true
+  format: rgba16
+sign_luigis_0:
+  symbol: gTextureSignLuigis0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x29D78
+  mio0: true
+  format: rgba16
+sign_luigis_1:
+  symbol: gTextureSignLuigis1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2A000
+  mio0: true
+  format: rgba16
+sign_mario_star_0:
+  symbol: gTextureSignMarioStar0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2A2B0
+  mio0: true
+  format: rgba16
+sign_mario_star_1:
+  symbol: gTextureSignMarioStar1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2A584
+  mio0: true
+  format: rgba16
+texture_66C7A8:
+  symbol: gTexture66C7A8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2A838
+  mio0: true
+  format: rgba16
+texture_66C8F4:
+  symbol: gTexture66C8F4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2A984
+  mio0: true
+  format: rgba16
+texture_66CA98:
+  symbol: gTexture66CA98
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2AB28
+  mio0: true
+  format: rgba16
+texture_66CD64:
+  symbol: gTexture66CD64
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2ADF4
+  mio0: true
+  format: rgba16
+texture_66D024:
+  symbol: gTexture66D024
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2B0B4
+  mio0: true
+  format: rgba16
+flag_red_2:
+  symbol: gTextureFlagRed2
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2B5A0
+  mio0: true
+  format: rgba16
+texture_66D698:
+  symbol: gTexture66D698
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2B728
+  mio0: true
+  format: rgba16
+checkerboard_pink:
+  symbol: gTextureCheckerboardPink
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2BA98
+  mio0: true
+  format: rgba16
+texture_66DB60:
+  symbol: gTexture66DB60
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2BBF0
+  mio0: true
+  format: rgba16
+texture_66DD38:
+  symbol: gTexture66DD38
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x2BDC8
+  mio0: true
+  format: rgba16
+sign_nintendo_red_0:
+  symbol: gTextureSignNintendoRed0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2C0F8
+  mio0: true
+  format: rgba16
+sign_nintendo_red_1:
+  symbol: gTextureSignNintendoRed1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2C3A0
+  mio0: true
+  format: rgba16
+texture_66E608:
+  symbol: gTexture66E608
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2C698
+  mio0: true
+  format: rgba16
+texture_66EBF0:
+  symbol: gTexture66EBF0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2CC80
+  mio0: true
+  format: rgba16
+texture_66ED38:
+  symbol: gTexture66ED38
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2CDC8
+  mio0: true
+  format: rgba16
+stainglass_peach_0:
+  symbol: gTextureStainglassPeach0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2CED8
+  mio0: true
+  format: rgba16
+stainglass_peach_1:
+  symbol: gTextureStainglassPeach1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2DDAC
+  mio0: true
+  format: rgba16
+texture_670AC8:
+  symbol: gTexture670AC8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2EB58
+  mio0: true
+  format: rgba16
+texture_671A88:
+  symbol: gTexture671A88
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x2FB18
+  mio0: true
+  format: rgba16
+railroad_track:
+  symbol: gTextureRailroadTrack
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x2FC48
+  mio0: true
+  format: rgba16
+railroad_crossing_track:
+  symbol: gTextureRailroadCrossingTrack
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x307A4
+  mio0: true
+  format: rgba16
+texture_67291C:
+  symbol: gTexture67291C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x309AC
+  mio0: true
+  format: rgba16
+rainbow:
+  symbol: gTextureRainbow
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x30F48
+  mio0: true
+  format: rgba16
+texture_673118:
+  symbol: gTexture673118
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x311A8
+  mio0: true
+  format: rgba16
+texture_6733CC:
+  symbol: gTexture6733CC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3145C
+  mio0: true
+  format: rgba16
+texture_6735DC:
+  symbol: gTexture6735DC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3166C
+  mio0: true
+  format: rgba16
+texture_673990:
+  symbol: gTexture673990
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x31A20
+  mio0: true
+  format: rgba16
+texture_673C68:
+  symbol: gTexture673C68
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x31CF8
+  mio0: true
+  format: rgba16
+texture_673FF8:
+  symbol: gTexture673FF8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x32088
+  mio0: true
+  format: rgba16
+texture_674354:
+  symbol: gTexture674354
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x323E4
+  mio0: true
+  format: rgba16
+texture_6747C4:
+  symbol: gTexture6747C4
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x32854
+  mio0: true
+  format: rgba16
+texture_67490C:
+  symbol: gTexture67490C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3299C
+  mio0: true
+  format: rgba16
+texture_674B28:
+  symbol: gTexture674B28
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x32BB8
+  mio0: true
+  format: rgba16
+texture_674D58:
+  symbol: gTexture674D58
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x32DE8
+  mio0: true
+  format: rgba16
+texture_675064:
+  symbol: gTexture675064
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x330F4
+  mio0: true
+  format: rgba16
+texture_675220:
+  symbol: gTexture675220
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x332B0
+  mio0: true
+  format: rgba16
+texture_675434:
+  symbol: gTexture675434
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x334C4
+  mio0: true
+  format: rgba16
+road_0:
+  symbol: gTextureRoad0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3370C
+  mio0: true
+  format: rgba16
+road_1:
+  symbol: gTextureRoad1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x33A0C
+  mio0: true
+  format: rgba16
+road_2:
+  symbol: gTextureRoad2
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x33CE0
+  mio0: true
+  format: rgba16
+road_3:
+  symbol: gTextureRoad3
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x33F90
+  mio0: true
+  format: rgba16
+road_4:
+  symbol: gTextureRoad4
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x34218
+  mio0: true
+  format: rgba16
+road_5:
+  symbol: gTextureRoad5
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3449C
+  mio0: true
+  format: rgba16
+road_finish_0:
+  symbol: gTextureRoadFinish0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x34758
+  mio0: true
+  format: rgba16
+road_finish_1:
+  symbol: gTextureRoadFinish1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x34A90
+  mio0: true
+  format: rgba16
+texture_676C6C:
+  symbol: gTexture676C6C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x34CFC
+  mio0: true
+  format: rgba16
+texture_676D7C:
+  symbol: gTexture676D7C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x34E0C
+  mio0: true
+  format: rgba16
+texture_676EA8:
+  symbol: gTexture676EA8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x34F38
+  mio0: true
+  format: rgba16
+texture_676FB0:
+  symbol: gTexture676FB0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35040
+  mio0: true
+  format: rgba16
+texture_6774D8:
+  symbol: gTexture6774D8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35568
+  mio0: true
+  format: rgba16
+texture_6775EC:
+  symbol: gTexture6775EC
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3567C
+  mio0: true
+  format: rgba16
+fence_barbed_wire:
+  symbol: gTextureFenceBarbedWire
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x358B0
+  mio0: true
+  format: rgba16
+texture_677A40:
+  symbol: gTexture677A40
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35AD0
+  mio0: true
+  format: rgba16
+sign_falling_rocks:
+  symbol: gTextureSignFallingRocks
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35D48
+  mio0: true
+  format: rgba16
+sign_backside:
+  symbol: gTextureSignBackside
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35E74
+  mio0: true
+  format: rgba16
+texture_677F04:
+  symbol: gTexture677F04
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x35F94
+  mio0: true
+  format: rgba16
+texture_678118:
+  symbol: gTexture678118
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x361A8
+  mio0: true
+  format: rgba16
+texture_67842C:
+  symbol: gTexture67842C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x364BC
+  mio0: true
+  format: rgba16
+texture_67893C:
+  symbol: gTexture67893C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x369CC
+  mio0: true
+  format: rgba16
+texture_678CC8:
+  symbol: gTexture678CC8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x36D58
+  mio0: true
+  format: rgba16
+texture_679258:
+  symbol: gTexture679258
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x372E8
+  mio0: true
+  format: rgba16
+texture_67973C:
+  symbol: gTexture67973C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x377CC
+  mio0: true
+  format: rgba16
+texture_679C04:
+  symbol: gTexture679C04
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x37C94
+  mio0: true
+  format: rgba16
+texture_679D34:
+  symbol: gTexture679D34
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x37DC4
+  mio0: true
+  format: rgba16
+star_outline:
+  symbol: gTextureStarOutline
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x37ECC
+  mio0: true
+  format: ia16
+texture_67A1B8:
+  symbol: gTexture67A1B8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x38248
+  mio0: true
+  format: rgba16
+texture_67A370:
+  symbol: gTexture67A370
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x38400
+  mio0: true
+  format: rgba16
+texture_67A91C:
+  symbol: gTexture67A91C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x389AC
+  mio0: true
+  format: rgba16
+texture_67ADF0:
+  symbol: gTexture67ADF0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x38E80
+  mio0: true
+  format: rgba16
+texture_67B388:
+  symbol: gTexture67B388
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x39418
+  mio0: true
+  format: rgba16
+texture_67B75C:
+  symbol: gTexture67B75C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x397EC
+  mio0: true
+  format: rgba16
+texture_67B864:
+  symbol: gTexture67B864
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x398F4
+  mio0: true
+  format: rgba16
+texture_67B9B0:
+  symbol: gTexture67B9B0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x39A40
+  mio0: true
+  format: rgba16
+texture_67BBD8:
+  symbol: gTexture67BBD8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x39C68
+  mio0: true
+  format: rgba16
+texture_67BEE8:
+  symbol: gTexture67BEE8
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x39F78
+  mio0: true
+  format: rgba16
+sand_finish:
+  symbol: gTextureSandFinish
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3A248
+  mio0: true
+  format: rgba16
+waves_0:
+  symbol: gTextureWaves0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3A478
+  mio0: true
+  format: ia16
+waves_1:
+  symbol: gTextureWaves1
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3A948
+  mio0: true
+  format: rgba16
+waves_2:
+  symbol: gTextureWaves2
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3AF0C
+  mio0: true
+  format: rgba16
+texture_67D304:
+  symbol: gTexture67D304
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3B394
+  mio0: true
+  format: rgba16
+texture_67DC20:
+  symbol: gTexture67DC20
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3BCB0
+  mio0: true
+  format: rgba16
+texture_67E010:
+  symbol: gTexture67E010
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3C0A0
+  mio0: true
+  format: rgba16
+texture_67E428:
+  symbol: gTexture67E428
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3C4B8
+  mio0: true
+  format: rgba16
+texture_67EEAC:
+  symbol: gTexture67EEAC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3CF3C
+  mio0: true
+  format: rgba16
+texture_67EFEC:
+  symbol: gTexture67EFEC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3D07C
+  mio0: true
+  format: rgba16
+texture_67F15C:
+  symbol: gTexture67F15C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3D1EC
+  mio0: true
+  format: rgba16
+texture_67F450:
+  symbol: gTexture67F450
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3D4E0
+  mio0: true
+  format: rgba16
+sign_wario_face:
+  symbol: gTextureSignWarioFace
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x3D674
+  mio0: true
+  format: rgba16
+texture_67FE0C:
+  symbol: gTexture67FE0C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x3DE9C
+  mio0: true
+  format: rgba16
+sign_welcome_0:
+  symbol: gTextureSignWelcome0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3E17C
+  mio0: true
+  format: rgba16
+sign_welcome_1:
+  symbol: gTextureSignWelcome1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3EBAC
+  mio0: true
+  format: rgba16
+sign_wooden_back_0:
+  symbol: gTextureSignWoodenBack0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3F5B8
+  mio0: true
+  format: rgba16
+sign_wooden_back_1:
+  symbol: gTextureSignWoodenBack1
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x3FCA8
+  mio0: true
+  format: rgba16
+wheel_steam_engine:
+  symbol: gTextureWheelSteamEngine
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4037C
+  mio0: true
+  format: rgba16
+wheel_steam_engine_real:
+  symbol: gTextureWheelSteamEngineReal
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x4058C
+  mio0: true
+  format: rgba16
+texture_68272C:
+  symbol: gTexture68272C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x407BC
+  mio0: true
+  format: rgba16
+texture_682928:
+  symbol: gTexture682928
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x409B8
+  mio0: true
+  format: rgba16
+texture_682B24:
+  symbol: gTexture682B24
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x40BB4
+  mio0: true
+  format: rgba16
+texture_682D20:
+  symbol: gTexture682D20
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x40DB0
+  mio0: true
+  format: rgba16
+texture_682F1C:
+  symbol: gTexture682F1C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x40FAC
+  mio0: true
+  format: rgba16
+texture_683118:
+  symbol: gTexture683118
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x411A8
+  mio0: true
+  format: rgba16
+texture_683314:
+  symbol: gTexture683314
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x413A4
+  mio0: true
+  format: rgba16
+texture_6835F0:
+  symbol: gTexture6835F0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x41680
+  mio0: true
+  format: rgba16
+texture_683844:
+  symbol: gTexture683844
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x418D4
+  mio0: true
+  format: rgba16
+fence_post_wooden:
+  symbol: gTextureFencePostWooden
+  type: texture
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x41F2C
+  mio0: true
+  format: rgba16
+texture_6846DC:
+  symbol: gTexture6846DC
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4276C
+  mio0: true
+  format: rgba16
+fence_rope:
+  symbol: gTextureFenceRope
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x42C58
+  mio0: true
+  format: rgba16
+texture_685108:
+  symbol: gTexture685108
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x43198
+  mio0: true
+  format: rgba16
+sign_wood_red_arrow:
+  symbol: gTextureSignWoodRedArrow
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4366C
+  mio0: true
+  format: rgba16
+texture_685AC0:
+  symbol: gTexture685AC0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x43B50
+  mio0: true
+  format: ia16
+sign_green_arrow:
+  symbol: gTextureSignGreenArrow
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4431C
+  mio0: true
+  format: rgba16
+texture_6864E8:
+  symbol: gTexture6864E8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x44578
+  mio0: true
+  format: rgba16
+texture_686CF0:
+  symbol: gTexture686CF0
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x44D80
+  mio0: true
+  format: rgba16
+texture_6875A8:
+  symbol: gTexture6875A8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x45638
+  mio0: true
+  format: rgba16
+texture_687EE8:
+  symbol: gTexture687EE8
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x45F78
+  mio0: true
+  format: rgba16
+texture_68876C:
+  symbol: gTexture68876C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x467FC
+  mio0: true
+  format: rgba16
+texture_689230:
+  symbol: gTexture689230
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x472C0
+  mio0: true
+  format: rgba16
+texture_689C00:
+  symbol: gTexture689C00
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x47C90
+  mio0: true
+  format: rgba16
+texture_68A484:
+  symbol: gTexture68A484
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x48514
+  mio0: true
+  format: rgba16
+texture_68AC5C:
+  symbol: gTexture68AC5C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x48CEC
+  mio0: true
+  format: rgba16
+texture_68B6A4:
+  symbol: gTexture68B6A4
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x49734
+  mio0: true
+  format: rgba16
+texture_68BE6C:
+  symbol: gTexture68BE6C
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x49EFC
+  mio0: true
+  format: rgba16
+texture_68C310:
+  symbol: gTexture68C310
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4A3A0
+  mio0: true
+  format: rgba16
+texture_68C620:
+  symbol: gTexture68C620
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4A6B0
+  mio0: true
+  format: rgba16
+texture_68C79C:
+  symbol: gTexture68C79C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4A82C
+  mio0: true
+  format: rgba16
+texture_68C944:
+  symbol: gTexture68C944
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4A9D4
+  mio0: true
+  format: rgba16
+texture_68CA94:
+  symbol: gTexture68CA94
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4AB24
+  mio0: true
+  format: rgba16
+texture_68CC0C:
+  symbol: gTexture68CC0C
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4AC9C
+  mio0: true
+  format: rgba16
+texture_68CDA0:
+  symbol: gTexture68CDA0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4AE30
+  mio0: true
+  format: rgba16
+sign_yoshi:
+  symbol: gTextureSignYoshi
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4AF40
+  mio0: true
+  format: rgba16
+checkerboard_blue_gray:
+  symbol: gTextureCheckerboardBlueGray
+  type: texture
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x4B420
+  mio0: true
+  format: rgba16
+texture_68D834:
+  symbol: gTexture68D834
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4B8C4
+  mio0: true
+  format: rgba16
+texture_68D940:
+  symbol: gTexture68D940
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4B9D0
+  mio0: true
+  format: rgba16
+texture_68DEC0:
+  symbol: gTexture68DEC0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4BF50
+  mio0: true
+  format: rgba16
+texture_68E2D0:
+  symbol: gTexture68E2D0
+  type: texture
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x4C360
+  mio0: true
+  format: rgba16
+texture_green_shell_0:
+  symbol: texture_green_shell_0
+  type: texture
+  mio0: true
+  offset: 0x4CBE0
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_1:
+  symbol: texture_green_shell_1
+  type: texture
+  mio0: true
+  offset: 0x4CE30
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_2:
+  symbol: texture_green_shell_2
+  type: texture
+  mio0: true
+  offset: 0x4D080
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_3:
+  symbol: texture_green_shell_3
+  type: texture
+  mio0: true
+  offset: 0x4D2D8
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_4:
+  symbol: texture_green_shell_4
+  type: texture
+  mio0: true
+  offset: 0x4D538
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_5:
+  symbol: texture_green_shell_5
+  type: texture
+  mio0: true
+  offset: 0x4D790
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_6:
+  symbol: texture_green_shell_6
+  type: texture
+  mio0: true
+  offset: 0x4D9FC
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_green_shell_7:
+  symbol: texture_green_shell_7
+  type: texture
+  mio0: true
+  offset: 0x4DC5C
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_0:
+  symbol: texture_red_shell_0
+  type: texture
+  mio0: true
+  offset: 0x4CBE0
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_1:
+  symbol: texture_red_shell_1
+  type: texture
+  mio0: true
+  offset: 0x4CE30
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_2:
+  symbol: texture_red_shell_2
+  type: texture
+  mio0: true
+  offset: 0x4D080
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_3:
+  symbol: texture_red_shell_3
+  type: texture
+  mio0: true
+  offset: 0x4D2D8
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_4:
+  symbol: texture_red_shell_4
+  type: texture
+  mio0: true
+  offset: 0x4D538
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_5:
+  symbol: texture_red_shell_5
+  type: texture
+  mio0: true
+  offset: 0x4D790
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_6:
+  symbol: texture_red_shell_6
+  type: texture
+  mio0: true
+  offset: 0x4D9FC
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_red_shell_7:
+  symbol: texture_red_shell_7
+  type: texture
+  mio0: true
+  offset: 0x4DC5C
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_green_shell
+texture_blue_shell_0:
+  symbol: texture_blue_shell_0
+  type: texture
+  mio0: true
+  offset: 0x4DEB0
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_1:
+  symbol: texture_blue_shell_1
+  type: texture
+  mio0: true
+  offset: 0x4E0DC
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_2:
+  symbol: texture_blue_shell_2
+  type: texture
+  mio0: true
+  offset: 0x4E314
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_3:
+  symbol: texture_blue_shell_3
+  type: texture
+  mio0: true
+  offset: 0x4E554
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_4:
+  symbol: texture_blue_shell_4
+  type: texture
+  mio0: true
+  offset: 0x4E798
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_5:
+  symbol: texture_blue_shell_5
+  type: texture
+  mio0: true
+  offset: 0x4E9F0
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_6:
+  symbol: texture_blue_shell_6
+  type: texture
+  mio0: true
+  offset: 0x4EC4C
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+texture_blue_shell_7:
+  symbol: texture_blue_shell_7
+  type: texture
+  mio0: true
+  offset: 0x4EE88
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_blue_shell
+question_mark_yellow:
+  symbol: gTextureQuestionMarkYellow
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x4F0C0
+  format: rgba16
+gTextureTrees1:
+  symbol: gTextureTrees1
+  type: texture
+  mio0: true
+  offset: 0x4F45C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees2:
+  symbol: gTextureTrees2
+  type: texture
+  mio0: true
+  offset: 0x4F7A4
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees3:
+  symbol: gTextureTrees3
+  type: texture
+  mio0: true
+  offset: 0x4FB3C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees4Left:
+  symbol: gTextureTrees4Left
+  type: texture
+  mio0: true
+  offset: 0x4FE28
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees4Right:
+  symbol: gTextureTrees4Right
+  type: texture
+  mio0: true
+  offset: 0x50118
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees5Left:
+  symbol: gTextureTrees5Left
+  type: texture
+  mio0: true
+  offset: 0x50468
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees5Right:
+  symbol: gTextureTrees5Right
+  type: texture
+  mio0: true
+  offset: 0x50678
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees6:
+  symbol: gTextureTrees6
+  type: texture
+  mio0: true
+  offset: 0x50918
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+gTextureTrees7:
+  symbol: gTextureTrees7
+  type: texture
+  mio0: true
+  offset: 0x50D50
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: common_tlut_trees_import
+shrub:
+  symbol: gTextureShrub
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x50FCC
+  format: rgba16
+gTextureFrappeSnowlandTreeLeft:
+  symbol: gTextureFrappeSnowlandTreeLeft
+  type: texture
+  mio0: true
+  offset: 0x513CC
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_frappe_snowland_tree_tlut
+gTextureFrappeSnowlandTreeRight:
+  symbol: gTextureFrappeSnowlandTreeRight
+  type: texture
+  mio0: true
+  offset: 0x51820
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_frappe_snowland_tree_tlut
+gTextureCow01Left:
+  symbol: gTextureCow01Left
+  type: texture
+  mio0: true
+  offset: 0x51C54
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow01Right:
+  symbol: gTextureCow01Right
+  type: texture
+  mio0: true
+  offset: 0x51FD8
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow02Left:
+  symbol: gTextureCow02Left
+  type: texture
+  mio0: true
+  offset: 0x5232C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow02Right:
+  symbol: gTextureCow02Right
+  type: texture
+  mio0: true
+  offset: 0x526B8
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow03Left:
+  symbol: gTextureCow03Left
+  type: texture
+  mio0: true
+  offset: 0x52A20
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow03Right:
+  symbol: gTextureCow03Right
+  type: texture
+  mio0: true
+  offset: 0x52D3C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow04Left:
+  symbol: gTextureCow04Left
+  type: texture
+  mio0: true
+  offset: 0x5300C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow04Right:
+  symbol: gTextureCow04Right
+  type: texture
+  mio0: true
+  offset: 0x532F8
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow05Left:
+  symbol: gTextureCow05Left
+  type: texture
+  mio0: true
+  offset: 0x5363C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCow05Right:
+  symbol: gTextureCow05Right
+  type: texture
+  mio0: true
+  offset: 0x53950
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_moo_moo_farm_cow_tlut
+gTextureCactus1Left:
+  symbol: gTextureCactus1Left
+  type: texture
+  mio0: true
+  offset: 0x53C34
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_kalimari_desert_tree_tlut
+gTextureCactus1Right:
+  symbol: gTextureCactus1Right
+  type: texture
+  mio0: true
+  offset: 0x53F74
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_kalimari_desert_tree_tlut
+gTextureCactus2Left:
+  symbol: gTextureCactus2Left
+  type: texture
+  mio0: true
+  offset: 0x54270
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_kalimari_desert_tree_tlut
+gTextureCactus2Right:
+  symbol: gTextureCactus2Right
+  type: texture
+  mio0: true
+  offset: 0x54518
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_kalimari_desert_tree_tlut
+gTextureCactus3:
+  symbol: gTextureCactus3
+  type: texture
+  mio0: true
+  offset: 0x5488C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_kalimari_desert_tree_tlut
+gTextureFinishLineBanner1:
+  symbol: gTextureFinishLineBanner1
+  type: texture
+  mio0: true
+  offset: 0x54C3C
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner2:
+  symbol: gTextureFinishLineBanner2
+  type: texture
+  mio0: true
+  offset: 0x54ECC
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner3:
+  symbol: gTextureFinishLineBanner3
+  type: texture
+  mio0: true
+  offset: 0x551C8
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner4:
+  symbol: gTextureFinishLineBanner4
+  type: texture
+  mio0: true
+  offset: 0x554CC
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner5:
+  symbol: gTextureFinishLineBanner5
+  type: texture
+  mio0: true
+  offset: 0x55880
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner6:
+  symbol: gTextureFinishLineBanner6
+  type: texture
+  mio0: true
+  offset: 0x55BA0
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner7:
+  symbol: gTextureFinishLineBanner7
+  type: texture
+  mio0: true
+  offset: 0x55F10
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTextureFinishLineBanner8:
+  symbol: gTextureFinishLineBanner8
+  type: texture
+  mio0: true
+  offset: 0x561AC
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: common_tlut_finish_line_banner
+gTexturePiranhaPlant1:
+  symbol: gTexturePiranhaPlant1
+  type: texture
+  mio0: true
+  offset: 0x56408
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant2:
+  symbol: gTexturePiranhaPlant2
+  type: texture
+  mio0: true
+  offset: 0x5662C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant3:
+  symbol: gTexturePiranhaPlant3
+  type: texture
+  mio0: true
+  offset: 0x5688C
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant4:
+  symbol: gTexturePiranhaPlant4
+  type: texture
+  mio0: true
+  offset: 0x56AD0
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant5:
+  symbol: gTexturePiranhaPlant5
+  type: texture
+  mio0: true
+  offset: 0x56CF0
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant6:
+  symbol: gTexturePiranhaPlant6
+  type: texture
+  mio0: true
+  offset: 0x56EC8
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant7:
+  symbol: gTexturePiranhaPlant7
+  type: texture
+  mio0: true
+  offset: 0x57084
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant8:
+  symbol: gTexturePiranhaPlant8
+  type: texture
+  mio0: true
+  offset: 0x57288
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+gTexturePiranhaPlant9:
+  symbol: gTexturePiranhaPlant9
+  type: texture
+  mio0: true
+  offset: 0x57590
+  ctype: u8
+  width: 32
+  height: 64
+  format: CI8
+  tlut_symbol: d_course_mario_raceway_piranha_plant_tlut
+texture_6997E0:
+  symbol: gTexture6997E0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x57870
+  format: rgba16
+gTextureDksJungleParkwayKiwanoFruit1:
+  symbol: gTextureDksJungleParkwayKiwanoFruit1
+  type: texture
+  mio0: true
+  offset: 0x57EB4
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: d_course_dks_jungle_parkway_kiwano_tlut
+gTextureDksJungleParkwayKiwanoFruit2:
+  symbol: gTextureDksJungleParkwayKiwanoFruit2
+  type: texture
+  mio0: true
+  offset: 0x581E4
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: d_course_dks_jungle_parkway_kiwano_tlut
+gTextureDksJungleParkwayKiwanoFruit3:
+  symbol: gTextureDksJungleParkwayKiwanoFruit3
+  type: texture
+  mio0: true
+  offset: 0x58550
+  ctype: u8
+  width: 32
+  height: 32
+  format: CI8
+  tlut_symbol: d_course_dks_jungle_parkway_kiwano_tlut
+kart_shadow:
+  symbol: gTextureKartShadow
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x588C0
+  format: i8
+texture_69B03C:
+  symbol: gTexture69B03C
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x590CC
+  format: i8
+texture_69B140:
+  symbol: gTexture69B140
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x591D0
+  format: i8
+gGrassParticle:
+  symbol: gGrassParticle
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x59408
+  format: rgba16
+texture_69B960:
+  symbol: gTextureMusicNote
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x599F0
+  format: i8
+texture_69BA28:
+  symbol: gTextureSpeechBubble
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x59AB8
+  format: i8
+boing_exclamation:
+  symbol: gTextureBoingExclamation
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 32
+  offset: 0x59BA8
+  format: ia8
+texture_69BE6C:
+  symbol: gTexture69BE6C
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x59EFC
+  format: ia16
+texture_69BF54:
+  symbol: gTexture69BF54
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x59FE4
+  format: ia16
+texture_69C090:
+  symbol: gTexture69C090
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x5A120
+  format: ia16
+texture_69C1E8:
+  symbol: gTexture69C1E8
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 16
+  height: 16
+  offset: 0x5A278
+  format: ia16
+texture_69C354:
+  symbol: gTextureSmokePuff
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x5A3E4
+  format: ia8
+gGroundDust:
+  symbol: gGroundDust
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x5A574
+  format: i8
+texture_69C80C:
+  symbol: gTexture69C80C
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 32
+  offset: 0x5A89C
+  format: ia8
+texture_69C9C4:
+  symbol: gTexture69C9C4
+  type: texture
+  mio0: true
+  ctype: u8
+  width: 16
+  height: 16
+  offset: 0x5AA54
+  format: ia16
+texture_69CB84:
+  symbol: gTexture69CB84
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5AC14
+  format: i4
+texture_69CCEC:
+  symbol: gTexture69CCEC
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5AD7C
+  format: i4
+texture_69CEB8:
+  symbol: gTexture69CEB8
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5AF48
+  format: i4
+texture_69D148:
+  symbol: gTexture69D148
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5B1D8
+  format: i4
+texture_69D4E0:
+  symbol: gTexture69D4E0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5B570
+  format: i4
+texture_69D8FC:
+  symbol: gTexture69D8FC
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5B98C
+  format: i4
+texture_69DCB4:
+  symbol: gTexture69DCB4
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5BD44
+  format: i4
+texture_69DFA0:
+  symbol: gTexture69DFA0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5C030
+  format: i4
+texture_69E25C:
+  symbol: gTexture69E25C
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5C2EC
+  format: i4
+texture_69E518:
+  symbol: gTexture69E518
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5C5A8
+  format: i4
+texture_69E7A8:
+  symbol: gTexture69E7A8
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5C838
+  format: i4
+texture_69EA18:
+  symbol: gTexture69EA18
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5CAA8
+  format: i4
+texture_69EC54:
+  symbol: gTexture69EC54
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5CCE4
+  format: i4
+texture_69EE38:
+  symbol: gTexture69EE38
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5CEC8
+  format: i4
+texture_69EFE0:
+  symbol: gTexture69EFE0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 64
+  height: 64
+  offset: 0x5D070
+  format: i4
+gTextureOnomatopoeiaCrash1:
+  symbol: gTextureOnomatopoeiaCrash1
+  type: texture
+  mio0: true
+  offset: 0x5D1E8
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureOnomatopoeiaCrash2:
+  symbol: gTextureOnomatopoeiaCrash2
+  type: texture
+  mio0: true
+  offset: 0x5D420
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureOnomatopoeiaWhrrrr1:
+  symbol: gTextureOnomatopoeiaWhrrrr1
+  type: texture
+  mio0: true
+  offset: 0x5D674
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureOnomatopoeiaWhrrrr2:
+  symbol: gTextureOnomatopoeiaWhrrrr2
+  type: texture
+  mio0: true
+  offset: 0x5DA50
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureOnomatopoeiaPoomp1:
+  symbol: gTextureOnomatopoeiaPoomp1
+  type: texture
+  mio0: true
+  offset: 0x5DDFC
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureOnomatopoeiaPoomp2:
+  symbol: gTextureOnomatopoeiaPoomp2
+  type: texture
+  mio0: true
+  offset: 0x5DFC0
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureBalloon1:
+  symbol: gTextureBalloon1
+  type: texture
+  mio0: true
+  offset: 0x5E19C
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+gTextureBalloon2:
+  symbol: gTextureBalloon2
+  type: texture
+  mio0: true
+  offset: 0x5E3E0
+  ctype: u8
+  width: 64
+  height: 32
+  format: CI8
+  tlut_symbol: gTLUTOnomatopoeia
+lightning_zap_0:
+  symbol: gTextureLightningBolt0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x5E574
+  format: ia8
+lightning_zap_1:
+  symbol: gTextureLightningBolt1
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 64
+  offset: 0x5E828
+  format: ia8
+gTextureLakituNoLights1:
+  symbol: gTextureLakituNoLights1
+  type: texture
+  offset: 0x5EB50
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights2:
+  symbol: gTextureLakituNoLights2
+  type: texture
+  offset: 0x5FB10
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights3:
+  symbol: gTextureLakituNoLights3
+  type: texture
+  offset: 0x60AD0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights4:
+  symbol: gTextureLakituNoLights4
+  type: texture
+  offset: 0x61A90
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights5:
+  symbol: gTextureLakituNoLights5
+  type: texture
+  offset: 0x62A50
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights6:
+  symbol: gTextureLakituNoLights6
+  type: texture
+  offset: 0x63A10
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights7:
+  symbol: gTextureLakituNoLights7
+  type: texture
+  offset: 0x649D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituNoLights8:
+  symbol: gTextureLakituNoLights8
+  type: texture
+  offset: 0x65990
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_no_lights
+gTextureLakituRedLights01:
+  symbol: gTextureLakituRedLights01
+  type: texture
+  offset: 0x66950
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights02:
+  symbol: gTextureLakituRedLights02
+  type: texture
+  offset: 0x67910
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights03:
+  symbol: gTextureLakituRedLights03
+  type: texture
+  offset: 0x688D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights04:
+  symbol: gTextureLakituRedLights04
+  type: texture
+  offset: 0x69890
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights05:
+  symbol: gTextureLakituRedLights05
+  type: texture
+  offset: 0x6A850
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights06:
+  symbol: gTextureLakituRedLights06
+  type: texture
+  offset: 0x6B810
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights07:
+  symbol: gTextureLakituRedLights07
+  type: texture
+  offset: 0x6C7D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights08:
+  symbol: gTextureLakituRedLights08
+  type: texture
+  offset: 0x6D790
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights09:
+  symbol: gTextureLakituRedLights09
+  type: texture
+  offset: 0x6E750
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights10:
+  symbol: gTextureLakituRedLights10
+  type: texture
+  offset: 0x6F710
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights11:
+  symbol: gTextureLakituRedLights11
+  type: texture
+  offset: 0x706D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights12:
+  symbol: gTextureLakituRedLights12
+  type: texture
+  offset: 0x71690
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights13:
+  symbol: gTextureLakituRedLights13
+  type: texture
+  offset: 0x72650
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights14:
+  symbol: gTextureLakituRedLights14
+  type: texture
+  offset: 0x73610
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights15:
+  symbol: gTextureLakituRedLights15
+  type: texture
+  offset: 0x745D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituRedLights16:
+  symbol: gTextureLakituRedLights16
+  type: texture
+  offset: 0x75590
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_red_lights
+gTextureLakituBlueLight1:
+  symbol: gTextureLakituBlueLight1
+  type: texture
+  offset: 0x76550
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight2:
+  symbol: gTextureLakituBlueLight2
+  type: texture
+  offset: 0x77510
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight3:
+  symbol: gTextureLakituBlueLight3
+  type: texture
+  offset: 0x784D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight4:
+  symbol: gTextureLakituBlueLight4
+  type: texture
+  offset: 0x79490
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight5:
+  symbol: gTextureLakituBlueLight5
+  type: texture
+  offset: 0x7A450
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight6:
+  symbol: gTextureLakituBlueLight6
+  type: texture
+  offset: 0x7B410
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight7:
+  symbol: gTextureLakituBlueLight7
+  type: texture
+  offset: 0x7C3D0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituBlueLight8:
+  symbol: gTextureLakituBlueLight8
+  type: texture
+  offset: 0x7D390
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_blue_lights
+gTextureLakituCheckeredFlag01:
+  symbol: gTextureLakituCheckeredFlag01
+  type: texture
+  offset: 0x7E350
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag02:
+  symbol: gTextureLakituCheckeredFlag02
+  type: texture
+  offset: 0x7F310
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag03:
+  symbol: gTextureLakituCheckeredFlag03
+  type: texture
+  offset: 0x802D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag04:
+  symbol: gTextureLakituCheckeredFlag04
+  type: texture
+  offset: 0x81290
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag05:
+  symbol: gTextureLakituCheckeredFlag05
+  type: texture
+  offset: 0x82250
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag06:
+  symbol: gTextureLakituCheckeredFlag06
+  type: texture
+  offset: 0x83210
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag07:
+  symbol: gTextureLakituCheckeredFlag07
+  type: texture
+  offset: 0x841D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag08:
+  symbol: gTextureLakituCheckeredFlag08
+  type: texture
+  offset: 0x85190
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag09:
+  symbol: gTextureLakituCheckeredFlag09
+  type: texture
+  offset: 0x86150
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag10:
+  symbol: gTextureLakituCheckeredFlag10
+  type: texture
+  offset: 0x87110
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag11:
+  symbol: gTextureLakituCheckeredFlag11
+  type: texture
+  offset: 0x880D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag12:
+  symbol: gTextureLakituCheckeredFlag12
+  type: texture
+  offset: 0x89090
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag13:
+  symbol: gTextureLakituCheckeredFlag13
+  type: texture
+  offset: 0x8A050
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag14:
+  symbol: gTextureLakituCheckeredFlag14
+  type: texture
+  offset: 0x8B010
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag15:
+  symbol: gTextureLakituCheckeredFlag15
+  type: texture
+  offset: 0x8BFD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag16:
+  symbol: gTextureLakituCheckeredFlag16
+  type: texture
+  offset: 0x8CF90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag17:
+  symbol: gTextureLakituCheckeredFlag17
+  type: texture
+  offset: 0x8DF50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag18:
+  symbol: gTextureLakituCheckeredFlag18
+  type: texture
+  offset: 0x8EF10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag19:
+  symbol: gTextureLakituCheckeredFlag19
+  type: texture
+  offset: 0x8FED0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag20:
+  symbol: gTextureLakituCheckeredFlag20
+  type: texture
+  offset: 0x90E90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag21:
+  symbol: gTextureLakituCheckeredFlag21
+  type: texture
+  offset: 0x91E50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag22:
+  symbol: gTextureLakituCheckeredFlag22
+  type: texture
+  offset: 0x92E10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag23:
+  symbol: gTextureLakituCheckeredFlag23
+  type: texture
+  offset: 0x93DD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag24:
+  symbol: gTextureLakituCheckeredFlag24
+  type: texture
+  offset: 0x94D90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag25:
+  symbol: gTextureLakituCheckeredFlag25
+  type: texture
+  offset: 0x95D50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag26:
+  symbol: gTextureLakituCheckeredFlag26
+  type: texture
+  offset: 0x96D10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag27:
+  symbol: gTextureLakituCheckeredFlag27
+  type: texture
+  offset: 0x97CD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag28:
+  symbol: gTextureLakituCheckeredFlag28
+  type: texture
+  offset: 0x98C90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag29:
+  symbol: gTextureLakituCheckeredFlag29
+  type: texture
+  offset: 0x99C50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag30:
+  symbol: gTextureLakituCheckeredFlag30
+  type: texture
+  offset: 0x9AC10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag31:
+  symbol: gTextureLakituCheckeredFlag31
+  type: texture
+  offset: 0x9BBD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituCheckeredFlag32:
+  symbol: gTextureLakituCheckeredFlag32
+  type: texture
+  offset: 0x9CB90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_checkered_flag
+gTextureLakituSecondLap01:
+  symbol: gTextureLakituSecondLap01
+  type: texture
+  offset: 0x9DB50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap02:
+  symbol: gTextureLakituSecondLap02
+  type: texture
+  offset: 0x9EB10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap03:
+  symbol: gTextureLakituSecondLap03
+  type: texture
+  offset: 0x9FAD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap04:
+  symbol: gTextureLakituSecondLap04
+  type: texture
+  offset: 0xA0A90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap05:
+  symbol: gTextureLakituSecondLap05
+  type: texture
+  offset: 0xA1A50
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap06:
+  symbol: gTextureLakituSecondLap06
+  type: texture
+  offset: 0xA2A10
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap07:
+  symbol: gTextureLakituSecondLap07
+  type: texture
+  offset: 0xA39D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap08:
+  symbol: gTextureLakituSecondLap08
+  type: texture
+  offset: 0xA4990
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap09:
+  symbol: gTextureLakituSecondLap09
+  type: texture
+  offset: 0xA5950
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap10:
+  symbol: gTextureLakituSecondLap10
+  type: texture
+  offset: 0xA6910
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap11:
+  symbol: gTextureLakituSecondLap11
+  type: texture
+  offset: 0xA78D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap12:
+  symbol: gTextureLakituSecondLap12
+  type: texture
+  offset: 0xA8890
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap13:
+  symbol: gTextureLakituSecondLap13
+  type: texture
+  offset: 0xA9850
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap14:
+  symbol: gTextureLakituSecondLap14
+  type: texture
+  offset: 0xAA810
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap15:
+  symbol: gTextureLakituSecondLap15
+  type: texture
+  offset: 0xAB7D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituSecondLap16:
+  symbol: gTextureLakituSecondLap16
+  type: texture
+  offset: 0xAC790
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_second_lap
+gTextureLakituFinalLap01:
+  symbol: gTextureLakituFinalLap01
+  type: texture
+  offset: 0xAD750
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap02:
+  symbol: gTextureLakituFinalLap02
+  type: texture
+  offset: 0xAE710
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap03:
+  symbol: gTextureLakituFinalLap03
+  type: texture
+  offset: 0xAF6D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap04:
+  symbol: gTextureLakituFinalLap04
+  type: texture
+  offset: 0xB0690
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap05:
+  symbol: gTextureLakituFinalLap05
+  type: texture
+  offset: 0xB1650
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap06:
+  symbol: gTextureLakituFinalLap06
+  type: texture
+  offset: 0xB2610
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap07:
+  symbol: gTextureLakituFinalLap07
+  type: texture
+  offset: 0xB35D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap08:
+  symbol: gTextureLakituFinalLap08
+  type: texture
+  offset: 0xB4590
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap09:
+  symbol: gTextureLakituFinalLap09
+  type: texture
+  offset: 0xB5550
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap10:
+  symbol: gTextureLakituFinalLap10
+  type: texture
+  offset: 0xB6510
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap11:
+  symbol: gTextureLakituFinalLap11
+  type: texture
+  offset: 0xB74D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap12:
+  symbol: gTextureLakituFinalLap12
+  type: texture
+  offset: 0xB8490
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap13:
+  symbol: gTextureLakituFinalLap13
+  type: texture
+  offset: 0xB9450
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap14:
+  symbol: gTextureLakituFinalLap14
+  type: texture
+  offset: 0xBA410
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap15:
+  symbol: gTextureLakituFinalLap15
+  type: texture
+  offset: 0xBB3D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituFinalLap16:
+  symbol: gTextureLakituFinalLap16
+  type: texture
+  offset: 0xBC390
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_final_lap
+gTextureLakituReverse01:
+  symbol: gTextureLakituReverse01
+  type: texture
+  offset: 0xBD350
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse02:
+  symbol: gTextureLakituReverse02
+  type: texture
+  offset: 0xBE310
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse03:
+  symbol: gTextureLakituReverse03
+  type: texture
+  offset: 0xBF2D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse04:
+  symbol: gTextureLakituReverse04
+  type: texture
+  offset: 0xC0290
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse05:
+  symbol: gTextureLakituReverse05
+  type: texture
+  offset: 0xC1250
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse06:
+  symbol: gTextureLakituReverse06
+  type: texture
+  offset: 0xC2210
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse07:
+  symbol: gTextureLakituReverse07
+  type: texture
+  offset: 0xC31D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse08:
+  symbol: gTextureLakituReverse08
+  type: texture
+  offset: 0xC4190
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse09:
+  symbol: gTextureLakituReverse09
+  type: texture
+  offset: 0xC5150
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse10:
+  symbol: gTextureLakituReverse10
+  type: texture
+  offset: 0xC6110
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse11:
+  symbol: gTextureLakituReverse11
+  type: texture
+  offset: 0xC70D0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse12:
+  symbol: gTextureLakituReverse12
+  type: texture
+  offset: 0xC8090
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse13:
+  symbol: gTextureLakituReverse13
+  type: texture
+  offset: 0xC9050
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse14:
+  symbol: gTextureLakituReverse14
+  type: texture
+  offset: 0xCA010
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse15:
+  symbol: gTextureLakituReverse15
+  type: texture
+  offset: 0xCAFD0
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituReverse16:
+  symbol: gTextureLakituReverse16
+  type: texture
+  offset: 0xCBF90
+  ctype: u8
+  width: 72
+  height: 56
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_reverse
+gTextureLakituFishing1:
+  symbol: gTextureLakituFishing1
+  type: texture
+  offset: 0xCCF50
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_fishing
+gTextureLakituFishing2:
+  symbol: gTextureLakituFishing2
+  type: texture
+  offset: 0xCDF10
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_fishing
+gTextureLakituFishing3:
+  symbol: gTextureLakituFishing3
+  type: texture
+  offset: 0xCEED0
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_fishing
+gTextureLakituFishing4:
+  symbol: gTextureLakituFishing4
+  type: texture
+  offset: 0xCFE90
+  ctype: u8
+  width: 56
+  height: 72
+  format: CI8
+  tlut_symbol: common_tlut_lakitu_fishing
+# See boo_frames.yml since its all stuffed into one mio0 file.
+#gTextureGhosts: # This contains 29 individual boo images.
+#  symbol: gTextureGhosts
+#  type: texture
+#  mio0: true
+#  offset: 0xD0E50
+#  ctype: u8
+#  width: 48
+#  height: 1160
+#  mio0: true
+#  format: CI8
+#  tlut_symbol: gTLUTBoo
+exhaust_0:
+  symbol: gTextureExhaust0
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 96
+  offset: 0xD5B14
+  format: ia8
+exhaust_1:
+  symbol: gTextureExhaust1
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 96
+  offset: 0xD5F90
+  format: ia8
+exhaust_2:
+  symbol: gTextureExhaust2
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 96
+  offset: 0xD6418
+  format: ia8
+exhaust_3:
+  symbol: gTextureExhaust3
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 128
+  offset: 0xD690C
+  format: ia8
+exhaust_4:
+  symbol: gTextureExhaust4
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 128
+  offset: 0xD6CD4
+  format: ia8
+exhaust_5:
+  symbol: gTextureExhaust5
+  type: texture
+  mio0: true
+  ctype: u16
+  width: 32
+  height: 128
+  offset: 0xD70CC
+  format: ia8
+logo_mario_kart_64:
+  symbol: logo_mario_kart_64
+  type: texture
+  mio0: true
+  ctype: u32
+  width: 256
+  height: 128
+  offset: 0xD7510
+  format: rgba32
+minimap_mario_raceway:
+  symbol: minimap_mario_raceway
+  mio0: true
+  type: texture
+  offset: 0xDEC9C
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_choco_mountain:
+  symbol: minimap_choco_mountain
+  mio0: true
+  type: texture
+  offset: 0xDEF60
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_bowsers_castle:
+  symbol: minimap_bowsers_castle
+  mio0: true
+  type: texture
+  offset: 0xDF268
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_banshee_boardwalk:
+  symbol: minimap_banshee_boardwalk
+  mio0: true
+  type: texture
+  offset: 0xDF4CC
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_yoshi_valley:
+  symbol: minimap_yoshi_valley
+  mio0: true
+  type: texture
+  offset: 0xDF6C4
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_frappe_snowland:
+  symbol: minimap_frappe_snowland
+  mio0: true
+  type: texture
+  offset: 0xDFAE8
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_koopa_troopa_beach:
+  symbol: minimap_koopa_troopa_beach
+  mio0: true
+  type: texture
+  offset: 0xDFD60
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_royal_raceway:
+  symbol: minimap_royal_raceway
+  mio0: true
+  type: texture
+  offset: 0xDFFC8
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_luigi_raceway:
+  symbol: minimap_luigi_raceway
+  mio0: true
+  type: texture
+  offset: 0xE02A0
+  ctype: u16
+  width: 64
+  height: 96
+  format: I4
+minimap_moo_moo_farm:
+  symbol: minimap_moo_moo_farm
+  mio0: true
+  type: texture
+  offset: 0xE051C
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_toads_turnpike:
+  symbol: minimap_toads_turnpike
+  mio0: true
+  type: texture
+  offset: 0xE0754
+  ctype: u16
+  width: 128
+  height: 64
+  format: I4
+minimap_kalimari_desert:
+  symbol: minimap_kalimari_desert
+  mio0: true
+  type: texture
+  offset: 0xE0A50
+  ctype: u16
+  width: 64
+  height: 96
+  format: I4
+minimap_sherbet_land:
+  symbol: minimap_sherbet_land
+  mio0: true
+  type: texture
+  offset: 0xE0DBC
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_rainbow_road:
+  symbol: minimap_rainbow_road
+  mio0: true
+  type: texture
+  offset: 0xE10C4
+  ctype: u16
+  width: 64
+  height: 96
+  format: I4
+minimap_wario_stadium:
+  symbol: minimap_wario_stadium
+  mio0: true
+  type: texture
+  offset: 0xE1400
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_block_fort:
+  symbol: minimap_block_fort
+  mio0: true
+  type: texture
+  offset: 0xE16D4
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_skyscraper:
+  symbol: minimap_skyscraper
+  mio0: true
+  type: texture
+  offset: 0xE1974
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_double_deck:
+  symbol: minimap_double_deck
+  mio0: true
+  type: texture
+  offset: 0xE1BA8
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_dks_jungle_parkway:
+  symbol: minimap_dks_jungle_parkway
+  mio0: true
+  type: texture
+  offset: 0xE1D2C
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4
+minimap_big_donut:
+  symbol: minimap_big_donut
+  mio0: true
+  type: texture
+  offset: 0xE2014
+  ctype: u16
+  width: 64
+  height: 64
+  format: I4

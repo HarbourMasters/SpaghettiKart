@@ -9,6 +9,7 @@ extern "C" {
 #include "main.h"
 #include "camera.h"
 #include "common_structs.h"
+}
 
 class AActor {
 public:
@@ -52,7 +53,7 @@ public:
     virtual void SetSpawnParams(SpawnParams& params);
     virtual void BeginPlay();
     virtual void Tick();
-    virtual void Draw(Camera*);
+    virtual void Draw(Camera* camera);
     virtual void Collision(Player* player, AActor* actor);
     virtual void VehicleCollision(s32 playerId, Player* player);
     void SetLocation(FVector pos);
@@ -69,5 +70,3 @@ public:
     void SetScale(FVector scale);
     virtual void DrawEditorProperties() { DrawDefaultEditorProperties(); };
 };
-
-}

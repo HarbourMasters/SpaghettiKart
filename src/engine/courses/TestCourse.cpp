@@ -13,9 +13,9 @@
 #include "engine/actors/Starship.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
-#include "assets/mario_raceway_data.h"
-#include "assets/bowsers_castle_data.h"
-#include "assets/bowsers_castle_displaylists.h"
+#include "assets/models/tracks/mario_raceway/mario_raceway_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_displaylists.h"
 #include "engine/actors/Tree.h"
 #include "engine/actors/Cloud.h"
 #include "engine/vehicles/Train.h"
@@ -45,7 +45,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -60,8 +60,6 @@ extern "C" {
 }
 
 TestCourse::TestCourse() {
-    this->gfxSize = 100;
-    this->textures = NULL;
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -139,6 +137,10 @@ TestCourse::TestCourse() {
 void TestCourse::Load() {
     Course::Load(mario_Plane_001_mesh_vtx_1, NULL);
 
+    if (gIsMirrorMode != 0) {
+        InvertTriangleWinding(mario_Plane_001_mesh);
+    }
+
     generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
     parse_course_displaylists((TrackSections*)test_course_addr);
@@ -146,8 +148,7 @@ void TestCourse::Load() {
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void TestCourse::LoadTextures() {
-    dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U); // 0x03009000
+void TestCourse::UnLoad() {
 }
 
 void TestCourse::BeginPlay() {

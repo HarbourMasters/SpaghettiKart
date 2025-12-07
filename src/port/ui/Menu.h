@@ -4,13 +4,15 @@
 #include <libultraship/libultraship.h>
 #include "UIWidgets.h"
 #include "MenuTypes.h"
-#include "../port/Game.h"
+#include "src/port/Game.h"
+#include "src/port/audio/HMAS.h"
 
 extern "C" {
 #include "defines.h"
 #include "main.h"
 #include "menus.h"
 #include "code_800029B0.h"
+#include "external.h"
 }
 
 namespace Ship {
@@ -61,9 +63,14 @@ class Menu : public GuiWindow {
     virtual void ProcessReset() {
       gGamestateNext = MAIN_MENU_FROM_QUIT;
       gIsGamePaused = 0;
+      // Reset credits
+      D_800DC5E4 = 0;
+      gTourComplete = false;
       SetMarioRaceway();
       memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
       memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
+
+      CM_ResetAudio();
 
       switch(CVarGetInteger("gSkipIntro", 0)) {
           case 0:

@@ -1,0 +1,36 @@
+:config:
+  segments:
+    - [0x06, 0x8284D0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_mario_raceway_piranha_plant_tlut:
+  symbol: d_course_mario_raceway_piranha_plant_tlut
+  type: texture
+  offset: 0x6750
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+d_course_mario_sign_left:
+  symbol: d_course_mario_sign_left
+  type: texture
+  offset: 0x7068
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_mario_sign_right:
+  symbol: d_course_mario_sign_right
+  type: texture
+  offset: 0x8068
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16

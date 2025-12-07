@@ -1,0 +1,2223 @@
+:config:
+  segments:
+    - [0x0F, 0x9438C0]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_wario_stadium_vertex_0x04000000:
+  symbol: d_course_wario_stadium_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x0
+
+d_course_wario_stadium_vertex_0x04000040:
+  symbol: d_course_wario_stadium_vertex_0x04000040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38
+
+d_course_wario_stadium_vertex_0x04000080:
+  symbol: d_course_wario_stadium_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x70
+
+d_course_wario_stadium_vertex_0x040000C0:
+  symbol: d_course_wario_stadium_vertex_0x040000C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa8
+
+d_course_wario_stadium_vertex_0x04000100:
+  symbol: d_course_wario_stadium_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe0
+
+d_course_wario_stadium_vertex_0x04000140:
+  symbol: d_course_wario_stadium_vertex_0x04000140
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x118
+
+d_course_wario_stadium_vertex_0x04000180:
+  symbol: d_course_wario_stadium_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x150
+
+d_course_wario_stadium_vertex_0x040001C0:
+  symbol: d_course_wario_stadium_vertex_0x040001C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x188
+
+d_course_wario_stadium_vertex_0x04000200:
+  symbol: d_course_wario_stadium_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1c0
+
+d_course_wario_stadium_vertex_0x04000240:
+  symbol: d_course_wario_stadium_vertex_0x04000240
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x1f8
+
+d_course_wario_stadium_vertex_0x04000290:
+  symbol: d_course_wario_stadium_vertex_0x04000290
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x23e
+
+d_course_wario_stadium_vertex_0x04000410:
+  symbol: d_course_wario_stadium_vertex_0x04000410
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x38e
+
+d_course_wario_stadium_vertex_0x04000450:
+  symbol: d_course_wario_stadium_vertex_0x04000450
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3c6
+
+d_course_wario_stadium_vertex_0x040005D0:
+  symbol: d_course_wario_stadium_vertex_0x040005D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x516
+
+d_course_wario_stadium_vertex_0x04000610:
+  symbol: d_course_wario_stadium_vertex_0x04000610
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x54e
+
+d_course_wario_stadium_vertex_0x04000650:
+  symbol: d_course_wario_stadium_vertex_0x04000650
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x586
+
+d_course_wario_stadium_vertex_0x04000710:
+  symbol: d_course_wario_stadium_vertex_0x04000710
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x62e
+
+d_course_wario_stadium_vertex_0x04000750:
+  symbol: d_course_wario_stadium_vertex_0x04000750
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x666
+
+d_course_wario_stadium_vertex_0x04000810:
+  symbol: d_course_wario_stadium_vertex_0x04000810
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x70e
+
+d_course_wario_stadium_vertex_0x04000860:
+  symbol: d_course_wario_stadium_vertex_0x04000860
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x754
+
+d_course_wario_stadium_vertex_0x04000920:
+  symbol: d_course_wario_stadium_vertex_0x04000920
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7fc
+
+d_course_wario_stadium_vertex_0x04000960:
+  symbol: d_course_wario_stadium_vertex_0x04000960
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x834
+
+d_course_wario_stadium_vertex_0x04000A20:
+  symbol: d_course_wario_stadium_vertex_0x04000A20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8dc
+
+d_course_wario_stadium_vertex_0x04000AE0:
+  symbol: d_course_wario_stadium_vertex_0x04000AE0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x984
+
+d_course_wario_stadium_vertex_0x04000BA0:
+  symbol: d_course_wario_stadium_vertex_0x04000BA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa2c
+
+d_course_wario_stadium_vertex_0x04000BE0:
+  symbol: d_course_wario_stadium_vertex_0x04000BE0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0xa64
+
+d_course_wario_stadium_vertex_0x04000C30:
+  symbol: d_course_wario_stadium_vertex_0x04000C30
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xaaa
+
+d_course_wario_stadium_vertex_0x04000D30:
+  symbol: d_course_wario_stadium_vertex_0x04000D30
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb8a
+
+d_course_wario_stadium_vertex_0x04000E30:
+  symbol: d_course_wario_stadium_vertex_0x04000E30
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xc6a
+
+d_course_wario_stadium_vertex_0x04000F00:
+  symbol: d_course_wario_stadium_vertex_0x04000F00
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xd20
+
+d_course_wario_stadium_vertex_0x04000FD0:
+  symbol: d_course_wario_stadium_vertex_0x04000FD0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xdd6
+
+d_course_wario_stadium_vertex_0x040010E0:
+  symbol: d_course_wario_stadium_vertex_0x040010E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xec4
+
+d_course_wario_stadium_vertex_0x040011D0:
+  symbol: d_course_wario_stadium_vertex_0x040011D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf96
+
+d_course_wario_stadium_vertex_0x040012D0:
+  symbol: d_course_wario_stadium_vertex_0x040012D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1076
+
+d_course_wario_stadium_vertex_0x040013D0:
+  symbol: d_course_wario_stadium_vertex_0x040013D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1156
+
+d_course_wario_stadium_vertex_0x04001490:
+  symbol: d_course_wario_stadium_vertex_0x04001490
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11fe
+
+d_course_wario_stadium_vertex_0x04001550:
+  symbol: d_course_wario_stadium_vertex_0x04001550
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12a6
+
+d_course_wario_stadium_vertex_0x04001610:
+  symbol: d_course_wario_stadium_vertex_0x04001610
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x134e
+
+d_course_wario_stadium_vertex_0x04001710:
+  symbol: d_course_wario_stadium_vertex_0x04001710
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x142e
+
+d_course_wario_stadium_vertex_0x04001820:
+  symbol: d_course_wario_stadium_vertex_0x04001820
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x151c
+
+d_course_wario_stadium_vertex_0x04001860:
+  symbol: d_course_wario_stadium_vertex_0x04001860
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1554
+
+d_course_wario_stadium_vertex_0x04001A60:
+  symbol: d_course_wario_stadium_vertex_0x04001A60
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1714
+
+d_course_wario_stadium_vertex_0x04001A90:
+  symbol: d_course_wario_stadium_vertex_0x04001A90
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x173e
+
+d_course_wario_stadium_vertex_0x04001B10:
+  symbol: d_course_wario_stadium_vertex_0x04001B10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x17ae
+
+d_course_wario_stadium_vertex_0x04001B50:
+  symbol: d_course_wario_stadium_vertex_0x04001B50
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x17e6
+
+d_course_wario_stadium_vertex_0x04001C50:
+  symbol: d_course_wario_stadium_vertex_0x04001C50
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x18c6
+
+d_course_wario_stadium_vertex_0x04001DB0:
+  symbol: d_course_wario_stadium_vertex_0x04001DB0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x19fa
+
+d_course_wario_stadium_vertex_0x04001E70:
+  symbol: d_course_wario_stadium_vertex_0x04001E70
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1aa2
+
+d_course_wario_stadium_vertex_0x04001F40:
+  symbol: d_course_wario_stadium_vertex_0x04001F40
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x1b58
+
+d_course_wario_stadium_vertex_0x040020C0:
+  symbol: d_course_wario_stadium_vertex_0x040020C0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1ca8
+
+d_course_wario_stadium_vertex_0x040021E0:
+  symbol: d_course_wario_stadium_vertex_0x040021E0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1da4
+
+d_course_wario_stadium_vertex_0x040022A0:
+  symbol: d_course_wario_stadium_vertex_0x040022A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1e4c
+
+d_course_wario_stadium_vertex_0x040022E0:
+  symbol: d_course_wario_stadium_vertex_0x040022E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1e84
+
+d_course_wario_stadium_vertex_0x04002360:
+  symbol: d_course_wario_stadium_vertex_0x04002360
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1ef4
+
+d_course_wario_stadium_vertex_0x04002450:
+  symbol: d_course_wario_stadium_vertex_0x04002450
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1fc6
+
+d_course_wario_stadium_vertex_0x04002530:
+  symbol: d_course_wario_stadium_vertex_0x04002530
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x208a
+
+d_course_wario_stadium_vertex_0x04002630:
+  symbol: d_course_wario_stadium_vertex_0x04002630
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x216a
+
+d_course_wario_stadium_vertex_0x040026F0:
+  symbol: d_course_wario_stadium_vertex_0x040026F0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x2212
+
+d_course_wario_stadium_vertex_0x040027D0:
+  symbol: d_course_wario_stadium_vertex_0x040027D0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x22d6
+
+d_course_wario_stadium_vertex_0x04002910:
+  symbol: d_course_wario_stadium_vertex_0x04002910
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x23ee
+
+d_course_wario_stadium_vertex_0x04002AD0:
+  symbol: d_course_wario_stadium_vertex_0x04002AD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2576
+
+d_course_wario_stadium_vertex_0x04002B10:
+  symbol: d_course_wario_stadium_vertex_0x04002B10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x25ae
+
+d_course_wario_stadium_vertex_0x04002B50:
+  symbol: d_course_wario_stadium_vertex_0x04002B50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x25e6
+
+d_course_wario_stadium_vertex_0x04002C10:
+  symbol: d_course_wario_stadium_vertex_0x04002C10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x268e
+
+d_course_wario_stadium_vertex_0x04002CD0:
+  symbol: d_course_wario_stadium_vertex_0x04002CD0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x2736
+
+d_course_wario_stadium_vertex_0x04002E10:
+  symbol: d_course_wario_stadium_vertex_0x04002E10
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x284e
+
+d_course_wario_stadium_vertex_0x04002E90:
+  symbol: d_course_wario_stadium_vertex_0x04002E90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x28be
+
+d_course_wario_stadium_vertex_0x04002F90:
+  symbol: d_course_wario_stadium_vertex_0x04002F90
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x299e
+
+d_course_wario_stadium_vertex_0x04003110:
+  symbol: d_course_wario_stadium_vertex_0x04003110
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x2aee
+
+d_course_wario_stadium_vertex_0x040032D0:
+  symbol: d_course_wario_stadium_vertex_0x040032D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2c76
+
+d_course_wario_stadium_vertex_0x040033D0:
+  symbol: d_course_wario_stadium_vertex_0x040033D0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x2d56
+
+d_course_wario_stadium_vertex_0x04003530:
+  symbol: d_course_wario_stadium_vertex_0x04003530
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2e8a
+
+d_course_wario_stadium_vertex_0x040035B0:
+  symbol: d_course_wario_stadium_vertex_0x040035B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2efa
+
+d_course_wario_stadium_vertex_0x04003790:
+  symbol: d_course_wario_stadium_vertex_0x04003790
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x309e
+
+d_course_wario_stadium_vertex_0x040038F0:
+  symbol: d_course_wario_stadium_vertex_0x040038F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x31d2
+
+d_course_wario_stadium_vertex_0x04003930:
+  symbol: d_course_wario_stadium_vertex_0x04003930
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x320a
+
+d_course_wario_stadium_vertex_0x04003970:
+  symbol: d_course_wario_stadium_vertex_0x04003970
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3242
+
+d_course_wario_stadium_vertex_0x04003AB0:
+  symbol: d_course_wario_stadium_vertex_0x04003AB0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x335a
+
+d_course_wario_stadium_vertex_0x04003B90:
+  symbol: d_course_wario_stadium_vertex_0x04003B90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x341e
+
+d_course_wario_stadium_vertex_0x04003C50:
+  symbol: d_course_wario_stadium_vertex_0x04003C50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x34c6
+
+d_course_wario_stadium_vertex_0x04003D10:
+  symbol: d_course_wario_stadium_vertex_0x04003D10
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x356e
+
+d_course_wario_stadium_vertex_0x04003E90:
+  symbol: d_course_wario_stadium_vertex_0x04003E90
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x36be
+
+d_course_wario_stadium_vertex_0x04003FD0:
+  symbol: d_course_wario_stadium_vertex_0x04003FD0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x37d6
+
+d_course_wario_stadium_vertex_0x04004090:
+  symbol: d_course_wario_stadium_vertex_0x04004090
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x387e
+
+d_course_wario_stadium_vertex_0x04004150:
+  symbol: d_course_wario_stadium_vertex_0x04004150
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3926
+
+d_course_wario_stadium_vertex_0x04004250:
+  symbol: d_course_wario_stadium_vertex_0x04004250
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x3a06
+
+d_course_wario_stadium_vertex_0x04004330:
+  symbol: d_course_wario_stadium_vertex_0x04004330
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3aca
+
+d_course_wario_stadium_vertex_0x040043B0:
+  symbol: d_course_wario_stadium_vertex_0x040043B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3b3a
+
+d_course_wario_stadium_vertex_0x040044B0:
+  symbol: d_course_wario_stadium_vertex_0x040044B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3c1a
+
+d_course_wario_stadium_vertex_0x040044F0:
+  symbol: d_course_wario_stadium_vertex_0x040044F0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x3c52
+
+d_course_wario_stadium_vertex_0x040046B0:
+  symbol: d_course_wario_stadium_vertex_0x040046B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3dda
+
+d_course_wario_stadium_vertex_0x040047B0:
+  symbol: d_course_wario_stadium_vertex_0x040047B0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x3eba
+
+d_course_wario_stadium_vertex_0x04004860:
+  symbol: d_course_wario_stadium_vertex_0x04004860
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3f54
+
+d_course_wario_stadium_vertex_0x040048A0:
+  symbol: d_course_wario_stadium_vertex_0x040048A0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3f8c
+
+d_course_wario_stadium_vertex_0x040049A0:
+  symbol: d_course_wario_stadium_vertex_0x040049A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x406c
+
+d_course_wario_stadium_vertex_0x04004A60:
+  symbol: d_course_wario_stadium_vertex_0x04004A60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4114
+
+d_course_wario_stadium_vertex_0x04004B60:
+  symbol: d_course_wario_stadium_vertex_0x04004B60
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x41f4
+
+d_course_wario_stadium_vertex_0x04004CA0:
+  symbol: d_course_wario_stadium_vertex_0x04004CA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x430c
+
+d_course_wario_stadium_vertex_0x04004EA0:
+  symbol: d_course_wario_stadium_vertex_0x04004EA0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x44cc
+
+d_course_wario_stadium_vertex_0x04004ED0:
+  symbol: d_course_wario_stadium_vertex_0x04004ED0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x44f6
+
+d_course_wario_stadium_vertex_0x04004F50:
+  symbol: d_course_wario_stadium_vertex_0x04004F50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4566
+
+d_course_wario_stadium_vertex_0x04004FD0:
+  symbol: d_course_wario_stadium_vertex_0x04004FD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x45d6
+
+d_course_wario_stadium_vertex_0x04005050:
+  symbol: d_course_wario_stadium_vertex_0x04005050
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4646
+
+d_course_wario_stadium_vertex_0x04005110:
+  symbol: d_course_wario_stadium_vertex_0x04005110
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x46ee
+
+d_course_wario_stadium_vertex_0x04005220:
+  symbol: d_course_wario_stadium_vertex_0x04005220
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x47dc
+
+d_course_wario_stadium_vertex_0x040052B0:
+  symbol: d_course_wario_stadium_vertex_0x040052B0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x485a
+
+d_course_wario_stadium_vertex_0x04005320:
+  symbol: d_course_wario_stadium_vertex_0x04005320
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x48bc
+
+d_course_wario_stadium_vertex_0x040053A0:
+  symbol: d_course_wario_stadium_vertex_0x040053A0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x492c
+
+d_course_wario_stadium_vertex_0x04005470:
+  symbol: d_course_wario_stadium_vertex_0x04005470
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x49e2
+
+d_course_wario_stadium_vertex_0x04005520:
+  symbol: d_course_wario_stadium_vertex_0x04005520
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x4a7c
+
+d_course_wario_stadium_vertex_0x040055B0:
+  symbol: d_course_wario_stadium_vertex_0x040055B0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x4afa
+
+d_course_wario_stadium_vertex_0x04005680:
+  symbol: d_course_wario_stadium_vertex_0x04005680
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4bb0
+
+d_course_wario_stadium_vertex_0x04005700:
+  symbol: d_course_wario_stadium_vertex_0x04005700
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x4c20
+
+d_course_wario_stadium_vertex_0x04005770:
+  symbol: d_course_wario_stadium_vertex_0x04005770
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x4c82
+
+d_course_wario_stadium_vertex_0x04005810:
+  symbol: d_course_wario_stadium_vertex_0x04005810
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4d0e
+
+d_course_wario_stadium_vertex_0x04005890:
+  symbol: d_course_wario_stadium_vertex_0x04005890
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4d7e
+
+d_course_wario_stadium_vertex_0x04005910:
+  symbol: d_course_wario_stadium_vertex_0x04005910
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x4dee
+
+d_course_wario_stadium_vertex_0x04005970:
+  symbol: d_course_wario_stadium_vertex_0x04005970
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4e42
+
+d_course_wario_stadium_vertex_0x040059F0:
+  symbol: d_course_wario_stadium_vertex_0x040059F0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x4eb2
+
+d_course_wario_stadium_vertex_0x04005AA0:
+  symbol: d_course_wario_stadium_vertex_0x04005AA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x4f4c
+
+d_course_wario_stadium_vertex_0x04005AE0:
+  symbol: d_course_wario_stadium_vertex_0x04005AE0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x4f84
+
+d_course_wario_stadium_vertex_0x04005B30:
+  symbol: d_course_wario_stadium_vertex_0x04005B30
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x4fca
+
+d_course_wario_stadium_vertex_0x04005BA0:
+  symbol: d_course_wario_stadium_vertex_0x04005BA0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x502c
+
+d_course_wario_stadium_vertex_0x04005C60:
+  symbol: d_course_wario_stadium_vertex_0x04005C60
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x50d4
+
+d_course_wario_stadium_vertex_0x04005D30:
+  symbol: d_course_wario_stadium_vertex_0x04005D30
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x518a
+
+d_course_wario_stadium_vertex_0x04005D80:
+  symbol: d_course_wario_stadium_vertex_0x04005D80
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x51d0
+
+d_course_wario_stadium_vertex_0x04005DD0:
+  symbol: d_course_wario_stadium_vertex_0x04005DD0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5216
+
+d_course_wario_stadium_vertex_0x04005E90:
+  symbol: d_course_wario_stadium_vertex_0x04005E90
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x52be
+
+d_course_wario_stadium_vertex_0x04005ED0:
+  symbol: d_course_wario_stadium_vertex_0x04005ED0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x52f6
+
+d_course_wario_stadium_vertex_0x04005FD0:
+  symbol: d_course_wario_stadium_vertex_0x04005FD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x53d6
+
+d_course_wario_stadium_vertex_0x04006010:
+  symbol: d_course_wario_stadium_vertex_0x04006010
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x540e
+
+d_course_wario_stadium_vertex_0x04006050:
+  symbol: d_course_wario_stadium_vertex_0x04006050
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5446
+
+d_course_wario_stadium_vertex_0x040060A0:
+  symbol: d_course_wario_stadium_vertex_0x040060A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x548c
+
+d_course_wario_stadium_vertex_0x04006160:
+  symbol: d_course_wario_stadium_vertex_0x04006160
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x5534
+
+d_course_wario_stadium_vertex_0x040061D0:
+  symbol: d_course_wario_stadium_vertex_0x040061D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5596
+
+d_course_wario_stadium_vertex_0x04006250:
+  symbol: d_course_wario_stadium_vertex_0x04006250
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5606
+
+d_course_wario_stadium_vertex_0x04006310:
+  symbol: d_course_wario_stadium_vertex_0x04006310
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x56ae
+
+d_course_wario_stadium_vertex_0x04006380:
+  symbol: d_course_wario_stadium_vertex_0x04006380
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5710
+
+d_course_wario_stadium_vertex_0x040063D0:
+  symbol: d_course_wario_stadium_vertex_0x040063D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5756
+
+d_course_wario_stadium_vertex_0x04006410:
+  symbol: d_course_wario_stadium_vertex_0x04006410
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x578e
+
+d_course_wario_stadium_vertex_0x04006450:
+  symbol: d_course_wario_stadium_vertex_0x04006450
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x57c6
+
+d_course_wario_stadium_vertex_0x04006500:
+  symbol: d_course_wario_stadium_vertex_0x04006500
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5860
+
+d_course_wario_stadium_vertex_0x04006540:
+  symbol: d_course_wario_stadium_vertex_0x04006540
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5898
+
+d_course_wario_stadium_vertex_0x04006580:
+  symbol: d_course_wario_stadium_vertex_0x04006580
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x58d0
+
+d_course_wario_stadium_vertex_0x04006670:
+  symbol: d_course_wario_stadium_vertex_0x04006670
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x59a2
+
+d_course_wario_stadium_vertex_0x040066B0:
+  symbol: d_course_wario_stadium_vertex_0x040066B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x59da
+
+d_course_wario_stadium_vertex_0x040066F0:
+  symbol: d_course_wario_stadium_vertex_0x040066F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5a12
+
+d_course_wario_stadium_vertex_0x04006730:
+  symbol: d_course_wario_stadium_vertex_0x04006730
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5a4a
+
+d_course_wario_stadium_vertex_0x04006770:
+  symbol: d_course_wario_stadium_vertex_0x04006770
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5a82
+
+d_course_wario_stadium_vertex_0x040067B0:
+  symbol: d_course_wario_stadium_vertex_0x040067B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5aba
+
+d_course_wario_stadium_vertex_0x040067F0:
+  symbol: d_course_wario_stadium_vertex_0x040067F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5af2
+
+d_course_wario_stadium_vertex_0x04006830:
+  symbol: d_course_wario_stadium_vertex_0x04006830
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5b2a
+
+d_course_wario_stadium_vertex_0x040068F0:
+  symbol: d_course_wario_stadium_vertex_0x040068F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5bd2
+
+d_course_wario_stadium_vertex_0x04006930:
+  symbol: d_course_wario_stadium_vertex_0x04006930
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5c0a
+
+d_course_wario_stadium_vertex_0x04006970:
+  symbol: d_course_wario_stadium_vertex_0x04006970
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5c42
+
+d_course_wario_stadium_vertex_0x040069B0:
+  symbol: d_course_wario_stadium_vertex_0x040069B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5c7a
+
+d_course_wario_stadium_vertex_0x040069F0:
+  symbol: d_course_wario_stadium_vertex_0x040069F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5cb2
+
+d_course_wario_stadium_vertex_0x04006A30:
+  symbol: d_course_wario_stadium_vertex_0x04006A30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5cea
+
+d_course_wario_stadium_vertex_0x04006AF0:
+  symbol: d_course_wario_stadium_vertex_0x04006AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5d92
+
+d_course_wario_stadium_vertex_0x04006B30:
+  symbol: d_course_wario_stadium_vertex_0x04006B30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5dca
+
+d_course_wario_stadium_vertex_0x04006B70:
+  symbol: d_course_wario_stadium_vertex_0x04006B70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5e02
+
+d_course_wario_stadium_vertex_0x04006BB0:
+  symbol: d_course_wario_stadium_vertex_0x04006BB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x5e3a
+
+d_course_wario_stadium_vertex_0x04006BF0:
+  symbol: d_course_wario_stadium_vertex_0x04006BF0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5e72
+
+d_course_wario_stadium_vertex_0x04006D70:
+  symbol: d_course_wario_stadium_vertex_0x04006D70
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5fc2
+
+d_course_wario_stadium_vertex_0x04006DC0:
+  symbol: d_course_wario_stadium_vertex_0x04006DC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6008
+
+d_course_wario_stadium_vertex_0x04006FC0:
+  symbol: d_course_wario_stadium_vertex_0x04006FC0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x61c8
+
+d_course_wario_stadium_vertex_0x04007180:
+  symbol: d_course_wario_stadium_vertex_0x04007180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6350
+
+d_course_wario_stadium_vertex_0x040071C0:
+  symbol: d_course_wario_stadium_vertex_0x040071C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6388
+
+d_course_wario_stadium_vertex_0x040073C0:
+  symbol: d_course_wario_stadium_vertex_0x040073C0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x6548
+
+d_course_wario_stadium_vertex_0x04007490:
+  symbol: d_course_wario_stadium_vertex_0x04007490
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x65fe
+
+d_course_wario_stadium_vertex_0x04007680:
+  symbol: d_course_wario_stadium_vertex_0x04007680
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x67b0
+
+d_course_wario_stadium_vertex_0x04007880:
+  symbol: d_course_wario_stadium_vertex_0x04007880
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x6970
+
+d_course_wario_stadium_vertex_0x040079D0:
+  symbol: d_course_wario_stadium_vertex_0x040079D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6a96
+
+d_course_wario_stadium_vertex_0x04007A10:
+  symbol: d_course_wario_stadium_vertex_0x04007A10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6ace
+
+d_course_wario_stadium_vertex_0x04007C00:
+  symbol: d_course_wario_stadium_vertex_0x04007C00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6c80
+
+d_course_wario_stadium_vertex_0x04007C80:
+  symbol: d_course_wario_stadium_vertex_0x04007C80
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x6cf0
+
+d_course_wario_stadium_vertex_0x04007CD0:
+  symbol: d_course_wario_stadium_vertex_0x04007CD0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x6d36
+
+d_course_wario_stadium_vertex_0x04007E40:
+  symbol: d_course_wario_stadium_vertex_0x04007E40
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x6e78
+
+d_course_wario_stadium_vertex_0x04007E90:
+  symbol: d_course_wario_stadium_vertex_0x04007E90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6ebe
+
+d_course_wario_stadium_vertex_0x04007F90:
+  symbol: d_course_wario_stadium_vertex_0x04007F90
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6f9e
+
+d_course_wario_stadium_vertex_0x04007FD0:
+  symbol: d_course_wario_stadium_vertex_0x04007FD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6fd6
+
+d_course_wario_stadium_vertex_0x040081D0:
+  symbol: d_course_wario_stadium_vertex_0x040081D0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x7196
+
+d_course_wario_stadium_vertex_0x04008380:
+  symbol: d_course_wario_stadium_vertex_0x04008380
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7310
+
+d_course_wario_stadium_vertex_0x040083C0:
+  symbol: d_course_wario_stadium_vertex_0x040083C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7348
+
+d_course_wario_stadium_vertex_0x04008440:
+  symbol: d_course_wario_stadium_vertex_0x04008440
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x73b8
+
+d_course_wario_stadium_vertex_0x04008580:
+  symbol: d_course_wario_stadium_vertex_0x04008580
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x74d0
+
+d_course_wario_stadium_vertex_0x04008600:
+  symbol: d_course_wario_stadium_vertex_0x04008600
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7540
+
+d_course_wario_stadium_vertex_0x040086C0:
+  symbol: d_course_wario_stadium_vertex_0x040086C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x75e8
+
+d_course_wario_stadium_vertex_0x040088B0:
+  symbol: d_course_wario_stadium_vertex_0x040088B0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x779a
+
+d_course_wario_stadium_vertex_0x04008990:
+  symbol: d_course_wario_stadium_vertex_0x04008990
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x785e
+
+d_course_wario_stadium_vertex_0x040089D0:
+  symbol: d_course_wario_stadium_vertex_0x040089D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7896
+
+d_course_wario_stadium_vertex_0x04008A90:
+  symbol: d_course_wario_stadium_vertex_0x04008A90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x793e
+
+d_course_wario_stadium_vertex_0x04008B90:
+  symbol: d_course_wario_stadium_vertex_0x04008B90
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x7a1e
+
+d_course_wario_stadium_vertex_0x04008BE0:
+  symbol: d_course_wario_stadium_vertex_0x04008BE0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x7a64
+
+d_course_wario_stadium_vertex_0x04008CB0:
+  symbol: d_course_wario_stadium_vertex_0x04008CB0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x7b1a
+
+d_course_wario_stadium_vertex_0x04008E50:
+  symbol: d_course_wario_stadium_vertex_0x04008E50
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x7c86
+
+d_course_wario_stadium_vertex_0x04008F50:
+  symbol: d_course_wario_stadium_vertex_0x04008F50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7d66
+
+d_course_wario_stadium_vertex_0x04009130:
+  symbol: d_course_wario_stadium_vertex_0x04009130
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7f0a
+
+d_course_wario_stadium_vertex_0x04009170:
+  symbol: d_course_wario_stadium_vertex_0x04009170
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x7f42
+
+d_course_wario_stadium_vertex_0x04009250:
+  symbol: d_course_wario_stadium_vertex_0x04009250
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x8006
+
+d_course_wario_stadium_vertex_0x040092E0:
+  symbol: d_course_wario_stadium_vertex_0x040092E0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x8084
+
+d_course_wario_stadium_vertex_0x04009350:
+  symbol: d_course_wario_stadium_vertex_0x04009350
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x80e6
+
+d_course_wario_stadium_vertex_0x04009510:
+  symbol: d_course_wario_stadium_vertex_0x04009510
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x826e
+
+d_course_wario_stadium_vertex_0x040095E0:
+  symbol: d_course_wario_stadium_vertex_0x040095E0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x8324
+
+d_course_wario_stadium_vertex_0x04009670:
+  symbol: d_course_wario_stadium_vertex_0x04009670
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x83a2
+
+d_course_wario_stadium_vertex_0x040097B0:
+  symbol: d_course_wario_stadium_vertex_0x040097B0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x84ba
+
+d_course_wario_stadium_vertex_0x04009820:
+  symbol: d_course_wario_stadium_vertex_0x04009820
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x851c
+
+d_course_wario_stadium_vertex_0x04009890:
+  symbol: d_course_wario_stadium_vertex_0x04009890
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x857e
+
+d_course_wario_stadium_vertex_0x04009A20:
+  symbol: d_course_wario_stadium_vertex_0x04009A20
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x86dc
+
+d_course_wario_stadium_vertex_0x04009BA0:
+  symbol: d_course_wario_stadium_vertex_0x04009BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x882c
+
+d_course_wario_stadium_vertex_0x04009DA0:
+  symbol: d_course_wario_stadium_vertex_0x04009DA0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x89ec
+
+d_course_wario_stadium_vertex_0x04009F20:
+  symbol: d_course_wario_stadium_vertex_0x04009F20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8b3c
+
+d_course_wario_stadium_vertex_0x0400A110:
+  symbol: d_course_wario_stadium_vertex_0x0400A110
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x8cee
+
+d_course_wario_stadium_vertex_0x0400A1A0:
+  symbol: d_course_wario_stadium_vertex_0x0400A1A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8d6c
+
+d_course_wario_stadium_vertex_0x0400A3A0:
+  symbol: d_course_wario_stadium_vertex_0x0400A3A0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x8f2c
+
+d_course_wario_stadium_vertex_0x0400A3D0:
+  symbol: d_course_wario_stadium_vertex_0x0400A3D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8f56
+
+d_course_wario_stadium_vertex_0x0400A5C0:
+  symbol: d_course_wario_stadium_vertex_0x0400A5C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x9108
+
+d_course_wario_stadium_vertex_0x0400A7B0:
+  symbol: d_course_wario_stadium_vertex_0x0400A7B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x92ba
+
+d_course_wario_stadium_vertex_0x0400A990:
+  symbol: d_course_wario_stadium_vertex_0x0400A990
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x945e
+
+d_course_wario_stadium_vertex_0x0400AB90:
+  symbol: d_course_wario_stadium_vertex_0x0400AB90
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x961e
+
+d_course_wario_stadium_vertex_0x0400ACA0:
+  symbol: d_course_wario_stadium_vertex_0x0400ACA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x970c
+
+d_course_wario_stadium_vertex_0x0400AE90:
+  symbol: d_course_wario_stadium_vertex_0x0400AE90
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x98be
+
+d_course_wario_stadium_vertex_0x0400AFC0:
+  symbol: d_course_wario_stadium_vertex_0x0400AFC0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x99c8
+
+d_course_wario_stadium_vertex_0x0400B170:
+  symbol: d_course_wario_stadium_vertex_0x0400B170
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9b42
+
+d_course_wario_stadium_vertex_0x0400B370:
+  symbol: d_course_wario_stadium_vertex_0x0400B370
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x9d02
+
+d_course_wario_stadium_vertex_0x0400B520:
+  symbol: d_course_wario_stadium_vertex_0x0400B520
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9e7c
+
+d_course_wario_stadium_vertex_0x0400B700:
+  symbol: d_course_wario_stadium_vertex_0x0400B700
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xa020
+
+d_course_wario_stadium_vertex_0x0400B830:
+  symbol: d_course_wario_stadium_vertex_0x0400B830
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa12a
+
+d_course_wario_stadium_vertex_0x0400BA30:
+  symbol: d_course_wario_stadium_vertex_0x0400BA30
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xa2ea
+
+d_course_wario_stadium_vertex_0x0400BB50:
+  symbol: d_course_wario_stadium_vertex_0x0400BB50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa3e6
+
+d_course_wario_stadium_vertex_0x0400BD30:
+  symbol: d_course_wario_stadium_vertex_0x0400BD30
+  type: mk64:course_vtx
+  count: 7
+  offset: 0xa58a
+
+d_course_wario_stadium_vertex_0x0400BDA0:
+  symbol: d_course_wario_stadium_vertex_0x0400BDA0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa5ec
+
+d_course_wario_stadium_vertex_0x0400BF80:
+  symbol: d_course_wario_stadium_vertex_0x0400BF80
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xa790
+
+d_course_wario_stadium_vertex_0x0400C0F0:
+  symbol: d_course_wario_stadium_vertex_0x0400C0F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa8d2
+
+d_course_wario_stadium_vertex_0x0400C2F0:
+  symbol: d_course_wario_stadium_vertex_0x0400C2F0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xaa92
+
+d_course_wario_stadium_vertex_0x0400C4B0:
+  symbol: d_course_wario_stadium_vertex_0x0400C4B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xac1a
+
+d_course_wario_stadium_vertex_0x0400C5F0:
+  symbol: d_course_wario_stadium_vertex_0x0400C5F0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xad32
+
+d_course_wario_stadium_vertex_0x0400C620:
+  symbol: d_course_wario_stadium_vertex_0x0400C620
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xad5c
+
+d_course_wario_stadium_vertex_0x0400C800:
+  symbol: d_course_wario_stadium_vertex_0x0400C800
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xaf00
+
+d_course_wario_stadium_vertex_0x0400C990:
+  symbol: d_course_wario_stadium_vertex_0x0400C990
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb05e
+
+d_course_wario_stadium_vertex_0x0400CB80:
+  symbol: d_course_wario_stadium_vertex_0x0400CB80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb210
+
+d_course_wario_stadium_vertex_0x0400CD80:
+  symbol: d_course_wario_stadium_vertex_0x0400CD80
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xb3d0
+
+d_course_wario_stadium_vertex_0x0400CE10:
+  symbol: d_course_wario_stadium_vertex_0x0400CE10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb44e
+
+d_course_wario_stadium_vertex_0x0400D010:
+  symbol: d_course_wario_stadium_vertex_0x0400D010
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb60e
+
+d_course_wario_stadium_vertex_0x0400D210:
+  symbol: d_course_wario_stadium_vertex_0x0400D210
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xb7ce
+
+d_course_wario_stadium_vertex_0x0400D350:
+  symbol: d_course_wario_stadium_vertex_0x0400D350
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb8e6
+
+d_course_wario_stadium_vertex_0x0400D550:
+  symbol: d_course_wario_stadium_vertex_0x0400D550
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbaa6
+
+d_course_wario_stadium_vertex_0x0400D590:
+  symbol: d_course_wario_stadium_vertex_0x0400D590
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xbade
+
+d_course_wario_stadium_vertex_0x0400D790:
+  symbol: d_course_wario_stadium_vertex_0x0400D790
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbc9e
+
+d_course_wario_stadium_vertex_0x0400D7D0:
+  symbol: d_course_wario_stadium_vertex_0x0400D7D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xbcd6
+
+d_course_wario_stadium_vertex_0x0400D890:
+  symbol: d_course_wario_stadium_vertex_0x0400D890
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xbd7e
+
+d_course_wario_stadium_vertex_0x0400DA70:
+  symbol: d_course_wario_stadium_vertex_0x0400DA70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbf22
+
+d_course_wario_stadium_vertex_0x0400DAB0:
+  symbol: d_course_wario_stadium_vertex_0x0400DAB0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbf5a
+
+d_course_wario_stadium_vertex_0x0400DBB0:
+  symbol: d_course_wario_stadium_vertex_0x0400DBB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc03a
+
+d_course_wario_stadium_vertex_0x0400DDB0:
+  symbol: d_course_wario_stadium_vertex_0x0400DDB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc1fa
+
+d_course_wario_stadium_vertex_0x0400DFB0:
+  symbol: d_course_wario_stadium_vertex_0x0400DFB0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xc3ba
+
+d_course_wario_stadium_vertex_0x0400E0F0:
+  symbol: d_course_wario_stadium_vertex_0x0400E0F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc4d2
+
+d_course_wario_stadium_vertex_0x0400E2E0:
+  symbol: d_course_wario_stadium_vertex_0x0400E2E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc684
+
+d_course_wario_stadium_vertex_0x0400E4D0:
+  symbol: d_course_wario_stadium_vertex_0x0400E4D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc836
+
+d_course_wario_stadium_vertex_0x0400E6D0:
+  symbol: d_course_wario_stadium_vertex_0x0400E6D0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xc9f6
+
+d_course_wario_stadium_vertex_0x0400E7C0:
+  symbol: d_course_wario_stadium_vertex_0x0400E7C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xcac8
+
+d_course_wario_stadium_vertex_0x0400E940:
+  symbol: d_course_wario_stadium_vertex_0x0400E940
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcc18
+
+d_course_wario_stadium_vertex_0x0400EB40:
+  symbol: d_course_wario_stadium_vertex_0x0400EB40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcdd8
+
+d_course_wario_stadium_vertex_0x0400EBC0:
+  symbol: d_course_wario_stadium_vertex_0x0400EBC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xce48
+
+d_course_wario_stadium_vertex_0x0400EDC0:
+  symbol: d_course_wario_stadium_vertex_0x0400EDC0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xd008
+
+d_course_wario_stadium_vertex_0x0400EF40:
+  symbol: d_course_wario_stadium_vertex_0x0400EF40
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd158
+
+d_course_wario_stadium_vertex_0x0400F120:
+  symbol: d_course_wario_stadium_vertex_0x0400F120
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xd2fc
+
+d_course_wario_stadium_vertex_0x0400F2C0:
+  symbol: d_course_wario_stadium_vertex_0x0400F2C0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xd468
+
+d_course_wario_stadium_vertex_0x0400F390:
+  symbol: d_course_wario_stadium_vertex_0x0400F390
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd51e
+
+d_course_wario_stadium_vertex_0x0400F4D0:
+  symbol: d_course_wario_stadium_vertex_0x0400F4D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd636
+
+d_course_wario_stadium_vertex_0x0400F6B0:
+  symbol: d_course_wario_stadium_vertex_0x0400F6B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd7da
+
+d_course_wario_stadium_vertex_0x0400F730:
+  symbol: d_course_wario_stadium_vertex_0x0400F730
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd84a
+
+d_course_wario_stadium_vertex_0x0400F930:
+  symbol: d_course_wario_stadium_vertex_0x0400F930
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xda0a
+
+d_course_wario_stadium_vertex_0x0400FA50:
+  symbol: d_course_wario_stadium_vertex_0x0400FA50
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xdb06
+
+d_course_wario_stadium_vertex_0x0400FC10:
+  symbol: d_course_wario_stadium_vertex_0x0400FC10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdc8e
+
+d_course_wario_stadium_vertex_0x0400FE10:
+  symbol: d_course_wario_stadium_vertex_0x0400FE10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xde4e
+
+d_course_wario_stadium_vertex_0x04010010:
+  symbol: d_course_wario_stadium_vertex_0x04010010
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe00e
+
+d_course_wario_stadium_vertex_0x040100D0:
+  symbol: d_course_wario_stadium_vertex_0x040100D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe0b6
+
+d_course_wario_stadium_vertex_0x040102D0:
+  symbol: d_course_wario_stadium_vertex_0x040102D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe276
+
+d_course_wario_stadium_vertex_0x04010390:
+  symbol: d_course_wario_stadium_vertex_0x04010390
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe31e
+
+d_course_wario_stadium_vertex_0x04010450:
+  symbol: d_course_wario_stadium_vertex_0x04010450
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xe3c6
+
+d_course_wario_stadium_vertex_0x040105D0:
+  symbol: d_course_wario_stadium_vertex_0x040105D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe516
+
+d_course_wario_stadium_vertex_0x040107C0:
+  symbol: d_course_wario_stadium_vertex_0x040107C0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xe6c8
+
+d_course_wario_stadium_vertex_0x040107F0:
+  symbol: d_course_wario_stadium_vertex_0x040107F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe6f2
+
+d_course_wario_stadium_vertex_0x04010870:
+  symbol: d_course_wario_stadium_vertex_0x04010870
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe762
+
+d_course_wario_stadium_vertex_0x04010A70:
+  symbol: d_course_wario_stadium_vertex_0x04010A70
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xe922
+
+d_course_wario_stadium_vertex_0x04010B40:
+  symbol: d_course_wario_stadium_vertex_0x04010B40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe9d8
+
+d_course_wario_stadium_vertex_0x04010B80:
+  symbol: d_course_wario_stadium_vertex_0x04010B80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xea10
+
+d_course_wario_stadium_vertex_0x04010D80:
+  symbol: d_course_wario_stadium_vertex_0x04010D80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xebd0
+
+d_course_wario_stadium_vertex_0x04010E80:
+  symbol: d_course_wario_stadium_vertex_0x04010E80
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xecb0
+
+d_course_wario_stadium_vertex_0x04010FE0:
+  symbol: d_course_wario_stadium_vertex_0x04010FE0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xede4
+
+d_course_wario_stadium_vertex_0x040110B0:
+  symbol: d_course_wario_stadium_vertex_0x040110B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xee9a
+
+d_course_wario_stadium_vertex_0x040110F0:
+  symbol: d_course_wario_stadium_vertex_0x040110F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeed2
+
+d_course_wario_stadium_vertex_0x040112F0:
+  symbol: d_course_wario_stadium_vertex_0x040112F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xf092
+
+d_course_wario_stadium_vertex_0x04011330:
+  symbol: d_course_wario_stadium_vertex_0x04011330
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xf0ca
+
+d_course_wario_stadium_vertex_0x04011470:
+  symbol: d_course_wario_stadium_vertex_0x04011470
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf1e2
+
+d_course_wario_stadium_vertex_0x04011670:
+  symbol: d_course_wario_stadium_vertex_0x04011670
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xf3a2
+
+d_course_wario_stadium_vertex_0x04011800:
+  symbol: d_course_wario_stadium_vertex_0x04011800
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf500
+
+d_course_wario_stadium_vertex_0x040119E0:
+  symbol: d_course_wario_stadium_vertex_0x040119E0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xf6a4
+
+d_course_wario_stadium_vertex_0x04011B70:
+  symbol: d_course_wario_stadium_vertex_0x04011B70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf802
+
+d_course_wario_stadium_vertex_0x04011D70:
+  symbol: d_course_wario_stadium_vertex_0x04011D70
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xf9c2
+
+d_course_wario_stadium_vertex_0x04011F30:
+  symbol: d_course_wario_stadium_vertex_0x04011F30
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xfb4a
+
+d_course_wario_stadium_vertex_0x040120B0:
+  symbol: d_course_wario_stadium_vertex_0x040120B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xfc9a
+
+d_course_wario_stadium_vertex_0x04012170:
+  symbol: d_course_wario_stadium_vertex_0x04012170
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xfd42
+
+d_course_wario_stadium_vertex_0x04012310:
+  symbol: d_course_wario_stadium_vertex_0x04012310
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xfeae
+
+d_course_wario_stadium_vertex_0x04012470:
+  symbol: d_course_wario_stadium_vertex_0x04012470
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xffe2
+
+d_course_wario_stadium_vertex_0x040125F0:
+  symbol: d_course_wario_stadium_vertex_0x040125F0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x10132
+
+d_course_wario_stadium_vertex_0x04012790:
+  symbol: d_course_wario_stadium_vertex_0x04012790
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1029e
+
+d_course_wario_stadium_vertex_0x04012990:
+  symbol: d_course_wario_stadium_vertex_0x04012990
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1045e
+
+d_course_wario_stadium_vertex_0x04012B30:
+  symbol: d_course_wario_stadium_vertex_0x04012B30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x105ca
+
+d_course_wario_stadium_vertex_0x04012D30:
+  symbol: d_course_wario_stadium_vertex_0x04012D30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1078a
+
+d_course_wario_stadium_vertex_0x04012F30:
+  symbol: d_course_wario_stadium_vertex_0x04012F30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1094a
+
+d_course_wario_stadium_vertex_0x04013120:
+  symbol: d_course_wario_stadium_vertex_0x04013120
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10afc
+
+d_course_wario_stadium_vertex_0x04013320:
+  symbol: d_course_wario_stadium_vertex_0x04013320
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10cbc
+
+d_course_wario_stadium_vertex_0x04013520:
+  symbol: d_course_wario_stadium_vertex_0x04013520
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x10e7c
+
+d_course_wario_stadium_vertex_0x040135C0:
+  symbol: d_course_wario_stadium_vertex_0x040135C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x10f08
+
+d_course_wario_stadium_vertex_0x040137A0:
+  symbol: d_course_wario_stadium_vertex_0x040137A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x110ac
+
+d_course_wario_stadium_vertex_0x040139A0:
+  symbol: d_course_wario_stadium_vertex_0x040139A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1126c
+
+d_course_wario_stadium_vertex_0x04013A60:
+  symbol: d_course_wario_stadium_vertex_0x04013A60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x11314
+
+d_course_wario_stadium_vertex_0x04013AA0:
+  symbol: d_course_wario_stadium_vertex_0x04013AA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1134c
+
+d_course_wario_stadium_vertex_0x04013CA0:
+  symbol: d_course_wario_stadium_vertex_0x04013CA0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1150c
+
+d_course_wario_stadium_vertex_0x04013E40:
+  symbol: d_course_wario_stadium_vertex_0x04013E40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11678
+
+d_course_wario_stadium_vertex_0x04014040:
+  symbol: d_course_wario_stadium_vertex_0x04014040
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11838
+
+d_course_wario_stadium_vertex_0x04014140:
+  symbol: d_course_wario_stadium_vertex_0x04014140
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11918
+
+d_course_wario_stadium_vertex_0x04014340:
+  symbol: d_course_wario_stadium_vertex_0x04014340
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11ad8
+
+d_course_wario_stadium_vertex_0x040143C0:
+  symbol: d_course_wario_stadium_vertex_0x040143C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x11b48
+
+d_course_wario_stadium_vertex_0x04014580:
+  symbol: d_course_wario_stadium_vertex_0x04014580
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11cd0
+
+d_course_wario_stadium_vertex_0x04014770:
+  symbol: d_course_wario_stadium_vertex_0x04014770
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x11e82
+
+d_course_wario_stadium_vertex_0x04014860:
+  symbol: d_course_wario_stadium_vertex_0x04014860
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11f54
+
+d_course_wario_stadium_vertex_0x04014A60:
+  symbol: d_course_wario_stadium_vertex_0x04014A60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x12114
+
+d_course_wario_stadium_vertex_0x04014C50:
+  symbol: d_course_wario_stadium_vertex_0x04014C50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x122c6
+
+d_course_wario_stadium_vertex_0x04014CD0:
+  symbol: d_course_wario_stadium_vertex_0x04014CD0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x12336
+
+d_course_wario_stadium_vertex_0x04014E30:
+  symbol: d_course_wario_stadium_vertex_0x04014E30
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1246a
+
+d_course_wario_stadium_vertex_0x04014F10:
+  symbol: d_course_wario_stadium_vertex_0x04014F10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1252e
+
+d_course_wario_stadium_vertex_0x04015100:
+  symbol: d_course_wario_stadium_vertex_0x04015100
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x126e0
+
+d_course_wario_stadium_vertex_0x04015300:
+  symbol: d_course_wario_stadium_vertex_0x04015300
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x128a0
+
+d_course_wario_stadium_vertex_0x040154F0:
+  symbol: d_course_wario_stadium_vertex_0x040154F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12a52
+
+d_course_wario_stadium_vertex_0x040155B0:
+  symbol: d_course_wario_stadium_vertex_0x040155B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12afa
+
+d_course_wario_stadium_vertex_0x040157B0:
+  symbol: d_course_wario_stadium_vertex_0x040157B0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x12cba
+
+d_course_wario_stadium_vertex_0x040158D0:
+  symbol: d_course_wario_stadium_vertex_0x040158D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12db6
+
+d_course_wario_stadium_vertex_0x04015AD0:
+  symbol: d_course_wario_stadium_vertex_0x04015AD0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x12f76
+
+d_course_wario_stadium_vertex_0x04015B80:
+  symbol: d_course_wario_stadium_vertex_0x04015B80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x13010
+
+d_course_wario_stadium_vertex_0x04015CC0:
+  symbol: d_course_wario_stadium_vertex_0x04015CC0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13128
+
+d_course_wario_stadium_vertex_0x04015EA0:
+  symbol: d_course_wario_stadium_vertex_0x04015EA0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x132cc
+
+d_course_wario_stadium_vertex_0x04015FA0:
+  symbol: d_course_wario_stadium_vertex_0x04015FA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x133ac
+
+d_course_wario_stadium_vertex_0x04016190:
+  symbol: d_course_wario_stadium_vertex_0x04016190
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1355e
+
+d_course_wario_stadium_vertex_0x04016390:
+  symbol: d_course_wario_stadium_vertex_0x04016390
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1371e
+
+d_course_wario_stadium_vertex_0x04016470:
+  symbol: d_course_wario_stadium_vertex_0x04016470
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x137e2
+
+d_course_wario_stadium_vertex_0x04016650:
+  symbol: d_course_wario_stadium_vertex_0x04016650
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13986
+
+d_course_wario_stadium_vertex_0x04016830:
+  symbol: d_course_wario_stadium_vertex_0x04016830
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13b2a
+
+d_course_wario_stadium_vertex_0x04016A30:
+  symbol: d_course_wario_stadium_vertex_0x04016A30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13cea
+
+d_course_wario_stadium_vertex_0x04016AB0:
+  symbol: d_course_wario_stadium_vertex_0x04016AB0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x13d5a
+
+d_course_wario_stadium_vertex_0x04016B90:
+  symbol: d_course_wario_stadium_vertex_0x04016B90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x13e1e
+
+d_course_wario_stadium_vertex_0x04016C50:
+  symbol: d_course_wario_stadium_vertex_0x04016C50
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x13ec6
+
+d_course_wario_stadium_vertex_0x04016DB0:
+  symbol: d_course_wario_stadium_vertex_0x04016DB0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x13ffa
+
+d_course_wario_stadium_vertex_0x04016E50:
+  symbol: d_course_wario_stadium_vertex_0x04016E50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14086
+
+d_course_wario_stadium_vertex_0x04017050:
+  symbol: d_course_wario_stadium_vertex_0x04017050
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14246
+
+d_course_wario_stadium_vertex_0x04017250:
+  symbol: d_course_wario_stadium_vertex_0x04017250
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x14406
+
+d_course_wario_stadium_vertex_0x04017450:
+  symbol: d_course_wario_stadium_vertex_0x04017450
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x145c6
+
+d_course_wario_stadium_vertex_0x04017570:
+  symbol: d_course_wario_stadium_vertex_0x04017570
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x146c2
+
+d_course_wario_stadium_vertex_0x04017630:
+  symbol: d_course_wario_stadium_vertex_0x04017630
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1476a
+
+d_course_wario_stadium_vertex_0x040176F0:
+  symbol: d_course_wario_stadium_vertex_0x040176F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x14812
+
+d_course_wario_stadium_vertex_0x040177B0:
+  symbol: d_course_wario_stadium_vertex_0x040177B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x148ba
+
+d_course_wario_stadium_vertex_0x040179B0:
+  symbol: d_course_wario_stadium_vertex_0x040179B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14a7a
+
+d_course_wario_stadium_vertex_0x040179F0:
+  symbol: d_course_wario_stadium_vertex_0x040179F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14ab2
+
+d_course_wario_stadium_vertex_0x04017A30:
+  symbol: d_course_wario_stadium_vertex_0x04017A30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14aea
+
+d_course_wario_stadium_vertex_0x04017A70:
+  symbol: d_course_wario_stadium_vertex_0x04017A70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14b22
+
+d_course_wario_stadium_vertex_0x04017AB0:
+  symbol: d_course_wario_stadium_vertex_0x04017AB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14b5a
+
+d_course_wario_stadium_vertex_0x04017AF0:
+  symbol: d_course_wario_stadium_vertex_0x04017AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x14b92

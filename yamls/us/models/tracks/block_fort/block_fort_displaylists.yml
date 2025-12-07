@@ -1,0 +1,220 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x953058
+  no_compression: true
+  segments:
+    - [0x0E, 0x953058]
+  manual_segments:
+    - [0x7000000, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_0"]
+    - [0x70000B8, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_B8"]
+    - [0x7000148, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_148"]
+    - [0x70001D8, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_1D8"]
+    - [0x7000268, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_268"]
+    - [0x7000330, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_330"]
+    - [0x70003F0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_3F0"]
+    - [0x7000428, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_428"]
+    - [0x70004C0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_4C0"]
+    - [0x7000558, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_558"]
+    - [0x70005F0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_5F0"]
+    - [0x7000688, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_688"]
+    - [0x70006B0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_6B0"]
+    - [0x70007A0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_7A0"]
+    - [0x7000828, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_828"]
+    - [0x70008B0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_8B0"]
+    - [0x7000938, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_938"]
+    - [0x70009C0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_9C0"]
+    - [0x70009F0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_9F0"]
+    - [0x7000C80, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_C80"]
+    - [0x7000F10, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_F10"]
+    - [0x70011A8, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_11A8"]
+    - [0x70014A0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_14A0"]
+    - [0x70014C8, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_14C8"]
+    - [0x7001580, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_1580"]
+    - [0x7001590, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_1590"]
+    - [0x70015C0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_15C0"]
+    - [0x70015D0, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_15D0"]
+    - [0x70015D8, "models/tracks/block_fort/block_fort_displaylists/d_course_block_fort_packed_dl_15D8"]
+    # Segment 4
+    - [0x4000000, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000000"]
+    - [0x4000030, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000030"]
+    - [0x4000170, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000170"]
+    - [0x4000270, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000270"]
+    - [0x4000370, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000370"]
+    - [0x4000470, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000470"]
+    - [0x4000670, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000670"]
+    - [0x40006f0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040006F0"]
+    - [0x40008f0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040008F0"]
+    - [0x4000930, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000930"]
+    - [0x4000ab0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000AB0"]
+    - [0x4000c30, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000C30"]
+    - [0x4000d70, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000D70"]
+    - [0x4000e90, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04000E90"]
+    - [0x4001090, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001090"]
+    - [0x4001290, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001290"]
+    - [0x4001390, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001390"]
+    - [0x4001490, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001490"]
+    - [0x4001590, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001590"]
+    - [0x4001690, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001690"]
+    - [0x4001750, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001750"]
+    - [0x4001950, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001950"]
+    - [0x4001b50, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001B50"]
+    - [0x4001d50, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001D50"]
+    - [0x4001f50, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04001F50"]
+    - [0x4002020, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002020"]
+    - [0x40020d0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040020D0"]
+    - [0x4002190, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002190"]
+    - [0x4002390, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002390"]
+    - [0x4002590, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002590"]
+    - [0x4002790, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002790"]
+    - [0x4002970, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002970"]
+    - [0x4002aa0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002AA0"]
+    - [0x4002b50, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002B50"]
+    - [0x4002c10, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002C10"]
+    - [0x4002df0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002DF0"]
+    - [0x4002ff0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04002FF0"]
+    - [0x40031d0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040031D0"]
+    - [0x4003210, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003210"]
+    - [0x4003410, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003410"]
+    - [0x40034e0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040034E0"]
+    - [0x4003590, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003590"]
+    - [0x4003650, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003650"]
+    - [0x4003850, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003850"]
+    - [0x4003a50, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003A50"]
+    - [0x4003c30, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003C30"]
+    - [0x4003d30, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003D30"]
+    - [0x4003f30, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x04003F30"]
+    - [0x40040a0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040040A0"]
+    - [0x40041b0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040041B0"]
+    - [0x40043a0, "models/tracks/block_fort/block_fort_vertices/d_course_block_fort_vertex_0x040043A0"]
+  # Segment 5
+    - [0x05000000, "textures/other_textures/texture_64286C"]
+    - [0x05000800, "textures/other_textures/gray_checkerboard"]
+    - [0x05001000, "textures/other_textures/gray_cobblestone"]
+    - [0x05001800, "textures/other_textures/texture_64275C"]
+    - [0x05002000, "textures/other_textures/texture_642978"]
+    - [0x05002800, "textures/other_textures/texture_6747C4"]
+    - [0x05003000, "textures/other_textures/texture_6442D4"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_block_fort_packed_dl_0:
+  symbol: d_course_block_fort_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_block_fort_packed_dl_B8:
+  symbol: d_course_block_fort_packed_dl_B8
+  type: MK64:PACKED_GFX
+  offset: 0x36
+d_course_block_fort_packed_dl_148:
+  symbol: d_course_block_fort_packed_dl_148
+  type: MK64:PACKED_GFX
+  offset: 0x5D
+d_course_block_fort_packed_dl_1D8:
+  symbol: d_course_block_fort_packed_dl_1D8
+  type: MK64:PACKED_GFX
+  offset: 0x84
+d_course_block_fort_packed_dl_268:
+  symbol: d_course_block_fort_packed_dl_268
+  type: MK64:PACKED_GFX
+  offset: 0xAB
+d_course_block_fort_packed_dl_330:
+  symbol: d_course_block_fort_packed_dl_330
+  type: MK64:PACKED_GFX
+  offset: 0xF3
+d_course_block_fort_packed_dl_3F0:
+  symbol: d_course_block_fort_packed_dl_3F0
+  type: MK64:PACKED_GFX
+  offset: 0x134
+d_course_block_fort_packed_dl_428:
+  symbol: d_course_block_fort_packed_dl_428
+  type: MK64:PACKED_GFX
+  offset: 0x147
+d_course_block_fort_packed_dl_4C0:
+  symbol: d_course_block_fort_packed_dl_4C0
+  type: MK64:PACKED_GFX
+  offset: 0x173
+d_course_block_fort_packed_dl_558:
+  symbol: d_course_block_fort_packed_dl_558
+  type: MK64:PACKED_GFX
+  offset: 0x19F
+d_course_block_fort_packed_dl_5F0:
+  symbol: d_course_block_fort_packed_dl_5F0
+  type: MK64:PACKED_GFX
+  offset: 0x1CB
+d_course_block_fort_packed_dl_688:
+  symbol: d_course_block_fort_packed_dl_688
+  type: MK64:PACKED_GFX
+  offset: 0x1F7
+d_course_block_fort_packed_dl_6B0:
+  symbol: d_course_block_fort_packed_dl_6B0
+  type: MK64:PACKED_GFX
+  offset: 0x204
+d_course_block_fort_packed_dl_7A0:
+  symbol: d_course_block_fort_packed_dl_7A0
+  type: MK64:PACKED_GFX
+  offset: 0x265
+d_course_block_fort_packed_dl_828:
+  symbol: d_course_block_fort_packed_dl_828
+  type: MK64:PACKED_GFX
+  offset: 0x287
+d_course_block_fort_packed_dl_8B0:
+  symbol: d_course_block_fort_packed_dl_8B0
+  type: MK64:PACKED_GFX
+  offset: 0x2A9
+d_course_block_fort_packed_dl_938:
+  symbol: d_course_block_fort_packed_dl_938
+  type: MK64:PACKED_GFX
+  offset: 0x2CB
+d_course_block_fort_packed_dl_9C0:
+  symbol: d_course_block_fort_packed_dl_9C0
+  type: MK64:PACKED_GFX
+  offset: 0x2ED
+d_course_block_fort_packed_dl_9F0:
+  symbol: d_course_block_fort_packed_dl_9F0
+  type: MK64:PACKED_GFX
+  offset: 0x2FD
+d_course_block_fort_packed_dl_C80:
+  symbol: d_course_block_fort_packed_dl_C80
+  type: MK64:PACKED_GFX
+  offset: 0x415
+d_course_block_fort_packed_dl_F10:
+  symbol: d_course_block_fort_packed_dl_F10
+  type: MK64:PACKED_GFX
+  offset: 0x52D
+d_course_block_fort_packed_dl_11A8:
+  symbol: d_course_block_fort_packed_dl_11A8
+  type: MK64:PACKED_GFX
+  offset: 0x648
+d_course_block_fort_packed_dl_14A0:
+  symbol: d_course_block_fort_packed_dl_14A0
+  type: MK64:PACKED_GFX
+  offset: 0x79F
+d_course_block_fort_packed_dl_14C8:
+  symbol: d_course_block_fort_packed_dl_14C8
+  type: MK64:PACKED_GFX
+  offset: 0x7AC
+d_course_block_fort_packed_dl_1580:
+  symbol: d_course_block_fort_packed_dl_1580
+  type: MK64:PACKED_GFX
+  offset: 0x80F
+d_course_block_fort_packed_dl_1590:
+  symbol: d_course_block_fort_packed_dl_1590
+  type: MK64:PACKED_GFX
+  offset: 0x813
+d_course_block_fort_packed_dl_15C0:
+  symbol: d_course_block_fort_packed_dl_15C0
+  type: MK64:PACKED_GFX
+  offset: 0x823
+d_course_block_fort_packed_dl_15D0:
+  symbol: d_course_block_fort_packed_dl_15D0
+  type: MK64:PACKED_GFX
+  offset: 0x827
+d_course_block_fort_packed_dl_15D8:
+  symbol: d_course_block_fort_packed_dl_15D8
+  type: MK64:PACKED_GFX
+  offset: 0x828

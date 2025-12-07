@@ -17,9 +17,11 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "some_data.h"
 #include "ceremony_and_credits.h"
-#include "assets/moo_moo_farm_data.h"
+#include "assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h"
+#include "assets/textures/tracks/moo_moo_farm/moo_moo_farm_data.h"
 #include "sounds.h"
 #include "external.h"
+#include <assets/models/common_data.h>
 }
 #include "port/interpolation/FrameInterpolation.h"
 

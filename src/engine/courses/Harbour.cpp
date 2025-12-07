@@ -13,9 +13,9 @@
 #include "engine/actors/Starship.h"
 #include "engine/objects/Object.h"
 #include "engine/objects/BombKart.h"
-#include "assets/mario_raceway_data.h"
-#include "assets/bowsers_castle_data.h"
-#include "assets/bowsers_castle_displaylists.h"
+#include "assets/models/tracks/mario_raceway/mario_raceway_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_displaylists.h"
 #include "engine/actors/Tree.h"
 #include "engine/actors/Cloud.h"
 #include "engine/vehicles/Train.h"
@@ -44,7 +44,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -517,8 +517,6 @@ TrackPathPoint harbour_path[] = {
 };
 
 Harbour::Harbour() {
-    this->gfxSize = 100;
-    this->textures = NULL;
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -592,13 +590,24 @@ Harbour::Harbour() {
 }
 
 TrackSections harbour_surfaces[] = {
-    { road_map_001_mesh, 1,  255, 0x0000 },
-    { ground_map_mesh, 8,  255, 0x0000 },
+    { (uintptr_t) road_map_001_mesh, 1,  255, 0x0000 },
+    { (uintptr_t) ground_map_mesh, 8,  255, 0x0000 },
     { 0x00000000, 0, 0, 0x00000 },
 };
 
 void Harbour::Load() {
     Course::Load(road_map_001_mesh_vtx_0, NULL);
+
+    if (gIsMirrorMode != 0) {
+        InvertTriangleWinding(ground_map_mesh);
+        InvertTriangleWinding(road_map_001_mesh);
+        InvertTriangleWinding(bush_map_004_mesh);
+        InvertTriangleWinding(castle_map_002_mesh);
+        InvertTriangleWinding(statue_map_005_mesh);
+        InvertTriangleWinding(trees_map_003_mesh);
+        InvertTriangleWinding(water_water1_mesh);
+        InvertTriangleWinding(moon_moon_mesh);
+    }
 
     // The light gets overridden in hm_intro, reset to normal
     ground_f3d_material_013_lights = gdSPDefLights1(
@@ -618,8 +627,7 @@ void Harbour::Load() {
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void Harbour::LoadTextures() {
-    dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U); // 0x03009000
+void Harbour::UnLoad() {
 }
 
 void Harbour::BeginPlay() {

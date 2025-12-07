@@ -1,7 +1,7 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/other_textures.h>
-#include <assets/yoshi_valley_data.h>
+#include <assets/textures/other_textures.h>
+#include <assets/models/tracks/yoshi_valley/yoshi_valley_data.h>
 
 #ifdef TARGET_N64
 extern u8 gTexture66EBF0[];

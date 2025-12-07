@@ -1,0 +1,249 @@
+:config:
+  segments:
+    - [0x0F, 0x963EF0]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_big_donut_vertex_0x04000000:
+  symbol: d_course_big_donut_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x0
+
+d_course_big_donut_vertex_0x04000200:
+  symbol: d_course_big_donut_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c0
+
+d_course_big_donut_vertex_0x04000400:
+  symbol: d_course_big_donut_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_big_donut_vertex_0x04000600:
+  symbol: d_course_big_donut_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x540
+
+d_course_big_donut_vertex_0x04000800:
+  symbol: d_course_big_donut_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x700
+
+d_course_big_donut_vertex_0x04000A00:
+  symbol: d_course_big_donut_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8c0
+
+d_course_big_donut_vertex_0x04000C00:
+  symbol: d_course_big_donut_vertex_0x04000C00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa80
+
+d_course_big_donut_vertex_0x04000E00:
+  symbol: d_course_big_donut_vertex_0x04000E00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc40
+
+d_course_big_donut_vertex_0x04001000:
+  symbol: d_course_big_donut_vertex_0x04001000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe00
+
+d_course_big_donut_vertex_0x04001200:
+  symbol: d_course_big_donut_vertex_0x04001200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfc0
+
+d_course_big_donut_vertex_0x04001400:
+  symbol: d_course_big_donut_vertex_0x04001400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1180
+
+d_course_big_donut_vertex_0x04001600:
+  symbol: d_course_big_donut_vertex_0x04001600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1340
+
+d_course_big_donut_vertex_0x04001800:
+  symbol: d_course_big_donut_vertex_0x04001800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1500
+
+d_course_big_donut_vertex_0x04001A00:
+  symbol: d_course_big_donut_vertex_0x04001A00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x16c0
+
+d_course_big_donut_vertex_0x04001C00:
+  symbol: d_course_big_donut_vertex_0x04001C00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1880
+
+d_course_big_donut_vertex_0x04001E00:
+  symbol: d_course_big_donut_vertex_0x04001E00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1a40
+
+d_course_big_donut_vertex_0x04002000:
+  symbol: d_course_big_donut_vertex_0x04002000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c00
+
+d_course_big_donut_vertex_0x04002200:
+  symbol: d_course_big_donut_vertex_0x04002200
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1dc0
+
+d_course_big_donut_vertex_0x040023E0:
+  symbol: d_course_big_donut_vertex_0x040023E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1f64
+
+d_course_big_donut_vertex_0x040025E0:
+  symbol: d_course_big_donut_vertex_0x040025E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2124
+
+d_course_big_donut_vertex_0x040027E0:
+  symbol: d_course_big_donut_vertex_0x040027E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x22e4
+
+d_course_big_donut_vertex_0x040029C0:
+  symbol: d_course_big_donut_vertex_0x040029C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2488
+
+d_course_big_donut_vertex_0x04002BC0:
+  symbol: d_course_big_donut_vertex_0x04002BC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2648
+
+d_course_big_donut_vertex_0x04002DC0:
+  symbol: d_course_big_donut_vertex_0x04002DC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2808
+
+d_course_big_donut_vertex_0x04002FC0:
+  symbol: d_course_big_donut_vertex_0x04002FC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x29c8
+
+d_course_big_donut_vertex_0x040031C0:
+  symbol: d_course_big_donut_vertex_0x040031C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2b88
+
+d_course_big_donut_vertex_0x040033C0:
+  symbol: d_course_big_donut_vertex_0x040033C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2d48
+
+d_course_big_donut_vertex_0x040035C0:
+  symbol: d_course_big_donut_vertex_0x040035C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2f08
+
+d_course_big_donut_vertex_0x040037C0:
+  symbol: d_course_big_donut_vertex_0x040037C0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x30c8
+
+d_course_big_donut_vertex_0x04003850:
+  symbol: d_course_big_donut_vertex_0x04003850
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3146
+
+d_course_big_donut_vertex_0x04003A50:
+  symbol: d_course_big_donut_vertex_0x04003A50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3306
+
+d_course_big_donut_vertex_0x04003C50:
+  symbol: d_course_big_donut_vertex_0x04003C50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x34c6
+
+d_course_big_donut_vertex_0x04003E50:
+  symbol: d_course_big_donut_vertex_0x04003E50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3686
+
+d_course_big_donut_vertex_0x04004050:
+  symbol: d_course_big_donut_vertex_0x04004050
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3846
+
+d_course_big_donut_vertex_0x04004250:
+  symbol: d_course_big_donut_vertex_0x04004250
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3a06
+
+d_course_big_donut_vertex_0x04004430:
+  symbol: d_course_big_donut_vertex_0x04004430
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x3baa
+
+d_course_big_donut_vertex_0x040044D0:
+  symbol: d_course_big_donut_vertex_0x040044D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3c36
+
+d_course_big_donut_vertex_0x040045D0:
+  symbol: d_course_big_donut_vertex_0x040045D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3d16
+
+d_course_big_donut_vertex_0x040046D0:
+  symbol: d_course_big_donut_vertex_0x040046D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3df6
+
+d_course_big_donut_vertex_0x040047D0:
+  symbol: d_course_big_donut_vertex_0x040047D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3ed6

@@ -9,6 +9,7 @@
 #include <optional>
 #include <nlohmann/json.hpp>
 #include "engine/objects/Lakitu.h"
+#include "engine/cameras/TourCamera.h"
 #include "port/resource/type/TrackSections.h"
 extern "C" {
 #endif
@@ -65,6 +66,12 @@ typedef struct MinimapProps {
 } MinimapProps;
 
 void ResizeMinimap(MinimapProps* minimap);
+void ReverseGfx(Gfx* gfx);
+
+void InvertTriangleWinding(Gfx* gfx);
+void InvertTriangleWindingByName(const char* name);
+void RestoreTriangleWinding();
+bool IsTriangleWindingInverted();
 
 typedef struct Properties {
     char Name[128];
@@ -90,7 +97,6 @@ typedef struct Properties {
     CloudData *Clouds;
     CloudData *CloudList;
     SkyboxColours Skybox;
-    const course_texture* textures;
     enum MusicSeq Sequence;
     float WaterLevel; // Used for effects, and Lakitu pick up height. Not necessarily the visual water model height.
 
@@ -302,10 +308,6 @@ public:
     // Ex. DK Jungle where there's a waterfall and you can drive above and below it.
     std::vector<WaterVolume> WaterVolumes;
 
-    const char* vtx = nullptr;
-    const char* gfx = nullptr;
-    size_t gfxSize = 0;
-    const course_texture* textures = nullptr;
     bool bSpawnFinishline = true;
     std::optional<FVector> FinishlineSpawnPoint;
 
@@ -317,6 +319,10 @@ public:
     bool bIsMod = false;
     std::vector<SpawnParams> SpawnList;
 
+    bool bTourEnabled = false;
+    std::vector<TourCamera::CameraShot> TourShots;
+
+
     virtual ~Course() = default;
 
     explicit Course();
@@ -324,8 +330,8 @@ public:
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
     virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
-    virtual void LoadTextures();
-    virtual void ParseCourseSections(TrackSectionsO2R* sections, size_t size);
+    virtual void UnLoad();
+    virtual void ParseCourseSections(TrackSections* sections, size_t size);
 
     /**
      * @brief BeginPlay This function is called once at the start of gameplay.
@@ -350,6 +356,7 @@ public:
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
+    // Draw transparent models (water, signs, arrows, etc.) 
     virtual void DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
                            uint16_t playerDirection);
     virtual void Destroy();

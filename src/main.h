@@ -167,14 +167,13 @@ extern u16 D_8015011E;
 
 extern s32 D_80150120;
 extern s32 gGotoMode;
-extern f32 gCameraZoom[];
+extern f32 gCameraFOV[];
 
 extern f32 gScreenAspect;
 extern f32 D_8015014C;
 extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[];
-extern uintptr_t gSegmentTable[];
 extern Gfx* gDisplayListHead;
 extern struct SPTask* gGfxSPTask;
 extern s32 D_801502A0;
@@ -186,7 +185,6 @@ extern Mat4 sBillBoardMtx;
 
 extern s32 padding[];
 
-extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
@@ -208,13 +206,13 @@ extern s32 gGamestate;
 extern s32 gRaceState;
 
 extern u16 D_800DC514;
-extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
 extern s32 gGamestateNext;
 extern s32 gActiveScreenMode;
 extern s32 gScreenModeSelection;
 extern s32 gPlayerCountSelection1;
+extern bool gTourComplete;
 
 extern s32 gModeSelection;
 extern s32 D_800DC540;

@@ -167,18 +167,17 @@ void HarbourMastersIntro::HM_DrawIntro() {
 
 void HarbourMastersIntro::Setup() {
     u16 perspNorm;
-    
-    move_segment_table_to_dmem();
+
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    
+
     // Setup camera perspective
-    guPerspective(GetPerspMatrix(0), &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
+    guPerspective(&PerspectiveMatrix, &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, &PerspectiveMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     // Setup camera lookAt
-    guLookAt(GetLookAtMatrix(0), _camera.Pos.x, _camera.Pos.y, _camera.Pos.z, _camera.LookAt.x, _camera.LookAt.y, _camera.LookAt.z, 0.0f, 1.0f, 0.0f);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    guLookAt(&LookAtMatrix, _camera.Pos.x, _camera.Pos.y, _camera.Pos.z, _camera.LookAt.x, _camera.LookAt.y, _camera.LookAt.z, 0.0f, 1.0f, 0.0f);
+    gSPMatrix(gDisplayListHead++, &LookAtMatrix, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);

@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <main.h>
 #include <defines.h>
-#include <assets/toads_turnpike_offsets.h>
+#include <assets/models/tracks/toads_turnpike/toads_turnpike_offsets.h>
 
 /**
  * @brief Renders the car actor.
@@ -16,7 +16,7 @@ void render_actor_car(Camera* arg0, struct Actor* arg1) {
     Mat4 spC8;
     UNUSED s32 pad2[32];
     f32 temp_f0 =
-        is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
+        is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraFOV[arg0 - camera1], 9000000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
     }

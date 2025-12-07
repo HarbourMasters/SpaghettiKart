@@ -9,8 +9,9 @@
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Crab.h"
+#include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
+#include "assets/other/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
 #include "engine/objects/Seagull.h"
-#include "assets/koopa_troopa_beach_data.h"
 
 extern "C" {
     #include "main.h"
@@ -26,7 +27,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -34,35 +35,12 @@ extern "C" {
     #include "code_8003DC40.h"
     #include "memory.h"
     #include "course.h"
-    extern const char *koopa_troopa_beach_dls[];
+    extern const char *d_course_koopa_troopa_beach_dl_list1[148];
+    extern const char *koopa_troopa_beach_dls2[148];
     extern s8 gPlayerCount;
 }
 
-const course_texture koopa_troopa_beach_textures[] = {
-    { gTexture643B3C, 0x0798, 0x0800, 0x0 },
-    { gTexture66A3DC, 0x07C5, 0x0800, 0x0 },
-    { gTextureSignWoodRedArrow, 0x04E1, 0x1000, 0x0 },
-    { gTexture66DD38, 0x0330, 0x1000, 0x0 },
-    { gTexture643430, 0x0604, 0x0800, 0x0 },
-    { gTexture660D8C, 0x0126, 0x0800, 0x0 },
-    { gTexture6609D0, 0x03BB, 0x1000, 0x0 },
-    { gTextureGrass12, 0x0874, 0x0800, 0x0 },
-    { gTexture66CA98, 0x02C9, 0x0800, 0x0 },
-    { gTexture66EBF0, 0x0146, 0x0800, 0x0 },
-    { gTexture67BEE8, 0x02D0, 0x0800, 0x0 },
-    { gTextureSandFinish, 0x022E, 0x0800, 0x0 },
-    { gTextureWheelSteamEngine, 0x020F, 0x0800, 0x0 },
-    { gTexture669570, 0x0E6B, 0x1000, 0x0 },
-    { gTextureWaves1, 0x05C4, 0x0800, 0x0 },
-    { gTextureWaves2, 0x0488, 0x0800, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 KoopaTroopaBeach::KoopaTroopaBeach() {
-    this->vtx = d_course_koopa_troopa_beach_vertex;
-    this->gfx = d_course_koopa_troopa_beach_packed_dls;
-    this->gfxSize = 5720;
-    Props.textures = koopa_troopa_beach_textures;
     Props.Minimap.Texture = minimap_koopa_troopa_beach;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -137,26 +115,32 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Props.WaterLevel = 0.0f;
     gWaterVelocity = -0.1f;
     WaterVolumes.push_back({0.8f, 67.0f, 239.0f, 2233.0f, 2405.0f});
-    for (size_t i = 0; i < 148; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_koopa_troopa_beach_dl_list1[i], Props.textures);
-    }
-    for (size_t i = 0; i < 148; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) koopa_troopa_beach_dls2[i], Props.textures);
-    }
 }
 
 void KoopaTroopaBeach::Load() {
     Course::Load();
-
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(d_course_koopa_troopa_beach_dl_list1); i++) {
+            InvertTriangleWindingByName(d_course_koopa_troopa_beach_dl_list1[i]);
+        }
+        for (size_t i = 0; i < ARRAY_COUNT(koopa_troopa_beach_dls2); i++) {
+            InvertTriangleWindingByName(koopa_troopa_beach_dls2[i]);
+        }
+        InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9CC0);
+        InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9688);
+        InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_2C0);
+        InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9E70);
+    }
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700ADE0), 150, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x0700A540), 150, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07009E70), 150, 255, 255, 255);
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07000358), 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70, 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, 150, 255, 255, 255);
 }
 
-void KoopaTroopaBeach::LoadTextures() {
+void KoopaTroopaBeach::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void KoopaTroopaBeach::BeginPlay() {
@@ -247,18 +231,18 @@ void KoopaTroopaBeach::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_koopa_troopa_beach_packed_dl_9CC0
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009CC0)));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_9CC0);
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009688)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_9688);
     render_course_segments((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_koopa_troopa_beach_packed_dl_2C0
-    gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070002C0)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_2C0);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPPipeSync(gDisplayListHead++);
 }
@@ -292,9 +276,9 @@ void KoopaTroopaBeach::ScrollingTextures() {
     }
     // waterfall animation
     // d_course_koopa_troopa_beach_packed_dl_9D58
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009D58)), 0, D_802B87BC);
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
     // d_course_koopa_troopa_beach_packed_dl_9CD0
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x07009CD0)), 0, D_802B87C4);
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
@@ -303,12 +287,11 @@ void KoopaTroopaBeach::ScrollingTextures() {
     }
     // Waterfall bubbling effect? (unused)
     // d_course_koopa_troopa_beach_packed_dl_2E8
-    find_and_set_tile_size((uintptr_t)segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070002E8)), D_802B87C8, D_802B87CC);
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
 
 }
 
 void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
-    Mat4 matrix;
     Vec3f vector;
 
     gDPPipeSync(gDisplayListHead++);
@@ -327,15 +310,13 @@ void KoopaTroopaBeach::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pat
         case 37:
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             // d_course_koopa_troopa_beach_packed_dl_9E70
-            gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07009E70));
+            gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             break;
     }
     vector[0] = 0.0f;
     vector[1] = Props.WaterLevel;
     vector[2] = 0.0f;
-    mtxf_translate(matrix, vector);
-    render_set_position(matrix, 0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
     gDPSetBlendMask(gDisplayListHead++, 0xFF);

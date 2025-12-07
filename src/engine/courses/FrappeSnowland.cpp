@@ -9,8 +9,9 @@
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
 #include "engine/objects/Snowman.h"
-#include "assets/frappe_snowland_data.h"
-#include "assets/boo_frames.h"
+#include "assets/models/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/other/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/textures/boo_frames.h"
 
 extern "C" {
     #include "main.h"
@@ -26,7 +27,7 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
@@ -35,23 +36,11 @@ extern "C" {
     #include "update_objects.h"
     #include "course_offsets.h"
     #include "course.h"
-    extern const char *d_course_frappe_snowland_dl_list[];
+    extern const char *d_course_frappe_snowland_dl_list[68];
     extern s8 gPlayerCount;
 }
 
-const course_texture frappe_snowland_textures[] = {
-    { gTexture6684F8, 0x010D, 0x0800, 0x0 }, { gTexture66CA98, 0x02C9, 0x0800, 0x0 },
-    { gTexture66EBF0, 0x0146, 0x0800, 0x0 }, { gTexture675434, 0x0245, 0x0800, 0x0 },
-    { gTexture677F04, 0x0213, 0x0800, 0x0 }, { gTexture678118, 0x0314, 0x0800, 0x0 },
-    { gTexture679258, 0x04E3, 0x1000, 0x0 }, { gTexture67973C, 0x04C6, 0x1000, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 FrappeSnowland::FrappeSnowland() {
-    this->vtx = d_course_frappe_snowland_vertex;
-    this->gfx = d_course_frappe_snowland_packed_dls;
-    this->gfxSize = 4140;
-    Props.textures = frappe_snowland_textures;
     Props.Minimap.Texture = minimap_frappe_snowland;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -123,21 +112,24 @@ FrappeSnowland::FrappeSnowland() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -50.0f;
-    for (size_t i = 0; i < 68; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) d_course_frappe_snowland_dl_list[i], Props.textures);
-    }
 }
 
 void FrappeSnowland::Load() {
     Course::Load();
 
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(d_course_frappe_snowland_dl_list); i++) {
+            InvertTriangleWindingByName(d_course_frappe_snowland_dl_list[i]);
+        }
+
+        InvertTriangleWindingByName(d_course_frappe_snowland_packed_dl_65E0);
+    }
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
 }
 
-void FrappeSnowland::LoadTextures() {
-    dma_textures(gTextureFrappeSnowlandTreeLeft, 0x00000454U, 0x00000800U); // 0x03009000
-    dma_textures(gTextureFrappeSnowlandTreeRight, 0x00000432U, 0x00000800U); // 0x03009800
+void FrappeSnowland::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void FrappeSnowland::BeginPlay() {
@@ -218,7 +210,7 @@ void FrappeSnowland::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_frappe_snowland_packed_dl_65E0
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual(reinterpret_cast<void*>(0x070065E0)));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_frappe_snowland_packed_dl_65E0);
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);

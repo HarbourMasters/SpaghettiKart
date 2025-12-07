@@ -125,7 +125,7 @@ void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector sca
  * Rotates on all three axis
  */
 void ApplySphericalBillBoard(Mat4 mat, FVector pos, FVector scale, s32 cameraIndex) {
-    Mtx* lookAt = GetLookAtMatrix(cameraIndex);
+    Mtx* lookAt = cameras[cameraIndex].lookAtMatrix;
     Mat4 lookAtF;
     guMtxL2F((float(*)[4])&lookAtF, lookAt);
 

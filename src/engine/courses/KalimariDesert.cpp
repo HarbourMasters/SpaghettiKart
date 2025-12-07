@@ -7,7 +7,8 @@
 #include "engine/World.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
-#include "kalimari_desert_data.h"
+#include "assets/models/tracks/kalimari_desert/kalimari_desert_data.h"
+#include "assets/other/tracks/kalimari_desert/kalimari_desert_data.h"
 #include "engine/vehicles/Utils.h"
 
 #include "engine/vehicles/Train.h"
@@ -26,37 +27,17 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
     #include "course.h"
-    extern const char *kalimari_desert_dls[];
+    extern const char *kalimari_desert_dls[80];
 }
 
-const course_texture kalimari_desert_textures[] = {
-    { gTexture6684F8, 0x010D, 0x0800, 0x0 },           { gTextureSignLuigis0, 0x0287, 0x1000, 0x0 },
-    { gTextureSignLuigis1, 0x02AF, 0x1000, 0x0 },      { gTextureSignMarioStar0, 0x02D2, 0x1000, 0x0 },
-    { gTextureSignMarioStar1, 0x02B1, 0x1000, 0x0 },   { gTextureSignNintendoRed0, 0x02A6, 0x1000, 0x0 },
-    { gTextureSignNintendoRed1, 0x02F7, 0x1000, 0x0 }, { gTexture67490C, 0x021C, 0x0800, 0x0 },
-    { gTextureSignYoshi, 0x04DF, 0x1000, 0x0 },        { gTextureCheckerboardBlueGray, 0x04A1, 0x1000, 0x0 },
-    { gTexture646CA8, 0x073A, 0x1000, 0x0 },           { gTexture6473E4, 0x05AD, 0x1000, 0x0 },
-    { gTexture647994, 0x05B5, 0x1000, 0x0 },           { gTexture668920, 0x03D9, 0x0800, 0x0 },
-    { gTextureRailroadTrack, 0x0B5B, 0x1000, 0x0 },    { gTextureRailroadCrossingTrack, 0x0208, 0x1000, 0x0 },
-    { gTexture67291C, 0x059C, 0x0800, 0x0 },           { gTextureFenceBarbedWire, 0x021E, 0x1000, 0x0 },
-    { gTexture67D304, 0x091C, 0x1000, 0x0 },           { gTexture67E010, 0x0415, 0x0800, 0x0 },
-    { gTexture67EEAC, 0x0140, 0x0800, 0x0 },           { gTextureSignShellShot0, 0x038C, 0x1000, 0x0 },
-    { gTextureSignShellShot1, 0x0247, 0x1000, 0x0 },   { gTextureSignKoopaAir0, 0x0360, 0x1000, 0x0 },
-    { gTextureSignKoopaAir1, 0x0304, 0x1000, 0x0 },    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 KalimariDesert::KalimariDesert() {
-    this->vtx = d_course_kalimari_desert_vertex;
-    this->gfx = d_course_kalimari_desert_packed_dls;
-    this->gfxSize = 5328;
-    Props.textures = kalimari_desert_textures;
     Props.Minimap.Texture = minimap_kalimari_desert;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -126,25 +107,31 @@ KalimariDesert::KalimariDesert() {
     Props.Skybox.FloorBottomLeft = {0, 0, 0};
     Props.Skybox.FloorTopLeft = {255, 192, 0};
     Props.Sequence = MusicSeq::MUSIC_SEQ_KALIMARI_DESERT;
-    for (size_t i = 0; i < 80; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) kalimari_desert_dls[i], Props.textures);
-    }
 }
 
 void KalimariDesert::Load() {
     Course::Load();
+
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(kalimari_desert_dls); i++) {
+            InvertTriangleWindingByName(kalimari_desert_dls[i]);
+        }
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_71C8);
+
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_1ED8);
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_1B18);
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_8330);
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_998);
+        InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_270);
+    }
 
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
     func_80295C6C();
     Props.WaterLevel = gCourseMinY - 10.0f;
 }
 
-void KalimariDesert::LoadTextures() {
-    dma_textures(gTextureCactus1Left, 0x0000033EU, 0x00000800U); // 0x03009000
-    dma_textures(gTextureCactus1Right, 0x000002FBU, 0x00000800U); // 0x03009800
-    dma_textures(gTextureCactus2Left, 0x000002A8U, 0x00000800U); // 0x0300A000
-    dma_textures(gTextureCactus2Right, 0x00000374U, 0x00000800U); // 0x0300A800
-    dma_textures(gTextureCactus3, 0x000003AFU, 0x00000800U); // 0x0300B000
+void KalimariDesert::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 void KalimariDesert::BeginPlay() {
@@ -265,25 +252,25 @@ void KalimariDesert::Render(struct UnkStruct_800DC5EC* arg0) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_kalimari_desert_packed_dl_71C8
-        gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x070071C8)));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_71C8);
     }
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     render_course_segments(kalimari_desert_dls, arg0);
     // d_course_kalimari_desert_packed_dl_1ED8
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07001ED8)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_1ED8);
     // d_course_kalimari_desert_packed_dl_1B18
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07001B18)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_1B18);
     // d_course_kalimari_desert_packed_dl_8330
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07008330)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_8330);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     // d_course_kalimari_desert_packed_dl_998
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07000998)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_998);
     // d_course_kalimari_desert_packed_dl_270
-    gSPDisplayList(gDisplayListHead++, (segmented_gfx_to_virtual((void*)0x07000270)));
+    gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_270);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 

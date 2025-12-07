@@ -7,8 +7,10 @@
 #include "World.h"
 #include "engine/actors/Finishline.h"
 #include "engine/objects/BombKart.h"
-#include "assets/sherbet_land_data.h"
+#include "assets/models/tracks/sherbet_land/sherbet_land_data.h"
+#include "assets/other/tracks/sherbet_land/sherbet_land_data.h"
 #include "engine/objects/Penguin.h"
+#include "resourcebridge.h"
 
 extern "C" {
     #include "main.h"
@@ -24,31 +26,18 @@ extern "C" {
     #include "code_80005FD0.h"
     #include "spawn_players.h"
     #include "render_objects.h"
-    #include "assets/common_data.h"
+    #include "assets/models/common_data.h"
     #include "save.h"
     #include "replays.h"
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
     #include "course.h"
-    extern const char *sherbet_land_dls[];
-    extern const char *sherbet_land_dls_2[];
+    extern const char *sherbet_land_dls[72];
+    extern const char *sherbet_land_dls_2[72];
 }
 
-const course_texture sherbet_land_textures[] = {
-    { gTexture643B3C, 0x0798, 0x0800, 0x0 }, { gTexture66D024, 0x04EA, 0x0800, 0x0 },
-    { gTexture678118, 0x0314, 0x0800, 0x0 }, { gTextureSignWoodRedArrow, 0x04E1, 0x1000, 0x0 },
-    { gTexture678CC8, 0x058E, 0x0800, 0x0 }, { gTexture67842C, 0x050E, 0x0800, 0x0 },
-    { gTexture67893C, 0x038B, 0x0800, 0x0 }, { gTexture651984, 0x019C, 0x0800, 0x0 },
-    { gTexture651428, 0x055B, 0x0800, 0x0 }, { gTexture662924, 0x0110, 0x0800, 0x0 },
-    { 0x00000000, 0x0000, 0x0000, 0x0 },
-};
-
 SherbetLand::SherbetLand() {
-    this->vtx = d_course_sherbet_land_vertex;
-    this->gfx = d_course_sherbet_land_packed_dls;
-    this->gfxSize = 1803;
-    Props.textures = sherbet_land_textures;
     Props.Minimap.Texture = minimap_sherbet_land;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -123,23 +112,28 @@ SherbetLand::SherbetLand() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_FRAPPE_SNOWLAND;
 
     Props.WaterLevel = -18.0f;
-    for (size_t i = 0; i < 72; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) sherbet_land_dls[i], Props.textures);
-    }
-    for (size_t i = 0; i < 72; i++) {
-        replace_segmented_textures_with_o2r_textures((Gfx*) sherbet_land_dls_2[i], Props.textures);
-    }
 }
 
 void SherbetLand::Load() {
     Course::Load();
-
+    if (gIsMirrorMode != 0) {
+        for (size_t i = 0; i < ARRAY_COUNT(sherbet_land_dls); i++) {
+            InvertTriangleWindingByName(sherbet_land_dls[i]);
+        }
+        for (size_t i = 0; i < ARRAY_COUNT(sherbet_land_dls_2); i++) {
+            InvertTriangleWindingByName(sherbet_land_dls_2[i]);
+        }
+    }
     parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 180, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, 180, 255, 255, 255);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 150, 255, 255, 255);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 255, 255, 255);
+}
+
+void SherbetLand::UnLoad() {
+    RestoreTriangleWinding();
 }
 
 f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
@@ -220,8 +214,6 @@ void SherbetLand::RenderCredits() {
 }
 
 void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
-    Mat4 matrix;
-
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -229,9 +221,6 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-
-    mtxf_identity(matrix);
-    render_set_position(matrix, 0);
     render_course_segments(sherbet_land_dls_2, screen);
 
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -240,14 +229,14 @@ void SherbetLand::DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCoun
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
         // d_course_sherbet_land_packed_dl_2B48
-        gSPDisplayList(gDisplayListHead++, segmented_gfx_to_virtual((void*)0x07002B48));
+        gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_sherbet_land_packed_dl_2B48);
     }
     gDPPipeSync(gDisplayListHead++);
 }
 
 void SherbetLand::CreditsSpawnActors() {
     // d_course_sherbet_land_packed_dl_1EB8
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07001EB8), 180, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, 180, 0xFF, 0xFF, 0xFF);
     // d_course_sherbet_land_packed_dl_2308
-    find_vtx_and_set_colours(segmented_gfx_to_virtual((void*)0x07002308), 150, 0xFF, 0xFF, 0xFF);
+    find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_2308, 150, 0xFF, 0xFF, 0xFF);
 }
