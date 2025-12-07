@@ -2447,7 +2447,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 
 #include "actors/palm_tree/render.inc.c"
 
-void render_item_boxes(struct ScreenContext* arg0) {
+void render_item_boxes(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     struct Actor* actor;
     s32 i;
@@ -2474,7 +2474,7 @@ void render_item_boxes(struct ScreenContext* arg0) {
     }
 }
 
-void render_course_actors(struct ScreenContext* arg0) {
+void render_course_actors(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     u16 pathCounter = arg0->pathCounter;
     UNUSED s32 pad[12];

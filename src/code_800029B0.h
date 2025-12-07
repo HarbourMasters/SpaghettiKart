@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include "camera.h"
 
-struct ScreenContext {
+typedef struct {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
     /* 0x04 */ Camera* camera;                 // The active camera
     /*      */ Camera* raceCamera;
@@ -28,7 +28,7 @@ struct ScreenContext {
     /* 0x38 */ s16 pathCounter;
     /* 0x3A */ s16 unk42;
     /* 0x3C */ s32 pad2;
-};
+} ScreenContext;
 
 /* Function Prototypes */
 
@@ -60,11 +60,11 @@ extern s32 D_800DC5E0;
 extern u16 D_800DC5E4;
 extern s32 gPlayerWinningIndex;
 
-extern struct ScreenContext gScreenContexts[4];
-extern struct ScreenContext* gScreenOneCtx;
-extern struct ScreenContext* gScreenTwoCtx;
-extern struct ScreenContext* gScreenThreeCtx;
-extern struct ScreenContext* gScreenFourCtx;
+extern ScreenContext gScreenContexts[4];
+extern ScreenContext* gScreenOneCtx;
+extern ScreenContext* gScreenTwoCtx;
+extern ScreenContext* gScreenThreeCtx;
+extern ScreenContext* gScreenFourCtx;
 extern u16 gIsGamePaused;
 extern bool gIsEditorPaused;
 extern u8* pAppNmiBuffer;

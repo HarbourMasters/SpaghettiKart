@@ -249,7 +249,7 @@ void LuigiRaceway::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* sourc
     }
 }
 
-void LuigiRaceway::Render(struct ScreenContext* arg0) {
+void LuigiRaceway::Render(ScreenContext* arg0) {
     UNUSED s32 pad;
     u16 sp22 = (u16) arg0->pathCounter;
     s16 prevFrame;

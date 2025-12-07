@@ -74,7 +74,7 @@ Vtx D_802B8A10[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-void func_802A3730(struct ScreenContext* arg0) {
+void func_802A3730(ScreenContext* arg0) {
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -155,7 +155,7 @@ void func_802A38B4(void) {
     }
 }
 
-void func_802A39E0(struct ScreenContext* arg0) {
+void func_802A39E0(ScreenContext* arg0) {
     s32 ulx = arg0->screenStartX - (arg0->screenWidth / 2);
     s32 uly = arg0->screenStartY - (arg0->screenHeight / 2);
     s32 lrx = arg0->screenStartX + (arg0->screenWidth / 2);
@@ -406,7 +406,7 @@ Mtx gIdentityMatrix2 = {
     toFixedPointMatrix(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0),
 };
 
-void func_802A487C(Vtx* arg0, UNUSED struct ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
+void func_802A487C(Vtx* arg0, UNUSED ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
                    UNUSED f32* arg4) {
 
     init_rdp();
@@ -424,7 +424,7 @@ void func_802A487C(Vtx* arg0, UNUSED struct ScreenContext* arg1, UNUSED s32 arg2
     }
 }
 
-void func_802A4A0C(Vtx* vtx, struct ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+void func_802A4A0C(Vtx* vtx, ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
     Camera* camera = arg1->camera;
     s16 temp_t5;
     f32 temp_f0;
@@ -817,7 +817,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
             break;
     }
 
-    struct ScreenContext* screen = &gScreenContexts[screenId];
+    ScreenContext* screen = &gScreenContexts[screenId];
     Camera* camera = screen->camera;
     cameraId = camera->cameraId;
     // CM_GetCamera(cameraId);
@@ -900,7 +900,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
 
 // Makes the screen small at the start of a race
 void set_screen(void) {
-    struct ScreenContext* wrapper = &gScreenContexts[0];
+    ScreenContext* wrapper = &gScreenContexts[0];
     Player* player = &gPlayers[0];
     Camera* camera = &cameras[0];
     struct Controller* controller = &gControllers[0];
@@ -974,7 +974,7 @@ void set_screen(void) {
 }
 
 void set_editor_screen(void) {
-    struct ScreenContext* wrapper = &gScreenContexts[0];
+    ScreenContext* wrapper = &gScreenContexts[0];
     wrapper->controllers = gControllerOne;
     wrapper->camera = gFreecamCamera;
     wrapper->player = gPlayerOne;

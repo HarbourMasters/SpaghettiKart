@@ -33,7 +33,7 @@ public:
     virtual void SomeSounds() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void Render(struct ScreenContext*) override;
+    virtual void Render(ScreenContext*) override;
     virtual void RenderCredits() override;    
     virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;

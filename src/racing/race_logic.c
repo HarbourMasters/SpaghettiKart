@@ -164,7 +164,7 @@ void set_next_course(void) {
 }
 
 void func_8028E438(void) {
-    struct ScreenContext* temp_v0 = &gScreenContexts[gPlayerWinningIndex];
+    ScreenContext* temp_v0 = &gScreenContexts[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;

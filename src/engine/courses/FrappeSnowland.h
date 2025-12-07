@@ -28,7 +28,7 @@ public:
     virtual void UpdateClouds(s32 sp1C, Camera* camera) override;
     virtual void InitCourseObjects() override;
     virtual void UpdateCourseObjects() override;
-    virtual void Render(struct ScreenContext*) override;
+    virtual void Render(ScreenContext*) override;
     virtual void RenderCredits() override;    
     virtual void Waypoints(Player* player, int8_t playerId) override;
 };

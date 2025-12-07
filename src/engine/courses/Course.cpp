@@ -533,7 +533,7 @@ void Course::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void Course::Render(struct ScreenContext* arg0) {
+void Course::Render(ScreenContext* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -578,7 +578,7 @@ f32 Course::GetWaterLevel(FVector pos, Collision* collision) {
 
 void Course::ScrollingTextures() {
 }
-void Course::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void Course::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                        uint16_t playerDirection) {
 }
 

@@ -200,7 +200,7 @@ void SherbetLand::RenderCourseObjects(s32 cameraId) {
     }
 }
 
-void SherbetLand::Render(struct ScreenContext* arg0) {
+void SherbetLand::Render(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -213,7 +213,7 @@ void SherbetLand::RenderCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_sherbet_land_dl_9AE8));
 }
 
-void SherbetLand::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void SherbetLand::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

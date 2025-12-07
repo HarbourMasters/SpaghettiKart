@@ -489,7 +489,7 @@ void func_80057FC4(u32 arg0) {
     }
 }
 
-void render_object(struct ScreenContext* screen) {
+void render_object(ScreenContext* screen) {
     UNUSED Gfx* temp_v1;
 
     if (gHUDDisable != 0) {

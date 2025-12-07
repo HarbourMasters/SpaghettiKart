@@ -248,7 +248,7 @@ void BansheeBoardwalk::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::Render(struct ScreenContext* arg0) {
+void BansheeBoardwalk::Render(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     Mat4 spCC;
     UNUSED s32 pad[6];
@@ -332,7 +332,7 @@ void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void BansheeBoardwalk::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                                  uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

@@ -192,7 +192,7 @@ void RainbowRoad::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void RainbowRoad::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void RainbowRoad::Render(struct ScreenContext* arg0) {
+void RainbowRoad::Render(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -208,7 +208,7 @@ void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void RainbowRoad::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void RainbowRoad::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
 
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);

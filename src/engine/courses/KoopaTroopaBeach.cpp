@@ -221,7 +221,7 @@ void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void KoopaTroopaBeach::Render(struct ScreenContext* arg0) {
+void KoopaTroopaBeach::Render(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -291,7 +291,7 @@ void KoopaTroopaBeach::ScrollingTextures() {
 
 }
 
-void KoopaTroopaBeach::DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void KoopaTroopaBeach::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     Vec3f vector;
 
     gDPPipeSync(gDisplayListHead++);

@@ -6671,7 +6671,7 @@ void look_behind_toggle(s32 cameraIdx) {
     static bool lookBehindActive[NUM_CAMERAS] = {0};
     bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
     Camera* camera = &cameras[cameraIdx];
-    struct ScreenContext* screenCtx = NULL;
+    ScreenContext* screenCtx = NULL;
 
     if (CVarGetInteger("gLookBehind", false) == false) {
         return;

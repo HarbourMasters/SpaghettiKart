@@ -201,7 +201,7 @@ void FrappeSnowland::UpdateCourseObjects() {
     update_snowflakes();
 }
 
-void FrappeSnowland::Render(struct ScreenContext* arg0) {
+void FrappeSnowland::Render(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

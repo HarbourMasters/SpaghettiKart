@@ -5020,7 +5020,7 @@ void draw_fade_in(s32 arg0, s32 arg1, s32 arg2) {
     s32 leftEdge;
     s32 rightEdge;
     UNUSED s32 pad[3];
-    struct ScreenContext* unk;
+    ScreenContext* unk;
     struct UnkStruct_8018E7E8 *size, *start;
 
     if ((gModeSelection == GRAND_PRIX) || (gModeSelection == TIME_TRIALS)) {
@@ -8283,7 +8283,7 @@ void render_pause_menu_versus(MenuItem* arg0) {
     s32 leftEdge;
     s32 rightEdge;
     Unk_D_800E70A0* temp_s3;
-    struct ScreenContext* temp_v0;
+    ScreenContext* temp_v0;
 
     temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
@@ -8347,7 +8347,7 @@ void render_pause_grand_prix(MenuItem* arg0) {
     s32 temp_t4;
     s32 var_s0;
     Unk_D_800E70A0* temp_s3;
-    struct ScreenContext* temp_v0;
+    ScreenContext* temp_v0;
     f32 one = 1.0f;
 
     temp_v0 = &gScreenContexts[gIsGamePaused - 1];
@@ -8391,7 +8391,7 @@ void render_pause_grand_prix(MenuItem* arg0) {
 }
 
 void render_pause_battle(MenuItem* arg0) {
-    struct ScreenContext* temp_v0;
+    ScreenContext* temp_v0;
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;

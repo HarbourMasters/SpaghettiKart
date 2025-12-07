@@ -317,7 +317,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
  * Custom tracks only use the Render() method, and they only render the full scene.
  * They do not use RenderCredits() and they do not use track sections.
  */
-void CM_RenderCourse(struct ScreenContext* screen) {
+void CM_RenderCourse(ScreenContext* screen) {
     if (nullptr == gWorldInstance.GetCurrentCourse()) {
         return;
     }
@@ -674,7 +674,7 @@ void CM_ScrollingTextures() {
     }
 }
 
-void CM_DrawWater(struct ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
     if (gWorldInstance.GetCurrentCourse()) {
         gWorldInstance.GetCurrentCourse()->DrawWater(screen, pathCounter, cameraRot, playerDirection);

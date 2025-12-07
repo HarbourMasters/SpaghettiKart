@@ -205,7 +205,7 @@ void PodiumCeremony::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void PodiumCeremony::Render(struct ScreenContext* arg0) {
+void PodiumCeremony::Render(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);

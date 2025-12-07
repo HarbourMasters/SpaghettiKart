@@ -257,7 +257,7 @@ void render_mario_raceway_pipe(void) {
     }
 }
 
-void MarioRaceway::Render(struct ScreenContext* arg0) {
+void MarioRaceway::Render(ScreenContext* arg0) {
     u16 sp22 = arg0->pathCounter;
     u16 temp_t0 = arg0->playerDirection;
 
