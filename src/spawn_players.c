@@ -1285,7 +1285,7 @@ void spawn_single_player_camera(u32 mode) {
 
 void spawn_multiplayer_cameras(u32 mode) {
     Camera* camera;
-    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i <= gPlayerCountSelection1; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {
@@ -1296,7 +1296,7 @@ void spawn_multiplayer_cameras(u32 mode) {
 
     }
 
-    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i <= gPlayerCountSelection1; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddLookBehindCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {
@@ -1328,7 +1328,7 @@ void load_kart_textures(void) {
 
     static const size_t playerCounts[4] = { 8, 8, 4, 4 };
     for (size_t i = 0; i < screens; i++) {
-        for (size_t ply = 0; ply < playerCounts[i]; ply++) {
+        for (size_t ply = 0; ply < playerCounts[gPlayerCountSelection1]; ply++) {
             func_8003CD98(&gPlayers[ply], D_8015F480[i].camera, ply, i);
         }
     }
