@@ -655,7 +655,7 @@ void func_8028F4E8(void) {
 void func_8028F588(void) {
     s16 screenWidth;
 
-    if (CVarGetInteger("gEditorEnabled", 0) == true) {
+    if ((CVarGetInteger("gEditorEnabled", 0) == true) || (CM_IsTourEnabled() == true)) {
         D_800DC5EC->screenWidth = SCREEN_WIDTH;
         D_800DC5EC->screenHeight = SCREEN_HEIGHT;
         return;
@@ -1037,6 +1037,7 @@ void func_8028FCBC(void) {
             if (D_802BA034 <= 0) {
                 gIsInQuitToMenuTransition = 1;
                 gQuitToMenuTransitionCounter = 5;
+                gTourComplete = false;
             }
             break;
         case RACE_EXIT:
@@ -1048,30 +1049,35 @@ UNUSED void func_80290314(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = START_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = MAIN_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290360(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = PLAYER_SELECT_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290388(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING;
+    gTourComplete = false;
     // Stop when retrying
     if(HMAS_IsPlaying(HMAS_MUSIC)) {
         HMAS_Stop(HMAS_MUSIC);

@@ -63,20 +63,14 @@ class Menu : public GuiWindow {
     virtual void ProcessReset() {
       gGamestateNext = MAIN_MENU_FROM_QUIT;
       gIsGamePaused = 0;
+      // Reset credits
+      D_800DC5E4 = 0;
+      gTourComplete = false;
       SetMarioRaceway();
       memset(&gGameModeMenuColumn, 0, sizeof(s8) * NUM_ROWS_GAME_MODE_MENU);
       memset(&gGameModeSubMenuColumn, 0, sizeof(s8) * NUM_COLUMN_GAME_MODE_SUB_MENU * NUM_ROWS_GAME_MODE_SUB_MENU);
 
-
-      if(HMAS_IsPlaying(HMAS_MUSIC)){
-          HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
-          HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
-      }
-
-      // Fade out music
-      for (size_t soundId = 0; soundId < MUSIC_SEQ_MAX; soundId++) {
-          func_800C3448(0x11100000 | soundId);
-      }
+      CM_ResetAudio();
 
       switch(CVarGetInteger("gSkipIntro", 0)) {
           case 0:
@@ -92,9 +86,6 @@ class Menu : public GuiWindow {
               gMenuSelection = MAIN_MENU;
               break;
       }
-
-      // Reset credits
-      D_800DC5E4 = 0;
 
       // Debug mode override gSkipIntro
       if (CVarGetInteger("gEnableDebugMode", 0) == true) {

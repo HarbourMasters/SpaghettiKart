@@ -58,8 +58,6 @@ void CM_LoadTextures();
 
 void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0);
 
-void CM_RenderCredits();
-
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
 void CM_ActivateSecondLapLakitu(s32 playerId);
@@ -82,6 +80,7 @@ Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode);
 void CM_AttachCamera(Camera* camera, s32 playerIdx);
 void CM_SetFreeCamera(bool state);
 void CM_CameraSetActive(size_t idx, bool state);
+void CM_ActivateTourCamera(Camera* camera);
 void CM_TickObjects();
 void CM_TickObjects60fps();
 void CM_DrawObjects(s32 cameraId);
@@ -227,6 +226,7 @@ void* GetBattleCup(void);
 void* GetCup();
 
 void CM_RunGarbageCollector(void);
+void CM_ResetAudio(void);
 
 #ifdef __cplusplus
 }

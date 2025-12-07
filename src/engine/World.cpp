@@ -137,7 +137,7 @@ void World::TickCameras() {
 
     for (size_t i = 0; i < 4; i++) {
         struct UnkStruct_800DC5EC* screen = &D_8015F480[i];
-        if (NULL == screen->pendingCamera) { break; }
+        if (NULL == screen->pendingCamera) { continue; }
         if (screen->pendingCamera != screen->camera) {
             screen->camera = screen->pendingCamera;
             screen->pendingCamera = nullptr;

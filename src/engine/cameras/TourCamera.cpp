@@ -49,9 +49,11 @@ void TourCamera::NextShot() {
 }
 
 void TourCamera::Stop() {
-    printf("End of Track Tour\n");
+    printf("[TourCamera] End of Track Tour\n");
+    gTourComplete = true;
+    CM_ResetAudio();
+
     D_8015F480[0].pendingCamera = &cameras[0];
-    spawn_and_set_player_spawns();
     bActive = false;
     bTourComplete = true;
 
@@ -177,7 +179,7 @@ void TourCamera::SetViewProjection() {
 
     // Perspective (camera movement)
     FrameInterpolation_RecordOpenChild("tourcam_persp", FrameInterpolation_GetCameraEpoch());
-    guPerspective(&PerspectiveMatrix, &perspNorm, gCameraFOV[0], gScreenAspect,
+    guPerspective(&PerspectiveMatrix, &perspNorm, 40, gScreenAspect,
                   CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, &PerspectiveMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);

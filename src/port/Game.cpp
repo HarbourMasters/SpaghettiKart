@@ -70,6 +70,7 @@ extern "C" {
 #include "menus.h"
 #include "update_objects.h"
 #include "spawn_players.h"
+#include "src/enhancements/collision_viewer.h"
 // #include "engine/wasm.h"
 }
 
@@ -335,24 +336,41 @@ void CM_LoadTextures() {
     }
 }
 
+/**
+ * Tracks are rendered in two ways
+ * 1) Track sections --> The scene is split into multiple sections and rendered piece by piece
+ * 2) Full scene --> The entire scene is rendered at once
+ * 
+ * Custom tracks only use the Render() method, and they only render the full scene.
+ * They do not use RenderCredits() and they do not use track sections.
+ */
 void CM_RenderCourse(struct UnkStruct_800DC5EC* screen) {
-    // if (gWorldInstance.CurrentCourse->IsMod() == false) {
-    //     if ((CVarGetInteger("gFreecam", 0) == true)) {
-    //         // Render credits courses
-    //         //gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    //         //gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    //         render_credits();
-    //         return;
-    //     }
-    // }
-    if (gWorldInstance.CurrentCourse) {
-        gWorldInstance.CurrentCourse->Render(screen);
+    if (nullptr == gWorldInstance.CurrentCourse) {
+        return;
     }
-}
 
-void CM_RenderCredits() {
-    if (gWorldInstance.CurrentCourse) {
-        gWorldInstance.CurrentCourse->RenderCredits();
+    // Custom tracks should never use RenderCredits();
+    if (gWorldInstance.CurrentCourse->IsMod()) {
+        switch(screen->camera->renderMode) {
+            default:
+                gWorldInstance.CurrentCourse->Render(screen);
+                break;
+            case RENDER_COLLISION_MESH:
+                render_collision();
+                break;
+        } 
+    } else {
+        switch(screen->camera->renderMode) {
+            case RENDER_FULL_SCENE:
+                gWorldInstance.CurrentCourse->RenderCredits();
+                break;
+            case RENDER_TRACK_SECTIONS:
+                gWorldInstance.CurrentCourse->Render(screen);
+                break;
+            case RENDER_COLLISION_MESH:
+                render_collision();
+                break;
+        }
     }
 }
 
@@ -445,6 +463,7 @@ Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode) {
 
 Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+        // This is to prevent soft locking the game
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         if (gWorldInstance.CurrentCourse->bTourEnabled) {
             spawn_and_set_player_spawns();
@@ -476,7 +495,11 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
 
 bool CM_IsTourEnabled() {
     if (nullptr != gWorldInstance.CurrentCourse) {
-        return gWorldInstance.CurrentCourse->bTourEnabled;
+        if ((gWorldInstance.CurrentCourse->bTourEnabled) && (gTourComplete == false)) {
+            return true;
+        } else {
+            return false;
+        }
     } else {
         return false;
     }
@@ -509,10 +532,22 @@ void CM_SetFreeCamera(bool state) {
                 cam->SetActive(true);
             } else {
                 if (nullptr != D_800DC5EC->raceCamera) {
-                    D_800DC5EC->pendingCamera = D_800DC5EC->raceCamera;
-                    cam->SetActive(false);
+                    if (gGamestate == RACING) {
+                        D_800DC5EC->pendingCamera = D_800DC5EC->raceCamera;
+                        cam->SetActive(false);
+                    } else {
+                        cam->SetActive(false);
+                    }
                 }
             }
+        }
+    }
+}
+
+void CM_ActivateTourCamera(Camera* camera) {
+    for (auto* cam : gWorldInstance.Cameras) {
+        if (cam->Get() == camera) {
+            cam->SetActive(true);
         }
     }
 }
@@ -893,6 +928,19 @@ void* GetBattleCup(void) {
 // End of frame cleanup of actors, objects, etc.
 void CM_RunGarbageCollector(void) {
     RunGarbageCollector();
+}
+
+void CM_ResetAudio(void) {
+    if(HMAS_IsPlaying(HMAS_MUSIC)){
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_VOLUME, HMAS_LINEAR, 10, 0);
+        HMAS_AddEffect(HMAS_MUSIC, HMAS_EFFECT_STOP,   HMAS_INSTANT, 1, 0);
+    }
+
+    // Fade out music for all sequences and music player indexes 0, and 1
+    for (size_t soundId = 0; soundId < MUSIC_SEQ_MAX; soundId++) {
+        func_800C3448(0x10100000 | soundId);
+        func_800C3448(0x11100000 | soundId);
+    }
 }
 }
 

@@ -857,7 +857,9 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     CM_DrawStaticMeshActors();
     render_object(screen);
 
-    render_players(camera, screenId);
+    if (CM_IsTourEnabled() == false) {
+        render_players(camera, screenId);
+    }
 
     func_8029122C(screen, playerId); // Track water related
 
@@ -911,7 +913,7 @@ void set_screen(void) {
         wrapper->unkC = unk;
 
         // Tick is not enabled in the editor, so the screen needs to begin at the proper size.
-        if ((CVarGetInteger("gEditorEnabled", 0) == true) && (gIsEditorPaused) && (i == PLAYER_ONE)) {
+        if (((CVarGetInteger("gEditorEnabled", 0) == true) && (gIsEditorPaused) && (i == PLAYER_ONE)) || CM_IsTourEnabled() == true) {
             wrapper->screenWidth = SCREEN_WIDTH;
             wrapper->screenHeight = SCREEN_HEIGHT;
         } else { // Normal race start, screen is small

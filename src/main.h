@@ -213,6 +213,7 @@ extern s32 gGamestateNext;
 extern s32 gActiveScreenMode;
 extern s32 gScreenModeSelection;
 extern s32 gPlayerCountSelection1;
+extern bool gTourComplete;
 
 extern s32 gModeSelection;
 extern s32 D_800DC540;

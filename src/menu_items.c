@@ -1523,7 +1523,7 @@ void func_80091FA4(void) {
     func_80092258();
 
     // Do not display grand prix name/cup name in editor at race staging
-    if (CVarGetInteger("gEditorEnabled", 0) == false) {
+    if ((CVarGetInteger("gEditorEnabled", 0) == false) && (CM_IsTourEnabled() == false)) {
         add_menu_item(MENU_ITEM_TYPE_096, 0x00000064, 0x00000024, MENU_ITEM_PRIORITY_1);
         add_menu_item(MENU_ITEM_TYPE_097, 0x00000064, 0x000000DD, MENU_ITEM_PRIORITY_1);
         add_menu_item(MENU_ITEM_TYPE_098, 0, 0, MENU_ITEM_PRIORITY_0);

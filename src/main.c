@@ -180,6 +180,7 @@ s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = SCREEN_MODE_1P;
 UNUSED s32 D_800DC534 = 0;
 s32 gPlayerCountSelection1 = 2;
+bool gTourComplete = false;
 
 s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
@@ -707,7 +708,9 @@ void process_game_tick(void) {
     update_course_actors();
     CM_TickActors();
     func_802966A0();
-    func_8028FCBC();
+    if (CM_IsTourEnabled() == false) {
+        func_8028FCBC();
+    }
 }
 
 void race_logic_loop(void) {

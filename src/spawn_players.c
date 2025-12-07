@@ -1233,14 +1233,6 @@ void spawn_players_and_cameras(void) {
     // Add freecam, tourcam, and lookbehind cameras
     Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
 
-    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
-        camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
-        if (NULL != camera) {
-            CM_AttachCamera(camera, PLAYER_ONE);
-            D_8015F480[PLAYER_ONE].camera = camera;
-            CM_CameraSetActive(0, false);
-        }
-    }
 
     camera = CM_AddFreeCamera(spawn, player->rotation[1], 1);
     D_8015F480[PLAYER_ONE].freeCamera = camera;
@@ -1248,6 +1240,17 @@ void spawn_players_and_cameras(void) {
     if (CVarGetInteger("gFreecam", false) == true) {
         CM_SetFreeCamera(true);
         D_8015F480[PLAYER_ONE].camera = camera;
+    }
+
+    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
+        camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
+        if (NULL != camera) {
+            CM_AttachCamera(camera, PLAYER_ONE);
+            D_8015F480[PLAYER_ONE].camera = camera;
+            D_8015F480[PLAYER_ONE].pendingCamera = NULL;
+            CM_CameraSetActive(0, false);
+            CM_ActivateTourCamera(camera);
+        }
     }
 }
 

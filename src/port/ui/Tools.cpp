@@ -141,6 +141,12 @@ namespace Editor {
         if (ImGui::Button(gIsEditorPaused ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
             if (gIsEditorPaused) {
                 SaveLevel();
+                CVarSetInteger("gFreecam", false);
+                CM_SetFreeCamera(false);
+            } else {
+                CM_ResetAudio();
+                CVarSetInteger("gFreecam", true);
+                CM_SetFreeCamera(true);
             }
 
             gEditor.ResetGizmo();
@@ -163,6 +169,7 @@ namespace Editor {
 
         if (ImGui::Button(videoToolLabel, ImVec2(50, 25))) {
             CVarSetInteger("gFreecam", !CVarGetInteger("gFreecam", 0));
+            CM_SetFreeCamera(CVarGetInteger("gFreecam", 0));
         }
 
         ImGui::PopStyleColor();

@@ -683,7 +683,6 @@ void func_800C2A2C(u32 cmd) {
             seqId = cmd & 0xFF;
             subArgs = (cmd & 0xFF00) >> 8;
             fadeTimer = (cmd & 0xFF0000) >> 13;
-            printf("It ran this case 0x%lX\n", seqPlayerIndex);
             func_800C284C(seqPlayerIndex, seqId, subArgs, fadeTimer);
             break;
 
@@ -2896,7 +2895,7 @@ void play_sequence(u16 arg0) {
 }
 
 void play_sequence2(u16 arg0) {
-    func_800C3448(arg0 | 0x1010000);
+    func_800C3448(arg0 | 0x01010000);
     D_800EA160 = arg0;
 }
 
