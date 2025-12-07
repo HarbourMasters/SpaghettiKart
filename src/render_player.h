@@ -14,7 +14,7 @@ void func_8001F9E4(Player*, Camera*, s8);
 u16 check_player_camera_collision(Player*, Camera*, f32, f32);
 u16 func_8001FD78(Player*, f32, f32, f32);
 void init_render_player(Player*, Camera*, s8, s8);
-void load_kart_texture_and_render_kart_particles(void);
+void load_kart_texture_and_render_kart_particles(s32 screenIdx);
 void try_rendering_player(Player*, s8, s8);
 void render_players(Camera* camera, s32 screenIdx);
 void func_80021B0C(void);
