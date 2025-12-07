@@ -8,6 +8,7 @@ extern "C" {
 #include <common_structs.h>
 #include "objects.h"
 #include "camera.h"
+#include "code_800029B0.h"
 
 // code_80057C60
 
