@@ -35,7 +35,7 @@ namespace Editor {
         static char debugNameBuffer[256] = "m circuit";
         static char lengthBuffer[256] = "567m";
 
-        if (nullptr == gWorldInstance.CurrentCourse) {
+        if (nullptr == gWorldInstance.GetCurrentCourse()) {
             return;
         }
 
