@@ -14,6 +14,7 @@ extern "C" {
 #include "common_structs.h"
 #include "spawn_players.h"
 #include "math_util.h"
+#include "external.h"
 }
 
 TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
@@ -28,6 +29,7 @@ TourCamera::TourCamera(FVector pos, s16 rot, u32 mode) : GameCamera() {
     bShotComplete = false;
     bTourComplete = false;
     bActive = false;
+    bActivateAudio = true;
 }
 
 void TourCamera::Reset() {
@@ -88,6 +90,15 @@ void TourCamera::Tick() {
                 break;
             case TOUR_TYPE::LOOP:
                 break;
+        }
+    }
+
+    if (bActivateAudio) {
+        bActivateAudio = false;
+        enum MusicSeq sequence = CM_GetProps()->Sequence;
+
+        if (sequence != MUSIC_SEQ_UNKNOWN) {
+            play_sequence(sequence);
         }
     }
 

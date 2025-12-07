@@ -32,6 +32,7 @@ public:
     f32 KeyFrameProgress; // The progress from one point to the next (0.0 - 1.0f).
     bool bShotComplete; // Is the current shot complete?
     bool bTourComplete; // Is the whole camera sequence complete?
+    bool bActivateAudio;
 
     // A single camera keyframe.
     // The camera is smoothly translated between keyframes using
