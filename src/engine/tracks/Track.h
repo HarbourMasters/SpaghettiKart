@@ -1,5 +1,5 @@
-#ifndef ENGINE_COURSE_H
-#define ENGINE_COURSE_H
+#ifndef ENGINE_TRACK_H
+#define ENGINE_TRACK_H
 
 #include <libultraship/libultraship.h>
 #include "CoreMath.h"
@@ -10,14 +10,12 @@
 #include <nlohmann/json.hpp>
 #include "engine/objects/Lakitu.h"
 #include "engine/cameras/TourCamera.h"
-#include "port/resource/type/TrackSections.h"
 extern "C" {
 #endif
 
-#include "camera.h"
-#include "course_offsets.h"
-#include "data/some_data.h"
 #include "defines.h"
+#include "camera.h"
+#include "data/some_data.h"
 #include "bomb_kart.h"
 #include "path_spawn_metadata.h"
 #include "waypoints.h"
@@ -74,6 +72,19 @@ void InvertTriangleWindingByName(const char* name);
 void RestoreTriangleWinding();
 bool IsTriangleWindingInverted();
 
+/**
+ * A container of models that make up each section of the track
+ * The game displays each model depending on the location of the player
+ * and the direction they are facing
+ * This work is done in render_track_sections()
+ */
+typedef struct {
+    uint64_t crc;
+    u8 surfaceType; // Determines what kind of surface the player drives on (ex. dirt, asphalt, etc.)
+    u8 sectionId;
+    u16 flags;
+} TrackSections;
+
 typedef struct Properties {
     char Name[128];
     char DebugName[128];
@@ -87,7 +98,7 @@ typedef struct Properties {
     float FarPersp;
     int16_t* AIDistance;
     uint32_t AISteeringSensitivity;
-    _struct_gCoursePathSizes_0x10 PathSizes;
+    TrackPathSizes PathSizes;
     Vec4f CurveTargetSpeed;
     Vec4f NormalTargetSpeed;
     Vec4f D_0D0096B8;
@@ -120,7 +131,7 @@ typedef struct Properties {
 
         j["AISteeringSensitivity"] = AISteeringSensitivity;
 
-        // PathSizes - Assuming _struct_gCoursePathSizes_0x10 can be serialized similarly
+        // PathSizes - Assuming TrackPathSizes can be serialized similarly
         // j["PathSizes"] = PathSizes; // Implement your serialization logic here
 
         j["CurveTargetSpeed"] = { CurveTargetSpeed[0], CurveTargetSpeed[1], CurveTargetSpeed[2], CurveTargetSpeed[3] };
@@ -329,7 +340,7 @@ public:
     explicit Track();
 
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
-    virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.
+    virtual void Load(); // Decompress and load stock tracks or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
     virtual void UnLoad();
     virtual void ParseTrackSections(TrackSections* sections, size_t size);
@@ -369,4 +380,4 @@ public:
 
 #endif
 
-#endif // ENGINE_COURSE_H
+#endif // ENGINE_TRACK_H

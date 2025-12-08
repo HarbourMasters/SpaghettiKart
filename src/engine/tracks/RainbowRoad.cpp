@@ -31,7 +31,6 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
-    #include "course.h"
     extern const char *rainbow_road_dls[48];
 }
 
@@ -212,7 +211,7 @@ void RainbowRoad::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_
 
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    render_track_segments(rainbow_road_dls, screen);
+    render_track_sections(rainbow_road_dls, screen);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
     gDPPipeSync(gDisplayListHead++);

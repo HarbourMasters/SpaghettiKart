@@ -34,7 +34,6 @@ extern "C" {
     #include "collision.h"
     #include "code_8003DC40.h"
     #include "memory.h"
-    #include "course.h"
     extern const char *bowsers_castle_dls[108];
 }
 
@@ -280,7 +279,7 @@ void BowsersCastle::Draw(ScreenContext* arg0) {
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
     }
-    render_track_segments(bowsers_castle_dls, arg0);
+    render_track_sections(bowsers_castle_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);

@@ -38,7 +38,6 @@ extern "C" {
 #include "courses/staff_ghost_data.h"
 #include "framebuffer_effects.h"
 #include "skybox_and_splitscreen.h"
-#include "course.h"
 extern const char* luigi_raceway_dls[120];
 extern s16 currentScreenSection;
 }
@@ -278,7 +277,7 @@ void LuigiRaceway::Draw(ScreenContext* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    render_track_segments(luigi_raceway_dls, arg0);
+    render_track_sections(luigi_raceway_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);

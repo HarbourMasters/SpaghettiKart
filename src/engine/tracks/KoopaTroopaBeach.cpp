@@ -34,7 +34,6 @@ extern "C" {
     #include "collision.h"
     #include "code_8003DC40.h"
     #include "memory.h"
-    #include "course.h"
     extern const char *d_course_koopa_troopa_beach_dl_list1[148];
     extern const char *koopa_troopa_beach_dls2[148];
     extern s8 gPlayerCount;
@@ -237,7 +236,7 @@ void KoopaTroopaBeach::Draw(ScreenContext* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_9688);
-    render_track_segments((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
+    render_track_sections((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -322,7 +321,7 @@ void KoopaTroopaBeach::DrawWater(ScreenContext* screen, uint16_t pathCounter, ui
     gDPSetBlendMask(gDisplayListHead++, 0xFF);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    render_track_segments((const char**)koopa_troopa_beach_dls2, screen);
+    render_track_sections((const char**)koopa_troopa_beach_dls2, screen);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);

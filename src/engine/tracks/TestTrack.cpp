@@ -51,7 +51,6 @@ extern "C" {
     #include "actors.h"
     #include "collision.h"
     #include "memory.h"
-    #include "course.h"
     extern Vtx mario_Plane_001_mesh_vtx_1[];
     extern Gfx mario_Plane_001_mesh[];
     extern TrackPathPoint test_track_path[];

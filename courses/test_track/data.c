@@ -1,6 +1,6 @@
 #include "waypoints.h"
-#include "course.h"
 #include <libultra/gbi.h>
+#include "src/engine/tracks/Track.h"
 
 extern Gfx mario_Plane_001_mesh[];
 

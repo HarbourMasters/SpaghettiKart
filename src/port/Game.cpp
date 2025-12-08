@@ -209,7 +209,7 @@ const char* GetCupName(void) {
     return gWorldInstance.GetCurrentCup()->Name;
 }
 
-void LoadCourse() {
+void LoadTrack() {
     gWorldInstance.GetRaceManager().Load();
 }
 

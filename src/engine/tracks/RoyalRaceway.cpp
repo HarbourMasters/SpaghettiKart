@@ -32,7 +32,6 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "courses/staff_ghost_data.h"
-    #include "course.h"
     extern const char *royal_raceway_dls[132];
 }
 
@@ -217,7 +216,7 @@ void RoyalRaceway::Draw(ScreenContext* arg0) {
     // d_course_royal_raceway_packed_dl_A648
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_royal_raceway_packed_dl_A648);
 
-    render_track_segments(royal_raceway_dls, arg0);
+    render_track_sections(royal_raceway_dls, arg0);
 
     // d_course_royal_raceway_packed_dl_11A8
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_royal_raceway_packed_dl_11A8);

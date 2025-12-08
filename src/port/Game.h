@@ -42,7 +42,7 @@ u32 GetCupIndex(void);
 
 const char* GetCupName(void);
 
-void LoadCourse();
+void LoadTrack();
 void UnLoadTrack();
 
 size_t GetTrackIndex();

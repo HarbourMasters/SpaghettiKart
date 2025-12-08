@@ -159,7 +159,7 @@ void load_credits(void) {
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-    load_course(gCurrentCourseId);
+    load_track(gCurrentCourseId);
     gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
 
     gTrackMinX = -0x15A1;

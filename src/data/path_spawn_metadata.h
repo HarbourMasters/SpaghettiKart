@@ -13,7 +13,7 @@ typedef struct {
     /* 0x06 */ u16 unk6;
     /* 0x08 */ u16 unk8;
     /* 0x0A */ char padA[6];
-} _struct_gCoursePathSizes_0x10; // size 0x10
+} TrackPathSizes; // size 0x10
 
 extern TrackPathPoint nullPath;
 extern s16 gAIDistances[];

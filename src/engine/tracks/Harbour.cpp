@@ -51,7 +51,6 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "courses/harbour/track.h"
-    #include "course.h"
 }
 
 TrackPathPoint harbour_path[] = {

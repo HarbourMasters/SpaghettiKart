@@ -217,7 +217,7 @@ void setup_race(void) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        load_course(gCurrentCourseId);
+        load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
@@ -288,7 +288,7 @@ void setup_editor(void) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        load_course(gCurrentCourseId);
+        load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;

@@ -8,7 +8,6 @@
 #include "ChocoMountain.h"
 #include "port/Game.h"
 #include "port/resource/type/TrackPathPointData.h"
-#include "port/resource/type/TrackSections.h"
 #include "engine/editor/SceneManager.h"
 #include "Registry.h"
 #include "resourcebridge.h"

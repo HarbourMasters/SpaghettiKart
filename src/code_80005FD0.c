@@ -3473,7 +3473,7 @@ void clear_path_point(TrackPathPoint* arg0, size_t size) {
 // Appears to allocate memory for each track.
 void init_course_path_point(void) {
 
-    _struct_gCoursePathSizes_0x10* ptr = &CM_GetProps()->PathSizes;
+    TrackPathSizes* ptr = &CM_GetProps()->PathSizes;
     s32 temp;
     s32 i;
 

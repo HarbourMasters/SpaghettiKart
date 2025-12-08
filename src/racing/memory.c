@@ -324,10 +324,10 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
  * @brief Loads & DMAs track data. Vtx, textures, displaylists, etc.
  * @param trackId
  */
-void load_course(s32 trackId) {
-    printf("Loading Course %d\n", trackId);
+void load_track(s32 trackId) {
+    printf("Loading Track %d\n", trackId);
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     CM_CleanWorld();
-    LoadCourse();
+    LoadTrack();
     CM_Editor_SetLevelDimensions(gTrackMinX, gTrackMaxX, gTrackMinZ, gTrackMaxZ, gTrackMinY, gTrackMaxY);
 }

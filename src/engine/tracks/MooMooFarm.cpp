@@ -33,7 +33,6 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "code_80086E70.h"
-    #include "course.h"
     extern const char *moo_moo_farm_dls[92];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
@@ -276,7 +275,7 @@ void MooMooFarm::Draw(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_moo_moo_farm_packed_dl_5640);
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
-    render_track_segments(moo_moo_farm_dls, arg0);
+    render_track_sections(moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1)) {

@@ -51,7 +51,6 @@
 
 #include <actor_types.h>
 #include <common_structs.h>
-#include <course.h>
 #include <course_offsets.h>
 #include <debug.h>
 #include <defines.h>

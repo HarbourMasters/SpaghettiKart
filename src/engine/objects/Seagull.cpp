@@ -22,6 +22,7 @@ extern "C" {
 #include "some_data.h"
 #include "ceremony_and_credits.h"
 #include "assets/models/common_data.h"
+#include "course_offsets.h"
 extern SplineData D_800E6034;
 extern SplineData D_800E60F0;
 extern SplineData D_800E61B4;

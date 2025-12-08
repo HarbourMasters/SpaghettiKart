@@ -11,6 +11,7 @@ extern "C" {
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"
+#include "course_offsets.h"
 }
 
 size_t OFlagpole::_count = 0;

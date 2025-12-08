@@ -59,7 +59,7 @@ uintptr_t main_pool_push_state(void);
 uintptr_t main_pool_pop_state(void);
 void* func_802A80B0(u8*, u8*, u8*);
 uintptr_t MIO0_0F(u8*, uintptr_t, uintptr_t);
-void load_course(s32);
+void load_track(s32);
 
 extern u8 _other_texturesSegmentRomStart[];
 

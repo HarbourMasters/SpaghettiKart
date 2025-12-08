@@ -4,6 +4,7 @@
 #include "libultraship/libultra/gbi.h"
 #include "StrHash64.h"
 #include "tinyxml2.h"
+#include "src/engine/tracks/Track.h"
 
 namespace MK64 {
 std::shared_ptr<Ship::IResource>

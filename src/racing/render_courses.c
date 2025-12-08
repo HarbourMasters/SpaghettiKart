@@ -4,7 +4,6 @@
 #include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <course.h>
 #include <stdio.h>
 #include "../camera.h"
 #include "framebuffer_effects.h"
@@ -89,7 +88,7 @@ void parse_track_displaylists(TrackSections* asset) {
 
 extern u32 isFlycam;
 
-void render_track_segments(const char* addr[], ScreenContext* arg1) {
+void render_track_sections(const char* addr[], ScreenContext* arg1) {
     Player* player = arg1->player;
     Camera* camera = arg1->camera;
     s16 direction;

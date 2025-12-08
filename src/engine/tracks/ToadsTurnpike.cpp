@@ -37,7 +37,6 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "code_80086E70.h"
-    #include "course.h"
     extern const char *d_course_toads_turnpike_dl_list[81];
     extern s16 currentScreenSection;
     extern s8 gPlayerCount;
@@ -252,7 +251,7 @@ void ToadsTurnpike::Draw(ScreenContext* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    render_track_segments(d_course_toads_turnpike_dl_list, arg0);
+    render_track_sections(d_course_toads_turnpike_dl_list, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "include/course.h"
 #include "resource/Resource.h"
 #include <vector>
 #include <libultra/gbi.h>
+#include "src/engine/tracks/Track.h"
 
 namespace MK64 {
 class TrackSectionsClass : public Ship::Resource<TrackSections> {
