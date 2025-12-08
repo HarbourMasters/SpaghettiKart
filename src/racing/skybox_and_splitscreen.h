@@ -9,13 +9,13 @@
 
 /* Function Prototypes */
 
-void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
+void func_802A4A0C(Vtx*, ScreenContext*, s32, s32, f32*);
 void set_screen(void);
 void set_editor_screen(void);
-void func_802A3730(struct UnkStruct_800DC5EC*);
+void func_802A3730(ScreenContext*);
 void func_802A38AC(void);
 void func_802A38B4(void);
-void func_802A39E0(struct UnkStruct_800DC5EC*);
+void func_802A39E0(ScreenContext*);
 void init_z_buffer(void);
 void init_rdp(void);
 void func_802A40A4(void);
@@ -31,7 +31,7 @@ void set_viewport(void);
 void select_framebuffer(void);
 void func_802A4300(void);
 void func_802A450C(Vtx*);
-void func_802A487C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
+void func_802A487C(Vtx*, ScreenContext*, s32, s32, f32*);
 void func_802A4D18(void);
 void func_802A4EF4(void);
 void func_802A5004(void);

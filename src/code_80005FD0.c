@@ -41,14 +41,14 @@
 #include <stdio.h>
 
 #include "port/Game.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
-CPUBehaviour* gCoursesCPUBehaviour[NUM_COURSES - 1];
+CPUBehaviour* gCoursesCPUBehaviour[NUM_TRACKS - 1];
 
 // more padding?
 s32 D_80162F08[2];
@@ -1443,7 +1443,7 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
 f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
     f32 temp_f2 = gPathStartZ - arg2;
     f32 temp_f12 = arg1 - gPathStartZ;
-    return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f2) / (temp_f2 + temp_f12));
+    return gCourseTimer - ((TRACK_TIMER_ITER_f * temp_f2) / (temp_f2 + temp_f12));
 }
 
 void update_player_path_completion(s32 playerId, Player* player) {
@@ -1635,10 +1635,10 @@ void update_player(s32 playerId) {
         }
         D_801633E0[playerId] = 0;
         // clang-format off
-        if (player->pos[0] < gCourseMinX) {            D_801633E0[playerId] = 1;        }
-        if (gCourseMaxX < player->pos[0]) {            D_801633E0[playerId] = 2;        }
-        if (player->pos[2] < gCourseMinZ) {            D_801633E0[playerId] = 3;        }
-        if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
+        if (player->pos[0] < gTrackMinX) {            D_801633E0[playerId] = 1;        }
+        if (gTrackMaxX < player->pos[0]) {            D_801633E0[playerId] = 2;        }
+        if (player->pos[2] < gTrackMinZ) {            D_801633E0[playerId] = 3;        }
+        if (gTrackMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
@@ -1649,7 +1649,7 @@ void update_player(s32 playerId) {
             // Collision is handled in the vehicles class now
 
             // switch (gCurrentCourseId) { /* irregular */
-            // case COURSE_KALIMARI_DESERT:
+            // case TRACK_KALIMARI_DESERT:
             CM_VehicleCollision(playerId, player);
             // handle_trains_interactions(playerId, player);
             if (playerId == 0) {
@@ -1657,10 +1657,10 @@ void update_player(s32 playerId) {
                 // func_80013054();
             }
             // break;
-            // case COURSE_DK_JUNGLE:
+            // case TRACK_DK_JUNGLE:
             // handle_paddle_boats_interactions(player);
             // break;
-            // case COURSE_TOADS_TURNPIKE:
+            // case TRACK_TOADS_TURNPIKE:
             // handle_box_trucks_interactions(playerId, player);
             // handle_school_buses_interactions(playerId, player);
             // handle_tanker_trucks_interactions(playerId, player);
@@ -1729,13 +1729,13 @@ void update_player(s32 playerId) {
                 }
 
                 // switch (gCurrentCourseId) {
-                //     case COURSE_YOSHI_VALLEY:
-                //     case COURSE_AWARD_CEREMONY:
+                //     case TRACK_YOSHI_VALLEY:
+                //     case TRACK_AWARD_CEREMONY:
                 //         gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                 //         break;
                 //     default:
                 //         break;
-                //     case COURSE_TOADS_TURNPIKE:
+                //     case TRACK_TOADS_TURNPIKE:
                 //         update_player_track_position_factor_from_box_trucks(playerId);
                 //         update_player_track_position_factor_from_buses(playerId);
                 //         update_player_track_position_factor_from_tanker_truck(playerId);
@@ -3470,10 +3470,10 @@ void clear_path_point(TrackPathPoint* arg0, size_t size) {
     bzero((void*) arg0, size * sizeof(TrackPathPoint));
 }
 
-// Appears to allocate memory for each course.
+// Appears to allocate memory for each track.
 void init_course_path_point(void) {
 
-    _struct_gCoursePathSizes_0x10* ptr = &CM_GetProps()->PathSizes;
+    TrackPathSizes* ptr = &CM_GetProps()->PathSizes;
     s32 temp;
     s32 i;
 
@@ -3699,9 +3699,9 @@ void init_players(void) {
 
 // @arg index from 0 to 3.
 
-// Processes course path by index.
+// Processes track path by index.
 // @arg index from 0 to 3.
-// Each course can have 1-4 course paths.
+// Each track can have 1-4 paths.
 void load_track_path(s32 pathIndex) {
 
     TrackPathPoint* ptr;
@@ -3718,7 +3718,7 @@ void load_track_path(s32 pathIndex) {
         bInvalidPath = 1;
 
         if (IsPodiumCeremony()) { // Only podium ceremony
-            // Course path included in course_data which has already been loaded into memory.
+            // Track path included in course_data which has already been loaded into memory.
             // This is how we get the addr to our path data.
             path = CM_GetProps()->PathTable2[pathIndex];
             ptr = path;
@@ -3743,7 +3743,7 @@ void load_track_path(s32 pathIndex) {
         } else { // ALL TRACKS
             TrackPathPoint* pathSrc = CM_GetProps()->PathTable2[pathIndex];
             if (pathSrc == NULL) {
-                printf("code_80005FD0.c: Path %d in Course::PathTable2, was NULL.\n  Your track is missing a path\n",
+                printf("code_80005FD0.c: Path %d in Track::PathTable2, was NULL.\n  Your track is missing a path\n",
                        pathIndex);
             }
 
@@ -4212,7 +4212,7 @@ s32 generate_2d_path(TrackPathPoint* pathDest, TrackPathPoint* pathSrc, s32 numW
 
 void copy_courses_cpu_behaviour(void) {
     s32 i;
-    for (i = 0; i < NUM_COURSES - 1; i++) {
+    for (i = 0; i < NUM_TRACKS - 1; i++) {
         gCoursesCPUBehaviour[i] = LOAD_ASSET(CM_GetProps()->AIBehaviour);
     }
 }
@@ -5384,7 +5384,7 @@ void func_80014DE4(s32 cameraIndex) {
 
     D_801646CC = 0;
     D_80164678[cameraIndex] = D_80164670[cameraIndex];
-    if ((gModeSelection != 1) && ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == (u16) 1))) {
+    if ((gModeSelection != 1) && ((GetCupCursorPosition() == TRACK_ONE) || (gDemoMode == (u16) 1))) {
         D_80164678[cameraIndex] = 0;
     } else if ((D_80164678[cameraIndex] != 0) && (D_80164678[cameraIndex] != (s16) 1) &&
                (D_80164678[cameraIndex] != 2) && (D_80164678[cameraIndex] != 3)) {
@@ -5397,7 +5397,7 @@ void func_80014DE4(s32 cameraIndex) {
     D_801646D0[cameraIndex].unk0 = 0;
     D_801646D0[cameraIndex].unk2 = 0;
     D_801646D0[cameraIndex].unk4 = 0;
-    if ((gModeSelection == 1) && (gCourseMapInit == 0)) {
+    if ((gModeSelection == 1) && (gTrackMapInit == 0)) {
         D_80164678[cameraIndex] = 0;
     }
 
@@ -6671,7 +6671,7 @@ void look_behind_toggle(s32 cameraIdx) {
     static bool lookBehindActive[NUM_CAMERAS] = {0};
     bool pressed = gControllers[cameraIdx].button & L_CBUTTONS; // button held
     Camera* camera = &cameras[cameraIdx];
-    struct UnkStruct_800DC5EC* screenCtx = NULL;
+    ScreenContext* screenCtx = NULL;
 
     if (CVarGetInteger("gLookBehind", false) == false) {
         return;
@@ -6682,7 +6682,7 @@ void look_behind_toggle(s32 cameraIdx) {
     }
 
     // Get the screen context
-    screenCtx = &D_8015F480[cameras[cameraIdx].playerId];
+    screenCtx = &gScreenContexts[cameras[cameraIdx].playerId];
 
     if (gRaceState == RACE_IN_PROGRESS) {
         // Flip the camera
@@ -7816,7 +7816,7 @@ void func_8001BE78(void) {
 
 void func_8001C05C(void) {
     init_segment_racing();
-    gCurrentCourseId = COURSE_AWARD_CEREMONY;
+    gCurrentCourseId = TRACK_AWARD_CEREMONY;
     SelectPodiumCeremony();
     D_8016347C = 0;
     D_8016347E = 0;

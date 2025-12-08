@@ -1,5 +1,6 @@
 #include "TrackSections.h"
 #include "libultraship/libultra/gbi.h"
+#include "src/engine/tracks/Track.h"
 
 namespace MK64 {
 TrackSectionsClass::TrackSectionsClass() : Resource(std::shared_ptr<Ship::ResourceInitData>()) {

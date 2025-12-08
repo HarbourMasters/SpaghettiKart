@@ -35,19 +35,19 @@ namespace Editor {
         static char debugNameBuffer[256] = "m circuit";
         static char lengthBuffer[256] = "567m";
 
-        if (nullptr == gWorldInstance.GetCurrentCourse()) {
+        if (nullptr == gWorldInstance.GetTrack()) {
             return;
         }
 
         ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
-        ImGui::InputText("Name", gWorldInstance.GetCurrentCourse()->Props.Name, IM_ARRAYSIZE(nameBuffer));
-        ImGui::InputText("Debug Name", gWorldInstance.GetCurrentCourse()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Course Length", gWorldInstance.GetCurrentCourse()->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
-        ImGui::InputFloat("Water Level", &gWorldInstance.GetCurrentCourse()->Props.WaterLevel);
+        ImGui::InputText("Name", gWorldInstance.GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
+        ImGui::InputText("Debug Name", gWorldInstance.GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
+        ImGui::InputText("Track Length", gWorldInstance.GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
+        ImGui::InputFloat("Water Level", &gWorldInstance.GetTrack()->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
-            ImGui::InputFloat("Near Perspective", &gWorldInstance.GetCurrentCourse()->Props.NearPersp);
-            ImGui::InputFloat("Far Perspective", &gWorldInstance.GetCurrentCourse()->Props.FarPersp);
+            ImGui::InputFloat("Near Perspective", &gWorldInstance.GetTrack()->Props.NearPersp);
+            ImGui::InputFloat("Far Perspective", &gWorldInstance.GetTrack()->Props.FarPersp);
             if (ImGui::IsItemHovered()) {
                 ImGui::BeginTooltip();
                 ImGui::Text("Controls the far clipping distance for perspective rendering.");
@@ -62,92 +62,92 @@ namespace Editor {
 
         if (ImGui::CollapsingHeader("AI")) {
 
-            ImGui::InputFloat("AI Max Separation", &gWorldInstance.GetCurrentCourse()->Props.AIMaximumSeparation);
-            ImGui::InputFloat("AI Min Separation", &gWorldInstance.GetCurrentCourse()->Props.AIMinimumSeparation);
-            ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.GetCurrentCourse()->Props.AISteeringSensitivity);
+            ImGui::InputFloat("AI Max Separation", &gWorldInstance.GetTrack()->Props.AIMaximumSeparation);
+            ImGui::InputFloat("AI Min Separation", &gWorldInstance.GetTrack()->Props.AIMinimumSeparation);
+            ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.GetTrack()->Props.AISteeringSensitivity);
 
             ImGui::Separator();
 
             for (size_t i = 0; i < 32; i++) {
-                ImGui::InputScalar(("Element " + std::to_string(i)).c_str(), ImGuiDataType_S16, &gWorldInstance.GetCurrentCourse()->Props.AIDistance[i]);
+                ImGui::InputScalar(("Element " + std::to_string(i)).c_str(), ImGuiDataType_S16, &gWorldInstance.GetTrack()->Props.AIDistance[i]);
             }
         }
 
         if (ImGui::CollapsingHeader("Random Junk")) {
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("CurveTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetCurrentCourse()->Props.CurveTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("CurveTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetTrack()->Props.CurveTargetSpeed[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("NormalTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetCurrentCourse()->Props.NormalTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("NormalTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetTrack()->Props.NormalTargetSpeed[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D0096B8[{}]", i).c_str(), &gWorldInstance.GetCurrentCourse()->Props.D_0D0096B8[i]);
+                ImGui::InputFloat(fmt::format("D_0D0096B8[{}]", i).c_str(), &gWorldInstance.GetTrack()->Props.D_0D0096B8[i]);
             }
 
             ImGui::Separator();
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("OffTrackTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetCurrentCourse()->Props.OffTrackTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("OffTrackTargetSpeed[{}]", i).c_str(), &gWorldInstance.GetTrack()->Props.OffTrackTargetSpeed[i]);
             }
         }
 
         float minimapColour[3];
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Minimap.Colour, minimapColour);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Minimap.Colour, minimapColour);
 
         if (ImGui::CollapsingHeader("Minimap")) {
             ImGui::Text("Position");
             ImGui::SameLine();
 
 
-            if (ImGui::DragInt2("##MinimapPosition", &gWorldInstance.GetCurrentCourse()->Props.Minimap.Pos[0].X, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPosition", &gWorldInstance.GetTrack()->Props.Minimap.Pos[0].X, 1.0f)) {
             }
             ImGui::Text("P2 Position");
             ImGui::SameLine();
-            if (ImGui::DragInt2("##MinimapPosition2p", &gWorldInstance.GetCurrentCourse()->Props.Minimap.Pos[1].X, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPosition2p", &gWorldInstance.GetTrack()->Props.Minimap.Pos[1].X, 1.0f)) {
             }
 
             ImGui::Text("Player Markers");
             ImGui::SameLine();
-            if (ImGui::DragInt2("##MinimapPlayers", &gWorldInstance.GetCurrentCourse()->Props.Minimap.PlayerX, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPlayers", &gWorldInstance.GetTrack()->Props.Minimap.PlayerX, 1.0f)) {
             }
 
             ImGui::Text("Player Scale Factor");
             ImGui::SameLine();
-            if (ImGui::DragFloat("##MinimapScaleFactor", &gWorldInstance.GetCurrentCourse()->Props.Minimap.PlayerScaleFactor, 0.0001f)) {
+            if (ImGui::DragFloat("##MinimapScaleFactor", &gWorldInstance.GetTrack()->Props.Minimap.PlayerScaleFactor, 0.0001f)) {
             }
 
             ImGui::Text("Finishline");
             ImGui::SameLine();
-            ImGui::DragFloat2("##MinimapFinishlineX", &gWorldInstance.GetCurrentCourse()->Props.Minimap.FinishlineX, 1.0f);
+            ImGui::DragFloat2("##MinimapFinishlineX", &gWorldInstance.GetTrack()->Props.Minimap.FinishlineX, 1.0f);
 
             ImGui::Text("Colour");
             ImGui::SameLine();
             ImGui::ColorEdit3("##MinimapColour", minimapColour, 1.0f);
         }
 
-        FloatToRGB8(minimapColour, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Minimap.Colour);
+        FloatToRGB8(minimapColour, (u8*)&gWorldInstance.GetTrack()->Props.Minimap.Colour);
 
         // Convert and pass to ImGui ColorEdit3
         float topRight[3], bottomRight[3], bottomLeft[3], topLeft[3];
         float floorTopRight[3], floorBottomRight[3], floorBottomLeft[3], floorTopLeft[3];
 
         // Convert RGB8 (0-255) to float (0.0f to 1.0f)
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.TopRight, topRight);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.BottomRight, bottomRight);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.BottomLeft, bottomLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.TopLeft, topLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorTopRight, floorTopRight);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorBottomRight, floorBottomRight);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorBottomLeft, floorBottomLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorTopLeft, floorTopLeft);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.TopRight, topRight);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.BottomRight, bottomRight);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.BottomLeft, bottomLeft);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.TopLeft, topLeft);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorTopRight, floorTopRight);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorBottomRight, floorBottomRight);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorBottomLeft, floorBottomLeft);
+        RGB8ToFloat((u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorTopLeft, floorTopLeft);
 
         if (ImGui::CollapsingHeader("Skybox")) {
             ImGui::ColorEdit3("Skybox Top Right", topRight);
@@ -161,14 +161,14 @@ namespace Editor {
         }
 
         // Convert the modified float values back to RGB8 (0-255)
-        FloatToRGB8(topRight, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.TopRight);
-        FloatToRGB8(bottomRight, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.BottomRight);
-        FloatToRGB8(bottomLeft, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.BottomLeft);
-        FloatToRGB8(topLeft, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.TopLeft);
-        FloatToRGB8(floorTopRight, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorTopRight);
-        FloatToRGB8(floorBottomRight, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorBottomRight);
-        FloatToRGB8(floorBottomLeft, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorBottomLeft);
-        FloatToRGB8(floorTopLeft, (u8*)&gWorldInstance.GetCurrentCourse()->Props.Skybox.FloorTopLeft);
+        FloatToRGB8(topRight, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.TopRight);
+        FloatToRGB8(bottomRight, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.BottomRight);
+        FloatToRGB8(bottomLeft, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.BottomLeft);
+        FloatToRGB8(topLeft, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.TopLeft);
+        FloatToRGB8(floorTopRight, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorTopRight);
+        FloatToRGB8(floorBottomRight, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorBottomRight);
+        FloatToRGB8(floorBottomLeft, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorBottomLeft);
+        FloatToRGB8(floorTopLeft, (u8*)&gWorldInstance.GetTrack()->Props.Skybox.FloorTopLeft);
 
         TrackPropertiesWindow::DrawMusic();
         TrackPropertiesWindow::DrawTourCamera();
@@ -185,15 +185,15 @@ namespace Editor {
             "Royal Raceway", "Yoshi Valley", "Block Fort", "Double Deck"
         };
 
-        const char* currentItem = MusicSeqToString(gWorldInstance.GetCurrentCourse()->Props.Sequence); // Get the current selected value's string
+        const char* currentItem = MusicSeqToString(gWorldInstance.GetTrack()->Props.Sequence); // Get the current selected value's string
     
         if (ImGui::BeginCombo("Music Sequence", currentItem)) {
             for (size_t i = 0; i < IM_ARRAYSIZE(items); ++i) {
                 bool isSelected = (currentItem == items[i]);
                 if (ImGui::Selectable(items[i], isSelected)) {
                     // Update the sequence when an option is selected
-                    gWorldInstance.GetCurrentCourse()->Props.Sequence = static_cast<MusicSeq>(i);
-                    play_sequence(gWorldInstance.GetCurrentCourse()->Props.Sequence); // Call play_sequence with the updated sequence
+                    gWorldInstance.GetTrack()->Props.Sequence = static_cast<MusicSeq>(i);
+                    play_sequence(gWorldInstance.GetTrack()->Props.Sequence); // Call play_sequence with the updated sequence
 
                     // Update currentItem after selection is made
                     currentItem = items[i];
@@ -299,12 +299,12 @@ namespace Editor {
 
     void TrackPropertiesWindow::DrawTourCamera() {
 
-        std::shared_ptr<Course> track = gWorldInstance.GetCurrentCourse();
+        std::shared_ptr<Track> track = gWorldInstance.GetTrack();
         if (nullptr == track) {
             return;
         }
 
-        Camera* camera = D_800DC5EC->camera;
+        Camera* camera = gScreenOneCtx->camera;
         if (nullptr == camera) {
             return;
         }

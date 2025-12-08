@@ -4,7 +4,6 @@
 #include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <course.h>
 #include <stdio.h>
 #include "../camera.h"
 #include "framebuffer_effects.h"
@@ -25,7 +24,7 @@
 #include "courses/all_course_offsets.h"
 #include "port/Game.h"
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 #include "enhancements/collision_viewer.h"
 
@@ -54,7 +53,7 @@ s32 func_80290C20(Camera* camera) {
     return 0;
 }
 
-void parse_course_displaylists(TrackSections* asset) {
+void parse_track_displaylists(TrackSections* asset) {
     TrackSections* section = (TrackSections*) asset;
 
     while (section->crc != 0) {
@@ -89,7 +88,7 @@ void parse_course_displaylists(TrackSections* asset) {
 
 extern u32 isFlycam;
 
-void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1) {
+void render_track_sections(const char* addr[], ScreenContext* arg1) {
     Player* player = arg1->player;
     Camera* camera = arg1->camera;
     s16 direction;
@@ -191,7 +190,7 @@ void render_course_segments(const char* addr[], struct UnkStruct_800DC5EC* arg1)
     if (CVarGetInteger("gDisableLod", 1) == 1 && (IsBowsersCastle()) &&
         (index < 20 || index > 99)) { // always render higher version of bowser statue
         gDisplayListHead--;
-        gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the course
+        gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_9148); // use credit version of the track
     }
 }
 
@@ -200,7 +199,7 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_1140); //
 }
 
-void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
+void func_8029122C(ScreenContext* screen, s32 playerId) {
     UNUSED s32 pad;
     Player* player = screen->player;
     Mat4 matrix;
@@ -237,9 +236,9 @@ void func_8029122C(struct UnkStruct_800DC5EC* screen, s32 playerId) {
     FrameInterpolation_RecordCloseChild();
 }
 
-void render_course(struct UnkStruct_800DC5EC* screen) {
+void render_track(ScreenContext* screen) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
-    CM_RenderCourse(screen);
+    CM_DrawTrack(screen);
 }
 
 void func_80295BF8(s32 playerIndex) {
@@ -258,11 +257,11 @@ void func_80295BF8(s32 playerIndex) {
 
 void func_80295C6C(void) {
     gNextFreeMemoryAddress += ALIGN16(gCollisionMeshCount * sizeof(CollisionTriangle));
-    gCourseMaxX += 20;
-    gCourseMaxZ += 20;
-    gCourseMinX += -20;
-    gCourseMinZ += -20;
-    gCourseMinY += -20;
+    gTrackMaxX += 20;
+    gTrackMaxZ += 20;
+    gTrackMinX += -20;
+    gTrackMinZ += -20;
+    gTrackMinY += -20;
 
     gCollisionIndices = (u16*) gNextFreeMemoryAddress;
     generate_collision_grid();
@@ -277,9 +276,6 @@ UNUSED void func_80295D50(s16 arg0, s16 arg1) {
 void func_80295D6C(void) {
     D_8015F6F4 = 3000;
     D_8015F6F6 = -3000;
-}
-
-void course_init(void) {
 }
 
 void func_802966A0(void) {

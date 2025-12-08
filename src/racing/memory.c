@@ -15,7 +15,7 @@
 
 #include "course_offsets.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 
 #include <stdio.h>
 
@@ -321,13 +321,13 @@ u8* load_lakitu_tlut_x64(const char** textureList, size_t length) {
 }
 
 /**
- * @brief Loads & DMAs course data. Vtx, textures, displaylists, etc.
- * @param courseId
+ * @brief Loads & DMAs track data. Vtx, textures, displaylists, etc.
+ * @param trackId
  */
-void load_course(s32 courseId) {
-    printf("Loading Course %d\n", courseId);
+void load_track(s32 trackId) {
+    printf("Loading Track %d\n", trackId);
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     CM_CleanWorld();
-    LoadCourse();
-    CM_Editor_SetLevelDimensions(gCourseMinX, gCourseMaxX, gCourseMinZ, gCourseMaxZ, gCourseMinY, gCourseMaxY);
+    LoadTrack();
+    CM_Editor_SetLevelDimensions(gTrackMinX, gTrackMaxX, gTrackMinZ, gTrackMaxZ, gTrackMinY, gTrackMaxY);
 }

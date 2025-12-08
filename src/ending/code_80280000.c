@@ -25,7 +25,7 @@
 #include "main.h"
 #include "render_player.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
 #include "port/Game.h"
 
@@ -65,14 +65,14 @@ void func_80280038(Camera* camera) {
     gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    SetTrackById(gCreditsCourseId);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    render_course(D_800DC5EC);
-    render_course_actors(D_800DC5EC);
+    render_track(gScreenOneCtx);
+    render_course_actors(gScreenOneCtx);
     CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
-    render_object(D_800DC5EC);
+    render_object(gScreenOneCtx);
     render_player_snow_effect(camera);
     ceremony_transition_sliding_borders();
     func_80281C40();
@@ -81,20 +81,20 @@ void func_80280038(Camera* camera) {
     init_rdp();
 }
 
-void func_80280268(s32 courseId) {
+void func_80280268(s32 trackId) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
-    if ((courseId < 0) || ((courseId >= NUM_COURSES - 1))) {
-        courseId = 0;
+    if ((trackId < 0) || ((trackId >= NUM_TRACKS - 1))) {
+        trackId = 0;
     }
-    gCreditsCourseId = courseId;
+    gCreditsCourseId = trackId;
 }
 
 void credits_loop(void) {
     Editor_ClearMatrix();
     CM_TickEditor();
-    Camera* camera = D_800DC5EC->camera;
+    Camera* camera = gScreenOneCtx->camera;
 
     f32 temp_f12;
     f32 temp;
@@ -141,34 +141,34 @@ void load_credits(void) {
     }
 
     CM_AttachCamera(camera, PLAYER_ONE);
-    D_800DC5EC->camera = camera;
+    gScreenOneCtx->camera = camera;
     camera->renderMode = RENDER_FULL_SCENE;
     camera->unk_B4 = 60.0f;
     gCameraFOV[0] = 60.0f;
 
 
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    SetTrackById(gCreditsCourseId);
     D_800DC5B4 = 1;
     func_802A4D18();
     set_screen();
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = SCREEN_WIDTH / 2;
-    D_800DC5EC->screenStartY = SCREEN_HEIGHT / 2;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = SCREEN_WIDTH / 2;
+    gScreenOneCtx->screenStartY = SCREEN_HEIGHT / 2;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-    load_course(gCurrentCourseId);
+    load_track(gCurrentCourseId);
     gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
 
-    gCourseMinX = -0x15A1;
-    gCourseMinY = -0x15A1;
-    gCourseMinZ = -0x15A1;
+    gTrackMinX = -0x15A1;
+    gTrackMinY = -0x15A1;
+    gTrackMinZ = -0x15A1;
 
-    gCourseMaxX = 0x15A1;
-    gCourseMaxY = 0x15A1;
-    gCourseMaxZ = 0x15A1;
+    gTrackMaxX = 0x15A1;
+    gTrackMaxY = 0x15A1;
+    gTrackMaxZ = 0x15A1;
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
@@ -190,7 +190,7 @@ void load_credits(void) {
     init_hud();
     func_80093E60();
     func_80092688();
-    if (D_800DC5EC) {}
+    if (gScreenOneCtx) {}
     D_801625F8 = ((uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

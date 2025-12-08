@@ -582,8 +582,8 @@ void adjust_pos_orthogonally(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED
 UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
     Collision collision;
     UNUSED s32 pad[12];
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     f32 tyreX;
     f32 tyreY;
     f32 tyreZ;
@@ -626,10 +626,10 @@ UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
         default:
             break;
     }
-    courseLengthX = gCourseMaxX - gCourseMinX;
-    courseLengthZ = gCourseMaxZ - gCourseMinZ;
-    sectionIndexX = (tyreX - gCourseMinX) / (courseLengthX / GRID_SIZE);
-    sectionIndexZ = (tyreZ - gCourseMinZ) / (courseLengthZ / GRID_SIZE);
+    trackLengthX = gTrackMaxX - gTrackMinX;
+    trackLengthZ = gTrackMaxZ - gTrackMinZ;
+    sectionIndexX = (tyreX - gTrackMinX) / (trackLengthX / GRID_SIZE);
+    sectionIndexZ = (tyreZ - gTrackMinZ) / (trackLengthZ / GRID_SIZE);
     if (sectionIndexX < 0) {
         return 0;
     }
@@ -1180,8 +1180,8 @@ s32 is_colliding_with_wall1(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY,
                             f32 oldZ) {
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     s16 sectionIndexX;
     s16 sectionIndexZ;
     u16 numTriangles;
@@ -1228,14 +1228,14 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
         return flags;
     }
 
-    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
-    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
-    sectionIndexX = (newX - gCourseMinX) / sectionX;
-    sectionIndexZ = (newZ - gCourseMinZ) / sectionZ;
+    sectionIndexX = (newX - gTrackMinX) / sectionX;
+    sectionIndexZ = (newZ - gTrackMinZ) / sectionZ;
     if (sectionIndexX < 0) {
         return 0;
     }
@@ -1298,8 +1298,8 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
 
 u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
     u16 numTriangles;
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     u16 meshIndex;
     s32 sectionX;
     s32 sectionZ;
@@ -1337,14 +1337,14 @@ u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX
         return flags;
     }
 
-    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
-    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
-    sectionIndexX = (posX - gCourseMinX) / sectionX;
-    sectionIndexZ = (posZ - gCourseMinZ) / sectionZ;
+    sectionIndexX = (posX - gTrackMinX) / sectionX;
+    sectionIndexZ = (posZ - gTrackMinZ) / sectionZ;
 
     if (sectionIndexX < 0) {
         return 0;
@@ -1419,18 +1419,18 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
     f32 phi_f20 = -3000.0f;
     u16 i;
 
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     s32 sectionX;
     s32 sectionZ;
 
-    courseLengthX = (gCourseMaxX - gCourseMinX);
-    courseLengthZ = (gCourseMaxZ - gCourseMinZ);
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    trackLengthX = (gTrackMaxX - gTrackMinX);
+    trackLengthZ = (gTrackMaxZ - gTrackMinZ);
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
-    sectionIndexX = (s16) ((posX - gCourseMinX) / sectionX);
-    sectionIndexZ = (s16) ((posZ - gCourseMinZ) / sectionZ);
+    sectionIndexX = (s16) ((posX - gTrackMinX) / sectionX);
+    sectionIndexZ = (s16) ((posZ - gTrackMinZ) / sectionZ);
     gridSection = sectionIndexX + (sectionIndexZ * GRID_SIZE);
     numTriangles = gCollisionGrid[gridSection].numTriangles;
 
@@ -1628,24 +1628,24 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
     triangle->minY = minY;
     triangle->maxY = maxY;
 
-    // Define the minimum and maximum dimensions of the course.
-    if (minX < gCourseMinX) {
-        gCourseMinX = minX;
+    // Define the minimum and maximum dimensions of the track.
+    if (minX < gTrackMinX) {
+        gTrackMinX = minX;
     }
-    if (minY < gCourseMinY) {
-        gCourseMinY = minY;
+    if (minY < gTrackMinY) {
+        gTrackMinY = minY;
     }
-    if (minZ < gCourseMinZ) {
-        gCourseMinZ = minZ;
+    if (minZ < gTrackMinZ) {
+        gTrackMinZ = minZ;
     }
-    if (maxX > gCourseMaxX) {
-        gCourseMaxX = maxX;
+    if (maxX > gTrackMaxX) {
+        gTrackMaxX = maxX;
     }
-    if (maxY > gCourseMaxY) {
-        gCourseMaxY = maxY;
+    if (maxY > gTrackMaxY) {
+        gTrackMaxY = maxY;
     }
-    if (maxZ > gCourseMaxZ) {
-        gCourseMaxZ = maxZ;
+    if (maxZ > gTrackMaxZ) {
+        gTrackMaxZ = maxZ;
     }
 
     triangle->normalX = normalX;
@@ -1760,7 +1760,7 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
 }
 
 /**
- * Generates a list of pointers to course vtx.
+ * Generates a list of pointers to track vtx.
  */
 void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
     u32 i;
@@ -1885,16 +1885,16 @@ void generate_collision_grid(void) {
     s16 minZ;
     s32 sectionZ;
     s32 sectionX;
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     s32 index;
 
-    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
-    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    // Separate the course into 32 sections
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    // Separate the track into 32 sections
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
     // Reset the collision grid
     for (i = 0; i < 1024; i++) {
@@ -1908,9 +1908,9 @@ void generate_collision_grid(void) {
         for (k = 0; k < GRID_SIZE; k++) {
             index = k + j * GRID_SIZE;
 
-            // Select a section of the course using min/max akin to drawing a bounding-box
-            minX = (gCourseMinX + (sectionX * k)) - 20;
-            minZ = (gCourseMinZ + (sectionZ * j)) - 20;
+            // Select a section of the track using min/max akin to drawing a bounding-box
+            minX = (gTrackMinX + (sectionX * k)) - 20;
+            minZ = (gTrackMinZ + (sectionZ * j)) - 20;
 
             maxX = minX + sectionX + 40;
             maxZ = minZ + sectionZ + 40;
@@ -2243,8 +2243,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
     f32 boundingBoxSize;
     f32 height;
 
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
 
     s16 sectionIndexX;
     s16 sectionIndexZ;
@@ -2307,14 +2307,14 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
 
     // If the surface flags are not set then try setting them.
 
-    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
-    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
-    sectionIndexX = (tyreX - gCourseMinX) / sectionX;
-    sectionIndexZ = (tyreZ - gCourseMinZ) / sectionZ;
+    sectionIndexX = (tyreX - gTrackMinX) / sectionX;
+    sectionIndexZ = (tyreZ - gTrackMinZ) / sectionZ;
 
     if (sectionIndexX < 0) {
         return 0;

@@ -2,18 +2,19 @@
 #define _GAME_H
 
 #include <libultraship.h>
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/HM_Intro.h"
 
 #ifdef __cplusplus
 #include "engine/editor/Editor.h"
-class Course;
+class Track;
 struct Properties;
 class World;
 extern "C" {
 #endif
 #include "camera.h"
 #include "actor_types.h"
+#include "code_800029B0.h"
 
 extern s32 gTrophyIndex;
 
@@ -24,7 +25,7 @@ extern bool bCleanWorld;
 #endif
 
 Properties* CM_GetProps();
-Properties* CM_GetPropsCourseId(s32 courseId);
+Properties* CM_GetPropsTrackId(s32 trackId);
 
 void HM_InitIntro(void);
 void HM_TickIntro(void);
@@ -41,21 +42,21 @@ u32 GetCupIndex(void);
 
 const char* GetCupName(void);
 
-void LoadCourse();
-void UnLoadCourse();
+void LoadTrack();
+void UnLoadTrack();
 
-size_t GetCourseIndex();
+size_t GetTrackIndex();
 
-void SetCourse(const char* name);
+void SetTrack(const char* name);
 
-void NextCourse();
-void PreviousCourse();
+void NextTrack();
+void PreviousTrack();
 
 void CM_SetCup(void*);
 
 void CM_SetCupIndex(size_t index);
 
-void CM_RenderCourse(struct UnkStruct_800DC5EC* arg0);
+void CM_DrawTrack(ScreenContext* arg0);
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -94,18 +95,18 @@ void Editor_CleanWorld();
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
 
-void CM_UpdateClouds(s32 arg0, Camera* camera);
+void CM_TickClouds(s32 arg0, Camera* camera);
 
 void CM_Waypoints(Player* player, int8_t playerId);
 
 void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
                            f32* arg7);
 
-void CM_InitCourseObjects();
+void CM_InitTrackObjects();
 
-void CM_UpdateCourseObjects();
+void CM_TickTrackObjects();
 
-void CM_RenderCourseObjects(s32 cameraId);
+void CM_DrawTrackObjects(s32 cameraId);
 
 void CM_SomeSounds();
 
@@ -125,7 +126,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CM_BeginPlay();
 
-void CM_DrawWater(struct UnkStruct_800DC5EC* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection);
 
 void CM_AICrossingBehaviour(s32 playerId);
@@ -148,11 +149,11 @@ void SetCupCursorPosition(size_t position);
 
 size_t GetCupSize();
 
-void SetCourseFromCup();
+void SetTrackFromCup();
 
-void* GetCourse(void);
+void* GetTrack(void);
 
-void SetCourseById(s32 course);
+void SetTrackById(s32 track);
 
 struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);

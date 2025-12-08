@@ -14,6 +14,7 @@ extern "C" {
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
 #include "external.h"
+#include "course_offsets.h"
 }
 
 size_t OChainChomp::_count = 0;

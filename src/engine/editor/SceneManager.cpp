@@ -42,7 +42,7 @@ namespace Editor {
         /**
          * Save track properties, static mesh actors, actors, and tour camera
          */
-        data["Props"] = gWorldInstance.GetCurrentCourse()->Props.to_json();
+        data["Props"] = gWorldInstance.GetTrack()->Props.to_json();
 
         nlohmann::json staticMesh;
         SaveStaticMeshActors(staticMesh);
@@ -54,7 +54,7 @@ namespace Editor {
         data["Actors"] = actors;
 
 
-        if (gWorldInstance.GetCurrentCourse()->TourShots.size() != 0) {
+        if (gWorldInstance.GetTrack()->TourShots.size() != 0) {
             nlohmann::json tour;
             SaveTour(tour);
             data["Tour"] = tour;
@@ -85,10 +85,10 @@ namespace Editor {
     }
 
     /** Do not use gWorldInstance.CurrentCourse during loading! The current track is not guaranteed! **/
-    void LoadLevel(Course* course, std::string sceneFile) {
+    void LoadLevel(Track* track, std::string sceneFile) {
         SceneFile = sceneFile;
-        if ((nullptr == course) || (nullptr == course->RootArchive)) {
-            SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, course or rootarchive were null");
+        if ((nullptr == track) || (nullptr == track->RootArchive)) {
+            SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, track or rootarchive were null");
             return;
         }
 
@@ -97,7 +97,7 @@ namespace Editor {
          * the init data needs to be manually populated
          */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = course->RootArchive;
+        initData->Parent = track->RootArchive;
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
@@ -116,10 +116,10 @@ namespace Editor {
         SPDLOG_INFO("[SceneManager] [LoadLevel] Loading track scenefile...");
 
         // Load the Props, and populate actors
-        LoadProps(course, data);
-        LoadActors(course, data);
-        LoadStaticMeshActors(course, data);
-        LoadTour(course, data);
+        LoadProps(track, data);
+        LoadActors(track, data);
+        LoadStaticMeshActors(track, data);
+        LoadTour(track, data);
         SPDLOG_INFO("[SceneManager] [LoadLevel] Scene File Loaded!");
     }
 
@@ -138,11 +138,11 @@ namespace Editor {
     }
 
     // Called from ContentBrowser.cpp
-    void LoadMinimap(Course* course, std::string filePath) {
+    void LoadMinimap(Track* track, std::string filePath) {
         SPDLOG_INFO("  Loading {} minimap...", filePath);
-        if (nullptr == course->RootArchive) {
+        if (nullptr == track->RootArchive) {
             SPDLOG_INFO("[SceneManager] [LoadMinimap] Root archive is nullptr");
-            SetDefaultMinimap(course);
+            SetDefaultMinimap(track);
             return;
         }
 
@@ -151,7 +151,7 @@ namespace Editor {
         * the init data needs to be manually populated
         */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = course->RootArchive;
+        initData->Parent = track->RootArchive;
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(MK64::ResourceType::Minimap);
@@ -163,19 +163,19 @@ namespace Editor {
         if (ptr) {
             SPDLOG_INFO("  Minimap Loaded!");
             MK64::MinimapTexture texture = ptr->Texture;
-            course->Props.Minimap.Texture = (const char*)texture.Data;
-            course->Props.Minimap.Width = texture.Width;
-            course->Props.Minimap.Height = texture.Height;
+            track->Props.Minimap.Texture = (const char*)texture.Data;
+            track->Props.Minimap.Width = texture.Width;
+            track->Props.Minimap.Height = texture.Height;
         } else { // Fallback
-            SetDefaultMinimap(course);
+            SetDefaultMinimap(track);
         }
     }
 
     // Sets the default minimap if none has been set
-    void SetDefaultMinimap(Course* course) {
-        course->Props.Minimap.Texture = minimap_mario_raceway;
-        course->Props.Minimap.Width = ResourceGetTexWidthByName(course->Props.Minimap.Texture);
-        course->Props.Minimap.Height = ResourceGetTexHeightByName(course->Props.Minimap.Texture);
+    void SetDefaultMinimap(Track* track) {
+        track->Props.Minimap.Texture = minimap_mario_raceway;
+        track->Props.Minimap.Width = ResourceGetTexWidthByName(track->Props.Minimap.Texture);
+        track->Props.Minimap.Height = ResourceGetTexHeightByName(track->Props.Minimap.Texture);
         SPDLOG_INFO("  No minimap found! Falling back to default minimap");
     }
 
@@ -253,47 +253,47 @@ namespace Editor {
     }
 
     void SaveTour(nlohmann::json& tour) {
-        tour["Enabled"] = gWorldInstance.GetCurrentCourse()->bTourEnabled;
+        tour["Enabled"] = gWorldInstance.GetTrack()->bTourEnabled;
 
         // Camera shots
         tour["Shots"] = nlohmann::json::array();
-        for (const auto& shot : gWorldInstance.GetCurrentCourse()->TourShots) {
+        for (const auto& shot : gWorldInstance.GetTrack()->TourShots) {
             tour["Shots"].push_back(ToJson(shot));
         }
     }
 
-    void LoadProps(Course* course, nlohmann::json& data) {
+    void LoadProps(Track* track, nlohmann::json& data) {
         if (!data.contains("Props") || !data["Props"].is_object()) {
             SPDLOG_INFO("Track is missing props data. Is the scene.json file corrupt?");
             return;
         }
 
         try {
-            course->Props.from_json(data["Props"]);
+            track->Props.from_json(data["Props"]);
         } catch(const std::exception& e) {
             std::cerr << "  Error parsing track properties: " << e.what() << std::endl;
             std::cerr << "    Is your scene.json file out of date?" << std::endl;
         }
     }
 
-    void LoadActors(Course* course, nlohmann::json& data) {
+    void LoadActors(Track* track, nlohmann::json& data) {
         if (!data.contains("Actors") || !data["Actors"].is_object()) {
             SPDLOG_INFO("  This track contains no actors");
             return;
         }
 
-        course->SpawnList.clear(); // Clear existing actors, if any
+        track->SpawnList.clear(); // Clear existing actors, if any
 
         for (const auto& actor : data["Actors"]) {
             SpawnParams params;
             params.from_json(actor); //<SpawnParams>();
             if (!params.Name.empty()) {
-                course->SpawnList.push_back(params);
+                track->SpawnList.push_back(params);
             }
         }
     }
 
-    void LoadStaticMeshActors(Course* course, nlohmann::json& data) {
+    void LoadStaticMeshActors(Track* track, nlohmann::json& data) {
         if (!data.contains("StaticMeshActors") || !data["StaticMeshActors"].is_object()) {
             SPDLOG_INFO("  This track contains no StaticMeshActors!");
             return;
@@ -306,7 +306,7 @@ namespace Editor {
         }
     }
 
-    void LoadTour(Course* course, nlohmann::json& data) {
+    void LoadTour(Track* track, nlohmann::json& data) {
         if (!data.contains("Tour") || !data["Tour"].is_object()) {
             SPDLOG_INFO(" This track does not contain a camera tour");
             return;
@@ -316,17 +316,17 @@ namespace Editor {
 
         // Enable flag
         if (tours.contains("Enabled")) {
-            course->bTourEnabled = tours["Enabled"].get<bool>();
+            track->bTourEnabled = tours["Enabled"].get<bool>();
         } else {
-            course->bTourEnabled = false;
+            track->bTourEnabled = false;
         }
 
         // Camera shots
         if (tours.contains("Shots") && tours["Shots"].is_array()) {
-            course->TourShots.clear();
+            track->TourShots.clear();
 
             for (const auto& shotJson : tours["Shots"]) {
-                course->TourShots.push_back(FromJsonCameraShot(shotJson));
+                track->TourShots.push_back(FromJsonCameraShot(shotJson));
             }
         }
     }

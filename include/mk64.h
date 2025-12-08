@@ -32,31 +32,31 @@ extern "C" {
 #define BORDER_HEIGHT 1
 
 typedef enum {
-    /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
-    /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
-    /* 0x02 */ COURSE_BOWSER_CASTLE,
-    /* 0x03 */ COURSE_BANSHEE_BOARDWALK,
-    /* 0x04 */ COURSE_YOSHI_VALLEY,
-    /* 0x05 */ COURSE_FRAPPE_SNOWLAND,
-    /* 0x06 */ COURSE_KOOPA_BEACH,
-    /* 0x07 */ COURSE_ROYAL_RACEWAY,
-    /* 0x08 */ COURSE_LUIGI_RACEWAY,
-    /* 0x09 */ COURSE_MOO_MOO_FARM,
-    /* 0x0A */ COURSE_TOADS_TURNPIKE,
-    /* 0x0B */ COURSE_KALIMARI_DESERT,
-    /* 0x0C */ COURSE_SHERBET_LAND,
-    /* 0x0D */ COURSE_RAINBOW_ROAD,
-    /* 0x0E */ COURSE_WARIO_STADIUM,
-    /* 0x0F */ COURSE_BLOCK_FORT,
-    /* 0x10 */ COURSE_SKYSCRAPER,
-    /* 0x11 */ COURSE_DOUBLE_DECK,
-    /* 0x12 */ COURSE_DK_JUNGLE,
-    /* 0x13 */ COURSE_BIG_DONUT,
-    /* 0x14 */ COURSE_AWARD_CEREMONY,
-    /* 0x15 */ NUM_COURSES
-} COURSES;
+    /* 0x00 */ TRACK_MARIO_RACEWAY = 0,
+    /* 0x01 */ TRACK_CHOCO_MOUNTAIN,
+    /* 0x02 */ TRACK_BOWSER_CASTLE,
+    /* 0x03 */ TRACK_BANSHEE_BOARDWALK,
+    /* 0x04 */ TRACK_YOSHI_VALLEY,
+    /* 0x05 */ TRACK_FRAPPE_SNOWLAND,
+    /* 0x06 */ TRACK_KOOPA_BEACH,
+    /* 0x07 */ TRACK_ROYAL_RACEWAY,
+    /* 0x08 */ TRACK_LUIGI_RACEWAY,
+    /* 0x09 */ TRACK_MOO_MOO_FARM,
+    /* 0x0A */ TRACK_TOADS_TURNPIKE,
+    /* 0x0B */ TRACK_KALIMARI_DESERT,
+    /* 0x0C */ TRACK_SHERBET_LAND,
+    /* 0x0D */ TRACK_RAINBOW_ROAD,
+    /* 0x0E */ TRACK_WARIO_STADIUM,
+    /* 0x0F */ TRACK_BLOCK_FORT,
+    /* 0x10 */ TRACK_SKYSCRAPER,
+    /* 0x11 */ TRACK_DOUBLE_DECK,
+    /* 0x12 */ TRACK_DK_JUNGLE,
+    /* 0x13 */ TRACK_BIG_DONUT,
+    /* 0x14 */ TRACK_AWARD_CEREMONY,
+    /* 0x15 */ NUM_TRACKS
+} TRACKS;
 
-#define COURSE_NULL 0xFF
+#define TRACK_NULL 0xFF
 
 typedef enum {
     /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
@@ -86,19 +86,19 @@ enum SURFACE_TYPE {
     /* 0x00 */ AIRBORNE,
     /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal
                         // Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ DIRT,    // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK
-                        // Jungle on course, Yoshi Valley
+    /* 0x02 */ DIRT,    // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert as road, Choco Mountain, Wario Stadium, DK
+                        // Jungle as road, Yoshi Valley
     /* 0x03 */ SAND,    // Koopa Troopa Beach light color, Royal Raceway
     /* 0x04 */ STONE,   // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW,    // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x05 */ SNOW,    // Frappe Snowland as road, Sherber Land tunnel
     /* 0x06 */ BRIDGE,  // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
     /* 0x07 */ SAND_OFFROAD, // Mario Raceway
     /* 0x08 */ GRASS,        // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE,          // Sherbert Land
     /* 0x0A */ WET_SAND,     // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off road
     /* 0x0C */ CLIFF,        // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off road
     /* 0x0E */ TRAIN_TRACK,  // Kalimari Desert
     /* 0x0F */ CAVE,         // DK Jungle cave
     /* 0x10 */ ROPE_BRIDGE,  // Bowser's Castle bridge 2, DK Jungle bridge

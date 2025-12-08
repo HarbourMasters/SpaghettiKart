@@ -38,7 +38,7 @@ void func_80057CE4(void);
 void func_80057DD0(void);
 void func_80057FC4(u32);
 
-void render_object(struct UnkStruct_800DC5EC* screen);
+void render_object(ScreenContext* screen);
 void render_player_snow_effect(Camera* camera);
 void render_object_for_player(s32);
 void render_snowing_effect(s32);
@@ -84,7 +84,7 @@ void func_8005A14C(s32);
 void func_8005A380(void);
 void func_8005A3C0(void);
 void func_8005A71C(void);
-void update_object(void);
+void tick_objects(void);
 void func_8005A99C(void);
 void func_8005AA34(void);
 void func_8005AA4C(void);

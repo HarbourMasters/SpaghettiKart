@@ -274,7 +274,7 @@ namespace Editor {
             if (!track.SceneFile.empty()) { // has scene file
                 std::string label = fmt::format("{}##{}", track.Name, i_track);
                 if (ImGui::Button(label.c_str())) {
-                    gWorldInstance.SetCurrentCourse(track.course);
+                    gWorldInstance.SetCurrentTrack(track.track);
                     gGamestateNext = RACING;
                     SetSceneFile(track.Archive, track.SceneFile);
                     break;
@@ -283,7 +283,7 @@ namespace Editor {
                 std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
                 if (ImGui::Button(label.c_str())) {
                     track.SceneFile = track.Dir + "/scene.json";
-                    gWorldInstance.SetCurrentCourse(track.invalidTrack);
+                    gWorldInstance.SetCurrentTrack(track.invalidTrack);
                     SetSceneFile(track.Archive, track.SceneFile);
                     SaveLevel();
                     Refresh = true;
@@ -294,14 +294,14 @@ namespace Editor {
         }
     }
 
-    // When resetting the known content, we need to also pop the custom courses
-    // out of World::Courses vector. Otherwise, duplicate courses would show up for users.
+    // When resetting the known content, we need to also pop the custom tracks
+    // out of World::Tracks vector. Otherwise, duplicate tracks would show up for users.
     void ContentBrowserWindow::RemoveCustomTracksFromTrackList() {
         for (auto& track : Tracks) {
-            auto it = gWorldInstance.Courses.begin();
-            while (it != gWorldInstance.Courses.end()) {
-                if (track.course.get() == it->get()) {
-                    it = gWorldInstance.Courses.erase(it);
+            auto it = gWorldInstance.Tracks.begin();
+            while (it != gWorldInstance.Tracks.end()) {
+                if (track.track.get() == it->get()) {
+                    it = gWorldInstance.Tracks.erase(it);
                 } else {
                     ++it;
                 }
@@ -401,13 +401,13 @@ namespace Editor {
                 if (manager->HasFile(sceneFile)) {
                     auto archive = manager->GetArchiveFromFile(sceneFile);
                     
-                    auto course = std::make_shared<Course>();
-                    course->RootArchive = archive;
-                    course->LoadO2R(dir);
-                    LoadLevel(course.get(), sceneFile);
-                    LoadMinimap(course.get(), minimapFile);
-                    Tracks.push_back({nullptr, course, sceneFile, name, dir, archive});
-                    gWorldInstance.Courses.push_back(std::move(course));
+                    auto track = std::make_shared<Track>();
+                    track->RootArchive = archive;
+                    track->LoadO2R(dir);
+                    LoadLevel(track.get(), sceneFile);
+                    LoadMinimap(track.get(), minimapFile);
+                    Tracks.push_back({nullptr, track, sceneFile, name, dir, archive});
+                    gWorldInstance.Tracks.push_back(std::move(track));
                 } else { // The track does not have a valid scene file
                     const std::string file = dir + "/data_track_sections";
 
@@ -416,12 +416,12 @@ namespace Editor {
                     // So lets add it as an uninitialized track.
                     if (manager->HasFile(file)) {
 
-                        auto course = std::make_shared<Course>();
-                        course->Id = (std::string("mods:") + name).c_str();
-                        course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
-                        course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
+                        auto track = std::make_shared<Track>();
+                        track->Id = (std::string("mods:") + name).c_str();
+                        track->Props.SetText(track->Props.Name, name.c_str(), sizeof(track->Props.Name));
+                        track->Props.SetText(track->Props.DebugName, name.c_str(), sizeof(track->Props.Name));
                         auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({course, nullptr, "", name, dir, archive});
+                        Tracks.push_back({track, nullptr, "", name, dir, archive});
                     } else {
                         printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
                     }

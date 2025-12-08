@@ -1,7 +1,6 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
-#include "MultiplayerWindow.h"
 #include "FreecamWindow.h"
 #include "Tools.h"
 #include "SceneExplorer.h"
@@ -34,7 +33,6 @@ std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
-std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
 std::shared_ptr<Ship::GuiWindow> mToolsWindow;
 std::shared_ptr<Ship::GuiWindow> mSceneExplorerWindow;
 std::shared_ptr<Ship::GuiWindow> mPropertiesWindow;
@@ -49,11 +47,6 @@ void SetupGuiElements() {
 
     mPortMenu = std::make_shared<PortMenu>("gOpenMenu", "Port Menu");
     gui->SetMenu(mPortMenu);
-
-    //mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
-    //if (mMultiplayerWindow == nullptr) {
-    //    SPDLOG_ERROR("Could not find multiplayer window");
-    //}
 
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {

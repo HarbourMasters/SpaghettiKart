@@ -193,7 +193,7 @@ void render_actor_tree_luigi_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         // Why is a TLUT being used a DL here? That makes no sense
         // Based on the TLUT being loaded above, this ought to be be another
-        // tree related DL, presumably one found in a course other than Moo Moo farm
+        // tree related DL, presumably one found in a track other than Moo Moo farm
         //                                 0x0600FC70
         gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
     }

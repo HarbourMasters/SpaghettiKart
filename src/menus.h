@@ -99,7 +99,7 @@ enum MainMenuSelectionType {
     MAIN_MENU_MODE_SUB_SELECT,        // CC Selection and T.Trials options (Begin, Data)
     MAIN_MENU_OK_SELECT,              // OK option after selecting a submode
     MAIN_MENU_OK_SELECT_GO_BACK,      // OK option after going back from player select
-    MAIN_MENU_MODE_SUB_SELECT_GO_BACK // Used in T.Trials after going back to Data option from course data
+    MAIN_MENU_MODE_SUB_SELECT_GO_BACK // Used in T.Trials after going back to Data option from track data
 };
 
 /**
@@ -244,7 +244,7 @@ extern s8 gCourseRecordsMenuSelection;
 extern s8 gCourseRecordsSubMenuSelection;
 extern s8 gDebugGotoScene;
 extern bool gGhostPlayerInit;
-extern bool gCourseMapInit;
+extern bool gTrackMapInit;
 extern s32 gMenuTimingCounter;
 extern s32 gMenuDelayTimer;
 extern s8 gDemoUseController;

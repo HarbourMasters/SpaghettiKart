@@ -208,7 +208,7 @@ struct FRotator {
 };
 
 /**
- * For selecting a section of a course path
+ * For selecting a section of a track path
  * Usage: IPathSpan(point1, point2) --> IPathSpan(40, 65)
  */
 struct IPathSpan {

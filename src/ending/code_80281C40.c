@@ -17,7 +17,7 @@
 #include "memory.h"
 
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "port/Game.h"
 
 struct UnkStruct80287560 {
@@ -55,7 +55,7 @@ extern Gfx D_80284F70[];
 extern Gfx D_80284EE0[];
 
 void func_80281D00(void) {
-    Camera* camera = D_800DC5EC->camera;
+    Camera* camera = gScreenOneCtx->camera;
     UNUSED s32 pad[3];
     u16 perspNorm;
     Mat4 matrix;
@@ -90,7 +90,7 @@ void func_80281D00(void) {
     render_players(camera, PLAYER_ONE);
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
-    render_object(D_800DC5EC);
+    render_object(gScreenOneCtx);
     func_80021B0C();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     func_80093F10();

@@ -1,6 +1,6 @@
 @page actorsmenu Actors
 
-Actors are dynamic game objects usually subject to game physics such as gravity, force, and collision. They might move around the map, spin, or interactive in some manner. Alternatively, static game objects cannot move and cannot be interacted with. They can use collision but not physics. A course model and Mario Raceway's Pipe are examples of static objects. Any of the items or player karts are examples of dynamic game objects; actors.  
+Actors are dynamic game objects usually subject to game physics such as gravity, force, and collision. They might move around the map, spin, or interactive in some manner. Alternatively, static game objects cannot move and cannot be interacted with. They can use collision but not physics. A track model and Mario Raceway's Pipe are examples of static objects. Any of the items or player karts are examples of dynamic game objects; actors.  
 
 mk64 contains two systems for implementing actors. They have been deemed as actors and objects, albeit an explicit or categorical difference between the two has yet to be determined. The running theory is that the systems were designed by different developers that were perhaps not communicating resulting in game objects being randomly distributed between the two.  
 

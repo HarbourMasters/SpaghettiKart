@@ -76,11 +76,11 @@
 #define DEMO_MODE_INACTIVE 0
 
 #ifdef VERSION_EU
-#define COURSE_TIMER_ITER 0.020041665999999999    // 1 / 50
-#define COURSE_TIMER_ITER_f 0.020041665999999999f // 1 / 50
+#define TRACK_TIMER_ITER 0.020041665999999999    // 1 / 50
+#define TRACK_TIMER_ITER_f 0.020041665999999999f // 1 / 50
 #else
-#define COURSE_TIMER_ITER 0.01666666    // 1 / 60
-#define COURSE_TIMER_ITER_f 0.01666666f // 1 / 60
+#define TRACK_TIMER_ITER 0.01666666    // 1 / 60
+#define TRACK_TIMER_ITER_f 0.01666666f // 1 / 60
 #endif
 
 #define V_BlANK_TIMER_ITER 0.01666666
@@ -182,7 +182,7 @@ enum { MUSHROOM_CUP, FLOWER_CUP, STAR_CUP, SPECIAL_CUP, BATTLE_CUP, NUM_CUPS };
 /**
  * @brief Options for gCourseIndexInCup
  */
-enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
+enum { TRACK_ONE, TRACK_TWO, TRACK_THREE, TRACK_FOUR };
 
 /**
  * @brief Character IDs
@@ -387,7 +387,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x10000 0x10000       //
 #define BOOST_RAMP_ASPHALT_EFFECT 0x100000   // being boosted by a boost pad
 #define UNKNOWN_EFFECT_0x200000 0x200000     //
-#define REVERSE_EFFECT 0x400000              // being in reverse of the course
+#define REVERSE_EFFECT 0x400000              // Player is facing the wrong direction
 #define UNKNOWN_EFFECT_0x1000000 0x1000000   //
 #define HIT_BY_ITEM_EFFECT 0x2000000         // being hit by an item
 #define HIT_EFFECT 0x4000000                 // hitting an object

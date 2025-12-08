@@ -1,7 +1,6 @@
 #include <defines.h>
 #include <mk64.h>
 #include <stubs.h>
-#include "networking/networking.h"
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
@@ -487,7 +486,7 @@ void func_80039DA4(void) {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
-    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == TRACK_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
@@ -505,7 +504,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == TRACK_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         s16 rand;
         s16 i;
@@ -549,27 +548,23 @@ void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
                      PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
-        if (gNetwork.enabled) {
-            spawn_network_players(arg0, arg1, arg2);
-        } else {
-            spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f,
-                         gCharacterSelections[0],
-                         PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-            spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerThree, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerFour, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerFive, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerSix, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerSeven, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerEight, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        }
+        spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f,
+                        gCharacterSelections[0],
+                        PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerThree, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFour, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFive, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSix, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSeven, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerEight, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
         D_80164A28 = 1;
     }
     func_80039AE4();
@@ -634,7 +629,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == 1) ||
+    if ((GetCupCursorPosition() == TRACK_ONE) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         s16 rand;
         s16 i;
@@ -1235,19 +1230,19 @@ void spawn_players_and_cameras(void) {
 
 
     camera = CM_AddFreeCamera(spawn, player->rotation[1], 1);
-    D_8015F480[PLAYER_ONE].freeCamera = camera;
+    gScreenContexts[PLAYER_ONE].freeCamera = camera;
 
     if (CVarGetInteger("gFreecam", false) == true) {
         CM_SetFreeCamera(true);
-        D_8015F480[PLAYER_ONE].camera = camera;
+        gScreenContexts[PLAYER_ONE].camera = camera;
     }
 
     if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
         camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
         if (NULL != camera) {
             CM_AttachCamera(camera, PLAYER_ONE);
-            D_8015F480[PLAYER_ONE].camera = camera;
-            D_8015F480[PLAYER_ONE].pendingCamera = NULL;
+            gScreenContexts[PLAYER_ONE].camera = camera;
+            gScreenContexts[PLAYER_ONE].pendingCamera = NULL;
             CM_CameraSetActive(0, false);
             CM_ActivateTourCamera(camera);
         }
@@ -1272,36 +1267,36 @@ void spawn_single_player_camera(u32 mode) {
     Camera* camera = CM_AddCamera(spawn, gPlayerOne->rotation[1], mode);
     if (camera) {
         CM_AttachCamera(camera, PLAYER_ONE);
-        D_8015F480[PLAYER_ONE].camera = camera;
-        D_8015F480[PLAYER_ONE].raceCamera = camera;
+        gScreenContexts[PLAYER_ONE].camera = camera;
+        gScreenContexts[PLAYER_ONE].raceCamera = camera;
     }
 
     camera = CM_AddLookBehindCamera(spawn, gPlayerOne->rotation[1], mode);
     if (camera) {
         CM_AttachCamera(camera, PLAYER_ONE);
-        D_8015F480[PLAYER_ONE].lookBehindCamera = camera;
+        gScreenContexts[PLAYER_ONE].lookBehindCamera = camera;
     }
 }
 
 void spawn_multiplayer_cameras(u32 mode) {
     Camera* camera;
-    for (size_t i = 0; i <= gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {
             CM_AttachCamera(camera, i);
-            D_8015F480[i].camera = camera;
-            D_8015F480[i].raceCamera = camera;
+            gScreenContexts[i].camera = camera;
+            gScreenContexts[i].raceCamera = camera;
         }
 
     }
 
-    for (size_t i = 0; i <= gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddLookBehindCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {
             CM_AttachCamera(camera, i);
-            D_8015F480[i].lookBehindCamera = camera;
+            gScreenContexts[i].lookBehindCamera = camera;
         }
     }
 
@@ -1328,8 +1323,8 @@ void load_kart_textures(void) {
 
     static const size_t playerCounts[4] = { 8, 8, 4, 4 };
     for (size_t i = 0; i < screens; i++) {
-        for (size_t ply = 0; ply < playerCounts[gPlayerCountSelection1]; ply++) {
-            func_8003CD98(&gPlayers[ply], D_8015F480[i].camera, ply, i);
+        for (size_t ply = 0; ply < playerCounts[gPlayerCountSelection1 - 1]; ply++) {
+            func_8003CD98(&gPlayers[ply], gScreenContexts[i].camera, ply, i);
         }
     }
 }

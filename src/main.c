@@ -7,8 +7,6 @@
 #include <stubs.h>
 #include "racing/framebuffer_effects.h"
 
-#include "networking/networking.h"
-
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
@@ -610,8 +608,8 @@ void setup_game_memory(void) {
 
     //     gNextFreeMemoryAddress += textureSegSize;
 
-    //     // Common course data does not get reloaded when the race state resets.
-    //     // Therefore, only reset the memory ptr to after the common course data.
+    //     // Common track data does not get reloaded when the race state resets.
+    //     // Therefore, only reset the memory ptr to after the common track data.
     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
@@ -634,7 +632,7 @@ void display_debug_info(void) {
             D_800DC514 = false;
         }
         rotY = camera1->rot[1];
-        gDebugPathCount = D_800DC5EC->pathCounter;
+        gDebugPathCount = gScreenOneCtx->pathCounter;
 
         if (rotY < 0x2000) {
             func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
@@ -673,7 +671,7 @@ void process_game_tick(void) {
 
     if (gIsEditorPaused == false) {
         if (D_8015011E) {
-            gCourseTimer += COURSE_TIMER_ITER;
+            gCourseTimer += TRACK_TIMER_ITER;
         }
         func_802909F0();
         evaluate_collision_for_players_and_actors();
@@ -726,11 +724,6 @@ void race_logic_loop(void) {
 
     if (gModeSelection == TIME_TRIALS) {
         replays_loop();
-    }
-
-    // Wait for all racers to load
-    if (gNetwork.enabled) {
-        network_all_players_loaded();
     }
 
     if (gIsGamePaused == false) {
@@ -1093,7 +1086,7 @@ void func_80002658(void) {
 }
 
 /**
- * Sets courseId to NULL if
+ * Sets trackId to NULL if
  *
  *
  */
@@ -1101,19 +1094,19 @@ void update_gamestate(void) {
     switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case RACING:
             /**
@@ -1124,12 +1117,12 @@ void update_gamestate(void) {
             setup_race();
             break;
         case ENDING:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             init_segment_ending_sequences();
             setup_podium_ceremony();
             break;
         case CREDITS_SEQUENCE:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();

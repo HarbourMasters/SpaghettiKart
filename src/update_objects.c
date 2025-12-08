@@ -2561,47 +2561,7 @@ void func_80078C70(s32 arg0) {
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
 
-        CM_UpdateClouds(sp1C, camera);
-
-        // switch (gCurrentCourseId) {    /* switch 2 */
-        //     case COURSE_MARIO_RACEWAY: /* switch 2 */
-        //         // Uses Luigi Raceway's clouds for display purposes?
-        //         //update_clouds(sp1C, camera, gLuigiRacewayClouds);
-        //         break;
-        // case COURSE_YOSHI_VALLEY: /* switch 2 */
-        //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-        //     break;
-        // case COURSE_FRAPPE_SNOWLAND: /* switch 2 */
-        //     func_80078170(sp1C, camera);
-        //     break;
-        // case COURSE_KOOPA_BEACH: /* switch 2 */
-        //     update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
-        //     break;
-        // case COURSE_ROYAL_RACEWAY: /* switch 2 */
-        //     update_clouds(sp1C, camera, gRoyalRacewayClouds);
-        //     break;
-        // case COURSE_LUIGI_RACEWAY: /* switch 2 */
-        //     update_clouds(sp1C, camera, gLuigiRacewayClouds);
-        //     break;
-        // case COURSE_MOO_MOO_FARM: /* switch 2 */
-        //     update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
-        //     break;
-        // case COURSE_TOADS_TURNPIKE: /* switch 2 */
-        //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-        //     break;
-        // case COURSE_KALIMARI_DESERT: /* switch 2 */
-        //     update_clouds(sp1C, camera, gKalimariDesertClouds);
-        //     break;
-        // case COURSE_SHERBET_LAND: /* switch 2 */
-        //     update_clouds(sp1C, camera, gSherbetLandClouds);
-        //     break;
-        // case COURSE_RAINBOW_ROAD: /* switch 2 */
-        //     update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
-        //     break;
-        // case COURSE_WARIO_STADIUM: /* switch 2 */
-        //     update_stars(sp1C, camera, gWarioStadiumStars);
-        //     break;
-        //}
+        CM_TickClouds(sp1C, camera);
     }
 }
 

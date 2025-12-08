@@ -531,7 +531,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
     var_s1 = var_t1;
 
     while (var_s1->pos[0] != END_OF_SPAWN_DATA) {
-        sp88[0] = var_s1->pos[0] * gCourseDirection;
+        sp88[0] = var_s1->pos[0] * gTrackDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
         temp_f0 = is_within_render_distance(camera->pos, sp88, camera->rot[1], 0.0f, gCameraFOV[camera - camera1],
@@ -583,7 +583,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
             temp_s1 = var_s5 - var_t1;
             if ((temp_s1 != D_8015F702) && (D_8015F704 < 160000.0f)) {
                 func_800C99E0(D_8015F708, soundThing);
-                D_8015F708[0] = var_s5->pos[0] * gCourseDirection;
+                D_8015F708[0] = var_s5->pos[0] * gTrackDirection;
                 D_8015F708[1] = var_s5->pos[1];
                 D_8015F708[2] = var_s5->pos[2];
                 D_8015F702 = temp_s1;
@@ -601,7 +601,7 @@ void evaluate_collision_player_palm_trees(Player* player) {
     struct UnkActorSpawnData* data = (struct UnkActorSpawnData*) LOAD_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (data->pos[0] != END_OF_SPAWN_DATA) {
-        pos[0] = data->pos[0] * gCourseDirection;
+        pos[0] = data->pos[0] * gTrackDirection;
         pos[1] = data->pos[1];
         pos[2] = data->pos[2];
         if (query_and_resolve_collision_player_actor(player, pos, 5.0f, 40.0f, 0.8f) == COLLISION) {
@@ -673,7 +673,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
                 var_s1->someId |= 0x0800;
             }
         }
-        spD4[0] = var_s1->pos[0] * gCourseDirection;
+        spD4[0] = var_s1->pos[0] * gTrackDirection;
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
@@ -899,7 +899,7 @@ void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
     vec3s_set(startingRot, 0, 0, 0);
 
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
-        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
+        startingPos[0] = temp_s0->pos[0] * gTrackDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
@@ -928,7 +928,7 @@ void spawn_palm_trees(struct ActorSpawnData* spawnData) {
     vec3s_set(startingRot, 0, 0, 0);
 
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
-        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
+        startingPos[0] = temp_s0->pos[0] * gTrackDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
@@ -976,7 +976,7 @@ void spawn_foliage(struct ActorSpawnData* actor) {
     }
 
     while (var_s3->pos[0] != END_OF_SPAWN_DATA) {
-        position[0] = var_s3->pos[0] * gCourseDirection;
+        position[0] = var_s3->pos[0] * gTrackDirection;
         position[2] = var_s3->pos[2];
         position[1] = var_s3->pos[1];
 
@@ -1045,7 +1045,7 @@ void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
 
     vec3f_set(startingVelocity, 0, 0, 0);
     while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
-        startingPos[0] = temp_s0->pos[0] * gCourseDirection;
+        startingPos[0] = temp_s0->pos[0] * gTrackDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
         startingRot[0] = random_u16();
@@ -1081,7 +1081,7 @@ void spawn_item_box(Vec3f pos) {
         return;
     }
 
-    pos[0] *= gCourseDirection;
+    pos[0] *= gTrackDirection;
 
     startingRot[0] = random_u16();
     startingRot[1] = random_u16();
@@ -1106,7 +1106,7 @@ void spawn_fake_item_box(Vec3f pos) {
         return;
     }
 
-    pos[0] *= gCourseDirection;
+    pos[0] *= gTrackDirection;
 
     startingRot[0] = random_u16();
     startingRot[1] = random_u16();
@@ -1164,141 +1164,9 @@ void destroy_all_actors(void) {
     }
 }
 
-void spawn_course_actors(void) {
-    UNUSED s32 pad;
-    Vec3f position;
-    Vec3f velocity = { 0.0f, 0.0f, 0.0f };
-    Vec3s rotation = { 0, 0, 0 };
-    struct Actor* actor;
-    struct RailroadCrossing* rrxing;
-
-    gNumPermanentActors = 0;
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //         // spawn_foliage(d_course_mario_raceway_tree_spawns);
-    //         // spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
-    //         // spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
-    //         // vec3f_set(position, 150.0f, 40.0f, -1300.0f);
-    //         // position[0] *= gCourseDirection;
-    //         // add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
-    //         // vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
-    //         // position[0] *= gCourseDirection;
-    //         // actor = GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN));
-    //         // actor->flags |= 0x4000;
-    //         break;
-    //     case COURSE_CHOCO_MOUNTAIN:
-    //         spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);
-    //         spawn_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
-    //         break;
-    //     case COURSE_BOWSER_CASTLE:
-    //         spawn_foliage(d_course_bowsers_castle_tree_spawn);
-    //         spawn_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
-    //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
-    //         spawn_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
-    //         break;
-    //     case COURSE_YOSHI_VALLEY:
-    //         spawn_foliage(d_course_yoshi_valley_tree_spawn);
-    //         spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
-    //         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
-    //         position[0] *= gCourseDirection;
-    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
-    //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
-    //         spawn_foliage(d_course_frappe_snowland_tree_spawns);
-    //         spawn_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
-    //         spawn_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-    //         spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
-    //         break;
-    //     case COURSE_ROYAL_RACEWAY:
-    //         spawn_foliage(d_course_royal_raceway_tree_spawn);
-    //         spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-    //         spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         spawn_foliage(d_course_luigi_raceway_tree_spawn);
-    //         spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
-    //         break;
-    //     case COURSE_MOO_MOO_FARM:
-    //         if (gPlayerCountSelection1 != 4) {
-    //             spawn_foliage(d_course_moo_moo_farm_tree_spawn);
-    //         }
-    //         spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
-    //         break;
-    //     case COURSE_TOADS_TURNPIKE:
-    //         spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
-    //         break;
-    //     case COURSE_KALIMARI_DESERT:
-    //         spawn_foliage(d_course_kalimari_desert_cactus_spawn);
-    //         spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
-    //         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
-    //         position[0] *= gCourseDirection;
-    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-    //                                                                                 ACTOR_RAILROAD_CROSSING)];
-    //         rrxing->crossingId = 1;
-    //         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
-    //         position[0] *= gCourseDirection;
-    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-    //                                                                                 ACTOR_RAILROAD_CROSSING)];
-    //         rrxing->crossingId = 1;
-    //         vec3s_set(rotation, 0, -0x2000, 0);
-    //         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
-    //         position[0] *= gCourseDirection;
-    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-    //                                                                                 ACTOR_RAILROAD_CROSSING)];
-    //         rrxing->crossingId = 0;
-    //         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
-    //         position[0] *= gCourseDirection;
-    //         rrxing = (struct RailroadCrossing*) &gActorList[add_actor_to_empty_slot(position, rotation, velocity,
-    //                                                                                 ACTOR_RAILROAD_CROSSING)];
-    //         rrxing->crossingId = 0;
-    //         break;
-    //     case COURSE_SHERBET_LAND:
-    //         spawn_all_item_boxes(d_course_sherbet_land_item_box_spawns);
-    //         break;
-    //     case COURSE_RAINBOW_ROAD:
-    //         spawn_all_item_boxes(d_course_rainbow_road_item_box_spawns);
-    //         break;
-    //     case COURSE_WARIO_STADIUM:
-    //         spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
-    //         vec3f_set(position, -131.0f, 83.0f, 286.0f);
-    //         position[0] *= gCourseDirection;
-    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    //         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-    //         position[0] *= gCourseDirection;
-    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    //         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-    //         position[0] *= gCourseDirection;
-    //         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
-    //         break;
-    //     case COURSE_BLOCK_FORT:
-    //         spawn_all_item_boxes(d_course_block_fort_item_box_spawns);
-    //         break;
-    //     case COURSE_SKYSCRAPER:
-    //         spawn_all_item_boxes(d_course_skyscraper_item_box_spawns);
-    //         break;
-    //     case COURSE_DOUBLE_DECK:
-    //         spawn_all_item_boxes(d_course_double_deck_item_box_spawns);
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         spawn_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
-    //         init_kiwano_fruit();
-    //         func_80298D10();
-    //         break;
-    //     case COURSE_BIG_DONUT:
-    //         spawn_all_item_boxes(d_course_big_donut_item_box_spawns);
-    //         break;
-    // }
-    gNumPermanentActors = gNumActors;
-}
-
 /**
- * @brief Loads actor textures, course specific actor textures.
- * Calls to spawn_course_vehicles and place_course_actors
+ * @brief Loads actor textures, track specific actor textures.
+ * Calls to spawn_track_vehicles and place_track_actors
  *
  */
 void init_actors_and_load_textures(void) {
@@ -1306,8 +1174,9 @@ void init_actors_and_load_textures(void) {
     destroy_all_actors();
     CM_CleanWorld();
 
+    gNumPermanentActors = 0;
     CM_BeginPlay();
-    spawn_course_actors();
+    gNumPermanentActors = gNumActors;
 }
 
 void play_sound_before_despawn(struct Actor* actor) {
@@ -1508,7 +1377,7 @@ UNUSED void prototype_actor_spawn_data(Player* player, uintptr_t arg1) {
 
     var_s0 = (struct test*) arg1;
     while (var_s0->thing[0] != END_OF_SPAWN_DATA) {
-        sp64[0] = var_s0->thing[0] * gCourseDirection;
+        sp64[0] = var_s0->thing[0] * gTrackDirection;
         sp64[1] = var_s0->thing[1];
         sp64[2] = var_s0->thing[2];
         if (arg1 & arg1) {}
@@ -2447,7 +2316,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 
 #include "actors/palm_tree/render.inc.c"
 
-void render_item_boxes(struct UnkStruct_800DC5EC* arg0) {
+void render_item_boxes(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     struct Actor* actor;
     s32 i;
@@ -2474,7 +2343,7 @@ void render_item_boxes(struct UnkStruct_800DC5EC* arg0) {
     }
 }
 
-void render_course_actors(struct UnkStruct_800DC5EC* arg0) {
+void render_course_actors(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     u16 pathCounter = arg0->pathCounter;
     UNUSED s32 pad[12];

@@ -44,7 +44,7 @@
 #include "port/Engine.h"
 #include "port/Game.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
 #include "src/engine/HM_Intro.h"
 #include "src/port/interpolation/FrameInterpolation.h"
@@ -442,8 +442,8 @@ char gTextDistance[] = "distance";
 
 char* gTextMenuOption[] = {
     "return to menu",
-    "erase records for this course",
-    "erase ghost from this course",
+    "erase records for this track",
+    "erase ghost from this track",
 };
 
 char* D_800E7840[] = {
@@ -1419,10 +1419,10 @@ void func_80091B78(void) {
         D_8018E838[i] = 0;
     }
 
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = 160;
+    gScreenOneCtx->screenStartY = 120;
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
     gFadeModeSelection = 1;
     setup_menus();
 
@@ -1491,7 +1491,7 @@ void func_80091EE4(void) {
         func_800B6708();
 
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
+            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].trackIndex)) {
                 func_800B64EC(temp_s0);
                 temp_s0 = 2;
                 gGhostPlayerInit = 0;
@@ -2834,13 +2834,13 @@ void func_80095574(void) {
         }
 
         // This reset is not necessary. It wraps around automatically.
-        // if ((GetCourseIndex() >= (NUM_COURSES - 1)) || (GetCourseIndex() < 0)) {
+        // if ((GetTrackIndex() >= (NUM_TRACKS - 1)) || (GetTrackIndex() < 0)) {
         //     gCurrentCourseId = 0;
         // }
-        print_str_num(0x00000050, 0x0000006E, "map_number", GetCourseIndex());
+        print_str_num(0x00000050, 0x0000006E, "map_number", GetTrackIndex());
 
         // Bump the text over by 1 character width when the track id becomes two digits (10, 11, 12 etc.)
-        if (GetCourseIndex() < 10) {
+        if (GetTrackIndex() < 10) {
             var_v0 = 0;
         } else {
             var_v0 = 8;
@@ -3148,7 +3148,7 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 // its plausible that its instead using it as some form semi-random data for the static pattern?
 
 // This function is responsible for drawing a near unnoticeable static pattern
-// over the course images when loading the cup selection screen
+// over the track previews when loading the cup selection screen
 // Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it
 // last longer
 Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height) {
@@ -3551,7 +3551,7 @@ Gfx* draw_box(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
 /**
  * Renders
  *
- * Menus: Menu transition swipes, course label highlight
+ * Menus: Menu transition swipes, track label highlight
  *
  * All game modes: Background cover at pause screen
  *
@@ -4953,10 +4953,10 @@ void func_8009C918(void) {
     s32 someIndex;
 
     for (someIndex = 0; someIndex < 4; someIndex++) {
-        D_8018E7E8[someIndex].x = D_8015F480[someIndex].screenStartX;
-        D_8018E7E8[someIndex].y = D_8015F480[someIndex].screenStartY;
-        D_8018E810[someIndex].x = D_8015F480[someIndex].screenWidth;
-        D_8018E810[someIndex].y = D_8015F480[someIndex].screenHeight;
+        D_8018E7E8[someIndex].x = gScreenContexts[someIndex].screenStartX;
+        D_8018E7E8[someIndex].y = gScreenContexts[someIndex].screenStartY;
+        D_8018E810[someIndex].x = gScreenContexts[someIndex].screenWidth;
+        D_8018E810[someIndex].y = gScreenContexts[someIndex].screenHeight;
     }
 
     D_8018E7E8[4].x = SCREEN_WIDTH / 2;
@@ -5020,7 +5020,7 @@ void draw_fade_in(s32 arg0, s32 arg1, s32 arg2) {
     s32 leftEdge;
     s32 rightEdge;
     UNUSED s32 pad[3];
-    struct UnkStruct_800DC5EC* unk;
+    ScreenContext* unk;
     struct UnkStruct_8018E7E8 *size, *start;
 
     if ((gModeSelection == GRAND_PRIX) || (gModeSelection == TIME_TRIALS)) {
@@ -5038,7 +5038,7 @@ void draw_fade_in(s32 arg0, s32 arg1, s32 arg2) {
         w = size->x;
         h = size->y;
     } else {
-        unk = &D_8015F480[arg0];
+        unk = &gScreenContexts[arg0];
         x = unk->screenStartX;
         y = unk->screenStartY;
         w = unk->screenWidth;
@@ -5126,7 +5126,7 @@ void func_8009CE64(s32 arg0) {
     func_8009CE64_label1:
         if (var_a1) {
             gGotoMenu = 9;
-            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+            gCreditsCourseId = TRACK_LUIGI_RACEWAY;
         } else {
             gGotoMenu = 1;
             gMenuSelection = MAIN_MENU;
@@ -5269,7 +5269,7 @@ void func_8009CE64(s32 arg0) {
                         case 0:            /* switch 4 */
                             SelectMarioRaceway();
                             CM_SetCup(GetFlowerCup());
-                            SetCupCursorPosition(COURSE_FOUR);
+                            SetCupCursorPosition(TRACK_FOUR);
                             gCurrentCourseId = 0;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
@@ -5280,7 +5280,7 @@ void func_8009CE64(s32 arg0) {
                         case 1: /* switch 4 */
                             SelectLuigiRaceway();
                             CM_SetCup(GetMushroomCup());
-                            SetCupCursorPosition(COURSE_ONE);
+                            SetCupCursorPosition(TRACK_ONE);
                             gCurrentCourseId = (s16) 1;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
@@ -5292,8 +5292,8 @@ void func_8009CE64(s32 arg0) {
                         case 2: /* switch 4 */
                             SelectKalimariDesert();
                             CM_SetCup(GetMushroomCup());
-                            SetCupCursorPosition(COURSE_FOUR);
-                            gCurrentCourseId = COURSE_KALIMARI_DESERT;
+                            SetCupCursorPosition(TRACK_FOUR);
+                            gCurrentCourseId = TRACK_KALIMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -5303,7 +5303,7 @@ void func_8009CE64(s32 arg0) {
                         case 3: /* switch 4 */
                             SelectWarioStadium();
                             CM_SetCup(GetStarCup());
-                            SetCupCursorPosition(COURSE_ONE);
+                            SetCupCursorPosition(TRACK_ONE);
                             gCurrentCourseId = 0x000E;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
@@ -5316,7 +5316,7 @@ void func_8009CE64(s32 arg0) {
                         case 4: /* switch 4 */
                             SelectBowsersCastle();
                             CM_SetCup(GetStarCup());
-                            SetCupCursorPosition(COURSE_FOUR);
+                            SetCupCursorPosition(TRACK_FOUR);
                             gCurrentCourseId = 2;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
@@ -5327,7 +5327,7 @@ void func_8009CE64(s32 arg0) {
                         case 5: /* switch 4 */
                             SelectSherbetLand();
                             CM_SetCup(GetFlowerCup());
-                            SetCupCursorPosition(COURSE_TWO);
+                            SetCupCursorPosition(TRACK_TWO);
                             gCurrentCourseId = 0x000C;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
@@ -5341,7 +5341,7 @@ void func_8009CE64(s32 arg0) {
                         default:
                             break;
                     }
-                    SetCourseFromCup();
+                    SetTrackFromCup();
                     gNextDemoId += 1;
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
@@ -5393,7 +5393,7 @@ void func_8009CE64(s32 arg0) {
                 case 2: /* switch 5 */
                 case 3: /* switch 5 */
                     gGamestateNext = 9;
-                    gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+                    gCreditsCourseId = TRACK_LUIGI_RACEWAY;
                     break;
                 default: /* switch 5 */
                     gGamestateNext = 4;
@@ -5481,10 +5481,10 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
         var_ra = D_8018E810[arg0].x;
         sp44 = D_8018E810[arg0].y;
     } else {
-        var_t3 = D_8015F480[arg0].screenStartX;
-        var_t4 = D_8015F480[arg0].screenStartY;
-        var_ra = D_8015F480[arg0].screenWidth;
-        sp44 = D_8015F480[arg0].screenHeight;
+        var_t3 = gScreenContexts[arg0].screenStartX;
+        var_t4 = gScreenContexts[arg0].screenStartY;
+        var_ra = gScreenContexts[arg0].screenWidth;
+        sp44 = gScreenContexts[arg0].screenHeight;
     }
     var_t2 = (gCurrentTransitionTime[arg0] * 0xFF) / gTransitionDuration[arg0];
     if (var_t2 >= 0x100) {
@@ -5568,10 +5568,10 @@ void func_8009D998(s32 arg0) {
         var_t2 = D_8018E810[arg0].x;
         var_t3 = D_8018E810[arg0].y;
     } else {
-        var_t0 = D_8015F480[arg0].screenStartX;
-        var_t1 = D_8015F480[arg0].screenStartY;
-        var_t2 = D_8015F480[arg0].screenWidth;
-        var_t3 = D_8015F480[arg0].screenHeight;
+        var_t0 = gScreenContexts[arg0].screenStartX;
+        var_t1 = gScreenContexts[arg0].screenStartY;
+        var_t2 = gScreenContexts[arg0].screenWidth;
+        var_t3 = gScreenContexts[arg0].screenHeight;
     }
     temp_v0 = var_t2 / 2;
     temp_v1 = var_t3 / 2;
@@ -7222,12 +7222,12 @@ void func_800A1500(MenuItem* arg0) {
 }
 
 void func_800A15EC(MenuItem* arg0) {
-    s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
+    s16 trackId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
-         func_8009C204(gDisplayListHead, D_800E7D74[courseId], arg0->column, arg0->row, 2);
+         func_8009C204(gDisplayListHead, D_800E7D74[trackId], arg0->column, arg0->row, 2);
     gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40, arg0->row + 0x30,
                                 0, 0, 0, 0xFF);
-    gDisplayListHead = func_8009C204(gDisplayListHead, D_800E7DC4[courseId], arg0->column,
+    gDisplayListHead = func_8009C204(gDisplayListHead, D_800E7DC4[trackId], arg0->column,
                                      arg0->row + 0x27, 3);
     if (func_800B639C(arg0->type - 0x7C) >= 0) {
         // The "^ 0" is required to force the use of v1 instead of a 4th s* register
@@ -7259,14 +7259,14 @@ void func_800A1780(MenuItem* arg0) {
          render_menu_textures(gDisplayListHead, D_02001FA4, arg0->column, arg0->row);
 }
 
-// render course preview
+// render track preview
 void render_menu_item_data_course_image(MenuItem* arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
     if (func_800B639C(gTimeTrialDataCourseIndex) >= TIME_TRIAL_DATA_LUIGI_RACEWAY) {
         gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
         gDisplayListHead = render_menu_textures(gDisplayListHead, D_02004A0C, 0x57, 0x84);
     }
-    // course minimap
+    // track minimap
     //! @bug todo: This function will not work in custom courses.
     func_8004EF9C(gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]);
     do {
@@ -7275,20 +7275,20 @@ void render_menu_item_data_course_image(MenuItem* arg0) {
 }
 
 void render_menu_item_data_course_info(MenuItem* arg0) {
-    s16 courseId;
+    s16 trackId;
     s32 recordType;
     s32 rowOffset;
 
-    courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
+    trackId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
-    // name of the course
+    // name of the track
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsCourseId(courseId)->Name, 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsTrackId(trackId)->Name, 0, 0.75f, 0.75f);
 
     // distance
     set_text_color(TEXT_RED);
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
-    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsCourseId(courseId)->CourseLength, 1, 0.75f, 0.75f);
+    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsTrackId(trackId)->TrackLength, 1, 0.75f, 0.75f);
 
     // Best lap record
     set_text_color(TEXT_YELLOW);
@@ -8018,8 +8018,8 @@ void func_800A3E60(MenuItem* arg0) {
                 } else {
                     print_text_mode_1(
                         0xBB - arg0->column, 0xAA + (0x1E * var_s1),
-                        CM_GetPropsCourseId(
-                            gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                        CM_GetPropsTrackId(
+                            gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
                             ->Name,
                         0, 0.45f, 0.45f);
                 }
@@ -8283,9 +8283,9 @@ void render_pause_menu_versus(MenuItem* arg0) {
     s32 leftEdge;
     s32 rightEdge;
     Unk_D_800E70A0* temp_s3;
-    struct UnkStruct_800DC5EC* temp_v0;
+    ScreenContext* temp_v0;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -8347,10 +8347,10 @@ void render_pause_grand_prix(MenuItem* arg0) {
     s32 temp_t4;
     s32 var_s0;
     Unk_D_800E70A0* temp_s3;
-    struct UnkStruct_800DC5EC* temp_v0;
+    ScreenContext* temp_v0;
     f32 one = 1.0f;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -8391,7 +8391,7 @@ void render_pause_grand_prix(MenuItem* arg0) {
 }
 
 void render_pause_battle(MenuItem* arg0) {
-    struct UnkStruct_800DC5EC* temp_v0;
+    ScreenContext* temp_v0;
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;
@@ -8402,7 +8402,7 @@ void render_pause_battle(MenuItem* arg0) {
     s32 rightEdge;
     Unk_D_800E70A0* temp_s3;
 
-    temp_v0 = &D_8015F480[gIsGamePaused - 1];
+    temp_v0 = &gScreenContexts[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
@@ -8595,8 +8595,8 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
                     } else {
                         print_text_mode_1(
                             0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                            CM_GetPropsCourseId(
-                                gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                            CM_GetPropsTrackId(
+                                gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
                                 ->Name,
                             0, 0.75f, 0.75f);
                     }
@@ -8670,7 +8670,7 @@ void func_800A6034(MenuItem* arg0) {
         text = CM_GetProps()->Name;
         //! @warning this used to be gCurrentCourseId % 4
         // Hopefully this is equivallent.
-        set_text_color((s32) GetCourseIndex() % 4);
+        set_text_color((s32) GetTrackIndex() % 4);
         print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }
@@ -11423,15 +11423,15 @@ void func_800AC458(MenuItem* arg0) {
 
             if ((arg0->param2 + temp) < 0) {
                 arg0->param2 += temp;
-                D_800DC5EC->screenStartX += temp;
-                D_800DC5F0->screenStartX -= temp;
+                gScreenOneCtx->screenStartX += temp;
+                gScreenTwoCtx->screenStartX -= temp;
             } else {
                 arg0->param2 = 0;
                 arg0->column = 0;
                 arg0->state = 2;
                 arg0->param1 = 0;
-                D_800DC5EC->screenStartX = 0x00F0;
-                D_800DC5F0->screenStartX = 0x0050;
+                gScreenOneCtx->screenStartX = 0x00F0;
+                gScreenTwoCtx->screenStartX = 0x0050;
             }
             break;
         case 2:
@@ -11528,14 +11528,14 @@ void func_800AC458(MenuItem* arg0) {
             arg0->row = arg0->param2;
             if (arg0->param2 < 0xF0) {
                 arg0->param2 += 0x10;
-                D_800DC5EC->screenStartY += 0x10;
-                D_800DC5F0->screenStartY -= 0x10;
+                gScreenOneCtx->screenStartY += 0x10;
+                gScreenTwoCtx->screenStartY -= 0x10;
             } else {
                 arg0->param2 = 0;
                 arg0->state = 0x0000000D;
                 arg0->param1 = 0;
-                D_800DC5EC->screenStartY = 0x012C;
-                D_800DC5F0->screenStartY = -0x003C;
+                gScreenOneCtx->screenStartY = 0x012C;
+                gScreenTwoCtx->screenStartY = -0x003C;
                 D_8015F894 = 4;
                 func_800CA330(0x19U);
             }
@@ -11831,8 +11831,8 @@ void func_800AD2E8(MenuItem* arg0) {
             }
             if ((arg0->param2 + var_a1) < 0) {
                 arg0->param2 += var_a1;
-                D_800DC5EC->screenStartX += var_a1;
-                D_800DC5F0->screenStartX -= var_a1;
+                gScreenOneCtx->screenStartX += var_a1;
+                gScreenTwoCtx->screenStartX -= var_a1;
             } else {
                 arg0->param2 = 0;
                 arg0->column = 0;
@@ -11840,8 +11840,8 @@ void func_800AD2E8(MenuItem* arg0) {
                 if ((arg0->state == 9) && (gPostTimeTrialReplayCannotSave == 1)) {
                     arg0->state--;
                 }
-                D_800DC5EC->screenStartX = 0x00F0;
-                D_800DC5F0->screenStartX = 0x0050;
+                gScreenOneCtx->screenStartX = 0x00F0;
+                gScreenTwoCtx->screenStartX = 0x0050;
             }
             break;
         case 5:
@@ -12110,8 +12110,8 @@ void func_800AD2E8(MenuItem* arg0) {
             arg0->row = arg0->param2;
             if (arg0->param2 < 0xF0) {
                 arg0->param2 += 0x10;
-                D_800DC5EC->screenStartY += 0x10;
-                D_800DC5F0->screenStartY -= 0x10;
+                gScreenOneCtx->screenStartY += 0x10;
+                gScreenTwoCtx->screenStartY -= 0x10;
                 return;
             }
             switch (arg0->param1) {
@@ -12137,8 +12137,8 @@ void func_800AD2E8(MenuItem* arg0) {
             }
             arg0->param2 = 0;
             arg0->state = 0x0000001F;
-            D_800DC5EC->screenStartY = 0x012C;
-            D_800DC5F0->screenStartY = -0x003C;
+            gScreenOneCtx->screenStartY = 0x012C;
+            gScreenTwoCtx->screenStartY = -0x003C;
             D_8015F894 = 4;
             func_800CA330(0x19U);
             break;

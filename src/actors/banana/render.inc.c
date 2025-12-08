@@ -25,11 +25,11 @@ void render_actor_banana(Camera* camera, UNUSED Mat4 arg1, struct BananaActor* b
         return;
     }
 
-    if ((banana->pos[1] > gCourseMaxY + 800.0f)) {
+    if ((banana->pos[1] > gTrackMaxY + 800.0f)) {
         actor_not_rendered(camera, (struct Actor*) banana);
         return;
     }
-    if (banana->pos[1] < (gCourseMinY - 800.0f)) {
+    if (banana->pos[1] < (gTrackMinY - 800.0f)) {
         actor_not_rendered(camera, (struct Actor*) banana);
         return;
     }

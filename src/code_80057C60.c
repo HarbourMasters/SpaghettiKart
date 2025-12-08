@@ -411,31 +411,31 @@ void func_80057C60(void) {
 void func_80057CE4(void) {
     switch (D_8018D21C) {
         case 0:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 1:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 2:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 3:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 4:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 8:
-            func_802A3730(D_800DC5EC);
+            func_802A3730(gScreenOneCtx);
             break;
         case 9:
-            func_802A3730(D_800DC5F0);
+            func_802A3730(gScreenTwoCtx);
             break;
         case 10:
-            func_802A3730(D_800DC5F4);
+            func_802A3730(gScreenThreeCtx);
             break;
         case 11:
-            func_802A3730(D_800DC5F8);
+            func_802A3730(gScreenFourCtx);
             break;
     }
 }
@@ -489,7 +489,7 @@ void func_80057FC4(u32 arg0) {
     }
 }
 
-void render_object(struct UnkStruct_800DC5EC* screen) {
+void render_object(ScreenContext* screen) {
     UNUSED Gfx* temp_v1;
 
     if (gHUDDisable != 0) {
@@ -539,7 +539,7 @@ void render_player_snow_effect(Camera* camera) {
 void render_object_for_player(s32 cameraId) {
     CM_DrawObjects(cameraId);
     CM_DrawParticles(cameraId);
-    CM_RenderCourseObjects(cameraId);
+    CM_DrawTrackObjects(cameraId);
     CM_DrawEditor();
 
     render_object_smoke_particles(cameraId);
@@ -1177,7 +1177,7 @@ void func_80059D00(void) {
                 }
                 break;
         }
-        update_object();
+        tick_objects();
         CM_TickObjects();
         CM_TickParticles();
         func_800744CC();
@@ -1348,81 +1348,10 @@ void func_8005A71C(void) {
     //}
 }
 
-void update_object(void) {
+void tick_objects(void) {
 
-    CM_UpdateCourseObjects();
+    CM_TickTrackObjects();
 
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //     case COURSE_CHOCO_MOUNTAIN:
-    //         break;
-    //     case COURSE_BOWSER_CASTLE:
-    //         func_80081208();
-    //         update_flame_particle();
-    //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_trash_bin();
-    //             func_8007E4C4();
-    //             if (gModeSelection != TIME_TRIALS) {
-    //                 update_bat();
-    //             }
-    //             wrapper_update_boos();
-    //             update_cheep_cheep(0);
-    //         }
-    //         break;
-    //     case COURSE_YOSHI_VALLEY:
-    //         func_80083080();
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_hedgehogs();
-    //         }
-    //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_snowmen();
-    //         }
-    //         update_snowflakes();
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_crabs();
-    //         }
-    //         if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-    //             update_seagulls();
-    //         }
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         if (D_80165898 != 0) {
-    //             update_hot_air_balloon();
-    //         }
-    //         break;
-    //     case COURSE_MOO_MOO_FARM:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_moles();
-    //         }
-    //         break;
-    //     case COURSE_KALIMARI_DESERT:
-    //         update_train_smoke();
-    //         break;
-    //     case COURSE_SHERBET_LAND:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             func_800842C8();
-    //         }
-    //         update_penguins();
-    //         break;
-    //     case COURSE_RAINBOW_ROAD:
-    //         if (gGamestate != CREDITS_SEQUENCE) {
-    //             update_neon();
-    //             update_chain_chomps();
-    //         }
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         update_ferries_smoke_particle();
-    //         break;
-    // }
-    // if (D_80165730 != 0) {
-    //    func_80074EE8(); // Grand prix balloons
-    //}
     func_80076F2C();
     if (!IsFrappeSnowland()) {
         update_leaf();

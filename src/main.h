@@ -49,7 +49,7 @@ struct GfxPool {
     /* 0x00180 */ Mtx mtxUnk;                          // Matrix unused
     /* 0x001C0 */ Mtx mtxLookAt[4];                    // Matrix for lookat screen modes
     /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE];       // Matrix hud elements and 2D related effects
-    /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix course objects
+    /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix track objects
     /* 0x0EAC0 */ Mtx mtxShadow[MTX_SHADOW_POOL_SIZE]; // Matrix shadow characters
     /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE];     // Matrix kart characters
     /* 0x0FAC0 */ Mtx mtxEffect[MTX_EFFECT_POOL_SIZE]; // Matrix misc effects

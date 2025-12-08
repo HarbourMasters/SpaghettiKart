@@ -417,7 +417,7 @@ typedef struct {
     // Something related to time trial ghost data?
     /* 0x00 */ s32 unk_00;
     /* 0x04 */ u8 ghostDataSaved;
-    /* 0x05 */ s8 courseIndex;
+    /* 0x05 */ s8 trackIndex;
     /* 0x06 */ u8 characterId;
     /* 0x07 */ u8 unk_07[0x3C];
     /* 0x43 */ u8 pad_43[0x7F - 0x43];

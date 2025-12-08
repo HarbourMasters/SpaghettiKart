@@ -213,7 +213,7 @@ extern Collision D_8018C0B0[];
  * First indexObjectList1 gets an unused index, then indexObjectList2, then indexObjectList3, then indexObjectList4, and
  *then it loops.
  *
- * The objects found at the indices in each list appears to be course dependent
+ * The objects found at the indices in each list appears to be track dependent
  **/
 
 #define NUM_YV_FLAG_POLES 4

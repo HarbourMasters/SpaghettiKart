@@ -1,7 +1,7 @@
 #include "Cup.h"
-#include "courses/Course.h"
+#include "tracks/Track.h"
 
-Cup::Cup(std::string id, const char* name, std::vector<std::shared_ptr<Course>> courses) {
+Cup::Cup(std::string id, const char* name, std::vector<std::shared_ptr<Track>> courses) {
     Id = id;
     Name = name;
     Courses = courses;
@@ -23,14 +23,14 @@ void Cup::Previous() {
     }
 }
 
-void Cup::SetCourse(size_t position) {
+void Cup::SetTrack(size_t position) {
     if ((position < 0) || (position >= Courses.size())) {
-        throw std::invalid_argument("Invalid course index.");
+        throw std::invalid_argument("Invalid track index.");
     }
     CursorPosition = position;
 }
 
-std::shared_ptr<Course> Cup::GetCourse() {
+std::shared_ptr<Track> Cup::GetTrack() {
     return Courses[CursorPosition];
 }
 

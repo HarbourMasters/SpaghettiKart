@@ -55,11 +55,11 @@ u16 D_800DC5E4 = 0;
 //! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
-ALIGNED16 struct UnkStruct_800DC5EC D_8015F480[4] = { 0 };
-struct UnkStruct_800DC5EC* D_800DC5EC = &D_8015F480[0];
-struct UnkStruct_800DC5EC* D_800DC5F0 = &D_8015F480[1];
-struct UnkStruct_800DC5EC* D_800DC5F4 = &D_8015F480[2];
-struct UnkStruct_800DC5EC* D_800DC5F8 = &D_8015F480[3];
+ALIGNED16 ScreenContext gScreenContexts[4] = { 0 };
+ScreenContext* gScreenOneCtx = &gScreenContexts[0];
+ScreenContext* gScreenTwoCtx = &gScreenContexts[1];
+ScreenContext* gScreenThreeCtx = &gScreenContexts[2];
+ScreenContext* gScreenFourCtx = &gScreenContexts[3];
 u16 gIsGamePaused = false; // true if the game is paused and false if the game is not paused
 bool gIsEditorPaused = true;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
@@ -67,7 +67,7 @@ u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
 void set_mirror_mode(s32 mirror) {
     if (gIsMirrorMode != mirror) {
-        UnLoadCourse();
+        UnLoadTrack();
     }
     gIsMirrorMode = mirror;
 }
@@ -78,7 +78,7 @@ Lights1 D_800DC610[] = {
     gdSPDefLights1(209, 209, 209, 255, 255, 255, 0, 0, 120),
 };
 UNUSED s32 pad_800029B0 = 0x80000000;
-s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+s16 gCreditsCourseId = TRACK_LUIGI_RACEWAY;
 s16 gPlaceItemBoxes = 1;
 
 // Technically a pointer to an array, but declaring it so creates regalloc issues.
@@ -95,14 +95,14 @@ s32 D_8015F5A4;
 s32 code_800029B0_bss_pad[48];
 Vtx* vtxBuffer[32];
 
-s16 gCourseMaxX;
-s16 gCourseMinX;
+s16 gTrackMaxX;
+s16 gTrackMinX;
 
-s16 gCourseMaxY; // s16 or u16?
-s16 gCourseMinY;
+s16 gTrackMaxY; // s16 or u16?
+s16 gTrackMinY;
 
-s16 gCourseMaxZ;
-s16 gCourseMinZ;
+s16 gTrackMaxZ;
+s16 gTrackMinZ;
 
 s16 D_8015F6F4;
 s16 D_8015F6F6;
@@ -131,7 +131,7 @@ Vec3f D_8015F758;
 Vec3f D_8015F768;
 Vec3f D_8015F778;
 
-f32 gCourseDirection; // Extra mode, flips vertices.
+f32 gTrackDirection; // Extra mode, flips vertices.
 s32 gNumScreens;      // Set to zero in single player mode
 s32 D_8015F790[64];   // Unknown data, potentially not used.
 u16 D_8015F890;
@@ -201,15 +201,15 @@ void setup_race(void) {
         set_mirror_mode(0);
     }
     if (gIsMirrorMode) {
-        gCourseDirection = -1.0f;
+        gTrackDirection = -1.0f;
     } else {
-        gCourseDirection = 1.0f;
+        gTrackDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
         // Skip for debug menu
         if (gMenuSelection != START_MENU) {
-            SetCourseFromCup();
+            SetTrackFromCup();
         }
     }
     gActiveScreenMode = gScreenModeSelection;
@@ -217,8 +217,7 @@ void setup_race(void) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        load_course(gCurrentCourseId);
-        course_init();
+        load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
@@ -244,7 +243,7 @@ void setup_race(void) {
     func_80091FA4();
     init_actors_and_load_textures();
 
-    // Set finishline position. This is now done in files in src/engine/courses/*
+    // Set finishline position. This is now done in files in src/engine/tracks/*
     // if (gModeSelection != BATTLE) {
     //     D_8015F8D0[1] = (f32) (gCurrentTrackPath->posY - 15);
     //     D_8015F8D0[2] = gCurrentTrackPath->posZ;
@@ -260,7 +259,7 @@ void setup_race(void) {
     if (!gDemoMode) {
         //! @warning this used to be gCurrentCourseId + 4
         // Hopefully this is equivallent.
-        func_800CA008(gPlayerCountSelection1 - 1, GetCourseIndex() + 4);
+        func_800CA008(gPlayerCountSelection1 - 1, GetTrackIndex() + 4);
         func_800CB2C4();
     }
 
@@ -289,17 +288,16 @@ void setup_editor(void) {
         D_80150120 = 0;
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        load_course(gCurrentCourseId);
-        course_init();
+        load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
     }
 
     if (gIsMirrorMode) {
-        gCourseDirection = -1.0f;
+        gTrackDirection = -1.0f;
     } else {
-        gCourseDirection = 1.0f;
+        gTrackDirection = 1.0f;
     }
 
     // Cow related
@@ -326,41 +324,6 @@ void setup_editor(void) {
 void func_80002DAC(void) {
 
     CM_SomeSounds();
-
-    // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
-    //        // vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
-    //        // func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-    //         break;
-    //     case COURSE_ROYAL_RACEWAY:
-    //         vec3f_set(D_8015F748, 177.0f, 87.0f, -393.0f);
-    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-    //         break;
-    //     case COURSE_LUIGI_RACEWAY:
-    //         vec3f_set(D_8015F748, 85.0f, 21.0f, -219.0f);
-    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-    //         break;
-    //     case COURSE_WARIO_STADIUM:
-    //         vec3f_set(D_8015F748, 298.0f, 202.0f, -850.0f);
-    //         func_800C9D80(D_8015F748, D_802B91C8, 0x5103700B);
-    //         vec3f_set(D_8015F758, -1600.0f, 202.0f, -2430.0f);
-    //         func_800C9D80(D_8015F758, D_802B91C8, 0x5103700B);
-    //         vec3f_set(D_8015F768, -2708.0f, 202.0f, 1762.0f);
-    //         func_800C9D80(D_8015F768, D_802B91C8, 0x5103700B);
-    //         vec3f_set(D_8015F778, -775.0f, 202.0f, 1930.0f);
-    //         func_800C9D80(D_8015F778, D_802B91C8, 0x5103700B);
-    //         break;
-    //     case COURSE_KOOPA_BEACH:
-    //         vec3f_set(D_8015F738, 153.0f, 0.0f, 2319.0f);
-    //         func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
-    //         break;
-    //     case COURSE_DK_JUNGLE:
-    //         vec3f_set(D_8015F738, -790.0f, -255.0f, -447.0f);
-    //         func_800C9D80(D_8015F738, D_802B91C8, 0x51028001);
-    //         break;
-    //     default:
-    //         break;
-    // }
 }
 
 /**
@@ -385,7 +348,7 @@ void credits_spawn_actors(void) {
     D_800DC5C8 = 0;
     gNumActors = 0;
     set_mirror_mode(0);
-    gCourseDirection = 1.0f;
+    gTrackDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
 

@@ -9,8 +9,6 @@
 extern "C" {
 #endif
 
-extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
-
 /* File specific types */
 
 /*
@@ -19,7 +17,7 @@ Known `types` for `MenuItem`
 0x54: "Flower Cup" box on the cup selection screen
 0x55: "Star Cup" box on the cup selection screen
 0x56: "Special Cup" box on the cup selection screen
-0x5E: A box of static over the course images as the cup selection screen loads in.
+0x5E: A box of static over the track previews as the cup selection screen loads in.
       It is near unnoticeable though as in practice it doesn't last long enough to be seen.
       Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make
 it last longer See `func_80096CD8` for the actual drawing of the static
@@ -37,7 +35,7 @@ typedef struct {
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
     /* 0x16 */ s16 unk16;            // Potentially unused
     /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
-    /* 0x1C */ s32 param1;           // Multi use. Sometimes cup selection, sometimes course index.
+    /* 0x1C */ s32 param1;           // Multi use. Sometimes cup selection, sometimes track index.
     /* 0x20 */ s32 param2; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
     /* 0x24 */ f32 paramf; // Multi use, x scaling for some things, rotation multiplier for the question box in some
                            // menus, probably some other things

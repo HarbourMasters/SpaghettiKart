@@ -22,7 +22,7 @@ extern "C" {
  * @arg end x and z patrol location
  * 
  * Crab patrols between start and end.
- * The game automatically places the actor on the course surface.
+ * The game automatically places the actor on the surface of the tracks geometry.
  * Therefore, providing a Y height is unnecessary.
  * 
  * Crab appears to have a maximum patrolling distance and will patrol between

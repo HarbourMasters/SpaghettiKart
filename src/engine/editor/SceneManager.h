@@ -2,26 +2,26 @@
 
 #include <libultraship/libultraship.h>
 #include "CoreMath.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include <optional>
 #include <nlohmann/json.hpp>
 
 namespace Editor {
     void SaveLevel();
-    void LoadLevel(Course* course, std::string sceneFile);
+    void LoadLevel(Track* track, std::string sceneFile);
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson);
     void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
-    void LoadMinimap(Course* course, std::string filePath);
-    void SetDefaultMinimap(Course* course);
+    void LoadMinimap(Track* track, std::string filePath);
+    void SetDefaultMinimap(Track* track);
 
     void SaveActors(nlohmann::json& actorList);
     void SaveStaticMeshActors(nlohmann::json& actorList);
     void SaveTour(nlohmann::json& tour);
 
-    void LoadProps(Course* course, nlohmann::json& data);
-    void LoadActors(Course* course, nlohmann::json& data);
-    void LoadStaticMeshActors(Course* course, nlohmann::json& data);
-    void LoadTour(Course* course, nlohmann::json& data);
+    void LoadProps(Track* track, nlohmann::json& data);
+    void LoadActors(Track* track, nlohmann::json& data);
+    void LoadStaticMeshActors(Track* track, nlohmann::json& data);
+    void LoadTour(Track* track, nlohmann::json& data);
 
     void SpawnActors(std::vector<std::pair<std::string, SpawnParams>> spawnList);
 

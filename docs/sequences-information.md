@@ -24,7 +24,7 @@
 ## Battle Courses
 
 
-| Battle Course Name | Audio Filename |
+| Battle Track Name | Audio Filename |
 | ------------------ | --------------- |
 | Big Donut          | `battle_arenas` |
 | Block Fort         | `block_fort` |

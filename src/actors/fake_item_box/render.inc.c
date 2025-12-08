@@ -34,11 +34,11 @@ void render_actor_fake_item_box(Camera* camera, struct FakeItemBox* fakeItemBox)
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);
         return;
     }
-    if (((f32) gCourseMaxY + 800.0f) < fakeItemBox->pos[1]) {
+    if (((f32) gTrackMaxY + 800.0f) < fakeItemBox->pos[1]) {
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);
         return;
     }
-    if (fakeItemBox->pos[1] < ((f32) gCourseMinY - 800.0f)) {
+    if (fakeItemBox->pos[1] < ((f32) gTrackMinY - 800.0f)) {
         actor_not_rendered(camera, (struct Actor*) fakeItemBox);
         return;
     }

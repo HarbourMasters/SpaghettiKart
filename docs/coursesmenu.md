@@ -12,7 +12,7 @@ How courses work in mk64
   <div class="content">
     <div class="pageheading">Courses</div>
     <div class="pagedescription">
-      <p>Some course related stuff</p>
+      <p>Some track related stuff</p>
     </div>
   </div>
 </div>

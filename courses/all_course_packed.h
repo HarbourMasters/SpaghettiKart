@@ -2,7 +2,7 @@
 #define ALL_COURSE_PACKED_H
 
 /** WARNING!!!
- * Each course #defines a token that looks like `d_course_<course_name_here>_packed_end`.
+ * Each track #defines a token that looks like `d_course_<course_name_here>_packed_end`.
  * These macros only work if the the last Gfx array in each packed.inc.c file has its length hardcoded
  * in the accompanying header file. If that array is resized or moved the #defines will become
  * incorrect

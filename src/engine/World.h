@@ -3,7 +3,7 @@
 #include <libultraship.h>
 
 #include "CoreMath.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/cameras/GameCamera.h"
 #include "objects/Object.h"
 #include "Cup.h"
@@ -29,7 +29,7 @@ extern "C" {
 class Cup; // <-- Forward declaration
 class OObject;
 class GameCamera;
-class Course;
+class Track;
 class StaticMeshActor;
 class OBombKart;
 class TrainCrossing;
@@ -52,7 +52,7 @@ typedef struct Matrix {
     {}
 };
 private:
-    std::shared_ptr<Course> CurrentCourse;
+    std::shared_ptr<Track> mTrack;
     Cup* CurrentCup;
 
 public:
@@ -62,7 +62,7 @@ public:
     RaceManager& GetRaceManager() { return *RaceManagerInstance; }
     void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
-    std::shared_ptr<Course> AddCourse(std::shared_ptr<Course> course);
+    std::shared_ptr<Track> AddTrack(std::shared_ptr<Track> track);
 
     void TickCameras();
 
@@ -100,32 +100,32 @@ public:
     u32 GetCupIndex();
     u32 NextCup();
     u32 PreviousCup();
-    void SetCourseFromCup();
+    void SetTrackFromCup();
 
     World* GetWorld(void);
     void CleanWorld(void);
 
-    // getter/setter for current course
-    std::shared_ptr<Course> GetCurrentCourse() {
-        return CurrentCourse;
+    // getter/setter for current track
+    std::shared_ptr<Track> GetTrack() {
+        return mTrack;
     }
 
-    void SetCurrentCourse(std::shared_ptr<Course> course);
+    void SetCurrentTrack(std::shared_ptr<Track> track);
 
-    // These are only for browsing through the course list
-    void SetCourse(const char*);
+    // These are only for browsing through the track list
+    void SetTrack(const char*);
     template<typename T>
-    void SetCourseByType() {
-        for (const auto& course : Courses) {
-            if (dynamic_cast<T*>(course.get())) {
-                SetCurrentCourse(course);
+    void SetTrackByType() {
+        for (const auto& track : Tracks) {
+            if (dynamic_cast<T*>(track.get())) {
+                SetCurrentTrack(track);
                 return;
             }
         }
-        printf("World::SetCourseByType() No course by the type found");
+        printf("World::SetTrackByType() No track by the type found");
     }
-    void NextCourse(void);
-    void PreviousCourse(void);
+    void NextTrack(void);
+    void PreviousTrack(void);
 
     Matrix Mtx;
 
@@ -147,9 +147,9 @@ public:
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
 
-    // Holds all available courses
-    std::vector<std::shared_ptr<Course>> Courses;
-    size_t CourseIndex = 0; // For browsing courses.
+    // Holds all available tracks
+    std::vector<std::shared_ptr<Track>> Tracks;
+    size_t TrackIndex = 0; // For browsing tracks.
 private:
     std::unique_ptr<RaceManager> RaceManagerInstance;
 };

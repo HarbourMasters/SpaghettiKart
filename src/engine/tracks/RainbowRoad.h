@@ -1,0 +1,45 @@
+#pragma once
+
+#include <libultraship.h>
+#include "Track.h"
+
+extern "C" {
+    #include "assets/models/tracks/rainbow_road/rainbow_road_vertices.h"
+    #include "assets/models/tracks/rainbow_road/rainbow_road_displaylists.h"
+    #include "assets/models/tracks/rainbow_road/rainbow_road_data.h"
+    #include "course_offsets.h"
+    #include "camera.h"
+    #include "data/some_data.h"
+    #include "objects.h"
+    #include "path_spawn_metadata.h"
+    #include "code_800029B0.h"
+    extern const course_texture rainbow_road_textures[];
+}
+
+class RainbowRoad : public Track {
+public:
+    virtual ~RainbowRoad() = default;  // Virtual destructor for proper cleanup in derived classes
+
+    // Constructor
+    explicit RainbowRoad();
+
+//    virtual void Load(const char* courseVtx, 
+//                  course_texture* textures, const char* displaylists, size_t dlSize);
+    virtual void Load() override;
+    virtual void UnLoad() override;
+    virtual void BeginPlay() override;
+    virtual void InitClouds() override;
+    virtual void TickClouds(s32, Camera*) override;
+    virtual void InitTrackObjects() override;
+    virtual void TickTrackObjects() override;
+    virtual void DrawTrackObjects(s32 cameraId) override;
+    virtual void SomeSounds() override;
+    virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
+    virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
+    virtual void Draw(ScreenContext*) override;
+    virtual void DrawCredits() override;    
+    virtual void Waypoints(Player* player, int8_t playerId) override;
+    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
+    virtual void CreditsSpawnActors() override;
+    virtual void Destroy() override;
+};

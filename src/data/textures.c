@@ -1562,7 +1562,7 @@ MenuTexture D_02001B04[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Mario Raceway
+ * @brief MenuTexture of Track Preview Mario Raceway
  *
  */
 MenuTexture seg2_mario_raceway_preview_texture[2] = {
@@ -1571,7 +1571,7 @@ MenuTexture seg2_mario_raceway_preview_texture[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Choco Mountain
+ * @brief MenuTexture of Track Preview Choco Mountain
  *
  */
 MenuTexture D_02001B54[2] = {
@@ -1580,7 +1580,7 @@ MenuTexture D_02001B54[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Bowser Castle
+ * @brief MenuTexture of Track Preview Bowser Castle
  *
  */
 MenuTexture D_02001B7C[2] = {
@@ -1589,7 +1589,7 @@ MenuTexture D_02001B7C[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Banshee Boardwalk
+ * @brief MenuTexture of Track Preview Banshee Boardwalk
  *
  */
 MenuTexture D_02001BA4[2] = {
@@ -1598,7 +1598,7 @@ MenuTexture D_02001BA4[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Yoshi Valley
+ * @brief MenuTexture of Track Preview Yoshi Valley
  *
  */
 MenuTexture D_02001BCC[2] = {
@@ -1607,7 +1607,7 @@ MenuTexture D_02001BCC[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Frappe Snowland
+ * @brief MenuTexture of Track Preview Frappe Snowland
  *
  */
 MenuTexture D_02001BF4[2] = {
@@ -1616,7 +1616,7 @@ MenuTexture D_02001BF4[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Koopa Troopa Beach
+ * @brief MenuTexture of Track Preview Koopa Troopa Beach
  *
  */
 MenuTexture D_02001C1C[2] = {
@@ -1625,7 +1625,7 @@ MenuTexture D_02001C1C[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Royal Raceway
+ * @brief MenuTexture of Track Preview Royal Raceway
  *
  */
 MenuTexture D_02001C44[2] = {
@@ -1634,7 +1634,7 @@ MenuTexture D_02001C44[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Luigi Raceway
+ * @brief MenuTexture of Track Preview Luigi Raceway
  *
  */
 MenuTexture D_02001C6C[2] = {
@@ -1643,7 +1643,7 @@ MenuTexture D_02001C6C[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Moo Moo Farm
+ * @brief MenuTexture of Track Preview Moo Moo Farm
  *
  */
 MenuTexture D_02001C94[2] = {
@@ -1652,7 +1652,7 @@ MenuTexture D_02001C94[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Toads Turnpike
+ * @brief MenuTexture of Track Preview Toads Turnpike
  *
  */
 MenuTexture D_02001CBC[2] = {
@@ -1661,7 +1661,7 @@ MenuTexture D_02001CBC[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Kalimari Desert
+ * @brief MenuTexture of Track Preview Kalimari Desert
  *
  */
 MenuTexture D_02001CE4[2] = {
@@ -1670,7 +1670,7 @@ MenuTexture D_02001CE4[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Sherbet Land
+ * @brief MenuTexture of Track Preview Sherbet Land
  *
  */
 MenuTexture D_02001D0C[2] = {
@@ -1679,7 +1679,7 @@ MenuTexture D_02001D0C[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Rainbow Road
+ * @brief MenuTexture of Track Preview Rainbow Road
  *
  */
 MenuTexture D_02001D34[2] = {
@@ -1688,7 +1688,7 @@ MenuTexture D_02001D34[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Wario Stadium
+ * @brief MenuTexture of Track Preview Wario Stadium
  *
  */
 MenuTexture D_02001D5C[2] = {
@@ -1697,7 +1697,7 @@ MenuTexture D_02001D5C[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Block Fort
+ * @brief MenuTexture of Track Preview Block Fort
  *
  */
 MenuTexture D_02001D84[2] = {
@@ -1706,7 +1706,7 @@ MenuTexture D_02001D84[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Skyscraper
+ * @brief MenuTexture of Track Preview Skyscraper
  *
  */
 MenuTexture D_02001DAC[2] = {
@@ -1715,7 +1715,7 @@ MenuTexture D_02001DAC[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Double Deck
+ * @brief MenuTexture of Track Preview Double Deck
  *
  */
 MenuTexture D_02001DD4[2] = {
@@ -1724,7 +1724,7 @@ MenuTexture D_02001DD4[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview DKs Jungle Parkway
+ * @brief MenuTexture of Track Preview DKs Jungle Parkway
  *
  */
 MenuTexture D_02001DFC[2] = {
@@ -1733,7 +1733,7 @@ MenuTexture D_02001DFC[2] = {
 };
 
 /**
- * @brief MenuTexture of Course Preview Big Donut
+ * @brief MenuTexture of Track Preview Big Donut
  *
  */
 MenuTexture D_02001E24[2] = {
@@ -4496,7 +4496,7 @@ MenuTexture seg2_special_cup_texture[2] = {
 };
 
 /**
- * @brief MenuTextures for the course preview mario raceway
+ * @brief MenuTextures for the track preview mario raceway
  *
  */
 MenuTexture seg2_mario_raceway_preview_small_texture[2] = {
