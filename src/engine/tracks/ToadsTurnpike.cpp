@@ -138,9 +138,9 @@ void ToadsTurnpike::Load() {
     D_801625F0 = 4;
     D_802B87B0 = 993;
     D_802B87B4 = 1000;
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void ToadsTurnpike::UnLoad() {
@@ -206,7 +206,7 @@ void ToadsTurnpike::InitClouds() {
     init_stars(this->Props.Clouds);
 }
 
-void ToadsTurnpike::UpdateClouds(s32 sp1C, Camera* camera) {
+void ToadsTurnpike::TickClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
@@ -240,7 +240,7 @@ void ToadsTurnpike::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void ToadsTurnpike::Render(ScreenContext* arg0) {
+void ToadsTurnpike::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -252,7 +252,7 @@ void ToadsTurnpike::Render(ScreenContext* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments(d_course_toads_turnpike_dl_list, arg0);
+    render_track_segments(d_course_toads_turnpike_dl_list, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
@@ -266,7 +266,7 @@ void ToadsTurnpike::Render(ScreenContext* arg0) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
 
-void ToadsTurnpike::RenderCredits() {
+void ToadsTurnpike::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_toads_turnpike_dl_23930));
 }
 

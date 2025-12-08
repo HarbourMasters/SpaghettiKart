@@ -125,9 +125,9 @@ void KalimariDesert::Load() {
         InvertTriangleWindingByName(d_course_kalimari_desert_packed_dl_270);
     }
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_kalimari_desert_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void KalimariDesert::UnLoad() {
@@ -151,25 +151,25 @@ void KalimariDesert::BeginPlay() {
         uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
 
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
-        position[0] *= gCourseDirection;
+        position[0] *= gTrackDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing2;
         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
-        position[0] *= gCourseDirection;
+        position[0] *= gTrackDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing2;
 
-        // Original game forgot to put gCourseDirection to face the crossing the right direction in extra mode
-        vec3s_set(rotation, 0, -0x2000 * gCourseDirection, 0);
+        // Original game forgot to put gTrackDirection to face the crossing the right direction in extra mode
+        vec3s_set(rotation, 0, -0x2000 * gTrackDirection, 0);
         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
-        position[0] *= gCourseDirection;
+        position[0] *= gTrackDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing1;
         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
-        position[0] *= gCourseDirection;
+        position[0] *= gTrackDirection;
         rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                                 ACTOR_RAILROAD_CROSSING));
         rrxing->crossingTrigger = crossing1;
@@ -218,7 +218,7 @@ void KalimariDesert::BeginPlay() {
     }
 }
 
-void KalimariDesert::InitCourseObjects() {
+void KalimariDesert::InitTrackObjects() {
     size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         find_unused_obj_index(&D_8018CF10);
@@ -241,7 +241,7 @@ void KalimariDesert::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KalimariDesert::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void KalimariDesert::Render(ScreenContext* arg0) {
+void KalimariDesert::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -257,7 +257,7 @@ void KalimariDesert::Render(ScreenContext* arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments(kalimari_desert_dls, arg0);
+    render_track_segments(kalimari_desert_dls, arg0);
     // d_course_kalimari_desert_packed_dl_1ED8
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_kalimari_desert_packed_dl_1ED8);
     // d_course_kalimari_desert_packed_dl_1B18
@@ -274,7 +274,7 @@ void KalimariDesert::Render(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void KalimariDesert::RenderCredits() {
+void KalimariDesert::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_kalimari_desert_dl_22E00));
 }
 

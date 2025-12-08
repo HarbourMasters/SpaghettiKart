@@ -373,7 +373,7 @@ void Track::Load() {
             func_80295C6C();
 
             if (Props.WaterLevel == FLT_MAX) {
-                Props.WaterLevel = gCourseMinY - 10.0f;
+                Props.WaterLevel = gTrackMinY - 10.0f;
             }
         } else {
             printf("Track.cpp: Custom track sections are invalid\n");
@@ -384,7 +384,7 @@ void Track::Load() {
     Track::Init();
 }
 
-// C++ version of parse_course_displaylists()
+// C++ version of parse_track_displaylists()
 void Track::ParseCourseSections(TrackSections* sections, size_t size) {
     printf("\n[Track] Generating Collision Meshes...\n");
     for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
@@ -437,13 +437,13 @@ void Track::TestPath() {
 
 void Track::Init() {
     gNumActors = 0;
-    gCourseMinX = 0;
-    gCourseMinY = 0;
-    gCourseMinZ = 0;
+    gTrackMinX = 0;
+    gTrackMinY = 0;
+    gTrackMinZ = 0;
 
-    gCourseMaxX = 0;
-    gCourseMaxY = 0;
-    gCourseMaxZ = 0;
+    gTrackMaxX = 0;
+    gTrackMaxY = 0;
+    gTrackMaxZ = 0;
 
     D_8015F59C = 0;
     D_8015F5A0 = 0;
@@ -479,7 +479,7 @@ void Track::InitClouds() {
     }
 }
 
-void Track::UpdateClouds(s32 arg0, Camera* camera) {
+void Track::TickClouds(s32 arg0, Camera* camera) {
     s32 cloudIndex;
     s32 objectIndex;
     CloudData* cloud;
@@ -499,16 +499,16 @@ void Track::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg
     func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void Track::InitCourseObjects() {
+void Track::InitTrackObjects() {
 }
 
-void Track::UpdateCourseObjects() {
+void Track::TickTrackObjects() {
 }
 
-void Track::RenderCourseObjects(s32 cameraId) {
+void Track::DrawTrackObjects(s32 cameraId) {
 }
 
-// Implemented for the first cup of each course plus Koopa Beach
+// Implemented for the first cup of each track plus Koopa Beach
 void Track::SomeSounds() {
 }
 
@@ -533,7 +533,7 @@ void Track::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void Track::Render(ScreenContext* arg0) {
+void Track::Draw(ScreenContext* arg0) {
     if (!TrackSectionsPtr.empty()) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -555,14 +555,14 @@ void Track::Render(ScreenContext* arg0) {
     }
 }
 
-void Track::RenderCredits() {
+void Track::DrawCredits() {
 }
 
 f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 
-    for (const auto& volume : gWorldInstance.GetCurrentCourse()->WaterVolumes) {
+    for (const auto& volume : gWorldInstance.GetTrack()->WaterVolumes) {
         if (pos.x >= volume.MinX && pos.x <= volume.MaxX && pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
             // Choose the highest water volume the player is over
             if (!found || volume.Height > highestWater) {
@@ -573,7 +573,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     }
 
     // If player is not over-top of a water volume then return the courses default water level
-    return found ? highestWater : gWorldInstance.GetCurrentCourse()->Props.WaterLevel;
+    return found ? highestWater : gWorldInstance.GetTrack()->Props.WaterLevel;
 }
 
 void Track::ScrollingTextures() {

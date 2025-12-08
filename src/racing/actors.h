@@ -78,7 +78,6 @@ void spawn_item_box(Vec3f pos);
 void spawn_fake_item_box(Vec3f pos);
 void init_kiwano_fruit(void);
 void destroy_all_actors(void);
-void spawn_course_actors(void);
 void init_actors_and_load_textures(void);
 void play_sound_before_despawn(struct Actor*);
 void destroy_actor(struct Actor*);

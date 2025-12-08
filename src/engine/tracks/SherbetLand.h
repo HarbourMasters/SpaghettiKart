@@ -29,10 +29,10 @@ public:
     virtual void UnLoad() override;
     virtual f32 GetWaterLevel(FVector pos, Collision* collision) override;
     virtual void BeginPlay() override;
-    virtual void UpdateCourseObjects() override;
-    virtual void RenderCourseObjects(s32 cameraId) override;
-    virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
+    virtual void TickTrackObjects() override;
+    virtual void DrawTrackObjects(s32 cameraId) override;
+    virtual void Draw(ScreenContext*) override;
+    virtual void DrawCredits() override;    
     virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
 };

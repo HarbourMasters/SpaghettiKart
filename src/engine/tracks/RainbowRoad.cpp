@@ -116,7 +116,7 @@ void RainbowRoad::Load() {
         }
     }
     D_800DC5C8 = 1;
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_rainbow_road_addr));
     func_80295C6C();
     // d_course_rainbow_road_packed_dl_2068
     find_vtx_and_set_colours((Gfx*) d_course_rainbow_road_packed_dl_2068, 150, 255, 255, 255);
@@ -158,11 +158,11 @@ void RainbowRoad::InitClouds() {
     init_stars(this->Props.Clouds);
 }
 
-void RainbowRoad::UpdateClouds(s32 sp1C, Camera* camera) {
+void RainbowRoad::TickClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
-void RainbowRoad::InitCourseObjects() {
+void RainbowRoad::InitTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         size_t i;
         for (i = 0; i < NUM_NEON_SIGNS; i++) {
@@ -171,14 +171,14 @@ void RainbowRoad::InitCourseObjects() {
     }
 }
 
-void RainbowRoad::UpdateCourseObjects() {
+void RainbowRoad::TickTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         update_neon();
         //update_chain_chomps();
     }
 }
 
-void RainbowRoad::RenderCourseObjects(s32 cameraId) {
+void RainbowRoad::DrawTrackObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         render_object_neon(cameraId);
         //render_object_chain_chomps(cameraId);
@@ -192,7 +192,7 @@ void RainbowRoad::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void RainbowRoad::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void RainbowRoad::Render(ScreenContext* arg0) {
+void RainbowRoad::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -200,7 +200,7 @@ void RainbowRoad::Render(ScreenContext* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-void RainbowRoad::RenderCredits() {
+void RainbowRoad::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_rainbow_road_dl_16220));
 }
 
@@ -212,7 +212,7 @@ void RainbowRoad::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_
 
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    render_course_segments(rainbow_road_dls, screen);
+    render_track_segments(rainbow_road_dls, screen);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
     gDPPipeSync(gDisplayListHead++);

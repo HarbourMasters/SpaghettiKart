@@ -142,7 +142,7 @@ void BigDonut::BeginPlay() {
     }
 }
 
-void BigDonut::Render(ScreenContext* arg0) {
+void BigDonut::Draw(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
@@ -165,7 +165,7 @@ void BigDonut::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_big_donut_packed_dl_230);
 }
 
-void BigDonut::RenderCredits() {
+void BigDonut::DrawCredits() {
 }
 
 void BigDonut::Waypoints(Player* player, int8_t playerId) {

@@ -4496,7 +4496,7 @@ MenuTexture seg2_special_cup_texture[2] = {
 };
 
 /**
- * @brief MenuTextures for the course preview mario raceway
+ * @brief MenuTextures for the track preview mario raceway
  *
  */
 MenuTexture seg2_mario_raceway_preview_small_texture[2] = {

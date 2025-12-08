@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include "TestCourse.h"
+#include "TestTrack.h"
 #include "World.h"
 #include "engine/actors/Finishline.h"
 #include "engine/actors/BowserStatue.h"
@@ -52,14 +52,13 @@ extern "C" {
     #include "collision.h"
     #include "memory.h"
     #include "course.h"
-    extern Gfx test_course_dls[];
     extern Vtx mario_Plane_001_mesh_vtx_1[];
     extern Gfx mario_Plane_001_mesh[];
-    extern TrackPathPoint test_course_path[];
-    extern TrackSections test_course_addr[];
+    extern TrackPathPoint test_track_path[];
+    extern TrackSections test_track_addr[];
 }
 
-TestCourse::TestCourse() {
+TestTrack::TestTrack() {
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -73,7 +72,7 @@ TestCourse::TestCourse() {
     Props.Minimap.Colour = {255, 255, 255};
     ResizeMinimap(&Props.Minimap);
 
-    Id = "mk:test_course";
+    Id = "mk:test_track";
 
     Props.SetText(Props.Name, "Test Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));
@@ -109,12 +108,12 @@ TestCourse::TestCourse() {
     Props.OffTrackTargetSpeed[2] = 5.75f;
     Props.OffTrackTargetSpeed[3] = 6.3333334f;
 
-    Props.PathTable[0] = test_course_path;
+    Props.PathTable[0] = test_track_path;
     Props.PathTable[1] = NULL;
     Props.PathTable[2] = NULL;
     Props.PathTable[3] = NULL;
 
-    Props.PathTable2[0] = test_course_path;
+    Props.PathTable2[0] = test_track_path;
     Props.PathTable2[1] = NULL;
     Props.PathTable2[2] = NULL;
     Props.PathTable2[3] = NULL;
@@ -134,7 +133,7 @@ TestCourse::TestCourse() {
     Props.Sequence = MusicSeq::MUSIC_SEQ_WARIO_STADIUM;
 }
 
-void TestCourse::Load() {
+void TestTrack::Load() {
     Track::Load(mario_Plane_001_mesh_vtx_1, NULL);
 
     if (gIsMirrorMode != 0) {
@@ -143,15 +142,15 @@ void TestCourse::Load() {
 
     generate_collision_mesh_with_defaults(mario_Plane_001_mesh);
 
-    parse_course_displaylists((TrackSections*)test_course_addr);
+    parse_track_displaylists((TrackSections*)test_track_addr);
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void TestCourse::UnLoad() {
+void TestTrack::UnLoad() {
 }
 
-void TestCourse::BeginPlay() {
+void TestTrack::BeginPlay() {
     struct ActorSpawnData itemboxes[] = {
         {   200, 1500, 200 , 0},
         {   350, 2500, 300 , 1},
@@ -192,7 +191,7 @@ void TestCourse::BeginPlay() {
     Vec3f crossingPos = {0, 2, 0};
     uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);
 
-    position[0] *= gCourseDirection;
+    position[0] *= gTrackDirection;
     rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
                                                                             ACTOR_RAILROAD_CROSSING));
     rrxing->crossingTrigger = crossing1;
@@ -230,7 +229,7 @@ void TestCourse::BeginPlay() {
 //    OGrandPrixBalloons::Spawn(FVector(0, 0, 0));
 }
 
-void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
+void TestTrack::WhatDoesThisDo(Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
@@ -245,7 +244,7 @@ void TestCourse::WhatDoesThisDo(Player* player, int8_t playerId) {
     }
 }
 
-void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
+void TestTrack::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     if (((s16) gNearestPathPointByPlayerId[playerId] >= 0x19B) &&
         ((s16) gNearestPathPointByPlayerId[playerId] < 0x1B9)) {
         if (D_80165300[playerId] != 1) {
@@ -260,7 +259,7 @@ void TestCourse::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void TestCourse::Render(ScreenContext* arg0) {
+void TestTrack::Draw(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
@@ -275,6 +274,6 @@ void TestCourse::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, mario_Plane_001_mesh);
 }
 
-bool TestCourse::IsMod() {
+bool TestTrack::IsMod() {
     return true;
 }

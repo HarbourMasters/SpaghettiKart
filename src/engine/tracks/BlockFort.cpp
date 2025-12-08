@@ -113,7 +113,7 @@ void BlockFort::Load() {
     }
     generate_collision_mesh_with_default_section_id((Gfx*) d_course_block_fort_packed_dl_15C0, 1);
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void BlockFort::UnLoad() {
@@ -133,7 +133,7 @@ void BlockFort::BeginPlay() {
     }
 }
 
-void BlockFort::Render(ScreenContext* arg0) {
+void BlockFort::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);

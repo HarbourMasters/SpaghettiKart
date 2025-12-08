@@ -26,7 +26,7 @@
 #include "engine/tracks/DoubleDeck.h"
 #include "engine/tracks/DKJungle.h"
 #include "engine/tracks/BigDonut.h"
-#include "engine/tracks/TestCourse.h"
+#include "engine/tracks/TestTrack.h"
 
 #include "engine/tracks/PodiumCeremony.h"
 
@@ -70,8 +70,6 @@ extern "C" void Graphics_PushFrame(Gfx* data) {
     GameEngine::ProcessGfxCommands(data);
 }
 
-extern "C" void Timer_Update();
-
 // Create the world instance
 World gWorldInstance;
 
@@ -93,29 +91,29 @@ Editor::Editor gEditor;
 s32 gTrophyIndex = NULL;
 
 void CustomEngineInit() {
-    /* Add all courses to the global course list */
-    std::shared_ptr<Track> mario         = gWorldInstance.AddCourse(std::make_shared<MarioRaceway>());
-    std::shared_ptr<Track> choco         = gWorldInstance.AddCourse(std::make_shared<ChocoMountain>());
-    std::shared_ptr<Track> bowser        = gWorldInstance.AddCourse(std::make_shared<BowsersCastle>());
-    std::shared_ptr<Track> banshee       = gWorldInstance.AddCourse(std::make_shared<BansheeBoardwalk>());
-    std::shared_ptr<Track> yoshi         = gWorldInstance.AddCourse(std::make_shared<YoshiValley>());
-    std::shared_ptr<Track> frappe        = gWorldInstance.AddCourse(std::make_shared<FrappeSnowland>());
-    std::shared_ptr<Track> koopa         = gWorldInstance.AddCourse(std::make_shared<KoopaTroopaBeach>());
-    std::shared_ptr<Track> royal         = gWorldInstance.AddCourse(std::make_shared<RoyalRaceway>());
-    std::shared_ptr<Track> luigi         = gWorldInstance.AddCourse(std::make_shared<LuigiRaceway>());
-    std::shared_ptr<Track> mooMoo        = gWorldInstance.AddCourse(std::make_shared<MooMooFarm>());
-    std::shared_ptr<Track> toads         = gWorldInstance.AddCourse(std::make_shared<ToadsTurnpike>());
-    std::shared_ptr<Track> kalimari      = gWorldInstance.AddCourse(std::make_shared<KalimariDesert>());
-    std::shared_ptr<Track> sherbet       = gWorldInstance.AddCourse(std::make_shared<SherbetLand>());
-    std::shared_ptr<Track> rainbow       = gWorldInstance.AddCourse(std::make_shared<RainbowRoad>());
-    std::shared_ptr<Track> wario         = gWorldInstance.AddCourse(std::make_shared<WarioStadium>());
-    std::shared_ptr<Track> block         = gWorldInstance.AddCourse(std::make_shared<BlockFort>());
-    std::shared_ptr<Track> skyscraper    = gWorldInstance.AddCourse(std::make_shared<Skyscraper>());
-    std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddCourse(std::make_shared<DoubleDeck>());
-    std::shared_ptr<Track> dkJungle      = gWorldInstance.AddCourse(std::make_shared<DKJungle>());
-    std::shared_ptr<Track> bigDonut      = gWorldInstance.AddCourse(std::make_shared<BigDonut>());
-//    std::shared_ptr<Track> harbour       = gWorldInstance.AddCourse(std::make_shared<Harbour>());
-    std::shared_ptr<Track> testCourse    = gWorldInstance.AddCourse(std::make_shared<TestCourse>());
+    /* Add all tracks to the global track list */
+    std::shared_ptr<Track> mario         = gWorldInstance.AddTrack(std::make_shared<MarioRaceway>());
+    std::shared_ptr<Track> choco         = gWorldInstance.AddTrack(std::make_shared<ChocoMountain>());
+    std::shared_ptr<Track> bowser        = gWorldInstance.AddTrack(std::make_shared<BowsersCastle>());
+    std::shared_ptr<Track> banshee       = gWorldInstance.AddTrack(std::make_shared<BansheeBoardwalk>());
+    std::shared_ptr<Track> yoshi         = gWorldInstance.AddTrack(std::make_shared<YoshiValley>());
+    std::shared_ptr<Track> frappe        = gWorldInstance.AddTrack(std::make_shared<FrappeSnowland>());
+    std::shared_ptr<Track> koopa         = gWorldInstance.AddTrack(std::make_shared<KoopaTroopaBeach>());
+    std::shared_ptr<Track> royal         = gWorldInstance.AddTrack(std::make_shared<RoyalRaceway>());
+    std::shared_ptr<Track> luigi         = gWorldInstance.AddTrack(std::make_shared<LuigiRaceway>());
+    std::shared_ptr<Track> mooMoo        = gWorldInstance.AddTrack(std::make_shared<MooMooFarm>());
+    std::shared_ptr<Track> toads         = gWorldInstance.AddTrack(std::make_shared<ToadsTurnpike>());
+    std::shared_ptr<Track> kalimari      = gWorldInstance.AddTrack(std::make_shared<KalimariDesert>());
+    std::shared_ptr<Track> sherbet       = gWorldInstance.AddTrack(std::make_shared<SherbetLand>());
+    std::shared_ptr<Track> rainbow       = gWorldInstance.AddTrack(std::make_shared<RainbowRoad>());
+    std::shared_ptr<Track> wario         = gWorldInstance.AddTrack(std::make_shared<WarioStadium>());
+    std::shared_ptr<Track> block         = gWorldInstance.AddTrack(std::make_shared<BlockFort>());
+    std::shared_ptr<Track> skyscraper    = gWorldInstance.AddTrack(std::make_shared<Skyscraper>());
+    std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddTrack(std::make_shared<DoubleDeck>());
+    std::shared_ptr<Track> dkJungle      = gWorldInstance.AddTrack(std::make_shared<DKJungle>());
+    std::shared_ptr<Track> bigDonut      = gWorldInstance.AddTrack(std::make_shared<BigDonut>());
+//    std::shared_ptr<Track> harbour       = gWorldInstance.AddTrack(std::make_shared<Harbour>());
+    std::shared_ptr<Track> testTrack    = gWorldInstance.AddTrack(std::make_shared<TestTrack>());
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
@@ -175,9 +173,9 @@ void HM_DrawIntro() {
     gMenuIntro.HM_DrawIntro();
 }
 
-// Set default course; mario raceway
+// Set default track; mario raceway
 void SetMarioRaceway(void) {
-    SetCourseById(0);
+    SetTrackById(0);
     gWorldInstance.SetCurrentCup(gMushroomCup);
     gWorldInstance.GetCurrentCup()->CursorPosition = 3;
     gWorldInstance.CupIndex = 0;
@@ -215,33 +213,33 @@ void LoadCourse() {
     gWorldInstance.GetRaceManager().Load();
 }
 
-// Unload can be call to frequently so even when if the course wasn't loaded before
-void UnLoadCourse() {
+// Unload can be call to frequently so even when if the track wasn't loaded before
+void UnLoadTrack() {
     gWorldInstance.GetRaceManager().UnLoad();
 }
 
 size_t GetCourseIndex() {
-    return gWorldInstance.CourseIndex;
+    return gWorldInstance.TrackIndex;
 }
 
-void SetCourse(const char* name) {
-    gWorldInstance.SetCourse(name);
+void SetTrack(const char* name) {
+    gWorldInstance.SetTrack(name);
 }
 
-void NextCourse() {
-    gWorldInstance.NextCourse();
+void NextTrack() {
+    gWorldInstance.NextTrack();
 }
 
-void PreviousCourse() {
-    gWorldInstance.PreviousCourse();
+void PreviousTrack() {
+    gWorldInstance.PreviousTrack();
 }
 
-void SetCourseById(s32 course) {
-    if (course < 0 || course >= gWorldInstance.Courses.size()) {
+void SetTrackById(s32 track) {
+    if (track < 0 || track >= gWorldInstance.Tracks.size()) {
         return;
     }
-    gWorldInstance.CourseIndex = course;
-    gWorldInstance.SetCurrentCourse(gWorldInstance.Courses[gWorldInstance.CourseIndex]);
+    gWorldInstance.TrackIndex = track;
+    gWorldInstance.SetCurrentTrack(gWorldInstance.Tracks[gWorldInstance.TrackIndex]);
 }
 
 void CM_VehicleCollision(s32 playerId, Player* player) {
@@ -316,18 +314,18 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
  * 2) Full scene --> The entire scene is rendered at once
  * 
  * Custom tracks only use the Render() method, and they only render the full scene.
- * They do not use RenderCredits() and they do not use track sections.
+ * They do not use DrawCredits() and they do not use track sections.
  */
-void CM_RenderCourse(ScreenContext* screen) {
-    if (nullptr == gWorldInstance.GetCurrentCourse()) {
+void CM_DrawTrack(ScreenContext* screen) {
+    if (nullptr == gWorldInstance.GetTrack()) {
         return;
     }
 
-    // Custom tracks should never use RenderCredits();
-    if (gWorldInstance.GetCurrentCourse()->IsMod()) {
+    // Custom tracks should never use DrawCredits();
+    if (gWorldInstance.GetTrack()->IsMod()) {
         switch(screen->camera->renderMode) {
             default:
-                gWorldInstance.GetCurrentCourse()->Render(screen);
+                gWorldInstance.GetTrack()->Draw(screen);
                 break;
             case RENDER_COLLISION_MESH:
                 render_collision();
@@ -336,10 +334,10 @@ void CM_RenderCourse(ScreenContext* screen) {
     } else {
         switch(screen->camera->renderMode) {
             case RENDER_FULL_SCENE:
-                gWorldInstance.GetCurrentCourse()->RenderCredits();
+                gWorldInstance.GetTrack()->DrawCredits();
                 break;
             case RENDER_TRACK_SECTIONS:
-                gWorldInstance.GetCurrentCourse()->Render(screen);
+                gWorldInstance.GetTrack()->Draw(screen);
                 break;
             case RENDER_COLLISION_MESH:
                 render_collision();
@@ -349,7 +347,7 @@ void CM_RenderCourse(ScreenContext* screen) {
 }
 
 void CM_TickActors() {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.TickActors();
     }
 }
@@ -377,9 +375,9 @@ void CM_DrawStaticMeshActors() {
 
 void CM_BeginPlay() {
     static bool tour = false;
-    auto course = gWorldInstance.GetCurrentCourse();
+    auto track = gWorldInstance.GetTrack();
     
-    if (nullptr == course) {
+    if (nullptr == track) {
         return; 
     }
 
@@ -392,11 +390,11 @@ void CM_BeginPlay() {
         }
     }
 
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         // This line should likely be moved.
         // It's here so PreInit is after the scene file has been loaded
         // It used to be at the start of BeginPlay
-        Editor::LoadLevel(gWorldInstance.GetCurrentCourse().get(), gWorldInstance.GetCurrentCourse()->SceneFilePtr);
+        Editor::LoadLevel(gWorldInstance.GetTrack().get(), gWorldInstance.GetTrack()->SceneFilePtr);
     }
 
     gWorldInstance.GetRaceManager().PreInit();
@@ -451,23 +449,23 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
     if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
         // This is to prevent soft locking the game
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
-        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
+        if (gWorldInstance.GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (nullptr == gWorldInstance.GetCurrentCourse()) {
+    if (nullptr == gWorldInstance.GetTrack()) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
+        if (gWorldInstance.GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (gWorldInstance.GetCurrentCourse()->TourShots.size() == 0) {
+    if (gWorldInstance.GetTrack()->TourShots.size() == 0) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.GetCurrentCourse()->bTourEnabled) {
+        if (gWorldInstance.GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
@@ -480,8 +478,8 @@ Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
 }
 
 bool CM_IsTourEnabled() {
-    if (nullptr != gWorldInstance.GetCurrentCourse()) {
-        if ((gWorldInstance.GetCurrentCourse()->bTourEnabled) && (gTourComplete == false)) {
+    if (nullptr != gWorldInstance.GetTrack()) {
+        if ((gWorldInstance.GetTrack()->bTourEnabled) && (gTourComplete == false)) {
             return true;
         } else {
             return false;
@@ -539,7 +537,7 @@ void CM_ActivateTourCamera(Camera* camera) {
 }
 
 void CM_TickObjects() {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.TickObjects();
     }
 }
@@ -547,13 +545,13 @@ void CM_TickObjects() {
 // A couple objects such as lakitu are ticked inside of process_game_tick which support 60fps.
 // This is a fallback to support that.
 void CM_TickObjects60fps() {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.TickObjects60fps();
     }
 }
 
 void CM_DrawObjects(s32 cameraId) {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.DrawObjects(cameraId);
     }
 }
@@ -571,119 +569,119 @@ void CM_Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 mi
 }
 
 void CM_TickParticles() {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.TickParticles();
     }
 }
 
 void CM_DrawParticles(s32 cameraId) {
-    if (gWorldInstance.GetCurrentCourse()) {
+    if (gWorldInstance.GetTrack()) {
         gWorldInstance.DrawParticles(cameraId);
     }
 }
 
 void CM_InitClouds() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->InitClouds();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->InitClouds();
     }
 }
 
-void CM_UpdateClouds(s32 arg0, Camera* camera) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->UpdateClouds(arg0, camera);
+void CM_TickClouds(s32 arg0, Camera* camera) {
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->TickClouds(arg0, camera);
     }
 }
 
 void CM_Waypoints(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->Waypoints(player, playerId);
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->Waypoints(player, playerId);
     }
 }
 
 void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
                            f32* arg7) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 }
 
 void CM_InitCourseObjects() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->InitCourseObjects();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->InitTrackObjects();
     }
 }
 
-void CM_UpdateCourseObjects() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->UpdateCourseObjects();
+void CM_TickTrackObjects() {
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->TickTrackObjects();
     }
     TrainSmokeTick();
 }
 
-void CM_RenderCourseObjects(s32 cameraId) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->RenderCourseObjects(cameraId);
+void CM_DrawTrackObjects(s32 cameraId) {
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->DrawTrackObjects(cameraId);
     }
 
     TrainSmokeDraw(cameraId);
 }
 
 void CM_SomeSounds() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->SomeSounds();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->SomeSounds();
     }
 }
 
 void CM_CreditsSpawnActors() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->CreditsSpawnActors();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->CreditsSpawnActors();
     }
 }
 
 void CM_WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->WhatDoesThisDo(player, playerId);
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->WhatDoesThisDo(player, playerId);
     }
 }
 
 void CM_WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->WhatDoesThisDoAI(player, playerId);
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->WhatDoesThisDoAI(player, playerId);
     }
 }
 
 void CM_SetStaffGhost() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->SetStaffGhost();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->SetStaffGhost();
     }
 }
 
 Properties* CM_GetProps() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        return &gWorldInstance.GetCurrentCourse()->Props;
+    if (gWorldInstance.GetTrack()) {
+        return &gWorldInstance.GetTrack()->Props;
     }
     return NULL;
 }
 
 Properties* CM_GetPropsCourseId(s32 courseId) {
-    return &gWorldInstance.Courses[courseId]->Props;
+    return &gWorldInstance.Tracks[courseId]->Props;
 }
 
 void CM_ScrollingTextures() {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->ScrollingTextures();
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->ScrollingTextures();
     }
 }
 
 void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
-    if (gWorldInstance.GetCurrentCourse()) {
-        gWorldInstance.GetCurrentCourse()->DrawWater(screen, pathCounter, cameraRot, playerDirection);
+    if (gWorldInstance.GetTrack()) {
+        gWorldInstance.GetTrack()->DrawWater(screen, pathCounter, cameraRot, playerDirection);
     }
 }
 
 /**
- * This should only be ran once per course, otherwise animation/timings might become sped up.
+ * This should only be ran once per track, otherwise animation/timings might become sped up.
  */
 void CM_SpawnStarterLakitu() {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
@@ -731,7 +729,7 @@ size_t GetCupCursorPosition() {
 }
 
 void SetCupCursorPosition(size_t position) {
-    gWorldInstance.GetCurrentCup()->SetCourse(position);
+    gWorldInstance.GetCurrentCup()->SetTrack(position);
     // gWorldInstance.CurrentCup->CursorPosition = position;
 }
 
@@ -739,12 +737,12 @@ size_t GetCupSize() {
     return gWorldInstance.GetCurrentCup()->GetSize();
 }
 
-void SetCourseFromCup() {
-    gWorldInstance.SetCurrentCourse(gWorldInstance.GetCurrentCup()->GetCourse());
+void SetTrackFromCup() {
+    gWorldInstance.SetCurrentTrack(gWorldInstance.GetCurrentCup()->GetTrack());
 }
 
-void* GetCourse(void) {
-    return gWorldInstance.GetCurrentCourse().get();
+void* GetTrack(void) {
+    return gWorldInstance.GetTrack().get();
 }
 
 struct Actor* CM_GetActor(size_t index) {
@@ -842,53 +840,53 @@ void CM_ActorCollision(Player* player, Actor* actor) {
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
-    return gWorldInstance.GetCurrentCourse()->GetWaterLevel(fPos, collision);
+    return gWorldInstance.GetTrack()->GetWaterLevel(fPos, collision);
 }
 
 // clang-format off
-bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsBlockFort()        { return dynamic_cast<BlockFort*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
-bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.GetCurrentCourse().get()) != nullptr; }
+bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsBlockFort()        { return dynamic_cast<BlockFort*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.GetTrack().get()) != nullptr; }
 
-void SelectMarioRaceway()       { gWorldInstance.SetCourseByType<MarioRaceway>(); }
-void SelectLuigiRaceway()       { gWorldInstance.SetCourseByType<LuigiRaceway>(); }
-void SelectChocoMountain()      { gWorldInstance.SetCourseByType<ChocoMountain>(); }
-void SelectBowsersCastle()      { gWorldInstance.SetCourseByType<BowsersCastle>(); }
-void SelectBansheeBoardwalk()   { gWorldInstance.SetCourseByType<BansheeBoardwalk>(); }
-void SelectYoshiValley()        { gWorldInstance.SetCourseByType<YoshiValley>(); }
-void SelectFrappeSnowland()     { gWorldInstance.SetCourseByType<FrappeSnowland>(); }
-void SelectKoopaTroopaBeach()   { gWorldInstance.SetCourseByType<KoopaTroopaBeach>(); }
-void SelectRoyalRaceway()       { gWorldInstance.SetCourseByType<RoyalRaceway>(); }
-void SelectMooMooFarm()         { gWorldInstance.SetCourseByType<MooMooFarm>(); }
-void SelectToadsTurnpike()      { gWorldInstance.SetCourseByType<ToadsTurnpike>(); }
-void SelectKalimariDesert()     { gWorldInstance.SetCourseByType<KalimariDesert>(); }
-void SelectSherbetLand()        { gWorldInstance.SetCourseByType<SherbetLand>(); }
-void SelectRainbowRoad()        { gWorldInstance.SetCourseByType<RainbowRoad>(); }
-void SelectWarioStadium()       { gWorldInstance.SetCourseByType<WarioStadium>(); }
-void SelectBlockFort()          { gWorldInstance.SetCourseByType<BlockFort>(); }
-void SelectSkyscraper()         { gWorldInstance.SetCourseByType<Skyscraper>(); }
-void SelectDoubleDeck()         { gWorldInstance.SetCourseByType<DoubleDeck>(); }
-void SelectDkJungle()           { gWorldInstance.SetCourseByType<DKJungle>(); }
-void SelectBigDonut()           { gWorldInstance.SetCourseByType<BigDonut>(); }
-void SelectPodiumCeremony()     { gWorldInstance.SetCurrentCourse(gPodiumCeremony); }
+void SelectMarioRaceway()       { gWorldInstance.SetTrackByType<MarioRaceway>(); }
+void SelectLuigiRaceway()       { gWorldInstance.SetTrackByType<LuigiRaceway>(); }
+void SelectChocoMountain()      { gWorldInstance.SetTrackByType<ChocoMountain>(); }
+void SelectBowsersCastle()      { gWorldInstance.SetTrackByType<BowsersCastle>(); }
+void SelectBansheeBoardwalk()   { gWorldInstance.SetTrackByType<BansheeBoardwalk>(); }
+void SelectYoshiValley()        { gWorldInstance.SetTrackByType<YoshiValley>(); }
+void SelectFrappeSnowland()     { gWorldInstance.SetTrackByType<FrappeSnowland>(); }
+void SelectKoopaTroopaBeach()   { gWorldInstance.SetTrackByType<KoopaTroopaBeach>(); }
+void SelectRoyalRaceway()       { gWorldInstance.SetTrackByType<RoyalRaceway>(); }
+void SelectMooMooFarm()         { gWorldInstance.SetTrackByType<MooMooFarm>(); }
+void SelectToadsTurnpike()      { gWorldInstance.SetTrackByType<ToadsTurnpike>(); }
+void SelectKalimariDesert()     { gWorldInstance.SetTrackByType<KalimariDesert>(); }
+void SelectSherbetLand()        { gWorldInstance.SetTrackByType<SherbetLand>(); }
+void SelectRainbowRoad()        { gWorldInstance.SetTrackByType<RainbowRoad>(); }
+void SelectWarioStadium()       { gWorldInstance.SetTrackByType<WarioStadium>(); }
+void SelectBlockFort()          { gWorldInstance.SetTrackByType<BlockFort>(); }
+void SelectSkyscraper()         { gWorldInstance.SetTrackByType<Skyscraper>(); }
+void SelectDoubleDeck()         { gWorldInstance.SetTrackByType<DoubleDeck>(); }
+void SelectDkJungle()           { gWorldInstance.SetTrackByType<DKJungle>(); }
+void SelectBigDonut()           { gWorldInstance.SetTrackByType<BigDonut>(); }
+void SelectPodiumCeremony()     { gWorldInstance.SetCurrentTrack(gPodiumCeremony); }
 // clang-format on
 
 void* GetMushroomCup(void) {
@@ -937,7 +935,6 @@ void push_frame() {
     GameEngine::EndAudioFrame();
     // thread5_game_loop();
     // Graphics_ThreadUpdate();w
-    // Timer_Update();
 }
 
 #ifdef _WIN32

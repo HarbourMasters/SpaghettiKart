@@ -1635,10 +1635,10 @@ void update_player(s32 playerId) {
         }
         D_801633E0[playerId] = 0;
         // clang-format off
-        if (player->pos[0] < gCourseMinX) {            D_801633E0[playerId] = 1;        }
-        if (gCourseMaxX < player->pos[0]) {            D_801633E0[playerId] = 2;        }
-        if (player->pos[2] < gCourseMinZ) {            D_801633E0[playerId] = 3;        }
-        if (gCourseMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
+        if (player->pos[0] < gTrackMinX) {            D_801633E0[playerId] = 1;        }
+        if (gTrackMaxX < player->pos[0]) {            D_801633E0[playerId] = 2;        }
+        if (player->pos[2] < gTrackMinZ) {            D_801633E0[playerId] = 3;        }
+        if (gTrackMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
@@ -3470,7 +3470,7 @@ void clear_path_point(TrackPathPoint* arg0, size_t size) {
     bzero((void*) arg0, size * sizeof(TrackPathPoint));
 }
 
-// Appears to allocate memory for each course.
+// Appears to allocate memory for each track.
 void init_course_path_point(void) {
 
     _struct_gCoursePathSizes_0x10* ptr = &CM_GetProps()->PathSizes;
@@ -3699,9 +3699,9 @@ void init_players(void) {
 
 // @arg index from 0 to 3.
 
-// Processes course path by index.
+// Processes track path by index.
 // @arg index from 0 to 3.
-// Each course can have 1-4 course paths.
+// Each track can have 1-4 paths.
 void load_track_path(s32 pathIndex) {
 
     TrackPathPoint* ptr;
@@ -5397,7 +5397,7 @@ void func_80014DE4(s32 cameraIndex) {
     D_801646D0[cameraIndex].unk0 = 0;
     D_801646D0[cameraIndex].unk2 = 0;
     D_801646D0[cameraIndex].unk4 = 0;
-    if ((gModeSelection == 1) && (gCourseMapInit == 0)) {
+    if ((gModeSelection == 1) && (gTrackMapInit == 0)) {
         D_80164678[cameraIndex] = 0;
     }
 

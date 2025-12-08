@@ -121,7 +121,7 @@ void RoyalRaceway::Load() {
         InvertTriangleWindingByName(d_course_royal_raceway_packed_dl_11A8);
         InvertTriangleWindingByName(d_course_royal_raceway_packed_dl_8A0);
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_royal_raceway_addr));
     func_80295C6C();
 }
 
@@ -148,7 +148,7 @@ void RoyalRaceway::BeginPlay() {
     }
 }
 
-void RoyalRaceway::InitCourseObjects() {
+void RoyalRaceway::InitTrackObjects() {
     size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
@@ -200,7 +200,7 @@ void RoyalRaceway::SetStaffGhost() {
     D_80162DE4 = 6;
 }
 
-void RoyalRaceway::Render(ScreenContext* arg0) {
+void RoyalRaceway::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -217,7 +217,7 @@ void RoyalRaceway::Render(ScreenContext* arg0) {
     // d_course_royal_raceway_packed_dl_A648
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_royal_raceway_packed_dl_A648);
 
-    render_course_segments(royal_raceway_dls, arg0);
+    render_track_segments(royal_raceway_dls, arg0);
 
     // d_course_royal_raceway_packed_dl_11A8
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_royal_raceway_packed_dl_11A8);
@@ -229,7 +229,7 @@ void RoyalRaceway::Render(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void RoyalRaceway::RenderCredits() {
+void RoyalRaceway::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_royal_raceway_dl_D8E8));
 }
 

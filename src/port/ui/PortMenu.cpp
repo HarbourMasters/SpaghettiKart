@@ -358,10 +358,6 @@ void PortMenu::AddEnhancements() {
     AddMenuEntry("Enhancements", "gSettings.Menu.EnhancementsSidebarSection");
     WidgetPath path = { "Enhancements", "General", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "General", 3);
-    // UIWidgets::WindowButton("Multiplayer", "gMultiplayerWindowEnabled", GameUI::mMultiplayerWindow,
-    //                         { .tooltip = "Shows the multiplayer window" });
-    //     UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow,
-    //                             { .tooltip = "Allows you to fly around the course" });
     AddWidget(path, "No multiplayer feature cuts", WIDGET_CVAR_CHECKBOX)
         .CVar("gMultiplayerNoFeatureCuts")
         .Options(CheckboxOptions().Tooltip("Allows full train and jumbotron in multiplayer, etc."));
@@ -549,7 +545,7 @@ void PortMenu::AddDevTools() {
                      .DefaultValue(60));
     AddWidget(path, "Render Collision", WIDGET_CVAR_CHECKBOX)
         .CVar("gRenderCollisionMesh")
-        .Options(CheckboxOptions().Tooltip("Renders the collision mesh instead of the course mesh"));
+        .Options(CheckboxOptions().Tooltip("Draws the collision mesh instead of the track mesh"));
 
     path = { "Developer", "Gfx Debugger", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Gfx Debugger", 1);
@@ -579,10 +575,6 @@ void PortMenu::AddDevTools() {
 PortMenu::PortMenu(const std::string& consoleVariable, const std::string& name)
     : Menu(consoleVariable, name, 0, UIWidgets::Colors::LightBlue) {
 }
-
-// bool CheckNetworkConnected(disabledInfo& info) {
-//     return gNetwork.isConnected;
-// }
 
 void PortMenu::InitElement() {
     Ship::Menu::InitElement();

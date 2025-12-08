@@ -124,9 +124,9 @@ void MooMooFarm::Load() {
         InvertTriangleWindingByName(d_course_moo_moo_farm_dl_14060);
         InvertTriangleWindingByName(d_course_moo_moo_farm_packed_dl_10C0);
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_moo_moo_farm_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void MooMooFarm::UnLoad() {
@@ -260,7 +260,7 @@ void MooMooFarm::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void MooMooFarm::Render(ScreenContext* arg0) {
+void MooMooFarm::Draw(ScreenContext* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 temp_s1 = arg0->playerDirection;
 
@@ -276,7 +276,7 @@ void MooMooFarm::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_moo_moo_farm_packed_dl_5640);
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
-    render_course_segments(moo_moo_farm_dls, arg0);
+    render_track_segments(moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1)) {
@@ -333,7 +333,7 @@ void MooMooFarm::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_moo_moo_farm_packed_dl_10C0);
 }
 
-void MooMooFarm::RenderCredits() {
+void MooMooFarm::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_moo_moo_farm_dl_14088));
 }
 

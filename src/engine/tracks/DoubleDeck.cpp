@@ -112,7 +112,7 @@ void DoubleDeck::Load() {
     }
     generate_collision_mesh_with_default_section_id((Gfx*) d_course_double_deck_packed_dl_738, 1);
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void DoubleDeck::UnLoad() {
@@ -132,7 +132,7 @@ void DoubleDeck::BeginPlay() {
     }
 }
 
-void DoubleDeck::InitCourseObjects() {}
+void DoubleDeck::InitTrackObjects() {}
 
 void DoubleDeck::SomeSounds() {}
 
@@ -140,7 +140,7 @@ void DoubleDeck::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void DoubleDeck::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void DoubleDeck::Render(ScreenContext* arg0) {
+void DoubleDeck::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -151,7 +151,7 @@ void DoubleDeck::Render(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void DoubleDeck::RenderCredits() {}
+void DoubleDeck::DrawCredits() {}
 
 void DoubleDeck::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = 0;

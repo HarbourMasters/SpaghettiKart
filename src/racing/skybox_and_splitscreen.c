@@ -851,7 +851,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     render_set_position(trackMatrix, 0);
 
     // Draw track geography
-    render_course(screen);
+    render_track(screen);
     FrameInterpolation_RecordCloseChild();
 
     // Draw dynamic game objects
@@ -1013,6 +1013,10 @@ void func_802A7728(void) {
         temp_v0 = 2;
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
+    }
+
+    if (NULL == gPhysicalFramebuffers[temp_v0]) {
+        return;
     }
 
     copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),

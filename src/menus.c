@@ -46,11 +46,11 @@ s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when s
                                      // Ghost)
 s8 gBattleResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
 s8 gTimeTrialDataCourseIndex;
-s8 gCourseRecordsMenuSelection;    // Used for selecting an option in course record data
+s8 gCourseRecordsMenuSelection;    // Used for selecting an option in track record data
 s8 gCourseRecordsSubMenuSelection; // Used for erase records and ghosts (Quit - Erase)
 s8 gDebugGotoScene;
 bool gGhostPlayerInit;
-bool gCourseMapInit;
+bool gTrackMapInit;
 s32 gMenuTimingCounter;
 s32 gMenuDelayTimer;
 s8 gDemoUseController; // Sets true alongside gDemoMode, controller related
@@ -670,7 +670,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            // If A pressed, go to selected course's records
+            // If A pressed, go to selected track's records
             if ((btnAndStick & A_BUTTON) != 0) {
                 gCourseRecordsMenuSelection = COURSE_RECORDS_MENU_RETURN_MENU;
                 func_8009E1C0();
@@ -687,7 +687,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
 }
 
 /**
- * Navigation of the course records data menu
+ * Navigation of the track records data menu
  */
 void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
     u16 btnAndStick; // sp2E
@@ -1054,7 +1054,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             case DEBUG_MENU_COURSE: {
                 if (btnAndStick & R_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    NextCourse();
+                    NextTrack();
                     gCurrentCourseId = GetCourseIndex();
                     // if (gCurrentCourseId < (NUM_COURSES - 2)) {
                     //     gCurrentCourseId += 1;
@@ -1064,7 +1064,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & L_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    PreviousCourse();
+                    PreviousTrack();
                     gCurrentCourseId = GetCourseIndex();
                     // if (gCurrentCourseId > 0) {
                     //     gCurrentCourseId -= 1;
@@ -1737,7 +1737,7 @@ u32 WorldPreviousCup(void);
 u32 GetCupIndex(void);
 
 /**
- * Navigation of the map select course menu screen
+ * Navigation of the map select track menu screen
  */
 void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
     u16 btnAndStick = (controller->buttonPressed | controller->stickPressed);
@@ -1764,7 +1764,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
 
                 D_800DC540 = GetCupIndex();
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
-                SetCourseFromCup();
+                SetTrackFromCup();
                 if ((btnAndStick & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1775,9 +1775,8 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     } else {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_OK;
                         play_sound2(SOUND_MENU_SELECT);
-                        //! @todo SetCourse() to course one;
                         SetCupCursorPosition(COURSE_ONE);
-                        SetCourseFromCup();
+                        SetTrackFromCup();
                         gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
                         gMenuTimingCounter = 0;
                     }
@@ -1800,7 +1799,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
 
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
-                SetCourseFromCup();
+                SetTrackFromCup();
                 if ((btnAndStick & B_BUTTON) != 0) {
                     if (gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_CUP;
@@ -1910,14 +1909,14 @@ void load_menu_states(s32 menuSelection) {
             gScreenModeListIndex = sScreenModeIdxFromPlayerMode[gPlayerCount - 1];
             func_800CA008(0, 0);
             play_sequence(MUSIC_SEQ_TITLE_SCREEN);
-            gCourseMapInit = 0;
+            gTrackMapInit = 0;
             break;
         }
         case 1:
         case MAIN_MENU: {
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             set_mirror_mode(0);
-            gCourseMapInit = 0;
+            gTrackMapInit = 0;
             func_800B5F30();
             func_8000F0E0();
 

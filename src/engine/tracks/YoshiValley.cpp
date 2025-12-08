@@ -118,9 +118,9 @@ void YoshiValley::Load() {
 
     Lights1 lights4 = gdSPDefLights1(100, 100, 100, 255, 254, 254, 0, 0, 120);
     set_track_light_direction(&lights4, -0x38F0, 0x1C70, 1);
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_yoshi_valley_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void YoshiValley::UnLoad() {
@@ -135,7 +135,7 @@ void YoshiValley::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_yoshi_valley_item_box_spawns));
     vec3f_set(position, -2300.0f, 0.0f, 634.0f);
-    position[0] *= gCourseDirection;
+    position[0] *= gTrackDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 
     if (gGamestate != CREDITS_SEQUENCE) {
@@ -177,13 +177,13 @@ void YoshiValley::BeginPlay() {
     }
 }
 
-void YoshiValley::InitCourseObjects() {
+void YoshiValley::InitTrackObjects() {
 }
 
-void YoshiValley::UpdateCourseObjects() {
+void YoshiValley::TickTrackObjects() {
 }
 
-void YoshiValley::RenderCourseObjects(s32 cameraId) {
+void YoshiValley::DrawTrackObjects(s32 cameraId) {
 }
 
 void YoshiValley::SomeSounds() {
@@ -193,16 +193,16 @@ void YoshiValley::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void YoshiValley::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void YoshiValley::Render(ScreenContext* arg0) {
+void YoshiValley::Draw(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    render_course_segments(d_course_yoshi_valley_dl_list, arg0);
+    render_track_segments(d_course_yoshi_valley_dl_list, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 
-void YoshiValley::RenderCredits() {
+void YoshiValley::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_yoshi_valley_dl_18020));
 }
 
@@ -218,7 +218,7 @@ void YoshiValley::CreditsSpawnActors() {
     Vec3s rotation = { 0, 0, 0 };
 
     vec3f_set(position, -2300.0f, 0.0f, 634.0f);
-    position[0] *= gCourseDirection;
+    position[0] *= gTrackDirection;
     add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
 }
 

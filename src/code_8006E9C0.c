@@ -118,7 +118,7 @@ void clear_object_list() {
 }
 
 /**
- * Dma's mario kart 64 logo and course outline textures.
+ * Dma's mario kart 64 logo and track outline textures.
  */
 u8* dma_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
 #ifdef TARGET_N64
@@ -243,8 +243,8 @@ void func_8006F824(s32 arg0) {
 }
 
 void func_8006F8CC(void) {
-    if (gCourseMapInit == 0) {
-        gCourseMapInit = 1;
+    if (gTrackMapInit == 0) {
+        gTrackMapInit = 1;
         gHUDModes = 0;
         D_801657E6 = 0;
         D_801657F0 = 0;

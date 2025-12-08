@@ -11,7 +11,7 @@ Gfx test_course_data_dl[] = {
     gsSPDisplayList(mario_Plane_001_mesh),
 };
 
-TrackPathPoint test_course_path[] = {
+TrackPathPoint test_track_path[] = {
     { 0, 0, 0, 0 },
     { 0, 0, -100, 1 },
     { 0, 0, -200, 1 },
@@ -68,7 +68,7 @@ TrackPathPoint test_course_path[] = {
     { -32768, -32768, -32768, 0 } // Terminator
 };
 
-TrackSections test_course_addr[] = {
+TrackSections test_track_addr[] = {
     { mario_Plane_001_mesh, 255, 255, 0x0000 },
     { 0x00000000, 0, 0, 0x00000 },
 };

@@ -622,9 +622,9 @@ void Harbour::Load() {
     generate_collision_mesh_with_defaults(bush_map_004_mesh);
     generate_collision_mesh_with_defaults(statue_map_005_mesh);
 
-    parse_course_displaylists((TrackSections*)harbour_surfaces);
+    parse_track_displaylists((TrackSections*)harbour_surfaces);
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void Harbour::UnLoad() {
@@ -717,7 +717,7 @@ void Harbour::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void Harbour::Render(ScreenContext* arg0) {
+void Harbour::Draw(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);

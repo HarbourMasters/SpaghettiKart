@@ -128,7 +128,7 @@ void DKJungle::Load() {
         InvertTriangleWindingByName(d_course_dks_jungle_parkway_packed_dl_36A8);
         InvertTriangleWindingByName(d_course_dks_jungle_parkway_packed_dl_3F30);
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_dks_jungle_parkway_addr));
     func_80295C6C();
     // d_course_dks_jungle_parkway_packed_dl_3FA8
     find_vtx_and_set_colours((Gfx*) d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
@@ -194,7 +194,7 @@ void DKJungle::BeginPlay() {
     }
 }
 
-void DKJungle::InitCourseObjects() {
+void DKJungle::InitTrackObjects() {
     for (size_t i = 0; i < NUM_TORCHES; i++) {
         init_smoke_particles(i);
         // wtf?
@@ -202,11 +202,11 @@ void DKJungle::InitCourseObjects() {
     }
 }
 
-void DKJungle::UpdateCourseObjects() {
+void DKJungle::TickTrackObjects() {
     update_ferries_smoke_particle();
 }
 
-void DKJungle::RenderCourseObjects(s32 cameraId) {
+void DKJungle::DrawTrackObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         render_object_paddle_boat_smoke_particles(cameraId);
     }
@@ -262,7 +262,7 @@ void DKJungle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void DKJungle::Render(ScreenContext* arg0) {
+void DKJungle::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     set_track_light_direction(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
@@ -280,12 +280,12 @@ void DKJungle::Render(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    render_course_segments(d_course_dks_jungle_parkway_unknown_dl_list, arg0);
+    render_track_segments(d_course_dks_jungle_parkway_unknown_dl_list, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void DKJungle::RenderCredits() {
+void DKJungle::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_dks_jungle_parkway_dl_13C30));
 }
 

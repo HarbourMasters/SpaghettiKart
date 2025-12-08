@@ -67,7 +67,7 @@ u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 s32 gIsMirrorMode = 0;
 void set_mirror_mode(s32 mirror) {
     if (gIsMirrorMode != mirror) {
-        UnLoadCourse();
+        UnLoadTrack();
     }
     gIsMirrorMode = mirror;
 }
@@ -95,14 +95,14 @@ s32 D_8015F5A4;
 s32 code_800029B0_bss_pad[48];
 Vtx* vtxBuffer[32];
 
-s16 gCourseMaxX;
-s16 gCourseMinX;
+s16 gTrackMaxX;
+s16 gTrackMinX;
 
-s16 gCourseMaxY; // s16 or u16?
-s16 gCourseMinY;
+s16 gTrackMaxY; // s16 or u16?
+s16 gTrackMinY;
 
-s16 gCourseMaxZ;
-s16 gCourseMinZ;
+s16 gTrackMaxZ;
+s16 gTrackMinZ;
 
 s16 D_8015F6F4;
 s16 D_8015F6F6;
@@ -131,7 +131,7 @@ Vec3f D_8015F758;
 Vec3f D_8015F768;
 Vec3f D_8015F778;
 
-f32 gCourseDirection; // Extra mode, flips vertices.
+f32 gTrackDirection; // Extra mode, flips vertices.
 s32 gNumScreens;      // Set to zero in single player mode
 s32 D_8015F790[64];   // Unknown data, potentially not used.
 u16 D_8015F890;
@@ -201,15 +201,15 @@ void setup_race(void) {
         set_mirror_mode(0);
     }
     if (gIsMirrorMode) {
-        gCourseDirection = -1.0f;
+        gTrackDirection = -1.0f;
     } else {
-        gCourseDirection = 1.0f;
+        gTrackDirection = 1.0f;
     }
     if (gModeSelection == GRAND_PRIX) {
         gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
         // Skip for debug menu
         if (gMenuSelection != START_MENU) {
-            SetCourseFromCup();
+            SetTrackFromCup();
         }
     }
     gActiveScreenMode = gScreenModeSelection;
@@ -218,7 +218,6 @@ void setup_race(void) {
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
-        course_init();
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
@@ -290,16 +289,15 @@ void setup_editor(void) {
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
-        course_init();
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = gFreeMemoryCourseAnchor;
     }
 
     if (gIsMirrorMode) {
-        gCourseDirection = -1.0f;
+        gTrackDirection = -1.0f;
     } else {
-        gCourseDirection = 1.0f;
+        gTrackDirection = 1.0f;
     }
 
     // Cow related
@@ -385,7 +383,7 @@ void credits_spawn_actors(void) {
     D_800DC5C8 = 0;
     gNumActors = 0;
     set_mirror_mode(0);
-    gCourseDirection = 1.0f;
+    gTrackDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
 

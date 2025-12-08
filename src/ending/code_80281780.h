@@ -21,7 +21,4 @@ extern s32 D_00835BA0;
 extern u8 defaultCharacterIds[];
 extern s8 gGPOverallRanks[8];
 
-extern s32 _course_banshee_boardwalk_dl_mio0SegmentRomStart;
-extern s32 _course_yoshi_valley_dl_mio0SegmentRomStart;
-
 #endif // CODE_80281780_H

@@ -153,7 +153,7 @@ void ChocoMountain::Load() {
         nullify_displaylist((uintptr_t) LOAD_ASSET_RAW(d_course_choco_mountain_packed_dl_3C8));
     }
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_choco_mountain_addr));
     func_802B5CAC(0x238E, 0x31C7, D_8015F590);
     func_80295C6C();
 }
@@ -179,7 +179,7 @@ void ChocoMountain::BeginPlay() {
     }
 }
 
-void ChocoMountain::InitCourseObjects() {
+void ChocoMountain::InitTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -226,7 +226,7 @@ void ChocoMountain::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void ChocoMountain::Render(ScreenContext* arg0) {
+void ChocoMountain::Draw(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -256,7 +256,7 @@ void ChocoMountain::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_choco_mountain_packed_dl_5868);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    render_course_segments(choco_mountain_dls, arg0);
+    render_track_segments(choco_mountain_dls, arg0);
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
@@ -273,7 +273,7 @@ void ChocoMountain::Render(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void ChocoMountain::RenderCredits() {
+void ChocoMountain::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_choco_mountain_dl_71B8));
 }
 

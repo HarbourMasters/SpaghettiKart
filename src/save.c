@@ -139,7 +139,7 @@ void load_save_data(void) {
     s32 i;
 
     osEepromLongRead(&gSIEventMesgQueue, EEPROM_ADDR(&gSaveData), (u8*) &gSaveData, sizeof(SaveData));
-    // 16: 4 cup records * 4 course records?
+    // 16: 4 cup records * 4 track records?
     for (i = 0; i < 16; i++) {
         func_800B4A9C(i);
     }
@@ -152,28 +152,28 @@ void load_save_data(void) {
     }
 }
 
-void func_800B4A9C(s32 course) {
+void func_800B4A9C(s32 track) {
     OnlyBestTimeTrialRecords* test;
     CourseTimeTrialRecords* sp24;
     s32 i;
 
-    if ((func_800B4EB4(0, course) & 0xFFFFF) < 0x927C0U) {
-        gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4].unknownBytes[0] = 1;
+    if ((func_800B4EB4(0, track) & 0xFFFFF) < 0x927C0U) {
+        gSaveData.allCourseTimeTrialRecords.cupRecords[track / 4].courseRecords[track % 4].unknownBytes[0] = 1;
     }
-    sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
+    sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[track / 4].courseRecords[track % 4];
 
-    func_800B4FB0(course);
+    func_800B4FB0(track);
     if (sp24) {}
 
-    if (sp24->checksum != checksum_time_trial_records(course)) {
-        func_800B4728(course);
-        if (func_800B58C4(course) == 0) {
+    if (sp24->checksum != checksum_time_trial_records(track)) {
+        func_800B4728(track);
+        if (func_800B58C4(track) == 0) {
             s32 a3 = 0;
 
-            test = &gSaveData.onlyBestTimeTrialRecords[course / 8];
+            test = &gSaveData.onlyBestTimeTrialRecords[track / 8];
             for (i = 0; i < 3; i++) {
-                sp24->records[TIME_TRIAL_3LAP_RECORD_1][i] = test->bestThreelaps[course % 8][i];
-                sp24->records[TIME_TRIAL_1LAP_RECORD][i] = test->bestSinglelaps[course % 8][i];
+                sp24->records[TIME_TRIAL_3LAP_RECORD_1][i] = test->bestThreelaps[track % 8][i];
+                sp24->records[TIME_TRIAL_1LAP_RECORD][i] = test->bestSinglelaps[track % 8][i];
 
                 // This is checking (in a roundabout way) if the given record
                 // is the default value of 0x927C0
@@ -189,13 +189,13 @@ void func_800B4A9C(s32 course) {
             } else {
                 sp24->unknownBytes[0] = 1;
             }
-            func_800B45E0(course);
+            func_800B45E0(track);
         }
         // L800B4C78
-        func_800B559C(course);
-    } else if (func_800B58C4(course)) {
+        func_800B559C(track);
+    } else if (func_800B58C4(track)) {
         // L800B4C88
-        func_800B559C(course);
+        func_800B559C(track);
     }
 }
 
@@ -249,28 +249,28 @@ u32 func_800B4DF4(u8* arr) {
     return (a + (b << 8) + (c << 16)) & 0x00FFFFFF;
 }
 
-// Get a time trial record, infer course index
+// Get a time trial record, infer track index
 s32 func_800B4E24(s32 recordIndex) {
     return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[GetCupIndex()]
                              .courseRecords[GetCupCursorPosition()]
                              .records[recordIndex]);
 }
 
-// Get a time trial record, but take the course index as an argument
+// Get a time trial record, but take the track index as an argument
 u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
     return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(courseIndex / 4)]
                              .courseRecords[(courseIndex % 4)]
                              .records[recordIndex]);
 }
 
-// Get Best Lap record of the inferred course index
+// Get Best Lap record of the inferred track index
 s32 func_800B4F2C(void) {
     return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[GetCupIndex()]
                              .courseRecords[GetCupCursorPosition()]
                              .records[TIME_TRIAL_1LAP_RECORD]);
 }
 
-// Get the best single lap time record of the given course index
+// Get the best single lap time record of the given track index
 s32 func_800B4FB0(s32 courseIndex) {
     return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(courseIndex / 4)]
                              .courseRecords[(courseIndex % 4)]
@@ -279,13 +279,13 @@ s32 func_800B4FB0(s32 courseIndex) {
 
 s32 func_800B5020(u32 time, s32 charId) {
     UNUSED s32 stackPadding[3];
-    s32 course; // sp30
+    s32 track; // sp30
     s32 i;
     s32 j;
     CourseTimeTrialRecords* tt;
 
-    course = GetCupIndex() * 4 + GetCupCursorPosition();
-    tt = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
+    track = GetCupIndex() * 4 + GetCupCursorPosition();
+    tt = &gSaveData.allCourseTimeTrialRecords.cupRecords[track / 4].courseRecords[track % 4];
 
     i = 0;
     for (; i < 5; i++) {
@@ -310,7 +310,7 @@ s32 func_800B5020(u32 time, s32 charId) {
 
     populate_time_trial_record(tt->records[i], time, charId);
     tt->unknownBytes[0] = 1;
-    func_800B45E0(course);
+    func_800B45E0(track);
 
     return i;
 }

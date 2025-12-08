@@ -26,10 +26,10 @@ public:
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
-    virtual void UpdateClouds(s32 sp1C, Camera* camera) override;
-    virtual void InitCourseObjects() override;
-    virtual void UpdateCourseObjects() override;
-    virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
+    virtual void TickClouds(s32 sp1C, Camera* camera) override;
+    virtual void InitTrackObjects() override;
+    virtual void TickTrackObjects() override;
+    virtual void Draw(ScreenContext*) override;
+    virtual void DrawCredits() override;    
     virtual void Waypoints(Player* player, int8_t playerId) override;
 };

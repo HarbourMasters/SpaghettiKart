@@ -65,10 +65,10 @@ void func_80280038(Camera* camera) {
     gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    SetTrackById(gCreditsCourseId);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    render_course(gScreenOneCtx);
+    render_track(gScreenOneCtx);
     render_course_actors(gScreenOneCtx);
     CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
@@ -148,7 +148,7 @@ void load_credits(void) {
 
 
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    SetTrackById(gCreditsCourseId);
     D_800DC5B4 = 1;
     func_802A4D18();
     set_screen();
@@ -162,13 +162,13 @@ void load_credits(void) {
     load_course(gCurrentCourseId);
     gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
 
-    gCourseMinX = -0x15A1;
-    gCourseMinY = -0x15A1;
-    gCourseMinZ = -0x15A1;
+    gTrackMinX = -0x15A1;
+    gTrackMinY = -0x15A1;
+    gTrackMinZ = -0x15A1;
 
-    gCourseMaxX = 0x15A1;
-    gCourseMaxY = 0x15A1;
-    gCourseMaxZ = 0x15A1;
+    gTrackMaxX = 0x15A1;
+    gTrackMaxY = 0x15A1;
+    gTrackMaxZ = 0x15A1;
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;

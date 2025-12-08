@@ -12,7 +12,7 @@ public:
 
     struct Tracks {
         std::shared_ptr<Track> invalidTrack; // If not nullptr, user needs to create a scene file for this track.
-        std::shared_ptr<Track> course; // A valid custom track. Used to reset the Courses array on a file system refresh.
+        std::shared_ptr<Track> track; // A valid custom track. Used to reset the World->Tracks array on a file system refresh.
         std::string SceneFile;
         std::string Name;
         std::string Dir; // Directory
@@ -34,7 +34,7 @@ protected:
     void DrawElement() override;
     void UpdateElement() override {};
     void AddTrackContent();
-    void RemoveCustomTracksFromTrackList(); // Prevents duplicate courses being added to World->Courses array
+    void RemoveCustomTracksFromTrackList(); // Prevents duplicate tracks being added to World->Tracks array
     void AddActorContent();
     void AddObjectContent();
     void AddCustomContent();

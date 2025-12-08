@@ -734,28 +734,6 @@ extern "C" void Timer_SetValue(int32_t* address, int32_t value) {
     *address = value;
 }
 
-// void Timer_CompleteTask(TimedEntry& task) {
-//     if (task.action != nullptr) {
-//         task.action(task.address, task.value);
-//     }
-//     task.active = false;
-// }
-
-// extern "C" void Timer_Update() {
-
-//     if(gTimerTasks.empty()) {
-//         return;
-//     }
-
-//     const auto millis = Timer_GetCurrentMillis();
-
-//     for (auto& task : gTimerTasks) {
-//         if (task.active && millis >= task.duration) {
-//             Timer_CompleteTask(task);
-//         }
-//     }
-// }
-
 extern "C" float OTRGetAspectRatio() {
     return GetInterpreter()->mCurDimensions.aspect_ratio;
 }

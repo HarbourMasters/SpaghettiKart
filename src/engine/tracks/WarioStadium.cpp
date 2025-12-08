@@ -129,9 +129,9 @@ void WarioStadium::Load() {
         InvertTriangleWindingByName(d_course_wario_stadium_packed_dl_EC0);
     }
 
-    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
+    parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_wario_stadium_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
     // d_course_wario_stadium_packed_dl_C50
     find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_C50, 100, 255, 255, 255);
     // d_course_wario_stadium_packed_dl_BD8
@@ -176,11 +176,11 @@ void WarioStadium::InitClouds() {
     init_stars(this->Props.Clouds);
 }
 
-void WarioStadium::UpdateClouds(s32 sp1C, Camera* camera) {
+void WarioStadium::TickClouds(s32 sp1C, Camera* camera) {
     update_stars(sp1C, camera, this->Props.CloudList);
 }
 
-void WarioStadium::InitCourseObjects() {
+void WarioStadium::InitTrackObjects() {
 }
 
 void WarioStadium::SomeSounds() {
@@ -237,7 +237,7 @@ void WarioStadium::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* sourc
     }
 }
 
-void WarioStadium::Render(ScreenContext* arg0) {
+void WarioStadium::Draw(ScreenContext* arg0) {
     s16 prevFrame;
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -263,7 +263,7 @@ void WarioStadium::Render(ScreenContext* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGBA, G_CC_MODULATERGBA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments(wario_stadium_dls, arg0);
+    render_track_segments(wario_stadium_dls, arg0);
 
     // d_course_wario_stadium_packed_dl_A228
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_wario_stadium_packed_dl_A228);
@@ -296,7 +296,7 @@ void WarioStadium::Render(ScreenContext* arg0) {
     }
 }
 
-void WarioStadium::RenderCredits() {
+void WarioStadium::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_wario_stadium_dl_CA78));
 }
 

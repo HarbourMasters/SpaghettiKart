@@ -150,9 +150,9 @@ void MarioRaceway::Load() {
         }
     }
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_mario_raceway_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void MarioRaceway::UnLoad() {
@@ -187,7 +187,7 @@ void MarioRaceway::BeginPlay() {
     }
 }
 
-void MarioRaceway::InitCourseObjects() {
+void MarioRaceway::InitTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
             func_80070714();
@@ -257,7 +257,7 @@ void render_mario_raceway_pipe(void) {
     }
 }
 
-void MarioRaceway::Render(ScreenContext* arg0) {
+void MarioRaceway::Draw(ScreenContext* arg0) {
     u16 sp22 = arg0->pathCounter;
     u16 temp_t0 = arg0->playerDirection;
 
@@ -351,7 +351,7 @@ void MarioRaceway::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_3508);
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_3240);
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_14A0);
-    render_course_segments(mario_raceway_dls, arg0);
+    render_track_segments(mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -362,7 +362,7 @@ void MarioRaceway::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_160);
 }
 
-void MarioRaceway::RenderCredits() {
+void MarioRaceway::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_mario_raceway_dl_9348));
 }
 

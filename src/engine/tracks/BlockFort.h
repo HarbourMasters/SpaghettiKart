@@ -28,6 +28,6 @@ public:
     virtual void Load() override;
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
-    virtual void Render(ScreenContext*) override;
+    virtual void Draw(ScreenContext*) override;
     virtual void Waypoints(Player*, int8_t) override;
 };

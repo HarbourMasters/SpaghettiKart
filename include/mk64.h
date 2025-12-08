@@ -86,19 +86,19 @@ enum SURFACE_TYPE {
     /* 0x00 */ AIRBORNE,
     /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal
                         // Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ DIRT,    // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK
-                        // Jungle on course, Yoshi Valley
+    /* 0x02 */ DIRT,    // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert as road, Choco Mountain, Wario Stadium, DK
+                        // Jungle as road, Yoshi Valley
     /* 0x03 */ SAND,    // Koopa Troopa Beach light color, Royal Raceway
     /* 0x04 */ STONE,   // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW,    // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x05 */ SNOW,    // Frappe Snowland as road, Sherber Land tunnel
     /* 0x06 */ BRIDGE,  // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
     /* 0x07 */ SAND_OFFROAD, // Mario Raceway
     /* 0x08 */ GRASS,        // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE,          // Sherbert Land
     /* 0x0A */ WET_SAND,     // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off road
     /* 0x0C */ CLIFF,        // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off road
     /* 0x0E */ TRAIN_TRACK,  // Kalimari Desert
     /* 0x0F */ CAVE,         // DK Jungle cave
     /* 0x10 */ ROPE_BRIDGE,  // Bowser's Castle bridge 2, DK Jungle bridge

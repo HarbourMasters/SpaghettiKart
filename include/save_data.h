@@ -11,7 +11,7 @@ typedef struct {
     // The 6th record is the best 1-lap record
     u8 records[6][3];
     // It's unknown what these bytes are used for
-    // Byte 1 might be an indicator that there is a ghost available for that course
+    // Byte 1 might be an indicator that there is a ghost available for that track
     u8 unknownBytes[5];
     u8 checksum;
 } CourseTimeTrialRecords; // size = 0x18

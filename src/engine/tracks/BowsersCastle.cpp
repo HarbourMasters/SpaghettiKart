@@ -127,7 +127,7 @@ void BowsersCastle::Load() {
         InvertTriangleWindingByName(d_course_bowsers_castle_dl_9228);
     }
 
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_bowsers_castle_addr));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_bowsers_castle_packed_dl_1350, 0x32, 0, 0, 0);
 }
@@ -192,7 +192,7 @@ void BowsersCastle::BeginPlay() {
     }
 }
 
-void BowsersCastle::InitCourseObjects() {
+void BowsersCastle::InitTrackObjects() {
     size_t objectId;
     size_t i;
 
@@ -219,11 +219,11 @@ void BowsersCastle::InitCourseObjects() {
     }
 }
 
-void BowsersCastle::UpdateCourseObjects() {
+void BowsersCastle::TickTrackObjects() {
     update_flame_particle();
 }
 
-void BowsersCastle::RenderCourseObjects(s32 cameraId) {
+void BowsersCastle::DrawTrackObjects(s32 cameraId) {
     // render_object_thwomps(cameraId);
     render_object_bowser_flame(cameraId);
 }
@@ -261,7 +261,7 @@ void BowsersCastle::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::Render(ScreenContext* arg0) {
+void BowsersCastle::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -280,7 +280,7 @@ void BowsersCastle::Render(ScreenContext* arg0) {
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
     }
-    render_course_segments(bowsers_castle_dls, arg0);
+    render_track_segments(bowsers_castle_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -288,7 +288,7 @@ void BowsersCastle::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_bowsers_castle_packed_dl_248);
 }
 
-void BowsersCastle::RenderCredits() {
+void BowsersCastle::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_bowsers_castle_dl_9148));
 }
 

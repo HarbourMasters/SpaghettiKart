@@ -126,9 +126,9 @@ void LuigiRaceway::Load() {
         InvertTriangleWindingByName(d_course_luigi_raceway_packed_dl_E0);
         InvertTriangleWindingByName(d_course_luigi_raceway_packed_dl_68);
     }
-    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
+    parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_luigi_raceway_addr));
     func_80295C6C();
-    Props.WaterLevel = gCourseMinY - 10.0f;
+    Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
 void LuigiRaceway::UnLoad() {
@@ -157,7 +157,7 @@ void LuigiRaceway::BeginPlay() {
     }
 }
 
-void LuigiRaceway::InitCourseObjects() {
+void LuigiRaceway::InitTrackObjects() {
     size_t i;
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == GRAND_PRIX) {
@@ -249,7 +249,7 @@ void LuigiRaceway::CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* sourc
     }
 }
 
-void LuigiRaceway::Render(ScreenContext* arg0) {
+void LuigiRaceway::Draw(ScreenContext* arg0) {
     UNUSED s32 pad;
     u16 sp22 = (u16) arg0->pathCounter;
     s16 prevFrame;
@@ -278,7 +278,7 @@ void LuigiRaceway::Render(ScreenContext* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    render_course_segments(luigi_raceway_dls, arg0);
+    render_track_segments(luigi_raceway_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -314,7 +314,7 @@ void LuigiRaceway::Render(ScreenContext* arg0) {
     }
 }
 
-void LuigiRaceway::RenderCredits() {
+void LuigiRaceway::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_luigi_raceway_dl_FD40));
 }
 

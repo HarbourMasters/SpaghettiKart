@@ -140,7 +140,7 @@ void Skyscraper::BeginPlay() {
     }
 }
 
-void Skyscraper::InitCourseObjects() {}
+void Skyscraper::InitTrackObjects() {}
 
 void Skyscraper::SomeSounds() {}
 
@@ -148,7 +148,7 @@ void Skyscraper::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void Skyscraper::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void Skyscraper::Render(ScreenContext* arg0) {
+void Skyscraper::Draw(ScreenContext* arg0) {
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -171,7 +171,7 @@ void Skyscraper::Render(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_skyscraper_packed_dl_258);
 }
 
-void Skyscraper::RenderCredits() {}
+void Skyscraper::DrawCredits() {}
 
 void Skyscraper::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = 0;

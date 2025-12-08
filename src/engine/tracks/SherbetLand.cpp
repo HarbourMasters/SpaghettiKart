@@ -124,7 +124,7 @@ void SherbetLand::Load() {
             InvertTriangleWindingByName(sherbet_land_dls_2[i]);
         }
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_sherbet_land_addr));
     func_80295C6C();
     // d_course_sherbet_land_packed_dl_1EB8
     find_vtx_and_set_colours((Gfx*) d_course_sherbet_land_packed_dl_1EB8, 180, 255, 255, 255);
@@ -138,7 +138,7 @@ void SherbetLand::UnLoad() {
 
 f32 SherbetLand::GetWaterLevel(FVector pos, Collision* collision) {
     if ((get_surface_type(collision->meshIndexZX) & 0xFF) == SNOW) {
-        return (f32) (gCourseMinY - 0xA);
+        return (f32) (gTrackMinY - 0xA);
     }
     return Props.WaterLevel;
 }
@@ -188,28 +188,28 @@ void SherbetLand::BeginPlay() {
     }
 }
 
-void SherbetLand::UpdateCourseObjects() {
+void SherbetLand::TickTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         func_800842C8();
     }
 }
 
-void SherbetLand::RenderCourseObjects(s32 cameraId) {
+void SherbetLand::DrawTrackObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         func_80052E30(cameraId);
     }
 }
 
-void SherbetLand::Render(ScreenContext* arg0) {
+void SherbetLand::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments(sherbet_land_dls, arg0);
+    render_track_segments(sherbet_land_dls, arg0);
 }
 
-void SherbetLand::RenderCredits() {
+void SherbetLand::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_sherbet_land_dl_9AE8));
 }
 
@@ -221,7 +221,7 @@ void SherbetLand::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
-    render_course_segments(sherbet_land_dls_2, screen);
+    render_track_segments(sherbet_land_dls_2, screen);
 
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
     if ((func_80290C20(screen->camera) == 1) && (get_water_level(screen->player) < screen->player->pos[1])) {

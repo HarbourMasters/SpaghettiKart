@@ -177,7 +177,7 @@ endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING ON)
+set(USE_NETWORKING OFF)
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # TODO: Sorry i broke this
@@ -218,7 +218,6 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/buffers
     ${CMAKE_CURRENT_SOURCE_DIR}/src/audio
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tracks
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects
@@ -265,8 +264,6 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "assets/code/*.c"
     "courses/*.c"
     "courses/*.h"
-    "src/networking/*.c"
-    "src/networking/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
     "src/engine/tracks/*.c"

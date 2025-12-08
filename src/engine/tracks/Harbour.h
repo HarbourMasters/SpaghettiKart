@@ -12,7 +12,6 @@ extern "C" {
     #include "data/some_data.h"
     #include "objects.h"
     #include "path_spawn_metadata.h"
-    extern const course_texture test_course_textures[];
 }
 
 class Harbour : public Track {
@@ -29,6 +28,6 @@ public:
     virtual void BeginPlay() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void Render(ScreenContext*) override;
+    virtual void Draw(ScreenContext*) override;
     virtual bool IsMod() override;
 };

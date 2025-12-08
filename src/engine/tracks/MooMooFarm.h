@@ -33,8 +33,8 @@ public:
     virtual void BeginPlay() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
-    virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
+    virtual void Draw(ScreenContext*) override;
+    virtual void DrawCredits() override;    
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

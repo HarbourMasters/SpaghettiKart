@@ -25,8 +25,8 @@ public:
     virtual void Load() override;
     virtual void UnLoad() override;
     virtual void BeginPlay() override;
-    virtual void Render(ScreenContext*) override;
-    virtual void RenderCredits() override;    
+    virtual void Draw(ScreenContext*) override;
+    virtual void DrawCredits() override;    
     virtual void Waypoints(Player* player, int8_t playerId) override;
     virtual void Destroy() override;
 };

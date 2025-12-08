@@ -238,8 +238,8 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
     pad0 = shell->pos[2];
     pad2 = shell->pos[1];
     pad13 = shell->type;
-    if ((pad0 < (f32) gCourseMinZ) || ((f32) gCourseMaxZ < pad0) || (pad1 < (f32) gCourseMinX) ||
-        ((f32) gCourseMaxX < pad1) || (pad2 < (f32) gCourseMinY)) {
+    if ((pad0 < (f32) gTrackMinZ) || ((f32) gTrackMaxZ < pad0) || (pad1 < (f32) gTrackMinX) ||
+        ((f32) gTrackMaxX < pad1) || (pad2 < (f32) gTrackMinY)) {
         destroy_destructable_actor((struct Actor*) shell);
     }
 

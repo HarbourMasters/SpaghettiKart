@@ -387,7 +387,7 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define UNKNOWN_EFFECT_0x10000 0x10000       //
 #define BOOST_RAMP_ASPHALT_EFFECT 0x100000   // being boosted by a boost pad
 #define UNKNOWN_EFFECT_0x200000 0x200000     //
-#define REVERSE_EFFECT 0x400000              // being in reverse of the course
+#define REVERSE_EFFECT 0x400000              // Player is facing the wrong direction
 #define UNKNOWN_EFFECT_0x1000000 0x1000000   //
 #define HIT_BY_ITEM_EFFECT 0x2000000         // being hit by an item
 #define HIT_EFFECT 0x4000000                 // hitting an object

@@ -7,8 +7,6 @@
 #include <stubs.h>
 #include "racing/framebuffer_effects.h"
 
-#include "networking/networking.h"
-
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
@@ -610,8 +608,8 @@ void setup_game_memory(void) {
 
     //     gNextFreeMemoryAddress += textureSegSize;
 
-    //     // Common course data does not get reloaded when the race state resets.
-    //     // Therefore, only reset the memory ptr to after the common course data.
+    //     // Common track data does not get reloaded when the race state resets.
+    //     // Therefore, only reset the memory ptr to after the common track data.
     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
@@ -726,11 +724,6 @@ void race_logic_loop(void) {
 
     if (gModeSelection == TIME_TRIALS) {
         replays_loop();
-    }
-
-    // Wait for all racers to load
-    if (gNetwork.enabled) {
-        network_all_players_loaded();
     }
 
     if (gIsGamePaused == false) {

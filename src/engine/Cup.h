@@ -21,7 +21,7 @@ public:
 
     virtual void Next();
     virtual void Previous();
-    virtual void SetCourse(size_t position);
-    virtual std::shared_ptr<Track> GetCourse();
+    virtual void SetTrack(size_t position);
+    virtual std::shared_ptr<Track> GetTrack();
     virtual size_t GetSize();
 };

@@ -442,8 +442,8 @@ char gTextDistance[] = "distance";
 
 char* gTextMenuOption[] = {
     "return to menu",
-    "erase records for this course",
-    "erase ghost from this course",
+    "erase records for this track",
+    "erase ghost from this track",
 };
 
 char* D_800E7840[] = {
@@ -3148,7 +3148,7 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 textureFormat, s32 texScaleS, s32 te
 // its plausible that its instead using it as some form semi-random data for the static pattern?
 
 // This function is responsible for drawing a near unnoticeable static pattern
-// over the course images when loading the cup selection screen
+// over the track previews when loading the cup selection screen
 // Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it
 // last longer
 Gfx* func_80096CD8(Gfx* displayListHead, s32 xPos, s32 yPos, u32 width, u32 height) {
@@ -3551,7 +3551,7 @@ Gfx* draw_box(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
 /**
  * Renders
  *
- * Menus: Menu transition swipes, course label highlight
+ * Menus: Menu transition swipes, track label highlight
  *
  * All game modes: Background cover at pause screen
  *
@@ -5341,7 +5341,7 @@ void func_8009CE64(s32 arg0) {
                         default:
                             break;
                     }
-                    SetCourseFromCup();
+                    SetTrackFromCup();
                     gNextDemoId += 1;
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
@@ -7259,14 +7259,14 @@ void func_800A1780(MenuItem* arg0) {
          render_menu_textures(gDisplayListHead, D_02001FA4, arg0->column, arg0->row);
 }
 
-// render course preview
+// render track preview
 void render_menu_item_data_course_image(MenuItem* arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
     if (func_800B639C(gTimeTrialDataCourseIndex) >= TIME_TRIAL_DATA_LUIGI_RACEWAY) {
         gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
         gDisplayListHead = render_menu_textures(gDisplayListHead, D_02004A0C, 0x57, 0x84);
     }
-    // course minimap
+    // track minimap
     //! @bug todo: This function will not work in custom courses.
     func_8004EF9C(gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]);
     do {
@@ -7281,7 +7281,7 @@ void render_menu_item_data_course_info(MenuItem* arg0) {
 
     courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
-    // name of the course
+    // name of the track
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsCourseId(courseId)->Name, 0, 0.75f, 0.75f);
 

@@ -86,14 +86,14 @@ extern s32 D_8015F5A0;
 extern s32 D_8015F5A4;
 
 extern Vtx* vtxBuffer[];
-extern s16 gCourseMaxX;
-extern s16 gCourseMinX;
+extern s16 gTrackMaxX;
+extern s16 gTrackMinX;
 
-extern s16 gCourseMaxY;
-extern s16 gCourseMinY;
+extern s16 gTrackMaxY;
+extern s16 gTrackMinY;
 
-extern s16 gCourseMaxZ;
-extern s16 gCourseMinZ;
+extern s16 gTrackMaxZ;
+extern s16 gTrackMinZ;
 extern s16 D_8015F6F4;
 extern s16 D_8015F6F6;
 extern u16 D_8015F6F8;
@@ -111,9 +111,9 @@ extern uintptr_t gNextFreeMemoryAddress;
 extern uintptr_t gHeapEndPtr;
 
 /**
- * This repoints gNextFreeMemoryAddress to the point in the memory pool just after a course was loaded.
- * This allows players to retry or reset a course without reloading the whole course.
- * Memory allocated after course load is not zeroed or reset. But should get overwritten by future allocations.
+ * This repoints gNextFreeMemoryAddress to the point in the memory pool just after a track was loaded.
+ * This allows players to retry or reset a track without reloading the whole track.
+ * Memory allocated after track load is not zeroed or reset. But should get overwritten by future allocations.
  *
  * This is a relatively unsafe way to architect a memory pool as old memory could accidentally be used if future allocations do not zero or fully overwrite their free memory.
  */
@@ -125,7 +125,7 @@ extern Vec3f D_8015F758;
 extern Vec3f D_8015F768;
 extern Vec3f D_8015F778;
 
-extern f32 gCourseDirection;
+extern f32 gTrackDirection;
 extern s32 gNumScreens;
 
 extern s32 D_8015F790[];

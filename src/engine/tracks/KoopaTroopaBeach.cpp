@@ -131,7 +131,7 @@ void KoopaTroopaBeach::Load() {
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_2C0);
         InvertTriangleWindingByName(d_course_koopa_troopa_beach_packed_dl_9E70);
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_addr));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_ADE0, 150, 255, 255, 255);
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, 150, 255, 255, 255);
@@ -144,7 +144,7 @@ void KoopaTroopaBeach::UnLoad() {
 }
 
 void KoopaTroopaBeach::BeginPlay() {
-    init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
+    init_actor_hot_air_balloon_item_box(328.0f * gTrackDirection, 70.0f, 2541.0f);
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));
     spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 
@@ -186,10 +186,10 @@ void KoopaTroopaBeach::BeginPlay() {
     }
 }
 
-void KoopaTroopaBeach::InitCourseObjects() {
+void KoopaTroopaBeach::InitTrackObjects() {
 }
 
-void KoopaTroopaBeach::UpdateCourseObjects() {
+void KoopaTroopaBeach::TickTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         //update_crabs();
     }
@@ -198,7 +198,7 @@ void KoopaTroopaBeach::UpdateCourseObjects() {
     }
 }
 
-void KoopaTroopaBeach::RenderCourseObjects(s32 cameraId) {
+void KoopaTroopaBeach::DrawTrackObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         //render_object_crabs(cameraId);
     }
@@ -221,7 +221,7 @@ void KoopaTroopaBeach::WhatDoesThisDo(Player* player, int8_t playerId) {}
 
 void KoopaTroopaBeach::WhatDoesThisDoAI(Player* player, int8_t playerId) {}
 
-void KoopaTroopaBeach::Render(ScreenContext* arg0) {
+void KoopaTroopaBeach::Draw(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -237,7 +237,7 @@ void KoopaTroopaBeach::Render(ScreenContext* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_koopa_troopa_beach_packed_dl_9688);
-    render_course_segments((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
+    render_track_segments((const char**)d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -247,7 +247,7 @@ void KoopaTroopaBeach::Render(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void KoopaTroopaBeach::RenderCredits() {
+void KoopaTroopaBeach::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_koopa_troopa_beach_dl_18D68));
 }
 
@@ -322,7 +322,7 @@ void KoopaTroopaBeach::DrawWater(ScreenContext* screen, uint16_t pathCounter, ui
     gDPSetBlendMask(gDisplayListHead++, 0xFF);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    render_course_segments((const char**)koopa_troopa_beach_dls2, screen);
+    render_track_segments((const char**)koopa_troopa_beach_dls2, screen);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);

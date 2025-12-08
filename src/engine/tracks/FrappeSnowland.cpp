@@ -124,7 +124,7 @@ void FrappeSnowland::Load() {
 
         InvertTriangleWindingByName(d_course_frappe_snowland_packed_dl_65E0);
     }
-    parse_course_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
+    parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_frappe_snowland_addr));
     func_80295C6C();
 }
 
@@ -185,11 +185,11 @@ void FrappeSnowland::InitClouds() {
     D_8018D230 = 0; // This must be turned off or mayhem ensues
 }
 
-void FrappeSnowland::UpdateClouds(s32 sp1C, Camera* camera) {
+void FrappeSnowland::TickClouds(s32 sp1C, Camera* camera) {
     func_80078170(sp1C, camera);
 }
 
-void FrappeSnowland::InitCourseObjects() {
+void FrappeSnowland::InitTrackObjects() {
     size_t objectId;
     size_t i;
     for (i = 0; i < NUM_SNOWFLAKES; i++) {
@@ -197,11 +197,11 @@ void FrappeSnowland::InitCourseObjects() {
     }
 }
 
-void FrappeSnowland::UpdateCourseObjects() {
+void FrappeSnowland::TickTrackObjects() {
     update_snowflakes();
 }
 
-void FrappeSnowland::Render(ScreenContext* arg0) {
+void FrappeSnowland::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -215,10 +215,10 @@ void FrappeSnowland::Render(ScreenContext* arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments(d_course_frappe_snowland_dl_list, arg0);
+    render_track_segments(d_course_frappe_snowland_dl_list, arg0);
 }
 
-void FrappeSnowland::RenderCredits() {
+void FrappeSnowland::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*)(d_course_frappe_snowland_dl_76A0));
 }
 

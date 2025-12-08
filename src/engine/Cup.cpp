@@ -23,14 +23,14 @@ void Cup::Previous() {
     }
 }
 
-void Cup::SetCourse(size_t position) {
+void Cup::SetTrack(size_t position) {
     if ((position < 0) || (position >= Courses.size())) {
-        throw std::invalid_argument("Invalid course index.");
+        throw std::invalid_argument("Invalid track index.");
     }
     CursorPosition = position;
 }
 
-std::shared_ptr<Track> Cup::GetCourse() {
+std::shared_ptr<Track> Cup::GetTrack() {
     return Courses[CursorPosition];
 }
 

@@ -52,15 +52,15 @@ extern "C" void add_triangle_to_collision_mesh(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, 
 }
 
 void RaceManager::Load() {
-    if (WorldContext.GetCurrentCourse()) {
+    if (WorldContext.GetTrack()) {
         mirroredVtxCache.clear();
-        WorldContext.GetCurrentCourse()->Load();
+        WorldContext.GetTrack()->Load();
     }
 }
 
 void RaceManager::UnLoad() {
-    if (WorldContext.GetCurrentCourse()) {
-        WorldContext.GetCurrentCourse()->UnLoad();
+    if (WorldContext.GetTrack()) {
+        WorldContext.GetTrack()->UnLoad();
     }
 }
 
@@ -74,14 +74,14 @@ void RaceManager::PreInit() {
 }
 
 void RaceManager::BeginPlay() {
-    auto course = WorldContext.GetCurrentCourse();
+    auto track = WorldContext.GetTrack();
 
-    if (course) {
+    if (track) {
         // Do not spawn finishline in credits or battle mode. And if bSpawnFinishline.
         if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != BATTLE)) {
-            if (course->bSpawnFinishline) {
-                if (course->FinishlineSpawnPoint.has_value()) {
-                    AFinishline::Spawn(course->FinishlineSpawnPoint.value(), IRotator(0, 0, 0));
+            if (track->bSpawnFinishline) {
+                if (track->FinishlineSpawnPoint.has_value()) {
+                    AFinishline::Spawn(track->FinishlineSpawnPoint.value(), IRotator(0, 0, 0));
                 } else {
                     AFinishline::Spawn();
                 }
@@ -90,7 +90,7 @@ void RaceManager::BeginPlay() {
         }
         gEditor.AddLight("Sun", nullptr, D_800DC610[1].l->l.dir);
 
-        course->BeginPlay();
+        track->BeginPlay();
     }
 }
 

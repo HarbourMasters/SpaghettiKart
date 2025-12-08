@@ -6,7 +6,7 @@
 #include <macros.h>
 
 /**
- * @file Include for course gfx.inc.c.
+ * @file Include for track gfx.inc.c.
  */
 
 typedef struct {

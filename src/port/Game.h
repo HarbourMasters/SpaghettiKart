@@ -43,20 +43,20 @@ u32 GetCupIndex(void);
 const char* GetCupName(void);
 
 void LoadCourse();
-void UnLoadCourse();
+void UnLoadTrack();
 
 size_t GetCourseIndex();
 
-void SetCourse(const char* name);
+void SetTrack(const char* name);
 
-void NextCourse();
-void PreviousCourse();
+void NextTrack();
+void PreviousTrack();
 
 void CM_SetCup(void*);
 
 void CM_SetCupIndex(size_t index);
 
-void CM_RenderCourse(ScreenContext* arg0);
+void CM_DrawTrack(ScreenContext* arg0);
 
 void CM_SpawnStarterLakitu();
 void CM_ActivateFinishLakitu(s32 playerId);
@@ -95,7 +95,7 @@ void Editor_CleanWorld();
 void CM_TickParticles(void);
 void CM_DrawParticles(s32 cameraId);
 
-void CM_UpdateClouds(s32 arg0, Camera* camera);
+void CM_TickClouds(s32 arg0, Camera* camera);
 
 void CM_Waypoints(Player* player, int8_t playerId);
 
@@ -104,9 +104,9 @@ void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f
 
 void CM_InitCourseObjects();
 
-void CM_UpdateCourseObjects();
+void CM_TickTrackObjects();
 
-void CM_RenderCourseObjects(s32 cameraId);
+void CM_DrawTrackObjects(s32 cameraId);
 
 void CM_SomeSounds();
 
@@ -149,11 +149,11 @@ void SetCupCursorPosition(size_t position);
 
 size_t GetCupSize();
 
-void SetCourseFromCup();
+void SetTrackFromCup();
 
-void* GetCourse(void);
+void* GetTrack(void);
 
-void SetCourseById(s32 course);
+void SetTrackById(s32 track);
 
 struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);

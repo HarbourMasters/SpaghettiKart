@@ -3,7 +3,7 @@
 [TOC]
 
 # Paradigm
-The developers wrote mk64 using a state-driven paradigm. Gamestate, gamemode, course, actors, structs, and more decide which branches code should follow. As an example, a condition can check the current course to load that courses resources or run logic based on that.
+The developers wrote mk64 using a state-driven paradigm. Gamestate, gamemode, track, actors, structs, and more decide which branches code should follow. As an example, a condition can check the current track to load and then load that tracks resources or run logic based on that.
 
 # Threading
 After boot, the game begins by setting up its four threads; [idle](@ref thread1_idle), [video](@ref thread3_video), [audio](@ref thread4_audio), and the [game loop](@ref thread5_game_loop).
@@ -94,13 +94,13 @@ Object related code resides in
 
 Documentation of the specifics still in-progress. See [actors](actorsmenu.html) for more information.
 
-## Courses
-Course related code resides in
+## Tracks
+Track related code resides in
 |file|desc|
 |---|---|
-|[memory](@ref memory.c)| Loads and extracts course data|
-|[render_courses](@ref render_courses.c)|Renders course content|
-|[common_textures](@ref common_textures.c)|Content accessible to every course such as items and portraits|
+|[memory](@ref memory.c)| Loads and extracts track data|
+|[render_courses](@ref render_courses.c)|Renders track content|
+|[common_textures](@ref common_textures.c)|Content accessible to every track such as items and portraits|
 
 ### Course Folder
 [course folder link][@ref courses]

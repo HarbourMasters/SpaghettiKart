@@ -21,7 +21,7 @@ AWarioSign::AWarioSign(const SpawnParams& params) : AActor(params) {
     Speed = params.Speed.value_or(182);
 
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
-    Pos[0] = pos.x * gCourseDirection;
+    Pos[0] = pos.x * gTrackDirection;
     Pos[1] = pos.y;
     Pos[2] = pos.z;
 

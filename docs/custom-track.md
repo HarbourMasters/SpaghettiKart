@@ -79,7 +79,7 @@ Example of correct texture format
 
 **The Laws of SpaghettiKart**
 * Track geography must be a plane, not a box
-  * A flat course with a basic plane (square), needs to be turned into triangules and/or subdivided a few times, otherwise the collision generation will 'wig out', placing the racers incorrectly
+  * A flat track with a basic plane (square), needs to be turned into triangules and/or subdivided a few times, otherwise the collision generation will 'wig out', placing the racers incorrectly
 * The starting line must face north
   * In Blender: Positive Green Y Axis
   * In game: Negative Z axis

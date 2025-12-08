@@ -146,7 +146,7 @@ void BansheeBoardwalk::Load() {
     D_801625EC = 0;
     D_801625F4 = 0;
     D_801625F0 = 0;
-    parse_course_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
+    parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
 }
@@ -191,14 +191,14 @@ void BansheeBoardwalk::BeginPlay() {
     }
 }
 
-void BansheeBoardwalk::InitCourseObjects() {
+void BansheeBoardwalk::InitTrackObjects() {
     size_t objectId = 0;
     if (gGamestate != CREDITS_SEQUENCE) {
         init_object(indexObjectList1[2], 0);
     }
 }
 
-void BansheeBoardwalk::UpdateCourseObjects() {
+void BansheeBoardwalk::TickTrackObjects() {
     if (gGamestate != CREDITS_SEQUENCE) {
         func_8007E4C4();
         if (gModeSelection != TIME_TRIALS) {
@@ -208,7 +208,7 @@ void BansheeBoardwalk::UpdateCourseObjects() {
     }
 }
 
-void BansheeBoardwalk::RenderCourseObjects(s32 cameraId) {
+void BansheeBoardwalk::DrawTrackObjects(s32 cameraId) {
     if (gGamestate != CREDITS_SEQUENCE) {
         // render_object_bat(cameraId);
         // render_object_boos(cameraId);
@@ -248,7 +248,7 @@ void BansheeBoardwalk::WhatDoesThisDoAI(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::Render(ScreenContext* arg0) {
+void BansheeBoardwalk::Draw(ScreenContext* arg0) {
     Camera* camera = arg0->camera;
     Mat4 spCC;
     UNUSED s32 pad[6];
@@ -279,7 +279,7 @@ void BansheeBoardwalk::Render(ScreenContext* arg0) {
     // d_course_banshee_boardwalk_packed_dl_69B0
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_packed_dl_69B0);
 
-    render_course_segments(banshee_boardwalk_dls, arg0);
+    render_track_segments(banshee_boardwalk_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -307,7 +307,7 @@ void BansheeBoardwalk::Render(ScreenContext* arg0) {
     gDPPipeSync(gDisplayListHead++);
 }
 
-void BansheeBoardwalk::RenderCredits() {
+void BansheeBoardwalk::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_banshee_boardwalk_dl_B308));
 }
 
