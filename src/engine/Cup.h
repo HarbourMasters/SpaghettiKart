@@ -13,9 +13,9 @@ public:
     const char* Name;
     u8 *Thumbnail;
     size_t CursorPosition = 0; // Track index in cup
-    std::vector<std::shared_ptr<Track>> Courses;
+    std::vector<std::string> Courses;
 
-    explicit Cup(std::string id, const char* name, std::vector<std::shared_ptr<Track>> courses);
+    explicit Cup(std::string id, const char* name, std::vector<std::string> courses);
 
     virtual void ShuffleCourses();
 

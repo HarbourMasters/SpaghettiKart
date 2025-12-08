@@ -5,28 +5,7 @@
 
 #include <fast/Fast3dWindow.h>
 #include "engine/World.h"
-#include "engine/tracks/Track.h"
-#include "engine/tracks/MarioRaceway.h"
-#include "engine/tracks/ChocoMountain.h"
-#include "engine/tracks/BowsersCastle.h"
-#include "engine/tracks/BansheeBoardwalk.h"
-#include "engine/tracks/YoshiValley.h"
-#include "engine/tracks/FrappeSnowland.h"
-#include "engine/tracks/KoopaTroopaBeach.h"
-#include "engine/tracks/RoyalRaceway.h"
-#include "engine/tracks/LuigiRaceway.h"
-#include "engine/tracks/MooMooFarm.h"
-#include "engine/tracks/ToadsTurnpike.h"
-#include "engine/tracks/KalimariDesert.h"
-#include "engine/tracks/SherbetLand.h"
-#include "engine/tracks/RainbowRoad.h"
-#include "engine/tracks/WarioStadium.h"
-#include "engine/tracks/BlockFort.h"
-#include "engine/tracks/Skyscraper.h"
-#include "engine/tracks/DoubleDeck.h"
-#include "engine/tracks/DKJungle.h"
-#include "engine/tracks/BigDonut.h"
-#include "engine/tracks/TestTrack.h"
+#include "engine/AllTracks.h"
 
 #include "engine/tracks/PodiumCeremony.h"
 
@@ -92,50 +71,66 @@ s32 gTrophyIndex = NULL;
 
 void CustomEngineInit() {
     /* Add all tracks to the global track list */
-    std::shared_ptr<Track> mario         = gWorldInstance.AddTrack(std::make_shared<MarioRaceway>());
-    std::shared_ptr<Track> choco         = gWorldInstance.AddTrack(std::make_shared<ChocoMountain>());
-    std::shared_ptr<Track> bowser        = gWorldInstance.AddTrack(std::make_shared<BowsersCastle>());
-    std::shared_ptr<Track> banshee       = gWorldInstance.AddTrack(std::make_shared<BansheeBoardwalk>());
-    std::shared_ptr<Track> yoshi         = gWorldInstance.AddTrack(std::make_shared<YoshiValley>());
-    std::shared_ptr<Track> frappe        = gWorldInstance.AddTrack(std::make_shared<FrappeSnowland>());
-    std::shared_ptr<Track> koopa         = gWorldInstance.AddTrack(std::make_shared<KoopaTroopaBeach>());
-    std::shared_ptr<Track> royal         = gWorldInstance.AddTrack(std::make_shared<RoyalRaceway>());
-    std::shared_ptr<Track> luigi         = gWorldInstance.AddTrack(std::make_shared<LuigiRaceway>());
-    std::shared_ptr<Track> mooMoo        = gWorldInstance.AddTrack(std::make_shared<MooMooFarm>());
-    std::shared_ptr<Track> toads         = gWorldInstance.AddTrack(std::make_shared<ToadsTurnpike>());
-    std::shared_ptr<Track> kalimari      = gWorldInstance.AddTrack(std::make_shared<KalimariDesert>());
-    std::shared_ptr<Track> sherbet       = gWorldInstance.AddTrack(std::make_shared<SherbetLand>());
-    std::shared_ptr<Track> rainbow       = gWorldInstance.AddTrack(std::make_shared<RainbowRoad>());
-    std::shared_ptr<Track> wario         = gWorldInstance.AddTrack(std::make_shared<WarioStadium>());
-    std::shared_ptr<Track> block         = gWorldInstance.AddTrack(std::make_shared<BlockFort>());
-    std::shared_ptr<Track> skyscraper    = gWorldInstance.AddTrack(std::make_shared<Skyscraper>());
-    std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddTrack(std::make_shared<DoubleDeck>());
-    std::shared_ptr<Track> dkJungle      = gWorldInstance.AddTrack(std::make_shared<DKJungle>());
-    std::shared_ptr<Track> bigDonut      = gWorldInstance.AddTrack(std::make_shared<BigDonut>());
-//    std::shared_ptr<Track> harbour       = gWorldInstance.AddTrack(std::make_shared<Harbour>());
-    std::shared_ptr<Track> testTrack    = gWorldInstance.AddTrack(std::make_shared<TestTrack>());
+//     std::shared_ptr<Track> mario         = gWorldInstance.AddTrack(std::make_shared<MarioRaceway>());
+//     std::shared_ptr<Track> choco         = gWorldInstance.AddTrack(std::make_shared<ChocoMountain>());
+//     std::shared_ptr<Track> bowser        = gWorldInstance.AddTrack(std::make_shared<BowsersCastle>());
+//     std::shared_ptr<Track> banshee       = gWorldInstance.AddTrack(std::make_shared<BansheeBoardwalk>());
+//     std::shared_ptr<Track> yoshi         = gWorldInstance.AddTrack(std::make_shared<YoshiValley>());
+//     std::shared_ptr<Track> frappe        = gWorldInstance.AddTrack(std::make_shared<FrappeSnowland>());
+//     std::shared_ptr<Track> koopa         = gWorldInstance.AddTrack(std::make_shared<KoopaTroopaBeach>());
+//     std::shared_ptr<Track> royal         = gWorldInstance.AddTrack(std::make_shared<RoyalRaceway>());
+//     std::shared_ptr<Track> luigi         = gWorldInstance.AddTrack(std::make_shared<LuigiRaceway>());
+//     std::shared_ptr<Track> mooMoo        = gWorldInstance.AddTrack(std::make_shared<MooMooFarm>());
+//     std::shared_ptr<Track> toads         = gWorldInstance.AddTrack(std::make_shared<ToadsTurnpike>());
+//     std::shared_ptr<Track> kalimari      = gWorldInstance.AddTrack(std::make_shared<KalimariDesert>());
+//     std::shared_ptr<Track> sherbet       = gWorldInstance.AddTrack(std::make_shared<SherbetLand>());
+//     std::shared_ptr<Track> rainbow       = gWorldInstance.AddTrack(std::make_shared<RainbowRoad>());
+//     std::shared_ptr<Track> wario         = gWorldInstance.AddTrack(std::make_shared<WarioStadium>());
+//     std::shared_ptr<Track> block         = gWorldInstance.AddTrack(std::make_shared<BlockFort>());
+//     std::shared_ptr<Track> skyscraper    = gWorldInstance.AddTrack(std::make_shared<Skyscraper>());
+//     std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddTrack(std::make_shared<DoubleDeck>());
+//     std::shared_ptr<Track> dkJungle      = gWorldInstance.AddTrack(std::make_shared<DKJungle>());
+//     std::shared_ptr<Track> bigDonut      = gWorldInstance.AddTrack(std::make_shared<BigDonut>());
+// //    std::shared_ptr<Track> harbour       = gWorldInstance.AddTrack(std::make_shared<Harbour>());
+//     std::shared_ptr<Track> testTrack    = gWorldInstance.AddTrack(std::make_shared<TestTrack>());
+
+    RegisterTracks();
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
-    // Construct cups with vectors of Track* (non-owning references)
     gMushroomCup = new Cup("mk:mushroom_cup", "Mushroom Cup", {
-        luigi, mooMoo, koopa, kalimari
-    });
+            "mk:luigi_raceway", 
+            "mk:moo_moo_farm", 
+            "mk:koopa_troopa_beach", 
+            "mk:kalimari_desert"
+        });
 
     gFlowerCup = new Cup("mk:flower_cup", "Flower Cup", {
-        toads, frappe, choco, mario
+        "mk:toads_turnpike", 
+        "mk:frappe_snowland", 
+        "mk:choco_mountain", 
+        "mk:mario_raceway"
     });
 
     gStarCup = new Cup("mk:star_cup", "Star Cup", {
-        wario, sherbet, royal, bowser
+        "mk:wario_stadium", 
+        "mk:sherbet_land", 
+        "mk:royal_raceway", 
+        "mk:bowsers_castle"
     });
 
     gSpecialCup = new Cup("mk:special_cup", "Special Cup", {
-        dkJungle, yoshi, banshee, rainbow
+        "mk:dk_jungle", 
+        "mk:yoshi_valley", 
+        "mk:banshee_boardwalk", 
+        "mk:rainbow_road"
     });
 
     gBattleCup = new Cup("mk:battle_cup", "Battle Cup", {
-        bigDonut, block, doubleDeck, skyscraper
+        "mk:big_donut", 
+        "mk:block_fort", 
+        "mk:double_deck", 
+        "mk:skyscraper"
     });
 
     /* Instantiate Cups */
@@ -866,26 +861,26 @@ bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.GetTra
 bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.GetTrack().get()) != nullptr; }
 bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.GetTrack().get()) != nullptr; }
 
-void SelectMarioRaceway()       { gWorldInstance.SetTrackByType<MarioRaceway>(); }
-void SelectLuigiRaceway()       { gWorldInstance.SetTrackByType<LuigiRaceway>(); }
-void SelectChocoMountain()      { gWorldInstance.SetTrackByType<ChocoMountain>(); }
-void SelectBowsersCastle()      { gWorldInstance.SetTrackByType<BowsersCastle>(); }
-void SelectBansheeBoardwalk()   { gWorldInstance.SetTrackByType<BansheeBoardwalk>(); }
-void SelectYoshiValley()        { gWorldInstance.SetTrackByType<YoshiValley>(); }
-void SelectFrappeSnowland()     { gWorldInstance.SetTrackByType<FrappeSnowland>(); }
-void SelectKoopaTroopaBeach()   { gWorldInstance.SetTrackByType<KoopaTroopaBeach>(); }
-void SelectRoyalRaceway()       { gWorldInstance.SetTrackByType<RoyalRaceway>(); }
-void SelectMooMooFarm()         { gWorldInstance.SetTrackByType<MooMooFarm>(); }
-void SelectToadsTurnpike()      { gWorldInstance.SetTrackByType<ToadsTurnpike>(); }
-void SelectKalimariDesert()     { gWorldInstance.SetTrackByType<KalimariDesert>(); }
-void SelectSherbetLand()        { gWorldInstance.SetTrackByType<SherbetLand>(); }
-void SelectRainbowRoad()        { gWorldInstance.SetTrackByType<RainbowRoad>(); }
-void SelectWarioStadium()       { gWorldInstance.SetTrackByType<WarioStadium>(); }
-void SelectBlockFort()          { gWorldInstance.SetTrackByType<BlockFort>(); }
-void SelectSkyscraper()         { gWorldInstance.SetTrackByType<Skyscraper>(); }
-void SelectDoubleDeck()         { gWorldInstance.SetTrackByType<DoubleDeck>(); }
-void SelectDkJungle()           { gWorldInstance.SetTrackByType<DKJungle>(); }
-void SelectBigDonut()           { gWorldInstance.SetTrackByType<BigDonut>(); }
+void SelectMarioRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<MarioRaceway>()); }
+void SelectLuigiRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<LuigiRaceway>()); }
+void SelectChocoMountain()      { gWorldInstance.SetCurrentTrack(std::make_shared<ChocoMountain>()); }
+void SelectBowsersCastle()      { gWorldInstance.SetCurrentTrack(std::make_shared<BowsersCastle>()); }
+void SelectBansheeBoardwalk()   { gWorldInstance.SetCurrentTrack(std::make_shared<BansheeBoardwalk>()); }
+void SelectYoshiValley()        { gWorldInstance.SetCurrentTrack(std::make_shared<YoshiValley>()); }
+void SelectFrappeSnowland()     { gWorldInstance.SetCurrentTrack(std::make_shared<FrappeSnowland>()); }
+void SelectKoopaTroopaBeach()   { gWorldInstance.SetCurrentTrack(std::make_shared<KoopaTroopaBeach>()); }
+void SelectRoyalRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<RoyalRaceway>()); }
+void SelectMooMooFarm()         { gWorldInstance.SetCurrentTrack(std::make_shared<MooMooFarm>()); }
+void SelectToadsTurnpike()      { gWorldInstance.SetCurrentTrack(std::make_shared<ToadsTurnpike>()); }
+void SelectKalimariDesert()     { gWorldInstance.SetCurrentTrack(std::make_shared<KalimariDesert>()); }
+void SelectSherbetLand()        { gWorldInstance.SetCurrentTrack(std::make_shared<SherbetLand>()); }
+void SelectRainbowRoad()        { gWorldInstance.SetCurrentTrack(std::make_shared<RainbowRoad>()); }
+void SelectWarioStadium()       { gWorldInstance.SetCurrentTrack(std::make_shared<WarioStadium>()); }
+void SelectBlockFort()          { gWorldInstance.SetCurrentTrack(std::make_shared<BlockFort>()); }
+void SelectSkyscraper()         { gWorldInstance.SetCurrentTrack(std::make_shared<Skyscraper>()); }
+void SelectDoubleDeck()         { gWorldInstance.SetCurrentTrack(std::make_shared<DoubleDeck>()); }
+void SelectDkJungle()           { gWorldInstance.SetCurrentTrack(std::make_shared<DKJungle>()); }
+void SelectBigDonut()           { gWorldInstance.SetCurrentTrack(std::make_shared<BigDonut>()); }
 void SelectPodiumCeremony()     { gWorldInstance.SetCurrentTrack(gPodiumCeremony); }
 // clang-format on
 

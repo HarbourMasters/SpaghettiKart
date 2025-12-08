@@ -48,9 +48,6 @@ void World::AddCup(Cup* cup) {
 }
 
 void World::SetCurrentTrack(std::shared_ptr<Track> track) {
-    if (mTrack) {
-        UnLoadTrack();
-    }
     if (mTrack == track) {
         return;
     }

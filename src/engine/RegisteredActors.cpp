@@ -3,6 +3,7 @@
 #include "Registry.h"
 #include "engine/World.h"
 
+#include "AllTracks.h"
 #include "AllActors.h"
 
 extern "C" {
@@ -11,8 +12,8 @@ extern "C" {
 #include "actor_types.h"
 }
 
-void RegisterGameActors() {
-    RegisterActor("mk:item_box",
+void RegisterGameActors(Registry& r) {
+    r.AddActor("mk:item_box",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -20,7 +21,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:fake_item_box",
+    r.AddActor("mk:fake_item_box",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -28,133 +29,133 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:thwomp",
+    r.AddActor("mk:thwomp",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OThwomp(params));
         }
     );
 
-    RegisterActor("mk:snowman",
+    r.AddActor("mk:snowman",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OSnowman(params));
         }
     );
 
-    RegisterActor("mk:hot_air_balloon",
+    r.AddActor("mk:hot_air_balloon",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OHotAirBalloon(params));
         }
     );
 
-    RegisterActor("mk:hedgehog",
+    r.AddActor("mk:hedgehog",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OHedgehog(params));
         }
     );
 
-    RegisterActor("mk:grand_prix_balloons",
+    r.AddActor("mk:grand_prix_balloons",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OGrandPrixBalloons(params));
         }
     );
 
-    RegisterActor("mk:flagpole",
+    r.AddActor("mk:flagpole",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OFlagpole(params));
         }
     );
 
-    RegisterActor("mk:crab",
+    r.AddActor("mk:crab",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OCrab(params));
         }
     );
 
-    RegisterActor("mk:cheep_cheep",
+    r.AddActor("mk:cheep_cheep",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OCheepCheep(params));
         }
     );
 
-    RegisterActor("mk:bomb_kart",
+    r.AddActor("mk:bomb_kart",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBombKart(params));
         }
     );
 
-    RegisterActor("mk:bat",
+    r.AddActor("mk:bat",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBat(params));
         }
     );
 
-    RegisterActor("mk:boos",
+    r.AddActor("mk:boos",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBoos(params));
         }
     );
 
-    RegisterActor("mk:trophy",
+    r.AddActor("mk:trophy",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OTrophy(params));
         }
     );
 
-    RegisterActor("mk:trash_bin",
+    r.AddActor("mk:trash_bin",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OTrashBin(params));
         }
     );
 
-    RegisterActor("mk:seagull",
+    r.AddActor("mk:seagull",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OSeagull(params));
         }
     );
 
-    RegisterActor("mk:chain_chomp",
+    r.AddActor("mk:chain_chomp",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OChainChomp());
         }
     );
 
-    RegisterActor("mk:podium",
+    r.AddActor("mk:podium",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OPodium(params));
         }
     );
 
-    RegisterActor("mk:penguin",
+    r.AddActor("mk:penguin",
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OPenguin(params));
         }
     );
 
-    RegisterActor("mk:banana",
+    r.AddActor("mk:banana",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ABanana(params));
         }
     );
 
-    RegisterActor("mk:mario_sign",
+    r.AddActor("mk:mario_sign",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AMarioSign(params));
         }
     );
 
-    RegisterActor("mk:wario_sign",
+    r.AddActor("mk:wario_sign",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AWarioSign(params));
         }
     );
 
-    RegisterActor("mk:falling_rock",
+    r.AddActor("mk:falling_rock",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AFallingRock(params));
         }
     );
 
-    RegisterActor("mk:yoshi_egg",
+    r.AddActor("mk:yoshi_egg",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -164,7 +165,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:piranha_plant",
+    r.AddActor("mk:piranha_plant",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -174,7 +175,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_mario_raceway",
+    r.AddActor("mk:tree_mario_raceway",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -184,7 +185,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_yoshi_valley",
+    r.AddActor("mk:tree_yoshi_valley",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -194,7 +195,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_royal_raceway",
+    r.AddActor("mk:tree_royal_raceway",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -204,7 +205,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_moo_moo_farm",
+    r.AddActor("mk:tree_moo_moo_farm",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -214,7 +215,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:palm_tree",
+    r.AddActor("mk:palm_tree",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -224,7 +225,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:unknown_0x1a",
+    r.AddActor("mk:unknown_0x1a",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -234,7 +235,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:unknown_0x1b",
+    r.AddActor("mk:unknown_0x1b",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -244,7 +245,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_peach_castle",
+    r.AddActor("mk:tree_peach_castle",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -254,7 +255,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:tree_frappe_snowland",
+    r.AddActor("mk:tree_frappe_snowland",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -264,7 +265,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:cactus1_kalamari_desert",
+    r.AddActor("mk:cactus1_kalamari_desert",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -274,7 +275,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:cactus2_kalamari_desert",
+    r.AddActor("mk:cactus2_kalamari_desert",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -284,7 +285,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:cactus3_kalamari_desert",
+    r.AddActor("mk:cactus3_kalamari_desert",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -294,7 +295,7 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:bush_bowsers_castle",
+    r.AddActor("mk:bush_bowsers_castle",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -304,69 +305,178 @@ void RegisterGameActors() {
         }
     );
 
-    RegisterActor("mk:train",
+    r.AddActor("mk:train",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATrain(params));
         }
     );
 
-    RegisterActor("mk:paddle_boat",
+    r.AddActor("mk:paddle_boat",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ABoat(params));
         }
     );
 
-    RegisterActor("mk:car",
+    r.AddActor("mk:car",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ACar(params));
         }
     );
 
-    RegisterActor("mk:truck",
+    r.AddActor("mk:truck",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    RegisterActor("mk:tanker_truck",
+    r.AddActor("mk:tanker_truck",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    RegisterActor("mk:bus",
+    r.AddActor("mk:bus",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    RegisterActor("hm:spaghetti_ship",
+    r.AddActor("hm:spaghetti_ship",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ASpaghettiShip(params));
         }
     );
 
-    RegisterActor("hm:ship",
+    r.AddActor("hm:ship",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AShip(params));
         }
     );
 
-    RegisterActor("hm:starship",
+    r.AddActor("hm:starship",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AStarship(params));
         }
     );
 
-    RegisterActor("hm:cloud",
+    r.AddActor("hm:cloud",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ACloud(params));
         }
     );
 
-    RegisterActor("hm:text",
+    r.AddActor("hm:text",
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AText(params));
+        }
+    );
+}
+
+void RegisterTracks(Registry& r) {
+    r.AddTrack("mk:mario_raceway",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<MarioRaceway>());
+        }
+    );
+    r.AddTrack("mk:choco_mountain",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<ChocoMountain>());
+        }
+    );
+    r.AddTrack("mk:bowsers_castle",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<BowsersCastle>());
+        }
+    );
+    r.AddTrack("mk:banshee_boardwalk",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<BansheeBoardwalk>());
+        }
+    );
+    r.AddTrack("mk:yoshi_valley",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<YoshiValley>());
+        }
+    );
+    r.AddTrack("mk:frappe_snowland",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<FrappeSnowland>());
+        }
+    );
+    r.AddTrack("mk:koopa_troopa_beach",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<KoopaTroopaBeach>());
+        }
+    );
+    r.AddTrack("mk:royal_raceway",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<RoyalRaceway>());
+        }
+    );
+    r.AddTrack("mk:luigi_raceway",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<LuigiRaceway>());
+        }
+    );
+    r.AddTrack("mk:moo_moo_farm",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<MooMooFarm>());
+        }
+    );
+    r.AddTrack("mk:toads_turnpike",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<ToadsTurnpike>());
+        }
+    );
+    r.AddTrack("mk:kalimari_desert",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<KalimariDesert>());
+        }
+    );
+    r.AddTrack("mk:sherbet_land",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<SherbetLand>());
+        }
+    );
+    r.AddTrack("mk:rainbow_road",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<RainbowRoad>());
+        }
+    );
+    r.AddTrack("mk:wario_stadium",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<WarioStadium>());
+        }
+    );
+    r.AddTrack("mk:block_fort",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<BlockFort>());
+        }
+    );
+    r.AddTrack("mk:skyscraper",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<Skyscraper>());
+        }
+    );
+    r.AddTrack("mk:double_deck",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<DoubleDeck>());
+        }
+    );
+    r.AddTrack("mk:dk_jungle",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<DKJungle>());
+        }
+    );
+    r.AddTrack("mk:big_donut",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<BigDonut>());
+        }
+    );
+
+    r.AddTrack("mk:test_track",
+        []() {
+            gWorldInstance.SetCurrentTrack(std::make_shared<TestTrack>());
         }
     );
 }

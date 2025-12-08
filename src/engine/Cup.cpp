@@ -1,7 +1,7 @@
 #include "Cup.h"
 #include "tracks/Track.h"
 
-Cup::Cup(std::string id, const char* name, std::vector<std::shared_ptr<Track>> courses) {
+Cup::Cup(std::string id, const char* name, std::vector<std::string> courses) {
     Id = id;
     Name = name;
     Courses = courses;
