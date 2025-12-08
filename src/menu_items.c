@@ -2834,7 +2834,7 @@ void func_80095574(void) {
         }
 
         // This reset is not necessary. It wraps around automatically.
-        // if ((GetCourseIndex() >= (NUM_COURSES - 1)) || (GetCourseIndex() < 0)) {
+        // if ((GetCourseIndex() >= (NUM_TRACKS - 1)) || (GetCourseIndex() < 0)) {
         //     gCurrentCourseId = 0;
         // }
         print_str_num(0x00000050, 0x0000006E, "map_number", GetCourseIndex());
@@ -5126,7 +5126,7 @@ void func_8009CE64(s32 arg0) {
     func_8009CE64_label1:
         if (var_a1) {
             gGotoMenu = 9;
-            gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+            gCreditsCourseId = TRACK_LUIGI_RACEWAY;
         } else {
             gGotoMenu = 1;
             gMenuSelection = MAIN_MENU;
@@ -5269,7 +5269,7 @@ void func_8009CE64(s32 arg0) {
                         case 0:            /* switch 4 */
                             SelectMarioRaceway();
                             CM_SetCup(GetFlowerCup());
-                            SetCupCursorPosition(COURSE_FOUR);
+                            SetCupCursorPosition(TRACK_FOUR);
                             gCurrentCourseId = 0;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
@@ -5280,7 +5280,7 @@ void func_8009CE64(s32 arg0) {
                         case 1: /* switch 4 */
                             SelectLuigiRaceway();
                             CM_SetCup(GetMushroomCup());
-                            SetCupCursorPosition(COURSE_ONE);
+                            SetCupCursorPosition(TRACK_ONE);
                             gCurrentCourseId = (s16) 1;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
@@ -5292,8 +5292,8 @@ void func_8009CE64(s32 arg0) {
                         case 2: /* switch 4 */
                             SelectKalimariDesert();
                             CM_SetCup(GetMushroomCup());
-                            SetCupCursorPosition(COURSE_FOUR);
-                            gCurrentCourseId = COURSE_KALIMARI_DESERT;
+                            SetCupCursorPosition(TRACK_FOUR);
+                            gCurrentCourseId = TRACK_KALIMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -5303,7 +5303,7 @@ void func_8009CE64(s32 arg0) {
                         case 3: /* switch 4 */
                             SelectWarioStadium();
                             CM_SetCup(GetStarCup());
-                            SetCupCursorPosition(COURSE_ONE);
+                            SetCupCursorPosition(TRACK_ONE);
                             gCurrentCourseId = 0x000E;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
@@ -5316,7 +5316,7 @@ void func_8009CE64(s32 arg0) {
                         case 4: /* switch 4 */
                             SelectBowsersCastle();
                             CM_SetCup(GetStarCup());
-                            SetCupCursorPosition(COURSE_FOUR);
+                            SetCupCursorPosition(TRACK_FOUR);
                             gCurrentCourseId = 2;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
@@ -5327,7 +5327,7 @@ void func_8009CE64(s32 arg0) {
                         case 5: /* switch 4 */
                             SelectSherbetLand();
                             CM_SetCup(GetFlowerCup());
-                            SetCupCursorPosition(COURSE_TWO);
+                            SetCupCursorPosition(TRACK_TWO);
                             gCurrentCourseId = 0x000C;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
@@ -5393,7 +5393,7 @@ void func_8009CE64(s32 arg0) {
                 case 2: /* switch 5 */
                 case 3: /* switch 5 */
                     gGamestateNext = 9;
-                    gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+                    gCreditsCourseId = TRACK_LUIGI_RACEWAY;
                     break;
                 default: /* switch 5 */
                     gGamestateNext = 4;

@@ -97,7 +97,7 @@ void setup_podium_ceremony(void) {
 
     clear_D_802874D8_actors();
 
-    gCurrentCourseId = COURSE_ROYAL_RACEWAY;
+    gCurrentCourseId = TRACK_ROYAL_RACEWAY;
     SelectPodiumCeremony();
     D_800DC5B4 = (u16) 1;
     set_mirror_mode(0);

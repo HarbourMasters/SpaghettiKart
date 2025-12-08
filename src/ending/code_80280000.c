@@ -85,7 +85,7 @@ void func_80280268(s32 courseId) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
-    if ((courseId < 0) || ((courseId >= NUM_COURSES - 1))) {
+    if ((courseId < 0) || ((courseId >= NUM_TRACKS - 1))) {
         courseId = 0;
     }
     gCreditsCourseId = courseId;

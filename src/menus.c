@@ -133,15 +133,15 @@ const s8 sCharacterGridOrder[] = {
 
 const s16 gCupCourseOrder[5][4] = {
     // mushroom cup
-    { COURSE_LUIGI_RACEWAY, COURSE_MOO_MOO_FARM, COURSE_KOOPA_BEACH, COURSE_KALIMARI_DESERT },
+    { TRACK_LUIGI_RACEWAY, TRACK_MOO_MOO_FARM, TRACK_KOOPA_BEACH, TRACK_KALIMARI_DESERT },
     // flower cup
-    { COURSE_TOADS_TURNPIKE, COURSE_FRAPPE_SNOWLAND, COURSE_CHOCO_MOUNTAIN, COURSE_MARIO_RACEWAY },
+    { TRACK_TOADS_TURNPIKE, TRACK_FRAPPE_SNOWLAND, TRACK_CHOCO_MOUNTAIN, TRACK_MARIO_RACEWAY },
     // star cup
-    { COURSE_WARIO_STADIUM, COURSE_SHERBET_LAND, COURSE_ROYAL_RACEWAY, COURSE_BOWSER_CASTLE },
+    { TRACK_WARIO_STADIUM, TRACK_SHERBET_LAND, TRACK_ROYAL_RACEWAY, TRACK_BOWSER_CASTLE },
     // special cup
-    { COURSE_DK_JUNGLE, COURSE_YOSHI_VALLEY, COURSE_BANSHEE_BOARDWALK, COURSE_RAINBOW_ROAD },
+    { TRACK_DK_JUNGLE, TRACK_YOSHI_VALLEY, TRACK_BANSHEE_BOARDWALK, TRACK_RAINBOW_ROAD },
     // battle mode
-    { COURSE_BIG_DONUT, COURSE_BLOCK_FORT, COURSE_DOUBLE_DECK, COURSE_SKYSCRAPER },
+    { TRACK_BIG_DONUT, TRACK_BLOCK_FORT, TRACK_DOUBLE_DECK, TRACK_SKYSCRAPER },
 };
 
 const s8 unref_800F2BDC[4] = { 1, 0, 0, 0 };
@@ -1056,7 +1056,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     NextTrack();
                     gCurrentCourseId = GetCourseIndex();
-                    // if (gCurrentCourseId < (NUM_COURSES - 2)) {
+                    // if (gCurrentCourseId < (NUM_TRACKS - 2)) {
                     //     gCurrentCourseId += 1;
                     // } else {
                     //     gCurrentCourseId = 0;
@@ -1069,7 +1069,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     // if (gCurrentCourseId > 0) {
                     //     gCurrentCourseId -= 1;
                     // } else {
-                    //     gCurrentCourseId = (NUM_COURSES - 2);
+                    //     gCurrentCourseId = (NUM_TRACKS - 2);
                     // }
                 }
                 if (btnAndStick & U_JPAD) {
@@ -1775,9 +1775,9 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     } else {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_OK;
                         play_sound2(SOUND_MENU_SELECT);
-                        SetCupCursorPosition(COURSE_ONE);
+                        SetCupCursorPosition(TRACK_ONE);
                         SetTrackFromCup();
-                        gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
+                        gCurrentCourseId = gCupCourseOrder[gCupSelection][TRACK_ONE];
                         gMenuTimingCounter = 0;
                     }
                     reset_cycle_flash_menu();
@@ -1791,7 +1791,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                if (((btnAndStick & U_JPAD) != 0) && (GetCupCursorPosition() > COURSE_ONE)) {
+                if (((btnAndStick & U_JPAD) != 0) && (GetCupCursorPosition() > TRACK_ONE)) {
                     --gCourseIndexInCup;
                     SetCupCursorPosition(GetCupCursorPosition() - 1);
                     reset_cycle_flash_menu();

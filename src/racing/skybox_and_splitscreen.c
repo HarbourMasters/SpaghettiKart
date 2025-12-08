@@ -493,54 +493,14 @@ void func_802A4A0C(Vtx* vtx, ScreenContext* arg1, UNUSED s32 arg2, UNUSED s32 ar
 }
 
 void func_802A4D18(void) {
+    // This may not be originally accurate
+    // Because the near/far persp values are a track member variable now.
+    // Regardless, this would likely only effected the menus.
     if (gGamestate != RACING) {
         D_8015014C = 6800.0f;
         D_80150150 = 3.0f;
-    } else {
-        // switch (gCurrentCourseId) {
-        //     case COURSE_BOWSER_CASTLE:
-        //     case COURSE_BANSHEE_BOARDWALK:
-        //     case COURSE_RAINBOW_ROAD:
-        //     case COURSE_BLOCK_FORT:
-        //     case COURSE_SKYSCRAPER:
-        //         D_8015014C = 2700.0f;
-        //         D_80150150 = 2.0f;
-        //         break;
-        //     case COURSE_CHOCO_MOUNTAIN:
-        //     case COURSE_DOUBLE_DECK:
-        //         D_8015014C = 1500.0f;
-        //         D_80150150 = 2.0f;
-        //         break;
-        //     case COURSE_KOOPA_BEACH:
-        //         D_8015014C = 5000.0f;
-        //         D_80150150 = 1.0f;
-        //         break;
-        //     case COURSE_WARIO_STADIUM:
-        //         D_8015014C = 4800.0f;
-        //         D_80150150 = 10.0f;
-        //         break;
-        //     case COURSE_MARIO_RACEWAY:
-        //     case COURSE_YOSHI_VALLEY:
-        //     case COURSE_FRAPPE_SNOWLAND:
-        //     case COURSE_ROYAL_RACEWAY:
-        //     case COURSE_LUIGI_RACEWAY:
-        //     case COURSE_MOO_MOO_FARM:
-        //     case COURSE_TOADS_TURNPIKE:
-        //     case COURSE_SHERBET_LAND:
-        //     case COURSE_DK_JUNGLE:
-        //         D_8015014C = 4500.0f;
-        //         D_80150150 = 9.0f;
-        //         break;
-        //     case COURSE_KALIMARI_DESERT:
-        //         D_8015014C = 7000.0f;
-        //         D_80150150 = 10.0f;
-        //         break;
-        //     default:
-        //         D_8015014C = 6800.0f;
-        //         D_80150150 = 3.0f;
-        //         break;
-        // }
     }
+
     switch (gScreenModeSelection) { /* switch 1; irregular */
         case SCREEN_MODE_1P:        /* switch 1 */
             gScreenAspect = 1.33333334f;

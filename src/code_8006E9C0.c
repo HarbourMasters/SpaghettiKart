@@ -618,55 +618,6 @@ void func_8007055C(void) {
     s32 var_s4;
 
     CM_InitClouds();
-
-    switch (gCurrentCourseId) {
-        case COURSE_MARIO_RACEWAY:
-            // Uses Kalimari Desert's clouds for initialization?
-            // init_clouds(gKalimariDesertClouds);
-            break;
-            // case COURSE_YOSHI_VALLEY:
-            //     init_clouds(gYoshiValleyMooMooFarmClouds);
-            //     break;
-            // case COURSE_FRAPPE_SNOWLAND:
-            //     if (gPlayerCount == 1) {
-            //         var_s4 = 0x32;
-            //     } else {
-            //         var_s4 = 0x19;
-            //     }
-            //     for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
-            //         find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
-            //     }
-            //     D_8018D1F8 += var_s0;
-            //     D_8018D1F0 = var_s0;
-            //     break;
-            // case COURSE_KOOPA_BEACH:
-            //     init_clouds(gKoopaTroopaBeachClouds);
-            //     break;
-            // case COURSE_ROYAL_RACEWAY:
-            //     init_clouds(gRoyalRacewayClouds);
-            //     break;
-            // case COURSE_LUIGI_RACEWAY:
-            //     init_clouds(gLuigiRacewayClouds);
-            //     break;
-            // case COURSE_MOO_MOO_FARM:
-            //     init_clouds(gYoshiValleyMooMooFarmClouds);
-            //     break;
-            // case COURSE_TOADS_TURNPIKE:
-            //     init_stars(gToadsTurnpikeRainbowRoadStars);
-            //     break;
-            // case COURSE_KALIMARI_DESERT:
-            //     init_clouds(gKalimariDesertClouds);
-            //     break;
-            // case COURSE_SHERBET_LAND:
-            //     init_clouds(gSherbetLandClouds);
-            //     break;
-            // case COURSE_RAINBOW_ROAD:
-            //     init_stars(gToadsTurnpikeRainbowRoadStars);
-            //     break;
-            // case COURSE_WARIO_STADIUM:
-            //     init_stars(gWarioStadiumStars);
-            //     break;
-    }
     func_8008C23C();
 }
 
@@ -691,7 +642,7 @@ void init_course_object(void) {
     CM_InitCourseObjects();
 
     // switch (gCurrentCourseId) {
-    //     case COURSE_MARIO_RACEWAY:
+    //     case TRACK_MARIO_RACEWAY:
     //         // if (gGamestate != 9) {
     //         //     if (gModeSelection == GRAND_PRIX) {
     //         //         func_80070714();
@@ -702,7 +653,7 @@ void init_course_object(void) {
     //         //     }
     //         // }
     //         break;
-    //     case COURSE_BOWSER_CASTLE:
+    //     case TRACK_BOWSER_CASTLE:
     //         gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
     //         gThowmpSpawnList = gThwompSpawns100CCExtra;
     //         switch (gCCSelection) { /* switch 1; irregular */
@@ -748,7 +699,7 @@ void init_course_object(void) {
     //             delete_object(&indexObjectList4[i]);
     //         }
     //         break;
-    //     case COURSE_BANSHEE_BOARDWALK:
+    //     case TRACK_BANSHEE_BOARDWALK:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             objectId = indexObjectList1[0];
     //             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,
@@ -760,7 +711,7 @@ void init_course_object(void) {
     //             init_object(indexObjectList1[2], 0);
     //         }
     //         break;
-    //     case COURSE_YOSHI_VALLEY:
+    //     case TRACK_YOSHI_VALLEY:
     //         for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
     //             init_object(indexObjectList1[i], 0);
     //         }
@@ -779,7 +730,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_FRAPPE_SNOWLAND:
+    //     case TRACK_FRAPPE_SNOWLAND:
     //         for (i = 0; i < NUM_SNOWFLAKES; i++) {
     //             find_unused_obj_index(&gObjectParticle1[i]);
     //         }
@@ -799,7 +750,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_KOOPA_BEACH:
+    //     case TRACK_KOOPA_BEACH:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             for (i = 0; i < NUM_CRABS; i++) {
     //                 objectId = indexObjectList1[i];
@@ -822,7 +773,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_ROYAL_RACEWAY:
+    //     case TRACK_ROYAL_RACEWAY:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             if (gModeSelection == GRAND_PRIX) {
     //                 func_80070714();
@@ -833,7 +784,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_LUIGI_RACEWAY:
+    //     case TRACK_LUIGI_RACEWAY:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             if (gModeSelection == GRAND_PRIX) {
     //                 func_80070714();
@@ -846,7 +797,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_MOO_MOO_FARM:
+    //     case TRACK_MOO_MOO_FARM:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
     //                 switch (gCCSelection) { /* switch 2; irregular */
@@ -902,7 +853,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_KALIMARI_DESERT:
+    //     case TRACK_KALIMARI_DESERT:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             find_unused_obj_index(&D_8018CF10);
     //             init_object(D_8018CF10, 0);
@@ -917,12 +868,12 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_SHERBET_LAND:
+    //     case TRACK_SHERBET_LAND:
     //         for (i = 0; i < NUM_PENGUINS; i++) {
     //             init_object(indexObjectList1[i], 0);
     //         }
     //         break;
-    //     case COURSE_RAINBOW_ROAD:
+    //     case TRACK_RAINBOW_ROAD:
     //         if (gGamestate != CREDITS_SEQUENCE) {
     //             for (i = 0; i < NUM_NEON_SIGNS; i++) {
     //                 init_object(indexObjectList1[i], 0);
@@ -932,7 +883,7 @@ void init_course_object(void) {
     //             }
     //         }
     //         break;
-    //     case COURSE_DK_JUNGLE:
+    //     case TRACK_DK_JUNGLE:
     //         for (i = 0; i < NUM_TORCHES; i++) {
     //             init_smoke_particles(i);
     //             // wtf?

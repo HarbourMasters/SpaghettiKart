@@ -671,7 +671,7 @@ void process_game_tick(void) {
 
     if (gIsEditorPaused == false) {
         if (D_8015011E) {
-            gCourseTimer += COURSE_TIMER_ITER;
+            gCourseTimer += TRACK_TIMER_ITER;
         }
         func_802909F0();
         evaluate_collision_for_players_and_actors();
@@ -1094,19 +1094,19 @@ void update_gamestate(void) {
     switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             break;
         case RACING:
             /**
@@ -1117,12 +1117,12 @@ void update_gamestate(void) {
             setup_race();
             break;
         case ENDING:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             init_segment_ending_sequences();
             setup_podium_ceremony();
             break;
         case CREDITS_SEQUENCE:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedCourseId = TRACK_NULL;
             // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();
