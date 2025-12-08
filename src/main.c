@@ -1,6 +1,8 @@
 #include <libultraship.h>
 #include <libultra/vi.h>
 #include <libultra/os.h>
+#include "buffers/gfx_output_buffer.h"
+#include <libultraship/bridge/gfxdebuggerbridge.h>
 #include <macros.h>
 #include <decode.h>
 #include <mk64.h>
@@ -36,8 +38,6 @@
 #include "replays.h"
 #include <debug.h>
 #include "crash_screen.h"
-#include "buffers/gfx_output_buffer.h"
-#include <bridge/gfxdebuggerbridge.h>
 #include "enhancements/freecam/freecam.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/wasm.h"

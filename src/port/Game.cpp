@@ -69,6 +69,9 @@ Editor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
+Registry<SpawnParams&> gActorRegistry;
+Registry<> gTrackRegistry;
+
 void CustomEngineInit() {
     /* Add all tracks to the global track list */
 //     std::shared_ptr<Track> mario         = gWorldInstance.AddTrack(std::make_shared<MarioRaceway>());
@@ -94,7 +97,7 @@ void CustomEngineInit() {
 // //    std::shared_ptr<Track> harbour       = gWorldInstance.AddTrack(std::make_shared<Harbour>());
 //     std::shared_ptr<Track> testTrack    = gWorldInstance.AddTrack(std::make_shared<TestTrack>());
 
-    RegisterTracks();
+    RegisterTracks(gTrackRegistry);
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
@@ -143,7 +146,7 @@ void CustomEngineInit() {
     //SelectMarioRaceway(); // This results in a nullptr
     SetMarioRaceway();
 
-    RegisterGameActors();
+    RegisterGameActors(gActorRegistry);
 }
 
 void CustomEngineDestroy() {
