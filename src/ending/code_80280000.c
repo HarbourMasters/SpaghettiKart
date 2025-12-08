@@ -81,14 +81,14 @@ void func_80280038(Camera* camera) {
     init_rdp();
 }
 
-void func_80280268(s32 courseId) {
+void func_80280268(s32 trackId) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
-    if ((courseId < 0) || ((courseId >= NUM_TRACKS - 1))) {
-        courseId = 0;
+    if ((trackId < 0) || ((trackId >= NUM_TRACKS - 1))) {
+        trackId = 0;
     }
-    gCreditsCourseId = courseId;
+    gCreditsCourseId = trackId;
 }
 
 void credits_loop(void) {

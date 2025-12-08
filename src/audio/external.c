@@ -3544,7 +3544,7 @@ void func_800CAEC4(u8 playerId, f32 arg1) {
                 D_800EA120[playerId] = arg1;
                 //! @warning this used to be gCurrentCourseId + 0x19007020
                 // This may not be equivallent.
-                play_sound(GetCourseIndex() + 0x19007020, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4,
+                play_sound(GetTrackIndex() + 0x19007020, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4,
                            &D_800EA120[playerId], (u8*) &D_800E9F7C[playerId].unk_14);
                 break;
             default:

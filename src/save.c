@@ -102,11 +102,11 @@ void reset_save_data_grand_prix_points_and_sound_mode(void) {
 }
 
 // create a magic number based on the time trial records
-u8 checksum_time_trial_records(s32 courseIdx) {
+u8 checksum_time_trial_records(s32 trackIdx) {
     s32 j;
     s32 i;
     s32 ret;
-    u8* records = gSaveData.allCourseTimeTrialRecords.cupRecords[courseIdx / 4].courseRecords[courseIdx % 4].records[0];
+    u8* records = gSaveData.allCourseTimeTrialRecords.cupRecords[trackIdx / 4].courseRecords[trackIdx % 4].records[0];
 
     ret = 0;
     for (i = 0; i < 7; i++) {
@@ -257,9 +257,9 @@ s32 func_800B4E24(s32 recordIndex) {
 }
 
 // Get a time trial record, but take the track index as an argument
-u32 func_800B4EB4(s32 recordIndex, s32 courseIndex) {
-    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(courseIndex / 4)]
-                             .courseRecords[(courseIndex % 4)]
+u32 func_800B4EB4(s32 recordIndex, s32 trackIndex) {
+    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(trackIndex / 4)]
+                             .courseRecords[(trackIndex % 4)]
                              .records[recordIndex]);
 }
 
@@ -271,9 +271,9 @@ s32 func_800B4F2C(void) {
 }
 
 // Get the best single lap time record of the given track index
-s32 func_800B4FB0(s32 courseIndex) {
-    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(courseIndex / 4)]
-                             .courseRecords[(courseIndex % 4)]
+s32 func_800B4FB0(s32 trackIndex) {
+    return func_800B4DF4(gSaveData.allCourseTimeTrialRecords.cupRecords[(trackIndex / 4)]
+                             .courseRecords[(trackIndex % 4)]
                              .records[TIME_TRIAL_1LAP_RECORD]);
 }
 
@@ -785,7 +785,7 @@ s32 func_800B6178(s32 arg0) {
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
             if (gGamestate == 4) {
-                temp_s3->courseIndex = (GetCupIndex() * 4) + GetCupCursorPosition();
+                temp_s3->trackIndex = (GetCupIndex() * 4) + GetCupCursorPosition();
             }
             temp_s3->unk_00 = D_80162DFC;
             temp_s3->characterId = (u8) D_80162DE0;
@@ -805,20 +805,20 @@ s32 func_800B6178(s32 arg0) {
 }
 
 s32 func_800B6348(s32 arg0) {
-    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].courseIndex)) {
+    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].trackIndex)) {
         return 0;
     }
-    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].courseIndex)) {
+    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].trackIndex)) {
         return 1;
     }
     return 0;
 }
 
 s32 func_800B639C(s32 arg0) {
-    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].courseIndex)) {
+    if ((D_8018EE10[0].ghostDataSaved != 0) && (arg0 == D_8018EE10[0].trackIndex)) {
         return 0;
     }
-    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].courseIndex)) {
+    if ((D_8018EE10[1].ghostDataSaved != 0) && (arg0 == D_8018EE10[1].trackIndex)) {
         return 1;
     }
     return -1;
@@ -834,7 +834,7 @@ s32 func_800B63F0(s32 arg0) {
     func_80005AE8(gPlayerThree);
 
     phi_s3 = 0;
-    if (((GetCupIndex() * 4) + GetCupCursorPosition()) != D_8018EE10[arg0].courseIndex) {
+    if (((GetCupIndex() * 4) + GetCupCursorPosition()) != D_8018EE10[arg0].trackIndex) {
         phi_s3 = 2;
     } else if (D_80162DFC != D_8018EE10[arg0].unk_00) {
         phi_s3 = 3;
@@ -912,7 +912,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
         }
         D_80162DE0 = temp_s3->characterId;
         D_80162DFC = temp_s3->unk_00;
-        D_8018EE10[arg1].courseIndex = temp_s3->courseIndex;
+        D_8018EE10[arg1].trackIndex = temp_s3->trackIndex;
     }
     return writeStatus;
 }
@@ -980,7 +980,7 @@ s32 func_800B69BC(s32 arg0) {
     struct_8018EE10_entry* plz = &D_8018EE10[arg0];
 
     plz->ghostDataSaved = false;
-    plz->courseIndex = 0;
+    plz->trackIndex = 0;
     plz->characterId = 0;
     for (i = 0; i < sizeof(plz->unk_07); i++) {
         plz->unk_07[i] = i;

@@ -25,7 +25,7 @@ extern bool bCleanWorld;
 #endif
 
 Properties* CM_GetProps();
-Properties* CM_GetPropsCourseId(s32 courseId);
+Properties* CM_GetPropsTrackId(s32 trackId);
 
 void HM_InitIntro(void);
 void HM_TickIntro(void);
@@ -45,7 +45,7 @@ const char* GetCupName(void);
 void LoadCourse();
 void UnLoadTrack();
 
-size_t GetCourseIndex();
+size_t GetTrackIndex();
 
 void SetTrack(const char* name);
 

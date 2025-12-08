@@ -259,7 +259,7 @@ void setup_race(void) {
     if (!gDemoMode) {
         //! @warning this used to be gCurrentCourseId + 4
         // Hopefully this is equivallent.
-        func_800CA008(gPlayerCountSelection1 - 1, GetCourseIndex() + 4);
+        func_800CA008(gPlayerCountSelection1 - 1, GetTrackIndex() + 4);
         func_800CB2C4();
     }
 

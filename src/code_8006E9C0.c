@@ -168,8 +168,8 @@ void get_minimap_properties() {
     // This is incredibly dumb. MinimapDimensions ought to be something more like
     // `u16 MinimapDimensions[][2]` but that doesn't match for some insane reason
 
-    gMinimapWidth = CM_GetProps()->Minimap.Width;   // MinimapDimensions[courseId * 2];
-    gMinimapHeight = CM_GetProps()->Minimap.Height; // MinimapDimensions[courseId * 2 + 1];
+    gMinimapWidth = CM_GetProps()->Minimap.Width;   // MinimapDimensions[trackId * 2];
+    gMinimapHeight = CM_GetProps()->Minimap.Height; // MinimapDimensions[trackId * 2 + 1];
 }
 
 void func_8006EF60(void) {

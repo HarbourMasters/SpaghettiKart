@@ -463,7 +463,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & A_BUTTON) {
                     sp38->param2 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
-                    if (sp30[sp38->param2].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
+                    if (sp30[sp38->param2].trackIndex == D_8018EE10[PLAYER_TWO].trackIndex &&
                         D_8018EE10[PLAYER_TWO].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST2_2P;
                     } else {
@@ -476,8 +476,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->param2].courseIndex !=
-                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
+                if ((sp30[sp38->param2].trackIndex !=
+                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->trackIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
@@ -593,7 +593,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 gSubMenuSelection = SUB_MENU_COPY_PAK_COMPLETED;
-                D_8018EE10[sp38->param1].courseIndex = (sp30 + sp38->param2)->courseIndex;
+                D_8018EE10[sp38->param1].trackIndex = (sp30 + sp38->param2)->trackIndex;
                 func_800B6088(sp38->param1);
                 break;
             }
@@ -1055,7 +1055,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (btnAndStick & R_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     NextTrack();
-                    gCurrentCourseId = GetCourseIndex();
+                    gCurrentCourseId = GetTrackIndex();
                     // if (gCurrentCourseId < (NUM_TRACKS - 2)) {
                     //     gCurrentCourseId += 1;
                     // } else {
@@ -1065,7 +1065,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (btnAndStick & L_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     PreviousTrack();
-                    gCurrentCourseId = GetCourseIndex();
+                    gCurrentCourseId = GetTrackIndex();
                     // if (gCurrentCourseId > 0) {
                     //     gCurrentCourseId -= 1;
                     // } else {

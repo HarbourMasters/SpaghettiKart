@@ -218,7 +218,7 @@ void UnLoadTrack() {
     gWorldInstance.GetRaceManager().UnLoad();
 }
 
-size_t GetCourseIndex() {
+size_t GetTrackIndex() {
     return gWorldInstance.TrackIndex;
 }
 
@@ -663,8 +663,8 @@ Properties* CM_GetProps() {
     return NULL;
 }
 
-Properties* CM_GetPropsCourseId(s32 courseId) {
-    return &gWorldInstance.Tracks[courseId]->Props;
+Properties* CM_GetPropsTrackId(s32 trackId) {
+    return &gWorldInstance.Tracks[trackId]->Props;
 }
 
 void CM_ScrollingTextures() {

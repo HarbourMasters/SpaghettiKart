@@ -1491,7 +1491,7 @@ void func_80091EE4(void) {
         func_800B6708();
 
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
+            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].trackIndex)) {
                 func_800B64EC(temp_s0);
                 temp_s0 = 2;
                 gGhostPlayerInit = 0;
@@ -2834,13 +2834,13 @@ void func_80095574(void) {
         }
 
         // This reset is not necessary. It wraps around automatically.
-        // if ((GetCourseIndex() >= (NUM_TRACKS - 1)) || (GetCourseIndex() < 0)) {
+        // if ((GetTrackIndex() >= (NUM_TRACKS - 1)) || (GetTrackIndex() < 0)) {
         //     gCurrentCourseId = 0;
         // }
-        print_str_num(0x00000050, 0x0000006E, "map_number", GetCourseIndex());
+        print_str_num(0x00000050, 0x0000006E, "map_number", GetTrackIndex());
 
         // Bump the text over by 1 character width when the track id becomes two digits (10, 11, 12 etc.)
-        if (GetCourseIndex() < 10) {
+        if (GetTrackIndex() < 10) {
             var_v0 = 0;
         } else {
             var_v0 = 8;
@@ -7222,12 +7222,12 @@ void func_800A1500(MenuItem* arg0) {
 }
 
 void func_800A15EC(MenuItem* arg0) {
-    s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
+    s16 trackId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
-         func_8009C204(gDisplayListHead, D_800E7D74[courseId], arg0->column, arg0->row, 2);
+         func_8009C204(gDisplayListHead, D_800E7D74[trackId], arg0->column, arg0->row, 2);
     gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40, arg0->row + 0x30,
                                 0, 0, 0, 0xFF);
-    gDisplayListHead = func_8009C204(gDisplayListHead, D_800E7DC4[courseId], arg0->column,
+    gDisplayListHead = func_8009C204(gDisplayListHead, D_800E7DC4[trackId], arg0->column,
                                      arg0->row + 0x27, 3);
     if (func_800B639C(arg0->type - 0x7C) >= 0) {
         // The "^ 0" is required to force the use of v1 instead of a 4th s* register
@@ -7275,20 +7275,20 @@ void render_menu_item_data_course_image(MenuItem* arg0) {
 }
 
 void render_menu_item_data_course_info(MenuItem* arg0) {
-    s16 courseId;
+    s16 trackId;
     s32 recordType;
     s32 rowOffset;
 
-    courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
+    trackId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
     // name of the track
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsCourseId(courseId)->Name, 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsTrackId(trackId)->Name, 0, 0.75f, 0.75f);
 
     // distance
     set_text_color(TEXT_RED);
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
-    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsCourseId(courseId)->TrackLength, 1, 0.75f, 0.75f);
+    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsTrackId(trackId)->TrackLength, 1, 0.75f, 0.75f);
 
     // Best lap record
     set_text_color(TEXT_YELLOW);
@@ -8018,8 +8018,8 @@ void func_800A3E60(MenuItem* arg0) {
                 } else {
                     print_text_mode_1(
                         0xBB - arg0->column, 0xAA + (0x1E * var_s1),
-                        CM_GetPropsCourseId(
-                            gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                        CM_GetPropsTrackId(
+                            gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
                             ->Name,
                         0, 0.45f, 0.45f);
                 }
@@ -8595,8 +8595,8 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
                     } else {
                         print_text_mode_1(
                             0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                            CM_GetPropsCourseId(
-                                gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4])
+                            CM_GetPropsTrackId(
+                                gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
                                 ->Name,
                             0, 0.75f, 0.75f);
                     }
@@ -8670,7 +8670,7 @@ void func_800A6034(MenuItem* arg0) {
         text = CM_GetProps()->Name;
         //! @warning this used to be gCurrentCourseId % 4
         // Hopefully this is equivallent.
-        set_text_color((s32) GetCourseIndex() % 4);
+        set_text_color((s32) GetTrackIndex() % 4);
         print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }

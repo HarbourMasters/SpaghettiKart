@@ -1086,7 +1086,7 @@ void func_80002658(void) {
 }
 
 /**
- * Sets courseId to NULL if
+ * Sets trackId to NULL if
  *
  *
  */

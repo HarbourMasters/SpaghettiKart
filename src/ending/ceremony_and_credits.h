@@ -86,7 +86,7 @@ struct struct_80285D80 {
 
 struct struct_80286A04 {
     u8 unk0;
-    u8 courseId;
+    u8 trackId;
     struct struct_80285D80* unk4;
     struct struct_80285D80* unk8;
     u16 unkC;
