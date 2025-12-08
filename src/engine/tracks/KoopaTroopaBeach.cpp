@@ -56,7 +56,7 @@ KoopaTroopaBeach::KoopaTroopaBeach() {
     Id = "mk:koopa_beach";
     Props.SetText(Props.Name, "koopa troopa beach", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "beach", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "691m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "691m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009158;
     Props.AIMaximumSeparation = 50.0f;

@@ -77,7 +77,7 @@ bool IsTriangleWindingInverted();
 typedef struct Properties {
     char Name[128];
     char DebugName[128];
-    char CourseLength[128];
+    char TrackLength[128];
     int32_t LakituTowType;
     MinimapProps Minimap;
     const char* AIBehaviour;
@@ -107,7 +107,7 @@ typedef struct Properties {
        // j["Id"] = Id ? Id : "";
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
-        j["CourseLength"] = CourseLength ? CourseLength : "";
+        j["TrackLength"] = TrackLength ? TrackLength : "";
         //j["AIBehaviour"] = AIBehaviour ? AIBehaviour : "";
         j["LakituTowType"] = LakituTowType;
         j["AIMaximumSeparation"] = AIMaximumSeparation;
@@ -176,9 +176,9 @@ typedef struct Properties {
         strncpy(DebugName, j.at("DebugName").get<std::string>().c_str(), sizeof(DebugName) - 1);
         DebugName[sizeof(DebugName) - 1] = '\0'; // Ensure null termination
 
-  //      CourseLength = j.at("CourseLength").get<std::string>().c_str();
-        strncpy(CourseLength, j.at("CourseLength").get<std::string>().c_str(), sizeof(CourseLength) - 1);
-        CourseLength[sizeof(CourseLength) - 1] = '\0'; // Ensure null termination
+  //      TrackLength = j.at("TrackLength").get<std::string>().c_str();
+        strncpy(TrackLength, j.at("TrackLength").get<std::string>().c_str(), sizeof(TrackLength) - 1);
+        TrackLength[sizeof(TrackLength) - 1] = '\0'; // Ensure null termination
 
         //AIBehaviour = j.at("AIBehaviour").get<std::string>().c_str();
         LakituTowType = j.at("LakituTowType").get<int>();
@@ -288,7 +288,7 @@ typedef struct Properties {
     void New() {
         SetText(Name, "", sizeof(Name));
         SetText(DebugName, "", sizeof(DebugName));
-        SetText(CourseLength, "", sizeof(CourseLength));
+        SetText(TrackLength, "", sizeof(TrackLength));
     }
 #endif
 
@@ -332,7 +332,7 @@ public:
     virtual void Load(); // Decompress and load stock courses or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
     virtual void UnLoad();
-    virtual void ParseCourseSections(TrackSections* sections, size_t size);
+    virtual void ParseTrackSections(TrackSections* sections, size_t size);
 
     /**
      * @brief BeginPlay This function is called once at the start of gameplay.

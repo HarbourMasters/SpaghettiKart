@@ -59,7 +59,7 @@ BansheeBoardwalk::BansheeBoardwalk() {
 
     Props.SetText(Props.Name, "banshee boardwalk", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "ghost", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "747m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "747m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009058;
     Props.AIMaximumSeparation = 40.0f;

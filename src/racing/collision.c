@@ -582,8 +582,8 @@ void adjust_pos_orthogonally(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED
 UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
     Collision collision;
     UNUSED s32 pad[12];
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     f32 tyreX;
     f32 tyreY;
     f32 tyreZ;
@@ -626,10 +626,10 @@ UNUSED s32 detect_tyre_collision(KartTyre* tyre) {
         default:
             break;
     }
-    courseLengthX = gTrackMaxX - gTrackMinX;
-    courseLengthZ = gTrackMaxZ - gTrackMinZ;
-    sectionIndexX = (tyreX - gTrackMinX) / (courseLengthX / GRID_SIZE);
-    sectionIndexZ = (tyreZ - gTrackMinZ) / (courseLengthZ / GRID_SIZE);
+    trackLengthX = gTrackMaxX - gTrackMinX;
+    trackLengthZ = gTrackMaxZ - gTrackMinZ;
+    sectionIndexX = (tyreX - gTrackMinX) / (trackLengthX / GRID_SIZE);
+    sectionIndexZ = (tyreZ - gTrackMinZ) / (trackLengthZ / GRID_SIZE);
     if (sectionIndexX < 0) {
         return 0;
     }
@@ -1180,8 +1180,8 @@ s32 is_colliding_with_wall1(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY,
                             f32 oldZ) {
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     s16 sectionIndexX;
     s16 sectionIndexZ;
     u16 numTriangles;
@@ -1228,11 +1228,11 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
         return flags;
     }
 
-    courseLengthX = (s32) gTrackMaxX - gTrackMinX;
-    courseLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
     sectionIndexX = (newX - gTrackMinX) / sectionX;
     sectionIndexZ = (newZ - gTrackMinZ) / sectionZ;
@@ -1298,8 +1298,8 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
 
 u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
     u16 numTriangles;
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     u16 meshIndex;
     s32 sectionX;
     s32 sectionZ;
@@ -1337,11 +1337,11 @@ u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX
         return flags;
     }
 
-    courseLengthX = (s32) gTrackMaxX - gTrackMinX;
-    courseLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
     sectionIndexX = (posX - gTrackMinX) / sectionX;
     sectionIndexZ = (posZ - gTrackMinZ) / sectionZ;
@@ -1419,15 +1419,15 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
     f32 phi_f20 = -3000.0f;
     u16 i;
 
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
     s32 sectionX;
     s32 sectionZ;
 
-    courseLengthX = (gTrackMaxX - gTrackMinX);
-    courseLengthZ = (gTrackMaxZ - gTrackMinZ);
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    trackLengthX = (gTrackMaxX - gTrackMinX);
+    trackLengthZ = (gTrackMaxZ - gTrackMinZ);
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
     sectionIndexX = (s16) ((posX - gTrackMinX) / sectionX);
     sectionIndexZ = (s16) ((posZ - gTrackMinZ) / sectionZ);
@@ -2243,8 +2243,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
     f32 boundingBoxSize;
     f32 height;
 
-    s32 courseLengthX;
-    s32 courseLengthZ;
+    s32 trackLengthX;
+    s32 trackLengthZ;
 
     s16 sectionIndexX;
     s16 sectionIndexZ;
@@ -2307,11 +2307,11 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
 
     // If the surface flags are not set then try setting them.
 
-    courseLengthX = (s32) gTrackMaxX - gTrackMinX;
-    courseLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
+    trackLengthX = (s32) gTrackMaxX - gTrackMinX;
+    trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
-    sectionX = courseLengthX / GRID_SIZE;
-    sectionZ = courseLengthZ / GRID_SIZE;
+    sectionX = trackLengthX / GRID_SIZE;
+    sectionZ = trackLengthZ / GRID_SIZE;
 
     sectionIndexX = (tyreX - gTrackMinX) / sectionX;
     sectionIndexZ = (tyreZ - gTrackMinZ) / sectionZ;

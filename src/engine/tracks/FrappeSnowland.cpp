@@ -56,7 +56,7 @@ FrappeSnowland::FrappeSnowland() {
 
     Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "734m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "734m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D0090F8;
     Props.AIMaximumSeparation = 50.0f;

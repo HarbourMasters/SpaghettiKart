@@ -53,7 +53,7 @@ SherbetLand::SherbetLand() {
 
     Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "756m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "756m", sizeof(Props.TrackLength));
 
     Props.LakituTowType = (s32)OLakitu::LakituTowType::ICE;
 

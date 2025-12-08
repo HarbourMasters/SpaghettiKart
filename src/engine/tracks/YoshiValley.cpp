@@ -50,7 +50,7 @@ YoshiValley::YoshiValley() {
 
     Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "772m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "772m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D0090B8;
     Props.AIMaximumSeparation = 35.0f;

@@ -58,7 +58,7 @@ ToadsTurnpike::ToadsTurnpike() {
 
     Props.SetText(Props.Name, "toad's turnpike", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "highway", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "1036m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "1036m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009238;
     Props.AIMaximumSeparation = 50.0f;

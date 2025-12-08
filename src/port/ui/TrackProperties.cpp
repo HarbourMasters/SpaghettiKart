@@ -42,7 +42,7 @@ namespace Editor {
         ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
         ImGui::InputText("Name", gWorldInstance.GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
         ImGui::InputText("Debug Name", gWorldInstance.GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Track Length", gWorldInstance.GetTrack()->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
+        ImGui::InputText("Track Length", gWorldInstance.GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
         ImGui::InputFloat("Water Level", &gWorldInstance.GetTrack()->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {

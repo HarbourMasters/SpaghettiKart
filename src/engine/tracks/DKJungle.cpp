@@ -56,7 +56,7 @@ DKJungle::DKJungle() {
 
     Props.SetText(Props.Name, "d.k.'s jungle parkway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "jungle", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "893m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "893m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D0093C0;
     Props.AIMaximumSeparation = 40.0f;

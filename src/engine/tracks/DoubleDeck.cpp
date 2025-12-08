@@ -48,7 +48,7 @@ DoubleDeck::DoubleDeck() {
 
     Props.SetText(Props.Name, "double deck", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "deck", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));
 
 
     Props.AIBehaviour = D_0D008F18;

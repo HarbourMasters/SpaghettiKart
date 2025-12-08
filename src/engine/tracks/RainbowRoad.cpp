@@ -50,7 +50,7 @@ RainbowRoad::RainbowRoad() {
 
     Props.SetText(Props.Name, "rainbow road", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "rainbow", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "2000m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "2000m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D0092C8;
     Props.AIMaximumSeparation = 50.0f;

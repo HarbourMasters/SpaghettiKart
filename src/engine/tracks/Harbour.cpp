@@ -530,7 +530,7 @@ Harbour::Harbour() {
     Id = "mk:harbour";
     Props.SetText(Props.Name, "Harbour", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "harbour", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "99m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "99m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

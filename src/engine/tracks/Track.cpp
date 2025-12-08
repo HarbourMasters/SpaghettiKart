@@ -246,7 +246,7 @@ bool IsTriangleWindingInverted() {
 Track::Track() {
     Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
     Id = "";
@@ -369,7 +369,7 @@ void Track::Load() {
 
         if (sections != nullptr) {
             Track::Init();
-            ParseCourseSections(sections, size);
+            ParseTrackSections(sections, size);
             func_80295C6C();
 
             if (Props.WaterLevel == FLT_MAX) {
@@ -385,7 +385,7 @@ void Track::Load() {
 }
 
 // C++ version of parse_track_displaylists()
-void Track::ParseCourseSections(TrackSections* sections, size_t size) {
+void Track::ParseTrackSections(TrackSections* sections, size_t size) {
     printf("\n[Track] Generating Collision Meshes...\n");
     for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
         if (sections[i].flags & 0x8000) {
@@ -572,7 +572,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
         }
     }
 
-    // If player is not over-top of a water volume then return the courses default water level
+    // If player is not over-top of a water volume then return the tracks default water level
     return found ? highestWater : gWorldInstance.GetTrack()->Props.WaterLevel;
 }
 
@@ -588,5 +588,3 @@ void Track::Destroy() {
 bool Track::IsMod() {
     return bIsMod;
 }
-
-Track* currentCourse = nullptr;

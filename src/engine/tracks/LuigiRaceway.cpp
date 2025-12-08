@@ -59,7 +59,7 @@ LuigiRaceway::LuigiRaceway() {
     Id = "mk:luigi_raceway";
     Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "l circuit", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "717m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "717m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D0091E8;
     Props.AIMaximumSeparation = 50.0f;

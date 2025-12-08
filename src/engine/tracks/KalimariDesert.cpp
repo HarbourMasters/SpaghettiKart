@@ -52,7 +52,7 @@ KalimariDesert::KalimariDesert() {
 
     Props.SetText(Props.Name, "kalimari desert", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "desert", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "753m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "753m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009260;
     Props.AIMaximumSeparation = 50.0f;

@@ -51,7 +51,7 @@ RoyalRaceway::RoyalRaceway() {
 
     Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "1025m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "1025m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009188;
     Props.AIMaximumSeparation = 50.0f;

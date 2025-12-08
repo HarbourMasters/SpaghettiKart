@@ -54,7 +54,7 @@ MooMooFarm::MooMooFarm() {
 
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "527m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "527m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009210;
     Props.AIMaximumSeparation = 50.0f;

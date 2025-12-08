@@ -53,7 +53,7 @@ WarioStadium::WarioStadium() {
 
     Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "1591m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "1591m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D009310;
     Props.AIMaximumSeparation = 50.0f;

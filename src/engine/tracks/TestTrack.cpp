@@ -76,7 +76,7 @@ TestTrack::TestTrack() {
 
     Props.SetText(Props.Name, "Test Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "100m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

@@ -49,7 +49,7 @@ BlockFort::BlockFort() {
 
     Props.SetText(Props.Name, "block fort", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "block", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;

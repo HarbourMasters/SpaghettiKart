@@ -54,7 +54,7 @@ ChocoMountain::ChocoMountain() {
     Id = "mk:choco_mountain";
     Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "mountain", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "687m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "687m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F80;
     Props.AIMaximumSeparation = 35.0f;

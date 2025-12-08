@@ -47,7 +47,7 @@ BigDonut::BigDonut() {
 
     Props.SetText(Props.Name, "big donut", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "doughnut", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F18;
     Props.AIMaximumSeparation = -1.0f;

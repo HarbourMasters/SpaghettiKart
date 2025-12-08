@@ -7288,7 +7288,7 @@ void render_menu_item_data_course_info(MenuItem* arg0) {
     // distance
     set_text_color(TEXT_RED);
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
-    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsCourseId(courseId)->CourseLength, 1, 0.75f, 0.75f);
+    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsCourseId(courseId)->TrackLength, 1, 0.75f, 0.75f);
 
     // Best lap record
     set_text_color(TEXT_YELLOW);

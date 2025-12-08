@@ -55,7 +55,7 @@ BowsersCastle::BowsersCastle() {
 
     Props.SetText(Props.Name, "bowser's castle", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "castle", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "777m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "777m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008FB8;
     Props.AIMaximumSeparation = 35.0f;

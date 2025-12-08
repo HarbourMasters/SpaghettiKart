@@ -54,7 +54,7 @@ MarioRaceway::MarioRaceway() {
     Id = "mk:mario_raceway";
     Props.SetText(Props.Name, "mario raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "m circuit", sizeof(Props.DebugName));
-    Props.SetText(Props.CourseLength, "567m", sizeof(Props.CourseLength));
+    Props.SetText(Props.TrackLength, "567m", sizeof(Props.TrackLength));
 
     Props.AIBehaviour = D_0D008F28;
     Props.AIMaximumSeparation = 50.0f;

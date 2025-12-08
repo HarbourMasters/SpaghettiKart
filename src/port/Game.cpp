@@ -605,7 +605,7 @@ void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f
     }
 }
 
-void CM_InitCourseObjects() {
+void CM_InitTrackObjects() {
     if (gWorldInstance.GetTrack()) {
         gWorldInstance.GetTrack()->InitTrackObjects();
     }
