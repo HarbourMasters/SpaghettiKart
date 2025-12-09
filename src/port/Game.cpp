@@ -70,6 +70,7 @@ Editor::Editor gEditor;
 s32 gTrophyIndex = NULL;
 
 Registry<> gTrackRegistry;
+Registry<TrackInfo> gTrackInfoRegistry;
 Registry<const SpawnParams&> gActorRegistry;
 
 void CustomEngineInit() {

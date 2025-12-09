@@ -485,3 +485,9 @@ void RegisterTracks(Registry<>& r) {
         }
     );
 }
+
+void RegisterTrackInfo(Registry<>& r) {
+    r.Add("mk:mario_raceway", [](TrackInfo) {
+
+    });
+}
