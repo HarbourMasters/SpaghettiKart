@@ -133,10 +133,6 @@ void DKJungle::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
 }
 
-void DKJungle::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 f32 DKJungle::GetWaterLevel(FVector pos, Collision* collision) {
     int32_t temp_v1 = get_track_section_id(collision->meshIndexZX) & 0xFF;
 

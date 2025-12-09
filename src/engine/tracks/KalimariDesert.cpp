@@ -129,10 +129,6 @@ void KalimariDesert::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void KalimariDesert::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void KalimariDesert::BeginPlay() {
     struct RailroadCrossing* rrxing;
     Vec3f position;

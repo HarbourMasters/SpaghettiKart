@@ -123,9 +123,6 @@ void Skyscraper::Load() {
     func_80295C6C();
 }
 
-void Skyscraper::UnLoad() {
-}
-
 void Skyscraper::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_skyscraper_item_box_spawns));
 

@@ -334,15 +334,15 @@ public:
     bool bTourEnabled = false;
     std::vector<TourCamera::CameraShot> TourShots;
 
-
-    virtual ~Track() = default;
-
     explicit Track();
+
+    virtual ~Track() {
+        RestoreTriangleWinding();
+    };
 
     virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
     virtual void Load(); // Decompress and load stock tracks or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
-    virtual void UnLoad();
     virtual void ParseTrackSections(TrackSections* sections, size_t size);
 
     /**

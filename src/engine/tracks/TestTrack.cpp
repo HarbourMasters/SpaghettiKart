@@ -146,9 +146,6 @@ void TestTrack::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void TestTrack::UnLoad() {
-}
-
 void TestTrack::BeginPlay() {
     struct ActorSpawnData itemboxes[] = {
         {   200, 1500, 200 , 0},

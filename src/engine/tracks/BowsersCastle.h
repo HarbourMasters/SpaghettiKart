@@ -18,15 +18,12 @@ extern "C" {
 
 class BowsersCastle : public Track {
 public:
-    virtual ~BowsersCastle() = default;  // Virtual destructor for proper cleanup in derived classes
-
     // Constructor
     explicit BowsersCastle();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void UnLoad() override;
     void SpawnStockThwomp();
     virtual void BeginPlay() override;
     //virtual void InitClouds() override;

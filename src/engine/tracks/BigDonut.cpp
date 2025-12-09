@@ -125,9 +125,6 @@ void BigDonut::Load() {
     func_80295C6C();
 }
 
-void BigDonut::UnLoad() {
-}
-
 void BigDonut::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*) LOAD_ASSET_RAW(d_course_big_donut_item_box_spawns));
 

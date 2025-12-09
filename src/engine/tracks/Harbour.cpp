@@ -626,9 +626,6 @@ void Harbour::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void Harbour::UnLoad() {
-}
-
 void Harbour::BeginPlay() {
     struct ActorSpawnData itemboxes[] = {
         {   200, 1500, 200 , 0},

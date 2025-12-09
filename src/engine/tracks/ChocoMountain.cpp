@@ -157,10 +157,6 @@ void ChocoMountain::Load() {
     func_80295C6C();
 }
 
-void ChocoMountain::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void ChocoMountain::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
     AFallingRock::Spawn(FVector(2019, 156, 164), 60);

@@ -124,10 +124,6 @@ void RoyalRaceway::Load() {
     func_80295C6C();
 }
 
-void RoyalRaceway::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void RoyalRaceway::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));

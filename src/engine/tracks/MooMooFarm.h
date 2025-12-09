@@ -21,15 +21,12 @@ class OMole;
 
 class MooMooFarm : public Track {
 public:
-    virtual ~MooMooFarm() = default;  // Virtual destructor for proper cleanup in derived classes
-
     // Constructor
     explicit MooMooFarm();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void WhatDoesThisDo(Player* player, int8_t playerId) override;
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;

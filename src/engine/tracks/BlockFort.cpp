@@ -116,9 +116,6 @@ void BlockFort::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void BlockFort::UnLoad() {
-}
-
 void BlockFort::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*) LOAD_ASSET_RAW(d_course_block_fort_item_box_spawns));
 

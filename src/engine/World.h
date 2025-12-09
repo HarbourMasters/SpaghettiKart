@@ -113,7 +113,7 @@ public:
     void SetCurrentTrack(std::shared_ptr<Track> track);
 
     // These are only for browsing through the track list
-    void SetTrack(const char*);
+    void SetTrack(std::string name);
     template<typename T>
     void SetTrackByType() {
         for (const auto& track : Tracks) {

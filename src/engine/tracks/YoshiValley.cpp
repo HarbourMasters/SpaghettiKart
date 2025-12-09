@@ -122,10 +122,6 @@ void YoshiValley::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void YoshiValley::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void YoshiValley::BeginPlay() {
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };

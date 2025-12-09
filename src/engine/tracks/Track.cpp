@@ -316,9 +316,6 @@ void Track::Load(Vtx* vtx, Gfx* gfx) {
     Track::Init();
 }
 
-void Track::UnLoad() {
-}
-
 void Track::LoadO2R(std::string trackPath) {
     if (!trackPath.empty()) {
         SceneFilePtr = (trackPath + "/scene.json");
@@ -462,13 +459,8 @@ void Track::BeginPlay() {
 
 // Spawns actors from SpawnParams set by the scene file in SceneManager.cpp
 void Track::SpawnActors() {
-    for (const auto& actor : SpawnList) {
-        auto it = gActorRegistry.find(actor.Name);
-        if (it != gActorRegistry.end() && it->second.spawnFunc) {
-            it->second.spawnFunc(actor);
-        } else {
-            printf("Actor not found %s\n", actor.Name.c_str());
-        }
+    for (const auto& params : SpawnList) {
+        gActorRegistry.Invoke(params.Name, params);
     }
 }
 

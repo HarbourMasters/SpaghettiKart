@@ -18,12 +18,9 @@ extern "C" {
 
 class BigDonut : public Track {
 public:
-    virtual ~BigDonut() = default;
-
     explicit BigDonut();
 
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void Draw(ScreenContext*) override;
     virtual void DrawCredits() override;    

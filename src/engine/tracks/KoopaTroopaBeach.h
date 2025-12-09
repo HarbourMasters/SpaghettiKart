@@ -21,15 +21,12 @@ extern "C" {
 
 class KoopaTroopaBeach : public Track {
 public:
-    virtual ~KoopaTroopaBeach() = default;  // Virtual destructor for proper cleanup in derived classes
-
     // Constructor
     explicit KoopaTroopaBeach();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitTrackObjects() override;
     virtual void TickTrackObjects() override;

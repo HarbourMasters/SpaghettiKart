@@ -58,12 +58,6 @@ void RaceManager::Load() {
     }
 }
 
-void RaceManager::UnLoad() {
-    if (WorldContext.GetTrack()) {
-        WorldContext.GetTrack()->UnLoad();
-    }
-}
-
 void RaceManager::PreInit() {
     // Ruleset options
     if (CVarGetInteger("gDisableItemboxes", false) == true) {

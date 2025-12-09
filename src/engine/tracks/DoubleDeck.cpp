@@ -115,9 +115,6 @@ void DoubleDeck::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void DoubleDeck::UnLoad() {
-}
-
 void DoubleDeck::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*)LOAD_ASSET_RAW(d_course_double_deck_item_box_spawns));
 

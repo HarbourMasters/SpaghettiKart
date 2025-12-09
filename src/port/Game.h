@@ -7,6 +7,7 @@
 
 #ifdef __cplusplus
 #include "engine/editor/Editor.h"
+#include "engine/Registry.h"
 class Track;
 struct Properties;
 class World;
@@ -22,6 +23,8 @@ extern s32 gTrophyIndex;
 extern Editor::Editor gEditor;
 extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
+extern Registry<> gTrackRegistry;
+extern Registry<const SpawnParams&> gActorRegistry;
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
@@ -44,7 +47,6 @@ u32 GetCupIndex(void);
 const char* GetCupName(void);
 
 void LoadTrack();
-void UnLoadTrack();
 
 size_t GetTrackIndex();
 

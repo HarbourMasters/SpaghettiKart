@@ -149,10 +149,6 @@ void WarioStadium::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_wario_stadium_packed_dl_E48, 100, 255, 255, 255);
 }
 
-void WarioStadium::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void WarioStadium::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
 

@@ -18,12 +18,9 @@ extern "C" {
 
 class FrappeSnowland : public Track {
 public:
-    virtual ~FrappeSnowland() = default;
-
     explicit FrappeSnowland();
 
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void TickClouds(s32 sp1C, Camera* camera) override;

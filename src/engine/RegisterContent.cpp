@@ -12,7 +12,12 @@ extern "C" {
 #include "actor_types.h"
 }
 
-void RegisterGameActors(Registry<SpawnParams&>& r) {
+/**
+ * @file RegisterContent
+ * This file is responsible for registering the games stock content
+ */
+
+void RegisterActors(Registry<const SpawnParams&>& r) {
     r.Add("mk:item_box",
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});

@@ -20,15 +20,12 @@ class WarioStadium : public Track {
     void CopyJumbotron(s32 ulx, s32 uly, s16 portionToDraw, u16* source);
 
   public:
-    virtual ~WarioStadium() = default; // Virtual destructor for proper cleanup in derived classes
-
     // Constructor
     explicit WarioStadium();
 
     //    virtual void Load(const char* courseVtx,
     //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitClouds() override;
     virtual void TickClouds(s32, Camera*) override;

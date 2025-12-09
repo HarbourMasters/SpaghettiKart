@@ -138,10 +138,6 @@ void KoopaTroopaBeach::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, 150, 255, 255, 255);
 }
 
-void KoopaTroopaBeach::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void KoopaTroopaBeach::BeginPlay() {
     init_actor_hot_air_balloon_item_box(328.0f * gTrackDirection, 70.0f, 2541.0f);
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_item_box_spawns));

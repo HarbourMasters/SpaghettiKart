@@ -130,10 +130,6 @@ void LuigiRaceway::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void LuigiRaceway::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void LuigiRaceway::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_luigi_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_luigi_raceway_item_box_spawns));

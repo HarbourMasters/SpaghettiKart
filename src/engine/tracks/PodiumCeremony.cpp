@@ -117,9 +117,6 @@ void PodiumCeremony::Load() {
     func_80295C6C();
 }
 
-void PodiumCeremony::UnLoad() {
-}
-
 void PodiumCeremony::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_tree_spawn));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_royal_raceway_item_box_spawns));

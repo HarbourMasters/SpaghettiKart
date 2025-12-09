@@ -1,18 +1,19 @@
 #include "Cup.h"
 #include "tracks/Track.h"
+#include "port/Game.h"
 
-Cup::Cup(std::string id, const char* name, std::vector<std::string> courses) {
+Cup::Cup(std::string id, const char* name, std::vector<std::string> tracks) {
     Id = id;
     Name = name;
-    Courses = courses;
+    mTracks = tracks;
 
-    if (Courses.size() != 4) {
-        throw std::invalid_argument("A cup must contain exactly 4 courses.");
+    if (mTracks.size() != 4) {
+        throw std::invalid_argument("A cup must contain exactly 4 tracks.");
     }
 }
 
 void Cup::Next() {
-    if (CursorPosition < Courses.size() - 1) {
+    if (CursorPosition < mTracks.size() - 1) {
         CursorPosition++;
     }
 }
@@ -24,23 +25,23 @@ void Cup::Previous() {
 }
 
 void Cup::SetTrack(size_t position) {
-    if ((position < 0) || (position >= Courses.size())) {
+    if ((position < 0) || (position >= mTracks.size())) {
         throw std::invalid_argument("Invalid track index.");
     }
     CursorPosition = position;
 }
 
-std::shared_ptr<Track> Cup::GetTrack() {
-    return Courses[CursorPosition];
+std::string Cup::GetTrack() {
+    return mTracks[CursorPosition];
 }
 
 size_t Cup::GetSize() {
-    return Courses.size();
+    return mTracks.size();
 }
 
-// Function to shuffle the courses randomly
-void Cup::ShuffleCourses() {
+// Function to shuffle the tracks randomly
+void Cup::ShuffleTracks() {
     // std::random_device rd;
     // std::mt19937 g(rd());
-    //std::shuffle(Courses.begin(), Courses.end(), g);
+    //std::shuffle(mTracks.begin(), mTracks.end(), g);
 }

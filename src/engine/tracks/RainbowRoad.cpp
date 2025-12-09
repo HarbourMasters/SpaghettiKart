@@ -129,10 +129,6 @@ void RainbowRoad::Load() {
     }
 }
 
-void RainbowRoad::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void RainbowRoad::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
 

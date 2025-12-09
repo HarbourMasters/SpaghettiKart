@@ -127,10 +127,6 @@ void FrappeSnowland::Load() {
     func_80295C6C();
 }
 
-void FrappeSnowland::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void FrappeSnowland::BeginPlay() {
     spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_tree_spawns));
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));

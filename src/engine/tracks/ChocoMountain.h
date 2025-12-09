@@ -18,15 +18,12 @@ extern "C" {
 
 class ChocoMountain : public Track {
 public:
-    virtual ~ChocoMountain() = default;  // Virtual destructor for proper cleanup in derived classes
-
     // Constructor
     explicit ChocoMountain();
 
 //    virtual void Load(const char* courseVtx, 
 //                  course_texture* textures, const char* displaylists, size_t dlSize);
     virtual void Load() override;
-    virtual void UnLoad() override;
     virtual void BeginPlay() override;
     virtual void InitTrackObjects() override;
     virtual void SomeSounds() override;

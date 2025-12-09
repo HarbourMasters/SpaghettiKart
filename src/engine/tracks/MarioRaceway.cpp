@@ -154,10 +154,6 @@ void MarioRaceway::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void MarioRaceway::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void MarioRaceway::BeginPlay() {
     struct Actor* actor;
     Vec3f position;

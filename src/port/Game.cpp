@@ -21,7 +21,7 @@
 
 #include "engine/editor/Editor.h"
 #include "engine/editor/SceneManager.h"
-#include "RegisteredActors.h"
+#include "RegisterContent.h"
 
 #include "engine/cameras/GameCamera.h"
 #include "engine/cameras/FreeCamera.h"
@@ -69,8 +69,8 @@ Editor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
-Registry<SpawnParams&> gActorRegistry;
 Registry<> gTrackRegistry;
+Registry<const SpawnParams&> gActorRegistry;
 
 void CustomEngineInit() {
     /* Add all tracks to the global track list */
@@ -146,7 +146,7 @@ void CustomEngineInit() {
     //SelectMarioRaceway(); // This results in a nullptr
     SetMarioRaceway();
 
-    RegisterGameActors(gActorRegistry);
+    RegisterActors(gActorRegistry);
 }
 
 void CustomEngineDestroy() {
@@ -209,11 +209,6 @@ const char* GetCupName(void) {
 
 void LoadTrack() {
     gWorldInstance.GetRaceManager().Load();
-}
-
-// Unload can be call to frequently so even when if the track wasn't loaded before
-void UnLoadTrack() {
-    gWorldInstance.GetRaceManager().UnLoad();
 }
 
 size_t GetTrackIndex() {
@@ -736,7 +731,7 @@ size_t GetCupSize() {
 }
 
 void SetTrackFromCup() {
-    gWorldInstance.SetCurrentTrack(gWorldInstance.GetCurrentCup()->GetTrack());
+    gWorldInstance.SetTrack(gWorldInstance.GetCurrentCup()->GetTrack());
 }
 
 void* GetTrack(void) {

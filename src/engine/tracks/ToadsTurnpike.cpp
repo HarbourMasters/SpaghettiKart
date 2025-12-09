@@ -142,10 +142,6 @@ void ToadsTurnpike::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void ToadsTurnpike::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void ToadsTurnpike::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_toads_turnpike_item_box_spawns));
 

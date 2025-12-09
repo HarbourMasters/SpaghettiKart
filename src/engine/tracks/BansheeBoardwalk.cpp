@@ -150,10 +150,6 @@ void BansheeBoardwalk::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
 }
 
-void BansheeBoardwalk::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void BansheeBoardwalk::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_banshee_boardwalk_item_box_spawns));
 

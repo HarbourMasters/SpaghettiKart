@@ -19,7 +19,7 @@ public:
         mMap[name].func = std::move(func);
     }
 
-    void Invoke(const std::string name, TArgs... args) {
+    void Invoke(const std::string& name, TArgs... args) {
         auto it = mMap.find(name);
         if (it != mMap.end() && it->second.func) {
             // Using C++ variadic template expansion to call the function
@@ -30,7 +30,7 @@ public:
         }
     }
 
-    void Find(const std::string_view name) {
+    bool Find(const std::string& name) {
         return mMap.find(name) != mMap.end();
     }
 

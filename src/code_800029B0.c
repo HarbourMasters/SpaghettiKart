@@ -66,9 +66,6 @@ u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;
 void set_mirror_mode(s32 mirror) {
-    if (gIsMirrorMode != mirror) {
-        UnLoadTrack();
-    }
     gIsMirrorMode = mirror;
 }
 Vec3f gVtxStretch = {1.0f, 1.0f, 1.0f};

@@ -128,10 +128,6 @@ void MooMooFarm::Load() {
     Props.WaterLevel = gTrackMinY - 10.0f;
 }
 
-void MooMooFarm::UnLoad() {
-    RestoreTriangleWinding();
-}
-
 void MooMooFarm::BeginPlay() {
     if (gPlayerCountSelection1 != 4) {
         spawn_foliage((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_moo_moo_farm_tree_spawn));
