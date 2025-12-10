@@ -92,7 +92,7 @@ OTrophy::OTrophy(const SpawnParams& params) : OObject(params) {
     object->pos[1] = spawnPos.y;
     object->pos[2] = spawnPos.z;
 
-    _emitter = reinterpret_cast<StarEmitter*>(gWorldInstance.AddEmitter(new StarEmitter()));
+    _emitter = reinterpret_cast<StarEmitter*>(GetWorld()->AddEmitter(new StarEmitter()));
 }
 
 void OTrophy::SetSpawnParams(SpawnParams& params) {

@@ -209,9 +209,9 @@ void MooMooFarm::BeginPlay() {
                 break;
         }
 
-        gWorldInstance.AddObject(new OMoleGroup(moleSpawns1, tick1));
-        gWorldInstance.AddObject(new OMoleGroup(moleSpawns2, tick2));
-        gWorldInstance.AddObject(new OMoleGroup(moleSpawns3, tick3));
+        GetWorld()->AddObject(new OMoleGroup(moleSpawns1, tick1));
+        GetWorld()->AddObject(new OMoleGroup(moleSpawns2, tick2));
+        GetWorld()->AddObject(new OMoleGroup(moleSpawns3, tick3));
     }
 
     if (gModeSelection == VERSUS) {

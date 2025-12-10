@@ -106,7 +106,7 @@ public:
             .Location = pos,
             .Scale = scale,
         };
-        return static_cast<AText*>(gWorldInstance.AddActor(new AText(params)));
+        return static_cast<AText*>(GetWorld()->AddActor(new AText(params)));
     }
 
     // Virtual functions to be overridden by derived classes

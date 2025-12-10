@@ -34,7 +34,7 @@ public:
             .Rotation = rot,
             .Scale = FVector(0, scale, 0),
         };
-        return static_cast<OTrashBin*>(gWorldInstance.AddObject(new OTrashBin(params)));
+        return static_cast<OTrashBin*>(GetWorld()->AddObject(new OTrashBin(params)));
     }
 
     explicit OTrashBin(const SpawnParams& params);

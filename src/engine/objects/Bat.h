@@ -36,7 +36,7 @@ public:
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<OBat*>(gWorldInstance.AddObject(new OBat(params)));
+        return static_cast<OBat*>(GetWorld()->AddObject(new OBat(params)));
     }
 
     explicit OBat(const SpawnParams& params);

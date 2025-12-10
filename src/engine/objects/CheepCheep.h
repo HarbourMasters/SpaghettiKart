@@ -32,7 +32,7 @@ public:
             .Location = pos,
             .PathSpan = span,
         };
-        return static_cast<OCheepCheep*>(gWorldInstance.AddObject(new OCheepCheep(params)));
+        return static_cast<OCheepCheep*>(GetWorld()->AddObject(new OCheepCheep(params)));
     }
 
     explicit OCheepCheep(const SpawnParams& params);

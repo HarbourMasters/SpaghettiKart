@@ -8,9 +8,6 @@
 
 #include "engine/objects/Object.h"
 
-class World;
-extern World gWorldInstance;
-
 extern "C" {
 #include "macros.h"
 #include "main.h"
@@ -61,7 +58,7 @@ public:
             .PrimAlpha = primAlpha,
             .BoundingBoxSize = boundingBoxSize
         };
-        return static_cast<OThwomp*>(gWorldInstance.AddObject(new OThwomp(params)));
+        return static_cast<OThwomp*>(GetWorld()->AddObject(new OThwomp(params)));
     }
 
     explicit OThwomp(const SpawnParams& params);

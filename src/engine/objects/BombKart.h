@@ -60,7 +60,7 @@ class OBombKart : public OObject {
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
             .SpeedB = 2.7f, // Chase speed
         };
-        return static_cast<OBombKart*>(gWorldInstance.AddObject(new OBombKart(params)));
+        return static_cast<OBombKart*>(GetWorld()->AddObject(new OBombKart(params)));
     }
 
     // Spawn object at a point along the tracks path
@@ -72,7 +72,7 @@ class OBombKart : public OObject {
             .PathPoint = pathPoint,
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
         };
-        return static_cast<OBombKart*>(gWorldInstance.AddObject(new OBombKart(params)));
+        return static_cast<OBombKart*>(GetWorld()->AddObject(new OBombKart(params)));
     }
 
     // Set waypoint to NULL if using a spawn position and not a waypoint.

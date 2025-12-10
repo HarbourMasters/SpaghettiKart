@@ -45,7 +45,7 @@ public:
             .TriggerSpan = triggerBoundary,
             .RightExitSpan = rightBoundary,
         };
-        return static_cast<OBoos*>(gWorldInstance.AddObject(new OBoos(params)));
+        return static_cast<OBoos*>(GetWorld()->AddObject(new OBoos(params)));
     }
 
     explicit OBoos(const SpawnParams& params);

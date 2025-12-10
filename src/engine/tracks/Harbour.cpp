@@ -659,28 +659,28 @@ void Harbour::BeginPlay() {
 
 
     Vec3f pos = {0, 80, 0};
-    // gWorldInstance.AddActor(new ACloud(pos));
+    // GetWorld()->AddActor(new ACloud(pos));
 
-    // gWorldInstance.AddActor(new OSeagull(0, pos));
-    // gWorldInstance.AddActor(new OSeagull(1, pos));
-    // gWorldInstance.AddActor(new OSeagull(2, pos));
-    // gWorldInstance.AddActor(new OSeagull(3, pos));
-    // gWorldInstance.AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
-    // gWorldInstance.AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
-    //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
-    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
+    // GetWorld()->AddActor(new OSeagull(0, pos));
+    // GetWorld()->AddActor(new OSeagull(1, pos));
+    // GetWorld()->AddActor(new OSeagull(2, pos));
+    // GetWorld()->AddActor(new OSeagull(3, pos));
+    // GetWorld()->AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
+    // GetWorld()->AddObject(new OTrophy(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH));
+    //GetWorld()->AddObject(new OSnowman(FVector(0, 0, 0)));
+    //GetWorld()->AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
-    //gWorldInstance.AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
-    //gWorldInstance.AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
-//    gWorldInstance.AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
+    //GetWorld()->AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
+    //GetWorld()->AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
+//    GetWorld()->AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
 
-    //gWorldInstance.AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
-//    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
+    //GetWorld()->AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
+//    GetWorld()->AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
 
-//    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
+//    GetWorld()->AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
 
-    //gWorldInstance.AddActor(new AShip(FVector(-1694, -111, 1451), AShip::Skin::GHOSTSHIP));
-    //gWorldInstance.AddActor(new AShip(FVector(2811, -83, 966), AShip::Skin::SHIP2));                                                                                                                                                
+    //GetWorld()->AddActor(new AShip(FVector(-1694, -111, 1451), AShip::Skin::GHOSTSHIP));
+    //GetWorld()->AddActor(new AShip(FVector(2811, -83, 966), AShip::Skin::SHIP2));                                                                                                                                                
 }
 
 void Harbour::WhatDoesThisDo(Player* player, int8_t playerId) {

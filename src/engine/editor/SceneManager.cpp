@@ -42,7 +42,7 @@ namespace Editor {
         /**
          * Save track properties, static mesh actors, actors, and tour camera
          */
-        data["Props"] = gWorldInstance.GetTrack()->Props.to_json();
+        data["Props"] = GetWorld()->GetTrack()->Props.to_json();
 
         nlohmann::json staticMesh;
         SaveStaticMeshActors(staticMesh);
@@ -54,7 +54,7 @@ namespace Editor {
         data["Actors"] = actors;
 
 
-        if (gWorldInstance.GetTrack()->TourShots.size() != 0) {
+        if (GetWorld()->GetTrack()->TourShots.size() != 0) {
             nlohmann::json tour;
             SaveTour(tour);
             data["Tour"] = tour;
@@ -84,7 +84,7 @@ namespace Editor {
         }
     }
 
-    /** Do not use gWorldInstance.CurrentCourse during loading! The current track is not guaranteed! **/
+    /** Do not use GetWorld()->CurrentCourse during loading! The current track is not guaranteed! **/
     void LoadLevel(Track* track, std::string sceneFile) {
         SceneFile = sceneFile;
         if ((nullptr == track) || (nullptr == track->RootArchive)) {
@@ -124,8 +124,8 @@ namespace Editor {
     }
 
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson) {
-        gWorldInstance.StaticMeshActors.push_back(new StaticMeshActor("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
-        auto actor = gWorldInstance.StaticMeshActors.back();
+        GetWorld()->StaticMeshActors.push_back(new StaticMeshActor("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
+        auto actor = GetWorld()->StaticMeshActors.back();
         actor->from_json(actorJson);
 
         printf("After from_json: Pos(%f, %f, %f), Name: %s, Model: %s\n", 
@@ -180,7 +180,7 @@ namespace Editor {
     }
 
     void SaveActors(nlohmann::json& actorList) {
-        for (const auto& actor : gWorldInstance.Actors) {
+        for (const auto& actor : GetWorld()->Actors) {
             SpawnParams params{};
             bool alreadyProcessed = false;
 
@@ -234,7 +234,7 @@ namespace Editor {
             }
         }
 
-        for (const auto& object : gWorldInstance.Objects) {
+        for (const auto& object : GetWorld()->Objects) {
             SpawnParams params;
             object->SetSpawnParams(params);
 
@@ -247,17 +247,17 @@ namespace Editor {
     }
 
     void SaveStaticMeshActors(nlohmann::json& actorList) {
-        for (const auto& mesh : gWorldInstance.StaticMeshActors) {
+        for (const auto& mesh : GetWorld()->StaticMeshActors) {
             actorList.push_back(mesh->to_json());
         }
     }
 
     void SaveTour(nlohmann::json& tour) {
-        tour["Enabled"] = gWorldInstance.GetTrack()->bTourEnabled;
+        tour["Enabled"] = GetWorld()->GetTrack()->bTourEnabled;
 
         // Camera shots
         tour["Shots"] = nlohmann::json::array();
-        for (const auto& shot : gWorldInstance.GetTrack()->TourShots) {
+        for (const auto& shot : GetWorld()->GetTrack()->TourShots) {
             tour["Shots"].push_back(ToJson(shot));
         }
     }
@@ -299,7 +299,7 @@ namespace Editor {
             return;
         }
 
-        gWorldInstance.StaticMeshActors.clear(); // Clear existing actors, if any
+        GetWorld()->StaticMeshActors.clear(); // Clear existing actors, if any
         
         for (const auto& actorJson : data["StaticMeshActors"]) {
             Load_AddStaticMeshActor(actorJson);

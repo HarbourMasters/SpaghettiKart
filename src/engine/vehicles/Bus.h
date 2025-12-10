@@ -48,7 +48,7 @@ class ABus : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ABus*>(gWorldInstance.AddActor(new ABus(params)));
+        return static_cast<ABus*>(GetWorld()->AddActor(new ABus(params)));
     }
 
     explicit ABus(const SpawnParams& params);

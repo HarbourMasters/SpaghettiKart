@@ -7,9 +7,6 @@
 #include "engine/CoreMath.h"
 #include "engine/World.h"
 
-class World;
-extern World gWorldInstance;
-
 extern "C" {
 #include "common_structs.h"
 }
@@ -32,7 +29,7 @@ public:
             .Behaviour = respawnTimer,
             .Location = pos,
         };
-        return static_cast<AFallingRock*>(gWorldInstance.AddActor(new AFallingRock(params)));
+        return static_cast<AFallingRock*>(GetWorld()->AddActor(new AFallingRock(params)));
     }
 
     int16_t TimerLength = 80;

@@ -142,8 +142,8 @@ void KalimariDesert::BeginPlay() {
 
         Vec3f crossingPos = {-2500, 2, 2355};
         Vec3f crossingPos2 = {-1639, 2, 68};
-        uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
-        uintptr_t* crossing2 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
+        uintptr_t* crossing1 = (uintptr_t*) GetWorld()->AddCrossing(crossingPos, 306, 310, 900.0f, 650.0f);
+        uintptr_t* crossing2 = (uintptr_t*) GetWorld()->AddCrossing(crossingPos2, 176, 182, 900.0f, 650.0f);
 
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gTrackDirection;

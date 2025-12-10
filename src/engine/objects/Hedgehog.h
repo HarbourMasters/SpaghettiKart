@@ -34,7 +34,7 @@ public:
             .Location = pos,
             .PatrolEnd = patrolPoint,
         };
-        return static_cast<OHedgehog*>(gWorldInstance.AddObject(new OHedgehog(params)));
+        return static_cast<OHedgehog*>(GetWorld()->AddObject(new OHedgehog(params)));
     }
 
     ~OHedgehog() {

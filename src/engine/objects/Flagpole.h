@@ -32,7 +32,7 @@ public:
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<OFlagpole*>(gWorldInstance.AddObject(new OFlagpole(params)));
+        return static_cast<OFlagpole*>(GetWorld()->AddObject(new OFlagpole(params)));
     }
 
     ~OFlagpole() {

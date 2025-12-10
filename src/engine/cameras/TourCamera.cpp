@@ -45,12 +45,12 @@ void TourCamera::Reset() {
 void TourCamera::NextShot() {
     TourCamera::Reset();
     bShotComplete = false;
-    _camera->pos[0] = gWorldInstance.GetTrack()->TourShots[ShotIndex].Pos.x;
-    _camera->pos[1] = gWorldInstance.GetTrack()->TourShots[ShotIndex].Pos.y;
-    _camera->pos[2] = gWorldInstance.GetTrack()->TourShots[ShotIndex].Pos.z;
-    _camera->lookAt[0] = gWorldInstance.GetTrack()->TourShots[ShotIndex].LookAt.x;
-    _camera->lookAt[1] = gWorldInstance.GetTrack()->TourShots[ShotIndex].LookAt.y;
-    _camera->lookAt[2] = gWorldInstance.GetTrack()->TourShots[ShotIndex].LookAt.z;
+    _camera->pos[0] = GetWorld()->GetTrack()->TourShots[ShotIndex].Pos.x;
+    _camera->pos[1] = GetWorld()->GetTrack()->TourShots[ShotIndex].Pos.y;
+    _camera->pos[2] = GetWorld()->GetTrack()->TourShots[ShotIndex].Pos.z;
+    _camera->lookAt[0] = GetWorld()->GetTrack()->TourShots[ShotIndex].LookAt.x;
+    _camera->lookAt[1] = GetWorld()->GetTrack()->TourShots[ShotIndex].LookAt.y;
+    _camera->lookAt[2] = GetWorld()->GetTrack()->TourShots[ShotIndex].LookAt.z;
 }
 
 void TourCamera::Stop() {
@@ -76,7 +76,7 @@ void TourCamera::Tick() {
     if (
           (nullptr == _camera) ||
           (bTourComplete) ||
-          (ShotIndex >= gWorldInstance.GetTrack()->TourShots.size())
+          (ShotIndex >= GetWorld()->GetTrack()->TourShots.size())
        ) {
         Alpha += 5;
         if (Alpha == 255) {
@@ -108,7 +108,7 @@ void TourCamera::Tick() {
         }
     }
 
-    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, gWorldInstance.GetTrack()->TourShots[ShotIndex].Frames);
+    bool done = TourCamera::MoveCameraAlongSpline(&extraArg, GetWorld()->GetTrack()->TourShots[ShotIndex].Frames);
 
     // Advance to the next camera shot
     if (done) {

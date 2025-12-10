@@ -55,7 +55,7 @@ class ABoat : public AActor {
             .PathPoint = pathPoint,
             .Speed = speed,
         };
-        return static_cast<ABoat*>(gWorldInstance.AddActor(new ABoat(params)));
+        return static_cast<ABoat*>(GetWorld()->AddActor(new ABoat(params)));
     }
 
     ABoat::SpawnMode SpawnType = ABoat::SpawnMode::AUTO;

@@ -49,7 +49,7 @@ public:
             .Rotation = rot,
             .Speed = diameter, // Diameter of the walking circle
         };
-        return static_cast<OPenguin*>(gWorldInstance.AddObject(new OPenguin(params)));
+        return static_cast<OPenguin*>(GetWorld()->AddObject(new OPenguin(params)));
     }
 
     PenguinType Type = PenguinType::CHICK;

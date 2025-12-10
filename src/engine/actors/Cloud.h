@@ -27,7 +27,7 @@ public:
             .Speed = hop, // How high you hop
             .SpeedB = gravity, // How much gravity is effected
         };
-        return static_cast<ACloud*>(gWorldInstance.AddActor(new ACloud(params)));
+        return static_cast<ACloud*>(GetWorld()->AddActor(new ACloud(params)));
     }
 
     virtual void Tick() override;

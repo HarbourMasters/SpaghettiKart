@@ -7,7 +7,7 @@ extern "C" void TrackBrowser_SetTrack(const char* name) {
 }
 
 extern "C" void TrackBrowser_SetTrackFromCup() {
-    TrackBrowser::Instance->SetTrack(gWorldInstance.GetCurrentCup()->GetTrack());
+    TrackBrowser::Instance->SetTrack(GetWorld()->GetCurrentCup()->GetTrack());
 }
 
 extern "C" void TrackBrowser_NextTrack(void) {

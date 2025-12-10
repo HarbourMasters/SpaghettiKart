@@ -42,147 +42,147 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
     info = { .ResourceName = "mk:thwomp" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OThwomp(params));
+            GetWorld()->AddObject(new OThwomp(params));
         }
     );
 
     info = { .ResourceName = "mk:snowman" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OSnowman(params));
+            GetWorld()->AddObject(new OSnowman(params));
         }
     );
 
     info = { .ResourceName = "mk:hot_air_balloon" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OHotAirBalloon(params));
+            GetWorld()->AddObject(new OHotAirBalloon(params));
         }
     );
 
     info = { .ResourceName = "mk:hedgehog" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OHedgehog(params));
+            GetWorld()->AddObject(new OHedgehog(params));
         }
     );
 
     info = { .ResourceName = "mk:grand_prix_balloons" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OGrandPrixBalloons(params));
+            GetWorld()->AddObject(new OGrandPrixBalloons(params));
         }
     );
 
     info = { .ResourceName = "mk:flagpole" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OFlagpole(params));
+            GetWorld()->AddObject(new OFlagpole(params));
         }
     );
 
     info = { .ResourceName = "mk:crab" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OCrab(params));
+            GetWorld()->AddObject(new OCrab(params));
         }
     );
 
     info = { .ResourceName = "mk:cheep_cheep" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OCheepCheep(params));
+            GetWorld()->AddObject(new OCheepCheep(params));
         }
     );
 
     info = { .ResourceName = "mk:bomb_kart" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OBombKart(params));
+            GetWorld()->AddObject(new OBombKart(params));
         }
     );
 
     info = { .ResourceName = "mk:bat" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OBat(params));
+            GetWorld()->AddObject(new OBat(params));
         }
     );
 
     info = { .ResourceName = "mk:boos" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OBoos(params));
+            GetWorld()->AddObject(new OBoos(params));
         }
     );
 
     info = { .ResourceName = "mk:trophy" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OTrophy(params));
+            GetWorld()->AddObject(new OTrophy(params));
         }
     );
 
     info = { .ResourceName = "mk:trash_bin" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OTrashBin(params));
+            GetWorld()->AddObject(new OTrashBin(params));
         }
     );
 
     info = { .ResourceName = "mk:seagull" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OSeagull(params));
+            GetWorld()->AddObject(new OSeagull(params));
         }
     );
 
     info = { .ResourceName = "mk:chain_chomp" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OChainChomp());
+            GetWorld()->AddObject(new OChainChomp());
         }
     );
 
     info = { .ResourceName = "mk:podium" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OPodium(params));
+            GetWorld()->AddObject(new OPodium(params));
         }
     );
 
     info = { .ResourceName = "mk:penguin" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddObject(new OPenguin(params));
+            GetWorld()->AddObject(new OPenguin(params));
         }
     );
 
     info = { .ResourceName = "mk:banana" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ABanana(params));
+            GetWorld()->AddActor(new ABanana(params));
         }
     );
 
     info = { .ResourceName = "mk:mario_sign" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AMarioSign(params));
+            GetWorld()->AddActor(new AMarioSign(params));
         }
     );
 
     info = { .ResourceName = "mk:wario_sign" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AWarioSign(params));
+            GetWorld()->AddActor(new AWarioSign(params));
         }
     );
 
     info = { .ResourceName = "mk:falling_rock" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AFallingRock(params));
+            GetWorld()->AddActor(new AFallingRock(params));
         }
     );
 
@@ -354,77 +354,77 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
     info = { .ResourceName = "mk:train" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ATrain(params));
+            GetWorld()->AddActor(new ATrain(params));
         }
     );
 
     info = { .ResourceName = "mk:paddle_boat" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ABoat(params));
+            GetWorld()->AddActor(new ABoat(params));
         }
     );
 
     info = { .ResourceName = "mk:car" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ACar(params));
+            GetWorld()->AddActor(new ACar(params));
         }
     );
 
     info = { .ResourceName = "mk:truck" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ATankerTruck(params));
+            GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
     info = { .ResourceName = "mk:tanker_truck" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ATankerTruck(params));
+            GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
     info = { .ResourceName = "mk:bus" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ATankerTruck(params));
+            GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
     info = { .ResourceName = "hm:spaghetti_ship" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ASpaghettiShip(params));
+            GetWorld()->AddActor(new ASpaghettiShip(params));
         }
     );
 
     info = { .ResourceName = "hm:ship" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AShip(params));
+            GetWorld()->AddActor(new AShip(params));
         }
     );
 
     info = { .ResourceName = "hm:starship" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AStarship(params));
+            GetWorld()->AddActor(new AStarship(params));
         }
     );
 
     info = { .ResourceName = "hm:cloud" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new ACloud(params));
+            GetWorld()->AddActor(new ACloud(params));
         }
     );
 
     info = { .ResourceName = "hm:text" };
     r.Add(info,
         [](const SpawnParams& params) {
-            gWorldInstance.AddActor(new AText(params));
+            GetWorld()->AddActor(new AText(params));
         }
     );
 }
@@ -441,7 +441,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<MarioRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_shared<MarioRaceway>());
         }
     );
 
@@ -454,7 +454,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<ChocoMountain>());
+            GetWorld()->SetCurrentTrack(std::make_shared<ChocoMountain>());
         }
     );
 
@@ -467,7 +467,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<BowsersCastle>());
+            GetWorld()->SetCurrentTrack(std::make_shared<BowsersCastle>());
         }
     );
 
@@ -480,7 +480,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<BansheeBoardwalk>());
+            GetWorld()->SetCurrentTrack(std::make_shared<BansheeBoardwalk>());
         }
     );
 
@@ -493,7 +493,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<YoshiValley>());
+            GetWorld()->SetCurrentTrack(std::make_shared<YoshiValley>());
         }
     );
 
@@ -506,7 +506,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<FrappeSnowland>());
+            GetWorld()->SetCurrentTrack(std::make_shared<FrappeSnowland>());
         }
     );
 
@@ -519,7 +519,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<KoopaTroopaBeach>());
+            GetWorld()->SetCurrentTrack(std::make_shared<KoopaTroopaBeach>());
         }
     );
 
@@ -532,7 +532,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<RoyalRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_shared<RoyalRaceway>());
         }
     );
 
@@ -545,7 +545,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<LuigiRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_shared<LuigiRaceway>());
         }
     );
 
@@ -558,7 +558,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<MooMooFarm>());
+            GetWorld()->SetCurrentTrack(std::make_shared<MooMooFarm>());
         }
     );
 
@@ -571,7 +571,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<ToadsTurnpike>());
+            GetWorld()->SetCurrentTrack(std::make_shared<ToadsTurnpike>());
         }
     );
 
@@ -584,7 +584,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<KalimariDesert>());
+            GetWorld()->SetCurrentTrack(std::make_shared<KalimariDesert>());
         }
     );
 
@@ -597,7 +597,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<SherbetLand>());
+            GetWorld()->SetCurrentTrack(std::make_shared<SherbetLand>());
         }
     );
 
@@ -610,7 +610,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<RainbowRoad>());
+            GetWorld()->SetCurrentTrack(std::make_shared<RainbowRoad>());
         }
     );
 
@@ -623,7 +623,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<WarioStadium>());
+            GetWorld()->SetCurrentTrack(std::make_shared<WarioStadium>());
         }
     );
 
@@ -636,7 +636,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<BlockFort>());
+            GetWorld()->SetCurrentTrack(std::make_shared<BlockFort>());
         }
     );
 
@@ -649,7 +649,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<Skyscraper>());
+            GetWorld()->SetCurrentTrack(std::make_shared<Skyscraper>());
         }
     );
 
@@ -662,7 +662,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<DoubleDeck>());
+            GetWorld()->SetCurrentTrack(std::make_shared<DoubleDeck>());
         }
     );
 
@@ -675,7 +675,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<DKJungle>());
+            GetWorld()->SetCurrentTrack(std::make_shared<DKJungle>());
         }
     );
 
@@ -688,7 +688,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<BigDonut>());
+            GetWorld()->SetCurrentTrack(std::make_shared<BigDonut>());
         }
     );
 
@@ -701,7 +701,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            gWorldInstance.SetCurrentTrack(std::make_shared<TestTrack>());
+            GetWorld()->SetCurrentTrack(std::make_shared<TestTrack>());
         }
     );
 }

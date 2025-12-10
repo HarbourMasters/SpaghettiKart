@@ -34,7 +34,7 @@ struct ActorInfo {
  * params.Location = FVector(0, 0, 0);
  * 
  * gActorRegistry.Add(actorInfo, [](params) {
- *     gWorldInstance.AddActor(new ACloud(params));
+ *     GetWorld()->AddActor(new ACloud(params));
  * });
  * 
  * gActorRegistry.Invoke("hm:cloud", params);

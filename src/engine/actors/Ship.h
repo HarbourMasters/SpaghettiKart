@@ -32,7 +32,7 @@ public:
             .Rotation = rot,
             .Scale = scale,
         };
-        return static_cast<AShip*>(gWorldInstance.AddActor(new AShip(params)));
+        return static_cast<AShip*>(GetWorld()->AddActor(new AShip(params)));
     }
 
     AShip::Skin SpawnSkin = Skin::GHOSTSHIP;

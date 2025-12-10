@@ -553,7 +553,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     float highestWater = -FLT_MAX;
     bool found = false;
 
-    for (const auto& volume : gWorldInstance.GetTrack()->WaterVolumes) {
+    for (const auto& volume : GetWorld()->GetTrack()->WaterVolumes) {
         if (pos.x >= volume.MinX && pos.x <= volume.MaxX && pos.z >= volume.MinZ && pos.z <= volume.MaxZ) {
             // Choose the highest water volume the player is over
             if (!found || volume.Height > highestWater) {
@@ -564,7 +564,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     }
 
     // If player is not over-top of a water volume then return the tracks default water level
-    return found ? highestWater : gWorldInstance.GetTrack()->Props.WaterLevel;
+    return found ? highestWater : GetWorld()->GetTrack()->Props.WaterLevel;
 }
 
 void Track::ScrollingTextures() {

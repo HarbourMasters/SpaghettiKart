@@ -28,7 +28,7 @@ void Rulesets::PreInit() {
 // Only runs a single time at the beginning of a track.
 void Rulesets::PostInit() {
     if (CVarGetInteger("gAllThwompsAreMarty", false) == true) {
-        for (auto object : gWorldInstance.Objects) {
+        for (auto object : GetWorld()->Objects) {
             if (OThwomp* thwomp = dynamic_cast<OThwomp*>(object)) {
                 gObjectList[thwomp->_objectIndex].unk_0D5 = OThwomp::States::JAILED; // Sets all the thwomp behaviour flags to marty
                 thwomp->Behaviour = OThwomp::States::JAILED;
@@ -37,7 +37,7 @@ void Rulesets::PostInit() {
     }
 
     if (CVarGetInteger("gAllBombKartsChase", false) == true) {
-        for (auto object : gWorldInstance.Objects) {
+        for (auto object : GetWorld()->Objects) {
             if (OBombKart* kart = dynamic_cast<OBombKart*>(object)) {
                 kart->Behaviour = OBombKart::States::CHASE;
             }

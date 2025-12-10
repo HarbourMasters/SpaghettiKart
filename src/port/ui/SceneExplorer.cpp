@@ -29,7 +29,7 @@ namespace Editor {
 
         size_t id = 0; // id for now because we don't have unique names atm
 
-        for (const auto& actor : gWorldInstance.Actors) {
+        for (const auto& actor : GetWorld()->Actors) {
             std::string name;
             if (nullptr != actor->Name && actor->Name[0] != '\0') {
                 name = std::string(actor->Name);
@@ -51,7 +51,7 @@ namespace Editor {
             id += 1;
         }
 
-        for (const auto& object : gWorldInstance.Objects) {
+        for (const auto& object : GetWorld()->Objects) {
             std::string name;
             if (nullptr != object->Name && object->Name[0] != '\0') {
                 name = std::string(object->Name);

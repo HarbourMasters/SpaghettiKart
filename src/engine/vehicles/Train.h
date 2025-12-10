@@ -8,9 +8,6 @@
 
 #include "Actor.h"
 
-class World;
-extern World gWorldInstance;
-
 extern "C" {
 #include "main.h"
 #include "vehicles.h"
@@ -72,7 +69,7 @@ class ATrain : public AActor {
             .Bool = tender,
             .Speed = speed, // 120.0f is about the maximum usable value
         };
-        return static_cast<ATrain*>(gWorldInstance.AddActor(new ATrain(params)));
+        return static_cast<ATrain*>(GetWorld()->AddActor(new ATrain(params)));
     }
 
     virtual void SetSpawnParams(SpawnParams& params);

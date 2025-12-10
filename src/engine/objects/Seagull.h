@@ -35,7 +35,7 @@ public:
             .Name = "mk:seagull",
             .Location = pos,
         };
-        return static_cast<OSeagull*>(gWorldInstance.AddObject(new OSeagull(params)));
+        return static_cast<OSeagull*>(GetWorld()->AddObject(new OSeagull(params)));
     }
 
     virtual void Tick() override;

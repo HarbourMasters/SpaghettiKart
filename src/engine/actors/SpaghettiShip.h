@@ -24,7 +24,7 @@ public:
             .Rotation = rot,
             .Scale = scale,
         };
-        return static_cast<ASpaghettiShip*>(gWorldInstance.AddActor(new ASpaghettiShip(params)));
+        return static_cast<ASpaghettiShip*>(GetWorld()->AddActor(new ASpaghettiShip(params)));
     }
 
     virtual void Tick() override;

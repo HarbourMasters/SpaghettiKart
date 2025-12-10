@@ -24,7 +24,7 @@ void TrainSmokeTick() {
     s32 temp_a0;
     Object* object;
 
-    for (auto& actor : gWorldInstance.Actors) {
+    for (auto& actor : GetWorld()->Actors) {
         if (auto train = dynamic_cast<ATrain*>(actor)) {
             if (train->SmokeTimer != 0) {
                 train->SmokeTimer -= 1;
@@ -79,7 +79,7 @@ void TrainSmokeTick() {
 void TrainSmokeDraw(s32 cameraId) {
     Camera* camera = &camera1[cameraId];
 
-    for (auto& actor : gWorldInstance.Actors) {
+    for (auto& actor : GetWorld()->Actors) {
         if (auto train = dynamic_cast<ATrain*>(actor)) {
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
             load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);

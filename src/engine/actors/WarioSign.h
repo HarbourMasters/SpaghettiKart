@@ -25,7 +25,7 @@ public:
             .Velocity = velocity,
             .Speed = 182,
         };
-        return static_cast<AWarioSign*>(gWorldInstance.AddActor(new AWarioSign(params)));
+        return static_cast<AWarioSign*>(GetWorld()->AddActor(new AWarioSign(params)));
     }
 
     virtual bool IsMod() override;

@@ -33,7 +33,7 @@ public:
             .Name = "mk:grand_prix_balloons",
             .Location = pos,
         };
-        return static_cast<OGrandPrixBalloons*>(gWorldInstance.AddObject(new OGrandPrixBalloons(params)));
+        return static_cast<OGrandPrixBalloons*>(GetWorld()->AddObject(new OGrandPrixBalloons(params)));
     }
 
     ~OGrandPrixBalloons() {

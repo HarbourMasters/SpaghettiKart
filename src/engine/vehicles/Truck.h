@@ -53,7 +53,7 @@ class ATruck : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ATruck*>(gWorldInstance.AddActor(new ATruck(params)));
+        return static_cast<ATruck*>(GetWorld()->AddActor(new ATruck(params)));
     }
 
     explicit ATruck(const SpawnParams& params);

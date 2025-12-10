@@ -52,7 +52,7 @@ extern "C" void Graphics_PushFrame(Gfx* data) {
 }
 
 // Create the world instance
-World gWorldInstance;
+static World sWorldInstance;
 
 // Deferred cleaning when clearing all actors in the editor
 bool bCleanWorld = false;
@@ -87,11 +87,11 @@ void CustomEngineInit() {
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
     gMushroomCup = new Cup("mk:mushroom_cup", "Mushroom Cup", {
-            "mk:luigi_raceway", 
-            "mk:moo_moo_farm", 
-            "mk:koopa_troopa_beach", 
-            "mk:kalimari_desert"
-        });
+        "mk:luigi_raceway", 
+        "mk:moo_moo_farm", 
+        "mk:koopa_troopa_beach", 
+        "mk:kalimari_desert"
+    });
 
     gFlowerCup = new Cup("mk:flower_cup", "Flower Cup", {
         "mk:toads_turnpike", 
@@ -122,11 +122,11 @@ void CustomEngineInit() {
     });
 
     /* Instantiate Cups */
-    gWorldInstance.AddCup(gMushroomCup);
-    gWorldInstance.AddCup(gFlowerCup);
-    gWorldInstance.AddCup(gStarCup);
-    gWorldInstance.AddCup(gSpecialCup);
-    gWorldInstance.AddCup(gBattleCup);
+    GetWorld()->AddCup(gMushroomCup);
+    GetWorld()->AddCup(gFlowerCup);
+    GetWorld()->AddCup(gStarCup);
+    GetWorld()->AddCup(gSpecialCup);
+    GetWorld()->AddCup(gBattleCup);
 
     //SelectMarioRaceway(); // This results in a nullptr
     SetMarioRaceway();
@@ -159,45 +159,45 @@ void HM_DrawIntro() {
 // Set default track; mario raceway
 void SetMarioRaceway(void) {
     SelectMarioRaceway();
-    gWorldInstance.SetCurrentCup(gMushroomCup);
-    gWorldInstance.GetCurrentCup()->CursorPosition = 3;
-    gWorldInstance.CupIndex = 0;
+    GetWorld()->SetCurrentCup(gMushroomCup);
+    GetWorld()->GetCurrentCup()->CursorPosition = 3;
+    GetWorld()->CupIndex = 0;
 }
 
 u32 WorldNextCup(void) {
-    return gWorldInstance.NextCup();
+    return GetWorld()->NextCup();
 }
 
 u32 WorldPreviousCup(void) {
-    return gWorldInstance.PreviousCup();
+    return GetWorld()->PreviousCup();
 }
 
 void CM_SetCup(void* cup) {
-    gWorldInstance.SetCurrentCup((Cup*) cup);
+    GetWorld()->SetCurrentCup((Cup*) cup);
 }
 
 void* GetCup() {
-    return gWorldInstance.GetCurrentCup();
+    return GetWorld()->GetCurrentCup();
 }
 
 u32 GetCupIndex(void) {
-    return gWorldInstance.GetCupIndex();
+    return GetWorld()->GetCupIndex();
 }
 
 void CM_SetCupIndex(size_t index) {
-    gWorldInstance.SetCupIndex(index);
+    GetWorld()->SetCupIndex(index);
 }
 
 const char* GetCupName(void) {
-    return gWorldInstance.GetCurrentCup()->Name;
+    return GetWorld()->GetCurrentCup()->Name;
 }
 
 void LoadTrack() {
-    gWorldInstance.GetRaceManager().Load();
+    GetWorld()->GetRaceManager().Load();
 }
 
 void CM_VehicleCollision(s32 playerId, Player* player) {
-    for (auto& actor : gWorldInstance.Actors) {
+    for (auto& actor : GetWorld()->Actors) {
         if (actor) {
             actor->VehicleCollision(playerId, player);
         }
@@ -205,7 +205,7 @@ void CM_VehicleCollision(s32 playerId, Player* player) {
 }
 
 void CM_BombKartsWaypoint(s32 cameraId) {
-    for (auto& object : gWorldInstance.Objects) {
+    for (auto& object : GetWorld()->Objects) {
         if (auto kart = dynamic_cast<OBombKart*>(object)) {
             if (kart) {
                 kart->Waypoint(cameraId);
@@ -221,26 +221,26 @@ void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha) {
     }
 
     if (primAlpha == 0) {
-        gWorldInstance.mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::DISABLED;
-        gWorldInstance.mPlayerBombKart[playerId]._primAlpha = primAlpha;
+        GetWorld()->mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        GetWorld()->mPlayerBombKart[playerId]._primAlpha = primAlpha;
     } else {
-        gWorldInstance.mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::ACTIVE;
-        gWorldInstance.mPlayerBombKart[playerId]._primAlpha = primAlpha;
+        GetWorld()->mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::ACTIVE;
+        GetWorld()->mPlayerBombKart[playerId]._primAlpha = primAlpha;
     }
 }
 
 void CM_DrawBattleBombKarts(s32 cameraId) {
     for (size_t i = 0; i < gPlayerCount; i++) {
-        gWorldInstance.mPlayerBombKart[i].Draw(i, cameraId);
+        GetWorld()->mPlayerBombKart[i].Draw(i, cameraId);
     }
 }
 
 void CM_ClearVehicles(void) {
-    gWorldInstance.Crossings.clear();
+    GetWorld()->Crossings.clear();
 }
 
 void CM_CrossingTrigger() {
-    for (auto& crossing : gWorldInstance.Crossings) {
+    for (auto& crossing : GetWorld()->Crossings) {
         if (crossing) {
             crossing->CrossingTrigger();
         }
@@ -248,7 +248,7 @@ void CM_CrossingTrigger() {
 }
 
 void CM_AICrossingBehaviour(s32 playerId) {
-    for (auto& crossing : gWorldInstance.Crossings) {
+    for (auto& crossing : GetWorld()->Crossings) {
         if (crossing) {
             crossing->AICrossingBehaviour(playerId);
         }
@@ -271,15 +271,15 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing) {
  * They do not use DrawCredits() and they do not use track sections.
  */
 void CM_DrawTrack(ScreenContext* screen) {
-    if (nullptr == gWorldInstance.GetTrack()) {
+    if (nullptr == GetWorld()->GetTrack()) {
         return;
     }
 
     // Custom tracks should never use DrawCredits();
-    if (gWorldInstance.GetTrack()->IsMod()) {
+    if (GetWorld()->GetTrack()->IsMod()) {
         switch(screen->camera->renderMode) {
             default:
-                gWorldInstance.GetTrack()->Draw(screen);
+                GetWorld()->GetTrack()->Draw(screen);
                 break;
             case RENDER_COLLISION_MESH:
                 render_collision();
@@ -288,10 +288,10 @@ void CM_DrawTrack(ScreenContext* screen) {
     } else {
         switch(screen->camera->renderMode) {
             case RENDER_FULL_SCENE:
-                gWorldInstance.GetTrack()->DrawCredits();
+                GetWorld()->GetTrack()->DrawCredits();
                 break;
             case RENDER_TRACK_SECTIONS:
-                gWorldInstance.GetTrack()->Draw(screen);
+                GetWorld()->GetTrack()->Draw(screen);
                 break;
             case RENDER_COLLISION_MESH:
                 render_collision();
@@ -301,20 +301,20 @@ void CM_DrawTrack(ScreenContext* screen) {
 }
 
 void CM_TickActors() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.TickActors();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->TickActors();
     }
 }
 
 void CM_DrawActors(Camera* camera) {
-    //AActor* a = gWorldInstance.ConvertActorToAActor(actor);
-    for (const auto& actor : gWorldInstance.Actors) {
+    //AActor* a = GetWorld()->ConvertActorToAActor(actor);
+    for (const auto& actor : GetWorld()->Actors) {
         if (actor->IsMod()) {
             actor->Draw(camera);
         }
     }
 
-    for (auto* camera : gWorldInstance.Cameras) {
+    for (auto* camera : GetWorld()->Cameras) {
         if (auto* tourCam = dynamic_cast<TourCamera*>(camera)) {
             if (tourCam->IsActive()) {
                 tourCam->Draw();
@@ -324,40 +324,40 @@ void CM_DrawActors(Camera* camera) {
 }
 
 void CM_DrawStaticMeshActors() {
-    gWorldInstance.DrawStaticMeshActors();
+    GetWorld()->DrawStaticMeshActors();
 }
 
 void CM_BeginPlay() {
     static bool tour = false;
-    auto track = gWorldInstance.GetTrack();
+    auto track = GetWorld()->GetTrack();
     
     if (nullptr == track) {
         return; 
     }
 
     if (tour) {
-      //  gWorldInstance.Cameras[2]->SetActive(true);
-       // gScreenOneCtx->camera = gWorldInstance.Cameras[2]->Get();
-        if (reinterpret_cast<TourCamera*>(gWorldInstance.Cameras[2])->IsTourComplete()) {
+      //  GetWorld()->Cameras[2]->SetActive(true);
+       // gScreenOneCtx->camera = GetWorld()->Cameras[2]->Get();
+        if (reinterpret_cast<TourCamera*>(GetWorld()->Cameras[2])->IsTourComplete()) {
             tour = false;
             gScreenOneCtx->pendingCamera = &cameras[0];
         }
     }
 
-    if (gWorldInstance.GetTrack()) {
+    if (GetWorld()->GetTrack()) {
         // This line should likely be moved.
         // It's here so PreInit is after the scene file has been loaded
         // It used to be at the start of BeginPlay
-        Editor::LoadLevel(gWorldInstance.GetTrack().get(), gWorldInstance.GetTrack()->SceneFilePtr);
+        Editor::LoadLevel(GetWorld()->GetTrack().get(), GetWorld()->GetTrack()->SceneFilePtr);
     }
 
-    gWorldInstance.GetRaceManager().PreInit();
-    gWorldInstance.GetRaceManager().BeginPlay();
-    gWorldInstance.GetRaceManager().PostInit();
+    GetWorld()->GetRaceManager().PreInit();
+    GetWorld()->GetRaceManager().BeginPlay();
+    GetWorld()->GetRaceManager().PostInit();
 }
 
 Camera* CM_GetPlayerCamera(s32 playerIndex) {
-    for (GameCamera* cam : gWorldInstance.Cameras) {
+    for (GameCamera* cam : GetWorld()->Cameras) {
         // Make sure this is a player camera and not a different type of camera
         if (typeid(*cam) == typeid(GameCamera)) {
             Camera* camera = cam->Get();
@@ -370,7 +370,7 @@ Camera* CM_GetPlayerCamera(s32 playerIndex) {
 }
 
 void CM_SetViewProjection(Camera* camera) {
-    for (GameCamera* gameCamera : gWorldInstance.Cameras) {
+    for (GameCamera* gameCamera : GetWorld()->Cameras) {
         if (camera == gameCamera->Get()) {
             gameCamera->SetViewProjection();
         }
@@ -378,62 +378,62 @@ void CM_SetViewProjection(Camera* camera) {
 }
 
 void CM_TickCameras() {
-    gWorldInstance.TickCameras();
+    GetWorld()->TickCameras();
 }
 
 Camera* CM_AddCamera(Vec3f spawn, s16 rot, u32 mode) {
-    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+    if (GetWorld()->Cameras.size() >= NUM_CAMERAS) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         return nullptr;
     }
-    gWorldInstance.Cameras.push_back(new GameCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
-    return gWorldInstance.Cameras.back()->Get();
+    GetWorld()->Cameras.push_back(new GameCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return GetWorld()->Cameras.back()->Get();
 }
 
 Camera* CM_AddFreeCamera(Vec3f spawn, s16 rot, u32 mode) {
-    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+    if (GetWorld()->Cameras.size() >= NUM_CAMERAS) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         return nullptr;
     }
-    gWorldInstance.Cameras.push_back(new FreeCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
-    return gWorldInstance.Cameras.back()->Get();
+    GetWorld()->Cameras.push_back(new FreeCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return GetWorld()->Cameras.back()->Get();
 }
 
 Camera* CM_AddTourCamera(Vec3f spawn, s16 rot, u32 mode) {
-    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+    if (GetWorld()->Cameras.size() >= NUM_CAMERAS) {
         // This is to prevent soft locking the game
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
-        if (gWorldInstance.GetTrack()->bTourEnabled) {
+        if (GetWorld()->GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (nullptr == gWorldInstance.GetTrack()) {
+    if (nullptr == GetWorld()->GetTrack()) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.GetTrack()->bTourEnabled) {
+        if (GetWorld()->GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    if (gWorldInstance.GetTrack()->TourShots.size() == 0) {
+    if (GetWorld()->GetTrack()->TourShots.size() == 0) {
         // This is to prevent soft locking the game
-        if (gWorldInstance.GetTrack()->bTourEnabled) {
+        if (GetWorld()->GetTrack()->bTourEnabled) {
             spawn_and_set_player_spawns();
         }
         return nullptr;
     }
 
-    gWorldInstance.Cameras.push_back(new TourCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
-    TourCamera* tour = static_cast<TourCamera*>(gWorldInstance.Cameras.back());
+    GetWorld()->Cameras.push_back(new TourCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    TourCamera* tour = static_cast<TourCamera*>(GetWorld()->Cameras.back());
     tour->SetActive(true);
     return tour->Get();
 }
 
 bool CM_IsTourEnabled() {
-    if (nullptr != gWorldInstance.GetTrack()) {
-        if ((gWorldInstance.GetTrack()->bTourEnabled) && (gTourComplete == false)) {
+    if (nullptr != GetWorld()->GetTrack()) {
+        if ((GetWorld()->GetTrack()->bTourEnabled) && (gTourComplete == false)) {
             return true;
         } else {
             return false;
@@ -444,12 +444,12 @@ bool CM_IsTourEnabled() {
 }
 
 Camera* CM_AddLookBehindCamera(Vec3f spawn, s16 rot, u32 mode) {
-    if (gWorldInstance.Cameras.size() >= NUM_CAMERAS) {
+    if (GetWorld()->Cameras.size() >= NUM_CAMERAS) {
         printf("Reached the max number of cameras, %d\n", NUM_CAMERAS);
         return nullptr;
     }
-    gWorldInstance.Cameras.push_back(new LookBehindCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
-    return gWorldInstance.Cameras.back()->Get();
+    GetWorld()->Cameras.push_back(new LookBehindCamera(FVector(spawn[0], spawn[1], spawn[2]), rot, mode));
+    return GetWorld()->Cameras.back()->Get();
 }
 
 void CM_AttachCamera(Camera* camera, s32 playerIdx) {
@@ -457,13 +457,13 @@ void CM_AttachCamera(Camera* camera, s32 playerIdx) {
 }
 
 void CM_CameraSetActive(size_t idx, bool state) {
-    if (idx < gWorldInstance.Cameras.size()) {
-        gWorldInstance.Cameras[idx]->SetActive(state);
+    if (idx < GetWorld()->Cameras.size()) {
+        GetWorld()->Cameras[idx]->SetActive(state);
     }
 }
 
 void CM_SetFreeCamera(bool state) {
-    for (auto* cam : gWorldInstance.Cameras) {
+    for (auto* cam : GetWorld()->Cameras) {
         if (cam->Get() == gScreenOneCtx->freeCamera) {
             if (state) {
                 gScreenOneCtx->pendingCamera = gScreenOneCtx->freeCamera;
@@ -483,7 +483,7 @@ void CM_SetFreeCamera(bool state) {
 }
 
 void CM_ActivateTourCamera(Camera* camera) {
-    for (auto* cam : gWorldInstance.Cameras) {
+    for (auto* cam : GetWorld()->Cameras) {
         if (cam->Get() == camera) {
             cam->SetActive(true);
         }
@@ -491,22 +491,22 @@ void CM_ActivateTourCamera(Camera* camera) {
 }
 
 void CM_TickObjects() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.TickObjects();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->TickObjects();
     }
 }
 
 // A couple objects such as lakitu are ticked inside of process_game_tick which support 60fps.
 // This is a fallback to support that.
 void CM_TickObjects60fps() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.TickObjects60fps();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->TickObjects60fps();
     }
 }
 
 void CM_DrawObjects(s32 cameraId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.DrawObjects(cameraId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->DrawObjects(cameraId);
     }
 }
 
@@ -523,110 +523,110 @@ void CM_Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 mi
 }
 
 void CM_TickParticles() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.TickParticles();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->TickParticles();
     }
 }
 
 void CM_DrawParticles(s32 cameraId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.DrawParticles(cameraId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->DrawParticles(cameraId);
     }
 }
 
 void CM_InitClouds() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->InitClouds();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->InitClouds();
     }
 }
 
 void CM_TickClouds(s32 arg0, Camera* camera) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->TickClouds(arg0, camera);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->TickClouds(arg0, camera);
     }
 }
 
 void CM_Waypoints(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->Waypoints(player, playerId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->Waypoints(player, playerId);
     }
 }
 
 void CM_SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6,
                            f32* arg7) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->SomeCollisionThing(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
     }
 }
 
 void CM_InitTrackObjects() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->InitTrackObjects();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->InitTrackObjects();
     }
 }
 
 void CM_TickTrackObjects() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->TickTrackObjects();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->TickTrackObjects();
     }
     TrainSmokeTick();
 }
 
 void CM_DrawTrackObjects(s32 cameraId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->DrawTrackObjects(cameraId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->DrawTrackObjects(cameraId);
     }
 
     TrainSmokeDraw(cameraId);
 }
 
 void CM_SomeSounds() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->SomeSounds();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->SomeSounds();
     }
 }
 
 void CM_CreditsSpawnActors() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->CreditsSpawnActors();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->CreditsSpawnActors();
     }
 }
 
 void CM_WhatDoesThisDo(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->WhatDoesThisDo(player, playerId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->WhatDoesThisDo(player, playerId);
     }
 }
 
 void CM_WhatDoesThisDoAI(Player* player, int8_t playerId) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->WhatDoesThisDoAI(player, playerId);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->WhatDoesThisDoAI(player, playerId);
     }
 }
 
 void CM_SetStaffGhost() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->SetStaffGhost();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->SetStaffGhost();
     }
 }
 
 Properties* CM_GetProps() {
-    if (gWorldInstance.GetTrack()) {
-        return &gWorldInstance.GetTrack()->Props;
+    if (GetWorld()->GetTrack()) {
+        return &GetWorld()->GetTrack()->Props;
     }
     return NULL;
 }
 
 void CM_ScrollingTextures() {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->ScrollingTextures();
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->ScrollingTextures();
     }
 }
 
 void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
-    if (gWorldInstance.GetTrack()) {
-        gWorldInstance.GetTrack()->DrawWater(screen, pathCounter, cameraRot, playerDirection);
+    if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->DrawWater(screen, pathCounter, cameraRot, playerDirection);
     }
 }
 
@@ -640,8 +640,8 @@ void CM_SpawnStarterLakitu() {
 
     for (size_t i = 0; i < gPlayerCountSelection1; i++) {
         OLakitu* lakitu = new OLakitu(i, OLakitu::LakituType::STARTER);
-        gWorldInstance.Lakitus[i] = lakitu;
-        gWorldInstance.AddObject(lakitu);
+        GetWorld()->Lakitus[i] = lakitu;
+        GetWorld()->AddObject(lakitu);
     }
 }
 
@@ -650,50 +650,50 @@ void CM_ActivateFinishLakitu(s32 playerId) {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
-    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::FINISH);
+    GetWorld()->Lakitus[playerId]->Activate(OLakitu::LakituType::FINISH);
 }
 
 void CM_ActivateSecondLapLakitu(s32 playerId) {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
-    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::SECOND_LAP);
+    GetWorld()->Lakitus[playerId]->Activate(OLakitu::LakituType::SECOND_LAP);
 }
 
 void CM_ActivateFinalLapLakitu(s32 playerId) {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
-    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::FINAL_LAP);
+    GetWorld()->Lakitus[playerId]->Activate(OLakitu::LakituType::FINAL_LAP);
 }
 
 void CM_ActivateReverseLakitu(s32 playerId) {
     if ((gDemoMode) || (gGamestate == CREDITS_SEQUENCE)) {
         return;
     }
-    gWorldInstance.Lakitus[playerId]->Activate(OLakitu::LakituType::REVERSE);
+    GetWorld()->Lakitus[playerId]->Activate(OLakitu::LakituType::REVERSE);
 }
 
 size_t GetCupCursorPosition() {
-    return gWorldInstance.GetCurrentCup()->CursorPosition;
+    return GetWorld()->GetCurrentCup()->CursorPosition;
 }
 
 void SetCupCursorPosition(size_t position) {
-    gWorldInstance.GetCurrentCup()->SetTrack(position);
-    // gWorldInstance.CurrentCup->CursorPosition = position;
+    GetWorld()->GetCurrentCup()->SetTrack(position);
+    // GetWorld()->CurrentCup->CursorPosition = position;
 }
 
 size_t GetCupSize() {
-    return gWorldInstance.GetCurrentCup()->GetSize();
+    return GetWorld()->GetCurrentCup()->GetSize();
 }
 
 void* GetTrack(void) {
-    return gWorldInstance.GetTrack().get();
+    return GetWorld()->GetTrack().get();
 }
 
 struct Actor* CM_GetActor(size_t index) {
-    if (index < gWorldInstance.Actors.size()) {
-        AActor* actor = gWorldInstance.Actors[index];
+    if (index < GetWorld()->Actors.size()) {
+        AActor* actor = GetWorld()->Actors[index];
         return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
     } else {
         // throw std::runtime_error("GetActor() index out of bounds");
@@ -705,7 +705,7 @@ size_t CM_FindActorIndex(Actor* actor) {
     // Move the ptr back to look at the vtable.
     // This gets us the proper C++ class instead of just the variables used in C.
     AActor* a = reinterpret_cast<AActor*>(reinterpret_cast<char*>(actor) - sizeof(void*));
-    auto actors = gWorldInstance.Actors;
+    auto actors = GetWorld()->Actors;
 
     auto it = std::find(actors.begin(), actors.end(), static_cast<AActor*>(a));
     if (it != actors.end()) {
@@ -716,7 +716,7 @@ size_t CM_FindActorIndex(Actor* actor) {
 }
 
 void CM_DeleteActor(size_t index) {
-    std::vector<AActor*> actors = gWorldInstance.Actors;
+    std::vector<AActor*> actors = GetWorld()->Actors;
     if (index < actors.size()) {
         actors.erase(actors.begin() + index);
     }
@@ -726,27 +726,27 @@ void CM_DeleteActor(size_t index) {
  * Clean up actors and other game objects.
  */
 void CM_CleanWorld(void) {
-    gWorldInstance.CleanWorld();
+    GetWorld()->CleanWorld();
 }
 
 void CM_CleanCameras(void) {
-    for (auto& camera : gWorldInstance.Cameras) {
+    for (auto& camera : GetWorld()->Cameras) {
         delete camera;
     }
 
-    gWorldInstance.Cameras.clear();
+    GetWorld()->Cameras.clear();
 }
 
 struct Actor* CM_AddBaseActor() {
-    return (struct Actor*) gWorldInstance.AddBaseActor();
+    return (struct Actor*) GetWorld()->AddBaseActor();
 }
 
 void CM_ActorBeginPlay(struct Actor* actor) {
-    gWorldInstance.ActorBeginPlay(actor);
+    GetWorld()->ActorBeginPlay(actor);
 }
 
 void CM_ActorGenerateCollision(struct Actor* actor) {
-    AActor* act = gWorldInstance.ConvertActorToAActor(actor);
+    AActor* act = GetWorld()->ConvertActorToAActor(actor);
 
     if ((nullptr != act->Model) && (act->Model[0] != '\0')) {
         if (act->Triangles.size() == 0) {
@@ -773,11 +773,11 @@ void Editor_CleanWorld() {
 }
 
 size_t CM_GetActorSize() {
-    return gWorldInstance.Actors.size();
+    return GetWorld()->Actors.size();
 }
 
 void CM_ActorCollision(Player* player, Actor* actor) {
-    AActor* a = gWorldInstance.ConvertActorToAActor(actor);
+    AActor* a = GetWorld()->ConvertActorToAActor(actor);
 
     if (a->IsMod()) {
         a->Collision(player, a);
@@ -786,53 +786,53 @@ void CM_ActorCollision(Player* player, Actor* actor) {
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
-    return gWorldInstance.GetTrack()->GetWaterLevel(fPos, collision);
+    return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
 }
 
 // clang-format off
-bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsBlockFort()        { return dynamic_cast<BlockFort*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsDkJungle()         { return dynamic_cast<DKJungle*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsBigDonut()         { return dynamic_cast<BigDonut*>(gWorldInstance.GetTrack().get()) != nullptr; }
-bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(gWorldInstance.GetTrack().get()) != nullptr; }
+bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsBlockFort()        { return dynamic_cast<BlockFort*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsDkJungle()         { return dynamic_cast<DKJungle*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsBigDonut()         { return dynamic_cast<BigDonut*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(GetWorld()->GetTrack().get()) != nullptr; }
 
-void SelectMarioRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<MarioRaceway>()); }
-void SelectLuigiRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<LuigiRaceway>()); }
-void SelectChocoMountain()      { gWorldInstance.SetCurrentTrack(std::make_shared<ChocoMountain>()); }
-void SelectBowsersCastle()      { gWorldInstance.SetCurrentTrack(std::make_shared<BowsersCastle>()); }
-void SelectBansheeBoardwalk()   { gWorldInstance.SetCurrentTrack(std::make_shared<BansheeBoardwalk>()); }
-void SelectYoshiValley()        { gWorldInstance.SetCurrentTrack(std::make_shared<YoshiValley>()); }
-void SelectFrappeSnowland()     { gWorldInstance.SetCurrentTrack(std::make_shared<FrappeSnowland>()); }
-void SelectKoopaTroopaBeach()   { gWorldInstance.SetCurrentTrack(std::make_shared<KoopaTroopaBeach>()); }
-void SelectRoyalRaceway()       { gWorldInstance.SetCurrentTrack(std::make_shared<RoyalRaceway>()); }
-void SelectMooMooFarm()         { gWorldInstance.SetCurrentTrack(std::make_shared<MooMooFarm>()); }
-void SelectToadsTurnpike()      { gWorldInstance.SetCurrentTrack(std::make_shared<ToadsTurnpike>()); }
-void SelectKalimariDesert()     { gWorldInstance.SetCurrentTrack(std::make_shared<KalimariDesert>()); }
-void SelectSherbetLand()        { gWorldInstance.SetCurrentTrack(std::make_shared<SherbetLand>()); }
-void SelectRainbowRoad()        { gWorldInstance.SetCurrentTrack(std::make_shared<RainbowRoad>()); }
-void SelectWarioStadium()       { gWorldInstance.SetCurrentTrack(std::make_shared<WarioStadium>()); }
-void SelectBlockFort()          { gWorldInstance.SetCurrentTrack(std::make_shared<BlockFort>()); }
-void SelectSkyscraper()         { gWorldInstance.SetCurrentTrack(std::make_shared<Skyscraper>()); }
-void SelectDoubleDeck()         { gWorldInstance.SetCurrentTrack(std::make_shared<DoubleDeck>()); }
-void SelectDkJungle()           { gWorldInstance.SetCurrentTrack(std::make_shared<DKJungle>()); }
-void SelectBigDonut()           { gWorldInstance.SetCurrentTrack(std::make_shared<BigDonut>()); }
-void SelectPodiumCeremony()     { gWorldInstance.SetCurrentTrack(gPodiumCeremony); }
+void SelectMarioRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<MarioRaceway>()); }
+void SelectLuigiRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<LuigiRaceway>()); }
+void SelectChocoMountain()      { GetWorld()->SetCurrentTrack(std::make_shared<ChocoMountain>()); }
+void SelectBowsersCastle()      { GetWorld()->SetCurrentTrack(std::make_shared<BowsersCastle>()); }
+void SelectBansheeBoardwalk()   { GetWorld()->SetCurrentTrack(std::make_shared<BansheeBoardwalk>()); }
+void SelectYoshiValley()        { GetWorld()->SetCurrentTrack(std::make_shared<YoshiValley>()); }
+void SelectFrappeSnowland()     { GetWorld()->SetCurrentTrack(std::make_shared<FrappeSnowland>()); }
+void SelectKoopaTroopaBeach()   { GetWorld()->SetCurrentTrack(std::make_shared<KoopaTroopaBeach>()); }
+void SelectRoyalRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<RoyalRaceway>()); }
+void SelectMooMooFarm()         { GetWorld()->SetCurrentTrack(std::make_shared<MooMooFarm>()); }
+void SelectToadsTurnpike()      { GetWorld()->SetCurrentTrack(std::make_shared<ToadsTurnpike>()); }
+void SelectKalimariDesert()     { GetWorld()->SetCurrentTrack(std::make_shared<KalimariDesert>()); }
+void SelectSherbetLand()        { GetWorld()->SetCurrentTrack(std::make_shared<SherbetLand>()); }
+void SelectRainbowRoad()        { GetWorld()->SetCurrentTrack(std::make_shared<RainbowRoad>()); }
+void SelectWarioStadium()       { GetWorld()->SetCurrentTrack(std::make_shared<WarioStadium>()); }
+void SelectBlockFort()          { GetWorld()->SetCurrentTrack(std::make_shared<BlockFort>()); }
+void SelectSkyscraper()         { GetWorld()->SetCurrentTrack(std::make_shared<Skyscraper>()); }
+void SelectDoubleDeck()         { GetWorld()->SetCurrentTrack(std::make_shared<DoubleDeck>()); }
+void SelectDkJungle()           { GetWorld()->SetCurrentTrack(std::make_shared<DKJungle>()); }
+void SelectBigDonut()           { GetWorld()->SetCurrentTrack(std::make_shared<BigDonut>()); }
+void SelectPodiumCeremony()     { GetWorld()->SetCurrentTrack(gPodiumCeremony); }
 // clang-format on
 
 void* GetMushroomCup(void) {

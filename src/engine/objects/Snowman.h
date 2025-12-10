@@ -25,7 +25,7 @@ public:
             .Name = "mk:snowman",
             .Location = FVector(pos.x, pos.y, pos.z),
         };
-        return static_cast<OSnowman*>(gWorldInstance.AddObject(new OSnowman(params)));
+        return static_cast<OSnowman*>(GetWorld()->AddObject(new OSnowman(params)));
     }
 
     explicit OSnowman(const SpawnParams& params);

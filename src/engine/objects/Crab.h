@@ -37,7 +37,7 @@ public:
             .PatrolStart = start,
             .PatrolEnd = end,
         };
-        return static_cast<OCrab*>(gWorldInstance.AddObject(new OCrab(params)));
+        return static_cast<OCrab*>(GetWorld()->AddObject(new OCrab(params)));
     }
 
     explicit OCrab(const SpawnParams& params);

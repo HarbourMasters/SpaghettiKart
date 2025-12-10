@@ -27,7 +27,7 @@ public:
             .Name = "mk:hot_air_balloon",
             .Location = pos,
         };
-        return static_cast<OHotAirBalloon*>(gWorldInstance.AddObject(new OHotAirBalloon(params)));
+        return static_cast<OHotAirBalloon*>(GetWorld()->AddObject(new OHotAirBalloon(params)));
     }
 
     virtual void Tick() override;

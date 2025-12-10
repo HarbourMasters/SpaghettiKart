@@ -44,7 +44,7 @@ public:
             .Behaviour = bhv,
             .Location = pos,
         };
-        return static_cast<OTrophy*>(gWorldInstance.AddObject(new OTrophy(params)));
+        return static_cast<OTrophy*>(GetWorld()->AddObject(new OTrophy(params)));
     }
 
     explicit OTrophy(const SpawnParams& params);

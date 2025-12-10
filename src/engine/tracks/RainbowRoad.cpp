@@ -133,9 +133,9 @@ void RainbowRoad::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
-        gWorldInstance.AddObject(new OChainChomp());
+        GetWorld()->AddObject(new OChainChomp());
+        GetWorld()->AddObject(new OChainChomp());
+        GetWorld()->AddObject(new OChainChomp());
     }
 
     if (gModeSelection == VERSUS) {

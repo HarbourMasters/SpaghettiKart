@@ -41,7 +41,7 @@ class ACar : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ACar*>(gWorldInstance.AddActor(new ACar(params)));
+        return static_cast<ACar*>(GetWorld()->AddActor(new ACar(params)));
     }
 
     const char* Type;

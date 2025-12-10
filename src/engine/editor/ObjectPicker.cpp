@@ -249,7 +249,7 @@ std::pair<AActor*, float> ObjectPicker::CheckAActorRay(Ray ray) {
     AActor* hitActor = nullptr;
     float hitDistance = FLT_MAX;
 
-    for (auto actor : gWorldInstance.Actors) {
+    for (auto actor : GetWorld()->Actors) {
         if ((actor->bPendingDestroy) && (!actor->IsMod())) {
             continue;
         }

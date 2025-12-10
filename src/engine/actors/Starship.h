@@ -26,7 +26,7 @@ public:
             .Speed = speed,
             .SpeedB = radius,
         };
-        return static_cast<AStarship*>(gWorldInstance.AddActor(new AStarship(params)));
+        return static_cast<AStarship*>(GetWorld()->AddActor(new AStarship(params)));
     }
 
     float SpeedB;

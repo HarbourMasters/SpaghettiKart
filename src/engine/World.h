@@ -132,5 +132,3 @@ public:
 private:
     std::unique_ptr<RaceManager> RaceManagerInstance;
 };
-
-extern World gWorldInstance;

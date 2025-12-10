@@ -185,7 +185,7 @@ void TestTrack::BeginPlay() {
     vec3f_set(position, 50.0f, 2.0f, 50.0f);
 
     Vec3f crossingPos = {0, 2, 0};
-    uintptr_t* crossing1 = (uintptr_t*) gWorldInstance.AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);
+    uintptr_t* crossing1 = (uintptr_t*) GetWorld()->AddCrossing(crossingPos, 0, 2, 900.0f, 650.0f);
 
     position[0] *= gTrackDirection;
     rrxing = (struct RailroadCrossing*) GET_ACTOR(add_actor_to_empty_slot(position, rotation, velocity,
@@ -193,34 +193,34 @@ void TestTrack::BeginPlay() {
     rrxing->crossingTrigger = crossing1;
 
     Vec3f pos = {0, 80, 0};
-    // gWorldInstance.AddActor(new ACloud(pos));
+    // GetWorld()->AddActor(new ACloud(pos));
 
-    // gWorldInstance.AddActor(new OSeagull(0, pos));
-    // gWorldInstance.AddActor(new OSeagull(1, pos));
-    // gWorldInstance.AddActor(new OSeagull(2, pos));
-    // gWorldInstance.AddActor(new OSeagull(3, pos));
-    // gWorldInstance.AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
+    // GetWorld()->AddActor(new OSeagull(0, pos));
+    // GetWorld()->AddActor(new OSeagull(1, pos));
+    // GetWorld()->AddActor(new OSeagull(2, pos));
+    // GetWorld()->AddActor(new OSeagull(3, pos));
+    // GetWorld()->AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
     OTrophy::Spawn(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
-    //gWorldInstance.AddObject(new OSnowman(FVector(0, 0, 0)));
-    //gWorldInstance.AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
+    //GetWorld()->AddObject(new OSnowman(FVector(0, 0, 0)));
+    //GetWorld()->AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
-    //gWorldInstance.AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
-    //gWorldInstance.AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
-//    gWorldInstance.AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
+    //GetWorld()->AddObject(new OHedgehog(FVector(0, 0, 0), FVector2D(0, -200), 9));
+    //GetWorld()->AddObject(new OFlagpole(FVector(0, 0, -200), 0x400));
+//    GetWorld()->AddObject(new OHotAirBalloon(FVector(0.0, 20.0f, -200.0f)));
 
-    //gWorldInstance.AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
-//    gWorldInstance.AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
+    //GetWorld()->AddObject(new OCrab(FVector2D(0, 0), FVector2D(0, -200)));
+//    GetWorld()->AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
 
-//    gWorldInstance.AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
+//    GetWorld()->AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
     //OThwomp::Spawn(0, 0, 0, 1.0f, 0, 1, 7);
 
-    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
-    //gWorldInstance.AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
+    //GetWorld()->AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
+    //GetWorld()->AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
 
     OBombKart::Spawn(0, 25, 4, 0.8333333f);
     OBombKart::Spawn(0, 45, 4, 0.8333333f);
 
-   // gWorldInstance.AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
+   // GetWorld()->AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 
 //    OGrandPrixBalloons::Spawn(FVector(0, 0, 0));
 }

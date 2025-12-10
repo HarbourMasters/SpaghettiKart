@@ -48,7 +48,7 @@ class ATankerTruck : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ATankerTruck*>(gWorldInstance.AddActor(new ATankerTruck(params)));
+        return static_cast<ATankerTruck*>(GetWorld()->AddActor(new ATankerTruck(params)));
     }
 
     explicit ATankerTruck(const SpawnParams& params);

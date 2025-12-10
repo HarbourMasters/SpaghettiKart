@@ -44,7 +44,7 @@ namespace Editor {
     }
 
     void Editor::GenerateCollision() {
-        // for (auto& actor : gWorldInstance.Actors) {
+        // for (auto& actor : GetWorld()->Actors) {
         //     GenerateCollisionMesh(actor, (Gfx*)actor->Model, 1.0f);
         // }
     }

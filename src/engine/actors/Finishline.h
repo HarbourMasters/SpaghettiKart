@@ -31,14 +31,14 @@ public:
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<AFinishline*>(gWorldInstance.AddActor(new AFinishline(params)));
+        return static_cast<AFinishline*>(GetWorld()->AddActor(new AFinishline(params)));
     }
 
     static inline AFinishline* Spawn() {
         SpawnParams params = {
             .Name = "mk:finishline",
         };
-        return static_cast<AFinishline*>(gWorldInstance.AddActor(new AFinishline(params)));
+        return static_cast<AFinishline*>(GetWorld()->AddActor(new AFinishline(params)));
     }
 
     // Virtual functions to be overridden by derived classes

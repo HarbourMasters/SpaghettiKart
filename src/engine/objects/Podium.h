@@ -32,7 +32,7 @@ public:
             .Name = "mk:podium",
             .Location = pos,
         };
-        return static_cast<OPodium*>(gWorldInstance.AddObject(new OPodium(params)));
+        return static_cast<OPodium*>(GetWorld()->AddObject(new OPodium(params)));
     }
 
     virtual void Tick() override;

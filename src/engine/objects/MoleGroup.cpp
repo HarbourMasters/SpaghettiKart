@@ -15,7 +15,7 @@ OMoleGroup::OMoleGroup(std::vector<FVector>& spawns, size_t tickRate) {
     _tickRate = tickRate;
     for (auto& pos : spawns) {
         pos.x * xOrientation;
-        OMole* ptr = reinterpret_cast<OMole*>(gWorldInstance.AddObject(new OMole(pos, this)));
+        OMole* ptr = reinterpret_cast<OMole*>(GetWorld()->AddObject(new OMole(pos, this)));
         _moles.push_back({ptr, pos, false});
     }
 

@@ -5,9 +5,6 @@
 #include "CoreMath.h"
 #include "engine/World.h"
 
-class World;
-extern World gWorldInstance;
-
 extern "C" {
 #include "common_structs.h"
 }
@@ -28,7 +25,7 @@ public:
             .Velocity = velocity,
             .Speed = 182,
         };
-        return static_cast<AMarioSign*>(gWorldInstance.AddActor(new AMarioSign(params)));
+        return static_cast<AMarioSign*>(GetWorld()->AddActor(new AMarioSign(params)));
     }
 
     virtual bool IsMod() override;
