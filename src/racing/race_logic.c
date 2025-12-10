@@ -925,7 +925,7 @@ void func_8028FCBC(void) {
                     phi_v0_4 = 0x1;
                     //! @warning this used to be < gCurrentCourseId
                     // Hopefully this is equivallent.
-                    for (i = 0; i < GetTrackIndex(); i++) {
+                    for (i = 0; i < TrackBrowser_GetTrackIndex(); i++) {
                         phi_v0_4 <<= 1;
                     }
                     if ((D_8015F890 == 0) && (!(D_800DC5AC & phi_v0_4))) {

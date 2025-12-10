@@ -3,5 +3,5 @@
 #include "Registry.h"
 #include "SpawnParams.h"
 
-void RegisterActors(Registry<const SpawnParams&>& r);
-void RegisterTracks(Registry<>& r);
+void RegisterActors(Registry<const ActorInfo, const SpawnParams&>& r);
+void RegisterTracks(Registry<const TrackInfo>& r);

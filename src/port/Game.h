@@ -23,13 +23,12 @@ extern s32 gTrophyIndex;
 extern Editor::Editor gEditor;
 extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
-extern Registry<> gTrackRegistry;
-extern Registry<const SpawnParams&> gActorRegistry;
+extern Registry<const TrackInfo> gTrackRegistry;
+extern Registry<const ActorInfo, const SpawnParams&> gActorRegistry;
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
 Properties* CM_GetProps();
-Properties* CM_GetPropsTrackId(s32 trackId);
 
 void HM_InitIntro(void);
 void HM_TickIntro(void);
@@ -47,13 +46,6 @@ u32 GetCupIndex(void);
 const char* GetCupName(void);
 
 void LoadTrack();
-
-size_t GetTrackIndex();
-
-void SetTrack(const char* name);
-
-void NextTrack();
-void PreviousTrack();
 
 void CM_SetCup(void*);
 
@@ -152,11 +144,7 @@ void SetCupCursorPosition(size_t position);
 
 size_t GetCupSize();
 
-void SetTrackFromCup();
-
 void* GetTrack(void);
-
-void SetTrackById(s32 track);
 
 struct Actor* CM_GetActor(size_t index);
 void CM_DeleteActor(size_t index);

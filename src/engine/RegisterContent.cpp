@@ -17,8 +17,12 @@ extern "C" {
  * This file is responsible for registering the games stock content
  */
 
-void RegisterActors(Registry<const SpawnParams&>& r) {
-    r.Add("mk:item_box",
+void RegisterActors(Registry<const ActorInfo, const SpawnParams&>& r) {
+    ActorInfo info;
+
+    info = { .ResourceName = "mk:item_box" };
+
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -26,7 +30,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:fake_item_box",
+    info = { .ResourceName = "mk:fake_item_box" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -34,133 +39,155 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:thwomp",
+    info = { .ResourceName = "mk:thwomp" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OThwomp(params));
         }
     );
 
-    r.Add("mk:snowman",
+    info = { .ResourceName = "mk:snowman" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OSnowman(params));
         }
     );
 
-    r.Add("mk:hot_air_balloon",
+    info = { .ResourceName = "mk:hot_air_balloon" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OHotAirBalloon(params));
         }
     );
 
-    r.Add("mk:hedgehog",
+    info = { .ResourceName = "mk:hedgehog" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OHedgehog(params));
         }
     );
 
-    r.Add("mk:grand_prix_balloons",
+    info = { .ResourceName = "mk:grand_prix_balloons" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OGrandPrixBalloons(params));
         }
     );
 
-    r.Add("mk:flagpole",
+    info = { .ResourceName = "mk:flagpole" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OFlagpole(params));
         }
     );
 
-    r.Add("mk:crab",
+    info = { .ResourceName = "mk:crab" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OCrab(params));
         }
     );
 
-    r.Add("mk:cheep_cheep",
+    info = { .ResourceName = "mk:cheep_cheep" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OCheepCheep(params));
         }
     );
 
-    r.Add("mk:bomb_kart",
+    info = { .ResourceName = "mk:bomb_kart" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBombKart(params));
         }
     );
 
-    r.Add("mk:bat",
+    info = { .ResourceName = "mk:bat" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBat(params));
         }
     );
 
-    r.Add("mk:boos",
+    info = { .ResourceName = "mk:boos" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OBoos(params));
         }
     );
 
-    r.Add("mk:trophy",
+    info = { .ResourceName = "mk:trophy" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OTrophy(params));
         }
     );
 
-    r.Add("mk:trash_bin",
+    info = { .ResourceName = "mk:trash_bin" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OTrashBin(params));
         }
     );
 
-    r.Add("mk:seagull",
+    info = { .ResourceName = "mk:seagull" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OSeagull(params));
         }
     );
 
-    r.Add("mk:chain_chomp",
+    info = { .ResourceName = "mk:chain_chomp" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OChainChomp());
         }
     );
 
-    r.Add("mk:podium",
+    info = { .ResourceName = "mk:podium" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OPodium(params));
         }
     );
 
-    r.Add("mk:penguin",
+    info = { .ResourceName = "mk:penguin" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddObject(new OPenguin(params));
         }
     );
 
-    r.Add("mk:banana",
+    info = { .ResourceName = "mk:banana" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ABanana(params));
         }
     );
 
-    r.Add("mk:mario_sign",
+    info = { .ResourceName = "mk:mario_sign" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AMarioSign(params));
         }
     );
 
-    r.Add("mk:wario_sign",
+    info = { .ResourceName = "mk:wario_sign" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AWarioSign(params));
         }
     );
 
-    r.Add("mk:falling_rock",
+    info = { .ResourceName = "mk:falling_rock" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AFallingRock(params));
         }
     );
 
-    r.Add("mk:yoshi_egg",
+    info = { .ResourceName = "mk:yoshi_egg" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -170,7 +197,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:piranha_plant",
+    info = { .ResourceName = "mk:piranha_plant" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -180,7 +208,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_mario_raceway",
+    info = { .ResourceName = "mk:tree_mario_raceway" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -190,7 +219,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_yoshi_valley",
+    info = { .ResourceName = "mk:tree_yoshi_valley" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -200,7 +230,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_royal_raceway",
+    info = { .ResourceName = "mk:tree_royal_raceway" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -210,7 +241,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_moo_moo_farm",
+    info = { .ResourceName = "mk:tree_moo_moo_farm" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -220,7 +252,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:palm_tree",
+    info = { .ResourceName = "mk:palm_tree" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -230,7 +263,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:unknown_0x1a",
+    info = { .ResourceName = "mk:unknown_0x1a" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -240,7 +274,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:unknown_0x1b",
+    info = { .ResourceName = "mk:unknown_0x1b" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -250,7 +285,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_peach_castle",
+    info = { .ResourceName = "mk:tree_peach_castle" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -260,7 +296,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:tree_frappe_snowland",
+    info = { .ResourceName = "mk:tree_frappe_snowland" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -270,7 +307,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:cactus1_kalamari_desert",
+    info = { .ResourceName = "mk:cactus1_kalamari_desert" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -280,7 +318,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:cactus2_kalamari_desert",
+    info = { .ResourceName = "mk:cactus2_kalamari_desert" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -290,7 +329,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:cactus3_kalamari_desert",
+    info = { .ResourceName = "mk:cactus3_kalamari_desert" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -300,7 +340,8 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:bush_bowsers_castle",
+    info = { .ResourceName = "mk:bush_bowsers_castle" };
+    r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
             Vec3f pos = { loc.x, loc.y, loc.z };
@@ -310,184 +351,357 @@ void RegisterActors(Registry<const SpawnParams&>& r) {
         }
     );
 
-    r.Add("mk:train",
+    info = { .ResourceName = "mk:train" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATrain(params));
         }
     );
 
-    r.Add("mk:paddle_boat",
+    info = { .ResourceName = "mk:paddle_boat" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ABoat(params));
         }
     );
 
-    r.Add("mk:car",
+    info = { .ResourceName = "mk:car" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ACar(params));
         }
     );
 
-    r.Add("mk:truck",
+    info = { .ResourceName = "mk:truck" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    r.Add("mk:tanker_truck",
+    info = { .ResourceName = "mk:tanker_truck" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    r.Add("mk:bus",
+    info = { .ResourceName = "mk:bus" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ATankerTruck(params));
         }
     );
 
-    r.Add("hm:spaghetti_ship",
+    info = { .ResourceName = "hm:spaghetti_ship" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ASpaghettiShip(params));
         }
     );
 
-    r.Add("hm:ship",
+    info = { .ResourceName = "hm:ship" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AShip(params));
         }
     );
 
-    r.Add("hm:starship",
+    info = { .ResourceName = "hm:starship" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AStarship(params));
         }
     );
 
-    r.Add("hm:cloud",
+    info = { .ResourceName = "hm:cloud" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new ACloud(params));
         }
     );
 
-    r.Add("hm:text",
+    info = { .ResourceName = "hm:text" };
+    r.Add(info,
         [](const SpawnParams& params) {
             gWorldInstance.AddActor(new AText(params));
         }
     );
 }
 
-void RegisterTracks(Registry<>& r) {
-    r.Add("mk:mario_raceway",
+void RegisterTracks(Registry<const TrackInfo>& r) {
+    TrackInfo info;
+
+    info = {
+        .ResourceName = "mk:mario_raceway",
+        .Name = "mario raceway",
+        .DebugName = "m circuit",
+        .Length = "567m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<MarioRaceway>());
         }
     );
-    r.Add("mk:choco_mountain",
+
+    info = {
+        .ResourceName = "mk:choco_mountain",
+        .Name = "choco mountain",
+        .DebugName = "mountain",
+        .Length = "687m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<ChocoMountain>());
         }
     );
-    r.Add("mk:bowsers_castle",
+
+    info = {
+        .ResourceName = "mk:bowsers_castle",
+        .Name = "bowser's castle",
+        .DebugName = "castle",
+        .Length = "777m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<BowsersCastle>());
         }
     );
-    r.Add("mk:banshee_boardwalk",
+
+    info = {
+        .ResourceName = "mk:banshee_boardwalk",
+        .Name = "banshee boardwalk",
+        .DebugName = "ghost",
+        .Length = "747m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<BansheeBoardwalk>());
         }
     );
-    r.Add("mk:yoshi_valley",
+
+    info = {
+        .ResourceName = "mk:yoshi_valley",
+        .Name = "yoshi valley",
+        .DebugName = "maze",
+        .Length = "772m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<YoshiValley>());
         }
     );
-    r.Add("mk:frappe_snowland",
+
+    info = {
+        .ResourceName = "mk:frappe_snowland",
+        .Name = "frappe snowland",
+        .DebugName = "snow",
+        .Length = "734m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<FrappeSnowland>());
         }
     );
-    r.Add("mk:koopa_troopa_beach",
+
+    info = {
+        .ResourceName = "mk:koopa_beach",
+        .Name = "koopa troopa beach",
+        .DebugName = "beach",
+        .Length = "691m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<KoopaTroopaBeach>());
         }
     );
-    r.Add("mk:royal_raceway",
+
+    info = {
+        .ResourceName = "mk:royal_raceway",
+        .Name = "royal raceway",
+        .DebugName = "p circuit",
+        .Length = "1025m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<RoyalRaceway>());
         }
     );
-    r.Add("mk:luigi_raceway",
+
+    info = {
+        .ResourceName = "mk:luigi_raceway",
+        .Name = "luigi raceway",
+        .DebugName = "l circuit",
+        .Length = "717m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<LuigiRaceway>());
         }
     );
-    r.Add("mk:moo_moo_farm",
+
+    info = {
+        .ResourceName = "mk:moo_moo_farm",
+        .Name = "moo moo farm",
+        .DebugName = "farm",
+        .Length = "527m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<MooMooFarm>());
         }
     );
-    r.Add("mk:toads_turnpike",
+
+    info = {
+        .ResourceName = "mk:toads_turnpike",
+        .Name = "toad's turnpike",
+        .DebugName = "highway",
+        .Length = "1036m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<ToadsTurnpike>());
         }
     );
-    r.Add("mk:kalimari_desert",
+
+    info = {
+        .ResourceName = "mk:kalimari_desert",
+        .Name = "kalimari desert",
+        .DebugName = "desert",
+        .Length = "753m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<KalimariDesert>());
         }
     );
-    r.Add("mk:sherbet_land",
+
+    info = {
+        .ResourceName = "mk:sherbet_land",
+        .Name = "sherbet land",
+        .DebugName = "sherbet",
+        .Length = "756m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<SherbetLand>());
         }
     );
-    r.Add("mk:rainbow_road",
+
+    info = {
+        .ResourceName = "mk:rainbow_road",
+        .Name = "rainbow road",
+        .DebugName = "rainbow",
+        .Length = "2000m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<RainbowRoad>());
         }
     );
-    r.Add("mk:wario_stadium",
+
+    info = {
+        .ResourceName = "mk:wario_stadium",
+        .Name = "wario stadium",
+        .DebugName = "stadium",
+        .Length = "1591m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<WarioStadium>());
         }
     );
-    r.Add("mk:block_fort",
+
+    info = {
+        .ResourceName = "mk:block_fort",
+        .Name = "block fort",
+        .DebugName = "block",
+        .Length = "",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<BlockFort>());
         }
     );
-    r.Add("mk:skyscraper",
+
+    info = {
+        .ResourceName = "mk:skyscraper",
+        .Name = "skyscraper",
+        .DebugName = "skyscraper",
+        .Length = "",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<Skyscraper>());
         }
     );
-    r.Add("mk:double_deck",
+
+    info = {
+        .ResourceName = "mk:double_deck",
+        .Name = "double deck",
+        .DebugName = "deck",
+        .Length = "",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<DoubleDeck>());
         }
     );
-    r.Add("mk:dk_jungle",
+
+    info = {
+        .ResourceName = "mk:dk_jungle",
+        .Name = "d.k.'s jungle parkway",
+        .DebugName = "jungle",
+        .Length = "893m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<DKJungle>());
         }
     );
-    r.Add("mk:big_donut",
+
+    info = {
+        .ResourceName = "mk:big_donut",
+        .Name = "big donut",
+        .DebugName = "doughnut",
+        .Length = "",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<BigDonut>());
         }
     );
 
-    r.Add("mk:test_track",
+    info = {
+        .ResourceName = "mk:test_track",
+        .Name = "test track",
+        .DebugName = "test track",
+        .Length = "100m",
+    };
+
+    r.Add(info,
         []() {
             gWorldInstance.SetCurrentTrack(std::make_shared<TestTrack>());
         }
     );
-}
-
-void RegisterTrackInfo(Registry<>& r) {
-    r.Add("mk:mario_raceway", [](TrackInfo) {
-
-    });
 }

@@ -44,8 +44,9 @@
 #include "port/Engine.h"
 #include "port/Game.h"
 
-#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
+#include "engine/tracks/Track.h"
+#include "engine/TrackBrowser.h"
 #include "src/engine/HM_Intro.h"
 #include "src/port/interpolation/FrameInterpolation.h"
 #include "heap.h"
@@ -2833,19 +2834,19 @@ void func_80095574(void) {
             debug_print_str2(0x000000AA, 0x00000064, "off");
         }
 
-        // This reset is not necessary. It wraps around automatically.
-        // if ((GetTrackIndex() >= (NUM_TRACKS - 1)) || (GetTrackIndex() < 0)) {
+        // This reset is not necessary. It wraps around automatically in TrackBrowser.h
+        // if ((TrackBrowser_GetTrackIndex() >= (NUM_TRACKS - 1)) || (TrackBrowser_GetTrackIndex() < 0)) {
         //     gCurrentCourseId = 0;
         // }
-        print_str_num(0x00000050, 0x0000006E, "map_number", GetTrackIndex());
+        print_str_num(0x00000050, 0x0000006E, "map_number", TrackBrowser_GetTrackIndex());
 
         // Bump the text over by 1 character width when the track id becomes two digits (10, 11, 12 etc.)
-        if (GetTrackIndex() < 10) {
+        if (TrackBrowser_GetTrackIndex() < 10) {
             var_v0 = 0;
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, CM_GetProps()->DebugName);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, TrackBrowser_GetTrackDebugName());
 
         debug_print_str2(80, 120, "cc_mode");
         debug_print_str2(170, 120, gDebugCCModeNames[gCCSelection]);
@@ -5341,7 +5342,7 @@ void func_8009CE64(s32 arg0) {
                         default:
                             break;
                     }
-                    SetTrackFromCup();
+                    TrackBrowser_SetTrackFromCup();
                     gNextDemoId += 1;
                     if (gNextDemoId >= 6) {
                         gNextDemoId = 0;
@@ -7283,12 +7284,12 @@ void render_menu_item_data_course_info(MenuItem* arg0) {
     arg0->column = 0x14;
     // name of the track
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    print_text1_center_mode_1(0x69, arg0->row + 0x19, CM_GetPropsTrackId(trackId)->Name, 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(0x69, arg0->row + 0x19, TrackBrowser_GetTrackNameByIdx(trackId), 0, 0.75f, 0.75f);
 
     // distance
     set_text_color(TEXT_RED);
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &gTextDistance, 0, 0.75f, 0.75f);
-    print_text1_left(0xA5, arg0->row + 0x28, CM_GetPropsTrackId(trackId)->TrackLength, 1, 0.75f, 0.75f);
+    print_text1_left(0xA5, arg0->row + 0x28, TrackBrowser_GetTrackLengthByIdx(trackId), 1, 0.75f, 0.75f);
 
     // Best lap record
     set_text_color(TEXT_YELLOW);
@@ -8018,10 +8019,9 @@ void func_800A3E60(MenuItem* arg0) {
                 } else {
                     print_text_mode_1(
                         0xBB - arg0->column, 0xAA + (0x1E * var_s1),
-                        CM_GetPropsTrackId(
-                            gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
-                            ->Name,
-                        0, 0.45f, 0.45f);
+                        TrackBrowser_GetTrackNameByIdx(gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4]),
+                        0, 0.45f, 0.45f
+                    );
                 }
             }
             break;
@@ -8595,10 +8595,9 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
                     } else {
                         print_text_mode_1(
                             0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                            CM_GetPropsTrackId(
-                                gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4])
-                                ->Name,
-                            0, 0.75f, 0.75f);
+                            TrackBrowser_GetTrackNameByIdx(gCupCourseOrder[D_8018EE10[var_s1].trackIndex / 4][D_8018EE10[var_s1].trackIndex % 4]),
+                            0, 0.75f, 0.75f
+                        );
                     }
                 }
                 break;
@@ -8670,7 +8669,7 @@ void func_800A6034(MenuItem* arg0) {
         text = CM_GetProps()->Name;
         //! @warning this used to be gCurrentCourseId % 4
         // Hopefully this is equivallent.
-        set_text_color((s32) GetTrackIndex() % 4);
+        set_text_color((s32) TrackBrowser_GetTrackIndex() % 4);
         print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }

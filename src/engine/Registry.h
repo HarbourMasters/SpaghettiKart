@@ -1,8 +1,47 @@
 #pragma once
 
 #include <libultraship.h>
+#include <string>
+#include <unordered_map>
+#include <functional>
 
-template<typename... TArgs>
+struct TrackInfo {
+    std::string ResourceName;
+    std::string Name;
+    std::string DebugName;
+    std::string Length;
+};
+
+struct ActorInfo {
+    std::string ResourceName;
+};
+
+/**
+ * TInfo must have a ResourceName member of type std::string
+ * This should be a unique string such as hm:cloud or hm:harbour
+ * user_name:my_mod
+ * 
+ * TArgs the parameters passed into the callback function
+ * 
+ * Example Usage:
+ * 
+ * Registry<ActorInfo> gActorRegistry;
+ * 
+ * ActorInfo actorInfo {
+ *     .ResourceName = "hm:cloud",
+ * };
+ * SpawnParams params;
+ * params.Location = FVector(0, 0, 0);
+ * 
+ * gActorRegistry.Add(actorInfo, [](params) {
+ *     gWorldInstance.AddActor(new ACloud(params));
+ * });
+ * 
+ * gActorRegistry.Invoke("hm:cloud", params);
+ * 
+ */
+
+template<typename TInfo, typename... TArgs>
 // ^ Scary template key word
 class Registry {
 public:
@@ -11,34 +50,51 @@ public:
      * 
      * This is just a lambda function.
      * 
-     * Usage: gRegistry.Add("hm:harbour", []() { // My code here })
+     * Usage: gRegistry.Add("hm:harbour", [](parameters) { // My code here })
      */
     using Callback = std::function<void(TArgs...)>;
 
-    void Add(const std::string& name, Callback func) {
-        mMap[name].func = std::move(func);
+    void Add(const TInfo& info, Callback func) {
+        mMap.emplace(info.ResourceName, Entry{info, std::move(func)});
+        // mMap[info.ResourceName].Info = info;
+        // mMap[info.ResourceName].Func = std::move(func);
     }
 
-    void Invoke(const std::string& name, TArgs... args) {
-        auto it = mMap.find(name);
-        if (it != mMap.end() && it->second.func) {
+    const TInfo* GetInfo(const std::string& resourceName) const {
+        auto it = mMap.find(resourceName);
+        return (it != mMap.end()) ? &it->second.Info : nullptr;
+    }
+
+    void Invoke(const std::string& resourceName, TArgs... args) {
+        auto it = mMap.find(resourceName);
+        if (it != mMap.end() && it->second.Func) {
             // Using C++ variadic template expansion to call the function
-            printf("[Registry] Invoking %s\n", name.c_str());
-            it->second.func(std::forward<TArgs>(args)...);
+            printf("[Registry] Invoking %s\n", resourceName.c_str());
+            it->second.Func(std::forward<TArgs>(args)...);
         } else {
-            printf("[Registry] Error: %s not found or function is null.\n", name.c_str());
+            printf("[Registry] Error: %s not found or function is null.\n", resourceName.c_str());
         }
     }
 
-    bool Find(const std::string& name) {
-        return mMap.find(name) != mMap.end();
+    bool Find(const std::string& resourceName) const {
+        return mMap.find(resourceName) != mMap.end();
+    }
+
+    std::vector<const TInfo*> GetAllInfo() const {
+        std::vector<const TInfo*> list;
+        list.reserve(mMap.size());
+        for (const auto& pair : mMap) {
+            list.push_back(&pair.second.Info);
+        }
+        return list;
     }
 
 private:
-    struct Entries {
-        Callback func;
+    struct Entry {
+        const TInfo Info;
+        Callback Func;
     };
 
     // key: str, value: lambda function
-    std::unordered_map<std::string, Registry::Entries> mMap;
+    std::unordered_map<std::string, Registry::Entry> mMap;
 };

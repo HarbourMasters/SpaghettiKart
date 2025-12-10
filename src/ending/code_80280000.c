@@ -65,7 +65,7 @@ void func_80280038(Camera* camera) {
     gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
-    SetTrackById(gCreditsCourseId);
+    TrackBrowser_SetTrackByIdx(gCreditsCourseId);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
     render_track(gScreenOneCtx);
@@ -148,7 +148,7 @@ void load_credits(void) {
 
 
     gCurrentCourseId = gCreditsCourseId;
-    SetTrackById(gCreditsCourseId);
+    TrackBrowser_SetTrackByIdx(gCreditsCourseId);
     D_800DC5B4 = 1;
     func_802A4D18();
     set_screen();

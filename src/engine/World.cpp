@@ -38,11 +38,6 @@ World::~World() {
     CleanWorld();
 }
 
-std::shared_ptr<Track> World::AddTrack(std::shared_ptr<Track> track) {
-    gWorldInstance.Tracks.push_back(track);
-    return track;
-}
-
 void World::AddCup(Cup* cup) {
     Cups.push_back(cup);
 }
@@ -52,10 +47,6 @@ void World::SetCurrentTrack(std::shared_ptr<Track> track) {
         return;
     }
     mTrack = std::move(track);
-}
-
-void World::SetTrackFromCup() {
-    gWorldInstance.SetTrack(CurrentCup->GetTrack());
 }
 
 TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius,
@@ -109,34 +100,6 @@ void World::SetCurrentCup(Cup* cup) {
         CurrentCup = cup;
         CurrentCup->CursorPosition = 0;
     }
-}
-
-void World::SetTrack(std::string name) {
-    //! @todo Use content dictionary instead
-    
-    if (gTrackRegistry.Find(name)) {
-        gTrackRegistry.Invoke(name);
-    } else {
-        std::runtime_error("[World] [SetTrack()] Track name not found in Track list");
-    }
-}
-
-void World::NextTrack() {
-    if (TrackIndex < Tracks.size() - 1) {
-        TrackIndex++;
-    } else {
-        TrackIndex = 0;
-    }
-    gWorldInstance.SetCurrentTrack(Tracks[TrackIndex]);
-}
-
-void World::PreviousTrack() {
-    if (TrackIndex > 0) {
-        TrackIndex--;
-    } else {
-        TrackIndex = Tracks.size() - 1;
-    }
-    gWorldInstance.SetCurrentTrack(Tracks[TrackIndex]);
 }
 
 void World::TickCameras() {

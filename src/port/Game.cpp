@@ -28,6 +28,8 @@
 #include "engine/cameras/TourCamera.h"
 #include "engine/cameras/LookBehindCamera.h"
 
+#include "engine/TrackBrowser.h"
+
 #ifdef _WIN32
 #include <locale.h>
 #endif
@@ -69,36 +71,14 @@ Editor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
-Registry<> gTrackRegistry;
-Registry<TrackInfo> gTrackInfoRegistry;
-Registry<const SpawnParams&> gActorRegistry;
+Registry<const TrackInfo> gTrackRegistry;
+Registry<const ActorInfo, const SpawnParams&> gActorRegistry;
+
+std::unique_ptr<TrackBrowser> gTrackBrowser;
 
 void CustomEngineInit() {
-    /* Add all tracks to the global track list */
-//     std::shared_ptr<Track> mario         = gWorldInstance.AddTrack(std::make_shared<MarioRaceway>());
-//     std::shared_ptr<Track> choco         = gWorldInstance.AddTrack(std::make_shared<ChocoMountain>());
-//     std::shared_ptr<Track> bowser        = gWorldInstance.AddTrack(std::make_shared<BowsersCastle>());
-//     std::shared_ptr<Track> banshee       = gWorldInstance.AddTrack(std::make_shared<BansheeBoardwalk>());
-//     std::shared_ptr<Track> yoshi         = gWorldInstance.AddTrack(std::make_shared<YoshiValley>());
-//     std::shared_ptr<Track> frappe        = gWorldInstance.AddTrack(std::make_shared<FrappeSnowland>());
-//     std::shared_ptr<Track> koopa         = gWorldInstance.AddTrack(std::make_shared<KoopaTroopaBeach>());
-//     std::shared_ptr<Track> royal         = gWorldInstance.AddTrack(std::make_shared<RoyalRaceway>());
-//     std::shared_ptr<Track> luigi         = gWorldInstance.AddTrack(std::make_shared<LuigiRaceway>());
-//     std::shared_ptr<Track> mooMoo        = gWorldInstance.AddTrack(std::make_shared<MooMooFarm>());
-//     std::shared_ptr<Track> toads         = gWorldInstance.AddTrack(std::make_shared<ToadsTurnpike>());
-//     std::shared_ptr<Track> kalimari      = gWorldInstance.AddTrack(std::make_shared<KalimariDesert>());
-//     std::shared_ptr<Track> sherbet       = gWorldInstance.AddTrack(std::make_shared<SherbetLand>());
-//     std::shared_ptr<Track> rainbow       = gWorldInstance.AddTrack(std::make_shared<RainbowRoad>());
-//     std::shared_ptr<Track> wario         = gWorldInstance.AddTrack(std::make_shared<WarioStadium>());
-//     std::shared_ptr<Track> block         = gWorldInstance.AddTrack(std::make_shared<BlockFort>());
-//     std::shared_ptr<Track> skyscraper    = gWorldInstance.AddTrack(std::make_shared<Skyscraper>());
-//     std::shared_ptr<Track> doubleDeck    = gWorldInstance.AddTrack(std::make_shared<DoubleDeck>());
-//     std::shared_ptr<Track> dkJungle      = gWorldInstance.AddTrack(std::make_shared<DKJungle>());
-//     std::shared_ptr<Track> bigDonut      = gWorldInstance.AddTrack(std::make_shared<BigDonut>());
-// //    std::shared_ptr<Track> harbour       = gWorldInstance.AddTrack(std::make_shared<Harbour>());
-//     std::shared_ptr<Track> testTrack    = gWorldInstance.AddTrack(std::make_shared<TestTrack>());
-
     RegisterTracks(gTrackRegistry);
+    gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
@@ -174,7 +154,7 @@ void HM_DrawIntro() {
 
 // Set default track; mario raceway
 void SetMarioRaceway(void) {
-    SetTrackById(0);
+    SelectMarioRaceway();
     gWorldInstance.SetCurrentCup(gMushroomCup);
     gWorldInstance.GetCurrentCup()->CursorPosition = 3;
     gWorldInstance.CupIndex = 0;
@@ -210,30 +190,6 @@ const char* GetCupName(void) {
 
 void LoadTrack() {
     gWorldInstance.GetRaceManager().Load();
-}
-
-size_t GetTrackIndex() {
-    return gWorldInstance.TrackIndex;
-}
-
-void SetTrack(const char* name) {
-    gWorldInstance.SetTrack(name);
-}
-
-void NextTrack() {
-    gWorldInstance.NextTrack();
-}
-
-void PreviousTrack() {
-    gWorldInstance.PreviousTrack();
-}
-
-void SetTrackById(s32 track) {
-    if (track < 0 || track >= gWorldInstance.Tracks.size()) {
-        return;
-    }
-    gWorldInstance.TrackIndex = track;
-    gWorldInstance.SetCurrentTrack(gWorldInstance.Tracks[gWorldInstance.TrackIndex]);
 }
 
 void CM_VehicleCollision(s32 playerId, Player* player) {
@@ -657,10 +613,6 @@ Properties* CM_GetProps() {
     return NULL;
 }
 
-Properties* CM_GetPropsTrackId(s32 trackId) {
-    return &gWorldInstance.Tracks[trackId]->Props;
-}
-
 void CM_ScrollingTextures() {
     if (gWorldInstance.GetTrack()) {
         gWorldInstance.GetTrack()->ScrollingTextures();
@@ -729,10 +681,6 @@ void SetCupCursorPosition(size_t position) {
 
 size_t GetCupSize() {
     return gWorldInstance.GetCurrentCup()->GetSize();
-}
-
-void SetTrackFromCup() {
-    gWorldInstance.SetTrack(gWorldInstance.GetCurrentCup()->GetTrack());
 }
 
 void* GetTrack(void) {

@@ -62,8 +62,6 @@ public:
     RaceManager& GetRaceManager() { return *RaceManagerInstance; }
     void SetRaceManager(std::unique_ptr<RaceManager> manager) { RaceManagerInstance = std::move(manager); }
 
-    std::shared_ptr<Track> AddTrack(std::shared_ptr<Track> track);
-
     void TickCameras();
 
     AActor* AddActor(AActor* actor);
@@ -100,7 +98,6 @@ public:
     u32 GetCupIndex();
     u32 NextCup();
     u32 PreviousCup();
-    void SetTrackFromCup();
 
     World* GetWorld(void);
     void CleanWorld(void);
@@ -111,21 +108,6 @@ public:
     }
 
     void SetCurrentTrack(std::shared_ptr<Track> track);
-
-    // These are only for browsing through the track list
-    void SetTrack(std::string name);
-    template<typename T>
-    void SetTrackByType() {
-        for (const auto& track : Tracks) {
-            if (dynamic_cast<T*>(track.get())) {
-                SetCurrentTrack(track);
-                return;
-            }
-        }
-        printf("World::SetTrackByType() No track by the type found");
-    }
-    void NextTrack(void);
-    void PreviousTrack(void);
 
     Matrix Mtx;
 
@@ -146,10 +128,6 @@ public:
 
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;
-
-    // Holds all available tracks
-    std::vector<std::shared_ptr<Track>> Tracks;
-    size_t TrackIndex = 0; // For browsing tracks.
 private:
     std::unique_ptr<RaceManager> RaceManagerInstance;
 };
