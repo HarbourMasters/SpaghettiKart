@@ -17,7 +17,7 @@ extern "C" {
  * This file is responsible for registering the games stock content
  */
 
-void RegisterActors(Registry<const ActorInfo, const SpawnParams&>& r) {
+void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
     ActorInfo info;
 
     info = { .ResourceName = "mk:item_box" };
@@ -429,7 +429,7 @@ void RegisterActors(Registry<const ActorInfo, const SpawnParams&>& r) {
     );
 }
 
-void RegisterTracks(Registry<const TrackInfo>& r) {
+void RegisterTracks(Registry<TrackInfo>& r) {
     TrackInfo info;
 
     info = {

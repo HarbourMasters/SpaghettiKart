@@ -54,10 +54,9 @@ public:
      */
     using Callback = std::function<void(TArgs...)>;
 
-    void Add(const TInfo& info, Callback func) {
-        mMap.emplace(info.ResourceName, Entry{info, std::move(func)});
-        // mMap[info.ResourceName].Info = info;
-        // mMap[info.ResourceName].Func = std::move(func);
+    void Add(TInfo& info, Callback func) {
+        // Needs to allow overwriting to support mod hot-reloading
+        mMap[info.ResourceName] = Entry{info, std::move(func)};
     }
 
     const TInfo* GetInfo(const std::string& resourceName) const {
@@ -83,7 +82,7 @@ public:
     std::vector<const TInfo*> GetAllInfo() const {
         std::vector<const TInfo*> list;
         list.reserve(mMap.size());
-        for (const auto& pair : mMap) {
+        for (auto& pair : mMap) {
             list.push_back(&pair.second.Info);
         }
         return list;
@@ -91,7 +90,7 @@ public:
 
 private:
     struct Entry {
-        const TInfo Info;
+        TInfo Info;
         Callback Func;
     };
 

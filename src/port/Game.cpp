@@ -71,8 +71,8 @@ Editor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
-Registry<const TrackInfo> gTrackRegistry;
-Registry<const ActorInfo, const SpawnParams&> gActorRegistry;
+Registry<TrackInfo> gTrackRegistry;
+Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
 

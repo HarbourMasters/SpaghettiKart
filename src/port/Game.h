@@ -23,8 +23,8 @@ extern s32 gTrophyIndex;
 extern Editor::Editor gEditor;
 extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
-extern Registry<const TrackInfo> gTrackRegistry;
-extern Registry<const ActorInfo, const SpawnParams&> gActorRegistry;
+extern Registry<TrackInfo> gTrackRegistry;
+extern Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 

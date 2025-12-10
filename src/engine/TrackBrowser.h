@@ -19,7 +19,7 @@ private:
 public:
     static TrackBrowser* Instance;
 
-    TrackBrowser(const Registry<const TrackInfo>& registry) {
+    TrackBrowser(const Registry<TrackInfo>& registry) {
         mTracks = registry.GetAllInfo();
         Instance = this;
     }
