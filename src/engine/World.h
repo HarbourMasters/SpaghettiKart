@@ -125,7 +125,7 @@ public:
     std::unordered_map<s32, OLakitu*> Lakitus;
 
     /** Objects **/
-    PlayerBombKart playerBombKart[4]; // Used in battle mode
+    PlayerBombKart mPlayerBombKart[4]; // Used in battle mode
 
     TrainCrossing* AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius, f32 exitRadius);
     std::vector<std::shared_ptr<TrainCrossing>> Crossings;

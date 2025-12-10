@@ -221,17 +221,17 @@ void CM_DisplayBattleBombKart(s32 playerId, s32 primAlpha) {
     }
 
     if (primAlpha == 0) {
-        gWorldInstance.playerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::DISABLED;
-        gWorldInstance.playerBombKart[playerId]._primAlpha = primAlpha;
+        gWorldInstance.mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        gWorldInstance.mPlayerBombKart[playerId]._primAlpha = primAlpha;
     } else {
-        gWorldInstance.playerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::ACTIVE;
-        gWorldInstance.playerBombKart[playerId]._primAlpha = primAlpha;
+        gWorldInstance.mPlayerBombKart[playerId].state = PlayerBombKart::PlayerBombKartState::ACTIVE;
+        gWorldInstance.mPlayerBombKart[playerId]._primAlpha = primAlpha;
     }
 }
 
 void CM_DrawBattleBombKarts(s32 cameraId) {
     for (size_t i = 0; i < gPlayerCount; i++) {
-        gWorldInstance.playerBombKart[i].Draw(i, cameraId);
+        gWorldInstance.mPlayerBombKart[i].Draw(i, cameraId);
     }
 }
 

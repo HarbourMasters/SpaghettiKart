@@ -253,33 +253,33 @@ Object* World::GetObjectByIndex(size_t index) {
 // Deletes all objects from the world
 void World::CleanWorld(void) {
     printf("[Game.cpp] Clean World\n");
-    World* world = &gWorldInstance;
-    for (auto& actor : world->Actors) {
+
+    for (auto& actor : Actors) {
         delete actor;
     }
 
-    gWorldInstance.Reset(); // Reset OObjects
-    for (auto& object : world->Objects) {
+    World::Reset(); // Reset OObjects
+    for (auto& object : Objects) {
         delete object;
     }
 
-    for (auto& emitter : world->Emitters) {
+    for (auto& emitter : Emitters) {
         delete emitter;
     }
 
-    for (auto& actor : world->StaticMeshActors) {
+    for (auto& actor : StaticMeshActors) {
         delete actor;
     }
 
-    for (size_t i = 0; i < ARRAY_COUNT(gWorldInstance.playerBombKart); i++) {
-        gWorldInstance.playerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
-        gWorldInstance.playerBombKart[i]._primAlpha = 0;
+    for (size_t i = 0; i < ARRAY_COUNT(mPlayerBombKart); i++) {
+        mPlayerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        mPlayerBombKart[i]._primAlpha = 0;
     }
 
     gEditor.ClearObjects();
-    gWorldInstance.Actors.clear();
-    gWorldInstance.StaticMeshActors.clear();
-    gWorldInstance.Objects.clear();
-    gWorldInstance.Emitters.clear();
-    gWorldInstance.Lakitus.clear();
+    Actors.clear();
+    StaticMeshActors.clear();
+    Objects.clear();
+    Emitters.clear();
+    Lakitus.clear();
 }
