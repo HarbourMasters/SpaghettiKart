@@ -76,6 +76,10 @@ Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
 
+World* GetWorld() {
+    return World::Instance;
+}
+
 void CustomEngineInit() {
     RegisterTracks(gTrackRegistry);
     gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);

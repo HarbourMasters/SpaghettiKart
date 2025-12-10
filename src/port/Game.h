@@ -25,6 +25,7 @@ extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
 extern Registry<TrackInfo> gTrackRegistry;
 extern Registry<ActorInfo, const SpawnParams&> gActorRegistry;
+World* GetWorld(void);
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 

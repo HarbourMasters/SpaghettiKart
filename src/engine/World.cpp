@@ -27,10 +27,12 @@ extern "C" {
 #include "engine/cameras/TourCamera.h"
 #include "engine/cameras/LookBehindCamera.h"
 
+World* World::Instance;
 std::shared_ptr<Track> mTrack;
 Cup* CurrentCup;
 
 World::World() {
+    Instance = this;
     RaceManagerInstance = std::make_unique<RaceManager>(*this);
 }
 

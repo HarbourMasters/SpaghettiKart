@@ -56,6 +56,7 @@ private:
     Cup* CurrentCup;
 
 public:
+    static World* Instance;
     explicit World();
     ~World();
 
