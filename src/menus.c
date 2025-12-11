@@ -1168,6 +1168,22 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (btnAndStick & D_JPAD) {
+                    gDebugMenuSelection = DEBUG_MENU_LAUNCH_EDITOR;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                break;
+            }
+            case DEBUG_MENU_LAUNCH_EDITOR: {
+                if (btnAndStick & (A_BUTTON | START_BUTTON)) {
+                    Editor_Launch("mk:test_track");
+                    play_sound2(SOUND_INTRO_ENTER_MENU);
+                }
+
+                if (btnAndStick & U_JPAD) {
+                    gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                if (btnAndStick & D_JPAD) {
                     gDebugMenuSelection = DEBUG_MENU_GIVE_ALL_GOLD_CUP;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
@@ -1175,7 +1191,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             }
             case DEBUG_MENU_GIVE_ALL_GOLD_CUP: {
                 if (btnAndStick & U_JPAD) {
-                    gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
+                    gDebugMenuSelection = DEBUG_MENU_LAUNCH_EDITOR;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (btnAndStick & B_BUTTON) {

@@ -52,7 +52,7 @@ typedef struct Matrix {
     {}
 };
 private:
-    std::shared_ptr<Track> mTrack;
+    std::unique_ptr<Track> mTrack;
     Cup* CurrentCup;
 
 public:
@@ -104,11 +104,11 @@ public:
     void CleanWorld(void);
 
     // getter/setter for current track
-    std::shared_ptr<Track> GetTrack() {
-        return mTrack;
+    Track* GetTrack() {
+        return mTrack.get();
     }
 
-    void SetCurrentTrack(std::shared_ptr<Track> track);
+    void SetCurrentTrack(std::unique_ptr<Track> track);
 
     Matrix Mtx;
 

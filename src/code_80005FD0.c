@@ -3738,12 +3738,12 @@ void load_track_path(s32 pathIndex) {
                 var_v0 = func_80011014(pathDest, path, sp24, pathIndex);
                 gPathCountByPathIndex[pathIndex] = (u16) var_v0;
             } else {
-                printf("PathTable is invalid. It has %d path points\n  It may also be missing the end tag.\n", i);
+                printf("[code_80005FD0] [load_track_path] PathTable is invalid. It has %d path points\n  It may also be missing the end tag.\n", i);
             }
         } else { // ALL TRACKS
             TrackPathPoint* pathSrc = CM_GetProps()->PathTable2[pathIndex];
             if (pathSrc == NULL) {
-                printf("code_80005FD0.c: Path %d in Track::PathTable2, was NULL.\n  Your track is missing a path\n",
+                printf("[code_80005FD0] [load_track_path] Path %d in Track::PathTable2, was NULL.\n  Your track is missing a path\n",
                        pathIndex);
             }
 

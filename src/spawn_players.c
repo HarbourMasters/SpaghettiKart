@@ -870,7 +870,7 @@ void func_8003C0F0(void) {
     }
 
     // The tour delays player spawning until the end of the tour
-    if ((CM_IsTourEnabled() == false) || (gIsEditorPaused == true)) {
+    if ((CM_IsTourEnabled() == false) || (Editor_IsPaused() == true)) {
         spawn_and_set_player_spawns();
     }
 }
@@ -1237,7 +1237,7 @@ void spawn_players_and_cameras(void) {
         gScreenContexts[PLAYER_ONE].camera = camera;
     }
 
-    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (gIsEditorPaused == false)) {
+    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (Editor_IsPaused() == false)) {
         camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
         if (NULL != camera) {
             CM_AttachCamera(camera, PLAYER_ONE);

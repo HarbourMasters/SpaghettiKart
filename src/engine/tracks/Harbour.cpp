@@ -526,7 +526,7 @@ Harbour::Harbour() {
     Props.Minimap.PlayerScaleFactor = 0.022f;
     ResizeMinimap(&Props.Minimap);
 
-    Id = "mk:harbour";
+    ResourceName = "mk:harbour";
     Props.SetText(Props.Name, "Harbour", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "harbour", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "99m", sizeof(Props.TrackLength));

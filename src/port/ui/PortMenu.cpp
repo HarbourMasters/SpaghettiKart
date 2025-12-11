@@ -421,19 +421,6 @@ void PortMenu::AddEnhancements() {
     path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "HM64 Lab", 4);
     AddWidget(path, "Work in progress.", WIDGET_TEXT);
-    AddWidget(path, "Enable HM64 Labs", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEditorEnabled")
-        .Callback([](WidgetInfo& info) {
-            if (CVarGetInteger("gEditorEnabled", false) == false) {
-                gIsEditorPaused = false;
-            }
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->ToggleVisibility();
-        })
-        .Options(UIWidgets::CheckboxOptions({ { .tooltip = "Edit the universe!" } }));
 #endif
 }
 
@@ -595,10 +582,6 @@ void PortMenu::InitElement() {
           { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Freecam is Enabled" } },
         { DISABLE_FOR_FREE_CAM_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Freecam is Disabled" } },
-        { DISABLE_FOR_EDITOR_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gEditorEnabled", 0); }, "Editor is Enabled" } },
-        { DISABLE_FOR_EDITOR_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEditorEnabled", 0); }, "Editor is Disabled" } },
         { DISABLE_FOR_DEBUG_MODE_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
             "Debug Mode is Disabled" } },

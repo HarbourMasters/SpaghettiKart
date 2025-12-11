@@ -35,7 +35,7 @@ namespace Editor {
 
         // Save button
         if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
-            if (gIsEditorPaused) {
+            if (gEditor.IsPaused()) {
                 SaveLevel();
             } else {
                 printf("[Editor] Cannot save during simulation\n  Please switch back to edit mode!\n\n");
@@ -138,8 +138,8 @@ namespace Editor {
 
         // Play/pause button
         ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
-        if (ImGui::Button(gIsEditorPaused ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
-            if (gIsEditorPaused) {
+        if (ImGui::Button(gEditor.IsPaused() ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
+            if (gEditor.IsPaused()) {
                 SaveLevel();
                 CVarSetInteger("gFreecam", false);
                 CM_SetFreeCamera(false);
@@ -150,7 +150,7 @@ namespace Editor {
             }
 
             gEditor.ResetGizmo();
-            gIsEditorPaused = !gIsEditorPaused;
+            gEditor.TogglePlayState();
             gIsInQuitToMenuTransition = 1;
             gQuitToMenuTransitionCounter = 5;
             gGotoMode = RACING;

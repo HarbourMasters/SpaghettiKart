@@ -28,7 +28,7 @@ extern "C" {
 #include "engine/cameras/LookBehindCamera.h"
 
 World* World::Instance;
-std::shared_ptr<Track> mTrack;
+std::unique_ptr<Track> mTrack;
 Cup* CurrentCup;
 
 World::World() {
@@ -44,7 +44,7 @@ void World::AddCup(Cup* cup) {
     Cups.push_back(cup);
 }
 
-void World::SetCurrentTrack(std::shared_ptr<Track> track) {
+void World::SetCurrentTrack(std::unique_ptr<Track> track) {
     if (mTrack == track) {
         return;
     }

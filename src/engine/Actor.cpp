@@ -21,7 +21,7 @@ AActor::AActor(SpawnParams params) {
 
 void AActor::BeginPlay() {
     // This makes actors clickable in the editor
-    if (CVarGetInteger("gEditorEnabled", false) == true) {
+    if (Editor_IsEnabled() == true) {
         if ((nullptr != Model) && (Model[0] != '\0')) {
             // Prevent collision mesh from being generated extra times.
             if (Triangles.size() == 0) {

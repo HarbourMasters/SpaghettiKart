@@ -299,7 +299,7 @@ namespace Editor {
 
     void TrackPropertiesWindow::DrawTourCamera() {
 
-        std::shared_ptr<Track> track = GetWorld()->GetTrack();
+        Track* track = GetWorld()->GetTrack();
         if (nullptr == track) {
             return;
         }

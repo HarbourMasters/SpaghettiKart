@@ -16,6 +16,7 @@
 #include "course_offsets.h"
 
 #include "engine/tracks/Track.h"
+#include "engine/editor/Editor.h"
 
 #include <stdio.h>
 
@@ -329,5 +330,5 @@ void load_track(s32 trackId) {
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     CM_CleanWorld();
     LoadTrack();
-    CM_Editor_SetLevelDimensions(gTrackMinX, gTrackMaxX, gTrackMinZ, gTrackMaxZ, gTrackMinY, gTrackMaxY);
+    Editor_SetLevelDimensions(gTrackMinX, gTrackMaxX, gTrackMinZ, gTrackMaxZ, gTrackMinY, gTrackMaxY);
 }

@@ -50,7 +50,7 @@ ChocoMountain::ChocoMountain() {
     Props.Minimap.FinishlineY = -16.0;
     ResizeMinimap(&Props.Minimap);
 
-    Id = "mk:choco_mountain";
+    ResourceName = "mk:choco_mountain";
     Props.SetText(Props.Name, "choco mountain", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "mountain", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "687m", sizeof(Props.TrackLength));

@@ -50,7 +50,7 @@ BowsersCastle::BowsersCastle() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
-    Id = "mk:bowsers_castle";
+    ResourceName = "mk:bowsers_castle";
 
     Props.SetText(Props.Name, "bowser's castle", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "castle", sizeof(Props.DebugName));

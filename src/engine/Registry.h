@@ -10,6 +10,7 @@ struct TrackInfo {
     std::string Name;
     std::string DebugName;
     std::string Length;
+    std::string Path; // Path to the custom track
 };
 
 struct ActorInfo {

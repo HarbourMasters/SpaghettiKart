@@ -25,6 +25,7 @@
 #include "sounds.h"
 #include "port/Game.h"
 #include "port/audio/HMAS.h"
+#include "engine/editor/Editor.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -655,7 +656,7 @@ void func_8028F4E8(void) {
 void func_8028F588(void) {
     s16 screenWidth;
 
-    if ((CVarGetInteger("gEditorEnabled", 0) == true) || (CM_IsTourEnabled() == true)) {
+    if ((Editor_IsEnabled() == true) || (CM_IsTourEnabled() == true)) {
         gScreenOneCtx->screenWidth = SCREEN_WIDTH;
         gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
         return;

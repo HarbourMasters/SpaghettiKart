@@ -57,7 +57,7 @@ static World sWorldInstance;
 // Deferred cleaning when clearing all actors in the editor
 bool bCleanWorld = false;
 
-std::shared_ptr<PodiumCeremony> gPodiumCeremony;
+std::unique_ptr<PodiumCeremony> gPodiumCeremony;
 
 Cup* gMushroomCup;
 Cup* gFlowerCup;
@@ -344,13 +344,6 @@ void CM_BeginPlay() {
         }
     }
 
-    if (GetWorld()->GetTrack()) {
-        // This line should likely be moved.
-        // It's here so PreInit is after the scene file has been loaded
-        // It used to be at the start of BeginPlay
-        Editor::LoadLevel(GetWorld()->GetTrack().get(), GetWorld()->GetTrack()->SceneFilePtr);
-    }
-
     GetWorld()->GetRaceManager().PreInit();
     GetWorld()->GetRaceManager().BeginPlay();
     GetWorld()->GetRaceManager().PostInit();
@@ -516,10 +509,6 @@ void CM_TickEditor() {
 
 void CM_DrawEditor() {
     gEditor.Draw();
-}
-
-void CM_Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY) {
-    gEditor.SetLevelDimensions(minX, maxX, minZ, maxZ, minY, maxY);
 }
 
 void CM_TickParticles() {
@@ -688,7 +677,7 @@ size_t GetCupSize() {
 }
 
 void* GetTrack(void) {
-    return GetWorld()->GetTrack().get();
+    return GetWorld()->GetTrack();
 }
 
 struct Actor* CM_GetActor(size_t index) {
@@ -768,6 +757,7 @@ void Editor_ClearMatrix() {
 void Editor_CleanWorld() {
     if (bCleanWorld) {
         CM_CleanWorld();
+        CM_CleanCameras();
         bCleanWorld = false;
     }
 }
@@ -790,49 +780,49 @@ f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
 }
 
 // clang-format off
-bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsBlockFort()        { return dynamic_cast<BlockFort*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsDkJungle()         { return dynamic_cast<DKJungle*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsBigDonut()         { return dynamic_cast<BigDonut*>(GetWorld()->GetTrack().get()) != nullptr; }
-bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(GetWorld()->GetTrack().get()) != nullptr; }
+bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsChocoMountain()    { return dynamic_cast<ChocoMountain*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsBowsersCastle()    { return dynamic_cast<BowsersCastle*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsBansheeBoardwalk() { return dynamic_cast<BansheeBoardwalk*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsYoshiValley()      { return dynamic_cast<YoshiValley*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsFrappeSnowland()   { return dynamic_cast<FrappeSnowland*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsKoopaTroopaBeach() { return dynamic_cast<KoopaTroopaBeach*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsRoyalRaceway()     { return dynamic_cast<RoyalRaceway*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsMooMooFarm()       { return dynamic_cast<MooMooFarm*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsToadsTurnpike()    { return dynamic_cast<ToadsTurnpike*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsKalimariDesert()   { return dynamic_cast<KalimariDesert*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsSherbetLand()      { return dynamic_cast<SherbetLand*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsRainbowRoad()      { return dynamic_cast<RainbowRoad*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsWarioStadium()     { return dynamic_cast<WarioStadium*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsBlockFort()        { return dynamic_cast<BlockFort*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsSkyscraper()       { return dynamic_cast<Skyscraper*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsDoubleDeck()       { return dynamic_cast<DoubleDeck*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsDkJungle()         { return dynamic_cast<DKJungle*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsBigDonut()         { return dynamic_cast<BigDonut*>(GetWorld()->GetTrack()) != nullptr; }
+bool IsPodiumCeremony()   { return dynamic_cast<PodiumCeremony*>(GetWorld()->GetTrack()) != nullptr; }
 
-void SelectMarioRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<MarioRaceway>()); }
-void SelectLuigiRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<LuigiRaceway>()); }
-void SelectChocoMountain()      { GetWorld()->SetCurrentTrack(std::make_shared<ChocoMountain>()); }
-void SelectBowsersCastle()      { GetWorld()->SetCurrentTrack(std::make_shared<BowsersCastle>()); }
-void SelectBansheeBoardwalk()   { GetWorld()->SetCurrentTrack(std::make_shared<BansheeBoardwalk>()); }
-void SelectYoshiValley()        { GetWorld()->SetCurrentTrack(std::make_shared<YoshiValley>()); }
-void SelectFrappeSnowland()     { GetWorld()->SetCurrentTrack(std::make_shared<FrappeSnowland>()); }
-void SelectKoopaTroopaBeach()   { GetWorld()->SetCurrentTrack(std::make_shared<KoopaTroopaBeach>()); }
-void SelectRoyalRaceway()       { GetWorld()->SetCurrentTrack(std::make_shared<RoyalRaceway>()); }
-void SelectMooMooFarm()         { GetWorld()->SetCurrentTrack(std::make_shared<MooMooFarm>()); }
-void SelectToadsTurnpike()      { GetWorld()->SetCurrentTrack(std::make_shared<ToadsTurnpike>()); }
-void SelectKalimariDesert()     { GetWorld()->SetCurrentTrack(std::make_shared<KalimariDesert>()); }
-void SelectSherbetLand()        { GetWorld()->SetCurrentTrack(std::make_shared<SherbetLand>()); }
-void SelectRainbowRoad()        { GetWorld()->SetCurrentTrack(std::make_shared<RainbowRoad>()); }
-void SelectWarioStadium()       { GetWorld()->SetCurrentTrack(std::make_shared<WarioStadium>()); }
-void SelectBlockFort()          { GetWorld()->SetCurrentTrack(std::make_shared<BlockFort>()); }
-void SelectSkyscraper()         { GetWorld()->SetCurrentTrack(std::make_shared<Skyscraper>()); }
-void SelectDoubleDeck()         { GetWorld()->SetCurrentTrack(std::make_shared<DoubleDeck>()); }
-void SelectDkJungle()           { GetWorld()->SetCurrentTrack(std::make_shared<DKJungle>()); }
-void SelectBigDonut()           { GetWorld()->SetCurrentTrack(std::make_shared<BigDonut>()); }
-void SelectPodiumCeremony()     { GetWorld()->SetCurrentTrack(gPodiumCeremony); }
+void SelectMarioRaceway()       { GetWorld()->SetCurrentTrack(std::make_unique<MarioRaceway>()); }
+void SelectLuigiRaceway()       { GetWorld()->SetCurrentTrack(std::make_unique<LuigiRaceway>()); }
+void SelectChocoMountain()      { GetWorld()->SetCurrentTrack(std::make_unique<ChocoMountain>()); }
+void SelectBowsersCastle()      { GetWorld()->SetCurrentTrack(std::make_unique<BowsersCastle>()); }
+void SelectBansheeBoardwalk()   { GetWorld()->SetCurrentTrack(std::make_unique<BansheeBoardwalk>()); }
+void SelectYoshiValley()        { GetWorld()->SetCurrentTrack(std::make_unique<YoshiValley>()); }
+void SelectFrappeSnowland()     { GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>()); }
+void SelectKoopaTroopaBeach()   { GetWorld()->SetCurrentTrack(std::make_unique<KoopaTroopaBeach>()); }
+void SelectRoyalRaceway()       { GetWorld()->SetCurrentTrack(std::make_unique<RoyalRaceway>()); }
+void SelectMooMooFarm()         { GetWorld()->SetCurrentTrack(std::make_unique<MooMooFarm>()); }
+void SelectToadsTurnpike()      { GetWorld()->SetCurrentTrack(std::make_unique<ToadsTurnpike>()); }
+void SelectKalimariDesert()     { GetWorld()->SetCurrentTrack(std::make_unique<KalimariDesert>()); }
+void SelectSherbetLand()        { GetWorld()->SetCurrentTrack(std::make_unique<SherbetLand>()); }
+void SelectRainbowRoad()        { GetWorld()->SetCurrentTrack(std::make_unique<RainbowRoad>()); }
+void SelectWarioStadium()       { GetWorld()->SetCurrentTrack(std::make_unique<WarioStadium>()); }
+void SelectBlockFort()          { GetWorld()->SetCurrentTrack(std::make_unique<BlockFort>()); }
+void SelectSkyscraper()         { GetWorld()->SetCurrentTrack(std::make_unique<Skyscraper>()); }
+void SelectDoubleDeck()         { GetWorld()->SetCurrentTrack(std::make_unique<DoubleDeck>()); }
+void SelectDkJungle()           { GetWorld()->SetCurrentTrack(std::make_unique<DKJungle>()); }
+void SelectBigDonut()           { GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>()); }
+void SelectPodiumCeremony()     { GetWorld()->SetCurrentTrack(std::move(gPodiumCeremony)); }
 // clang-format on
 
 void* GetMushroomCup(void) {

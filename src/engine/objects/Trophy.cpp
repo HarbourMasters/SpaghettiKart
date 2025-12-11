@@ -228,6 +228,11 @@ void OTrophy::Draw(s32 cameraId) {
     Mat4 someMatrix1;
     Mat4 someMatrix2;
     Object* object;
+
+    if (Editor_IsPaused()) {
+        return;
+    }
+
     if (*_toggleVisibility == true) {
         object = &gObjectList[listIndex];
         if (object->state >= 2) {

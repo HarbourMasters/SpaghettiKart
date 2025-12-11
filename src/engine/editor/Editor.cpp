@@ -12,6 +12,7 @@
 #include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
 #include <ship/window/Window.h>
 
+#include "engine/TrackBrowser.h"
 #include "engine/actors/Ship.h"
 #include "port/Game.h"
 
@@ -24,7 +25,10 @@ extern "C" {
 }
 
 namespace Editor {
+    Editor* Editor::Instance;
+
     Editor::Editor() {
+        Instance = this;
     }
 
     Editor::~Editor() {
@@ -43,6 +47,51 @@ namespace Editor {
         printf("Editor: Loading Complete!\n");
     }
 
+    void Editor::Enable() {
+        bEditorEnabled = true;
+        bIsEditorPaused = true;
+        CVarSetInteger("gFreecam", true);
+        CM_SetFreeCamera(true);
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Show();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Show();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Show();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Show();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Show();
+    }
+
+    void Editor::Disable() {
+        bEditorEnabled = false;
+        bIsEditorPaused = false;
+        CVarSetInteger("gFreecam", false);
+        CM_SetFreeCamera(false);
+        gScreenOneCtx->camera = &cameras[0];
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->Hide();
+        Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->Hide();
+    }
+
+    bool Editor::IsEnabled() {
+        return bEditorEnabled;
+    }
+
+    void Editor::Play() {
+        bIsEditorPaused = false;
+    }
+
+    void Editor::Pause() {
+        bIsEditorPaused = true;
+    }
+
+    bool Editor::IsPaused() {
+        return bIsEditorPaused;
+    }
+
+    void Editor::TogglePlayState() {
+        bIsEditorPaused = !bIsEditorPaused;
+    }
+
     void Editor::GenerateCollision() {
         // for (auto& actor : GetWorld()->Actors) {
         //     GenerateCollisionMesh(actor, (Gfx*)actor->Model, 1.0f);
@@ -50,11 +99,11 @@ namespace Editor {
     }
 
     void Editor::Tick() {
-        if (CVarGetInteger("gEditorEnabled", 0) == true) {
+        if (Editor_IsEnabled() == true) {
             bEditorEnabled = true;
         } else {
             bEditorEnabled = false;
-            gIsEditorPaused = false; // Prevents game being paused with the editor closed.
+            bIsEditorPaused = false; // Prevents game being paused with the editor closed.
             return;
         }
 
@@ -196,4 +245,23 @@ namespace Editor {
         eObjectPicker.eGizmo.dimensions.MinZ = minZ + -1000;
         eObjectPicker.eGizmo.dimensions.MaxZ = maxZ + 1000;
     }
+}
+
+/** C BRIDGE FUNCTIONS **/
+
+extern "C" void Editor_Launch(const char* resourceName) {
+    TrackBrowser::Instance->SetTrack(std::string(resourceName));
+    gEditor.Enable();
+}
+
+extern "C" void Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY) {
+    gEditor.SetLevelDimensions(minX, maxX, minZ, maxZ, minY, maxY);
+}
+
+extern "C" bool Editor_IsEnabled() {
+    return gEditor.IsEnabled();
+}
+
+extern "C" bool Editor_IsPaused() {
+    return gEditor.IsPaused();
 }

@@ -61,7 +61,6 @@ ScreenContext* gScreenTwoCtx = &gScreenContexts[1];
 ScreenContext* gScreenThreeCtx = &gScreenContexts[2];
 ScreenContext* gScreenFourCtx = &gScreenContexts[3];
 u16 gIsGamePaused = false; // true if the game is paused and false if the game is not paused
-bool gIsEditorPaused = true;
 u8* pAppNmiBuffer = (u8*) &osAppNmiBuffer;
 
 s32 gIsMirrorMode = 0;

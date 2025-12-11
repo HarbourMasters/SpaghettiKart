@@ -55,7 +55,7 @@ LuigiRaceway::LuigiRaceway() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
-    Id = "mk:luigi_raceway";
+    ResourceName = "mk:luigi_raceway";
     Props.SetText(Props.Name, "luigi raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "l circuit", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "717m", sizeof(Props.TrackLength));

@@ -39,6 +39,7 @@
 #include <assets/textures/some_data.h>
 #include "port/Game.h"
 #include "engine/Matrix.h"
+#include "engine/editor/Editor.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 //! @warning this macro is undef'd at the end of this file
@@ -1023,7 +1024,7 @@ void func_80059A88(s32 playerId) {
 void func_80059AC8(void) {
     s32 i;
 
-    if ((gIsGamePaused == false) && (gIsEditorPaused == false)) {
+    if ((gIsGamePaused == false) && (Editor_IsPaused() == false)) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
         for (i = 0; i < gPlayerCount; i++) {
@@ -1189,7 +1190,7 @@ void func_8005A070(void) {
     gMatrixHudCount = 0;
     D_801655C0 = 0;
     func_80041D34();
-    if (gIsGamePaused == false && (gIsEditorPaused == false)) {
+    if (gIsGamePaused == false && (Editor_IsPaused() == false)) {
         func_8005C728();
         if (gGamestate == ENDING) {
             // func_80086604();
@@ -1367,7 +1368,7 @@ void func_8005A99C(void) {
             if (gPlayerCountSelection1 == 3) {
                 D_801657E8 = true;
             }
-            if (CVarGetInteger("gEditorEnabled", 0) == false) {
+            if (Editor_IsEnabled() == false) {
                 gIsHUDVisible = (s32) 1;
             }
             D_8018D170 = (s32) 1;

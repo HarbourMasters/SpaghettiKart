@@ -7,6 +7,7 @@
 #include "engine/Actor.h"
 #include "engine/objects/Object.h"
 #include "engine/editor/GameObject.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "main.h"
@@ -25,7 +26,7 @@ namespace Editor {
         bool run = true;
 
         //! @attention Objects will not be clickable if editor is enabled mid-race.
-        if (CVarGetInteger("gEditorEnabled", false) == true) {
+        if (gEditor.IsEnabled() == true) {
             return;
         }
 

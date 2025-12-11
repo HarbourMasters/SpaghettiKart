@@ -21,9 +21,9 @@
 #include "port/Engine.h"
 #include "engine/Matrix.h"
 #include "engine/tracks/Track.h"
+#include "engine/editor/Editor.h"
 #include "port/Game.h"
 #include "math_util.h"
-#include "src/enhancements/freecam/freecam.h"
 #include "port/interpolation/FrameInterpolation.h"
 
 Vp D_802B8880[] = {
@@ -876,7 +876,7 @@ void set_screen(void) {
         wrapper->unkC = unk;
 
         // Tick is not enabled in the editor, so the screen needs to begin at the proper size.
-        if (((CVarGetInteger("gEditorEnabled", 0) == true) && (gIsEditorPaused) && (i == PLAYER_ONE)) || CM_IsTourEnabled() == true) {
+        if (((Editor_IsEnabled()) && (Editor_IsPaused()) && (i == PLAYER_ONE)) || CM_IsTourEnabled() == true) {
             wrapper->screenWidth = SCREEN_WIDTH;
             wrapper->screenHeight = SCREEN_HEIGHT;
         } else { // Normal race start, screen is small

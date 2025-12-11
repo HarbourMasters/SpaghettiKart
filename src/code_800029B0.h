@@ -66,7 +66,6 @@ extern ScreenContext* gScreenTwoCtx;
 extern ScreenContext* gScreenThreeCtx;
 extern ScreenContext* gScreenFourCtx;
 extern u16 gIsGamePaused;
-extern bool gIsEditorPaused;
 extern u8* pAppNmiBuffer;
 extern s32 gIsMirrorMode; // D_800DC604
 extern void set_mirror_mode(s32 mirror);

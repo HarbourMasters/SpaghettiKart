@@ -6,6 +6,7 @@
 #include "MenuTypes.h"
 #include "src/port/Game.h"
 #include "src/port/audio/HMAS.h"
+#include "engine/TrackBrowser.h"
 
 extern "C" {
 #include "defines.h"
@@ -86,6 +87,14 @@ class Menu : public GuiWindow {
               gMenuSelection = MAIN_MENU;
               break;
       }
+
+      // Close the editor.
+      if (gEditor.IsEnabled()) {
+          gEditor.Disable();
+      }
+
+      // Set the debug menu track browsing index back to zero
+      TrackBrowser::Instance->Reset();
 
       // Debug mode override gSkipIntro
       if (CVarGetInteger("gEnableDebugMode", 0) == true) {

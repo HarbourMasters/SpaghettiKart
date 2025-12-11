@@ -24,6 +24,16 @@ public:
         Instance = this;
     }
 
+    void Refresh(const Registry<TrackInfo>& registry) {
+        mTracks.clear();
+        mTracks = registry.GetAllInfo();
+        mTrackIndex = 0;
+    }
+
+    void Reset() {
+        mTrackIndex = 0;
+    }
+
     void SetTrack(std::string name) {
         if (gTrackRegistry.Find(name)) {
             gTrackRegistry.Invoke(name);

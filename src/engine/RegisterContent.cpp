@@ -441,7 +441,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<MarioRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_unique<MarioRaceway>());
         }
     );
 
@@ -454,7 +454,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<ChocoMountain>());
+            GetWorld()->SetCurrentTrack(std::make_unique<ChocoMountain>());
         }
     );
 
@@ -467,7 +467,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<BowsersCastle>());
+            GetWorld()->SetCurrentTrack(std::make_unique<BowsersCastle>());
         }
     );
 
@@ -480,7 +480,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<BansheeBoardwalk>());
+            GetWorld()->SetCurrentTrack(std::make_unique<BansheeBoardwalk>());
         }
     );
 
@@ -493,7 +493,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<YoshiValley>());
+            GetWorld()->SetCurrentTrack(std::make_unique<YoshiValley>());
         }
     );
 
@@ -506,7 +506,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<FrappeSnowland>());
+            GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>());
         }
     );
 
@@ -519,7 +519,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<KoopaTroopaBeach>());
+            GetWorld()->SetCurrentTrack(std::make_unique<KoopaTroopaBeach>());
         }
     );
 
@@ -532,7 +532,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<RoyalRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_unique<RoyalRaceway>());
         }
     );
 
@@ -545,7 +545,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<LuigiRaceway>());
+            GetWorld()->SetCurrentTrack(std::make_unique<LuigiRaceway>());
         }
     );
 
@@ -558,7 +558,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<MooMooFarm>());
+            GetWorld()->SetCurrentTrack(std::make_unique<MooMooFarm>());
         }
     );
 
@@ -571,7 +571,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<ToadsTurnpike>());
+            GetWorld()->SetCurrentTrack(std::make_unique<ToadsTurnpike>());
         }
     );
 
@@ -584,7 +584,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<KalimariDesert>());
+            GetWorld()->SetCurrentTrack(std::make_unique<KalimariDesert>());
         }
     );
 
@@ -597,7 +597,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<SherbetLand>());
+            GetWorld()->SetCurrentTrack(std::make_unique<SherbetLand>());
         }
     );
 
@@ -610,7 +610,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<RainbowRoad>());
+            GetWorld()->SetCurrentTrack(std::make_unique<RainbowRoad>());
         }
     );
 
@@ -623,7 +623,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<WarioStadium>());
+            GetWorld()->SetCurrentTrack(std::make_unique<WarioStadium>());
         }
     );
 
@@ -636,7 +636,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<BlockFort>());
+            GetWorld()->SetCurrentTrack(std::make_unique<BlockFort>());
         }
     );
 
@@ -649,7 +649,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<Skyscraper>());
+            GetWorld()->SetCurrentTrack(std::make_unique<Skyscraper>());
         }
     );
 
@@ -662,7 +662,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<DoubleDeck>());
+            GetWorld()->SetCurrentTrack(std::make_unique<DoubleDeck>());
         }
     );
 
@@ -675,7 +675,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<DKJungle>());
+            GetWorld()->SetCurrentTrack(std::make_unique<DKJungle>());
         }
     );
 
@@ -688,7 +688,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<BigDonut>());
+            GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>());
         }
     );
 
@@ -701,7 +701,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
 
     r.Add(info,
         []() {
-            GetWorld()->SetCurrentTrack(std::make_shared<TestTrack>());
+            GetWorld()->SetCurrentTrack(std::make_unique<TestTrack>());
         }
     );
 }

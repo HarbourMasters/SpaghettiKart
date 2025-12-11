@@ -1,11 +1,11 @@
 #include <libultraship.h>
+#include <libultra/types.h>
 #include <macros.h>
 #include <string.h>
 #include <mk64.h>
 #include <stubs.h>
 #include <defines.h>
 #include <segments.h>
-#include <libultra/types.h>
 #include <sounds.h>
 #include <assets/textures/texture_data_2.h>
 #include "code_800029B0.h"
@@ -43,6 +43,7 @@
 #include "stdio.h"
 #include "port/Engine.h"
 #include "port/Game.h"
+#include "engine/editor/Editor.h"
 
 #include "engine/Matrix.h"
 #include "engine/tracks/Track.h"
@@ -1522,7 +1523,7 @@ void func_80091FA4(void) {
     func_80092258();
 
     // Do not display grand prix name/cup name in editor at race staging
-    if ((CVarGetInteger("gEditorEnabled", 0) == false) && (CM_IsTourEnabled() == false)) {
+    if ((Editor_IsEnabled() == false) && (CM_IsTourEnabled() == false)) {
         add_menu_item(MENU_ITEM_TYPE_096, 0x00000064, 0x00000024, MENU_ITEM_PRIORITY_1);
         add_menu_item(MENU_ITEM_TYPE_097, 0x00000064, 0x000000DD, MENU_ITEM_PRIORITY_1);
         add_menu_item(MENU_ITEM_TYPE_098, 0, 0, MENU_ITEM_PRIORITY_0);
@@ -2824,8 +2825,11 @@ void func_80095574(void) {
             case DEBUG_MENU_SOUND_MODE:
                 debug_print_str2(70, 150, "*");
                 break;
-            case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
+            case DEBUG_MENU_LAUNCH_EDITOR:
                 debug_print_str2(70, 160, "*");
+                break;
+            case DEBUG_MENU_GIVE_ALL_GOLD_CUP:
+                debug_print_str2(70, 170, "*");
                 break;
         }
         if (gEnableDebugMode) {
@@ -2857,8 +2861,10 @@ void func_80095574(void) {
         debug_print_str2(170, 140, gDebugCharacterNames[gCharacterSelections[0]]);
         debug_print_str2(80, 150, "sound mode");
         debug_print_str2(170, 150, gDebugSoundModeNames[gSoundMode]);
+        debug_print_str2(80, 160, "Launch HM64 Labs");
+
         if (gDebugMenuSelection == DEBUG_MENU_GIVE_ALL_GOLD_CUP) {
-            debug_print_str2(80, 160, "push b to get all goldcup");
+            debug_print_str2(80, 170, "push b to get all goldcup");
         }
         func_80057778();
     }

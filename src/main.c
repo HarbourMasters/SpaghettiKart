@@ -39,6 +39,7 @@
 #include <debug.h>
 #include "crash_screen.h"
 #include "enhancements/freecam/freecam.h"
+#include "engine/editor/Editor.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/wasm.h"
 #include "port/Game.h"
@@ -669,7 +670,7 @@ void display_debug_info(void) {
 
 void process_game_tick(void) {
 
-    if (gIsEditorPaused == false) {
+    if (Editor_IsPaused() == false) {
         if (D_8015011E) {
             gCourseTimer += TRACK_TIMER_ITER;
         }
@@ -681,7 +682,7 @@ void process_game_tick(void) {
     CM_TickCameras();
 
     // Editor requires this so the camera keeps moving while the game is paused.
-    if (gIsEditorPaused == true) {
+    if (Editor_IsPaused() == true) {
         return;
     }
     
@@ -730,7 +731,7 @@ void race_logic_loop(void) {
         for (size_t i = 0; i < gTickLogic; i++) {
             process_game_tick();
         }
-        if (gIsEditorPaused == false) {
+        if (Editor_IsPaused() == false) {
             func_80022744();
         }
     }
