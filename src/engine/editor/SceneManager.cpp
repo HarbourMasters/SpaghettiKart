@@ -55,6 +55,11 @@ namespace Editor {
             data["Tour"] = tour;
         }
 
+        if (nullptr == track->Archive) {
+            SPDLOG_INFO("[SceneManager] [SaveLevel] Track archive nullptr");
+            return;
+        }
+
         /**
          * Write data to file
          */
@@ -356,7 +361,7 @@ namespace Editor {
     }
 
     void LoadActors(Track* track, nlohmann::json& data) {
-        if (!data.contains("Actors") || !data["Actors"].is_object()) {
+        if (!data.contains("Actors") || !data["Actors"].is_array()) {
             SPDLOG_INFO("  This track contains no actors");
             return;
         }
@@ -373,7 +378,7 @@ namespace Editor {
     }
 
     void LoadStaticMeshActors(Track* track, nlohmann::json& data) {
-        if (!data.contains("StaticMeshActors") || !data["StaticMeshActors"].is_object()) {
+        if (!data.contains("StaticMeshActors") || !data["StaticMeshActors"].is_array()) {
             SPDLOG_INFO("  This track contains no StaticMeshActors!");
             return;
         }
