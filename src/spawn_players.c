@@ -1280,7 +1280,20 @@ void spawn_single_player_camera(u32 mode) {
 
 void spawn_multiplayer_cameras(u32 mode) {
     Camera* camera;
-    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+    size_t screens = 0;
+    switch(gActiveScreenMode) {
+        case SCREEN_MODE_1P:
+            screens = 1;
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            screens = 2;
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            screens = 4;
+            break;
+    }
+    for (size_t i = 0; i < screens; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {
@@ -1291,7 +1304,7 @@ void spawn_multiplayer_cameras(u32 mode) {
 
     }
 
-    for (size_t i = 0; i < gPlayerCountSelection1; i++) {
+    for (size_t i = 0; i < screens; i++) {
         Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
         camera = CM_AddLookBehindCamera(spawn, gPlayers[i].rotation[1], mode);
         if (camera) {

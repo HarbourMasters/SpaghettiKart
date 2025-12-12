@@ -371,7 +371,8 @@ jobs:
       - name: Build spaghetti
         run: docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config ${{ matrix.config }} -j$(nproc)
 
-  build-docker:
+  build-linux-release-docker:
+    needs: generate-port-o2r
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -422,6 +423,15 @@ jobs:
               cmake --build build --parallel
             "
 
+      - name: Fix permissions
+        run: sudo chown -R $(id -u):$(id -g) build
+
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build
+
       - name: Generate AppImage
         run: |
           docker run --rm \
@@ -435,7 +445,6 @@ jobs:
       - name: Create Package
         run: |
           mkdir -p spaghetti-${{ matrix.config }}
-          cp build/Spaghettify spaghetti-${{ matrix.config }}/ || true
           wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
           mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
           cp build/*.appimage spaghetti-${{ matrix.config }}/ 2>/dev/null || true
