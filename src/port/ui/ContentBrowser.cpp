@@ -105,49 +105,82 @@ namespace Editor {
         }
     }
 
-    void ContentBrowserWindow::AddActorContent() {
-        FVector pos = GetPositionAheadOfCamera(300.0f);
-        SpawnParams params;
-        params.Location = pos;
+void ContentBrowserWindow::AddActorContent() {
+    static char searchBuffer[128] = ""; // Persistent search input
 
-        size_t i_actor = 0;
+    // Draw search bar
+    ImGui::InputTextWithHint("##SearchActors", "Search name or #tag", searchBuffer, IM_ARRAYSIZE(searchBuffer));
+    ImGui::NewLine();
+    std::string searchStr = searchBuffer;
+    bool isTagSearch = false;
+    std::string tagToSearch;
 
-        for (const auto* actorInfo : gActorRegistry.GetAllInfo()) {
-            if (!actorInfo) { continue; }
-            if ((i_actor != 0) && (i_actor % 8 == 0)) {
-            } else {
-                ImGui::SameLine();
-            }
-            std::string label = fmt::format("{}##{}", actorInfo->Name, i_actor);
-            if (ImGui::Button(label.c_str())) {
-                gActorRegistry.Invoke(actorInfo->ResourceName, params);
-            }
-
-            i_actor += 1;
-        }
-
-        // Add a couple actor models
-        ImGui::PushID(i_actor);
-        //std::string label = fmt::format("{}##{}", "Ship 2", i_actor);
-        if (ImGui::Button("Ship 2 (HM64)")) {
-                params.Type = static_cast<int16_t>(AShip::Skin::SHIP2);
-                gActorRegistry.Invoke("hm:ship", params);
-        }
-        ImGui::PopID();
-        i_actor += 1;
-
-        //std::string label = fmt::format("{}##{}", "Ship 3", i_actor);
-        ImGui::PushID(i_actor);
-        if (ImGui::Button("Ship 3 (HM64)")) {
-                params.Type = static_cast<int16_t>(AShip::Skin::SHIP3);
-                gActorRegistry.Invoke("hm:ship", params);
-        }
-        ImGui::PopID();
-        i_actor += 1;
-
-
-        ContentBrowserWindow::TrainWindow();
+    if (!searchStr.empty() && searchStr[0] == '#') {
+        isTagSearch = true;
+        tagToSearch = ToLower(searchStr.substr(1)); // Remove the #
+    } else {
+        searchStr = ToLower(searchStr);
     }
+    
+
+    FVector pos = GetPositionAheadOfCamera(300.0f);
+    SpawnParams params;
+    params.Location = pos;
+
+    size_t i_actor = 0;
+
+    for (const auto* actorInfo : gActorRegistry.GetAllInfo()) {
+        if (!actorInfo) continue;
+
+        // Filtering
+        bool show = false;
+        if (isTagSearch) {
+            // Check tags case-insensitively
+            for (const auto& tag : actorInfo->Tags) {
+                if (ToLower(tag) == tagToSearch) {
+                    show = true;
+                    break;
+                }
+            }
+        } else if (!searchStr.empty()) {
+            if (ToLower(actorInfo->Name).find(searchStr) != std::string::npos) {
+                show = true;
+            }
+        } else {
+            show = true; // No search → show all
+        }
+
+        if (!show) continue;
+
+        if ((i_actor != 0) && (i_actor % 8 == 0)) {
+        } else {
+            ImGui::SameLine();
+        }
+
+        std::string label = fmt::format("{}##{}", actorInfo->Name, i_actor);
+        if (ImGui::Button(label.c_str())) {
+            gActorRegistry.Invoke(actorInfo->ResourceName, params);
+        }
+
+        i_actor += 1;
+    }
+
+    // Add a couple actor models (always shown, bypass search)
+    auto addShipButton = [&](int id, const char* name, int type) {
+        ImGui::PushID(id);
+        if (ImGui::Button(name)) {
+            params.Type = static_cast<int16_t>(type);
+            gActorRegistry.Invoke("hm:ship", params);
+        }
+        ImGui::PopID();
+    };
+
+    addShipButton(i_actor++, "Ship 2 (HM64)", AShip::Skin::SHIP2);
+    addShipButton(i_actor++, "Ship 3 (HM64)", AShip::Skin::SHIP3);
+
+    ContentBrowserWindow::TrainWindow();
+}
+
 
     void ContentBrowserWindow::AddCustomContent() {
         FVector pos = GetPositionAheadOfCamera(300.0f);

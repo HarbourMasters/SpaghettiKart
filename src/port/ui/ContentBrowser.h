@@ -28,5 +28,12 @@ protected:
     void FolderButton(const char* label, bool& contentFlag, const ImVec2& size = ImVec2(80, 32));
     ATrain* TrainWindow();
 
+private:
+    static std::string ToLower(const std::string& str) {
+        std::string result = str;
+        std::transform(result.begin(), result.end(), result.begin(),
+                    [](unsigned char c){ return std::tolower(c); });
+        return result;
+    }
 };
 }
