@@ -120,13 +120,13 @@ void BlockFort::BeginPlay() {
     spawn_all_item_boxes((ActorSpawnData*) LOAD_ASSET_RAW(d_course_block_fort_item_box_spawns));
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 20, 0, 1.0f);
-        OBombKart::Spawn(0, 40, 0, 1.0f);
-        OBombKart::Spawn(0, 60, 0, 1.0f);
-        OBombKart::Spawn(0, 80, 0, 1.0f);
-        OBombKart::Spawn(0, 100, 0, 1.0f);
-        OBombKart::Spawn(0, 120, 0, 1.0f);
-        OBombKart::Spawn(0, 140, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 20, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 40, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 60, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 80, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 100, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 120, 0, 1.0f);
+        SpawnActor<OBombKart>(0, 140, 0, 1.0f);
     }
 }
 

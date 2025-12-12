@@ -133,19 +133,19 @@ void RainbowRoad::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_rainbow_road_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        GetWorld()->AddObject(new OChainChomp());
-        GetWorld()->AddObject(new OChainChomp());
-        GetWorld()->AddObject(new OChainChomp());
+        AddObjectToWorld<OChainChomp>({});
+        AddObjectToWorld<OChainChomp>({});
+        AddObjectToWorld<OChainChomp>({});
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 3, 0.8333333f);
-        OBombKart::Spawn(0, 100, 1, 0.8333333f);
-        OBombKart::Spawn(0, 150, 3, 0.8333333f);
-        OBombKart::Spawn(0, 200, 1, 0.8333333f);
-        OBombKart::Spawn(0, 250, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 100, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 150, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 200, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 250, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

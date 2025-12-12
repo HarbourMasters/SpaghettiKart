@@ -209,19 +209,19 @@ void MooMooFarm::BeginPlay() {
                 break;
         }
 
-        GetWorld()->AddObject(new OMoleGroup(moleSpawns1, tick1));
-        GetWorld()->AddObject(new OMoleGroup(moleSpawns2, tick2));
-        GetWorld()->AddObject(new OMoleGroup(moleSpawns3, tick3));
+        GetWorld()->AddObject(OMoleGroup(moleSpawns1, tick1));
+        GetWorld()->AddObject(OMoleGroup(moleSpawns2, tick2));
+        GetWorld()->AddObject(OMoleGroup(moleSpawns3, tick3));
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 3, 0.8333333f);
-        OBombKart::Spawn(0, 140, 3, 0.8333333f);
-        OBombKart::Spawn(0, 225, 3, 0.8333333f);
-        OBombKart::Spawn(0, 316, 3, 0.8333333f);
-        OBombKart::Spawn(0, 434, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 140, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 225, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 316, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 434, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
 #include "CoreMath.h"
 
@@ -36,7 +37,7 @@ public:
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<OBat*>(GetWorld()->AddObject(new OBat(params)));
+        return dynamic_cast<OBat*>(AddObjectToWorld<OBat>(params));
     }
 
     explicit OBat(const SpawnParams& params);

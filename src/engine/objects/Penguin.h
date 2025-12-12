@@ -1,19 +1,9 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
+#include "RegisterContent.h"
 #include "engine/World.h"
 #include "engine/objects/Object.h"
-
-extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "course_offsets.h"
-}
 
 class OPenguin : public OObject {
 public:
@@ -34,11 +24,10 @@ public:
         SLIDE6,
     };
 
-public:
     explicit OPenguin(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OPenguin* Spawn(FVector pos, u16 direction, u16 mirrorModeAngleOffset, f32 diameter, PenguinType type, Behaviour behaviour) {
+    static OPenguin* Spawn(FVector pos, u16 direction, u16 mirrorModeAngleOffset, f32 diameter, PenguinType type, Behaviour behaviour) {
         IRotator rot;
         rot.Set(0, direction, mirrorModeAngleOffset);
         SpawnParams params = {
@@ -49,7 +38,7 @@ public:
             .Rotation = rot,
             .Speed = diameter, // Diameter of the walking circle
         };
-        return static_cast<OPenguin*>(GetWorld()->AddObject(new OPenguin(params)));
+        return dynamic_cast<OPenguin*>(AddObjectToWorld<OPenguin>(params));
     }
 
     PenguinType Type = PenguinType::CHICK;

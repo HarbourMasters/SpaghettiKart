@@ -1,20 +1,13 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 
+#include "RegisterContent.h"
 #include "engine/World.h"
 #include "engine/objects/Object.h"
 
 extern "C" {
 #include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "camera.h"
-#include "some_data.h"
 }
 
 
@@ -28,12 +21,12 @@ public:
     explicit OGrandPrixBalloons(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OGrandPrixBalloons* Spawn(const FVector& pos) {
+    static OGrandPrixBalloons* Spawn(const FVector& pos) {
         SpawnParams params = {
             .Name = "mk:grand_prix_balloons",
             .Location = pos,
         };
-        return static_cast<OGrandPrixBalloons*>(GetWorld()->AddObject(new OGrandPrixBalloons(params)));
+        return dynamic_cast<OGrandPrixBalloons*>(AddObjectToWorld<OGrandPrixBalloons>(params));
     }
 
     ~OGrandPrixBalloons() {

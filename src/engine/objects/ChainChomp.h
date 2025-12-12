@@ -23,6 +23,7 @@ extern "C" {
 class OChainChomp : public OObject {
 public:
     explicit OChainChomp();
+    explicit OChainChomp(const SpawnParams& params);
 
 
     ~OChainChomp() {

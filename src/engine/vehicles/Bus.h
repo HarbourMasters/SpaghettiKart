@@ -3,14 +3,10 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/SpawnParams.h"
-#include "engine/CoreMath.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "sounds.h"
 }
 
@@ -39,7 +35,7 @@ class ABus : public AActor {
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline ABus* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ABus::SpawnMode spawnMode) {
+    static ABus* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ABus::SpawnMode spawnMode) {
         SpawnParams params = {
             .Name = "mk:bus",
             .Type = static_cast<uint16_t>(spawnMode),
@@ -48,7 +44,7 @@ class ABus : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ABus*>(GetWorld()->AddActor(new ABus(params)));
+        return dynamic_cast<ABus*>(AddActorToWorld<ABus>(params));
     }
 
     explicit ABus(const SpawnParams& params);

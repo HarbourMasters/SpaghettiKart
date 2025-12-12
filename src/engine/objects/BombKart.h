@@ -1,19 +1,13 @@
 #pragma once
 
 #include <libultraship.h>
+#include "RegisterContent.h"
 #include "engine/objects/Object.h"
-#include <vector>
-#include "engine/Matrix.h"
 
 #include "World.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
 }
 
 /**
@@ -52,7 +46,7 @@ class OBombKart : public OObject {
 
     // This is simply a helper function to keep Spawning code clean
     // Spawn object at a position
-    static inline OBombKart* Spawn(FVector pos, uint16_t behaviour, f32 unk_3C) {
+    static OBombKart* Spawn(FVector pos, uint16_t behaviour, f32 unk_3C) {
         SpawnParams params = {
             .Name = "mk:bomb_kart",
             .Behaviour = behaviour,
@@ -60,11 +54,11 @@ class OBombKart : public OObject {
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
             .SpeedB = 2.7f, // Chase speed
         };
-        return static_cast<OBombKart*>(GetWorld()->AddObject(new OBombKart(params)));
+        return dynamic_cast<OBombKart*>(AddObjectToWorld<OBombKart>(params));
     }
 
     // Spawn object at a point along the tracks path
-    static inline OBombKart* Spawn(uint32_t pathIndex, uint32_t pathPoint, uint16_t behaviour, f32 unk_3C) {
+    static OBombKart* Spawn(uint32_t pathIndex, uint32_t pathPoint, uint16_t behaviour, f32 unk_3C) {
         SpawnParams params = {
             .Name = "mk:bomb_kart",
             .Behaviour = behaviour,
@@ -72,7 +66,7 @@ class OBombKart : public OObject {
             .PathPoint = pathPoint,
             .Speed = unk_3C, // Only used for podium ceremony. Arbitrarily chose Speed for this
         };
-        return static_cast<OBombKart*>(GetWorld()->AddObject(new OBombKart(params)));
+        return dynamic_cast<OBombKart*>(AddObjectToWorld<OBombKart>(params));
     }
 
     // Set waypoint to NULL if using a spawn position and not a waypoint.

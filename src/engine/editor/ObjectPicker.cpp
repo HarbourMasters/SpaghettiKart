@@ -249,7 +249,7 @@ std::pair<AActor*, float> ObjectPicker::CheckAActorRay(Ray ray) {
     AActor* hitActor = nullptr;
     float hitDistance = FLT_MAX;
 
-    for (auto actor : GetWorld()->Actors) {
+    for (const auto& actor : GetWorld()->Actors) {
         if ((actor->bPendingDestroy) && (!actor->IsMod())) {
             continue;
         }
@@ -265,7 +265,7 @@ std::pair<AActor*, float> ObjectPicker::CheckAActorRay(Ray ray) {
                 if (IntersectRayTriangleAndTransform(ray, FVector(actor->Pos[0], actor->Pos[1], actor->Pos[2]), tri, t)) {
                     if (t < hitDistance) {
                         hitDistance = t;
-                        hitActor = static_cast<AActor*>(actor);
+                        hitActor = actor.get();
                     }
                 }
             }
@@ -283,7 +283,7 @@ std::pair<AActor*, float> ObjectPicker::CheckAActorRay(Ray ray) {
             if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
                 if (t < hitDistance) {
                     hitDistance = t;
-                    hitActor = static_cast<AActor*>(actor);
+                    hitActor = actor.get();
                 }
             }
         }

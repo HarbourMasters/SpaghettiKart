@@ -1,20 +1,9 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 
+#include "RegisterContent.h"
 #include "World.h"
-
-extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "course_offsets.h"
-#include "some_data.h"
-}
 
 
 class OPodium : public OObject {
@@ -22,17 +11,15 @@ public:
     enum Behaviour : uint16_t {
     };
 
-public:
-
     explicit OPodium(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OPodium* Spawn(const FVector& pos) {
+    static OPodium* Spawn(const FVector& pos) {
         SpawnParams params = {
             .Name = "mk:podium",
             .Location = pos,
         };
-        return static_cast<OPodium*>(GetWorld()->AddObject(new OPodium(params)));
+        return dynamic_cast<OPodium*>(AddObjectToWorld<OPodium>(params));
     }
 
     virtual void Tick() override;

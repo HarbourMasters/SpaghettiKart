@@ -6,6 +6,8 @@
 #include <stubs.h>
 
 #include "menus.h"
+#include "TrackBrowser.h"
+#include "editor/Editor.h"
 #include "main.h"
 #include "code_800029B0.h"
 #include "actors.h"

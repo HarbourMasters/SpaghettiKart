@@ -2,6 +2,7 @@
 #include "engine/CoreMath.h"
 #include "Registry.h"
 #include "engine/World.h"
+#include "RegisterContent.h"
 
 #include "AllTracks.h"
 #include "AllActors.h"
@@ -23,425 +24,261 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
 
     info = { .ResourceName = "mk:item_box", .Name = "Item Box" };
 
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            spawn_item_box(pos);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        spawn_item_box(pos);
+    });
 
     info = { .ResourceName = "mk:fake_item_box", .Name = "Fake Item Box" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            spawn_fake_item_box(pos);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        spawn_fake_item_box(pos);
+    });
 
     info = { .ResourceName = "mk:thwomp", .Name = "Thwomp" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OThwomp(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OThwomp>);
 
     info = { .ResourceName = "mk:snowman", .Name = "Snowman" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OSnowman(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OSnowman>);
 
     info = { .ResourceName = "mk:hot_air_balloon", .Name = "Hot Air Balloon" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OHotAirBalloon(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OHotAirBalloon>);
 
     info = { .ResourceName = "mk:hedgehog", .Name = "Hedgehog" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OHedgehog(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OHedgehog>);
 
     info = { .ResourceName = "mk:grand_prix_balloons", .Name = "Grand Prix Balloons" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OGrandPrixBalloons(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OGrandPrixBalloons>);
 
-    info = { .ResourceName = "mk:flagpole", .Name = "Flagpole", .Tags = {"sign"}};
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OFlagpole(params));
-        }
-    );
+    info = { .ResourceName = "mk:flagpole", .Name = "Flagpole", .Tags = { "sign" } };
+    r.Add(info, AddObjectToWorld<OFlagpole>);
 
     info = { .ResourceName = "mk:crab", .Name = "Crab" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OCrab(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OCrab>);
 
-    info = { .ResourceName = "mk:cheep_cheep", .Name = "Cheep Cheep", .Tags = {"passive"}};
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OCheepCheep(params));
-        }
-    );
+    info = { .ResourceName = "mk:cheep_cheep", .Name = "Cheep Cheep", .Tags = { "passive" } };
+    r.Add(info, AddObjectToWorld<OCheepCheep>);
 
     info = { .ResourceName = "mk:bomb_kart", .Name = "Bomb Kart", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OBombKart(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OBombKart>);
 
     info = { .ResourceName = "mk:bat", .Name = "Bat" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OBat(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OBat>);
 
     info = { .ResourceName = "mk:boos", .Name = "Boos" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OBoos(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OBoos>);
 
     info = { .ResourceName = "mk:trophy", .Name = "Trophy" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OTrophy(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OTrophy>);
 
     info = { .ResourceName = "mk:trash_bin", .Name = "Trash Bin" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OTrashBin(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OTrashBin>);
 
     info = { .ResourceName = "mk:seagull", .Name = "Seagull", .Tags = { "passive" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OSeagull(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OSeagull>);
 
     info = { .ResourceName = "mk:chain_chomp", .Name = "Chain Chomp", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OChainChomp());
-        }
-    );
+    r.Add(info, AddObjectToWorld<OChainChomp>);
 
     info = { .ResourceName = "mk:podium", .Name = "Podium" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OPodium(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OPodium>);
 
     info = { .ResourceName = "mk:penguin", .Name = "Penguin" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddObject(new OPenguin(params));
-        }
-    );
+    r.Add(info, AddObjectToWorld<OPenguin>);
 
     info = { .ResourceName = "mk:banana", .Name = "Banana" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ABanana(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ABanana>);
 
     info = { .ResourceName = "mk:mario_sign", .Name = "Mario Sign", .Tags = { "sign" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AMarioSign(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AMarioSign>);
 
     info = { .ResourceName = "mk:wario_sign", .Name = "Wario Sign", .Tags = { "sign" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AWarioSign(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AWarioSign>);
 
     info = { .ResourceName = "mk:falling_rock", .Name = "Falling Rock", .Tags = { "obstacle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AFallingRock(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AFallingRock>);
 
     info = { .ResourceName = "mk:yoshi_egg", .Name = "Yoshi Egg", .Tags = { "obstacle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_YOSHI_EGG);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_YOSHI_EGG);
+    });
 
     info = { .ResourceName = "mk:piranha_plant", .Name = "Piranha Plant", .Tags = { "foliage", "obstacle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_PIRANHA_PLANT);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_PIRANHA_PLANT);
+    });
 
     info = { .ResourceName = "mk:tree_mario_raceway", .Name = "Tree (Mario Raceway)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_MARIO_RACEWAY);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_MARIO_RACEWAY);
+    });
 
     info = { .ResourceName = "mk:tree_yoshi_valley", .Name = "Tree (Yoshi Valley)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_YOSHI_VALLEY);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_YOSHI_VALLEY);
+    });
 
     info = { .ResourceName = "mk:tree_royal_raceway", .Name = "Tree (Royal Raceway)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_ROYAL_RACEWAY);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_ROYAL_RACEWAY);
+    });
 
     info = { .ResourceName = "mk:tree_moo_moo_farm", .Name = "Tree (Moo Moo Farm)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_MOO_MOO_FARM);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_MOO_MOO_FARM);
+    });
 
     info = { .ResourceName = "mk:palm_tree", .Name = "Palm Tree", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_PALM_TREE);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_PALM_TREE);
+    });
 
     info = { .ResourceName = "mk:tree_luigi_raceway", .Name = "Tree (Luigi Raceway)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_LUIGI_RACEWAY);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_LUIGI_RACEWAY);
+    });
 
     info = { .ResourceName = "mk:unknown_0x1b", .Name = "Unknown Plant (0x1B)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_UNKNOWN_0x1B);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_UNKNOWN_0x1B);
+    });
 
     info = { .ResourceName = "mk:tree_peach_castle", .Name = "Tree (Peach Castle)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_PEACH_CASTLE);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_PEACH_CASTLE);
+    });
 
     info = { .ResourceName = "mk:tree_frappe_snowland", .Name = "Tree (Frappe Snowland)", .Tags = { "foliage" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_FRAPPE_SNOWLAND);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_TREE_FRAPPE_SNOWLAND);
+    });
 
-    info = { .ResourceName = "mk:cactus1_kalamari_desert", .Name = "Cactus 1 (Kalamari Desert)", .Tags = {"foliage"}};
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS1_KALAMARI_DESERT);
-        }
-    );
+    info = { .ResourceName = "mk:cactus1_kalamari_desert",
+             .Name = "Cactus 1 (Kalamari Desert)",
+             .Tags = { "foliage" } };
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS1_KALAMARI_DESERT);
+    });
 
-    info = { .ResourceName = "mk:cactus2_kalamari_desert", .Name = "Cactus 2 (Kalamari Desert)", .Tags = {"foliage"}};
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS2_KALAMARI_DESERT);
-        }
-    );
+    info = { .ResourceName = "mk:cactus2_kalamari_desert",
+             .Name = "Cactus 2 (Kalamari Desert)",
+             .Tags = { "foliage" } };
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS2_KALAMARI_DESERT);
+    });
 
-    info = { .ResourceName = "mk:cactus3_kalamari_desert", .Name = "Cactus 3 (Kalamari Desert)", .Tags = {"foliage"}};
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS3_KALAMARI_DESERT);
-        }
-    );
+    info = { .ResourceName = "mk:cactus3_kalamari_desert",
+             .Name = "Cactus 3 (Kalamari Desert)",
+             .Tags = { "foliage" } };
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_CACTUS3_KALAMARI_DESERT);
+    });
 
     info = { .ResourceName = "mk:bush_bowsers_castle", .Name = "Bush (Bowser's Castle)" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            FVector loc = params.Location.value_or(FVector{0, 0, 0});
-            Vec3f pos = { loc.x, loc.y, loc.z };
-            Vec3s rot = {0, 0, 0};
-            Vec3f vel = {0, 0, 0};
-            add_actor_to_empty_slot(pos, rot, vel, ACTOR_BUSH_BOWSERS_CASTLE);
-        }
-    );
+    r.Add(info, [](const SpawnParams& params) {
+        FVector loc = params.Location.value_or(FVector{ 0, 0, 0 });
+        Vec3f pos = { loc.x, loc.y, loc.z };
+        Vec3s rot = { 0, 0, 0 };
+        Vec3f vel = { 0, 0, 0 };
+        add_actor_to_empty_slot(pos, rot, vel, ACTOR_BUSH_BOWSERS_CASTLE);
+    });
 
     info = { .ResourceName = "mk:finishline", .Name = "Finishline" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AFinishline(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AFinishline>);
 
     info = { .ResourceName = "mk:train", .Name = "Train", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ATrain(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ATrain>);
 
     info = { .ResourceName = "mk:paddle_boat", .Name = "Paddle Boat", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ABoat(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ABoat>);
 
     info = { .ResourceName = "mk:car", .Name = "Car", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ACar(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ACar>);
 
     info = { .ResourceName = "mk:truck", .Name = "Truck", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ATankerTruck(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ATankerTruck>);
 
     info = { .ResourceName = "mk:tanker_truck", .Name = "Tanker Truck", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ATankerTruck(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ATankerTruck>);
 
     info = { .ResourceName = "mk:bus", .Name = "Bus", .Tags = { "vehicle" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ATankerTruck(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ATankerTruck>);
 
     info = { .ResourceName = "hm:spaghetti_ship", .Name = "Spaghetti Ship" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ASpaghettiShip(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ASpaghettiShip>);
 
     info = { .ResourceName = "hm:ship", .Name = "Ghostship (HM64)" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AShip(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AShip>);
 
     info = { .ResourceName = "hm:starship", .Name = "Starship (HM64)" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AStarship(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AStarship>);
 
     info = { .ResourceName = "hm:cloud", .Name = "Cloud (HM64)", .Tags = { "item" } };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ACloud(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ACloud>);
 
     info = { .ResourceName = "hm:text", .Name = "Text (HM64)" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new AText(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<AText>);
 
     info = { .ResourceName = "mk:bowser_statue", .Name = "Bowser Statue" };
-    r.Add(info,
-        [](const SpawnParams& params) {
-            GetWorld()->AddActor(new ABowserStatue(params));
-        }
-    );
+    r.Add(info, AddActorToWorld<ABowserStatue>);
 }
 
 void RegisterTracks(Registry<TrackInfo>& r) {
@@ -455,11 +292,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_mario_raceway,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<MarioRaceway>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<MarioRaceway>()); });
 
     info = {
         .ResourceName = "mk:choco_mountain",
@@ -469,11 +302,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_choco_mountain,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<ChocoMountain>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<ChocoMountain>()); });
 
     info = {
         .ResourceName = "mk:bowsers_castle",
@@ -483,11 +312,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_bowsers_castle,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<BowsersCastle>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BowsersCastle>()); });
 
     info = {
         .ResourceName = "mk:banshee_boardwalk",
@@ -497,11 +322,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_banshee_boardwalk,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<BansheeBoardwalk>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BansheeBoardwalk>()); });
 
     info = {
         .ResourceName = "mk:yoshi_valley",
@@ -511,11 +332,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_yoshi_valley,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<YoshiValley>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<YoshiValley>()); });
 
     info = {
         .ResourceName = "mk:frappe_snowland",
@@ -525,11 +342,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_frappe_snowland,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>()); });
 
     info = {
         .ResourceName = "mk:koopa_beach",
@@ -539,11 +352,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_koopa_troopa_beach,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<KoopaTroopaBeach>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<KoopaTroopaBeach>()); });
 
     info = {
         .ResourceName = "mk:royal_raceway",
@@ -553,11 +362,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_royal_raceway,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<RoyalRaceway>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<RoyalRaceway>()); });
 
     info = {
         .ResourceName = "mk:luigi_raceway",
@@ -567,11 +372,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_luigi_raceway,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<LuigiRaceway>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<LuigiRaceway>()); });
 
     info = {
         .ResourceName = "mk:moo_moo_farm",
@@ -581,11 +382,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_moo_moo_farm,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<MooMooFarm>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<MooMooFarm>()); });
 
     info = {
         .ResourceName = "mk:toads_turnpike",
@@ -595,11 +392,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_toads_turnpike,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<ToadsTurnpike>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<ToadsTurnpike>()); });
 
     info = {
         .ResourceName = "mk:kalimari_desert",
@@ -609,11 +402,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_kalimari_desert,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<KalimariDesert>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<KalimariDesert>()); });
 
     info = {
         .ResourceName = "mk:sherbet_land",
@@ -623,11 +412,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_sherbet_land,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<SherbetLand>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<SherbetLand>()); });
 
     info = {
         .ResourceName = "mk:rainbow_road",
@@ -637,11 +422,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_rainbow_road,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<RainbowRoad>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<RainbowRoad>()); });
 
     info = {
         .ResourceName = "mk:wario_stadium",
@@ -651,11 +432,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_wario_stadium,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<WarioStadium>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<WarioStadium>()); });
 
     info = {
         .ResourceName = "mk:block_fort",
@@ -665,11 +442,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_block_fort,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<BlockFort>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BlockFort>()); });
 
     info = {
         .ResourceName = "mk:skyscraper",
@@ -679,11 +452,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_skyscraper,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<Skyscraper>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<Skyscraper>()); });
 
     info = {
         .ResourceName = "mk:double_deck",
@@ -693,11 +462,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_double_deck,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<DoubleDeck>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<DoubleDeck>()); });
 
     info = {
         .ResourceName = "mk:dk_jungle",
@@ -707,11 +472,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_dks_jungle_parkway,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<DKJungle>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<DKJungle>()); });
 
     info = {
         .ResourceName = "mk:big_donut",
@@ -721,11 +482,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .MinimapTexture = minimap_big_donut,
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>()); });
 
     info = {
         .ResourceName = "mk:test_track",
@@ -734,9 +491,5 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Length = "100m",
     };
 
-    r.Add(info,
-        []() {
-            GetWorld()->SetCurrentTrack(std::make_unique<TestTrack>());
-        }
-    );
+    r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<TestTrack>()); });
 }

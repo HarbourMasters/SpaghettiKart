@@ -16,6 +16,7 @@
 #include "engine/objects/Boos.h"
 #include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
 #include "assets/other/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "port/Game.h"
 #include "assets/textures/boo_frames.h"
 
 extern "C" {
@@ -165,25 +166,25 @@ void BansheeBoardwalk::BeginPlay() {
     }
 
     if (gIsMirrorMode) {
-        OTrashBin::Spawn(FVector(1765.0f, 45.0f, 195.0f), IRotator(0, 180, 0), 1.0f, bhv);
+        SpawnActor<OTrashBin>(FVector(1765.0f, 45.0f, 195.0f), IRotator(0, 180, 0), 1.0f, bhv);
     } else {
-        OTrashBin::Spawn(FVector(-1765.0f, 45.0f, 70.0f), IRotator(0, 0, 0), 1.0f, bhv);
+        SpawnActor<OTrashBin>(FVector(-1765.0f, 45.0f, 70.0f), IRotator(0, 0, 0), 1.0f, bhv);
     }
 
     if ((gGamestate != CREDITS_SEQUENCE) && (gModeSelection != TIME_TRIALS)) {
-        OBat::Spawn(FVector(0,0,0), IRotator(0, 0, 90));
-        OBoos::Spawn(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290));
-        OBoos::Spawn(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630));
+        SpawnActor<OBat>(FVector(0,0,0), IRotator(0, 0, 90));
+        SpawnActor<OBoos>(5, IPathSpan(180, 190), IPathSpan(200, 210), IPathSpan(280, 290));
+        SpawnActor<OBoos>(5, IPathSpan(490, 500), IPathSpan(510, 520), IPathSpan(620, 630));
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 110, 3, 0.8333333f);
-        OBombKart::Spawn(0, 190, 1, 0.8333333f);
-        OBombKart::Spawn(0, 250, 3, 0.8333333f);
-        OBombKart::Spawn(0, 475, 1, 0.8333333f);
-        OBombKart::Spawn(0, 610, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 110, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 190, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 250, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 475, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 610, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

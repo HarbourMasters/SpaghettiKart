@@ -2,6 +2,7 @@
 
 #include <libultraship.h>
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/objects/Object.h"
 #include "CoreMath.h"
 #include "World.h"
@@ -37,7 +38,7 @@ public:
             .PatrolStart = start,
             .PatrolEnd = end,
         };
-        return static_cast<OCrab*>(GetWorld()->AddObject(new OCrab(params)));
+        return static_cast<OCrab*>(AddObjectToWorld<OCrab>(params));
     }
 
     explicit OCrab(const SpawnParams& params);

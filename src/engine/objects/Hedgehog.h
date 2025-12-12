@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "engine/World.h"
 
 extern "C" {
@@ -34,7 +35,7 @@ public:
             .Location = pos,
             .PatrolEnd = patrolPoint,
         };
-        return static_cast<OHedgehog*>(GetWorld()->AddObject(new OHedgehog(params)));
+        return static_cast<OHedgehog*>(AddObjectToWorld<OHedgehog>(params));
     }
 
     ~OHedgehog() {

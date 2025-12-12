@@ -1,10 +1,10 @@
 #pragma once
 
 #include <libultraship.h>
+#include "RegisterContent.h"
 #include "engine/Actor.h"
 #include "src/textures.h"
 #include "engine/CoreMath.h"
-#include "port/Game.h"
 
 class AText : public AActor {
 public:
@@ -97,16 +97,16 @@ public:
      * For transparency {0, 0, 0, 100} <-- alpha value of 100 will render semi-transparent black text.
      *
      */
-    static inline AText* Spawn(std::string text, FVector pos, FVector scale, AText::TextMode textMode, int16_t playerIndex) {
+    static AText* Spawn(std::string text, FVector pos, FVector scale, AText::TextMode textMode, int16_t playerIndex) {
         SpawnParams params = {
             .Name = "hm:text",
             .Type = static_cast<int16_t>(textMode),
-            .Behaviour = static_cast<int16_t>(playerIndex),
+            .Behaviour = playerIndex,
             .Skin = text,
             .Location = pos,
             .Scale = scale,
         };
-        return static_cast<AText*>(GetWorld()->AddActor(new AText(params)));
+        return dynamic_cast<AText*>(AddActorToWorld<AText>(params));
     }
 
     // Virtual functions to be overridden by derived classes

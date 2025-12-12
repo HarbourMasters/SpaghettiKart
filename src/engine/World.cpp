@@ -2,30 +2,21 @@
 #include "World.h"
 #include "Cup.h"
 #include "tracks/Track.h"
-#include "objects/BombKart.h"
 #include "TrainCrossing.h"
 #include <memory>
 #include "objects/Object.h"
 #include "port/Game.h"
 
-#include "editor/GameObject.h"
-
 extern "C" {
-#include "camera.h"
 #include "objects.h"
 #include "main.h"
 #include "defines.h"
 #include "audio/external.h"
 #include "menus.h"
 #include "code_800029B0.h"
-#include "assets/models/common_data.h"
-#include "assets/models/tracks/mario_raceway/mario_raceway_data.h"
 }
 
 #include "engine/cameras/GameCamera.h"
-#include "engine/cameras/FreeCamera.h"
-#include "engine/cameras/TourCamera.h"
-#include "engine/cameras/LookBehindCamera.h"
 
 World* World::Instance;
 std::unique_ptr<Track> mTrack;
@@ -122,19 +113,25 @@ void World::TickCameras() {
     }
 }
 
-AActor* World::AddActor(AActor* actor) {
-    Actors.push_back(actor);
-    actor->BeginPlay();
-    return Actors.back();
+AActor* World::AddActor(AActor actor) {
+    Actors.push_back(std::make_unique<AActor>(actor));
+    actor.BeginPlay();
+    return Actors.back().get();
+}
+
+AActor* World::AddActor(std::unique_ptr<AActor> actor) {
+    Actors.push_back(std::move(actor));
+    Actors.back()->BeginPlay();
+    return Actors.back().get();
 }
 
 struct Actor* World::AddBaseActor() {
-    Actors.push_back(new AActor());
+    Actors.push_back(std::make_unique<AActor>());
 
-    AActor* actor = Actors.back();
+    AActor* actor = Actors.back().get();
 
     // Skip C++ vtable to access variables in C
-    return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
+    return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
 }
 
 void World::ActorBeginPlay(Actor* actor) {
@@ -162,21 +159,21 @@ Actor* World::ConvertAActorToActor(AActor* actor) {
 }
 
 AActor* World::GetActor(size_t index) {
-    return Actors[index];
+    return Actors[index].get();
 }
 
 void World::TickActors() {
     // This only ticks modded actors
-    for (AActor* actor : Actors) {
+    for (auto& actor : Actors) {
         if (actor->IsMod()) {
             actor->Tick();
         }
     }
 }
 
-StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision) {
-    StaticMeshActors.push_back(new StaticMeshActor(name, pos, rot, scale, model, collision));
-    auto actor = StaticMeshActors.back();
+StaticMeshActor* World::AddStaticMeshActor(const std::string& name, FVector pos, IRotator rot, FVector scale, const std::string& model, int32_t* collision) {
+    StaticMeshActors.push_back(std::make_unique<StaticMeshActor>(name, pos, rot, scale, model, collision));
+    auto* actor = StaticMeshActors.back().get();
     return actor;
 }
 
@@ -186,8 +183,8 @@ void World::DrawStaticMeshActors() {
     }
 }
 
-OObject* World::AddObject(OObject* object) {
-    Objects.push_back(object);
+OObject* World::AddObject(OObject object) {
+    Objects.push_back(std::make_unique<OObject>(object));
 
     // This is an example of how to get the C object.
     // However, nothing is being done with it, so it's been commented out.
@@ -195,11 +192,23 @@ OObject* World::AddObject(OObject* object) {
     //     Object* cObj = &gObjectList[object->_objectIndex];
     // }
 
-    return Objects.back();
+    return Objects.back().get();
+}
+
+OObject* World::AddObject(std::unique_ptr<OObject> object) {
+    Objects.push_back(std::move(object));
+
+    // This is an example of how to get the C object.
+    // However, nothing is being done with it, so it's been commented out.
+    // if (object->_objectIndex != -1) {
+    //     Object* cObj = &gObjectList[object->_objectIndex];
+    // }
+
+    return Objects.back().get();
 }
 
 void World::TickObjects() {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Tick();
     }
 }
@@ -207,7 +216,7 @@ void World::TickObjects() {
 // Some objects such as lakitu are ticked in process_game_tick.
 // This is a fallback to support those objects. Probably don't use this.
 void World::TickObjects60fps() {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Tick60fps();
     }
 }
@@ -218,7 +227,7 @@ ParticleEmitter* World::AddEmitter(ParticleEmitter* emitter) {
 }
 
 void World::DrawObjects(s32 cameraId) {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Draw(cameraId);
     }
 }
@@ -237,7 +246,7 @@ void World::DrawParticles(s32 cameraId) {
 
 // Sets OObjects or AActors static member variables back to default values
 void World::Reset() {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Reset(); // Used for OPenguin
     }
 }
@@ -254,21 +263,10 @@ Object* World::GetObjectByIndex(size_t index) {
 void World::CleanWorld(void) {
     printf("[Game.cpp] Clean World\n");
 
-    for (auto& actor : Actors) {
-        delete actor;
-    }
-
     World::Reset(); // Reset OObjects
-    for (auto& object : Objects) {
-        delete object;
-    }
 
     for (auto& emitter : Emitters) {
         delete emitter;
-    }
-
-    for (auto& actor : StaticMeshActors) {
-        delete actor;
     }
 
     for (size_t i = 0; i < ARRAY_COUNT(mPlayerBombKart); i++) {

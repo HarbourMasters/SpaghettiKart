@@ -4,6 +4,7 @@
 #include "port/Engine.h"
 
 #include <fast/Fast3dWindow.h>
+#include <memory>
 #include "engine/World.h"
 #include "engine/AllTracks.h"
 
@@ -211,8 +212,8 @@ void CM_VehicleCollision(s32 playerId, Player* player) {
 
 void CM_BombKartsWaypoint(s32 cameraId) {
     for (auto& object : GetWorld()->Objects) {
-        if (auto kart = dynamic_cast<OBombKart*>(object)) {
-            if (kart) {
+        if (auto* kart = dynamic_cast<OBombKart*>(object.get())) {
+            if (kart != nullptr) {
                 kart->Waypoint(cameraId);
             }
         }
@@ -638,9 +639,9 @@ void CM_SpawnStarterLakitu() {
     }
 
     for (size_t i = 0; i < gPlayerCountSelection1; i++) {
-        OLakitu* lakitu = new OLakitu(i, OLakitu::LakituType::STARTER);
-        GetWorld()->Lakitus[i] = lakitu;
-        GetWorld()->AddObject(lakitu);
+        auto lakitu = std::make_unique<OLakitu>(i, OLakitu::LakituType::STARTER);
+        GetWorld()->Lakitus[i] = lakitu.get();
+        GetWorld()->AddObject(std::move(lakitu));
     }
 }
 
@@ -692,7 +693,7 @@ void* GetTrack(void) {
 
 struct Actor* CM_GetActor(size_t index) {
     if (index < GetWorld()->Actors.size()) {
-        AActor* actor = GetWorld()->Actors[index];
+        AActor* actor = GetWorld()->Actors[index].get();
         return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
     } else {
         // throw std::runtime_error("GetActor() index out of bounds");
@@ -704,9 +705,12 @@ size_t CM_FindActorIndex(Actor* actor) {
     // Move the ptr back to look at the vtable.
     // This gets us the proper C++ class instead of just the variables used in C.
     AActor* a = reinterpret_cast<AActor*>(reinterpret_cast<char*>(actor) - sizeof(void*));
-    auto actors = GetWorld()->Actors;
+    auto& actors = GetWorld()->Actors;
 
-    auto it = std::find(actors.begin(), actors.end(), static_cast<AActor*>(a));
+    auto it = std::find_if(actors.begin(), actors.end(), [a](const std::unique_ptr<AActor>& ptr) {
+        return ptr.get() == a;
+    });
+
     if (it != actors.end()) {
         return std::distance(actors.begin(), it);
     }
@@ -715,7 +719,7 @@ size_t CM_FindActorIndex(Actor* actor) {
 }
 
 void CM_DeleteActor(size_t index) {
-    std::vector<AActor*> actors = GetWorld()->Actors;
+    auto& actors = GetWorld()->Actors;
     if (index < actors.size()) {
         actors.erase(actors.begin() + index);
     }

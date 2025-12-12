@@ -3,14 +3,10 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/SpawnParams.h"
-#include "engine/CoreMath.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "sounds.h"
 }
 
@@ -44,7 +40,7 @@ class ATruck : public AActor {
     uint32_t PathPoint = 0;
 
     // This is simply a helper function to keep Spawning code clean
-    static inline ATruck* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ATruck::SpawnMode spawnMode) {
+    static ATruck* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ATruck::SpawnMode spawnMode) {
         SpawnParams params = {
             .Name = "mk:truck",
             .Type = static_cast<uint16_t>(spawnMode),
@@ -53,7 +49,7 @@ class ATruck : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ATruck*>(GetWorld()->AddActor(new ATruck(params)));
+        return dynamic_cast<ATruck*>(AddActorToWorld<ATruck>(params));
     }
 
     explicit ATruck(const SpawnParams& params);

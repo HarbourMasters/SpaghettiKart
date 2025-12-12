@@ -65,7 +65,8 @@ public:
 
     void TickCameras();
 
-    AActor* AddActor(AActor* actor);
+    AActor* AddActor(AActor actor);
+    AActor* AddActor(std::unique_ptr<AActor> actor);
     struct Actor* AddBaseActor();
     void ActorBeginPlay(Actor* actor);
     AActor* GetActor(size_t index);
@@ -75,9 +76,10 @@ public:
     Actor* ConvertAActorToActor(AActor* actor);
 
     void DrawStaticMeshActors();
-    StaticMeshActor* AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision);
+    StaticMeshActor* AddStaticMeshActor(const std::string& name, FVector pos, IRotator rot, FVector scale, const std::string& model, int32_t* collision);
 
-    OObject* AddObject(OObject* object);
+    OObject* AddObject(OObject object);
+    OObject* AddObject(std::unique_ptr<OObject> object);
 
     void TickObjects();
     void TickObjects60fps();
@@ -117,9 +119,9 @@ public:
 
     std::vector<GameCamera*> Cameras;
 
-    std::vector<StaticMeshActor*> StaticMeshActors;
-    std::vector<AActor*> Actors;
-    std::vector<OObject*> Objects;
+    std::vector<std::unique_ptr<StaticMeshActor>> StaticMeshActors;
+    std::vector<std::unique_ptr<AActor>> Actors;
+    std::vector<std::unique_ptr<OObject>> Objects;
     std::vector<ParticleEmitter*> Emitters;
 
     std::unordered_map<s32, OLakitu*> Lakitus;

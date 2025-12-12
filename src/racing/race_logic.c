@@ -5,6 +5,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <sounds.h>
+#include "TrackBrowser.h"
 #include "camera.h"
 #include "waypoints.h"
 #include "replays.h"

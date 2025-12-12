@@ -4,6 +4,7 @@
 #include "engine/Actor.h"
 #include "CoreMath.h"
 #include "engine/World.h"
+#include "RegisterContent.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -25,7 +26,7 @@ public:
             .Velocity = velocity,
             .Speed = 182,
         };
-        return static_cast<AMarioSign*>(GetWorld()->AddActor(new AMarioSign(params)));
+        return static_cast<AMarioSign*>(AddActorToWorld<AMarioSign>(params));
     }
 
     virtual bool IsMod() override;

@@ -5,7 +5,6 @@ Checks: '
   performance-*,
   bugprone-*,
   cppcoreguidelines-*,
-  llvm-include-order,
 
   -readability-magic-numbers,
   -readability-identifier-length,
@@ -53,13 +52,6 @@ CheckOptions:
   # Namespaces: PascalCase
   - key: readability-identifier-naming.NamespaceCase
     value: CamelCase
-  
-  # Functions: PascalCase (C++ style)
-  - key: readability-identifier-naming.FunctionCase
-    value: lower_case
-  # Allow legacy decompilation function names (func_XXXXXXXX)
-  - key: readability-identifier-naming.FunctionIgnoredRegexp
-    value: '^func_[0-9A-Fa-f]+$'
   
   # Methods: PascalCase
   - key: readability-identifier-naming.MethodCase

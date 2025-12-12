@@ -3,14 +3,10 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/SpawnParams.h"
-#include "engine/CoreMath.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "sounds.h"
 }
 
@@ -39,7 +35,7 @@ class ATankerTruck : public AActor {
     u32 SoundBits = SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline ATankerTruck* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ATankerTruck::SpawnMode spawnMode) {
+    static ATankerTruck* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ATankerTruck::SpawnMode spawnMode) {
         SpawnParams params = {
             .Name = "mk:tanker_truck",
             .Type = static_cast<uint16_t>(spawnMode),
@@ -48,7 +44,7 @@ class ATankerTruck : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ATankerTruck*>(GetWorld()->AddActor(new ATankerTruck(params)));
+        return dynamic_cast<ATankerTruck*>(AddActorToWorld<ATankerTruck>(params));
     }
 
     explicit ATankerTruck(const SpawnParams& params);

@@ -45,7 +45,7 @@ namespace Editor {
             std::string label = fmt::format("{}##{}", name, id);
 
             if (ImGui::Button(label.c_str())) {
-                gEditor.SelectObjectFromSceneExplorer(actor);
+                gEditor.SelectObjectFromSceneExplorer(actor.get());
             }
 
             id += 1;
@@ -63,7 +63,7 @@ namespace Editor {
             std::string label = fmt::format("{}##{}", name, id);
 
             if (ImGui::Button(label.c_str())) {
-                gEditor.SelectObjectFromSceneExplorer(object);
+                gEditor.SelectObjectFromSceneExplorer(object.get());
             }
             id += 1;
         }

@@ -198,17 +198,17 @@ void KalimariDesert::BeginPlay() {
                 }
             }
 
-            ATrain::Spawn(_tender, _numCarriages, 2.5f, 0, waypoint, ATrain::SpawnMode::POINT);
+            SpawnActor<ATrain>(_tender, _numCarriages, 2.5f, 0, waypoint, ATrain::SpawnMode::POINT);
         }
 
         if (gModeSelection == VERSUS) {
-            OBombKart::Spawn(0, 50, 3, 0.8333333f);
-            OBombKart::Spawn(0, 138, 1, 0.8333333f);
-            OBombKart::Spawn(0, 280, 3, 0.8333333f);
-            OBombKart::Spawn(0, 404, 1, 0.8333333f);
-            OBombKart::Spawn(0, 510, 3, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 138, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 280, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 404, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 510, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         }
     }
 }

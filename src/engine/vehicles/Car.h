@@ -3,14 +3,10 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/SpawnParams.h"
-#include "engine/CoreMath.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "sounds.h"
 }
 
@@ -32,7 +28,7 @@ class ACar : public AActor {
     }
 
     // This is simply a helper function to keep Spawning code clean
-    static inline ACar* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ACar::SpawnMode spawnMode) {
+    static ACar* Spawn(f32 speedA, f32 speedB, uint32_t pathIndex, uint32_t pathPoint, ACar::SpawnMode spawnMode) {
         SpawnParams params = {
             .Name = "mk:car",
             .Type = static_cast<uint16_t>(spawnMode),
@@ -41,7 +37,7 @@ class ACar : public AActor {
             .Speed = speedA,
             .SpeedB = speedB
         };
-        return static_cast<ACar*>(GetWorld()->AddActor(new ACar(params)));
+        return dynamic_cast<ACar*>(AddActorToWorld<ACar>(params));
     }
 
     const char* Type;

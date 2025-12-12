@@ -143,42 +143,42 @@ void SherbetLand::BeginPlay() {
 
     // Multiplayer does not spawn the big penguin... It does now!
 //  if (gPlayerCountSelection1 == 1) {
-        OPenguin::Spawn(FVector(-383.0f, 2.0f, -690.0f), 0, 0, 0.0f, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT);
+        SpawnActor<OPenguin>(FVector(-383.0f, 2.0f, -690.0f), 0, 0, 0.0f, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT);
 //  }
 
-    OPenguin::Spawn(FVector(-2960.0f, -80.0f, 1521.0f), 0x150, 0, 100.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
-    OPenguin::Spawn(FVector(-2960.0f, -80.0f, 1521.0f), 0x150, 0, 100.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2960.0f, -80.0f, 1521.0f), 0x150, 0, 100.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2960.0f, -80.0f, 1521.0f), 0x150, 0, 100.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
 
-    OPenguin::Spawn(FVector(-2490.0f, -80.0f, 1612.0f), 0x100, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
-    OPenguin::Spawn(FVector(-2490.0f, -80.0f, 1612.0f), 0x100, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2490.0f, -80.0f, 1612.0f), 0x100, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2490.0f, -80.0f, 1612.0f), 0x100, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
 
-    OPenguin::Spawn(FVector(-2098.0f, -80.0f, 1624.0f), 0xFF00, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
-    OPenguin::Spawn(FVector(-2098.0f, -80.0f, 1624.0f), 0xFF00, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2098.0f, -80.0f, 1624.0f), 0xFF00, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2098.0f, -80.0f, 1624.0f), 0xFF00, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
 
-    OPenguin::Spawn(FVector(-2080.0f, -80.0f, 1171.0f), 0x150, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
-    OPenguin::Spawn(FVector(-2080.0f, -80.0f, 1171.0f), 0x150, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2080.0f, -80.0f, 1171.0f), 0x150, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
+    SpawnActor<OPenguin>(FVector(-2080.0f, -80.0f, 1171.0f), 0x150, 0, 80.0f, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE);
 
     if (gGamestate == CREDITS_SEQUENCE) {
-        OPenguin::Spawn(FVector(380.0f, 0.0f, -535.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CREDITS, OPenguin::Behaviour::SLIDE3);
+        SpawnActor<OPenguin>(FVector(380.0f, 0.0f, -535.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CREDITS, OPenguin::Behaviour::SLIDE3);
     } else {
-        OPenguin::Spawn(FVector(146.0f, 0.0f, -380.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE3);
+        SpawnActor<OPenguin>(FVector(146.0f, 0.0f, -380.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE3);
     }
 
-    OPenguin::Spawn(FVector(380.0f, 0.0f, -766.0f), 0x5000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE4);
-    OPenguin::Spawn(FVector(-2300.0f, 0.0f, -210.0f), 0xC000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
-    OPenguin::Spawn(FVector(-2500.0f, 0.0f, -250.0f), 0x4000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
-    OPenguin::Spawn(FVector(-535.0f, 0.0f, 875.0f), 0x8000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
-    OPenguin::Spawn(FVector(-250.0f, 0.0f, 953.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
+    SpawnActor<OPenguin>(FVector(380.0f, 0.0f, -766.0f), 0x5000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE4);
+    SpawnActor<OPenguin>(FVector(-2300.0f, 0.0f, -210.0f), 0xC000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
+    SpawnActor<OPenguin>(FVector(-2500.0f, 0.0f, -250.0f), 0x4000, 0x8000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
+    SpawnActor<OPenguin>(FVector(-535.0f, 0.0f, 875.0f), 0x8000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
+    SpawnActor<OPenguin>(FVector(-250.0f, 0.0f, 953.0f), 0x9000, -0x4000, 0.0f, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE6);
 
     if (gGamestate != CREDITS_SEQUENCE) {
         if (gModeSelection == VERSUS) {
-            OBombKart::Spawn(0, 50, 3, 0.8333333f);
-            OBombKart::Spawn(0, 100, 1, 0.8333333f);
-            OBombKart::Spawn(0, 150, 3, 0.8333333f);
-            OBombKart::Spawn(0, 200, 1, 0.8333333f);
-            OBombKart::Spawn(0, 250, 3, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 100, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 150, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 200, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 250, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         }
     }
 }

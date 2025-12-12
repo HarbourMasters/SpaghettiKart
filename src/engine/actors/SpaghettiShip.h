@@ -3,6 +3,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "CoreMath.h"
+#include "RegisterContent.h"
 #include "engine/Actor.h"
 #include "engine/World.h"
 
@@ -24,7 +25,7 @@ public:
             .Rotation = rot,
             .Scale = scale,
         };
-        return static_cast<ASpaghettiShip*>(GetWorld()->AddActor(new ASpaghettiShip(params)));
+        return static_cast<ASpaghettiShip*>(AddActorToWorld<ASpaghettiShip>(params));
     }
 
     virtual void Tick() override;

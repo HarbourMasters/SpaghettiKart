@@ -142,13 +142,13 @@ void LuigiRaceway::BeginPlay() {
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 1, 0.8333333f);
-        OBombKart::Spawn(0, 200, 3, 0.8333333f);
-        OBombKart::Spawn(0, 305, 1, 0.8333333f);
-        OBombKart::Spawn(0, 440, 3, 0.8333333f);
-        OBombKart::Spawn(0, 515, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 200, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 305, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 440, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 515, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

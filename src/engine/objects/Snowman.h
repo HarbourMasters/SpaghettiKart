@@ -1,31 +1,24 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
-#include "camera.h"
-#include "some_data.h"
 }
 
 class OSnowman : public OObject {
 public:
     // This is simply a helper function to keep Spawning code clean
-    static inline OSnowman* Spawn(FVector pos) {
+    static OSnowman* Spawn(FVector pos) {
         SpawnParams params = {
             .Name = "mk:snowman",
             .Location = FVector(pos.x, pos.y, pos.z),
         };
-        return static_cast<OSnowman*>(GetWorld()->AddObject(new OSnowman(params)));
+        return dynamic_cast<OSnowman*>(AddObjectToWorld<OSnowman>(params));
     }
 
     explicit OSnowman(const SpawnParams& params);
