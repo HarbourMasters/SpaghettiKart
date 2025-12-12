@@ -17,8 +17,9 @@ Gfx gBowserStatueGfx[162];
 ABowserStatue::ABowserStatue(const SpawnParams& params) {
     Name = "Bowser Statue";
     ResourceName = "mk:bowser_statue";
-    Pos = params.Location.value_or(FVector(0, 0, 0));
-    ABowserStatue::Behaviour _behaviour = static_cast<ABowserStatue::Behaviour>(params.Behaviour.value_or(0));
+    FVector pos = params.Location.value_or(FVector(0, 0, 0));
+    Pos[0] = pos.x; Pos[1] = pos.y; Pos[2] = pos.z;
+    mBehaviour = static_cast<ABowserStatue::Behaviour>(params.Behaviour.value_or(0));
 }
 
 void ABowserStatue::Tick() {
@@ -32,7 +33,7 @@ void ABowserStatue::Tick() {
 
 void ABowserStatue::Draw(Camera *camera) {
     Mat4 mtx;
-    FVector pos = FVector(Pos.x + 76, Pos.y, Pos.z + 1846);
+    FVector pos = FVector(Pos[0] + 76, Pos[1], Pos[2] + 1846);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 

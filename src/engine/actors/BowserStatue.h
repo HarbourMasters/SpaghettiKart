@@ -28,8 +28,6 @@ public:
     virtual void Tick() override;
     virtual void Draw(Camera*) override;
     virtual bool IsMod() override;
-
-    FVector Pos;
 private:
     ABowserStatue::Behaviour mBehaviour;
 };

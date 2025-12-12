@@ -75,7 +75,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:flagpole", .Name = "Flagpole" };
+    info = { .ResourceName = "mk:flagpole", .Name = "Flagpole", .Tags = {"sign"}};
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OFlagpole(params));
@@ -89,14 +89,14 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cheep_cheep", .Name = "Cheep Cheep" };
+    info = { .ResourceName = "mk:cheep_cheep", .Name = "Cheep Cheep", .Tags = {"passive"}};
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OCheepCheep(params));
         }
     );
 
-    info = { .ResourceName = "mk:bomb_kart", .Name = "Bomb Kart" };
+    info = { .ResourceName = "mk:bomb_kart", .Name = "Bomb Kart", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OBombKart(params));
@@ -131,14 +131,14 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:seagull", .Name = "Seagull" };
+    info = { .ResourceName = "mk:seagull", .Name = "Seagull", .Tags = { "passive" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OSeagull(params));
         }
     );
 
-    info = { .ResourceName = "mk:chain_chomp", .Name = "Chain Chomp" };
+    info = { .ResourceName = "mk:chain_chomp", .Name = "Chain Chomp", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OChainChomp());
@@ -166,28 +166,28 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:mario_sign" , .Name = "Mario Sign" };
+    info = { .ResourceName = "mk:mario_sign", .Name = "Mario Sign", .Tags = { "sign" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AMarioSign(params));
         }
     );
 
-    info = { .ResourceName = "mk:wario_sign", .Name = "Wario Sign" };
+    info = { .ResourceName = "mk:wario_sign", .Name = "Wario Sign", .Tags = { "sign" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AWarioSign(params));
         }
     );
 
-    info = { .ResourceName = "mk:falling_rock", .Name = "Falling Rock" };
+    info = { .ResourceName = "mk:falling_rock", .Name = "Falling Rock", .Tags = { "obstacle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AFallingRock(params));
         }
     );
 
-    info = { .ResourceName = "mk:yoshi_egg", .Name = "Yoshi Egg" };
+    info = { .ResourceName = "mk:yoshi_egg", .Name = "Yoshi Egg", .Tags = { "obstacle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -198,7 +198,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:piranha_plant", .Name = "Piranha Plant" };
+    info = { .ResourceName = "mk:piranha_plant", .Name = "Piranha Plant", .Tags = { "foliage", "obstacle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -209,7 +209,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_mario_raceway", .Name = "Tree (Mario Raceway)" };
+    info = { .ResourceName = "mk:tree_mario_raceway", .Name = "Tree (Mario Raceway)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -220,7 +220,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_yoshi_valley", .Name = "Tree (Yoshi Valley)" };
+    info = { .ResourceName = "mk:tree_yoshi_valley", .Name = "Tree (Yoshi Valley)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -231,7 +231,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_royal_raceway", .Name = "Tree (Royal Raceway)" };
+    info = { .ResourceName = "mk:tree_royal_raceway", .Name = "Tree (Royal Raceway)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -242,7 +242,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_moo_moo_farm", .Name = "Tree (Moo Moo Farm)" };
+    info = { .ResourceName = "mk:tree_moo_moo_farm", .Name = "Tree (Moo Moo Farm)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -253,7 +253,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:palm_tree", .Name = "Palm Tree" };
+    info = { .ResourceName = "mk:palm_tree", .Name = "Palm Tree", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -264,7 +264,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_luigi_raceway", .Name = "Tree (Luigi Raceway)" };
+    info = { .ResourceName = "mk:tree_luigi_raceway", .Name = "Tree (Luigi Raceway)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -275,7 +275,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:unknown_0x1b", .Name = "Unknown Plant (0x1B)" };
+    info = { .ResourceName = "mk:unknown_0x1b", .Name = "Unknown Plant (0x1B)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -286,7 +286,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_peach_castle", .Name = "Tree (Peach Castle)" };
+    info = { .ResourceName = "mk:tree_peach_castle", .Name = "Tree (Peach Castle)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -297,7 +297,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_frappe_snowland", .Name = "Tree (Frappe Snowland)" };
+    info = { .ResourceName = "mk:tree_frappe_snowland", .Name = "Tree (Frappe Snowland)", .Tags = { "foliage" } };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -308,7 +308,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus1_kalamari_desert", .Name = "Cactus 1 (Kalamari Desert)" };
+    info = { .ResourceName = "mk:cactus1_kalamari_desert", .Name = "Cactus 1 (Kalamari Desert)", .Tags = {"foliage"}};
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -319,7 +319,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus2_kalamari_desert", .Name = "Cactus 2 (Kalamari Desert)" };
+    info = { .ResourceName = "mk:cactus2_kalamari_desert", .Name = "Cactus 2 (Kalamari Desert)", .Tags = {"foliage"}};
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -330,7 +330,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus3_kalamari_desert", .Name = "Cactus 3 (Kalamari Desert)" };
+    info = { .ResourceName = "mk:cactus3_kalamari_desert", .Name = "Cactus 3 (Kalamari Desert)", .Tags = {"foliage"}};
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -359,42 +359,42 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:train", .Name = "Train" };
+    info = { .ResourceName = "mk:train", .Name = "Train", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATrain(params));
         }
     );
 
-    info = { .ResourceName = "mk:paddle_boat", .Name = "Paddle Boat" };
+    info = { .ResourceName = "mk:paddle_boat", .Name = "Paddle Boat", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ABoat(params));
         }
     );
 
-    info = { .ResourceName = "mk:car", .Name = "Car" };
+    info = { .ResourceName = "mk:car", .Name = "Car", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ACar(params));
         }
     );
 
-    info = { .ResourceName = "mk:truck", .Name = "Truck" };
+    info = { .ResourceName = "mk:truck", .Name = "Truck", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
-    info = { .ResourceName = "mk:tanker_truck", .Name = "Tanker Truck" };
+    info = { .ResourceName = "mk:tanker_truck", .Name = "Tanker Truck", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
-    info = { .ResourceName = "mk:bus", .Name = "Bus" };
+    info = { .ResourceName = "mk:bus", .Name = "Bus", .Tags = { "vehicle" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
@@ -422,7 +422,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "hm:cloud", .Name = "Cloud (HM64)" };
+    info = { .ResourceName = "hm:cloud", .Name = "Cloud (HM64)", .Tags = { "item" } };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ACloud(params));
