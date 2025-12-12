@@ -21,14 +21,15 @@ protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
-    void AddTrackContent();
-    void AddActorContent();
-    void AddCustomContent();
+    void AddTrackContent(std::string search);
+    void AddActorContent(std::string search);
+    void AddCustomContent(std::string search);
     void FindContent();
     void FolderButton(const char* label, bool& contentFlag, const ImVec2& size = ImVec2(80, 32));
     ATrain* TrainWindow();
 
 private:
+    char mSearchBuffer[128] = "";  // Search bar for all tabs
     static std::string ToLower(const std::string& str) {
         std::string result = str;
         std::transform(result.begin(), result.end(), result.begin(),

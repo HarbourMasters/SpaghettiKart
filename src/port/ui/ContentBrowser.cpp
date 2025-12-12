@@ -58,16 +58,23 @@ namespace Editor {
         ImGui::EndChild();
         ImGui::SameLine();
         ImGui::BeginChild("RightPanel", ImVec2(0, 0), true, ImGuiWindowFlags_None);
+        
+        // Search bar
+        ImGui::InputTextWithHint("##GlobalSearch", "Search name or #tag", mSearchBuffer, IM_ARRAYSIZE(mSearchBuffer));
+        ImGui::NewLine();
+
+        std::string search = ToLower(std::string(mSearchBuffer));
+        
         if (TrackContent) {
-            AddTrackContent();
+            AddTrackContent(search);
         }
 
         if (ActorContent) {
-            AddActorContent();
+            AddActorContent(search);
         }
 
         if (CustomContent) {
-            AddCustomContent();
+            AddCustomContent(search);
         }
         ImGui::EndChild();
     }
@@ -82,10 +89,16 @@ namespace Editor {
         }
     }
 
-    void ContentBrowserWindow::AddTrackContent() {
+    void ContentBrowserWindow::AddTrackContent(std::string search) {
         size_t i_track = 0;
         for (const TrackInfo* info : gTrackRegistry.GetAllInfo()) {
             if (!info) { continue; }
+
+            if (!search.empty() &&
+                ToLower(info->Name).find(search) == std::string::npos) {
+                continue;
+            }
+
             std::string label = fmt::format("{}##{}", info->Name, i_track);
             if (ImGui::Button(label.c_str())) {
                 //gGamestateNext = RACING;
@@ -105,21 +118,16 @@ namespace Editor {
         }
     }
 
-void ContentBrowserWindow::AddActorContent() {
-    static char searchBuffer[128] = ""; // Persistent search input
+void ContentBrowserWindow::AddActorContent(std::string search) {
 
-    // Draw search bar
-    ImGui::InputTextWithHint("##SearchActors", "Search name or #tag", searchBuffer, IM_ARRAYSIZE(searchBuffer));
-    ImGui::NewLine();
-    std::string searchStr = searchBuffer;
     bool isTagSearch = false;
     std::string tagToSearch;
 
-    if (!searchStr.empty() && searchStr[0] == '#') {
+    if (!search.empty() && search[0] == '#') {
         isTagSearch = true;
-        tagToSearch = ToLower(searchStr.substr(1)); // Remove the #
+        tagToSearch = ToLower(search.substr(1)); // Remove the #
     } else {
-        searchStr = ToLower(searchStr);
+        search = ToLower(search);
     }
     
 
@@ -142,12 +150,12 @@ void ContentBrowserWindow::AddActorContent() {
                     break;
                 }
             }
-        } else if (!searchStr.empty()) {
-            if (ToLower(actorInfo->Name).find(searchStr) != std::string::npos) {
+        } else if (!search.empty()) {
+            if (ToLower(actorInfo->Name).find(search) != std::string::npos) {
                 show = true;
             }
         } else {
-            show = true; // No search → show all
+            show = true; // No search --> show all
         }
 
         if (!show) continue;
@@ -182,11 +190,17 @@ void ContentBrowserWindow::AddActorContent() {
 }
 
 
-    void ContentBrowserWindow::AddCustomContent() {
+    void ContentBrowserWindow::AddCustomContent(std::string search) {
         FVector pos = GetPositionAheadOfCamera(300.0f);
 
         size_t i_custom = 0;
         for (const auto& file : Content) {
+            std::string name = ToLower(file);
+            if (!search.empty() &&
+                name.find(search) == std::string::npos) {
+                continue;
+            }
+
             if ((i_custom != 0) && (i_custom % 5 == 0)) {
             } else {
                 ImGui::SameLine();
@@ -221,6 +235,12 @@ void ContentBrowserWindow::AddActorContent() {
                     continue;
                 } else if (file.find("_vertices") != std::string::npos) {
                     // Has _vertices
+                    continue;
+                } else if (file.find("_spawns") != std::string::npos) {
+                    // has _spawns
+                    continue;
+                } else if (file.find("_waypoints") != std::string::npos) {
+                    // has _waypoints
                     continue;
                 } else if (file.find('.') != std::string::npos) {
                     // File has an extension

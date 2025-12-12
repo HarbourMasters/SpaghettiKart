@@ -19,6 +19,12 @@ ABowserStatue::ABowserStatue(const SpawnParams& params) {
     ResourceName = "mk:bowser_statue";
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
     Pos[0] = pos.x; Pos[1] = pos.y; Pos[2] = pos.z;
+
+    IRotator rot = params.Rotation.value_or(IRotator(0, 0, 0));
+    Rot[0] = rot.pitch; Rot[1] = rot.yaw; Rot[2] = rot.roll;
+
+    Scale = params.Scale.value_or(FVector(1.0f, 1.0f, 1.0f));
+
     mBehaviour = static_cast<ABowserStatue::Behaviour>(params.Behaviour.value_or(0));
 }
 
@@ -33,11 +39,11 @@ void ABowserStatue::Tick() {
 
 void ABowserStatue::Draw(Camera *camera) {
     Mat4 mtx;
-    FVector pos = FVector(Pos[0] + 76, Pos[1], Pos[2] + 1846);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-
-    ApplyMatrixTransformations(mtx, pos, *(IRotator*)&Rot, Scale);
+    
+    FVector pos = FVector(Pos[0] + 76, Pos[1], Pos[2] + 1846);
+    ApplyMatrixTransformations(mtx, pos, *(IRotator*)Rot, Scale);
     AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetCombineMode(gDisplayListHead++,G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++,G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
