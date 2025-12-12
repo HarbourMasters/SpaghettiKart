@@ -11,6 +11,7 @@
 #include "actors/Ship.h"
 #include "actors/Tree.h"
 #include "actors/Text.h"
+#include "actors/BowserStatue.h"
 #include "vehicles/Train.h"
 #include "vehicles/Boat.h"
 #include "vehicles/Bus.h"

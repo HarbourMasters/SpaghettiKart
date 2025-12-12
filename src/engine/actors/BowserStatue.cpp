@@ -1,26 +1,28 @@
 #include "BowserStatue.h"
 
 #include <libultra/gbi.h>
+#include "engine/Matrix.h"
 
 extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
 #include "main.h"
 #include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_displaylists.h"
 }
 
 Vtx gBowserStatueVtx[717];
 Gfx gBowserStatueGfx[162];
 
-ABowserStatue::ABowserStatue(FVector pos, ABowserStatue::Behaviour behaviour) {
+ABowserStatue::ABowserStatue(const SpawnParams& params) {
     Name = "Bowser Statue";
     ResourceName = "mk:bowser_statue";
-    Pos = pos;
-    ABowserStatue::Behaviour _behaviour = behaviour;
+    Pos = params.Location.value_or(FVector(0, 0, 0));
+    ABowserStatue::Behaviour _behaviour = static_cast<ABowserStatue::Behaviour>(params.Behaviour.value_or(0));
 }
 
 void ABowserStatue::Tick() {
-    switch(_behaviour) {
+    switch(mBehaviour) {
         case DEFAULT:
             break;
         case CRUSH:
@@ -30,18 +32,15 @@ void ABowserStatue::Tick() {
 
 void ABowserStatue::Draw(Camera *camera) {
     Mat4 mtx;
-    Vec3f pos;
-    pos[0] = Pos.x + 76;
-    pos[1] = Pos.y;
-    pos[2] = Pos.z + 1846;
+    FVector pos = FVector(Pos.x + 76, Pos.y, Pos.z + 1846);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    mtxf_pos_rotation_xyz(mtx, pos, Rot);
-    if (render_set_position(mtx, 0) != 0) {
-
-        gSPDisplayList(gDisplayListHead++, gBowserStatueGfx);
-    }
+    ApplyMatrixTransformations(mtx, pos, *(IRotator*)&Rot, Scale);
+    AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPSetCombineMode(gDisplayListHead++,G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetRenderMode(gDisplayListHead++,G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gSPDisplayList(gDisplayListHead++,(Gfx*) d_course_bowsers_castle_packed_dl_2BB8);
 }
 
 bool ABowserStatue::IsMod() { return true; }

@@ -435,6 +435,13 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
             GetWorld()->AddActor(new AText(params));
         }
     );
+
+    info = { .ResourceName = "mk:bowser_statue", .Name = "Bowser Statue" };
+    r.Add(info,
+        [](const SpawnParams& params) {
+            GetWorld()->AddActor(new ABowserStatue(params));
+        }
+    );
 }
 
 void RegisterTracks(Registry<TrackInfo>& r) {
