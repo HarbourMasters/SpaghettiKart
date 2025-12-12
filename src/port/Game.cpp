@@ -767,7 +767,6 @@ void Editor_ClearMatrix() {
 void Editor_CleanWorld() {
     if (bCleanWorld) {
         CM_CleanWorld();
-        CM_CleanCameras();
         bCleanWorld = false;
     }
 }
