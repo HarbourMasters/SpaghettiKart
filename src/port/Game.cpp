@@ -81,6 +81,10 @@ World* GetWorld() {
 }
 
 void CustomEngineInit() {
+    // Close the editor because lus remembers if it was open
+    // This also turns off freecam
+    gEditor.Disable();
+
     RegisterTracks(gTrackRegistry);
     gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);
     TrackBrowser::Instance->FindCustomTracks();

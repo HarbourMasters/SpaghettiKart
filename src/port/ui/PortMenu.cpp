@@ -416,12 +416,6 @@ void PortMenu::AddEnhancements() {
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoWallColision", 0); })
         .Options(FloatSliderOptions().Min(-50.0f).Max(50.0f).DefaultValue(0.0f).Tooltip(
             "When Disable Wall Collision are enable what is the minimal height you can get."));
-
-#if not defined(__SWITCH__) and not defined(__WIIU__)
-    path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", "HM64 Lab", 4);
-    AddWidget(path, "Work in progress.", WIDGET_TEXT);
-#endif
 }
 
 #ifdef __SWITCH__

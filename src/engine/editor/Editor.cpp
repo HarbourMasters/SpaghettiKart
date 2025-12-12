@@ -64,7 +64,6 @@ namespace Editor {
         bIsEditorPaused = false;
         CVarSetInteger("gFreecam", false);
         CM_SetFreeCamera(false);
-        gScreenOneCtx->camera = &cameras[0];
         Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->Hide();
         Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->Hide();
         Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->Hide();
@@ -250,8 +249,10 @@ namespace Editor {
 /** C BRIDGE FUNCTIONS **/
 
 extern "C" void Editor_Launch(const char* resourceName) {
+#if not defined(__SWITCH__) and not defined(__WIIU__)
     TrackBrowser::Instance->SetTrack(std::string(resourceName));
     gEditor.Enable();
+#endif
 }
 
 extern "C" void Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY) {
