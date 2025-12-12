@@ -147,6 +147,18 @@ public:
         }
         return mTracks[trackIndex]->Length.c_str();
     }
+
+    const char* GetMinimapTextureByIdx(size_t trackIndex) {
+        if (trackIndex >= mTracks.size()) {
+            printf("[TrackBrowser] [GetTrackMinimapTextureByIdx] Error: trackIndex %zu out of bounds (max %zu)\n", trackIndex, mTracks.size());
+            return NULL;
+        }
+        if (nullptr == mTracks[trackIndex]) {
+            printf("[TrackBrowser] [GetTrackMinimapTextureByIdx] Error: TrackInfo at index %zu is null\n", trackIndex);
+            return NULL;
+        }
+        return mTracks[trackIndex]->MinimapTexture;
+    }
 };
 
 #endif // __cplusplus
@@ -166,6 +178,7 @@ void TrackBrowser_SetTrackByIdx(size_t trackIndex);
 const char* TrackBrowser_GetTrackNameByIdx(size_t trackIndex);
 const char* TrackBrowser_GetTrackDebugNameByIdx(size_t trackIndex);
 const char* TrackBrowser_GetTrackLengthByIdx(size_t trackIndex);
+const char* TrackBrowser_GetMinimapTextureByIdx(size_t trackIndex);
 #ifdef __cplusplus
 }
 #endif // __cplusplus

@@ -10,6 +10,7 @@ extern "C" {
 #include "common_structs.h"
 #include "actors.h"
 #include "actor_types.h"
+#include "assets/textures/other_textures.h"
 }
 
 /**
@@ -437,6 +438,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "mario raceway",
         .DebugName = "m circuit",
         .Length = "567m",
+        .MinimapTexture = minimap_mario_raceway,
     };
 
     r.Add(info,
@@ -450,6 +452,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "choco mountain",
         .DebugName = "mountain",
         .Length = "687m",
+        .MinimapTexture = minimap_choco_mountain,
     };
 
     r.Add(info,
@@ -463,6 +466,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "bowser's castle",
         .DebugName = "castle",
         .Length = "777m",
+        .MinimapTexture = minimap_bowsers_castle,
     };
 
     r.Add(info,
@@ -476,6 +480,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "banshee boardwalk",
         .DebugName = "ghost",
         .Length = "747m",
+        .MinimapTexture = minimap_banshee_boardwalk,
     };
 
     r.Add(info,
@@ -489,6 +494,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "yoshi valley",
         .DebugName = "maze",
         .Length = "772m",
+        .MinimapTexture = minimap_yoshi_valley,
     };
 
     r.Add(info,
@@ -502,6 +508,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "frappe snowland",
         .DebugName = "snow",
         .Length = "734m",
+        .MinimapTexture = minimap_frappe_snowland,
     };
 
     r.Add(info,
@@ -515,6 +522,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "koopa troopa beach",
         .DebugName = "beach",
         .Length = "691m",
+        .MinimapTexture = minimap_koopa_troopa_beach,
     };
 
     r.Add(info,
@@ -528,6 +536,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "royal raceway",
         .DebugName = "p circuit",
         .Length = "1025m",
+        .MinimapTexture = minimap_royal_raceway,
     };
 
     r.Add(info,
@@ -541,6 +550,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "luigi raceway",
         .DebugName = "l circuit",
         .Length = "717m",
+        .MinimapTexture = minimap_luigi_raceway,
     };
 
     r.Add(info,
@@ -554,6 +564,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "moo moo farm",
         .DebugName = "farm",
         .Length = "527m",
+        .MinimapTexture = minimap_moo_moo_farm,
     };
 
     r.Add(info,
@@ -567,6 +578,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "toad's turnpike",
         .DebugName = "highway",
         .Length = "1036m",
+        .MinimapTexture = minimap_toads_turnpike,
     };
 
     r.Add(info,
@@ -580,6 +592,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "kalimari desert",
         .DebugName = "desert",
         .Length = "753m",
+        .MinimapTexture = minimap_kalimari_desert,
     };
 
     r.Add(info,
@@ -593,6 +606,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "sherbet land",
         .DebugName = "sherbet",
         .Length = "756m",
+        .MinimapTexture = minimap_sherbet_land,
     };
 
     r.Add(info,
@@ -606,6 +620,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "rainbow road",
         .DebugName = "rainbow",
         .Length = "2000m",
+        .MinimapTexture = minimap_rainbow_road,
     };
 
     r.Add(info,
@@ -619,6 +634,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "wario stadium",
         .DebugName = "stadium",
         .Length = "1591m",
+        .MinimapTexture = minimap_wario_stadium,
     };
 
     r.Add(info,
@@ -632,6 +648,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "block fort",
         .DebugName = "block",
         .Length = "",
+        .MinimapTexture = minimap_block_fort,
     };
 
     r.Add(info,
@@ -645,6 +662,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "skyscraper",
         .DebugName = "skyscraper",
         .Length = "",
+        .MinimapTexture = minimap_skyscraper,
     };
 
     r.Add(info,
@@ -658,6 +676,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "double deck",
         .DebugName = "deck",
         .Length = "",
+        .MinimapTexture = minimap_double_deck,
     };
 
     r.Add(info,
@@ -671,6 +690,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "d.k.'s jungle parkway",
         .DebugName = "jungle",
         .Length = "893m",
+        .MinimapTexture = minimap_dks_jungle_parkway,
     };
 
     r.Add(info,
@@ -684,6 +704,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
         .Name = "big donut",
         .DebugName = "doughnut",
         .Length = "",
+        .MinimapTexture = minimap_big_donut,
     };
 
     r.Add(info,

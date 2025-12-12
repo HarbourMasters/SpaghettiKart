@@ -6,11 +6,13 @@
 #include <functional>
 
 struct TrackInfo {
+    std::string Path; // Path to the custom track
     std::string ResourceName;
     std::string Name;
     std::string DebugName;
     std::string Length;
-    std::string Path; // Path to the custom track
+    const char* MinimapTexture;
+    // std::string PreviewTexture;
 };
 
 struct ActorInfo {

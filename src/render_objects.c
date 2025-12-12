@@ -44,8 +44,9 @@
 #include "port/Game.h"
 #include "port/Engine.h"
 
-#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
+#include "engine/tracks/Track.h"
+#include "engine/TrackBrowser.h"
 
 #include "port/interpolation/FrameInterpolation.h"
 #include "assets/textures/tracks/sherbet_land/sherbet_land_data.h"
@@ -2758,13 +2759,18 @@ void func_8004EE54(s32 playerId) {
 }
 
 void func_8004EF9C(s32 arg0) {
-    s16 temp_t0;
-    s16 temp_v0;
+    s16 height;
+    s16 width;
+    const char* minimap = TrackBrowser_GetMinimapTextureByIdx(arg0);
 
-    temp_v0 = CM_GetPropsTrackId(arg0)->Minimap.Width;
-    temp_t0 = CM_GetPropsTrackId(arg0)->Minimap.Height;
-    func_8004D37C(0x00000104, 0x0000003C, CM_GetPropsTrackId(arg0)->Minimap.Texture, 0x000000FF, 0x000000FF,
-                  0x000000FF, 0x000000FF, temp_v0, temp_t0, temp_v0, temp_t0);
+    if (NULL == minimap) {
+        return;
+    }
+
+    width = ResourceGetTexWidthByName(minimap);
+    height = ResourceGetTexHeightByName(minimap);
+    func_8004D37C(0x00000104, 0x0000003C, minimap, 0x000000FF, 0x000000FF,
+                  0x000000FF, 0x000000FF, width, height, width, height);
 }
 
 void set_minimap_finishline_position(s32 playerId) {

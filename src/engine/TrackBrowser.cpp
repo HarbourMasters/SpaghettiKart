@@ -112,3 +112,7 @@ extern "C" const char* TrackBrowser_GetTrackDebugNameByIdx(size_t trackIndex) {
 extern "C" const char* TrackBrowser_GetTrackLengthByIdx(size_t trackIndex) {
     return TrackBrowser::Instance->GetTrackLengthByIdx(trackIndex);
 }
+
+extern "C" const char* TrackBrowser_GetMinimapTextureByIdx(size_t trackIndex) {
+    return TrackBrowser::Instance->GetMinimapTextureByIdx(trackIndex);
+}
