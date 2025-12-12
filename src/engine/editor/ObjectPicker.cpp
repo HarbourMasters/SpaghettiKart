@@ -35,7 +35,7 @@ void ObjectPicker::Tick() {
 }
 
 void ObjectPicker::SelectObject(std::vector<GameObject*> objects) {
-    Camera* camera = gEditor.eCamera;
+    Camera* camera = gScreenOneCtx->camera;
     Ray ray;
     ray.Origin = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
 
@@ -59,7 +59,7 @@ void ObjectPicker::SelectObject(std::vector<GameObject*> objects) {
 }
 
 void ObjectPicker::DragHandle() {
-    Camera* camera = gEditor.eCamera;
+    Camera* camera = gScreenOneCtx->camera;
     Ray ray;
     ray.Origin = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
     ray.Direction = ScreenRayTrace();
@@ -136,7 +136,7 @@ void ObjectPicker::Draw() {
     }, _selected);
 
     if (Debug) {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         Mat4 CursorMtx;
         IRotator rot = IRotator(0,0,0);
         FVector scale = FVector(1, 1, 1);

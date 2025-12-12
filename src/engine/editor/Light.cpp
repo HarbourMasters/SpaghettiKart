@@ -57,7 +57,7 @@ size_t LightObject::NumLights = 0;
         SetDirectionFromRotator(Rot, Direction);
     }
     void LightObject::Draw() {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         Mat4 mtx_sun;
         Editor_MatrixIdentity(mtx_sun);
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);

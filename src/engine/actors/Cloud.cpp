@@ -17,7 +17,7 @@ extern f32 gKartGravityTable[];
 }
 
 ACloud::ACloud(const SpawnParams& params) : AActor(params) {
-    Name = "Cloud";
+    Name = "Cloud (HM64)";
     ResourceName = "hm:cloud";
     FVector pos = params.Location.value_or(FVector(0, 0, 0));
     Pos[0] = pos.x;

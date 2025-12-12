@@ -21,7 +21,7 @@ extern "C" {
 void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
     ActorInfo info;
 
-    info = { .ResourceName = "mk:item_box" };
+    info = { .ResourceName = "mk:item_box", .Name = "Item Box" };
 
     r.Add(info,
         [](const SpawnParams& params) {
@@ -31,7 +31,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:fake_item_box" };
+    info = { .ResourceName = "mk:fake_item_box", .Name = "Fake Item Box" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -40,154 +40,154 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:thwomp" };
+    info = { .ResourceName = "mk:thwomp", .Name = "Thwomp" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OThwomp(params));
         }
     );
 
-    info = { .ResourceName = "mk:snowman" };
+    info = { .ResourceName = "mk:snowman", .Name = "Snowman" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OSnowman(params));
         }
     );
 
-    info = { .ResourceName = "mk:hot_air_balloon" };
+    info = { .ResourceName = "mk:hot_air_balloon", .Name = "Hot Air Balloon" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OHotAirBalloon(params));
         }
     );
 
-    info = { .ResourceName = "mk:hedgehog" };
+    info = { .ResourceName = "mk:hedgehog", .Name = "Hedgehog" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OHedgehog(params));
         }
     );
 
-    info = { .ResourceName = "mk:grand_prix_balloons" };
+    info = { .ResourceName = "mk:grand_prix_balloons", .Name = "Grand Prix Balloons" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OGrandPrixBalloons(params));
         }
     );
 
-    info = { .ResourceName = "mk:flagpole" };
+    info = { .ResourceName = "mk:flagpole", .Name = "Flagpole" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OFlagpole(params));
         }
     );
 
-    info = { .ResourceName = "mk:crab" };
+    info = { .ResourceName = "mk:crab", .Name = "Crab" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OCrab(params));
         }
     );
 
-    info = { .ResourceName = "mk:cheep_cheep" };
+    info = { .ResourceName = "mk:cheep_cheep", .Name = "Cheep Cheep" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OCheepCheep(params));
         }
     );
 
-    info = { .ResourceName = "mk:bomb_kart" };
+    info = { .ResourceName = "mk:bomb_kart", .Name = "Bomb Kart" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OBombKart(params));
         }
     );
 
-    info = { .ResourceName = "mk:bat" };
+    info = { .ResourceName = "mk:bat", .Name = "Bat" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OBat(params));
         }
     );
 
-    info = { .ResourceName = "mk:boos" };
+    info = { .ResourceName = "mk:boos", .Name = "Boos" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OBoos(params));
         }
     );
 
-    info = { .ResourceName = "mk:trophy" };
+    info = { .ResourceName = "mk:trophy", .Name = "Trophy" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OTrophy(params));
         }
     );
 
-    info = { .ResourceName = "mk:trash_bin" };
+    info = { .ResourceName = "mk:trash_bin", .Name = "Trash Bin" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OTrashBin(params));
         }
     );
 
-    info = { .ResourceName = "mk:seagull" };
+    info = { .ResourceName = "mk:seagull", .Name = "Seagull" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OSeagull(params));
         }
     );
 
-    info = { .ResourceName = "mk:chain_chomp" };
+    info = { .ResourceName = "mk:chain_chomp", .Name = "Chain Chomp" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OChainChomp());
         }
     );
 
-    info = { .ResourceName = "mk:podium" };
+    info = { .ResourceName = "mk:podium", .Name = "Podium" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OPodium(params));
         }
     );
 
-    info = { .ResourceName = "mk:penguin" };
+    info = { .ResourceName = "mk:penguin", .Name = "Penguin" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddObject(new OPenguin(params));
         }
     );
 
-    info = { .ResourceName = "mk:banana" };
+    info = { .ResourceName = "mk:banana", .Name = "Banana" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ABanana(params));
         }
     );
 
-    info = { .ResourceName = "mk:mario_sign" };
+    info = { .ResourceName = "mk:mario_sign" , .Name = "Mario Sign" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AMarioSign(params));
         }
     );
 
-    info = { .ResourceName = "mk:wario_sign" };
+    info = { .ResourceName = "mk:wario_sign", .Name = "Wario Sign" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AWarioSign(params));
         }
     );
 
-    info = { .ResourceName = "mk:falling_rock" };
+    info = { .ResourceName = "mk:falling_rock", .Name = "Falling Rock" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AFallingRock(params));
         }
     );
 
-    info = { .ResourceName = "mk:yoshi_egg" };
+    info = { .ResourceName = "mk:yoshi_egg", .Name = "Yoshi Egg" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -198,7 +198,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:piranha_plant" };
+    info = { .ResourceName = "mk:piranha_plant", .Name = "Piranha Plant" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -209,7 +209,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_mario_raceway" };
+    info = { .ResourceName = "mk:tree_mario_raceway", .Name = "Tree (Mario Raceway)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -220,7 +220,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_yoshi_valley" };
+    info = { .ResourceName = "mk:tree_yoshi_valley", .Name = "Tree (Yoshi Valley)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -231,7 +231,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_royal_raceway" };
+    info = { .ResourceName = "mk:tree_royal_raceway", .Name = "Tree (Royal Raceway)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -242,7 +242,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_moo_moo_farm" };
+    info = { .ResourceName = "mk:tree_moo_moo_farm", .Name = "Tree (Moo Moo Farm)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -253,7 +253,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:palm_tree" };
+    info = { .ResourceName = "mk:palm_tree", .Name = "Palm Tree" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -264,7 +264,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:unknown_0x1a" };
+    info = { .ResourceName = "mk:tree_luigi_raceway", .Name = "Tree (Luigi Raceway)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -275,7 +275,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:unknown_0x1b" };
+    info = { .ResourceName = "mk:unknown_0x1b", .Name = "Unknown Plant (0x1B)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -286,7 +286,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_peach_castle" };
+    info = { .ResourceName = "mk:tree_peach_castle", .Name = "Tree (Peach Castle)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -297,7 +297,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:tree_frappe_snowland" };
+    info = { .ResourceName = "mk:tree_frappe_snowland", .Name = "Tree (Frappe Snowland)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -308,7 +308,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus1_kalamari_desert" };
+    info = { .ResourceName = "mk:cactus1_kalamari_desert", .Name = "Cactus 1 (Kalamari Desert)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -319,7 +319,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus2_kalamari_desert" };
+    info = { .ResourceName = "mk:cactus2_kalamari_desert", .Name = "Cactus 2 (Kalamari Desert)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -330,7 +330,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:cactus3_kalamari_desert" };
+    info = { .ResourceName = "mk:cactus3_kalamari_desert", .Name = "Cactus 3 (Kalamari Desert)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -341,7 +341,7 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:bush_bowsers_castle" };
+    info = { .ResourceName = "mk:bush_bowsers_castle", .Name = "Bush (Bowser's Castle)" };
     r.Add(info,
         [](const SpawnParams& params) {
             FVector loc = params.Location.value_or(FVector{0, 0, 0});
@@ -352,77 +352,84 @@ void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
         }
     );
 
-    info = { .ResourceName = "mk:train" };
+    info = { .ResourceName = "mk:finishline", .Name = "Finishline" };
+    r.Add(info,
+        [](const SpawnParams& params) {
+            GetWorld()->AddActor(new AFinishline(params));
+        }
+    );
+
+    info = { .ResourceName = "mk:train", .Name = "Train" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATrain(params));
         }
     );
 
-    info = { .ResourceName = "mk:paddle_boat" };
+    info = { .ResourceName = "mk:paddle_boat", .Name = "Paddle Boat" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ABoat(params));
         }
     );
 
-    info = { .ResourceName = "mk:car" };
+    info = { .ResourceName = "mk:car", .Name = "Car" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ACar(params));
         }
     );
 
-    info = { .ResourceName = "mk:truck" };
+    info = { .ResourceName = "mk:truck", .Name = "Truck" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
-    info = { .ResourceName = "mk:tanker_truck" };
+    info = { .ResourceName = "mk:tanker_truck", .Name = "Tanker Truck" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
-    info = { .ResourceName = "mk:bus" };
+    info = { .ResourceName = "mk:bus", .Name = "Bus" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ATankerTruck(params));
         }
     );
 
-    info = { .ResourceName = "hm:spaghetti_ship" };
+    info = { .ResourceName = "hm:spaghetti_ship", .Name = "Spaghetti Ship" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ASpaghettiShip(params));
         }
     );
 
-    info = { .ResourceName = "hm:ship" };
+    info = { .ResourceName = "hm:ship", .Name = "Ghostship (HM64)" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AShip(params));
         }
     );
 
-    info = { .ResourceName = "hm:starship" };
+    info = { .ResourceName = "hm:starship", .Name = "Starship (HM64)" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AStarship(params));
         }
     );
 
-    info = { .ResourceName = "hm:cloud" };
+    info = { .ResourceName = "hm:cloud", .Name = "Cloud (HM64)" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new ACloud(params));
         }
     );
 
-    info = { .ResourceName = "hm:text" };
+    info = { .ResourceName = "hm:text", .Name = "Text (HM64)" };
     r.Add(info,
         [](const SpawnParams& params) {
             GetWorld()->AddActor(new AText(params));

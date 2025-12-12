@@ -26,15 +26,15 @@ AShip::AShip(const SpawnParams& params) : AActor(params) {
     SpawnSkin = static_cast<AShip::Skin>(params.Type.value_or(0));
     switch(SpawnSkin) {
         case Skin::GHOSTSHIP:
-            Name = "Ghostship";
+            Name = "Ghostship (HM64)";
             _skin = ghostship_Plane_mesh;
             break;
         case Skin::SHIP2:
-            Name = "Ship_1";
+            Name = "Ship 1 (HM64)";
             _skin = ship2_SoH_mesh;
             break;
         case Skin::SHIP3:
-            Name = "Ship_2";
+            Name = "Ship 2 (HM64)";
             _skin = ship3_2Ship_mesh;
             break;
     }

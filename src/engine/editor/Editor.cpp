@@ -106,13 +106,6 @@ namespace Editor {
             return;
         }
 
-        // Set camera
-        if (CVarGetInteger("gFreecam", 0) == true) {
-            eCamera = &cameras[CAMERA_FREECAM];
-        } else {
-            eCamera = &cameras[0];
-        }
-
         auto wnd = GameEngine::Instance->context->GetWindow();
 
         static bool wasMouseDown = false;

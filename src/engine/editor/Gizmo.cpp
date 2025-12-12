@@ -112,7 +112,7 @@ void Gizmo::Translate() {
     static float length = 180.0f; // Default value
 
     std::visit([this](auto* obj) {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         float x, y, z = 0;
         if (nullptr == obj) {
             return;
@@ -217,7 +217,7 @@ f32 Gizmo::SnapToSurface(const FVector pos) {
 
 void Gizmo::Rotate() {
     std::visit([this](auto* obj) {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         FVector cam = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
         IRotator rot;
 
@@ -269,7 +269,7 @@ void Gizmo::Rotate() {
 
 void Gizmo::Scale() {
     std::visit([this](auto* obj) {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         FVector cam = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
         if (nullptr == obj) {
             return;
@@ -398,7 +398,7 @@ void Gizmo::DrawHandles() {
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     if (center) {
-        Camera* camera = gEditor.eCamera;
+        Camera* camera = gScreenOneCtx->camera;
         Mat4 CenterMtx;
         Editor_MatrixIdentity(CenterMtx);
 

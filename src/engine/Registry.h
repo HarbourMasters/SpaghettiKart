@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include <set>
 
 struct TrackInfo {
     std::string Path; // Path to the custom track
@@ -17,6 +18,8 @@ struct TrackInfo {
 
 struct ActorInfo {
     std::string ResourceName;
+    std::string Name;
+    std::set<std::string> Tags; // Category for filtering
 };
 
 /**

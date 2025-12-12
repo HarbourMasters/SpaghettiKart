@@ -14,7 +14,7 @@ extern "C" {
 class AShip : public AActor {
 public:
 
-    enum Skin {
+    enum Skin : int16_t {
         GHOSTSHIP,
         SHIP2,
         SHIP3,

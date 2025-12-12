@@ -42,7 +42,7 @@ bool IsInGameScreen() {
 
 FVector ScreenRayTrace() {
     auto wnd = GameEngine::Instance->context->GetWindow();
-    Camera* camera = gEditor.eCamera;
+    Camera* camera = gScreenOneCtx->camera;
 
     Ship::Coords mouse = wnd->GetMousePos();
     auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
@@ -412,7 +412,7 @@ void SetRotatorFromDirection(FVector direction, IRotator* rot) {
 }
 
 FVector GetPositionAheadOfCamera(f32 dist) {
-    Camera* camera = gEditor.eCamera;
+    Camera* camera = gScreenOneCtx->camera;
     FVector pos = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
 
     f32 pitch = (camera->rot[2] / 65535.0f) * 360.0f;

@@ -15,7 +15,6 @@ public:
     bool Refresh = true;
 
     bool ActorContent = false;
-    bool ObjectContent = false;
     bool CustomContent = false;
     bool TrackContent = false;
 protected:
@@ -24,7 +23,6 @@ protected:
     void UpdateElement() override {};
     void AddTrackContent();
     void AddActorContent();
-    void AddObjectContent();
     void AddCustomContent();
     void FindContent();
     void FolderButton(const char* label, bool& contentFlag, const ImVec2& size = ImVec2(80, 32));
