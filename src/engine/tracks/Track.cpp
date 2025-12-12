@@ -338,9 +338,10 @@ void Track::Load() {
         Track::Init();
     } else { // Load custom track
         bIsMod = true;
-        Editor::LoadLevel(this, trackPath);
-            const std::string trackSectionPath = (trackPath + "/data_track_sections");
 
+        Editor::LoadTrackDataFromJson(this, trackPath);
+        
+        const std::string trackSectionPath = (trackPath + "/data_track_sections");
         TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(trackSectionPath.c_str());
         size_t size = ResourceGetSizeByName(trackSectionPath.c_str());
 

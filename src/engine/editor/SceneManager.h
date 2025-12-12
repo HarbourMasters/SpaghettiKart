@@ -8,7 +8,7 @@
 
 namespace Editor {
     void SaveLevel(Track* track);
-    void LoadLevel(Track* track, const std::string& trackPath);
+    void LoadTrackDataFromJson(Track* track, const std::string& trackPath);
     void LoadTrackInfo(TrackInfo& info, std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson);
     void LoadMinimap(Track* track, std::string filePath);

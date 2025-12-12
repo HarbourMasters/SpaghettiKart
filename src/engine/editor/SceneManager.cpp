@@ -83,8 +83,8 @@ namespace Editor {
     }
 
     /** Do not use GetWorld()->CurrentCourse during loading! The current track is not guaranteed! **/
-    void LoadLevel(Track* track, const std::string& trackPath) {
-        SPDLOG_INFO("[SceneManager] [LoadLevel] Loading track scenefile...");
+    void LoadTrackDataFromJson(Track* track, const std::string& trackPath) {
+        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Loading track scenefile...");
 
         if (trackPath.empty()) {
             SPDLOG_INFO("  Unable to load track. trackPath empty.");
@@ -127,12 +127,12 @@ namespace Editor {
         LoadActors(track, data);
         LoadStaticMeshActors(track, data);
         LoadTour(track, data);
-        SPDLOG_INFO("[SceneManager] [LoadLevel] Scene File Loaded!");
+        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Scene File Loaded!");
     }
 
     void LoadTrackInfo(TrackInfo& info, std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
         if (nullptr == archive) {
-            SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, track or rootarchive were null");
+            SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Failed to load scenefile, track or rootarchive were null");
             return;
         }
 
