@@ -86,6 +86,7 @@ typedef struct {
 } TrackSections;
 
 typedef struct Properties {
+    char ResourceName[128];
     char Name[128];
     char DebugName[128];
     char TrackLength[128];
@@ -116,6 +117,7 @@ typedef struct Properties {
     nlohmann::json to_json() const {
         nlohmann::json j;
        // j["Id"] = Id ? Id : "";
+        j["ResourceName"] = ResourceName ? ResourceName : "";
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
         j["TrackLength"] = TrackLength ? TrackLength : "";
@@ -180,6 +182,9 @@ typedef struct Properties {
     void from_json(const nlohmann::json& j) {
         //Id = j.at("Id").get<std::string>().c_str();
 //        Name = j.at("Name").get<std::string>().c_str();
+        strncpy(ResourceName, j.at("ResourceName").get<std::string>().c_str(), sizeof(ResourceName) - 1);
+        ResourceName[sizeof(ResourceName) - 1] = '\0'; // Ensure null termination
+
         strncpy(Name, j.at("Name").get<std::string>().c_str(), sizeof(Name) - 1);
         Name[sizeof(Name) - 1] = '\0'; // Ensure null termination
 
@@ -313,7 +318,9 @@ class World; // <-- Forward declare
 class Track {
 
 public:
-    std::string Id;
+    // Required to save scenefile data
+    std::shared_ptr<Ship::Archive> Archive;
+    std::string ResourceName;
     Properties Props;
 
     // This allows multiple water levels in a map.
@@ -323,10 +330,6 @@ public:
     bool bSpawnFinishline = true;
     std::optional<FVector> FinishlineSpawnPoint;
 
-    // O2R Loading
-    std::shared_ptr<Ship::Archive> RootArchive;
-    std::string SceneFilePtr;
-    std::string TrackSectionsPtr;
 
     bool bIsMod = false;
     std::vector<SpawnParams> SpawnList;
@@ -340,7 +343,6 @@ public:
         RestoreTriangleWinding();
     };
 
-    virtual void LoadO2R(std::string trackPath); // Load custom track from o2r
     virtual void Load(); // Decompress and load stock tracks or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
     virtual void ParseTrackSections(TrackSections* sections, size_t size);

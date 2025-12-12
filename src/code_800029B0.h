@@ -5,6 +5,7 @@
 #include <libultraship.h>
 #include <actor_types.h>
 #include "camera.h"
+#include "engine/CoreMath.h"
 
 typedef struct {
     /* 0x00 */ struct Controller* controllers; // gControllers ptr 800F6910
@@ -40,13 +41,13 @@ void clear_nmi_buffer(void);
 void credits_spawn_actors(void);
 
 extern s16 gCurrentCourseId; // D_800DC5A0
-extern s16 gCurrentlyLoadedCourseId;
+extern uintptr_t gCurrentlyLoadedTrackAddr;
 extern u16 D_800DC5A8;
 extern s32 D_800DC5AC;
 extern u16 D_800DC5B0;
 extern u16 D_800DC5B4;
 extern u16 D_800DC5B8;
-extern u16 D_800DC5BC;
+extern bool bFog;
 extern u16 gIsInQuitToMenuTransition;
 extern u16 gQuitToMenuTransitionCounter;
 extern u16 D_800DC5C8;
@@ -152,9 +153,7 @@ extern u16 gNumPermanentActors;
 extern UNUSED u8 D_80162578[];
 extern s16 gDebugPathCount;
 extern s16 sIsController1Unplugged;
-extern s32 D_801625EC;
-extern s32 D_801625F0;
-extern s32 D_801625F4;
+extern struct RGBA8 gFogColour;
 extern uintptr_t D_801625F8;
 extern f32 D_801625FC;
 

@@ -79,15 +79,15 @@ void AFinishline::Draw(Camera *camera) {
     }
 
     if (temp < camera->pos[2]) {
-        if (D_800DC5BC != 0) {
+        if (bFog) {
 
-            gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+            gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, 0xFF);
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D001C20);
         } else {
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D001B90);
         }
-    } else if (D_800DC5BC != 0) {
-        gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+    } else if (bFog) {
+        gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, 0xFF);
         gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D001C88);
     } else {
         gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D001BD8);

@@ -28,8 +28,8 @@
 
 #include "enhancements/collision_viewer.h"
 
-s16 D_802B87B0 = 995;
-s16 D_802B87B4 = 1000;
+s16 gFogMin = 995;
+s16 gFogMax = 1000;
 UNUSED s32 D_802B87B8 = 0;
 s32 D_802B87BC = 0;
 UNUSED s32 D_802B87C0 = 0;

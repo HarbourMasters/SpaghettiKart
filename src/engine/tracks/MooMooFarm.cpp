@@ -269,7 +269,7 @@ void MooMooFarm::Draw(ScreenContext* arg0) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_moo_moo_farm_packed_dl_4DF8);
     // d_course_moo_moo_farm_packed_dl_5640
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_moo_moo_farm_packed_dl_5640);
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     render_track_sections(moo_moo_farm_dls, arg0);
 

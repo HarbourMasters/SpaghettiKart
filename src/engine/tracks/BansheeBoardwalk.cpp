@@ -141,10 +141,11 @@ void BansheeBoardwalk::Load() {
         InvertTriangleWindingByName(d_course_banshee_boardwalk_packed_dl_878);
     }
 
-    D_800DC5BC = 1;
-    D_801625EC = 0;
-    D_801625F4 = 0;
-    D_801625F0 = 0;
+    bFog = true;
+    gFogColour.r = 0;
+    gFogColour.g = 0;
+    gFogColour.b = 0;
+    gFogColour.a = 255;
     parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
@@ -255,7 +256,7 @@ void BansheeBoardwalk::Draw(ScreenContext* arg0) {
     // d_course_banshee_boardwalk_packed_dl_7228
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_banshee_boardwalk_packed_dl_7228);
 
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     gDPPipeSync(gDisplayListHead++);
 

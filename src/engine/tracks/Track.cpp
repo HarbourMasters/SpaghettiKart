@@ -7,7 +7,6 @@
 #include "MarioRaceway.h"
 #include "ChocoMountain.h"
 #include "port/Game.h"
-#include "port/resource/type/TrackPathPointData.h"
 #include "engine/editor/SceneManager.h"
 #include "Registry.h"
 #include "libultraship/bridge/resourcebridge.h"
@@ -248,7 +247,7 @@ Track::Track() {
     Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));
     // Props.Cup = FLOWER_CUP;
     // Props.CupIndex = 3;
-    Id = "";
+    ResourceName = "";
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
     Props.Minimap.Height = ResourceGetTexHeightByName(Props.Minimap.Texture);
@@ -309,6 +308,14 @@ Track::Track() {
     Props.Clouds = NULL;
     Props.CloudList = NULL;
     Props.Sequence = MusicSeq::MUSIC_SEQ_UNKNOWN;
+
+    bFog = false;
+    gFogColour.r = 0;
+    gFogColour.g = 0;
+    gFogColour.b = 0;
+    gFogColour.a = 255;
+    gFogMin = 0;
+    gFogMax = 0;
 }
 
 // Load custom track from code
@@ -316,52 +323,26 @@ void Track::Load(Vtx* vtx, Gfx* gfx) {
     Track::Init();
 }
 
-void Track::LoadO2R(std::string trackPath) {
-    if (!trackPath.empty()) {
-        SceneFilePtr = (trackPath + "/scene.json");
-        TrackSectionsPtr = (trackPath + "/data_track_sections");
-
-        std::string path_file = (trackPath + "/data_paths").c_str();
-
-        auto res = std::dynamic_pointer_cast<MK64::Paths>(ResourceLoad(path_file.c_str()));
-
-        if (res != nullptr) {
-            auto& paths = res->PathList;
-
-            size_t i = 0;
-            u16* ptr = &Props.PathSizes.unk0;
-            for (auto& path : paths) {
-                if (i >= ARRAY_COUNT(Props.PathTable2)) {
-                    printf("[Track.cpp] The game can only import 5 paths. Found more than 5. Skipping the rest\n");
-                    break; // Only 5 paths allowed. 4 track, 1 vehicle
-                }
-                ptr[i] = path.size();
-                Props.PathTable2[i] = (TrackPathPoint*) path.data();
-
-                i += 1;
-            }
-        }
-        gVehiclePathSize = Props.PathSizes.unk0; // This is likely incorrect.
-
-    } else {
-        printf("Track.cpp: LoadO2R: trackPath str is empty\n");
-    }
-}
-
 // Load stock and o2r tracks
 void Track::Load() {
-    // Re-load scenefile in-case changes were made in the editor
-      if (!SceneFilePtr.empty()) {
-        Editor::LoadLevel(this, SceneFilePtr);
+    printf("[Track] Loading... %s\n", ResourceName.c_str());
+    const TrackInfo* info = gTrackRegistry.GetInfo(ResourceName);
+    if (nullptr == info) {
+        printf("Could not find TrackInfo for %s\n", ResourceName);
+        return;
     }
+    const std::string& trackPath = info->Path;
 
-    // Load from O2R
-    if (!TrackSectionsPtr.empty()) {
+    if (trackPath.empty()) {
+        // Load stock track
+        Track::Init();
+    } else { // Load custom track
         bIsMod = true;
-        // auto res = std::dynamic_pointer_cast<MK64::TrackSectionsO2RClass>(ResourceLoad(TrackSectionsPtr.c_str()));
+        Editor::LoadLevel(this, trackPath);
+            const std::string trackSectionPath = (trackPath + "/data_track_sections");
 
-        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
-        size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
+        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(trackSectionPath.c_str());
+        size_t size = ResourceGetSizeByName(trackSectionPath.c_str());
 
         if (sections != nullptr) {
             Track::Init();
@@ -374,10 +355,7 @@ void Track::Load() {
         } else {
             printf("Track.cpp: Custom track sections are invalid\n");
         }
-        return;
     }
-
-    Track::Init();
 }
 
 // C++ version of parse_track_displaylists()
@@ -447,7 +425,6 @@ void Track::Init() {
     D_8015F58C = 0;
     gCollisionMeshCount = 0;
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
-    D_800DC5BC = 0;
     D_800DC5C8 = 0;
 }
 
@@ -525,24 +502,25 @@ void Track::Waypoints(Player* player, int8_t playerId) {
 }
 
 void Track::Draw(ScreenContext* arg0) {
-    if (!TrackSectionsPtr.empty()) {
-        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-        set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
-        gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
+    gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+    set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
+    gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
-        if (func_80290C20(arg0->camera) == 1) {
-            gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            // d_course_big_donut_packed_dl_DE8
-        }
+    if (func_80290C20(arg0->camera) == 1) {
+        gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
+        gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+        // d_course_big_donut_packed_dl_DE8
+    }
 
-        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(TrackSectionsPtr.c_str());
-        size_t size = ResourceGetSizeByName(TrackSectionsPtr.c_str());
-        for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
-            gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(sections[i].crc));
-        }
+    const TrackInfo* info = gTrackRegistry.GetInfo(ResourceName);
+    std::string res = info->Path + "/data_track_sections";
+
+    TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(res.c_str());
+    size_t size = ResourceGetSizeByName(res.c_str());
+    for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
+        gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(sections[i].crc));
     }
 }
 

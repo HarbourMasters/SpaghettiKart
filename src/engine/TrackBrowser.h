@@ -24,6 +24,8 @@ public:
         Instance = this;
     }
 
+    void FindCustomTracks();
+
     void Refresh(const Registry<TrackInfo>& registry) {
         mTracks.clear();
         mTracks = registry.GetAllInfo();

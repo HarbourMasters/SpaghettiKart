@@ -83,6 +83,8 @@ World* GetWorld() {
 void CustomEngineInit() {
     RegisterTracks(gTrackRegistry);
     gTrackBrowser = std::make_unique<TrackBrowser>(gTrackRegistry);
+    TrackBrowser::Instance->FindCustomTracks();
+    TrackBrowser::Instance->Refresh(gTrackRegistry);
 
     gPodiumCeremony = std::make_unique<PodiumCeremony>();
 
@@ -128,7 +130,6 @@ void CustomEngineInit() {
     GetWorld()->AddCup(gSpecialCup);
     GetWorld()->AddCup(gBattleCup);
 
-    //SelectMarioRaceway(); // This results in a nullptr
     SetMarioRaceway();
 
     RegisterActors(gActorRegistry);
@@ -597,6 +598,11 @@ void CM_SetStaffGhost() {
     if (GetWorld()->GetTrack()) {
         GetWorld()->GetTrack()->SetStaffGhost();
     }
+}
+
+// This should only be used for checking if the track has changed
+uintptr_t CM_GetTrack() {
+    return (uintptr_t) (void*) GetWorld()->GetTrack();
 }
 
 Properties* CM_GetProps() {

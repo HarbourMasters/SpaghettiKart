@@ -56,8 +56,6 @@ typedef enum {
     /* 0x15 */ NUM_TRACKS
 } TRACKS;
 
-#define TRACK_NULL 0xFF
-
 typedef enum {
     /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
     /* 0x01 */ TIME_TRIAL_DATA_MOO_MOO_FARM,

@@ -127,12 +127,13 @@ void ChocoMountain::Load() {
         InvertTriangleWindingByName(d_course_choco_mountain_packed_dl_5D8);
         InvertTriangleWindingByName(d_course_choco_mountain_packed_dl_718);
     }
-    D_800DC5BC = 1;
-    D_801625EC = 255;
-    D_801625F4 = 255;
-    D_801625F0 = 255;
-    D_802B87B0 = 0x3E3;
-    D_802B87B4 = 0x3E8;
+    bFog = true;
+    gFogColour.r = 255;
+    gFogColour.g = 255;
+    gFogColour.b = 255;
+    gFogColour.a = 255;
+    gFogMin = 0x3E3;
+    gFogMax = 0x3E8;
     D_802B87D4 = 0x71C;
     D_802B87D0 = 0xE38;
 
@@ -232,8 +233,8 @@ void ChocoMountain::Draw(ScreenContext* arg0) {
         gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_choco_mountain_packed_dl_4608);
     }
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
-    gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, gFogColour.a);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
 
     gDPPipeSync(gDisplayListHead++);
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);

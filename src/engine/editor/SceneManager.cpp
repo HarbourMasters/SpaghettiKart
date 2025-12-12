@@ -21,28 +21,23 @@
 #include "engine/objects/Thwomp.h"
 #include "engine/objects/Snowman.h"
 #include "engine/cameras/TourCamera.h"
+#include "port/resource/type/TrackPathPointData.h"
 
 extern "C" {
 #include "common_structs.h"
 #include "actors.h"
 #include "actor_types.h"
+#include "code_80005FD0.h"
 }
 
 namespace Editor {
-    std::shared_ptr<Ship::Archive> CurrentArchive;
-    std::string SceneFile = "";
-
-    void SaveLevel() {
-        if ((!CurrentArchive) || (SceneFile.empty())) {
-            SPDLOG_INFO("[SceneManager] [SaveLevel] Could not save scene file, SceneFile or CurrentArchive not set");
-            return;
-        }
+    void SaveLevel(Track* track) {
         nlohmann::json data;
 
         /**
          * Save track properties, static mesh actors, actors, and tour camera
          */
-        data["Props"] = GetWorld()->GetTrack()->Props.to_json();
+        data["Props"] = track->Props.to_json();
 
         nlohmann::json staticMesh;
         SaveStaticMeshActors(staticMesh);
@@ -54,9 +49,9 @@ namespace Editor {
         data["Actors"] = actors;
 
 
-        if (GetWorld()->GetTrack()->TourShots.size() != 0) {
+        if (track->TourShots.size() != 0) {
             nlohmann::json tour;
-            SaveTour(tour);
+            SaveTour(track, tour);
             data["Tour"] = tour;
         }
 
@@ -68,11 +63,14 @@ namespace Editor {
             std::vector<uint8_t> bytes; // Turn the str into raw data
             bytes.assign(jsonStr.begin(), jsonStr.end());
 
+            const TrackInfo* info = gTrackRegistry.GetInfo(track->ResourceName);
+            std::string sceneFile = info->Path + "/scene.json";
+
             // Write file to disk
-            bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(CurrentArchive, SceneFile, bytes);
+            bool wrote = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager()->WriteFile(track->Archive, sceneFile, bytes);
             if (wrote) {
                 // Tell the cache this file needs to be reloaded
-                auto resource = GameEngine::Instance->context->GetResourceManager()->GetCachedResource(SceneFile);
+                auto resource = GameEngine::Instance->context->GetResourceManager()->GetCachedResource(sceneFile);
                 if (resource) {
                     resource->Dirty();
                 }
@@ -85,10 +83,17 @@ namespace Editor {
     }
 
     /** Do not use GetWorld()->CurrentCourse during loading! The current track is not guaranteed! **/
-    void LoadLevel(Track* track, std::string sceneFile) {
-        SceneFile = sceneFile;
-        if ((nullptr == track) || (nullptr == track->RootArchive)) {
-            SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, track or rootarchive were null");
+    void LoadLevel(Track* track, const std::string& trackPath) {
+        SPDLOG_INFO("[SceneManager] [LoadLevel] Loading track scenefile...");
+
+        if (trackPath.empty()) {
+            SPDLOG_INFO("  Unable to load track. trackPath empty.");
+            return;
+        }
+
+        std::string sceneFile = trackPath + "/scene.json";
+        if ((nullptr == track) || (nullptr == track->Archive)) {
+            SPDLOG_INFO("  Failed to load scenefile, track or archive were null");
             return;
         }
 
@@ -97,7 +102,7 @@ namespace Editor {
          * the init data needs to be manually populated
          */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = track->RootArchive;
+        initData->Parent = track->Archive;
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
@@ -109,18 +114,52 @@ namespace Editor {
 
         // Check that the data is valid
         if (data.is_null() || !data.is_object() || data.empty()) {
-            SPDLOG_INFO("[SceneManager] [LoadLevel] Scenefile corrupted or contained no data");
+            SPDLOG_INFO("  Scenefile corrupted or contained no data");
             return;
         }
 
-        SPDLOG_INFO("[SceneManager] [LoadLevel] Loading track scenefile...");
+        SPDLOG_INFO("  Loading Props, Actors, Static Mesh Actors, and Tour...");
 
         // Load the Props, and populate actors
         LoadProps(track, data);
+        LoadPaths(track, trackPath);
+        LoadMinimap(track, trackPath);
         LoadActors(track, data);
         LoadStaticMeshActors(track, data);
         LoadTour(track, data);
         SPDLOG_INFO("[SceneManager] [LoadLevel] Scene File Loaded!");
+    }
+
+    void LoadTrackInfo(TrackInfo& info, std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
+        if (nullptr == archive) {
+            SPDLOG_INFO("[SceneManager] [LoadLevel] Failed to load scenefile, track or rootarchive were null");
+            return;
+        }
+
+        /* 
+         * Manually loading a custom asset file (scene.json) with no extractor class means that
+         * the init data needs to be manually populated
+         */
+        auto initData = std::make_shared<Ship::ResourceInitData>();
+        initData->Parent = archive;
+        initData->Format = RESOURCE_FORMAT_BINARY;
+        initData->ByteOrder = Ship::Endianness::Little;
+        initData->Type = static_cast<uint32_t>(Ship::ResourceType::Json);
+        initData->ResourceVersion = 0;
+
+        // Load the scene file and return the json data
+        nlohmann::json data = std::static_pointer_cast<Ship::Json>(
+            GameEngine::Instance->context->GetResourceManager()->LoadResource(sceneFile, true, initData))->Data;
+
+        // Check that the data is valid
+        if (data.is_null() || !data.is_object() || data.empty()) {
+            SPDLOG_INFO("[SceneManager] [LoadTrackInfo] Scenefile corrupted or contained no data");
+            return;
+        }
+
+        LoadTrackInfoData(info, data);
+
+        SPDLOG_INFO("[SceneManager] [LoadTrackInfo] Loaded track info!");
     }
 
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson) {
@@ -132,33 +171,23 @@ namespace Editor {
         actor->Pos.x, actor->Pos.y, actor->Pos.z, actor->Name.c_str(), actor->Model.c_str());
     }
 
-    void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
-        CurrentArchive = archive;
-        SceneFile = sceneFile;
-    }
-
-    // Called from ContentBrowser.cpp
     void LoadMinimap(Track* track, std::string filePath) {
+        std::string minimapPath = filePath + "/minimap.png";
         SPDLOG_INFO("  Loading {} minimap...", filePath);
-        if (nullptr == track->RootArchive) {
-            SPDLOG_INFO("[SceneManager] [LoadMinimap] Root archive is nullptr");
-            SetDefaultMinimap(track);
-            return;
-        }
 
         /* 
         * Manually loading a custom asset file with no extractor class means that
         * the init data needs to be manually populated
         */
         auto initData = std::make_shared<Ship::ResourceInitData>();
-        initData->Parent = track->RootArchive;
+        initData->Parent = track->Archive;
         initData->Format = RESOURCE_FORMAT_BINARY;
         initData->ByteOrder = Ship::Endianness::Little;
         initData->Type = static_cast<uint32_t>(MK64::ResourceType::Minimap);
         initData->ResourceVersion = 0;
 
         std::shared_ptr<MK64::Minimap> ptr = std::static_pointer_cast<MK64::Minimap>(
-            GameEngine::Instance->context->GetResourceManager()->LoadResource(filePath, true, initData));
+            GameEngine::Instance->context->GetResourceManager()->LoadResource(minimapPath, true, initData));
 
         if (ptr) {
             SPDLOG_INFO("  Minimap Loaded!");
@@ -252,12 +281,12 @@ namespace Editor {
         }
     }
 
-    void SaveTour(nlohmann::json& tour) {
-        tour["Enabled"] = GetWorld()->GetTrack()->bTourEnabled;
+    void SaveTour(Track* track, nlohmann::json& tour) {
+        tour["Enabled"] = track->bTourEnabled;
 
         // Camera shots
         tour["Shots"] = nlohmann::json::array();
-        for (const auto& shot : GetWorld()->GetTrack()->TourShots) {
+        for (const auto& shot : track->TourShots) {
             tour["Shots"].push_back(ToJson(shot));
         }
     }
@@ -270,6 +299,56 @@ namespace Editor {
 
         try {
             track->Props.from_json(data["Props"]);
+        } catch(const std::exception& e) {
+            std::cerr << "  Error parsing track properties: " << e.what() << std::endl;
+            std::cerr << "    Is your scene.json file out of date?" << std::endl;
+        }
+    }
+
+    void LoadPaths(Track* track, const std::string& trackPath) {
+        std::string path_file = (trackPath + "/data_paths").c_str();
+
+        auto res = std::dynamic_pointer_cast<MK64::Paths>(ResourceLoad(path_file.c_str()));
+
+        if (res != nullptr) {
+            auto& paths = res->PathList;
+
+            size_t i = 0;
+            u16* ptr = &track->Props.PathSizes.unk0;
+            for (auto& path : paths) {
+                if (i >= ARRAY_COUNT(track->Props.PathTable2)) {
+                    printf("[Track.cpp] The game can only import 5 paths. Found more than 5. Skipping the rest\n");
+                    break; // Only 5 paths allowed. 4 track, 1 vehicle
+                }
+                ptr[i] = path.size();
+                track->Props.PathTable2[i] = (TrackPathPoint*) path.data();
+
+                i += 1;
+            }
+        }
+        gVehiclePathSize = track->Props.PathSizes.unk0; // This is likely incorrect.
+    }
+
+    void LoadTrackInfoData(TrackInfo& info, nlohmann::json& data) {
+        if (!data.contains("Props") || !data["Props"].is_object()) {
+            SPDLOG_INFO("[SceneManager] [LoadTrackInfoData] Track is missing props data. Is the scene.json file corrupt?");
+            return;
+        }
+
+        try {
+            nlohmann::json& j = data.at("Props");
+
+            info.ResourceName = j.at("ResourceName").get<std::string>();
+            info.Name = j.at("Name").get<std::string>();
+            info.DebugName = j.at("DebugName").get<std::string>();
+            info.Length = j.at("TrackLength").get<std::string>();
+
+            printf("[SceneManager] [LoadTrackInfoData] ResourceName: %s, Name: %s, DebugName: %s, Length: %s\n",
+                info.ResourceName.c_str(),
+                info.Name.c_str(),
+                info.DebugName.c_str(),
+                info.Length.c_str()
+            );
         } catch(const std::exception& e) {
             std::cerr << "  Error parsing track properties: " << e.what() << std::endl;
             std::cerr << "    Is your scene.json file out of date?" << std::endl;
@@ -308,7 +387,7 @@ namespace Editor {
 
     void LoadTour(Track* track, nlohmann::json& data) {
         if (!data.contains("Tour") || !data["Tour"].is_object()) {
-            SPDLOG_INFO(" This track does not contain a camera tour");
+            SPDLOG_INFO("  This track does not contain a camera tour");
             return;
         }
 

@@ -25,8 +25,8 @@ extern s32 D_802B87C8;
 extern s32 D_802B87CC;
 extern s32 D_802B87BC;
 
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
+extern s16 gFogMin;
+extern s16 gFogMax;
 extern s16 D_802B87D0;
 extern s16 D_802B87D4;
 

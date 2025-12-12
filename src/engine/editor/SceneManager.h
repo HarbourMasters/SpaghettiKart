@@ -7,27 +7,25 @@
 #include <nlohmann/json.hpp>
 
 namespace Editor {
-    void SaveLevel();
-    void LoadLevel(Track* track, std::string sceneFile);
+    void SaveLevel(Track* track);
+    void LoadLevel(Track* track, const std::string& trackPath);
+    void LoadTrackInfo(TrackInfo& info, std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson);
-    void SetSceneFile(std::shared_ptr<Ship::Archive> archive, std::string sceneFile);
     void LoadMinimap(Track* track, std::string filePath);
     void SetDefaultMinimap(Track* track);
 
     void SaveActors(nlohmann::json& actorList);
     void SaveStaticMeshActors(nlohmann::json& actorList);
-    void SaveTour(nlohmann::json& tour);
+    void SaveTour(Track* track, nlohmann::json& tour);
 
     void LoadProps(Track* track, nlohmann::json& data);
+    void LoadPaths(Track* track, const std::string& trackPath);
+    void LoadTrackInfoData(TrackInfo& info, nlohmann::json& data);
     void LoadActors(Track* track, nlohmann::json& data);
     void LoadStaticMeshActors(Track* track, nlohmann::json& data);
     void LoadTour(Track* track, nlohmann::json& data);
 
     void SpawnActors(std::vector<std::pair<std::string, SpawnParams>> spawnList);
-
-    extern std::shared_ptr<Ship::Archive> CurrentArchive; // This is used to retrieve and write the scene data file
-    extern std::string SceneFile;
-
 
     inline nlohmann::json ToJson(const FVector& v) {
         return {

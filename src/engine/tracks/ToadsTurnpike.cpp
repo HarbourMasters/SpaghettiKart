@@ -132,11 +132,12 @@ void ToadsTurnpike::Load() {
         InvertTriangleWindingByName(d_course_toads_turnpike_packed_dl_D8);
     }
 
-    D_801625EC = 43;
-    D_801625F4 = 13;
-    D_801625F0 = 4;
-    D_802B87B0 = 993;
-    D_802B87B4 = 1000;
+    gFogColour.r = 43;
+    gFogColour.g = 13;
+    gFogColour.b = 4;
+    gFogColour.a = 255;
+    gFogMin = 993;
+    gFogMax = 1000;
     parse_track_displaylists((TrackSections*)LOAD_ASSET_RAW(d_course_toads_turnpike_addr));
     func_80295C6C();
     Props.WaterLevel = gTrackMinY - 10.0f;
@@ -240,9 +241,9 @@ void ToadsTurnpike::Draw(ScreenContext* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+    gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, gFogColour.a);
     gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
-    gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
+    gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
     gSPSetGeometryMode(gDisplayListHead++, G_FOG);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);

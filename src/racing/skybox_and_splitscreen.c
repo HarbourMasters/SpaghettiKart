@@ -25,6 +25,7 @@
 #include "port/Game.h"
 #include "math_util.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "engine/CoreMath.h"
 
 Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
@@ -332,36 +333,36 @@ UNUSED Gfx D_802B8A90[] = {
 void func_802A450C(Vtx* skybox) {
     s32 i;
 
-    if (D_800DC5BC != 0) {
+    if (bFog) {
 
-        if (D_801625EC < 0) {
-            D_801625EC = 0;
+        if (gFogColour.r < 0) {
+            gFogColour.r = 0;
         }
 
-        if (D_801625F4 < 0) {
-            D_801625F4 = 0;
+        if (gFogColour.g < 0) {
+            gFogColour.g = 0;
         }
 
-        if (D_801625F0 < 0) {
-            D_801625F0 = 0;
+        if (gFogColour.b < 0) {
+            gFogColour.b = 0;
         }
 
-        if (D_801625EC > 255) {
-            D_801625EC = 255;
+        if (gFogColour.r > 255) {
+            gFogColour.r = 255;
         }
 
-        if (D_801625F4 > 255) {
-            D_801625F4 = 255;
+        if (gFogColour.g > 255) {
+            gFogColour.g = 255;
         }
 
-        if (D_801625F0 > 255) {
-            D_801625F0 = 255;
+        if (gFogColour.b > 255) {
+            gFogColour.b = 255;
         }
 
         for (i = 0; i < 8; i++) {
-            skybox[i].v.cn[0] = (s16) D_801625EC;
-            skybox[i].v.cn[1] = (s16) D_801625F4;
-            skybox[i].v.cn[2] = (s16) D_801625F0;
+            skybox[i].v.cn[0] = (s16) gFogColour.r;
+            skybox[i].v.cn[1] = (s16) gFogColour.g;
+            skybox[i].v.cn[2] = (s16) gFogColour.b;
         }
         return;
     }

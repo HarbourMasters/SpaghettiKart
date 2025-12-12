@@ -19,6 +19,7 @@
 #include "AllActors.h"
 #include "port/Game.h"
 #include "src/engine/editor/SceneManager.h"
+#include "engine/TrackBrowser.h"
 
 #include "World.h"
 
@@ -43,10 +44,8 @@ namespace Editor {
         // Query content in o2r and add them to Content
         if (Refresh) {
             Refresh = false;
-            RemoveCustomTracksFromTrackList();
-            Tracks.clear();
             Content.clear();
-            FindTracks();
+            TrackBrowser::Instance->Refresh(gTrackRegistry);
             FindContent();
             return;
         }
@@ -224,7 +223,7 @@ namespace Editor {
 
     std::unordered_map<std::string, std::function<AActor*(const FVector&)>> ActorList = {
         // The banana gets attached to a player. This needs to be disconnected if this should be used in the editor
-//        { "Banana", [](const FVector& pos) { return gWorldInstance.AddActor(new ABanana(SpawnParams{.Name = "mk:banana", .Location = pos})); } },
+//        { "Banana", [](const FVector& pos) { return GetWorld()->AddActor(new ABanana(SpawnParams{.Name = "mk:banana", .Location = pos})); } },
         { "Falling Rock", [](const FVector& pos) { return AFallingRock::Spawn(pos, 80); } },
         { "Mario Sign", [](const FVector& pos) { return AMarioSign::Spawn(pos, IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f)); } },
         { "Wario Sign", [](const FVector& pos) { return AWarioSign::Spawn(pos, IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f)); } },
@@ -252,7 +251,7 @@ namespace Editor {
         { "Crab", [](const FVector& pos) { return OCrab::Spawn(FVector2D(pos.x, pos.z), FVector2D(pos.x + 100, pos.z + 100)); } },
 
         // Animation crash
-        // { "Chain Chomp", [](const FVector& pos) { return gWorldInstance.AddObject(new OChainChomp()); } },
+        // { "Chain Chomp", [](const FVector& pos) { return GetWorld()->AddObject(new OChainChomp()); } },
         { "Flagpole", [](const FVector& pos) { return OFlagpole::Spawn(pos, 0); } },
         { "Hedgehog", [](const FVector& pos) { return OHedgehog::Spawn(pos, FVector2D(0, 10), 0); } },
         { "Hot Air Balloon", [](const FVector& pos) { return OHotAirBalloon::Spawn(pos); } },
@@ -270,42 +269,24 @@ namespace Editor {
 
     void ContentBrowserWindow::AddTrackContent() {
         size_t i_track = 0;
-        for (auto& track : Tracks) {
-            if (!track.SceneFile.empty()) { // has scene file
-                std::string label = fmt::format("{}##{}", track.Name, i_track);
-                if (ImGui::Button(label.c_str())) {
-                    gWorldInstance.SetCurrentTrack(track.track);
-                    gGamestateNext = RACING;
-                    SetSceneFile(track.Archive, track.SceneFile);
-                    break;
-                }
-            } else { // no scene file
-                std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
-                if (ImGui::Button(label.c_str())) {
-                    track.SceneFile = track.Dir + "/scene.json";
-                    gWorldInstance.SetCurrentTrack(track.invalidTrack);
-                    SetSceneFile(track.Archive, track.SceneFile);
-                    SaveLevel();
-                    Refresh = true;
-                }
+        for (const TrackInfo* info : gTrackRegistry.GetAllInfo()) {
+            if (!info) { continue; }
+            std::string label = fmt::format("{}##{}", info->Name, i_track);
+            if (ImGui::Button(label.c_str())) {
+                //gGamestateNext = RACING;
+                gGotoMode = RACING;
+                gIsInQuitToMenuTransition = 1;
+                gQuitToMenuTransitionCounter = 5;
+                TrackBrowser::Instance->SetTrack(info->ResourceName);
+                break;
+            }
+
+            // Place seven items on each row
+            if ((i_track % 7) != 6) {
+                ImGui::SameLine();
             }
 
             i_track += 1;
-        }
-    }
-
-    // When resetting the known content, we need to also pop the custom tracks
-    // out of World::Tracks vector. Otherwise, duplicate tracks would show up for users.
-    void ContentBrowserWindow::RemoveCustomTracksFromTrackList() {
-        for (auto& track : Tracks) {
-            auto it = gWorldInstance.Tracks.begin();
-            while (it != gWorldInstance.Tracks.end()) {
-                if (track.track.get() == it->get()) {
-                    it = gWorldInstance.Tracks.erase(it);
-                } else {
-                    ++it;
-                }
-            }
         }
     }
 
@@ -334,7 +315,7 @@ namespace Editor {
 
             std::string label = fmt::format("{}##{}", actor.first, i_actor);
             if (ImGui::Button(label.c_str())) {
-                //gWorldInstance.AddActor(
+                //GetWorld()->AddActor(
                 actor.second(pos);
             }
             i_actor += 1;
@@ -376,58 +357,12 @@ namespace Editor {
                 int coll;
                 //printf("ContentBrowser.cpp: name: %s\n", test.c_str());
                 std::string name = file.substr(file.find_last_of('/') + 1);
-                auto actor = gWorldInstance.AddStaticMeshActor(name, FVector(pos), IRotator(0, 0, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
+                auto actor = GetWorld()->AddStaticMeshActor(name, FVector(pos), IRotator(0, 0, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
                 // This is required because ptr gets cleaned up.
                 actor->Model = "__OTR__" + file;
 
             }
             i_custom += 1;
-        }
-    }
-
-    // Finds modded archives only. For discovering tracks
-    void ContentBrowserWindow::FindTracks() {
-        auto manager = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager();
-
-        auto ptr2 = manager->ListDirectories("tracks/*");
-        if (ptr2) {
-            auto dirs = *ptr2;
-
-            for (const std::string& dir : dirs) {
-                std::string name = dir.substr(dir.find_last_of('/') + 1);
-                std::string sceneFile = dir + "/scene.json";
-                std::string minimapFile = dir + "/minimap.png";
-                // The track has a valid scene file
-                if (manager->HasFile(sceneFile)) {
-                    auto archive = manager->GetArchiveFromFile(sceneFile);
-                    
-                    auto track = std::make_shared<Track>();
-                    track->RootArchive = archive;
-                    track->LoadO2R(dir);
-                    LoadLevel(track.get(), sceneFile);
-                    LoadMinimap(track.get(), minimapFile);
-                    Tracks.push_back({nullptr, track, sceneFile, name, dir, archive});
-                    gWorldInstance.Tracks.push_back(std::move(track));
-                } else { // The track does not have a valid scene file
-                    const std::string file = dir + "/data_track_sections";
-
-                    // If the track has a data_track_sections file,
-                    // then it must at least be a valid track.
-                    // So lets add it as an uninitialized track.
-                    if (manager->HasFile(file)) {
-
-                        auto track = std::make_shared<Track>();
-                        track->Id = (std::string("mods:") + name).c_str();
-                        track->Props.SetText(track->Props.Name, name.c_str(), sizeof(track->Props.Name));
-                        track->Props.SetText(track->Props.DebugName, name.c_str(), sizeof(track->Props.Name));
-                        auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({track, nullptr, "", name, dir, archive});
-                    } else {
-                        printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
-                    }
-
-                }
-            }
         }
     }
 

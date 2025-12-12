@@ -36,6 +36,7 @@
 #include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "engine/CoreMath.h"
 
 #include <assets/other/tracks/moo_moo_farm/moo_moo_farm_data.h>
 
@@ -376,16 +377,16 @@ void func_80297340(Camera* arg0) {
     }
 
     if (temp < arg0->pos[2]) {
-        if (D_800DC5BC != 0) {
+        if (bFog) {
 
-            gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+            gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, gFogColour.a);
             gSPDisplayList(gDisplayListHead++, D_0D001C20);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D001B90);
         }
-    } else if (D_800DC5BC != 0) {
+    } else if (bFog) {
 
-        gDPSetFogColor(gDisplayListHead++, D_801625EC, D_801625F4, D_801625F0, 0xFF);
+        gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, gFogColour.a);
         gSPDisplayList(gDisplayListHead++, D_0D001C88);
     } else {
         gSPDisplayList(gDisplayListHead++, D_0D001BD8);

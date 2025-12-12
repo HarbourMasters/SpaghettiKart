@@ -27,17 +27,18 @@
 #include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
 #include <assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h>
 #include "port/Game.h"
+#include "engine/CoreMath.h"
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 s16 gCurrentCourseId = 0;
-s16 gCurrentlyLoadedCourseId = 0xFF;
+uintptr_t gCurrentlyLoadedTrackAddr = NULL;
 u16 D_800DC5A8 = 0;
 s32 D_800DC5AC = 0;
 u16 D_800DC5B0 = 1;
 u16 D_800DC5B4 = 0;
 u16 D_800DC5B8 = 0;
-u16 D_800DC5BC = 0;
+bool bFog = false;
 u16 gIsInQuitToMenuTransition = 0;
 u16 gQuitToMenuTransitionCounter = 0;
 u16 D_800DC5C8 = 0;
@@ -159,9 +160,7 @@ UNUSED u8 D_80162578[sizeof(struct Actor)];
 
 s16 gDebugPathCount;
 s16 sIsController1Unplugged;
-s32 D_801625EC;
-s32 D_801625F0;
-s32 D_801625F4;
+struct RGBA8 gFogColour;
 uintptr_t D_801625F8;
 f32 D_801625FC;
 
@@ -209,9 +208,9 @@ void setup_race(void) {
         }
     }
     gActiveScreenMode = gScreenModeSelection;
-    if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
+    if (CM_GetTrack() != gCurrentlyLoadedTrackAddr) {
         D_80150120 = 0;
-        gCurrentlyLoadedCourseId = gCurrentCourseId;
+        gCurrentlyLoadedTrackAddr = CM_GetTrack();
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
@@ -280,9 +279,9 @@ void setup_editor(void) {
     }
 
     gActiveScreenMode = gScreenModeSelection;
-    if (gCurrentCourseId != gCurrentlyLoadedCourseId) {
+    if (CM_GetTrack() != gCurrentlyLoadedTrackAddr) {
         D_80150120 = 0;
-        gCurrentlyLoadedCourseId = gCurrentCourseId;
+        gCurrentlyLoadedTrackAddr = CM_GetTrack();
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_track(gCurrentCourseId);
         gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
@@ -340,7 +339,7 @@ void credits_spawn_actors(void) {
     Vec3f velocity = { 0, 0, 0 };
     Vec3s rotation = { 0, 0, 0 };
 
-    D_800DC5BC = 0;
+    bFog = false;
     D_800DC5C8 = 0;
     gNumActors = 0;
     set_mirror_mode(0);

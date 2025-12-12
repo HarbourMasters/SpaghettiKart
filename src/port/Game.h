@@ -29,6 +29,7 @@ World* GetWorld(void); // Retrieve the world instance
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
+uintptr_t CM_GetTrack();
 Properties* CM_GetProps();
 
 void HM_InitIntro(void);

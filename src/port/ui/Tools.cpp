@@ -36,7 +36,7 @@ namespace Editor {
         // Save button
         if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
             if (gEditor.IsPaused()) {
-                SaveLevel();
+                SaveLevel(GetWorld()->GetTrack());
             } else {
                 printf("[Editor] Cannot save during simulation\n  Please switch back to edit mode!\n\n");
             }
@@ -140,7 +140,7 @@ namespace Editor {
         ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
         if (ImGui::Button(gEditor.IsPaused() ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
             if (gEditor.IsPaused()) {
-                SaveLevel();
+                SaveLevel(GetWorld()->GetTrack());
                 CVarSetInteger("gFreecam", false);
                 CM_SetFreeCamera(false);
             } else {
