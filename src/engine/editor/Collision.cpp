@@ -26,7 +26,7 @@ namespace Editor {
         bool run = true;
 
         //! @attention Objects will not be clickable if editor is enabled mid-race.
-        if (gEditor.IsEnabled() == true) {
+        if (!gEditor.IsEnabled()) {
             return;
         }
 
