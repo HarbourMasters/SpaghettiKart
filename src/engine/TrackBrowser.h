@@ -22,7 +22,7 @@ public:
     TrackBrowser(const Registry<TrackInfo>& registry) {
         mTracks = registry.GetAllInfo();
         std::sort(mTracks.begin(), mTracks.end(), [](const TrackInfo* a, const TrackInfo* b) {
-            return a->id < b->id;
+            return a->Id < b->Id;
         });
         Instance = this;
     }
@@ -33,7 +33,7 @@ public:
         mTracks.clear();
         mTracks = registry.GetAllInfo();
         std::sort(mTracks.begin(), mTracks.end(), [](const TrackInfo* a, const TrackInfo* b) {
-            return a->id < b->id;
+            return a->Id < b->Id;
         });
         mTrackIndex = 0;
     }

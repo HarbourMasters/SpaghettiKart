@@ -7,8 +7,8 @@
 #include <set>
 
 struct TrackInfo {
+    int32_t Id;
     std::string Path; // Path to the custom track
-    int id;
     std::string ResourceName;
     std::string Name;
     std::string DebugName;
@@ -18,6 +18,7 @@ struct TrackInfo {
 };
 
 struct ActorInfo {
+    int32_t Id;
     std::string ResourceName;
     std::string Name;
     std::set<std::string> Tags; // Category for filtering
@@ -62,6 +63,7 @@ public:
     using Callback = std::function<void(TArgs...)>;
 
     void Add(TInfo& info, Callback func) {
+        info.Id = mCounter++;
         // Needs to allow overwriting to support mod hot-reloading
         mMap[info.ResourceName] = Entry{info, std::move(func)};
     }
@@ -97,9 +99,11 @@ public:
 
     void Clear() {
         mMap.clear();
+        mCounter = 0;
     }
 
 private:
+    int32_t mCounter;
     struct Entry {
         TInfo Info;
         Callback Func;

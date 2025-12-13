@@ -285,7 +285,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     TrackInfo info;
 
     info = {
-        .id = 0,
         .ResourceName = "mk:mario_raceway",
         .Name = "mario raceway",
         .DebugName = "m circuit",
@@ -296,7 +295,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<MarioRaceway>()); });
 
     info = {
-        .id = 1,
         .ResourceName = "mk:choco_mountain",
         .Name = "choco mountain",
         .DebugName = "mountain",
@@ -307,7 +305,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<ChocoMountain>()); });
 
     info = {
-        .id = 2,
         .ResourceName = "mk:bowsers_castle",
         .Name = "bowser's castle",
         .DebugName = "castle",
@@ -318,7 +315,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BowsersCastle>()); });
 
     info = {
-        .id = 3,
         .ResourceName = "mk:banshee_boardwalk",
         .Name = "banshee boardwalk",
         .DebugName = "ghost",
@@ -329,7 +325,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BansheeBoardwalk>()); });
 
     info = {
-        .id = 4,
         .ResourceName = "mk:yoshi_valley",
         .Name = "yoshi valley",
         .DebugName = "maze",
@@ -340,7 +335,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<YoshiValley>()); });
 
     info = {
-        .id = 5,
         .ResourceName = "mk:frappe_snowland",
         .Name = "frappe snowland",
         .DebugName = "snow",
@@ -351,7 +345,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>()); });
 
     info = {
-        .id = 6,
         .ResourceName = "mk:koopa_beach",
         .Name = "koopa troopa beach",
         .DebugName = "beach",
@@ -362,7 +355,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<KoopaTroopaBeach>()); });
 
     info = {
-        .id = 7,
         .ResourceName = "mk:royal_raceway",
         .Name = "royal raceway",
         .DebugName = "p circuit",
@@ -373,7 +365,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<RoyalRaceway>()); });
 
     info = {
-        .id = 8,
         .ResourceName = "mk:luigi_raceway",
         .Name = "luigi raceway",
         .DebugName = "l circuit",
@@ -384,7 +375,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<LuigiRaceway>()); });
 
     info = {
-        .id = 9,
         .ResourceName = "mk:moo_moo_farm",
         .Name = "moo moo farm",
         .DebugName = "farm",
@@ -395,7 +385,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<MooMooFarm>()); });
 
     info = {
-        .id = 10,
         .ResourceName = "mk:toads_turnpike",
         .Name = "toad's turnpike",
         .DebugName = "highway",
@@ -406,7 +395,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<ToadsTurnpike>()); });
 
     info = {
-        .id = 11,
         .ResourceName = "mk:kalimari_desert",
         .Name = "kalimari desert",
         .DebugName = "desert",
@@ -417,7 +405,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<KalimariDesert>()); });
 
     info = {
-        .id = 12,
         .ResourceName = "mk:sherbet_land",
         .Name = "sherbet land",
         .DebugName = "sherbet",
@@ -428,7 +415,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<SherbetLand>()); });
 
     info = {
-        .id = 13,
         .ResourceName = "mk:rainbow_road",
         .Name = "rainbow road",
         .DebugName = "rainbow",
@@ -439,7 +425,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<RainbowRoad>()); });
 
     info = {
-        .id = 14,
         .ResourceName = "mk:wario_stadium",
         .Name = "wario stadium",
         .DebugName = "stadium",
@@ -450,7 +435,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<WarioStadium>()); });
 
     info = {
-        .id = 15,
         .ResourceName = "mk:block_fort",
         .Name = "block fort",
         .DebugName = "block",
@@ -461,7 +445,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BlockFort>()); });
 
     info = {
-        .id = 16,
         .ResourceName = "mk:skyscraper",
         .Name = "skyscraper",
         .DebugName = "skyscraper",
@@ -472,7 +455,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<Skyscraper>()); });
 
     info = {
-        .id = 17,
         .ResourceName = "mk:double_deck",
         .Name = "double deck",
         .DebugName = "deck",
@@ -483,7 +465,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<DoubleDeck>()); });
 
     info = {
-        .id = 18,
         .ResourceName = "mk:dk_jungle",
         .Name = "d.k.'s jungle parkway",
         .DebugName = "jungle",
@@ -494,7 +475,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<DKJungle>()); });
 
     info = {
-        .id = 19,
         .ResourceName = "mk:big_donut",
         .Name = "big donut",
         .DebugName = "doughnut",
@@ -505,7 +485,6 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>()); });
 
     info = {
-        .id = 20,
         .ResourceName = "mk:test_track",
         .Name = "test track",
         .DebugName = "test track",
