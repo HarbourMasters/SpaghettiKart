@@ -103,7 +103,7 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.CloudList = gToadsTurnpikeRainbowRoadStars;
 
     FVector finish;
-    finish.x = (gIsMirrorMode != 0) ? 100 + 138.0f : 100 - 138.0f;
+    finish.x = -38.0f * xOrientation;
     finish.y = (f32) (0 - 15);
     finish.z = 16;
 
