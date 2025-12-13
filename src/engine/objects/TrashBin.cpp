@@ -19,14 +19,13 @@ extern "C" {
 #include "audio/external.h"
 }
 
-#define DEGREES_FLOAT_TO_SHORT(Degrees) ((s16)((Degrees) * (0x8000 / 180.0f)))
-
 OTrashBin::OTrashBin(const SpawnParams& params) : OObject(params) {
     Name = "Trash Bin";
     ResourceName = "mk:trash_bin";
     _pos = params.Location.value_or(FVector(0, 0, 0));
+    _pos.x *= xOrientation;
     _rot = params.Rotation.value_or(IRotator(0, 0, 0));
-    _scale = params.Scale.value_or(FVector(0, 0, 0)).y; // Only y
+    _scale = params.Scale.value_or(FVector(0, 0, 0)).y;
     _bhv = static_cast<Behaviour>(params.Behaviour.value_or(0));
 
     find_unused_obj_index(&_objectIndex);
@@ -86,9 +85,9 @@ void OTrashBin::init_bb_trash_bin(s32 objectIndex) {
     gObjectList[objectIndex].unk_04C = 0;
     gObjectList[objectIndex].unk_084[7] = 0;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
-    gObjectList[objectIndex].orientation[0] = DEGREES_FLOAT_TO_SHORT(_rot.pitch);
-    gObjectList[objectIndex].orientation[1] = DEGREES_FLOAT_TO_SHORT(_rot.yaw);
-    gObjectList[objectIndex].orientation[2] = DEGREES_FLOAT_TO_SHORT(_rot.roll);
+    gObjectList[objectIndex].orientation[0] = _rot.pitch;
+    gObjectList[objectIndex].orientation[1] = _rot.yaw;
+    gObjectList[objectIndex].orientation[2] = _rot.roll;
     gObjectList[objectIndex].pos[0] = _pos.x;
     if (_drawBin) {
         // Position the lid on-top of the box.
@@ -104,8 +103,6 @@ void OTrashBin::init_bb_trash_bin(s32 objectIndex) {
     gObjectList[objectIndex].type = 0;
     object_next_state(objectIndex);
 }
-
-#undef DEGREES_FLOAT_TO_SHORT
 
 void OTrashBin::func_8007E00C(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {
