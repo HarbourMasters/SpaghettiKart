@@ -189,6 +189,93 @@ static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool sh
     }
 }
 
+static void InvertTriangleWindingModdedInternal(Gfx* gfx, const char* gfxName) {
+    if (gfx == nullptr) {
+        return;
+    }
+    
+    if (GameEngine_OTRSigCheck((char*)gfx)) {
+        gfx = (Gfx*)LOAD_ASSET(gfx);
+    }
+    
+    if (gfxName != nullptr) {
+        std::string nameStr = StripOtrPrefix(gfxName);
+        if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
+            return;
+        }
+        gModifiedGfxSet.insert(nameStr);
+    }
+    
+    Gfx* cmd = gfx;
+    
+    for (int i = 0; i < 0x1FFF; i++) {
+        int8_t opcode = cmd->words.w0 >> 24;
+        
+        switch (opcode) {
+            case G_TRI1:
+            case G_TRI1_OTR:
+            case G_TRI2:
+            case G_QUAD:
+                SwapTriangleVertices(cmd);
+                break;
+            case G_DL: {
+                Gfx* subDL = (Gfx*)(uintptr_t)cmd->words.w1;
+                InvertTriangleWindingModdedInternal(subDL, nullptr);
+                break;
+            }
+            case G_DL_OTR_HASH: {
+                cmd++;
+                i++;
+                uint64_t hash = ((uint64_t)cmd->words.w0 << 32) | cmd->words.w1;
+                const char* name = ResourceGetNameByCrc(hash);
+                if (name != nullptr) {
+                    Gfx* subDL = (Gfx*)ResourceGetDataByCrc(hash);
+                    InvertTriangleWindingModdedInternal(subDL, name);
+                }
+                break;
+            }
+            case G_DL_OTR_FILEPATH: {
+                const char* name = (const char*)(uintptr_t)cmd->words.w1;
+                if (name != nullptr) {
+                    Gfx* subDL = (Gfx*)ResourceGetDataByName(name);
+                    InvertTriangleWindingModdedInternal(subDL, name);
+                }
+                break;
+            }
+            case G_VTX_OTR_FILEPATH:
+            case G_VTX_OTR_HASH:
+                cmd++;
+                i++;
+                break;
+            case G_MARKER: {
+                cmd++;
+                i++;
+                uint64_t hash = ((uint64_t)cmd->words.w0 << 32) | cmd->words.w1;
+                const char* name = ResourceGetNameByCrc(hash);
+                if (name != nullptr) {
+                    std::string nameStr = StripOtrPrefix(name);
+                    if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
+                        return;
+                    }
+                    gModifiedGfxSet.insert(nameStr);
+                }
+                break;
+            }
+            case G_MTX_OTR:
+            case G_SETTIMG_OTR_HASH:
+                cmd++;
+                i++;
+                break;
+            case G_ENDDL:
+                return;
+            default:
+                break;
+        }
+        
+        cmd++;
+    }
+}
+
 void InvertTriangleWinding(Gfx* gfx) {
     InvertTriangleWindingInternal(gfx, nullptr, false);
 }
@@ -200,6 +287,14 @@ void InvertTriangleWindingByName(const char* name) {
     Gfx* gfx = (Gfx*)ResourceGetDataByName(name);
     bool shouldSwap = (strstr(name, "packed") != nullptr);
     InvertTriangleWindingInternal(gfx, name, shouldSwap);
+}
+
+void InvertTriangleWindingModdedByName(const char* name) {
+    if (name == nullptr) {
+        return;
+    }
+    Gfx* gfx = (Gfx*)ResourceGetDataByName(name);
+    InvertTriangleWindingModdedInternal(gfx, name);
 }
 
 void RestoreTriangleWinding() {
@@ -360,8 +455,16 @@ void Track::Load() {
         TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(trackSectionPath.c_str());
         size_t size = ResourceGetSizeByName(trackSectionPath.c_str());
 
+        size_t totalSections = size / sizeof(TrackSections);
+
         if (sections != nullptr) {
             Track::Init();
+            if (gIsMirrorMode != 0) {
+                for (size_t i = 0; i < totalSections; i++) {
+                    auto name = ResourceGetNameByCrc(sections[i].crc);
+                    InvertTriangleWindingModdedByName(name);
+                }
+            }
             ParseTrackSections(sections, size);
             func_80295C6C();
 
@@ -535,7 +638,8 @@ void Track::Draw(ScreenContext* arg0) {
 
     TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(res.c_str());
     size_t size = ResourceGetSizeByName(res.c_str());
-    for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
+    size_t totalSections = size / sizeof(TrackSections);
+    for (size_t i = 0; i < totalSections; i++) {
         gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(sections[i].crc));
     }
 }
@@ -563,8 +667,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
 
 void Track::ScrollingTextures() {
 }
-void Track::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
-                       uint16_t playerDirection) {
+void Track::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
 }
 
 void Track::Destroy() {
