@@ -141,6 +141,8 @@ void CustomEngineInit() {
 }
 
 void CustomEngineDestroy() {
+    gTrackRegistry.Clear();
+    gActorRegistry.Clear();
     delete gMushroomCup;
     delete gFlowerCup;
     delete gStarCup;

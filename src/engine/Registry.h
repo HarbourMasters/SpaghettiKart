@@ -8,6 +8,7 @@
 
 struct TrackInfo {
     std::string Path; // Path to the custom track
+    int id;
     std::string ResourceName;
     std::string Name;
     std::string DebugName;
@@ -92,6 +93,10 @@ public:
             list.push_back(&pair.second.Info);
         }
         return list;
+    }
+
+    void Clear() {
+        mMap.clear();
     }
 
 private:

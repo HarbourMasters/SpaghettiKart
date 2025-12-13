@@ -21,6 +21,7 @@ void TrackBrowser::FindCustomTracks() {
                 auto archive = manager->GetArchiveFromFile(sceneFile);
 
                 TrackInfo info;
+                info.id = 30;
                 info.Path = dir;
                 Editor::LoadTrackInfo(info, archive, sceneFile);
                 printf("Added custom track %s\n", info.Name.c_str());
