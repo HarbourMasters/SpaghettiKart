@@ -60,7 +60,7 @@ void update_actor_banana(struct BananaActor* banana) {
                     controller->buttonDepressed &= ~Z_TRIG;
                     banana->state = 1;
                     banana->unk_04 = 0x00B4;
-                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                    player->triggers &= ~DRAG_ITEM_EFFECT;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     pad3 = controller->rawStickY;
                     if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {

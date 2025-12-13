@@ -644,7 +644,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
 
     player = &gPlayerOne[playerId];
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        if (!(player->soundEffects & 0x100)) {
+        if (!(player->triggers & THWOMP_SQUISH_TRIGGER)) {
             temp_f0 = func_80088F54(objectIndex, player);
             if ((temp_f0 <= 9.0) && !(player->effects & 0x04000000) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
@@ -675,7 +675,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                     func_800722A4(objectIndex, 2);
                     player->unk_040 = (s16) objectIndex;
                     player->unk_046 |= 2;
-                    player->soundEffects |= 0x100;
+                    player->triggers |= THWOMP_SQUISH_TRIGGER;
                     reset_player_speed_and_velocity(player);
                 }
             }
@@ -816,7 +816,7 @@ void OThwomp::func_80080DE4(s32 arg0) {
     player = gPlayerOne;
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
-            player->soundEffects &= ~0x100;
+            player->triggers &= ~THWOMP_SQUISH_TRIGGER;
             player->unk_040 = -1;
         }
     }

@@ -177,7 +177,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->soundEffects = 0;
+    player->triggers = 0;
     player->alpha = ALPHA_MAX;
 
     player->unk_206 = 0;

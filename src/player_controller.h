@@ -38,7 +38,7 @@ void func_8002AE30(void);
 void func_8002AE38(Player*, s8, f32, f32, f32, f32);
 
 void func_8002B218(Player*);
-void apply_sound_effect(Player*, s8, s8);
+void apply_triggers(Player*, s8, s8);
 void func_8002B5C0(Player*, s8, s8);
 void func_8002B830(Player*, s8, s8);
 void func_8002B8A4(Player*, Player*);

@@ -356,19 +356,39 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define MAX_TIME 0x927C0
 
 /**
- * @brief sound effect of player's
- * for soundEffect
+ * @brief triggers indicating that an effect should be applied to a kart
  */
-#define HIT_SOUND_EFFECT 0x100                   // hitting an object
-#define BOOST_SOUND_EFFECT 0x200                 // being boosted by trigger a mushroom
-#define BOO_SOUND_EFFECT 0x800                   // being a boo
-#define STAR_SOUND_EFFECT 0x2000                 // being a star
-#define HIT_ROTATING_SOUND_EFFECT 0x4000         // hitting a rotating object
-#define BOOST_RAMP_WOOD_SOUND_EFFECT 0x8000      // being boosted by a ramp
-#define HOLD_BANANA_SOUND_EFFECT 0x40000         // holding a banana
-#define REVERSE_SOUND_EFFECT 0x400000            // being in the wrong direction
-#define BOOST_RAMP_ASPHALT_SOUND_EFFECT 0x800000 // being boosted by a boost pad
-#define HIT_BY_ITEM_SOUND_EFFECT 0x1000000       // being hit by an item
+#define HIT_BANANA_TRIGGER              0x1 // hits a banana
+#define HIGH_TUMBLE_TRIGGER             0x2 // hit by a red shell, blue shell, or hit a mole
+#define LOW_TUMBLE_TRIGGER              0x4 // hit by a green shell
+#define DRIVING_SPINOUT_TRIGGER        0x80 // spinning out from erratic driving
+#define THWOMP_SQUISH_TRIGGER         0x100 // stomped by thwomp
+#define SHROOM_TRIGGER                0x200 // being boosted by trigger a mushroom
+#define BOO_TRIGGER                   0x800 // being a boo
+#define UNUSED_TRIGGER_0x1000        0x1000 // Unused
+#define STAR_TRIGGER                 0x2000 // Starting a star
+#define LIGHTNING_STRIKE_TRIGGER     0x4000 // Struck by lightning
+#define BOOST_RAMP_WOOD_TRIGGER      0x8000 // being boosted by a ramp
+#define UNUSED_TRIGGER_0x20000      0x20000 // Unused
+#define DRAG_ITEM_EFFECT            0x40000 // holding a non-shell item behind you
+#define HIT_PADDLE_BOAT_TRIGGER     0x80000 // hit paddle boat
+#define UNUSED_TRIGGER_0x10000     0x100000 // Unused
+#define SPINOUT_TRIGGER            0x200000 // hit crab or spiny spinout or losing versus race
+#define VERTICAL_TUMBLE_TRIGGER    0x400000 // hitting a fake item / bomb / snowman / car / train
+#define BOOST_RAMP_ASPHALT_TRIGGER 0x800000 // being boosted by a boost pad
+#define HIT_BY_STAR_TRIGGER       0x1000000 // being hit by a star
+#define START_BOOST_TRIGGER       0x2000000 // Start boost
+#define LOSE_BATTLE_EFFECT        0x4000000 // When losing battle mode
+#define BECOME_BOMB_EFFECT        0x8000000 // When becoming a bomb in battle mode
+#define START_SPINOUT_TRIGGER    0x10000000 // Spinning out by holding gas at start of race
+
+#define ALL_TRIGGERS (0xFFFFFFFF)
+#define RACING_SPINOUT_TRIGGERS (SPINOUT_TRIGGER | DRIVING_SPINOUT_TRIGGER | HIT_BANANA_TRIGGER) // 0x200081
+#define RAMP_BOOST_TRIGGERS (BOOST_RAMP_ASPHALT_TRIGGER | BOOST_RAMP_WOOD_TRIGGER) // 0x00808000
+#define ANY_BOOST_TRIGGERS (RAMP_BOOST_TRIGGERS | SHROOM_TRIGGER) // 0x00808200
+#define STATE_TRANSITION_TRIGGERS (STAR_TRIGGER | BOO_TRIGGER | UNUSED_TRIGGER_0x1000 | UNUSED_TRIGGER_0x20000)// 0x00023800
+#define HIT_TRIGGERS (HIT_BY_STAR_TRIGGER | VERTICAL_TUMBLE_TRIGGER | \
+    LIGHTNING_STRIKE_TRIGGER | LOW_TUMBLE_TRIGGER | HIGH_TUMBLE_TRIGGER | THWOMP_SQUISH_TRIGGER) // 0x01404106
 
 /**
  * @brief effect of player's
