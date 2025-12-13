@@ -29,6 +29,8 @@ extern "C" {
 #include "actors.h"
 #include "actor_types.h"
 #include "code_80005FD0.h"
+#include "code_800029B0.h"
+#include "render_courses.h"
 }
 
 namespace Editor {
@@ -55,6 +57,10 @@ namespace Editor {
             SaveTour(track, tour);
             data["Tour"] = tour;
         }
+
+        nlohmann::json fog;
+        SaveFog(fog);
+        data["Fog"] = fog;
 
         if (nullptr == track->Archive) {
             SPDLOG_INFO("[SceneManager] [SaveLevel] Track archive nullptr");
@@ -297,6 +303,19 @@ namespace Editor {
         }
     }
 
+    void SaveFog(nlohmann::json& fog) {
+        if (bFog) {
+            fog["EnableFog"] = bFog;
+            fog["Colour"]["R"] = gFogColour.r;
+            fog["Colour"]["G"] = gFogColour.g;
+            fog["Colour"]["B"] = gFogColour.b;
+            fog["Colour"]["A"] = gFogColour.a;
+
+            fog["Min"] = gFogMin;
+            fog["Max"] = gFogMax;
+        }
+    }
+
     void LoadProps(Track* track, nlohmann::json& data) {
         if (!data.contains("Props") || !data["Props"].is_object()) {
             SPDLOG_INFO("Track is missing props data. Is the scene.json file corrupt?");
@@ -414,5 +433,44 @@ namespace Editor {
                 track->TourShots.push_back(FromJsonCameraShot(shotJson));
             }
         }
+    }
+
+    void LoadFog(nlohmann::json& data) {
+        if (!data.contains("Fog") || !data["Fog"].is_object()) {
+            SPDLOG_INFO("  This track does not contain fog");
+            return;
+        }
+
+        nlohmann::json& fog = data["Fog"];
+
+        bFog = fog.value("Enabled", false);
+
+        if (!bFog) return;
+
+        // Load color
+        if (fog.contains("Colour") && fog["Colour"].is_object()) {
+            nlohmann::json& c = fog["Colour"];
+            gFogColour.r = c.value("R", 255);
+            gFogColour.g = c.value("G", 255);
+            gFogColour.b = c.value("B", 255);
+            gFogColour.a = c.value("A", 255);
+        }
+
+        // Load min/max with safety clamps
+        int minVal = fog.value("Min", 0);
+        int maxVal = fog.value("Max", 500);
+
+        // Ensure min < max
+        if (minVal >= maxVal) {
+            minVal = maxVal - 1;
+        }
+
+        // Clamp to valid ranges
+        minVal = std::clamp(minVal, 0, 999);
+        maxVal = std::clamp(maxVal, 1, 1000);
+
+        gFogMin = static_cast<int16_t>(minVal);
+        gFogMax = static_cast<int16_t>(maxVal);
+
     }
 }

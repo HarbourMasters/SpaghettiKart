@@ -132,8 +132,8 @@ void ChocoMountain::Load() {
     gFogColour.g = 255;
     gFogColour.b = 255;
     gFogColour.a = 255;
-    gFogMin = 0x3E3;
-    gFogMax = 0x3E8;
+    gFogMin = 995;
+    gFogMax = 1000;
     D_802B87D4 = 0x71C;
     D_802B87D0 = 0xE38;
 

@@ -17,6 +17,7 @@ namespace Editor {
     void SaveActors(nlohmann::json& actorList);
     void SaveStaticMeshActors(nlohmann::json& actorList);
     void SaveTour(Track* track, nlohmann::json& tour);
+    void SaveFog(nlohmann::json& fog);
 
     void LoadProps(Track* track, nlohmann::json& data);
     void LoadPaths(Track* track, const std::string& trackPath);
@@ -24,6 +25,7 @@ namespace Editor {
     void LoadActors(Track* track, nlohmann::json& data);
     void LoadStaticMeshActors(Track* track, nlohmann::json& data);
     void LoadTour(Track* track, nlohmann::json& data);
+    void LoadFog(nlohmann::json& data);
 
     void SpawnActors(std::vector<std::pair<std::string, SpawnParams>> spawnList);
 
