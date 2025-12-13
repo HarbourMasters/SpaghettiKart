@@ -82,6 +82,21 @@ static void SwapTriangleVertices(Gfx* cmd) {
     }
 }
 
+// Remove all occurrences of the marker "__OTR__" from a name string.
+static std::string StripOtrPrefix(const char* s) {
+    if (s == nullptr) {
+        return std::string();
+    }
+
+    std::string out(s);
+    const std::string marker = "__OTR__";
+    size_t pos = 0;
+    while ((pos = out.find(marker, pos)) != std::string::npos) {
+        out.erase(pos, marker.length());
+    }
+    return out;
+}
+
 static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool shouldSwap) {
     if (gfx == nullptr) {
         return;
@@ -92,7 +107,7 @@ static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool sh
     }
     
     if (gfxName != nullptr) {
-        std::string nameStr(gfxName);
+        std::string nameStr = StripOtrPrefix(gfxName);
         if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
             return;
         }
@@ -150,7 +165,7 @@ static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool sh
                 uint64_t hash = ((uint64_t)cmd->words.w0 << 32) | cmd->words.w1;
                 const char* name = ResourceGetNameByCrc(hash);
                 if (name != nullptr && gfxName == nullptr) {
-                    std::string nameStr(name);
+                    std::string nameStr = StripOtrPrefix(name);
                     if (gModifiedGfxSet.find(nameStr) != gModifiedGfxSet.end()) {
                         return;
                     }

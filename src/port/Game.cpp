@@ -143,6 +143,7 @@ void CustomEngineInit() {
 void CustomEngineDestroy() {
     gTrackRegistry.Clear();
     gActorRegistry.Clear();
+    gPodiumCeremony = nullptr;
     delete gMushroomCup;
     delete gFlowerCup;
     delete gStarCup;
