@@ -2,7 +2,7 @@
 
 #include <libultra/gbi.h>
 #include "engine/Matrix.h"
-
+#include "port/interpolation/FrameInterpolation.h"
 extern "C" {
 #include "common_structs.h"
 #include "math_util.h"
@@ -43,11 +43,14 @@ void ABowserStatue::Draw(Camera *camera) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     
     FVector pos = FVector(Pos[0] + 76, Pos[1], Pos[2] + 1846);
+
+    FrameInterpolation_RecordOpenChild("mk:bowser_statue", TAG_OBJECT(this));
     ApplyMatrixTransformations(mtx, pos, *(IRotator*)Rot, Scale);
     AddObjectMatrix(mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetCombineMode(gDisplayListHead++,G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++,G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPDisplayList(gDisplayListHead++,(Gfx*) d_course_bowsers_castle_packed_dl_2BB8);
+    FrameInterpolation_RecordCloseChild();
 }
 
 bool ABowserStatue::IsMod() { return true; }

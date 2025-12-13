@@ -2,6 +2,7 @@
 
 #include <libultra/gbi.h>
 #include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
+#include "port/interpolation/FrameInterpolation.h"
 #include "CoreMath.h"
 
 extern "C" {
@@ -72,6 +73,7 @@ void AMarioSign::Draw(Camera *camera) {
         unk = MAX(unk, 0.0f);
     }
     if (!(unk < 0.0f)) {
+        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT(this));
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
         mtxf_pos_rotation_xyz(sp40, Pos, Rot);
@@ -79,5 +81,6 @@ void AMarioSign::Draw(Camera *camera) {
         if (render_set_position(sp40, 0) != 0) {
             gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_mario_raceway_dl_sign);
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }

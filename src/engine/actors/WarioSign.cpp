@@ -2,6 +2,7 @@
 
 #include <libultra/gbi.h>
 #include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -53,6 +54,7 @@ void AWarioSign::Draw(Camera *camera) {
         unk = MAX(unk, 0.0f);
     }
     if (!(unk < 0.0f)) {
+        FrameInterpolation_RecordOpenChild("mk:mario_sign", TAG_OBJECT(this));
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -61,5 +63,6 @@ void AWarioSign::Draw(Camera *camera) {
 
             gSPDisplayList(gDisplayListHead++, (Gfx*)d_course_wario_stadium_dl_sign);
         }
+        FrameInterpolation_RecordCloseChild();
     }
 }
