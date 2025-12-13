@@ -623,6 +623,19 @@ void Track::Waypoints(Player* player, int8_t playerId) {
 void Track::Draw(ScreenContext* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
+
+    if (bFog) {
+        gDPSetCycleType(gDisplayListHead++, G_CYC_2CYCLE);
+        gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
+        gSPSetGeometryMode(gDisplayListHead++, G_FOG);
+
+        gDPSetFogColor(gDisplayListHead++, gFogColour.r, gFogColour.g, gFogColour.b, gFogColour.a);
+        gSPFogPosition(gDisplayListHead++, gFogMin, gFogMax);
+        gDPPipeSync(gDisplayListHead++);
+    } else {
+        gSPClearGeometryMode(gDisplayListHead++, G_FOG);
+    }
+
     set_track_light_direction(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
@@ -630,7 +643,6 @@ void Track::Draw(ScreenContext* arg0) {
     if (func_80290C20(arg0->camera) == 1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        // d_course_big_donut_packed_dl_DE8
     }
 
     const TrackInfo* info = gTrackRegistry.GetInfo(ResourceName);

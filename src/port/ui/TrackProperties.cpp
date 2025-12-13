@@ -57,6 +57,7 @@ namespace Editor {
         }
 
         if (ImGui::CollapsingHeader("Environment")) {
+            TrackPropertiesWindow::DrawFog();
             TrackPropertiesWindow::DrawLight();
         }
 
@@ -249,6 +250,40 @@ namespace Editor {
         }
     }
 
+    void TrackPropertiesWindow::DrawFog() {
+        if (ImGui::CollapsingHeader("Fog")) {
+            ImGui::Checkbox("Enable Fog", &bFog);
+            float colours[4];
+
+            // Convert rgba to floats
+            RGB8ToFloat((u8*)&gFogColour, colours);
+            colours[3] = gFogColour.a / 255.0f;
+            // Edit the ambient RGB colour
+            ImGui::ColorEdit4("Fog Colour", colours);
+
+            // Convert floats to rgba
+            FloatToRGB8(colours, (u8*)&gFogColour);
+            gFogColour.a = static_cast<u8>(colours[3] * 255.0f);
+
+            // Fog near and far planes
+            int val[2] = {static_cast<int>(gFogMin), static_cast<int>(gFogMax)};
+
+            ImGui::DragInt2("##MinimapPosition", &val[0], 1.0f, 0, 1000);
+
+            if (val[0] >= val[1]) {
+                val[0] = val[1] - 1;
+            }
+
+            // Clamp to allowed range just in case
+            val[0] = std::clamp(val[0], 0, 999);
+            val[1] = std::clamp(val[1], 1, 1000);
+
+            gFogMin = static_cast<int16_t>(val[0]);
+            gFogMax = static_cast<int16_t>(val[1]);
+        }
+
+    }
+
     void TrackPropertiesWindow::DrawLight() {
         // Convert and pass to ImGui ColorEdit3
         
@@ -260,17 +295,17 @@ namespace Editor {
             RGB8ToFloat((u8*)&D_800DC610[i].l->l.col, diffuse);
             RGB8ToFloat((u8*)&D_800DC610[i].l->l.dir, direction);
 
-            // Edit the ambient RGB color
-            ImGui::Text("Light %d - Ambient Color", i + 1);
-            ImGui::ColorEdit3(("Ambient Color " + std::to_string(i)).c_str(), ambient); // Modify ambient color
+            // Edit the ambient RGB colour
+            ImGui::Text("Light %d - Ambient Colour", i + 1);
+            ImGui::ColorEdit3(("Ambient Colour " + std::to_string(i)).c_str(), ambient); // Modify ambient colour
+
+            // Edit the diffuse RGB colour
+            ImGui::Text("Light %d - Diffuse Colour", i + 1);
+            ImGui::ColorEdit3(("Diffuse Colour " + std::to_string(i)).c_str(), diffuse); // Modify diffuse colour
     
-            // Edit the diffuse RGB color
-            ImGui::Text("Light %d - Diffuse Color", i + 1);
-            ImGui::ColorEdit3(("Diffuse Color " + std::to_string(i)).c_str(), diffuse); // Modify diffuse color
-    
-            // Edit the direction RGB color (this could be represented as a direction vector)
+            // Edit the direction RGB colour (this could be represented as a direction vector)
             ImGui::Text("Light %d - Direction", i + 1);
-            ImGui::ColorEdit3(("Direction Color " + std::to_string(i)).c_str(), direction); // Modify direction vector color
+            ImGui::ColorEdit3(("Direction Colour " + std::to_string(i)).c_str(), direction); // Modify direction vector colour
 
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.col);
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.colc);
@@ -281,7 +316,7 @@ namespace Editor {
         }
     }
 
-    // Convert s16 color values to float (normalized to [0, 1] range)
+    // Convert s16 colour values to float (normalized to [0, 1] range)
     void TrackPropertiesWindow::RGB8ToFloat(const u8* src, float* dst) {
         for (size_t i = 0; i < 3; ++i) {
             dst[i] = src[i] / 255.0f;  // Normalize to the range [0.0f, 1.0f]

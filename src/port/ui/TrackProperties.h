@@ -16,6 +16,7 @@ protected:
     void InitElement() override {};
     void DrawElement() override;
     void DrawMusic();
+    void DrawFog();
     void DrawLight();
     void UpdateElement() override {};
     void RGB8ToFloat(const u8* src, float* dst);
