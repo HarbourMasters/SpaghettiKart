@@ -309,7 +309,7 @@ void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
                 } else {
                    // gCameraFOV[cameraId] = 40.0f;
                 }
-                camera->unk_B4 = gCameraFOV[0];
+                camera->unk_B4 = gCameraFOV[cameraId];
            // }
             // if (D_80164678[cameraId] == 1) {
             //     if (D_80164A28 == 1) {
