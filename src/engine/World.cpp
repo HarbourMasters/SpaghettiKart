@@ -113,11 +113,11 @@ void World::TickCameras() {
     }
 }
 
-AActor* World::AddActor(AActor actor) {
-    Actors.push_back(std::make_unique<AActor>(actor));
-    actor.BeginPlay();
-    return Actors.back().get();
-}
+// AActor* World::AddActor(AActor actor) {
+//     Actors.push_back(std::make_unique<AActor>(actor));
+//     actor.BeginPlay();
+//     return Actors.back().get();
+// }
 
 AActor* World::AddActor(std::unique_ptr<AActor> actor) {
     Actors.push_back(std::move(actor));
@@ -183,17 +183,17 @@ void World::DrawStaticMeshActors() {
     }
 }
 
-OObject* World::AddObject(OObject object) {
-    Objects.push_back(std::make_unique<OObject>(object));
+// OObject* World::AddObject(OObject object) {
+//     Objects.push_back(std::make_unique<OObject>(object));
 
-    // This is an example of how to get the C object.
-    // However, nothing is being done with it, so it's been commented out.
-    // if (object->_objectIndex != -1) {
-    //     Object* cObj = &gObjectList[object->_objectIndex];
-    // }
+//     // This is an example of how to get the C object.
+//     // However, nothing is being done with it, so it's been commented out.
+//     // if (object->_objectIndex != -1) {
+//     //     Object* cObj = &gObjectList[object->_objectIndex];
+//     // }
 
-    return Objects.back().get();
-}
+//     return Objects.back().get();
+// }
 
 OObject* World::AddObject(std::unique_ptr<OObject> object) {
     Objects.push_back(std::move(object));

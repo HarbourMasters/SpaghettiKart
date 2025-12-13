@@ -65,7 +65,6 @@ public:
 
     void TickCameras();
 
-    AActor* AddActor(AActor actor);
     AActor* AddActor(std::unique_ptr<AActor> actor);
     struct Actor* AddBaseActor();
     void ActorBeginPlay(Actor* actor);
@@ -78,7 +77,6 @@ public:
     void DrawStaticMeshActors();
     StaticMeshActor* AddStaticMeshActor(const std::string& name, FVector pos, IRotator rot, FVector scale, const std::string& model, int32_t* collision);
 
-    OObject* AddObject(OObject object);
     OObject* AddObject(std::unique_ptr<OObject> object);
 
     void TickObjects();

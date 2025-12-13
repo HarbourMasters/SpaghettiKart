@@ -209,9 +209,9 @@ void MooMooFarm::BeginPlay() {
                 break;
         }
 
-        GetWorld()->AddObject(OMoleGroup(moleSpawns1, tick1));
-        GetWorld()->AddObject(OMoleGroup(moleSpawns2, tick2));
-        GetWorld()->AddObject(OMoleGroup(moleSpawns3, tick3));
+        GetWorld()->AddObject(std::make_unique<OMoleGroup>(moleSpawns1, tick1));
+        GetWorld()->AddObject(std::make_unique<OMoleGroup>(moleSpawns2, tick2));
+        GetWorld()->AddObject(std::make_unique<OMoleGroup>(moleSpawns3, tick3));
     }
 
     if (gModeSelection == VERSUS) {
