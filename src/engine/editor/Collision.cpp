@@ -25,11 +25,6 @@ namespace Editor {
         size_t i = 0;
         bool run = true;
 
-        //! @attention Objects will not be clickable if editor is enabled mid-race.
-        if (!gEditor.IsEnabled()) {
-            return;
-        }
-
         while (run) {
             i++;
             lo = ptr->words.w0;

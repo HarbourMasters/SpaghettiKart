@@ -53,8 +53,10 @@ void AShip::SetSpawnParams(SpawnParams& params) {
 
 void AShip::BeginPlay() {
     // Prevent collision mesh from being generated extra times.
-    if (Triangles.size() == 0) {
-        Editor::GenerateCollisionMesh(this, (Gfx*)_skin, Scale.y);
+    if (Editor_IsEnabled()) {
+        if (Triangles.size() == 0) {
+            Editor::GenerateCollisionMesh(this, (Gfx*)_skin, Scale.y);
+        }
     }
 }
 

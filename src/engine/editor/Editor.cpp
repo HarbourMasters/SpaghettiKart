@@ -152,7 +152,6 @@ namespace Editor {
             if (!isDragging) {
                 eObjectPicker.SelectObject(eGameObjects);
             }
-
         }
 
         wasMouseDown = isMouseDown;  // Update previous state

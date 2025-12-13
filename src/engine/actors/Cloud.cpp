@@ -48,8 +48,10 @@ void ACloud::SetSpawnParams(SpawnParams& params) {
 extern Gfx cloud_mesh[];
 void ACloud::BeginPlay() {
     // Prevent collision mesh from being generated extra times.
-    if (Triangles.size() == 0) {
-        Editor::GenerateCollisionMesh(this, (Gfx*)cloud_mesh, 1.0f);
+    if (Editor_IsEnabled()) {
+        if (Triangles.size() == 0) {
+            Editor::GenerateCollisionMesh(this, (Gfx*)cloud_mesh, 1.0f);
+        }
     }
 }
 
