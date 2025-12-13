@@ -113,12 +113,6 @@ void World::TickCameras() {
     }
 }
 
-// AActor* World::AddActor(AActor actor) {
-//     Actors.push_back(std::make_unique<AActor>(actor));
-//     actor.BeginPlay();
-//     return Actors.back().get();
-// }
-
 AActor* World::AddActor(std::unique_ptr<AActor> actor) {
     Actors.push_back(std::move(actor));
     Actors.back()->BeginPlay();
