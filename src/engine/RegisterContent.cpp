@@ -19,6 +19,16 @@ extern "C" {
  * This file is responsible for registering the games stock content
  */
 
+
+/**
+ * 
+ * DO NOT RE-ORDER ANYTHING IN THIS FILE.
+ * IT WILL MIX UP THE IDS
+ * 
+ * Add new content to the end of the function
+ */
+
+
 void RegisterActors(Registry<ActorInfo, const SpawnParams&>& r) {
     ActorInfo info;
 
