@@ -9,7 +9,7 @@
 
 /* Function Prototypes */
 
-void func_802A4A0C(Vtx*, ScreenContext*, s32, s32, f32*);
+void func_802A4A0C(Vtx*, ScreenContext*);
 void set_screen(void);
 void set_editor_screen(void);
 void func_802A3730(ScreenContext*);
@@ -31,7 +31,7 @@ void set_viewport(void);
 void select_framebuffer(void);
 void func_802A4300(void);
 void func_802A450C(Vtx*);
-void func_802A487C(Vtx*, ScreenContext*, s32, s32, f32*);
+void func_802A487C(Vtx*);
 void func_802A4D18(void);
 void func_802A4EF4(void);
 void func_802A5004(void);

@@ -20,14 +20,14 @@ const char* sPiranhaPlantTextures[] = {
  * @brief Renders the piranha plant actor.
  * Actor used in Mario Raceway and Royal Raceway.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* arg2) {
+void render_actor_piranha_plant(Camera* camera, Mat4 arg1, struct PiranhaPlant* arg2) {
     UNUSED s32 pad;
     u8* addr;
-    s16 temp_lo = arg0 - camera1;
+    s16 temp_lo = camera - camera1;
     s16 animationFrame; // unconfirmed
     s16 temp = arg2->flags;
     f32 temp_f0;
@@ -37,7 +37,7 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
         return;
     }
 
-    temp_f0 = is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraFOV[arg0 - camera1], 1000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 1000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);

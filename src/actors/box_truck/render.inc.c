@@ -10,15 +10,15 @@
  * Actor used in Toad's Turnpike.
  * His update are made in vehicle.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  */
-void render_actor_box_truck(Camera* arg0, struct Actor* arg1) {
+void render_actor_box_truck(Camera* camera, struct Actor* arg1) {
     UNUSED s32 pad[6];
     Mat4 spD8;
     UNUSED s32 pad2[32];
     f32 temp_f0 =
-        is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 2500.0f, gCameraFOV[arg0 - camera1], 9000000.0f);
+        is_within_render_distance(camera->pos, arg1->pos, camera->rot[1], 2500.0f, camera->fieldOfView, 9000000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
     }

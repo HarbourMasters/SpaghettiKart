@@ -56,7 +56,7 @@ void FreeCamera::SetViewProjection() {
 
     // Perspective (camera movement)
     FrameInterpolation_RecordOpenChild("freecam_persp", FrameInterpolation_GetCameraEpoch());
-    guPerspective(&PerspectiveMatrix, &perspNorm, 40, gScreenAspect,
+    guPerspective(&PerspectiveMatrix, &perspNorm, _camera->fieldOfView, gScreenAspect,
                   CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, &PerspectiveMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);

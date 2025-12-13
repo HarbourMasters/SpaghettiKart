@@ -74,7 +74,7 @@ void func_80281D00(void) {
     }
     func_8028150C();
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(camera->perspectiveMatrix, &perspNorm, gCameraFOV[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp,
+    guPerspective(camera->perspectiveMatrix, &perspNorm, camera->fieldOfView, gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp,
                   1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, camera->perspectiveMatrix,

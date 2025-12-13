@@ -6,11 +6,11 @@
  * @brief Renders the palm tree actor.
  * Actor used in Koopa Troopa Beach.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_palm_tree(Camera* arg0, UNUSED Mat4 arg1, struct PalmTree* arg2) {
+void render_actor_palm_tree(Camera* camera, UNUSED Mat4 arg1, struct PalmTree* arg2) {
     Vec3s spA8 = { 0, 0, 0 };
     Mat4 sp68;
     f32 temp_f0;
@@ -21,7 +21,7 @@ void render_actor_palm_tree(Camera* arg0, UNUSED Mat4 arg1, struct PalmTree* arg
     }
 
     temp_f0 =
-        is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, gCameraFOV[arg0 - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0.0f, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);

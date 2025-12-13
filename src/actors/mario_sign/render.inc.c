@@ -7,11 +7,11 @@
  * @brief Renders the Mario sign actor.
  * Actor used in Mario Raceway.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_mario_sign(Camera* arg0, UNUSED Mat4 arg1, struct Actor* arg2) {
+void render_actor_mario_sign(Camera* camera, UNUSED Mat4 arg1, struct Actor* arg2) {
     Mat4 mtx;
     f32 unk;
     s16 temp = arg2->flags;
@@ -19,7 +19,7 @@ void render_actor_mario_sign(Camera* arg0, UNUSED Mat4 arg1, struct Actor* arg2)
         return;
     }
 
-    unk = is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraFOV[arg0 - camera1], 16000000.0f);
+    unk = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 16000000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         unk = MAX(unk, 0.0f);
     }

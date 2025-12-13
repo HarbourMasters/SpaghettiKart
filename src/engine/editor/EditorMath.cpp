@@ -62,7 +62,7 @@ FVector ScreenRayTrace() {
 
     Mat4 perspMtx;
     u16 perspNorm;
-    guPerspectiveF(perspMtx, &perspNorm, 40, OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspectiveF(perspMtx, &perspNorm, camera->fieldOfView, OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
     if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx) != 2) {

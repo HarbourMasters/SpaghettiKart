@@ -163,27 +163,27 @@ void camera_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
 
             if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                    gCameraFOV[cameraId] = 80.0f;
+                    camera->fieldOfView = 80.0f;
                 } else {
-                    gCameraFOV[cameraId] = 40.0f;
+                    camera->fieldOfView = 40.0f;
                 }
-                camera->unk_B4 = gCameraFOV[cameraId];
+                camera->unk_B4 = camera->fieldOfView;
             }
             if (D_80164678[cameraId] == 1) {
                 if (D_80164A28 == 1) {
-                    gCameraFOV[cameraId] = 100.0f;
+                    camera->fieldOfView = 100.0f;
                 } else {
-                    gCameraFOV[cameraId] = 60.0f;
+                    camera->fieldOfView = 60.0f;
                 }
-                camera->unk_B4 = gCameraFOV[cameraId];
+                camera->unk_B4 = camera->fieldOfView;
             }
             if (D_80164678[cameraId] == 2) {
                 if (D_80164A28 == 1) {
-                    gCameraFOV[cameraId] = 100.0f;
+                    camera->fieldOfView = 100.0f;
                 } else {
-                    gCameraFOV[cameraId] = 60.0f;
+                    camera->fieldOfView = 60.0f;
                 }
-                camera->unk_B4 = gCameraFOV[cameraId];
+                camera->unk_B4 = camera->fieldOfView;
                 D_80164A38[cameraId] = 20.0f;
                 D_80164A48[cameraId] = 1.5f;
                 D_80164A78[cameraId] = 1.0f;
@@ -202,6 +202,7 @@ void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
         return;
     }
 
+    camera->fieldOfView = 40.0f;
     camera->mode = mode;
     sStagingTimer[cameraId] = 0;
     switch (mode) {
@@ -305,27 +306,27 @@ void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId) {
 
            // if (D_80164678[cameraId] == 0) {
                 if (D_80164A28 == 1) {
-                  //  gCameraFOV[cameraId] = 80.0f;
+                  //  camera->fieldOfView = 80.0f;
                 } else {
-                   // gCameraFOV[cameraId] = 40.0f;
+                   // camera->fieldOfView = 40.0f;
                 }
-                camera->unk_B4 = gCameraFOV[cameraId];
+                camera->unk_B4 = camera->fieldOfView;
            // }
             // if (D_80164678[cameraId] == 1) {
             //     if (D_80164A28 == 1) {
-            //         gCameraFOV[cameraId] = 100.0f;
+            //         camera->fieldOfView = 100.0f;
             //     } else {
-            //         gCameraFOV[cameraId] = 60.0f;
+            //         camera->fieldOfView = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraFOV[cameraId];
+            //     camera->unk_B4 = camera->fieldOfView;
             // // }
             // if (D_80164678[cameraId] == 2) {
             //     if (D_80164A28 == 1) {
-            //         gCameraFOV[cameraId] = 100.0f;
+            //         camera->fieldOfView = 100.0f;
             //     } else {
-            //         gCameraFOV[cameraId] = 60.0f;
+            //         camera->fieldOfView = 60.0f;
             //     }
-            //     camera->unk_B4 = gCameraFOV[cameraId];
+            //     camera->unk_B4 = camera->fieldOfView;
             //     D_80164A38[cameraId] = 20.0f;
             //     D_80164A48[cameraId] = 1.5f;
             //     D_80164A78[cameraId] = 1.0f;
@@ -1129,7 +1130,7 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
     }
 }
 
-void func_8001F394(Player* player, f32* arg1) {
+void func_8001F394(Player* player) {
     f32 var_f0;
     UNUSED s32 pad;
     s32 playerIndex = player - gPlayerOne;
@@ -1252,15 +1253,15 @@ void func_8001F394(Player* player, f32* arg1) {
                     D_80164498[playerIndex] = 0.0f;
                 }
             }
-            var_f0 = func_80014EE4(*arg1, playerIndex);
+            var_f0 = func_80014EE4(camera->fieldOfView, playerIndex);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            var_f0 = func_80014EE4(*arg1, playerIndex);
+            var_f0 = func_80014EE4(camera->fieldOfView, playerIndex);
             break;
     }
-    *arg1 = var_f0;
+    camera->fieldOfView = var_f0;
     camera->unk_B4 = var_f0;
 }
 

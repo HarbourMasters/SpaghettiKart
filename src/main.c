@@ -122,7 +122,6 @@ s32 D_80150120;
 s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 gCameraFOV[NUM_CAMERAS]; // Field-of-view for each camera
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;

@@ -40,6 +40,7 @@ typedef struct {
     // I think these are the "nautical angles" between pos and lookAt
     // rot[0] = roll? Does nothing?, rot[1] = yaw, rot[2] = pitch
     /* 0x24 */ Vec3s rot;
+               f32 fieldOfView;
     /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;
     /* 0x2E */ s16 unk_2E;
@@ -85,7 +86,7 @@ void func_8001E45C(Camera*, Player*, s8);
 void func_8001E8E8(Camera*, Player*, s8);
 void func_8001EA0C(Camera*, Player*, s8);
 void func_8001EE98(Player*, Camera*, s8);
-void func_8001F394(Player*, f32*);
+void func_8001F394(Player*);
 void func_8001F87C(s32);
 
 extern f32 D_800DDB30[];

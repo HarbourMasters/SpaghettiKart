@@ -2532,27 +2532,27 @@ void func_80078C70(s32 arg0) {
             case 0:     /* switch 1 */
                 sp1C = 0;
                 camera = camera1;
-                D_8018D200 = gCameraFOV[0] + 40.0f;
+                D_8018D200 = camera->fieldOfView + 40.0f;
                 break;
             case 1: /* switch 1 */
                 sp1C = 0;
                 camera = camera1;
-                D_8018D200 = gCameraFOV[0] + 40.0f;
+                D_8018D200 = camera->fieldOfView + 40.0f;
                 break;
             case 2: /* switch 1 */
                 camera = camera2;
                 sp1C = D_8018D1F0;
-                D_8018D200 = gCameraFOV[1] + 40.0f;
+                D_8018D200 = camera->fieldOfView + 40.0f;
                 break;
             case 3: /* switch 1 */
                 sp1C = 0;
                 camera = camera1;
-                D_8018D200 = gCameraFOV[0] + 40.0f;
+                D_8018D200 = camera->fieldOfView + 40.0f;
                 break;
             case 4: /* switch 1 */
                 camera = camera2;
                 sp1C = D_8018D1F0;
-                D_8018D200 = gCameraFOV[1] + 40.0f;
+                D_8018D200 = camera->fieldOfView + 40.0f;
                 break;
         }
 

@@ -21,7 +21,7 @@ void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
         return;
     }
 
-    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraFOV[camera - camera1],
+    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, camera->fieldOfView,
                                        4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {

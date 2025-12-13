@@ -182,7 +182,7 @@ void AText::Draw(Camera* camera) {
     }
 
     f32 distance = is_within_render_distance(camera->pos, (float*)&Pos[0], camera->rot[1], Close,
-                                             gCameraFOV[camera - camera1], Far);
+                                             camera->fieldOfView, Far);
 
     if (distance == -1.0f) {
         Dist = DistanceProps::TOO_FAR;

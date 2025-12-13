@@ -167,7 +167,6 @@ extern u16 D_8015011E;
 
 extern s32 D_80150120;
 extern s32 gGotoMode;
-extern f32 gCameraFOV[];
 
 extern f32 gScreenAspect;
 extern f32 D_8015014C;

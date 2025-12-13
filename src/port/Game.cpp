@@ -1,4 +1,5 @@
 #include <libultraship.h>
+#include <typeinfo>
 
 #include "Game.h"
 #include "port/Engine.h"

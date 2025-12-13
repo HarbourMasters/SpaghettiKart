@@ -535,7 +535,7 @@ void render_cows(Camera* camera, Mat4 arg1) {
         sp88[0] = var_s1->pos[0] * gTrackDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
-        temp_f0 = is_within_render_distance(camera->pos, sp88, camera->rot[1], 0.0f, gCameraFOV[camera - camera1],
+        temp_f0 = is_within_render_distance(camera->pos, sp88, camera->rot[1], 0.0f, camera->fieldOfView,
                                             4000000.0f);
         if (temp_f0 > 0.0f) {
             if (temp_f0 < D_8015F704) {
@@ -678,7 +678,7 @@ void render_palm_trees(Camera* camera, Mat4 arg1) {
         spD4[1] = var_s1->pos[1];
         spD4[2] = var_s1->pos[2];
 
-        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, gCameraFOV[camera - camera1], var_f22) <
+        if (is_within_render_distance(camera->pos, spD4, camera->rot[1], 0.0f, camera->fieldOfView, var_f22) <
                 0.0f &&
             CVarGetInteger("gNoCulling", 0) == 0) {
             var_s1++;
@@ -744,7 +744,7 @@ void render_actor_shell(Camera* camera, Mat4 matrix, struct ShellActor* shell) {
     FrameInterpolation_RecordOpenChild("Shell", TAG_ITEM_ADDR(shell));
 
     f32 temp_f0 =
-        is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraFOV[camera - camera1], 490000.0f);
+        is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, camera->fieldOfView, 490000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = CLAMP(temp_f0, 0.0f, 40000.0f);
     }
@@ -824,7 +824,7 @@ UNUSED void func_8029ABD4(f32* pos, s16 state) {
 }
 
 void func_8029AC18(Camera* camera, Mat4 arg1, struct Actor* arg2) {
-    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraFOV[camera - camera1],
+    if (is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView,
                                   4000000.0f) < 0 &&
         CVarGetInteger("gNoCulling", 0) == 0) {
         return;

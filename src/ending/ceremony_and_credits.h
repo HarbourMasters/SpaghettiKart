@@ -140,7 +140,7 @@ void func_80282EAC(s32, CinematicCamera*, s16, s16, s16);
 void func_80282F00(s16*, s16);
 void func_80282F44(s32, CinematicCamera*, Camera*);
 void func_802830B4(CinematicCamera*, s16, s16, s16);
-void func_80283100(CinematicCamera*, f32*);
+void func_80283100(CinematicCamera*, Camera* camera);
 void func_80283240(s16);
 s32 cutscene_event(CameraEvent event, CinematicCamera*, s16, s16);
 s32 func_80283330(s32);
