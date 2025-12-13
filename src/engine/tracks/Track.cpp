@@ -424,8 +424,8 @@ Track::Track() {
     gFogColour.g = 0;
     gFogColour.b = 0;
     gFogColour.a = 255;
-    gFogMin = 0;
-    gFogMax = 0;
+    gFogMin = 995;
+    gFogMax = 1000;
 }
 
 // Load custom track from code
