@@ -93,8 +93,8 @@ void RaceManager::BeginPlay() {
 void RaceManager::PostInit() {
     // Ruleset options
     if (CVarGetInteger("gAllThwompsAreMarty", false) == true) {
-        for (auto object : GetWorld()->Objects) {
-            if (OThwomp* thwomp = dynamic_cast<OThwomp*>(object)) {
+        for (auto& object : GetWorld()->Objects) {
+            if (OThwomp* thwomp = dynamic_cast<OThwomp*>(object.get())) {
                 gObjectList[thwomp->_objectIndex].unk_0D5 = OThwomp::States::JAILED; // Sets all the thwomp behaviour flags to marty
                 thwomp->Behaviour = OThwomp::States::JAILED;
             }
@@ -102,8 +102,8 @@ void RaceManager::PostInit() {
     }
 
     if (CVarGetInteger("gAllBombKartsChase", false) == true) {
-        for (auto object : GetWorld()->Objects) {
-            if (OBombKart* kart = dynamic_cast<OBombKart*>(object)) {
+        for (auto& object : GetWorld()->Objects) {
+            if (OBombKart* kart = dynamic_cast<OBombKart*>(object.get())) {
                 kart->Behaviour = OBombKart::States::CHASE;
             }
         }

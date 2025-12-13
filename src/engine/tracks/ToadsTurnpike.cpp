@@ -168,32 +168,32 @@ void ToadsTurnpike::BeginPlay() {
 
         for (size_t i = 0; i < _numTrucks; i++) {
             pathPoint = CalculateWaypointDistribution(i, _numTrucks, gPathCountByPathIndex[0], 0);
-            ATruck::Spawn(a, b, 0, pathPoint, ATruck::SpawnMode::POINT);
+            SpawnActor<ATruck>(a, b, 0, pathPoint, ATruck::SpawnMode::POINT);
         }
 
         for (size_t i = 0; i < _numBuses; i++) {
             pathPoint = CalculateWaypointDistribution(i, _numBuses, gPathCountByPathIndex[0], 75);
-            ABus::Spawn(a, b, 0, pathPoint, ABus::SpawnMode::POINT);
+            SpawnActor<ABus>(a, b, 0, pathPoint, ABus::SpawnMode::POINT);
         }
 
         for (size_t i = 0; i < _numTankerTrucks; i++) {
             pathPoint = CalculateWaypointDistribution(i, _numTankerTrucks, gPathCountByPathIndex[0], 50);
-            ATankerTruck::Spawn(a, b, 0, pathPoint, ATankerTruck::SpawnMode::POINT);
+            SpawnActor<ATankerTruck>(a, b, 0, pathPoint, ATankerTruck::SpawnMode::POINT);
         }
 
         for (size_t i = 0; i < _numCars; i++) {
             pathPoint = CalculateWaypointDistribution(i, _numCars, gPathCountByPathIndex[0], 25);
-            ACar::Spawn(a, b, 0, pathPoint, ACar::SpawnMode::POINT);
+            SpawnActor<ACar>(a, b, 0, pathPoint, ACar::SpawnMode::POINT);
         }
 
         if (gModeSelection == VERSUS) {
-            OBombKart::Spawn(0, 50, 3, 0.8333333f);
-            OBombKart::Spawn(0, 100, 1, 0.8333333f);
-            OBombKart::Spawn(0, 150, 3, 0.8333333f);
-            OBombKart::Spawn(0, 200, 1, 0.8333333f);
-            OBombKart::Spawn(0, 250, 3, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
-            OBombKart::Spawn(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 100, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 150, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 200, 1, 0.8333333f);
+            SpawnActor<OBombKart>(0, 250, 3, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+            SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
         }
     }
 }

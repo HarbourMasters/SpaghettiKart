@@ -2,12 +2,10 @@
 
 #include <libultraship.h>
 #include "CoreMath.h"
+#include "RegisterContent.h"
 #include "engine/Actor.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
 #include "camera.h"
 #include "common_structs.h"
 }
@@ -25,20 +23,20 @@ public:
     }
 
     // This is simply a helper function to keep Spawning code clean
-    static inline AFinishline* Spawn(FVector pos, IRotator rot) {
+    static AFinishline* Spawn(FVector pos, IRotator rot) {
         SpawnParams params = {
             .Name = "mk:finishline",
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<AFinishline*>(GetWorld()->AddActor(new AFinishline(params)));
+        return dynamic_cast<AFinishline*>(AddActorToWorld<AFinishline>(params));
     }
 
-    static inline AFinishline* Spawn() {
+    static AFinishline* Spawn() {
         SpawnParams params = {
             .Name = "mk:finishline",
         };
-        return static_cast<AFinishline*>(GetWorld()->AddActor(new AFinishline(params)));
+        return dynamic_cast<AFinishline*>(AddActorToWorld<AFinishline>(params));
     }
 
     // Virtual functions to be overridden by derived classes

@@ -138,52 +138,52 @@ void BowsersCastle::BeginPlay() {
     switch (gCCSelection) {
         case CC_100:
         case CC_EXTRA:
-            OThwomp::Spawn(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
-            OThwomp::Spawn(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1);
-            OThwomp::Spawn(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
-            OThwomp::Spawn(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1);
-            OThwomp::Spawn(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
-            OThwomp::Spawn(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
-            OThwomp::Spawn(0x091a, 0xf5bf, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
-            OThwomp::Spawn(0x091a, 0xf597, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 1);
-            OThwomp::Spawn(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
-            OThwomp::Spawn(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 0);
-            OThwomp::Spawn(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
+            SpawnActor<OThwomp>(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
+            SpawnActor<OThwomp>(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1);
+            SpawnActor<OThwomp>(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1);
+            SpawnActor<OThwomp>(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
+            SpawnActor<OThwomp>(0x091a, 0xf5bf, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
+            SpawnActor<OThwomp>(0x091a, 0xf597, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 1);
+            SpawnActor<OThwomp>(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
+            SpawnActor<OThwomp>(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 0);
+            SpawnActor<OThwomp>(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
             break;
         case CC_50:
-            OThwomp::Spawn(0x3B6, 0xF92A, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
-            OThwomp::Spawn(0x0352, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
-            OThwomp::Spawn(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
-            OThwomp::Spawn(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
-            OThwomp::Spawn(0x091a, 0xf5b0, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
-            OThwomp::Spawn(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
-            OThwomp::Spawn(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE , 0);
-            OThwomp::Spawn(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
+            SpawnActor<OThwomp>(0x3B6, 0xF92A, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
+            SpawnActor<OThwomp>(0x0352, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
+            SpawnActor<OThwomp>(0x091a, 0xf5b0, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
+            SpawnActor<OThwomp>(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
+            SpawnActor<OThwomp>(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE , 0);
+            SpawnActor<OThwomp>(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
             break;
         case CC_150:
-            OThwomp::Spawn(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
-            OThwomp::Spawn(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1);
-            OThwomp::Spawn(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
-            OThwomp::Spawn(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1);
-            OThwomp::Spawn(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
-            OThwomp::Spawn(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
-            OThwomp::Spawn(0x091a, 0xf5c9, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
-            OThwomp::Spawn(0x091a, 0xf5ab, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 1);
-            OThwomp::Spawn(0x091a, 0xf58d, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 2);
-            OThwomp::Spawn(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
-            OThwomp::Spawn(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 0);
-            OThwomp::Spawn(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
+            SpawnActor<OThwomp>(0x0320, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 0);
+            SpawnActor<OThwomp>(0x044c, 0xf92a, 0xC000, 1.0f, OThwomp::States::STATIONARY, 1);
+            SpawnActor<OThwomp>(0x02bc, 0xf95c, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf8f8, 0xC000, 1.0f, OThwomp::States::MOVE_AND_ROTATE, 1);
+            SpawnActor<OThwomp>(0x04b0, 0xf5ba, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 0);
+            SpawnActor<OThwomp>(0x04b0, 0xf592, 0xC000, 1.0f, OThwomp::States::MOVE_FAR, 1);
+            SpawnActor<OThwomp>(0x091a, 0xf5c9, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 0);
+            SpawnActor<OThwomp>(0x091a, 0xf5ab, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 1);
+            SpawnActor<OThwomp>(0x091a, 0xf58d, 0xC000, 1.0f, OThwomp::States::STATIONARY_FAST, 2);
+            SpawnActor<OThwomp>(0x0596, 0xf92f, 0xC000, 1.5f, OThwomp::States::JAILED, 0);
+            SpawnActor<OThwomp>(0x082a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 0);
+            SpawnActor<OThwomp>(0x073a, 0xf9f2, 0x4000, 1.0f, OThwomp::States::SLIDE, 1);
             break;
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 3, 0.8333333f);
-        OBombKart::Spawn(0, 150, 1, 0.8333333f);
-        OBombKart::Spawn(0, 200, 3, 0.8333333f);
-        OBombKart::Spawn(0, 260, 1, 0.8333333f);
-        OBombKart::Spawn(0, 435, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 150, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 200, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 260, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 435, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

@@ -200,7 +200,7 @@ void TestTrack::BeginPlay() {
     // GetWorld()->AddActor(new OSeagull(2, pos));
     // GetWorld()->AddActor(new OSeagull(3, pos));
     // GetWorld()->AddObject(new OCheepCheep(FVector(0, 40, 0), OCheepCheep::CheepType::RACE, IPathSpan(0, 10)));
-    OTrophy::Spawn(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
+    SpawnActor<OTrophy>(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
     //GetWorld()->AddObject(new OSnowman(FVector(0, 0, 0)));
     //GetWorld()->AddObject(new OTrashBin(FVector(0.0f, 0.0f, 0.0f), IRotator(0, 90, 0), 1.0f, OTrashBin::Behaviour::MUNCHING));
 
@@ -212,13 +212,13 @@ void TestTrack::BeginPlay() {
 //    GetWorld()->AddActor(new ABowserStatue(FVector(-200, 0, 0), ABowserStatue::Behaviour::CRUSH));
 
 //    GetWorld()->AddObject(new OBoos(10, IPathSpan(0, 5), IPathSpan(18, 23), IPathSpan(25, 50)));
-    //OThwomp::Spawn(0, 0, 0, 1.0f, 0, 1, 7);
+    //SpawnActor<OThwomp>(0, 0, 0, 1.0f, 0, 1, 7);
 
     //GetWorld()->AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 0);
     //GetWorld()->AddTrain(ATrain::TenderStatus::HAS_TENDER, 5, 2.5f, 8);
 
-    OBombKart::Spawn(0, 25, 4, 0.8333333f);
-    OBombKart::Spawn(0, 45, 4, 0.8333333f);
+    SpawnActor<OBombKart>(0, 25, 4, 0.8333333f);
+    SpawnActor<OBombKart>(0, 45, 4, 0.8333333f);
 
    // GetWorld()->AddActor(new AShip(FVector(0, 0, 0), AShip::Skin::SHIP3));
 

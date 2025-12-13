@@ -144,18 +144,18 @@ void PodiumCeremony::BeginPlay() {
             break;
     }
 
-    OTrophy::Spawn(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY);
+    SpawnActor<OTrophy>(pos, type, OTrophy::Behaviour::PODIUM_CEREMONY);
 
-    OBombKart::Spawn(3, 3, OBombKart::States::PODIUM_CEREMONY, 1.25f);
-    OBombKart::Spawn(3, 40, 0, 1.0f);
-    OBombKart::Spawn(3, 60, 0, 1.0f);
-    OBombKart::Spawn(3, 80, 0, 1.0f);
-    OBombKart::Spawn(3, 100, 0, 1.0f);
-    OBombKart::Spawn(3, 120, 0, 1.0f);
-    OBombKart::Spawn(3, 140, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 3, OBombKart::States::PODIUM_CEREMONY, 1.25f);
+    SpawnActor<OBombKart>(3, 40, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 60, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 80, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 100, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 120, 0, 1.0f);
+    SpawnActor<OBombKart>(3, 140, 0, 1.0f);
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        OGrandPrixBalloons::Spawn(FVector(-64, 5, -330));
+        SpawnActor<OGrandPrixBalloons>(FVector(-64, 5, -330));
     }
 }
 

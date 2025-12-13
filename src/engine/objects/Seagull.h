@@ -1,20 +1,10 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "engine/World.h"
-
-extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "camera.h"
-}
 
 //! @todo unk_0D5 needs to be a struct variable probably. What does it do? Behaviour?
 class OSeagull : public OObject {
@@ -30,12 +20,12 @@ public:
     }
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OSeagull* Spawn(const FVector& pos) {
+    static OSeagull* Spawn(const FVector& pos) {
         SpawnParams params = {
             .Name = "mk:seagull",
             .Location = pos,
         };
-        return static_cast<OSeagull*>(GetWorld()->AddObject(new OSeagull(params)));
+        return dynamic_cast<OSeagull*>(AddObjectToWorld<OSeagull>(params));
     }
 
     virtual void Tick() override;

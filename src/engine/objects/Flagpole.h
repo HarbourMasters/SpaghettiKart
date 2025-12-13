@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
 
 extern "C" {
@@ -24,7 +25,7 @@ public:
     explicit OFlagpole(const SpawnParams& params);
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OFlagpole* Spawn(FVector pos, s16 direction) {
+    static OFlagpole* Spawn(FVector pos, s16 direction) {
         IRotator rot;
         rot.Set(0, direction, 0);
         SpawnParams params = {
@@ -32,7 +33,7 @@ public:
             .Location = pos,
             .Rotation = rot,
         };
-        return static_cast<OFlagpole*>(GetWorld()->AddObject(new OFlagpole(params)));
+        return dynamic_cast<OFlagpole*>(AddObjectToWorld<OFlagpole>(params));
     }
 
     ~OFlagpole() {

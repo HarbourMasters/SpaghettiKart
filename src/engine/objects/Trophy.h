@@ -1,20 +1,13 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 #include "Object.h"
+#include "RegisterContent.h"
 #include "World.h"
 #include "engine/particles/StarEmitter.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
-#include "course_offsets.h"
-#include "some_data.h"
 }
 
 class OTrophy : public OObject {
@@ -37,14 +30,14 @@ public:
     };
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OTrophy* Spawn(const FVector& pos, TrophyType trophy, Behaviour bhv) {
+    static OTrophy* Spawn(const FVector& pos, TrophyType trophy, Behaviour bhv) {
         SpawnParams params = {
             .Name = "mk:trophy",
             .Type = trophy,
             .Behaviour = bhv,
             .Location = pos,
         };
-        return static_cast<OTrophy*>(GetWorld()->AddObject(new OTrophy(params)));
+        return dynamic_cast<OTrophy*>(AddObjectToWorld<OTrophy>(params));
     }
 
     explicit OTrophy(const SpawnParams& params);

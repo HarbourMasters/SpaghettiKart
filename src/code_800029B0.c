@@ -4,6 +4,7 @@
 #include <stubs.h>
 
 #include "code_800029B0.h"
+#include "TrackBrowser.h"
 #include "memory.h"
 #include "waypoints.h"
 #include "actors.h"

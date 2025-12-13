@@ -152,18 +152,18 @@ void WarioStadium::Load() {
 void WarioStadium::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*) LOAD_ASSET_RAW(d_course_wario_stadium_item_box_spawns));
 
-    AWarioSign::Spawn(FVector(-131.0f, 83.0f, 286.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
-    AWarioSign::Spawn(FVector(-2353.0f, 72.0f, -1608.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
-    AWarioSign::Spawn(FVector(-2622.0f, 79.0f, 739.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
+    SpawnActor<AWarioSign>(FVector(-131.0f, 83.0f, 286.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
+    SpawnActor<AWarioSign>(FVector(-2353.0f, 72.0f, -1608.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
+    SpawnActor<AWarioSign>(FVector(-2622.0f, 79.0f, 739.0f), IRotator(0, 0, 0), FVector(0, 0, 0), FVector(1.0f, 1.0f, 1.0f));
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 3, 0.8333333f);
-        OBombKart::Spawn(0, 100, 1, 0.8333333f);
-        OBombKart::Spawn(0, 150, 3, 0.8333333f);
-        OBombKart::Spawn(0, 200, 1, 0.8333333f);
-        OBombKart::Spawn(0, 250, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 100, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 150, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 200, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 250, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

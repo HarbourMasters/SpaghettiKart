@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <memory>
 #include <optional> // Must be before json.hpp
 #include <nlohmann/json.hpp>
 #include "port/Engine.h"
@@ -168,8 +169,8 @@ namespace Editor {
     }
 
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson) {
-        GetWorld()->StaticMeshActors.push_back(new StaticMeshActor("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
-        auto actor = GetWorld()->StaticMeshActors.back();
+        GetWorld()->StaticMeshActors.push_back(std::make_unique<StaticMeshActor>("", FVector(0, 0, 0), IRotator(0, 0, 0), FVector(1, 1, 1), "", nullptr));
+        auto& actor = GetWorld()->StaticMeshActors.back();
         actor->from_json(actorJson);
 
         printf("After from_json: Pos(%f, %f, %f), Name: %s, Model: %s\n", 

@@ -3,6 +3,7 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
+#include "RegisterContent.h"
 #include "engine/SpawnParams.h"
 #include "engine/CoreMath.h"
 #include "engine/World.h"
@@ -55,7 +56,7 @@ class ABoat : public AActor {
             .PathPoint = pathPoint,
             .Speed = speed,
         };
-        return static_cast<ABoat*>(GetWorld()->AddActor(new ABoat(params)));
+        return static_cast<ABoat*>(AddActorToWorld<ABoat>(params));
     }
 
     ABoat::SpawnMode SpawnType = ABoat::SpawnMode::AUTO;

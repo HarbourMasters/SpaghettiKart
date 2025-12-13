@@ -16,6 +16,7 @@
 #include <stdbool.h>
 #include "port/Game.h"
 #include "port/audio/HMAS.h"
+#include "engine/TrackBrowser.h"
 
 s8 D_8018EF10;
 UnkStruct8018EF18 D_8018EF18[16];

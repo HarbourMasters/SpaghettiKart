@@ -1,7 +1,7 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
+#include "RegisterContent.h"
 #include "engine/World.h"
 #include "engine/SpawnParams.h"
 #include "engine/CoreMath.h"
@@ -9,14 +9,8 @@
 #include "engine/objects/Object.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
 #include "camera.h"
-#include "some_data.h"
 }
 
 //! @todo Make shadow size bigger if thwomp is scaled up
@@ -45,7 +39,7 @@ public:
     };
 
     // This is simply a helper function to keep Spawning code clean
-    static inline OThwomp* Spawn(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize = 7) {
+    static OThwomp* Spawn(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize = 7) {
         IRotator rot;
         rot.Set(0, direction, 0);
 
@@ -58,7 +52,7 @@ public:
             .PrimAlpha = primAlpha,
             .BoundingBoxSize = boundingBoxSize
         };
-        return static_cast<OThwomp*>(GetWorld()->AddObject(new OThwomp(params)));
+        return dynamic_cast<OThwomp*>(AddObjectToWorld<OThwomp>(params));
     }
 
     explicit OThwomp(const SpawnParams& params);

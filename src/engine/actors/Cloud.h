@@ -1,13 +1,11 @@
 #pragma once
 
 #include <libultraship.h>
+#include "RegisterContent.h"
 #include "engine/Actor.h"
 #include "CoreMath.h"
-#include "engine/World.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
 #include "camera.h"
 #include "common_structs.h"
 }
@@ -19,7 +17,7 @@ public:
     virtual ~ACloud() override = default;
 
     // This is simply a helper function to keep Spawning code clean
-    static inline ACloud* Spawn(FVector pos, uint16_t time, f32 hop, f32 gravity) {
+    static ACloud* Spawn(FVector pos, uint16_t time, f32 hop, f32 gravity) {
         SpawnParams params = {
             .Name = "hm:cloud",
             .Type = time, // How long the effect is active
@@ -27,7 +25,7 @@ public:
             .Speed = hop, // How high you hop
             .SpeedB = gravity, // How much gravity is effected
         };
-        return static_cast<ACloud*>(GetWorld()->AddActor(new ACloud(params)));
+        return dynamic_cast<ACloud*>(AddActorToWorld<ACloud>(params));
     }
 
     virtual void Tick() override;

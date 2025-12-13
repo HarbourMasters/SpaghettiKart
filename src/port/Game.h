@@ -11,6 +11,11 @@
 class Track;
 struct Properties;
 class World;
+
+template<class T, typename... TArgs> T* SpawnActor(TArgs&&... args) {
+    return T::Spawn(std::forward<TArgs>(args)...);
+}
+
 extern "C" {
 #endif
 #include "camera.h"

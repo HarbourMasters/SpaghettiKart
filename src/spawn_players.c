@@ -4,6 +4,7 @@
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
+#include "editor/Editor.h"
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"

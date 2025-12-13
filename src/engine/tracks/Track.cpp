@@ -328,7 +328,7 @@ void Track::Load() {
     printf("[Track] Loading... %s\n", ResourceName.c_str());
     const TrackInfo* info = gTrackRegistry.GetInfo(ResourceName);
     if (nullptr == info) {
-        printf("Could not find TrackInfo for %s\n", ResourceName);
+        printf("Could not find TrackInfo for %s\n", ResourceName.c_str());
         return;
     }
     const std::string& trackPath = info->Path;

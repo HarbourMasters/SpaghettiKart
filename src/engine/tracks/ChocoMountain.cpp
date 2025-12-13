@@ -160,18 +160,18 @@ void ChocoMountain::Load() {
 
 void ChocoMountain::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_choco_mountain_item_box_spawns));
-    AFallingRock::Spawn(FVector(2019, 156, 164), 60);
-    AFallingRock::Spawn(FVector(2018, 155, 379), 120);
-    AFallingRock::Spawn(FVector(1996, 146, 505), 180);
+    SpawnActor<AFallingRock>(FVector(2019, 156, 164), 60);
+    SpawnActor<AFallingRock>(FVector(2018, 155, 379), 120);
+    SpawnActor<AFallingRock>(FVector(1996, 146, 505), 180);
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 140, 3, 0.8333333f);
-        OBombKart::Spawn(0, 165, 1, 0.8333333f);
-        OBombKart::Spawn(0, 330, 3, 0.8333333f);
-        OBombKart::Spawn(0, 550, 1, 0.8333333f);
-        OBombKart::Spawn(0, 595, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 140, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 165, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 330, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 550, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 595, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

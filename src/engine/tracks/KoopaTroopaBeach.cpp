@@ -144,40 +144,40 @@ void KoopaTroopaBeach::BeginPlay() {
     spawn_palm_trees((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_koopa_troopa_beach_tree_spawn));
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        OCrab::Spawn(FVector2D(-1809, 625), FVector2D(-1666, 594));
-        OCrab::Spawn(FVector2D(-1852, 757), FVector2D(-1620, 740));
-        OCrab::Spawn(FVector2D(-1478, 1842), FVector2D(-1453, 1833));
-        OCrab::Spawn(FVector2D(-1418, 1967), FVector2D(-1455, 1962));
-        OCrab::Spawn(FVector2D(-1472, 2112), FVector2D(-1417, 2100));
-        OCrab::Spawn(FVector2D(-1389, 2152), FVector2D(-1335, 2136));
-        OCrab::Spawn(FVector2D(218, 693), FVector2D(69, 696));
-        OCrab::Spawn(FVector2D(235, 528), FVector2D(24, 501));
-        OCrab::Spawn(FVector2D(268, 406), FVector2D(101, 394));
-        OCrab::Spawn(FVector2D(223, 318), FVector2D(86, 308));
+        SpawnActor<OCrab>(FVector2D(-1809, 625), FVector2D(-1666, 594));
+        SpawnActor<OCrab>(FVector2D(-1852, 757), FVector2D(-1620, 740));
+        SpawnActor<OCrab>(FVector2D(-1478, 1842), FVector2D(-1453, 1833));
+        SpawnActor<OCrab>(FVector2D(-1418, 1967), FVector2D(-1455, 1962));
+        SpawnActor<OCrab>(FVector2D(-1472, 2112), FVector2D(-1417, 2100));
+        SpawnActor<OCrab>(FVector2D(-1389, 2152), FVector2D(-1335, 2136));
+        SpawnActor<OCrab>(FVector2D(218, 693), FVector2D(69, 696));
+        SpawnActor<OCrab>(FVector2D(235, 528), FVector2D(24, 501));
+        SpawnActor<OCrab>(FVector2D(268, 406), FVector2D(101, 394));
+        SpawnActor<OCrab>(FVector2D(223, 318), FVector2D(86, 308));
     }
 
     if (gGamestate == CREDITS_SEQUENCE) {
         for (size_t i = 0; i < NUM_SEAGULLS; i++) {
-            OSeagull::Spawn(FVector(-360.0f, 60.0f, -1300.0f));
+            SpawnActor<OSeagull>(FVector(-360.0f, 60.0f, -1300.0f));
         }
     } else { // Normal gameplay
         for (size_t i = 0; i < 4; i++) {
-            OSeagull::Spawn(FVector(-985.0f, 15.0f, 1200.0f));
+            SpawnActor<OSeagull>(FVector(-985.0f, 15.0f, 1200.0f));
         }
 
         for (size_t i = 0; i < 6; i++) {
-            OSeagull::Spawn(FVector(328.0f, 20.0f, 2541.0f));
+            SpawnActor<OSeagull>(FVector(328.0f, 20.0f, 2541.0f));
         }
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 60, 1, 0.8333333f);
-        OBombKart::Spawn(0, 120, 1, 0.8333333f);
-        OBombKart::Spawn(0, 200, 3, 0.8333333f);
-        OBombKart::Spawn(0, 280, 1, 0.8333333f);
-        OBombKart::Spawn(0, 435, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 60, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 120, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 200, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 280, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 435, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

@@ -132,35 +132,35 @@ void FrappeSnowland::BeginPlay() {
     spawn_all_item_boxes((struct ActorSpawnData*)LOAD_ASSET_RAW(d_course_frappe_snowland_item_box_spawns));
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        OSnowman::Spawn(FVector(697, 0, -1684));
-        OSnowman::Spawn(FVector(82, 0, -2245));
-        OSnowman::Spawn(FVector(27, 5, -2067));
-        OSnowman::Spawn(FVector(-656, 0, -1735));
-        OSnowman::Spawn(FVector(-1497, 0, -83));
-        OSnowman::Spawn(FVector(-1643, 0, -25));
-        OSnowman::Spawn(FVector(-1547, 0, -20));
-        OSnowman::Spawn(FVector(-1445, 0, -10));
-        OSnowman::Spawn(FVector(-1502, 0, 61));
-        OSnowman::Spawn(FVector(-1429, 0, 79));
-        OSnowman::Spawn(FVector(-1586, 0, 71));
-        OSnowman::Spawn(FVector(-1471, 0, 157));
-        OSnowman::Spawn(FVector(-1539, 0, 175));
-        OSnowman::Spawn(FVector(-1484, 0, 303));
-        OSnowman::Spawn(FVector(-1442, 0, 358));
-        OSnowman::Spawn(FVector(-1510, 0, 426));
-        OSnowman::Spawn(FVector(-665, 0, 830));
-        OSnowman::Spawn(FVector(-701, 3, 853));
-        OSnowman::Spawn(FVector(-602, 0, 929));
+        SpawnActor<OSnowman>(FVector(697, 0, -1684));
+        SpawnActor<OSnowman>(FVector(82, 0, -2245));
+        SpawnActor<OSnowman>(FVector(27, 5, -2067));
+        SpawnActor<OSnowman>(FVector(-656, 0, -1735));
+        SpawnActor<OSnowman>(FVector(-1497, 0, -83));
+        SpawnActor<OSnowman>(FVector(-1643, 0, -25));
+        SpawnActor<OSnowman>(FVector(-1547, 0, -20));
+        SpawnActor<OSnowman>(FVector(-1445, 0, -10));
+        SpawnActor<OSnowman>(FVector(-1502, 0, 61));
+        SpawnActor<OSnowman>(FVector(-1429, 0, 79));
+        SpawnActor<OSnowman>(FVector(-1586, 0, 71));
+        SpawnActor<OSnowman>(FVector(-1471, 0, 157));
+        SpawnActor<OSnowman>(FVector(-1539, 0, 175));
+        SpawnActor<OSnowman>(FVector(-1484, 0, 303));
+        SpawnActor<OSnowman>(FVector(-1442, 0, 358));
+        SpawnActor<OSnowman>(FVector(-1510, 0, 426));
+        SpawnActor<OSnowman>(FVector(-665, 0, 830));
+        SpawnActor<OSnowman>(FVector(-701, 3, 853));
+        SpawnActor<OSnowman>(FVector(-602, 0, 929));
     }
 
     if (gModeSelection == VERSUS) {
-        OBombKart::Spawn(0, 50, 3, 0.8333333f);
-        OBombKart::Spawn(0, 100, 1, 0.8333333f);
-        OBombKart::Spawn(0, 150, 3, 0.8333333f);
-        OBombKart::Spawn(0, 290, 1, 0.8333333f);
-        OBombKart::Spawn(0, 350, 3, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
-        OBombKart::Spawn(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 50, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 100, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 150, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 290, 1, 0.8333333f);
+        SpawnActor<OBombKart>(0, 350, 3, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
+        SpawnActor<OBombKart>(0, 0, 0, 0.8333333f);
     }
 }
 

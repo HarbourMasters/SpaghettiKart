@@ -3,6 +3,7 @@
 #include <libultraship.h>
 #include <vector>
 #include "Object.h"
+#include "RegisterContent.h"
 #include "engine/CoreMath.h"
 
 #include "World.h"
@@ -32,7 +33,7 @@ public:
             .Location = pos,
             .PathSpan = span,
         };
-        return static_cast<OCheepCheep*>(GetWorld()->AddObject(new OCheepCheep(params)));
+        return static_cast<OCheepCheep*>(AddObjectToWorld<OCheepCheep>(params));
     }
 
     explicit OCheepCheep(const SpawnParams& params);

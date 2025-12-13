@@ -24,6 +24,7 @@
 #include "render_courses.h"
 #include "main.h"
 #include "render_player.h"
+#include "engine/TrackBrowser.h"
 
 #include "engine/tracks/Track.h"
 #include "engine/Matrix.h"

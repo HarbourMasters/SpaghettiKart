@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
 #include "CoreMath.h"
 
@@ -45,7 +46,7 @@ public:
             .TriggerSpan = triggerBoundary,
             .RightExitSpan = rightBoundary,
         };
-        return static_cast<OBoos*>(GetWorld()->AddObject(new OBoos(params)));
+        return static_cast<OBoos*>(AddObjectToWorld<OBoos>(params));
     }
 
     explicit OBoos(const SpawnParams& params);

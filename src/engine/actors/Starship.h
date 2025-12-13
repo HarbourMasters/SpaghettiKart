@@ -3,6 +3,7 @@
 #include <libultraship.h>
 #include <libultra/gbi.h>
 #include "CoreMath.h"
+#include "RegisterContent.h"
 #include "engine/Actor.h"
 #include "engine/World.h"
 
@@ -17,7 +18,7 @@ public:
     virtual ~AStarship() = default;
 
     // This is simply a helper function to keep Spawning code clean
-    static inline AStarship* Spawn(FVector pos, IRotator rot, FVector scale, f32 speed, f32 radius) {
+    static AStarship* Spawn(FVector pos, IRotator rot, FVector scale, f32 speed, f32 radius) {
         SpawnParams params = {
             .Name = "hm:starship",
             .Location = pos,
@@ -26,7 +27,7 @@ public:
             .Speed = speed,
             .SpeedB = radius,
         };
-        return static_cast<AStarship*>(GetWorld()->AddActor(new AStarship(params)));
+        return dynamic_cast<AStarship*>(AddActorToWorld<AStarship>(params));
     }
 
     float SpeedB;
