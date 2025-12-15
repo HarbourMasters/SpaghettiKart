@@ -148,7 +148,7 @@ void OBombKart::Tick() {
                         circleTimer = 0;
                         state = States::EXPLODE;
                         Behaviour = States::EXPLODE;
-                        player->soundEffects |= 0x400000;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         player->type &= ~0x2000;
                     }
                 }
@@ -165,9 +165,9 @@ void OBombKart::Tick() {
                             Behaviour = States::EXPLODE;
                             circleTimer = 0;
                             if (IsFrappeSnowland()) {
-                                player->soundEffects |= 0x01000000;
+                                player->triggers |= HIT_BY_STAR_TRIGGER;
                             } else {
-                                player->soundEffects |= 0x400000;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }

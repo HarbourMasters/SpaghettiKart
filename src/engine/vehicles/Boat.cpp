@@ -205,7 +205,7 @@ void ABoat::VehicleCollision(s32 playerId, Player* player) {
                     if ((is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], 200.0f, 60.0f,
                                                  playerX, playerZ) == 1) &&
                         (y_diff < 60.0)) {
-                        player->soundEffects |= 0x80000;
+                        player->triggers |= HIT_PADDLE_BOAT_TRIGGER;
                     }
                 }
             }

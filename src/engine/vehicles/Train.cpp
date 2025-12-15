@@ -272,13 +272,13 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
                 if ((z_dist > -100.0) && (z_dist < 100.0)) {
                     if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                 trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                        player->soundEffects |= REVERSE_SOUND_EFFECT;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                     }
                     trainCar = &Tender;
                     if (trainCar->isActive == 1) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                     }
                 }
@@ -294,7 +294,7 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }

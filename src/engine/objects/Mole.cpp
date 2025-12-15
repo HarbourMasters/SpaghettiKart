@@ -217,7 +217,7 @@ void OMole::func_80081D34(s32 objectIndex) {
                 if (player->effects & 0x200) {
                     func_800C9060(i, 0x1900A046U);
                 } else {
-                    player->soundEffects |= 2;
+                    player->triggers |= HIGH_TUMBLE_TRIGGER;
                 }
                 object->direction_angle[1] = camera->rot[1];
                 object->velocity[1] = (player->speed / 2) + 3.0;

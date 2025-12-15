@@ -134,8 +134,8 @@ UNUSED void func_unnamed33(void) {
 }
 
 void func_8008C310(Player* player) {
-    if ((player->soundEffects & 2) || (player->soundEffects & 4) || ((player->soundEffects << 9) < 0) ||
-        (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT)) {
+    if ((player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || ((player->triggers << 9) < 0) ||
+        (player->triggers & HIT_BY_STAR_TRIGGER)) {
         player->unk_0B6 = ((u16) player->unk_0B6 | 0x1000);
     }
 }
@@ -216,7 +216,7 @@ void func_8008C528(Player* player, s8 arg1) {
     } else {
         play_cpu_sound_effect(arg1, player);
     }
-    player->soundEffects = (s32) (player->soundEffects & ~4);
+    player->triggers = (s32) (player->triggers & ~LOW_TUMBLE_TRIGGER);
 }
 
 void func_8008C62C(Player* player, s8 arg1) {
@@ -311,7 +311,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     }
     if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) &&
         ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
-        player->soundEffects = (s32) (player->soundEffects | REVERSE_SOUND_EFFECT);
+        player->triggers = (s32) (player->triggers | VERTICAL_TUMBLE_TRIGGER);
     }
 }
 
@@ -372,7 +372,7 @@ void func_8008C9EC(Player* player, s8 arg1) {
 void func_8008CDC0(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
-    player->soundEffects &= ~1;
+    player->triggers &= ~HIT_BANANA_TRIGGER;
     player->unk_0B4 = 0;
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
@@ -444,7 +444,7 @@ void func_8008D0E4(Player* player, UNUSED s8 arg1) {
 void func_8008D0FC(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
-    player->soundEffects &= ~0x80;
+    player->triggers &= ~DRIVING_SPINOUT_TRIGGER;
     player->unk_0B4 = 0;
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
@@ -506,12 +506,12 @@ void func_8008D3B0(Player* player, UNUSED s8 arg1) {
     player->unk_044 &= 0xBFFF;
 }
 
-void apply_boost_sound_effect(Player* player, s8 arg1) {
+void trigger_shroom(Player* player, s8 arg1) {
 
     clean_effect(player, arg1);
 
     player->effects |= BOOST_EFFECT;
-    player->soundEffects &= ~BOOST_SOUND_EFFECT;
+    player->triggers &= ~SHROOM_TRIGGER;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
 
@@ -559,7 +559,7 @@ void func_8008D570(Player* player, s8 arg1) {
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x80000;
     player->effects &= ~0x10;
-    player->soundEffects &= ~0x1000;
+    player->triggers &= ~UNUSED_TRIGGER_0x1000;
     player->kartHopJerk = D_800E3730[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
@@ -618,7 +618,7 @@ void func_8008D7B0(Player* player, s8 arg1) {
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x800000;
     player->effects &= ~0x10;
-    player->soundEffects &= ~0x20000;
+    player->triggers &= ~UNUSED_TRIGGER_0x20000;
     player->kartHopJerk = D_800E3770[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E3750[player->characterId];
@@ -687,7 +687,7 @@ void func_8008D9C0(Player* player) {
     }
 }
 
-void apply_hit_sound_effect(Player* player, s8 arg1) {
+void trigger_squish(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
     if ((player->effects & HIT_EFFECT) == 0) {
@@ -704,7 +704,7 @@ void apply_hit_sound_effect(Player* player, s8 arg1) {
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 65.0f;
 
-        if ((player->soundEffects & 0x100) != 0) {
+        if ((player->triggers & THWOMP_SQUISH_TRIGGER) != 0) {
             player->unk_046 |= 0x80;
         }
 
@@ -738,7 +738,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
             }
 
             if ((player->unk_046 & 0x80) != 0) {
-                if ((player->soundEffects & 0x100) == 0) {
+                if ((player->triggers & THWOMP_SQUISH_TRIGGER) == 0) {
                     D_8018D990[arg1] = 1;
                     player->unk_238 = 0;
                     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -827,10 +827,10 @@ void apply_hit_effect(Player* player, s8 arg1) {
     }
 }
 
-void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
+void trigger_lightning_strike(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
-    player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
+    player->triggers &= ~LIGHTNING_STRIKE_TRIGGER;
     player->effects |= 0x40020000;
     player->effects &= ~0x10;
     player->kartPropulsionStrength *= 0.6;
@@ -874,7 +874,7 @@ void apply_lightning_effect(Player* player, s8 arg1) {
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
         D_80165190[3][arg1] = 1;
-        apply_hit_sound_effect(player, arg1);
+        trigger_squish(player, arg1);
     } else if ((player->effects & 0x20000) == 0x20000) {
         player->rotation[1] -= 0x5B0;
         D_8018D920[arg1] -= 0x5B0;
@@ -992,12 +992,12 @@ void func_8008E4A4(Player* player, s8 arg1) {
     }
 }
 
-void apply_reverse_sound_effect(Player* player, s8 arg1) {
+void trigger_vertical_tumble(Player* player, s8 arg1) {
     clean_effect(player, arg1);
     func_8008C310(player);
 
     player->unk_0A8 = 0;
-    player->effects |= 0x01000000;
+    player->effects |= HIT_BY_STAR_TRIGGER;
     player->effects &= ~0x10;
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
@@ -1025,7 +1025,7 @@ void apply_reverse_sound_effect(Player* player, s8 arg1) {
         play_cpu_sound_effect(arg1, player);
     }
 
-    player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
+    player->triggers &= ~(VERTICAL_TUMBLE_TRIGGER | HIT_PADDLE_BOAT_TRIGGER);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = false;
@@ -1101,7 +1101,7 @@ void apply_hit_by_item_effect(Player* player, s8 arg1) {
     }
 }
 
-void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
+void trigger_high_tumble(Player* player, s8 arg1) {
     clean_effect(player, arg1);
     func_8008C310(player);
 
@@ -1126,7 +1126,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
 
     player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
-    player->soundEffects &= ~0x01000002;
+    player->triggers &= ~(HIT_BY_STAR_TRIGGER | HIGH_TUMBLE_TRIGGER);
 
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = false;
@@ -1145,11 +1145,11 @@ void remove_hit_by_item_effect(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void apply_boost_ramp_asphalt_sound_effect(Player* player, s8 playerId) {
+void trigger_asphalt_ramp_boost(Player* player, s8 playerId) {
     clean_effect(player, playerId);
 
     player->effects |= BOOST_RAMP_ASPHALT_EFFECT;
-    player->soundEffects &= ~BOOST_RAMP_ASPHALT_SOUND_EFFECT;
+    player->triggers &= ~BOOST_RAMP_ASPHALT_TRIGGER;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
     if (D_8015F890 != 1) {
@@ -1193,11 +1193,11 @@ void remove_boost_ramp_asphalt_effect(Player* player) {
     player->boostPower = 0.0f;
 }
 
-void apply_boost_ramp_wood_sound_effect(Player* player, s8 playerId) {
+void trigger_wood_ramp_boost(Player* player, s8 playerId) {
     clean_effect(player, playerId);
 
     player->effects |= BOOST_RAMP_WOOD_EFFECT;
-    player->soundEffects &= ~BOOST_RAMP_WOOD_SOUND_EFFECT;
+    player->triggers &= ~BOOST_RAMP_WOOD_TRIGGER;
 
     if (D_8015F890 != 1) {
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
@@ -1395,11 +1395,11 @@ void apply_star_effect(Player* player, s8 arg1) {
 }
 
 // Star item
-void apply_star_sound_effect(Player* player, s8 arg1) {
+void trigger_star(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
     player->effects |= STAR_EFFECT;
-    player->soundEffects &= ~STAR_SOUND_EFFECT;
+    player->triggers &= ~STAR_TRIGGER;
     gPlayerStarEffectStartTime[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
 
@@ -1467,7 +1467,7 @@ void apply_boo_effect(Player* player, s8 playerIndex) {
     }
 }
 
-void apply_boo_sound_effect(Player* player, s8 playerIndex) {
+void trigger_boo(Player* player, s8 playerIndex) {
     s16 temp_v1;
 
     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -1483,7 +1483,7 @@ void apply_boo_sound_effect(Player* player, s8 playerIndex) {
     clean_effect(player, playerIndex);
 
     player->effects |= BOO_EFFECT;
-    player->soundEffects &= ~BOO_SOUND_EFFECT;
+    player->triggers &= ~BOO_TRIGGER;
     gPlayerBooEffectStartTime[playerIndex] = gCourseTimer;
     gPlayerOtherScreensAlpha[playerIndex] = ALPHA_MAX;
 
@@ -1529,8 +1529,8 @@ void func_8008FC64(Player* player, s8 playerIndex) {
     player->alpha -= ALPHA_CHANGE_MEDIUM;
     if (player->alpha <= ALPHA_CHANGE_MEDIUM) {
         player->alpha = ALPHA_MIN;
-        player->soundEffects &= 0xFBFFFFFF;
-        player->soundEffects |= 0x08000000;
+        player->triggers &= ~LOSE_BATTLE_EFFECT;
+        player->triggers |= BECOME_BOMB_EFFECT;
         player->type |= PLAYER_UNKNOWN_0x40;
         func_8008FDA8(player, playerIndex);
         func_800569F4(playerIndex);
@@ -1541,7 +1541,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
     player->alpha += ALPHA_CHANGE_SMALL;
     if (player->alpha > ALPHA_MAX - (ALPHA_CHANGE_LARGE * 2)) {
         player->alpha = ALPHA_MAX;
-        player->soundEffects &= ~0x08000000;
+        player->triggers &= ~BECOME_BOMB_EFFECT;
     }
     func_80056A40(arg1, (u32) player->alpha);
 }
@@ -1549,7 +1549,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
 
-    player->soundEffects |= 0x04000000;
+    player->triggers |= LOSE_BATTLE_EFFECT;
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
@@ -1576,21 +1576,21 @@ void func_8008FDF4(Player* player, UNUSED s8 arg1) {
     player->kartHopJerk = D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E37D0[player->characterId];
-    player->soundEffects &= ~0x00100000;
-    player->effects |= 0x10000000;
+    player->triggers &= ~UNUSED_TRIGGER_0x10000;
+    player->effects |= UNKNOWN_EFFECT_0x10000000;
 }
 
 void func_8008FE84(Player* player, UNUSED s8 arg1) {
     player->effects &= ~0x10;
     if ((player->effects & 8) != 8) {
-        player->effects &= ~0x10000000;
+        player->effects &= ~UNKNOWN_EFFECT_0x10000000;
         player->currentSpeed /= 2;
         player->kartPropulsionStrength /= 2;
     }
 }
 
 void func_8008FEDC(Player* player, UNUSED s8 arg1) {
-    player->effects &= ~0x10000000;
+    player->effects &= ~UNKNOWN_EFFECT_0x10000000;
     player->kartHopJerk = 0.0f;
     player->kartHopVelocity = 0.0f;
     player->kartHopAcceleration = 0.0f;

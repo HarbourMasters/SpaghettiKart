@@ -1100,8 +1100,8 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
 
     var_f2 = player->speed;
     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x20000) &&
-        !(player->soundEffects & 0x400000) && !(player->soundEffects & 0x01000000) && !(player->soundEffects & 2) &&
-        !(player->soundEffects & 4)) {
+        !(player->triggers & VERTICAL_TUMBLE_TRIGGER) && !(player->triggers & HIT_BY_STAR_TRIGGER) && !(player->triggers & HIGH_TUMBLE_TRIGGER) &&
+        !(player->triggers & LOW_TUMBLE_TRIGGER)) {
         if (IsPodiumCeremony()) {
             func_80007FA4(playerId, player, var_f2);
         } else if ((bStopAICrossing[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
@@ -1568,8 +1568,8 @@ void play_cpu_sound_effect(s32 arg0, Player* player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & 0x01000000) ||
-            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
+        if ((player->triggers & REVERSE_EFFECT) || (player->triggers & HIT_BY_STAR_TRIGGER) ||
+            (player->triggers & HIGH_TUMBLE_TRIGGER) || (player->triggers & LOW_TUMBLE_TRIGGER) || (player->effects & HIT_EFFECT)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
@@ -3114,7 +3114,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) + (temp_f12 * temp_f12)) < 25.0f) {
                         var_s1 = 0;
                         sp7E = 4;
-                        var_v0->soundEffects |= 0x400000;
+                        var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         var_v0->type &= ~0x2000;
                     }
                 }
@@ -3130,9 +3130,9 @@ void func_8000DF8C(s32 bombKartId) {
                             sp7E = 4;
                             var_s1 = 0;
                             if (IsFrappeSnowland()) {
-                                var_v0->soundEffects |= 0x01000000;
+                                var_v0->triggers |= HIT_BY_STAR_TRIGGER;
                             } else {
-                                var_v0->soundEffects |= 0x400000;
+                                var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }
@@ -3689,7 +3689,7 @@ void init_players(void) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
                 if (D_80163330[i] == 1) {
-                    gPlayers[i].soundEffects |= 0x02000000;
+                    gPlayers[i].triggers |= START_BOOST_TRIGGER;
                 }
             }
         }
@@ -4652,14 +4652,14 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }
@@ -4676,7 +4676,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
                                 if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                             trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                             playerPosX, playerPosZ) == 1) {
-                                    player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                    player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                                 }
                             }
                         }
@@ -4902,7 +4902,7 @@ void handle_paddle_boats_interactions(Player* player) {
                                                      tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2],
                                                      200.0f, 60.0f, playerX, playerZ) == 1) &&
                             (y_diff < 60.0)) {
-                            player->soundEffects |= 0x80000;
+                            player->triggers |= HIT_PADDLE_BOAT_TRIGGER;
                         }
                     }
                 }
@@ -5086,7 +5086,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
                     if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
                         if (is_collide_with_vehicle(vehicle->position[0], vehicle->position[2], vehicle->velocity[0],
                                                     vehicle->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                     }
                 }
@@ -7223,7 +7223,7 @@ void cpu_use_item_strategy(s32 playerId) {
             } else if (cpuStrategy->branch == CPU_STRATEGY_ITEM_BANANA) {
                 cpuStrategy->actorIndex = use_banana_item(player);
                 if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                    player->triggers |= DRAG_ITEM_EFFECT;
                     cpuStrategy->branch = CPU_STRATEGY_HOLD_BANANA;
                     cpuStrategy->timer = 0;
                     cpuStrategy->numItemUse += 1;
@@ -7248,7 +7248,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->triggers &= ~DRAG_ITEM_EFFECT;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                 cpuStrategy->branch = CPU_STRATEGY_DROP_BANANA;
             }
@@ -7277,7 +7277,7 @@ void cpu_use_item_strategy(s32 playerId) {
                         (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
                 }
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->triggers &= ~DRAG_ITEM_EFFECT;
             cpuStrategy->timer = 0;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             break;
@@ -7287,7 +7287,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
                 actor = GET_ACTOR(cpuStrategy->actorIndex);
                 BANANA_ACTOR(actor)->state = BANANA_ON_GROUND;
-                player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
+                player->triggers |= DRAG_ITEM_EFFECT;
                 cpuStrategy->branch = CPU_STRATEGY_HOLD_THROW_BANANA;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
@@ -7320,7 +7320,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
                 cpuStrategy->timer = 0;
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                player->triggers &= ~DRAG_ITEM_EFFECT;
             } else {
                 BANANA_ACTOR(actor)->velocity[1] -= 0.4;
                 BANANA_ACTOR(actor)->pos[0] += BANANA_ACTOR(actor)->velocity[0];
@@ -7354,7 +7354,7 @@ void cpu_use_item_strategy(s32 playerId) {
                                            BANANA_ACTOR(actor)->pos[2]) +
                     (BANANA_ACTOR(actor)->boundingBoxSize + 1.0f);
             }
-            player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+            player->triggers &= ~DRAG_ITEM_EFFECT;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             cpuStrategy->timer = 0;
             break;
@@ -7652,7 +7652,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_STAR:
-            player->soundEffects |= STAR_SOUND_EFFECT;
+            player->triggers |= STAR_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_END_ITEM_STAR;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -7666,7 +7666,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_BOO:
-            player->soundEffects |= BOO_SOUND_EFFECT;
+            player->triggers |= BOO_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_END_BOO;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -7680,7 +7680,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_MUSHROOM:
-            player->soundEffects |= BOOST_SOUND_EFFECT;
+            player->triggers |= SHROOM_TRIGGER;
             cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             cpuStrategy->timer = 0;
             cpuStrategy->numItemUse += 1;
@@ -7688,7 +7688,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM:
             if (cpuStrategy->timer >= 0x3D) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 cpuStrategy->branch = CPU_STRATEGY_ITEM_MUSHROOM;
                 cpuStrategy->timer = 0;
             }
@@ -7696,7 +7696,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM:
             if (cpuStrategy->timer >= 0x3D) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 cpuStrategy->branch = CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM;
                 cpuStrategy->timer = 0;
             }
@@ -7710,7 +7710,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_USE_SUPER_MUSHROOM:
             if ((((s16) cpuStrategy->timer) % 60) == 0) {
-                player->soundEffects |= BOOST_SOUND_EFFECT;
+                player->triggers |= SHROOM_TRIGGER;
                 if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                     cpuStrategy->timer = 0;
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;

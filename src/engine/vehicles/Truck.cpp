@@ -204,7 +204,7 @@ void ATruck::VehicleCollision(s32 playerId, Player* player) {
                 if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
                     if (is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], SomeArg3, SomeArg4,
                                                 spC4, spBC) == (s32) 1) {
-                        player->soundEffects |= REVERSE_SOUND_EFFECT;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                     }
                 }
             }
