@@ -64,9 +64,8 @@ void TrackBrowser::FindCustomTracks() {
                     track->ResourceName = info.ResourceName;
                     GetWorld()->SetCurrentTrack(std::move(track));
                 });
-
             } else {
-                printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
+                printf("[TrackBrowser] Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
             }
         }
     }
