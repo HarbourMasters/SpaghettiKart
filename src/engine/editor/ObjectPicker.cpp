@@ -25,7 +25,7 @@ extern "C" {
 #include "camera.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
 void ObjectPicker::Load() {
     eGizmo.Load();
@@ -230,7 +230,7 @@ std::pair<GameObject*, float> ObjectPicker::CheckEditorObjectRay(Ray ray) {
                 break;
             }
             case GameObject::CollisionType::BOUNDING_SPHERE:
-                printf("Editor::ObjectPicker.cpp Bounding sphere collision type not yet supported\n");
+                printf("[ObjectPicker] [CheckEditorObjectRay] Bounding sphere collision type not yet supported\n");
                 break;
         }
     }

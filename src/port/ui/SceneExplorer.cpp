@@ -18,7 +18,7 @@ extern "C" {
 #include "actors.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     SceneExplorerWindow::~SceneExplorerWindow() {
         SPDLOG_TRACE("destruct scene explorer window");

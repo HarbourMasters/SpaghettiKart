@@ -25,7 +25,7 @@ extern "C" {
 extern s32 gTrophyIndex;
 
 #ifdef __cplusplus
-extern Editor::Editor gEditor;
+extern TrackEditor::Editor gEditor;
 extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
 extern Registry<TrackInfo> gTrackRegistry;

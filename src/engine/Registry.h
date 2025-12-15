@@ -97,6 +97,17 @@ public:
         return list;
     }
 
+    // Returns true if item succesfully removed
+    // Note that mCounter is not decremented on remove
+    bool Remove(const std::string& resourceName) {
+        auto it = mMap.find(resourceName);
+        if (it != mMap.end()) {
+            mMap.erase(it);
+            return true;
+        }
+        return false;
+    }
+
     void Clear() {
         mMap.clear();
         mCounter = 0;

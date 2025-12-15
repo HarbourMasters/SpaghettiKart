@@ -12,7 +12,7 @@ extern "C" {
 }
 
 #include "ObjectPicker.h"
-namespace Editor {
+namespace TrackEditor {
     class ObjectPicker;
 
     class Editor {
@@ -54,7 +54,7 @@ private:
     void Copy(MtxF* src, MtxF* dest);
     void Clear(MtxF* mf);
 };
-} // namespace Editor
+} // namespace TrackEditor
 #endif // __cplusplus
 
 

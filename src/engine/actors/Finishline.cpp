@@ -53,7 +53,7 @@ void AFinishline::BeginPlay() {
     // Prevent collision mesh from being generated extra times.
     if (Editor_IsEnabled()) {
         if (Triangles.size() == 0) {
-            Editor::GenerateCollisionMesh(this, (Gfx*)LOAD_ASSET_RAW(D_0D001B90), 1.0f);
+            TrackEditor::GenerateCollisionMesh(this, (Gfx*)LOAD_ASSET_RAW(D_0D001B90), 1.0f);
         }
     }
 }

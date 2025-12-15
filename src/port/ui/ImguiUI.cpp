@@ -69,21 +69,21 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", "Tools", ImVec2(100, 100),
+    mToolsWindow = std::make_shared<TrackEditor::ToolsWindow>("gEditorEnabled", "Tools", ImVec2(100, 100),
                                                                   (ImGuiWindowFlags_NoTitleBar));
     gui->AddGuiWindow(mToolsWindow);
 
-    mSceneExplorerWindow = std::make_shared<Editor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
+    mSceneExplorerWindow = std::make_shared<TrackEditor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
     gui->AddGuiWindow(mSceneExplorerWindow);
 
-    mPropertiesWindow = std::make_shared<Editor::PropertiesWindow>("gEditorEnabled", "Properties");
+    mPropertiesWindow = std::make_shared<TrackEditor::PropertiesWindow>("gEditorEnabled", "Properties");
     gui->AddGuiWindow(mPropertiesWindow);
 
-    mTrackPropertiesWindow = std::make_shared<Editor::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
+    mTrackPropertiesWindow = std::make_shared<TrackEditor::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
     gui->AddGuiWindow(mTrackPropertiesWindow);
 
     mContentBrowserWindow =
-        std::make_shared<Editor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
+        std::make_shared<TrackEditor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
     gui->AddGuiWindow(mContentBrowserWindow);
 }
 

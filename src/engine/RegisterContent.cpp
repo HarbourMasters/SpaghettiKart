@@ -495,7 +495,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<BigDonut>()); });
 
     info = {
-        .ResourceName = "mk:test_track",
+        .ResourceName = "hm:test_track",
         .Name = "test track",
         .DebugName = "test track",
         .Length = "100m",

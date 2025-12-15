@@ -5,7 +5,7 @@
 #include "Collision.h"
 #include "GameObject.h"
 
-namespace Editor {
+namespace TrackEditor {
 
 class LightObject : public GameObject {
 public:

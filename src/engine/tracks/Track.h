@@ -86,7 +86,6 @@ typedef struct {
 } TrackSections;
 
 typedef struct Properties {
-    char ResourceName[128];
     char Name[128];
     char DebugName[128];
     char TrackLength[128];
@@ -116,8 +115,6 @@ typedef struct Properties {
 #ifdef __cplusplus
     nlohmann::json to_json() const {
         nlohmann::json j;
-       // j["Id"] = Id ? Id : "";
-        j["ResourceName"] = ResourceName ? ResourceName : "";
         j["Name"] = Name ? Name : "";
         j["DebugName"] = DebugName ? DebugName : "";
         j["TrackLength"] = TrackLength ? TrackLength : "";
@@ -180,19 +177,12 @@ typedef struct Properties {
 
     // Function to load struct from JSON
     void from_json(const nlohmann::json& j) {
-        //Id = j.at("Id").get<std::string>().c_str();
-//        Name = j.at("Name").get<std::string>().c_str();
-        strncpy(ResourceName, j.at("ResourceName").get<std::string>().c_str(), sizeof(ResourceName) - 1);
-        ResourceName[sizeof(ResourceName) - 1] = '\0'; // Ensure null termination
-
         strncpy(Name, j.at("Name").get<std::string>().c_str(), sizeof(Name) - 1);
         Name[sizeof(Name) - 1] = '\0'; // Ensure null termination
 
-//        DebugName = j.at("DebugName").get<std::string>().c_str();
         strncpy(DebugName, j.at("DebugName").get<std::string>().c_str(), sizeof(DebugName) - 1);
         DebugName[sizeof(DebugName) - 1] = '\0'; // Ensure null termination
 
-  //      TrackLength = j.at("TrackLength").get<std::string>().c_str();
         strncpy(TrackLength, j.at("TrackLength").get<std::string>().c_str(), sizeof(TrackLength) - 1);
         TrackLength[sizeof(TrackLength) - 1] = '\0'; // Ensure null termination
 

@@ -24,7 +24,7 @@ extern "C" {
 #include "camera.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
     Editor* Editor::Instance;
 
     Editor::Editor() {

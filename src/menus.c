@@ -1177,7 +1177,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             }
             case DEBUG_MENU_LAUNCH_EDITOR: {
                 if (btnAndStick & (A_BUTTON | START_BUTTON)) {
-                    Editor_Launch("mk:test_track");
+                    Editor_Launch("hm:test_track");
                     play_sound2(SOUND_INTRO_ENTER_MENU);
                 }
 

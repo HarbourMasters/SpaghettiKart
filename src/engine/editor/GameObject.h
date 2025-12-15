@@ -16,7 +16,7 @@ extern "C" {
 
 struct Triangle;
 
-namespace Editor {
+namespace TrackEditor {
     class GameObject {
 public:
         enum class CollisionType {

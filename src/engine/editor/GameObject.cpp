@@ -1,7 +1,7 @@
 #include <libultraship/libultraship.h>
 #include "GameObject.h"
 
-namespace Editor {
+namespace TrackEditor {
 
     GameObject::GameObject(FVector pos, IRotator rot, FVector scale, const char* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize) {
         Pos = pos;
@@ -38,4 +38,4 @@ namespace Editor {
         Scale = scale;
     };
 
-} // namespace Editor
+} // namespace TrackEditor

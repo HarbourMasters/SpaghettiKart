@@ -14,7 +14,7 @@ extern "C" {
 #include "assets/textures/other_textures.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
     void GenerateCollisionMesh(std::variant<AActor*, OObject*, GameObject*> object, Gfx* model, float scale) {
         int8_t opcode;
         uintptr_t lo;

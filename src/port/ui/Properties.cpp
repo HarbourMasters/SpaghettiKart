@@ -23,7 +23,7 @@ extern "C" {
 #include "actors.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     PropertiesWindow::~PropertiesWindow() {
         SPDLOG_TRACE("destruct properties window");

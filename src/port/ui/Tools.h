@@ -2,7 +2,7 @@
 
 #include <libultraship/libultraship.h>
 
-namespace Editor {
+namespace TrackEditor {
 class ToolsWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

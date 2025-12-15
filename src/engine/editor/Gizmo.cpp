@@ -29,7 +29,7 @@ extern "C" {
 #include "math_util.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
 void Gizmo::Load() {
     /* Translate handle collision */

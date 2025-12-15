@@ -14,6 +14,9 @@
 #include "port/Game.h"
 
 #include "engine/cameras/TourCamera.h"
+#include "engine/TrackBrowser.h"
+#include "engine/editor/SceneManager.h"
+#include "engine/Registry.h"
 
 extern "C" {
 #include "code_800029B0.h"
@@ -23,26 +26,23 @@ extern "C" {
 #include "render_objects.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     TrackPropertiesWindow::~TrackPropertiesWindow() {
         SPDLOG_TRACE("destruct track properties window");
     }
 
     void TrackPropertiesWindow::DrawElement() {
-        static char idBuffer[256] = "mk:mario_raceway";
-        static char nameBuffer[256] = "Mario Raceway";
-        static char debugNameBuffer[256] = "m circuit";
-        static char lengthBuffer[256] = "567m";
-
         if (nullptr == GetWorld()->GetTrack()) {
             return;
         }
 
-        ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
-        ImGui::InputText("Name", GetWorld()->GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
-        ImGui::InputText("Debug Name", GetWorld()->GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Track Length", GetWorld()->GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
+        if (ImGui::Button("Edit TrackInfo")) {
+            ImGui::OpenPopup("Edit TrackInfo");
+        }
+
+        DrawResourceNameEdit();
+
         ImGui::InputFloat("Water Level", &GetWorld()->GetTrack()->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
@@ -173,6 +173,100 @@ namespace Editor {
 
         TrackPropertiesWindow::DrawMusic();
         TrackPropertiesWindow::DrawTourCamera();
+    }
+
+    void TrackPropertiesWindow::DrawResourceNameEdit() {
+        Track* track = GetWorld()->GetTrack();
+        if (!track) {
+            return;
+        }
+
+        static char resourceNameBuffer[128] = {};
+        static char nameBuffer[128] = "blank_track";
+        static char debugNameBuffer[128] = "blanktrack";
+        static char lengthBuffer[128] = "100m";
+        static bool initialized = false;
+        static std::string oldResourceName = track->ResourceName;
+
+        // Auto-sizing fills the height of the screen for a single frame.
+        // Because there's no content in the window in the first frame.
+        // This forces the window size to prevent that
+        ImGui::SetNextWindowSize(ImVec2(400, 350), ImGuiCond_Always);
+        if (ImGui::BeginPopupModal("Edit TrackInfo", nullptr,
+                                ImGuiWindowFlags_AlwaysAutoResize)) {
+                                    
+            // Initialize once per popup open
+            if (!initialized) {
+                strncpy(resourceNameBuffer, track->ResourceName.c_str(), sizeof(resourceNameBuffer));
+                resourceNameBuffer[sizeof(resourceNameBuffer) - 1] = '\0';
+                oldResourceName = track->ResourceName;
+                initialized = true;
+            }
+
+            ImGui::TextWrapped(
+                "Changing the Resource Name will:\n"
+                "- Save the current track\n"
+                "- Reload the track\n"
+                "- Update the registry\n\n"
+            );
+
+            gEditor.Pause();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("New Resource Name");
+            ImGui::InputText("##ResourceNameInput", resourceNameBuffer, IM_ARRAYSIZE(resourceNameBuffer));
+            ImGui::InputText("Name", GetWorld()->GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
+            ImGui::InputText("Debug Name", GetWorld()->GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
+            ImGui::InputText("Track Length", GetWorld()->GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            bool cancel = ImGui::Button("Cancel", ImVec2(120, 0));
+
+            ImGui::SameLine();
+
+            bool confirm = ImGui::Button("Confirm", ImVec2(120, 0));
+
+            if (confirm) {
+                if (oldResourceName != resourceNameBuffer) {
+                    track->ResourceName = resourceNameBuffer;
+                    const TrackInfo* oldInfo = gTrackRegistry.GetInfo(oldResourceName);
+                    TrackInfo info;
+                    info.ResourceName = track->ResourceName;
+                    info.Name = track->Props.Name;
+                    info.DebugName = track->Props.DebugName;
+                    info.Path = oldInfo->Path;
+
+                    TrackEditor::SaveLevel(track, static_cast<const TrackInfo*>(&info));
+                    auto archive = track->Archive;
+                    gTrackRegistry.Remove(oldResourceName);
+                    gTrackRegistry.Add(info, [info, archive]() {
+                        auto track = std::make_unique<Track>();
+                        track->Archive = archive;
+                        track->ResourceName = info.ResourceName;
+                        GetWorld()->SetCurrentTrack(std::move(track));
+                    });
+                    TrackBrowser::Instance->Refresh(gTrackRegistry);
+                    gGotoMode = RACING;
+
+                }
+                initialized = false;
+
+                ImGui::CloseCurrentPopup();
+            }
+
+            if (cancel) {
+                initialized = false;
+                ImGui::CloseCurrentPopup();
+            }
+
+            ImGui::EndPopup();
+        }
     }
 
     void TrackPropertiesWindow::DrawMusic() {

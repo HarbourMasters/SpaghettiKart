@@ -29,7 +29,7 @@ extern "C" {
 #include "collision.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
     bool bIsTrainWindowOpen = false; // Global because member variables do not work in lambdas
 
     ContentBrowserWindow::~ContentBrowserWindow() {

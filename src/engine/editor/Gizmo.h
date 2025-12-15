@@ -8,7 +8,7 @@
 #include "engine/objects/Object.h"
 #include <variant>
 
-namespace Editor {
+namespace TrackEditor {
 
 class Gizmo {
 public:

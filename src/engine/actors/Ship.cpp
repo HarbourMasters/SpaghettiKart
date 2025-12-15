@@ -55,7 +55,7 @@ void AShip::BeginPlay() {
     // Prevent collision mesh from being generated extra times.
     if (Editor_IsEnabled()) {
         if (Triangles.size() == 0) {
-            Editor::GenerateCollisionMesh(this, (Gfx*)_skin, Scale.y);
+            TrackEditor::GenerateCollisionMesh(this, (Gfx*) _skin, Scale.y);
         }
     }
 }

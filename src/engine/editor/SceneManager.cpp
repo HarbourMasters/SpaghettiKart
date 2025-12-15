@@ -33,18 +33,27 @@ extern "C" {
 #include "render_courses.h"
 }
 
-namespace Editor {
-    void SaveLevel(Track* track) {
+namespace TrackEditor {
+    void SaveLevel(Track* track, const TrackInfo* info) {
         nlohmann::json data;
 
         /**
          * Save track properties, static mesh actors, actors, and tour camera
          */
-        data["Props"] = track->Props.to_json();
+        try {
+            data["Props"] = track->Props.to_json();
+            data["Props"]["ResourceName"] = track->ResourceName.c_str();
+        } catch (...) {
+            SPDLOG_ERROR("[SceneManager] [SaveLevel] Failed serializing track Props");
+        }
 
-        nlohmann::json staticMesh;
-        SaveStaticMeshActors(staticMesh);
-        data["StaticMeshActors"] = staticMesh;
+        try {
+            nlohmann::json staticMesh;
+            SaveStaticMeshActors(staticMesh);
+            data["StaticMeshActors"] = staticMesh;
+        } catch (...) {
+            SPDLOG_ERROR("[SceneManager] [SaveLevel] Failed serializing StaticMeshActors");
+        }
 
 
         nlohmann::json actors;
@@ -75,7 +84,6 @@ namespace Editor {
             std::vector<uint8_t> bytes; // Turn the str into raw data
             bytes.assign(jsonStr.begin(), jsonStr.end());
 
-            const TrackInfo* info = gTrackRegistry.GetInfo(track->ResourceName);
             std::string sceneFile = info->Path + "/scene.json";
 
             // Write file to disk
@@ -304,8 +312,8 @@ namespace Editor {
     }
 
     void SaveFog(nlohmann::json& fog) {
+        fog["EnableFog"] = bFog;
         if (bFog) {
-            fog["EnableFog"] = bFog;
             fog["Colour"]["R"] = gFogColour.r;
             fog["Colour"]["G"] = gFogColour.g;
             fog["Colour"]["B"] = gFogColour.b;
@@ -324,6 +332,7 @@ namespace Editor {
 
         try {
             track->Props.from_json(data["Props"]);
+            track->ResourceName = data["Props"].at("ResourceName").get<std::string>();
         } catch(const std::exception& e) {
             std::cerr << "  Error parsing track properties: " << e.what() << std::endl;
             std::cerr << "    Is your scene.json file out of date?" << std::endl;
@@ -331,27 +340,34 @@ namespace Editor {
     }
 
     void LoadPaths(Track* track, const std::string& trackPath) {
+        SPDLOG_INFO("[SceneManager] [LoadPaths] Loading Paths...");
         std::string path_file = (trackPath + "/data_paths").c_str();
 
         auto res = std::dynamic_pointer_cast<MK64::Paths>(ResourceLoad(path_file.c_str()));
+        if (nullptr == res) {
+            SPDLOG_ERROR("  Unable to load path file (data_paths)");
+            SPDLOG_ERROR("  This file is required for custom tracks to work ");
+            SPDLOG_ERROR("  Make sure the first path point is at coordinates 0,0,0");
+            SPDLOG_ERROR("  In blender you may need to apply transformations and then move the point to 0,0,0");
+        }
 
-        if (res != nullptr) {
-            auto& paths = res->PathList;
+        auto& paths = res->PathList;
 
-            size_t i = 0;
-            u16* ptr = &track->Props.PathSizes.unk0;
-            for (auto& path : paths) {
-                if (i >= ARRAY_COUNT(track->Props.PathTable2)) {
-                    printf("[Track.cpp] The game can only import 5 paths. Found more than 5. Skipping the rest\n");
-                    break; // Only 5 paths allowed. 4 track, 1 vehicle
-                }
-                ptr[i] = path.size();
-                track->Props.PathTable2[i] = (TrackPathPoint*) path.data();
-
-                i += 1;
+        size_t i = 0;
+        u16* ptr = &track->Props.PathSizes.unk0;
+        for (auto& path : paths) {
+            if (i >= ARRAY_COUNT(track->Props.PathTable2)) {
+                SPDLOG_INFO("  The game can only import 5 paths. Found more than 5. Skipping the rest\n");
+                break; // Only 5 paths allowed. 4 track, 1 vehicle
             }
+            ptr[i] = path.size();
+            track->Props.PathTable2[i] = (TrackPathPoint*) path.data();
+            SPDLOG_INFO("  Added path {}", i);
+
+            i += 1;
         }
         gVehiclePathSize = track->Props.PathSizes.unk0; // This is likely incorrect.
+        SPDLOG_INFO("[SceneManager] [LoadPaths] Path Loading Complete!");
     }
 
     void LoadTrackInfoData(TrackInfo& info, nlohmann::json& data) {

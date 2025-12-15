@@ -12,13 +12,14 @@
 #include <defines.h>
 #include "port/Game.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/TrackBrowser.h"
 
 extern "C" {
 #include "code_800029B0.h"
 #include "code_80057C60.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     ToolsWindow::~ToolsWindow() {
         SPDLOG_TRACE("destruct tools window");
@@ -36,7 +37,8 @@ namespace Editor {
         // Save button
         if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
             if (gEditor.IsPaused()) {
-                SaveLevel(GetWorld()->GetTrack());
+                SaveLevel(GetWorld()->GetTrack(), gTrackRegistry.GetInfo(GetWorld()->GetTrack()->ResourceName));
+                TrackBrowser::Instance->Refresh(gTrackRegistry);
             } else {
                 printf("[Editor] Cannot save during simulation\n  Please switch back to edit mode!\n\n");
             }
@@ -140,7 +142,8 @@ namespace Editor {
         ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
         if (ImGui::Button(gEditor.IsPaused() ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
             if (gEditor.IsPaused()) {
-                SaveLevel(GetWorld()->GetTrack());
+                SaveLevel(GetWorld()->GetTrack(), gTrackRegistry.GetInfo(GetWorld()->GetTrack()->ResourceName));
+                TrackBrowser::Instance->Refresh(gTrackRegistry);
                 CVarSetInteger("gFreecam", false);
                 CM_SetFreeCamera(false);
             } else {

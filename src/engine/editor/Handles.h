@@ -4,7 +4,7 @@
 #include <libultra/gbi.h>
 #include "GameObject.h"
 
-namespace Editor {
+namespace TrackEditor {
     class Handles : public GameObject {
 
         Handles();

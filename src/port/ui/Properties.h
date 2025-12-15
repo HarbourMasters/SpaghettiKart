@@ -3,7 +3,7 @@
 #include <libultraship/libultraship.h>
 #include "port/Game.h"
 
-namespace Editor {
+namespace TrackEditor {
 class PropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

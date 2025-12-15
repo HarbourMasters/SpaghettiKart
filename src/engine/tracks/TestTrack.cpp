@@ -71,7 +71,7 @@ TestTrack::TestTrack() {
     Props.Minimap.Colour = {255, 255, 255};
     ResizeMinimap(&Props.Minimap);
 
-    ResourceName = "mk:test_track";
+    ResourceName = "hm:test_track";
 
     Props.SetText(Props.Name, "Test Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));

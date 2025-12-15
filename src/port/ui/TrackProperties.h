@@ -6,7 +6,7 @@ extern "C" {
 #include "sounds.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 class TrackPropertiesWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
@@ -15,6 +15,7 @@ public:
 protected:
     void InitElement() override {};
     void DrawElement() override;
+    void DrawResourceNameEdit();
     void DrawMusic();
     void DrawFog();
     void DrawLight();

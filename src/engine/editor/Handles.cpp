@@ -3,7 +3,7 @@
 
 #include "Handles.h"
 
-namespace Editor {
+namespace TrackEditor {
     Handles::Handles() {
     }
 

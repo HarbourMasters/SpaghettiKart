@@ -4,7 +4,7 @@
 #include "engine/tracks/Track.h"
 #include "AllActors.h"
 
-namespace Editor {
+namespace TrackEditor {
 class ContentBrowserWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;

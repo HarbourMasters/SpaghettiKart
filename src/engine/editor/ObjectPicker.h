@@ -7,7 +7,7 @@
 #include "GameObject.h"
 #include "engine/Matrix.h"
 
-namespace Editor {
+namespace TrackEditor {
     class ObjectPicker {
     public:
         void SelectObject(std::vector<GameObject*> objects);

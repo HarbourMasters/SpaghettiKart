@@ -27,7 +27,7 @@ extern "C" {
 #include "math_util_2.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
 size_t LightObject::NumLights = 0;
 

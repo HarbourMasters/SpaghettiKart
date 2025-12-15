@@ -19,7 +19,7 @@
 
 #define EDITOR_GFX_GET_OPCODE(var) ((uint32_t) ((var) & 0xFF000000))
 
-namespace Editor {
+namespace TrackEditor {
     void GenerateCollisionMesh(std::variant<AActor*, OObject*, GameObject*> object, Gfx* model, float scale);
     void DebugCollision(GameObject* obj, FVector pos, IRotator rot, FVector scale, const std::vector<Triangle>& triangles);
 }

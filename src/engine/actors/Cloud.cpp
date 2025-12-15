@@ -50,7 +50,7 @@ void ACloud::BeginPlay() {
     // Prevent collision mesh from being generated extra times.
     if (Editor_IsEnabled()) {
         if (Triangles.size() == 0) {
-            Editor::GenerateCollisionMesh(this, (Gfx*)cloud_mesh, 1.0f);
+            TrackEditor::GenerateCollisionMesh(this, (Gfx*) cloud_mesh, 1.0f);
         }
     }
 }
