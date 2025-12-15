@@ -357,7 +357,7 @@ namespace TrackEditor {
         u16* ptr = &track->Props.PathSizes.unk0;
         for (auto& path : paths) {
             if (i >= ARRAY_COUNT(track->Props.PathTable2)) {
-                SPDLOG_INFO("  The game can only import 5 paths. Found more than 5. Skipping the rest\n");
+                SPDLOG_INFO("  The game can only import 5 paths. Found more than 5. Skipping the rest");
                 break; // Only 5 paths allowed. 4 track, 1 vehicle
             }
             ptr[i] = path.size();

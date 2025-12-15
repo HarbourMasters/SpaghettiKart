@@ -351,6 +351,7 @@ bool IsTriangleWindingInverted() {
 }
 
 Track::Track() {
+    Props.SetText(Props.ResourceName, "mod:blank_track", sizeof(Props.ResourceName));
     Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));
