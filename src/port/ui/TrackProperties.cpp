@@ -191,7 +191,7 @@ namespace TrackEditor {
         // Auto-sizing fills the height of the screen for a single frame.
         // Because there's no content in the window in the first frame.
         // This forces the window size to prevent that
-        ImGui::SetNextWindowSize(ImVec2(400, 350), ImGuiCond_Always);
+        ImGui::SetNextWindowSize(ImVec2(400, 275), ImGuiCond_Always);
         if (ImGui::BeginPopupModal("Edit TrackInfo", nullptr,
                                 ImGuiWindowFlags_AlwaysAutoResize)) {
                                     
@@ -204,7 +204,7 @@ namespace TrackEditor {
             }
 
             ImGui::TextWrapped(
-                "Changing the Resource Name will:\n"
+                "Changing these fields will:\n"
                 "- Save the current track\n"
                 "- Reload the track\n"
                 "- Update the registry\n\n"
@@ -216,8 +216,7 @@ namespace TrackEditor {
             ImGui::Separator();
             ImGui::Spacing();
 
-            ImGui::Text("New Resource Name");
-            ImGui::InputText("##ResourceNameInput", resourceNameBuffer, IM_ARRAYSIZE(resourceNameBuffer));
+            ImGui::InputText("ResourceName", resourceNameBuffer, IM_ARRAYSIZE(resourceNameBuffer));
             ImGui::InputText("Name", GetWorld()->GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
             ImGui::InputText("Debug Name", GetWorld()->GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
             ImGui::InputText("Track Length", GetWorld()->GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
