@@ -59,7 +59,7 @@ void update_actor_green_shell(struct ShellActor* shell) {
                 controller = &gControllers[shell->playerId];
                 if ((controller->buttonDepressed & Z_TRIG) != 0) {
                     controller->buttonDepressed &= ~Z_TRIG;
-                    if (controller->rawStickY < -0x2D) {        //green shell fired behind
+                    if (controller->rawStickY < THROW_SHELL_BACKWARDS) {
                         var_f2 = 8.0f;
                         if (player->speed > 8.0f) {
                             var_f2 = player->speed * 1.2f;

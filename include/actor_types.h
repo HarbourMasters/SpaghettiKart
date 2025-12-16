@@ -106,6 +106,8 @@ enum ShellState {
     BLUE_SHELL_TARGET_ELIMINATED // Mission completed, well done boss.
 };
 
+#define THROW_SHELL_BACKWARDS -45 // Analogue stick Y value
+
 // Actor banana->state
 enum BananaState {
     HELD_BANANA,               // Single banana that has not been dropped.
