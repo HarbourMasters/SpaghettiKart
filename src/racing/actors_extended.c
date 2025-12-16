@@ -422,10 +422,14 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 break;
             }
             if ((gControllers[parent->playerId].buttonPressed & Z_TRIG) != 0) {
-                parent->firePressed += 1.0f;                                     //Triggers the firing of next available shell.
+                /**
+                 * Fires shell. Uses += 1.0f because this code is ran multiple times per frame.
+                 * A bool would be turned on and off again resulting in no change
+                 */
+                parent->firePressed += 1.0f;
                 gControllers[parent->playerId].buttonPressed &= ~Z_TRIG;
             }
-            if (parent->firePressed > 0.0f) {                                    //Should fire any of the remaining shells? Then, Check which shell is available to be fired
+            if (parent->firePressed > 0.0f) { // Fires a shell and resets firePressed to zero
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
                     if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
