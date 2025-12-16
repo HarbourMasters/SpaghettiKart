@@ -395,11 +395,6 @@ void PortMenu::AddEnhancements() {
 
     AddWidget(path, "Harder CPU", WIDGET_CVAR_CHECKBOX).CVar("gHarderCPU");
 
-    AddWidget(path, "CPU use same items as Players", WIDGET_CVAR_CHECKBOX)
-        .CVar("gCPUHumanLikeItems")
-        .Options(
-            CheckboxOptions().Tooltip("CPU will receive the same items as a human player would. Exception is Thunderbolt - most of it probabilities are transferred to Blue Spiny Shells.").DefaultValue(false));
-
     AddWidget(path, "Show Spaghetti version", WIDGET_CVAR_CHECKBOX)
         .CVar("gShowSpaghettiVersion")
         .Options(CheckboxOptions().Tooltip("Show the Spaghetti Kart version on the Mario Kart menu").DefaultValue(true));

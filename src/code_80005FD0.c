@@ -7092,7 +7092,7 @@ void cpu_decisions_branch_item(UNUSED s32 playerId, s16* branch, s32 itemId) {
             break;
     }
 
-    if (CVarGetInteger("gHarderCPU", 0) == 1 || CVarGetInteger("gCPUHumanLikeItems", 0) == 1) {
+    if (CVarGetInteger("gHarderCPU", false) == true) {
         switch (itemId) {
             case ITEM_NONE:
                 value = -1;
@@ -7222,7 +7222,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 }
             } else if (cpuStrategy->branch == CPU_STRATEGY_ITEM_BANANA) {
                 cpuStrategy->actorIndex = use_banana_item(player);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
+                if (cpuStrategy->actorIndex >= 0) {
                     player->triggers |= DRAG_ITEM_EFFECT;
                     cpuStrategy->branch = CPU_STRATEGY_HOLD_BANANA;
                     cpuStrategy->timer = 0;
@@ -7239,13 +7239,6 @@ void cpu_use_item_strategy(s32 playerId) {
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA) ||
                 (BANANA_ACTOR(actor)->state != HELD_BANANA) || (playerId != BANANA_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(BANANA_ACTOR(actor)->flags & 0x8000)) {}
-                if (BANANA_ACTOR(actor)->type != 6) {}
-                if (BANANA_ACTOR(actor)->state != 0) {}
-                if (BANANA_ACTOR(actor)->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
                 player->triggers &= ~DRAG_ITEM_EFFECT;
@@ -7259,13 +7252,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
                  (BANANA_ACTOR(actor)->state != HELD_BANANA)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(BANANA_ACTOR(actor)->flags & 0x8000)) {}
-                if (BANANA_ACTOR(actor)->type != 6) {}
-                if (BANANA_ACTOR(actor)->state != 0) {}
-                if (BANANA_ACTOR(actor)->rot[0] != playerId) {}
-
             } else {
                 BANANA_ACTOR(actor)->state = DROPPED_BANANA;
                 BANANA_ACTOR(actor)->velocity[0] = 0.0f;
@@ -7284,7 +7270,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_THROW_BANANA:
             cpuStrategy->actorIndex = use_banana_item(player);
-            if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
+            if (cpuStrategy->actorIndex >= 0) {
                 actor = GET_ACTOR(cpuStrategy->actorIndex);
                 BANANA_ACTOR(actor)->state = BANANA_ON_GROUND;
                 player->triggers |= DRAG_ITEM_EFFECT;
@@ -7311,13 +7297,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
                  (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(BANANA_ACTOR(actor)->flags & 0x8000)) {}
-                if (BANANA_ACTOR(actor)->type != 6) {}
-                if (BANANA_ACTOR(actor)->state != 0) {}
-                if (BANANA_ACTOR(actor)->rot[0] != playerId) {}
-
                 cpuStrategy->timer = 0;
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 player->triggers &= ~DRAG_ITEM_EFFECT;
@@ -7337,13 +7316,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(BANANA_ACTOR(actor)->flags & 0x8000)) || (BANANA_ACTOR(actor)->type != ACTOR_BANANA)) ||
                  (BANANA_ACTOR(actor)->state != BANANA_ON_GROUND)) ||
                 (playerId != BANANA_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(BANANA_ACTOR(actor)->flags & 0x8000)) {}
-                if (BANANA_ACTOR(actor)->type != 6) {}
-                if (BANANA_ACTOR(actor)->state != 0) {}
-                if (BANANA_ACTOR(actor)->rot[0] != playerId) {}
-
             } else {
                 BANANA_ACTOR(actor)->state = DROPPED_BANANA;
                 BANANA_ACTOR(actor)->velocity[0] = 0.0f;
@@ -7360,16 +7332,12 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_GREEN_SHELL:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_green_shell_item(player);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_HOLD_GREEN_SHELL;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_green_shell_item(player);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_HOLD_GREEN_SHELL;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
@@ -7380,13 +7348,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(SHELL_ACTOR(actor)->flags & 0x8000)) {}
-                if (SHELL_ACTOR(actor)->type != 7) {}
-                if (SHELL_ACTOR(actor)->state != 0) {}
-                if (SHELL_ACTOR(actor)->rotVelocity != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
@@ -7400,13 +7361,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 7) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
@@ -7450,16 +7404,12 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_RED_SHELL:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_red_shell_item(player);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_HOLD_RED_SHELL;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_red_shell_item(player);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_HOLD_RED_SHELL;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
@@ -7470,13 +7420,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_RED_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
@@ -7490,13 +7433,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_RED_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
@@ -7507,16 +7443,12 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_BANANA_BUNCH:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_banana_bunch_item(player);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 60;
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_banana_bunch_item(player);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 60;
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
@@ -7525,10 +7457,6 @@ void cpu_use_item_strategy(s32 playerId) {
         case CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH:
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if (BANANA_BUNCH_ACTOR(actor)->state == 6) {
-
-                // FAKE
-                if (BANANA_BUNCH_ACTOR(actor)->state != -1) {}
-                if (BANANA_BUNCH_ACTOR(actor)->state == 6) {}
 
                 isValidBanana2 = false;
 
@@ -7611,7 +7539,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case CPU_STRATEGY_ITEM_FAKE_ITEM_BOX:
             cpuStrategy->actorIndex = use_fake_itembox_item(player);
-            if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
+            if (cpuStrategy->actorIndex >= 0) {
                 cpuStrategy->branch = CPU_STRATEGY_HOLD_FAKE_ITEM_BOX;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
@@ -7628,32 +7556,18 @@ void cpu_use_item_strategy(s32 playerId) {
                  (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
                 (playerId != ((s32) FAKE_ITEMBOX_ACTOR(actor)->playerId))) {
 
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 13) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
                 cpuStrategy->branch = CPU_STRATEGY_THROW_FAKE_ITEM_BOX;
             }
             break;
-
         case CPU_STRATEGY_THROW_FAKE_ITEM_BOX:
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) ||
                   (FAKE_ITEMBOX_ACTOR(actor)->type != ACTOR_FAKE_ITEM_BOX)) ||
                  (FAKE_ITEMBOX_ACTOR(actor)->state != 0)) ||
                 (playerId != ((s32) FAKE_ITEMBOX_ACTOR(actor)->playerId))) {
-
-                // FAKE
-                if (!(FAKE_ITEMBOX_ACTOR(actor)->flags & 0x8000)) {}
-                if (FAKE_ITEMBOX_ACTOR(actor)->type != 13) {}
-                if (FAKE_ITEMBOX_ACTOR(actor)->state != 0) {}
-                if (FAKE_ITEMBOX_ACTOR(actor)->rot[0] != playerId) {}
-
             } else {
                 func_802A1064((struct FakeItemBox*) actor);
                 if (D_801631E0[playerId] == true) {
@@ -7750,35 +7664,22 @@ void cpu_use_item_strategy(s32 playerId) {
                 }
             }
             break;
-        //Fixing blue shell
         case CPU_STRATEGY_ITEM_BLUE_SPINY_SHELL:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_blue_shell_item(player);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_HOLD_BLUE_SPINY_SHELL;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_blue_shell_item(player);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_HOLD_BLUE_SPINY_SHELL;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 10;
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
             break;
-
         case CPU_STRATEGY_HOLD_BLUE_SPINY_SHELL:
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_BLUE_SPINY_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
@@ -7792,13 +7693,6 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_BLUE_SPINY_SHELL)) ||
                  (SHELL_ACTOR(actor)->state != HELD_SHELL)) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
@@ -7807,35 +7701,21 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
             break;
-
-        //Handling of Triple Shells
         case CPU_STRATEGY_ITEM_TRIPLE_GREEN_SHELL:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_triple_shell_item(player, ACTOR_TRIPLE_GREEN_SHELL);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(10) * 20) + 50;  //Min should be high to give enough time for spawning of 3 shells 
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_triple_shell_item(player, ACTOR_TRIPLE_GREEN_SHELL);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(10) * 20) + 50;
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
             break;
-
         case CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL:
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_TRIPLE_GREEN_SHELL))) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
@@ -7854,13 +7734,6 @@ void cpu_use_item_strategy(s32 playerId) {
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_TRIPLE_GREEN_SHELL))) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
@@ -7868,8 +7741,8 @@ void cpu_use_item_strategy(s32 playerId) {
                 TripleShellParent* parent = (TripleShellParent*) actor;
                 if (parent->state == ORBIT_PLAYER && 0 < parent->shellsAvailable) {
                     cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL;
-                    parent->firePressed += 1.0f;                                 //This is what triggers the firing of next available shell
-                    cpuStrategy->timeBeforeThrow = (random_int(2) * 20);    //very short delay
+                    parent->firePressed += 1.0f;
+                    cpuStrategy->timeBeforeThrow = (random_int(2) * 20);
                 } else {
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
@@ -7877,16 +7750,12 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case CPU_STRATEGY_ITEM_TRIPLE_RED_SHELL:
-            if (gNumActors < 80) {
-                cpuStrategy->actorIndex = use_triple_shell_item(player, ACTOR_TRIPLE_RED_SHELL);
-                if ((cpuStrategy->actorIndex >= 0) && (cpuStrategy->actorIndex < 100)) {
-                    cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_RED_SHELL;
-                    cpuStrategy->timer = 0;
-                    cpuStrategy->numItemUse += 1;
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 50;   //Min should be high to give enough time for spawning of 3 shells 
-                } else {
-                    cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
-                }
+            cpuStrategy->actorIndex = use_triple_shell_item(player, ACTOR_TRIPLE_RED_SHELL);
+            if (cpuStrategy->actorIndex >= 0) {
+                cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_RED_SHELL;
+                cpuStrategy->timer = 0;
+                cpuStrategy->numItemUse += 1;
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 50;   //Min should be high to give enough time for spawning of 3 shells 
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
@@ -7896,13 +7765,6 @@ void cpu_use_item_strategy(s32 playerId) {
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_TRIPLE_RED_SHELL))) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else if (cpuStrategy->timeBeforeThrow < cpuStrategy->timer) {
@@ -7921,13 +7783,6 @@ void cpu_use_item_strategy(s32 playerId) {
             actor = GET_ACTOR(cpuStrategy->actorIndex);
             if ((((!(SHELL_ACTOR(actor)->flags & 0x8000)) || (SHELL_ACTOR(actor)->type != ACTOR_TRIPLE_RED_SHELL))) ||
                 (playerId != SHELL_ACTOR(actor)->playerId)) {
-
-                // FAKE
-                if (!(actor->flags & 0x8000)) {}
-                if (actor->type != 8) {}
-                if (actor->state != 0) {}
-                if (actor->rot[0] != playerId) {}
-
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
@@ -7936,8 +7791,8 @@ void cpu_use_item_strategy(s32 playerId) {
                 TripleShellParent* parent = (TripleShellParent*) actor;
                 if (parent->state == ORBIT_PLAYER && 0 < parent->shellsAvailable) {
                     cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_RED_SHELL;
-                    parent->firePressed += 1.0f;                                     //This is what triggers the firing of next available shell
-                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 90;   //Higher delay, to enable CPU firing the next one as soon as the targeted racer finishes tumbling
+                    parent->firePressed += 1.0f;
+                    cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 90; // Delay so that the CPU fires the next shell after the player has finished tumbling
                 } else {
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }

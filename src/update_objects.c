@@ -3022,150 +3022,6 @@ ItemProbabilities grandPrixHardCPUProbabilityTable[] = {
       .superMushroom = 10 },
 };
 
-//Almost the same item distribution for cpus, with exception of thunder rates from 2nd to 6th being transfered to blue shells.
-//7th and 8th is just 5% chance each, so overall 10% when ahead and 5% when 7th or bellow
-//Reason is: I believe MK64 thunder is too obnoxious, the strongest item of all, meanwhile blue shells barely cause any harm due to 3A acceleration.
-//If you're lagging behind, spiny actually forces you drive outside of normal racelines so it helps you catch a cheating cpu far ahead.
-//Overall, spiny actually balances the game a lot better and creates mayhem on the pack, meanwhile thunder just dirupts and is very frustrating when spammed
-ItemProbabilities grandPrixCpuHumanLikeProbabilityTable[] = {
-    //1st
-    { .none = 0,
-      .banana = 30,
-      .bananaBunch = 5,
-      .greenShell = 30,
-      .tripleGreenShell = 5,
-      .redShell = 5,
-      .tripleRedShell = 0,
-      .blueSpinyShell = 0,
-      .thunderbolt = 0,
-      .fakeItemBox = 10,
-      .star = 0,
-      .boo = 5,
-      .mushroom = 10,
-      .doubleMushroom = 0,
-      .tripleMushroom = 0,
-      .superMushroom = 0 },
-    //2nd
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 5,
-      .greenShell = 5,
-      .tripleGreenShell = 10,
-      .redShell = 15,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 5,
-      .thunderbolt = 0,
-      .fakeItemBox = 5,
-      .star = 5,
-      .boo = 5,
-      .mushroom = 5,
-      .doubleMushroom = 0,
-      .tripleMushroom = 15,
-      .superMushroom = 5 },
-    //3rd
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 10,
-      .redShell = 20,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 5,
-      .thunderbolt = 0,
-      .fakeItemBox = 0,
-      .star = 10,
-      .boo = 0,
-      .mushroom = 5,
-      .doubleMushroom = 0,
-      .tripleMushroom = 20,
-      .superMushroom = 10 },
-    //4th
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 0,
-      .redShell = 15,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 15,
-      .thunderbolt = 0,
-      .fakeItemBox = 0,
-      .star = 15,
-      .boo = 0,
-      .mushroom = 5,
-      .doubleMushroom = 0,
-      .tripleMushroom = 20,
-      .superMushroom = 10 },
-    //5th
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 0,
-      .redShell = 10,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 15,
-      .thunderbolt = 0,
-      .fakeItemBox = 0,
-      .star = 15,
-      .boo = 0,
-      .mushroom = 5,
-      .doubleMushroom = 0,
-      .tripleMushroom = 25,
-      .superMushroom = 10 },
-    //6th
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 0,
-      .redShell = 0,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 25,
-      .thunderbolt = 0,
-      .fakeItemBox = 0,
-      .star = 20,
-      .boo = 0,
-      .mushroom = 0,
-      .doubleMushroom = 0,
-      .tripleMushroom = 25,
-      .superMushroom = 10 },
-    //7th
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 0,
-      .redShell = 0,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 25,
-      .thunderbolt = 5,
-      .fakeItemBox = 0,
-      .star = 30,
-      .boo = 0,
-      .mushroom = 0,
-      .doubleMushroom = 0,
-      .tripleMushroom = 10,
-      .superMushroom = 10 },
-    //8th
-    { .none = 0,
-      .banana = 0,
-      .bananaBunch = 0,
-      .greenShell = 0,
-      .tripleGreenShell = 0,
-      .redShell = 0,
-      .tripleRedShell = 20,
-      .blueSpinyShell = 30,
-      .thunderbolt = 5,
-      .fakeItemBox = 0,
-      .star = 30,
-      .boo = 0,
-      .mushroom = 0,
-      .doubleMushroom = 0,
-      .tripleMushroom = 5,
-      .superMushroom = 10 },
-};
-
 ItemProbabilities versus2PlayerProbabilityTable[] = {
     { .none = 0,
       .banana = 25,
@@ -3379,7 +3235,6 @@ enum RandomItemOption {
     HUMAN_TABLE,
     CPU_TABLE,
     HARD_CPU_TABLE,
-    CPU_HUMAN_LIKE_TABLE,       //CPU item table almost identical of human player, with adjustments only to thunder chances being transferred to spiny shell
 };
 
 /**
@@ -3409,11 +3264,6 @@ u8 gen_random_item(s16 rank, s16 option) {
                     distributionTable = &grandPrixHardCPUProbabilityTable[rank];
                     verify_probability_table("Hard CPU", distributionTable, rank);
                     break;
-                case CPU_HUMAN_LIKE_TABLE:
-                    distributionTable = &grandPrixCpuHumanLikeProbabilityTable[rank];
-                    verify_probability_table("CPU Human Like", distributionTable, rank);
-                    break;
-
             }
             break;
         case VERSUS:
@@ -3460,20 +3310,11 @@ u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
 }
 
 u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    if (CVarGetInteger("gCPUHumanLikeItems", 0) == true) {
-        return gen_random_item(rank, CPU_HUMAN_LIKE_TABLE);
-    } else {
-        return gen_random_item(rank, CPU_TABLE);
-    }
+    return gen_random_item(rank, CPU_TABLE);
 }
 
 u8 hard_cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    //Overrides Hard CPU mode item table
-    if (CVarGetInteger("gCPUHumanLikeItems", 0) == true) {
-        return gen_random_item(rank, CPU_HUMAN_LIKE_TABLE);
-    } else {
-        return gen_random_item(rank, HARD_CPU_TABLE);
-    }
+    return gen_random_item(rank, HARD_CPU_TABLE);
 }
 
 s16 func_8007AFB0(s32 objectIndex, s32 playerId) {

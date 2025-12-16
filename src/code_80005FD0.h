@@ -34,7 +34,7 @@ typedef struct {
     /* 0x08 */ s16 numDroppedBananaBunch;
     /* 0x0A */ s16 unk_0A;
     /* 0x0C */ s16 unk_0C;
-    /* 0x0E */ s16 timeBeforeThrow;
+    /* 0x0E */ s16 timeBeforeThrow; // Allows time for spawning the shells before they can be spawned
 } CpuItemStrategyData; // size = 0x10
 
 typedef struct {
