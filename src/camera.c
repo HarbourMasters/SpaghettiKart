@@ -475,7 +475,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
         }
     }
-    if ((player->unk_0CA & 0x100) == 0x100) {
+    if ((player->lakituProps & WENT_OVER_OOB) == WENT_OVER_OOB) {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
@@ -545,7 +545,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+    if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) != 0) {
         *arg4 = gPlayerWaterLevel[index];
     }
 }
@@ -590,7 +590,7 @@ void func_8001D53C(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     stackPadding0 = player->pos[0] + sp68[0];
     stackPadding2 = player->pos[2] + sp68[2];
     stackPadding1 = sp68[1] + (player->unk_074 + 1.5);
-    if ((player->unk_0CA & 1) == 1) {
+    if ((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) {
         stackPadding1 = sp68[1] + (thing + 10.0f);
     }
     *arg3 = stackPadding0;
@@ -709,7 +709,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
         }
     }
-    if ((player->unk_0CA & 0x100) == 0x100) {
+    if ((player->lakituProps & WENT_OVER_OOB) == WENT_OVER_OOB) {
 
         move_f32_towards(&D_80164A90[index], 15, 0.02f);
         move_f32_towards(&D_80164AA0[index], 20, 0.02f);
@@ -765,7 +765,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         *arg4 = camera->pos[1] + (((y - camera->pos[1]) * 0.15));
     }
 
-    if ((player->waterInteractionFlags & WATER_IS_FULLY_SUBMERGED) != 0) {
+    if ((player->oobProps & UNDER_OOB_OR_FLUID_LEVEL) != 0) {
         *arg4 = gPlayerWaterLevel[index];
     }
 }
@@ -1109,7 +1109,7 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001A588(&camera->mode, camera, player, index, cameraIndex);
                 break;
             case 1: // player camera
-                if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
+                if (((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) || ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
@@ -1120,7 +1120,7 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
                 func_8001F87C(cameraIndex);
                 break;
             case 9:
-                if (((player->unk_0CA & 1) == 1) || ((player->unk_0CA & 2) == 2)) {
+                if (((player->lakituProps & LAKITU_RETRIEVAL) == LAKITU_RETRIEVAL) || ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU)) {
                     func_8001E8E8(camera, player, index);
                     break;
                 }
@@ -1269,7 +1269,7 @@ void func_8001F87C(s32 cameraId) {
     if (gActiveScreenMode == SCREEN_MODE_1P) {
         if (gModeSelection == GRAND_PRIX) {
             for (size_t i = 0; i < NUM_PLAYERS; i++) {
-                if ((gPlayerOne[i].type & 0x200) || (gPlayerOne[i].type & 0x80)) {
+                if ((gPlayerOne[i].type & PLAYER_STAGING) || (gPlayerOne[i].type & PLAYER_UNKNOWN_0x80)) {
                     break;
                 }
                 if (i == PLAYER_EIGHT) {

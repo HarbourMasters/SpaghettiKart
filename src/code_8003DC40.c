@@ -197,7 +197,7 @@ void func_8003F138(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
     if (player->surfaceType == GRASS) {
-        player->unk_044 &= ~1;
+        player->kartProps &= ~BACK_UP;
     }
     if (player->collision.orientationVector[1] <= 0.8357f) {
         arg3[0] = ((player->unk_206 / 182) * 0xC8);
@@ -222,7 +222,7 @@ void func_8003F46C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
     arg1[0] = -player->collision.orientationVector[0];
     arg1[1] = -player->collision.orientationVector[1];
     arg1[2] = -player->collision.orientationVector[2];
-    if ((player->collision.orientationVector[1] < 0.0f) && ((player->unk_0CA & 2) == 0)) {
+    if ((player->collision.orientationVector[1] < 0.0f) && ((player->lakituProps & HELD_BY_LAKITU) == 0)) {
         *arg5 += arg1[0] * player->collision.surfaceDistance[2] * 1;
         *arg6 += arg1[1] * player->collision.surfaceDistance[2] * 1;
         *arg7 += arg1[2] * player->collision.surfaceDistance[2] * 1;

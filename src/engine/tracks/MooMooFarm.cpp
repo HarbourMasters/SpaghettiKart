@@ -51,6 +51,7 @@ MooMooFarm::MooMooFarm() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:moo_moo_farm";
     Props.SetText(Props.Name, "moo moo farm", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "farm", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "527m", sizeof(Props.TrackLength));

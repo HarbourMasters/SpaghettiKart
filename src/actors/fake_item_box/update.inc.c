@@ -1,3 +1,8 @@
+#include "actors_extended.h"
+#include "collision.h"
+#include "defines.h"
+#include "external.h"
+#include "sounds.h"
 #include <actors.h>
 #include <main.h>
 
@@ -40,7 +45,7 @@ void update_actor_fake_item_box(struct FakeItemBox* fake_item_box) {
                                      fake_item_box->pos[1], fake_item_box->pos[2]);
             func_802B4E30((struct Actor*) fake_item_box);
             temp_v1_3 = &gControllers[temp_v1];
-            if ((temp_v0_4->type & 0x4000) != 0) {
+            if ((temp_v0_4->type & PLAYER_HUMAN) != 0) {
 
                 if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;

@@ -101,7 +101,7 @@ void destroy_banana_in_banana_bunch(struct BananaActor* banana) {
 
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
-    if ((gPlayers[banana->playerId].type & 0x4000) != 0) {
+    if ((gPlayers[banana->playerId].type & PLAYER_HUMAN) != 0) {
         func_800C9060(banana->playerId, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
     }
     banana->flags = -0x8000;
@@ -295,7 +295,7 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
             if (someCount == 0) {
                 destroy_actor((struct Actor*) banana_bunch);
                 owner->triggers &= ~DRAG_ITEM_EFFECT;
-            } else if ((owner->type & 0x4000) != 0) {
+            } else if ((owner->type & PLAYER_HUMAN) != 0) {
                 controller = &gControllers[banana_bunch->playerId];
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;

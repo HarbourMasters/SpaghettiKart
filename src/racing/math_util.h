@@ -79,6 +79,4 @@ extern Vec3f D_802B91C8;
 }
 #endif
 
-#define DEGREES_CONVERSION_FACTOR 182
-
 #endif // MATH_UTIL_H

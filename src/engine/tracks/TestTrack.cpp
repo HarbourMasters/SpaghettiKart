@@ -72,7 +72,6 @@ TestTrack::TestTrack() {
     ResizeMinimap(&Props.Minimap);
 
     ResourceName = "hm:test_track";
-
     Props.SetText(Props.Name, "Test Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "test track", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));

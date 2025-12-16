@@ -49,6 +49,7 @@ KalimariDesert::KalimariDesert() {
     Props.Minimap.FinishlineY = 4.0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:kalimari_desert";
     Props.SetText(Props.Name, "kalimari desert", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "desert", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "753m", sizeof(Props.TrackLength));

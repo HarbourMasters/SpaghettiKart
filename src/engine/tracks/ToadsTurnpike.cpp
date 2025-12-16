@@ -55,6 +55,7 @@ ToadsTurnpike::ToadsTurnpike() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:toads_turnpike";
     Props.SetText(Props.Name, "toad's turnpike", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "highway", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "1036m", sizeof(Props.TrackLength));

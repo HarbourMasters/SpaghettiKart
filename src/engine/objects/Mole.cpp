@@ -208,13 +208,13 @@ void OMole::func_80081D34(s32 objectIndex) {
     for (size_t i = 0; i < D_8018D158; i++, player++, camera++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
-            if ((player->type & 0x8000) && !(player->type & 0x100)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 var_s5 = 1;
                 object = &gObjectList[objectIndex];
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
-                if (player->effects & 0x200) {
+                if (player->effects & STAR_EFFECT) {
                     func_800C9060(i, 0x1900A046U);
                 } else {
                     player->triggers |= HIGH_TUMBLE_TRIGGER;

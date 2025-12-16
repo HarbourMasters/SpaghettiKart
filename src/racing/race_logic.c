@@ -575,7 +575,7 @@ void func_8028EF28(void) {
                     }
 
                 } else if (gPlayers[i].lapCount == 2) {
-                    if ((gPlayers[i].type & 0x100) != 0) {
+                    if ((gPlayers[i].type & PLAYER_INVISIBLE_OR_BOMB) != 0) {
                         return;
                     }
                     if ((D_802BA032 & 0x4000) == 0) {

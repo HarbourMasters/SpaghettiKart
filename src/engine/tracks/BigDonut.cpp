@@ -45,6 +45,7 @@ BigDonut::BigDonut() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:big_donut";
     Props.SetText(Props.Name, "big donut", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "doughnut", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));

@@ -1133,10 +1133,10 @@ void init_kiwano_fruit(void) {
     for (i = 0; i < 4; i++) {
         phi_s1 = &gPlayers[i];
         // temp_v0 = *phi_s1;
-        if ((phi_s1->type & 0x4000) == 0) {
+        if ((phi_s1->type & PLAYER_HUMAN) == 0) {
             continue;
         }
-        if ((phi_s1->type & 0x100) != 0) {
+        if ((phi_s1->type & PLAYER_INVISIBLE_OR_BOMB) != 0) {
             continue;
         }
 
@@ -1987,7 +1987,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             }
             player->triggers |= HIT_BANANA_TRIGGER;
             owner = &gPlayers[temp_v1];
-            if (owner->type & 0x4000) {
+            if (owner->type & PLAYER_HUMAN) {
                 if (actor->flags & 0xF) {
                     if (temp_lo != temp_v1) {
                         func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
@@ -2017,7 +2017,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             player->triggers |= LOW_TUMBLE_TRIGGER;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             owner = &gPlayers[temp_v1];
-            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+            if ((owner->type & PLAYER_HUMAN) && (temp_lo != temp_v1)) {
                 func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
             }
             destroy_destructable_actor(actor);
@@ -2036,7 +2036,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             }
             owner = &gPlayers[temp_v1];
-            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+            if ((owner->type & PLAYER_HUMAN) && (temp_lo != temp_v1)) {
                 func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
             }
             if (temp_lo == actor->unk_04) {
@@ -2061,7 +2061,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             }
             owner = &gPlayers[temp_v1];
-            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+            if ((owner->type & PLAYER_HUMAN) && (temp_lo != temp_v1)) {
                 func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
             }
             destroy_destructable_actor(actor);
@@ -2119,7 +2119,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             }
             player->triggers |= VERTICAL_TUMBLE_TRIGGER;
             owner = &gPlayers[temp_v1];
-            if (owner->type & 0x4000) {
+            if (owner->type & PLAYER_HUMAN) {
                 if (actor->flags & 0xF) {
                     if (temp_lo != temp_v1) {
                         func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));

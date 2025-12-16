@@ -48,6 +48,7 @@ RoyalRaceway::RoyalRaceway() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:royal_raceway";
     Props.SetText(Props.Name, "royal raceway", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "p circuit", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "1025m", sizeof(Props.TrackLength));

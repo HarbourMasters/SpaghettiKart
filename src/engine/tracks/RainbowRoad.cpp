@@ -47,6 +47,7 @@ RainbowRoad::RainbowRoad() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:rainbow_road";
     Props.SetText(Props.Name, "rainbow road", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "rainbow", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "2000m", sizeof(Props.TrackLength));

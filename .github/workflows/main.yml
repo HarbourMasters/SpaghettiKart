@@ -126,7 +126,7 @@ jobs:
   
   build-macos-intel:
     needs: generate-port-o2r
-    runs-on: macOS-latest-intel
+    runs-on: macos-15-intel
     strategy:
       matrix:
         config: [Release, Debug]

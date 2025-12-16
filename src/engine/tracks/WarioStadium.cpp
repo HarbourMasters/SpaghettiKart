@@ -50,6 +50,7 @@ WarioStadium::WarioStadium() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:wario_stadium";
     Props.SetText(Props.Name, "wario stadium", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "stadium", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "1591m", sizeof(Props.TrackLength));

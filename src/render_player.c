@@ -88,14 +88,14 @@ void func_8001F9E4(Player* player, Camera* camera, s8 screenId) {
     get_player_index_for_player(player);
     func_8001F980(&sp30, &sp2C);
 
-    player->unk_002 &= ~(2 << (screenId * 4));
-    player->unk_002 &= ~(8 << (screenId * 4));
+    player->unk_002 &= ~(UNK_002_UNKNOWN_0x2 << (screenId * 4));
+    player->unk_002 &= ~(SIDE_OF_KART << (screenId * 4));
 
     if (check_player_camera_collision(player, camera, (f32) (D_80165578 + sp30), (f32) (D_8016557A + sp2C)) == 1) {
-        player->unk_002 |= 2 << (screenId * 4);
+        player->unk_002 |= UNK_002_UNKNOWN_0x2 << (screenId * 4);
     }
     if (check_player_camera_collision(player, camera, (f32) D_80165580, (f32) D_80165582) == 1) {
-        player->unk_002 |= 8 << (screenId * 4);
+        player->unk_002 |= SIDE_OF_KART << (screenId * 4);
     }
 }
 
@@ -194,7 +194,7 @@ void init_render_player(Player* player, Camera* camera, s8 playerId, s8 screenId
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_8001F9E4(player, camera, screenId);
-        temp_v0 = 2 << (screenId << 2);
+        temp_v0 = UNK_002_UNKNOWN_0x2 << (screenId << 2);
         if (temp_v0 == (player->unk_002 & temp_v0)) {
             if (!(player->type & PLAYER_START_SEQUENCE)) {
                 func_8002934C(player, camera, screenId, playerId);
@@ -206,7 +206,7 @@ void init_render_player(Player* player, Camera* camera, s8 playerId, s8 screenId
             }
         }
         func_8001F980(&sp4C, &sp48);
-        temp_v0_2 = 1 << (screenId << 2);
+        temp_v0_2 = CHANGING_ANIMATION << (screenId << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
             if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
                 gPlayersToRenderPlayerId[gPlayersToRenderCount] = (s16) playerId;
@@ -552,16 +552,16 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerEight, 7, 0);
     }
     if (gGamestate == ENDING) {
-        if (gPlayerOne->unk_044 & 0x2000) {
+        if (gPlayerOne->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerOne, 0, 0);
         }
-        if (gPlayerTwo->unk_044 & 0x2000) {
+        if (gPlayerTwo->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerTwo, 1, 0);
         }
-        if (gPlayerThree->unk_044 & 0x2000) {
+        if (gPlayerThree->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerThree, 2, 0);
         }
-        if (gPlayerFour->unk_044 & 0x2000) {
+        if (gPlayerFour->kartProps & UNUSED_0x2000) {
             render_player_shadow_credits(gPlayerFour, 3, 0);
         }
     }
@@ -785,10 +785,10 @@ void func_8002276C(void) {
                     break;
                 case TIME_TRIALS: /* switch 1 */
                     func_80022A98(gPlayerOne, 0);
-                    if ((gPlayerTwo->type & 0x100) == 0x100) {
+                    if ((gPlayerTwo->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_80022A98(gPlayerTwo, 1);
                     }
-                    if ((gPlayerThree->type & 0x100) == 0x100) {
+                    if ((gPlayerThree->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
                         func_80022A98(gPlayerThree, 2);
                     }
                     break;
@@ -1065,22 +1065,22 @@ void func_800235AC(Player* player, s8 arg1) {
         return;
     }
 
-    if (((player->unk_0CA & 0x10) == 0x10) && ((player->unk_0CA & 4) == 4)) {
+    if (((player->lakituProps & FRIGID_EFFECT) == FRIGID_EFFECT) && ((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE)) {
         change_player_color_effect_rgb(player, arg1, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, arg1, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->unk_0CA & 4) == 4) {
+    if ((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE) {
         change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 1.0f);
         change_player_color_effect_cmy(player, arg1, 0, 1.0f);
         return;
     }
-    if ((player->unk_0CA & 0x10) == 0x10) {
+    if ((player->lakituProps & FRIGID_EFFECT) == FRIGID_EFFECT) {
         change_player_color_effect_rgb(player, arg1, 0x646464, 0.5f);
         change_player_color_effect_cmy(player, arg1, 0xFF0000, 0.1f);
         return;
     }
-    if ((player->unk_0CA & 0x20) == 0x20) {
+    if ((player->lakituProps & THAWING_EFFECT) == THAWING_EFFECT) {
         change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.1f);
         change_player_color_effect_cmy(player, arg1, 0, 0.1f);
         return;
@@ -1144,7 +1144,7 @@ void func_800235AC(Player* player, s8 arg1) {
             return;
         }
         render_light_environment_on_player(player, arg1);
-        if ((player->unk_0CA & 0x1000) == 0x1000) {
+        if ((player->lakituProps & LAKITU_LAVA) == LAKITU_LAVA) {
             change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0xF0F0F0, 0.3f);
         }
@@ -1157,7 +1157,7 @@ void func_80023BF0(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         func_80022E84(player, playerId, screenId, arg3);
     }
-    if ((player->unk_0CA & 2) == 2) {
+    if ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) {
         func_80022D60(player, playerId, screenId, arg3);
     }
 }
@@ -1192,7 +1192,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
 
     if (((player->effects & 0x01000000) == 0x01000000) || ((player->effects & 0x400) == 0x400) ||
         ((player->effects & 0x80000) == 0x80000) || ((player->effects & 0x800000) == 0x800000) ||
-        ((player->effects & 0x400) == 0x400) || ((player->unk_0CA & 2) == 2) ||
+        ((player->effects & 0x400) == 0x400) || ((player->lakituProps & HELD_BY_LAKITU) == HELD_BY_LAKITU) ||
         ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) || ((player->effects & 0x10000) == 0x10000) ||
         ((player->effects & 8) == 8)) {
 
@@ -1310,7 +1310,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     s16 thing;
 
     FrameInterpolation_RecordOpenChild("player_kart", playerId | screenId << 8);
-    if (player->unk_044 & 0x2000) {
+    if (player->kartProps & UNUSED_0x2000) {
         sp14C[0] = 0;
         sp14C[1] = player->unk_048[screenId];
         sp14C[2] = 0;
@@ -1392,7 +1392,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
                              AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL |
                                  GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->unk_0CA & 4) == 4) || (player->triggers & BECOME_BOMB_EFFECT) ||
+    } else if (((player->lakituProps & LAKITU_FIZZLE) == LAKITU_FIZZLE) || (player->triggers & BECOME_BOMB_EFFECT) ||
                (player->triggers & LOSE_BATTLE_EFFECT)) {
         gSPMatrix(gDisplayListHead++, GetKartMatrix(playerId + (screenId * 8)),
                   G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -1550,7 +1550,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 f
     sp9C[0] = player->pos[0];
     sp9C[1] = player->unk_074 + (4.0f * player->size);
     sp9C[2] = player->pos[2];
-    if (!(player->unk_002 & (4 << (screenId * 4)))) {
+    if (!(player->unk_002 & (UNK_002_UNKNOWN_0x4 << (screenId * 4)))) {
         flipOffset = 8;
     } else {
         flipOffset = 0;
@@ -1592,13 +1592,13 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     OSMesg* sp34;
 
     update_wheel_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
-    if (!(player->unk_002 & (4 << (screenId * 4)))) {
+    if (!(player->unk_002 & (UNK_002_UNKNOWN_0x4 << (screenId * 4)))) {
         var_v1 = 0;
     } else {
         var_v1 = 8;
     }
     func_80023BF0(player, playerId, screenId, var_v1);
-    temp_t1 = 8 << (screenId * 4);
+    temp_t1 = SIDE_OF_KART << (screenId * 4);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->collision.surfaceDistance[2] <= 50.0f) &&
         (player->surfaceType != ICE)) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
@@ -1615,7 +1615,7 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
         render_ghost(player, playerId, screenId, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, (OSMesg*) &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) &&
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->kartProps & LAKITU_RETRIEVAL) != LAKITU_RETRIEVAL) &&
         (player->collision.surfaceDistance[2] <= 30.0f)) {
         render_player_ice_reflection(player, playerId, screenId, var_v1);
     }
@@ -1680,7 +1680,7 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     if (((player->effects & 0x4000) == 0x4000) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40) &&
             ((player->effects & 0x20000) != 0x20000) && ((player->effects & 0x80000) != 0x80000) &&
-            ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
+            ((player->effects & 0x800000) != 0x800000) && ((player->kartProps & UNUSED_0x800) == 0)) {
 
             if (frameId <= 20) {
                 int32_t offset = (frameId << 2) + (tyreSpeed >> 8);
@@ -1705,7 +1705,7 @@ void update_wheel_palette(Player* player, s8 playerId, s8 screenId, s8 arg3) {
     } else {
         if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40) &&
             ((player->effects & 0x80000) != 0x80000) && ((player->effects & 0x800000) != 0x800000) &&
-            ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
+            ((player->effects & 0x20000) != 0x20000) && ((player->kartProps & UNUSED_0x800) == 0)) {
 
             if (frameId <= 20) {
                 int32_t offset = (frameId << 2) + (tyreSpeed >> 8);

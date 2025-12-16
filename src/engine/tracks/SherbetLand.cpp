@@ -50,6 +50,7 @@ SherbetLand::SherbetLand() {
     Props.Minimap.Colour = {72, 100, 255};
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:sherbet_land";
     Props.SetText(Props.Name, "sherbet land", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "sherbet", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "756m", sizeof(Props.TrackLength));

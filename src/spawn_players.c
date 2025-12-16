@@ -83,7 +83,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->type = PLAYER_INACTIVE;
     player->kartPropulsionStrength = 0;
     player->characterId = characterId;
-    player->unk_0B6 = 0;
+    player->kartGraphics = 0;
     player->kartFriction = gKartFrictionTable[player->characterId];
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->kartGravity = gKartGravityTable[player->characterId];
@@ -165,8 +165,8 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->speed = 0.0f;
     player->unk_074 = 0.0f;
     player->type = playerType;
-    player->unk_0CA = 0;
-    player->waterInteractionFlags = WATER_NO_INTERACTION;
+    player->lakituProps = 0;
+    player->oobProps = 0;
     player->unk_10C = 0;
     player->unk_0E2 = 0;
     player->unk_0E8 = 0.0f;
@@ -175,7 +175,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->currentSpeed = 0.0f;
     player->unk_20C = 0.0f;
     player->unk_DAC = 0.0f;
-    player->unk_044 = 0;
+    player->kartProps = 0;
     player->unk_046 = 0;
     player->triggers = 0;
     player->alpha = ALPHA_MAX;
@@ -206,9 +206,9 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_0C0 = 0;
     player->unk_0C2 = 0;
     player->unk_0C8 = 0;
-    player->unk_0CA = 0;
+    player->lakituProps = 0;
     player->boostTimer = 0;
-    player->waterInteractionFlags = WATER_NO_INTERACTION;
+    player->oobProps = 0;
     player->unk_0E0 = 0;
     player->unk_0E2 = 0;
     player->unk_10C = 0;

@@ -51,7 +51,6 @@ BowsersCastle::BowsersCastle() {
     ResizeMinimap(&Props.Minimap);
 
     ResourceName = "mk:bowsers_castle";
-
     Props.SetText(Props.Name, "bowser's castle", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "castle", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "777m", sizeof(Props.TrackLength));

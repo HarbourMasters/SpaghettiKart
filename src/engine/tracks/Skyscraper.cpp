@@ -45,6 +45,7 @@ Skyscraper::Skyscraper() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:skyscraper";
     Props.SetText(Props.Name, "skyscraper", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "skyscraper", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));
