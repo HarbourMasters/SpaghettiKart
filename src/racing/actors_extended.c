@@ -422,10 +422,10 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 break;
             }
             if ((gControllers[parent->playerId].buttonPressed & Z_TRIG) != 0) {
-                parent->unk_08 += 1.0f;                                     //Triggers the firing of next available shell.
+                parent->firePressed += 1.0f;                                     //Triggers the firing of next available shell.
                 gControllers[parent->playerId].buttonPressed &= ~Z_TRIG;
             }
-            if (parent->unk_08 > 0.0f) {                                    //Should fire any of the remaining shells? Then, Check which shell is available to be fired
+            if (parent->firePressed > 0.0f) {                                    //Should fire any of the remaining shells? Then, Check which shell is available to be fired
                 if (parent->shellIndices[0] > 0.0f) {
                     shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
                     if ((shell->rotAngle < 0x38E) || (shell->rotAngle >= -0x38D)) {
@@ -448,7 +448,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         }
                         parent->shellIndices[0] = -1.0f;
                         parent->shellsAvailable -= 1;
-                        parent->unk_08 -= 1.0f;
+                        parent->firePressed -= 1.0f;
                         break;
                     }
                 }
@@ -474,7 +474,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         }
                         parent->shellIndices[1] = -1.0f;
                         parent->shellsAvailable -= 1;
-                        parent->unk_08 -= 1.0f;
+                        parent->firePressed -= 1.0f;
                         break;
                     }
                 }
@@ -500,7 +500,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                         }
                         parent->shellIndices[2] = -1.0f;
                         parent->shellsAvailable -= 1;
-                        parent->unk_08 -= 1.0f;
+                        parent->firePressed -= 1.0f;
                         break;
                     }
                 }
@@ -548,7 +548,7 @@ s32 use_triple_shell_item(Player* player, s16 tripleShellType) {
     parent->rotAngle = -0x8000;
     parent->playerId = player - gPlayerOne;
     parent->shellsAvailable = 0;
-    parent->unk_08 = 0.0f;
+    parent->firePressed = 0.0f;
     return actorIndex;
 }
 

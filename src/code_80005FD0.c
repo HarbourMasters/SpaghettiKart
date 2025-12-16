@@ -7864,12 +7864,11 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
-
                 cpuStrategy->timer = 0;
                 TripleShellParent* parent = (TripleShellParent*) actor;
                 if (parent->state == ORBIT_PLAYER && 0 < parent->shellsAvailable) {
                     cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL;
-                    parent->unk_08 += 1.0f;                                 //This is what triggers the firing of next available shell
+                    parent->firePressed += 1.0f;                                 //This is what triggers the firing of next available shell
                     cpuStrategy->timeBeforeThrow = (random_int(2) * 20);    //very short delay
                 } else {
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
@@ -7937,7 +7936,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 TripleShellParent* parent = (TripleShellParent*) actor;
                 if (parent->state == ORBIT_PLAYER && 0 < parent->shellsAvailable) {
                     cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_RED_SHELL;
-                    parent->unk_08 += 1.0f;                                     //This is what triggers the firing of next available shell
+                    parent->firePressed += 1.0f;                                     //This is what triggers the firing of next available shell
                     cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 90;   //Higher delay, to enable CPU firing the next one as soon as the targeted racer finishes tumbling
                 } else {
                     cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
