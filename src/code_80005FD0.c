@@ -7687,7 +7687,6 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_THROW_BLUE_SPINY_SHELL;
             }
             break;
-
         case CPU_STRATEGY_THROW_BLUE_SPINY_SHELL:
             clear_expired_strategies(cpuStrategy);
             actor = GET_ACTOR(cpuStrategy->actorIndex);
