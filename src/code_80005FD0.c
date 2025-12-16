@@ -7364,15 +7364,16 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 cpuStrategy->timer = 0;
             } else {
-                // Fire greenshell backwards if cpu is ahead of any human player!
+                // Check for players behind the CPU and throw shell backwards
                 s16 highestHumanRank = gPlayerOne->currentRank;
-                // handle 2 player gp mode
+                // Handle two players
+                //! @warning Likely needs an update to support more than two human players
                 if ((gPlayerTwo->type & PLAYER_HUMAN) && gPlayerTwo->currentRank > highestHumanRank) {
                     highestHumanRank = gPlayerTwo->currentRank;
                 }
-                // cpu is ahead of a human player, fire backwards
+
                 if (player->currentRank < highestHumanRank) {
-                    // Same code responsible of firing backwards for human players on update
+                    // Code for backwards firing is the same for CPUs and humans
                     Vec3f somePos2;
                     Vec3f somePosVel;
                     f32 var_f2;
