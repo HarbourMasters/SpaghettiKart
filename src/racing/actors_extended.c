@@ -391,7 +391,7 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
                 parent->state = 3;
             }
             break;
-        case ENABLE_SHELLS:
+        case SHELL_COLLISION:
             parent->state = ORBIT_PLAYER;
             shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
             shell->flags |= 0x4000;

@@ -452,8 +452,8 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
 #define SPAWN_FIRST_SHELL 0
 #define SPAWN_SECOND_SHELL 1
 #define SPAWN_THIRD_SHELL 2
-#define ENABLE_SHELLS 3         //When 3 shells are indeed spawned, this state enables collision on all shells
-#define ORBIT_PLAYER 4          //This is when shells are orbiting around the player. This manages if any available shell can be fired
+#define SHELL_COLLISION 3 // Activated when triple shells have spawned
+#define ORBIT_PLAYER 4
 
 #define GPACK_RGB888(r, g, b) (((r) << 16) | ((g) << 8) | (b))
 #define COLOR_LIGHT GPACK_RGB888(0x1C, 0x00, 0x00)
