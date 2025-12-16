@@ -7707,7 +7707,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_GREEN_SHELL;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
-                cpuStrategy->timeBeforeThrow = (random_int(10) * 20) + 50;
+                cpuStrategy->timeBeforeThrow = (random_int(10) * 20) + 50; // Delays firing until the shells have spawned
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
@@ -7755,7 +7755,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 cpuStrategy->branch = CPU_STRATEGY_ORBIT_TRIPLE_RED_SHELL;
                 cpuStrategy->timer = 0;
                 cpuStrategy->numItemUse += 1;
-                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 50;   //Min should be high to give enough time for spawning of 3 shells 
+                cpuStrategy->timeBeforeThrow = (random_int(3) * 20) + 50; // Delays firing until the shells have spawned
             } else {
                 cpuStrategy->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
             }
