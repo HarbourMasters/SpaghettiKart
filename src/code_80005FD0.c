@@ -1226,7 +1226,7 @@ bool func_800088D8(s32 playerId, s16 lapNum, s16 arg2) {
         return true;
     }
     player = &gPlayers[playerId];
-    if (player->type & 0x4000) {
+    if (player->type & PLAYER_HUMAN) {
         return true;
     }
 
@@ -1641,7 +1641,7 @@ void update_player(s32 playerId) {
         if (gTrackMaxZ < player->pos[2]) {            D_801633E0[playerId] = 4;        }
         // clang-format on
 
-        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
+        if (!(player->lakituProps & HELD_BY_LAKITU) && !(player->lakituProps & LAKITU_SCENE)) {
             gPlayerPathIndex = gPathIndexByPlayerId[playerId];
             set_current_path(gPlayerPathIndex);
 
@@ -1669,7 +1669,7 @@ void update_player(s32 playerId) {
             // }
             if (player->type & PLAYER_CINEMATIC_MODE) {
                 player->effects &= ~REVERSE_EFFECT;
-                player->unk_044 &= ~1;
+                player->kartProps &= ~BACK_UP;
             }
             update_player_path_completion(playerId, player);
             if ((!IsPodiumCeremony()) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
@@ -2570,7 +2570,7 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player* 
     UNUSED s32 stackPadding2;
     TrackPathPoint* temp_v1;
 
-    if ((player->type & 0x4000) && !(player->type & 0x1000)) {
+    if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
         newWaypoint = update_path_index_with_track(posX, posY, posZ, waypointIndex, pathIndex,
                                                    (u16) get_track_section_id(player->collision.meshIndexZX));
         if (newWaypoint == -1) {
@@ -2578,12 +2578,12 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player* 
         }
     } else {
         if (D_801631E0[playerId] == 1) {
-            if (player->unk_0CA & 1) {
+            if (player->lakituProps & LAKITU_RETRIEVAL) {
                 temp_v1 = &gTrackPaths[pathIndex][waypointIndex];
                 player->pos[0] = (f32) temp_v1->x;
                 player->pos[1] = (f32) temp_v1->y;
                 player->pos[2] = (f32) temp_v1->z;
-                player->unk_0CA &= ~0x0001;
+                player->lakituProps &= ~LAKITU_RETRIEVAL;
                 return waypointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
@@ -3115,7 +3115,7 @@ void func_8000DF8C(s32 bombKartId) {
                         var_s1 = 0;
                         sp7E = 4;
                         var_v0->triggers |= VERTICAL_TUMBLE_TRIGGER;
-                        var_v0->type &= ~0x2000;
+                        var_v0->type &= ~PLAYER_STAGING;
                     }
                 }
             } else {
@@ -6969,7 +6969,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
                         if (playerId >= 8) {
                             playerId = 1;
                         }
-                        if ((!(gPlayers[playerId].unk_0CA & 2) && !(gPlayers[playerId].unk_0CA & 8))) {
+                        if ((!(gPlayers[playerId].lakituProps & HELD_BY_LAKITU) && !(gPlayers[playerId].lakituProps & LAKITU_SCENE))) {
                             break;
                         }
                     }
@@ -7905,26 +7905,26 @@ void func_8001C14C(void) {
 
         player = &gPlayerOne[var_s1];
         update_player(var_s1);
-        if (!(player->type & 0x2000)) {
+        if (!(player->type & PLAYER_START_SEQUENCE)) {
             temp_f0 = D_80163418[var_s1] - player->pos[0];
             temp_f2 = D_80163438[var_s1] - player->pos[2];
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
                 if (var_s1 != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
-                    (D_8016347C == 0) ? (player->type |= 0x2000) : (player->type &= ~0x2000);
-                    if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
+                    (D_8016347C == 0) ? (player->type |= PLAYER_START_SEQUENCE) : (player->type &= ~PLAYER_START_SEQUENCE);
+                    if ((gPlayerOne->type & PLAYER_START_SEQUENCE) && (gPlayerTwo->type & PLAYER_START_SEQUENCE) && (gPlayerThree->type & PLAYER_START_SEQUENCE)) {
                         D_8016347C = 1;
                         D_80163480 = 0;
                     }
                 } else if (D_8016347E == 0) {
                     if (!(player->effects & 0x01000000)) {
-                        player->type |= 0x2000;
+                        player->type |= PLAYER_START_SEQUENCE;
                     }
                     D_8016347E = 1;
                     D_80163484 = 0;
                 } else if (!(player->effects & 0x01000000)) {
-                    player->type |= 0x2000;
+                    player->type |= PLAYER_START_SEQUENCE;
                 }
             }
         }

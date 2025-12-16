@@ -52,9 +52,10 @@ extern "C" void add_triangle_to_collision_mesh(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, 
 }
 
 void RaceManager::Load() {
-    if (GetWorld()->GetTrack()) {
+    auto* track = GetWorld()->GetTrack();
+    if (track) {
         mirroredVtxCache.clear();
-        GetWorld()->GetTrack()->Load();
+        track->Load();
     } else {
         printf("[RaceManager] [Load] Track was nullptr\n");
     }

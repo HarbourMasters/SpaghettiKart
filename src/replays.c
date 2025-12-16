@@ -417,7 +417,7 @@ void save_player_replay(void) {
     /* Input file is too long or picked up by lakitu or Out of bounds
     Not sure if there is any way to be considered out of bounds without lakitu getting called */
 
-    if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->unk_0CA & 2) != 0)) || ((gPlayerOne->unk_0CA & 8) != 0)) {
+    if (((sPlayerInputIdx >= 0x1000) || ((gPlayerOne->lakituProps & HELD_BY_LAKITU) != 0)) || ((gPlayerOne->lakituProps & LAKITU_SCENE) != 0)) {
         gPostTimeTrialReplayCannotSave = 1;
         return;
     }
@@ -519,7 +519,7 @@ void func_80005B18(void) {
                 sReplayGhostBufferSize = D_80162D86;
                 D_80162DDC = 1;
             }
-            if ((gPlayerOne->type & 0x800) == 0x800) {
+            if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) {
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else {

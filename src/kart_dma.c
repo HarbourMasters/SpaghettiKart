@@ -604,7 +604,7 @@ void load_kart_texture(Player* player, s8 playerId, s8 screenId, s8 screenId2, s
     s32 temp = player->effects;
     s16 tyreSpeed = player->tyreSpeed;
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) ||
-        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
+        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->kartProps & UNUSED_0x800) != 0)) {
         if (player->animFrameSelector[screenId] != 0) {
             osInvalDCache(&gEncodedKartTexture[index][screenId2][playerId], D_800DDEB0[player->characterId]);
             gEncodedKartTexture[index][screenId2][playerId].unk_00 =
@@ -635,7 +635,7 @@ void load_kart_texture_non_blocking(Player* player, s8 arg1, s8 arg2, s8 arg3, s
     s16 tyreSpeed = player->tyreSpeed;
 
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) ||
-        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
+        ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->kartProps & UNUSED_0x800) != 0)) {
         if (player->animFrameSelector[arg2] != 0) {
             osInvalDCache(&gEncodedKartTexture[arg4][arg3][arg1], D_800DDEB0[player->characterId]);
 

@@ -53,6 +53,7 @@ FrappeSnowland::FrappeSnowland() {
     Props.Minimap.Colour = {72, 100, 255};
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:frappe_snowland";
     Props.SetText(Props.Name, "frappe snowland", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "snow", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "734m", sizeof(Props.TrackLength));

@@ -47,6 +47,7 @@ YoshiValley::YoshiValley() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:yoshi_valley";
     Props.SetText(Props.Name, "yoshi valley", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "maze", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "772m", sizeof(Props.TrackLength));

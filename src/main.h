@@ -40,7 +40,7 @@
 #define MTX_EFFECT_POOL_SIZE_MAX MTX_EFFECT_POOL_SIZE + 100
 #endif
 
-#define GFX_POOL_SIZE 15000
+#define GFX_POOL_SIZE 150000
 
 struct GfxPool {
     /* 0x00000 */ Mtx mtxScreen;                       // Matrix for skybox and startup logo

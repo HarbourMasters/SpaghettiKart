@@ -56,7 +56,6 @@ BansheeBoardwalk::BansheeBoardwalk() {
     ResizeMinimap(&Props.Minimap);
 
     ResourceName = "mk:banshee_boardwalk";
-
     Props.SetText(Props.Name, "banshee boardwalk", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "ghost", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "747m", sizeof(Props.TrackLength));

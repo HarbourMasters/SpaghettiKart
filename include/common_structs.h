@@ -278,7 +278,7 @@ typedef struct {
     /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
     /* 0x0042 */ s16 unk_042;
-    /* 0x0044 */ s16 unk_044;
+    /* 0x0044 */ s16 kartProps;
     /* 0x0046 */ u16 unk_046;
     /* 0x0048 */ Vec4s unk_048;
     /* 0x0050 */ Vec4s unk_050;
@@ -308,7 +308,7 @@ typedef struct {
     /* 0x00B0 */ s16 unk_0B0;
     /* 0x00B2 */ s16 unk_0B2;
     /* 0x00B4 */ u16 unk_0B4;
-    /* 0x00B6 */ u16 unk_0B6;
+    /* 0x00B6 */ u16 kartGraphics;
     /* 0x00B8 */ f32 unk_0B8;
     /* 0x00BC */ u32 effects;
     /* 0x00C0 */ s16 unk_0C0;
@@ -316,11 +316,11 @@ typedef struct {
     /* 0x00C4 */ s16 slopeAccel;
     /* 0x00C6 */ s16 alpha;
     /* 0x00C8 */ s16 unk_0C8;
-    /* 0x00CA */ s16 unk_0CA;
+    /* 0x00CA */ s16 lakituProps;
     /* 0x00CC */ Vec4s unk_0CC;
     /* 0x00D4 */ Vec4s unk_0D4;
     /* 0x00DC */ s16 boostTimer;
-    /* 0x00DE */ u16 waterInteractionFlags;
+    /* 0x00DE */ u16 oobProps;
     /* 0x00E0 */ s16 unk_0E0;
     /* 0x00E2 */ s16 unk_0E2;
     /* 0x00E4 */ f32 unk_0E4;

@@ -47,6 +47,7 @@ BlockFort::BlockFort() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:block_fort";
     Props.SetText(Props.Name, "block fort", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "block", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));

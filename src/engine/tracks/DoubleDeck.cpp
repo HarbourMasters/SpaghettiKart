@@ -46,6 +46,7 @@ DoubleDeck::DoubleDeck() {
     Props.Minimap.FinishlineY = 0;
     ResizeMinimap(&Props.Minimap);
 
+    ResourceName = "mk:double_deck";
     Props.SetText(Props.Name, "double deck", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "deck", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "", sizeof(Props.TrackLength));

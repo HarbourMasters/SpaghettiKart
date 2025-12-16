@@ -285,6 +285,12 @@ void CM_DrawTrack(ScreenContext* screen) {
         return;
     }
 
+    // Check if collision mesh rendering is enabled via CVar
+    if (CVarGetInteger("gRenderCollisionMesh", 0)) {
+        render_collision();
+        return;
+    }
+
     // Custom tracks should never use DrawCredits();
     if (GetWorld()->GetTrack()->IsMod()) {
         switch(screen->camera->renderMode) {

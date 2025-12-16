@@ -149,7 +149,7 @@ void OBombKart::Tick() {
                         state = States::EXPLODE;
                         Behaviour = States::EXPLODE;
                         player->triggers |= VERTICAL_TUMBLE_TRIGGER;
-                        player->type &= ~0x2000;
+                        player->type &= ~PLAYER_START_SEQUENCE;
                     }
                 }
             } else {
