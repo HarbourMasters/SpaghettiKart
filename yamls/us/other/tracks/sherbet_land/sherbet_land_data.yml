@@ -1,0 +1,164 @@
+:config:
+  segments:
+    - [0x06, 0x86ECF0]
+    - [0x07, 0x800000]
+  manual_segments:
+    # Segment 7
+    - [0x7000000, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_0"]
+    - [0x70000C0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_C0"]
+    - [0x7000180, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_180"]
+    - [0x7000240, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_240"]
+    - [0x7000300, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_300"]
+    - [0x7000328, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_328"]
+    - [0x7000338, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_338"]
+    - [0x7000348, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_348"]
+    - [0x7000470, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_470"]
+    - [0x70005D0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_5D0"]
+    - [0x7000730, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_730"]
+    - [0x7000858, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_858"]
+    - [0x70009A0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_9A0"]
+    - [0x7000B00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_B00"]
+    - [0x7000C30, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_C30"]
+    - [0x7000D48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_D48"]
+    - [0x7000D90, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_D90"]
+    - [0x7000E00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_E00"]
+    - [0x7000EA0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_EA0"]
+    - [0x7000EB8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_EB8"]
+    - [0x7000F48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_F48"]
+    - [0x7000FD0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_FD0"]
+    - [0x7001050, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1050"]
+    - [0x70010C8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_10C8"]
+    - [0x7001148, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1148"]
+    - [0x70011B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_11B8"]
+    - [0x7001220, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1220"]
+    - [0x70012C8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_12C8"]
+    - [0x7001370, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1370"]
+    - [0x70013E8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_13E8"]
+    - [0x7001450, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1450"]
+    - [0x70014B0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_14B0"]
+    - [0x7001520, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1520"]
+    - [0x7001598, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1598"]
+    - [0x7001640, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1640"]
+    - [0x70016B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_16B8"]
+    - [0x7001720, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1720"]
+    - [0x7001798, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1798"]
+    - [0x7001800, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1800"]
+    - [0x7001870, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1870"]
+    - [0x70018E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_18E0"]
+    - [0x7001940, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1940"]
+    - [0x7001998, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1998"]
+    - [0x7001A18, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1A18"]
+    - [0x7001A98, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1A98"]
+    - [0x7001B20, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1B20"]
+    - [0x7001BE0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1BE0"]
+    - [0x7001C50, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1C50"]
+    - [0x7001CD8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1CD8"]
+    - [0x7001D48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1D48"]
+    - [0x7001DC0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1DC0"]
+    - [0x7001E40, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1E40"]
+    - [0x7001EB8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1EB8"]
+    - [0x7001F10, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1F10"]
+    - [0x7001F78, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1F78"]
+    - [0x7001FF0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_1FF0"]
+    - [0x7002068, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2068"]
+    - [0x70020D0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_20D0"]
+    - [0x7002138, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2138"]
+    - [0x70021B0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_21B0"]
+    - [0x7002220, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2220"]
+    - [0x7002290, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2290"]
+    - [0x7002308, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2308"]
+    - [0x7002358, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2358"]
+    - [0x7002450, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2450"]
+    - [0x7002548, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2548"]
+    - [0x7002640, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2640"]
+    - [0x7002738, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2738"]
+    - [0x7002760, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2760"]
+    - [0x7002798, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2798"]
+    - [0x70027A8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_27A8"]
+    - [0x7002B48, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2B48"]
+    - [0x7002B58, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2B58"]
+    - [0x7002BC8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2BC8"]
+    - [0x7002C68, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2C68"]
+    - [0x7002C80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2C80"]
+    - [0x7002CF0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2CF0"]
+    - [0x7002D80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2D80"]
+    - [0x7002E08, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2E08"]
+    - [0x7002E88, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2E88"]
+    - [0x7002F00, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2F00"]
+    - [0x7002F80, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2F80"]
+    - [0x7002FE8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_2FE8"]
+    - [0x7003058, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3058"]
+    - [0x70030C0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_30C0"]
+    - [0x7003170, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3170"]
+    - [0x7003218, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3218"]
+    - [0x7003290, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3290"]
+    - [0x70032F8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_32F8"]
+    - [0x7003368, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3368"]
+    - [0x70033E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_33E0"]
+    - [0x7003488, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3488"]
+    - [0x7003500, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3500"]
+    - [0x7003568, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3568"]
+    - [0x70035E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_35E0"]
+    - [0x7003648, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3648"]
+    - [0x70036B8, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_36B8"]
+    - [0x7003728, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3728"]
+    - [0x7003788, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3788"]
+    - [0x70037E0, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_37E0"]
+    - [0x7003848, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3848"]
+    - [0x7003858, "models/tracks/sherbet_land/sherbet_land_displaylists/d_course_sherbet_land_packed_dl_3858"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_sherbet_land_unknown_waypoints:
+  symbol: d_course_sherbet_land_unknown_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x4BF8
+  count: 62
+d_course_sherbet_land_track_waypoints:
+  symbol: d_course_sherbet_land_track_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x4DE8
+  count: 666
+d_course_sherbet_land_light1:
+  symbol: d_course_sherbet_land_light1
+  type: lights
+  offset: 0x7240
+d_course_sherbet_land_light2:
+  symbol: d_course_sherbet_land_light2
+  type: lights
+  offset: 0x7258
+d_course_sherbet_land_light3:
+  symbol: d_course_sherbet_land_light3
+  type: lights
+  offset: 0x7270
+d_course_sherbet_land_light4:
+  symbol: d_course_sherbet_land_light4
+  type: lights
+  offset: 0x7288
+d_course_sherbet_land_light5:
+  symbol: d_course_sherbet_land_light5
+  type: lights
+  offset: 0x72A0
+d_course_sherbet_land_light6:
+  symbol: d_course_sherbet_land_light6
+  type: lights
+  offset: 0x72B8
+d_course_sherbet_land_light7:
+  symbol: d_course_sherbet_land_light7
+  type: lights
+  offset: 0x72D0
+d_course_sherbet_land_item_box_spawns:
+  symbol: d_course_sherbet_land_item_box_spawns
+  type: mk64:spawn_data
+  offset: 0x9B80
+  count: 20
+d_course_sherbet_land_addr:
+  symbol: d_course_sherbet_land_addr
+  type: mk64:track_sections
+  offset: 0x9C20
+  count: 24

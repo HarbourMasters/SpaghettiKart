@@ -1,44 +1,40 @@
 #pragma once
 
 #include <libultraship/libultraship.h>
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
+#include "AllActors.h"
 
-namespace Editor {
+namespace TrackEditor {
 class ContentBrowserWindow : public Ship::GuiWindow {
 public:
     using Ship::GuiWindow::GuiWindow;
     ~ContentBrowserWindow();
-
-    struct Tracks {
-        std::shared_ptr<Course> invalidTrack; // If not nullptr, user needs to create a scene file for this track.
-        std::shared_ptr<Course> course; // A valid custom track. Used to reset the Courses array on a file system refresh.
-        std::string SceneFile;
-        std::string Name;
-        std::string Dir; // Directory
-        std::shared_ptr<Ship::Archive> Archive;
-    };
-
-    std::vector<Tracks> Tracks;
 
     std::vector<std::string> Content;
 
     bool Refresh = true;
 
     bool ActorContent = false;
-    bool ObjectContent = false;
     bool CustomContent = false;
     bool TrackContent = false;
 protected:
     void InitElement() override {};
     void DrawElement() override;
     void UpdateElement() override {};
-    void AddTrackContent();
-    void RemoveCustomTracksFromTrackList(); // Prevents duplicate courses being added to World->Courses array
-    void AddActorContent();
-    void AddObjectContent();
-    void AddCustomContent();
-    void FindTracks();
+    void AddTrackContent(std::string search);
+    void AddActorContent(std::string search);
+    void AddCustomContent(std::string search);
     void FindContent();
     void FolderButton(const char* label, bool& contentFlag, const ImVec2& size = ImVec2(80, 32));
+    ATrain* TrainWindow();
+
+private:
+    char mSearchBuffer[128] = "";  // Search bar for all tabs
+    static std::string ToLower(const std::string& str) {
+        std::string result = str;
+        std::transform(result.begin(), result.end(), result.begin(),
+                    [](unsigned char c){ return std::tolower(c); });
+        return result;
+    }
 };
 }

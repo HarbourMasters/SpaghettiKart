@@ -1,10 +1,11 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
+#include <assets/textures/common_data.h>
 #include "courses/all_course_data.h"
-#include <assets/kalimari_desert_data.h>
-#include <assets/bowsers_castle_data.h>
+#include <assets/models/tracks/kalimari_desert/kalimari_desert_data.h>
+#include <assets/models/tracks/bowsers_castle/bowsers_castle_data.h>
 
 /**
  * @brief Renders the tree actor in Mario rawceay.
@@ -21,7 +22,7 @@ void render_actor_tree_mario_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
         return;
     }
 
-    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView,
                                         16000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
@@ -61,7 +62,7 @@ void render_actor_tree_yoshi_valley(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -100,7 +101,7 @@ void render_actor_tree_royal_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -139,7 +140,7 @@ void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 6250000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 6250000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -162,8 +163,7 @@ void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg
     }
 }
 
-// have all the properties of the tree
-void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_luigi_raceway(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
@@ -172,7 +172,7 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -193,29 +193,20 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         // Why is a TLUT being used a DL here? That makes no sense
         // Based on the TLUT being loaded above, this ought to be be another
-        // tree related DL, presumably one found in a course other than Moo Moo farm
+        // tree related DL, presumably one found in a track other than Moo Moo farm
         //                                 0x0600FC70
-
-        //! @warning Possible bug:
-        // Previous incorrectly set to:
-        // d_course_moo_moo_farm_mole_tlut
-        // Unless both courses use this actor and use the same addr for the texture.
-        // Just in-case changed the code into a switch to prevent future crashes.
-        // This comment can be removed when this is confirmed to work.
-        if (IsLuigiRaceway()) {
-            gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
-        }
+        gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FC70);
     }
 }
 
 /**
- * @brief Renders the tree actor in Bowser's Castle.
+ * @brief Renders Peach's Castle trees in Royal Raceway.
  *
  * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_peach_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
@@ -224,7 +215,7 @@ void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -263,7 +254,7 @@ void render_actor_bush_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 640000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 640000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -302,7 +293,7 @@ void render_actor_tree_frappe_snowland(Camera* camera, Mat4 arg1, struct Actor* 
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -340,7 +331,7 @@ void render_actor_tree_cactus1_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -378,7 +369,7 @@ void render_actor_tree_cactus2_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -416,7 +407,7 @@ void render_actor_tree_cactus3_kalimari_desert(Camera* camera, Mat4 arg1, struct
     }
 
     temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 4000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);

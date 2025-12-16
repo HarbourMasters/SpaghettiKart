@@ -6,10 +6,11 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/banshee_boardwalk_data.h"
-#include "assets/common_data.h"
-#include "assets/boo_frames.h"
-#include "assets/other_textures.h"
+#include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "assets/textures/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "assets/models/common_data.h"
+#include "assets/textures/boo_frames.h"
+#include "assets/textures/other_textures.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
@@ -23,12 +24,20 @@ extern "C" {
 
 size_t OBoos::_count = 0;
 
-OBoos::OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& active, const IPathSpan& rightBoundary) {
+OBoos::OBoos(const SpawnParams& params) : OObject(params) {
     Name = "Boos";
+    ResourceName = "mk:boos";
+
+    size_t numBoos = params.Count.value_or(5);
+
+    ActiveZone = params.TriggerSpan.value_or(IPathSpan(30, 50));
+    LeftTrigger = params.LeftExitSpan.value_or(IPathSpan(0, 10));
+    RightTrigger = params.RightExitSpan.value_or(IPathSpan(80, 100));
+
     // Max five boos allowed due to limited splines
     // D_800E5D9C
     if (numBoos > 10) {
-        printf("Boos.cpp: Only 10 boos allowed.\n");
+        printf("[Boos.cpp] Only 10 boos allowed.\n");
         numBoos = 10;
     }
 
@@ -40,9 +49,14 @@ OBoos::OBoos(size_t numBoos, const IPathSpan& leftBoundary, const IPathSpan& act
     }
 
     _numBoos = numBoos;
-    _leftBoundary = leftBoundary;
-    _active = active;
-    _rightBoundary = rightBoundary;
+}
+
+void OBoos::SetSpawnParams(SpawnParams& params) {
+    OObject::SetSpawnParams(params);
+    params.Count = _numBoos;
+    params.LeftExitSpan = LeftTrigger;
+    params.TriggerSpan = ActiveZone;
+    params.RightExitSpan = RightTrigger;
 }
 
 void OBoos::Tick() {
@@ -123,7 +137,8 @@ void OBoos::func_8007CA70(void) {
     if (_isActive == false) {
         _playerId = OBoos::func_8007C9F8();
         point = &gNearestPathPointByPlayerId[_playerId];
-        if ((*point > _active.Start) && (*point < _active.End)) {
+
+        if ((*point > ActiveZone.Start) && (*point < ActiveZone.End)) {
             // First group entrance
             OBoos::BooStart(0, _playerId);
         }
@@ -131,11 +146,14 @@ void OBoos::func_8007CA70(void) {
     if (_isActive == true) {
         point = &gNearestPathPointByPlayerId[_playerId];
 
-        if ((*point > _leftBoundary.Start) && (*point < _leftBoundary.End)) {
+        // Left boundary
+        if ((*point > LeftTrigger.Start) && (*point < LeftTrigger.End)) {
             // First group exit reverse direction
             OBoos::BooExit(0);
         }
-        if ((*point > _rightBoundary.Start) && (*point < _rightBoundary.End)) {
+
+        // Right boundary
+        if ((*point > RightTrigger.Start) && (*point < RightTrigger.End)) {
             // First group exit
             OBoos::BooExit(0);
         }
@@ -273,4 +291,51 @@ void OBoos::BooExit(s32 group) {
     }
 
     _isActive = false;
+}
+
+void OBoos::DrawEditorProperties() {
+    ImGui::Text("Num Boos");
+    ImGui::SameLine();
+
+    int count = static_cast<int>(_count);
+    if (ImGui::InputInt("##Count", &count)) {
+        // Clamp to uint32_t range (only lower bound needed if assuming positive values)
+        if (count < 0) count = 0;
+        if (count > 10) count = 10;
+        _count = static_cast<uint32_t>(count);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetCount")) {
+        _count = 5;
+    }
+
+    ImGui::Text("Left Exit Span");
+    ImGui::SameLine();
+
+    if (ImGui::DragInt2("##LeftExitSpan", (int*)&LeftTrigger)) {
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetLeftExitSpan")) {
+        LeftTrigger = IPathSpan(0, 0);
+    }
+
+    ImGui::Text("Trigger Span");
+    ImGui::SameLine();
+
+    if (ImGui::DragInt2("##TriggerSpan", (int*)&ActiveZone)) {
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetTriggerSpan")) {
+        ActiveZone = IPathSpan(0, 0);
+    }
+
+    ImGui::Text("Right Exit Span");
+    ImGui::SameLine();
+
+    if (ImGui::DragInt2("##RightExitSpan", (int*)&RightTrigger)) {
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetRightExitSpan")) {
+        RightTrigger = IPathSpan(0, 0);
+    }
 }

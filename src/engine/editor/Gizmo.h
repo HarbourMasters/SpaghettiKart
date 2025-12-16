@@ -4,8 +4,11 @@
 #include <libultra/gbi.h>
 #include "Collision.h"
 #include "GameObject.h"
+#include "engine/Actor.h"
+#include "engine/objects/Object.h"
+#include <variant>
 
-namespace Editor {
+namespace TrackEditor {
 
 class Gizmo {
 public:
@@ -28,13 +31,13 @@ public:
     void Draw();
     void Load();
 
-    void SetGizmo(GameObject* object, Ray ray);
-    void SetGizmoNoCursor(GameObject* object); // Used for scene explorer selection
+    void SetGizmo(const std::variant<AActor*, OObject*, GameObject*>& object, Ray ray);
+    void SetGizmoNoCursor(const std::variant<AActor*, OObject*, GameObject*>& object); // Used for scene explorer selection
     void Translate();
     void Rotate();
     void Scale();
     void DrawHandles();
-    f32 SnapToSurface(FVector* pos);
+    f32 SnapToSurface(FVector pos);
 
     struct TrackDimensions {
         s16 MinX = -10000;
@@ -78,7 +81,7 @@ public:
     float HandleSize = 2.0f;
     
     FVector _ray;
-    GameObject* _selected = nullptr;
+    std::variant<AActor*, OObject*, GameObject*> _selected;
     private:
     bool _draw = false;
 };

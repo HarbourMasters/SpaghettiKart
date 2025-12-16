@@ -1,10 +1,9 @@
 #include <libultraship/libultraship.h>
 #include "GameObject.h"
 
-namespace Editor {
+namespace TrackEditor {
 
-    GameObject::GameObject(const char* name, FVector* pos, IRotator* rot, FVector* scale, Gfx* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize, int32_t* despawnFlag, int32_t despawnValue) {
-        Name = name;
+    GameObject::GameObject(FVector pos, IRotator rot, FVector scale, const char* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize) {
         Pos = pos;
         Rot = rot;
         Scale = scale;
@@ -12,13 +11,6 @@ namespace Editor {
         Triangles = triangles;
         Collision = collision;
         BoundingBoxSize = boundingBoxSize;
-        DespawnFlag = despawnFlag;
-        DespawnValue = despawnValue;
-    }
-
-    GameObject::GameObject(FVector* pos, Vec3s* rot) {
-        //Pos = pos;
-        //Rot = rot;
     }
 
     GameObject::GameObject() {};
@@ -27,4 +19,23 @@ namespace Editor {
 
     void GameObject::Tick(){};
 
-} // namespace Editor
+    FVector GameObject::GetLocation() const {
+        return Pos;
+    };
+    IRotator GameObject::GetRotation() const {
+        return Rot;
+    }
+    FVector GameObject::GetScale() const {
+        return Scale;
+    }
+    void GameObject::Translate(FVector pos) {
+        Pos = pos;
+    };
+    void GameObject::Rotate(IRotator rot) {
+        Rot = rot;
+    };
+    void GameObject::SetScale(FVector scale) {
+        Scale = scale;
+    };
+
+} // namespace TrackEditor

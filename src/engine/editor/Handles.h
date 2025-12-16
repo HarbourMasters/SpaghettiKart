@@ -4,7 +4,7 @@
 #include <libultra/gbi.h>
 #include "GameObject.h"
 
-namespace Editor {
+namespace TrackEditor {
     class Handles : public GameObject {
 
         Handles();
@@ -13,7 +13,5 @@ namespace Editor {
         virtual void Draw() override;
         virtual void Load() override;
 
-        FVector pos;
-        IRotator rot;
     };
 }

@@ -1,4 +1,24 @@
-Checks: '-*,readability-braces-around-statements,readability-inconsistent-declaration-parameter-name'
+Checks: '
+  -*,
+  readability-*,
+  readability-identifier-naming,
+  performance-*,
+  bugprone-*,
+  cppcoreguidelines-*,
+
+  -readability-magic-numbers,
+  -readability-identifier-length,
+  -readability-convert-member-functions-to-static,
+  -readability-uppercase-literal-suffix,
+  
+  -bugprone-narrowing-conversions,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-signed-char-misuse,
+
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-avoid-non-const-global-variables,
+  '
 WarningsAsErrors: ''
 HeaderFilterRegex: '(src|include)\/.*\.h$'
 FormatStyle: 'file'
@@ -7,3 +27,99 @@ CheckOptions:
   # Note: 'true' is expected by clang-tidy 12+ but '1' is used for compatibility with older versions
   - key: readability-inconsistent-declaration-parameter-name.Strict
     value: 1
+
+  # === Naming conventions ===
+  
+  # Classes: PascalCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  
+  # Structs: PascalCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  # Allow legacy decompilation struct names (UnkStruct_XXXX, struct_D_XXXX, struct_XXXX_entry)
+  - key: readability-identifier-naming.StructIgnoredRegexp
+    value: '^(UnkStruct_?[0-9A-Fa-fxX]+|struct_D_[0-9A-Fa-fxX]+|struct_[0-9A-Fa-f]+_entry)$'
+  
+  # Enums: PascalCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  
+  # Enum constants: UPPER_CASE (legacy C style)
+  - key: readability-identifier-naming.EnumConstantCase
+    value: UPPER_CASE
+  
+  # Namespaces: PascalCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: CamelCase
+  
+  # Methods: PascalCase
+  - key: readability-identifier-naming.MethodCase
+    value: CamelCase
+  
+  # Parameters: camelCase
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+  
+  # Local variables: camelCase
+  - key: readability-identifier-naming.LocalVariableCase
+    value: camelBack
+  
+  # Global variables: camelCase with 'g' prefix
+  - key: readability-identifier-naming.GlobalVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.GlobalVariablePrefix
+    value: 'g'
+  # Allow legacy decompilation names (D_XXXXXXXX) and boolean-like globals (bName)
+  - key: readability-identifier-naming.GlobalVariableIgnoredRegexp
+    value: '^(D_[0-9A-Fa-f]+|b[A-Z][a-zA-Z0-9]*)$'
+  
+  # Public members (structs and class public): camelCase without prefix
+  - key: readability-identifier-naming.MemberCase
+    value: camelBack
+  # Allow legacy decompilation member names (unk_XX, unkXX, fill, pad)
+  - key: readability-identifier-naming.MemberIgnoredRegexp
+    value: '^(unk_?[0-9A-Fa-f]+|fill|pad[0-9]*)$'
+  - key: readability-identifier-naming.PublicMemberCase
+    value: camelBack
+  - key: readability-identifier-naming.PublicMemberIgnoredRegexp
+    value: '^(unk_?[0-9A-Fa-f]+|fill|pad[0-9]*)$'
+  
+  # Private members: camelCase with 'm' prefix
+  - key: readability-identifier-naming.PrivateMemberCase
+    value: CamelCase
+  - key: readability-identifier-naming.PrivateMemberPrefix
+    value: 'm'
+  
+  # Protected members: camelCase with 'm' prefix
+  - key: readability-identifier-naming.ProtectedMemberCase
+    value: CamelCase
+  - key: readability-identifier-naming.ProtectedMemberPrefix
+    value: 'm'
+  
+  # Static variables: camelCase with 's' prefix
+  - key: readability-identifier-naming.StaticVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticVariablePrefix
+    value: 's'
+  
+  # Constants: UPPER_CASE
+  - key: readability-identifier-naming.ConstantCase
+    value: UPPER_CASE
+  
+  # Macros: UPPER_CASE
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+  
+  # Type aliases (typedef/using): PascalCase
+  - key: readability-identifier-naming.TypeAliasCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypedefCase
+    value: CamelCase
+  # Allow legacy decompilation typedef names (UnkStruct_XXXX, struct_D_XXXX, struct_XXXX_entry)
+  - key: readability-identifier-naming.TypedefIgnoredRegexp
+    value: '^(UnkStruct_?[0-9A-Fa-fxX]+|struct_D_[0-9A-Fa-fxX]+|struct_[0-9A-Fa-f]+_entry)$'
+  
+  # Template parameters: PascalCase
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase

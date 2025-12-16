@@ -1,0 +1,1713 @@
+:config:
+  segments:
+    - [0x0F, 0x88FA10]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_mario_raceway_vertex_0x04000000:
+  symbol: d_course_mario_raceway_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x0
+
+d_course_mario_raceway_vertex_0x040000C0:
+  symbol: d_course_mario_raceway_vertex_0x040000C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xa8
+
+d_course_mario_raceway_vertex_0x04000180:
+  symbol: d_course_mario_raceway_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x150
+
+d_course_mario_raceway_vertex_0x04000200:
+  symbol: d_course_mario_raceway_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1c0
+
+d_course_mario_raceway_vertex_0x04000280:
+  symbol: d_course_mario_raceway_vertex_0x04000280
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x230
+
+d_course_mario_raceway_vertex_0x04000300:
+  symbol: d_course_mario_raceway_vertex_0x04000300
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2a0
+
+d_course_mario_raceway_vertex_0x04000380:
+  symbol: d_course_mario_raceway_vertex_0x04000380
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x310
+
+d_course_mario_raceway_vertex_0x04000400:
+  symbol: d_course_mario_raceway_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_mario_raceway_vertex_0x04000600:
+  symbol: d_course_mario_raceway_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x540
+
+d_course_mario_raceway_vertex_0x04000680:
+  symbol: d_course_mario_raceway_vertex_0x04000680
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5b0
+
+d_course_mario_raceway_vertex_0x04000780:
+  symbol: d_course_mario_raceway_vertex_0x04000780
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x690
+
+d_course_mario_raceway_vertex_0x04000980:
+  symbol: d_course_mario_raceway_vertex_0x04000980
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x850
+
+d_course_mario_raceway_vertex_0x04000B20:
+  symbol: d_course_mario_raceway_vertex_0x04000B20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9bc
+
+d_course_mario_raceway_vertex_0x04000D20:
+  symbol: d_course_mario_raceway_vertex_0x04000D20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb7c
+
+d_course_mario_raceway_vertex_0x04000F20:
+  symbol: d_course_mario_raceway_vertex_0x04000F20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd3c
+
+d_course_mario_raceway_vertex_0x04001110:
+  symbol: d_course_mario_raceway_vertex_0x04001110
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeee
+
+d_course_mario_raceway_vertex_0x04001310:
+  symbol: d_course_mario_raceway_vertex_0x04001310
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10ae
+
+d_course_mario_raceway_vertex_0x04001510:
+  symbol: d_course_mario_raceway_vertex_0x04001510
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x126e
+
+d_course_mario_raceway_vertex_0x04001700:
+  symbol: d_course_mario_raceway_vertex_0x04001700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1420
+
+d_course_mario_raceway_vertex_0x04001900:
+  symbol: d_course_mario_raceway_vertex_0x04001900
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15e0
+
+d_course_mario_raceway_vertex_0x04001B00:
+  symbol: d_course_mario_raceway_vertex_0x04001B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17a0
+
+d_course_mario_raceway_vertex_0x04001D00:
+  symbol: d_course_mario_raceway_vertex_0x04001D00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1960
+
+d_course_mario_raceway_vertex_0x04001F00:
+  symbol: d_course_mario_raceway_vertex_0x04001F00
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x1b20
+
+d_course_mario_raceway_vertex_0x040020C0:
+  symbol: d_course_mario_raceway_vertex_0x040020C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1ca8
+
+d_course_mario_raceway_vertex_0x04002120:
+  symbol: d_course_mario_raceway_vertex_0x04002120
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1cfc
+
+d_course_mario_raceway_vertex_0x040021F0:
+  symbol: d_course_mario_raceway_vertex_0x040021F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1db2
+
+d_course_mario_raceway_vertex_0x04002230:
+  symbol: d_course_mario_raceway_vertex_0x04002230
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1dea
+
+d_course_mario_raceway_vertex_0x04002290:
+  symbol: d_course_mario_raceway_vertex_0x04002290
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1e3e
+
+d_course_mario_raceway_vertex_0x04002360:
+  symbol: d_course_mario_raceway_vertex_0x04002360
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1ef4
+
+d_course_mario_raceway_vertex_0x040023A0:
+  symbol: d_course_mario_raceway_vertex_0x040023A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1f2c
+
+d_course_mario_raceway_vertex_0x04002400:
+  symbol: d_course_mario_raceway_vertex_0x04002400
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1f80
+
+d_course_mario_raceway_vertex_0x040024D0:
+  symbol: d_course_mario_raceway_vertex_0x040024D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2036
+
+d_course_mario_raceway_vertex_0x04002510:
+  symbol: d_course_mario_raceway_vertex_0x04002510
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x206e
+
+d_course_mario_raceway_vertex_0x04002570:
+  symbol: d_course_mario_raceway_vertex_0x04002570
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x20c2
+
+d_course_mario_raceway_vertex_0x04002660:
+  symbol: d_course_mario_raceway_vertex_0x04002660
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2194
+
+d_course_mario_raceway_vertex_0x040026A0:
+  symbol: d_course_mario_raceway_vertex_0x040026A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x21cc
+
+d_course_mario_raceway_vertex_0x04002700:
+  symbol: d_course_mario_raceway_vertex_0x04002700
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x2220
+
+d_course_mario_raceway_vertex_0x040027F0:
+  symbol: d_course_mario_raceway_vertex_0x040027F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x22f2
+
+d_course_mario_raceway_vertex_0x04002830:
+  symbol: d_course_mario_raceway_vertex_0x04002830
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x232a
+
+d_course_mario_raceway_vertex_0x04002890:
+  symbol: d_course_mario_raceway_vertex_0x04002890
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x237e
+
+d_course_mario_raceway_vertex_0x04002980:
+  symbol: d_course_mario_raceway_vertex_0x04002980
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2450
+
+d_course_mario_raceway_vertex_0x040029C0:
+  symbol: d_course_mario_raceway_vertex_0x040029C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2488
+
+d_course_mario_raceway_vertex_0x04002A20:
+  symbol: d_course_mario_raceway_vertex_0x04002A20
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x24dc
+
+d_course_mario_raceway_vertex_0x04002AF0:
+  symbol: d_course_mario_raceway_vertex_0x04002AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2592
+
+d_course_mario_raceway_vertex_0x04002B30:
+  symbol: d_course_mario_raceway_vertex_0x04002B30
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x25ca
+
+d_course_mario_raceway_vertex_0x04002B90:
+  symbol: d_course_mario_raceway_vertex_0x04002B90
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x261e
+
+d_course_mario_raceway_vertex_0x04002C60:
+  symbol: d_course_mario_raceway_vertex_0x04002C60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x26d4
+
+d_course_mario_raceway_vertex_0x04002CA0:
+  symbol: d_course_mario_raceway_vertex_0x04002CA0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x270c
+
+d_course_mario_raceway_vertex_0x04002DB0:
+  symbol: d_course_mario_raceway_vertex_0x04002DB0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x27fa
+
+d_course_mario_raceway_vertex_0x04002ED0:
+  symbol: d_course_mario_raceway_vertex_0x04002ED0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x28f6
+
+d_course_mario_raceway_vertex_0x04002F90:
+  symbol: d_course_mario_raceway_vertex_0x04002F90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x299e
+
+d_course_mario_raceway_vertex_0x04003050:
+  symbol: d_course_mario_raceway_vertex_0x04003050
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x2a46
+
+d_course_mario_raceway_vertex_0x04003130:
+  symbol: d_course_mario_raceway_vertex_0x04003130
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x2b0a
+
+d_course_mario_raceway_vertex_0x040032B0:
+  symbol: d_course_mario_raceway_vertex_0x040032B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2c5a
+
+d_course_mario_raceway_vertex_0x04003310:
+  symbol: d_course_mario_raceway_vertex_0x04003310
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2cae
+
+d_course_mario_raceway_vertex_0x04003410:
+  symbol: d_course_mario_raceway_vertex_0x04003410
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x2d8e
+
+d_course_mario_raceway_vertex_0x040035C0:
+  symbol: d_course_mario_raceway_vertex_0x040035C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2f08
+
+d_course_mario_raceway_vertex_0x040037C0:
+  symbol: d_course_mario_raceway_vertex_0x040037C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x30c8
+
+d_course_mario_raceway_vertex_0x040039C0:
+  symbol: d_course_mario_raceway_vertex_0x040039C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3288
+
+d_course_mario_raceway_vertex_0x04003A00:
+  symbol: d_course_mario_raceway_vertex_0x04003A00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x32c0
+
+d_course_mario_raceway_vertex_0x04003BE0:
+  symbol: d_course_mario_raceway_vertex_0x04003BE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3464
+
+d_course_mario_raceway_vertex_0x04003C20:
+  symbol: d_course_mario_raceway_vertex_0x04003C20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x349c
+
+d_course_mario_raceway_vertex_0x04003E20:
+  symbol: d_course_mario_raceway_vertex_0x04003E20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x365c
+
+d_course_mario_raceway_vertex_0x04003EA0:
+  symbol: d_course_mario_raceway_vertex_0x04003EA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x36cc
+
+d_course_mario_raceway_vertex_0x040040A0:
+  symbol: d_course_mario_raceway_vertex_0x040040A0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x388c
+
+d_course_mario_raceway_vertex_0x04004250:
+  symbol: d_course_mario_raceway_vertex_0x04004250
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3a06
+
+d_course_mario_raceway_vertex_0x04004450:
+  symbol: d_course_mario_raceway_vertex_0x04004450
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3bc6
+
+d_course_mario_raceway_vertex_0x04004490:
+  symbol: d_course_mario_raceway_vertex_0x04004490
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3bfe
+
+d_course_mario_raceway_vertex_0x04004510:
+  symbol: d_course_mario_raceway_vertex_0x04004510
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3c6e
+
+d_course_mario_raceway_vertex_0x04004550:
+  symbol: d_course_mario_raceway_vertex_0x04004550
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3ca6
+
+d_course_mario_raceway_vertex_0x04004690:
+  symbol: d_course_mario_raceway_vertex_0x04004690
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x3dbe
+
+d_course_mario_raceway_vertex_0x04004700:
+  symbol: d_course_mario_raceway_vertex_0x04004700
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3e20
+
+d_course_mario_raceway_vertex_0x04004780:
+  symbol: d_course_mario_raceway_vertex_0x04004780
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3e90
+
+d_course_mario_raceway_vertex_0x04004980:
+  symbol: d_course_mario_raceway_vertex_0x04004980
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4050
+
+d_course_mario_raceway_vertex_0x04004A00:
+  symbol: d_course_mario_raceway_vertex_0x04004A00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x40c0
+
+d_course_mario_raceway_vertex_0x04004B00:
+  symbol: d_course_mario_raceway_vertex_0x04004B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x41a0
+
+d_course_mario_raceway_vertex_0x04004D00:
+  symbol: d_course_mario_raceway_vertex_0x04004D00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4360
+
+d_course_mario_raceway_vertex_0x04004E00:
+  symbol: d_course_mario_raceway_vertex_0x04004E00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4440
+
+d_course_mario_raceway_vertex_0x04005000:
+  symbol: d_course_mario_raceway_vertex_0x04005000
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4600
+
+d_course_mario_raceway_vertex_0x040050C0:
+  symbol: d_course_mario_raceway_vertex_0x040050C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x46a8
+
+d_course_mario_raceway_vertex_0x040052B0:
+  symbol: d_course_mario_raceway_vertex_0x040052B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x485a
+
+d_course_mario_raceway_vertex_0x04005370:
+  symbol: d_course_mario_raceway_vertex_0x04005370
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4902
+
+d_course_mario_raceway_vertex_0x04005430:
+  symbol: d_course_mario_raceway_vertex_0x04005430
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x49aa
+
+d_course_mario_raceway_vertex_0x040055D0:
+  symbol: d_course_mario_raceway_vertex_0x040055D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4b16
+
+d_course_mario_raceway_vertex_0x040057D0:
+  symbol: d_course_mario_raceway_vertex_0x040057D0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x4cd6
+
+d_course_mario_raceway_vertex_0x04005840:
+  symbol: d_course_mario_raceway_vertex_0x04005840
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4d38
+
+d_course_mario_raceway_vertex_0x04005A40:
+  symbol: d_course_mario_raceway_vertex_0x04005A40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4ef8
+
+d_course_mario_raceway_vertex_0x04005AC0:
+  symbol: d_course_mario_raceway_vertex_0x04005AC0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4f68
+
+d_course_mario_raceway_vertex_0x04005C40:
+  symbol: d_course_mario_raceway_vertex_0x04005C40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x50b8
+
+d_course_mario_raceway_vertex_0x04005D40:
+  symbol: d_course_mario_raceway_vertex_0x04005D40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x5198
+
+d_course_mario_raceway_vertex_0x04005E80:
+  symbol: d_course_mario_raceway_vertex_0x04005E80
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x52b0
+
+d_course_mario_raceway_vertex_0x04005FA0:
+  symbol: d_course_mario_raceway_vertex_0x04005FA0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x53ac
+
+d_course_mario_raceway_vertex_0x04006120:
+  symbol: d_course_mario_raceway_vertex_0x04006120
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x54fc
+
+d_course_mario_raceway_vertex_0x04006220:
+  symbol: d_course_mario_raceway_vertex_0x04006220
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x55dc
+
+d_course_mario_raceway_vertex_0x040063A0:
+  symbol: d_course_mario_raceway_vertex_0x040063A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x572c
+
+d_course_mario_raceway_vertex_0x04006520:
+  symbol: d_course_mario_raceway_vertex_0x04006520
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x587c
+
+d_course_mario_raceway_vertex_0x040066A0:
+  symbol: d_course_mario_raceway_vertex_0x040066A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x59cc
+
+d_course_mario_raceway_vertex_0x04006760:
+  symbol: d_course_mario_raceway_vertex_0x04006760
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5a74
+
+d_course_mario_raceway_vertex_0x040068E0:
+  symbol: d_course_mario_raceway_vertex_0x040068E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x5bc4
+
+d_course_mario_raceway_vertex_0x040069E0:
+  symbol: d_course_mario_raceway_vertex_0x040069E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5ca4
+
+d_course_mario_raceway_vertex_0x04006A60:
+  symbol: d_course_mario_raceway_vertex_0x04006A60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5d14
+
+d_course_mario_raceway_vertex_0x04006B20:
+  symbol: d_course_mario_raceway_vertex_0x04006B20
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5dbc
+
+d_course_mario_raceway_vertex_0x04006C00:
+  symbol: d_course_mario_raceway_vertex_0x04006C00
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5e80
+
+d_course_mario_raceway_vertex_0x04006CE0:
+  symbol: d_course_mario_raceway_vertex_0x04006CE0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5f44
+
+d_course_mario_raceway_vertex_0x04006DA0:
+  symbol: d_course_mario_raceway_vertex_0x04006DA0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x5fec
+
+d_course_mario_raceway_vertex_0x04006EC0:
+  symbol: d_course_mario_raceway_vertex_0x04006EC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x60e8
+
+d_course_mario_raceway_vertex_0x04006F80:
+  symbol: d_course_mario_raceway_vertex_0x04006F80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6190
+
+d_course_mario_raceway_vertex_0x04007000:
+  symbol: d_course_mario_raceway_vertex_0x04007000
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x6200
+
+d_course_mario_raceway_vertex_0x04007160:
+  symbol: d_course_mario_raceway_vertex_0x04007160
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x6334
+
+d_course_mario_raceway_vertex_0x040072C0:
+  symbol: d_course_mario_raceway_vertex_0x040072C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x6468
+
+d_course_mario_raceway_vertex_0x04007440:
+  symbol: d_course_mario_raceway_vertex_0x04007440
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x65b8
+
+d_course_mario_raceway_vertex_0x04007640:
+  symbol: d_course_mario_raceway_vertex_0x04007640
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x6778
+
+d_course_mario_raceway_vertex_0x040076B0:
+  symbol: d_course_mario_raceway_vertex_0x040076B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x67da
+
+d_course_mario_raceway_vertex_0x040077B0:
+  symbol: d_course_mario_raceway_vertex_0x040077B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x68ba
+
+d_course_mario_raceway_vertex_0x04007930:
+  symbol: d_course_mario_raceway_vertex_0x04007930
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6a0a
+
+d_course_mario_raceway_vertex_0x04007B10:
+  symbol: d_course_mario_raceway_vertex_0x04007B10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6bae
+
+d_course_mario_raceway_vertex_0x04007D10:
+  symbol: d_course_mario_raceway_vertex_0x04007D10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6d6e
+
+d_course_mario_raceway_vertex_0x04007F10:
+  symbol: d_course_mario_raceway_vertex_0x04007F10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6f2e
+
+d_course_mario_raceway_vertex_0x04008100:
+  symbol: d_course_mario_raceway_vertex_0x04008100
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x70e0
+
+d_course_mario_raceway_vertex_0x040082E0:
+  symbol: d_course_mario_raceway_vertex_0x040082E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7284
+
+d_course_mario_raceway_vertex_0x04008360:
+  symbol: d_course_mario_raceway_vertex_0x04008360
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x72f4
+
+d_course_mario_raceway_vertex_0x04008560:
+  symbol: d_course_mario_raceway_vertex_0x04008560
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x74b4
+
+d_course_mario_raceway_vertex_0x04008750:
+  symbol: d_course_mario_raceway_vertex_0x04008750
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7666
+
+d_course_mario_raceway_vertex_0x04008950:
+  symbol: d_course_mario_raceway_vertex_0x04008950
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7826
+
+d_course_mario_raceway_vertex_0x04008B50:
+  symbol: d_course_mario_raceway_vertex_0x04008B50
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x79e6
+
+d_course_mario_raceway_vertex_0x04008CE0:
+  symbol: d_course_mario_raceway_vertex_0x04008CE0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x7b44
+
+d_course_mario_raceway_vertex_0x04008D30:
+  symbol: d_course_mario_raceway_vertex_0x04008D30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7b8a
+
+d_course_mario_raceway_vertex_0x04008DB0:
+  symbol: d_course_mario_raceway_vertex_0x04008DB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7bfa
+
+d_course_mario_raceway_vertex_0x04008DF0:
+  symbol: d_course_mario_raceway_vertex_0x04008DF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7c32
+
+d_course_mario_raceway_vertex_0x04008E30:
+  symbol: d_course_mario_raceway_vertex_0x04008E30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7c6a
+
+d_course_mario_raceway_vertex_0x04008E70:
+  symbol: d_course_mario_raceway_vertex_0x04008E70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7ca2
+
+d_course_mario_raceway_vertex_0x04008EB0:
+  symbol: d_course_mario_raceway_vertex_0x04008EB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7cda
+
+d_course_mario_raceway_vertex_0x04008F30:
+  symbol: d_course_mario_raceway_vertex_0x04008F30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7d4a
+
+d_course_mario_raceway_vertex_0x04008F70:
+  symbol: d_course_mario_raceway_vertex_0x04008F70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7d82
+
+d_course_mario_raceway_vertex_0x04008FB0:
+  symbol: d_course_mario_raceway_vertex_0x04008FB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7dba
+
+d_course_mario_raceway_vertex_0x04008FF0:
+  symbol: d_course_mario_raceway_vertex_0x04008FF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7df2
+
+d_course_mario_raceway_vertex_0x04009030:
+  symbol: d_course_mario_raceway_vertex_0x04009030
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x7e2a
+
+d_course_mario_raceway_vertex_0x04009170:
+  symbol: d_course_mario_raceway_vertex_0x04009170
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x7f42
+
+d_course_mario_raceway_vertex_0x040092B0:
+  symbol: d_course_mario_raceway_vertex_0x040092B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x805a
+
+d_course_mario_raceway_vertex_0x04009330:
+  symbol: d_course_mario_raceway_vertex_0x04009330
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x80ca
+
+d_course_mario_raceway_vertex_0x040093B0:
+  symbol: d_course_mario_raceway_vertex_0x040093B0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x813a
+
+d_course_mario_raceway_vertex_0x04009500:
+  symbol: d_course_mario_raceway_vertex_0x04009500
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8260
+
+d_course_mario_raceway_vertex_0x040096E0:
+  symbol: d_course_mario_raceway_vertex_0x040096E0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x8404
+
+d_course_mario_raceway_vertex_0x04009890:
+  symbol: d_course_mario_raceway_vertex_0x04009890
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x857e
+
+d_course_mario_raceway_vertex_0x04009A00:
+  symbol: d_course_mario_raceway_vertex_0x04009A00
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x86c0
+
+d_course_mario_raceway_vertex_0x04009AF0:
+  symbol: d_course_mario_raceway_vertex_0x04009AF0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x8792
+
+d_course_mario_raceway_vertex_0x04009C80:
+  symbol: d_course_mario_raceway_vertex_0x04009C80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x88f0
+
+d_course_mario_raceway_vertex_0x04009E60:
+  symbol: d_course_mario_raceway_vertex_0x04009E60
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x8a94
+
+d_course_mario_raceway_vertex_0x04009F50:
+  symbol: d_course_mario_raceway_vertex_0x04009F50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8b66
+
+d_course_mario_raceway_vertex_0x0400A130:
+  symbol: d_course_mario_raceway_vertex_0x0400A130
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8d0a
+
+d_course_mario_raceway_vertex_0x0400A1F0:
+  symbol: d_course_mario_raceway_vertex_0x0400A1F0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8db2
+
+d_course_mario_raceway_vertex_0x0400A3F0:
+  symbol: d_course_mario_raceway_vertex_0x0400A3F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8f72
+
+d_course_mario_raceway_vertex_0x0400A450:
+  symbol: d_course_mario_raceway_vertex_0x0400A450
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8fc6
+
+d_course_mario_raceway_vertex_0x0400A650:
+  symbol: d_course_mario_raceway_vertex_0x0400A650
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9186
+
+d_course_mario_raceway_vertex_0x0400A850:
+  symbol: d_course_mario_raceway_vertex_0x0400A850
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x9346
+
+d_course_mario_raceway_vertex_0x0400A8B0:
+  symbol: d_course_mario_raceway_vertex_0x0400A8B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x939a
+
+d_course_mario_raceway_vertex_0x0400AA90:
+  symbol: d_course_mario_raceway_vertex_0x0400AA90
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x953e
+
+d_course_mario_raceway_vertex_0x0400AC70:
+  symbol: d_course_mario_raceway_vertex_0x0400AC70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x96e2
+
+d_course_mario_raceway_vertex_0x0400AE50:
+  symbol: d_course_mario_raceway_vertex_0x0400AE50
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x9886
+
+d_course_mario_raceway_vertex_0x0400AEE0:
+  symbol: d_course_mario_raceway_vertex_0x0400AEE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x9904
+
+d_course_mario_raceway_vertex_0x0400B020:
+  symbol: d_course_mario_raceway_vertex_0x0400B020
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9a1c
+
+d_course_mario_raceway_vertex_0x0400B200:
+  symbol: d_course_mario_raceway_vertex_0x0400B200
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x9bc0
+
+d_course_mario_raceway_vertex_0x0400B380:
+  symbol: d_course_mario_raceway_vertex_0x0400B380
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x9d10
+
+d_course_mario_raceway_vertex_0x0400B4C0:
+  symbol: d_course_mario_raceway_vertex_0x0400B4C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x9e28
+
+d_course_mario_raceway_vertex_0x0400B6B0:
+  symbol: d_course_mario_raceway_vertex_0x0400B6B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x9fda
+
+d_course_mario_raceway_vertex_0x0400B830:
+  symbol: d_course_mario_raceway_vertex_0x0400B830
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xa12a
+
+d_course_mario_raceway_vertex_0x0400B970:
+  symbol: d_course_mario_raceway_vertex_0x0400B970
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xa242
+
+d_course_mario_raceway_vertex_0x0400BB10:
+  symbol: d_course_mario_raceway_vertex_0x0400BB10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa3ae
+
+d_course_mario_raceway_vertex_0x0400BD10:
+  symbol: d_course_mario_raceway_vertex_0x0400BD10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa56e
+
+d_course_mario_raceway_vertex_0x0400BF00:
+  symbol: d_course_mario_raceway_vertex_0x0400BF00
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xa720
+
+d_course_mario_raceway_vertex_0x0400BFF0:
+  symbol: d_course_mario_raceway_vertex_0x0400BFF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa7f2
+
+d_course_mario_raceway_vertex_0x0400C1D0:
+  symbol: d_course_mario_raceway_vertex_0x0400C1D0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xa996
+
+d_course_mario_raceway_vertex_0x0400C340:
+  symbol: d_course_mario_raceway_vertex_0x0400C340
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xaad8
+
+d_course_mario_raceway_vertex_0x0400C540:
+  symbol: d_course_mario_raceway_vertex_0x0400C540
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xac98
+
+d_course_mario_raceway_vertex_0x0400C6C0:
+  symbol: d_course_mario_raceway_vertex_0x0400C6C0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xade8
+
+d_course_mario_raceway_vertex_0x0400C890:
+  symbol: d_course_mario_raceway_vertex_0x0400C890
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xaf7e
+
+d_course_mario_raceway_vertex_0x0400CA60:
+  symbol: d_course_mario_raceway_vertex_0x0400CA60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb114
+
+d_course_mario_raceway_vertex_0x0400CC50:
+  symbol: d_course_mario_raceway_vertex_0x0400CC50
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xb2c6
+
+d_course_mario_raceway_vertex_0x0400CE20:
+  symbol: d_course_mario_raceway_vertex_0x0400CE20
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb45c
+
+d_course_mario_raceway_vertex_0x0400CFA0:
+  symbol: d_course_mario_raceway_vertex_0x0400CFA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb5ac
+
+d_course_mario_raceway_vertex_0x0400D1A0:
+  symbol: d_course_mario_raceway_vertex_0x0400D1A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xb76c
+
+d_course_mario_raceway_vertex_0x0400D200:
+  symbol: d_course_mario_raceway_vertex_0x0400D200
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb7c0
+
+d_course_mario_raceway_vertex_0x0400D2C0:
+  symbol: d_course_mario_raceway_vertex_0x0400D2C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xb868
+
+d_course_mario_raceway_vertex_0x0400D440:
+  symbol: d_course_mario_raceway_vertex_0x0400D440
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xb9b8
+
+d_course_mario_raceway_vertex_0x0400D520:
+  symbol: d_course_mario_raceway_vertex_0x0400D520
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xba7c
+
+d_course_mario_raceway_vertex_0x0400D710:
+  symbol: d_course_mario_raceway_vertex_0x0400D710
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbc2e
+
+d_course_mario_raceway_vertex_0x0400D900:
+  symbol: d_course_mario_raceway_vertex_0x0400D900
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xbde0
+
+d_course_mario_raceway_vertex_0x0400D9F0:
+  symbol: d_course_mario_raceway_vertex_0x0400D9F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbeb2
+
+d_course_mario_raceway_vertex_0x0400DBE0:
+  symbol: d_course_mario_raceway_vertex_0x0400DBE0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc064
+
+d_course_mario_raceway_vertex_0x0400DDD0:
+  symbol: d_course_mario_raceway_vertex_0x0400DDD0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xc216
+
+d_course_mario_raceway_vertex_0x0400DF70:
+  symbol: d_course_mario_raceway_vertex_0x0400DF70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc382
+
+d_course_mario_raceway_vertex_0x0400E150:
+  symbol: d_course_mario_raceway_vertex_0x0400E150
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc526
+
+d_course_mario_raceway_vertex_0x0400E350:
+  symbol: d_course_mario_raceway_vertex_0x0400E350
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xc6e6
+
+d_course_mario_raceway_vertex_0x0400E420:
+  symbol: d_course_mario_raceway_vertex_0x0400E420
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc79c
+
+d_course_mario_raceway_vertex_0x0400E600:
+  symbol: d_course_mario_raceway_vertex_0x0400E600
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xc940
+
+d_course_mario_raceway_vertex_0x0400E630:
+  symbol: d_course_mario_raceway_vertex_0x0400E630
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xc96a
+
+d_course_mario_raceway_vertex_0x0400E7D0:
+  symbol: d_course_mario_raceway_vertex_0x0400E7D0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xcad6
+
+d_course_mario_raceway_vertex_0x0400E8A0:
+  symbol: d_course_mario_raceway_vertex_0x0400E8A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xcb8c
+
+d_course_mario_raceway_vertex_0x0400EA20:
+  symbol: d_course_mario_raceway_vertex_0x0400EA20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xccdc
+
+d_course_mario_raceway_vertex_0x0400EAE0:
+  symbol: d_course_mario_raceway_vertex_0x0400EAE0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xcd84
+
+d_course_mario_raceway_vertex_0x0400EBD0:
+  symbol: d_course_mario_raceway_vertex_0x0400EBD0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xce56
+
+d_course_mario_raceway_vertex_0x0400EDB0:
+  symbol: d_course_mario_raceway_vertex_0x0400EDB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xcffa
+
+d_course_mario_raceway_vertex_0x0400EE10:
+  symbol: d_course_mario_raceway_vertex_0x0400EE10
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd04e
+
+d_course_mario_raceway_vertex_0x0400EFF0:
+  symbol: d_course_mario_raceway_vertex_0x0400EFF0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xd1f2
+
+d_course_mario_raceway_vertex_0x0400F050:
+  symbol: d_course_mario_raceway_vertex_0x0400F050
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd246
+
+d_course_mario_raceway_vertex_0x0400F230:
+  symbol: d_course_mario_raceway_vertex_0x0400F230
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd3ea
+
+d_course_mario_raceway_vertex_0x0400F430:
+  symbol: d_course_mario_raceway_vertex_0x0400F430
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xd5aa
+
+d_course_mario_raceway_vertex_0x0400F510:
+  symbol: d_course_mario_raceway_vertex_0x0400F510
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd66e
+
+d_course_mario_raceway_vertex_0x0400F6F0:
+  symbol: d_course_mario_raceway_vertex_0x0400F6F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xd812
+
+d_course_mario_raceway_vertex_0x0400F870:
+  symbol: d_course_mario_raceway_vertex_0x0400F870
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd962
+
+d_course_mario_raceway_vertex_0x0400FA70:
+  symbol: d_course_mario_raceway_vertex_0x0400FA70
+  type: mk64:course_vtx
+  count: 19
+  offset: 0xdb22
+
+d_course_mario_raceway_vertex_0x0400FB40:
+  symbol: d_course_mario_raceway_vertex_0x0400FB40
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xdbd8
+
+d_course_mario_raceway_vertex_0x0400FD20:
+  symbol: d_course_mario_raceway_vertex_0x0400FD20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdd7c
+
+d_course_mario_raceway_vertex_0x0400FF20:
+  symbol: d_course_mario_raceway_vertex_0x0400FF20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xdf3c
+
+d_course_mario_raceway_vertex_0x04010110:
+  symbol: d_course_mario_raceway_vertex_0x04010110
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe0ee
+
+d_course_mario_raceway_vertex_0x04010300:
+  symbol: d_course_mario_raceway_vertex_0x04010300
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xe2a0
+
+d_course_mario_raceway_vertex_0x040103F0:
+  symbol: d_course_mario_raceway_vertex_0x040103F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe372
+
+d_course_mario_raceway_vertex_0x040105E0:
+  symbol: d_course_mario_raceway_vertex_0x040105E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe524
+
+d_course_mario_raceway_vertex_0x040107D0:
+  symbol: d_course_mario_raceway_vertex_0x040107D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe6d6
+
+d_course_mario_raceway_vertex_0x040109D0:
+  symbol: d_course_mario_raceway_vertex_0x040109D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe896
+
+d_course_mario_raceway_vertex_0x04010BD0:
+  symbol: d_course_mario_raceway_vertex_0x04010BD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xea56
+
+d_course_mario_raceway_vertex_0x04010DD0:
+  symbol: d_course_mario_raceway_vertex_0x04010DD0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xec16
+
+d_course_mario_raceway_vertex_0x04010E80:
+  symbol: d_course_mario_raceway_vertex_0x04010E80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xecb0
+
+d_course_mario_raceway_vertex_0x04011060:
+  symbol: d_course_mario_raceway_vertex_0x04011060
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xee54
+
+d_course_mario_raceway_vertex_0x04011200:
+  symbol: d_course_mario_raceway_vertex_0x04011200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xefc0
+
+d_course_mario_raceway_vertex_0x04011400:
+  symbol: d_course_mario_raceway_vertex_0x04011400
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xf180
+
+d_course_mario_raceway_vertex_0x040114B0:
+  symbol: d_course_mario_raceway_vertex_0x040114B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf21a
+
+d_course_mario_raceway_vertex_0x040116B0:
+  symbol: d_course_mario_raceway_vertex_0x040116B0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xf3da
+
+d_course_mario_raceway_vertex_0x04011790:
+  symbol: d_course_mario_raceway_vertex_0x04011790
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf49e
+
+d_course_mario_raceway_vertex_0x04011970:
+  symbol: d_course_mario_raceway_vertex_0x04011970
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xf642
+
+d_course_mario_raceway_vertex_0x040119A0:
+  symbol: d_course_mario_raceway_vertex_0x040119A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf66c
+
+d_course_mario_raceway_vertex_0x04011BA0:
+  symbol: d_course_mario_raceway_vertex_0x04011BA0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xf82c
+
+d_course_mario_raceway_vertex_0x04011D50:
+  symbol: d_course_mario_raceway_vertex_0x04011D50
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf9a6
+
+d_course_mario_raceway_vertex_0x04011F30:
+  symbol: d_course_mario_raceway_vertex_0x04011F30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfb4a
+
+d_course_mario_raceway_vertex_0x04012130:
+  symbol: d_course_mario_raceway_vertex_0x04012130
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xfd0a
+
+d_course_mario_raceway_vertex_0x04012270:
+  symbol: d_course_mario_raceway_vertex_0x04012270
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xfe22
+
+d_course_mario_raceway_vertex_0x04012390:
+  symbol: d_course_mario_raceway_vertex_0x04012390
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xff1e
+
+d_course_mario_raceway_vertex_0x04012590:
+  symbol: d_course_mario_raceway_vertex_0x04012590
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x100de
+
+d_course_mario_raceway_vertex_0x04012790:
+  symbol: d_course_mario_raceway_vertex_0x04012790
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1029e
+
+d_course_mario_raceway_vertex_0x04012980:
+  symbol: d_course_mario_raceway_vertex_0x04012980
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x10450
+
+d_course_mario_raceway_vertex_0x040129B0:
+  symbol: d_course_mario_raceway_vertex_0x040129B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1047a
+
+d_course_mario_raceway_vertex_0x04012B90:
+  symbol: d_course_mario_raceway_vertex_0x04012B90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1061e
+
+d_course_mario_raceway_vertex_0x04012D80:
+  symbol: d_course_mario_raceway_vertex_0x04012D80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x107d0
+
+d_course_mario_raceway_vertex_0x04012F80:
+  symbol: d_course_mario_raceway_vertex_0x04012F80
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x10990
+
+d_course_mario_raceway_vertex_0x04012FB0:
+  symbol: d_course_mario_raceway_vertex_0x04012FB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x109ba
+
+d_course_mario_raceway_vertex_0x040131A0:
+  symbol: d_course_mario_raceway_vertex_0x040131A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x10b6c
+
+d_course_mario_raceway_vertex_0x04013390:
+  symbol: d_course_mario_raceway_vertex_0x04013390
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x10d1e
+
+d_course_mario_raceway_vertex_0x04013450:
+  symbol: d_course_mario_raceway_vertex_0x04013450
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x10dc6
+
+d_course_mario_raceway_vertex_0x04013640:
+  symbol: d_course_mario_raceway_vertex_0x04013640
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x10f78
+
+d_course_mario_raceway_vertex_0x04013670:
+  symbol: d_course_mario_raceway_vertex_0x04013670
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x10fa2
+
+d_course_mario_raceway_vertex_0x04013860:
+  symbol: d_course_mario_raceway_vertex_0x04013860
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11154
+
+d_course_mario_raceway_vertex_0x04013A40:
+  symbol: d_course_mario_raceway_vertex_0x04013A40
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x112f8
+
+d_course_mario_raceway_vertex_0x04013BC0:
+  symbol: d_course_mario_raceway_vertex_0x04013BC0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11448
+
+d_course_mario_raceway_vertex_0x04013DB0:
+  symbol: d_course_mario_raceway_vertex_0x04013DB0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x115fa
+
+d_course_mario_raceway_vertex_0x04013F50:
+  symbol: d_course_mario_raceway_vertex_0x04013F50
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x11766
+
+d_course_mario_raceway_vertex_0x04013FE0:
+  symbol: d_course_mario_raceway_vertex_0x04013FE0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x117e4
+
+d_course_mario_raceway_vertex_0x040141D0:
+  symbol: d_course_mario_raceway_vertex_0x040141D0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x11996
+
+d_course_mario_raceway_vertex_0x04014300:
+  symbol: d_course_mario_raceway_vertex_0x04014300
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x11aa0
+
+d_course_mario_raceway_vertex_0x04014350:
+  symbol: d_course_mario_raceway_vertex_0x04014350
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x11ae6
+
+d_course_mario_raceway_vertex_0x04014400:
+  symbol: d_course_mario_raceway_vertex_0x04014400
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x11b80
+
+d_course_mario_raceway_vertex_0x040145F0:
+  symbol: d_course_mario_raceway_vertex_0x040145F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x11d32
+
+d_course_mario_raceway_vertex_0x04014770:
+  symbol: d_course_mario_raceway_vertex_0x04014770
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11e82
+
+d_course_mario_raceway_vertex_0x04014970:
+  symbol: d_course_mario_raceway_vertex_0x04014970
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12042
+
+d_course_mario_raceway_vertex_0x04014B70:
+  symbol: d_course_mario_raceway_vertex_0x04014B70
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x12202
+
+d_course_mario_raceway_vertex_0x04014C50:
+  symbol: d_course_mario_raceway_vertex_0x04014C50
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x122c6
+
+d_course_mario_raceway_vertex_0x04014DA0:
+  symbol: d_course_mario_raceway_vertex_0x04014DA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x123ec
+
+d_course_mario_raceway_vertex_0x04014FA0:
+  symbol: d_course_mario_raceway_vertex_0x04014FA0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x125ac
+
+d_course_mario_raceway_vertex_0x04015060:
+  symbol: d_course_mario_raceway_vertex_0x04015060
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12654
+
+d_course_mario_raceway_vertex_0x04015260:
+  symbol: d_course_mario_raceway_vertex_0x04015260
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x12814
+
+d_course_mario_raceway_vertex_0x04015370:
+  symbol: d_course_mario_raceway_vertex_0x04015370
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12902
+
+d_course_mario_raceway_vertex_0x040153A0:
+  symbol: d_course_mario_raceway_vertex_0x040153A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1292c
+
+d_course_mario_raceway_vertex_0x04015420:
+  symbol: d_course_mario_raceway_vertex_0x04015420
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1299c
+
+d_course_mario_raceway_vertex_0x04015620:
+  symbol: d_course_mario_raceway_vertex_0x04015620
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x12b5c
+
+d_course_mario_raceway_vertex_0x04015700:
+  symbol: d_course_mario_raceway_vertex_0x04015700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12c20
+
+d_course_mario_raceway_vertex_0x04015900:
+  symbol: d_course_mario_raceway_vertex_0x04015900
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12de0
+
+d_course_mario_raceway_vertex_0x04015B00:
+  symbol: d_course_mario_raceway_vertex_0x04015B00
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x12fa0
+
+d_course_mario_raceway_vertex_0x04015BF0:
+  symbol: d_course_mario_raceway_vertex_0x04015BF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x13072
+
+d_course_mario_raceway_vertex_0x04015DD0:
+  symbol: d_course_mario_raceway_vertex_0x04015DD0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x13216
+
+d_course_mario_raceway_vertex_0x04015E00:
+  symbol: d_course_mario_raceway_vertex_0x04015E00
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x13240
+
+d_course_mario_raceway_vertex_0x04015EB0:
+  symbol: d_course_mario_raceway_vertex_0x04015EB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x132da
+
+d_course_mario_raceway_vertex_0x040160A0:
+  symbol: d_course_mario_raceway_vertex_0x040160A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1348c
+
+d_course_mario_raceway_vertex_0x04016290:
+  symbol: d_course_mario_raceway_vertex_0x04016290
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1363e
+
+d_course_mario_raceway_vertex_0x04016490:
+  symbol: d_course_mario_raceway_vertex_0x04016490
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x137fe
+
+d_course_mario_raceway_vertex_0x04016690:
+  symbol: d_course_mario_raceway_vertex_0x04016690
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x139be

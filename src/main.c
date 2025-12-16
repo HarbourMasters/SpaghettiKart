@@ -1,13 +1,13 @@
 #include <libultraship.h>
 #include <libultra/vi.h>
 #include <libultra/os.h>
+#include "buffers/gfx_output_buffer.h"
+#include <libultraship/bridge/gfxdebuggerbridge.h>
 #include <macros.h>
 #include <decode.h>
 #include <mk64.h>
 #include <stubs.h>
 #include "racing/framebuffer_effects.h"
-
-#include "networking/networking.h"
 
 #include "profiler.h"
 #include "main.h"
@@ -38,9 +38,8 @@
 #include "replays.h"
 #include <debug.h>
 #include "crash_screen.h"
-#include "buffers/gfx_output_buffer.h"
-#include <bridge/gfxdebuggerbridge.h>
 #include "enhancements/freecam/freecam.h"
+#include "engine/editor/Editor.h"
 #include "port/interpolation/FrameInterpolation.h"
 #include "engine/wasm.h"
 #include "port/Game.h"
@@ -111,8 +110,8 @@ u8 gControllerBits;
 CollisionGrid gCollisionGrid[1024];
 u16 gNumActors;
 u16 gMatrixObjectCount;
-s32 gTickLogic;   // Tick game physics at 60fps
-s32 gTickVisuals; // Tick animations at 30fps
+s32 gTickLogic = 2;
+s32 gTickVisuals = 1;
 s32 gTickGame;
 f32 D_80150118;
 
@@ -123,7 +122,6 @@ s32 D_80150120;
 s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
-f32 gCameraZoom[4]; // look like to be the fov of each character
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -132,7 +130,6 @@ f32 D_80150150;
 UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
-uintptr_t gSegmentTable[16];
 Gfx* gDisplayListHead;
 
 struct SPTask* gGfxSPTask;
@@ -147,7 +144,6 @@ Mat4 sBillBoardMtx; // Faces 2D actors at the camera
 
 s32 padding[2048];
 
-u16 D_80152300[4];
 u16 D_80152308;
 
 UNUSED OSThread paddingThread;
@@ -173,7 +169,6 @@ s32 gGamestate = 0xFFFF;
 // gRaceState is externed as an s32 in other files. D_800DC514 is only used in main.c, likely a developer mistake.
 s32 gRaceState = RACE_INIT;
 u16 D_800DC514 = 0;
-u16 creditsRenderMode = 0; // Renders the whole track. Displays red if used in normal race mode.
 u16 gDemoMode = DEMO_MODE_INACTIVE;
 u16 gEnableDebugMode = DEBUG_MODE;
 s32 gGamestateNext = 7; // = COURSE_DATA_MENU?;
@@ -182,6 +177,7 @@ s32 gActiveScreenMode = SCREEN_MODE_1P;
 s32 gScreenModeSelection = SCREEN_MODE_1P;
 UNUSED s32 D_800DC534 = 0;
 s32 gPlayerCountSelection1 = 2;
+bool gTourComplete = false;
 
 s32 gModeSelection = GRAND_PRIX;
 s32 D_800DC540 = 0;
@@ -451,7 +447,6 @@ void exec_display_list(struct SPTask* spTask) {
  * Set default RCP (Reality Co-Processor) settings.
  */
 void init_rcp(void) {
-    move_segment_table_to_dmem();
     init_rdp();
     set_viewport();
     select_framebuffer();
@@ -485,7 +480,6 @@ void* clear_framebuffer(s32 color) {
 
 void rendering_init(void) {
     gGfxPool = &gGfxPools[0];
-    set_segment_base_addr_x64(1, gGfxPool);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->gfxPool;
     init_rcp();
@@ -498,7 +492,6 @@ void rendering_init(void) {
 
 void config_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer & 1];
-    set_segment_base_addr_x64(1, gGfxPool);
     gDisplayListHead = gGfxPool->gfxPool;
     gGfxSPTask = &gGfxPool->spTask;
 }
@@ -615,8 +608,8 @@ void setup_game_memory(void) {
 
     //     gNextFreeMemoryAddress += textureSegSize;
 
-    //     // Common course data does not get reloaded when the race state resets.
-    //     // Therefore, only reset the memory ptr to after the common course data.
+    //     // Common track data does not get reloaded when the race state resets.
+    //     // Therefore, only reset the memory ptr to after the common track data.
     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
 }
 
@@ -629,75 +622,6 @@ void game_init_clear_framebuffer(void) {
     clear_framebuffer(0);
 }
 
-//! @deprecated
-// This function was made to tick the game logic at native 60 fps.
-// However, many game objects are not in that special tick loop and run at native 30fps.
-// Thus adding `if (gTickVisuals) { // stuff here }` would prevent double speed and allow ticking visuals once every 30 fps.
-// This does not however, create extra interpolated frames. Whereas a possible solution, it is not the best solution.
-// This function should be cleaned up and removed, since frame interpolation now exists.
-void calculate_updaterate(void) {
-    static u32 prevtime = 0;
-    static u32 remainder = 0;
-    static u32 logicAccumulator = 0;
-    static u32 visualsAccumulator = 0;
-    static u32 frameCounter = 0; // For tracking frames for logic updates
-    u32 now = SDL_GetTicks();    // Replaces osGetTime()
-    u32 frameRate = 0;
-    s32 total;
-
-    // Get target FPS from configuration variable
-    s32 targetFPS = 30;
-
-    if (targetFPS < 30) {
-        targetFPS = 30;
-    }
-
-    // Detect frame rate based on time passed
-    if (now > prevtime) {
-        total = (now - prevtime) + remainder;
-    } else {
-        // Handle counter reset (shouldn't happen with SDL_GetTicks, but kept for logic parity)
-        total = (0xffffffff - prevtime) + 1 + now + remainder;
-    }
-
-    prevtime = now;
-
-    // Avoid division by zero
-    if (total > 0) {
-        // Calculate approximate frame rate (milliseconds per frame)
-        frameRate = 1000 / total; // Frame rate in frames per second
-    } else {
-        frameRate = targetFPS; // Fallback to target FPS
-    }
-
-    // Default both to no updates
-    gTickLogic = 0;
-    gTickVisuals = 0;
-
-    // Calculate the update rates based on target FPS
-    s32 logicUpdateInterval = 1000 / 60;   // Time in ms between logic updates
-    s32 visualsUpdateInterval = 1000 / 30; // 30 FPS for visuals
-
-    // Accumulate time for logic updates
-    logicAccumulator += total;
-    if (logicAccumulator >= logicUpdateInterval) {
-        logicAccumulator -= logicUpdateInterval; // Subtract full interval
-        if (targetFPS < 60) {
-            gTickLogic = 2;
-        } else {
-            gTickLogic = 2;    // Perform logic update
-        }
-    }
-
-    // Visual updates (based on 30 FPS equivalent)
-    visualsAccumulator += total;                       // Increment for each frame
-    if (visualsAccumulator >= visualsUpdateInterval) { // Check if it's time to update visuals
-        visualsAccumulator -= visualsUpdateInterval;
-        // gTickVisuals <-- Goes here to use the native 60fps system
-    }
-    gTickVisuals = 1;    // Perform visual update
-}
-
 void display_debug_info(void) {
     u16 rotY;
     if (!gEnableDebugMode) {
@@ -708,7 +632,7 @@ void display_debug_info(void) {
             D_800DC514 = false;
         }
         rotY = camera1->rot[1];
-        gDebugPathCount = D_800DC5EC->pathCounter;
+        gDebugPathCount = gScreenOneCtx->pathCounter;
 
         if (rotY < 0x2000) {
             func_80057A50(40, 100, "SOUTH  ", gDebugPathCount);
@@ -745,65 +669,39 @@ void display_debug_info(void) {
 
 void process_game_tick(void) {
 
-    if (gIsEditorPaused == false) {
+    if (Editor_IsPaused() == false) {
         if (D_8015011E) {
-            gCourseTimer += COURSE_TIMER_ITER;
+            gCourseTimer += TRACK_TIMER_ITER;
         }
         func_802909F0();
         evaluate_collision_for_players_and_actors();
         handle_a_press_for_all_players_during_race();
     }
 
-
-    // tick camera
-    // This looks like it should be in the switch.
-    // But it needs to be here for player 1 to work in all modes.
-    func_8001EE98(gPlayerOne, camera1, 0);
-    // Required if freecam was to have a new camera
-    //if (CVarGetInteger("gFreecam", 0) == true) {
-    //    freecam(gFreecamCamera, gPlayerOne, 0);
-    //} else {
-        //func_8001EE98(gPlayerOne, camera1, 0);
-    //}
+    CM_TickCameras();
 
     // Editor requires this so the camera keeps moving while the game is paused.
-    if (gIsEditorPaused == true) {
+    if (Editor_IsPaused() == true) {
         return;
     }
-
-    switch(gActiveScreenMode) {
-        case SCREEN_MODE_1P:
-            func_80028F70();
-            break;
-        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_80029060();
-            func_8001EE98(gPlayerTwo, camera2, 1);
-            func_80029150();
-            break;
-        case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_80029158();
-            func_8001EE98(gPlayerTwo, camera2, 1);
-            func_800291E8();
-            func_8001EE98(gPlayerThree, camera3, 2);
-            func_800291F0();
-            func_8001EE98(gPlayerFour, camera4, 3);
-            func_800291F8();
-            break;
-    }
+    
+    func_80028F70(); // Player controller
 
     func_8028F474();
     func_80059AC8();
     update_course_actors();
     CM_TickActors();
     func_802966A0();
-    func_8028FCBC();
+    if (CM_IsTourEnabled() == false) {
+        func_8028FCBC();
+    }
 }
 
 void race_logic_loop(void) {
     ClearMatrixPools();
     ClearObjectsMatrixPool();
     Editor_ClearMatrix();
+    Editor_CleanWorld(); // Clears all actors
     gMatrixObjectCount = 0;
     gMatrixEffectCount = 0;
 
@@ -828,16 +726,11 @@ void race_logic_loop(void) {
         replays_loop();
     }
 
-    // Wait for all racers to load
-    if (gNetwork.enabled) {
-        network_all_players_loaded();
-    }
-
     if (gIsGamePaused == false) {
         for (size_t i = 0; i < gTickLogic; i++) {
             process_game_tick();
         }
-        if (gIsEditorPaused == false) {
+        if (Editor_IsPaused() == false) {
             func_80022744();
         }
     }
@@ -846,7 +739,6 @@ void race_logic_loop(void) {
     profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
     sNumVBlanks = 0;
     gNumScreens = 0;
-    move_segment_table_to_dmem();
     init_rdp();
     if (D_800DC5B0 != 0) {
         select_framebuffer();
@@ -1194,7 +1086,7 @@ void func_80002658(void) {
 }
 
 /**
- * Sets courseId to NULL if
+ * Sets trackId to NULL if
  *
  *
  */
@@ -1202,19 +1094,19 @@ void update_gamestate(void) {
     switch (gGamestate) {
         case START_MENU_FROM_QUIT:
             func_80002658();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             break;
         case MAIN_MENU_FROM_QUIT:
             func_800025D4();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
             func_80002600();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             func_8000262C();
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             break;
         case RACING:
             /**
@@ -1225,12 +1117,12 @@ void update_gamestate(void) {
             setup_race();
             break;
         case ENDING:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             init_segment_ending_sequences();
             setup_podium_ceremony();
             break;
         case CREDITS_SEQUENCE:
-            gCurrentlyLoadedCourseId = COURSE_NULL;
+            gCurrentlyLoadedTrackAddr = NULL;
             // init_segment_racing();
             init_segment_ending_sequences();
             load_credits();
@@ -1271,7 +1163,6 @@ void thread5_iteration(void) {
         func_800CB2C4();
     }
 #endif
-    calculate_updaterate();
     if (GfxDebuggerIsDebugging()) {
         Graphics_PushFrame(gGfxPool->gfxPool);
         return;

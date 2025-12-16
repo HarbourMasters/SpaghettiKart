@@ -1,7 +1,7 @@
 #include "TrackProperties.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 
 #include <imgui.h>
 #include <map>
@@ -13,6 +13,11 @@
 
 #include "port/Game.h"
 
+#include "engine/cameras/TourCamera.h"
+#include "engine/TrackBrowser.h"
+#include "engine/editor/SceneManager.h"
+#include "engine/Registry.h"
+
 extern "C" {
 #include "code_800029B0.h"
 #include "sounds.h"
@@ -21,27 +26,28 @@ extern "C" {
 #include "render_objects.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     TrackPropertiesWindow::~TrackPropertiesWindow() {
         SPDLOG_TRACE("destruct track properties window");
     }
 
     void TrackPropertiesWindow::DrawElement() {
-        static char idBuffer[256] = "mk:mario_raceway";
-        static char nameBuffer[256] = "Mario Raceway";
-        static char debugNameBuffer[256] = "m circuit";
-        static char lengthBuffer[256] = "567m";
+        if (nullptr == GetWorld()->GetTrack()) {
+            return;
+        }
 
-        ImGui::InputText("ID", idBuffer, IM_ARRAYSIZE(idBuffer));
-        ImGui::InputText("Name", gWorldInstance.CurrentCourse->Props.Name, IM_ARRAYSIZE(nameBuffer));
-        ImGui::InputText("Debug Name", gWorldInstance.CurrentCourse->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
-        ImGui::InputText("Course Length", gWorldInstance.CurrentCourse->Props.CourseLength, IM_ARRAYSIZE(lengthBuffer));
-        ImGui::InputFloat("Water Level", &gWorldInstance.CurrentCourse->Props.WaterLevel);
+        if (ImGui::Button("Edit TrackInfo")) {
+            ImGui::OpenPopup("Edit TrackInfo");
+        }
+
+        DrawResourceNameEdit();
+
+        ImGui::InputFloat("Water Level", &GetWorld()->GetTrack()->Props.WaterLevel);
 
         if (ImGui::CollapsingHeader("Camera")) {
-            ImGui::InputFloat("Near Perspective", &gWorldInstance.CurrentCourse->Props.NearPersp);
-            ImGui::InputFloat("Far Perspective", &gWorldInstance.CurrentCourse->Props.FarPersp);
+            ImGui::InputFloat("Near Perspective", &GetWorld()->GetTrack()->Props.NearPersp);
+            ImGui::InputFloat("Far Perspective", &GetWorld()->GetTrack()->Props.FarPersp);
             if (ImGui::IsItemHovered()) {
                 ImGui::BeginTooltip();
                 ImGui::Text("Controls the far clipping distance for perspective rendering.");
@@ -51,97 +57,98 @@ namespace Editor {
         }
 
         if (ImGui::CollapsingHeader("Environment")) {
+            TrackPropertiesWindow::DrawFog();
             TrackPropertiesWindow::DrawLight();
         }
 
         if (ImGui::CollapsingHeader("AI")) {
 
-            ImGui::InputFloat("AI Max Separation", &gWorldInstance.CurrentCourse->Props.AIMaximumSeparation);
-            ImGui::InputFloat("AI Min Separation", &gWorldInstance.CurrentCourse->Props.AIMinimumSeparation);
-            ImGui::InputInt("AI Steering Sensitivity", (int*)&gWorldInstance.CurrentCourse->Props.AISteeringSensitivity);
+            ImGui::InputFloat("AI Max Separation", &GetWorld()->GetTrack()->Props.AIMaximumSeparation);
+            ImGui::InputFloat("AI Min Separation", &GetWorld()->GetTrack()->Props.AIMinimumSeparation);
+            ImGui::InputInt("AI Steering Sensitivity", (int*)&GetWorld()->GetTrack()->Props.AISteeringSensitivity);
 
             ImGui::Separator();
 
             for (size_t i = 0; i < 32; i++) {
-                ImGui::InputScalar(("Element " + std::to_string(i)).c_str(), ImGuiDataType_S16, &gWorldInstance.CurrentCourse->Props.AIDistance[i]);
+                ImGui::InputScalar(("Element " + std::to_string(i)).c_str(), ImGuiDataType_S16, &GetWorld()->GetTrack()->Props.AIDistance[i]);
             }
         }
 
         if (ImGui::CollapsingHeader("Random Junk")) {
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("CurveTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.CurveTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("CurveTargetSpeed[{}]", i).c_str(), &GetWorld()->GetTrack()->Props.CurveTargetSpeed[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("NormalTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.NormalTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("NormalTargetSpeed[{}]", i).c_str(), &GetWorld()->GetTrack()->Props.NormalTargetSpeed[i]);
             }
 
             ImGui::Separator();
 
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("D_0D0096B8[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.D_0D0096B8[i]);
+                ImGui::InputFloat(fmt::format("D_0D0096B8[{}]", i).c_str(), &GetWorld()->GetTrack()->Props.D_0D0096B8[i]);
             }
 
             ImGui::Separator();
 
             for (size_t i = 0; i < 4; i++) {
-                ImGui::InputFloat(fmt::format("OffTrackTargetSpeed[{}]", i).c_str(), &gWorldInstance.CurrentCourse->Props.OffTrackTargetSpeed[i]);
+                ImGui::InputFloat(fmt::format("OffTrackTargetSpeed[{}]", i).c_str(), &GetWorld()->GetTrack()->Props.OffTrackTargetSpeed[i]);
             }
         }
 
         float minimapColour[3];
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Minimap.Colour, minimapColour);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Minimap.Colour, minimapColour);
 
         if (ImGui::CollapsingHeader("Minimap")) {
             ImGui::Text("Position");
             ImGui::SameLine();
 
 
-            if (ImGui::DragInt2("##MinimapPosition", &gWorldInstance.CurrentCourse->Props.Minimap.Pos[0].X, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPosition", &GetWorld()->GetTrack()->Props.Minimap.Pos[0].X, 1.0f)) {
             }
             ImGui::Text("P2 Position");
             ImGui::SameLine();
-            if (ImGui::DragInt2("##MinimapPosition2p", &gWorldInstance.CurrentCourse->Props.Minimap.Pos[1].X, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPosition2p", &GetWorld()->GetTrack()->Props.Minimap.Pos[1].X, 1.0f)) {
             }
 
             ImGui::Text("Player Markers");
             ImGui::SameLine();
-            if (ImGui::DragInt2("##MinimapPlayers", &gWorldInstance.CurrentCourse->Props.Minimap.PlayerX, 1.0f)) {
+            if (ImGui::DragInt2("##MinimapPlayers", &GetWorld()->GetTrack()->Props.Minimap.PlayerX, 1.0f)) {
             }
 
             ImGui::Text("Player Scale Factor");
             ImGui::SameLine();
-            if (ImGui::DragFloat("##MinimapScaleFactor", &gWorldInstance.CurrentCourse->Props.Minimap.PlayerScaleFactor, 0.0001f)) {
+            if (ImGui::DragFloat("##MinimapScaleFactor", &GetWorld()->GetTrack()->Props.Minimap.PlayerScaleFactor, 0.0001f)) {
             }
 
             ImGui::Text("Finishline");
             ImGui::SameLine();
-            ImGui::DragFloat2("##MinimapFinishlineX", &gWorldInstance.CurrentCourse->Props.Minimap.FinishlineX, 1.0f);
+            ImGui::DragFloat2("##MinimapFinishlineX", &GetWorld()->GetTrack()->Props.Minimap.FinishlineX, 1.0f);
 
             ImGui::Text("Colour");
             ImGui::SameLine();
             ImGui::ColorEdit3("##MinimapColour", minimapColour, 1.0f);
         }
 
-        FloatToRGB8(minimapColour, (u8*)&gWorldInstance.CurrentCourse->Props.Minimap.Colour);
+        FloatToRGB8(minimapColour, (u8*)&GetWorld()->GetTrack()->Props.Minimap.Colour);
 
         // Convert and pass to ImGui ColorEdit3
         float topRight[3], bottomRight[3], bottomLeft[3], topLeft[3];
         float floorTopRight[3], floorBottomRight[3], floorBottomLeft[3], floorTopLeft[3];
 
         // Convert RGB8 (0-255) to float (0.0f to 1.0f)
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.TopRight, topRight);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.BottomRight, bottomRight);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.BottomLeft, bottomLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.TopLeft, topLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopRight, floorTopRight);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomRight, floorBottomRight);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomLeft, floorBottomLeft);
-        RGB8ToFloat((u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopLeft, floorTopLeft);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.TopRight, topRight);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.BottomRight, bottomRight);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.BottomLeft, bottomLeft);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.TopLeft, topLeft);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorTopRight, floorTopRight);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorBottomRight, floorBottomRight);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorBottomLeft, floorBottomLeft);
+        RGB8ToFloat((u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorTopLeft, floorTopLeft);
 
         if (ImGui::CollapsingHeader("Skybox")) {
             ImGui::ColorEdit3("Skybox Top Right", topRight);
@@ -155,16 +162,110 @@ namespace Editor {
         }
 
         // Convert the modified float values back to RGB8 (0-255)
-        FloatToRGB8(topRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.TopRight);
-        FloatToRGB8(bottomRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.BottomRight);
-        FloatToRGB8(bottomLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.BottomLeft);
-        FloatToRGB8(topLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.TopLeft);
-        FloatToRGB8(floorTopRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopRight);
-        FloatToRGB8(floorBottomRight, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomRight);
-        FloatToRGB8(floorBottomLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorBottomLeft);
-        FloatToRGB8(floorTopLeft, (u8*)&gWorldInstance.CurrentCourse->Props.Skybox.FloorTopLeft);
+        FloatToRGB8(topRight, (u8*)&GetWorld()->GetTrack()->Props.Skybox.TopRight);
+        FloatToRGB8(bottomRight, (u8*)&GetWorld()->GetTrack()->Props.Skybox.BottomRight);
+        FloatToRGB8(bottomLeft, (u8*)&GetWorld()->GetTrack()->Props.Skybox.BottomLeft);
+        FloatToRGB8(topLeft, (u8*)&GetWorld()->GetTrack()->Props.Skybox.TopLeft);
+        FloatToRGB8(floorTopRight, (u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorTopRight);
+        FloatToRGB8(floorBottomRight, (u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorBottomRight);
+        FloatToRGB8(floorBottomLeft, (u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorBottomLeft);
+        FloatToRGB8(floorTopLeft, (u8*)&GetWorld()->GetTrack()->Props.Skybox.FloorTopLeft);
 
         TrackPropertiesWindow::DrawMusic();
+        TrackPropertiesWindow::DrawTourCamera();
+    }
+
+    void TrackPropertiesWindow::DrawResourceNameEdit() {
+        Track* track = GetWorld()->GetTrack();
+        if (!track) {
+            return;
+        }
+
+        static char resourceNameBuffer[128] = {};
+        static char nameBuffer[128] = "blank_track";
+        static char debugNameBuffer[128] = "blanktrack";
+        static char lengthBuffer[128] = "100m";
+        static bool initialized = false;
+        static std::string oldResourceName = track->ResourceName;
+
+        // Auto-sizing fills the height of the screen for a single frame.
+        // Because there's no content in the window in the first frame.
+        // This forces the window size to prevent that
+        ImGui::SetNextWindowSize(ImVec2(400, 275), ImGuiCond_Always);
+        if (ImGui::BeginPopupModal("Edit TrackInfo", nullptr,
+                                ImGuiWindowFlags_AlwaysAutoResize)) {
+                                    
+            // Initialize once per popup open
+            if (!initialized) {
+                strncpy(resourceNameBuffer, track->ResourceName.c_str(), sizeof(resourceNameBuffer));
+                resourceNameBuffer[sizeof(resourceNameBuffer) - 1] = '\0';
+                oldResourceName = track->ResourceName;
+                initialized = true;
+            }
+
+            ImGui::TextWrapped(
+                "Changing these fields will:\n"
+                "- Save the current track\n"
+                "- Reload the track\n"
+                "- Update the registry\n\n"
+            );
+
+            gEditor.Pause();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::InputText("ResourceName", resourceNameBuffer, IM_ARRAYSIZE(resourceNameBuffer));
+            ImGui::InputText("Name", GetWorld()->GetTrack()->Props.Name, IM_ARRAYSIZE(nameBuffer));
+            ImGui::InputText("Debug Name", GetWorld()->GetTrack()->Props.DebugName, IM_ARRAYSIZE(debugNameBuffer));
+            ImGui::InputText("Track Length", GetWorld()->GetTrack()->Props.TrackLength, IM_ARRAYSIZE(lengthBuffer));
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            bool cancel = ImGui::Button("Cancel", ImVec2(120, 0));
+
+            ImGui::SameLine();
+
+            bool confirm = ImGui::Button("Confirm", ImVec2(120, 0));
+
+            if (confirm) {
+                if (oldResourceName != resourceNameBuffer) {
+                    track->ResourceName = resourceNameBuffer;
+                    const TrackInfo* oldInfo = gTrackRegistry.GetInfo(oldResourceName);
+                    TrackInfo info;
+                    info.ResourceName = track->ResourceName;
+                    info.Name = track->Props.Name;
+                    info.DebugName = track->Props.DebugName;
+                    info.Path = oldInfo->Path;
+
+                    TrackEditor::SaveLevel(track, static_cast<const TrackInfo*>(&info));
+                    auto archive = track->Archive;
+                    gTrackRegistry.Remove(oldResourceName);
+                    gTrackRegistry.Add(info, [info, archive]() {
+                        auto track = std::make_unique<Track>();
+                        track->Archive = archive;
+                        track->ResourceName = info.ResourceName;
+                        GetWorld()->SetCurrentTrack(std::move(track));
+                    });
+                    TrackBrowser::Instance->Refresh(gTrackRegistry);
+                    gGotoMode = RACING;
+
+                }
+                initialized = false;
+
+                ImGui::CloseCurrentPopup();
+            }
+
+            if (cancel) {
+                initialized = false;
+                ImGui::CloseCurrentPopup();
+            }
+
+            ImGui::EndPopup();
+        }
     }
 
     void TrackPropertiesWindow::DrawMusic() {
@@ -178,16 +279,16 @@ namespace Editor {
             "Royal Raceway", "Yoshi Valley", "Block Fort", "Double Deck"
         };
 
-        const char* currentItem = MusicSeqToString(gWorldInstance.CurrentCourse->Props.Sequence); // Get the current selected value's string
+        const char* currentItem = MusicSeqToString(GetWorld()->GetTrack()->Props.Sequence); // Get the current selected value's string
     
         if (ImGui::BeginCombo("Music Sequence", currentItem)) {
             for (size_t i = 0; i < IM_ARRAYSIZE(items); ++i) {
                 bool isSelected = (currentItem == items[i]);
                 if (ImGui::Selectable(items[i], isSelected)) {
                     // Update the sequence when an option is selected
-                    gWorldInstance.CurrentCourse->Props.Sequence = static_cast<MusicSeq>(i);
-                    play_sequence(gWorldInstance.CurrentCourse->Props.Sequence); // Call play_sequence with the updated sequence
-        
+                    GetWorld()->GetTrack()->Props.Sequence = static_cast<MusicSeq>(i);
+                    play_sequence(GetWorld()->GetTrack()->Props.Sequence); // Call play_sequence with the updated sequence
+
                     // Update currentItem after selection is made
                     currentItem = items[i];
                 }
@@ -224,7 +325,7 @@ namespace Editor {
             case MUSIC_SEQ_DK_JUNGLE: return "DK Jungle";
             case MUSIC_SEQ_GAME_OVER: return "Game Over";
             case MUSIC_SEQ_TOADS_TURNPIKE: return "Toad's Turnpike";
-            case MUSIC_SEQ_START_GIRD_TIME_ATTACK: return "Start Grid Time Attack";
+            case MUSIC_SEQ_START_GRID_TIME_ATTACK: return "Start Grid Time Attack";
             case MUSIC_SEQ_VS_BATTLE_RESULTS: return "VS Battle Results";
             case MUSIC_SEQ_LOSING_RESULTS: return "Losing Results";
             case MUSIC_SEQ_BATTLE_ARENAS: return "Battle Arenas";
@@ -242,6 +343,40 @@ namespace Editor {
         }
     }
 
+    void TrackPropertiesWindow::DrawFog() {
+        if (ImGui::CollapsingHeader("Fog")) {
+            ImGui::Checkbox("Enable Fog", &bFog);
+            float colours[4];
+
+            // Convert rgba to floats
+            RGB8ToFloat((u8*)&gFogColour, colours);
+            colours[3] = gFogColour.a / 255.0f;
+            // Edit the ambient RGB colour
+            ImGui::ColorEdit4("Fog Colour", colours);
+
+            // Convert floats to rgba
+            FloatToRGB8(colours, (u8*)&gFogColour);
+            gFogColour.a = static_cast<u8>(colours[3] * 255.0f);
+
+            // Fog near and far planes
+            int val[2] = {static_cast<int>(gFogMin), static_cast<int>(gFogMax)};
+
+            ImGui::DragInt2("##MinimapPosition", &val[0], 1.0f, 0, 1000);
+
+            if (val[0] >= val[1]) {
+                val[0] = val[1] - 1;
+            }
+
+            // Clamp to allowed range just in case
+            val[0] = std::clamp(val[0], 0, 999);
+            val[1] = std::clamp(val[1], 1, 1000);
+
+            gFogMin = static_cast<int16_t>(val[0]);
+            gFogMax = static_cast<int16_t>(val[1]);
+        }
+
+    }
+
     void TrackPropertiesWindow::DrawLight() {
         // Convert and pass to ImGui ColorEdit3
         
@@ -253,17 +388,17 @@ namespace Editor {
             RGB8ToFloat((u8*)&D_800DC610[i].l->l.col, diffuse);
             RGB8ToFloat((u8*)&D_800DC610[i].l->l.dir, direction);
 
-            // Edit the ambient RGB color
-            ImGui::Text("Light %d - Ambient Color", i + 1);
-            ImGui::ColorEdit3(("Ambient Color " + std::to_string(i)).c_str(), ambient); // Modify ambient color
+            // Edit the ambient RGB colour
+            ImGui::Text("Light %d - Ambient Colour", i + 1);
+            ImGui::ColorEdit3(("Ambient Colour " + std::to_string(i)).c_str(), ambient); // Modify ambient colour
+
+            // Edit the diffuse RGB colour
+            ImGui::Text("Light %d - Diffuse Colour", i + 1);
+            ImGui::ColorEdit3(("Diffuse Colour " + std::to_string(i)).c_str(), diffuse); // Modify diffuse colour
     
-            // Edit the diffuse RGB color
-            ImGui::Text("Light %d - Diffuse Color", i + 1);
-            ImGui::ColorEdit3(("Diffuse Color " + std::to_string(i)).c_str(), diffuse); // Modify diffuse color
-    
-            // Edit the direction RGB color (this could be represented as a direction vector)
+            // Edit the direction RGB colour (this could be represented as a direction vector)
             ImGui::Text("Light %d - Direction", i + 1);
-            ImGui::ColorEdit3(("Direction Color " + std::to_string(i)).c_str(), direction); // Modify direction vector color
+            ImGui::ColorEdit3(("Direction Colour " + std::to_string(i)).c_str(), direction); // Modify direction vector colour
 
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.col);
             FloatToRGB8(ambient, (u8*)&D_800DC610[i].a.l.colc);
@@ -274,7 +409,7 @@ namespace Editor {
         }
     }
 
-    // Convert s16 color values to float (normalized to [0, 1] range)
+    // Convert s16 colour values to float (normalized to [0, 1] range)
     void TrackPropertiesWindow::RGB8ToFloat(const u8* src, float* dst) {
         for (size_t i = 0; i < 3; ++i) {
             dst[i] = src[i] / 255.0f;  // Normalize to the range [0.0f, 1.0f]
@@ -285,6 +420,130 @@ namespace Editor {
         for (size_t i = 0; i < 3; ++i) {
             dst[i] = static_cast<u8>(src[i] * 255.0f);  // Scale to [0, 255] range
         }
+    }
+
+    int32_t TrackPropertiesWindow::SelectedShot = -1;
+    int32_t TrackPropertiesWindow::SelectedKeyframe = -1;
+
+    void TrackPropertiesWindow::DrawTourCamera() {
+
+        Track* track = GetWorld()->GetTrack();
+        if (nullptr == track) {
+            return;
+        }
+
+        Camera* camera = gScreenOneCtx->camera;
+        if (nullptr == camera) {
+            return;
+        }
+
+
+        FVector camPos = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
+        FVector camLookAt = FVector(camera->lookAt[0], camera->lookAt[1], camera->lookAt[2]);
+
+        // Enable / disable
+        ImGui::Checkbox("Enable Tour Camera", &track->bTourEnabled);
+
+        if (!track->bTourEnabled) {
+            return;
+        }
+
+        ImGui::SeparatorText("Tour Camera Controls");
+
+        // Button to add a new empty shot
+        if (ImGui::Button("Add CameraShot")) {
+            TourCamera::CameraShot shot;
+            shot.Pos = camPos;       // start where the camera currently is
+            shot.LookAt = camLookAt; // or however your camera exposes these
+            track->TourShots.push_back(shot);
+        }
+
+        ImGui::Spacing();
+
+        // ============================
+        //   Display Camera Shots
+        // ============================
+        for (int32_t i = 0; i < track->TourShots.size(); i++)
+        {
+            TourCamera::CameraShot& shot = track->TourShots[i];
+            ImGui::PushID(i);
+
+            bool open = ImGui::CollapsingHeader(
+                ("CameraShot " + std::to_string(i)).c_str(),
+                ImGuiTreeNodeFlags_DefaultOpen
+            );
+
+            // Select the shot
+            if (ImGui::Selectable("Select Shot", SelectedShot == i)) {
+                SelectedShot = i;
+            }
+
+            // Delete shot
+            ImGui::SameLine();
+            if (ImGui::Button("Delete Shot")) {
+                track->TourShots.erase(track->TourShots.begin() + i);
+                if (SelectedShot == i) SelectedShot = -1;
+                ImGui::PopID();
+                break;
+            }
+
+            if (open) {
+                ImGui::Indent();
+
+                // Start pos / lookAt editing
+                ImGui::InputFloat3("Start Pos", &shot.Pos.x);
+                ImGui::InputFloat3("Start LookAt", &shot.LookAt.x);
+
+                ImGui::Spacing();
+
+                // Record keyframe from current camera
+                if (ImGui::Button("Record KeyFrame From Camera")) {
+                    TourCamera::KeyFrame kf;
+                    kf.Pos = camPos;
+                    kf.LookAt = camLookAt;
+                    kf.Duration = 60.0f;
+                    shot.Frames.push_back(kf);
+                }
+
+                ImGui::SeparatorText("KeyFrames");
+
+                // ============================
+                //   KeyFrame List
+                // ============================
+                for (int32_t k = 0; k < shot.Frames.size(); k++)
+                {
+                    TourCamera::KeyFrame& kf = shot.Frames[k];
+                    ImGui::PushID(k);
+
+                    bool kOpen = ImGui::TreeNode(("KeyFrame " + std::to_string(k)).c_str());
+
+                    // Select keyframe
+                    if (ImGui::Selectable("Select KeyFrame", SelectedKeyframe == k))
+                        SelectedKeyframe = k;
+
+                    ImGui::SameLine();
+                    if (ImGui::Button("Delete")) {
+                        shot.Frames.erase(shot.Frames.begin() + k);
+                        if (SelectedKeyframe == k) SelectedKeyframe = -1;
+                        ImGui::PopID();
+                        break;
+                    }
+
+                    if (kOpen) {
+                        ImGui::InputFloat3("Position", &kf.Pos.x);
+                        ImGui::InputFloat3("LookAt", &kf.LookAt.x);
+                        ImGui::DragFloat("Duration", &kf.Duration, 1.0f, 1.0f, 5000.0f);
+                        ImGui::TreePop();
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::Unindent();
+            }
+
+            ImGui::PopID();
+        }
+
     }
 
 }

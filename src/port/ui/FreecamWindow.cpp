@@ -1,7 +1,8 @@
 #include "FreecamWindow.h"
 #include "port/ui/PortMenu.h"
+#include "port/Game.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 
 #include <imgui.h>
 #include <map>
@@ -10,6 +11,7 @@
 #include "spdlog/formatter.h"
 #include <common_structs.h>
 #include <defines.h>
+#include "engine/cameras/FreeCamera.h"
 #include "enhancements/freecam/freecam_engine.h"
 #include "enhancements/freecam/freecam.h"
 
@@ -67,7 +69,11 @@ void RegisterFreecamWidgets() {
     mPortMenu->AddWidget(path, "Controller: Up: A, Down: B, Faster: Z\n  Target Player Mode: R, Next: Right DPad, Previous: Left DPad\n  Driving Mode: L and R Buttons", WIDGET_TEXT);
     mPortMenu->AddWidget(path, "Enable Freecam", WIDGET_CVAR_CHECKBOX)
         .CVar("gFreecam")
-        .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the course"}}));
+        .Options(UIWidgets::CheckboxOptions({{ .tooltip = "Allows you to fly around the track"}}))
+        .Callback([](WidgetInfo& info) {
+            bool state = (bool) CVarGetInteger("gFreecam", false);
+            CM_SetFreeCamera(state);
+        });
 
     mPortMenu->AddWidget(path, "Camera Damping", WIDGET_SLIDER_FLOAT)
         .ValuePointer(&gDampValue)

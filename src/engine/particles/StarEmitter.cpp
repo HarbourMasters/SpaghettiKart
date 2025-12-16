@@ -5,7 +5,7 @@
 
 extern "C" {
 #include "render_objects.h"
-#include "common_data.h"
+#include "assets/models/common_data.h"
 #include "code_80057C60.h"
 #include "update_objects.h"
 #include "code_80086E70.h"

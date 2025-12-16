@@ -10,19 +10,22 @@ void update_actor_banana(struct BananaActor*);
 void render_actor_banana(Camera*, float[4][4], struct BananaActor*);
 }
 
-ABanana::ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const float velocity[3]) {
+ABanana::ABanana(const SpawnParams& params) : AActor(params) {
     Name = "Banana";
-    // Initialize the BananaActor's position, rotation, and velocity
-    std::copy(pos, pos + 3, Pos);
-    //std::copy(rot, rot + 3, this->a.rot);
-    std::copy(velocity, velocity + 3, Velocity);
+    ResourceName = "mk:banana";
+
+    FVector pos = params.Location.value_or(FVector(0, 0, 0));
+    Pos[0] = pos.x; Pos[1] = pos.y; Pos[2] = pos.z;
+
+    FVector vel = params.Velocity.value_or(FVector(0, 0, 0));
+    Velocity[0] = vel.x; Velocity[1] = vel.y; Velocity[2] = vel.z;
 
     Type = 6; // ACTOR_BANANA
     Flags = -0x8000;
     Unk_04 = 20;
     State = HELD_BANANA;
 
-    PlayerId = playerId;
+    PlayerId = 0; // Don't remember why this is here
     
     //this->a.unk_08 = 0.0f;
     Flags |= 0x4000 | 0x1000;

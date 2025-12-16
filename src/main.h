@@ -49,7 +49,7 @@ struct GfxPool {
     /* 0x00180 */ Mtx mtxUnk;                          // Matrix unused
     /* 0x001C0 */ Mtx mtxLookAt[4];                    // Matrix for lookat screen modes
     /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE];       // Matrix hud elements and 2D related effects
-    /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix course objects
+    /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix track objects
     /* 0x0EAC0 */ Mtx mtxShadow[MTX_SHADOW_POOL_SIZE]; // Matrix shadow characters
     /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE];     // Matrix kart characters
     /* 0x0FAC0 */ Mtx mtxEffect[MTX_EFFECT_POOL_SIZE]; // Matrix misc effects
@@ -167,14 +167,12 @@ extern u16 D_8015011E;
 
 extern s32 D_80150120;
 extern s32 gGotoMode;
-extern f32 gCameraZoom[];
 
 extern f32 gScreenAspect;
 extern f32 D_8015014C;
 extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[];
-extern uintptr_t gSegmentTable[];
 extern Gfx* gDisplayListHead;
 extern struct SPTask* gGfxSPTask;
 extern s32 D_801502A0;
@@ -186,7 +184,6 @@ extern Mat4 sBillBoardMtx;
 
 extern s32 padding[];
 
-extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
@@ -208,13 +205,13 @@ extern s32 gGamestate;
 extern s32 gRaceState;
 
 extern u16 D_800DC514;
-extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
 extern s32 gGamestateNext;
 extern s32 gActiveScreenMode;
 extern s32 gScreenModeSelection;
 extern s32 gPlayerCountSelection1;
+extern bool gTourComplete;
 
 extern s32 gModeSelection;
 extern s32 D_800DC540;

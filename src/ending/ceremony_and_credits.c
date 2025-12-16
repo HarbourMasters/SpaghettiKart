@@ -455,7 +455,7 @@ void func_802830B4(CinematicCamera* arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-void func_80283100(CinematicCamera* arg0, f32* arg1) {
+void func_80283100(CinematicCamera* arg0, Camera* camera) {
     if (arg0->unk60 != 0) {
         arg0->unk6E = (coss((u16) arg0->unk64) * arg0->unk60) / 256;
         arg0->unk64 += arg0->unk68;
@@ -463,7 +463,7 @@ void func_80283100(CinematicCamera* arg0, f32* arg1) {
     } else {
         arg0->unk64 = 0.0f;
     }
-    *arg1 = arg0->unk20 + (f32) arg0->unk6E;
+    camera->fieldOfView = arg0->unk20 + (f32) arg0->unk6E;
 }
 
 void func_80283240(s16 arg0) {
@@ -547,7 +547,7 @@ void init_cinematic_camera(void) {
     camera->unk68 = 0.0f;
     camera->unk6C = 0;
     camera->unk6E = 0;
-    camera->unk20 = gCameraZoom[0];
+    camera->unk20 = 60.0f;// gCameraFOV[0];
     sCutsceneShot = 0;
     gCutsceneShotTimer = 0;
     D_802876D4 = 0;
@@ -633,7 +633,7 @@ s32 func_80283648(Camera* camera) {
     }
     func_80282F44(0, cinematicCamera, camera);
     func_80282F44(1, cinematicCamera, camera);
-    func_80283100(cinematicCamera, gCameraZoom);
+    func_80283100(cinematicCamera, camera);
     vec3f_copy_return_dupe(cinematicCamera->unk30, camera->pos);
     vec3f_copy_return_dupe(cinematicCamera->unk24, camera->lookAt);
     vec3f_copy_return_dupe(cinematicCamera->unk3C, camera->up);
@@ -724,12 +724,12 @@ void func_80283BA4(UNUSED CinematicCamera* camera) {
 }
 
 void func_80283BF0(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1A);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_BUILDUP);
 }
 
 //
 void func_80283C14(UNUSED CinematicCamera* camera) {
-    func_800C8EF8(0x1B);
+    play_sequence2(MUSIC_SEQ_AWARD_CEREMONY_1ST_3RD);
 }
 
 void wrap_func_800CB134(UNUSED CinematicCamera* camera) {
@@ -742,7 +742,7 @@ void wrap_func_800CB14C(UNUSED CinematicCamera* camera) {
 
 void func_80283C78(UNUSED CinematicCamera* arg0) {
     if (D_800DC5E4 == 0) {
-        func_800C8EF8(0x1C);
+        play_sequence2(MUSIC_SEQ_STAFF_ROLL);
     }
 }
 
@@ -1488,7 +1488,7 @@ void func_802847CC(CinematicCamera* camera) {
 
     if (gCutsceneShotTimer == sp2C) {
         if (D_80286A04[D_800DC5E4].unk0 != 2) {
-            func_80280268(D_80286A04[D_800DC5E4 + 1].courseId);
+            func_80280268(D_80286A04[D_800DC5E4 + 1].trackId);
         }
     }
 }

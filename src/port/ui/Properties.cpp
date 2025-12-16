@@ -1,7 +1,8 @@
 #include "Properties.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
+#include <variant>
 
 #include <imgui.h>
 #include <map>
@@ -11,97 +12,76 @@
 #include <common_structs.h>
 #include <defines.h>
 
+#include "engine/SpawnParams.h"
 #include "engine/editor/Editor.h"
 #include "port/Game.h"
 #include "src/engine/World.h"
 
-namespace Editor {
+#include "engine/vehicles/Train.h"
+
+extern "C" {
+#include "actors.h"
+}
+
+namespace TrackEditor {
 
     PropertiesWindow::~PropertiesWindow() {
         SPDLOG_TRACE("destruct properties window");
     }
 
     void PropertiesWindow::DrawElement() {
-        GameObject* selected = gEditor.eObjectPicker.eGizmo._selected;
 
-        if (nullptr == selected) {
-            return;
-        }
+        std::visit([this](auto* obj) {
 
-        ImGui::Begin("Properties");
-
-        if (selected->Pos) {
-            ImGui::Text("Location");
-            ImGui::SameLine();
-
-            bool positionChanged = ImGui::DragFloat3("##Location", &selected->Pos->x, 0.1f);
-
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO "##ResetPos")) {
-                selected->Pos->x = 0.0f;
-                selected->Pos->y = 0.0f;
-                selected->Pos->z = 0.0f;
-                positionChanged = true; // also counts as a change
+            using T = std::decay_t<decltype(*obj)>;  // Get the type the pointer is pointing to
+            if (nullptr == obj) {
+                return;
             }
 
-            if (positionChanged) {
-                gEditor.eObjectPicker.eGizmo.Pos = *selected->Pos;
-            }
-        }
+            const char* title;
 
-        if (selected->Rot) {
-            ImGui::Text("Rotation");
-            ImGui::SameLine();
-
-            // Convert to temporary int values (to prevent writing 32bit values to 16bit variables)
-            int rot[3] = {
-                selected->Rot->pitch,
-                selected->Rot->yaw,
-                selected->Rot->roll
-            };
-
-            if (ImGui::DragInt3("##Rotation", rot, 5.0f)) {
-                for (size_t i = 0; i < 3; i++) {
-                    // Wrap around 0–65535
-                    rot[i] = (rot[i] % 65536 + 65536) % 65536;
+            // Get the actors display name, handling AActor (and the C version), OObject, and GameObject types
+            if constexpr (std::is_same_v<T, AActor>) {
+                if (obj->IsMod()) {
+                    title = obj->Name;
+                } else {
+                    title = get_actor_display_name(obj->Type);
                 }
-
-                selected->Rot->pitch = static_cast<uint16_t>(rot[0]);
-                selected->Rot->yaw   = static_cast<uint16_t>(rot[1]);
-                selected->Rot->roll  = static_cast<uint16_t>(rot[2]);
+            } else if constexpr (std::is_same_v<T, OObject>) {
+                title = obj->Name;
+            } else if constexpr (std::is_same_v<T, GameObject>) {
+                title = obj->Name;
+            } else {
+                title = "Unknown type";
             }
 
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO "##ResetRot")) {
-                selected->Rot->pitch = 0;
-                selected->Rot->yaw   = 0;
-                selected->Rot->roll  = 0;
+            // Center Actor Title Text
+            float windowWidth = ImGui::GetWindowSize().x;
+            float textWidth = ImGui::CalcTextSize(title).x;
+
+            ImGui::SetCursorPosX((windowWidth - textWidth) * 0.5f);
+            // Display actor title
+            ImGui::Text(title);
+
+            // Display actor resource name. ex. mk:cloud
+            if (obj->ResourceName[0] != '\0') { // Params is unset for some train components
+                ImGui::Text("Resource Name %s", obj->ResourceName);
             }
-        }
 
-        if (selected->Scale) {
-            ImGui::Text("Scale   ");
-            ImGui::SameLine();
+            obj->DrawEditorProperties();
 
-            ImGui::DragFloat3("##Scale", &selected->Scale->x, 0.1f);
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO "##ResetScale")) {
-                selected->Scale->x = 1.0f;
-                selected->Scale->y = 1.0f;
-                selected->Scale->z = 1.0f;
-            }
-        }
+            }, gEditor.eObjectPicker.eGizmo._selected);
 
-        if (selected->Collision == GameObject::CollisionType::BOUNDING_BOX) {
-            ImGui::Separator();
-            ImGui::Text("Editor Bounding Box Size:");
-            ImGui::PushID("BoundingBoxSize");
-            ImGui::DragFloat("##BoundingBoxSize", &selected->BoundingBoxSize, 0.1f);
-            ImGui::SameLine();
-            if (ImGui::Button(ICON_FA_UNDO)) { selected->BoundingBoxSize = 2.0f; }
-            ImGui::PopID();
-        }
-
-        ImGui::End();
+            // This allowed the user to alter the bounding box of the editor selection if it was too small.
+            // if (selected->Collision == GameObject::CollisionType::BOUNDING_BOX) {
+            //     ImGui::Separator();
+            //     ImGui::Text("Editor Bounding Box Size:");
+            //     ImGui::PushID("BoundingBoxSize");
+            //     ImGui::DragFloat("##BoundingBoxSize", &selected->BoundingBoxSize, 0.1f);
+            //     ImGui::SameLine();
+            //     if (ImGui::Button(ICON_FA_UNDO)) { selected->BoundingBoxSize = 2.0f; }
+            //     ImGui::PopID();
+            // }
     }
+
 }

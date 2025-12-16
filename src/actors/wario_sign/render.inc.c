@@ -1,19 +1,19 @@
 #include <actors.h>
 #include <libultra/gbi.h>
 #include <main.h>
-#include <assets/wario_stadium_data.h>
+#include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
 
 /**
  * @brief Renders the Wario sign actor.
  * Used in Wario Stadium.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  */
-void render_actor_wario_sign(Camera* arg0, struct Actor* arg1) {
+void render_actor_wario_sign(Camera* camera, struct Actor* arg1) {
     Mat4 sp38;
     f32 unk =
-        is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
+        is_within_render_distance(camera->pos, arg1->pos, camera->rot[1], 0, camera->fieldOfView, 16000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         unk = MAX(unk, 0.0f);

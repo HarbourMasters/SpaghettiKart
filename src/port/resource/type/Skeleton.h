@@ -2,7 +2,7 @@
 
 #include "Limb.h"
 
-#include <Resource.h>
+#include <ship/resource/Resource.h>
 
 namespace SF64 {
 class Skeleton : public Ship::Resource<LimbData*> {

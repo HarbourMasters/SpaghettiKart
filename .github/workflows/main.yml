@@ -72,6 +72,7 @@ jobs:
           mv build/x64/${{ matrix.config }}/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt" -OutFile "spaghetti-${{ matrix.config }}/gamecontrollerdb.txt"
       - name: Upload build
         if: matrix.config == 'Release'
@@ -80,7 +81,7 @@ jobs:
           name: spaghetti-windows
           path: spaghetti-${{ matrix.config }}
 
-  build-macos:
+  build-macos-arm64:
     needs: generate-port-o2r
     runs-on: macOS-latest
     strategy:
@@ -114,12 +115,56 @@ jobs:
           mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
           mv config.yml spaghetti-${{ matrix.config }}/
           mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
           wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
       - name: Publish packaged artifacts
         if: matrix.config == 'Release'
         uses: actions/upload-artifact@v4
         with:
-            name: spaghetti-mac-x64
+            name: spaghetti-mac-arm64
+            path: spaghetti-${{ matrix.config }}
+  
+  build-macos-intel:
+    needs: generate-port-o2r
+    runs-on: macOS-latest-intel
+    strategy:
+      matrix:
+        config: [Release, Debug]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+      - name: Install dependencies
+        run: brew install ninja cmake
+      - name: Install vcpkg
+        uses: lukka/run-vcpkg@v11.5
+        with:
+          vcpkgDirectory: '${{ github.workspace }}/vcpkg'
+      - name: Build
+        run: |
+          cmake -H. -Bbuild-cmake -GNinja -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=${{ matrix.config }} -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+          cmake --build build-cmake --config ${{ matrix.config }} -j3
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build-cmake
+      - name: Create Package
+        run: |
+          mkdir spaghetti-${{ matrix.config }}
+          mv build-cmake/Spaghettify spaghetti-${{ matrix.config }}/
+          mv build-cmake/spaghetti.o2r spaghetti-${{ matrix.config }}/
+          mv config.yml spaghetti-${{ matrix.config }}/
+          mv yamls spaghetti-${{ matrix.config }}/
+          mv meta spaghetti-${{ matrix.config }}/
+          wget -O spaghetti-${{ matrix.config }}/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+      - name: Publish packaged artifacts
+        if: matrix.config == 'Release'
+        uses: actions/upload-artifact@v4
+        with:
+            name: spaghetti-mac-intel-x64
             path: spaghetti-${{ matrix.config }}
 
   build-linux:
@@ -299,20 +344,6 @@ jobs:
         run: |
           cmake -H. -Bbuild-cmake -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.config }}
           cmake --build build-cmake --config ${{ matrix.config }} -j3
-          (cd build-cmake && cpack -G External)
-          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
-          mv README.md readme.txt
-          mv build-cmake/*.appimage spaghetti.appimage
-      - name: Upload build
-        if: matrix.config == 'Release'
-        uses: actions/upload-artifact@v4
-        with:
-          name: spaghetti-linux-x64
-          path: |
-            spaghetti.appimage
-            config.yml
-            yamls
-            gamecontrollerdb.txt
 
   build-linux-docker:
     needs: generate-port-o2r
@@ -340,6 +371,96 @@ jobs:
       - name: Build spaghetti
         run: docker run --rm -v ${PWD}:/project spaghetti cmake --build build-cmake --config ${{ matrix.config }} -j$(nproc)
 
+  build-linux-release-docker:
+    needs: generate-port-o2r
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config: [Release]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ hashFiles('script/Dockerfile', 'vcpkg.json') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./script/Dockerfile
+          push: false
+          load: true
+          tags: spaghettikart-builder:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Build project in Docker
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/project" \
+            spaghettikart-builder:latest \
+            bash -c "
+              cp vcpkg.json /tmp/vcpkg.json && \
+              cd /tmp && \
+              \${VCPKG_ROOT}/vcpkg install --triplet x64-linux && \
+              cd /project && \
+              cmake -B build -G Ninja \
+                -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
+                -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
+                -DVCPKG_TARGET_TRIPLET=x64-linux && \
+              cmake --build build --parallel
+            "
+
+      - name: Fix permissions
+        run: sudo chown -R $(id -u):$(id -g) build
+
+      - name: Download spaghetti.o2r
+        uses: actions/download-artifact@v4
+        with:
+          name: spaghetti.o2r
+          path: ./build
+
+      - name: Generate AppImage
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/project" \
+            spaghettikart-builder:latest \
+            bash -c "
+              cd /project/build && \
+              cpack -G External || true
+            "
+
+      - name: Create Package
+        run: |
+          mkdir -p spaghetti-${{ matrix.config }}
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
+          cp build/*.appimage spaghetti-${{ matrix.config }}/ 2>/dev/null || true
+
+      - name: Publish packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaghetti-linux-x64
+          path: spaghetti-${{ matrix.config }}
+
+      # Workaround for cache growing too large
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache || true
+
   build-switch:
     needs: generate-port-o2r
     runs-on: ubuntu-latest
@@ -347,7 +468,7 @@ jobs:
       matrix:
         config: [Release, Debug]
     container:
-      image: devkitpro/devkita64:20241023
+      image: devkitpro/devkita64:20251117
     steps:
       - uses: actions/checkout@v4
         with:

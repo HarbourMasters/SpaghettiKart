@@ -1,30 +1,20 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
+#include "RegisterContent.h"
 #include "engine/World.h"
 #include "engine/objects/Object.h"
 
-extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "course_offsets.h"
-}
-
 class OPenguin : public OObject {
 public:
-    enum PenguinType : uint32_t {
+    enum PenguinType : int16_t {
         CHICK,
         ADULT,
         CREDITS,
         EMPEROR
     };
 
-    enum Behaviour : uint16_t {
+    enum Behaviour : int16_t {
         DISABLED,
         STRUT, // Emperor penguin
         CIRCLE, // Waddle in a circle
@@ -34,15 +24,30 @@ public:
         SLIDE6,
     };
 
-public:
-    f32 Diameter = 0.0f; // Waddle in a circle around the spawn point at this diameter.
-    uint16_t MirrorModeAngleOffset;
+    explicit OPenguin(const SpawnParams& params);
 
-    explicit OPenguin(FVector pos, u16 direction, PenguinType type, Behaviour behaviour);
+    // This is simply a helper function to keep Spawning code clean
+    static OPenguin* Spawn(FVector pos, u16 direction, u16 mirrorModeAngleOffset, f32 diameter, PenguinType type, Behaviour behaviour) {
+        IRotator rot;
+        rot.Set(0, direction, mirrorModeAngleOffset);
+        SpawnParams params = {
+            .Name = "mk:penguin",
+            .Type = type,
+            .Behaviour = behaviour,
+            .Location = pos,
+            .Rotation = rot,
+            .Speed = diameter, // Diameter of the walking circle
+        };
+        return dynamic_cast<OPenguin*>(AddObjectToWorld<OPenguin>(params));
+    }
+
+    PenguinType Type = PenguinType::CHICK;
+    Behaviour SpawnBhv = Behaviour::STRUT;
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
     virtual void Reset() override;
+    virtual void DrawEditorProperties() override;
 private:
     void Behaviours(s32 objectIndex);
     void EmperorPenguin(s32 objectIndex);
@@ -55,6 +60,4 @@ private:
     void InitOtherPenguin(s32 objectIndex);
 
     static bool _toggle;
-    PenguinType _type;
-    Behaviour _bhv;
 };

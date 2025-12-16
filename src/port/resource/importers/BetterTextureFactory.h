@@ -1,7 +1,7 @@
 #pragma once
 
-#include "resource/Resource.h"
-#include "resource/ResourceFactoryBinary.h"
+#include "ship/resource/Resource.h"
+#include "ship/resource/ResourceFactoryBinary.h"
 
 namespace MK64 {
 class ResourceFactoryBinaryTextureV0 final : public Ship::ResourceFactoryBinary {

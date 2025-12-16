@@ -24,8 +24,9 @@
 #include "render_courses.h"
 #include "main.h"
 #include "render_player.h"
+#include "engine/TrackBrowser.h"
 
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
 #include "engine/Matrix.h"
 #include "port/Game.h"
 
@@ -39,9 +40,8 @@ void func_80280000(void) {
     func_8005A070();
 }
 
-void func_80280038(void) {
+void func_80280038(Camera* camera) {
     u16 perspNorm;
-    Camera* camera = &cameras[0];
     UNUSED s32 pad;
     Mat4 matrix;
 
@@ -57,23 +57,24 @@ void func_80280038(void) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(GetPerspMatrix(0), &perspNorm, gCameraZoom[0], gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspective(camera->perspectiveMatrix , &perspNorm, camera->fieldOfView, gScreenAspect, CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(0),
+    gSPMatrix(gDisplayListHead++, camera->perspectiveMatrix,
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    guLookAt(GetLookAtMatrix(0), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
+    guLookAt(camera->lookAtMatrix, camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
              camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(0),
+    gSPMatrix(gDisplayListHead++, camera->lookAtMatrix,
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    TrackBrowser_SetTrackByIdx(gCreditsCourseId);
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    render_course(D_800DC5EC);
-    render_course_actors(D_800DC5EC);
+    render_track(gScreenOneCtx);
+    render_course_actors(gScreenOneCtx);
+    CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
-    render_object(PLAYER_ONE + SCREEN_MODE_1P);
-    render_player_snow_effect(PLAYER_ONE + SCREEN_MODE_1P);
+    render_object(gScreenOneCtx);
+    render_player_snow_effect(camera);
     ceremony_transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -81,18 +82,20 @@ void func_80280038(void) {
     init_rdp();
 }
 
-void func_80280268(s32 courseId) {
+void func_80280268(s32 trackId) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     D_802874A0 = 1;
-    if ((courseId < 0) || ((courseId >= NUM_COURSES - 1))) {
-        courseId = 0;
+    if ((trackId < 0) || ((trackId >= NUM_TRACKS - 1))) {
+        trackId = 0;
     }
-    gCreditsCourseId = courseId;
+    gCreditsCourseId = trackId;
 }
 
 void credits_loop(void) {
-    Camera* camera = &cameras[0];
+    Editor_ClearMatrix();
+    CM_TickEditor();
+    Camera* camera = gScreenOneCtx->camera;
 
     f32 temp_f12;
     f32 temp;
@@ -120,7 +123,7 @@ void credits_loop(void) {
             D_800DC5E4++;
         } else {
             func_80280000();
-            func_80280038();
+            func_80280038(camera);
 #if DVDL
             display_dvdl();
 #endif
@@ -131,41 +134,46 @@ void credits_loop(void) {
 }
 
 void load_credits(void) {
-    Camera* camera = &cameras[0];
+    CM_CleanCameras();
+    Vec3f spawn = {0.0f, 0.0f, 0.0f};
+    Camera* camera = CM_AddCamera(spawn, 0, 0);
+    if (NULL == camera) {
+        return;
+    }
+
+    CM_AttachCamera(camera, PLAYER_ONE);
+    gScreenOneCtx->camera = camera;
+    camera->renderMode = RENDER_FULL_SCENE;
+    camera->unk_B4 = 60.0f;
+    camera->fieldOfView = 60.0f;
 
     gCurrentCourseId = gCreditsCourseId;
-    SetCourseById(gCreditsCourseId);
+    TrackBrowser_SetTrackByIdx(gCreditsCourseId);
     D_800DC5B4 = 1;
-    creditsRenderMode = 1;
     func_802A4D18();
-    func_802A74BC();
-    camera->unk_B4 = 60.0f;
-    gCameraZoom[0] = 60.0f;
-    D_800DC5EC->screenWidth = SCREEN_WIDTH;
-    D_800DC5EC->screenHeight = SCREEN_HEIGHT;
-    D_800DC5EC->screenStartX = 160;
-    D_800DC5EC->screenStartY = 120;
+    set_screen();
+    gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+    gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+    gScreenOneCtx->screenStartX = SCREEN_WIDTH / 2;
+    gScreenOneCtx->screenStartY = SCREEN_HEIGHT / 2;
     gScreenModeSelection = SCREEN_MODE_1P;
     gActiveScreenMode = SCREEN_MODE_1P;
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-    load_course(gCurrentCourseId);
+    load_track(gCurrentCourseId);
     gFreeMemoryCourseAnchor = gNextFreeMemoryAddress;
-#ifdef TARGET_N64
-    set_segment_base_addr(0xB, (void*) decompress_segments((u8*) CEREMONY_DATA_ROM_START, (u8*) CEREMONY_DATA_ROM_END));
-#endif
 
-    gCourseMinX = -0x15A1;
-    gCourseMinY = -0x15A1;
-    gCourseMinZ = -0x15A1;
+    gTrackMinX = -0x15A1;
+    gTrackMinY = -0x15A1;
+    gTrackMinZ = -0x15A1;
 
-    gCourseMaxX = 0x15A1;
-    gCourseMaxY = 0x15A1;
-    gCourseMaxZ = 0x15A1;
+    gTrackMaxX = 0x15A1;
+    gTrackMaxY = 0x15A1;
+    gTrackMaxZ = 0x15A1;
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
     gCollisionMeshCount = 0;
-    D_800DC5BC = 0;
+    bFog = false;
     D_800DC5C8 = 0;
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;
@@ -182,7 +190,7 @@ void load_credits(void) {
     init_hud();
     func_80093E60();
     func_80092688();
-    if (D_800DC5EC) {}
+    if (gScreenOneCtx) {}
     D_801625F8 = ((uintptr_t) gHeapEndPtr - gNextFreeMemoryAddress);
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
 }

@@ -54,3 +54,88 @@ jobs:
           name: spaghetti-linux-x64-${{ matrix.config }}
           path: spaghetti-${{ matrix.config }}
           retention-days: 1
+  build-docker:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config: [Release]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ hashFiles('script/Dockerfile', 'vcpkg.json') }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./script/Dockerfile
+          push: false
+          load: true
+          tags: spaghettikart-builder:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Build project in Docker
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/project" \
+            spaghettikart-builder:latest \
+            bash -c "
+              cp vcpkg.json /tmp/vcpkg.json && \
+              cd /tmp && \
+              \${VCPKG_ROOT}/vcpkg install --triplet x64-linux && \
+              cd /project && \
+              cmake -B build -G Ninja \
+                -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
+                -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
+                -DVCPKG_TARGET_TRIPLET=x64-linux && \
+              cmake --build build --parallel && \
+              make -C torch type=release -j\$(nproc) && \
+              torch/cmake-build-release/torch pack assets build/spaghetti.o2r o2r
+            "
+
+      - name: Fix permissions
+        run: sudo chown -R $(id -u):$(id -g) build
+
+      - name: Generate AppImage
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/project" \
+            spaghettikart-builder:latest \
+            bash -c "
+              cd /project/build && \
+              cpack -G External || true
+            "
+
+      - name: Create Package
+        run: |
+          mkdir -p spaghetti-${{ matrix.config }}
+          wget -O gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt
+          mv gamecontrollerdb.txt spaghetti-${{ matrix.config }}/
+          cp build/*.appimage spaghetti-${{ matrix.config }}/ 2>/dev/null || true
+
+      - name: Publish packaged artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: spaghetti-linux-docker-x64-${{ matrix.config }}
+          path: spaghetti-${{ matrix.config }}
+          retention-days: 7
+
+      # Workaround for cache growing too large
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache || true

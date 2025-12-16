@@ -19,15 +19,8 @@ void func_80028864(Player*, Camera*, s8, s8);
 void func_80028C44(Player*, Camera*, s8, s8);
 void func_80028D3C(Player*, Camera*, s8, s8);
 void func_80028E70(Player*, Camera*, s8, s8);
-void func_80028F5C(s32, s32, s32, s32);
 void func_80028F70(void);
 
-void func_80029060(void);
-void func_80029150(void);
-void func_80029158(void);
-void func_800291E8(void);
-void func_800291F0(void);
-void func_800291F8(void);
 void func_80029200(Player*, s8);
 void func_8002934C(Player*, Camera*, s8, s8);
 
@@ -45,7 +38,7 @@ void func_8002AE30(void);
 void func_8002AE38(Player*, s8, f32, f32, f32, f32);
 
 void func_8002B218(Player*);
-void apply_sound_effect(Player*, s8, s8);
+void apply_triggers(Player*, s8, s8);
 void func_8002B5C0(Player*, s8, s8);
 void func_8002B830(Player*, s8, s8);
 void func_8002B8A4(Player*, Player*);

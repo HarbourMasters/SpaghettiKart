@@ -60,7 +60,7 @@ void update_actor_banana(struct BananaActor* banana) {
                     controller->buttonDepressed &= ~Z_TRIG;
                     banana->state = 1;
                     banana->unk_04 = 0x00B4;
-                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                    player->triggers &= ~DRAG_ITEM_EFFECT;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     pad3 = controller->rawStickY;
                     if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -97,9 +97,9 @@ void update_actor_banana(struct BananaActor* banana) {
                 banana->velocity[1] -= 0.15f;
             }
             banana->pos[1] += banana->velocity[1];
-            if ((banana->pos[2] < (f32) gCourseMinZ) || ((f32) gCourseMaxZ < banana->pos[2]) ||
-                (banana->pos[0] < (f32) gCourseMinX) || ((f32) gCourseMaxX < banana->pos[0]) ||
-                (banana->pos[1] < (f32) gCourseMinY)) {
+            if ((banana->pos[2] < (f32) gTrackMinZ) || ((f32) gTrackMaxZ < banana->pos[2]) ||
+                (banana->pos[0] < (f32) gTrackMinX) || ((f32) gTrackMaxX < banana->pos[0]) ||
+                (banana->pos[1] < (f32) gTrackMinY)) {
                 destroy_destructable_actor((struct Actor*) banana);
             } else {
                 check_bounding_collision(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1],

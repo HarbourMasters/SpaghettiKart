@@ -1,0 +1,91 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x9562F4
+  no_compression: true
+  segments:
+    - [0x0E, 0x9562F4]
+  manual_segments:
+    # Segment 5
+    - [0x5000000, "textures/other_textures/gray_cobblestone"]
+    - [0x5000800, "textures/other_textures/texture_642978"]
+    # Segment 7
+    - [0x7000000, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_0"]
+    - [0x7000210, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_210"]
+    - [0x70003A0, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_3A0"]
+    - [0x70003B8, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_3B8"]
+    - [0x7000580, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_580"]
+    - [0x7000708, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_708"]
+    - [0x7000720, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_720"]
+    - [0x7000738, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_738"]
+    - [0x7000748, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_748"]
+    - [0x7000750, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_750"]
+  # Segment 4
+    - [0x4000000, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000000"]
+    - [0x4000200, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000200"]
+    - [0x4000400, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000600"]
+    - [0x4000800, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000800"]
+    - [0x4000a00, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000A00"]
+    - [0x4000c00, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000C00"]
+    - [0x4000e00, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04000E00"]
+    - [0x4001000, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001000"]
+    - [0x4001200, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001200"]
+    - [0x4001250, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001250"]
+    - [0x4001450, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001450"]
+    - [0x4001650, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001650"]
+    - [0x4001850, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001850"]
+    - [0x4001a50, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001A50"]
+    - [0x4001c50, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001C50"]
+    - [0x4001c80, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001C80"]
+    - [0x4001e80, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04001E80"]
+    - [0x4002080, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04002080"]
+    - [0x4002280, "models/tracks/double_deck/double_deck_vertices/d_course_double_deck_vertex_0x04002280"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_double_deck_packed_dl_0:
+  symbol: d_course_double_deck_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_double_deck_packed_dl_210:
+  symbol: d_course_double_deck_packed_dl_210
+  type: MK64:PACKED_GFX
+  offset: 0x10D
+d_course_double_deck_packed_dl_3A0:
+  symbol: d_course_double_deck_packed_dl_3A0
+  type: MK64:PACKED_GFX
+  offset: 0x1CA
+d_course_double_deck_packed_dl_3B8:
+  symbol: d_course_double_deck_packed_dl_3B8
+  type: MK64:PACKED_GFX
+  offset: 0x1D1
+d_course_double_deck_packed_dl_580:
+  symbol: d_course_double_deck_packed_dl_580
+  type: MK64:PACKED_GFX
+  offset: 0x2B3
+d_course_double_deck_packed_dl_708:
+  symbol: d_course_double_deck_packed_dl_708
+  type: MK64:PACKED_GFX
+  offset: 0x35F
+d_course_double_deck_packed_dl_720:
+  symbol: d_course_double_deck_packed_dl_720
+  type: MK64:PACKED_GFX
+  offset: 0x366
+d_course_double_deck_packed_dl_738:
+  symbol: d_course_double_deck_packed_dl_738
+  type: MK64:PACKED_GFX
+  offset: 0x36D
+d_course_double_deck_packed_dl_748:
+  symbol: d_course_double_deck_packed_dl_748
+  type: MK64:PACKED_GFX
+  offset: 0x371
+d_course_double_deck_packed_dl_750:
+  symbol: d_course_double_deck_packed_dl_750
+  type: MK64:PACKED_GFX
+  offset: 0x372
+

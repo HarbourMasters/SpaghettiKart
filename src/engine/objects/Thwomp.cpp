@@ -2,6 +2,8 @@
 #include <libultra/gbi.h>
 #include "Thwomp.h"
 #include <vector>
+#include "engine/tracks/Track.h"
+#include "engine/World.h"
 
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
@@ -24,12 +26,14 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "math_util_2.h"
 #include "collision.h"
-#include "assets/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
+#include "assets/textures/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ceremony_and_credits.h"
 #include "objects.h"
 #include "update_objects.h"
 #include "render_objects.h"
 #include "some_data.h"
+#include "assets/models/common_data.h"
 extern s8 gPlayerCount;
 }
 
@@ -48,30 +52,54 @@ s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
 size_t OThwomp::_count = 0;
 size_t OThwomp::_rand = 0;
 
-OThwomp::OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize) {
+OThwomp::OThwomp(const SpawnParams& params) : OObject(params) { // s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize) {
+    FVector loc = params.Location.value_or(FVector{0, 0, 0});
+    IRotator rot = params.Rotation.value_or(IRotator{0, 0, 0});
+    BoundingBoxSize = params.BoundingBoxSize.value_or(0);
+    Behaviour = static_cast<OThwomp::States>(params.Behaviour.value_or(1));
+    PrimAlpha = params.PrimAlpha.value_or(0);
+    FVector scale = params.Scale.value_or(FVector(0, 0, 0));
+
     Name = "Thwomp";
+    ResourceName = "mk:thwomp";
+    Model = "d_course_bowsers_castle_dl_thwomp";
     _idx = _count;
-    _faceDirection = direction;
-    _boundingBoxSize = boundingBoxSize;
-    State = (States)behaviour;
+    _faceDirection = rot.yaw;
 
     find_unused_obj_index(&_objectIndex);
 
     s32 objectId = _objectIndex;
     init_object(objectId, 0);
-    gObjectList[objectId].origin_pos[0] = x * xOrientation;
-    gObjectList[objectId].origin_pos[2] = z;
-    gObjectList[objectId].unk_0D5 = behaviour;
-    gObjectList[objectId].primAlpha = primAlpha;
-    gObjectList[objectId].boundingBoxSize = boundingBoxSize + 5;
+    gObjectList[objectId].origin_pos[0] = loc.x * xOrientation;
+    gObjectList[objectId].origin_pos[2] = loc.z;
+    gObjectList[objectId].unk_0D5 = Behaviour;
+    gObjectList[objectId].primAlpha = PrimAlpha;
+    gObjectList[objectId].boundingBoxSize = BoundingBoxSize + 5;
 
-    if (scale == 0.0f) {
-        scale = 1.0f;
+    if (scale.y == 0.0f) {
+        scale.y = 1.0f;
     }
 
-    gObjectList[objectId].sizeScaling = scale;
+    gObjectList[objectId].sizeScaling = scale.y;
 
     _count++;
+}
+
+void OThwomp::SetSpawnParams(SpawnParams& params) {
+    Object* object = &gObjectList[_objectIndex];
+    params.Name = std::string(ResourceName);
+    params.Location = FVector(
+        object->origin_pos[0],
+        object->origin_pos[1],
+        object->origin_pos[2]
+    );
+    IRotator rot; rot.Set(0, object->orientation[1], 0);
+    params.Rotation = rot;
+    params.Scale = FVector(0, object->sizeScaling, 0);
+    params.Behaviour = Behaviour;
+    params.PrimAlpha = PrimAlpha;
+    params.BoundingBoxSize = BoundingBoxSize;
+
 }
 
 void OThwomp::Tick60fps() { // func_80081210
@@ -94,23 +122,23 @@ void OThwomp::Tick60fps() { // func_80081210
     }
 
     if (gObjectList[_objectIndex].state != 0) {
-        switch (State) {
-            case STATIONARY:
+        switch(Behaviour) {
+            case States::STATIONARY:
                 OThwomp::StationaryBehaviour(_objectIndex);
                 break;
-            case MOVE_AND_ROTATE:
+            case States::MOVE_AND_ROTATE:
                 OThwomp::MoveAndRotateBehaviour(_objectIndex);
                 break;
-            case MOVE_FAR:
+            case States::MOVE_FAR:
                 OThwomp::MoveFarBehaviour(_objectIndex);
                 break;
-            case STATIONARY_FAST:
+            case States::STATIONARY_FAST:
                 OThwomp::StationaryFastBehaviour(_objectIndex);
                 break;
-            case JAILED:
+            case States::JAILED:
                 OThwomp::JailedBehaviour(_objectIndex);
                 break;
-            case SLIDE:
+            case States::SLIDE:
                 OThwomp::SlidingBehaviour(_objectIndex);
                 break;
         }
@@ -137,8 +165,6 @@ void OThwomp::Tick60fps() { // func_80081210
         func_800722CC(_objectIndex, 0x00000020);
         OThwomp::AddParticles(_objectIndex);
     }
-
-
 
     if (_idx == 0) {
         for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
@@ -618,7 +644,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
 
     player = &gPlayerOne[playerId];
     if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
-        if (!(player->soundEffects & 0x100)) {
+        if (!(player->triggers & THWOMP_SQUISH_TRIGGER)) {
             temp_f0 = func_80088F54(objectIndex, player);
             if ((temp_f0 <= 9.0) && !(player->effects & 0x04000000) &&
                 (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
@@ -641,7 +667,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
                        (is_within_horizontal_distance_of_player(objectIndex, player,
-                                                                (player->speed * 0.5) + _boundingBoxSize) != 0)) {
+                                                                (player->speed * 0.5) + BoundingBoxSize) != 0)) {
                 if ((player->type & 0x8000) && !(player->type & 0x100)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -649,7 +675,7 @@ void OThwomp::func_80080B28(s32 objectIndex, s32 playerId) {
                     func_800722A4(objectIndex, 2);
                     player->unk_040 = (s16) objectIndex;
                     player->unk_046 |= 2;
-                    player->soundEffects |= 0x100;
+                    player->triggers |= THWOMP_SQUISH_TRIGGER;
                     reset_player_speed_and_velocity(player);
                 }
             }
@@ -677,8 +703,8 @@ void OThwomp::Draw(s32 cameraId) {
     Camera* camera;
     Object* object;
 
-    camera = &camera1[cameraId];
-    if (cameraId == PLAYER_ONE) {
+    camera = &cameras[cameraId];
+    if (cameraId == PLAYER_ONE || cameraId == 4) { // 4 == freecam
         clear_object_flag(objectIndex, 0x00070000);
         func_800722CC(objectIndex, 0x00000110);
     }
@@ -704,7 +730,7 @@ void OThwomp::Draw(s32 cameraId) {
         objectIndex = gObjectParticle3[i];
         if (objectIndex != NULL_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            if ((object->state > 0) && (State == MOVE_FAR) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((object->state > 0) && (Behaviour == States::MOVE_FAR)) {
                 rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
                 gSPVertex(gDisplayListHead++, (uintptr_t) D_0D005C00, 3, 0);
                 gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D006930);
@@ -723,7 +749,7 @@ void OThwomp::Draw(s32 cameraId) {
         objectIndex = gObjectParticle2[i];
         if (objectIndex != NULL_OBJECT_ID) {
             object = &gObjectList[objectIndex];
-            if ((object->state >= 2) && (State == MOVE_AND_ROTATE) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((object->state >= 2) && (Behaviour == States::MOVE_AND_ROTATE)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) object->primAlpha);
                 D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
                 func_800431B0(object->pos, D_80183E80, object->sizeScaling, (Vtx*) D_0D005AE0);
@@ -734,6 +760,7 @@ void OThwomp::Draw(s32 cameraId) {
 
 void OThwomp::DrawModel(s32 objectIndex) {
     if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
+        FrameInterpolation_RecordOpenChild("Thwomp_Main", TAG_THWOMP(this));
         func_8004A7AC(objectIndex, 1.75f);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                       gObjectList[objectIndex].sizeScaling);
@@ -743,6 +770,7 @@ void OThwomp::DrawModel(s32 objectIndex) {
         gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
         rsp_load_texture_mask((u8*) gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
         gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].model);
+        FrameInterpolation_RecordCloseChild();
     }
 }
 
@@ -788,7 +816,7 @@ void OThwomp::func_80080DE4(s32 arg0) {
     player = gPlayerOne;
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
-            player->soundEffects &= ~0x100;
+            player->triggers &= ~THWOMP_SQUISH_TRIGGER;
             player->unk_040 = -1;
         }
     }
@@ -1446,5 +1474,110 @@ void OThwomp::func_8007E63C(s32 objectIndex) {
                 func_8007266C(objectIndex);
             }
             break;
+    }
+}
+
+void OThwomp::DrawEditorProperties() {
+    ImGui::Text("Behaviour");
+    ImGui::SameLine();
+
+    int32_t behaviour = static_cast<int32_t>(Behaviour);
+    const char* items[] = { "Disabled", "Stationary", "Move and Rotate", "Move Far", "Stationary Fast", "Slide", "Jailed" };
+
+    if (ImGui::Combo("##Behaviour", &behaviour, items, IM_ARRAYSIZE(items))) {
+        Behaviour = static_cast<OThwomp::States>(behaviour);
+        gObjectList[_objectIndex].unk_0D5 = static_cast<uint8_t>(behaviour);
+        gObjectList[_objectIndex].state = behaviour;
+    }
+
+    ImGui::Text("Location");
+    ImGui::SameLine();
+    FVector location = GetLocation();
+    if (ImGui::DragFloat3("##Location", (float*)&location)) {
+        Translate(location);
+        gEditor.eObjectPicker.eGizmo.Pos = location;
+    }
+
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetPos")) {
+        FVector location = FVector(0, 0, 0);
+        Translate(location);
+        gEditor.eObjectPicker.eGizmo.Pos = location;
+    }
+
+    ImGui::Text("Rotation");
+    ImGui::SameLine();
+
+    IRotator objRot = GetRotation();
+
+    // Convert to temporary int values (to prevent writing 32bit values to 16bit variables)
+    int rot[3] = {
+        objRot.pitch,
+        objRot.yaw,
+        objRot.roll
+    };
+
+    if (ImGui::DragInt3("##Rotation", rot, 5.0f)) {
+        for (size_t i = 0; i < 3; i++) {
+            // Wrap around 0–65535
+            rot[i] = (rot[i] % 65536 + 65536) % 65536;
+        }
+        IRotator newRot;
+        newRot.Set(
+            static_cast<uint16_t>(rot[0]),
+            static_cast<uint16_t>(rot[1]),
+            static_cast<uint16_t>(rot[2])
+        );
+        Rotate(newRot);
+    }
+
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetRot")) {
+        IRotator rot = IRotator(0, 0, 0);
+        Rotate(rot);
+    }
+
+    FVector scale = GetScale();
+    ImGui::Text("Scale   ");
+    ImGui::SameLine();
+
+    if (ImGui::DragFloat3("##Scale", (float*)&scale, 0.1f)) {
+        SetScale(scale);
+        gObjectList[_objectIndex].sizeScaling = scale.y;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetScale")) {
+        FVector scale = FVector(1.0f, 1.0f, 1.0f);
+        SetScale(scale);
+        gObjectList[_objectIndex].sizeScaling = 1.0f;
+    }
+
+    int32_t primAlpha = PrimAlpha;
+    ImGui::Text("Prim Alpha");
+    ImGui::SameLine();
+
+    if (ImGui::InputInt("##PrimAlpha", (int*)&primAlpha)) {
+        PrimAlpha = static_cast<int16_t>(primAlpha);
+        gObjectList[_objectIndex].primAlpha = static_cast<int16_t>(primAlpha);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetPrimAlpha")) {
+        PrimAlpha = 0;
+        gObjectList[_objectIndex].primAlpha = 0;
+    }
+
+    int32_t boundingBoxSize = static_cast<int32_t>(BoundingBoxSize);
+    ImGui::Text("Bounding Box Size");
+    ImGui::SameLine();
+
+    if (ImGui::InputInt("##BoundingBoxSize", (int*)&boundingBoxSize)) {
+        if (boundingBoxSize < 0) boundingBoxSize = 0;
+        BoundingBoxSize = static_cast<OThwomp::States>(boundingBoxSize);
+        gObjectList[_objectIndex].boundingBoxSize = static_cast<uint16_t>(boundingBoxSize);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetBoundingBoxSize")) {
+        BoundingBoxSize = 0;
+        gObjectList[_objectIndex].boundingBoxSize = 0;
     }
 }

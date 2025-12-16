@@ -1,0 +1,1497 @@
+:config:
+  segments:
+    - [0x0F, 0x89B510]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_choco_mountain_vertex_0x04000000:
+  symbol: d_course_choco_mountain_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x0
+
+d_course_choco_mountain_vertex_0x04000200:
+  symbol: d_course_choco_mountain_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c0
+
+d_course_choco_mountain_vertex_0x04000400:
+  symbol: d_course_choco_mountain_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_choco_mountain_vertex_0x04000600:
+  symbol: d_course_choco_mountain_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x540
+
+d_course_choco_mountain_vertex_0x04000800:
+  symbol: d_course_choco_mountain_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x700
+
+d_course_choco_mountain_vertex_0x04000A00:
+  symbol: d_course_choco_mountain_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x8c0
+
+d_course_choco_mountain_vertex_0x04000B00:
+  symbol: d_course_choco_mountain_vertex_0x04000B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9a0
+
+d_course_choco_mountain_vertex_0x04000D00:
+  symbol: d_course_choco_mountain_vertex_0x04000D00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb60
+
+d_course_choco_mountain_vertex_0x04000E00:
+  symbol: d_course_choco_mountain_vertex_0x04000E00
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xc40
+
+d_course_choco_mountain_vertex_0x04000F80:
+  symbol: d_course_choco_mountain_vertex_0x04000F80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd90
+
+d_course_choco_mountain_vertex_0x040010C0:
+  symbol: d_course_choco_mountain_vertex_0x040010C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xea8
+
+d_course_choco_mountain_vertex_0x04001240:
+  symbol: d_course_choco_mountain_vertex_0x04001240
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xff8
+
+d_course_choco_mountain_vertex_0x040012C0:
+  symbol: d_course_choco_mountain_vertex_0x040012C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1068
+
+d_course_choco_mountain_vertex_0x04001340:
+  symbol: d_course_choco_mountain_vertex_0x04001340
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10d8
+
+d_course_choco_mountain_vertex_0x040013C0:
+  symbol: d_course_choco_mountain_vertex_0x040013C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1148
+
+d_course_choco_mountain_vertex_0x04001480:
+  symbol: d_course_choco_mountain_vertex_0x04001480
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11f0
+
+d_course_choco_mountain_vertex_0x04001500:
+  symbol: d_course_choco_mountain_vertex_0x04001500
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x1260
+
+d_course_choco_mountain_vertex_0x040016A0:
+  symbol: d_course_choco_mountain_vertex_0x040016A0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x13cc
+
+d_course_choco_mountain_vertex_0x04001860:
+  symbol: d_course_choco_mountain_vertex_0x04001860
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1554
+
+d_course_choco_mountain_vertex_0x040019A0:
+  symbol: d_course_choco_mountain_vertex_0x040019A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x166c
+
+d_course_choco_mountain_vertex_0x04001A60:
+  symbol: d_course_choco_mountain_vertex_0x04001A60
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1714
+
+d_course_choco_mountain_vertex_0x04001B40:
+  symbol: d_course_choco_mountain_vertex_0x04001B40
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x17d8
+
+d_course_choco_mountain_vertex_0x04001B90:
+  symbol: d_course_choco_mountain_vertex_0x04001B90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x181e
+
+d_course_choco_mountain_vertex_0x04001D80:
+  symbol: d_course_choco_mountain_vertex_0x04001D80
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x19d0
+
+d_course_choco_mountain_vertex_0x04001DE0:
+  symbol: d_course_choco_mountain_vertex_0x04001DE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1a24
+
+d_course_choco_mountain_vertex_0x04001FC0:
+  symbol: d_course_choco_mountain_vertex_0x04001FC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1bc8
+
+d_course_choco_mountain_vertex_0x04002020:
+  symbol: d_course_choco_mountain_vertex_0x04002020
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1c1c
+
+d_course_choco_mountain_vertex_0x040020F0:
+  symbol: d_course_choco_mountain_vertex_0x040020F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1cd2
+
+d_course_choco_mountain_vertex_0x040021B0:
+  symbol: d_course_choco_mountain_vertex_0x040021B0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1d7a
+
+d_course_choco_mountain_vertex_0x040022D0:
+  symbol: d_course_choco_mountain_vertex_0x040022D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1e76
+
+d_course_choco_mountain_vertex_0x040023B0:
+  symbol: d_course_choco_mountain_vertex_0x040023B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x1f3a
+
+d_course_choco_mountain_vertex_0x040025A0:
+  symbol: d_course_choco_mountain_vertex_0x040025A0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x20ec
+
+d_course_choco_mountain_vertex_0x04002630:
+  symbol: d_course_choco_mountain_vertex_0x04002630
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x216a
+
+d_course_choco_mountain_vertex_0x040026F0:
+  symbol: d_course_choco_mountain_vertex_0x040026F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x2212
+
+d_course_choco_mountain_vertex_0x040028E0:
+  symbol: d_course_choco_mountain_vertex_0x040028E0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x23c4
+
+d_course_choco_mountain_vertex_0x04002A30:
+  symbol: d_course_choco_mountain_vertex_0x04002A30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x24ea
+
+d_course_choco_mountain_vertex_0x04002C30:
+  symbol: d_course_choco_mountain_vertex_0x04002C30
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x26aa
+
+d_course_choco_mountain_vertex_0x04002D70:
+  symbol: d_course_choco_mountain_vertex_0x04002D70
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x27c2
+
+d_course_choco_mountain_vertex_0x04002F60:
+  symbol: d_course_choco_mountain_vertex_0x04002F60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2974
+
+d_course_choco_mountain_vertex_0x04003020:
+  symbol: d_course_choco_mountain_vertex_0x04003020
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x2a1c
+
+d_course_choco_mountain_vertex_0x04003110:
+  symbol: d_course_choco_mountain_vertex_0x04003110
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2aee
+
+d_course_choco_mountain_vertex_0x040032F0:
+  symbol: d_course_choco_mountain_vertex_0x040032F0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x2c92
+
+d_course_choco_mountain_vertex_0x04003380:
+  symbol: d_course_choco_mountain_vertex_0x04003380
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x2d10
+
+d_course_choco_mountain_vertex_0x040034B0:
+  symbol: d_course_choco_mountain_vertex_0x040034B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x2e1a
+
+d_course_choco_mountain_vertex_0x04003690:
+  symbol: d_course_choco_mountain_vertex_0x04003690
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x2fbe
+
+d_course_choco_mountain_vertex_0x04003780:
+  symbol: d_course_choco_mountain_vertex_0x04003780
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x3090
+
+d_course_choco_mountain_vertex_0x04003970:
+  symbol: d_course_choco_mountain_vertex_0x04003970
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3242
+
+d_course_choco_mountain_vertex_0x040039D0:
+  symbol: d_course_choco_mountain_vertex_0x040039D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3296
+
+d_course_choco_mountain_vertex_0x04003BD0:
+  symbol: d_course_choco_mountain_vertex_0x04003BD0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x3456
+
+d_course_choco_mountain_vertex_0x04003D20:
+  symbol: d_course_choco_mountain_vertex_0x04003D20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x357c
+
+d_course_choco_mountain_vertex_0x04003F20:
+  symbol: d_course_choco_mountain_vertex_0x04003F20
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x373c
+
+d_course_choco_mountain_vertex_0x04003FB0:
+  symbol: d_course_choco_mountain_vertex_0x04003FB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x37ba
+
+d_course_choco_mountain_vertex_0x040041A0:
+  symbol: d_course_choco_mountain_vertex_0x040041A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x396c
+
+d_course_choco_mountain_vertex_0x040042E0:
+  symbol: d_course_choco_mountain_vertex_0x040042E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3a84
+
+d_course_choco_mountain_vertex_0x040044E0:
+  symbol: d_course_choco_mountain_vertex_0x040044E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x3c44
+
+d_course_choco_mountain_vertex_0x04004540:
+  symbol: d_course_choco_mountain_vertex_0x04004540
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3c98
+
+d_course_choco_mountain_vertex_0x04004720:
+  symbol: d_course_choco_mountain_vertex_0x04004720
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3e3c
+
+d_course_choco_mountain_vertex_0x04004920:
+  symbol: d_course_choco_mountain_vertex_0x04004920
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3ffc
+
+d_course_choco_mountain_vertex_0x040049E0:
+  symbol: d_course_choco_mountain_vertex_0x040049E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x40a4
+
+d_course_choco_mountain_vertex_0x04004BC0:
+  symbol: d_course_choco_mountain_vertex_0x04004BC0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x4248
+
+d_course_choco_mountain_vertex_0x04004CB0:
+  symbol: d_course_choco_mountain_vertex_0x04004CB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x431a
+
+d_course_choco_mountain_vertex_0x04004EB0:
+  symbol: d_course_choco_mountain_vertex_0x04004EB0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x44da
+
+d_course_choco_mountain_vertex_0x04004F70:
+  symbol: d_course_choco_mountain_vertex_0x04004F70
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4582
+
+d_course_choco_mountain_vertex_0x04005150:
+  symbol: d_course_choco_mountain_vertex_0x04005150
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x4726
+
+d_course_choco_mountain_vertex_0x04005240:
+  symbol: d_course_choco_mountain_vertex_0x04005240
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x47f8
+
+d_course_choco_mountain_vertex_0x04005350:
+  symbol: d_course_choco_mountain_vertex_0x04005350
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x48e6
+
+d_course_choco_mountain_vertex_0x040053D0:
+  symbol: d_course_choco_mountain_vertex_0x040053D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4956
+
+d_course_choco_mountain_vertex_0x040055B0:
+  symbol: d_course_choco_mountain_vertex_0x040055B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4afa
+
+d_course_choco_mountain_vertex_0x040057A0:
+  symbol: d_course_choco_mountain_vertex_0x040057A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x4cac
+
+d_course_choco_mountain_vertex_0x04005980:
+  symbol: d_course_choco_mountain_vertex_0x04005980
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x4e50
+
+d_course_choco_mountain_vertex_0x04005B70:
+  symbol: d_course_choco_mountain_vertex_0x04005B70
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x5002
+
+d_course_choco_mountain_vertex_0x04005CC0:
+  symbol: d_course_choco_mountain_vertex_0x04005CC0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x5128
+
+d_course_choco_mountain_vertex_0x04005EB0:
+  symbol: d_course_choco_mountain_vertex_0x04005EB0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x52da
+
+d_course_choco_mountain_vertex_0x04006070:
+  symbol: d_course_choco_mountain_vertex_0x04006070
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5462
+
+d_course_choco_mountain_vertex_0x04006270:
+  symbol: d_course_choco_mountain_vertex_0x04006270
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5622
+
+d_course_choco_mountain_vertex_0x04006470:
+  symbol: d_course_choco_mountain_vertex_0x04006470
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x57e2
+
+d_course_choco_mountain_vertex_0x04006660:
+  symbol: d_course_choco_mountain_vertex_0x04006660
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x5994
+
+d_course_choco_mountain_vertex_0x040067C0:
+  symbol: d_course_choco_mountain_vertex_0x040067C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x5ac8
+
+d_course_choco_mountain_vertex_0x040069B0:
+  symbol: d_course_choco_mountain_vertex_0x040069B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5c7a
+
+d_course_choco_mountain_vertex_0x04006B90:
+  symbol: d_course_choco_mountain_vertex_0x04006B90
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x5e1e
+
+d_course_choco_mountain_vertex_0x04006C30:
+  symbol: d_course_choco_mountain_vertex_0x04006C30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5eaa
+
+d_course_choco_mountain_vertex_0x04006E30:
+  symbol: d_course_choco_mountain_vertex_0x04006E30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x606a
+
+d_course_choco_mountain_vertex_0x04007010:
+  symbol: d_course_choco_mountain_vertex_0x04007010
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x620e
+
+d_course_choco_mountain_vertex_0x04007210:
+  symbol: d_course_choco_mountain_vertex_0x04007210
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x63ce
+
+d_course_choco_mountain_vertex_0x04007410:
+  symbol: d_course_choco_mountain_vertex_0x04007410
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x658e
+
+d_course_choco_mountain_vertex_0x04007550:
+  symbol: d_course_choco_mountain_vertex_0x04007550
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x66a6
+
+d_course_choco_mountain_vertex_0x04007740:
+  symbol: d_course_choco_mountain_vertex_0x04007740
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6858
+
+d_course_choco_mountain_vertex_0x04007930:
+  symbol: d_course_choco_mountain_vertex_0x04007930
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6a0a
+
+d_course_choco_mountain_vertex_0x04007B30:
+  symbol: d_course_choco_mountain_vertex_0x04007B30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6bca
+
+d_course_choco_mountain_vertex_0x04007BF0:
+  symbol: d_course_choco_mountain_vertex_0x04007BF0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6c72
+
+d_course_choco_mountain_vertex_0x04007DD0:
+  symbol: d_course_choco_mountain_vertex_0x04007DD0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x6e16
+
+d_course_choco_mountain_vertex_0x04007EF0:
+  symbol: d_course_choco_mountain_vertex_0x04007EF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6f12
+
+d_course_choco_mountain_vertex_0x040080F0:
+  symbol: d_course_choco_mountain_vertex_0x040080F0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x70d2
+
+d_course_choco_mountain_vertex_0x040081A0:
+  symbol: d_course_choco_mountain_vertex_0x040081A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x716c
+
+d_course_choco_mountain_vertex_0x04008380:
+  symbol: d_course_choco_mountain_vertex_0x04008380
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7310
+
+d_course_choco_mountain_vertex_0x04008560:
+  symbol: d_course_choco_mountain_vertex_0x04008560
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x74b4
+
+d_course_choco_mountain_vertex_0x04008750:
+  symbol: d_course_choco_mountain_vertex_0x04008750
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x7666
+
+d_course_choco_mountain_vertex_0x04008840:
+  symbol: d_course_choco_mountain_vertex_0x04008840
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x7738
+
+d_course_choco_mountain_vertex_0x04008A30:
+  symbol: d_course_choco_mountain_vertex_0x04008A30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x78ea
+
+d_course_choco_mountain_vertex_0x04008AF0:
+  symbol: d_course_choco_mountain_vertex_0x04008AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7992
+
+d_course_choco_mountain_vertex_0x04008B30:
+  symbol: d_course_choco_mountain_vertex_0x04008B30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x79ca
+
+d_course_choco_mountain_vertex_0x04008D20:
+  symbol: d_course_choco_mountain_vertex_0x04008D20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x7b7c
+
+d_course_choco_mountain_vertex_0x04008F10:
+  symbol: d_course_choco_mountain_vertex_0x04008F10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7d2e
+
+d_course_choco_mountain_vertex_0x04008FD0:
+  symbol: d_course_choco_mountain_vertex_0x04008FD0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x7dd6
+
+d_course_choco_mountain_vertex_0x040091A0:
+  symbol: d_course_choco_mountain_vertex_0x040091A0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x7f6c
+
+d_course_choco_mountain_vertex_0x040092D0:
+  symbol: d_course_choco_mountain_vertex_0x040092D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8076
+
+d_course_choco_mountain_vertex_0x040094B0:
+  symbol: d_course_choco_mountain_vertex_0x040094B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x821a
+
+d_course_choco_mountain_vertex_0x04009690:
+  symbol: d_course_choco_mountain_vertex_0x04009690
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x83be
+
+d_course_choco_mountain_vertex_0x040096C0:
+  symbol: d_course_choco_mountain_vertex_0x040096C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x83e8
+
+d_course_choco_mountain_vertex_0x040098A0:
+  symbol: d_course_choco_mountain_vertex_0x040098A0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x858c
+
+d_course_choco_mountain_vertex_0x040099C0:
+  symbol: d_course_choco_mountain_vertex_0x040099C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8688
+
+d_course_choco_mountain_vertex_0x04009BA0:
+  symbol: d_course_choco_mountain_vertex_0x04009BA0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x882c
+
+d_course_choco_mountain_vertex_0x04009C00:
+  symbol: d_course_choco_mountain_vertex_0x04009C00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8880
+
+d_course_choco_mountain_vertex_0x04009DE0:
+  symbol: d_course_choco_mountain_vertex_0x04009DE0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8a24
+
+d_course_choco_mountain_vertex_0x04009FC0:
+  symbol: d_course_choco_mountain_vertex_0x04009FC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x8bc8
+
+d_course_choco_mountain_vertex_0x0400A020:
+  symbol: d_course_choco_mountain_vertex_0x0400A020
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8c1c
+
+d_course_choco_mountain_vertex_0x0400A220:
+  symbol: d_course_choco_mountain_vertex_0x0400A220
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8ddc
+
+d_course_choco_mountain_vertex_0x0400A400:
+  symbol: d_course_choco_mountain_vertex_0x0400A400
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x8f80
+
+d_course_choco_mountain_vertex_0x0400A540:
+  symbol: d_course_choco_mountain_vertex_0x0400A540
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x9098
+
+d_course_choco_mountain_vertex_0x0400A630:
+  symbol: d_course_choco_mountain_vertex_0x0400A630
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x916a
+
+d_course_choco_mountain_vertex_0x0400A820:
+  symbol: d_course_choco_mountain_vertex_0x0400A820
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x931c
+
+d_course_choco_mountain_vertex_0x0400AA00:
+  symbol: d_course_choco_mountain_vertex_0x0400AA00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x94c0
+
+d_course_choco_mountain_vertex_0x0400ABE0:
+  symbol: d_course_choco_mountain_vertex_0x0400ABE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9664
+
+d_course_choco_mountain_vertex_0x0400AC60:
+  symbol: d_course_choco_mountain_vertex_0x0400AC60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x96d4
+
+d_course_choco_mountain_vertex_0x0400AE50:
+  symbol: d_course_choco_mountain_vertex_0x0400AE50
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9886
+
+d_course_choco_mountain_vertex_0x0400B050:
+  symbol: d_course_choco_mountain_vertex_0x0400B050
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x9a46
+
+d_course_choco_mountain_vertex_0x0400B1A0:
+  symbol: d_course_choco_mountain_vertex_0x0400B1A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x9b6c
+
+d_course_choco_mountain_vertex_0x0400B390:
+  symbol: d_course_choco_mountain_vertex_0x0400B390
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9d1e
+
+d_course_choco_mountain_vertex_0x0400B590:
+  symbol: d_course_choco_mountain_vertex_0x0400B590
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x9ede
+
+d_course_choco_mountain_vertex_0x0400B650:
+  symbol: d_course_choco_mountain_vertex_0x0400B650
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9f86
+
+d_course_choco_mountain_vertex_0x0400B830:
+  symbol: d_course_choco_mountain_vertex_0x0400B830
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa12a
+
+d_course_choco_mountain_vertex_0x0400BA30:
+  symbol: d_course_choco_mountain_vertex_0x0400BA30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa2ea
+
+d_course_choco_mountain_vertex_0x0400BC20:
+  symbol: d_course_choco_mountain_vertex_0x0400BC20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa49c
+
+d_course_choco_mountain_vertex_0x0400BE00:
+  symbol: d_course_choco_mountain_vertex_0x0400BE00
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xa640
+
+d_course_choco_mountain_vertex_0x0400BE30:
+  symbol: d_course_choco_mountain_vertex_0x0400BE30
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa66a
+
+d_course_choco_mountain_vertex_0x0400C030:
+  symbol: d_course_choco_mountain_vertex_0x0400C030
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xa82a
+
+d_course_choco_mountain_vertex_0x0400C1B0:
+  symbol: d_course_choco_mountain_vertex_0x0400C1B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa97a
+
+d_course_choco_mountain_vertex_0x0400C3A0:
+  symbol: d_course_choco_mountain_vertex_0x0400C3A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xab2c
+
+d_course_choco_mountain_vertex_0x0400C580:
+  symbol: d_course_choco_mountain_vertex_0x0400C580
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xacd0
+
+d_course_choco_mountain_vertex_0x0400C5B0:
+  symbol: d_course_choco_mountain_vertex_0x0400C5B0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xacfa
+
+d_course_choco_mountain_vertex_0x0400C5E0:
+  symbol: d_course_choco_mountain_vertex_0x0400C5E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xad24
+
+d_course_choco_mountain_vertex_0x0400C7D0:
+  symbol: d_course_choco_mountain_vertex_0x0400C7D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xaed6
+
+d_course_choco_mountain_vertex_0x0400C9C0:
+  symbol: d_course_choco_mountain_vertex_0x0400C9C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb088
+
+d_course_choco_mountain_vertex_0x0400CBB0:
+  symbol: d_course_choco_mountain_vertex_0x0400CBB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb23a
+
+d_course_choco_mountain_vertex_0x0400CDA0:
+  symbol: d_course_choco_mountain_vertex_0x0400CDA0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xb3ec
+
+d_course_choco_mountain_vertex_0x0400CE90:
+  symbol: d_course_choco_mountain_vertex_0x0400CE90
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xb4be
+
+d_course_choco_mountain_vertex_0x0400CFD0:
+  symbol: d_course_choco_mountain_vertex_0x0400CFD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb5d6
+
+d_course_choco_mountain_vertex_0x0400D1D0:
+  symbol: d_course_choco_mountain_vertex_0x0400D1D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb796
+
+d_course_choco_mountain_vertex_0x0400D3D0:
+  symbol: d_course_choco_mountain_vertex_0x0400D3D0
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xb956
+
+d_course_choco_mountain_vertex_0x0400D580:
+  symbol: d_course_choco_mountain_vertex_0x0400D580
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xbad0
+
+d_course_choco_mountain_vertex_0x0400D780:
+  symbol: d_course_choco_mountain_vertex_0x0400D780
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xbc90
+
+d_course_choco_mountain_vertex_0x0400D810:
+  symbol: d_course_choco_mountain_vertex_0x0400D810
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xbd0e
+
+d_course_choco_mountain_vertex_0x0400D9E0:
+  symbol: d_course_choco_mountain_vertex_0x0400D9E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbea4
+
+d_course_choco_mountain_vertex_0x0400DBD0:
+  symbol: d_course_choco_mountain_vertex_0x0400DBD0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc056
+
+d_course_choco_mountain_vertex_0x0400DDC0:
+  symbol: d_course_choco_mountain_vertex_0x0400DDC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc208
+
+d_course_choco_mountain_vertex_0x0400DE20:
+  symbol: d_course_choco_mountain_vertex_0x0400DE20
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc25c
+
+d_course_choco_mountain_vertex_0x0400E010:
+  symbol: d_course_choco_mountain_vertex_0x0400E010
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xc40e
+
+d_course_choco_mountain_vertex_0x0400E0D0:
+  symbol: d_course_choco_mountain_vertex_0x0400E0D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc4b6
+
+d_course_choco_mountain_vertex_0x0400E2D0:
+  symbol: d_course_choco_mountain_vertex_0x0400E2D0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xc676
+
+d_course_choco_mountain_vertex_0x0400E300:
+  symbol: d_course_choco_mountain_vertex_0x0400E300
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc6a0
+
+d_course_choco_mountain_vertex_0x0400E4E0:
+  symbol: d_course_choco_mountain_vertex_0x0400E4E0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xc844
+
+d_course_choco_mountain_vertex_0x0400E510:
+  symbol: d_course_choco_mountain_vertex_0x0400E510
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc86e
+
+d_course_choco_mountain_vertex_0x0400E6F0:
+  symbol: d_course_choco_mountain_vertex_0x0400E6F0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xca12
+
+d_course_choco_mountain_vertex_0x0400E840:
+  symbol: d_course_choco_mountain_vertex_0x0400E840
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcb38
+
+d_course_choco_mountain_vertex_0x0400EA40:
+  symbol: d_course_choco_mountain_vertex_0x0400EA40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xccf8
+
+d_course_choco_mountain_vertex_0x0400EC40:
+  symbol: d_course_choco_mountain_vertex_0x0400EC40
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xceb8
+
+d_course_choco_mountain_vertex_0x0400EE20:
+  symbol: d_course_choco_mountain_vertex_0x0400EE20
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xd05c
+
+d_course_choco_mountain_vertex_0x0400EE50:
+  symbol: d_course_choco_mountain_vertex_0x0400EE50
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd086
+
+d_course_choco_mountain_vertex_0x0400F040:
+  symbol: d_course_choco_mountain_vertex_0x0400F040
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd238
+
+d_course_choco_mountain_vertex_0x0400F220:
+  symbol: d_course_choco_mountain_vertex_0x0400F220
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xd3dc
+
+d_course_choco_mountain_vertex_0x0400F310:
+  symbol: d_course_choco_mountain_vertex_0x0400F310
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xd4ae
+
+d_course_choco_mountain_vertex_0x0400F460:
+  symbol: d_course_choco_mountain_vertex_0x0400F460
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd5d4
+
+d_course_choco_mountain_vertex_0x0400F650:
+  symbol: d_course_choco_mountain_vertex_0x0400F650
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xd786
+
+d_course_choco_mountain_vertex_0x0400F840:
+  symbol: d_course_choco_mountain_vertex_0x0400F840
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xd938
+
+d_course_choco_mountain_vertex_0x0400F980:
+  symbol: d_course_choco_mountain_vertex_0x0400F980
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xda50
+
+d_course_choco_mountain_vertex_0x0400FB10:
+  symbol: d_course_choco_mountain_vertex_0x0400FB10
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdbae
+
+d_course_choco_mountain_vertex_0x0400FD10:
+  symbol: d_course_choco_mountain_vertex_0x0400FD10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xdd6e
+
+d_course_choco_mountain_vertex_0x0400FF00:
+  symbol: d_course_choco_mountain_vertex_0x0400FF00
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xdf20
+
+d_course_choco_mountain_vertex_0x0400FF90:
+  symbol: d_course_choco_mountain_vertex_0x0400FF90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xdf9e
+
+d_course_choco_mountain_vertex_0x04010180:
+  symbol: d_course_choco_mountain_vertex_0x04010180
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe150
+
+d_course_choco_mountain_vertex_0x040101E0:
+  symbol: d_course_choco_mountain_vertex_0x040101E0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xe1a4
+
+d_course_choco_mountain_vertex_0x040103C0:
+  symbol: d_course_choco_mountain_vertex_0x040103C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xe348
+
+d_course_choco_mountain_vertex_0x04010400:
+  symbol: d_course_choco_mountain_vertex_0x04010400
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xe380
+
+d_course_choco_mountain_vertex_0x040105E0:
+  symbol: d_course_choco_mountain_vertex_0x040105E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xe524
+
+d_course_choco_mountain_vertex_0x040106D0:
+  symbol: d_course_choco_mountain_vertex_0x040106D0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xe5f6
+
+d_course_choco_mountain_vertex_0x040108B0:
+  symbol: d_course_choco_mountain_vertex_0x040108B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe79a
+
+d_course_choco_mountain_vertex_0x04010910:
+  symbol: d_course_choco_mountain_vertex_0x04010910
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xe7ee
+
+d_course_choco_mountain_vertex_0x04010AD0:
+  symbol: d_course_choco_mountain_vertex_0x04010AD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe976
+
+d_course_choco_mountain_vertex_0x04010CD0:
+  symbol: d_course_choco_mountain_vertex_0x04010CD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeb36
+
+d_course_choco_mountain_vertex_0x04010ED0:
+  symbol: d_course_choco_mountain_vertex_0x04010ED0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xecf6
+
+d_course_choco_mountain_vertex_0x040110D0:
+  symbol: d_course_choco_mountain_vertex_0x040110D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xeeb6
+
+d_course_choco_mountain_vertex_0x040112D0:
+  symbol: d_course_choco_mountain_vertex_0x040112D0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf076
+
+d_course_choco_mountain_vertex_0x040114D0:
+  symbol: d_course_choco_mountain_vertex_0x040114D0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xf236
+
+d_course_choco_mountain_vertex_0x040116C0:
+  symbol: d_course_choco_mountain_vertex_0x040116C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf3e8
+
+d_course_choco_mountain_vertex_0x040118A0:
+  symbol: d_course_choco_mountain_vertex_0x040118A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf58c
+
+d_course_choco_mountain_vertex_0x04011AA0:
+  symbol: d_course_choco_mountain_vertex_0x04011AA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf74c
+
+d_course_choco_mountain_vertex_0x04011CA0:
+  symbol: d_course_choco_mountain_vertex_0x04011CA0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xf90c
+
+d_course_choco_mountain_vertex_0x04011DD0:
+  symbol: d_course_choco_mountain_vertex_0x04011DD0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xfa16
+
+d_course_choco_mountain_vertex_0x04011F30:
+  symbol: d_course_choco_mountain_vertex_0x04011F30
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xfb4a
+
+d_course_choco_mountain_vertex_0x04011F90:
+  symbol: d_course_choco_mountain_vertex_0x04011F90
+  type: mk64:course_vtx
+  count: 39
+  offset: 0xfb9e
+
+d_course_choco_mountain_vertex_0x04012140:
+  symbol: d_course_choco_mountain_vertex_0x04012140
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xfd18
+
+d_course_choco_mountain_vertex_0x04012320:
+  symbol: d_course_choco_mountain_vertex_0x04012320
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfebc
+
+d_course_choco_mountain_vertex_0x04012520:
+  symbol: d_course_choco_mountain_vertex_0x04012520
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1007c
+
+d_course_choco_mountain_vertex_0x04012660:
+  symbol: d_course_choco_mountain_vertex_0x04012660
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x10194
+
+d_course_choco_mountain_vertex_0x04012800:
+  symbol: d_course_choco_mountain_vertex_0x04012800
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x10300
+
+d_course_choco_mountain_vertex_0x04012920:
+  symbol: d_course_choco_mountain_vertex_0x04012920
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x103fc
+
+d_course_choco_mountain_vertex_0x04012960:
+  symbol: d_course_choco_mountain_vertex_0x04012960
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x10434
+
+d_course_choco_mountain_vertex_0x04012B40:
+  symbol: d_course_choco_mountain_vertex_0x04012B40
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x105d8
+
+d_course_choco_mountain_vertex_0x04012CA0:
+  symbol: d_course_choco_mountain_vertex_0x04012CA0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1070c
+
+d_course_choco_mountain_vertex_0x04012E80:
+  symbol: d_course_choco_mountain_vertex_0x04012E80
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x108b0
+
+d_course_choco_mountain_vertex_0x04013060:
+  symbol: d_course_choco_mountain_vertex_0x04013060
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x10a54
+
+d_course_choco_mountain_vertex_0x04013240:
+  symbol: d_course_choco_mountain_vertex_0x04013240
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x10bf8
+
+d_course_choco_mountain_vertex_0x04013420:
+  symbol: d_course_choco_mountain_vertex_0x04013420
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10d9c
+
+d_course_choco_mountain_vertex_0x04013480:
+  symbol: d_course_choco_mountain_vertex_0x04013480
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x10df0
+
+d_course_choco_mountain_vertex_0x04013660:
+  symbol: d_course_choco_mountain_vertex_0x04013660
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10f94
+
+d_course_choco_mountain_vertex_0x04013860:
+  symbol: d_course_choco_mountain_vertex_0x04013860
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x11154
+
+d_course_choco_mountain_vertex_0x04013890:
+  symbol: d_course_choco_mountain_vertex_0x04013890
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1117e
+
+d_course_choco_mountain_vertex_0x04013A90:
+  symbol: d_course_choco_mountain_vertex_0x04013A90
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1133e
+
+d_course_choco_mountain_vertex_0x04013AD0:
+  symbol: d_course_choco_mountain_vertex_0x04013AD0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x11376
+
+d_course_choco_mountain_vertex_0x04013BF0:
+  symbol: d_course_choco_mountain_vertex_0x04013BF0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x11472
+
+d_course_choco_mountain_vertex_0x04013D40:
+  symbol: d_course_choco_mountain_vertex_0x04013D40
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x11598
+
+d_course_choco_mountain_vertex_0x04013F00:
+  symbol: d_course_choco_mountain_vertex_0x04013F00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11720
+
+d_course_choco_mountain_vertex_0x04014100:
+  symbol: d_course_choco_mountain_vertex_0x04014100
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x118e0
+
+d_course_choco_mountain_vertex_0x04014180:
+  symbol: d_course_choco_mountain_vertex_0x04014180
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11950
+
+d_course_choco_mountain_vertex_0x04014380:
+  symbol: d_course_choco_mountain_vertex_0x04014380
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11b10
+
+d_course_choco_mountain_vertex_0x04014560:
+  symbol: d_course_choco_mountain_vertex_0x04014560
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11cb4
+
+d_course_choco_mountain_vertex_0x04014620:
+  symbol: d_course_choco_mountain_vertex_0x04014620
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11d5c
+
+d_course_choco_mountain_vertex_0x04014800:
+  symbol: d_course_choco_mountain_vertex_0x04014800
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x11f00
+
+d_course_choco_mountain_vertex_0x04014860:
+  symbol: d_course_choco_mountain_vertex_0x04014860
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x11f54
+
+d_course_choco_mountain_vertex_0x040149E0:
+  symbol: d_course_choco_mountain_vertex_0x040149E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x120a4
+
+d_course_choco_mountain_vertex_0x04014B00:
+  symbol: d_course_choco_mountain_vertex_0x04014B00
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x121a0
+
+d_course_choco_mountain_vertex_0x04014C20:
+  symbol: d_course_choco_mountain_vertex_0x04014C20
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x1229c
+
+d_course_choco_mountain_vertex_0x04014E00:
+  symbol: d_course_choco_mountain_vertex_0x04014E00
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x12440
+
+d_course_choco_mountain_vertex_0x04014F20:
+  symbol: d_course_choco_mountain_vertex_0x04014F20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1253c
+
+d_course_choco_mountain_vertex_0x04015120:
+  symbol: d_course_choco_mountain_vertex_0x04015120
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x126fc
+
+d_course_choco_mountain_vertex_0x040152D0:
+  symbol: d_course_choco_mountain_vertex_0x040152D0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x12876
+
+d_course_choco_mountain_vertex_0x04015450:
+  symbol: d_course_choco_mountain_vertex_0x04015450
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x129c6
+
+d_course_choco_mountain_vertex_0x04015510:
+  symbol: d_course_choco_mountain_vertex_0x04015510
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12a6e
+
+d_course_choco_mountain_vertex_0x040155D0:
+  symbol: d_course_choco_mountain_vertex_0x040155D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12b16
+
+d_course_choco_mountain_vertex_0x04015650:
+  symbol: d_course_choco_mountain_vertex_0x04015650
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12b86
+
+d_course_choco_mountain_vertex_0x04015690:
+  symbol: d_course_choco_mountain_vertex_0x04015690
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12bbe
+
+d_course_choco_mountain_vertex_0x040156D0:
+  symbol: d_course_choco_mountain_vertex_0x040156D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12bf6
+
+d_course_choco_mountain_vertex_0x04015750:
+  symbol: d_course_choco_mountain_vertex_0x04015750
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12c66
+
+d_course_choco_mountain_vertex_0x04015790:
+  symbol: d_course_choco_mountain_vertex_0x04015790
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12c9e
+
+d_course_choco_mountain_vertex_0x040157D0:
+  symbol: d_course_choco_mountain_vertex_0x040157D0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x12cd6
+
+d_course_choco_mountain_vertex_0x04015910:
+  symbol: d_course_choco_mountain_vertex_0x04015910
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x12dee
+
+d_course_choco_mountain_vertex_0x04015A80:
+  symbol: d_course_choco_mountain_vertex_0x04015A80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12f30
+
+d_course_choco_mountain_vertex_0x04015AC0:
+  symbol: d_course_choco_mountain_vertex_0x04015AC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12f68

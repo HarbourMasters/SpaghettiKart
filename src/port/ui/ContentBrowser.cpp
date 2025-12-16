@@ -1,8 +1,9 @@
 #include "ContentBrowser.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 #include "port/Engine.h"
+#include "SpawnParams.h"
 
 #include <imgui.h>
 #include <map>
@@ -18,8 +19,18 @@
 #include "AllActors.h"
 #include "port/Game.h"
 #include "src/engine/editor/SceneManager.h"
+#include "engine/TrackBrowser.h"
 
-namespace Editor {
+#include "World.h"
+
+extern "C" {
+#include "common_structs.h"
+#include "actors.h"
+#include "collision.h"
+}
+
+namespace TrackEditor {
+    bool bIsTrainWindowOpen = false; // Global because member variables do not work in lambdas
 
     ContentBrowserWindow::~ContentBrowserWindow() {
         SPDLOG_TRACE("destruct content browser window");
@@ -33,10 +44,8 @@ namespace Editor {
         // Query content in o2r and add them to Content
         if (Refresh) {
             Refresh = false;
-            RemoveCustomTracksFromTrackList();
-            Tracks.clear();
             Content.clear();
-            FindTracks();
+            TrackBrowser::Instance->Refresh(gTrackRegistry);
             FindContent();
             return;
         }
@@ -45,25 +54,27 @@ namespace Editor {
 
         ContentBrowserWindow::FolderButton("Tracks", TrackContent);
         ContentBrowserWindow::FolderButton("Actors", ActorContent);
-        ContentBrowserWindow::FolderButton("Objects", ObjectContent);
         ContentBrowserWindow::FolderButton("Custom", CustomContent);
         ImGui::EndChild();
         ImGui::SameLine();
         ImGui::BeginChild("RightPanel", ImVec2(0, 0), true, ImGuiWindowFlags_None);
+        
+        // Search bar
+        ImGui::InputTextWithHint("##GlobalSearch", "Search name or #tag", mSearchBuffer, IM_ARRAYSIZE(mSearchBuffer));
+        ImGui::NewLine();
+
+        std::string search = ToLower(std::string(mSearchBuffer));
+        
         if (TrackContent) {
-            AddTrackContent();
+            AddTrackContent(search);
         }
 
         if (ActorContent) {
-            AddActorContent();
-        }
-
-        if (ObjectContent) {
-            AddObjectContent();
+            AddActorContent(search);
         }
 
         if (CustomContent) {
-            AddCustomContent();
+            AddCustomContent(search);
         }
         ImGui::EndChild();
     }
@@ -73,137 +84,124 @@ namespace Editor {
         if (ImGui::Button(buttonText.c_str(), size)) {
             TrackContent = false;
             ActorContent = false;
-            ObjectContent = false;
             CustomContent = false;
             contentFlag = !contentFlag;
         }
     }
 
-    std::unordered_map<std::string, std::function<AActor*(const FVector&)>> ActorList = {
-        { "Mario Sign", [](const FVector& pos) { return new AMarioSign(pos); } },
-        { "Wario Sign", [](const FVector& pos) { return new AWarioSign(pos); } },
-        { "Cloud", [](const FVector& pos) { return new ACloud(pos); } },
-        { "Finishline", [](const FVector& pos) { return new AFinishline(pos); } },
-        { "Ghostship", [](const FVector& pos) { return new AShip(pos, AShip::Skin::GHOSTSHIP); } },
-        { "Ship_1", [](const FVector& pos) { return new AShip(pos, AShip::Skin::SHIP2); } },
-        { "Ship_2", [](const FVector& pos) { return new AShip(pos, AShip::Skin::SHIP3); } },
-        { "SpaghettiShip", [](const FVector& pos) { return new ASpaghettiShip(pos); } },
-        { "Starship", [](const FVector& pos) { return new AStarship(pos); } },
-        { "Train", [](const FVector& pos) { return new ATrain(ATrain::TenderStatus::HAS_TENDER, 4, 2.5f, 0); } },
-        { "Boat", [](const FVector& pos) { return new ABoat((0.6666666f)/4, 0); } },
-        { "Bus", [](const FVector& pos) { return new ABus(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
-        { "Car", [](const FVector& pos) { return new ACar(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
-        { "Truck", [](const FVector& pos) { return new ATruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
-        { "Tanker Truck", [](const FVector& pos) { return new ATankerTruck(2.0f, 2.5f, &gTrackPaths[0][0], 0); } },
-    };
-
-    std::unordered_map<std::string, std::function<OObject*(const FVector&)>> ObjectList = {
-        { "Bat", [](const FVector& pos) { return new OBat(pos, IRotator(0, 0, 0)); } },
-        { "Bomb Kart", [](const FVector& pos) { return new OBombKart(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
-        // { "Boos", [](const FVector& pos) { return new OBoos(pos, &gTrackPaths[0][0], 0, 0, 0.8333333f); } },
-        { "CheepCheep", [](const FVector& pos) { return new OCheepCheep(pos, OCheepCheep::CheepType::RACE, IPathSpan(0, 10)); } },
-        { "Crab", [](const FVector& pos) { return new OCrab(FVector2D(0, 10), FVector2D(20, 10)); } },
-        { "ChainChomp", [](const FVector& pos) { return new OChainChomp(); } },
-        { "Flagpole", [](const FVector& pos) { return new OFlagpole(pos, 0); } },
-        { "Hedgehog", [](const FVector& pos) { return new OHedgehog(pos, FVector2D(0, 10), 0); } },
-        { "HotAirBalloon", [](const FVector& pos) { return new OHotAirBalloon(pos); } },
-        { "Lakitu", [](const FVector& pos) { return new OLakitu(0, OLakitu::LakituType::STARTER); } },
-        // { "Mole", [](const FVector& pos) { return new OMole(pos, ); } }, // <-- Needs a group
-        { "Chick Penguin", [](const FVector& pos) { return new OPenguin(pos, 0, OPenguin::PenguinType::CHICK, OPenguin::Behaviour::SLIDE3); } },
-        { "Penguin", [](const FVector& pos) { return new OPenguin(pos, 0, OPenguin::PenguinType::ADULT, OPenguin::Behaviour::CIRCLE); } },
-        { "Emperor Penguin", [](const FVector& pos) { return new OPenguin(pos, 0, OPenguin::PenguinType::EMPEROR, OPenguin::Behaviour::STRUT); } },
-        { "Seagull", [](const FVector& pos) { return new OSeagull(pos); } },
-        { "Thwomp", [](const FVector& pos) { return new OThwomp(pos.x, pos.z, 0, 1.0f, 0, 0, 2.0f); } },
-        { "Trashbin", [](const FVector& pos) { return new OTrashBin(pos, IRotator(0, 0, 0), 1.0f, OTrashBin::Behaviour::MUNCHING); } },
-        { "Trophy", [](const FVector& pos) { return new OTrophy(pos, OTrophy::TrophyType::GOLD_150, OTrophy::Behaviour::ROTATE2); } },
-        { "Snowman", [](const FVector& pos) { return new OSnowman(pos); } },
-        { "Podium", [](const FVector& pos) { return new OPodium(pos); } },
-        { "Balloons", [](const FVector& pos) { return new OGrandPrixBalloons(pos); } },
-    };
-
-    void ContentBrowserWindow::AddTrackContent() {
+    void ContentBrowserWindow::AddTrackContent(std::string search) {
         size_t i_track = 0;
-        for (auto& track : Tracks) {
-            if (!track.SceneFile.empty()) { // has scene file
-                std::string label = fmt::format("{}##{}", track.Name, i_track);
-                if (ImGui::Button(label.c_str())) {
-                    gWorldInstance.CurrentCourse = track.course;
-                    gGamestateNext = RACING;
-                    SetSceneFile(track.Archive, track.SceneFile);
-                    break;
-                }
-            } else { // no scene file
-                std::string label = fmt::format("{} {}", ICON_FA_EXCLAMATION_TRIANGLE, track.Name);
-                if (ImGui::Button(label.c_str())) {
-                    track.SceneFile = track.Dir + "/scene.json";
-                    gWorldInstance.CurrentCourse = track.invalidTrack;
-                    SetSceneFile(track.Archive, track.SceneFile);
-                    SaveLevel();
-                    Refresh = true;
-                }
+        for (const TrackInfo* info : gTrackRegistry.GetAllInfo()) {
+            if (!info) { continue; }
+
+            if (!search.empty() &&
+                ToLower(info->Name).find(search) == std::string::npos) {
+                continue;
+            }
+
+            std::string label = fmt::format("{}##{}", info->Name, i_track);
+            if (ImGui::Button(label.c_str())) {
+                //gGamestateNext = RACING;
+                gGotoMode = RACING;
+                gIsInQuitToMenuTransition = 1;
+                gQuitToMenuTransitionCounter = 5;
+                TrackBrowser::Instance->SetTrack(info->ResourceName);
+                break;
+            }
+
+            if ((i_track != 0) && (i_track % 8 == 0)) {
+            } else {
+                ImGui::SameLine();
             }
 
             i_track += 1;
         }
     }
 
-    // When resetting the known content, we need to also pop the custom courses
-    // out of World::Courses vector. Otherwise, duplicate courses would show up for users.
-    void ContentBrowserWindow::RemoveCustomTracksFromTrackList() {
-        for (auto& track : Tracks) {
-            auto it = gWorldInstance.Courses.begin();
-            while (it != gWorldInstance.Courses.end()) {
-                if (track.course.get() == it->get()) {
-                    it = gWorldInstance.Courses.erase(it);
-                } else {
-                    ++it;
+void ContentBrowserWindow::AddActorContent(std::string search) {
+
+    bool isTagSearch = false;
+    std::string tagToSearch;
+
+    if (!search.empty() && search[0] == '#') {
+        isTagSearch = true;
+        tagToSearch = ToLower(search.substr(1)); // Remove the #
+    } else {
+        search = ToLower(search);
+    }
+    
+
+    FVector pos = GetPositionAheadOfCamera(300.0f);
+    SpawnParams params;
+    params.Location = pos;
+
+    size_t i_actor = 0;
+
+    for (const auto* actorInfo : gActorRegistry.GetAllInfo()) {
+        if (!actorInfo) continue;
+
+        // Filtering
+        bool show = false;
+        if (isTagSearch) {
+            // Check tags case-insensitively
+            for (const auto& tag : actorInfo->Tags) {
+                if (ToLower(tag) == tagToSearch) {
+                    show = true;
+                    break;
                 }
             }
+        } else if (!search.empty()) {
+            if (ToLower(actorInfo->Name).find(search) != std::string::npos) {
+                show = true;
+            }
+        } else {
+            show = true; // No search --> show all
         }
+
+        if (!show) continue;
+
+        if ((i_actor != 0) && (i_actor % 8 == 0)) {
+        } else {
+            ImGui::SameLine();
+        }
+
+        std::string label = fmt::format("{}##{}", actorInfo->Name, i_actor);
+        if (ImGui::Button(label.c_str())) {
+            gActorRegistry.Invoke(actorInfo->ResourceName, params);
+        }
+
+        i_actor += 1;
     }
 
-    void ContentBrowserWindow::AddActorContent() {
-        FVector pos = GetPositionAheadOfCamera(300.0f);
-
-        size_t i_actor = 0;
-        for (const auto& actor : ActorList) {
-            if ((i_actor != 0) && (i_actor % 10 == 0)) {
-            } else {
-                ImGui::SameLine();
-            }
-
-            std::string label = fmt::format("{}##{}", actor.first, i_actor);
-            if (ImGui::Button(label.c_str())) {
-                gWorldInstance.AddActor(actor.second(pos));
-            }
-            i_actor += 1;
+    // Add a couple actor models (always shown, bypass search)
+    auto addShipButton = [&](int id, const char* name, int type) {
+        ImGui::PushID(id);
+        if (ImGui::Button(name)) {
+            params.Type = static_cast<int16_t>(type);
+            gActorRegistry.Invoke("hm:ship", params);
         }
-    }
+        ImGui::PopID();
+    };
 
-    void ContentBrowserWindow::AddObjectContent() {
-        FVector pos = GetPositionAheadOfCamera(300.0f);
+    addShipButton(i_actor++, "Ship 2 (HM64)", AShip::Skin::SHIP2);
+    addShipButton(i_actor++, "Ship 3 (HM64)", AShip::Skin::SHIP3);
 
-        size_t i_object = 0;
-        for (auto& object : ObjectList) {
-            if ((i_object != 0) && (i_object % 10 == 0)) {
-            } else {
-                ImGui::SameLine();
-            }
+    ContentBrowserWindow::TrainWindow();
+}
 
-            std::string label = fmt::format("{}##{}", object.first, i_object);
-            if (ImGui::Button(label.c_str())) {
-                gWorldInstance.AddObject(object.second(pos));
-            }
-            i_object += 1;
-        }
-    }
 
-    void ContentBrowserWindow::AddCustomContent() {
+    void ContentBrowserWindow::AddCustomContent(std::string search) {
         FVector pos = GetPositionAheadOfCamera(300.0f);
 
         size_t i_custom = 0;
         for (const auto& file : Content) {
-            if ((i_custom != 0) && (i_custom % 10 == 0)) {
+            std::string name = ToLower(file);
+            if (!search.empty() &&
+                name.find(search) == std::string::npos) {
+                continue;
+            }
+
+            if ((i_custom != 0) && (i_custom % 5 == 0)) {
             } else {
                 ImGui::SameLine();
             }
@@ -213,57 +211,12 @@ namespace Editor {
                 int coll;
                 //printf("ContentBrowser.cpp: name: %s\n", test.c_str());
                 std::string name = file.substr(file.find_last_of('/') + 1);
-                auto actor = gWorldInstance.AddStaticMeshActor(name, FVector(pos), IRotator(0, 0, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
+                auto actor = GetWorld()->AddStaticMeshActor(name, FVector(pos), IRotator(0, 0, 0), FVector(1, 1, 1), "__OTR__" + file, &coll);
                 // This is required because ptr gets cleaned up.
                 actor->Model = "__OTR__" + file;
 
             }
             i_custom += 1;
-        }
-    }
-
-    // Finds modded archives only. For discovering tracks
-    void ContentBrowserWindow::FindTracks() {
-        auto manager = GameEngine::Instance->context->GetResourceManager()->GetArchiveManager();
-
-        auto ptr2 = manager->ListDirectories("tracks/*");
-        if (ptr2) {
-            auto dirs = *ptr2;
-
-            for (const std::string& dir : dirs) {
-                std::string name = dir.substr(dir.find_last_of('/') + 1);
-                std::string sceneFile = dir + "/scene.json";
-                std::string minimapFile = dir + "/minimap.png";
-                // The track has a valid scene file
-                if (manager->HasFile(sceneFile)) {
-                    auto archive = manager->GetArchiveFromFile(sceneFile);
-                    
-                    auto course = std::make_shared<Course>();
-                    course->LoadO2R(dir);
-                    LoadLevel(archive, course.get(), sceneFile);
-                    LoadMinimap(archive, course.get(), minimapFile);
-                    Tracks.push_back({nullptr, course, sceneFile, name, dir, archive});
-                    gWorldInstance.Courses.push_back(std::move(course));
-                } else { // The track does not have a valid scene file
-                    const std::string file = dir + "/data_track_sections";
-                    
-                    // If the track has a data_track_sections file,
-                    // then it must at least be a valid track.
-                    // So lets add it as an uninitialized track.
-                    if (manager->HasFile(file)) {
-
-                        auto course = std::make_shared<Course>();
-                        course->Id = (std::string("mods:") + name).c_str();
-                        course->Props.SetText(course->Props.Name, name.c_str(), sizeof(course->Props.Name));
-                        course->Props.SetText(course->Props.DebugName, name.c_str(), sizeof(course->Props.Name));
-                        auto archive = manager->GetArchiveFromFile(file);
-                        Tracks.push_back({course, nullptr, "", name, dir, archive});
-                    } else {
-                        printf("ContentBrowser.cpp: Track '%s' missing required track files. Cannot add to game\n  Missing %s/data_track_sections file\n", name.c_str(), dir.c_str());
-                    }
-
-                }
-            }
         }
     }
 
@@ -280,6 +233,15 @@ namespace Editor {
                 } else if (file.find("_vtx_") != std::string::npos) {
                     // Has _vtx_
                     continue;
+                } else if (file.find("_vertices") != std::string::npos) {
+                    // Has _vertices
+                    continue;
+                } else if (file.find("_spawns") != std::string::npos) {
+                    // has _spawns
+                    continue;
+                } else if (file.find("_waypoints") != std::string::npos) {
+                    // has _waypoints
+                    continue;
                 } else if (file.find('.') != std::string::npos) {
                     // File has an extension
                     continue;
@@ -288,5 +250,83 @@ namespace Editor {
                 Content.push_back(file);
             }
         }
+    }
+
+    /**  Actors that need config windows before spawning  **/
+
+    ATrain* ContentBrowserWindow::TrainWindow() {
+        if (!bIsTrainWindowOpen) {
+            return nullptr;
+        }
+
+        // Setup train window size and position
+        // Set window size constraints (min, max)
+        ImGui::SetNextWindowSizeConstraints(ImVec2(300, 200), ImVec2(FLT_MAX, FLT_MAX));
+
+        // Get the main viewport to find the center of the screen
+        ImGuiViewport* viewport = ImGui::GetMainViewport();
+
+        // Center the window
+        ImGui::SetNextWindowPos(viewport->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        // Optional: auto-resize to content
+        ImGui::SetNextWindowSize(ImVec2(400, 300), ImGuiCond_Appearing); // Initial size only
+
+        if (ImGui::Begin("Spawn Train")) {
+            static int32_t numCarriages = 4;
+            static ATrain::TenderStatus tender = ATrain::TenderStatus::HAS_TENDER; // Can only disable tender if using no passenger cars
+            static int32_t pathIndex = 0;
+            static int32_t pathPoint = 0;
+            static ATrain::SpawnMode spawnMode = ATrain::SpawnMode::AUTO;
+
+            // Num Carriage Input
+            if (ImGui::InputInt("Carriages", &numCarriages)) {
+                // Clamp to uint32_t range (only lower bound needed if assuming positive values)
+                if (numCarriages < 0) numCarriages = 0;
+            }
+
+            // Setup for has tender settings
+            if (numCarriages > 0) {
+                ImGui::BeginDisabled();
+                // Tender is required if there are any carriages
+                tender = ATrain::TenderStatus::HAS_TENDER;
+            }
+
+            // Convert enum to bool
+            bool hasTender = (tender == ATrain::TenderStatus::HAS_TENDER);
+            if (ImGui::Checkbox("Has Tender", &hasTender)) {
+                tender = hasTender ? ATrain::TenderStatus::HAS_TENDER : ATrain::TenderStatus::NO_TENDER;
+            }
+
+            if (numCarriages > 0) {
+                ImGui::EndDisabled();
+            }
+
+            // Set Spawn Mode
+            bool localSpawnMode = (spawnMode == ATrain::SpawnMode::AUTO);
+            if (ImGui::Checkbox("Place Train Automatically", &localSpawnMode)) {
+                spawnMode = localSpawnMode ? ATrain::SpawnMode::AUTO : ATrain::SpawnMode::POINT;
+            }
+
+            // Set PathIndex and PathPoint
+            if (spawnMode == ATrain::SpawnMode::POINT) {
+                // PathIndex and PathPoint
+                if (ImGui::InputInt("Path Index", &pathIndex)) {
+                    // Clamp to uint32_t range (only lower bound needed if assuming positive values)
+                    if (pathIndex < 0) pathIndex = 0;
+                }
+
+                if (ImGui::InputInt("Path Point", &pathPoint)) {
+                    // Clamp to uint32_t range (only lower bound needed if assuming positive values)
+                    if (pathPoint < 0) pathPoint = 0;
+                }
+            }
+
+            if (ImGui::Button("Spawn")) {
+                bIsTrainWindowOpen = false;
+                return ATrain::Spawn(tender, numCarriages, 2.5f, (uint32_t)pathIndex, (uint32_t)pathPoint, spawnMode);
+            }
+        }
+        ImGui::End();
     }
 }

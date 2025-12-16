@@ -1,7 +1,7 @@
 #include "Tools.h"
 #include "port/ui/PortMenu.h"
 #include "UIWidgets.h"
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 
 #include <imgui.h>
 #include <map>
@@ -12,13 +12,14 @@
 #include <defines.h>
 #include "port/Game.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/TrackBrowser.h"
 
 extern "C" {
 #include "code_800029B0.h"
 #include "code_80057C60.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
     ToolsWindow::~ToolsWindow() {
         SPDLOG_TRACE("destruct tools window");
@@ -35,7 +36,12 @@ namespace Editor {
 
         // Save button
         if (ImGui::Button(ICON_FA_FLOPPY_O, ImVec2(50, 25))) {
-            SaveLevel();
+            if (gEditor.IsPaused()) {
+                SaveLevel(GetWorld()->GetTrack(), gTrackRegistry.GetInfo(GetWorld()->GetTrack()->ResourceName));
+                TrackBrowser::Instance->Refresh(gTrackRegistry);
+            } else {
+                printf("[Editor] Cannot save during simulation\n  Please switch back to edit mode!\n\n");
+            }
         }
 
         ImGui::SameLine();
@@ -134,11 +140,47 @@ namespace Editor {
 
         // Play/pause button
         ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
-        if (ImGui::Button(gIsEditorPaused ? ICON_FA_PLAY : ICON_FA_PAUSE, ImVec2(50, 25))) {
+        if (ImGui::Button(gEditor.IsPaused() ? ICON_FA_PLAY : ICON_FA_STOP, ImVec2(50, 25))) {
+            if (gEditor.IsPaused()) {
+                SaveLevel(GetWorld()->GetTrack(), gTrackRegistry.GetInfo(GetWorld()->GetTrack()->ResourceName));
+                TrackBrowser::Instance->Refresh(gTrackRegistry);
+                CVarSetInteger("gFreecam", false);
+                CM_SetFreeCamera(false);
+            } else {
+                CM_ResetAudio();
+                CVarSetInteger("gFreecam", true);
+                CM_SetFreeCamera(true);
+            }
 
-            gIsEditorPaused = !gIsEditorPaused;
+            gEditor.ResetGizmo();
+            gEditor.TogglePlayState();
+            gIsInQuitToMenuTransition = 1;
+            gQuitToMenuTransitionCounter = 5;
+            gGotoMode = RACING;
         }
+
         ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        // Camera mode button (drive kart and freecam)
+        bool isVideoToolSelected = static_cast<bool>(CVarGetInteger("gFreecam", 0));
+        ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
+        const char* videoToolLabel = isVideoToolSelected 
+            ? ICON_FA_VIDEO_CAMERA " " ICON_FA_PAPER_PLANE 
+            : ICON_FA_VIDEO_CAMERA " " ICON_FA_CAR;
+
+        if (ImGui::Button(videoToolLabel, ImVec2(50, 25))) {
+            CVarSetInteger("gFreecam", !CVarGetInteger("gFreecam", 0));
+            CM_SetFreeCamera(CVarGetInteger("gFreecam", 0));
+        }
+
+        ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        // Alter the game speed
+        ToolsWindow::GameSpeed();
 
         ImGui::SameLine();
 
@@ -156,5 +198,73 @@ namespace Editor {
         if (ImGui::Button(ICON_FA_TRASH_O, ImVec2(50, 25))) {
             gEditor.DeleteObject();
         }
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Delete Selected Actor");
+            ImGui::EndTooltip();
+        }
+
+        ImGui::SameLine();
+
+        // Delete All button
+        if (ImGui::Button(ICON_FA_INTERNET_EXPLORER, ImVec2(50, 25))) {
+            ImGui::OpenPopup("ConfirmDeleteAllPopup");
+        }
+
+        if (ImGui::IsItemHovered()) {
+            ImGui::BeginTooltip();
+            ImGui::Text("Delete All Actors");
+            ImGui::EndTooltip();
+        }
+
+        // Confirmation Popup
+        if (ImGui::BeginPopupModal("ConfirmDeleteAllPopup", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+            ImGui::Text("Are you sure you want to delete all actors?\nThis action can be undone if you do not save, and then reload the track.");
+            ImGui::Separator();
+
+            if (ImGui::Button("Yes", ImVec2(120, 0))) {
+                // Defer deletion until race_logic_loop
+                bCleanWorld = true;
+                gEditor.ResetGizmo();
+                ImGui::CloseCurrentPopup();
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("Cancel", ImVec2(120, 0))) {
+                ImGui::CloseCurrentPopup();
+            }
+
+            ImGui::EndPopup();
+        }
+
+    }
+
+    // Fast Forward the game
+    void ToolsWindow::GameSpeed() {
+        ImVec4 defaultColor = ImGui::GetStyle().Colors[ImGuiCol_Button];
+
+        ImGui::PushStyleColor(ImGuiCol_Button, defaultColor);
+
+        // Decrease
+        if (ImGui::Button("-", ImVec2(25, 25))) {
+            gTickLogic--;
+            if (gTickLogic < 1) gTickLogic = 1; // clamp min
+        }
+
+        ImGui::SameLine();
+
+        // Label with current value
+        std::string label = "Game Speed: " + std::to_string(gTickLogic);
+        if (ImGui::Button(label.c_str(), ImVec2(120, 25))) {
+            gTickLogic = 2; // reset on click
+        }
+
+        ImGui::SameLine();
+
+        // Increase
+        if (ImGui::Button("+", ImVec2(25, 25))) {
+            gTickLogic++;
+        }
+
+        ImGui::PopStyleColor();
     }
 }

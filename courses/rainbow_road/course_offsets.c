@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/rainbow_road_data.h>
+#include <assets/models/tracks/rainbow_road/rainbow_road_data.h>
 
 Gfx* rainbow_road_dls[] = {
     d_course_rainbow_road_dl_D8,   d_course_rainbow_road_dl_210,  d_course_rainbow_road_dl_178,

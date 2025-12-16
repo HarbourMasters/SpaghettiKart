@@ -6,8 +6,8 @@
 #include "../CoreMath.h"
 #include <vector>
 #include "GameObject.h"
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 
 extern "C" {
 #include "common_structs.h"

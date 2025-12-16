@@ -1,0 +1,188 @@
+:config:
+  segments:
+    - [0x06, 0x8666a0]
+    - [0x07, 0x800000]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_kalimari_desert_tree_tlut:
+  symbol: d_course_kalimari_desert_tree_tlut
+  type: texture
+  offset: 0x8380
+  width: 16
+  height: 16
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_inactive_top_left:
+  symbol: d_course_kalimari_desert_crossing_sign_inactive_top_left
+  type: texture
+  offset: 0x87e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_inactive_top_right:
+  symbol: d_course_kalimari_desert_crossing_sign_inactive_top_right
+  type: texture
+  offset: 0x97e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_inactive_bottom_left:
+  symbol: d_course_kalimari_desert_crossing_sign_inactive_bottom_left
+  type: texture
+  offset: 0xa7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_inactive_bottom_right:
+  symbol: d_course_kalimari_desert_crossing_sign_inactive_bottom_right
+  type: texture
+  offset: 0xb7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_active_top_left:
+  symbol: d_course_kalimari_desert_crossing_sign_active_top_left
+  type: texture
+  offset: 0xc7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_active_top_right:
+  symbol: d_course_kalimari_desert_crossing_sign_active_top_right
+  type: texture
+  offset: 0xd7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_active_bottom_left:
+  symbol: d_course_kalimari_desert_crossing_sign_active_bottom_left
+  type: texture
+  offset: 0xe7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_crossing_sign_active_bottom_right:
+  symbol: d_course_kalimari_desert_crossing_sign_active_bottom_right
+  type: texture
+  offset: 0xf7e8
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_64:
+  symbol: d_course_kalimari_desert_locomotive_64
+  type: texture
+  offset: 0x10e60
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_cab_window:
+  symbol: d_course_kalimari_desert_locomotive_cab_window
+  type: texture
+  offset: 0x11660
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_cab_window_front:
+  symbol: d_course_kalimari_desert_locomotive_cab_window_front
+  type: texture
+  offset: 0x12660
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_chassis:
+  symbol: d_course_kalimari_desert_locomotive_chassis
+  type: texture
+  offset: 0x13660
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_lamp:
+  symbol: d_course_kalimari_desert_locomotive_lamp
+  type: texture
+  offset: 0x13e60
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_boiler:
+  symbol: d_course_kalimari_desert_locomotive_boiler
+  type: texture
+  offset: 0x14660
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_carriage_railing:
+  symbol: d_course_kalimari_desert_carriage_railing
+  type: texture
+  offset: 0x14e60
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_locomotive_tender:
+  symbol: d_course_kalimari_desert_locomotive_tender
+  type: texture
+  offset: 0x15e60
+  width: 64
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_railway_ballast:
+  symbol: d_course_kalimari_desert_railway_ballast
+  type: texture
+  offset: 0x16e60
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_carriage_lower:
+  symbol: d_course_kalimari_desert_carriage_lower
+  type: texture
+  offset: 0x17660
+  width: 32
+  height: 32
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_carriage_door:
+  symbol: d_course_kalimari_desert_carriage_door
+  type: texture
+  offset: 0x17e60
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_carriage_window:
+  symbol: d_course_kalimari_desert_carriage_window
+  type: texture
+  offset: 0x18e60
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16
+d_course_kalimari_desert_train_bogie:
+  symbol: d_course_kalimari_desert_train_bogie
+  type: texture
+  offset: 0x21d28
+  width: 32
+  height: 64
+  format: rgba16
+  ctype: u16

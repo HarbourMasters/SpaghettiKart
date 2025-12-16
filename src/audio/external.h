@@ -272,7 +272,7 @@ void func_800C8C7C(u8);
 void func_800C8CCC(void);
 void play_sound2(s32);
 void play_sequence(u16);
-void func_800C8EF8(u16);
+void play_sequence2(u16);
 void func_800C8F44(u8);
 void func_800C8F80(u8, u32);
 
@@ -305,7 +305,7 @@ void func_800CA2E4(u8, s8);
 void func_800CA30C(u8);
 void func_800CA330(u8);
 void func_800CA388(u8);
-void func_800CA414(u16, u16);
+void play_sequences(u16, u16);
 void func_800CA49C(u8);
 void func_800CA59C(u8);
 void func_800CA984(u8);

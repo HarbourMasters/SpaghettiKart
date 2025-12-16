@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/frappe_snowland_data.h>
+#include <assets/models/tracks/frappe_snowland/frappe_snowland_data.h>
 
 const Gfx* d_course_frappe_snowland_dl_list[] = {
     d_course_frappe_snowland_dl_0,    d_course_frappe_snowland_dl_1B8,  d_course_frappe_snowland_dl_C8,

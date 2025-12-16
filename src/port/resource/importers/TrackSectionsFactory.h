@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Resource.h"
-#include "ResourceFactoryBinary.h"
-#include "resource/ResourceFactoryXML.h"
+#include "ship/resource/Resource.h"
+#include "ship/resource/ResourceFactoryBinary.h"
+#include "ship/resource/ResourceFactoryXML.h"
 
 namespace MK64 {
 class ResourceFactoryBinaryTrackSectionsV0 : public Ship::ResourceFactoryBinary {

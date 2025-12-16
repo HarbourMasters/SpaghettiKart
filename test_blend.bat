@@ -1,1 +1,0 @@
-"c:\Program Files\Blender Foundation\Blender 4.0\blender.exe" -b --python tools/blender_extension/blender_export.py -- courses/dks_jungle_parkway/course_data.inc.c d_course_dks_jungle_parkway_dl_E058

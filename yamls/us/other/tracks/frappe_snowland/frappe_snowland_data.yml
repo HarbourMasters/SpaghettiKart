@@ -1,0 +1,181 @@
+:config:
+  segments:
+    - [0x06, 0x83F740]
+    - [0x07, 0x800000]
+  manual_segments:
+    # Segment 7
+    - [0x7000000, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_0"]
+    - [0x7000088, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_88"]
+    - [0x7000098, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_98"]
+    - [0x70000A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_A8"]
+    - [0x70000B8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B8"]
+    - [0x70001A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1A0"]
+    - [0x7000250, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_250"]
+    - [0x7000370, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_370"]
+    - [0x7000520, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_520"]
+    - [0x7000548, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_548"]
+    - [0x7000808, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_808"]
+    - [0x7000818, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_818"]
+    - [0x7000878, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_878"]
+    - [0x70008E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_8E0"]
+    - [0x7000960, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_960"]
+    - [0x70009D8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_9D8"]
+    - [0x7000A48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_A48"]
+    - [0x7000AB0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_AB0"]
+    - [0x7000B30, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B30"]
+    - [0x7000B70, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_B70"]
+    - [0x7000BF0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_BF0"]
+    - [0x7000CC0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_CC0"]
+    - [0x7000D28, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_D28"]
+    - [0x7000DA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_DA0"]
+    - [0x7000E18, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_E18"]
+    - [0x7000E98, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_E98"]
+    - [0x7000F08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_F08"]
+    - [0x7000FA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_FA0"]
+    - [0x7001018, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1018"]
+    - [0x7001080, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1080"]
+    - [0x70010E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_10E0"]
+    - [0x7001150, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1150"]
+    - [0x70011B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_11B0"]
+    - [0x7001218, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1218"]
+    - [0x7001288, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1288"]
+    - [0x70012E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_12E8"]
+    - [0x7001360, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1360"]
+    - [0x70013F0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_13F0"]
+    - [0x7001458, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1458"]
+    - [0x70014C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_14C8"]
+    - [0x7001538, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1538"]
+    - [0x70015B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_15B0"]
+    - [0x7001628, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1628"]
+    - [0x7001698, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1698"]
+    - [0x7001708, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1708"]
+    - [0x7001748, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1748"]
+    - [0x7001860, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1860"]
+    - [0x7001910, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1910"]
+    - [0x7001A08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1A08"]
+    - [0x7001B20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1B20"]
+    - [0x7001BE8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1BE8"]
+    - [0x7001C98, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1C98"]
+    - [0x7001D60, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1D60"]
+    - [0x7001E40, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1E40"]
+    - [0x7001F10, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_1F10"]
+    - [0x7002018, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2018"]
+    - [0x70020C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_20C8"]
+    - [0x7002160, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2160"]
+    - [0x7002210, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2210"]
+    - [0x70022C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_22C8"]
+    - [0x7002350, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2350"]
+    - [0x7002418, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2418"]
+    - [0x70024A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_24A0"]
+    - [0x7002548, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2548"]
+    - [0x70025D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_25D0"]
+    - [0x7002670, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2670"]
+    - [0x70026A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_26A8"]
+    - [0x7002710, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2710"]
+    - [0x70027A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_27A8"]
+    - [0x7002840, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2840"]
+    - [0x70028D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_28D0"]
+    - [0x7002960, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2960"]
+    - [0x70029E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_29E8"]
+    - [0x7002A90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2A90"]
+    - [0x7002AD0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2AD0"]
+    - [0x7002B38, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2B38"]
+    - [0x7002B48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_2B48"]
+    - [0x7003118, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3118"]
+    - [0x7003128, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3128"]
+    - [0x7003358, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3358"]
+    - [0x70035A8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_35A8"]
+    - [0x7003758, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3758"]
+    - [0x7003B20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3B20"]
+    - [0x7003B48, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3B48"]
+    - [0x7003BD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3BD8"]
+    - [0x7003CD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3CD8"]
+    - [0x7003D58, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3D58"]
+    - [0x7003DD8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3DD8"]
+    - [0x7003E68, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3E68"]
+    - [0x7003EF8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3EF8"]
+    - [0x7003F80, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_3F80"]
+    - [0x7004020, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4020"]
+    - [0x70040B0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_40B0"]
+    - [0x7004120, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4120"]
+    - [0x7004188, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4188"]
+    - [0x7004208, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4208"]
+    - [0x7004288, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4288"]
+    - [0x7004300, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4300"]
+    - [0x7004378, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4378"]
+    - [0x70043E8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_43E8"]
+    - [0x7004490, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4490"]
+    - [0x7004520, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4520"]
+    - [0x7004590, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4590"]
+    - [0x7004608, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4608"]
+    - [0x7004680, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4680"]
+    - [0x7004700, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4700"]
+    - [0x7004778, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4778"]
+    - [0x70047F8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_47F8"]
+    - [0x7004880, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4880"]
+    - [0x70048C0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_48C0"]
+    - [0x70049E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_49E0"]
+    - [0x7004BA0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4BA0"]
+    - [0x7004D18, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4D18"]
+    - [0x7004E40, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4E40"]
+    - [0x7004F00, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4F00"]
+    - [0x7004FF8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_4FF8"]
+    - [0x70050D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_50D0"]
+    - [0x70051C8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_51C8"]
+    - [0x7005330, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5330"]
+    - [0x70054A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_54A0"]
+    - [0x70055D0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_55D0"]
+    - [0x7005740, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5740"]
+    - [0x70058C0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_58C0"]
+    - [0x7005988, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5988"]
+    - [0x7005A20, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5A20"]
+    - [0x7005AC0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5AC0"]
+    - [0x7005B58, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5B58"]
+    - [0x7005BE0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5BE0"]
+    - [0x7005C70, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5C70"]
+    - [0x7005D90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5D90"]
+    - [0x7005E08, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5E08"]
+    - [0x7005EA8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5EA8"]
+    - [0x7005F90, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_5F90"]
+    - [0x7006088, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6088"]
+    - [0x70061A0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_61A0"]
+    - [0x7006268, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6268"]
+    - [0x70062F8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_62F8"]
+    - [0x70063D8, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_63D8"]
+    - [0x70065E0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_65E0"]
+    - [0x70065F0, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_65F0"]
+    - [0x7006638, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6638"]
+    - [0x7006650, "models/tracks/frappe_snowland/frappe_snowland_displaylists/d_course_frappe_snowland_packed_dl_6650"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_frappe_snowland_unknown_waypoints:
+  symbol: d_course_frappe_snowland_unknown_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x34A0
+  count: 73
+d_course_frappe_snowland_track_waypoints:
+  symbol: d_course_frappe_snowland_track_waypoints
+  type: mk64:TRACK_PATH
+  offset: 0x36E8
+  count: 647
+d_course_frappe_snowland_tree_spawns:
+  symbol: d_course_frappe_snowland_tree_spawns
+  type: mk64:spawn_data
+  offset: 0x7718
+  count: 31
+d_course_frappe_snowland_item_box_spawns:
+  symbol: d_course_frappe_snowland_item_box_spawns
+  type: mk64:spawn_data
+  offset: 0x7810
+  count: 16
+d_course_frappe_snowland_addr:
+  symbol: d_course_frappe_snowland_addr
+  type: mk64:track_sections
+  offset: 0x79A0
+  count: 48

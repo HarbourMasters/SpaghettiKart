@@ -1,6 +1,6 @@
 #include <libultraship.h>
 #include <common_structs.h>
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "some_data.h"
 
 // Values below are altered so that the whole kart texture may be rendered as one texture instead of two half.

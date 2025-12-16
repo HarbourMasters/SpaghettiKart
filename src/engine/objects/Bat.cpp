@@ -6,8 +6,9 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/banshee_boardwalk_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "assets/textures/tracks/banshee_boardwalk/banshee_boardwalk_data.h"
+#include "assets/models/common_data.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
@@ -19,8 +20,13 @@ const char* sBoardwalkTexList[] = { gTextureBat1, gTextureBat2, gTextureBat3, gT
 
 size_t OBat::_count = 0;
 
-OBat::OBat(const FVector& pos, const IRotator& rot) {
+OBat::OBat(const SpawnParams& params) : OObject(params) {
     Name = "Bat";
+    ResourceName = "mk:bat";
+
+    //! @warning this likely needs to be rot.Set()
+    IRotator rot = params.Rotation.value_or(IRotator(0, 0, 0));
+
     find_unused_obj_index(&_objectIndex);
 
     init_texture_object(_objectIndex, (uint8_t*) d_course_banshee_boardwalk_bat_tlut, sBoardwalkTexList, 0x20U,

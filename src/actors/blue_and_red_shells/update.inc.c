@@ -30,9 +30,9 @@ void func_802B3B44(struct ShellActor* shell) {
     Vec3f origPos;
 
     currentWaypoint = shell->pathIndex;
-    temp_f2 = gCurrentTrackPath[currentWaypoint].posX;
-    temp_f12 = gCurrentTrackPath[currentWaypoint].posY;
-    temp_f28 = gCurrentTrackPath[currentWaypoint].posZ;
+    temp_f2 = gCurrentTrackPath[currentWaypoint].x;
+    temp_f12 = gCurrentTrackPath[currentWaypoint].y;
+    temp_f28 = gCurrentTrackPath[currentWaypoint].z;
     nextWaypoint = currentWaypoint + 1;
 
     if (nextWaypoint >= gSelectedPathCount) {
@@ -44,9 +44,9 @@ void func_802B3B44(struct ShellActor* shell) {
     temp_f24 = temp_f28 - shell->pos[2];
     temp_f0 = (temp_f20 * temp_f20) + (temp_f22 * temp_f22) + (temp_f24 * temp_f24);
     if (temp_f0 > 400.0f) {
-        temp_f18_3 = gCurrentTrackPath[nextWaypoint].posX;
-        temp_f16_3 = gCurrentTrackPath[nextWaypoint].posY;
-        temp_f26 = gCurrentTrackPath[nextWaypoint].posZ;
+        temp_f18_3 = gCurrentTrackPath[nextWaypoint].x;
+        temp_f16_3 = gCurrentTrackPath[nextWaypoint].y;
+        temp_f26 = gCurrentTrackPath[nextWaypoint].z;
 
         temp_f12_0 = temp_f18_3 - shell->pos[0];
         temp_f12_1 = temp_f16_3 - shell->pos[1];
@@ -97,9 +97,9 @@ void func_802B3B44(struct ShellActor* shell) {
             shell->pos[2] = temp_f28;
             shell->pathIndex = nextWaypoint;
         } else {
-            temp_f18_3 = gCurrentTrackPath[nextWaypoint].posX;
-            temp_f16_3 = gCurrentTrackPath[nextWaypoint].posY;
-            temp_f26 = gCurrentTrackPath[nextWaypoint].posZ;
+            temp_f18_3 = gCurrentTrackPath[nextWaypoint].x;
+            temp_f16_3 = gCurrentTrackPath[nextWaypoint].y;
+            temp_f26 = gCurrentTrackPath[nextWaypoint].z;
 
             shell->pos[0] = (temp_f2 + temp_f18_3) * 0.5f;
             shell->pos[1] = ((temp_f12 + temp_f16_3) * 0.5f) + shell->boundingBoxSize;
@@ -238,8 +238,8 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
     pad0 = shell->pos[2];
     pad2 = shell->pos[1];
     pad13 = shell->type;
-    if ((pad0 < (f32) gCourseMinZ) || ((f32) gCourseMaxZ < pad0) || (pad1 < (f32) gCourseMinX) ||
-        ((f32) gCourseMaxX < pad1) || (pad2 < (f32) gCourseMinY)) {
+    if ((pad0 < (f32) gTrackMinZ) || ((f32) gTrackMaxZ < pad0) || (pad1 < (f32) gTrackMinX) ||
+        ((f32) gTrackMaxX < pad1) || (pad2 < (f32) gTrackMinY)) {
         destroy_destructable_actor((struct Actor*) shell);
     }
 

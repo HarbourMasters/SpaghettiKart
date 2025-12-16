@@ -8,8 +8,12 @@
 #include "Gizmo.h"
 #include "Collision.h"
 #include "port/Engine.h"
-#include <controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
-#include <window/Window.h>
+#include <ship/controller/controldevice/controller/mapping/keyboard/KeyboardScancodes.h>
+#include <ship/window/Window.h>
+#include "engine/Matrix.h"
+#include "engine/Actor.h"
+#include "engine/objects/Object.h"
+#include "engine/editor/GameObject.h"
 
 
 #include "engine/actors/Ship.h"
@@ -25,38 +29,38 @@ extern "C" {
 #include "math_util.h"
 }
 
-namespace Editor {
+namespace TrackEditor {
 
 void Gizmo::Load() {
     /* Translate handle collision */
-    RedCollision.Pos = &Pos;
-    RedCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_red";
+    RedCollision.Pos = Pos;
+    RedCollision.Model = "__OTR__editor/gizmo/translate_handle_red";
 
-    GreenCollision.Pos = &Pos;
-    GreenCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_green";
+    GreenCollision.Pos = Pos;
+    GreenCollision.Model = "__OTR__editor/gizmo/translate_handle_green";
 
-    BlueCollision.Pos = &Pos;
-    BlueCollision.Model = (Gfx*)"__OTR__editor/gizmo/translate_handle_blue";
+    BlueCollision.Pos = Pos;
+    BlueCollision.Model = "__OTR__editor/gizmo/translate_handle_blue";
 
     /* Rotate handle collision */
-    RedRotateCollision.Pos = &Pos;
-    RedRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_red";
+    RedRotateCollision.Pos = Pos;
+    RedRotateCollision.Model = "__OTR__editor/gizmo/rot_handle_red";
 
-    GreenRotateCollision.Pos = &Pos;
-    GreenRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_green";
+    GreenRotateCollision.Pos = Pos;
+    GreenRotateCollision.Model = "__OTR__editor/gizmo/rot_handle_green";
 
-    BlueRotateCollision.Pos = &Pos;
-    BlueRotateCollision.Model = (Gfx*)"__OTR__editor/gizmo/rot_handle_blue";
+    BlueRotateCollision.Pos = Pos;
+    BlueRotateCollision.Model = "__OTR__editor/gizmo/rot_handle_blue";
 
     /* Scale handle collision */
-    RedScaleCollision.Pos = &Pos;
-    RedScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_red";
+    RedScaleCollision.Pos = Pos;
+    RedScaleCollision.Model = "__OTR__editor/gizmo/scale_handle_red";
 
-    GreenScaleCollision.Pos = &Pos;
-    GreenScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_green";
+    GreenScaleCollision.Pos = Pos;
+    GreenScaleCollision.Model = "__OTR__editor/gizmo/scale_handle_green";
 
-    BlueScaleCollision.Pos = &Pos;
-    BlueScaleCollision.Model = (Gfx*)"__OTR__editor/gizmo/scale_handle_blue";
+    BlueScaleCollision.Pos = Pos;
+    BlueScaleCollision.Model = "__OTR__editor/gizmo/scale_handle_blue";
 
     GenerateCollisionMesh(&RedCollision, (Gfx*)LOAD_ASSET_RAW(RedCollision.Model), 1.0f);
     GenerateCollisionMesh(&GreenCollision, (Gfx*)LOAD_ASSET_RAW(GreenCollision.Model), 1.0f);
@@ -89,178 +93,256 @@ void Gizmo::Tick() {
 }
 
 // Makes the gizmo visible
-void Gizmo::SetGizmo(GameObject* object, Ray ray) {
-    _selected = object;
+void Gizmo::SetGizmo(const std::variant<AActor*, OObject*, GameObject*>& object, Ray ray) {
     _ray = ray.Direction;
-    Pos = FVector(
-        object->Pos->x,
-        object->Pos->y,
-        object->Pos->z
-    );
+    std::visit([this](auto* obj) {
+        _selected = obj;
+        this->Pos = obj->GetLocation();
+    }, object);
 }
 
-void Gizmo::SetGizmoNoCursor(GameObject* object) {
-    _selected = object;
-    Pos = FVector(
-        object->Pos->x,
-        object->Pos->y,
-        object->Pos->z
-    );
+void Gizmo::SetGizmoNoCursor(const std::variant<AActor*, OObject*, GameObject*>& object) {
+    std::visit([this](auto* obj) {
+        _selected = obj;
+        Pos = obj->GetLocation();
+    }, object);
 }
 
 void Gizmo::Translate() {
     static float length = 180.0f; // Default value
 
-    // Prevent nullptr exceptions
-    if (_selected == NULL || _selected->Pos == NULL) {
-        return;
-    }
+    std::visit([this](auto* obj) {
+        Camera* camera = gScreenOneCtx->camera;
+        float x, y, z = 0;
+        if (nullptr == obj) {
+            return;
+        }
 
-    if (Enabled) {
+        const FVector location = obj->GetLocation();
+
         length = sqrt(
-            pow(_selected->Pos->x - cameras[0].pos[0], 2) +
-            pow(_selected->Pos->y - cameras[0].pos[1], 2) +
-            pow(_selected->Pos->z - cameras[0].pos[2], 2)
+            pow(location.x - camera->pos[0], 2) +
+            pow(location.y - camera->pos[1], 2) +
+            pow(location.z - camera->pos[2], 2)
         );
 
-        switch(SelectedHandle) {
+        switch(this->SelectedHandle) {
             case GizmoHandle::All_Axis:
-                _selected->Pos->x = (cameras[0].pos[0] + _ray.x * PickDistance) + _cursorOffset.x;
-                _selected->Pos->y = (cameras[0].pos[1] + _ray.y * PickDistance) + _cursorOffset.y;
-                _selected->Pos->z = (cameras[0].pos[2] + _ray.z * PickDistance) + _cursorOffset.z;
                 if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
-                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                    y = SnapToSurface(location);
+                } else {
+                    y = ((camera->pos[1] + _ray.y * PickDistance) + _cursorOffset.y);
                 }
+
+                obj->Translate(
+                    FVector(
+                        ((camera->pos[0] + _ray.x * PickDistance) + _cursorOffset.x),
+                        y,
+                        ((camera->pos[2] + _ray.z * PickDistance) + _cursorOffset.z)
+                    )
+                );
                 break;
             case GizmoHandle::X_Axis:
-                _selected->Pos->x = (cameras[0].pos[0] + _ray.x * length) + _cursorOffset.x;
                 if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
-                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                    y = SnapToSurface(location);
+                } else {
+                    y = location.y;  // Preserve Y
                 }
+
+                obj->Translate(
+                    FVector(
+                        ((camera->pos[0] + _ray.x * length) + _cursorOffset.x),
+                        y,
+                        location.z  // Preserve Z
+                    )
+                );
                 break;
             case GizmoHandle::Y_Axis:
-                _selected->Pos->y = (cameras[0].pos[1] + _ray.y * length) + _cursorOffset.y;
+                obj->Translate(
+                    FVector(
+                        location.x, // Preserve X
+                        ((camera->pos[1] + _ray.y * length) + _cursorOffset.y),
+                        location.z  // Preserve Z
+                    )
+                );
                 break;
             case GizmoHandle::Z_Axis:
-                _selected->Pos->z = (cameras[0].pos[2] + _ray.z * length) + _cursorOffset.z;
                 if (CVarGetInteger("gEditorSnapToGround", 0) == true) {
-                    _selected->Pos->y = SnapToSurface(_selected->Pos);
+                    y = SnapToSurface(location);
+                } else {
+                    y = location.y; // Preserve Y
                 }
+                obj->Translate(
+                    FVector(
+                        location.x, // Preserve X
+                        y,
+                        ((camera->pos[2] + _ray.z * length) + _cursorOffset.z)
+                    )
+                );
                 break;
         }
 
+        FVector newLoc = obj->GetLocation();
+        x = newLoc.x;
+        y = newLoc.y;
+        z = newLoc.z;
+
+
         if (CVarGetInteger("gEditorBoundary", 0) == true) {
-            _selected->Pos->x = MAX(_selected->Pos->x, dimensions.MinX);
-            _selected->Pos->x = MIN(_selected->Pos->x, dimensions.MaxX);
-
-            _selected->Pos->y = MAX(_selected->Pos->y, dimensions.MinY);
-            _selected->Pos->y = MIN(_selected->Pos->y, dimensions.MaxY);
-
-            _selected->Pos->z = MAX(_selected->Pos->z, dimensions.MinZ);
-            _selected->Pos->z = MIN(_selected->Pos->z, dimensions.MaxZ);
+#define EDITOR_CLAMP(value, min, max) ((value) < (min) ? min : (value) > (max) ? max : value)
+            x = EDITOR_CLAMP(newLoc.x, dimensions.MinX, dimensions.MaxX);
+            y = EDITOR_CLAMP(newLoc.y, dimensions.MinY, dimensions.MaxY);
+            z = EDITOR_CLAMP(newLoc.z, dimensions.MinZ, dimensions.MaxZ);
+            obj->Translate(FVector(x, y, z));
+#undef EDITOR_CLAMP
         }
 
-        Pos = FVector(
-            _selected->Pos->x,
-            _selected->Pos->y,
-            _selected->Pos->z
-        );
-    }
+        // Update the gizmo position
+        Pos = FVector(x, y, z);
+
+    // Pass the _selected object into this lambda function
+    }, _selected);
 }
 
-f32 Gizmo::SnapToSurface(FVector* pos) {
+f32 Gizmo::SnapToSurface(const FVector pos) {
     float y;
-    y = spawn_actor_on_surface(pos->x, 2000.0f, pos->z);
+    y = spawn_actor_on_surface(pos.x, 2000.0f, pos.z);
 
     if (y == 3000.0f || y == -3000.0f) {
-        y = pos->y;
+        y = pos.y;
     }
 
     return y;
 }
 
 void Gizmo::Rotate() {
-    FVector cam = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+    std::visit([this](auto* obj) {
+        Camera* camera = gScreenOneCtx->camera;
+        FVector cam = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
+        IRotator rot;
 
-    if (_selected == nullptr || _selected->Rot == nullptr) {
-        return;
-    }
+        if (nullptr == obj) {
+            return;
+        }
 
-    // Store initial scale at the beginning of the drag
-    if (ManipulationStart) {
-        ManipulationStart = false;
-        InitialRotation = *_selected->Rot;  // Store initial rotation
-    }
+        // Store initial scale at the beginning of the drag
+        if (ManipulationStart) {
+            ManipulationStart = false;
+            InitialRotation = obj->GetRotation();  // Store initial rotation
+        }
 
-    // Initial click position
-    FVector clickPos = *_selected->Pos - _cursorOffset;
+        // Initial click position
+        FVector clickPos = obj->GetLocation() - _cursorOffset;
 
-    // Calculate difference
-    FVector diff = (cam + _ray * PickDistance) - clickPos;
+        // Calculate difference
+        FVector diff = (cam + _ray * PickDistance) - clickPos;
 
-    // Set rotation sensitivity
-    diff = diff * 100.0f;
-    switch (SelectedHandle) {
-        case GizmoHandle::X_Axis:
-            _selected->Rot->pitch = (uint16_t)InitialRotation.pitch + diff.x;
+        // Set rotation sensitivity
+        diff = diff * 100.0f;
+        switch (SelectedHandle) {
+            case GizmoHandle::X_Axis:
+                rot.Set(
+                (uint16_t)(InitialRotation.pitch + diff.x),
+                InitialRotation.yaw,
+                InitialRotation.roll
+            );
             break;
-        case GizmoHandle::Y_Axis:
-            _selected->Rot->yaw = (uint16_t)InitialRotation.yaw + diff.y;
-            break;
-        case GizmoHandle::Z_Axis:
-            _selected->Rot->roll = (uint16_t)InitialRotation.roll + diff.z;
-            break;
-    }
+            case GizmoHandle::Y_Axis:
+                rot.Set(
+                    InitialRotation.pitch,
+                    (uint16_t)(InitialRotation.yaw + diff.y),
+                    InitialRotation.roll
+                );
+                break;
+            case GizmoHandle::Z_Axis:
+                rot.Set(
+                    InitialRotation.pitch,
+                    InitialRotation.yaw,
+                    (uint16_t)(InitialRotation.roll + diff.z)
+                );
+                break;
+        }
+        obj->Rotate(rot);
+    // Pass the _selected object into this lambda function
+    }, _selected);
 }
 
 void Gizmo::Scale() {
-    FVector cam = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
-    if (_selected == nullptr || _selected->Scale == nullptr) {
-        return;
-    }
+    std::visit([this](auto* obj) {
+        Camera* camera = gScreenOneCtx->camera;
+        FVector cam = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
+        if (nullptr == obj) {
+            return;
+        }
 
-    // Store initial scale at the beginning of the drag
-    if (ManipulationStart) {
-        ManipulationStart = false;
-        InitialScale = *_selected->Scale;
-    }
+        // Store initial scale at the beginning of the drag
+        if (ManipulationStart) {
+            ManipulationStart = false;
+            InitialScale = obj->GetScale();
+        }
 
-    // Initial click position
-    FVector clickPos = *_selected->Pos - _cursorOffset;
+        FVector scale = obj->GetScale();
 
-    // Calculate difference
-    FVector diff = (cam + _ray * PickDistance) - clickPos;
+        // Initial click position
+        FVector clickPos = obj->GetLocation() - _cursorOffset;
 
-    // Lower scaling sensitivity
-    diff = diff * 0.01f;
+        // Calculate difference
+        FVector diff = (cam + _ray * PickDistance) - clickPos;
 
-    switch (SelectedHandle) {
-        case GizmoHandle::X_Axis:
-            _selected->Scale->x = InitialScale.x + -diff.x;
-            break;
-        case GizmoHandle::Y_Axis:
-            _selected->Scale->y = InitialScale.y + diff.y;
-            break;
-        case GizmoHandle::Z_Axis:
-            _selected->Scale->z = InitialScale.z + -diff.z;
-            break;
-        case GizmoHandle::All_Axis:
-            float uniformScale = (diff.x - diff.y - diff.z) / 3.0f;
-            uniformScale *= 1.8; // Increased sensitivity
-            _selected->Scale->x = uniformScale;
-            _selected->Scale->y = uniformScale;
-            _selected->Scale->z = uniformScale;
-            break;
-    }
+        // Lower scaling sensitivity
+        diff = diff * 0.01f;
+
+        switch (SelectedHandle) {
+            case GizmoHandle::X_Axis:
+                obj->SetScale(
+                    FVector(
+                        (InitialScale.x + -diff.x),
+                        scale.y,
+                        scale.z
+                    )
+                );
+                break;
+            case GizmoHandle::Y_Axis:
+               obj->SetScale(
+                    FVector(
+                        scale.x,
+                        (InitialScale.y + diff.y),
+                        scale.z
+                    )
+                );
+                break;
+            case GizmoHandle::Z_Axis:
+                obj->SetScale(
+                    FVector(
+                        scale.x,
+                        scale.y,
+                        (InitialScale.z + -diff.z)
+                    )
+                );
+                break;
+            case GizmoHandle::All_Axis:
+                float uniformScale = (diff.x - diff.y - diff.z) / 3.0f;
+                uniformScale *= 1.8; // Increased sensitivity
+                obj->SetScale(
+                    FVector(
+                        uniformScale,
+                        uniformScale,
+                        uniformScale
+                    )
+                );
+                break;
+        }
+    // Pass the _selected object into this lambda function
+    }, _selected);
 }
 
 void Gizmo::Draw() {
     if (Enabled) {
         DrawHandles();
-        //DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
-        //DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
-        //DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
-        //DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
+        // DebugCollision(&RedCollision, Pos, {0, 0, 0}, {0.05f, 0.05f, 0.05f}, RedCollision.Triangles);
+        // DebugCollision(&BlueCollision, Pos, {90, 0, 0}, {0.05f, 0.05f, 0.05f}, BlueCollision.Triangles);
+        // DebugCollision(&GreenCollision, Pos, {0, 90, 0}, {0.05f, 0.05f, 0.05f}, GreenCollision.Triangles);
+        // DebugCollision(&RedRotateCollision, Pos, {0, 0, 0}, {0.15f, 0.15f, 0.15f}, RedRotateCollision.Triangles);
         //DebugCollision((uintptr_t)_selected, Pos, BlueRotateCollision.Triangles);
         //DebugCollision((uintptr_t)_selected, Pos, GreenRotateCollision.Triangles);
     }
@@ -316,11 +398,12 @@ void Gizmo::DrawHandles() {
     Editor_AddMatrix(mainMtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     if (center) {
+        Camera* camera = gScreenOneCtx->camera;
         Mat4 CenterMtx;
         Editor_MatrixIdentity(CenterMtx);
 
         // Calculate camera-to-object distance
-        FVector cameraDir = FVector(Pos.x - cameras[0].pos[0], Pos.y - cameras[0].pos[1], Pos.z - cameras[0].pos[2]);
+        FVector cameraDir = FVector(Pos.x - camera->pos[0], Pos.y - camera->pos[1], Pos.z - camera->pos[2]);
         cameraDir = cameraDir.Normalize();
 
         IRotator centerRot;

@@ -1,7 +1,7 @@
 #include "AudioBankFactory.h"
 #include "../type/AudioBank.h"
 #include "spdlog/spdlog.h"
-#include "resourcebridge.h"
+#include "libultraship/bridge/resourcebridge.h"
 #include "ResourceUtil.h"
 
 std::shared_ptr<Ship::IResource>

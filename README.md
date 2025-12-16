@@ -1,9 +1,6 @@
 ![Spaghetti Kart](docs/spaghettigithublight.png#gh-light-mode-only)
 ![Spaghetti Kart](docs/spaghettigithubnight.png#gh-dark-mode-only)
 
-## Help Wanted!
-This project is looking for a C or C++ coder interested in making a couple scrollable menus that can have lots of items in it. As a method to display custom content does not exist. A tick/render system for custom menus already exists. So just someone willing to build out the menu.
-
 ## Discord
 
 Official Discord: https://discord.com/invite/shipofharkinian
@@ -78,7 +75,8 @@ If you want to playtest a continuous integration build, you can find them at the
 
 * [Windows](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-windows.zip?status=completed)
 * [Linux](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-linux-x64.zip?status=completed)
-* [macOS](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-mac-x64.zip?status=completed)
+* [macOS-arm64](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-mac-arm64.zip?status=completed)
+* [macOS-intel](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/spaghetti-mac-intel-x64.zip?status=completed)
 * [Switch](https://nightly.link/HarbourMasters/SpaghettiKart/workflows/main/main/Spaghettify-switch.zip?status=completed)
 
 Maintainers: [MegaMech](https://www.github.com/MegaMech), [Coco](https://www.github.com/coco875), [Kirito](https://github.com/KiritoDv)

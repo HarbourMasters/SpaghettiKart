@@ -1,0 +1,3093 @@
+:config:
+  segments:
+    - [0x0F, 0x8FE640]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_luigi_raceway_vertex_0x04000000:
+  symbol: d_course_luigi_raceway_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x0
+
+d_course_luigi_raceway_vertex_0x04000080:
+  symbol: d_course_luigi_raceway_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x70
+
+d_course_luigi_raceway_vertex_0x04000100:
+  symbol: d_course_luigi_raceway_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xe0
+
+d_course_luigi_raceway_vertex_0x04000200:
+  symbol: d_course_luigi_raceway_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1c0
+
+d_course_luigi_raceway_vertex_0x04000300:
+  symbol: d_course_luigi_raceway_vertex_0x04000300
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2a0
+
+d_course_luigi_raceway_vertex_0x04000400:
+  symbol: d_course_luigi_raceway_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x380
+
+d_course_luigi_raceway_vertex_0x04000500:
+  symbol: d_course_luigi_raceway_vertex_0x04000500
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x460
+
+d_course_luigi_raceway_vertex_0x04000600:
+  symbol: d_course_luigi_raceway_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x540
+
+d_course_luigi_raceway_vertex_0x04000700:
+  symbol: d_course_luigi_raceway_vertex_0x04000700
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x620
+
+d_course_luigi_raceway_vertex_0x04000780:
+  symbol: d_course_luigi_raceway_vertex_0x04000780
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x690
+
+d_course_luigi_raceway_vertex_0x04000800:
+  symbol: d_course_luigi_raceway_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x700
+
+d_course_luigi_raceway_vertex_0x040008C0:
+  symbol: d_course_luigi_raceway_vertex_0x040008C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x7a8
+
+d_course_luigi_raceway_vertex_0x040009C0:
+  symbol: d_course_luigi_raceway_vertex_0x040009C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x888
+
+d_course_luigi_raceway_vertex_0x04000A80:
+  symbol: d_course_luigi_raceway_vertex_0x04000A80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x930
+
+d_course_luigi_raceway_vertex_0x04000B80:
+  symbol: d_course_luigi_raceway_vertex_0x04000B80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa10
+
+d_course_luigi_raceway_vertex_0x04000C80:
+  symbol: d_course_luigi_raceway_vertex_0x04000C80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xaf0
+
+d_course_luigi_raceway_vertex_0x04000D80:
+  symbol: d_course_luigi_raceway_vertex_0x04000D80
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbd0
+
+d_course_luigi_raceway_vertex_0x04000E80:
+  symbol: d_course_luigi_raceway_vertex_0x04000E80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcb0
+
+d_course_luigi_raceway_vertex_0x04000F00:
+  symbol: d_course_luigi_raceway_vertex_0x04000F00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xd20
+
+d_course_luigi_raceway_vertex_0x04001000:
+  symbol: d_course_luigi_raceway_vertex_0x04001000
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe00
+
+d_course_luigi_raceway_vertex_0x04001080:
+  symbol: d_course_luigi_raceway_vertex_0x04001080
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe70
+
+d_course_luigi_raceway_vertex_0x04001140:
+  symbol: d_course_luigi_raceway_vertex_0x04001140
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf18
+
+d_course_luigi_raceway_vertex_0x04001240:
+  symbol: d_course_luigi_raceway_vertex_0x04001240
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xff8
+
+d_course_luigi_raceway_vertex_0x04001340:
+  symbol: d_course_luigi_raceway_vertex_0x04001340
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10d8
+
+d_course_luigi_raceway_vertex_0x040013A0:
+  symbol: d_course_luigi_raceway_vertex_0x040013A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x112c
+
+d_course_luigi_raceway_vertex_0x04001420:
+  symbol: d_course_luigi_raceway_vertex_0x04001420
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x119c
+
+d_course_luigi_raceway_vertex_0x04001480:
+  symbol: d_course_luigi_raceway_vertex_0x04001480
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11f0
+
+d_course_luigi_raceway_vertex_0x04001500:
+  symbol: d_course_luigi_raceway_vertex_0x04001500
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1260
+
+d_course_luigi_raceway_vertex_0x04001560:
+  symbol: d_course_luigi_raceway_vertex_0x04001560
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12b4
+
+d_course_luigi_raceway_vertex_0x040015E0:
+  symbol: d_course_luigi_raceway_vertex_0x040015E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1324
+
+d_course_luigi_raceway_vertex_0x04001640:
+  symbol: d_course_luigi_raceway_vertex_0x04001640
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1378
+
+d_course_luigi_raceway_vertex_0x040016C0:
+  symbol: d_course_luigi_raceway_vertex_0x040016C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x13e8
+
+d_course_luigi_raceway_vertex_0x04001720:
+  symbol: d_course_luigi_raceway_vertex_0x04001720
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x143c
+
+d_course_luigi_raceway_vertex_0x040017A0:
+  symbol: d_course_luigi_raceway_vertex_0x040017A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x14ac
+
+d_course_luigi_raceway_vertex_0x04001800:
+  symbol: d_course_luigi_raceway_vertex_0x04001800
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1500
+
+d_course_luigi_raceway_vertex_0x04001880:
+  symbol: d_course_luigi_raceway_vertex_0x04001880
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1570
+
+d_course_luigi_raceway_vertex_0x040018E0:
+  symbol: d_course_luigi_raceway_vertex_0x040018E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x15c4
+
+d_course_luigi_raceway_vertex_0x04001960:
+  symbol: d_course_luigi_raceway_vertex_0x04001960
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1634
+
+d_course_luigi_raceway_vertex_0x040019C0:
+  symbol: d_course_luigi_raceway_vertex_0x040019C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1688
+
+d_course_luigi_raceway_vertex_0x04001A40:
+  symbol: d_course_luigi_raceway_vertex_0x04001A40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x16f8
+
+d_course_luigi_raceway_vertex_0x04001A80:
+  symbol: d_course_luigi_raceway_vertex_0x04001A80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1730
+
+d_course_luigi_raceway_vertex_0x04001AC0:
+  symbol: d_course_luigi_raceway_vertex_0x04001AC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1768
+
+d_course_luigi_raceway_vertex_0x04001B20:
+  symbol: d_course_luigi_raceway_vertex_0x04001B20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x17bc
+
+d_course_luigi_raceway_vertex_0x04001BA0:
+  symbol: d_course_luigi_raceway_vertex_0x04001BA0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x182c
+
+d_course_luigi_raceway_vertex_0x04001C00:
+  symbol: d_course_luigi_raceway_vertex_0x04001C00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1880
+
+d_course_luigi_raceway_vertex_0x04001C80:
+  symbol: d_course_luigi_raceway_vertex_0x04001C80
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x18f0
+
+d_course_luigi_raceway_vertex_0x04001D20:
+  symbol: d_course_luigi_raceway_vertex_0x04001D20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x197c
+
+d_course_luigi_raceway_vertex_0x04001E20:
+  symbol: d_course_luigi_raceway_vertex_0x04001E20
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1a5c
+
+d_course_luigi_raceway_vertex_0x04001EC0:
+  symbol: d_course_luigi_raceway_vertex_0x04001EC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1ae8
+
+d_course_luigi_raceway_vertex_0x04001FC0:
+  symbol: d_course_luigi_raceway_vertex_0x04001FC0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1bc8
+
+d_course_luigi_raceway_vertex_0x04002060:
+  symbol: d_course_luigi_raceway_vertex_0x04002060
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1c54
+
+d_course_luigi_raceway_vertex_0x04002160:
+  symbol: d_course_luigi_raceway_vertex_0x04002160
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1d34
+
+d_course_luigi_raceway_vertex_0x04002200:
+  symbol: d_course_luigi_raceway_vertex_0x04002200
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1dc0
+
+d_course_luigi_raceway_vertex_0x04002300:
+  symbol: d_course_luigi_raceway_vertex_0x04002300
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1ea0
+
+d_course_luigi_raceway_vertex_0x04002360:
+  symbol: d_course_luigi_raceway_vertex_0x04002360
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1ef4
+
+d_course_luigi_raceway_vertex_0x040023E0:
+  symbol: d_course_luigi_raceway_vertex_0x040023E0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1f64
+
+d_course_luigi_raceway_vertex_0x04002480:
+  symbol: d_course_luigi_raceway_vertex_0x04002480
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1ff0
+
+d_course_luigi_raceway_vertex_0x04002580:
+  symbol: d_course_luigi_raceway_vertex_0x04002580
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x20d0
+
+d_course_luigi_raceway_vertex_0x040025C0:
+  symbol: d_course_luigi_raceway_vertex_0x040025C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2108
+
+d_course_luigi_raceway_vertex_0x04002600:
+  symbol: d_course_luigi_raceway_vertex_0x04002600
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2140
+
+d_course_luigi_raceway_vertex_0x04002660:
+  symbol: d_course_luigi_raceway_vertex_0x04002660
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2194
+
+d_course_luigi_raceway_vertex_0x040026E0:
+  symbol: d_course_luigi_raceway_vertex_0x040026E0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x2204
+
+d_course_luigi_raceway_vertex_0x04002780:
+  symbol: d_course_luigi_raceway_vertex_0x04002780
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2290
+
+d_course_luigi_raceway_vertex_0x04002880:
+  symbol: d_course_luigi_raceway_vertex_0x04002880
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x2370
+
+d_course_luigi_raceway_vertex_0x04002920:
+  symbol: d_course_luigi_raceway_vertex_0x04002920
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x23fc
+
+d_course_luigi_raceway_vertex_0x04002A20:
+  symbol: d_course_luigi_raceway_vertex_0x04002A20
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x24dc
+
+d_course_luigi_raceway_vertex_0x04002A80:
+  symbol: d_course_luigi_raceway_vertex_0x04002A80
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x2530
+
+d_course_luigi_raceway_vertex_0x04002AF0:
+  symbol: d_course_luigi_raceway_vertex_0x04002AF0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2592
+
+d_course_luigi_raceway_vertex_0x04002B50:
+  symbol: d_course_luigi_raceway_vertex_0x04002B50
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x25e6
+
+d_course_luigi_raceway_vertex_0x04002BB0:
+  symbol: d_course_luigi_raceway_vertex_0x04002BB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x263a
+
+d_course_luigi_raceway_vertex_0x04002BF0:
+  symbol: d_course_luigi_raceway_vertex_0x04002BF0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x2672
+
+d_course_luigi_raceway_vertex_0x04002C40:
+  symbol: d_course_luigi_raceway_vertex_0x04002C40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x26b8
+
+d_course_luigi_raceway_vertex_0x04002CC0:
+  symbol: d_course_luigi_raceway_vertex_0x04002CC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2728
+
+d_course_luigi_raceway_vertex_0x04002D20:
+  symbol: d_course_luigi_raceway_vertex_0x04002D20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x277c
+
+d_course_luigi_raceway_vertex_0x04002D60:
+  symbol: d_course_luigi_raceway_vertex_0x04002D60
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x27b4
+
+d_course_luigi_raceway_vertex_0x04002DE0:
+  symbol: d_course_luigi_raceway_vertex_0x04002DE0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x2824
+
+d_course_luigi_raceway_vertex_0x04002E50:
+  symbol: d_course_luigi_raceway_vertex_0x04002E50
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x2886
+
+d_course_luigi_raceway_vertex_0x04002EE0:
+  symbol: d_course_luigi_raceway_vertex_0x04002EE0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2904
+
+d_course_luigi_raceway_vertex_0x04002F40:
+  symbol: d_course_luigi_raceway_vertex_0x04002F40
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x2958
+
+d_course_luigi_raceway_vertex_0x04002FB0:
+  symbol: d_course_luigi_raceway_vertex_0x04002FB0
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x29ba
+
+d_course_luigi_raceway_vertex_0x04003020:
+  symbol: d_course_luigi_raceway_vertex_0x04003020
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2a1c
+
+d_course_luigi_raceway_vertex_0x04003060:
+  symbol: d_course_luigi_raceway_vertex_0x04003060
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x2a54
+
+d_course_luigi_raceway_vertex_0x040030F0:
+  symbol: d_course_luigi_raceway_vertex_0x040030F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x2ad2
+
+d_course_luigi_raceway_vertex_0x04003130:
+  symbol: d_course_luigi_raceway_vertex_0x04003130
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2b0a
+
+d_course_luigi_raceway_vertex_0x040031F0:
+  symbol: d_course_luigi_raceway_vertex_0x040031F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x2bb2
+
+d_course_luigi_raceway_vertex_0x04003270:
+  symbol: d_course_luigi_raceway_vertex_0x04003270
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2c22
+
+d_course_luigi_raceway_vertex_0x040032D0:
+  symbol: d_course_luigi_raceway_vertex_0x040032D0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x2c76
+
+d_course_luigi_raceway_vertex_0x04003330:
+  symbol: d_course_luigi_raceway_vertex_0x04003330
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x2cca
+
+d_course_luigi_raceway_vertex_0x04003420:
+  symbol: d_course_luigi_raceway_vertex_0x04003420
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x2d9c
+
+d_course_luigi_raceway_vertex_0x04003530:
+  symbol: d_course_luigi_raceway_vertex_0x04003530
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x2e8a
+
+d_course_luigi_raceway_vertex_0x040036B0:
+  symbol: d_course_luigi_raceway_vertex_0x040036B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2fda
+
+d_course_luigi_raceway_vertex_0x04003770:
+  symbol: d_course_luigi_raceway_vertex_0x04003770
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x3082
+
+d_course_luigi_raceway_vertex_0x04003890:
+  symbol: d_course_luigi_raceway_vertex_0x04003890
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x317e
+
+d_course_luigi_raceway_vertex_0x04003A10:
+  symbol: d_course_luigi_raceway_vertex_0x04003A10
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x32ce
+
+d_course_luigi_raceway_vertex_0x04003B20:
+  symbol: d_course_luigi_raceway_vertex_0x04003B20
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x33bc
+
+d_course_luigi_raceway_vertex_0x04003CA0:
+  symbol: d_course_luigi_raceway_vertex_0x04003CA0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x350c
+
+d_course_luigi_raceway_vertex_0x04003DE0:
+  symbol: d_course_luigi_raceway_vertex_0x04003DE0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x3624
+
+d_course_luigi_raceway_vertex_0x04003FD0:
+  symbol: d_course_luigi_raceway_vertex_0x04003FD0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x37d6
+
+d_course_luigi_raceway_vertex_0x040041B0:
+  symbol: d_course_luigi_raceway_vertex_0x040041B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x397a
+
+d_course_luigi_raceway_vertex_0x040043A0:
+  symbol: d_course_luigi_raceway_vertex_0x040043A0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x3b2c
+
+d_course_luigi_raceway_vertex_0x040044C0:
+  symbol: d_course_luigi_raceway_vertex_0x040044C0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x3c28
+
+d_course_luigi_raceway_vertex_0x040044F0:
+  symbol: d_course_luigi_raceway_vertex_0x040044F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3c52
+
+d_course_luigi_raceway_vertex_0x040045B0:
+  symbol: d_course_luigi_raceway_vertex_0x040045B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3cfa
+
+d_course_luigi_raceway_vertex_0x04004730:
+  symbol: d_course_luigi_raceway_vertex_0x04004730
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3e4a
+
+d_course_luigi_raceway_vertex_0x040048B0:
+  symbol: d_course_luigi_raceway_vertex_0x040048B0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3f9a
+
+d_course_luigi_raceway_vertex_0x04004A30:
+  symbol: d_course_luigi_raceway_vertex_0x04004A30
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x40ea
+
+d_course_luigi_raceway_vertex_0x04004BB0:
+  symbol: d_course_luigi_raceway_vertex_0x04004BB0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x423a
+
+d_course_luigi_raceway_vertex_0x04004D00:
+  symbol: d_course_luigi_raceway_vertex_0x04004D00
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4360
+
+d_course_luigi_raceway_vertex_0x04004E80:
+  symbol: d_course_luigi_raceway_vertex_0x04004E80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x44b0
+
+d_course_luigi_raceway_vertex_0x04005000:
+  symbol: d_course_luigi_raceway_vertex_0x04005000
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4600
+
+d_course_luigi_raceway_vertex_0x04005180:
+  symbol: d_course_luigi_raceway_vertex_0x04005180
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4750
+
+d_course_luigi_raceway_vertex_0x04005300:
+  symbol: d_course_luigi_raceway_vertex_0x04005300
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x48a0
+
+d_course_luigi_raceway_vertex_0x040053F0:
+  symbol: d_course_luigi_raceway_vertex_0x040053F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4972
+
+d_course_luigi_raceway_vertex_0x04005570:
+  symbol: d_course_luigi_raceway_vertex_0x04005570
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4ac2
+
+d_course_luigi_raceway_vertex_0x040056F0:
+  symbol: d_course_luigi_raceway_vertex_0x040056F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4c12
+
+d_course_luigi_raceway_vertex_0x04005870:
+  symbol: d_course_luigi_raceway_vertex_0x04005870
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4d62
+
+d_course_luigi_raceway_vertex_0x040059F0:
+  symbol: d_course_luigi_raceway_vertex_0x040059F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4eb2
+
+d_course_luigi_raceway_vertex_0x04005B70:
+  symbol: d_course_luigi_raceway_vertex_0x04005B70
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x5002
+
+d_course_luigi_raceway_vertex_0x04005C90:
+  symbol: d_course_luigi_raceway_vertex_0x04005C90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x50fe
+
+d_course_luigi_raceway_vertex_0x04005D50:
+  symbol: d_course_luigi_raceway_vertex_0x04005D50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x51a6
+
+d_course_luigi_raceway_vertex_0x04005E10:
+  symbol: d_course_luigi_raceway_vertex_0x04005E10
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x524e
+
+d_course_luigi_raceway_vertex_0x04005F90:
+  symbol: d_course_luigi_raceway_vertex_0x04005F90
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x539e
+
+d_course_luigi_raceway_vertex_0x04006110:
+  symbol: d_course_luigi_raceway_vertex_0x04006110
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x54ee
+
+d_course_luigi_raceway_vertex_0x04006290:
+  symbol: d_course_luigi_raceway_vertex_0x04006290
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x563e
+
+d_course_luigi_raceway_vertex_0x04006410:
+  symbol: d_course_luigi_raceway_vertex_0x04006410
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x578e
+
+d_course_luigi_raceway_vertex_0x04006590:
+  symbol: d_course_luigi_raceway_vertex_0x04006590
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x58de
+
+d_course_luigi_raceway_vertex_0x04006710:
+  symbol: d_course_luigi_raceway_vertex_0x04006710
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x5a2e
+
+d_course_luigi_raceway_vertex_0x04006890:
+  symbol: d_course_luigi_raceway_vertex_0x04006890
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x5b7e
+
+d_course_luigi_raceway_vertex_0x04006A70:
+  symbol: d_course_luigi_raceway_vertex_0x04006A70
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x5d22
+
+d_course_luigi_raceway_vertex_0x04006C00:
+  symbol: d_course_luigi_raceway_vertex_0x04006C00
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x5e80
+
+d_course_luigi_raceway_vertex_0x04006D90:
+  symbol: d_course_luigi_raceway_vertex_0x04006D90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x5fde
+
+d_course_luigi_raceway_vertex_0x04006F80:
+  symbol: d_course_luigi_raceway_vertex_0x04006F80
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x6190
+
+d_course_luigi_raceway_vertex_0x04007170:
+  symbol: d_course_luigi_raceway_vertex_0x04007170
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x6342
+
+d_course_luigi_raceway_vertex_0x04007200:
+  symbol: d_course_luigi_raceway_vertex_0x04007200
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x63c0
+
+d_course_luigi_raceway_vertex_0x040073B0:
+  symbol: d_course_luigi_raceway_vertex_0x040073B0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x653a
+
+d_course_luigi_raceway_vertex_0x040074C0:
+  symbol: d_course_luigi_raceway_vertex_0x040074C0
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x6628
+
+d_course_luigi_raceway_vertex_0x04007630:
+  symbol: d_course_luigi_raceway_vertex_0x04007630
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x676a
+
+d_course_luigi_raceway_vertex_0x040077B0:
+  symbol: d_course_luigi_raceway_vertex_0x040077B0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x68ba
+
+d_course_luigi_raceway_vertex_0x04007910:
+  symbol: d_course_luigi_raceway_vertex_0x04007910
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x69ee
+
+d_course_luigi_raceway_vertex_0x04007A90:
+  symbol: d_course_luigi_raceway_vertex_0x04007A90
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x6b3e
+
+d_course_luigi_raceway_vertex_0x04007C40:
+  symbol: d_course_luigi_raceway_vertex_0x04007C40
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6cb8
+
+d_course_luigi_raceway_vertex_0x04007E20:
+  symbol: d_course_luigi_raceway_vertex_0x04007E20
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x6e5c
+
+d_course_luigi_raceway_vertex_0x04007E50:
+  symbol: d_course_luigi_raceway_vertex_0x04007E50
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x6e86
+
+d_course_luigi_raceway_vertex_0x04007FD0:
+  symbol: d_course_luigi_raceway_vertex_0x04007FD0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x6fd6
+
+d_course_luigi_raceway_vertex_0x04008080:
+  symbol: d_course_luigi_raceway_vertex_0x04008080
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x7070
+
+d_course_luigi_raceway_vertex_0x04008260:
+  symbol: d_course_luigi_raceway_vertex_0x04008260
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x7214
+
+d_course_luigi_raceway_vertex_0x040082C0:
+  symbol: d_course_luigi_raceway_vertex_0x040082C0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x7268
+
+d_course_luigi_raceway_vertex_0x04008390:
+  symbol: d_course_luigi_raceway_vertex_0x04008390
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x731e
+
+d_course_luigi_raceway_vertex_0x04008580:
+  symbol: d_course_luigi_raceway_vertex_0x04008580
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x74d0
+
+d_course_luigi_raceway_vertex_0x04008660:
+  symbol: d_course_luigi_raceway_vertex_0x04008660
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x7594
+
+d_course_luigi_raceway_vertex_0x04008780:
+  symbol: d_course_luigi_raceway_vertex_0x04008780
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x7690
+
+d_course_luigi_raceway_vertex_0x04008900:
+  symbol: d_course_luigi_raceway_vertex_0x04008900
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x77e0
+
+d_course_luigi_raceway_vertex_0x04008B00:
+  symbol: d_course_luigi_raceway_vertex_0x04008B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x79a0
+
+d_course_luigi_raceway_vertex_0x04008D00:
+  symbol: d_course_luigi_raceway_vertex_0x04008D00
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x7b60
+
+d_course_luigi_raceway_vertex_0x04008E00:
+  symbol: d_course_luigi_raceway_vertex_0x04008E00
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x7c40
+
+d_course_luigi_raceway_vertex_0x04008F70:
+  symbol: d_course_luigi_raceway_vertex_0x04008F70
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7d82
+
+d_course_luigi_raceway_vertex_0x04009170:
+  symbol: d_course_luigi_raceway_vertex_0x04009170
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7f42
+
+d_course_luigi_raceway_vertex_0x04009370:
+  symbol: d_course_luigi_raceway_vertex_0x04009370
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8102
+
+d_course_luigi_raceway_vertex_0x04009560:
+  symbol: d_course_luigi_raceway_vertex_0x04009560
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x82b4
+
+d_course_luigi_raceway_vertex_0x040096B0:
+  symbol: d_course_luigi_raceway_vertex_0x040096B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x83da
+
+d_course_luigi_raceway_vertex_0x040098B0:
+  symbol: d_course_luigi_raceway_vertex_0x040098B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x859a
+
+d_course_luigi_raceway_vertex_0x04009AB0:
+  symbol: d_course_luigi_raceway_vertex_0x04009AB0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x875a
+
+d_course_luigi_raceway_vertex_0x04009CA0:
+  symbol: d_course_luigi_raceway_vertex_0x04009CA0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x890c
+
+d_course_luigi_raceway_vertex_0x04009E80:
+  symbol: d_course_luigi_raceway_vertex_0x04009E80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x8ab0
+
+d_course_luigi_raceway_vertex_0x04009F00:
+  symbol: d_course_luigi_raceway_vertex_0x04009F00
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x8b20
+
+d_course_luigi_raceway_vertex_0x04009FB0:
+  symbol: d_course_luigi_raceway_vertex_0x04009FB0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8bba
+
+d_course_luigi_raceway_vertex_0x0400A1B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400A1B0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8d7a
+
+d_course_luigi_raceway_vertex_0x0400A3B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400A3B0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8f3a
+
+d_course_luigi_raceway_vertex_0x0400A5A0:
+  symbol: d_course_luigi_raceway_vertex_0x0400A5A0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x90ec
+
+d_course_luigi_raceway_vertex_0x0400A790:
+  symbol: d_course_luigi_raceway_vertex_0x0400A790
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x929e
+
+d_course_luigi_raceway_vertex_0x0400A8D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400A8D0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x93b6
+
+d_course_luigi_raceway_vertex_0x0400A9A0:
+  symbol: d_course_luigi_raceway_vertex_0x0400A9A0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x946c
+
+d_course_luigi_raceway_vertex_0x0400AB40:
+  symbol: d_course_luigi_raceway_vertex_0x0400AB40
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x95d8
+
+d_course_luigi_raceway_vertex_0x0400ABA0:
+  symbol: d_course_luigi_raceway_vertex_0x0400ABA0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x962c
+
+d_course_luigi_raceway_vertex_0x0400AC60:
+  symbol: d_course_luigi_raceway_vertex_0x0400AC60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x96d4
+
+d_course_luigi_raceway_vertex_0x0400AD20:
+  symbol: d_course_luigi_raceway_vertex_0x0400AD20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x977c
+
+d_course_luigi_raceway_vertex_0x0400AE60:
+  symbol: d_course_luigi_raceway_vertex_0x0400AE60
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x9894
+
+d_course_luigi_raceway_vertex_0x0400AF50:
+  symbol: d_course_luigi_raceway_vertex_0x0400AF50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9966
+
+d_course_luigi_raceway_vertex_0x0400AFD0:
+  symbol: d_course_luigi_raceway_vertex_0x0400AFD0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x99d6
+
+d_course_luigi_raceway_vertex_0x0400B090:
+  symbol: d_course_luigi_raceway_vertex_0x0400B090
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x9a7e
+
+d_course_luigi_raceway_vertex_0x0400B150:
+  symbol: d_course_luigi_raceway_vertex_0x0400B150
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x9b26
+
+d_course_luigi_raceway_vertex_0x0400B240:
+  symbol: d_course_luigi_raceway_vertex_0x0400B240
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9bf8
+
+d_course_luigi_raceway_vertex_0x0400B2C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400B2C0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x9c68
+
+d_course_luigi_raceway_vertex_0x0400B460:
+  symbol: d_course_luigi_raceway_vertex_0x0400B460
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9dd4
+
+d_course_luigi_raceway_vertex_0x0400B660:
+  symbol: d_course_luigi_raceway_vertex_0x0400B660
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x9f94
+
+d_course_luigi_raceway_vertex_0x0400B710:
+  symbol: d_course_luigi_raceway_vertex_0x0400B710
+  type: mk64:course_vtx
+  count: 3
+  offset: 0xa02e
+
+d_course_luigi_raceway_vertex_0x0400B740:
+  symbol: d_course_luigi_raceway_vertex_0x0400B740
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa058
+
+d_course_luigi_raceway_vertex_0x0400B940:
+  symbol: d_course_luigi_raceway_vertex_0x0400B940
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xa218
+
+d_course_luigi_raceway_vertex_0x0400BA20:
+  symbol: d_course_luigi_raceway_vertex_0x0400BA20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa2dc
+
+d_course_luigi_raceway_vertex_0x0400BA60:
+  symbol: d_course_luigi_raceway_vertex_0x0400BA60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa314
+
+d_course_luigi_raceway_vertex_0x0400BAA0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BAA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa34c
+
+d_course_luigi_raceway_vertex_0x0400BAE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BAE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa384
+
+d_course_luigi_raceway_vertex_0x0400BB20:
+  symbol: d_course_luigi_raceway_vertex_0x0400BB20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa3bc
+
+d_course_luigi_raceway_vertex_0x0400BB60:
+  symbol: d_course_luigi_raceway_vertex_0x0400BB60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa3f4
+
+d_course_luigi_raceway_vertex_0x0400BBA0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BBA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa42c
+
+d_course_luigi_raceway_vertex_0x0400BBE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BBE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa464
+
+d_course_luigi_raceway_vertex_0x0400BCE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BCE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa544
+
+d_course_luigi_raceway_vertex_0x0400BDE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BDE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa624
+
+d_course_luigi_raceway_vertex_0x0400BEE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BEE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xa704
+
+d_course_luigi_raceway_vertex_0x0400BFE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400BFE0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xa7e4
+
+d_course_luigi_raceway_vertex_0x0400C0A0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C0A0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xa88c
+
+d_course_luigi_raceway_vertex_0x0400C1B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C1B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa97a
+
+d_course_luigi_raceway_vertex_0x0400C1F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C1F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa9b2
+
+d_course_luigi_raceway_vertex_0x0400C230:
+  symbol: d_course_luigi_raceway_vertex_0x0400C230
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xa9ea
+
+d_course_luigi_raceway_vertex_0x0400C270:
+  symbol: d_course_luigi_raceway_vertex_0x0400C270
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaa22
+
+d_course_luigi_raceway_vertex_0x0400C2B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C2B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaa5a
+
+d_course_luigi_raceway_vertex_0x0400C2F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C2F0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xaa92
+
+d_course_luigi_raceway_vertex_0x0400C330:
+  symbol: d_course_luigi_raceway_vertex_0x0400C330
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xaaca
+
+d_course_luigi_raceway_vertex_0x0400C430:
+  symbol: d_course_luigi_raceway_vertex_0x0400C430
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xabaa
+
+d_course_luigi_raceway_vertex_0x0400C4B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C4B0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xac1a
+
+d_course_luigi_raceway_vertex_0x0400C5D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C5D0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xad16
+
+d_course_luigi_raceway_vertex_0x0400C610:
+  symbol: d_course_luigi_raceway_vertex_0x0400C610
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xad4e
+
+d_course_luigi_raceway_vertex_0x0400C650:
+  symbol: d_course_luigi_raceway_vertex_0x0400C650
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xad86
+
+d_course_luigi_raceway_vertex_0x0400C690:
+  symbol: d_course_luigi_raceway_vertex_0x0400C690
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xadbe
+
+d_course_luigi_raceway_vertex_0x0400C6D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C6D0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xadf6
+
+d_course_luigi_raceway_vertex_0x0400C7D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C7D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xaed6
+
+d_course_luigi_raceway_vertex_0x0400C850:
+  symbol: d_course_luigi_raceway_vertex_0x0400C850
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xaf46
+
+d_course_luigi_raceway_vertex_0x0400C970:
+  symbol: d_course_luigi_raceway_vertex_0x0400C970
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb042
+
+d_course_luigi_raceway_vertex_0x0400C9B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C9B0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xb07a
+
+d_course_luigi_raceway_vertex_0x0400C9F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400C9F0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb0b2
+
+d_course_luigi_raceway_vertex_0x0400CAF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CAF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb192
+
+d_course_luigi_raceway_vertex_0x0400CBB0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CBB0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xb23a
+
+d_course_luigi_raceway_vertex_0x0400CCC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CCC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb328
+
+d_course_luigi_raceway_vertex_0x0400CDC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CDC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb408
+
+d_course_luigi_raceway_vertex_0x0400CEC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CEC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb4e8
+
+d_course_luigi_raceway_vertex_0x0400CFC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400CFC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb5c8
+
+d_course_luigi_raceway_vertex_0x0400D0C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400D0C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb6a8
+
+d_course_luigi_raceway_vertex_0x0400D1C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400D1C0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xb788
+
+d_course_luigi_raceway_vertex_0x0400D2C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400D2C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb868
+
+d_course_luigi_raceway_vertex_0x0400D380:
+  symbol: d_course_luigi_raceway_vertex_0x0400D380
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb910
+
+d_course_luigi_raceway_vertex_0x0400D440:
+  symbol: d_course_luigi_raceway_vertex_0x0400D440
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xb9b8
+
+d_course_luigi_raceway_vertex_0x0400D500:
+  symbol: d_course_luigi_raceway_vertex_0x0400D500
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xba60
+
+d_course_luigi_raceway_vertex_0x0400D5C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400D5C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xbb08
+
+d_course_luigi_raceway_vertex_0x0400D680:
+  symbol: d_course_luigi_raceway_vertex_0x0400D680
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xbbb0
+
+d_course_luigi_raceway_vertex_0x0400D740:
+  symbol: d_course_luigi_raceway_vertex_0x0400D740
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbc58
+
+d_course_luigi_raceway_vertex_0x0400D840:
+  symbol: d_course_luigi_raceway_vertex_0x0400D840
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbd38
+
+d_course_luigi_raceway_vertex_0x0400D940:
+  symbol: d_course_luigi_raceway_vertex_0x0400D940
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbe18
+
+d_course_luigi_raceway_vertex_0x0400DA40:
+  symbol: d_course_luigi_raceway_vertex_0x0400DA40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbef8
+
+d_course_luigi_raceway_vertex_0x0400DA80:
+  symbol: d_course_luigi_raceway_vertex_0x0400DA80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbf30
+
+d_course_luigi_raceway_vertex_0x0400DAC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DAC0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbf68
+
+d_course_luigi_raceway_vertex_0x0400DB00:
+  symbol: d_course_luigi_raceway_vertex_0x0400DB00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xbfa0
+
+d_course_luigi_raceway_vertex_0x0400DB40:
+  symbol: d_course_luigi_raceway_vertex_0x0400DB40
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xbfd8
+
+d_course_luigi_raceway_vertex_0x0400DC40:
+  symbol: d_course_luigi_raceway_vertex_0x0400DC40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc0b8
+
+d_course_luigi_raceway_vertex_0x0400DCC0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DCC0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xc128
+
+d_course_luigi_raceway_vertex_0x0400DDE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DDE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc224
+
+d_course_luigi_raceway_vertex_0x0400DE20:
+  symbol: d_course_luigi_raceway_vertex_0x0400DE20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc25c
+
+d_course_luigi_raceway_vertex_0x0400DE60:
+  symbol: d_course_luigi_raceway_vertex_0x0400DE60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc294
+
+d_course_luigi_raceway_vertex_0x0400DEA0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DEA0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc2cc
+
+d_course_luigi_raceway_vertex_0x0400DEE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DEE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc304
+
+d_course_luigi_raceway_vertex_0x0400DFE0:
+  symbol: d_course_luigi_raceway_vertex_0x0400DFE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc3e4
+
+d_course_luigi_raceway_vertex_0x0400E060:
+  symbol: d_course_luigi_raceway_vertex_0x0400E060
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xc454
+
+d_course_luigi_raceway_vertex_0x0400E180:
+  symbol: d_course_luigi_raceway_vertex_0x0400E180
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc550
+
+d_course_luigi_raceway_vertex_0x0400E1C0:
+  symbol: d_course_luigi_raceway_vertex_0x0400E1C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc588
+
+d_course_luigi_raceway_vertex_0x0400E200:
+  symbol: d_course_luigi_raceway_vertex_0x0400E200
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc5c0
+
+d_course_luigi_raceway_vertex_0x0400E300:
+  symbol: d_course_luigi_raceway_vertex_0x0400E300
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc6a0
+
+d_course_luigi_raceway_vertex_0x0400E380:
+  symbol: d_course_luigi_raceway_vertex_0x0400E380
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xc710
+
+d_course_luigi_raceway_vertex_0x0400E4A0:
+  symbol: d_course_luigi_raceway_vertex_0x0400E4A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc80c
+
+d_course_luigi_raceway_vertex_0x0400E4E0:
+  symbol: d_course_luigi_raceway_vertex_0x0400E4E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xc844
+
+d_course_luigi_raceway_vertex_0x0400E520:
+  symbol: d_course_luigi_raceway_vertex_0x0400E520
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc87c
+
+d_course_luigi_raceway_vertex_0x0400E620:
+  symbol: d_course_luigi_raceway_vertex_0x0400E620
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xc95c
+
+d_course_luigi_raceway_vertex_0x0400E720:
+  symbol: d_course_luigi_raceway_vertex_0x0400E720
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xca3c
+
+d_course_luigi_raceway_vertex_0x0400E820:
+  symbol: d_course_luigi_raceway_vertex_0x0400E820
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xcb1c
+
+d_course_luigi_raceway_vertex_0x0400E960:
+  symbol: d_course_luigi_raceway_vertex_0x0400E960
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xcc34
+
+d_course_luigi_raceway_vertex_0x0400EA80:
+  symbol: d_course_luigi_raceway_vertex_0x0400EA80
+  type: mk64:course_vtx
+  count: 33
+  offset: 0xcd30
+
+d_course_luigi_raceway_vertex_0x0400EBD0:
+  symbol: d_course_luigi_raceway_vertex_0x0400EBD0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xce56
+
+d_course_luigi_raceway_vertex_0x0400EC70:
+  symbol: d_course_luigi_raceway_vertex_0x0400EC70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcee2
+
+d_course_luigi_raceway_vertex_0x0400ECF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400ECF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcf52
+
+d_course_luigi_raceway_vertex_0x0400ED70:
+  symbol: d_course_luigi_raceway_vertex_0x0400ED70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xcfc2
+
+d_course_luigi_raceway_vertex_0x0400EDF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400EDF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd032
+
+d_course_luigi_raceway_vertex_0x0400EE70:
+  symbol: d_course_luigi_raceway_vertex_0x0400EE70
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xd0a2
+
+d_course_luigi_raceway_vertex_0x0400EF10:
+  symbol: d_course_luigi_raceway_vertex_0x0400EF10
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xd12e
+
+d_course_luigi_raceway_vertex_0x0400EFB0:
+  symbol: d_course_luigi_raceway_vertex_0x0400EFB0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xd1ba
+
+d_course_luigi_raceway_vertex_0x0400F050:
+  symbol: d_course_luigi_raceway_vertex_0x0400F050
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xd246
+
+d_course_luigi_raceway_vertex_0x0400F0F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F0F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd2d2
+
+d_course_luigi_raceway_vertex_0x0400F170:
+  symbol: d_course_luigi_raceway_vertex_0x0400F170
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xd342
+
+d_course_luigi_raceway_vertex_0x0400F210:
+  symbol: d_course_luigi_raceway_vertex_0x0400F210
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xd3ce
+
+d_course_luigi_raceway_vertex_0x0400F250:
+  symbol: d_course_luigi_raceway_vertex_0x0400F250
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xd406
+
+d_course_luigi_raceway_vertex_0x0400F290:
+  symbol: d_course_luigi_raceway_vertex_0x0400F290
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xd43e
+
+d_course_luigi_raceway_vertex_0x0400F2D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F2D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd476
+
+d_course_luigi_raceway_vertex_0x0400F350:
+  symbol: d_course_luigi_raceway_vertex_0x0400F350
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd4e6
+
+d_course_luigi_raceway_vertex_0x0400F3D0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F3D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd556
+
+d_course_luigi_raceway_vertex_0x0400F490:
+  symbol: d_course_luigi_raceway_vertex_0x0400F490
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd5fe
+
+d_course_luigi_raceway_vertex_0x0400F550:
+  symbol: d_course_luigi_raceway_vertex_0x0400F550
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xd6a6
+
+d_course_luigi_raceway_vertex_0x0400F590:
+  symbol: d_course_luigi_raceway_vertex_0x0400F590
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xd6de
+
+d_course_luigi_raceway_vertex_0x0400F610:
+  symbol: d_course_luigi_raceway_vertex_0x0400F610
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xd74e
+
+d_course_luigi_raceway_vertex_0x0400F6F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F6F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd812
+
+d_course_luigi_raceway_vertex_0x0400F7B0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F7B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd8ba
+
+d_course_luigi_raceway_vertex_0x0400F870:
+  symbol: d_course_luigi_raceway_vertex_0x0400F870
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xd962
+
+d_course_luigi_raceway_vertex_0x0400F930:
+  symbol: d_course_luigi_raceway_vertex_0x0400F930
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xda0a
+
+d_course_luigi_raceway_vertex_0x0400F9F0:
+  symbol: d_course_luigi_raceway_vertex_0x0400F9F0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xdab2
+
+d_course_luigi_raceway_vertex_0x0400FB30:
+  symbol: d_course_luigi_raceway_vertex_0x0400FB30
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xdbca
+
+d_course_luigi_raceway_vertex_0x0400FC70:
+  symbol: d_course_luigi_raceway_vertex_0x0400FC70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xdce2
+
+d_course_luigi_raceway_vertex_0x0400FD30:
+  symbol: d_course_luigi_raceway_vertex_0x0400FD30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xdd8a
+
+d_course_luigi_raceway_vertex_0x0400FDF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400FDF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xde32
+
+d_course_luigi_raceway_vertex_0x0400FE70:
+  symbol: d_course_luigi_raceway_vertex_0x0400FE70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdea2
+
+d_course_luigi_raceway_vertex_0x0400FEF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400FEF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdf12
+
+d_course_luigi_raceway_vertex_0x0400FF70:
+  symbol: d_course_luigi_raceway_vertex_0x0400FF70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xdf82
+
+d_course_luigi_raceway_vertex_0x0400FFF0:
+  symbol: d_course_luigi_raceway_vertex_0x0400FFF0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xdff2
+
+d_course_luigi_raceway_vertex_0x04010090:
+  symbol: d_course_luigi_raceway_vertex_0x04010090
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe07e
+
+d_course_luigi_raceway_vertex_0x04010130:
+  symbol: d_course_luigi_raceway_vertex_0x04010130
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe10a
+
+d_course_luigi_raceway_vertex_0x040101B0:
+  symbol: d_course_luigi_raceway_vertex_0x040101B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe17a
+
+d_course_luigi_raceway_vertex_0x04010230:
+  symbol: d_course_luigi_raceway_vertex_0x04010230
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe1ea
+
+d_course_luigi_raceway_vertex_0x040102D0:
+  symbol: d_course_luigi_raceway_vertex_0x040102D0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe276
+
+d_course_luigi_raceway_vertex_0x04010350:
+  symbol: d_course_luigi_raceway_vertex_0x04010350
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe2e6
+
+d_course_luigi_raceway_vertex_0x040103F0:
+  symbol: d_course_luigi_raceway_vertex_0x040103F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe372
+
+d_course_luigi_raceway_vertex_0x04010470:
+  symbol: d_course_luigi_raceway_vertex_0x04010470
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe3e2
+
+d_course_luigi_raceway_vertex_0x04010510:
+  symbol: d_course_luigi_raceway_vertex_0x04010510
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe46e
+
+d_course_luigi_raceway_vertex_0x040105B0:
+  symbol: d_course_luigi_raceway_vertex_0x040105B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe4fa
+
+d_course_luigi_raceway_vertex_0x04010630:
+  symbol: d_course_luigi_raceway_vertex_0x04010630
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe56a
+
+d_course_luigi_raceway_vertex_0x040106F0:
+  symbol: d_course_luigi_raceway_vertex_0x040106F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe612
+
+d_course_luigi_raceway_vertex_0x040107B0:
+  symbol: d_course_luigi_raceway_vertex_0x040107B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe6ba
+
+d_course_luigi_raceway_vertex_0x04010870:
+  symbol: d_course_luigi_raceway_vertex_0x04010870
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xe762
+
+d_course_luigi_raceway_vertex_0x04010910:
+  symbol: d_course_luigi_raceway_vertex_0x04010910
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe7ee
+
+d_course_luigi_raceway_vertex_0x04010990:
+  symbol: d_course_luigi_raceway_vertex_0x04010990
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe85e
+
+d_course_luigi_raceway_vertex_0x04010A10:
+  symbol: d_course_luigi_raceway_vertex_0x04010A10
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe8ce
+
+d_course_luigi_raceway_vertex_0x04010A90:
+  symbol: d_course_luigi_raceway_vertex_0x04010A90
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xe93e
+
+d_course_luigi_raceway_vertex_0x04010AF0:
+  symbol: d_course_luigi_raceway_vertex_0x04010AF0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xe992
+
+d_course_luigi_raceway_vertex_0x04010BB0:
+  symbol: d_course_luigi_raceway_vertex_0x04010BB0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xea3a
+
+d_course_luigi_raceway_vertex_0x04010C70:
+  symbol: d_course_luigi_raceway_vertex_0x04010C70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xeae2
+
+d_course_luigi_raceway_vertex_0x04010D30:
+  symbol: d_course_luigi_raceway_vertex_0x04010D30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xeb8a
+
+d_course_luigi_raceway_vertex_0x04010DF0:
+  symbol: d_course_luigi_raceway_vertex_0x04010DF0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xec32
+
+d_course_luigi_raceway_vertex_0x04010ED0:
+  symbol: d_course_luigi_raceway_vertex_0x04010ED0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xecf6
+
+d_course_luigi_raceway_vertex_0x04010F50:
+  symbol: d_course_luigi_raceway_vertex_0x04010F50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xed66
+
+d_course_luigi_raceway_vertex_0x04010FD0:
+  symbol: d_course_luigi_raceway_vertex_0x04010FD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xedd6
+
+d_course_luigi_raceway_vertex_0x04011050:
+  symbol: d_course_luigi_raceway_vertex_0x04011050
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xee46
+
+d_course_luigi_raceway_vertex_0x04011090:
+  symbol: d_course_luigi_raceway_vertex_0x04011090
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xee7e
+
+d_course_luigi_raceway_vertex_0x04011190:
+  symbol: d_course_luigi_raceway_vertex_0x04011190
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xef5e
+
+d_course_luigi_raceway_vertex_0x040112D0:
+  symbol: d_course_luigi_raceway_vertex_0x040112D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xf076
+
+d_course_luigi_raceway_vertex_0x04011390:
+  symbol: d_course_luigi_raceway_vertex_0x04011390
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xf11e
+
+d_course_luigi_raceway_vertex_0x04011450:
+  symbol: d_course_luigi_raceway_vertex_0x04011450
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf1c6
+
+d_course_luigi_raceway_vertex_0x04011550:
+  symbol: d_course_luigi_raceway_vertex_0x04011550
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf2a6
+
+d_course_luigi_raceway_vertex_0x04011650:
+  symbol: d_course_luigi_raceway_vertex_0x04011650
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf386
+
+d_course_luigi_raceway_vertex_0x040116D0:
+  symbol: d_course_luigi_raceway_vertex_0x040116D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xf3f6
+
+d_course_luigi_raceway_vertex_0x04011790:
+  symbol: d_course_luigi_raceway_vertex_0x04011790
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf49e
+
+d_course_luigi_raceway_vertex_0x04011890:
+  symbol: d_course_luigi_raceway_vertex_0x04011890
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf57e
+
+d_course_luigi_raceway_vertex_0x04011910:
+  symbol: d_course_luigi_raceway_vertex_0x04011910
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf5ee
+
+d_course_luigi_raceway_vertex_0x04011990:
+  symbol: d_course_luigi_raceway_vertex_0x04011990
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf65e
+
+d_course_luigi_raceway_vertex_0x04011A90:
+  symbol: d_course_luigi_raceway_vertex_0x04011A90
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf73e
+
+d_course_luigi_raceway_vertex_0x04011B10:
+  symbol: d_course_luigi_raceway_vertex_0x04011B10
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xf7ae
+
+d_course_luigi_raceway_vertex_0x04011BD0:
+  symbol: d_course_luigi_raceway_vertex_0x04011BD0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf856
+
+d_course_luigi_raceway_vertex_0x04011DD0:
+  symbol: d_course_luigi_raceway_vertex_0x04011DD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xfa16
+
+d_course_luigi_raceway_vertex_0x04011E10:
+  symbol: d_course_luigi_raceway_vertex_0x04011E10
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xfa4e
+
+d_course_luigi_raceway_vertex_0x04011F70:
+  symbol: d_course_luigi_raceway_vertex_0x04011F70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xfb82
+
+d_course_luigi_raceway_vertex_0x04011FF0:
+  symbol: d_course_luigi_raceway_vertex_0x04011FF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xfbf2
+
+d_course_luigi_raceway_vertex_0x04012070:
+  symbol: d_course_luigi_raceway_vertex_0x04012070
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xfc62
+
+d_course_luigi_raceway_vertex_0x040120B0:
+  symbol: d_course_luigi_raceway_vertex_0x040120B0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0xfc9a
+
+d_course_luigi_raceway_vertex_0x040121C0:
+  symbol: d_course_luigi_raceway_vertex_0x040121C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xfd88
+
+d_course_luigi_raceway_vertex_0x04012220:
+  symbol: d_course_luigi_raceway_vertex_0x04012220
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xfddc
+
+d_course_luigi_raceway_vertex_0x040122E0:
+  symbol: d_course_luigi_raceway_vertex_0x040122E0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xfe84
+
+d_course_luigi_raceway_vertex_0x040123A0:
+  symbol: d_course_luigi_raceway_vertex_0x040123A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xff2c
+
+d_course_luigi_raceway_vertex_0x04012460:
+  symbol: d_course_luigi_raceway_vertex_0x04012460
+  type: mk64:course_vtx
+  count: 4
+  offset: 0xffd4
+
+d_course_luigi_raceway_vertex_0x040124A0:
+  symbol: d_course_luigi_raceway_vertex_0x040124A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1000c
+
+d_course_luigi_raceway_vertex_0x04012520:
+  symbol: d_course_luigi_raceway_vertex_0x04012520
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1007c
+
+d_course_luigi_raceway_vertex_0x040125A0:
+  symbol: d_course_luigi_raceway_vertex_0x040125A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x100ec
+
+d_course_luigi_raceway_vertex_0x04012620:
+  symbol: d_course_luigi_raceway_vertex_0x04012620
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1015c
+
+d_course_luigi_raceway_vertex_0x040126A0:
+  symbol: d_course_luigi_raceway_vertex_0x040126A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x101cc
+
+d_course_luigi_raceway_vertex_0x04012720:
+  symbol: d_course_luigi_raceway_vertex_0x04012720
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1023c
+
+d_course_luigi_raceway_vertex_0x040127A0:
+  symbol: d_course_luigi_raceway_vertex_0x040127A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x102ac
+
+d_course_luigi_raceway_vertex_0x040127E0:
+  symbol: d_course_luigi_raceway_vertex_0x040127E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x102e4
+
+d_course_luigi_raceway_vertex_0x04012820:
+  symbol: d_course_luigi_raceway_vertex_0x04012820
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1031c
+
+d_course_luigi_raceway_vertex_0x04012860:
+  symbol: d_course_luigi_raceway_vertex_0x04012860
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10354
+
+d_course_luigi_raceway_vertex_0x040128E0:
+  symbol: d_course_luigi_raceway_vertex_0x040128E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x103c4
+
+d_course_luigi_raceway_vertex_0x04012960:
+  symbol: d_course_luigi_raceway_vertex_0x04012960
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10434
+
+d_course_luigi_raceway_vertex_0x040129E0:
+  symbol: d_course_luigi_raceway_vertex_0x040129E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x104a4
+
+d_course_luigi_raceway_vertex_0x04012A60:
+  symbol: d_course_luigi_raceway_vertex_0x04012A60
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10514
+
+d_course_luigi_raceway_vertex_0x04012AE0:
+  symbol: d_course_luigi_raceway_vertex_0x04012AE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10584
+
+d_course_luigi_raceway_vertex_0x04012B60:
+  symbol: d_course_luigi_raceway_vertex_0x04012B60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x105f4
+
+d_course_luigi_raceway_vertex_0x04012BA0:
+  symbol: d_course_luigi_raceway_vertex_0x04012BA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1062c
+
+d_course_luigi_raceway_vertex_0x04012C20:
+  symbol: d_course_luigi_raceway_vertex_0x04012C20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1069c
+
+d_course_luigi_raceway_vertex_0x04012C60:
+  symbol: d_course_luigi_raceway_vertex_0x04012C60
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x106d4
+
+d_course_luigi_raceway_vertex_0x04012CE0:
+  symbol: d_course_luigi_raceway_vertex_0x04012CE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10744
+
+d_course_luigi_raceway_vertex_0x04012D60:
+  symbol: d_course_luigi_raceway_vertex_0x04012D60
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x107b4
+
+d_course_luigi_raceway_vertex_0x04012DE0:
+  symbol: d_course_luigi_raceway_vertex_0x04012DE0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10824
+
+d_course_luigi_raceway_vertex_0x04012E40:
+  symbol: d_course_luigi_raceway_vertex_0x04012E40
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10878
+
+d_course_luigi_raceway_vertex_0x04012EC0:
+  symbol: d_course_luigi_raceway_vertex_0x04012EC0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x108e8
+
+d_course_luigi_raceway_vertex_0x04012F20:
+  symbol: d_course_luigi_raceway_vertex_0x04012F20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1093c
+
+d_course_luigi_raceway_vertex_0x04012FA0:
+  symbol: d_course_luigi_raceway_vertex_0x04012FA0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x109ac
+
+d_course_luigi_raceway_vertex_0x04013000:
+  symbol: d_course_luigi_raceway_vertex_0x04013000
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10a00
+
+d_course_luigi_raceway_vertex_0x04013080:
+  symbol: d_course_luigi_raceway_vertex_0x04013080
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10a70
+
+d_course_luigi_raceway_vertex_0x040130E0:
+  symbol: d_course_luigi_raceway_vertex_0x040130E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10ac4
+
+d_course_luigi_raceway_vertex_0x04013160:
+  symbol: d_course_luigi_raceway_vertex_0x04013160
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10b34
+
+d_course_luigi_raceway_vertex_0x040131C0:
+  symbol: d_course_luigi_raceway_vertex_0x040131C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10b88
+
+d_course_luigi_raceway_vertex_0x04013240:
+  symbol: d_course_luigi_raceway_vertex_0x04013240
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10bf8
+
+d_course_luigi_raceway_vertex_0x040132A0:
+  symbol: d_course_luigi_raceway_vertex_0x040132A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10c4c
+
+d_course_luigi_raceway_vertex_0x04013320:
+  symbol: d_course_luigi_raceway_vertex_0x04013320
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10cbc
+
+d_course_luigi_raceway_vertex_0x04013360:
+  symbol: d_course_luigi_raceway_vertex_0x04013360
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10cf4
+
+d_course_luigi_raceway_vertex_0x040133A0:
+  symbol: d_course_luigi_raceway_vertex_0x040133A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10d2c
+
+d_course_luigi_raceway_vertex_0x040133E0:
+  symbol: d_course_luigi_raceway_vertex_0x040133E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10d64
+
+d_course_luigi_raceway_vertex_0x04013420:
+  symbol: d_course_luigi_raceway_vertex_0x04013420
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10d9c
+
+d_course_luigi_raceway_vertex_0x04013460:
+  symbol: d_course_luigi_raceway_vertex_0x04013460
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x10dd4
+
+d_course_luigi_raceway_vertex_0x040134A0:
+  symbol: d_course_luigi_raceway_vertex_0x040134A0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10e0c
+
+d_course_luigi_raceway_vertex_0x04013500:
+  symbol: d_course_luigi_raceway_vertex_0x04013500
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10e60
+
+d_course_luigi_raceway_vertex_0x04013560:
+  symbol: d_course_luigi_raceway_vertex_0x04013560
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10eb4
+
+d_course_luigi_raceway_vertex_0x040135C0:
+  symbol: d_course_luigi_raceway_vertex_0x040135C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10f08
+
+d_course_luigi_raceway_vertex_0x04013640:
+  symbol: d_course_luigi_raceway_vertex_0x04013640
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x10f78
+
+d_course_luigi_raceway_vertex_0x040136A0:
+  symbol: d_course_luigi_raceway_vertex_0x040136A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x10fcc
+
+d_course_luigi_raceway_vertex_0x04013720:
+  symbol: d_course_luigi_raceway_vertex_0x04013720
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1103c
+
+d_course_luigi_raceway_vertex_0x04013780:
+  symbol: d_course_luigi_raceway_vertex_0x04013780
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11090
+
+d_course_luigi_raceway_vertex_0x04013800:
+  symbol: d_course_luigi_raceway_vertex_0x04013800
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x11100
+
+d_course_luigi_raceway_vertex_0x04013860:
+  symbol: d_course_luigi_raceway_vertex_0x04013860
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11154
+
+d_course_luigi_raceway_vertex_0x040138E0:
+  symbol: d_course_luigi_raceway_vertex_0x040138E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x111c4
+
+d_course_luigi_raceway_vertex_0x04013940:
+  symbol: d_course_luigi_raceway_vertex_0x04013940
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11218
+
+d_course_luigi_raceway_vertex_0x040139C0:
+  symbol: d_course_luigi_raceway_vertex_0x040139C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x11288
+
+d_course_luigi_raceway_vertex_0x04013A00:
+  symbol: d_course_luigi_raceway_vertex_0x04013A00
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x112c0
+
+d_course_luigi_raceway_vertex_0x04013A40:
+  symbol: d_course_luigi_raceway_vertex_0x04013A40
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x112f8
+
+d_course_luigi_raceway_vertex_0x04013AA0:
+  symbol: d_course_luigi_raceway_vertex_0x04013AA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1134c
+
+d_course_luigi_raceway_vertex_0x04013B20:
+  symbol: d_course_luigi_raceway_vertex_0x04013B20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x113bc
+
+d_course_luigi_raceway_vertex_0x04013B60:
+  symbol: d_course_luigi_raceway_vertex_0x04013B60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x113f4
+
+d_course_luigi_raceway_vertex_0x04013BA0:
+  symbol: d_course_luigi_raceway_vertex_0x04013BA0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1142c
+
+d_course_luigi_raceway_vertex_0x04013C00:
+  symbol: d_course_luigi_raceway_vertex_0x04013C00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11480
+
+d_course_luigi_raceway_vertex_0x04013C80:
+  symbol: d_course_luigi_raceway_vertex_0x04013C80
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x114f0
+
+d_course_luigi_raceway_vertex_0x04013CE0:
+  symbol: d_course_luigi_raceway_vertex_0x04013CE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11544
+
+d_course_luigi_raceway_vertex_0x04013D60:
+  symbol: d_course_luigi_raceway_vertex_0x04013D60
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x115b4
+
+d_course_luigi_raceway_vertex_0x04013DC0:
+  symbol: d_course_luigi_raceway_vertex_0x04013DC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x11608
+
+d_course_luigi_raceway_vertex_0x04013E40:
+  symbol: d_course_luigi_raceway_vertex_0x04013E40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11678
+
+d_course_luigi_raceway_vertex_0x04014040:
+  symbol: d_course_luigi_raceway_vertex_0x04014040
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11838
+
+d_course_luigi_raceway_vertex_0x04014240:
+  symbol: d_course_luigi_raceway_vertex_0x04014240
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x119f8
+
+d_course_luigi_raceway_vertex_0x04014440:
+  symbol: d_course_luigi_raceway_vertex_0x04014440
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11bb8
+
+d_course_luigi_raceway_vertex_0x04014640:
+  symbol: d_course_luigi_raceway_vertex_0x04014640
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11d78
+
+d_course_luigi_raceway_vertex_0x04014840:
+  symbol: d_course_luigi_raceway_vertex_0x04014840
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x11f38
+
+d_course_luigi_raceway_vertex_0x04014880:
+  symbol: d_course_luigi_raceway_vertex_0x04014880
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x11f70
+
+d_course_luigi_raceway_vertex_0x040149B0:
+  symbol: d_course_luigi_raceway_vertex_0x040149B0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1207a
+
+d_course_luigi_raceway_vertex_0x04014AF0:
+  symbol: d_course_luigi_raceway_vertex_0x04014AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12192
+
+d_course_luigi_raceway_vertex_0x04014B30:
+  symbol: d_course_luigi_raceway_vertex_0x04014B30
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x121ca
+
+d_course_luigi_raceway_vertex_0x04014B90:
+  symbol: d_course_luigi_raceway_vertex_0x04014B90
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1221e
+
+d_course_luigi_raceway_vertex_0x04014BD0:
+  symbol: d_course_luigi_raceway_vertex_0x04014BD0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12256
+
+d_course_luigi_raceway_vertex_0x04014C10:
+  symbol: d_course_luigi_raceway_vertex_0x04014C10
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1228e
+
+d_course_luigi_raceway_vertex_0x04014C50:
+  symbol: d_course_luigi_raceway_vertex_0x04014C50
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x122c6
+
+d_course_luigi_raceway_vertex_0x04014C90:
+  symbol: d_course_luigi_raceway_vertex_0x04014C90
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x122fe
+
+d_course_luigi_raceway_vertex_0x04014CC0:
+  symbol: d_course_luigi_raceway_vertex_0x04014CC0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12328
+
+d_course_luigi_raceway_vertex_0x04014CF0:
+  symbol: d_course_luigi_raceway_vertex_0x04014CF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12352
+
+d_course_luigi_raceway_vertex_0x04014D30:
+  symbol: d_course_luigi_raceway_vertex_0x04014D30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1238a
+
+d_course_luigi_raceway_vertex_0x04014DB0:
+  symbol: d_course_luigi_raceway_vertex_0x04014DB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x123fa
+
+d_course_luigi_raceway_vertex_0x04014DF0:
+  symbol: d_course_luigi_raceway_vertex_0x04014DF0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x12432
+
+d_course_luigi_raceway_vertex_0x04014E80:
+  symbol: d_course_luigi_raceway_vertex_0x04014E80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x124b0
+
+d_course_luigi_raceway_vertex_0x04014EC0:
+  symbol: d_course_luigi_raceway_vertex_0x04014EC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x124e8
+
+d_course_luigi_raceway_vertex_0x04014F40:
+  symbol: d_course_luigi_raceway_vertex_0x04014F40
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12558
+
+d_course_luigi_raceway_vertex_0x04014F80:
+  symbol: d_course_luigi_raceway_vertex_0x04014F80
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x12590
+
+d_course_luigi_raceway_vertex_0x04014FE0:
+  symbol: d_course_luigi_raceway_vertex_0x04014FE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x125e4
+
+d_course_luigi_raceway_vertex_0x04015020:
+  symbol: d_course_luigi_raceway_vertex_0x04015020
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1261c
+
+d_course_luigi_raceway_vertex_0x04015060:
+  symbol: d_course_luigi_raceway_vertex_0x04015060
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12654
+
+d_course_luigi_raceway_vertex_0x040150A0:
+  symbol: d_course_luigi_raceway_vertex_0x040150A0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1268c
+
+d_course_luigi_raceway_vertex_0x04015140:
+  symbol: d_course_luigi_raceway_vertex_0x04015140
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12718
+
+d_course_luigi_raceway_vertex_0x04015170:
+  symbol: d_course_luigi_raceway_vertex_0x04015170
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x12742
+
+d_course_luigi_raceway_vertex_0x040151A0:
+  symbol: d_course_luigi_raceway_vertex_0x040151A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1276c
+
+d_course_luigi_raceway_vertex_0x040151E0:
+  symbol: d_course_luigi_raceway_vertex_0x040151E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x127a4
+
+d_course_luigi_raceway_vertex_0x04015240:
+  symbol: d_course_luigi_raceway_vertex_0x04015240
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x127f8
+
+d_course_luigi_raceway_vertex_0x040152C0:
+  symbol: d_course_luigi_raceway_vertex_0x040152C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12868
+
+d_course_luigi_raceway_vertex_0x04015340:
+  symbol: d_course_luigi_raceway_vertex_0x04015340
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x128d8
+
+d_course_luigi_raceway_vertex_0x040153C0:
+  symbol: d_course_luigi_raceway_vertex_0x040153C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x12948
+
+d_course_luigi_raceway_vertex_0x04015420:
+  symbol: d_course_luigi_raceway_vertex_0x04015420
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1299c
+
+d_course_luigi_raceway_vertex_0x040154A0:
+  symbol: d_course_luigi_raceway_vertex_0x040154A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12a0c
+
+d_course_luigi_raceway_vertex_0x04015520:
+  symbol: d_course_luigi_raceway_vertex_0x04015520
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12a7c
+
+d_course_luigi_raceway_vertex_0x040155A0:
+  symbol: d_course_luigi_raceway_vertex_0x040155A0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12aec
+
+d_course_luigi_raceway_vertex_0x04015620:
+  symbol: d_course_luigi_raceway_vertex_0x04015620
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12b5c
+
+d_course_luigi_raceway_vertex_0x040156E0:
+  symbol: d_course_luigi_raceway_vertex_0x040156E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12c04
+
+d_course_luigi_raceway_vertex_0x04015760:
+  symbol: d_course_luigi_raceway_vertex_0x04015760
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12c74
+
+d_course_luigi_raceway_vertex_0x040157E0:
+  symbol: d_course_luigi_raceway_vertex_0x040157E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12ce4
+
+d_course_luigi_raceway_vertex_0x04015860:
+  symbol: d_course_luigi_raceway_vertex_0x04015860
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12d54
+
+d_course_luigi_raceway_vertex_0x040158E0:
+  symbol: d_course_luigi_raceway_vertex_0x040158E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12dc4
+
+d_course_luigi_raceway_vertex_0x04015960:
+  symbol: d_course_luigi_raceway_vertex_0x04015960
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12e34
+
+d_course_luigi_raceway_vertex_0x040159E0:
+  symbol: d_course_luigi_raceway_vertex_0x040159E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12ea4
+
+d_course_luigi_raceway_vertex_0x04015A20:
+  symbol: d_course_luigi_raceway_vertex_0x04015A20
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x12edc
+
+d_course_luigi_raceway_vertex_0x04015AB0:
+  symbol: d_course_luigi_raceway_vertex_0x04015AB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x12f5a
+
+d_course_luigi_raceway_vertex_0x04015B10:
+  symbol: d_course_luigi_raceway_vertex_0x04015B10
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x12fae
+
+d_course_luigi_raceway_vertex_0x04015B70:
+  symbol: d_course_luigi_raceway_vertex_0x04015B70
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x13002
+
+d_course_luigi_raceway_vertex_0x04015BD0:
+  symbol: d_course_luigi_raceway_vertex_0x04015BD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13056
+
+d_course_luigi_raceway_vertex_0x04015C50:
+  symbol: d_course_luigi_raceway_vertex_0x04015C50
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x130c6
+
+d_course_luigi_raceway_vertex_0x04015CD0:
+  symbol: d_course_luigi_raceway_vertex_0x04015CD0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13136
+
+d_course_luigi_raceway_vertex_0x04015D50:
+  symbol: d_course_luigi_raceway_vertex_0x04015D50
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x131a6
+
+d_course_luigi_raceway_vertex_0x04015DB0:
+  symbol: d_course_luigi_raceway_vertex_0x04015DB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x131fa
+
+d_course_luigi_raceway_vertex_0x04015DF0:
+  symbol: d_course_luigi_raceway_vertex_0x04015DF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13232
+
+d_course_luigi_raceway_vertex_0x04015E30:
+  symbol: d_course_luigi_raceway_vertex_0x04015E30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1326a
+
+d_course_luigi_raceway_vertex_0x04015E70:
+  symbol: d_course_luigi_raceway_vertex_0x04015E70
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x132a2
+
+d_course_luigi_raceway_vertex_0x04015F10:
+  symbol: d_course_luigi_raceway_vertex_0x04015F10
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x1332e
+
+d_course_luigi_raceway_vertex_0x04016000:
+  symbol: d_course_luigi_raceway_vertex_0x04016000
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13400
+
+d_course_luigi_raceway_vertex_0x04016040:
+  symbol: d_course_luigi_raceway_vertex_0x04016040
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13438
+
+d_course_luigi_raceway_vertex_0x040160C0:
+  symbol: d_course_luigi_raceway_vertex_0x040160C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x134a8
+
+d_course_luigi_raceway_vertex_0x04016140:
+  symbol: d_course_luigi_raceway_vertex_0x04016140
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x13518
+
+d_course_luigi_raceway_vertex_0x040161B0:
+  symbol: d_course_luigi_raceway_vertex_0x040161B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1357a
+
+d_course_luigi_raceway_vertex_0x04016230:
+  symbol: d_course_luigi_raceway_vertex_0x04016230
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x135ea
+
+d_course_luigi_raceway_vertex_0x040162B0:
+  symbol: d_course_luigi_raceway_vertex_0x040162B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1365a
+
+d_course_luigi_raceway_vertex_0x04016330:
+  symbol: d_course_luigi_raceway_vertex_0x04016330
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x136ca
+
+d_course_luigi_raceway_vertex_0x040163C0:
+  symbol: d_course_luigi_raceway_vertex_0x040163C0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13748
+
+d_course_luigi_raceway_vertex_0x04016440:
+  symbol: d_course_luigi_raceway_vertex_0x04016440
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x137b8
+
+d_course_luigi_raceway_vertex_0x04016480:
+  symbol: d_course_luigi_raceway_vertex_0x04016480
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x137f0
+
+d_course_luigi_raceway_vertex_0x04016520:
+  symbol: d_course_luigi_raceway_vertex_0x04016520
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1387c
+
+d_course_luigi_raceway_vertex_0x04016580:
+  symbol: d_course_luigi_raceway_vertex_0x04016580
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x138d0
+
+d_course_luigi_raceway_vertex_0x04016630:
+  symbol: d_course_luigi_raceway_vertex_0x04016630
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1396a
+
+d_course_luigi_raceway_vertex_0x04016670:
+  symbol: d_course_luigi_raceway_vertex_0x04016670
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x139a2
+
+d_course_luigi_raceway_vertex_0x040166F0:
+  symbol: d_course_luigi_raceway_vertex_0x040166F0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x13a12
+
+d_course_luigi_raceway_vertex_0x04016720:
+  symbol: d_course_luigi_raceway_vertex_0x04016720
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13a3c
+
+d_course_luigi_raceway_vertex_0x04016760:
+  symbol: d_course_luigi_raceway_vertex_0x04016760
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13a74
+
+d_course_luigi_raceway_vertex_0x040167A0:
+  symbol: d_course_luigi_raceway_vertex_0x040167A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13aac
+
+d_course_luigi_raceway_vertex_0x040167E0:
+  symbol: d_course_luigi_raceway_vertex_0x040167E0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13ae4
+
+d_course_luigi_raceway_vertex_0x04016820:
+  symbol: d_course_luigi_raceway_vertex_0x04016820
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13b1c
+
+d_course_luigi_raceway_vertex_0x04016860:
+  symbol: d_course_luigi_raceway_vertex_0x04016860
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13b54
+
+d_course_luigi_raceway_vertex_0x040168A0:
+  symbol: d_course_luigi_raceway_vertex_0x040168A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13b8c
+
+d_course_luigi_raceway_vertex_0x040168E0:
+  symbol: d_course_luigi_raceway_vertex_0x040168E0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x13bc4
+
+d_course_luigi_raceway_vertex_0x04016910:
+  symbol: d_course_luigi_raceway_vertex_0x04016910
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x13bee
+
+d_course_luigi_raceway_vertex_0x040169A0:
+  symbol: d_course_luigi_raceway_vertex_0x040169A0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13c6c
+
+d_course_luigi_raceway_vertex_0x040169E0:
+  symbol: d_course_luigi_raceway_vertex_0x040169E0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x13ca4
+
+d_course_luigi_raceway_vertex_0x04016A70:
+  symbol: d_course_luigi_raceway_vertex_0x04016A70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13d22
+
+d_course_luigi_raceway_vertex_0x04016AB0:
+  symbol: d_course_luigi_raceway_vertex_0x04016AB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13d5a
+
+d_course_luigi_raceway_vertex_0x04016AF0:
+  symbol: d_course_luigi_raceway_vertex_0x04016AF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13d92
+
+d_course_luigi_raceway_vertex_0x04016B30:
+  symbol: d_course_luigi_raceway_vertex_0x04016B30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13dca
+
+d_course_luigi_raceway_vertex_0x04016B70:
+  symbol: d_course_luigi_raceway_vertex_0x04016B70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13e02
+
+d_course_luigi_raceway_vertex_0x04016BF0:
+  symbol: d_course_luigi_raceway_vertex_0x04016BF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13e72
+
+d_course_luigi_raceway_vertex_0x04016C70:
+  symbol: d_course_luigi_raceway_vertex_0x04016C70
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x13ee2
+
+d_course_luigi_raceway_vertex_0x04016CC0:
+  symbol: d_course_luigi_raceway_vertex_0x04016CC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13f28
+
+d_course_luigi_raceway_vertex_0x04016EC0:
+  symbol: d_course_luigi_raceway_vertex_0x04016EC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x140e8
+
+d_course_luigi_raceway_vertex_0x04016F40:
+  symbol: d_course_luigi_raceway_vertex_0x04016F40
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x14158
+
+d_course_luigi_raceway_vertex_0x04017080:
+  symbol: d_course_luigi_raceway_vertex_0x04017080
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x14270
+
+d_course_luigi_raceway_vertex_0x040171C0:
+  symbol: d_course_luigi_raceway_vertex_0x040171C0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x14388

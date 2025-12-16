@@ -1,0 +1,28 @@
+:config:
+  segments:
+    - [0x06, 0x8858A0]
+    - [0x07, 0x800000]
+  manual_segments:
+    - [0x7000000, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_0"]
+    - [0x7000210, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_210"]
+    - [0x70003A0, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_3A0"]
+    - [0x70003B8, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_3B8"]
+    - [0x7000580, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_580"]
+    - [0x7000708, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_708"]
+    - [0x7000720, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_720"]
+    - [0x7000738, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_738"]
+    - [0x7000748, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_748"]
+    - [0x7000750, "models/tracks/double_deck/double_deck_displaylists/d_course_double_deck_packed_dl_750"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+d_course_double_deck_dl:
+  symbol: d_course_double_deck_dl
+  type: gfx
+  offset: 0x0
+  otr_mode: index

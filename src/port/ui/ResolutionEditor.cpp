@@ -3,8 +3,8 @@
 #include <libultraship/libultraship.h>
 
 #include "UIWidgets.h"
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 

@@ -17,9 +17,11 @@ extern "C" {
 #include "code_80005FD0.h"
 #include "some_data.h"
 #include "ceremony_and_credits.h"
-#include "assets/moo_moo_farm_data.h"
+#include "assets/models/tracks/moo_moo_farm/moo_moo_farm_data.h"
+#include "assets/textures/tracks/moo_moo_farm/moo_moo_farm_data.h"
 #include "sounds.h"
 #include "external.h"
+#include <assets/models/common_data.h>
 }
 #include "port/interpolation/FrameInterpolation.h"
 
@@ -51,15 +53,12 @@ OMole::OMole(FVector pos, OMoleGroup* group) {
     _count++;
 }
 
+/**
+ * Moles are ticked from OMoleGroup
+ * OMoleTick is func_800821AC
+ * Dirt particle tick is func_80081790
+ */
 void OMole::Tick() {
-    if (_idx == 0) {
-        for (size_t i = 0; i < gObjectParticle2_SIZE; i++) {
-            s32 objectIndex = gObjectParticle2[i];
-            if (gObjectList[objectIndex].state != 0) {
-                OMole::func_80081790(objectIndex);
-            }
-        }
-    }
 }
 
 void OMole::Draw(s32 cameraId) {
@@ -184,9 +183,9 @@ void OMole::func_8008153C(s32 objectIndex) {
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
             gObjectList[loopObjectIndex].tlutList = mole;
             gObjectList[loopObjectIndex].sizeScaling = 0.15f;
-            gObjectList[loopObjectIndex].velocity[1] = random_int(0x000AU);
+            gObjectList[loopObjectIndex].velocity[1] = random_int(10);
             gObjectList[loopObjectIndex].velocity[1] = (gObjectList[loopObjectIndex].velocity[1] * 0.1) + 4.8;
-            gObjectList[loopObjectIndex].unk_034 = random_int(5U);
+            gObjectList[loopObjectIndex].unk_034 = random_int(5);
             gObjectList[loopObjectIndex].unk_034 = (gObjectList[loopObjectIndex].unk_034 * 0.01) + 0.8;
             gObjectList[loopObjectIndex].orientation[1] = (0x10000 / sp70) * var_s1;
             gObjectList[loopObjectIndex].origin_pos[0] = gObjectList[objectIndex].origin_pos[0];
@@ -218,7 +217,7 @@ void OMole::func_80081D34(s32 objectIndex) {
                 if (player->effects & 0x200) {
                     func_800C9060(i, 0x1900A046U);
                 } else {
-                    player->soundEffects |= 2;
+                    player->triggers |= HIGH_TUMBLE_TRIGGER;
                 }
                 object->direction_angle[1] = camera->rot[1];
                 object->velocity[1] = (player->speed / 2) + 3.0;

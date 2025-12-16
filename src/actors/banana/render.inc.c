@@ -15,7 +15,7 @@ void render_actor_banana(Camera* camera, UNUSED Mat4 arg1, struct BananaActor* b
     Vec3s sp7C;
     Mat4 sp3C;
 
-    f32 temp = is_within_render_distance(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
+    f32 temp = is_within_render_distance(camera->pos, banana->pos, camera->rot[1], 0, camera->fieldOfView,
                                          490000.0f);
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp = MAX(temp, 0.0f);
@@ -25,11 +25,11 @@ void render_actor_banana(Camera* camera, UNUSED Mat4 arg1, struct BananaActor* b
         return;
     }
 
-    if ((banana->pos[1] > gCourseMaxY + 800.0f)) {
+    if ((banana->pos[1] > gTrackMaxY + 800.0f)) {
         actor_not_rendered(camera, (struct Actor*) banana);
         return;
     }
-    if (banana->pos[1] < (gCourseMinY - 800.0f)) {
+    if (banana->pos[1] < (gTrackMinY - 800.0f)) {
         actor_not_rendered(camera, (struct Actor*) banana);
         return;
     }

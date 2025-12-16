@@ -30,9 +30,9 @@
 #include <code_80281780.h>
 #include <code_80281C40.h>
 #include <collision.h>
-#include <assets/common_data.h>
+#include <assets/other/common_data.h>
 #include <credits.h>
-#include <data_segment2.h>
+#include <assets/models/data_segment2.h>
 #include <buffers.h>
 #include <render_objects.h>
 #include <kart_dma.h>
@@ -51,7 +51,6 @@
 
 #include <actor_types.h>
 #include <common_structs.h>
-#include <course.h>
 #include <course_offsets.h>
 #include <debug.h>
 #include <defines.h>

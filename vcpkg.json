@@ -8,7 +8,20 @@
     "bzip2",
     "libzip",
     "libpng",
-    "sdl2",
+    {
+      "name": "sdl2",
+      "features": ["x11", "alsa", "wayland"],
+      "platform": "linux",
+      "default-features": false
+    },
+    {
+      "name": "sdl2",
+      "platform": "windows"
+    },
+    {
+      "name": "sdl2",
+      "platform": "osx"
+    },
     "sdl2-net",
     "glew",
     "glfw3",
@@ -18,6 +31,5 @@
     "libogg",
     "libvorbis"
   ],
-  "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a",
-  "overrides": []
+  "builtin-baseline": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a"
 }

@@ -70,6 +70,7 @@ set(CMAKE_OSX_ARCHITECTURES=arm64;x86_64)
 
 # Set the C++ standard and enable the MSVC parallel build option
 set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11 CACHE STRING "The C standard to use")
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Spaghettify)
 set(PROJECT_TEAM "MegaMech")
@@ -87,7 +88,7 @@ include(cmake/automate-vcpkg.cmake)
 set(VCPKG_TRIPLET x64-windows-static)
 set(VCPKG_TARGET_TRIPLET x64-windows-static)
 vcpkg_bootstrap()
-vcpkg_install_packages(zlib bzip2 libzip libpng sdl2 sdl2-net glew glfw3 nlohmann-json tinyxml2 spdlog libogg libvorbis)
+vcpkg_install_packages()
 
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 set_property(DIRECTORY ${CMAKE_SOURCE_DIR} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
@@ -172,11 +173,15 @@ else()
     set(CMAKE_CXX_FLAGS_DEBUG "-g -DNDEBUG ${COMMON_CXX_FLAGS}")
     set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_C_FLAGS}")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMMON_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -DNDEBUG ${COMMON_CXX_FLAGS}")
+    set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g -DNDEBUG ${COMMON_CXX_FLAGS}")
 endif()
 
 # Set game compilation version
 set(VERSION us)
-set(USE_NETWORKING ON)
+set(USE_NETWORKING OFF)
 set(SKIP_XCODE_VERSION_CHECK ON)
 
 # TODO: Sorry i broke this
@@ -217,9 +222,8 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src/buffers
     ${CMAKE_CURRENT_SOURCE_DIR}/src/audio
     ${CMAKE_CURRENT_SOURCE_DIR}/src/debug
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/networking
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/courses
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/tracks
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/objects
     ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/particles
     ${CMAKE_CURRENT_SOURCE_DIR}/src/enhancements
@@ -258,15 +262,16 @@ file(GLOB_RECURSE ALL_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     "src/port/*.h"
     "src/port/*.c"
     "src/port/*.cpp"
+    "src/mods/*.h"
+    "src/mods/*.c"
+    "src/mods/*.cpp"
     "assets/code/*.c"
     "courses/*.c"
     "courses/*.h"
-    "src/networking/*.c"
-    "src/networking/*.h"
     "src/engine/*.cpp"
     "src/engine/*.h"
-    "src/engine/courses/*.c"
-    "src/engine/courses/*.h"
+    "src/engine/tracks/*.c"
+    "src/engine/tracks/*.h"
     "src/engine/objects/*.cpp"
     "src/engine/objects/*.h"
     "src/engine/particles/*.cpp"
@@ -309,6 +314,7 @@ else()
     add_executable(${PROJECT_NAME} ${ALL_FILES})
 endif()
 
+
 ################################################################################
 # MSVC runtime library
 ################################################################################
@@ -346,6 +352,12 @@ file(DOWNLOAD "https://raw.githubusercontent.com/DLTcollab/sse2neon/refs/heads/m
 
 include_directories(${SSE2NEON_DIR})
 
+#================== SEMVER ===================
+set(SEMVER_DIR ${CMAKE_BINARY_DIR}/_deps/semver)
+file(DOWNLOAD "https://raw.githubusercontent.com/Neargye/semver/refs/tags/v1.0.0-rc/include/semver.hpp" "${SEMVER_DIR}/semver.hpp")
+
+include_directories(${SEMVER_DIR})
+
 #=================== DRLibs ===================
 FetchContent_Declare(
     dr_libs
@@ -356,6 +368,16 @@ FetchContent_MakeAvailable(dr_libs)
 
 #=================== STB ===================
 include_directories(${STB_DIR})
+
+#=================== tomlplusplus ===================
+include(FetchContent)
+FetchContent_Declare(
+    tomlplusplus
+    GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
+    GIT_TAG        v3.4.0
+)
+FetchContent_MakeAvailable(tomlplusplus)
+target_link_libraries(${PROJECT_NAME} PRIVATE tomlplusplus::tomlplusplus)
 
 #==============================================================================#
 # Libultraship Integration                                                     #
@@ -371,34 +393,8 @@ endif()
 
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include
   ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/include/libultraship
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/log
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/debug
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/menu
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/utils/binarytools
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/type
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/resource/factory
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/audio
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/window/gui
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/config
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/libultra
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/public/bridge
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/extern/tinyxml2
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/libjpeg/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/libultraship/Lib/spdlog/include/
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic/Fast3D/U64/PR
-  ${CMAKE_CURRENT_SOURCE_DIR}/libultraship/src/graphic
   ${SDL2_INCLUDE_DIRS}
   ${GLEW_INCLUDE_DIRS}
   ${dr_libs_SOURCE_DIR}
@@ -658,6 +654,7 @@ add_custom_command(
 	COMMENT "Copying asset yamls..."
 	COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/config.yml" "$<TARGET_FILE_DIR:Spaghettify>/config.yml"
 	COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/yamls/" "$<TARGET_FILE_DIR:Spaghettify>/yamls/"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/meta/" "$<TARGET_FILE_DIR:Spaghettify>/meta/"
 )
 
 if(NOT CMAKE_SYSTEM_NAME STREQUAL "NintendoSwitch")
@@ -680,7 +677,7 @@ add_custom_target(
     DEPENDS TorchExternal
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMAND ${TORCH_EXECUTABLE} header -o baserom.us.z64
-    COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64
+    COMMAND ${TORCH_EXECUTABLE} o2r baserom.us.z64 --additional-files meta/mods.toml
     COMMAND ${TORCH_EXECUTABLE} pack assets spaghetti.o2r o2r
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/mk64.o2r" "${CMAKE_BINARY_DIR}/mk64.o2r"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_SOURCE_DIR}/spaghetti.o2r" "${CMAKE_BINARY_DIR}/spaghetti.o2r"

@@ -1,7 +1,7 @@
 @page paths Paths
-The game uses multiple types of course paths
+The game uses multiple types of track paths
 
-# Course Paths
+# Track Paths
 Used by courses
 
 

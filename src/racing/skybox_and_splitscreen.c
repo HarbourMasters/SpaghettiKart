@@ -9,7 +9,7 @@
 #include <common_structs.h>
 #include "memory.h"
 #include "../camera.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "menu_items.h"
@@ -20,11 +20,12 @@
 #include "menus.h"
 #include "port/Engine.h"
 #include "engine/Matrix.h"
-#include "engine/courses/Course.h"
+#include "engine/tracks/Track.h"
+#include "engine/editor/Editor.h"
 #include "port/Game.h"
 #include "math_util.h"
-#include "src/enhancements/freecam/freecam.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include "engine/CoreMath.h"
 
 Vp D_802B8880[] = {
     { { { 640, 480, 511, 0 }, { 640, 480, 511, 0 } } },
@@ -74,7 +75,7 @@ Vtx D_802B8A10[] = {
     { { { 0, 120, -1 }, 0, { 0, 0 }, { 0x00, 0xDC, 0x00, 0xFF } } },
 };
 
-void func_802A3730(struct UnkStruct_800DC5EC* arg0) {
+void func_802A3730(ScreenContext* arg0) {
     s32 ulx;
     s32 uly;
     s32 lrx;
@@ -155,7 +156,7 @@ void func_802A38B4(void) {
     }
 }
 
-void func_802A39E0(struct UnkStruct_800DC5EC* arg0) {
+void func_802A39E0(ScreenContext* arg0) {
     s32 ulx = arg0->screenStartX - (arg0->screenWidth / 2);
     s32 uly = arg0->screenStartY - (arg0->screenHeight / 2);
     s32 lrx = arg0->screenStartX + (arg0->screenWidth / 2);
@@ -257,7 +258,7 @@ UNUSED void func_802A40DC(void) {
 }
 
 UNUSED s32 set_viewport2(void) {
-    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_800DC5EC->viewport));
+    gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gScreenOneCtx->viewport));
     gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++,
                        G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH | G_CLIPPING);
@@ -332,36 +333,36 @@ UNUSED Gfx D_802B8A90[] = {
 void func_802A450C(Vtx* skybox) {
     s32 i;
 
-    if (D_800DC5BC != 0) {
+    if (bFog) {
 
-        if (D_801625EC < 0) {
-            D_801625EC = 0;
+        if (gFogColour.r < 0) {
+            gFogColour.r = 0;
         }
 
-        if (D_801625F4 < 0) {
-            D_801625F4 = 0;
+        if (gFogColour.g < 0) {
+            gFogColour.g = 0;
         }
 
-        if (D_801625F0 < 0) {
-            D_801625F0 = 0;
+        if (gFogColour.b < 0) {
+            gFogColour.b = 0;
         }
 
-        if (D_801625EC > 255) {
-            D_801625EC = 255;
+        if (gFogColour.r > 255) {
+            gFogColour.r = 255;
         }
 
-        if (D_801625F4 > 255) {
-            D_801625F4 = 255;
+        if (gFogColour.g > 255) {
+            gFogColour.g = 255;
         }
 
-        if (D_801625F0 > 255) {
-            D_801625F0 = 255;
+        if (gFogColour.b > 255) {
+            gFogColour.b = 255;
         }
 
         for (i = 0; i < 8; i++) {
-            skybox[i].v.cn[0] = (s16) D_801625EC;
-            skybox[i].v.cn[1] = (s16) D_801625F4;
-            skybox[i].v.cn[2] = (s16) D_801625F0;
+            skybox[i].v.cn[0] = (s16) gFogColour.r;
+            skybox[i].v.cn[1] = (s16) gFogColour.g;
+            skybox[i].v.cn[2] = (s16) gFogColour.b;
         }
         return;
     }
@@ -406,8 +407,7 @@ Mtx gIdentityMatrix2 = {
     toFixedPointMatrix(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0),
 };
 
-void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3,
-                   UNUSED f32* arg4) {
+void func_802A487C(Vtx* arg0) {
 
     init_rdp();
     if (!IsRainbowRoad()) {
@@ -424,7 +424,7 @@ void func_802A487C(Vtx* arg0, UNUSED struct UnkStruct_800DC5EC* arg1, UNUSED s32
     }
 }
 
-void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32* arg4) {
+void func_802A4A0C(Vtx* vtx, ScreenContext* arg1) {
     Camera* camera = arg1->camera;
     s16 temp_t5;
     f32 temp_f0;
@@ -493,54 +493,14 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
 }
 
 void func_802A4D18(void) {
+    // This may not be originally accurate
+    // Because the near/far persp values are a track member variable now.
+    // Regardless, this would likely only effected the menus.
     if (gGamestate != RACING) {
         D_8015014C = 6800.0f;
         D_80150150 = 3.0f;
-    } else {
-        // switch (gCurrentCourseId) {
-        //     case COURSE_BOWSER_CASTLE:
-        //     case COURSE_BANSHEE_BOARDWALK:
-        //     case COURSE_RAINBOW_ROAD:
-        //     case COURSE_BLOCK_FORT:
-        //     case COURSE_SKYSCRAPER:
-        //         D_8015014C = 2700.0f;
-        //         D_80150150 = 2.0f;
-        //         break;
-        //     case COURSE_CHOCO_MOUNTAIN:
-        //     case COURSE_DOUBLE_DECK:
-        //         D_8015014C = 1500.0f;
-        //         D_80150150 = 2.0f;
-        //         break;
-        //     case COURSE_KOOPA_BEACH:
-        //         D_8015014C = 5000.0f;
-        //         D_80150150 = 1.0f;
-        //         break;
-        //     case COURSE_WARIO_STADIUM:
-        //         D_8015014C = 4800.0f;
-        //         D_80150150 = 10.0f;
-        //         break;
-        //     case COURSE_MARIO_RACEWAY:
-        //     case COURSE_YOSHI_VALLEY:
-        //     case COURSE_FRAPPE_SNOWLAND:
-        //     case COURSE_ROYAL_RACEWAY:
-        //     case COURSE_LUIGI_RACEWAY:
-        //     case COURSE_MOO_MOO_FARM:
-        //     case COURSE_TOADS_TURNPIKE:
-        //     case COURSE_SHERBET_LAND:
-        //     case COURSE_DK_JUNGLE:
-        //         D_8015014C = 4500.0f;
-        //         D_80150150 = 9.0f;
-        //         break;
-        //     case COURSE_KALIMARI_DESERT:
-        //         D_8015014C = 7000.0f;
-        //         D_80150150 = 10.0f;
-        //         break;
-        //     default:
-        //         D_8015014C = 6800.0f;
-        //         D_80150150 = 3.0f;
-        //         break;
-        // }
     }
+
     switch (gScreenModeSelection) { /* switch 1; irregular */
         case SCREEN_MODE_1P:        /* switch 1 */
             gScreenAspect = 1.33333334f;
@@ -560,22 +520,22 @@ void func_802A4D18(void) {
 void func_802A4EF4(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
+            func_8001F394(gPlayerOne);
             break;
 
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
+            func_8001F394(gPlayerOne);
+            func_8001F394(gPlayerTwo);
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
+            func_8001F394(gPlayerOne);
+            func_8001F394(gPlayerTwo);
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_8001F394(gPlayerOne, &gCameraZoom[0]);
-            func_8001F394(gPlayerTwo, &gCameraZoom[1]);
-            func_8001F394(gPlayerThree, &gCameraZoom[2]);
-            func_8001F394(gPlayerFour, &gCameraZoom[3]);
+            func_8001F394(gPlayerOne);
+            func_8001F394(gPlayerTwo);
+            func_8001F394(gPlayerThree);
+            func_8001F394(gPlayerFour);
             break;
     }
 }
@@ -583,17 +543,17 @@ void func_802A4EF4(void) {
 void func_802A5004(void) {
 
     init_rdp();
-    func_802A3730(D_800DC5F0);
+    func_802A3730(gScreenTwoCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    func_802A39E0(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
         func_80057FC4(2);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910);
         func_80093A30(2);
     }
 }
@@ -601,16 +561,16 @@ void func_802A5004(void) {
 void func_802A50EC(void) {
 
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
-    func_802A39E0(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
         func_80057FC4(1);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890);
         func_80093A30(1);
     }
 }
@@ -618,16 +578,16 @@ void func_802A50EC(void) {
 void func_802A51D4(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5EC);
-    func_802A3730(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
+    func_802A3730(gScreenOneCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
         func_80057FC4(3);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890);
         func_80093A30(3);
     }
 }
@@ -635,37 +595,35 @@ void func_802A51D4(void) {
 void func_802A52BC(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F0);
-    func_802A3730(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
+    func_802A3730(gScreenTwoCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
         func_80057FC4(4);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910);
         func_80093A30(4);
     }
 }
 
 void func_802A53A4(void) {
-
-    move_segment_table_to_dmem();
     init_rdp();
-    func_802A3730(D_800DC5EC);
+    func_802A3730(gScreenOneCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     init_z_buffer();
     select_framebuffer();
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
         if (gGamestate != CREDITS_SEQUENCE) {
             func_80057FC4(0);
         }
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890);
         func_80093A30(0);
     }
 }
@@ -673,16 +631,16 @@ void func_802A53A4(void) {
 void func_802A54A8(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5EC);
-    func_802A3730(D_800DC5EC);
+    func_802A39E0(gScreenOneCtx);
+    func_802A3730(gScreenOneCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A4A0C((Vtx*) D_802B8890, gScreenOneCtx);
         func_80057FC4(8);
-        func_802A487C((Vtx*) D_802B8890, D_800DC5EC, 0x140, 0xF0, &gCameraZoom[0]);
+        func_802A487C((Vtx*) D_802B8890);
         func_80093A30(8);
     }
 }
@@ -690,16 +648,16 @@ void func_802A54A8(void) {
 void func_802A5590(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F0);
-    func_802A3730(D_800DC5F0);
+    func_802A39E0(gScreenTwoCtx);
+    func_802A3730(gScreenTwoCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A4A0C((Vtx*) D_802B8910, gScreenTwoCtx);
         func_80057FC4(9);
-        func_802A487C((Vtx*) D_802B8910, D_800DC5F0, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[1]);
+        func_802A487C((Vtx*) D_802B8910);
         func_80093A30(9);
     }
 }
@@ -707,16 +665,16 @@ void func_802A5590(void) {
 void func_802A5678(void) {
 
     init_rdp();
-    func_802A39E0(D_800DC5F4);
-    func_802A3730(D_800DC5F4);
+    func_802A39E0(gScreenThreeCtx);
+    func_802A3730(gScreenThreeCtx);
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (D_800DC5B4 != 0) {
-        func_802A4A0C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A4A0C((Vtx*) D_802B8990, gScreenThreeCtx);
         func_80057FC4(10);
-        func_802A487C((Vtx*) D_802B8990, D_800DC5F4, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[2]);
+        func_802A487C((Vtx*) D_802B8990);
         func_80093A30(10);
     }
 }
@@ -725,13 +683,13 @@ void func_802A5760(void) {
 
     init_rdp();
 
-    gSPClearGeometryMode(gDisplayListHead++, 0xFFFFFFFF);
+    gSPClearGeometryMode(gDisplayListHead++, G_CLEAR_ALL_MODES);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH | G_CLIPPING);
 
     if (gPlayerCountSelection1 == 3) {
 
         gDPPipeSync(gDisplayListHead++);
-        func_802A39E0(D_800DC5F8);
+        func_802A39E0(gScreenFourCtx);
         gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
         gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                          VIRTUAL_TO_PHYSICAL(gPhysicalFramebuffers[sRenderingFramebuffer]));
@@ -742,49 +700,19 @@ void func_802A5760(void) {
         gDPPipeSync(gDisplayListHead++);
         gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 
-        func_802A3730(D_800DC5F8);
+        func_802A3730(gScreenFourCtx);
 
     } else {
-        func_802A3730(D_800DC5F8);
-        func_802A39E0(D_800DC5F8);
+        func_802A3730(gScreenFourCtx);
+        func_802A39E0(gScreenFourCtx);
 
         if (D_800DC5B4 != 0) {
-            func_802A4A0C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            func_802A4A0C(D_802B8A10, gScreenFourCtx);
             func_80057FC4(11);
-            func_802A487C(D_802B8A10, D_800DC5F8, SCREEN_WIDTH, SCREEN_HEIGHT, &gCameraZoom[3]);
+            func_802A487C(D_802B8A10);
             func_80093A30(11);
         }
     }
-}
-
-// Setup the cameras perspective and lookAt (movement/rotation)
-void setup_camera(Camera* camera, s32 playerId, s32 cameraId, struct UnkStruct_800DC5EC* screen) {
-    u16 perspNorm;
-
-    // This allows freecam to create a new separate camera
-    // if (CVarGetInteger("gFreecam", 0) == true) {
-    //     freecam_render_setup(gFreecamCamera);
-    //     return;
-    // }
-
-    // Tag the camera for the interpolation engine
-    FrameInterpolation_RecordOpenChild("camera",
-                                       (FrameInterpolation_GetCameraEpoch() | (playerId | (cameraId << 8))));
-
-    // Calculate camera perspective (camera movement/location)
-    guPerspective(GetPerspMatrix(cameraId), &perspNorm, gCameraZoom[cameraId], gScreenAspect,
-                  CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
-    gSPPerspNormalize(gDisplayListHead++, perspNorm);
-    gSPMatrix(gDisplayListHead++, GetPerspMatrix(cameraId),
-              G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-
-    // Calculate the camera lookAt (camera rotation)
-    guLookAt(GetLookAtMatrix(cameraId), camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0],
-             camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
-    gSPMatrix(gDisplayListHead++, GetLookAtMatrix(cameraId),
-              G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-
-    FrameInterpolation_RecordCloseChild();
 }
 
 void render_screens(s32 mode, s32 cameraId, s32 playerId) {
@@ -849,17 +777,16 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
             break;
     }
 
-    struct UnkStruct_800DC5EC* screen = &D_8015F480[screenId];
-    Camera* camera;
+    ScreenContext* screen = &gScreenContexts[screenId];
+    Camera* camera = screen->camera;
+    cameraId = camera->cameraId;
+    // CM_GetCamera(cameraId);
 
-    // Required for freecam to have its own camera
-    //if (CVarGetInteger("gFreecam", 0) == true) {
-    //    camera = &gFreecamCamera;
-    //    cameraId = 4;
-    //} else {
-        camera = &cameras[cameraId];
-    //}
-    
+    if (NULL == camera) {
+        printf("NO CAMERA SELECTED\n");
+        return;
+    }
+
     if (screenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
     }
@@ -870,37 +797,33 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     // Setup camera perspective and lookAt
-    setup_camera(camera, playerId, cameraId, screen);
+    CM_SetViewProjection(camera);
 
     // Create a matrix for the track and game objects
-    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | playerId)));
+    FrameInterpolation_RecordOpenChild("track", TAG_TRACK((cameraId | (playerId << 2))));
     Mat4 trackMatrix;
     mtxf_identity(trackMatrix);
+    if (gIsMirrorMode != 0) {
+        trackMatrix[0][0] = -1.0f;
+        // trackMatrix[1][1] = -1.0f;
+        // trackMatrix[2][2] = -1.0f;
+    }
     render_set_position(trackMatrix, 0);
 
     // Draw track geography
-    render_course(screen);
+    render_track(screen);
     FrameInterpolation_RecordCloseChild();
 
     // Draw dynamic game objects
     render_course_actors(screen);
+    CM_DrawActors(camera);
     CM_DrawStaticMeshActors();
-    render_object(mode);
+    render_object(screen);
 
-    switch (screenId) {
-        case 0:
-            render_players_on_screen_one();
-            break;
-        case 1:
-            render_players_on_screen_two();
-            break;
-        case 2:
-            render_players_on_screen_three();
-            break;
-        case 3:
-            render_players_on_screen_four();
-            break;
+    if (CM_IsTourEnabled() == false) {
+        render_players(camera, screenId);
     }
+
     func_8029122C(screen, playerId); // Track water related
 
     switch (playerId) { // Render player particles or some effect
@@ -919,7 +842,7 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     };
 
     render_item_boxes(screen);
-    render_player_snow_effect(mode);
+    render_player_snow_effect(camera);
     func_80058BF4(); // Setup texture modes
     if (D_800DC5B8 != 0) {
         func_80058C20(mode); // Setup hud matrix
@@ -935,8 +858,9 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
     }
 }
 
-void func_802A74BC(void) {
-    struct UnkStruct_800DC5EC* wrapper = &D_8015F480[0];
+// Makes the screen small at the start of a race
+void set_screen(void) {
+    ScreenContext* wrapper = &gScreenContexts[0];
     Player* player = &gPlayers[0];
     Camera* camera = &cameras[0];
     struct Controller* controller = &gControllers[0];
@@ -947,11 +871,18 @@ void func_802A74BC(void) {
 
     for (i = 0; i < 4; i++) {
         wrapper->controllers = controller;
-        wrapper->camera = camera;
+//        wrapper->camera = &cameras[i]; // Done in spawn_players now
         wrapper->player = player;
         wrapper->unkC = unk;
-        wrapper->screenWidth = 4;
-        wrapper->screenHeight = 4;
+
+        // Tick is not enabled in the editor, so the screen needs to begin at the proper size.
+        if (((Editor_IsEnabled()) && (Editor_IsPaused()) && (i == PLAYER_ONE)) || CM_IsTourEnabled() == true) {
+            wrapper->screenWidth = SCREEN_WIDTH;
+            wrapper->screenHeight = SCREEN_HEIGHT;
+        } else { // Normal race start, screen is small
+            wrapper->screenWidth = 4;
+            wrapper->screenHeight = 4;
+        }
         wrapper->pathCounter = 1;
 
         switch (gActiveScreenMode) {
@@ -1002,6 +933,17 @@ void func_802A74BC(void) {
     }
 }
 
+void set_editor_screen(void) {
+    ScreenContext* wrapper = &gScreenContexts[0];
+    wrapper->controllers = gControllerOne;
+    wrapper->camera = gFreecamCamera;
+    wrapper->player = gPlayerOne;
+    wrapper->unkC = &D_8015F790[0];
+    wrapper->screenWidth = SCREEN_WIDTH;
+    wrapper->screenHeight = SCREEN_HEIGHT;
+    wrapper->pathCounter = 1;
+}
+
 void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16* source, u16* target) {
     s32 var_v1;
     s32 var_a1;
@@ -1013,46 +955,6 @@ void copy_framebuffer(s32 arg0, s32 arg1, s32 width, s32 height, u16* source, u1
         sourceIndex = ((arg1 + var_v1) * SCREEN_WIDTH) + arg0;
         for (var_a1 = 0; var_a1 < width; var_a1++, targetIndex++, sourceIndex++) {
             target[targetIndex] = source[sourceIndex];
-        }
-    }
-}
-
-// Handles copying framebuffer to course texture data region for the Jumbotron in the port
-// This only supports framebuffers and copy regions being within 320x240
-// Any attempt to support larger sizes would require reworking course data
-void copy_jumbotron_fb_port(s32 ulx, s32 uly, s16 portionToDraw, u16* source, u16* target) {
-    // Add CVar if we want to expose a user toggle for only updating 1/6 of the jumbotron per frame
-    u8 updateWholeJumbo = true;
-
-    if (portionToDraw == -1 || updateWholeJumbo) {
-        copy_framebuffer(ulx, uly, 64, 32, source, target);
-        copy_framebuffer(ulx + 64, uly, 64, 32, source, target + (64 * 32 * 1));
-        copy_framebuffer(ulx, uly + 32, 64, 32, source, target + (64 * 32 * 2));
-        copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, target + (64 * 32 * 3));
-        copy_framebuffer(ulx, uly + 64, 64, 32, source, target + (64 * 32 * 4));
-        copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, target + (64 * 32 * 5));
-    } else {
-        switch (portionToDraw) {
-            case 0:
-                copy_framebuffer(ulx, uly, 64, 32, source, target);
-                break;
-            case 1:
-                copy_framebuffer(ulx + 64, uly, 64, 32, source, target + (64 * 32 * 1));
-                break;
-            case 2:
-                copy_framebuffer(ulx, uly + 32, 64, 32, source, target + (64 * 32 * 2));
-                break;
-            case 3:
-                copy_framebuffer(ulx + 64, uly + 32, 64, 32, source, target + (64 * 32 * 3));
-                break;
-            case 4:
-                copy_framebuffer(ulx, uly + 64, 64, 32, source, target + (64 * 32 * 4));
-                break;
-            case 5:
-                copy_framebuffer(ulx + 64, uly + 64, 64, 32, source, target + (64 * 32 * 5));
-                break;
-            default:
-                break;
         }
     }
 }
@@ -1072,25 +974,25 @@ void func_802A7728(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-#if TARGET_N64
+
+    if (NULL == gPhysicalFramebuffers[temp_v0]) {
+        return;
+    }
+
     copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
+                     (u16*) LOAD_ASSET_RAW(gTexture68272C));
     copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x9800));
+                     (u16*) LOAD_ASSET_RAW(gTexture682928));
     copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xA800));
+                     (u16*) LOAD_ASSET_RAW(gTexture682B24));
     copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xB800));
+                     (u16*) LOAD_ASSET_RAW(gTexture682D20));
     copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xC800));
+                     (u16*) LOAD_ASSET_RAW(gTexture682F1C));
     copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xD800));
-#else
-    copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, -1, PHYSICAL_TO_VIRTUAL(gPortFramebuffers[temp_v0]),
-                           (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x8800));
-#endif
+                     (u16*) LOAD_ASSET_RAW(gTexture683118));
 }
 
 void func_802A7940(void) {
@@ -1108,26 +1010,26 @@ void func_802A7940(void) {
     } else if (temp_v0 > 2) {
         temp_v0 = 0;
     }
-#if TARGET_N64
-    copy_framebuffer(D_800DC5DC, D_800DC5E0, 0x40, 0x20, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0, 0x40, 0x20,
+
+    if (gPhysicalFramebuffers[temp_v0] == NULL) {
+        return;
+    }
+
+    copy_framebuffer(D_800DC5DC, D_800DC5E0, 64, 32, (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
+                     (u16*) LOAD_ASSET_RAW(gTexture68272C));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x10800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x20, 0x40, 0x20,
+                     (u16*) LOAD_ASSET_RAW(gTexture682928));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 32, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x11800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x20, 0x40, 0x20,
+                     (u16*) LOAD_ASSET_RAW(gTexture682B24));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 32, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x12800));
-    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 0x40, 0x40, 0x20,
+                     (u16*) LOAD_ASSET_RAW(gTexture682D20));
+    copy_framebuffer(D_800DC5DC, D_800DC5E0 + 64, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x13800));
-    copy_framebuffer(D_800DC5DC + 0x40, D_800DC5E0 + 0x40, 0x40, 0x20,
+                     (u16*) LOAD_ASSET_RAW(gTexture682F1C));
+    copy_framebuffer(D_800DC5DC + 64, D_800DC5E0 + 64, 64, 32,
                      (u16*) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[temp_v0]),
-                     (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0x14800));
-#else
-    copy_jumbotron_fb_port(D_800DC5DC, D_800DC5E0, -1, (u16*) PHYSICAL_TO_VIRTUAL(gPortFramebuffers[temp_v0]),
-                           (u16*) PHYSICAL_TO_VIRTUAL(gSegmentTable[5] + 0xF800));
-#endif
+                     (u16*) LOAD_ASSET_RAW(gTexture683118));
 }

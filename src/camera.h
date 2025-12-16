@@ -17,6 +17,14 @@
 #define BAD_RETURN(cmd) cmd
 #endif
 
+#define NUM_CAMERAS 16
+
+typedef enum RenderMode {
+    RENDER_TRACK_SECTIONS,
+    RENDER_FULL_SCENE,
+    RENDER_COLLISION_MESH
+};
+
 typedef struct {
     f32 unk_0;
     s16 unk_4;
@@ -32,6 +40,7 @@ typedef struct {
     // I think these are the "nautical angles" between pos and lookAt
     // rot[0] = roll? Does nothing?, rot[1] = yaw, rot[2] = pitch
     /* 0x24 */ Vec3s rot;
+               f32 fieldOfView;
     /* 0x2A */ u16 someBitFlags;
     /* 0x2C */ s16 unk_2C;
     /* 0x2E */ s16 unk_2E;
@@ -56,10 +65,15 @@ typedef struct {
     /* 0xB2 */ s16 unk_B2;
     /* 0xB4 */ f32 unk_B4;
                size_t cameraId;
-} Camera; /* size = 0xB8 */
+               int32_t mode;
+    /* 0xB8 */ enum RenderMode renderMode;
+    /* 0xBC */ Mtx* perspectiveMatrix;
+    /* 0xC0 */ Mtx* lookAtMatrix;
 
-void camera_init(f32, f32, f32, s16, u32, s32);
-void freecam_init(f32 posX, f32 posY, f32 posZ, s16 rot, u32 arg4, s32 cameraId);
+} Camera; /* size = 0xBC */
+
+void camera_init(Vec3f pos, s16 rot, u32, s32);
+void freecam_init(Vec3f pos, s16 rot, u32 mode, s32 cameraId);
 void func_8001CA10(Camera*);
 void func_8001CA24(Player*, f32);
 void func_8001CA78(Player*, Camera*, Vec3f, f32*, f32*, f32*, s32, s32);
@@ -72,7 +86,7 @@ void func_8001E45C(Camera*, Player*, s8);
 void func_8001E8E8(Camera*, Player*, s8);
 void func_8001EA0C(Camera*, Player*, s8);
 void func_8001EE98(Player*, Camera*, s8);
-void func_8001F394(Player*, f32*);
+void func_8001F394(Player*);
 void func_8001F87C(s32);
 
 extern f32 D_800DDB30[];

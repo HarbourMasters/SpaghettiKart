@@ -1,21 +1,33 @@
 #include <actors.h>
 #include <main.h>
 #include <libultra/gbi.h>
-#include <assets/mario_raceway_data.h>
-#include <assets/royal_raceway_data.h>
+#include <assets/models/tracks/mario_raceway/mario_raceway_data.h>
+#include <assets/models/tracks/royal_raceway/royal_raceway_data.h>
+
+const char* sPiranhaPlantTextures[] = {
+    gTexturePiranhaPlant1,
+    gTexturePiranhaPlant2,
+    gTexturePiranhaPlant3,
+    gTexturePiranhaPlant4,
+    gTexturePiranhaPlant5,
+    gTexturePiranhaPlant6,
+    gTexturePiranhaPlant7,
+    gTexturePiranhaPlant8,
+    gTexturePiranhaPlant9
+};
 
 /**
  * @brief Renders the piranha plant actor.
  * Actor used in Mario Raceway and Royal Raceway.
  *
- * @param arg0
+ * @param camera
  * @param arg1
  * @param arg2
  */
-void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* arg2) {
+void render_actor_piranha_plant(Camera* camera, Mat4 arg1, struct PiranhaPlant* arg2) {
     UNUSED s32 pad;
     u8* addr;
-    s16 temp_lo = arg0 - camera1;
+    s16 temp_lo = camera - camera1;
     s16 animationFrame; // unconfirmed
     s16 temp = arg2->flags;
     f32 temp_f0;
@@ -25,7 +37,7 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
         return;
     }
 
-    temp_f0 = is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 1000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, camera->fieldOfView, 1000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {
         temp_f0 = MAX(temp_f0, 0.0f);
@@ -115,8 +127,7 @@ void render_actor_piranha_plant(Camera* arg0, Mat4 arg1, struct PiranhaPlant* ar
     if (animationFrame > 8) {
         animationFrame = 8;
     }
-    addr = D_802BA058 + (animationFrame << 0xB);
-    gDPLoadTextureBlock(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(addr), G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0,
+    gDPLoadTextureBlock(gDisplayListHead++, sPiranhaPlantTextures[animationFrame], G_IM_FMT_CI, G_IM_SIZ_8b, 32, 64, 0,
                         G_TX_MIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD,
                         G_TX_NOLOD);
 

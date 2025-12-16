@@ -1,0 +1,14 @@
+:config:
+  segments:
+    - [0x06, 0x825800]
+  header:
+    code:
+      - '#include <assets/startup_logo.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <common_structs.h>'
+      - '#include <align_asset_macro.h>'
+lights:
+  symbol: lights
+  type: lights
+  offset: 0x9308

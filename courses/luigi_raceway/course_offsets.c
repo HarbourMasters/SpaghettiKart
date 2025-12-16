@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/luigi_raceway_data.h>
+#include <assets/models/tracks/luigi_raceway/luigi_raceway_data.h>
 
 const Gfx* luigi_raceway_dls[] = {
     d_course_luigi_raceway_dl_0,    d_course_luigi_raceway_dl_328,  d_course_luigi_raceway_dl_1A8,

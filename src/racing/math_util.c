@@ -8,7 +8,6 @@
 #include "math.h"
 #include "memory.h"
 #include "engine/Matrix.h"
-#include "course.h"
 #include "port/Game.h"
 #include <port/interpolation/FrameInterpolation.h>
 #include <port/interpolation/matrix.h>

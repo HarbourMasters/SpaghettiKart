@@ -1,7 +1,6 @@
 #include "ImguiUI.h"
 #include "UIWidgets.h"
 #include "ResolutionEditor.h"
-#include "MultiplayerWindow.h"
 #include "FreecamWindow.h"
 #include "Tools.h"
 #include "SceneExplorer.h"
@@ -12,11 +11,11 @@
 #include <spdlog/spdlog.h>
 #include <imgui.h>
 #define IMGUI_DEFINE_MATH_OPERATORS
-#include "libultraship/src/Context.h"
+#include "ship/Context.h"
 
 #include <imgui_internal.h>
 #include <libultraship/libultraship.h>
-#include <graphic/Fast3D/Fast3dWindow.h>
+#include <fast/Fast3dWindow.h>
 #include "port/Engine.h"
 #include "PortMenu.h"
 
@@ -34,7 +33,6 @@ std::shared_ptr<Ship::GuiWindow> mConsoleWindow;
 std::shared_ptr<Ship::GuiWindow> mStatsWindow;
 std::shared_ptr<Ship::GuiWindow> mInputEditorWindow;
 std::shared_ptr<Ship::GuiWindow> mGfxDebuggerWindow;
-std::shared_ptr<Ship::GuiWindow> mMultiplayerWindow;
 std::shared_ptr<Ship::GuiWindow> mToolsWindow;
 std::shared_ptr<Ship::GuiWindow> mSceneExplorerWindow;
 std::shared_ptr<Ship::GuiWindow> mPropertiesWindow;
@@ -49,11 +47,6 @@ void SetupGuiElements() {
 
     mPortMenu = std::make_shared<PortMenu>("gOpenMenu", "Port Menu");
     gui->SetMenu(mPortMenu);
-
-    //mMultiplayerWindow = gui->GetGuiWindow("Multiplayer");
-    //if (mMultiplayerWindow == nullptr) {
-    //    SPDLOG_ERROR("Could not find multiplayer window");
-    //}
 
     mStatsWindow = gui->GetGuiWindow("Stats");
     if (mStatsWindow == nullptr) {
@@ -76,21 +69,21 @@ void SetupGuiElements() {
         SPDLOG_ERROR("Could not find input GfxDebuggerWindow");
     }
 
-    mToolsWindow = std::make_shared<Editor::ToolsWindow>("gEditorEnabled", "Tools", ImVec2(100, 100),
+    mToolsWindow = std::make_shared<TrackEditor::ToolsWindow>("gEditorEnabled", "Tools", ImVec2(100, 100),
                                                                   (ImGuiWindowFlags_NoTitleBar));
     gui->AddGuiWindow(mToolsWindow);
 
-    mSceneExplorerWindow = std::make_shared<Editor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
+    mSceneExplorerWindow = std::make_shared<TrackEditor::SceneExplorerWindow>("gEditorEnabled", "Scene Explorer");
     gui->AddGuiWindow(mSceneExplorerWindow);
 
-    mPropertiesWindow = std::make_shared<Editor::PropertiesWindow>("gEditorEnabled", "Properties");
+    mPropertiesWindow = std::make_shared<TrackEditor::PropertiesWindow>("gEditorEnabled", "Properties");
     gui->AddGuiWindow(mPropertiesWindow);
 
-    mTrackPropertiesWindow = std::make_shared<Editor::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
+    mTrackPropertiesWindow = std::make_shared<TrackEditor::TrackPropertiesWindow>("gEditorEnabled", "Track Properties");
     gui->AddGuiWindow(mTrackPropertiesWindow);
 
     mContentBrowserWindow =
-        std::make_shared<Editor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
+        std::make_shared<TrackEditor::ContentBrowserWindow>("gEditorEnabled", "Content Browser");
     gui->AddGuiWindow(mContentBrowserWindow);
 }
 

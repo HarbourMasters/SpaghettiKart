@@ -1,45 +1,45 @@
 #include <libultraship.h>
 #include "World.h"
 #include "Cup.h"
-#include "courses/Course.h"
-#include "objects/BombKart.h"
+#include "tracks/Track.h"
 #include "TrainCrossing.h"
 #include <memory>
 #include "objects/Object.h"
 #include "port/Game.h"
 
-#include "editor/GameObject.h"
-
 extern "C" {
-#include "camera.h"
 #include "objects.h"
 #include "main.h"
 #include "defines.h"
 #include "audio/external.h"
 #include "menus.h"
-#include "common_data.h"
-#include "mario_raceway_data.h"
+#include "code_800029B0.h"
 }
 
-World::World() {}
-World::~World() {
-    CM_CleanWorld();
-}
+#include "engine/cameras/GameCamera.h"
 
-std::shared_ptr<Course> CurrentCourse;
+World* World::Instance;
+std::unique_ptr<Track> mTrack;
 Cup* CurrentCup;
 
-std::shared_ptr<Course> World::AddCourse(std::shared_ptr<Course> course) {
-    gWorldInstance.Courses.push_back(course);
-    return course;
+World::World() {
+    Instance = this;
+    RaceManagerInstance = std::make_unique<RaceManager>(*this);
+}
+
+World::~World() {
+    CleanWorld();
 }
 
 void World::AddCup(Cup* cup) {
     Cups.push_back(cup);
 }
 
-void World::SetCourseFromCup() {
-    CurrentCourse = CurrentCup->GetCourse();
+void World::SetCurrentTrack(std::unique_ptr<Track> track) {
+    if (mTrack == track) {
+        return;
+    }
+    mTrack = std::move(track);
 }
 
 TrainCrossing* World::AddCrossing(Vec3f position, u32 waypointMin, u32 waypointMax, f32 approachRadius,
@@ -88,70 +88,49 @@ void World::SetCupIndex(size_t index) {
     CupIndex = index;
 }
 
-void World::SetCup(Cup* cup) {
+void World::SetCurrentCup(Cup* cup) {
     if (cup) {
         CurrentCup = cup;
         CurrentCup->CursorPosition = 0;
     }
 }
 
-void World::SetCourse(const char* name) {
-    //! @todo Use content dictionary instead
-    for (size_t i = 0; i < Courses.size(); i++) {
-        if (strcmp(Courses[i]->Props.Name, name) == 0) {
-            CurrentCourse = Courses[i];
-            break;
+void World::TickCameras() {
+
+    for (size_t i = 0; i < 4; i++) {
+        ScreenContext* screen = &gScreenContexts[i];
+        if (NULL == screen->pendingCamera) { continue; }
+        if (screen->pendingCamera != screen->camera) {
+            screen->camera = screen->pendingCamera;
+            screen->pendingCamera = nullptr;
         }
     }
-    std::runtime_error("SetCourse() Course name not found in Courses list");
+
+    for (GameCamera* camera : Cameras) {
+        if (camera->IsActive()) {
+            camera->Tick();
+        }
+    }
 }
 
-void World::NextCourse() {
-    if (CourseIndex < Courses.size() - 1) {
-        CourseIndex++;
-    } else {
-        CourseIndex = 0;
-    }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex];
-}
-
-void World::PreviousCourse() {
-    if (CourseIndex > 0) {
-        CourseIndex--;
-    } else {
-        CourseIndex = Courses.size() - 1;
-    }
-    gWorldInstance.CurrentCourse = Courses[CourseIndex];
-}
-
-AActor* World::AddActor(AActor* actor) {
-    Actors.push_back(actor);
-
-    if (actor->Model != NULL) {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*)&actor->Rot, &actor->Scale,
-                          (Gfx*) LOAD_ASSET_RAW(actor->Model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT,
-                          0.0f, (int32_t*) &actor->Type, 0);
-    } else {
-        gEditor.AddObject(actor->Name, (FVector*) &actor->Pos, (IRotator*)&actor->Rot, &actor->Scale, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->Type, 0);
-    }
-    return Actors.back();
+AActor* World::AddActor(std::unique_ptr<AActor> actor) {
+    Actors.push_back(std::move(actor));
+    Actors.back()->BeginPlay();
+    return Actors.back().get();
 }
 
 struct Actor* World::AddBaseActor() {
-    Actors.push_back(new AActor());
+    Actors.push_back(std::make_unique<AActor>());
 
-    AActor* actor = Actors.back();
+    AActor* actor = Actors.back().get();
 
     // Skip C++ vtable to access variables in C
-    return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(Actors.back()) + sizeof(void*));
+    return reinterpret_cast<struct Actor*>(reinterpret_cast<char*>(actor) + sizeof(void*));
 }
 
-void World::AddEditorObject(Actor* actor, const char* name) {
-    if (actor->model != NULL) {
-        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*)&actor->rot, nullptr, (Gfx*)LOAD_ASSET_RAW(actor->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
-    } else {
-        gEditor.AddObject(name, (FVector*) &actor->pos, (IRotator*)&actor->rot, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*)&actor->type, 0);
-    }
+void World::ActorBeginPlay(Actor* actor) {
+    AActor* act = ConvertActorToAActor(actor);
+    act->BeginPlay();
 }
 
 /**
@@ -174,61 +153,56 @@ Actor* World::ConvertAActorToActor(AActor* actor) {
 }
 
 AActor* World::GetActor(size_t index) {
-    return Actors[index];
+    return Actors[index].get();
 }
 
 void World::TickActors() {
     // This only ticks modded actors
-    for (AActor* actor : Actors) {
+    for (auto& actor : Actors) {
         if (actor->IsMod()) {
             actor->Tick();
         }
     }
 }
 
-StaticMeshActor* World::AddStaticMeshActor(std::string name, FVector pos, IRotator rot, FVector scale, std::string model, int32_t* collision) {
-    StaticMeshActors.push_back(new StaticMeshActor(name, pos, rot, scale, model, collision));
-    auto actor = StaticMeshActors.back();
-    auto gameObj = gEditor.AddObject(actor->Name.c_str(), &actor->Pos, &actor->Rot, &actor->Scale, (Gfx*) LOAD_ASSET_RAW(actor->Model.c_str()), 1.0f,
-                      Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, (int32_t*) &actor->bPendingDestroy, (int32_t) true);
+StaticMeshActor* World::AddStaticMeshActor(const std::string& name, FVector pos, IRotator rot, FVector scale, const std::string& model, int32_t* collision) {
+    StaticMeshActors.push_back(std::make_unique<StaticMeshActor>(name, pos, rot, scale, model, collision));
+    auto* actor = StaticMeshActors.back().get();
     return actor;
 }
 
 void World::DrawStaticMeshActors() {
-    for (const auto& actor: StaticMeshActors) {
+    for (const auto& actor : StaticMeshActors) {
         actor->Draw();
     }
 }
 
-void World::DeleteStaticMeshActors() {
-    for (auto it = StaticMeshActors.begin(); it != StaticMeshActors.end();) {
-        if ((*it)->bPendingDestroy) {
-            delete *it;  // Deallocate memory for the actor
-            it = StaticMeshActors.erase(it);  // Remove the pointer from the vector
-        } else {
-            ++it;  // Only increment the iterator if we didn't erase an element
-        }
-    }
-}
+// OObject* World::AddObject(OObject object) {
+//     Objects.push_back(std::make_unique<OObject>(object));
 
-OObject* World::AddObject(OObject* object) {
-    Objects.push_back(object);
+//     // This is an example of how to get the C object.
+//     // However, nothing is being done with it, so it's been commented out.
+//     // if (object->_objectIndex != -1) {
+//     //     Object* cObj = &gObjectList[object->_objectIndex];
+//     // }
 
-    if (object->_objectIndex != -1) {
-        Object* cObj = &gObjectList[object->_objectIndex];
+//     return Objects.back().get();
+// }
 
-        if (cObj->model != NULL) {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*)&cObj->orientation, nullptr, (Gfx*)LOAD_ASSET_RAW(cObj->model), 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
-        } else {
-            gEditor.AddObject(object->Name, (FVector*) &cObj->origin_pos[0], (IRotator*)&cObj->orientation, nullptr, nullptr, 1.0f, Editor::GameObject::CollisionType::VTX_INTERSECT, 0.0f, &object->_objectIndex, -1);
-        }
-    }
+OObject* World::AddObject(std::unique_ptr<OObject> object) {
+    Objects.push_back(std::move(object));
 
-    return Objects.back();
+    // This is an example of how to get the C object.
+    // However, nothing is being done with it, so it's been commented out.
+    // if (object->_objectIndex != -1) {
+    //     Object* cObj = &gObjectList[object->_objectIndex];
+    // }
+
+    return Objects.back().get();
 }
 
 void World::TickObjects() {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Tick();
     }
 }
@@ -236,7 +210,7 @@ void World::TickObjects() {
 // Some objects such as lakitu are ticked in process_game_tick.
 // This is a fallback to support those objects. Probably don't use this.
 void World::TickObjects60fps() {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Tick60fps();
     }
 }
@@ -247,7 +221,7 @@ ParticleEmitter* World::AddEmitter(ParticleEmitter* emitter) {
 }
 
 void World::DrawObjects(s32 cameraId) {
-    for (const auto& object : Objects) {
+    for (auto& object : Objects) {
         object->Draw(cameraId);
     }
 }
@@ -266,8 +240,8 @@ void World::DrawParticles(s32 cameraId) {
 
 // Sets OObjects or AActors static member variables back to default values
 void World::Reset() {
-    for (const auto& object : Objects) {
-        object->Reset();
+    for (auto& object : Objects) {
+        object->Reset(); // Used for OPenguin
     }
 }
 
@@ -279,14 +253,25 @@ Object* World::GetObjectByIndex(size_t index) {
     return nullptr; // Or handle the error as needed
 }
 
-void World::ClearWorld(void) {
-    World::DeleteStaticMeshActors();
-    CM_CleanWorld();
+// Deletes all objects from the world
+void World::CleanWorld(void) {
+    printf("[Game.cpp] Clean World\n");
 
-    // for (size_t i = 0; i < ARRAY_COUNT(gCollisionMesh); i++) {
+    World::Reset(); // Reset OObjects
 
-    // }
+    for (auto& emitter : Emitters) {
+        delete emitter;
+    }
 
-    // gCollisionMesh
-    // Paths
+    for (size_t i = 0; i < ARRAY_COUNT(mPlayerBombKart); i++) {
+        mPlayerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;
+        mPlayerBombKart[i]._primAlpha = 0;
+    }
+
+    gEditor.ClearObjects();
+    Actors.clear();
+    StaticMeshActors.clear();
+    Objects.clear();
+    Emitters.clear();
+    Lakitus.clear();
 }

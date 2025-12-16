@@ -1,0 +1,1221 @@
+:config:
+  segments:
+    - [0x06, 0x852E20]
+    - [0x07, 0x800000]
+  external_files:
+    - "yamls/us/textures/tracks/moo_moo_farm/moo_moo_farm_data.yml"
+  manual_segments:
+  # Segment 3
+    - [0x03009000, "textures/other_textures/gTextureTrees4Left"]
+    - [0x03009800, "textures/other_textures/gTextureTrees4Right"]
+    - [0x0300A000, "textures/other_textures/gTextureCow01Left"]
+    - [0x0300A800, "textures/other_textures/gTextureCow01Right"]
+    - [0x0300B000, "textures/other_textures/gTextureCow02Left"]
+    - [0x0300B800, "textures/other_textures/gTextureCow02Right"]
+    - [0x0300C000, "textures/other_textures/gTextureCow03Left"]
+    - [0x0300C800, "textures/other_textures/gTextureCow03Right"]
+    - [0x0300D000, "textures/other_textures/gTextureCow04Left"]
+    - [0x0300D800, "textures/other_textures/gTextureCow04Right"]
+    - [0x0300E000, "textures/other_textures/gTextureCow05Left"]
+    - [0x0300E800, "textures/other_textures/gTextureCow05Right"]
+  # Segment 5
+    - [0x05000000, "textures/other_textures/wood_door_0"]
+    - [0x05001000, "textures/other_textures/grass_2"]
+    - [0x05001800, "textures/other_textures/texture_64AF50"]
+    - [0x05002000, "textures/other_textures/texture_64B090"]
+    - [0x05002800, "textures/other_textures/texture_64B54C"]
+    - [0x05003000, "textures/other_textures/texture_64B3F8"]
+    - [0x05003800, "textures/other_textures/sign_nintendo_0"]
+    - [0x05004800, "textures/other_textures/sign_nintendo_1"]
+    - [0x05005800, "textures/other_textures/texture_6684F8"]
+    - [0x05006000, "textures/other_textures/sign_luigis_0"]
+    - [0x05007000, "textures/other_textures/sign_luigis_1"]
+    - [0x05008000, "textures/other_textures/sign_mario_star_0"]
+    - [0x05009000, "textures/other_textures/sign_mario_star_1"]
+    - [0x0500A000, "textures/other_textures/texture_674D58"]
+    - [0x0500B000, "textures/other_textures/texture_675064"]
+    - [0x0500B800, "textures/other_textures/texture_675220"]
+    - [0x0500C000, "textures/other_textures/texture_6775EC"]
+    - [0x0500D000, "textures/other_textures/texture_683314"]
+    - [0x0500E000, "textures/other_textures/texture_68CDA0"]
+    - [0x0500E800, "textures/other_textures/texture_6442D4"]
+    - [0x0500F000, "textures/other_textures/texture_64440C"]
+    - [0x05010000, "textures/other_textures/texture_6446AC"]
+    - [0x05010800, "textures/other_textures/gTextureMooMooFarmSignLeft"]
+    - [0x05011800, "textures/other_textures/gTextureMooMooFarmSignRight"]
+    - [0x05012800, "textures/other_textures/texture_64ACAC"]
+    - [0x05013000, "textures/other_textures/texture_66D698"]
+    - [0x05013800, "textures/other_textures/texture_66EBF0"]
+    - [0x05014000, "textures/other_textures/wheel_steam_engine_real"]
+  # Segment 7
+    - [0x7000000, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_0"]
+    - [0x7000028, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_28"]
+    - [0x7000058, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_58"]
+    - [0x7000088, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_88"]
+    - [0x70000C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_C0"]
+    - [0x70000F8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_F8"]
+    - [0x7000130, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_130"]
+    - [0x7000170, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_170"]
+    - [0x70001A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1A0"]
+    - [0x70001E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1E0"]
+    - [0x7000220, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_220"]
+    - [0x7000258, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_258"]
+    - [0x7000290, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_290"]
+    - [0x70002B0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2B0"]
+    - [0x70002E8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2E8"]
+    - [0x7000318, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_318"]
+    - [0x7000350, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_350"]
+    - [0x7000388, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_388"]
+    - [0x70003C8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3C8"]
+    - [0x7000400, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_400"]
+    - [0x7000430, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_430"]
+    - [0x7000468, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_468"]
+    - [0x70004A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4A0"]
+    - [0x70004D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4D0"]
+    - [0x7000590, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_590"]
+    - [0x70005C8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5C8"]
+    - [0x7000600, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_600"]
+    - [0x7000638, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_638"]
+    - [0x7000670, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_670"]
+    - [0x70006A8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6A8"]
+    - [0x70006E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6E0"]
+    - [0x7000720, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_720"]
+    - [0x7000750, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_750"]
+    - [0x7000790, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_790"]
+    - [0x70007D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_7D0"]
+    - [0x7000808, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_808"]
+    - [0x7000840, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_840"]
+    - [0x7000870, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_870"]
+    - [0x7000898, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_898"]
+    - [0x70008D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_8D0"]
+    - [0x7000908, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_908"]
+    - [0x7000940, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_940"]
+    - [0x7000978, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_978"]
+    - [0x70009B0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_9B0"]
+    - [0x70009E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_9E0"]
+    - [0x7000A18, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_A18"]
+    - [0x7000A50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_A50"]
+    - [0x7000A80, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_A80"]
+    - [0x7000B40, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_B40"]
+    - [0x7000C10, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_C10"]
+    - [0x7000C20, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_C20"]
+    - [0x7000CA0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_CA0"]
+    - [0x7000CB0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_CB0"]
+    - [0x7000E50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_E50"]
+    - [0x7000EB8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_EB8"]
+    - [0x7000F20, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_F20"]
+    - [0x70010C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_10C0"]
+    - [0x70010E8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_10E8"]
+    - [0x7001118, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1118"]
+    - [0x7001128, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1128"]
+    - [0x7001168, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1168"]
+    - [0x70011B0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_11B0"]
+    - [0x70011F0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_11F0"]
+    - [0x7001230, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1230"]
+    - [0x7001270, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1270"]
+    - [0x70012E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_12E0"]
+    - [0x7001348, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1348"]
+    - [0x7001388, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1388"]
+    - [0x70013E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_13E0"]
+    - [0x7001430, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1430"]
+    - [0x7001478, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1478"]
+    - [0x70014B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_14B8"]
+    - [0x7001518, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1518"]
+    - [0x7001578, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1578"]
+    - [0x70015E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_15E0"]
+    - [0x7001640, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1640"]
+    - [0x70016B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_16B8"]
+    - [0x7001718, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1718"]
+    - [0x7001750, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1750"]
+    - [0x70017A8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_17A8"]
+    - [0x70017D8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_17D8"]
+    - [0x7001828, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1828"]
+    - [0x70018E0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_18E0"]
+    - [0x7001940, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1940"]
+    - [0x70019A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_19A0"]
+    - [0x7001A00, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1A00"]
+    - [0x7001A60, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1A60"]
+    - [0x7001AA0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1AA0"]
+    - [0x7001AD0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1AD0"]
+    - [0x7001B38, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1B38"]
+    - [0x7001BA0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1BA0"]
+    - [0x7001C40, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1C40"]
+    - [0x7001C98, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1C98"]
+    - [0x7001D00, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1D00"]
+    - [0x7001D60, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1D60"]
+    - [0x7001DD0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1DD0"]
+    - [0x7001E58, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1E58"]
+    - [0x7001ED0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1ED0"]
+    - [0x7001F20, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1F20"]
+    - [0x7001F58, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1F58"]
+    - [0x7001F90, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1F90"]
+    - [0x7001FD0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_1FD0"]
+    - [0x7002008, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2008"]
+    - [0x7002040, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2040"]
+    - [0x7002080, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2080"]
+    - [0x70020C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_20C0"]
+    - [0x70020F8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_20F8"]
+    - [0x7002160, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2160"]
+    - [0x70021D8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_21D8"]
+    - [0x7002240, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2240"]
+    - [0x70022B0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_22B0"]
+    - [0x7002338, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2338"]
+    - [0x70023C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_23C0"]
+    - [0x7002450, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2450"]
+    - [0x7002550, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2550"]
+    - [0x7002588, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2588"]
+    - [0x70025D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_25D0"]
+    - [0x7002618, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2618"]
+    - [0x7002658, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2658"]
+    - [0x7002690, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2690"]
+    - [0x70026C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_26C0"]
+    - [0x7002708, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2708"]
+    - [0x7002748, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2748"]
+    - [0x7002780, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2780"]
+    - [0x70027B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_27B8"]
+    - [0x70027F8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_27F8"]
+    - [0x7002850, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2850"]
+    - [0x7002898, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2898"]
+    - [0x70028D8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_28D8"]
+    - [0x7002918, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2918"]
+    - [0x7002998, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2998"]
+    - [0x70029F0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_29F0"]
+    - [0x7002A50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2A50"]
+    - [0x7002AB8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2AB8"]
+    - [0x7002AF0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2AF0"]
+    - [0x7002B50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2B50"]
+    - [0x7002BA8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2BA8"]
+    - [0x7002C10, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2C10"]
+    - [0x7002C68, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2C68"]
+    - [0x7002CD8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2CD8"]
+    - [0x7002D30, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2D30"]
+    - [0x7002D90, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2D90"]
+    - [0x7002DF0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2DF0"]
+    - [0x7002E60, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2E60"]
+    - [0x7002EA0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2EA0"]
+    - [0x7002F10, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2F10"]
+    - [0x7002F90, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2F90"]
+    - [0x7002FF8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_2FF8"]
+    - [0x7003030, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3030"]
+    - [0x70030A8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_30A8"]
+    - [0x70030F0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_30F0"]
+    - [0x7003138, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3138"]
+    - [0x7003190, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3190"]
+    - [0x70031C8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_31C8"]
+    - [0x7003210, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3210"]
+    - [0x7003268, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3268"]
+    - [0x70032A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_32A0"]
+    - [0x7003310, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3310"]
+    - [0x7003350, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3350"]
+    - [0x7003380, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3380"]
+    - [0x70033C0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_33C0"]
+    - [0x70034B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_34B8"]
+    - [0x7003590, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3590"]
+    - [0x7003668, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3668"]
+    - [0x7003748, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3748"]
+    - [0x7003828, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3828"]
+    - [0x7003918, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3918"]
+    - [0x70039F8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_39F8"]
+    - [0x7003B88, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3B88"]
+    - [0x7003C48, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3C48"]
+    - [0x7003D50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3D50"]
+    - [0x7003E50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3E50"]
+    - [0x7003F30, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_3F30"]
+    - [0x70040A8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_40A8"]
+    - [0x70041B0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_41B0"]
+    - [0x70042B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_42B8"]
+    - [0x70043A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_43A0"]
+    - [0x7004480, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4480"]
+    - [0x70045D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_45D0"]
+    - [0x70046E8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_46E8"]
+    - [0x70047C8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_47C8"]
+    - [0x70048B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_48B8"]
+    - [0x70049A8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_49A8"]
+    - [0x7004A88, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4A88"]
+    - [0x7004B90, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4B90"]
+    - [0x7004C50, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4C50"]
+    - [0x7004CB8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4CB8"]
+    - [0x7004D28, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4D28"]
+    - [0x7004D90, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4D90"]
+    - [0x7004DF8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4DF8"]
+    - [0x7004E20, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4E20"]
+    - [0x7004F00, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_4F00"]
+    - [0x7005018, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5018"]
+    - [0x7005030, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5030"]
+    - [0x70050D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_50D0"]
+    - [0x7005170, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5170"]
+    - [0x7005208, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5208"]
+    - [0x7005290, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5290"]
+    - [0x70052B8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_52B8"]
+    - [0x7005410, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5410"]
+    - [0x7005420, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5420"]
+    - [0x7005498, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5498"]
+    - [0x7005530, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5530"]
+    - [0x70055C8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_55C8"]
+    - [0x7005640, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5640"]
+    - [0x7005668, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5668"]
+    - [0x7005700, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5700"]
+    - [0x70057A0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_57A0"]
+    - [0x7005848, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5848"]
+    - [0x70058E8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_58E8"]
+    - [0x7005988, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5988"]
+    - [0x7005A30, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5A30"]
+    - [0x7005B70, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5B70"]
+    - [0x7005BF8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5BF8"]
+    - [0x7005C98, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5C98"]
+    - [0x7005D30, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5D30"]
+    - [0x7005DC0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5DC0"]
+    - [0x7005F08, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5F08"]
+    - [0x7005FD8, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_5FD8"]
+    - [0x7006090, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6090"]
+    - [0x7006130, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6130"]
+    - [0x70061F0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_61F0"]
+    - [0x7006288, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6288"]
+    - [0x7006358, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6358"]
+    - [0x7006408, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6408"]
+    - [0x70064D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_64D0"]
+    - [0x7006578, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6578"]
+    - [0x7006618, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6618"]
+    - [0x70066D0, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_66D0"]
+    - [0x7006730, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6730"]
+    - [0x7006740, "models/tracks/moo_moo_farm/moo_moo_farm_displaylists/d_course_moo_moo_farm_packed_dl_6740"]
+  # Segment 4
+    - [0x4000000, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000000"]
+    - [0x4000080, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000080"]
+    - [0x4000140, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000140"]
+    - [0x4000200, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000200"]
+    - [0x4000300, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000300"]
+    - [0x4000400, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000400"]
+    - [0x4000500, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000500"]
+    - [0x4000640, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000640"]
+    - [0x4000700, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000700"]
+    - [0x4000840, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000840"]
+    - [0x4000980, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000980"]
+    - [0x4000a80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000A80"]
+    - [0x4000b80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000B80"]
+    - [0x4000bc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000BC0"]
+    - [0x4000cc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000CC0"]
+    - [0x4000d80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000D80"]
+    - [0x4000e80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000E80"]
+    - [0x4000f80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04000F80"]
+    - [0x40010c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040010C0"]
+    - [0x40011c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040011C0"]
+    - [0x4001280, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001280"]
+    - [0x4001380, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001380"]
+    - [0x4001480, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001480"]
+    - [0x4001540, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001540"]
+    - [0x4001640, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001640"]
+    - [0x4001740, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001740"]
+    - [0x4001840, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001840"]
+    - [0x4001940, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001940"]
+    - [0x4001a40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001A40"]
+    - [0x4001b40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001B40"]
+    - [0x4001c80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001C80"]
+    - [0x4001d40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001D40"]
+    - [0x4001e80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001E80"]
+    - [0x4001fc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04001FC0"]
+    - [0x40020c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040020C0"]
+    - [0x40021c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040021C0"]
+    - [0x4002280, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002280"]
+    - [0x4002300, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002300"]
+    - [0x4002400, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002400"]
+    - [0x4002500, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002500"]
+    - [0x4002600, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002600"]
+    - [0x4002700, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002700"]
+    - [0x4002800, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002800"]
+    - [0x40028c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040028C0"]
+    - [0x40029c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040029C0"]
+    - [0x4002ac0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002AC0"]
+    - [0x4002b80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002B80"]
+    - [0x4002d80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002D80"]
+    - [0x4002f00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04002F00"]
+    - [0x40030e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040030E0"]
+    - [0x40031c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040031C0"]
+    - [0x4003240, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003240"]
+    - [0x4003280, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003280"]
+    - [0x40032c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040032C0"]
+    - [0x4003330, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003330"]
+    - [0x40033b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040033B0"]
+    - [0x4003430, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003430"]
+    - [0x40034b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040034B0"]
+    - [0x4003530, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003530"]
+    - [0x4003570, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003570"]
+    - [0x40035b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040035B0"]
+    - [0x4003620, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003620"]
+    - [0x40036a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040036A0"]
+    - [0x4003860, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003860"]
+    - [0x4003a30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003A30"]
+    - [0x4003bf0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003BF0"]
+    - [0x4003dd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003DD0"]
+    - [0x4003f90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04003F90"]
+    - [0x4004190, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004190"]
+    - [0x40042d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040042D0"]
+    - [0x40044d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040044D0"]
+    - [0x40045f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040045F0"]
+    - [0x4004790, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004790"]
+    - [0x4004990, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004990"]
+    - [0x40049c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040049C0"]
+    - [0x4004ba0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004BA0"]
+    - [0x4004bf0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004BF0"]
+    - [0x4004dc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004DC0"]
+    - [0x4004f80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04004F80"]
+    - [0x4005180, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005180"]
+    - [0x4005240, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005240"]
+    - [0x4005440, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005440"]
+    - [0x40054d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040054D0"]
+    - [0x40056d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040056D0"]
+    - [0x40057b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040057B0"]
+    - [0x4005990, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005990"]
+    - [0x4005a80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005A80"]
+    - [0x4005c70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005C70"]
+    - [0x4005e10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005E10"]
+    - [0x4005ff0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04005FF0"]
+    - [0x40060d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040060D0"]
+    - [0x4006200, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006200"]
+    - [0x4006400, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006400"]
+    - [0x4006430, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006430"]
+    - [0x4006540, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006540"]
+    - [0x4006720, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006720"]
+    - [0x4006780, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006780"]
+    - [0x4006980, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006980"]
+    - [0x4006a10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006A10"]
+    - [0x4006bf0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006BF0"]
+    - [0x4006ce0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006CE0"]
+    - [0x4006ec0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006EC0"]
+    - [0x4006fe0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04006FE0"]
+    - [0x40071c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040071C0"]
+    - [0x40072b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040072B0"]
+    - [0x4007420, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007420"]
+    - [0x4007520, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007520"]
+    - [0x4007720, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007720"]
+    - [0x4007800, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007800"]
+    - [0x40079e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040079E0"]
+    - [0x4007b30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007B30"]
+    - [0x4007d30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007D30"]
+    - [0x4007f10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04007F10"]
+    - [0x4008090, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008090"]
+    - [0x4008280, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008280"]
+    - [0x40082e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040082E0"]
+    - [0x40084e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040084E0"]
+    - [0x4008600, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008600"]
+    - [0x4008800, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008800"]
+    - [0x40088b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040088B0"]
+    - [0x4008ab0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008AB0"]
+    - [0x4008c20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008C20"]
+    - [0x4008e10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008E10"]
+    - [0x4008ff0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04008FF0"]
+    - [0x4009050, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009050"]
+    - [0x4009250, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009250"]
+    - [0x4009400, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009400"]
+    - [0x40095e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040095E0"]
+    - [0x4009610, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009610"]
+    - [0x4009740, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009740"]
+    - [0x40098c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040098C0"]
+    - [0x4009a50, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009A50"]
+    - [0x4009b70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009B70"]
+    - [0x4009c90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009C90"]
+    - [0x4009e70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04009E70"]
+    - [0x400a040, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A040"]
+    - [0x400a190, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A190"]
+    - [0x400a370, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A370"]
+    - [0x400a4e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A4E0"]
+    - [0x400a6e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A6E0"]
+    - [0x400a8c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400A8C0"]
+    - [0x400aaa0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400AAA0"]
+    - [0x400ac20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400AC20"]
+    - [0x400ae00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400AE00"]
+    - [0x400afb0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400AFB0"]
+    - [0x400b190, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B190"]
+    - [0x400b390, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B390"]
+    - [0x400b3f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B3F0"]
+    - [0x400b5f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B5F0"]
+    - [0x400b7d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B7D0"]
+    - [0x400b800, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B800"]
+    - [0x400b9f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400B9F0"]
+    - [0x400bbd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400BBD0"]
+    - [0x400bc00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400BC00"]
+    - [0x400bd60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400BD60"]
+    - [0x400bf50, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400BF50"]
+    - [0x400c120, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C120"]
+    - [0x400c2c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C2C0"]
+    - [0x400c440, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C440"]
+    - [0x400c560, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C560"]
+    - [0x400c740, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C740"]
+    - [0x400c8c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C8C0"]
+    - [0x400c9f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400C9F0"]
+    - [0x400cb50, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400CB50"]
+    - [0x400ccd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400CCD0"]
+    - [0x400cec0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400CEC0"]
+    - [0x400cef0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400CEF0"]
+    - [0x400d0f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D0F0"]
+    - [0x400d2b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D2B0"]
+    - [0x400d480, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D480"]
+    - [0x400d660, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D660"]
+    - [0x400d6c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D6C0"]
+    - [0x400d8c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D8C0"]
+    - [0x400d950, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400D950"]
+    - [0x400db40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400DB40"]
+    - [0x400dc30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400DC30"]
+    - [0x400dd80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400DD80"]
+    - [0x400df70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400DF70"]
+    - [0x400dff0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400DFF0"]
+    - [0x400e1e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E1E0"]
+    - [0x400e240, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E240"]
+    - [0x400e440, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E440"]
+    - [0x400e530, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E530"]
+    - [0x400e730, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E730"]
+    - [0x400e790, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E790"]
+    - [0x400e970, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400E970"]
+    - [0x400eab0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400EAB0"]
+    - [0x400eca0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400ECA0"]
+    - [0x400ed00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400ED00"]
+    - [0x400eee0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400EEE0"]
+    - [0x400ef90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400EF90"]
+    - [0x400f190, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F190"]
+    - [0x400f250, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F250"]
+    - [0x400f440, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F440"]
+    - [0x400f5c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F5C0"]
+    - [0x400f7a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F7A0"]
+    - [0x400f990, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400F990"]
+    - [0x400fae0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400FAE0"]
+    - [0x400fce0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400FCE0"]
+    - [0x400fec0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0400FEC0"]
+    - [0x40100b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040100B0"]
+    - [0x4010170, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010170"]
+    - [0x40102d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040102D0"]
+    - [0x40104c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040104C0"]
+    - [0x4010680, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010680"]
+    - [0x4010880, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010880"]
+    - [0x4010a70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010A70"]
+    - [0x4010c50, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010C50"]
+    - [0x4010ce0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010CE0"]
+    - [0x4010e40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04010E40"]
+    - [0x4011040, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011040"]
+    - [0x4011240, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011240"]
+    - [0x4011270, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011270"]
+    - [0x40113e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040113E0"]
+    - [0x40115d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040115D0"]
+    - [0x4011720, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011720"]
+    - [0x40118e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040118E0"]
+    - [0x4011a00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011A00"]
+    - [0x4011bd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011BD0"]
+    - [0x4011dd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011DD0"]
+    - [0x4011e70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04011E70"]
+    - [0x4012070, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012070"]
+    - [0x4012270, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012270"]
+    - [0x4012320, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012320"]
+    - [0x4012520, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012520"]
+    - [0x4012710, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012710"]
+    - [0x4012800, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012800"]
+    - [0x4012a00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012A00"]
+    - [0x4012c00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012C00"]
+    - [0x4012cd0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012CD0"]
+    - [0x4012ed0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04012ED0"]
+    - [0x40130d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040130D0"]
+    - [0x40131c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040131C0"]
+    - [0x40133c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040133C0"]
+    - [0x40133f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040133F0"]
+    - [0x40135e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040135E0"]
+    - [0x40136d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040136D0"]
+    - [0x40138d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040138D0"]
+    - [0x4013ad0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04013AD0"]
+    - [0x4013ba0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04013BA0"]
+    - [0x4013da0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04013DA0"]
+    - [0x4013e20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04013E20"]
+    - [0x4013ea0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04013EA0"]
+    - [0x4014090, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014090"]
+    - [0x40140c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040140C0"]
+    - [0x4014240, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014240"]
+    - [0x4014430, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014430"]
+    - [0x40145d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040145D0"]
+    - [0x40147d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040147D0"]
+    - [0x4014850, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014850"]
+    - [0x4014a40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014A40"]
+    - [0x4014bb0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014BB0"]
+    - [0x4014db0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014DB0"]
+    - [0x4014e30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04014E30"]
+    - [0x4015020, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015020"]
+    - [0x4015110, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015110"]
+    - [0x4015310, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015310"]
+    - [0x4015510, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015510"]
+    - [0x40155f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040155F0"]
+    - [0x40157f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040157F0"]
+    - [0x4015820, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015820"]
+    - [0x4015860, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015860"]
+    - [0x40158a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040158A0"]
+    - [0x4015a90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015A90"]
+    - [0x4015c70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015C70"]
+    - [0x4015d00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015D00"]
+    - [0x4015f00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04015F00"]
+    - [0x40160e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040160E0"]
+    - [0x40162e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040162E0"]
+    - [0x4016340, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016340"]
+    - [0x4016540, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016540"]
+    - [0x4016720, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016720"]
+    - [0x4016890, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016890"]
+    - [0x4016a90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016A90"]
+    - [0x4016c90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016C90"]
+    - [0x4016d60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016D60"]
+    - [0x4016f60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04016F60"]
+    - [0x4017160, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017160"]
+    - [0x4017350, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017350"]
+    - [0x4017390, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017390"]
+    - [0x4017590, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017590"]
+    - [0x4017610, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017610"]
+    - [0x4017810, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017810"]
+    - [0x4017a00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017A00"]
+    - [0x4017a30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017A30"]
+    - [0x4017c30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017C30"]
+    - [0x4017c70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017C70"]
+    - [0x4017e70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017E70"]
+    - [0x4017f60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04017F60"]
+    - [0x4018160, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018160"]
+    - [0x4018360, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018360"]
+    - [0x4018450, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018450"]
+    - [0x4018630, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018630"]
+    - [0x4018670, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018670"]
+    - [0x4018870, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018870"]
+    - [0x4018950, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018950"]
+    - [0x4018b50, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018B50"]
+    - [0x4018b90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018B90"]
+    - [0x4018d70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018D70"]
+    - [0x4018e60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04018E60"]
+    - [0x4019060, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019060"]
+    - [0x4019250, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019250"]
+    - [0x4019450, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019450"]
+    - [0x4019480, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019480"]
+    - [0x4019680, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019680"]
+    - [0x4019700, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019700"]
+    - [0x40197c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040197C0"]
+    - [0x4019840, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019840"]
+    - [0x40198c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x040198C0"]
+    - [0x4019ac0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019AC0"]
+    - [0x4019cc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019CC0"]
+    - [0x4019ec0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019EC0"]
+    - [0x4019f40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x04019F40"]
+    - [0x401a100, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A100"]
+    - [0x401a2c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A2C0"]
+    - [0x401a4c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A4C0"]
+    - [0x401a640, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A640"]
+    - [0x401a740, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A740"]
+    - [0x401a8a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A8A0"]
+    - [0x401a920, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401A920"]
+    - [0x401aa20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AA20"]
+    - [0x401aa60, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AA60"]
+    - [0x401aaa0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AAA0"]
+    - [0x401aae0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AAE0"]
+    - [0x401ab20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AB20"]
+    - [0x401ac20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AC20"]
+    - [0x401adf0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401ADF0"]
+    - [0x401aef0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401AEF0"]
+    - [0x401b070, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B070"]
+    - [0x401b1a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B1A0"]
+    - [0x401b3a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B3A0"]
+    - [0x401b4e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B4E0"]
+    - [0x401b660, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B660"]
+    - [0x401b7a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B7A0"]
+    - [0x401b940, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401B940"]
+    - [0x401ba80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401BA80"]
+    - [0x401bc20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401BC20"]
+    - [0x401bd90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401BD90"]
+    - [0x401bea0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401BEA0"]
+    - [0x401bfb0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401BFB0"]
+    - [0x401c030, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C030"]
+    - [0x401c0b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C0B0"]
+    - [0x401c1f0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C1F0"]
+    - [0x401c2b0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C2B0"]
+    - [0x401c440, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C440"]
+    - [0x401c550, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C550"]
+    - [0x401c6c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C6C0"]
+    - [0x401c7d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C7D0"]
+    - [0x401c930, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401C930"]
+    - [0x401ca30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CA30"]
+    - [0x401cc10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CC10"]
+    - [0x401cc70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CC70"]
+    - [0x401ce00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CE00"]
+    - [0x401ce40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CE40"]
+    - [0x401ce80, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401CE80"]
+    - [0x401d060, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D060"]
+    - [0x401d1c0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D1C0"]
+    - [0x401d3a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D3A0"]
+    - [0x401d5a0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D5A0"]
+    - [0x401d600, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D600"]
+    - [0x401d740, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D740"]
+    - [0x401d8e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401D8E0"]
+    - [0x401da20, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401DA20"]
+    - [0x401dc00, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401DC00"]
+    - [0x401dc30, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401DC30"]
+    - [0x401ddc0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401DDC0"]
+    - [0x401df10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401DF10"]
+    - [0x401e040, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E040"]
+    - [0x401e220, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E220"]
+    - [0x401e340, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E340"]
+    - [0x401e510, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E510"]
+    - [0x401e6d0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E6D0"]
+    - [0x401e880, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401E880"]
+    - [0x401ea70, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401EA70"]
+    - [0x401eaa0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401EAA0"]
+    - [0x401ec40, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401EC40"]
+    - [0x401ee10, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401EE10"]
+    - [0x401ef90, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401EF90"]
+    - [0x401f0e0, "models/tracks/moo_moo_farm/moo_moo_farm_vertices/d_course_moo_moo_farm_vertex_0x0401F0E0"]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+    references_packed_displaylists: true
+  tables:
+    d_course_moo_moo_farm_mole_frames:
+      range: [0xFE70, 0x13670]
+      mode: APPEND
+d_course_moo_moo_farm_dl_0:
+  symbol: d_course_moo_moo_farm_dl_0
+  type: gfx
+  offset: 0x0
+  otr_mode: index
+d_course_moo_moo_farm_dl_30:
+  symbol: d_course_moo_moo_farm_dl_30
+  type: gfx
+  offset: 0x30
+  otr_mode: index
+d_course_moo_moo_farm_dl_48:
+  symbol: d_course_moo_moo_farm_dl_48
+  type: gfx
+  offset: 0x48
+  otr_mode: index
+d_course_moo_moo_farm_dl_60:
+  symbol: d_course_moo_moo_farm_dl_60
+  type: gfx
+  offset: 0x60
+  otr_mode: index
+d_course_moo_moo_farm_dl_78:
+  symbol: d_course_moo_moo_farm_dl_78
+  type: gfx
+  offset: 0x78
+  otr_mode: index
+d_course_moo_moo_farm_dl_88:
+  symbol: d_course_moo_moo_farm_dl_88
+  type: gfx
+  offset: 0x88
+  otr_mode: index
+d_course_moo_moo_farm_dl_338:
+  symbol: d_course_moo_moo_farm_dl_338
+  type: gfx
+  offset: 0x338
+  otr_mode: index
+d_course_moo_moo_farm_dl_598:
+  symbol: d_course_moo_moo_farm_dl_598
+  type: gfx
+  offset: 0x598
+  otr_mode: index
+d_course_moo_moo_farm_dl_8A0:
+  symbol: d_course_moo_moo_farm_dl_8A0
+  type: gfx
+  offset: 0x8a0
+  otr_mode: index
+d_course_moo_moo_farm_dl_B00:
+  symbol: d_course_moo_moo_farm_dl_B00
+  type: gfx
+  offset: 0xb00
+  otr_mode: index
+d_course_moo_moo_farm_dl_D70:
+  symbol: d_course_moo_moo_farm_dl_D70
+  type: gfx
+  offset: 0xd70
+  otr_mode: index
+d_course_moo_moo_farm_dl_FE0:
+  symbol: d_course_moo_moo_farm_dl_FE0
+  type: gfx
+  offset: 0xfe0
+  otr_mode: index
+d_course_moo_moo_farm_dl_12B8:
+  symbol: d_course_moo_moo_farm_dl_12B8
+  type: gfx
+  offset: 0x12b8
+  otr_mode: index
+d_course_moo_moo_farm_dl_1530:
+  symbol: d_course_moo_moo_farm_dl_1530
+  type: gfx
+  offset: 0x1530
+  otr_mode: index
+d_course_moo_moo_farm_dl_1790:
+  symbol: d_course_moo_moo_farm_dl_1790
+  type: gfx
+  offset: 0x1790
+  otr_mode: index
+d_course_moo_moo_farm_dl_1A20:
+  symbol: d_course_moo_moo_farm_dl_1A20
+  type: gfx
+  offset: 0x1a20
+  otr_mode: index
+d_course_moo_moo_farm_dl_1D00:
+  symbol: d_course_moo_moo_farm_dl_1D00
+  type: gfx
+  offset: 0x1d00
+  otr_mode: index
+d_course_moo_moo_farm_dl_1F58:
+  symbol: d_course_moo_moo_farm_dl_1F58
+  type: gfx
+  offset: 0x1f58
+  otr_mode: index
+d_course_moo_moo_farm_dl_2190:
+  symbol: d_course_moo_moo_farm_dl_2190
+  type: gfx
+  offset: 0x2190
+  otr_mode: index
+d_course_moo_moo_farm_dl_2470:
+  symbol: d_course_moo_moo_farm_dl_2470
+  type: gfx
+  offset: 0x2470
+  otr_mode: index
+d_course_moo_moo_farm_dl_27A8:
+  symbol: d_course_moo_moo_farm_dl_27A8
+  type: gfx
+  offset: 0x27a8
+  otr_mode: index
+d_course_moo_moo_farm_dl_2A10:
+  symbol: d_course_moo_moo_farm_dl_2A10
+  type: gfx
+  offset: 0x2a10
+  otr_mode: index
+d_course_moo_moo_farm_dl_2C38:
+  symbol: d_course_moo_moo_farm_dl_2C38
+  type: gfx
+  offset: 0x2c38
+  otr_mode: index
+d_course_moo_moo_farm_dl_2F20:
+  symbol: d_course_moo_moo_farm_dl_2F20
+  type: gfx
+  offset: 0x2f20
+  otr_mode: index
+d_course_moo_moo_farm_dl_3238:
+  symbol: d_course_moo_moo_farm_dl_3238
+  type: gfx
+  offset: 0x3238
+  otr_mode: index
+d_course_moo_moo_farm_dl_34A0:
+  symbol: d_course_moo_moo_farm_dl_34A0
+  type: gfx
+  offset: 0x34a0
+  otr_mode: index
+d_course_moo_moo_farm_dl_36B8:
+  symbol: d_course_moo_moo_farm_dl_36B8
+  type: gfx
+  offset: 0x36b8
+  otr_mode: index
+d_course_moo_moo_farm_dl_39F8:
+  symbol: d_course_moo_moo_farm_dl_39F8
+  type: gfx
+  offset: 0x39f8
+  otr_mode: index
+d_course_moo_moo_farm_dl_3CB0:
+  symbol: d_course_moo_moo_farm_dl_3CB0
+  type: gfx
+  offset: 0x3cb0
+  otr_mode: index
+d_course_moo_moo_farm_dl_3EB8:
+  symbol: d_course_moo_moo_farm_dl_3EB8
+  type: gfx
+  offset: 0x3eb8
+  otr_mode: index
+d_course_moo_moo_farm_dl_4098:
+  symbol: d_course_moo_moo_farm_dl_4098
+  type: gfx
+  offset: 0x4098
+  otr_mode: index
+d_course_moo_moo_farm_dl_4428:
+  symbol: d_course_moo_moo_farm_dl_4428
+  type: gfx
+  offset: 0x4428
+  otr_mode: index
+d_course_moo_moo_farm_dl_46D8:
+  symbol: d_course_moo_moo_farm_dl_46D8
+  type: gfx
+  offset: 0x46d8
+  otr_mode: index
+d_course_moo_moo_farm_dl_4910:
+  symbol: d_course_moo_moo_farm_dl_4910
+  type: gfx
+  offset: 0x4910
+  otr_mode: index
+d_course_moo_moo_farm_dl_4AD0:
+  symbol: d_course_moo_moo_farm_dl_4AD0
+  type: gfx
+  offset: 0x4ad0
+  otr_mode: index
+d_course_moo_moo_farm_dl_4E00:
+  symbol: d_course_moo_moo_farm_dl_4E00
+  type: gfx
+  offset: 0x4e00
+  otr_mode: index
+d_course_moo_moo_farm_dl_5040:
+  symbol: d_course_moo_moo_farm_dl_5040
+  type: gfx
+  offset: 0x5040
+  otr_mode: index
+d_course_moo_moo_farm_dl_5290:
+  symbol: d_course_moo_moo_farm_dl_5290
+  type: gfx
+  offset: 0x5290
+  otr_mode: index
+d_course_moo_moo_farm_dl_5458:
+  symbol: d_course_moo_moo_farm_dl_5458
+  type: gfx
+  offset: 0x5458
+  otr_mode: index
+d_course_moo_moo_farm_dl_5758:
+  symbol: d_course_moo_moo_farm_dl_5758
+  type: gfx
+  offset: 0x5758
+  otr_mode: index
+d_course_moo_moo_farm_dl_5990:
+  symbol: d_course_moo_moo_farm_dl_5990
+  type: gfx
+  offset: 0x5990
+  otr_mode: index
+d_course_moo_moo_farm_dl_5BF8:
+  symbol: d_course_moo_moo_farm_dl_5BF8
+  type: gfx
+  offset: 0x5bf8
+  otr_mode: index
+d_course_moo_moo_farm_dl_5DF0:
+  symbol: d_course_moo_moo_farm_dl_5DF0
+  type: gfx
+  offset: 0x5df0
+  otr_mode: index
+d_course_moo_moo_farm_dl_60A8:
+  symbol: d_course_moo_moo_farm_dl_60A8
+  type: gfx
+  offset: 0x60a8
+  otr_mode: index
+d_course_moo_moo_farm_dl_62D0:
+  symbol: d_course_moo_moo_farm_dl_62D0
+  type: gfx
+  offset: 0x62d0
+  otr_mode: index
+d_course_moo_moo_farm_dl_6548:
+  symbol: d_course_moo_moo_farm_dl_6548
+  type: gfx
+  offset: 0x6548
+  otr_mode: index
+d_course_moo_moo_farm_dl_6778:
+  symbol: d_course_moo_moo_farm_dl_6778
+  type: gfx
+  offset: 0x6778
+  otr_mode: index
+d_course_moo_moo_farm_dl_6A70:
+  symbol: d_course_moo_moo_farm_dl_6A70
+  type: gfx
+  offset: 0x6a70
+  otr_mode: index
+d_course_moo_moo_farm_dl_6CB8:
+  symbol: d_course_moo_moo_farm_dl_6CB8
+  type: gfx
+  offset: 0x6cb8
+  otr_mode: index
+d_course_moo_moo_farm_dl_6FF0:
+  symbol: d_course_moo_moo_farm_dl_6FF0
+  type: gfx
+  offset: 0x6ff0
+  otr_mode: index
+d_course_moo_moo_farm_dl_7218:
+  symbol: d_course_moo_moo_farm_dl_7218
+  type: gfx
+  offset: 0x7218
+  otr_mode: index
+d_course_moo_moo_farm_dl_74C8:
+  symbol: d_course_moo_moo_farm_dl_74C8
+  type: gfx
+  offset: 0x74c8
+  otr_mode: index
+d_course_moo_moo_farm_dl_7718:
+  symbol: d_course_moo_moo_farm_dl_7718
+  type: gfx
+  offset: 0x7718
+  otr_mode: index
+d_course_moo_moo_farm_dl_7A80:
+  symbol: d_course_moo_moo_farm_dl_7A80
+  type: gfx
+  offset: 0x7a80
+  otr_mode: index
+d_course_moo_moo_farm_dl_7CD8:
+  symbol: d_course_moo_moo_farm_dl_7CD8
+  type: gfx
+  offset: 0x7cd8
+  otr_mode: index
+d_course_moo_moo_farm_dl_7F78:
+  symbol: d_course_moo_moo_farm_dl_7F78
+  type: gfx
+  offset: 0x7f78
+  otr_mode: index
+d_course_moo_moo_farm_dl_81E8:
+  symbol: d_course_moo_moo_farm_dl_81E8
+  type: gfx
+  offset: 0x81e8
+  otr_mode: index
+d_course_moo_moo_farm_dl_84D0:
+  symbol: d_course_moo_moo_farm_dl_84D0
+  type: gfx
+  offset: 0x84d0
+  otr_mode: index
+d_course_moo_moo_farm_dl_8728:
+  symbol: d_course_moo_moo_farm_dl_8728
+  type: gfx
+  offset: 0x8728
+  otr_mode: index
+d_course_moo_moo_farm_dl_89A0:
+  symbol: d_course_moo_moo_farm_dl_89A0
+  type: gfx
+  offset: 0x89a0
+  otr_mode: index
+d_course_moo_moo_farm_dl_8C00:
+  symbol: d_course_moo_moo_farm_dl_8C00
+  type: gfx
+  offset: 0x8c00
+  otr_mode: index
+d_course_moo_moo_farm_dl_8F18:
+  symbol: d_course_moo_moo_farm_dl_8F18
+  type: gfx
+  offset: 0x8f18
+  otr_mode: index
+d_course_moo_moo_farm_dl_9178:
+  symbol: d_course_moo_moo_farm_dl_9178
+  type: gfx
+  offset: 0x9178
+  otr_mode: index
+d_course_moo_moo_farm_dl_93D0:
+  symbol: d_course_moo_moo_farm_dl_93D0
+  type: gfx
+  offset: 0x93d0
+  otr_mode: index
+d_course_moo_moo_farm_dl_9640:
+  symbol: d_course_moo_moo_farm_dl_9640
+  type: gfx
+  offset: 0x9640
+  otr_mode: index
+d_course_moo_moo_farm_dl_9938:
+  symbol: d_course_moo_moo_farm_dl_9938
+  type: gfx
+  offset: 0x9938
+  otr_mode: index
+d_course_moo_moo_farm_dl_9BB0:
+  symbol: d_course_moo_moo_farm_dl_9BB0
+  type: gfx
+  offset: 0x9bb0
+  otr_mode: index
+d_course_moo_moo_farm_dl_9DF8:
+  symbol: d_course_moo_moo_farm_dl_9DF8
+  type: gfx
+  offset: 0x9df8
+  otr_mode: index
+d_course_moo_moo_farm_dl_A010:
+  symbol: d_course_moo_moo_farm_dl_A010
+  type: gfx
+  offset: 0xa010
+  otr_mode: index
+d_course_moo_moo_farm_dl_A2C0:
+  symbol: d_course_moo_moo_farm_dl_A2C0
+  type: gfx
+  offset: 0xa2c0
+  otr_mode: index
+d_course_moo_moo_farm_dl_A568:
+  symbol: d_course_moo_moo_farm_dl_A568
+  type: gfx
+  offset: 0xa568
+  otr_mode: index
+d_course_moo_moo_farm_dl_A7B0:
+  symbol: d_course_moo_moo_farm_dl_A7B0
+  type: gfx
+  offset: 0xa7b0
+  otr_mode: index
+d_course_moo_moo_farm_dl_A9C8:
+  symbol: d_course_moo_moo_farm_dl_A9C8
+  type: gfx
+  offset: 0xa9c8
+  otr_mode: index
+d_course_moo_moo_farm_dl_ACB0:
+  symbol: d_course_moo_moo_farm_dl_ACB0
+  type: gfx
+  offset: 0xacb0
+  otr_mode: index
+d_course_moo_moo_farm_dl_B020:
+  symbol: d_course_moo_moo_farm_dl_B020
+  type: gfx
+  offset: 0xb020
+  otr_mode: index
+d_course_moo_moo_farm_dl_B230:
+  symbol: d_course_moo_moo_farm_dl_B230
+  type: gfx
+  offset: 0xb230
+  otr_mode: index
+d_course_moo_moo_farm_dl_B478:
+  symbol: d_course_moo_moo_farm_dl_B478
+  type: gfx
+  offset: 0xb478
+  otr_mode: index
+d_course_moo_moo_farm_dl_B798:
+  symbol: d_course_moo_moo_farm_dl_B798
+  type: gfx
+  offset: 0xb798
+  otr_mode: index
+d_course_moo_moo_farm_dl_BB00:
+  symbol: d_course_moo_moo_farm_dl_BB00
+  type: gfx
+  offset: 0xbb00
+  otr_mode: index
+d_course_moo_moo_farm_dl_BCE8:
+  symbol: d_course_moo_moo_farm_dl_BCE8
+  type: gfx
+  offset: 0xbce8
+  otr_mode: index
+d_course_moo_moo_farm_dl_BF10:
+  symbol: d_course_moo_moo_farm_dl_BF10
+  type: gfx
+  offset: 0xbf10
+  otr_mode: index
+d_course_moo_moo_farm_dl_C180:
+  symbol: d_course_moo_moo_farm_dl_C180
+  type: gfx
+  offset: 0xc180
+  otr_mode: index
+d_course_moo_moo_farm_dl_C4F8:
+  symbol: d_course_moo_moo_farm_dl_C4F8
+  type: gfx
+  offset: 0xc4f8
+  otr_mode: index
+d_course_moo_moo_farm_dl_C6D8:
+  symbol: d_course_moo_moo_farm_dl_C6D8
+  type: gfx
+  offset: 0xc6d8
+  otr_mode: index
+d_course_moo_moo_farm_dl_C950:
+  symbol: d_course_moo_moo_farm_dl_C950
+  type: gfx
+  offset: 0xc950
+  otr_mode: index
+d_course_moo_moo_farm_dl_CBC8:
+  symbol: d_course_moo_moo_farm_dl_CBC8
+  type: gfx
+  offset: 0xcbc8
+  otr_mode: index
+d_course_moo_moo_farm_dl_CF58:
+  symbol: d_course_moo_moo_farm_dl_CF58
+  type: gfx
+  offset: 0xcf58
+  otr_mode: index
+d_course_moo_moo_farm_dl_D140:
+  symbol: d_course_moo_moo_farm_dl_D140
+  type: gfx
+  offset: 0xd140
+  otr_mode: index
+d_course_moo_moo_farm_dl_D408:
+  symbol: d_course_moo_moo_farm_dl_D408
+  type: gfx
+  offset: 0xd408
+  otr_mode: index
+d_course_moo_moo_farm_dl_D6B0:
+  symbol: d_course_moo_moo_farm_dl_D6B0
+  type: gfx
+  offset: 0xd6b0
+  otr_mode: index
+d_course_moo_moo_farm_dl_DA50:
+  symbol: d_course_moo_moo_farm_dl_DA50
+  type: gfx
+  offset: 0xda50
+  otr_mode: index
+d_course_moo_moo_farm_dl_DC70:
+  symbol: d_course_moo_moo_farm_dl_DC70
+  type: gfx
+  offset: 0xdc70
+  otr_mode: index
+d_course_moo_moo_farm_dl_DF60:
+  symbol: d_course_moo_moo_farm_dl_DF60
+  type: gfx
+  offset: 0xdf60
+  otr_mode: index
+d_course_moo_moo_farm_dl_E1D8:
+  symbol: d_course_moo_moo_farm_dl_E1D8
+  type: gfx
+  offset: 0xe1d8
+  otr_mode: index
+d_course_moo_moo_farm_dl_E4B0:
+  symbol: d_course_moo_moo_farm_dl_E4B0
+  type: gfx
+  offset: 0xe4b0
+  otr_mode: index
+d_course_moo_moo_farm_dl_E708:
+  symbol: d_course_moo_moo_farm_dl_E708
+  type: gfx
+  offset: 0xe708
+  otr_mode: index
+d_course_moo_moo_farm_dl_EA18:
+  symbol: d_course_moo_moo_farm_dl_EA18
+  type: gfx
+  offset: 0xea18
+  otr_mode: index
+d_course_moo_moo_farm_cow_model:
+  symbol: d_course_moo_moo_farm_cow_model
+  type: vtx
+  offset: 0x13a08
+  count: 8
+d_course_moo_moo_farm_unknown_model1:
+  symbol: d_course_moo_moo_farm_unknown_model1
+  type: vtx
+  offset: 0x13a88
+  count: 8
+d_course_moo_moo_farm_unknown_model2:
+  symbol: d_course_moo_moo_farm_unknown_model2
+  type: vtx
+  offset: 0x13b08
+  count: 8
+d_course_moo_moo_farm_dl_13B88:
+  symbol: d_course_moo_moo_farm_dl_13B88
+  type: gfx
+  offset: 0x13b88
+d_course_moo_moo_farm_dl_cow1:
+  symbol: d_course_moo_moo_farm_dl_cow1
+  type: gfx
+  offset: 0x13c00
+d_course_moo_moo_farm_dl_cow2:
+  symbol: d_course_moo_moo_farm_dl_cow2
+  type: gfx
+  offset: 0x13ca0
+d_course_moo_moo_farm_dl_cow3:
+  symbol: d_course_moo_moo_farm_dl_cow3
+  type: gfx
+  offset: 0x13d20
+d_course_moo_moo_farm_dl_cow4:
+  symbol: d_course_moo_moo_farm_dl_cow4
+  type: gfx
+  offset: 0x13da0
+d_course_moo_moo_farm_dl_cow5:
+  symbol: d_course_moo_moo_farm_dl_cow5
+  type: gfx
+  offset: 0x13e20
+d_course_moo_moo_farm_tree_model:
+  symbol: d_course_moo_moo_farm_tree_model
+  type: vtx
+  offset: 0x13ea0
+  count: 8
+d_course_moo_moo_farm_dl_tree:
+  symbol: d_course_moo_moo_farm_dl_tree
+  type: gfx
+  offset: 0x13f20
+d_course_moo_moo_farm_dl_13FF8:
+  symbol: d_course_moo_moo_farm_dl_13FF8
+  type: gfx
+  offset: 0x13ff8
+  otr_mode: index
+d_course_moo_moo_farm_dl_14060:
+  symbol: d_course_moo_moo_farm_dl_14060
+  type: gfx
+  offset: 0x14060
+  otr_mode: index
+d_course_moo_moo_farm_dl_14088:
+  symbol: d_course_moo_moo_farm_dl_14088
+  type: gfx
+  offset: 0x14088
+  otr_mode: index

@@ -4,7 +4,7 @@
 #include <libultraship.h>
 #include <libultra/types.h>
 #include <libultra/gbi.h>
-#include <assets/other_textures.h>
+#include <assets/textures/other_textures.h>
 #include "animation.h"
 
 typedef struct {
@@ -60,8 +60,6 @@ extern Animation d_rainbow_road_unk2;
 extern Animation* d_rainbow_road_unk3[];
 extern u32 d_rainbow_road_unk5[];
 
-extern Gfx* d_course_koopa_troopa_beach_dl_list1[];
-extern Gfx* koopa_troopa_beach_dls2[];
 extern uintptr_t d_course_koopa_troopa_beach_unk_data1[];
 extern s16 d_course_koopa_troopa_beach_unk_data2[];
 extern AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[];

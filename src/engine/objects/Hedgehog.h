@@ -4,6 +4,7 @@
 #include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "engine/World.h"
 
 extern "C" {
@@ -20,11 +21,22 @@ extern "C" {
 /**
  * @arg pos FVector xyz spawn position
  * @arg patrolPoint FVector2D xz patrol to location. Actor automatically calculates the Y value
- * @arg unk unknown. Likely actor type.
+ * @arg behaviour unknown, seems unused.
  */
 class OHedgehog : public OObject {
 public:
-    explicit OHedgehog(const FVector& pos, const FVector2D& patrolPoint, s16 unk);
+    explicit OHedgehog(const SpawnParams& params);
+
+    // This is simply a helper function to keep Spawning code clean
+    static inline OHedgehog* Spawn(const FVector& pos, const FVector2D& patrolPoint, s16 behaviour) {
+        SpawnParams params = {
+            .Name = "mk:hedgehog",
+            .Behaviour = behaviour, // Appears to be unused
+            .Location = pos,
+            .PatrolEnd = patrolPoint,
+        };
+        return static_cast<OHedgehog*>(AddObjectToWorld<OHedgehog>(params));
+    }
 
     ~OHedgehog() {
         _count--;
@@ -36,6 +48,8 @@ public:
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
+    virtual void SetSpawnParams(SpawnParams& params) override;
+    virtual void DrawEditorProperties() override;
 
     void func_800555BC(s32 objectIndex, s32 cameraId);
     void func_8004A870(s32 objectIndex, f32 arg1);
@@ -47,7 +61,7 @@ public:
 
 
 private:
-    FVector _pos;
+    FVector2D PatrolEnd;
     static size_t _count;
     size_t _idx;
 };

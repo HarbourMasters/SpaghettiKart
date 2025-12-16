@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include "AudioSample.h"
-#include "resource/Resource.h"
+#include "ship/resource/Resource.h"
 
 struct AudioBankSound {
     AudioBankSample *sample;

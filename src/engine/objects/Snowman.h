@@ -1,25 +1,27 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
-#include "camera.h"
-#include "some_data.h"
 }
 
 class OSnowman : public OObject {
 public:
-    explicit OSnowman(const FVector& pos);
+    // This is simply a helper function to keep Spawning code clean
+    static OSnowman* Spawn(FVector pos) {
+        SpawnParams params = {
+            .Name = "mk:snowman",
+            .Location = FVector(pos.x, pos.y, pos.z),
+        };
+        return dynamic_cast<OSnowman*>(AddObjectToWorld<OSnowman>(params));
+    }
+
+    explicit OSnowman(const SpawnParams& params);
 
     ~OSnowman() {
         _count--;
@@ -31,6 +33,7 @@ public:
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;
+    virtual void Translate(FVector pos) override;
 
     void DrawHead(s32);
     void DrawBody(s32);
@@ -47,7 +50,7 @@ public:
     void func_8008379C(s32 objectIndex);
 
 private:
-    FVector _pos;
+    FVector Pos;
     static size_t _count;
     size_t _idx;
     s32 _headIndex;

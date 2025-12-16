@@ -1,8 +1,8 @@
 #pragma once
 
-#include "resourcebridge.h"
-#include "libultraship/src/resource/ResourceManager.h"
-#include "Context.h"
+#include "libultraship/bridge/resourcebridge.h"
+#include "ship/resource/ResourceManager.h"
+#include "ship/Context.h"
 
 namespace SM64 {
 template <typename T> T LoadChild(uint64_t crc) {

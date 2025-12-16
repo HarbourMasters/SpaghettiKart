@@ -5,8 +5,8 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/luigi_raceway_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/luigi_raceway/luigi_raceway_data.h"
+#include "assets/models/common_data.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
@@ -14,9 +14,11 @@ extern "C" {
 #include "actors.h"
 }
 
-OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
+OHotAirBalloon::OHotAirBalloon(const SpawnParams& params) : OObject(params) {
     Name = "Hot Air Balloon";
-    _pos = pos;
+    ResourceName = "mk:hot_air_balloon";
+
+    SpawnPos = params.Location.value_or(FVector{0.0f, 0.0f, 0.0f});
 
     D_80165898 = 0;
 
@@ -30,7 +32,12 @@ OHotAirBalloon::OHotAirBalloon(const FVector& pos) {
 
     find_unused_obj_index(&_objectIndex);
 
+
     init_object(_objectIndex, 0);
+}
+
+void OHotAirBalloon::SetSpawnParams(SpawnParams& params) {
+    OObject::SetSpawnParams(params);
 }
 
 void OHotAirBalloon::Tick() {
@@ -100,10 +107,10 @@ void OHotAirBalloon::init_hot_air_balloon(s32 objectIndex) {
     gObjectList[objectIndex].sizeScaling = 1.0f;
     gObjectList[objectIndex].model = (Gfx*)d_course_luigi_raceway_dl_F960;
     if (gGamestate != CREDITS_SEQUENCE) {
-        set_obj_origin_pos(objectIndex, xOrientation * _pos.x, _pos.y, _pos.z);
+        set_obj_origin_pos(objectIndex, xOrientation * SpawnPos.x, SpawnPos.y, SpawnPos.z);
         set_obj_origin_offset(objectIndex, 0.0f, 300.0f, 0.0f);
     } else {
-        set_obj_origin_pos(objectIndex, xOrientation * _pos.x, _pos.y, _pos.z);
+        set_obj_origin_pos(objectIndex, xOrientation * SpawnPos.x, SpawnPos.y, SpawnPos.z);
         set_obj_origin_offset(objectIndex, 0.0f, 300.0f, 0.0f);
     }
     func_8008B844(objectIndex);

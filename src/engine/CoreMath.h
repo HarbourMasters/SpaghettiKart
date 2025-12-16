@@ -1,6 +1,10 @@
 #ifndef CORE_MATH_H
 #define CORE_MATH_H
 
+#ifdef __cplusplus
+#include <nlohmann/json.hpp>
+#endif
+
 #include <libultraship.h>
 
 /**
@@ -9,6 +13,14 @@
  * Basic vector structs for manipulating 2D and 3D coordinates
  * 
  */
+
+struct RGBA8 {
+    uint8_t r, g, b, a;
+#ifdef __cplusplus
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(RGBA8, r, g, b, a)
+#endif
+};
+
 
 /**
  * 
@@ -63,6 +75,7 @@ struct FVector {
 
     FVector() : x(0), y(0), z(0) {}
     FVector(float x, float y, float z) : x(x), y(y), z(z) {}
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FVector, x, y, z)
 #endif // __cplusplus
 };
 
@@ -94,6 +107,7 @@ struct FVector2D {
 
     FVector2D() : x(0), z(0) {}
     FVector2D(float x, float z) : x(x), z(z) {}
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(FVector2D, x, z)
 #endif // __cplusplus
 };
 
@@ -118,12 +132,14 @@ typedef struct IVector2D {
 /**
  * This struct immediately converts float pitch/yaw/roll in degrees to n64 int16_t binary angles 0-0xFFFF == 0-360 degrees
  * ToDegrees() Receive an FRotator of float degrees back.
- * Set() Set an n64 int16_t binary angles 0-0xFFFF
+ * Set() to update an IRotator using n64 int16_t binary angles 0-0xFFFF (ex. IRotator.Set(0, 0x4000, 0) for Y 90 degrees)
  */
 struct IRotator {
     uint16_t pitch, yaw, roll;
 
 #ifdef __cplusplus
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IRotator, pitch, yaw, roll)
+
     IRotator& operator=(const IRotator& other) {
         pitch = other.pitch;
         yaw   = other.yaw;
@@ -158,7 +174,7 @@ struct IRotator {
 
 /**
  * Use IRotator unless you want to do some math in degrees.
- * Always use ToBinary() or Rotator when sending into matrices or apply translation functions
+ * Always use ToBinary() or IRotator when sending into matrices or apply translation functions
  * Convert from IRotator to FRotator float degrees by doing FRotator(myIRotator);
  */
 struct FRotator {
@@ -192,13 +208,14 @@ struct FRotator {
 };
 
 /**
- * For selecting a section of a course path
+ * For selecting a section of a track path
  * Usage: IPathSpan(point1, point2) --> IPathSpan(40, 65)
  */
 struct IPathSpan {
-    int Start, End;
+    int32_t Start, End;
 
 #ifdef __cplusplus
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(IPathSpan, Start, End)
     // Default Constructor
     IPathSpan() : Start(0), End(0) {}
 

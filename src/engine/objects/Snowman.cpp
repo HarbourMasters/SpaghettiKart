@@ -4,8 +4,9 @@
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/frappe_snowland_data.h"
-#include "assets/common_data.h"
+#include "assets/models/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/textures/tracks/frappe_snowland/frappe_snowland_data.h"
+#include "assets/models/common_data.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
@@ -17,31 +18,32 @@ static const char* sSnowmanHeadList[] = { d_course_frappe_snowland_snowman_head 
 
 size_t OSnowman::_count = 0;
 
-OSnowman::OSnowman(const FVector& pos) {
+OSnowman::OSnowman(const SpawnParams& params) : OObject(params) {
     Name = "Snowman";
+    ResourceName = "mk:snowman";
     _idx = _count;
-    _pos = pos;
+    Pos = params.Location.value_or(FVector(0, 0, 0));
 
     find_unused_obj_index(&_headIndex);
     init_object(_headIndex, 0);
     _objectIndex = _headIndex;
-    gObjectList[_headIndex].origin_pos[0] = pos.x * xOrientation;
-    gObjectList[_headIndex].origin_pos[1] = pos.y + 5.0 + 3.0;
-    gObjectList[_headIndex].origin_pos[2] = pos.z;
-    gObjectList[_headIndex].pos[0] = pos.x * xOrientation;
-    gObjectList[_headIndex].pos[1] = pos.y + 5.0 + 3.0;
-    gObjectList[_headIndex].pos[2] = pos.z;
+    gObjectList[_headIndex].origin_pos[0] = Pos.x * xOrientation;
+    gObjectList[_headIndex].origin_pos[1] = Pos.y + 5.0 + 3.0;
+    gObjectList[_headIndex].origin_pos[2] = Pos.z;
+    gObjectList[_headIndex].pos[0] = Pos.x * xOrientation;
+    gObjectList[_headIndex].pos[1] = Pos.y + 5.0 + 3.0;
+    gObjectList[_headIndex].pos[2] = Pos.z;
 
     find_unused_obj_index(&_bodyIndex);
     init_object(_bodyIndex, 0);
-    gObjectList[_bodyIndex].origin_pos[0] = pos.x * xOrientation;
-    gObjectList[_bodyIndex].origin_pos[1] = pos.y + 3.0;
-    gObjectList[_bodyIndex].origin_pos[2] = pos.z;
+    gObjectList[_bodyIndex].origin_pos[0] = Pos.x * xOrientation;
+    gObjectList[_bodyIndex].origin_pos[1] = Pos.y + 3.0;
+    gObjectList[_bodyIndex].origin_pos[2] = Pos.z;
     gObjectList[_bodyIndex].unk_0D5 = 0; // Section Id no longer used.
 
-    gObjectList[_bodyIndex].pos[0] = pos.x * xOrientation;
-    gObjectList[_bodyIndex].pos[1] = pos.y + 3.0;
-    gObjectList[_bodyIndex].pos[2] = pos.z;
+    gObjectList[_bodyIndex].pos[0] = Pos.x * xOrientation;
+    gObjectList[_bodyIndex].pos[1] = Pos.y + 3.0;
+    gObjectList[_bodyIndex].pos[2] = Pos.z;
 
     _count++;
 }
@@ -346,6 +348,31 @@ void OSnowman::func_80083B0C(s32 objectIndex) {
     gObjectList[objectIndex].boundingBoxSize = 2;
     gObjectList[objectIndex].unk_034 = 1.5f;
     set_object_flag(objectIndex, 0x04000210);
+}
+
+void OSnowman::Translate(FVector pos) {
+    if ((_objectIndex != -1) && (_bodyIndex != -1)) {
+        SpawnPos = pos;
+
+        Object* object = &gObjectList[_objectIndex];
+
+        object->pos[0] = pos.x;
+        object->pos[1] = pos.y;
+        object->pos[2] = pos.z;
+        object->origin_pos[0] = pos.x;
+        object->origin_pos[1] = pos.y;
+        object->origin_pos[2] = pos.z;
+
+        object = &gObjectList[_bodyIndex];
+        object->pos[0] = pos.x;
+        object->pos[1] = pos.y - 5.0;
+        object->pos[2] = pos.z;
+        object->origin_pos[0] = pos.x;
+        object->origin_pos[1] = pos.y - 5.0;
+        object->origin_pos[2] = pos.z;
+    } else {
+        printf("Editor tried to translate null OObject\n");
+    }
 }
 
 void OSnowman::func_80083538(s32 objectIndex, Vec3f arg1, s32 arg2, s32 arg3) {

@@ -1,18 +1,18 @@
 #include "PortMenu.h"
 #include "UIWidgets.h"
 #include "port/Game.h"
-#include "window/gui/GuiMenuBar.h"
-#include "window/gui/GuiElement.h"
+#include "ship/window/gui/GuiMenuBar.h"
+#include "ship/window/gui/GuiElement.h"
 #include <variant>
-#include "StringHelper.h"
+#include "ship/utils/StringHelper.h"
 #include <spdlog/fmt/fmt.h>
 #include <variant>
 #include <tuple>
 #include "ResolutionEditor.h"
 
-#include "courses/Course.h"
-#include "courses/KalimariDesert.h"
-#include "courses/ToadsTurnpike.h"
+#include "engine/tracks/Track.h"
+#include "engine/tracks/KalimariDesert.h"
+#include "engine/tracks/ToadsTurnpike.h"
 
 #ifdef __SWITCH__
 #include <port/switch/SwitchImpl.h>
@@ -323,8 +323,9 @@ void PortMenu::AddSettings() {
         .CVar(CVAR_ENABLE_MULTI_VIEWPORTS)
         .PreFunc(
             [](WidgetInfo& info) { info.isHidden = mPortMenu->disabledMap.at(DISABLE_FOR_NO_MULTI_VIEWPORT).active; })
-        .Options(CheckboxOptions().Tooltip(
-            "Allows multiple ImGui windows to be opened at once (Does not effect the game or the splitscreen modes). Requires a reload to take effect."));
+        .Options(CheckboxOptions()
+                     .Tooltip("Allows multiple ImGui windows to be opened at once (Does not effect the game or the splitscreen modes). Requires a reload to take effect.")
+                     .DefaultValue(true));
     AddWidget(path, "Texture Filter (Needs reload)", WIDGET_CVAR_COMBOBOX)
         .CVar(CVAR_TEXTURE_FILTER)
         .Options(ComboboxOptions().Tooltip("Sets the applied Texture Filtering.").ComboMap(textureFilteringMap));
@@ -357,10 +358,6 @@ void PortMenu::AddEnhancements() {
     AddMenuEntry("Enhancements", "gSettings.Menu.EnhancementsSidebarSection");
     WidgetPath path = { "Enhancements", "General", SECTION_COLUMN_1 };
     AddSidebarEntry("Enhancements", "General", 3);
-    // UIWidgets::WindowButton("Multiplayer", "gMultiplayerWindowEnabled", GameUI::mMultiplayerWindow,
-    //                         { .tooltip = "Shows the multiplayer window" });
-    //     UIWidgets::WindowButton("Freecam", "gFreecam", GameUI::mFreecamWindow,
-    //                             { .tooltip = "Allows you to fly around the course" });
     AddWidget(path, "No multiplayer feature cuts", WIDGET_CVAR_CHECKBOX)
         .CVar("gMultiplayerNoFeatureCuts")
         .Options(CheckboxOptions().Tooltip("Allows full train and jumbotron in multiplayer, etc."));
@@ -407,6 +404,10 @@ void PortMenu::AddEnhancements() {
         .CVar("gShowSpaghettiVersion")
         .Options(CheckboxOptions().Tooltip("Show the Spaghetti Kart version on the Mario Kart menu").DefaultValue(true));
 
+    AddWidget(path, "Enable Look Behind Camera", WIDGET_CVAR_CHECKBOX)
+        .CVar("gLookBehind")
+        .Options(CheckboxOptions().Tooltip("Press C-Left to look behind you"));
+
     AddRulesets();
 
     path = { "Enhancements", "Cheats", SECTION_COLUMN_1 };
@@ -420,22 +421,6 @@ void PortMenu::AddEnhancements() {
         .PreFunc([](WidgetInfo& info) { info.isHidden = !CVarGetInteger("gNoWallColision", 0); })
         .Options(FloatSliderOptions().Min(-50.0f).Max(50.0f).DefaultValue(0.0f).Tooltip(
             "When Disable Wall Collision are enable what is the minimal height you can get."));
-
-#if not defined(__SWITCH__) and not defined(__WIIU__)
-    path = { "Enhancements", "HM64 Lab", SECTION_COLUMN_1 };
-    AddSidebarEntry("Enhancements", "HM64 Lab", 4);
-    AddWidget(path, "Work in progress.", WIDGET_TEXT);
-    AddWidget(path, "Enable HM64 Labs", WIDGET_CVAR_CHECKBOX)
-        .CVar("gEditorEnabled")
-        .Callback([](WidgetInfo& info) {
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Tools")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Scene Explorer")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Content Browser")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Track Properties")->ToggleVisibility();
-            Ship::Context::GetInstance()->GetWindow()->GetGui()->GetGuiWindow("Properties")->ToggleVisibility();
-        })
-        .Options(UIWidgets::CheckboxOptions({ { .tooltip = "Edit the universe!" } }));
-#endif
 }
 
 #ifdef __SWITCH__
@@ -546,7 +531,7 @@ void PortMenu::AddDevTools() {
                      .DefaultValue(60));
     AddWidget(path, "Render Collision", WIDGET_CVAR_CHECKBOX)
         .CVar("gRenderCollisionMesh")
-        .Options(CheckboxOptions().Tooltip("Renders the collision mesh instead of the course mesh"));
+        .Options(CheckboxOptions().Tooltip("Draws the collision mesh instead of the track mesh"));
 
     path = { "Developer", "Gfx Debugger", SECTION_COLUMN_1 };
     AddSidebarEntry("Developer", "Gfx Debugger", 1);
@@ -577,10 +562,6 @@ PortMenu::PortMenu(const std::string& consoleVariable, const std::string& name)
     : Menu(consoleVariable, name, 0, UIWidgets::Colors::LightBlue) {
 }
 
-// bool CheckNetworkConnected(disabledInfo& info) {
-//     return gNetwork.isConnected;
-// }
-
 void PortMenu::InitElement() {
     Ship::Menu::InitElement();
     AddSettings();
@@ -600,10 +581,6 @@ void PortMenu::InitElement() {
           { [](disabledInfo& info) -> bool { return CVarGetInteger("gFreecam", 0); }, "Freecam is Enabled" } },
         { DISABLE_FOR_FREE_CAM_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gFreecam", 0); }, "Freecam is Disabled" } },
-        { DISABLE_FOR_EDITOR_ON,
-          { [](disabledInfo& info) -> bool { return CVarGetInteger("gEditorEnabled", 0); }, "Editor is Enabled" } },
-        { DISABLE_FOR_EDITOR_OFF,
-          { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEditorEnabled", 0); }, "Editor is Disabled" } },
         { DISABLE_FOR_DEBUG_MODE_OFF,
           { [](disabledInfo& info) -> bool { return !CVarGetInteger("gEnableDebugMode", 0); },
             "Debug Mode is Disabled" } },

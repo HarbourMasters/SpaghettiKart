@@ -1,5 +1,7 @@
 #pragma once
 
+#include "actors/Banana.h"
+#include "actors/FallingRock.h"
 #include "actors/MarioSign.h"
 #include "actors/WarioSign.h"
 #include "actors/Cloud.h"
@@ -8,6 +10,8 @@
 #include "actors/Starship.h"
 #include "actors/Ship.h"
 #include "actors/Tree.h"
+#include "actors/Text.h"
+#include "actors/BowserStatue.h"
 #include "vehicles/Train.h"
 #include "vehicles/Boat.h"
 #include "vehicles/Bus.h"

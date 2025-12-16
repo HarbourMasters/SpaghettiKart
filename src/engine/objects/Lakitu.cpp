@@ -24,7 +24,7 @@ extern "C" {
 #include "defines.h"
 #include "code_80005FD0.h"
 #include "collision.h"
-#include "assets/bowsers_castle_data.h"
+#include "assets/models/tracks/bowsers_castle/bowsers_castle_data.h"
 #include "ceremony_and_credits.h"
 #include "objects.h"
 #include "update_objects.h"
@@ -34,6 +34,7 @@ extern "C" {
 #include "race_logic.h"
 #include "effects.h"
 #include "memory.h"
+#include <assets/models/common_data.h>
 extern s8 gPlayerCount;
 }
 
@@ -98,7 +99,14 @@ void OLakitu::Draw(s32 cameraId) {
 
     FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
 
-    objectIndex = gIndexLakituList[cameraId];
+    //! @warning This usage may be problematic
+    if (cameras[cameraId].playerId >= 4) {
+        printf("[Lakitu.cpp] Preventing out of bounds access in gIndexLakituList\n", cameras[cameraId].playerId);
+        throw std::runtime_error("Good bye!");
+        return;
+    }
+
+    objectIndex = gIndexLakituList[cameras[cameraId].playerId];
     camera = &camera1[cameraId];
     if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
         object = &gObjectList[objectIndex];

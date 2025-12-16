@@ -167,11 +167,11 @@ void func_80005310(void) {
 
         set_staff_ghost();
 
-        if (staff_ghost_track_ptr != (uintptr_t) GetCourse()) {
+        if (staff_ghost_track_ptr != (uintptr_t) GetTrack()) {
             bPlayerGhostDisabled = 1;
         }
 
-        staff_ghost_track_ptr = (uintptr_t) GetCourse();
+        staff_ghost_track_ptr = (uintptr_t) GetTrack();
         gPauseTriggered = 0;
         sUnusedReplayCounter = 0;
         gPostTimeTrialReplayCannotSave = 0;
@@ -211,7 +211,7 @@ void func_80005310(void) {
  * coordinates were added */
 #define REPLAY_MASK (ALL_BUTTONS ^ (A_BUTTON | B_BUTTON | Z_TRIG | R_TRIG | L_TRIG))
 
-/* Inputs for replays (including player and course ghosts) are saved in a s32[] where
+/* Inputs for replays (including player and track ghosts) are saved in a s32[] where
    each entry is a combination of the inputs and  how long those inputs were held for.
    In essence it's "These buttons were pressed and the joystick was in this position.
    This was the case for X frames".

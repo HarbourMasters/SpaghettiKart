@@ -7,7 +7,7 @@
 #include "../camera.h"
 #include "main.h"
 #include "memory.h"
-#include <assets/common_data.h>
+#include <assets/models/common_data.h>
 #include "render_player.h"
 #include "render_objects.h"
 #include "podium_ceremony_actors.h"
@@ -464,6 +464,7 @@ void func_80281540(void) {
 void podium_ceremony_loop(void) {
     ClearMatrixPools();
     Editor_ClearMatrix();
+    CM_TickEditor();
     gMatrixObjectCount = 0;
     D_802874FC = 0;
     update_camera_podium_ceremony();

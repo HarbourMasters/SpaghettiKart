@@ -5,6 +5,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <sounds.h>
+#include "TrackBrowser.h"
 #include "camera.h"
 #include "waypoints.h"
 #include "replays.h"
@@ -25,6 +26,7 @@
 #include "sounds.h"
 #include "port/Game.h"
 #include "port/audio/HMAS.h"
+#include "engine/editor/Editor.h"
 
 #pragma intrinsic(sqrtf)
 
@@ -164,7 +166,7 @@ void set_next_course(void) {
 }
 
 void func_8028E438(void) {
-    struct UnkStruct_800DC5EC* temp_v0 = &D_8015F480[gPlayerWinningIndex];
+    ScreenContext* temp_v0 = &gScreenContexts[gPlayerWinningIndex];
     s32 phi_v1_4;
 
     D_800DC5B0 = 1;
@@ -216,10 +218,10 @@ void func_8028E438(void) {
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
                 gActiveScreenMode = SCREEN_MODE_1P;
-                D_800DC5EC->screenWidth = temp_v0->screenWidth;
-                D_800DC5EC->screenHeight = temp_v0->screenHeight;
-                D_800DC5EC->screenStartX = temp_v0->screenStartX;
-                D_800DC5EC->screenStartY = temp_v0->screenStartY;
+                gScreenOneCtx->screenWidth = temp_v0->screenWidth;
+                gScreenOneCtx->screenHeight = temp_v0->screenHeight;
+                gScreenOneCtx->screenStartX = temp_v0->screenStartX;
+                gScreenOneCtx->screenStartY = temp_v0->screenStartY;
                 if (gModeSelection == BATTLE) {
                     func_80092604();
                 } else if (gModeSelection == VERSUS) {
@@ -265,35 +267,35 @@ void func_8028E678(void) {
             }
             break;
         case 5:
-            D_800DC5EC->screenWidth -= 4;
+            gScreenOneCtx->screenWidth -= 4;
 
-            D_800DC5F0->screenWidth -= 4;
+            gScreenTwoCtx->screenWidth -= 4;
 
-            D_800DC5EC->screenStartX -= 2;
+            gScreenOneCtx->screenStartX -= 2;
 
-            D_800DC5F0->screenStartX += 2;
+            gScreenTwoCtx->screenStartX += 2;
 
-            if (D_800DC5EC->screenWidth < 160) {
-                D_800DC5EC->screenWidth = 160;
+            if (gScreenOneCtx->screenWidth < 160) {
+                gScreenOneCtx->screenWidth = 160;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenWidth < 160) {
-                D_800DC5F0->screenWidth = 160;
+            if (gScreenTwoCtx->screenWidth < 160) {
+                gScreenTwoCtx->screenWidth = 160;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartX < 80) {
-                D_800DC5EC->screenStartX = 80;
+            if (gScreenOneCtx->screenStartX < 80) {
+                gScreenOneCtx->screenStartX = 80;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenStartX > SCREEN_HEIGHT) {
-                D_800DC5F0->screenStartX = SCREEN_HEIGHT;
+            if (gScreenTwoCtx->screenStartX > SCREEN_HEIGHT) {
+                gScreenTwoCtx->screenStartX = SCREEN_HEIGHT;
                 phi_a0_10++;
             }
 
-            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) gScreenOneCtx->screenWidth / (f32) gScreenOneCtx->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -302,32 +304,32 @@ void func_8028E678(void) {
             }
             break;
         case 6:
-            D_800DC5EC->screenHeight -= 4;
-            D_800DC5F0->screenHeight -= 4;
-            D_800DC5EC->screenStartY -= 2;
-            D_800DC5F0->screenStartY += 2;
+            gScreenOneCtx->screenHeight -= 4;
+            gScreenTwoCtx->screenHeight -= 4;
+            gScreenOneCtx->screenStartY -= 2;
+            gScreenTwoCtx->screenStartY += 2;
 
-            if (D_800DC5EC->screenHeight < 120) {
-                D_800DC5EC->screenHeight = 120;
+            if (gScreenOneCtx->screenHeight < 120) {
+                gScreenOneCtx->screenHeight = 120;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenHeight < 120) {
-                D_800DC5F0->screenHeight = 120;
+            if (gScreenTwoCtx->screenHeight < 120) {
+                gScreenTwoCtx->screenHeight = 120;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartY < 60) {
-                D_800DC5EC->screenStartY = 60;
+            if (gScreenOneCtx->screenStartY < 60) {
+                gScreenOneCtx->screenStartY = 60;
                 phi_a0_10++;
             }
 
-            if (D_800DC5F0->screenStartY > 180) {
-                D_800DC5F0->screenStartY = 180;
+            if (gScreenTwoCtx->screenStartY > 180) {
+                gScreenTwoCtx->screenStartY = 180;
                 phi_a0_10++;
             }
 
-            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) gScreenOneCtx->screenWidth / (f32) gScreenOneCtx->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -335,19 +337,19 @@ void func_8028E678(void) {
             }
             break;
         case 1:
-            D_800DC5EC->screenHeight -= 2;
-            D_800DC5EC->screenWidth = (D_800DC5EC->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
+            gScreenOneCtx->screenHeight -= 2;
+            gScreenOneCtx->screenWidth = (gScreenOneCtx->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
 
-            if (D_800DC5EC->screenHeight < 120) {
+            if (gScreenOneCtx->screenHeight < 120) {
 
-                D_800DC5EC->screenHeight = 120;
-                D_800DC5EC->screenWidth = (D_800DC5EC->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
+                gScreenOneCtx->screenHeight = 120;
+                gScreenOneCtx->screenWidth = (gScreenOneCtx->screenHeight * SCREEN_WIDTH) / SCREEN_HEIGHT;
                 D_8015F894 = 2;
 
-                D_800DC5F0->screenWidth = D_800DC5EC->screenWidth;
-                D_800DC5F0->screenHeight = D_800DC5EC->screenHeight;
-                D_800DC5F0->screenStartX = D_800DC5EC->screenStartX;
-                D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
+                gScreenTwoCtx->screenWidth = gScreenOneCtx->screenWidth;
+                gScreenTwoCtx->screenHeight = gScreenOneCtx->screenHeight;
+                gScreenTwoCtx->screenStartX = gScreenOneCtx->screenStartX;
+                gScreenTwoCtx->screenStartY = gScreenOneCtx->screenStartY;
 
                 gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
                 gScreenAspect = 1.33333337;
@@ -357,28 +359,28 @@ void func_8028E678(void) {
             }
             break;
         case 2:
-            D_800DC5EC->screenStartX -= 4;
+            gScreenOneCtx->screenStartX -= 4;
 
-            D_800DC5EC->screenStartY -= 2;
+            gScreenOneCtx->screenStartY -= 2;
 
-            if (D_800DC5EC->screenStartX < 80) {
-                D_800DC5EC->screenStartX = 80;
+            if (gScreenOneCtx->screenStartX < 80) {
+                gScreenOneCtx->screenStartX = 80;
                 phi_a0_10++;
             }
 
-            if (D_800DC5EC->screenStartY < 60) {
-                D_800DC5EC->screenStartY = 60;
+            if (gScreenOneCtx->screenStartY < 60) {
+                gScreenOneCtx->screenStartY = 60;
                 phi_a0_10++;
             }
-            D_800DC5F0->screenStartX += 4;
-            D_800DC5F0->screenStartY += 2;
+            gScreenTwoCtx->screenStartX += 4;
+            gScreenTwoCtx->screenStartY += 2;
 
-            if (D_800DC5F0->screenStartX > SCREEN_HEIGHT) {
-                D_800DC5F0->screenStartX = SCREEN_HEIGHT;
+            if (gScreenTwoCtx->screenStartX > SCREEN_HEIGHT) {
+                gScreenTwoCtx->screenStartX = SCREEN_HEIGHT;
                 phi_a0_10++;
             }
-            if (D_800DC5F0->screenStartY > 180) {
-                D_800DC5F0->screenStartY = 180;
+            if (gScreenTwoCtx->screenStartY > 180) {
+                gScreenTwoCtx->screenStartY = 180;
                 phi_a0_10++;
             }
             if (phi_a0_10 == 4) {
@@ -467,7 +469,7 @@ f32 func_8028EE8C(s32 arg0) {
     f32 temp_v1 = gPlayers[arg0].oldPos[2];
     f32 temp_f14 = D_8015F8D0[2] - temp_v0;
     f32 temp_f16 = temp_v1 - D_8015F8D0[2];
-    return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
+    return gCourseTimer - ((TRACK_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
 }
 
 void func_8028EEF0(s32 i) {
@@ -531,7 +533,7 @@ void func_8028EF28(void) {
                                 }
                                 gRaceState = RACE_FINISHED;
                                 i = gPlayerPositionLUT[1];
-                                gPlayers[i].soundEffects |= 0x200000;
+                                gPlayers[i].triggers |= SPINOUT_TRIGGER;
                                 gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
@@ -549,7 +551,7 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].soundEffects |= 0x200000;
+                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
@@ -564,7 +566,7 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     gRaceState = RACE_FINISHED;
                                     i = gPlayerPositionLUT[3];
-                                    gPlayers[i].soundEffects |= 0x200000;
+                                    gPlayers[i].triggers |= SPINOUT_TRIGGER;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
@@ -648,8 +650,18 @@ void func_8028F4E8(void) {
     }
 }
 
+/**
+ * On race launch, the screen starts small and quickly gets bigger
+ * as an effect.
+ */
 void func_8028F588(void) {
     s16 screenWidth;
+
+    if ((Editor_IsEnabled() == true) || (CM_IsTourEnabled() == true)) {
+        gScreenOneCtx->screenWidth = SCREEN_WIDTH;
+        gScreenOneCtx->screenHeight = SCREEN_HEIGHT;
+        return;
+    }
 
     switch (gActiveScreenMode) { /* irregular */
         case SCREEN_MODE_1P:
@@ -657,12 +669,12 @@ void func_8028F588(void) {
             if (screenWidth < 0) {
                 screenWidth = 1;
             }
-            D_800DC5EC->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (240.0f * D_802BA034);
             if (screenWidth < 0) {
                 screenWidth = 1;
             }
-            D_800DC5EC->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             screenWidth = (s16) (s32) (160.0f * D_802BA034);
@@ -671,16 +683,16 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x140) {
                 screenWidth = 0x013C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (240.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0x1E0) {
                 screenWidth = 0x01DC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             screenWidth = (s16) (s32) (320.0f * D_802BA034);
@@ -689,16 +701,16 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x280) {
                 screenWidth = 0x027C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (120.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0xF0) {
                 screenWidth = 0x00EC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             screenWidth = (s16) (s32) (160.0f * D_802BA034);
@@ -707,20 +719,20 @@ void func_8028F588(void) {
             } else if (screenWidth >= 0x140) {
                 screenWidth = 0x013C;
             }
-            D_800DC5EC->screenWidth = screenWidth;
-            D_800DC5F0->screenWidth = screenWidth;
-            D_800DC5F4->screenWidth = screenWidth;
-            D_800DC5F8->screenWidth = screenWidth;
+            gScreenOneCtx->screenWidth = screenWidth;
+            gScreenTwoCtx->screenWidth = screenWidth;
+            gScreenThreeCtx->screenWidth = screenWidth;
+            gScreenFourCtx->screenWidth = screenWidth;
             screenWidth = (s16) (s32) (120.0f * D_802BA034);
             if (screenWidth <= 0) {
                 screenWidth = 1;
             } else if (screenWidth >= 0xF0) {
                 screenWidth = 0x00EC;
             }
-            D_800DC5EC->screenHeight = screenWidth;
-            D_800DC5F0->screenHeight = screenWidth;
-            D_800DC5F4->screenHeight = screenWidth;
-            D_800DC5F8->screenHeight = screenWidth;
+            gScreenOneCtx->screenHeight = screenWidth;
+            gScreenTwoCtx->screenHeight = screenWidth;
+            gScreenThreeCtx->screenHeight = screenWidth;
+            gScreenFourCtx->screenHeight = screenWidth;
             break;
     }
 }
@@ -865,17 +877,17 @@ void func_8028FCBC(void) {
         case RACE_INIT:
             if (!gDemoMode) {
                 if (gModeSelection == GRAND_PRIX) {
-                    func_800C8EF8(11);
+                    play_sequence2(MUSIC_SEQ_START_GRID_GP_VS);
                     play_sound2(SOUND_ACTION_REV_ENGINE);
                     play_sound2(SOUND_ACTION_REV_ENGINE_2);
                 } else {
-                    func_800C8EF8(22);
+                    play_sequence2(MUSIC_SEQ_START_GRID_TIME_ATTACK);
                 }
             }
             func_80002DAC();
             gRaceState = RACE_SETUP;
             D_80150118 = 3.0f;
-            creditsRenderMode = 0;
+            // creditsRenderMode = 0; This is now set in GameCamera class
             D_802BA032 = 0;
             D_8015011E = 0;
             gCourseTimer = 0.0f;
@@ -915,7 +927,7 @@ void func_8028FCBC(void) {
                     phi_v0_4 = 0x1;
                     //! @warning this used to be < gCurrentCourseId
                     // Hopefully this is equivallent.
-                    for (i = 0; i < GetCourseIndex(); i++) {
+                    for (i = 0; i < TrackBrowser_GetTrackIndex(); i++) {
                         phi_v0_4 <<= 1;
                     }
                     if ((D_8015F890 == 0) && (!(D_800DC5AC & phi_v0_4))) {
@@ -1027,6 +1039,7 @@ void func_8028FCBC(void) {
             if (D_802BA034 <= 0) {
                 gIsInQuitToMenuTransition = 1;
                 gQuitToMenuTransitionCounter = 5;
+                gTourComplete = false;
             }
             break;
         case RACE_EXIT:
@@ -1038,30 +1051,35 @@ UNUSED void func_80290314(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = START_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = MAIN_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290360(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = PLAYER_SELECT_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_80290388(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
+    gTourComplete = false;
 }
 
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
     gGotoMode = RACING;
+    gTourComplete = false;
     // Stop when retrying
     if(HMAS_IsPlaying(HMAS_MUSIC)) {
         HMAS_Stop(HMAS_MUSIC);
@@ -1109,22 +1127,22 @@ void func_802903D8(Player* playerOne, Player* playerTwo) {
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->soundEffects |= REVERSE_SOUND_EFFECT;
+            playerTwo->triggers |= VERTICAL_TUMBLE_TRIGGER;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
     } else if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
-        playerOne->soundEffects |= REVERSE_SOUND_EFFECT;
+        playerOne->triggers |= VERTICAL_TUMBLE_TRIGGER;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
     if (playerOne->effects & 0x200) {
         if (!(playerTwo->effects & 0x200)) {
-            playerTwo->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+            playerTwo->triggers |= HIT_BY_STAR_TRIGGER;
         }
     } else if (playerTwo->effects & 0x200) {
-        playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
+        playerOne->triggers |= HIT_BY_STAR_TRIGGER;
     } else {
         playerOne->effects |= 0x8000;
         playerTwo->effects |= 0x8000;

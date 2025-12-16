@@ -1,18 +1,18 @@
 #include <libultraship.h>
 #include "SpaghettiGui.h"
-#include <libultraship/src/window/gui/Gui.h>
-#include <libultraship/src/window/Window.h>
+#include <ship/window/gui/Gui.h>
+#include <ship/window/Window.h>
 #ifdef __SWITCH__
 #include "ConfigVersion.h"
 #else
-#include "Config.h"
+#include "ship/config/Config.h"
 #endif
 
 #ifdef __APPLE__
 #include <SDL_hints.h>
 #include <SDL_video.h>
 
-#include "graphic/Fast3D/backends/gfx_metal.h"
+#include "fast/backends/gfx_metal.h"
 #include <imgui_impl_metal.h>
 #include <imgui_impl_sdl2.h>
 #else
@@ -31,7 +31,7 @@
 #endif
 
 #if defined(ENABLE_DX11) || defined(ENABLE_DX12)
-#include <graphic/Fast3D/backends/gfx_direct3d11.h>
+#include <fast/backends/gfx_direct3d11.h>
 #include <imgui_impl_dx11.h>
 #include <imgui_impl_win32.h>
 

@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/wario_stadium_data.h>
+#include <assets/models/tracks/wario_stadium/wario_stadium_data.h>
 
 const Gfx* wario_stadium_dls[] = {
     d_course_wario_stadium_dl_0,    d_course_wario_stadium_dl_158,  d_course_wario_stadium_dl_B8,

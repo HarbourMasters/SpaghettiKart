@@ -5,8 +5,9 @@
 #include "Collision.h"
 #include "Gizmo.h"
 #include "GameObject.h"
+#include "engine/Matrix.h"
 
-namespace Editor {
+namespace TrackEditor {
     class ObjectPicker {
     public:
         void SelectObject(std::vector<GameObject*> objects);
@@ -16,13 +17,17 @@ namespace Editor {
         void Load();
         void Tick();
         Gizmo eGizmo;
-        GameObject* _selected;
+        std::variant<AActor*, OObject*, GameObject*> _selected;
     private:
         bool _draw = false;
         GameObject* _lastSelected;
         s32 Inverse(MtxF* src, MtxF* dest);
         void Copy(MtxF* src, MtxF* dest);
         void Clear(MtxF* mf);
+        // actor, distance from camera
+        std::pair<AActor*, float> CheckAActorRay(Ray ray);
+        std::pair<OObject*, float> CheckOObjectRay(Ray ray);
+        std::pair<GameObject*, float> CheckEditorObjectRay(Ray ray);
         bool Debug = false;
     };
 }

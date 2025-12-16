@@ -9,12 +9,13 @@
 
 /* Function Prototypes */
 
-void func_802A4A0C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
-
-void func_802A3730(struct UnkStruct_800DC5EC*);
+void func_802A4A0C(Vtx*, ScreenContext*);
+void set_screen(void);
+void set_editor_screen(void);
+void func_802A3730(ScreenContext*);
 void func_802A38AC(void);
 void func_802A38B4(void);
-void func_802A39E0(struct UnkStruct_800DC5EC*);
+void func_802A39E0(ScreenContext*);
 void init_z_buffer(void);
 void init_rdp(void);
 void func_802A40A4(void);
@@ -30,7 +31,7 @@ void set_viewport(void);
 void select_framebuffer(void);
 void func_802A4300(void);
 void func_802A450C(Vtx*);
-void func_802A487C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
+void func_802A487C(Vtx*);
 void func_802A4D18(void);
 void func_802A4EF4(void);
 void func_802A5004(void);
@@ -54,7 +55,6 @@ void render_player_four_3p_4p_screen(void);
 void render_screens(s32 mode, s32 cameraId, s32 playerId);
 void func_802A74BC(void);
 void copy_framebuffer(s32, s32, s32, s32, u16*, u16*);
-void copy_jumbotron_fb_port(s32 ulx, s32 uly, s16 portionToDraw, u16* source, u16* target);
 void func_802A7728(void);
 void func_802A7940(void);
 

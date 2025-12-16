@@ -1,0 +1,163 @@
+:config:
+  vram:
+    addr: 0x800E8700 # not used for anything
+    offset: 0x965A74
+  no_compression: true
+  segments:
+    - [0x0E, 0x965A74]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+  manual_segments:
+    # Segment 5
+    - [0x5000000, "textures/other_textures/texture_66ABA4"]
+    - [0x5000800, "textures/other_textures/texture_6747C4"]
+    - [0x5001000, "textures/other_textures/texture_67490C"]
+    - [0x5001800, "textures/other_textures/texture_64BA50"]
+    # Segment 7
+    - [0x7000000, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_0"]
+    - [0x7000210, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_210"]
+    - [0x7000220, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_220"]
+    - [0x7000230, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_230"]
+    - [0x7000240, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_240"]
+    - [0x7000450, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_450"]
+    - [0x7000460, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_460"]
+    - [0x7000AC0, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_AC0"]
+    - [0x7000AD0, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_AD0"]
+    - [0x7000B58, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_B58"]
+    - [0x7000D20, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_D20"]
+    - [0x7000D38, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_D38"]
+    - [0x7000DE8, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_DE8"]
+    - [0x7000DF8, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_DF8"]
+    - [0x7000E80, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_E80"]
+    - [0x7000F08, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_F08"]
+    - [0x7000F90, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_F90"]
+    - [0x7001018, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_1018"]
+    - [0x7001040, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_1040"]
+    - [0x7001070, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_1070"]
+    - [0x7001080, "models/tracks/big_donut/big_donut_displaylists/d_course_big_donut_packed_dl_1080"]
+  # Segment 4
+    - [0x4000000, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000000"]
+    - [0x4000200, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000200"]
+    - [0x4000400, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000400"]
+    - [0x4000600, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000600"]
+    - [0x4000800, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000800"]
+    - [0x4000a00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000A00"]
+    - [0x4000c00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000C00"]
+    - [0x4000e00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04000E00"]
+    - [0x4001000, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001000"]
+    - [0x4001200, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001200"]
+    - [0x4001400, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001400"]
+    - [0x4001600, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001600"]
+    - [0x4001800, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001800"]
+    - [0x4001a00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001A00"]
+    - [0x4001c00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001C00"]
+    - [0x4001e00, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04001E00"]
+    - [0x4002000, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04002000"]
+    - [0x4002200, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04002200"]
+    - [0x40023e0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040023E0"]
+    - [0x40025e0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040025E0"]
+    - [0x40027e0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040027E0"]
+    - [0x40029c0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040029C0"]
+    - [0x4002bc0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04002BC0"]
+    - [0x4002dc0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04002DC0"]
+    - [0x4002fc0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04002FC0"]
+    - [0x40031c0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040031C0"]
+    - [0x40033c0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040033C0"]
+    - [0x40035c0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040035C0"]
+    - [0x40037c0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040037C0"]
+    - [0x4003850, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04003850"]
+    - [0x4003a50, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04003A50"]
+    - [0x4003c50, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04003C50"]
+    - [0x4003e50, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04003E50"]
+    - [0x4004050, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04004050"]
+    - [0x4004250, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04004250"]
+    - [0x4004430, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x04004430"]
+    - [0x40044d0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040044D0"]
+    - [0x40045d0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040045D0"]
+    - [0x40046d0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040046D0"]
+    - [0x40047d0, "models/tracks/big_donut/big_donut_vertices/d_course_big_donut_vertex_0x040047D0"]
+d_course_big_donut_packed_dl_0:
+  symbol: d_course_big_donut_packed_dl_0
+  type: MK64:PACKED_GFX
+  offset: 0x0
+d_course_big_donut_packed_dl_210:
+  symbol: d_course_big_donut_packed_dl_210
+  type: MK64:PACKED_GFX
+  offset: 0x10D
+d_course_big_donut_packed_dl_220:
+  symbol: d_course_big_donut_packed_dl_220
+  type: MK64:PACKED_GFX
+  offset: 0x111
+d_course_big_donut_packed_dl_230:
+  symbol: d_course_big_donut_packed_dl_230
+  type: MK64:PACKED_GFX
+  offset: 0x115
+d_course_big_donut_packed_dl_240:
+  symbol: d_course_big_donut_packed_dl_240
+  type: MK64:PACKED_GFX
+  offset: 0x119
+d_course_big_donut_packed_dl_450:
+  symbol: d_course_big_donut_packed_dl_450
+  type: MK64:PACKED_GFX
+  offset: 0x226
+d_course_big_donut_packed_dl_460:
+  symbol: d_course_big_donut_packed_dl_460
+  type: MK64:PACKED_GFX
+  offset: 0x22A
+d_course_big_donut_packed_dl_AC0:
+  symbol: d_course_big_donut_packed_dl_AC0
+  type: MK64:PACKED_GFX
+  offset: 0x5D5
+d_course_big_donut_packed_dl_AD0:
+  symbol: d_course_big_donut_packed_dl_AD0
+  type: MK64:PACKED_GFX
+  offset: 0x5D9
+d_course_big_donut_packed_dl_B58:
+  symbol: d_course_big_donut_packed_dl_B58
+  type: MK64:PACKED_GFX
+  offset: 0x5FB
+d_course_big_donut_packed_dl_D20:
+  symbol: d_course_big_donut_packed_dl_D20
+  type: MK64:PACKED_GFX
+  offset: 0x6DD
+d_course_big_donut_packed_dl_D38:
+  symbol: d_course_big_donut_packed_dl_D38
+  type: MK64:PACKED_GFX
+  offset: 0x6E4
+d_course_big_donut_packed_dl_DE8:
+  symbol: d_course_big_donut_packed_dl_DE8
+  type: MK64:PACKED_GFX
+  offset: 0x73E
+d_course_big_donut_packed_dl_DF8:
+  symbol: d_course_big_donut_packed_dl_DF8
+  type: MK64:PACKED_GFX
+  offset: 0x742
+d_course_big_donut_packed_dl_E80:
+  symbol: d_course_big_donut_packed_dl_E80
+  type: MK64:PACKED_GFX
+  offset: 0x764
+d_course_big_donut_packed_dl_F08:
+  symbol: d_course_big_donut_packed_dl_F08
+  type: MK64:PACKED_GFX
+  offset: 0x786
+d_course_big_donut_packed_dl_F90:
+  symbol: d_course_big_donut_packed_dl_F90
+  type: MK64:PACKED_GFX
+  offset: 0x7A8
+d_course_big_donut_packed_dl_1018:
+  symbol: d_course_big_donut_packed_dl_1018
+  type: MK64:PACKED_GFX
+  offset: 0x7CA
+d_course_big_donut_packed_dl_1040:
+  symbol: d_course_big_donut_packed_dl_1040
+  type: MK64:PACKED_GFX
+  offset: 0x7D7
+d_course_big_donut_packed_dl_1070:
+  symbol: d_course_big_donut_packed_dl_1070
+  type: MK64:PACKED_GFX
+  offset: 0x7E7

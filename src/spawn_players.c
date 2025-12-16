@@ -1,10 +1,10 @@
 #include <defines.h>
 #include <mk64.h>
 #include <stubs.h>
-#include "networking/networking.h"
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
+#include "editor/Editor.h"
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"
@@ -177,7 +177,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->soundEffects = 0;
+    player->triggers = 0;
     player->alpha = ALPHA_MAX;
 
     player->unk_206 = 0;
@@ -487,7 +487,7 @@ void func_80039DA4(void) {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
-    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == TRACK_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
@@ -505,7 +505,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if (((GetCupCursorPosition() == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((GetCupCursorPosition() == TRACK_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         s16 rand;
         s16 i;
@@ -549,27 +549,23 @@ void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
                      PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
-        if (gNetwork.enabled) {
-            spawn_network_players(arg0, arg1, arg2);
-        } else {
-            spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f,
-                         gCharacterSelections[0],
-                         PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-            spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerThree, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerFour, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerFive, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerSix, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerSeven, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-            spawn_player(gPlayerEight, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f,
-                         chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        }
+        spawn_player(gPlayerOne, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f,
+                        gCharacterSelections[0],
+                        PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
+        spawn_player(gPlayerTwo, 1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerThree, 2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFour, 3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFive, 4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSix, 5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSeven, 6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerEight, 7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f,
+                        chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
         D_80164A28 = 1;
     }
     func_80039AE4();
@@ -634,7 +630,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((GetCupCursorPosition() == COURSE_ONE) || (gDemoMode == 1) ||
+    if ((GetCupCursorPosition() == TRACK_ONE) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_OPTION_SELECTED)) {
         s16 rand;
         s16 i;
@@ -868,19 +864,28 @@ void func_8003BE30(void) {
 }
 
 void func_8003C0F0(void) {
-    s16 sp5E;
-    s16 sp5C;
-    s16 sp5A = 0;
-    s32 temp;
-    UNUSED s32 pad[4];
-
     if (gModeSelection == BATTLE) {
         func_8000EEDC();
     } else if (!IsPodiumCeremony()) {
         init_course_path_point();
-        sp5E = (f32) gTrackPaths[0][0].posX;
-        sp5C = (f32) gTrackPaths[0][0].posZ;
-        sp5A = (f32) gTrackPaths[0][0].posY;
+    }
+
+    // The tour delays player spawning until the end of the tour
+    if ((CM_IsTourEnabled() == false) || (Editor_IsPaused() == true)) {
+        spawn_and_set_player_spawns();
+    }
+}
+
+void spawn_and_set_player_spawns(void) {
+    s16 sp5E;
+    s16 sp5C;
+    s16 sp5A = 0;
+    s32 temp;
+
+    if ((!IsPodiumCeremony()) && (gModeSelection != BATTLE)) {
+        sp5E = (f32) gTrackPaths[0][0].x;
+        sp5C = (f32) gTrackPaths[0][0].z;
+        sp5A = (f32) gTrackPaths[0][0].y;
         if (IsToadsTurnpike()) {
             sp5E = 0;
         }
@@ -1172,174 +1177,186 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     }
 }
 
-void func_8003D080(void) {
+void spawn_players_and_cameras(void) {
     UNUSED s32 pad;
     Player* player = &gPlayers[0];
+    Camera* camera;
 
+    // Load textures for balloons and kart shadows
     func_8005D290();
+    // Spawn players
     if (gGamestate == ENDING) {
         func_8003CD78();
     } else {
         func_8003C0F0();
     }
 
-    if (!gDemoMode) {
-        switch (gActiveScreenMode) {
-            case SCREEN_MODE_1P:
-                switch (gModeSelection) {
-                    case GRAND_PRIX:
-                        if (IsToadsTurnpike()) {
-                            camera_init(0.0f, player->pos[1], D_80165230[7], player->rotation[1], 8, 0);
-                        } else {
-                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_80165230[7],
-                                        player->rotation[1], 8, 0);
-                        }
-                        break;
+    u32 mode; // set camera mode
+    switch (gModeSelection) {
+        case GRAND_PRIX:
+            if (gActiveScreenMode == SCREEN_MODE_1P) {
+                mode = 8;
+            } else {
+                mode = 1;
+            }
+            break;
+        case TIME_TRIALS:
+            mode = 1;
+            break;
+        case BATTLE:
+            mode = 9;
+            break;
+        default:
+            mode = 1;
+            break;
+    }
 
-                    case TIME_TRIALS:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
-                        break;
+    if (gDemoMode) {
+        mode = 3;
+    }
 
-                    default:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 10, 0);
-                        break;
-                }
-                break;
+    for (size_t i = 0; i < 4; i++) {
+        D_80164A08[i] = 0;
+        D_80164498[i] = 0;
+    }
 
-            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                switch (gModeSelection) {
-                    case GRAND_PRIX:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
-                        player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
-                        break;
-
-                    case BATTLE:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 0);
-                        player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 1);
-                        break;
-
-                    default:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
-                        player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
-                        break;
-                }
-                break;
-
-            case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                if (gModeSelection == BATTLE) {
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 0);
-                    player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 1);
-                    player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 2);
-                    if (gPlayerCountSelection1 == 4) {
-                        player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 3);
-                    }
-                } else {
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
-                    player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
-                    player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 2);
-                    if (gPlayerCountSelection1 == 4) {
-                        player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 3);
-                    }
-                }
-                break;
-        }
+    if (gActiveScreenMode == SCREEN_MODE_1P) {
+        spawn_single_player_camera(mode);
     } else {
-        switch (gActiveScreenMode) {
-            case SCREEN_MODE_1P:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
-                break;
+        spawn_multiplayer_cameras(mode);
+    }
 
-            case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-            case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
-                player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
-                break;
+    // Add freecam, tourcam, and lookbehind cameras
+    Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
 
-            case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
-                player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
-                player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 2);
-                player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 3);
-                break;
+
+    camera = CM_AddFreeCamera(spawn, player->rotation[1], 1);
+    gScreenContexts[PLAYER_ONE].freeCamera = camera;
+
+    if (CVarGetInteger("gFreecam", false) == true) {
+        CM_SetFreeCamera(true);
+        gScreenContexts[PLAYER_ONE].camera = camera;
+    }
+
+    if ((CM_IsTourEnabled() == true) && (gModeSelection == GRAND_PRIX) && (Editor_IsPaused() == false)) {
+        camera = CM_AddTourCamera(spawn, player->rotation[1], 1);
+        if (NULL != camera) {
+            CM_AttachCamera(camera, PLAYER_ONE);
+            gScreenContexts[PLAYER_ONE].camera = camera;
+            gScreenContexts[PLAYER_ONE].pendingCamera = NULL;
+            CM_CameraSetActive(0, false);
+            CM_ActivateTourCamera(camera);
+        }
+    }
+}
+
+void spawn_single_player_camera(u32 mode) {
+    Vec3f spawn = {gPlayerOne->pos[0], gPlayerOne->pos[1], gPlayerOne->pos[2]};
+
+    // Technically there should be a default case of mode 10 here. Except it never gets used.
+    if (gModeSelection == GRAND_PRIX && !gDemoMode) {
+        if (IsToadsTurnpike()) {
+            spawn[0] = 0.0f;
+            spawn[2] = D_80165230[7];
+        } else {
+            spawn[0] = (D_80165210[7] + D_80165210[6]) / 2;
+            spawn[2] = D_80165230[7];
+
         }
     }
 
-    // Init freecam
-    //freecam_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 4);
+    Camera* camera = CM_AddCamera(spawn, gPlayerOne->rotation[1], mode);
+    if (camera) {
+        CM_AttachCamera(camera, PLAYER_ONE);
+        gScreenContexts[PLAYER_ONE].camera = camera;
+        gScreenContexts[PLAYER_ONE].raceCamera = camera;
+    }
 
-    switch (gActiveScreenMode) {
+    camera = CM_AddLookBehindCamera(spawn, gPlayerOne->rotation[1], mode);
+    if (camera) {
+        CM_AttachCamera(camera, PLAYER_ONE);
+        gScreenContexts[PLAYER_ONE].lookBehindCamera = camera;
+    }
+}
+
+void spawn_multiplayer_cameras(u32 mode) {
+    Camera* camera;
+    size_t screens = 0;
+    switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            func_8003CD98(gPlayerOne, camera1, 0, 0); // sic
-            func_8003CD98(gPlayerTwo, camera1, 1, 0);
-            func_8003CD98(gPlayerThree, camera1, 2, 0);
-            func_8003CD98(gPlayerFour, camera1, 3, 0);
-            func_8003CD98(gPlayerFive, camera1, 4, 0);
-            func_8003CD98(gPlayerSix, camera1, 5, 0);
-            func_8003CD98(gPlayerSeven, camera1, 6, 0);
-            func_8003CD98(gPlayerEight, camera1, 7, 0);
+            screens = 1;
             break;
-
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-            func_8003CD98(gPlayerOne, camera1, 0, 0);
-            func_8003CD98(gPlayerTwo, camera1, 1, 0);
-            func_8003CD98(gPlayerThree, camera1, 2, 0);
-            func_8003CD98(gPlayerFour, camera1, 3, 0);
-            func_8003CD98(gPlayerFive, camera1, 4, 0);
-            func_8003CD98(gPlayerSix, camera1, 5, 0);
-            func_8003CD98(gPlayerSeven, camera1, 6, 0);
-            func_8003CD98(gPlayerEight, camera1, 7, 0);
-            func_8003CD98(gPlayerOne, camera2, 0, 1);
-            func_8003CD98(gPlayerTwo, camera2, 1, 1);
-            func_8003CD98(gPlayerThree, camera2, 2, 1);
-            func_8003CD98(gPlayerFour, camera2, 3, 1);
-            func_8003CD98(gPlayerFive, camera2, 4, 1);
-            func_8003CD98(gPlayerSix, camera2, 5, 1);
-            func_8003CD98(gPlayerSeven, camera2, 6, 1);
-            func_8003CD98(gPlayerEight, camera2, 7, 1);
+            screens = 2;
             break;
-
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
-            func_8003CD98(gPlayerOne, camera1, 0, 0);
-            func_8003CD98(gPlayerTwo, camera1, 1, 0);
-            func_8003CD98(gPlayerThree, camera1, 2, 0);
-            func_8003CD98(gPlayerFour, camera1, 3, 0);
-            func_8003CD98(gPlayerOne, camera2, 0, 1);
-            func_8003CD98(gPlayerTwo, camera2, 1, 1);
-            func_8003CD98(gPlayerThree, camera2, 2, 1);
-            func_8003CD98(gPlayerFour, camera2, 3, 1);
-            func_8003CD98(gPlayerOne, camera3, 0, 2);
-            func_8003CD98(gPlayerTwo, camera3, 1, 2);
-            func_8003CD98(gPlayerThree, camera3, 2, 2);
-            func_8003CD98(gPlayerFour, camera3, 3, 2);
-            func_8003CD98(gPlayerOne, camera4, 0, 3);
-            func_8003CD98(gPlayerTwo, camera4, 1, 3);
-            func_8003CD98(gPlayerThree, camera4, 2, 3);
-            func_8003CD98(gPlayerFour, camera4, 3, 3);
+            screens = 4;
             break;
+    }
+    for (size_t i = 0; i < screens; i++) {
+        Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
+        camera = CM_AddCamera(spawn, gPlayers[i].rotation[1], mode);
+        if (camera) {
+            CM_AttachCamera(camera, i);
+            gScreenContexts[i].camera = camera;
+            gScreenContexts[i].raceCamera = camera;
+        }
+
+    }
+
+    for (size_t i = 0; i < screens; i++) {
+        Vec3f spawn = {gPlayers[i].pos[0], gPlayers[i].pos[1], gPlayers[i].pos[2]};
+        camera = CM_AddLookBehindCamera(spawn, gPlayers[i].rotation[1], mode);
+        if (camera) {
+            CM_AttachCamera(camera, i);
+            gScreenContexts[i].lookBehindCamera = camera;
+        }
+    }
+
+}
+
+/**
+ * Loads 8 players per screen in 1p/2p mode
+ * Loads 4 players per screen in 3p/4p mode
+ */
+void load_kart_textures(void) {
+    size_t screens = 0;
+    switch(gActiveScreenMode) {
+        case SCREEN_MODE_1P:
+            screens = 1;
+            break;
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            screens = 2;
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            screens = 4;
+            break;
+    }
+
+    static const size_t playerCounts[4] = { 8, 8, 4, 4 };
+    for (size_t i = 0; i < screens; i++) {
+        for (size_t ply = 0; ply < playerCounts[gPlayerCountSelection1 - 1]; ply++) {
+            func_8003CD98(&gPlayers[ply], gScreenContexts[i].camera, ply, i);
+        }
     }
 }
 
 void func_8003DB5C(void) {
     Player* player = gPlayerOne;
+    Camera* camera;
     s32 playerId;
 
-    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
-    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
+    Vec3f spawn = {player->pos[0], player->pos[1], player->pos[2]};
+    camera = CM_AddCamera(spawn, player->rotation[1], 3);
+    if (camera) {
+        CM_AttachCamera(camera, PLAYER_ONE);
+    }
+    camera = CM_AddCamera(spawn, player->rotation[1], 3);
+    if (camera) {
+        CM_AttachCamera(camera, PLAYER_ONE);
+    }
 
     for (playerId = 0; playerId < NUM_PLAYERS; playerId++, player++) {
         load_kart_palette(player, playerId, 1, 0);

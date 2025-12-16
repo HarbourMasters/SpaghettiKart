@@ -1,20 +1,16 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
-
+#include "RegisterContent.h"
 #include "engine/World.h"
+#include "engine/SpawnParams.h"
+#include "engine/CoreMath.h"
+
 #include "engine/objects/Object.h"
 
 extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
 #include "common_structs.h"
-#include "objects.h"
 #include "camera.h"
-#include "some_data.h"
 }
 
 //! @todo Make shadow size bigger if thwomp is scaled up
@@ -42,9 +38,24 @@ public:
         JAILED // Has no collision
     };
 
-    States State = States::DISABLED;
+    // This is simply a helper function to keep Spawning code clean
+    static OThwomp* Spawn(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize = 7) {
+        IRotator rot;
+        rot.Set(0, direction, 0);
 
-    explicit OThwomp(s16 x, s16 z, s16 direction, f32 scale, s16 behaviour, s16 primAlpha, u16 boundingBoxSize = 7);
+        SpawnParams params = {
+            .Name = "mk:thwomp",
+            .Behaviour = behaviour,
+            .Location = FVector(x, 0, z),
+            .Rotation = rot,
+            .Scale = FVector(0, scale, 0),
+            .PrimAlpha = primAlpha,
+            .BoundingBoxSize = boundingBoxSize
+        };
+        return dynamic_cast<OThwomp*>(AddObjectToWorld<OThwomp>(params));
+    }
+
+    explicit OThwomp(const SpawnParams& params);
 
     ~OThwomp() {
         _count--;
@@ -54,8 +65,10 @@ public:
         return _count;
     }
 
+    virtual void SetSpawnParams(SpawnParams& params) override;
     virtual void Tick60fps() override;
     virtual void Draw(s32 cameraId) override;
+    virtual void DrawEditorProperties() override;
     void SetVisibility(s32 objectIndex);
     void func_80080B28(s32 objectIndex, s32 playerId);
     void DrawModel(s32);
@@ -109,6 +122,10 @@ public:
     void func_8008078C(s32 objectIndex);
 
     void func_8007E63C(s32 objectIndex);
+
+    u16 BoundingBoxSize;
+    OThwomp::States Behaviour;
+    int16_t PrimAlpha;
 private:
     static size_t _count;
     static size_t _rand;
@@ -116,5 +133,4 @@ private:
     s16 _faceDirection;
     //! @todo Write this better. This effects the squish size and the bounding box size.
     // We should probably return to the programmer the pointer to the actor so they can do thwomp->squishSize = value.
-    u16 _boundingBoxSize;
 };

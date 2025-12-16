@@ -4,6 +4,11 @@
 #include "Train.h"
 #include <vector>
 
+#include "engine/tracks/Track.h"
+#include "engine/vehicles/Utils.h"
+#include "engine/World.h"
+#include "port/Game.h"
+
 extern "C" {
 #include "macros.h"
 #include "main.h"
@@ -18,62 +23,80 @@ extern "C" {
 #include "code_80057C60.h"
 #include "math_util_2.h"
 #include "render_objects.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
 //  #include "common_structs.h"
 }
 
+// The two counts are so we can spawn trains at specific points or use auto distribution
 size_t ATrain::_count = 0;
+//       pathIndex,     array of spawn points
+std::map<uint32_t, std::vector<uint32_t>> ATrain::TrainCounts;
 
-ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint32_t waypoint) {
+ATrain::ATrain(const SpawnParams& params) : AActor(params) {
     Name = "Train";
-    u16 waypointOffset;
+    ResourceName = "mk:train";
+    BoundingBoxSize = 2.0f;
     TrainCarStuff* ptr1;
-    Path2D* pos;
+    TrackPathPoint* pos;
 
     Index = _count;
-    Speed = speed;
+
+    PassengerCarsCount = params.Count.value_or(0);
+    bool tender = params.Bool.value_or(true);
+
+    // The path to spawn the train at
+    uint32_t pathIndex = params.PathIndex.value_or(0);
+    // The point along the path to spawn the train at
+    uint32_t pathPoint = 0;
+
+    SpawnType = static_cast<SpawnMode>(params.Type.value_or(SpawnMode::POINT));
+
+    switch(SpawnType) {
+        case SpawnMode::POINT: // Spawn train at a specific path point
+            pathPoint = params.PathPoint.value_or(0);
+            TrainCounts[pathIndex].push_back(pathPoint);
+            break;
+        case SpawnMode::AUTO: // Automatically distribute trains based on a specific path point
+            printf("vehicle path size %d\n", gVehiclePathSize);
+            pathPoint = GetVehiclePathPointDistributed(TrainCounts[pathIndex], gVehiclePathSize);
+            TrainCounts[pathIndex].push_back(pathPoint);
+            printf("train spawn path point: %d\n", pathPoint);
+            break;
+    }
 
     // Set to the default value
     std::fill(SmokeParticles, SmokeParticles + 128, NULL_OBJECT_ID);
 
-    for (size_t i = 0; i < numCarriages; i++) {
+    for (size_t i = 0; i < PassengerCarsCount; i++) {
         PassengerCars.push_back(TrainCarStuff());
     }
 
-    // outputs 160 or 392 depending on the train.
-    // Wraps the value around to always output a valid waypoint.
-    waypointOffset = waypoint;
-
     // 120.0f is about the maximum usable value
     for (size_t i = 0; i < PassengerCars.size(); i++) {
-        waypointOffset += 4;
+        pathPoint += 4;
         ptr1 = &PassengerCars[i];
-        pos = &gVehicle2DPathPoint[waypointOffset];
-        set_vehicle_pos_path_point(ptr1, pos, waypointOffset);
+        pos = &gVehicle2DPathPoint[pathPoint];
+        set_vehicle_pos_path_point(ptr1, pos, pathPoint);
     }
     // Smaller offset for the tender
-    waypointOffset += 3;
-    pos = &gVehicle2DPathPoint[waypointOffset];
-    set_vehicle_pos_path_point(&this->Tender, pos, waypointOffset);
-    waypointOffset += 4;
-    pos = &gVehicle2DPathPoint[waypointOffset];
-    set_vehicle_pos_path_point(&Locomotive, pos, waypointOffset);
+    pathPoint += 3;
+    pos = &gVehicle2DPathPoint[pathPoint];
+    set_vehicle_pos_path_point(&this->Tender, pos, pathPoint);
+    pathPoint += 4;
+    pos = &gVehicle2DPathPoint[pathPoint];
+    set_vehicle_pos_path_point(&Locomotive, pos, pathPoint);
 
     // Only use locomotive unless overwritten below.
-    NumCars = LOCOMOTIVE_ONLY;
-
     // Fall back in-case someone tries to spawn a train with carriages but no tender; not allowed.
-    if (numCarriages > 0) {
+    if (PassengerCarsCount > 0) {
         tender = HAS_TENDER;
     }
 
     Tender.isActive = static_cast<bool>(tender);
 
-    for (size_t i = 0; i < numCarriages; i++) {
+    for (size_t i = 0; i < PassengerCarsCount; i++) {
         PassengerCars[i].isActive = 1;
     }
-
-    NumCars = NUM_TENDERS + numCarriages;
 
     AnotherSmokeTimer = 0;
 
@@ -126,6 +149,17 @@ ATrain::ATrain(ATrain::TenderStatus tender, size_t numCarriages, f32 speed, uint
     _count++;
 }
 
+void ATrain::SetSpawnParams(SpawnParams& params) {
+    AActor::SetSpawnParams(params);
+    params.Name = "mk:train";
+    params.Type = static_cast<uint16_t>(SpawnType);
+    params.Bool = Tender.isActive;
+    params.Speed = Speed;
+    params.Count = PassengerCarsCount;
+    params.PathIndex = PathIndex;
+    params.PathPoint = PathPoint;
+}
+
 bool ATrain::IsMod() {
     return true;
 }
@@ -144,29 +178,31 @@ void ATrain::SyncComponents(TrainCarStuff* trainCar, s16 orientationY) {
         trainCarActor->rot[1] = orientationY;
     }
     trainCarActor->velocity[0] = trainCar->velocity[0];
+    trainCarActor->velocity[1] = trainCar->velocity[1];
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
 void ATrain::Tick() {
-    f32 temp_f20;
     TrainCarStuff* car;
     u16 oldWaypointIndex;
     s16 orientationYUpdate;
-    f32 temp_f22;
     s32 j;
     Vec3f smokePos;
+    FVector temp_f20 = {
+        Locomotive.position[0],
+        Locomotive.position[1],
+        Locomotive.position[2]
+    };
 
     AnotherSmokeTimer += 1;
 
     oldWaypointIndex = (u16) Locomotive.waypointIndex;
 
-    temp_f20 = Locomotive.position[0];
-    temp_f22 = Locomotive.position[2];
-
     orientationYUpdate = update_vehicle_following_path(Locomotive.position, (s16*) &Locomotive.waypointIndex, Speed);
 
-    Locomotive.velocity[0] = Locomotive.position[0] - temp_f20;
-    Locomotive.velocity[2] = Locomotive.position[2] - temp_f22;
+    Locomotive.velocity[0] = Locomotive.position[0] - temp_f20.x;
+    Locomotive.velocity[1] = Locomotive.position[1] - temp_f20.y;
+    Locomotive.velocity[2] = Locomotive.position[2] - temp_f20.z;
 
     sync_train_components(&Locomotive, orientationYUpdate);
 
@@ -191,23 +227,27 @@ void ATrain::Tick() {
     car = &Tender;
 
     if (car->isActive == 1) {
-        temp_f20 = car->position[0];
-        temp_f22 = car->position[2];
+        temp_f20.x = car->position[0];
+        temp_f20.y = car->position[1];
+        temp_f20.z = car->position[2];
         orientationYUpdate = update_vehicle_following_path(car->position, (s16*) &car->waypointIndex, Speed);
-        car->velocity[0] = car->position[0] - temp_f20;
-        car->velocity[2] = car->position[2] - temp_f22;
+        car->velocity[0] = car->position[0] - temp_f20.x;
+        car->velocity[1] = car->position[1] - temp_f20.y;
+        car->velocity[2] = car->position[2] - temp_f20.z;
         sync_train_components(car, orientationYUpdate);
     }
 
     for (j = 0; j < PassengerCars.size(); j++) {
         car = &PassengerCars[j];
         if (car->isActive == 1) {
-            temp_f20 = car->position[0];
-            temp_f22 = car->position[2];
+            temp_f20.x = car->position[0];
+            temp_f20.y = car->position[1];
+            temp_f20.z = car->position[2];
 
             orientationYUpdate = update_vehicle_following_path(car->position, (s16*) &car->waypointIndex, Speed);
-            car->velocity[0] = car->position[0] - temp_f20;
-            car->velocity[2] = car->position[2] - temp_f22;
+            car->velocity[0] = car->position[0] - temp_f20.x;
+            car->velocity[1] = car->position[1] - temp_f20.y;
+            car->velocity[2] = car->position[2] - temp_f20.z;
             sync_train_components(car, orientationYUpdate);
         }
     }
@@ -232,13 +272,13 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
                 if ((z_dist > -100.0) && (z_dist < 100.0)) {
                     if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                 trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                        player->soundEffects |= REVERSE_SOUND_EFFECT;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                     }
                     trainCar = &Tender;
                     if (trainCar->isActive == 1) {
                         if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2], trainCar->velocity[0],
                                                     trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->soundEffects |= REVERSE_SOUND_EFFECT;
+                            player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                         }
                     }
                 }
@@ -254,7 +294,7 @@ void ATrain::VehicleCollision(s32 playerId, Player* player) {
                             if (is_collide_with_vehicle(trainCar->position[0], trainCar->position[2],
                                                         trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f,
                                                         playerPosX, playerPosZ) == 1) {
-                                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                                player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                             }
                         }
                     }
@@ -273,4 +313,82 @@ s32 ATrain::AddSmoke(s32 trainIndex, Vec3f pos, f32 velocity) {
         init_train_smoke(objectIndex, pos, velocity);
     }
     return objectIndex;
+}
+
+void ATrain::DrawEditorProperties() {
+    ImGui::Text("Passenger Cars");
+    ImGui::SameLine();
+
+    int count = static_cast<int>(PassengerCarsCount);
+    if (ImGui::InputInt("##Count", &count)) {
+        // Clamp to uint32_t range (only lower bound needed if assuming positive values)
+        if (count < 0) count = 0;
+        PassengerCarsCount = static_cast<uint32_t>(count);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetCount")) {
+        PassengerCarsCount = 0;
+    }
+
+    ImGui::Text("Spawn Mode");
+    ImGui::SameLine();
+
+    int32_t type = static_cast<int32_t>(SpawnType);
+    const char* items[] = { "POINT", "AUTO" };
+
+    if (ImGui::Combo("##Type", &type, items, IM_ARRAYSIZE(items))) {
+        SpawnType = static_cast<ATrain::SpawnMode>(type);
+    }
+
+    if (type == ATrain::SpawnMode::POINT) {
+        ImGui::Text("Path Index");
+        ImGui::SameLine();
+
+        int pathIndex = static_cast<int>(PathIndex);
+        if (ImGui::InputInt("##PathIndex", &pathIndex)) {
+            if (pathIndex < 0) pathIndex = 0;
+            PathIndex = static_cast<uint32_t>(pathIndex);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathIndex")) {
+            PathIndex = 0;
+        }
+
+        ImGui::Text("Path Point");
+        ImGui::SameLine();
+
+        int pathPoint = static_cast<int>(PathPoint);
+        if (ImGui::InputInt("##PathPoint", &pathPoint)) {
+            if (pathPoint < 0) pathPoint = 0;
+            PathPoint = static_cast<uint32_t>(pathPoint);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathPoint")) {
+            PathPoint = 0;
+        }
+    }
+
+    ImGui::Text("Has Tender");
+    ImGui::SameLine();
+
+    bool theBool = HasTender;
+    if (ImGui::Checkbox("##Bool", &theBool)) {
+        HasTender = static_cast<TenderStatus>(theBool);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetBool")) {
+        HasTender = TenderStatus::NO_TENDER;
+    }
+
+    ImGui::Text("Speed");
+    ImGui::SameLine();
+
+    float speed = Speed;
+    if (ImGui::DragFloat("##Speed", &speed, 0.1f)) {
+        Speed = speed;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetSpeed")) {
+        Speed = 0.0f;
+    }
 }

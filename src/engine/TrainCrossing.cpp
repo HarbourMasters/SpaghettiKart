@@ -29,9 +29,8 @@ void TrainCrossing::CrossingTrigger() {
     s32 i;
     OnTriggered = 0;
 
-    for (const auto& actor : gWorldInstance.Actors) {
-        if (auto train = dynamic_cast<ATrain*>(actor)) {
-            ;
+    for (const auto& actor : GetWorld()->Actors) {
+        if (auto* train = dynamic_cast<ATrain*>(actor.get())) {
             f32 radius = DynamicRadius(train->Locomotive.position, train->Locomotive.velocity, Position);
 
             if (Distance(train->Locomotive.position, Position) < radius) {

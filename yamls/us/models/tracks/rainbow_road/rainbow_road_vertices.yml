@@ -1,0 +1,669 @@
+:config:
+  segments:
+    - [0x0F, 0x93CC60]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_rainbow_road_vertex_0x04000000:
+  symbol: d_course_rainbow_road_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x0
+
+d_course_rainbow_road_vertex_0x04000200:
+  symbol: d_course_rainbow_road_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1c0
+
+d_course_rainbow_road_vertex_0x04000400:
+  symbol: d_course_rainbow_road_vertex_0x04000400
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x380
+
+d_course_rainbow_road_vertex_0x04000600:
+  symbol: d_course_rainbow_road_vertex_0x04000600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x540
+
+d_course_rainbow_road_vertex_0x04000800:
+  symbol: d_course_rainbow_road_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x700
+
+d_course_rainbow_road_vertex_0x04000A00:
+  symbol: d_course_rainbow_road_vertex_0x04000A00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8c0
+
+d_course_rainbow_road_vertex_0x04000C00:
+  symbol: d_course_rainbow_road_vertex_0x04000C00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa80
+
+d_course_rainbow_road_vertex_0x04000E00:
+  symbol: d_course_rainbow_road_vertex_0x04000E00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc40
+
+d_course_rainbow_road_vertex_0x04001000:
+  symbol: d_course_rainbow_road_vertex_0x04001000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe00
+
+d_course_rainbow_road_vertex_0x04001200:
+  symbol: d_course_rainbow_road_vertex_0x04001200
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfc0
+
+d_course_rainbow_road_vertex_0x04001400:
+  symbol: d_course_rainbow_road_vertex_0x04001400
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1180
+
+d_course_rainbow_road_vertex_0x04001500:
+  symbol: d_course_rainbow_road_vertex_0x04001500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1260
+
+d_course_rainbow_road_vertex_0x04001700:
+  symbol: d_course_rainbow_road_vertex_0x04001700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1420
+
+d_course_rainbow_road_vertex_0x04001900:
+  symbol: d_course_rainbow_road_vertex_0x04001900
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15e0
+
+d_course_rainbow_road_vertex_0x04001B00:
+  symbol: d_course_rainbow_road_vertex_0x04001B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x17a0
+
+d_course_rainbow_road_vertex_0x04001D00:
+  symbol: d_course_rainbow_road_vertex_0x04001D00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1960
+
+d_course_rainbow_road_vertex_0x04001F00:
+  symbol: d_course_rainbow_road_vertex_0x04001F00
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1b20
+
+d_course_rainbow_road_vertex_0x04001F80:
+  symbol: d_course_rainbow_road_vertex_0x04001F80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1b90
+
+d_course_rainbow_road_vertex_0x04002180:
+  symbol: d_course_rainbow_road_vertex_0x04002180
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1d50
+
+d_course_rainbow_road_vertex_0x04002380:
+  symbol: d_course_rainbow_road_vertex_0x04002380
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1f10
+
+d_course_rainbow_road_vertex_0x04002580:
+  symbol: d_course_rainbow_road_vertex_0x04002580
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x20d0
+
+d_course_rainbow_road_vertex_0x04002780:
+  symbol: d_course_rainbow_road_vertex_0x04002780
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2290
+
+d_course_rainbow_road_vertex_0x04002980:
+  symbol: d_course_rainbow_road_vertex_0x04002980
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2450
+
+d_course_rainbow_road_vertex_0x04002B80:
+  symbol: d_course_rainbow_road_vertex_0x04002B80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2610
+
+d_course_rainbow_road_vertex_0x04002D80:
+  symbol: d_course_rainbow_road_vertex_0x04002D80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x27d0
+
+d_course_rainbow_road_vertex_0x04002F80:
+  symbol: d_course_rainbow_road_vertex_0x04002F80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x2990
+
+d_course_rainbow_road_vertex_0x04003100:
+  symbol: d_course_rainbow_road_vertex_0x04003100
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2ae0
+
+d_course_rainbow_road_vertex_0x04003300:
+  symbol: d_course_rainbow_road_vertex_0x04003300
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2ca0
+
+d_course_rainbow_road_vertex_0x04003500:
+  symbol: d_course_rainbow_road_vertex_0x04003500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2e60
+
+d_course_rainbow_road_vertex_0x04003700:
+  symbol: d_course_rainbow_road_vertex_0x04003700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3020
+
+d_course_rainbow_road_vertex_0x04003900:
+  symbol: d_course_rainbow_road_vertex_0x04003900
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x31e0
+
+d_course_rainbow_road_vertex_0x04003B00:
+  symbol: d_course_rainbow_road_vertex_0x04003B00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x33a0
+
+d_course_rainbow_road_vertex_0x04003D00:
+  symbol: d_course_rainbow_road_vertex_0x04003D00
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3560
+
+d_course_rainbow_road_vertex_0x04003DC0:
+  symbol: d_course_rainbow_road_vertex_0x04003DC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3608
+
+d_course_rainbow_road_vertex_0x04003FC0:
+  symbol: d_course_rainbow_road_vertex_0x04003FC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x37c8
+
+d_course_rainbow_road_vertex_0x040041C0:
+  symbol: d_course_rainbow_road_vertex_0x040041C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x3988
+
+d_course_rainbow_road_vertex_0x040043A0:
+  symbol: d_course_rainbow_road_vertex_0x040043A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3b2c
+
+d_course_rainbow_road_vertex_0x040045A0:
+  symbol: d_course_rainbow_road_vertex_0x040045A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3cec
+
+d_course_rainbow_road_vertex_0x040047A0:
+  symbol: d_course_rainbow_road_vertex_0x040047A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x3eac
+
+d_course_rainbow_road_vertex_0x040049A0:
+  symbol: d_course_rainbow_road_vertex_0x040049A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x406c
+
+d_course_rainbow_road_vertex_0x04004BA0:
+  symbol: d_course_rainbow_road_vertex_0x04004BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x422c
+
+d_course_rainbow_road_vertex_0x04004DA0:
+  symbol: d_course_rainbow_road_vertex_0x04004DA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x43ec
+
+d_course_rainbow_road_vertex_0x04004E20:
+  symbol: d_course_rainbow_road_vertex_0x04004E20
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x445c
+
+d_course_rainbow_road_vertex_0x04005020:
+  symbol: d_course_rainbow_road_vertex_0x04005020
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x461c
+
+d_course_rainbow_road_vertex_0x04005220:
+  symbol: d_course_rainbow_road_vertex_0x04005220
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x47dc
+
+d_course_rainbow_road_vertex_0x04005420:
+  symbol: d_course_rainbow_road_vertex_0x04005420
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x499c
+
+d_course_rainbow_road_vertex_0x04005620:
+  symbol: d_course_rainbow_road_vertex_0x04005620
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4b5c
+
+d_course_rainbow_road_vertex_0x04005820:
+  symbol: d_course_rainbow_road_vertex_0x04005820
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x4d1c
+
+d_course_rainbow_road_vertex_0x04005A20:
+  symbol: d_course_rainbow_road_vertex_0x04005A20
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4edc
+
+d_course_rainbow_road_vertex_0x04005BA0:
+  symbol: d_course_rainbow_road_vertex_0x04005BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x502c
+
+d_course_rainbow_road_vertex_0x04005DA0:
+  symbol: d_course_rainbow_road_vertex_0x04005DA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x51ec
+
+d_course_rainbow_road_vertex_0x04005FA0:
+  symbol: d_course_rainbow_road_vertex_0x04005FA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x53ac
+
+d_course_rainbow_road_vertex_0x040061A0:
+  symbol: d_course_rainbow_road_vertex_0x040061A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x556c
+
+d_course_rainbow_road_vertex_0x04006320:
+  symbol: d_course_rainbow_road_vertex_0x04006320
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x56bc
+
+d_course_rainbow_road_vertex_0x04006520:
+  symbol: d_course_rainbow_road_vertex_0x04006520
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x587c
+
+d_course_rainbow_road_vertex_0x04006720:
+  symbol: d_course_rainbow_road_vertex_0x04006720
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5a3c
+
+d_course_rainbow_road_vertex_0x04006920:
+  symbol: d_course_rainbow_road_vertex_0x04006920
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5bfc
+
+d_course_rainbow_road_vertex_0x04006B20:
+  symbol: d_course_rainbow_road_vertex_0x04006B20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5dbc
+
+d_course_rainbow_road_vertex_0x04006BA0:
+  symbol: d_course_rainbow_road_vertex_0x04006BA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5e2c
+
+d_course_rainbow_road_vertex_0x04006DA0:
+  symbol: d_course_rainbow_road_vertex_0x04006DA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x5fec
+
+d_course_rainbow_road_vertex_0x04006FA0:
+  symbol: d_course_rainbow_road_vertex_0x04006FA0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x61ac
+
+d_course_rainbow_road_vertex_0x040071A0:
+  symbol: d_course_rainbow_road_vertex_0x040071A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x636c
+
+d_course_rainbow_road_vertex_0x040073A0:
+  symbol: d_course_rainbow_road_vertex_0x040073A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x652c
+
+d_course_rainbow_road_vertex_0x040075A0:
+  symbol: d_course_rainbow_road_vertex_0x040075A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x66ec
+
+d_course_rainbow_road_vertex_0x040077A0:
+  symbol: d_course_rainbow_road_vertex_0x040077A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x68ac
+
+d_course_rainbow_road_vertex_0x040079A0:
+  symbol: d_course_rainbow_road_vertex_0x040079A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x6a6c
+
+d_course_rainbow_road_vertex_0x04007B80:
+  symbol: d_course_rainbow_road_vertex_0x04007B80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6c10
+
+d_course_rainbow_road_vertex_0x04007D80:
+  symbol: d_course_rainbow_road_vertex_0x04007D80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x6dd0
+
+d_course_rainbow_road_vertex_0x04007F80:
+  symbol: d_course_rainbow_road_vertex_0x04007F80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x6f90
+
+d_course_rainbow_road_vertex_0x04008100:
+  symbol: d_course_rainbow_road_vertex_0x04008100
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x70e0
+
+d_course_rainbow_road_vertex_0x04008300:
+  symbol: d_course_rainbow_road_vertex_0x04008300
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x72a0
+
+d_course_rainbow_road_vertex_0x04008500:
+  symbol: d_course_rainbow_road_vertex_0x04008500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7460
+
+d_course_rainbow_road_vertex_0x04008700:
+  symbol: d_course_rainbow_road_vertex_0x04008700
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7620
+
+d_course_rainbow_road_vertex_0x04008900:
+  symbol: d_course_rainbow_road_vertex_0x04008900
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x77e0
+
+d_course_rainbow_road_vertex_0x04008A80:
+  symbol: d_course_rainbow_road_vertex_0x04008A80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7930
+
+d_course_rainbow_road_vertex_0x04008C80:
+  symbol: d_course_rainbow_road_vertex_0x04008C80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7af0
+
+d_course_rainbow_road_vertex_0x04008E80:
+  symbol: d_course_rainbow_road_vertex_0x04008E80
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7cb0
+
+d_course_rainbow_road_vertex_0x04008F00:
+  symbol: d_course_rainbow_road_vertex_0x04008F00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7d20
+
+d_course_rainbow_road_vertex_0x04009100:
+  symbol: d_course_rainbow_road_vertex_0x04009100
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x7ee0
+
+d_course_rainbow_road_vertex_0x04009300:
+  symbol: d_course_rainbow_road_vertex_0x04009300
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x80a0
+
+d_course_rainbow_road_vertex_0x04009500:
+  symbol: d_course_rainbow_road_vertex_0x04009500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8260
+
+d_course_rainbow_road_vertex_0x04009700:
+  symbol: d_course_rainbow_road_vertex_0x04009700
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x8420
+
+d_course_rainbow_road_vertex_0x04009740:
+  symbol: d_course_rainbow_road_vertex_0x04009740
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8458
+
+d_course_rainbow_road_vertex_0x04009920:
+  symbol: d_course_rainbow_road_vertex_0x04009920
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x85fc
+
+d_course_rainbow_road_vertex_0x04009B20:
+  symbol: d_course_rainbow_road_vertex_0x04009B20
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x87bc
+
+d_course_rainbow_road_vertex_0x04009B80:
+  symbol: d_course_rainbow_road_vertex_0x04009B80
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x8810
+
+d_course_rainbow_road_vertex_0x04009BC0:
+  symbol: d_course_rainbow_road_vertex_0x04009BC0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8848
+
+d_course_rainbow_road_vertex_0x04009DA0:
+  symbol: d_course_rainbow_road_vertex_0x04009DA0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x89ec
+
+d_course_rainbow_road_vertex_0x04009EE0:
+  symbol: d_course_rainbow_road_vertex_0x04009EE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8b04
+
+d_course_rainbow_road_vertex_0x0400A0E0:
+  symbol: d_course_rainbow_road_vertex_0x0400A0E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x8cc4
+
+d_course_rainbow_road_vertex_0x0400A260:
+  symbol: d_course_rainbow_road_vertex_0x0400A260
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8e14
+
+d_course_rainbow_road_vertex_0x0400A460:
+  symbol: d_course_rainbow_road_vertex_0x0400A460
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x8fd4
+
+d_course_rainbow_road_vertex_0x0400A640:
+  symbol: d_course_rainbow_road_vertex_0x0400A640
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9178
+
+d_course_rainbow_road_vertex_0x0400A820:
+  symbol: d_course_rainbow_road_vertex_0x0400A820
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x931c
+
+d_course_rainbow_road_vertex_0x0400A8C0:
+  symbol: d_course_rainbow_road_vertex_0x0400A8C0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x93a8
+
+d_course_rainbow_road_vertex_0x0400AAA0:
+  symbol: d_course_rainbow_road_vertex_0x0400AAA0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x954c
+
+d_course_rainbow_road_vertex_0x0400AC60:
+  symbol: d_course_rainbow_road_vertex_0x0400AC60
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x96d4
+
+d_course_rainbow_road_vertex_0x0400AE60:
+  symbol: d_course_rainbow_road_vertex_0x0400AE60
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9894
+
+d_course_rainbow_road_vertex_0x0400B040:
+  symbol: d_course_rainbow_road_vertex_0x0400B040
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x9a38
+
+d_course_rainbow_road_vertex_0x0400B080:
+  symbol: d_course_rainbow_road_vertex_0x0400B080
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9a70
+
+d_course_rainbow_road_vertex_0x0400B280:
+  symbol: d_course_rainbow_road_vertex_0x0400B280
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x9c30
+
+d_course_rainbow_road_vertex_0x0400B440:
+  symbol: d_course_rainbow_road_vertex_0x0400B440
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9db8
+
+d_course_rainbow_road_vertex_0x0400B640:
+  symbol: d_course_rainbow_road_vertex_0x0400B640
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9f78
+
+d_course_rainbow_road_vertex_0x0400B840:
+  symbol: d_course_rainbow_road_vertex_0x0400B840
+  type: mk64:course_vtx
+  count: 21
+  offset: 0xa138
+
+d_course_rainbow_road_vertex_0x0400B930:
+  symbol: d_course_rainbow_road_vertex_0x0400B930
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xa20a
+
+d_course_rainbow_road_vertex_0x0400BB10:
+  symbol: d_course_rainbow_road_vertex_0x0400BB10
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xa3ae
+
+d_course_rainbow_road_vertex_0x0400BC50:
+  symbol: d_course_rainbow_road_vertex_0x0400BC50
+  type: mk64:course_vtx
+  count: 16
+  offset: 0xa4c6
+
+d_course_rainbow_road_vertex_0x0400BCF0:
+  symbol: d_course_rainbow_road_vertex_0x0400BCF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa552
+
+d_course_rainbow_road_vertex_0x0400BEF0:
+  symbol: d_course_rainbow_road_vertex_0x0400BEF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa712
+
+d_course_rainbow_road_vertex_0x0400C0F0:
+  symbol: d_course_rainbow_road_vertex_0x0400C0F0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xa8d2

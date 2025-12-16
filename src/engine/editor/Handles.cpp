@@ -3,10 +3,8 @@
 
 #include "Handles.h"
 
-namespace Editor {
+namespace TrackEditor {
     Handles::Handles() {
-        Pos = &pos;
-        Rot = &rot;
     }
 
     void Handles::Load() {

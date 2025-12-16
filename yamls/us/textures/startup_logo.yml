@@ -1,0 +1,19 @@
+:config:
+  segments:
+    - [0x06, 0x825800]
+  header:
+    code:
+      - '#include <assets/startup_logo.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <common_structs.h>'
+      - '#include <align_asset_macro.h>'
+startup_reflection_map_gold:
+  symbol: startup_reflection_map_gold
+  type: texture
+  ctype: u16
+  offset: 0x8A48
+  size: 2048
+  width: 32
+  height: 32
+  format: RGBA16

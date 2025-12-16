@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include "resource/Resource.h"
+#include "ship/resource/Resource.h"
 
 struct AdpcmLoop {
     uint32_t start;

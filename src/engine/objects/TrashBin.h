@@ -1,30 +1,32 @@
 #pragma once
 
 #include <libultraship.h>
-#include <vector>
 #include "Object.h"
 
+#include "RegisterContent.h"
 #include "World.h"
-
-extern "C" {
-#include "macros.h"
-#include "main.h"
-#include "vehicles.h"
-#include "waypoints.h"
-#include "common_structs.h"
-#include "objects.h"
-#include "camera.h"
-#include "some_data.h"
-}
 
 class OTrashBin : public OObject {
 public:
 
-    enum Behaviour {
+    enum Behaviour : int16_t {
         STATIC, // The lid stays shut
         MUNCHING // The lid opens/closes in a scary munching manner
     };
-    explicit OTrashBin(const FVector& pos, const IRotator& rotation, f32 scale, OTrashBin::Behaviour bhv);
+
+    // This is simply a helper function to keep Spawning code clean
+    static OTrashBin* Spawn(const FVector& pos, const IRotator& rot, f32 scale, OTrashBin::Behaviour bhv) {
+        SpawnParams params = {
+            .Name = "mk:trash_bin",
+            .Behaviour = bhv,
+            .Location = pos,
+            .Rotation = rot,
+            .Scale = FVector(0, scale, 0),
+        };
+        return dynamic_cast<OTrashBin*>(AddObjectToWorld<OTrashBin>(params));
+    }
+
+    explicit OTrashBin(const SpawnParams& params);
 
     virtual void Tick() override;
     virtual void Draw(s32 cameraId) override;

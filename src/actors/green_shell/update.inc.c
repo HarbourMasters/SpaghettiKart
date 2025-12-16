@@ -32,8 +32,8 @@ void update_actor_green_shell(struct ShellActor* shell) {
     height = shell->pos[0];
     y = shell->pos[1];
     z = shell->pos[2];
-    if ((z < gCourseMinZ) || (gCourseMaxZ < z) || (height < gCourseMinX) || (gCourseMaxX < height) ||
-        (y < gCourseMinY)) {
+    if ((z < gTrackMinZ) || (gTrackMaxZ < z) || (height < gTrackMinX) || (gTrackMaxX < height) ||
+        (y < gTrackMinY)) {
         destroy_destructable_actor((struct Actor*) shell);
     }
     shell->rotVelocity += 0x71C;

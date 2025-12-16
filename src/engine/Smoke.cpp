@@ -13,7 +13,8 @@ extern "C" {
 #include "code_80057C60.h"
 #include "update_objects.h"
 #include "math_util_2.h"
-#include "assets/common_data.h"
+#include "assets/models/common_data.h"
+#include "assets/textures/common_data.h"
 }
 
 //! @todo: This should be an Object class one day
@@ -23,8 +24,8 @@ void TrainSmokeTick() {
     s32 temp_a0;
     Object* object;
 
-    for (auto& actor : gWorldInstance.Actors) {
-        if (auto train = dynamic_cast<ATrain*>(actor)) {
+    for (auto& actor : GetWorld()->Actors) {
+        if (auto* train = dynamic_cast<ATrain*>(actor.get())) {
             if (train->SmokeTimer != 0) {
                 train->SmokeTimer -= 1;
             }
@@ -48,7 +49,7 @@ void TrainSmokeTick() {
                     train->SmokeTimer = 100;
                 }
             }
-        } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
+        } else if (auto* boat = dynamic_cast<ABoat*>(actor.get())) {
             if (boat->SmokeTimer != 0) {
                 boat->SmokeTimer -= 1;
             }
@@ -78,8 +79,8 @@ void TrainSmokeTick() {
 void TrainSmokeDraw(s32 cameraId) {
     Camera* camera = &camera1[cameraId];
 
-    for (auto& actor : gWorldInstance.Actors) {
-        if (auto train = dynamic_cast<ATrain*>(actor)) {
+    for (auto& actor : GetWorld()->Actors) {
+        if (auto train = dynamic_cast<ATrain*>(actor.get())) {
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
             load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);
             func_8004B72C(255, 255, 255, 255, 255, 255, 255);
@@ -93,7 +94,7 @@ void TrainSmokeDraw(s32 cameraId) {
                     FrameInterpolation_RecordCloseChild();
                 }
             }
-        } else if (auto boat = dynamic_cast<ABoat*>(actor)) {
+        } else if (auto* boat = dynamic_cast<ABoat*>(actor.get())) {
             gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007AE0);
 
             load_texture_block_i8_nomirror((uint8_t*) D_0D029458, 32, 32);

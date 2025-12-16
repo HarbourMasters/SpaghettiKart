@@ -9,7 +9,7 @@ public:
     uint16_t PlayerId;
 
     // Constructor
-    ABanana(uint16_t playerId, const float pos[3], const s16 rot[3], const float velocity[3]);
+    ABanana(const SpawnParams& params);
     virtual ~ABanana() override = default;
 
     // Virtual functions to be overridden by derived classes

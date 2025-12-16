@@ -4,7 +4,7 @@
 #include "vehicles.h"
 #include "camera.h"
 #include "waypoints.h"
-#include <assets/common_data.h>
+#include <assets/textures/common_data.h>
 
 struct unexpiredActors {
     /* 0x00 */ s32 unk0;
@@ -43,11 +43,6 @@ typedef struct {
     s16 unk4;
     u16 unk6;
 } UnkStruct_46D0;
-
-typedef struct {
-    s16 x;
-    s16 z;
-} Path2D;
 
 enum CpuItemStrategyEnum {
     CPU_STRATEGY_WAIT_NEXT_ITEM = 0,
@@ -189,7 +184,7 @@ f32 func_80010FA0(f32, f32, f32, s32, s32);
 
 s32 func_80011014(TrackPathPoint*, TrackPathPoint*, s32, s32);
 s32 process_path_data(TrackPathPoint*, TrackPathPoint*);
-s32 generate_2d_path(Path2D*, TrackPathPoint*, s32);
+s32 generate_2d_path(TrackPathPoint*, TrackPathPoint*, s32);
 void copy_courses_cpu_behaviour(void);
 void reset_cpu_behaviour_none(s32);
 void reset_cpu_behaviour(s32);
@@ -202,7 +197,7 @@ void generate_train_path(void);
 void generate_ferry_path(void);
 void spawn_vehicle_on_road(Vec3f position, Vec3s rotation, Vec3f velocity, s32 waypointIndex,
                            s32 someMultiplierTheSequel, f32 speed);
-void set_vehicle_pos_path_point(TrainCarStuff*, Path2D*, u16);
+void set_vehicle_pos_path_point(TrainCarStuff*, TrackPathPoint*, u16);
 void init_vehicles_trains(size_t, size_t, f32);
 void sync_train_components(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
@@ -383,8 +378,10 @@ extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
 extern TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[];
-extern Path2D* gVehicle2DPathPoint;
-extern s32 gVehicle2DPathLength;
+extern TrackPathPoint* gVehicle2DPathPoint;
+extern s32 gVehicle2DPathSize;
+extern TrackPathPoint* gVehiclePath;
+extern size_t gVehiclePathSize;
 extern u16 isCrossingTriggeredByIndex[];
 extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];

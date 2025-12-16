@@ -10,8 +10,8 @@
 #include <limits>
 #include <cmath>
 
-#include <graphic/Fast3D/Fast3dWindow.h>
-#include <graphic/Fast3D/interpreter.h>
+#include <fast/Fast3dWindow.h>
+#include <fast/interpreter.h>
 
 extern "C" {
 #include "common_structs.h"
@@ -42,12 +42,13 @@ bool IsInGameScreen() {
 
 FVector ScreenRayTrace() {
     auto wnd = GameEngine::Instance->context->GetWindow();
-    Camera* camera = &cameras[0];
+    Camera* camera = gScreenOneCtx->camera;
 
     Ship::Coords mouse = wnd->GetMousePos();
     auto gfx_current_game_window_viewport = GetInterpreter()->mGameWindowViewport;
     mouse.x -= gfx_current_game_window_viewport.x;
     mouse.y -= gfx_current_game_window_viewport.y;
+
     // Get screen dimensions
     uint32_t width = OTRGetGameViewportWidth();
     uint32_t height = OTRGetGameViewportHeight();
@@ -61,7 +62,7 @@ FVector ScreenRayTrace() {
 
     Mat4 perspMtx;
     u16 perspNorm;
-    guPerspectiveF(perspMtx, &perspNorm, gCameraZoom[0], OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
+    guPerspectiveF(perspMtx, &perspNorm, camera->fieldOfView, OTRGetAspectRatio(), CM_GetProps()->NearPersp, CM_GetProps()->FarPersp, 1.0f);
 
     Mat4 inversePerspMtx;
     if (InverseMatrix((float*)&perspMtx, (float*)&inversePerspMtx) != 2) {
@@ -285,7 +286,6 @@ std::optional<FVector> QueryHandleIntersection(MtxF mtx, Ray ray, const Triangle
     if (IntersectRayTriangle(localRay, tri, t)) {
         FVector localClickPosition = localRay.Origin + localRay.Direction * t;
         FVector worldClickPosition = TransformVecByMatrix(localClickPosition, (float(*)[4])&mtx);
-
         return worldClickPosition; // Stop checking objects if we selected a Gizmo handle
     }
     return std::nullopt;
@@ -381,8 +381,9 @@ float CalculateAngle(const FVector& start, const FVector& end) {
 }
 
 void SetDirectionFromRotator(IRotator rot, s8 direction[3]) {
+    rot.yaw += 0xC000; //! @warning dumb hack to align the light properly
     float yaw = (rot.yaw) * (M_PI / 32768.0f);  // Convert from n64 binary angles 0-0xFFFF 0-360 degrees to radians
-    float pitch = rot.pitch * (M_PI / 32768.0f); 
+    float pitch = rot.pitch * (M_PI / 32768.0f);
 
     // Compute unit direction vector
     float x = cosf(yaw) * cosf(pitch);
@@ -411,10 +412,11 @@ void SetRotatorFromDirection(FVector direction, IRotator* rot) {
 }
 
 FVector GetPositionAheadOfCamera(f32 dist) {
-    FVector pos = FVector(cameras[0].pos[0], cameras[0].pos[1], cameras[0].pos[2]);
+    Camera* camera = gScreenOneCtx->camera;
+    FVector pos = FVector(camera->pos[0], camera->pos[1], camera->pos[2]);
 
-    f32 pitch = (cameras[0].rot[2] / 65535.0f) * 360.0f;
-    f32 yaw = (cameras[0].rot[1] / 65535.0f) * 360.0f;
+    f32 pitch = (camera->rot[2] / 65535.0f) * 360.0f;
+    f32 yaw = (camera->rot[1] / 65535.0f) * 360.0f;
 
     // Convert degrees to radians
     pitch = pitch * M_PI / 180.0f;
@@ -422,7 +424,7 @@ FVector GetPositionAheadOfCamera(f32 dist) {
 
     // Compute forward vector
     FVector forward(
-        -sinf(yaw),  // X
+        sinf(yaw),  // X
         -sinf(pitch), // Y
         cosf(yaw)               // Z (vertical component)
     );

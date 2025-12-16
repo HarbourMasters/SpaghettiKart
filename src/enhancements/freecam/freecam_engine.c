@@ -57,7 +57,7 @@ void freecam_calculate_forward_vector_allow_rotation(Camera* camera, Vec3f forwa
     yaw = yaw * M_PI / 180.0f;
 
     // Calculate the forward vector based on yaw, ignoring pitch to keep height unchanged
-    forwardVector[0] = -sinf(yaw);
+    forwardVector[0] = sinf(yaw);
     forwardVector[1] = -sinf(pitch); // Keep the height unchanged
     forwardVector[2] = cosf(yaw);
 }

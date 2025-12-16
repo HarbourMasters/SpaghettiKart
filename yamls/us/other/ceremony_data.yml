@@ -1,0 +1,43 @@
+:config:
+  segments:
+    - [0x0B, 0x821D10]
+  header:
+    code:
+    - '#include <assets/ceremony_data.h>'
+    header:
+    - '#include <libultraship.h>'
+    - '#include <common_structs.h>'
+    - '#include <waypoints.h>'
+    - '#include <align_asset_macro.h>'
+light1:
+  symbol: light1
+  type: lights
+  offset: 0x6BB8
+light2:
+  symbol: light2
+  type: lights
+  offset: 0x7748
+light3:
+  symbol: light3
+  type: lights
+  offset: 0x8058
+ending_sequence:
+  symbol: podium_ceremony_path
+  type: mk64:track_path
+  offset: 0x8AA8
+  count: 24
+ending_sequence2:
+  symbol: podium_ceremony_path_2
+  type: mk64:track_path
+  offset: 0x8B68
+  count: 23
+ending_sequence3:
+  symbol: podium_ceremony_path_3
+  type: mk64:track_path
+  offset: 0x8C20
+  count: 24
+ending_sequence4:
+  symbol: podium_ceremony_path_4
+  type: mk64:track_path
+  offset: 0x8CE0
+  count: 21

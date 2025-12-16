@@ -1,11 +1,12 @@
 # Texture Pack
-To replace textures you should only create a zip file with textures to replace at the same path as mk64.o2r. Only png, jpg and bmp files are supported.
+To replace textures you should only create a zip file or a folder with textures to replace at the same path as mk64.o2r. Only png, jpg and bmp files are supported.
 ## Example:
-You want to change other_textures/logo_mario_kart_64 then you just need to create a zip file with the following structure:
+You want to change textures/other_textures/logo_mario_kart_64 then you just need to create a zip file or folder with the following structure:
 ```
 textures_pack.zip
-└── other_textures
-    └── logo_mario_kart_64.png
+└── textures
+    └── other_textures
+        └── logo_mario_kart_64.png
 ```
 
 ## Tools To Help

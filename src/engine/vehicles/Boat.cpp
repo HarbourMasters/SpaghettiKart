@@ -1,6 +1,8 @@
 #include <libultraship.h>
 #include "Boat.h"
 #include <vector>
+#include "Utils.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "macros.h"
@@ -15,19 +17,35 @@ extern s8 gPlayerCount;
 }
 
 size_t ABoat::_count = 0;
+std::map<uint32_t, std::vector<uint32_t>> ABoat::BoatCounts;
 
-ABoat::ABoat(f32 speed, u32 waypoint) {
+ABoat::ABoat(const SpawnParams& params) : AActor(params) {
     Name = "Paddle Steam Boat";
-    Path2D* temp_a2;
-    u16 waypointOffset;
+    ResourceName = "mk:paddle_boat";
+    BoundingBoxSize = 2.0f;
+    TrackPathPoint* temp_a2;
     Index = _count;
-    Speed = speed;
+    Speed = params.Speed.value_or(0);
 
     // Set to the default value
     std::fill(SmokeParticles, SmokeParticles + 128, NULL_OBJECT_ID);
 
-    waypointOffset = waypoint;
-    temp_a2 = &gVehicle2DPathPoint[waypointOffset];
+    ABoat::SpawnMode spawnMode = static_cast<SpawnMode>(params.Type.value_or(SpawnMode::POINT));
+    uint32_t pathIndex = params.PathIndex.value_or(0);
+    uint32_t pathPoint = 0;
+
+    switch(spawnMode) {
+        case SpawnMode::POINT: // Spawn train at a specific path point
+            pathPoint = params.PathPoint.value_or(0);
+            BoatCounts[pathIndex].push_back(pathPoint);
+            break;
+        case SpawnMode::AUTO: // Automatically distribute trains based on a specific path point
+            pathPoint = GetVehiclePathPointDistributed(BoatCounts[pathIndex], gVehiclePathSize);
+            BoatCounts[pathIndex].push_back(pathPoint);
+            break;
+    }
+
+    temp_a2 = &gVehicle2DPathPoint[pathPoint];
     Position[0] = temp_a2->x;
     Position[1] = D_80162EB2;
     Position[2] = temp_a2->z;
@@ -54,6 +72,14 @@ ABoat::ABoat(f32 speed, u32 waypoint) {
     _count++;
 }
 
+void ABoat::SetSpawnParams(SpawnParams& params) {
+    AActor::SetSpawnParams(params);
+    params.Type = static_cast<uint16_t>(SpawnType);
+    params.Speed = Speed;
+    params.PathIndex = PathIndex;
+    params.PathPoint = PathPoint;
+}
+
 void ABoat::Draw(Camera* camera) {
 }
 
@@ -62,7 +88,7 @@ bool ABoat::IsMod() {
 }
 
 void ABoat::Tick() {
-    Path2D* waypoint;
+    TrackPathPoint* waypoint;
     struct Actor* paddleBoatActor;
     f32 temp_f26;
     f32 temp_f28;
@@ -106,7 +132,7 @@ void ABoat::Tick() {
         sp94[0] = temp_f26;
         sp94[1] = temp_f28;
         sp94[2] = temp_f30;
-        waypoint = &gVehicle2DPathPoint[(WaypointIndex + 5) % gVehicle2DPathLength];
+        waypoint = &gVehicle2DPathPoint[(WaypointIndex + 5) % gVehiclePathSize];
         sp88[0] = (f32) waypoint->x;
         sp88[1] = (f32) D_80162EB0;
         sp88[2] = (f32) waypoint->z;
@@ -179,7 +205,7 @@ void ABoat::VehicleCollision(s32 playerId, Player* player) {
                     if ((is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], 200.0f, 60.0f,
                                                  playerX, playerZ) == 1) &&
                         (y_diff < 60.0)) {
-                        player->soundEffects |= 0x80000;
+                        player->triggers |= HIT_PADDLE_BOAT_TRIGGER;
                     }
                 }
             }
@@ -194,4 +220,56 @@ s32 ABoat::AddSmoke(size_t ferryIndex, Vec3f pos, f32 velocity) {
     }
 
     return objectIndex;
+}
+
+void ABoat::DrawEditorProperties() {
+    ImGui::Text("Spawn Mode");
+    ImGui::SameLine();
+
+    int32_t type = static_cast<int32_t>(SpawnType);
+    const char* items[] = { "POINT", "AUTO" };
+
+    if (ImGui::Combo("##Type", &type, items, IM_ARRAYSIZE(items))) {
+        SpawnType = static_cast<ABoat::SpawnMode>(type);
+    }
+
+    if (SpawnType == ABoat::SpawnMode::POINT) {
+        ImGui::Text("Path Index");
+        ImGui::SameLine();
+
+        int pathIndex = static_cast<int>(PathIndex);
+        if (ImGui::InputInt("##PathIndex", &pathIndex)) {
+            if (pathIndex < 0) pathIndex = 0;
+            PathIndex = static_cast<uint32_t>(pathIndex);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathIndex")) {
+            PathIndex = 0;
+        }
+
+        ImGui::Text("Path Point");
+        ImGui::SameLine();
+
+        int pathPoint = static_cast<int>(PathPoint);
+        if (ImGui::InputInt("##PathPoint", &pathPoint)) {
+            if (pathPoint < 0) pathPoint = 0;
+            PathPoint = static_cast<uint32_t>(pathPoint);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathPoint")) {
+            PathPoint = 0;
+        }
+    }
+
+    ImGui::Text("Speed");
+    ImGui::SameLine();
+
+    float speed = Speed;
+    if (ImGui::DragFloat("##Speed", &speed, 0.1f)) {
+        Speed = speed;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetSpeed")) {
+        Speed = 0.0f;
+    }
 }

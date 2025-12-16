@@ -9,6 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 void ApplyMatrixTransformations(Mat4 mtx, FVector pos, IRotator rot, FVector scale);
+void ApplySphericalBillBoard(Mat4 mat, FVector pos, FVector scale, s32 cameraIndex);
 void AddLocalRotation(Mat4 mat, IRotator rot);
 #endif
 void ClearMatrixPools(void);

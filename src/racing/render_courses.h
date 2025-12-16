@@ -3,35 +3,14 @@
 
 #include "code_800029B0.h"
 #include "../camera.h"
-#include <course.h>
+#include "src/engine/tracks/Track.h"
 
-void func_8029122C(struct UnkStruct_800DC5EC*, s32);
+void func_8029122C(ScreenContext*, s32);
 s32 func_80290C20(Camera*);
-void parse_course_displaylists(TrackSections* asset);
-void render_course_segments(const char*[], struct UnkStruct_800DC5EC*);
+void parse_track_displaylists(TrackSections* asset);
+void render_track_sections(const char*[], ScreenContext*);
 void func_80291198(void);
-void render_mario_raceway_pipe(void);
-void render_choco_mountain(struct UnkStruct_800DC5EC*);
-void render_bowsers_castle(struct UnkStruct_800DC5EC*);
-void render_banshee_boardwalk(struct UnkStruct_800DC5EC*);
-void render_yoshi_valley(struct UnkStruct_800DC5EC*);
-void render_frappe_snowland(struct UnkStruct_800DC5EC*);
-void render_koopa_troopa_beach(struct UnkStruct_800DC5EC*);
-void render_royal_raceway(struct UnkStruct_800DC5EC*);
-void render_luigi_raceway(struct UnkStruct_800DC5EC*);
-void render_toads_turnpike(struct UnkStruct_800DC5EC*);
-void render_kalimari_desert(struct UnkStruct_800DC5EC*);
-void render_sherbet_land(struct UnkStruct_800DC5EC*);
-void render_rainbow_road(struct UnkStruct_800DC5EC*);
-void render_wario_stadium(struct UnkStruct_800DC5EC*);
-void render_block_fort(struct UnkStruct_800DC5EC*);
-void render_skyscraper(struct UnkStruct_800DC5EC*);
-void render_double_deck(struct UnkStruct_800DC5EC*);
-void render_dks_jungle_parkway(struct UnkStruct_800DC5EC*);
-void render_big_donut(struct UnkStruct_800DC5EC*);
-void render_credits(void);
-void course_init(void);
-void render_course(struct UnkStruct_800DC5EC*);
+void render_track(ScreenContext*);
 void func_80295BF8(s32);
 void func_80295C6C(void);
 void func_80295D50(s16, s16);
@@ -46,8 +25,8 @@ extern s32 D_802B87C8;
 extern s32 D_802B87CC;
 extern s32 D_802B87BC;
 
-extern s16 D_802B87B0;
-extern s16 D_802B87B4;
+extern s16 gFogMin;
+extern s16 gFogMax;
 extern s16 D_802B87D0;
 extern s16 D_802B87D4;
 

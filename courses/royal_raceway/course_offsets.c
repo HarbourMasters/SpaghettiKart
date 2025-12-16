@@ -1,6 +1,6 @@
 #include <libultra/types.h>
 #include "course_offsets.h"
-#include <assets/royal_raceway_data.h>
+#include <assets/models/tracks/royal_raceway/royal_raceway_data.h>
 
 const Gfx* royal_raceway_dls[] = {
     d_course_royal_raceway_dl_0,    d_course_royal_raceway_dl_360,  d_course_royal_raceway_dl_258,

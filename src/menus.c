@@ -6,6 +6,8 @@
 #include <stubs.h>
 
 #include "menus.h"
+#include "TrackBrowser.h"
+#include "editor/Editor.h"
 #include "main.h"
 #include "code_800029B0.h"
 #include "actors.h"
@@ -46,11 +48,11 @@ s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when s
                                      // Ghost)
 s8 gBattleResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
 s8 gTimeTrialDataCourseIndex;
-s8 gCourseRecordsMenuSelection;    // Used for selecting an option in course record data
+s8 gCourseRecordsMenuSelection;    // Used for selecting an option in track record data
 s8 gCourseRecordsSubMenuSelection; // Used for erase records and ghosts (Quit - Erase)
 s8 gDebugGotoScene;
 bool gGhostPlayerInit;
-bool gCourseMapInit;
+bool gTrackMapInit;
 s32 gMenuTimingCounter;
 s32 gMenuDelayTimer;
 s8 gDemoUseController; // Sets true alongside gDemoMode, controller related
@@ -133,15 +135,15 @@ const s8 sCharacterGridOrder[] = {
 
 const s16 gCupCourseOrder[5][4] = {
     // mushroom cup
-    { COURSE_LUIGI_RACEWAY, COURSE_MOO_MOO_FARM, COURSE_KOOPA_BEACH, COURSE_KALIMARI_DESERT },
+    { TRACK_LUIGI_RACEWAY, TRACK_MOO_MOO_FARM, TRACK_KOOPA_BEACH, TRACK_KALIMARI_DESERT },
     // flower cup
-    { COURSE_TOADS_TURNPIKE, COURSE_FRAPPE_SNOWLAND, COURSE_CHOCO_MOUNTAIN, COURSE_MARIO_RACEWAY },
+    { TRACK_TOADS_TURNPIKE, TRACK_FRAPPE_SNOWLAND, TRACK_CHOCO_MOUNTAIN, TRACK_MARIO_RACEWAY },
     // star cup
-    { COURSE_WARIO_STADIUM, COURSE_SHERBET_LAND, COURSE_ROYAL_RACEWAY, COURSE_BOWSER_CASTLE },
+    { TRACK_WARIO_STADIUM, TRACK_SHERBET_LAND, TRACK_ROYAL_RACEWAY, TRACK_BOWSER_CASTLE },
     // special cup
-    { COURSE_DK_JUNGLE, COURSE_YOSHI_VALLEY, COURSE_BANSHEE_BOARDWALK, COURSE_RAINBOW_ROAD },
+    { TRACK_DK_JUNGLE, TRACK_YOSHI_VALLEY, TRACK_BANSHEE_BOARDWALK, TRACK_RAINBOW_ROAD },
     // battle mode
-    { COURSE_BIG_DONUT, COURSE_BLOCK_FORT, COURSE_DOUBLE_DECK, COURSE_SKYSCRAPER },
+    { TRACK_BIG_DONUT, TRACK_BLOCK_FORT, TRACK_DOUBLE_DECK, TRACK_SKYSCRAPER },
 };
 
 const s8 unref_800F2BDC[4] = { 1, 0, 0, 0 };
@@ -463,7 +465,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & A_BUTTON) {
                     sp38->param2 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
-                    if (sp30[sp38->param2].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
+                    if (sp30[sp38->param2].trackIndex == D_8018EE10[PLAYER_TWO].trackIndex &&
                         D_8018EE10[PLAYER_TWO].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST2_2P;
                     } else {
@@ -476,8 +478,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->param2].courseIndex !=
-                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
+                if ((sp30[sp38->param2].trackIndex !=
+                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->trackIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
@@ -593,7 +595,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 gSubMenuSelection = SUB_MENU_COPY_PAK_COMPLETED;
-                D_8018EE10[sp38->param1].courseIndex = (sp30 + sp38->param2)->courseIndex;
+                D_8018EE10[sp38->param1].trackIndex = (sp30 + sp38->param2)->trackIndex;
                 func_800B6088(sp38->param1);
                 break;
             }
@@ -670,7 +672,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            // If A pressed, go to selected course's records
+            // If A pressed, go to selected track's records
             if ((btnAndStick & A_BUTTON) != 0) {
                 gCourseRecordsMenuSelection = COURSE_RECORDS_MENU_RETURN_MENU;
                 func_8009E1C0();
@@ -687,7 +689,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
 }
 
 /**
- * Navigation of the course records data menu
+ * Navigation of the track records data menu
  */
 void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerIdx) {
     u16 btnAndStick; // sp2E
@@ -1054,9 +1056,9 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             case DEBUG_MENU_COURSE: {
                 if (btnAndStick & R_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    NextCourse();
-                    gCurrentCourseId = GetCourseIndex();
-                    // if (gCurrentCourseId < (NUM_COURSES - 2)) {
+                    TrackBrowser_NextTrack();
+                    gCurrentCourseId = TrackBrowser_GetTrackIndex();
+                    // if (gCurrentCourseId < (NUM_TRACKS - 2)) {
                     //     gCurrentCourseId += 1;
                     // } else {
                     //     gCurrentCourseId = 0;
@@ -1064,12 +1066,12 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & L_JPAD) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    PreviousCourse();
-                    gCurrentCourseId = GetCourseIndex();
+                    TrackBrowser_PreviousTrack();
+                    gCurrentCourseId = TrackBrowser_GetTrackIndex();
                     // if (gCurrentCourseId > 0) {
                     //     gCurrentCourseId -= 1;
                     // } else {
-                    //     gCurrentCourseId = (NUM_COURSES - 2);
+                    //     gCurrentCourseId = (NUM_TRACKS - 2);
                     // }
                 }
                 if (btnAndStick & U_JPAD) {
@@ -1168,6 +1170,22 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (btnAndStick & D_JPAD) {
+                    gDebugMenuSelection = DEBUG_MENU_LAUNCH_EDITOR;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                break;
+            }
+            case DEBUG_MENU_LAUNCH_EDITOR: {
+                if (btnAndStick & (A_BUTTON | START_BUTTON)) {
+                    Editor_Launch("hm:test_track");
+                    play_sound2(SOUND_INTRO_ENTER_MENU);
+                }
+
+                if (btnAndStick & U_JPAD) {
+                    gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
+                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                }
+                if (btnAndStick & D_JPAD) {
                     gDebugMenuSelection = DEBUG_MENU_GIVE_ALL_GOLD_CUP;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
@@ -1175,7 +1193,7 @@ void splash_menu_act(struct Controller* controller, u16 controllerIdx) {
             }
             case DEBUG_MENU_GIVE_ALL_GOLD_CUP: {
                 if (btnAndStick & U_JPAD) {
-                    gDebugMenuSelection = DEBUG_MENU_SOUND_MODE;
+                    gDebugMenuSelection = DEBUG_MENU_LAUNCH_EDITOR;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
                 if (btnAndStick & B_BUTTON) {
@@ -1255,20 +1273,20 @@ void setup_game_mode_selected(void) {
         case GRAND_PRIX:
             gCCSelection = subMenuMode;
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = (subMenuMode == CC_EXTRA) ? 1 : 0;
+            set_mirror_mode((subMenuMode == CC_EXTRA) ? 1 : 0);
             break;
         case VERSUS:
             gCCSelection = subMenuMode;
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = (subMenuMode == CC_EXTRA) ? 1 : 0;
+            set_mirror_mode((subMenuMode == CC_EXTRA) ? 1 : 0);
             break;
         case BATTLE:
             gPlaceItemBoxes = 1;
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             break;
         case TIME_TRIALS:
             gCCSelection = CC_100;
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             gPlaceItemBoxes = 0;
 
             if ((subMenuMode && subMenuMode) && subMenuMode) {}
@@ -1737,7 +1755,7 @@ u32 WorldPreviousCup(void);
 u32 GetCupIndex(void);
 
 /**
- * Navigation of the map select course menu screen
+ * Navigation of the map select track menu screen
  */
 void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
     u16 btnAndStick = (controller->buttonPressed | controller->stickPressed);
@@ -1764,7 +1782,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
 
                 D_800DC540 = GetCupIndex();
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
-                SetCourseFromCup();
+                TrackBrowser_SetTrackFromCup();
                 if ((btnAndStick & B_BUTTON) != 0) {
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
@@ -1775,10 +1793,9 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     } else {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_OK;
                         play_sound2(SOUND_MENU_SELECT);
-                        //! @todo SetCourse() to course one;
-                        SetCupCursorPosition(COURSE_ONE);
-                        SetCourseFromCup();
-                        gCurrentCourseId = gCupCourseOrder[gCupSelection][COURSE_ONE];
+                        SetCupCursorPosition(TRACK_ONE);
+                        TrackBrowser_SetTrackFromCup();
+                        gCurrentCourseId = gCupCourseOrder[gCupSelection][TRACK_ONE];
                         gMenuTimingCounter = 0;
                     }
                     reset_cycle_flash_menu();
@@ -1792,7 +1809,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                     reset_cycle_flash_menu();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
-                if (((btnAndStick & U_JPAD) != 0) && (GetCupCursorPosition() > COURSE_ONE)) {
+                if (((btnAndStick & U_JPAD) != 0) && (GetCupCursorPosition() > TRACK_ONE)) {
                     --gCourseIndexInCup;
                     SetCupCursorPosition(GetCupCursorPosition() - 1);
                     reset_cycle_flash_menu();
@@ -1800,7 +1817,7 @@ void course_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
 
                 gCurrentCourseId = gCupCourseOrder[gCupSelection][gCourseIndexInCup];
-                SetCourseFromCup();
+                TrackBrowser_SetTrackFromCup();
                 if ((btnAndStick & B_BUTTON) != 0) {
                     if (gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) {
                         gSubMenuSelection = SUB_MENU_MAP_SELECT_CUP;
@@ -1895,7 +1912,7 @@ void load_menu_states(s32 menuSelection) {
         }
         case 0:
         case START_MENU: {
-            gIsMirrorMode = 0;
+            set_mirror_mode(0);
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
             CM_SetCup(GetMushroomCup());
             gCupSelection = MUSHROOM_CUP;
@@ -1910,14 +1927,14 @@ void load_menu_states(s32 menuSelection) {
             gScreenModeListIndex = sScreenModeIdxFromPlayerMode[gPlayerCount - 1];
             func_800CA008(0, 0);
             play_sequence(MUSIC_SEQ_TITLE_SCREEN);
-            gCourseMapInit = 0;
+            gTrackMapInit = 0;
             break;
         }
         case 1:
         case MAIN_MENU: {
             gEnableDebugMode = CVarGetInteger("gEnableDebugMode", 0);
-            gIsMirrorMode = 0;
-            gCourseMapInit = 0;
+            set_mirror_mode(0);
+            gTrackMapInit = 0;
             func_800B5F30();
             func_8000F0E0();
 

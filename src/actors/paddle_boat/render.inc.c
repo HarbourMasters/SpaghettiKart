@@ -5,19 +5,19 @@
 #include "main.h"
 #include "actors.h"
 #include "courses/all_course_data.h"
-#include <assets/dks_jungle_parkway_data.h>
+#include <assets/models/tracks/dks_jungle_parkway/dks_jungle_parkway_data.h>
 #include <libultra/gbi.h>
 
 /**
  * @brief Renders the paddle boat actor.
  * Actor used in DK's Jungle Parkway.
  *
- * @param arg0
+ * @param camera
  * @param boat
  * @param arg2
  * @param pathCounter
  */
-void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED Mat4 arg2, u16 pathCounter) {
+void render_actor_paddle_boat(Camera* camera, struct PaddleWheelBoat* boat, UNUSED Mat4 arg2, u16 pathCounter) {
     UNUSED s32 pad[3];
     Vec3f sp120;
     Mat4 spE0;
@@ -29,7 +29,7 @@ void render_actor_paddle_boat(Camera* arg0, struct PaddleWheelBoat* boat, UNUSED
         return;
     }
 
-    temp = is_within_render_distance(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1],
+    temp = is_within_render_distance(camera->pos, boat->pos, camera->rot[1], 90000.0f, camera->fieldOfView,
                                      9000000.0f);
 
     if (CVarGetInteger("gNoCulling", 0) == 1) {

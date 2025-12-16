@@ -1,0 +1,2265 @@
+:config:
+  segments:
+    - [0x0F, 0x928c70]
+  header:
+    code:
+      - '#include <libultraship.h>'
+    header:
+      - '#include <libultraship.h>'
+      - '#include <libultra/gbi.h>'
+      - '#include <align_asset_macro.h>'
+d_course_kalimari_desert_vertex_0x04000000:
+  symbol: d_course_kalimari_desert_vertex_0x04000000
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x0
+
+d_course_kalimari_desert_vertex_0x04000080:
+  symbol: d_course_kalimari_desert_vertex_0x04000080
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x70
+
+d_course_kalimari_desert_vertex_0x04000100:
+  symbol: d_course_kalimari_desert_vertex_0x04000100
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe0
+
+d_course_kalimari_desert_vertex_0x04000180:
+  symbol: d_course_kalimari_desert_vertex_0x04000180
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x150
+
+d_course_kalimari_desert_vertex_0x04000200:
+  symbol: d_course_kalimari_desert_vertex_0x04000200
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1c0
+
+d_course_kalimari_desert_vertex_0x04000280:
+  symbol: d_course_kalimari_desert_vertex_0x04000280
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x230
+
+d_course_kalimari_desert_vertex_0x04000300:
+  symbol: d_course_kalimari_desert_vertex_0x04000300
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2a0
+
+d_course_kalimari_desert_vertex_0x04000500:
+  symbol: d_course_kalimari_desert_vertex_0x04000500
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x460
+
+d_course_kalimari_desert_vertex_0x04000580:
+  symbol: d_course_kalimari_desert_vertex_0x04000580
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x4d0
+
+d_course_kalimari_desert_vertex_0x04000700:
+  symbol: d_course_kalimari_desert_vertex_0x04000700
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x620
+
+d_course_kalimari_desert_vertex_0x04000800:
+  symbol: d_course_kalimari_desert_vertex_0x04000800
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x700
+
+d_course_kalimari_desert_vertex_0x040009E0:
+  symbol: d_course_kalimari_desert_vertex_0x040009E0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8a4
+
+d_course_kalimari_desert_vertex_0x04000B00:
+  symbol: d_course_kalimari_desert_vertex_0x04000B00
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9a0
+
+d_course_kalimari_desert_vertex_0x04000CE0:
+  symbol: d_course_kalimari_desert_vertex_0x04000CE0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xb44
+
+d_course_kalimari_desert_vertex_0x04000D40:
+  symbol: d_course_kalimari_desert_vertex_0x04000D40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xb98
+
+d_course_kalimari_desert_vertex_0x04000F40:
+  symbol: d_course_kalimari_desert_vertex_0x04000F40
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd58
+
+d_course_kalimari_desert_vertex_0x04001120:
+  symbol: d_course_kalimari_desert_vertex_0x04001120
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xefc
+
+d_course_kalimari_desert_vertex_0x04001180:
+  symbol: d_course_kalimari_desert_vertex_0x04001180
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xf50
+
+d_course_kalimari_desert_vertex_0x04001360:
+  symbol: d_course_kalimari_desert_vertex_0x04001360
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x10f4
+
+d_course_kalimari_desert_vertex_0x04001480:
+  symbol: d_course_kalimari_desert_vertex_0x04001480
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x11f0
+
+d_course_kalimari_desert_vertex_0x04001660:
+  symbol: d_course_kalimari_desert_vertex_0x04001660
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1394
+
+d_course_kalimari_desert_vertex_0x040016C0:
+  symbol: d_course_kalimari_desert_vertex_0x040016C0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x13e8
+
+d_course_kalimari_desert_vertex_0x04001880:
+  symbol: d_course_kalimari_desert_vertex_0x04001880
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x1570
+
+d_course_kalimari_desert_vertex_0x040018C0:
+  symbol: d_course_kalimari_desert_vertex_0x040018C0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x15a8
+
+d_course_kalimari_desert_vertex_0x04001920:
+  symbol: d_course_kalimari_desert_vertex_0x04001920
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x15fc
+
+d_course_kalimari_desert_vertex_0x040019B0:
+  symbol: d_course_kalimari_desert_vertex_0x040019B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x167a
+
+d_course_kalimari_desert_vertex_0x04001A10:
+  symbol: d_course_kalimari_desert_vertex_0x04001A10
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x16ce
+
+d_course_kalimari_desert_vertex_0x04001B00:
+  symbol: d_course_kalimari_desert_vertex_0x04001B00
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x17a0
+
+d_course_kalimari_desert_vertex_0x04001B90:
+  symbol: d_course_kalimari_desert_vertex_0x04001B90
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x181e
+
+d_course_kalimari_desert_vertex_0x04001C00:
+  symbol: d_course_kalimari_desert_vertex_0x04001C00
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1880
+
+d_course_kalimari_desert_vertex_0x04001C60:
+  symbol: d_course_kalimari_desert_vertex_0x04001C60
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x18d4
+
+d_course_kalimari_desert_vertex_0x04001CF0:
+  symbol: d_course_kalimari_desert_vertex_0x04001CF0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x1952
+
+d_course_kalimari_desert_vertex_0x04001D50:
+  symbol: d_course_kalimari_desert_vertex_0x04001D50
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x19a6
+
+d_course_kalimari_desert_vertex_0x04001DB0:
+  symbol: d_course_kalimari_desert_vertex_0x04001DB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x19fa
+
+d_course_kalimari_desert_vertex_0x04001E10:
+  symbol: d_course_kalimari_desert_vertex_0x04001E10
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x1a4e
+
+d_course_kalimari_desert_vertex_0x04001EB0:
+  symbol: d_course_kalimari_desert_vertex_0x04001EB0
+  type: mk64:course_vtx
+  count: 3
+  offset: 0x1ada
+
+d_course_kalimari_desert_vertex_0x04001EE0:
+  symbol: d_course_kalimari_desert_vertex_0x04001EE0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1b04
+
+d_course_kalimari_desert_vertex_0x04001FC0:
+  symbol: d_course_kalimari_desert_vertex_0x04001FC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1bc8
+
+d_course_kalimari_desert_vertex_0x040020C0:
+  symbol: d_course_kalimari_desert_vertex_0x040020C0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x1ca8
+
+d_course_kalimari_desert_vertex_0x040021E0:
+  symbol: d_course_kalimari_desert_vertex_0x040021E0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x1da4
+
+d_course_kalimari_desert_vertex_0x04002340:
+  symbol: d_course_kalimari_desert_vertex_0x04002340
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x1ed8
+
+d_course_kalimari_desert_vertex_0x040023F0:
+  symbol: d_course_kalimari_desert_vertex_0x040023F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1f72
+
+d_course_kalimari_desert_vertex_0x04002470:
+  symbol: d_course_kalimari_desert_vertex_0x04002470
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x1fe2
+
+d_course_kalimari_desert_vertex_0x04002500:
+  symbol: d_course_kalimari_desert_vertex_0x04002500
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x2060
+
+d_course_kalimari_desert_vertex_0x04002630:
+  symbol: d_course_kalimari_desert_vertex_0x04002630
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x216a
+
+d_course_kalimari_desert_vertex_0x04002790:
+  symbol: d_course_kalimari_desert_vertex_0x04002790
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x229e
+
+d_course_kalimari_desert_vertex_0x04002890:
+  symbol: d_course_kalimari_desert_vertex_0x04002890
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x237e
+
+d_course_kalimari_desert_vertex_0x04002990:
+  symbol: d_course_kalimari_desert_vertex_0x04002990
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x245e
+
+d_course_kalimari_desert_vertex_0x04002A70:
+  symbol: d_course_kalimari_desert_vertex_0x04002A70
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x2522
+
+d_course_kalimari_desert_vertex_0x04002B70:
+  symbol: d_course_kalimari_desert_vertex_0x04002B70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x2602
+
+d_course_kalimari_desert_vertex_0x04002C30:
+  symbol: d_course_kalimari_desert_vertex_0x04002C30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x26aa
+
+d_course_kalimari_desert_vertex_0x04002CF0:
+  symbol: d_course_kalimari_desert_vertex_0x04002CF0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x2752
+
+d_course_kalimari_desert_vertex_0x04002EB0:
+  symbol: d_course_kalimari_desert_vertex_0x04002EB0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x28da
+
+d_course_kalimari_desert_vertex_0x04003090:
+  symbol: d_course_kalimari_desert_vertex_0x04003090
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2a7e
+
+d_course_kalimari_desert_vertex_0x04003290:
+  symbol: d_course_kalimari_desert_vertex_0x04003290
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x2c3e
+
+d_course_kalimari_desert_vertex_0x04003460:
+  symbol: d_course_kalimari_desert_vertex_0x04003460
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x2dd4
+
+d_course_kalimari_desert_vertex_0x04003660:
+  symbol: d_course_kalimari_desert_vertex_0x04003660
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x2f94
+
+d_course_kalimari_desert_vertex_0x04003830:
+  symbol: d_course_kalimari_desert_vertex_0x04003830
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x312a
+
+d_course_kalimari_desert_vertex_0x04003A30:
+  symbol: d_course_kalimari_desert_vertex_0x04003A30
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x32ea
+
+d_course_kalimari_desert_vertex_0x04003AB0:
+  symbol: d_course_kalimari_desert_vertex_0x04003AB0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x335a
+
+d_course_kalimari_desert_vertex_0x04003C70:
+  symbol: d_course_kalimari_desert_vertex_0x04003C70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x34e2
+
+d_course_kalimari_desert_vertex_0x04003CB0:
+  symbol: d_course_kalimari_desert_vertex_0x04003CB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x351a
+
+d_course_kalimari_desert_vertex_0x04003CF0:
+  symbol: d_course_kalimari_desert_vertex_0x04003CF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3552
+
+d_course_kalimari_desert_vertex_0x04003D30:
+  symbol: d_course_kalimari_desert_vertex_0x04003D30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x358a
+
+d_course_kalimari_desert_vertex_0x04003D70:
+  symbol: d_course_kalimari_desert_vertex_0x04003D70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x35c2
+
+d_course_kalimari_desert_vertex_0x04003DB0:
+  symbol: d_course_kalimari_desert_vertex_0x04003DB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x35fa
+
+d_course_kalimari_desert_vertex_0x04003DF0:
+  symbol: d_course_kalimari_desert_vertex_0x04003DF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3632
+
+d_course_kalimari_desert_vertex_0x04003E30:
+  symbol: d_course_kalimari_desert_vertex_0x04003E30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x366a
+
+d_course_kalimari_desert_vertex_0x04003E70:
+  symbol: d_course_kalimari_desert_vertex_0x04003E70
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x36a2
+
+d_course_kalimari_desert_vertex_0x04003EB0:
+  symbol: d_course_kalimari_desert_vertex_0x04003EB0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x36da
+
+d_course_kalimari_desert_vertex_0x04003EF0:
+  symbol: d_course_kalimari_desert_vertex_0x04003EF0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3712
+
+d_course_kalimari_desert_vertex_0x04003F30:
+  symbol: d_course_kalimari_desert_vertex_0x04003F30
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x374a
+
+d_course_kalimari_desert_vertex_0x04003F70:
+  symbol: d_course_kalimari_desert_vertex_0x04003F70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3782
+
+d_course_kalimari_desert_vertex_0x04003FF0:
+  symbol: d_course_kalimari_desert_vertex_0x04003FF0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x37f2
+
+d_course_kalimari_desert_vertex_0x04004170:
+  symbol: d_course_kalimari_desert_vertex_0x04004170
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3942
+
+d_course_kalimari_desert_vertex_0x040041F0:
+  symbol: d_course_kalimari_desert_vertex_0x040041F0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x39b2
+
+d_course_kalimari_desert_vertex_0x04004270:
+  symbol: d_course_kalimari_desert_vertex_0x04004270
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3a22
+
+d_course_kalimari_desert_vertex_0x040042B0:
+  symbol: d_course_kalimari_desert_vertex_0x040042B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3a5a
+
+d_course_kalimari_desert_vertex_0x04004330:
+  symbol: d_course_kalimari_desert_vertex_0x04004330
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x3aca
+
+d_course_kalimari_desert_vertex_0x04004370:
+  symbol: d_course_kalimari_desert_vertex_0x04004370
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3b02
+
+d_course_kalimari_desert_vertex_0x040043F0:
+  symbol: d_course_kalimari_desert_vertex_0x040043F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3b72
+
+d_course_kalimari_desert_vertex_0x040044B0:
+  symbol: d_course_kalimari_desert_vertex_0x040044B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x3c1a
+
+d_course_kalimari_desert_vertex_0x04004530:
+  symbol: d_course_kalimari_desert_vertex_0x04004530
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x3c8a
+
+d_course_kalimari_desert_vertex_0x040046B0:
+  symbol: d_course_kalimari_desert_vertex_0x040046B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x3dda
+
+d_course_kalimari_desert_vertex_0x04004770:
+  symbol: d_course_kalimari_desert_vertex_0x04004770
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x3e82
+
+d_course_kalimari_desert_vertex_0x040048B0:
+  symbol: d_course_kalimari_desert_vertex_0x040048B0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x3f9a
+
+d_course_kalimari_desert_vertex_0x040049B0:
+  symbol: d_course_kalimari_desert_vertex_0x040049B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x407a
+
+d_course_kalimari_desert_vertex_0x04004A70:
+  symbol: d_course_kalimari_desert_vertex_0x04004A70
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x4122
+
+d_course_kalimari_desert_vertex_0x04004BE0:
+  symbol: d_course_kalimari_desert_vertex_0x04004BE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x4264
+
+d_course_kalimari_desert_vertex_0x04004CE0:
+  symbol: d_course_kalimari_desert_vertex_0x04004CE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x4344
+
+d_course_kalimari_desert_vertex_0x04004E20:
+  symbol: d_course_kalimari_desert_vertex_0x04004E20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x445c
+
+d_course_kalimari_desert_vertex_0x04004EA0:
+  symbol: d_course_kalimari_desert_vertex_0x04004EA0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x44cc
+
+d_course_kalimari_desert_vertex_0x04005060:
+  symbol: d_course_kalimari_desert_vertex_0x04005060
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4654
+
+d_course_kalimari_desert_vertex_0x04005120:
+  symbol: d_course_kalimari_desert_vertex_0x04005120
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x46fc
+
+d_course_kalimari_desert_vertex_0x040051E0:
+  symbol: d_course_kalimari_desert_vertex_0x040051E0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x47a4
+
+d_course_kalimari_desert_vertex_0x040052D0:
+  symbol: d_course_kalimari_desert_vertex_0x040052D0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x4876
+
+d_course_kalimari_desert_vertex_0x04005490:
+  symbol: d_course_kalimari_desert_vertex_0x04005490
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x49fe
+
+d_course_kalimari_desert_vertex_0x04005550:
+  symbol: d_course_kalimari_desert_vertex_0x04005550
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x4aa6
+
+d_course_kalimari_desert_vertex_0x040055B0:
+  symbol: d_course_kalimari_desert_vertex_0x040055B0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x4afa
+
+d_course_kalimari_desert_vertex_0x04005610:
+  symbol: d_course_kalimari_desert_vertex_0x04005610
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4b4e
+
+d_course_kalimari_desert_vertex_0x04005690:
+  symbol: d_course_kalimari_desert_vertex_0x04005690
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x4bbe
+
+d_course_kalimari_desert_vertex_0x04005760:
+  symbol: d_course_kalimari_desert_vertex_0x04005760
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x4c74
+
+d_course_kalimari_desert_vertex_0x040057E0:
+  symbol: d_course_kalimari_desert_vertex_0x040057E0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x4ce4
+
+d_course_kalimari_desert_vertex_0x040058C0:
+  symbol: d_course_kalimari_desert_vertex_0x040058C0
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x4da8
+
+d_course_kalimari_desert_vertex_0x04005970:
+  symbol: d_course_kalimari_desert_vertex_0x04005970
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x4e42
+
+d_course_kalimari_desert_vertex_0x04005A00:
+  symbol: d_course_kalimari_desert_vertex_0x04005A00
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x4ec0
+
+d_course_kalimari_desert_vertex_0x04005A90:
+  symbol: d_course_kalimari_desert_vertex_0x04005A90
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x4f3e
+
+d_course_kalimari_desert_vertex_0x04005B50:
+  symbol: d_course_kalimari_desert_vertex_0x04005B50
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x4fe6
+
+d_course_kalimari_desert_vertex_0x04005CF0:
+  symbol: d_course_kalimari_desert_vertex_0x04005CF0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x5152
+
+d_course_kalimari_desert_vertex_0x04005D70:
+  symbol: d_course_kalimari_desert_vertex_0x04005D70
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x51c2
+
+d_course_kalimari_desert_vertex_0x04005E20:
+  symbol: d_course_kalimari_desert_vertex_0x04005E20
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x525c
+
+d_course_kalimari_desert_vertex_0x04005EA0:
+  symbol: d_course_kalimari_desert_vertex_0x04005EA0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x52cc
+
+d_course_kalimari_desert_vertex_0x04005F80:
+  symbol: d_course_kalimari_desert_vertex_0x04005F80
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x5390
+
+d_course_kalimari_desert_vertex_0x04006010:
+  symbol: d_course_kalimari_desert_vertex_0x04006010
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x540e
+
+d_course_kalimari_desert_vertex_0x040060D0:
+  symbol: d_course_kalimari_desert_vertex_0x040060D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x54b6
+
+d_course_kalimari_desert_vertex_0x040061B0:
+  symbol: d_course_kalimari_desert_vertex_0x040061B0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x557a
+
+d_course_kalimari_desert_vertex_0x04006240:
+  symbol: d_course_kalimari_desert_vertex_0x04006240
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x55f8
+
+d_course_kalimari_desert_vertex_0x040062D0:
+  symbol: d_course_kalimari_desert_vertex_0x040062D0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5676
+
+d_course_kalimari_desert_vertex_0x040063B0:
+  symbol: d_course_kalimari_desert_vertex_0x040063B0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x573a
+
+d_course_kalimari_desert_vertex_0x04006430:
+  symbol: d_course_kalimari_desert_vertex_0x04006430
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x57aa
+
+d_course_kalimari_desert_vertex_0x040064D0:
+  symbol: d_course_kalimari_desert_vertex_0x040064D0
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x5836
+
+d_course_kalimari_desert_vertex_0x04006520:
+  symbol: d_course_kalimari_desert_vertex_0x04006520
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x587c
+
+d_course_kalimari_desert_vertex_0x04006570:
+  symbol: d_course_kalimari_desert_vertex_0x04006570
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x58c2
+
+d_course_kalimari_desert_vertex_0x04006680:
+  symbol: d_course_kalimari_desert_vertex_0x04006680
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x59b0
+
+d_course_kalimari_desert_vertex_0x04006740:
+  symbol: d_course_kalimari_desert_vertex_0x04006740
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x5a58
+
+d_course_kalimari_desert_vertex_0x040067A0:
+  symbol: d_course_kalimari_desert_vertex_0x040067A0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5aac
+
+d_course_kalimari_desert_vertex_0x04006880:
+  symbol: d_course_kalimari_desert_vertex_0x04006880
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x5b70
+
+d_course_kalimari_desert_vertex_0x04006990:
+  symbol: d_course_kalimari_desert_vertex_0x04006990
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x5c5e
+
+d_course_kalimari_desert_vertex_0x04006A70:
+  symbol: d_course_kalimari_desert_vertex_0x04006A70
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5d22
+
+d_course_kalimari_desert_vertex_0x04006B30:
+  symbol: d_course_kalimari_desert_vertex_0x04006B30
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x5dca
+
+d_course_kalimari_desert_vertex_0x04006C40:
+  symbol: d_course_kalimari_desert_vertex_0x04006C40
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x5eb8
+
+d_course_kalimari_desert_vertex_0x04006D00:
+  symbol: d_course_kalimari_desert_vertex_0x04006D00
+  type: mk64:course_vtx
+  count: 25
+  offset: 0x5f60
+
+d_course_kalimari_desert_vertex_0x04006E30:
+  symbol: d_course_kalimari_desert_vertex_0x04006E30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x606a
+
+d_course_kalimari_desert_vertex_0x04006EF0:
+  symbol: d_course_kalimari_desert_vertex_0x04006EF0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x6112
+
+d_course_kalimari_desert_vertex_0x04006FD0:
+  symbol: d_course_kalimari_desert_vertex_0x04006FD0
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x61d6
+
+d_course_kalimari_desert_vertex_0x04007070:
+  symbol: d_course_kalimari_desert_vertex_0x04007070
+  type: mk64:course_vtx
+  count: 5
+  offset: 0x6262
+
+d_course_kalimari_desert_vertex_0x040070C0:
+  symbol: d_course_kalimari_desert_vertex_0x040070C0
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x62a8
+
+d_course_kalimari_desert_vertex_0x04007260:
+  symbol: d_course_kalimari_desert_vertex_0x04007260
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x6414
+
+d_course_kalimari_desert_vertex_0x040072D0:
+  symbol: d_course_kalimari_desert_vertex_0x040072D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6476
+
+d_course_kalimari_desert_vertex_0x04007390:
+  symbol: d_course_kalimari_desert_vertex_0x04007390
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x651e
+
+d_course_kalimari_desert_vertex_0x04007440:
+  symbol: d_course_kalimari_desert_vertex_0x04007440
+  type: mk64:course_vtx
+  count: 17
+  offset: 0x65b8
+
+d_course_kalimari_desert_vertex_0x040074F0:
+  symbol: d_course_kalimari_desert_vertex_0x040074F0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x6652
+
+d_course_kalimari_desert_vertex_0x04007550:
+  symbol: d_course_kalimari_desert_vertex_0x04007550
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x66a6
+
+d_course_kalimari_desert_vertex_0x040075E0:
+  symbol: d_course_kalimari_desert_vertex_0x040075E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x6724
+
+d_course_kalimari_desert_vertex_0x04007640:
+  symbol: d_course_kalimari_desert_vertex_0x04007640
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6778
+
+d_course_kalimari_desert_vertex_0x04007680:
+  symbol: d_course_kalimari_desert_vertex_0x04007680
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x67b0
+
+d_course_kalimari_desert_vertex_0x04007700:
+  symbol: d_course_kalimari_desert_vertex_0x04007700
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6820
+
+d_course_kalimari_desert_vertex_0x04007740:
+  symbol: d_course_kalimari_desert_vertex_0x04007740
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6858
+
+d_course_kalimari_desert_vertex_0x04007780:
+  symbol: d_course_kalimari_desert_vertex_0x04007780
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6890
+
+d_course_kalimari_desert_vertex_0x04007800:
+  symbol: d_course_kalimari_desert_vertex_0x04007800
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x6900
+
+d_course_kalimari_desert_vertex_0x040078A0:
+  symbol: d_course_kalimari_desert_vertex_0x040078A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x698c
+
+d_course_kalimari_desert_vertex_0x04007960:
+  symbol: d_course_kalimari_desert_vertex_0x04007960
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6a34
+
+d_course_kalimari_desert_vertex_0x04007A60:
+  symbol: d_course_kalimari_desert_vertex_0x04007A60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6b14
+
+d_course_kalimari_desert_vertex_0x04007B60:
+  symbol: d_course_kalimari_desert_vertex_0x04007B60
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6bf4
+
+d_course_kalimari_desert_vertex_0x04007C60:
+  symbol: d_course_kalimari_desert_vertex_0x04007C60
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x6cd4
+
+d_course_kalimari_desert_vertex_0x04007CA0:
+  symbol: d_course_kalimari_desert_vertex_0x04007CA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x6d0c
+
+d_course_kalimari_desert_vertex_0x04007D20:
+  symbol: d_course_kalimari_desert_vertex_0x04007D20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6d7c
+
+d_course_kalimari_desert_vertex_0x04007DE0:
+  symbol: d_course_kalimari_desert_vertex_0x04007DE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6e24
+
+d_course_kalimari_desert_vertex_0x04007EE0:
+  symbol: d_course_kalimari_desert_vertex_0x04007EE0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x6f04
+
+d_course_kalimari_desert_vertex_0x04007FA0:
+  symbol: d_course_kalimari_desert_vertex_0x04007FA0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x6fac
+
+d_course_kalimari_desert_vertex_0x040080A0:
+  symbol: d_course_kalimari_desert_vertex_0x040080A0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x708c
+
+d_course_kalimari_desert_vertex_0x04008160:
+  symbol: d_course_kalimari_desert_vertex_0x04008160
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x7134
+
+d_course_kalimari_desert_vertex_0x04008270:
+  symbol: d_course_kalimari_desert_vertex_0x04008270
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x7222
+
+d_course_kalimari_desert_vertex_0x040082F0:
+  symbol: d_course_kalimari_desert_vertex_0x040082F0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7292
+
+d_course_kalimari_desert_vertex_0x040083B0:
+  symbol: d_course_kalimari_desert_vertex_0x040083B0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x733a
+
+d_course_kalimari_desert_vertex_0x04008470:
+  symbol: d_course_kalimari_desert_vertex_0x04008470
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x73e2
+
+d_course_kalimari_desert_vertex_0x04008510:
+  symbol: d_course_kalimari_desert_vertex_0x04008510
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x746e
+
+d_course_kalimari_desert_vertex_0x04008550:
+  symbol: d_course_kalimari_desert_vertex_0x04008550
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x74a6
+
+d_course_kalimari_desert_vertex_0x04008590:
+  symbol: d_course_kalimari_desert_vertex_0x04008590
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x74de
+
+d_course_kalimari_desert_vertex_0x040085D0:
+  symbol: d_course_kalimari_desert_vertex_0x040085D0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x7516
+
+d_course_kalimari_desert_vertex_0x04008630:
+  symbol: d_course_kalimari_desert_vertex_0x04008630
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x756a
+
+d_course_kalimari_desert_vertex_0x04008710:
+  symbol: d_course_kalimari_desert_vertex_0x04008710
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x762e
+
+d_course_kalimari_desert_vertex_0x04008750:
+  symbol: d_course_kalimari_desert_vertex_0x04008750
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x7666
+
+d_course_kalimari_desert_vertex_0x040087F0:
+  symbol: d_course_kalimari_desert_vertex_0x040087F0
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x76f2
+
+d_course_kalimari_desert_vertex_0x04008910:
+  symbol: d_course_kalimari_desert_vertex_0x04008910
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x77ee
+
+d_course_kalimari_desert_vertex_0x040089E0:
+  symbol: d_course_kalimari_desert_vertex_0x040089E0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x78a4
+
+d_course_kalimari_desert_vertex_0x04008AB0:
+  symbol: d_course_kalimari_desert_vertex_0x04008AB0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x795a
+
+d_course_kalimari_desert_vertex_0x04008B30:
+  symbol: d_course_kalimari_desert_vertex_0x04008B30
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x79ca
+
+d_course_kalimari_desert_vertex_0x04008BF0:
+  symbol: d_course_kalimari_desert_vertex_0x04008BF0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x7a72
+
+d_course_kalimari_desert_vertex_0x04008C80:
+  symbol: d_course_kalimari_desert_vertex_0x04008C80
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x7af0
+
+d_course_kalimari_desert_vertex_0x04008DA0:
+  symbol: d_course_kalimari_desert_vertex_0x04008DA0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x7bec
+
+d_course_kalimari_desert_vertex_0x04008E70:
+  symbol: d_course_kalimari_desert_vertex_0x04008E70
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x7ca2
+
+d_course_kalimari_desert_vertex_0x04008F50:
+  symbol: d_course_kalimari_desert_vertex_0x04008F50
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7d66
+
+d_course_kalimari_desert_vertex_0x04009010:
+  symbol: d_course_kalimari_desert_vertex_0x04009010
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x7e0e
+
+d_course_kalimari_desert_vertex_0x04009100:
+  symbol: d_course_kalimari_desert_vertex_0x04009100
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x7ee0
+
+d_course_kalimari_desert_vertex_0x040091C0:
+  symbol: d_course_kalimari_desert_vertex_0x040091C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x7f88
+
+d_course_kalimari_desert_vertex_0x04009200:
+  symbol: d_course_kalimari_desert_vertex_0x04009200
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x7fc0
+
+d_course_kalimari_desert_vertex_0x040092A0:
+  symbol: d_course_kalimari_desert_vertex_0x040092A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x804c
+
+d_course_kalimari_desert_vertex_0x04009420:
+  symbol: d_course_kalimari_desert_vertex_0x04009420
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x819c
+
+d_course_kalimari_desert_vertex_0x040094F0:
+  symbol: d_course_kalimari_desert_vertex_0x040094F0
+  type: mk64:course_vtx
+  count: 41
+  offset: 0x8252
+
+d_course_kalimari_desert_vertex_0x040096C0:
+  symbol: d_course_kalimari_desert_vertex_0x040096C0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x83e8
+
+d_course_kalimari_desert_vertex_0x04009820:
+  symbol: d_course_kalimari_desert_vertex_0x04009820
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x851c
+
+d_course_kalimari_desert_vertex_0x04009A20:
+  symbol: d_course_kalimari_desert_vertex_0x04009A20
+  type: mk64:course_vtx
+  count: 38
+  offset: 0x86dc
+
+d_course_kalimari_desert_vertex_0x04009BC0:
+  symbol: d_course_kalimari_desert_vertex_0x04009BC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8848
+
+d_course_kalimari_desert_vertex_0x04009C80:
+  symbol: d_course_kalimari_desert_vertex_0x04009C80
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x88f0
+
+d_course_kalimari_desert_vertex_0x04009E80:
+  symbol: d_course_kalimari_desert_vertex_0x04009E80
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x8ab0
+
+d_course_kalimari_desert_vertex_0x04009F40:
+  symbol: d_course_kalimari_desert_vertex_0x04009F40
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x8b58
+
+d_course_kalimari_desert_vertex_0x0400A140:
+  symbol: d_course_kalimari_desert_vertex_0x0400A140
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8d18
+
+d_course_kalimari_desert_vertex_0x0400A330:
+  symbol: d_course_kalimari_desert_vertex_0x0400A330
+  type: mk64:course_vtx
+  count: 24
+  offset: 0x8eca
+
+d_course_kalimari_desert_vertex_0x0400A450:
+  symbol: d_course_kalimari_desert_vertex_0x0400A450
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x8fc6
+
+d_course_kalimari_desert_vertex_0x0400A640:
+  symbol: d_course_kalimari_desert_vertex_0x0400A640
+  type: mk64:course_vtx
+  count: 7
+  offset: 0x9178
+
+d_course_kalimari_desert_vertex_0x0400A6B0:
+  symbol: d_course_kalimari_desert_vertex_0x0400A6B0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x91da
+
+d_course_kalimari_desert_vertex_0x0400A890:
+  symbol: d_course_kalimari_desert_vertex_0x0400A890
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x937e
+
+d_course_kalimari_desert_vertex_0x0400AA70:
+  symbol: d_course_kalimari_desert_vertex_0x0400AA70
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x9522
+
+d_course_kalimari_desert_vertex_0x0400AAF0:
+  symbol: d_course_kalimari_desert_vertex_0x0400AAF0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x9592
+
+d_course_kalimari_desert_vertex_0x0400ACF0:
+  symbol: d_course_kalimari_desert_vertex_0x0400ACF0
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x9752
+
+d_course_kalimari_desert_vertex_0x0400ADE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400ADE0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x9824
+
+d_course_kalimari_desert_vertex_0x0400AEE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400AEE0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x9904
+
+d_course_kalimari_desert_vertex_0x0400B0D0:
+  symbol: d_course_kalimari_desert_vertex_0x0400B0D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x9ab6
+
+d_course_kalimari_desert_vertex_0x0400B190:
+  symbol: d_course_kalimari_desert_vertex_0x0400B190
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9b5e
+
+d_course_kalimari_desert_vertex_0x0400B370:
+  symbol: d_course_kalimari_desert_vertex_0x0400B370
+  type: mk64:course_vtx
+  count: 48
+  offset: 0x9d02
+
+d_course_kalimari_desert_vertex_0x0400B550:
+  symbol: d_course_kalimari_desert_vertex_0x0400B550
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x9ea6
+
+d_course_kalimari_desert_vertex_0x0400B5B0:
+  symbol: d_course_kalimari_desert_vertex_0x0400B5B0
+  type: mk64:course_vtx
+  count: 23
+  offset: 0x9efa
+
+d_course_kalimari_desert_vertex_0x0400B6C0:
+  symbol: d_course_kalimari_desert_vertex_0x0400B6C0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x9fe8
+
+d_course_kalimari_desert_vertex_0x0400B8B0:
+  symbol: d_course_kalimari_desert_vertex_0x0400B8B0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xa19a
+
+d_course_kalimari_desert_vertex_0x0400B940:
+  symbol: d_course_kalimari_desert_vertex_0x0400B940
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xa218
+
+d_course_kalimari_desert_vertex_0x0400BAE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400BAE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xa384
+
+d_course_kalimari_desert_vertex_0x0400BCE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400BCE0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xa544
+
+d_course_kalimari_desert_vertex_0x0400BE20:
+  symbol: d_course_kalimari_desert_vertex_0x0400BE20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xa65c
+
+d_course_kalimari_desert_vertex_0x0400BF60:
+  symbol: d_course_kalimari_desert_vertex_0x0400BF60
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa774
+
+d_course_kalimari_desert_vertex_0x0400C150:
+  symbol: d_course_kalimari_desert_vertex_0x0400C150
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xa926
+
+d_course_kalimari_desert_vertex_0x0400C340:
+  symbol: d_course_kalimari_desert_vertex_0x0400C340
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xaad8
+
+d_course_kalimari_desert_vertex_0x0400C400:
+  symbol: d_course_kalimari_desert_vertex_0x0400C400
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xab80
+
+d_course_kalimari_desert_vertex_0x0400C520:
+  symbol: d_course_kalimari_desert_vertex_0x0400C520
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xac7c
+
+d_course_kalimari_desert_vertex_0x0400C5A0:
+  symbol: d_course_kalimari_desert_vertex_0x0400C5A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xacec
+
+d_course_kalimari_desert_vertex_0x0400C780:
+  symbol: d_course_kalimari_desert_vertex_0x0400C780
+  type: mk64:course_vtx
+  count: 20
+  offset: 0xae90
+
+d_course_kalimari_desert_vertex_0x0400C860:
+  symbol: d_course_kalimari_desert_vertex_0x0400C860
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xaf54
+
+d_course_kalimari_desert_vertex_0x0400CA40:
+  symbol: d_course_kalimari_desert_vertex_0x0400CA40
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xb0f8
+
+d_course_kalimari_desert_vertex_0x0400CBE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400CBE0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0xb264
+
+d_course_kalimari_desert_vertex_0x0400CDA0:
+  symbol: d_course_kalimari_desert_vertex_0x0400CDA0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb3ec
+
+d_course_kalimari_desert_vertex_0x0400CF90:
+  symbol: d_course_kalimari_desert_vertex_0x0400CF90
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xb59e
+
+d_course_kalimari_desert_vertex_0x0400D100:
+  symbol: d_course_kalimari_desert_vertex_0x0400D100
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xb6e0
+
+d_course_kalimari_desert_vertex_0x0400D2E0:
+  symbol: d_course_kalimari_desert_vertex_0x0400D2E0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xb884
+
+d_course_kalimari_desert_vertex_0x0400D4D0:
+  symbol: d_course_kalimari_desert_vertex_0x0400D4D0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0xba36
+
+d_course_kalimari_desert_vertex_0x0400D590:
+  symbol: d_course_kalimari_desert_vertex_0x0400D590
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xbade
+
+d_course_kalimari_desert_vertex_0x0400D790:
+  symbol: d_course_kalimari_desert_vertex_0x0400D790
+  type: mk64:course_vtx
+  count: 17
+  offset: 0xbc9e
+
+d_course_kalimari_desert_vertex_0x0400D840:
+  symbol: d_course_kalimari_desert_vertex_0x0400D840
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xbd38
+
+d_course_kalimari_desert_vertex_0x0400DA40:
+  symbol: d_course_kalimari_desert_vertex_0x0400DA40
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xbef8
+
+d_course_kalimari_desert_vertex_0x0400DC30:
+  symbol: d_course_kalimari_desert_vertex_0x0400DC30
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc0aa
+
+d_course_kalimari_desert_vertex_0x0400DE10:
+  symbol: d_course_kalimari_desert_vertex_0x0400DE10
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc24e
+
+d_course_kalimari_desert_vertex_0x0400E000:
+  symbol: d_course_kalimari_desert_vertex_0x0400E000
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xc400
+
+d_course_kalimari_desert_vertex_0x0400E060:
+  symbol: d_course_kalimari_desert_vertex_0x0400E060
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xc454
+
+d_course_kalimari_desert_vertex_0x0400E260:
+  symbol: d_course_kalimari_desert_vertex_0x0400E260
+  type: mk64:course_vtx
+  count: 41
+  offset: 0xc614
+
+d_course_kalimari_desert_vertex_0x0400E430:
+  symbol: d_course_kalimari_desert_vertex_0x0400E430
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xc7aa
+
+d_course_kalimari_desert_vertex_0x0400E610:
+  symbol: d_course_kalimari_desert_vertex_0x0400E610
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xc94e
+
+d_course_kalimari_desert_vertex_0x0400E690:
+  symbol: d_course_kalimari_desert_vertex_0x0400E690
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xc9be
+
+d_course_kalimari_desert_vertex_0x0400E880:
+  symbol: d_course_kalimari_desert_vertex_0x0400E880
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xcb70
+
+d_course_kalimari_desert_vertex_0x0400EA80:
+  symbol: d_course_kalimari_desert_vertex_0x0400EA80
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xcd30
+
+d_course_kalimari_desert_vertex_0x0400EBE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400EBE0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xce64
+
+d_course_kalimari_desert_vertex_0x0400EDD0:
+  symbol: d_course_kalimari_desert_vertex_0x0400EDD0
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xd016
+
+d_course_kalimari_desert_vertex_0x0400EE60:
+  symbol: d_course_kalimari_desert_vertex_0x0400EE60
+  type: mk64:course_vtx
+  count: 38
+  offset: 0xd094
+
+d_course_kalimari_desert_vertex_0x0400F000:
+  symbol: d_course_kalimari_desert_vertex_0x0400F000
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xd200
+
+d_course_kalimari_desert_vertex_0x0400F200:
+  symbol: d_course_kalimari_desert_vertex_0x0400F200
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xd3c0
+
+d_course_kalimari_desert_vertex_0x0400F330:
+  symbol: d_course_kalimari_desert_vertex_0x0400F330
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd4ca
+
+d_course_kalimari_desert_vertex_0x0400F510:
+  symbol: d_course_kalimari_desert_vertex_0x0400F510
+  type: mk64:course_vtx
+  count: 9
+  offset: 0xd66e
+
+d_course_kalimari_desert_vertex_0x0400F5A0:
+  symbol: d_course_kalimari_desert_vertex_0x0400F5A0
+  type: mk64:course_vtx
+  count: 48
+  offset: 0xd6ec
+
+d_course_kalimari_desert_vertex_0x0400F780:
+  symbol: d_course_kalimari_desert_vertex_0x0400F780
+  type: mk64:course_vtx
+  count: 24
+  offset: 0xd890
+
+d_course_kalimari_desert_vertex_0x0400F8A0:
+  symbol: d_course_kalimari_desert_vertex_0x0400F8A0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0xd98c
+
+d_course_kalimari_desert_vertex_0x0400FA30:
+  symbol: d_course_kalimari_desert_vertex_0x0400FA30
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xdaea
+
+d_course_kalimari_desert_vertex_0x0400FC20:
+  symbol: d_course_kalimari_desert_vertex_0x0400FC20
+  type: mk64:course_vtx
+  count: 35
+  offset: 0xdc9c
+
+d_course_kalimari_desert_vertex_0x0400FD90:
+  symbol: d_course_kalimari_desert_vertex_0x0400FD90
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xddde
+
+d_course_kalimari_desert_vertex_0x0400FF80:
+  symbol: d_course_kalimari_desert_vertex_0x0400FF80
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xdf90
+
+d_course_kalimari_desert_vertex_0x0400FFE0:
+  symbol: d_course_kalimari_desert_vertex_0x0400FFE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xdfe4
+
+d_course_kalimari_desert_vertex_0x040101E0:
+  symbol: d_course_kalimari_desert_vertex_0x040101E0
+  type: mk64:course_vtx
+  count: 25
+  offset: 0xe1a4
+
+d_course_kalimari_desert_vertex_0x04010310:
+  symbol: d_course_kalimari_desert_vertex_0x04010310
+  type: mk64:course_vtx
+  count: 49
+  offset: 0xe2ae
+
+d_course_kalimari_desert_vertex_0x04010500:
+  symbol: d_course_kalimari_desert_vertex_0x04010500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xe460
+
+d_course_kalimari_desert_vertex_0x04010700:
+  symbol: d_course_kalimari_desert_vertex_0x04010700
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xe620
+
+d_course_kalimari_desert_vertex_0x04010780:
+  symbol: d_course_kalimari_desert_vertex_0x04010780
+  type: mk64:course_vtx
+  count: 34
+  offset: 0xe690
+
+d_course_kalimari_desert_vertex_0x040108E0:
+  symbol: d_course_kalimari_desert_vertex_0x040108E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xe7c4
+
+d_course_kalimari_desert_vertex_0x040109E0:
+  symbol: d_course_kalimari_desert_vertex_0x040109E0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xe8a4
+
+d_course_kalimari_desert_vertex_0x04010B20:
+  symbol: d_course_kalimari_desert_vertex_0x04010B20
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xe9bc
+
+d_course_kalimari_desert_vertex_0x04010C60:
+  symbol: d_course_kalimari_desert_vertex_0x04010C60
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xead4
+
+d_course_kalimari_desert_vertex_0x04010DE0:
+  symbol: d_course_kalimari_desert_vertex_0x04010DE0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xec24
+
+d_course_kalimari_desert_vertex_0x04010F60:
+  symbol: d_course_kalimari_desert_vertex_0x04010F60
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xed74
+
+d_course_kalimari_desert_vertex_0x040110A0:
+  symbol: d_course_kalimari_desert_vertex_0x040110A0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0xee8c
+
+d_course_kalimari_desert_vertex_0x040111E0:
+  symbol: d_course_kalimari_desert_vertex_0x040111E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xefa4
+
+d_course_kalimari_desert_vertex_0x040112E0:
+  symbol: d_course_kalimari_desert_vertex_0x040112E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf084
+
+d_course_kalimari_desert_vertex_0x040114E0:
+  symbol: d_course_kalimari_desert_vertex_0x040114E0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf244
+
+d_course_kalimari_desert_vertex_0x04011560:
+  symbol: d_course_kalimari_desert_vertex_0x04011560
+  type: mk64:course_vtx
+  count: 8
+  offset: 0xf2b4
+
+d_course_kalimari_desert_vertex_0x040115E0:
+  symbol: d_course_kalimari_desert_vertex_0x040115E0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xf324
+
+d_course_kalimari_desert_vertex_0x040116E0:
+  symbol: d_course_kalimari_desert_vertex_0x040116E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xf404
+
+d_course_kalimari_desert_vertex_0x04011860:
+  symbol: d_course_kalimari_desert_vertex_0x04011860
+  type: mk64:course_vtx
+  count: 36
+  offset: 0xf554
+
+d_course_kalimari_desert_vertex_0x040119E0:
+  symbol: d_course_kalimari_desert_vertex_0x040119E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf6a4
+
+d_course_kalimari_desert_vertex_0x04011BE0:
+  symbol: d_course_kalimari_desert_vertex_0x04011BE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xf864
+
+d_course_kalimari_desert_vertex_0x04011DE0:
+  symbol: d_course_kalimari_desert_vertex_0x04011DE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfa24
+
+d_course_kalimari_desert_vertex_0x04011FE0:
+  symbol: d_course_kalimari_desert_vertex_0x04011FE0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfbe4
+
+d_course_kalimari_desert_vertex_0x040121E0:
+  symbol: d_course_kalimari_desert_vertex_0x040121E0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0xfda4
+
+d_course_kalimari_desert_vertex_0x040123E0:
+  symbol: d_course_kalimari_desert_vertex_0x040123E0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0xff64
+
+d_course_kalimari_desert_vertex_0x04012440:
+  symbol: d_course_kalimari_desert_vertex_0x04012440
+  type: mk64:course_vtx
+  count: 22
+  offset: 0xffb8
+
+d_course_kalimari_desert_vertex_0x04012540:
+  symbol: d_course_kalimari_desert_vertex_0x04012540
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10098
+
+d_course_kalimari_desert_vertex_0x04012740:
+  symbol: d_course_kalimari_desert_vertex_0x04012740
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10258
+
+d_course_kalimari_desert_vertex_0x040128C0:
+  symbol: d_course_kalimari_desert_vertex_0x040128C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x103a8
+
+d_course_kalimari_desert_vertex_0x04012AC0:
+  symbol: d_course_kalimari_desert_vertex_0x04012AC0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x10568
+
+d_course_kalimari_desert_vertex_0x04012B80:
+  symbol: d_course_kalimari_desert_vertex_0x04012B80
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10610
+
+d_course_kalimari_desert_vertex_0x04012D00:
+  symbol: d_course_kalimari_desert_vertex_0x04012D00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10760
+
+d_course_kalimari_desert_vertex_0x04012F00:
+  symbol: d_course_kalimari_desert_vertex_0x04012F00
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10920
+
+d_course_kalimari_desert_vertex_0x04013100:
+  symbol: d_course_kalimari_desert_vertex_0x04013100
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10ae0
+
+d_course_kalimari_desert_vertex_0x04013280:
+  symbol: d_course_kalimari_desert_vertex_0x04013280
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x10c30
+
+d_course_kalimari_desert_vertex_0x04013480:
+  symbol: d_course_kalimari_desert_vertex_0x04013480
+  type: mk64:course_vtx
+  count: 16
+  offset: 0x10df0
+
+d_course_kalimari_desert_vertex_0x04013520:
+  symbol: d_course_kalimari_desert_vertex_0x04013520
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x10e7c
+
+d_course_kalimari_desert_vertex_0x040135E0:
+  symbol: d_course_kalimari_desert_vertex_0x040135E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x10f24
+
+d_course_kalimari_desert_vertex_0x04013760:
+  symbol: d_course_kalimari_desert_vertex_0x04013760
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x11074
+
+d_course_kalimari_desert_vertex_0x040138A0:
+  symbol: d_course_kalimari_desert_vertex_0x040138A0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1118c
+
+d_course_kalimari_desert_vertex_0x04013AA0:
+  symbol: d_course_kalimari_desert_vertex_0x04013AA0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x1134c
+
+d_course_kalimari_desert_vertex_0x04013B20:
+  symbol: d_course_kalimari_desert_vertex_0x04013B20
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x113bc
+
+d_course_kalimari_desert_vertex_0x04013B80:
+  symbol: d_course_kalimari_desert_vertex_0x04013B80
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x11410
+
+d_course_kalimari_desert_vertex_0x04013CC0:
+  symbol: d_course_kalimari_desert_vertex_0x04013CC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11528
+
+d_course_kalimari_desert_vertex_0x04013DC0:
+  symbol: d_course_kalimari_desert_vertex_0x04013DC0
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x11608
+
+d_course_kalimari_desert_vertex_0x04013EC0:
+  symbol: d_course_kalimari_desert_vertex_0x04013EC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x116e8
+
+d_course_kalimari_desert_vertex_0x040140C0:
+  symbol: d_course_kalimari_desert_vertex_0x040140C0
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x118a8
+
+d_course_kalimari_desert_vertex_0x04014180:
+  symbol: d_course_kalimari_desert_vertex_0x04014180
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x11950
+
+d_course_kalimari_desert_vertex_0x040142C0:
+  symbol: d_course_kalimari_desert_vertex_0x040142C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x11a68
+
+d_course_kalimari_desert_vertex_0x04014300:
+  symbol: d_course_kalimari_desert_vertex_0x04014300
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x11aa0
+
+d_course_kalimari_desert_vertex_0x04014340:
+  symbol: d_course_kalimari_desert_vertex_0x04014340
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11ad8
+
+d_course_kalimari_desert_vertex_0x04014400:
+  symbol: d_course_kalimari_desert_vertex_0x04014400
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11b80
+
+d_course_kalimari_desert_vertex_0x040144C0:
+  symbol: d_course_kalimari_desert_vertex_0x040144C0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x11c28
+
+d_course_kalimari_desert_vertex_0x04014600:
+  symbol: d_course_kalimari_desert_vertex_0x04014600
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11d40
+
+d_course_kalimari_desert_vertex_0x04014800:
+  symbol: d_course_kalimari_desert_vertex_0x04014800
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x11f00
+
+d_course_kalimari_desert_vertex_0x040148C0:
+  symbol: d_course_kalimari_desert_vertex_0x040148C0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x11fa8
+
+d_course_kalimari_desert_vertex_0x04014AC0:
+  symbol: d_course_kalimari_desert_vertex_0x04014AC0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x12168
+
+d_course_kalimari_desert_vertex_0x04014B40:
+  symbol: d_course_kalimari_desert_vertex_0x04014B40
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x121d8
+
+d_course_kalimari_desert_vertex_0x04014CC0:
+  symbol: d_course_kalimari_desert_vertex_0x04014CC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12328
+
+d_course_kalimari_desert_vertex_0x04014EC0:
+  symbol: d_course_kalimari_desert_vertex_0x04014EC0
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x124e8
+
+d_course_kalimari_desert_vertex_0x040150C0:
+  symbol: d_course_kalimari_desert_vertex_0x040150C0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x126a8
+
+d_course_kalimari_desert_vertex_0x04015100:
+  symbol: d_course_kalimari_desert_vertex_0x04015100
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x126e0
+
+d_course_kalimari_desert_vertex_0x040152C0:
+  symbol: d_course_kalimari_desert_vertex_0x040152C0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x12868
+
+d_course_kalimari_desert_vertex_0x04015440:
+  symbol: d_course_kalimari_desert_vertex_0x04015440
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x129b8
+
+d_course_kalimari_desert_vertex_0x04015540:
+  symbol: d_course_kalimari_desert_vertex_0x04015540
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x12a98
+
+d_course_kalimari_desert_vertex_0x040156C0:
+  symbol: d_course_kalimari_desert_vertex_0x040156C0
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x12be8
+
+d_course_kalimari_desert_vertex_0x04015820:
+  symbol: d_course_kalimari_desert_vertex_0x04015820
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x12d1c
+
+d_course_kalimari_desert_vertex_0x04015A20:
+  symbol: d_course_kalimari_desert_vertex_0x04015A20
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x12edc
+
+d_course_kalimari_desert_vertex_0x04015A60:
+  symbol: d_course_kalimari_desert_vertex_0x04015A60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12f14
+
+d_course_kalimari_desert_vertex_0x04015B20:
+  symbol: d_course_kalimari_desert_vertex_0x04015B20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x12fbc
+
+d_course_kalimari_desert_vertex_0x04015BE0:
+  symbol: d_course_kalimari_desert_vertex_0x04015BE0
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x13064
+
+d_course_kalimari_desert_vertex_0x04015C20:
+  symbol: d_course_kalimari_desert_vertex_0x04015C20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1309c
+
+d_course_kalimari_desert_vertex_0x04015CE0:
+  symbol: d_course_kalimari_desert_vertex_0x04015CE0
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13144
+
+d_course_kalimari_desert_vertex_0x04015D60:
+  symbol: d_course_kalimari_desert_vertex_0x04015D60
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x131b4
+
+d_course_kalimari_desert_vertex_0x04015E20:
+  symbol: d_course_kalimari_desert_vertex_0x04015E20
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1325c
+
+d_course_kalimari_desert_vertex_0x04015F20:
+  symbol: d_course_kalimari_desert_vertex_0x04015F20
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1333c
+
+d_course_kalimari_desert_vertex_0x04015FE0:
+  symbol: d_course_kalimari_desert_vertex_0x04015FE0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x133e4
+
+d_course_kalimari_desert_vertex_0x04016160:
+  symbol: d_course_kalimari_desert_vertex_0x04016160
+  type: mk64:course_vtx
+  count: 35
+  offset: 0x13534
+
+d_course_kalimari_desert_vertex_0x040162D0:
+  symbol: d_course_kalimari_desert_vertex_0x040162D0
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x13676
+
+d_course_kalimari_desert_vertex_0x04016490:
+  symbol: d_course_kalimari_desert_vertex_0x04016490
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x137fe
+
+d_course_kalimari_desert_vertex_0x04016610:
+  symbol: d_course_kalimari_desert_vertex_0x04016610
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x1394e
+
+d_course_kalimari_desert_vertex_0x04016810:
+  symbol: d_course_kalimari_desert_vertex_0x04016810
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x13b0e
+
+d_course_kalimari_desert_vertex_0x04016910:
+  symbol: d_course_kalimari_desert_vertex_0x04016910
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13bee
+
+d_course_kalimari_desert_vertex_0x04016B10:
+  symbol: d_course_kalimari_desert_vertex_0x04016B10
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x13dae
+
+d_course_kalimari_desert_vertex_0x04016C10:
+  symbol: d_course_kalimari_desert_vertex_0x04016C10
+  type: mk64:course_vtx
+  count: 8
+  offset: 0x13e8e
+
+d_course_kalimari_desert_vertex_0x04016C90:
+  symbol: d_course_kalimari_desert_vertex_0x04016C90
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x13efe
+
+d_course_kalimari_desert_vertex_0x04016E90:
+  symbol: d_course_kalimari_desert_vertex_0x04016E90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x140be
+
+d_course_kalimari_desert_vertex_0x04016F90:
+  symbol: d_course_kalimari_desert_vertex_0x04016F90
+  type: mk64:course_vtx
+  count: 22
+  offset: 0x1419e
+
+d_course_kalimari_desert_vertex_0x04017090:
+  symbol: d_course_kalimari_desert_vertex_0x04017090
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x1427e
+
+d_course_kalimari_desert_vertex_0x040171D0:
+  symbol: d_course_kalimari_desert_vertex_0x040171D0
+  type: mk64:course_vtx
+  count: 37
+  offset: 0x14396
+
+d_course_kalimari_desert_vertex_0x04017360:
+  symbol: d_course_kalimari_desert_vertex_0x04017360
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x144f4
+
+d_course_kalimari_desert_vertex_0x04017560:
+  symbol: d_course_kalimari_desert_vertex_0x04017560
+  type: mk64:course_vtx
+  count: 4
+  offset: 0x146b4
+
+d_course_kalimari_desert_vertex_0x040175A0:
+  symbol: d_course_kalimari_desert_vertex_0x040175A0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x146ec
+
+d_course_kalimari_desert_vertex_0x04017720:
+  symbol: d_course_kalimari_desert_vertex_0x04017720
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x1483c
+
+d_course_kalimari_desert_vertex_0x040177F0:
+  symbol: d_course_kalimari_desert_vertex_0x040177F0
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x148f2
+
+d_course_kalimari_desert_vertex_0x040179E0:
+  symbol: d_course_kalimari_desert_vertex_0x040179E0
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x14aa4
+
+d_course_kalimari_desert_vertex_0x04017B60:
+  symbol: d_course_kalimari_desert_vertex_0x04017B60
+  type: mk64:course_vtx
+  count: 36
+  offset: 0x14bf4
+
+d_course_kalimari_desert_vertex_0x04017CE0:
+  symbol: d_course_kalimari_desert_vertex_0x04017CE0
+  type: mk64:course_vtx
+  count: 33
+  offset: 0x14d44
+
+d_course_kalimari_desert_vertex_0x04017E30:
+  symbol: d_course_kalimari_desert_vertex_0x04017E30
+  type: mk64:course_vtx
+  count: 21
+  offset: 0x14e6a
+
+d_course_kalimari_desert_vertex_0x04017F20:
+  symbol: d_course_kalimari_desert_vertex_0x04017F20
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x14f3c
+
+d_course_kalimari_desert_vertex_0x04017FB0:
+  symbol: d_course_kalimari_desert_vertex_0x04017FB0
+  type: mk64:course_vtx
+  count: 6
+  offset: 0x14fba
+
+d_course_kalimari_desert_vertex_0x04018010:
+  symbol: d_course_kalimari_desert_vertex_0x04018010
+  type: mk64:course_vtx
+  count: 18
+  offset: 0x1500e
+
+d_course_kalimari_desert_vertex_0x040180D0:
+  symbol: d_course_kalimari_desert_vertex_0x040180D0
+  type: mk64:course_vtx
+  count: 19
+  offset: 0x150b6
+
+d_course_kalimari_desert_vertex_0x040181A0:
+  symbol: d_course_kalimari_desert_vertex_0x040181A0
+  type: mk64:course_vtx
+  count: 20
+  offset: 0x1516c
+
+d_course_kalimari_desert_vertex_0x04018280:
+  symbol: d_course_kalimari_desert_vertex_0x04018280
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x15230
+
+d_course_kalimari_desert_vertex_0x04018310:
+  symbol: d_course_kalimari_desert_vertex_0x04018310
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x152ae
+
+d_course_kalimari_desert_vertex_0x04018500:
+  symbol: d_course_kalimari_desert_vertex_0x04018500
+  type: mk64:course_vtx
+  count: 50
+  offset: 0x15460
+
+d_course_kalimari_desert_vertex_0x04018700:
+  symbol: d_course_kalimari_desert_vertex_0x04018700
+  type: mk64:course_vtx
+  count: 9
+  offset: 0x15620
+
+d_course_kalimari_desert_vertex_0x04018790:
+  symbol: d_course_kalimari_desert_vertex_0x04018790
+  type: mk64:course_vtx
+  count: 40
+  offset: 0x1569e
+
+d_course_kalimari_desert_vertex_0x04018950:
+  symbol: d_course_kalimari_desert_vertex_0x04018950
+  type: mk64:course_vtx
+  count: 49
+  offset: 0x15826
+
+d_course_kalimari_desert_vertex_0x04018B40:
+  symbol: d_course_kalimari_desert_vertex_0x04018B40
+  type: mk64:course_vtx
+  count: 39
+  offset: 0x159d8
+
+d_course_kalimari_desert_vertex_0x04018CF0:
+  symbol: d_course_kalimari_desert_vertex_0x04018CF0
+  type: mk64:course_vtx
+  count: 32
+  offset: 0x15b52
+
+d_course_kalimari_desert_vertex_0x04018E30:
+  symbol: d_course_kalimari_desert_vertex_0x04018E30
+  type: mk64:course_vtx
+  count: 34
+  offset: 0x15c6a

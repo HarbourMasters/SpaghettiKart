@@ -1,6 +1,8 @@
 #include <libultraship.h>
 #include "Bus.h"
 #include <vector>
+#include "engine/vehicles/Utils.h"
+#include "port/Game.h"
 
 extern "C" {
 #include "macros.h"
@@ -17,20 +19,39 @@ extern s8 gPlayerCount;
 }
 
 size_t ABus::_count = 0;
+std::map<uint32_t, std::vector<uint32_t>> ABus::BusCounts;
 
-ABus::ABus(f32 speedA, f32 speedB, TrackPathPoint* path, uint32_t waypoint) {
+ABus::ABus(const SpawnParams& params) : AActor(params) {
     Name = "Bus";
+    ResourceName = "mk:bus";
+    BoundingBoxSize = 2.0f;
     TrackPathPoint* temp_v0;
     u16 waypointOffset;
     s32 numWaypoints = gPathCountByPathIndex[0];
 
     Index = _count;
+    PathIndex = params.PathIndex.value_or(0);
+    PathPoint = 0;
 
-    waypointOffset = waypoint;
-    temp_v0 = &path[waypointOffset];
-    Position[0] = (f32) temp_v0->posX;
-    Position[1] = (f32) temp_v0->posY;
-    Position[2] = (f32) temp_v0->posZ;
+    SpawnType = static_cast<ABus::SpawnMode>(params.Type.value_or(0));
+    switch(SpawnType) {
+        case SpawnMode::POINT: // Spawn bus at a specific path point
+            PathPoint = params.PathPoint.value_or(0);
+            BusCounts[PathIndex].push_back(PathPoint);
+            break;
+        case SpawnMode::AUTO: // Automatically distribute buses based on a specific path point
+            printf("vehicle path size %d\n", gVehiclePathSize);
+            PathPoint = GetVehiclePathPointDistributed(BusCounts[PathIndex], gVehiclePathSize);
+            BusCounts[PathIndex].push_back(PathPoint);
+            printf("train spawn path point: %d\n", PathPoint);
+            break;
+    }
+
+    waypointOffset = PathPoint;
+    temp_v0 = &gTrackPaths[PathIndex][PathPoint];
+    Position[0] = (f32) temp_v0->x;
+    Position[1] = (f32) temp_v0->y;
+    Position[2] = (f32) temp_v0->z;
     ActorIndex = -1;
     WaypointIndex = waypointOffset;
     Velocity[0] = 0.0f;
@@ -43,9 +64,9 @@ ABus::ABus(f32 speedA, f32 speedB, TrackPathPoint* path, uint32_t waypoint) {
     }
     SomeMultiplierTheSequel = (f32) ((f64) (f32) (SomeType - 1) * 0.6);
     if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (SomeType == 2)) {
-        Speed = speedA;
+        Speed = params.Speed.value_or(0);
     } else {
-        Speed = speedB;
+        Speed = params.SpeedB.value_or(0);
     }
     Rotation[0] = 0;
     Rotation[2] = 0;
@@ -60,6 +81,15 @@ ABus::ABus(f32 speedA, f32 speedB, TrackPathPoint* path, uint32_t waypoint) {
     ActorIndex = add_actor_to_empty_slot(Position, Rotation, Velocity, ACTOR_SCHOOL_BUS);
 
     _count++;
+}
+
+void ABus::SetSpawnParams(SpawnParams& params) {
+    params.Name = ResourceName;
+    params.Type = static_cast<uint16_t>(SpawnType);
+    params.PathIndex = PathIndex;
+    params.PathPoint = PathPoint;
+    params.Speed = Speed;
+    params.SpeedB = SpeedB;
 }
 
 bool ABus::IsMod() {
@@ -174,7 +204,7 @@ void ABus::VehicleCollision(s32 playerId, Player* player) {
                 if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
                     if (is_collide_with_vehicle(Position[0], Position[2], Velocity[0], Velocity[2], SomeArg3, SomeArg4,
                                                 spC4, spBC) == (s32) 1) {
-                        player->soundEffects |= REVERSE_SOUND_EFFECT;
+                        player->triggers |= VERTICAL_TUMBLE_TRIGGER;
                     }
                 }
             }
@@ -278,5 +308,69 @@ void ABus::VehicleCollision(s32 playerId, Player* player) {
                 }
             }
         }
+    }
+}
+
+void ABus::DrawEditorProperties() {
+    ImGui::Text("Spawn Mode");
+    ImGui::SameLine();
+
+    int32_t type = static_cast<int32_t>(SpawnType);
+    const char* items[] = { "POINT", "AUTO" };
+
+    if (ImGui::Combo("##Type", &type, items, IM_ARRAYSIZE(items))) {
+        SpawnType = static_cast<ABus::SpawnMode>(type);
+    }
+
+    if (SpawnType == ABus::SpawnMode::POINT) {
+        ImGui::Text("Path Index");
+        ImGui::SameLine();
+
+        int pathIndex = static_cast<int>(PathIndex);
+        if (ImGui::InputInt("##PathIndex", &pathIndex)) {
+            if (pathIndex < 0) pathIndex = 0;
+            PathIndex = static_cast<uint32_t>(pathIndex);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathIndex")) {
+            PathIndex = 0;
+        }
+
+        ImGui::Text("Path Point");
+        ImGui::SameLine();
+
+        int pathPoint = static_cast<int>(PathPoint);
+        if (ImGui::InputInt("##PathPoint", &pathPoint)) {
+            if (pathPoint < 0) pathPoint = 0;
+            PathPoint = static_cast<uint32_t>(pathPoint);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button(ICON_FA_UNDO "##ResetPathPoint")) {
+            PathPoint = 0;
+        }
+    }
+
+    ImGui::Text("Speed");
+    ImGui::SameLine();
+
+    float speed = Speed;
+    if (ImGui::DragFloat("##Speed", &speed, 0.1f)) {
+        Speed = speed;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetSpeed")) {
+        Speed = 0.0f;
+    }
+
+    ImGui::Text("SpeedB");
+    ImGui::SameLine();
+
+    float speed2 = SpeedB;
+    if (ImGui::DragFloat("##SpeedB", &speed2, 0.1f)) {
+        SpeedB = speed2;
+    }
+    ImGui::SameLine();
+    if (ImGui::Button(ICON_FA_UNDO "##ResetSpeedB")) {
+        SpeedB = 0.0f;
     }
 }
