@@ -38,7 +38,7 @@ void RegisterItemTables(DataRegistry<RandomItemTable>& r) {
 }
 
 void RegisterHumanItemTable(DataRegistry<RandomItemTable>& r) {
-    RandomItemTable table; // human grand-prix table
+    RandomItemTable table;
 
     table.Add("mk:banana",         RANK_ONE, 30, 0.0f);
     table.Add("mk:banana_bunch",   RANK_ONE, 5, 0.0f);
