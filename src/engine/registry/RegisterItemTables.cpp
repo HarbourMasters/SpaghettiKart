@@ -175,8 +175,8 @@ void RegisterCPUItemTable(DataRegistry<RandomItemTable>& r) {
 void RegisterHardCPUItemTable(DataRegistry<RandomItemTable>& r) {
     RandomItemTable table;
 
-    table.Add("mk:none",           RANK_ONE, 5, 0.0f);
-    table.Add("mk:banana",         RANK_ONE, 25, 0.0f);
+    table.Add("mk:none",           RANK_ONE, 4, 0.0f);
+    table.Add("mk:banana",         RANK_ONE, 30, 0.0f);
     table.Add("mk:banana_bunch",   RANK_ONE, 5, 0.0f);
     table.Add("mk:green_shell",     RANK_ONE, 30, 0.0f);
     table.Add("mk:triple_green_shell",   RANK_ONE, 5, 0.0f);
