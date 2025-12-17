@@ -3231,24 +3231,11 @@ void verify_probability_table(char* str, const ItemProbabilities* probs, int16_t
     }
 }
 
-
-u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
-    CM_GetRandomHumanItem(rank);
-}
-
-u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    CM_GetRandomCPUItem(rank);
-}
-
-u8 hard_cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    CM_GetRandomCPUItem(rank);
-}
-
 s16 func_8007AFB0(s32 objectIndex, s32 playerId) {
     UNUSED s32 pad[3];
     s16 randomItem;
 
-    randomItem = gen_random_item_human(gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]);
+    randomItem = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
 
     if (randomItem == ITEM_NONE) {
         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
@@ -3282,11 +3269,11 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
     if (gModeSelection == GRAND_PRIX) {
         // Boo item
         if (random_int(0x0064U) < 0x51) {
-            item = gen_random_item_human(gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]);
+            item = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
             // ITEM_NONE is not a valid item for ghost, randomize again
             size_t attempts = 0;
             while (item == ITEM_NONE && attempts < 200) {
-                item = gen_random_item_human(gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]);
+                item = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
                 attempts++;
             }
             if (attempts >= 200) {
