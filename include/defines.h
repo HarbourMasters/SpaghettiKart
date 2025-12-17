@@ -319,6 +319,7 @@ enum ITEMS {
     /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
     /* 0x0F */ ITEM_SUPER_MUSHROOM,
     /* 0x0G */ ITEM_MAX,
+    /* 0x0H */ ITEM_INVALID = -1,
 };
 
 enum CPU_BEHAVIOURS {

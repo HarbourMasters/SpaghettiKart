@@ -68,6 +68,8 @@ void RaceManager::PreInit() {
     } else {
         gPlaceItemBoxes = true;
     }
+
+    RaceManager::SetItemTables();
 }
 
 void RaceManager::BeginPlay() {
@@ -112,5 +114,38 @@ void RaceManager::PostInit() {
 
     if (CVarGetInteger("gGoFish", false) == true) {
         OTrophy::Spawn(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
+    }
+}
+
+void RaceManager::SetItemTables() {
+    switch(gModeSelection) {
+        case GRAND_PRIX:
+            if (CVarGetInteger("gHarderCPU", false) == true) {
+                mHumanItemTable = gGrandPrixHardCPUItemTable;
+                mCPUItemTable = gGrandPrixHardCPUItemTable;
+            } else {
+                mHumanItemTable = gGrandPrixHumanItemTable;
+                mCPUItemTable = gGrandPrixCPUItemTable;
+            }
+        case VERSUS:
+            switch (gPlayerCountSelection1) {
+                case TWO_PLAYERS_SELECTED:
+                    mHumanItemTable = &gVersus2PItemTable;
+                    mCPUItemTable = nullptr;
+                    break;
+                case THREE_PLAYERS_SELECTED:
+                    mHumanItemTable = &gVersus3PItemTable;
+                    mCPUItemTable = nullptr;
+                    break;
+                case FOUR_PLAYERS_SELECTED:
+                    mHumanItemTable = &gVersus4PItemTable;
+                    mCPUItemTable = nullptr;
+                    break;
+            }
+            break;
+        case BATTLE:
+            mHumanItemTable = &gBattleItemTable;
+            mCPUItemTable = nullptr;
+            break;
     }
 }

@@ -30,6 +30,7 @@ extern HarbourMastersIntro gMenuIntro;
 extern bool bCleanWorld;
 extern Registry<TrackInfo> gTrackRegistry;
 extern Registry<ActorInfo, const SpawnParams&> gActorRegistry;
+extern Registry<ItemInfo> gItemRegistry;
 World* GetWorld(void); // Retrieve the world instance
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
@@ -165,6 +166,8 @@ void CM_CleanCameras(void);
 void CM_CleanWorld(void);
 
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision);
+uint8_t CM_GetRandomHumanItem(uint32_t rank);
+uint8_t CM_GetRandomCPUItem(uint32_t rank);
 
 bool IsMarioRaceway();
 bool IsLuigiRaceway();

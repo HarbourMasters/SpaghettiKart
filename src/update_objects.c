@@ -3231,90 +3231,17 @@ void verify_probability_table(char* str, const ItemProbabilities* probs, int16_t
     }
 }
 
-enum RandomItemOption {
-    HUMAN_TABLE,
-    CPU_TABLE,
-    HARD_CPU_TABLE,
-};
-
-/**
- * New random item system uses chance based on percent
- * Likely functionally equivallent to the old system but easier to modify
- */
-u8 gen_random_item(s16 rank, s16 option) {
-#define PERCENTAGE_BASE 100
-    u16 rand = random_int(PERCENTAGE_BASE);
-#undef PERCENTAGE_BASE
-    ItemProbabilities* distributionTable;
-    u8 randomItem = 0;
-    u8 cumulativeProbability = 0;
-
-    switch (gModeSelection) {
-        case GRAND_PRIX:
-            switch (option) {
-                case HUMAN_TABLE:
-                    distributionTable = &grandPrixHumanProbabilityTable[rank];
-                    verify_probability_table("Human", distributionTable, rank);
-                    break;
-                case CPU_TABLE:
-                    distributionTable = &grandPrixCPUProbabilityTable[rank];
-                    verify_probability_table("CPU", distributionTable, rank);
-                    break;
-                case HARD_CPU_TABLE:
-                    distributionTable = &grandPrixHardCPUProbabilityTable[rank];
-                    verify_probability_table("Hard CPU", distributionTable, rank);
-                    break;
-            }
-            break;
-        case VERSUS:
-            switch (gPlayerCountSelection1) {
-                case TWO_PLAYERS_SELECTED:
-                    distributionTable = &versus2PlayerProbabilityTable[rank];
-                    verify_probability_table("Versus 2P", distributionTable, rank);
-                    break;
-                case THREE_PLAYERS_SELECTED:
-                    distributionTable = &versus3PlayerProbabilityTable[rank];
-                    verify_probability_table("Versus 3P", distributionTable, rank);
-                    break;
-                case FOUR_PLAYERS_SELECTED:
-                    distributionTable = &versus4PlayerProbabilityTable[rank];
-                    verify_probability_table("Versus 4P", distributionTable, rank);
-                    break;
-            }
-            break;
-        case BATTLE:
-            distributionTable = &battleProbabilityCurve[0];
-            verify_probability_table("Battle", distributionTable, rank);
-            break;
-    }
-
-    u8 itemProbabilities[ITEM_MAX];
-    getProbabilityArray(distributionTable, itemProbabilities);
-
-    for (size_t i = 0; i < ITEM_MAX; i++) {
-        cumulativeProbability += itemProbabilities[i];
-        if (rand < cumulativeProbability) {
-            randomItem = i;
-            break;
-        }
-    }
-    return randomItem;
-}
 
 u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
-    if (CVarGetInteger("gHarderCPU", 0) == true) {
-        return gen_random_item(rank, HARD_CPU_TABLE);
-    } else {
-        return gen_random_item(rank, HUMAN_TABLE);
-    }
+    CM_GetRandomHumanItem(rank);
 }
 
 u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    return gen_random_item(rank, CPU_TABLE);
+    CM_GetRandomCPUItem(rank);
 }
 
 u8 hard_cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
-    return gen_random_item(rank, HARD_CPU_TABLE);
+    CM_GetRandomCPUItem(rank);
 }
 
 s16 func_8007AFB0(s32 objectIndex, s32 playerId) {

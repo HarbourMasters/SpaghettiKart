@@ -24,6 +24,12 @@ struct ActorInfo {
     std::set<std::string> Tags; // Category for filtering
 };
 
+struct ItemInfo {
+    int32_t Id;
+    std::string ResourceName;
+    std::string Name;
+};
+
 /**
  * TInfo must have a ResourceName member of type std::string
  * This should be a unique string such as hm:cloud or hm:harbour
@@ -86,6 +92,10 @@ public:
 
     bool Find(const std::string& resourceName) const {
         return mMap.find(resourceName) != mMap.end();
+    }
+
+    size_t Size() {
+        return mMap.size();
     }
 
     std::vector<const TInfo*> GetAllInfo() const {

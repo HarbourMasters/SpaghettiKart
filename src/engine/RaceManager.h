@@ -1,6 +1,7 @@
 #pragma once
 
 #ifdef __cplusplus
+#include "engine/ItemTables.h"
 extern "C" {
 #endif
 #include <libultraship/libultra/gbi.h>
@@ -37,8 +38,13 @@ public:
     virtual void PreInit();
     virtual void BeginPlay();
     virtual void PostInit();
+    virtual void SetItemTables();
+    ItemTable* GetHumanItemTable() { return mHumanItemTable; }
+    ItemTable* GetCPUItemTable( return mCPUItemTable; )
 protected:
     World& WorldContext;
+    ItemTable* mHumanItemTable;
+    ItemTable* mCPUItemTable;
 };
 
 #endif

@@ -198,7 +198,6 @@ void update_object_lakitu(s32);
 void func_8007AA44(s32);
 void func_8007ABFC(s32, s32);
 void consume_item(s32);
-u8 gen_random_item(s16, s16);
 u8 gen_random_item_human(s16, s16);
 u8 cpu_gen_random_item(s32, s16);
 u8 hard_cpu_gen_random_item(UNUSED s32 arg0, s16 rank);

@@ -31,6 +31,7 @@
 #include "engine/cameras/LookBehindCamera.h"
 
 #include "engine/TrackBrowser.h"
+#include "engine/ItemTables.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -75,6 +76,7 @@ s32 gTrophyIndex = NULL;
 
 Registry<TrackInfo> gTrackRegistry;
 Registry<ActorInfo, const SpawnParams&> gActorRegistry;
+Registry<ItemInfo> gItemRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
 
@@ -139,6 +141,9 @@ void CustomEngineInit() {
     SetMarioRaceway();
 
     RegisterActors(gActorRegistry);
+    RegisterItems(gItemRegistry);
+
+    //ItemTable(table_grand_prix);
 }
 
 void CustomEngineDestroy() {
@@ -800,6 +805,40 @@ void CM_ActorCollision(Player* player, Actor* actor) {
 f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
     FVector fPos = {pos[0], pos[1], pos[2]};
     return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
+}
+
+uint8_t CM_GetRandomHumanItem(uint32_t rank) {
+    if (!table) {
+        return ITEM_INVALID;
+    }
+
+    auto& raceManager = GetWorld()->GetRaceManager()
+    if (!raceManager) {
+        return ITEM_INVALID;
+    }
+    auto& table = m.GetHumanItemTable();
+    if (!table) {
+        return ITEM_INVALID;
+    }
+
+    return table->Roll(rank);
+}
+
+uint8_t CM_GetRandomCPUItem(uint32_t rank) {
+    if (!table) {
+        return ITEM_INVALID;
+    }
+
+    auto& raceManager = GetWorld()->GetRaceManager()
+    if (!raceManager) {
+        return ITEM_INVALID;
+    }
+    auto& table = m.GetCPUItemTable();
+    if (!table) {
+        return ITEM_INVALID;
+    }
+
+    return table->Roll(rank);
 }
 
 // clang-format off
