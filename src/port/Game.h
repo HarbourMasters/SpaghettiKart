@@ -7,7 +7,8 @@
 
 #ifdef __cplusplus
 #include "engine/editor/Editor.h"
-#include "engine/Registry.h"
+#include "engine/registry/Registry.h"
+#include "engine/registry/DataRegistry.h"
 class Track;
 struct Properties;
 class World;
@@ -31,6 +32,7 @@ extern bool bCleanWorld;
 extern Registry<TrackInfo> gTrackRegistry;
 extern Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 extern Registry<ItemInfo> gItemRegistry;
+extern DataRegistry<RandomItemTable> gItemTableRegistry;
 World* GetWorld(void); // Retrieve the world instance
 #endif
 // NOLINTBEGIN(readability-identifier-naming)

@@ -2,7 +2,7 @@
 
 #include <libultraship.h>
 #include <vector>
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "engine/objects/Object.h"
 #include "CoreMath.h"
 #include "World.h"

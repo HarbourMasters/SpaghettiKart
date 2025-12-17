@@ -16,7 +16,7 @@
 #include "engine/cameras/TourCamera.h"
 #include "engine/TrackBrowser.h"
 #include "engine/editor/SceneManager.h"
-#include "engine/Registry.h"
+#include "engine/registry/Registry.h"
 
 extern "C" {
 #include "code_800029B0.h"

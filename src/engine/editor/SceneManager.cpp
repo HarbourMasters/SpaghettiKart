@@ -104,7 +104,7 @@ namespace TrackEditor {
 
     /** Do not use GetWorld()->CurrentCourse during loading! The current track is not guaranteed! **/
     void LoadTrackDataFromJson(Track* track, const std::string& trackPath) {
-        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Loading track scenefile...");
+        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Loading Track SceneFile...");
 
         if (trackPath.empty()) {
             SPDLOG_INFO("  Unable to load track. trackPath empty.");
@@ -147,7 +147,7 @@ namespace TrackEditor {
         LoadActors(track, data);
         LoadStaticMeshActors(track, data);
         LoadTour(track, data);
-        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Scene File Loaded!");
+        SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] SceneFile Loaded!\n");
     }
 
     void LoadTrackInfo(TrackInfo& info, std::shared_ptr<Ship::Archive> archive, std::string sceneFile) {
@@ -155,6 +155,7 @@ namespace TrackEditor {
             SPDLOG_INFO("[SceneManager] [LoadTrackDataFromJson] Failed to load scenefile, track or rootarchive were null");
             return;
         }
+        SPDLOG_INFO("[SceneManager] [LoadTrackInfo] Loading TrackInfo...");
 
         /* 
          * Manually loading a custom asset file (scene.json) with no extractor class means that
@@ -179,7 +180,7 @@ namespace TrackEditor {
 
         LoadTrackInfoData(info, data);
 
-        SPDLOG_INFO("[SceneManager] [LoadTrackInfo] Loaded track info!");
+        SPDLOG_INFO("[SceneManager] [LoadTrackInfo] Loaded TrackInfo!\n");
     }
 
     void Load_AddStaticMeshActor(const nlohmann::json& actorJson) {

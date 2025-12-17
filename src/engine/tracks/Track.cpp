@@ -8,7 +8,7 @@
 #include "ChocoMountain.h"
 #include "port/Game.h"
 #include "engine/editor/SceneManager.h"
-#include "Registry.h"
+#include "engine/registry/Registry.h"
 #include "libultraship/bridge/resourcebridge.h"
 #include "align_asset_macro.h"
 

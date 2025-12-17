@@ -23,7 +23,7 @@
 
 #include "engine/editor/Editor.h"
 #include "engine/editor/SceneManager.h"
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 
 #include "engine/cameras/GameCamera.h"
 #include "engine/cameras/FreeCamera.h"
@@ -31,7 +31,7 @@
 #include "engine/cameras/LookBehindCamera.h"
 
 #include "engine/TrackBrowser.h"
-#include "engine/ItemTables.h"
+#include "engine/RandomItemTable.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -74,9 +74,13 @@ TrackEditor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
+/** Spawner Registries **/
 Registry<TrackInfo> gTrackRegistry;
 Registry<ActorInfo, const SpawnParams&> gActorRegistry;
 Registry<ItemInfo> gItemRegistry;
+
+/** Data Registries **/
+DataRegistry<RandomItemTable> gItemTableRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
 
@@ -140,10 +144,11 @@ void CustomEngineInit() {
 
     SetMarioRaceway();
 
+    printf("[Game] Registering Game Content...\n");
     RegisterActors(gActorRegistry);
     RegisterItems(gItemRegistry);
-
-    //ItemTable(table_grand_prix);
+    RegisterItemTables(gItemTableRegistry);
+    printf("[Game] Game Content Registered!\n");
 }
 
 void CustomEngineDestroy() {
@@ -808,37 +813,27 @@ f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
 }
 
 uint8_t CM_GetRandomHumanItem(uint32_t rank) {
-    if (!table) {
-        return ITEM_INVALID;
+    auto& raceManager = GetWorld()->GetRaceManager();
+
+    auto* table = raceManager.GetHumanItemTable();
+    if (nullptr == table) {
+        printf("[CM_GetRandomHumanItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
     }
 
-    auto& raceManager = GetWorld()->GetRaceManager()
-    if (!raceManager) {
-        return ITEM_INVALID;
-    }
-    auto& table = m.GetHumanItemTable();
-    if (!table) {
-        return ITEM_INVALID;
-    }
-
-    return table->Roll(rank);
+    uint8_t itemId = table->Roll(rank);
+    return itemId;
 }
 
 uint8_t CM_GetRandomCPUItem(uint32_t rank) {
-    if (!table) {
-        return ITEM_INVALID;
+    auto& raceManager = GetWorld()->GetRaceManager();
+    auto* table = raceManager.GetCPUItemTable();
+    if (nullptr == table) {
+        printf("[CM_GetRandomCPUItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
     }
-
-    auto& raceManager = GetWorld()->GetRaceManager()
-    if (!raceManager) {
-        return ITEM_INVALID;
-    }
-    auto& table = m.GetCPUItemTable();
-    if (!table) {
-        return ITEM_INVALID;
-    }
-
-    return table->Roll(rank);
+    uint8_t itemId = table->Roll(rank);
+    return itemId;
 }
 
 // clang-format off
