@@ -1900,7 +1900,7 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
         return 1;
     }
     
-    return 1;
+    return 0;
 }
 
 /**
