@@ -1,6 +1,7 @@
 #include "RegisterContent.h"
 #include "Registry.h"
 
+//! @todo turn items into a class
 void RegisterItems(Registry<ItemInfo>& r) {
     ItemInfo info;
 

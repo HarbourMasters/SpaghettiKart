@@ -812,30 +812,6 @@ f32 CM_GetWaterLevel(Vec3f pos, Collision* collision) {
     return GetWorld()->GetTrack()->GetWaterLevel(fPos, collision);
 }
 
-uint8_t CM_GetRandomHumanItem(uint32_t rank) {
-    auto& raceManager = GetWorld()->GetRaceManager();
-
-    auto* table = raceManager.GetHumanItemTable();
-    if (nullptr == table) {
-        printf("[CM_GetRandomHumanItem] Item table nullptr, giving player a none item\n");
-        return ITEM_NONE;
-    }
-
-    uint8_t itemId = table->Roll(rank);
-    return itemId;
-}
-
-uint8_t CM_GetRandomCPUItem(uint32_t rank) {
-    auto& raceManager = GetWorld()->GetRaceManager();
-    auto* table = raceManager.GetCPUItemTable();
-    if (nullptr == table) {
-        printf("[CM_GetRandomCPUItem] Item table nullptr, giving player a none item\n");
-        return ITEM_NONE;
-    }
-    uint8_t itemId = table->Roll(rank);
-    return itemId;
-}
-
 // clang-format off
 bool IsMarioRaceway()     { return dynamic_cast<MarioRaceway*>(GetWorld()->GetTrack()) != nullptr; }
 bool IsLuigiRaceway()     { return dynamic_cast<LuigiRaceway*>(GetWorld()->GetTrack()) != nullptr; }

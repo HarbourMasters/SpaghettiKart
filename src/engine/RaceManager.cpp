@@ -158,3 +158,26 @@ void RaceManager::SetItemTables() {
     printf("[RaceManager] Selected human item probability table %s\n", humanTableName.c_str());
     printf("[RaceManager] Selected cpu item probability table %s\n", cpuTableName.c_str());
 }
+
+extern "C" int16_t RaceManager_GetRandomHumanItem(uint32_t rank) {
+    auto& raceManager = GetWorld()->GetRaceManager();
+
+    auto* table = raceManager.GetHumanItemTable();
+    if (nullptr == table) {
+        printf("[RaceManager_GetRandomHumanItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
+    }
+
+    return table->Roll(rank);
+}
+
+extern "C" int16_t RaceManager_GetRandomCPUItem(uint32_t rank) {
+    auto& raceManager = GetWorld()->GetRaceManager();
+    auto* table = raceManager.GetCPUItemTable();
+    if (nullptr == table) {
+        printf("[RaceManager_GetRandomCPUItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
+    }
+
+    return table->Roll(rank);
+}

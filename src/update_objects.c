@@ -44,6 +44,8 @@
 #include <assets/textures/tracks/sherbet_land/sherbet_land_data.h>
 #include <assets/textures/tracks/rainbow_road/rainbow_road_data.h>
 
+#include "engine/RaceManager.h"
+
 float OTRGetAspectRatio(void);
 
 //! @todo unused?
@@ -2613,7 +2615,7 @@ s16 func_8007AFB0(s32 objectIndex, s32 playerId) {
     UNUSED s32 pad[3];
     s16 randomItem;
 
-    randomItem = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
+    randomItem = RaceManager_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
 
     if (randomItem == ITEM_NONE) {
         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
@@ -2647,11 +2649,11 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
     if (gModeSelection == GRAND_PRIX) {
         // Boo item
         if (random_int(0x0064U) < 0x51) {
-            item = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
+            item = RaceManager_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
             // ITEM_NONE is not a valid item for ghost, randomize again
             size_t attempts = 0;
             while (item == ITEM_NONE && attempts < 200) {
-                item = CM_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
+                item = RaceManager_GetRandomHumanItem(gGPCurrentRaceRankByPlayerId[playerId]);
                 attempts++;
             }
             if (attempts >= 200) {
