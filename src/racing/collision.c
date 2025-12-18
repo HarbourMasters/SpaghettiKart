@@ -1942,7 +1942,6 @@ void generate_collision_grid(void) {
             index = k + j * GRID_SIZE;
 
             // Select a section of the track using min/max akin to drawing a bounding-box
-
             minX = (gTrackMinX + (sectionX * k)) - 20;
             minZ = (gTrackMinZ + (sectionZ * j)) - 20;
 
