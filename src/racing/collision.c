@@ -1431,27 +1431,36 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
 
     sectionIndexX = (s16) ((posX - gTrackMinX) / sectionX);
     sectionIndexZ = (s16) ((posZ - gTrackMinZ) / sectionZ);
+
+    // Added to prevent out of bounds access
+    if (sectionIndexX < 0) sectionIndexX = 0;
+    if (sectionIndexZ < 0) sectionIndexZ = 0;
+    if (sectionIndexX >= GRID_SIZE) sectionIndexX = GRID_SIZE - 1;
+    if (sectionIndexZ >= GRID_SIZE) sectionIndexZ = GRID_SIZE - 1;
+
     gridSection = sectionIndexX + (sectionIndexZ * GRID_SIZE);
+    // GRID SECTION == 32
     numTriangles = gCollisionGrid[gridSection].numTriangles;
 
+
     if (sectionIndexX < 0) {
-        printf("collision.c: actor outside of -sectionX %d\n", sectionIndexX);
+        printf("[spawn_actor_on_surface] actor outside of -sectionX %d\n", sectionIndexX);
         return 3000.0f;
     }
     if (sectionIndexZ < 0) {
-        printf("collision.c: actor outside of -sectionZ %d\n", sectionIndexZ);
+        printf("[spawn_actor_on_surface] actor outside of -sectionZ %d\n", sectionIndexZ);
         return 3000.0f;
     }
     if (sectionIndexX >= GRID_SIZE) {
-        printf("collision.c: actor outside of sectionX %d\n", sectionIndexX);
+        printf("[spawn_actor_on_surface] actor outside of sectionX %d\n", sectionIndexX);
         return 3000.0f;
     }
     if (sectionIndexZ >= GRID_SIZE) {
-        printf("collision.c: actor outside of sectionZ %d\n", sectionIndexZ);
+        printf("[spawn_actor_on_surface] actor outside of sectionZ %d\n", sectionIndexZ);
         return 3000.0f;
     }
     if (numTriangles == 0) {
-        printf("collision.c: No collision triangles in track!\n  Something is wrong with the tracks geometry\n");
+        printf("[spawn_actor_on_surface] No collision triangles in track!\n  Something is wrong with the tracks geometry\n");
         return 3000.0f;
     }
 
@@ -1512,10 +1521,14 @@ void add_collision_triangle(Vtx* vtx1, Vtx* vtx2, Vtx* vtx3, s8 surfaceType, u16
     u16 flags;
     s16 y3;
     s16 z3;
+    // printf("ADD TRIANGLE ");
+    // printf("  triangle index: %d ", gCollisionMeshCount);
+    // printf("  sectionId: 0x%X ", sectionId);
+    // printf("  surfaceType: 0x%X\n", surfaceType);
 
-    // printf("triangle index: %d ", gCollisionMeshCount);
-    // printf("sectionId: 0x%X ", sectionId);
-    // printf("surfaceType: 0x%X ", surfaceType);
+    // printf("VTX1 %d %d %d\n", vtx1->v.ob[0], vtx1->v.ob[1], vtx1->v.ob[2]);
+    // printf("VTX2 %d %d %d\n", vtx2->v.ob[0], vtx2->v.ob[1], vtx2->v.ob[2]);
+    // printf("VTX3 %d %d %d\n", vtx3->v.ob[0], vtx3->v.ob[1], vtx3->v.ob[2]);
 
     /* Unused variables placed around doubles for dramatic effect */
     UNUSED s32 pad2[7];
@@ -1771,6 +1784,27 @@ void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
         bufferIndex++;
     }
 }
+
+// Helper: checks if point (px, pz) is inside the triangle
+s32 is_point_in_triangle(f32 px, f32 pz, CollisionTriangle* tri) {
+    f32 x1 = tri->vtx1->v.ob[0];
+    f32 z1 = tri->vtx1->v.ob[2];
+    f32 x2 = tri->vtx2->v.ob[0];
+    f32 z2 = tri->vtx2->v.ob[2];
+    f32 x3 = tri->vtx3->v.ob[0];
+    f32 z3 = tri->vtx3->v.ob[2];
+
+    // Barycentric coordinates
+    f32 denom = ((z2 - z3)*(x1 - x3) + (x3 - x2)*(z1 - z3));
+    if (denom == 0.0f) return 0; // Degenerate triangle
+
+    f32 a = ((z2 - z3)*(px - x3) + (x3 - x2)*(pz - z3)) / denom;
+    f32 b = ((z3 - z1)*(px - x3) + (x1 - x3)*(pz - z3)) / denom;
+    f32 c = 1.0f - a - b;
+
+    return (a >= 0.0f && b >= 0.0f && c >= 0.0f);
+}
+
 /**
  * @return 1 intersecting triangle, 0 not intersecting.
  */
@@ -1834,40 +1868,65 @@ s32 is_line_intersecting_rectangle(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 x
     return 0;
 }
 
-s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ, u16 index) {
-    CollisionTriangle* triangle = &gCollisionMesh[index];
-    s16 x1;
-    s16 z1;
-    s16 x2;
-    s16 z2;
-    s16 x3;
-    s16 z3;
+// Helper: project a point onto an axis
+static void project_point_on_axis(f32 px, f32 pz, f32 ax, f32 az, f32* min, f32* max) {
+    f32 proj = px * ax + pz * az;
+    if (proj < *min) *min = proj;
+    if (proj > *max) *max = proj;
+}
 
-    x1 = triangle->vtx1->v.ob[0];
-    z1 = triangle->vtx1->v.ob[2];
-    x2 = triangle->vtx2->v.ob[0];
-    z2 = triangle->vtx2->v.ob[2];
-    x3 = triangle->vtx3->v.ob[0];
-    z3 = triangle->vtx3->v.ob[2];
-    if ((x1 >= minX) && (maxX >= x1) && (z1 >= minZ) && (maxZ >= z1)) {
-        return 1;
+// Helper: project rectangle onto axis
+static void project_rectangle_on_axis(s16 minX, s16 maxX, s16 minZ, s16 maxZ, f32 ax, f32 az, f32* rMin, f32* rMax) {
+    *rMin = 1e30f;
+    *rMax = -1e30f;
+    project_point_on_axis(minX, minZ, ax, az, rMin, rMax);
+    project_point_on_axis(minX, maxZ, ax, az, rMin, rMax);
+    project_point_on_axis(maxX, minZ, ax, az, rMin, rMax);
+    project_point_on_axis(maxX, maxZ, ax, az, rMin, rMax);
+}
+
+
+s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ, u16 index) {
+    CollisionTriangle* tri = &gCollisionMesh[index];
+
+    // Fast AABB rejection
+    if (maxX < tri->minX || minX > tri->maxX || maxZ < tri->minZ || minZ > tri->maxZ) {
+        return 0; // No overlap
     }
-    if ((x2 >= minX) && (maxX >= x2) && (z2 >= minZ) && (maxZ >= z2)) {
-        return 1;
+
+    // Use SAT in XZ plane
+    f32 vx[3] = { (f32)tri->vtx1->v.ob[0], (f32)tri->vtx2->v.ob[0], (f32)tri->vtx3->v.ob[0] };
+    f32 vz[3] = { (f32)tri->vtx1->v.ob[2], (f32)tri->vtx2->v.ob[2], (f32)tri->vtx3->v.ob[2] };
+
+    // Axes: rectangle axes + triangle edge normals
+    f32 axes[5][2] = {
+        {1, 0}, // X axis
+        {0, 1}, // Z axis
+        {vz[1]-vz[0], -(vx[1]-vx[0])}, // Edge1 normal
+        {vz[2]-vz[1], -(vx[2]-vx[1])}, // Edge2 normal
+        {vz[0]-vz[2], -(vx[0]-vx[2])}  // Edge3 normal
+    };
+
+    for (int a = 0; a < 5; a++) {
+        f32 ax = axes[a][0];
+        f32 az = axes[a][1];
+
+        if (ax == 0 && az == 0) continue; // skip degenerate edge
+
+        f32 tMin = 1e30f, tMax = -1e30f;
+        for (int i = 0; i < 3; i++) {
+            f32 p = vx[i]*ax + vz[i]*az;
+            if (p < tMin) tMin = p;
+            if (p > tMax) tMax = p;
+        }
+
+        f32 rMin = 1e30f, rMax = -1e30f;
+        project_rectangle_on_axis(minX, maxX, minZ, maxZ, ax, az, &rMin, &rMax);
+
+        if (tMax < rMin || rMax < tMin) return 0; // Separating axis found
     }
-    if ((x3 >= minX) && (maxX >= x3) && (z3 >= minZ) && (maxZ >= z3)) {
-        return 1;
-    }
-    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x1, z1, x2, z2) == 1) {
-        return 1;
-    }
-    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x2, z2, x3, z3) == 1) {
-        return 1;
-    }
-    if (is_line_intersecting_rectangle(minX, maxX, minZ, maxZ, x3, z3, x1, z1) == 1) {
-        return 1;
-    }
-    return 0;
+
+    return 1; // Intersection detected
 }
 
 /**
@@ -1883,8 +1942,8 @@ void generate_collision_grid(void) {
     s16 maxZ;
     s16 minX;
     s16 minZ;
-    s32 sectionZ;
-    s32 sectionX;
+    s32 cellSizeZ;
+    s32 cellSizeX;
     s32 trackLengthX;
     s32 trackLengthZ;
     s32 index;
@@ -1893,8 +1952,8 @@ void generate_collision_grid(void) {
     trackLengthZ = (s32) gTrackMaxZ - gTrackMinZ;
 
     // Separate the track into 32 sections
-    sectionX = trackLengthX / GRID_SIZE;
-    sectionZ = trackLengthZ / GRID_SIZE;
+    cellSizeX = trackLengthX / GRID_SIZE;
+    cellSizeZ = trackLengthZ / GRID_SIZE;
 
     // Reset the collision grid
     for (i = 0; i < 1024; i++) {
@@ -1909,11 +1968,12 @@ void generate_collision_grid(void) {
             index = k + j * GRID_SIZE;
 
             // Select a section of the track using min/max akin to drawing a bounding-box
-            minX = (gTrackMinX + (sectionX * k)) - 20;
-            minZ = (gTrackMinZ + (sectionZ * j)) - 20;
 
-            maxX = minX + sectionX + 40;
-            maxZ = minZ + sectionZ + 40;
+            minX = (gTrackMinX + (cellSizeX * k)) - 20;
+            minZ = (gTrackMinZ + (cellSizeZ * j)) - 20;
+
+            maxX = minX + cellSizeX + 40;
+            maxZ = minZ + cellSizeZ + 40;
 
             for (i = 0; i < gCollisionMeshCount; i++) {
                 triangle = gCollisionMesh + i;
