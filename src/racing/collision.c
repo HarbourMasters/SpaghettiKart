@@ -1886,7 +1886,12 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
         return 1;
     }
     
-    // Check if any point of the bounding box is inside the triangle
+    /**
+     * Check if any point of the bounding box is inside the triangle
+     * Bug fix that was not in the original game.
+     * Without this, triangles that are bigger than a collision grid cell, will not be included in that cell
+     * Thus, players would spawn in the air at 3000.0f as a fallback, or could fall through that portion of the track.
+     */
     if (is_point_inside_triangle(minX, minZ, x1, z1, x2, z2, x3, z3) == 1) {
         return 1;
     }
@@ -1904,7 +1909,7 @@ s32 is_triangle_intersecting_bounding_box(s16 minX, s16 maxX, s16 minZ, s16 maxZ
 }
 
 /**
- * Splits the collision mesh into 32x32 sections. This allows the game to check only
+ * Splits the collision mesh into a 32x32 grid of cells. This allows the game to check only
  * nearby geography for a collision rather than checking against the whole collision mesh.
  * (checking against the whole mesh for every actor would be expensive)
  */
