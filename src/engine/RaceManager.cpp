@@ -5,6 +5,7 @@
 #include "port/Game.h"
 #include "engine/editor/Editor.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/RandomItemTable.h"
 
 extern "C" {
 #include "render_courses.h"
@@ -68,6 +69,8 @@ void RaceManager::PreInit() {
     } else {
         gPlaceItemBoxes = true;
     }
+
+    RaceManager::SetItemTables();
 }
 
 void RaceManager::BeginPlay() {
@@ -113,4 +116,68 @@ void RaceManager::PostInit() {
     if (CVarGetInteger("gGoFish", false) == true) {
         OTrophy::Spawn(FVector(0,0,0), OTrophy::TrophyType::GOLD, OTrophy::Behaviour::GO_FISH);
     }
+}
+
+void RaceManager::SetItemTables() {
+    std::string humanTableName = "";
+    std::string cpuTableName = "";
+
+    switch(gModeSelection) {
+        case GRAND_PRIX:
+            if (CVarGetInteger("gHarderCPU", false) == true) {
+                humanTableName = "mk:hard_cpu_grand_prix";
+                cpuTableName = "mk:hard_cpu_grand_prix";
+            } else { // normal gameplay
+                humanTableName = "mk:human_grand_prix";
+                cpuTableName = "mk:cpu_grand_prix";
+            }
+        case VERSUS:
+            switch (gPlayerCountSelection1) {
+                case TWO_PLAYERS_SELECTED:
+                    humanTableName = "mk:versus_2p";
+                    cpuTableName = "none selected";
+                    break;
+                case THREE_PLAYERS_SELECTED:
+                    humanTableName = "mk:versus_3p";
+                    cpuTableName = "none selected";
+                    break;
+                case FOUR_PLAYERS_SELECTED:
+                    humanTableName = "mk:versus_4p";
+                    cpuTableName = "none selected";
+                    break;
+            }
+            break;
+        case BATTLE:
+            humanTableName = "mk:battle";
+            cpuTableName = "none selected";
+            break;
+    }
+
+    mHumanItemTable = gItemTableRegistry.Get(humanTableName);
+    mCPUItemTable = gItemTableRegistry.Get(cpuTableName);
+    printf("[RaceManager] Selected human item probability table %s\n", humanTableName.c_str());
+    printf("[RaceManager] Selected cpu item probability table %s\n", cpuTableName.c_str());
+}
+
+extern "C" int16_t RaceManager_GetRandomHumanItem(uint32_t rank) {
+    auto& raceManager = GetWorld()->GetRaceManager();
+
+    auto* table = raceManager.GetHumanItemTable();
+    if (nullptr == table) {
+        printf("[RaceManager_GetRandomHumanItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
+    }
+
+    return table->Roll(rank);
+}
+
+extern "C" int16_t RaceManager_GetRandomCPUItem(uint32_t rank) {
+    auto& raceManager = GetWorld()->GetRaceManager();
+    auto* table = raceManager.GetCPUItemTable();
+    if (nullptr == table) {
+        printf("[RaceManager_GetRandomCPUItem] Item table nullptr, giving player a none item\n");
+        return ITEM_NONE;
+    }
+
+    return table->Roll(rank);
 }

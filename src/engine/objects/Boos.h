@@ -4,7 +4,7 @@
 #include <vector>
 #include "Object.h"
 
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "World.h"
 #include "CoreMath.h"
 

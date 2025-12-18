@@ -4,6 +4,7 @@
 #include <libultraship/libultraship.h>
 #include <libultra/gbi.h>
 
+#include "defines.h"
 
 #ifdef __cplusplus
 #include "GameObject.h"
@@ -56,13 +57,6 @@ private:
 };
 } // namespace TrackEditor
 #endif // __cplusplus
-
-
-#ifdef __cplusplus
-#define EXTERN_C extern "C"
-#else
-#define EXTERN_C
-#endif
 
 EXTERN_C void Editor_Launch(const char* resourceName);
 EXTERN_C void Editor_SetLevelDimensions(s16 minX, s16 maxX, s16 minZ, s16 maxZ, s16 minY, s16 maxY);

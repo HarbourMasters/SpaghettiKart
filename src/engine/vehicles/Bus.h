@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include "Actor.h"
 #include <vector>
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "engine/SpawnParams.h"
 
 extern "C" {

@@ -2,7 +2,7 @@
 
 #include <libultraship.h>
 
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "World.h"
 
 

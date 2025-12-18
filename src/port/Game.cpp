@@ -23,7 +23,7 @@
 
 #include "engine/editor/Editor.h"
 #include "engine/editor/SceneManager.h"
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 
 #include "engine/cameras/GameCamera.h"
 #include "engine/cameras/FreeCamera.h"
@@ -31,6 +31,7 @@
 #include "engine/cameras/LookBehindCamera.h"
 
 #include "engine/TrackBrowser.h"
+#include "engine/RandomItemTable.h"
 
 #ifdef _WIN32
 #include <locale.h>
@@ -73,8 +74,13 @@ TrackEditor::Editor gEditor;
 
 s32 gTrophyIndex = NULL;
 
+/** Spawner Registries **/
 Registry<TrackInfo> gTrackRegistry;
 Registry<ActorInfo, const SpawnParams&> gActorRegistry;
+Registry<ItemInfo> gItemRegistry;
+
+/** Data Registries **/
+DataRegistry<RandomItemTable> gItemTableRegistry;
 
 std::unique_ptr<TrackBrowser> gTrackBrowser;
 
@@ -138,7 +144,11 @@ void CustomEngineInit() {
 
     SetMarioRaceway();
 
+    printf("[Game] Registering Game Content...\n");
     RegisterActors(gActorRegistry);
+    RegisterItems(gItemRegistry);
+    RegisterItemTables(gItemTableRegistry);
+    printf("[Game] Game Content Registered!\n");
 }
 
 void CustomEngineDestroy() {

@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include "Object.h"
 
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "engine/World.h"
 
 //! @todo unk_0D5 needs to be a struct variable probably. What does it do? Behaviour?

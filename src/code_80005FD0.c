@@ -42,6 +42,7 @@
 
 #include "port/Game.h"
 #include "engine/tracks/Track.h"
+#include "engine/RaceManager.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -7177,14 +7178,13 @@ void cpu_use_item_strategy(s32 playerId) {
                 (CVarGetInteger("gHarderCPU", 0) == true)) {
 
                 cpu_decisions_branch_item(playerId, &cpuStrategy->branch,
-                                          hard_cpu_gen_random_item((s16) gLapCountByPlayerId[playerId],
-                                                                   gGPCurrentRaceRankByPlayerId[playerId]));
+                                          RaceManager_GetRandomCPUItem(gGPCurrentRaceRankByPlayerId[playerId]));
                 // Stock CPU Items
             } else if ((((playerId * 20) + 100) < gNumPathPointsTraversed[playerId]) && (cpuStrategy->timer >= 0x259) &&
                        (cpuStrategy->numItemUse < 3) && (gLapCountByPlayerId[playerId] < 3)) {
                 cpu_decisions_branch_item(
                     playerId, &cpuStrategy->branch,
-                    cpu_gen_random_item((s16) gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
+                    RaceManager_GetRandomCPUItem(gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, cpuStrategy);
             }

@@ -1,6 +1,10 @@
-#pragma once
+#ifndef RACE_MANAGER_H
+#define RACE_MANAGER_H
+
+#include "defines.h"
 
 #ifdef __cplusplus
+#include "engine/RandomItemTable.h"
 extern "C" {
 #endif
 #include <libultraship/libultra/gbi.h>
@@ -37,8 +41,19 @@ public:
     virtual void PreInit();
     virtual void BeginPlay();
     virtual void PostInit();
+    virtual void SetItemTables();
+    RandomItemTable* GetHumanItemTable() { return mHumanItemTable; }
+    RandomItemTable* GetCPUItemTable() { return mCPUItemTable; }
 protected:
     World& WorldContext;
+    RandomItemTable* mHumanItemTable;
+    RandomItemTable* mCPUItemTable;
+    std::unordered_map<std::string, RandomItemTable> mItemTables;
 };
 
-#endif
+#endif // __cplusplus
+
+EXTERN_C int16_t RaceManager_GetRandomHumanItem(uint32_t rank);
+EXTERN_C int16_t RaceManager_GetRandomCPUItem(uint32_t rank);
+
+#endif // RACE_MANAGER_H

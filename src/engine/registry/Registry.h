@@ -7,7 +7,7 @@
 #include <set>
 
 struct TrackInfo {
-    int32_t Id;
+    uint32_t Id;
     std::string Path; // Path to the custom track
     std::string ResourceName;
     std::string Name;
@@ -18,10 +18,16 @@ struct TrackInfo {
 };
 
 struct ActorInfo {
-    int32_t Id;
+    uint32_t Id;
     std::string ResourceName;
     std::string Name;
     std::set<std::string> Tags; // Category for filtering
+};
+
+struct ItemInfo {
+    uint32_t Id;
+    std::string ResourceName;
+    std::string Name;
 };
 
 /**
@@ -86,6 +92,10 @@ public:
 
     bool Find(const std::string& resourceName) const {
         return mMap.find(resourceName) != mMap.end();
+    }
+
+    size_t Size() {
+        return mMap.size();
     }
 
     std::vector<const TInfo*> GetAllInfo() const {

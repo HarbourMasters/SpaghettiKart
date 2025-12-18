@@ -4,7 +4,7 @@
 #include "engine/Actor.h"
 #include "CoreMath.h"
 #include "engine/World.h"
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 
 extern "C" {
 #include "common_structs.h"

@@ -3,7 +3,7 @@
 #include <libultraship.h>
 #include "Object.h"
 
-#include "RegisterContent.h"
+#include "engine/registry/RegisterContent.h"
 #include "World.h"
 
 class OTrashBin : public OObject {
