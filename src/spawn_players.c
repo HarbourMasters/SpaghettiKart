@@ -4,7 +4,7 @@
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
-#include "editor/Editor.h"
+#include "engine/editor/Editor.h"
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"
@@ -130,6 +130,17 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
 #undef calc_a
 #undef calc_b
 #undef calc
+    }
+
+    if (Editor_IsEnabled()) {
+        f32 height = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn);
+
+        if ((height > 2900.0f) || (height < -2900.0f)) {
+            printf("[spawn_player] Player %d appears to have spawned in the air!\n", playerIndex);
+            printf("  Make sure some track surface is below the player at\n");
+            printf("  %f %f\n", startingRow, startingColumn);
+            printf("  Double check! Often a missed export or incorrect mesh placement can trick you!");
+        }
     }
 
     player->pos[0] = startingRow;
