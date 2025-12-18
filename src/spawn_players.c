@@ -1,6 +1,7 @@
 #include <defines.h>
 #include <mk64.h>
 #include <stubs.h>
+#include <stdio.h>
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
