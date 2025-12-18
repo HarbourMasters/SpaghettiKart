@@ -1439,7 +1439,6 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
     if (sectionIndexZ >= GRID_SIZE) sectionIndexZ = GRID_SIZE - 1;
 
     gridSection = sectionIndexX + (sectionIndexZ * GRID_SIZE);
-    // GRID SECTION == 32
     numTriangles = gCollisionGrid[gridSection].numTriangles;
 
 
