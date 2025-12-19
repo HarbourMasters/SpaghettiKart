@@ -1,20 +1,86 @@
-# Custom Tracks
-This guide is
-* Hastily written
-* Made for advanced users
-* A work-in-progress
+# Custom Track Overview
 
-This guide is not all encompassing and may be missing important information. A better manual will be drafted in the future.
+This guide is not all-encompassing but rather covers the basics for track creation.
 
 ## Dependencies
-* Blender v4.3 (older should work fine too).
+* Blender v4.3 or older.
 * Harbour Masters Fast64 https://github.com/HarbourMasters/fast64
 
+## Configuration
+* Set Fast64 Global Settings to `MK64`
+* Set F3D Microcode to `F3DEX`
+<img width="362" height="416" alt="image" src="https://github.com/user-attachments/assets/99b50f7c-28db-4300-b49a-892fc86ce894" />
+
+## Adding the surface
+
+* Add an empty and place it at coordinates 0, 0, 0
+<img width="482" height="532" alt="image" src="https://github.com/user-attachments/assets/ab1475c9-9610-4735-8083-d1586bd76cd7" />
+
+* In the object panel select `Course Root`
+  * This is the root of the custom track. All mesh and path are placed within.
+<img width="342" height="372" alt="image" src="https://github.com/user-attachments/assets/f1ac68f0-2beb-4078-af62-52d9925e56f4" />
+
+* Remove the default cube
+<img width="316" height="359" alt="image" src="https://github.com/user-attachments/assets/bce1d0f3-fceb-4f33-8997-6e66fb45d517" />
+
+* Add a plane and place it at coordinates 0, 0, 0
+<img width="609" height="121" alt="image" src="https://github.com/user-attachments/assets/660e0ecc-3f89-4722-b1f0-73f2e253b1fd" />
+* The drivable surface *must* be a flat mesh. It cannot be a cube.
+* Select the plane and scale it to a reasonable size by pressing the `s` key and dragging with the mouse.
+  * Z coordinate 420.0f must have mesh under it for the players to spawn correctly.
+  * This is approximately -16.8 Y in Blender units (420 / scale of 25)
+
+* One method to test the plane size is by adding a cube
+<img width="1294" height="801" alt="image" src="https://github.com/user-attachments/assets/71566a5b-06b5-4a95-829a-1f9edde3c530" />
+* You will likely want the surface mesh to be a bit bigger. However, this size will meet the spawn requirements.
+* Delete the cube
+
+You now have a valid surface for racers to drive on. Multiple surfaces, hills, bumps, cubes, walls, spheres, etc. are all applicable types of mesh to add to the track. The specifics of crafting the track will be covered in another guide. Just know that there are proper ways to connect mesh together so the racers do not fall through while traversing from one mesh to another mesh.
+
+### Adding a Path
+* Allows CPUs to follow the track
+* Allows game to track players progress as they navigate the track
+
+* Add a nurbs path or bezier curve
+  * The nurbs path is easier to use and outputs very smooth results
+  * The steps below apply to *both* types of curve/path
+ <img width="452" height="272" alt="image" src="https://github.com/user-attachments/assets/7654445c-16e9-4ae8-a328-52c727f01643" />
+
+* Select the path
+* Enter `Edit` mode (Press tab)
+* Enable Normals
+<img width="734" height="240" alt="image" src="https://github.com/user-attachments/assets/568e1937-be7d-4daa-9ada-f8238e9e7efe" />
+* Normals shows these arrows which tell us which way is forward.
+<img width="1023" height="387" alt="image" src="https://github.com/user-attachments/assets/be868cd9-1e04-4818-afa3-25c2c4031242" />
+Thus, the point marked as `1` is the first path point. This must be placed at 0, 0, 0. If it were to be placed at 5, 0, 0, it would have an unexpected offset in-game.
+
+* Move the other points farther forward so that they do not get in the way, and then set the first point at 0, 0, 0.
+<img width="1061" height="623" alt="image" src="https://github.com/user-attachments/assets/89db120b-1789-45a9-80ab-01f7a11c7b86" />
+* If you zoom out, this point should be placed at the very center of the plane. If it is not at the center, press `tab` to switch to `object` mode, and move the whole path to 0,0,0. Then switch back to `edit` mode and place the first path point at 0, 0, 0
+
+* The point should now be at the center (presuming the plane is also centered at 0, 0, 0)
+
+* This next step is incredibly important
+<img width="978" height="540" alt="image" src="https://github.com/user-attachments/assets/5918325a-0b0e-46b3-b433-96bf61b2092f" />
+* See the green Y in the compass at the top right corner? This shows the positive Y-axis. This is the direction players are facing when they spawn. As such, your path must go in this direction. If it goes in any other direction the CPUs will turn 90 degrees and drive off the track.
+
+#### Path Point Alignment
+* Enter *Quad View* as this allows moving points from the top-down
+<img width="911" height="676" alt="image" src="https://github.com/user-attachments/assets/521756d5-e8af-4d3a-ae4e-2029cf93021d" />
+* Next enable *Magnet* mode (shift-tab) and *Snap Target* set to *Face*
+<img width="353" height="352" alt="image" src="https://github.com/user-attachments/assets/ae4aeeae-1744-45f2-88a0-6afb8a045ec2" />
+
+* Now you can drag using the all-axis mode (the white circle)
+
+* Path points now running in the correct direction
+
+
+The path must be placed with positive Y as forward. At the start of the race, when you press A to go, you are facing in the positive Y direction in blender. In-game it's actually negative Z
 
 ## How to use
 * Add an empty <-- All of your meshes and path will go here. Place it at coordinate 0,0,0
 * Add a bezier curve <-- This will be the track path. Place it at coordinate 0,0,0
-* Add some mesh <-- The drivable surface should be a flat-plane, not a box.
+
   * Goto the object menu and select a surface type (asphalt, grass, etc.)
   * Stuff like buildings or walls should be separate meshes to not mess with the collision generator.
   * The track/pavement should be a separate mesh from the rest of the scene.
