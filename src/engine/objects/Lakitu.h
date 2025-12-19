@@ -83,5 +83,6 @@ private:
     size_t _idx;
     LakituType _type;
     s32 mPlayerId;
+    s32 mCameraId;
     s32 mLakituId;
 };
