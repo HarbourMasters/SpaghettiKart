@@ -44,6 +44,16 @@ size_t OLakitu::_count = 0;
 OLakitu::OLakitu(s32 playerId, LakituType type) {
     Name = "Lakitu";
     mPlayerId = playerId;
+
+    mCameraId = -1;
+    // Find the camera for this player
+    for (size_t i = 0; i < NUM_CAMERAS; i++) {
+        if (cameras[i].playerId == playerId ) {
+            mCameraId = cameras[i].cameraId;
+            break;
+        }
+    }
+
     _idx = _count;
     find_unused_obj_index(&gIndexLakituList[_count]);
     init_object(gIndexLakituList[_count], (s32) type);
@@ -104,16 +114,7 @@ void OLakitu::Draw(s32 cameraId) {
     s32 objectIndex;
     Object* object;
 
-    // Only draw lakitu on its own screen
-    bool found = false;
-    for (size_t i = 0; i < ARRAY_COUNT(gScreenContexts); i++) {
-        if (gScreenContexts[i].camera == &cameras[cameraId]) {
-            if (_idx == i) {
-                found = true;
-            }
-        }
-    }
-    if (!found) {
+    if (cameraId != mCameraId) {
         return;
     }
 
@@ -847,7 +848,12 @@ void OLakitu::update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
 
 void OLakitu::func_8007A66C(s32 objectIndex) {
     Player* player = &gPlayers[mPlayerId];
-    Camera* camera = &cameras[mPlayerId];
+
+    if (mCameraId == -1) {
+        return;
+    }
+
+    Camera* camera = &cameras[mCameraId];
     u16 rot = 0x8000 - camera->rot[1];
 
     gObjectList[objectIndex].pos[0] =
@@ -862,7 +868,10 @@ void OLakitu::func_8007A66C(s32 objectIndex) {
 
 void OLakitu::func_8007A778(s32 objectIndex) {
     Player* player = &gPlayers[mPlayerId];
-    Camera* camera = &cameras[mPlayerId];
+    if (mCameraId == -1) {
+        return;
+    }
+    Camera* camera = &cameras[mCameraId];
     u16 rot = 0x8000 - camera->rot[1];
 
     gObjectList[objectIndex].pos[0] =
