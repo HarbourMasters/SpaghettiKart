@@ -70,20 +70,95 @@ Thus, the point marked as `1` is the first path point. This must be placed at 0,
 * Next enable *Magnet* mode (shift-tab) and *Snap Target* set to *Face*
 <img width="353" height="352" alt="image" src="https://github.com/user-attachments/assets/ae4aeeae-1744-45f2-88a0-6afb8a045ec2" />
 
-* Now you can drag using the all-axis mode (the white circle)
+* Now you can drag using the all-axis mode (the white circle) and the points will snap to the mesh surface.
+<img width="1510" height="837" alt="image" src="https://github.com/user-attachments/assets/393ae10a-4543-4155-b19f-e7f147c63651" />
 
-* Path points now running in the correct direction
 
+* Path points are now running in the correct direction
+<img width="368" height="336" alt="image" src="https://github.com/user-attachments/assets/2caf6c63-d673-4ac2-919a-34e9a452d6de" />
 
-The path must be placed with positive Y as forward. At the start of the race, when you press A to go, you are facing in the positive Y direction in blender. In-game it's actually negative Z
+* Next select that last point in the path and press `E` to extrude (add) another point to the path and place it farther forward.
+* Continue adding new path points until you make a complete circle.
+* The average track has ~800 path points. There's no specific number required, just enough that the CPUs traverse smoothly.
+  * If using the Nurbs Path, do not worry about how many path points. Just that the line connecting the points is smooth.
+  * If using the bezier curve, ignore the line that connects the points. Only the points matter!
+* Keep adding points until you have a complete circle
+<img width="268" height="346" alt="image" src="https://github.com/user-attachments/assets/b88f1ea8-176c-47f5-bcfe-b78bfcca9248" />
+* Note that the start/end points do not need to connect to each other or anything like that. Just make them close
+* If using the bezier curve you *must* place at least ten points behind the starting line in a straight line.
+  * The NurbsPath requires this as well. However, you don't actually have control over the number of points. So, just make sure there's 16.8 units of space behind the finishline.
 
-## How to use
-* Add an empty <-- All of your meshes and path will go here. Place it at coordinate 0,0,0
-* Add a bezier curve <-- This will be the track path. Place it at coordinate 0,0,0
+## Prepare for export
+* Drag and drop the mesh and path into the empty so that they are within it. This can be done at the beginning or prior to export, either is fine.
+* It appears you have to hold shift to drag and drop objects into other objects
+<img width="158" height="90" alt="image" src="https://github.com/user-attachments/assets/e806494b-8f59-48cf-95e2-d5d1c03ba3a7" />
+* Note that these objects have been named. This is not requiremed.
 
-  * Goto the object menu and select a surface type (asphalt, grass, etc.)
-  * Stuff like buildings or walls should be separate meshes to not mess with the collision generator.
-  * The track/pavement should be a separate mesh from the rest of the scene.
+## Export
+* Name the track
+* Choose a mods path
+* Scale should be set somewhere around 20-25. 100 results in really big models in-game
+<img width="344" height="271" alt="image" src="https://github.com/user-attachments/assets/3be6300c-9125-456c-88bb-da6c231bca30" />
+### Mods Path
+* This should be something like `desktop/mycoolmods` or similar. All your mods will go here.
+### Name
+* This will determine what folders your track will be placed in.
+* If you name your track `mytrack` then it will be placed in `desktop/mycoolmods/tracks/mytrack/files_are_placed_here`
+
+* Select the empty or any object inside of the empty and click export. If it says *Success!* then you should see files in the track folder.
+
+## Packaging
+The track is now ready for packaging and import into the game for your first test!
+
+* Find the `desktop/mycoolmods/tracks` folder and place a mods.toml file beside the tracks folder. Place the following in it and save:
+```toml
+[mod]
+name = "mymod"
+version = "1.0.0"
+```
+* Highlight the tracks folder and the mods.toml file.
+<img width="120" height="74" alt="image" src="https://github.com/user-attachments/assets/8842a528-ef67-4ae6-81cd-802f133bbea1" />
+* Right-click --> *Add To Archive* and turn into a stored zip archive.
+  * This file should *not* be compressed.
+* If you wish, you may rename this file to mod_name.o2r or mod_name.zip
+
+If you open the zip folder, you should immediately see the `tracks` folder and the mods.toml file. Inside `tracks` should be a folder with the name of your track, and some files inside of that folder.
+
+If it does not contain any files similar to the below then something has gone wrong.
+<img width="289" height="466" alt="image" src="https://github.com/user-attachments/assets/ccef558b-ac9a-42ed-bc85-e27da4f16598" />
+
+* If all checks out, go to your game executable
+* Add a `mods` folder. Drag and drop your mod into the mods folder.
+
+### Game Test
+* Launch the game
+
+* Press `ESC` and enable *Debug Mode*
+<img width="379" height="210" alt="image" src="https://github.com/user-attachments/assets/1a3f09ba-0743-4243-b400-2a443df78cdd" />
+Navigate away and back to the start screen and a debug menu should pop up.
+Use the left/right arrow keys to switch tracks. Custom tracks are placed at the end of the list.
+
+* Press *Launch HM64 Labs* to configure your track and place actors.
+<img width="767" height="413" alt="image" src="https://github.com/user-attachments/assets/52bcde3e-0b23-4611-9417-1adb71397a5c" />
+
+* Select your track
+<img width="1301" height="275" alt="image" src="https://github.com/user-attachments/assets/5f092a60-3377-48e1-8d23-d527a0e60684" />
+
+* Navigate to the Track Properties winow to modify track name and settings
+<img width="323" height="339" alt="image" src="https://github.com/user-attachments/assets/59116891-0fca-4eb8-8050-02e70b75021d" />
+
+### Extra info
+* Goto the object menu and select a surface type (asphalt, grass, etc.)
+<img width="372" height="569" alt="image" src="https://github.com/user-attachments/assets/648ae292-4d1c-4bb7-996c-5ff3ecf7310e" />
+
+* Stuff like buildings or walls should be separate meshes to not mess with the collision generator.
+* The track/pavement should be a separate mesh from the rest of the scene.
+* Any number of tracks may be placed in the tracks folder
+* After opening your track in the editor for the first time. A scene.json file is created in your tracks data folder.
+  * If something ever goes horribly wrong you could manually edit this file or back it up to restore it later.
+* If the game crashes when you try to play it. Then there is an issue with track path or mesh.
+  * The game generates the collision mesh automatically.
+* Lighting changes are not currently saving to the scene file yet.
 
 ## Materials
 * Youtube tutorials discuss how materials work.
@@ -98,48 +173,6 @@ Example of correct texture format
 ## Export
 * Check `Ignore Textures Restrictions` failing to do so may result in errors
 <img width="318" height="315" alt="image" src="https://github.com/user-attachments/assets/60f084d3-aef4-429c-889f-2e2d74473e1a" />
-
-
-* FAST64 MUST BE SET TO F3DEX MODE (The others *should* work but they don't)
-* Select the empty and click the SpaghettiKart and Harbour Masters profiles
-
-* Name: Track name here
-* internal_game_path: must have `tracks/your_track_name_here`
-* export_path: Choose an export location
-* decomp_path: Leave blank
-* Click Export
-
-## Preparation
-* Place files in folder `tracks/your_track_name_here/the_files_here`
-* Right click on the folder `tracks`, and turn into stored zip archive.
-  * This file should *not* be compressed.
-* If you wish, you may rename this file to mod_name.o2r or mod_name.zip
-
-## Import
-* Place mod in `mods` folder beside game executable.
-* Launch the game
-* Enable HM64 Labs in the ESC enhancements menu
-* Enable Debug Mode in the ESC Developer menu (only required if using the debug menu to play tracks)
-  * If you are at the start screen, navigate away and come back, the debug menu will appear.
-* In the Content Browser click `Tracks`
-* Your track should be in here with an exclamation mark. Your track needs to be initialized.
-
-## Track Initialization
-* An initialized track has a scene.json file in it. The game creates this file automatically.
-* In the Track Properties window setup how you want and then click on your track in the Content Browser.
-* The scene file should now be generated. If the game crashes, just restart.
-* If the track no longer has the exclamation mark, your scene file has successfully been created.
-* The track should now show up in the debug track list.
-  * You can use the debug menu to play your track.
-  * You can click on your track in the Content Browser under `Tracks` to play your track.
-
-## Playing Your Custom Track
-* If the game crashes when you select it. Issue with track path or mesh is most common cause.
-  * The game generates collision mesh automatically.
-* Adjust the settings in the track properties to whatever.
-* Add actors or more mesh using the Content Browser
-* Actors/Objects and Lighting changes are not currently saving to the scene file yet.
-  * You can place stuff. But it will not save.
   
 # Tips
 
