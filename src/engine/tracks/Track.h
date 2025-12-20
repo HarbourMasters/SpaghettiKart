@@ -359,7 +359,7 @@ public:
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
     virtual void ScrollingTextures();
     // Draw transparent models (water, signs, arrows, etc.) 
-    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                            uint16_t playerDirection);
     virtual void Destroy();
     // Note that this will be false for custom tracks made using code

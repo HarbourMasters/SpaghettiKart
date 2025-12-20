@@ -328,7 +328,7 @@ void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BansheeBoardwalk::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void BansheeBoardwalk::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                                  uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

@@ -8,7 +8,7 @@ public:
     virtual void Load() override;
     virtual void BeginPlay() override;
     virtual void Draw(ScreenContext*) override;
-    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
+    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void ScrollingTextures() override;
     virtual bool IsMod() override { return true; }
     void InvertTriangleWindingModdedByName(const char* name);

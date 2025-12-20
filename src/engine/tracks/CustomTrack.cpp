@@ -278,7 +278,7 @@ void CustomTrack::ScrollingTextures() {
     // find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A6A8, 0, D_802B87BC);
 }
 
-void CustomTrack::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     //FVector position = { screen->camera->pos[0], screen->camera->pos[1], screen->camera->pos[2] };
 
     // Sorting objects might matter in the future. But it doesn't really work for static geometry which

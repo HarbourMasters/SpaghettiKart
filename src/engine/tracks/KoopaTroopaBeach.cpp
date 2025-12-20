@@ -286,7 +286,7 @@ void KoopaTroopaBeach::ScrollingTextures() {
 
 }
 
-void KoopaTroopaBeach::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     Vec3f vector;
 
     gDPPipeSync(gDisplayListHead++);

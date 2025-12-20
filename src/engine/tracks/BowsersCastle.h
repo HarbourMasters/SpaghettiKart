@@ -37,7 +37,7 @@ public:
     virtual void DrawCredits() override;
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) override;
     virtual void Waypoints(Player*, int8_t) override;
-    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
+    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection);
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

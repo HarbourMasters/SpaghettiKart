@@ -588,7 +588,7 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
 
 void Track::ScrollingTextures() {
 }
-void Track::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void Track::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
 }
 
 void Track::Destroy() {
