@@ -84,6 +84,7 @@ typedef struct {
     u8 sectionId;
     u16 clip; // enum in CustomTrack.h
     u16 layer; // enum in CustomTrack.h
+    Vec3f location;
 } TrackSections;
 
 typedef struct Properties {

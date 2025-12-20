@@ -824,7 +824,8 @@ void render_screens(s32 mode, s32 cameraId, s32 playerId) {
         render_players(camera, screenId);
     }
 
-    func_8029122C(screen, playerId); // Track water related
+    // Track geography
+    draw_transparent_geography(screen, playerId);
 
     switch (playerId) { // Render player particles or some effect
         case 0:

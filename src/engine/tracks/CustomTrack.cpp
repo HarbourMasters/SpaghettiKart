@@ -9,6 +9,7 @@
 #include <cstring>
 #include <algorithm>
 
+#include "engine/Matrix.h"
 #include "engine/editor/SceneManager.h"
 
 extern "C" {
@@ -138,10 +139,10 @@ void CustomTrack::Load() {
                 mOpaqueItems.push_back(meshData[i].crc);
                 break;
             case DrawLayer::DRAW_TRANSLUCENT:
-                mTranslucentItems.push_back(meshData[i].crc);
+                mTranslucentItems.push_back(meshData[i]);
                 break;
             case DrawLayer::DRAW_TRANSLUCENT_NO_ZBUFFER:
-                mTranslucentNoZBufferItems.push_back(meshData[i].crc);
+                mTranslucentNoZBufferItems.push_back(meshData[i]);
                 break;
         }
     }
@@ -279,27 +280,34 @@ void CustomTrack::ScrollingTextures() {
 }
 
 void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
-    //FVector position = { screen->camera->pos[0], screen->camera->pos[1], screen->camera->pos[2] };
+    FVector cam = { screen->camera->pos[0], screen->camera->pos[1], screen->camera->pos[2] };
 
-    // Sorting objects might matter in the future. But it doesn't really work for static geometry which
-    // does not have a position other than 0,0,0. And if it did, the geometry can be big making sorting inaccurate.
-    // std::sort(mTranslucentItems.begin(), mTranslucentItems.end(),
-    //         [&](uint64_t a, uint64_t b) {
-    //     FVector posA = GetItemPosition(a);
-    //     FVector posB = GetItemPosition(b);
+    std::sort(mTranslucentItems.begin(), mTranslucentItems.end(),
+            [&](TrackSections a, TrackSections b) {
+        FVector posA = FVector(a.location[0], a.location[1], a.location[2]);
+        FVector posB = FVector(b.location[0], b.location[1], b.location[2]);;
 
-    //     // Distance squared is enough, avoids sqrt
-    //     float distA = (posA - screen->camera->pos).LengthSquared();
-    //     float distB = (posB - screen->camera->pos).LengthSquared();
+        float distA = (posA - cam).Square();
+        float distB = (posB - cam).Square();
 
-    //     return distA > distB; // farthest first
-    // });
+        return distA > distB; // farthest first
+    });
 
-    for (uint64_t item : mTranslucentItems) {
-        gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item));
+    for (TrackSections& item : mTranslucentItems) {
+        Mat4 matrix;
+        FVector pos = {item.location[0], item.location[1], item.location[2]};
+        ApplyMatrixTransformations(matrix, pos, IRotator(0, 0, 0), FVector(1, 1, 1));
+        AddObjectMatrix(matrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item.crc));
     }
 
-    for (uint64_t item : mTranslucentNoZBufferItems) {
-        gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item));
+    gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER);
+    for (TrackSections& item : mTranslucentNoZBufferItems) {
+        Mat4 matrix;
+        FVector pos = {item.location[0], item.location[1], item.location[2]};
+        ApplyMatrixTransformations(matrix, pos, IRotator(0, 0, 0), FVector(1, 1, 1));
+        AddObjectMatrix(matrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) ResourceGetDataByCrc(item.crc));
     }
+    gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
 }

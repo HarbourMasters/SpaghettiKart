@@ -199,7 +199,7 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_1140); //
 }
 
-void func_8029122C(ScreenContext* screen, s32 playerId) {
+void draw_transparent_geography(ScreenContext* screen, s32 playerId) {
     UNUSED s32 pad;
     Player* player = screen->player;
     Mat4 matrix;
@@ -232,7 +232,7 @@ void func_8029122C(ScreenContext* screen, s32 playerId) {
     }
     render_set_position(matrix, 0);
 
-    CM_DrawWater(screen, pathCounter, cameraRot, playerDirection);
+    CM_DrawTransparency(screen, pathCounter, cameraRot, playerDirection);
     FrameInterpolation_RecordCloseChild();
 }
 

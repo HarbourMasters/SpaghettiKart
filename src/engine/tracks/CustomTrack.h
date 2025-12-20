@@ -33,8 +33,6 @@ enum class DrawLayer : uint16_t {
 };
     // Containers that hold meshes that get drawn
     std::vector<uint64_t> mOpaqueItems;
-    std::vector<uint64_t> mTranslucentItems;
-    std::vector<uint64_t> mTranslucentNoZBufferItems;
-
-
+    std::vector<TrackSections> mTranslucentItems;
+    std::vector<TrackSections> mTranslucentNoZBufferItems;
 };

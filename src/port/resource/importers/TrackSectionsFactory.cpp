@@ -28,6 +28,9 @@ ResourceFactoryBinaryTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> f
         data.sectionId = reader->ReadUByte();
         data.clip = reader->ReadUInt16();
         data.layer = 0;
+        data.location[0] = 0;
+        data.location[1] = 0;
+        data.location[2] = 0;
 
         section->TrackSectionsList.push_back(data);
     }
@@ -58,6 +61,9 @@ ResourceFactoryXMLTrackSectionsV0::ReadResource(std::shared_ptr<Ship::File> file
             data.sectionId = child->IntAttribute("section");
             data.clip = child->IntAttribute("flags");
             data.layer = child->IntAttribute("drawlayer");
+            data.location[0] = child->FloatAttribute("x");
+            data.location[1] = child->FloatAttribute("y");
+            data.location[2] = child->FloatAttribute("z");
 
             section->TrackSectionsList.push_back(data);
         }

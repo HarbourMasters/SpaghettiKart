@@ -643,7 +643,7 @@ void CM_ScrollingTextures() {
     }
 }
 
-void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
     if (GetWorld()->GetTrack()) {
         GetWorld()->GetTrack()->DrawTransparency(screen, pathCounter, cameraRot, playerDirection);

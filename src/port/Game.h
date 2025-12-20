@@ -130,7 +130,7 @@ s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CM_BeginPlay();
 
-void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection);
 
 void CM_AICrossingBehaviour(s32 playerId);
