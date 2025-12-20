@@ -37,6 +37,9 @@ public:
 
 public:
     explicit OLakitu(s32 playerId, LakituType type);
+    ~OLakitu() {
+        _count -= 1;
+    }
 
     void Activate(LakituType type); // Triggers Lakitu into a behaviour
 
@@ -76,6 +79,10 @@ public:
     void func_8007AA44(s32 playerId); // animate lakitu
 
 private:
+    static size_t _count;
+    size_t _idx;
     LakituType _type;
-    s32 _playerId;
+    s32 mPlayerId;
+    s32 mCameraId;
+    s32 mLakituId;
 };
