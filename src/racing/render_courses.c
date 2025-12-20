@@ -57,17 +57,17 @@ void parse_track_displaylists(TrackSections* asset) {
     TrackSections* section = (TrackSections*) asset;
 
     while (section->crc != 0) {
-        if (section->flags & 0x8000) {
+        if (section->clip & 0x8000) {
             D_8015F59C = 1;
         } else {
             D_8015F59C = 0;
         }
-        if (section->flags & 0x2000) {
+        if (section->clip & 0x2000) {
             D_8015F5A0 = 1;
         } else {
             D_8015F5A0 = 0;
         }
-        if (section->flags & 0x4000) {
+        if (section->clip & 0x4000) {
             D_8015F5A4 = 1;
         } else {
             D_8015F5A4 = 0;
