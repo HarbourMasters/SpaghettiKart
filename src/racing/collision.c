@@ -2160,28 +2160,64 @@ bool is_cull_box(const char* filePath) {
     return strcmp(filePath + fileLen - suffixLen, suffix) == 0;
 }
 
+Gfx sSetSizeInterDL[] = {
+    {0, 0},
+    {_SHIFTL(G_SETTILESIZE_INTERP, 24, 8), _SHIFTL(0, 24, 3)},
+    {0, 0},
+    {0, 0},
+    gsSPEndDisplayList(),
+    
+    // gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gTexture648508),
+    // gsDPTileSync(),
+    // gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
+    // gsDPLoadSync(),
+    // gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),
+    // gsSPVertex((uintptr_t)(d_course_royal_raceway_vertex_0x0401EB90), 4, 0),
+    // gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+};
+
 /**
- * Search for G_SETTILESIZE and set its args.
+ * This function finds a G_SETTILESIZE command and hooks it.
+ * Then writes the interpolation command into the provided gfx array
+ * The game continues as normal after leaving the writableDList
+ *
+ * @arg gfxAsset the model needing interpolated scrolling textures
+ * @arg writableDList - Provide Gfx myGfx[5]. This memory MUST stay alive for the lifetime of the object
  */
-void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
-    Gfx* gfx = (Gfx*) addr;
+void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 tile, u32 x, u32 y, s32 width, s32 height, s32 xStep, s32 yStep) {
+    int8_t opcode = 0;
+    Gfx start[] = { gsSPDisplayList(writableDList)};
+    Gfx end[] = { gsSPEndDisplayList() };
+    if ((NULL == writableDList) || (NULL == gfxAsset)) {
+        return;
+    }
+
+    Gfx* gfx = (Gfx*) gfxAsset;
     if (GameEngine_OTRSigCheck(gfx)) {
         gfx = (Gfx*) ResourceGetDataByName(gfx);
     }
-    u32 opcode;
 
-    uls = (uls << 12) & 0xFFF000;
-    ult &= 0xFFF;
+    while ((opcode = GFX_GET_OPCODE(gfx->words.w0) >> 24) != G_ENDDL) {
+        if (opcode == (int8_t)G_SETTILESIZE) {
+            // Prevent tile size command from being over-written
+            writableDList[0].words.w0 = gfx->words.w0;
+            writableDList[0].words.w1 = gfx->words.w1;
+            
+            writableDList[1].words.w0 = _SHIFTL(G_SETTILESIZE_INTERP, 24, 8);
+            writableDList[1].words.w1 = _SHIFTL(tile, 24, 3);
+            
+            writableDList[2].words.w0 = (x << 32) | y;
+            writableDList[2].words.w1 = ((uintptr_t) (uint32_t) width << 32) | (uint32_t) height;
+            
+            writableDList[3].words.w0 = ((uintptr_t) (uint32_t) xStep << 32) | (uint32_t) yStep;
+            writableDList[3].words.w1 = 0;
 
-    while (true) {
+            writableDList[4].words.w0 = _SHIFTL(G_ENDDL, 24, 8);
+            writableDList[4].words.w1 = 0;
 
-        opcode = GFX_GET_OPCODE(gfx->words.w0);
-
-        if (opcode == (u32) G_ENDDL << 24) {
-            break;
-        } else if (opcode == (u32) (G_SETTILESIZE << 24)) {
-            gfx->words.w0 = (G_SETTILESIZE << 24) | uls | ult;
-
+            // Hook into the displaylist and re-point to the new location
+            gfx->words.w0 = _SHIFTL(G_DL, 24, 8) | _SHIFTL((G_DL_PUSH), 16, 8);
+            gfx->words.w1 = (uintptr_t)&writableDList[0];
             break;
         }
         gfx++;

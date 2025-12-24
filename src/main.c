@@ -266,8 +266,6 @@ void start_sptask(s32 taskType) {
     gActiveSPTask->state = SPTASK_STATE_RUNNING;
 }
 
-extern void Graphics_PushFrame(Gfx* data);
-
 /**
  * Initializes the Fast3D OSTask structure.
  * Loads F3DEX or F3DLX based on the number of players

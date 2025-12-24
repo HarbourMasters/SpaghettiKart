@@ -11,6 +11,7 @@
 #include "engine/objects/Crab.h"
 #include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
 #include "assets/other/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
+#include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists.h"
 #include "engine/objects/Seagull.h"
 
 extern "C" {
@@ -261,19 +262,10 @@ void KoopaTroopaBeach::ScrollingTextures() {
     // clang-format on
     Props.WaterLevel += gWaterVelocity;
 
-    D_802B87BC += 9;
-    if (D_802B87BC > 255) {
-        D_802B87BC = 0;
-    }
-    D_802B87C4 += 3;
-    if (D_802B87C4 > 255) {
-        D_802B87C4 = 0;
-    }
     // waterfall animation
-    // d_course_koopa_troopa_beach_packed_dl_9D58
-    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
-    // d_course_koopa_troopa_beach_packed_dl_9CD0
-    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
+    scroll_texture_interpolated(scroll1, d_course_koopa_troopa_beach_packed_dl_9D58, 0, 0, 9, 32, 32, 0, 9);
+    scroll_texture_interpolated(scroll2, d_course_koopa_troopa_beach_packed_dl_9CD0, 0, 0, 3, 32, 32, 0, 3);
+
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
@@ -281,12 +273,11 @@ void KoopaTroopaBeach::ScrollingTextures() {
         D_802B87C8 = -(random_int(300) / 40);
     }
     // Waterfall bubbling effect? (unused)
-    // d_course_koopa_troopa_beach_packed_dl_2E8
-    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
-
+    scroll_texture_interpolated(scroll3, d_course_koopa_troopa_beach_packed_dl_2E8, 0, D_802B87C8, D_802B87CC, 32, 32, D_802B87C8, D_802B87CC);
 }
 
 void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+    Mat4 matrix;
     Vec3f vector;
 
     gDPPipeSync(gDisplayListHead++);
@@ -312,6 +303,13 @@ void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCoun
     vector[0] = 0.0f;
     vector[1] = Props.WaterLevel;
     vector[2] = 0.0f;
+    mtxf_translate(matrix, vector);
+    if (gIsMirrorMode != 0) {
+        matrix[0][0] = -1.0f;
+        // matrix[1][1] = -1.0f;
+        // matrix[2][2] = -1.0f;
+    }
+    render_set_position(matrix, 0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
     gDPSetBlendMask(gDisplayListHead++, 0xFF);

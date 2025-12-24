@@ -22,6 +22,8 @@ public:
     void HM_TickIntro();
     void HM_DrawIntro();
 private:
+    Gfx scroll[5];
+    Gfx scroll2[5];
     void Setup();
     void Sync();
     void Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed);

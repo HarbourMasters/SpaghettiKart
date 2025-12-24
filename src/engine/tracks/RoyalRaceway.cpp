@@ -242,12 +242,6 @@ void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
 }
 
 void RoyalRaceway::ScrollingTextures() {
-    D_802B87BC -= 20;
-    if (D_802B87BC < 0) {
-        D_802B87BC = 0xFF;
-    }
-    // d_course_royal_raceway_packed_dl_A6A8
-    find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A6A8, 0, D_802B87BC);
-    // d_course_royal_raceway_packed_dl_A648
-    find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A648, 0, D_802B87BC);
+    scroll_texture_interpolated(scroll, d_course_royal_raceway_packed_dl_A6A8, 0, 0, -20, 16, 16, 0, -20);
+    scroll_texture_interpolated(scroll2, d_course_royal_raceway_packed_dl_A648, 0, 0, -20, 16, 16, 0, -20);
 }

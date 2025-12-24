@@ -34,9 +34,9 @@ void generate_collision_grid(void);
 void generate_collision_mesh_with_defaults(Gfx*);
 void generate_collision_mesh_with_default_section_id(Gfx*, s8);
 void generate_collision_mesh(Gfx*, s8, u16);
-void find_and_set_tile_size(uintptr_t, s32, s32);
 void set_vertex_colours(uintptr_t, u32, s32, s8, u8, u8, u8);
 void find_vtx_and_set_colours(Gfx*, s8, u8, u8, u8);
 void subtract_scaled_vector(Vec3f, f32, Vec3f);
+void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 tile, u32 x, u32 y, s32 width, s32 height, s32 xStep, s32 yStep);
 
 #endif

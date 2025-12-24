@@ -50,8 +50,8 @@ extern "C" {
 // #include "engine/wasm.h"
 }
 
-extern "C" void Graphics_PushFrame(Gfx* data) {
-    GameEngine::ProcessGfxCommands(data);
+extern "C" void Graphics_PushFrame(Gfx* pool) {
+    GameEngine::ProcessGfxCommands(pool);
 }
 
 // Create the world instance
@@ -371,6 +371,8 @@ void CM_BeginPlay() {
     }
 
     GetWorld()->GetRaceManager().PreInit();
+    GetWorld()->GetTrack()->ScrollingTextures();
+
     GetWorld()->GetRaceManager().BeginPlay();
     GetWorld()->GetRaceManager().PostInit();
 }
@@ -639,7 +641,6 @@ Properties* CM_GetProps() {
 
 void CM_ScrollingTextures() {
     if (GetWorld()->GetTrack()) {
-        GetWorld()->GetTrack()->ScrollingTextures();
     }
 }
 

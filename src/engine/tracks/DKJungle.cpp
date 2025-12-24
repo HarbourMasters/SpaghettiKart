@@ -302,26 +302,14 @@ void DKJungle::Waypoints(Player* player, int8_t playerId) {
 }
 
 void DKJungle::ScrollingTextures() {
-    D_802B87BC += 2;
-    if (D_802B87BC > 255) {
-        D_802B87BC = 0;
-    }
-    // d_course_dks_jungle_parkway_packed_dl_3DD0
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3DD0, 0, D_802B87BC);
-    // d_course_dks_jungle_parkway_packed_dl_3E40
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3E40, 0, D_802B87BC);
-    // d_course_dks_jungle_parkway_packed_dl_3EB0
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3EB0, 0, D_802B87BC);
-    // d_course_dks_jungle_parkway_packed_dl_3F30
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3F30, 0, D_802B87BC);
-    // d_course_dks_jungle_parkway_packed_dl_36A8
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_36A8, 0, D_802B87BC);
-    D_802B87C4 -= 20;
-    if (D_802B87C4 < 0) {
-        D_802B87C4 = 0xFF;
-    }
-    // d_course_dks_jungle_parkway_packed_dl_9880
-    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_9880, 0, D_802B87C4);
+    // These can share the same writableGfx because they use the same settings
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3DD0, 0, 0, 2, 16, 16, 0, 2);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3E40, 0, 0, 2, 16, 16, 0, 2);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3EB0, 0, 0, 2, 16, 16, 0, 2);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3F30, 0, 0, 2, 16, 16, 0, 2);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_36A8, 0, 0, 2, 16, 16, 0, 2);
+
+    scroll_texture_interpolated(scroll2, d_course_dks_jungle_parkway_packed_dl_9880, 0, 0, -20, 64, 32, 0, -20);
     evaluate_collision_players_palm_trees();
 }
 

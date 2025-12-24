@@ -269,14 +269,7 @@ void CustomTrack::Draw(ScreenContext* arg0) {
     }
 }
 
-// This should be a step for tick material
 void CustomTrack::ScrollingTextures() {
-    // D_802B87BC -= 20;
-    // if (D_802B87BC < 0) {
-    //     D_802B87BC = 0xFF;
-    // }
-    // // d_course_royal_raceway_packed_dl_A6A8
-    // find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A6A8, 0, D_802B87BC);
 }
 
 void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {

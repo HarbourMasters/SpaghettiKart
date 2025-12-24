@@ -33,4 +33,7 @@ public:
     virtual void DrawCredits() override;    
     virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
+    Gfx scroll[5];
+    Gfx scroll2[5];
+private:
 };

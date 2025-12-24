@@ -13,6 +13,7 @@
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
 #include "ship/Context.h"
+#include <unordered_map>
 
 #ifndef IDYES
 #define IDYES 6
@@ -68,10 +69,10 @@ class GameEngine {
     static uint32_t GetInterpolationFPS();
     static uint32_t GetInterpolationFrameCount();
     void StartFrame() const;
-    static void RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
+    static void RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements);
     void ProcessFrame(void (*run_one_game_iter)()) const;
     static void Destroy();
-    static void ProcessGfxCommands(Gfx* commands);
+    static void ProcessGfxCommands(Gfx* pool);
     static uint8_t GetBankIdByName(const std::string& name);
     static int ShowYesNoBox(const char* title, const char* box);
     static void ShowMessage(const char* title, const char* message, SDL_MessageBoxFlags type = SDL_MESSAGEBOX_ERROR);

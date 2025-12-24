@@ -41,4 +41,7 @@ public:
     virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
+private:
+    Gfx scroll[5];
+    Gfx scroll2[5];
 };
