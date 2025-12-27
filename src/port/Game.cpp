@@ -371,8 +371,6 @@ void CM_BeginPlay() {
     }
 
     GetWorld()->GetRaceManager().PreInit();
-    GetWorld()->GetTrack()->ScrollingTextures();
-
     GetWorld()->GetRaceManager().BeginPlay();
     GetWorld()->GetRaceManager().PostInit();
 }
@@ -639,8 +637,9 @@ Properties* CM_GetProps() {
     return NULL;
 }
 
-void CM_ScrollingTextures() {
+void CM_TickTrack() {
     if (GetWorld()->GetTrack()) {
+        GetWorld()->GetTrack()->Tick();
     }
 }
 

@@ -277,7 +277,3 @@ void func_80295D6C(void) {
     D_8015F6F4 = 3000;
     D_8015F6F6 = -3000;
 }
-
-void func_802966A0(void) {
-    CM_ScrollingTextures();
-}

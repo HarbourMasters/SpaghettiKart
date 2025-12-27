@@ -312,7 +312,7 @@ void create_gfx_task_structure(void) {
 }
 
 f32 gDeltaTime = 0.0f;
-f32 calculate_delta_time(void) {
+void calculate_delta_time(void) {
     static u32 prevtime = 0;
     u32 now = osGetCount();
     f32 deltaTime;
@@ -689,7 +689,7 @@ void process_game_tick(void) {
     func_80059AC8();
     update_course_actors();
     CM_TickActors();
-    func_802966A0();
+    CM_TickTrack();
     if (CM_IsTourEnabled() == false) {
         func_8028FCBC();
     }

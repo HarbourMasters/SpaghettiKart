@@ -149,6 +149,7 @@ void BansheeBoardwalk::Load() {
     parse_track_displaylists((TrackSections*) LOAD_ASSET_RAW(d_course_banshee_boardwalk_track_sections));
     func_80295C6C();
     find_vtx_and_set_colours((Gfx*) d_course_banshee_boardwalk_packed_dl_878, 128, 0, 0, 0);
+    scroll_texture_interpolated(scroll, d_course_banshee_boardwalk_dl_B278, 0, 2);
 }
 
 void BansheeBoardwalk::BeginPlay() {
@@ -307,8 +308,7 @@ void BansheeBoardwalk::DrawCredits() {
     gSPDisplayList(gDisplayListHead++, (Gfx*) (d_course_banshee_boardwalk_dl_B308));
 }
 
-void BansheeBoardwalk::ScrollingTextures() {
-    scroll_texture_interpolated(scroll, d_course_banshee_boardwalk_dl_B278, 0, 0, 1, 32, 32, 0, 1);
+void BansheeBoardwalk::Tick() {
 }
 
 void BansheeBoardwalk::Waypoints(Player* player, int8_t playerId) {

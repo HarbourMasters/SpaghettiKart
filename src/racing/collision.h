@@ -37,6 +37,6 @@ void generate_collision_mesh(Gfx*, s8, u16);
 void set_vertex_colours(uintptr_t, u32, s32, s8, u8, u8, u8);
 void find_vtx_and_set_colours(Gfx*, s8, u8, u8, u8);
 void subtract_scaled_vector(Vec3f, f32, Vec3f);
-void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 tile, u32 x, u32 y, s32 width, s32 height, s32 xStep, s32 yStep);
+void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 stepX, s32 stepY);
 
 #endif

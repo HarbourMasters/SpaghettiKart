@@ -132,6 +132,15 @@ void DKJungle::Load() {
     func_80295C6C();
     // d_course_dks_jungle_parkway_packed_dl_3FA8
     find_vtx_and_set_colours((Gfx*) d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
+
+    // These can share the same writableGfx because they use the same settings
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3DD0, 0, 4);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3E40, 0, 4);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3EB0, 0, 4);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3F30, 0, 4);
+    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_36A8, 0, 4);
+
+    scroll_texture_interpolated(scroll2, d_course_dks_jungle_parkway_packed_dl_9880, 0, -40);
 }
 
 f32 DKJungle::GetWaterLevel(FVector pos, Collision* collision) {
@@ -301,15 +310,7 @@ void DKJungle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void DKJungle::ScrollingTextures() {
-    // These can share the same writableGfx because they use the same settings
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3DD0, 0, 0, 2, 16, 16, 0, 2);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3E40, 0, 0, 2, 16, 16, 0, 2);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3EB0, 0, 0, 2, 16, 16, 0, 2);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3F30, 0, 0, 2, 16, 16, 0, 2);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_36A8, 0, 0, 2, 16, 16, 0, 2);
-
-    scroll_texture_interpolated(scroll2, d_course_dks_jungle_parkway_packed_dl_9880, 0, 0, -20, 64, 32, 0, -20);
+void DKJungle::Tick() {
     evaluate_collision_players_palm_trees();
 }
 

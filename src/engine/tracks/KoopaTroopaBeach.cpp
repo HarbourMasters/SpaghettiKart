@@ -137,6 +137,12 @@ void KoopaTroopaBeach::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, 150, 255, 255, 255);
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70, 150, 255, 255, 255);
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, 150, 255, 255, 255);
+
+    // waterfall animation
+    scroll_texture_interpolated(scroll, d_course_koopa_troopa_beach_packed_dl_9D58, 0, 18);
+    scroll_texture_interpolated(scroll2, d_course_koopa_troopa_beach_packed_dl_9CD0, 0, 6);
+    // Waterfall bubbling effect? (unused)
+    scroll_texture_interpolated(scroll3, d_course_koopa_troopa_beach_packed_dl_2E8, 0, 0);
 }
 
 void KoopaTroopaBeach::BeginPlay() {
@@ -251,7 +257,7 @@ void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void KoopaTroopaBeach::ScrollingTextures() {
+void KoopaTroopaBeach::Tick() {
     // clang-format off
     // This flips the velocity from 0.1f to -0.1f
     if (gWaterVelocity < 0.0f) {
@@ -262,18 +268,14 @@ void KoopaTroopaBeach::ScrollingTextures() {
     // clang-format on
     Props.WaterLevel += gWaterVelocity;
 
-    // waterfall animation
-    scroll_texture_interpolated(scroll1, d_course_koopa_troopa_beach_packed_dl_9D58, 0, 0, 9, 32, 32, 0, 9);
-    scroll_texture_interpolated(scroll2, d_course_koopa_troopa_beach_packed_dl_9CD0, 0, 0, 3, 32, 32, 0, 3);
-
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
     } else {
         D_802B87C8 = -(random_int(300) / 40);
     }
-    // Waterfall bubbling effect? (unused)
-    scroll_texture_interpolated(scroll3, d_course_koopa_troopa_beach_packed_dl_2E8, 0, D_802B87C8, D_802B87CC, 32, 32, D_802B87C8, D_802B87CC);
+
+    scroll3[0].words.w1 =  ((uintptr_t) (uint32_t) D_802B87C8 << 32) | (uint32_t)D_802B87CC;
 }
 
 void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {

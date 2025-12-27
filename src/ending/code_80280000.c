@@ -34,7 +34,7 @@ s32 D_802874A0;
 // s32 D_802874A4[5];
 
 void func_80280000(void) {
-    func_802966A0();
+    CM_TickTrack();
     func_80059AC8();
     func_80059AC8();
     func_8005A070();

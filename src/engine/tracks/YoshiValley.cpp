@@ -206,8 +206,6 @@ void YoshiValley::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void YoshiValley::ScrollingTextures() {}
-
 void YoshiValley::CreditsSpawnActors() {
     Vec3f position;
     Vec3f velocity = { 0, 0, 0 };

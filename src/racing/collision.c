@@ -2160,34 +2160,16 @@ bool is_cull_box(const char* filePath) {
     return strcmp(filePath + fileLen - suffixLen, suffix) == 0;
 }
 
-Gfx sSetSizeInterDL[] = {
-    {0, 0},
-    {_SHIFTL(G_SETTILESIZE_INTERP, 24, 8), _SHIFTL(0, 24, 3)},
-    {0, 0},
-    {0, 0},
-    gsSPEndDisplayList(),
-    
-    // gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gTexture648508),
-    // gsDPTileSync(),
-    // gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
-    // gsDPLoadSync(),
-    // gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),
-    // gsSPVertex((uintptr_t)(d_course_royal_raceway_vertex_0x0401EB90), 4, 0),
-    // gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-};
-
 /**
  * This function finds a G_SETTILESIZE command and hooks it.
  * Then writes the interpolation command into the provided gfx array
  * The game continues as normal after leaving the writableDList
  *
  * @arg gfxAsset the model needing interpolated scrolling textures
- * @arg writableDList - Provide Gfx myGfx[5]. This memory MUST stay alive for the lifetime of the object
+ * @arg writableDList - Provide Gfx myGfx[3]. This memory MUST stay alive for the lifetime of the object
  */
-void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 tile, u32 x, u32 y, s32 width, s32 height, s32 xStep, s32 yStep) {
+void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 stepX, s32 stepY) {
     int8_t opcode = 0;
-    Gfx start[] = { gsSPDisplayList(writableDList)};
-    Gfx end[] = { gsSPEndDisplayList() };
     if ((NULL == writableDList) || (NULL == gfxAsset)) {
         return;
     }
@@ -2199,25 +2181,19 @@ void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 t
 
     while ((opcode = GFX_GET_OPCODE(gfx->words.w0) >> 24) != G_ENDDL) {
         if (opcode == (int8_t)G_SETTILESIZE) {
-            // Prevent tile size command from being over-written
-            writableDList[0].words.w0 = gfx->words.w0;
-            writableDList[0].words.w1 = gfx->words.w1;
+            // Get values from the old tile size command
+            int32_t tile = _SHIFTR(gfx->words.w1, 24, 12);
+            int32_t uls  = _SHIFTR(gfx->words.w0, 12, 12);
+            int32_t ult  = _SHIFTR(gfx->words.w0, 0,  12);
+            int32_t lrs  = _SHIFTR(gfx->words.w1, 12, 12);
+            int32_t lrt  = _SHIFTR(gfx->words.w1, 0,  12);
             
-            writableDList[1].words.w0 = _SHIFTL(G_SETTILESIZE_INTERP, 24, 8);
-            writableDList[1].words.w1 = _SHIFTL(tile, 24, 3);
-            
-            writableDList[2].words.w0 = (x << 32) | y;
-            writableDList[2].words.w1 = ((uintptr_t) (uint32_t) width << 32) | (uint32_t) height;
-            
-            writableDList[3].words.w0 = ((uintptr_t) (uint32_t) xStep << 32) | (uint32_t) yStep;
-            writableDList[3].words.w1 = 0;
+            // Write over old command to point to the new writeableDList
+            __gSPDisplayList(gfx, &writableDList[0]);
 
-            writableDList[4].words.w0 = _SHIFTL(G_ENDDL, 24, 8);
-            writableDList[4].words.w1 = 0;
-
-            // Hook into the displaylist and re-point to the new location
-            gfx->words.w0 = _SHIFTL(G_DL, 24, 8) | _SHIFTL((G_DL_PUSH), 16, 8);
-            gfx->words.w1 = (uintptr_t)&writableDList[0];
+            // Write DL data into writableDList. gDPScrollTexture takes up two Gfx
+            gDPScrollTexture(&writableDList[0], tile, uls, ult, lrs, lrt, stepX, stepY);
+            gSPEndDisplayList(&writableDList[2]);
             break;
         }
         gfx++;

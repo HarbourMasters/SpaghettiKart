@@ -33,7 +33,6 @@ public:
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void Draw(ScreenContext*) override;
     virtual void DrawCredits() override;    
-    virtual void ScrollingTextures() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;

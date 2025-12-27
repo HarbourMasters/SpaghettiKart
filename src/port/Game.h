@@ -124,7 +124,7 @@ void CM_SetStaffGhost();
 
 void CM_BombKartsWaypoint(s32 cameraId);
 
-void CM_ScrollingTextures();
+void CM_TickTrack();
 
 s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 

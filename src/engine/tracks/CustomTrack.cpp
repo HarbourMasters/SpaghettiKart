@@ -269,7 +269,7 @@ void CustomTrack::Draw(ScreenContext* arg0) {
     }
 }
 
-void CustomTrack::ScrollingTextures() {
+void CustomTrack::Tick() {
 }
 
 void CustomTrack::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
