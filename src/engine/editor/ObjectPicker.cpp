@@ -203,7 +203,7 @@ std::pair<GameObject*, float> ObjectPicker::CheckEditorObjectRay(Ray ray) {
                     if (IntersectRayTriangleAndTransform(ray, object->Pos, tri, t)) {
                         if (t < hitDistance) {
                             hitDistance = t;
-                            hitObject = object;
+                            hitObject = object.get();
                         }
                     }
                 }
@@ -222,7 +222,7 @@ std::pair<GameObject*, float> ObjectPicker::CheckEditorObjectRay(Ray ray) {
                 if (QueryCollisionRayActor(&ray.Origin.x, &ray.Direction.x, boxMin, boxMax, &t)) {
                     if (t < hitDistance) {
                         hitDistance = t;
-                        hitObject = object;
+                        hitObject = object.get();
                         printf("FOUND BOUNDING BOX OBJECT\n");
                     }
                     break;

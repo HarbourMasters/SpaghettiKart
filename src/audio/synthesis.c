@@ -485,6 +485,17 @@ Acmd* synthesis_process_note(s32 noteIndex, struct NoteSubEu* noteSubEu, struct 
                     aligned = ALIGN(((loopInfo_2 * 9) + 16), 4);
                     addr = (0x540 - aligned); // DMEM_ADDR_COMPRESSED_ADPCM_DATA
 
+                    // Bounds check: clamp read size to not exceed sample buffer
+                    if (audioBookSample->sampleSize > 0) {
+                        s32 readOffset = (var_a0_2 - var_t2) - sampleAddr;
+                        if (readOffset < 0) readOffset = 0;
+                        s32 maxReadSize = (s32)audioBookSample->sampleSize - readOffset;
+                        if (maxReadSize < 0) maxReadSize = 0;
+                        if (aligned > maxReadSize) {
+                            aligned = maxReadSize;
+                        }
+                    }
+
                     aLoadBuffer(cmd++, VIRTUAL_TO_PHYSICAL2(var_a0_2 - var_t2), addr, aligned);
                 } else {
                     s1 = 0; // ?

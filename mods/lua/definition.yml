@@ -1,8 +1,0 @@
-functions:
-  fib:
-    return : int
-    args:
-      - int
-
-entry_file: test.lua
-output_file: testlua.wasm

@@ -1136,7 +1136,7 @@ void func_8001F394(Player* player) {
     s32 playerIndex = player - gPlayerOne;
     UNUSED s32 pad2;
 
-    Camera* camera = CM_GetPlayerCamera(player - gPlayerOne);
+    Camera* camera = CM_GetPlayerCamera(playerIndex);
 
     if (NULL == camera) {
         printf("[camera.c][func_8001F394] Could not find a camera using GetPlayerCamera()\n");

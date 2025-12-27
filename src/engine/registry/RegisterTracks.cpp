@@ -74,7 +74,7 @@ void RegisterTracks(Registry<TrackInfo>& r) {
     r.Add(info, []() { GetWorld()->SetCurrentTrack(std::make_unique<FrappeSnowland>()); });
 
     info = {
-        .ResourceName = "mk:koopa_beach",
+        .ResourceName = "mk:koopa_troopa_beach",
         .Name = "koopa troopa beach",
         .DebugName = "beach",
         .Length = "691m",

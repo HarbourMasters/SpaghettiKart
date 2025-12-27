@@ -1342,19 +1342,16 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
             sp154[2] = player->pos[2] + sp140;
         }
     }
-#ifdef AVOID_UB
+    load_kart_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
     gPlayerPalette = &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId];
-#else
-    gPlayerPalette =
-        (struct_D_802F1F80*) &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
-#endif
+    // When screenId >= 2 (in 3/4 player mode), adjust indices to fit gEncodedKartTexture[2][2][8] dimensions
+    if ((screenId == 0) || (screenId == 1)) {
+        load_kart_texture(player, playerId, screenId, screenId, D_801651D0[screenId][playerId]);
+    } else {
+        load_kart_texture(player, playerId - 4, screenId, screenId - 1, D_801651D0[screenId][playerId]);
+    }
     if ((screenId == 0) || (screenId == 1)) {
         sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
-        // gross hack to match original behavior
-        if (sKartTexture == NULL) {
-            load_kart_texture(player, playerId, screenId, screenId, 1);
-            sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId][playerId].unk_00;
-        }
     } else {
         sKartTexture = gEncodedKartTexture[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].unk_00;
     }
@@ -1621,11 +1618,6 @@ void render_player(Player* player, s8 playerId, s8 screenId) {
     }
     if (player->boostPower >= 2.0f) {
         func_80025DE8(player, playerId, screenId, var_v1);
-    }
-    // Allows wheels to spin
-    if (GameEngine_ResourceGetTexTypeByName(sKartTexture) !=
-        1) { // only invalidate texture cache if it's a palette texture
-        gSPInvalidateTexCache(gDisplayListHead++, sKartTexture);
     }
 }
 

@@ -106,7 +106,7 @@ void World::TickCameras() {
         }
     }
 
-    for (GameCamera* camera : Cameras) {
+    for (auto& camera : Cameras) {
         if (camera->IsActive()) {
             camera->Tick();
         }
@@ -215,9 +215,9 @@ void World::TickObjects60fps() {
     }
 }
 
-ParticleEmitter* World::AddEmitter(ParticleEmitter* emitter) {
-    Emitters.push_back(emitter);
-    return Emitters.back();
+ParticleEmitter* World::AddEmitter(std::unique_ptr<ParticleEmitter> emitter) {
+    Emitters.push_back(std::move(emitter));
+    return Emitters.back().get();
 }
 
 void World::DrawObjects(s32 cameraId) {
@@ -258,10 +258,6 @@ void World::CleanWorld(void) {
     printf("[Game.cpp] Clean World\n");
 
     World::Reset(); // Reset OObjects
-
-    for (auto& emitter : Emitters) {
-        delete emitter;
-    }
 
     for (size_t i = 0; i < ARRAY_COUNT(mPlayerBombKart); i++) {
         mPlayerBombKart[i].state = PlayerBombKart::PlayerBombKartState::DISABLED;

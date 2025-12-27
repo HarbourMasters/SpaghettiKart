@@ -119,8 +119,8 @@ void RaceManager::PostInit() {
 }
 
 void RaceManager::SetItemTables() {
-    std::string humanTableName = "";
-    std::string cpuTableName = "";
+    std::optional<std::string> humanTableName;
+    std::optional<std::string> cpuTableName;
 
     switch(gModeSelection) {
         case GRAND_PRIX:
@@ -131,32 +131,36 @@ void RaceManager::SetItemTables() {
                 humanTableName = "mk:human_grand_prix";
                 cpuTableName = "mk:cpu_grand_prix";
             }
+            break;
         case VERSUS:
             switch (gPlayerCountSelection1) {
                 case TWO_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_2p";
-                    cpuTableName = "none selected";
                     break;
                 case THREE_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_3p";
-                    cpuTableName = "none selected";
                     break;
                 case FOUR_PLAYERS_SELECTED:
                     humanTableName = "mk:versus_4p";
-                    cpuTableName = "none selected";
                     break;
             }
             break;
         case BATTLE:
             humanTableName = "mk:battle";
-            cpuTableName = "none selected";
             break;
     }
-
-    mHumanItemTable = gItemTableRegistry.Get(humanTableName);
-    mCPUItemTable = gItemTableRegistry.Get(cpuTableName);
-    printf("[RaceManager] Selected human item probability table %s\n", humanTableName.c_str());
-    printf("[RaceManager] Selected cpu item probability table %s\n", cpuTableName.c_str());
+    if (humanTableName.has_value()) {
+        mHumanItemTable = gItemTableRegistry.Get(humanTableName.value());
+    } else {
+        mHumanItemTable = nullptr;
+    }
+    if (cpuTableName.has_value()) {
+        mCPUItemTable = gItemTableRegistry.Get(cpuTableName.value());
+    } else {
+        mCPUItemTable = nullptr;
+    }
+    printf("[RaceManager] Selected human item probability table %s\n", humanTableName.value_or("none").c_str());
+    printf("[RaceManager] Selected cpu item probability table %s\n", cpuTableName.value_or("none").c_str());
 }
 
 extern "C" int16_t RaceManager_GetRandomHumanItem(uint32_t rank) {

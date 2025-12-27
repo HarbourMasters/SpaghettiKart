@@ -86,10 +86,10 @@ public:
 
     void TickParticles();
     void DrawParticles(s32 cameraId);
-    ParticleEmitter* AddEmitter(ParticleEmitter* emitter);
+    ParticleEmitter* AddEmitter(std::unique_ptr<ParticleEmitter> emitter);
     void Reset(void); // Sets OObjects or AActors static member variables back to default values
 
-    void AddCup(Cup*);
+    void AddCup(Cup* cup);
     void SetCurrentCup(Cup* cup);
     Cup* GetCurrentCup() {
         return CurrentCup;
@@ -115,12 +115,12 @@ public:
     std::vector<Cup*> Cups;
     size_t CupIndex = 1;
 
-    std::vector<GameCamera*> Cameras;
+    std::vector<std::unique_ptr<GameCamera>> Cameras;
 
     std::vector<std::unique_ptr<StaticMeshActor>> StaticMeshActors;
     std::vector<std::unique_ptr<AActor>> Actors;
     std::vector<std::unique_ptr<OObject>> Objects;
-    std::vector<ParticleEmitter*> Emitters;
+    std::vector<std::unique_ptr<ParticleEmitter>> Emitters;
 
     std::unordered_map<s32, OLakitu*> Lakitus;
 

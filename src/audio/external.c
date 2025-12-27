@@ -64,7 +64,7 @@ f32 D_800E9EC4[] = { 0.0f, 0.0f, 0.0f, 0.0f };
 f32 D_800E9ED4[] = { 0.0f, 0.0f, 0.0f, 0.0f };
 f32 D_800E9EE4[] = { 0.0f, 0.0f, 0.0f, 0.0f };
 f32 D_800E9EF4[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-f32 D_800E9F04[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+f32 D_800E9F04[] = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
 f32 D_800E9F14[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 u8 D_800E9F24[] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 u8 D_800E9F2C[NUM_PLAYERS] = { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -76,22 +76,26 @@ struct Unk_800E9F7C D_800E9F7C[] = {
     { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
     { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
     { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
+    { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
+    { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
+    { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
+    { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f },
     { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, 3800.0f, 3.4f, 0.4f, -1.0f, 0.4f, 1100.0f, 630.0f, 3600.0f, 1.0f }
 };
-struct Unk_800EA06C D_800EA06C[] = { { { 0.0f, 1.0f, 1.0f }, 0 }, { { 0.0f, 1.0f, 1.0f }, 0 },
+struct Unk_800EA06C D_800EA06C[NUM_PLAYERS] = { { { 0.0f, 1.0f, 1.0f }, 0 }, { { 0.0f, 1.0f, 1.0f }, 0 },
                                      { { 0.0f, 1.0f, 1.0f }, 0 }, { { 0.0f, 1.0f, 1.0f }, 0 },
                                      { { 0.0f, 1.0f, 1.0f }, 0 }, { { 0.0f, 1.0f, 1.0f }, 0 },
                                      { { 0.0f, 1.0f, 1.0f }, 0 }, { { 0.0f, 1.0f, 1.0f }, 0 } };
-u8 D_800EA0EC[] = { 0, 0, 0, 0 };
+u8 D_800EA0EC[NUM_PLAYERS] = { 0, 0, 0, 0 };
 u8 D_800EA0F0 = 0;
 u8 D_800EA0F4 = 0;
 UNUSED Vec3f D_800EA0F8 = { 0.0f, 0.0f, 1.0f };
 u8 D_800EA104 = 0;
 u8 D_800EA108 = 0;
-u8 D_800EA10C[] = { 0, 0, 0, 0 };
-f32 D_800EA110[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-f32 D_800EA120[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-f32 D_800EA130[] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+u8 D_800EA10C[NUM_PLAYERS] = { 0, 0, 0, 0 };
+f32 D_800EA110[NUM_PLAYERS] = { 0.0f, 0.0f, 0.0f, 0.0f };
+f32 D_800EA120[NUM_PLAYERS] = { 0.0f, 0.0f, 0.0f, 0.0f };
+f32 D_800EA130[NUM_PLAYERS] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
 f32 D_800EA150 = 1.4f;
 u8 D_800EA154[] = { 2, 2, 88, 90, 3, 48, 88, 48 };
 u16 gCurrentMusicSeq = 0;
@@ -99,7 +103,7 @@ u16 D_800EA160 = 0;
 u8 D_800EA164 = 0;
 s8 D_800EA168 = 0;
 s8 D_800EA16C = 0;
-u8 D_800EA170[] = { 0, 0, 0, 0 };
+u8 D_800EA170[NUM_PLAYERS] = { 0, 0, 0, 0 };
 u16 D_800EA174 = 0;
 f32 D_800EA178 = 1.0f;
 f32 D_800EA17C = 0.85f;
@@ -3504,11 +3508,11 @@ void func_800CAD40(UNUSED s32 arg0) {
     }
 }
 
-void func_800CADD0(u8 arg0, f32 arg1) {
+void func_800CADD0(u8 playerId, f32 arg1) {
     if (D_800EA108 == 0) {
-        switch (D_800EA0EC[arg0]) {
+        switch (D_800EA0EC[playerId]) {
             case 2:
-                D_800EA0EC[arg0] = 1;
+                D_800EA0EC[playerId] = 1;
                 // Purposeful fallthrough
             case 0:
                 arg1 = (arg1 * 0.55f) + 0.45f;
@@ -3518,9 +3522,9 @@ void func_800CADD0(u8 arg0, f32 arg1) {
                 if (arg1 < 0.0f) {
                     arg1 = 0.0f;
                 }
-                D_800EA110[arg0] = arg1;
-                play_sound(0x1900A209U, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA110[arg0],
-                           (u8*) &D_800E9F7C[arg0].unk_14);
+                D_800EA110[playerId] = arg1;
+                play_sound(0x1900A209U, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA110[playerId],
+                           (u8*) &D_800E9F7C[playerId].unk_14);
                 break;
             default:
                 break;
@@ -3554,30 +3558,30 @@ void func_800CAEC4(u8 playerId, f32 arg1) {
     }
 }
 
-void func_800CAFC0(u8 arg0) {
+void func_800CAFC0(u8 playerId) {
     if (D_800EA108 == 0) {
-        switch (D_800EA0EC[arg0]) {
+        switch (D_800EA0EC[playerId]) {
             case 2:
-                D_800EA0EC[arg0] = 1;
+                D_800EA0EC[playerId] = 1;
             case 0:
                 func_800C36C4(0, 1, 0x55U, 5);
-                func_800C9060(arg0, 0x19009E59U);
-                func_800C8F80(arg0, 0x0100FA4C);
-                D_800EA170[arg0] = 1;
+                func_800C9060(playerId, 0x19009E59U);
+                func_800C8F80(playerId, 0x0100FA4C);
+                D_800EA170[playerId] = 1;
                 break;
         }
     }
 }
 
-void func_800CB064(u8 arg0) {
+void func_800CB064(u8 playerId) {
     if (D_800EA108 == 0) {
-        if (D_800EA170[arg0] == 1) {
+        if (D_800EA170[playerId] == 1) {
             if ((u8) D_800EA168 == 0) {
                 func_800C36C4(0, 1U, 0x7FU, 0x19);
             }
-            func_800C90F4(arg0, gPlayers[arg0].characterId * 0x10 + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08));
-            func_800C9018(arg0, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x4C));
-            D_800EA170[arg0] = 0;
+            func_800C90F4(playerId, gPlayers[playerId].characterId * 0x10 + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08));
+            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x4C));
+            D_800EA170[playerId] = 0;
         }
     }
 }

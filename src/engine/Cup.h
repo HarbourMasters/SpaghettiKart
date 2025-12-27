@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "tracks/Track.h"
+#include "registry/Registry.h"
 
 class Track; // <-- Forward declare
 
@@ -16,6 +17,9 @@ public:
     std::vector<std::string> mTracks;
 
     explicit Cup(std::string id, const char* name, std::vector<std::string> tracks);
+
+    // Valide que tous les IDs de tracks existent dans le registre
+    void ValidateTrackIds(const Registry<TrackInfo>& registry) const;
 
     virtual void ShuffleTracks();
 

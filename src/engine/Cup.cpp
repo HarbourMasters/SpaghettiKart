@@ -45,3 +45,22 @@ void Cup::ShuffleTracks() {
     // std::mt19937 g(rd());
     //std::shuffle(mTracks.begin(), mTracks.end(), g);
 }
+
+void Cup::ValidateTrackIds(const Registry<TrackInfo>& registry) const {
+    std::vector<std::string> invalidTracks;
+    
+    for (const auto& trackId : mTracks) {
+        if (!registry.Find(trackId)) {
+            invalidTracks.push_back(trackId);
+        }
+    }
+    
+    if (!invalidTracks.empty()) {
+        std::string errorMsg = "Cup '" + Id + "' contains invalid track IDs: ";
+        for (size_t i = 0; i < invalidTracks.size(); ++i) {
+            if (i > 0) errorMsg += ", ";
+            errorMsg += "'" + invalidTracks[i] + "'";
+        }
+        throw std::invalid_argument(errorMsg);
+    }
+}

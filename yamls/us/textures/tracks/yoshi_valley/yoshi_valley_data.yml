@@ -34,6 +34,7 @@ d_course_yoshi_valley_hedgehog:
   height: 64
   format: ci8
   ctype: u8
+  tlut: d_course_yoshi_valley_hedgehog_tlut
 d_course_yoshi_valley_egg_spot:
   symbol: d_course_yoshi_valley_egg_spot
   type: texture

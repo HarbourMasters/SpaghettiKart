@@ -40,7 +40,7 @@ namespace TrackEditor {
         printf("Editor: Loading Editor...\n");
         eObjectPicker.Load();
         for (auto& object : eGameObjects) {
-            GenerateCollisionMesh(object, (Gfx*)object->Model, 1.0f);
+            GenerateCollisionMesh(object.get(), (Gfx*)object->Model, 1.0f);
             object->Load();
         }
 
@@ -150,7 +150,11 @@ namespace TrackEditor {
             eObjectPicker.eGizmo.SelectedHandle = Gizmo::GizmoHandle::None;
             eObjectPicker.eGizmo.ManipulationStart = true;
             if (!isDragging) {
-                eObjectPicker.SelectObject(eGameObjects);
+                std::vector<GameObject*> objects;
+                for (auto& object : eGameObjects) {
+                    objects.push_back(object.get());
+                }
+                eObjectPicker.SelectObject(objects);
             }
         }
 
@@ -178,25 +182,22 @@ namespace TrackEditor {
         // pos->x, pos->y, pos->z, name, model);
 
         if (nullptr != model && model[0] != '\0') {
-            eGameObjects.push_back(new GameObject(pos, rot, scale, model, {}, collision, boundingBoxSize));
-            GenerateCollisionMesh(eGameObjects.back(), (Gfx*)LOAD_ASSET_RAW(model), collScale);
+            eGameObjects.push_back(std::make_unique<GameObject>(pos, rot, scale, model, std::vector<Triangle>(), collision, boundingBoxSize));
+            GenerateCollisionMesh(eGameObjects.back().get(), (Gfx*)LOAD_ASSET_RAW(model), collScale);
         } else { // to bounding box or sphere collision
-            eGameObjects.push_back(new GameObject(pos, rot, scale, model, {}, GameObject::CollisionType::BOUNDING_BOX,
+            eGameObjects.push_back(std::make_unique<GameObject>(pos, rot, scale, model, std::vector<Triangle>(), GameObject::CollisionType::BOUNDING_BOX,
                                                 10.0f));
         }
-        return eGameObjects.back();
+        return eGameObjects.back().get();
     }
 
     void Editor::AddLight(const char* name, FVector* pos, s8* rot) {
-        eGameObjects.push_back(new LightObject(name, pos, rot));
+        eGameObjects.push_back(std::make_unique<LightObject>(name, pos, rot));
     }
 
     void Editor::ClearObjects() {
         ResetGizmo();
 
-        for (auto& obj : eGameObjects) {
-            delete obj;
-        }
         eGameObjects.clear();
     }
 
