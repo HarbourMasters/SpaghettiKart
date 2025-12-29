@@ -90,8 +90,8 @@ void HarbourMastersIntro::HM_TickIntro() {
         gFadeModeSelection = FADE_MODE_LOGO;
     }
 
-    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water1), 0, _water);
-    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water2), _water, 0);;
+    scroll_texture_interpolated(scroll, (const char*)mat_water_water1, 0, 1);
+    scroll_texture_interpolated(scroll2, (const char*)mat_water_water2, 1, 0);
 }
 
 void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {

@@ -2161,27 +2161,39 @@ bool is_cull_box(const char* filePath) {
 }
 
 /**
- * Search for G_SETTILESIZE and set its args.
+ * This function finds a G_SETTILESIZE command and hooks it.
+ * Then writes the interpolation command into the provided gfx array
+ * The game continues as normal after leaving the writableDList
+ *
+ * @arg gfxAsset the model needing interpolated scrolling textures
+ * @arg writableDList - Provide Gfx myGfx[3]. This memory MUST stay alive for the lifetime of the object
  */
-void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
-    Gfx* gfx = (Gfx*) addr;
+void scroll_texture_interpolated(Gfx* writableDList, const char* gfxAsset, s32 stepX, s32 stepY) {
+    int8_t opcode = 0;
+    if ((NULL == writableDList) || (NULL == gfxAsset)) {
+        return;
+    }
+
+    Gfx* gfx = (Gfx*) gfxAsset;
     if (GameEngine_OTRSigCheck(gfx)) {
         gfx = (Gfx*) ResourceGetDataByName(gfx);
     }
-    u32 opcode;
 
-    uls = (uls << 12) & 0xFFF000;
-    ult &= 0xFFF;
+    while ((opcode = GFX_GET_OPCODE(gfx->words.w0) >> 24) != G_ENDDL) {
+        if (opcode == (int8_t)G_SETTILESIZE) {
+            // Get values from the old tile size command
+            int32_t tile = _SHIFTR(gfx->words.w1, 24, 12);
+            int32_t uls  = _SHIFTR(gfx->words.w0, 12, 12);
+            int32_t ult  = _SHIFTR(gfx->words.w0, 0,  12);
+            int32_t lrs  = _SHIFTR(gfx->words.w1, 12, 12);
+            int32_t lrt  = _SHIFTR(gfx->words.w1, 0,  12);
+            
+            // Write over old command to point to the new writeableDList
+            __gSPDisplayList(gfx, &writableDList[0]);
 
-    while (true) {
-
-        opcode = GFX_GET_OPCODE(gfx->words.w0);
-
-        if (opcode == (u32) G_ENDDL << 24) {
-            break;
-        } else if (opcode == (u32) (G_SETTILESIZE << 24)) {
-            gfx->words.w0 = (G_SETTILESIZE << 24) | uls | ult;
-
+            // Write DL data into writableDList. gDPScrollTexture takes up two Gfx
+            gDPScrollTexture(&writableDList[0], tile, uls, ult, lrs, lrt, stepX, stepY);
+            gSPEndDisplayList(&writableDList[2]);
             break;
         }
         gfx++;

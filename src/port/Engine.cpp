@@ -405,10 +405,17 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
     wnd->HandleEvents();
 
     interpreter->mInterpolationIndex = 0;
+    interpreter->mTargetFps = CVarGetInteger("gInterpolationFPS", 30);
+    interpreter->mInterpolationCount = mtx_replacements.size();
 
     for (const auto& m : mtx_replacements) {
         wnd->DrawAndRunGraphicsCommands(Commands, m);
         interpreter->mInterpolationIndex++;
+        interpreter->mFpsIndex++;
+    }
+
+    if (interpreter->mFpsIndex >= interpreter->mTargetFps) {
+        interpreter->mFpsIndex = 0;
     }
 
     bool curAltAssets = CVarGetInteger("gEnhancements.Mods.AlternateAssets", 0);
