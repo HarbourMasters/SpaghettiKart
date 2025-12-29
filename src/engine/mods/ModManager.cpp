@@ -79,6 +79,12 @@ std::vector<std::string> ListMods() {
 
     const std::string mods_path = Ship::Context::GetPathRelativeToAppDirectory("mods");
 
+    // Create mods folder if it doesn't exist
+    if (!std::filesystem::exists(mods_path)) {
+        std::filesystem::create_directories(mods_path);
+        SPDLOG_INFO("Created mods folder at: {}", mods_path);
+    }
+
     if (std::filesystem::exists(mods_path) && std::filesystem::is_directory(mods_path)) {
         for (const auto& p : std::filesystem::directory_iterator(mods_path)) {
             auto ext = p.path().extension().string();

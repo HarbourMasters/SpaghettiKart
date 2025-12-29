@@ -653,8 +653,6 @@ void init_hud_one_player(void) {
     D_8018D150 = 0;
     D_8018CFCC = 1.0f;
     find_unused_obj_index(&D_80183DA0);
-    find_unused_obj_index(&gIndexLakituList[0]);
-    find_unused_obj_index(&gIndexLakituList[1]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     init_object_list_index();
@@ -732,9 +730,6 @@ void init_hud_one_player(void) {
 void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&gIndexLakituList[0]);
-    find_unused_obj_index(&gIndexLakituList[1]);
-
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
@@ -799,9 +794,6 @@ void init_hud_two_player_vertical(void) {
 
 void init_hud_two_player_horizontal() {
     find_unused_obj_index(&D_80183DA0);
-
-    find_unused_obj_index(&gIndexLakituList[0]);
-    find_unused_obj_index(&gIndexLakituList[1]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
@@ -873,11 +865,6 @@ void init_hud_two_player_horizontal() {
 
 void init_hud_three_four_player(void) {
     find_unused_obj_index(&D_80183DA0);
-
-    find_unused_obj_index(&gIndexLakituList[0]);
-    find_unused_obj_index(&gIndexLakituList[1]);
-    find_unused_obj_index(&gIndexLakituList[2]);
-    find_unused_obj_index(&gIndexLakituList[3]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);

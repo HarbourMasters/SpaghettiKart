@@ -10544,7 +10544,7 @@ void func_800AA69C(MenuItem* arg0) {
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a0]) {
                 arg0->subState = 2;
                 func_8009A594(arg0->D_8018DEE0_index, 0, D_800E83A0[temp_a0]);
-            } else if ((gCharacterGridIsSelected[temp_v0] == 0) && (var_a0 != 0)) {
+            } else if ((var_a0 != 0) && (gCharacterGridIsSelected[temp_v0] == 0)) {
                 arg0->subState = 3;
                 func_8009A594(arg0->D_8018DEE0_index,
                               D_800E8460[temp_a0] - D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex,
@@ -10552,7 +10552,7 @@ void func_800AA69C(MenuItem* arg0) {
             }
             break;
         case 2:
-            if ((gCharacterGridIsSelected[temp_v0] == 0) && (var_a0 != 0)) {
+            if ((var_a0 != 0) && (gCharacterGridIsSelected[temp_v0] == 0)) {
                 arg0->subState = 3;
                 func_8009A594(arg0->D_8018DEE0_index, 0, gCharacterDeselectAnimation[temp_a0]);
             }
@@ -10561,7 +10561,7 @@ void func_800AA69C(MenuItem* arg0) {
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8460[temp_a0]) {
                 arg0->subState = 0;
                 func_8009A594(arg0->D_8018DEE0_index, 0, D_800E8360[temp_a0]);
-            } else if ((gCharacterGridIsSelected[temp_v0] != 0) && (var_a0 != 0)) {
+            } else if ((var_a0 != 0) && (gCharacterGridIsSelected[temp_v0] != 0)) {
                 arg0->subState = 1;
                 func_8009A594(arg0->D_8018DEE0_index,
                               D_800E8460[temp_a0] - D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex,
@@ -10570,7 +10570,7 @@ void func_800AA69C(MenuItem* arg0) {
             break;
         case 4:
         case 5:
-            if ((gCharacterGridIsSelected[temp_v0] != 0) && (var_a0 != 0)) {
+            if ((var_a0 != 0) && (gCharacterGridIsSelected[temp_v0] != 0)) {
                 arg0->subState = 1;
                 func_8009A594(arg0->D_8018DEE0_index, 0,
                               gCharacterCelebrateAnimation[temp_a0]);

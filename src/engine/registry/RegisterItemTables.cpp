@@ -365,15 +365,16 @@ void RegisterVersus4PItemTable(DataRegistry<RandomItemTable>& r) {
 
 void RegisterBattleItemTable(DataRegistry<RandomItemTable>& r) {
     RandomItemTable table;
-
-    table.Add("mk:banana",           RANK_ONE, 10, 0.0f);
-    table.Add("mk:banana_bunch",     RANK_ONE, 5, 0.0f);
-    table.Add("mk:green_shell",       RANK_ONE, 5, 0.0f);
-    table.Add("mk:triple_green_shell",     RANK_ONE, 20, 0.0f);
-    table.Add("mk:red_shell",         RANK_ONE, 20, 0.0f);
-    table.Add("mk:fake_item_box",    RANK_ONE, 15, 0.0f);
-    table.Add("mk:star",             RANK_ONE, 20, 0.0f);
-    table.Add("mk:boo",              RANK_ONE, 5, 0.0f);
+    for (int rank = RANK_ONE; rank <= RANK_EIGHT; rank++) {
+        table.Add("mk:banana",           rank, 10, 0.0f);
+        table.Add("mk:banana_bunch",     rank, 5, 0.0f);
+        table.Add("mk:green_shell",       rank, 5, 0.0f);
+        table.Add("mk:triple_green_shell",     rank, 20, 0.0f);
+        table.Add("mk:red_shell",         rank, 20, 0.0f);
+        table.Add("mk:fake_item_box",    rank, 15, 0.0f);
+        table.Add("mk:star",             rank, 20, 0.0f);
+        table.Add("mk:boo",              rank, 5, 0.0f);
+    }
 
     r.Add("mk:battle", std::move(table));
 }

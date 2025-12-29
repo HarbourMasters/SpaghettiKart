@@ -54,10 +54,6 @@ static bool invert_matrix(const float m[16], float invOut[16]);
 
 using namespace std;
 
-extern "C" {
-extern Mat4* gInterpolationMatrix;
-void mtxf_translate(Mat4, Vec3f);
-}
 
 namespace {
 
@@ -311,15 +307,15 @@ struct InterpolateCtx {
     }
 
     void lerp_vec3s(Vec3s* res, Vec3s o, Vec3s n) {
-        *res[0] = lerp_s16(o[0], n[0]);
-        *res[1] = lerp_s16(o[1], n[1]);
-        *res[2] = lerp_s16(o[2], n[2]);
+        (*res)[0] = lerp_s16(o[0], n[0]);
+        (*res)[1] = lerp_s16(o[1], n[1]);
+        (*res)[2] = lerp_s16(o[2], n[2]);
     }
 
     void lerp_vec3f(Vec3f* res, Vec3f* o, Vec3f* n) {
-        *res[0] = lerp(*o[0], *n[0]);
-        *res[1] = lerp(*o[1], *n[1]);
-        *res[2] = lerp(*o[2], *n[2]);
+        (*res)[0] = lerp((*o)[0], (*n)[0]);
+        (*res)[1] = lerp((*o)[1], (*n)[1]);
+        (*res)[2] = lerp((*o)[2], (*n)[2]);
     }
 
     float interpolate_angle(f32 o, f32 n) {
@@ -370,22 +366,19 @@ struct InterpolateCtx {
             }
             res = (u16) (w * o + step * n);
         }
-        if (os / 327 == ns / 327 && (s16) res / 327 != os / 327) {
-            int bp = 0;
-        }
         return res;
     }
 
     void interpolate_vecs(Vec3f* res, Vec3f* o, Vec3f* n) {
-        *res[0] = interpolate_angle(*o[0], *n[0]);
-        *res[1] = interpolate_angle(*o[1], *n[1]);
-        *res[2] = interpolate_angle(*o[2], *n[2]);
+        (*res)[0] = interpolate_angle((*o)[0], (*n)[0]);
+        (*res)[1] = interpolate_angle((*o)[1], (*n)[1]);
+        (*res)[2] = interpolate_angle((*o)[2], (*n)[2]);
     }
 
     void interpolate_angles(Vec3s* res, Vec3s* o, Vec3s* n) {
-        *res[0] = interpolate_angle(*o[0], *n[0]);
-        *res[1] = interpolate_angle(*o[1], *n[1]);
-        *res[2] = interpolate_angle(*o[2], *n[2]);
+        (*res)[0] = interpolate_angle((*o)[0], (*n)[0]);
+        (*res)[1] = interpolate_angle((*o)[1], (*n)[1]);
+        (*res)[2] = interpolate_angle((*o)[2], (*n)[2]);
     }
 
     void interpolate_branch(Path* old_path, Path* new_path) {
@@ -593,6 +586,7 @@ struct InterpolateCtx {
                             lerp_vec3f(&tmp_vec3f2, (Vec3f*)&old_op.matrix_applytransformations.scale, (Vec3f*)&new_op.matrix_applytransformations.scale);
 
                             ApplyMatrixTransformations(*gInterpolationMatrix, *(FVector*)&tmp_vec3f, *(IRotator*)&tmp_vec3s, *(FVector*)&tmp_vec3f2);
+                            break;
                         }
                     }
                 }
@@ -724,8 +718,9 @@ void FrameInterpolation_RecordMatrixMult(Mat4* matrix, MtxF* mf, u8 mode) {
 }
 
 void FrameInterpolation_ApplyMatrixTransformations(Mat4* matrix, FVector pos, IRotator rot, FVector scale) {
-    if (!is_recording)
+    if (!check_if_recording()) {
         return;
+    }
     append(Op::SetApplyMatrixTransformations).matrix_applytransformations = { matrix, pos, rot, scale };
 }
 
@@ -733,8 +728,8 @@ void FrameInterpolation_RecordMatrixTranslate(Mat4* matrix, Vec3f b) {
     if (!check_if_recording()) {
         return;
     }
-
-    append(Op::MatrixTranslate).matrix_translate = { matrix, *((Vec3fInterp*) &b) };
+    // Note: Vec3f decays to pointer when passed as parameter. Cast directly, not &b.
+    append(Op::MatrixTranslate).matrix_translate = { matrix, *((Vec3fInterp*) b) };
 }
 
 void FrameInterpolation_RecordMatrixScale(Mat4* matrix, f32 scale) {
@@ -786,7 +781,9 @@ void FrameInterpolation_RecordMatrixPosRotXYZ(Mat4* out, Vec3f pos, Vec3s orient
     if (!check_if_recording()) {
         return;
     }
-    append(Op::MatrixPosRotXYZ).matrix_pos_rot_xyz = { out, *((Vec3fInterp*) &pos), *((Vec3sInterp*) &orientation) };
+    // Note: Vec3f and Vec3s decay to pointers when passed as parameters.
+    // We cast the pointer directly (not &pos which would be pointer-to-pointer).
+    append(Op::MatrixPosRotXYZ).matrix_pos_rot_xyz = { out, *((Vec3fInterp*) pos), *((Vec3sInterp*) orientation) };
 }
 
 void FrameInterpolation_RecordMatrixPosRotScaleXY(Mat4* matrix, s32 x, s32 y, u16 angle, f32 scale) {
@@ -814,7 +811,7 @@ void FrameInterpolation_RecordMatrixMtxFToMtx(MtxF* src, Mtx* dest) {
     if (!check_if_recording()) {
         return;
     }
-    append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { *src, dest };
+    append(Op::MatrixMtxFToMtx).matrix_mtxf_to_mtx = { .src = *src, .dest = dest };
 }
 
 void FrameInterpolation_RecordMatrixToMtx(Mtx* dest, char* file, s32 line) {

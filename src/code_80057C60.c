@@ -252,7 +252,7 @@ Vec3f D_80183E70;
 s32 gNextFreeLeafParticle;
 Vec3su D_80183E80;
 //! Appears to be a list of object list indices for the Item Window part of the HUD
-s32 gItemWindowObjectByPlayerId[4];
+s32 gItemWindowObjectByPlayerId[8];
 Vec3su D_80183E98;
 /**
  * Snowmen bodies in FrappeSnowland

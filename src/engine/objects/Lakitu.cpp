@@ -9,6 +9,7 @@
 extern "C" {
 #include "macros.h"
 #include "main.h"
+#include "code_800029B0.h"
 #include "actors.h"
 #include "math_util.h"
 #include "math_util_2.h"
@@ -38,24 +39,40 @@ extern "C" {
 extern s8 gPlayerCount;
 }
 
+size_t OLakitu::_count = 0; 
+
 OLakitu::OLakitu(s32 playerId, LakituType type) {
     Name = "Lakitu";
-    _playerId = playerId;
+    mPlayerId = playerId;
 
-    init_object(gIndexLakituList[playerId], (s32) type);
+    mCameraId = -1;
+    // Find the camera for this player
+    for (size_t i = 0; i < NUM_CAMERAS; i++) {
+        if (cameras[i].playerId == playerId ) {
+            mCameraId = cameras[i].cameraId;
+            break;
+        }
+    }
+
+    _idx = _count;
+    find_unused_obj_index(&gIndexLakituList[_count]);
+    init_object(gIndexLakituList[_count], (s32) type);
+    mLakituId = gIndexLakituList[_count];
+
+    _count += 1;
 }
 
 void OLakitu::Activate(LakituType type) {
-    init_object(gIndexLakituList[_playerId], (s32) type);
+    init_object(mLakituId, (s32) type);
 }
 
 void OLakitu::Tick() {
-    OLakitu::func_8007AA44(_playerId);
+    OLakitu::func_8007AA44(mPlayerId);
 }
 
 void OLakitu::Tick60fps() { // update_object_lakitu
-    s32 playerId = _playerId;
-    s32 objectIndex = gIndexLakituList[playerId];
+    s32 playerId = mPlayerId;
+    s32 objectIndex = mLakituId;
 
     switch (gObjectList[objectIndex].unk_0D8) {
         case 0:
@@ -97,17 +114,14 @@ void OLakitu::Draw(s32 cameraId) {
     s32 objectIndex;
     Object* object;
 
-    FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
-
-    //! @warning This usage may be problematic
-    if (cameras[cameraId].playerId >= 4) {
-        printf("[Lakitu.cpp] Preventing out of bounds access in gIndexLakituList\n", cameras[cameraId].playerId);
-        throw std::runtime_error("Good bye!");
+    if (cameraId != mCameraId) {
         return;
     }
 
-    objectIndex = gIndexLakituList[cameras[cameraId].playerId];
-    camera = &camera1[cameraId];
+    FrameInterpolation_RecordOpenChild("Lakitu", (uintptr_t) this);
+
+    objectIndex = mLakituId;
+    camera = &cameras[cameraId];
     if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
         object = &gObjectList[objectIndex];
         object->orientation[0] = 0;
@@ -171,6 +185,9 @@ void OLakitu::func_80079114(s32 objectIndex, s32 playerId, s32 arg2) {
                 func_80074894(objectIndex, gLakituTexturePtr);
                 return;
             }
+
+            // Use the textures from the first lakitu?
+            // Perhaps this syncs the animations
             a = gIndexLakituList[0];
             gObjectList[objectIndex].activeTLUT = gObjectList[a].activeTLUT;
             gObjectList[objectIndex].activeTexture = gObjectList[a].activeTexture;
@@ -427,7 +444,7 @@ void OLakitu::func_800797AC(s32 playerId) {
     s32 objectIndex;
     Player* player;
 
-    objectIndex = gIndexLakituList[playerId];
+    objectIndex = mLakituId;
     player = &gPlayerOne[playerId];
     // if ((IsSherbetLand()) && (player->lakituProps & 1)) {
     if ((CM_GetProps()->LakituTowType == LakituTowType::ICE) && (player->lakituProps & LAKITU_RETRIEVAL)) {
@@ -443,7 +460,7 @@ void OLakitu::func_80079860(s32 playerId) {
     s32 objectIndex;
     Player* player;
 
-    objectIndex = gIndexLakituList[playerId];
+    objectIndex = mLakituId;
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (((func_802ABDF4(player->collision.meshIndexZX) != 0) && (player->collision.surfaceDistance[2] <= 3.0f)) ||
@@ -830,8 +847,13 @@ void OLakitu::update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
 }
 
 void OLakitu::func_8007A66C(s32 objectIndex) {
-    Player* player = &gPlayers[_playerId];
-    Camera* camera = &cameras[_playerId];
+    Player* player = &gPlayers[mPlayerId];
+
+    if (mCameraId == -1) {
+        return;
+    }
+
+    Camera* camera = &cameras[mCameraId];
     u16 rot = 0x8000 - camera->rot[1];
 
     gObjectList[objectIndex].pos[0] =
@@ -845,8 +867,11 @@ void OLakitu::func_8007A66C(s32 objectIndex) {
 }
 
 void OLakitu::func_8007A778(s32 objectIndex) {
-    Player* player = &gPlayers[_playerId];
-    Camera* camera = &cameras[_playerId];
+    Player* player = &gPlayers[mPlayerId];
+    if (mCameraId == -1) {
+        return;
+    }
+    Camera* camera = &cameras[mCameraId];
     u16 rot = 0x8000 - camera->rot[1];
 
     gObjectList[objectIndex].pos[0] =
@@ -863,12 +888,12 @@ void OLakitu::func_8007A88C(s32 playerId) {
     s32 objectIndex;
     Player* player;
 
-    objectIndex = gIndexLakituList[playerId];
+    objectIndex = mLakituId;
     player = &gPlayerOne[playerId];
 
     if ((gObjectList[objectIndex].state == 0) && (player->effects & 0x400000)) {
         // func_800790E4(playerId);
-        init_object(gIndexLakituList[playerId], 6);
+        init_object(mLakituId, 6);
     }
 }
 
@@ -884,7 +909,7 @@ void OLakitu::func_8007AA44(s32 playerId) {
     s32 objectIndex;
 
     OLakitu::func_8007A910(playerId);
-    objectIndex = gIndexLakituList[playerId];
+    objectIndex = mLakituId;
     gLakituTexturePtr = (const char**) &gLakituTextureBuffer[playerId];
     switch (gObjectList[objectIndex].unk_0D8) {
         case 1:

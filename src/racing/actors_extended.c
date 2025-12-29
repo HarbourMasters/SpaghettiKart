@@ -393,12 +393,18 @@ void update_actor_triple_shell(TripleShellParent* parent, s16 shellType) {
             break;
         case SHELL_COLLISION:
             parent->state = ORBIT_PLAYER;
-            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
-            shell->flags |= 0x4000;
-            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
-            shell->flags |= 0x4000;
-            shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[2]);
-            shell->flags |= 0x4000;
+            if (parent->shellIndices[0] != -1) {
+                shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[0]);
+                shell->flags |= 0x4000;
+            }
+            if (parent->shellIndices[1] != -1) {
+                shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[1]);
+                shell->flags |= 0x4000;
+            }
+            if (parent->shellIndices[2] != -1) {
+                shell = (struct ShellActor*) GET_ACTOR((s16) parent->shellIndices[2]);
+                shell->flags |= 0x4000;
+            }
             break;
         case ORBIT_PLAYER:
             shellCount = 0;

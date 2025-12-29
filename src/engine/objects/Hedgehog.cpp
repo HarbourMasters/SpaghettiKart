@@ -2,14 +2,14 @@
 #include "engine/World.h"
 #include "port/Game.h"
 #include "port/interpolation/FrameInterpolation.h"
+#include <cstdint>
 
 extern "C" {
 #include "render_objects.h"
 #include "update_objects.h"
-#include "assets/models/tracks/yoshi_valley/yoshi_valley_data.h"
+#include "mk64.h"
 #include "assets/textures/tracks/yoshi_valley/yoshi_valley_data.h"
 #include "assets/models/common_data.h"
-#include "math_util.h"
 #include "math_util_2.h"
 #include "code_80086E70.h"
 #include "code_80057C60.h"
@@ -84,10 +84,18 @@ void OHedgehog::func_800555BC(s32 objectIndex, s32 cameraId) {
         OHedgehog::func_8004A870(objectIndex, 0.7f);
         gObjectList[objectIndex].orientation[1] =
             func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
-                           gObjectList[objectIndex].sizeScaling, (u8*) gObjectList[objectIndex].activeTLUT,
-                           (u8*) gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64,
-                           32);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007D78);
+        auto tlut = (u8*) gObjectList[objectIndex].activeTLUT;
+        auto texture = (u8*) gObjectList[objectIndex].activeTexture;
+        int width = 64;
+        int height = 64;
+        Vtx* vtx = (Vtx*) gObjectList[objectIndex].vertex;
+        gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
+        rsp_load_texture(texture, width, height);
+        gSPVertex(gDisplayListHead++, (uintptr_t) vtx, 4, 0);
+        gSPDisplayList(gDisplayListHead++, (Gfx*) common_rectangle_display);
+        gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
     }
 }
 
@@ -175,6 +183,20 @@ void OHedgehog::func_80083248(s32 objectIndex) {
     }
 }
 
+Vtx gVtxHedgehogRight[] = {
+    {{{   -32,    -31,      0}, 0, {     0,      0}, {255, 255, 255, 255}}},
+    {{{    31,    -31,      0}, 0, {  4032,      0}, {255, 255, 255, 255}}},
+    {{{    31,      31,      0}, 0, {  4032,   3968}, {255, 255, 255, 255}}},
+    {{{   -32,      31,      0}, 0, {     0,   3968}, {255, 255, 255, 255}}},
+};
+
+Vtx gVtxHedgehogLeft[] = {
+    {{{   -32,    -31,      0}, 0, {  4032,      0}, {255, 255, 255, 255}}},
+    {{{    31,    -31,      0}, 0, {     0,      0}, {255, 255, 255, 255}}},
+    {{{    31,      31,      0}, 0, {     0,   3968}, {255, 255, 255, 255}}},
+    {{{   -32,      31,      0}, 0, {  4032,   3968}, {255, 255, 255, 255}}},
+};
+
 void OHedgehog::func_800833D0(s32 objectIndex, s32 id) {
     switch (gObjectList[objectIndex].state) {
         case 0:
@@ -187,11 +209,9 @@ void OHedgehog::func_800833D0(s32 objectIndex, s32 id) {
             break;
     }
     if (gObjectList[objectIndex].textureListIndex == 0) {
-        Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
-        gObjectList[objectIndex].vertex = vtx;
+        gObjectList[objectIndex].vertex = gVtxHedgehogRight;
     } else {
-        Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(D_0D006130);
-        gObjectList[objectIndex].vertex = vtx;
+        gObjectList[objectIndex].vertex = gVtxHedgehogLeft;
     }
 }
 

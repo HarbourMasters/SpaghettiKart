@@ -1,4 +1,5 @@
 #include "RandomItemTable.h"
+#include "defines.h"
 #include "port/Game.h"
 
 extern "C" {

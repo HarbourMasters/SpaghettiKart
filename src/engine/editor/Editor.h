@@ -23,7 +23,7 @@ public:
     ~Editor();
 
     ObjectPicker eObjectPicker;
-    std::vector<GameObject*> eGameObjects;
+    std::vector<std::unique_ptr<GameObject>> eGameObjects;
     
 	void Load();
     void Enable();

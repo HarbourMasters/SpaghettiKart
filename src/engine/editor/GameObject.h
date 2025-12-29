@@ -27,6 +27,7 @@ public:
 
         GameObject(FVector pos, IRotator rot, FVector scale, const char* model, std::vector<Triangle> triangles, CollisionType collision, float boundingBoxSize);
         GameObject();
+        virtual ~GameObject() = default;
         virtual void Tick();
         virtual void Draw();
         virtual void Load() {};
