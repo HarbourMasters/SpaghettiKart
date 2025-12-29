@@ -241,7 +241,7 @@ void RoyalRaceway::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void RoyalRaceway::ScrollingTextures() {
+void RoyalRaceway::Tick() {
     D_802B87BC -= 20;
     if (D_802B87BC < 0) {
         D_802B87BC = 0xFF;

@@ -91,7 +91,7 @@ void HarbourMastersIntro::HM_TickIntro() {
     }
 
     find_and_set_tile_size((uintptr_t) ((void*)mat_water_water1), 0, _water);
-    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water2), _water, 0);;
+    find_and_set_tile_size((uintptr_t) ((void*)mat_water_water2), _water, 0);
 }
 
 void HarbourMastersIntro::Bob(FVector& pos, IRotator& rot, f32 bobAmp, f32 bobSpeed, f32 tiltAmp, f32 tiltSpeed, f32 rollAmp, f32 rollSpeed) {

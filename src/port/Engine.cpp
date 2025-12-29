@@ -392,7 +392,7 @@ void GameEngine::StartFrame() const {
 //     Instance->context->GetWindow()->MainLoop(run_one_game_iter);
 // }
 
-void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
+void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx*, MtxF>>& mtx_replacements) {
     auto wnd = std::dynamic_pointer_cast<Fast::Fast3dWindow>(Ship::Context::GetInstance()->GetWindow());
 
     if (wnd == nullptr) {
@@ -406,8 +406,8 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
 
     interpreter->mInterpolationIndex = 0;
 
-    for (const auto& m : mtx_replacements) {
-        wnd->DrawAndRunGraphicsCommands(Commands, m);
+    for (const auto& mtxStack : mtx_replacements) {
+        wnd->DrawAndRunGraphicsCommands(pool, mtxStack);
         interpreter->mInterpolationIndex++;
     }
 
@@ -419,7 +419,12 @@ void GameEngine::RunCommands(Gfx* Commands, const std::vector<std::unordered_map
     }
 }
 
-void GameEngine::ProcessGfxCommands(Gfx* commands) {
+/**
+ * During the draw phase, the gfx pool is filled with graphics commands.
+ * At the end of the game loop, these commands are sent into lus and interpreted
+ * or translated into modern graphics commands
+ */
+void GameEngine::ProcessGfxCommands(Gfx* pool) {
     std::vector<std::unordered_map<Mtx*, MtxF>> mtx_replacements;
     int target_fps = GameEngine::Instance->GetInterpolationFPS();
     if (CVarGetInteger("gModifyInterpolationTargetFPS", 0)) {
@@ -442,12 +447,13 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
     // time_base = fps * original_fps (one second)
     int next_original_frame = fps;
 
+    // Get matrix replacements for intermediate frames
     while (time + original_fps <= next_original_frame) {
         time += original_fps;
         if (time != next_original_frame) {
             mtx_replacements.push_back(FrameInterpolation_Interpolate((float) time / next_original_frame));
         } else {
-            mtx_replacements.emplace_back();
+            mtx_replacements.emplace_back(); // No interpolation for key frames
         }
     }
     // printf("mtxf size: %d\n", mtx_replacements.size());
@@ -459,7 +465,7 @@ void GameEngine::ProcessGfxCommands(Gfx* commands) {
         wnd->SetTargetFps(GetInterpolationFPS());
         wnd->SetMaximumFrameLatency(1);
     }
-    RunCommands(commands, mtx_replacements);
+    RunCommands(pool, mtx_replacements);
 
     last_fps = fps;
     last_update_rate = 2;

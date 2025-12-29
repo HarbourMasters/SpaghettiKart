@@ -73,6 +73,10 @@ struct FVector {
         return FVector(0, 0, 0);
     }
 
+    float Square() const {
+        return x * x + y * y + z * z;
+    }
+
     FVector() : x(0), y(0), z(0) {}
     FVector(float x, float y, float z) : x(x), y(y), z(z) {}
     NLOHMANN_DEFINE_TYPE_INTRUSIVE(FVector, x, y, z)

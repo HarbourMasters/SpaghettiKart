@@ -57,17 +57,17 @@ void parse_track_displaylists(TrackSections* asset) {
     TrackSections* section = (TrackSections*) asset;
 
     while (section->crc != 0) {
-        if (section->flags & 0x8000) {
+        if (section->clip & 0x8000) {
             D_8015F59C = 1;
         } else {
             D_8015F59C = 0;
         }
-        if (section->flags & 0x2000) {
+        if (section->clip & 0x2000) {
             D_8015F5A0 = 1;
         } else {
             D_8015F5A0 = 0;
         }
-        if (section->flags & 0x4000) {
+        if (section->clip & 0x4000) {
             D_8015F5A4 = 1;
         } else {
             D_8015F5A4 = 0;
@@ -199,7 +199,7 @@ void func_80291198(void) {
     gSPDisplayList(gDisplayListHead++, (Gfx*) d_course_mario_raceway_packed_dl_1140); //
 }
 
-void func_8029122C(ScreenContext* screen, s32 playerId) {
+void draw_transparent_geography(ScreenContext* screen, s32 playerId) {
     UNUSED s32 pad;
     Player* player = screen->player;
     Mat4 matrix;
@@ -232,7 +232,7 @@ void func_8029122C(ScreenContext* screen, s32 playerId) {
     }
     render_set_position(matrix, 0);
 
-    CM_DrawWater(screen, pathCounter, cameraRot, playerDirection);
+    CM_DrawTransparency(screen, pathCounter, cameraRot, playerDirection);
     FrameInterpolation_RecordCloseChild();
 }
 
@@ -276,8 +276,4 @@ UNUSED void func_80295D50(s16 arg0, s16 arg1) {
 void func_80295D6C(void) {
     D_8015F6F4 = 3000;
     D_8015F6F6 = -3000;
-}
-
-void func_802966A0(void) {
-    CM_ScrollingTextures();
 }

@@ -301,7 +301,7 @@ void DKJungle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void DKJungle::ScrollingTextures() {
+void DKJungle::Tick() {
     D_802B87BC += 2;
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
@@ -325,7 +325,7 @@ void DKJungle::ScrollingTextures() {
     evaluate_collision_players_palm_trees();
 }
 
-void DKJungle::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void DKJungle::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);

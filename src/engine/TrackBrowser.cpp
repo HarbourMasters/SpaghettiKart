@@ -1,6 +1,7 @@
 #include "TrackBrowser.h"
 #include "port/Engine.h"
 #include "engine/editor/SceneManager.h"
+#include "engine/tracks/CustomTrack.h"
 #include <imgui.h>
 
 TrackBrowser* TrackBrowser::Instance;
@@ -32,7 +33,7 @@ void TrackBrowser::FindCustomTracks() {
             }
             printf("[TrackBrowser] Added custom track %s\n", info.Name.c_str());
             gTrackRegistry.Add(info, [info, archive]() {
-                auto track = std::make_unique<Track>();
+                auto track = std::make_unique<CustomTrack>();
                 track->ResourceName = info.ResourceName;
                 track->Archive = archive;
                 GetWorld()->SetCurrentTrack(std::move(track));
@@ -55,7 +56,7 @@ void TrackBrowser::FindCustomTracks() {
 
                 // Create the track
                 auto archive = manager->GetArchiveFromFile(file);
-                auto track = std::make_unique<Track>();
+                auto track = std::make_unique<CustomTrack>();
                 track->Archive = archive;
                 track->ResourceName = info.ResourceName;
                 TrackEditor::SaveLevel(track.get(), static_cast<const TrackInfo*>(&info)); // Write scene file so it will show up in the track browser
@@ -63,7 +64,7 @@ void TrackBrowser::FindCustomTracks() {
 
                 // Passing these through seems kinda bad. But it works?
                 gTrackRegistry.Add(info, [info, archive]() {
-                    auto track = std::make_unique<Track>();
+                    auto track = std::make_unique<CustomTrack>();
                     track->Archive = archive;
                     track->ResourceName = info.ResourceName;
                     GetWorld()->SetCurrentTrack(std::move(track));

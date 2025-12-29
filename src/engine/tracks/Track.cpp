@@ -189,7 +189,7 @@ static void InvertTriangleWindingInternal(Gfx* gfx, const char* gfxName, bool sh
     }
 }
 
-static void InvertTriangleWindingModdedInternal(Gfx* gfx, const char* gfxName) {
+void InvertTriangleWindingModdedInternal(Gfx* gfx, const char* gfxName) {
     if (gfx == nullptr) {
         return;
     }
@@ -289,14 +289,6 @@ void InvertTriangleWindingByName(const char* name) {
     InvertTriangleWindingInternal(gfx, name, shouldSwap);
 }
 
-void InvertTriangleWindingModdedByName(const char* name) {
-    if (name == nullptr) {
-        return;
-    }
-    Gfx* gfx = (Gfx*)ResourceGetDataByName(name);
-    InvertTriangleWindingModdedInternal(gfx, name);
-}
-
 void RestoreTriangleWinding() {
     for (const std::string& name : gModifiedGfxSet) {
         if (strstr(name.c_str(), "packed") == nullptr) {
@@ -354,8 +346,6 @@ Track::Track() {
     Props.SetText(Props.Name, "Blank Track", sizeof(Props.Name));
     Props.SetText(Props.DebugName, "blnktrck", sizeof(Props.DebugName));
     Props.SetText(Props.TrackLength, "100m", sizeof(Props.TrackLength));
-    // Props.Cup = FLOWER_CUP;
-    // Props.CupIndex = 3;
     ResourceName = "mod:blank_track";
     Props.Minimap.Texture = minimap_mario_raceway;
     Props.Minimap.Width = ResourceGetTexWidthByName(Props.Minimap.Texture);
@@ -432,99 +422,16 @@ void Track::Load(Vtx* vtx, Gfx* gfx) {
     Track::Init();
 }
 
-// Load stock and o2r tracks
+// Load stock tracks
 void Track::Load() {
     printf("[Track] Loading... %s\n", ResourceName.c_str());
     const TrackInfo* info = gTrackRegistry.GetInfo(ResourceName);
     if (nullptr == info) {
-        printf("Could not find TrackInfo for %s\n", ResourceName.c_str());
+        printf("[Track] Could not find TrackInfo for %s\n", ResourceName.c_str());
         return;
     }
-    const std::string& trackPath = info->Path;
 
-    if (trackPath.empty()) {
-        // Load stock track
-        Track::Init();
-    } else { // Load custom track
-        bIsMod = true;
-
-        TrackEditor::LoadTrackDataFromJson(this, trackPath);
-        
-        const std::string trackSectionPath = (trackPath + "/data_track_sections");
-        TrackSections* sections = (TrackSections*) LOAD_ASSET_RAW(trackSectionPath.c_str());
-        size_t size = ResourceGetSizeByName(trackSectionPath.c_str());
-
-        size_t totalSections = size / sizeof(TrackSections);
-
-        if (sections != nullptr) {
-            Track::Init();
-            if (gIsMirrorMode != 0) {
-                for (size_t i = 0; i < totalSections; i++) {
-                    auto name = ResourceGetNameByCrc(sections[i].crc);
-                    InvertTriangleWindingModdedByName(name);
-                }
-            }
-            ParseTrackSections(sections, size);
-            func_80295C6C();
-
-            if (Props.WaterLevel == FLT_MAX) {
-                Props.WaterLevel = gTrackMinY - 10.0f;
-            }
-        } else {
-            printf("Track.cpp: Custom track sections are invalid\n");
-        }
-    }
-}
-
-// C++ version of parse_track_displaylists()
-void Track::ParseTrackSections(TrackSections* sections, size_t size) {
-    printf("\n[Track] Generating Collision Meshes...\n");
-    for (size_t i = 0; i < (size / sizeof(TrackSections)); i++) {
-        if (sections[i].flags & 0x8000) {
-            D_8015F59C = 1; // single-sided wall
-        } else {
-            D_8015F59C = 0;
-        }
-        if (sections[i].flags & 0x2000) {
-            D_8015F5A0 = 1; // surface
-        } else {
-            D_8015F5A0 = 0;
-        }
-        if (sections[i].flags & 0x4000) {
-            D_8015F5A4 = 1; // double-sided wall
-        } else {
-            D_8015F5A4 = 0;
-        }
-        const char* name = ResourceGetNameByCrc(sections[i].crc);
-        printf("  %s\n", name);
-        generate_collision_mesh((Gfx*) ResourceGetDataByCrc(sections[i].crc), sections[i].surfaceType,
-                                sections[i].sectionId);
-    }
-    printf("[Track] Collision Mesh Generation Complete!\n\n");
-}
-
-void Track::TestPath() {
-    // DEBUG ONLY TO VISUALIZE PATH
-    return;
-    s16 x;
-    s16 y;
-    s16 z;
-    Vec3s rot = { 0, 0, 0 };
-    Vec3f vel = { 0, 0, 0 };
-
-    for (size_t i = 0; i < gPathCountByPathIndex[0]; i++) {
-        x = gTrackPaths[0][i].x;
-        y = gTrackPaths[0][i].y;
-        z = gTrackPaths[0][i].z;
-
-        if (((x & 0xFFFF) == 0x8000) && ((y & 0xFFFF) == 0x8000) && ((z & 0xFFFF) == 0x8000)) {
-            break;
-        }
-
-        f32 height = spawn_actor_on_surface(x, 2000.0f, z);
-        Vec3f itemPos = { (f32) x, height, (f32) z };
-        add_actor_to_empty_slot(itemPos, rot, vel, ACTOR_ITEM_BOX);
-    }
+    Track::Init();
 }
 
 void Track::Init() {
@@ -548,7 +455,6 @@ void Track::Init() {
 
 void Track::BeginPlay() {
     printf("[Track] BeginPlay\n");
-    TestPath();
     this->SpawnActors();
 }
 
@@ -680,14 +586,10 @@ f32 Track::GetWaterLevel(FVector pos, Collision* collision) {
     return found ? highestWater : GetWorld()->GetTrack()->Props.WaterLevel;
 }
 
-void Track::ScrollingTextures() {
+void Track::Tick() {
 }
-void Track::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void Track::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
 }
 
 void Track::Destroy() {
-}
-
-bool Track::IsMod() {
-    return bIsMod;
 }

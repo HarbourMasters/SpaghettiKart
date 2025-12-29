@@ -5,7 +5,7 @@
 #include "../camera.h"
 #include "src/engine/tracks/Track.h"
 
-void func_8029122C(ScreenContext*, s32);
+void draw_transparent_geography(ScreenContext*, s32);
 s32 func_80290C20(Camera*);
 void parse_track_displaylists(TrackSections* asset);
 void render_track_sections(const char*[], ScreenContext*);
@@ -16,7 +16,6 @@ void func_80295C6C(void);
 void func_80295D50(s16, s16);
 void func_80295D6C(void);
 void func_80295D88(void);
-void func_802966A0(void);
 
 extern s32 D_8015F59C;
 

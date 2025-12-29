@@ -50,8 +50,8 @@ extern "C" {
 // #include "engine/wasm.h"
 }
 
-extern "C" void Graphics_PushFrame(Gfx* data) {
-    GameEngine::ProcessGfxCommands(data);
+extern "C" void Graphics_PushFrame(Gfx* pool) {
+    GameEngine::ProcessGfxCommands(pool);
 }
 
 // Create the world instance
@@ -639,16 +639,16 @@ Properties* CM_GetProps() {
     return NULL;
 }
 
-void CM_ScrollingTextures() {
+void CM_TickTrack() {
     if (GetWorld()->GetTrack()) {
-        GetWorld()->GetTrack()->ScrollingTextures();
+        GetWorld()->GetTrack()->Tick();
     }
 }
 
-void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection) {
     if (GetWorld()->GetTrack()) {
-        GetWorld()->GetTrack()->DrawWater(screen, pathCounter, cameraRot, playerDirection);
+        GetWorld()->GetTrack()->DrawTransparency(screen, pathCounter, cameraRot, playerDirection);
     }
 }
 

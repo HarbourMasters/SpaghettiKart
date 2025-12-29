@@ -34,9 +34,9 @@ public:
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void Draw(ScreenContext*) override;
     virtual void DrawCredits() override;    
-    virtual void ScrollingTextures() override;
+    virtual void Tick() override;
     virtual void Waypoints(Player*, int8_t) override;
-    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
+    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) override;
     virtual void CreditsSpawnActors() override;
     virtual void Destroy() override;
 };

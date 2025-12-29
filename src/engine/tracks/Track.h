@@ -82,7 +82,9 @@ typedef struct {
     uint64_t crc;
     u8 surfaceType; // Determines what kind of surface the player drives on (ex. dirt, asphalt, etc.)
     u8 sectionId;
-    u16 flags;
+    u16 clip; // enum in CustomTrack.h
+    u16 layer; // enum in CustomTrack.h
+    Vec3f location;
 } TrackSections;
 
 typedef struct Properties {
@@ -321,7 +323,6 @@ public:
     std::optional<FVector> FinishlineSpawnPoint;
 
 
-    bool bIsMod = false;
     std::vector<SpawnParams> SpawnList;
 
     bool bTourEnabled = false;
@@ -335,7 +336,6 @@ public:
 
     virtual void Load(); // Decompress and load stock tracks or from o2r but TrackSectionsPtr must be set.
     virtual void Load(Vtx* vtx, Gfx *gfx); // Load custom track from code. Load must be overridden and then call to this base class method impl.
-    virtual void ParseTrackSections(TrackSections* sections, size_t size);
 
     /**
      * @brief BeginPlay This function is called once at the start of gameplay.
@@ -343,7 +343,6 @@ public:
      */
     virtual void BeginPlay();
     void SpawnActors();
-    virtual void TestPath();
     virtual void InitClouds();
     virtual void TickClouds(s32, Camera*);
     virtual void SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7);
@@ -359,16 +358,21 @@ public:
     virtual void DrawCredits();
     virtual void Waypoints(Player* player, int8_t playerId);
     virtual f32 GetWaterLevel(FVector pos, Collision* collision);
-    virtual void ScrollingTextures();
+    virtual void Tick();
     // Draw transparent models (water, signs, arrows, etc.) 
-    virtual void DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+    virtual void DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                            uint16_t playerDirection);
     virtual void Destroy();
-    virtual bool IsMod();
+    // Note that this will be false for custom tracks made using code
+    // Probably ok
+    virtual bool IsMod() { return false; };
 
-  private:
+
+  protected:
     void Init();
 };
+
+void InvertTriangleWindingModdedInternal(Gfx* gfx, const char* gfxName);
 
 #endif
 

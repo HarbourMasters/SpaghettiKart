@@ -301,7 +301,7 @@ void WarioStadium::SomeCollisionThing(Player* player, Vec3f arg1, Vec3f arg2, Ve
     func_8003EE2C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void WarioStadium::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void WarioStadium::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                              uint16_t playerDirection) {
 
     gDPPipeSync(gDisplayListHead++);

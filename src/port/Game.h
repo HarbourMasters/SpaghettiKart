@@ -37,6 +37,8 @@ World* GetWorld(void); // Retrieve the world instance
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
+void Graphics_PushFrame(Gfx* pool);
+
 uintptr_t CM_GetTrack();
 Properties* CM_GetProps();
 
@@ -124,13 +126,13 @@ void CM_SetStaffGhost();
 
 void CM_BombKartsWaypoint(s32 cameraId);
 
-void CM_ScrollingTextures();
+void CM_TickTrack();
 
 s32 CM_GetCrossingOnTriggered(uintptr_t* crossing);
 
 void CM_BeginPlay();
 
-void CM_DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void CM_DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                   uint16_t playerDirection);
 
 void CM_AICrossingBehaviour(s32 playerId);

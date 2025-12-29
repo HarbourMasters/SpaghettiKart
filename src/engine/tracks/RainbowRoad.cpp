@@ -204,8 +204,7 @@ void RainbowRoad::Waypoints(Player* player, int8_t playerId) {
     player->nearestPathPointId = gCopyNearestWaypointByPlayerId[playerId];
 }
 
-void RainbowRoad::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
-
+void RainbowRoad::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     gDPPipeSync(gDisplayListHead++);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     render_track_sections(rainbow_road_dls, screen);

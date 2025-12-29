@@ -304,7 +304,7 @@ void BowsersCastle::Waypoints(Player* player, int8_t playerId) {
     }
 }
 
-void BowsersCastle::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
+void BowsersCastle::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot,
                               uint16_t playerDirection) {
     if (gActiveScreenMode != SCREEN_MODE_1P) {
         return;

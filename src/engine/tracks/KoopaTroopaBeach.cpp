@@ -11,6 +11,7 @@
 #include "engine/objects/Crab.h"
 #include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
 #include "assets/other/tracks/koopa_troopa_beach/koopa_troopa_beach_data.h"
+#include "assets/models/tracks/koopa_troopa_beach/koopa_troopa_beach_displaylists.h"
 #include "engine/objects/Seagull.h"
 
 extern "C" {
@@ -250,7 +251,7 @@ void KoopaTroopaBeach::SomeCollisionThing(Player *player, Vec3f arg1, Vec3f arg2
     func_8003E37C(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void KoopaTroopaBeach::ScrollingTextures() {
+void KoopaTroopaBeach::Tick() {
     // clang-format off
     // This flips the velocity from 0.1f to -0.1f
     if (gWaterVelocity < 0.0f) {
@@ -283,10 +284,9 @@ void KoopaTroopaBeach::ScrollingTextures() {
     // Waterfall bubbling effect? (unused)
     // d_course_koopa_troopa_beach_packed_dl_2E8
     find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
-
 }
 
-void KoopaTroopaBeach::DrawWater(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
+void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {
     Mat4 matrix;
     Vec3f vector;
 
