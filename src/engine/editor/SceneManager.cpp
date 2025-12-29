@@ -374,7 +374,7 @@ namespace TrackEditor {
         }
 
         if (nullptr == track->Props.PathTable2[0]) {
-            SPDLOG_WARNING("\n  The first track path is not set! Make sure your main path is exported with path type 1\n");
+            SPDLOG_INFO("\n  The first track path is not set! Make sure your main path is exported with path type 1\n");
         }
 
         gVehiclePathSize = track->Props.PathSizes.unk8; // This is likely incorrect.
