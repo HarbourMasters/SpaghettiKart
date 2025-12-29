@@ -275,14 +275,12 @@ void KoopaTroopaBeach::Tick() {
     find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
     // d_course_koopa_troopa_beach_packed_dl_9CD0
     find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
-
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
     } else {
         D_802B87C8 = -(random_int(300) / 40);
     }
-
     // Waterfall bubbling effect? (unused)
     // d_course_koopa_troopa_beach_packed_dl_2E8
     find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
