@@ -137,6 +137,7 @@ version = "1.0.0"
 If you open the zip folder, you should immediately see the `tracks` folder and the mods.toml file. Inside `tracks` should be a folder with the name of your track, and some files inside of that folder.
 
 If it does not contain any files similar to the below then something has gone wrong.
+
 <img width="289" height="466" alt="image" src="https://github.com/user-attachments/assets/ccef558b-ac9a-42ed-bc85-e27da4f16598" />
 
 * If all checks out, go to your game executable
@@ -147,7 +148,8 @@ If it does not contain any files similar to the below then something has gone wr
 
 * Press `ESC` and enable *Debug Mode*
 <img width="379" height="210" alt="image" src="https://github.com/user-attachments/assets/1a3f09ba-0743-4243-b400-2a443df78cdd" />
-Navigate away and back to the start screen and a debug menu should pop up.
+
+* Navigate away and back to the start screen and a debug menu should pop up.
 Use the left/right arrow keys to switch tracks. Custom tracks are placed at the end of the list.
 
 * Press *Launch HM64 Labs* to configure your track and place actors.
@@ -177,9 +179,11 @@ Use the left/right arrow keys to switch tracks. Custom tracks are placed at the 
 * Fast64 often defaults to a CI8 palette texture, always change `Format` to `RGBA-16 bit` or `RGBA-32 bit`
 The Colour Index (CI8) format can cause issues if not used correctly. It's easy to confuse this as directly below this box it says `RGBA 16-bit`
 Example of incorrect texture format:
+
 <img width="677" height="777" alt="image" src="https://github.com/user-attachments/assets/518bd16e-3d16-43f9-9767-fc73ea2ab5f8" />
 
 Example of correct texture format
+
 <img width="627" height="205" alt="image" src="https://github.com/user-attachments/assets/2cce483b-7fcb-435b-924e-3443e2976e95" />
 
 ## Export
