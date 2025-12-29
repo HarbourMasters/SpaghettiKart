@@ -37,6 +37,8 @@ World* GetWorld(void); // Retrieve the world instance
 #endif
 // NOLINTBEGIN(readability-identifier-naming)
 
+void Graphics_PushFrame(Gfx* pool);
+
 uintptr_t CM_GetTrack();
 Properties* CM_GetProps();
 
