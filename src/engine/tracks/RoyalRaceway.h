@@ -30,9 +30,7 @@ public:
     virtual void WhatDoesThisDoAI(Player* player, int8_t playerId) override;
     virtual void SetStaffGhost() override;
     virtual void Draw(ScreenContext*) override;
-    virtual void DrawCredits() override;    
+    virtual void DrawCredits() override;
     virtual void Waypoints(Player* player, int8_t playerId) override;
-    Gfx scroll[3];
-    Gfx scroll2[3];
-private:
+    virtual void Tick() override;
 };

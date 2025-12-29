@@ -363,7 +363,7 @@ namespace TrackEditor {
             }
             ptr[i] = path.size();
             track->Props.PathTable2[i] = (TrackPathPoint*) path.data();
-            SPDLOG_INFO("  Added path {}", i);
+            SPDLOG_INFO("  Added path {} with {} points", i + 1, ptr[i]);
 
             i += 1;
         }

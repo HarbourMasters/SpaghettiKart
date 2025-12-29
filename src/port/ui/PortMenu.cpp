@@ -214,7 +214,7 @@ void PortMenu::AddSettings() {
     static int32_t maxFps;
     const char* tooltip = "";
     if (Ship::Context::GetInstance()->GetWindow()->GetWindowBackend() == Ship::WindowBackend::FAST3D_DXGI_DX11) {
-        maxFps = 360;
+        maxFps = MAX_FPS;
         tooltip = "Uses Matrix Interpolation to create extra frames, resulting in smoother graphics. This is "
                   "purely visual and does not impact game logic, execution of glitches etc.\n\nA higher target "
                   "FPS than your monitor's refresh rate will waste resources, and might give a worse result.";
@@ -287,7 +287,7 @@ void PortMenu::AddSettings() {
     AddWidget(path, "Match Refresh Rate", WIDGET_BUTTON)
         .Callback([](WidgetInfo& info) {
             int hz = Ship::Context::GetInstance()->GetWindow()->GetCurrentRefreshRate();
-            if (hz >= 30 && hz <= 360) {
+            if (hz >= 30 && hz <= MAX_FPS) {
                 CVarSetInteger("gInterpolationFPS", hz);
                 Ship::Context::GetInstance()->GetWindow()->GetGui()->SaveConsoleVariablesNextFrame();
             }
@@ -307,7 +307,7 @@ void PortMenu::AddSettings() {
                               "CPU to work on one frame while GPU works on the previous frame.\nThis setting "
                               "should be used when your computer is too slow to do CPU + GPU work in time.")
                      .Min(0)
-                     .Max(360)
+                     .Max(MAX_FPS)
                      .DefaultValue(80));
     AddWidget(path, "Enable Vsync", WIDGET_CVAR_CHECKBOX)
         .CVar(CVAR_VSYNC_ENABLED)
@@ -522,7 +522,7 @@ void PortMenu::AddDevTools() {
         .Options(IntSliderOptions()
                      .Tooltip("Sets the target FPS for interpolation. When Modify Interpolation Target FPS are enable")
                      .Min(15)
-                     .Max(360)
+                     .Max(MAX_FPS)
                      .DefaultValue(60));
     AddWidget(path, "Render Collision", WIDGET_CVAR_CHECKBOX)
         .CVar("gRenderCollisionMesh")

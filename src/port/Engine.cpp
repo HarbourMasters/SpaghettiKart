@@ -405,7 +405,6 @@ void GameEngine::RunCommands(Gfx* pool, const std::vector<std::unordered_map<Mtx
     wnd->HandleEvents();
 
     interpreter->mInterpolationIndex = 0;
-    interpreter->mInterpolationCount = mtx_replacements.size();
 
     for (const auto& mtxStack : mtx_replacements) {
         wnd->DrawAndRunGraphicsCommands(pool, mtxStack);

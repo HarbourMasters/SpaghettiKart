@@ -137,12 +137,6 @@ void KoopaTroopaBeach::Load() {
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_A540, 150, 255, 255, 255);
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_9E70, 150, 255, 255, 255);
     find_vtx_and_set_colours((Gfx*) d_course_koopa_troopa_beach_packed_dl_358, 150, 255, 255, 255);
-
-    // waterfall animation
-    scroll_texture_interpolated(scroll, d_course_koopa_troopa_beach_packed_dl_9D58, 0, 18);
-    scroll_texture_interpolated(scroll2, d_course_koopa_troopa_beach_packed_dl_9CD0, 0, 6);
-    // Waterfall bubbling effect? (unused)
-    scroll_texture_interpolated(scroll3, d_course_koopa_troopa_beach_packed_dl_2E8, 0, 0);
 }
 
 void KoopaTroopaBeach::BeginPlay() {
@@ -268,6 +262,20 @@ void KoopaTroopaBeach::Tick() {
     // clang-format on
     Props.WaterLevel += gWaterVelocity;
 
+    D_802B87BC += 9;
+    if (D_802B87BC > 255) {
+        D_802B87BC = 0;
+    }
+    D_802B87C4 += 3;
+    if (D_802B87C4 > 255) {
+        D_802B87C4 = 0;
+    }
+    // waterfall animation
+    // d_course_koopa_troopa_beach_packed_dl_9D58
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
+    // d_course_koopa_troopa_beach_packed_dl_9CD0
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
+
     D_802B87CC = random_int(300) / 40;
     if (D_802B87C8 < 0) {
         D_802B87C8 = random_int(300) / 40;
@@ -275,7 +283,9 @@ void KoopaTroopaBeach::Tick() {
         D_802B87C8 = -(random_int(300) / 40);
     }
 
-    scroll3[0].words.w1 =  ((uintptr_t) (uint32_t) D_802B87C8 << 32) | (uint32_t)D_802B87CC;
+    // Waterfall bubbling effect? (unused)
+    // d_course_koopa_troopa_beach_packed_dl_2E8
+    find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_2E8, D_802B87C8, D_802B87CC);
 }
 
 void KoopaTroopaBeach::DrawTransparency(ScreenContext* screen, uint16_t pathCounter, uint16_t cameraRot, uint16_t playerDirection) {

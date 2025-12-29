@@ -132,15 +132,6 @@ void DKJungle::Load() {
     func_80295C6C();
     // d_course_dks_jungle_parkway_packed_dl_3FA8
     find_vtx_and_set_colours((Gfx*) d_course_dks_jungle_parkway_packed_dl_3FA8, 120, 255, 255, 255);
-
-    // These can share the same writableGfx because they use the same settings
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3DD0, 0, 4);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3E40, 0, 4);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3EB0, 0, 4);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_3F30, 0, 4);
-    scroll_texture_interpolated(scroll, d_course_dks_jungle_parkway_packed_dl_36A8, 0, 4);
-
-    scroll_texture_interpolated(scroll2, d_course_dks_jungle_parkway_packed_dl_9880, 0, -40);
 }
 
 f32 DKJungle::GetWaterLevel(FVector pos, Collision* collision) {
@@ -311,6 +302,26 @@ void DKJungle::Waypoints(Player* player, int8_t playerId) {
 }
 
 void DKJungle::Tick() {
+    D_802B87BC += 2;
+    if (D_802B87BC > 255) {
+        D_802B87BC = 0;
+    }
+    // d_course_dks_jungle_parkway_packed_dl_3DD0
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3DD0, 0, D_802B87BC);
+    // d_course_dks_jungle_parkway_packed_dl_3E40
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3E40, 0, D_802B87BC);
+    // d_course_dks_jungle_parkway_packed_dl_3EB0
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3EB0, 0, D_802B87BC);
+    // d_course_dks_jungle_parkway_packed_dl_3F30
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_3F30, 0, D_802B87BC);
+    // d_course_dks_jungle_parkway_packed_dl_36A8
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_36A8, 0, D_802B87BC);
+    D_802B87C4 -= 20;
+    if (D_802B87C4 < 0) {
+        D_802B87C4 = 0xFF;
+    }
+    // d_course_dks_jungle_parkway_packed_dl_9880
+    find_and_set_tile_size((uintptr_t) (Gfx*) d_course_dks_jungle_parkway_packed_dl_9880, 0, D_802B87C4);
     evaluate_collision_players_palm_trees();
 }
 
