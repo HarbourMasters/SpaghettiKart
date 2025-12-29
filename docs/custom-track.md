@@ -32,9 +32,10 @@ This guide is not all-encompassing but rather covers the basics for track creati
   * This is approximately -16.8 Y in Blender units (420 / scale of 25)
 
 * One method to test the plane size is by adding a cube
-<img width="1294" height="801" alt="image" src="https://github.com/user-attachments/assets/71566a5b-06b5-4a95-829a-1f9edde3c530" />
+<img width="1294" height="801" alt="image" src="https://github.com/user-attachments/assets/71566a5b-06b5-4a95-829a-1f9edde3c530" />  
+
 * You will likely want the surface mesh to be a bit bigger. However, this size will meet the spawn requirements.
-* Delete the cube
+* Delete the cube  
 
 You now have a valid surface for racers to drive on. Multiple surfaces, hills, bumps, cubes, walls, spheres, etc. are all applicable types of mesh to add to the track. The specifics of crafting the track will be covered in another guide. Just know that there are proper ways to connect mesh together so the racers do not fall through while traversing from one mesh to another mesh.
 
