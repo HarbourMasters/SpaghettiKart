@@ -26,10 +26,16 @@ class Paths : public Ship::Resource<TrackPathPoint> {
 
     Paths();
 
+    // This struct is really ugly... Sorry
+    struct PathObject {
+        std::vector<TrackPathPoint> PathList;
+        int32_t PathIndex;
+    };
+
     TrackPathPoint* GetPointer() override;
     size_t GetPointerSize() override;
 
-    std::vector<std::vector<TrackPathPoint>> PathList;
+    std::vector<PathObject> PathObject;
 };
 
 } // namespace MK64

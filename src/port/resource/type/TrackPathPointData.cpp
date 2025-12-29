@@ -24,11 +24,19 @@ TrackPathPoint* Paths::GetPointer() {
 }
 
 size_t Paths::GetPointerSize() {
-    size_t totalWaypoints = 0;
-    for (const auto& path : PathList) {
-        totalWaypoints += path.size();
+    size_t totalSize = 0;
+    // Iterate over each PathObject in the PathObject vector
+    for (const auto& obj : PathObject) {
+        // Add the size of the vector itself (this is the overhead of the vector container)
+        totalSize += sizeof(obj.PathList);
+
+        // Add the size of the elements in the PathList vector
+        totalSize += obj.PathList.size() * sizeof(TrackPathPoint);
+
+        // Add the size of the PathIndex (int32_t)
+        totalSize += sizeof(obj.PathIndex);
     }
-    return totalWaypoints * sizeof(TrackPathPoint);
+    return totalSize;
 }
 
 } // namespace MK64
