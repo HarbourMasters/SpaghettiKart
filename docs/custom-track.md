@@ -16,7 +16,7 @@ This guide is not all-encompassing but rather covers the basics for track creati
 * Add an empty and place it at coordinates 0, 0, 0
 <img width="482" height="532" alt="image" src="https://github.com/user-attachments/assets/ab1475c9-9610-4735-8083-d1586bd76cd7" />
 
-* In the object panel select `Course Root`
+* Select the empty and in the object panel select `Course Root`
   * This is the root of the custom track. All mesh and path are placed within.
 <img width="342" height="372" alt="image" src="https://github.com/user-attachments/assets/f1ac68f0-2beb-4078-af62-52d9925e56f4" />
 
@@ -24,10 +24,11 @@ This guide is not all-encompassing but rather covers the basics for track creati
 <img width="316" height="359" alt="image" src="https://github.com/user-attachments/assets/bce1d0f3-fceb-4f33-8997-6e66fb45d517" />
 
 * Add a plane and place it at coordinates 0, 0, 0
-<img width="609" height="121" alt="image" src="https://github.com/user-attachments/assets/660e0ecc-3f89-4722-b1f0-73f2e253b1fd" />
-* The drivable surface *must* be a flat mesh. It cannot be a cube.
-* Select the plane and scale it to a reasonable size by pressing the `s` key and dragging with the mouse.
-  * Z coordinate 420.0f must have mesh under it for the players to spawn correctly.
+<img width="609" height="121" alt="image" src="https://github.com/user-attachments/assets/660e0ecc-3f89-4722-b1f0-73f2e253b1fd" />  
+
+* The drivable surface *must* be a flat mesh. It cannot be a cube.  
+* Select the plane and scale it to a reasonable size by pressing the `s` key and dragging with the mouse.  
+  * Z coordinate 420.0f must have mesh under it for the players to spawn correctly.  
   * This is approximately -16.8 Y in Blender units (420 / scale of 25)
 
 * One method to test the plane size is by adding a cube
