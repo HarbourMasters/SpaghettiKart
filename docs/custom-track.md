@@ -51,13 +51,16 @@ You now have a valid surface for racers to drive on. Multiple surfaces, hills, b
 * Select the path
 * Enter `Edit` mode (Press tab)
 * Enable Normals
-<img width="734" height="240" alt="image" src="https://github.com/user-attachments/assets/568e1937-be7d-4daa-9ada-f8238e9e7efe" />
+<img width="734" height="240" alt="image" src="https://github.com/user-attachments/assets/568e1937-be7d-4daa-9ada-f8238e9e7efe" />  
+
 * Normals shows these arrows which tell us which way is forward.
-<img width="1023" height="387" alt="image" src="https://github.com/user-attachments/assets/be868cd9-1e04-4818-afa3-25c2c4031242" />
+<img width="1023" height="387" alt="image" src="https://github.com/user-attachments/assets/be868cd9-1e04-4818-afa3-25c2c4031242" />  
+
 Thus, the point marked as `1` is the first path point. This must be placed at 0, 0, 0. If it were to be placed at 5, 0, 0, it would have an unexpected offset in-game.
 
 * Move the other points farther forward so that they do not get in the way, and then set the first point at 0, 0, 0.
-<img width="1061" height="623" alt="image" src="https://github.com/user-attachments/assets/89db120b-1789-45a9-80ab-01f7a11c7b86" />
+<img width="1061" height="623" alt="image" src="https://github.com/user-attachments/assets/89db120b-1789-45a9-80ab-01f7a11c7b86" />  
+
 * If you zoom out, this point should be placed at the very center of the plane. If it is not at the center, press `tab` to switch to `object` mode, and move the whole path to 0,0,0. Then switch back to `edit` mode and place the first path point at 0, 0, 0
 
 * The point should now be at the center (presuming the plane is also centered at 0, 0, 0)
