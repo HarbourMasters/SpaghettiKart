@@ -372,6 +372,11 @@ namespace TrackEditor {
             addedPathIndexes.insert(pathIndex); // Mark this path as added
             SPDLOG_INFO("    Added path {} with {} points", pathIndex + 1, ptr[pathIndex]);
         }
+
+        if (nullptr == track->Props.PathTable2[0]) {
+            SPDLOG_WARNING("\n  The first track path is not set! Make sure your main path is exported with path type 1\n");
+        }
+
         gVehiclePathSize = track->Props.PathSizes.unk8; // This is likely incorrect.
         SPDLOG_INFO(" Path Loading Complete!");
     }
