@@ -66,12 +66,14 @@ Thus, the point marked as `1` is the first path point. This must be placed at 0,
 * The point should now be at the center (presuming the plane is also centered at 0, 0, 0)
 
 * This next step is incredibly important
-<img width="978" height="540" alt="image" src="https://github.com/user-attachments/assets/5918325a-0b0e-46b3-b433-96bf61b2092f" />
+<img width="978" height="540" alt="image" src="https://github.com/user-attachments/assets/5918325a-0b0e-46b3-b433-96bf61b2092f" />  
+
 * See the green Y in the compass at the top right corner? This shows the positive Y-axis. This is the direction players are facing when they spawn. As such, your path must go in this direction. If it goes in any other direction the CPUs will turn 90 degrees and drive off the track.
 
 #### Path Point Alignment
 * Enter *Quad View* as this allows moving points from the top-down
-<img width="911" height="676" alt="image" src="https://github.com/user-attachments/assets/521756d5-e8af-4d3a-ae4e-2029cf93021d" />
+<img width="911" height="676" alt="image" src="https://github.com/user-attachments/assets/521756d5-e8af-4d3a-ae4e-2029cf93021d" />  
+
 * Next enable *Magnet* mode (shift-tab) and *Snap Target* set to *Face*
 <img width="353" height="352" alt="image" src="https://github.com/user-attachments/assets/ae4aeeae-1744-45f2-88a0-6afb8a045ec2" />
 
