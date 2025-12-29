@@ -129,6 +129,7 @@ version = "1.0.0"
 ```
 * Highlight the tracks folder and the mods.toml file.
 <img width="120" height="74" alt="image" src="https://github.com/user-attachments/assets/8842a528-ef67-4ae6-81cd-802f133bbea1" />
+
 * Right-click --> *Add To Archive* and turn into a stored zip archive.
   * This file should *not* be compressed.
 * If you wish, you may rename this file to mod_name.o2r or mod_name.zip
