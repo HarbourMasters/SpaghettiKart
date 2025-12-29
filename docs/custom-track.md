@@ -90,22 +90,26 @@ Thus, the point marked as `1` is the first path point. This must be placed at 0,
   * If using the Nurbs Path, do not worry about how many path points. Just that the line connecting the points is smooth.
   * If using the bezier curve, ignore the line that connects the points. Only the points matter!
 * Keep adding points until you have a complete circle
-<img width="268" height="346" alt="image" src="https://github.com/user-attachments/assets/b88f1ea8-176c-47f5-bcfe-b78bfcca9248" />
+<img width="268" height="346" alt="image" src="https://github.com/user-attachments/assets/b88f1ea8-176c-47f5-bcfe-b78bfcca9248" />  
+
 * Note that the start/end points do not need to connect to each other or anything like that. Just make them close
 * If using the bezier curve you *must* place at least ten points behind the starting line in a straight line.
   * The NurbsPath requires this as well. However, you don't actually have control over the number of points. So, just make sure there's 16.8 units of space behind the finishline.
 
 ## Prepare for export
 * Drag and drop the mesh and path into the empty so that they are within it. This can be done at the beginning or prior to export, either is fine.
-* It appears you have to hold shift to drag and drop objects into other objects
+* Hold shift while dragging an object --> place the cursor over the empty, and drop the object
 <img width="158" height="90" alt="image" src="https://github.com/user-attachments/assets/e806494b-8f59-48cf-95e2-d5d1c03ba3a7" />
-* Note that these objects have been named. This is not requiremed.
+
+* Note that these objects have been named. This is not required.
+* All the objects that need to be exported, must be inside the empty.
 
 ## Export
 * Name the track
 * Choose a mods path
 * Scale should be set somewhere around 20-25. 100 results in really big models in-game
 <img width="344" height="271" alt="image" src="https://github.com/user-attachments/assets/3be6300c-9125-456c-88bb-da6c231bca30" />
+
 ### Mods Path
 * This should be something like `desktop/mycoolmods` or similar. All your mods will go here.
 ### Name
