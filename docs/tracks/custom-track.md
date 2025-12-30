@@ -16,7 +16,7 @@ This guide is not all-encompassing but rather covers the basics for track creati
 * Add an empty and place it at coordinates 0, 0, 0
 <img width="482" height="532" alt="image" src="https://github.com/user-attachments/assets/ab1475c9-9610-4735-8083-d1586bd76cd7" />
 
-* Select the empty and in the object panel select `Course Root`
+* Select the empty and in the object panel select `Track Root`
   * This is the root of the custom track. All mesh and path are placed within.
 <img width="342" height="372" alt="image" src="https://github.com/user-attachments/assets/f1ac68f0-2beb-4078-af62-52d9925e56f4" />
 
