@@ -4,7 +4,7 @@
 
 Here is the table containing only the regular Mario Kart courses, from Banshee Boardwalk to Yoshi Valley:
 
-| **Mario Kart 64 Track** | **Mario Kart DS** | **Mario Kart Wii** | **Mario Kart 7** | **Mario Kart 8 / Deluxe** | **Booster Track Pass** | **Mario Kart Tour** | **Mario Kart World** |
+| **SpaghettiKart Track** | **Mario Kart DS** | **Mario Kart Wii** | **Mario Kart 7** | **Mario Kart 8 / Deluxe** | **Booster Track Pass** | **Mario Kart Tour** | **Mario Kart World** |
 | ------------------------ | ----------------- | ------------------ | ---------------- | ------------------------- | ----------------------- | ------------------- | -------------------- |
 | Banshee Boardwalk | ✓ | | | | | | |
 | Bowser's Castle | | ✓ | | | | | |
@@ -34,7 +34,7 @@ Here is the table containing only the regular Mario Kart courses, from Banshee B
 
 ## Mario Kart World Remixes
 
-| **Mario Kart 64 Theme** |
+| **SpaghettiKart Theme** |
 | :---------------------- |
 | Title Theme             |
 | Setup and Kart Select   |

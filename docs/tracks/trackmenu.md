@@ -2,16 +2,46 @@
 
 @htmlonly
 
-Essential skills and concepts to help you get started with mk64 decomp.
+Guides for making custom tracks!
 <br><br>
 <div class="pagebutton">
-<a class="pagea" href="custom-track.html">
+<a class="pagea" href="overview.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Guide</div>
+    <div class="pageheading">Overview</div>
     <div class="pagedescription">
-      <p>Steps for building a simple track</p>
+      <p>All the steps for building the simplest possible track.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
+<br><br>
+<div class="pagebutton">
+<a class="pagea" href="quick.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Quick Reference</div>
+    <div class="pagedescription">
+      <p>Cheatsheet with tips, and tricks.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
+<br><br>
+<div class="pagebutton">
+<a class="pagea" href="setup.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Setup</div>
+    <div class="pagedescription">
+      <p>Your first baby steps. Start here!</p>
     </div>
   </div>
 </div>
@@ -19,31 +49,41 @@ Essential skills and concepts to help you get started with mk64 decomp.
 </div>
 
 <div class="pagebutton">
-<a class="pagea" href="controlflow.html">
+<a class="pagea" href="materials.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Codebase Overview</div>
+    <div class="pageheading">Materials</div>
     <div class="pagedescription">
-      <p>Introduction to mk64's functionality, operating states, and threading. Acclimate to the codebase with this essential read.</p>
+      <p>Working with fast64 materials.</p>
     </div>
   </div>
 </div>
 </a>
 </div class="pagebutton">
 
-
-<h2>Foundational Knowledge</h2>
-<p>Become familiar with technical and low-level concepts.</p>
-<br>
 <div class="pagebutton">
-<a class="pagea" href="concepts.html">
+<a class="pagea" href="minimap.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Basic Concepts</div>
+    <div class="pageheading">Minimap</div>
     <div class="pagedescription">
-      <p>n64 addressing, alignment, and basic types.</p>
+      <p>How to draw a minimap for your track.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div class="pagebutton">
+
+<div class="pagebutton">
+<a class="pagea" href="export.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Export</div>
+    <div class="pagedescription">
+      <p>Export from Blender.</p>
     </div>
   </div>
 </div>
@@ -51,13 +91,41 @@ Essential skills and concepts to help you get started with mk64 decomp.
 </div>
 
 <div class="pagebutton">
-<a class="pagea" href="terminology.html">
+<a class="pagea" href="import.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Decomp Terminology</div>
+    <div class="pageheading">Import</div>
     <div class="pagedescription">
-      <p>Common terms used in low-level computing and decomp.</p>
+      <p>Setting up a new track in-game.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
+<div class="pagebutton">
+<a class="pagea" href="track-properties.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Track Properties</div>
+    <div class="pagedescription">
+      <p>What do all these settings do?</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
+<div class="pagebutton">
+<a class="pagea" href="troubleshooting.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Troubleshooting</div>
+    <div class="pagedescription">
+      <p>Something not working right? Try here!</p>
     </div>
   </div>
 </div>
@@ -66,8 +134,12 @@ Essential skills and concepts to help you get started with mk64 decomp.
 
 @endhtmlonly
 
-@subpage compiling
-@subpage concepts
-@subpage controlflow
-@subpage terminology
-@subpage buildwindows
+@subpage overview
+@subpage quick
+@subpage setup
+@subpage materials
+@subpage minimap
+@subpage export
+@subpage import
+@subpage track-properties
+@subpage troubleshooting

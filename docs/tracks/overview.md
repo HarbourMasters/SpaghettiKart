@@ -1,6 +1,6 @@
 # Custom Track Overview
 
-This guide is not all-encompassing but rather covers the basics for track creation.
+This guide is not all-encompassing but rather covers the utmost basics for track creation.
 
 ## Dependencies
 * Blender v4.3 or older.
@@ -28,7 +28,7 @@ This guide is not all-encompassing but rather covers the basics for track creati
 
 * The drivable surface *must* be a flat mesh. It cannot be a cube.  
 * Select the plane and scale it to a reasonable size by pressing the `s` key and dragging with the mouse.  
-  * Z coordinate 420.0f must have mesh under it for the players to spawn correctly.  
+  * Z coordinate -420.0f must have mesh under it for the players to spawn correctly.  
   * This is approximately -16.8 Y in Blender units (420 / scale of 25)
 
 * One method to test the plane size is by adding a cube
@@ -189,36 +189,3 @@ Example of correct texture format
 ## Export
 * Check `Ignore Textures Restrictions` failing to do so may result in errors
 <img width="318" height="315" alt="image" src="https://github.com/user-attachments/assets/60f084d3-aef4-429c-889f-2e2d74473e1a" />
-  
-# Tips
-
-**The Laws of SpaghettiKart**
-* Track geography must be a plane, not a box
-  * A flat track with a basic plane (square), needs to be turned into triangules and/or subdivided a few times, otherwise the collision generation will 'wig out', placing the racers incorrectly
-* The starting line must face north
-  * In Blender: Positive Green Y Axis
-  * In game: Negative Z axis
-* The meshes anchor needs to be center of mass or at 0,0,0
-    * Otherwise the mesh will have a weird offset.
-* Don't draw your path backwards (In blender turn on normals on the bezier curve to see the direction)
-* The first path point is set at 0,0,0
-* Recommend a scaling of 20 in the F3D Exporter window
-* Must be 10 path points behind the starting line
-
-**Minimap**
-* Must be named: minimap.png
-  
-Two options for making minimap textures:
-* Make the background full black (this will be transparent in-game). Use White for the track.
-  * This option is easiest to see the track.
-* Use FULL alpha for the background. Use white for the track.
-*Extra details:*
-* Save .png as 32bit. 32x32 (other resolutions should work if needed, but recommend no bigger than 128x128)
-* Turn off brush anti-aliasing.
-  * Semi-transparent pixels will be rendered full white. So your lines will end up thicker.
-
-## Extra information that may be helpful
-https://github.com/DeadHamster35/Tarmac64/wiki/Troubleshooting
-
-Applicable only to Overkart 64, but some concepts may transfer to SpaghettiKart
-https://github.com/DeadHamster35/Tarmac64/wiki/Blender-Reference-Guide
