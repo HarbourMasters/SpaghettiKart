@@ -1,3 +1,4 @@
+\page materials Materials
 # Materials
 
 Suggest using the youtubes on this one.

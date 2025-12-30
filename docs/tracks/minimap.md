@@ -1,3 +1,4 @@
+\page minimap Minimap
 # Minimap
 Create a new `minimap.png` file using your favourite graphics editor.
 

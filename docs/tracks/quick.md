@@ -1,3 +1,4 @@
+\page quick Quick Reference
 # Quick Reference
 
 Important details without the steps

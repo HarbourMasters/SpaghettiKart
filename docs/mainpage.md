@@ -1,8 +1,8 @@
-Complete resources for learning about mk64 decomp
+Complete resources for learning about SpaghettiKart
 @htmlonly
 <br>
 <div class="pagebutton">
-<a class="pagea" href="tracks/trackmenu.html">
+<a class="pagea" href="trackmenu.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
@@ -16,7 +16,7 @@ Complete resources for learning about mk64 decomp
 </div>
 
 <div class="pagebutton">
-<a class="pagea" href="characters/charactermenu.html">
+<a class="pagea" href="charactermenu.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">

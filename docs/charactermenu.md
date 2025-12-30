@@ -1,11 +1,11 @@
-@page basics Understanding the Basics
+@page charactermenu Make a Character
 
 @htmlonly
 
 Guides for making custom characters!
 <br><br>
 <div class="pagebutton">
-<a class="pagea" href="overview.html">
+<a class="pagea" href="characteroverview.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
@@ -20,5 +20,5 @@ Guides for making custom characters!
 
 @endhtmlonly
 
-@subpage overview
+@subpage characteroverview
 

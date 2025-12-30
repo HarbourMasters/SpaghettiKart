@@ -1,3 +1,4 @@
+\page track-properties Track Properties
 # Track Properties
 
 Track Props contains the track data that the modern C++ interface sends into the C game engine. This allows complete configuration of the track from lighting, skybox, and environment, to CPU pathing, minimap, and music.

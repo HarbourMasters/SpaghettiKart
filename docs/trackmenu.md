@@ -1,11 +1,11 @@
-@page basics Understanding the Basics
+@page trackmenu Track Making
 
 @htmlonly
 
 Guides for making custom tracks!
 <br><br>
 <div class="pagebutton">
-<a class="pagea" href="overview.html">
+<a class="pagea" href="trackoverview.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
@@ -134,7 +134,7 @@ Guides for making custom tracks!
 
 @endhtmlonly
 
-@subpage overview
+@subpage trackoverview
 @subpage quick
 @subpage setup
 @subpage materials

@@ -1,3 +1,4 @@
+\page setup Setup
 # Setup
 
 ## Pre-requisites

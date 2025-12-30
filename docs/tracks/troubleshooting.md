@@ -1,3 +1,4 @@
+\page troubleshooting Troubleshooting
 # Troubleshooting
 
 ## Players Spawn in the Air
