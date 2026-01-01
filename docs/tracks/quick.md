@@ -3,13 +3,14 @@
 
 Important details without the steps
 
-## Finishline mesh
-* Import this into Blender as a reference for track width and scaling of objects
-* Not intended for export, just viewing in Blender
+## Template Project
+* See the template below containing
+  * A finishline model for use as as reference
+  * A starting road (probably delete and make your own)
+  * Road has enough length behind the finishline for the racers
+  * A starting path
 
-[finishline.blend](finishline.blend)
-
-[finishline.fbx](finishline.fbx)
+[template 1.0.blend](<template 1.0.blend>)
 
 ## Track Details
 Path Points: ~800 (any number is fine)
