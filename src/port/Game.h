@@ -239,6 +239,7 @@ __attribute__((format(printf, 1, 2)))
 #if defined(_MSC_VER)
     __declspec(noreturn) 
 #elif defined(__APPLE__)
+#elif defined(__OpenBSD__)
 #elif defined(__cplusplus) || (__STDC_VERSION__ >= 202311)
     [[noreturn]] 
 #elif defined(__GNUC__)
