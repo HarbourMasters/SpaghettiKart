@@ -108,7 +108,7 @@ Thus, the point marked as `1` is the first path point. This must be placed at 0,
 ## Export
 * Name the track
 * Choose a mods path
-* Scale should be set somewhere around 20-25. 100 results in really big models in-game
+* Set scale to 100
 <img width="344" height="271" alt="image" src="https://github.com/user-attachments/assets/3be6300c-9125-456c-88bb-da6c231bca30" />
 
 ### Mods Path

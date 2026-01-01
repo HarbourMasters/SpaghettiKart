@@ -5,6 +5,7 @@ Important details without the steps
 
 ## Track Details
 Path Points: ~800 (any number is fine)
+* For best results, place path points evenly apart spacing each one by around 0.20 blender units
 Triangle Count: Original tracks average ~6000 triangles
   * SpaghettiKart will start losing fps after ~100k triangles
 
@@ -13,9 +14,11 @@ Track Boundaries: +-32767.0 in Blender units this is +-1310.68 (32767 / 25)
   * Note that this allows a very big track
 
 Track Widths:
-* Wide: 1.5 points to 2.7 points.
-* Medium: 1.5 points to 1 point.
-* Narrow: 1 point to 0.5.*
+* Luigi Raceway track width: 1.13 points
+* Mario Raceway track width: 1.0 points
+* Wide: 1.1 points to 2.0 points
+* Medium: 0.8 points to 1.1 points
+* Narrow: 0.5 point to 0.8 points
 
 ## The Laws of SpaghettiKart
 * Track geography must be a plane, not a box

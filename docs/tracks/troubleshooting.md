@@ -12,8 +12,11 @@ Players and actors are placed at 3000.0 if the game cannot find a surface
 
 
 ## Scaling Issues or Missing Geometry
-* Set scale in the Fast64 export panel between 20-25. Recommended 25.
-* Select the geometry, press CTRL+A and click `Apply Transformations` 
+* Set scale to 100.
+* Select the geometry, press CTRL+A and click `Apply Transformations`
+  * Lets say a vertex (edit mode) is placed at (10, 0, 0). And then the mesh object (object mode) is placed at (10, 0, 0)
+    * On export the object will be placed at 20
+    * Apply transformations resets the object location to (0,0,0)
 
 ## Traversal Issues
 Certain rules must be followed for players to correctly traverse from one mesh to another mesh.
