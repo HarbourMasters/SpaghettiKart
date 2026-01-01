@@ -5,7 +5,7 @@
 
 ## Section ID
 * Leave this set to 255. This tells the game to always draw the object.
-* If you set this to a section ID, then you need to setup grouped displaylists and consider what meshes should be drawn depending on what section the player is and what direction they are facing.
+* If you set this to a section ID, then you need to setup grouped displaylists and consider what meshes should be drawn depending on what section the player is driving in and what direction they are facing.
   * This technology is no longer necessary, and thus, we can ignore it by leaving this value at 255
 
 ## Surface
