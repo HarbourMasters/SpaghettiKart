@@ -62,6 +62,34 @@ Guides for making custom tracks!
 </div class="pagebutton">
 
 <div class="pagebutton">
+<a class="pagea" href="objectproperties.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Object Properties</div>
+    <div class="pagedescription">
+      <p>Surface types and collision.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div class="pagebutton">
+
+<div class="pagebutton">
+<a class="pagea" href="paths.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Pathing</div>
+    <div class="pagedescription">
+      <p>Setup pathing for your track.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div class="pagebutton">
+
+<div class="pagebutton">
 <a class="pagea" href="minimap.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
@@ -137,6 +165,8 @@ Guides for making custom tracks!
 @subpage quick
 @subpage setup
 @subpage materials
+@subpage objectproperties
+@subpage paths
 @subpage minimap
 @subpage export
 @subpage import
