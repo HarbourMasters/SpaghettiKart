@@ -19,8 +19,6 @@ void DetectOutdatedDependencies();
 void SortModsByDependencies();
 
 std::vector<std::tuple<ModMetadata, std::shared_ptr<Ship::Archive>>> Mods = {};
-const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
-const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("spaghetti.o2r");
 
 void InitModsSystem() {
     CheckMK64O2RExists();
@@ -65,6 +63,9 @@ void GenerateAssetsMods() {
 }
 
 std::vector<std::string> ListMods() {
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
+    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("spaghetti.o2r");
+
     std::vector<std::string> archiveFiles;
     if (std::filesystem::exists(main_path)) {
         archiveFiles.push_back(main_path);
@@ -202,6 +203,8 @@ void AddCoreDependencies() {
 }
 
 void CheckMK64O2RExists() {
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
+
     if (!std::filesystem::exists(main_path)) {
         GenerateAssetsMods();
     }
