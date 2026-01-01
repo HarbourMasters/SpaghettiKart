@@ -3,6 +3,14 @@
 
 Important details without the steps
 
+## Finishline mesh
+* Import this into Blender as a reference for track width and scaling of objects
+* Not intended for export, just viewing in Blender
+
+[finishline.blend](finishline.blend)
+
+[finishline.fbx](finishline.fbx)
+
 ## Track Details
 Path Points: ~800 (any number is fine)
 * For best results, place path points evenly apart spacing each one by around 0.20 blender units
