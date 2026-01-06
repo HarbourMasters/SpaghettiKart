@@ -63,8 +63,8 @@ void GenerateAssetsMods() {
 }
 
 std::vector<std::string> ListMods() {
-    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
-    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("spaghetti.o2r");
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
+    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs(engine_asset_file);
 
     std::vector<std::string> archiveFiles;
     if (std::filesystem::exists(main_path)) {
@@ -203,7 +203,7 @@ void AddCoreDependencies() {
 }
 
 void CheckMK64O2RExists() {
-    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory("mk64.o2r");
+    const std::string main_path = Ship::Context::GetPathRelativeToAppDirectory(game_asset_file);
 
     if (!std::filesystem::exists(main_path)) {
         GenerateAssetsMods();

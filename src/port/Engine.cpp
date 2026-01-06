@@ -166,7 +166,7 @@ GameEngine::GameEngine() {
                       { BTN_DDOWN, "DDown" },
                   });
     auto controlDeck = std::make_shared<LUS::ControlDeck>(std::vector<CONTROLLERBUTTONS_T>(), defaultMappings, buttonNames);
-    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs("spaghetti.o2r");
+    const std::string assets_path = Ship::Context::LocateFileAcrossAppDirs(engine_asset_file);
     this->context->InitResourceManager({assets_path}, {}, 3); // without this line InitWindow fails in Gui::Init()
     this->context->InitConsole(); // without this line the GuiWindow constructor fails in ConsoleWindow::InitElement()
 

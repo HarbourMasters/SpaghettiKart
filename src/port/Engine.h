@@ -2,14 +2,17 @@
 
 #include "port/audio/HMAS.h"
 
+static const char game_asset_file[] = "mk64.o2r";
+static const char engine_asset_file[] = "spaghetti.o2r";
+
 #define LOAD_ASSET(path) \
 (path == NULL ? NULL \
   : (GameEngine_OTRSigCheck((const char*) path) ? ResourceGetDataByName((const char*) path) : path))
-  #define LOAD_ASSET_RAW(path) ResourceGetDataByName((const char*) path)
-  
-  #ifdef __cplusplus
-  #include <vector>
-  #include <SDL2/SDL.h>
+#define LOAD_ASSET_RAW(path) ResourceGetDataByName((const char*) path)
+
+#ifdef __cplusplus
+#include <vector>
+#include <SDL2/SDL.h>
 #include <fast/Fast3dWindow.h>
 #include <fast/interpreter.h>
 #include "ship/Context.h"
