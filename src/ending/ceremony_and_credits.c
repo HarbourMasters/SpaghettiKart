@@ -998,7 +998,7 @@ void func_80284154(CinematicCamera* camera) {
 void func_80284184(CinematicCamera* camera) {
     f32 trophy;
 
-    if (gTrophyIndex != NULL) {
+    if (gTrophyIndex != NULL_OBJECT_ID) {
         trophy = ((gObjectList[gTrophyIndex].pos[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
         f32_lerp(&camera->pos[1], trophy, 0.5);
     }

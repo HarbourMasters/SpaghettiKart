@@ -70,7 +70,7 @@ HarbourMastersIntro gMenuIntro;
 
 TrackEditor::Editor gEditor;
 
-s32 gTrophyIndex = NULL;
+s32 gTrophyIndex = NULL_OBJECT_ID;
 
 /** Spawner Registries **/
 Registry<TrackInfo> gTrackRegistry;

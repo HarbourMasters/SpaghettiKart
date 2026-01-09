@@ -2008,34 +2008,20 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
     if (GameEngine_OTRSigCheck((char*)addr)) {
         addr = LOAD_ASSET(addr);
     }
+    bool run = true;
     int8_t opcode;
     uintptr_t lo;
     uintptr_t hi;
-    s32 i;
     numTimes++;
-    // printf("Initial\n");
-    // printf("ptr 0x%llX\n", &addr);
-    // printf("w0 0x%llX\n", addr->words.w0);
-    // printf("w1 0x%llX\n", addr->words.w1);
-    // printf("----loop----\n");
+
     Gfx* gfx = (Gfx*) addr;
     D_8015F6FA = 0;
     D_8015F6FC = 0;
 
-    // printf("\n\nORIG:\n");
-    // for (size_t i = 0; i < 100; i++) {
-    //     printf(" 0x%X ", orig[i]);
-    // }
-
-    for (i = 0; i < 0x1FFF; i++) {
+    while (run) {
         lo = gfx->words.w0;
         hi = gfx->words.w1;
         opcode = GFX_GET_OPCODE(lo) >> 24;
-
-        //  printf("ptr 0x%llX\n", &addr);
-        //  printf("op 0x%llX\n", opcode);
-        //   printf("w0 0x%llX\n", lo);
-        //   printf("w1 0x%llX\n", hi);
 
         switch(opcode) {
             case G_DL:
@@ -2045,8 +2031,6 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
             case G_DL_OTR_HASH:
                 gfx++;
                 uint64_t hash = gfx->words.w0 << 32 | gfx->words.w1;
-                // printf("name of dl hash: 0x%llX\n", hash);
-                // printf("name of dl: %s\n", ResourceGetNameByCrc(hash));
                 generate_collision_mesh(ResourceGetDataByCrc(hash), surfaceType, sectionId);
                 break;
             case G_DL_OTR_FILEPATH:
@@ -2076,13 +2060,9 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
             case G_VTX_OTR_HASH:
                 gfx++;
                 hash = gfx->words.w0 << 32 | gfx->words.w1;
-                // printf("name of vtx hash: 0x%lX\n", hash);
-                // printf("name of vtx: %s\n", ResourceGetNameByCrc(hash));
                 int numVerts = (lo >> 12) & ((1<<8)-1);
                 int bufferIndex = ((lo >> 1) & ((1<<7)-1));
                 bufferIndex = numVerts - bufferIndex; 
-                // printf("numVerts: %d\n", numVerts);
-                // printf("bufferIndex: %d\n", bufferIndex);
                 set_vtx_buffer((uintptr_t) ResourceGetDataByCrc(hash), numVerts, bufferIndex);
                 break;
             case G_TRI1:
@@ -2110,40 +2090,14 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
                 set_vtx_from_quadrangle(hi, surfaceType, sectionId);
                 break;
             case G_ENDDL:
-                return; // end of loop
+                run = false;
+                break; // end of loop
             case G_MARKER:
             case G_MTX_OTR:
             case G_SETTIMG_OTR_HASH:
                 gfx++;
-                i++;
                 break;
         }
-
-
-        // if (opcode == (G_DL << 24)) {
-        //     // G_DL's hi contains an addr to another DL.
-        //     generate_collision_mesh((Gfx*) hi, surfaceType, sectionId);
-
-        // } else if (opcode == (G_VTX << 24)) {
-        //     set_vtx_buffer((hi), (lo >> 10) & 0x3F, ((lo >> 16) & 0xFF) >> 1);
-
-        // } else if (opcode == (G_TRI1 << 24)) {
-        //     D_8015F58C += 1;
-        //     set_vtx_from_triangle(hi, surfaceType, sectionId);
-
-        // } else if (opcode == (G_TRI2 << 24)) {
-        //     D_8015F58C += 2;
-
-        //     set_vtx_from_tri2(lo, hi, surfaceType, sectionId);
-
-        // } else if (opcode == (G_QUAD << 24)) {
-        //     D_8015F58C += 2;
-        //     set_vtx_from_quadrangle(hi, surfaceType, sectionId);
-
-        // } else if (opcode == (int32_t) (G_ENDDL << 24)) {
-        //     break;
-        // }
-
         gfx++;
     }
 }
