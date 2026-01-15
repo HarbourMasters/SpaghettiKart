@@ -469,7 +469,7 @@ void* clear_framebuffer(s32 color) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
     gDPSetFillColor(gDisplayListHead++, color);
-    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 0, OTRGetGameRenderWidth(), SCREEN_HEIGHT);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -696,6 +696,7 @@ void process_game_tick(void) {
 }
 
 void race_logic_loop(void) {
+    clear_framebuffer(0);
     ClearMatrixPools();
     ClearObjectsMatrixPool();
     Editor_ClearMatrix();
