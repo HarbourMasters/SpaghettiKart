@@ -280,7 +280,7 @@ void select_framebuffer(void) {
                                             GPACK_RGBA5551(D_800DC5D0, D_800DC5D4, D_800DC5D8, 1));
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    gDPFillWideRectangle(gDisplayListHead++, OTRGetRectDimensionFromLeftEdge(0), 0, OTRGetGameRenderWidth(), SCREEN_HEIGHT);
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
