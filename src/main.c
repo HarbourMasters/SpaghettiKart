@@ -696,7 +696,6 @@ void process_game_tick(void) {
 }
 
 void race_logic_loop(void) {
-    clear_framebuffer(0);
     ClearMatrixPools();
     ClearObjectsMatrixPool();
     Editor_ClearMatrix();
@@ -1173,8 +1172,9 @@ void thread5_iteration(void) {
     }
     profiler_log_thread5_time(THREAD5_START);
     config_gfx_pool();
-    FB_CreateFramebuffers();
     read_controllers();
+    FB_CreateFramebuffers();
+    clear_framebuffer(0); // Clear the framebuffer
     game_state_handler();
 
     // call_render_hook();
