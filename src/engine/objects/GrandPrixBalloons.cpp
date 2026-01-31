@@ -92,19 +92,19 @@ void OGrandPrixBalloons::Draw(s32 cameraId) {
     for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
-            OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 0);
+            OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 0, var_s1);
         }
     }
     rsp_load_texture((uint8_t*) gTextureBalloon2, 64, 32);
     for (var_s1 = 0; var_s1 < _numBalloons; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
-            OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 4);
+            OGrandPrixBalloons::func_80053D74(objectIndex, cameraId, 4, var_s1);
         }
     }
 }
 
-void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
+void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex, s32 index) {
     Object* object;
 
     Vtx* vtx = (Vtx*) LOAD_ASSET_RAW(common_vtx_hedgehog);
@@ -113,9 +113,7 @@ void OGrandPrixBalloons::func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 ver
     if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         object = &gObjectList[objectIndex];
 
-        // @port: Tag the transform.
-        FrameInterpolation_RecordOpenChild("Balloon",
-                                           TAG_ITEM_ADDR((objectIndex << 32) + i++)); // Not working properly just yet
+        FrameInterpolation_RecordOpenChild("Balloon", TAG_ITEM_ADDR((objectIndex << 7 | index)));
 
         D_80183E80[2] = (s16) (object->unk_084[6] + 0x8000);
         rsp_set_matrix_transformation(object->pos, (u16*) D_80183E80, object->sizeScaling);
