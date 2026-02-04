@@ -1547,8 +1547,11 @@ GLOBAL_ASM("asm/non_matchings/menus/main_menu_act.s")
  * hovered character at grid position `gridId`
  */
 bool is_character_spot_free(s32 gridId) {
-    s32 i;
-    for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+    if (CVarGetInteger("gUniqueCharacterSelections", true) == false) {
+        return true;
+    }
+  
+    for (size_t i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
         if (gridId == gCharacterGridSelections[i]) {
             return false;
         }
