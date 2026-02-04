@@ -438,7 +438,13 @@ void PortMenu::AddRulesets() {
     // AddWidget(path, "Number of Laps", WIDGET_CVAR_SLIDER_INT)
     //     .CVar("gNumLaps")
     //     .Options(UIWidgets::IntSliderOptions().Min().Max(20).Step(1).DefaultValue(3));
-
+    AddWidget(path, "Unique Character Selections", WIDGET_CVAR_CHECKBOX)
+        .CVar("gUniqueCharacterSelections")
+        .Options(CheckboxOptions()
+          .Tooltip(
+            "Prevents players from selecting the same character")
+          .DefaultValue(true)
+        );
     AddWidget(path, "No Itemboxes", WIDGET_CVAR_CHECKBOX)
         .CVar("gDisableItemboxes")
         .Options(CheckboxOptions().Tooltip(
