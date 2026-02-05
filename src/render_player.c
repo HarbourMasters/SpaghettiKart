@@ -1183,7 +1183,7 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
     f32 var_f2;
 
     // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("Kart Shadow", TAG_ITEM_ADDR(player));
+    FrameInterpolation_RecordOpenChild("kart_shadow", TAG_ITEM_ADDR((playerId << 8) | (screenId << 4)));
     temp_t9 = (u16) (player->unk_048[screenId] + player->rotation[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
     spC0 = -player->rotation[1] - player->unk_0C0;
 
@@ -1309,7 +1309,7 @@ void render_kart(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     s16 temp_v1;
     s16 thing;
 
-    FrameInterpolation_RecordOpenChild("player_kart", playerId | screenId << 8);
+    FrameInterpolation_RecordOpenChild("player_kart", (playerId << 4) | screenId);
     if (player->kartProps & UNUSED_0x2000) {
         sp14C[0] = 0;
         sp14C[1] = player->unk_048[screenId];
@@ -1505,7 +1505,7 @@ void func_80025DE8(Player* player, s8 playerId, s8 screenId, s8 flipOffset) {
     sp94[1] = player->unk_048[screenId];
     sp94[2] = player->unk_050[screenId];
 
-    FrameInterpolation_RecordOpenChild("player_boost", playerId | screenId << 8);
+    FrameInterpolation_RecordOpenChild("player_boost", (playerId << 4) | screenId);
 
     mtxf_translate_rotate(mtx, sp9C, sp94);
     mtxf_scale(mtx, gCharacterSize[player->characterId] * player->size);
@@ -1554,7 +1554,7 @@ void render_player_ice_reflection(Player* player, s8 playerId, s8 screenId, s8 f
     }
 
     // @port: Tag the transform.
-    FrameInterpolation_RecordOpenChild("PlayerReflection", playerId | screenId << 8);
+    FrameInterpolation_RecordOpenChild("player_reflection", (playerId << 4) | screenId);
 
     mtxf_translate_rotate(mtx, sp9C, sp94);
     mtxf_scale(mtx, gCharacterSize[player->characterId] * player->size);
