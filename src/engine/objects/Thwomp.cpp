@@ -173,7 +173,7 @@ void OThwomp::Tick60fps() { // func_80081210
             return;
         }
         for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
-            FrameInterpolation_RecordOpenChild("Thwomp_part", (uintptr_t) (var_s4 << 13) | (_idx << 5) | cam->cameraId);
+            FrameInterpolation_RecordOpenChild("Thwomp_part", (uintptr_t) (var_s4 << 5) | cam->cameraId);
 
             objectIndex = gObjectParticle2[var_s4];
             if (objectIndex == DELETED_OBJECT_ID) {
