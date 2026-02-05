@@ -11,6 +11,16 @@ public:
         ACTIVE,
     };
 
+    PlayerBombKart();
+
+    ~PlayerBombKart() {
+        _count--;
+    }
+
+    static size_t GetCount() {
+        return _count;
+    }
+
     s16 state = PlayerBombKartState::DISABLED;
     FVector pos = {0, 0, 0};
     f32 surfaceHeight = 0;
