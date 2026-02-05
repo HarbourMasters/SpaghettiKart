@@ -46,6 +46,7 @@ void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
     D_80183E80[0] = 0;
     D_80183E80[1] = func_800418AC(pos.x, pos.z, camera->pos);
     D_80183E80[2] = 0x8000;
+    FrameInterpolation_RecordOpenChild("player_bomb_kart2", (_idx << 4) | cameraId);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007E98);
     func_8004B310(arg2);
@@ -61,6 +62,7 @@ void PlayerBombKart::func_800563DC(s32 cameraId, s32 arg2) {
 
     temp_s0 = D_8018D400;
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B00);
+    FrameInterpolation_RecordCloseChild();
     func_8004B414(0, 0, 0, arg2);
     D_80183E40[1] = D_80183E40[1] + 4.0;
     D_80183E80[2] = 0;
