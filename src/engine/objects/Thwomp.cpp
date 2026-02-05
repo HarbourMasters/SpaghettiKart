@@ -167,9 +167,14 @@ void OThwomp::Tick60fps() { // func_80081210
     }
 
     if (_idx == 0) {
+        Camera* cam = CM_GetPlayerCamera(player - gPlayers);
+        if (nullptr == cam) {
+            printf("[Thwomp] nullcamera in Tick60fps, interpolation failed!\n");
+            return;
+        }
         for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
             // @port: Tag the transform.
-            FrameInterpolation_RecordOpenChild("Thwomp_part", (uintptr_t) var_s4);
+            FrameInterpolation_RecordOpenChild("Thwomp_part", (uintptr_t) (var_s4 << 5) | cam->cameraId);
 
             objectIndex = gObjectParticle2[var_s4];
             if (objectIndex == DELETED_OBJECT_ID) {
@@ -715,7 +720,7 @@ void OThwomp::Draw(s32 cameraId) {
     plusone = gObjectList[objectIndex].unk_0DF + 1;
 
     if (gGamestate != CREDITS_SEQUENCE) {
-        OThwomp::DrawModel(objectIndex);
+        OThwomp::DrawModel(cameraId, objectIndex);
     }
 
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D0079C8);
@@ -758,9 +763,9 @@ void OThwomp::Draw(s32 cameraId) {
     }
 }
 
-void OThwomp::DrawModel(s32 objectIndex) {
+void OThwomp::DrawModel(s32 cameraId, s32 objectIndex) {
     if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
-        FrameInterpolation_RecordOpenChild("Thwomp_Main", TAG_THWOMP(this));
+        FrameInterpolation_RecordOpenChild("Thwomp_Main", TAG_THWOMP((objectIndex << 5) | cameraId));
         func_8004A7AC(objectIndex, 1.75f);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation,
                                       gObjectList[objectIndex].sizeScaling);
