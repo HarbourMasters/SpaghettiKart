@@ -1,5 +1,6 @@
 #include "PlayerBombKart.h"
 #include "Matrix.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "common_structs.h"
@@ -94,6 +95,7 @@ void PlayerBombKart::func_800568A0(s32 cameraId) {
     D_80183E50[0] = pos.x;
     D_80183E50[1] = surfaceHeight + 0.8;
     D_80183E50[2] = pos.z;
+    FrameInterpolation_RecordOpenChild("player_bomb_kart", (_idx << 4) | cameraId);
     set_transform_matrix(mtx, player->collision.orientationVector, D_80183E50, 0U, 0.5f);
     // convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mtx);
     // gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]),
@@ -101,4 +103,5 @@ void PlayerBombKart::func_800568A0(s32 cameraId) {
 
     AddHudMatrix(mtx, G_MTX_LOAD | G_MTX_NOPUSH | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, (Gfx*) D_0D007B98);
+    FrameInterpolation_RecordCloseChild();
 }
