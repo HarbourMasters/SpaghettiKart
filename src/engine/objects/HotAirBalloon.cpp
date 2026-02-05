@@ -1,6 +1,7 @@
 #include "HotAirBalloon.h"
 #include "World.h"
 #include "port/Game.h"
+#include "port/interpolation/FrameInterpolation.h"
 
 extern "C" {
 #include "render_objects.h"
