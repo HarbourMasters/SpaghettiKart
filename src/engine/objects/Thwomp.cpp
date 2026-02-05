@@ -167,13 +167,8 @@ void OThwomp::Tick60fps() { // func_80081210
     }
 
     if (_idx == 0) {
-        Camera* cam = CM_GetPlayerCamera(player - gPlayers);
-        if (nullptr == cam) {
-            printf("[Thwomp] nullcamera in Tick60fps, interpolation failed!\n");
-            return;
-        }
         for (var_s4 = 0; var_s4 < gObjectParticle2_SIZE; var_s4++) {
-            FrameInterpolation_RecordOpenChild("Thwomp_part", (uintptr_t) (var_s4 << 5) | cam->cameraId);
+            FrameInterpolation_RecordOpenChild("Thwomp_smoke", (uintptr_t) (var_s4 << 5));
 
             objectIndex = gObjectParticle2[var_s4];
             if (objectIndex == DELETED_OBJECT_ID) {
